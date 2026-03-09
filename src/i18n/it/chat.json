@@ -1,7 +1,7 @@
 {
   "button.thinkDeeper": {
     "message": "Pensa più a fondo",
-    "description": "Pulsante per pensare in profondità"
+    "description": "Pulsante per pensare in modo più approfondito"
   },
   "button.deepsearch": {
     "message": "Ricerca approfondita",
@@ -40,7 +40,7 @@
     "description": "Descrizione del modello Grok3"
   },
   "model.5All": {
-    "message": "gpt-5",
+    "message": "gpt-5-all",
     "description": "Nome del modello del servizio, ovvero GPT 5 All"
   },
   "model.5AllDescription": {
@@ -88,52 +88,36 @@
     "description": "Descrizione del modello visivo 4.0"
   },
   "model.4OAll": {
-    "message": "gpt-4o",
+    "message": "gpt-4o-all",
     "description": "Nome del modello del servizio, ovvero GPT 4O All"
   },
   "model.4OAllDescription": {
-    "message": "Modello universale",
-    "description": "Descrizione del modello universale 4O"
+    "message": "Modello polivalente",
+    "description": "Descrizione del modello 4O polivalente"
   },
   "model.4All": {
     "message": "gpt-4-all",
     "description": "Nome del modello del servizio, ovvero GPT 4.0 All"
   },
   "model.4AllDescription": {
-    "message": "Modello universale",
-    "description": "Descrizione del modello universale 4.0"
+    "message": "Modello polivalente",
+    "description": "Descrizione del modello 4.0 polivalente"
   },
   "model.deepseekChat": {
     "message": "Standard 3.0",
-    "description": "Nome del modello del servizio, ovvero DeepSeek Chat"
-  },
-  "model.deepseekChat32": {
-    "message": "Standard 3.2",
     "description": "Nome del modello del servizio, ovvero DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
     "message": "Adatto per compiti quotidiani",
     "description": "Descrizione del modello DeepSeek Chat"
   },
-  "model.deepseekChat32Description": {
-    "message": "Adatto per compiti multimodali",
-    "description": "Descrizione del modello DeepSeek Chat"
-  },
   "model.deepseekReasoner": {
-    "message": "Ragionamento R1",
+    "message": "Ragionatore R1",
     "description": "Nome del modello del servizio, ovvero DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande profonde",
+    "message": "Adatto per ragionamenti e domande complesse",
     "description": "Descrizione del modello DeepSeek Reasoner"
-  },
-  "model.grok4": {
-    "message": "grok-4",
-    "description": "Nome del modello del servizio"
-  },
-  "model.grok4Description": {
-    "message": "Modello all'avanguardia",
-    "description": "Descrizione del modello Grok4"
   },
   "model.grok3": {
     "message": "grok-3",
@@ -144,15 +128,15 @@
     "description": "Descrizione del modello Grok3"
   },
   "model.grok3Reasoner": {
-    "message": "Ragionamento grok-3",
+    "message": "Ragionatore grok-3",
     "description": "Nome del modello del servizio, ovvero Grok3 Reasoner"
   },
   "model.grok3ReasonerDescription": {
-    "message": "Adatto per ragionamenti e domande profonde",
+    "message": "Adatto per ragionamenti e domande complesse",
     "description": "Descrizione del modello Grok3 Reasoner"
   },
   "model.grok3Deepsearch": {
-    "message": "grok-3 ricerca approfondita",
+    "message": "grok-3 Ricerca approfondita",
     "description": "Nome del modello del servizio, ovvero Grok3 Deepsearch"
   },
   "model.grok3DeepsearchDescription": {
@@ -168,11 +152,11 @@
     "description": "Descrizione del modello O1"
   },
   "model.o1Mini": {
-    "message": "Ragionamento ChatGPT - o1-mini",
+    "message": "ChatGPT - ragionatore o1-mini",
     "description": "Nome del modello del servizio, ovvero O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Esegue compiti di ragionamento più rapidamente.",
+    "message": "Ragionamento più veloce.",
     "description": "Descrizione del modello O1-Mini"
   },
   "model.o3": {
@@ -200,12 +184,12 @@
     "description": "Messaggio nella pagina web che informa l'utente di caricare un file"
   },
   "message.noToken": {
-    "message": "Si prega di richiedere prima il servizio corrispondente",
+    "message": "Si prega di richiedere il servizio corrispondente",
     "description": "Messaggio nella pagina web che informa l'utente di richiedere prima il servizio corrispondente"
   },
   "message.newMessagePlaceholder": {
     "message": "Inserisci la tua domanda...",
-    "description": "Segnaposto nella pagina web che informa l'utente di inserire una domanda"
+    "description": "Segnaposto nella pagina web che invita l'utente a inserire una domanda"
   },
   "message.noInput": {
     "message": "La domanda non può essere vuota",
@@ -229,35 +213,35 @@
   },
   "message.question1": {
     "message": "Crea un piano di allenamento",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo all'utente di scrivere un codice JavaScript che restituisca 'Hello World'"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di scrivere un codice JavaScript che stampi 'Hello World'"
   },
   "message.question2": {
     "message": "Crea una pagina web personale",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo all'utente di scrivere un'email a Mike per informarlo del suo recente trasloco"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di scrivere un'email a Mike per informarlo del suo recente trasloco"
   },
   "message.question3": {
     "message": "Progetta un gioco di programmazione divertente",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo all'utente di spiegare i principi fondamentali del calcolo quantistico in termini semplici"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di spiegare i principi fondamentali del calcolo quantistico in modo semplice"
   },
   "message.question4": {
     "message": "Vivi Seul come un locale",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo all'utente di spiegare l'impatto della realtà virtuale sulla creazione artistica"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo all'utente di spiegare l'impatto della realtà virtuale sulla creazione artistica"
   },
   "message.question5": {
     "message": "Chi è più grande, 9.8 o 9.11?",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo di confrontare la grandezza di due numeri"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo di confrontare due numeri"
   },
   "message.question6": {
     "message": "Qual è l'impatto dell'IA sul futuro?",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo quale sia l'impatto dell'IA sul futuro"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo quale sia l'impatto dell'IA sul futuro"
   },
   "message.question7": {
     "message": "Come migliorare l'efficienza di apprendimento?",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo come migliorare la propria efficienza di apprendimento"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo come migliorare la propria efficienza di apprendimento"
   },
   "message.question8": {
     "message": "Come migliorare la concentrazione?",
-    "description": "Domanda di esempio per iniziare una conversazione, chiedendo come migliorare la propria concentrazione"
+    "description": "Esempio di domanda per iniziare una conversazione, chiedendo come migliorare la propria concentrazione"
   },
   "message.errorApiError": {
     "message": "Risposta fallita, riprova più tardi",
@@ -304,115 +288,51 @@
     "description": "Messaggio nella pagina web che informa l'utente di confermare l'eliminazione"
   },
   "message.howToUse": {
-    "message": "L'IA potrebbe commettere errori, si prega di controllare le informazioni importanti.",
-    "description": "Messaggio nella pagina web che informa gli utenti che l'IA potrebbe commettere errori e che devono controllare le informazioni importanti."
+    "message": "L'IA potrebbe commettere errori, controlla le informazioni importanti.",
+    "description": "Messaggio nella pagina web che informa l'utente che l'IA potrebbe commettere errori, controlla le informazioni importanti"
   },
   "title.chat": {
-    "message": "Chat AI",
-    "description": "Titolo della pagina web, ovvero Chat AI."
+    "message": "Chat con IA",
+    "description": "Titolo della pagina web, ovvero chat con IA"
   },
   "title.example": {
     "message": "Esempio",
-    "description": "Titolo della pagina web, ovvero Esempio."
+    "description": "Titolo della pagina web, ovvero Esempio"
   },
   "title.capabilities": {
     "message": "Funzionalità",
-    "description": "Titolo della pagina web, ovvero Funzionalità."
+    "description": "Titolo della pagina web, ovvero Funzionalità"
   },
   "title.limitations": {
     "message": "Limitazioni",
-    "description": "Titolo nella pagina web che indica che questa sezione riguarda le limitazioni tecniche del servizio."
+    "description": "Titolo nella pagina, indica che questa parte riguarda le limitazioni tecniche del servizio"
   },
   "title.complexQuestion": {
     "message": "Rispondere a domande complesse",
-    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di rispondere a domande complesse."
+    "description": "Titolo nella pagina, indica che questa parte riguarda la capacità del servizio di rispondere a domande complesse"
   },
   "title.professionalQuestion": {
     "message": "Consultare domande professionali",
-    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di consultare domande professionali."
+    "description": "Titolo nella pagina, indica che questa parte riguarda la capacità del servizio di consultare domande professionali"
   },
   "title.getTips": {
     "message": "Ottenere ispirazione e idee",
-    "description": "Titolo nella pagina web che indica che questa sezione riguarda la capacità del servizio di ottenere ispirazione e idee."
+    "description": "Titolo nella pagina, indica che questa parte riguarda la capacità del servizio di ottenere ispirazione e idee"
   },
   "group.today": {
     "message": "Oggi",
-    "description": "Nome del gruppo nella pagina web, ovvero Oggi."
+    "description": "Nome del gruppo nella pagina, ovvero Oggi"
   },
   "group.yesterday": {
     "message": "Ieri",
-    "description": "Nome del gruppo nella pagina web, ovvero Ieri."
+    "description": "Nome del gruppo nella pagina, ovvero Ieri"
   },
   "group.thisWeek": {
     "message": "Questa settimana",
-    "description": "Nome del gruppo nella pagina web, ovvero Questa settimana."
+    "description": "Nome del gruppo nella pagina, ovvero Questa settimana"
   },
   "group.earlier": {
     "message": "Prima",
-    "description": "Nome del gruppo nella pagina web, ovvero Prima."
-  },
-  "modelGroup.gemini": {
-    "message": "Gemini",
-    "description": "Il nome del modello di servizio, ovvero Gemini."
-  },
-  "modelGroup.geminiDescription": {
-    "message": "Modello AI sviluppato da Google",
-    "description": "Descrizione del modello Gemini."
-  },
-  "model.gemini30Pro": {
-    "message": "gemini-3.0-pro",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.gemini30ProDescription": {
-    "message": "Adatto per ragionamenti avanzati e compiti multimodali",
-    "description": "Descrizione del modello Gemini 3.0 Pro."
-  },
-  "model.gemini25Pro": {
-    "message": "gemini-2.5-pro",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.gemini25ProDescription": {
-    "message": "Ottimo modello versatile",
-    "description": "Descrizione del modello Gemini 2.5 Pro."
-  },
-  "model.gemini25Flash": {
-    "message": "gemini-2.5-flash",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.gemini25FlashDescription": {
-    "message": "Modello Gemini veloce e leggero",
-    "description": "Descrizione del modello Gemini 2.5 Flash."
-  },
-  "modelGroup.claude": {
-    "message": "Claude",
-    "description": "Il nome del modello di servizio, ovvero Claude."
-  },
-  "modelGroup.claudeDescription": {
-    "message": "Modello AI sviluppato da Anthropic",
-    "description": "Descrizione del modello Claude."
-  },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.claudeOpus4Description": {
-    "message": "Ragionamento di alto livello e compiti complessi",
-    "description": "Descrizione del modello Claude Opus 4."
-  },
-  "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.claudeSonnet4Description": {
-    "message": "Prestazioni ed efficienza bilanciate",
-    "description": "Descrizione del modello Claude Sonnet 4."
-  },
-  "model.claude37Sonnet": {
-    "message": "claude-3-7-sonnet",
-    "description": "Il nome del modello di servizio."
-  },
-  "model.claude37SonnetDescription": {
-    "message": "Claude Sonnet 3.7 veloce e iterativo",
-    "description": "Descrizione del modello Claude 3.7 Sonnet."
+    "description": "Nome del gruppo nella pagina, ovvero Prima"
   }
 }

@@ -17,15 +17,35 @@
   },
   "name.model": {
     "message": "Model",
-    "description": "Model selection label"
+    "description": "Label for model selection"
   },
   "description.model": {
-    "message": "Select the SeeDance model version for generation.",
+    "message": "Select the SeeDance model version to use for generation.",
     "description": "Instructions for model selection"
   },
   "placeholder.select": {
     "message": "Select",
     "description": "Placeholder for dropdown selection"
+  },
+  "name.duration": {
+    "message": "Duration",
+    "description": "Label for video duration selection"
+  },
+  "description.duration": {
+    "message": "Video duration (seconds), range 2-12 seconds.",
+    "description": "Instructions for video duration"
+  },
+  "name.generateAudio": {
+    "message": "Generate Audio",
+    "description": "Label for audio generation option"
+  },
+  "description.generateAudio": {
+    "message": "If enabled, the video will include audio. Only supported by the seedance-1.5-pro model, costs about 2 times more.",
+    "description": "Instructions for audio generation"
+  },
+  "name.resolution": {
+    "message": "Resolution",
+    "description": "Label for video resolution"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -49,7 +69,7 @@
   },
   "name.serviceTier": {
     "message": "Service Tier",
-    "description": "Service tier label"
+    "description": "Label for service tier"
   },
   "description.serviceTier": {
     "message": "Processing tier: default or flex.",
@@ -65,15 +85,15 @@
   },
   "name.returnLastFrame": {
     "message": "Return Last Frame",
-    "description": "Return last frame toggle label"
+    "description": "Label for return last frame toggle"
   },
   "description.returnLastFrame": {
-    "message": "Enabling this will return the last frame image as well.",
+    "message": "If enabled, an additional last frame image will be returned.",
     "description": "Instructions for returning last frame"
   },
   "name.firstFrame": {
     "message": "First Frame Image",
-    "description": "First frame image upload label"
+    "description": "Label for first frame image upload"
   },
   "description.firstFrame": {
     "message": "Optional. Upload a reference/first frame image.",
@@ -81,86 +101,86 @@
   },
   "name.lastFrame": {
     "message": "Last Frame Image",
-    "description": "Last frame image upload label"
+    "description": "Label for last frame image upload"
   },
   "description.lastFrame": {
-    "message": "Optional. Upload the last frame image (requires first frame).",
+    "message": "Optional. Upload a last frame image (requires first frame).",
     "description": "Instructions for last frame image"
   },
   "button.generate": {
     "message": "Generate",
-    "description": "Generate button"
+    "description": "Button to generate"
   },
   "button.upload": {
     "message": "Upload",
-    "description": "Upload button"
+    "description": "Button to upload"
   },
   "button.download": {
     "message": "Download",
-    "description": "Download button"
+    "description": "Button to download"
   },
   "button.on": {
     "message": "On",
-    "description": "Toggle on text"
+    "description": "Text for toggle switch on"
   },
   "button.off": {
     "message": "Off",
-    "description": "Toggle off text"
+    "description": "Text for toggle switch off"
   },
   "message.startingTask": {
     "message": "Starting SeeDance task…",
-    "description": "Task start prompt"
+    "description": "Prompt for starting task"
   },
   "message.startTaskSuccess": {
     "message": "Task started",
-    "description": "Task start success prompt"
+    "description": "Prompt for successful task start"
   },
   "message.startTaskFailed": {
     "message": "Failed to start: ",
-    "description": "Task start failure prompt"
+    "description": "Prompt for failed task start"
   },
   "message.usedUp": {
     "message": "Quota exhausted",
-    "description": "Quota exhausted prompt"
+    "description": "Prompt for exhausted quota"
   },
   "message.uploadExceed": {
-    "message": "You can upload a maximum of 1 image",
-    "description": "Upload limit exceeded prompt"
+    "message": "You can only upload 1 image at most",
+    "description": "Prompt for upload limit exceeded"
   },
   "message.uploadError": {
     "message": "Upload failed",
-    "description": "Upload failure prompt"
+    "description": "Prompt for upload failure"
   },
   "message.downloadVideo": {
     "message": "Download Video",
-    "description": "Download video prompt"
+    "description": "Prompt for downloading video"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Queue status"
+    "description": "Status for pending"
   },
   "status.processing": {
     "message": "Processing",
-    "description": "Processing status"
+    "description": "Status for processing"
   },
   "name.taskId": {
     "message": "Task ID",
-    "description": "Task ID label"
+    "description": "Label for task ID"
   },
   "name.traceId": {
     "message": "Trace ID",
-    "description": "Trace ID label"
+    "description": "Label for trace ID"
   },
   "name.failure": {
     "message": "Failure",
-    "description": "Failure label"
+    "description": "Label for failure"
   },
   "name.failureReason": {
     "message": "Failure Reason",
-    "description": "Failure reason label"
+    "description": "Label for failure reason"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status label"
+    "description": "Label for status"
   }
 }

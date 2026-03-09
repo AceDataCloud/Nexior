@@ -8,7 +8,7 @@
     "description": "Mots-clés pour générer la vidéo"
   },
   "description.prompt": {
-    "message": "Décrivez la vidéo à générer, vous pouvez ajouter des paramètres SeeDance (par exemple : --rs 720p --rt 16:9 --dur 5).",
+    "message": "Décrivez la vidéo à générer, vous pouvez ajouter des paramètres SeeDance (ex : --rs 720p --rt 16:9 --dur 5).",
     "description": "Instructions pour l'entrée des mots-clés"
   },
   "placeholder.prompt": {
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Sélectionner",
     "description": "Espace réservé pour la sélection déroulante"
+  },
+  "name.duration": {
+    "message": "Durée",
+    "description": "Étiquette de sélection de la durée de la vidéo"
+  },
+  "description.duration": {
+    "message": "Durée de la vidéo (secondes), entre 2 et 12 secondes.",
+    "description": "Instructions sur la durée de la vidéo"
+  },
+  "name.generateAudio": {
+    "message": "Générer audio",
+    "description": "Étiquette pour générer de l'audio"
+  },
+  "description.generateAudio": {
+    "message": "Si activé, la vidéo sera accompagnée d'un audio. Supporté uniquement par le modèle seedance-1.5-pro, coût environ 2 fois plus.",
+    "description": "Instructions sur la génération d'audio"
+  },
+  "name.resolution": {
+    "message": "Résolution",
+    "description": "Étiquette de résolution vidéo"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -53,7 +73,7 @@
   },
   "description.serviceTier": {
     "message": "Niveau de traitement : default ou flex.",
-    "description": "Instructions pour le niveau de service"
+    "description": "Instructions sur le niveau de service"
   },
   "serviceTier.default": {
     "message": "default",
@@ -65,27 +85,27 @@
   },
   "name.returnLastFrame": {
     "message": "Retourner la dernière image",
-    "description": "Étiquette du commutateur pour retourner la dernière image"
+    "description": "Étiquette pour le commutateur de retour de la dernière image"
   },
   "description.returnLastFrame": {
     "message": "Si activé, l'image de la dernière image sera également retournée.",
-    "description": "Instructions pour retourner la dernière image"
+    "description": "Instructions sur le retour de la dernière image"
   },
   "name.firstFrame": {
     "message": "Image de la première image",
-    "description": "Étiquette de téléchargement de l'image de la première image"
+    "description": "Étiquette pour le téléchargement de l'image de la première image"
   },
   "description.firstFrame": {
     "message": "Optionnel. Téléchargez une image de référence/première image.",
-    "description": "Instructions pour l'image de la première image"
+    "description": "Instructions sur l'image de la première image"
   },
   "name.lastFrame": {
     "message": "Image de la dernière image",
-    "description": "Étiquette de téléchargement de l'image de la dernière image"
+    "description": "Étiquette pour le téléchargement de l'image de la dernière image"
   },
   "description.lastFrame": {
     "message": "Optionnel. Téléchargez l'image de la dernière image (nécessite la première image).",
-    "description": "Instructions pour l'image de la dernière image"
+    "description": "Instructions sur l'image de la dernière image"
   },
   "button.generate": {
     "message": "Générer",
@@ -101,18 +121,18 @@
   },
   "button.on": {
     "message": "Activé",
-    "description": "Texte pour activer le commutateur"
+    "description": "Texte pour le commutateur activé"
   },
   "button.off": {
     "message": "Désactivé",
-    "description": "Texte pour désactiver le commutateur"
+    "description": "Texte pour le commutateur désactivé"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche SeeDance…",
     "description": "Message de début de tâche"
   },
   "message.startTaskSuccess": {
-    "message": "Tâche démarrée",
+    "message": "Tâche lancée",
     "description": "Message de succès de début de tâche"
   },
   "message.startTaskFailed": {
@@ -121,11 +141,11 @@
   },
   "message.usedUp": {
     "message": "Quota épuisé",
-    "description": "Message d'épuisement du quota"
+    "description": "Message de quota épuisé"
   },
   "message.uploadExceed": {
     "message": "Vous ne pouvez télécharger qu'une seule image",
-    "description": "Message de dépassement de limite de téléchargement"
+    "description": "Message de dépassement de téléchargement"
   },
   "message.uploadError": {
     "message": "Échec du téléchargement",
@@ -137,11 +157,11 @@
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État d'attente"
+    "description": "État en attente"
   },
   "status.processing": {
     "message": "En cours de génération",
-    "description": "État de génération en cours"
+    "description": "État en cours de génération"
   },
   "name.taskId": {
     "message": "ID de tâche",

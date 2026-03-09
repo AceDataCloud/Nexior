@@ -27,6 +27,26 @@
     "message": "選択",
     "description": "ドロップダウン選択のプレースホルダー"
   },
+  "name.duration": {
+    "message": "長さ",
+    "description": "動画の長さ選択ラベル"
+  },
+  "description.duration": {
+    "message": "動画の長さ（秒）、範囲は 2-12 秒です。",
+    "description": "動画の長さの説明"
+  },
+  "name.generateAudio": {
+    "message": "音声生成",
+    "description": "音声生成の有無ラベル"
+  },
+  "description.generateAudio": {
+    "message": "有効にすると、動画に音声が追加されます。seedance-1.5-pro モデルのみ対応、費用は約 2 倍です。",
+    "description": "音声生成の説明"
+  },
+  "name.resolution": {
+    "message": "解像度",
+    "description": "動画解像度ラベル"
+  },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
     "description": "SeeDance 1.0 Pro モデル"
@@ -56,12 +76,12 @@
     "description": "サービス階層の説明"
   },
   "serviceTier.default": {
-    "message": "default",
+    "message": "デフォルト",
     "description": "デフォルト階層"
   },
   "serviceTier.flex": {
-    "message": "flex",
-    "description": "フレキシブル階層"
+    "message": "フレックス",
+    "description": "フレックス階層"
   },
   "name.returnLastFrame": {
     "message": "最後のフレームを返す",
@@ -73,7 +93,7 @@
   },
   "name.firstFrame": {
     "message": "最初のフレーム画像",
-    "description": "最初のフレーム画像のアップロードラベル"
+    "description": "最初のフレーム画像アップロードラベル"
   },
   "description.firstFrame": {
     "message": "オプション。参照用/最初のフレーム画像をアップロードします。",
@@ -81,7 +101,7 @@
   },
   "name.lastFrame": {
     "message": "最後のフレーム画像",
-    "description": "最後のフレーム画像のアップロードラベル"
+    "description": "最後のフレーム画像アップロードラベル"
   },
   "description.lastFrame": {
     "message": "オプション。最後のフレーム画像をアップロードします（最初のフレームが必要です）。",
@@ -101,11 +121,11 @@
   },
   "button.on": {
     "message": "オン",
-    "description": "スイッチのオン文言"
+    "description": "スイッチオンの文言"
   },
   "button.off": {
     "message": "オフ",
-    "description": "スイッチのオフ文言"
+    "description": "スイッチオフの文言"
   },
   "message.startingTask": {
     "message": "SeeDance タスクを開始しています…",
@@ -120,11 +140,11 @@
     "description": "タスク開始失敗の提示"
   },
   "message.usedUp": {
-    "message": "利用可能なクレジットがなくなりました",
+    "message": "使用可能なクレジットがありません",
     "description": "クレジットが尽きた提示"
   },
   "message.uploadExceed": {
-    "message": "最大で 1 枚の画像しかアップロードできません",
+    "message": "最大 1 枚の画像のみアップロードできます",
     "description": "アップロード超過の提示"
   },
   "message.uploadError": {

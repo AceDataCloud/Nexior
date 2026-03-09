@@ -58,6 +58,22 @@
             {{ $t('seedance.name.model') }}:
             {{ modelValue?.request?.model }}
           </p>
+          <p v-if="video?.duration" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('seedance.name.duration') }}: {{ video?.duration }}s
+          </p>
+          <p v-if="video?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-expand" class="mr-1" />
+            {{ $t('seedance.name.resolution') }}:
+            {{ video?.resolution }}
+            <span v-if="video?.ratio"> · {{ video?.ratio }}</span>
+            <span v-if="video?.framespersecond"> · {{ video?.framespersecond }}fps</span>
+          </p>
+          <p v-if="modelValue?.request?.generate_audio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-volume-up" class="mr-1" />
+            {{ $t('seedance.name.generateAudio') }}:
+            {{ $t('seedance.button.on') }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('seedance.name.taskId') }}:
