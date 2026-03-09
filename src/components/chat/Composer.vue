@@ -289,9 +289,8 @@ textarea.input:focus {
   margin: auto;
   position: relative;
   border-radius: 22px;
-  border: 1px solid color-mix(in srgb, var(--el-border-color-lighter) 75%, var(--el-color-primary-light-7) 25%);
   background-color: color-mix(in srgb, var(--el-bg-color) 94%, var(--el-color-primary-light-9) 6%);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--app-shadow-md);
   padding: 6px;
   .upload {
     display: inline-block;
@@ -326,7 +325,7 @@ textarea.input:focus {
       margin-right: 10px;
       z-index: 100;
       cursor: pointer;
-      border: 1px solid var(--el-border-color-lighter);
+      background-color: var(--el-fill-color-lighter);
       width: fit-content;
       height: 36px;
       line-height: 36px;

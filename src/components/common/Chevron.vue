@@ -1,7 +1,7 @@
 <template>
   <font-awesome-icon
     :icon="icon"
-    class="icon text-[12px] border rounded-full py-[5px] px-[6px] cursor-pointer bg-inherit text-[var(--el-text-color-primary)] border-[var(--el-border-color)]"
+    class="icon text-[12px] rounded-full py-[5px] px-[6px] cursor-pointer bg-[var(--el-fill-color-lighter)] text-[var(--el-text-color-primary)] shadow-sm"
   />
 </template>
 

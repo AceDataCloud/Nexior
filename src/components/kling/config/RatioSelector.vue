@@ -89,12 +89,14 @@ export default defineComponent({
   .item {
     width: 48px;
     height: 70px;
-    border: 1px solid var(--el-border-color);
+    border: 1px solid transparent;
+    background-color: var(--el-fill-color-lighter);
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     border-radius: 10px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 
     .preview {
       margin-top: 8px;
@@ -107,7 +109,7 @@ export default defineComponent({
       justify-content: center;
 
       .rect {
-        border: 1px solid var(--el-border-color);
+        border: 1px solid var(--el-border-color-lighter);
         width: 20px;
         height: 20px;
         border-radius: 2px;
@@ -120,8 +122,13 @@ export default defineComponent({
       color: var(--el-text-color-primary);
     }
 
+    &:hover {
+      background-color: var(--el-fill-color);
+    }
+
     &.active {
       border-color: var(--el-color-primary);
+      background-color: var(--el-color-primary-light-9);
       .rect {
         border-color: var(--el-color-primary);
       }

@@ -1168,13 +1168,13 @@ export default defineComponent({
   gap: 10px;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid var(--el-border-color-lighter);
   background: var(--el-fill-color-lighter);
   color: var(--el-text-color-primary);
   cursor: pointer;
+  box-shadow: var(--app-shadow-xs);
   transition:
     background 0.15s ease,
-    border-color 0.15s ease;
+    box-shadow 0.15s ease;
 }
 
 .wallet-list-item:disabled {

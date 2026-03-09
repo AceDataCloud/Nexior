@@ -51,7 +51,7 @@ export default defineComponent({
   position: relative;
   width: 48%; /* Ensures two images fit side by side with some space */
   overflow: hidden;
-  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-sm);
   border-radius: 8px;
 
   img {
