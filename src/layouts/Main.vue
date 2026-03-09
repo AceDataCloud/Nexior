@@ -144,13 +144,13 @@ export default defineComponent({
   .navigator {
     height: 100%;
     width: 60px;
-    border-right: 1px solid var(--el-border-color);
   }
 
   .main {
     height: 100%;
     width: calc(100% - 60px);
     flex: 1;
+    background-color: var(--app-content-bg);
   }
 }
 

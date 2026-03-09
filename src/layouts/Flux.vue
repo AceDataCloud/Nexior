@@ -1,6 +1,6 @@
 <template>
   <div class="main flex flex-row flex-1">
-    <div class="config w-[300px] flex-none h-full overflow-y-auto border-r border-[var(--el-border-color)]">
+    <div class="config w-[300px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)]">
       <slot name="config" />
     </div>
     <div class="result h-full p-[15px] flex-1 flex flex-col min-w-0 overflow-x-hidden">
