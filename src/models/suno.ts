@@ -58,23 +58,61 @@ export interface ISunoConfig {
   prompt?: string;
   model?: string;
   lyric?: string;
+  lyric_prompt?: string;
   custom?: boolean;
   instrumental?: boolean;
   title?: string;
   style?: string;
+  style_negative?: string;
   action?: string;
   audio?: ISunoAudio | undefined;
   audio_id?: string;
+  mashup_audio_ids?: string[];
   continue_at: number;
+  vocal_gender?: string;
+  weirdness?: number;
+  style_influence?: number;
+  variation_category?: string;
+  audio_weight?: number;
+  persona_id?: string;
+  replace_section_start?: number;
+  replace_section_end?: number;
+  overpainting_start?: number;
+  overpainting_end?: number;
+  underpainting_start?: number;
+  underpainting_end?: number;
+  samples_start?: number;
+  samples_end?: number;
 }
 export interface ISunoAudioRequest {
   action?: string;
   prompt?: string;
   model?: string;
   lyric?: string;
+  lyric_prompt?: string;
   custom?: boolean;
   title?: string;
   style?: string;
+  style_negative?: string;
+  vocal_gender?: string;
+  weirdness?: number;
+  style_influence?: number;
+  variation_category?: string;
+  audio_weight?: number;
+  persona_id?: string;
+  audio_id?: string;
+  mashup_audio_ids?: string[];
+  continue_at?: number;
+  replace_section_start?: number;
+  replace_section_end?: number;
+  overpainting_start?: number;
+  overpainting_end?: number;
+  underpainting_start?: number;
+  underpainting_end?: number;
+  samples_start?: number;
+  samples_end?: number;
+  callback_url?: string;
+  instrumental?: boolean;
 }
 
 export interface ISunoMp4Request {
@@ -112,6 +150,14 @@ export interface ISunoAudio {
 export interface ISunoAudioLyric {
   text?: string;
   title?: string;
+}
+
+export interface ISunoStyleRequest {
+  prompt?: string;
+}
+
+export interface ISunoStyleResponse {
+  text?: string;
 }
 
 export interface ISunoUploadAudio {

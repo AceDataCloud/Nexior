@@ -9,7 +9,9 @@ import {
   ISunoUploadResponse,
   ISunoUploadRequest,
   ISunoMp4Request,
-  ISunoMp4Response
+  ISunoMp4Response,
+  ISunoStyleRequest,
+  ISunoStyleResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -157,6 +159,54 @@ class SunoOperator {
     }
   ): Promise<AxiosResponse<ISunoMp4Response>> {
     return await axios.post('/suno/mp4', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/style - optimize style description
+  async style(
+    data: ISunoStyleRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoStyleResponse>> {
+    return await axios.post('/suno/style', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/wav - get WAV format
+  async wav(
+    data: { audio_id: string },
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<{ data: { audio_url: string } }>> {
+    return await axios.post('/suno/wav', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/midi - get MIDI data
+  async midi(
+    data: { audio_id: string },
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<{ data: { midi_url: string } }>> {
+    return await axios.post('/suno/midi', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json'

@@ -7,18 +7,17 @@
       <lyric-input v-if="config?.custom && !config.instrumental" class="mb-4" />
       <style-input v-if="config?.custom" class="mb-4" />
       <title-input v-if="config?.custom" class="mb-4" />
+      <vocal-gender-selector v-if="config?.custom && !config.instrumental && supportsVocalGender" class="mb-4" />
       <extend-from-input v-if="config?.action === 'extend'" class="mb-4" />
       <cover-from-input v-if="config?.action === 'cover'" class="mb-4" />
+      <replace-section-input v-if="config?.action === 'replace_section'" class="mb-4" />
+      <advanced-params class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
       <consumption :value="consumption" :service="service" />
-      <el-button v-if="config?.action !== 'extend'" type="primary" class="btn w-full" round @click="onGenerate">
+      <el-button type="primary" class="btn w-full" round @click="onGenerate">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-        {{ $t('suno.button.generate') }}
-      </el-button>
-      <el-button v-else type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-        {{ $t('suno.button.extend') }}
+        {{ generateButtonText }}
       </el-button>
     </div>
   </div>
@@ -35,6 +34,9 @@ import StyleInput from './config/StyleInput.vue';
 import TitleInput from './config/TitleInput.vue';
 import ExtendFromInput from './config/ExtendFromInput.vue';
 import CoverFromInput from './config/CoverFromInput.vue';
+import VocalGenderSelector from './config/VocalGenderSelector.vue';
+import AdvancedParams from './config/AdvancedParams.vue';
+import ReplaceSectionInput from './config/ReplaceSectionInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
@@ -50,6 +52,9 @@ export default defineComponent({
     ExtendFromInput,
     CoverFromInput,
     UploadAudio,
+    VocalGenderSelector,
+    AdvancedParams,
+    ReplaceSectionInput,
     FontAwesomeIcon,
     ElButton,
     Consumption
@@ -64,6 +69,21 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.suno?.service;
+    },
+    supportsVocalGender() {
+      const model = this.config?.model || '';
+      return ['chirp-v4-5-plus', 'chirp-v5'].includes(model);
+    },
+    generateButtonText() {
+      const action = this.config?.action;
+      if (action === 'extend') return this.$t('suno.button.extend');
+      if (action === 'cover') return this.$t('suno.button.cover_music');
+      if (action === 'remaster') return this.$t('suno.button.remaster');
+      if (action === 'replace_section') return this.$t('suno.button.replace_section');
+      if (action === 'mashup') return this.$t('suno.button.mashup');
+      if (action === 'stems') return this.$t('suno.button.get_stems');
+      if (action === 'concat') return this.$t('suno.button.concat_music');
+      return this.$t('suno.button.generate');
     }
   },
   methods: {

@@ -60,6 +60,22 @@
               <el-dropdown-item v-if="audio?.audio_url" @click.stop="onDownload($event, audio?.audio_url)">
                 {{ $t('suno.button.download_audio') }}
               </el-dropdown-item>
+              <el-dropdown-item :disabled="isFetchingWav" @click="handleWavDownload(audio)">
+                <div class="flex items-center min-w-[120px]">
+                  <el-icon v-if="isFetchingWav" class="is-loading mr-2">
+                    <Loading />
+                  </el-icon>
+                  <span>{{ $t('suno.button.download_wav') }}</span>
+                </div>
+              </el-dropdown-item>
+              <el-dropdown-item :disabled="isFetchingMidi" @click="handleMidiDownload(audio)">
+                <div class="flex items-center min-w-[120px]">
+                  <el-icon v-if="isFetchingMidi" class="is-loading mr-2">
+                    <Loading />
+                  </el-icon>
+                  <span>{{ $t('suno.button.download_midi') }}</span>
+                </div>
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -81,8 +97,20 @@
               <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
                 {{ $t('suno.button.get_stems') }}
               </el-dropdown-item>
+              <el-dropdown-item v-if="audio.id" @click.stop="onGetAllStems(audio.id)">
+                {{ $t('suno.button.all_stems') }}
+              </el-dropdown-item>
               <el-dropdown-item @click.stop="onCover(audio)">
                 {{ $t('suno.button.cover_music') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio.id)">
+                {{ $t('suno.button.remaster') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
+                {{ $t('suno.button.replace_section') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onMashup(audio)">
+                {{ $t('suno.button.mashup') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click.stop="onConcatMusic(audio?.id)">
                 {{ $t('suno.button.concat_music') }}
@@ -131,7 +159,9 @@ export default defineComponent({
   },
   data() {
     return {
-      isFetchingVideoUrl: false
+      isFetchingVideoUrl: false,
+      isFetchingWav: false,
+      isFetchingMidi: false
     };
   },
   computed: {
@@ -294,6 +324,78 @@ export default defineComponent({
     },
     async onConcatMusic(audioId: string) {
       await this.onGenerateAudioUrl('concat', audioId);
+    },
+    async onRemaster(audioId: string) {
+      await this.onGenerateAudioUrl('remaster', audioId);
+    },
+    async onGetAllStems(audioId: string) {
+      await this.onGenerateAudioUrl('all_stems', audioId);
+    },
+    onReplaceSection(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        instrumental: false,
+        style: audio.style,
+        action: 'replace_section',
+        audio: audio,
+        audio_id: audio.id,
+        replace_section_start: 0,
+        replace_section_end: Math.min(30, audio.duration || 30)
+      });
+    },
+    onMashup(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'mashup',
+        audio: audio,
+        audio_id: audio.id,
+        mashup_audio_ids: [audio.id]
+      });
+    },
+    async handleWavDownload(audio: ISunoAudio) {
+      if (!audio?.id || this.isFetchingWav) return;
+      const token = this.credential?.token;
+      if (!token) return;
+      try {
+        this.isFetchingWav = true;
+        ElMessage.info(this.$t('suno.message.fetchingWav'));
+        const response = await sunoOperator.wav({ audio_id: audio.id }, { token });
+        const wavUrl = response.data?.data?.audio_url;
+        if (wavUrl) {
+          this.onDownload(null, wavUrl);
+        } else {
+          ElMessage.error(this.$t('suno.message.fetchWavFailed'));
+        }
+      } catch {
+        ElMessage.error(this.$t('suno.message.fetchWavFailed'));
+      } finally {
+        this.isFetchingWav = false;
+      }
+    },
+    async handleMidiDownload(audio: ISunoAudio) {
+      if (!audio?.id || this.isFetchingMidi) return;
+      const token = this.credential?.token;
+      if (!token) return;
+      try {
+        this.isFetchingMidi = true;
+        ElMessage.info(this.$t('suno.message.fetchingMidi'));
+        const response = await sunoOperator.midi({ audio_id: audio.id }, { token });
+        const midiUrl = response.data?.data?.midi_url;
+        if (midiUrl) {
+          this.onDownload(null, midiUrl);
+        } else {
+          ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+        }
+      } catch {
+        ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+      } finally {
+        this.isFetchingMidi = false;
+      }
     },
     async onGenerateAudioUrl(action: string, audioId: string) {
       const request = {
