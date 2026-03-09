@@ -11,7 +11,6 @@ import {
   CHAT_MODEL_NAME_GPT_4O_IMAGE,
   CHAT_MODEL_NAME_GPT_4O_MINI,
   CHAT_MODEL_NAME_DEEPSEEK_CHAT,
-  CHAT_MODEL_NAME_DEEPSEEK32_CHAT,
   CHAT_MODEL_NAME_DEEPSEEK_REASONER,
   CHAT_MODEL_NAME_GROK_3,
   CHAT_MODEL_NAME_GROK_3_REASONER,
@@ -19,14 +18,7 @@ import {
   CHAT_MODEL_NAME_GPT_5,
   CHAT_MODEL_NAME_GPT_5_MINI,
   CHAT_MODEL_NAME_GPT_5_ALL,
-  CHAT_MODEL_NAME_GPT_4O_ALL,
-  CHAT_MODEL_NAME_GROK_4,
-  CHAT_MODEL_NAME_GEMINI_2_5_FLASH,
-  CHAT_MODEL_NAME_GEMINI_2_5_PRO,
-  CHAT_MODEL_NAME_GEMINI_3_0_PRO,
-  CHAT_MODEL_NAME_CLAUDE_OPUS_4,
-  CHAT_MODEL_NAME_CLAUDE_SONNET_4,
-  CHAT_MODEL_NAME_CLAUDE_3_7_SONNET
+  CHAT_MODEL_NAME_GPT_4O_ALL
 } from '@/constants';
 
 export type IChatModelName =
@@ -38,9 +30,7 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_4O
   | typeof CHAT_MODEL_NAME_GPT_4O_MINI
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
-  | typeof CHAT_MODEL_NAME_DEEPSEEK32_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK_REASONER
-  | typeof CHAT_MODEL_NAME_GROK_4
   | typeof CHAT_MODEL_NAME_GROK_3
   | typeof CHAT_MODEL_NAME_GROK_3_REASONER
   | typeof CHAT_MODEL_NAME_GROK_3_DEEPSEARCH
@@ -49,19 +39,12 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_O3
   | typeof CHAT_MODEL_NAME_O4_MINI
   | typeof CHAT_MODEL_NAME_GPT_4O_IMAGE
-  | typeof CHAT_MODEL_NAME_O3
-  | typeof CHAT_MODEL_NAME_GEMINI_3_0_PRO
-  | typeof CHAT_MODEL_NAME_GEMINI_2_5_PRO
-  | typeof CHAT_MODEL_NAME_GEMINI_2_5_FLASH
-  | typeof CHAT_MODEL_NAME_CLAUDE_OPUS_4
-  | typeof CHAT_MODEL_NAME_CLAUDE_SONNET_4
-  | typeof CHAT_MODEL_NAME_CLAUDE_3_7_SONNET;
+  | typeof CHAT_MODEL_NAME_O3;
 
 export interface IChatModel {
-  enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude';
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
@@ -72,7 +55,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude';
+  name: 'chatgpt' | 'deepseek' | 'grok';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
