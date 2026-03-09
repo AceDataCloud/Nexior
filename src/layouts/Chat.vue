@@ -91,8 +91,7 @@ export default defineComponent({
     left: 12px;
     top: 48px;
     z-index: 2000;
-    border: 1px solid var(--el-border-color-lighter);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--app-shadow-md);
   }
 }
 </style>

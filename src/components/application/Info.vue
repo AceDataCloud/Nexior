@@ -89,7 +89,7 @@ export default defineComponent({
   width: 100%;
   background-color: var(--el-bg-color);
   border-radius: 15px;
-  border: 1px solid var(--el-border-color-lighter);
+  box-shadow: var(--app-shadow-sm);
   display: flex;
   gap: 16px;
   justify-content: space-between;

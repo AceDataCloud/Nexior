@@ -47,14 +47,17 @@ export default defineComponent({
 .item {
   // height: 80px;
   font-size: 14px;
-  background-color: var(--el-color-color);
+  background-color: var(--el-bg-color);
   color: var(--el-text-color-primary);
-  border: 1px solid var(--el-border-color-lighter);
-  padding: 10px 20px;
+  box-shadow: var(--app-shadow-sm);
+  padding: 12px 20px;
   border-radius: 20px;
   margin-bottom: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
   &:hover {
     background-color: var(--el-bg-color-page);
+    box-shadow: var(--app-shadow-md);
   }
   .icon {
     font-size: 14px;
