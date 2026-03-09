@@ -337,7 +337,7 @@ export default defineComponent({
   .subscriptions {
     margin-bottom: 20px;
     .subscription {
-      border: 1px solid var(--el-border-color) !important;
+      border: 1px solid transparent !important;
       .benefits {
         .benefit {
           margin-bottom: 10px;

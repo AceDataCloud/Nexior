@@ -2157,12 +2157,12 @@ export default defineComponent({
     position: relative;
     width: $width;
     height: $height;
-    border-width: 1px;
-    border-style: solid;
-    border-color: var(--el-border-color);
+    border: 1px solid transparent;
+    background-color: var(--el-fill-color-lighter);
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
+    transition: border-color 0.2s ease;
 
     .icon {
       position: absolute;
