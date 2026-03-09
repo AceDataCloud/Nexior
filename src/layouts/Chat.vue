@@ -51,7 +51,6 @@ export default defineComponent({
   display: flex;
   flex: 1;
   height: 100%;
-  background: linear-gradient(180deg, var(--el-fill-color-lighter) 0%, transparent 18%);
 }
 
 .side {
