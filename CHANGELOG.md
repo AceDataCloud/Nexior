@@ -1,8 +1,43 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 03 Jan 2026 15:12:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 14 Mar 2026 12:49:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.0
+
+Sat, 14 Mar 2026 12:49:35 GMT
+
+### Minor changes
+
+- feat: Discord-style sidebar overflow with folder preview popover (dev@acedata.cloud)
+- Upgrade iOS target to 16.0, ESLint 9, Prettier 3, Husky 9, and outdated deps (dev@acedata.cloud)
+- feat: add Android/iOS CI/CD pipelines for Play Store & App Store (dev@acedata.cloud)
+- feat(seedance): add duration selector and generate audio switch (dev@acedata.cloud)
+- feat(suno): add comprehensive feature enhancements - remaster, replace section, mashup, WAV/MIDI downloads, AI lyrics generation, vocal gender, advanced params, and redesigned UI components (dev@acedata.cloud)
+
+### Patches
+
+- fix: improve dark mode adaptation across components (cqc@cuiqingcai.com)
+- fix nano error (1348977728@qq.com)
+- Upgrade Capacitor to 7.5.0, Android SDK 35, Gradle 8.11.1 (cqc@cuiqingcai.com)
+- Fix mobile OAuth login by using in-app browser and deep links (cqc@cuiqingcai.com)
+- fix: remove radial gradient background from chat dialogue in dark mode (dev@acedata.cloud)
+- fix: adjust dark mode background colors for card visibility (cqc@cuiqingcai.com)
+- fix nano error (1348977728@qq.com)
+- fix: adjust dark mode background colors for card visibility (cqc@cuiqingcai.com)
+- fix(auth): recover from native OAuth loading dead-end (cqc@cuiqingcai.com)
+- fix: adjust dark mode background colors for card visibility (cqc@cuiqingcai.com)
+- fix: redesign model selector and add missing i18n translations (dev@acedata.cloud)
+- fix: redesign model selector and add missing i18n translations (dev@acedata.cloud)
+- fix(android): prevent login from opening Chrome and redirecting to localhost (dev@acedata.cloud)
+- fix(android): use official hub origin on native, skip site config page after login (dev@acedata.cloud)
+- Fix navigator More button popover and task preview text overflow (dev@acedata.cloud)
+- fix: remove gradient background from chat layout in dark mode (dev@acedata.cloud)
+- rename: change mobile app display name from Nexior to AceData (dev@acedata.cloud)
+- feat: add SEO meta tags - description, OG tags, Twitter Cards, canonical URL (dev@acedata.cloud)
+- refactor(ui): replace 1px borders with shadows and fills across 20 components (dev@acedata.cloud)
+- fix: avoid window.location.reload() on native platforms after login (dev@acedata.cloud)
 
 ## 3.29.5
 
