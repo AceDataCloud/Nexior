@@ -96,7 +96,9 @@ export default defineComponent({
     align-items: center;
     cursor: pointer;
     border-radius: 10px;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
 
     .preview {
       margin-top: 8px;

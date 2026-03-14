@@ -107,7 +107,9 @@ export default defineComponent({
     align-items: center;
     cursor: pointer;
     border-radius: var(--el-border-radius-base);
-    transition: background-color 0.2s ease, border-color 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
 
     .preview {
       margin-top: 5px;
