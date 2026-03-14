@@ -22,6 +22,7 @@ httpClient.interceptors.request.use((config) => {
   const locale = getCookie('LOCALE');
   console.debug('userId', userId);
   console.debug('fingerprint', fingerprint);
+  config.headers['x-request-id'] = crypto.randomUUID();
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
@@ -44,6 +45,10 @@ httpClient.interceptors.response.use(
   (error) => {
     if (error?.response?.status === 401) {
       store.dispatch('logout');
+    }
+    const traceId = error?.response?.data?.trace_id || error?.response?.headers?.['x-request-id'];
+    if (traceId) {
+      console.error(`Request failed [trace_id=${traceId}]`, error?.response?.status, error?.response?.data);
     }
     return Promise.reject(error);
   }
