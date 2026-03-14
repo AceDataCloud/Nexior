@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 14 Mar 2026 12:49:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 14 Mar 2026 13:03:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.1
+
+Sat, 14 Mar 2026 13:03:07 GMT
+
+### Patches
+
+- style: apply prettier formatting to Vue components (dev@acedata.cloud)
 
 ## 3.30.0
 
