@@ -6,11 +6,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.styleNegative') }}</span>
         </div>
-        <el-input
-          v-model="styleNegative"
-          size="small"
-          :placeholder="$t('suno.placeholder.styleNegative')"
-        />
+        <el-input v-model="styleNegative" size="small" :placeholder="$t('suno.placeholder.styleNegative')" />
       </div>
 
       <!-- Lyric Prompt (auto-generate lyrics) -->
@@ -18,11 +14,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.lyricPrompt') }}</span>
         </div>
-        <el-input
-          v-model="lyricPrompt"
-          size="small"
-          :placeholder="$t('suno.placeholder.lyricPrompt')"
-        />
+        <el-input v-model="lyricPrompt" size="small" :placeholder="$t('suno.placeholder.lyricPrompt')" />
       </div>
 
       <!-- Weirdness -->
