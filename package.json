@@ -17,6 +17,7 @@
     "build:ios": "cross-env VITE_SURFACE=ios vite build",
     "pack:android": "npm run build:android && npx cap copy android",
     "pack:ios": "npm run build:ios && npx cap copy ios",
+    "sync-version": "node scripts/sync-native-version.js",
     "preview": "vite preview",
     "translate": "transmart",
     "lint": "eslint src --fix",
