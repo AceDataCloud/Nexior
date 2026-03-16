@@ -1,0 +1,42 @@
+User-agent: *
+
+# Public pages
+Allow: /chatgpt/
+Allow: /claude/
+Allow: /gemini/
+Allow: /grok/
+Allow: /deepseek/
+Allow: /midjourney
+Allow: /flux
+Allow: /qrart
+Allow: /suno
+Allow: /luma
+Allow: /sora
+Allow: /veo
+Allow: /pika
+Allow: /kling
+Allow: /pixverse
+Allow: /hailuo
+Allow: /headshots
+Allow: /nanobanana
+Allow: /seedream
+Allow: /seedance
+Allow: /distribution
+
+# Private pages
+Disallow: /auth/
+Disallow: /console/
+Disallow: /profile
+Disallow: /site
+
+# Dynamic user content
+Disallow: /chatgpt/conversations/
+Disallow: /claude/conversations/
+Disallow: /gemini/conversations/
+Disallow: /grok/conversations/
+Disallow: /deepseek/conversations/
+
+# Assets
+Disallow: /assets/
+
+Sitemap: https://hub.acedata.cloud/sitemap.xml
