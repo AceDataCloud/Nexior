@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 14 Mar 2026 13:03:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 16 Mar 2026 14:08:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.2
+
+Mon, 16 Mar 2026 14:08:00 GMT
+
+### Patches
+
+- feat: add robots.txt and sitemap.xml for SEO (office@acedata.cloud)
 
 ## 3.30.1
 
