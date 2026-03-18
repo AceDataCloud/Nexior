@@ -10,13 +10,14 @@
             <ratio-selector class="mb-4" />
             <quality-selector class="mb-4" />
             <version-selector class="mb-4" />
+            <hd-selector v-if="isV8" class="mb-4" />
             <elements-selector class="mb-2" />
             <advanced-selector class="mb-2" />
             <div v-show="config?.advanced">
               <stylize-selector class="mb-2" />
               <weird-selector class="mb-2" />
               <chaos-selector class="mb-2" />
-              <image-weight-selector class="mb-2" />
+              <image-weight-selector v-if="!isV8" class="mb-2" />
               <style-selector class="mb-2" />
             </div>
           </div>
@@ -59,6 +60,7 @@ import RatioSelector from './config/RatioSelector.vue';
 import AdvancedSelector from './config/AdvancedSelector.vue';
 import LoopSelector from './config/LoopSelector.vue';
 import VersionSelector from './config/VersionSelector.vue';
+import HdSelector from './config/HdSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
 import EndImageUrlInput from './config/EndImageUrlInput.vue';
 import ImageUrlInput2 from './config/ImageUrlInput2.vue';
@@ -92,6 +94,7 @@ export default defineComponent({
     QualitySelector,
     RatioSelector,
     VersionSelector,
+    HdSelector,
     StylizeSelector,
     AdvancedSelector,
     ChaosSelector,
@@ -112,6 +115,9 @@ export default defineComponent({
   computed: {
     config() {
       return this.$store.state.midjourney.config;
+    },
+    isV8(): boolean {
+      return this.config?.version === '8';
     },
     type: {
       get() {

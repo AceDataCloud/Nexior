@@ -30,6 +30,10 @@ export default defineComponent({
     return {
       options: [
         {
+          value: '8',
+          label: '8 (Alpha)'
+        },
+        {
           value: '7',
           label: '7'
         },

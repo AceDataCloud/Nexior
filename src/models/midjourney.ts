@@ -24,6 +24,9 @@ export interface IMidjourneyConfig {
   translation?: boolean;
   elements?: any[];
   type?: 'imagine' | 'videos' | 'describe';
+  hd?: boolean;
+  style_reference?: boolean;
+  moodboard?: boolean;
 }
 
 export enum MidjourneyImagineAction {
@@ -75,6 +78,11 @@ export interface IMidjourneyImagineRequest {
   translation?: boolean;
   callback_url?: string;
   application_id?: string;
+  version?: string;
+  hd?: boolean;
+  quality?: string;
+  style_reference?: boolean;
+  moodboard?: boolean;
 }
 
 export interface IMidjourneyVideosRequest {
