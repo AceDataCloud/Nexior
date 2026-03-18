@@ -146,6 +146,10 @@ export default defineComponent({
       if (this.config?.style && this.config?.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.config?.style}`;
       }
+      // V8 --hd parameter
+      if (this.config?.hd && !content.includes(`--hd`)) {
+        content += ` --hd`;
+      }
       // remove `--fast`, `--relax`, `--turbo`
       content = content.replace(/--(fast|relax|turbo) /g, '');
       return this.config.prompt || (this.config.references && this.config.references?.length > 0) ? content : '';
@@ -310,7 +314,10 @@ export default defineComponent({
         image_id: payload.image_id,
         action: payload.action,
         mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-        callback_url: CALLBACK_URL
+        callback_url: CALLBACK_URL,
+        version: this.config?.version,
+        hd: this.config?.hd || false,
+        quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY
       };
       this.onStartImagineTask(request);
     },
@@ -330,12 +337,20 @@ export default defineComponent({
         };
         await this.onStartVideosTask(request);
       } else if (this.config?.type === 'imagine') {
+        const isV8 = this.config?.version === '8';
+        const hasSref = !!(this.finalPrompt && this.finalPrompt.includes('--sref'));
+        const hasMoodboard = !!(isV8 && this.config?.references && this.config.references.length > 0);
         const request = {
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
           prompt: this.finalPrompt,
           action: MidjourneyImagineAction.GENERATE,
           translation: this.config?.translation,
-          callback_url: CALLBACK_URL
+          callback_url: CALLBACK_URL,
+          version: this.config?.version,
+          hd: this.config?.hd || false,
+          quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY,
+          style_reference: hasSref,
+          moodboard: hasMoodboard
         };
         await this.onStartImagineTask(request);
       } else if (this.config?.type === 'describe') {
