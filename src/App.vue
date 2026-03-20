@@ -16,7 +16,7 @@ import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
 import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
-import { oauthOperator } from '@/operators';
+import { ssoOperator } from '@/operators';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
   en: () => import('element-plus/es/locale/lang/en'),
@@ -84,7 +84,7 @@ export default defineComponent({
               console.debug('browser close failed (may already be closed)', e);
             }
             try {
-              const { data } = await oauthOperator.token({ code });
+              const { data } = await ssoOperator.token({ code });
               const token = {
                 access: data.access_token,
                 refresh: data.refresh_token,

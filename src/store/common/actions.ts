@@ -2,7 +2,7 @@ import { ActionContext } from 'vuex';
 import { IRootState } from './models';
 import {
   userOperator,
-  oauthOperator,
+  ssoOperator,
   siteOperator,
   configOperator,
   exchangeOperator,
@@ -79,7 +79,7 @@ export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>
   console.debug('start to get token using code', code);
   try {
     commit('resetToken');
-    const { data } = await oauthOperator.token({
+    const { data } = await ssoOperator.token({
       code
     });
     console.debug('get token success', data);
