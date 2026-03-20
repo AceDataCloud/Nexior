@@ -9,13 +9,13 @@ class AuthOperator {
   }
 }
 
-class OAuthOperator {
+class SSOOperator {
   async token(payload: IOAuthTokenRequest): Promise<AxiosResponse<IOAuthTokenResponse>> {
     return httpClient.post('/token', payload, {
-      baseURL: `${getBaseUrlAuth()}/oauth2/v1`
+      baseURL: `${getBaseUrlAuth()}/sso/v1`
     });
   }
 }
 
 export const authOperator = new AuthOperator();
-export const oauthOperator = new OAuthOperator();
+export const ssoOperator = new SSOOperator();

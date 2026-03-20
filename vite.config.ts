@@ -32,7 +32,7 @@ export default defineConfig((config: ConfigEnv) => {
           target: process.env.VITE_BASE_URL_AUTH,
           changeOrigin: true
         },
-        '/oauth2/v1/token': {
+        '/sso/v1/token': {
           target: process.env.VITE_BASE_URL_AUTH,
           changeOrigin: true
         },
