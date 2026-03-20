@@ -45,5 +45,6 @@ jobs:
             echo "No translation changes to commit"
           else
             git commit -m "ci: auto-translate i18n from zh-CN"
+            git pull --rebase
             git push
           fi
