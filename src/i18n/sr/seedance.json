@@ -1,6 +1,6 @@
 {
   "name.seedanceBot": {
-    "message": "SeeDance робот",
+    "message": "SeeDance бот",
     "description": "SeeDance видео генератор назив"
   },
   "name.prompt": {
@@ -12,7 +12,7 @@
     "description": "Упутство за унос упутства"
   },
   "placeholder.prompt": {
-    "message": "Описујте ваш видео…",
+    "message": "Опис вашег видеа…",
     "description": "Упутство за место"
   },
   "name.model": {
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "Изаберите",
     "description": "Упутство за избор"
+  },
+  "name.duration": {
+    "message": "Трајање",
+    "description": "Ознака за избор трајања видеа"
+  },
+  "description.duration": {
+    "message": "Трајање видеа (секунде), опсег 2-12 секунди.",
+    "description": "Упутство за трајање видеа"
+  },
+  "name.generateAudio": {
+    "message": "Генериши аудио",
+    "description": "Ознака за генерисање аудија"
+  },
+  "description.generateAudio": {
+    "message": "Када је укључено, видео ће имати аудио. Подржава само seedance-1.5-pro модел, цена је око 2 пута већа.",
+    "description": "Упутство за генерисање аудија"
+  },
+  "name.resolution": {
+    "message": "Резолуција",
+    "description": "Ознака за резолуцију видеа"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -48,12 +68,12 @@
     "description": "SeeDance 1.0 Lite I2V модел"
   },
   "name.serviceTier": {
-    "message": "Ниво услуге",
-    "description": "Ознака за ниво услуге"
+    "message": "Сервисни ниво",
+    "description": "Ознака за сервисни ниво"
   },
   "description.serviceTier": {
     "message": "Ниво обраде: default или flex.",
-    "description": "Упутство за ниво услуге"
+    "description": "Упутство за сервисни ниво"
   },
   "serviceTier.default": {
     "message": "default",
@@ -113,7 +133,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Задатак је покренут",
-    "description": "Порука о успешном покретању задатка"
+    "description": "Порука о успешном почетку задатка"
   },
   "message.startTaskFailed": {
     "message": "Покретање није успело:",
@@ -133,7 +153,7 @@
   },
   "message.downloadVideo": {
     "message": "Преузми видео",
-    "description": "Порука за преузимање видеа"
+    "description": "Порука о преузимању видеа"
   },
   "status.pending": {
     "message": "У реду",

@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Upload",
-    "description": "Button text allowing users to upload references"
+    "description": "Text for the button that allows users to upload references"
   },
   "button.video": {
     "message": "Video",
@@ -57,7 +57,7 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Text for the button to mash up multiple songs"
+    "description": "Text for the mashup multiple songs button"
   },
   "button.generate_lyrics": {
     "message": "AI Generate Lyrics",
@@ -73,15 +73,15 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.model2": {
     "message": "v3",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Generate instrumental music without vocals"
+    "description": "Generate pure instrumental music without vocals"
   },
   "name.referenceAudios": {
     "message": "Reference Music",
@@ -89,23 +89,23 @@
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.model45": {
     "message": "v4.5",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.model5": {
     "message": "v5",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.model45plus": {
     "message": "v4.5+",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "name.taskId": {
     "message": "Task ID",
@@ -165,7 +165,7 @@
   },
   "name.audioWeight": {
     "message": "Original Track Weight",
-    "description": "Weight of the original track's influence when covering"
+    "description": "Influence weight of the original track when covering"
   },
   "name.lyricPrompt": {
     "message": "Lyric Prompt",
@@ -204,7 +204,7 @@
     "description": "Description for the 'prompt' parameter"
   },
   "description.lyrics": {
-    "message": "Enter custom lyrics, supporting paragraph markers like [Verse], [Chorus], [Bridge], etc.",
+    "message": "Enter custom lyrics, supporting [Verse], [Chorus], [Bridge], etc. paragraph markers",
     "description": "Description for the 'lyrics' parameter"
   },
   "description.style": {
@@ -220,7 +220,7 @@
     "description": "Description for the 'title' parameter"
   },
   "description.uploadAudios": {
-    "message": "Upload music as a reference for generation. The upload process may take some time, and generation will be based on the uploaded music once successful.",
+    "message": "Upload music as a reference for generation. The upload process may take some time, and generation will occur based on the uploaded music once successful.",
     "description": "Description for the upload reference parameter"
   },
   "description.vocalGender": {
@@ -249,7 +249,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Status indicating the task is waiting"
+    "description": "Waiting status of the task"
   },
   "placeholder.prompt": {
     "message": "Describe the music you want, e.g., a warm folk song about autumn nostalgia...",
@@ -333,7 +333,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Uploaded music exceeds the maximum number",
-    "description": "Error message when uploaded music exceeds the maximum limit"
+    "description": "Error message when uploaded music exceeds the maximum number"
   },
   "message.uploadReferencesError": {
     "message": "Failed to upload music",
@@ -356,8 +356,8 @@
     "description": "Error message when starting the music generation task fails"
   },
   "message.getVideoUrlFailed": {
-    "message": "Failed to retrieve music video, please try again later",
-    "description": "Error message when retrieving the video fails"
+    "message": "Failed to get music video, please try again later",
+    "description": "Error message when getting video fails"
   },
   "message.generatingLyrics": {
     "message": "Generating lyrics...",
@@ -412,7 +412,7 @@
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No history tasks, please generate music in the left configuration panel",
+    "message": "No history tasks, please generate music in the configuration panel on the left",
     "description": "Message when there are no tasks"
   }
 }
