@@ -12,6 +12,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   translate:
     name: Auto-translate
@@ -36,15 +40,18 @@ jobs:
           VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
         run: yarn translate
 
-      - name: Commit and push translations
-        run: |
-          git config user.name "Ace Data Cloud Dev"
-          git config user.email "dev@acedata.cloud"
-          git add src/i18n/
-          if git diff --cached --quiet; then
-            echo "No translation changes to commit"
-          else
-            git commit -m "ci: auto-translate i18n from zh-CN"
-            git pull --rebase
-            git push
-          fi
+      - name: Create translation PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'ci: auto-translate i18n from zh-CN'
+          title: 'ci: auto-translate i18n from zh-CN'
+          body: |
+            Auto-generated i18n translation updates from zh-CN source changes.
+          branch: ci/auto-translate-i18n
+          delete-branch: true
+          add-paths: |
+            src/i18n/
+          labels: |
+            i18n
+            automated-pr
