@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Lataa",
-    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittaus"
+    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittauksen"
   },
   "button.video": {
     "message": "Video",
@@ -24,12 +24,12 @@
     "description": "Lataa video -painikkeen teksti"
   },
   "button.download_wav": {
-    "message": "Lataa WAV häviöttömänä",
-    "description": "Lataa WAV häviöttömässä muodossa -painikkeen teksti"
+    "message": "Lataa WAV häviötön",
+    "description": "Lataa WAV häviöttömän muodon painikkeen teksti"
   },
   "button.download_midi": {
     "message": "Lataa MIDI",
-    "description": "Lataa MIDI -painikkeen teksti"
+    "description": "Lataa MIDI-muodon painikkeen teksti"
   },
   "button.get_stems": {
     "message": "Ääniraitojen erottaminen",
@@ -48,8 +48,8 @@
     "description": "Lataa musiikki -painikkeen teksti"
   },
   "button.remaster": {
-    "message": "Remasteroi",
-    "description": "Remasteroi äänenlaatu -painikkeen teksti"
+    "message": "Uudelleenmasteroi",
+    "description": "Uudelleenmasteroi äänenlaadun parantamiseksi -painikkeen teksti"
   },
   "button.replace_section": {
     "message": "Korvaa osa",
@@ -112,8 +112,8 @@
     "description": "Tehtävän ID"
   },
   "name.type": {
-    "message": "Mukautettu tila",
-    "description": "Mukautetun tilan nimi"
+    "message": "Mukautettu malli",
+    "description": "Mukautetun mallin nimi"
   },
   "name.prompt": {
     "message": "Kappaleen kuvaus",
@@ -153,15 +153,15 @@
   },
   "name.weirdness": {
     "message": "Luovuustaso",
-    "description": "Säätää musiikin luovuuden tasoa"
+    "description": "Säädä luovuuden tasoa musiikin luomisessa"
   },
   "name.styleInfluence": {
     "message": "Tyylin vaikutus",
-    "description": "Säätää tyylin vaikutusta luotavaan tulokseen"
+    "description": "Säädä tyylin vaikutusta luotavaan tulokseen"
   },
   "name.variationCategory": {
-    "message": "Muunnelmatyyppi",
-    "description": "Säätää luotavien muunnelmien monimuotoisuuden tasoa"
+    "message": "Muunnelman tyyppi",
+    "description": "Säädä luotavien muunnelmien monimuotoisuutta"
   },
   "name.audioWeight": {
     "message": "Alkuperäisen kappaleen paino",
@@ -169,7 +169,7 @@
   },
   "name.lyricPrompt": {
     "message": "Sanoituskehotus",
-    "description": "Käytetään automaattisesti sanoitusten luomiseen"
+    "description": "Käytetään automaattisten sanoitusten luomiseen"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -197,7 +197,7 @@
   },
   "name.songDescription": {
     "message": "Kappaleen kuvaus",
-    "description": "Kappaleen kuvaustila"
+    "description": "Kappaleen kuvausmalli"
   },
   "description.prompt": {
     "message": "Kuvaa haluamasi musiikkityyli ja teema",
@@ -208,164 +208,164 @@
     "description": "Parametrin 'lyrics' kuvaus"
   },
   "description.style": {
-    "message": "Kuvaa musiikkityyliä, kuten akustinen pop, jazz, elektroninen",
-    "description": "Parametrin 'style' kuvaus"
+    "message": "Kuvaile musiikkityyliä, kuten acoustic pop, jazz, electronic",
+    "description": "参数'style'的描述"
   },
   "description.styleNegative": {
-    "message": "Kuvaa ei-toivottuja tyylejä, kuten heavy metal, huutaminen",
-    "description": "Poissulkeva tyyli-parametrin kuvaus"
+    "message": "Kuvaile ei-toivottuja tyylejä, kuten heavy metal, screaming",
+    "description": "排除风格参数的描述"
   },
   "description.title": {
-    "message": "Kappaleen otsikko",
-    "description": "Parametrin 'title' kuvaus"
+    "message": "Kappaleen nimi",
+    "description": "参数'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "Lataa musiikkia viittauksena generointiin, latausprosessi vie hetken, onnistuneen latauksen jälkeen voit luoda musiikkia ladatun kappaleen perusteella",
-    "description": "Viittausparametrin latauskuvaus"
+    "message": "Lataa musiikkia viitteeksi, lataus kestää hetken, ja onnistuneen latauksen jälkeen musiikkia käytetään luomisessa",
+    "description": "上传参考参数的描述"
   },
   "description.vocalGender": {
-    "message": "Valitse ihmisen äänen sukupuoli (vain v4.5 ja uudemmat versiot tukevat)",
-    "description": "Ihmisen äänen sukupuolen valitsimen kuvaus"
+    "message": "Valitse laulettavan äänen sukupuoli (vain v4.5 ja uudemmat versiot tukevat)",
+    "description": "人声性别选择器的描述"
   },
   "description.weirdness": {
-    "message": "Korkeampi arvo tekee musiikista luovempaa ja kokeellisempaa (0-100)",
-    "description": "Luovuusparametrin kuvaus"
+    "message": "Korkeampi arvo tuottaa luovempaa ja kokeellisempaa musiikkia (0-100)",
+    "description": "创意度参数的描述"
   },
   "description.styleInfluence": {
-    "message": "Korkeampi arvo tarkoittaa, että tyylitunnisteen vaikutus generointitulokseen on suurempi (0-100)",
-    "description": "Tyylin vaikutusparametrin kuvaus"
+    "message": "Korkeampi arvo lisää tyylitunnisteiden vaikutusta lopputulokseen (0-100)",
+    "description": "风格影响力参数的描述"
   },
   "description.audioWeight": {
-    "message": "Alkuperäisen kappaleen vaikutus painoarvo (0-100)",
-    "description": "Alkuperäisen kappaleen painoarvo-parametrin kuvaus"
+    "message": "Alkuperäisen kappaleen vaikutuksen painoarvo cover-versiossa (0-100)",
+    "description": "原曲权重参数的描述"
   },
   "description.lyricPrompt": {
-    "message": "Syötä laulun kuvaus, AI luo automaattisesti sanoitukset",
-    "description": "Sanoituskehotteen kuvaus"
+    "message": "Syötä laulun sanoitusten kuvaus, AI luo sanoitukset automaattisesti",
+    "description": "歌词提示描述"
   },
   "description.replaceSection": {
-    "message": "Korvaa tietty osa kappaleesta",
-    "description": "Korvausosio-toiminnon kuvaus"
+    "message": "Korvaa kappaleen tietty aikajakso",
+    "description": "替换片段功能的描述"
   },
   "status.pending": {
     "message": "Odottaa",
-    "description": "Tehtävän odotustila"
+    "description": "任务的等待状态"
   },
   "placeholder.prompt": {
-    "message": "Kuvaa haluamaasi musiikkia, esimerkiksi: lämmin folk, syksyn kaipuu...",
-    "description": "Kappaleen kuvaus syötteen paikkamerkki"
+    "message": "Kuvaile haluamaasi musiikkia, esim. lämmin folklaulu, syksyn kaipuu...",
+    "description": "歌曲描述输入的占位符"
   },
   "placeholder.lyrics": {
-    "message": "[Säe]\nTässä hiljaisessa yössä\nTähdet tuikkivat taivaalla\n\n[Kertosäe]\nLaulakaamme yhdessä\nKunnes aamu koittaa...",
-    "description": "Sanoitusten syötteen paikkamerkki"
+    "message": "[Verse]\nTässä hiljaisessa yössä\nTähdet tuikkivat taivaalla\n\n[Chorus]\nLaulakaamme yhdessä\nAamuun asti...",
+    "description": "歌词输入的占位符"
   },
   "placeholder.extend.lyrics": {
     "message": "Syötä laajennettavat sanoitukset...",
-    "description": "Sanoitusten laajennus syötteen paikkamerkki"
+    "description": "扩展歌词输入的占位符"
   },
   "placeholder.extend.continue_at": {
-    "message": "Mistä sekunnista alkaen laajennetaan...",
-    "description": "Laajennuksen aloitusajan paikkamerkki"
+    "message": "Laajenna alkaen sekunnista...",
+    "description": "扩展起始时间的占位符"
   },
   "placeholder.style": {
-    "message": "Esimerkiksi: akustinen pop, jazz, R&B, elektroninen...",
-    "description": "Tyylin syötteen paikkamerkki"
+    "message": "Esim. acoustic pop, jazz, R&B, electronic...",
+    "description": "风格输入的占位符"
   },
   "placeholder.styleNegative": {
-    "message": "Esimerkiksi: heavy metal, huutaminen...",
-    "description": "Poissulkevan tyylin syötteen paikkamerkki"
+    "message": "Esim. heavy metal, screaming...",
+    "description": "排除风格输入的占位符"
   },
   "placeholder.title": {
     "message": "Syötä kappaleen nimi...",
-    "description": "Otsikon syötteen paikkamerkki"
+    "description": "标题输入的占位符"
   },
   "placeholder.select": {
     "message": "Valitse malli...",
-    "description": "Mallin valinnan paikkamerkki"
+    "description": "模型选择的占位符"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "位置输入的占位符"
   },
   "placeholder.lyricPrompt": {
-    "message": "Kuvaa sanoitusten aihe, AI luo automaattisesti...",
-    "description": "Sanoituskehotteen syötteen paikkamerkki"
+    "message": "Kuvaile sanoitusten aihetta, AI luo ne automaattisesti...",
+    "description": "歌词提示输入的占位符"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Aloitusaika (sekuntia)",
-    "description": "Korvausosion aloitusajan paikkamerkki"
+    "message": "Alkuaika (sekunteina)",
+    "description": "替换片段开始时间的占位符"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Lopetusaika (sekuntia)",
-    "description": "Korvausosion lopetusajan paikkamerkki"
+    "message": "Loppuaika (sekunteina)",
+    "description": "替换片段结束时间的占位符"
   },
   "button.generate": {
-    "message": "Generoi",
-    "description": "Generointipainikkeen teksti"
+    "message": "Luo",
+    "description": "生成按钮文本"
   },
   "gender.male": {
-    "message": "Miesääni",
-    "description": "Miesäänen vaihtoehto"
+    "message": "Mies",
+    "description": "男性人声选项"
   },
   "gender.female": {
-    "message": "Naisääni",
-    "description": "Naisäänen vaihtoehto"
+    "message": "Nainen",
+    "description": "女性人声选项"
   },
   "gender.auto": {
     "message": "Automaattinen",
-    "description": "Automaattinen äänen sukupuolen valinta"
+    "description": "自动选择人声性别"
   },
   "variation.high": {
-    "message": "Korkea variaatio",
-    "description": "Korkean monimuotoisuuden variaatio-vaihtoehto"
+    "message": "Korkea vaihtelu",
+    "description": "高多样性变体选项"
   },
   "variation.low": {
-    "message": "Matala variaatio",
-    "description": "Matalan monimuotoisuuden variaatio-vaihtoehto"
+    "message": "Matala vaihtelu",
+    "description": "低多样性变体选项"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävä...",
-    "description": "Viesti musiikin generointitehtävän alkaessa"
+    "message": "Käynnistetään tehtävää...",
+    "description": "音乐生成任务开始时的消息"
   },
   "message.startingUploadAudio": {
-    "message": "Ladataan mukautettua musiikkia...",
-    "description": "Viesti musiikin generointitehtävän alkaessa"
+    "message": "Ladataan omaa musiikkia...",
+    "description": "音乐生成任务开始时的消息"
   },
   "message.uploadReferencesExceed": {
-    "message": "Ladattujen musiikkien määrä ylittää maksimin",
-    "description": "Virheviesti, kun ladattujen musiikkien määrä ylittää maksimin"
+    "message": "Ladattujen kappaleiden määrä ylittää sallitun",
+    "description": "上传的音乐超过了最大数量时的错误消息"
   },
   "message.uploadReferencesError": {
-    "message": "Musiikin lataaminen epäonnistui",
-    "description": "Virheviesti, kun musiikin lataaminen epäonnistuu"
+    "message": "Musiikin lataus epäonnistui",
+    "description": "上传音乐失败时的错误消息"
   },
   "message.startTaskSuccess": {
-    "message": "Musiikin generointitehtävä käynnistettiin onnistuneesti",
-    "description": "Viesti, kun musiikin generointitehtävä käynnistetään onnistuneesti"
+    "message": "Musiikin luontitehtävä käynnistetty onnistuneesti",
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Mukautetun musiikin lataaminen onnistui",
-    "description": "Viesti, kun musiikin generointitehtävä käynnistetään onnistuneesti"
+    "message": "Oma musiikki ladattu onnistuneesti",
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioFailed": {
-    "message": "Mukautetun musiikin lataaminen epäonnistui",
-    "description": "Virheviesti, kun musiikin generointitehtävä epäonnistuu"
+    "message": "Oman musiikin lataus epäonnistui",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.startTaskFailed": {
-    "message": "Musiikin generointitehtävän käynnistäminen epäonnistui",
-    "description": "Virheviesti, kun musiikin generointitehtävän käynnistäminen epäonnistuu"
+    "message": "Musiikin luontitehtävän käynnistys epäonnistui",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.getVideoUrlFailed": {
-    "message": "Musiikkivideon hakeminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheviesti, kun videon hakeminen epäonnistuu"
+    "message": "Musiikkivideon haku epäonnistui, yritä myöhemmin uudelleen",
+    "description": "获取视频失败时的错误消息"
   },
   "message.generatingLyrics": {
-    "message": "Sanoitusten generointi käynnissä...",
-    "description": "Viesti sanoitusten generoinnin aikana"
+    "message": "Luodaan sanoituksia...",
+    "description": "生成歌词时的消息"
   },
   "message.generateLyricsSuccess": {
-    "message": "Sanoitusten generointi onnistui",
-    "description": "Viesti, kun sanoitusten generointi onnistuu"
+    "message": "Sanoitukset luotu onnistuneesti",
+    "description": "歌词生成成功时的消息"
   },
   "message.generateLyricsFailed": {
     "message": "Sanoitusten luonti epäonnistui",

@@ -5,7 +5,7 @@
   },
   "button.download": {
     "message": "تنزيل",
-    "description": "نص زر تنزيل"
+    "description": "نص زر التنزيل"
   },
   "button.more": {
     "message": "المزيد من الخيارات",
@@ -25,11 +25,11 @@
   },
   "button.download_wav": {
     "message": "تنزيل WAV بدون فقد",
-    "description": "نص زر تنزيل بتنسيق WAV بدون فقد"
+    "description": "نص زر تنزيل صيغة WAV بدون فقد"
   },
   "button.download_midi": {
     "message": "تنزيل MIDI",
-    "description": "نص زر تنزيل بتنسيق MIDI"
+    "description": "نص زر تنزيل صيغة MIDI"
   },
   "button.get_stems": {
     "message": "فصل الأصوات",
@@ -209,163 +209,163 @@
   },
   "description.style": {
     "message": "وصف نمط الموسيقى، مثل البوب الصوتي، الجاز، الإلكتروني",
-    "description": "وصف المعامل 'style'"
+    "description": "参数'style'的描述"
   },
   "description.styleNegative": {
     "message": "وصف الأنماط غير المرغوب فيها، مثل الهيفي ميتال، الصراخ",
-    "description": "وصف المعامل لاستبعاد الأنماط"
+    "description": "排除风格参数的描述"
   },
   "description.title": {
     "message": "عنوان الأغنية",
-    "description": "وصف المعامل 'title'"
+    "description": "参数'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "قم بتحميل الموسيقى كمرجع للتوليد، قد يستغرق التحميل بعض الوقت، بعد النجاح يمكنك التوليد بناءً على الموسيقى المحملة",
-    "description": "وصف المعامل لتحميل المرجع"
+    "message": "ارفع موسيقى كمرجع للتوليد، قد يستغرق الرفع بعض الوقت، وبعد النجاح يمكن التوليد بناءً على الموسيقى المرفوعة",
+    "description": "上传参考参数的描述"
   },
   "description.vocalGender": {
-    "message": "اختر جنس الصوت البشري (يدعم فقط النسخ 4.5 وما فوق)",
-    "description": "وصف محدد اختيار جنس الصوت"
+    "message": "اختر جنس الصوت المولد (مدعوم فقط في الإصدار 4.5 وما فوق)",
+    "description": "人声性别选择器的描述"
   },
   "description.weirdness": {
     "message": "كلما زادت القيمة، كانت الموسيقى أكثر إبداعًا وتجريبية (0-100)",
-    "description": "وصف معامل الإبداع"
+    "description": "创意度参数的描述"
   },
   "description.styleInfluence": {
-    "message": "كلما زادت القيمة، زادت تأثيرات نمط العلامات على النتائج (0-100)",
-    "description": "وصف معامل تأثير النمط"
+    "message": "كلما زادت القيمة، زاد تأثير نمط الموسيقى على النتيجة (0-100)",
+    "description": "风格影响力参数的描述"
   },
   "description.audioWeight": {
     "message": "وزن تأثير الأغنية الأصلية على النتيجة عند إعادة الغناء (0-100)",
-    "description": "وصف معامل وزن الأغنية الأصلية"
+    "description": "原曲权重参数的描述"
   },
   "description.lyricPrompt": {
-    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي بإنشاء الكلمات تلقائيًا",
-    "description": "وصف تلميح الكلمات"
+    "message": "أدخل وصفًا للكلمات، سيقوم الذكاء الاصطناعي بإنشاء كلمات تلقائيًا",
+    "description": "歌词提示描述"
   },
   "description.replaceSection": {
-    "message": "استبدال المحتوى في فترة زمنية محددة من الأغنية",
-    "description": "وصف وظيفة استبدال المقطع"
+    "message": "استبدل جزءًا محددًا من الأغنية في فترة زمنية معينة",
+    "description": "替换片段功能的描述"
   },
   "status.pending": {
-    "message": "في الانتظار",
-    "description": "حالة الانتظار للمهام"
+    "message": "قيد الانتظار",
+    "description": "任务的等待状态"
   },
   "placeholder.prompt": {
-    "message": "وصف الموسيقى التي تريدها، مثل: أغنية دافئة عن الحنين إلى الخريف...",
-    "description": "نص العنصر النائب لوصف الأغنية"
+    "message": "وصف الموسيقى التي تريدها، مثل: أغنية فلكلورية دافئة عن الحنين للخريف...",
+    "description": "歌曲描述输入的占位符"
   },
   "placeholder.lyrics": {
-    "message": "[المقطع]\nفي هذه الليلة الهادئة\nتتألق النجوم في السماء\n\n[الكورس]\nدعنا نغني معًا\nحتى الفجر...",
-    "description": "نص العنصر النائب لكلمات الأغاني"
+    "message": "[المقطع]\nفي هذه الليلة الهادئة\nالنجوم تلمع في السماء\n\n[الكورس]\nدعنا نغني معًا\nحتى الفجر...",
+    "description": "歌词输入的占位符"
   },
   "placeholder.extend.lyrics": {
-    "message": "أدخل الكلمات التي تحتاج إلى توسيع...",
-    "description": "نص العنصر النائب لتوسيع الكلمات"
+    "message": "أدخل الكلمات التي تريد توسيعها...",
+    "description": "扩展歌词输入的占位符"
   },
   "placeholder.extend.continue_at": {
-    "message": "من أي ثانية تبدأ التوسيع...",
-    "description": "نص العنصر النائب لوقت بدء التوسيع"
+    "message": "ابدأ التوسيع من الثانية...",
+    "description": "扩展起始时间的占位符"
   },
   "placeholder.style": {
-    "message": "مثل: بوب صوتي، جاز، R&B، إلكتروني...",
-    "description": "نص العنصر النائب لنمط"
+    "message": "مثال: البوب الصوتي، الجاز، R&B، الإلكتروني...",
+    "description": "风格输入的占位符"
   },
   "placeholder.styleNegative": {
-    "message": "مثل: هيفي ميتال، صراخ...",
-    "description": "نص العنصر النائب لاستبعاد الأنماط"
+    "message": "مثال: الهيفي ميتال، الصراخ...",
+    "description": "排除风格输入的占位符"
   },
   "placeholder.title": {
     "message": "أدخل اسم الأغنية...",
-    "description": "نص العنصر النائب للعناوين"
+    "description": "标题输入的占位符"
   },
   "placeholder.select": {
     "message": "اختر النموذج...",
-    "description": "نص العنصر النائب لاختيار النموذج"
+    "description": "模型选择的占位符"
   },
   "placeholder.position": {
     "message": "اختر...",
-    "description": "نص العنصر النائب للموقع"
+    "description": "位置输入的占位符"
   },
   "placeholder.lyricPrompt": {
-    "message": "وصف موضوع الكلمات، ستقوم الذكاء الاصطناعي بإنشاء...",
-    "description": "نص العنصر النائب لتلميح الكلمات"
+    "message": "وصف موضوع الكلمات، سيقوم الذكاء الاصطناعي بالإنشاء تلقائيًا...",
+    "description": "歌词提示输入的占位符"
   },
   "placeholder.replaceSectionStart": {
-    "message": "وقت البدء (ثانية)",
-    "description": "نص العنصر النائب لوقت بدء استبدال المقطع"
+    "message": "وقت البدء (بالثواني)",
+    "description": "替换片段开始时间的占位符"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "وقت الانتهاء (ثانية)",
-    "description": "نص العنصر النائب لوقت انتهاء استبدال المقطع"
+    "message": "وقت الانتهاء (بالثواني)",
+    "description": "替换片段结束时间的占位符"
   },
   "button.generate": {
     "message": "توليد",
-    "description": "نص زر التوليد"
+    "description": "生成按钮文本"
   },
   "gender.male": {
     "message": "صوت ذكر",
-    "description": "خيار الصوت الذكري"
+    "description": "男性人声选项"
   },
   "gender.female": {
-    "message": "صوت أنثوي",
-    "description": "خيار الصوت الأنثوي"
+    "message": "صوت أنثى",
+    "description": "女性人声选项"
   },
   "gender.auto": {
     "message": "تلقائي",
-    "description": "اختيار جنس الصوت تلقائيًا"
+    "description": "自动选择人声性别"
   },
   "variation.high": {
     "message": "تنوع عالي",
-    "description": "خيار تنوع عالي"
+    "description": "高多样性变体选项"
   },
   "variation.low": {
     "message": "تنوع منخفض",
-    "description": "خيار تنوع منخفض"
+    "description": "低多样性变体选项"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
-    "description": "رسالة عند بدء مهمة توليد الموسيقى"
+    "description": "音乐生成任务开始时的消息"
   },
   "message.startingUploadAudio": {
-    "message": "جارٍ تحميل الموسيقى المخصصة...",
-    "description": "رسالة عند بدء مهمة توليد الموسيقى"
+    "message": "جارٍ رفع الموسيقى المخصصة...",
+    "description": "音乐生成任务开始时的消息"
   },
   "message.uploadReferencesExceed": {
-    "message": "تجاوز عدد الموسيقى المحملة الحد الأقصى",
-    "description": "رسالة خطأ عند تجاوز عدد الموسيقى المحملة الحد الأقصى"
+    "message": "تم تجاوز الحد الأقصى لعدد الموسيقى المرفوعة",
+    "description": "上传的音乐超过了最大数量时的错误消息"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الموسيقى",
-    "description": "رسالة خطأ عند فشل تحميل الموسيقى"
+    "message": "فشل رفع الموسيقى",
+    "description": "上传音乐失败时的错误消息"
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioSuccess": {
-    "message": "تم تحميل الموسيقى المخصصة بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "message": "تم رفع الموسيقى المخصصة بنجاح",
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioFailed": {
-    "message": "فشل تحميل الموسيقى المخصصة",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "message": "فشل رفع الموسيقى المخصصة",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.startTaskFailed": {
     "message": "فشل بدء مهمة توليد الموسيقى",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.getVideoUrlFailed": {
     "message": "فشل الحصول على فيديو الموسيقى، يرجى المحاولة لاحقًا",
-    "description": "رسالة خطأ عند فشل الحصول على الفيديو"
+    "description": "获取视频失败时的错误消息"
   },
   "message.generatingLyrics": {
     "message": "جارٍ توليد الكلمات...",
-    "description": "رسالة عند توليد الكلمات"
+    "description": "生成歌词时的消息"
   },
   "message.generateLyricsSuccess": {
     "message": "تم توليد الكلمات بنجاح",
-    "description": "رسالة عند نجاح توليد الكلمات"
+    "description": "歌词生成成功时的消息"
   },
   "message.generateLyricsFailed": {
     "message": "فشل في توليد الكلمات",

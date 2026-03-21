@@ -36,8 +36,8 @@
     "description": "Texte du bouton pour séparer les pistes"
   },
   "button.cover_music": {
-    "message": "Couvrir",
-    "description": "Texte du bouton pour couvrir une chanson"
+    "message": "Reprendre",
+    "description": "Texte du bouton pour reprendre une chanson"
   },
   "button.concat_music": {
     "message": "Concaténer",
@@ -124,7 +124,7 @@
     "description": "Invite pour le contenu d'entrée"
   },
   "name.cover": {
-    "message": "Couvrir la chanson de",
+    "message": "Reprise de la chanson de",
     "description": "Invite pour le contenu d'entrée"
   },
   "name.lyrics": {
@@ -136,7 +136,7 @@
     "description": "Invite pour le contenu d'entrée du style de la chanson"
   },
   "name.styleNegative": {
-    "message": "Exclure le style",
+    "message": "Styles à exclure",
     "description": "Description des styles non désirés"
   },
   "name.title": {
@@ -165,7 +165,7 @@
   },
   "name.audioWeight": {
     "message": "Poids de l'original",
-    "description": "Poids de l'influence de l'original lors de la couverture"
+    "description": "Poids de l'original lors de la reprise"
   },
   "name.lyricPrompt": {
     "message": "Invite de paroles",
@@ -208,164 +208,164 @@
     "description": "Description du paramètre 'lyrics'"
   },
   "description.style": {
-    "message": "Décrivez le style musical, comme pop acoustique, jazz, électronique",
-    "description": "Description du paramètre 'style'"
+    "message": "Décrivez le style musical, par ex. acoustic pop, jazz, electronic",
+    "description": "参数'style'的描述"
   },
   "description.styleNegative": {
-    "message": "Décrivez les styles indésirables, comme heavy metal, screaming",
-    "description": "Description du paramètre d'exclusion de style"
+    "message": "Décrivez les styles à exclure, par ex. heavy metal, screaming",
+    "description": "排除风格参数的描述"
   },
   "description.title": {
     "message": "Titre de la chanson",
-    "description": "Description du paramètre 'title'"
+    "description": "参数'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "Téléchargez de la musique comme référence pour la génération, le téléchargement peut prendre un certain temps, la génération se fera en fonction de la musique téléchargée",
-    "description": "Description du paramètre de référence de téléchargement"
+    "message": "Téléchargez une musique comme référence pour la génération. Patientez pendant le téléchargement, puis la génération utilisera cette musique.",
+    "description": "上传参考参数的描述"
   },
   "description.vocalGender": {
-    "message": "Choisissez le genre de la voix à générer (uniquement pris en charge à partir de la version v4.5)",
-    "description": "Description du sélecteur de genre vocal"
+    "message": "Choisissez le genre vocal généré (supporté à partir de la version v4.5)",
+    "description": "人声性别选择器的描述"
   },
   "description.weirdness": {
     "message": "Plus la valeur est élevée, plus la musique générée est créative et expérimentale (0-100)",
-    "description": "Description du paramètre de créativité"
+    "description": "创意度参数的描述"
   },
   "description.styleInfluence": {
-    "message": "Plus la valeur est élevée, plus l'influence du style sur le résultat généré est grande (0-100)",
-    "description": "Description du paramètre d'influence du style"
+    "message": "Plus la valeur est élevée, plus le style influence le résultat (0-100)",
+    "description": "风格影响力参数的描述"
   },
   "description.audioWeight": {
-    "message": "Poids de l'original sur le résultat lors de la reprise (0-100)",
-    "description": "Description du paramètre de poids de l'original"
+    "message": "Poids de l'influence de la musique originale lors d'une reprise (0-100)",
+    "description": "原曲权重参数的描述"
   },
   "description.lyricPrompt": {
     "message": "Entrez une description des paroles, l'IA générera automatiquement les paroles",
-    "description": "Description de l'invite de paroles"
+    "description": "歌词提示描述"
   },
   "description.replaceSection": {
-    "message": "Remplacez le contenu d'une section spécifiée de la chanson",
-    "description": "Description de la fonction de remplacement de section"
+    "message": "Remplacez une section spécifique de la chanson à un moment donné",
+    "description": "替换片段功能的描述"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État d'attente de la tâche"
+    "description": "任务的等待状态"
   },
   "placeholder.prompt": {
-    "message": "Décrivez la musique que vous souhaitez, par exemple : une ballade chaleureuse sur la nostalgie de l'automne...",
-    "description": "Placeholder pour la description de la chanson"
+    "message": "Décrivez la musique souhaitée, par ex. une ballade chaleureuse sur l'automne...",
+    "description": "歌曲描述输入的占位符"
   },
   "placeholder.lyrics": {
-    "message": "[Couplet]\nDans cette nuit silencieuse\nLes étoiles scintillent dans le ciel\n\n[Refrain]\nChantons ensemble\nJusqu'à l'aube...",
-    "description": "Placeholder pour l'entrée des paroles"
+    "message": "[Couplet]\nDans cette nuit silencieuse\nLes étoiles brillent dans le ciel\n\n[Refrain]\nChantons ensemble\nJusqu'à l'aube...",
+    "description": "歌词输入的占位符"
   },
   "placeholder.extend.lyrics": {
-    "message": "Veuillez entrer les paroles à étendre...",
-    "description": "Placeholder pour l'entrée des paroles à étendre"
+    "message": "Entrez les paroles à étendre...",
+    "description": "扩展歌词输入的占位符"
   },
   "placeholder.extend.continue_at": {
-    "message": "À partir de quelle seconde étendre...",
-    "description": "Placeholder pour le temps de début de l'extension"
+    "message": "Commencer l'extension à la seconde...",
+    "description": "扩展起始时间的占位符"
   },
   "placeholder.style": {
-    "message": "Par exemple : pop acoustique, jazz, R&B, électronique...",
-    "description": "Placeholder pour l'entrée de style"
+    "message": "Par ex. acoustic pop, jazz, R&B, electronic...",
+    "description": "风格输入的占位符"
   },
   "placeholder.styleNegative": {
-    "message": "Par exemple : heavy metal, screaming...",
-    "description": "Placeholder pour l'entrée de style à exclure"
+    "message": "Par ex. heavy metal, screaming...",
+    "description": "排除风格输入的占位符"
   },
   "placeholder.title": {
-    "message": "Entrez le nom de la chanson...",
-    "description": "Placeholder pour l'entrée du titre"
+    "message": "Entrez le titre de la chanson...",
+    "description": "标题输入的占位符"
   },
   "placeholder.select": {
-    "message": "Veuillez sélectionner un modèle...",
-    "description": "Placeholder pour la sélection de modèle"
+    "message": "Sélectionnez un modèle...",
+    "description": "模型选择的占位符"
   },
   "placeholder.position": {
-    "message": "Veuillez sélectionner...",
-    "description": "Placeholder pour l'entrée de position"
+    "message": "Veuillez choisir...",
+    "description": "位置输入的占位符"
   },
   "placeholder.lyricPrompt": {
     "message": "Décrivez le thème des paroles, l'IA générera automatiquement...",
-    "description": "Placeholder pour l'entrée de l'invite de paroles"
+    "description": "歌词提示输入的占位符"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Temps de début (secondes)",
-    "description": "Placeholder pour le temps de début de la section à remplacer"
+    "message": "Heure de début (s)",
+    "description": "替换片段开始时间的占位符"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Temps de fin (secondes)",
-    "description": "Placeholder pour le temps de fin de la section à remplacer"
+    "message": "Heure de fin (s)",
+    "description": "替换片段结束时间的占位符"
   },
   "button.generate": {
     "message": "Générer",
-    "description": "Texte du bouton de génération"
+    "description": "生成按钮文本"
   },
   "gender.male": {
-    "message": "Voix masculine",
-    "description": "Option de voix masculine"
+    "message": "Homme",
+    "description": "男性人声选项"
   },
   "gender.female": {
-    "message": "Voix féminine",
-    "description": "Option de voix féminine"
+    "message": "Femme",
+    "description": "女性人声选项"
   },
   "gender.auto": {
     "message": "Automatique",
-    "description": "Sélection automatique du genre vocal"
+    "description": "自动选择人声性别"
   },
   "variation.high": {
-    "message": "Haute variation",
-    "description": "Option de haute diversité de variation"
+    "message": "Variation élevée",
+    "description": "高多样性变体选项"
   },
   "variation.low": {
-    "message": "Basse variation",
-    "description": "Option de basse diversité de variation"
+    "message": "Variation faible",
+    "description": "低多样性变体选项"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message au début de la tâche de génération musicale"
+    "description": "音乐生成任务开始时的消息"
   },
   "message.startingUploadAudio": {
     "message": "Téléchargement de la musique personnalisée...",
-    "description": "Message au début de la tâche de génération musicale"
+    "description": "音乐生成任务开始时的消息"
   },
   "message.uploadReferencesExceed": {
-    "message": "Le nombre de musiques téléchargées dépasse la limite maximale",
-    "description": "Message d'erreur lorsque le nombre de musiques téléchargées dépasse la limite"
+    "message": "Nombre maximal de musiques téléchargées dépassé",
+    "description": "上传的音乐超过了最大数量时的错误消息"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de la musique",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la musique"
+    "description": "上传音乐失败时的错误消息"
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération musicale lancée avec succès",
-    "description": "Message de succès lors du lancement de la tâche de génération musicale"
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioSuccess": {
     "message": "Musique personnalisée téléchargée avec succès",
-    "description": "Message de succès lors du lancement de la tâche de génération musicale"
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioFailed": {
     "message": "Échec du téléchargement de la musique personnalisée",
-    "description": "Message d'erreur lors de l'échec du lancement de la tâche de génération musicale"
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche de génération musicale",
-    "description": "Message d'erreur lors de l'échec du lancement de la tâche de génération musicale"
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.getVideoUrlFailed": {
-    "message": "Échec de l'obtention de la vidéo musicale, veuillez réessayer plus tard",
-    "description": "Message d'erreur lors de l'échec de l'obtention de la vidéo"
+    "message": "Échec de récupération de la vidéo musicale, veuillez réessayer plus tard",
+    "description": "获取视频失败时的错误消息"
   },
   "message.generatingLyrics": {
     "message": "Génération des paroles en cours...",
-    "description": "Message lors de la génération des paroles"
+    "description": "生成歌词时的消息"
   },
   "message.generateLyricsSuccess": {
-    "message": "Génération des paroles réussie",
-    "description": "Message lors de la réussite de la génération des paroles"
+    "message": "Paroles générées avec succès",
+    "description": "歌词生成成功时的消息"
   },
   "message.generateLyricsFailed": {
     "message": "Échec de la génération des paroles",
