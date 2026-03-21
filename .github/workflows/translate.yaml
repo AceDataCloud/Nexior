@@ -60,7 +60,7 @@ jobs:
       - name: Auto-approve translation PR
         if: ${{ steps.cpr.outputs.pull-request-number }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           gh pr review ${{ steps.cpr.outputs.pull-request-number }} --approve --repo ${{ github.repository }}
 
