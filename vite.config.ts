@@ -6,6 +6,30 @@ import * as path from 'path';
 const normalizeModuleId = (id: string) => id.replace(/\\/g, '/');
 
 const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string) => boolean]> = [
+  [
+    'vendor-web3',
+    (id) =>
+      id.includes('/@solana/') ||
+      id.includes('/solana-wallets-vue/') ||
+      id.includes('/ethers/') ||
+      id.includes('/@noble/') ||
+      id.includes('/@scure/') ||
+      id.includes('/@stablelib/') ||
+      id.includes('/bn.js/') ||
+      id.includes('/borsh/') ||
+      id.includes('/bs58/') ||
+      id.includes('/tweetnacl/') ||
+      id.includes('/superstruct/') ||
+      id.includes('/jayson/') ||
+      id.includes('/rpc-websockets/') ||
+      id.includes('/secp256k1/') ||
+      id.includes('/uint8arrays/') ||
+      id.includes('/multiformats/') ||
+      id.includes('/@lit/') ||
+      id.includes('/lit-html/') ||
+      id.includes('/@w3m/') ||
+      id.includes('/@reown/')
+  ],
   ['vendor-element-plus', (id) => id.includes('/element-plus/')],
   ['vendor-vue-router', (id) => id.includes('/vue-router/')],
   ['vendor-vue', (id) => id.includes('/node_modules/vue/') || id.includes('/node_modules/@vue/')],
@@ -67,7 +91,7 @@ export default defineConfig((config: ConfigEnv) => {
             const matched = vendorChunkRules.find(([, matches]) => matches(normalizedId));
             if (matched) return matched[0];
 
-            return 'vendor';
+            return undefined;
           }
         }
       }
