@@ -36,9 +36,8 @@ const main = async () => {
   }
   await initializeCookies();
   await initializeToken();
-  await initializeUser();
-  await initializeSite();
-  await initializeConfig();
+  // user/site/config are independent after token is set — run in parallel
+  await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
 
   // non-async and no need to await
   initializeCurrency();
