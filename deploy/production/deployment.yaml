@@ -21,6 +21,16 @@ spec:
           name: hub-frontend
           ports:
             - containerPort: 80
+          env:
+            - name: PRERENDER_URL
+              value: 'https://service.prerender.io'
+            - name: PRERENDER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: prerender
+                  key: PRERENDER_TOKEN
+            - name: NGINX_RESOLVER
+              value: '183.60.83.19'
           livenessProbe:
             httpGet:
               path: /

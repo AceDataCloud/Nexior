@@ -6,3 +6,7 @@ services:
     image: 'ghcr.io/acedatacloud/hub-frontend:${BUILD_NUMBER}'
     ports:
       - '8080:80'
+    environment:
+      - PRERENDER_URL=${PRERENDER_URL:-https://service.prerender.io}
+      - PRERENDER_TOKEN=${PRERENDER_TOKEN:-}
+      - NGINX_RESOLVER=${NGINX_RESOLVER:-8.8.8.8}
