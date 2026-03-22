@@ -1,5 +1,5 @@
 # build stage
-FROM node:20 as build-stage
+FROM node:25 as build-stage
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn
