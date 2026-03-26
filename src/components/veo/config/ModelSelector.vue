@@ -29,6 +29,10 @@ export default defineComponent({
     return {
       options: [
         {
+          value: 'veo2',
+          label: 'veo2'
+        },
+        {
           value: 'veo2-fast',
           label: 'veo2-fast'
         },

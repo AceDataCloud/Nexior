@@ -33,6 +33,10 @@ export default defineComponent({
         {
           value: 'minimax-i2v',
           label: this.$t('hailuo.button.model2')
+        },
+        {
+          value: 'minimax-i2v-director',
+          label: this.$t('hailuo.button.model3')
         }
       ];
     },
