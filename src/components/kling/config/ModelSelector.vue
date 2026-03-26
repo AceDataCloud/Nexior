@@ -47,6 +47,10 @@ export default defineComponent({
         {
           value: 'kling-v2-5-turbo',
           label: 'v2.5-Turbo'
+        },
+        {
+          value: 'kling-video-o1',
+          label: 'Video-o1'
         }
       ]
     };
