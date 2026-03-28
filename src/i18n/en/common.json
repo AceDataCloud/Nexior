@@ -103,18 +103,6 @@
     "message": "Start for Free",
     "description": "Text in button for allowing users to start for free"
   },
-  "button.downloadAndroid": {
-    "message": "Download for Android",
-    "description": "Text in button for downloading the Android package"
-  },
-  "button.downloadIos": {
-    "message": "Download IPA",
-    "description": "Text in button for downloading the iOS package file"
-  },
-  "button.installIos": {
-    "message": "Install on iOS",
-    "description": "Text in button for installing the iOS app"
-  },
   "button.apply": {
     "message": "Apply",
     "description": "Text in button for allowing users to apply for API services"
@@ -243,6 +231,26 @@
     "message": "The Android package is not available yet. Please check back shortly.",
     "description": "Shown when the Android package is not available yet"
   },
+  "message.mobileAvailableNow": {
+    "message": "Android available now",
+    "description": "Shows that the Android package is currently available"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "Secure CDN delivery",
+    "description": "Highlights that the package is delivered over a CDN link"
+  },
+  "message.mobileDirectInstall": {
+    "message": "Direct APK install",
+    "description": "Describes the Android installation method"
+  },
+  "message.mobileLatestRelease": {
+    "message": "Latest public release",
+    "description": "Explains that the shown version is the current public release"
+  },
+  "message.mobileSharedAccount": {
+    "message": "Shared account and credits",
+    "description": "Explains that mobile and web use the same account"
+  },
   "message.mobileIosHint": {
     "message": "For iPhone and iPad. Use the install link first, or fall back to the IPA package when needed.",
     "description": "iOS download card description"
@@ -259,21 +267,37 @@
     "message": "Mobile Downloads",
     "description": "Title of the mobile app download page"
   },
+  "title.mobileFastAccess": {
+    "message": "Faster access, no app store detour",
+    "description": "Benefit title on the mobile download page highlighting fast access"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "One release surface, cleaner distribution",
+    "description": "Benefit title on the mobile download page highlighting managed releases"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "A unified experience across web and mobile",
+    "description": "Benefit title on the mobile download page highlighting a shared experience"
+  },
   "nav.mobileApp": {
     "message": "Mobile",
     "description": "Navigation entry for the mobile app download page"
   },
+  "message.mobileFastAccess": {
+    "message": "Users can scan on their phone to install immediately or download the APK on desktop first and distribute it internally for testing or fast rollout.",
+    "description": "Benefit copy on the mobile download page highlighting fast access"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "Version, platform state, and installation path stay in one place so your team does not need to chase separate links or outdated build notes.",
+    "description": "Benefit copy on the mobile download page highlighting controlled distribution"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "The same account, credits, and product entry points work across mobile and web, making it easier to move between devices without extra setup.",
+    "description": "Benefit copy on the mobile download page highlighting a unified account experience"
+  },
   "message.remainingAmount": {
     "message": "Remaining Amount",
     "description": "Used to display the remaining amount of service"
-  },
-  "message.copied": {
-    "message": "Copied Successfully",
-    "description": "Message indicating content has been successfully copied"
-  },
-  "message.restart": {
-    "message": "Regenerate",
-    "description": "Used to indicate the content has been successfully regenerated"
   },
   "message.confirmDelete": {
     "message": "Are you sure you want to delete?",
