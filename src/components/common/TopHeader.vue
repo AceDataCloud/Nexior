@@ -1,6 +1,6 @@
 <template>
   <el-row class="header">
-    <el-col :md="4" :xs="24">
+    <el-col :md="4" :xs="24" class="brand-col">
       <logo @click="onHome" />
     </el-col>
     <el-col :md="16" :xs="13">
@@ -161,13 +161,12 @@ $height: 60px;
   width: 100%;
   background: var(--el-bg-color);
 
-  .logo {
-    height: 40px;
-    width: 120px;
-    cursor: pointer;
-    margin-top: 8px;
-    margin-right: 20px;
-    float: right;
+  .brand-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: $height;
+    padding-right: 20px;
   }
 
   .el-menu.menu {
@@ -216,11 +215,9 @@ $height: 60px;
 }
 @media only screen and (max-width: 768px) {
   .header {
-    .logo {
-      margin-left: auto;
-      margin-right: auto;
-      float: initial;
-      display: block;
+    .brand-col {
+      justify-content: center;
+      padding-right: 0;
     }
   }
 }
