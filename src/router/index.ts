@@ -8,6 +8,7 @@ import deepseek from './deepseek';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
+import download from './download';
 import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
@@ -190,6 +191,7 @@ const routes = [
   seedance,
   midjourney,
   distribution,
+  download,
   site,
   profile
 ];

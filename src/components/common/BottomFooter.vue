@@ -5,6 +5,8 @@
         <el-row>
           <el-col :span="24" class="text-center">
             <p>
+              <a href="/download">{{ $t('common.nav.mobileApp') }}</a>
+              ·
               <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}

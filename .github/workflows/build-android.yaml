@@ -52,8 +52,8 @@ jobs:
       - name: Build web assets (Android surface)
         run: yarn build:android
 
-      - name: Copy web assets to Android project
-        run: npx cap copy android
+      - name: Sync Android project
+        run: npx cap sync android
 
       - name: Decode keystore
         run: |
