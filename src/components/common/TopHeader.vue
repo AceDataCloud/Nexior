@@ -22,11 +22,7 @@
             index="/headshots"
           ></el-menu-item>
         </el-sub-menu>
-        <el-menu-item
-          v-t="'common.nav.mobileApp'"
-          @route="undefined"
-          @click="onDownload"
-        ></el-menu-item>
+        <el-menu-item v-t="'common.nav.mobileApp'" @route="undefined" @click="onDownload"></el-menu-item>
         <el-menu-item
           v-t="'common.nav.apiPlatform'"
           @route="undefined"
