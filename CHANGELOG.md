@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 28 Mar 2026 16:35:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 28 Mar 2026 18:48:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.4
+
+Sat, 28 Mar 2026 18:48:51 GMT
+
+### Patches
+
+- refine the mobile download landing page and fix header logo rendering (office@acedata.cloud)
 
 ## 3.30.3
 
