@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 16 Mar 2026 14:08:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 28 Mar 2026 16:35:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.3
+
+Sat, 28 Mar 2026 16:35:08 GMT
+
+### Patches
+
+- restore mobile download entry and Android build sync (office@acedata.cloud)
 
 ## 3.30.2
 
