@@ -20,3 +20,4 @@ export * from './seedream';
 export * from './seedance';
 export * from './mapping';
 export * from './surface';
+export * from './mobile';

@@ -8,6 +8,10 @@
         </div>
         <el-divider v-if="user.email" class="mb-1 mt-1" />
         <el-dropdown-menu>
+          <el-dropdown-item class="py-2" @click="onDownload">
+            <font-awesome-icon icon="fa-solid fa-mobile-screen-button" class="mr-2" />
+            {{ $t('common.nav.mobileApp') }}
+          </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onSettings">
             <font-awesome-icon icon="fa-solid fa-cog" class="mr-2" />
             {{ $t('common.nav.setting') }}
@@ -36,7 +40,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -80,6 +84,9 @@ export default defineComponent({
     },
     async onLogout() {
       await this.$store.dispatch('logout');
+    },
+    onDownload() {
+      this.$router.push({ name: ROUTE_DOWNLOAD });
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });

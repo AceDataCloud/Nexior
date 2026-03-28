@@ -22,6 +22,7 @@
             index="/headshots"
           ></el-menu-item>
         </el-sub-menu>
+        <el-menu-item v-t="'common.nav.mobileApp'" @route="undefined" @click="onDownload"></el-menu-item>
         <el-menu-item
           v-t="'common.nav.apiPlatform'"
           @route="undefined"
@@ -69,7 +70,7 @@
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth } from '@/utils';
-import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_INDEX } from '@/router';
+import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
 
@@ -126,6 +127,11 @@ export default defineComponent({
     onLogin() {
       this.$router.push({
         name: ROUTE_AUTH_LOGIN
+      });
+    },
+    onDownload() {
+      this.$router.push({
+        name: ROUTE_DOWNLOAD
       });
     },
     onProfile() {
