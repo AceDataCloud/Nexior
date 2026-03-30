@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 28 Mar 2026 18:48:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 30 Mar 2026 17:01:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.30.5
+
+Mon, 30 Mar 2026 17:01:23 GMT
+
+### Patches
+
+- fix: add missing English i18n keys for download page buttons (cqc@cuiqingcai.com)
 
 ## 3.30.4
 
