@@ -157,11 +157,6 @@ export default defineComponent({
     ElButton,
     QrCode
   },
-  methods: {
-    openSupport() {
-      window.open('https://platform.acedata.cloud/support', '_blank');
-    }
-  },
   computed: {
     version() {
       return MOBILE_APP_VERSION;
@@ -180,6 +175,11 @@ export default defineComponent({
     },
     hasIosDownload() {
       return !!MOBILE_IOS_DOWNLOAD_URL && !!MOBILE_IOS_FALLBACK_URL;
+    }
+  },
+  methods: {
+    openSupport() {
+      window.open('https://platform.acedata.cloud/support', '_blank');
     }
   }
 });
@@ -236,7 +236,12 @@ export default defineComponent({
 .hero-copy {
   padding: 48px;
   border-radius: 36px;
-  background: linear-gradient(135deg, rgba(7, 17, 31, 0.98) 0%, rgba(12, 39, 67, 0.96) 56%, rgba(16, 92, 153, 0.92) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(7, 17, 31, 0.98) 0%,
+    rgba(12, 39, 67, 0.96) 56%,
+    rgba(16, 92, 153, 0.92) 100%
+  );
   color: #f8fbff;
   box-shadow: 0 30px 80px rgba(7, 23, 43, 0.24);
 
