@@ -354,3 +354,66 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   font-weight: 700;
 }
+
+/* Dark mode: subtle borders for form elements & cards */
+html.dark {
+  .el-input .el-input__wrapper {
+    border: 1px solid var(--app-glass-border);
+    &.is-focus {
+      border-color: var(--el-color-primary);
+    }
+  }
+
+  .el-select .el-select__wrapper {
+    border: 1px solid var(--app-glass-border);
+    &.is-focused {
+      border-color: var(--el-color-primary);
+    }
+  }
+
+  .el-textarea .el-textarea__inner {
+    border: 1px solid var(--app-glass-border);
+    &:focus {
+      border-color: var(--el-color-primary);
+    }
+  }
+
+  .el-input-number {
+    .el-input__wrapper {
+      border: 1px solid var(--app-glass-border);
+    }
+  }
+
+  .el-radio-button__inner,
+  .el-checkbox-button__inner {
+    border-color: var(--app-glass-border);
+  }
+
+  .el-switch {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-date-editor {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-tabs--border-card {
+    border-color: var(--app-glass-border);
+  }
+
+  .el-table {
+    --el-table-border-color: var(--app-glass-border);
+  }
+
+  .el-dropdown-menu {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-popover.el-popper {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-message-box {
+    border: 1px solid var(--app-glass-border);
+  }
+}

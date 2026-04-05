@@ -9,14 +9,21 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   emits: ['click'],
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     siteTitle() {
       return this.$store.state.site?.title || 'AceData';
     },
     url() {
-      return (
-        this.$store.state.site?.logo || this.$store.state.site?.favicon || 'https://cdn.acedata.cloud/8c6ed0e068.png'
-      );
+      if (this.collapsed) {
+        return this.$store.state.site?.favicon || 'https://cdn.acedata.cloud/8c6ed0e068.png';
+      }
+      return this.$store.state.site?.logo || this.$store.state.site?.favicon || 'https://cdn.acedata.cloud/8c6ed0e068.png';
     }
   }
 });
