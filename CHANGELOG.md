@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 10:04:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 10:11:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.1
+
+Sun, 05 Apr 2026 10:11:03 GMT
+
+### Patches
+
+- fix: add text overflow ellipsis to suno song title and style (dev@acedata.cloud)
 
 ## 3.32.0
 
