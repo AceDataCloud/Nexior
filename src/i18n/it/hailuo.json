@@ -37,7 +37,7 @@
   },
   "name.prompt": {
     "message": "Suggerimento video",
-    "description": "Suggerimento per l'input di contenuto"
+    "description": "Suggerimento per l'input del contenuto"
   },
   "name.ingredients": {
     "message": "Video da più immagini",
@@ -49,7 +49,7 @@
   },
   "name.startImageUrl": {
     "message": "Immagine iniziale",
-    "description": "Semenza del codice QR da generare"
+    "description": "Seed per il QR code da generare"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
@@ -60,7 +60,7 @@
     "description": "Nome del generatore di video Hailuo"
   },
   "description.ingredients": {
-    "message": "Se desideri caricare più immagini per generare il tuo video, attiva questo pulsante.",
+    "message": "Attiva questo pulsante se desideri caricare più immagini per generare il tuo video.",
     "description": "Descrizione del parametro 'ingredients'"
   },
   "description.startImageUrl": {
@@ -81,7 +81,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di rumore di riempimento"
+    "description": "Segnaposto per l'input del rumore di riempimento"
   },
   "placeholder.select": {
     "message": "Seleziona",
@@ -97,7 +97,7 @@
   },
   "placeholder.position": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di posizione"
+    "description": "Segnaposto per l'input della posizione"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -105,7 +105,7 @@
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input preimpostato"
+    "description": "Segnaposto per l'input del preset"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
@@ -113,7 +113,7 @@
   },
   "placeholder.rotate": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di rotazione"
+    "description": "Segnaposto per l'input della rotazione"
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
@@ -121,15 +121,19 @@
   },
   "button.model1": {
     "message": "Video da testo",
-    "description": "Testo del pulsante per generare il video Hailuo"
+    "description": "Testo del pulsante per generare video Hailuo"
   },
   "button.model2": {
     "message": "Video da immagine",
-    "description": "Testo del pulsante per generare il video Hailuo"
+    "description": "Testo del pulsante per generare video Hailuo"
+  },
+  "button.model3": {
+    "message": "Video da immagine (modalità regista)",
+    "description": "Testo del pulsante per generare video Hailuo, modalità regista"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare il video Hailuo"
+    "description": "Testo del pulsante per generare video Hailuo"
   },
   "button.extend": {
     "message": "Estendi video",
@@ -184,27 +188,27 @@
     "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione immagine fallita",
+    "message": "Generazione dell'immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini della prima cornice superato",
+    "message": "Numero di immagini della prima cornice superiore al limite",
     "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file non può superare i 10MB!",
-    "description": "Messaggio di errore quando la dimensione del file supera i 10MB!"
+    "message": "La dimensione del file non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Numero di immagini della prima cornice superato",
+    "message": "Numero di immagini della prima cornice superiore al limite",
     "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Numero di immagini dell'ultima cornice superato",
+    "message": "Numero di immagini dell'ultima cornice superiore al limite",
     "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
   },
   "message.uploadStartImageError": {
@@ -212,7 +216,7 @@
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
-    "message": "Caricamento video fallito",
+    "message": "Caricamento del video fallito",
     "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
@@ -220,8 +224,8 @@
     "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento documenti fallito",
-    "description": "Messaggio di errore quando il caricamento dei documenti fallisce"
+    "message": "Caricamento del documento fallito",
+    "description": "Messaggio di errore quando il caricamento del documento fallisce"
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",

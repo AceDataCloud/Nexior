@@ -69,7 +69,7 @@
   },
   "button.publish": {
     "message": "Pubblica",
-    "description": "Testo nel pulsante, utilizzato per pubblicare un contenuto"
+    "description": "Testo nel pulsante, utilizzato per pubblicare contenuti"
   },
   "button.watch": {
     "message": "Guarda",
@@ -103,6 +103,18 @@
     "message": "Inizia gratis",
     "description": "Testo nel pulsante, utilizzato per consentire all'utente di iniziare gratuitamente"
   },
+  "button.downloadAndroid": {
+    "message": "Scarica Android",
+    "description": "Testo nel pulsante, utilizzato per scaricare il pacchetto di installazione Android"
+  },
+  "button.downloadIos": {
+    "message": "Scarica pacchetto iOS",
+    "description": "Testo nel pulsante, utilizzato per scaricare il file di installazione iOS"
+  },
+  "button.installIos": {
+    "message": "Installa iOS",
+    "description": "Testo nel pulsante, utilizzato per installare l'app iOS"
+  },
   "button.apply": {
     "message": "Richiedi",
     "description": "Testo nel pulsante, utilizzato per consentire all'utente di richiedere un servizio API"
@@ -113,14 +125,14 @@
   },
   "button.pay": {
     "message": "Paga",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di pagare per un servizio"
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di pagare le spese del servizio"
   },
   "button.repay": {
     "message": "Continua pagamento",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di continuare a pagare per un servizio"
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di continuare a pagare le spese del servizio"
   },
   "button.applied": {
-    "message": "Richiesta inviata",
+    "message": "Richiesto",
     "description": "Testo nel pulsante, utilizzato per indicare che l'utente ha richiesto il servizio"
   },
   "button.acquire": {
@@ -133,7 +145,7 @@
   },
   "button.buyMore": {
     "message": "Ricarica",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ricaricare. Traduzione in inglese deve essere 'Top Up', in cinese '充值'."
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ricaricare. Deve essere tradotto come 'Ricarica'."
   },
   "button.update": {
     "message": "Aggiorna",
@@ -169,11 +181,11 @@
   },
   "entity.copyright": {
     "message": "Copyright",
-    "description": "Testo che mostra il copyright"
+    "description": "Testo che visualizza il copyright"
   },
   "entity.platform": {
     "message": "Piattaforma",
-    "description": "Testo che indica che questo è il servizio API"
+    "description": "Testo che indica che si tratta di una piattaforma di servizi API"
   },
   "entity.title": {
     "message": "Titolo",
@@ -189,7 +201,7 @@
   },
   "status.loading": {
     "message": "Caricamento...",
-    "description": "Testo di stato mostrato durante il caricamento dei contenuti"
+    "description": "Testo di stato visualizzato durante il caricamento dei contenuti"
   },
   "entity.operation": {
     "message": "Operazione",
@@ -213,15 +225,91 @@
   },
   "message.noTasks": {
     "message": "Nessun compito storico, inizia un nuovo compito～",
-    "description": "Messaggio mostrato quando non ci sono compiti"
+    "description": "Messaggio quando non ci sono compiti"
   },
   "message.usedAmount": {
     "message": "Importo utilizzato",
-    "description": "Usato per mostrare l'importo del servizio già utilizzato"
+    "description": "Utilizzato per visualizzare l'importo già utilizzato del servizio"
+  },
+  "message.mobileAppDescription": {
+    "message": "Usa AceData direttamente sul tuo telefono, attualmente disponibile per il download e l'installazione dell'APK Android, il pacchetto di installazione iOS sarà disponibile dopo la firma.",
+    "description": "Testo descrittivo per la pagina di download dell'app mobile"
+  },
+  "message.mobileAndroidHint": {
+    "message": "Compatibile con telefoni e tablet Android, scansiona il codice per scaricare e installare l'APK più recente.",
+    "description": "Descrizione della scheda di download Android"
+  },
+  "message.mobileAndroidPending": {
+    "message": "Il pacchetto di installazione Android non è ancora pronto, riprova più tardi.",
+    "description": "Messaggio quando il pacchetto di installazione Android non è disponibile"
+  },
+  "message.mobileAvailableNow": {
+    "message": "Android disponibile per il download",
+    "description": "Utilizzato per visualizzare lo stato di disponibilità del download Android"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "Distribuzione CDN sicura",
+    "description": "Utilizzato per enfatizzare che il link di download è fornito tramite CDN"
+  },
+  "message.mobileDirectInstall": {
+    "message": "Installazione APK diretta",
+    "description": "Utilizzato per descrivere il metodo di installazione diretta APK per Android"
+  },
+  "message.mobileLatestRelease": {
+    "message": "Versione pubblica attuale",
+    "description": "Utilizzato per indicare che la versione mostrata è l'ultima pubblica"
+  },
+  "message.mobileSharedAccount": {
+    "message": "Account e credito condivisi con la versione web",
+    "description": "Utilizzato per indicare che l'app mobile condivide l'account con la versione web"
+  },
+  "message.mobileIosHint": {
+    "message": "Compatibile con iPhone e iPad, installazione diretta online; se il sistema blocca, puoi prima scaricare l'IPA e poi distribuirlo.",
+    "description": "Descrizione della scheda di download iOS"
+  },
+  "message.mobileIosPending": {
+    "message": "Il pacchetto di installazione iOS non è ancora disponibile per il download, sarà fornito dopo il completamento del certificato e del profilo di descrizione Apple.",
+    "description": "Messaggio quando il pacchetto di installazione iOS non è disponibile"
+  },
+  "message.mobileInstallNote": {
+    "message": "Quando installi per la prima volta un pacchetto aziendale o Ad Hoc su iOS, il sistema potrebbe richiedere di fidarti del certificato in 'Impostazioni > Generali > VPN e gestione dispositivo'.",
+    "description": "Messaggio di installazione per l'app mobile"
+  },
+  "title.mobileApp": {
+    "message": "Download mobile",
+    "description": "Titolo della pagina di download dell'app mobile"
+  },
+  "title.mobileFastAccess": {
+    "message": "Accesso più veloce, senza passare per l'app store",
+    "description": "Titolo della scheda di vantaggio della pagina di download, enfatizza l'installazione rapida"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "Gestione centralizzata delle versioni, distribuzione più stabile",
+    "description": "Titolo della scheda di vantaggio della pagina di download, enfatizza stabilità delle versioni e distribuzione"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "Esperienza mobile e web coerente",
+    "description": "Titolo della scheda di vantaggio della pagina di download, enfatizza l'esperienza unificata"
+  },
+  "nav.mobileApp": {
+    "message": "Mobile",
+    "description": "Ingresso per il download dell'app mobile nella navigazione"
+  },
+  "message.mobileFastAccess": {
+    "message": "Gli utenti possono scansionare il codice sul telefono per installare direttamente, oppure possono scaricare l'APK sul desktop e distribuirlo ai membri del team, adatto per scenari che richiedono test rapidi e beta.",
+    "description": "Descrizione del vantaggio della pagina di download, enfatizza l'accesso rapido"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "I punti di accesso al download sono centralizzati in un'unica pagina, numero di versione, stato della piattaforma e modalità di installazione sono visibili a colpo d'occhio, riducendo i costi di comunicazione causati dalla dispersione dei link.",
+    "description": "Descrizione del vantaggio della pagina di download, enfatizza la distribuzione unificata"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "Il sistema di account, credito e accesso ai servizi dopo il login è coerente con il web, facilitando il passaggio senza soluzione di continuità tra desktop e mobile.",
+    "description": "Descrizione del vantaggio della pagina di download, enfatizza l'esperienza unificata dell'account"
   },
   "message.remainingAmount": {
-    "message": "Importo rimanente",
-    "description": "Usato per mostrare l'importo rimanente del servizio"
+    "message": "Importo residuo",
+    "description": "Utilizzato per visualizzare l'importo residuo del servizio"
   },
   "message.copied": {
     "message": "Copia riuscita",
@@ -229,15 +317,15 @@
   },
   "message.restart": {
     "message": "Rigenera",
-    "description": "Usato per mostrare che il contenuto è stato copiato con successo"
+    "description": "Messaggio per indicare che il contenuto è stato copiato con successo"
   },
   "message.confirmDelete": {
     "message": "Sei sicuro di voler eliminare?",
-    "description": "Messaggio di conferma per l'eliminazione di un contenuto"
+    "description": "Messaggio per confermare che l'utente desidera eliminare un contenuto"
   },
   "message.expiredAt": {
     "message": "Data di scadenza",
-    "description": "Usato per mostrare la data di scadenza del servizio"
+    "description": "Messaggio per mostrare la data di scadenza del servizio"
   },
   "message.alert": {
     "message": "Avviso",
@@ -249,11 +337,11 @@
   },
   "message.free": {
     "message": "Gratuito",
-    "description": "Messaggio che indica che il servizio è gratuito, significa che l'utente non deve pagare"
+    "description": "Messaggio per indicare che il servizio è gratuito, significa che l'utente non deve pagare"
   },
   "message.startPrice": {
-    "message": "Prezzo iniziale",
-    "description": "Messaggio che mostra il prezzo minimo del servizio"
+    "message": "Prezzo di partenza",
+    "description": "Messaggio per mostrare il prezzo minimo del servizio"
   },
   "message.joinDiscord": {
     "message": "Unisciti a Discord",
@@ -265,15 +353,15 @@
   },
   "message.serviceTech": {
     "message": "Supporto tecnico",
-    "description": "Messaggio che mostra il supporto tecnico"
+    "description": "Messaggio per mostrare il supporto tecnico"
   },
   "message.businessCooperation": {
     "message": "Cooperazione dati & commerciale",
-    "description": "Messaggio che mostra la cooperazione commerciale"
+    "description": "Messaggio per mostrare la cooperazione commerciale"
   },
   "message.noData": {
     "message": "Nessun dato",
-    "description": "Messaggio che mostra che non ci sono dati in una tabella o lista"
+    "description": "Messaggio per indicare che non ci sono dati nella tabella o nell'elenco"
   },
   "nav.home": {
     "message": "Home",
@@ -293,7 +381,7 @@
   },
   "nav.profile": {
     "message": "Il mio profilo",
-    "description": "Testo nella barra di navigazione del sito per mostrare la pagina del profilo personale"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina del profilo"
   },
   "nav.products": {
     "message": "Prodotti",
@@ -308,7 +396,7 @@
     "description": "Testo nella barra di navigazione del sito per mostrare la pagina della piattaforma API"
   },
   "nav.document": {
-    "message": "Documentazione",
+    "message": "Documentazione per sviluppatori",
     "description": "Testo nella barra di navigazione del sito per mostrare la pagina della documentazione"
   },
   "nav.console": {
@@ -337,55 +425,55 @@
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina della chat, non tradurre questo campo, deve rimanere 'Sora'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di chat, non tradurre questo campo, deve rimanere 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Midjourney, non tradurre questo campo, deve rimanere 'Midjourney'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di Midjourney, non tradurre questo campo, deve rimanere 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di QRArt, non tradurre questo campo, deve rimanere 'QRArt'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di arte QR, non tradurre questo campo, deve rimanere 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Suno, non tradurre questo campo, deve rimanere 'Suno'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di Suno, non tradurre questo campo, deve rimanere 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Pixverse, non tradurre questo campo, deve rimanere 'Pixverse'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di Pixverse, non tradurre questo campo, deve rimanere 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Flux, non tradurre questo campo, deve rimanere 'Flux'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di Flux, non tradurre questo campo, deve rimanere 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Nano Banana, non tradurre questo campo, deve rimanere 'Nano Banana'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di Nano Banana, non tradurre questo campo, deve rimanere 'Nano Banana'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di SeeDream, non tradurre questo campo, deve rimanere 'SeeDream'"
+    "description": "Testo nella barra di navigazione del sito per mostrare la pagina di SeeDream, non tradurre questo campo, deve rimanere 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di SeeDance, non tradurre questo campo, deve rimanere 'SeeDance'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina SeeDance, non tradurre questo campo, deve rimanere 'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Luma, non tradurre questo campo, deve rimanere 'Luma'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Luma, non tradurre questo campo, deve rimanere 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Pika, non tradurre questo campo, deve rimanere 'Pika'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Pika, non tradurre questo campo, deve rimanere 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Kling, non tradurre questo campo, deve rimanere 'Kling'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Kling, non tradurre questo campo, deve rimanere 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina di Hailuo, non tradurre questo campo, deve rimanere 'Hailuo'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Hailuo, non tradurre questo campo, deve rimanere 'Hailuo'"
   },
   "nav.image": {
     "message": "Immagini",
@@ -472,12 +560,12 @@
     "description": "Titolo della pagina che mostra la configurazione del sito"
   },
   "title.distributionHistory": {
-    "message": "Storia delle raccomandazioni",
-    "description": "Titolo della pagina che mostra la storia delle raccomandazioni"
+    "message": "Storico referral",
+    "description": "Titolo della pagina che mostra lo storico dei referral"
   },
   "title.invitee": {
-    "message": "Invitatore",
-    "description": "Titolo della pagina che mostra l'invitante"
+    "message": "Invitato",
+    "description": "Titolo della pagina che mostra l'invitato"
   },
   "title.allUsages": {
     "message": "Storico utilizzi",
@@ -485,7 +573,7 @@
   },
   "title.allCredentials": {
     "message": "Chiavi",
-    "description": "Titolo della pagina che mostra tutte le credenziali utilizzate per accedere all'API"
+    "description": "Titolo della pagina che mostra tutte le credenziali, utilizzate per accedere all'API"
   },
   "about.title1": {
     "message": "Contattaci",
@@ -528,8 +616,8 @@
     "description": "Link alla pagina centrale"
   },
   "about.link6": {
-    "message": "Guadagni da raccomandazioni",
-    "description": "Link alla pagina dei guadagni da raccomandazioni"
+    "message": "Guadagni da referral",
+    "description": "Link alla pagina dei guadagni da referral"
   },
   "about.link7": {
     "message": "Supporto",
@@ -557,39 +645,39 @@
   },
   "settings.general": {
     "message": "Impostazioni generali",
-    "description": "Titolo della sezione delle impostazioni generali nella pagina delle impostazioni"
+    "description": "Titolo della sezione impostazioni generali nella pagina delle impostazioni"
   },
   "settings.language": {
     "message": "Lingua",
-    "description": "Titolo della sezione delle impostazioni della lingua nella pagina delle impostazioni"
+    "description": "Titolo della sezione impostazioni lingua nella pagina delle impostazioni"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Titolo della sezione delle impostazioni del tema nella pagina delle impostazioni"
+    "description": "Titolo della sezione impostazioni tema nella pagina delle impostazioni"
   },
   "settings.seo": {
     "message": "Impostazioni SEO",
-    "description": "Titolo della sezione delle impostazioni SEO nella pagina delle impostazioni"
+    "description": "Titolo della sezione impostazioni SEO nella pagina delle impostazioni"
   },
   "settings.site": {
-    "message": "Impostazioni del sito",
-    "description": "Titolo della sezione delle impostazioni del sito nella pagina delle impostazioni"
+    "message": "Impostazioni sito",
+    "description": "Titolo della sezione impostazioni sito nella pagina delle impostazioni"
   },
   "settings.distribution": {
-    "message": "Impostazioni di distribuzione",
-    "description": "Titolo della sezione delle impostazioni di distribuzione nella pagina delle impostazioni"
+    "message": "Impostazioni distribuzione",
+    "description": "Titolo della sezione impostazioni distribuzione nella pagina delle impostazioni"
   },
   "settings.function": {
-    "message": "Impostazioni funzionali",
-    "description": "Titolo della sezione delle impostazioni funzionali nella pagina delle impostazioni"
+    "message": "Impostazioni funzionalità",
+    "description": "Titolo della sezione impostazioni funzionalità nella pagina delle impostazioni"
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Testo nella barra di navigazione del sito web per visualizzare la pagina Gemini, deve rimanere come 'Gemini'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Gemini, deve rimanere 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Testo nella barra di navigazione del sito web per visualizzare la pagina Claude, deve rimanere come 'Claude'"
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Claude, deve rimanere 'Claude'"
   },
   "button.detail": {
     "message": "Dettagli",
@@ -613,18 +701,18 @@
   },
   "nav.tryNow": {
     "message": "Prova ora",
-    "description": "Testo nella barra di navigazione del sito web per consentire agli utenti di provare il servizio"
+    "description": "Testo nella barra di navigazione del sito per invitare gli utenti a provare il servizio"
   },
   "title.coin": {
     "message": "Criptovaluta",
     "description": "Titolo della pagina che mostra le criptovalute"
   },
   "title.distributionRank": {
-    "message": "Classifica delle raccomandazioni",
-    "description": "Titolo della pagina che mostra la classifica delle raccomandazioni"
+    "message": "Classifica referral",
+    "description": "Titolo della pagina che mostra la classifica referral"
   },
   "title.distributionPlatformRank": {
-    "message": "Classifica delle piattaforme",
+    "message": "Classifica piattaforme",
     "description": "Titolo della pagina che mostra la classifica delle piattaforme"
   },
   "customers.name1": {
@@ -648,7 +736,7 @@
     "description": "Professione del cliente"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud è una piattaforma di integrazione eccellente, con un servizio di alta qualità.",
+    "message": "Ace Data Cloud è una grande piattaforma di integrazione, con un servizio di alta qualità.",
     "description": "Commento del cliente"
   },
   "customers.name3": {
@@ -660,8 +748,8 @@
     "description": "Professione del cliente"
   },
   "customers.comment3": {
-    "message": "Mi piace il servizio di Ace Data Cloud, è facile da usare e a un prezzo ragionevole. Spero che continui a migliorare!",
-    "description": "Valutazione del cliente"
+    "message": "Mi piace il servizio di Ace Data Cloud, è facile da usare e a un prezzo ragionevole, spero che continui a migliorare!",
+    "description": "Commento del cliente"
   },
   "nav.github": {
     "message": "GitHub",
@@ -673,15 +761,15 @@
   },
   "settings.about": {
     "message": "Informazioni",
-    "description": "Titolo della sezione 'Informazioni' nella pagina delle impostazioni"
+    "description": "Titolo della sezione informazioni nella pagina delle impostazioni"
   },
   "settings.poweredBy": {
     "message": "Progetto open source",
-    "description": "Titolo che mostra su quale progetto open source è basato il sito nella pagina delle informazioni"
+    "description": "Titolo che mostra su quale progetto open source è basato il sito"
   },
   "settings.poweredByTip": {
     "message": "Questo sito è basato sul progetto open source Nexior, il codice è completamente open source.",
-    "description": "Descrizione che mostra su quale progetto open source è basato il sito nella pagina delle informazioni"
+    "description": "Informazioni su quale progetto open source è basato il sito"
   },
   "settings.apiService": {
     "message": "Servizio API",
@@ -689,18 +777,18 @@
   },
   "settings.apiServiceTip": {
     "message": "Il servizio API di questo sito è fornito da Ace Data Cloud.",
-    "description": "Descrizione che mostra il fornitore del servizio API nella pagina delle informazioni"
+    "description": "Informazioni sul fornitore del servizio API nella pagina delle informazioni"
   },
   "settings.buildYourOwn": {
     "message": "Crea il tuo",
     "description": "Titolo che invita gli utenti a creare un sito simile nella pagina delle informazioni"
   },
   "settings.buildYourOwnTip": {
-    "message": "Vuoi creare un sito AI simile? Contattaci per supporto alla distribuzione.",
-    "description": "Descrizione per la creazione di un sito simile nella pagina delle informazioni"
+    "message": "Vuoi creare un sito AI simile? Contattaci per supporto al deployment.",
+    "description": "Informazioni su come creare un sito simile nella pagina delle informazioni"
   },
   "settings.contactUs": {
-    "message": "Contatta il supporto",
+    "message": "Contattaci",
     "description": "Testo del pulsante per contattare il supporto"
   },
   "message.viewOnGithub": {

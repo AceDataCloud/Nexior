@@ -17,7 +17,7 @@
   },
   "button.restart": {
     "message": "Перегенерировать",
-    "description": "Текст на кнопке для перегенерации определенного содержимого"
+    "description": "Текст на кнопке для перегенерации содержимого"
   },
   "button.preview": {
     "message": "Предпросмотр",
@@ -85,11 +85,11 @@
   },
   "button.console": {
     "message": "Консоль",
-    "description": "Текст на кнопке для отображения страницы консоли для управления содержимым на веб-странице"
+    "description": "Текст на кнопке для отображения консольной страницы"
   },
   "button.learn": {
     "message": "Изучить",
-    "description": "Текст на кнопке для обучения пользователя"
+    "description": "Текст на кнопке для изучения содержимого"
   },
   "button.buy": {
     "message": "Купить",
@@ -97,15 +97,27 @@
   },
   "button.try": {
     "message": "Попробовать",
-    "description": "Текст на кнопке для попытки использования содержимого"
+    "description": "Текст на кнопке для пробного использования содержимого"
   },
   "button.startForFree": {
     "message": "Начать бесплатно",
     "description": "Текст на кнопке для бесплатного начала"
   },
+  "button.downloadAndroid": {
+    "message": "Скачать для Android",
+    "description": "Текст на кнопке для скачивания Android установочного пакета"
+  },
+  "button.downloadIos": {
+    "message": "Скачать для iOS",
+    "description": "Текст на кнопке для скачивания iOS установочного файла"
+  },
+  "button.installIos": {
+    "message": "Установить для iOS",
+    "description": "Текст на кнопке для установки iOS приложения"
+  },
   "button.apply": {
     "message": "Подать заявку",
-    "description": "Текст на кнопке для подачи заявки на API-сервис"
+    "description": "Текст на кнопке для подачи заявки на API сервис"
   },
   "button.refresh": {
     "message": "Обновить",
@@ -121,11 +133,11 @@
   },
   "button.applied": {
     "message": "Заявка подана",
-    "description": "Текст на кнопке для отображения информации о поданной заявке"
+    "description": "Текст на кнопке для отображения, что пользователь подал заявку на услугу"
   },
   "button.acquire": {
     "message": "Получить",
-    "description": "Текст на кнопке для получения токена или ключа API-сервиса"
+    "description": "Текст на кнопке для получения токена или ключа API сервиса"
   },
   "button.fillExample": {
     "message": "Заполнить пример",
@@ -133,7 +145,7 @@
   },
   "button.buyMore": {
     "message": "Пополнить",
-    "description": "Текст на кнопке для пополнения счета. Перевод на английский должен быть 'Top Up', на русский 'Пополнить'."
+    "description": "Текст на кнопке для пополнения счета. Должен переводиться как 'Top Up'."
   },
   "button.update": {
     "message": "Обновить",
@@ -149,95 +161,171 @@
   },
   "button.referralEarnings": {
     "message": "Доход от рефералов",
-    "description": "Текст на кнопке для отображения дохода от рефералов, что означает, что пользователь может зарабатывать, приглашая других использовать этот сервис"
+    "description": "Текст на кнопке для отображения дохода от рефералов, что означает, что пользователь может зарабатывать, приглашая других использовать сервис"
   },
   "button.finish": {
     "message": "Завершить",
     "description": "Текст на кнопке для завершения действия"
   },
   "entity.id": {
-    "message": "ID",
-    "description": "Уникальный идентификатор сущности"
+    "message": "ИД",
+    "description": "用于显示实体的唯一标识符"
   },
   "entity.type": {
     "message": "Тип",
-    "description": "Тип сущности"
+    "description": "用于显示实体的类型"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Название сайта, не требует перевода, оставить как 'Ace Data Cloud'"
+    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Авторские права",
-    "description": "Текст, отображающий авторские права"
+    "description": "显示版权的文本"
   },
   "entity.platform": {
     "message": "Платформа",
-    "description": "Текст, указывающий, что это платформа API-сервиса"
+    "description": "指示这是API服务平台的文本"
   },
   "entity.title": {
     "message": "Заголовок",
-    "description": "Заголовок сущности"
+    "description": "实体的标题"
   },
   "entity.icon": {
     "message": "Иконка",
-    "description": "Иконка сущности"
+    "description": "实体的图标"
   },
   "entity.status": {
     "message": "Статус",
-    "description": "Статус сущности"
+    "description": "实体的状态"
   },
   "status.loading": {
     "message": "Загрузка...",
-    "description": "Текст статуса, отображаемый во время загрузки контента"
+    "description": "内容加载时显示的状态文案"
   },
   "entity.operation": {
     "message": "Операция",
-    "description": "Операция сущности"
+    "description": "实体的操作"
   },
   "entity.description": {
     "message": "Описание",
-    "description": "Описание сущности"
+    "description": "实体的描述"
   },
   "entity.createdAt": {
     "message": "Создано",
-    "description": "Время создания сущности"
+    "description": "实体创建的时间"
   },
   "entity.updatedAt": {
     "message": "Обновлено",
-    "description": "Время обновления сущности"
+    "description": "实体更新的时间"
   },
   "entity.order": {
     "message": "Заказ",
-    "description": "Заказ сущности, содержащий информацию о деньгах и услугах, за которые пользователь должен заплатить"
+    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
   },
   "message.noTasks": {
     "message": "Нет историй задач, начните новую задачу～",
-    "description": "Сообщение, когда нет задач"
+    "description": "没有任务时的消息"
   },
   "message.usedAmount": {
     "message": "Использованная сумма",
-    "description": "Используется для отображения суммы, уже использованной для услуги"
+    "description": "用于显示服务已使用的金额"
+  },
+  "message.mobileAppDescription": {
+    "message": "Используйте AceData на мобильном устройстве, в настоящее время доступна установка Android APK.",
+    "description": "移动应用下载页的说明文案"
+  },
+  "message.mobileAndroidHint": {
+    "message": "Подходит для Android-смартфонов и планшетов, отсканируйте код для установки последней APK.",
+    "description": "Android 下载卡片说明"
+  },
+  "message.mobileAndroidPending": {
+    "message": "Установка Android еще не готова, попробуйте позже.",
+    "description": "Android 安装包暂未可用时的提示"
+  },
+  "message.mobileAvailableNow": {
+    "message": "Android доступен для загрузки",
+    "description": "用于显示 Android 已可下载的状态"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "Безопасная доставка через CDN",
+    "description": "用于强调下载链接通过 CDN 交付"
+  },
+  "message.mobileDirectInstall": {
+    "message": "Прямой APK-установка",
+    "description": "用于描述 Android 端为直接 APK 安装方式"
+  },
+  "message.mobileLatestRelease": {
+    "message": "Текущая публичная версия",
+    "description": "用于说明当前展示的是最新公开版本"
+  },
+  "message.mobileSharedAccount": {
+    "message": "Общий аккаунт и лимиты с веб-версией",
+    "description": "用于说明移动端与网页端共用账号"
+  },
+  "message.mobileIosHint": {
+    "message": "Подходит для iPhone и iPad, можно установить онлайн; если система блокирует, можно сначала скачать IPA и затем установить.",
+    "description": "iOS 下载卡片说明"
+  },
+  "message.mobileIosPending": {
+    "message": "Установка iOS еще не доступна для загрузки, идет подготовка сертификатов Apple.",
+    "description": "iOS 安装包暂未可用时的提示"
+  },
+  "message.mobileInstallNote": {
+    "message": "При первой установке корпоративного или Ad Hoc пакета на iOS система может потребовать сначала доверить сертификат в 'Настройки > Основные > VPN и управление устройствами'.",
+    "description": "移动应用安装提示"
+  },
+  "title.mobileApp": {
+    "message": "Скачивание мобильного приложения",
+    "description": "移动应用下载页标题"
+  },
+  "title.mobileFastAccess": {
+    "message": "Быстрый доступ, без обхода магазинов приложений",
+    "description": "下载页优势卡片标题，强调快速安装"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "Централизованное управление версиями, стабильная доставка",
+    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "Единый опыт на мобильном и веб-версии",
+    "description": "下载页优势卡片标题，强调统一体验"
+  },
+  "nav.mobileApp": {
+    "message": "Мобильное приложение",
+    "description": "导航中的移动应用下载入口"
+  },
+  "message.mobileFastAccess": {
+    "message": "Пользователи могут сканировать код на телефоне для быстрой установки или сначала скачать APK на настольном компьютере и затем раздать команде, подходит для быстрого тестирования и бета-тестирования.",
+    "description": "下载页优势说明，强调快速接入"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "Все ссылки для загрузки сосредоточены на одной странице, номера версий, статус платформы и способы установки видны с первого взгляда, что снижает затраты на коммуникацию из-за разрозненности.",
+    "description": "下载页优势说明，强调统一分发"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "Система аккаунтов, лимиты и вход в сервис после входа остаются одинаковыми с веб-версией, что позволяет пользователям легко переключаться между настольным и мобильным устройствами.",
+    "description": "下载页优势说明，强调统一账号体验"
   },
   "message.remainingAmount": {
     "message": "Остаток",
-    "description": "Используется для отображения оставшейся суммы для услуги"
+    "description": "用于显示服务剩余的金额"
   },
   "message.copied": {
     "message": "Успешно скопировано",
-    "description": "Сообщение, отображающее, что содержимое успешно скопировано"
+    "description": "显示内容已成功复制的消息"
   },
   "message.restart": {
     "message": "Перегенерировать",
-    "description": "Используется для отображения сообщения о перегенерации"
+    "description": "Сообщение, показывающее, что содержимое было успешно скопировано"
   },
   "message.confirmDelete": {
     "message": "Вы уверены, что хотите удалить?",
-    "description": "Сообщение для подтверждения удаления содержимого пользователем"
+    "description": "Сообщение для подтверждения удаления контента пользователем"
   },
   "message.expiredAt": {
     "message": "Срок действия",
-    "description": "Используется для отображения срока действия услуги"
+    "description": "Сообщение для отображения срока действия услуги"
   },
   "message.alert": {
     "message": "Предупреждение",
@@ -249,31 +337,31 @@
   },
   "message.free": {
     "message": "Бесплатно",
-    "description": "Сообщение, указывающее, что услуга бесплатна, то есть пользователю не нужно платить"
+    "description": "Сообщение, показывающее, что услуга бесплатна, то есть пользователю не нужно платить"
   },
   "message.startPrice": {
     "message": "Начальная цена",
-    "description": "Сообщение, отображающее минимальную цену услуги"
+    "description": "Сообщение для отображения минимальной цены услуги"
   },
   "message.joinDiscord": {
     "message": "Присоединиться к Discord",
     "description": "Сообщение, предлагающее пользователю присоединиться к каналу Discord"
   },
   "message.addWeChat": {
-    "message": "Служба WeChat",
+    "message": "Добавить WeChat",
     "description": "Сообщение, предлагающее пользователю добавить учетную запись WeChat"
   },
   "message.serviceTech": {
     "message": "Техническая поддержка",
-    "description": "Сообщение, отображающее техническую поддержку"
+    "description": "Сообщение для отображения технической поддержки"
   },
   "message.businessCooperation": {
     "message": "Данные и бизнес-сотрудничество",
-    "description": "Сообщение, отображающее бизнес-сотрудничество"
+    "description": "Сообщение для отображения бизнес-сотрудничества"
   },
   "message.noData": {
     "message": "Нет данных",
-    "description": "Сообщение, отображающее отсутствие данных в таблице или списке"
+    "description": "Сообщение для отображения отсутствия данных в таблице или списке"
   },
   "nav.home": {
     "message": "Главная",
@@ -292,7 +380,7 @@
     "description": "Текст в навигационной панели сайта для отображения страницы услуг"
   },
   "nav.profile": {
-    "message": "Я",
+    "message": "Профиль",
     "description": "Текст в навигационной панели сайта для отображения страницы профиля"
   },
   "nav.products": {
@@ -305,10 +393,10 @@
   },
   "nav.apiPlatform": {
     "message": "API Платформа",
-    "description": "Текст в навигационной панели сайта для отображения страницы платформы API"
+    "description": "Текст в навигационной панели сайта для отображения страницы API платформы"
   },
   "nav.document": {
-    "message": "Документация",
+    "message": "Документация для разработчиков",
     "description": "Текст в навигационной панели сайта для отображения страницы документации"
   },
   "nav.console": {
@@ -317,55 +405,55 @@
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Текст в навигационной панели сайта для отображения страницы ChatGPT, не переводить это поле, должно оставаться 'ChatGPT'"
+    "description": "Текст в навигационной панели сайта для отображения страницы ChatGPT, не переводить, оставить как 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Текст в навигационной панели сайта для отображения страницы DeepSeek, не переводить это поле, должно оставаться 'DeepSeek'"
+    "description": "Текст в навигационной панели сайта для отображения страницы DeepSeek, не переводить, оставить как 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Текст в навигационной панели сайта для отображения страницы Grok, не переводить это поле, должно оставаться 'Grok'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Grok, не переводить, оставить как 'Grok'"
   },
   "nav.chat": {
     "message": "Чат",
-    "description": "Текст в навигационной панели сайта для отображения страницы чата, не переводить это поле, должно оставаться 'Chat'"
+    "description": "Текст в навигационной панели сайта для отображения страницы чата, не переводить, оставить как 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Текст в навигационной панели сайта для отображения страницы чата, не переводить это поле, должно оставаться 'Veo'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Veo, не переводить, оставить как 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Sora'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Sora, не переводить, оставить как 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Midjourney, не переводить, оставить как 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
+    "description": "Текст в навигационной панели сайта для отображения страницы QRArt, не переводить, оставить как 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "网站导航栏中的文本，用于显示Suno页面，请不要翻译此字段，必须保持为'Suno'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Suno, не переводить, оставить как 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "网站导航栏中的文本，用于显示Pixverse页面，请不要翻译此字段，必须保持为'Pixverse'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Pixverse, не переводить, оставить как 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Flux, не переводить, оставить как 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
+    "description": "Текст в навигационной панели сайта для отображения страницы Nano Banana, не переводить, оставить как 'Nano Banana'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
+    "description": "Текст в навигационной панели сайта для отображения страницы SeeDream, не переводить, оставить как 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -416,7 +504,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI Фото",
+    "message": "AI Фотографии",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
@@ -473,63 +561,63 @@
   },
   "title.distributionHistory": {
     "message": "История рекомендаций",
-    "description": "Отображение заголовка страницы истории рекомендаций"
+    "description": "显示推荐历史的页面标题"
   },
   "title.invitee": {
-    "message": "Пригласитель",
-    "description": "Отображение заголовка страницы пригласителя"
+    "message": "Приглашенный",
+    "description": "显示邀请人的页面标题"
   },
   "title.allUsages": {
     "message": "История использования",
-    "description": "Отображение заголовка страницы всех использований API-сервиса"
+    "description": "显示API服务所有使用的页面标题"
   },
   "title.allCredentials": {
     "message": "Ключи",
-    "description": "Отображение заголовка страницы всех учетных данных, используемых для доступа к API"
+    "description": "显示所有凭证的页面标题，凭证用于访问API"
   },
   "about.title1": {
     "message": "Связаться с нами",
-    "description": "Отображение заголовка раздела контактной информации"
+    "description": "显示联系信息的部分标题"
   },
   "about.title2": {
     "message": "Ресурсы",
-    "description": "Отображение заголовка раздела ссылок"
+    "description": "显示链接的部分标题"
   },
   "about.title3": {
     "message": "Ссылки",
-    "description": "Отображение заголовка раздела информации о поддержке"
+    "description": "显示支持信息的部分标题"
   },
   "about.address": {
-    "message": "201, 651 N Broad St, Middletown, DE, USA",
-    "description": "Адрес компании"
+    "message": "651 N Broad St, Suite 201, Middletown, DE, USA",
+    "description": "公司的地址"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Электронная почта компании"
+    "description": "公司的电子邮件"
   },
   "about.link1": {
-    "message": "Документация",
-    "description": "Ссылка на страницу документации"
+    "message": "Услуги",
+    "description": "指向文档页面的链接"
   },
   "about.link2": {
-    "message": "Документы для разработчиков",
-    "description": "Ссылка на страницу сервиса"
+    "message": "Документация для разработчиков",
+    "description": "指向服务页面的链接"
   },
   "about.link3": {
     "message": "Консоль",
-    "description": "Ссылка на страницу консоли"
+    "description": "指向控制台页面的链接"
   },
   "about.link4": {
     "message": "Профиль",
-    "description": "Ссылка на страницу профиля"
+    "description": "指向个人资料页面的链接"
   },
   "about.link5": {
     "message": "UI Платформа",
-    "description": "Ссылка на центральную страницу"
+    "description": "指向中心页面的链接"
   },
   "about.link6": {
-    "message": "Рекомендации",
-    "description": "Ссылка на страницу доходов от рекомендаций"
+    "message": "Рекомендованный доход",
+    "description": "Ссылка на страницу дохода от рекомендаций"
   },
   "about.link7": {
     "message": "Поддержка",
@@ -552,7 +640,7 @@
     "description": "Название темной темы"
   },
   "theme.system": {
-    "message": "Системная тема",
+    "message": "Системная",
     "description": "Название системной темы, указывающее на автоматическое переключение темы в зависимости от настроек системы"
   },
   "settings.general": {
@@ -561,7 +649,7 @@
   },
   "settings.language": {
     "message": "Язык",
-    "description": "Заголовок раздела языковых настроек на странице настроек"
+    "description": "Заголовок раздела настроек языка на странице настроек"
   },
   "settings.theme": {
     "message": "Тема",
@@ -612,20 +700,20 @@
     "description": "Сообщение об ошибке копирования содержимого"
   },
   "nav.tryNow": {
-    "message": "Попробуйте сейчас",
-    "description": "Текст в навигационной панели сайта, позволяющий пользователю попробовать сервис"
+    "message": "Попробовать сейчас",
+    "description": "Текст в навигационной панели сайта, позволяющий пользователю попробовать услугу"
   },
   "title.coin": {
     "message": "Криптовалюта",
-    "description": "Отображение заголовка страницы криптовалюты"
+    "description": "Заголовок страницы, отображающей криптовалюту"
   },
   "title.distributionRank": {
     "message": "Рейтинг рекомендаций",
-    "description": "Отображение заголовка страницы рейтинга рекомендаций"
+    "description": "Заголовок страницы, отображающей рейтинг рекомендаций"
   },
   "title.distributionPlatformRank": {
-    "message": "Рейтинг платформы",
-    "description": "Отображение заголовка страницы рейтинга платформы"
+    "message": "Рейтинг платформ",
+    "description": "Заголовок страницы, отображающей рейтинг платформ"
   },
   "customers.name1": {
     "message": "Марк Дю",
@@ -636,15 +724,15 @@
     "description": "Профессия клиента"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloud предоставила нашей команде отличное обслуживание, что помогло нам повысить производительность. Очень нравится!",
+    "message": "Ace Data Cloud предоставил нашей команде отличное обслуживание, что помогло нам повысить продуктивность. Очень нравится!",
     "description": "Отзыв клиента"
   },
   "customers.name2": {
-    "message": "Яков Уильямс",
+    "message": "Якоб Уильямс",
     "description": "Имя клиента"
   },
   "customers.job2": {
-    "message": "Менеджер продукта",
+    "message": "Менеджер по продукту",
     "description": "Профессия клиента"
   },
   "customers.comment2": {
@@ -660,51 +748,51 @@
     "description": "Профессия клиента"
   },
   "customers.comment3": {
-    "message": "Мне нравится сервис Ace Data Cloud, он удобен в использовании и имеет разумные цены. Надеюсь, он будет становиться все лучше!",
-    "description": "客户的评价"
+    "message": "Мне нравится сервис Ace Data Cloud, он удобен в использовании и по разумной цене, надеюсь, он станет еще лучше!",
+    "description": "Отзыв клиента"
   },
   "nav.github": {
     "message": "GitHub",
-    "description": "GitHub仓库链接"
+    "description": "Ссылка на репозиторий GitHub"
   },
   "settings.github": {
     "message": "Исходный код",
-    "description": "在GitHub上查看源代码的链接"
+    "description": "Ссылка для просмотра исходного кода на GitHub"
   },
   "settings.about": {
     "message": "О нас",
-    "description": "设置页面中的关于部分的标题"
+    "description": "Заголовок раздела 'О нас' на странице настроек"
   },
   "settings.poweredBy": {
     "message": "Проект с открытым исходным кодом",
-    "description": "关于页面中展示本站基于哪个开源项目搭建的标题"
+    "description": "Заголовок, показывающий, на каком проекте с открытым исходным кодом основан сайт"
   },
   "settings.poweredByTip": {
-    "message": "Наш сайт основан на проекте Nexior с открытым исходным кодом, код полностью открыт.",
-    "description": "关于页面中展示本站基于哪个开源项目的说明"
+    "message": "Сайт основан на проекте с открытым исходным кодом Nexior, код полностью открыт.",
+    "description": "Описание, показывающее, на каком проекте с открытым исходным кодом основан сайт"
   },
   "settings.apiService": {
     "message": "API Сервис",
-    "description": "关于页面中展示API服务提供方的标题"
+    "description": "Заголовок, показывающий поставщика API сервиса на странице 'О нас'"
   },
   "settings.apiServiceTip": {
     "message": "API сервис предоставляется Ace Data Cloud.",
-    "description": "关于页面中展示API服务提供方的说明"
+    "description": "Описание, показывающее поставщика API сервиса на странице 'О нас'"
   },
   "settings.buildYourOwn": {
     "message": "Создайте свой собственный",
-    "description": "关于页面中提示用户可以搭建同款站点的标题"
+    "description": "Заголовок, предлагающий пользователю создать аналогичный сайт на странице 'О нас'"
   },
   "settings.buildYourOwnTip": {
     "message": "Хотите создать такой же AI сайт? Свяжитесь с нами для получения поддержки по развертыванию.",
-    "description": "关于页面中搭建同款的说明"
+    "description": "Описание, предлагающее пользователю создать аналогичный сайт на странице 'О нас'"
   },
   "settings.contactUs": {
     "message": "Связаться с поддержкой",
-    "description": "联系客服按钮的文本"
+    "description": "Текст кнопки для связи с поддержкой"
   },
   "message.viewOnGithub": {
     "message": "Посмотреть на GitHub",
-    "description": "在GitHub上查看项目的链接文本"
+    "description": "Текст ссылки для просмотра проекта на GitHub"
   }
 }

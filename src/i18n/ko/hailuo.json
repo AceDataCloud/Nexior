@@ -40,7 +40,7 @@
     "description": "내용 입력의 프롬프트"
   },
   "name.ingredients": {
-    "message": "다중 이미지 비디오",
+    "message": "다중 이미지 비디오 생성",
     "description": "다중 이미지 비디오 생성 스위치/라벨 (영어 제안: Multi-Image, 간결하게 유지)"
   },
   "name.model": {
@@ -60,7 +60,7 @@
     "description": "Hailuo 비디오 생성기의 이름"
   },
   "description.ingredients": {
-    "message": "자신의 비디오를 생성하기 위해 여러 이미지를 업로드하려면 이 버튼을 활성화하세요.",
+    "message": "여러 이미지를 업로드하여 비디오를 생성하려면 이 버튼을 활성화하세요.",
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.startImageUrl": {
@@ -127,6 +127,10 @@
     "message": "이미지 비디오 생성",
     "description": "Hailuo 비디오 생성을 위한 버튼 텍스트"
   },
+  "button.model3": {
+    "message": "이미지 비디오 생성(감독 모드)",
+    "description": "Hailuo 비디오 생성을 위한 버튼 텍스트, 감독 모드"
+  },
   "button.generate": {
     "message": "생성",
     "description": "Hailuo 비디오 생성을 위한 버튼 텍스트"
@@ -161,7 +165,7 @@
   },
   "message.startTaskSuccess": {
     "message": "생성 작업이 성공적으로 시작되었습니다.",
-    "description": "작업 시작 성공 시의 성공 메시지"
+    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "작업 시작 실패, 관리자에게 문의하세요.",
@@ -169,7 +173,7 @@
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 추가 포인트를 구매한 후 계속 사용하세요.",
-    "description": "소진 시의 메시지"
+    "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -180,8 +184,8 @@
     "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.extendVideo": {
-    "message": "이 비디오 계속 생성",
-    "description": "이미지가 생성 중일 때의 메시지"
+    "message": "비디오 계속 생성",
+    "description": "이미지가 생성되는 동안의 메시지"
   },
   "message.generateFailed": {
     "message": "이미지 생성 실패",
@@ -228,7 +232,7 @@
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성을 클릭하세요",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
     "description": "작업이 없을 때의 메시지"
   }
 }

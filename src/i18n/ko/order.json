@@ -1,27 +1,27 @@
 {
   "button.pay": {
     "message": "결제",
-    "description": "주문 결제를 위한 버튼의 텍스트입니다."
+    "description": "주문 결제를 위한 버튼 텍스트입니다."
   },
   "button.continuePay": {
-    "message": "결제 계속하기",
-    "description": "주문 결제를 계속하기 위한 버튼의 텍스트입니다."
+    "message": "결제 계속",
+    "description": "주문 결제를 계속하기 위한 버튼 텍스트입니다."
   },
   "button.checkDetail": {
     "message": "상세 보기",
-    "description": "주문 상세 정보를 보기 위한 버튼의 텍스트입니다."
+    "description": "주문 상세 정보를 보기 위한 버튼 텍스트입니다."
   },
   "button.query": {
     "message": "조회",
-    "description": "주문을 조회하기 위한 버튼의 텍스트입니다."
+    "description": "주문을 조회하기 위한 버튼 텍스트입니다."
   },
   "button.finish": {
     "message": "수동 완료",
-    "description": "주문을 수동으로 완료하기 위한 버튼의 텍스트입니다."
+    "description": "주문을 수동으로 완료하기 위한 버튼 텍스트입니다."
   },
   "button.update": {
     "message": "업데이트",
-    "description": "주문을 업데이트하기 위한 버튼의 텍스트입니다."
+    "description": "주문을 업데이트하기 위한 버튼 텍스트입니다."
   },
   "field.id": {
     "message": "주문 ID",
@@ -68,16 +68,16 @@
     "description": "결제가 성공했음을 알리는 메시지입니다."
   },
   "message.orderExpired": {
-    "message": "주문이 만료되었습니다. 결제를 위해 새 주문을 생성해 주세요.",
-    "description": "주문이 만료되었음을 알리는 메시지입니다."
+    "message": "주문이 만료되었습니다. 새 주문을 생성하여 결제하세요.",
+    "description": "만료된 주문에 대한 메시지입니다."
   },
   "message.createFailed": {
     "message": "생성 실패",
-    "description": "생성에 실패했음을 알리는 메시지입니다."
+    "description": "생성 실패에 대한 메시지입니다."
   },
   "message.wechatPayHelp": {
     "message": "휴대폰에서 WeChat을 열고 결제를 완료하세요.",
-    "description": "WeChat 결제 도움말 메시지입니다."
+    "description": "WeChat 결제 도움말에 대한 메시지입니다."
   },
   "message.free": {
     "message": "무료",
@@ -89,18 +89,18 @@
   },
   "message.updateFailed": {
     "message": "업데이트 실패",
-    "description": "업데이트에 실패했음을 알리는 메시지입니다."
+    "description": "업데이트 실패에 대한 메시지입니다."
   },
   "message.updateSuccessfully": {
     "message": "업데이트 성공",
-    "description": "업데이트가 성공했음을 알리는 메시지입니다."
+    "description": "업데이트 성공에 대한 메시지입니다."
   },
   "message.confirmFinish": {
-    "message": "이 작업은 주문을 수동으로 결제 상태로 설정하고 배포 처리를 완료합니다. 취소할 수 없습니다. 고객이 결제를 완료했는지 확인해 주세요. 계속하시겠습니까?",
-    "description": "완료 확인 메시지입니다."
+    "message": "이 작업은 주문을 결제 상태로 수동 설정하고 배포 처리를 완료합니다. 취소할 수 없습니다. 고객이 결제를 완료했는지 확인하시겠습니까? 계속하시겠습니까?",
+    "description": "완료 확인에 대한 메시지입니다."
   },
   "state.pending": {
-    "message": "결제 대기 중",
+    "message": "결제 대기",
     "description": "주문의 상태로, 해당 주문이 사용자의 결제를 기다리고 있음을 나타냅니다."
   },
   "state.paid": {
@@ -129,11 +129,11 @@
   },
   "title.aliPay": {
     "message": "알리페이",
-    "description": "웹사이트 제목으로 표시되는 제목으로, 알리페이 결제를 나타냅니다. 알리페이 결제는 온라인 결제입니다."
+    "description": "웹사이트 제목으로 표시되는 제목으로, 알리페이 결제를 나타냅니다."
   },
   "title.stripe": {
     "message": "스트라이프",
-    "description": "웹사이트 제목으로 표시되는 제목으로, 스트라이프 결제를 나타냅니다. 스트라이프 결제는 온라인 결제입니다."
+    "description": "웹사이트 제목으로 표시되는 제목으로, 스트라이프 결제를 나타냅니다."
   },
   "title.manageOrder": {
     "message": "주문 관리",
@@ -141,14 +141,18 @@
   },
   "title.x402": {
     "message": "암호화폐",
-    "description": "웹사이트 제목으로 표시되는 제목으로, 암호화폐 결제를 나타냅니다 (X402 결제 솔루션 기반)."
+    "description": "웹사이트 제목으로 표시되는 제목으로, 암호화폐 결제를 나타냅니다."
+  },
+  "title.paypal": {
+    "message": "페이팔",
+    "description": "웹사이트 제목으로 표시되는 제목으로, 페이팔 결제를 나타냅니다."
   },
   "message.discountTag": {
     "message": "{percent}% 할인",
-    "description": "적용된 할인 비율을 보여주는 배지 문구입니다."
+    "description": "적용된 할인 비율을 표시하는 태그 문구입니다."
   },
   "message.discountHint": {
-    "message": "당신은 우리의 전용 VIP 고객입니다. 자동으로 {percent}% 할인을 받으실 수 있습니다.",
+    "message": "당신은 우리의 VIP 고객으로, 자동으로 {percent}% 할인을 받습니다.",
     "description": "VIP 신분으로 인해 자동으로 할인을 받는다는 설명 문구입니다."
   },
   "message.x402DiscountApplied": {
@@ -157,11 +161,11 @@
   },
   "message.x402DiscountTag": {
     "message": "{percent}% 할인",
-    "description": "X402 결제를 선택하면 추가로 받을 수 있는 할인 비율을 강조합니다."
+    "description": "X402 결제를 선택할 경우 추가로 받을 수 있는 할인 비율을 강조하는 문구입니다."
   },
   "message.x402DiscountHint": {
-    "message": "X402 결제를 선택하면 즉시 추가 {percent}% 할인 혜택을 누리실 수 있습니다.",
-    "description": "사용자에게 X402 결제를 통해 추가 할인을 잠금 해제할 수 있다는 안내 문구."
+    "message": "X402 결제를 선택하면 즉시 {percent}% 할인 혜택을 누리세요.",
+    "description": "사용자에게 X402 결제를 통해 추가 할인을 받을 수 있다는 안내 문구."
   },
   "message.x402IntroShort": {
     "message": "지갑을 선택하여 USDC 결제를 완료하세요.",
@@ -176,7 +180,7 @@
     "description": "프로그래밍 방식 탭 제목."
   },
   "message.x402WalletTitle": {
-    "message": "지갑을 연결하고 USDC 결제하기",
+    "message": "지갑 연결 후 USDC 결제",
     "description": "X402 지갑 빠른 결제 제목 (USDC)."
   },
   "message.x402WalletConnected": {
@@ -232,8 +236,8 @@
     "description": "단계 4 문구."
   },
   "message.x402IntegrationResourceLabel": {
-    "message": "결제 인터페이스 주소",
-    "description": "결제 인터페이스 주소 레이블."
+    "message": "결제 API 주소",
+    "description": "결제 API 주소 레이블."
   },
   "message.x402IntegrationPayToLabel": {
     "message": "정산 주소",
@@ -248,19 +252,19 @@
     "description": "정산 자산을 표시하는 레이블."
   },
   "message.x402IntegrationFallback": {
-    "message": "완전한 세션 데이터를 가져올 수 없습니다. 개발 문서를 참조하거나 지원팀에 연락하여 필요한 매개변수를 받으세요.",
-    "description": "세션 데이터를 가져올 수 없을 때 표시되는 안내 정보."
+    "message": "전체 세션 데이터를 가져올 수 없습니다. 개발 문서를 참조하거나 지원팀에 필요한 매개변수를 문의하세요.",
+    "description": "세션 데이터를 가져올 수 없을 때 표시되는 안내 메시지."
   },
   "message.x402IntegrationDocsCta": {
     "message": "X402 개발 가이드 열기",
-    "description": "개발자 가이드를 열기 위한 행동 버튼 문구."
+    "description": "개발자 가이드를 열기 위한 액션 버튼 문구."
   },
   "message.x402InstallGuideTitle": {
     "message": "지갑 확장 설치",
     "description": "지갑 설치 안내 팝업 제목."
   },
   "message.x402InstallGuideDesc": {
-    "message": "{wallet} 확장 설치를 완료한 후 아래 버튼을 사용하여 이 페이지를 새로 고쳐 지갑을 다시 감지하세요.",
+    "message": "{wallet} 확장을 설치하기 위해 아래 단계를 따르세요. 그런 다음 아래 버튼을 사용하여 이 페이지를 새로 고쳐 지갑을 다시 감지하세요.",
     "description": "사용자가 지갑 확장 설치를 완료하도록 안내하는 설명."
   },
   "message.x402InstallGuideStep1": {
@@ -272,11 +276,11 @@
     "description": "지갑 설치 단계 2."
   },
   "message.x402InstallGuideStep3": {
-    "message": "이 페이지로 돌아가서 ‘나는 이미 설치했습니다’를 클릭하여 새로 고친 후 ‘지갑 연결’을 다시 시도하세요.",
+    "message": "이 페이지로 돌아가서 ‘설치 완료’를 클릭하여 새로 고친 후 ‘지갑 연결’을 다시 시도하세요.",
     "description": "지갑 설치 단계 3."
   },
   "message.x402InstallGuideConfirm": {
-    "message": "나는 이미 설치했습니다",
+    "message": "설치 완료",
     "description": "지갑 설치 완료 후의 주요 버튼."
   },
   "message.x402NetworkGuideTitle": {
@@ -284,7 +288,7 @@
     "description": "네트워크 불일치 안내 팝업 제목."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "{network}로 지갑 네트워크를 전환하는 단계를 따라주세요. 완료 후 이 페이지를 새로 고쳐 다시 감지하세요.",
+    "message": "{network}로 지갑 네트워크를 전환하기 위해 아래 단계를 따르세요. 완료 후 이 페이지를 새로 고쳐 다시 감지하세요.",
     "description": "사용자가 지갑 네트워크를 조정하도록 안내하는 설명."
   },
   "message.x402NetworkGuideStep1": {
@@ -292,8 +296,8 @@
     "description": "네트워크 설정 단계 1."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "{network} (또는 다른 지정된 네트워크)가 활성화되어 있는지 네트워크 목록에서 확인하십시오. 활성화되어 있다면 이 단계를 무시할 수 있습니다.",
-    "description": "네트워크 조정의 두 번째 단계 설명, Ethereum을 종료할 필요 없음."
+    "message": "{network} (또는 지정된 다른 네트워크)가 활성화되어 있는지 확인하십시오. 활성화되어 있다면 이 단계를 무시할 수 있습니다.",
+    "description": "네트워크 조정의 두 번째 단계 설명, Ethereum을 끌 필요는 없습니다."
   },
   "message.x402NetworkGuideStep3": {
     "message": "이 페이지로 돌아가서 '설정을 완료했습니다'를 클릭한 후 새로 고침하여 결제를 다시 시도하십시오.",
@@ -308,11 +312,11 @@
     "description": "사용자에게 지갑이 자동 네트워크 전환을 지원하지 않음을 알리는 메시지."
   },
   "message.x402PaymentFailed": {
-    "message": "X402 지갑 결제 실패, 잠시 후 다시 시도하십시오. 여러 번 실패할 경우 지원팀에 연락하여 오류 정보를 제공하십시오.",
+    "message": "X402 지갑 결제 실패, 잠시 후 다시 시도하십시오. 여러 번 실패할 경우 지원팀에 문의하고 오류 정보를 제공하십시오.",
     "description": "X402 지갑 결제 실패 시 나타나는 일반 오류 메시지."
   },
   "message.x402WalletPayCta": {
-    "message": "지갑으로 결제하기",
+    "message": "지갑으로 결제",
     "description": "연결된 지갑으로 결제를 완료하는 버튼 문구."
   },
   "button.refund": {
@@ -329,7 +333,7 @@
   },
   "field.generalDiscount": {
     "message": "일반 할인",
-    "description": "할인이 모든 서비스에 적용될 때 표시되는 레이블."
+    "description": "모든 서비스에 적용되는 할인일 때 표시되는 레이블."
   },
   "field.userId": {
     "message": "사용자 ID",
@@ -337,18 +341,18 @@
   },
   "field.discount": {
     "message": "할인",
-    "description": "해당 사용자 주문에 적용된 할인 비율."
+    "description": "해당 사용자 주문에 적용되는 할인 비율."
   },
   "field.actions": {
     "message": "작업",
     "description": "작업 버튼 열의 제목."
   },
   "message.confirmRefund": {
-    "message": "이 작업은 해당 주문의 권리를 취소하고 환불로 표시하며, 되돌릴 수 없습니다. 환불 처리가 완료되었는지 확인하시고 계속하시겠습니까?",
+    "message": "이 작업은 해당 주문의 권리를 취소하고 환불로 표시하며, 되돌릴 수 없습니다. 환불 처리가 완료되었는지 확인하고 계속하시겠습니까?",
     "description": "환불 확인 메시지."
   },
   "message.x402IntegrationIntro": {
-    "message": "현재 주문은 X402 결제 프로토콜을 사용하고 있습니다. 아래 매개변수에 따라 서버에서 통합을 완료하고 결제를 시작하십시오.",
+    "message": "현재 주문은 X402 결제 프로토콜을 사용합니다. 아래 매개변수에 따라 서버에서 통합하고 결제를 시작하십시오.",
     "description": "X402 프로토콜을 사용해야 한다는 안내 문구."
   },
   "message.x402IntegrationProtocol": {
@@ -356,7 +360,7 @@
     "description": "X402 결제를 완료하는 작업 단계 설명."
   },
   "message.x402IntegrationDocsHint": {
-    "message": "자세한 내용을 알고 싶으신가요? 아래의 개발 문서를 확인하십시오.",
+    "message": "자세한 내용을 알고 싶으신가요? 아래 개발 문서를 확인하십시오.",
     "description": "사용자가 개발 문서를 통해 더 많은 정보를 얻을 수 있다는 안내 문구."
   },
   "message.x402WalletTitleEvm": {
@@ -389,7 +393,7 @@
   },
   "message.x402WalletConnectOpenWallet": {
     "message": "지갑 열기",
-    "description": "모바일에서 WalletConnect를 통해 지갑을 호출하는 버튼 문구."
+    "description": "모바일에서 WalletConnect로 지갑을 호출하는 버튼 문구."
   },
   "message.x402WalletConnectScanHint": {
     "message": "WalletConnect를 지원하는 지갑으로 QR 코드를 스캔하십시오.",
@@ -425,7 +429,7 @@
   },
   "message.x402MissingWCProjectId": {
     "message": "WalletConnect Project ID가 구성되지 않았습니다 (환경 변수 VITE_WALLETCONNECT_PROJECT_ID를 설정하십시오).",
-    "description": "WalletConnect 프로젝트 ID가 누락되었다는 안내."
+    "description": "WalletConnect 프로젝트 ID가 누락되었음을 알리는 메시지."
   },
   "message.x402WalletBound": {
     "message": "바인딩됨",
@@ -468,15 +472,15 @@
     "description": "오늘의 거래 금액"
   },
   "title.last7dRevenue": {
-    "message": "최근 1주 거래 금액",
-    "description": "최근 1주 거래 금액"
+    "message": "최근 7일 거래 금액",
+    "description": "최근 7일 거래 금액"
   },
   "title.last30dRevenue": {
-    "message": "최근 1개월 거래 금액",
+    "message": "최근 30일 거래 금액",
     "description": "최근 30일 거래 금액"
   },
   "title.last90dRevenue": {
-    "message": "최근 1분기 거래 금액",
+    "message": "최근 90일 거래 금액",
     "description": "최근 90일 거래 금액"
   },
   "title.revenueTrend": {
@@ -492,8 +496,8 @@
     "description": "사용자의 현재 할인을 보여주는 블록 제목."
   },
   "title.createDiscount": {
-    "message": "새로운 할인 추가",
-    "description": "새로운 할인을 생성하는 블록 제목."
+    "message": "새 할인 추가",
+    "description": "새 할인을 생성하는 블록 제목."
   },
   "title.updateDiscount": {
     "message": "할인 업데이트",

@@ -12,7 +12,7 @@
     "description": "شرح إدخال الكلمات الدالة"
   },
   "placeholder.prompt": {
-    "message": "صف فيديوك...",
+    "message": "صف الفيديو الخاص بك…",
     "description": "نص العنصر النائب للكلمات الدالة"
   },
   "name.model": {
@@ -26,6 +26,26 @@
   "placeholder.select": {
     "message": "اختر",
     "description": "نص العنصر النائب للاختيار المنسدل"
+  },
+  "name.duration": {
+    "message": "المدة",
+    "description": "علامة اختيار مدة الفيديو"
+  },
+  "description.duration": {
+    "message": "مدة الفيديو (بالثواني)، من 2 إلى 12 ثانية.",
+    "description": "شرح مدة الفيديو"
+  },
+  "name.generateAudio": {
+    "message": "توليد الصوت",
+    "description": "علامة اختيار توليد الصوت"
+  },
+  "description.generateAudio": {
+    "message": "عند التفعيل، سيأتي الفيديو مع صوت. مدعوم فقط من نموذج seedance-1.5-pro، التكلفة حوالي 2 ضعف.",
+    "description": "شرح توليد الصوت"
+  },
+  "name.resolution": {
+    "message": "الدقة",
+    "description": "علامة اختيار دقة الفيديو"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -48,24 +68,24 @@
     "description": "نموذج SeeDance 1.0 Lite I2V"
   },
   "name.serviceTier": {
-    "message": "فئة الخدمة",
-    "description": "علامة فئة الخدمة"
+    "message": "مستوى الخدمة",
+    "description": "علامة اختيار مستوى الخدمة"
   },
   "description.serviceTier": {
-    "message": "فئة المعالجة: default أو flex.",
-    "description": "شرح فئة الخدمة"
+    "message": "مستوى المعالجة: default أو flex.",
+    "description": "شرح مستوى الخدمة"
   },
   "serviceTier.default": {
     "message": "افتراضي",
-    "description": "الفئة الافتراضية"
+    "description": "المستوى الافتراضي"
   },
   "serviceTier.flex": {
     "message": "مرن",
-    "description": "فئة مرنة"
+    "description": "المستوى المرن"
   },
   "name.returnLastFrame": {
     "message": "إرجاع الإطار الأخير",
-    "description": "علامة مفتاح إرجاع الإطار الأخير"
+    "description": "علامة اختيار إرجاع الإطار الأخير"
   },
   "description.returnLastFrame": {
     "message": "عند التفعيل، سيتم إرجاع صورة الإطار الأخير إضافيًا.",
@@ -101,14 +121,14 @@
   },
   "button.on": {
     "message": "تشغيل",
-    "description": "نص مفتاح التشغيل"
+    "description": "نص تشغيل المفتاح"
   },
   "button.off": {
     "message": "إيقاف",
-    "description": "نص مفتاح الإيقاف"
+    "description": "نص إيقاف المفتاح"
   },
   "message.startingTask": {
-    "message": "جارٍ بدء مهمة SeeDance...",
+    "message": "جارٍ بدء مهمة SeeDance…",
     "description": "رسالة بدء المهمة"
   },
   "message.startTaskSuccess": {
@@ -125,7 +145,7 @@
   },
   "message.uploadExceed": {
     "message": "يمكنك تحميل صورة واحدة فقط",
-    "description": "رسالة تجاوز الحد الأقصى للتحميل"
+    "description": "رسالة تجاوز التحميل"
   },
   "message.uploadError": {
     "message": "فشل التحميل",

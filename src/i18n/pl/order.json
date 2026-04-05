@@ -1,27 +1,27 @@
 {
   "button.pay": {
     "message": "Zapłać",
-    "description": "Tekst w przycisku, używany do płacenia za zamówienie."
+    "description": "Tekst w przycisku, który służy do płatności za zamówienie."
   },
   "button.continuePay": {
     "message": "Kontynuuj płatność",
-    "description": "Tekst w przycisku, używany do kontynuowania płatności za zamówienie."
+    "description": "Tekst w przycisku, który służy do kontynuowania płatności za zamówienie."
   },
   "button.checkDetail": {
-    "message": "Sprawdź szczegóły",
-    "description": "Tekst w przycisku, używany do przeglądania szczegółów zamówienia."
+    "message": "Zobacz szczegóły",
+    "description": "Tekst w przycisku, który służy do przeglądania szczegółów zamówienia."
   },
   "button.query": {
-    "message": "Zapytanie",
-    "description": "Tekst w przycisku, używany do zapytania o zamówienie."
+    "message": "Zapytaj",
+    "description": "Tekst w przycisku, który służy do zapytania o zamówienie."
   },
   "button.finish": {
-    "message": "Ręczne zakończenie",
-    "description": "Tekst w przycisku, używany do ręcznego zakończenia zamówienia."
+    "message": "Ręcznie zakończ",
+    "description": "Tekst w przycisku, który służy do ręcznego zakończenia zamówienia."
   },
   "button.update": {
     "message": "Aktualizuj",
-    "description": "Tekst w przycisku, używany do aktualizacji zamówienia."
+    "description": "Tekst w przycisku, który służy do aktualizacji zamówienia."
   },
   "field.id": {
     "message": "ID zamówienia",
@@ -61,10 +61,10 @@
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Proxy to usługa online, która odnosi się do HTTP proxy używanego do przesyłania danych."
+    "description": "Proxy to usługa online, która służy do przesyłania danych przez HTTP."
   },
   "message.paidSuccessfully": {
-    "message": "Płatność zakończona sukcesem",
+    "message": "Płatność zakończona pomyślnie",
     "description": "Wiadomość o pomyślnej płatności."
   },
   "message.orderExpired": {
@@ -72,12 +72,12 @@
     "description": "Wiadomość o wygasłym zamówieniu."
   },
   "message.createFailed": {
-    "message": "Utworzenie nie powiodło się",
-    "description": "Wiadomość o nieudanym utworzeniu."
+    "message": "Nie udało się utworzyć",
+    "description": "Wiadomość o nieudanej próbie utworzenia."
   },
   "message.wechatPayHelp": {
     "message": "Proszę otworzyć WeChat na telefonie i zeskanować, aby zakończyć płatność",
-    "description": "Wiadomość pomocy dotycząca płatności WeChat."
+    "description": "Wiadomość pomocy dotyczącej płatności WeChat."
   },
   "message.free": {
     "message": "Darmowe",
@@ -92,63 +92,67 @@
     "description": "Wiadomość o nieudanej aktualizacji."
   },
   "message.updateSuccessfully": {
-    "message": "Aktualizacja zakończona sukcesem",
+    "message": "Aktualizacja zakończona pomyślnie",
     "description": "Wiadomość o pomyślnej aktualizacji."
   },
   "message.confirmFinish": {
-    "message": "Ta operacja ręcznie ustawi zamówienie w stanie płatności i zakończy przetwarzanie, nie można jej cofnąć. Proszę potwierdzić, że klient zakończył płatność, czy chcesz kontynuować?",
+    "message": "Ta operacja ręcznie ustawi zamówienie w statusie płatności i zakończy przetwarzanie, co jest nieodwracalne. Proszę potwierdzić, że klient zakończył płatność, czy chcesz kontynuować?",
     "description": "Wiadomość potwierdzająca zakończenie."
   },
   "state.pending": {
     "message": "Oczekuje na płatność",
-    "description": "Stan zamówienia, oznaczający, że zamówienie czeka na płatność od użytkownika."
+    "description": "Stan zamówienia, który oznacza, że zamówienie czeka na płatność od użytkownika."
   },
   "state.paid": {
-    "message": "Zapłacono",
-    "description": "Stan zamówienia, oznaczający, że zamówienie zostało opłacone."
+    "message": "Opłacone",
+    "description": "Stan zamówienia, który oznacza, że zamówienie zostało opłacone."
   },
   "state.finished": {
     "message": "Zakończone",
-    "description": "Stan zamówienia, oznaczający, że zamówienie zostało zakończone."
+    "description": "Stan zamówienia, który oznacza, że zamówienie zostało zakończone."
   },
   "state.expired": {
     "message": "Czas płatności minął",
-    "description": "Stan zamówienia, oznaczający, że zamówienie wygasło."
+    "description": "Stan zamówienia, który oznacza, że zamówienie wygasło."
   },
   "state.failed": {
     "message": "Płatność nie powiodła się",
-    "description": "Stan zamówienia, oznaczający, że płatność za zamówienie nie powiodła się."
+    "description": "Stan zamówienia, który oznacza, że płatność za zamówienie nie powiodła się."
   },
   "title.info": {
     "message": "Informacje o zamówieniu",
-    "description": "Tytuł wyświetlany na stronie, oznaczający informacje o zamówieniu."
+    "description": "Tytuł wyświetlany na stronie, który oznacza informacje o zamówieniu."
   },
   "title.wechatPay": {
     "message": "Płatność WeChat",
-    "description": "Tytuł wyświetlany na stronie, oznaczający płatność WeChat."
+    "description": "Tytuł wyświetlany na stronie, który oznacza płatność WeChat."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Tytuł wyświetlany na stronie, oznaczający płatność Alipay, która jest metodą płatności online."
+    "description": "Tytuł wyświetlany na stronie, który oznacza płatność Alipay, Alipay to metoda płatności online."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Tytuł wyświetlany na stronie, oznaczający płatność Stripe, która jest metodą płatności online."
+    "description": "Tytuł wyświetlany na stronie, który oznacza płatność Stripe, Stripe to metoda płatności online."
   },
   "title.manageOrder": {
     "message": "Zarządzaj zamówieniem",
-    "description": "Tytuł wyświetlany na stronie, oznaczający zarządzanie zamówieniem."
+    "description": "Tytuł wyświetlany na stronie, który oznacza zarządzanie zamówieniem."
   },
   "title.x402": {
     "message": "Kryptowaluta",
-    "description": "Tytuł wyświetlany na stronie, oznaczający płatność kryptowalutą (opartą na rozwiązaniu płatności X402)."
+    "description": "Tytuł wyświetlany na stronie, który oznacza płatność kryptowalutą (na podstawie rozwiązania płatniczego X402)."
+  },
+  "title.paypal": {
+    "message": "PayPal",
+    "description": "Tytuł wyświetlany na stronie, który oznacza płatność PayPal."
   },
   "message.discountTag": {
     "message": "{percent}% zniżki",
-    "description": "Tekst etykiety pokazujący zastosowany procent zniżki."
+    "description": "Tekst etykiety wyświetlającej zastosowany procent zniżki."
   },
   "message.discountHint": {
-    "message": "Jesteś naszym ekskluzywnym klientem VIP, automatycznie korzystasz z {percent}% zniżki.",
+    "message": "Jesteś naszym ekskluzywnym klientem VIP, automatycznie otrzymujesz {percent}% zniżki.",
     "description": "Opis informujący użytkownika o automatycznej zniżce z powodu statusu VIP."
   },
   "message.x402DiscountApplied": {
@@ -161,19 +165,19 @@
   },
   "message.x402DiscountHint": {
     "message": "Wybierz płatność X402, aby natychmiast uzyskać dodatkowe {percent}% zniżki.",
-    "description": "Tekst informujący użytkownika o możliwości odblokowania dodatkowej zniżki przy płatności X402."
+    "description": "Informacja dla użytkownika, że płatność X402 odblokowuje dodatkowy rabat."
   },
   "message.x402IntroShort": {
     "message": "Wybierz portfel, aby zakończyć płatność USDC.",
-    "description": "Krótki tekst wprowadzający."
+    "description": "Krótki opis wprowadzenia."
   },
   "message.x402TabWallet": {
     "message": "Płatność portfelem",
     "description": "Tytuł zakładki płatności portfelem."
   },
   "message.x402TabApi": {
-    "message": "Programistyczny",
-    "description": "Tytuł zakładki programistycznej."
+    "message": "Programowo",
+    "description": "Tytuł zakładki programowej."
   },
   "message.x402WalletTitle": {
     "message": "Połącz portfel i zapłać USDC",
@@ -193,11 +197,11 @@
   },
   "message.x402SwitchNetwork": {
     "message": "Proszę przełączyć sieć portfela na {network}",
-    "description": "Tekst informujący użytkownika o konieczności przełączenia na określoną sieć blockchain."
+    "description": "Informacja dla użytkownika o przełączeniu na określoną sieć blockchain."
   },
   "message.x402SolanaNotEnabled": {
     "message": "Backend Solana X402 nie jest jeszcze włączony.",
-    "description": "Informacja wyświetlana, gdy ta zamówienie nie ma włączonego Solana X402."
+    "description": "Informacja, gdy zamówienie nie ma włączonego Solana X402."
   },
   "message.x402NeedConnectAccount": {
     "message": "Proszę najpierw połączyć portfel.",
@@ -216,7 +220,7 @@
     "description": "Tytuł kroków."
   },
   "message.x402Step1": {
-    "message": "Połącz portfel (jeśli nie jest zainstalowany, zainstaluj rozszerzenie, a następnie odśwież tę stronę lub otwórz tę stronę w portfelu na telefonie)",
+    "message": "Połącz portfel (jeśli nie jest zainstalowany, zainstaluj rozszerzenie i odśwież tę stronę lub otwórz tę stronę w portfelu na telefonie)",
     "description": "Tekst kroku 1."
   },
   "message.x402Step2": {
@@ -260,11 +264,11 @@
     "description": "Tytuł okna z instrukcją instalacji portfela."
   },
   "message.x402InstallGuideDesc": {
-    "message": "Proszę wykonać poniższe kroki, aby zainstalować rozszerzenie {wallet}, a następnie użyć poniższego przycisku, aby odświeżyć tę stronę i ponownie wykryć portfel.",
+    "message": "Proszę wykonać poniższe kroki, aby zainstalować rozszerzenie {wallet}, a następnie użyć przycisku poniżej, aby odświeżyć tę stronę i ponownie wykryć portfel.",
     "description": "Opis prowadzący użytkownika do zainstalowania rozszerzenia portfela."
   },
   "message.x402InstallGuideStep1": {
-    "message": "Otwórz nową stronę i zainstaluj rozszerzenie przeglądarki {wallet} (zalecane Chrome/Brave).",
+    "message": "Na nowo otwartej stronie pobierz i zainstaluj rozszerzenie przeglądarki {wallet} (zalecane Chrome/Brave).",
     "description": "Krok 1 instalacji portfela."
   },
   "message.x402InstallGuideStep2": {
@@ -281,7 +285,7 @@
   },
   "message.x402NetworkGuideTitle": {
     "message": "Dostosuj ustawienia sieci",
-    "description": "Tytuł okna informującego o niezgodności sieci."
+    "description": "Tytuł okna z informacją o niezgodności sieci."
   },
   "message.x402NetworkGuideDesc": {
     "message": "Proszę wykonać poniższe kroki, aby przełączyć sieć portfela na {network}, a następnie odświeżyć tę stronę, aby ponownie wykryć.",
@@ -292,11 +296,11 @@
     "description": "Krok 1 ustawień sieci."
   },
   "message.x402NetworkGuideStep2": {
-    "message": "Na liście sieci potwierdź, że {network} (lub inna wskazana sieć) jest włączona, jeśli jest włączona, możesz pominąć ten krok.",
-    "description": "Drugi krok instrukcji dotyczącej ustawienia sieci, nie trzeba wyłączać Ethereum."
+    "message": "W liście sieci potwierdź, że {network} (lub inna wskazana sieć) jest włączona. Jeśli jest włączona, możesz pominąć ten krok.",
+    "description": "Drugi krok instrukcji dotyczącej ustawienia sieci, nie ma potrzeby wyłączania Ethereum."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Wróć na tę stronę, kliknij „Ukończyłem ustawienia” i spróbuj ponownie dokonać płatności po odświeżeniu.",
+    "message": "Wróć na tę stronę, kliknij „Ukończyłem ustawienia” i spróbuj ponownie dokonać płatności.",
     "description": "Krok 3 ustawienia sieci."
   },
   "message.x402NetworkGuideConfirm": {
@@ -304,24 +308,24 @@
     "description": "Główny przycisk po zakończeniu ustawień sieci."
   },
   "message.x402NetworkSwitchFailed": {
-    "message": "Obecny portfel nie obsługuje automatycznego przełączania sieci, proszę ręcznie przełączyć się na wskazaną sieć w portfelu i spróbować ponownie.",
+    "message": "Obecny portfel nie obsługuje automatycznego przełączania sieci. Proszę ręcznie przełączyć na wskazaną sieć w portfelu i spróbować ponownie.",
     "description": "Informuje użytkownika, że portfel nie obsługuje automatycznego przełączania sieci, wymaga ręcznego przełączenia."
   },
   "message.x402PaymentFailed": {
-    "message": "Płatność portfelem X402 nie powiodła się, spróbuj ponownie później. Jeśli problem będzie się powtarzał, skontaktuj się z pomocą techniczną i podaj informacje o błędzie.",
+    "message": "Płatność portfelem X402 nie powiodła się, spróbuj ponownie później. W przypadku wielokrotnych niepowodzeń skontaktuj się z pomocą techniczną i podaj informacje o błędzie.",
     "description": "Ogólny komunikat o błędzie wyświetlany, gdy płatność portfelem X402 nie powiodła się."
   },
   "message.x402WalletPayCta": {
-    "message": "Płać za pomocą portfela",
+    "message": "Płać portfelem",
     "description": "Tekst przycisku do dokonania płatności za pomocą powiązanego portfela."
   },
   "button.refund": {
     "message": "Zwróć",
-    "description": "Tekst w przycisku, używany do ręcznego zwrotu zamówienia."
+    "description": "Tekst w przycisku do ręcznego zwrotu zamówienia."
   },
   "field.applicationId": {
     "message": "ID wniosku",
-    "description": "ID wniosku, do którego należy zamówienie."
+    "description": "ID wniosku do którego należy zamówienie."
   },
   "field.serviceId": {
     "message": "ID usługi",
@@ -344,11 +348,11 @@
     "description": "Tytuł kolumny przycisków akcji."
   },
   "message.confirmRefund": {
-    "message": "Ta operacja unieważni prawa do tego zamówienia i oznaczy je jako zwrócone, co jest nieodwracalne. Proszę potwierdzić, że zwrot został już przetworzony, czy chcesz kontynuować?",
+    "message": "Ta operacja unieważni prawa do zamówienia i oznaczy je jako zwrócone, co jest nieodwracalne. Proszę potwierdzić, że zwrot został przetworzony, czy chcesz kontynuować?",
     "description": "Komunikat potwierdzający zwrot."
   },
   "message.x402IntegrationIntro": {
-    "message": "Obecne zamówienie korzysta z protokołu płatności X402, proszę zakończyć integrację na serwerze zgodnie z poniższymi parametrami i rozpocząć płatność.",
+    "message": "Obecne zamówienie korzysta z protokołu płatności X402. Proszę zakończyć integrację na serwerze i zainicjować płatność zgodnie z poniższymi parametrami.",
     "description": "Wprowadzenie do potrzeby użycia protokołu X402."
   },
   "message.x402IntegrationProtocol": {
@@ -369,11 +373,11 @@
   },
   "message.x402WalletStatusDetected": {
     "message": "Wykryto",
-    "description": "Etykieta statusu portfela, który został wykryty/zainstalowany."
+    "description": "Etykieta statusu portfela wykrytego/zainstalowanego."
   },
   "message.x402WalletStatusInstall": {
     "message": "Zainstaluj",
-    "description": "Etykieta statusu/wejścia do instalacji portfela."
+    "description": "Etykieta statusu/ wejścia do instalacji portfela."
   },
   "message.x402WalletStatusQr": {
     "message": "Kod QR",
@@ -385,7 +389,7 @@
   },
   "message.x402WalletConnectPreparing": {
     "message": "Przygotowuję WalletConnect…",
-    "description": "Informacja podczas przygotowywania połączenia WalletConnect."
+    "description": "Komunikat podczas przygotowywania połączenia WalletConnect."
   },
   "message.x402WalletConnectOpenWallet": {
     "message": "Otwórz portfel",
@@ -393,7 +397,7 @@
   },
   "message.x402WalletConnectScanHint": {
     "message": "Proszę zeskanować kod QR za pomocą portfela obsługującego WalletConnect.",
-    "description": "Tekst wskazówki poniżej kodu QR WalletConnect."
+    "description": "Tekst pod kodem QR WalletConnect."
   },
   "message.x402SwitchNetworkCta": {
     "message": "Przełącz na {network}",
@@ -401,7 +405,7 @@
   },
   "message.x402NoWalletTitle": {
     "message": "Nie wykryto portfela EVM",
-    "description": "Tytuł, gdy przeglądarka nie wstrzyknęła portfela EVM."
+    "description": "Tytuł, gdy przeglądarka nie ma zainstalowanego portfela EVM."
   },
   "message.x402NoWalletSafariDesc": {
     "message": "Safari zazwyczaj nie obsługuje rozszerzeń takich jak MetaMask, zaleca się użycie Chrome/Brave lub otwarcie tej strony w wbudowanej przeglądarce aplikacji portfela na telefonie.",
@@ -409,15 +413,15 @@
   },
   "message.x402InstallMetaMask": {
     "message": "Zainstaluj MetaMask",
-    "description": "Tekst przycisku do zainstalowania MetaMask."
+    "description": "Tekst przycisku do instalacji MetaMask."
   },
   "message.x402InstallPhantom": {
     "message": "Zainstaluj Phantom",
-    "description": "Tekst przycisku do zainstalowania Phantom."
+    "description": "Tekst przycisku do instalacji Phantom."
   },
   "message.x402ConnectWC": {
-    "message": "Połącz za pomocą WalletConnect",
-    "description": "Tekst przycisku do połączenia za pomocą WalletConnect."
+    "message": "Połącz przez WalletConnect",
+    "description": "Tekst przycisku do połączenia przez WalletConnect."
   },
   "message.x402RefreshDetect": {
     "message": "Ponownie wykryj",
@@ -425,7 +429,7 @@
   },
   "message.x402MissingWCProjectId": {
     "message": "Nie skonfigurowano identyfikatora projektu WalletConnect (proszę ustawić zmienną środowiskową VITE_WALLETCONNECT_PROJECT_ID)",
-    "description": "Informacja o braku identyfikatora projektu WalletConnect."
+    "description": "Komunikat o braku identyfikatora projektu WalletConnect."
   },
   "message.x402WalletBound": {
     "message": "Powiązany",
@@ -433,51 +437,51 @@
   },
   "message.userIdRequired": {
     "message": "Proszę wprowadzić identyfikator użytkownika.",
-    "description": "Gdy identyfikator użytkownika jest pusty, wyświetlana jest ta informacja."
+    "description": "Wyświetlane komunikat, gdy identyfikator użytkownika jest pusty."
   },
   "message.serviceIdRequired": {
     "message": "Proszę wybrać usługę.",
-    "description": "Gdy identyfikator usługi jest pusty, wyświetlana jest ta informacja."
+    "description": "Wyświetlane komunikat, gdy identyfikator usługi jest pusty."
   },
   "message.discountRequired": {
-    "message": "Proszę wprowadzić zniżkę w zakresie od 0 do 1.",
-    "description": "Gdy zniżka nie mieści się w dozwolonym zakresie, wyświetlana jest ta informacja."
+    "message": "Proszę wprowadzić zniżkę od 0 do 1.",
+    "description": "Wyświetlane komunikat, gdy zniżka nie mieści się w dozwolonym zakresie."
   },
   "message.discountCreated": {
     "message": "Zniżka została pomyślnie zapisana.",
-    "description": "Informacja wyświetlana po pomyślnym dodaniu zniżki."
+    "description": "Komunikat wyświetlany po pomyślnym dodaniu zniżki."
   },
   "message.discountUpdated": {
     "message": "Zniżka została pomyślnie zaktualizowana.",
-    "description": "Informacja wyświetlana po pomyślnym edytowaniu zniżki."
+    "description": "Komunikat wyświetlany po pomyślnym edytowaniu zniżki."
   },
   "message.discountDeleted": {
     "message": "Zniżka została pomyślnie usunięta.",
-    "description": "Informacja wyświetlana po pomyślnym usunięciu zniżki."
+    "description": "Komunikat wyświetlany po pomyślnym usunięciu zniżki."
   },
   "state.refunded": {
     "message": "Zwrócono",
-    "description": "Stan zamówienia, który wskazuje, że zamówienie zostało zwrócone."
+    "description": "Stan zamówienia, oznaczający, że zamówienie zostało zwrócone."
   },
   "title.revenueAnalysis": {
     "message": "Analiza przychodów",
     "description": "Tytuł strony analizy przychodów."
   },
   "title.todayRevenue": {
-    "message": "Dzisiaj uzyskane przychody",
-    "description": "Dzisiaj uzyskane przychody."
+    "message": "Dzisiaj przychód",
+    "description": "Dzisiaj przychód."
   },
   "title.last7dRevenue": {
-    "message": "Przychody z ostatnich 7 dni",
-    "description": "Przychody z ostatnich 7 dni."
+    "message": "Przychód z ostatnich 7 dni",
+    "description": "Przychód z ostatnich 7 dni."
   },
   "title.last30dRevenue": {
-    "message": "Przychody z ostatnich 30 dni",
-    "description": "Przychody z ostatnich 30 dni."
+    "message": "Przychód z ostatnich 30 dni",
+    "description": "Przychód z ostatnich 30 dni."
   },
   "title.last90dRevenue": {
-    "message": "Przychody z ostatnich 90 dni",
-    "description": "Przychody z ostatnich 90 dni."
+    "message": "Przychód z ostatnich 90 dni",
+    "description": "Przychód z ostatnich 90 dni."
   },
   "title.revenueTrend": {
     "message": "Trend przychodów",
@@ -492,7 +496,7 @@
     "description": "Tytuł sekcji wyświetlającej aktualne zniżki użytkownika."
   },
   "title.createDiscount": {
-    "message": "Dodaj nową zniżkę",
+    "message": "Dodaj zniżkę",
     "description": "Tytuł sekcji do tworzenia nowej zniżki."
   },
   "title.updateDiscount": {

@@ -8,7 +8,7 @@
     "description": "Hailuo-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epätosi",
+    "message": "Epätavallinen",
     "description": "Tehtävän epäonnistumisen tila"
   },
   "name.failureReason": {
@@ -29,7 +29,7 @@
   },
   "name.imageUrl": {
     "message": "Viitekuva",
-    "description": "Viitekuva videolle, joka luodaan"
+    "description": "Viitekuva, jota käytetään videon luomiseen"
   },
   "name.videoUrl": {
     "message": "Mukautettu video",
@@ -49,7 +49,7 @@
   },
   "name.startImageUrl": {
     "message": "Ensimmäinen kuva",
-    "description": "QR-koodin siemen, joka luodaan"
+    "description": "QR-koodin siemen, jota käytetään videon luomiseen"
   },
   "name.ingredientsModel": {
     "message": "Ainesosamalli",
@@ -60,7 +60,7 @@
     "description": "Hailuo-videogeneraattorin nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia oman videosi luomiseksi, ota tämä painike käyttöön.",
+    "message": "Jos haluat ladata useita kuvia oman videon luomiseksi, ota tämä painike käyttöön.",
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.startImageUrl": {
@@ -81,19 +81,19 @@
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyteäänisyys syötteen paikkamerkki"
+    "description": "Täyttömelun syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "Valintakentän paikkateksti"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyteasteen paikkamerkki"
+    "description": "Täyttötason paikkamerkki"
   },
   "placeholder.prompt": {
     "message": "Syötä videon tyylin ohje, esim: tulipalo",
-    "description": "Ohje kentän paikkamerkki"
+    "description": "Ohje-kentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
@@ -109,11 +109,11 @@
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkki muodon syötteen paikkamerkki"
+    "description": "Merkintämuodon syötteen paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kääntö syötteen paikkamerkki"
+    "description": "Kääntösyötteen paikkamerkki"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
@@ -126,6 +126,10 @@
   "button.model2": {
     "message": "Kuvavideo",
     "description": "Hailuo-videon luomiseen käytettävä painiketeksti"
+  },
+  "button.model3": {
+    "message": "Kuvavideo (ohjaajamoodi)",
+    "description": "Hailuo-videon luomiseen käytettävä painiketeksti, ohjaajamoodi"
   },
   "button.generate": {
     "message": "Luo",
@@ -141,7 +145,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Lataa kuva",
-    "description": "Kuvan lataamiseen käytettävä painiketeksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
+    "description": "Kuvan lataamiseen käytettävä painiketeksti (englanniksi yksinkertaista 'Upload', älä käytä 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
@@ -156,11 +160,11 @@
     "description": "Virheilmoitus, kun kuvien lataaminen epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Tehtävää käynnistetään...",
+    "message": "Tehtävän käynnistäminen...",
     "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä käynnistetty onnistuneesti",
+    "message": "Tehtävän käynnistäminen onnistui",
     "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
@@ -184,12 +188,12 @@
     "description": "Viesti, kun kuvaa luodaan"
   },
   "message.generateFailed": {
-    "message": "Kuvan luonti epäonnistui",
-    "description": "Viesti, kun kuvan luonti epäonnistuu"
+    "message": "Kuvan luominen epäonnistui",
+    "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattavien ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattavien ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
@@ -200,28 +204,28 @@
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattavien ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattavien ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattavien viimeisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattavien viimeisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisten kuvien lataus epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataus epäonnistuu"
+    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
-    "message": "Videon lataus epäonnistui",
-    "description": "Virheilmoitus, kun videon lataus epäonnistuu"
+    "message": "Videon lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisten kuvien lataus epäonnistui",
-    "description": "Virheilmoitus, kun viimeisten kuvien lataus epäonnistuu"
+    "message": "Viimeisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
-    "message": "Asiakirjan lataus epäonnistui",
-    "description": "Virheilmoitus, kun asiakirjan lataus epäonnistuu"
+    "message": "Asiakirjan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan lataaminen epäonnistuu"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",

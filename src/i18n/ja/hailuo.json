@@ -92,7 +92,7 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成するビデオスタイルのプロンプトを入力してください。例：火気",
+    "message": "生成するビデオスタイルのプロンプトを入力してください。例：怒り",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.position": {
@@ -127,6 +127,10 @@
     "message": "画像からビデオ生成",
     "description": "Hailuo ビデオ生成のボタンテキスト"
   },
+  "button.model3": {
+    "message": "画像からビデオ生成（ディレクターモード）",
+    "description": "Hailuo ビデオ生成のボタンテキスト、ディレクターモード"
+  },
   "button.generate": {
     "message": "生成",
     "description": "Hailuo ビデオ生成のボタンテキスト"
@@ -141,7 +145,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "画像をアップロード",
-    "description": "画像アップロードボタンテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
+    "description": "画像アップロードボタンテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
   },
   "message.uploadReferencesExceed": {
     "message": "最大 5 枚の画像をアップロードできます",
@@ -180,55 +184,55 @@
     "description": "画像が生成中のときのメッセージ"
   },
   "message.extendVideo": {
-    "message": "このビデオの生成を続ける",
+    "message": "この動画の生成を続ける",
     "description": "画像が生成中のときのメッセージ"
   },
   "message.generateFailed": {
-    "message": "画像生成に失敗しました",
-    "description": "画像生成失敗時のメッセージ"
+    "message": "画像の生成に失敗しました",
+    "description": "画像生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "最初のフレーム画像のアップロード数が制限を超えました",
-    "description": "最初のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えたときのエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
     "message": "最初のフレーム画像のアップロード数が制限を超えました",
-    "description": "最初のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
+    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
     "message": "最後のフレーム画像のアップロード数が制限を超えました",
-    "description": "最後のフレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
+    "description": "最後のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
+    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "動画のアップロードに失敗した時のエラーメッセージ"
+    "description": "動画のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "最後のフレーム画像のアップロードに失敗しました",
-    "description": "最後のフレーム画像のアップロードに失敗した時のエラーメッセージ"
+    "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",
-    "description": "文書のアップロードに失敗した時のエラーメッセージ"
+    "description": "文書のアップロードに失敗したときのエラーメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がない時のメッセージ"
+    "description": "利用可能な操作がないときのメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
-    "description": "タスクがない時のメッセージ"
+    "description": "タスクがないときのメッセージ"
   }
 }

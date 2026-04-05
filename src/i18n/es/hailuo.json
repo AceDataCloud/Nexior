@@ -77,7 +77,7 @@
   },
   "status.processing": {
     "message": "En proceso",
-    "description": "Estado de procesamiento de la tarea"
+    "description": "Estado de espera de la tarea"
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
@@ -121,23 +121,27 @@
   },
   "button.model1": {
     "message": "Video de texto",
-    "description": "Texto del botón para generar el video Hailuo"
+    "description": "Texto del botón para generar video Hailuo"
   },
   "button.model2": {
     "message": "Video de imagen",
-    "description": "Texto del botón para generar el video Hailuo"
+    "description": "Texto del botón para generar video Hailuo"
+  },
+  "button.model3": {
+    "message": "Video de imagen (modo director)",
+    "description": "Texto del botón para generar video Hailuo, modo director"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar el video Hailuo"
+    "description": "Texto del botón para generar video Hailuo"
   },
   "button.extend": {
     "message": "Extender video",
-    "description": "Texto del botón para extender el video"
+    "description": "Texto del botón para extender video"
   },
   "button.download": {
     "message": "Descargar video",
-    "description": "Texto del botón para descargar el video"
+    "description": "Texto del botón para descargar video"
   },
   "button.uploadStartImageUrl": {
     "message": "Subir imagen",
@@ -168,8 +172,8 @@
     "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar",
-    "description": "Mensaje cuando se han agotado los créditos"
+    "message": "Se han agotado sus puntos, por favor compre más puntos para continuar usando",
+    "description": "Mensaje al agotarse"
   },
   "message.generating": {
     "message": "Generando...",
@@ -181,7 +185,7 @@
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje mientras se genera la imagen"
+    "description": "Mensaje cuando se está generando la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
@@ -196,8 +200,8 @@
     "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo debe ser en formato MP4!",
-    "description": "Mensaje de error cuando el archivo no es en formato MP4"
+    "message": "¡El archivo debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no está en formato MP4"
   },
   "message.uploadStartImageExceed": {
     "message": "Número de imágenes de la primera fotograma excede el límite",
@@ -213,7 +217,7 @@
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida del video"
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadEndImageError": {
     "message": "Error al subir la imagen de la última fotograma",
@@ -228,7 +232,7 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en generar video a la izquierda",
+    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
     "description": "Mensaje cuando no hay tareas"
   }
 }

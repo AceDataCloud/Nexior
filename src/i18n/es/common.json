@@ -60,7 +60,7 @@
     "description": "Texto en el botón, utilizado para cancelar una acción"
   },
   "button.alert": {
-    "message": "Alerta",
+    "message": "Advertencia",
     "description": "Texto en el botón, utilizado para emitir una alerta"
   },
   "button.info": {
@@ -103,6 +103,18 @@
     "message": "Comenzar gratis",
     "description": "Texto en el botón, utilizado para que el usuario comience de forma gratuita"
   },
+  "button.downloadAndroid": {
+    "message": "Descargar Android",
+    "description": "Texto en el botón, utilizado para descargar el paquete de instalación de Android"
+  },
+  "button.downloadIos": {
+    "message": "Descargar iOS",
+    "description": "Texto en el botón, utilizado para descargar el paquete de instalación de iOS"
+  },
+  "button.installIos": {
+    "message": "Instalar iOS",
+    "description": "Texto en el botón, utilizado para instalar la aplicación de iOS"
+  },
   "button.apply": {
     "message": "Solicitar",
     "description": "Texto en el botón, utilizado para que el usuario solicite el servicio API"
@@ -121,7 +133,7 @@
   },
   "button.applied": {
     "message": "Solicitado",
-    "description": "Texto en el botón, utilizado para indicar que el usuario ha solicitado el servicio"
+    "description": "Texto en el botón, utilizado para mostrar que el usuario ha solicitado el servicio"
   },
   "button.acquire": {
     "message": "Obtener",
@@ -149,7 +161,7 @@
   },
   "button.referralEarnings": {
     "message": "Ingresos por referidos",
-    "description": "Texto en el botón, utilizado para mostrar ingresos por referidos, lo que significa que el usuario puede ganar dinero invitando a otros a usar el servicio"
+    "description": "Texto en el botón, utilizado para mostrar ingresos por referidos, lo que significa que el usuario puede ganar dinero al invitar a otros a usar el servicio"
   },
   "button.finish": {
     "message": "Finalizar",
@@ -157,91 +169,167 @@
   },
   "entity.id": {
     "message": "ID",
-    "description": "Utilizado para mostrar el identificador único de la entidad"
+    "description": "用于显示实体的唯一标识符"
   },
   "entity.type": {
     "message": "Tipo",
-    "description": "Utilizado para mostrar el tipo de entidad"
+    "description": "用于显示实体的类型"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Nombre del sitio web, no necesita traducción, mantener como 'Ace Data Cloud'"
+    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Derechos de autor",
-    "description": "Texto que muestra los derechos de autor"
+    "description": "显示版权的文本"
   },
   "entity.platform": {
     "message": "Plataforma",
-    "description": "Texto que indica que este es un servicio de plataforma API"
+    "description": "指示这是API服务平台的文本"
   },
   "entity.title": {
     "message": "Título",
-    "description": "Título de la entidad"
+    "description": "实体的标题"
   },
   "entity.icon": {
     "message": "Ícono",
-    "description": "Ícono de la entidad"
+    "description": "实体的图标"
   },
   "entity.status": {
     "message": "Estado",
-    "description": "Estado de la entidad"
+    "description": "实体的状态"
   },
   "status.loading": {
     "message": "Cargando...",
-    "description": "Texto de estado que se muestra mientras se carga el contenido"
+    "description": "内容加载时显示的状态文案"
   },
   "entity.operation": {
     "message": "Operación",
-    "description": "Operación de la entidad"
+    "description": "实体的操作"
   },
   "entity.description": {
     "message": "Descripción",
-    "description": "Descripción de la entidad"
+    "description": "实体的描述"
   },
   "entity.createdAt": {
-    "message": "Creado el",
-    "description": "Fecha de creación de la entidad"
+    "message": "Creado en",
+    "description": "实体创建的时间"
   },
   "entity.updatedAt": {
-    "message": "Actualizado el",
-    "description": "Fecha de actualización de la entidad"
+    "message": "Actualizado en",
+    "description": "实体更新的时间"
   },
   "entity.order": {
     "message": "Orden",
-    "description": "Orden de la entidad, que incluye información sobre dinero y servicios que el usuario debe pagar"
+    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
   },
   "message.noTasks": {
     "message": "No hay tareas históricas, ¡comienza una nueva tarea!～",
-    "description": "Mensaje cuando no hay tareas"
+    "description": "没有任务时的消息"
   },
   "message.usedAmount": {
     "message": "Monto utilizado",
-    "description": "Para mostrar el monto utilizado del servicio"
+    "description": "用于显示服务已使用的金额"
+  },
+  "message.mobileAppDescription": {
+    "message": "Usa AceData directamente en tu teléfono, actualmente se ofrece la instalación del APK de Android. El paquete de instalación de iOS estará disponible después de completar la firma.",
+    "description": "移动应用下载页的说明文案"
+  },
+  "message.mobileAndroidHint": {
+    "message": "Compatible con teléfonos y tabletas Android, escanea para descargar e instalar el último APK.",
+    "description": "Android 下载卡片说明"
+  },
+  "message.mobileAndroidPending": {
+    "message": "El paquete de instalación de Android aún no está listo, por favor intenta más tarde.",
+    "description": "Android 安装包暂未可用时的提示"
+  },
+  "message.mobileAvailableNow": {
+    "message": "Android disponible para descargar",
+    "description": "用于显示 Android 已可下载的状态"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "Distribución segura por CDN",
+    "description": "用于强调下载链接通过 CDN 交付"
+  },
+  "message.mobileDirectInstall": {
+    "message": "Instalación directa de APK",
+    "description": "用于描述 Android 端为直接 APK 安装方式"
+  },
+  "message.mobileLatestRelease": {
+    "message": "Versión pública actual",
+    "description": "用于说明当前展示的是最新公开版本"
+  },
+  "message.mobileSharedAccount": {
+    "message": "Cuenta y cuota compartidas con la versión web",
+    "description": "用于说明移动端与网页端共用账号"
+  },
+  "message.mobileIosHint": {
+    "message": "Compatible con iPhone y iPad, se puede instalar directamente en línea; si el sistema lo bloquea, también se puede descargar el IPA y luego distribuirlo.",
+    "description": "iOS 下载卡片说明"
+  },
+  "message.mobileIosPending": {
+    "message": "El paquete de instalación de iOS aún no está disponible para descargar, se proporcionará después de completar los certificados y perfiles de Apple.",
+    "description": "iOS 安装包暂未可用时的提示"
+  },
+  "message.mobileInstallNote": {
+    "message": "Al instalar por primera vez un paquete empresarial o Ad Hoc en iOS, el sistema puede requerir que confíes en el certificado en 'Configuración > General > VPN y gestión de dispositivos'.",
+    "description": "移动应用安装提示"
+  },
+  "title.mobileApp": {
+    "message": "Descarga móvil",
+    "description": "移动应用下载页标题"
+  },
+  "title.mobileFastAccess": {
+    "message": "Acceso más rápido, sin pasar por la tienda de aplicaciones",
+    "description": "下载页优势卡片标题，强调快速安装"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "Gestión centralizada de versiones, distribución más estable",
+    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "Experiencia unificada entre móvil y web",
+    "description": "下载页优势卡片标题，强调统一体验"
+  },
+  "nav.mobileApp": {
+    "message": "Aplicación móvil",
+    "description": "导航中的移动应用下载入口"
+  },
+  "message.mobileFastAccess": {
+    "message": "Los usuarios pueden escanear el código en el teléfono para instalar directamente, o pueden descargar el APK en el escritorio y luego distribuirlo a los miembros del equipo, ideal para pruebas rápidas y pruebas internas.",
+    "description": "下载页优势说明，强调快速接入"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "Los enlaces de descarga están centralizados en una sola página, con el número de versión, estado de la plataforma y método de instalación visibles de un vistazo, reduciendo los costos de comunicación causados por la dispersión de enlaces.",
+    "description": "下载页优势说明，强调统一分发"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "El sistema de cuentas, cuotas y accesos a servicios después de iniciar sesión se mantiene consistente con la versión web, facilitando a los usuarios el cambio sin problemas entre escritorio y móvil.",
+    "description": "下载页优势说明，强调统一账号体验"
   },
   "message.remainingAmount": {
     "message": "Monto restante",
-    "description": "Para mostrar el monto restante del servicio"
+    "description": "用于显示服务剩余的金额"
   },
   "message.copied": {
     "message": "Copiado con éxito",
-    "description": "Mensaje que indica que el contenido se ha copiado con éxito"
+    "description": "显示内容已成功复制的消息"
   },
   "message.restart": {
     "message": "Regenerar",
-    "description": "Para mostrar el mensaje de que el contenido se ha copiado con éxito"
+    "description": "Mensaje que indica que el contenido se ha copiado con éxito"
   },
   "message.confirmDelete": {
-    "message": "¿Está seguro de que desea eliminarlo?",
+    "message": "¿Está seguro de que desea eliminar?",
     "description": "Mensaje que confirma que el usuario desea eliminar un contenido"
   },
   "message.expiredAt": {
     "message": "Fecha de expiración",
-    "description": "Para mostrar la fecha de expiración del servicio"
+    "description": "Mensaje que muestra la fecha de expiración del servicio"
   },
   "message.alert": {
     "message": "Advertencia",
-    "description": "Mensaje que advierte al usuario"
+    "description": "Mensaje que alerta al usuario"
   },
   "message.info": {
     "message": "Información",
@@ -260,336 +348,336 @@
     "description": "Mensaje que invita al usuario a unirse al canal de Discord"
   },
   "message.addWeChat": {
-    "message": "Servicio de WeChat",
+    "message": "Agregar WeChat",
     "description": "Mensaje que invita al usuario a agregar una cuenta de WeChat"
   },
   "message.serviceTech": {
     "message": "Soporte técnico",
-    "description": "Mensaje que muestra soporte técnico"
+    "description": "Mensaje que muestra el soporte técnico"
   },
   "message.businessCooperation": {
-    "message": "Datos y cooperación comercial",
-    "description": "Mensaje que muestra cooperación comercial"
+    "message": "Cooperación de datos y negocios",
+    "description": "Mensaje que muestra la cooperación comercial"
   },
   "message.noData": {
-    "message": "No hay datos",
-    "description": "Mensaje que muestra que no hay datos en la tabla o lista"
+    "message": "Sin datos",
+    "description": "Mensaje que indica que no hay datos en la tabla o lista"
   },
   "nav.home": {
     "message": "Inicio",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de inicio"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de inicio"
   },
   "nav.content": {
     "message": "Contenido",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de contenido"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de contenido"
   },
   "nav.category": {
     "message": "Categoría",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de categoría"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de categoría"
   },
   "nav.service": {
     "message": "Todos los servicios",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de servicios"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de servicios"
   },
   "nav.profile": {
     "message": "Yo",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de perfil"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de perfil"
   },
   "nav.products": {
     "message": "Productos",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de productos"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de productos"
   },
   "nav.referral": {
-    "message": "Alianza de ingresos",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de referencia"
+    "message": "Programa de referidos",
+    "description": "Texto en la barra de navegación del sitio que muestra la página de referidos"
   },
   "nav.apiPlatform": {
     "message": "Plataforma API",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de la plataforma API"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de la plataforma API"
   },
   "nav.document": {
     "message": "Documentación de desarrollo",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de documentación"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de documentación"
   },
   "nav.console": {
     "message": "Consola",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de consola"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de consola"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de ChatGPT, no traducir este campo, debe permanecer como 'ChatGPT'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de ChatGPT, no traducir este campo, debe permanecer como 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de DeepSeek, no traducir este campo, debe permanecer como 'DeepSeek'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de DeepSeek, no traducir este campo, debe permanecer como 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Grok, no traducir este campo, debe permanecer como 'Grok'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Grok, no traducir este campo, debe permanecer como 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de chat, no traducir este campo, debe permanecer como 'Chat'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de chat, no traducir este campo, debe permanecer como 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de chat, no traducir este campo, debe permanecer como 'Veo'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de chat, no traducir este campo, debe permanecer como 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de chat, no traduzca este campo, debe permanecer como 'Sora'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de chat, no traducir este campo, debe permanecer como 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Midjourney, no traduzca este campo, debe permanecer como 'Midjourney'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Midjourney, no traducir este campo, debe permanecer como 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de arte 2D, no traduzca este campo, debe permanecer como 'QRArt'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de arte 2D, no traducir este campo, debe permanecer como 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Suno, no traduzca este campo, debe permanecer como 'Suno'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Suno, no traducir este campo, debe permanecer como 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Pixverse, no traduzca este campo, debe permanecer como 'Pixverse'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Pixverse, no traducir este campo, debe permanecer como 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Flux, no traduzca este campo, debe permanecer como 'Flux'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Flux, no traducir este campo, debe permanecer como 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Nano Banana, no traduzca este campo, debe permanecer como 'Nano Banana'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de Nano Banana, no traducir este campo, debe permanecer como 'Nano Banana'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de SeeDream, no traduzca este campo, debe permanecer como 'SeeDream'"
+    "description": "Texto en la barra de navegación del sitio que muestra la página de SeeDream, no traducir este campo, debe permanecer como 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de SeeDance, no traduzca este campo, debe permanecer como 'SeeDance'"
+    "description": "网站导航栏中的文本，用于显示SeeDance页面，请不要翻译此字段，必须保持为'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Luma, no traduzca este campo, debe permanecer como 'Luma'"
+    "description": "网站导航栏中的文本，用于显示Luma页面，请不要翻译此字段，必须保持为'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Pika, no traduzca este campo, debe permanecer como 'Pika'"
+    "description": "网站导航栏中的文本，用于显示Pika页面，请不要翻译此字段，必须保持为'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Kling, no traduzca este campo, debe permanecer como 'Kling'"
+    "description": "网站导航栏中的文本，用于显示Kling页面，请不要翻译此字段，必须保持为'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de Hailuo, no traduzca este campo, debe permanecer como 'Hailuo'"
+    "description": "网站导航栏中的文本，用于显示Hailuo页面，请不要翻译此字段，必须保持为'Hailuo'"
   },
   "nav.image": {
     "message": "Imagen",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de imágenes"
+    "description": "网站导航栏中的文本，用于显示图片页面"
   },
   "nav.music": {
     "message": "Música",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de música"
+    "description": "网站导航栏中的文本，用于显示音乐页面"
   },
   "nav.video": {
     "message": "Vídeo",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de vídeo"
+    "description": "网站导航栏中的文本，用于显示视频页面"
   },
   "nav.distribution": {
-    "message": "Recompensas por Referidos",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de recompensas por referidos"
+    "message": "Recompensas",
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
   "nav.logOut": {
     "message": "Cerrar sesión",
-    "description": "Texto en la barra de navegación del sitio para cerrar sesión"
+    "description": "网站导航栏中的文本，用于退出登录"
   },
   "nav.site": {
     "message": "Configuración del sitio",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de configuración del sitio"
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.setting": {
     "message": "Configuración",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de configuración"
+    "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "Foto de Identidad AI",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de configuración del sitio"
+    "message": "Foto de identificación AI",
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
     "message": "Más",
-    "description": "Texto en la barra de navegación del sitio para expandir más servicios"
+    "description": "网站导航栏中的文本，用于展开更多服务"
   },
   "nav.locale": {
-    "message": "Configuración de Idioma",
-    "description": "Texto en la barra de navegación del sitio para cambiar el idioma"
+    "message": "Configuración de idioma",
+    "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.support": {
-    "message": "Soporte al Cliente",
-    "description": "Texto en la barra de navegación del sitio para mostrar la página de contacto"
+    "message": "Soporte al cliente",
+    "description": "网站导航栏中的文本，用于显示联系页面"
   },
   "nav.darkMode": {
-    "message": "Modo Oscuro",
-    "description": "Texto en la barra de navegación del sitio para cambiar a un tema oscuro"
+    "message": "Modo oscuro",
+    "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
     "message": "Advertencia",
-    "description": "Título del mensaje de advertencia"
+    "description": "警告消息的标题"
   },
   "title.placeholderOfSelect": {
     "message": "Por favor seleccione",
-    "description": "Placeholder para la entrada de selección"
+    "description": "选择输入的占位符"
   },
   "title.placeholderOfInput": {
     "message": "Por favor complete",
-    "description": "Placeholder para la entrada"
+    "description": "输入的占位符"
   },
   "title.allApplications": {
-    "message": "Todas las Solicitudes",
-    "description": "Título de la página que muestra todas las solicitudes"
+    "message": "Todas las solicitudes",
+    "description": "显示所有申请的页面标题"
   },
   "title.allOrders": {
-    "message": "Todos los Pedidos",
-    "description": "Título de la página que muestra todos los pedidos"
+    "message": "Todos los pedidos",
+    "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
-    "message": "Información del Pedido",
-    "description": "Título de la página que muestra la información del pedido"
+    "message": "Información del pedido",
+    "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
     "message": "Recargar",
-    "description": "Título de la página para recargar. Debe traducirse como 'Recargar'."
+    "description": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
   },
   "title.distribution": {
-    "message": "Recompensas por Referidos",
-    "description": "Título de la página que muestra los ingresos por referidos, significa que los usuarios pueden ganar dinero invitando a otros a usar el servicio"
+    "message": "Recompensas",
+    "description": "显示推荐收入的页面标题，意味着用户可以通过邀请他人使用该服务来赚钱"
   },
   "title.site": {
-    "message": "Configuración del Sitio",
-    "description": "Título de la página que muestra la configuración del sitio"
+    "message": "Configuración del sitio",
+    "description": "显示站点配置的页面标题"
   },
   "title.distributionHistory": {
     "message": "Historial de recomendaciones",
-    "description": "Título de la página que muestra el historial de recomendaciones"
+    "description": "显示推荐历史的页面标题"
   },
   "title.invitee": {
-    "message": "Invitador",
-    "description": "Título de la página que muestra al invitador"
+    "message": "Invitado",
+    "description": "显示邀请人的页面标题"
   },
   "title.allUsages": {
     "message": "Historial de uso",
-    "description": "Título de la página que muestra todos los usos del servicio API"
+    "description": "显示API服务所有使用的页面标题"
   },
   "title.allCredentials": {
-    "message": "Credenciales",
-    "description": "Título de la página que muestra todas las credenciales utilizadas para acceder a la API"
+    "message": "Claves",
+    "description": "显示所有凭证的页面标题，凭证用于访问API"
   },
   "about.title1": {
-    "message": "Contáctanos",
-    "description": "Título de la sección que muestra la información de contacto"
+    "message": "Contáctenos",
+    "description": "显示联系信息的部分标题"
   },
   "about.title2": {
     "message": "Recursos",
-    "description": "Título de la sección que muestra los enlaces"
+    "description": "显示链接的部分标题"
   },
   "about.title3": {
     "message": "Enlaces",
-    "description": "Título de la sección que muestra la información de soporte"
+    "description": "显示支持信息的部分标题"
   },
   "about.address": {
-    "message": "201 N Broad St, Middletown, DE, EE. UU.",
-    "description": "Dirección de la empresa"
+    "message": "651 N Broad St, Suite 201, Middletown, DE, EE. UU.",
+    "description": "公司的地址"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Correo electrónico de la empresa"
+    "description": "公司的电子邮件"
   },
   "about.link1": {
     "message": "Servicios",
-    "description": "Enlace a la página de documentación"
+    "description": "指向文档页面的链接"
   },
   "about.link2": {
     "message": "Documentación de desarrollo",
-    "description": "Enlace a la página de servicios"
+    "description": "指向服务页面的链接"
   },
   "about.link3": {
     "message": "Consola",
-    "description": "Enlace a la página de la consola"
+    "description": "指向控制台页面的链接"
   },
   "about.link4": {
     "message": "Perfil",
-    "description": "Enlace a la página de perfil"
+    "description": "指向个人资料页面的链接"
   },
   "about.link5": {
     "message": "Plataforma UI",
-    "description": "Enlace a la página central"
+    "description": "指向中心页面的链接"
   },
   "about.link6": {
-    "message": "Ingresos por recomendaciones",
-    "description": "Enlace a la página de ingresos por recomendaciones"
+    "message": "Ingresos por referidos",
+    "description": "指向推荐收入页面的链接"
   },
   "about.link7": {
     "message": "Soporte",
-    "description": "Enlace a la página de soporte"
+    "description": "指向支持页面的链接"
   },
   "about.link8": {
     "message": "Términos de servicio",
-    "description": "Enlace a la página de términos de servicio"
+    "description": "指向服务条款页面的链接"
   },
   "about.link9": {
     "message": "Política de privacidad",
-    "description": "Enlace a la página de política de privacidad"
+    "description": "指向隐私政策页面的链接"
   },
   "theme.light": {
     "message": "Claro",
-    "description": "Nombre del tema claro"
+    "description": "浅色主题的名称"
   },
   "theme.dark": {
     "message": "Oscuro",
-    "description": "Nombre del tema oscuro"
+    "description": "深色主题的名称"
   },
   "theme.system": {
     "message": "Sistema",
-    "description": "Nombre del tema del sistema, indica que el tema cambia automáticamente según la configuración del sistema"
+    "description": "系统主题的名称，表示根据系统设置自动切换主题"
   },
   "settings.general": {
     "message": "Configuración general",
-    "description": "Título de la sección de configuración general en la página de configuración"
+    "description": "设置页面中的通用设置部分的标题"
   },
   "settings.language": {
     "message": "Idioma",
-    "description": "Título de la sección de configuración de idioma en la página de configuración"
+    "description": "设置页面中的语言设置部分的标题"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Título de la sección de configuración de tema en la página de configuración"
+    "description": "设置页面中的主题设置部分的标题"
   },
   "settings.seo": {
     "message": "Configuración SEO",
-    "description": "Título de la sección de configuración SEO en la página de configuración"
+    "description": "设置页面中的SEO设置部分的标题"
   },
   "settings.site": {
     "message": "Configuración del sitio",
-    "description": "Título de la sección de configuración del sitio en la página de configuración"
+    "description": "设置页面中的站点设置部分的标题"
   },
   "settings.distribution": {
     "message": "Configuración de distribución",
-    "description": "Título de la sección de configuración de distribución en la página de configuración"
+    "description": "设置页面中的分发设置部分的标题"
   },
   "settings.function": {
     "message": "Configuración de funciones",
-    "description": "Título de la sección de configuración de funciones en la página de configuración"
+    "description": "设置页面中的功能设置部分的标题"
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Texto en la barra de navegación del sitio web para mostrar la página de Gemini, debe permanecer como 'Gemini'"
+    "description": "Text in the website navigation bar to display the Gemini page, must remain as 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Texto en la barra de navegación del sitio web para mostrar la página de Claude, debe permanecer como 'Claude'"
+    "description": "Text in the website navigation bar to display the Claude page, must remain as 'Claude'"
   },
   "button.detail": {
     "message": "Ver detalles",
@@ -597,111 +685,111 @@
   },
   "button.testEnv": {
     "message": "Entorno de prueba",
-    "description": "Texto en el botón para cambiar al entorno de prueba"
+    "description": "按钮中的文本，用于切换到测试环境"
   },
   "button.upload": {
     "message": "Subir",
-    "description": "Texto en el botón para subir archivos o contenido"
+    "description": "按钮中的文本，用于上传文件或内容"
   },
   "message.cnbeian": {
     "message": "Registro en China",
-    "description": "Información de registro en China"
+    "description": "中国区备案的说明信息"
   },
   "message.copyFailed": {
     "message": "Error al copiar",
-    "description": "Mensaje que muestra que la copia de contenido falló"
+    "description": "显示内容复制失败的消息"
   },
   "nav.tryNow": {
-    "message": "Prueba rápida",
-    "description": "Texto en la barra de navegación del sitio web para permitir que los usuarios prueben el servicio"
+    "message": "Prueba ahora",
+    "description": "网站导航栏中的文本，用于让用户尝试服务"
   },
   "title.coin": {
     "message": "Criptomonedas",
-    "description": "Título de la página que muestra criptomonedas"
+    "description": "显示加密货币的页面标题"
   },
   "title.distributionRank": {
-    "message": "Ranking de recomendaciones",
-    "description": "Título de la página que muestra el ranking de recomendaciones"
+    "message": "Ranking de referidos",
+    "description": "显示推荐排行的页面标题"
   },
   "title.distributionPlatformRank": {
     "message": "Ranking de plataformas",
-    "description": "Título de la página que muestra el ranking de plataformas"
+    "description": "显示平台排行的页面标题"
   },
   "customers.name1": {
     "message": "Mark Du",
-    "description": "Nombre del cliente"
+    "description": "客户的姓名"
   },
   "customers.job1": {
     "message": "Ingeniero de software",
-    "description": "Profesión del cliente"
+    "description": "客户的职业"
   },
   "customers.comment1": {
     "message": "Ace Data Cloud ha brindado un excelente servicio a nuestro equipo, ayudándonos a aumentar la productividad. ¡Me encanta!",
-    "description": "Comentario del cliente"
+    "description": "客户的评价"
   },
   "customers.name2": {
     "message": "Jacob Williams",
-    "description": "Nombre del cliente"
+    "description": "客户的姓名"
   },
   "customers.job2": {
     "message": "Gerente de producto",
-    "description": "Profesión del cliente"
+    "description": "客户的职业"
   },
   "customers.comment2": {
     "message": "Ace Data Cloud es una gran plataforma de integración, con un servicio de calidad excepcional.",
-    "description": "Comentario del cliente"
+    "description": "客户的评价"
   },
   "customers.name3": {
     "message": "Larry Henry",
-    "description": "Nombre del cliente"
+    "description": "客户的姓名"
   },
   "customers.job3": {
     "message": "Diseñador",
-    "description": "Profesión del cliente"
+    "description": "客户的职业"
   },
   "customers.comment3": {
-    "message": "Me gusta el servicio de Ace Data Cloud, es fácil de usar y a buen precio, ¡espero que siga mejorando!",
-    "description": "Comentario del cliente"
+    "message": "Me encanta el servicio de Ace Data Cloud, es fácil de usar y a buen precio, ¡espero que siga mejorando!",
+    "description": "客户的评价"
   },
   "nav.github": {
     "message": "GitHub",
-    "description": "Enlace al repositorio de GitHub"
+    "description": "GitHub仓库链接"
   },
   "settings.github": {
     "message": "Código fuente",
-    "description": "Enlace para ver el código fuente en GitHub"
+    "description": "在GitHub上查看源代码的链接"
   },
   "settings.about": {
     "message": "Acerca de",
-    "description": "Título de la sección 'Acerca de' en la página de configuración"
+    "description": "设置页面中的关于部分的标题"
   },
   "settings.poweredBy": {
     "message": "Proyecto de código abierto",
-    "description": "Título que muestra en qué proyecto de código abierto se basa el sitio"
+    "description": "关于页面中展示本站基于哪个开源项目搭建的标题"
   },
   "settings.poweredByTip": {
-    "message": "Este sitio se basa en el proyecto de código abierto Nexior, el código es completamente abierto.",
-    "description": "Descripción que muestra en qué proyecto de código abierto se basa el sitio"
+    "message": "Este sitio está construido sobre el proyecto de código abierto Nexior, el código es completamente abierto.",
+    "description": "关于页面中展示本站基于哪个开源项目的说明"
   },
   "settings.apiService": {
     "message": "Servicio API",
-    "description": "Título que muestra el proveedor del servicio API en la página 'Acerca de'"
+    "description": "关于页面中展示API服务提供方的标题"
   },
   "settings.apiServiceTip": {
     "message": "El servicio API de este sitio es proporcionado por Ace Data Cloud.",
-    "description": "Descripción que muestra el proveedor del servicio API en la página 'Acerca de'"
+    "description": "关于页面中展示API服务提供方的说明"
   },
   "settings.buildYourOwn": {
-    "message": "Crea el tuyo",
-    "description": "Título que indica a los usuarios que pueden crear un sitio similar en la página 'Acerca de'"
+    "message": "Construye el tuyo",
+    "description": "关于页面中提示用户可以搭建同款站点的标题"
   },
   "settings.buildYourOwnTip": {
-    "message": "¿Quieres crear un sitio de IA similar? Contáctanos para obtener soporte de implementación.",
-    "description": "Descripción sobre cómo crear un sitio similar en la página 'Acerca de'"
+    "message": "¿Quieres construir un sitio de IA similar? Contáctanos para obtener soporte de implementación.",
+    "description": "关于页面中搭建同款的说明"
   },
   "settings.contactUs": {
-    "message": "Contactar soporte",
-    "description": "Texto del botón para contactar soporte"
+    "message": "Contacto",
+    "description": "Texto del botón para contactar al servicio de atención al cliente"
   },
   "message.viewOnGithub": {
     "message": "Ver en GitHub",

@@ -17,11 +17,11 @@
   },
   "name.status": {
     "message": "Statut",
-    "description": "État de la tâche"
+    "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de suivi",
-    "description": "ID de suivi de la tâche"
+    "message": "ID de traçage",
+    "description": "ID de traçage de la tâche"
   },
   "name.createdAt": {
     "message": "Date de création",
@@ -60,7 +60,7 @@
     "description": "Nom du générateur de vidéos Hailuo"
   },
   "description.ingredients": {
-    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, activez ce bouton.",
+    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre vidéo, activez ce bouton.",
     "description": "Description du paramètre 'ingredients'"
   },
   "description.startImageUrl": {
@@ -127,6 +127,10 @@
     "message": "Vidéo image",
     "description": "Texte du bouton pour générer une vidéo Hailuo"
   },
+  "button.model3": {
+    "message": "Vidéo image (mode réalisateur)",
+    "description": "Texte du bouton pour générer une vidéo Hailuo, mode réalisateur"
+  },
   "button.generate": {
     "message": "Générer",
     "description": "Texte du bouton pour générer une vidéo Hailuo"
@@ -181,18 +185,18 @@
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
-    "description": "Message lors de la génération de l'image"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message lorsque la génération d'image échoue"
+    "description": "Message lorsque la génération de l'image échoue"
   },
   "message.uploadVideoExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
     "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
+    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
     "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
@@ -213,7 +217,7 @@
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
-    "description": "Message d'erreur lorsque le téléchargement de la vidéo échoue"
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première image échoue"
   },
   "message.uploadEndImageError": {
     "message": "Échec du téléchargement de l'image de la dernière image",
@@ -228,7 +232,7 @@
     "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer sur le bouton de génération de vidéo à gauche",
+    "message": "Aucune tâche historique, veuillez cliquer sur le bouton à gauche pour générer une vidéo",
     "description": "Message lorsque aucune tâche n'est disponible"
   }
 }

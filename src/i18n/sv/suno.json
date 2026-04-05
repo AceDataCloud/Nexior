@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Ladda upp",
-    "description": "Knapptext som tillåter användaren att ladda upp referenser"
+    "description": "Knapptext som tillåter användare att ladda upp referenser"
   },
   "button.video": {
     "message": "Video",
@@ -37,7 +37,7 @@
   },
   "button.cover_music": {
     "message": "Tolka",
-    "description": "Text i knappen för att tolka en låt"
+    "description": "Text i knappen för att tolka"
   },
   "button.concat_music": {
     "message": "Sammanfoga",
@@ -81,7 +81,7 @@
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Generera ren instrumental musik utan sång"
+    "description": "Generera ren musik utan sång"
   },
   "name.referenceAudios": {
     "message": "Referensmusik",
@@ -113,7 +113,7 @@
   },
   "name.type": {
     "message": "Anpassad läge",
-    "description": "Namn på det anpassade läget"
+    "description": "Namn på anpassad läge"
   },
   "name.prompt": {
     "message": "Låtbeskrivning",
@@ -161,7 +161,7 @@
   },
   "name.variationCategory": {
     "message": "Varianttyp",
-    "description": "Kontrollera mångfalden av genererade varianter"
+    "description": "Kontrollera mångfalden i de genererade varianterna"
   },
   "name.audioWeight": {
     "message": "Originalvikt",
@@ -245,63 +245,63 @@
   },
   "description.replaceSection": {
     "message": "Ersätt innehållet i en angiven tidsperiod i låten",
-    "description": "Beskrivning av ersättningssegmentfunktionen"
+    "description": "Beskrivning av funktionen för att ersätta sektioner"
   },
   "status.pending": {
     "message": "Väntar",
-    "description": "Väntande status för uppgiften"
+    "description": "Status för väntande uppgift"
   },
   "placeholder.prompt": {
-    "message": "Beskriv den musik du vill ha, till exempel: en varm folkmusik om längtan efter hösten...",
-    "description": "Platshållare för låtbeskrivning"
+    "message": "Beskriv den musik du vill ha, till exempel: en varm folkmusik, om längtan efter hösten...",
+    "description": "Platsinnehåll för låtbeskrivning"
   },
   "placeholder.lyrics": {
     "message": "[Vers]\nI denna tysta natt\nStjärnorna blinkar på himlen\n\n[Refräng]\nLåt oss sjunga tillsammans\nTills gryningen...",
-    "description": "Platshållare för textinmatning"
+    "description": "Platsinnehåll för textinmatning"
   },
   "placeholder.extend.lyrics": {
     "message": "Skriv in texten som ska utökas...",
-    "description": "Platshållare för utökning av textinmatning"
+    "description": "Platsinnehåll för att utöka textinmatning"
   },
   "placeholder.extend.continue_at": {
     "message": "Från vilken sekund ska vi börja utöka...",
-    "description": "Platshållare för starttiden för utökning"
+    "description": "Platsinnehåll för starttid för utökning"
   },
   "placeholder.style": {
     "message": "Till exempel: akustisk pop, jazz, R&B, elektronisk...",
-    "description": "Platshållare för stilinmatning"
+    "description": "Platsinnehåll för stilinmatning"
   },
   "placeholder.styleNegative": {
     "message": "Till exempel: heavy metal, skrikande...",
-    "description": "Platshållare för uteslutningsstilinmatning"
+    "description": "Platsinnehåll för uteslutningsstilinmatning"
   },
   "placeholder.title": {
     "message": "Skriv in låtens namn...",
-    "description": "Platshållare för titelinput"
+    "description": "Platsinnehåll för titelinmatning"
   },
   "placeholder.select": {
-    "message": "Vänligen välj modell...",
-    "description": "Platshållare för modellval"
+    "message": "Välj modell...",
+    "description": "Platsinnehåll för modellval"
   },
   "placeholder.position": {
-    "message": "Vänligen välj...",
-    "description": "Platshållare för positionsinmatning"
+    "message": "Välj...",
+    "description": "Platsinnehåll för positionsinmatning"
   },
   "placeholder.lyricPrompt": {
     "message": "Beskriv temat för texten, AI kommer automatiskt att generera...",
-    "description": "Platshållare för textpromptinmatning"
+    "description": "Platsinnehåll för textpromptinmatning"
   },
   "placeholder.replaceSectionStart": {
     "message": "Starttid (sekunder)",
-    "description": "Platshållare för starttiden för ersättningssegment"
+    "description": "Platsinnehåll för starttid för att ersätta sektioner"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Sluttid (sekunder)",
-    "description": "Platshållare för sluttiden för ersättningssegment"
+    "description": "Platsinnehåll för sluttid för att ersätta sektioner"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text på genereringsknappen"
+    "description": "Text för generera-knappen"
   },
   "gender.male": {
     "message": "Manlig röst",
@@ -357,14 +357,14 @@
   },
   "message.getVideoUrlFailed": {
     "message": "Misslyckades med att hämta musikvideo, försök igen senare",
-    "description": "Felmeddelande vid misslyckad videohämtning"
+    "description": "Felmeddelande vid misslyckad hämtning av video"
   },
   "message.generatingLyrics": {
     "message": "Genererar text...",
     "description": "Meddelande vid textgenerering"
   },
   "message.generateLyricsSuccess": {
-    "message": "Texten har genererats framgångsrikt",
+    "message": "Text genererad framgångsrikt",
     "description": "Meddelande vid framgångsrik textgenerering"
   },
   "message.generateLyricsFailed": {
@@ -413,6 +413,6 @@
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen generera musik i konfigurationspanelen till vänster",
-    "description": "Meddelande när det inte finns några uppgifter"
+    "description": "Meddelande när inga uppgifter finns"
   }
 }

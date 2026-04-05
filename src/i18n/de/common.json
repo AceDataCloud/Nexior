@@ -17,7 +17,7 @@
   },
   "button.restart": {
     "message": "Neu generieren",
-    "description": "Text im Button, der verwendet wird, um bestimmte Inhalte zurückzusetzen"
+    "description": "Text im Button, der verwendet wird, um bestimmte Inhalte neu zu generieren"
   },
   "button.preview": {
     "message": "Vorschau",
@@ -103,9 +103,21 @@
     "message": "Kostenlos starten",
     "description": "Text im Button, der verwendet wird, um den Benutzern den kostenlosen Start zu ermöglichen"
   },
+  "button.downloadAndroid": {
+    "message": "Android herunterladen",
+    "description": "Text im Button, der verwendet wird, um das Android-Installationspaket herunterzuladen"
+  },
+  "button.downloadIos": {
+    "message": "iOS-Installationspaket herunterladen",
+    "description": "Text im Button, der verwendet wird, um die iOS-Installationsdatei herunterzuladen"
+  },
+  "button.installIos": {
+    "message": "iOS installieren",
+    "description": "Text im Button, der verwendet wird, um die iOS-Anwendung zu installieren"
+  },
   "button.apply": {
-    "message": "Antrag stellen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung von API-Diensten zu ermöglichen"
+    "message": "Beantragen",
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung des API-Dienstes zu ermöglichen"
   },
   "button.refresh": {
     "message": "Aktualisieren",
@@ -113,19 +125,19 @@
   },
   "button.pay": {
     "message": "Bezahlen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Zahlung von Dienstgebühren zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Bezahlung der Dienstgebühren zu ermöglichen"
   },
   "button.repay": {
     "message": "Zahlung fortsetzen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung von Dienstgebühren zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung der Dienstgebühren zu ermöglichen"
   },
   "button.applied": {
-    "message": "Antrag gestellt",
+    "message": "Beantragt",
     "description": "Text im Button, der anzeigt, dass der Benutzer den Dienst beantragt hat"
   },
   "button.acquire": {
     "message": "Erhalten",
-    "description": "Text im Button, der verwendet wird, um den Benutzern den Erhalt von API-Dienst-Token oder -Schlüsseln zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern das Erhalten von API-Dienst-Token oder -Schlüsseln zu ermöglichen"
   },
   "button.fillExample": {
     "message": "Beispiel ausfüllen",
@@ -133,15 +145,15 @@
   },
   "button.buyMore": {
     "message": "Aufladen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern das Aufladen zu ermöglichen. Englisch muss als 'Top Up' übersetzt werden, Chinesisch als '充值'."
+    "description": "Text im Button, der verwendet wird, um den Benutzern das Aufladen zu ermöglichen. Englisch muss als 'Top Up' übersetzt werden, Deutsch als 'Aufladen'."
   },
   "button.update": {
     "message": "Aktualisieren",
     "description": "Text im Button, der verwendet wird, um Inhalte zu aktualisieren"
   },
   "button.view": {
-    "message": "Ansehen",
-    "description": "Text im Button, der verwendet wird, um Inhalte anzusehen"
+    "message": "Anzeigen",
+    "description": "Text im Button, der verwendet wird, um Inhalte anzuzeigen"
   },
   "button.create": {
     "message": "Erstellen",
@@ -157,215 +169,291 @@
   },
   "entity.id": {
     "message": "ID",
-    "description": "Verwendet, um die eindeutige Kennung einer Entität anzuzeigen"
+    "description": "用于显示实体的唯一标识符"
   },
   "entity.type": {
     "message": "Typ",
-    "description": "Verwendet, um den Typ einer Entität anzuzeigen"
+    "description": "用于显示实体的类型"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Website-Name, keine Übersetzung erforderlich, bleibt 'Ace Data Cloud'"
+    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Urheberrecht",
-    "description": "Text zur Anzeige des Urheberrechts"
+    "description": "显示版权的文本"
   },
   "entity.platform": {
     "message": "Plattform",
-    "description": "Text, der angibt, dass dies die API-Dienstplattform ist"
+    "description": "指示这是API服务平台的文本"
   },
   "entity.title": {
     "message": "Titel",
-    "description": "Titel des Entitäts"
+    "description": "实体的标题"
   },
   "entity.icon": {
     "message": "Symbol",
-    "description": "Symbol der Entität"
+    "description": "实体的图标"
   },
   "entity.status": {
     "message": "Status",
-    "description": "Status der Entität"
+    "description": "实体的状态"
   },
   "status.loading": {
     "message": "Wird geladen...",
-    "description": "Statusnachricht, die beim Laden des Inhalts angezeigt wird"
+    "description": "内容加载时显示的状态文案"
   },
   "entity.operation": {
     "message": "Aktion",
-    "description": "Aktion der Entität"
+    "description": "实体的操作"
   },
   "entity.description": {
     "message": "Beschreibung",
-    "description": "Beschreibung der Entität"
+    "description": "实体的描述"
   },
   "entity.createdAt": {
     "message": "Erstellt am",
-    "description": "Zeitpunkt der Erstellung der Entität"
+    "description": "实体创建的时间"
   },
   "entity.updatedAt": {
     "message": "Aktualisiert am",
-    "description": "Zeitpunkt der Aktualisierung der Entität"
+    "description": "实体更新的时间"
   },
   "entity.order": {
     "message": "Bestellung",
-    "description": "Bestellung der Entität, die Geld- und Dienstleistungsinformationen enthält, für die der Benutzer bezahlen muss"
+    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte starten Sie eine neue Aufgabe～",
-    "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+    "description": "没有任务时的消息"
   },
   "message.usedAmount": {
     "message": "Verwendeter Betrag",
-    "description": "Zur Anzeige des bereits verwendeten Betrags für den Dienst"
+    "description": "用于显示服务已使用的金额"
+  },
+  "message.mobileAppDescription": {
+    "message": "Verwenden Sie AceData direkt auf Ihrem Handy. Derzeit steht das Android APK zum Download zur Verfügung, das iOS-Paket wird nach der Signierung zum Download freigegeben.",
+    "description": "移动应用下载页的说明文案"
+  },
+  "message.mobileAndroidHint": {
+    "message": "Für Android-Handys und -Tablets, scannen Sie den QR-Code, um das neueste APK herunterzuladen und zu installieren.",
+    "description": "Android 下载卡片说明"
+  },
+  "message.mobileAndroidPending": {
+    "message": "Das Android-Installationspaket ist noch nicht bereit, bitte versuchen Sie es später erneut.",
+    "description": "Android 安装包暂未可用时的提示"
+  },
+  "message.mobileAvailableNow": {
+    "message": "Android steht zum Download bereit",
+    "description": "用于显示 Android 已可下载的状态"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "Sichere CDN-Verteilung",
+    "description": "用于强调下载链接通过 CDN 交付"
+  },
+  "message.mobileDirectInstall": {
+    "message": "Direkte APK-Installation",
+    "description": "用于描述 Android 端为直接 APK 安装方式"
+  },
+  "message.mobileLatestRelease": {
+    "message": "Aktuelle öffentliche Version",
+    "description": "用于说明当前展示的是最新公开版本"
+  },
+  "message.mobileSharedAccount": {
+    "message": "Gemeinsame Konten und Kontingente mit der Webversion",
+    "description": "用于说明移动端与网页端共用账号"
+  },
+  "message.mobileIosHint": {
+    "message": "Für iPhone und iPad, kann direkt online installiert werden; wenn das System blockiert, kann auch zuerst die IPA heruntergeladen und dann verteilt werden.",
+    "description": "iOS 下载卡片说明"
+  },
+  "message.mobileIosPending": {
+    "message": "Das iOS-Installationspaket steht noch nicht zum Download bereit, es wird bereitgestellt, nachdem die Apple-Zertifikate und -Profile vervollständigt sind.",
+    "description": "iOS 安装包暂未可用时的提示"
+  },
+  "message.mobileInstallNote": {
+    "message": "Bei der ersten Installation von Unternehmens- oder Ad-Hoc-Paketen auf iOS kann das System verlangen, dass das Zertifikat zuerst unter 'Einstellungen > Allgemein > VPN & Geräteverwaltung' vertraut wird.",
+    "description": "移动应用安装提示"
+  },
+  "title.mobileApp": {
+    "message": "Mobile App herunterladen",
+    "description": "移动应用下载页标题"
+  },
+  "title.mobileFastAccess": {
+    "message": "Schnellerer Zugriff, ohne App-Store",
+    "description": "下载页优势卡片标题，强调快速安装"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "Zentralisierte Versionsverwaltung, stabilere Verteilung",
+    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "Konsistente Erfahrung zwischen Mobil- und Webversion",
+    "description": "下载页优势卡片标题，强调统一体验"
+  },
+  "nav.mobileApp": {
+    "message": "Mobile App",
+    "description": "导航中的移动应用下载入口"
+  },
+  "message.mobileFastAccess": {
+    "message": "Benutzer können die App direkt auf dem Handy scannen und installieren oder zuerst das APK auf dem Desktop herunterladen und dann an Teammitglieder verteilen, was sich für schnelle Tests und interne Tests eignet.",
+    "description": "下载页优势说明，强调快速接入"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "Der Download-Link ist auf einer Seite zentralisiert, Versionsnummer, Plattformstatus und Installationsmethode sind auf einen Blick sichtbar, was die Kommunikationskosten aufgrund von verstreuten Links reduziert.",
+    "description": "下载页优势说明，强调统一分发"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "Das Kontosystem, die Kontingente und die Servicezugänge nach dem Login sind mit der Webversion konsistent, was den nahtlosen Wechsel zwischen Desktop- und Mobilversion erleichtert.",
+    "description": "下载页优势说明，强调统一账号体验"
   },
   "message.remainingAmount": {
     "message": "Verbleibender Betrag",
-    "description": "Zur Anzeige des verbleibenden Betrags für den Dienst"
+    "description": "用于显示服务剩余的金额"
   },
   "message.copied": {
     "message": "Erfolgreich kopiert",
-    "description": "Nachricht, die anzeigt, dass der Inhalt erfolgreich kopiert wurde"
+    "description": "显示内容已成功复制的消息"
   },
   "message.restart": {
     "message": "Neu generieren",
-    "description": "Nachricht zur Anzeige, dass der Inhalt erfolgreich neu generiert wurde"
+    "description": "用于显示内容已成功复制的消息"
   },
   "message.confirmDelete": {
     "message": "Sind Sie sicher, dass Sie löschen möchten?",
-    "description": "Nachricht zur Bestätigung, dass der Benutzer einen bestimmten Inhalt löschen möchte"
+    "description": "确认用户要删除某项内容的消息"
   },
   "message.expiredAt": {
     "message": "Ablaufdatum",
-    "description": "Zur Anzeige des Ablaufdatums des Dienstes"
+    "description": "用于显示服务的过期时间"
   },
   "message.alert": {
     "message": "Warnung",
-    "description": "Nachricht zur Warnung des Benutzers"
+    "description": "警告用户的消息"
   },
   "message.info": {
     "message": "Hinweis",
-    "description": "Nachricht zur Anzeige von Informationen"
+    "description": "显示信息的消息"
   },
   "message.free": {
     "message": "Kostenlos",
-    "description": "Nachricht, die anzeigt, dass der Dienst kostenlos ist, was bedeutet, dass der Benutzer nichts bezahlen muss"
+    "description": "显示该服务是免费的消息，意味着用户无需支付"
   },
   "message.startPrice": {
     "message": "Startpreis",
-    "description": "Nachricht zur Anzeige des niedrigsten Preises für den Dienst"
+    "description": "显示服务的最低价格的消息"
   },
   "message.joinDiscord": {
     "message": "Discord beitreten",
-    "description": "Nachricht, die den Benutzer einlädt, dem Discord-Kanal beizutreten"
+    "description": "让用户加入Discord频道的消息"
   },
   "message.addWeChat": {
-    "message": "WeChat-Dienst",
-    "description": "Nachricht, die den Benutzer einlädt, ein WeChat-Konto hinzuzufügen"
+    "message": "WeChat hinzufügen",
+    "description": "让用户添加微信账户的消息"
   },
   "message.serviceTech": {
     "message": "Technischer Support",
-    "description": "Nachricht zur Anzeige des technischen Supports"
+    "description": "显示技术支持的消息"
   },
   "message.businessCooperation": {
     "message": "Daten & Geschäftliche Zusammenarbeit",
-    "description": "Nachricht zur Anzeige der geschäftlichen Zusammenarbeit"
+    "description": "显示商业合作的消息"
   },
   "message.noData": {
     "message": "Keine Daten",
-    "description": "Nachricht zur Anzeige, dass keine Daten in der Tabelle oder Liste vorhanden sind"
+    "description": "显示表或列表中没有数据的消息"
   },
   "nav.home": {
     "message": "Startseite",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Startseite"
+    "description": "网站导航栏中的文本，用于显示首页"
   },
   "nav.content": {
     "message": "Inhalt",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Inhaltsseite"
+    "description": "网站导航栏中的文本，用于显示内容页面"
   },
   "nav.category": {
     "message": "Kategorie",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Kategorieseite"
+    "description": "网站导航栏中的文本，用于显示类别页面"
   },
   "nav.service": {
     "message": "Alle Dienste",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Diensteseite"
+    "description": "网站导航栏中的文本，用于显示服务页面"
   },
   "nav.profile": {
-    "message": "Ich",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Profilseite"
+    "message": "Mein Profil",
+    "description": "网站导航栏中的文本，用于显示个人资料页面"
   },
   "nav.products": {
     "message": "Produkte",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Produktseite"
+    "description": "网站导航栏中的文本，用于显示产品页面"
   },
   "nav.referral": {
-    "message": "Einnahme-Partnerschaft",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Empfehlungsseite"
+    "message": "Empfehlungsprogramm",
+    "description": "网站导航栏中的文本，用于显示推荐页面"
   },
   "nav.apiPlatform": {
-    "message": "API-Plattform",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der API-Plattformseite"
+    "message": "API Plattform",
+    "description": "网站导航栏中的文本，用于显示API平台页面"
   },
   "nav.document": {
     "message": "Entwicklungsdokumentation",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Dokumentationsseite"
+    "description": "网站导航栏中的文本，用于显示文档页面"
   },
   "nav.console": {
     "message": "Konsole",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Konsolenseite"
+    "description": "网站导航栏中的文本，用于显示控制台页面"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der ChatGPT-Seite, bitte diesen Schlüssel nicht übersetzen, muss als 'ChatGPT' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示ChatGPT页面，请不要翻译此字段，必须保持为'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der DeepSeek-Seite, bitte diesen Schlüssel nicht übersetzen, muss als 'DeepSeek' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示DeepSeek页面，请不要翻译此字段，必须保持为'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Grok-Seite, bitte diesen Schlüssel nicht übersetzen, muss als 'Grok' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示Grok页面，请不要翻译此字段，必须保持为'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Chat-Seite, bitte diesen Schlüssel nicht übersetzen, muss als 'Chat' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Text in der Navigationsleiste der Website zur Anzeige der Chat-Seite, bitte diesen Schlüssel nicht übersetzen, muss als 'Veo' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Text in der Navigationsleiste der Website, um die Chat-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Sora' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Text in der Navigationsleiste der Website, um die Midjourney-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Midjourney' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Text in der Navigationsleiste der Website, um die QRArt-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'QRArt' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Text in der Navigationsleiste der Website, um die Suno-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Suno' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示Suno页面，请不要翻译此字段，必须保持为'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Text in der Navigationsleiste der Website, um die Pixverse-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Pixverse' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示Pixverse页面，请不要翻译此字段，必须保持为'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Text in der Navigationsleiste der Website, um die Flux-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Flux' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Text in der Navigationsleiste der Website, um die Nano Banana-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Nano Banana' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Text in der Navigationsleiste der Website, um die SeeDream-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'SeeDream' beibehalten werden"
+    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -388,16 +476,16 @@
     "description": "Text in der Navigationsleiste der Website, um die Hailuo-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Hailuo' beibehalten werden"
   },
   "nav.image": {
-    "message": "Bild",
-    "description": "Text in der Navigationsleiste der Website, um die Bild-Seite anzuzeigen"
+    "message": "Bilder",
+    "description": "Text in der Navigationsleiste der Website, um die Bilder-Seite anzuzeigen"
   },
   "nav.music": {
     "message": "Musik",
     "description": "Text in der Navigationsleiste der Website, um die Musik-Seite anzuzeigen"
   },
   "nav.video": {
-    "message": "Video",
-    "description": "Text in der Navigationsleiste der Website, um die Video-Seite anzuzeigen"
+    "message": "Videos",
+    "description": "Text in der Navigationsleiste der Website, um die Videos-Seite anzuzeigen"
   },
   "nav.distribution": {
     "message": "Empfohlene Einnahmen",
@@ -416,8 +504,8 @@
     "description": "Text in der Navigationsleiste der Website, um die Seite für die Einstellungen anzuzeigen"
   },
   "nav.headshots": {
-    "message": "AI-Porträt",
-    "description": "Text in der Navigationsleiste der Website, um die Seite für die Site-Konfiguration anzuzeigen"
+    "message": "AI-Porträts",
+    "description": "Text in der Navigationsleiste der Website, um die Seite für AI-Porträts anzuzeigen"
   },
   "nav.more": {
     "message": "Mehr",
@@ -437,7 +525,7 @@
   },
   "title.alert": {
     "message": "Warnung",
-    "description": "Titel der Warnnachricht"
+    "description": "Titel der Warnmeldung"
   },
   "title.placeholderOfSelect": {
     "message": "Bitte auswählen",
@@ -473,31 +561,31 @@
   },
   "title.distributionHistory": {
     "message": "Empfehlungshistorie",
-    "description": "Seitenüberschrift, die die Empfehlungshistorie anzeigt"
+    "description": "Titel der Seite, die die Empfehlungshistorie anzeigt"
   },
   "title.invitee": {
     "message": "Einladender",
-    "description": "Seitenüberschrift, die den Einladenden anzeigt"
+    "description": "Titel der Seite, die den Einladenden anzeigt"
   },
   "title.allUsages": {
     "message": "Nutzungsverlauf",
-    "description": "Seitenüberschrift, die alle Nutzungen des API-Dienstes anzeigt"
+    "description": "Titel der Seite, die alle Nutzungen des API-Dienstes anzeigt"
   },
   "title.allCredentials": {
     "message": "Schlüssel",
-    "description": "Seitenüberschrift, die alle Anmeldeinformationen anzeigt, die zum Zugriff auf die API verwendet werden"
+    "description": "Titel der Seite, die alle Anmeldeinformationen anzeigt, die zum Zugriff auf die API verwendet werden"
   },
   "about.title1": {
     "message": "Kontaktieren Sie uns",
-    "description": "Teilüberschrift, die die Kontaktdaten anzeigt"
+    "description": "Teilüberschrift, die die Kontaktinformationen anzeigt"
   },
   "about.title2": {
     "message": "Ressourcen",
-    "description": "Teilüberschrift, die Links anzeigt"
+    "description": "Teilüberschrift, die die Links anzeigt"
   },
   "about.title3": {
     "message": "Links",
-    "description": "Teilüberschrift, die Unterstützungsinformationen anzeigt"
+    "description": "Teilüberschrift, die die Unterstützungsinformationen anzeigt"
   },
   "about.address": {
     "message": "651 North Broad St, Suite 201, Middletown, DE, USA",
@@ -508,12 +596,12 @@
     "description": "E-Mail des Unternehmens"
   },
   "about.link1": {
-    "message": "Dienst",
+    "message": "Dienstleistungen",
     "description": "Link zur Dokumentationsseite"
   },
   "about.link2": {
-    "message": "Entwicklerdokumentation",
-    "description": "Link zur Serviceseite"
+    "message": "Entwicklungsdokumentation",
+    "description": "Link zur Dienstleistungsseite"
   },
   "about.link3": {
     "message": "Konsole",
@@ -525,11 +613,11 @@
   },
   "about.link5": {
     "message": "UI-Plattform",
-    "description": "Link zur zentralen Seite"
+    "description": "Link zur Hauptseite"
   },
   "about.link6": {
-    "message": "Empfehlungseinnahmen",
-    "description": "Link zur Seite der Empfehlungseinnahmen"
+    "message": "Empfohlene Einnahmen",
+    "description": "Link zur Seite über empfohlene Einnahmen"
   },
   "about.link7": {
     "message": "Unterstützung",
@@ -537,51 +625,51 @@
   },
   "about.link8": {
     "message": "Nutzungsbedingungen",
-    "description": "Link zur Seite der Nutzungsbedingungen"
+    "description": "Link zu den Nutzungsbedingungen"
   },
   "about.link9": {
     "message": "Datenschutzrichtlinie",
-    "description": "Link zur Seite der Datenschutzrichtlinie"
+    "description": "Link zur Datenschutzrichtlinie"
   },
   "theme.light": {
-    "message": "Helles Thema",
-    "description": "Name des hellen Themas"
+    "message": "Helles Design",
+    "description": "Name des hellen Designs"
   },
   "theme.dark": {
-    "message": "Dunkles Thema",
-    "description": "Name des dunklen Themas"
+    "message": "Dunkles Design",
+    "description": "Name des dunklen Designs"
   },
   "theme.system": {
     "message": "System",
-    "description": "Name des Systemthemas, das anzeigt, dass das Thema basierend auf den Systemeinstellungen automatisch gewechselt wird"
+    "description": "Name des Systemdesigns, das an die Systemeinstellungen angepasst ist"
   },
   "settings.general": {
     "message": "Allgemeine Einstellungen",
-    "description": "Überschrift des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für allgemeine Einstellungen auf der Einstellungsseite"
   },
   "settings.language": {
     "message": "Sprache",
-    "description": "Überschrift des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Spracheinstellungen auf der Einstellungsseite"
   },
   "settings.theme": {
-    "message": "Thema",
-    "description": "Überschrift des Abschnitts für Themaeinstellungen auf der Einstellungsseite"
+    "message": "Design",
+    "description": "Titel des Abschnitts für Designanpassungen auf der Einstellungsseite"
   },
   "settings.seo": {
     "message": "SEO-Einstellungen",
-    "description": "Überschrift des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für SEO-Einstellungen auf der Einstellungsseite"
   },
   "settings.site": {
     "message": "Website-Einstellungen",
-    "description": "Überschrift des Abschnitts für Website-Einstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Website-Einstellungen auf der Einstellungsseite"
   },
   "settings.distribution": {
     "message": "Verteilungseinstellungen",
-    "description": "Überschrift des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Verteilungseinstellungen auf der Einstellungsseite"
   },
   "settings.function": {
     "message": "Funktionseinstellungen",
-    "description": "Überschrift des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
+    "description": "Titel des Abschnitts für Funktionseinstellungen auf der Einstellungsseite"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -597,11 +685,11 @@
   },
   "button.testEnv": {
     "message": "Testumgebung",
-    "description": "Text im Button, um zur Testumgebung zu wechseln"
+    "description": "Text im Button zum Wechseln zur Testumgebung"
   },
   "button.upload": {
     "message": "Hochladen",
-    "description": "Text im Button, um Dateien oder Inhalte hochzuladen"
+    "description": "Text im Button zum Hochladen von Dateien oder Inhalten"
   },
   "message.cnbeian": {
     "message": "China-Region Registrierung",
@@ -617,26 +705,26 @@
   },
   "title.coin": {
     "message": "Kryptowährung",
-    "description": "Seitenüberschrift, die die Kryptowährung anzeigt"
+    "description": "Titel der Seite, die Kryptowährungen anzeigt"
   },
   "title.distributionRank": {
     "message": "Empfehlungsrang",
-    "description": "Seitenüberschrift, die den Empfehlungsrang anzeigt"
+    "description": "Titel der Seite, die den Empfehlungsrang anzeigt"
   },
   "title.distributionPlatformRank": {
     "message": "Plattformrang",
-    "description": "Seitenüberschrift, die den Plattformrang anzeigt"
+    "description": "Titel der Seite, die den Plattformrang anzeigt"
   },
   "customers.name1": {
     "message": "Mark Du",
     "description": "Name des Kunden"
   },
   "customers.job1": {
-    "message": "Software-Ingenieur",
+    "message": "Softwareingenieur",
     "description": "Beruf des Kunden"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloud hat unserem Team großartige Dienste geleistet und uns geholfen, die Produktivität zu steigern. Sehr zufrieden!",
+    "message": "Ace Data Cloud hat unserem Team großartige Dienste geleistet und unsere Produktivität gesteigert. Sehr zufrieden!",
     "description": "Bewertung des Kunden"
   },
   "customers.name2": {
@@ -660,8 +748,8 @@
     "description": "Beruf des Kunden"
   },
   "customers.comment3": {
-    "message": "Ich liebe die Dienste von Ace Data Cloud, sie sind benutzerfreundlich und preiswert. Ich hoffe, es wird immer besser!",
-    "description": "Kundenbewertung"
+    "message": "Ich liebe den Service von Ace Data Cloud, er ist benutzerfreundlich und preiswert. Ich hoffe, es wird immer besser!",
+    "description": "Bewertung des Kunden"
   },
   "nav.github": {
     "message": "GitHub",
@@ -669,7 +757,7 @@
   },
   "settings.github": {
     "message": "Quellcode",
-    "description": "Link zum Ansehen des Quellcodes auf GitHub"
+    "description": "Link, um den Quellcode auf GitHub anzusehen"
   },
   "settings.about": {
     "message": "Über",
@@ -677,34 +765,34 @@
   },
   "settings.poweredBy": {
     "message": "Open-Source-Projekt",
-    "description": "Titel, der angibt, auf welchem Open-Source-Projekt diese Seite basiert"
+    "description": "Titel, der auf der Über-Seite anzeigt, auf welchem Open-Source-Projekt die Seite basiert"
   },
   "settings.poweredByTip": {
-    "message": "Diese Seite basiert auf dem Open-Source-Projekt Nexior, der Code ist vollständig Open Source.",
-    "description": "Erklärung, auf welchem Open-Source-Projekt diese Seite basiert"
+    "message": "Diese Seite basiert auf dem Nexior Open-Source-Projekt, der Code ist vollständig Open Source.",
+    "description": "Hinweis auf der Über-Seite, auf welchem Open-Source-Projekt die Seite basiert"
   },
   "settings.apiService": {
     "message": "API-Dienst",
-    "description": "Titel, der den Anbieter des API-Dienstes angibt"
+    "description": "Titel, der auf der Über-Seite den Anbieter des API-Dienstes anzeigt"
   },
   "settings.apiServiceTip": {
     "message": "Der API-Dienst dieser Seite wird von Ace Data Cloud bereitgestellt.",
-    "description": "Erklärung, die den Anbieter des API-Dienstes angibt"
+    "description": "Hinweis auf der Über-Seite, der den Anbieter des API-Dienstes beschreibt"
   },
   "settings.buildYourOwn": {
     "message": "Eigenes Projekt erstellen",
-    "description": "Titel, der den Benutzern mitteilt, dass sie ein ähnliches Projekt erstellen können"
+    "description": "Titel auf der Über-Seite, der den Benutzern anzeigt, dass sie ein ähnliches Projekt erstellen können"
   },
   "settings.buildYourOwnTip": {
     "message": "Möchten Sie eine ähnliche AI-Seite erstellen? Kontaktieren Sie uns für Unterstützung bei der Bereitstellung.",
-    "description": "Erklärung zum Erstellen eines ähnlichen Projekts"
+    "description": "Hinweis auf der Über-Seite, der erklärt, wie man ein ähnliches Projekt erstellt"
   },
   "settings.contactUs": {
-    "message": "Kontaktieren Sie den Support",
-    "description": "Text des Buttons zum Kontaktieren des Supports"
+    "message": "Kontaktieren Sie uns",
+    "description": "Text des Buttons, um den Kundenservice zu kontaktieren"
   },
   "message.viewOnGithub": {
-    "message": "Auf GitHub ansehen",
-    "description": "Text für den Link, um das Projekt auf GitHub anzusehen"
+    "message": "Auf GitHub anzeigen",
+    "description": "Text des Links, um das Projekt auf GitHub anzuzeigen"
   }
 }

@@ -103,6 +103,18 @@
     "message": "免費開始",
     "description": "按鈕中的文本，用於讓用戶免費開始"
   },
+  "button.downloadAndroid": {
+    "message": "下載 Android",
+    "description": "按鈕中的文本，用於下載 Android 安裝包"
+  },
+  "button.downloadIos": {
+    "message": "下載 iOS 安裝包",
+    "description": "按鈕中的文本，用於下載 iOS 安裝包文件"
+  },
+  "button.installIos": {
+    "message": "安裝 iOS",
+    "description": "按鈕中的文本，用於安裝 iOS 應用"
+  },
   "button.apply": {
     "message": "申請",
     "description": "按鈕中的文本，用於讓用戶申請API服務"
@@ -157,79 +169,155 @@
   },
   "entity.id": {
     "message": "ID",
-    "description": "用於顯示實體的唯一標識符"
+    "description": "用于显示实体的唯一标识符"
   },
   "entity.type": {
     "message": "類型",
-    "description": "用於顯示實體的類型"
+    "description": "用于显示实体的类型"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "網站名稱，無需翻譯，保持為'Ace Data Cloud'"
+    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "版權",
-    "description": "顯示版權的文本"
+    "description": "显示版权的文本"
   },
   "entity.platform": {
     "message": "平台",
-    "description": "指示這是API服務平台的文本"
+    "description": "指示这是API服务平台的文本"
   },
   "entity.title": {
     "message": "標題",
-    "description": "實體的標題"
+    "description": "实体的标题"
   },
   "entity.icon": {
     "message": "圖示",
-    "description": "實體的圖示"
+    "description": "实体的图标"
   },
   "entity.status": {
     "message": "狀態",
-    "description": "實體的狀態"
+    "description": "实体的状态"
   },
   "status.loading": {
     "message": "載入中...",
-    "description": "內容載入時顯示的狀態文案"
+    "description": "内容加载时显示的状态文案"
   },
   "entity.operation": {
     "message": "操作",
-    "description": "實體的操作"
+    "description": "实体的操作"
   },
   "entity.description": {
     "message": "描述",
-    "description": "實體的描述"
+    "description": "实体的描述"
   },
   "entity.createdAt": {
     "message": "創建於",
-    "description": "實體創建的時間"
+    "description": "实体创建的时间"
   },
   "entity.updatedAt": {
     "message": "更新於",
-    "description": "實體更新的時間"
+    "description": "实体更新的时间"
   },
   "entity.order": {
     "message": "訂單",
-    "description": "實體的訂單，訂單包含金錢、服務信息，用戶需要為其支付"
+    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
   },
   "message.noTasks": {
     "message": "沒有歷史任務，請開始新的任務吧～",
-    "description": "沒有任務時的消息"
+    "description": "没有任务时的消息"
   },
   "message.usedAmount": {
     "message": "已使用金額",
-    "description": "用於顯示服務已使用的金額"
+    "description": "用于显示服务已使用的金额"
+  },
+  "message.mobileAppDescription": {
+    "message": "在手機上直接使用 AceData，當前提供 Android APK 下載安裝，iOS 安裝包完成簽名後開放下載。",
+    "description": "移动应用下载页的说明文案"
+  },
+  "message.mobileAndroidHint": {
+    "message": "適用於 Android 手機和平板，掃碼即可下載安裝最新 APK。",
+    "description": "Android 下载卡片说明"
+  },
+  "message.mobileAndroidPending": {
+    "message": "Android 安裝包暫未就緒，請稍後再試。",
+    "description": "Android 安装包暂未可用时的提示"
+  },
+  "message.mobileAvailableNow": {
+    "message": "Android 已開放下載",
+    "description": "用于显示 Android 已可下载的状态"
+  },
+  "message.mobileSecureDelivery": {
+    "message": "安全 CDN 分發",
+    "description": "用于强调下载链接通过 CDN 交付"
+  },
+  "message.mobileDirectInstall": {
+    "message": "直接 APK 安裝",
+    "description": "用于描述 Android 端为直接 APK 安装方式"
+  },
+  "message.mobileLatestRelease": {
+    "message": "當前公開版本",
+    "description": "用于说明当前展示的是最新公开版本"
+  },
+  "message.mobileSharedAccount": {
+    "message": "與網頁端共用帳號和額度",
+    "description": "用于说明移动端与网页端共用账号"
+  },
+  "message.mobileIosHint": {
+    "message": "適用於 iPhone 和 iPad，可直接在線安裝；如果系統攔截，也可以先下載 IPA 再分發。",
+    "description": "iOS 下载卡片说明"
+  },
+  "message.mobileIosPending": {
+    "message": "iOS 安裝包暫未開放下載，正在補齊 Apple 證書和描述文件後提供。",
+    "description": "iOS 安装包暂未可用时的提示"
+  },
+  "message.mobileInstallNote": {
+    "message": "iOS 首次安裝企業或 Ad Hoc 包時，系統可能要求先在“設置 > 通用 > VPN 與設備管理”中信任證書。",
+    "description": "移动应用安装提示"
+  },
+  "title.mobileApp": {
+    "message": "移動端下載",
+    "description": "移动应用下载页标题"
+  },
+  "title.mobileFastAccess": {
+    "message": "更快觸達，不繞應用商店",
+    "description": "下载页优势卡片标题，强调快速安装"
+  },
+  "title.mobileTrustedRelease": {
+    "message": "版本集中管理，分發更穩",
+    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+  },
+  "title.mobileUnifiedExperience": {
+    "message": "移動端與網頁端體驗保持一致",
+    "description": "下载页优势卡片标题，强调统一体验"
+  },
+  "nav.mobileApp": {
+    "message": "移動端",
+    "description": "导航中的移动应用下载入口"
+  },
+  "message.mobileFastAccess": {
+    "message": "用戶可以在手機掃碼直接安裝，也可以在桌面端先下載 APK 再分發給團隊成員，適合需要快速試用和內測的場景。",
+    "description": "下载页优势说明，强调快速接入"
+  },
+  "message.mobileTrustedRelease": {
+    "message": "下載入口集中在同一頁面，版本號、平台狀態和安裝方式一眼可見，減少因為鏈路分散造成的溝通成本。",
+    "description": "下载页优势说明，强调统一分发"
+  },
+  "message.mobileUnifiedExperience": {
+    "message": "登錄後的帳號體系、額度和服務入口與 Web 保持一致，方便用戶在桌面端和移動端之間無縫切換。",
+    "description": "下载页优势说明，强调统一账号体验"
   },
   "message.remainingAmount": {
     "message": "剩餘金額",
-    "description": "用於顯示服務剩餘的金額"
+    "description": "用于显示服务剩余的金额"
   },
   "message.copied": {
     "message": "複製成功",
-    "description": "顯示內容已成功複製的消息"
+    "description": "显示内容已成功复制的消息"
   },
   "message.restart": {
     "message": "重新生成",
-    "description": "用於顯示內容已成功複製的消息"
+    "description": "用于显示内容已成功复制的消息"
   },
   "message.confirmDelete": {
     "message": "您確定要刪除嗎？",
@@ -260,8 +348,8 @@
     "description": "讓用戶加入Discord頻道的消息"
   },
   "message.addWeChat": {
-    "message": "微信服務",
-    "description": "讓用戶添加微信帳戶的消息"
+    "message": "添加微信",
+    "description": "讓用戶添加微信賬戶的消息"
   },
   "message.serviceTech": {
     "message": "技術支持",
@@ -328,7 +416,7 @@
     "description": "網站導航欄中的文本，用於顯示Grok頁面，請不要翻譯此字段，必須保持為'Grok'"
   },
   "nav.chat": {
-    "message": "聊天",
+    "message": "Chat",
     "description": "網站導航欄中的文本，用於顯示聊天頁面，請不要翻譯此字段，必須保持為'Chat'"
   },
   "nav.veo": {
@@ -404,16 +492,16 @@
     "description": "網站導航欄中的文本，用於顯示推薦收益頁面"
   },
   "nav.logOut": {
-    "message": "退出登錄",
-    "description": "網站導航欄中的文本，用於退出登錄"
+    "message": "登出",
+    "description": "網站導航欄中的文本，用於登出"
   },
   "nav.site": {
     "message": "站點配置",
     "description": "網站導航欄中的文本，用於顯示站點配置頁面"
   },
   "nav.setting": {
-    "message": "設置",
-    "description": "網站導航欄中的文本，用於顯示設置頁面"
+    "message": "設定",
+    "description": "網站導航欄中的文本，用於顯示設定頁面"
   },
   "nav.headshots": {
     "message": "AI證件照",
@@ -424,7 +512,7 @@
     "description": "網站導航欄中的文本，用於展開更多服務"
   },
   "nav.locale": {
-    "message": "語言設置",
+    "message": "語言設定",
     "description": "網站導航欄中的文本，用於更改語言"
   },
   "nav.support": {
@@ -456,8 +544,8 @@
     "description": "顯示所有訂單的頁面標題"
   },
   "title.orderInfo": {
-    "message": "訂單信息",
-    "description": "顯示訂單信息的頁面標題"
+    "message": "訂單資訊",
+    "description": "顯示訂單資訊的頁面標題"
   },
   "title.buyMore": {
     "message": "充值",
@@ -465,7 +553,7 @@
   },
   "title.distribution": {
     "message": "推薦收益",
-    "description": "顯示推薦收入的頁面標題，意味著用户可以通過邀請他人使用該服務來賺錢"
+    "description": "顯示推薦收入的頁面標題，意味著用戶可以通過邀請他人使用該服務來賺錢"
   },
   "title.site": {
     "message": "站點配置",
@@ -489,15 +577,15 @@
   },
   "about.title1": {
     "message": "聯繫我們",
-    "description": "顯示聯繫信息的部分標題"
+    "description": "顯示聯繫資訊的部分標題"
   },
   "about.title2": {
     "message": "資源",
-    "description": "顯示鏈接的部分標題"
+    "description": "顯示連結的部分標題"
   },
   "about.title3": {
-    "message": "鏈接",
-    "description": "顯示支持信息的部分標題"
+    "message": "連結",
+    "description": "顯示支持資訊的部分標題"
   },
   "about.address": {
     "message": "美國特拉華州米德爾敦北廣街651號201室",
@@ -509,23 +597,23 @@
   },
   "about.link1": {
     "message": "服務",
-    "description": "指向文檔頁面的鏈接"
+    "description": "指向文檔頁面的連結"
   },
   "about.link2": {
     "message": "開發文檔",
-    "description": "指向服務頁面的鏈接"
+    "description": "指向服務頁面的連結"
   },
   "about.link3": {
     "message": "控制台",
-    "description": "指向控制台頁面的鏈接"
+    "description": "指向控制台頁面的連結"
   },
   "about.link4": {
     "message": "個人資料",
-    "description": "指向個人資料頁面的鏈接"
+    "description": "指向個人資料頁面的連結"
   },
   "about.link5": {
     "message": "UI平台",
-    "description": "指向中心頁面的鏈接"
+    "description": "指向中心頁面的連結"
   },
   "about.link6": {
     "message": "推薦收益",
@@ -585,11 +673,11 @@
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "網站導航欄中的文本，用於顯示Gemini頁面，必須保持為'Gemini'"
+    "description": "網站導航欄中顯示Gemini頁面的文本，必須保持為'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "網站導航欄中的文本，用於顯示Claude頁面，必須保持為'Claude'"
+    "description": "網站導航欄中顯示Claude頁面的文本，必須保持為'Claude'"
   },
   "button.detail": {
     "message": "查看詳情",

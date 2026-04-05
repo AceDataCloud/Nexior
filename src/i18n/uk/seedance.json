@@ -9,7 +9,7 @@
   },
   "description.prompt": {
     "message": "Опишіть відео, яке ви хочете згенерувати, можна додати параметри SeeDance (наприклад: --rs 720p --rt 16:9 --dur 5).",
-    "description": "Опис введення підказки"
+    "description": "Інструкція для введення підказки"
   },
   "placeholder.prompt": {
     "message": "Опишіть ваше відео…",
@@ -21,11 +21,31 @@
   },
   "description.model": {
     "message": "Виберіть версію моделі SeeDance для генерації.",
-    "description": "Опис вибору моделі"
+    "description": "Інструкція для вибору моделі"
   },
   "placeholder.select": {
     "message": "Вибрати",
     "description": "Плейсхолдер для випадаючого списку"
+  },
+  "name.duration": {
+    "message": "Тривалість",
+    "description": "Мітка вибору тривалості відео"
+  },
+  "description.duration": {
+    "message": "Тривалість відео (секунди), від 2 до 12 секунд.",
+    "description": "Інструкція для тривалості відео"
+  },
+  "name.generateAudio": {
+    "message": "Генерувати аудіо",
+    "description": "Мітка для генерації аудіо"
+  },
+  "description.generateAudio": {
+    "message": "При ввімкненні відео буде супроводжуватися аудіо. Підтримується лише моделлю seedance-1.5-pro, вартість приблизно в 2 рази вища.",
+    "description": "Інструкція для генерації аудіо"
+  },
+  "name.resolution": {
+    "message": "Роздільна здатність",
+    "description": "Мітка роздільної здатності відео"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -53,15 +73,15 @@
   },
   "description.serviceTier": {
     "message": "Рівень обробки: default або flex.",
-    "description": "Опис рівня послуг"
+    "description": "Інструкція для рівня послуг"
   },
   "serviceTier.default": {
     "message": "default",
-    "description": "Стандартний рівень"
+    "description": "За замовчуванням"
   },
   "serviceTier.flex": {
     "message": "flex",
-    "description": "Гнучкий рівень"
+    "description": "Гнучкий"
   },
   "name.returnLastFrame": {
     "message": "Повернути останній кадр",
@@ -69,23 +89,23 @@
   },
   "description.returnLastFrame": {
     "message": "При ввімкненні буде додатково повернуто зображення останнього кадру.",
-    "description": "Опис повернення останнього кадру"
+    "description": "Інструкція для повернення останнього кадру"
   },
   "name.firstFrame": {
     "message": "Зображення першого кадру",
-    "description": "Мітка завантаження зображення першого кадру"
+    "description": "Мітка для завантаження зображення першого кадру"
   },
   "description.firstFrame": {
     "message": "Необов'язково. Завантажте зображення для посилання/першого кадру.",
-    "description": "Опис зображення першого кадру"
+    "description": "Інструкція для зображення першого кадру"
   },
   "name.lastFrame": {
     "message": "Зображення останнього кадру",
-    "description": "Мітка завантаження зображення останнього кадру"
+    "description": "Мітка для завантаження зображення останнього кадру"
   },
   "description.lastFrame": {
     "message": "Необов'язково. Завантажте зображення останнього кадру (потрібен перший кадр).",
-    "description": "Опис зображення останнього кадру"
+    "description": "Інструкція для зображення останнього кадру"
   },
   "button.generate": {
     "message": "Генерувати",
@@ -109,7 +129,7 @@
   },
   "message.startingTask": {
     "message": "Запуск завдання SeeDance…",
-    "description": "Підказка про початок завдання"
+    "description": "Підказка для початку завдання"
   },
   "message.startTaskSuccess": {
     "message": "Завдання запущено",
@@ -124,7 +144,7 @@
     "description": "Підказка про вичерпання ліміту"
   },
   "message.uploadExceed": {
-    "message": "Можна завантажити не більше 1 зображення",
+    "message": "Можна завантажити лише 1 зображення",
     "description": "Підказка про перевищення ліміту завантаження"
   },
   "message.uploadError": {
@@ -133,14 +153,14 @@
   },
   "message.downloadVideo": {
     "message": "Завантажити відео",
-    "description": "Підказка про завантаження відео"
+    "description": "Підказка для завантаження відео"
   },
   "status.pending": {
     "message": "У черзі",
-    "description": "Статус у черзі"
+    "description": "Статус черги"
   },
   "status.processing": {
-    "message": "Генерація",
+    "message": "Генерується",
     "description": "Статус генерації"
   },
   "name.taskId": {
