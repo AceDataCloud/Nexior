@@ -213,7 +213,7 @@ export default defineComponent({
     min-width: 240px;
 
     &.active {
-      background-color: var(--el-fill-color-light);
+      background-color: var(--el-color-primary-light-9);
     }
   }
 }

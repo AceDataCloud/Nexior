@@ -1,54 +1,78 @@
 <template>
-  <div :direction="direction" class="navigator">
+  <div :direction="direction" :class="['navigator', { collapsed: isCollapsed && direction === 'column' }]">
     <div class="top">
-      <div class="w-full flex justify-center brand">
+      <div class="w-full flex items-center brand">
         <logo v-if="direction === 'column'" @click.stop="onHome" />
+        <button
+          v-if="direction === 'column'"
+          class="collapse-btn"
+          :title="isCollapsed ? 'Expand' : 'Collapse'"
+          @click="toggleCollapse"
+        >
+          <font-awesome-icon :icon="isCollapsed ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left'" />
+        </button>
       </div>
       <div ref="linksContainer" class="links">
-        <div
-          v-for="(link, linkIndex) in visibleLinks"
-          :key="linkIndex"
-          :class="{ link: true, active: link.routes.includes($route.name as string) }"
-        >
-          <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
-            <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
-          </el-tooltip>
-        </div>
-        <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
-          <el-popover
-            v-model:visible="showOverflow"
-            :placement="direction === 'row' ? 'top' : 'right-start'"
-            :width="180"
-            trigger="click"
-            :show-arrow="false"
-            popper-class="navigator-overflow-popover"
+        <template v-if="direction === 'column' && !isCollapsed">
+          <template v-for="(group, groupIndex) in linkGroups" :key="groupIndex">
+            <div class="category-header">{{ group.label }}</div>
+            <div
+              v-for="(link, linkIndex) in group.links"
+              :key="`${groupIndex}-${linkIndex}`"
+              :class="{ link: true, active: link.routes.includes($route.name as string) }"
+              @click="$router.push(link.route)"
+            >
+              <el-image v-if="link.logo" :src="link.logo" class="avatar" />
+              <span class="link-label">{{ link.displayName }}</span>
+            </div>
+          </template>
+        </template>
+        <template v-else>
+          <div
+            v-for="(link, linkIndex) in visibleLinks"
+            :key="linkIndex"
+            :class="{ link: true, active: link.routes.includes($route.name as string) }"
           >
-            <template #reference>
-              <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
-                <div class="folder-preview">
-                  <el-image
-                    v-for="(link, i) in overflowPreviewLinks"
-                    :key="i"
-                    :src="link.logo"
-                    class="folder-icon"
-                    fit="cover"
-                  />
+            <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
+              <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
+            </el-tooltip>
+          </div>
+          <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
+            <el-popover
+              v-model:visible="showOverflow"
+              :placement="direction === 'row' ? 'top' : 'right-start'"
+              :width="180"
+              trigger="click"
+              :show-arrow="false"
+              popper-class="navigator-overflow-popover"
+            >
+              <template #reference>
+                <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
+                  <div class="folder-preview">
+                    <el-image
+                      v-for="(link, i) in overflowPreviewLinks"
+                      :key="i"
+                      :src="link.logo"
+                      class="folder-icon"
+                      fit="cover"
+                    />
+                  </div>
+                </div>
+              </template>
+              <div class="overflow-menu">
+                <div
+                  v-for="(link, linkIndex) in overflowLinks"
+                  :key="linkIndex"
+                  :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
+                  @click="onOverflowItemClick(link)"
+                >
+                  <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
+                  <span class="overflow-name">{{ link.displayName }}</span>
                 </div>
               </div>
-            </template>
-            <div class="overflow-menu">
-              <div
-                v-for="(link, linkIndex) in overflowLinks"
-                :key="linkIndex"
-                :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
-                @click="onOverflowItemClick(link)"
-              >
-                <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
-                <span class="overflow-name">{{ link.displayName }}</span>
-              </div>
-            </div>
-          </el-popover>
-        </div>
+            </el-popover>
+          </div>
+        </template>
       </div>
     </div>
     <div class="bottom">
@@ -60,6 +84,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElTooltip, ElImage, ElPopover } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   ROUTE_PROFILE_INDEX,
   ROUTE_INDEX,
@@ -115,6 +140,15 @@ import {
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
+interface NavLink {
+  route: { name: string };
+  displayName: string;
+  logo?: string;
+  icon?: string;
+  routes: string[];
+  category: string;
+}
+
 export default defineComponent({
   name: 'Navigator',
   components: {
@@ -122,7 +156,8 @@ export default defineComponent({
     ElPopover,
     Logo,
     ElTooltip,
-    UserCenter
+    UserCenter,
+    FontAwesomeIcon
   },
   props: {
     direction: {
@@ -139,249 +174,204 @@ export default defineComponent({
       activeIndex: this.$route.name as string,
       containerHeight: 0,
       showOverflow: false,
-      resizeObserver: null as ResizeObserver | null
+      resizeObserver: null as ResizeObserver | null,
+      isCollapsed: localStorage.getItem('nav-collapsed') === 'true'
     };
   },
   computed: {
-    links() {
-      const result = [];
-      // Add chatgpt's leftmost icon
+    links(): NavLink[] {
+      const result: NavLink[] = [];
+      // Chat category
       if (this.$store?.state?.site?.features?.chatgpt?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_CHATGPT_CONVERSATION_NEW
-          },
+          route: { name: ROUTE_CHATGPT_CONVERSATION_NEW },
           displayName: this.$t('common.nav.chatgpt'),
           logo: CHAT_MODEL_ICON_CHATGPT,
-          routes: [ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW]
+          routes: [ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW],
+          category: 'chat'
         });
       }
-      // Add deepseek's leftmost icon
       if (this.$store?.state?.site?.features?.deepseek?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_DEEPSEEK_CONVERSATION_NEW
-          },
+          route: { name: ROUTE_DEEPSEEK_CONVERSATION_NEW },
           displayName: this.$t('common.nav.deepseek'),
           logo: CHAT_MODEL_ICON_DEEPSEEK,
-          routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW]
+          routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW],
+          category: 'chat'
         });
       }
-      // Add grok's leftmost icon
       if (this.$store?.state?.site?.features?.grok?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_GROK_CONVERSATION_NEW
-          },
+          route: { name: ROUTE_GROK_CONVERSATION_NEW },
           displayName: this.$t('common.nav.grok'),
           logo: CHAT_MODEL_ICON_GROK,
-          routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW]
+          routes: [ROUTE_GROK_CONVERSATION, ROUTE_GROK_CONVERSATION_NEW],
+          category: 'chat'
         });
       }
-      // Add gemini's leftmost icon
       if (this.$store?.state?.site?.features?.gemini?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_GEMINI_CONVERSATION_NEW
-          },
+          route: { name: ROUTE_GEMINI_CONVERSATION_NEW },
           displayName: this.$t('common.nav.gemini'),
           logo: CHAT_MODEL_ICON_GEMINI,
-          routes: [ROUTE_GEMINI_CONVERSATION, ROUTE_GEMINI_CONVERSATION_NEW]
+          routes: [ROUTE_GEMINI_CONVERSATION, ROUTE_GEMINI_CONVERSATION_NEW],
+          category: 'chat'
         });
       }
-      // Add claude's leftmost icon
       if (this.$store?.state?.site?.features?.claude?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_CLAUDE_CONVERSATION_NEW
-          },
+          route: { name: ROUTE_CLAUDE_CONVERSATION_NEW },
           displayName: this.$t('common.nav.claude'),
           logo: CHAT_MODEL_ICON_CLAUDE,
-          routes: [ROUTE_CLAUDE_CONVERSATION, ROUTE_CLAUDE_CONVERSATION_NEW]
+          routes: [ROUTE_CLAUDE_CONVERSATION, ROUTE_CLAUDE_CONVERSATION_NEW],
+          category: 'chat'
         });
       }
-      // Add midjourney's leftmost icon
+      // Image category
       if (this.$store?.state?.site?.features?.midjourney?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_MIDJOURNEY_INDEX
-          },
+          route: { name: ROUTE_MIDJOURNEY_INDEX },
           displayName: this.$t('common.nav.midjourney'),
           logo: MIDJOURNEY_LOGO,
-          routes: [ROUTE_MIDJOURNEY_INDEX]
+          routes: [ROUTE_MIDJOURNEY_INDEX],
+          category: 'image'
         });
       }
-      // Add flux's leftmost icon
       if (this.$store?.state?.site?.features?.flux?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_FLUX_INDEX
-          },
+          route: { name: ROUTE_FLUX_INDEX },
           displayName: this.$t('common.nav.flux'),
           logo: FLUX_LOGO,
-          routes: [ROUTE_FLUX_INDEX]
+          routes: [ROUTE_FLUX_INDEX],
+          category: 'image'
         });
       }
-      // Add nanobanana's leftmost icon
       if (this.$store?.state?.site?.features?.nanobanana?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_NANOBANANA_INDEX
-          },
+          route: { name: ROUTE_NANOBANANA_INDEX },
           displayName: this.$t('common.nav.nanobanana'),
           logo: NANOBANANA_LOGO,
-          routes: [ROUTE_NANOBANANA_INDEX]
+          routes: [ROUTE_NANOBANANA_INDEX],
+          category: 'image'
         });
       }
-      // Add seedream's leftmost icon
       if (this.$store?.state?.site?.features?.seedream?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_SEEDREAM_INDEX
-          },
+          route: { name: ROUTE_SEEDREAM_INDEX },
           displayName: this.$t('common.nav.seedream'),
           logo: SEEDREAM_LOGO,
-          routes: [ROUTE_SEEDREAM_INDEX]
+          routes: [ROUTE_SEEDREAM_INDEX],
+          category: 'image'
         });
       }
-      // Add seedance's leftmost icon
-      if (this.$store?.state?.site?.features?.seedance?.enabled) {
-        result.push({
-          route: {
-            name: ROUTE_SEEDANCE_INDEX
-          },
-          displayName: this.$t('common.nav.seedance'),
-          logo: SEEDANCE_LOGO,
-          routes: [ROUTE_SEEDANCE_INDEX]
-        });
-      }
-      // Add qrart's leftmost icon
-      // if (this.$store?.state?.site?.features?.qrart?.enabled) {
-      //   result.push({
-      //     route: {
-      //       name: ROUTE_QRART_INDEX
-      //     },
-      //     displayName: this.$t('common.nav.qrart'),
-      //     routes: [ROUTE_QRART_INDEX, ROUTE_QRART_HISTORY]
-      //   });
-      // }
-      // Add suno's leftmost icon
+      // Music category
       if (this.$store?.state?.site?.features?.suno?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_SUNO_INDEX
-          },
+          route: { name: ROUTE_SUNO_INDEX },
           displayName: this.$t('common.nav.suno'),
           logo: SUNO_LOGO,
-          routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY]
+          routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY],
+          category: 'music'
         });
       }
-      // Add luma's leftmost icon
+      // Video category
+      if (this.$store?.state?.site?.features?.seedance?.enabled) {
+        result.push({
+          route: { name: ROUTE_SEEDANCE_INDEX },
+          displayName: this.$t('common.nav.seedance'),
+          logo: SEEDANCE_LOGO,
+          routes: [ROUTE_SEEDANCE_INDEX],
+          category: 'video'
+        });
+      }
       if (this.$store?.state?.site?.features?.luma?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_LUMA_INDEX
-          },
+          route: { name: ROUTE_LUMA_INDEX },
           displayName: this.$t('common.nav.luma'),
           logo: LUMA_LOGO,
-          routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY]
+          routes: [ROUTE_LUMA_INDEX, ROUTE_LUMA_HISTORY],
+          category: 'video'
         });
       }
-      // Add pika's leftmost icon
-      // if (this.$store?.state?.site?.features?.pika?.enabled) {
-      //   result.push({
-      //     route: {
-      //       name: ROUTE_PIKA_INDEX
-      //     },
-      //     displayName: this.$t('common.nav.pika'),
-      //     logo: 'https://cdn.acedata.cloud/i80tgn.png',
-      //     routes: [ROUTE_PIKA_INDEX, ROUTE_PIKA_HISTORY]
-      //   });
-      // }
-      // Add hailuo's leftmost icon
       if (this.$store?.state?.site?.features?.hailuo?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_HAILUO_INDEX
-          },
+          route: { name: ROUTE_HAILUO_INDEX },
           displayName: this.$t('common.nav.hailuo'),
           logo: HAILUO_LOGO,
-          routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY]
+          routes: [ROUTE_HAILUO_INDEX, ROUTE_HAILUO_HISTORY],
+          category: 'video'
         });
       }
-      // Add kling's leftmost icon
       if (this.$store?.state?.site?.features?.kling?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_KLING_INDEX
-          },
+          route: { name: ROUTE_KLING_INDEX },
           displayName: this.$t('common.nav.kling'),
           logo: KLING_LOGO,
-          routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY]
+          routes: [ROUTE_KLING_INDEX, ROUTE_KLING_HISTORY],
+          category: 'video'
         });
       }
-      // Add veo's leftmost icon
       if (this.$store?.state?.site?.features?.veo?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_VEO_INDEX
-          },
+          route: { name: ROUTE_VEO_INDEX },
           displayName: this.$t('common.nav.veo'),
           logo: VEO_LOGO,
-          routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY]
+          routes: [ROUTE_VEO_INDEX, ROUTE_VEO_HISTORY],
+          category: 'video'
         });
       }
-      // Add sora's leftmost icon
       if (this.$store?.state?.site?.features?.sora?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_SORA_INDEX
-          },
+          route: { name: ROUTE_SORA_INDEX },
           displayName: this.$t('common.nav.sora'),
           logo: SORA_LOGO,
-          routes: [ROUTE_SORA_INDEX, ROUTE_SORA_HISTORY]
+          routes: [ROUTE_SORA_INDEX, ROUTE_SORA_HISTORY],
+          category: 'video'
         });
       }
-      // Add pixverse's leftmost icon
       if (this.$store?.state?.site?.features?.pixverse?.enabled) {
         result.push({
-          route: {
-            name: ROUTE_PIXVERSE_INDEX
-          },
+          route: { name: ROUTE_PIXVERSE_INDEX },
           displayName: this.$t('common.nav.pixverse'),
           logo: PIXVERSE_LOGO,
-          routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY]
+          routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY],
+          category: 'video'
         });
       }
-      // Add headshots's leftmost icon
-      // if (this.$store?.state?.site?.features?.headshots?.enabled) {
-      //   result.push({
-      //     route: {
-      //       name: ROUTE_HEADSHOTS_INDEX
-      //     },
-      //     displayName: this.$t('common.nav.headshots'),
-      //     icon: 'fa-solid fa-id-card',
-      //     routes: [ROUTE_HEADSHOTS_INDEX, ROUTE_HEADSHOTS_HISTORY]
-      //   });
-      // }
       if (this.direction === 'row') {
         result.push({
-          route: {
-            name: ROUTE_PROFILE_INDEX
-          },
+          route: { name: ROUTE_PROFILE_INDEX },
           displayName: this.$t('common.nav.profile'),
           icon: 'fa-solid fa-user',
-          routes: [ROUTE_PROFILE_INDEX]
+          routes: [ROUTE_PROFILE_INDEX],
+          category: 'other'
         });
       }
       return result;
+    },
+    linkGroups() {
+      const categoryOrder = ['chat', 'image', 'music', 'video'];
+      const categoryLabels: Record<string, string> = {
+        chat: this.$t('common.nav.chat'),
+        image: this.$t('common.nav.image'),
+        music: this.$t('common.nav.music'),
+        video: this.$t('common.nav.video')
+      };
+      const groups: { label: string; links: NavLink[] }[] = [];
+      for (const cat of categoryOrder) {
+        const catLinks = this.links.filter((l) => l.category === cat);
+        if (catLinks.length > 0) {
+          groups.push({ label: categoryLabels[cat], links: catLinks });
+        }
+      }
+      return groups;
     },
     authenticated() {
       return !!this.$store.state.token.access;
     },
     maxVisibleItems(): number {
       if (this.direction === 'row') return this.links.length;
-      const itemHeight = 50; // 35px avatar + 15px gap
+      const itemHeight = 50;
       const maxItems = Math.floor((this.containerHeight + 15) / itemHeight);
       return Math.max(maxItems, 3);
     },
@@ -433,6 +423,10 @@ export default defineComponent({
     onOverflowItemClick(link: { route: { name: string } }) {
       this.showOverflow = false;
       this.$router.push(link.route);
+    },
+    toggleCollapse() {
+      this.isCollapsed = !this.isCollapsed;
+      localStorage.setItem('nav-collapsed', String(this.isCollapsed));
     }
   }
 });
@@ -444,21 +438,59 @@ export default defineComponent({
   align-items: center;
   position: relative;
   background-color: var(--app-nav-bg);
+  border-right: 1px solid var(--app-border-subtle);
+  transition: width 0.25s ease;
 
   .top {
     .avatar {
       display: block;
-      margin: auto;
-      width: 35px;
-      height: 35px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       cursor: pointer;
+      flex-shrink: 0;
+    }
+  }
+
+  .category-header {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--el-text-color-secondary);
+    padding: 16px 16px 6px;
+    user-select: none;
+  }
+
+  .collapse-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--el-text-color-secondary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition:
+      background 0.15s,
+      color 0.15s;
+    font-size: 12px;
+
+    &:hover {
+      background: var(--el-fill-color-light);
+      color: var(--el-text-color-primary);
     }
   }
 
   &[direction='row'] {
     flex-direction: row;
     overflow-x: scroll;
+    border-right: none;
+    border-top: 1px solid var(--app-border-subtle);
+
     .brand {
       display: none;
     }
@@ -493,37 +525,100 @@ export default defineComponent({
       justify-content: flex-end;
     }
   }
+
   &[direction='column'] {
     flex-direction: column;
+    width: 220px;
+
     .top {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding-top: 10px;
-      width: 60px;
+      padding-top: 12px;
+      width: 100%;
       min-height: 0;
       overflow: hidden;
+
       .brand {
         flex: 0 0 auto;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
+        padding: 0 12px;
+        justify-content: space-between;
       }
+
       .links {
         flex: 1;
         min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 15px;
-        overflow: hidden;
+        gap: 2px;
+        overflow-y: auto;
+        overflow-x: hidden;
         padding-bottom: 10px;
+
+        /* Subtle scrollbar */
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+        &::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: var(--el-fill-color);
+          border-radius: 4px;
+        }
       }
+
       .logo {
         width: 40px;
         height: 40px;
         cursor: pointer;
       }
+
       .link {
-        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        margin: 0 8px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition:
+          background 0.15s,
+          box-shadow 0.15s;
+        color: var(--el-text-color-primary);
+        position: relative;
+
+        .link-label {
+          font-size: 13px;
+          font-weight: 450;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &:hover {
+          background: var(--el-fill-color-light);
+        }
+
+        &.active {
+          background: var(--el-color-primary-light-9);
+          color: var(--el-color-primary);
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 18px;
+            border-radius: 0 3px 3px 0;
+            background: var(--el-color-primary);
+          }
+        }
       }
+
       .more-button {
         display: flex;
         align-items: center;
@@ -575,15 +670,74 @@ export default defineComponent({
       justify-content: flex-end;
       align-items: center;
       padding-bottom: 10px;
+      border-top: 1px solid var(--app-border-subtle);
+    }
+
+    /* Collapsed state */
+    &.collapsed {
+      width: 60px;
+
+      .top {
+        padding-top: 10px;
+
+        .brand {
+          justify-content: center;
+          padding: 0;
+          margin-bottom: 15px;
+
+          .collapse-btn {
+            display: none;
+          }
+        }
+
+        .links {
+          gap: 15px;
+          align-items: center;
+        }
+
+        .link {
+          padding: 0;
+          margin: 0;
+          justify-content: center;
+          background: none !important;
+
+          .avatar {
+            width: 35px;
+            height: 35px;
+            margin: auto;
+          }
+
+          .link-label {
+            display: none;
+          }
+
+          &.active::before {
+            display: none;
+          }
+        }
+
+        .category-header {
+          display: none;
+        }
+      }
+
+      .bottom {
+        border-top: none;
+      }
     }
   }
+}
+
+html.dark .navigator {
+  border-right-color: var(--app-glass-border);
 }
 </style>
 
 <style lang="scss">
 .navigator-overflow-popover {
   padding: 6px !important;
-  border-radius: 8px !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(var(--app-glass-blur));
 
   .overflow-menu {
     max-height: 400px;
@@ -594,7 +748,7 @@ export default defineComponent({
       align-items: center;
       gap: 10px;
       padding: 7px 8px;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.15s;
 
@@ -603,12 +757,13 @@ export default defineComponent({
       }
 
       &.active {
-        background: var(--el-fill-color);
+        background: var(--el-color-primary-light-9);
+        color: var(--el-color-primary);
       }
 
       .overflow-avatar {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         flex-shrink: 0;
       }

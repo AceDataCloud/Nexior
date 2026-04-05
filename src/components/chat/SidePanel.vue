@@ -304,8 +304,8 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 10px;
-  width: 250px;
+  padding: 12px;
+  width: 260px;
   height: 100%;
   border-right: none;
 
@@ -318,12 +318,14 @@ export default defineComponent({
       width: 100%;
       display: flex;
       flex-direction: column;
-      margin-top: 10px;
+      margin-top: 12px;
       .key {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         width: 100%;
-        line-height: 40px;
+        line-height: 36px;
         padding-left: 10px;
         color: var(--el-text-color-secondary);
       }
@@ -338,8 +340,20 @@ export default defineComponent({
       padding: 0 10px;
       color: var(--el-text-color-primary);
       cursor: pointer;
+      transition: background-color 0.15s ease;
 
-      &.active,
+      &.active {
+        background-color: var(--el-color-primary-light-9);
+        color: var(--el-color-primary);
+        .title {
+          color: var(--el-color-primary);
+          font-weight: 500;
+        }
+        .operations {
+          display: flex;
+        }
+      }
+
       &:hover {
         background-color: var(--el-bg-color-page);
         .operations {
@@ -362,6 +376,7 @@ export default defineComponent({
         text-overflow: ellipsis;
         padding-right: 8px;
         color: var(--el-text-color-primary);
+        white-space: nowrap;
       }
       .operations {
         display: none;
@@ -377,6 +392,7 @@ export default defineComponent({
           border-radius: 10px;
           color: var(--el-text-color-secondary);
           cursor: pointer;
+          transition: background-color 0.15s ease;
 
           &:hover {
             background: var(--el-fill-color-light);

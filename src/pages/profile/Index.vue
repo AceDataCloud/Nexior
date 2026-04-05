@@ -216,16 +216,19 @@ export default defineComponent({
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    filter: blur(15px) brightness(0.7);
+    filter: blur(20px) brightness(0.6);
   }
 
   .avatar {
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
   }
   h2 {
     font-size: 18px;
+    font-weight: 600;
+    color: #fff;
   }
 }
 </style>
@@ -240,23 +243,27 @@ $padding-left: 10px;
   padding: 20px;
 
   .link {
-    $height: 40px;
+    $height: 44px;
     height: $height;
     display: block;
     width: 100%;
     cursor: pointer;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     position: relative;
     color: var(--el-text-color-primary);
     line-height: $height;
+    border-radius: 12px;
+    padding: 0 12px;
+    transition: background-color 0.15s ease;
+    &:hover {
+      background-color: var(--el-fill-color-extra-light);
+    }
     .suffix {
-      width: 3px;
-      height: $height;
       position: absolute;
-      right: -5px;
-      margin-right: 5px;
-      border-radius: 3px;
-      display: inline-block;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--el-text-color-placeholder);
     }
     .icon {
       width: 16px;

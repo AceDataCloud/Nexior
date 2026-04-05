@@ -58,13 +58,15 @@ export default defineComponent({
 .image-wrapper {
   position: relative;
   width: fit-content;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   .image {
     max-height: 400px;
     max-width: 300px;
     min-height: 200px;
     min-width: 200px;
-    border-radius: 10px;
+    border-radius: 16px;
+    transition: filter 0.2s ease;
+    box-shadow: var(--app-shadow-sm);
     @media (max-width: 767px) {
       max-width: 100%;
       height: auto;

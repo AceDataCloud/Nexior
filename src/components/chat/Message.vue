@@ -310,7 +310,7 @@ export default defineComponent({
 .message {
   display: flex;
   flex-direction: row;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 
   &[role='system'] {
     display: none;

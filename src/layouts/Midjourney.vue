@@ -1,9 +1,11 @@
 <template>
   <div class="main flex-1 h-full flex flex-row">
-    <div class="config w-[300px] h-full flex flex-col bg-[var(--app-sidebar-bg)]">
+    <div
+      class="config w-[320px] flex-none h-full flex flex-col bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+    >
       <slot name="config" />
     </div>
-    <div class="results flex-1 h-full flex flex-col">
+    <div class="results flex-1 h-full flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="results" />
     </div>
     <el-button circle class="menu" @click="drawer = true">

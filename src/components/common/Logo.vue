@@ -34,9 +34,17 @@ export default defineComponent({
     display: block;
     width: auto;
     max-width: 180px;
-    height: 42px;
+    height: 36px;
     object-fit: contain;
     object-position: left center;
+    transition: height 0.2s ease;
+  }
+
+  .collapsed & {
+    &__image {
+      height: 28px;
+      max-width: 40px;
+    }
   }
 }
 </style>

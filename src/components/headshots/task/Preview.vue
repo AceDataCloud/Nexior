@@ -186,7 +186,7 @@ $left-width: 70px;
     .bot {
       font-size: 16px;
       font-weight: bold;
-      color: rgb(46, 204, 113);
+      color: var(--el-color-primary);
       margin-bottom: 0;
       margin-top: 0;
       .datetime {

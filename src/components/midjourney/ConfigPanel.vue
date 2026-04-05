@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-[15px]">
+    <div class="flex-1 overflow-y-auto p-5">
       <el-tabs v-model="type" class="demo-tabs" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
           <div class="pt-2">
@@ -39,7 +39,7 @@
         </el-tab-pane>
       </el-tabs>
     </div>
-    <div class="flex flex-col px-[15px] pb-[15px]">
+    <div class="flex flex-col px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <div class="flex gap-1">
         <mode-selector v-if="type !== 'describe'" />

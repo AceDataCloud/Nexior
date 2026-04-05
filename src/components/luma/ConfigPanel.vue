@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-[15px]">
+    <div class="flex-1 overflow-y-auto p-5">
       <extend-from-input v-if="config?.video_id || config?.video_url" class="mb-4" />
       <prompt-input class="mb-4" />
       <custom-selector v-if="!config?.video_id" class="mb-4" />
@@ -10,7 +10,7 @@
       <enhancement-selector class="mb-4" />
       <loop-selector class="mb-4" />
     </div>
-    <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
+    <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"

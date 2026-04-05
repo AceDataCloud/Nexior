@@ -354,12 +354,13 @@ export default defineComponent({
 
 .item-mini {
   position: relative;
+  border-radius: 16px;
   .icon-wrapper {
     height: 40px;
     width: 40px;
     line-height: 40px;
     border-radius: 50%;
-    background-color: var(--el-bg-color-page);
+    background-color: var(--el-color-primary-light-9);
     text-align: center;
     margin-bottom: 10px;
     .icon {
@@ -434,10 +435,10 @@ export default defineComponent({
 
 .panel {
   padding: 30px;
-  width: calc(100% - 200px);
-  background-color: var(--el-bg-color-page);
+  width: calc(100% - 220px);
+  background-color: var(--app-content-bg);
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .message {
     font-size: 14px;
