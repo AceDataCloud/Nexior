@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 13:06:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 13:12:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.8
+
+Sun, 05 Apr 2026 13:12:53 GMT
+
+### Patches
+
+- fix: replace broken DeepSeek avatar icon with original clean logo (dev@acedata.cloud)
 
 ## 3.32.7
 
