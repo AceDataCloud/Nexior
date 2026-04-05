@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 13:12:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 13:15:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.9
+
+Sun, 05 Apr 2026 13:15:16 GMT
+
+### Patches
+
+- fix: standardize selector borders and default to dark theme (dev@acedata.cloud)
 
 ## 3.32.8
 
