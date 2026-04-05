@@ -272,8 +272,8 @@ html.dark .el-card {
   .el-textarea__inner {
     border-radius: 12px;
     resize: none;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &:focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -284,8 +284,8 @@ html.dark .el-card {
   .el-input__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -330,8 +330,8 @@ html.dark .el-dialog {
   .el-select__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &.is-focused {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -355,48 +355,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Dark mode: subtle borders for form elements & cards */
+/* Dark mode: subtle borders for overlays & containers */
 html.dark {
-  .el-input .el-input__wrapper {
-    border: 1px solid var(--app-glass-border);
-    &.is-focus {
-      border-color: var(--el-color-primary);
-    }
-  }
-
-  .el-select .el-select__wrapper {
-    border: 1px solid var(--app-glass-border);
-    &.is-focused {
-      border-color: var(--el-color-primary);
-    }
-  }
-
-  .el-textarea .el-textarea__inner {
-    border: 1px solid var(--app-glass-border);
-    &:focus {
-      border-color: var(--el-color-primary);
-    }
-  }
-
-  .el-input-number {
-    .el-input__wrapper {
-      border: 1px solid var(--app-glass-border);
-    }
-  }
-
-  .el-radio-button__inner,
-  .el-checkbox-button__inner {
-    border-color: var(--app-glass-border);
-  }
-
-  .el-switch {
-    border: 1px solid var(--app-glass-border);
-  }
-
-  .el-date-editor {
-    border: 1px solid var(--app-glass-border);
-  }
-
   .el-tabs--border-card {
     border-color: var(--app-glass-border);
   }
