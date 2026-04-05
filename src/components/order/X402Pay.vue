@@ -203,7 +203,7 @@ import { CreditCard } from '@element-plus/icons-vue';
 import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
-import { buildSolanaX402Header } from '@/utils/x402/solana';
+import { buildSolanaX402Header, executeSolanaPayment } from '@/utils/x402/solana';
 
 interface IEvmWalletInfo {
   id: string;
@@ -825,17 +825,28 @@ export default defineComponent({
         }
 
         const adapter: any = (this as any).$wallet?.wallet?.value?.adapter;
-        if (!adapter?.signTransaction && !adapter?.signAllTransactions) {
+        if (!adapter?.signAndSendTransaction && !adapter?.signTransaction && !adapter?.signAllTransactions) {
           throw new Error('Wallet does not support signing transactions');
         }
 
-        const header = await buildSolanaX402Header({
-          requirements,
-          payerAddress: address,
-          signTransaction: adapter.signTransaction ? adapter.signTransaction.bind(adapter) : undefined,
-          signAllTransactions: adapter.signAllTransactions ? adapter.signAllTransactions.bind(adapter) : undefined,
-          fetchLatestBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
-        });
+        let header: string;
+        if (adapter?.signAndSendTransaction) {
+          const result = await executeSolanaPayment({
+            requirements,
+            payerAddress: address,
+            signAndSendTransaction: adapter.signAndSendTransaction.bind(adapter),
+            fetchBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
+          });
+          header = result.header;
+        } else {
+          header = await buildSolanaX402Header({
+            requirements,
+            payerAddress: address,
+            signTransaction: adapter.signTransaction ? adapter.signTransaction.bind(adapter) : undefined,
+            signAllTransactions: adapter.signAllTransactions ? adapter.signAllTransactions.bind(adapter) : undefined,
+            fetchLatestBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
+          });
+        }
         this.paying = true;
         const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
         this.$emit('update:modelValue', data as IOrder);
