@@ -39,7 +39,8 @@ import {
   CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_GROUP_GEMINI,
-  CHAT_MODEL_GROUP_CLAUDE
+  CHAT_MODEL_GROUP_CLAUDE,
+  CHAT_MODEL_GROUP_KIMI
 } from '@/constants';
 
 interface IData {
@@ -62,7 +63,8 @@ export default defineComponent({
         CHAT_MODEL_GROUP_DEEPSEEK,
         CHAT_MODEL_GROUP_GROK,
         CHAT_MODEL_GROUP_GEMINI,
-        CHAT_MODEL_GROUP_CLAUDE
+        CHAT_MODEL_GROUP_CLAUDE,
+        CHAT_MODEL_GROUP_KIMI
       ]
     };
   },
@@ -91,7 +93,8 @@ export default defineComponent({
       CHAT_MODEL_GROUP_DEEPSEEK,
       CHAT_MODEL_GROUP_GROK,
       CHAT_MODEL_GROUP_GEMINI,
-      CHAT_MODEL_GROUP_CLAUDE
+      CHAT_MODEL_GROUP_CLAUDE,
+      CHAT_MODEL_GROUP_KIMI
     ];
     const foundGroup = modelGroups.find((group) => group.name === this.modelGroup.name);
     console.debug('Found model group:', foundGroup);
