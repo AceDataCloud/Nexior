@@ -2,7 +2,7 @@
   <div :direction="direction" :class="['navigator', { collapsed: isCollapsed && direction === 'column' }]">
     <div class="top">
       <div class="w-full flex items-center brand">
-        <logo v-if="direction === 'column'" @click.stop="onHome" />
+        <logo v-if="direction === 'column'" :collapsed="isCollapsed" @click.stop="onHome" />
         <button
           v-if="direction === 'column'"
           class="collapse-btn"

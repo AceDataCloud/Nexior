@@ -9,12 +9,21 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   emits: ['click'],
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     siteTitle() {
       return this.$store.state.site?.title || 'AceData';
     },
     url() {
-      return this.$store.state.site?.logo || this.$store.state.site?.favicon;
+      if (this.collapsed) {
+        return this.$store.state.site?.favicon || 'https://cdn.acedata.cloud/8c6ed0e068.png';
+      }
+      return this.$store.state.site?.logo || this.$store.state.site?.favicon || 'https://cdn.acedata.cloud/8c6ed0e068.png';
     }
   }
 });
@@ -33,17 +42,17 @@ export default defineComponent({
   &__image {
     display: block;
     width: auto;
-    max-width: 180px;
-    height: 36px;
+    max-width: 44px;
+    height: 44px;
     object-fit: contain;
-    object-position: left center;
+    object-position: center;
     transition: height 0.2s ease;
   }
 
   .collapsed & {
     &__image {
       height: 28px;
-      max-width: 40px;
+      max-width: 28px;
     }
   }
 }

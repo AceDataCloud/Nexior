@@ -1,8 +1,72 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 30 Mar 2026 17:01:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 11:24:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.5
+
+Sun, 05 Apr 2026 11:24:56 GMT
+
+### Patches
+
+- fix: restore input/select/textarea border visibility in both light and dark mode (dev@acedata.cloud)
+
+## 3.32.4
+
+Sun, 05 Apr 2026 10:34:16 GMT
+
+### Patches
+
+- fix: show correct logo on collapsed/expanded sidebar and add dark-mode borders (dev@acedata.cloud)
+
+## 3.32.3
+
+Sun, 05 Apr 2026 10:24:59 GMT
+
+### Patches
+
+- fix: upgrade Solana X402 to signAndSendTransaction, remove Buffer dependency (dev@acedata.cloud)
+
+## 3.32.2
+
+Sun, 05 Apr 2026 10:13:59 GMT
+
+### Patches
+
+- fix: replace hardcoded strings with i18n keys in X402Pay (dev@acedata.cloud)
+
+## 3.32.1
+
+Sun, 05 Apr 2026 10:11:03 GMT
+
+### Patches
+
+- fix: add text overflow ellipsis to suno song title and style (dev@acedata.cloud)
+
+## 3.32.0
+
+Sun, 05 Apr 2026 10:04:52 GMT
+
+### Minor changes
+
+- feat: add PayPal payment option with feature flag (dev@acedata.cloud)
+
+## 3.31.1
+
+Sun, 05 Apr 2026 08:43:57 GMT
+
+### Patches
+
+- fix: update navigator logo with CDN-hosted brand logo (dev@acedata.cloud)
+
+## 3.31.0
+
+Sun, 05 Apr 2026 08:25:52 GMT
+
+### Minor changes
+
+- feat: add PayPal payment option with feature flag (dev@acedata.cloud)
 
 ## 3.30.5
 

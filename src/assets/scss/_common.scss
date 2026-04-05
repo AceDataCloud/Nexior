@@ -272,8 +272,8 @@ html.dark .el-card {
   .el-textarea__inner {
     border-radius: 12px;
     resize: none;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &:focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -284,8 +284,8 @@ html.dark .el-card {
   .el-input__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -330,8 +330,8 @@ html.dark .el-dialog {
   .el-select__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    transition: box-shadow 0.2s ease;
     &.is-focused {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -353,4 +353,27 @@ html.dark .el-dialog {
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   font-weight: 700;
+}
+
+/* Dark mode: subtle borders for overlays & containers */
+html.dark {
+  .el-tabs--border-card {
+    border-color: var(--app-glass-border);
+  }
+
+  .el-table {
+    --el-table-border-color: var(--app-glass-border);
+  }
+
+  .el-dropdown-menu {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-popover.el-popper {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  .el-message-box {
+    border: 1px solid var(--app-glass-border);
+  }
 }
