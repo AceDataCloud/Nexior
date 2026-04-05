@@ -33,7 +33,7 @@
         <template v-if="isSolanaNetwork">
           <div class="x402-wallet-card">
             <div class="x402-wallet-card-head">
-              <span class="x402-wallet-card-title">Solana Wallet</span>
+              <span class="x402-wallet-card-title">{{ $t('order.message.x402WalletTitleSolana') }}</span>
               <el-tag v-if="solanaConnected" class="x402-wallet-card-tag">{{
                 $t('order.message.x402WalletConnected')
               }}</el-tag>
@@ -74,7 +74,7 @@
         <template v-else>
           <div class="x402-wallet-card">
             <div class="x402-wallet-card-head">
-              <span class="x402-wallet-card-title">EVM Wallet</span>
+              <span class="x402-wallet-card-title">{{ $t('order.message.x402WalletTitleEvm') }}</span>
               <el-tag v-if="evmConnected" class="x402-wallet-card-tag">{{
                 $t('order.message.x402WalletConnected')
               }}</el-tag>
@@ -162,7 +162,9 @@
           :alt="wallet.adapter.name"
         />
         <span class="wallet-list-name">{{ wallet.adapter.name }}</span>
-        <span v-if="wallet.readyState === 'Installed'" class="wallet-list-status">Detected</span>
+        <span v-if="wallet.readyState === 'Installed'" class="wallet-list-status">{{
+          $t('order.message.x402WalletStatusDetected')
+        }}</span>
       </button>
     </div>
   </el-dialog>
@@ -177,7 +179,7 @@
       >
         <img v-if="wallet.icon" class="wallet-list-icon" :src="wallet.icon" :alt="wallet.name" />
         <span class="wallet-list-name">{{ wallet.name }}</span>
-        <span class="wallet-list-status">Detected</span>
+        <span class="wallet-list-status">{{ $t('order.message.x402WalletStatusDetected') }}</span>
       </button>
       <div v-if="evmWalletsOrdered.length === 0" class="text-center text-[13px] text-[var(--el-text-color-regular)]">
         {{ $t('order.message.x402NoWalletDesc') }}
