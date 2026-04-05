@@ -244,6 +244,7 @@ $left-width: 70px;
   .main {
     flex: 1;
     width: calc(100% - $left-width);
+    min-width: 0;
     padding: 10px 10px 0 10px;
 
     .bot {
@@ -252,6 +253,9 @@ $left-width: 70px;
       color: var(--el-color-primary);
       margin-bottom: 0;
       margin-top: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       .datetime {
         font-size: 12px;
         font-weight: normal;
@@ -261,11 +265,15 @@ $left-width: 70px;
     }
 
     .info {
+      overflow: hidden;
       .prompt {
         font-size: 16px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 15px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
