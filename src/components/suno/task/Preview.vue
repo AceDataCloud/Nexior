@@ -512,15 +512,23 @@ export default defineComponent({
     }
     .info {
       flex: 1;
+      min-width: 0;
+      overflow: hidden;
       .title {
         font-size: 14px;
         font-weight: bold;
         margin-top: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .style {
         font-size: 12px;
         margin-bottom: 0;
         color: var(--el-text-color-secondary);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
     .right {
