@@ -203,7 +203,7 @@ import { CreditCard } from '@element-plus/icons-vue';
 import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';
-import { buildSolanaX402Header, executeSolanaPayment } from '@/utils/x402/solana';
+import { buildSolanaX402Header, executeSolanaPayment, SolanaPaymentRequirements } from '@/utils/x402/solana';
 
 interface IEvmWalletInfo {
   id: string;
@@ -832,7 +832,7 @@ export default defineComponent({
         let header: string;
         if (adapter?.signAndSendTransaction) {
           const result = await executeSolanaPayment({
-            requirements,
+            requirements: requirements as SolanaPaymentRequirements,
             payerAddress: address,
             signAndSendTransaction: adapter.signAndSendTransaction.bind(adapter),
             fetchBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)

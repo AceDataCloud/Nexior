@@ -84,7 +84,7 @@ function buildTransferCheckedInstruction(
       { pubkey: destination, isSigner: false, isWritable: true },
       { pubkey: authority, isSigner: true, isWritable: false }
     ],
-    data: instructionData
+    data: Buffer.from(instructionData)
   });
 }
 
