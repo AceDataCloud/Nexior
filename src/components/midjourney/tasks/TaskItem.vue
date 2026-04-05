@@ -484,6 +484,7 @@ $left-width: 70px;
   .preview {
     flex: 1;
     width: calc(100% - $left-width);
+    min-width: 0;
     padding: 10px 10px 0 10px;
     display: flex;
     flex-direction: column;
@@ -494,6 +495,9 @@ $left-width: 70px;
       color: var(--el-color-primary);
       margin-bottom: 10px;
       margin-top: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       .datetime {
         font-size: 12px;
         font-weight: normal;
@@ -513,12 +517,16 @@ $left-width: 70px;
       display: flex;
       flex-direction: row;
       width: 100%;
+      overflow: hidden;
 
       .prompt {
         font-size: 14px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .mode {

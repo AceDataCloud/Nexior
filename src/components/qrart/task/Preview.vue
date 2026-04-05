@@ -6,8 +6,8 @@
         class="avatar bg-[var(--el-bg-color)] p-[2px] w-[50px] h-[50px] m-[10px] rounded-full"
       />
     </div>
-    <div class="main flex-1 w-[calc(100%-70px)] pt-[10px] pr-[10px] pb-0 pl-[10px]">
-      <div class="bot text-[16px] font-bold text-[var(--el-color-primary)]">
+    <div class="main flex-1 w-[calc(100%-70px)] min-w-0 pt-[10px] pr-[10px] pb-0 pl-[10px]">
+      <div class="bot text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden text-ellipsis whitespace-nowrap">
         {{ $t('qrart.name.qrartBot') }}
         <span class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px]">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
@@ -16,7 +16,7 @@
       <div class="info">
         <p
           v-if="modelValue?.request?.prompt"
-          class="prompt mt-2 text-[14px] font-bold text-[var(--el-text-color-regular)] mb-[10px]"
+          class="prompt mt-2 text-[14px] font-bold text-[var(--el-text-color-regular)] mb-[10px] overflow-hidden text-ellipsis whitespace-nowrap"
         >
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('qrart.status.pending') }}) </span>
@@ -203,6 +203,7 @@ $left-width: 70px;
   .main {
     flex: 1;
     width: calc(100% - $left-width);
+    min-width: 0;
     padding: 10px 10px 0 10px;
 
     .bot {
@@ -211,6 +212,9 @@ $left-width: 70px;
       color: rgb(46, 204, 113);
       margin-bottom: 0;
       margin-top: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       .datetime {
         font-size: 12px;
         font-weight: normal;
@@ -220,11 +224,15 @@ $left-width: 70px;
     }
 
     .info {
+      overflow: hidden;
       .prompt {
         font-size: 14px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
