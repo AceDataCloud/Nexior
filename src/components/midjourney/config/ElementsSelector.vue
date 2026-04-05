@@ -2157,7 +2157,7 @@ export default defineComponent({
     position: relative;
     width: $width;
     height: $height;
-    border: 1px solid transparent;
+    border: 1px solid var(--el-border-color);
     background-color: var(--el-fill-color-lighter);
     border-radius: 10px;
     overflow: hidden;

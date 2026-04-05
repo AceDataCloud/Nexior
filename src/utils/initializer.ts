@@ -52,9 +52,8 @@ export const initializeCookies = async () => {
       domain: getDomain()
     });
   } else if (!getCookie('THEME')) {
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    console.debug('set THEME to cookies', isDark ? 'dark' : 'light');
-    setCookie('THEME', isDark ? 'dark' : 'light', {
+    console.debug('set THEME to cookies', 'dark');
+    setCookie('THEME', 'dark', {
       path: '/',
       domain: getDomain()
     });
