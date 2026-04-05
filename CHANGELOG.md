@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 10:13:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 10:24:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.3
+
+Sun, 05 Apr 2026 10:24:59 GMT
+
+### Patches
+
+- fix: upgrade Solana X402 to signAndSendTransaction, remove Buffer dependency (dev@acedata.cloud)
 
 ## 3.32.2
 
