@@ -143,13 +143,18 @@ export default defineComponent({
 
   .navigator {
     height: 100%;
+    width: 220px;
+    transition: width 0.25s ease;
+  }
+
+  .navigator.collapsed {
     width: 60px;
   }
 
   .main {
     height: 100%;
-    width: calc(100% - 60px);
     flex: 1;
+    min-width: 0;
     background-color: var(--app-content-bg);
   }
 }

@@ -54,11 +54,12 @@ export default defineComponent({
 }
 
 .side {
-  width: 250px;
+  width: 260px;
   height: 100%;
   overflow-y: auto;
   flex-shrink: 0;
   background-color: var(--app-sidebar-bg);
+  border-right: 1px solid var(--app-border-subtle);
 }
 
 .chat {
@@ -69,6 +70,7 @@ export default defineComponent({
   height: 100%;
   min-width: 0;
   padding-top: 45px;
+  background-color: var(--app-content-bg);
 }
 
 .menu {

@@ -155,11 +155,16 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-$height: 60px;
+$height: 64px;
 .header {
   z-index: 999;
   width: 100%;
-  background: var(--el-bg-color);
+  background: rgba(var(--el-bg-color-rgb, 255, 255, 255), 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--app-border-subtle);
+  position: sticky;
+  top: 0;
 
   .brand-col {
     display: flex;
@@ -170,49 +175,75 @@ $height: 60px;
   }
 
   .el-menu.menu {
-    --el-menu-hover-bg-color: var(--el-bg-color);
+    --el-menu-hover-bg-color: transparent;
     --el-menu-active-color: var(--el-color-primary);
     background: none;
     border: none;
     height: $height;
     min-width: 300px;
     overflow-x: hidden;
+
     .el-menu-item {
       height: $height;
-      color: inherit !important;
+      color: var(--el-text-color-regular) !important;
+      font-weight: 450;
+      transition: color 0.2s;
+
       &.is-active {
-        color: inherit !important;
+        color: var(--el-color-primary) !important;
         border-bottom: none !important;
       }
+
       &:hover {
+        color: var(--el-color-primary) !important;
         border-bottom: 2px solid var(--el-color-primary) !important;
       }
     }
   }
 
   .avatar {
-    height: 40px;
+    height: 36px;
+    width: 36px;
     border-radius: 50%;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 14px;
     margin-right: 20px;
     margin-left: 10px;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--el-color-primary-light-5);
+    }
   }
+
   .console {
-    color: inherit !important;
-    height: 60px;
-    line-height: 60px;
+    color: var(--el-text-color-primary) !important;
+    height: $height;
+    line-height: $height;
     margin: 0 10px;
     font-size: 14px;
+    font-weight: 450;
     display: inline-block;
     cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--el-color-primary) !important;
+    }
   }
+
   .locale {
     cursor: pointer;
     display: inline-block;
-    margin-left: 10px; // Add left margin if needed
+    margin-left: 10px;
   }
 }
+
+html.dark .header {
+  background: rgba(11, 13, 23, 0.8);
+  border-bottom-color: var(--app-glass-border);
+}
+
 @media only screen and (max-width: 768px) {
   .header {
     .brand-col {

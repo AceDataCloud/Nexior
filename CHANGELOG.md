@@ -1,8 +1,24 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 30 Mar 2026 17:01:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 08:43:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.31.1
+
+Sun, 05 Apr 2026 08:43:57 GMT
+
+### Patches
+
+- fix: update navigator logo with CDN-hosted brand logo (dev@acedata.cloud)
+
+## 3.31.0
+
+Sun, 05 Apr 2026 08:25:52 GMT
+
+### Minor changes
+
+- feat: add PayPal payment option with feature flag (dev@acedata.cloud)
 
 ## 3.30.5
 

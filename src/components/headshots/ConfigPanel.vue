@@ -48,7 +48,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .panel {
   height: 100%;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   .config {

@@ -1,6 +1,9 @@
 .markdown-body {
   background-color: transparent !important;
   color: var(--el-text-color-primary) !important;
+  font-size: 15px;
+  line-height: 1.7;
+
   ul {
     list-style: initial;
   }
@@ -24,17 +27,30 @@
     }
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
   .highlight pre,
   pre {
-    background-color: #253238 !important;
+    background-color: #1a1d2e !important;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   pre {
     position: relative;
     color: var(--el-text-color-regular) !important;
+    padding: 16px !important;
 
     code {
-      color: white;
+      color: #e2e8f0;
+      font-size: 13px;
+      line-height: 1.6;
 
       .hljs-title,
       .hljs-keyword,
@@ -47,51 +63,80 @@
   }
 
   pre button {
-    color: #adb5bd;
+    color: #94a3b8;
     box-sizing: border-box;
     transition: 0.2s ease-out;
     cursor: pointer;
     user-select: none;
-    background: rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(0, 0, 0, 0);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 5px 10px;
     font-size: 0.8em;
     position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 0 0.15rem;
+    top: 8px;
+    right: 8px;
+    border-radius: 8px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
   }
 
   blockquote {
     color: var(--el-text-color-regular) !important;
     font-size: 14px !important;
-    border-left: 0.25em solid var(--el-color-primary) !important;
+    border-left: 3px solid var(--el-color-primary) !important;
+    background-color: var(--el-color-primary-light-9);
+    padding: 12px 16px !important;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
   }
 
   a {
     color: var(--el-color-primary) !important;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   img {
     max-width: min(100%, 400px) !important;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 3px 0 var(--color-border-muted, var(--el-border-color));
+    border-radius: 12px;
+    box-shadow: var(--app-shadow-sm);
   }
 
-  table tr {
-    background-color: var(--el-color-info-light-2) !important;
+  table {
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    tr {
+      background-color: var(--el-bg-color) !important;
+      &:nth-child(even) {
+        background-color: var(--el-fill-color-lighter) !important;
+      }
+    }
+
+    th {
+      background-color: var(--el-fill-color-light) !important;
+      font-weight: 600;
+    }
   }
 
   hr {
     height: 1px !important;
+    border-color: var(--app-border-subtle);
   }
 
   .think {
-    border-left: 3px solid var(--el-border-color);
-    padding-left: 10px;
+    border-left: 3px solid var(--el-color-primary-light-5);
+    padding: 8px 12px;
     line-height: 20px;
     font-size: 12px;
-    color: var(--el-text-color-regular);
+    color: var(--el-text-color-secondary);
+    background-color: var(--el-color-primary-light-9);
+    border-radius: 0 8px 8px 0;
   }
 }

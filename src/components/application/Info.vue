@@ -88,15 +88,23 @@ export default defineComponent({
   padding: 20px;
   width: 100%;
   background-color: var(--el-bg-color);
-  border-radius: 15px;
-  box-shadow: var(--app-shadow-sm);
+  border-radius: 16px;
+  border: 1px solid var(--app-border-subtle);
   display: flex;
   gap: 16px;
   justify-content: space-between;
   align-items: center;
   position: relative;
   box-sizing: border-box;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  &:hover {
+    box-shadow: var(--app-shadow-md);
+    border-color: var(--el-color-primary-light-7);
+  }
   &.active {
+    border-color: var(--el-color-primary);
     .check {
       visibility: visible;
     }

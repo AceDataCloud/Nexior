@@ -190,7 +190,7 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 140px);
-  background: linear-gradient(180deg, #f3f8ff 0%, #e8f1ff 48%, #f8fbff 100%);
+  background: linear-gradient(180deg, #f5f3ff 0%, #ede9fe 48%, #f8f7ff 100%);
 }
 
 .ambient {
@@ -205,7 +205,7 @@ export default defineComponent({
     left: -120px;
     width: 320px;
     height: 320px;
-    background: rgba(76, 201, 240, 0.25);
+    background: rgba(139, 92, 246, 0.2);
   }
 
   &--gold {
@@ -213,7 +213,7 @@ export default defineComponent({
     right: -80px;
     width: 260px;
     height: 260px;
-    background: rgba(245, 158, 11, 0.18);
+    background: rgba(99, 102, 241, 0.15);
   }
 }
 
@@ -238,12 +238,12 @@ export default defineComponent({
   border-radius: 36px;
   background: linear-gradient(
     135deg,
-    rgba(7, 17, 31, 0.98) 0%,
-    rgba(12, 39, 67, 0.96) 56%,
-    rgba(16, 92, 153, 0.92) 100%
+    rgba(11, 13, 23, 0.98) 0%,
+    rgba(26, 16, 58, 0.96) 56%,
+    rgba(109, 40, 217, 0.92) 100%
   );
   color: #f8fbff;
-  box-shadow: 0 30px 80px rgba(7, 23, 43, 0.24);
+  box-shadow: 0 30px 80px rgba(11, 13, 23, 0.3);
 
   .eyebrow {
     margin-bottom: 12px;
@@ -251,7 +251,7 @@ export default defineComponent({
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(143, 219, 255, 0.94);
+    color: rgba(196, 181, 253, 0.94);
   }
 
   h1 {
@@ -302,9 +302,9 @@ export default defineComponent({
 }
 
 .secondary-action {
-  border-color: rgba(14, 165, 233, 0.18);
+  border-color: rgba(124, 58, 237, 0.18);
   background: rgba(255, 255, 255, 0.72);
-  color: #123454;
+  color: #1a103a;
 }
 
 .metrics {
@@ -360,7 +360,7 @@ export default defineComponent({
   }
 
   &--android::before {
-    background: linear-gradient(145deg, rgba(14, 165, 233, 0.12), transparent 42%);
+    background: linear-gradient(145deg, rgba(124, 58, 237, 0.12), transparent 42%);
   }
 
   &--ios::before {
@@ -407,8 +407,8 @@ export default defineComponent({
 }
 
 .platform-badge {
-  background: rgba(59, 130, 246, 0.12);
-  color: #2563eb;
+  background: rgba(124, 58, 237, 0.12);
+  color: #7c3aed;
 }
 
 .platform-badge--ios {
@@ -523,7 +523,7 @@ export default defineComponent({
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: #0ea5e9;
+    color: #7c3aed;
   }
 
   h3 {
