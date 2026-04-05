@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 10:11:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 10:13:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.2
+
+Sun, 05 Apr 2026 10:13:59 GMT
+
+### Patches
+
+- fix: replace hardcoded strings with i18n keys in X402Pay (dev@acedata.cloud)
 
 ## 3.32.1
 
