@@ -66,6 +66,8 @@ export const ROUTE_SEEDANCE_INDEX = 'seedance-index';
 
 export const ROUTE_SERP_INDEX = 'serp-index';
 
+export const ROUTE_WAN_INDEX = 'wan-index';
+
 export const ROUTE_PROFILE_INDEX = 'profile-index';
 
 export const ROUTE_CONSOLE_ROOT = 'console-root';

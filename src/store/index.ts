@@ -18,6 +18,7 @@ import nanobanana from './nanobanana';
 import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
+import wan from './wan';
 import root from './common';
 import persistChat from './chat/persist';
 import persistMidjourney from './midjourney/persist';
@@ -37,6 +38,7 @@ import persistNanobanana from './nanobanana/persist';
 import persistSeedream from './seedream/persist';
 import persistSeedance from './seedance/persist';
 import persistSerp from './serp/persist';
+import persistWan from './wan/persist';
 import persistRoot from './common/persist';
 
 const store = createStore({
@@ -59,7 +61,8 @@ const store = createStore({
     nanobanana: nanobanana,
     seedream: seedream,
     seedance: seedance,
-    serp: serp
+    serp: serp,
+    wan: wan
   },
   plugins: [
     createPersistedState({
@@ -82,7 +85,8 @@ const store = createStore({
         ...persistNanobanana,
         ...persistSeedream,
         ...persistSeedance,
-        ...persistSerp
+        ...persistSerp,
+        ...persistWan
       ]
     })
   ]

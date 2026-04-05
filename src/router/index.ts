@@ -26,6 +26,7 @@ import nanobanana from './nanobanana';
 import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
+import wan from './wan';
 import site from './site';
 import profile from './profile';
 
@@ -158,6 +159,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Seedance', 'AI Video', 'Dance Video', 'ByteDance'],
     category: 'AI Video Generation'
   },
+  wan: {
+    title: 'Wan',
+    description: 'Generate AI videos with Wan — high-quality video generation by Tongyi Wanxiang.',
+    keywords: ['Wan', 'Tongyi', 'AI Video', 'Video Generation'],
+    category: 'AI Video Generation'
+  },
   suno: {
     title: 'Suno',
     description: 'Create AI music with Suno — generate songs, lyrics, and music from text descriptions.',
@@ -214,6 +221,7 @@ const routes = [
   seedream,
   seedance,
   serp,
+  wan,
   midjourney,
   distribution,
   download,
