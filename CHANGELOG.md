@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 11:24:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 13:03:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.6
+
+Sun, 05 Apr 2026 13:03:14 GMT
+
+### Patches
+
+- fix: change default Veo model from veo2-fast to veo31-fast (dev@acedata.cloud)
 
 ## 3.32.5
 
