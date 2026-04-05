@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 13:03:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 13:06:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.7
+
+Sun, 05 Apr 2026 13:06:20 GMT
+
+### Patches
+
+- fix: add text overflow handling to all task preview cards (dev@acedata.cloud)
 
 ## 3.32.6
 
