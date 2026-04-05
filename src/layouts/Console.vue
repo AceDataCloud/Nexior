@@ -42,13 +42,18 @@ export default defineComponent({
 
     .navigator {
       height: 100%;
+      width: 220px;
+      transition: width 0.25s ease;
+    }
+
+    .navigator.collapsed {
       width: 60px;
     }
 
     .main {
       height: 100%;
-      width: calc(100% - 60px);
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: row;
       overflow: hidden;
@@ -58,7 +63,7 @@ export default defineComponent({
         background-color: var(--app-sidebar-bg);
       }
       .panel {
-        width: calc(100% - 200px);
+        flex: 1;
         height: 100%;
         padding: 30px;
         background-color: var(--el-bg-color-page);

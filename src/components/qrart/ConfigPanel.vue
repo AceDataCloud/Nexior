@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="flex-1 overflow-y-auto p-[15px]">
+    <div class="flex-1 overflow-y-auto p-5">
       <type-selector class="mb-4" />
       <content-input class="mb-4" />
       <prompt-input class="mb-4" />
@@ -19,7 +19,7 @@
       <padding-level-selector v-if="config?.advanced" class="mb-4" />
       <padding-noise-selector v-if="config?.advanced" class="mb-4" />
     </div>
-    <div class="flex flex-col items-center justify-center px-[15px] pb-[15px]">
+    <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round @click="$emit('generate')">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />

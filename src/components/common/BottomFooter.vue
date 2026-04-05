@@ -56,29 +56,38 @@ export default defineComponent({
 .container {
   margin: auto;
   max-width: 1200px;
-  padding: 30px 0 20px 0;
+  padding: 32px 24px 24px;
 }
 
 .footer {
-  background-color: var(--el-color-primary);
-  color: white;
+  background: var(--app-gradient-hero);
+  color: rgba(255, 255, 255, 0.9);
   padding: 0;
-  .title {
-    font-size: 1.2rem;
-    font-weight: 400;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+
+  p {
+    margin: 0;
   }
+
   a {
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.2s;
+
+    &:hover {
+      color: #c4b5fd;
+    }
   }
+
   .github-link {
     display: inline-flex;
     align-items: center;
     margin-left: 4px;
-    transition: opacity 0.3s;
+    transition: color 0.2s;
 
     &:hover {
-      opacity: 0.7;
+      color: #c4b5fd;
     }
   }
 }

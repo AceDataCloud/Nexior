@@ -30,6 +30,11 @@ export default defineComponent({
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  &:hover {
+    box-shadow: 0 0 0 2px var(--el-color-primary-light-5);
+  }
 }
 </style>

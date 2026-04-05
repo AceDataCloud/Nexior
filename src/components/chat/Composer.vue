@@ -345,19 +345,19 @@ textarea.input:focus {
   }
   .btn-send,
   .btn-stop {
-    --el-button-bg-color: var(--el-color-black);
-    --el-button-border-color: var(--el-color-black);
-    --el-button-outline-color: var(--el-color-info);
-    --el-button-active-color: var(--el-color-info);
+    --el-button-bg-color: var(--el-color-primary);
+    --el-button-border-color: var(--el-color-primary);
+    --el-button-outline-color: var(--el-color-primary-dark-2);
+    --el-button-active-color: var(--el-color-primary-dark-2);
     --el-button-hover-text-color: var(--el-color-white);
-    --el-button-hover-link-text-color: var(--el-color-info);
-    --el-button-hover-bg-color: var(--el-color-info);
-    --el-button-hover-border-color: var(--el-color-info);
-    --el-button-active-bg-color: var(--el-color-info);
-    --el-button-active-border-color: var(--el-color-info);
+    --el-button-hover-link-text-color: var(--el-color-primary-dark-2);
+    --el-button-hover-bg-color: var(--el-color-primary-dark-2);
+    --el-button-hover-border-color: var(--el-color-primary-dark-2);
+    --el-button-active-bg-color: var(--el-color-primary-dark-2);
+    --el-button-active-border-color: var(--el-color-primary-dark-2);
     --el-button-disabled-text-color: var(--el-color-white);
-    --el-button-disabled-bg-color: var(--el-color-info);
-    --el-button-disabled-border-color: var(--el-color-info);
+    --el-button-disabled-bg-color: var(--el-color-primary-light-5);
+    --el-button-disabled-border-color: var(--el-color-primary-light-5);
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -366,9 +366,11 @@ textarea.input:focus {
     height: 36px;
     line-height: 36px;
     text-align: center;
-    // background-color: var(--el-color-black);
-    // color: var(--el-color-white);
     font-size: 16px;
+    transition: box-shadow 0.2s ease;
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 16px rgba(124, 58, 237, 0.3);
+    }
   }
 }
 

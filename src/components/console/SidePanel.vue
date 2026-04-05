@@ -105,8 +105,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$width: 200px;
-$padding-left: 10px;
+$width: 220px;
+$padding-left: 12px;
 .side {
   padding-left: $padding-left;
   width: $width;
@@ -119,7 +119,7 @@ $padding-left: 10px;
   display: flex;
   flex-direction: column;
   position: relative;
-  gap: 5px;
+  gap: 4px;
   @media screen and (max-width: 767px) {
     width: 100%;
   }
@@ -128,12 +128,13 @@ $padding-left: 10px;
     height: $height;
     display: block;
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
     cursor: pointer;
     position: relative;
     color: var(--el-text-color-primary);
     line-height: $height;
-    padding-left: 10px;
+    padding-left: 12px;
+    transition: background-color 0.15s ease;
     .suffix {
       width: 3px;
       height: $height;
@@ -155,6 +156,9 @@ $padding-left: 10px;
       font-size: 14px;
     }
     &.active {
+      background-color: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
+      font-weight: 500;
       .suffix {
         background-color: var(--el-color-primary);
       }

@@ -8,6 +8,10 @@ body {
   background-color: var(--el-bg-color);
   color: var(--el-text-color-primary);
   color-scheme: light;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html.dark,
@@ -22,14 +26,14 @@ html.dark body {
 html,
 html.dark,
 :root {
-  --el-color-primary: #277186;
-  --el-color-primary-light-3: #689caa;
-  --el-color-primary-light-5: #93b8c3;
-  --el-color-primary-light-7: #bed4db;
-  --el-color-primary-light-8: #d4e3e7;
-  --el-color-primary-light-9: #e9f1f3;
-  --el-color-primary-dark-2: #1f5a6b;
-  --el-border-radius-base: 10px;
+  --el-color-primary: #7c3aed;
+  --el-color-primary-light-3: #a78bfa;
+  --el-color-primary-light-5: #c4b5fd;
+  --el-color-primary-light-7: #ddd6fe;
+  --el-color-primary-light-8: #ede9fe;
+  --el-color-primary-light-9: #f5f3ff;
+  --el-color-primary-dark-2: #6d28d9;
+  --el-border-radius-base: 12px;
   --el-border-radius-small: 8px;
   --el-border-radius-round: 9999px;
 
@@ -39,43 +43,72 @@ html.dark,
 
   /* Custom dark-mode aware variables */
   --app-bg-surface: #ffffff;
-  --app-bg-section: #f5f7fa;
-  --app-border-subtle: #ddd;
-  --app-badge-bg: #ffe8d5;
-  --app-badge-border: #ff7200;
+  --app-bg-section: #f8fafc;
+  --app-border-subtle: #e2e8f0;
+  --app-badge-bg: #ede9fe;
+  --app-badge-border: #7c3aed;
 
   /* Elevation / shadow system */
   --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
   --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --app-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --app-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --app-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --app-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
 
   /* Surface levels (wider contrast for depth) */
-  --app-nav-bg: #eaecf0;
-  --app-sidebar-bg: #f2f4f7;
+  --app-nav-bg: #f1f5f9;
+  --app-sidebar-bg: #f8fafc;
   --app-content-bg: #ffffff;
+
+  /* Gradients */
+  --app-gradient-brand: linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #818cf8 100%);
+  --app-gradient-brand-hover: linear-gradient(135deg, #6d28d9 0%, #4f46e5 50%, #6366f1 100%);
+  --app-gradient-hero: linear-gradient(135deg, #0b0d17 0%, #1a103a 50%, #0b0d17 100%);
+  --app-gradient-card: linear-gradient(135deg, rgba(124, 58, 237, 0.04), rgba(99, 102, 241, 0.02));
+  --app-gradient-subtle: linear-gradient(180deg, rgba(124, 58, 237, 0.03) 0%, transparent 100%);
+
+  /* Glass effect */
+  --app-glass-bg: rgba(255, 255, 255, 0.7);
+  --app-glass-border: rgba(0, 0, 0, 0.06);
+  --app-glass-blur: 12px;
+
+  /* Glow */
+  --app-glow-primary: 0 0 20px rgba(124, 58, 237, 0.15);
+  --app-glow-primary-lg: 0 0 40px rgba(124, 58, 237, 0.25);
 }
 
 html.dark {
-  --el-color-primary-light-9: #1a3a42;
-  --el-bg-color-page: #1a1b1e;
-  --el-card-bg-color: #2b2d31;
-  --app-bg-surface: #1e1e1e;
-  --app-bg-section: #1e1e1e;
-  --app-border-subtle: #3a3a3a;
-  --app-badge-bg: #3d2a1a;
-  --app-badge-border: #ff7200;
+  --el-color-primary-light-9: #1e1635;
+  --el-bg-color: #0f1117;
+  --el-bg-color-page: #0b0d17;
+  --el-card-bg-color: rgba(26, 29, 46, 0.8);
+  --app-bg-surface: #111427;
+  --app-bg-section: #0f1117;
+  --app-border-subtle: rgba(255, 255, 255, 0.06);
+  --app-badge-bg: rgba(124, 58, 237, 0.15);
+  --app-badge-border: #7c3aed;
 
   /* Elevation / shadow system (dark) */
-  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-  --app-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-  --app-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.25);
+  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.25);
+  --app-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25);
+  --app-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
 
   /* Surface levels (dark) */
-  --app-nav-bg: #0e0f11;
-  --app-sidebar-bg: #17181b;
-  --app-content-bg: #1e1f22;
+  --app-nav-bg: #080a12;
+  --app-sidebar-bg: #0d0f1a;
+  --app-content-bg: #111427;
+
+  /* Gradients (dark) */
+  --app-gradient-card: linear-gradient(135deg, rgba(124, 58, 237, 0.06), rgba(99, 102, 241, 0.03));
+  --app-gradient-subtle: linear-gradient(180deg, rgba(124, 58, 237, 0.05) 0%, transparent 100%);
+
+  /* Glass effect (dark) */
+  --app-glass-bg: rgba(17, 20, 39, 0.7);
+  --app-glass-border: rgba(255, 255, 255, 0.06);
+
+  /* Glow (dark - slightly stronger for visibility) */
+  --app-glow-primary: 0 0 20px rgba(124, 58, 237, 0.2);
+  --app-glow-primary-lg: 0 0 40px rgba(124, 58, 237, 0.3);
 }
 
 w3m-modal {
@@ -101,12 +134,13 @@ w3m-modal {
 }
 
 .el-popper {
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
+  backdrop-filter: blur(var(--app-glass-blur));
 }
 
 .el-popover.el-popper {
-  border-radius: 20px;
+  border-radius: 16px;
 }
 
 .el-main {
@@ -115,6 +149,22 @@ w3m-modal {
 
 .el-button {
   border-radius: var(--el-border-radius-round);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.2s ease;
+}
+
+.el-button--primary {
+  background: var(--app-gradient-brand);
+  border: none;
+  &:hover,
+  &:focus {
+    background: var(--app-gradient-brand-hover);
+    box-shadow: var(--app-glow-primary);
+  }
+  &:active {
+    box-shadow: var(--app-glow-primary-lg);
+  }
 }
 
 .el-button + .el-button {
@@ -145,21 +195,24 @@ w3m-modal {
     width: fit-content;
     height: 50px;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 12px;
     position: relative;
   }
 }
 
 .el-dropdown-menu {
-  padding: 10px;
+  padding: 8px;
+  backdrop-filter: blur(var(--app-glass-blur));
   .el-dropdown-menu__item {
-    border-radius: 15px;
+    border-radius: 10px;
     color: var(--el-text-color-primary);
+    font-weight: 450;
   }
 }
 
 .el-form-item__label {
   color: var(--el-text-color-primary);
+  font-weight: 500;
 }
 
 .el-dropdown__popper {
@@ -171,17 +224,28 @@ w3m-modal {
   height: initial;
   line-height: inherit;
   --el-menu-hover-bg-color: var(--el-bg-color-page);
-  border-radius: 15px;
+  border-radius: 12px;
   color: var(--el-text-color-primary);
+  font-weight: 450;
 }
 
 .el-card {
   word-wrap: break-word;
   border-radius: 1rem;
-  border: none;
-  --el-card-padding: 16px;
+  border: 1px solid var(--app-glass-border);
+  --el-card-padding: 20px;
   box-shadow: var(--app-shadow-sm);
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  background: var(--app-gradient-card);
+  &:hover {
+    box-shadow: var(--app-shadow-md);
+  }
+}
+
+html.dark .el-card {
+  background: var(--app-glass-bg);
+  backdrop-filter: blur(var(--app-glass-blur));
+  border: 1px solid var(--app-glass-border);
 }
 
 .el-breadcrumb__inner a,
@@ -190,7 +254,7 @@ w3m-modal {
 }
 
 .el-radio-group {
-  --el-border-radius-base: 15px;
+  --el-border-radius-base: 12px;
 }
 
 .el-slider {
@@ -204,12 +268,12 @@ w3m-modal {
 }
 
 .el-textarea {
-  border-radius: 10px;
+  border-radius: 12px;
   .el-textarea__inner {
-    border-radius: 10px;
+    border-radius: 12px;
     resize: none;
     box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
     &:focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -221,7 +285,7 @@ w3m-modal {
     border-radius: var(--el-border-radius-base);
     width: 100%;
     box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
     &.is-focus {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -233,14 +297,20 @@ w3m-modal {
 }
 
 .el-dialog {
-  --el-dialog-border-radius: 1rem;
+  --el-dialog-border-radius: 1.25rem;
   .el-dialog__body {
     color: var(--el-text-color-primary);
   }
 }
 
+html.dark .el-dialog {
+  background: var(--app-glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--app-glass-border);
+}
+
 .el-message-box {
-  --el-messagebox-border-radius: 1rem;
+  --el-messagebox-border-radius: 1.25rem;
 }
 
 .el-tabs--border-card {
@@ -261,7 +331,7 @@ w3m-modal {
     border-radius: var(--el-border-radius-base);
     width: 100%;
     box-shadow: var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
     &.is-focused {
       box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
     }
@@ -274,7 +344,13 @@ w3m-modal {
 
 .v-codemirror {
   .cm-editor {
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
   }
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }

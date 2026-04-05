@@ -82,6 +82,8 @@ import {
   faLink as faSolidLink,
   faWandMagic as faSolidWandMagic,
   faAngleDown as faSolidAngleDown,
+  faAnglesLeft as faSolidAnglesLeft,
+  faAnglesRight as faSolidAnglesRight,
   faCubesStacked as faSolidCubesStacked,
   faChartLine as faSolidChartLine,
   faMobileScreenButton as faSolidMobileScreenButton
@@ -171,3 +173,5 @@ library.add(faSolidLink);
 library.add(faSolidWandMagic);
 library.add(faSolidMobileScreenButton);
 library.add(faBrandsDiscord);
+library.add(faSolidAnglesLeft);
+library.add(faSolidAnglesRight);

@@ -1,9 +1,11 @@
 <template>
   <div class="main flex flex-row flex-1">
-    <div class="config w-[300px] h-full overflow-y-scroll bg-[var(--app-sidebar-bg)]">
+    <div
+      class="config w-[320px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+    >
       <slot name="config" />
     </div>
-    <div class="result h-full flex flex-col flex-1">
+    <div class="result h-full flex flex-col flex-1 min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="result" />
     </div>
     <div class="preview h-full w-[300px] flex flex-col">
