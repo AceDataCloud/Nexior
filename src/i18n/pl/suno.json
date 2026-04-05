@@ -8,8 +8,8 @@
     "description": "Tekst przycisku do pobierania"
   },
   "button.more": {
-    "message": "Więcej działań",
-    "description": "Tekst przycisku do więcej działań"
+    "message": "Więcej opcji",
+    "description": "Tekst przycisku do więcej opcji"
   },
   "button.uploadAudios": {
     "message": "Prześlij",
@@ -32,8 +32,8 @@
     "description": "Tekst przycisku do pobierania formatu MIDI"
   },
   "button.get_stems": {
-    "message": "Oddziel ścieżki",
-    "description": "Tekst przycisku do oddzielania ścieżek"
+    "message": "Wyodrębnij ścieżki",
+    "description": "Tekst przycisku do wyodrębniania ścieżek"
   },
   "button.cover_music": {
     "message": "Przeróbka",
@@ -48,12 +48,12 @@
     "description": "Tekst przycisku do pobierania muzyki"
   },
   "button.remaster": {
-    "message": "Remaster",
+    "message": "Remasteruj",
     "description": "Tekst przycisku do remasterowania"
   },
   "button.replace_section": {
     "message": "Zamień fragment",
-    "description": "Tekst przycisku do zamiany fragmentu piosenki"
+    "description": "Tekst przycisku do zamiany fragmentu utworu"
   },
   "button.mashup": {
     "message": "Mashup",
@@ -68,8 +68,8 @@
     "description": "Tekst przycisku do optymalizacji stylu"
   },
   "button.all_stems": {
-    "message": "Oddziel wszystkie",
-    "description": "Tekst przycisku do oddzielania wszystkich ścieżek"
+    "message": "Wyodrębnij wszystkie",
+    "description": "Tekst przycisku do wyodrębniania wszystkich ścieżek"
   },
   "model.model1": {
     "message": "v2",
@@ -81,7 +81,7 @@
   },
   "name.instrumental": {
     "message": "Muzyka instrumentalna",
-    "description": "Generowanie czystej muzyki bez wokalu"
+    "description": "Generowanie muzyki bez wokalu"
   },
   "name.referenceAudios": {
     "message": "Muzyka referencyjna",
@@ -116,15 +116,15 @@
     "description": "Nazwa trybu dostosowanego"
   },
   "name.prompt": {
-    "message": "Opis piosenki",
+    "message": "Opis utworu",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.extend": {
-    "message": "Rozszerz piosenkę z",
+    "message": "Rozszerz utwór z",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.cover": {
-    "message": "Przeróbka piosenki z",
+    "message": "Przeróbka utworu z",
     "description": "Podpowiedź do wprowadzenia treści"
   },
   "name.lyrics": {
@@ -133,7 +133,7 @@
   },
   "name.style": {
     "message": "Styl",
-    "description": "Podpowiedź do wprowadzenia stylu piosenki"
+    "description": "Podpowiedź do wprowadzenia stylu utworu"
   },
   "name.styleNegative": {
     "message": "Wykluczony styl",
@@ -141,7 +141,7 @@
   },
   "name.title": {
     "message": "Tytuł",
-    "description": "Podpowiedź do wprowadzenia tytułu piosenki"
+    "description": "Podpowiedź do wprowadzenia tytułu utworu"
   },
   "name.vocalGender": {
     "message": "Płeć wokalu",
@@ -157,15 +157,15 @@
   },
   "name.styleInfluence": {
     "message": "Wpływ stylu",
-    "description": "Kontrola wpływu stylu na wyniki generacji"
+    "description": "Kontrola wpływu stylu na wynik generacji"
   },
   "name.variationCategory": {
     "message": "Typ wariacji",
     "description": "Kontrola różnorodności generowanych wariacji"
   },
   "name.audioWeight": {
-    "message": "Waga oryginalnego utworu",
-    "description": "Waga wpływu oryginalnego utworu podczas przeróbki"
+    "message": "Waga oryginału",
+    "description": "Waga wpływu oryginału podczas przeróbki"
   },
   "name.lyricPrompt": {
     "message": "Podpowiedź do tekstu",
@@ -189,22 +189,22 @@
   },
   "name.replaceSection": {
     "message": "Zamień fragment",
-    "description": "Zamień fragment piosenki"
+    "description": "Zamień fragment utworu"
   },
   "name.model": {
     "message": "Model",
     "description": "Wybór wersji modelu"
   },
   "name.songDescription": {
-    "message": "Opis piosenki",
-    "description": "Tryb opisu piosenki"
+    "message": "Opis utworu",
+    "description": "Tryb opisu utworu"
   },
   "description.prompt": {
     "message": "Opisz pożądany styl i temat muzyki",
     "description": "Opis parametru 'prompt'"
   },
   "description.lyrics": {
-    "message": "Wprowadź niestandardowy tekst, wspierający oznaczenia [Zwrotka], [Refren], [Mostek] itp.",
+    "message": "Wprowadź własny tekst, obsługiwane są znaczniki [Zwrotka], [Refren], [Mostek] itp.",
     "description": "Opis parametru 'lyrics'"
   },
   "description.style": {
@@ -224,15 +224,15 @@
     "description": "Opis parametru odniesienia do przesyłania"
   },
   "description.vocalGender": {
-    "message": "Wybierz płeć głosu do generacji (obsługiwane tylko w wersji 4.5 i wyższej)",
+    "message": "Wybierz płeć głosu do generowania (obsługiwane tylko w wersji 4.5 i wyższej)",
     "description": "Opis selektora płci głosu"
   },
   "description.weirdness": {
-    "message": "Im wyższa wartość, tym bardziej kreatywna i eksperymentalna będzie generowana muzyka (0-100)",
+    "message": "Im wyższa wartość, tym bardziej kreatywna i eksperymentalna muzyka (0-100)",
     "description": "Opis parametru kreatywności"
   },
   "description.styleInfluence": {
-    "message": "Im wyższa wartość, tym większy wpływ etykiety stylu na wynik generacji (0-100)",
+    "message": "Im wyższa wartość, tym większy wpływ etykiety stylu na wynik generowania (0-100)",
     "description": "Opis parametru wpływu stylu"
   },
   "description.audioWeight": {
@@ -260,11 +260,11 @@
     "description": "Placeholder dla tekstu"
   },
   "placeholder.extend.lyrics": {
-    "message": "Wprowadź tekst, który chcesz rozszerzyć...",
+    "message": "Wprowadź tekst do rozszerzenia...",
     "description": "Placeholder dla rozszerzenia tekstu"
   },
   "placeholder.extend.continue_at": {
-    "message": "Od której sekundy chcesz rozszerzyć...",
+    "message": "Od której sekundy zacząć rozszerzenie...",
     "description": "Placeholder dla czasu rozpoczęcia rozszerzenia"
   },
   "placeholder.style": {
@@ -340,12 +340,12 @@
     "description": "Wiadomość o błędzie, gdy przesyłanie muzyki nie powiodło się"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania muzyki uruchomione pomyślnie",
-    "description": "Wiadomość o sukcesie, gdy zadanie generowania muzyki uruchomione pomyślnie"
+    "message": "Pomyślnie uruchomiono zadanie generowania muzyki",
+    "description": "Wiadomość o sukcesie po pomyślnym uruchomieniu zadania generowania muzyki"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Niestandardowa muzyka przesłana pomyślnie",
-    "description": "Wiadomość o sukcesie, gdy przesyłanie niestandardowej muzyki zakończone pomyślnie"
+    "message": "Pomyślnie przesłano niestandardową muzykę",
+    "description": "Wiadomość o sukcesie po pomyślnym przesłaniu niestandardowej muzyki"
   },
   "message.startUploadAudioFailed": {
     "message": "Przesyłanie niestandardowej muzyki nie powiodło się",
@@ -364,15 +364,15 @@
     "description": "Wiadomość podczas generowania tekstu"
   },
   "message.generateLyricsSuccess": {
-    "message": "Tekst wygenerowany pomyślnie",
-    "description": "Wiadomość o sukcesie, gdy tekst został wygenerowany pomyślnie"
+    "message": "Tekst został pomyślnie wygenerowany",
+    "description": "Wiadomość po pomyślnym wygenerowaniu tekstu"
   },
   "message.generateLyricsFailed": {
     "message": "Generowanie tekstu piosenki nie powiodło się",
     "description": "Wiadomość, gdy generowanie tekstu piosenki się nie powiedzie"
   },
   "message.optimizingStyle": {
-    "message": "Optymalizacja opisu stylu...",
+    "message": "Optymalizowanie opisu stylu...",
     "description": "Wiadomość podczas optymalizacji stylu"
   },
   "message.optimizeStyleSuccess": {

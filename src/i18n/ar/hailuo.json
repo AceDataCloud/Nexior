@@ -64,7 +64,7 @@
     "description": "وصف المعامل 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "صورة الإطار الأول، ستكون هي الإطار الأول للفيديو الناتج.",
+    "message": "صورة الإطار الأول، ستكون الإطار الأول للفيديو الناتج.",
     "description": "وصف المعامل 'startImageUrl'"
   },
   "description.prompt": {
@@ -76,7 +76,7 @@
     "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "قيد المعالجة",
+    "message": "يتم المعالجة",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
@@ -121,27 +121,31 @@
   },
   "button.model1": {
     "message": "فيديو نصي",
-    "description": "نص زر لإنشاء فيديو Hailuo"
+    "description": "نص زر إنشاء فيديو Hailuo"
   },
   "button.model2": {
     "message": "فيديو صوري",
-    "description": "نص زر لإنشاء فيديو Hailuo"
+    "description": "نص زر إنشاء فيديو Hailuo"
+  },
+  "button.model3": {
+    "message": "فيديو صوري (وضع المخرج)",
+    "description": "نص زر إنشاء فيديو Hailuo، وضع المخرج"
   },
   "button.generate": {
     "message": "إنشاء",
-    "description": "نص زر لإنشاء فيديو Hailuo"
+    "description": "نص زر إنشاء فيديو Hailuo"
   },
   "button.extend": {
     "message": "توسيع الفيديو",
-    "description": "نص زر لتوسيع الفيديو"
+    "description": "نص زر توسيع الفيديو"
   },
   "button.download": {
     "message": "تحميل الفيديو",
-    "description": "نص زر لتحميل الفيديو"
+    "description": "نص زر تحميل الفيديو"
   },
   "button.uploadStartImageUrl": {
     "message": "تحميل الصورة",
-    "description": "نص زر لتحميل الصورة (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصورة')"
+    "description": "نص زر تحميل الصورة (يرجى تبسيط إلى 'تحميل' باللغة الإنجليزية، لا تستخدم 'تحميل الصورة')"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك تحميل ما يصل إلى 5 صور",
@@ -152,7 +156,7 @@
     "description": "رسالة نجاح عند تحميل الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل تحميل الصورة، يرجى المحاولة مرة أخرى لاحقًا",
     "description": "رسالة خطأ عند فشل تحميل الصورة"
   },
   "message.startingTask": {
@@ -180,44 +184,44 @@
     "description": "رسالة أثناء إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمرار إنشاء هذا الفيديو",
-    "description": "رسالة أثناء إنشاء الصورة"
+    "message": "استمر في إنشاء هذا الفيديو",
+    "description": "رسالة تظهر أثناء إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل في توليد الصورة",
-    "description": "رسالة عند فشل توليد الصورة"
+    "message": "فشل في إنشاء الصورة",
+    "description": "رسالة تظهر عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد الصور المرفوعة لللقطة الأولى يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأولى الحد المسموح به"
+    "message": "عدد الصور المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة الحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "لا يمكن أن يتجاوز حجم الملف المرفوع 10 ميجابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميجابايت!"
+    "message": "يجب ألا يتجاوز حجم الملف 10 ميجابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف 10 ميجابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
     "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "عدد الصور المرفوعة لللقطة الأولى يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأولى الحد المسموح به"
+    "message": "عدد الصور المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة الحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد الصور المرفوعة لللقطة الأخيرة يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة لللقطة الأخيرة الحد المسموح به"
+    "message": "عدد الصور المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل في رفع الصورة لللقطة الأولى",
-    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأولى"
+    "message": "فشل في رفع الصورة الأولى",
+    "description": "رسالة خطأ عند فشل رفع الصورة الأولى"
   },
   "message.uploadVideoError": {
     "message": "فشل في رفع الفيديو",
-    "description": "رسالة خطأ عند فشل رفع الفيديو"
+    "description": "رسالة خطأ عند فشل رفع الصورة الأولى"
   },
   "message.uploadEndImageError": {
-    "message": "فشل في رفع الصورة لللقطة الأخيرة",
-    "description": "رسالة خطأ عند فشل رفع الصورة لللقطة الأخيرة"
+    "message": "فشل في رفع الصورة الأخيرة",
+    "description": "رسالة خطأ عند فشل رفع الصورة الأخيرة"
   },
   "message.uploadDocumentsError": {
     "message": "فشل في رفع المستندات",
@@ -225,10 +229,10 @@
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
-    "description": "رسالة عند عدم وجود عمليات متاحة"
+    "description": "رسالة تظهر عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على زر توليد الفيديو على اليسار",
-    "description": "رسالة عند عدم وجود مهام"
+    "message": "لا توجد مهام تاريخية، يرجى النقر على زر إنشاء الفيديو على اليسار",
+    "description": "رسالة تظهر عند عدم وجود مهام"
   }
 }

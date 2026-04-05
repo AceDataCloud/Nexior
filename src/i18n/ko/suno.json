@@ -164,16 +164,16 @@
     "description": "생성된 변형의 다양성 정도 조절"
   },
   "name.audioWeight": {
-    "message": "원곡 비율",
-    "description": "커버 시 원곡의 영향 비율"
+    "message": "원곡 가중치",
+    "description": "커버 시 원곡의 영향 가중치"
   },
   "name.lyricPrompt": {
     "message": "가사 프롬프트",
     "description": "자동으로 가사를 생성하는 프롬프트"
   },
   "name.failureReason": {
-    "message": "실패 원인",
-    "description": "작업 실패의 원인"
+    "message": "실패 이유",
+    "description": "작업 실패의 이유"
   },
   "name.status": {
     "message": "상태",
@@ -204,7 +204,7 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
-    "message": "사용자 정의 가사를 입력하세요. [Verse], [Chorus], [Bridge] 등의 구간 표기를 지원합니다.",
+    "message": "사용자 정의 가사를 입력하세요. [Verse], [Chorus], [Bridge] 등의 단락 태그를 지원합니다.",
     "description": "매개변수 'lyrics'의 설명"
   },
   "description.style": {
@@ -220,11 +220,11 @@
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성 참고용으로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공하면 업로드한 음악에 따라 생성됩니다.",
+    "message": "생성의 참고로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공하면 업로드한 음악에 따라 생성됩니다.",
     "description": "참고 업로드 매개변수의 설명"
   },
   "description.vocalGender": {
-    "message": "생성할 목소리의 성별을 선택하세요 (v4.5 이상에서만 지원)",
+    "message": "생성할 목소리의 성별을 선택하세요 (v4.5 이상 버전에서만 지원)",
     "description": "목소리 성별 선택기의 설명"
   },
   "description.weirdness": {
@@ -236,7 +236,7 @@
     "description": "스타일 영향력 매개변수의 설명"
   },
   "description.audioWeight": {
-    "message": "커버할 때 원곡이 결과에 미치는 영향의 비율 (0-100)",
+    "message": "리메이크 시 원곡이 결과에 미치는 영향의 비율 (0-100)",
     "description": "원곡 비율 매개변수의 설명"
   },
   "description.lyricPrompt": {
@@ -256,7 +256,7 @@
     "description": "곡 설명 입력의 자리 표시자"
   },
   "placeholder.lyrics": {
-    "message": "[Verse]\n이 고요한 밤에\n별들이 하늘에서 반짝입니다.\n\n[Chorus]\n함께 노래합시다\n해가 뜰 때까지...",
+    "message": "[Verse]\n이 고요한 밤에\n별들이 하늘에서 반짝입니다.\n\n[Chorus]\n함께 노래합시다\n날이 밝을 때까지...",
     "description": "가사 입력의 자리 표시자"
   },
   "placeholder.extend.lyrics": {
@@ -408,11 +408,11 @@
     "description": "음악 생성 실패 시의 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업 없음",
+    "message": "사용 가능한 작업이 없습니다",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "이력 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요.",
+    "message": "역사적 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요",
     "description": "작업이 없을 때의 메시지"
   }
 }

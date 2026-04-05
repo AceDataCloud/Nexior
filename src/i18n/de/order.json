@@ -1,27 +1,27 @@
 {
   "button.pay": {
-    "message": "Zahlung",
-    "description": "Text im Button, der zur Zahlung der Bestellung verwendet wird."
+    "message": "Zahlen",
+    "description": "Text im Button, um die Bestellung zu bezahlen."
   },
   "button.continuePay": {
     "message": "Zahlung fortsetzen",
-    "description": "Text im Button, der verwendet wird, um die Zahlung der Bestellung fortzusetzen."
+    "description": "Text im Button, um die Zahlung für die Bestellung fortzusetzen."
   },
   "button.checkDetail": {
     "message": "Details anzeigen",
-    "description": "Text im Button, der verwendet wird, um die Bestelldetails anzuzeigen."
+    "description": "Text im Button, um die Bestelldetails anzuzeigen."
   },
   "button.query": {
     "message": "Abfragen",
-    "description": "Text im Button, der verwendet wird, um die Bestellung abzufragen."
+    "description": "Text im Button, um die Bestellung abzufragen."
   },
   "button.finish": {
     "message": "Manuell abschließen",
-    "description": "Text im Button, der verwendet wird, um die Bestellung manuell abzuschließen."
+    "description": "Text im Button, um die Bestellung manuell abzuschließen."
   },
   "button.update": {
     "message": "Aktualisieren",
-    "description": "Text im Button, der verwendet wird, um die Bestellung zu aktualisieren."
+    "description": "Text im Button, um die Bestellung zu aktualisieren."
   },
   "field.id": {
     "message": "Bestell-ID",
@@ -52,8 +52,8 @@
     "description": "Der Name des Dienstes."
   },
   "field.payWay": {
-    "message": "Zahlungsart",
-    "description": "Die Zahlungsart der Bestellung."
+    "message": "Zahlungsmethode",
+    "description": "Die Zahlungsmethode der Bestellung."
   },
   "field.api": {
     "message": "API",
@@ -68,7 +68,7 @@
     "description": "Nachricht über eine erfolgreiche Zahlung."
   },
   "message.orderExpired": {
-    "message": "Die Bestellung ist abgelaufen, bitte erstellen Sie eine neue Bestellung zur Zahlung.",
+    "message": "Die Bestellung ist abgelaufen. Bitte erstellen Sie eine neue Bestellung zur Zahlung.",
     "description": "Nachricht über eine abgelaufene Bestellung."
   },
   "message.createFailed": {
@@ -85,7 +85,7 @@
   },
   "message.buyInExternalUrl": {
     "message": "Bitte schließen Sie die Zahlung über den externen Link ab.",
-    "description": "Nachricht über Zahlungen über externe Links."
+    "description": "Nachricht über die Zahlung über einen externen Link."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
@@ -96,11 +96,11 @@
     "description": "Nachricht über eine erfolgreiche Aktualisierung."
   },
   "message.confirmFinish": {
-    "message": "Diese Aktion wird die Bestellung manuell auf den Zahlungsstatus setzen und die Verteilung abschließen, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
+    "message": "Diese Aktion setzt die Bestellung manuell auf den Zahlungsstatus und schließt die Verteilung ab. Dies kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass der Kunde die Zahlung abgeschlossen hat. Möchten Sie fortfahren?",
     "description": "Nachricht zur Bestätigung des Abschlusses."
   },
   "state.pending": {
-    "message": "Ausstehende Zahlung",
+    "message": "Ausstehend",
     "description": "Der Status der Bestellung, der anzeigt, dass die Bestellung auf die Zahlung des Benutzers wartet."
   },
   "state.paid": {
@@ -117,39 +117,43 @@
   },
   "state.failed": {
     "message": "Zahlung fehlgeschlagen",
-    "description": "Der Status der Bestellung, der anzeigt, dass die Zahlung der Bestellung fehlgeschlagen ist."
+    "description": "Der Status der Bestellung, der anzeigt, dass die Zahlung fehlgeschlagen ist."
   },
   "title.info": {
     "message": "Bestellinformationen",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die Bestellinformationen darstellt."
+    "description": "Titel, der auf der Website angezeigt wird und die Bestellinformationen darstellt."
   },
   "title.wechatPay": {
     "message": "WeChat-Zahlung",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die WeChat-Zahlung darstellt."
+    "description": "Titel, der auf der Website angezeigt wird und die WeChat-Zahlung darstellt."
   },
   "title.aliPay": {
     "message": "Alipay",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die Alipay-Zahlung darstellt, Alipay ist eine Art der Online-Zahlung."
+    "description": "Titel, der auf der Website angezeigt wird und die Alipay-Zahlung darstellt, Alipay ist eine Online-Zahlung."
   },
   "title.stripe": {
     "message": "Stripe",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die Stripe-Zahlung darstellt, Stripe ist eine Art der Online-Zahlung."
+    "description": "Titel, der auf der Website angezeigt wird und die Stripe-Zahlung darstellt, Stripe ist eine Online-Zahlung."
   },
   "title.manageOrder": {
     "message": "Bestellung verwalten",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die Verwaltung von Bestellungen darstellt."
+    "description": "Titel, der auf der Website angezeigt wird und die Verwaltung von Bestellungen darstellt."
   },
   "title.x402": {
     "message": "Kryptowährung",
-    "description": "Der Titel, der als Website-Titel angezeigt wird und die Kryptowährungszahlung (basierend auf dem X402-Zahlungsplan) darstellt."
+    "description": "Titel, der auf der Website angezeigt wird und die Kryptowährungszahlung (basierend auf dem X402-Zahlungsplan) darstellt."
+  },
+  "title.paypal": {
+    "message": "PayPal",
+    "description": "Titel, der auf der Website angezeigt wird und die PayPal-Zahlung darstellt."
   },
   "message.discountTag": {
     "message": "{percent}% Rabatt",
-    "description": "Text für das Logo, das den angewendeten Rabattprozentsatz anzeigt."
+    "description": "Text, der den angewendeten Rabattprozentsatz anzeigt."
   },
   "message.discountHint": {
     "message": "Sie sind unser exklusiver VIP-Kunde und genießen automatisch {percent}% Rabatt.",
-    "description": "Hinweis für Benutzer, dass sie aufgrund ihres VIP-Status automatisch einen Rabatt erhalten."
+    "description": "Hinweis für den Benutzer, dass er aufgrund seines VIP-Status automatisch einen Rabatt erhält."
   },
   "message.x402DiscountApplied": {
     "message": "Durch die X402-Zahlung erhalten Sie zusätzlich {percent}% Rabatt.",
@@ -160,11 +164,11 @@
     "description": "Hervorhebung des Rabattprozentsatzes, der durch die Wahl der X402-Zahlung zusätzlich gewährt wird."
   },
   "message.x402DiscountHint": {
-    "message": "Wählen Sie die X402-Zahlung und genießen Sie sofort einen zusätzlichen Rabatt von {percent}%.",
+    "message": "Wählen Sie die X402-Zahlung und genießen Sie sofort {percent}% Rabatt.",
     "description": "Hinweistext für den Benutzer, dass durch die X402-Zahlung ein zusätzlicher Rabatt freigeschaltet werden kann."
   },
   "message.x402IntroShort": {
-    "message": "Schließen Sie die USDC-Zahlung direkt über die Wallet ab.",
+    "message": "Zahlung in USDC direkt über die Wallet abschließen.",
     "description": "Kurze Einführung."
   },
   "message.x402TabWallet": {
@@ -188,7 +192,7 @@
     "description": "Text für die Schaltfläche zum Verbinden der EVM-Wallet."
   },
   "message.x402NoWalletDesc": {
-    "message": "Bitte verwenden Sie einen Browser, der Wallets unterstützt (empfohlen: Chrome/Brave), oder installieren Sie die MetaMask/Phantom-Erweiterung; Sie können auch diese Seite im integrierten Browser Ihrer mobilen Wallet-App öffnen.",
+    "message": "Bitte verwenden Sie einen Wallet-fähigen Browser (empfohlen: Chrome/Brave) oder installieren Sie die MetaMask/Phantom-Erweiterung; Sie können auch diese Seite im integrierten Browser Ihrer mobilen Wallet-App öffnen.",
     "description": "Allgemeine Beschreibung ohne Wallet."
   },
   "message.x402SwitchNetwork": {
@@ -208,7 +212,7 @@
     "description": "Titel des Bestätigungs-Popups für die X402-Zahlung."
   },
   "message.x402ConfirmDesc": {
-    "message": "Bestätigen Sie die Zahlung von USDC auf {network}?",
+    "message": "Bestätigen Sie die Zahlung in USDC auf {network}?",
     "description": "Beschreibung des Bestätigungs-Popups für die X402-Zahlung."
   },
   "message.x402StepsTitle": {
@@ -216,7 +220,7 @@
     "description": "Titel der Schritte."
   },
   "message.x402Step1": {
-    "message": "Wallet verbinden (falls nicht installiert, bitte zuerst die Erweiterung installieren und diese Seite aktualisieren oder die Seite in der mobilen Wallet öffnen)",
+    "message": "Wallet verbinden (falls nicht installiert, bitte die Erweiterung installieren und diese Seite aktualisieren oder die Seite in der mobilen Wallet öffnen)",
     "description": "Text für Schritt 1."
   },
   "message.x402Step2": {
@@ -228,7 +232,7 @@
     "description": "Text für Schritt 3."
   },
   "message.x402Step4": {
-    "message": "Nach erfolgreicher Unterschrift werden wir automatisch abrechnen, und diese Seite wird nach Abschluss automatisch auf 'bezahlt' aktualisiert.",
+    "message": "Nach erfolgreicher Unterschrift werden wir automatisch abrechnen, und diese Seite wird automatisch auf 'bezahlt' aktualisiert.",
     "description": "Text für Schritt 4."
   },
   "message.x402IntegrationResourceLabel": {
@@ -277,14 +281,14 @@
   },
   "message.x402InstallGuideConfirm": {
     "message": "Ich habe installiert",
-    "description": "Hauptschaltfläche nach Abschluss der Wallet-Installation."
+    "description": "Hauptschaltfläche nach der Installation der Wallet."
   },
   "message.x402NetworkGuideTitle": {
     "message": "Netzwerkeinstellungen anpassen",
     "description": "Titel des Popups zur Erklärung der Netzwerkinkompatibilität."
   },
   "message.x402NetworkGuideDesc": {
-    "message": "Bitte folgen Sie den folgenden Schritten, um das Wallet-Netzwerk auf {network} zu wechseln. Aktualisieren Sie diese Seite nach Abschluss, um die Erkennung erneut durchzuführen.",
+    "message": "Bitte folgen Sie den folgenden Schritten, um das Wallet-Netzwerk auf {network} zu wechseln, und aktualisieren Sie diese Seite anschließend, um es erneut zu erkennen.",
     "description": "Beschreibung, die den Benutzer anleitet, das Wallet-Netzwerk anzupassen."
   },
   "message.x402NetworkGuideStep1": {
@@ -296,12 +300,12 @@
     "description": "Anleitung für den zweiten Schritt zur Netzwerkeinstellung, Ethereum muss nicht deaktiviert werden."
   },
   "message.x402NetworkGuideStep3": {
-    "message": "Kehren Sie zu dieser Seite zurück und klicken Sie auf „Ich habe alles eingerichtet“, um die Seite zu aktualisieren und es erneut zu versuchen.",
+    "message": "Gehen Sie zurück zu dieser Seite und klicken Sie auf „Ich habe alles eingerichtet“, um die Seite zu aktualisieren und es erneut zu versuchen.",
     "description": "Netzwerkeinstellungs Schritt 3."
   },
   "message.x402NetworkGuideConfirm": {
     "message": "Ich habe alles eingerichtet",
-    "description": "Hauptschaltfläche nach Abschluss der Netzwerkeinstellungen."
+    "description": "Hauptschaltfläche nach Abschluss der Netzwerkeinstellung."
   },
   "message.x402NetworkSwitchFailed": {
     "message": "Die aktuelle Brieftasche unterstützt kein automatisches Wechseln des Netzwerks. Bitte wechseln Sie manuell zur angegebenen Brieftasche und versuchen Sie es erneut.",
@@ -313,38 +317,38 @@
   },
   "message.x402WalletPayCta": {
     "message": "Mit Brieftasche bezahlen",
-    "description": "Text für die Schaltfläche, um die Zahlung mit der verbundenen Brieftasche abzuschließen."
+    "description": "Text für die Schaltfläche zum Abschluss der Zahlung mit der verbundenen Brieftasche."
   },
   "button.refund": {
     "message": "Rückerstattung",
-    "description": "Text in der Schaltfläche für die manuelle Rückerstattung von Bestellungen."
+    "description": "Text in der Schaltfläche für manuelle Rückerstattung von Bestellungen."
   },
   "field.applicationId": {
     "message": "Antrags-ID",
-    "description": "Die Antrags-ID, die zur Bestellung gehört."
+    "description": "Antrags-ID, die zur Bestellung gehört."
   },
   "field.serviceId": {
-    "message": "Dienst-ID",
-    "description": "Die Dienst-ID, die dem Rabatt entspricht."
+    "message": "Service-ID",
+    "description": "Service-ID, die dem Rabatt entspricht."
   },
   "field.generalDiscount": {
     "message": "Allgemeiner Rabatt",
-    "description": "Label, das angezeigt wird, wenn der Rabatt für alle Dienste gilt."
+    "description": "Label, das angezeigt wird, wenn der Rabatt für alle Dienstleistungen gilt."
   },
   "field.userId": {
     "message": "Benutzer-ID",
-    "description": "Die Benutzer-ID, die den Rabatt erhält."
+    "description": "Benutzer-ID, die den Rabatt erhält."
   },
   "field.discount": {
     "message": "Rabatt",
-    "description": "Der Rabattprozentsatz, der auf die Bestellung dieses Benutzers angewendet wird."
+    "description": "Rabattquote, die auf die Bestellung dieses Benutzers angewendet wird."
   },
   "field.actions": {
     "message": "Aktionen",
-    "description": "Titel der Aktionsschaltflächenliste."
+    "description": "Überschrift für die Aktionsschaltflächen."
   },
   "message.confirmRefund": {
-    "message": "Diese Aktion wird die Ansprüche dieser Bestellung widerrufen und als rückerstattet markieren, was nicht rückgängig gemacht werden kann. Bitte bestätigen Sie, dass die Rückerstattung bearbeitet wurde. Möchten Sie fortfahren?",
+    "message": "Diese Aktion widerruft die Ansprüche dieser Bestellung und markiert sie als rückerstattet. Dies kann nicht rückgängig gemacht werden. Bitte bestätigen Sie, dass die Rückerstattung bearbeitet wurde. Möchten Sie fortfahren?",
     "description": "Nachricht zur Bestätigung der Rückerstattung."
   },
   "message.x402IntegrationIntro": {
@@ -369,15 +373,15 @@
   },
   "message.x402WalletStatusDetected": {
     "message": "Erkannt",
-    "description": "Label für den Status der erkannten/installierten Brieftasche."
+    "description": "Statuslabel für erkannte/installierte Brieftaschen."
   },
   "message.x402WalletStatusInstall": {
     "message": "Installieren",
-    "description": "Label für den Installationsstatus der Brieftasche."
+    "description": "Einstiegs-/Statuslabel für die Brieftascheninstallation."
   },
   "message.x402WalletStatusQr": {
     "message": "QR-Code",
-    "description": "Label für den QR-Code-Eingang von WalletConnect."
+    "description": "Label für den QR-Code-Einstieg von WalletConnect."
   },
   "message.x402WalletConnectTitle": {
     "message": "WalletConnect",
@@ -393,7 +397,7 @@
   },
   "message.x402WalletConnectScanHint": {
     "message": "Bitte scannen Sie den QR-Code mit einer Brieftasche, die WalletConnect unterstützt.",
-    "description": "Hinweis unter dem WalletConnect QR-Code."
+    "description": "Hinweistext unter dem WalletConnect QR-Code."
   },
   "message.x402SwitchNetworkCta": {
     "message": "Wechseln zu {network}",
@@ -405,7 +409,7 @@
   },
   "message.x402NoWalletSafariDesc": {
     "message": "Safari unterstützt normalerweise keine Erweiterungen wie MetaMask. Es wird empfohlen, Chrome/Brave zu verwenden oder diese Seite im integrierten Browser der mobilen Brieftaschen-App zu öffnen.",
-    "description": "Hinweis zur fehlenden Brieftasche in der Safari-Umgebung."
+    "description": "Hinweis ohne Brieftasche im Safari-Umfeld."
   },
   "message.x402InstallMetaMask": {
     "message": "MetaMask installieren",
@@ -424,60 +428,60 @@
     "description": "Text für die Schaltfläche zur erneuten Erkennung der Brieftasche."
   },
   "message.x402MissingWCProjectId": {
-    "message": "WalletConnect-Projekt-ID nicht konfiguriert (bitte Umgebungsvariable VITE_WALLETCONNECT_PROJECT_ID setzen)",
+    "message": "WalletConnect Project ID nicht konfiguriert (bitte setzen Sie die Umgebungsvariable VITE_WALLETCONNECT_PROJECT_ID)",
     "description": "Hinweis, dass die WalletConnect-Projekt-ID fehlt."
   },
   "message.x402WalletBound": {
     "message": "Gebunden",
-    "description": "Logo, das angezeigt wird, wenn die Brieftasche gebunden ist."
+    "description": "Abzeichen, das angezeigt wird, wenn die Brieftasche gebunden ist."
   },
   "message.userIdRequired": {
-    "message": "Bitte geben Sie die Benutzer-ID ein.",
+    "message": "Bitte Benutzer-ID eingeben.",
     "description": "Wenn die Benutzer-ID leer ist, wird diese Hinweisnachricht angezeigt."
   },
   "message.serviceIdRequired": {
-    "message": "Bitte wählen Sie einen Dienst aus.",
+    "message": "Bitte Dienst auswählen.",
     "description": "Wenn die Dienst-ID leer ist, wird diese Hinweisnachricht angezeigt."
   },
   "message.discountRequired": {
-    "message": "Bitte geben Sie einen Rabatt zwischen 0 und 1 ein.",
+    "message": "Bitte einen Rabatt zwischen 0 und 1 eingeben.",
     "description": "Wenn der Rabatt nicht im gültigen Bereich liegt, wird diese Hinweisnachricht angezeigt."
   },
   "message.discountCreated": {
     "message": "Rabatt erfolgreich gespeichert.",
-    "description": "Wenn der neue Rabatt erfolgreich hinzugefügt wurde, wird diese Hinweisnachricht angezeigt."
+    "description": "Wenn ein neuer Rabatt erfolgreich hinzugefügt wurde, wird diese Hinweisnachricht angezeigt."
   },
   "message.discountUpdated": {
     "message": "Rabatt erfolgreich aktualisiert.",
-    "description": "Wenn der Rabatt erfolgreich bearbeitet wurde, wird diese Hinweisnachricht angezeigt."
+    "description": "Wenn ein Rabatt erfolgreich bearbeitet wurde, wird diese Hinweisnachricht angezeigt."
   },
   "message.discountDeleted": {
     "message": "Rabatt erfolgreich gelöscht.",
-    "description": "Wenn der Rabatt erfolgreich gelöscht wurde, wird diese Hinweisnachricht angezeigt."
+    "description": "Wenn ein Rabatt erfolgreich gelöscht wurde, wird diese Hinweisnachricht angezeigt."
   },
   "state.refunded": {
     "message": "Erstattet",
-    "description": "Der Status der Bestellung, der angibt, dass die Bestellung erstattet wurde."
+    "description": "Status der Bestellung, der angibt, dass die Bestellung erstattet wurde."
   },
   "title.revenueAnalysis": {
     "message": "Einnahmenanalyse",
     "description": "Titel der Seite zur Einnahmenanalyse"
   },
   "title.todayRevenue": {
-    "message": "Heutiger Umsatz",
-    "description": "Heutiger Umsatz"
+    "message": "Heutige Einnahmen",
+    "description": "Heutige Einnahmen"
   },
   "title.last7dRevenue": {
-    "message": "Umsatz der letzten 7 Tage",
-    "description": "Umsatz der letzten 7 Tage"
+    "message": "Einnahmen der letzten 7 Tage",
+    "description": "Einnahmen der letzten 7 Tage"
   },
   "title.last30dRevenue": {
-    "message": "Umsatz der letzten 30 Tage",
-    "description": "Umsatz der letzten 30 Tage"
+    "message": "Einnahmen der letzten 30 Tage",
+    "description": "Einnahmen der letzten 30 Tage"
   },
   "title.last90dRevenue": {
-    "message": "Umsatz des letzten Quartals",
-    "description": "Umsatz der letzten 90 Tage"
+    "message": "Einnahmen des letzten Quartals",
+    "description": "Einnahmen der letzten 90 Tage"
   },
   "title.revenueTrend": {
     "message": "Einnahmentrend",
@@ -493,10 +497,10 @@
   },
   "title.createDiscount": {
     "message": "Neuen Rabatt hinzufügen",
-    "description": "Titel des Blocks zum Erstellen eines neuen Rabatts."
+    "description": "Titel des Blocks zur Erstellung eines neuen Rabatts."
   },
   "title.updateDiscount": {
     "message": "Rabatt aktualisieren",
-    "description": "Titel des Pop-ups zur Bearbeitung des Rabatts."
+    "description": "Titel des Popups zur Bearbeitung eines Rabatts."
   }
 }

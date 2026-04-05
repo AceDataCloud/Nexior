@@ -60,7 +60,7 @@
     "description": "Nome do gerador de vídeos Hailuo"
   },
   "description.ingredients": {
-    "message": "Ative este botão se desejar enviar várias imagens para gerar seu próprio vídeo.",
+    "message": "Ative este botão se quiser enviar várias imagens para gerar seu vídeo.",
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.startImageUrl": {
@@ -92,7 +92,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira o prompt para o estilo do vídeo a ser gerado, por exemplo: Fúria",
+    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: raiva",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -127,6 +127,10 @@
     "message": "Vídeo de Imagem",
     "description": "Texto do botão para gerar vídeo Hailuo"
   },
+  "button.model3": {
+    "message": "Vídeo de Imagem (Modo Diretor)",
+    "description": "Texto do botão para gerar vídeo Hailuo, modo diretor"
+  },
   "button.generate": {
     "message": "Gerar",
     "description": "Texto do botão para gerar vídeo Hailuo"
@@ -153,7 +157,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar imagem, por favor tente novamente mais tarde",
-    "description": "Mensagem de erro ao falhar no envio de imagem"
+    "description": "Mensagem de erro ao falhar no envio da imagem"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -168,7 +172,7 @@
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus créditos acabaram, por favor compre mais créditos para continuar",
+    "message": "Seus créditos acabaram, por favor compre mais créditos para continuar usando",
     "description": "Mensagem quando os créditos se esgotam"
   },
   "message.generating": {
@@ -181,11 +185,11 @@
   },
   "message.extendVideo": {
     "message": "Continuar gerando este vídeo",
-    "description": "Mensagem enquanto a imagem está sendo gerada"
+    "description": "Mensagem exibida enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar imagem",
-    "description": "Mensagem quando a geração da imagem falha"
+    "message": "Falha ao gerar a imagem",
+    "description": "Mensagem exibida quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
     "message": "Número de imagens da primeira frame excede o limite",
@@ -208,27 +212,27 @@
     "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao enviar imagem da primeira frame",
-    "description": "Mensagem de erro quando falha ao enviar imagem da primeira frame"
+    "message": "Falha ao enviar a imagem da primeira frame",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da primeira frame"
   },
   "message.uploadVideoError": {
-    "message": "Falha ao enviar vídeo",
-    "description": "Mensagem de erro quando falha ao enviar vídeo"
+    "message": "Falha ao enviar o vídeo",
+    "description": "Mensagem de erro quando falha ao enviar o vídeo"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao enviar imagem da última frame",
-    "description": "Mensagem de erro quando falha ao enviar imagem da última frame"
+    "message": "Falha ao enviar a imagem da última frame",
+    "description": "Mensagem de erro quando falha ao enviar a imagem da última frame"
   },
   "message.uploadDocumentsError": {
-    "message": "Falha ao enviar documento",
-    "description": "Mensagem de erro quando falha ao enviar documento"
+    "message": "Falha ao enviar o documento",
+    "description": "Mensagem de erro quando falha ao enviar o documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
-    "description": "Mensagem quando não há operações disponíveis"
+    "description": "Mensagem exibida quando não há operações disponíveis"
   },
   "message.noTasks": {
     "message": "Nenhuma tarefa histórica, clique à esquerda para gerar vídeo",
-    "description": "Mensagem quando não há tarefas"
+    "description": "Mensagem exibida quando não há tarefas"
   }
 }
