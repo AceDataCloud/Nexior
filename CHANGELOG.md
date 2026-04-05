@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 10:24:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 10:34:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.4
+
+Sun, 05 Apr 2026 10:34:16 GMT
+
+### Patches
+
+- fix: show correct logo on collapsed/expanded sidebar and add dark-mode borders (dev@acedata.cloud)
 
 ## 3.32.3
 
