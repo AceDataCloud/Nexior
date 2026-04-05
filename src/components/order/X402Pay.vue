@@ -824,21 +824,56 @@ export default defineComponent({
           return;
         }
 
-        const adapter: any = (this as any).$wallet?.wallet?.value?.adapter;
-        if (!adapter?.signAndSendTransaction && !adapter?.signTransaction && !adapter?.signAllTransactions) {
-          throw new Error('Wallet does not support signing transactions');
+        // Multi-wallet support: Try different methods to sign and send transaction
+        // Priority: 1. Phantom native, 2. Solflare native, 3. window.solana, 4. Wallet adapter sendTransaction
+        // https://docs.phantom.com/solana/domain-and-transaction-warnings
+        const walletApi: any = (this as any).$wallet;
+        const adapter: any = walletApi?.wallet?.value?.adapter;
+
+        const phantomProvider: any =
+          typeof window !== 'undefined' ? (window as any).phantom?.solana || (window as any).solana : undefined;
+        const solflareProvider: any = typeof window !== 'undefined' ? (window as any).solflare : undefined;
+
+        let signAndSendFn: ((tx: any) => Promise<string | { signature: string }>) | undefined;
+
+        if (phantomProvider?.isPhantom && typeof phantomProvider?.signAndSendTransaction === 'function') {
+          signAndSendFn = phantomProvider.signAndSendTransaction.bind(phantomProvider);
+        } else if (
+          solflareProvider?.isSolflare &&
+          typeof solflareProvider?.signAndSendTransaction === 'function'
+        ) {
+          signAndSendFn = solflareProvider.signAndSendTransaction.bind(solflareProvider);
+        } else if (
+          typeof window !== 'undefined' &&
+          (window as any).solana?.signAndSendTransaction &&
+          !(window as any).solana?.isPhantom
+        ) {
+          signAndSendFn = (window as any).solana.signAndSendTransaction.bind((window as any).solana);
+        } else if (walletApi?.sendTransaction && walletApi?.publicKey?.value) {
+          const { Connection } = await import('@solana/web3.js');
+          const extra = (requirements.extra || {}) as Record<string, any>;
+          const network = String(requirements.network || 'solana').toLowerCase();
+          const rpcUrl =
+            extra.rpcUrl ||
+            extra.rpc_url ||
+            (network.includes('devnet') ? 'https://api.devnet.solana.com' : 'https://api.mainnet-beta.solana.com');
+          const connection = new Connection(rpcUrl, 'confirmed');
+          signAndSendFn = async (tx: any) => {
+            const signature = await walletApi.sendTransaction(tx, connection);
+            return { signature };
+          };
         }
 
         let header: string;
-        if (adapter?.signAndSendTransaction) {
+        if (signAndSendFn) {
           const result = await executeSolanaPayment({
             requirements: requirements as SolanaPaymentRequirements,
             payerAddress: address,
-            signAndSendTransaction: adapter.signAndSendTransaction.bind(adapter),
+            signAndSendTransaction: signAndSendFn,
             fetchBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
           });
           header = result.header;
-        } else {
+        } else if (adapter?.signTransaction || adapter?.signAllTransactions) {
           header = await buildSolanaX402Header({
             requirements,
             payerAddress: address,
@@ -846,6 +881,8 @@ export default defineComponent({
             signAllTransactions: adapter.signAllTransactions ? adapter.signAllTransactions.bind(adapter) : undefined,
             fetchLatestBlockhash: (network) => this.fetchSolanaLatestBlockhash(network)
           });
+        } else {
+          throw new Error('Wallet does not support signing transactions');
         }
         this.paying = true;
         const { data } = await orderOperator.payX402WithHeader(this.modelValue.id, { pay_way: 'X402' } as any, header);
