@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 08:43:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 10:04:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.0
+
+Sun, 05 Apr 2026 10:04:52 GMT
+
+### Minor changes
+
+- feat: add PayPal payment option with feature flag (dev@acedata.cloud)
 
 ## 3.31.1
 

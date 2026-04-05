@@ -747,7 +747,7 @@ export default defineComponent({
     &.paypal {
       width: 22px;
       height: 22px;
-      background-image: url(https://cdn.acedata.cloud/paypal.png);
+      background-image: url(https://cdn.acedata.cloud/u3ffao.png);
       background-size: contain;
     }
   }
