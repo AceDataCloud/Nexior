@@ -31,6 +31,7 @@
                       <span v-else-if="order?.pay_way === PayWay.Stripe">{{ $t('order.title.stripe') }}</span>
                       <span v-else-if="order?.pay_way === PayWay.AliPay">{{ $t('order.title.aliPay') }}</span>
                       <span v-else-if="order?.pay_way === PayWay.X402">{{ $t('order.title.x402') }}</span>
+                      <span v-else-if="order?.pay_way === PayWay.PayPal">{{ $t('order.title.paypal') }}</span>
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
@@ -155,6 +156,18 @@
                       {{ $t('order.message.x402DiscountTag', { percent: x402BadgePercent }) }}
                     </el-tag>
                   </div>
+                  <div
+                    v-if="enablePaypal"
+                    :class="{
+                      payway: true,
+                      paypal: true,
+                      active: payWay === PayWay.PayPal
+                    }"
+                    @click="payWay = PayWay.PayPal"
+                  >
+                    <span class="payicon paypal"></span>
+                    <span class="payname">{{ $t('order.title.paypal') }}</span>
+                  </div>
                 </div>
                 <div v-if="!order?.pay_way">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
@@ -191,6 +204,12 @@
             :visible="paying"
             @hide="paying = false"
           />
+          <paypal-pay-order
+            v-if="order && payWay === PayWay.PayPal"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
           <x402-pay-order
             v-if="order && payWay === PayWay.X402"
             v-model="order"
@@ -223,6 +242,7 @@ import WechatPayOrder from '@/components/order/WechatPay.vue';
 import StripePayOrder from '@/components/order/StripePay.vue';
 import AlipayPayOrder from '@/components/order/AliPay.vue';
 import X402PayOrder from '@/components/order/X402Pay.vue';
+import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -234,7 +254,8 @@ enum PayWay {
   WechatPay = 'WechatPay',
   Stripe = 'Stripe',
   AliPay = 'AliPay',
-  X402 = 'X402'
+  X402 = 'X402',
+  PayPal = 'PayPal'
 }
 
 interface IData {
@@ -266,7 +287,8 @@ export default defineComponent({
     WechatPayOrder,
     StripePayOrder,
     AlipayPayOrder,
-    X402PayOrder
+    X402PayOrder,
+    PaypalPayOrder
   },
   data(): IData {
     return {
@@ -284,6 +306,9 @@ export default defineComponent({
   computed: {
     config(): IConfigResponse | undefined {
       return this.$store.getters.config as IConfigResponse | undefined;
+    },
+    enablePaypal(): boolean {
+      return !!this.config?.features?.ENABLE_PAYPAL;
     },
     id() {
       return this.$route.params?.id?.toString();
@@ -718,6 +743,12 @@ export default defineComponent({
       background-image: url(https://cdn.acedata.cloud/mf6rzl.jpg);
       background-size: contain;
       border-radius: 4px;
+    }
+    &.paypal {
+      width: 22px;
+      height: 22px;
+      background-image: url(https://cdn.acedata.cloud/paypal.png);
+      background-size: contain;
     }
   }
 }
