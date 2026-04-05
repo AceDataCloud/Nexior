@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 10:34:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Apr 2026 11:24:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.32.5
+
+Sun, 05 Apr 2026 11:24:56 GMT
+
+### Patches
+
+- fix: restore input/select/textarea border visibility in both light and dark mode (dev@acedata.cloud)
 
 ## 3.32.4
 
