@@ -45,6 +45,11 @@ export default defineComponent({
     return {
       options: [
         {
+          label: 'Suno v5.5',
+          value: 'chirp-v5-5',
+          info: '8 min'
+        },
+        {
           label: 'Suno v5',
           value: 'chirp-v5',
           info: '8 min'
