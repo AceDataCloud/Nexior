@@ -42,11 +42,6 @@ export default defineComponent({
 
     .navigator {
       height: 100%;
-      width: 220px;
-      transition: width 0.25s ease;
-    }
-
-    .navigator.collapsed {
       width: 60px;
     }
 
