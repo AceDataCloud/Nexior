@@ -11,6 +11,7 @@ import pixverseState from '../pixverse/state';
 import fluxState from '../flux/state';
 import hailuoState from '../hailuo/state';
 import sunoState from '../suno/state';
+import producerState from '../producer/state';
 import headshotsState from '../headshots/state';
 import nanobananaState from '../nanobanana/state';
 import seedreamState from '../seedream/state';
@@ -52,6 +53,7 @@ export default (): IRootState => {
     flux: fluxState(),
     hailuo: hailuoState(),
     suno: sunoState(),
+    producer: producerState(),
     headshots: headshotsState(),
     nanobanana: nanobananaState(),
     seedream: seedreamState(),
