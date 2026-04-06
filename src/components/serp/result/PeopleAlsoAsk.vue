@@ -1,15 +1,17 @@
 <template>
-  <div>
+  <div class="rounded-xl border border-[var(--el-border-color-lighter)] p-5 bg-[var(--el-fill-color-blank)]">
     <h3 class="text-base font-bold mb-3">{{ $t('serp.name.peopleAlsoAsk') }}</h3>
     <el-collapse>
       <el-collapse-item v-for="(item, index) in data" :key="index" :title="item.question || item.title || ''">
-        <p v-if="item.snippet" class="text-sm text-gray-600 dark:text-gray-300 mb-2">{{ item.snippet }}</p>
+        <p v-if="item.snippet" class="text-sm text-[var(--el-text-color-regular)] mb-2 leading-relaxed">
+          {{ item.snippet }}
+        </p>
         <a
           v-if="item.link"
           :href="item.link"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-xs text-blue-500 hover:underline"
+          class="text-xs text-[var(--el-color-primary)] hover:underline"
         >
           {{ item.title || item.link }}
         </a>
