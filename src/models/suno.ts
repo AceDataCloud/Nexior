@@ -160,6 +160,73 @@ export interface ISunoStyleResponse {
   text?: string;
 }
 
+export interface ISunoPersonaRequest {
+  audio_id: string;
+  name: string;
+  vox_audio_id?: string;
+  vocal_start?: number;
+  vocal_end?: number;
+  description?: string;
+}
+
+export interface ISunoPersona {
+  id?: string;
+  name?: string;
+  description?: string;
+}
+
+export interface ISunoPersonaResponse {
+  success?: boolean;
+  task_id: string;
+  data: ISunoPersona;
+}
+
+export interface ISunoVoxRequest {
+  audio_id: string;
+  vocal_start?: number;
+  vocal_end?: number;
+  callback_url?: string;
+}
+
+export interface ISunoVoxResponse {
+  success?: boolean;
+  task_id: string;
+  data: { audio_url?: string };
+}
+
+export interface ISunoTimingRequest {
+  audio_id: string;
+}
+
+export interface ISunoTimingResponse {
+  success?: boolean;
+  task_id: string;
+  data: any;
+}
+
+export interface ISunoVoicesRequest {
+  audio_url: string;
+  name?: string;
+  description?: string;
+}
+
+export interface ISunoVoicesResponse {
+  success?: boolean;
+  task_id: string;
+  data: any;
+}
+
+export interface ISunoMashupLyricsRequest {
+  lyrics_a: string;
+  lyrics_b: string;
+}
+
+export interface ISunoMashupLyricsResponse {
+  success?: boolean;
+  task_id: string;
+  data: { text?: string };
+}
+
 export interface ISunoUploadAudio {
   audio_id?: string;
 }
