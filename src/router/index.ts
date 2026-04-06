@@ -24,6 +24,7 @@ import producer from './producer';
 import nanobanana from './nanobanana';
 import seedream from './seedream';
 import seedance from './seedance';
+import serp from './serp';
 import site from './site';
 import profile from './profile';
 
@@ -167,6 +168,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     description: 'Join the Ace Data Cloud affiliate program — earn commissions by referring AI services.',
     keywords: ['Affiliate', 'Referral', 'Earn', 'Commission'],
     category: 'Business'
+  },
+  serp: {
+    title: 'Search',
+    description:
+      'Search the web with Google — powered by SERP API. Get organic results, knowledge graphs, images, and more.',
+    keywords: ['Search', 'Google Search', 'SERP', 'Web Search'],
+    category: 'Web Search'
   }
 };
 
@@ -197,6 +205,7 @@ const routes = [
   nanobanana,
   seedream,
   seedance,
+  serp,
   midjourney,
   distribution,
   download,
