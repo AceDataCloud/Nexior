@@ -114,7 +114,8 @@ import {
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
-  CHAT_MODEL_ICON_KIMI
+  CHAT_MODEL_ICON_KIMI,
+  SERP_LOGO
 } from '@/constants';
 import UserCenter from '@/components/user/Center.vue';
 
@@ -345,7 +346,7 @@ export default defineComponent({
         result.push({
           route: { name: ROUTE_SERP_INDEX },
           displayName: this.$t('common.nav.serp'),
-          icon: 'fa-solid fa-magnifying-glass',
+          logo: SERP_LOGO,
           routes: [ROUTE_SERP_INDEX],
           category: 'search'
         });
