@@ -6,7 +6,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.styleNegative') }}</span>
         </div>
-        <el-input v-model="styleNegative" size="small" :placeholder="$t('suno.placeholder.styleNegative')" />
+        <el-input v-model="styleNegative" :placeholder="$t('suno.placeholder.styleNegative')" />
       </div>
 
       <!-- Lyric Prompt (auto-generate lyrics) -->
@@ -14,7 +14,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.lyricPrompt') }}</span>
         </div>
-        <el-input v-model="lyricPrompt" size="small" :placeholder="$t('suno.placeholder.lyricPrompt')" />
+        <el-input v-model="lyricPrompt" :placeholder="$t('suno.placeholder.lyricPrompt')" />
       </div>
 
       <!-- Weirdness -->
@@ -23,7 +23,7 @@
           <span class="text-xs font-bold">{{ $t('suno.name.weirdness') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ weirdness ?? 0 }}</span>
         </div>
-        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" />
       </div>
 
       <!-- Style Influence -->
@@ -32,7 +32,7 @@
           <span class="text-xs font-bold">{{ $t('suno.name.styleInfluence') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ styleInfluence ?? 50 }}</span>
         </div>
-        <el-slider v-model="styleInfluence" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="styleInfluence" :min="0" :max="100" :step="1" />
       </div>
 
       <!-- Variation Category (v5+ only) -->
@@ -40,7 +40,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.variationCategory') }}</span>
         </div>
-        <el-radio-group v-model="variationCategory" size="small">
+        <el-radio-group v-model="variationCategory">
           <el-radio-button value="">{{ $t('suno.gender.auto') }}</el-radio-button>
           <el-radio-button value="high">{{ $t('suno.variation.high') }}</el-radio-button>
           <el-radio-button value="low">{{ $t('suno.variation.low') }}</el-radio-button>
@@ -53,7 +53,7 @@
           <span class="text-xs font-bold">{{ $t('suno.name.audioWeight') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ audioWeight ?? 50 }}</span>
         </div>
-        <el-slider v-model="audioWeight" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="audioWeight" :min="0" :max="100" :step="1" />
       </div>
     </el-collapse-item>
   </el-collapse>

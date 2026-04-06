@@ -19,7 +19,6 @@
         ref="input"
         v-model="inputValue"
         class="block"
-        size="small"
         @keyup.enter="onInputConfirm"
         @blur="onInputConfirm"
       />
