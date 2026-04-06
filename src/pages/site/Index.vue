@@ -188,6 +188,9 @@
                   'flux',
                   'hailuo',
                   'headshots',
+                  'wan',
+                  'producer',
+                  'serp',
                   'support'
                 ]"
                 :key="featureIndex"

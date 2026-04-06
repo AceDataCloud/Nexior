@@ -19,6 +19,10 @@ export interface ISiteFeatures {
   nanobanana?: any;
   seedream?: any;
   seedance?: any;
+  wan?: any;
+  producer?: any;
+  kimi?: any;
+  serp?: any;
   support?: any;
 }
 
