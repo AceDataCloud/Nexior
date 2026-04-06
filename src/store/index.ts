@@ -13,6 +13,7 @@ import flux from './flux';
 import hailuo from './hailuo';
 import headshots from './headshots';
 import suno from './suno';
+import producer from './producer';
 import nanobanana from './nanobanana';
 import seedream from './seedream';
 import seedance from './seedance';
@@ -30,6 +31,7 @@ import persistFlux from './flux/persist';
 import persistHailuo from './hailuo/persist';
 import persistHeadshots from './headshots/persist';
 import persistSuno from './suno/persist';
+import persistProducer from './producer/persist';
 import persistNanobanana from './nanobanana/persist';
 import persistSeedream from './seedream/persist';
 import persistSeedance from './seedance/persist';
@@ -51,6 +53,7 @@ const store = createStore({
     hailuo: hailuo,
     headshots: headshots,
     suno: suno,
+    producer: producer,
     nanobanana: nanobanana,
     seedream: seedream,
     seedance: seedance
@@ -72,6 +75,7 @@ const store = createStore({
         ...persistHailuo,
         ...persistHeadshots,
         ...persistSuno,
+        ...persistProducer,
         ...persistNanobanana,
         ...persistSeedream,
         ...persistSeedance
