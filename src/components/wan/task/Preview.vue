@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="left">
-      <el-image src="https://cdn.acedata.cloud/wan.png" class="avatar" />
+      <el-image :src="WAN_LOGO" class="avatar" />
     </div>
     <div class="main">
       <div class="bot">
@@ -105,6 +105,7 @@ import { IWanTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import { WAN_LOGO } from '@/constants/wan';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -122,6 +123,9 @@ export default defineComponent({
       type: Object as () => IWanTask | undefined,
       required: true
     }
+  },
+  setup() {
+    return { WAN_LOGO };
   },
   computed: {
     application() {
