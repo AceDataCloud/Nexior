@@ -84,7 +84,7 @@ export default defineComponent({
     },
     isV5OrAbove() {
       const model = this.config?.model || '';
-      return model === 'chirp-v5';
+      return ['chirp-v5', 'chirp-v5-5'].includes(model);
     },
     styleNegative: {
       get() {
