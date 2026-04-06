@@ -87,7 +87,12 @@ import {
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
   ROUTE_SEEDREAM_INDEX,
-  ROUTE_SEEDANCE_INDEX
+  ROUTE_SEEDANCE_INDEX,
+  ROUTE_WAN_INDEX,
+  ROUTE_PRODUCER_INDEX,
+  ROUTE_KIMI_CONVERSATION,
+  ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_SERP_INDEX
 } from '@/router/constants';
 import {
   CHAT_MODEL_ICON_CHATGPT,
@@ -106,7 +111,10 @@ import {
   KLING_LOGO,
   VEO_LOGO,
   SORA_LOGO,
-  PIXVERSE_LOGO
+  PIXVERSE_LOGO,
+  WAN_LOGO,
+  PRODUCER_LOGO,
+  CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import UserCenter from '@/components/user/Center.vue';
 
@@ -194,6 +202,15 @@ export default defineComponent({
           category: 'chat'
         });
       }
+      if (this.$store?.state?.site?.features?.kimi?.enabled) {
+        result.push({
+          route: { name: ROUTE_KIMI_CONVERSATION_NEW },
+          displayName: this.$t('common.nav.kimi'),
+          logo: CHAT_MODEL_ICON_KIMI,
+          routes: [ROUTE_KIMI_CONVERSATION, ROUTE_KIMI_CONVERSATION_NEW],
+          category: 'chat'
+        });
+      }
       // Image category
       if (this.$store?.state?.site?.features?.midjourney?.enabled) {
         result.push({
@@ -238,6 +255,15 @@ export default defineComponent({
           displayName: this.$t('common.nav.suno'),
           logo: SUNO_LOGO,
           routes: [ROUTE_SUNO_INDEX, ROUTE_SUNO_HISTORY],
+          category: 'music'
+        });
+      }
+      if (this.$store?.state?.site?.features?.producer?.enabled) {
+        result.push({
+          route: { name: ROUTE_PRODUCER_INDEX },
+          displayName: this.$t('common.nav.producer'),
+          logo: PRODUCER_LOGO,
+          routes: [ROUTE_PRODUCER_INDEX],
           category: 'music'
         });
       }
@@ -303,6 +329,25 @@ export default defineComponent({
           logo: PIXVERSE_LOGO,
           routes: [ROUTE_PIXVERSE_INDEX, ROUTE_PIXVERSE_HISTORY],
           category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.wan?.enabled) {
+        result.push({
+          route: { name: ROUTE_WAN_INDEX },
+          displayName: this.$t('common.nav.wan'),
+          logo: WAN_LOGO,
+          routes: [ROUTE_WAN_INDEX],
+          category: 'video'
+        });
+      }
+      // Search category
+      if (this.$store?.state?.site?.features?.serp?.enabled) {
+        result.push({
+          route: { name: ROUTE_SERP_INDEX },
+          displayName: this.$t('common.nav.serp'),
+          icon: 'fa-solid fa-magnifying-glass',
+          routes: [ROUTE_SERP_INDEX],
+          category: 'search'
         });
       }
       if (this.direction === 'row') {

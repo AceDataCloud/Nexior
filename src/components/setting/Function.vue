@@ -105,7 +105,11 @@ const FEATURE_KEYS = [
   'headshots',
   'nanobanana',
   'seedream',
-  'seedance'
+  'seedance',
+  'wan',
+  'producer',
+  'kimi',
+  'serp'
 ];
 
 export default defineComponent({
