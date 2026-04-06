@@ -13,7 +13,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
-const DEFAULT_RESOLUTION = '720P';
+const DEFAULT_RESOLUTION = '720p';
 
 export default defineComponent({
   name: 'ResolutionSelector',
@@ -25,15 +25,15 @@ export default defineComponent({
     options() {
       return [
         {
-          value: '480P',
+          value: '480p',
           label: this.$t('wan.name.resolution480p')
         },
         {
-          value: '720P',
+          value: '720p',
           label: this.$t('wan.name.resolution720p')
         },
         {
-          value: '1080P',
+          value: '1080p',
           label: this.$t('wan.name.resolution1080p')
         }
       ];
