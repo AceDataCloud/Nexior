@@ -4,7 +4,7 @@
       <span class="text-sm font-bold">{{ $t('suno.name.vocalGender') }}</span>
       <info-icon :content="$t('suno.description.vocalGender')" />
     </div>
-    <el-radio-group v-model="vocalGender" size="small">
+    <el-radio-group v-model="vocalGender">
       <el-radio-button value="">{{ $t('suno.gender.auto') }}</el-radio-button>
       <el-radio-button value="f">{{ $t('suno.gender.female') }}</el-radio-button>
       <el-radio-button value="m">{{ $t('suno.gender.male') }}</el-radio-button>

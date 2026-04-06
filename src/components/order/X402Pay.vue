@@ -9,7 +9,7 @@
         <div class="x402-wallet-head">
           <div class="x402-network">
             <span class="x402-network-label">{{ $t('order.message.x402IntegrationNetworkLabel') }}</span>
-            <el-radio-group v-model="selectedNetwork" size="small" class="x402-network-group">
+            <el-radio-group v-model="selectedNetwork" class="x402-network-group">
               <el-radio-button v-for="option in networkOptions" :key="option.network" :label="option.network">
                 {{ option.label }}
               </el-radio-button>
@@ -840,10 +840,7 @@ export default defineComponent({
 
         if (phantomProvider?.isPhantom && typeof phantomProvider?.signAndSendTransaction === 'function') {
           signAndSendFn = phantomProvider.signAndSendTransaction.bind(phantomProvider);
-        } else if (
-          solflareProvider?.isSolflare &&
-          typeof solflareProvider?.signAndSendTransaction === 'function'
-        ) {
+        } else if (solflareProvider?.isSolflare && typeof solflareProvider?.signAndSendTransaction === 'function') {
           signAndSendFn = solflareProvider.signAndSendTransaction.bind(solflareProvider);
         } else if (
           typeof window !== 'undefined' &&

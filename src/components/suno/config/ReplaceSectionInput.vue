@@ -19,7 +19,6 @@
       <el-input-number
         v-model="replaceSectionStart"
         class="flex-1"
-        size="small"
         :min="0"
         :max="audio?.duration"
         :controls="false"
@@ -28,7 +27,6 @@
       <el-input-number
         v-model="replaceSectionEnd"
         class="flex-1"
-        size="small"
         :min="replaceSectionStart || 0"
         :max="audio?.duration"
         :controls="false"

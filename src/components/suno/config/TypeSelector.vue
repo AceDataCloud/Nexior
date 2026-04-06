@@ -3,7 +3,7 @@
     <!-- Custom Mode Toggle -->
     <div class="flex items-center justify-between mb-3">
       <span class="text-sm font-bold">{{ $t('suno.name.type') }}</span>
-      <el-switch v-model="custom" size="small" />
+      <el-switch v-model="custom" />
     </div>
 
     <!-- Model Selection -->
@@ -24,7 +24,7 @@
     <!-- Song Description / Instrumental Toggle -->
     <div v-if="custom" class="flex items-center justify-between mb-3">
       <span class="text-sm font-bold">{{ $t('suno.name.instrumental') }}</span>
-      <el-switch v-model="instrumental" size="small" />
+      <el-switch v-model="instrumental" />
     </div>
   </div>
 </template>

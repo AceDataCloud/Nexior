@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title">{{ $t('midjourney.name.mode') }}</h2>
-    <el-radio-group v-model="value" size="small" class="mode">
+    <el-radio-group v-model="value" class="mode">
       <el-radio-button v-for="item in options" :key="item.value" :label="item.value">
         {{ item.label }}
       </el-radio-button>
@@ -79,7 +79,7 @@ export default defineComponent({
 
 <style lang="scss">
 .mode {
-  .el-radio-button--small .el-radio-button__inner {
+  .el-radio-button .el-radio-button__inner {
     padding: 8px 11px;
   }
 }

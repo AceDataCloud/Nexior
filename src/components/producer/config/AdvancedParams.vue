@@ -6,7 +6,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('producer.name.styleNegative') }}</span>
         </div>
-        <el-input v-model="styleNegative" size="small" :placeholder="$t('producer.placeholder.styleNegative')" />
+        <el-input v-model="styleNegative" :placeholder="$t('producer.placeholder.styleNegative')" />
       </div>
 
       <!-- Lyric Prompt (auto-generate lyrics) -->
@@ -14,7 +14,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('producer.name.lyricPrompt') }}</span>
         </div>
-        <el-input v-model="lyricPrompt" size="small" :placeholder="$t('producer.placeholder.lyricPrompt')" />
+        <el-input v-model="lyricPrompt" :placeholder="$t('producer.placeholder.lyricPrompt')" />
       </div>
 
       <!-- Weirdness -->
@@ -23,7 +23,7 @@
           <span class="text-xs font-bold">{{ $t('producer.name.weirdness') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ weirdness ?? 0 }}</span>
         </div>
-        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" />
       </div>
 
       <!-- Sound Strength -->
@@ -32,7 +32,7 @@
           <span class="text-xs font-bold">{{ $t('producer.name.soundStrength') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ soundStrength ?? 50 }}</span>
         </div>
-        <el-slider v-model="soundStrength" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="soundStrength" :min="0" :max="100" :step="1" />
       </div>
 
       <!-- Lyrics Strength -->
@@ -41,7 +41,7 @@
           <span class="text-xs font-bold">{{ $t('producer.name.lyricsStrength') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ lyricsStrength ?? 50 }}</span>
         </div>
-        <el-slider v-model="lyricsStrength" :min="0" :max="100" :step="1" size="small" />
+        <el-slider v-model="lyricsStrength" :min="0" :max="100" :step="1" />
       </div>
 
       <!-- Seed -->
@@ -51,7 +51,6 @@
         </div>
         <el-input-number
           v-model="seed"
-          size="small"
           :min="0"
           :controls="false"
           :placeholder="$t('producer.placeholder.seed')"
