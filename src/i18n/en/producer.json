@@ -28,8 +28,8 @@
     "description": "Text for the download WAV lossless format button"
   },
   "button.get_stems": {
-    "message": "Get Stems",
-    "description": "Text for the get stems button"
+    "message": "Stem Separation",
+    "description": "Text for the stem separation button"
   },
   "button.cover_music": {
     "message": "Cover",
@@ -57,43 +57,43 @@
   },
   "button.swap_vocals": {
     "message": "Swap Vocals",
-    "description": "Text for the swap vocals button"
+    "description": "Text for the button to swap vocals"
   },
   "button.swap_instrumentals": {
     "message": "Swap Instrumentals",
-    "description": "Text for the swap instrumentals button"
+    "description": "Text for the button to swap instrumentals"
   },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
-    "description": "Model used for music generation"
+    "description": "Model used for generating music"
   },
   "name.instrumental": {
     "message": "Instrumental",
@@ -109,7 +109,7 @@
   },
   "name.type": {
     "message": "Custom Mode",
-    "description": "Name for the custom mode"
+    "description": "Name of the custom mode"
   },
   "name.prompt": {
     "message": "Song Description",
@@ -153,11 +153,11 @@
   },
   "name.soundStrength": {
     "message": "Sound Strength",
-    "description": "Control the intensity of the generated sound"
+    "description": "Control the strength of the generated sound"
   },
   "name.lyricsStrength": {
     "message": "Lyrics Strength",
-    "description": "Control the influence of lyrics on the generated result"
+    "description": "Control the impact of lyrics on the generated result"
   },
   "name.seed": {
     "message": "Seed",
@@ -200,16 +200,16 @@
     "description": "Description for the 'prompt' parameter"
   },
   "description.lyrics": {
-    "message": "Enter custom lyrics, supporting paragraph markers like [Verse], [Chorus], [Bridge], etc.",
+    "message": "Input custom lyrics, supports [Verse], [Chorus], [Bridge], etc. paragraph markers",
     "description": "Description for the 'lyrics' parameter"
   },
   "description.style": {
-    "message": "Describe music styles, such as acoustic pop, jazz, electronic",
+    "message": "Describe the music style, such as acoustic pop, jazz, electronic",
     "description": "Description for the 'style' parameter"
   },
   "description.styleNegative": {
     "message": "Describe unwanted styles, such as heavy metal, screaming",
-    "description": "Description for the exclusion style parameter"
+    "description": "Description for the exclude style parameter"
   },
   "description.title": {
     "message": "Song Title",
@@ -232,11 +232,11 @@
     "description": "Description for the sound strength parameter"
   },
   "description.lyricsStrength": {
-    "message": "Control the influence of lyrics on the generated result (0-100)",
+    "message": "Control the influence of lyrics on the generation result (0-100)",
     "description": "Description for the lyrics strength parameter"
   },
   "description.seed": {
-    "message": "Enter a seed value for reproducible results, leave empty for random",
+    "message": "Enter a seed value for reproducible results; leave blank for random",
     "description": "Description for the seed parameter"
   },
   "description.lyricPrompt": {
@@ -245,7 +245,7 @@
   },
   "description.replaceSection": {
     "message": "Replace content in the specified time section of the song",
-    "description": "Description for the replace section feature"
+    "description": "Description for the replace segment feature"
   },
   "status.pending": {
     "message": "Pending",
@@ -265,18 +265,18 @@
   },
   "placeholder.extend.continue_at": {
     "message": "Start extending from which second...",
-    "description": "Placeholder for the start time of extension"
+    "description": "Placeholder for extension start time"
   },
   "placeholder.style": {
-    "message": "For example: acoustic pop, jazz, R&B, electronic...",
+    "message": "e.g., acoustic pop, jazz, R&B, electronic...",
     "description": "Placeholder for style input"
   },
   "placeholder.styleNegative": {
-    "message": "For example: heavy metal, screaming...",
-    "description": "Placeholder for excluded style input"
+    "message": "e.g., heavy metal, screaming...",
+    "description": "Placeholder for exclude style input"
   },
   "placeholder.title": {
-    "message": "Enter the song name...",
+    "message": "Enter song name...",
     "description": "Placeholder for title input"
   },
   "placeholder.select": {
@@ -293,11 +293,11 @@
   },
   "placeholder.replaceSectionStart": {
     "message": "Start time (seconds)",
-    "description": "Placeholder for the start time of the replace section"
+    "description": "Placeholder for the start time of the replace segment"
   },
   "placeholder.replaceSectionEnd": {
     "message": "End time (seconds)",
-    "description": "Placeholder for the end time of the replace section"
+    "description": "Placeholder for the end time of the replace segment"
   },
   "placeholder.seed": {
     "message": "Enter seed value (optional)...",
@@ -316,7 +316,7 @@
     "description": "Option for female vocals"
   },
   "gender.auto": {
-    "message": "Automatic",
+    "message": "Auto",
     "description": "Automatically select vocal gender"
   },
   "message.startingTask": {
@@ -325,7 +325,7 @@
   },
   "message.startingUploadAudio": {
     "message": "Uploading custom music...",
-    "description": "Message when starting the music upload"
+    "description": "Message when starting the music upload task"
   },
   "message.uploadReferencesExceed": {
     "message": "Uploaded music exceeds the maximum number",
@@ -336,20 +336,20 @@
     "description": "Error message when music upload fails"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully started the music generation task",
-    "description": "Success message when the music generation task starts successfully"
+    "message": "Successfully started music generation task",
+    "description": "Success message when music generation task starts successfully"
   },
   "message.startUploadAudioSuccess": {
     "message": "Successfully uploaded custom music",
-    "description": "Success message when custom music is uploaded successfully"
+    "description": "Success message when custom music upload starts successfully"
   },
   "message.startUploadAudioFailed": {
     "message": "Failed to upload custom music",
-    "description": "Error message when starting the music generation task fails"
+    "description": "Error message when starting music generation task fails"
   },
   "message.startTaskFailed": {
-    "message": "Failed to start the music generation task",
-    "description": "Error message when starting the music generation task fails"
+    "message": "Failed to start music generation task",
+    "description": "Error message when starting music generation task fails"
   },
   "message.getVideoUrlFailed": {
     "message": "Failed to get music video, please try again later",
@@ -361,26 +361,26 @@
   },
   "message.generateLyricsSuccess": {
     "message": "Lyrics generated successfully",
-    "description": "Message when lyrics are generated successfully"
+    "description": "Message when lyrics generation is successful"
   },
   "message.generateLyricsFailed": {
-    "message": "Lyrics generation failed",
+    "message": "Failed to generate lyrics",
     "description": "Message when lyrics generation fails"
   },
   "message.fetchingWav": {
     "message": "Fetching WAV file...",
-    "description": "Message while fetching WAV file"
+    "description": "Message when fetching the WAV file"
   },
   "message.fetchWavFailed": {
     "message": "Failed to fetch WAV file",
-    "description": "Message when fetching WAV file fails"
+    "description": "Message when fetching the WAV file fails"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message while music is being generated"
+    "description": "Message when music is being generated"
   },
   "message.generateFailed": {
-    "message": "Music generation failed",
+    "message": "Failed to generate music",
     "description": "Message when music generation fails"
   },
   "message.noOperations": {
@@ -388,7 +388,7 @@
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No history tasks, please generate music in the left configuration panel",
+    "message": "No history tasks, please generate music in the configuration panel on the left",
     "description": "Message when there are no tasks"
   }
 }

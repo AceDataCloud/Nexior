@@ -123,6 +123,22 @@
     "message": "SeeDance",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "field.featuresWan": {
+    "message": "Wan",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.featuresProducer": {
+    "message": "プロデューサー",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.featuresKimi": {
+    "message": "Kimi",
+    "description": "編集ボックスに表示されるタイトル"
+  },
+  "field.featuresSerp": {
+    "message": "SERP",
+    "description": "編集ボックスに表示されるタイトル"
+  },
   "field.featuresSupport": {
     "message": "カスタマーサポート",
     "description": "編集ボックスに表示されるタイトル"
@@ -172,7 +188,7 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.distributionConfig": {
-    "message": "配信設定",
+    "message": "流通設定",
     "description": "編集ボックスに表示されるタイトル"
   },
   "title.editDistributionDefaultInviterId": {
@@ -192,31 +208,31 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.title": {
-    "message": "サイトタイトルを入力してください",
+    "message": "サイトのタイトルを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.origin": {
-    "message": "サイトのドメインを入力してください",
+    "message": "サイトのドメインを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editUrl": {
-    "message": "リンクを入力してください",
+    "message": "リンクを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.description": {
-    "message": "サイトの説明を入力してください",
+    "message": "サイトの説明を入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.keywords": {
-    "message": "サイトのキーワードを入力してください",
+    "message": "サイトのキーワードを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "デフォルトの招待者IDを入力してください",
+    "message": "デフォルトの招待者IDを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "強制招待者IDを入力してください",
+    "message": "強制招待者IDを入力",
     "description": "編集ボックスに表示されるタイトル"
   },
   "message.uploadImageExceed": {
@@ -225,38 +241,38 @@
   },
   "message.uploadImageError": {
     "message": "画像のアップロードエラー",
-    "description": "画像のアップロードエラーのメッセージ"
+    "description": "画像のアップロードにエラーが発生した場合のメッセージ"
   },
   "message.editLogoTip": {
     "message": "推奨サイズ：200*60px",
-    "description": "画像アップロードのヒント"
+    "description": "画像をアップロードする際のヒント"
   },
   "message.editQRTip": {
     "message": "推奨サイズ：200*200px",
-    "description": "画像アップロードのヒント"
+    "description": "画像をアップロードする際のヒント"
   },
   "message.editFaviconTip": {
     "message": "推奨サイズ：32*32px",
-    "description": "画像アップロードのヒント"
+    "description": "画像をアップロードする際のヒント"
   },
   "message.editUrl": {
-    "message": "リンクを入力してください",
-    "description": "リンクを入力するためのヒント"
+    "message": "リンクを入力",
+    "description": "リンクを入力する際のヒント"
   },
   "message.atLeastOneAdmin": {
-    "message": "少なくとも1人の管理者を保持してください",
-    "description": "少なくとも1人の管理者を保持するためのヒント"
+    "message": "少なくとも1人の管理者を保持",
+    "description": "少なくとも1人の管理者を保持する必要がある場合のメッセージ"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルトの招待者のユーザーID。分配リンクにinviter_idパラメータが含まれていない場合、このユーザーIDが招待者として使用されます。",
-    "description": "デフォルトの招待者IDのヒント"
+    "message": "デフォルトの招待者のユーザーID。分配リンクがinviter_idパラメータを持たない場合、このユーザーIDが招待者として使用されます。",
+    "description": "デフォルトの招待者IDに関するヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクにinviter_idパラメータが含まれていても、このユーザーIDが招待者として強制的に使用されます。",
-    "description": "強制招待者IDのヒント"
+    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクがinviter_idパラメータを持っていても、このユーザーIDが招待者として強制的に使用されます。",
+    "description": "強制招待者IDに関するヒント"
   },
   "message.originTip": {
-    "message": "サイトのドメイン。サイトの設定はドメインにバインドされ、サイトのドメインは変更できません。",
+    "message": "サイトのドメイン。サイトの設定はドメインにバインドされ、変更できません。",
     "description": "サイトのドメインに関するヒント"
   },
   "message.titleTip": {
@@ -276,7 +292,7 @@
     "description": "サイトのファビコンに関するヒント"
   },
   "message.adminsTip": {
-    "message": "サイトの管理者ID。デフォルトでは、最初にこのサイトを作成したユーザーが管理者になります。サイトの管理者のみがサイトを管理できます。",
+    "message": "サイトの管理者ID。最初にこのサイトを作成したユーザーがデフォルトで管理者になります。サイトの管理者のみがサイトを管理できます。",
     "description": "サイトの管理者に関するヒント"
   },
   "message.adminsTip2": {
@@ -332,16 +348,16 @@
     "description": "Suno機能の説明"
   },
   "message.featuresPixverse": {
-    "message": "Pixverse機能モジュールをオンまたはオフにします。",
-    "description": "Pixverse機能の説明"
+    "message": "Pixverse 機能モジュールを有効または無効にします。",
+    "description": "Pixverse 機能の説明"
   },
   "message.featuresFlux": {
-    "message": "FLux機能モジュールをオンまたはオフにします。",
-    "description": "FLux機能の説明"
+    "message": "FLux 機能モジュールを有効または無効にします。",
+    "description": "FLux 機能の説明"
   },
   "message.featuresNanobanana": {
-    "message": "Nano Banana機能モジュールをオンまたはオフにします。",
-    "description": "Nano Banana機能の説明"
+    "message": "Nano Banana 機能モジュールを有効または無効にします。",
+    "description": "Nano Banana 機能の説明"
   },
   "message.featuresSeedream": {
     "message": "SeeDream 機能モジュールを有効または無効にします。",
@@ -350,6 +366,22 @@
   "message.featuresSeedance": {
     "message": "SeeDance 機能モジュールを有効または無効にします。",
     "description": "SeeDance 機能の説明"
+  },
+  "message.featuresWan": {
+    "message": "Wan 機能モジュールを有効または無効にします。",
+    "description": "Wan 機能の説明"
+  },
+  "message.featuresProducer": {
+    "message": "Producer 機能モジュールを有効または無効にします。",
+    "description": "Producer 機能の説明"
+  },
+  "message.featuresKimi": {
+    "message": "Kimi 機能モジュールを有効または無効にします。",
+    "description": "Kimi 機能の説明"
+  },
+  "message.featuresSerp": {
+    "message": "SERP 機能モジュールを有効または無効にします。",
+    "description": "SERP 機能の説明"
   },
   "message.featuresLuma": {
     "message": "Luma 機能モジュールを有効または無効にします。",
@@ -385,11 +417,11 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "スイッチのテキスト、有効であることを示します"
+    "description": "スイッチのテキスト、すでに有効であることを示します"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "スイッチのテキスト、無効であることを示します"
+    "description": "スイッチのテキスト、すでに無効であることを示します"
   },
   "field.featuresGemini": {
     "message": "Gemini",

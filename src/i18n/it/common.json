@@ -200,7 +200,7 @@
     "description": "Stato dell'entità"
   },
   "status.loading": {
-    "message": "Caricamento...",
+    "message": "Caricamento in corso...",
     "description": "Testo di stato visualizzato durante il caricamento dei contenuti"
   },
   "entity.operation": {
@@ -221,7 +221,7 @@
   },
   "entity.order": {
     "message": "Ordine",
-    "description": "Ordine dell'entità, che include informazioni su denaro e servizi, per cui l'utente deve pagare"
+    "description": "Ordine dell'entità, l'ordine include informazioni su denaro e servizi, l'utente deve pagare per esso"
   },
   "message.noTasks": {
     "message": "Nessun compito storico, inizia un nuovo compito～",
@@ -232,7 +232,7 @@
     "description": "Utilizzato per visualizzare l'importo già utilizzato del servizio"
   },
   "message.mobileAppDescription": {
-    "message": "Usa AceData direttamente sul tuo telefono, attualmente disponibile per il download e l'installazione dell'APK Android, il pacchetto di installazione iOS sarà disponibile dopo la firma.",
+    "message": "Usa AceData direttamente sul telefono, attualmente disponibile per il download e l'installazione dell'APK Android, il pacchetto di installazione iOS sarà disponibile dopo la firma.",
     "description": "Testo descrittivo per la pagina di download dell'app mobile"
   },
   "message.mobileAndroidHint": {
@@ -257,7 +257,7 @@
   },
   "message.mobileLatestRelease": {
     "message": "Versione pubblica attuale",
-    "description": "Utilizzato per indicare che la versione mostrata è l'ultima pubblica"
+    "description": "Utilizzato per indicare che la versione attualmente visualizzata è l'ultima pubblica"
   },
   "message.mobileSharedAccount": {
     "message": "Account e credito condivisi con la versione web",
@@ -268,11 +268,11 @@
     "description": "Descrizione della scheda di download iOS"
   },
   "message.mobileIosPending": {
-    "message": "Il pacchetto di installazione iOS non è ancora disponibile per il download, sarà fornito dopo il completamento del certificato e del profilo di descrizione Apple.",
+    "message": "Il pacchetto di installazione iOS non è ancora disponibile per il download, sarà fornito dopo il completamento del certificato e del profilo Apple.",
     "description": "Messaggio quando il pacchetto di installazione iOS non è disponibile"
   },
   "message.mobileInstallNote": {
-    "message": "Quando installi per la prima volta un pacchetto aziendale o Ad Hoc su iOS, il sistema potrebbe richiedere di fidarti del certificato in 'Impostazioni > Generali > VPN e gestione dispositivo'.",
+    "message": "Durante la prima installazione di un pacchetto aziendale o Ad Hoc su iOS, il sistema potrebbe richiedere di fidarsi del certificato in 'Impostazioni > Generali > VPN e gestione dispositivo'.",
     "description": "Messaggio di installazione per l'app mobile"
   },
   "title.mobileApp": {
@@ -296,15 +296,15 @@
     "description": "Ingresso per il download dell'app mobile nella navigazione"
   },
   "message.mobileFastAccess": {
-    "message": "Gli utenti possono scansionare il codice sul telefono per installare direttamente, oppure possono scaricare l'APK sul desktop e distribuirlo ai membri del team, adatto per scenari che richiedono test rapidi e beta.",
+    "message": "Gli utenti possono scansionare il codice sul telefono per installare direttamente, oppure possono scaricare l'APK sul desktop e distribuirlo ai membri del team, adatto per scenari che richiedono test rapidi.",
     "description": "Descrizione del vantaggio della pagina di download, enfatizza l'accesso rapido"
   },
   "message.mobileTrustedRelease": {
-    "message": "I punti di accesso al download sono centralizzati in un'unica pagina, numero di versione, stato della piattaforma e modalità di installazione sono visibili a colpo d'occhio, riducendo i costi di comunicazione causati dalla dispersione dei link.",
+    "message": "L'ingresso per il download è centralizzato in un'unica pagina, numero di versione, stato della piattaforma e modalità di installazione sono visibili a colpo d'occhio, riducendo i costi di comunicazione dovuti alla dispersione dei link.",
     "description": "Descrizione del vantaggio della pagina di download, enfatizza la distribuzione unificata"
   },
   "message.mobileUnifiedExperience": {
-    "message": "Il sistema di account, credito e accesso ai servizi dopo il login è coerente con il web, facilitando il passaggio senza soluzione di continuità tra desktop e mobile.",
+    "message": "Il sistema di account, credito e ingressi di servizio dopo il login rimane coerente con il Web, facilitando il passaggio senza soluzione di continuità tra desktop e mobile.",
     "description": "Descrizione del vantaggio della pagina di download, enfatizza l'esperienza unificata dell'account"
   },
   "message.remainingAmount": {
@@ -340,7 +340,7 @@
     "description": "Messaggio per indicare che il servizio è gratuito, significa che l'utente non deve pagare"
   },
   "message.startPrice": {
-    "message": "Prezzo di partenza",
+    "message": "Prezzo iniziale",
     "description": "Messaggio per mostrare il prezzo minimo del servizio"
   },
   "message.joinDiscord": {
@@ -361,7 +361,7 @@
   },
   "message.noData": {
     "message": "Nessun dato",
-    "description": "Messaggio per indicare che non ci sono dati nella tabella o nell'elenco"
+    "description": "Messaggio per indicare che non ci sono dati nella tabella o nella lista"
   },
   "nav.home": {
     "message": "Home",
@@ -475,6 +475,22 @@
     "message": "Hailuo",
     "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Hailuo, non tradurre questo campo, deve rimanere 'Hailuo'"
   },
+  "nav.wan": {
+    "message": "Wan",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Wan, non tradurre questo campo, deve rimanere 'Wan'"
+  },
+  "nav.producer": {
+    "message": "Producer",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Producer, non tradurre questo campo, deve rimanere 'Producer'"
+  },
+  "nav.kimi": {
+    "message": "Kimi",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina Kimi, non tradurre questo campo, deve rimanere 'Kimi'"
+  },
+  "nav.serp": {
+    "message": "SERP",
+    "description": "Testo nella barra di navigazione del sito per visualizzare la pagina SERP, non tradurre questo campo, deve rimanere 'SERP'"
+  },
   "nav.image": {
     "message": "Immagini",
     "description": "Testo nella barra di navigazione del sito per visualizzare la pagina delle immagini"
@@ -561,7 +577,7 @@
   },
   "title.distributionHistory": {
     "message": "Storico referral",
-    "description": "Titolo della pagina che mostra lo storico dei referral"
+    "description": "Titolo della pagina che mostra la storia dei referral"
   },
   "title.invitee": {
     "message": "Invitato",
@@ -588,48 +604,48 @@
     "description": "Titolo della sezione che mostra le informazioni di supporto"
   },
   "about.address": {
-    "message": "201 North Broad St, Middletown, DE, USA",
-    "description": "Indirizzo dell'azienda"
+    "message": "651 North Broad Street, Suite 201, Middletown, Delaware, USA",
+    "description": "L'indirizzo dell'azienda"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Email dell'azienda"
+    "description": "L'email dell'azienda"
   },
   "about.link1": {
     "message": "Servizi",
-    "description": "Link alla pagina della documentazione"
+    "description": "Collegamento alla pagina della documentazione"
   },
   "about.link2": {
     "message": "Documentazione per sviluppatori",
-    "description": "Link alla pagina dei servizi"
+    "description": "Collegamento alla pagina dei servizi"
   },
   "about.link3": {
     "message": "Console",
-    "description": "Link alla pagina della console"
+    "description": "Collegamento alla pagina della console"
   },
   "about.link4": {
     "message": "Profilo",
-    "description": "Link alla pagina del profilo"
+    "description": "Collegamento alla pagina del profilo"
   },
   "about.link5": {
     "message": "Piattaforma UI",
-    "description": "Link alla pagina centrale"
+    "description": "Collegamento alla pagina centrale"
   },
   "about.link6": {
     "message": "Guadagni da referral",
-    "description": "Link alla pagina dei guadagni da referral"
+    "description": "Collegamento alla pagina dei guadagni da referral"
   },
   "about.link7": {
     "message": "Supporto",
-    "description": "Link alla pagina di supporto"
+    "description": "Collegamento alla pagina di supporto"
   },
   "about.link8": {
     "message": "Termini di servizio",
-    "description": "Link alla pagina dei termini di servizio"
+    "description": "Collegamento alla pagina dei termini di servizio"
   },
   "about.link9": {
     "message": "Politica sulla privacy",
-    "description": "Link alla pagina della politica sulla privacy"
+    "description": "Collegamento alla pagina della politica sulla privacy"
   },
   "theme.light": {
     "message": "Chiaro",
@@ -709,10 +725,10 @@
   },
   "title.distributionRank": {
     "message": "Classifica referral",
-    "description": "Titolo della pagina che mostra la classifica referral"
+    "description": "Titolo della pagina che mostra la classifica dei referral"
   },
   "title.distributionPlatformRank": {
-    "message": "Classifica piattaforme",
+    "message": "Classifica piattaforma",
     "description": "Titolo della pagina che mostra la classifica delle piattaforme"
   },
   "customers.name1": {
@@ -736,7 +752,7 @@
     "description": "Professione del cliente"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud è una grande piattaforma di integrazione, con un servizio di alta qualità.",
+    "message": "Ace Data Cloud è una piattaforma di integrazione eccellente, con un servizio di alta qualità.",
     "description": "Commento del cliente"
   },
   "customers.name3": {
@@ -753,11 +769,11 @@
   },
   "nav.github": {
     "message": "GitHub",
-    "description": "Link al repository GitHub"
+    "description": "Collegamento al repository GitHub"
   },
   "settings.github": {
     "message": "Codice sorgente",
-    "description": "Link per visualizzare il codice sorgente su GitHub"
+    "description": "Collegamento per visualizzare il codice sorgente su GitHub"
   },
   "settings.about": {
     "message": "Informazioni",
@@ -765,30 +781,30 @@
   },
   "settings.poweredBy": {
     "message": "Progetto open source",
-    "description": "Titolo che mostra su quale progetto open source è basato il sito"
+    "description": "Titolo che mostra su quale progetto open source è basato il sito nella pagina delle informazioni"
   },
   "settings.poweredByTip": {
-    "message": "Questo sito è basato sul progetto open source Nexior, il codice è completamente open source.",
-    "description": "Informazioni su quale progetto open source è basato il sito"
+    "message": "Questo sito è costruito sul progetto open source Nexior, il codice è completamente open source.",
+    "description": "Descrizione su quale progetto open source è basato questo sito nella pagina informativa"
   },
   "settings.apiService": {
     "message": "Servizio API",
-    "description": "Titolo che mostra il fornitore del servizio API nella pagina delle informazioni"
+    "description": "Titolo che mostra il fornitore del servizio API nella pagina informativa"
   },
   "settings.apiServiceTip": {
     "message": "Il servizio API di questo sito è fornito da Ace Data Cloud.",
-    "description": "Informazioni sul fornitore del servizio API nella pagina delle informazioni"
+    "description": "Descrizione del fornitore del servizio API nella pagina informativa"
   },
   "settings.buildYourOwn": {
     "message": "Crea il tuo",
-    "description": "Titolo che invita gli utenti a creare un sito simile nella pagina delle informazioni"
+    "description": "Titolo che invita gli utenti a creare un sito simile nella pagina informativa"
   },
   "settings.buildYourOwnTip": {
-    "message": "Vuoi creare un sito AI simile? Contattaci per supporto al deployment.",
-    "description": "Informazioni su come creare un sito simile nella pagina delle informazioni"
+    "message": "Vuoi creare un sito AI simile? Contattaci per supporto alla distribuzione.",
+    "description": "Descrizione su come creare un sito simile nella pagina informativa"
   },
   "settings.contactUs": {
-    "message": "Contattaci",
+    "message": "Contatta il supporto",
     "description": "Testo del pulsante per contattare il supporto"
   },
   "message.viewOnGithub": {

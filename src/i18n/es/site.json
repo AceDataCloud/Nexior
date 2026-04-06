@@ -40,7 +40,7 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "field.distributionForceInviterId": {
-    "message": "ID del invitador obligatorio",
+    "message": "ID del invitador forzado",
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "field.featuresChat": {
@@ -123,6 +123,22 @@
     "message": "SeeDance",
     "description": "Texto que se muestra en el cuadro de edición"
   },
+  "field.featuresWan": {
+    "message": "Wan",
+    "description": "Texto que se muestra en el cuadro de edición"
+  },
+  "field.featuresProducer": {
+    "message": "Productor",
+    "description": "Texto que se muestra en el cuadro de edición"
+  },
+  "field.featuresKimi": {
+    "message": "Kimi",
+    "description": "Texto que se muestra en el cuadro de edición"
+  },
+  "field.featuresSerp": {
+    "message": "SERP",
+    "description": "Texto que se muestra en el cuadro de edición"
+  },
   "field.featuresSupport": {
     "message": "Soporte al cliente",
     "description": "Texto que se muestra en el cuadro de edición"
@@ -180,44 +196,44 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Editar invitador obligatorio",
+    "message": "Editar invitador forzado",
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "title.editQR": {
-    "message": "Editar código QR",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "message": "Editar QR",
+    "description": "Título mostrado en el cuadro de edición"
   },
   "title.editUrl": {
     "message": "Editar enlace",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Título mostrado en el cuadro de edición"
   },
   "placeholder.title": {
     "message": "Ingrese el título del sitio",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.origin": {
     "message": "Ingrese el dominio del sitio",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.editUrl": {
     "message": "Ingrese el enlace",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.description": {
     "message": "Ingrese la descripción del sitio",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.keywords": {
     "message": "Ingrese las palabras clave del sitio",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Ingrese el ID del invitador predeterminado",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Ingrese el ID del invitador forzado",
-    "description": "Texto que se muestra en el cuadro de edición"
+    "description": "Texto mostrado en el cuadro de edición"
   },
   "message.uploadImageExceed": {
     "message": "La imagen subida excede el límite",
@@ -229,15 +245,15 @@
   },
   "message.editLogoTip": {
     "message": "Tamaño recomendado: 200*60px",
-    "description": "Texto de sugerencia para subir la imagen"
+    "description": "Texto de sugerencia para la imagen subida"
   },
   "message.editQRTip": {
     "message": "Tamaño recomendado: 200*200px",
-    "description": "Texto de sugerencia para subir la imagen"
+    "description": "Texto de sugerencia para la imagen subida"
   },
   "message.editFaviconTip": {
     "message": "Tamaño recomendado: 32*32px",
-    "description": "Texto de sugerencia para subir la imagen"
+    "description": "Texto de sugerencia para la imagen subida"
   },
   "message.editUrl": {
     "message": "Ingrese el enlace",
@@ -252,7 +268,7 @@
     "description": "Sugerencia para el ID del invitador predeterminado"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID de usuario del invitador forzado. Si se establece este ID, se usará como invitador independientemente de si el enlace de distribución incluye el parámetro inviter_id.",
+    "message": "ID de usuario del invitador forzado. Si se establece este ID, se usará forzosamente como invitador, independientemente de si el enlace de distribución incluye el parámetro inviter_id.",
     "description": "Sugerencia para el ID del invitador forzado"
   },
   "message.originTip": {
@@ -260,7 +276,7 @@
     "description": "Sugerencia para el dominio del sitio"
   },
   "message.titleTip": {
-    "message": "Título del sitio, se muestra en la pestaña del navegador.",
+    "message": "Título del sitio, mostrado en la pestaña del navegador.",
     "description": "Sugerencia para el título del sitio"
   },
   "message.descriptionTip": {
@@ -268,11 +284,11 @@
     "description": "Sugerencia para la descripción del sitio"
   },
   "message.logoTip": {
-    "message": "Logo del sitio, se muestra en la parte superior del menú del sitio cuando se expande.",
+    "message": "Logo del sitio, mostrado en la parte superior del menú del sitio cuando se expande.",
     "description": "Sugerencia para el logo del sitio"
   },
   "message.faviconTip": {
-    "message": "Favicon del sitio, se muestra en la pestaña del navegador.",
+    "message": "Favicon del sitio, mostrado en la pestaña del navegador.",
     "description": "Sugerencia para el favicon del sitio"
   },
   "message.adminsTip": {
@@ -332,40 +348,56 @@
     "description": "Descripción de la función de Suno"
   },
   "message.featuresPixverse": {
-    "message": "Activar o desactivar el módulo de función de Pixverse.",
+    "message": "Activar o desactivar el módulo de funciones de Pixverse.",
     "description": "Descripción de la función de Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Activar o desactivar el módulo de función de FLux.",
+    "message": "Activar o desactivar el módulo de funciones de FLux.",
     "description": "Descripción de la función de FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Activar o desactivar el módulo de función de Nano Banana.",
+    "message": "Activar o desactivar el módulo de funciones de Nano Banana.",
     "description": "Descripción de la función de Nano Banana"
   },
   "message.featuresSeedream": {
-    "message": "Activar o desactivar el módulo de funciones SeeDream.",
-    "description": "Descripción de la función SeeDream"
+    "message": "Activar o desactivar el módulo de funciones de SeeDream.",
+    "description": "Descripción de la función de SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Activar o desactivar el módulo de funciones SeeDance.",
-    "description": "Descripción de la función SeeDance"
+    "message": "Activar o desactivar el módulo de funciones de SeeDance.",
+    "description": "Descripción de la función de SeeDance"
+  },
+  "message.featuresWan": {
+    "message": "Activar o desactivar el módulo de funciones de Wan.",
+    "description": "Descripción de la función de Wan"
+  },
+  "message.featuresProducer": {
+    "message": "Activar o desactivar el módulo de funciones de Producer.",
+    "description": "Descripción de la función de Producer"
+  },
+  "message.featuresKimi": {
+    "message": "Activar o desactivar el módulo de funciones de Kimi.",
+    "description": "Descripción de la función de Kimi"
+  },
+  "message.featuresSerp": {
+    "message": "Activar o desactivar el módulo de funciones de SERP.",
+    "description": "Descripción de la función de SERP"
   },
   "message.featuresLuma": {
-    "message": "Activar o desactivar el módulo de funciones Luma.",
-    "description": "Descripción de la función Luma"
+    "message": "Activar o desactivar el módulo de funciones de Luma.",
+    "description": "Descripción de la función de Luma"
   },
   "message.featuresPika": {
-    "message": "Activar o desactivar el módulo de funciones Pika.",
-    "description": "Descripción de la función Pika"
+    "message": "Activar o desactivar el módulo de funciones de Pika.",
+    "description": "Descripción de la función de Pika"
   },
   "message.featuresKling": {
-    "message": "Activar o desactivar el módulo de funciones Kling.",
-    "description": "Descripción de la función Kling"
+    "message": "Activar o desactivar el módulo de funciones de Kling.",
+    "description": "Descripción de la función de Kling"
   },
   "message.featuresHailuo": {
-    "message": "Activar o desactivar el módulo de funciones Hailuo.",
-    "description": "Descripción de la función Hailuo"
+    "message": "Activar o desactivar el módulo de funciones de Hailuo.",
+    "description": "Descripción de la función de Hailuo"
   },
   "message.featuresHeadshots": {
     "message": "Activar o desactivar el módulo de funciones de fotos de identificación AI.",
@@ -376,7 +408,7 @@
     "description": "Descripción de la función de soporte"
   },
   "message.featuresI18n": {
-    "message": "Activar o desactivar el soporte multilingüe; al desactivarlo, los usuarios solo podrán usar el idioma predeterminado.",
+    "message": "Activar o desactivar el soporte multilingüe. Al desactivarlo, los usuarios solo podrán usar el idioma predeterminado.",
     "description": "Descripción del soporte multilingüe"
   },
   "button.upload": {
@@ -396,15 +428,15 @@
     "description": "Mostrado como el título en el cuadro de edición"
   },
   "message.featuresGemini": {
-    "message": "Activar o desactivar el módulo de funciones Gemini.",
-    "description": "Descripción de la función Gemini"
+    "message": "Activar o desactivar el módulo de funciones de Gemini.",
+    "description": "Descripción de la función de Gemini"
   },
   "field.featuresClaude": {
     "message": "Claude",
     "description": "Mostrado como el título en el cuadro de edición"
   },
   "message.featuresClaude": {
-    "message": "Activar o desactivar el módulo de funciones Claude.",
-    "description": "Descripción de la función Claude"
+    "message": "Activar o desactivar el módulo de funciones de Claude.",
+    "description": "Descripción de la función de Claude"
   }
 }
