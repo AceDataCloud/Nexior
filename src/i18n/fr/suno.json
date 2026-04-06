@@ -36,12 +36,12 @@
     "description": "Texte du bouton pour séparer les pistes"
   },
   "button.cover_music": {
-    "message": "Couvrir",
-    "description": "Texte du bouton pour couvrir une chanson"
+    "message": "Reprise",
+    "description": "Texte du bouton pour la reprise"
   },
   "button.concat_music": {
     "message": "Concaténer",
-    "description": "Texte du bouton pour concaténer de la musique"
+    "description": "Texte du bouton pour concaténer la musique"
   },
   "button.download_audio": {
     "message": "Télécharger la musique",
@@ -53,19 +53,19 @@
   },
   "button.replace_section": {
     "message": "Remplacer un extrait",
-    "description": "Texte du bouton pour remplacer un extrait dans une chanson"
+    "description": "Texte du bouton pour remplacer un extrait dans la chanson"
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Texte du bouton pour créer un mashup de plusieurs chansons"
+    "description": "Texte du bouton pour mélanger plusieurs chansons"
   },
   "button.generate_lyrics": {
-    "message": "Générer des paroles avec l'IA",
-    "description": "Texte du bouton pour générer automatiquement des paroles avec l'IA"
+    "message": "Générer des paroles AI",
+    "description": "Texte du bouton pour générer automatiquement des paroles avec AI"
   },
   "button.optimize_style": {
     "message": "Optimiser le style",
-    "description": "Texte du bouton pour optimiser la description du style avec l'IA"
+    "description": "Texte du bouton pour optimiser la description du style avec AI"
   },
   "button.all_stems": {
     "message": "Séparer tout",
@@ -117,31 +117,31 @@
   },
   "name.prompt": {
     "message": "Description de la chanson",
-    "description": "Invite pour le contenu d'entrée"
+    "description": "Invite pour l'entrée de contenu"
   },
   "name.extend": {
     "message": "Étendre la chanson de",
-    "description": "Invite pour le contenu d'entrée"
+    "description": "Invite pour l'entrée de contenu"
   },
   "name.cover": {
-    "message": "Couvrir la chanson de",
-    "description": "Invite pour le contenu d'entrée"
+    "message": "Reprise de la chanson de",
+    "description": "Invite pour l'entrée de contenu"
   },
   "name.lyrics": {
     "message": "Paroles",
-    "description": "Invite pour le contenu d'entrée des paroles"
+    "description": "Invite pour l'entrée de contenu des paroles"
   },
   "name.style": {
     "message": "Style",
-    "description": "Invite pour le contenu d'entrée du style de la chanson"
+    "description": "Invite pour l'entrée de contenu du style de la chanson"
   },
   "name.styleNegative": {
-    "message": "Exclure le style",
+    "message": "Styles à exclure",
     "description": "Description des styles non désirés"
   },
   "name.title": {
     "message": "Titre",
-    "description": "Invite pour le contenu d'entrée du titre de la chanson"
+    "description": "Invite pour l'entrée de contenu du titre de la chanson"
   },
   "name.vocalGender": {
     "message": "Genre vocal",
@@ -165,7 +165,7 @@
   },
   "name.audioWeight": {
     "message": "Poids de l'original",
-    "description": "Poids de l'original lors de la couverture"
+    "description": "Poids d'influence de l'original lors de la reprise"
   },
   "name.lyricPrompt": {
     "message": "Invite de paroles",
@@ -189,7 +189,7 @@
   },
   "name.replaceSection": {
     "message": "Remplacer un extrait",
-    "description": "Remplacer un extrait dans une chanson"
+    "description": "Remplacer un extrait dans la chanson"
   },
   "name.model": {
     "message": "Modèle",
@@ -224,7 +224,7 @@
     "description": "Description du paramètre de référence de téléchargement"
   },
   "description.vocalGender": {
-    "message": "Choisissez le genre vocal pour la génération (uniquement pris en charge à partir de la version v4.5)",
+    "message": "Choisissez le genre de la voix à générer (uniquement pris en charge par la version 4.5 et supérieure)",
     "description": "Description du sélecteur de genre vocal"
   },
   "description.weirdness": {
@@ -232,7 +232,7 @@
     "description": "Description du paramètre de créativité"
   },
   "description.styleInfluence": {
-    "message": "Plus la valeur est élevée, plus l'influence du style sur le résultat généré est forte (0-100)",
+    "message": "Plus la valeur est élevée, plus l'influence du style sur le résultat généré est grande (0-100)",
     "description": "Description du paramètre d'influence du style"
   },
   "description.audioWeight": {
@@ -264,7 +264,7 @@
     "description": "Placeholder pour l'entrée des paroles à étendre"
   },
   "placeholder.extend.continue_at": {
-    "message": "À partir de quelle seconde étendre...",
+    "message": "À partir de quelle seconde commencer l'extension...",
     "description": "Placeholder pour le temps de début de l'extension"
   },
   "placeholder.style": {
@@ -317,11 +317,11 @@
   },
   "variation.high": {
     "message": "Haute variation",
-    "description": "Option de haute diversité de variation"
+    "description": "Option de variation à haute diversité"
   },
   "variation.low": {
     "message": "Basse variation",
-    "description": "Option de basse diversité de variation"
+    "description": "Option de variation à faible diversité"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -341,11 +341,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération musicale lancée avec succès",
-    "description": "Message de succès lors du lancement de la tâche de génération musicale"
+    "description": "Message de succès lors du lancement réussi de la tâche de génération musicale"
   },
   "message.startUploadAudioSuccess": {
     "message": "Musique personnalisée téléchargée avec succès",
-    "description": "Message de succès lors du téléchargement de la musique personnalisée"
+    "description": "Message de succès lors du téléchargement réussi de la musique personnalisée"
   },
   "message.startUploadAudioFailed": {
     "message": "Échec du téléchargement de la musique personnalisée",
@@ -372,7 +372,7 @@
     "description": "Message lorsque la génération des paroles échoue"
   },
   "message.optimizingStyle": {
-    "message": "Optimisation de la description du style en cours...",
+    "message": "Optimisation de la description du style...",
     "description": "Message lors de l'optimisation du style"
   },
   "message.optimizeStyleSuccess": {
@@ -384,7 +384,7 @@
     "description": "Message lorsque l'optimisation du style échoue"
   },
   "message.fetchingWav": {
-    "message": "Récupération du fichier WAV en cours...",
+    "message": "Récupération du fichier WAV...",
     "description": "Message lors de la récupération du fichier WAV"
   },
   "message.fetchWavFailed": {
@@ -392,7 +392,7 @@
     "description": "Message lorsque la récupération du fichier WAV échoue"
   },
   "message.fetchingMidi": {
-    "message": "Récupération du fichier MIDI en cours...",
+    "message": "Récupération du fichier MIDI...",
     "description": "Message lors de la récupération du fichier MIDI"
   },
   "message.fetchMidiFailed": {
@@ -401,7 +401,7 @@
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message lorsque la musique est en cours de génération"
+    "description": "Message lors de la génération de la musique"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de la musique",
@@ -409,10 +409,134 @@
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'il n'y a pas d'opérations disponibles"
+    "description": "Message lorsqu'il n'y a aucune opération disponible"
   },
   "message.noTasks": {
     "message": "Aucune tâche historique, veuillez générer de la musique dans la barre de configuration à gauche",
     "description": "Message lorsqu'il n'y a pas de tâches"
+  },
+  "button.upload_cover": {
+    "message": "Télécharger la reprise",
+    "description": "Texte du bouton pour télécharger l'audio après la reprise"
+  },
+  "button.artist_consistency": {
+    "message": "Cohérence du style",
+    "description": "Texte du bouton pour générer basé sur le style de l'artiste"
+  },
+  "button.artist_consistency_vox": {
+    "message": "Cohérence du style vocal",
+    "description": "Texte du bouton pour générer basé sur le style vocal de l'artiste"
+  },
+  "button.underpainting": {
+    "message": "Ajouter un accompagnement",
+    "description": "Texte du bouton pour ajouter un accompagnement à la chanson téléchargée"
+  },
+  "button.overpainting": {
+    "message": "Ajouter des voix",
+    "description": "Texte du bouton pour ajouter des voix à la chanson téléchargée"
+  },
+  "button.samples": {
+    "message": "Ajouter des échantillons",
+    "description": "Texte du bouton pour ajouter des échantillons à la chanson téléchargée"
+  },
+  "button.extract_vocals": {
+    "message": "Extraire les voix",
+    "description": "Texte du bouton pour extraire les voix de la chanson"
+  },
+  "button.get_timing": {
+    "message": "Obtenir le rythme",
+    "description": "Texte du bouton pour obtenir les données de rythme de la chanson"
+  },
+  "button.create_persona": {
+    "message": "Créer un style d'artiste",
+    "description": "Texte du bouton pour créer un style d'artiste"
+  },
+  "button.mashup_lyrics": {
+    "message": "Mélanger les paroles",
+    "description": "Texte du bouton pour mélanger deux segments de paroles"
+  },
+  "name.persona": {
+    "message": "Style d'artiste",
+    "description": "Sélection du style d'artiste"
+  },
+  "name.overpaintingRange": {
+    "message": "Plage vocale",
+    "description": "Plage de temps pour ajouter des voix"
+  },
+  "name.underpaintingRange": {
+    "message": "Plage d'accompagnement",
+    "description": "Plage de temps pour ajouter un accompagnement"
+  },
+  "name.samplesRange": {
+    "message": "Plage d'échantillons",
+    "description": "Plage de temps pour ajouter des échantillons"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "Heure de début (secondes)",
+    "description": "Espace réservé pour l'heure de début des voix"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "Heure de fin (secondes)",
+    "description": "Espace réservé pour l'heure de fin des voix"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "Heure de début (secondes)",
+    "description": "Espace réservé pour l'heure de début de l'accompagnement"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "Heure de fin (secondes)",
+    "description": "Espace réservé pour l'heure de fin de l'accompagnement"
+  },
+  "placeholder.samplesStart": {
+    "message": "Heure de début (secondes)",
+    "description": "Espace réservé pour l'heure de début des échantillons"
+  },
+  "placeholder.samplesEnd": {
+    "message": "Heure de fin (secondes)",
+    "description": "Espace réservé pour l'heure de fin des échantillons"
+  },
+  "placeholder.personaId": {
+    "message": "Entrez l'ID du style d'artiste...",
+    "description": "Espace réservé pour l'entrée de l'ID du style d'artiste"
+  },
+  "description.persona": {
+    "message": "Utilisez le style d'artiste créé pour générer des chansons au style cohérent",
+    "description": "Description de la fonctionnalité de style d'artiste"
+  },
+  "description.overpainting": {
+    "message": "Ajouter des voix à la musique téléchargée dans une plage de temps spécifiée",
+    "description": "Description de la fonctionnalité d'ajout de voix"
+  },
+  "description.underpainting": {
+    "message": "Ajouter un accompagnement à la musique téléchargée dans une plage de temps spécifiée",
+    "description": "Description de la fonctionnalité d'ajout d'accompagnement"
+  },
+  "description.samples": {
+    "message": "Ajouter des échantillons à la musique téléchargée dans une plage de temps spécifiée",
+    "description": "Description de la fonctionnalité d'ajout d'échantillons"
+  },
+  "message.fetchingTiming": {
+    "message": "Récupération des données de rythme...",
+    "description": "Message lors de la récupération des données de rythme"
+  },
+  "message.fetchTimingFailed": {
+    "message": "Échec de la récupération des données de rythme",
+    "description": "Message lorsque la récupération des données de rythme échoue"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "Récupération des données de rythme réussie",
+    "description": "Message lorsque la récupération des données de rythme réussit"
+  },
+  "message.extractingVocals": {
+    "message": "Extraction des voix en cours...",
+    "description": "Message lors de l'extraction des voix"
+  },
+  "message.extractVocalsFailed": {
+    "message": "Échec de l'extraction des voix",
+    "description": "Message lorsque l'extraction des voix échoue"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "Extraction des voix réussie",
+    "description": "Message lorsque l'extraction des voix réussit"
   }
 }

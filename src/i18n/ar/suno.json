@@ -25,11 +25,11 @@
   },
   "button.download_wav": {
     "message": "تنزيل WAV بدون فقد",
-    "description": "نص زر تنزيل بتنسيق WAV بدون فقد"
+    "description": "نص زر تنزيل صيغة WAV بدون فقد"
   },
   "button.download_midi": {
     "message": "تنزيل MIDI",
-    "description": "نص زر تنزيل بتنسيق MIDI"
+    "description": "نص زر تنزيل صيغة MIDI"
   },
   "button.get_stems": {
     "message": "فصل الأصوات",
@@ -56,8 +56,8 @@
     "description": "نص زر استبدال مقطع في الأغنية"
   },
   "button.mashup": {
-    "message": "دمج الأغاني",
-    "description": "نص زر دمج عدة أغاني"
+    "message": "مزيج",
+    "description": "نص زر مزيج عدة أغاني"
   },
   "button.generate_lyrics": {
     "message": "توليد كلمات الأغاني بالذكاء الاصطناعي",
@@ -65,7 +65,7 @@
   },
   "button.optimize_style": {
     "message": "تحسين الأسلوب",
-    "description": "نص زر لتحسين وصف الأسلوب باستخدام الذكاء الاصطناعي"
+    "description": "نص زر لتحسين الأسلوب باستخدام الذكاء الاصطناعي"
   },
   "button.all_stems": {
     "message": "فصل الكل",
@@ -160,8 +160,8 @@
     "description": "التحكم في تأثير الأسلوب على النتائج المولدة"
   },
   "name.variationCategory": {
-    "message": "نوع التباين",
-    "description": "التحكم في تنوع التباينات المولدة"
+    "message": "نوع التغيير",
+    "description": "التحكم في تنوع التغييرات المولدة"
   },
   "name.audioWeight": {
     "message": "وزن الأغنية الأصلية",
@@ -200,7 +200,7 @@
     "description": "وضع وصف الأغنية"
   },
   "description.prompt": {
-    "message": "وصف الأسلوب والموضوع الموسيقي الذي تريده",
+    "message": "وصف الأسلوب والموضوع الذي تريده في الموسيقى",
     "description": "وصف المعلمة 'prompt'"
   },
   "description.lyrics": {
@@ -368,20 +368,20 @@
     "description": "رسالة عند نجاح توليد الكلمات"
   },
   "message.generateLyricsFailed": {
-    "message": "فشل في توليد كلمات الأغاني",
-    "description": "رسالة عند فشل توليد كلمات الأغاني"
+    "message": "فشل في توليد الكلمات",
+    "description": "رسالة عند فشل توليد الكلمات"
   },
   "message.optimizingStyle": {
-    "message": "جارٍ تحسين وصف النمط...",
-    "description": "رسالة عند تحسين النمط"
+    "message": "جارٍ تحسين الوصف...",
+    "description": "رسالة عند تحسين الأسلوب"
   },
   "message.optimizeStyleSuccess": {
-    "message": "تم تحسين النمط بنجاح",
-    "description": "رسالة عند نجاح تحسين النمط"
+    "message": "تم تحسين الأسلوب بنجاح",
+    "description": "رسالة عند نجاح تحسين الأسلوب"
   },
   "message.optimizeStyleFailed": {
-    "message": "فشل في تحسين النمط",
-    "description": "رسالة عند فشل تحسين النمط"
+    "message": "فشل في تحسين الأسلوب",
+    "description": "رسالة عند فشل تحسين الأسلوب"
   },
   "message.fetchingWav": {
     "message": "جارٍ الحصول على ملف WAV...",
@@ -414,5 +414,129 @@
   "message.noTasks": {
     "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى من الشريط الجانبي الأيسر",
     "description": "رسالة عند عدم وجود مهام"
+  },
+  "button.upload_cover": {
+    "message": "رفع التغطية",
+    "description": "نص زر رفع التغطية بعد رفع الصوت"
+  },
+  "button.artist_consistency": {
+    "message": "اتساق الأسلوب",
+    "description": "نص زر توليد استنادًا إلى أسلوب الفنان"
+  },
+  "button.artist_consistency_vox": {
+    "message": "اتساق أسلوب الصوت",
+    "description": "نص زر توليد استنادًا إلى أسلوب صوت الفنان"
+  },
+  "button.underpainting": {
+    "message": "إضافة مرافقة",
+    "description": "نص زر إضافة مرافقة للأغنية المرفوعة"
+  },
+  "button.overpainting": {
+    "message": "إضافة صوت",
+    "description": "نص زر إضافة صوت للأغنية المرفوعة"
+  },
+  "button.samples": {
+    "message": "إضافة عينات",
+    "description": "نص زر إضافة عينات للأغنية المرفوعة"
+  },
+  "button.extract_vocals": {
+    "message": "استخراج الصوت",
+    "description": "نص زر استخراج الصوت من الأغنية"
+  },
+  "button.get_timing": {
+    "message": "الحصول على الإيقاع",
+    "description": "نص زر الحصول على بيانات إيقاع الأغنية"
+  },
+  "button.create_persona": {
+    "message": "إنشاء أسلوب فنان",
+    "description": "نص زر إنشاء أسلوب فنان"
+  },
+  "button.mashup_lyrics": {
+    "message": "دمج الكلمات",
+    "description": "نص زر دمج مقطعين من الكلمات"
+  },
+  "name.persona": {
+    "message": "أسلوب الفنان",
+    "description": "اختيار أسلوب الفنان"
+  },
+  "name.overpaintingRange": {
+    "message": "نطاق الصوت",
+    "description": "نطاق الوقت لإضافة الصوت"
+  },
+  "name.underpaintingRange": {
+    "message": "نطاق المرافقة",
+    "description": "نطاق الوقت لإضافة المرافقة"
+  },
+  "name.samplesRange": {
+    "message": "نطاق العينات",
+    "description": "نطاق الوقت لإضافة العينات"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "وقت البدء (ثانية)",
+    "description": "نص مكان لوقت بدء الصوت"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "وقت الانتهاء (ثانية)",
+    "description": "نص مكان لوقت انتهاء الصوت"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "وقت البدء (ثانية)",
+    "description": "نص مكان لوقت بدء المرافقة"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "وقت الانتهاء (ثانية)",
+    "description": "نص مكان لوقت انتهاء المرافقة"
+  },
+  "placeholder.samplesStart": {
+    "message": "وقت البدء (ثانية)",
+    "description": "نص مكان لوقت بدء العينات"
+  },
+  "placeholder.samplesEnd": {
+    "message": "وقت الانتهاء (ثانية)",
+    "description": "نص مكان لوقت انتهاء العينات"
+  },
+  "placeholder.personaId": {
+    "message": "أدخل معرف أسلوب الفنان...",
+    "description": "نص مكان لإدخال معرف أسلوب الفنان"
+  },
+  "description.persona": {
+    "message": "استخدم أسلوب الفنان الذي تم إنشاؤه لتوليد أغاني بأسلوب متسق",
+    "description": "وصف وظيفة أسلوب الفنان"
+  },
+  "description.overpainting": {
+    "message": "إضافة صوت للأغاني المرفوعة ضمن نطاق زمني محدد",
+    "description": "وصف وظيفة إضافة الصوت"
+  },
+  "description.underpainting": {
+    "message": "إضافة مرافقة للأغاني المرفوعة ضمن نطاق زمني محدد",
+    "description": "وصف وظيفة إضافة المرافقة"
+  },
+  "description.samples": {
+    "message": "إضافة عينات للأغاني المرفوعة ضمن نطاق زمني محدد",
+    "description": "وصف وظيفة إضافة العينات"
+  },
+  "message.fetchingTiming": {
+    "message": "جارٍ الحصول على بيانات الإيقاع...",
+    "description": "رسالة عند الحصول على بيانات الإيقاع"
+  },
+  "message.fetchTimingFailed": {
+    "message": "فشل في الحصول على بيانات الإيقاع",
+    "description": "رسالة عند فشل الحصول على بيانات الإيقاع"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "تم الحصول على بيانات الإيقاع بنجاح",
+    "description": "رسالة عند نجاح الحصول على بيانات الإيقاع"
+  },
+  "message.extractingVocals": {
+    "message": "جارٍ استخراج الصوت...",
+    "description": "رسالة عند استخراج الصوت"
+  },
+  "message.extractVocalsFailed": {
+    "message": "فشل في استخراج الصوت",
+    "description": "رسالة عند فشل استخراج الصوت"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "تم استخراج الصوت بنجاح",
+    "description": "رسالة عند نجاح استخراج الصوت"
   }
 }

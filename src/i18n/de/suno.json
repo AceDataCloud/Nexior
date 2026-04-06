@@ -208,11 +208,11 @@
     "description": "Beschreibung des Parameters 'lyrics'"
   },
   "description.style": {
-    "message": "Beschreiben Sie den Musikstil, z. B. akustischer Pop, Jazz, elektronisch",
+    "message": "Beschreibe den Musikstil, z. B. akustischer Pop, Jazz, elektronisch",
     "description": "Beschreibung des Parameters 'style'"
   },
   "description.styleNegative": {
-    "message": "Beschreiben Sie unerwünschte Stile, z. B. Heavy Metal, Schreien",
+    "message": "Beschreibe unerwünschte Stile, z. B. Heavy Metal, Schreien",
     "description": "Beschreibung des Ausschlussstilparameters"
   },
   "description.title": {
@@ -220,12 +220,12 @@
     "description": "Beschreibung des Parameters 'title'"
   },
   "description.uploadAudios": {
-    "message": "Laden Sie Musik als Referenz hoch. Der Upload benötigt etwas Zeit. Nach erfolgreichem Upload kann die Musik basierend auf der hochgeladenen Referenz generiert werden.",
-    "description": "Beschreibung des Referenz-Upload-Parameters"
+    "message": "Lade Musik als Referenz hoch. Der Upload benötigt etwas Zeit. Nach erfolgreichem Upload kann die Musik basierend auf der hochgeladenen Referenz generiert werden.",
+    "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.vocalGender": {
-    "message": "Wählen Sie das Geschlecht der zu generierenden Stimme (nur in Version 4.5 und höher unterstützt)",
-    "description": "Beschreibung des Geschlechtswählers für die Stimme"
+    "message": "Wähle das Geschlecht der generierten Stimme (nur v4.5 und höher unterstützt)",
+    "description": "Beschreibung des Stimmgeschlechtswählers"
   },
   "description.weirdness": {
     "message": "Je höher der Wert, desto kreativer und experimenteller ist die generierte Musik (0-100)",
@@ -240,11 +240,11 @@
     "description": "Beschreibung des Originalgewichtsparameters"
   },
   "description.lyricPrompt": {
-    "message": "Geben Sie eine Liedbeschreibung ein, die KI generiert automatisch die Lyrics",
+    "message": "Gib eine Beschreibung der Lyrics ein, die KI generiert automatisch die Lyrics",
     "description": "Beschreibung des Lyrics-Prompts"
   },
   "description.replaceSection": {
-    "message": "Ersetzen Sie den Inhalt eines bestimmten Zeitabschnitts im Song",
+    "message": "Ersetze den Inhalt eines bestimmten Zeitabschnitts im Song",
     "description": "Beschreibung der Ersetzungsfunktion"
   },
   "status.pending": {
@@ -252,7 +252,7 @@
     "description": "Wartezustand der Aufgabe"
   },
   "placeholder.prompt": {
-    "message": "Beschreiben Sie die gewünschte Musik, z. B.: ein warmes Folk-Lied über die Sehnsucht nach dem Herbst...",
+    "message": "Beschreibe die gewünschte Musik, z. B.: ein warmes Folk-Lied über die Sehnsucht nach dem Herbst...",
     "description": "Platzhalter für die Eingabe der Songbeschreibung"
   },
   "placeholder.lyrics": {
@@ -260,7 +260,7 @@
     "description": "Platzhalter für die Eingabe der Lyrics"
   },
   "placeholder.extend.lyrics": {
-    "message": "Bitte geben Sie die zu erweiternden Lyrics ein...",
+    "message": "Bitte die zu erweiternden Lyrics eingeben...",
     "description": "Platzhalter für die Eingabe der erweiterten Lyrics"
   },
   "placeholder.extend.continue_at": {
@@ -273,10 +273,10 @@
   },
   "placeholder.styleNegative": {
     "message": "z. B.: Heavy Metal, Schreien...",
-    "description": "Platzhalter für die Eingabe der auszuschließenden Stile"
+    "description": "Platzhalter für die Eingabe des auszuschließenden Stils"
   },
   "placeholder.title": {
-    "message": "Geben Sie den Songnamen ein...",
+    "message": "Gib den Songnamen ein...",
     "description": "Platzhalter für die Eingabe des Titels"
   },
   "placeholder.select": {
@@ -288,16 +288,16 @@
     "description": "Platzhalter für die Eingabe der Position"
   },
   "placeholder.lyricPrompt": {
-    "message": "Beschreiben Sie das Thema der Lyrics, die KI generiert automatisch...",
+    "message": "Beschreibe das Thema der Lyrics, die KI generiert automatisch...",
     "description": "Platzhalter für die Eingabe des Lyrics-Prompts"
   },
   "placeholder.replaceSectionStart": {
     "message": "Startzeit (Sekunden)",
-    "description": "Platzhalter für den Startzeitpunkt des Ersetzungsabschnitts"
+    "description": "Platzhalter für die Startzeit des zu ersetzenden Abschnitts"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Endzeit (Sekunden)",
-    "description": "Platzhalter für den Endzeitpunkt des Ersetzungsabschnitts"
+    "description": "Platzhalter für die Endzeit des zu ersetzenden Abschnitts"
   },
   "button.generate": {
     "message": "Generieren",
@@ -313,7 +313,7 @@
   },
   "gender.auto": {
     "message": "Automatisch",
-    "description": "Automatische Auswahl des Geschlechts der Stimme"
+    "description": "Automatische Auswahl des Stimmgeschlechts"
   },
   "variation.high": {
     "message": "Hohe Variation",
@@ -414,5 +414,129 @@
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte Musik im linken Konfigurationsbereich generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  },
+  "button.upload_cover": {
+    "message": "Cover hochladen",
+    "description": "Text des Buttons zum Hochladen von Audio für Cover"
+  },
+  "button.artist_consistency": {
+    "message": "Stil-Konsistenz",
+    "description": "Text des Buttons zur Generierung basierend auf dem Stil des Künstlers"
+  },
+  "button.artist_consistency_vox": {
+    "message": "Vokal-Stil-Konsistenz",
+    "description": "Text des Buttons zur Generierung basierend auf dem Vokalstil des Künstlers"
+  },
+  "button.underpainting": {
+    "message": "Begleitmusik hinzufügen",
+    "description": "Text des Buttons zum Hinzufügen von Begleitmusik zur hochgeladenen Datei"
+  },
+  "button.overpainting": {
+    "message": "Gesang hinzufügen",
+    "description": "Text des Buttons zum Hinzufügen von Gesang zur hochgeladenen Datei"
+  },
+  "button.samples": {
+    "message": "Samples hinzufügen",
+    "description": "Text des Buttons zum Hinzufügen von Samples zur hochgeladenen Datei"
+  },
+  "button.extract_vocals": {
+    "message": "Gesang extrahieren",
+    "description": "Text des Buttons zum Extrahieren von Gesang aus dem Lied"
+  },
+  "button.get_timing": {
+    "message": "Takt abrufen",
+    "description": "Text des Buttons zum Abrufen von Takt-Daten des Liedes"
+  },
+  "button.create_persona": {
+    "message": "Künstlerstil erstellen",
+    "description": "Text des Buttons zum Erstellen eines Künstlerstils"
+  },
+  "button.mashup_lyrics": {
+    "message": "Lyrics mischen",
+    "description": "Text des Buttons zum Mischen von zwei Textabschnitten"
+  },
+  "name.persona": {
+    "message": "Künstlerstil",
+    "description": "Auswahl des Künstlerstils"
+  },
+  "name.overpaintingRange": {
+    "message": "Vokalbereich",
+    "description": "Zeitbereich für das Hinzufügen von Gesang"
+  },
+  "name.underpaintingRange": {
+    "message": "Begleitmusikbereich",
+    "description": "Zeitbereich für das Hinzufügen von Begleitmusik"
+  },
+  "name.samplesRange": {
+    "message": "Samples-Bereich",
+    "description": "Zeitbereich für das Hinzufügen von Samples"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "Startzeit (Sekunden)",
+    "description": "Platzhalter für die Startzeit des Gesangs"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "Endzeit (Sekunden)",
+    "description": "Platzhalter für die Endzeit des Gesangs"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "Startzeit (Sekunden)",
+    "description": "Platzhalter für die Startzeit der Begleitmusik"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "Endzeit (Sekunden)",
+    "description": "Platzhalter für die Endzeit der Begleitmusik"
+  },
+  "placeholder.samplesStart": {
+    "message": "Startzeit (Sekunden)",
+    "description": "Platzhalter für die Startzeit der Samples"
+  },
+  "placeholder.samplesEnd": {
+    "message": "Endzeit (Sekunden)",
+    "description": "Platzhalter für die Endzeit der Samples"
+  },
+  "placeholder.personaId": {
+    "message": "Künstlerstil-ID eingeben...",
+    "description": "Platzhalter für die Eingabe der Künstlerstil-ID"
+  },
+  "description.persona": {
+    "message": "Verwenden Sie den erstellten Künstlerstil, um konsistente Songs zu generieren",
+    "description": "Beschreibung der Künstlerstil-Funktion"
+  },
+  "description.overpainting": {
+    "message": "Fügen Sie Gesang zur hochgeladenen Musik im angegebenen Zeitbereich hinzu",
+    "description": "Beschreibung der Gesang hinzufügen-Funktion"
+  },
+  "description.underpainting": {
+    "message": "Fügen Sie Begleitmusik zur hochgeladenen Musik im angegebenen Zeitbereich hinzu",
+    "description": "Beschreibung der Begleitmusik hinzufügen-Funktion"
+  },
+  "description.samples": {
+    "message": "Fügen Sie Samples zur hochgeladenen Musik im angegebenen Zeitbereich hinzu",
+    "description": "Beschreibung der Samples hinzufügen-Funktion"
+  },
+  "message.fetchingTiming": {
+    "message": "Takt-Daten werden abgerufen...",
+    "description": "Nachricht beim Abrufen der Takt-Daten"
+  },
+  "message.fetchTimingFailed": {
+    "message": "Abruf der Takt-Daten fehlgeschlagen",
+    "description": "Nachricht, wenn der Abruf der Takt-Daten fehlschlägt"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "Takt-Daten erfolgreich abgerufen",
+    "description": "Nachricht, wenn die Takt-Daten erfolgreich abgerufen wurden"
+  },
+  "message.extractingVocals": {
+    "message": "Gesang wird extrahiert...",
+    "description": "Nachricht beim Extrahieren von Gesang"
+  },
+  "message.extractVocalsFailed": {
+    "message": "Extraktion des Gesangs fehlgeschlagen",
+    "description": "Nachricht, wenn die Extraktion des Gesangs fehlschlägt"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "Gesang erfolgreich extrahiert",
+    "description": "Nachricht, wenn der Gesang erfolgreich extrahiert wurde"
   }
 }

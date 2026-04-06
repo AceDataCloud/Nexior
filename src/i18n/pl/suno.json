@@ -8,8 +8,8 @@
     "description": "Tekst przycisku do pobierania"
   },
   "button.more": {
-    "message": "Więcej opcji",
-    "description": "Tekst przycisku do więcej opcji"
+    "message": "Więcej działań",
+    "description": "Tekst przycisku do więcej działań"
   },
   "button.uploadAudios": {
     "message": "Prześlij",
@@ -32,8 +32,8 @@
     "description": "Tekst przycisku do pobierania formatu MIDI"
   },
   "button.get_stems": {
-    "message": "Wyodrębnij ścieżki",
-    "description": "Tekst przycisku do wyodrębniania ścieżek"
+    "message": "Oddziel ścieżki",
+    "description": "Tekst przycisku do oddzielania ścieżek"
   },
   "button.cover_music": {
     "message": "Przeróbka",
@@ -48,7 +48,7 @@
     "description": "Tekst przycisku do pobierania muzyki"
   },
   "button.remaster": {
-    "message": "Remasteruj",
+    "message": "Remaster",
     "description": "Tekst przycisku do remasterowania"
   },
   "button.replace_section": {
@@ -68,8 +68,8 @@
     "description": "Tekst przycisku do optymalizacji stylu"
   },
   "button.all_stems": {
-    "message": "Wyodrębnij wszystkie",
-    "description": "Tekst przycisku do wyodrębniania wszystkich ścieżek"
+    "message": "Oddziel wszystkie",
+    "description": "Tekst przycisku do oddzielania wszystkich ścieżek"
   },
   "model.model1": {
     "message": "v2",
@@ -81,7 +81,7 @@
   },
   "name.instrumental": {
     "message": "Muzyka instrumentalna",
-    "description": "Generowanie muzyki bez wokalu"
+    "description": "Generowanie czystej muzyki bez wokalu"
   },
   "name.referenceAudios": {
     "message": "Muzyka referencyjna",
@@ -133,10 +133,10 @@
   },
   "name.style": {
     "message": "Styl",
-    "description": "Podpowiedź do wprowadzenia stylu utworu"
+    "description": "Podpowiedź do wprowadzenia treści stylu utworu"
   },
   "name.styleNegative": {
-    "message": "Wykluczony styl",
+    "message": "Wyklucz styl",
     "description": "Opis stylu, którego nie chcemy"
   },
   "name.title": {
@@ -157,15 +157,15 @@
   },
   "name.styleInfluence": {
     "message": "Wpływ stylu",
-    "description": "Kontrola wpływu stylu na wynik generacji"
+    "description": "Kontrola wpływu stylu na wyniki generacji"
   },
   "name.variationCategory": {
     "message": "Typ wariacji",
     "description": "Kontrola różnorodności generowanych wariacji"
   },
   "name.audioWeight": {
-    "message": "Waga oryginału",
-    "description": "Waga wpływu oryginału podczas przeróbki"
+    "message": "Waga oryginalnego utworu",
+    "description": "Waga wpływu oryginalnego utworu podczas przeróbki"
   },
   "name.lyricPrompt": {
     "message": "Podpowiedź do tekstu",
@@ -204,7 +204,7 @@
     "description": "Opis parametru 'prompt'"
   },
   "description.lyrics": {
-    "message": "Wprowadź własny tekst, obsługiwane są znaczniki [Zwrotka], [Refren], [Mostek] itp.",
+    "message": "Wprowadź niestandardowy tekst, wspierający oznaczenia [Zwrotka], [Refren], [Mostek] itp.",
     "description": "Opis parametru 'lyrics'"
   },
   "description.style": {
@@ -316,11 +316,11 @@
     "description": "Automatyczny wybór płci głosu"
   },
   "variation.high": {
-    "message": "Wysoka różnorodność",
+    "message": "Wysoka zmienność",
     "description": "Opcja wysokiej różnorodności"
   },
   "variation.low": {
-    "message": "Niska różnorodność",
+    "message": "Niska zmienność",
     "description": "Opcja niskiej różnorodności"
   },
   "message.startingTask": {
@@ -372,7 +372,7 @@
     "description": "Wiadomość, gdy generowanie tekstu piosenki się nie powiedzie"
   },
   "message.optimizingStyle": {
-    "message": "Optymalizowanie opisu stylu...",
+    "message": "Optymalizacja opisu stylu...",
     "description": "Wiadomość podczas optymalizacji stylu"
   },
   "message.optimizeStyleSuccess": {
@@ -414,5 +414,129 @@
   "message.noTasks": {
     "message": "Brak historii zadań, proszę wygenerować muzykę w lewym panelu konfiguracyjnym",
     "description": "Wiadomość, gdy nie ma zadań"
+  },
+  "button.upload_cover": {
+    "message": "Prześlij cover",
+    "description": "Tekst przycisku do przesyłania coveru po przesłaniu audio"
+  },
+  "button.artist_consistency": {
+    "message": "Spójność stylu",
+    "description": "Tekst przycisku do generowania na podstawie stylu artysty"
+  },
+  "button.artist_consistency_vox": {
+    "message": "Spójność stylu wokalu",
+    "description": "Tekst przycisku do generowania na podstawie stylu wokalu artysty"
+  },
+  "button.underpainting": {
+    "message": "Dodaj akompaniament",
+    "description": "Tekst przycisku do dodawania akompaniamentu do przesłanej piosenki"
+  },
+  "button.overpainting": {
+    "message": "Dodaj wokal",
+    "description": "Tekst przycisku do dodawania wokalu do przesłanej piosenki"
+  },
+  "button.samples": {
+    "message": "Dodaj próbki",
+    "description": "Tekst przycisku do dodawania próbek do przesłanej piosenki"
+  },
+  "button.extract_vocals": {
+    "message": "Wyodrębnij wokal",
+    "description": "Tekst przycisku do wyodrębniania wokalu z piosenki"
+  },
+  "button.get_timing": {
+    "message": "Pobierz tempo",
+    "description": "Tekst przycisku do pobierania danych o tempie piosenki"
+  },
+  "button.create_persona": {
+    "message": "Utwórz styl artysty",
+    "description": "Tekst przycisku do tworzenia stylu artysty"
+  },
+  "button.mashup_lyrics": {
+    "message": "Mieszaj teksty",
+    "description": "Tekst przycisku do mieszania dwóch fragmentów tekstu"
+  },
+  "name.persona": {
+    "message": "Styl artysty",
+    "description": "Wybór stylu artysty"
+  },
+  "name.overpaintingRange": {
+    "message": "Zakres wokalu",
+    "description": "Zakres czasowy dodawania wokalu"
+  },
+  "name.underpaintingRange": {
+    "message": "Zakres akompaniamentu",
+    "description": "Zakres czasowy dodawania akompaniamentu"
+  },
+  "name.samplesRange": {
+    "message": "Zakres próbek",
+    "description": "Zakres czasowy dodawania próbek"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "Czas rozpoczęcia (sekundy)",
+    "description": "Placeholder dla czasu rozpoczęcia wokalu"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "Czas zakończenia (sekundy)",
+    "description": "Placeholder dla czasu zakończenia wokalu"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "Czas rozpoczęcia (sekundy)",
+    "description": "Placeholder dla czasu rozpoczęcia akompaniamentu"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "Czas zakończenia (sekundy)",
+    "description": "Placeholder dla czasu zakończenia akompaniamentu"
+  },
+  "placeholder.samplesStart": {
+    "message": "Czas rozpoczęcia (sekundy)",
+    "description": "Placeholder dla czasu rozpoczęcia próbek"
+  },
+  "placeholder.samplesEnd": {
+    "message": "Czas zakończenia (sekundy)",
+    "description": "Placeholder dla czasu zakończenia próbek"
+  },
+  "placeholder.personaId": {
+    "message": "Wprowadź ID stylu artysty...",
+    "description": "Placeholder dla wprowadzenia ID stylu artysty"
+  },
+  "description.persona": {
+    "message": "Użyj utworzonego stylu artysty do generowania piosenek w spójnym stylu",
+    "description": "Opis funkcji stylu artysty"
+  },
+  "description.overpainting": {
+    "message": "Dodaj wokal do przesłanej muzyki w określonym zakresie czasowym",
+    "description": "Opis funkcji dodawania wokalu"
+  },
+  "description.underpainting": {
+    "message": "Dodaj akompaniament do przesłanej muzyki w określonym zakresie czasowym",
+    "description": "Opis funkcji dodawania akompaniamentu"
+  },
+  "description.samples": {
+    "message": "Dodaj próbki do przesłanej muzyki w określonym zakresie czasowym",
+    "description": "Opis funkcji dodawania próbek"
+  },
+  "message.fetchingTiming": {
+    "message": "Pobieranie danych o tempie...",
+    "description": "Wiadomość podczas pobierania danych o tempie"
+  },
+  "message.fetchTimingFailed": {
+    "message": "Pobieranie danych o tempie nie powiodło się",
+    "description": "Wiadomość, gdy pobieranie danych o tempie się nie powiedzie"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "Dane o tempie pobrane pomyślnie",
+    "description": "Wiadomość, gdy pobieranie danych o tempie zakończy się sukcesem"
+  },
+  "message.extractingVocals": {
+    "message": "Wyodrębnianie wokalu...",
+    "description": "Wiadomość podczas wyodrębniania wokalu"
+  },
+  "message.extractVocalsFailed": {
+    "message": "Wyodrębnianie wokalu nie powiodło się",
+    "description": "Wiadomość, gdy wyodrębnianie wokalu się nie powiedzie"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "Wyodrębnianie wokalu zakończone sukcesem",
+    "description": "Wiadomość, gdy wyodrębnianie wokalu zakończy się sukcesem"
   }
 }
