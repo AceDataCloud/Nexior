@@ -26,6 +26,7 @@ export * from './nanobanana';
 export * from './seedream';
 export * from './seedance';
 export * from './serp';
+export * from './wan';
 export * from './site';
 export * from './exchange';
 export * from './error';

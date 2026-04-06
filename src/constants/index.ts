@@ -20,6 +20,7 @@ export * from './nanobanana';
 export * from './seedream';
 export * from './seedance';
 export * from './serp';
+export * from './wan';
 export * from './mapping';
 export * from './surface';
 export * from './mobile';

@@ -17,6 +17,7 @@ import nanobananaState from '../nanobanana/state';
 import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
 import serpState from '../serp/state';
+import wanState from '../wan/state';
 
 export default (): IRootState => {
   return {
@@ -59,6 +60,7 @@ export default (): IRootState => {
     nanobanana: nanobananaState(),
     seedream: seedreamState(),
     seedance: seedanceState(),
-    serp: serpState()
+    serp: serpState(),
+    wan: wanState()
   };
 };
