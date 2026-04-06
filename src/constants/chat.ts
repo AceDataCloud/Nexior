@@ -31,11 +31,16 @@ export const CHAT_MODEL_NAME_CLAUDE_OPUS_4 = 'claude-opus-4';
 export const CHAT_MODEL_NAME_CLAUDE_SONNET_4 = 'claude-sonnet-4';
 export const CHAT_MODEL_NAME_CLAUDE_3_7_SONNET = 'claude-3-7-sonnet';
 
+export const CHAT_MODEL_NAME_KIMI_K2_5 = 'kimi-k2.5';
+export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
+export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
+
 export const CHAT_MODEL_ICON_CHATGPT = 'https://cdn.acedata.cloud/7dljuv.png';
 export const CHAT_MODEL_ICON_GROK = 'https://cdn.acedata.cloud/p1ge98.png';
 export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/bc71ae.png';
 export const CHAT_MODEL_ICON_GEMINI = 'https://cdn.acedata.cloud/psfx0g.jpg';
 export const CHAT_MODEL_ICON_CLAUDE = 'https://cdn.acedata.cloud/8fnw4v.jpg';
+export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/kimi.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
@@ -279,6 +284,35 @@ export const CHAT_MODEL_CLAUDE_3_7_SONNET: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.claude37SonnetDescription')
 };
 
+export const CHAT_MODEL_KIMI_K2_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K2_5,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  getDisplayName: () => i18n.global.t('chat.model.kimiK25'),
+  getDescription: () => i18n.global.t('chat.model.kimiK25Description')
+};
+
+export const CHAT_MODEL_KIMI_K2_THINKING: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K2_THINKING,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK2Thinking'),
+  getDescription: () => i18n.global.t('chat.model.kimiK2ThinkingDescription')
+};
+
+export const CHAT_MODEL_KIMI_K2_THINKING_TURBO: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO,
+  icon: CHAT_MODEL_ICON_KIMI,
+  modelGroup: 'kimi',
+  isReasoningSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.kimiK2ThinkingTurbo'),
+  getDescription: () => i18n.global.t('chat.model.kimiK2ThinkingTurboDescription')
+};
+
 export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   icon: CHAT_MODEL_ICON_CHATGPT,
   name: 'chatgpt',
@@ -331,6 +365,14 @@ export const CHAT_MODEL_GROUP_CLAUDE: IChatModelGroup = {
   models: [CHAT_MODEL_CLAUDE_OPUS_4, CHAT_MODEL_CLAUDE_SONNET_4, CHAT_MODEL_CLAUDE_3_7_SONNET]
 };
 
+export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
+  icon: CHAT_MODEL_ICON_KIMI,
+  name: 'kimi',
+  getDisplayName: () => i18n.global.t('chat.modelGroup.kimi'),
+  getDescription: () => i18n.global.t('chat.modelGroup.kimiDescription'),
+  models: [CHAT_MODEL_KIMI_K2_5, CHAT_MODEL_KIMI_K2_THINKING, CHAT_MODEL_KIMI_K2_THINKING_TURBO]
+};
+
 export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_5_ALL,
   CHAT_MODEL_GPT_5,
@@ -353,7 +395,10 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GEMINI_2_5_FLASH,
   CHAT_MODEL_CLAUDE_OPUS_4,
   CHAT_MODEL_CLAUDE_SONNET_4,
-  CHAT_MODEL_CLAUDE_3_7_SONNET
+  CHAT_MODEL_CLAUDE_3_7_SONNET,
+  CHAT_MODEL_KIMI_K2_5,
+  CHAT_MODEL_KIMI_K2_THINKING,
+  CHAT_MODEL_KIMI_K2_THINKING_TURBO
 ];
 
 export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
@@ -361,5 +406,6 @@ export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
   CHAT_MODEL_GROUP_DEEPSEEK,
   CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_GROUP_GEMINI,
-  CHAT_MODEL_GROUP_CLAUDE
+  CHAT_MODEL_GROUP_CLAUDE,
+  CHAT_MODEL_GROUP_KIMI
 ];

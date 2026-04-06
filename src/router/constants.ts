@@ -18,6 +18,8 @@ export const ROUTE_GEMINI_CONVERSATION = 'gemini-conversation';
 export const ROUTE_GEMINI_CONVERSATION_NEW = 'gemini-conversation-new';
 export const ROUTE_CLAUDE_CONVERSATION = 'claude-conversation';
 export const ROUTE_CLAUDE_CONVERSATION_NEW = 'claude-conversation-new';
+export const ROUTE_KIMI_CONVERSATION = 'kimi-conversation';
+export const ROUTE_KIMI_CONVERSATION_NEW = 'kimi-conversation-new';
 
 export const ROUTE_MIDJOURNEY_INDEX = 'midjourney-index';
 

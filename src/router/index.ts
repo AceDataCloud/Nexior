@@ -5,6 +5,7 @@ import grok from './grok';
 import gemini from './gemini';
 import claude from './claude';
 import deepseek from './deepseek';
+import kimi from './kimi';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
@@ -64,6 +65,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'DeepSeek',
     description: 'Chat with DeepSeek AI — advanced reasoning and coding AI assistant.',
     keywords: ['DeepSeek', 'AI Chat', 'AI Coding', 'DeepSeek AI'],
+    category: 'AI Chat'
+  },
+  kimi: {
+    title: 'Kimi',
+    description: 'Chat with Kimi AI — advanced AI conversations powered by Moonshot AI.',
+    keywords: ['Kimi', 'Moonshot AI', 'AI Chat', 'Kimi AI'],
     category: 'AI Chat'
   },
   midjourney: {
@@ -190,6 +197,7 @@ const routes = [
   gemini,
   claude,
   deepseek,
+  kimi,
   qrart,
   luma,
   pika,

@@ -26,7 +26,10 @@ import {
   CHAT_MODEL_NAME_GEMINI_3_0_PRO,
   CHAT_MODEL_NAME_CLAUDE_OPUS_4,
   CHAT_MODEL_NAME_CLAUDE_SONNET_4,
-  CHAT_MODEL_NAME_CLAUDE_3_7_SONNET
+  CHAT_MODEL_NAME_CLAUDE_3_7_SONNET,
+  CHAT_MODEL_NAME_KIMI_K2_5,
+  CHAT_MODEL_NAME_KIMI_K2_THINKING,
+  CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO
 } from '@/constants';
 
 export type IChatModelName =
@@ -55,13 +58,16 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GEMINI_2_5_FLASH
   | typeof CHAT_MODEL_NAME_CLAUDE_OPUS_4
   | typeof CHAT_MODEL_NAME_CLAUDE_SONNET_4
-  | typeof CHAT_MODEL_NAME_CLAUDE_3_7_SONNET;
+  | typeof CHAT_MODEL_NAME_CLAUDE_3_7_SONNET
+  | typeof CHAT_MODEL_NAME_KIMI_K2_5
+  | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING
+  | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO;
 
 export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude';
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
@@ -72,7 +78,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude';
+  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
