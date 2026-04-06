@@ -15,6 +15,7 @@ import headshotsState from '../headshots/state';
 import nanobananaState from '../nanobanana/state';
 import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
+import serpState from '../serp/state';
 
 export default (): IRootState => {
   return {
@@ -55,6 +56,7 @@ export default (): IRootState => {
     headshots: headshotsState(),
     nanobanana: nanobananaState(),
     seedream: seedreamState(),
-    seedance: seedanceState()
+    seedance: seedanceState(),
+    serp: serpState()
   };
 };

@@ -51,5 +51,6 @@ export const I18N_SCOPES = [
   'user',
   'site',
   'chat',
-  'midjourney'
+  'midjourney',
+  'serp'
 ];

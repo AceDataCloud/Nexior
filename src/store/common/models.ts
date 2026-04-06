@@ -15,6 +15,7 @@ import { ISunoState } from '../suno/models';
 import { INanobananaState } from '../nanobanana/models';
 import { ISeedreamState } from '../seedream/models';
 import { ISeedanceState } from '../seedance/models';
+import { ISerpState } from '../serp/models';
 
 export interface ISetting {}
 
@@ -60,6 +61,7 @@ export interface IAppState {
   nanobanana: INanobananaState;
   seedream: ISeedreamState;
   seedance: ISeedanceState;
+  serp: ISerpState;
 }
 
 export interface IRootState extends ICommonState, IAppState {}
