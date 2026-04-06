@@ -145,6 +145,7 @@ export default defineComponent({
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1px solid var(--el-border-color);
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -174,6 +175,7 @@ export default defineComponent({
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  border: 1px solid var(--el-border-color);
   object-fit: cover;
   flex-shrink: 0;
 }

@@ -1,78 +1,51 @@
 <template>
-  <div :direction="direction" :class="['navigator', { collapsed: isCollapsed && direction === 'column' }]">
+  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column' }]">
     <div class="top">
-      <div class="w-full flex items-center brand">
-        <logo v-if="direction === 'column'" :collapsed="isCollapsed" @click.stop="onHome" />
-        <button
-          v-if="direction === 'column'"
-          class="collapse-btn"
-          :title="isCollapsed ? 'Expand' : 'Collapse'"
-          @click="toggleCollapse"
-        >
-          <font-awesome-icon :icon="isCollapsed ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left'" />
-        </button>
-      </div>
       <div ref="linksContainer" class="links">
-        <template v-if="direction === 'column' && !isCollapsed">
-          <template v-for="(group, groupIndex) in linkGroups" :key="groupIndex">
-            <div class="category-header">{{ group.label }}</div>
-            <div
-              v-for="(link, linkIndex) in group.links"
-              :key="`${groupIndex}-${linkIndex}`"
-              :class="{ link: true, active: link.routes.includes($route.name as string) }"
-              @click="$router.push(link.route)"
-            >
-              <el-image v-if="link.logo" :src="link.logo" class="avatar" />
-              <span class="link-label">{{ link.displayName }}</span>
-            </div>
-          </template>
-        </template>
-        <template v-else>
-          <div
-            v-for="(link, linkIndex) in visibleLinks"
-            :key="linkIndex"
-            :class="{ link: true, active: link.routes.includes($route.name as string) }"
+        <div
+          v-for="(link, linkIndex) in visibleLinks"
+          :key="linkIndex"
+          :class="{ link: true, active: link.routes.includes($route.name as string) }"
+        >
+          <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
+            <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
+          </el-tooltip>
+        </div>
+        <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
+          <el-popover
+            v-model:visible="showOverflow"
+            :placement="direction === 'row' ? 'top' : 'right-start'"
+            :width="180"
+            trigger="click"
+            :show-arrow="false"
+            popper-class="navigator-overflow-popover"
           >
-            <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
-              <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
-            </el-tooltip>
-          </div>
-          <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
-            <el-popover
-              v-model:visible="showOverflow"
-              :placement="direction === 'row' ? 'top' : 'right-start'"
-              :width="180"
-              trigger="click"
-              :show-arrow="false"
-              popper-class="navigator-overflow-popover"
-            >
-              <template #reference>
-                <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
-                  <div class="folder-preview">
-                    <el-image
-                      v-for="(link, i) in overflowPreviewLinks"
-                      :key="i"
-                      :src="link.logo"
-                      class="folder-icon"
-                      fit="cover"
-                    />
-                  </div>
-                </div>
-              </template>
-              <div class="overflow-menu">
-                <div
-                  v-for="(link, linkIndex) in overflowLinks"
-                  :key="linkIndex"
-                  :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
-                  @click="onOverflowItemClick(link)"
-                >
-                  <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
-                  <span class="overflow-name">{{ link.displayName }}</span>
+            <template #reference>
+              <div class="more-button" :class="{ active: isOverflowActive }" :title="$t('common.nav.more')">
+                <div class="folder-preview">
+                  <el-image
+                    v-for="(link, i) in overflowPreviewLinks"
+                    :key="i"
+                    :src="link.logo"
+                    class="folder-icon"
+                    fit="cover"
+                  />
                 </div>
               </div>
-            </el-popover>
-          </div>
-        </template>
+            </template>
+            <div class="overflow-menu">
+              <div
+                v-for="(link, linkIndex) in overflowLinks"
+                :key="linkIndex"
+                :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
+                @click="onOverflowItemClick(link)"
+              >
+                <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
+                <span class="overflow-name">{{ link.displayName }}</span>
+              </div>
+            </div>
+          </el-popover>
+        </div>
       </div>
     </div>
     <div class="bottom">
@@ -84,10 +57,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElTooltip, ElImage, ElPopover } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
   ROUTE_PROFILE_INDEX,
-  ROUTE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_LUMA_INDEX,
   ROUTE_LUMA_HISTORY,
@@ -137,7 +108,6 @@ import {
   SORA_LOGO,
   PIXVERSE_LOGO
 } from '@/constants';
-import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
 interface NavLink {
@@ -154,10 +124,8 @@ export default defineComponent({
   components: {
     ElImage,
     ElPopover,
-    Logo,
     ElTooltip,
-    UserCenter,
-    FontAwesomeIcon
+    UserCenter
   },
   props: {
     direction: {
@@ -174,8 +142,7 @@ export default defineComponent({
       activeIndex: this.$route.name as string,
       containerHeight: 0,
       showOverflow: false,
-      resizeObserver: null as ResizeObserver | null,
-      isCollapsed: localStorage.getItem('nav-collapsed') === 'true'
+      resizeObserver: null as ResizeObserver | null
     };
   },
   computed: {
@@ -349,23 +316,6 @@ export default defineComponent({
       }
       return result;
     },
-    linkGroups() {
-      const categoryOrder = ['chat', 'image', 'music', 'video'];
-      const categoryLabels: Record<string, string> = {
-        chat: this.$t('common.nav.chat'),
-        image: this.$t('common.nav.image'),
-        music: this.$t('common.nav.music'),
-        video: this.$t('common.nav.video')
-      };
-      const groups: { label: string; links: NavLink[] }[] = [];
-      for (const cat of categoryOrder) {
-        const catLinks = this.links.filter((l) => l.category === cat);
-        if (catLinks.length > 0) {
-          groups.push({ label: categoryLabels[cat], links: catLinks });
-        }
-      }
-      return groups;
-    },
     authenticated() {
       return !!this.$store.state.token.access;
     },
@@ -415,18 +365,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onHome() {
-      this.$router.push({
-        name: ROUTE_INDEX
-      });
-    },
     onOverflowItemClick(link: { route: { name: string } }) {
       this.showOverflow = false;
       this.$router.push(link.route);
-    },
-    toggleCollapse() {
-      this.isCollapsed = !this.isCollapsed;
-      localStorage.setItem('nav-collapsed', String(this.isCollapsed));
     }
   }
 });
@@ -439,7 +380,6 @@ export default defineComponent({
   position: relative;
   background-color: var(--app-nav-bg);
   border-right: 1px solid var(--app-border-subtle);
-  transition: width 0.25s ease;
 
   .top {
     .avatar {
@@ -453,36 +393,7 @@ export default defineComponent({
   }
 
   .category-header {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--el-text-color-secondary);
-    padding: 16px 16px 6px;
-    user-select: none;
-  }
-
-  .collapse-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border: none;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--el-text-color-secondary);
-    cursor: pointer;
-    flex-shrink: 0;
-    transition:
-      background 0.15s,
-      color 0.15s;
-    font-size: 12px;
-
-    &:hover {
-      background: var(--el-fill-color-light);
-      color: var(--el-text-color-primary);
-    }
+    display: none;
   }
 
   &[direction='row'] {
@@ -528,30 +439,24 @@ export default defineComponent({
 
   &[direction='column'] {
     flex-direction: column;
-    width: 220px;
+    width: 60px;
 
     .top {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding-top: 12px;
+      padding-top: 10px;
       width: 100%;
       min-height: 0;
       overflow: hidden;
-
-      .brand {
-        flex: 0 0 auto;
-        margin-bottom: 8px;
-        padding: 0 12px;
-        justify-content: space-between;
-      }
 
       .links {
         flex: 1;
         min-height: 0;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 15px;
+        align-items: center;
         overflow-y: auto;
         overflow-x: hidden;
         padding-bottom: 10px;
@@ -569,53 +474,31 @@ export default defineComponent({
         }
       }
 
-      .logo {
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-      }
-
       .link {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 8px 16px;
-        margin: 0 8px;
-        border-radius: 10px;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
         cursor: pointer;
-        transition:
-          background 0.15s,
-          box-shadow 0.15s;
+        background: none !important;
         color: var(--el-text-color-primary);
-        position: relative;
+
+        .avatar {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          margin: auto;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
 
         .link-label {
-          font-size: 13px;
-          font-weight: 450;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          display: none;
         }
 
-        &:hover {
-          background: var(--el-fill-color-light);
-        }
-
-        &.active {
-          background: var(--el-color-primary-light-9);
-          color: var(--el-color-primary);
-
-          &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 18px;
-            border-radius: 0 3px 3px 0;
-            background: var(--el-color-primary);
-          }
+        &.active::before {
+          display: none;
         }
       }
 
@@ -670,60 +553,6 @@ export default defineComponent({
       justify-content: flex-end;
       align-items: center;
       padding-bottom: 10px;
-      border-top: 1px solid var(--app-border-subtle);
-    }
-
-    /* Collapsed state */
-    &.collapsed {
-      width: 60px;
-
-      .top {
-        padding-top: 10px;
-
-        .brand {
-          justify-content: center;
-          padding: 0;
-          margin-bottom: 15px;
-
-          .collapse-btn {
-            display: none;
-          }
-        }
-
-        .links {
-          gap: 15px;
-          align-items: center;
-        }
-
-        .link {
-          padding: 0;
-          margin: 0;
-          justify-content: center;
-          background: none !important;
-
-          .avatar {
-            width: 35px;
-            height: 35px;
-            margin: auto;
-          }
-
-          .link-label {
-            display: none;
-          }
-
-          &.active::before {
-            display: none;
-          }
-        }
-
-        .category-header {
-          display: none;
-        }
-      }
-
-      .bottom {
-        border-top: none;
-      }
     }
   }
 }

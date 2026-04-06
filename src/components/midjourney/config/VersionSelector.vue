@@ -11,7 +11,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 
-const DEFAULT_VERSION = '6.1';
+const DEFAULT_VERSION = '7';
 
 export default defineComponent({
   name: 'VersionSelector',

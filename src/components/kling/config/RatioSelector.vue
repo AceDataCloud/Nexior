@@ -89,7 +89,7 @@ export default defineComponent({
   .item {
     width: 48px;
     height: 70px;
-    border: 1px solid transparent;
+    border: 1px solid var(--el-border-color);
     background-color: var(--el-fill-color-lighter);
     display: flex;
     flex-direction: column;
