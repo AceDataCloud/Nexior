@@ -123,12 +123,28 @@
     "message": "SeeDance",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.featuresWan": {
+    "message": "Wan",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
+  "field.featuresProducer": {
+    "message": "Producent",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
+  "field.featuresKimi": {
+    "message": "Kimi",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
+  "field.featuresSerp": {
+    "message": "SERP",
+    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+  },
   "field.featuresSupport": {
     "message": "Korisnička podrška",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresI18n": {
-    "message": "Višelingvalna podrška",
+    "message": "Podrška za više jezika",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.basicConfig": {
@@ -144,7 +160,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.featuresConfig": {
-    "message": "Podešavanja funkcija",
+    "message": "Podešavanje funkcija",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editTitle": {
@@ -172,7 +188,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.distributionConfig": {
-    "message": "Podešavanja distribucije",
+    "message": "Podešavanje distribucije",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editDistributionDefaultInviterId": {
@@ -184,200 +200,216 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editQR": {
-    "message": "Uredi QR kod",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Уреди QR код",
+    "description": "Приказује се у заглављу уређивања"
   },
   "title.editUrl": {
-    "message": "Uredi link",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Уреди линк",
+    "description": "Приказује се у заглављу уређивања"
   },
   "placeholder.title": {
-    "message": "Unesite naslov sajta",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите наслов сајта",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.origin": {
-    "message": "Unesite domen sajta",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите домен сајта",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.editUrl": {
-    "message": "Unesite link",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите линк",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.description": {
-    "message": "Unesite opis sajta",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите опис сајта",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.keywords": {
-    "message": "Unesite ključne reči sajta",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите кључне речи сајта",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Unesite ID podrazumevanog pozivaoca",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите ID подразумеваног позиватеља",
+    "description": "Приказује се у уређивању"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Unesite ID obaveznog pozivaoca",
-    "description": "Prikazuje se kao naslov u okviru za uređivanje"
+    "message": "Унесите ID обавезног позиватеља",
+    "description": "Приказује се у уређивању"
   },
   "message.uploadImageExceed": {
-    "message": "Prekoračen limit za upload slika",
-    "description": "Poruka kada je prekoračen limit za upload slika"
+    "message": "Превише слике за учитавање",
+    "description": "Порука о превеликој слици за учитавање"
   },
   "message.uploadImageError": {
-    "message": "Greška prilikom upload-a slike",
-    "description": "Poruka kada dođe do greške prilikom upload-a slike"
+    "message": "Грешка при учитавању слике",
+    "description": "Порука о грешци при учитавању слике"
   },
   "message.editLogoTip": {
-    "message": "Preporučena veličina: 200*60px",
-    "description": "Jezik za uputstvo prilikom upload-a slike"
+    "message": "Препоручена величина: 200*60px",
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editQRTip": {
-    "message": "Preporučena veličina: 200*200px",
-    "description": "Jezik za uputstvo prilikom upload-a slike"
+    "message": "Препоручена величина: 200*200px",
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editFaviconTip": {
-    "message": "Preporučena veličina: 32*32px",
-    "description": "Jezik za uputstvo prilikom upload-a slike"
+    "message": "Препоручена величина: 32*32px",
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editUrl": {
-    "message": "Unesite link",
-    "description": "Uputstvo za unos linka"
+    "message": "Унесите линк",
+    "description": "Упутство за унос линка"
   },
   "message.atLeastOneAdmin": {
-    "message": "Zadržite bar jednog administratora",
-    "description": "Poruka koja naglašava potrebu za bar jednim administratorom"
+    "message": "Мора остати бар један администратор",
+    "description": "Упозорење о потреби за бар једним администратором"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID podrazumevanog pozivaoca, ako distribucioni link ne sadrži inviter_id parametar, koristiće se ovaj ID kao pozivalac.",
-    "description": "Uputstvo za ID podrazumevanog pozivaoca"
+    "message": "ID корисника подразумеваног позиватеља. Ако дистрибутивна веза не садржи параметар inviter_id, користиће се овај ID као позиватељ.",
+    "description": "Упутство о ID подразумеваног позиватеља"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID obaveznog pozivaoca, ako je ovaj ID postavljen, koristiće se bez obzira na to da li distribucioni link sadrži inviter_id parametar.",
-    "description": "Uputstvo za ID obaveznog pozivaoca"
+    "message": "ID корисника обавезног позиватеља. Ако је овај ID постављен, без обзира на то да ли дистрибутивна веза садржи параметар inviter_id, користиће се овај ID као позиватељ.",
+    "description": "Упутство о ID обавезног позиватеља"
   },
   "message.originTip": {
-    "message": "Domen sajta, konfiguracija sajta je vezana za domen, domen se ne može menjati.",
-    "description": "Uputstvo za domen sajta"
+    "message": "Домен сајта, конфигурација сајта је повезана са доменом и не може се променити.",
+    "description": "Упутство о домену сајта"
   },
   "message.titleTip": {
-    "message": "Naslov sajta, prikazuje se na kartici pretraživača.",
-    "description": "Uputstvo za naslov sajta"
+    "message": "Наслов сајта, приказује се на картици прегледача.",
+    "description": "Упутство о наслову сајта"
   },
   "message.descriptionTip": {
-    "message": "Opis sajta, nalazi se u metapodacima sajta, koristi se za SEO optimizaciju.",
-    "description": "Uputstvo za opis sajta"
+    "message": "Опис сајта, налази се у мета информацијама сајта, користи се за SEO оптимизацију.",
+    "description": "Упутство о опису сајта"
   },
   "message.logoTip": {
-    "message": "Logo sajta, prikazuje se na vrhu menija kada se meni proširi.",
-    "description": "Uputstvo za logo sajta"
+    "message": "Лого сајта, приказује се на врху менија када се мени прошири.",
+    "description": "Упутство о логу сајта"
   },
   "message.faviconTip": {
-    "message": "Favicon sajta, prikazuje se na kartici pretraživača.",
-    "description": "Uputstvo za favicon sajta"
+    "message": "Favicon сајта, приказује се на картици прегледача.",
+    "description": "Упутство о favicon-у сајта"
   },
   "message.adminsTip": {
-    "message": "ID administratora sajta, podrazumevano, prvi korisnik koji kreira sajt postaje administrator, samo administratori mogu upravljati sajtom.",
-    "description": "Uputstvo za administratore sajta"
+    "message": "ID администраторови сајта, подразумевано, први корисник који креира сајт постаје администратор, само администратори могу управљати сајтом.",
+    "description": "Упутство о администраторима сајта"
   },
   "message.adminsTip2": {
-    "message": "Ovde možete dodavati ili brisati ID-ove administratora, ID korisnika možete videti na https://auth.acedata.cloud",
-    "description": "Uputstvo za administratore sajta"
+    "message": "Можете додавати или уклањати ID администраторови овде, можете посетити https://auth.acedata.cloud за преглед ID корисника",
+    "description": "Упутство о администраторима сајта"
   },
   "message.keywordsTip": {
-    "message": "Ključne reči sajta, nalaze se u metapodacima sajta, koriste se za SEO optimizaciju.",
-    "description": "Uputstvo za ključne reči sajta"
+    "message": "Кључне речи сајта, налазе се у мета информацијама сајта, користе се за SEO оптимизацију.",
+    "description": "Упутство о кључним речима сајта"
   },
   "message.keywordsTip2": {
-    "message": "Ovde možete dodavati ili brisati ključne reči sajta, što preciznije ključne reči, to bolje za SEO optimizaciju.",
-    "description": "Uputstvo za ključne reči sajta"
+    "message": "Можете додавати или уклањати кључне речи сајта овде, што прецизније кључне речи, то боље за SEO оптимизацију.",
+    "description": "Упутство о кључним речима сајта"
   },
   "message.featuresChat": {
-    "message": "Uključite ili isključite Chat funkcionalnost.",
-    "description": "Opis Chat funkcionalnosti"
+    "message": "Укључи или искључи Chat модул.",
+    "description": "Опис Chat функције"
   },
   "message.featuresGrok": {
-    "message": "Uključite ili isključite Grok funkcionalnost.",
-    "description": "Opis Grok funkcionalnosti"
+    "message": "Укључи или искључи Grok модул.",
+    "description": "Опис Grok функције"
   },
   "message.featuresDeepseek": {
-    "message": "Uključite ili isključite Deepseek funkcionalnost.",
-    "description": "Opis Deepseek funkcionalnosti"
+    "message": "Укључи или искључи Deepseek модул.",
+    "description": "Опис Deepseek функције"
   },
   "message.featuresChatgpt": {
-    "message": "Uključite ili isključite ChatGPT funkcionalnost.",
-    "description": "Opis ChatGPT funkcionalnosti"
+    "message": "Укључи или искључи ChatGPT модул.",
+    "description": "Опис ChatGPT функције"
   },
   "message.featuresMidjourney": {
-    "message": "Uključite ili isključite Midjourney funkcionalnost.",
-    "description": "Opis Midjourney funkcionalnosti"
+    "message": "Укључи или искључи Midjourney модул.",
+    "description": "Опис Midjourney функције"
   },
   "message.featuresChatdoc": {
-    "message": "Uključite ili isključite Chatdoc funkcionalnost.",
-    "description": "Opis Chatdoc funkcionalnosti"
+    "message": "Укључи или искључи Chatdoc модул.",
+    "description": "Опис Chatdoc функције"
   },
   "message.featuresQrart": {
-    "message": "Uključite ili isključite Qrart funkcionalnost.",
-    "description": "Opis Qrart funkcionalnosti"
+    "message": "Укључи или искључи Qrart модул.",
+    "description": "Опис Qrart функције"
   },
   "message.featuresVeo": {
-    "message": "Uključite ili isključite Veo funkcionalnost.",
-    "description": "Opis Veo funkcionalnosti"
+    "message": "Укључи или искључи Veo модул.",
+    "description": "Опис Veo функције"
   },
   "message.featuresSora": {
-    "message": "Uključite ili isključite Sora funkcionalnost.",
-    "description": "Opis Sora funkcionalnosti"
+    "message": "Укључи или искључи Sora модул.",
+    "description": "Опис Sora функције"
   },
   "message.featuresSuno": {
-    "message": "Uključite ili isključite Suno funkcionalnost.",
-    "description": "Opis Suno funkcionalnosti"
+    "message": "Укључи или искључи Suno модул.",
+    "description": "Опис Suno функције"
   },
   "message.featuresPixverse": {
-    "message": "Uključite ili isključite Pixverse funkcionalnost.",
+    "message": "Uključite ili isključite Pixverse funkcionalni modul.",
     "description": "Opis Pixverse funkcionalnosti"
   },
   "message.featuresFlux": {
-    "message": "Uključite ili isključite FLux funkcionalnost.",
+    "message": "Uključite ili isključite FLux funkcionalni modul.",
     "description": "Opis FLux funkcionalnosti"
   },
   "message.featuresNanobanana": {
-    "message": "Uključite ili isključite Nano Banana funkcionalnost.",
+    "message": "Uključite ili isključite Nano Banana funkcionalni modul.",
     "description": "Opis Nano Banana funkcionalnosti"
   },
   "message.featuresSeedream": {
-    "message": "Uključi ili isključi SeeDream funkcionalnost.",
+    "message": "Uključite ili isključite SeeDream funkcionalni modul.",
     "description": "Opis SeeDream funkcionalnosti"
   },
   "message.featuresSeedance": {
-    "message": "Uključi ili isključi SeeDance funkcionalnost.",
+    "message": "Omogućite ili onemogućite SeeDance funkcionalni modul.",
     "description": "Opis SeeDance funkcionalnosti"
   },
+  "message.featuresWan": {
+    "message": "Uključite ili isključite Wan funkcionalni modul.",
+    "description": "Opis Wan funkcionalnosti"
+  },
+  "message.featuresProducer": {
+    "message": "Uključite ili isključite Producer funkcionalni modul.",
+    "description": "Opis Producer funkcionalnosti"
+  },
+  "message.featuresKimi": {
+    "message": "Uključite ili isključite Kimi funkcionalni modul.",
+    "description": "Opis Kimi funkcionalnosti"
+  },
+  "message.featuresSerp": {
+    "message": "Uključite ili isključite SERP funkcionalni modul.",
+    "description": "Opis SERP funkcionalnosti"
+  },
   "message.featuresLuma": {
-    "message": "Uključi ili isključi Luma funkcionalnost.",
+    "message": "Uključite ili isključite Luma funkcionalni modul.",
     "description": "Opis Luma funkcionalnosti"
   },
   "message.featuresPika": {
-    "message": "Uključi ili isključi Pika funkcionalnost.",
+    "message": "Uključite ili isključite Pika funkcionalni modul.",
     "description": "Opis Pika funkcionalnosti"
   },
   "message.featuresKling": {
-    "message": "Uključi ili isključi Kling funkcionalnost.",
+    "message": "Uključite ili isključite Kling funkcionalni modul.",
     "description": "Opis Kling funkcionalnosti"
   },
   "message.featuresHailuo": {
-    "message": "Uključi ili isključi Hailuo funkcionalnost.",
+    "message": "Uključite ili isključite Hailuo funkcionalni modul.",
     "description": "Opis Hailuo funkcionalnosti"
   },
   "message.featuresHeadshots": {
-    "message": "Uključi ili isključi AI identifikacione fotografije.",
-    "description": "Opis AI identifikacionih fotografija"
+    "message": "Uključite ili isključite AI pasoške fotografije funkcionalni modul.",
+    "description": "Opis AI pasoških fotografija funkcionalnosti"
   },
   "message.featuresSupport": {
-    "message": "Uključi ili isključi korisničku podršku",
+    "message": "Uključite ili isključite korisničku podršku",
     "description": "Opis funkcionalnosti podrške"
   },
   "message.featuresI18n": {
-    "message": "Uključi ili isključi podršku za više jezika, nakon isključivanja, korisnici mogu koristiti samo podrazumevani jezik.",
-    "description": "Opis podrške za više jezika"
+    "message": "Uključite ili isključite podršku za više jezika, kada je isključeno, korisnici mogu koristiti samo podrazumevani jezik.",
+    "description": "Opis funkcionalnosti podrške za više jezika"
   },
   "button.upload": {
     "message": "Otpremi",
@@ -385,26 +417,26 @@
   },
   "button.enabled": {
     "message": "Omogućeno",
-    "description": "Tekst prekidača, označava da je omogućeno"
+    "description": "Tekst na prekidaču koji označava da je omogućeno"
   },
   "button.disabled": {
     "message": "Onemogućeno",
-    "description": "Tekst prekidača, označava da je onemogućeno"
+    "description": "Tekst na prekidaču koji označava da je onemogućeno"
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Prikazano kao naslov u okviru za uređivanje"
+    "description": "Prikazano kao naslov u kutiji za uređivanje"
   },
   "message.featuresGemini": {
-    "message": "Uključi ili isključi Gemini funkcionalnost.",
+    "message": "Omogućite ili onemogućite Gemini funkcionalni modul.",
     "description": "Opis Gemini funkcionalnosti"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Prikazano kao naslov u okviru za uređivanje"
+    "description": "Prikazano kao naslov u kutiji za uređivanje"
   },
   "message.featuresClaude": {
-    "message": "Uključi ili isključi Claude funkcionalnost.",
+    "message": "Omogućite ili onemogućite Claude funkcionalni modul.",
     "description": "Opis Claude funkcionalnosti"
   }
 }

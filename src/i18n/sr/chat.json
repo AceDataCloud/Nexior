@@ -45,7 +45,7 @@
   },
   "modelGroup.geminiDescription": {
     "message": "AI model razvijen od strane Google-a",
-    "description": "Opis Gemini modela"
+    "description": "Opis Gemini model grupe"
   },
   "modelGroup.claude": {
     "message": "Claude",
@@ -53,7 +53,15 @@
   },
   "modelGroup.claudeDescription": {
     "message": "AI model razvijen od strane Anthropic kompanije",
-    "description": "Opis Claude modela"
+    "description": "Opis Claude model grupe"
+  },
+  "modelGroup.kimi": {
+    "message": "Kimi",
+    "description": "Naziv modela usluge, tj. Kimi"
+  },
+  "modelGroup.kimiDescription": {
+    "message": "AI model razvijen od strane kompanije Mračna strana meseca",
+    "description": "Opis Kimi model grupe"
   },
   "model.5All": {
     "message": "gpt-5-all",
@@ -136,12 +144,12 @@
     "description": "Opis DeepSeek rezonator modela"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 beta",
+    "message": "V3.2 eksperimentalna verzija",
     "description": "Naziv modela usluge, tj. DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
-    "message": "Najnovija beta verzija",
-    "description": "Opis DeepSeek V3.2 beta modela"
+    "message": "Najnovija eksperimentalna verzija",
+    "description": "Opis DeepSeek V3.2 eksperimentalnog modela"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -168,12 +176,12 @@
     "description": "Opis Grok3 rezonator modela"
   },
   "model.grok3Deepsearch": {
-    "message": "grok-3 duboka pretraga",
-    "description": "Naziv modela usluge, tj. Grok3 duboka pretraga"
+    "message": "grok-3 duboka istraživanja",
+    "description": "Naziv modela usluge, tj. Grok3 duboka istraživanja"
   },
   "model.grok3DeepsearchDescription": {
-    "message": "Pogodan za duboku pretragu i složene probleme",
-    "description": "Opis Grok3 duboke pretrage modela"
+    "message": "Pogodan za duboka istraživanja i složene probleme",
+    "description": "Opis Grok3 dubokog istraživačkog modela"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
@@ -181,14 +189,14 @@
   },
   "model.gemini30ProDescription": {
     "message": "Trenutno najnapredniji model",
-    "description": "Opis Gemini 3.0 Pro modela"
+    "description": "Opis modela Gemini 3.0 Pro"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
     "description": "Naziv modela usluge, tj. Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Za složene zadatke rezonovanja",
+    "message": "Pogodan za složene zadatke zaključivanja",
     "description": "Opis modela Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
@@ -212,7 +220,7 @@
     "description": "Naziv modela usluge, tj. Claude Sonnet 4"
   },
   "model.claudeSonnet4Description": {
-    "message": "Za većinu zadataka",
+    "message": "Pogodan za većinu zadataka",
     "description": "Opis modela Claude Sonnet 4"
   },
   "model.claude37Sonnet": {
@@ -223,20 +231,44 @@
     "message": "Izbalansirane performanse i brzina",
     "description": "Opis modela Claude 3.7 Sonnet"
   },
+  "model.kimiK25": {
+    "message": "kimi-k2.5",
+    "description": "Naziv modela usluge, tj. Kimi K2.5"
+  },
+  "model.kimiK25Description": {
+    "message": "Trenutno najnapredniji model",
+    "description": "Opis modela Kimi K2.5"
+  },
+  "model.kimiK2Thinking": {
+    "message": "kimi-k2 zaključivanje",
+    "description": "Naziv modela usluge, tj. Kimi K2 zaključivanje"
+  },
+  "model.kimiK2ThinkingDescription": {
+    "message": "Pogodan za zaključivanje i duboko razmišljanje",
+    "description": "Opis modela Kimi K2 zaključivanje"
+  },
+  "model.kimiK2ThinkingTurbo": {
+    "message": "kimi-k2 turbo zaključivanje",
+    "description": "Naziv modela usluge, tj. Kimi K2 turbo zaključivanje"
+  },
+  "model.kimiK2ThinkingTurboDescription": {
+    "message": "Brži model za zaključivanje",
+    "description": "Opis modela Kimi K2 turbo zaključivanje"
+  },
   "model.o1": {
     "message": "o1",
     "description": "Naziv modela usluge, tj. O1"
   },
   "model.o1Description": {
-    "message": "Za naprednije zadatke rezonovanja",
+    "message": "Pogodan za naprednije zadatke zaključivanja",
     "description": "Opis modela O1"
   },
   "model.o1Mini": {
-    "message": "ChatGPT - o1-mini rezonovanje",
+    "message": "ChatGPT - o1-mini zaključivanje",
     "description": "Naziv modela usluge, tj. O1-Mini"
   },
   "model.o1MiniDescription": {
-    "message": "Brže izvršavanje zadataka rezonovanja.",
+    "message": "Brže izvršavanje zadataka zaključivanja.",
     "description": "Opis modela O1-Mini"
   },
   "model.o3": {
@@ -244,7 +276,7 @@
     "description": "Naziv modela usluge, tj. O3"
   },
   "model.o3Description": {
-    "message": "Za naprednije zadatke rezonovanja",
+    "message": "Pogodan za naprednije zadatke zaključivanja",
     "description": "Opis modela O3"
   },
   "model.o4Mini": {
@@ -252,7 +284,7 @@
     "description": "Naziv modela usluge, tj. O4-Mini"
   },
   "model.o4MiniDescription": {
-    "message": "Specijalizovan za kodiranje i vizuelno rezonovanje",
+    "message": "Vešt u kodiranju i vizuelnom zaključivanju",
     "description": "Opis modela O4"
   },
   "message.startNewChat": {
@@ -284,7 +316,7 @@
     "description": "Poruka na vebu koja obaveštava korisnika da otpremanje datoteke nije uspelo, pokušajte ponovo kasnije"
   },
   "message.notApplied": {
-    "message": "Niste još zatražili ovu uslugu, prvo zatražite",
+    "message": "Još niste zatražili ovu uslugu, prvo zatražite",
     "description": "Poruka na vebu koja obaveštava korisnika da još nije zatražio ovu uslugu, prvo zatražite"
   },
   "message.tryForFree": {
@@ -304,84 +336,84 @@
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da jednostavnim jezikom objasni osnovne principe kvantnog računarstva"
   },
   "message.question4": {
-    "message": "Iskusite Seul kao lokalni",
-    "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da objasni uticaj virtuelne stvarnosti na umetničko stvaralaštvo"
+    "message": "Iskusite Seul kao lokalac",
+    "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da objasni kakav uticaj ima virtuelna stvarnost na umetničko stvaralaštvo"
   },
   "message.question5": {
     "message": "Koji je veći, 9.8 ili 9.11?",
-    "description": "Primer pitanja za započinjanje razgovora, traži da se uporede dva broja"
+    "description": "Početno pitanje za razgovor, traži se poređenje veličine dva broja"
   },
   "message.question6": {
-    "message": "Kakav uticaj ima AI na budućnost?",
-    "description": "Primer pitanja za započinjanje razgovora, kakav uticaj AI ima na budućnost?"
+    "message": "Kakav uticaj AI ima na budućnost?",
+    "description": "Početno pitanje za razgovor, kakav uticaj AI ima na budućnost?"
   },
   "message.question7": {
-    "message": "Kako poboljšati efikasnost učenja?",
-    "description": "Primer pitanja za započinjanje razgovora, kako poboljšati svoju efikasnost učenja?"
+    "message": "Kako poboljšati efikasnost u učenju?",
+    "description": "Početno pitanje za razgovor, kako poboljšati svoju efikasnost u učenju?"
   },
   "message.question8": {
     "message": "Kako poboljšati fokus?",
-    "description": "Primer pitanja za započinjanje razgovora, kako poboljšati svoj fokus?"
+    "description": "Početno pitanje za razgovor, kako poboljšati svoj fokus?"
   },
   "message.errorApiError": {
     "message": "Odgovor nije uspeo, pokušajte ponovo kasnije",
     "description": "Poruka na vebu koja obaveštava korisnika da odgovor nije uspeo, pokušajte ponovo kasnije"
   },
   "message.errorBadRequest": {
-    "message": "Sadržaj zahteva nije u pravilnom formatu, molimo pokušajte ponovo",
-    "description": "Poruka na vebu koja obaveštava korisnika da sadržaj zahteva nije u pravilnom formatu, molimo pokušajte ponovo"
+    "message": "Sadržaj zahteva nije ispravan, postavite pitanje ponovo",
+    "description": "Poruka na vebu koja obaveštava korisnika da sadržaj zahteva nije ispravan, postavite pitanje ponovo"
   },
   "message.errorNoConversation": {
-    "message": "Razgovor ne postoji ili je istekao, molimo započnite novi razgovor",
-    "description": "Poruka na vebu koja obaveštava korisnika da razgovor ne postoji ili je istekao, molimo započnite novi razgovor"
+    "message": "Razgovor ne postoji ili je istekao, započnite novi razgovor",
+    "description": "Poruka na vebu koja obaveštava korisnika da razgovor ne postoji ili je istekao, započnite novi razgovor"
   },
   "message.errorContentTooLarge": {
-    "message": "Sadržaj pitanja je predug, molimo skratite i pokušajte ponovo",
-    "description": "Poruka na vebu koja obaveštava korisnika da je sadržaj pitanja predug, molimo skratite i pokušajte ponovo"
+    "message": "Sadržaj pitanja je predug, skratite i pokušajte ponovo",
+    "description": "Poruka na vebu koja obaveštava korisnika da je sadržaj pitanja predug, skratite i pokušajte ponovo"
   },
   "message.errorTooManyRequests": {
-    "message": "Vaša akcija je previše učestala, molimo pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je njegova akcija previše učestala, molimo pokušajte ponovo kasnije"
+    "message": "Vaša aktivnost je previše učestala, pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da je aktivnost previše učestala, pokušajte ponovo kasnije"
   },
   "message.errorBusy": {
-    "message": "Server je zauzet, molimo pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je server zauzet, molimo pokušajte ponovo kasnije"
+    "message": "Server je zauzet, pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da je server zauzet, pokušajte ponovo kasnije"
   },
   "message.errorUsedUp": {
-    "message": "Iskoristili ste sve dostupne pokušaje, molimo kupite više da biste nastavili sa korišćenjem",
-    "description": "Poruka na vebu koja obaveštava korisnika da je iskoristio sve dostupne pokušaje, molimo kupite više da biste nastavili sa korišćenjem"
+    "message": "Iskoristili ste sve dostupne pokušaje, kupite više da biste nastavili",
+    "description": "Poruka na vebu koja obaveštava korisnika da je iskoristio sve dostupne pokušaje, kupite više da biste nastavili"
   },
   "message.errorUnknown": {
-    "message": "Došlo je do nepoznate greške na serveru, molimo pokušajte ponovo ili kontaktirajte podršku",
-    "description": "Poruka na vebu koja obaveštava korisnika da je došlo do nepoznate greške na serveru, molimo pokušajte ponovo ili kontaktirajte podršku"
+    "message": "Došlo je do nepoznate greške na serveru, pokušajte ponovo ili kontaktirajte podršku",
+    "description": "Poruka na vebu koja obaveštava korisnika da je došlo do nepoznate greške na serveru, pokušajte ponovo ili kontaktirajte podršku"
   },
   "message.errorTimeout": {
-    "message": "Odgovor na pitanje je istekao, molimo pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je odgovor na pitanje istekao, molimo pokušajte ponovo kasnije"
+    "message": "Odgovor na pitanje je istekao, pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da je odgovor na pitanje istekao, pokušajte ponovo kasnije"
   },
   "message.errorNotApplied": {
-    "message": "Niste se prijavili za ovu uslugu, molimo prijavite se pre nego što nastavite sa pitanjem",
-    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, molimo prijavite se pre nego što nastavite sa pitanjem"
+    "message": "Niste se prijavili za ovu uslugu, prvo se prijavite pa nastavite sa pitanjem",
+    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, prvo se prijavite pa nastavite sa pitanjem"
   },
   "message.confirmDelete": {
     "message": "Potvrdi brisanje",
     "description": "Poruka na vebu koja obaveštava korisnika da potvrdi brisanje"
   },
   "message.howToUse": {
-    "message": "AI može napraviti greške, molimo proverite važne informacije.",
-    "description": "Poruka na vebu koja obaveštava korisnika da AI može napraviti greške, molimo proverite važne informacije"
+    "message": "AI može napraviti greške, proverite važne informacije.",
+    "description": "Poruka na vebu koja obaveštava korisnika da AI može napraviti greške, proverite važne informacije"
   },
   "title.chat": {
     "message": "AI Čat",
-    "description": "Naslov na vebu, tj. AI Čat"
+    "description": "Naslov veba, tj. AI čat"
   },
   "title.example": {
     "message": "Primer",
-    "description": "Naslov na vebu, tj. Primer"
+    "description": "Naslov veba, tj. Primer"
   },
   "title.capabilities": {
     "message": "Mogućnosti",
-    "description": "Naslov na vebu, tj. Mogućnosti"
+    "description": "Naslov veba, tj. Mogućnosti"
   },
   "title.limitations": {
     "message": "Ograničenja",

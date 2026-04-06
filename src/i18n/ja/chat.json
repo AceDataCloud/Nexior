@@ -55,6 +55,14 @@
     "message": "Anthropicが開発したAIモデル",
     "description": "Claudeモデルグループの説明"
   },
+  "modelGroup.kimi": {
+    "message": "Kimi",
+    "description": "サービスのモデル名、すなわち Kimi"
+  },
+  "modelGroup.kimiDescription": {
+    "message": "月の暗い面社が開発したAIモデル",
+    "description": "Kimiモデルグループの説明"
+  },
   "model.5All": {
     "message": "gpt-5-all",
     "description": "サービスのモデル名、すなわち GPT 5 All"
@@ -136,11 +144,11 @@
     "description": "DeepSeek推論モデルの説明"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 実験版",
+    "message": "V3.2 ベータ版",
     "description": "サービスのモデル名、すなわち DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
-    "message": "最新の実験バージョン",
+    "message": "最新の実験版",
     "description": "DeepSeek V3.2実験モデルの説明"
   },
   "model.grok4": {
@@ -181,7 +189,7 @@
   },
   "model.gemini30ProDescription": {
     "message": "現在最も先進的なモデル",
-    "description": "Gemini 3.0 Proモデルの説明"
+    "description": "Gemini 3.0 Pro モデルの説明"
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
@@ -223,6 +231,30 @@
     "message": "バランスの取れた性能と速度",
     "description": "Claude 3.7 Sonnet モデルの説明"
   },
+  "model.kimiK25": {
+    "message": "kimi-k2.5",
+    "description": "サービスのモデル名、すなわち Kimi K2.5"
+  },
+  "model.kimiK25Description": {
+    "message": "現在最も先進的なモデル",
+    "description": "Kimi K2.5 モデルの説明"
+  },
+  "model.kimiK2Thinking": {
+    "message": "kimi-k2 推論",
+    "description": "サービスのモデル名、すなわち Kimi K2 推論"
+  },
+  "model.kimiK2ThinkingDescription": {
+    "message": "推論と深い思考の問題に適しています",
+    "description": "Kimi K2 推論モデルの説明"
+  },
+  "model.kimiK2ThinkingTurbo": {
+    "message": "kimi-k2 超高速推論",
+    "description": "サービスのモデル名、すなわち Kimi K2 超高速推論"
+  },
+  "model.kimiK2ThinkingTurboDescription": {
+    "message": "より迅速な推論モデル",
+    "description": "Kimi K2 超高速推論モデルの説明"
+  },
   "model.o1": {
     "message": "o1",
     "description": "サービスのモデル名、すなわち O1"
@@ -256,163 +288,163 @@
     "description": "O4 モデルの説明"
   },
   "message.startNewChat": {
-    "message": "新しい会話を開始",
-    "description": "ウェブページのメッセージ、ユーザーに新しい会話を開始するように伝える"
+    "message": "新しい対話を開始",
+    "description": "ウェブページ内のメッセージ、ユーザーに新しい対話を開始するように伝える"
   },
   "message.uploadFile": {
     "message": "ファイルをアップロード",
-    "description": "ウェブページのメッセージ、ユーザーにファイルをアップロードするように伝える"
+    "description": "ウェブページ内のメッセージ、ユーザーにファイルをアップロードするように伝える"
   },
   "message.noToken": {
-    "message": "まずはサービスを申請してください",
-    "description": "ウェブページのメッセージ、ユーザーにまずサービスを申請するように伝える"
+    "message": "まずは該当サービスを申請してください",
+    "description": "ウェブページ内のメッセージ、ユーザーにまず該当サービスを申請するように伝える"
   },
   "message.newMessagePlaceholder": {
     "message": "質問を入力してください...",
-    "description": "ウェブページのプレースホルダー、ユーザーに質問を入力するように伝える"
+    "description": "ウェブページ内のプレースホルダー、ユーザーに質問を入力するように伝える"
   },
   "message.noInput": {
     "message": "質問は空にできません",
-    "description": "ウェブページのメッセージ、ユーザーに質問が空であってはならないことを伝える"
+    "description": "ウェブページ内のメッセージ、ユーザーに質問が空であってはならないことを伝える"
   },
   "message.uploadReferencesExceed": {
     "message": "最大1つのファイルのみアップロードできます",
-    "description": "ウェブページのメッセージ、ユーザーに最大1つのファイルのみアップロードできることを伝える"
+    "description": "ウェブページ内のメッセージ、ユーザーに最大1つのファイルのみアップロードできることを伝える"
   },
   "message.uploadReferencesError": {
     "message": "ファイルのアップロードに失敗しました。後で再試行してください",
-    "description": "ウェブページのメッセージ、ユーザーにファイルのアップロードに失敗したことを伝え、後で再試行するように促す"
+    "description": "ウェブページ内のメッセージ、ユーザーにファイルのアップロードに失敗したことを伝え、後で再試行するように促す"
   },
   "message.notApplied": {
-    "message": "まだこのサービスを申請していません。まず申請してください",
-    "description": "ウェブページのメッセージ、ユーザーにまだこのサービスを申請していないことを伝え、まず申請するように促す"
+    "message": "このサービスをまだ申請していません。まず申請してください",
+    "description": "ウェブページ内のメッセージ、ユーザーにこのサービスをまだ申請していないことを伝え、まず申請するように促す"
   },
   "message.tryForFree": {
-    "message": "無料トライアル",
-    "description": "ウェブページのメッセージ、ユーザーに無料トライアルを提供することを伝える"
+    "message": "無料で試す",
+    "description": "ウェブページ内のメッセージ、ユーザーに無料で試すことを伝える"
   },
   "message.question1": {
     "message": "トレーニングプランを作成",
-    "description": "会話を開始するためのサンプル質問、ユーザーに Hello World を出力する JavaScript コードを書くように求める"
+    "description": "対話を開始するためのサンプル質問、ユーザーに Hello World を出力する JavaScript コードを書くように求める"
   },
   "message.question2": {
-    "message": "個人ウェブサイトを作成",
-    "description": "会話を開始するためのサンプル質問、ユーザーにマイクに引っ越したことを伝えるメールを書くように求める"
+    "message": "個人ウェブページを作成",
+    "description": "対話を開始するためのサンプル質問、ユーザーにマイクに電子メールを書いて引っ越したことを伝えるように求める"
   },
   "message.question3": {
     "message": "面白いプログラミングゲームを設計",
-    "description": "会話を開始するためのサンプル質問、ユーザーに量子計算の基本原理を簡単な言葉で説明するように求める"
+    "description": "対話を開始するためのサンプル質問、ユーザーに量子計算の基本原理を簡単な言葉で説明するように求める"
   },
   "message.question4": {
-    "message": "地元の人のようにソウルを体験",
-    "description": "会話を開始するためのサンプル質問、ユーザーに仮想現実がアート制作に与える影響を説明するように求める"
+    "message": "現地の人のようにソウルを体験",
+    "description": "対話を開始するためのサンプル質問、ユーザーに仮想現実が芸術創作に与える影響を説明するように求める"
   },
   "message.question5": {
-    "message": "9.8 と 9.11 はどちらが大きいですか？",
-    "description": "会話を開始するためのサンプル質問、2つの数字の大きさを比較するように求める"
+    "message": "9.8と9.11はどちらが大きいですか？",
+    "description": "会話を始めるための例の質問、2つの数字の大きさを比較するように求める"
   },
   "message.question6": {
-    "message": "AI は未来にどのような影響を与えますか？",
-    "description": "会話を開始するためのサンプル質問、AI が未来に与える影響について尋ねる"
+    "message": "AIは未来にどのような影響を与えますか？",
+    "description": "会話を始めるための例の質問、AIが未来に与える影響について"
   },
   "message.question7": {
-    "message": "学習効率を向上させるには？",
-    "description": "会話を開始するためのサンプル質問、自分の学習効率を向上させる方法について尋ねる"
+    "message": "学習効率をどう向上させますか？",
+    "description": "会話を始めるための例の質問、自分の学習効率を向上させる方法について"
   },
   "message.question8": {
-    "message": "集中力を高めるには？",
-    "description": "会話を開始するためのサンプル質問、自分の集中力を高める方法について尋ねる"
+    "message": "集中力をどう高めますか？",
+    "description": "会話を始めるための例の質問、自分の集中力を高める方法について"
   },
   "message.errorApiError": {
-    "message": "回答に失敗しました。後で再試行してください",
-    "description": "ウェブページのメッセージ、ユーザーに回答に失敗したことを伝え、後で再試行するように促す"
+    "message": "回答に失敗しました。後でもう一度お試しください。",
+    "description": "ウェブページ内のメッセージ、ユーザーに回答に失敗したことを伝え、後でもう一度お試しくださいと指示"
   },
   "message.errorBadRequest": {
     "message": "リクエスト内容が不正です。再度質問してください。",
-    "description": "ウェブページのメッセージで、ユーザーにリクエスト内容が不正であることを伝え、再度質問するよう促します。"
+    "description": "ウェブページ内のメッセージ、ユーザーにリクエスト内容が不正であることを伝え、再度質問するよう指示"
   },
   "message.errorNoConversation": {
     "message": "会話が存在しないか、期限切れです。新しい会話を始めてください。",
-    "description": "ウェブページのメッセージで、ユーザーに会話が存在しないか期限切れであることを伝え、新しい会話を始めるよう促します。"
+    "description": "ウェブページ内のメッセージ、ユーザーに会話が存在しないか期限切れであることを伝え、新しい会話を始めるよう指示"
   },
   "message.errorContentTooLarge": {
-    "message": "質問内容が長すぎます。短くして再試行してください。",
-    "description": "ウェブページのメッセージで、ユーザーに質問内容が長すぎることを伝え、短くして再試行するよう促します。"
+    "message": "質問内容が長すぎます。短くして再度お試しください。",
+    "description": "ウェブページ内のメッセージ、ユーザーに質問内容が長すぎることを伝え、短くして再度お試しするよう指示"
   },
   "message.errorTooManyRequests": {
-    "message": "操作が頻繁すぎます。後で再試行してください。",
-    "description": "ウェブページのメッセージで、ユーザーに操作が頻繁すぎることを伝え、後で再試行するよう促します。"
+    "message": "操作が頻繁すぎます。後でもう一度お試しください。",
+    "description": "ウェブページ内のメッセージ、ユーザーに操作が頻繁すぎることを伝え、後でもう一度お試しするよう指示"
   },
   "message.errorBusy": {
-    "message": "サーバーが忙しいです。後で再試行してください。",
-    "description": "ウェブページのメッセージで、ユーザーにサーバーが忙しいことを伝え、後で再試行するよう促します。"
+    "message": "サーバーが混雑しています。後でもう一度お試しください。",
+    "description": "ウェブページ内のメッセージ、ユーザーにサーバーが混雑していることを伝え、後でもう一度お試しするよう指示"
   },
   "message.errorUsedUp": {
-    "message": "プランの回数を使い切りました。追加の回数を購入して続行してください。",
-    "description": "ウェブページのメッセージで、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続行するよう促します。"
+    "message": "プランの回数を使い切りました。追加の回数を購入して続けてください。",
+    "description": "ウェブページ内のメッセージ、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続けるよう指示"
   },
   "message.errorUnknown": {
-    "message": "サーバーで未知のエラーが発生しました。後で再試行するか、カスタマーサポートに連絡してください。",
-    "description": "ウェブページのメッセージで、ユーザーにサーバーで未知のエラーが発生したことを伝え、後で再試行するかカスタマーサポートに連絡するよう促します。"
+    "message": "サーバーで未知のエラーが発生しました。後でもう一度お試しするか、カスタマーサポートに連絡してください。",
+    "description": "ウェブページ内のメッセージ、ユーザーにサーバーで未知のエラーが発生したことを伝え、後でもう一度お試しするかカスタマーサポートに連絡するよう指示"
   },
   "message.errorTimeout": {
-    "message": "回答がタイムアウトしました。後で再試行してください。",
-    "description": "ウェブページのメッセージで、ユーザーに回答がタイムアウトしたことを伝え、後で再試行するよう促します。"
+    "message": "質問の回答がタイムアウトしました。後でもう一度お試しください。",
+    "description": "ウェブページ内のメッセージ、ユーザーに質問の回答がタイムアウトしたことを伝え、後でもう一度お試しするよう指示"
   },
   "message.errorNotApplied": {
     "message": "このサービスをまだ申請していません。先に申請してから質問を続けてください。",
-    "description": "ウェブページのメッセージで、ユーザーにこのサービスをまだ申請していないことを伝え、先に申請してから質問を続けるよう促します。"
+    "description": "ウェブページ内のメッセージ、ユーザーにこのサービスをまだ申請していないことを伝え、先に申請してから質問を続けるよう指示"
   },
   "message.confirmDelete": {
     "message": "削除を確認",
-    "description": "ウェブページのメッセージで、ユーザーに削除を確認するよう促します。"
+    "description": "ウェブページ内のメッセージ、ユーザーに削除を確認するよう指示"
   },
   "message.howToUse": {
     "message": "AIは誤りを犯す可能性があります。重要な情報を確認してください。",
-    "description": "ウェブページのメッセージで、ユーザーにAIが誤りを犯す可能性があることを伝え、重要な情報を確認するよう促します。"
+    "description": "ウェブページ内のメッセージ、ユーザーにAIが誤りを犯す可能性があることを伝え、重要な情報を確認するよう指示"
   },
   "title.chat": {
     "message": "AIチャット",
-    "description": "ウェブページのタイトル、すなわちAIチャットです。"
+    "description": "ウェブページのタイトル、すなわちAIチャット"
   },
   "title.example": {
     "message": "例",
-    "description": "ウェブページのタイトル、すなわち例です。"
+    "description": "ウェブページのタイトル、すなわち例"
   },
   "title.capabilities": {
     "message": "機能",
-    "description": "ウェブページのタイトル、すなわち機能です。"
+    "description": "ウェブページのタイトル、すなわち機能"
   },
   "title.limitations": {
     "message": "制限",
-    "description": "ウェブページのタイトルで、この部分がサービスの技術的制限に関する内容であることを示します。"
+    "description": "ウェブページ内のタイトル、サービスの技術的制限に関する内容を示す"
   },
   "title.complexQuestion": {
     "message": "複雑な質問に回答",
-    "description": "ウェブページのタイトルで、この部分がサービスの複雑な質問に回答する能力に関する内容であることを示します。"
+    "description": "ウェブページ内のタイトル、サービスが複雑な質問に回答する能力に関する内容を示す"
   },
   "title.professionalQuestion": {
     "message": "専門的な質問を相談",
-    "description": "ウェブページのタイトルで、この部分がサービスの専門的な質問に相談する能力に関する内容であることを示します。"
+    "description": "ウェブページ内のタイトル、サービスが専門的な質問を相談する能力に関する内容を示す"
   },
   "title.getTips": {
     "message": "インスピレーションとアイデアを得る",
-    "description": "ウェブページのタイトルで、この部分がサービスのインスピレーションとアイデアを得る能力に関する内容であることを示します。"
+    "description": "ウェブページ内のタイトル、サービスがインスピレーションとアイデアを得る能力に関する内容を示す"
   },
   "group.today": {
     "message": "今日",
-    "description": "ウェブページのグループ名、すなわち今日です。"
+    "description": "ウェブページ内のグループ名、すなわち今日"
   },
   "group.yesterday": {
     "message": "昨日",
-    "description": "ウェブページのグループ名、すなわち昨日です。"
+    "description": "ウェブページ内のグループ名、すなわち昨日"
   },
   "group.thisWeek": {
     "message": "今週",
-    "description": "ウェブページのグループ名、すなわち今週です。"
+    "description": "ウェブページ内のグループ名、すなわち今週"
   },
   "group.earlier": {
     "message": "以前",
-    "description": "ウェブページのグループ名、すなわち以前です。"
+    "description": "ウェブページ内のグループ名、すなわち以前"
   }
 }

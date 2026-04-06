@@ -1,0 +1,394 @@
+{
+  "button.extend": {
+    "message": "生成を続ける",
+    "description": "生成を続けるボタンのテキスト"
+  },
+  "button.download": {
+    "message": "ダウンロード",
+    "description": "ダウンロードボタンのテキスト"
+  },
+  "button.more": {
+    "message": "その他の操作",
+    "description": "その他の操作ボタンのテキスト"
+  },
+  "button.uploadAudios": {
+    "message": "アップロード",
+    "description": "ユーザーが参考をアップロードできるボタンのテキスト"
+  },
+  "button.video": {
+    "message": "動画",
+    "description": "動画ボタンのテキスト"
+  },
+  "button.download_video": {
+    "message": "動画をダウンロード",
+    "description": "動画をダウンロードするボタンのテキスト"
+  },
+  "button.download_wav": {
+    "message": "WAV 無損失をダウンロード",
+    "description": "WAV無損失形式をダウンロードするボタンのテキスト"
+  },
+  "button.get_stems": {
+    "message": "音源分離",
+    "description": "音源分離ボタンのテキスト"
+  },
+  "button.cover_music": {
+    "message": "カバー",
+    "description": "カバーボタンのテキスト"
+  },
+  "button.download_audio": {
+    "message": "音楽をダウンロード",
+    "description": "音楽をダウンロードするボタンのテキスト"
+  },
+  "button.replace_section": {
+    "message": "セクションを置き換える",
+    "description": "曲の特定のセクションを置き換えるボタンのテキスト"
+  },
+  "button.generate_lyrics": {
+    "message": "AIによる歌詞生成",
+    "description": "AIを使用して自動的に歌詞を生成するボタンのテキスト"
+  },
+  "button.all_stems": {
+    "message": "すべての音源を分離",
+    "description": "すべてのトラックを分離するボタンのテキスト"
+  },
+  "button.variation": {
+    "message": "バリエーション",
+    "description": "バリエーションボタンのテキスト"
+  },
+  "button.swap_vocals": {
+    "message": "ボーカルを置き換える",
+    "description": "ボーカルを置き換えるボタンのテキスト"
+  },
+  "button.swap_instrumentals": {
+    "message": "インストゥルメンタルを置き換える",
+    "description": "インストゥルメンタルを置き換えるボタンのテキスト"
+  },
+  "model.fuzz20pro": {
+    "message": "FUZZ-2.0 Pro",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz20": {
+    "message": "FUZZ-2.0",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz20raw": {
+    "message": "FUZZ-2.0 Raw",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz11pro": {
+    "message": "FUZZ-1.1 Pro",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz10pro": {
+    "message": "FUZZ-1.0 Pro",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz10": {
+    "message": "FUZZ-1.0",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz11": {
+    "message": "FUZZ-1.1",
+    "description": "音楽生成用のモデル"
+  },
+  "model.fuzz08": {
+    "message": "FUZZ-0.8",
+    "description": "音楽生成用のモデル"
+  },
+  "name.instrumental": {
+    "message": "インストゥルメンタル",
+    "description": "ボーカルなしの純音楽を生成"
+  },
+  "name.referenceAudios": {
+    "message": "参考音楽",
+    "description": "参考音楽の名称"
+  },
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスクの ID"
+  },
+  "name.type": {
+    "message": "カスタムモード",
+    "description": "カスタムモードの名称"
+  },
+  "name.prompt": {
+    "message": "曲の説明",
+    "description": "内容入力のプロンプト"
+  },
+  "name.extend": {
+    "message": "曲を拡張する元",
+    "description": "内容入力のプロンプト"
+  },
+  "name.cover": {
+    "message": "カバー曲の元",
+    "description": "内容入力のプロンプト"
+  },
+  "name.lyrics": {
+    "message": "歌詞",
+    "description": "歌詞内容入力のプロンプト"
+  },
+  "name.style": {
+    "message": "スタイル",
+    "description": "曲のスタイル内容入力のプロンプト"
+  },
+  "name.styleNegative": {
+    "message": "除外スタイル",
+    "description": "望まないスタイルの説明"
+  },
+  "name.title": {
+    "message": "タイトル",
+    "description": "曲のタイトル内容入力のプロンプト"
+  },
+  "name.vocalGender": {
+    "message": "ボーカルの性別",
+    "description": "ボーカルの性別を選択"
+  },
+  "name.advancedParams": {
+    "message": "高度なパラメータ",
+    "description": "高度なパラメータ設定"
+  },
+  "name.weirdness": {
+    "message": "クリエイティビティ",
+    "description": "生成される音楽のクリエイティブ度を制御"
+  },
+  "name.soundStrength": {
+    "message": "音の強度",
+    "description": "生成される音の強度を制御"
+  },
+  "name.lyricsStrength": {
+    "message": "歌詞の強度",
+    "description": "生成結果に対する歌詞の影響度を制御"
+  },
+  "name.seed": {
+    "message": "シード",
+    "description": "再現可能な生成のためのランダムシード"
+  },
+  "name.lyricPrompt": {
+    "message": "歌詞プロンプト",
+    "description": "自動生成歌詞のためのプロンプト"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "タスク失敗の理由"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "タスクのステータス"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "タスクのトレース ID"
+  },
+  "name.producerBot": {
+    "message": "Producer Bot",
+    "description": "Producer生成器の名称"
+  },
+  "name.replaceSection": {
+    "message": "セクションを置き換える",
+    "description": "曲の特定のセクションを置き換える"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "モデルバージョンを選択"
+  },
+  "name.songDescription": {
+    "message": "曲の説明",
+    "description": "曲の説明モード"
+  },
+  "description.prompt": {
+    "message": "希望する音楽スタイルとテーマを説明してください",
+    "description": "パラメータ'prompt'の説明"
+  },
+  "description.lyrics": {
+    "message": "カスタム歌詞を入力、[Verse]、[Chorus]、[Bridge]などの段落マークをサポート",
+    "description": "パラメータ'lyrics'の説明"
+  },
+  "description.style": {
+    "message": "音楽スタイルを説明、例：アコースティックポップ、ジャズ、エレクトロニック",
+    "description": "パラメータ'style'の説明"
+  },
+  "description.styleNegative": {
+    "message": "望まないスタイルを説明してください。例：ヘビーメタル、叫び声",
+    "description": "除外スタイルパラメータの説明"
+  },
+  "description.title": {
+    "message": "曲のタイトル",
+    "description": "パラメータ'title'の説明"
+  },
+  "description.uploadAudios": {
+    "message": "生成の参考として音楽をアップロードします。アップロードには少し時間がかかり、成功後にアップロードした音楽に基づいて生成されます。",
+    "description": "アップロード参考パラメータの説明"
+  },
+  "description.vocalGender": {
+    "message": "生成する声の性別を選択します",
+    "description": "声の性別選択器の説明"
+  },
+  "description.weirdness": {
+    "message": "値が高いほど生成される音楽はより創造的で実験的になります (0-100)",
+    "description": "創造性パラメータの説明"
+  },
+  "description.soundStrength": {
+    "message": "生成される音の強度を制御します (0-100)",
+    "description": "音の強度パラメータの説明"
+  },
+  "description.lyricsStrength": {
+    "message": "歌詞が生成結果に与える影響の程度を制御します (0-100)",
+    "description": "歌詞強度パラメータの説明"
+  },
+  "description.seed": {
+    "message": "再現可能な結果を得るためにシード値を入力します。空白の場合はランダムになります。",
+    "description": "シードパラメータの説明"
+  },
+  "description.lyricPrompt": {
+    "message": "歌詞の説明を入力すると、AIが自動的に歌詞を生成します",
+    "description": "歌詞プロンプトの説明"
+  },
+  "description.replaceSection": {
+    "message": "曲の指定した時間帯の内容を置き換えます",
+    "description": "置き換えセクション機能の説明"
+  },
+  "status.pending": {
+    "message": "待機中",
+    "description": "タスクの待機状態"
+  },
+  "placeholder.prompt": {
+    "message": "望む音楽を説明してください。例：秋の思い出に関する温かいフォークソング...",
+    "description": "曲の説明入力のプレースホルダー"
+  },
+  "placeholder.lyrics": {
+    "message": "[Verse]\nこの静かな夜に\n星が空で輝いている\n\n[Chorus]\n一緒に歌おう\n夜明けまで...",
+    "description": "歌詞入力のプレースホルダー"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "拡張したい歌詞を入力してください...",
+    "description": "歌詞拡張入力のプレースホルダー"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "何秒から拡張しますか...",
+    "description": "拡張開始時間のプレースホルダー"
+  },
+  "placeholder.style": {
+    "message": "例：アコースティックポップ、ジャズ、R&B、エレクトロニック...",
+    "description": "スタイル入力のプレースホルダー"
+  },
+  "placeholder.styleNegative": {
+    "message": "例：ヘビーメタル、叫び声...",
+    "description": "除外スタイル入力のプレースホルダー"
+  },
+  "placeholder.title": {
+    "message": "曲名を入力してください...",
+    "description": "タイトル入力のプレースホルダー"
+  },
+  "placeholder.select": {
+    "message": "モデルを選択してください...",
+    "description": "モデル選択のプレースホルダー"
+  },
+  "placeholder.position": {
+    "message": "選択してください...",
+    "description": "位置入力のプレースホルダー"
+  },
+  "placeholder.lyricPrompt": {
+    "message": "歌詞のテーマを説明してください。AIが自動的に生成します...",
+    "description": "歌詞プロンプト入力のプレースホルダー"
+  },
+  "placeholder.replaceSectionStart": {
+    "message": "開始時間 (秒)",
+    "description": "置き換えセクション開始時間のプレースホルダー"
+  },
+  "placeholder.replaceSectionEnd": {
+    "message": "終了時間 (秒)",
+    "description": "置き換えセクション終了時間のプレースホルダー"
+  },
+  "placeholder.seed": {
+    "message": "シード値を入力してください（オプション）...",
+    "description": "シード入力のプレースホルダー"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタンのテキスト"
+  },
+  "gender.male": {
+    "message": "男性",
+    "description": "男性の声のオプション"
+  },
+  "gender.female": {
+    "message": "女性",
+    "description": "女性の声のオプション"
+  },
+  "gender.auto": {
+    "message": "自動",
+    "description": "声の性別を自動選択"
+  },
+  "message.startingTask": {
+    "message": "タスクを開始しています...",
+    "description": "音楽生成タスク開始時のメッセージ"
+  },
+  "message.startingUploadAudio": {
+    "message": "カスタム音楽をアップロードしています...",
+    "description": "音楽生成タスク開始時のメッセージ"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "アップロードされた音楽が最大数を超えました",
+    "description": "アップロードされた音楽が最大数を超えた時のエラーメッセージ"
+  },
+  "message.uploadReferencesError": {
+    "message": "音楽のアップロードに失敗しました",
+    "description": "音楽のアップロードに失敗した時のエラーメッセージ"
+  },
+  "message.startTaskSuccess": {
+    "message": "音楽生成タスクを正常に開始しました",
+    "description": "音楽生成タスクを正常に開始した時の成功メッセージ"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "カスタム音楽を正常にアップロードしました",
+    "description": "音楽生成タスクを正常に開始した時の成功メッセージ"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "カスタム音楽のアップロードに失敗しました",
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+  },
+  "message.startTaskFailed": {
+    "message": "音楽生成タスクの開始に失敗しました",
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "音楽ビデオの取得に失敗しました。後で再試行してください",
+    "description": "ビデオ取得に失敗した時のエラーメッセージ"
+  },
+  "message.generatingLyrics": {
+    "message": "歌詞を生成しています...",
+    "description": "歌詞生成時のメッセージ"
+  },
+  "message.generateLyricsSuccess": {
+    "message": "歌詞の生成に成功しました",
+    "description": "歌詞生成成功時のメッセージ"
+  },
+  "message.generateLyricsFailed": {
+    "message": "歌詞の生成に失敗しました",
+    "description": "歌詞生成失敗時のメッセージ"
+  },
+  "message.fetchingWav": {
+    "message": "WAVファイルを取得中...",
+    "description": "WAVファイルを取得する際のメッセージ"
+  },
+  "message.fetchWavFailed": {
+    "message": "WAVファイルの取得に失敗しました",
+    "description": "WAVファイルの取得に失敗した際のメッセージ"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "音楽を生成している際のメッセージ"
+  },
+  "message.generateFailed": {
+    "message": "音楽の生成に失敗しました",
+    "description": "音楽の生成に失敗した際のメッセージ"
+  },
+  "message.noOperations": {
+    "message": "利用可能な操作はありません",
+    "description": "利用可能な操作がない際のメッセージ"
+  },
+  "message.noTasks": {
+    "message": "履歴タスクはありません。左側の設定バーで音楽を生成してください",
+    "description": "タスクがない際のメッセージ"
+  }
+}

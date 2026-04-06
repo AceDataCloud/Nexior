@@ -1,6 +1,6 @@
 {
   "field.title": {
-    "message": "Название сайта",
+    "message": "Заголовок сайта",
     "description": "展示在编辑框的标题"
   },
   "field.origin": {
@@ -123,6 +123,22 @@
     "message": "SeeDance",
     "description": "展示在编辑框的标题"
   },
+  "field.featuresWan": {
+    "message": "Wan",
+    "description": "展示在编辑框的标题"
+  },
+  "field.featuresProducer": {
+    "message": "Продюсер",
+    "description": "展示在编辑框的标题"
+  },
+  "field.featuresKimi": {
+    "message": "Kimi",
+    "description": "展示在编辑框的标题"
+  },
+  "field.featuresSerp": {
+    "message": "SERP",
+    "description": "展示在编辑框的标题"
+  },
   "field.featuresSupport": {
     "message": "Поддержка клиентов",
     "description": "展示在编辑框的标题"
@@ -148,7 +164,7 @@
     "description": "展示在编辑框的标题"
   },
   "title.editTitle": {
-    "message": "Редактировать название",
+    "message": "Редактировать заголовок",
     "description": "展示在编辑框的标题"
   },
   "title.editOrigin": {
@@ -192,7 +208,7 @@
     "description": "展示在编辑框的标题"
   },
   "placeholder.title": {
-    "message": "Введите название сайта",
+    "message": "Введите заголовок сайта",
     "description": "展示在编辑框的标题"
   },
   "placeholder.origin": {
@@ -248,11 +264,11 @@
     "description": "至少保留一个管理员的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID пользователя по умолчанию для приглашенного. Если ссылка на распределение не содержит параметр inviter_id, будет использоваться этот ID.",
+    "message": "ID пользователя приглашенного по умолчанию. Если ссылка на распределение не содержит параметра inviter_id, будет использоваться этот ID.",
     "description": "默认邀请人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID обязательного приглашенного. Если установлен этот ID, будет использоваться он, независимо от наличия параметра inviter_id в ссылке на распределение.",
+    "message": "ID обязательного приглашенного. Если установлен этот ID, будет использоваться он, независимо от наличия параметра inviter_id в ссылке.",
     "description": "强制邀请人ID的提示"
   },
   "message.originTip": {
@@ -260,7 +276,7 @@
     "description": "站点域名的提示"
   },
   "message.titleTip": {
-    "message": "Название сайта, отображается на вкладке браузера.",
+    "message": "Заголовок сайта, отображается на вкладке браузера.",
     "description": "站点标题的提示"
   },
   "message.descriptionTip": {
@@ -292,83 +308,99 @@
     "description": "站点关键词的提示"
   },
   "message.featuresChat": {
-    "message": "Включить или отключить модуль Chat.",
+    "message": "Включить или отключить модуль функции Chat.",
     "description": "Chat 功能的描述"
   },
   "message.featuresGrok": {
-    "message": "Включить или отключить модуль Grok.",
+    "message": "Включить или отключить модуль функции Grok.",
     "description": "Grok 功能的描述"
   },
   "message.featuresDeepseek": {
-    "message": "Включить или отключить модуль Deepseek.",
+    "message": "Включить или отключить модуль функции Deepseek.",
     "description": "Deepseek 功能的描述"
   },
   "message.featuresChatgpt": {
-    "message": "Включить или отключить модуль ChatGPT.",
+    "message": "Включить или отключить модуль функции ChatGPT.",
     "description": "ChatGPT 功能的描述"
   },
   "message.featuresMidjourney": {
-    "message": "Включить или отключить модуль Midjourney.",
+    "message": "Включить или отключить модуль функции Midjourney.",
     "description": "Midjourney 功能的描述"
   },
   "message.featuresChatdoc": {
-    "message": "Включить или отключить модуль Chatdoc.",
+    "message": "Включить или отключить модуль функции Chatdoc.",
     "description": "Chatdoc 功能的描述"
   },
   "message.featuresQrart": {
-    "message": "Включить или отключить модуль Qrart.",
+    "message": "Включить или отключить модуль функции Qrart.",
     "description": "Qrart 功能的描述"
   },
   "message.featuresVeo": {
-    "message": "Включить или отключить модуль Veo.",
+    "message": "Включить или отключить модуль функции Veo.",
     "description": "Veo 功能的描述"
   },
   "message.featuresSora": {
-    "message": "Включить или отключить модуль Sora.",
+    "message": "Включить или отключить модуль функции Sora.",
     "description": "Sora 功能的描述"
   },
   "message.featuresSuno": {
-    "message": "Включить или отключить модуль Suno.",
+    "message": "Включить или отключить модуль функции Suno.",
     "description": "Suno 功能的描述"
   },
   "message.featuresPixverse": {
-    "message": "Включить или отключить модуль Pixverse.",
-    "description": "Pixverse 功能的描述"
+    "message": "Включить или отключить модуль функций Pixverse.",
+    "description": "Описание функции Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Включить или отключить модуль FLux.",
-    "description": "FLux 功能的描述"
+    "message": "Включить или отключить модуль функций FLux.",
+    "description": "Описание функции FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Включить или отключить модуль Nano Banana.",
-    "description": "Nano Banana 功能的描述"
+    "message": "Включить или отключить модуль функций Nano Banana.",
+    "description": "Описание функции Nano Banana"
   },
   "message.featuresSeedream": {
-    "message": "Включить или отключить модуль функции SeeDream.",
+    "message": "Включить или отключить модуль функций SeeDream.",
     "description": "Описание функции SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Включить или отключить модуль функции SeeDance.",
+    "message": "Включить или отключить модуль функций SeeDance.",
     "description": "Описание функции SeeDance"
   },
+  "message.featuresWan": {
+    "message": "Включить или отключить модуль функций Wan.",
+    "description": "Описание функции Wan"
+  },
+  "message.featuresProducer": {
+    "message": "Включить или отключить модуль функций Producer.",
+    "description": "Описание функции Producer"
+  },
+  "message.featuresKimi": {
+    "message": "Включить или отключить модуль функций Kimi.",
+    "description": "Описание функции Kimi"
+  },
+  "message.featuresSerp": {
+    "message": "Включить или отключить модуль функций SERP.",
+    "description": "Описание функции SERP"
+  },
   "message.featuresLuma": {
-    "message": "Включить или отключить модуль функции Luma.",
+    "message": "Включить или отключить модуль функций Luma.",
     "description": "Описание функции Luma"
   },
   "message.featuresPika": {
-    "message": "Включить или отключить модуль функции Pika.",
+    "message": "Включить или отключить модуль функций Pika.",
     "description": "Описание функции Pika"
   },
   "message.featuresKling": {
-    "message": "Включить или отключить модуль функции Kling.",
+    "message": "Включить или отключить модуль функций Kling.",
     "description": "Описание функции Kling"
   },
   "message.featuresHailuo": {
-    "message": "Включить или отключить модуль функции Hailuo.",
+    "message": "Включить или отключить модуль функций Hailuo.",
     "description": "Описание функции Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Включить или отключить модуль функции AI удостоверения личности.",
+    "message": "Включить или отключить модуль функций AI удостоверения личности.",
     "description": "Описание функции AI удостоверения личности"
   },
   "message.featuresSupport": {
@@ -396,7 +428,7 @@
     "description": "Отображается как заголовок в редакторе"
   },
   "message.featuresGemini": {
-    "message": "Включить или отключить модуль функции Gemini.",
+    "message": "Включить или отключить модуль функций Gemini.",
     "description": "Описание функции Gemini"
   },
   "field.featuresClaude": {
@@ -404,7 +436,7 @@
     "description": "Отображается как заголовок в редакторе"
   },
   "message.featuresClaude": {
-    "message": "Включить или отключить модуль функции Claude.",
+    "message": "Включить или отключить модуль функций Claude.",
     "description": "Описание функции Claude"
   }
 }

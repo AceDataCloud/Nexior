@@ -109,7 +109,7 @@
   },
   "button.downloadIos": {
     "message": "Ladda ner iOS",
-    "description": "Text i knappen för att ladda ner iOS-installationspaketet"
+    "description": "Text i knappen för att ladda ner iOS-installationsfilen"
   },
   "button.installIos": {
     "message": "Installera iOS",
@@ -144,8 +144,8 @@
     "description": "Text i knappen för att låta användaren fylla i exempeldata"
   },
   "button.buyMore": {
-    "message": "Toppa upp",
-    "description": "Text i knappen för att låta användaren toppa upp. Engelsk översättning måste vara 'Top Up', svensk översättning är 'Toppa upp'."
+    "message": "Top Up",
+    "description": "Text i knappen för att låta användaren fylla på. Engelsk översättning måste vara 'Top Up', svensk översättning är 'Top Up'."
   },
   "button.update": {
     "message": "Uppdatera",
@@ -204,8 +204,8 @@
     "description": "Statusmeddelande som visas när innehållet laddas"
   },
   "entity.operation": {
-    "message": "Åtgärd",
-    "description": "Åtgärden för enheten"
+    "message": "Operation",
+    "description": "Operationen för enheten"
   },
   "entity.description": {
     "message": "Beskrivning",
@@ -221,7 +221,7 @@
   },
   "entity.order": {
     "message": "Beställning",
-    "description": "Enhetens beställning, som innehåller pengar och tjänsteinformation som användaren behöver betala för"
+    "description": "Beställningen för enheten, som innehåller pengar och tjänsteinformation som användaren behöver betala för"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, börja en ny uppgift～",
@@ -236,7 +236,7 @@
     "description": "Beskrivningstext för nedladdningssidan för mobilapplikationen"
   },
   "message.mobileAndroidHint": {
-    "message": "För Android-telefoner och surfplattor, skanna för att ladda ner den senaste APK:n.",
+    "message": "För Android-telefoner och surfplattor, skanna QR-koden för att ladda ner den senaste APK:n.",
     "description": "Beskrivning för Android-nedladdningskort"
   },
   "message.mobileAndroidPending": {
@@ -244,7 +244,7 @@
     "description": "Meddelande när Android-installationspaketet inte är tillgängligt"
   },
   "message.mobileAvailableNow": {
-    "message": "Android är tillgänglig för nedladdning",
+    "message": "Android är nu tillgänglig för nedladdning",
     "description": "Används för att visa att Android nu kan laddas ner"
   },
   "message.mobileSecureDelivery": {
@@ -257,7 +257,7 @@
   },
   "message.mobileLatestRelease": {
     "message": "Aktuell offentlig version",
-    "description": "Används för att förklara att den aktuella visade versionen är den senaste offentliga versionen"
+    "description": "Används för att förklara att den aktuella visningen är den senaste offentliga versionen"
   },
   "message.mobileSharedAccount": {
     "message": "Dela konto och kvot med webbversionen",
@@ -296,7 +296,7 @@
     "description": "Nedladdningslänk för mobilapplikation i navigeringen"
   },
   "message.mobileFastAccess": {
-    "message": "Användare kan skanna för att installera direkt på mobilen, eller ladda ner APK på skrivbordet och sedan distribuera till teammedlemmar, lämpligt för snabba tester och intern testning.",
+    "message": "Användare kan skanna QR-koden för att installera direkt på mobilen, eller ladda ner APK:n på skrivbordet och distribuera till teammedlemmar, lämpligt för snabba tester och intern testning.",
     "description": "Fördelar med nedladdningssidan, betonar snabb åtkomst"
   },
   "message.mobileTrustedRelease": {
@@ -377,7 +377,7 @@
   },
   "nav.service": {
     "message": "Alla tjänster",
-    "description": "Text i webbplatsens navigeringsfält för att visa tjänstersidan"
+    "description": "Text i webbplatsens navigeringsfält för att visa tjänstesidan"
   },
   "nav.profile": {
     "message": "Min profil",
@@ -421,11 +421,11 @@
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Text i webbplatsens navigeringsfält för att visa Veo-sidan, vänligen översätt inte detta fält, det måste förbli 'Veo'"
+    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Text i webbplatsens navigeringsfält för att visa Sora-sidan, vänligen översätt inte detta fält, det måste förbli 'Sora'"
+    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
@@ -475,6 +475,22 @@
     "message": "Hailuo",
     "description": "Text in the website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
   },
+  "nav.wan": {
+    "message": "Wan",
+    "description": "Text in the website navigation bar to display the Wan page, must remain as 'Wan'"
+  },
+  "nav.producer": {
+    "message": "Producer",
+    "description": "Text in the website navigation bar to display the Producer page, must remain as 'Producer'"
+  },
+  "nav.kimi": {
+    "message": "Kimi",
+    "description": "Text in the website navigation bar to display the Kimi page, must remain as 'Kimi'"
+  },
+  "nav.serp": {
+    "message": "SERP",
+    "description": "Text in the website navigation bar to display the SERP page, must remain as 'SERP'"
+  },
   "nav.image": {
     "message": "Bild",
     "description": "Text in the website navigation bar to display the image page"
@@ -493,7 +509,7 @@
   },
   "nav.logOut": {
     "message": "Logga ut",
-    "description": "Text in the website navigation bar to log out"
+    "description": "Text in the website navigation bar for logging out"
   },
   "nav.site": {
     "message": "Webbplatsinställningar",
@@ -565,7 +581,7 @@
   },
   "title.invitee": {
     "message": "Inbjuden",
-    "description": "Title for the page displaying invitee information"
+    "description": "Title for the page displaying the inviter"
   },
   "title.allUsages": {
     "message": "Användningshistorik",
@@ -589,35 +605,35 @@
   },
   "about.address": {
     "message": "651 North Broad St, Suite 201, Middletown, Delaware, USA",
-    "description": "Company address"
+    "description": "Företagets adress"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Company email"
+    "description": "Företagets e-post"
   },
   "about.link1": {
     "message": "Tjänster",
-    "description": "Link to the documentation page"
+    "description": "Länk till dokumentationssidan"
   },
   "about.link2": {
     "message": "Utvecklardokumentation",
-    "description": "Link to the services page"
+    "description": "Länk till tjänstesidan"
   },
   "about.link3": {
     "message": "Konsol",
-    "description": "Link to the console page"
+    "description": "Länk till konsolsidan"
   },
   "about.link4": {
     "message": "Profil",
-    "description": "Link to the profile page"
+    "description": "Länk till profilsidan"
   },
   "about.link5": {
     "message": "UI-plattform",
-    "description": "Link to the central page"
+    "description": "Länk till centralsidan"
   },
   "about.link6": {
-    "message": "Rekommenderad inkomst",
-    "description": "Länk till sidan för rekommenderad inkomst"
+    "message": "Rekommenderade intäkter",
+    "description": "Länk till sidan för rekommenderade intäkter"
   },
   "about.link7": {
     "message": "Support",
@@ -641,35 +657,35 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Namn på systemtemat, vilket innebär att temat växlar automatiskt baserat på systeminställningar"
+    "description": "Namn på systemtemat, indikerar automatisk växling av tema baserat på systeminställningar"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
-    "description": "Rubrik för avsnittet om allmänna inställningar på inställningssidan"
+    "description": "Rubrik för den allmänna inställningssektionen på inställningssidan"
   },
   "settings.language": {
     "message": "Språk",
-    "description": "Rubrik för avsnittet om språkinställningar på inställningssidan"
+    "description": "Rubrik för språkinställningssektionen på inställningssidan"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Rubrik för avsnittet om tema-inställningar på inställningssidan"
+    "description": "Rubrik för temainställningssektionen på inställningssidan"
   },
   "settings.seo": {
     "message": "SEO-inställningar",
-    "description": "Rubrik för avsnittet om SEO-inställningar på inställningssidan"
+    "description": "Rubrik för SEO-inställningssektionen på inställningssidan"
   },
   "settings.site": {
     "message": "Webbplatsinställningar",
-    "description": "Rubrik för avsnittet om webbplatsinställningar på inställningssidan"
+    "description": "Rubrik för webbplatsinställningssektionen på inställningssidan"
   },
   "settings.distribution": {
     "message": "Distribueringsinställningar",
-    "description": "Rubrik för avsnittet om distribueringsinställningar på inställningssidan"
+    "description": "Rubrik för distribueringsinställningssektionen på inställningssidan"
   },
   "settings.function": {
     "message": "Funktionsinställningar",
-    "description": "Rubrik för avsnittet om funktionsinställningar på inställningssidan"
+    "description": "Rubrik för funktionsinställningssektionen på inställningssidan"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -692,12 +708,12 @@
     "description": "Text i knappen för att ladda upp filer eller innehåll"
   },
   "message.cnbeian": {
-    "message": "Kina registrering",
+    "message": "Kina-registrering",
     "description": "Information om registrering i Kina"
   },
   "message.copyFailed": {
     "message": "Kopiering misslyckades",
-    "description": "Meddelande om att kopiering av innehåll misslyckades"
+    "description": "Meddelande som visas när innehållskopiering misslyckas"
   },
   "nav.tryNow": {
     "message": "Prova nu",
@@ -725,7 +741,7 @@
   },
   "customers.comment1": {
     "message": "Ace Data Cloud har gett vårt team utmärkt service och hjälpt oss att öka produktiviteten. Mycket nöjd!",
-    "description": "Kundens kommentar"
+    "description": "Kundens omdöme"
   },
   "customers.name2": {
     "message": "Jacob Williams",
@@ -737,7 +753,7 @@
   },
   "customers.comment2": {
     "message": "Ace Data Cloud är en fantastisk integrationsplattform med utmärkt servicekvalitet.",
-    "description": "Kundens kommentar"
+    "description": "Kundens omdöme"
   },
   "customers.name3": {
     "message": "Larry Henry",
@@ -749,7 +765,7 @@
   },
   "customers.comment3": {
     "message": "Jag älskar Ace Data Clouds tjänster, de är användarvänliga och prisvärda. Hoppas de blir ännu bättre!",
-    "description": "Kundens kommentar"
+    "description": "Kundens omdöme"
   },
   "nav.github": {
     "message": "GitHub",
@@ -761,38 +777,38 @@
   },
   "settings.about": {
     "message": "Om",
-    "description": "Rubrik för avsnittet om på inställningssidan"
+    "description": "Rubrik för om-sektionen på inställningssidan"
   },
   "settings.poweredBy": {
     "message": "Öppen källkod",
-    "description": "Rubrik som visar vilket öppen källkodsprojekt som webbplatsen är baserad på"
+    "description": "Rubrik som visar vilket öppen källkodsprojekt som denna webbplats är baserad på"
   },
   "settings.poweredByTip": {
-    "message": "Denna webbplats är baserad på Nexior öppen källkod, koden är helt öppen.",
-    "description": "Information om vilket öppen källkodsprojekt webbplatsen är baserad på"
+    "message": "Denna webbplats är byggd på Nexior open source-projekt, koden är helt öppen.",
+    "description": "Om sidan som visar vilken öppen källkod projektet är baserat på"
   },
   "settings.apiService": {
     "message": "API-tjänst",
-    "description": "Rubrik som visar API-tjänsteleverantören"
+    "description": "Om sidan som visar titeln för API-tjänsteleverantören"
   },
   "settings.apiServiceTip": {
-    "message": "API-tjänsten tillhandahålls av Ace Data Cloud.",
-    "description": "Information om API-tjänsteleverantören"
+    "message": "Denna webbplats API-tjänst tillhandahålls av Ace Data Cloud.",
+    "description": "Om sidan som visar information om API-tjänsteleverantören"
   },
   "settings.buildYourOwn": {
     "message": "Bygg din egen",
-    "description": "Rubrik som uppmanar användare att bygga en liknande webbplats"
+    "description": "Om sidan som uppmanar användare att bygga en liknande webbplats"
   },
   "settings.buildYourOwnTip": {
-    "message": "Vill du bygga en liknande AI-webbplats? Kontakta oss för distributionssupport.",
-    "description": "Information om att bygga en liknande webbplats"
+    "message": "Vill du bygga en liknande AI-webbplats? Kontakta oss för distributionsstöd.",
+    "description": "Om sidan som ger information om att bygga en liknande webbplats"
   },
   "settings.contactUs": {
-    "message": "Kontakta oss",
-    "description": "Text i knappen för att kontakta kundtjänst"
+    "message": "Kontakta support",
+    "description": "Texten på knappen för att kontakta support"
   },
   "message.viewOnGithub": {
     "message": "Visa på GitHub",
-    "description": "Text för länken som visar projektet på GitHub"
+    "description": "Texten för länken för att se projektet på GitHub"
   }
 }

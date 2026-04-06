@@ -123,6 +123,22 @@
     "message": "سي دانس",
     "description": "عرض في مربع التحرير"
   },
+  "field.featuresWan": {
+    "message": "وان",
+    "description": "عرض في مربع التحرير"
+  },
+  "field.featuresProducer": {
+    "message": "منتج",
+    "description": "عرض في مربع التحرير"
+  },
+  "field.featuresKimi": {
+    "message": "كي مي",
+    "description": "عرض في مربع التحرير"
+  },
+  "field.featuresSerp": {
+    "message": "سيرب",
+    "description": "عرض في مربع التحرير"
+  },
   "field.featuresSupport": {
     "message": "دعم العملاء",
     "description": "عرض في مربع التحرير"
@@ -184,12 +200,12 @@
     "description": "عرض في مربع التحرير"
   },
   "title.editQR": {
-    "message": "تحرير رمز الاستجابة السريعة",
-    "description": "عرض في مربع التحرير"
+    "message": "تعديل رمز الاستجابة السريعة",
+    "description": "عرض في عنوان مربع التحرير"
   },
   "title.editUrl": {
-    "message": "تحرير الرابط",
-    "description": "عرض في مربع التحرير"
+    "message": "تعديل الرابط",
+    "description": "عرض في عنوان مربع التحرير"
   },
   "placeholder.title": {
     "message": "أدخل عنوان الموقع",
@@ -197,31 +213,31 @@
   },
   "placeholder.origin": {
     "message": "أدخل اسم نطاق الموقع",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "placeholder.editUrl": {
     "message": "أدخل الرابط",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "placeholder.description": {
     "message": "أدخل وصف الموقع",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "placeholder.keywords": {
     "message": "أدخل كلمات مفتاحية للموقع",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "أدخل معرف المدعو الافتراضي",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "أدخل معرف المدعو الإجباري",
-    "description": "عرض في عنوان مربع التحرير"
+    "description": "عرض في مربع التحرير"
   },
   "message.uploadImageExceed": {
-    "message": "تجاوزت الصورة المرفوعة الحد المسموح به",
-    "description": "تنبيه عند تجاوز الصورة المرفوعة الحد المسموح به"
+    "message": "تجاوز حد رفع الصورة",
+    "description": "تنبيه عند تجاوز حد رفع الصورة"
   },
   "message.uploadImageError": {
     "message": "خطأ في رفع الصورة",
@@ -229,15 +245,15 @@
   },
   "message.editLogoTip": {
     "message": "الأبعاد الموصى بها: 200*60 بكسل",
-    "description": "لغة تنبيه لرفع الصورة"
+    "description": "لغة تنبيه رفع الصورة"
   },
   "message.editQRTip": {
     "message": "الأبعاد الموصى بها: 200*200 بكسل",
-    "description": "لغة تنبيه لرفع الصورة"
+    "description": "لغة تنبيه رفع الصورة"
   },
   "message.editFaviconTip": {
     "message": "الأبعاد الموصى بها: 32*32 بكسل",
-    "description": "لغة تنبيه لرفع الصورة"
+    "description": "لغة تنبيه رفع الصورة"
   },
   "message.editUrl": {
     "message": "أدخل الرابط",
@@ -249,134 +265,150 @@
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "معرف المستخدم للمدعو الافتراضي، إذا لم يحمل رابط التوزيع معلمة inviter_id، سيتم استخدام هذا المعرف كمدعو افتراضي.",
-    "description": "تنبيه لمعرف المدعو الافتراضي"
+    "description": "تنبيه معرف المدعو الافتراضي"
   },
   "message.distributionForceInviterIdTip": {
     "message": "معرف المستخدم للمدعو الإجباري، إذا تم تعيين هذا المعرف، سيتم استخدامه كمدعو بغض النظر عما إذا كان رابط التوزيع يحمل معلمة inviter_id.",
-    "description": "تنبيه لمعرف المدعو الإجباري"
+    "description": "تنبيه معرف المدعو الإجباري"
   },
   "message.originTip": {
     "message": "اسم نطاق الموقع، يتم ربط إعدادات الموقع بالنطاق، ولا يمكن تغيير اسم نطاق الموقع.",
-    "description": "تنبيه لاسم نطاق الموقع"
+    "description": "تنبيه اسم نطاق الموقع"
   },
   "message.titleTip": {
     "message": "عنوان الموقع، يظهر في علامة تبويب المتصفح.",
-    "description": "تنبيه لعنوان الموقع"
+    "description": "تنبيه عنوان الموقع"
   },
   "message.descriptionTip": {
-    "message": "وصف الموقع، موجود في معلومات الميتا الخاصة بالموقع، يستخدم لتحسين SEO للموقع.",
-    "description": "تنبيه لوصف الموقع"
+    "message": "وصف الموقع، موجود في معلومات الموقع الوصفية، يستخدم لتحسين SEO للموقع.",
+    "description": "تنبيه وصف الموقع"
   },
   "message.logoTip": {
     "message": "شعار الموقع، يظهر في أعلى قائمة الموقع عند فتح القائمة.",
-    "description": "تنبيه لشعار الموقع"
+    "description": "تنبيه شعار الموقع"
   },
   "message.faviconTip": {
     "message": "فافيكون الموقع، يظهر في علامة تبويب المتصفح.",
-    "description": "تنبيه لفافيكون الموقع"
+    "description": "تنبيه فافيكون الموقع"
   },
   "message.adminsTip": {
     "message": "معرفات مديري الموقع، المستخدم الذي ينشئ الموقع لأول مرة يصبح مديرًا بشكل افتراضي، فقط مديري الموقع يمكنهم إدارة الموقع.",
-    "description": "تنبيه لمديري الموقع"
+    "description": "تنبيه مديري الموقع"
   },
   "message.adminsTip2": {
     "message": "يمكنك إضافة أو حذف معرفات المديرين هنا، يمكنك زيارة https://auth.acedata.cloud لرؤية معرفات المستخدمين",
-    "description": "تنبيه لمديري الموقع"
+    "description": "تنبيه مديري الموقع"
   },
   "message.keywordsTip": {
-    "message": "كلمات مفتاحية للموقع، موجودة في معلومات الميتا الخاصة بالموقع، تستخدم لتحسين SEO للموقع.",
-    "description": "تنبيه لكلمات مفتاحية للموقع"
+    "message": "كلمات مفتاحية للموقع، موجودة في المعلومات الوصفية للموقع، تستخدم لتحسين SEO للموقع.",
+    "description": "تنبيه كلمات مفتاحية للموقع"
   },
   "message.keywordsTip2": {
     "message": "يمكنك إضافة أو حذف كلمات مفتاحية للموقع هنا، كلما كانت الكلمات أكثر دقة، كانت أفضل لتحسين SEO.",
-    "description": "تنبيه لكلمات مفتاحية للموقع"
+    "description": "تنبيه كلمات مفتاحية للموقع"
   },
   "message.featuresChat": {
     "message": "تفعيل أو تعطيل وحدة وظيفة الدردشة.",
-    "description": "وصف لوظيفة الدردشة"
+    "description": "وصف وظيفة الدردشة"
   },
   "message.featuresGrok": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Grok.",
-    "description": "وصف لوظيفة Grok"
+    "description": "وصف وظيفة Grok"
   },
   "message.featuresDeepseek": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Deepseek.",
-    "description": "وصف لوظيفة Deepseek"
+    "description": "وصف وظيفة Deepseek"
   },
   "message.featuresChatgpt": {
     "message": "تفعيل أو تعطيل وحدة وظيفة ChatGPT.",
-    "description": "وصف لوظيفة ChatGPT"
+    "description": "وصف وظيفة ChatGPT"
   },
   "message.featuresMidjourney": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Midjourney.",
-    "description": "وصف لوظيفة Midjourney"
+    "description": "وصف وظيفة Midjourney"
   },
   "message.featuresChatdoc": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Chatdoc.",
-    "description": "وصف لوظيفة Chatdoc"
+    "description": "وصف وظيفة Chatdoc"
   },
   "message.featuresQrart": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Qrart.",
-    "description": "وصف لوظيفة Qrart"
+    "description": "وصف وظيفة Qrart"
   },
   "message.featuresVeo": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Veo.",
-    "description": "وصف لوظيفة Veo"
+    "description": "وصف وظيفة Veo"
   },
   "message.featuresSora": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Sora.",
-    "description": "وصف لوظيفة Sora"
+    "description": "وصف وظيفة Sora"
   },
   "message.featuresSuno": {
     "message": "تفعيل أو تعطيل وحدة وظيفة Suno.",
-    "description": "وصف لوظيفة Suno"
+    "description": "وصف وظيفة Suno"
   },
   "message.featuresPixverse": {
-    "message": "تفعيل أو تعطيل وحدة وظيفة Pixverse.",
-    "description": "وصف لوظيفة Pixverse"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Pixverse.",
+    "description": "وصف ميزات Pixverse"
   },
   "message.featuresFlux": {
-    "message": "تفعيل أو تعطيل وحدة وظيفة FLux.",
-    "description": "وصف لوظيفة FLux"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات FLux.",
+    "description": "وصف ميزات FLux"
   },
   "message.featuresNanobanana": {
-    "message": "تفعيل أو تعطيل وحدة وظيفة Nano Banana.",
-    "description": "وصف لوظيفة Nano Banana"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Nano Banana.",
+    "description": "وصف ميزات Nano Banana"
   },
   "message.featuresSeedream": {
-    "message": "تفعيل أو تعطيل ميزة SeeDream.",
-    "description": "وصف ميزة SeeDream"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات SeeDream.",
+    "description": "وصف ميزات SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "تفعيل أو تعطيل ميزة SeeDance.",
-    "description": "وصف ميزة SeeDance"
+    "message": "قم بتمكين أو تعطيل وحدة ميزات SeeDance.",
+    "description": "وصف ميزات SeeDance"
+  },
+  "message.featuresWan": {
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Wan.",
+    "description": "وصف ميزات Wan"
+  },
+  "message.featuresProducer": {
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Producer.",
+    "description": "وصف ميزات Producer"
+  },
+  "message.featuresKimi": {
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Kimi.",
+    "description": "وصف ميزات Kimi"
+  },
+  "message.featuresSerp": {
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات SERP.",
+    "description": "وصف ميزات SERP"
   },
   "message.featuresLuma": {
-    "message": "تفعيل أو تعطيل ميزة Luma.",
-    "description": "وصف ميزة Luma"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Luma.",
+    "description": "وصف ميزات Luma"
   },
   "message.featuresPika": {
-    "message": "تفعيل أو تعطيل ميزة Pika.",
-    "description": "وصف ميزة Pika"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Pika.",
+    "description": "وصف ميزات Pika"
   },
   "message.featuresKling": {
-    "message": "تفعيل أو تعطيل ميزة Kling.",
-    "description": "وصف ميزة Kling"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Kling.",
+    "description": "وصف ميزات Kling"
   },
   "message.featuresHailuo": {
-    "message": "تفعيل أو تعطيل ميزة Hailuo.",
-    "description": "وصف ميزة Hailuo"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات Hailuo.",
+    "description": "وصف ميزات Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "تفعيل أو تعطيل ميزة الصور الشخصية AI.",
-    "description": "وصف ميزة الصور الشخصية AI"
+    "message": "قم بتشغيل أو إيقاف تشغيل وحدة ميزات صور الهوية AI.",
+    "description": "وصف ميزات صور الهوية AI"
   },
   "message.featuresSupport": {
-    "message": "تفعيل أو تعطيل دعم العملاء",
-    "description": "وصف ميزة الدعم"
+    "message": "قم بتشغيل أو إيقاف تشغيل دعم العملاء",
+    "description": "وصف ميزات الدعم"
   },
   "message.featuresI18n": {
-    "message": "تفعيل أو تعطيل الدعم متعدد اللغات، بعد التعطيل، يمكن للمستخدمين استخدام اللغة الافتراضية فقط.",
+    "message": "قم بتشغيل أو إيقاف تشغيل الدعم متعدد اللغات، بعد الإيقاف، يمكن للمستخدمين استخدام اللغة الافتراضية فقط.",
     "description": "وصف الدعم متعدد اللغات"
   },
   "button.upload": {
@@ -396,15 +428,15 @@
     "description": "يظهر كعنوان في صندوق التحرير"
   },
   "message.featuresGemini": {
-    "message": "تفعيل أو تعطيل ميزة Gemini.",
-    "description": "وصف ميزة Gemini"
+    "message": "قم بتمكين أو تعطيل وحدة ميزات Gemini.",
+    "description": "وصف ميزات Gemini"
   },
   "field.featuresClaude": {
     "message": "كلود",
     "description": "يظهر كعنوان في صندوق التحرير"
   },
   "message.featuresClaude": {
-    "message": "تفعيل أو تعطيل ميزة Claude.",
-    "description": "وصف ميزة Claude"
+    "message": "قم بتمكين أو تعطيل وحدة ميزات Claude.",
+    "description": "وصف ميزات Claude"
   }
 }

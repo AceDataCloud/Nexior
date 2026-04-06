@@ -123,6 +123,22 @@
     "message": "SeeDance",
     "description": "Affiché comme titre dans la zone d'édition"
   },
+  "field.featuresWan": {
+    "message": "Wan",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
+  "field.featuresProducer": {
+    "message": "Producteur",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
+  "field.featuresKimi": {
+    "message": "Kimi",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
+  "field.featuresSerp": {
+    "message": "SERP",
+    "description": "Affiché comme titre dans la zone d'édition"
+  },
   "field.featuresSupport": {
     "message": "Support client",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -184,40 +200,40 @@
     "description": "Affiché comme titre dans la zone d'édition"
   },
   "title.editQR": {
-    "message": "Modifier le code QR",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "message": "Modifier le QR code",
+    "description": "Titre affiché dans la zone d'édition"
   },
   "title.editUrl": {
     "message": "Modifier le lien",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.title": {
     "message": "Veuillez entrer le titre du site",
-    "description": "Affiché comme titre dans la zone d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.origin": {
     "message": "Veuillez entrer le domaine du site",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.editUrl": {
     "message": "Veuillez entrer le lien",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.description": {
     "message": "Veuillez entrer la description du site",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.keywords": {
     "message": "Veuillez entrer les mots-clés du site",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.editDistributionDefaultInviterId": {
     "message": "Veuillez entrer l'ID de l'inviteur par défaut",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "placeholder.editDistributionForceInviterId": {
     "message": "Veuillez entrer l'ID de l'inviteur forcé",
-    "description": "Texte affiché dans le champ d'édition"
+    "description": "Titre affiché dans la zone d'édition"
   },
   "message.uploadImageExceed": {
     "message": "Image téléchargée dépassant la limite",
@@ -248,12 +264,12 @@
     "description": "Alerte pour conserver au moins un administrateur"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utilisateur de l'invitateur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
-    "description": "Alerte pour l'ID de l'invitateur par défaut"
+    "message": "ID utilisateur de l'inviteur par défaut. Si le lien de distribution ne contient pas le paramètre inviter_id, cet ID utilisateur sera utilisé par défaut comme invitateur.",
+    "description": "Alerte pour l'ID de l'inviteur par défaut"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utilisateur de l'invitateur forcé. Si cet ID est défini, quel que soit le lien de distribution, cet ID utilisateur sera utilisé comme invitateur.",
-    "description": "Alerte pour l'ID de l'invitateur forcé"
+    "message": "ID utilisateur de l'inviteur forcé. Si cet ID est défini, il sera utilisé comme invitateur, que le lien de distribution contienne ou non le paramètre inviter_id.",
+    "description": "Alerte pour l'ID de l'inviteur forcé"
   },
   "message.originTip": {
     "message": "Domaine du site, la configuration du site est liée au domaine et ne peut pas être modifiée.",
@@ -276,7 +292,7 @@
     "description": "Alerte pour le favicon du site"
   },
   "message.adminsTip": {
-    "message": "ID des administrateurs du site. Par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur. Seuls les administrateurs peuvent gérer le site.",
+    "message": "ID des administrateurs du site. Par défaut, l'utilisateur qui crée le site pour la première fois devient administrateur. Seuls les administrateurs du site peuvent gérer le site.",
     "description": "Alerte pour les administrateurs du site"
   },
   "message.adminsTip2": {
@@ -332,16 +348,16 @@
     "description": "Description de la fonction Suno"
   },
   "message.featuresPixverse": {
-    "message": "Activer ou désactiver le module de fonction Pixverse.",
-    "description": "Description de la fonction Pixverse"
+    "message": "Activer ou désactiver le module de fonctionnalités Pixverse.",
+    "description": "Description de la fonctionnalité Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Activer ou désactiver le module de fonction FLux.",
-    "description": "Description de la fonction FLux"
+    "message": "Activer ou désactiver le module de fonctionnalités FLux.",
+    "description": "Description de la fonctionnalité FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Activer ou désactiver le module de fonction Nano Banana.",
-    "description": "Description de la fonction Nano Banana"
+    "message": "Activer ou désactiver le module de fonctionnalités Nano Banana.",
+    "description": "Description de la fonctionnalité Nano Banana"
   },
   "message.featuresSeedream": {
     "message": "Activer ou désactiver le module de fonctionnalités SeeDream.",
@@ -350,6 +366,22 @@
   "message.featuresSeedance": {
     "message": "Activer ou désactiver le module de fonctionnalités SeeDance.",
     "description": "Description de la fonctionnalité SeeDance"
+  },
+  "message.featuresWan": {
+    "message": "Activer ou désactiver le module de fonctionnalités Wan.",
+    "description": "Description de la fonctionnalité Wan"
+  },
+  "message.featuresProducer": {
+    "message": "Activer ou désactiver le module de fonctionnalités Producer.",
+    "description": "Description de la fonctionnalité Producer"
+  },
+  "message.featuresKimi": {
+    "message": "Activer ou désactiver le module de fonctionnalités Kimi.",
+    "description": "Description de la fonctionnalité Kimi"
+  },
+  "message.featuresSerp": {
+    "message": "Activer ou désactiver le module de fonctionnalités SERP.",
+    "description": "Description de la fonctionnalité SERP"
   },
   "message.featuresLuma": {
     "message": "Activer ou désactiver le module de fonctionnalités Luma.",
@@ -368,15 +400,15 @@
     "description": "Description de la fonctionnalité Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Activer ou désactiver le module de fonctionnalités de photo d'identité AI.",
-    "description": "Description de la fonctionnalité de photo d'identité AI"
+    "message": "Activer ou désactiver le module de fonctionnalités AI Photo d'identité.",
+    "description": "Description de la fonctionnalité AI Photo d'identité"
   },
   "message.featuresSupport": {
     "message": "Activer ou désactiver le support client",
-    "description": "Description de la fonctionnalité de support"
+    "description": "Description de la fonctionnalité Support"
   },
   "message.featuresI18n": {
-    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne pourra utiliser que la langue par défaut.",
+    "message": "Activer ou désactiver le support multilingue. Une fois désactivé, l'utilisateur ne peut utiliser que la langue par défaut.",
     "description": "Description du support multilingue"
   },
   "button.upload": {
@@ -385,11 +417,11 @@
   },
   "button.enabled": {
     "message": "Activé",
-    "description": "Texte du commutateur, indiquant que c'est activé"
+    "description": "Texte du commutateur, indiquant qu'il est activé"
   },
   "button.disabled": {
     "message": "Désactivé",
-    "description": "Texte du commutateur, indiquant que c'est désactivé"
+    "description": "Texte du commutateur, indiquant qu'il est désactivé"
   },
   "field.featuresGemini": {
     "message": "Gemini",
