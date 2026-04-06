@@ -11,7 +11,17 @@ import {
   ISunoMp4Request,
   ISunoMp4Response,
   ISunoStyleRequest,
-  ISunoStyleResponse
+  ISunoStyleResponse,
+  ISunoPersonaRequest,
+  ISunoPersonaResponse,
+  ISunoVoxRequest,
+  ISunoVoxResponse,
+  ISunoTimingRequest,
+  ISunoTimingResponse,
+  ISunoVoicesRequest,
+  ISunoVoicesResponse,
+  ISunoMashupLyricsRequest,
+  ISunoMashupLyricsResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -207,6 +217,86 @@ class SunoOperator {
     }
   ): Promise<AxiosResponse<{ data: { midi_url: string } }>> {
     return await axios.post('/suno/midi', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/persona - create vocal persona
+  async persona(
+    data: ISunoPersonaRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoPersonaResponse>> {
+    return await axios.post('/suno/persona', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/vox - extract vocals
+  async vox(
+    data: ISunoVoxRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoVoxResponse>> {
+    return await axios.post('/suno/vox', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/timing - get timing data
+  async timing(
+    data: ISunoTimingRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoTimingResponse>> {
+    return await axios.post('/suno/timing', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/voices - create custom voice
+  async voices(
+    data: ISunoVoicesRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoVoicesResponse>> {
+    return await axios.post('/suno/voices', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  // suno/mashup-lyrics - generate mashup lyrics
+  async mashupLyrics(
+    data: ISunoMashupLyricsRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<ISunoMashupLyricsResponse>> {
+    return await axios.post('/suno/mashup-lyrics', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json'

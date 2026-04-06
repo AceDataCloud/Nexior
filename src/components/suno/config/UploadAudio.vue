@@ -24,12 +24,18 @@
         {{ $t('suno.button.uploadAudios') }}
       </el-button>
     </el-upload>
+    <div v-if="hasUploadedAudio" class="mt-2">
+      <el-radio-group v-model="uploadAction" size="small">
+        <el-radio-button value="upload_extend">{{ $t('suno.button.extend') }}</el-radio-button>
+        <el-radio-button value="upload_cover">{{ $t('suno.button.upload_cover') }}</el-radio-button>
+      </el-radio-group>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage, ElRadioGroup, ElRadioButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -46,7 +52,9 @@ export default defineComponent({
     ElUpload,
     ElButton,
     InfoIcon,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    ElRadioGroup,
+    ElRadioButton
   },
   emits: ['change'],
   data(): IData {
@@ -76,6 +84,21 @@ export default defineComponent({
         return this.$store.state.suno?.config?.audio_id;
       },
       set() {}
+    },
+    hasUploadedAudio() {
+      const action = this.$store.state.suno?.config?.action;
+      return action === 'upload_extend' || action === 'upload_cover';
+    },
+    uploadAction: {
+      get() {
+        return this.$store.state.suno?.config?.action || 'upload_extend';
+      },
+      set(val: string) {
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          action: val
+        });
+      }
     }
   },
   watch: {

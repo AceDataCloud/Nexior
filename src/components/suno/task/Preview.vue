@@ -115,6 +115,24 @@
               <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click.stop="onConcatMusic(audio?.id)">
                 {{ $t('suno.button.concat_music') }}
               </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onOverpainting(audio)">
+                {{ $t('suno.button.overpainting') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onUnderpainting(audio)">
+                {{ $t('suno.button.underpainting') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onSamples(audio)">
+                {{ $t('suno.button.samples') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onArtistConsistency(audio)">
+                {{ $t('suno.button.artist_consistency') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onExtractVocals(audio.id)">
+                {{ $t('suno.button.extract_vocals') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onGetTiming(audio.id)">
+                {{ $t('suno.button.get_timing') }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -356,6 +374,87 @@ export default defineComponent({
         audio_id: audio.id,
         mashup_audio_ids: [audio.id]
       });
+    },
+    onOverpainting(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'overpainting',
+        audio: audio,
+        audio_id: audio.id,
+        overpainting_start: 0,
+        overpainting_end: Math.min(30, audio.duration || 30)
+      });
+    },
+    onUnderpainting(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'underpainting',
+        audio: audio,
+        audio_id: audio.id,
+        underpainting_start: 0,
+        underpainting_end: Math.min(30, audio.duration || 30)
+      });
+    },
+    onSamples(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'samples',
+        audio: audio,
+        audio_id: audio.id,
+        samples_start: 0,
+        samples_end: Math.min(30, audio.duration || 30)
+      });
+    },
+    onArtistConsistency(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'artist_consistency',
+        audio: audio,
+        audio_id: audio.id
+      });
+    },
+    async onExtractVocals(audioId: string) {
+      const token = this.credential?.token;
+      if (!token) return;
+      ElMessage.info(this.$t('suno.message.extractingVocals'));
+      sunoOperator
+        .vox({ audio_id: audioId, callback_url: CALLBACK_URL }, { token })
+        .then(() => {
+          ElMessage.success(this.$t('suno.message.extractVocalsSuccess'));
+        })
+        .catch((error) => {
+          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.extractVocalsFailed'));
+        })
+        .finally(async () => {
+          await this.onGetTasks();
+          await this.onScrollDown();
+        });
+    },
+    async onGetTiming(audioId: string) {
+      const token = this.credential?.token;
+      if (!token) return;
+      ElMessage.info(this.$t('suno.message.fetchingTiming'));
+      sunoOperator
+        .timing({ audio_id: audioId }, { token })
+        .then((response) => {
+          ElMessage.success(this.$t('suno.message.fetchTimingSuccess'));
+          console.debug('timing data', response.data);
+        })
+        .catch((error) => {
+          ElMessage.error(error?.response?.data?.error?.message || this.$t('suno.message.fetchTimingFailed'));
+        });
     },
     async handleWavDownload(audio: ISunoAudio) {
       if (!audio?.id || this.isFetchingWav) return;
