@@ -24,6 +24,8 @@
         <organic-result v-for="(item, index) in results.organic" :key="index" :data="item" class="mb-1" />
       </div>
       <image-results v-if="results.images?.length" :data="results.images" class="mb-6" />
+      <video-results v-if="results.videos?.length" :data="results.videos" class="mb-6" />
+      <news-results v-if="results.news?.length" :data="results.news" class="mb-6" />
       <people-also-ask v-if="results.people_also_ask?.length" :data="results.people_also_ask" class="mb-6" />
       <related-searches
         v-if="results.related_searches?.length"
@@ -46,6 +48,8 @@ import { Status } from '@/models';
 import KnowledgeGraph from './result/KnowledgeGraph.vue';
 import OrganicResult from './result/OrganicResult.vue';
 import ImageResults from './result/ImageResults.vue';
+import VideoResults from './result/VideoResults.vue';
+import NewsResults from './result/NewsResults.vue';
 import PeopleAlsoAsk from './result/PeopleAlsoAsk.vue';
 import RelatedSearches from './result/RelatedSearches.vue';
 
@@ -56,6 +60,8 @@ export default defineComponent({
     KnowledgeGraph,
     OrganicResult,
     ImageResults,
+    VideoResults,
+    NewsResults,
     PeopleAlsoAsk,
     RelatedSearches
   },
@@ -73,6 +79,8 @@ export default defineComponent({
         this.results &&
         !this.results.organic?.length &&
         !this.results.images?.length &&
+        !this.results.videos?.length &&
+        !this.results.news?.length &&
         !this.results.knowledge_graph?.title
       );
     }

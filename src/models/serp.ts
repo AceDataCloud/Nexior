@@ -61,9 +61,33 @@ export interface ISerpRelatedSearch {
   query?: string;
 }
 
+export interface ISerpVideoResult {
+  title?: string;
+  link?: string;
+  snippet?: string;
+  image_url?: string;
+  video_url?: string;
+  duration?: string;
+  source?: string;
+  channel?: string;
+  date?: string;
+  position?: number;
+}
+
+export interface ISerpNewsResult {
+  title?: string;
+  link?: string;
+  snippet?: string;
+  date?: string;
+  source?: string;
+  image_url?: string;
+}
+
 export interface ISerpSearchResponse {
   organic?: ISerpOrganicResult[];
   images?: ISerpImageResult[];
+  videos?: ISerpVideoResult[];
+  news?: ISerpNewsResult[];
   knowledge_graph?: ISerpKnowledgeGraph;
   people_also_ask?: ISerpPeopleAlsoAsk[];
   related_searches?: ISerpRelatedSearch[];
