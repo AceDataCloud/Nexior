@@ -86,7 +86,9 @@ import {
   faAnglesRight as faSolidAnglesRight,
   faCubesStacked as faSolidCubesStacked,
   faChartLine as faSolidChartLine,
-  faMobileScreenButton as faSolidMobileScreenButton
+  faMobileScreenButton as faSolidMobileScreenButton,
+  faMagnifyingGlass as faSolidMagnifyingGlass,
+  faFaceMeh as faSolidFaceMeh
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -175,3 +177,5 @@ library.add(faSolidMobileScreenButton);
 library.add(faBrandsDiscord);
 library.add(faSolidAnglesLeft);
 library.add(faSolidAnglesRight);
+library.add(faSolidMagnifyingGlass);
+library.add(faSolidFaceMeh);
