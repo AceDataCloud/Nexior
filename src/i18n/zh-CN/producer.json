@@ -1,0 +1,394 @@
+{
+  "button.extend": {
+    "message": "继续生成",
+    "description": "继续生成按钮文本"
+  },
+  "button.download": {
+    "message": "下载",
+    "description": "下载按钮文本"
+  },
+  "button.more": {
+    "message": "更多操作",
+    "description": "更多操作按钮文本"
+  },
+  "button.uploadAudios": {
+    "message": "上传",
+    "description": "按钮文本，允许用户上传参考"
+  },
+  "button.video": {
+    "message": "视频",
+    "description": "视频按钮文本"
+  },
+  "button.download_video": {
+    "message": "下载视频",
+    "description": "下载视频按钮文本"
+  },
+  "button.download_wav": {
+    "message": "下载 WAV 无损",
+    "description": "下载WAV无损格式按钮文本"
+  },
+  "button.get_stems": {
+    "message": "声曲分离",
+    "description": "声曲分离按钮文本"
+  },
+  "button.cover_music": {
+    "message": "翻唱",
+    "description": "翻唱按钮文本"
+  },
+  "button.download_audio": {
+    "message": "下载音乐",
+    "description": "下载音乐按钮文本"
+  },
+  "button.replace_section": {
+    "message": "替换片段",
+    "description": "替换歌曲中的某个片段按钮文本"
+  },
+  "button.generate_lyrics": {
+    "message": "AI 生成歌词",
+    "description": "使用AI自动生成歌词按钮文本"
+  },
+  "button.all_stems": {
+    "message": "全部分离",
+    "description": "分离所有音轨按钮文本"
+  },
+  "button.variation": {
+    "message": "变体",
+    "description": "变体按钮文本"
+  },
+  "button.swap_vocals": {
+    "message": "人声替换",
+    "description": "人声替换按钮文本"
+  },
+  "button.swap_instrumentals": {
+    "message": "伴奏替换",
+    "description": "伴奏替换按钮文本"
+  },
+  "model.fuzz20pro": {
+    "message": "FUZZ-2.0 Pro",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20": {
+    "message": "FUZZ-2.0",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20raw": {
+    "message": "FUZZ-2.0 Raw",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11pro": {
+    "message": "FUZZ-1.1 Pro",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10pro": {
+    "message": "FUZZ-1.0 Pro",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10": {
+    "message": "FUZZ-1.0",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11": {
+    "message": "FUZZ-1.1",
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz08": {
+    "message": "FUZZ-0.8",
+    "description": "用于生成音乐的模型"
+  },
+  "name.instrumental": {
+    "message": "纯音乐",
+    "description": "生成纯音乐无人声"
+  },
+  "name.referenceAudios": {
+    "message": "参考音乐",
+    "description": "参考音乐的名称"
+  },
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.type": {
+    "message": "定制模式",
+    "description": "定制模式的名称"
+  },
+  "name.prompt": {
+    "message": "歌曲描述",
+    "description": "内容输入的提示"
+  },
+  "name.extend": {
+    "message": "扩展歌曲来自",
+    "description": "内容输入的提示"
+  },
+  "name.cover": {
+    "message": "翻唱歌曲来自",
+    "description": "内容输入的提示"
+  },
+  "name.lyrics": {
+    "message": "歌词",
+    "description": "歌词内容输入的提示"
+  },
+  "name.style": {
+    "message": "风格",
+    "description": "歌曲风格内容输入的提示"
+  },
+  "name.styleNegative": {
+    "message": "排除风格",
+    "description": "不想要的风格描述"
+  },
+  "name.title": {
+    "message": "标题",
+    "description": "歌曲标题内容输入的提示"
+  },
+  "name.vocalGender": {
+    "message": "人声性别",
+    "description": "选择人声性别"
+  },
+  "name.advancedParams": {
+    "message": "高级参数",
+    "description": "高级参数设置"
+  },
+  "name.weirdness": {
+    "message": "创意度",
+    "description": "控制生成音乐的创意程度"
+  },
+  "name.soundStrength": {
+    "message": "声音强度",
+    "description": "控制生成声音的强度"
+  },
+  "name.lyricsStrength": {
+    "message": "歌词强度",
+    "description": "控制歌词对生成结果的影响程度"
+  },
+  "name.seed": {
+    "message": "种子",
+    "description": "用于可重复生成的随机种子"
+  },
+  "name.lyricPrompt": {
+    "message": "歌词提示",
+    "description": "用于自动生成歌词的提示"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败的原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务的状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.producerBot": {
+    "message": "Producer Bot",
+    "description": "Producer生成器的名称"
+  },
+  "name.replaceSection": {
+    "message": "替换片段",
+    "description": "替换歌曲中的某个片段"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "选择模型版本"
+  },
+  "name.songDescription": {
+    "message": "歌曲描述",
+    "description": "歌曲描述模式"
+  },
+  "description.prompt": {
+    "message": "描述你想要的音乐风格和主题",
+    "description": "参数'prompt'的描述"
+  },
+  "description.lyrics": {
+    "message": "输入自定义歌词，支持 [Verse]、[Chorus]、[Bridge] 等段落标记",
+    "description": "参数'lyrics'的描述"
+  },
+  "description.style": {
+    "message": "描述音乐风格，如 acoustic pop、jazz、electronic",
+    "description": "参数'style'的描述"
+  },
+  "description.styleNegative": {
+    "message": "描述不想要的风格，例如 heavy metal、screaming",
+    "description": "排除风格参数的描述"
+  },
+  "description.title": {
+    "message": "歌曲标题",
+    "description": "参数'title'的描述"
+  },
+  "description.uploadAudios": {
+    "message": "上传音乐作为生成的参考，上传的过程需要等待一会，生成成功后便可根据上传的音乐进行生成",
+    "description": "上传参考参数的描述"
+  },
+  "description.vocalGender": {
+    "message": "选择生成人声的性别",
+    "description": "人声性别选择器的描述"
+  },
+  "description.weirdness": {
+    "message": "值越高生成的音乐越有创意和实验性 (0-100)",
+    "description": "创意度参数的描述"
+  },
+  "description.soundStrength": {
+    "message": "控制生成声音的强度 (0-100)",
+    "description": "声音强度参数的描述"
+  },
+  "description.lyricsStrength": {
+    "message": "控制歌词对生成结果的影响程度 (0-100)",
+    "description": "歌词强度参数的描述"
+  },
+  "description.seed": {
+    "message": "输入种子值以获得可重复的结果，留空为随机",
+    "description": "种子参数的描述"
+  },
+  "description.lyricPrompt": {
+    "message": "输入歌词描述，AI 将自动生成歌词",
+    "description": "歌词提示描述"
+  },
+  "description.replaceSection": {
+    "message": "替换歌曲中指定时间段的内容",
+    "description": "替换片段功能的描述"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务的等待状态"
+  },
+  "placeholder.prompt": {
+    "message": "描述你想要的音乐，例如：一首温暖的民谣，关于秋天的思念...",
+    "description": "歌曲描述输入的占位符"
+  },
+  "placeholder.lyrics": {
+    "message": "[Verse]\n在这个寂静的夜里\n星星在天空闪烁\n\n[Chorus]\n让我们一起唱歌\n直到天亮...",
+    "description": "歌词输入的占位符"
+  },
+  "placeholder.extend.lyrics": {
+    "message": "请输入需要扩展的歌词...",
+    "description": "扩展歌词输入的占位符"
+  },
+  "placeholder.extend.continue_at": {
+    "message": "从第几秒开始扩展...",
+    "description": "扩展起始时间的占位符"
+  },
+  "placeholder.style": {
+    "message": "例如：acoustic pop, jazz, R&B, electronic...",
+    "description": "风格输入的占位符"
+  },
+  "placeholder.styleNegative": {
+    "message": "例如：heavy metal, screaming...",
+    "description": "排除风格输入的占位符"
+  },
+  "placeholder.title": {
+    "message": "输入歌曲名称...",
+    "description": "标题输入的占位符"
+  },
+  "placeholder.select": {
+    "message": "请选择模型...",
+    "description": "模型选择的占位符"
+  },
+  "placeholder.position": {
+    "message": "请选择...",
+    "description": "位置输入的占位符"
+  },
+  "placeholder.lyricPrompt": {
+    "message": "描述歌词主题，AI 将自动生成...",
+    "description": "歌词提示输入的占位符"
+  },
+  "placeholder.replaceSectionStart": {
+    "message": "开始时间 (秒)",
+    "description": "替换片段开始时间的占位符"
+  },
+  "placeholder.replaceSectionEnd": {
+    "message": "结束时间 (秒)",
+    "description": "替换片段结束时间的占位符"
+  },
+  "placeholder.seed": {
+    "message": "输入种子值（可选）...",
+    "description": "种子输入的占位符"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按钮文本"
+  },
+  "gender.male": {
+    "message": "男声",
+    "description": "男性人声选项"
+  },
+  "gender.female": {
+    "message": "女声",
+    "description": "女性人声选项"
+  },
+  "gender.auto": {
+    "message": "自动",
+    "description": "自动选择人声性别"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "音乐生成任务开始时的消息"
+  },
+  "message.startingUploadAudio": {
+    "message": "正在上传自定义音乐...",
+    "description": "音乐生成任务开始时的消息"
+  },
+  "message.uploadReferencesExceed": {
+    "message": "上传的音乐超过了最大数量",
+    "description": "上传的音乐超过了最大数量时的错误消息"
+  },
+  "message.uploadReferencesError": {
+    "message": "上传音乐失败",
+    "description": "上传音乐失败时的错误消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功启动音乐生成任务",
+    "description": "成功启动音乐生成任务时的成功消息"
+  },
+  "message.startUploadAudioSuccess": {
+    "message": "成功上传自定义音乐",
+    "description": "成功启动音乐生成任务时的成功消息"
+  },
+  "message.startUploadAudioFailed": {
+    "message": "上传自定义音乐失败",
+    "description": "启动音乐生成任务失败时的错误消息"
+  },
+  "message.startTaskFailed": {
+    "message": "启动音乐生成任务失败",
+    "description": "启动音乐生成任务失败时的错误消息"
+  },
+  "message.getVideoUrlFailed": {
+    "message": "获取音乐视频失败，请稍后重试",
+    "description": "获取视频失败时的错误消息"
+  },
+  "message.generatingLyrics": {
+    "message": "正在生成歌词...",
+    "description": "生成歌词时的消息"
+  },
+  "message.generateLyricsSuccess": {
+    "message": "歌词生成成功",
+    "description": "歌词生成成功时的消息"
+  },
+  "message.generateLyricsFailed": {
+    "message": "歌词生成失败",
+    "description": "歌词生成失败时的消息"
+  },
+  "message.fetchingWav": {
+    "message": "正在获取 WAV 文件...",
+    "description": "获取WAV文件时的消息"
+  },
+  "message.fetchWavFailed": {
+    "message": "获取 WAV 文件失败",
+    "description": "获取WAV文件失败时的消息"
+  },
+  "message.generating": {
+    "message": "生成中...",
+    "description": "音乐正在生成时的消息"
+  },
+  "message.generateFailed": {
+    "message": "生成音乐失败",
+    "description": "音乐生成失败时的消息"
+  },
+  "message.noOperations": {
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
+  },
+  "message.noTasks": {
+    "message": "没有历史任务，请在左侧配置栏生成音乐",
+    "description": "没有任务时的消息"
+  }
+}

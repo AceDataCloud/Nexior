@@ -20,6 +20,7 @@ import flux from './flux';
 import hailuo from './hailuo';
 import headshots from './headshots';
 import suno from './suno';
+import producer from './producer';
 import nanobanana from './nanobanana';
 import seedream from './seedream';
 import seedance from './seedance';
@@ -155,6 +156,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Suno', 'AI Music', 'Music Generation', 'AI Song', 'Text to Music'],
     category: 'AI Music Generation'
   },
+  producer: {
+    title: 'Producer',
+    description: 'Create AI music with Producer — generate songs, lyrics, and music with FUZZ models.',
+    keywords: ['Producer', 'AI Music', 'Music Generation', 'FUZZ', 'AI Song'],
+    category: 'AI Music Generation'
+  },
   distribution: {
     title: 'Affiliate',
     description: 'Join the Ace Data Cloud affiliate program — earn commissions by referring AI services.',
@@ -186,6 +193,7 @@ const routes = [
   hailuo,
   headshots,
   suno,
+  producer,
   nanobanana,
   seedream,
   seedance,
