@@ -1,5 +1,8 @@
 <template>
   <div :direction="direction" :class="['navigator', { collapsed: direction === 'column' }]">
+    <div v-if="direction === 'column'" class="brand">
+      <logo @click.stop="onHome" />
+    </div>
     <div class="top">
       <div ref="linksContainer" class="links">
         <div
@@ -58,6 +61,7 @@
 import { defineComponent } from 'vue';
 import { ElTooltip, ElImage, ElPopover } from 'element-plus';
 import {
+  ROUTE_INDEX,
   ROUTE_PROFILE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_LUMA_INDEX,
@@ -117,6 +121,7 @@ import {
   CHAT_MODEL_ICON_KIMI,
   SERP_LOGO
 } from '@/constants';
+import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 
 interface NavLink {
@@ -133,6 +138,7 @@ export default defineComponent({
   components: {
     ElImage,
     ElPopover,
+    Logo,
     ElTooltip,
     UserCenter
   },
@@ -411,6 +417,9 @@ export default defineComponent({
     }
   },
   methods: {
+    onHome() {
+      this.$router.push({ name: ROUTE_INDEX });
+    },
     onOverflowItemClick(link: { route: { name: string } }) {
       this.showOverflow = false;
       this.$router.push(link.route);
@@ -487,11 +496,19 @@ export default defineComponent({
     flex-direction: column;
     width: 60px;
 
+    .brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0 6px;
+      width: 100%;
+    }
+
     .top {
       flex: 1;
       display: flex;
       flex-direction: column;
-      padding-top: 10px;
+      padding-top: 0;
       width: 100%;
       min-height: 0;
       overflow: hidden;
