@@ -220,7 +220,7 @@
     "description": "參數'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "上傳音樂作為生成的參考，過程需要等待，生成成功後可根據上傳的音樂進行生成",
+    "message": "上傳音樂作為生成的參考，過程需要等待一會，生成成功後可根據上傳的音樂進行生成",
     "description": "上傳參考參數的描述"
   },
   "description.vocalGender": {
@@ -414,5 +414,129 @@
   "message.noTasks": {
     "message": "沒有歷史任務，請在左側配置欄生成音樂",
     "description": "沒有任務時的消息"
+  },
+  "button.upload_cover": {
+    "message": "上傳翻唱",
+    "description": "上傳音頻後翻唱按鈕文本"
+  },
+  "button.artist_consistency": {
+    "message": "風格一致性",
+    "description": "基於歌手風格生成按鈕文本"
+  },
+  "button.artist_consistency_vox": {
+    "message": "人聲風格一致性",
+    "description": "基於歌手人聲風格生成按鈕文本"
+  },
+  "button.underpainting": {
+    "message": "添加伴奏",
+    "description": "為上傳的歌曲添加伴奏按鈕文本"
+  },
+  "button.overpainting": {
+    "message": "添加人聲",
+    "description": "為上傳的歌曲添加人聲按鈕文本"
+  },
+  "button.samples": {
+    "message": "添加採樣",
+    "description": "為上傳的歌曲添加採樣按鈕文本"
+  },
+  "button.extract_vocals": {
+    "message": "提取人聲",
+    "description": "從歌曲中提取人聲按鈕文本"
+  },
+  "button.get_timing": {
+    "message": "獲取節拍",
+    "description": "獲取歌曲節拍數據按鈕文本"
+  },
+  "button.create_persona": {
+    "message": "創建歌手風格",
+    "description": "創建歌手風格按鈕文本"
+  },
+  "button.mashup_lyrics": {
+    "message": "混搭歌詞",
+    "description": "混搭兩段歌詞按鈕文本"
+  },
+  "name.persona": {
+    "message": "歌手風格",
+    "description": "歌手風格選擇"
+  },
+  "name.overpaintingRange": {
+    "message": "人聲範圍",
+    "description": "添加人聲的時間範圍"
+  },
+  "name.underpaintingRange": {
+    "message": "伴奏範圍",
+    "description": "添加伴奏的時間範圍"
+  },
+  "name.samplesRange": {
+    "message": "採樣範圍",
+    "description": "添加採樣的時間範圍"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "開始時間 (秒)",
+    "description": "人聲開始時間的佔位符"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "結束時間 (秒)",
+    "description": "人聲結束時間的佔位符"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "開始時間 (秒)",
+    "description": "伴奏開始時間的佔位符"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "結束時間 (秒)",
+    "description": "伴奏結束時間的佔位符"
+  },
+  "placeholder.samplesStart": {
+    "message": "開始時間 (秒)",
+    "description": "採樣開始時間的佔位符"
+  },
+  "placeholder.samplesEnd": {
+    "message": "結束時間 (秒)",
+    "description": "採樣結束時間的佔位符"
+  },
+  "placeholder.personaId": {
+    "message": "輸入歌手風格 ID...",
+    "description": "歌手風格 ID 輸入的佔位符"
+  },
+  "description.persona": {
+    "message": "使用已創建的歌手風格來生成一致風格的歌曲",
+    "description": "歌手風格功能的描述"
+  },
+  "description.overpainting": {
+    "message": "在指定時間範圍內為上傳的音樂添加人聲",
+    "description": "添加人聲功能的描述"
+  },
+  "description.underpainting": {
+    "message": "在指定時間範圍內為上傳的音樂添加伴奏",
+    "description": "添加伴奏功能的描述"
+  },
+  "description.samples": {
+    "message": "在指定時間範圍內為上傳的音樂添加採樣",
+    "description": "添加採樣功能的描述"
+  },
+  "message.fetchingTiming": {
+    "message": "正在獲取節拍數據...",
+    "description": "獲取節拍數據時的消息"
+  },
+  "message.fetchTimingFailed": {
+    "message": "獲取節拍數據失敗",
+    "description": "獲取節拍數據失敗時的消息"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "節拍數據獲取成功",
+    "description": "獲取節拍數據成功時的消息"
+  },
+  "message.extractingVocals": {
+    "message": "正在提取人聲...",
+    "description": "提取人聲時的消息"
+  },
+  "message.extractVocalsFailed": {
+    "message": "提取人聲失敗",
+    "description": "提取人聲失敗時的消息"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "人聲提取成功",
+    "description": "提取人聲成功時的消息"
   }
 }

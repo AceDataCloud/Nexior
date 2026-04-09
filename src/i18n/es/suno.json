@@ -49,7 +49,7 @@
   },
   "button.remaster": {
     "message": "Remasterizar",
-    "description": "Texto del botón para remasterizar la calidad de audio"
+    "description": "Texto del botón para remasterizar y mejorar la calidad de audio"
   },
   "button.replace_section": {
     "message": "Reemplazar fragmento",
@@ -161,7 +161,7 @@
   },
   "name.variationCategory": {
     "message": "Tipo de variación",
-    "description": "Controlar el grado de diversidad en las variaciones generadas"
+    "description": "Controlar la diversidad de las variaciones generadas"
   },
   "name.audioWeight": {
     "message": "Peso de la canción original",
@@ -213,7 +213,7 @@
   },
   "description.styleNegative": {
     "message": "Describe los estilos no deseados, como heavy metal, gritos",
-    "description": "Descripción del parámetro de estilos excluidos"
+    "description": "Descripción del parámetro de estilos a excluir"
   },
   "description.title": {
     "message": "Título de la canción",
@@ -225,7 +225,7 @@
   },
   "description.vocalGender": {
     "message": "Selecciona el género de la voz a generar (solo soportado en versiones v4.5 y superiores)",
-    "description": "Descripción del selector de género vocal"
+    "description": "Descripción del selector de género de voz"
   },
   "description.weirdness": {
     "message": "Cuanto mayor sea el valor, más creativa y experimental será la música generada (0-100)",
@@ -273,7 +273,7 @@
   },
   "placeholder.styleNegative": {
     "message": "Por ejemplo: heavy metal, gritos...",
-    "description": "Placeholder para la entrada de estilos excluidos"
+    "description": "Placeholder para la entrada de estilos a excluir"
   },
   "placeholder.title": {
     "message": "Ingresa el nombre de la canción...",
@@ -301,7 +301,7 @@
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón de generación"
+    "description": "Texto del botón de generar"
   },
   "gender.male": {
     "message": "Voz masculina",
@@ -313,15 +313,15 @@
   },
   "gender.auto": {
     "message": "Automático",
-    "description": "Selección automática del género vocal"
+    "description": "Selección automática del género de voz"
   },
   "variation.high": {
     "message": "Alta variación",
-    "description": "Opción de alta diversidad de variación"
+    "description": "Opción de variación alta"
   },
   "variation.low": {
     "message": "Baja variación",
-    "description": "Opción de baja diversidad de variación"
+    "description": "Opción de variación baja"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -349,15 +349,15 @@
   },
   "message.startUploadAudioFailed": {
     "message": "Error al subir música personalizada",
-    "description": "Mensaje de error al fallar al iniciar la tarea de generación musical"
+    "description": "Mensaje de error al fallar la tarea de generación musical"
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea de generación musical",
-    "description": "Mensaje de error al fallar al iniciar la tarea de generación musical"
+    "description": "Mensaje de error al fallar la tarea de generación musical"
   },
   "message.getVideoUrlFailed": {
     "message": "Error al obtener el video musical, por favor intenta de nuevo más tarde",
-    "description": "Mensaje de error al fallar al obtener el video"
+    "description": "Mensaje de error al fallar la obtención del video"
   },
   "message.generatingLyrics": {
     "message": "Generando letras...",
@@ -376,7 +376,7 @@
     "description": "Mensaje al optimizar el estilo"
   },
   "message.optimizeStyleSuccess": {
-    "message": "Optimización del estilo exitosa",
+    "message": "Estilo optimizado con éxito",
     "description": "Mensaje cuando la optimización del estilo es exitosa"
   },
   "message.optimizeStyleFailed": {
@@ -412,7 +412,131 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor genera música en la barra de configuración a la izquierda",
+    "message": "No hay tareas históricas, genera música en la barra de configuración a la izquierda",
     "description": "Mensaje cuando no hay tareas"
+  },
+  "button.upload_cover": {
+    "message": "Subir versión",
+    "description": "Texto del botón para subir audio y hacer una versión"
+  },
+  "button.artist_consistency": {
+    "message": "Consistencia de estilo",
+    "description": "Texto del botón para generar basado en el estilo del cantante"
+  },
+  "button.artist_consistency_vox": {
+    "message": "Consistencia de voz",
+    "description": "Texto del botón para generar basado en el estilo vocal del cantante"
+  },
+  "button.underpainting": {
+    "message": "Agregar acompañamiento",
+    "description": "Texto del botón para agregar acompañamiento a la canción subida"
+  },
+  "button.overpainting": {
+    "message": "Agregar voz",
+    "description": "Texto del botón para agregar voz a la canción subida"
+  },
+  "button.samples": {
+    "message": "Agregar muestras",
+    "description": "Texto del botón para agregar muestras a la canción subida"
+  },
+  "button.extract_vocals": {
+    "message": "Extraer voz",
+    "description": "Texto del botón para extraer la voz de la canción"
+  },
+  "button.get_timing": {
+    "message": "Obtener ritmo",
+    "description": "Texto del botón para obtener datos de ritmo de la canción"
+  },
+  "button.create_persona": {
+    "message": "Crear estilo de cantante",
+    "description": "Texto del botón para crear un estilo de cantante"
+  },
+  "button.mashup_lyrics": {
+    "message": "Mezclar letras",
+    "description": "Texto del botón para mezclar dos fragmentos de letras"
+  },
+  "name.persona": {
+    "message": "Estilo de cantante",
+    "description": "Selección de estilo de cantante"
+  },
+  "name.overpaintingRange": {
+    "message": "Rango de voz",
+    "description": "Rango de tiempo para agregar voz"
+  },
+  "name.underpaintingRange": {
+    "message": "Rango de acompañamiento",
+    "description": "Rango de tiempo para agregar acompañamiento"
+  },
+  "name.samplesRange": {
+    "message": "Rango de muestras",
+    "description": "Rango de tiempo para agregar muestras"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "Hora de inicio (segundos)",
+    "description": "Marcador de posición para la hora de inicio de la voz"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "Hora de fin (segundos)",
+    "description": "Marcador de posición para la hora de fin de la voz"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "Hora de inicio (segundos)",
+    "description": "Marcador de posición para la hora de inicio del acompañamiento"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "Hora de fin (segundos)",
+    "description": "Marcador de posición para la hora de fin del acompañamiento"
+  },
+  "placeholder.samplesStart": {
+    "message": "Hora de inicio (segundos)",
+    "description": "Marcador de posición para la hora de inicio de las muestras"
+  },
+  "placeholder.samplesEnd": {
+    "message": "Hora de fin (segundos)",
+    "description": "Marcador de posición para la hora de fin de las muestras"
+  },
+  "placeholder.personaId": {
+    "message": "Introduce ID de estilo de cantante...",
+    "description": "Marcador de posición para la entrada del ID de estilo de cantante"
+  },
+  "description.persona": {
+    "message": "Usa el estilo de cantante creado para generar canciones con un estilo consistente",
+    "description": "Descripción de la función de estilo de cantante"
+  },
+  "description.overpainting": {
+    "message": "Agrega voz a la música subida en un rango de tiempo específico",
+    "description": "Descripción de la función de agregar voz"
+  },
+  "description.underpainting": {
+    "message": "Agrega acompañamiento a la música subida en un rango de tiempo específico",
+    "description": "Descripción de la función de agregar acompañamiento"
+  },
+  "description.samples": {
+    "message": "Agrega muestras a la música subida en un rango de tiempo específico",
+    "description": "Descripción de la función de agregar muestras"
+  },
+  "message.fetchingTiming": {
+    "message": "Obteniendo datos de ritmo...",
+    "description": "Mensaje al obtener datos de ritmo"
+  },
+  "message.fetchTimingFailed": {
+    "message": "Error al obtener datos de ritmo",
+    "description": "Mensaje cuando falla la obtención de datos de ritmo"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "Datos de ritmo obtenidos con éxito",
+    "description": "Mensaje cuando la obtención de datos de ritmo es exitosa"
+  },
+  "message.extractingVocals": {
+    "message": "Extrayendo voz...",
+    "description": "Mensaje al extraer la voz"
+  },
+  "message.extractVocalsFailed": {
+    "message": "Error al extraer la voz",
+    "description": "Mensaje cuando falla la extracción de la voz"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "Voz extraída con éxito",
+    "description": "Mensaje cuando la extracción de la voz es exitosa"
   }
 }

@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "アップロード",
-    "description": "ユーザーが参考をアップロードするためのボタンテキスト"
+    "description": "参照をアップロードするためのボタンのテキスト"
   },
   "button.video": {
     "message": "動画",
@@ -84,8 +84,8 @@
     "description": "ボーカルなしの純音楽を生成"
   },
   "name.referenceAudios": {
-    "message": "参考音楽",
-    "description": "参考音楽の名称"
+    "message": "参照音楽",
+    "description": "参照音楽の名称"
   },
   "model.model3": {
     "message": "v3.5",
@@ -212,7 +212,7 @@
     "description": "パラメータ'style'の説明"
   },
   "description.styleNegative": {
-    "message": "望ましくないスタイルを説明します。例：ヘビーメタル、スクリーミング",
+    "message": "望まないスタイルを説明します。例：ヘビーメタル、スクリーミング",
     "description": "除外スタイルパラメータの説明"
   },
   "description.title": {
@@ -332,8 +332,8 @@
     "description": "音楽生成タスク開始時のメッセージ"
   },
   "message.uploadReferencesExceed": {
-    "message": "アップロードされた音楽が最大数を超えました",
-    "description": "アップロードされた音楽が最大数を超えた時のエラーメッセージ"
+    "message": "アップロードした音楽が最大数を超えました",
+    "description": "アップロードした音楽が最大数を超えた時のエラーメッセージ"
   },
   "message.uploadReferencesError": {
     "message": "音楽のアップロードに失敗しました",
@@ -353,7 +353,7 @@
   },
   "message.startTaskFailed": {
     "message": "音楽生成タスクの開始に失敗しました",
-    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+    "description": "音楽生成タスク開始に失敗した時のエラーメッセージ"
   },
   "message.getVideoUrlFailed": {
     "message": "音楽ビデオの取得に失敗しました。後でもう一度お試しください",
@@ -368,44 +368,44 @@
     "description": "歌詞生成成功時のメッセージ"
   },
   "message.generateLyricsFailed": {
-    "message": "歌詞の生成に失敗しました",
-    "description": "歌詞生成失敗時のメッセージ"
+    "message": "歌詞生成に失敗しました",
+    "description": "歌詞生成に失敗した時のメッセージ"
   },
   "message.optimizingStyle": {
-    "message": "スタイル説明を最適化中...",
-    "description": "スタイル最適化時のメッセージ"
+    "message": "スタイルを最適化中...",
+    "description": "スタイルを最適化している時のメッセージ"
   },
   "message.optimizeStyleSuccess": {
     "message": "スタイルの最適化に成功しました",
-    "description": "スタイル最適化成功時のメッセージ"
+    "description": "スタイルの最適化に成功した時のメッセージ"
   },
   "message.optimizeStyleFailed": {
     "message": "スタイルの最適化に失敗しました",
-    "description": "スタイル最適化失敗時のメッセージ"
+    "description": "スタイルの最適化に失敗した時のメッセージ"
   },
   "message.fetchingWav": {
     "message": "WAVファイルを取得中...",
-    "description": "WAVファイル取得時のメッセージ"
+    "description": "WAVファイルを取得している時のメッセージ"
   },
   "message.fetchWavFailed": {
     "message": "WAVファイルの取得に失敗しました",
-    "description": "WAVファイル取得失敗時のメッセージ"
+    "description": "WAVファイルの取得に失敗した時のメッセージ"
   },
   "message.fetchingMidi": {
     "message": "MIDIファイルを取得中...",
-    "description": "MIDIファイル取得時のメッセージ"
+    "description": "MIDIファイルを取得している時のメッセージ"
   },
   "message.fetchMidiFailed": {
     "message": "MIDIファイルの取得に失敗しました",
-    "description": "MIDIファイル取得失敗時のメッセージ"
+    "description": "MIDIファイルの取得に失敗した時のメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "音楽生成中のメッセージ"
+    "description": "音楽を生成している時のメッセージ"
   },
   "message.generateFailed": {
     "message": "音楽の生成に失敗しました",
-    "description": "音楽生成失敗時のメッセージ"
+    "description": "音楽生成に失敗した時のメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
@@ -414,5 +414,129 @@
   "message.noTasks": {
     "message": "履歴タスクはありません。左側の設定バーで音楽を生成してください",
     "description": "タスクがない時のメッセージ"
+  },
+  "button.upload_cover": {
+    "message": "カバーをアップロード",
+    "description": "音声をアップロード後のカバーボタンテキスト"
+  },
+  "button.artist_consistency": {
+    "message": "スタイルの一貫性",
+    "description": "歌手のスタイルに基づいて生成するボタンテキスト"
+  },
+  "button.artist_consistency_vox": {
+    "message": "ボーカルスタイルの一貫性",
+    "description": "歌手のボーカルスタイルに基づいて生成するボタンテキスト"
+  },
+  "button.underpainting": {
+    "message": "伴奏を追加",
+    "description": "アップロードした曲に伴奏を追加するボタンテキスト"
+  },
+  "button.overpainting": {
+    "message": "ボーカルを追加",
+    "description": "アップロードした曲にボーカルを追加するボタンテキスト"
+  },
+  "button.samples": {
+    "message": "サンプリングを追加",
+    "description": "アップロードした曲にサンプリングを追加するボタンテキスト"
+  },
+  "button.extract_vocals": {
+    "message": "ボーカルを抽出",
+    "description": "曲からボーカルを抽出するボタンテキスト"
+  },
+  "button.get_timing": {
+    "message": "ビートを取得",
+    "description": "曲のビートデータを取得するボタンテキスト"
+  },
+  "button.create_persona": {
+    "message": "歌手スタイルを作成",
+    "description": "歌手スタイルを作成するボタンテキスト"
+  },
+  "button.mashup_lyrics": {
+    "message": "歌詞をミックス",
+    "description": "2つの歌詞をミックスするボタンテキスト"
+  },
+  "name.persona": {
+    "message": "歌手スタイル",
+    "description": "歌手スタイルの選択"
+  },
+  "name.overpaintingRange": {
+    "message": "ボーカル範囲",
+    "description": "ボーカルを追加する時間範囲"
+  },
+  "name.underpaintingRange": {
+    "message": "伴奏範囲",
+    "description": "伴奏を追加する時間範囲"
+  },
+  "name.samplesRange": {
+    "message": "サンプリング範囲",
+    "description": "サンプリングを追加する時間範囲"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "開始時間 (秒)",
+    "description": "ボーカル開始時間のプレースホルダー"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "終了時間 (秒)",
+    "description": "ボーカル終了時間のプレースホルダー"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "開始時間 (秒)",
+    "description": "伴奏開始時間のプレースホルダー"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "終了時間 (秒)",
+    "description": "伴奏終了時間のプレースホルダー"
+  },
+  "placeholder.samplesStart": {
+    "message": "開始時間 (秒)",
+    "description": "サンプリング開始時間のプレースホルダー"
+  },
+  "placeholder.samplesEnd": {
+    "message": "終了時間 (秒)",
+    "description": "サンプリング終了時間のプレースホルダー"
+  },
+  "placeholder.personaId": {
+    "message": "歌手スタイル ID を入力...",
+    "description": "歌手スタイル ID 入力のプレースホルダー"
+  },
+  "description.persona": {
+    "message": "作成した歌手スタイルを使用して一貫したスタイルの曲を生成します",
+    "description": "歌手スタイル機能の説明"
+  },
+  "description.overpainting": {
+    "message": "指定した時間範囲内でアップロードした音楽にボーカルを追加します",
+    "description": "ボーカル追加機能の説明"
+  },
+  "description.underpainting": {
+    "message": "指定した時間範囲内でアップロードした音楽に伴奏を追加します",
+    "description": "伴奏追加機能の説明"
+  },
+  "description.samples": {
+    "message": "指定した時間範囲内でアップロードした音楽にサンプリングを追加します",
+    "description": "サンプリング追加機能の説明"
+  },
+  "message.fetchingTiming": {
+    "message": "ビートデータを取得中...",
+    "description": "ビートデータを取得している時のメッセージ"
+  },
+  "message.fetchTimingFailed": {
+    "message": "ビートデータの取得に失敗しました",
+    "description": "ビートデータの取得に失敗した時のメッセージ"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "ビートデータの取得に成功しました",
+    "description": "ビートデータの取得に成功した時のメッセージ"
+  },
+  "message.extractingVocals": {
+    "message": "ボーカルを抽出中...",
+    "description": "ボーカルを抽出している時のメッセージ"
+  },
+  "message.extractVocalsFailed": {
+    "message": "ボーカルの抽出に失敗しました",
+    "description": "ボーカルの抽出に失敗した時のメッセージ"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "ボーカルの抽出に成功しました",
+    "description": "ボーカルの抽出に成功した時のメッセージ"
   }
 }

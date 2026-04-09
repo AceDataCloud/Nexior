@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "Загрузить",
-    "description": "Текст кнопки, позволяющий пользователю загрузить референс"
+    "description": "Текст кнопки для загрузки референса"
   },
   "button.video": {
     "message": "Видео",
@@ -240,7 +240,7 @@
     "description": "Описание параметра веса оригинала"
   },
   "description.lyricPrompt": {
-    "message": "Введите описание текста, AI автоматически сгенерирует текст",
+    "message": "Введите описание текста, ИИ автоматически сгенерирует текст",
     "description": "Описание подсказки для текста"
   },
   "description.replaceSection": {
@@ -260,7 +260,7 @@
     "description": "Заполнитель для ввода текста"
   },
   "placeholder.extend.lyrics": {
-    "message": "Введите текст, который нужно расширить...",
+    "message": "Введите текст для расширения...",
     "description": "Заполнитель для ввода расширяемого текста"
   },
   "placeholder.extend.continue_at": {
@@ -288,15 +288,15 @@
     "description": "Заполнитель для ввода позиции"
   },
   "placeholder.lyricPrompt": {
-    "message": "Опишите тему текста, AI автоматически сгенерирует...",
+    "message": "Опишите тему текста, ИИ автоматически сгенерирует...",
     "description": "Заполнитель для ввода подсказки текста"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Время начала (сек)",
+    "message": "Время начала (секунды)",
     "description": "Заполнитель для начала времени замены фрагмента"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Время окончания (сек)",
+    "message": "Время окончания (секунды)",
     "description": "Заполнитель для окончания времени замены фрагмента"
   },
   "button.generate": {
@@ -357,7 +357,7 @@
   },
   "message.getVideoUrlFailed": {
     "message": "Ошибка получения видео музыки, пожалуйста, попробуйте позже",
-    "description": "Сообщение об ошибке при получении видео"
+    "description": "Сообщение об ошибке при неудачном получении видео"
   },
   "message.generatingLyrics": {
     "message": "Генерация текста...",
@@ -412,7 +412,131 @@
     "description": "Сообщение при отсутствии доступных операций"
   },
   "message.noTasks": {
-    "message": "Нет историй задач, создайте музыку в панели конфигурации слева",
+    "message": "Нет историй задач, создайте музыку в левой панели конфигурации",
     "description": "Сообщение при отсутствии задач"
+  },
+  "button.upload_cover": {
+    "message": "Загрузить кавер",
+    "description": "Текст кнопки для загрузки аудио кавера"
+  },
+  "button.artist_consistency": {
+    "message": "Согласованность стиля",
+    "description": "Текст кнопки для генерации на основе стиля исполнителя"
+  },
+  "button.artist_consistency_vox": {
+    "message": "Согласованность вокального стиля",
+    "description": "Текст кнопки для генерации на основе вокального стиля исполнителя"
+  },
+  "button.underpainting": {
+    "message": "Добавить аккомпанемент",
+    "description": "Текст кнопки для добавления аккомпанемента к загруженной песне"
+  },
+  "button.overpainting": {
+    "message": "Добавить вокал",
+    "description": "Текст кнопки для добавления вокала к загруженной песне"
+  },
+  "button.samples": {
+    "message": "Добавить сэмплы",
+    "description": "Текст кнопки для добавления сэмплов к загруженной песне"
+  },
+  "button.extract_vocals": {
+    "message": "Извлечь вокал",
+    "description": "Текст кнопки для извлечения вокала из песни"
+  },
+  "button.get_timing": {
+    "message": "Получить ритм",
+    "description": "Текст кнопки для получения данных о ритме песни"
+  },
+  "button.create_persona": {
+    "message": "Создать стиль исполнителя",
+    "description": "Текст кнопки для создания стиля исполнителя"
+  },
+  "button.mashup_lyrics": {
+    "message": "Смешать тексты",
+    "description": "Текст кнопки для смешивания двух текстов"
+  },
+  "name.persona": {
+    "message": "Стиль исполнителя",
+    "description": "Выбор стиля исполнителя"
+  },
+  "name.overpaintingRange": {
+    "message": "Диапазон вокала",
+    "description": "Временной диапазон для добавления вокала"
+  },
+  "name.underpaintingRange": {
+    "message": "Диапазон аккомпанемента",
+    "description": "Временной диапазон для добавления аккомпанемента"
+  },
+  "name.samplesRange": {
+    "message": "Диапазон сэмплов",
+    "description": "Временной диапазон для добавления сэмплов"
+  },
+  "placeholder.overpaintingStart": {
+    "message": "Начальное время (сек)",
+    "description": "Заполнитель для времени начала вокала"
+  },
+  "placeholder.overpaintingEnd": {
+    "message": "Конечное время (сек)",
+    "description": "Заполнитель для времени окончания вокала"
+  },
+  "placeholder.underpaintingStart": {
+    "message": "Начальное время (сек)",
+    "description": "Заполнитель для времени начала аккомпанемента"
+  },
+  "placeholder.underpaintingEnd": {
+    "message": "Конечное время (сек)",
+    "description": "Заполнитель для времени окончания аккомпанемента"
+  },
+  "placeholder.samplesStart": {
+    "message": "Начальное время (сек)",
+    "description": "Заполнитель для времени начала сэмплов"
+  },
+  "placeholder.samplesEnd": {
+    "message": "Конечное время (сек)",
+    "description": "Заполнитель для времени окончания сэмплов"
+  },
+  "placeholder.personaId": {
+    "message": "Введите ID стиля исполнителя...",
+    "description": "Заполнитель для ввода ID стиля исполнителя"
+  },
+  "description.persona": {
+    "message": "Используйте созданный стиль исполнителя для генерации песен с согласованным стилем",
+    "description": "Описание функции стиля исполнителя"
+  },
+  "description.overpainting": {
+    "message": "Добавьте вокал к загруженной музыке в указанном временном диапазоне",
+    "description": "Описание функции добавления вокала"
+  },
+  "description.underpainting": {
+    "message": "Добавьте аккомпанемент к загруженной музыке в указанном временном диапазоне",
+    "description": "Описание функции добавления аккомпанемента"
+  },
+  "description.samples": {
+    "message": "Добавьте сэмплы к загруженной музыке в указанном временном диапазоне",
+    "description": "Описание функции добавления сэмплов"
+  },
+  "message.fetchingTiming": {
+    "message": "Получение данных о ритме...",
+    "description": "Сообщение при получении данных о ритме"
+  },
+  "message.fetchTimingFailed": {
+    "message": "Не удалось получить данные о ритме",
+    "description": "Сообщение при неудаче получения данных о ритме"
+  },
+  "message.fetchTimingSuccess": {
+    "message": "Данные о ритме успешно получены",
+    "description": "Сообщение при успешном получении данных о ритме"
+  },
+  "message.extractingVocals": {
+    "message": "Извлечение вокала...",
+    "description": "Сообщение при извлечении вокала"
+  },
+  "message.extractVocalsFailed": {
+    "message": "Не удалось извлечь вокал",
+    "description": "Сообщение при неудаче извлечения вокала"
+  },
+  "message.extractVocalsSuccess": {
+    "message": "Вокал успешно извлечен",
+    "description": "Сообщение при успешном извлечении вокала"
   }
 }
