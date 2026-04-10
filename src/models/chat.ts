@@ -156,3 +156,67 @@ export enum IChatConversationAction {
   DELETE = 'delete',
   RETRIEVE_BATCH = 'retrieve_batch'
 }
+
+// ===== Tool Calling Types (aichat2 orchestrator) =====
+
+export type IChatToolCallState = 'running' | 'completed' | 'failed';
+
+export interface IChatArtifact {
+  type: 'image' | 'file' | 'audio' | 'video' | 'code';
+  url: string;
+  name: string;
+  mimeType: string;
+}
+
+export interface IChatToolCall {
+  id: string;
+  name: string;
+  displayName?: string;
+  input: Record<string, unknown>;
+  output?: unknown;
+  state: IChatToolCallState;
+  durationMs?: number;
+  artifacts?: IChatArtifact[];
+}
+
+export interface IChatSSEEvent {
+  type:
+    | 'text_delta'
+    | 'tool_use_start'
+    | 'tool_progress'
+    | 'tool_result'
+    | 'confirmation_required'
+    | 'thinking'
+    | 'done'
+    | 'error';
+  // text_delta
+  content?: string;
+  id?: string;
+  // tool events
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: unknown;
+  is_error?: boolean;
+  duration_ms?: number;
+  // thinking
+  // done
+  conversation_id?: string;
+  usage?: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_turns: number;
+    tool_calls: number;
+  };
+  // error
+  message?: string;
+  // confirmation
+  description?: string;
+}
+
+export interface IChatConversationResponseV2 extends IChatConversationResponse {
+  toolCalls?: IChatToolCall[];
+  thinking?: string;
+  event?: IChatSSEEvent;
+}
