@@ -252,7 +252,7 @@ class ChatOperator {
                 const event: IChatSSEEvent = JSON.parse(subValue);
 
                 // Legacy aichat format compatibility
-                if ('delta_answer' in (event as Record<string, unknown>)) {
+                if ('delta_answer' in (event as unknown as Record<string, unknown>)) {
                   const legacy = event as unknown as { delta_answer?: string; id?: string };
                   if (legacy.delta_answer) {
                     finalAnswer += legacy.delta_answer;
