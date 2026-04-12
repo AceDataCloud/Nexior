@@ -79,7 +79,17 @@ class ChatOperator {
                   options.stream({
                     answer: finalAnswer,
                     delta_answer: json.delta_answer || '',
-                    id
+                    id,
+                    // Forward aichat2 event types for tool-calling UI
+                    type: json.type,
+                    tool_id: json.tool_id,
+                    tool_name: json.tool_name,
+                    tool_display_name: json.tool_display_name,
+                    input: json.input,
+                    output: json.output,
+                    is_error: json.is_error,
+                    duration_ms: json.duration_ms,
+                    content: json.content
                   });
                 }
               } catch (err) {

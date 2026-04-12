@@ -136,12 +136,24 @@ export interface IChatConversationRequest {
   messages?: IChatMessage[];
   action?: IChatConversationAction;
   model: IChatModelName;
+  tools_enabled?: boolean;
+  tools_filter?: string[];
 }
 
 export interface IChatConversationResponse {
   answer: string;
   delta_answer: string;
   id?: string;
+  // aichat2 tool-calling event fields
+  type?: string;
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: string;
+  is_error?: boolean;
+  duration_ms?: number;
+  content?: string;
 }
 
 export interface IChatConversationsResponse {
