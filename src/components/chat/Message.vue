@@ -47,6 +47,7 @@
                 <markdown-renderer v-if="message.role === 'assistant'" :content="item.text" />
                 <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
               </div>
+              <tool-activity v-if="item.type === 'tool_use'" :item="item" />
             </div>
           </div>
         </div>
@@ -129,6 +130,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
+import ToolActivity from './ToolActivity.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -160,6 +162,7 @@ export default defineComponent({
     AnsweringMark,
     MarkdownRenderer,
     FilePreview,
+    ToolActivity,
     ElButton,
     ElImage,
     ElInput,

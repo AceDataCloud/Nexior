@@ -102,6 +102,15 @@ export interface IChatMessageContentItem {
   text?: string;
   image_url?: { url: string } | string;
   file_url?: { url: string } | string;
+  // Tool-calling fields (type='tool_use')
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: string;
+  is_error?: boolean;
+  duration_ms?: number;
+  status?: 'running' | 'done';
 }
 
 export interface IChatMessage {

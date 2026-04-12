@@ -46,6 +46,7 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
+import { IChatMessageContentItem } from '@/models';
 import { chatOperator } from '@/operators';
 
 export interface IData {
@@ -397,6 +398,11 @@ export default defineComponent({
       // request server to get answer
       this.answering = true;
       this.canceler = new AbortController();
+      // Track content parts for tool-calling interleaving
+      const contentParts: IChatMessageContentItem[] = [];
+      const toolMap = new Map<string, IChatMessageContentItem>();
+      let currentText = '';
+
       chatOperator
         .chatConversation(
           {
@@ -404,19 +410,65 @@ export default defineComponent({
             model: this.model.name,
             references,
             id: this.conversationId,
-            stateful: true
+            stateful: true,
+            tools_enabled: true
           },
           {
             token,
             stream: (response: IChatConversationResponse) => {
               console.debug('stream response', response);
               const lastMessage = this.messages[this.messages.length - 1];
-              this.messages[this.messages.length - 1] = {
-                role: ROLE_ASSISTANT,
-                content: response.answer,
-                state:
-                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
-              };
+
+              // Handle tool-calling events
+              if (response.type === 'tool_use_start' && response.tool_id) {
+                // Flush any accumulated text before tool
+                if (currentText) {
+                  contentParts.push({ type: 'text', text: currentText });
+                  currentText = '';
+                }
+                const toolItem: IChatMessageContentItem = {
+                  type: 'tool_use',
+                  tool_id: response.tool_id,
+                  tool_name: response.tool_name,
+                  tool_display_name: response.tool_display_name,
+                  input: response.input,
+                  status: 'running'
+                };
+                contentParts.push(toolItem);
+                toolMap.set(response.tool_id, toolItem);
+              } else if (response.type === 'tool_result' && response.tool_id) {
+                const toolItem = toolMap.get(response.tool_id);
+                if (toolItem) {
+                  toolItem.output = response.output;
+                  toolItem.is_error = response.is_error;
+                  toolItem.duration_ms = response.duration_ms;
+                  toolItem.status = 'done';
+                }
+              } else if (response.delta_answer) {
+                currentText = response.answer;
+              }
+
+              // Build display content: parts + trailing text
+              const displayParts: IChatMessageContentItem[] = [...contentParts];
+              if (currentText) {
+                displayParts.push({ type: 'text', text: currentText });
+              }
+
+              if (displayParts.length > 0 && displayParts.some((p) => p.type === 'tool_use')) {
+                this.messages[this.messages.length - 1] = {
+                  role: ROLE_ASSISTANT,
+                  content: displayParts,
+                  state:
+                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+                };
+              } else {
+                this.messages[this.messages.length - 1] = {
+                  role: ROLE_ASSISTANT,
+                  content: response.answer,
+                  state:
+                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+                };
+              }
               conversationId = response?.id;
             },
             signal: this.canceler.signal
