@@ -197,6 +197,12 @@ const routes = [
     path: '/',
     redirect: { name: ROUTE_CHATGPT_CONVERSATION_NEW }
   },
+  {
+    path: '/chat/oauth/callback',
+    name: 'oauth-callback',
+    component: () => import('@/pages/chat/OAuthCallback.vue'),
+    meta: { auth: false }
+  },
   console,
   auth,
   chatgpt,
