@@ -18,7 +18,7 @@ class ChatOperator {
   ): Promise<IChatConversationResponse> {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await fetch(`${BASE_URL_API}/aichat/conversations`, {
+        const response = await fetch(`${BASE_URL_API}/aichat2/conversations`, {
           method: 'POST',
           headers: {
             authorization: `Bearer ${options.token}`,
@@ -115,7 +115,7 @@ class ChatOperator {
     options: IChatConversationOptions
   ): Promise<AxiosResponse<IChatConversationsResponse>> {
     return await axios.post(
-      `/aichat/conversations`,
+      `/aichat2/conversations`,
       {
         action: IChatConversationAction.RETRIEVE_BATCH,
         ...(filter.ids
@@ -147,7 +147,7 @@ class ChatOperator {
 
   async deleteConversation(id: string, options: IChatConversationOptions): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
-      `/aichat/conversations`,
+      `/aichat2/conversations`,
       {
         action: IChatConversationAction.DELETE,
         id: id
@@ -168,7 +168,7 @@ class ChatOperator {
     options: IChatConversationOptions
   ): Promise<AxiosResponse<IChatConversation>> {
     return await axios.post(
-      `/aichat/conversations`,
+      `/aichat2/conversations`,
       {
         action: IChatConversationAction.UPDATE,
         ...payload
