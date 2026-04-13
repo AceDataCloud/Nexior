@@ -95,7 +95,7 @@ export default defineComponent({
         this.$emit('update:modelValue', val);
       }
     },
-    token(): string {
+    token(): string | undefined {
       return this.$store.state.token?.access;
     }
   },
