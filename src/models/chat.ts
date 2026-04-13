@@ -147,6 +147,7 @@ export interface IChatConversationRequest {
   model: IChatModelName;
   tools_enabled?: boolean;
   tools_filter?: string[];
+  mcp_servers?: string[];
 }
 
 export interface IChatConversationResponse {
