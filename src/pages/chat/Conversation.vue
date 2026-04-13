@@ -2,6 +2,13 @@
   <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
       <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+      <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
+        <el-button class="btn-mcp" text @click="mcpManagerVisible = true">
+          <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
+          <el-badge v-if="enabledMcpCount > 0" :value="enabledMcpCount" :max="9" class="mcp-badge" />
+        </el-button>
+      </el-tooltip>
+      <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -41,13 +48,16 @@ import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/con
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
+import McpManager from '@/components/chat/McpManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem } from '@/models';
-import { chatOperator } from '@/operators';
+import { IChatMessageContentItem, IMcpServer } from '@/models';
+import { chatOperator, mcpServerOperator } from '@/operators';
+import { ElTooltip, ElButton, ElBadge } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
   drawer: boolean;
@@ -57,6 +67,8 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
+  mcpManagerVisible: boolean;
+  mcpServers: IMcpServer[];
 }
 
 export default defineComponent({
@@ -65,8 +77,13 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ModelSelector,
+    McpManager,
     Message,
-    Layout
+    Layout,
+    ElTooltip,
+    ElButton,
+    ElBadge,
+    FontAwesomeIcon
   },
   data(): IData {
     return {
@@ -76,6 +93,8 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
+      mcpManagerVisible: false,
+      mcpServers: [] as IMcpServer[],
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -117,6 +136,12 @@ export default defineComponent({
     },
     initializing() {
       return this.$store.state.chat.status.getApplications === Status.Request;
+    },
+    enabledMcpCount(): number {
+      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
+    },
+    enabledMcpIds(): string[] {
+      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
     }
   },
   watch: {
@@ -134,8 +159,22 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
+    await this.onLoadMcpServers();
   },
   methods: {
+    async onLoadMcpServers() {
+      const token = this.credential?.token;
+      if (!token) return;
+      try {
+        const { data } = await mcpServerOperator.list(token);
+        this.mcpServers = data.items || [];
+      } catch {
+        // silently fail - MCP is optional
+      }
+    },
+    async onMcpChange() {
+      await this.onLoadMcpServers();
+    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('chat/getService');
@@ -411,7 +450,8 @@ export default defineComponent({
             references,
             id: this.conversationId,
             stateful: true,
-            tools_enabled: true
+            tools_enabled: true,
+            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined
           },
           {
             token,
@@ -553,6 +593,31 @@ export default defineComponent({
   top: 10px;
   right: 10px;
   margin-bottom: 10px;
+}
+.btn-mcp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  font-size: 16px;
+  color: var(--el-text-color-secondary);
+
+  &:hover {
+    color: var(--el-color-primary);
+  }
+
+  .mcp-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+
+    :deep(.el-badge__content) {
+      font-size: 10px;
+      height: 16px;
+      line-height: 16px;
+      padding: 0 4px;
+    }
+  }
 }
 @media (max-width: 767px) {
   .setting {

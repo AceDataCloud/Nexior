@@ -28,6 +28,7 @@ export * from './seedance';
 export * from './serp';
 export * from './wan';
 export * from './site';
+export * from './mcp';
 export * from './exchange';
 export * from './error';
 export * from './config';
