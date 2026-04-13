@@ -11,7 +11,13 @@ import {
   faClock as faRegularClock,
   faFile as faRegularFile
 } from '@fortawesome/free-regular-svg-icons';
-import { faDiscord as faBrandsDiscord, faWeixin as faBrandsWeixin } from '@fortawesome/free-brands-svg-icons';
+import {
+  faDiscord as faBrandsDiscord,
+  faWeixin as faBrandsWeixin,
+  faGoogle as faBrandsGoogle,
+  faGithub as faBrandsGithub,
+  faSlack as faBrandsSlack
+} from '@fortawesome/free-brands-svg-icons';
 import {
   faEllipsis as faSolidEllipsis,
   faIdCard as faSolidIdCard,
@@ -88,7 +94,10 @@ import {
   faChartLine as faSolidChartLine,
   faMobileScreenButton as faSolidMobileScreenButton,
   faMagnifyingGlass as faSolidMagnifyingGlass,
-  faFaceMeh as faSolidFaceMeh
+  faFaceMeh as faSolidFaceMeh,
+  faPlug as faSolidPlug,
+  faCheckCircle as faSolidCheckCircle,
+  faCircleExclamation as faSolidCircleExclamation
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -179,3 +188,9 @@ library.add(faSolidAnglesLeft);
 library.add(faSolidAnglesRight);
 library.add(faSolidMagnifyingGlass);
 library.add(faSolidFaceMeh);
+library.add(faSolidPlug);
+library.add(faSolidCheckCircle);
+library.add(faSolidCircleExclamation);
+library.add(faBrandsGoogle);
+library.add(faBrandsGithub);
+library.add(faBrandsSlack);

@@ -8,7 +8,14 @@
           <el-badge v-if="enabledMcpCount > 0" :value="enabledMcpCount" :max="9" class="mcp-badge" />
         </el-button>
       </el-tooltip>
+      <el-tooltip :content="$t('chat.connector.tooltip')" placement="bottom">
+        <el-button class="btn-connector" text @click="connectorManagerVisible = true">
+          <font-awesome-icon icon="fa-solid fa-plug" />
+          <el-badge v-if="enabledConnectorCount > 0" :value="enabledConnectorCount" :max="9" class="connector-badge" />
+        </el-button>
+      </el-tooltip>
       <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
+      <connector-manager v-model="connectorManagerVisible" @change="onConnectorChange" />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -49,13 +56,14 @@ import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatM
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import McpManager from '@/components/chat/McpManager.vue';
+import ConnectorManager from '@/components/chat/ConnectorManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer } from '@/models';
-import { chatOperator, mcpServerOperator } from '@/operators';
+import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
+import { chatOperator, mcpServerOperator, connectorOperator } from '@/operators';
 import { ElTooltip, ElButton, ElBadge } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -69,6 +77,8 @@ export interface IData {
   canceler: AbortController | undefined;
   mcpManagerVisible: boolean;
   mcpServers: IMcpServer[];
+  connectorManagerVisible: boolean;
+  connectors: IConnector[];
 }
 
 export default defineComponent({
@@ -78,6 +88,7 @@ export default defineComponent({
     Disclaimer,
     ModelSelector,
     McpManager,
+    ConnectorManager,
     Message,
     Layout,
     ElTooltip,
@@ -95,6 +106,8 @@ export default defineComponent({
       canceler: undefined,
       mcpManagerVisible: false,
       mcpServers: [] as IMcpServer[],
+      connectorManagerVisible: false,
+      connectors: [] as IConnector[],
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -142,6 +155,12 @@ export default defineComponent({
     },
     enabledMcpIds(): string[] {
       return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
+    },
+    enabledConnectorCount(): number {
+      return this.connectors.filter((c: IConnector) => c.is_enabled).length;
+    },
+    enabledConnectorProviders(): string[] {
+      return this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
     }
   },
   watch: {
@@ -160,6 +179,7 @@ export default defineComponent({
     await this.onGetApplication();
     await this.onGetConversations();
     await this.onLoadMcpServers();
+    await this.onLoadConnectors();
   },
   methods: {
     async onLoadMcpServers() {
@@ -174,6 +194,19 @@ export default defineComponent({
     },
     async onMcpChange() {
       await this.onLoadMcpServers();
+    },
+    async onLoadConnectors() {
+      const token = this.credential?.token;
+      if (!token) return;
+      try {
+        const { data } = await connectorOperator.list(token);
+        this.connectors = data.items || [];
+      } catch {
+        // silently fail - connectors are optional
+      }
+    },
+    async onConnectorChange() {
+      await this.onLoadConnectors();
     },
     async onGetService() {
       console.debug('start onGetService');
@@ -451,7 +484,8 @@ export default defineComponent({
             id: this.conversationId,
             stateful: true,
             tools_enabled: true,
-            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined
+            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined,
+            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined
           },
           {
             token,
@@ -597,7 +631,7 @@ export default defineComponent({
 .btn-mcp {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 50px;
   z-index: 100;
   font-size: 16px;
   color: var(--el-text-color-secondary);
@@ -607,6 +641,31 @@ export default defineComponent({
   }
 
   .mcp-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+
+    :deep(.el-badge__content) {
+      font-size: 10px;
+      height: 16px;
+      line-height: 16px;
+      padding: 0 4px;
+    }
+  }
+}
+.btn-connector {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+  font-size: 16px;
+  color: var(--el-text-color-secondary);
+
+  &:hover {
+    color: var(--el-color-primary);
+  }
+
+  .connector-badge {
     position: absolute;
     top: -4px;
     right: -8px;
