@@ -130,10 +130,11 @@ export default defineComponent({
       }
     },
     async onConnect(providerId: string) {
-      if (!this.token) return;
+      const token = this.token;
+      if (!token) return;
       this.connecting = providerId;
       try {
-        const { data } = await connectorOperator.authorize(providerId, this.token);
+        const { data } = await connectorOperator.authorize(providerId, token);
         // Open OAuth popup
         const popup = window.open(data.authorization_url, 'oauth-popup', 'width=600,height=700,scrollbars=yes');
         // Listen for callback message from popup
@@ -146,7 +147,7 @@ export default defineComponent({
             return;
           }
           try {
-            await connectorOperator.exchange(code, state, this.token);
+            await connectorOperator.exchange(code, state, token);
             ElMessage.success(this.$t('chat.connector.connected'));
             await this.loadData();
             this.$emit('change');
