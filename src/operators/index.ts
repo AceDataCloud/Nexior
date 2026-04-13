@@ -28,5 +28,6 @@ export * from './nanobanana';
 export * from './seedream';
 export * from './seedance';
 export * from './serp';
+export * from './mcp';
 export * from './wan';
 export * from './config';
