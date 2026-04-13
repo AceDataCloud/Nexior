@@ -234,9 +234,9 @@ $left-width: 70px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
     }
 
