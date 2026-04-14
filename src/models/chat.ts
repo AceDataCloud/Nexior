@@ -149,6 +149,7 @@ export interface IChatConversationRequest {
   tools_filter?: string[];
   mcp_servers?: string[];
   connectors?: string[];
+  skills?: string[];
 }
 
 export interface IChatConversationResponse {
