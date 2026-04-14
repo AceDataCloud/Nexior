@@ -14,8 +14,20 @@
           <el-badge v-if="enabledConnectorCount > 0" :value="enabledConnectorCount" :max="9" class="connector-badge" />
         </el-button>
       </el-tooltip>
+      <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
+        <el-button class="btn-skill" text @click="skillManagerVisible = true">
+          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+          <el-badge v-if="activeSkillCount > 0" :value="activeSkillCount" :max="9" class="skill-badge" />
+        </el-button>
+      </el-tooltip>
       <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
       <connector-manager v-model="connectorManagerVisible" @change="onConnectorChange" />
+      <skill-manager
+        v-model="skillManagerVisible"
+        :active-skills="activeSkills"
+        :token="credential?.token"
+        @change="onSkillChange"
+      />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
           <message
@@ -57,6 +69,7 @@ import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import McpManager from '@/components/chat/McpManager.vue';
 import ConnectorManager from '@/components/chat/ConnectorManager.vue';
+import SkillManager from '@/components/chat/SkillManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -79,6 +92,8 @@ export interface IData {
   mcpServers: IMcpServer[];
   connectorManagerVisible: boolean;
   connectors: IConnector[];
+  skillManagerVisible: boolean;
+  activeSkills: string[];
 }
 
 export default defineComponent({
@@ -89,6 +104,7 @@ export default defineComponent({
     ModelSelector,
     McpManager,
     ConnectorManager,
+    SkillManager,
     Message,
     Layout,
     ElTooltip,
@@ -108,6 +124,8 @@ export default defineComponent({
       mcpServers: [] as IMcpServer[],
       connectorManagerVisible: false,
       connectors: [] as IConnector[],
+      skillManagerVisible: false,
+      activeSkills: [] as string[],
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -161,6 +179,9 @@ export default defineComponent({
     },
     enabledConnectorProviders(): string[] {
       return this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
+    },
+    activeSkillCount(): number {
+      return this.activeSkills.length;
     }
   },
   watch: {
@@ -180,6 +201,7 @@ export default defineComponent({
     await this.onGetConversations();
     await this.onLoadMcpServers();
     await this.onLoadConnectors();
+    this.onLoadPersistedSkills();
   },
   methods: {
     async onLoadMcpServers() {
@@ -207,6 +229,20 @@ export default defineComponent({
     },
     async onConnectorChange() {
       await this.onLoadConnectors();
+    },
+    onLoadPersistedSkills() {
+      try {
+        const stored = localStorage.getItem('chat_active_skills');
+        if (stored) {
+          this.activeSkills = JSON.parse(stored);
+        }
+      } catch {
+        // ignore
+      }
+    },
+    onSkillChange(skills: string[]) {
+      this.activeSkills = skills;
+      localStorage.setItem('chat_active_skills', JSON.stringify(skills));
     },
     async onGetService() {
       console.debug('start onGetService');
@@ -485,7 +521,8 @@ export default defineComponent({
             stateful: true,
             tools_enabled: true,
             mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined,
-            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined
+            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined,
+            skills: this.activeSkills.length > 0 ? this.activeSkills : undefined
           },
           {
             token,
@@ -666,6 +703,31 @@ export default defineComponent({
   }
 
   .connector-badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+
+    :deep(.el-badge__content) {
+      font-size: 10px;
+      height: 16px;
+      line-height: 16px;
+      padding: 0 4px;
+    }
+  }
+}
+.btn-skill {
+  position: absolute;
+  top: 10px;
+  right: 90px;
+  z-index: 100;
+  font-size: 16px;
+  color: var(--el-text-color-secondary);
+
+  &:hover {
+    color: var(--el-color-primary);
+  }
+
+  .skill-badge {
     position: absolute;
     top: -4px;
     right: -8px;
