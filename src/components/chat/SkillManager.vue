@@ -11,7 +11,7 @@
             </el-tag>
             <el-tag v-for="tag in skill.tags.slice(0, 2)" :key="tag" size="small" class="skill-tag">{{ tag }}</el-tag>
           </div>
-          <el-switch :model-value="isActive(skill.id)" @change="(val: boolean) => onToggle(skill.id, val)" />
+          <el-switch :model-value="isActive(skill.id)" @change="(val: string | number | boolean) => onToggle(skill.id, !!val)" />
         </div>
         <p class="skill-description">{{ skill.description }}</p>
       </div>
