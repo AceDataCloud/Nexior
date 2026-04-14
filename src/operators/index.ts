@@ -29,5 +29,6 @@ export * from './seedream';
 export * from './seedance';
 export * from './serp';
 export * from './mcp';
+export * from './connector';
 export * from './wan';
 export * from './config';

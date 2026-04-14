@@ -148,6 +148,7 @@ export interface IChatConversationRequest {
   tools_enabled?: boolean;
   tools_filter?: string[];
   mcp_servers?: string[];
+  connectors?: string[];
 }
 
 export interface IChatConversationResponse {
