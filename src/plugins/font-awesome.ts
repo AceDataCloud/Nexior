@@ -55,6 +55,7 @@ import {
   faGlobe as faSolidGlobe,
   faStop as faSolidStop,
   faWandMagicSparkles as faSolidWandMagicSparkles,
+  faDesktop as faSolidDesktop,
   faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
@@ -164,6 +165,7 @@ library.add(faSolidTrash);
 library.add(faSolidChevronDown);
 library.add(faSolidPalette);
 library.add(faSolidWandMagicSparkles);
+library.add(faSolidDesktop);
 library.add(faSolidMugSaucer);
 library.add(faSolidInfo);
 library.add(faSolidMagic);

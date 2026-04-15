@@ -20,6 +20,12 @@
           <el-badge v-if="activeSkillCount > 0" :value="activeSkillCount" :max="9" class="skill-badge" />
         </el-button>
       </el-tooltip>
+      <el-tooltip :content="$t('chat.agent.tooltip')" placement="bottom">
+        <el-button class="btn-agent" text @click="agentManagerVisible = true">
+          <font-awesome-icon icon="fa-solid fa-desktop" />
+          <span v-if="agentConnected" class="agent-dot"></span>
+        </el-button>
+      </el-tooltip>
       <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
       <connector-manager v-model="connectorManagerVisible" @change="onConnectorChange" />
       <skill-manager
@@ -27,6 +33,13 @@
         :active-skills="activeSkills"
         :token="credential?.token"
         @change="onSkillChange"
+      />
+      <desktop-agent-manager
+        v-model="agentManagerVisible"
+        :connected="agentConnected"
+        :agent-name="agentName"
+        :tool-count="agentToolCount"
+        :connected-at="agentConnectedAt"
       />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
@@ -70,6 +83,7 @@ import ModelSelector from '@/components/chat/ModelSelector.vue';
 import McpManager from '@/components/chat/McpManager.vue';
 import ConnectorManager from '@/components/chat/ConnectorManager.vue';
 import SkillManager from '@/components/chat/SkillManager.vue';
+import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -94,6 +108,11 @@ export interface IData {
   connectors: IConnector[];
   skillManagerVisible: boolean;
   activeSkills: string[];
+  agentManagerVisible: boolean;
+  agentConnected: boolean;
+  agentName: string;
+  agentToolCount: number;
+  agentConnectedAt: string;
 }
 
 export default defineComponent({
@@ -105,6 +124,7 @@ export default defineComponent({
     McpManager,
     ConnectorManager,
     SkillManager,
+    DesktopAgentManager,
     Message,
     Layout,
     ElTooltip,
@@ -126,6 +146,11 @@ export default defineComponent({
       connectors: [] as IConnector[],
       skillManagerVisible: false,
       activeSkills: [] as string[],
+      agentManagerVisible: false,
+      agentConnected: false,
+      agentName: '',
+      agentToolCount: 0,
+      agentConnectedAt: '',
       messages:
         this.$store.state.chat.conversations?.find(
           (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
@@ -202,6 +227,7 @@ export default defineComponent({
     await this.onLoadMcpServers();
     await this.onLoadConnectors();
     this.onLoadPersistedSkills();
+    this.onCheckAgentStatus();
   },
   methods: {
     async onLoadMcpServers() {
@@ -243,6 +269,23 @@ export default defineComponent({
     onSkillChange(skills: string[]) {
       this.activeSkills = skills;
       localStorage.setItem('chat_active_skills', JSON.stringify(skills));
+    },
+    async onCheckAgentStatus() {
+      const token = this.credential?.token;
+      if (!token) return;
+      try {
+        const { data } = await axios.post(
+          '/aichat2/agent',
+          { action: 'status' },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        this.agentConnected = data?.connected === true;
+        this.agentName = data?.name || '';
+        this.agentToolCount = data?.tool_count || 0;
+        this.agentConnectedAt = data?.connected_at || '';
+      } catch {
+        this.agentConnected = false;
+      }
     },
     async onGetService() {
       console.debug('start onGetService');
@@ -738,6 +781,29 @@ export default defineComponent({
       line-height: 16px;
       padding: 0 4px;
     }
+  }
+}
+
+.btn-agent {
+  position: absolute;
+  top: 10px;
+  right: 120px;
+  z-index: 100;
+  font-size: 16px;
+  color: var(--el-text-color-secondary);
+
+  &:hover {
+    color: var(--el-color-primary);
+  }
+
+  .agent-dot {
+    position: absolute;
+    top: 2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--el-color-success);
   }
 }
 @media (max-width: 767px) {
