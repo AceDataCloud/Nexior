@@ -31,10 +31,7 @@ import {
   CHAT_MODEL_NAME_KIMI_K2_THINKING,
   CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO,
   CHAT_MODEL_NAME_GLM_5_1,
-  CHAT_MODEL_NAME_GLM_5,
-  CHAT_MODEL_NAME_GLM_4_7,
-  CHAT_MODEL_NAME_GLM_4_5,
-  CHAT_MODEL_NAME_GLM_4_FLASH
+  CHAT_MODEL_NAME_GLM_4_7
 } from '@/constants';
 
 export type IChatModelName =
@@ -68,10 +65,7 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING
   | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO
   | typeof CHAT_MODEL_NAME_GLM_5_1
-  | typeof CHAT_MODEL_NAME_GLM_5
-  | typeof CHAT_MODEL_NAME_GLM_4_7
-  | typeof CHAT_MODEL_NAME_GLM_4_5
-  | typeof CHAT_MODEL_NAME_GLM_4_FLASH;
+  | typeof CHAT_MODEL_NAME_GLM_4_7;
 
 export interface IChatModel {
   enabled?: boolean;
