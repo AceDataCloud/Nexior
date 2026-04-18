@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { IMcpServer, IMcpServerListResponse, IMcpServerTestResponse } from '@/models';
+import { IMcpServer, IMcpServerListResponse, IMcpServerTestResponse, IMcpOAuthStartResponse, IMcpOAuthCallbackResponse } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class McpServerOperator {
@@ -63,6 +63,22 @@ class McpServerOperator {
     return await axios.post(
       '/aichat2/mcp-servers',
       { action: 'test', ...data },
+      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
+    );
+  }
+
+  async oauthStart(id: string, token: string): Promise<AxiosResponse<IMcpOAuthStartResponse>> {
+    return await axios.post(
+      '/aichat2/mcp-servers',
+      { action: 'oauth_start', id },
+      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
+    );
+  }
+
+  async oauthCallback(id: string, code: string, token: string): Promise<AxiosResponse<IMcpOAuthCallbackResponse>> {
+    return await axios.post(
+      '/aichat2/mcp-servers',
+      { action: 'oauth_callback', id, code },
       { headers: this.getHeaders(token), baseURL: BASE_URL_API }
     );
   }
