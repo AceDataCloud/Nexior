@@ -337,6 +337,15 @@ export default defineComponent({
             ElMessage.error(this.$t('chat.mcp.popupBlocked') as string);
             return;
           }
+          const popupPollTimer = window.setInterval(() => {
+            if (!popup.closed) return;
+            window.clearInterval(popupPollTimer);
+            if (this.oauthMessageHandler) {
+              window.removeEventListener('message', this.oauthMessageHandler);
+              this.oauthMessageHandler = null;
+            }
+            this.authorizingServerId = null;
+          }, 500);
           // Clean up any previous listener
           if (this.oauthMessageHandler) {
             window.removeEventListener('message', this.oauthMessageHandler);
@@ -344,6 +353,7 @@ export default defineComponent({
           this.oauthMessageHandler = async (event: MessageEvent) => {
             if (event.origin !== window.location.origin) return;
             if (event.data?.type !== 'oauth-callback') return;
+            window.clearInterval(popupPollTimer);
             window.removeEventListener('message', this.oauthMessageHandler!);
             this.oauthMessageHandler = null;
             try {
