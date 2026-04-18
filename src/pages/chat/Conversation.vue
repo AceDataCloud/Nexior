@@ -1,31 +1,40 @@
 <template>
   <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
-      <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
-      <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
-        <el-button class="btn-mcp" text @click="mcpManagerVisible = true">
-          <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
-          <el-badge v-if="enabledMcpCount > 0" :value="enabledMcpCount" :max="9" class="mcp-badge" />
-        </el-button>
-      </el-tooltip>
-      <el-tooltip :content="$t('chat.connector.tooltip')" placement="bottom">
-        <el-button class="btn-connector" text @click="connectorManagerVisible = true">
-          <font-awesome-icon icon="fa-solid fa-plug" />
-          <el-badge v-if="enabledConnectorCount > 0" :value="enabledConnectorCount" :max="9" class="connector-badge" />
-        </el-button>
-      </el-tooltip>
-      <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
-        <el-button class="btn-skill" text @click="skillManagerVisible = true">
-          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-          <el-badge v-if="activeSkillCount > 0" :value="activeSkillCount" :max="9" class="skill-badge" />
-        </el-button>
-      </el-tooltip>
-      <el-tooltip :content="$t('chat.agent.tooltip')" placement="bottom">
-        <el-button class="btn-agent" text @click="agentManagerVisible = true">
-          <font-awesome-icon icon="fa-solid fa-desktop" />
-          <span v-if="agentConnected" class="agent-dot"></span>
-        </el-button>
-      </el-tooltip>
+      <div class="toolbar">
+        <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+        <div class="toolbar-actions">
+          <el-tooltip :content="$t('chat.agent.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
+              <font-awesome-icon icon="fa-solid fa-desktop" />
+              <span v-if="agentConnected" class="agent-dot"></span>
+            </el-button>
+          </el-tooltip>
+          <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="skillManagerVisible = true">
+              <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+              <el-badge v-if="activeSkillCount > 0" :value="activeSkillCount" :max="9" class="toolbar-badge" />
+            </el-button>
+          </el-tooltip>
+          <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="mcpManagerVisible = true">
+              <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
+              <el-badge v-if="enabledMcpCount > 0" :value="enabledMcpCount" :max="9" class="toolbar-badge" />
+            </el-button>
+          </el-tooltip>
+          <el-tooltip v-if="hasConnectorProviders" :content="$t('chat.connector.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="connectorManagerVisible = true">
+              <font-awesome-icon icon="fa-solid fa-plug" />
+              <el-badge
+                v-if="enabledConnectorCount > 0"
+                :value="enabledConnectorCount"
+                :max="9"
+                class="toolbar-badge"
+              />
+            </el-button>
+          </el-tooltip>
+        </div>
+      </div>
       <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
       <connector-manager v-model="connectorManagerVisible" @change="onConnectorChange" />
       <skill-manager
@@ -89,7 +98,7 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
+import { IChatMessageContentItem, IMcpServer, IConnector, IConnectorProvider } from '@/models';
 import { chatOperator, mcpServerOperator, connectorOperator } from '@/operators';
 import { ElTooltip, ElButton, ElBadge } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -106,6 +115,7 @@ export interface IData {
   mcpServers: IMcpServer[];
   connectorManagerVisible: boolean;
   connectors: IConnector[];
+  hasConnectorProviders: boolean;
   skillManagerVisible: boolean;
   activeSkills: string[];
   agentManagerVisible: boolean;
@@ -144,6 +154,7 @@ export default defineComponent({
       mcpServers: [] as IMcpServer[],
       connectorManagerVisible: false,
       connectors: [] as IConnector[],
+      hasConnectorProviders: false,
       skillManagerVisible: false,
       activeSkills: [] as string[],
       agentManagerVisible: false,
@@ -247,8 +258,12 @@ export default defineComponent({
       const token = this.credential?.token;
       if (!token) return;
       try {
-        const { data } = await connectorOperator.list(token);
-        this.connectors = data.items || [];
+        const [connectorsRes, providersRes] = await Promise.all([
+          connectorOperator.list(token),
+          connectorOperator.listProviders(token)
+        ]);
+        this.connectors = connectorsRes.data.items || [];
+        this.hasConnectorProviders = (providersRes.data.providers || []).length > 0;
       } catch {
         // silently fail - connectors are optional
       }
@@ -694,25 +709,32 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  z-index: 100;
+}
+
 .selector {
   width: max-content;
-  margin-bottom: 10px;
-  position: absolute;
-  left: max(12px, calc(50% - 400px));
-  top: 10px;
-  z-index: 100;
 }
-.setting {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  margin-bottom: 10px;
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 40px;
 }
-.btn-mcp {
-  position: absolute;
-  top: 10px;
-  right: 50px;
-  z-index: 100;
+
+.toolbar-btn {
+  position: relative;
   font-size: 16px;
   color: var(--el-text-color-secondary);
 
@@ -720,7 +742,7 @@ export default defineComponent({
     color: var(--el-color-primary);
   }
 
-  .mcp-badge {
+  .toolbar-badge {
     position: absolute;
     top: -4px;
     right: -8px;
@@ -731,69 +753,6 @@ export default defineComponent({
       line-height: 16px;
       padding: 0 4px;
     }
-  }
-}
-.btn-connector {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 100;
-  font-size: 16px;
-  color: var(--el-text-color-secondary);
-
-  &:hover {
-    color: var(--el-color-primary);
-  }
-
-  .connector-badge {
-    position: absolute;
-    top: -4px;
-    right: -8px;
-
-    :deep(.el-badge__content) {
-      font-size: 10px;
-      height: 16px;
-      line-height: 16px;
-      padding: 0 4px;
-    }
-  }
-}
-.btn-skill {
-  position: absolute;
-  top: 10px;
-  right: 90px;
-  z-index: 100;
-  font-size: 16px;
-  color: var(--el-text-color-secondary);
-
-  &:hover {
-    color: var(--el-color-primary);
-  }
-
-  .skill-badge {
-    position: absolute;
-    top: -4px;
-    right: -8px;
-
-    :deep(.el-badge__content) {
-      font-size: 10px;
-      height: 16px;
-      line-height: 16px;
-      padding: 0 4px;
-    }
-  }
-}
-
-.btn-agent {
-  position: absolute;
-  top: 10px;
-  right: 120px;
-  z-index: 100;
-  font-size: 16px;
-  color: var(--el-text-color-secondary);
-
-  &:hover {
-    color: var(--el-color-primary);
   }
 
   .agent-dot {
@@ -854,15 +813,12 @@ export default defineComponent({
     }
   }
   .messages {
-    padding: 56px calc(50% - 400px) 0;
+    padding: 12px calc(50% - 400px) 0;
     flex: 1;
     overflow-y: auto;
     @media (max-width: 1159px) {
       width: 100%;
-      padding: 56px 12px 0;
-    }
-    .setting {
-      display: none;
+      padding: 12px 12px 0;
     }
     .message {
       margin-bottom: 15px;
@@ -884,9 +840,12 @@ export default defineComponent({
 }
 
 @media (max-width: 767px) {
-  .selector {
-    top: 8px;
-    left: 54px;
+  .toolbar {
+    padding: 0 8px 0 54px;
+  }
+
+  .toolbar-actions {
+    margin-right: 36px;
   }
 
   .dialogue.empty .starter {
