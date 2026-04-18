@@ -35,15 +35,17 @@
           </el-tooltip>
         </div>
       </div>
-      <mcp-manager v-model="mcpManagerVisible" @change="onMcpChange" />
-      <connector-manager v-model="connectorManagerVisible" @change="onConnectorChange" />
+      <mcp-manager v-if="mcpManagerVisible" v-model="mcpManagerVisible" @change="onMcpChange" />
+      <connector-manager v-if="connectorManagerVisible" v-model="connectorManagerVisible" @change="onConnectorChange" />
       <skill-manager
+        v-if="skillManagerVisible"
         v-model="skillManagerVisible"
         :active-skills="activeSkills"
         :token="credential?.token"
         @change="onSkillChange"
       />
       <desktop-agent-manager
+        v-if="agentManagerVisible"
         v-model="agentManagerVisible"
         :connected="agentConnected"
         :agent-name="agentName"
