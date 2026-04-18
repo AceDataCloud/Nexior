@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Apr 2026 13:15:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 18 Apr 2026 07:33:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.34.0
+
+Sat, 18 Apr 2026 07:33:00 GMT
+
+### Minor changes
+
+- feat(kling): add kling-v3, v3-omni, v2-6 model support (cqc@cuiqingcai.com)
+- feat(kling): add kling-v3, v3-omni, v2-6 model support with generate audio toggle (dev@acedata.cloud)
 
 ## 3.32.9
 
