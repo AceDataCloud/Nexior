@@ -8,8 +8,11 @@
   >
     <div v-loading="loading" class="connector-manager">
       <!-- Provider List -->
-      <div v-if="providers.length === 0 && !loading" class="empty">
+      <div v-if="providers.length === 0 && !loading && !loadError" class="empty">
         {{ $t('chat.connector.noProviders') }}
+      </div>
+      <div v-if="loadError && !loading" class="empty">
+        {{ $t('chat.connector.loadErrorHint') }}
       </div>
       <div v-for="provider in providers" :key="provider.id" class="provider-item">
         <div class="provider-icon">
@@ -83,6 +86,7 @@ export default defineComponent({
       providers: [] as IConnectorProvider[],
       connectors: [] as IConnector[],
       loading: false,
+      loadError: false,
       connecting: '' as string
     };
   },
@@ -116,6 +120,7 @@ export default defineComponent({
     async loadData() {
       if (!this.token) return;
       this.loading = true;
+      this.loadError = false;
       try {
         const [providersRes, connectorsRes] = await Promise.all([
           connectorOperator.listProviders(this.token),
@@ -124,7 +129,7 @@ export default defineComponent({
         this.providers = providersRes.data.providers || [];
         this.connectors = connectorsRes.data.items || [];
       } catch {
-        ElMessage.error(this.$t('chat.connector.loadError'));
+        this.loadError = true;
       } finally {
         this.loading = false;
       }

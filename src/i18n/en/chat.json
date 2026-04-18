@@ -567,6 +567,10 @@
     "message": "No MCP servers yet. Add one to extend AI capabilities.",
     "description": "MCP server list empty"
   },
+  "mcp.loadErrorHint": {
+    "message": "Unable to load MCP servers. This feature may not be available yet.",
+    "description": "Hint when MCP servers fail to load due to network/CORS errors"
+  },
   "mcp.nameUrlRequired": {
     "message": "Name and URL are required",
     "description": "Name and URL required validation"
@@ -634,6 +638,10 @@
   "connector.loadError": {
     "message": "Failed to load connectors",
     "description": "Load error message"
+  },
+  "connector.loadErrorHint": {
+    "message": "Unable to load connectors. This feature may not be available yet.",
+    "description": "Hint when connectors fail to load due to network/CORS errors"
   },
   "connector.disconnectError": {
     "message": "Failed to disconnect connector",
