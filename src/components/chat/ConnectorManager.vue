@@ -96,7 +96,7 @@ export default defineComponent({
       }
     },
     token(): string | undefined {
-      return this.$store.state.token?.access;
+      return this.$store.state.chat?.credential?.token;
     }
   },
   watch: {

@@ -33,3 +33,4 @@ export * from './connector';
 export * from './skill';
 export * from './wan';
 export * from './config';
+export * from './agent';
