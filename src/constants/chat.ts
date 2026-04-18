@@ -36,10 +36,7 @@ export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
 
 export const CHAT_MODEL_NAME_GLM_5_1 = 'glm-5.1';
-export const CHAT_MODEL_NAME_GLM_5 = 'glm-5';
 export const CHAT_MODEL_NAME_GLM_4_7 = 'glm-4.7';
-export const CHAT_MODEL_NAME_GLM_4_5 = 'glm-4.5';
-export const CHAT_MODEL_NAME_GLM_4_FLASH = 'glm-4-flash';
 
 export const CHAT_MODEL_ICON_CHATGPT = 'https://cdn.acedata.cloud/7dljuv.png';
 export const CHAT_MODEL_ICON_GROK = 'https://cdn.acedata.cloud/p1ge98.png';
@@ -329,15 +326,6 @@ export const CHAT_MODEL_GLM_5_1: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.glm51Description')
 };
 
-export const CHAT_MODEL_GLM_5: IChatModel = {
-  enabled: true,
-  name: CHAT_MODEL_NAME_GLM_5,
-  icon: CHAT_MODEL_ICON_GLM,
-  modelGroup: 'glm',
-  getDisplayName: () => i18n.global.t('chat.model.glm5'),
-  getDescription: () => i18n.global.t('chat.model.glm5Description')
-};
-
 export const CHAT_MODEL_GLM_4_7: IChatModel = {
   enabled: true,
   name: CHAT_MODEL_NAME_GLM_4_7,
@@ -345,24 +333,6 @@ export const CHAT_MODEL_GLM_4_7: IChatModel = {
   modelGroup: 'glm',
   getDisplayName: () => i18n.global.t('chat.model.glm47'),
   getDescription: () => i18n.global.t('chat.model.glm47Description')
-};
-
-export const CHAT_MODEL_GLM_4_5: IChatModel = {
-  enabled: true,
-  name: CHAT_MODEL_NAME_GLM_4_5,
-  icon: CHAT_MODEL_ICON_GLM,
-  modelGroup: 'glm',
-  getDisplayName: () => i18n.global.t('chat.model.glm45'),
-  getDescription: () => i18n.global.t('chat.model.glm45Description')
-};
-
-export const CHAT_MODEL_GLM_4_FLASH: IChatModel = {
-  enabled: true,
-  name: CHAT_MODEL_NAME_GLM_4_FLASH,
-  icon: CHAT_MODEL_ICON_GLM,
-  modelGroup: 'glm',
-  getDisplayName: () => i18n.global.t('chat.model.glm4Flash'),
-  getDescription: () => i18n.global.t('chat.model.glm4FlashDescription')
 };
 
 export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
@@ -430,7 +400,7 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
   name: 'glm',
   getDisplayName: () => i18n.global.t('chat.modelGroup.glm'),
   getDescription: () => i18n.global.t('chat.modelGroup.glmDescription'),
-  models: [CHAT_MODEL_GLM_5_1, CHAT_MODEL_GLM_5, CHAT_MODEL_GLM_4_7, CHAT_MODEL_GLM_4_5, CHAT_MODEL_GLM_4_FLASH]
+  models: [CHAT_MODEL_GLM_5_1, CHAT_MODEL_GLM_4_7]
 };
 
 export const CHAT_MODELS: IChatModel[] = [
@@ -460,10 +430,7 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_KIMI_K2_THINKING,
   CHAT_MODEL_KIMI_K2_THINKING_TURBO,
   CHAT_MODEL_GLM_5_1,
-  CHAT_MODEL_GLM_5,
-  CHAT_MODEL_GLM_4_7,
-  CHAT_MODEL_GLM_4_5,
-  CHAT_MODEL_GLM_4_FLASH
+  CHAT_MODEL_GLM_4_7
 ];
 
 export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [

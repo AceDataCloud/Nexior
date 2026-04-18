@@ -13,7 +13,7 @@
             }}
           </span>
           <span v-if="item.remark"> ({{ item.remark }}) </span>
-          <span v-if="item?.comparisons?.length > 0"> - </span>
+          <span v-if="(item?.comparisons?.length ?? 0) > 0"> - </span>
           <span v-for="(comparison, comparisonIndex) in item?.comparisons" :key="comparisonIndex" class="comparison">
             <i v-if="comparison?.value < 0">
               {{ $t('api.message.cheaperThan').replace('$[[value]]', comparison?.target?.toString()) }}
