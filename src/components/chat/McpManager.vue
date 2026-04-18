@@ -89,7 +89,12 @@
               <el-tag v-if="server.tools_cache?.length" size="small" type="info" effect="plain">
                 {{ server.tools_cache.length }} tools
               </el-tag>
-              <el-tag v-if="server.auth_type === 'oauth' && server.oauth_status === 'authorized'" size="small" type="success" effect="plain">
+              <el-tag
+                v-if="server.auth_type === 'oauth' && server.oauth_status === 'authorized'"
+                size="small"
+                type="success"
+                effect="plain"
+              >
                 OAuth
               </el-tag>
               <el-button
@@ -207,10 +212,13 @@ export default defineComponent({
     }
   },
   watch: {
-    modelValue(val) {
-      if (val) {
-        this.onLoad();
-      }
+    modelValue: {
+      handler(val) {
+        if (val) {
+          this.onLoad();
+        }
+      },
+      immediate: true
     }
   },
   beforeUnmount() {
@@ -353,7 +361,7 @@ export default defineComponent({
                 await this.onLoad();
                 this.$emit('change');
               } else {
-                ElMessage.error(cbData.error || this.$t('chat.mcp.oauthFailed') as string);
+                ElMessage.error(cbData.error || (this.$t('chat.mcp.oauthFailed') as string));
               }
             } catch {
               ElMessage.error(this.$t('chat.mcp.oauthFailed') as string);
