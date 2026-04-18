@@ -53,8 +53,8 @@ export default defineComponent({
           label: 'veo31'
         },
         {
-          value: 'veo31-fast-ingredient',
-          label: 'veo31-fast-ingredient'
+          value: 'veo31-fast-ingredients',
+          label: 'veo31-fast-ingredients'
         }
       ]
     };
