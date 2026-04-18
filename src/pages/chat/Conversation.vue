@@ -99,7 +99,7 @@ import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
-import { chatOperator, mcpServerOperator, connectorOperator } from '@/operators';
+import { chatOperator, mcpServerOperator, connectorOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton, ElBadge } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -289,11 +289,7 @@ export default defineComponent({
       const token = this.credential?.token;
       if (!token) return;
       try {
-        const { data } = await axios.post(
-          '/aichat2/agent',
-          { action: 'status' },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+        const { data } = await agentOperator.status(token);
         this.agentConnected = data?.connected === true;
         this.agentName = data?.name || '';
         this.agentToolCount = data?.tool_count || 0;
