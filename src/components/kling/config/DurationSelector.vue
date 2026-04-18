@@ -65,7 +65,7 @@ export default defineComponent({
     isV3Model(newVal: boolean) {
       const current = this.value;
       const validValues = (newVal ? V3_OPTIONS : STANDARD_OPTIONS).map((o) => o.value);
-      if (!validValues.includes(current)) {
+      if (current !== undefined && !validValues.includes(current)) {
         this.value = KLING_DEFAULT_DURATION;
       }
     }

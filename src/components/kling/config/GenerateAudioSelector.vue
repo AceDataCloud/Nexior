@@ -12,8 +12,6 @@ import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import { KLING_DEFAULT_GENERATE_AUDIO, KLING_V3_MODELS } from '@/constants';
 
-const AUDIO_SUPPORTED_MODELS = [...KLING_V3_MODELS, 'kling-v2-6'];
-
 export default defineComponent({
   name: 'GenerateAudioSelector',
   components: {
