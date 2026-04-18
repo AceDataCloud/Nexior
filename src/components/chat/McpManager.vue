@@ -30,6 +30,7 @@
             <el-select v-model="form.auth_type" style="width: 100%">
               <el-option value="none" :label="$t('chat.mcp.authNone')" />
               <el-option value="bearer" :label="$t('chat.mcp.authBearer')" />
+              <el-option value="oauth" :label="$t('chat.mcp.authOAuth')" />
             </el-select>
           </el-form-item>
           <el-form-item v-if="form.auth_type === 'bearer'" :label="$t('chat.mcp.authToken')">
@@ -40,6 +41,9 @@
               :placeholder="$t('chat.mcp.authTokenPlaceholder')"
             />
           </el-form-item>
+          <div v-if="form.auth_type === 'oauth'" class="oauth-hint">
+            <el-text type="info" size="small">{{ $t('chat.mcp.oauthHint') }}</el-text>
+          </div>
           <div class="form-actions">
             <el-button size="small" @click="onCancelForm">{{ $t('common.button.cancel') }}</el-button>
             <el-button size="small" :loading="testing" @click="onTest">
@@ -85,6 +89,19 @@
               <el-tag v-if="server.tools_cache?.length" size="small" type="info" effect="plain">
                 {{ server.tools_cache.length }} tools
               </el-tag>
+              <el-tag v-if="server.auth_type === 'oauth' && server.oauth_status === 'authorized'" size="small" type="success" effect="plain">
+                OAuth
+              </el-tag>
+              <el-button
+                v-if="server.auth_type === 'oauth' && server.oauth_status !== 'authorized'"
+                size="small"
+                type="warning"
+                :loading="authorizingServerId === server.id"
+                @click="onAuthorize(server)"
+              >
+                <font-awesome-icon icon="fa-solid fa-key" class="mr-1" />
+                {{ $t('chat.mcp.authorize') }}
+              </el-button>
             </div>
             <div class="server-url">{{ server.url }}</div>
             <div v-if="server.description" class="server-desc">{{ server.description }}</div>
@@ -117,7 +134,8 @@ import {
   ElSwitch,
   ElTag,
   ElMessage,
-  ElMessageBox
+  ElMessageBox,
+  ElText
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { mcpServerOperator } from '@/operators';
@@ -144,6 +162,7 @@ export default defineComponent({
     ElCard,
     ElSwitch,
     ElTag,
+    ElText,
     FontAwesomeIcon
   },
   props: {
@@ -169,7 +188,9 @@ export default defineComponent({
         description: '',
         auth_type: 'none',
         auth_token: ''
-      } as IForm
+      } as IForm,
+      authorizingServerId: null as string | null,
+      oauthMessageHandler: null as ((event: MessageEvent) => void) | null
     };
   },
   computed: {
@@ -190,6 +211,11 @@ export default defineComponent({
       if (val) {
         this.onLoad();
       }
+    }
+  },
+  beforeUnmount() {
+    if (this.oauthMessageHandler) {
+      window.removeEventListener('message', this.oauthMessageHandler);
     }
   },
   methods: {
@@ -294,6 +320,56 @@ export default defineComponent({
       } finally {
         this.testing = false;
       }
+    },
+    async onAuthorize(server: IMcpServer) {
+      this.authorizingServerId = server.id;
+      try {
+        const { data } = await mcpServerOperator.oauthStart(server.id, this.token);
+        if (data.status === 'authorized') {
+          ElMessage.success(this.$t('chat.mcp.oauthAuthorized') as string);
+          await this.onLoad();
+          this.$emit('change');
+          return;
+        }
+        if (data.status === 'redirect' && data.authorization_url) {
+          const popup = window.open(data.authorization_url, 'mcp-oauth', 'width=600,height=700');
+          if (!popup) {
+            ElMessage.error(this.$t('chat.mcp.popupBlocked') as string);
+            return;
+          }
+          // Clean up any previous listener
+          if (this.oauthMessageHandler) {
+            window.removeEventListener('message', this.oauthMessageHandler);
+          }
+          this.oauthMessageHandler = async (event: MessageEvent) => {
+            if (event.origin !== window.location.origin) return;
+            if (event.data?.type !== 'oauth-callback') return;
+            window.removeEventListener('message', this.oauthMessageHandler!);
+            this.oauthMessageHandler = null;
+            try {
+              const { data: cbData } = await mcpServerOperator.oauthCallback(server.id, event.data.code, this.token);
+              if (cbData.status === 'authorized') {
+                ElMessage.success(this.$t('chat.mcp.oauthAuthorized') as string);
+                await this.onLoad();
+                this.$emit('change');
+              } else {
+                ElMessage.error(cbData.error || this.$t('chat.mcp.oauthFailed') as string);
+              }
+            } catch {
+              ElMessage.error(this.$t('chat.mcp.oauthFailed') as string);
+            } finally {
+              this.authorizingServerId = null;
+            }
+          };
+          window.addEventListener('message', this.oauthMessageHandler);
+        }
+      } catch {
+        ElMessage.error(this.$t('chat.mcp.oauthFailed') as string);
+      } finally {
+        if (!this.oauthMessageHandler) {
+          this.authorizingServerId = null;
+        }
+      }
     }
   }
 });
@@ -312,6 +388,10 @@ export default defineComponent({
       display: flex;
       justify-content: flex-end;
       gap: 8px;
+    }
+
+    .oauth-hint {
+      margin-bottom: 12px;
     }
   }
 
