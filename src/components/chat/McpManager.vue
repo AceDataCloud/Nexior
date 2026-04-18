@@ -71,8 +71,11 @@
 
       <!-- Server List -->
       <div v-loading="loading" class="server-list">
-        <div v-if="servers.length === 0 && !loading" class="empty">
+        <div v-if="servers.length === 0 && !loading && !loadError" class="empty">
           {{ $t('chat.mcp.empty') }}
+        </div>
+        <div v-if="loadError && !loading" class="empty">
+          {{ $t('chat.mcp.loadErrorHint') }}
         </div>
         <div v-for="server in servers" :key="server.id" class="server-item">
           <div class="server-info">
@@ -154,6 +157,7 @@ export default defineComponent({
     return {
       servers: [] as IMcpServer[],
       loading: false,
+      loadError: false,
       submitting: false,
       testing: false,
       showAddForm: false,
@@ -191,11 +195,12 @@ export default defineComponent({
   methods: {
     async onLoad() {
       this.loading = true;
+      this.loadError = false;
       try {
         const { data } = await mcpServerOperator.list(this.token);
         this.servers = data.items || [];
       } catch {
-        ElMessage.error('Failed to load MCP servers');
+        this.loadError = true;
       } finally {
         this.loading = false;
       }
