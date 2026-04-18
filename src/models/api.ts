@@ -76,6 +76,7 @@ export interface IApi {
   created_at?: string;
   updated_at?: string;
   stage?: string;
+  estimation?: { name: string; cost: number; remark?: string; comparisons?: { target: string; value: number }[] }[];
 }
 
 export interface IApiListResponse {
