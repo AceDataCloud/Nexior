@@ -35,12 +35,19 @@ export const CHAT_MODEL_NAME_KIMI_K2_5 = 'kimi-k2.5';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING = 'kimi-k2-thinking';
 export const CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO = 'kimi-k2-thinking-turbo';
 
+export const CHAT_MODEL_NAME_GLM_5_1 = 'glm-5.1';
+export const CHAT_MODEL_NAME_GLM_5 = 'glm-5';
+export const CHAT_MODEL_NAME_GLM_4_7 = 'glm-4.7';
+export const CHAT_MODEL_NAME_GLM_4_5 = 'glm-4.5';
+export const CHAT_MODEL_NAME_GLM_4_FLASH = 'glm-4-flash';
+
 export const CHAT_MODEL_ICON_CHATGPT = 'https://cdn.acedata.cloud/7dljuv.png';
 export const CHAT_MODEL_ICON_GROK = 'https://cdn.acedata.cloud/p1ge98.png';
 export const CHAT_MODEL_ICON_DEEPSEEK = 'https://cdn.acedata.cloud/bc71ae.png';
 export const CHAT_MODEL_ICON_GEMINI = 'https://cdn.acedata.cloud/psfx0g.jpg';
 export const CHAT_MODEL_ICON_CLAUDE = 'https://cdn.acedata.cloud/8fnw4v.jpg';
 export const CHAT_MODEL_ICON_KIMI = 'https://cdn.acedata.cloud/57ebgy.png';
+export const CHAT_MODEL_ICON_GLM = 'https://cdn.acedata.cloud/jqi3nv.png';
 
 export const CHAT_SERVICE_ID = 'b1fbcc32-e218-4253-9dc3-4fe600a1bfb9';
 
@@ -313,6 +320,51 @@ export const CHAT_MODEL_KIMI_K2_THINKING_TURBO: IChatModel = {
   getDescription: () => i18n.global.t('chat.model.kimiK2ThinkingTurboDescription')
 };
 
+export const CHAT_MODEL_GLM_5_1: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GLM_5_1,
+  icon: CHAT_MODEL_ICON_GLM,
+  modelGroup: 'glm',
+  getDisplayName: () => i18n.global.t('chat.model.glm51'),
+  getDescription: () => i18n.global.t('chat.model.glm51Description')
+};
+
+export const CHAT_MODEL_GLM_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GLM_5,
+  icon: CHAT_MODEL_ICON_GLM,
+  modelGroup: 'glm',
+  getDisplayName: () => i18n.global.t('chat.model.glm5'),
+  getDescription: () => i18n.global.t('chat.model.glm5Description')
+};
+
+export const CHAT_MODEL_GLM_4_7: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GLM_4_7,
+  icon: CHAT_MODEL_ICON_GLM,
+  modelGroup: 'glm',
+  getDisplayName: () => i18n.global.t('chat.model.glm47'),
+  getDescription: () => i18n.global.t('chat.model.glm47Description')
+};
+
+export const CHAT_MODEL_GLM_4_5: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GLM_4_5,
+  icon: CHAT_MODEL_ICON_GLM,
+  modelGroup: 'glm',
+  getDisplayName: () => i18n.global.t('chat.model.glm45'),
+  getDescription: () => i18n.global.t('chat.model.glm45Description')
+};
+
+export const CHAT_MODEL_GLM_4_FLASH: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GLM_4_FLASH,
+  icon: CHAT_MODEL_ICON_GLM,
+  modelGroup: 'glm',
+  getDisplayName: () => i18n.global.t('chat.model.glm4Flash'),
+  getDescription: () => i18n.global.t('chat.model.glm4FlashDescription')
+};
+
 export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   icon: CHAT_MODEL_ICON_CHATGPT,
   name: 'chatgpt',
@@ -373,6 +425,14 @@ export const CHAT_MODEL_GROUP_KIMI: IChatModelGroup = {
   models: [CHAT_MODEL_KIMI_K2_5, CHAT_MODEL_KIMI_K2_THINKING, CHAT_MODEL_KIMI_K2_THINKING_TURBO]
 };
 
+export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
+  icon: CHAT_MODEL_ICON_GLM,
+  name: 'glm',
+  getDisplayName: () => i18n.global.t('chat.modelGroup.glm'),
+  getDescription: () => i18n.global.t('chat.modelGroup.glmDescription'),
+  models: [CHAT_MODEL_GLM_5_1, CHAT_MODEL_GLM_5, CHAT_MODEL_GLM_4_7, CHAT_MODEL_GLM_4_5, CHAT_MODEL_GLM_4_FLASH]
+};
+
 export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_5_ALL,
   CHAT_MODEL_GPT_5,
@@ -398,7 +458,12 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_CLAUDE_3_7_SONNET,
   CHAT_MODEL_KIMI_K2_5,
   CHAT_MODEL_KIMI_K2_THINKING,
-  CHAT_MODEL_KIMI_K2_THINKING_TURBO
+  CHAT_MODEL_KIMI_K2_THINKING_TURBO,
+  CHAT_MODEL_GLM_5_1,
+  CHAT_MODEL_GLM_5,
+  CHAT_MODEL_GLM_4_7,
+  CHAT_MODEL_GLM_4_5,
+  CHAT_MODEL_GLM_4_FLASH
 ];
 
 export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
@@ -407,5 +472,6 @@ export const CHAT_MODEL_GROUPS: IChatModelGroup[] = [
   CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_CLAUDE,
-  CHAT_MODEL_GROUP_KIMI
+  CHAT_MODEL_GROUP_KIMI,
+  CHAT_MODEL_GROUP_GLM
 ];
