@@ -44,7 +44,7 @@
       </el-upload>
     </div>
     <el-button
-      :disabled="answering || !questionValue || uploading"
+      :disabled="answering || !questionValue || uploading || !ready"
       type="primary"
       :class="{
         btn: true,
@@ -103,6 +103,11 @@ export default defineComponent({
       type: Boolean,
       required: false,
       default: false
+    },
+    ready: {
+      type: Boolean,
+      required: false,
+      default: true
     },
     references: {
       type: Array,
@@ -200,7 +205,7 @@ export default defineComponent({
       });
     },
     onSubmit() {
-      if (!this.question || this.uploading) {
+      if (!this.question || this.uploading || !this.ready) {
         return;
       }
       this.$emit('submit');
