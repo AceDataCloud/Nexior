@@ -71,6 +71,7 @@
           <composer
             v-model:question="question"
             :answering="answering"
+            :ready="ready"
             :references="references"
             @update:references="references = $event"
             @submit="onSubmit"
@@ -205,6 +206,11 @@ export default defineComponent({
     },
     initializing() {
       return this.$store.state.chat.status.getApplications === Status.Request;
+    },
+    ready(): boolean {
+      // Disable sending until token/application/credential are all initialized,
+      // otherwise the first submit races init and hits `You have not applied for this service...`.
+      return !this.initializing && !!this.credential?.token && !!this.application;
     },
     enabledMcpCount(): number {
       return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
