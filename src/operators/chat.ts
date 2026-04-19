@@ -75,6 +75,13 @@ class ChatOperator {
                 if (json.id) {
                   id = json.id;
                 }
+                if (json.type === 'error') {
+                  const errorMessage =
+                    typeof json.message === 'string' && json.message.trim() ? json.message.trim() : 'An error occurred';
+                  await reader.cancel().catch(() => undefined);
+                  reject(new BaseError(500, ERROR_CODE_API_ERROR, errorMessage));
+                  return;
+                }
                 if (options?.stream) {
                   options.stream({
                     answer: finalAnswer,
@@ -82,6 +89,7 @@ class ChatOperator {
                     id,
                     // Forward aichat2 event types for tool-calling UI
                     type: json.type,
+                    message: json.message,
                     tool_id: json.tool_id,
                     tool_name: json.tool_name,
                     tool_display_name: json.tool_display_name,

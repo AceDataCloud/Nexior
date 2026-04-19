@@ -165,6 +165,7 @@ export interface IChatConversationResponse {
   id?: string;
   // aichat2 tool-calling event fields
   type?: string;
+  message?: string;
   tool_id?: string;
   tool_name?: string;
   tool_display_name?: string;
