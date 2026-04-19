@@ -376,22 +376,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [
-    CHAT_MODEL_GPT_5_ALL,
-    CHAT_MODEL_GPT_5_4,
-    CHAT_MODEL_GPT_5_4_MINI,
-    CHAT_MODEL_GPT_5_4_NANO,
-    CHAT_MODEL_GPT_5,
-    CHAT_MODEL_GPT_5_MINI,
-    CHAT_MODEL_GPT_4O,
-    CHAT_MODEL_GPT_4O_MINI,
-    CHAT_MODEL_GPT_4O_ALL,
-    CHAT_MODEL_GPT_4_ALL,
-    CHAT_MODEL_GPT_4O_IMAGE,
-    CHAT_MODEL_O3,
-    CHAT_MODEL_O4_MINI,
-    CHAT_MODEL_O1_MINI
-  ]
+  models: [CHAT_MODEL_GPT_5_4, CHAT_MODEL_GPT_5_4_MINI, CHAT_MODEL_GPT_5_4_NANO]
 };
 
 export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
@@ -443,19 +428,9 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 };
 
 export const CHAT_MODELS: IChatModel[] = [
-  CHAT_MODEL_GPT_5_ALL,
   CHAT_MODEL_GPT_5_4,
   CHAT_MODEL_GPT_5_4_MINI,
   CHAT_MODEL_GPT_5_4_NANO,
-  CHAT_MODEL_GPT_5,
-  CHAT_MODEL_GPT_5_MINI,
-  CHAT_MODEL_GPT_4O,
-  CHAT_MODEL_GPT_4O_ALL,
-  CHAT_MODEL_GPT_4_ALL,
-  CHAT_MODEL_GPT_4O_MINI,
-  CHAT_MODEL_GPT_4O_IMAGE,
-  CHAT_MODEL_O3,
-  CHAT_MODEL_O4_MINI,
   CHAT_MODEL_DEEPSEEK_CHAT,
   CHAT_MODEL_DEEPSEEK_REASONER,
   CHAT_MODEL_GROK_4,
