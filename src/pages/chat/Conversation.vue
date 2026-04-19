@@ -611,6 +611,22 @@ export default defineComponent({
                   toolItem.duration_ms = response.duration_ms;
                   toolItem.status = 'done';
                 }
+              } else if (response.type === 'artifact' && response.artifact) {
+                if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {
+                  contentParts.push({
+                    type: 'image_url',
+                    image_url: response.artifact.url,
+                    name: response.artifact.name,
+                    mimeType: response.artifact.mimeType
+                  });
+                } else {
+                  contentParts.push({
+                    type: 'file_url',
+                    file_url: response.artifact.url,
+                    name: response.artifact.name,
+                    mimeType: response.artifact.mimeType
+                  });
+                }
               } else if (response.delta_answer) {
                 currentText = response.answer;
               }
@@ -621,7 +637,7 @@ export default defineComponent({
                 displayParts.push({ type: 'text', text: currentText });
               }
 
-              if (displayParts.length > 0 && displayParts.some((p) => p.type === 'tool_use')) {
+              if (displayParts.length > 0) {
                 this.messages[this.messages.length - 1] = {
                   role: ROLE_ASSISTANT,
                   content: displayParts,

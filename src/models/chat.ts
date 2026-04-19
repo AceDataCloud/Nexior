@@ -106,6 +106,8 @@ export interface IChatMessageContentItem {
   text?: string;
   image_url?: { url: string } | string;
   file_url?: { url: string } | string;
+  name?: string;
+  mimeType?: string;
   // Tool-calling fields (type='tool_use')
   tool_id?: string;
   tool_name?: string;
@@ -144,6 +146,7 @@ export interface IChatConversationOptions {
 export interface IChatConversationRequest {
   id?: string;
   question?: string;
+  message?: string | IChatMessageContentItem[];
   references?: string[];
   stateful?: boolean;
   messages?: IChatMessage[];
@@ -170,6 +173,13 @@ export interface IChatConversationResponse {
   is_error?: boolean;
   duration_ms?: number;
   content?: string;
+  artifact?: {
+    type: string;
+    url: string;
+    name: string;
+    mimeType: string;
+    size?: number;
+  };
 }
 
 export interface IChatConversationsResponse {

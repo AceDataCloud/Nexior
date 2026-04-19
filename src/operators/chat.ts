@@ -89,7 +89,8 @@ class ChatOperator {
                     output: json.output,
                     is_error: json.is_error,
                     duration_ms: json.duration_ms,
-                    content: json.content
+                    content: json.content,
+                    artifact: json.artifact
                   });
                 }
               } catch (err) {

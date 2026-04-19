@@ -38,7 +38,7 @@
               />
               <file-preview
                 v-if="item.file_url"
-                :name="typeof item?.file_url === 'string' ? item.file_url : item.file_url?.url"
+                :name="item.name || (typeof item?.file_url === 'string' ? item.file_url : item.file_url?.url)"
                 :percentage="0"
                 :closable="false"
                 class="mt-2"
