@@ -37,7 +37,11 @@
   },
   "name.cfgScale": {
     "message": "Nível de Liberdade",
-    "description": "Parâmetro de liberdade para gerar o vídeo (0-1), quanto maior o valor, mais próximo do referencial"
+    "description": "Parâmetro de liberdade para gerar o vídeo (0-1), quanto maior, mais próximo do referencial"
+  },
+  "name.generateAudio": {
+    "message": "Gerar Áudio Sincronizado",
+    "description": "Se deve gerar áudio sincronizado, suportando kling-v3, kling-v3-omni e kling-v2-6 (modo pro)"
   },
   "name.startImage": {
     "message": "Imagem de Referência Inicial",
@@ -64,8 +68,8 @@
     "description": "Duração do vídeo"
   },
   "name.ingredients": {
-    "message": "Vídeo com Múltiplas Imagens",
-    "description": "Alternância/etiqueta para vídeo com múltiplas imagens"
+    "message": "Criar Vídeo com Múltiplas Imagens",
+    "description": "Alternância/etiqueta para criar vídeo com múltiplas imagens"
   },
   "name.model": {
     "message": "Versão do Modelo",
@@ -81,7 +85,7 @@
   },
   "name.effect": {
     "message": "Efeito do Vídeo",
-    "description": "Nome do parâmetro de estilo para alternar entre diferentes versões ou estilos do modelo"
+    "description": "Nome do parâmetro de estilo, usado para alternar entre diferentes versões ou estilos de modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de Ingredientes",
@@ -96,7 +100,7 @@
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Na tarefa de vídeo com múltiplas imagens, é necessário enviar várias imagens.",
+    "message": "Na tarefa de criar vídeo com múltiplas imagens, é necessário enviar várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -108,15 +112,15 @@
     "description": "Descrição do parâmetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Envie a imagem de referência inicial para que o vídeo final seja gerado com base nela",
+    "message": "Envie a imagem da primeira cena como referência para a geração, o vídeo final será gerado com base na primeira cena",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem de referência final para que o vídeo final seja gerado com base nela",
+    "message": "Envie a imagem da última cena como referência para a geração, o vídeo final será gerado com base na última cena",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.cfgScale": {
-    "message": "Nível de liberdade para gerar o vídeo, opcional [0,1]. Quanto maior o valor, mais forte a correlação.",
+    "message": "Liberdade para gerar o vídeo, opcional [0,1]. Quanto maior, mais forte a correlação.",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "status.pending": {
@@ -140,11 +144,11 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Insira o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.negativePrompt": {
-    "message": "Insira as palavras-chave negativas para o estilo do vídeo a ser gerado, não exceda 200 caracteres",
+    "message": "Insira o prompt negativo para o estilo do vídeo a ser gerado, não exceda 200 caracteres",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -161,7 +165,7 @@
   },
   "placeholder.markerShape": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de forma do marcador"
+    "description": "Placeholder para entrada de forma de marcador"
   },
   "placeholder.rotate": {
     "message": "Selecione...",
@@ -212,7 +216,7 @@
     "description": "Mensagem de sucesso ao enviar imagem com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar imagem, por favor tente novamente mais tarde",
+    "message": "Falha ao enviar imagem, por favor tente novamente",
     "description": "Mensagem de erro quando a imagem falha ao ser enviada"
   },
   "message.startingTask": {
@@ -228,8 +232,8 @@
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus pontos acabaram, por favor compre mais pontos para continuar",
-    "description": "Mensagem quando os pontos se esgotaram"
+    "message": "Seus créditos acabaram, por favor compre mais créditos para continuar",
+    "description": "Mensagem quando os créditos se esgotaram"
   },
   "message.generating": {
     "message": "Gerando...",
@@ -253,11 +257,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "O tamanho do arquivo não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB!"
+    "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "O arquivo enviado deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4"
   },
   "message.uploadStartImageExceed": {
     "message": "Número de imagens da primeira frame excede o limite",

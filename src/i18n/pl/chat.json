@@ -12,7 +12,7 @@
     "description": "Przycisk do wyszukiwania"
   },
   "button.edit": {
-    "message": "Edytuj wiadomość",
+    "message": "Edytuj",
     "description": "Edytuj wysłaną wiadomość"
   },
   "modelGroup.chatgpt": {
@@ -44,7 +44,7 @@
     "description": "Nazwa modelu usługi, czyli Gemini"
   },
   "modelGroup.geminiDescription": {
-    "message": "Model AI opracowany przez Google",
+    "message": "Model AI opracowany przez firmę Google",
     "description": "Opis grupy modeli Gemini"
   },
   "modelGroup.claude": {
@@ -63,69 +63,37 @@
     "message": "Model AI opracowany przez firmę Dark Side of the Moon",
     "description": "Opis grupy modeli Kimi"
   },
-  "model.5All": {
-    "message": "gpt-5-all",
-    "description": "Nazwa modelu usługi, czyli GPT 5 All"
+  "modelGroup.glm": {
+    "message": "GLM",
+    "description": "Nazwa modelu usługi, czyli GLM"
   },
-  "model.5AllDescription": {
-    "message": "Obecnie najnowocześniejszy model",
-    "description": "Opis modelu GPT 5"
+  "modelGroup.glmDescription": {
+    "message": "Duży model językowy opracowany przez firmę Zhipu AI",
+    "description": "Opis grupy modeli GLM"
   },
-  "model.5": {
-    "message": "gpt-5",
-    "description": "Nazwa modelu usługi, czyli GPT 5"
+  "model.54": {
+    "message": "gpt-5.4",
+    "description": "Nazwa modelu usługi, czyli GPT 5.4"
   },
-  "model.5Description": {
-    "message": "Obecnie najnowocześniejszy model",
-    "description": "Opis modelu GPT 5"
+  "model.54Description": {
+    "message": "Najnowocześniejszy model flagowy GPT 5.4",
+    "description": "Opis modelu GPT 5.4"
   },
-  "model.5Mini": {
-    "message": "gpt-5-mini",
-    "description": "Nazwa modelu usługi, czyli GPT 5 Mini"
+  "model.54Mini": {
+    "message": "gpt-5.4-mini",
+    "description": "Nazwa modelu usługi, czyli GPT 5.4 Mini"
   },
-  "model.5MiniDescription": {
-    "message": "Szybszy i lżejszy model GPT 5",
-    "description": "Opis modelu GPT 5 Mini"
+  "model.54MiniDescription": {
+    "message": "Szybszy i lżejszy model GPT 5.4",
+    "description": "Opis modelu GPT 5.4 Mini"
   },
-  "model.4O": {
-    "message": "gpt-4o",
-    "description": "Nazwa modelu usługi, czyli GPT 4.0 wizualny"
+  "model.54Nano": {
+    "message": "gpt-5.4-nano",
+    "description": "Nazwa modelu usługi, czyli GPT 5.4 Nano"
   },
-  "model.4OMini": {
-    "message": "gpt-4o-mini",
-    "description": "Nazwa modelu usługi, czyli GPT 4.0 Mini"
-  },
-  "model.4OMiniDescription": {
-    "message": "Lżejszy i szybszy model",
-    "description": "Opis modelu 4.0 Mini"
-  },
-  "model.4OImage": {
-    "message": "gpt-4o-image",
-    "description": "Nazwa modelu usługi, czyli GPT 4.0 wizualny"
-  },
-  "model.4OImageDescription": {
-    "message": "Obsługuje generowanie obrazów",
-    "description": "Opis modelu wizualnego 4.0"
-  },
-  "model.4ODescription": {
-    "message": "Do większości zadań",
-    "description": "Opis modelu wizualnego 4.0"
-  },
-  "model.4OAll": {
-    "message": "gpt-4o-all",
-    "description": "Nazwa modelu usługi, czyli GPT 4O All"
-  },
-  "model.4OAllDescription": {
-    "message": "Wszechstronny model",
-    "description": "Opis modelu 4O wszechstronnego"
-  },
-  "model.4All": {
-    "message": "gpt-4-all",
-    "description": "Nazwa modelu usługi, czyli GPT 4.0 All"
-  },
-  "model.4AllDescription": {
-    "message": "Wszechstronny model",
-    "description": "Opis modelu 4.0 wszechstronnego"
+  "model.54NanoDescription": {
+    "message": "Najmniejszy i najszybszy model GPT 5.4",
+    "description": "Opis modelu GPT 5.4 Nano"
   },
   "model.deepseekChat": {
     "message": "Standard 3.0",
@@ -149,7 +117,7 @@
   },
   "model.deepseekChat32Description": {
     "message": "Najnowocześniejsza wersja eksperymentalna",
-    "description": "Opis modelu DeepSeek V3.2 eksperymentalnego"
+    "description": "Opis modelu DeepSeek V3.2"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -240,52 +208,36 @@
     "description": "Opis modelu Kimi K2.5"
   },
   "model.kimiK2Thinking": {
-    "message": "kimi-k2 wnioskowanie",
-    "description": "Nazwa modelu usługi, czyli Kimi K2 wnioskowanie"
+    "message": "kimi-k2 myślenie",
+    "description": "Nazwa modelu usługi, czyli Kimi K2 myślenie"
   },
   "model.kimiK2ThinkingDescription": {
     "message": "Do wnioskowania i głębokiego myślenia",
-    "description": "Opis modelu Kimi K2 wnioskowanie"
+    "description": "Opis modelu Kimi K2 myślenie"
   },
   "model.kimiK2ThinkingTurbo": {
-    "message": "kimi-k2 turbo wnioskowanie",
-    "description": "Nazwa modelu usługi, czyli Kimi K2 turbo wnioskowanie"
+    "message": "kimi-k2 turbo myślenie",
+    "description": "Nazwa modelu usługi, czyli Kimi K2 turbo myślenie"
   },
   "model.kimiK2ThinkingTurboDescription": {
     "message": "Szybszy model wnioskowania",
-    "description": "Opis modelu Kimi K2 turbo wnioskowanie"
+    "description": "Opis modelu Kimi K2 turbo myślenie"
   },
-  "model.o1": {
-    "message": "o1",
-    "description": "Nazwa modelu usługi, czyli O1"
+  "model.glm51": {
+    "message": "glm-5.1",
+    "description": "Nazwa modelu usługi, czyli GLM 5.1"
   },
-  "model.o1Description": {
-    "message": "Do bardziej zaawansowanych zadań wnioskowania",
-    "description": "Opis modelu O1"
+  "model.glm51Description": {
+    "message": "Najnowocześniejszy model Zhipu",
+    "description": "Opis modelu GLM 5.1"
   },
-  "model.o1Mini": {
-    "message": "ChatGPT - o1-mini wnioskowanie",
-    "description": "Nazwa modelu usługi, czyli O1-Mini"
+  "model.glm47": {
+    "message": "glm-4.7",
+    "description": "Nazwa modelu usługi, czyli GLM 4.7"
   },
-  "model.o1MiniDescription": {
-    "message": "Szybsze wnioskowanie.",
-    "description": "Opis modelu O1-Mini"
-  },
-  "model.o3": {
-    "message": "o3",
-    "description": "Nazwa modelu usługi, czyli O3"
-  },
-  "model.o3Description": {
-    "message": "Do bardziej zaawansowanych zadań wnioskowania",
-    "description": "Opis modelu O3"
-  },
-  "model.o4Mini": {
-    "message": "o4-mini",
-    "description": "Nazwa modelu usługi, czyli O4-Mini"
-  },
-  "model.o4MiniDescription": {
-    "message": "Specjalizuje się w kodowaniu i wnioskowaniu wizualnym",
-    "description": "Opis modelu O4"
+  "model.glm47Description": {
+    "message": "Zrównoważona wydajność i koszt",
+    "description": "Opis modelu GLM 4.7"
   },
   "message.startNewChat": {
     "message": "Rozpocznij nową rozmowę",
@@ -316,8 +268,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że przesyłanie pliku nie powiodło się, spróbuj ponownie później"
   },
   "message.notApplied": {
-    "message": "Nie ubiegałeś się jeszcze o tę usługę, najpierw się ubiegaj",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, najpierw się ubiegaj"
+    "message": "Nie ubiegałeś się jeszcze o tę usługę, najpierw złóż wniosek",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie ubiegał się jeszcze o tę usługę, najpierw złóż wniosek"
   },
   "message.tryForFree": {
     "message": "Wypróbuj za darmo",
@@ -325,75 +277,75 @@
   },
   "message.question1": {
     "message": "Stwórz plan treningowy",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetla 'Hello World'"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o napisanie kodu JavaScript, który wyświetli Hello World"
   },
   "message.question2": {
-    "message": "Stwórz osobistą stronę internetową",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informującego go, że właśnie się przeprowadziłeś"
+    "message": "Zrób osobistą stronę internetową",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o napisanie e-maila do Mike'a, informując go, że właśnie się przeprowadziłeś"
   },
   "message.question3": {
     "message": "Zaprojektuj interesującą grę programistyczną",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
   },
   "message.question4": {
     "message": "Doświadcz Seulu jak miejscowy",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie, jaki wpływ na twórczość artystyczną ma rzeczywistość wirtualna"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o wyjaśnienie, jaki wpływ ma rzeczywistość wirtualna na twórczość artystyczną"
   },
   "message.question5": {
-    "message": "Kto jest większy, 9.8 czy 9.11?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, porównujące wielkość dwóch liczb"
+    "message": "Które jest większe, 9.8 czy 9.11?",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc o porównanie dwóch liczb"
   },
   "message.question6": {
     "message": "Jaki wpływ ma AI na przyszłość?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, dotyczące wpływu AI na przyszłość"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jaki wpływ ma AI na przyszłość?"
   },
   "message.question7": {
-    "message": "Jak zwiększyć efektywność nauki?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, dotyczące zwiększenia efektywności nauki"
+    "message": "Jak poprawić efektywność nauki?",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jak poprawić swoją efektywność nauki?"
   },
   "message.question8": {
-    "message": "Jak poprawić koncentrację?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, dotyczące poprawy koncentracji"
+    "message": "Jak zwiększyć koncentrację?",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jak zwiększyć swoją koncentrację?"
   },
   "message.errorApiError": {
-    "message": "Nie udało się odpowiedzieć, spróbuj ponownie później",
-    "description": "Wiadomość na stronie, informująca użytkownika o nieudanej odpowiedzi, prosząc o ponowne spróbowanie później"
+    "message": "Odpowiedź nie powiodła się, spróbuj ponownie później",
+    "description": "Wiadomość na stronie, informująca użytkownika, że odpowiedź nie powiodła się, spróbuj ponownie później"
   },
   "message.errorBadRequest": {
-    "message": "Nieprawidłowa treść żądania, spróbuj ponownie",
-    "description": "Wiadomość na stronie, informująca użytkownika o nieprawidłowej treści żądania, prosząc o ponowne zadanie pytania"
+    "message": "Treść żądania jest nieprawidłowa, spróbuj ponownie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że treść żądania jest nieprawidłowa, spróbuj ponownie"
   },
   "message.errorNoConversation": {
     "message": "Rozmowa nie istnieje lub wygasła, rozpocznij nową rozmowę",
-    "description": "Wiadomość na stronie, informująca użytkownika, że rozmowa nie istnieje lub wygasła, prosząc o rozpoczęcie nowej rozmowy"
+    "description": "Wiadomość na stronie, informująca użytkownika, że rozmowa nie istnieje lub wygasła, rozpocznij nową rozmowę"
   },
   "message.errorContentTooLarge": {
-    "message": "Treść pytania jest zbyt długa, skróć ją i spróbuj ponownie",
-    "description": "Wiadomość na stronie, informująca użytkownika, że treść pytania jest zbyt długa, prosząc o skrócenie i ponowne spróbowanie"
+    "message": "Treść pytania jest za długa, skróć ją i spróbuj ponownie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że treść pytania jest za długa, skróć ją i spróbuj ponownie"
   },
   "message.errorTooManyRequests": {
     "message": "Twoje działania są zbyt częste, spróbuj ponownie później",
-    "description": "Wiadomość na stronie, informująca użytkownika, że jego działania są zbyt częste, prosząc o ponowne spróbowanie później"
+    "description": "Wiadomość na stronie, informująca użytkownika, że jego działania są zbyt częste, spróbuj ponownie później"
   },
   "message.errorBusy": {
     "message": "Serwer jest zajęty, spróbuj ponownie później",
-    "description": "Wiadomość na stronie, informująca użytkownika, że serwer jest zajęty, prosząc o ponowne spróbowanie później"
+    "description": "Wiadomość na stronie, informująca użytkownika, że serwer jest zajęty, spróbuj ponownie później"
   },
   "message.errorUsedUp": {
     "message": "Wykończyłeś limit, kup więcej, aby kontynuować",
-    "description": "Wiadomość na stronie, informująca użytkownika, że wykończył limit, prosząc o zakup większej ilości, aby kontynuować"
+    "description": "Wiadomość na stronie, informująca użytkownika, że wykończył limit, kup więcej, aby kontynuować"
   },
   "message.errorUnknown": {
     "message": "Wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą klienta",
-    "description": "Wiadomość na stronie, informująca użytkownika o nieznanym błędzie serwera, prosząc o ponowne spróbowanie później lub kontakt z obsługą klienta"
+    "description": "Wiadomość na stronie, informująca użytkownika, że wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą klienta"
   },
   "message.errorTimeout": {
     "message": "Przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później",
-    "description": "Wiadomość na stronie, informująca użytkownika o przekroczeniu czasu oczekiwania na odpowiedź, prosząc o ponowne spróbowanie później"
+    "description": "Wiadomość na stronie, informująca użytkownika, że przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później"
   },
   "message.errorNotApplied": {
-    "message": "Nie złożyłeś wniosku o tę usługę, najpierw złóż wniosek, a potem pytaj",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył wniosku o tę usługę, prosząc o złożenie wniosku przed zadawaniem pytań"
+    "message": "Nie złożyłeś wniosku o tę usługę, najpierw złóż wniosek, a potem kontynuuj pytanie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył wniosku o tę usługę, najpierw złóż wniosek, a potem kontynuuj pytanie"
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
@@ -401,7 +353,7 @@
   },
   "message.howToUse": {
     "message": "AI może się mylić, sprawdź ważne informacje.",
-    "description": "Wiadomość na stronie, informująca użytkownika, że AI może się mylić, prosząc o sprawdzenie ważnych informacji"
+    "description": "Wiadomość na stronie, informująca użytkownika, że AI może się mylić, sprawdź ważne informacje"
   },
   "title.chat": {
     "message": "Czat AI",
@@ -420,11 +372,11 @@
     "description": "Tytuł na stronie, wskazujący, że ta część dotyczy technicznych ograniczeń usługi"
   },
   "title.complexQuestion": {
-    "message": "Odpowiedzi na złożone pytania",
+    "message": "Odpowiadanie na złożone pytania",
     "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do odpowiadania na złożone pytania"
   },
   "title.professionalQuestion": {
-    "message": "Konsultacje w sprawach profesjonalnych",
+    "message": "Konsultacja w sprawach profesjonalnych",
     "description": "Tytuł na stronie, wskazujący, że ta część dotyczy zdolności usługi do konsultacji w sprawach profesjonalnych"
   },
   "title.getTips": {
@@ -446,5 +398,369 @@
   "group.earlier": {
     "message": "Wcześniej",
     "description": "Nazwa grupy na stronie, czyli wcześniej"
+  },
+  "mcp.title": {
+    "message": "Serwer MCP",
+    "description": "Tytuł okna dialogowego zarządzania serwerem MCP"
+  },
+  "mcp.addServer": {
+    "message": "Dodaj serwer",
+    "description": "Przycisk dodawania serwera MCP"
+  },
+  "mcp.name": {
+    "message": "Nazwa",
+    "description": "Nazwa serwera MCP"
+  },
+  "mcp.namePlaceholder": {
+    "message": "Nazwij serwer",
+    "description": "Placeholder dla nazwy serwera MCP"
+  },
+  "mcp.url": {
+    "message": "URL",
+    "description": "URL serwera MCP"
+  },
+  "mcp.urlPlaceholder": {
+    "message": "https://example.com/mcp",
+    "description": "Placeholder dla URL serwera MCP"
+  },
+  "mcp.description": {
+    "message": "Opis",
+    "description": "Opis serwera MCP"
+  },
+  "mcp.descriptionPlaceholder": {
+    "message": "Opisz cel tego serwera",
+    "description": "Placeholder dla opisu serwera MCP"
+  },
+  "mcp.authType": {
+    "message": "Typ uwierzytelnienia",
+    "description": "Typ uwierzytelnienia serwera MCP"
+  },
+  "mcp.authNone": {
+    "message": "Brak",
+    "description": "Brak uwierzytelnienia"
+  },
+  "mcp.authBearer": {
+    "message": "Token Bearer",
+    "description": "Uwierzytelnienie za pomocą tokena Bearer"
+  },
+  "mcp.authToken": {
+    "message": "Token",
+    "description": "Token uwierzytelniający"
+  },
+  "mcp.authTokenPlaceholder": {
+    "message": "Wprowadź token uwierzytelniający",
+    "description": "Placeholder dla tokena uwierzytelniającego"
+  },
+  "mcp.test": {
+    "message": "Testuj połączenie",
+    "description": "Testowanie połączenia z serwerem MCP"
+  },
+  "mcp.testSuccess": {
+    "message": "Połączenie udane",
+    "description": "Test połączenia zakończony sukcesem"
+  },
+  "mcp.testFailed": {
+    "message": "Połączenie nieudane",
+    "description": "Test połączenia zakończony niepowodzeniem"
+  },
+  "mcp.toolsFound": {
+    "message": "Znaleziono {count} narzędzi",
+    "description": "Liczba znalezionych narzędzi"
+  },
+  "mcp.empty": {
+    "message": "Brak serwerów MCP, dodaj jeden, aby rozszerzyć możliwości AI",
+    "description": "Lista serwerów MCP jest pusta"
+  },
+  "mcp.loadErrorHint": {
+    "message": "Nie można załadować serwera MCP, ta funkcja może być jeszcze niedostępna.",
+    "description": "Wskazówka, gdy serwer MCP nie ładuje się z powodu błędu sieciowego/CORS"
+  },
+  "mcp.nameUrlRequired": {
+    "message": "Proszę wypełnić nazwę i URL",
+    "description": "Nazwa i URL są wymagane"
+  },
+  "mcp.urlRequired": {
+    "message": "Proszę wypełnić URL",
+    "description": "URL jest wymagany"
+  },
+  "mcp.created": {
+    "message": "Dodano pomyślnie",
+    "description": "Serwer MCP został dodany pomyślnie"
+  },
+  "mcp.updated": {
+    "message": "Zaktualizowano pomyślnie",
+    "description": "Serwer MCP został zaktualizowany pomyślnie"
+  },
+  "mcp.deleted": {
+    "message": "Usunięto pomyślnie",
+    "description": "Serwer MCP został usunięty pomyślnie"
+  },
+  "mcp.saveFailed": {
+    "message": "Zapis nie powiódł się",
+    "description": "Zapis serwera MCP nie powiódł się"
+  },
+  "mcp.deleteConfirm": {
+    "message": "Czy na pewno chcesz usunąć serwer \"{name}\"?",
+    "description": "Potwierdzenie usunięcia"
+  },
+  "mcp.tooltip": {
+    "message": "Serwer MCP",
+    "description": "Wskazówka przycisku MCP"
+  },
+  "mcp.authOAuth": {
+    "message": "OAuth 2.0",
+    "description": "Typ autoryzacji OAuth"
+  },
+  "mcp.oauthHint": {
+    "message": "Po zapisaniu kliknij przycisk „Autoryzuj” na karcie serwera, aby zakończyć autoryzację OAuth.",
+    "description": "Wskazówka przy wyborze typu autoryzacji OAuth"
+  },
+  "mcp.authorize": {
+    "message": "Autoryzuj",
+    "description": "Przycisk autoryzacji OAuth"
+  },
+  "mcp.oauthAuthorized": {
+    "message": "Autoryzacja OAuth powiodła się",
+    "description": "Komunikat o pomyślnej autoryzacji OAuth"
+  },
+  "mcp.oauthFailed": {
+    "message": "Autoryzacja OAuth nie powiodła się",
+    "description": "Komunikat o nieudanej autoryzacji OAuth"
+  },
+  "mcp.popupBlocked": {
+    "message": "Okno popup zostało zablokowane, proszę zezwolić na otwieranie okien popup na tej stronie.",
+    "description": "Wskazówka, gdy okno popup jest zablokowane"
+  },
+  "connector.title": {
+    "message": "Łącznik",
+    "description": "Tytuł okna zarządzania łącznikami"
+  },
+  "connector.tooltip": {
+    "message": "Łącznik OAuth",
+    "description": "Wskazówka przycisku łącznika"
+  },
+  "connector.noProviders": {
+    "message": "Brak dostępnych łączników, proszę skonfigurować dostawcę OAuth na serwerze.",
+    "description": "Komunikat o braku dostawców"
+  },
+  "connector.connect": {
+    "message": "Połącz",
+    "description": "Przycisk połączenia"
+  },
+  "connector.disconnect": {
+    "message": "Rozłącz",
+    "description": "Przycisk rozłączenia"
+  },
+  "connector.connected": {
+    "message": "Łącznik połączony pomyślnie",
+    "description": "Komunikat o pomyślnym połączeniu"
+  },
+  "connector.disconnected": {
+    "message": "Łącznik został rozłączony",
+    "description": "Komunikat o pomyślnym rozłączeniu"
+  },
+  "connector.authFailed": {
+    "message": "Autoryzacja nie powiodła się, proszę spróbować ponownie.",
+    "description": "Komunikat o nieudanej autoryzacji"
+  },
+  "connector.loadError": {
+    "message": "Nie można załadować łącznika",
+    "description": "Komunikat o błędzie ładowania"
+  },
+  "connector.loadErrorHint": {
+    "message": "Nie można załadować łącznika, ta funkcja może być jeszcze niedostępna.",
+    "description": "Wskazówka, gdy łącznik nie ładuje się z powodu błędu sieciowego/CORS"
+  },
+  "connector.disconnectError": {
+    "message": "Nie można rozłączyć łącznika",
+    "description": "Komunikat o błędzie rozłączenia"
+  },
+  "connector.toggleError": {
+    "message": "Nie można zaktualizować łącznika",
+    "description": "Komunikat o błędzie przełączania"
+  },
+  "connector.processing": {
+    "message": "Przetwarzanie autoryzacji...",
+    "description": "Komunikat o przetwarzaniu zwrotnego OAuth"
+  },
+  "connector.authSuccess": {
+    "message": "Autoryzacja powiodła się!",
+    "description": "Komunikat o pomyślnym zwrocie OAuth"
+  },
+  "connector.closeWindow": {
+    "message": "To okno zostanie automatycznie zamknięte.",
+    "description": "Wskazówka o zamknięciu okna zwrotnego OAuth"
+  },
+  "skill.title": {
+    "message": "Umiejętności",
+    "description": "Tytuł okna zarządzania umiejętnościami"
+  },
+  "skill.tooltip": {
+    "message": "Umiejętności AI",
+    "description": "Wskazówka przycisku umiejętności"
+  },
+  "skill.builtin": {
+    "message": "Wbudowane",
+    "description": "Etykieta umiejętności wbudowanej"
+  },
+  "skill.empty": {
+    "message": "Brak dostępnych umiejętności.",
+    "description": "Wskazówka, gdy lista umiejętności jest pusta"
+  },
+  "skill.loadError": {
+    "message": "Nie można załadować umiejętności",
+    "description": "Wskazówka o błędzie ładowania umiejętności"
+  },
+  "skill.add": {
+    "message": "Dodaj umiejętność",
+    "description": "Etykieta przycisku dodawania umiejętności"
+  },
+  "skill.delete": {
+    "message": "Usuń",
+    "description": "Etykieta przycisku usuwania umiejętności"
+  },
+  "skill.deleteConfirm": {
+    "message": "Czy na pewno chcesz usunąć umiejętność „{name}”? Ta operacja jest nieodwracalna.",
+    "description": "Komunikat potwierdzający przed usunięciem umiejętności"
+  },
+  "skill.deleteSuccess": {
+    "message": "Usunięto",
+    "description": "Komunikat o pomyślnym usunięciu umiejętności"
+  },
+  "skill.deleteError": {
+    "message": "Usunięcie nie powiodło się",
+    "description": "Komunikat o błędzie usuwania umiejętności"
+  },
+  "skill.createSuccess": {
+    "message": "Umiejętność została utworzona",
+    "description": "Komunikat o pomyślnym utworzeniu umiejętności"
+  },
+  "skill.createError": {
+    "message": "Utworzenie umiejętności nie powiodło się",
+    "description": "Komunikat o błędzie tworzenia umiejętności"
+  },
+  "skill.form.name": {
+    "message": "Nazwa",
+    "description": "Etykieta pola nazwy formularza umiejętności"
+  },
+  "skill.form.namePlaceholder": {
+    "message": "Na przykład podsumowujący",
+    "description": "Placeholder pola nazwy formularza umiejętności"
+  },
+  "skill.form.nameRequired": {
+    "message": "Proszę wypełnić nazwę",
+    "description": "Wymagana wiadomość dla pola nazwy formularza umiejętności"
+  },
+  "skill.form.displayName": {
+    "message": "Nazwa wyświetlana",
+    "description": "Etykieta pola nazwy wyświetlanej formularza umiejętności"
+  },
+  "skill.form.displayNamePlaceholder": {
+    "message": "Nazwa wyświetlana na liście umiejętności",
+    "description": "Placeholder pola nazwy wyświetlanej formularza umiejętności"
+  },
+  "skill.form.icon": {
+    "message": "Ikona (emoji)",
+    "description": "Etykieta pola ikony formularza umiejętności"
+  },
+  "skill.form.description": {
+    "message": "Opis",
+    "description": "Etykieta pola opisu formularza umiejętności"
+  },
+  "skill.form.type": {
+    "message": "Typ",
+    "description": "Etykieta pola typu formularza umiejętności"
+  },
+  "skill.form.typePrompt": {
+    "message": "Typ podpowiedzi",
+    "description": "Prompt type label"
+  },
+  "skill.form.typeCode": {
+    "message": "Kod",
+    "description": "Code type label"
+  },
+  "skill.form.instructions": {
+    "message": "Treść podpowiedzi",
+    "description": "Prompt instructions label"
+  },
+  "skill.form.instructionsPlaceholder": {
+    "message": "Wklej lub napisz podpowiedź / instrukcję dla tej umiejętności...",
+    "description": "Prompt instructions placeholder"
+  },
+  "skill.form.instructionsRequired": {
+    "message": "Typ podpowiedzi wymaga wypełnienia treści podpowiedzi",
+    "description": "Prompt instructions required message"
+  },
+  "skill.form.code": {
+    "message": "Kod",
+    "description": "Code skill label"
+  },
+  "skill.form.codePlaceholder": {
+    "message": "Wklej kod odpowiadający tej umiejętności...",
+    "description": "Code skill placeholder"
+  },
+  "skill.form.codeRequired": {
+    "message": "Typ kodu wymaga wypełnienia kodu",
+    "description": "Code skill required message"
+  },
+  "skill.form.tags": {
+    "message": "Tagi",
+    "description": "Skill form tags label"
+  },
+  "skill.form.tagsPlaceholder": {
+    "message": "Oddzielaj przecinkami, np.: pisanie, programowanie",
+    "description": "Skill form tags placeholder"
+  },
+  "skill.form.uploadText": {
+    "message": "Prześlij plik .txt / .md",
+    "description": "Upload prompt file button"
+  },
+  "skill.form.uploadCode": {
+    "message": "Prześlij plik kodu",
+    "description": "Upload code file button"
+  },
+  "agent.title": {
+    "message": "Agent desktopowy",
+    "description": "代理管理对话框标题"
+  },
+  "agent.tooltip": {
+    "message": "Agent desktopowy",
+    "description": "代理按钮提示"
+  },
+  "agent.connected": {
+    "message": "Połączono",
+    "description": "代理已连接状态"
+  },
+  "agent.notConnected": {
+    "message": "Nie połączono",
+    "description": "代理未连接状态"
+  },
+  "agent.description": {
+    "message": "Połącz się z agentem desktopowym, aby uzyskać dostęp do lokalnych plików, uruchamiać polecenia i korzystać z lokalnego serwera MCP w rozmowach AI.",
+    "description": "代理描述"
+  },
+  "agent.name": {
+    "message": "Nazwa agenta",
+    "description": "代理名称标签"
+  },
+  "agent.tools": {
+    "message": "Dostępne narzędzia",
+    "description": "代理工具数量标签"
+  },
+  "agent.connectedSince": {
+    "message": "Czas połączenia",
+    "description": "代理连接时间标签"
+  },
+  "agent.connectedHint": {
+    "message": "Twój agent desktopowy jest połączony i gotowy do użycia.",
+    "description": "代理已连接提示"
+  },
+  "agent.installLabel": {
+    "message": "Zainstaluj agenta desktopowego:",
+    "description": "安装说明标签"
+  },
+  "agent.runLabel": {
+    "message": "Uruchom agenta:",
+    "description": "运行说明标签"
   }
 }

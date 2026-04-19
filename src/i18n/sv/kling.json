@@ -9,11 +9,11 @@
   },
   "name.modeStd": {
     "message": "Standard",
-    "description": "Kling-videons standardläge"
+    "description": "Kling-videos standardläge"
   },
   "name.modePro": {
     "message": "Hög kvalitet",
-    "description": "Kling-videons högkvalitetsläge"
+    "description": "Kling-videos högkvalitetsläge"
   },
   "name.failure": {
     "message": "Misslyckande",
@@ -37,11 +37,15 @@
   },
   "name.cfgScale": {
     "message": "Frihetsnivå",
-    "description": "Frihetsparameter för videon som genereras (0-1), ju högre värde desto mer liknande referensen"
+    "description": "Frihetsparameter för att generera video (0-1), ju högre värde desto mer liknande referens (engelska förslag: Freedom Level)"
+  },
+  "name.generateAudio": {
+    "message": "Generera ljud synkront",
+    "description": "Om ljud ska genereras synkront, stöder kling-v3, kling-v3-omni och kling-v2-6 (pro-läge)"
   },
   "name.startImage": {
     "message": "Första bildreferens",
-    "description": "Formulärfältets etikett: Första bildreferens (håll det kort för att undvika att dölja knappen)"
+    "description": "Formulärfältets etikett: Första bildreferens (engelska förslag: 'First Frame', håll det kort för att undvika att blockera knappen)"
   },
   "name.negativePrompt": {
     "message": "Negativt prompt",
@@ -49,7 +53,7 @@
   },
   "name.endImage": {
     "message": "Sista bildreferens",
-    "description": "Formulärfältets etikett: Sista bildreferens (håll det kort för att undvika att dölja knappen)"
+    "description": "Formulärfältets etikett: Sista bildreferens (engelska förslag: 'Last Frame', håll det kort för att undvika att blockera knappen)"
   },
   "name.videoUrl": {
     "message": "Anpassad video",
@@ -65,7 +69,7 @@
   },
   "name.ingredients": {
     "message": "Flera bilder för video",
-    "description": "Växla för att skapa video med flera bilder (håll det kort)"
+    "description": "Växla för att skapa video med flera bilder (engelska förslag: Multi-Image, håll det kort)"
   },
   "name.model": {
     "message": "Modellversion",
@@ -104,20 +108,20 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Negativ textprompt, valfri, max 200 tecken",
+    "message": "Negativ textprompt, valfri, får inte överstiga 200 tecken",
     "description": "Beskrivning av parametern 'negativePrompt'"
   },
   "description.uploadStartImage": {
     "message": "Ladda upp första bild som referens för genereringen, den slutliga videon kommer att referera till första bilden.",
-    "description": "Beskrivning av uppladdningsreferensparametern"
+    "description": "Beskrivning av referensparametern"
   },
   "description.uploadEndImage": {
     "message": "Ladda upp sista bild som referens för genereringen, den slutliga videon kommer att referera till sista bilden.",
-    "description": "Beskrivning av uppladdningsreferensparametern"
+    "description": "Beskrivning av referensparametern"
   },
   "description.cfgScale": {
-    "message": "Frihetsnivå för videon, valfri [0,1]. Ju högre värde, desto starkare korrelation.",
-    "description": "Beskrivning av uppladdningsreferensparametern"
+    "message": "Frihetsnivå för att generera video, valfri [0,1]. Ju högre värde, desto starkare relevans.",
+    "description": "Beskrivning av referensparametern"
   },
   "status.pending": {
     "message": "Väntar",
@@ -133,19 +137,19 @@
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platshållare för valfält"
+    "description": "Platshållartext i urvalsfältet"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: moving",
-    "description": "Platshållare för promptfält"
+    "message": "Ange promptord för den stil av video som ska genereras, till exempel: moving",
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.negativePrompt": {
-    "message": "Ange negativ prompt för den stil av video som ska genereras, max 200 tecken",
-    "description": "Platshållare för promptfält"
+    "message": "Ange negativt promptord för den stil av video som ska genereras, högst 200 tecken",
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
@@ -153,7 +157,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av bredd-höjd-förhållande"
+    "description": "Platshållare för inmatning av bildförhållande"
   },
   "placeholder.preset": {
     "message": "Vänligen välj...",
@@ -161,47 +165,47 @@
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av markörform"
+    "description": "Platsinnehåll för markeringsform"
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för rotationsinmatning"
+    "description": "Platsinnehåll för rotationsinmatning"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehavare för submarkeringsinmatning"
+    "description": "Platsinnehåll för undermarkering"
   },
   "button.precise": {
-    "message": "Precise",
-    "description": "Text i knappen för att generera Kling-video"
+    "message": "Exakt",
+    "description": "Knapptext för att generera Kling-video"
   },
   "button.creative": {
     "message": "Kreativ",
-    "description": "Text i knappen för att generera Kling-video"
+    "description": "Knapptext för att generera Kling-video"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text i knappen för att generera Kling-video"
+    "description": "Knapptext för att generera Kling-video"
   },
   "button.extend": {
     "message": "Förläng video",
-    "description": "Text i knappen för att förlänga video"
+    "description": "Knapptext för att förlänga video"
   },
   "button.download": {
     "message": "Ladda ner video",
-    "description": "Text i knappen för att ladda ner video"
+    "description": "Knapptext för att ladda ner video"
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp",
-    "description": "Text i knappen för att ladda upp bild (förenkla till 'Ladda upp', använd inte 'Ladda upp bild')"
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
-    "description": "Text i knappen för att ladda upp video"
+    "description": "Knapptext för att ladda upp video"
   },
   "button.uploadReferences": {
     "message": "Ladda upp",
-    "description": "Text i knappen som tillåter användare att ladda upp referenser"
+    "description": "Knapptext för att tillåta användare att ladda upp referenser"
   },
   "message.uploadReferencesExceed": {
     "message": "Max 1 bild kan laddas upp",
@@ -253,11 +257,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uppladdad fil får inte överstiga 10MB!",
-    "description": "Felmeddelande när uppladdad fil överstiger 10MB!"
+    "description": "Felmeddelande när uppladdad fil överstiger 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när uppladdad fil inte är i MP4-format!"
+    "description": "Felmeddelande när uppladdad fil inte är i MP4-format"
   },
   "message.uploadStartImageExceed": {
     "message": "Antalet uppladdade första bildbilder överskrider gränsen",
@@ -268,16 +272,16 @@
     "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp första bildbild",
-    "description": "Felmeddelande när uppladdning av första bildbild misslyckas"
+    "message": "Misslyckades med att ladda upp första bild",
+    "description": "Felmeddelande när uppladdning av första bild misslyckas"
   },
   "message.uploadVideoError": {
     "message": "Misslyckades med att ladda upp video",
     "description": "Felmeddelande när uppladdning av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp sista bildbild",
-    "description": "Felmeddelande när uppladdning av sista bildbild misslyckas"
+    "message": "Misslyckades med att ladda upp sista bild",
+    "description": "Felmeddelande när uppladdning av sista bild misslyckas"
   },
   "message.uploadDocumentsError": {
     "message": "Misslyckades med att ladda upp dokument",
