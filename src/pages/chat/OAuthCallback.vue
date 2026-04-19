@@ -45,15 +45,20 @@ export default defineComponent({
         return;
       }
 
-      if (!code || !state) {
+      if (!code) {
         this.status = 'error';
-        this.errorMessage = 'Missing authorization code or state';
+        this.errorMessage = 'Missing authorization code';
         return;
       }
 
-      // Send code and state to the parent window (ConnectorManager)
+      // MCP OAuth flow uses PKCE and does not always return a state parameter.
+      // Connector OAuth still includes state, so forward it when present.
       if (window.opener) {
-        window.opener.postMessage({ type: 'oauth-callback', code, state }, window.location.origin);
+        const payload: { type: 'oauth-callback'; code: string; state?: string } = { type: 'oauth-callback', code };
+        if (state) {
+          payload.state = state;
+        }
+        window.opener.postMessage(payload, window.location.origin);
         this.status = 'success';
         // Auto-close after 2 seconds
         setTimeout(() => window.close(), 2000);
