@@ -34,7 +34,7 @@ jobs:
           sudo apt-get install docker-compose
 
       - name: Docker Login
-        uses: docker/login-action@v2
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
