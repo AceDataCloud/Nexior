@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 Kling視頻的內容類型，如'鏈接'、'文本'等"
+    "description": "要生成的 Kling視頻的內容類型，如'連結'、'文本'等"
   },
   "name.modeStd": {
     "message": "標準",
@@ -38,6 +38,10 @@
   "name.cfgScale": {
     "message": "自由度",
     "description": "生成視頻的自由度參數（0-1），值越大越貼近參考（英文建議：Freedom Level）"
+  },
+  "name.generateAudio": {
+    "message": "同步生成音效",
+    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
   },
   "name.startImage": {
     "message": "首幀參考圖",
@@ -265,7 +269,7 @@
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
     "message": "上傳首幀圖片失敗",
@@ -273,7 +277,7 @@
   },
   "message.uploadVideoError": {
     "message": "上傳視頻失敗",
-    "description": "上傳首幀圖片失敗時的錯誤信息"
+    "description": "上傳視頻失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",

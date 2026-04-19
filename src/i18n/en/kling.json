@@ -9,11 +9,11 @@
   },
   "name.modeStd": {
     "message": "Standard",
-    "description": "The standard mode for Kling videos"
+    "description": "The standard mode of the Kling video"
   },
   "name.modePro": {
     "message": "High Quality",
-    "description": "The high-quality mode for Kling videos"
+    "description": "The high-quality mode of the Kling video"
   },
   "name.failure": {
     "message": "Failed",
@@ -33,15 +33,15 @@
   },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time when the Kling video was generated"
+    "description": "The date and time the Kling video was generated"
   },
   "name.cfgScale": {
     "message": "Freedom Level",
     "description": "The freedom parameter for generating the video (0-1), larger values are closer to the reference"
   },
   "name.generateAudio": {
-    "message": "Generate Audio",
-    "description": "Whether to generate audio synchronously, supported by kling-v3, kling-v3-omni, and kling-v2-6 (pro mode)"
+    "message": "Generate Audio Synchronously",
+    "description": "Whether to generate audio synchronously, supports kling-v3, kling-v3-omni, and kling-v2-6 (pro mode)"
   },
   "name.startImage": {
     "message": "First Frame",
@@ -69,15 +69,15 @@
   },
   "name.ingredients": {
     "message": "Multi-Image",
-    "description": "Switch/label for creating videos with multiple images"
+    "description": "Multi-image creation video switch/label"
   },
   "name.model": {
     "message": "Model Version",
     "description": "The model version used to generate the video"
   },
   "name.ratio": {
-    "message": "Video Ratio",
-    "description": "The video ratio used to generate the video"
+    "message": "Aspect Ratio",
+    "description": "The aspect ratio used to generate the video"
   },
   "name.mode": {
     "message": "Video Mode",
@@ -96,15 +96,15 @@
     "description": "The name of the Kling video generator"
   },
   "description.ingredients": {
-    "message": "If you want to upload multiple images to generate your video, please enable this button.",
+    "message": "If you want to upload multiple images to create your own video, please enable this button.",
     "description": "Description for the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In tasks for creating videos with multiple images, multiple images must be uploaded.",
+    "message": "In multi-image video creation tasks, multiple images must be uploaded.",
     "description": "Description for the 'imageUrl' parameter"
   },
   "description.prompt": {
-    "message": "The prompt for generating Kling videos",
+    "message": "The prompt for generating the Kling video",
     "description": "Description for the 'prompt' parameter"
   },
   "description.negativePrompt": {
@@ -120,7 +120,7 @@
     "description": "Description for the upload reference parameter"
   },
   "description.cfgScale": {
-    "message": "The freedom level for generating the video, optional [0,1]. Larger values indicate stronger relevance.",
+    "message": "The freedom level for generating the video, optional [0,1]. Larger values indicate stronger correlation.",
     "description": "Description for the upload reference parameter"
   },
   "status.pending": {
@@ -144,11 +144,11 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt for the video style, e.g., moving",
+    "message": "Enter the prompt for the video style to be generated, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.negativePrompt": {
-    "message": "Enter the negative prompt for the video style, up to 200 characters",
+    "message": "Enter the negative prompt for the video style to be generated, up to 200 characters",
     "description": "Placeholder text in the negative prompt field"
   },
   "placeholder.position": {
@@ -225,7 +225,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when the task is started successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
@@ -257,11 +257,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when uploaded file size exceeds 10MB!"
+    "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when uploaded file is not in MP4 format!"
+    "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
     "message": "Number of uploaded first frame images exceeds the limit",
@@ -285,7 +285,7 @@
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when uploading document fails"
+    "description": "Error message when uploading a document fails"
   },
   "message.noOperations": {
     "message": "No available operations",
