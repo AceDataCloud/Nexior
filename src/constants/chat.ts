@@ -6,6 +6,9 @@ export const ROLE_ASSISTANT = 'assistant';
 export const ROLE_USER = 'user';
 
 export const CHAT_MODEL_NAME_GPT_5_ALL = 'gpt-5-all';
+export const CHAT_MODEL_NAME_GPT_5_4 = 'gpt-5.4';
+export const CHAT_MODEL_NAME_GPT_5_4_MINI = 'gpt-5.4-mini';
+export const CHAT_MODEL_NAME_GPT_5_4_NANO = 'gpt-5.4-nano';
 export const CHAT_MODEL_NAME_GPT_5 = 'gpt-5';
 export const CHAT_MODEL_NAME_GPT_5_MINI = 'gpt-5-mini';
 export const CHAT_MODEL_NAME_GPT_4O_ALL = 'gpt-4o-all';
@@ -78,6 +81,39 @@ export const CHAT_MODEL_GPT_5_MINI: IChatModel = {
   isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.5Mini'),
   getDescription: () => i18n.global.t('chat.model.5MiniDescription')
+};
+
+export const CHAT_MODEL_GPT_5_4: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_4,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.54'),
+  getDescription: () => i18n.global.t('chat.model.54Description')
+};
+
+export const CHAT_MODEL_GPT_5_4_MINI: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_4_MINI,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.54Mini'),
+  getDescription: () => i18n.global.t('chat.model.54MiniDescription')
+};
+
+export const CHAT_MODEL_GPT_5_4_NANO: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_4_NANO,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  getDisplayName: () => i18n.global.t('chat.model.54Nano'),
+  getDescription: () => i18n.global.t('chat.model.54NanoDescription')
 };
 
 export const CHAT_MODEL_GPT_4O_ALL: IChatModel = {
@@ -342,6 +378,9 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
   models: [
     CHAT_MODEL_GPT_5_ALL,
+    CHAT_MODEL_GPT_5_4,
+    CHAT_MODEL_GPT_5_4_MINI,
+    CHAT_MODEL_GPT_5_4_NANO,
     CHAT_MODEL_GPT_5,
     CHAT_MODEL_GPT_5_MINI,
     CHAT_MODEL_GPT_4O,
@@ -405,6 +444,9 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 
 export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_GPT_5_ALL,
+  CHAT_MODEL_GPT_5_4,
+  CHAT_MODEL_GPT_5_4_MINI,
+  CHAT_MODEL_GPT_5_4_NANO,
   CHAT_MODEL_GPT_5,
   CHAT_MODEL_GPT_5_MINI,
   CHAT_MODEL_GPT_4O,
