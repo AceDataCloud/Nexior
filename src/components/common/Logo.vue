@@ -8,13 +8,13 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  emits: ['click'],
   props: {
     collapsed: {
       type: Boolean,
       default: false
     }
   },
+  emits: ['click'],
   computed: {
     siteTitle() {
       return this.$store.state.site?.title || 'AceData';
@@ -39,8 +39,8 @@ export default defineComponent({
   &__image {
     display: block;
     width: auto;
-    max-width: 44px;
-    height: 44px;
+    max-width: 52px;
+    height: 52px;
     object-fit: contain;
     object-position: center;
     transition: height 0.2s ease;
@@ -48,8 +48,8 @@ export default defineComponent({
 
   .collapsed & {
     &__image {
-      height: 28px;
-      max-width: 28px;
+      height: 32px;
+      max-width: 32px;
     }
   }
 }
