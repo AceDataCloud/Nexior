@@ -4,7 +4,7 @@
       <div class="toolbar">
         <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
         <div class="toolbar-actions">
-          <el-tooltip :content="$t('chat.agent.tooltip')" placement="bottom">
+          <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
               <font-awesome-icon icon="fa-solid fa-desktop" />
               <span v-if="agentConnected" class="agent-dot"></span>
