@@ -500,7 +500,7 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 12px 0 6px;
+      padding: 6px 0 4px;
       width: 100%;
     }
 
