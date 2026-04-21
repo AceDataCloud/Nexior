@@ -96,8 +96,9 @@ import {
   ROUTE_PRODUCER_INDEX,
   ROUTE_KIMI_CONVERSATION,
   ROUTE_KIMI_CONVERSATION_NEW,
-  ROUTE_SERP_INDEX
 } from '@/router/constants';
+import { SERP_LOGO } from '@/constants';
+import { ROUTE_SERP_INDEX } from '@/constants/serp';
 import {
   CHAT_MODEL_ICON_CHATGPT,
   CHAT_MODEL_ICON_DEEPSEEK,
@@ -118,8 +119,7 @@ import {
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
-  CHAT_MODEL_ICON_KIMI,
-  SERP_LOGO
+  CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
