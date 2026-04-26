@@ -248,10 +248,7 @@ export default defineComponent({
           category: 'image'
         });
       }
-      if (
-        this.$store?.state?.site?.features?.openaiimage?.enabled ||
-        this.$store?.state?.site?.features?.chatgpt?.enabled
-      ) {
+      if (this.$store?.state?.site?.features?.openaiimage?.enabled) {
         result.push({
           route: { name: ROUTE_OPENAIIMAGE_INDEX },
           displayName: this.$t('common.nav.openaiimage'),

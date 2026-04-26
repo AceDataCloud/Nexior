@@ -42,6 +42,7 @@ import {
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_FLUX_INDEX,
   ROUTE_NANOBANANA_INDEX,
+  ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SUNO_INDEX,
   ROUTE_PRODUCER_INDEX,
@@ -53,7 +54,7 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
-  ROUTE_SERP_INDEX,
+  ROUTE_SERP_INDEX
 } from './constants';
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
@@ -237,6 +238,7 @@ const FEATURE_ROUTE_NAME: Record<string, string> = {
   midjourney: ROUTE_MIDJOURNEY_INDEX,
   flux: ROUTE_FLUX_INDEX,
   nanobanana: ROUTE_NANOBANANA_INDEX,
+  openaiimage: ROUTE_OPENAIIMAGE_INDEX,
   seedream: ROUTE_SEEDREAM_INDEX,
   suno: ROUTE_SUNO_INDEX,
   producer: ROUTE_PRODUCER_INDEX,
@@ -271,7 +273,7 @@ const getDefaultRoute = (): { name: string } => {
 const routes = [
   {
     path: '/',
-    redirect: () => getDefaultRoute(),
+    redirect: () => getDefaultRoute()
   },
   {
     path: '/chat/oauth/callback',
