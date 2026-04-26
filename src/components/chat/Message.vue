@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="!isToolResultOnly"
     :class="{
       message: true,
       [message.role as string]: true
@@ -195,6 +196,16 @@ export default defineComponent({
   computed: {
     modelGroup() {
       return this.$store.state.chat.modelGroup;
+    },
+    isToolResultOnly(): boolean {
+      // Anthropic API stores tool_result blocks under role:'user'. These are
+      // protocol-level messages (not real user input) and must not render as
+      // user bubbles — otherwise we get empty gray bubbles in the chat.
+      const content = this.message.content;
+      if (this.message.role !== 'user' || !Array.isArray(content) || content.length === 0) {
+        return false;
+      }
+      return content.every((item: any) => item && item.type === 'tool_result');
     },
     errorText() {
       console.debug('error', this.message.error);

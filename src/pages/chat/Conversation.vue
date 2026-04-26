@@ -488,6 +488,9 @@ export default defineComponent({
       this.$store.dispatch('chat/setModel', targetModel);
       console.debug('conversation', conversation);
       console.debug('conversation messages', this.messages);
+      // conversation.messages is already in UI-shape — the aichat2 backend
+      // folds Anthropic tool_use/tool_result pairs into enriched tool_use
+      // blocks before serving them.
       this.messages = conversation?.messages || [];
       this.onScrollDown();
     },
