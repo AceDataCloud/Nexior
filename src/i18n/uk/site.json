@@ -1,6 +1,6 @@
 {
   "field.title": {
-    "message": "Назва сайту",
+    "message": "Заголовок сайту",
     "description": "展示在编辑框的标题"
   },
   "field.origin": {
@@ -116,8 +116,8 @@
     "description": "展示在编辑框的标题"
   },
   "field.featuresOpenaiimage": {
-    "message": "OpenAI Image",
-    "description": "Displayed as the title in the editing box"
+    "message": "OpenAI зображення",
+    "description": "展示在编辑框的标题"
   },
   "field.featuresSeedream": {
     "message": "SeeDream",
@@ -148,7 +148,7 @@
     "description": "展示在编辑框的标题"
   },
   "field.featuresI18n": {
-    "message": "Підтримка багатомовності",
+    "message": "Підтримка кількох мов",
     "description": "展示在编辑框的标题"
   },
   "title.basicConfig": {
@@ -156,7 +156,7 @@
     "description": "展示在编辑框的标题"
   },
   "title.seoConfig": {
-    "message": "Налаштування SEO",
+    "message": "SEO налаштування",
     "description": "展示在编辑框的标题"
   },
   "title.editAdmins": {
@@ -168,7 +168,7 @@
     "description": "展示在编辑框的标题"
   },
   "title.editTitle": {
-    "message": "Редагувати назву",
+    "message": "Редагувати заголовок",
     "description": "展示在编辑框的标题"
   },
   "title.editOrigin": {
@@ -200,7 +200,7 @@
     "description": "展示在编辑框的标题"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Редагувати обов'язкового запрошувача",
+    "message": "Редагувати примусовий ID запрошувача",
     "description": "展示在编辑框的标题"
   },
   "title.editQR": {
@@ -232,15 +232,15 @@
     "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Введіть ID запрошувача за замовчуванням",
+    "message": "Введіть ID за замовчуванням запрошувача",
     "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Введіть ID обов'язкового запрошувача",
+    "message": "Введіть ID примусового запрошувача",
     "description": "展示在编辑框的标题"
   },
   "message.uploadImageExceed": {
-    "message": "Перевищено ліміт на завантаження зображення",
+    "message": "Перевищено ліміт завантаження зображення",
     "description": "上传图片超过限制的提示"
   },
   "message.uploadImageError": {
@@ -268,11 +268,11 @@
     "description": "至少保留一个管理员的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID користувача запрошувача за замовчуванням. Якщо посилання на розподіл не містить параметра inviter_id, за замовчуванням використовується цей ID як запрошувач.",
+    "message": "ID користувача за замовчуванням для запрошувача. Якщо посилання на розподіл не містить параметра inviter_id, буде використано цей ID як запрошувача.",
     "description": "默认邀请人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID обов'язкового запрошувача. Якщо цей ID встановлено, незалежно від того, чи містить посилання на розподіл параметр inviter_id, цей ID буде використовуватися як запрошувач.",
+    "message": "ID користувача примусового запрошувача. Якщо цей ID встановлено, незалежно від того, чи містить посилання на розподіл параметр inviter_id, буде примусово використано цей ID як запрошувача.",
     "description": "强制邀请人ID的提示"
   },
   "message.originTip": {
@@ -296,11 +296,11 @@
     "description": "站点 Favicon 的提示"
   },
   "message.adminsTip": {
-    "message": "ID адміністраторів сайту. За замовчуванням перший користувач, який створює сайт, стає адміністратором. Тільки адміністратори сайту можуть керувати сайтом.",
+    "message": "ID адміністраторів сайту, за замовчуванням перший користувач, який створює сайт, стає адміністратором, тільки адміністратори сайту можуть керувати сайтом.",
     "description": "站点管理员的提示"
   },
   "message.adminsTip2": {
-    "message": "Тут можна додавати або видаляти ID адміністраторів. Ви можете переглянути ID користувачів на https://auth.acedata.cloud",
+    "message": "Тут можна додавати або видаляти ID адміністраторів, можна переглянути ID користувачів на https://auth.acedata.cloud",
     "description": "站点管理员的提示"
   },
   "message.keywordsTip": {
@@ -308,7 +308,7 @@
     "description": "站点关键词的提示"
   },
   "message.keywordsTip2": {
-    "message": "Тут можна додавати або видаляти ключові слова сайту. Чим точніші ключові слова, тим краще для SEO оптимізації.",
+    "message": "Тут можна додавати або видаляти ключові слова сайту, чим точніші ключові слова, тим краще для SEO оптимізації.",
     "description": "站点关键词的提示"
   },
   "message.featuresChat": {
@@ -348,72 +348,72 @@
     "description": "Sora 功能的描述"
   },
   "message.featuresSuno": {
-    "message": "Увімкнути або вимкнути модуль функції Suno.",
-    "description": "Suno 功能的描述"
+    "message": "Увімкнути або вимкнути модуль функцій Suno.",
+    "description": "Опис функції Suno"
   },
   "message.featuresPixverse": {
     "message": "Увімкнути або вимкнути модуль функцій Pixverse.",
-    "description": "Опис функцій Pixverse"
+    "description": "Опис функції Pixverse"
   },
   "message.featuresFlux": {
     "message": "Увімкнути або вимкнути модуль функцій FLux.",
-    "description": "Опис функцій FLux"
+    "description": "Опис функції FLux"
   },
   "message.featuresNanobanana": {
     "message": "Увімкнути або вимкнути модуль функцій Nano Banana.",
-    "description": "Опис функцій Nano Banana"
+    "description": "Опис функції Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Toggle OpenAI Image feature module.",
-    "description": "Description of the OpenAI Image feature"
+    "message": "Увімкнути або вимкнути модуль функцій OpenAI зображення.",
+    "description": "Опис функції OpenAI зображення"
   },
   "message.featuresSeedream": {
     "message": "Увімкнути або вимкнути модуль функцій SeeDream.",
-    "description": "Опис функцій SeeDream"
+    "description": "Опис функції SeeDream"
   },
   "message.featuresSeedance": {
     "message": "Увімкнути або вимкнути модуль функцій SeeDance.",
-    "description": "Опис функцій SeeDance"
+    "description": "Опис функції SeeDance"
   },
   "message.featuresWan": {
     "message": "Увімкнути або вимкнути модуль функцій Wan.",
-    "description": "Опис функцій Wan"
+    "description": "Опис функції Wan"
   },
   "message.featuresProducer": {
     "message": "Увімкнути або вимкнути модуль функцій Producer.",
-    "description": "Опис функцій Producer"
+    "description": "Опис функції Producer"
   },
   "message.featuresKimi": {
     "message": "Увімкнути або вимкнути модуль функцій Kimi.",
-    "description": "Опис функцій Kimi"
+    "description": "Опис функції Kimi"
   },
   "message.featuresSerp": {
     "message": "Увімкнути або вимкнути модуль функцій SERP.",
-    "description": "Опис функцій SERP"
+    "description": "Опис функції SERP"
   },
   "message.featuresLuma": {
     "message": "Увімкнути або вимкнути модуль функцій Luma.",
-    "description": "Опис функцій Luma"
+    "description": "Опис функції Luma"
   },
   "message.featuresPika": {
     "message": "Увімкнути або вимкнути модуль функцій Pika.",
-    "description": "Опис функцій Pika"
+    "description": "Опис функції Pika"
   },
   "message.featuresKling": {
     "message": "Увімкнути або вимкнути модуль функцій Kling.",
-    "description": "Опис функцій Kling"
+    "description": "Опис функції Kling"
   },
   "message.featuresHailuo": {
     "message": "Увімкнути або вимкнути модуль функцій Hailuo.",
-    "description": "Опис функцій Hailuo"
+    "description": "Опис функції Hailuo"
   },
   "message.featuresHeadshots": {
     "message": "Увімкнути або вимкнути модуль функцій AI фото.",
-    "description": "Опис функцій AI фото"
+    "description": "Опис функції AI фото"
   },
   "message.featuresSupport": {
     "message": "Увімкнути або вимкнути підтримку клієнтів",
-    "description": "Опис функцій підтримки"
+    "description": "Опис функції підтримки"
   },
   "message.featuresI18n": {
     "message": "Увімкнути або вимкнути багатомовну підтримку, після вимкнення користувач зможе використовувати лише мову за замовчуванням.",
@@ -433,18 +433,18 @@
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Відображається як заголовок у редакторі"
+    "description": "Відображається як заголовок у полі редагування"
   },
   "message.featuresGemini": {
     "message": "Увімкнути або вимкнути модуль функцій Gemini.",
-    "description": "Опис функцій Gemini"
+    "description": "Опис функції Gemini"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Відображається як заголовок у редакторі"
+    "description": "Відображається як заголовок у полі редагування"
   },
   "message.featuresClaude": {
     "message": "Увімкнути або вимкнути модуль функцій Claude.",
-    "description": "Опис функцій Claude"
+    "description": "Опис функції Claude"
   }
 }

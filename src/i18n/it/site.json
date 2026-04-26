@@ -116,8 +116,8 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.featuresOpenaiimage": {
-    "message": "OpenAI Image",
-    "description": "Displayed as the title in the editing box"
+    "message": "Immagine OpenAI",
+    "description": "Mostrato come titolo nella casella di modifica"
   },
   "field.featuresSeedream": {
     "message": "SeeDream",
@@ -200,7 +200,7 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Modifica invitante obbligatorio",
+    "message": "Modifica Invitatore Obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "title.editQR": {
@@ -236,16 +236,16 @@
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Inserisci l'ID dell'invitante forzato",
+    "message": "Inserisci l'ID dell'invitante obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
   "message.uploadImageExceed": {
     "message": "Immagine caricata oltre il limite",
-    "description": "Messaggio di avviso per superamento limite di caricamento"
+    "description": "Messaggio di avviso quando l'immagine caricata supera il limite"
   },
   "message.uploadImageError": {
     "message": "Errore nel caricamento dell'immagine",
-    "description": "Messaggio di avviso per errore di caricamento"
+    "description": "Messaggio di avviso per errore nel caricamento dell'immagine"
   },
   "message.editLogoTip": {
     "message": "Dimensione consigliata: 200*60px",
@@ -265,15 +265,15 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Devi mantenere almeno un amministratore",
-    "description": "Messaggio di avviso per la presenza di un amministratore"
+    "description": "Messaggio di avviso per mantenere almeno un amministratore"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID utente dell'invitante predefinito. Se il link di distribuzione non include il parametro inviter_id, verrà utilizzato questo ID come invitante.",
+    "message": "ID utente dell'invitante predefinito. Se il link di distribuzione non include il parametro inviter_id, verrà utilizzato questo ID utente come invitante.",
     "description": "Messaggio di avviso per l'ID dell'invitante predefinito"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID utente dell'invitante forzato. Se impostato, questo ID sarà utilizzato come invitante indipendentemente dalla presenza del parametro inviter_id nel link di distribuzione.",
-    "description": "Messaggio di avviso per l'ID dell'invitante forzato"
+    "message": "ID utente dell'invitante obbligatorio. Se questo ID è impostato, verrà utilizzato come invitante indipendentemente dal fatto che il link di distribuzione includa o meno il parametro inviter_id.",
+    "description": "Messaggio di avviso per l'ID dell'invitante obbligatorio"
   },
   "message.originTip": {
     "message": "Dominio del sito. La configurazione del sito è legata al dominio e non può essere modificata.",
@@ -296,7 +296,7 @@
     "description": "Messaggio di avviso per il favicon del sito"
   },
   "message.adminsTip": {
-    "message": "ID degli amministratori del sito. L'utente che crea il sito diventa automaticamente amministratore. Solo gli amministratori possono gestire il sito.",
+    "message": "ID degli amministratori del sito. L'utente che crea il sito per la prima volta diventa amministratore. Solo gli amministratori possono gestire il sito.",
     "description": "Messaggio di avviso per gli amministratori del sito"
   },
   "message.adminsTip2": {
@@ -308,112 +308,112 @@
     "description": "Messaggio di avviso per le parole chiave del sito"
   },
   "message.keywordsTip2": {
-    "message": "Puoi aggiungere o rimuovere parole chiave qui. Parole chiave più precise sono più vantaggiose per l'ottimizzazione SEO.",
+    "message": "Puoi aggiungere o rimuovere parole chiave del sito qui. Parole chiave più precise sono più vantaggiose per l'ottimizzazione SEO.",
     "description": "Messaggio di avviso per le parole chiave del sito"
   },
   "message.featuresChat": {
-    "message": "Attiva o disattiva il modulo Chat.",
+    "message": "Attiva o disattiva il modulo funzionalità Chat.",
     "description": "Descrizione della funzionalità Chat"
   },
   "message.featuresGrok": {
-    "message": "Attiva o disattiva il modulo Grok.",
+    "message": "Attiva o disattiva il modulo funzionalità Grok.",
     "description": "Descrizione della funzionalità Grok"
   },
   "message.featuresDeepseek": {
-    "message": "Attiva o disattiva il modulo Deepseek.",
+    "message": "Attiva o disattiva il modulo funzionalità Deepseek.",
     "description": "Descrizione della funzionalità Deepseek"
   },
   "message.featuresChatgpt": {
-    "message": "Attiva o disattiva il modulo ChatGPT.",
+    "message": "Attiva o disattiva il modulo funzionalità ChatGPT.",
     "description": "Descrizione della funzionalità ChatGPT"
   },
   "message.featuresMidjourney": {
-    "message": "Attiva o disattiva il modulo Midjourney.",
+    "message": "Attiva o disattiva il modulo funzionalità Midjourney.",
     "description": "Descrizione della funzionalità Midjourney"
   },
   "message.featuresChatdoc": {
-    "message": "Attiva o disattiva il modulo Chatdoc.",
+    "message": "Attiva o disattiva il modulo funzionalità Chatdoc.",
     "description": "Descrizione della funzionalità Chatdoc"
   },
   "message.featuresQrart": {
-    "message": "Attiva o disattiva il modulo Qrart.",
+    "message": "Attiva o disattiva il modulo funzionalità Qrart.",
     "description": "Descrizione della funzionalità Qrart"
   },
   "message.featuresVeo": {
-    "message": "Attiva o disattiva il modulo Veo.",
+    "message": "Attiva o disattiva il modulo funzionalità Veo.",
     "description": "Descrizione della funzionalità Veo"
   },
   "message.featuresSora": {
-    "message": "Attiva o disattiva il modulo Sora.",
+    "message": "Attiva o disattiva il modulo funzionalità Sora.",
     "description": "Descrizione della funzionalità Sora"
   },
   "message.featuresSuno": {
-    "message": "Attiva o disattiva il modulo Suno.",
+    "message": "Attiva o disattiva il modulo funzionale Suno.",
     "description": "Descrizione della funzionalità Suno"
   },
   "message.featuresPixverse": {
-    "message": "Attiva o disattiva il modulo funzionale di Pixverse.",
-    "description": "Descrizione della funzionalità di Pixverse"
+    "message": "Attiva o disattiva il modulo funzionale Pixverse.",
+    "description": "Descrizione della funzionalità Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Attiva o disattiva il modulo funzionale di FLux.",
-    "description": "Descrizione della funzionalità di FLux"
+    "message": "Attiva o disattiva il modulo funzionale FLux.",
+    "description": "Descrizione della funzionalità FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Attiva o disattiva il modulo funzionale di Nano Banana.",
-    "description": "Descrizione della funzionalità di Nano Banana"
+    "message": "Attiva o disattiva il modulo funzionale Nano Banana.",
+    "description": "Descrizione della funzionalità Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Toggle OpenAI Image feature module.",
-    "description": "Description of the OpenAI Image feature"
+    "message": "Attiva o disattiva il modulo funzionale OpenAI Immagine.",
+    "description": "Descrizione della funzionalità OpenAI Immagine"
   },
   "message.featuresSeedream": {
-    "message": "Attiva o disattiva il modulo funzionale di SeeDream.",
-    "description": "Descrizione della funzionalità di SeeDream"
+    "message": "Attiva o disattiva il modulo funzionale SeeDream.",
+    "description": "Descrizione della funzionalità SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Attiva o disattiva il modulo funzionale di SeeDance.",
-    "description": "Descrizione della funzionalità di SeeDance"
+    "message": "Attiva o disattiva il modulo funzionale SeeDance.",
+    "description": "Descrizione della funzionalità SeeDance"
   },
   "message.featuresWan": {
-    "message": "Attiva o disattiva il modulo funzionale di Wan.",
-    "description": "Descrizione della funzionalità di Wan"
+    "message": "Attiva o disattiva il modulo funzionale Wan.",
+    "description": "Descrizione della funzionalità Wan"
   },
   "message.featuresProducer": {
-    "message": "Attiva o disattiva il modulo funzionale di Producer.",
-    "description": "Descrizione della funzionalità di Producer"
+    "message": "Attiva o disattiva il modulo funzionale Producer.",
+    "description": "Descrizione della funzionalità Producer"
   },
   "message.featuresKimi": {
-    "message": "Attiva o disattiva il modulo funzionale di Kimi.",
-    "description": "Descrizione della funzionalità di Kimi"
+    "message": "Attiva o disattiva il modulo funzionale Kimi.",
+    "description": "Descrizione della funzionalità Kimi"
   },
   "message.featuresSerp": {
-    "message": "Attiva o disattiva il modulo funzionale di SERP.",
-    "description": "Descrizione della funzionalità di SERP"
+    "message": "Attiva o disattiva il modulo funzionale SERP.",
+    "description": "Descrizione della funzionalità SERP"
   },
   "message.featuresLuma": {
-    "message": "Attiva o disattiva il modulo funzionale di Luma.",
-    "description": "Descrizione della funzionalità di Luma"
+    "message": "Attiva o disattiva il modulo funzionale Luma.",
+    "description": "Descrizione della funzionalità Luma"
   },
   "message.featuresPika": {
-    "message": "Attiva o disattiva il modulo funzionale di Pika.",
-    "description": "Descrizione della funzionalità di Pika"
+    "message": "Attiva o disattiva il modulo funzionale Pika.",
+    "description": "Descrizione della funzionalità Pika"
   },
   "message.featuresKling": {
-    "message": "Attiva o disattiva il modulo funzionale di Kling.",
-    "description": "Descrizione della funzionalità di Kling"
+    "message": "Attiva o disattiva il modulo funzionale Kling.",
+    "description": "Descrizione della funzionalità Kling"
   },
   "message.featuresHailuo": {
-    "message": "Attiva o disattiva il modulo funzionale di Hailuo.",
-    "description": "Descrizione della funzionalità di Hailuo"
+    "message": "Attiva o disattiva il modulo funzionale Hailuo.",
+    "description": "Descrizione della funzionalità Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Attiva o disattiva il modulo funzionale di foto identificative AI.",
-    "description": "Descrizione della funzionalità di foto identificative AI"
+    "message": "Attiva o disattiva il modulo funzionale Foto ID AI.",
+    "description": "Descrizione della funzionalità Foto ID AI"
   },
   "message.featuresSupport": {
     "message": "Attiva o disattiva il supporto clienti",
-    "description": "Descrizione della funzionalità di supporto"
+    "description": "Descrizione della funzionalità Supporto"
   },
   "message.featuresI18n": {
     "message": "Attiva o disattiva il supporto multilingue; se disattivato, gli utenti possono utilizzare solo la lingua predefinita.",
@@ -424,27 +424,27 @@
     "description": "Carica"
   },
   "button.enabled": {
-    "message": "Attivato",
-    "description": "Testo dell'interruttore che indica che è stato attivato"
+    "message": "Abilitato",
+    "description": "Testo dell'interruttore che indica che è stato abilitato"
   },
   "button.disabled": {
-    "message": "Disattivato",
-    "description": "Testo dell'interruttore che indica che è stato disattivato"
+    "message": "Disabilitato",
+    "description": "Testo dell'interruttore che indica che è stato disabilitato"
   },
   "field.featuresGemini": {
     "message": "Gemini",
     "description": "Visualizzato come titolo nella casella di modifica"
   },
   "message.featuresGemini": {
-    "message": "Attiva o disattiva il modulo funzionale di Gemini.",
-    "description": "Descrizione della funzionalità di Gemini"
+    "message": "Attiva o disattiva il modulo funzionale Gemini.",
+    "description": "Descrizione della funzionalità Gemini"
   },
   "field.featuresClaude": {
     "message": "Claude",
     "description": "Visualizzato come titolo nella casella di modifica"
   },
   "message.featuresClaude": {
-    "message": "Attiva o disattiva il modulo funzionale di Claude.",
-    "description": "Descrizione della funzionalità di Claude"
+    "message": "Attiva o disattiva il modulo funzionale Claude.",
+    "description": "Descrizione della funzionalità Claude"
   }
 }
