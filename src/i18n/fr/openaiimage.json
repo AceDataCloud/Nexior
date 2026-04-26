@@ -1,0 +1,126 @@
+{
+  "name.taskId": {
+    "message": "ID de la tâche",
+    "description": "ID de la tâche"
+  },
+  "name.task": {
+    "message": "Type de tâche",
+    "description": "Type d'opération d'image OpenAI"
+  },
+  "name.generate": {
+    "message": "Créer une image",
+    "description": "Type d'opération : créer une image"
+  },
+  "name.edits": {
+    "message": "Éditer une image",
+    "description": "Type d'opération : éditer une image"
+  },
+  "name.imageUrls": {
+    "message": "Images de référence",
+    "description": "Images de référence pour l'édition"
+  },
+  "name.failure": {
+    "message": "Échec",
+    "description": "Échec de la tâche"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Raison de l'échec de la tâche"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Statut de la tâche"
+  },
+  "name.traceId": {
+    "message": "ID de suivi",
+    "description": "ID de suivi"
+  },
+  "name.prompt": {
+    "message": "Invite d'image",
+    "description": "Mots d'invite pour générer/éditer"
+  },
+  "name.openaiimageBot": {
+    "message": "Bot d'image OpenAI",
+    "description": "Nom du robot OpenAI Image"
+  },
+  "name.size": {
+    "message": "Taille",
+    "description": "Taille de l'image de sortie"
+  },
+  "description.size": {
+    "message": "Taille de sortie pour générer l'image, valeurs courantes : 1024x1024, 1536x1024, 1024x1536.",
+    "description": "Description de la taille"
+  },
+  "description.prompt": {
+    "message": "Mots d'invite pour générer ou éditer l'image",
+    "description": "Description des mots d'invite"
+  },
+  "description.model": {
+    "message": "Modèle utilisé pour la génération et l'édition d'images.",
+    "description": "Description du paramètre modèle"
+  },
+  "description.imageUrls": {
+    "message": "Téléchargez 1 à 5 images de référence pour entrer en mode d'édition.",
+    "description": "Description du paramètre image_urls"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "État d'attente de la tâche"
+  },
+  "placeholder.select": {
+    "message": "Sélectionner",
+    "description": "Espace réservé pour la sélection"
+  },
+  "placeholder.prompt": {
+    "message": "Entrez les mots d'invite, par exemple : un chat en aquarelle sur la table",
+    "description": "Espace réservé pour les mots d'invite"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Bouton de génération"
+  },
+  "button.uploadImageUrls": {
+    "message": "Télécharger",
+    "description": "Bouton pour télécharger des images de référence (simplifiez en anglais à 'Upload', ne pas utiliser 'Upload Images')"
+  },
+  "message.startingTask": {
+    "message": "Démarrage de la tâche...",
+    "description": "Message de début de tâche"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tâche de génération lancée avec succès",
+    "description": "Tâche créée avec succès"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur :",
+    "description": "Échec de la création de la tâche"
+  },
+  "message.usedUp": {
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
+    "description": "Message d'épuisement"
+  },
+  "message.uploadImageExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 5 images",
+    "description": "Nombre d'images dépassant la limite"
+  },
+  "message.uploadImageError": {
+    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
+    "description": "Échec du téléchargement"
+  },
+  "name.model": {
+    "message": "Modèle",
+    "description": "Étiquette de sélection du modèle d'image OpenAI"
+  },
+  "model.gptImage1": {
+    "message": "gpt-image-1",
+    "description": "Option de modèle gpt-image-1"
+  },
+  "model.gptImage15": {
+    "message": "gpt-image-1.5",
+    "description": "Option de modèle gpt-image-1.5"
+  },
+  "model.gptImage2": {
+    "message": "gpt-image-2",
+    "description": "Option de modèle gpt-image-2"
+  }
+}

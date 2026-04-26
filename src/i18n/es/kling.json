@@ -39,13 +39,17 @@
     "message": "Nivel de libertad",
     "description": "Parámetro de libertad para generar el video (0-1), cuanto mayor sea, más se asemeja a la referencia"
   },
+  "name.generateAudio": {
+    "message": "Generar audio sincronizado",
+    "description": "Si se debe generar audio sincronizado, soporta kling-v3, kling-v3-omni y kling-v2-6 (modo pro)"
+  },
   "name.startImage": {
     "message": "Imagen de referencia inicial",
     "description": "Etiqueta del campo del formulario: imagen de referencia inicial"
   },
   "name.negativePrompt": {
-    "message": "Sugerencia negativa",
-    "description": "Texto de sugerencia negativa para generar el video"
+    "message": "Palabras clave negativas",
+    "description": "Texto de indicación negativa para generar el video"
   },
   "name.endImage": {
     "message": "Imagen de referencia final",
@@ -56,8 +60,8 @@
     "description": "Video personalizado"
   },
   "name.prompt": {
-    "message": "Sugerencia de video",
-    "description": "Sugerencia para la entrada de contenido"
+    "message": "Indicación del video",
+    "description": "Indicación de entrada del contenido"
   },
   "name.duration": {
     "message": "Duración del video",
@@ -65,7 +69,7 @@
   },
   "name.ingredients": {
     "message": "Crear video con múltiples imágenes",
-    "description": "Etiqueta/interruptor para crear video con múltiples imágenes"
+    "description": "Interruptor/etiqueta para crear video con múltiples imágenes"
   },
   "name.model": {
     "message": "Versión del modelo",
@@ -81,7 +85,7 @@
   },
   "name.effect": {
     "message": "Efecto de video",
-    "description": "Nombre del parámetro de estilo para cambiar entre diferentes versiones o estilos del modelo"
+    "description": "Nombre del parámetro de estilo, utilizado para cambiar entre diferentes versiones o estilos de modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de ingredientes",
@@ -92,7 +96,7 @@
     "description": "Nombre del generador de videos Kling"
   },
   "description.ingredients": {
-    "message": "Si desea subir varias imágenes para generar su propio video, active este botón.",
+    "message": "Si desea subir varias imágenes para generar su video, active este botón.",
     "description": "Descripción del parámetro 'ingredients'"
   },
   "description.imageUrl": {
@@ -104,7 +108,7 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Sugerencia de texto negativa, opcional, no más de 200 caracteres",
+    "message": "Indicación de texto negativa, opcional, no más de 200 caracteres",
     "description": "Descripción del parámetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
@@ -116,7 +120,7 @@
     "description": "Descripción del parámetro de referencia de carga"
   },
   "description.cfgScale": {
-    "message": "Nivel de libertad para generar el video, opcional [0,1]. Cuanto mayor sea el valor, mayor será la correlación.",
+    "message": "Nivel de libertad para generar el video, opcional [0,1]. Cuanto mayor sea el valor, más fuerte será la correlación.",
     "description": "Descripción del parámetro de referencia de carga"
   },
   "status.pending": {
@@ -140,12 +144,12 @@
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese la sugerencia para el estilo del video a generar, por ejemplo: moving",
-    "description": "Texto de marcador de posición en el campo de sugerencia"
+    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: moving",
+    "description": "Texto de marcador de posición en el campo de indicación"
   },
   "placeholder.negativePrompt": {
-    "message": "Ingrese la sugerencia negativa para el estilo del video a generar, no más de 200 caracteres",
-    "description": "Texto de marcador de posición en el campo de sugerencia negativa"
+    "message": "Ingrese las palabras clave negativas para el estilo del video a generar, no más de 200 caracteres",
+    "description": "Texto de marcador de posición en el campo de indicación"
   },
   "placeholder.position": {
     "message": "Seleccione...",
@@ -161,43 +165,43 @@
   },
   "placeholder.markerShape": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de forma de marcador"
+    "description": "Marcador de forma de entrada"
   },
   "placeholder.rotate": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de rotación"
+    "description": "Marcador de rotación de entrada"
   },
   "placeholder.subMarker": {
     "message": "Seleccione...",
-    "description": "Placeholder para la entrada de submarcador"
+    "description": "Marcador de subentrada"
   },
   "button.precise": {
     "message": "Preciso",
-    "description": "Texto del botón para generar un video Kling"
+    "description": "Texto del botón para generar video Kling"
   },
   "button.creative": {
     "message": "Creativo",
-    "description": "Texto del botón para generar un video Kling"
+    "description": "Texto del botón para generar video Kling"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar un video Kling"
+    "description": "Texto del botón para generar video Kling"
   },
   "button.extend": {
     "message": "Extender video",
-    "description": "Texto del botón para extender el video"
+    "description": "Texto del botón para extender video"
   },
   "button.download": {
     "message": "Descargar video",
-    "description": "Texto del botón para descargar el video"
+    "description": "Texto del botón para descargar video"
   },
   "button.uploadImageUrl": {
     "message": "Subir",
-    "description": "Texto del botón para subir una imagen (simplificado a 'Subir')"
+    "description": "Texto del botón para subir imagen (simplificado a 'Subir')"
   },
   "button.uploadVideoUrl": {
     "message": "Subir video",
-    "description": "Texto del botón para subir un video"
+    "description": "Texto del botón para subir video"
   },
   "button.uploadReferences": {
     "message": "Subir",
@@ -213,7 +217,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la subida de la imagen falla"
+    "description": "Mensaje de error cuando falla la subida de la imagen"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -225,7 +229,7 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
     "message": "Se han agotado sus puntos, por favor compre más para continuar",
@@ -245,10 +249,10 @@
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando la generación de la imagen falla"
+    "description": "Mensaje cuando falla la generación de la imagen"
   },
   "message.uploadVideoExceed": {
-    "message": "Se excedió el límite de imágenes para la primera fotograma",
+    "message": "Se ha excedido el límite de imágenes para la primera fotograma",
     "description": "Mensaje de error cuando se excede el límite de imágenes para la primera fotograma"
   },
   "message.uploadVideoSizeExceed": {
@@ -257,27 +261,27 @@
   },
   "message.uploadVideoTypeFailed": {
     "message": "¡El archivo subido debe ser en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no es en formato MP4"
+    "description": "Mensaje de error cuando el archivo subido no es MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Se excedió el límite de imágenes para la primera fotograma",
+    "message": "Se ha excedido el límite de imágenes para la primera fotograma",
     "description": "Mensaje de error cuando se excede el límite de imágenes para la primera fotograma"
   },
   "message.uploadEndImageExceed": {
-    "message": "Se excedió el límite de imágenes para la última fotograma",
+    "message": "Se ha excedido el límite de imágenes para la última fotograma",
     "description": "Mensaje de error cuando se excede el límite de imágenes para la última fotograma"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de la primera fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "message": "Error al subir la primera fotograma",
+    "description": "Mensaje de error cuando falla la subida de la primera fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "description": "Mensaje de error cuando falla la subida del video"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de la última fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
+    "message": "Error al subir la última fotograma",
+    "description": "Mensaje de error cuando falla la subida de la última fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
@@ -288,7 +292,7 @@
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar un video",
+    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar video",
     "description": "Mensaje cuando no hay tareas"
   }
 }

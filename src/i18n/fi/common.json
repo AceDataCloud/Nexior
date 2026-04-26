@@ -36,8 +36,8 @@
     "description": "Painikkeen teksti, jota käytetään sisällön muokkaamiseen"
   },
   "button.login": {
-    "message": "Kirjaudu",
-    "description": "Painikkeen teksti, jota käytetään kirjautumiseen"
+    "message": "Kirjaudu sisään",
+    "description": "Painikkeen teksti, jota käytetään sisäänkirjautumiseen"
   },
   "button.logout": {
     "message": "Kirjaudu ulos",
@@ -81,7 +81,7 @@
   },
   "button.profile": {
     "message": "Profiili",
-    "description": "Painikkeen teksti, jota käytetään profiilitietojen näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjäprofiilin näyttämiseen"
   },
   "button.console": {
     "message": "Konsoli",
@@ -117,7 +117,7 @@
   },
   "button.apply": {
     "message": "Hae",
-    "description": "Painikkeen teksti, jota käytetään API-palvelun hakemiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjän API-palvelun hakemiseen"
   },
   "button.refresh": {
     "message": "Päivitä",
@@ -132,7 +132,7 @@
     "description": "Painikkeen teksti, jota käytetään käyttäjän maksamisen jatkamiseen"
   },
   "button.applied": {
-    "message": "On haettu",
+    "message": "Hakemus lähetetty",
     "description": "Painikkeen teksti, jota käytetään näyttämään, että käyttäjä on hakenut palvelua"
   },
   "button.acquire": {
@@ -161,7 +161,7 @@
   },
   "button.referralEarnings": {
     "message": "Suositustulot",
-    "description": "Painikkeen teksti, jota käytetään suositustulojen näyttämiseen, mikä tarkoittaa, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua"
+    "description": "Painikkeen teksti, jota käytetään suositustulojen näyttämiseen, mikä tarkoittaa, että käyttäjä voi ansaita rahaa kutsumalla muita käyttämään palvelua"
   },
   "button.finish": {
     "message": "Valmis",
@@ -201,7 +201,7 @@
   },
   "status.loading": {
     "message": "Ladataan...",
-    "description": "Teksti, joka näytetään sisällön lataamisen aikana"
+    "description": "Tila, joka näytetään sisällön lataamisen aikana"
   },
   "entity.operation": {
     "message": "Toiminto",
@@ -213,14 +213,14 @@
   },
   "entity.createdAt": {
     "message": "Luotu",
-    "description": "Aika, jolloin entiteetti luotiin"
+    "description": "Entiteetin luontiaika"
   },
   "entity.updatedAt": {
     "message": "Päivitetty",
-    "description": "Aika, jolloin entiteetti päivitettiin"
+    "description": "Entiteetin päivitysaika"
   },
   "entity.order": {
-    "message": "Tilauksen",
+    "message": "Tilaus",
     "description": "Entiteetin tilaus, joka sisältää rahaa ja palvelutietoja, joista käyttäjän on maksettava"
   },
   "message.noTasks": {
@@ -232,7 +232,7 @@
     "description": "Näyttää käytetyn palvelumäärän"
   },
   "message.mobileAppDescription": {
-    "message": "Käytä AceData suoraan puhelimella, tällä hetkellä saatavilla Android APK:n lataaminen ja asennus, iOS-asennuspaketti avataan latausta varten, kun se on allekirjoitettu.",
+    "message": "Käytä AceData suoraan puhelimella, tällä hetkellä saatavilla Android APK:n lataamiseen, iOS-asennuspaketti avataan latausta varten, kun allekirjoitus on valmis.",
     "description": "Mobiilisovelluksen lataussivun selitys"
   },
   "message.mobileAndroidHint": {
@@ -264,15 +264,15 @@
     "description": "Selittää, että mobiiliversio jakaa tilin verkkosivuston kanssa"
   },
   "message.mobileIosHint": {
-    "message": "Sopii iPhoneille ja iPadeille, voidaan asentaa suoraan verkossa; jos järjestelmä estää, voit myös ladata IPA:n ja jakaa sen.",
+    "message": "Sopii iPhoneille ja iPadeille, voidaan asentaa suoraan verkosta; jos järjestelmä estää, voit myös ladata IPA:n ja jakaa sen.",
     "description": "iOS-latauskortin selitys"
   },
   "message.mobileIosPending": {
-    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaattien ja -profiilien täydennys on käynnissä.",
+    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaatti ja -profiili ovat työn alla.",
     "description": "Vihje, kun iOS-asennuspaketti ei ole saatavilla"
   },
   "message.mobileInstallNote": {
-    "message": "Kun asennat iOS:lle ensimmäistä kertaa yritys- tai Ad Hoc-paketin, järjestelmä saattaa vaatia, että ensin luotat sertifikaattiin kohdassa 'Asetukset > Yleiset > VPN ja laitehallinta'.",
+    "message": "Kun asennat iOS:lle ensimmäistä kertaa yritys- tai Ad Hoc-pakettia, järjestelmä saattaa vaatia, että luotat sertifikaattiin ensin 'Asetukset > Yleiset > VPN ja laitehallinta' -valikossa.",
     "description": "Mobiilisovelluksen asennusvinkki"
   },
   "title.mobileApp": {
@@ -285,7 +285,7 @@
   },
   "title.mobileTrustedRelease": {
     "message": "Versioiden keskitetty hallinta, vakaampi jakelu",
-    "description": "Lataussivun etuuskortin otsikko, korostaa versioiden ja jakelun vakautta"
+    "description": "Lataussivun etuuskortin otsikko, korostaa version ja jakelun vakautta"
   },
   "title.mobileUnifiedExperience": {
     "message": "Mobiiliversion ja verkkosivuston kokemus on yhtenäinen",
@@ -296,11 +296,11 @@
     "description": "Navigoinnin mobiilisovelluksen latauslinkki"
   },
   "message.mobileFastAccess": {
-    "message": "Käyttäjät voivat skannata koodin puhelimella ja asentaa suoraan, tai he voivat ladata APK:n työpöydältä ja jakaa sen tiimin jäsenille, sopii nopeaa kokeilua ja sisäistä testausta varten.",
+    "message": "Käyttäjät voivat skannata koodin puhelimella ja asentaa suoraan, tai he voivat ladata APK:n työpöydältä ja jakaa tiimin jäsenille, sopii nopeaa kokeilua ja sisäistä testausta varten.",
     "description": "Lataussivun etuusselitys, korostaa nopeaa pääsyä"
   },
   "message.mobileTrustedRelease": {
-    "message": "Latauslinkit on keskitetty samaan sivuun, versiot, alustan tila ja asennustapa ovat heti nähtävissä, vähentää viestintäkustannuksia, jotka johtuvat hajautetusta linkistä.",
+    "message": "Latauslinkit on keskitetty yhdelle sivulle, versiot, alustan tila ja asennustapa ovat heti nähtävissä, mikä vähentää viestintäkustannuksia, jotka johtuvat linkkien hajautumisesta.",
     "description": "Lataussivun etuusselitys, korostaa yhtenäistä jakelua"
   },
   "message.mobileUnifiedExperience": {
@@ -316,7 +316,7 @@
     "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.restart": {
-    "message": "Uudelleen generoida",
+    "message": "Uudelleenluo",
     "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.confirmDelete": {
@@ -380,7 +380,7 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää palvelusivun"
   },
   "nav.profile": {
-    "message": "Profiilini",
+    "message": "Profiili",
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää profiilisivun"
   },
   "nav.products": {
@@ -388,8 +388,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää tuotesivun"
   },
   "nav.referral": {
-    "message": "Kumppanuusohjelma",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää suosittelusivun"
+    "message": "Suositusohjelma",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää suositussivun"
   },
   "nav.apiPlatform": {
     "message": "API-alusta",
@@ -451,9 +451,13 @@
     "message": "Nano Banana",
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää Nano Banana -sivun, älä käännä tätä kenttää, se on säilytettävä 'Nano Banana'"
   },
+  "nav.openaiimage": {
+    "message": "OpenAI Image",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää OpenAI Image -sivun, älä käännä tätä kenttää, se on säilytettävä 'OpenAI Image'"
+  },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää SeeDream-sivun, älä käännä tätä kenttää, se on säilytettävä 'SeeDream'"
+    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -520,7 +524,7 @@
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-profiilikuva",
+    "message": "AI-passikuvat",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
@@ -597,103 +601,103 @@
   },
   "about.title2": {
     "message": "Resurssit",
-    "description": "显示链接的部分标题"
+    "description": "Näyttää linkkien osan otsikon"
   },
   "about.title3": {
     "message": "Linkit",
-    "description": "显示支持信息的部分标题"
+    "description": "Näyttää tukitietojen osan otsikon"
   },
   "about.address": {
-    "message": "651 North Broad Street, Suite 201, Middletown, Delaware, USA",
-    "description": "公司的地址"
+    "message": "651 N Broad St, Suite 201, Middletown, Delaware, USA",
+    "description": "Yrityksen osoite"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "公司的电子邮件"
+    "description": "Yrityksen sähköposti"
   },
   "about.link1": {
     "message": "Palvelut",
-    "description": "指向文档页面的链接"
+    "description": "Linkki asiakirjasivulle"
   },
   "about.link2": {
     "message": "Kehittäjädokumentaatio",
-    "description": "指向服务页面的链接"
+    "description": "Linkki palvelusivulle"
   },
   "about.link3": {
     "message": "Konsoli",
-    "description": "指向控制台页面的链接"
+    "description": "Linkki konsolisivulle"
   },
   "about.link4": {
     "message": "Profiili",
-    "description": "指向个人资料页面的链接"
+    "description": "Linkki profiilisivulle"
   },
   "about.link5": {
     "message": "UI-alusta",
-    "description": "指向中心页面的链接"
+    "description": "Linkki keskussivulle"
   },
   "about.link6": {
     "message": "Suositustulot",
-    "description": "指向推荐收入页面的链接"
+    "description": "Linkki suositustulojen sivulle"
   },
   "about.link7": {
     "message": "Tuki",
-    "description": "指向支持页面的链接"
+    "description": "Linkki tukisivulle"
   },
   "about.link8": {
-    "message": "Palveluehdot",
-    "description": "指向服务条款页面的链接"
+    "message": "Käyttöehdot",
+    "description": "Linkki käyttöehtosivulle"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
-    "description": "指向隐私政策页面的链接"
+    "description": "Linkki tietosuojakäytännön sivulle"
   },
   "theme.light": {
     "message": "Vaalea",
-    "description": "浅色主题的名称"
+    "description": "Vaalean teeman nimi"
   },
   "theme.dark": {
     "message": "Tumma",
-    "description": "深色主题的名称"
+    "description": "Tumman teeman nimi"
   },
   "theme.system": {
     "message": "Järjestelmä",
-    "description": "系统主题的名称，表示根据系统设置自动切换主题"
+    "description": "Järjestelmäteeman nimi, joka tarkoittaa automaattista teeman vaihtamista järjestelmäasetusten mukaan"
   },
   "settings.general": {
     "message": "Yleiset asetukset",
-    "description": "设置页面中的通用设置部分的标题"
+    "description": "Asetussivun yleisten asetusten osan otsikko"
   },
   "settings.language": {
     "message": "Kieli",
-    "description": "设置页面中的语言设置部分的标题"
+    "description": "Asetussivun kieliasetusten osan otsikko"
   },
   "settings.theme": {
     "message": "Teema",
-    "description": "设置页面中的主题设置部分的标题"
+    "description": "Asetussivun teemavalintojen osan otsikko"
   },
   "settings.seo": {
     "message": "SEO-asetukset",
-    "description": "设置页面中的SEO设置部分的标题"
+    "description": "Asetussivun SEO-asetusten osan otsikko"
   },
   "settings.site": {
     "message": "Sivuston asetukset",
-    "description": "设置页面中的站点设置部分的标题"
+    "description": "Asetussivun sivuston asetusten osan otsikko"
   },
   "settings.distribution": {
     "message": "Jakeluasetukset",
-    "description": "设置页面中的分发设置部分的标题"
+    "description": "Asetussivun jakeluasetusten osan otsikko"
   },
   "settings.function": {
     "message": "Toiminta-asetukset",
-    "description": "设置页面中的功能设置部分的标题"
+    "description": "Asetussivun toiminta-asetusten osan otsikko"
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Text in the website navigation bar to display the Gemini page, must remain as 'Gemini'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Gemini-sivun, on säilytettävä 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Text in the website navigation bar to display the Claude page, must remain as 'Claude'"
+    "description": "Teksti verkkosivuston navigointipalkissa, joka näyttää Claude-sivun, on säilytettävä 'Claude'"
   },
   "button.detail": {
     "message": "Näytä tiedot",
@@ -701,114 +705,114 @@
   },
   "button.testEnv": {
     "message": "Testiympäristö",
-    "description": "按钮中的文本，用于切换到测试环境"
+    "description": "Painikkeen teksti, jota käytetään siirtymiseen testiympäristöön"
   },
   "button.upload": {
     "message": "Lataa",
-    "description": "按钮中的文本，用于上传文件或内容"
+    "description": "Painikkeen teksti, jota käytetään tiedostojen tai sisällön lataamiseen"
   },
   "message.cnbeian": {
     "message": "Kiina-alueen rekisteröinti",
-    "description": "中国区备案的说明信息"
+    "description": "Kiina-alueen rekisteröinnin selitys"
   },
   "message.copyFailed": {
     "message": "Kopiointi epäonnistui",
-    "description": "显示内容复制失败的消息"
+    "description": "Näyttää viestin, että sisällön kopiointi epäonnistui"
   },
   "nav.tryNow": {
     "message": "Kokeile nyt",
-    "description": "网站导航栏中的文本，用于让用户尝试服务"
+    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka kehottaa käyttäjää kokeilemaan palvelua"
   },
   "title.coin": {
     "message": "Kryptovaluutta",
-    "description": "显示加密货币的页面标题"
+    "description": "Näyttää kryptovaluuttojen sivun otsikon"
   },
   "title.distributionRank": {
     "message": "Suositusranking",
-    "description": "显示推荐排行的页面标题"
+    "description": "Näyttää suositusranking-sivun otsikon"
   },
   "title.distributionPlatformRank": {
     "message": "Alustaranking",
-    "description": "显示平台排行的页面标题"
+    "description": "Näyttää alustaranking-sivun otsikon"
   },
   "customers.name1": {
     "message": "Mark Du",
-    "description": "客户的姓名"
+    "description": "Asiakkaan nimi"
   },
   "customers.job1": {
     "message": "Ohjelmistosuunnittelija",
-    "description": "客户的职业"
+    "description": "Asiakkaan ammatti"
   },
   "customers.comment1": {
     "message": "Ace Data Cloud on tarjonnut erinomaisia palveluja tiimillemme ja auttanut meitä parantamaan tuottavuutta. Erittäin tyytyväinen!",
-    "description": "客户的评价"
+    "description": "Asiakkaan arvio"
   },
   "customers.name2": {
     "message": "Jacob Williams",
-    "description": "客户的姓名"
+    "description": "Asiakkaan nimi"
   },
   "customers.job2": {
     "message": "Tuotepäällikkö",
-    "description": "客户的职业"
+    "description": "Asiakkaan ammatti"
   },
   "customers.comment2": {
     "message": "Ace Data Cloud on loistava integrointialusta, palvelun laatu on erinomaista.",
-    "description": "客户的评价"
+    "description": "Asiakkaan arvio"
   },
   "customers.name3": {
     "message": "Larry Henry",
-    "description": "客户的姓名"
+    "description": "Asiakkaan nimi"
   },
   "customers.job3": {
     "message": "Suunnittelija",
-    "description": "客户的职业"
+    "description": "Asiakkaan ammatti"
   },
   "customers.comment3": {
-    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja kohtuuhintaisia, toivon niiden paranevan entisestään!",
-    "description": "客户的评价"
+    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja kohtuuhintaisia, toivon niiden kehittyvän entisestään!",
+    "description": "Asiakkaan arvio"
   },
   "nav.github": {
     "message": "GitHub",
-    "description": "GitHub仓库链接"
+    "description": "GitHub-repositorion linkki"
   },
   "settings.github": {
     "message": "Lähdekoodi",
-    "description": "在GitHub上查看源代码的链接"
+    "description": "Linkki lähdekoodin tarkasteluun GitHubissa"
   },
   "settings.about": {
     "message": "Tietoa",
-    "description": "设置页面中的关于部分的标题"
+    "description": "Asetussivun tietoa-osan otsikko"
   },
   "settings.poweredBy": {
     "message": "Avoimen lähdekoodin projekti",
-    "description": "关于页面中展示本站基于哪个开源项目搭建的标题"
+    "description": "Tietoja-sivulla esitettävä otsikko, joka kertoo, mihin avoimen lähdekoodin projektiin tämä sivusto perustuu"
   },
   "settings.poweredByTip": {
-    "message": "Tämä sivusto on rakennettu Nexior-avointa lähdekoodia hyödyntäen, koodi on täysin avointa.",
-    "description": "Tietoa-sivulla esitetään, mihin avointa lähdekoodia tämä sivusto perustuu."
+    "message": "Tämä sivusto perustuu Nexior-avoimen lähdekoodin projektiin, koodi on täysin avointa.",
+    "description": "Tietoja-sivulla esitettävä selitys, joka kertoo, mihin avoimen lähdekoodin projektiin tämä sivusto perustuu"
   },
   "settings.apiService": {
     "message": "API-palvelu",
-    "description": "Tietoa-sivulla esitettävä API-palveluntarjoajan otsikko."
+    "description": "Tietoja-sivulla esitettävä otsikko API-palveluntarjoajasta"
   },
   "settings.apiServiceTip": {
     "message": "Tämän sivuston API-palvelun tarjoaa Ace Data Cloud.",
-    "description": "Tietoa-sivulla esitettävä API-palveluntarjoajan selitys."
+    "description": "Tietoja-sivulla esitettävä selitys API-palveluntarjoajasta"
   },
   "settings.buildYourOwn": {
     "message": "Rakenna oma versio",
-    "description": "Tietoa-sivulla käyttäjälle annettava ohje, että he voivat rakentaa samanlaisen sivuston."
+    "description": "Tietoja-sivulla käyttäjille annettava otsikko, joka kehottaa heitä rakentamaan samanlaisen sivuston"
   },
   "settings.buildYourOwnTip": {
     "message": "Haluatko rakentaa samanlaisen AI-sivuston? Ota meihin yhteyttä saadaksesi käyttöönottoapua.",
-    "description": "Tietoa-sivulla rakennusohjeen selitys."
+    "description": "Tietoja-sivulla rakennettavan samanlaisen sivuston selitys"
   },
   "settings.contactUs": {
     "message": "Ota yhteyttä asiakaspalveluun",
-    "description": "Asiakaspalveluun ottamisen painikkeen teksti."
+    "description": "Asiakaspalveluun ottamisen painikkeen teksti"
   },
   "message.viewOnGithub": {
-    "message": "Katso GitHubissa",
-    "description": "Linkkiteksti projektin katsomiseen GitHubissa."
+    "message": "Näytä GitHubissa",
+    "description": "Linkkiteksti, joka vie GitHubiin projektin tarkastelua varten"
   }
 }

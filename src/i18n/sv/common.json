@@ -109,7 +109,7 @@
   },
   "button.downloadIos": {
     "message": "Ladda ner iOS",
-    "description": "Text i knappen för att ladda ner iOS-installationsfilen"
+    "description": "Text i knappen för att ladda ner iOS-installationspaketet"
   },
   "button.installIos": {
     "message": "Installera iOS",
@@ -125,19 +125,19 @@
   },
   "button.pay": {
     "message": "Betala",
-    "description": "Text i knappen för att låta användaren betala för tjänster"
+    "description": "Text i knappen för att låta användaren betala för tjänsten"
   },
   "button.repay": {
     "message": "Fortsätt betala",
-    "description": "Text i knappen för att låta användaren fortsätta betala för tjänster"
+    "description": "Text i knappen för att låta användaren fortsätta betala för tjänsten"
   },
   "button.applied": {
     "message": "Ansökt",
     "description": "Text i knappen för att visa att användaren har ansökt om tjänsten"
   },
   "button.acquire": {
-    "message": "Hämta",
-    "description": "Text i knappen för att låta användaren hämta API-tjänstens token eller nyckel"
+    "message": "Få",
+    "description": "Text i knappen för att låta användaren få en token eller nyckel för API-tjänsten"
   },
   "button.fillExample": {
     "message": "Fyll i exempel",
@@ -145,7 +145,7 @@
   },
   "button.buyMore": {
     "message": "Top Up",
-    "description": "Text i knappen för att låta användaren fylla på. Engelsk översättning måste vara 'Top Up', svensk översättning är 'Top Up'."
+    "description": "Text i knappen för att låta användaren fylla på. Engelsk översättning måste vara 'Top Up', svensk översättning är 'Fyll på'."
   },
   "button.update": {
     "message": "Uppdatera",
@@ -177,7 +177,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Webbplatsnamn, ingen översättning behövs, behåll som 'Ace Data Cloud'"
+    "description": "Webbplatsens namn, ingen översättning behövs, behåll som 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Upphovsrätt",
@@ -204,8 +204,8 @@
     "description": "Statusmeddelande som visas när innehållet laddas"
   },
   "entity.operation": {
-    "message": "Operation",
-    "description": "Operationen för enheten"
+    "message": "Åtgärd",
+    "description": "Åtgärden för enheten"
   },
   "entity.description": {
     "message": "Beskrivning",
@@ -244,7 +244,7 @@
     "description": "Meddelande när Android-installationspaketet inte är tillgängligt"
   },
   "message.mobileAvailableNow": {
-    "message": "Android är nu tillgänglig för nedladdning",
+    "message": "Android är tillgänglig för nedladdning",
     "description": "Används för att visa att Android nu kan laddas ner"
   },
   "message.mobileSecureDelivery": {
@@ -257,7 +257,7 @@
   },
   "message.mobileLatestRelease": {
     "message": "Aktuell offentlig version",
-    "description": "Används för att förklara att den aktuella visningen är den senaste offentliga versionen"
+    "description": "Används för att förklara att den aktuella visade versionen är den senaste offentliga versionen"
   },
   "message.mobileSharedAccount": {
     "message": "Dela konto och kvot med webbversionen",
@@ -268,7 +268,7 @@
     "description": "Beskrivning för iOS-nedladdningskort"
   },
   "message.mobileIosPending": {
-    "message": "iOS-installationspaketet är inte tillgängligt för nedladdning än, kommer att göras tillgängligt efter att Apple-certifikat och beskrivningsfil har kompletterats.",
+    "message": "iOS-installationspaketet är inte tillgängligt för nedladdning än, kommer att göras tillgängligt efter att Apple-certifikat och beskrivningsfiler har kompletterats.",
     "description": "Meddelande när iOS-installationspaketet inte är tillgängligt"
   },
   "message.mobileInstallNote": {
@@ -296,7 +296,7 @@
     "description": "Nedladdningslänk för mobilapplikation i navigeringen"
   },
   "message.mobileFastAccess": {
-    "message": "Användare kan skanna QR-koden för att installera direkt på mobilen, eller ladda ner APK:n på skrivbordet och distribuera till teammedlemmar, lämpligt för snabba tester och intern testning.",
+    "message": "Användare kan skanna QR-koden för att installera direkt på mobilen, eller ladda ner APK:n på skrivbordet och sedan distribuera till teammedlemmar, lämpligt för snabba tester och intern testning.",
     "description": "Fördelar med nedladdningssidan, betonar snabb åtkomst"
   },
   "message.mobileTrustedRelease": {
@@ -377,7 +377,7 @@
   },
   "nav.service": {
     "message": "Alla tjänster",
-    "description": "Text i webbplatsens navigeringsfält för att visa tjänstesidan"
+    "description": "Text i webbplatsens navigeringsfält för att visa tjänstsidan"
   },
   "nav.profile": {
     "message": "Min profil",
@@ -392,7 +392,7 @@
     "description": "Text i webbplatsens navigeringsfält för att visa rekommendationssidan"
   },
   "nav.apiPlatform": {
-    "message": "API-plattform",
+    "message": "API Plattform",
     "description": "Text i webbplatsens navigeringsfält för att visa API-plattformssidan"
   },
   "nav.document": {
@@ -451,61 +451,65 @@
     "message": "Nano Banana",
     "description": "Text i webbplatsens navigeringsfält för att visa Nano Banana-sidan, vänligen översätt inte detta fält, det måste förbli 'Nano Banana'"
   },
+  "nav.openaiimage": {
+    "message": "OpenAI Bild",
+    "description": "Text i webbplatsens navigeringsfält för att visa OpenAI Bild-sidan, vänligen översätt inte detta fält, det måste förbli 'OpenAI Image'"
+  },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Text i webbplatsens navigeringsfält för att visa SeeDream-sidan, vänligen översätt inte detta fält, det måste förbli 'SeeDream'"
+    "description": "Text in the website navigation bar for displaying the SeeDream page, must remain as 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Text in the website navigation bar to display the SeeDance page, must remain as 'SeeDance'"
+    "description": "Text in the website navigation bar for displaying the SeeDance page, must remain as 'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Text in the website navigation bar to display the Luma page, must remain as 'Luma'"
+    "description": "Text in the website navigation bar for displaying the Luma page, must remain as 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Text in the website navigation bar to display the Pika page, must remain as 'Pika'"
+    "description": "Text in the website navigation bar for displaying the Pika page, must remain as 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Text in the website navigation bar to display the Kling page, must remain as 'Kling'"
+    "description": "Text in the website navigation bar for displaying the Kling page, must remain as 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Text in the website navigation bar to display the Hailuo page, must remain as 'Hailuo'"
+    "description": "Text in the website navigation bar for displaying the Hailuo page, must remain as 'Hailuo'"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "Text in the website navigation bar to display the Wan page, must remain as 'Wan'"
+    "description": "Text in the website navigation bar for displaying the Wan page, must remain as 'Wan'"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "Text in the website navigation bar to display the Producer page, must remain as 'Producer'"
+    "description": "Text in the website navigation bar for displaying the Producer page, must remain as 'Producer'"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "Text in the website navigation bar to display the Kimi page, must remain as 'Kimi'"
+    "description": "Text in the website navigation bar for displaying the Kimi page, must remain as 'Kimi'"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "Text in the website navigation bar to display the SERP page, must remain as 'SERP'"
+    "description": "Text in the website navigation bar for displaying the SERP page, must remain as 'SERP'"
   },
   "nav.image": {
     "message": "Bild",
-    "description": "Text in the website navigation bar to display the image page"
+    "description": "Text in the website navigation bar for displaying the image page"
   },
   "nav.music": {
     "message": "Musik",
-    "description": "Text in the website navigation bar to display the music page"
+    "description": "Text in the website navigation bar for displaying the music page"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Text in the website navigation bar to display the video page"
+    "description": "Text in the website navigation bar for displaying the video page"
   },
   "nav.distribution": {
     "message": "Rekommenderad inkomst",
-    "description": "Text in the website navigation bar to display the recommended income page"
+    "description": "Text in the website navigation bar for displaying the recommended income page"
   },
   "nav.logOut": {
     "message": "Logga ut",
@@ -513,31 +517,31 @@
   },
   "nav.site": {
     "message": "Webbplatsinställningar",
-    "description": "Text in the website navigation bar to display the site configuration page"
+    "description": "Text in the website navigation bar for displaying the site configuration page"
   },
   "nav.setting": {
     "message": "Inställningar",
-    "description": "Text in the website navigation bar to display the settings page"
+    "description": "Text in the website navigation bar for displaying the settings page"
   },
   "nav.headshots": {
     "message": "AI ID-foto",
-    "description": "Text in the website navigation bar to display the site configuration page"
+    "description": "Text in the website navigation bar for displaying the site configuration page"
   },
   "nav.more": {
     "message": "Mer",
-    "description": "Text in the website navigation bar to expand more services"
+    "description": "Text in the website navigation bar for expanding more services"
   },
   "nav.locale": {
     "message": "Språkinställningar",
-    "description": "Text in the website navigation bar to change the language"
+    "description": "Text in the website navigation bar for changing the language"
   },
   "nav.support": {
     "message": "Kundsupport",
-    "description": "Text in the website navigation bar to display the contact page"
+    "description": "Text in the website navigation bar for displaying the contact page"
   },
   "nav.darkMode": {
     "message": "Mörkt läge",
-    "description": "Text in the website navigation bar to switch to dark theme"
+    "description": "Text in the website navigation bar for switching to dark theme"
   },
   "title.alert": {
     "message": "Varning",
@@ -597,11 +601,11 @@
   },
   "about.title2": {
     "message": "Resurser",
-    "description": "Title for the section displaying links"
+    "description": "Visar delrubrik för länkar"
   },
   "about.title3": {
     "message": "Länkar",
-    "description": "Title for the section displaying support information"
+    "description": "Visar delrubrik för supportinformation"
   },
   "about.address": {
     "message": "651 North Broad St, Suite 201, Middletown, Delaware, USA",
@@ -649,43 +653,43 @@
   },
   "theme.light": {
     "message": "Ljust tema",
-    "description": "Namn på det ljusa temat"
+    "description": "Namn på ljust tema"
   },
   "theme.dark": {
     "message": "Mörkt tema",
-    "description": "Namn på det mörka temat"
+    "description": "Namn på mörkt tema"
   },
   "theme.system": {
     "message": "System",
-    "description": "Namn på systemtemat, indikerar automatisk växling av tema baserat på systeminställningar"
+    "description": "Namn på systemtema, indikerar automatisk växling av tema baserat på systeminställningar"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
-    "description": "Rubrik för den allmänna inställningssektionen på inställningssidan"
+    "description": "Rubrik för allmänna inställningar på inställningssidan"
   },
   "settings.language": {
     "message": "Språk",
-    "description": "Rubrik för språkinställningssektionen på inställningssidan"
+    "description": "Rubrik för språkinställningar på inställningssidan"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Rubrik för temainställningssektionen på inställningssidan"
+    "description": "Rubrik för tema-inställningar på inställningssidan"
   },
   "settings.seo": {
     "message": "SEO-inställningar",
-    "description": "Rubrik för SEO-inställningssektionen på inställningssidan"
+    "description": "Rubrik för SEO-inställningar på inställningssidan"
   },
   "settings.site": {
     "message": "Webbplatsinställningar",
-    "description": "Rubrik för webbplatsinställningssektionen på inställningssidan"
+    "description": "Rubrik för webbplatsinställningar på inställningssidan"
   },
   "settings.distribution": {
     "message": "Distribueringsinställningar",
-    "description": "Rubrik för distribueringsinställningssektionen på inställningssidan"
+    "description": "Rubrik för distribueringsinställningar på inställningssidan"
   },
   "settings.function": {
     "message": "Funktionsinställningar",
-    "description": "Rubrik för funktionsinställningssektionen på inställningssidan"
+    "description": "Rubrik för funktionsinställningar på inställningssidan"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -708,12 +712,12 @@
     "description": "Text i knappen för att ladda upp filer eller innehåll"
   },
   "message.cnbeian": {
-    "message": "Kina-registrering",
-    "description": "Information om registrering i Kina"
+    "message": "Kina-regionens registrering",
+    "description": "Information om registrering i Kina-regionen"
   },
   "message.copyFailed": {
     "message": "Kopiering misslyckades",
-    "description": "Meddelande som visas när innehållskopiering misslyckas"
+    "description": "Meddelande om att innehållet inte kunde kopieras"
   },
   "nav.tryNow": {
     "message": "Prova nu",
@@ -721,15 +725,15 @@
   },
   "title.coin": {
     "message": "Kryptovaluta",
-    "description": "Sidans titel för kryptovaluta"
+    "description": "Visar sidrubrik för kryptovaluta"
   },
   "title.distributionRank": {
     "message": "Rekommendationsrankning",
-    "description": "Sidans titel för rekommendationsrankning"
+    "description": "Visar sidrubrik för rekommendationsrankning"
   },
   "title.distributionPlatformRank": {
     "message": "Plattformsrankning",
-    "description": "Sidans titel för plattformsrankning"
+    "description": "Visar sidrubrik för plattformsrankning"
   },
   "customers.name1": {
     "message": "Mark Du",
@@ -781,34 +785,34 @@
   },
   "settings.poweredBy": {
     "message": "Öppen källkod",
-    "description": "Rubrik som visar vilket öppen källkodsprojekt som denna webbplats är baserad på"
+    "description": "Titel som visar vilket öppet källkodsprojekt denna webbplats är baserad på"
   },
   "settings.poweredByTip": {
-    "message": "Denna webbplats är byggd på Nexior open source-projekt, koden är helt öppen.",
-    "description": "Om sidan som visar vilken öppen källkod projektet är baserat på"
+    "message": "Denna webbplats är baserad på Nexior öppet källkodsprojekt, koden är helt öppen.",
+    "description": "Förklaring som visar vilket öppet källkodsprojekt denna webbplats är baserad på"
   },
   "settings.apiService": {
     "message": "API-tjänst",
-    "description": "Om sidan som visar titeln för API-tjänsteleverantören"
+    "description": "Titel som visar API-tjänsteleverantören"
   },
   "settings.apiServiceTip": {
-    "message": "Denna webbplats API-tjänst tillhandahålls av Ace Data Cloud.",
-    "description": "Om sidan som visar information om API-tjänsteleverantören"
+    "message": "Denna API-tjänst tillhandahålls av Ace Data Cloud.",
+    "description": "Förklaring som visar API-tjänsteleverantören"
   },
   "settings.buildYourOwn": {
     "message": "Bygg din egen",
-    "description": "Om sidan som uppmanar användare att bygga en liknande webbplats"
+    "description": "Titel som uppmanar användare att bygga en liknande webbplats"
   },
   "settings.buildYourOwnTip": {
-    "message": "Vill du bygga en liknande AI-webbplats? Kontakta oss för distributionsstöd.",
-    "description": "Om sidan som ger information om att bygga en liknande webbplats"
+    "message": "Vill du bygga en liknande AI-webbplats? Kontakta oss för distributionssupport.",
+    "description": "Förklaring om att bygga en liknande webbplats"
   },
   "settings.contactUs": {
     "message": "Kontakta support",
-    "description": "Texten på knappen för att kontakta support"
+    "description": "Text på knappen för att kontakta support"
   },
   "message.viewOnGithub": {
     "message": "Visa på GitHub",
-    "description": "Texten för länken för att se projektet på GitHub"
+    "description": "Text för länken som visar projektet på GitHub"
   }
 }

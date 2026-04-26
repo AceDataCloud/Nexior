@@ -8,6 +8,7 @@
     </div>
     <div class="value">
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
         name="file"
@@ -45,7 +46,7 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -64,6 +65,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
+  mixins: [pasteUploadMixin],
   data(): IData {
     return {
       fileList: [],
