@@ -39,12 +39,16 @@
     "message": "Livello di libertà",
     "description": "Parametro di libertà per la generazione del video (0-1), maggiore è il valore, più si avvicina al riferimento"
   },
+  "name.generateAudio": {
+    "message": "Genera audio sincronizzato",
+    "description": "Se generare audio sincronizzato, supporta kling-v3, kling-v3-omni e kling-v2-6 (modalità pro)"
+  },
   "name.startImage": {
     "message": "Immagine di riferimento iniziale",
     "description": "Etichetta del campo del modulo: immagine di riferimento iniziale"
   },
   "name.negativePrompt": {
-    "message": "Suggerimento negativo",
+    "message": "Parole chiave negative",
     "description": "Testo di suggerimento negativo per la generazione del video"
   },
   "name.endImage": {
@@ -69,7 +73,7 @@
   },
   "name.model": {
     "message": "Versione modello",
-    "description": "Versione del modello utilizzato per generare il video"
+    "description": "Versione del modello utilizzata per generare il video"
   },
   "name.ratio": {
     "message": "Rapporto video",
@@ -81,11 +85,11 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile per passare tra diverse versioni o stili del modello"
+    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili del modello"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
-    "description": "Versione del modello utilizzato per generare il video"
+    "description": "Versione del modello utilizzata per generare il video"
   },
   "name.klingBot": {
     "message": "Kling Bot",
@@ -100,7 +104,7 @@
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare il video Kling",
+    "message": "Parole chiave per generare video Kling",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.negativePrompt": {
@@ -108,16 +112,16 @@
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Carica l'immagine del fotogramma iniziale come riferimento per la generazione, il video finale si baserà sul fotogramma iniziale.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Carica l'immagine del fotogramma finale come riferimento per la generazione, il video finale si baserà sul fotogramma finale.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.cfgScale": {
-    "message": "Livello di libertà per la generazione del video, facoltativo [0,1]. Maggiore è il valore, più forte è la correlazione.",
-    "description": "Descrizione del parametro di caricamento di riferimento"
+    "message": "Libertà di generazione del video, facoltativa [0,1]. Maggiore è il valore, più forte è la correlazione.",
+    "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "status.pending": {
     "message": "In attesa",
@@ -129,7 +133,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di rumore di riempimento"
+    "description": "Segnaposto per l'input del rumore di riempimento"
   },
   "placeholder.select": {
     "message": "Seleziona",
@@ -140,7 +144,7 @@
     "description": "Segnaposto per il livello di riempimento"
   },
   "placeholder.prompt": {
-    "message": "Inserisci le parole chiave per lo stile del video da generare, ad esempio: in movimento",
+    "message": "Inserisci le parole chiave per lo stile del video da generare, ad esempio: moving",
     "description": "Testo segnaposto nel campo di suggerimento"
   },
   "placeholder.negativePrompt": {
@@ -149,7 +153,7 @@
   },
   "placeholder.position": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di posizione"
+    "description": "Segnaposto per l'input della posizione"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -157,7 +161,7 @@
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input preimpostato"
+    "description": "Segnaposto per l'input del preset"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
@@ -165,11 +169,11 @@
   },
   "placeholder.rotate": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input di rotazione"
+    "description": "Segnaposto per l'input della rotazione"
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del sottotitolo"
+    "description": "Segnaposto per l'input del sottomarcatori"
   },
   "button.precise": {
     "message": "Preciso",

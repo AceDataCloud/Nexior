@@ -37,19 +37,23 @@
   },
   "name.cfgScale": {
     "message": "自由度",
-    "description": "生成ビデオの自由度パラメータ（0-1）、値が大きいほど参考に近くなる（英語の提案：Freedom Level）"
+    "description": "生成ビデオの自由度パラメータ（0-1）、値が大きいほど参照に近くなる（英語の提案：Freedom Level）"
+  },
+  "name.generateAudio": {
+    "message": "音声を同期生成",
+    "description": "音声を同期生成するかどうか、kling-v3、kling-v3-omni、kling-v2-6（プロモード）をサポート"
   },
   "name.startImage": {
-    "message": "初フレーム画像",
-    "description": "フォームフィールドラベル：初フレーム参考画像（英語の提案：'First Frame'、短く保ちボタンを隠さないように）"
+    "message": "初フレーム参照画像",
+    "description": "フォームフィールドラベル：初フレーム参照画像（英語の提案：'First Frame'、短くしてボタンを隠さないように）"
   },
   "name.negativePrompt": {
     "message": "ネガティブプロンプト",
     "description": "生成ビデオのネガティブテキストプロンプト"
   },
   "name.endImage": {
-    "message": "終フレーム画像",
-    "description": "フォームフィールドラベル：終フレーム参考画像（英語の提案：'Last Frame'、短く保ちボタンを隠さないように）"
+    "message": "終フレーム参照画像",
+    "description": "フォームフィールドラベル：終フレーム参照画像（英語の提案：'Last Frame'、短くしてボタンを隠さないように）"
   },
   "name.videoUrl": {
     "message": "カスタムビデオ",
@@ -65,7 +69,7 @@
   },
   "name.ingredients": {
     "message": "複数画像でビデオ作成",
-    "description": "複数画像でビデオ作成のスイッチ/ラベル（英語の提案：Multi-Image、短く保つ）"
+    "description": "複数画像でビデオ作成のスイッチ/ラベル（英語の提案：Multi-Image、短く）"
   },
   "name.model": {
     "message": "モデルバージョン",
@@ -81,7 +85,7 @@
   },
   "name.effect": {
     "message": "ビデオ効果",
-    "description": "スタイルパラメータの名前、異なるバージョンやスタイルのモデル間で切り替えるために使用"
+    "description": "異なるバージョンやスタイルのモデル間で切り替えるためのスタイルパラメータ名"
   },
   "name.ingredientsModel": {
     "message": "成分モデル",
@@ -169,7 +173,7 @@
   },
   "placeholder.subMarker": {
     "message": "選択してください...",
-    "description": "子標記入力のプレースホルダー"
+    "description": "サブマーカー入力のプレースホルダー"
   },
   "button.precise": {
     "message": "精密",
@@ -209,7 +213,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
-    "description": "画像のアップロードが成功したときのメッセージ"
+    "description": "画像のアップロードが成功したときの成功メッセージ"
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
@@ -221,7 +225,7 @@
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときのメッセージ"
+    "description": "タスクが正常に開始されたときの成功メッセージ"
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
@@ -229,7 +233,7 @@
   },
   "message.usedUp": {
     "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
-    "description": "ポイントが使い切れたときのメッセージ"
+    "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
@@ -248,8 +252,8 @@
     "description": "画像の生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロード可能な初フレーム画像の数が制限を超えています",
-    "description": "アップロード可能な初フレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
@@ -260,24 +264,24 @@
     "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロード可能な初フレーム画像の数が制限を超えています",
-    "description": "アップロード可能な初フレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロード可能な終フレーム画像の数が制限を超えています",
-    "description": "アップロード可能な終フレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "アップロード可能な最後のフレーム画像の数が制限を超えています",
+    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
-    "message": "初フレーム画像のアップロードに失敗しました",
-    "description": "初フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "最初のフレーム画像のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "初フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "動画のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
-    "message": "終フレーム画像のアップロードに失敗しました",
-    "description": "終フレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "message": "最後のフレーム画像のアップロードに失敗しました",
+    "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",

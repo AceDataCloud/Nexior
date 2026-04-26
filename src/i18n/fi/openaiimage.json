@@ -1,126 +1,126 @@
 {
   "name.taskId": {
-    "message": "Task ID",
-    "description": "The ID of the task"
+    "message": "Tehtävä ID",
+    "description": "Tehtävän ID"
   },
   "name.task": {
-    "message": "Task Type",
-    "description": "Type of OpenAI Image image operation"
+    "message": "Tehtävätyyppi",
+    "description": "OpenAI Image -kuvaoperaation tyyppi"
   },
   "name.generate": {
-    "message": "Create Image",
-    "description": "Operation type: Create Image"
+    "message": "Luo kuva",
+    "description": "Toimintatyyppi: Luo kuva"
   },
   "name.edits": {
-    "message": "Edit Image",
-    "description": "Operation type: Edit Image"
+    "message": "Muokkaa kuvaa",
+    "description": "Toimintatyyppi: Muokkaa kuvaa"
   },
   "name.imageUrls": {
-    "message": "Reference Images",
-    "description": "Reference images for editing"
+    "message": "Viittauskuvat",
+    "description": "Muokkaukseen käytettävät viittauskuvat"
   },
   "name.failure": {
-    "message": "Failure",
-    "description": "Task failure"
+    "message": "Epätosi",
+    "description": "Tehtävä epäonnistui"
   },
   "name.failureReason": {
-    "message": "Failure Reason",
-    "description": "Reason for task failure"
+    "message": "Epäonnistumisen syy",
+    "description": "Tehtävän epäonnistumisen syy"
   },
   "name.status": {
-    "message": "Status",
-    "description": "Task status"
+    "message": "Tila",
+    "description": "Tehtävän tila"
   },
   "name.traceId": {
-    "message": "Trace ID",
-    "description": "Trace ID"
+    "message": "Seuranta ID",
+    "description": "Seuranta ID"
   },
   "name.prompt": {
-    "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "message": "Kuvan kehotus",
+    "description": "Luomisen/muokkauksen kehotussanat"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Name of the OpenAI Image bot"
+    "description": "OpenAI Image -robotin nimi"
   },
   "name.size": {
-    "message": "Size",
-    "description": "Output image size"
+    "message": "Koko",
+    "description": "Tulostettavan kuvan koko"
   },
   "description.size": {
-    "message": "Output size for generation. Common values: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Size description"
+    "message": "Kuvan luomiseen käytettävä tulostuskoko, yleiset arvot: 1024x1024, 1536x1024, 1024x1536.",
+    "description": "Koon selitys"
   },
   "description.prompt": {
-    "message": "Prompt for generating or editing images",
-    "description": "Description of the prompt"
+    "message": "Kuvan luomiseen tai muokkaamiseen käytettävät kehotussanat",
+    "description": "Kehotussanojen kuvaus"
   },
   "description.model": {
-    "message": "Model used for image generation and editing.",
-    "description": "Description of the model parameter"
+    "message": "Kuvan luomiseen ja muokkaamiseen käytettävä malli.",
+    "description": "malli-parametrin selitys"
   },
   "description.imageUrls": {
-    "message": "Upload 1-5 reference images to enable edit mode.",
-    "description": "Description of the image_urls parameter"
+    "message": "Lataa 1-5 viittauskuvaa päästäksesi muokkaustilaan.",
+    "description": "image_urls-parametrin selitys"
   },
   "status.pending": {
-    "message": "Pending",
-    "description": "Task waiting status"
+    "message": "Odottaa",
+    "description": "Tehtävän odotustila"
   },
   "placeholder.select": {
-    "message": "Select",
-    "description": "Selection placeholder"
+    "message": "Valitse",
+    "description": "Valintapaikka"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a watercolor cat on a desk",
-    "description": "Prompt placeholder"
+    "message": "Syötä kehotussanat, esim: vesiväri kissa pöydällä",
+    "description": "Kehotuksen paikka"
   },
   "button.generate": {
-    "message": "Generate",
-    "description": "Generate button"
+    "message": "Luo",
+    "description": "Luo-painike"
   },
   "button.uploadImageUrls": {
-    "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload', do not use 'Upload Images')"
+    "message": "Lataa",
+    "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Starting task...",
-    "description": "Message indicating task start"
+    "message": "Aloitetaan tehtävää...",
+    "description": "Tehtävän aloitusviesti"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated generation task",
-    "description": "Task successfully created"
+    "message": "Tehtävä luotiin onnistuneesti",
+    "description": "Tehtävä luotiin onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator:",
-    "description": "Task creation failed"
+    "message": "Tehtävän aloitus epäonnistui, ota yhteyttä ylläpitäjään:",
+    "description": "Tehtävän luominen epäonnistui"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue using",
-    "description": "Exhausted credits message"
+    "message": "Oikeutesi on käytetty loppuun, osta lisää oikeuksia jatkaaksesi käyttöä",
+    "description": "Oikeudet käytetty loppuun -viesti"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 5 images",
-    "description": "Image count exceeds limit"
+    "message": "Voit ladata enintään 5 kuvaa",
+    "description": "Kuvien määrä ylittää rajan"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
-    "description": "Upload failure"
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Lataaminen epäonnistui"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Label for selecting OpenAI image model"
+    "message": "Malli",
+    "description": "OpenAI-kuvamallin valintatunniste"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option for gpt-image-1"
+    "description": "gpt-image-1 mallivaihtoehto"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option for gpt-image-1.5"
+    "description": "gpt-image-1.5 mallivaihtoehto"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option for gpt-image-2"
+    "description": "gpt-image-2 mallivaihtoehto"
   }
 }

@@ -1,126 +1,126 @@
 {
   "name.taskId": {
-    "message": "Task ID",
-    "description": "The ID of the task"
+    "message": "タスク ID",
+    "description": "タスクの ID"
   },
   "name.task": {
-    "message": "Task Type",
-    "description": "Type of OpenAI Image image operation"
+    "message": "タスクタイプ",
+    "description": "OpenAI Image 画像操作タイプ"
   },
   "name.generate": {
-    "message": "Create Image",
-    "description": "Operation type: Create Image"
+    "message": "画像生成",
+    "description": "操作タイプ：画像生成"
   },
   "name.edits": {
-    "message": "Edit Image",
-    "description": "Operation type: Edit Image"
+    "message": "画像編集",
+    "description": "操作タイプ：画像編集"
   },
   "name.imageUrls": {
-    "message": "Reference Images",
-    "description": "Reference images for editing"
+    "message": "参考画像",
+    "description": "編集用の参考画像"
   },
   "name.failure": {
-    "message": "Failure",
-    "description": "Task failure"
+    "message": "失敗",
+    "description": "タスクの失敗"
   },
   "name.failureReason": {
-    "message": "Failure Reason",
-    "description": "Reason for task failure"
+    "message": "失敗理由",
+    "description": "タスクの失敗理由"
   },
   "name.status": {
-    "message": "Status",
-    "description": "Task status"
+    "message": "ステータス",
+    "description": "タスクのステータス"
   },
   "name.traceId": {
-    "message": "Trace ID",
-    "description": "Trace ID"
+    "message": "トレース ID",
+    "description": "トレース ID"
   },
   "name.prompt": {
-    "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "message": "画像プロンプト",
+    "description": "生成/編集のプロンプト"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Name of the OpenAI Image bot"
+    "description": "OpenAI Image ロボット名"
   },
   "name.size": {
-    "message": "Size",
-    "description": "Output image size"
+    "message": "サイズ",
+    "description": "出力画像サイズ"
   },
   "description.size": {
-    "message": "Output size for generation. Common values: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Size description"
+    "message": "画像生成のための出力サイズ。一般的な値：1024x1024、1536x1024、1024x1536。",
+    "description": "サイズ説明"
   },
   "description.prompt": {
-    "message": "Prompt for generating or editing images",
-    "description": "Description of the prompt"
+    "message": "画像生成または編集のためのプロンプト",
+    "description": "プロンプト説明"
   },
   "description.model": {
-    "message": "Model used for image generation and editing.",
-    "description": "Description of the model parameter"
+    "message": "画像生成と編集に使用するモデル。",
+    "description": "model パラメータ説明"
   },
   "description.imageUrls": {
-    "message": "Upload 1-5 reference images to enable edit mode.",
-    "description": "Description of the image_urls parameter"
+    "message": "1～5枚の参考画像をアップロードして編集モードに入ります。",
+    "description": "image_urls パラメータ説明"
   },
   "status.pending": {
-    "message": "Pending",
-    "description": "Task waiting status"
+    "message": "保留中",
+    "description": "タスクの保留状態"
   },
   "placeholder.select": {
-    "message": "Select",
-    "description": "Selection placeholder"
+    "message": "選択",
+    "description": "選択プレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a watercolor cat on a desk",
-    "description": "Prompt placeholder"
+    "message": "プロンプトを入力してください。例：テーブルの上の水彩猫",
+    "description": "プロンプトプレースホルダー"
   },
   "button.generate": {
-    "message": "Generate",
-    "description": "Generate button"
+    "message": "生成",
+    "description": "生成ボタン"
   },
   "button.uploadImageUrls": {
-    "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload', do not use 'Upload Images')"
+    "message": "アップロード",
+    "description": "参考画像アップロードボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
   },
   "message.startingTask": {
-    "message": "Starting task...",
-    "description": "Message indicating task start"
+    "message": "タスクを開始しています...",
+    "description": "タスク開始メッセージ"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated generation task",
-    "description": "Task successfully created"
+    "message": "生成タスクを正常に開始しました",
+    "description": "タスクが正常に作成されました"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator:",
-    "description": "Task creation failed"
+    "message": "タスクの開始に失敗しました。管理者に連絡してください：",
+    "description": "タスク作成失敗"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue using",
-    "description": "Exhausted credits message"
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
+    "description": "使い切れたメッセージ"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 5 images",
-    "description": "Image count exceeds limit"
+    "message": "最大5枚の画像をアップロードできます",
+    "description": "画像数が制限を超えています"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
-    "description": "Upload failure"
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "アップロード失敗"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Label for selecting OpenAI image model"
+    "message": "モデル",
+    "description": "OpenAI 画像モデル選択ラベル"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option for gpt-image-1"
+    "description": "gpt-image-1 モデルオプション"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option for gpt-image-1.5"
+    "description": "gpt-image-1.5 モデルオプション"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option for gpt-image-2"
+    "description": "gpt-image-2 モデルオプション"
   }
 }
