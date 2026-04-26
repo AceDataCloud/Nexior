@@ -25,6 +25,7 @@ export * from './suno';
 export * from './producer';
 export * from './exchange';
 export * from './nanobanana';
+export * from './openaiimage';
 export * from './seedream';
 export * from './seedance';
 export * from './serp';

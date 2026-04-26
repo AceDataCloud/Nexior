@@ -15,6 +15,7 @@ import headshots from './headshots';
 import suno from './suno';
 import producer from './producer';
 import nanobanana from './nanobanana';
+import openaiimage from './openaiimage';
 import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
@@ -35,6 +36,7 @@ import persistHeadshots from './headshots/persist';
 import persistSuno from './suno/persist';
 import persistProducer from './producer/persist';
 import persistNanobanana from './nanobanana/persist';
+import persistOpenaiimage from './openaiimage/persist';
 import persistSeedream from './seedream/persist';
 import persistSeedance from './seedance/persist';
 import persistSerp from './serp/persist';
@@ -59,6 +61,7 @@ const store = createStore({
     suno: suno,
     producer: producer,
     nanobanana: nanobanana,
+    openaiimage: openaiimage,
     seedream: seedream,
     seedance: seedance,
     serp: serp,
@@ -83,6 +86,7 @@ const store = createStore({
         ...persistSuno,
         ...persistProducer,
         ...persistNanobanana,
+        ...persistOpenaiimage,
         ...persistSeedream,
         ...persistSeedance,
         ...persistSerp,
