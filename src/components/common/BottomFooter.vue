@@ -76,7 +76,7 @@ export default defineComponent({
     transition: color 0.2s;
 
     &:hover {
-      color: #c4b5fd;
+      color: #93b8c3;
     }
   }
 
@@ -87,7 +87,7 @@ export default defineComponent({
     transition: color 0.2s;
 
     &:hover {
-      color: #c4b5fd;
+      color: #93b8c3;
     }
   }
 }

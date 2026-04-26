@@ -190,7 +190,7 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 140px);
-  background: linear-gradient(180deg, #f5f3ff 0%, #ede9fe 48%, #f8f7ff 100%);
+  background: linear-gradient(180deg, #e9f1f3 0%, #d4e3e7 48%, #f1f7f8 100%);
 }
 
 .ambient {
@@ -213,7 +213,7 @@ export default defineComponent({
     right: -80px;
     width: 260px;
     height: 260px;
-    background: rgba(99, 102, 241, 0.15);
+    background: rgba(31, 90, 107, 0.15);
   }
 }
 
@@ -302,9 +302,9 @@ export default defineComponent({
 }
 
 .secondary-action {
-  border-color: rgba(124, 58, 237, 0.18);
+  border-color: rgba(39, 113, 134, 0.18);
   background: rgba(255, 255, 255, 0.72);
-  color: #1a103a;
+  color: #0e2a33;
 }
 
 .metrics {
@@ -360,7 +360,7 @@ export default defineComponent({
   }
 
   &--android::before {
-    background: linear-gradient(145deg, rgba(124, 58, 237, 0.12), transparent 42%);
+    background: linear-gradient(145deg, rgba(39, 113, 134, 0.12), transparent 42%);
   }
 
   &--ios::before {
@@ -407,8 +407,8 @@ export default defineComponent({
 }
 
 .platform-badge {
-  background: rgba(124, 58, 237, 0.12);
-  color: #7c3aed;
+  background: rgba(39, 113, 134, 0.12);
+  color: #277186;
 }
 
 .platform-badge--ios {
@@ -523,7 +523,7 @@ export default defineComponent({
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: #7c3aed;
+    color: #277186;
   }
 
   h3 {

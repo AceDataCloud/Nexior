@@ -11,26 +11,31 @@
             </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="skillManagerVisible = true">
+            <el-button
+              :class="['toolbar-btn', { active: activeSkillCount > 0 }]"
+              text
+              @click="skillManagerVisible = true"
+            >
               <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-              <el-badge v-if="activeSkillCount > 0" :value="activeSkillCount" :max="9" class="toolbar-badge" />
+              <span v-if="activeSkillCount > 0" class="toolbar-count">{{ Math.min(activeSkillCount, 9) }}</span>
             </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="mcpManagerVisible = true">
+            <el-button :class="['toolbar-btn', { active: enabledMcpCount > 0 }]" text @click="mcpManagerVisible = true">
               <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
-              <el-badge v-if="enabledMcpCount > 0" :value="enabledMcpCount" :max="9" class="toolbar-badge" />
+              <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
             </el-button>
           </el-tooltip>
           <el-tooltip v-if="hasConnectorProviders" :content="$t('chat.connector.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="connectorManagerVisible = true">
+            <el-button
+              :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
+              text
+              @click="connectorManagerVisible = true"
+            >
               <font-awesome-icon icon="fa-solid fa-plug" />
-              <el-badge
-                v-if="enabledConnectorCount > 0"
-                :value="enabledConnectorCount"
-                :max="9"
-                class="toolbar-badge"
-              />
+              <span v-if="enabledConnectorCount > 0" class="toolbar-count">{{
+                Math.min(enabledConnectorCount, 9)
+              }}</span>
             </el-button>
           </el-tooltip>
         </div>
@@ -103,7 +108,7 @@ import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
 import { chatOperator, mcpServerOperator, connectorOperator, agentOperator } from '@/operators';
-import { ElTooltip, ElButton, ElBadge } from 'element-plus';
+import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
@@ -142,7 +147,6 @@ export default defineComponent({
     Layout,
     ElTooltip,
     ElButton,
-    ElBadge,
     FontAwesomeIcon
   },
   data(): IData {
@@ -738,7 +742,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 16px;
   z-index: 100;
 }
 
@@ -749,30 +753,42 @@ export default defineComponent({
 .toolbar-actions {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-right: 40px;
+  gap: 2px;
 }
 
 .toolbar-btn {
   position: relative;
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
   color: var(--el-text-color-secondary);
+  padding: 6px 10px;
+  height: 32px;
+  line-height: 1;
 
   &:hover {
     color: var(--el-color-primary);
   }
 
-  .toolbar-badge {
-    position: absolute;
-    top: -4px;
-    right: -8px;
+  &.active {
+    color: var(--el-color-primary);
+    background-color: var(--el-color-primary-light-9);
+  }
 
-    :deep(.el-badge__content) {
-      font-size: 10px;
-      height: 16px;
-      line-height: 16px;
-      padding: 0 4px;
-    }
+  .toolbar-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    background-color: var(--el-color-primary);
+    border-radius: 9999px;
   }
 
   .agent-dot {
