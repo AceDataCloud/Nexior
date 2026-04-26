@@ -8,16 +8,16 @@
     "description": "Kling-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.modeStd": {
-    "message": "Normaali",
-    "description": "Kling-videon normaali tila"
+    "message": "Standardi",
+    "description": "Kling-videon standarditila"
   },
   "name.modePro": {
     "message": "Korkea laatu",
-    "description": "Kling-videon korkean laadun tila"
+    "description": "Kling-videon korkealaatuinen tila"
   },
   "name.failure": {
     "message": "Epätosi",
-    "description": "Tehtävän epäonnistumisen tila"
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -39,13 +39,17 @@
     "message": "Vapausaste",
     "description": "Videon luomisen vapausasteparametri (0-1), suurempi arvo tarkoittaa läheisyyttä viittaukseen"
   },
+  "name.generateAudio": {
+    "message": "Synkronoi ääni",
+    "description": "Synkronoidaanko ääni, tukee kling-v3, kling-v3-omni ja kling-v2-6 (pro-tila)"
+  },
   "name.startImage": {
     "message": "Ensimmäinen kehys",
     "description": "Lomakekentän etiketti: ensimmäinen kehys (pidä lyhyenä, jotta se ei peitä painiketta)"
   },
   "name.negativePrompt": {
     "message": "Negatiivinen vihje",
-    "description": "Videon luomisen negatiivinen tekstivihje"
+    "description": "Videon negatiivinen tekstivihje"
   },
   "name.endImage": {
     "message": "Viimeinen kehys",
@@ -125,31 +129,31 @@
   },
   "status.processing": {
     "message": "Käsittelyssä",
-    "description": "Tehtävän käsittelytila"
+    "description": "Tehtävän odotustila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyttömelun syötteen paikkamerkki"
+    "description": "Täyteäänisyötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "Valintakentän paikkateksti"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttötason paikkamerkki"
+    "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
     "message": "Syötä videon tyylin vihje, esim. moving",
-    "description": "Vihjekentän paikkamerkki"
+    "description": "Vihjekentän paikkateksti"
   },
   "placeholder.negativePrompt": {
     "message": "Syötä videon tyylin negatiivinen vihje, enintään 200 merkkiä",
-    "description": "Vihjekentän paikkamerkki"
+    "description": "Vihjekentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "Sijaintisyötteen paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
@@ -161,15 +165,15 @@
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkintämuodon syötteen paikkamerkki"
+    "description": "Paikkamerkki merkki muodon syötteelle"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kääntösyötteen paikkamerkki"
+    "description": "Paikkamerkki kiertämisen syötteelle"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Alamerkin syötteen paikkamerkki"
+    "description": "Paikkamerkki alamerkin syötteelle"
   },
   "button.precise": {
     "message": "Tarkka",

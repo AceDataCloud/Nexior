@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Task Type",
-    "description": "Type of OpenAI Image image operation"
+    "description": "OpenAI Image operation type"
   },
   "name.generate": {
     "message": "Create Image",
@@ -48,20 +48,20 @@
     "description": "Output image size"
   },
   "description.size": {
-    "message": "Output size for generation. Common values: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Output size for generated images, common values: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Size description"
   },
   "description.prompt": {
     "message": "Prompt for generating or editing images",
-    "description": "Description of the prompt"
+    "description": "Prompt description"
   },
   "description.model": {
     "message": "Model used for image generation and editing.",
-    "description": "Description of the model parameter"
+    "description": "Model parameter description"
   },
   "description.imageUrls": {
-    "message": "Upload 1-5 reference images to enable edit mode.",
-    "description": "Description of the image_urls parameter"
+    "message": "Upload 1-5 reference images to enter edit mode.",
+    "description": "Image URLs parameter description"
   },
   "status.pending": {
     "message": "Pending",
@@ -72,7 +72,7 @@
     "description": "Selection placeholder"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a watercolor cat on a desk",
+    "message": "Enter prompt, e.g., watercolor kitten on the table",
     "description": "Prompt placeholder"
   },
   "button.generate": {
@@ -81,22 +81,22 @@
   },
   "button.uploadImageUrls": {
     "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload', do not use 'Upload Images')"
+    "description": "Upload reference images button (simplified to 'Upload')"
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message indicating task start"
+    "description": "Message indicating task is starting"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated generation task",
-    "description": "Task successfully created"
+    "message": "Task generation initiated successfully",
+    "description": "Task created successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator:",
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "message": "Your credits are exhausted, please purchase more to continue using",
     "description": "Exhausted credits message"
   },
   "message.uploadImageExceed": {
@@ -104,23 +104,23 @@
     "description": "Image count exceeds limit"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
+    "message": "Image upload failed, please try again later",
     "description": "Upload failure"
   },
   "name.model": {
     "message": "Model",
-    "description": "Label for selecting OpenAI image model"
+    "description": "OpenAI image model selection label"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option for gpt-image-1"
+    "description": "gpt-image-1 model option"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option for gpt-image-1.5"
+    "description": "gpt-image-1.5 model option"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option for gpt-image-2"
+    "description": "gpt-image-2 model option"
   }
 }

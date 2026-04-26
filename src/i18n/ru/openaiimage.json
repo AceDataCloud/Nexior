@@ -1,126 +1,126 @@
 {
   "name.taskId": {
-    "message": "Task ID",
-    "description": "The ID of the task"
+    "message": "ID задачи",
+    "description": "ID задачи"
   },
   "name.task": {
-    "message": "Task Type",
-    "description": "Type of OpenAI Image image operation"
+    "message": "Тип задачи",
+    "description": "Тип операции с изображением OpenAI"
   },
   "name.generate": {
-    "message": "Create Image",
-    "description": "Operation type: Create Image"
+    "message": "Создать изображение",
+    "description": "Тип операции: создать изображение"
   },
   "name.edits": {
-    "message": "Edit Image",
-    "description": "Operation type: Edit Image"
+    "message": "Редактировать изображение",
+    "description": "Тип операции: редактировать изображение"
   },
   "name.imageUrls": {
-    "message": "Reference Images",
-    "description": "Reference images for editing"
+    "message": "Ссылки на изображения",
+    "description": "Ссылки на изображения для редактирования"
   },
   "name.failure": {
-    "message": "Failure",
-    "description": "Task failure"
+    "message": "Ошибка",
+    "description": "Задача завершилась неудачей"
   },
   "name.failureReason": {
-    "message": "Failure Reason",
-    "description": "Reason for task failure"
+    "message": "Причина ошибки",
+    "description": "Причина неудачи задачи"
   },
   "name.status": {
-    "message": "Status",
-    "description": "Task status"
+    "message": "Статус",
+    "description": "Статус задачи"
   },
   "name.traceId": {
-    "message": "Trace ID",
-    "description": "Trace ID"
+    "message": "ID отслеживания",
+    "description": "ID отслеживания"
   },
   "name.prompt": {
-    "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "message": "Подсказка для изображения",
+    "description": "Подсказка для генерации/редактирования"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Name of the OpenAI Image bot"
+    "description": "Название робота OpenAI Image"
   },
   "name.size": {
-    "message": "Size",
-    "description": "Output image size"
+    "message": "Размер",
+    "description": "Размер выходного изображения"
   },
   "description.size": {
-    "message": "Output size for generation. Common values: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Size description"
+    "message": "Выходной размер для генерации изображения, распространенные значения: 1024x1024, 1536x1024, 1024x1536.",
+    "description": "Описание размера"
   },
   "description.prompt": {
-    "message": "Prompt for generating or editing images",
-    "description": "Description of the prompt"
+    "message": "Подсказка для генерации или редактирования изображения",
+    "description": "Описание подсказки"
   },
   "description.model": {
-    "message": "Model used for image generation and editing.",
-    "description": "Description of the model parameter"
+    "message": "Модель для генерации и редактирования изображений.",
+    "description": "Описание параметра model"
   },
   "description.imageUrls": {
-    "message": "Upload 1-5 reference images to enable edit mode.",
-    "description": "Description of the image_urls parameter"
+    "message": "Загрузите 1-5 ссылок на изображения, чтобы перейти в режим редактирования.",
+    "description": "Описание параметра image_urls"
   },
   "status.pending": {
-    "message": "Pending",
-    "description": "Task waiting status"
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
   },
   "placeholder.select": {
-    "message": "Select",
-    "description": "Selection placeholder"
+    "message": "Выбрать",
+    "description": "Заполнитель выбора"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a watercolor cat on a desk",
-    "description": "Prompt placeholder"
+    "message": "Введите подсказку, например: акварельный кот на столе",
+    "description": "Заполнитель подсказки"
   },
   "button.generate": {
-    "message": "Generate",
-    "description": "Generate button"
+    "message": "Сгенерировать",
+    "description": "Кнопка генерации"
   },
   "button.uploadImageUrls": {
-    "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload', do not use 'Upload Images')"
+    "message": "Загрузить",
+    "description": "Кнопка загрузки ссылок на изображения (упростите до 'Загрузить', не используйте 'Загрузить изображения')"
   },
   "message.startingTask": {
-    "message": "Starting task...",
-    "description": "Message indicating task start"
+    "message": "Запуск задачи...",
+    "description": "Сообщение о начале задачи"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated generation task",
-    "description": "Task successfully created"
+    "message": "Задача на генерацию успешно запущена",
+    "description": "Задача успешно создана"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator:",
-    "description": "Task creation failed"
+    "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором:",
+    "description": "Неудача при создании задачи"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue using",
-    "description": "Exhausted credits message"
+    "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
+    "description": "Сообщение об исчерпании"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 5 images",
-    "description": "Image count exceeds limit"
+    "message": "Можно загрузить не более 5 изображений",
+    "description": "Количество изображений превышает лимит"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
-    "description": "Upload failure"
+    "message": "Не удалось загрузить изображение, пожалуйста, попробуйте позже",
+    "description": "Ошибка загрузки"
   },
   "name.model": {
-    "message": "Model",
-    "description": "Label for selecting OpenAI image model"
+    "message": "Модель",
+    "description": "Метка выбора модели OpenAI"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option for gpt-image-1"
+    "description": "Опция модели gpt-image-1"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option for gpt-image-1.5"
+    "description": "Опция модели gpt-image-1.5"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option for gpt-image-2"
+    "description": "Опция модели gpt-image-2"
   }
 }

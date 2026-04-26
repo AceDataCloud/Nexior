@@ -39,8 +39,12 @@
     "message": "自由度",
     "description": "生成視頻的自由度參數（0-1），值越大越貼近參考（英文建議：Freedom Level）"
   },
+  "name.generateAudio": {
+    "message": "同步生成音效",
+    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
+  },
   "name.startImage": {
-    "message": "首幀參考圖",
+    "message": "首幀參考圖片",
     "description": "表單字段標籤：首幀參考圖（英文建議翻譯為“First Frame”，保持簡短避免遮擋按鈕）"
   },
   "name.negativePrompt": {
@@ -48,7 +52,7 @@
     "description": "生成視頻的負向文本提示"
   },
   "name.endImage": {
-    "message": "尾幀參考圖",
+    "message": "尾幀參考圖片",
     "description": "表單字段標籤：尾幀參考圖（英文建議翻譯為“Last Frame”，保持簡短避免遮擋按鈕）"
   },
   "name.videoUrl": {
@@ -265,7 +269,7 @@
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
     "message": "上傳首幀圖片失敗",
@@ -273,7 +277,7 @@
   },
   "message.uploadVideoError": {
     "message": "上傳視頻失敗",
-    "description": "上傳首幀圖片失敗時的錯誤信息"
+    "description": "上傳視頻失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",
