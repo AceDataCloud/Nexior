@@ -251,17 +251,21 @@ const FEATURE_ROUTE_NAME: Record<string, string> = {
   serp: ROUTE_SERP_INDEX
 };
 
-const getDefaultRoute = (): string => {
+const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
   // Walk site.features in the order the API returned them and pick the
   // first enabled feature that maps to a known landing route.
   for (const key of Object.keys(features)) {
     if (!features[key]?.enabled) continue;
     const name = FEATURE_ROUTE_NAME[key];
-    if (name) return name;
+    // IMPORTANT: must return { name } — returning a bare string makes
+    // vue-router treat it as a *path*, which would navigate to e.g.
+    // /chatgpt-conversation-new (the route name) instead of the actual
+    // path /chatgpt/conversations.
+    if (name) return { name };
   }
   // Fallback: if no enabled feature has a landing route, use chatgpt.
-  return ROUTE_CHATGPT_CONVERSATION_NEW;
+  return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
 };
 
 const routes = [
