@@ -17,6 +17,7 @@
     />
     <el-upload
       v-if="inputWay == 'upload'"
+      ref="uploader"
       v-model:file-list="fileList"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
       name="file"
@@ -54,7 +55,7 @@ import { defineComponent } from 'vue';
 import { ElInput, ElRadioGroup, ElRadioButton, ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImagePreview from '@/components/common/ImagePreview.vue';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 
 export const DEFAULT_CONTENT = '';
 
@@ -75,6 +76,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
+  mixins: [pasteUploadMixin],
   data(): IData {
     return {
       inputWay: 'input',
