@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from '@/store';
+import type { ISiteFeatures } from '@/models/site';
 import auth from './auth';
 import console from './console';
 import grok from './grok';
@@ -31,7 +33,29 @@ import wan from './wan';
 import site from './site';
 import profile from './profile';
 
-import { ROUTE_CHATGPT_CONVERSATION_NEW } from './constants';
+import {
+  ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  ROUTE_GROK_CONVERSATION_NEW,
+  ROUTE_GEMINI_CONVERSATION_NEW,
+  ROUTE_CLAUDE_CONVERSATION_NEW,
+  ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_MIDJOURNEY_INDEX,
+  ROUTE_FLUX_INDEX,
+  ROUTE_NANOBANANA_INDEX,
+  ROUTE_SEEDREAM_INDEX,
+  ROUTE_SUNO_INDEX,
+  ROUTE_PRODUCER_INDEX,
+  ROUTE_SEEDANCE_INDEX,
+  ROUTE_LUMA_INDEX,
+  ROUTE_HAILUO_INDEX,
+  ROUTE_KLING_INDEX,
+  ROUTE_VEO_INDEX,
+  ROUTE_SORA_INDEX,
+  ROUTE_PIXVERSE_INDEX,
+  ROUTE_WAN_INDEX,
+  ROUTE_SERP_INDEX,
+} from './constants';
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
@@ -199,10 +223,69 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   }
 };
 
+const FEATURE_ROUTE_ORDER: Array<keyof ISiteFeatures> = [
+  'chatgpt',
+  'deepseek',
+  'grok',
+  'gemini',
+  'claude',
+  'kimi',
+  'midjourney',
+  'flux',
+  'nanobanana',
+  'seedream',
+  'suno',
+  'producer',
+  'seedance',
+  'luma',
+  'hailuo',
+  'kling',
+  'veo',
+  'sora',
+  'pixverse',
+  'wan',
+  'serp',
+];
+
+const getDefaultRoute = (): string => {
+  const features = store.state.site?.features ?? {};
+  for (const key of FEATURE_ROUTE_ORDER) {
+    if ((features as ISiteFeatures)[key as keyof ISiteFeatures]?.enabled) {
+      const routeNameMap: Record<string, string> = {
+        chatgpt: ROUTE_CHATGPT_CONVERSATION_NEW,
+        deepseek: ROUTE_DEEPSEEK_CONVERSATION_NEW,
+        grok: ROUTE_GROK_CONVERSATION_NEW,
+        gemini: ROUTE_GEMINI_CONVERSATION_NEW,
+        claude: ROUTE_CLAUDE_CONVERSATION_NEW,
+        kimi: ROUTE_KIMI_CONVERSATION_NEW,
+        midjourney: ROUTE_MIDJOURNEY_INDEX,
+        flux: ROUTE_FLUX_INDEX,
+        nanobanana: ROUTE_NANOBANANA_INDEX,
+        seedream: ROUTE_SEEDREAM_INDEX,
+        suno: ROUTE_SUNO_INDEX,
+        producer: ROUTE_PRODUCER_INDEX,
+        seedance: ROUTE_SEEDANCE_INDEX,
+        luma: ROUTE_LUMA_INDEX,
+        hailuo: ROUTE_HAILUO_INDEX,
+        kling: ROUTE_KLING_INDEX,
+        veo: ROUTE_VEO_INDEX,
+        sora: ROUTE_SORA_INDEX,
+        pixverse: ROUTE_PIXVERSE_INDEX,
+        wan: ROUTE_WAN_INDEX,
+        serp: ROUTE_SERP_INDEX,
+      };
+      const name = routeNameMap[key];
+      if (name) return name;
+    }
+  }
+  // Fallback to chatgpt
+  return ROUTE_CHATGPT_CONVERSATION_NEW;
+};
+
 const routes = [
   {
     path: '/',
-    redirect: { name: ROUTE_CHATGPT_CONVERSATION_NEW }
+    redirect: () => getDefaultRoute(),
   },
   {
     path: '/chat/oauth/callback',
