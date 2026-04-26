@@ -3,6 +3,7 @@
     <h2 class="title font-bold">{{ $t('headshots.name.endImageUrls') }}</h2>
     <div class="upload-wrapper">
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
         name="file"
@@ -38,7 +39,7 @@
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 export const DEFAULT_CONTENT = '';
@@ -57,6 +58,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
+  mixins: [pasteUploadMixin],
   data(): IData {
     return {
       fileList: [],

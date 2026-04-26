@@ -2,6 +2,7 @@
   <div class="composer">
     <div class="tools">
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         :class="{
           upload: true,
@@ -84,7 +85,7 @@ import { defineComponent } from 'vue';
 import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
-import { getBaseUrlPlatform, isImageUrl } from '@/utils';
+import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -98,6 +99,7 @@ export default defineComponent({
     ElUpload,
     ElButton
   },
+  mixins: [pasteUploadMixin],
   props: {
     answering: {
       type: Boolean,
@@ -161,6 +163,12 @@ export default defineComponent({
         return '.png,.jpg,.jpeg,.gif,.bmp,.webp,.svg,.tiff,.ico,.heic';
       }
       return undefined;
+    },
+    pasteAccept(): string {
+      // Restrict clipboard paste to images (still useful even when other file
+      // types are supported). The upload control itself will continue to
+      // accept anything via the file picker.
+      return '.png,.jpg,.jpeg,.gif,.bmp,.webp,.svg,.tiff,.ico,.heic,image/*';
     }
   },
   watch: {
