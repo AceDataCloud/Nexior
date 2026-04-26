@@ -104,6 +104,7 @@ const FEATURE_KEYS = [
   'hailuo',
   'headshots',
   'nanobanana',
+  'openaiimage',
   'seedream',
   'seedance',
   'wan',

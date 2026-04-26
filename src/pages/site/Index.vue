@@ -179,6 +179,7 @@
                   'midjourney',
                   'qrart',
                   'nanobanana',
+                  'openaiimage',
                   'seedream',
                   'seedance',
                   'suno',
