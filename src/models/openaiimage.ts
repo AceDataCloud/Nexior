@@ -11,6 +11,7 @@ export interface IOpenAIImageGenerateRequest {
   model?: string;
   prompt?: string;
   size?: string;
+  image_urls?: string[];
   callback_url?: string;
   background?: 'transparent' | 'opaque' | 'auto';
   quality?: 'auto' | 'high' | 'medium' | 'low' | 'standard';
