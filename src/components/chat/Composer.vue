@@ -382,7 +382,7 @@ textarea.input:focus {
     font-size: 16px;
     transition: box-shadow 0.2s ease;
     &:hover:not(:disabled) {
-      box-shadow: 0 0 16px rgba(124, 58, 237, 0.3);
+      box-shadow: 0 0 16px rgba(39, 113, 134, 0.3);
     }
   }
 }

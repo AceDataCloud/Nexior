@@ -39,8 +39,8 @@ export default defineComponent({
   &__image {
     display: block;
     width: auto;
-    max-width: 52px;
-    height: 52px;
+    max-width: 44px;
+    height: 44px;
     object-fit: contain;
     object-position: center;
     transition: height 0.2s ease;
@@ -48,8 +48,8 @@ export default defineComponent({
 
   .collapsed & {
     &__image {
-      height: 32px;
-      max-width: 32px;
+      height: 28px;
+      max-width: 28px;
     }
   }
 }

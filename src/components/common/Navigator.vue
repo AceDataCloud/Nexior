@@ -96,7 +96,7 @@ import {
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
   ROUTE_KIMI_CONVERSATION,
-  ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_KIMI_CONVERSATION_NEW
 } from '@/router/constants';
 import { SERP_LOGO } from '@/constants';
 import { ROUTE_SERP_INDEX } from '@/constants/serp';
@@ -511,7 +511,7 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 6px 0 4px;
+      padding: 10px 0 6px;
       width: 100%;
     }
 

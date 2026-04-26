@@ -481,7 +481,7 @@ export default defineComponent({
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(124, 58, 237, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(39, 113, 134, 0.15) 1px, transparent 1px);
     background-size: 32px 32px;
     opacity: 0.5;
     pointer-events: none;
@@ -503,7 +503,7 @@ export default defineComponent({
         text-align: left;
         letter-spacing: -0.03em;
         color: #ffffff;
-        background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 50%, #a78bfa 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #93b8c3 50%, #689caa 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -531,7 +531,7 @@ export default defineComponent({
 
           &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 50px rgba(39, 113, 134, 0.4);
           }
         }
       }

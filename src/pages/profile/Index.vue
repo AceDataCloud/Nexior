@@ -223,7 +223,7 @@ export default defineComponent({
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+    box-shadow: 0 0 0 3px rgba(39, 113, 134, 0.3);
   }
   h2 {
     font-size: 18px;
