@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store';
-import type { ISiteFeatures } from '@/models/site';
 import auth from './auth';
 import console from './console';
 import grok from './grok';
@@ -223,63 +222,50 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   }
 };
 
-const FEATURE_ROUTE_ORDER: Array<keyof ISiteFeatures> = [
-  'chatgpt',
-  'deepseek',
-  'grok',
-  'gemini',
-  'claude',
-  'kimi',
-  'midjourney',
-  'flux',
-  'nanobanana',
-  'seedream',
-  'suno',
-  'producer',
-  'seedance',
-  'luma',
-  'hailuo',
-  'kling',
-  'veo',
-  'sora',
-  'pixverse',
-  'wan',
-  'serp',
-];
+// Map every routeable feature key to the route name it should land on.
+// Note: this map only declares "this feature has a landing page". The order
+// of the user's default route is taken from the site's `features` config
+// (insertion order returned by the API), NOT from this map — so operators
+// can control which feature greets new visitors by ordering site.features.
+const FEATURE_ROUTE_NAME: Record<string, string> = {
+  chatgpt: ROUTE_CHATGPT_CONVERSATION_NEW,
+  deepseek: ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  grok: ROUTE_GROK_CONVERSATION_NEW,
+  gemini: ROUTE_GEMINI_CONVERSATION_NEW,
+  claude: ROUTE_CLAUDE_CONVERSATION_NEW,
+  kimi: ROUTE_KIMI_CONVERSATION_NEW,
+  midjourney: ROUTE_MIDJOURNEY_INDEX,
+  flux: ROUTE_FLUX_INDEX,
+  nanobanana: ROUTE_NANOBANANA_INDEX,
+  seedream: ROUTE_SEEDREAM_INDEX,
+  suno: ROUTE_SUNO_INDEX,
+  producer: ROUTE_PRODUCER_INDEX,
+  seedance: ROUTE_SEEDANCE_INDEX,
+  luma: ROUTE_LUMA_INDEX,
+  hailuo: ROUTE_HAILUO_INDEX,
+  kling: ROUTE_KLING_INDEX,
+  veo: ROUTE_VEO_INDEX,
+  sora: ROUTE_SORA_INDEX,
+  pixverse: ROUTE_PIXVERSE_INDEX,
+  wan: ROUTE_WAN_INDEX,
+  serp: ROUTE_SERP_INDEX
+};
 
-const getDefaultRoute = (): string => {
-  const features = store.state.site?.features ?? {};
-  for (const key of FEATURE_ROUTE_ORDER) {
-    if ((features as ISiteFeatures)[key as keyof ISiteFeatures]?.enabled) {
-      const routeNameMap: Record<string, string> = {
-        chatgpt: ROUTE_CHATGPT_CONVERSATION_NEW,
-        deepseek: ROUTE_DEEPSEEK_CONVERSATION_NEW,
-        grok: ROUTE_GROK_CONVERSATION_NEW,
-        gemini: ROUTE_GEMINI_CONVERSATION_NEW,
-        claude: ROUTE_CLAUDE_CONVERSATION_NEW,
-        kimi: ROUTE_KIMI_CONVERSATION_NEW,
-        midjourney: ROUTE_MIDJOURNEY_INDEX,
-        flux: ROUTE_FLUX_INDEX,
-        nanobanana: ROUTE_NANOBANANA_INDEX,
-        seedream: ROUTE_SEEDREAM_INDEX,
-        suno: ROUTE_SUNO_INDEX,
-        producer: ROUTE_PRODUCER_INDEX,
-        seedance: ROUTE_SEEDANCE_INDEX,
-        luma: ROUTE_LUMA_INDEX,
-        hailuo: ROUTE_HAILUO_INDEX,
-        kling: ROUTE_KLING_INDEX,
-        veo: ROUTE_VEO_INDEX,
-        sora: ROUTE_SORA_INDEX,
-        pixverse: ROUTE_PIXVERSE_INDEX,
-        wan: ROUTE_WAN_INDEX,
-        serp: ROUTE_SERP_INDEX,
-      };
-      const name = routeNameMap[key];
-      if (name) return name;
-    }
+const getDefaultRoute = (): { name: string } => {
+  const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
+  // Walk site.features in the order the API returned them and pick the
+  // first enabled feature that maps to a known landing route.
+  for (const key of Object.keys(features)) {
+    if (!features[key]?.enabled) continue;
+    const name = FEATURE_ROUTE_NAME[key];
+    // IMPORTANT: must return { name } — returning a bare string makes
+    // vue-router treat it as a *path*, which would navigate to e.g.
+    // /chatgpt-conversation-new (the route name) instead of the actual
+    // path /chatgpt/conversations.
+    if (name) return { name };
   }
-  // Fallback to chatgpt
-  return ROUTE_CHATGPT_CONVERSATION_NEW;
+  // Fallback: if no enabled feature has a landing route, use chatgpt.
+  return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
 };
 
 const routes = [
