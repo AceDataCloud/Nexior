@@ -23,6 +23,7 @@ import headshots from './headshots';
 import suno from './suno';
 import producer from './producer';
 import nanobanana from './nanobanana';
+import openaiimage from './openaiimage';
 import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
@@ -103,6 +104,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'NanoBanana',
     description: 'Generate and edit AI images with NanoBanana — powered by Gemini for creative image generation.',
     keywords: ['NanoBanana', 'AI Image', 'Gemini', 'Image Editing'],
+    category: 'AI Image Generation'
+  },
+  'openai-image': {
+    title: 'OpenAI Image',
+    description: 'Generate and edit AI images with OpenAI image models including gpt-image-1.5 and gpt-image-2.',
+    keywords: ['OpenAI Image', 'gpt-image-2', 'Image Editing', 'AI Image'],
     category: 'AI Image Generation'
   },
   seedream: {
@@ -224,6 +231,7 @@ const routes = [
   suno,
   producer,
   nanobanana,
+  openaiimage,
   seedream,
   seedance,
   serp,

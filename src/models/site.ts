@@ -17,6 +17,7 @@ export interface ISiteFeatures {
   headshots?: any;
   suno?: any;
   nanobanana?: any;
+  openaiimage?: any;
   seedream?: any;
   seedance?: any;
   wan?: any;

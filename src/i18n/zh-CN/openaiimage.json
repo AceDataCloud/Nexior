@@ -1,0 +1,126 @@
+{
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "任务的 ID"
+  },
+  "name.task": {
+    "message": "任务类型",
+    "description": "OpenAI Image 图片操作类型"
+  },
+  "name.generate": {
+    "message": "创建图片",
+    "description": "操作类型：创建图片"
+  },
+  "name.edits": {
+    "message": "编辑图片",
+    "description": "操作类型：编辑图片"
+  },
+  "name.imageUrls": {
+    "message": "参考图片",
+    "description": "用于编辑的参考图片"
+  },
+  "name.failure": {
+    "message": "失败",
+    "description": "任务失败"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "任务失败原因"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "任务状态"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "追踪 ID"
+  },
+  "name.prompt": {
+    "message": "图像提示",
+    "description": "生成/编辑的提示词"
+  },
+  "name.openaiimageBot": {
+    "message": "OpenAI Image Bot",
+    "description": "OpenAI Image 机器人名称"
+  },
+  "name.size": {
+    "message": "尺寸",
+    "description": "输出图像尺寸"
+  },
+  "description.size": {
+    "message": "用于生成图片的输出尺寸，常用值：1024x1024、1536x1024、1024x1536。",
+    "description": "尺寸说明"
+  },
+  "description.prompt": {
+    "message": "生成或编辑图像的提示词",
+    "description": "提示词描述"
+  },
+  "description.model": {
+    "message": "用于图像生成和编辑的模型。",
+    "description": "model 参数说明"
+  },
+  "description.imageUrls": {
+    "message": "上传 1-5 张参考图即可进入编辑模式。",
+    "description": "image_urls 参数说明"
+  },
+  "status.pending": {
+    "message": "等待中",
+    "description": "任务等待状态"
+  },
+  "placeholder.select": {
+    "message": "选择",
+    "description": "选择占位"
+  },
+  "placeholder.prompt": {
+    "message": "输入提示词，例如：桌子上的水彩小猫",
+    "description": "提示占位"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按钮"
+  },
+  "button.uploadImageUrls": {
+    "message": "上传图片",
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "message.startingTask": {
+    "message": "正在启动任务...",
+    "description": "开始任务消息"
+  },
+  "message.startTaskSuccess": {
+    "message": "成功发起生成任务",
+    "description": "任务成功创建"
+  },
+  "message.startTaskFailed": {
+    "message": "发起任务失败，请联系管理员：",
+    "description": "任务创建失败"
+  },
+  "message.usedUp": {
+    "message": "您的积分已用完，请购买更多积分后继续使用",
+    "description": "已用完提示"
+  },
+  "message.uploadImageExceed": {
+    "message": "最多可上传 5 张图片",
+    "description": "图片数量超过限制"
+  },
+  "message.uploadImageError": {
+    "message": "上传图片失败，请稍后重试",
+    "description": "上传失败"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "OpenAI 图像模型选择标签"
+  },
+  "model.gptImage1": {
+    "message": "gpt-image-1",
+    "description": "gpt-image-1 模型选项"
+  },
+  "model.gptImage15": {
+    "message": "gpt-image-1.5",
+    "description": "gpt-image-1.5 模型选项"
+  },
+  "model.gptImage2": {
+    "message": "gpt-image-2",
+    "description": "gpt-image-2 模型选项"
+  }
+}

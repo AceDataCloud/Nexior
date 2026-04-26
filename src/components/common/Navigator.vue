@@ -90,6 +90,7 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
+  ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_WAN_INDEX,
@@ -107,6 +108,7 @@ import {
   MIDJOURNEY_LOGO,
   FLUX_LOGO,
   NANOBANANA_LOGO,
+  OPENAIIMAGE_LOGO,
   SEEDREAM_LOGO,
   SEEDANCE_LOGO,
   SUNO_LOGO,
@@ -243,6 +245,18 @@ export default defineComponent({
           displayName: this.$t('common.nav.nanobanana'),
           logo: NANOBANANA_LOGO,
           routes: [ROUTE_NANOBANANA_INDEX],
+          category: 'image'
+        });
+      }
+      if (
+        this.$store?.state?.site?.features?.openaiimage?.enabled ||
+        this.$store?.state?.site?.features?.chatgpt?.enabled
+      ) {
+        result.push({
+          route: { name: ROUTE_OPENAIIMAGE_INDEX },
+          displayName: this.$t('common.nav.openaiimage'),
+          logo: OPENAIIMAGE_LOGO,
+          routes: [ROUTE_OPENAIIMAGE_INDEX],
           category: 'image'
         });
       }
