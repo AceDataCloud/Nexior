@@ -55,7 +55,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_PAT || github.token }}
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
         with:
           tag_name: ${{ steps.meta.outputs.tag }}
           name: v${{ steps.meta.outputs.version }}

@@ -4,6 +4,7 @@
     <div class="upload-wrapper flex flex-col items-start gap-[8px]">
       <div class="controls flex items-center">
         <el-upload
+          ref="uploader"
           v-model:file-list="fileList"
           accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
           name="file"
@@ -47,6 +48,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import { pasteUploadMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -63,6 +65,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
+  mixins: [pasteUploadMixin],
   data(): IData {
     return {
       fileList: [],

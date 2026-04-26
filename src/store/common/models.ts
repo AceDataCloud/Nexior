@@ -14,6 +14,7 @@ import { IHeadshotsState } from '../headshots/models';
 import { ISunoState } from '../suno/models';
 import { IProducerState } from '../producer/models';
 import { INanobananaState } from '../nanobanana/models';
+import { IOpenAIImageState } from '../openaiimage/models';
 import { ISeedreamState } from '../seedream/models';
 import { ISeedanceState } from '../seedance/models';
 import { ISerpState } from '../serp/models';
@@ -62,6 +63,7 @@ export interface IAppState {
   suno: ISunoState;
   producer: IProducerState;
   nanobanana: INanobananaState;
+  openaiimage: IOpenAIImageState;
   seedream: ISeedreamState;
   seedance: ISeedanceState;
   serp: ISerpState;

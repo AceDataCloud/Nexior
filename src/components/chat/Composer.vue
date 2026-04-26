@@ -2,6 +2,7 @@
   <div class="composer">
     <div class="tools">
       <el-upload
+        ref="uploader"
         v-model:file-list="fileList"
         :class="{
           upload: true,
@@ -44,7 +45,7 @@
       </el-upload>
     </div>
     <el-button
-      :disabled="answering || !questionValue || uploading"
+      :disabled="answering || !questionValue || uploading || !ready"
       type="primary"
       :class="{
         btn: true,
@@ -84,7 +85,7 @@ import { defineComponent } from 'vue';
 import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
-import { getBaseUrlPlatform, isImageUrl } from '@/utils';
+import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -98,11 +99,17 @@ export default defineComponent({
     ElUpload,
     ElButton
   },
+  mixins: [pasteUploadMixin],
   props: {
     answering: {
       type: Boolean,
       required: false,
       default: false
+    },
+    ready: {
+      type: Boolean,
+      required: false,
+      default: true
     },
     references: {
       type: Array,
@@ -156,6 +163,12 @@ export default defineComponent({
         return '.png,.jpg,.jpeg,.gif,.bmp,.webp,.svg,.tiff,.ico,.heic';
       }
       return undefined;
+    },
+    pasteAccept(): string {
+      // Restrict clipboard paste to images (still useful even when other file
+      // types are supported). The upload control itself will continue to
+      // accept anything via the file picker.
+      return '.png,.jpg,.jpeg,.gif,.bmp,.webp,.svg,.tiff,.ico,.heic,image/*';
     }
   },
   watch: {
@@ -200,7 +213,7 @@ export default defineComponent({
       });
     },
     onSubmit() {
-      if (!this.question || this.uploading) {
+      if (!this.question || this.uploading || !this.ready) {
         return;
       }
       this.$emit('submit');

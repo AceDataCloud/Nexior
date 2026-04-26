@@ -2,24 +2,15 @@ import {
   ROLE_ASSISTANT,
   ROLE_SYSTEM,
   ROLE_USER,
-  CHAT_MODEL_NAME_GPT_4_ALL,
-  CHAT_MODEL_NAME_GPT_4O,
-  CHAT_MODEL_NAME_O1,
-  CHAT_MODEL_NAME_O1_MINI,
-  CHAT_MODEL_NAME_O3,
-  CHAT_MODEL_NAME_O4_MINI,
-  CHAT_MODEL_NAME_GPT_4O_IMAGE,
-  CHAT_MODEL_NAME_GPT_4O_MINI,
   CHAT_MODEL_NAME_DEEPSEEK_CHAT,
   CHAT_MODEL_NAME_DEEPSEEK32_CHAT,
   CHAT_MODEL_NAME_DEEPSEEK_REASONER,
   CHAT_MODEL_NAME_GROK_3,
   CHAT_MODEL_NAME_GROK_3_REASONER,
   CHAT_MODEL_NAME_GROK_3_DEEPSEARCH,
-  CHAT_MODEL_NAME_GPT_5,
-  CHAT_MODEL_NAME_GPT_5_MINI,
-  CHAT_MODEL_NAME_GPT_5_ALL,
-  CHAT_MODEL_NAME_GPT_4O_ALL,
+  CHAT_MODEL_NAME_GPT_5_4,
+  CHAT_MODEL_NAME_GPT_5_4_MINI,
+  CHAT_MODEL_NAME_GPT_5_4_NANO,
   CHAT_MODEL_NAME_GROK_4,
   CHAT_MODEL_NAME_GEMINI_2_5_FLASH,
   CHAT_MODEL_NAME_GEMINI_2_5_PRO,
@@ -29,17 +20,15 @@ import {
   CHAT_MODEL_NAME_CLAUDE_3_7_SONNET,
   CHAT_MODEL_NAME_KIMI_K2_5,
   CHAT_MODEL_NAME_KIMI_K2_THINKING,
-  CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO
+  CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO,
+  CHAT_MODEL_NAME_GLM_5_1,
+  CHAT_MODEL_NAME_GLM_4_7
 } from '@/constants';
 
 export type IChatModelName =
-  | typeof CHAT_MODEL_NAME_GPT_5
-  | typeof CHAT_MODEL_NAME_GPT_5_ALL
-  | typeof CHAT_MODEL_NAME_GPT_5_MINI
-  | typeof CHAT_MODEL_NAME_GPT_4O_ALL
-  | typeof CHAT_MODEL_NAME_GPT_4_ALL
-  | typeof CHAT_MODEL_NAME_GPT_4O
-  | typeof CHAT_MODEL_NAME_GPT_4O_MINI
+  | typeof CHAT_MODEL_NAME_GPT_5_4
+  | typeof CHAT_MODEL_NAME_GPT_5_4_MINI
+  | typeof CHAT_MODEL_NAME_GPT_5_4_NANO
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK32_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK_REASONER
@@ -47,12 +36,6 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GROK_3
   | typeof CHAT_MODEL_NAME_GROK_3_REASONER
   | typeof CHAT_MODEL_NAME_GROK_3_DEEPSEARCH
-  | typeof CHAT_MODEL_NAME_O1
-  | typeof CHAT_MODEL_NAME_O1_MINI
-  | typeof CHAT_MODEL_NAME_O3
-  | typeof CHAT_MODEL_NAME_O4_MINI
-  | typeof CHAT_MODEL_NAME_GPT_4O_IMAGE
-  | typeof CHAT_MODEL_NAME_O3
   | typeof CHAT_MODEL_NAME_GEMINI_3_0_PRO
   | typeof CHAT_MODEL_NAME_GEMINI_2_5_PRO
   | typeof CHAT_MODEL_NAME_GEMINI_2_5_FLASH
@@ -61,13 +44,15 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_CLAUDE_3_7_SONNET
   | typeof CHAT_MODEL_NAME_KIMI_K2_5
   | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING
-  | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO;
+  | typeof CHAT_MODEL_NAME_KIMI_K2_THINKING_TURBO
+  | typeof CHAT_MODEL_NAME_GLM_5_1
+  | typeof CHAT_MODEL_NAME_GLM_4_7;
 
 export interface IChatModel {
   enabled?: boolean;
   name: IChatModelName;
   icon: string;
-  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi';
+  modelGroup?: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
   getDisplayName: () => string;
   getDescription: () => string;
   isSearchSupported?: boolean;
@@ -78,7 +63,7 @@ export interface IChatModel {
 }
 
 export interface IChatModelGroup {
-  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi';
+  name: 'chatgpt' | 'deepseek' | 'grok' | 'gemini' | 'claude' | 'kimi' | 'glm';
   icon: string;
   getDisplayName: () => string;
   getDescription: () => string;
@@ -102,6 +87,17 @@ export interface IChatMessageContentItem {
   text?: string;
   image_url?: { url: string } | string;
   file_url?: { url: string } | string;
+  name?: string;
+  mimeType?: string;
+  // Tool-calling fields (type='tool_use')
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: string;
+  is_error?: boolean;
+  duration_ms?: number;
+  status?: 'running' | 'done';
 }
 
 export interface IChatMessage {
@@ -131,17 +127,41 @@ export interface IChatConversationOptions {
 export interface IChatConversationRequest {
   id?: string;
   question?: string;
+  message?: string | IChatMessageContentItem[];
   references?: string[];
   stateful?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
   model: IChatModelName;
+  tools_enabled?: boolean;
+  tools_filter?: string[];
+  mcp_servers?: string[];
+  connectors?: string[];
+  skills?: string[];
 }
 
 export interface IChatConversationResponse {
   answer: string;
   delta_answer: string;
   id?: string;
+  // aichat2 tool-calling event fields
+  type?: string;
+  message?: string;
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: string;
+  is_error?: boolean;
+  duration_ms?: number;
+  content?: string;
+  artifact?: {
+    type: string;
+    url: string;
+    name: string;
+    mimeType: string;
+    size?: number;
+  };
 }
 
 export interface IChatConversationsResponse {
@@ -155,4 +175,68 @@ export enum IChatConversationAction {
   UPDATE = 'update',
   DELETE = 'delete',
   RETRIEVE_BATCH = 'retrieve_batch'
+}
+
+// ===== Tool Calling Types (aichat2 orchestrator) =====
+
+export type IChatToolCallState = 'running' | 'completed' | 'failed';
+
+export interface IChatArtifact {
+  type: 'image' | 'file' | 'audio' | 'video' | 'code';
+  url: string;
+  name: string;
+  mimeType: string;
+}
+
+export interface IChatToolCall {
+  id: string;
+  name: string;
+  displayName?: string;
+  input: Record<string, unknown>;
+  output?: unknown;
+  state: IChatToolCallState;
+  durationMs?: number;
+  artifacts?: IChatArtifact[];
+}
+
+export interface IChatSSEEvent {
+  type:
+    | 'text_delta'
+    | 'tool_use_start'
+    | 'tool_progress'
+    | 'tool_result'
+    | 'confirmation_required'
+    | 'thinking'
+    | 'done'
+    | 'error';
+  // text_delta
+  content?: string;
+  id?: string;
+  // tool events
+  tool_id?: string;
+  tool_name?: string;
+  tool_display_name?: string;
+  input?: Record<string, unknown>;
+  output?: unknown;
+  is_error?: boolean;
+  duration_ms?: number;
+  // thinking
+  // done
+  conversation_id?: string;
+  usage?: {
+    prompt_tokens: number;
+    completion_tokens: number;
+    total_turns: number;
+    tool_calls: number;
+  };
+  // error
+  message?: string;
+  // confirmation
+  description?: string;
+}
+
+export interface IChatConversationResponseV2 extends IChatConversationResponse {
+  toolCalls?: IChatToolCall[];
+  thinking?: string;
+  event?: IChatSSEEvent;
 }

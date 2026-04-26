@@ -29,24 +29,36 @@ export default defineComponent({
     return {
       options: [
         {
-          value: 'kling-v1',
-          label: 'v1'
+          value: 'kling-v3',
+          label: 'v3'
         },
         {
-          value: 'kling-v1-6',
-          label: 'v1.6'
+          value: 'kling-v3-omni',
+          label: 'v3-Omni'
         },
         {
-          value: 'kling-v2-master',
-          label: 'v2-Master'
+          value: 'kling-v2-6',
+          label: 'v2.6'
+        },
+        {
+          value: 'kling-v2-5-turbo',
+          label: 'v2.5-Turbo'
         },
         {
           value: 'kling-v2-1-master',
           label: 'v2.1-Master'
         },
         {
-          value: 'kling-v2-5-turbo',
-          label: 'v2.5-Turbo'
+          value: 'kling-v2-master',
+          label: 'v2-Master'
+        },
+        {
+          value: 'kling-v1-6',
+          label: 'v1.6'
+        },
+        {
+          value: 'kling-v1',
+          label: 'v1'
         },
         {
           value: 'kling-video-o1',

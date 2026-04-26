@@ -617,17 +617,17 @@ export default defineComponent({
         font-size: 14px;
         font-weight: bold;
         margin-top: 5px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
       .style {
         font-size: 12px;
         margin-bottom: 0;
         color: var(--el-text-color-secondary);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
     }
     .right {

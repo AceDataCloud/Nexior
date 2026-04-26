@@ -14,6 +14,7 @@ export interface IKlingConfig {
   camera_control?: string;
   cfg_scale?: number;
   callback_url?: string;
+  generate_audio?: boolean;
 }
 
 export interface IKlingGenerateRequest {
@@ -31,6 +32,7 @@ export interface IKlingGenerateRequest {
   cfg_scale?: number;
   callback_url?: string;
   mirror?: boolean;
+  generate_audio?: boolean;
 }
 export interface IKlingVideo {
   id?: string;

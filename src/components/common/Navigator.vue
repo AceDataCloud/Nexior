@@ -90,14 +90,16 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
+  ROUTE_OPENAIIMAGE_INDEX,
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
   ROUTE_KIMI_CONVERSATION,
   ROUTE_KIMI_CONVERSATION_NEW,
-  ROUTE_SERP_INDEX
 } from '@/router/constants';
+import { SERP_LOGO } from '@/constants';
+import { ROUTE_SERP_INDEX } from '@/constants/serp';
 import {
   CHAT_MODEL_ICON_CHATGPT,
   CHAT_MODEL_ICON_DEEPSEEK,
@@ -107,6 +109,7 @@ import {
   MIDJOURNEY_LOGO,
   FLUX_LOGO,
   NANOBANANA_LOGO,
+  OPENAIIMAGE_LOGO,
   SEEDREAM_LOGO,
   SEEDANCE_LOGO,
   SUNO_LOGO,
@@ -118,8 +121,7 @@ import {
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
-  CHAT_MODEL_ICON_KIMI,
-  SERP_LOGO
+  CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
@@ -243,6 +245,18 @@ export default defineComponent({
           displayName: this.$t('common.nav.nanobanana'),
           logo: NANOBANANA_LOGO,
           routes: [ROUTE_NANOBANANA_INDEX],
+          category: 'image'
+        });
+      }
+      if (
+        this.$store?.state?.site?.features?.openaiimage?.enabled ||
+        this.$store?.state?.site?.features?.chatgpt?.enabled
+      ) {
+        result.push({
+          route: { name: ROUTE_OPENAIIMAGE_INDEX },
+          displayName: this.$t('common.nav.openaiimage'),
+          logo: OPENAIIMAGE_LOGO,
+          routes: [ROUTE_OPENAIIMAGE_INDEX],
           category: 'image'
         });
       }
@@ -500,7 +514,7 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 12px 0 6px;
+      padding: 6px 0 4px;
       width: 100%;
     }
 

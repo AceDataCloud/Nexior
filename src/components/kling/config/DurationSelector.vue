@@ -10,7 +10,21 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
-import { KLING_DEFAULT_DURATION } from '@/constants';
+import { KLING_DEFAULT_DURATION, KLING_V3_MODELS } from '@/constants';
+
+const STANDARD_OPTIONS = [
+  { value: 5, label: '5秒' },
+  { value: 10, label: '10秒' }
+];
+
+const V3_OPTIONS = [
+  { value: 3, label: '3秒' },
+  { value: 5, label: '5秒' },
+  { value: 8, label: '8秒' },
+  { value: 10, label: '10秒' },
+  { value: 12, label: '12秒' },
+  { value: 15, label: '15秒' }
+];
 
 export default defineComponent({
   name: 'DurationSelector',
@@ -25,21 +39,16 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue'],
-  data() {
-    return {
-      options: [
-        {
-          value: 5,
-          label: '5秒'
-        },
-        {
-          value: 10,
-          label: '10秒'
-        }
-      ]
-    };
-  },
   computed: {
+    selectedModel() {
+      return this.$store.state.kling?.config?.model || '';
+    },
+    isV3Model() {
+      return KLING_V3_MODELS.includes(this.selectedModel);
+    },
+    options() {
+      return this.isV3Model ? V3_OPTIONS : STANDARD_OPTIONS;
+    },
     value: {
       get() {
         return this.$store.state.kling?.config?.duration;
@@ -49,6 +58,15 @@ export default defineComponent({
           ...this.$store.state.kling.config,
           duration: val
         });
+      }
+    }
+  },
+  watch: {
+    isV3Model(newVal: boolean) {
+      const current = this.value;
+      const validValues = (newVal ? V3_OPTIONS : STANDARD_OPTIONS).map((o) => o.value);
+      if (current !== undefined && !validValues.includes(current)) {
+        this.value = KLING_DEFAULT_DURATION;
       }
     }
   },

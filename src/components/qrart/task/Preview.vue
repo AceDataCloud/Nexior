@@ -7,7 +7,9 @@
       />
     </div>
     <div class="main flex-1 w-[calc(100%-70px)] min-w-0 pt-[10px] pr-[10px] pb-0 pl-[10px]">
-      <div class="bot text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden text-ellipsis whitespace-nowrap">
+      <div
+        class="bot text-[16px] font-bold text-[var(--el-color-primary)] overflow-hidden text-ellipsis whitespace-nowrap"
+      >
         {{ $t('qrart.name.qrartBot') }}
         <span class="datetime text-[12px] font-normal text-[var(--el-text-color-secondary)] ml-[10px]">
           {{ $dayjs.format('' + new Date(parseFloat((modelValue?.created_at || '').toString()) * 1000)) }}
@@ -230,9 +232,9 @@ $left-width: 70px;
         font-weight: bold;
         color: var(--el-text-color-regular);
         margin-bottom: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
       }
     }
 

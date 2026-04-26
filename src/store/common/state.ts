@@ -14,6 +14,7 @@ import sunoState from '../suno/state';
 import producerState from '../producer/state';
 import headshotsState from '../headshots/state';
 import nanobananaState from '../nanobanana/state';
+import openaiimageState from '../openaiimage/state';
 import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
 import serpState from '../serp/state';
@@ -58,6 +59,7 @@ export default (): IRootState => {
     producer: producerState(),
     headshots: headshotsState(),
     nanobanana: nanobananaState(),
+    openaiimage: openaiimageState(),
     seedream: seedreamState(),
     seedance: seedanceState(),
     serp: serpState(),
