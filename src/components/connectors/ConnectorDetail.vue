@@ -123,8 +123,9 @@ import {
   ElMessageBox
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { connectorOperator, mcpServerOperator } from '@/operators';
+import { mcpServerOperator } from '@/operators';
 import { IMcpTool } from '@/models';
+import { openConnectionsManager } from '@/utils';
 import { IConnectorItem, ToolPermission, loadPermissions, savePermissions } from '@/components/connectors/types';
 
 export default defineComponent({
@@ -188,62 +189,21 @@ export default defineComponent({
     onDefaultChanged() {
       this.persist();
     },
-    // Provider OAuth
-    async onConnectProvider() {
+    // Provider OAuth — connect/disconnect/toggle now happen in
+    // AuthFrontend (auth.acedata.cloud/user/connections), the single
+    // source of truth for OAuth grants. Open it in a new tab so the
+    // user does not lose their Nexior context.
+    onConnectProvider() {
       const providerId = this.item.provider?.id;
-      if (!providerId || !this.token) return;
-      this.connecting = true;
-      try {
-        const { data } = await connectorOperator.authorize(providerId, this.token);
-        const popup = window.open(data.authorization_url, 'oauth-popup', 'width=600,height=700,scrollbars=yes');
-        const handler = async (event: MessageEvent) => {
-          if (event.data?.type !== 'oauth-callback') return;
-          window.removeEventListener('message', handler);
-          const { code, state } = event.data;
-          if (!code || !state) {
-            ElMessage.error(this.$t('connector.common.authFailed'));
-            return;
-          }
-          try {
-            await connectorOperator.exchange(code, state, this.token);
-            ElMessage.success(this.$t('connector.detail.connected'));
-            this.$emit('change');
-          } catch {
-            ElMessage.error(this.$t('connector.common.authFailed'));
-          }
-        };
-        window.addEventListener('message', handler);
-        const pollTimer = setInterval(() => {
-          if (popup?.closed) {
-            clearInterval(pollTimer);
-            this.connecting = false;
-          }
-        }, 500);
-      } catch {
-        ElMessage.error(this.$t('connector.common.authFailed'));
-        this.connecting = false;
-      }
+      openConnectionsManager(providerId);
     },
-    async onDisconnectProvider() {
+    onDisconnectProvider() {
       const providerId = this.item.provider?.id;
-      if (!providerId || !this.token) return;
-      try {
-        await connectorOperator.disconnect(providerId, this.token);
-        ElMessage.success(this.$t('connector.detail.disconnected'));
-        this.$emit('change');
-      } catch {
-        ElMessage.error(this.$t('connector.common.toggleError'));
-      }
+      openConnectionsManager(providerId);
     },
-    async onToggleConnector(enabled: boolean) {
+    onToggleConnector() {
       const providerId = this.item.provider?.id;
-      if (!providerId || !this.token) return;
-      try {
-        await connectorOperator.toggle(providerId, enabled, this.token);
-        this.$emit('change');
-      } catch {
-        ElMessage.error(this.$t('connector.common.toggleError'));
-      }
+      openConnectionsManager(providerId);
     },
     // Custom MCP
     async onToggleMcp(enabled: boolean) {

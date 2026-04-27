@@ -122,6 +122,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { connectorOperator, mcpServerOperator } from '@/operators';
 import { IConnectorProvider, IBuiltinMcpServer } from '@/models';
 import { ROUTE_CONNECTORS_INDEX } from '@/router/constants';
+import { openConnectionsManager } from '@/utils';
 import { PROVIDER_ICONS, resolveBuiltinIcon } from '@/components/connectors/types';
 import McpManager from '@/components/chat/McpManager.vue';
 
@@ -195,33 +196,11 @@ export default defineComponent({
       this.$router.push({ name: ROUTE_CONNECTORS_INDEX });
     },
     async onConnectProvider(provider: IConnectorProvider) {
-      if (provider.connected || provider.available === false || !this.token) return;
-      try {
-        const { data } = await connectorOperator.authorize(provider.id, this.token);
-        const popup = window.open(data.authorization_url, 'oauth-popup', 'width=600,height=700,scrollbars=yes');
-        const handler = async (event: MessageEvent) => {
-          if (event.data?.type !== 'oauth-callback') return;
-          window.removeEventListener('message', handler);
-          const { code, state } = event.data;
-          if (!code || !state) {
-            ElMessage.error(this.$t('connector.common.authFailed'));
-            return;
-          }
-          try {
-            await connectorOperator.exchange(code, state, this.token);
-            ElMessage.success(this.$t('connector.detail.connected'));
-            await this.loadAll();
-          } catch {
-            ElMessage.error(this.$t('connector.common.authFailed'));
-          }
-        };
-        window.addEventListener('message', handler);
-        const pollTimer = setInterval(() => {
-          if (popup?.closed) clearInterval(pollTimer);
-        }, 500);
-      } catch {
-        ElMessage.error(this.$t('connector.common.authFailed'));
-      }
+      if (provider.connected || provider.available === false) return;
+      // OAuth grants are managed centrally at AuthFrontend
+      // (auth.acedata.cloud/user/connections); redirect there with a
+      // return_url so the user can come back when finished.
+      openConnectionsManager(provider.id);
     },
     async onInstallBuiltin(b: IBuiltinMcpServer) {
       if (b.installed || !this.token) return;
