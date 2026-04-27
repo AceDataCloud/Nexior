@@ -7,9 +7,7 @@
         <el-icon v-else color="#f56c6c"><CircleClose /></el-icon>
       </span>
       <span class="tool-name">{{ toolCall.displayName || toolCall.name }}</span>
-      <span v-if="toolCall.durationMs" class="tool-duration">
-        {{ (toolCall.durationMs / 1000).toFixed(1) }}s
-      </span>
+      <span v-if="toolCall.durationMs" class="tool-duration"> {{ (toolCall.durationMs / 1000).toFixed(1) }}s </span>
       <el-icon class="collapse-icon" :class="{ 'is-collapsed': collapsed }">
         <ArrowDown />
       </el-icon>
@@ -35,11 +33,7 @@
         <div v-if="toolCall.artifacts?.length" class="tool-section">
           <div class="tool-section-label">Generated</div>
           <div class="tool-artifacts">
-            <ArtifactBlock
-              v-for="(artifact, idx) in toolCall.artifacts"
-              :key="idx"
-              :artifact="artifact"
-            />
+            <ArtifactBlock v-for="(artifact, idx) in toolCall.artifacts" :key="idx" :artifact="artifact" />
           </div>
         </div>
       </div>

@@ -1,5 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
-import { IMcpServer, IMcpServerListResponse, IMcpServerTestResponse, IMcpOAuthStartResponse, IMcpOAuthCallbackResponse } from '@/models';
+import {
+  IMcpServer,
+  IMcpServerListResponse,
+  IMcpServerTestResponse,
+  IMcpOAuthStartResponse,
+  IMcpOAuthCallbackResponse
+} from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class McpServerOperator {

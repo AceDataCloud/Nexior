@@ -4,4 +4,3 @@ export const SERP_LOGO = 'https://cdn.acedata.cloud/27e11e555d.png';
 
 // Route name constant (defined here to avoid circular dependency with @/router/constants)
 export const ROUTE_SERP_INDEX = 'serp-index';
-
