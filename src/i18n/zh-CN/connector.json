@@ -27,6 +27,14 @@
     "message": "CUSTOM",
     "description": "自定义连接器徽标"
   },
+  "badge.builtin": {
+    "message": "内置",
+    "description": "内置 MCP 服务器徽标"
+  },
+  "badge.comingSoon": {
+    "message": "即将上线",
+    "description": "未配置的 OAuth 提供方徽标"
+  },
   "menu.browse": {
     "message": "浏览连接器",
     "description": "添加菜单：从目录浏览"
@@ -70,6 +78,22 @@
   "detail.empty": {
     "message": "选择左侧的连接器以查看详情。",
     "description": "未选中任何连接器时的提示"
+  },
+  "detail.empty.title": {
+    "message": "选择一个连接器",
+    "description": "右侧未选中时的标题"
+  },
+  "detail.empty.desc": {
+    "message": "从左侧选择已连接的项目以查看详情，或浏览目录添加新连接器。",
+    "description": "右侧未选中时的描述"
+  },
+  "empty.title": {
+    "message": "还没有连接器",
+    "description": "侧栏完全为空时的标题"
+  },
+  "empty.desc": {
+    "message": "浏览目录开始添加连接器，或添加您自己的 MCP 服务器。",
+    "description": "侧栏完全为空时的描述"
   },
   "detail.noTools": {
     "message": "此连接器尚未发现可用工具。",
@@ -226,6 +250,38 @@
   "browse.empty": {
     "message": "未找到匹配的连接器。",
     "description": "目录搜索为空"
+  },
+  "browse.builtinTitle": {
+    "message": "内置 MCP 服务器",
+    "description": "内置 MCP 分组标题"
+  },
+  "browse.builtinDesc": {
+    "message": "由 AceDataCloud 提供，一键安装即可使用。",
+    "description": "内置 MCP 分组描述"
+  },
+  "browse.providersTitle": {
+    "message": "OAuth 提供方",
+    "description": "OAuth 提供方分组标题"
+  },
+  "browse.providersDesc": {
+    "message": "通过 OAuth 连接到您的 Google、GitHub、Slack 等账户。",
+    "description": "OAuth 提供方分组描述"
+  },
+  "browse.customTitle": {
+    "message": "自定义 MCP 服务器",
+    "description": "自定义 MCP 分组标题"
+  },
+  "browse.customDesc": {
+    "message": "添加您自己的 MCP 服务器，以便在 Nexior 中使用。",
+    "description": "自定义 MCP 分组描述"
+  },
+  "browse.installSuccess": {
+    "message": "已安装 {name}",
+    "description": "安装成功消息"
+  },
+  "browse.installFailed": {
+    "message": "安装失败",
+    "description": "安装失败消息"
   },
   "common.back": {
     "message": "返回",

@@ -5,19 +5,13 @@
       <div class="rail-header">
         <span class="title">{{ $t('connector.title') }}</span>
         <div class="rail-header-actions">
-          <el-input
-            v-model="search"
-            size="small"
-            :placeholder="$t('connector.search.placeholder')"
-            class="search-input"
-            clearable
-          >
+          <el-input v-model="search" :placeholder="$t('connector.search.placeholder')" class="search-input" clearable>
             <template #prefix>
               <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
             </template>
           </el-input>
           <el-dropdown trigger="click" @command="onAddCommand">
-            <el-button text class="add-btn" :title="$t('connector.menu.browse')">
+            <el-button class="add-btn">
               <font-awesome-icon icon="fa-solid fa-plus" />
             </el-button>
             <template #dropdown>
@@ -27,7 +21,7 @@
                   {{ $t('connector.menu.browse') }}
                 </el-dropdown-item>
                 <el-dropdown-item command="custom">
-                  <font-awesome-icon icon="fa-solid fa-ellipsis" class="mr-2" />
+                  <font-awesome-icon icon="fa-solid fa-cube" class="mr-2" />
                   {{ $t('connector.menu.custom') }}
                 </el-dropdown-item>
               </el-dropdown-menu>
@@ -39,7 +33,7 @@
       <div v-loading="loading" class="rail-body">
         <div v-if="loadError" class="empty-hint">{{ $t('connector.common.loadError') }}</div>
 
-        <!-- Web group: built-in providers + connected custom MCP -->
+        <!-- Connected: built-in providers + custom MCP -->
         <div v-if="webGroupItems.length" class="group">
           <div class="group-title">{{ $t('connector.group.web') }}</div>
           <connector-list-item
@@ -51,7 +45,7 @@
           />
         </div>
 
-        <!-- Not connected providers (built-in catalog) -->
+        <!-- Not connected providers -->
         <div v-if="notConnectedItems.length" class="group">
           <div class="group-title">{{ $t('connector.group.notConnected') }}</div>
           <connector-list-item
@@ -62,19 +56,42 @@
             @click="selectedId = item.id"
           />
         </div>
+
+        <!-- Empty state -->
+        <div v-if="!loading && !loadError && items.length === 0" class="rail-empty">
+          <font-awesome-icon icon="fa-solid fa-plug" class="rail-empty-icon" />
+          <p class="rail-empty-title">{{ $t('connector.empty.title') }}</p>
+          <p class="rail-empty-desc">{{ $t('connector.empty.desc') }}</p>
+          <el-button type="primary" @click="onAddCommand('browse')">
+            <font-awesome-icon icon="fa-solid fa-book" class="mr-1" />
+            {{ $t('connector.menu.browse') }}
+          </el-button>
+        </div>
       </div>
     </aside>
 
     <!-- Right detail pane -->
-    <section class="detail">
+    <section class="detail-pane">
       <connector-detail v-if="selectedItem" :item="selectedItem" :token="token" @change="loadAll" />
-      <div v-else class="empty">
+      <div v-else-if="!loading" class="detail-empty">
         <font-awesome-icon icon="fa-solid fa-plug" class="empty-icon" />
-        <p>{{ $t('connector.detail.empty') }}</p>
+        <p class="empty-title">{{ $t('connector.detail.empty.title') }}</p>
+        <p class="empty-desc">{{ $t('connector.detail.empty.desc') }}</p>
+        <div class="empty-actions">
+          <el-button type="primary" @click="onAddCommand('browse')">
+            <font-awesome-icon icon="fa-solid fa-book" class="mr-1" />
+            {{ $t('connector.menu.browse') }}
+          </el-button>
+          <el-button @click="onAddCommand('custom')">
+            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            {{ $t('connector.menu.custom') }}
+          </el-button>
+        </div>
       </div>
     </section>
 
-    <add-custom-connector-dialog v-model="customDialogVisible" :token="token" @created="onCustomCreated" />
+    <!-- Reuse the existing chat MCP manager dialog for custom connector CRUD -->
+    <mcp-manager v-model="customDialogVisible" @change="loadAll" />
   </div>
 </template>
 
@@ -87,7 +104,7 @@ import { IConnectorProvider, IConnector, IMcpServer } from '@/models';
 import { ROUTE_CONNECTORS_BROWSE } from '@/router/constants';
 import ConnectorListItem from '@/components/connectors/ConnectorListItem.vue';
 import ConnectorDetail from '@/components/connectors/ConnectorDetail.vue';
-import AddCustomConnectorDialog from '@/components/connectors/AddCustomConnectorDialog.vue';
+import McpManager from '@/components/chat/McpManager.vue';
 import { IConnectorItem, PROVIDER_ICONS } from '@/components/connectors/types';
 
 export default defineComponent({
@@ -101,7 +118,7 @@ export default defineComponent({
     FontAwesomeIcon,
     ConnectorListItem,
     ConnectorDetail,
-    AddCustomConnectorDialog
+    McpManager
   },
   data() {
     return {
@@ -121,8 +138,10 @@ export default defineComponent({
     },
     items(): IConnectorItem[] {
       const result: IConnectorItem[] = [];
-      // Built-in providers (Web group)
+      // OAuth providers — show only those the backend has configured. The full
+      // catalog (including unavailable providers) lives at /connectors/browse.
       for (const provider of this.providers) {
+        if (provider.available === false && !provider.connected) continue;
         const connector = this.connectors.find((c) => c.provider === provider.id);
         result.push({
           id: `provider:${provider.id}`,
@@ -136,7 +155,7 @@ export default defineComponent({
           connector
         });
       }
-      // Custom MCP servers (Custom group, listed under Web)
+      // User's MCP servers (custom + installed builtins)
       for (const mcp of this.mcpServers) {
         result.push({
           id: `mcp:${mcp.id}`,
@@ -149,7 +168,6 @@ export default defineComponent({
           mcp
         });
       }
-      // Search filter
       const q = this.search.trim().toLowerCase();
       if (!q) return result;
       return result.filter(
@@ -199,7 +217,6 @@ export default defineComponent({
         if (providersRes.status === 'rejected' && connectorsRes.status === 'rejected' && mcpRes.status === 'rejected') {
           this.loadError = true;
         }
-        // Auto-select first item if nothing selected
         if (!this.selectedId && this.items.length) {
           this.selectedId = this.items[0].id;
         }
@@ -213,14 +230,6 @@ export default defineComponent({
       } else if (cmd === 'custom') {
         this.customDialogVisible = true;
       }
-    },
-    onCustomCreated(server: IMcpServer) {
-      // Refresh and select the newly created connector
-      this.loadAll().then(() => {
-        if (server?.id) {
-          this.selectedId = `mcp:${server.id}`;
-        }
-      });
     }
   }
 });
@@ -236,7 +245,7 @@ export default defineComponent({
 }
 
 .rail {
-  width: 280px;
+  width: 320px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -245,14 +254,14 @@ export default defineComponent({
 }
 
 .rail-header {
-  padding: 16px;
+  padding: 20px 16px;
   border-bottom: 1px solid var(--el-border-color-lighter);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 
   .title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
   }
 
@@ -267,9 +276,6 @@ export default defineComponent({
 
     .add-btn {
       flex-shrink: 0;
-      padding: 6px 8px;
-      border: 1px solid var(--el-border-color);
-      border-radius: 6px;
     }
   }
 }
@@ -284,7 +290,7 @@ export default defineComponent({
   margin-bottom: 16px;
 
   .group-title {
-    padding: 6px 16px;
+    padding: 8px 16px;
     font-size: 11px;
     font-weight: 600;
     color: var(--el-text-color-secondary);
@@ -300,24 +306,72 @@ export default defineComponent({
   font-size: 13px;
 }
 
-.detail {
+.rail-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 48px 24px;
+  gap: 8px;
+
+  .rail-empty-icon {
+    font-size: 32px;
+    color: var(--el-text-color-secondary);
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+
+  .rail-empty-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .rail-empty-desc {
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
+    margin: 0 0 8px 0;
+  }
+}
+
+.detail-pane {
   flex: 1;
   min-width: 0;
   overflow-y: auto;
 }
 
-.empty {
+.detail-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 48px 32px;
   color: var(--el-text-color-secondary);
-  gap: 12px;
+  text-align: center;
 
   .empty-icon {
-    font-size: 36px;
-    opacity: 0.4;
+    font-size: 48px;
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+
+  .empty-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--el-text-color-primary);
+    margin: 0 0 8px 0;
+  }
+
+  .empty-desc {
+    font-size: 14px;
+    margin: 0 0 24px 0;
+    max-width: 360px;
+  }
+
+  .empty-actions {
+    display: flex;
+    gap: 12px;
   }
 }
 

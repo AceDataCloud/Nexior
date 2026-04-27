@@ -8,7 +8,7 @@
         <div class="info">
           <div class="title-row">
             <span class="title">{{ item.name }}</span>
-            <el-tag v-if="item.isCustom" size="small" type="info" effect="plain" round>
+            <el-tag v-if="item.isCustom" type="info" effect="plain" round>
               {{ $t('connector.badge.custom') }}
             </el-tag>
           </div>
@@ -21,23 +21,21 @@
             <el-switch
               v-if="item.connector"
               :model-value="item.connector.is_enabled"
-              size="small"
               @change="onToggleConnector($event as boolean)"
             />
-            <el-button size="small" type="danger" plain @click="onDisconnectProvider">
+            <el-button type="danger" plain @click="onDisconnectProvider">
               {{ $t('connector.detail.disconnect') }}
             </el-button>
           </template>
-          <el-button v-else size="small" type="primary" :loading="connecting" @click="onConnectProvider">
+          <el-button v-else type="primary" :loading="connecting" @click="onConnectProvider">
             <font-awesome-icon icon="fa-solid fa-plug" class="mr-1" />
             {{ $t('connector.detail.connect') }}
           </el-button>
         </template>
         <template v-else-if="item.kind === 'custom' && item.mcp">
-          <el-switch :model-value="item.mcp.is_enabled" size="small" @change="onToggleMcp($event as boolean)" />
+          <el-switch :model-value="item.mcp.is_enabled" @change="onToggleMcp($event as boolean)" />
           <el-button
             v-if="item.mcp.auth_type === 'oauth' && item.mcp.oauth_status !== 'authorized'"
-            size="small"
             type="warning"
             :loading="authorizing"
             @click="onAuthorizeMcp"
@@ -45,7 +43,7 @@
             <font-awesome-icon icon="fa-solid fa-key" class="mr-1" />
             {{ $t('connector.custom.authorize') }}
           </el-button>
-          <el-button size="small" type="danger" plain @click="onDeleteMcp">
+          <el-button type="danger" plain @click="onDeleteMcp">
             {{ $t('connector.detail.disconnect') }}
           </el-button>
         </template>
@@ -74,7 +72,7 @@
     <section v-if="tools.length || item.kind === 'custom'" class="permissions">
       <div class="section-title-row">
         <span class="section-title">{{ $t('connector.detail.toolPermissions') }} ({{ tools.length }})</span>
-        <el-select v-model="defaultPermission" size="small" class="default-select" @change="onDefaultChanged">
+        <el-select v-model="defaultPermission" class="default-select" @change="onDefaultChanged">
           <el-option value="always" :label="$t('connector.permission.always')" />
           <el-option value="ask" :label="$t('connector.permission.ask')" />
           <el-option value="never" :label="$t('connector.permission.never')" />
@@ -90,7 +88,6 @@
           </div>
           <el-radio-group
             :model-value="getPermission(tool.name)"
-            size="small"
             @change="setPermission(tool.name, $event as ToolPermission)"
           >
             <el-radio-button value="always" :title="$t('connector.permission.always')">

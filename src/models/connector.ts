@@ -5,6 +5,8 @@ export interface IConnectorProvider {
   icon: string;
   scopes: string[];
   connected: boolean;
+  /** True iff the backend has client credentials configured for this provider. */
+  available?: boolean;
 }
 
 export interface IConnector {

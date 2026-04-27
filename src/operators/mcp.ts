@@ -4,7 +4,8 @@ import {
   IMcpServerListResponse,
   IMcpServerTestResponse,
   IMcpOAuthStartResponse,
-  IMcpOAuthCallbackResponse
+  IMcpOAuthCallbackResponse,
+  IBuiltinMcpServerListResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -85,6 +86,22 @@ class McpServerOperator {
     return await axios.post(
       '/aichat2/mcp-servers',
       { action: 'oauth_callback', id, code },
+      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
+    );
+  }
+
+  async listBuiltin(token: string): Promise<AxiosResponse<IBuiltinMcpServerListResponse>> {
+    return await axios.post(
+      '/aichat2/mcp-servers',
+      { action: 'list_builtin' },
+      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
+    );
+  }
+
+  async installBuiltin(builtinId: string, token: string): Promise<AxiosResponse<IMcpServer>> {
+    return await axios.post(
+      '/aichat2/mcp-servers',
+      { action: 'install_builtin', builtin_id: builtinId },
       { headers: this.getHeaders(token), baseURL: BASE_URL_API }
     );
   }

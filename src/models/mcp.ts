@@ -39,3 +39,20 @@ export interface IMcpOAuthCallbackResponse {
   status: 'authorized' | 'error';
   error?: string;
 }
+
+export interface IBuiltinMcpServer {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  url: string;
+  transport: string;
+  auth_type: 'none' | 'bearer' | 'oauth';
+  tags: string[];
+  /** True iff the caller has already installed this builtin server. */
+  installed: boolean;
+}
+
+export interface IBuiltinMcpServerListResponse {
+  items: IBuiltinMcpServer[];
+}

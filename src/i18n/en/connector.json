@@ -27,6 +27,14 @@
     "message": "CUSTOM",
     "description": "Badge for custom connectors"
   },
+  "badge.builtin": {
+    "message": "BUILT-IN",
+    "description": "Badge for built-in MCP servers"
+  },
+  "badge.comingSoon": {
+    "message": "Coming soon",
+    "description": "Badge for unconfigured OAuth providers"
+  },
   "menu.browse": {
     "message": "Browse connectors",
     "description": "Add menu: browse the directory"
@@ -70,6 +78,22 @@
   "detail.empty": {
     "message": "Select a connector on the left to see details.",
     "description": "Empty detail state"
+  },
+  "detail.empty.title": {
+    "message": "Select a connector",
+    "description": "Detail empty state title"
+  },
+  "detail.empty.desc": {
+    "message": "Pick a connector on the left to see details, or browse the directory to add a new one.",
+    "description": "Detail empty state description"
+  },
+  "empty.title": {
+    "message": "No connectors yet",
+    "description": "Rail empty state title"
+  },
+  "empty.desc": {
+    "message": "Browse the directory to add a connector, or add your own MCP server.",
+    "description": "Rail empty state description"
   },
   "detail.noTools": {
     "message": "No tools have been discovered for this connector yet.",
@@ -226,6 +250,38 @@
   "browse.empty": {
     "message": "No matching connectors found.",
     "description": "Empty directory search"
+  },
+  "browse.builtinTitle": {
+    "message": "Built-in MCP servers",
+    "description": "Built-in MCP section title"
+  },
+  "browse.builtinDesc": {
+    "message": "Provided by AceDataCloud — install with one click.",
+    "description": "Built-in MCP section description"
+  },
+  "browse.providersTitle": {
+    "message": "OAuth providers",
+    "description": "OAuth providers section title"
+  },
+  "browse.providersDesc": {
+    "message": "Connect to your Google, GitHub, Slack and other accounts via OAuth.",
+    "description": "OAuth providers section description"
+  },
+  "browse.customTitle": {
+    "message": "Custom MCP servers",
+    "description": "Custom MCP section title"
+  },
+  "browse.customDesc": {
+    "message": "Add your own remote MCP server to use in Nexior.",
+    "description": "Custom MCP section description"
+  },
+  "browse.installSuccess": {
+    "message": "Installed {name}",
+    "description": "Install success message"
+  },
+  "browse.installFailed": {
+    "message": "Failed to install",
+    "description": "Install failed message"
   },
   "common.back": {
     "message": "Back",
