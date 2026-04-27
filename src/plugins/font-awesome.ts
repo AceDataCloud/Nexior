@@ -98,7 +98,17 @@ import {
   faFaceMeh as faSolidFaceMeh,
   faPlug as faSolidPlug,
   faCheckCircle as faSolidCheckCircle,
-  faCircleExclamation as faSolidCircleExclamation
+  faCircleExclamation as faSolidCircleExclamation,
+  faForward as faSolidForward,
+  faShuffle as faSolidShuffle,
+  faScissors as faSolidScissors,
+  faGuitar as faSolidGuitar,
+  faDrum as faSolidDrum,
+  faLayerGroup as faSolidLayerGroup,
+  faBarsStaggered as faSolidBarsStaggered,
+  faHeadphones as faSolidHeadphones,
+  faClock as faSolidClock,
+  faEraser as faSolidEraser
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -196,3 +206,13 @@ library.add(faSolidCircleExclamation);
 library.add(faBrandsGoogle);
 library.add(faBrandsGithub);
 library.add(faBrandsSlack);
+library.add(faSolidForward);
+library.add(faSolidShuffle);
+library.add(faSolidScissors);
+library.add(faSolidGuitar);
+library.add(faSolidDrum);
+library.add(faSolidLayerGroup);
+library.add(faSolidBarsStaggered);
+library.add(faSolidHeadphones);
+library.add(faSolidClock);
+library.add(faSolidEraser);
