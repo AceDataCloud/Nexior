@@ -21,6 +21,8 @@
     "preview": "vite preview",
     "translate": "transmart",
     "lint": "eslint src --fix",
+    "lint:check": "eslint src",
+    "lint:staged": "lint-staged",
     "prettier": "prettier --write .",
     "change": "beachball change --no-commit",
     "verify": "beachball check",
@@ -106,6 +108,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.8.0",
     "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "postcss": "^8.5.6",
     "prettier": "^3.5.3",
     "rollup-plugin-string": "^3.0.0",
@@ -119,5 +122,13 @@
   "license": "MIT",
   "engines": {
     "node": "20.x"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,vue,js,jsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{json,css,scss,less,html,md}": [
+      "prettier --write"
+    ]
   }
 }
