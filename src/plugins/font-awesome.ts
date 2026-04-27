@@ -113,6 +113,7 @@ import {
   faClock as faSolidClock,
   faEraser as faSolidEraser,
   faArrowDownWideShort as faSolidArrowDownWideShort,
+  faFilter as faSolidFilter,
   faPen as faSolidPen,
   faExpand as faSolidExpand,
   faCompress as faSolidCompress,
@@ -230,6 +231,7 @@ library.add(faSolidHeadphones);
 library.add(faSolidClock);
 library.add(faSolidEraser);
 library.add(faSolidArrowDownWideShort);
+library.add(faSolidFilter);
 library.add(faSolidPen);
 library.add(faSolidExpand);
 library.add(faSolidCompress);

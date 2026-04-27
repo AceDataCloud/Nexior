@@ -48,6 +48,54 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
+      <el-popover trigger="click" placement="bottom-end" :width="260">
+        <template #reference>
+          <el-button size="small" class="filter-btn" :class="{ 'has-active-filter': activeFilterCount > 0 }">
+            <font-awesome-icon icon="fa-solid fa-filter" class="mr-1" />
+            {{ $t('suno.filter.title') }}
+            <span v-if="activeFilterCount > 0" class="filter-badge">{{ activeFilterCount }}</span>
+          </el-button>
+        </template>
+        <div class="filter-popover">
+          <div class="filter-row">
+            <div class="filter-label">{{ $t('suno.filter.type') }}</div>
+            <el-radio-group v-model="filterType" size="small">
+              <el-radio-button value="all">{{ $t('suno.filter.typeAll') }}</el-radio-button>
+              <el-radio-button value="vocal">{{ $t('suno.filter.typeVocal') }}</el-radio-button>
+              <el-radio-button value="instrumental">{{ $t('suno.filter.typeInstrumental') }}</el-radio-button>
+            </el-radio-group>
+          </div>
+          <div class="filter-row">
+            <div class="filter-label">{{ $t('suno.filter.duration') }}</div>
+            <el-radio-group v-model="filterDuration" size="small">
+              <el-radio-button value="all">{{ $t('suno.filter.durationAll') }}</el-radio-button>
+              <el-radio-button value="short">{{ $t('suno.filter.durationShort') }}</el-radio-button>
+              <el-radio-button value="medium">{{ $t('suno.filter.durationMedium') }}</el-radio-button>
+              <el-radio-button value="long">{{ $t('suno.filter.durationLong') }}</el-radio-button>
+            </el-radio-group>
+          </div>
+          <div class="filter-row">
+            <div class="filter-label">{{ $t('suno.filter.video') }}</div>
+            <el-radio-group v-model="filterVideo" size="small">
+              <el-radio-button value="all">{{ $t('suno.filter.videoAll') }}</el-radio-button>
+              <el-radio-button value="with">{{ $t('suno.filter.videoWith') }}</el-radio-button>
+              <el-radio-button value="without">{{ $t('suno.filter.videoWithout') }}</el-radio-button>
+            </el-radio-group>
+          </div>
+          <div v-if="availableModels.length > 0" class="filter-row">
+            <div class="filter-label">{{ $t('suno.filter.model') }}</div>
+            <el-select v-model="filterModel" size="small" :placeholder="$t('suno.filter.modelAll')" clearable>
+              <el-option :label="$t('suno.filter.modelAll')" value="all" />
+              <el-option v-for="m in availableModels" :key="m" :label="m" :value="m" />
+            </el-select>
+          </div>
+          <div class="filter-actions">
+            <el-button size="small" text @click="onResetFilters">
+              {{ $t('suno.filter.reset') }}
+            </el-button>
+          </div>
+        </div>
+      </el-popover>
     </div>
     <scroll-list
       v-if="filteredTasks?.length > 0"
@@ -60,6 +108,13 @@
     </scroll-list>
     <div v-else-if="searchQuery && tasks?.items?.length > 0" class="w-full flex-1 flex items-center justify-center">
       <p class="text-sm text-gray-400">{{ $t('suno.message.noSearchResults') }}</p>
+    </div>
+    <div
+      v-else-if="activeFilterCount > 0 && tasks?.items?.length > 0"
+      class="w-full flex-1 flex flex-col items-center justify-center gap-2"
+    >
+      <p class="text-sm text-gray-400">{{ $t('suno.message.noFilterResults') }}</p>
+      <el-button size="small" text @click="onResetFilters">{{ $t('suno.filter.reset') }}</el-button>
     </div>
     <div v-else-if="tasks?.items?.length === 0" class="w-full flex-1 flex items-center justify-center">
       <no-tasks />
@@ -82,7 +137,12 @@ import {
   ElButton,
   ElDropdown,
   ElDropdownMenu,
-  ElDropdownItem
+  ElDropdownItem,
+  ElPopover,
+  ElRadioGroup,
+  ElRadioButton,
+  ElSelect,
+  ElOption
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ScrollList from '@/components/common/ScrollList.vue';
@@ -98,6 +158,11 @@ export default defineComponent({
     ElDropdown,
     ElDropdownMenu,
     ElDropdownItem,
+    ElPopover,
+    ElRadioGroup,
+    ElRadioButton,
+    ElSelect,
+    ElOption,
     FontAwesomeIcon,
     TaskPreview,
     Player,
@@ -115,7 +180,11 @@ export default defineComponent({
     return {
       job: 0,
       searchQuery: '',
-      sortBy: 'newest' as 'newest' | 'oldest'
+      sortBy: 'newest' as 'newest' | 'oldest',
+      filterType: 'all' as 'all' | 'vocal' | 'instrumental',
+      filterDuration: 'all' as 'all' | 'short' | 'medium' | 'long',
+      filterVideo: 'all' as 'all' | 'with' | 'without',
+      filterModel: 'all' as string
     };
   },
   computed: {
@@ -129,6 +198,25 @@ export default defineComponent({
       return this.sortBy === 'newest'
         ? (this.$t('suno.sort.newest') as string)
         : (this.$t('suno.sort.oldest') as string);
+    },
+    activeFilterCount(): number {
+      let count = 0;
+      if (this.filterType !== 'all') count++;
+      if (this.filterDuration !== 'all') count++;
+      if (this.filterVideo !== 'all') count++;
+      if (this.filterModel && this.filterModel !== 'all') count++;
+      return count;
+    },
+    availableModels(): string[] {
+      const items = (this.tasks?.items || []) as ISunoTask[];
+      const set = new Set<string>();
+      for (const t of items) {
+        const audios = (t?.response?.data ?? []) as ISunoAudio[];
+        for (const a of audios) {
+          if (a.model) set.add(a.model);
+        }
+      }
+      return Array.from(set).sort();
     },
     filteredTasks(): ISunoTask[] {
       let items = this.tasks?.items || [];
@@ -145,6 +233,37 @@ export default defineComponent({
           );
         });
       }
+      // Advanced filters: keep tasks where at least one audio matches all active filters
+      if (this.activeFilterCount > 0) {
+        items = items.filter((task: ISunoTask) => {
+          const req: any = task?.request ?? {};
+          const audios = (task?.response?.data ?? []) as ISunoAudio[];
+          // Type filter (uses request.instrumental)
+          if (this.filterType === 'vocal' && req.instrumental === true) return false;
+          if (this.filterType === 'instrumental' && req.instrumental !== true) return false;
+          // Audio-level filters: at least one audio must match
+          if (
+            this.filterDuration !== 'all' ||
+            this.filterVideo !== 'all' ||
+            (this.filterModel && this.filterModel !== 'all')
+          ) {
+            return audios.some((a) => {
+              if (this.filterDuration === 'short' && !(typeof a.duration === 'number' && a.duration < 60)) return false;
+              if (
+                this.filterDuration === 'medium' &&
+                !(typeof a.duration === 'number' && a.duration >= 60 && a.duration <= 180)
+              )
+                return false;
+              if (this.filterDuration === 'long' && !(typeof a.duration === 'number' && a.duration > 180)) return false;
+              if (this.filterVideo === 'with' && !a.video_url) return false;
+              if (this.filterVideo === 'without' && a.video_url) return false;
+              if (this.filterModel && this.filterModel !== 'all' && a.model !== this.filterModel) return false;
+              return true;
+            });
+          }
+          return true;
+        });
+      }
       // Sort
       if (this.sortBy === 'oldest') {
         items = [...items].reverse();
@@ -155,6 +274,12 @@ export default defineComponent({
   methods: {
     onSortChange(command: 'newest' | 'oldest') {
       this.sortBy = command;
+    },
+    onResetFilters() {
+      this.filterType = 'all';
+      this.filterDuration = 'all';
+      this.filterVideo = 'all';
+      this.filterModel = 'all';
     },
     getScrollElement(): HTMLElement | undefined {
       const list = this.$refs.scrollList as any;
@@ -180,6 +305,57 @@ export default defineComponent({
   .sort-btn {
     flex-shrink: 0;
     white-space: nowrap;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    position: relative;
+
+    &.has-active-filter {
+      color: var(--el-color-primary);
+      border-color: var(--el-color-primary-light-5);
+    }
+
+    .filter-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      margin-left: 4px;
+      border-radius: 8px;
+      background: var(--el-color-primary);
+      color: #fff;
+      font-size: 10px;
+      line-height: 1;
+    }
+  }
+}
+
+.filter-popover {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .filter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .filter-label {
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
+  }
+
+  .filter-actions {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--el-border-color-lighter);
+    padding-top: 8px;
+    margin-top: 4px;
   }
 }
 </style>
