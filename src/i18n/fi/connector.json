@@ -15,9 +15,13 @@
     "message": "Verkkosivut",
     "description": "Yhdistettyjen verkkosivuliittimien ryhmäotsikko"
   },
+  "group.builtin": {
+    "message": "Sisäänrakennettu",
+    "description": "Sisäänrakennettujen MCP-palvelimien ryhmäotsikko"
+  },
   "group.custom": {
     "message": "Mukautettu",
-    "description": "Mukautetun MCP-palvelimen ryhmäotsikko"
+    "description": "Mukautettujen MCP-palvelimien ryhmäotsikko"
   },
   "group.notConnected": {
     "message": "Ei yhdistetty",
@@ -28,12 +32,12 @@
     "description": "Mukautetun liittimen logo"
   },
   "badge.builtin": {
-    "message": "Sisäänrakennettu",
+    "message": "SISÄNRAKENNETTU",
     "description": "Sisäänrakennetun MCP-palvelimen logo"
   },
   "badge.comingSoon": {
     "message": "Tulossa pian",
-    "description": "Määrittämättömän OAuth-toimittajan logo"
+    "description": "Konfiguroimattoman OAuth-toimittajan logo"
   },
   "menu.browse": {
     "message": "Selaa liittimiä",
@@ -45,11 +49,11 @@
   },
   "detail.connect": {
     "message": "Yhdistä",
-    "description": "Yhdistämispainike"
+    "description": "Yhdistä-painike"
   },
   "detail.disconnect": {
     "message": "Katkaise yhteys",
-    "description": "Yhteyden katkaisemispainike"
+    "description": "Yhteyden katkaisemisen painike"
   },
   "detail.disconnected": {
     "message": "Yhteys katkaistu",
@@ -57,15 +61,15 @@
   },
   "detail.connected": {
     "message": "Yhdistetty",
-    "description": "Yhteyden onnistumisen viesti"
+    "description": "Yhteyden onnistumisviesti"
   },
   "detail.toolPermissions": {
-    "message": "Työkalujen käyttöoikeudet",
-    "description": "Työkalujen käyttöoikeusosio otsikko"
+    "message": "Työkaluluvat",
+    "description": "Työkalulupien osion otsikko"
   },
   "detail.toolPermissions.help": {
-    "message": "Valitse, milloin Nexior voi käyttää näitä työkaluja.",
-    "description": "Työkalujen käyttöoikeusosion selitys"
+    "message": "Valitse, milloin sallia Nexiorin käyttää näitä työkaluja.",
+    "description": "Työkalulupien osion kuvaus"
   },
   "detail.readOnlyTools": {
     "message": "Vain luku -työkalut",
@@ -81,19 +85,19 @@
   },
   "detail.empty.title": {
     "message": "Valitse liitin",
-    "description": "Oikealla ei ole valittua otsikkoa"
+    "description": "Kun oikealla ei ole valintaa"
   },
   "detail.empty.desc": {
-    "message": "Valitse vasemmalta yhdistetty kohde nähdäksesi yksityiskohdat tai selaa luetteloa lisätäksesi uuden liittimen.",
-    "description": "Oikealla ei ole valittua kuvausta"
+    "message": "Valitse vasemmalta yhdistetyt kohteet nähdäksesi yksityiskohdat tai selaa luetteloa lisätäksesi uuden liittimen.",
+    "description": "Kun oikealla ei ole valintaa"
   },
   "empty.title": {
     "message": "Ei liittimiä vielä",
-    "description": "Sivupalkki on täysin tyhjää"
+    "description": "Kun sivupalkki on täysin tyhjää"
   },
   "empty.desc": {
     "message": "Selaa luetteloa aloittaaksesi liittimien lisäämisen tai lisää omat MCP-palvelimesi.",
-    "description": "Sivupalkki on täysin tyhjää"
+    "description": "Kun sivupalkki on täysin tyhjää"
   },
   "detail.noTools": {
     "message": "Tätä liitintä varten ei ole löydetty käytettävissä olevia työkaluja.",
@@ -104,16 +108,16 @@
     "description": "Yhdistetyn tilin tiedot otsikko"
   },
   "permission.always": {
-    "message": "Aina sallittu",
-    "description": "Työkalujen käyttöoikeudet: aina sallittu"
+    "message": "Salli aina",
+    "description": "Työkaluluvat: salli aina"
   },
   "permission.ask": {
-    "message": "Vahvistus tarvitaan",
-    "description": "Työkalujen käyttöoikeudet: kysy aina"
+    "message": "Vaatimassa vahvistusta",
+    "description": "Työkaluluvat: kysy aina"
   },
   "permission.never": {
-    "message": "Käyttö estetty",
-    "description": "Työkalujen käyttöoikeudet: käyttö estetty"
+    "message": "Kielletty",
+    "description": "Työkaluluvat: kielletty"
   },
   "custom.title": {
     "message": "Lisää mukautettu liitin",
@@ -148,7 +152,7 @@
     "description": "Mukautetun liittimen kuvauksen kenttä"
   },
   "custom.descriptionPlaceholder": {
-    "message": "Valinnainen: Kuvaile tämän liittimen käyttötarkoitus",
+    "message": "Valinnainen: kuvaa tämän liittimen käyttötarkoitus",
     "description": "Mukautetun liittimen kuvauksen paikkamerkki"
   },
   "custom.advanced": {
@@ -180,7 +184,7 @@
     "description": "Bearer token -paikkamerkki"
   },
   "custom.warning": {
-    "message": "Lisää vain liittimiä, jotka ovat peräisin luotettavilta kehittäjiltä. Nexior ei hallitse kehittäjien tarjoamia työkaluja, eikä voi taata niiden toimivuutta tai muutoksia.",
+    "message": "Lisää vain liittimiä, jotka ovat luotettavilta kehittäjiltä. Nexior ei hallitse kehittäjien tarjoamia työkaluja, eikä voi taata niiden toimivan odotetusti tai ettei niissä tapahtuisi muutoksia.",
     "description": "Mukautetun liittimen varoitus"
   },
   "custom.add": {
@@ -196,8 +200,8 @@
     "description": "MCP-yhteyden testauspainike"
   },
   "custom.urlRequired": {
-    "message": "Täytä nimi ja URL",
-    "description": "Nimi ja URL pakollinen ilmoitus"
+    "message": "Täytä nimi ja URL-osoite",
+    "description": "Nimi ja URL-osoite pakollinen ilmoitus"
   },
   "custom.created": {
     "message": "Lisäys onnistui",
@@ -232,7 +236,7 @@
     "description": "Hakemiston selaussivun otsikko"
   },
   "browse.searchPlaceholder": {
-    "message": "Etsi liitintä…",
+    "message": "Etsi liittimiä…",
     "description": "Hakemiston hakukentän paikkamerkki"
   },
   "browse.subtitle": {
@@ -248,7 +252,7 @@
     "description": "Hakemiston kortin asennustila"
   },
   "browse.empty": {
-    "message": "Yhteensopivia liittimiä ei löytynyt.",
+    "message": "Ei löytynyt sopivia liittimiä.",
     "description": "Hakemiston haku on tyhjää"
   },
   "browse.builtinTitle": {
@@ -312,7 +316,7 @@
     "description": "Vihje käyttäjälle, että ikkuna voidaan sulkea"
   },
   "common.loadError": {
-    "message": "Lataus epäonnistui, liittimen toiminto ei ehkä ole vielä käytössä.",
+    "message": "Lataus epäonnistui, liittimen toiminnallisuus ei ehkä ole vielä käytettävissä.",
     "description": "Liittimen lataus epäonnistui"
   },
   "common.toggleError": {

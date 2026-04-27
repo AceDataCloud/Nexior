@@ -15,8 +15,12 @@
     "message": "Web",
     "description": "Título del grupo de conectores de tipo web conectados"
   },
+  "group.builtin": {
+    "message": "Integrados",
+    "description": "Título del grupo de servidores MCP integrados"
+  },
   "group.custom": {
-    "message": "Personalizado",
+    "message": "Personalizados",
     "description": "Título del grupo de servidores MCP personalizados"
   },
   "group.notConnected": {
@@ -28,7 +32,7 @@
     "description": "Insignia de conector personalizado"
   },
   "badge.builtin": {
-    "message": "Integrado",
+    "message": "INTEGRADO",
     "description": "Insignia de servidor MCP integrado"
   },
   "badge.comingSoon": {
@@ -180,8 +184,8 @@
     "description": "Placeholder del token Bearer"
   },
   "custom.warning": {
-    "message": "Agregue solo conectores de desarrolladores en los que confíe. Nexior no controla las herramientas proporcionadas por los desarrolladores y no puede garantizar que funcionen como se espera o que no cambien.",
-    "description": "Advertencia del conector personalizado"
+    "message": "Solo agregue conectores de desarrolladores en los que confíe. Nexior no controla las herramientas proporcionadas por los desarrolladores y no puede garantizar que funcionen como se espera o que no cambien.",
+    "description": "Advertencia sobre conectores personalizados"
   },
   "custom.add": {
     "message": "Agregar",
@@ -201,15 +205,15 @@
   },
   "custom.created": {
     "message": "Agregado con éxito",
-    "description": "Conector personalizado agregado con éxito"
+    "description": "Éxito al agregar un conector personalizado"
   },
   "custom.updated": {
     "message": "Actualizado con éxito",
-    "description": "Conector personalizado actualizado con éxito"
+    "description": "Éxito al actualizar un conector personalizado"
   },
   "custom.deleted": {
     "message": "Eliminado con éxito",
-    "description": "Conector personalizado eliminado con éxito"
+    "description": "Éxito al eliminar un conector personalizado"
   },
   "custom.deleteConfirm": {
     "message": "¿Confirmar eliminación del conector \"{name}\"?",
@@ -217,39 +221,39 @@
   },
   "custom.testSuccess": {
     "message": "Conexión exitosa, se encontraron {count} herramientas",
-    "description": "Prueba de conexión MCP exitosa"
+    "description": "Éxito al probar la conexión MCP"
   },
   "custom.testFailed": {
     "message": "Conexión fallida",
-    "description": "Prueba de conexión MCP fallida"
+    "description": "Fallo al probar la conexión MCP"
   },
   "custom.authorize": {
     "message": "Autorizar",
     "description": "Botón de autorización OAuth"
   },
   "browse.title": {
-    "message": "Directorio",
-    "description": "Título de la página del directorio"
+    "message": "Catálogo",
+    "description": "Título de la página del catálogo"
   },
   "browse.searchPlaceholder": {
     "message": "Buscar conectores…",
-    "description": "Placeholder del cuadro de búsqueda del directorio"
+    "description": "Placeholder del cuadro de búsqueda del catálogo"
   },
   "browse.subtitle": {
     "message": "Proporcionado por AceDataCloud y socios",
-    "description": "Subtítulo de la página del directorio"
+    "description": "Subtítulo de la página del catálogo"
   },
   "browse.install": {
     "message": "Instalar",
-    "description": "Botón de instalación en la tarjeta del directorio"
+    "description": "Botón de instalación en la tarjeta del catálogo"
   },
   "browse.installed": {
     "message": "Instalado",
-    "description": "Estado de instalado en la tarjeta del directorio"
+    "description": "Estado de instalado en la tarjeta del catálogo"
   },
   "browse.empty": {
     "message": "No se encontraron conectores coincidentes.",
-    "description": "Búsqueda del directorio vacía"
+    "description": "Búsqueda del catálogo vacía"
   },
   "browse.builtinTitle": {
     "message": "Servidor MCP incorporado",
@@ -297,7 +301,7 @@
   },
   "common.processing": {
     "message": "Procesando…",
-    "description": "Mensaje de procesamiento"
+    "description": "Procesando"
   },
   "common.authSuccess": {
     "message": "Autorización exitosa",
@@ -312,7 +316,7 @@
     "description": "Mensaje para indicar al usuario que puede cerrar la ventana"
   },
   "common.loadError": {
-    "message": "Error de carga, las funciones del conector pueden no estar disponibles.",
+    "message": "Error de carga, la funcionalidad del conector puede no estar disponible aún.",
     "description": "Fallo en la carga del conector"
   },
   "common.toggleError": {

@@ -8,16 +8,20 @@
     "description": "عنوان فرعي لصفحة الموصل"
   },
   "search.placeholder": {
-    "message": "ابحث عن موصل",
+    "message": "ابحث عن الموصلات",
     "description": "نص العنصر النائب في مربع البحث الجانبي"
   },
   "group.web": {
     "message": "ويب",
     "description": "عنوان مجموعة الموصلات من نوع الويب المتصلة"
   },
+  "group.builtin": {
+    "message": "مضمن",
+    "description": "عنوان مجموعة خوادم MCP المدمجة"
+  },
   "group.custom": {
     "message": "مخصص",
-    "description": "عنوان مجموعة خادم MCP المخصص"
+    "description": "عنوان مجموعة خوادم MCP المخصصة"
   },
   "group.notConnected": {
     "message": "غير متصل",
@@ -29,7 +33,7 @@
   },
   "badge.builtin": {
     "message": "مضمن",
-    "description": "شعار خادم MCP المضمن"
+    "description": "شعار خادم MCP المدمج"
   },
   "badge.comingSoon": {
     "message": "قريباً",
@@ -136,12 +140,12 @@
     "description": "نص العنصر النائب لاسم الموصل المخصص"
   },
   "custom.url": {
-    "message": "عنوان URL لخادم MCP البعيد",
-    "description": "حقل URL للموصل المخصص"
+    "message": "رابط خادم MCP البعيد",
+    "description": "حقل رابط الموصل المخصص"
   },
   "custom.urlPlaceholder": {
     "message": "https://example.com/mcp",
-    "description": "نص العنصر النائب لعنوان URL للموصل المخصص"
+    "description": "نص العنصر النائب لرابط الموصل المخصص"
   },
   "custom.description": {
     "message": "الوصف",
@@ -180,12 +184,12 @@
     "description": "نص العنصر النائب لرمز Bearer"
   },
   "custom.warning": {
-    "message": "قم بإضافة الموصلات فقط من المطورين الذين تثق بهم. لا تتحكم Nexior في الأدوات المقدمة من المطورين، ولا يمكن ضمان أنها ستعمل كما هو متوقع أو لن تتغير.",
-    "description": "تحذير الموصل المخصص"
+    "message": "يرجى إضافة الموصلات من المطورين الذين تثق بهم فقط. لا تتحكم Nexior في الأدوات المقدمة من المطورين، ولا يمكنها ضمان عملها كما هو متوقع أو عدم تغييرها.",
+    "description": "تحذير الموصلات المخصصة"
   },
   "custom.add": {
     "message": "إضافة",
-    "description": "زر تقديم موصل مخصص"
+    "description": "زر تقديم الموصل المخصص"
   },
   "custom.cancel": {
     "message": "إلغاء",
@@ -232,11 +236,11 @@
     "description": "عنوان صفحة تصفح الدليل"
   },
   "browse.searchPlaceholder": {
-    "message": "ابحث عن موصلات…",
+    "message": "ابحث عن الموصلات…",
     "description": "نص العنصر النائب في مربع البحث"
   },
   "browse.subtitle": {
-    "message": "مقدم من AceDataCloud والشركاء",
+    "message": "مقدمة من AceDataCloud بالشراكة مع",
     "description": "العنوان الفرعي لصفحة الدليل"
   },
   "browse.install": {
@@ -256,7 +260,7 @@
     "description": "عنوان مجموعة MCP المدمجة"
   },
   "browse.builtinDesc": {
-    "message": "مقدم من AceDataCloud، يمكن استخدامه بنقرة واحدة.",
+    "message": "مقدمة من AceDataCloud، يمكن استخدامها بنقرة واحدة.",
     "description": "وصف مجموعة MCP المدمجة"
   },
   "browse.providersTitle": {
@@ -296,8 +300,8 @@
     "description": "زر الإلغاء"
   },
   "common.processing": {
-    "message": "جار المعالجة…",
-    "description": "جار المعالجة"
+    "message": "جاري المعالجة…",
+    "description": "جاري المعالجة"
   },
   "common.authSuccess": {
     "message": "تم التفويض بنجاح",
@@ -317,6 +321,6 @@
   },
   "common.toggleError": {
     "message": "فشل تغيير الحالة",
-    "description": "فشل تفعيل/تعطيل التبديل"
+    "description": "فشل التبديل بين التمكين/التعطيل"
   }
 }

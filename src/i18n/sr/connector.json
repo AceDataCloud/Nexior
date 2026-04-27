@@ -1,6 +1,6 @@
 {
   "title": {
-    "message": "Konektori",
+    "message": "Konektor",
     "description": "Naslov stranice konektora"
   },
   "subtitle": {
@@ -15,6 +15,10 @@
     "message": "Web",
     "description": "Naslov grupe konektora tipa web"
   },
+  "group.builtin": {
+    "message": "Ugrađeni",
+    "description": "Naslov grupe ugrađenih MCP servera"
+  },
   "group.custom": {
     "message": "Prilagođeni",
     "description": "Naslov grupe prilagođenih MCP servera"
@@ -24,12 +28,12 @@
     "description": "Naslov grupe konektora koji još nisu povezani"
   },
   "badge.custom": {
-    "message": "PRILAGOĐEN",
-    "description": "Oznaka za prilagođene konektore"
+    "message": "PRILAGOĐENO",
+    "description": "Oznaka za prilagođeni konektor"
   },
   "badge.builtin": {
-    "message": "UGRAĐEN",
-    "description": "Oznaka za ugrađene MCP servere"
+    "message": "UGRAĐENO",
+    "description": "Oznaka za ugrađeni MCP server"
   },
   "badge.comingSoon": {
     "message": "Uskoro",
@@ -64,12 +68,12 @@
     "description": "Naslov sekcije za dozvole alata"
   },
   "detail.toolPermissions.help": {
-    "message": "Izaberite kada želite da Nexior koristi ove alate.",
+    "message": "Izaberite kada dozvoliti Nexior-u korišćenje ovih alata.",
     "description": "Objašnjenje sekcije za dozvole alata"
   },
   "detail.readOnlyTools": {
-    "message": "Alati samo za čitanje",
-    "description": "Naslov grupe alata samo za čitanje"
+    "message": "Alati za samo čitanje",
+    "description": "Naslov grupe alata za samo čitanje"
   },
   "detail.tools": {
     "message": "Alati",
@@ -100,7 +104,7 @@
     "description": "Poruka kada nema alata"
   },
   "detail.profile": {
-    "message": "Prijavljen nalog",
+    "message": "Prijavljeni nalog",
     "description": "Naslov informacija o povezanom nalogu"
   },
   "permission.always": {
@@ -108,8 +112,8 @@
     "description": "Dozvole alata: uvek dozvoli"
   },
   "permission.ask": {
-    "message": "Potrebna potvrda",
-    "description": "Dozvole alata: pitati svaki put"
+    "message": "Zahteva potvrdu",
+    "description": "Dozvole alata: pitaj svaki put"
   },
   "permission.never": {
     "message": "Zabranjeno",
@@ -117,7 +121,7 @@
   },
   "custom.title": {
     "message": "Dodaj prilagođeni konektor",
-    "description": "Naslov dijaloga za prilagođene konektore"
+    "description": "Naslov dijaloga za prilagođeni konektor"
   },
   "custom.beta": {
     "message": "BETA",
@@ -125,14 +129,14 @@
   },
   "custom.intro": {
     "message": "Povežite Nexior sa vašim podacima i alatima.",
-    "description": "Uvod u dijalog za prilagođene konektore"
+    "description": "Uvod u dijalog za prilagođeni konektor"
   },
   "custom.name": {
     "message": "Ime",
     "description": "Polje za ime prilagođenog konektora"
   },
   "custom.namePlaceholder": {
-    "message": "Dajte ime konektoru",
+    "message": "Imenujte konektor",
     "description": "Placeholder za ime prilagođenog konektora"
   },
   "custom.url": {
@@ -153,7 +157,7 @@
   },
   "custom.advanced": {
     "message": "Napredne postavke",
-    "description": "Napredne postavke za prilagođene konektore"
+    "description": "Napredne postavke za prilagođeni konektor"
   },
   "custom.authType": {
     "message": "Tip autentifikacije",
@@ -180,8 +184,8 @@
     "description": "Placeholder za Bearer token"
   },
   "custom.warning": {
-    "message": "Dodajte samo konektore od programera kojima verujete. Nexior ne kontroliše alate koje pružaju programeri i ne može garantovati da će raditi kako se očekuje ili da se neće promeniti.",
-    "description": "Upozorenje za prilagođene konektore"
+    "message": "Dodajte samo konektore od poverljivih developera. Nexior ne kontroliše alate koje pružaju developeri i ne može garantovati da će raditi kako se očekuje ili da se neće promeniti.",
+    "description": "Upozorenje o prilagođenim konektorima"
   },
   "custom.add": {
     "message": "Dodaj",
@@ -245,14 +249,14 @@
   },
   "browse.installed": {
     "message": "Instalirano",
-    "description": "Status instaliran na kartici kataloga"
+    "description": "Status instalacije na kartici kataloga"
   },
   "browse.empty": {
     "message": "Nema pronađenih konektora.",
     "description": "Pretraga u katalogu je prazna"
   },
   "browse.builtinTitle": {
-    "message": "Ugrađeni MCP server",
+    "message": "Ugrađeni MCP serveri",
     "description": "Naslov grupe ugrađenih MCP-a"
   },
   "browse.builtinDesc": {
@@ -268,7 +272,7 @@
     "description": "Opis grupe OAuth provajdera"
   },
   "browse.customTitle": {
-    "message": "Prilagođeni MCP server",
+    "message": "Prilagođeni MCP serveri",
     "description": "Naslov grupe prilagođenih MCP-a"
   },
   "browse.customDesc": {

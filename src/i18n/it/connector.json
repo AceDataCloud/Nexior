@@ -1,26 +1,30 @@
 {
   "title": {
-    "message": "Connettori",
-    "description": "Titolo della pagina dei connettori"
+    "message": "Connettore",
+    "description": "Titolo della pagina del connettore"
   },
   "subtitle": {
-    "message": "Collega applicazioni esterne e server MCP personalizzati, espandendo le capacità AI",
-    "description": "Sottotitolo della pagina dei connettori"
+    "message": "Collega applicazioni esterne e server MCP personalizzati, espandi le capacità AI",
+    "description": "Sottotitolo della pagina del connettore"
   },
   "search.placeholder": {
-    "message": "Cerca connettori",
+    "message": "Cerca connettore",
     "description": "Segnaposto della barra di ricerca laterale"
   },
   "group.web": {
     "message": "Web",
     "description": "Titolo del gruppo di connettori di tipo web connessi"
   },
+  "group.builtin": {
+    "message": "Integrato",
+    "description": "Titolo del gruppo di server MCP integrati"
+  },
   "group.custom": {
-    "message": "Personalizzati",
+    "message": "Personalizzato",
     "description": "Titolo del gruppo di server MCP personalizzati"
   },
   "group.notConnected": {
-    "message": "Non connessi",
+    "message": "Non connesso",
     "description": "Titolo del gruppo di connettori non ancora connessi"
   },
   "badge.custom": {
@@ -53,11 +57,11 @@
   },
   "detail.disconnected": {
     "message": "Disconnesso",
-    "description": "Messaggio di disconnessione avvenuta con successo"
+    "description": "Messaggio di disconnessione riuscita"
   },
   "detail.connected": {
     "message": "Connesso",
-    "description": "Messaggio di connessione avvenuta con successo"
+    "description": "Messaggio di connessione riuscita"
   },
   "detail.toolPermissions": {
     "message": "Permessi degli strumenti",
@@ -112,8 +116,8 @@
     "description": "Permessi degli strumenti: chiedi ogni volta"
   },
   "permission.never": {
-    "message": "Nega l'accesso",
-    "description": "Permessi degli strumenti: nega l'accesso"
+    "message": "Nega",
+    "description": "Permessi degli strumenti: nega"
   },
   "custom.title": {
     "message": "Aggiungi connettore personalizzato",
@@ -164,8 +168,8 @@
     "description": "Tipo di autenticazione: nessuno"
   },
   "custom.authBearer": {
-    "message": "Bearer Token",
-    "description": "Tipo di autenticazione: Bearer Token"
+    "message": "Token Bearer",
+    "description": "Tipo di autenticazione: Token Bearer"
   },
   "custom.authOAuth": {
     "message": "OAuth 2.0",
@@ -176,12 +180,12 @@
     "description": "Campo token Bearer"
   },
   "custom.authTokenPlaceholder": {
-    "message": "Inserisci Bearer Token",
-    "description": "Segnaposto per il Bearer token"
+    "message": "Inserisci il Token Bearer",
+    "description": "Segnaposto per il token Bearer"
   },
   "custom.warning": {
     "message": "Aggiungi solo connettori da sviluppatori di cui ti fidi. Nexior non controlla gli strumenti forniti dagli sviluppatori e non può garantire che funzionino come previsto o che non subiscano modifiche.",
-    "description": "Avviso per il connettore personalizzato"
+    "description": "Avviso per connettori personalizzati"
   },
   "custom.add": {
     "message": "Aggiungi",
@@ -213,7 +217,7 @@
   },
   "custom.deleteConfirm": {
     "message": "Confermi l'eliminazione del connettore \"{name}\"?",
-    "description": "Conferma per eliminare il connettore personalizzato"
+    "description": "Conferma per eliminare un connettore personalizzato"
   },
   "custom.testSuccess": {
     "message": "Connessione riuscita, trovati {count} strumenti",
@@ -229,7 +233,7 @@
   },
   "browse.title": {
     "message": "Catalogo",
-    "description": "Titolo della pagina di navigazione del catalogo"
+    "description": "Titolo della pagina del catalogo"
   },
   "browse.searchPlaceholder": {
     "message": "Cerca connettori…",
@@ -249,31 +253,31 @@
   },
   "browse.empty": {
     "message": "Nessun connettore trovato.",
-    "description": "Risultato vuoto della ricerca nel catalogo"
+    "description": "Risultato di ricerca vuoto nel catalogo"
   },
   "browse.builtinTitle": {
     "message": "Server MCP integrati",
-    "description": "Titolo del gruppo di MCP integrati"
+    "description": "Titolo del gruppo MCP integrati"
   },
   "browse.builtinDesc": {
-    "message": "Fornito da AceDataCloud, installazione con un clic.",
-    "description": "Descrizione del gruppo di MCP integrati"
+    "message": "Fornito da AceDataCloud, pronto all'uso con un clic.",
+    "description": "Descrizione del gruppo MCP integrati"
   },
   "browse.providersTitle": {
     "message": "Fornitori OAuth",
-    "description": "Titolo del gruppo di fornitori OAuth"
+    "description": "Titolo del gruppo fornitori OAuth"
   },
   "browse.providersDesc": {
     "message": "Collegati ai tuoi account Google, GitHub, Slack, ecc. tramite OAuth.",
-    "description": "Descrizione del gruppo di fornitori OAuth"
+    "description": "Descrizione del gruppo fornitori OAuth"
   },
   "browse.customTitle": {
     "message": "Server MCP personalizzati",
-    "description": "Titolo del gruppo di MCP personalizzati"
+    "description": "Titolo del gruppo MCP personalizzati"
   },
   "browse.customDesc": {
     "message": "Aggiungi il tuo server MCP per utilizzarlo in Nexior.",
-    "description": "Descrizione del gruppo di MCP personalizzati"
+    "description": "Descrizione del gruppo MCP personalizzati"
   },
   "browse.installSuccess": {
     "message": "Installato {name}",
@@ -297,7 +301,7 @@
   },
   "common.processing": {
     "message": "Elaborazione in corso…",
-    "description": "Messaggio di elaborazione in corso"
+    "description": "In fase di elaborazione"
   },
   "common.authSuccess": {
     "message": "Autorizzazione riuscita",

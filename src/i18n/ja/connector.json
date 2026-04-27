@@ -15,6 +15,10 @@
     "message": "ウェブ",
     "description": "接続されたウェブ系コネクタのグループタイトル"
   },
+  "group.builtin": {
+    "message": "組み込み",
+    "description": "組み込みMCPサーバーのグループタイトル"
+  },
   "group.custom": {
     "message": "カスタム",
     "description": "カスタムMCPサーバーのグループタイトル"
@@ -64,7 +68,7 @@
     "description": "ツールの権限セクションのタイトル"
   },
   "detail.toolPermissions.help": {
-    "message": "Nexiorがこれらのツールを使用する際の許可を選択してください。",
+    "message": "Nexiorがこれらのツールを使用するタイミングを選択します。",
     "description": "ツールの権限セクションの説明"
   },
   "detail.readOnlyTools": {
@@ -100,7 +104,7 @@
     "description": "ツールがないときのヒント"
   },
   "detail.profile": {
-    "message": "ログインしたアカウント",
+    "message": "ログインアカウント",
     "description": "接続されたアカウント情報のタイトル"
   },
   "permission.always": {
@@ -180,12 +184,12 @@
     "description": "ベアラートークンのプレースホルダー"
   },
   "custom.warning": {
-    "message": "信頼できる開発者からのコネクタのみを追加してください。Nexiorは開発者が提供するツールを制御しておらず、期待通りに動作することや変更がないことを保証できません。",
-    "description": "カスタムコネクタの警告"
+    "message": "信頼できる開発者からのコネクタのみを追加してください。Nexiorは開発者が提供するツールを管理しておらず、期待通りに動作することや変更がないことを保証できません。",
+    "description": "カスタムコネクタ警告"
   },
   "custom.add": {
     "message": "追加",
-    "description": "カスタムコネクタを追加するボタン"
+    "description": "カスタムコネクタの提出ボタン"
   },
   "custom.cancel": {
     "message": "キャンセル",
@@ -193,35 +197,35 @@
   },
   "custom.test": {
     "message": "接続テスト",
-    "description": "MCP接続をテストするボタン"
+    "description": "MCP接続テストボタン"
   },
   "custom.urlRequired": {
     "message": "名前とURLを入力してください",
-    "description": "名前とURLは必須のヒント"
+    "description": "名前とURL必須のヒント"
   },
   "custom.created": {
     "message": "追加成功",
-    "description": "カスタムコネクタの追加が成功しました"
+    "description": "カスタムコネクタの追加成功"
   },
   "custom.updated": {
     "message": "更新成功",
-    "description": "カスタムコネクタの更新が成功しました"
+    "description": "カスタムコネクタの更新成功"
   },
   "custom.deleted": {
     "message": "削除成功",
-    "description": "カスタムコネクタの削除が成功しました"
+    "description": "カスタムコネクタの削除成功"
   },
   "custom.deleteConfirm": {
     "message": "コネクタ「{name}」を削除してもよろしいですか？",
-    "description": "カスタムコネクタ削除の確認"
+    "description": "カスタムコネクタ削除確認"
   },
   "custom.testSuccess": {
     "message": "接続成功、{count}個のツールが見つかりました",
-    "description": "MCP接続テストが成功しました"
+    "description": "MCP接続テスト成功"
   },
   "custom.testFailed": {
     "message": "接続失敗",
-    "description": "MCP接続テストが失敗しました"
+    "description": "MCP接続テスト失敗"
   },
   "custom.authorize": {
     "message": "認証",
@@ -229,7 +233,7 @@
   },
   "browse.title": {
     "message": "ディレクトリ",
-    "description": "ディレクトリブラウジングページのタイトル"
+    "description": "ブラウジングディレクトリページのタイトル"
   },
   "browse.searchPlaceholder": {
     "message": "コネクタを検索…",
