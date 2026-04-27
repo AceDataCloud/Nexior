@@ -1,0 +1,322 @@
+{
+  "title": {
+    "message": "连接器",
+    "description": "连接器页面标题"
+  },
+  "subtitle": {
+    "message": "连接外部应用与自定义 MCP 服务器，扩展 AI 能力",
+    "description": "连接器页面副标题"
+  },
+  "search.placeholder": {
+    "message": "搜索连接器",
+    "description": "侧栏搜索框占位符"
+  },
+  "group.web": {
+    "message": "网页",
+    "description": "已连接的网页类连接器分组标题"
+  },
+  "group.custom": {
+    "message": "自定义",
+    "description": "自定义 MCP 服务器分组标题"
+  },
+  "group.notConnected": {
+    "message": "未连接",
+    "description": "尚未连接的连接器分组标题"
+  },
+  "badge.custom": {
+    "message": "CUSTOM",
+    "description": "自定义连接器徽标"
+  },
+  "badge.builtin": {
+    "message": "内置",
+    "description": "内置 MCP 服务器徽标"
+  },
+  "badge.comingSoon": {
+    "message": "即将上线",
+    "description": "未配置的 OAuth 提供方徽标"
+  },
+  "menu.browse": {
+    "message": "浏览连接器",
+    "description": "添加菜单：从目录浏览"
+  },
+  "menu.custom": {
+    "message": "添加自定义连接器",
+    "description": "添加菜单：添加自定义 MCP 连接器"
+  },
+  "detail.connect": {
+    "message": "连接",
+    "description": "连接按钮"
+  },
+  "detail.disconnect": {
+    "message": "断开连接",
+    "description": "断开连接按钮"
+  },
+  "detail.disconnected": {
+    "message": "已断开",
+    "description": "断开成功消息"
+  },
+  "detail.connected": {
+    "message": "已连接",
+    "description": "连接成功消息"
+  },
+  "detail.toolPermissions": {
+    "message": "工具权限",
+    "description": "工具权限分区标题"
+  },
+  "detail.toolPermissions.help": {
+    "message": "选择何时允许 Nexior 使用这些工具。",
+    "description": "工具权限分区说明"
+  },
+  "detail.readOnlyTools": {
+    "message": "只读工具",
+    "description": "只读工具分组标题"
+  },
+  "detail.tools": {
+    "message": "工具",
+    "description": "工具列表标题"
+  },
+  "detail.empty": {
+    "message": "选择左侧的连接器以查看详情。",
+    "description": "未选中任何连接器时的提示"
+  },
+  "detail.empty.title": {
+    "message": "选择一个连接器",
+    "description": "右侧未选中时的标题"
+  },
+  "detail.empty.desc": {
+    "message": "从左侧选择已连接的项目以查看详情，或浏览目录添加新连接器。",
+    "description": "右侧未选中时的描述"
+  },
+  "empty.title": {
+    "message": "还没有连接器",
+    "description": "侧栏完全为空时的标题"
+  },
+  "empty.desc": {
+    "message": "浏览目录开始添加连接器，或添加您自己的 MCP 服务器。",
+    "description": "侧栏完全为空时的描述"
+  },
+  "detail.noTools": {
+    "message": "此连接器尚未发现可用工具。",
+    "description": "无工具时的提示"
+  },
+  "detail.profile": {
+    "message": "已登录账户",
+    "description": "已连接账户信息标题"
+  },
+  "permission.always": {
+    "message": "始终允许",
+    "description": "工具权限：始终允许"
+  },
+  "permission.ask": {
+    "message": "需要确认",
+    "description": "工具权限：每次询问"
+  },
+  "permission.never": {
+    "message": "禁止使用",
+    "description": "工具权限：禁止使用"
+  },
+  "custom.title": {
+    "message": "添加自定义连接器",
+    "description": "自定义连接器对话框标题"
+  },
+  "custom.beta": {
+    "message": "BETA",
+    "description": "Beta 标签"
+  },
+  "custom.intro": {
+    "message": "连接 Nexior 至您的数据与工具。",
+    "description": "自定义连接器对话框引言"
+  },
+  "custom.name": {
+    "message": "名称",
+    "description": "自定义连接器名称字段"
+  },
+  "custom.namePlaceholder": {
+    "message": "为连接器命名",
+    "description": "自定义连接器名称占位符"
+  },
+  "custom.url": {
+    "message": "Remote MCP server URL",
+    "description": "自定义连接器 URL 字段"
+  },
+  "custom.urlPlaceholder": {
+    "message": "https://example.com/mcp",
+    "description": "自定义连接器 URL 占位符"
+  },
+  "custom.description": {
+    "message": "描述",
+    "description": "自定义连接器描述字段"
+  },
+  "custom.descriptionPlaceholder": {
+    "message": "可选：描述此连接器的用途",
+    "description": "自定义连接器描述占位符"
+  },
+  "custom.advanced": {
+    "message": "高级设置",
+    "description": "自定义连接器高级设置"
+  },
+  "custom.authType": {
+    "message": "认证方式",
+    "description": "认证类型字段"
+  },
+  "custom.authNone": {
+    "message": "无",
+    "description": "认证方式：无"
+  },
+  "custom.authBearer": {
+    "message": "Bearer Token",
+    "description": "认证方式：Bearer Token"
+  },
+  "custom.authOAuth": {
+    "message": "OAuth 2.0",
+    "description": "认证方式：OAuth 2.0"
+  },
+  "custom.authToken": {
+    "message": "Token",
+    "description": "Bearer token 字段"
+  },
+  "custom.authTokenPlaceholder": {
+    "message": "输入 Bearer Token",
+    "description": "Bearer token 占位符"
+  },
+  "custom.warning": {
+    "message": "仅添加来自您信任的开发者的连接器。Nexior 不控制开发者提供的工具，无法保证它们能按预期工作或不会发生变化。",
+    "description": "自定义连接器警告"
+  },
+  "custom.add": {
+    "message": "添加",
+    "description": "提交自定义连接器按钮"
+  },
+  "custom.cancel": {
+    "message": "取消",
+    "description": "取消按钮"
+  },
+  "custom.test": {
+    "message": "测试连接",
+    "description": "测试 MCP 连接按钮"
+  },
+  "custom.urlRequired": {
+    "message": "请填写名称和 URL",
+    "description": "名称和 URL 必填提示"
+  },
+  "custom.created": {
+    "message": "添加成功",
+    "description": "添加自定义连接器成功"
+  },
+  "custom.updated": {
+    "message": "更新成功",
+    "description": "更新自定义连接器成功"
+  },
+  "custom.deleted": {
+    "message": "删除成功",
+    "description": "删除自定义连接器成功"
+  },
+  "custom.deleteConfirm": {
+    "message": "确认删除连接器 \"{name}\"？",
+    "description": "删除自定义连接器确认"
+  },
+  "custom.testSuccess": {
+    "message": "连接成功，发现 {count} 个工具",
+    "description": "测试 MCP 连接成功"
+  },
+  "custom.testFailed": {
+    "message": "连接失败",
+    "description": "测试 MCP 连接失败"
+  },
+  "custom.authorize": {
+    "message": "授权",
+    "description": "OAuth 授权按钮"
+  },
+  "browse.title": {
+    "message": "目录",
+    "description": "浏览目录页面标题"
+  },
+  "browse.searchPlaceholder": {
+    "message": "搜索连接器…",
+    "description": "目录搜索框占位符"
+  },
+  "browse.subtitle": {
+    "message": "由 AceDataCloud 与合作伙伴提供",
+    "description": "目录页副标题"
+  },
+  "browse.install": {
+    "message": "安装",
+    "description": "目录卡片安装按钮"
+  },
+  "browse.installed": {
+    "message": "已安装",
+    "description": "目录卡片已安装状态"
+  },
+  "browse.empty": {
+    "message": "未找到匹配的连接器。",
+    "description": "目录搜索为空"
+  },
+  "browse.builtinTitle": {
+    "message": "内置 MCP 服务器",
+    "description": "内置 MCP 分组标题"
+  },
+  "browse.builtinDesc": {
+    "message": "由 AceDataCloud 提供，一键安装即可使用。",
+    "description": "内置 MCP 分组描述"
+  },
+  "browse.providersTitle": {
+    "message": "OAuth 提供方",
+    "description": "OAuth 提供方分组标题"
+  },
+  "browse.providersDesc": {
+    "message": "通过 OAuth 连接到您的 Google、GitHub、Slack 等账户。",
+    "description": "OAuth 提供方分组描述"
+  },
+  "browse.customTitle": {
+    "message": "自定义 MCP 服务器",
+    "description": "自定义 MCP 分组标题"
+  },
+  "browse.customDesc": {
+    "message": "添加您自己的 MCP 服务器，以便在 Nexior 中使用。",
+    "description": "自定义 MCP 分组描述"
+  },
+  "browse.installSuccess": {
+    "message": "已安装 {name}",
+    "description": "安装成功消息"
+  },
+  "browse.installFailed": {
+    "message": "安装失败",
+    "description": "安装失败消息"
+  },
+  "common.back": {
+    "message": "返回",
+    "description": "返回按钮"
+  },
+  "common.confirm": {
+    "message": "确定",
+    "description": "确认按钮"
+  },
+  "common.cancel": {
+    "message": "取消",
+    "description": "取消按钮"
+  },
+  "common.processing": {
+    "message": "处理中…",
+    "description": "处理中"
+  },
+  "common.authSuccess": {
+    "message": "授权成功",
+    "description": "OAuth 授权成功"
+  },
+  "common.authFailed": {
+    "message": "授权失败",
+    "description": "OAuth 授权失败"
+  },
+  "common.closeWindow": {
+    "message": "您可以关闭此窗口。",
+    "description": "提示用户可关闭窗口"
+  },
+  "common.loadError": {
+    "message": "加载失败，连接器功能可能暂未开放。",
+    "description": "连接器加载失败"
+  },
+  "common.toggleError": {
+    "message": "切换状态失败",
+    "description": "启用/停用切换失败"
+  }
+}

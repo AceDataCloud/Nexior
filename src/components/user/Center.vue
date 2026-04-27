@@ -20,6 +20,10 @@
             <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
+          <el-dropdown-item class="py-2" @click="onConnectors">
+            <font-awesome-icon icon="fa-solid fa-plug" class="mr-2" />
+            {{ $t('connector.title') }}
+          </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onConsole">
             <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
             {{ $t('common.nav.console') }}
@@ -40,7 +44,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD, ROUTE_CONNECTORS_INDEX } from '@/router';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -90,6 +94,9 @@ export default defineComponent({
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
+    },
+    onConnectors() {
+      this.$router.push({ name: ROUTE_CONNECTORS_INDEX });
     },
     onDistribution() {
       this.$router.push({
