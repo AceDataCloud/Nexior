@@ -20,7 +20,12 @@ export default defineComponent({
       return this.$store.state.site?.title || 'AceData';
     },
     url() {
-      return 'https://platform.acedata.cloud/favicon.ico';
+      const site = this.$store.state.site;
+      const fallback = 'https://platform.acedata.cloud/favicon.ico';
+      if (this.collapsed) {
+        return site?.favicon || site?.logo || fallback;
+      }
+      return site?.logo || site?.favicon || fallback;
     }
   }
 });
