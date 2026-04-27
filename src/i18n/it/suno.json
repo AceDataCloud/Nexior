@@ -20,7 +20,7 @@
     "description": "Etichetta per il nome della voce"
   },
   "voice.namePlaceholder": {
-    "message": "Assegna un nome alla voce...",
+    "message": "Dai un nome alla voce...",
     "description": "Segnaposto per l'input del nome della voce"
   },
   "voice.description": {
@@ -56,7 +56,7 @@
     "description": "Etichetta per l'URL audio"
   },
   "voice.audioUrlPlaceholder": {
-    "message": "Inserisci URL del file audio...",
+    "message": "Inserisci URL File Audio...",
     "description": "Segnaposto per l'input dell'URL audio"
   },
   "voice.createSuccess": {
@@ -71,12 +71,32 @@
     "message": "Nessuna voce disponibile, clicca il pulsante sopra per crearne una",
     "description": "Messaggio quando la lista delle voci è vuota"
   },
+  "voice.emptyFavorites": {
+    "message": "Non hai ancora aggiunto voci ai preferiti, clicca sulla stella per aggiungere",
+    "description": "Messaggio quando la lista dei preferiti è vuota"
+  },
+  "voice.tabAll": {
+    "message": "Tutte",
+    "description": "Etichetta per mostrare tutte le voci"
+  },
+  "voice.tabFavorites": {
+    "message": "Preferiti",
+    "description": "Etichetta per mostrare le voci preferite"
+  },
+  "voice.favorite": {
+    "message": "Aggiungi ai Preferiti",
+    "description": "Messaggio per aggiungere ai preferiti quando non è già stato fatto"
+  },
+  "voice.unfavorite": {
+    "message": "Rimuovi dai Preferiti",
+    "description": "Messaggio per rimuovere dai preferiti quando è già stato fatto"
+  },
   "voice.delete": {
     "message": "Elimina Voce",
     "description": "Titolo di conferma per l'eliminazione della voce"
   },
   "voice.confirmDelete": {
-    "message": "Sei sicuro di voler eliminare questa voce? Questa operazione non può essere annullata.",
+    "message": "Sei sicuro di voler eliminare questa voce? Questa operazione è irreversibile.",
     "description": "Messaggio di conferma per l'eliminazione della voce"
   },
   "voice.deleteSuccess": {
@@ -88,8 +108,8 @@
     "description": "Messaggio di errore per l'eliminazione della voce"
   },
   "button.extend": {
-    "message": "Continua Generazione",
-    "description": "Testo del pulsante per continuare la generazione"
+    "message": "Continua a Generare",
+    "description": "Testo del pulsante per continuare a generare"
   },
   "button.download": {
     "message": "Scarica",
@@ -103,21 +123,73 @@
     "message": "Carica",
     "description": "Testo del pulsante per consentire all'utente di caricare un riferimento"
   },
+  "button.addAudio": {
+    "message": "+ Audio",
+    "description": "Pulsante per aprire la finestra di dialogo per aggiungere audio (sfoglia o registra)"
+  },
+  "button.startRecord": {
+    "message": "Inizia Registrazione",
+    "description": "Pulsante per avviare la registrazione con il microfono"
+  },
+  "button.stopRecord": {
+    "message": "Ferma",
+    "description": "Pulsante per fermare la registrazione con il microfono"
+  },
+  "button.reRecord": {
+    "message": "Riregistra",
+    "description": "Scarta la registrazione attuale e riregistra"
+  },
+  "button.useRecording": {
+    "message": "Usa Questa Registrazione",
+    "description": "Carica l'audio registrato come riferimento"
+  },
+  "name.addAudio": {
+    "message": "Aggiungi Audio",
+    "description": "Titolo della finestra di dialogo per aggiungere audio"
+  },
+  "tab.browse": {
+    "message": "Sfoglia",
+    "description": "Etichetta per sfogliare file audio locali"
+  },
+  "tab.record": {
+    "message": "Registra",
+    "description": "Etichetta per registrare audio con il microfono"
+  },
+  "description.dropAudioHere": {
+    "message": "Trascina l'audio qui, o clicca per caricare",
+    "description": "Testo di suggerimento per l'area di trascinamento dell'audio"
+  },
+  "description.audioFormats": {
+    "message": "Formati supportati: MP3, WAV, M4A",
+    "description": "Suggerimento sui formati audio supportati"
+  },
+  "message.recordingReady": {
+    "message": "Registrazione Pronta",
+    "description": "Visualizzato dopo il completamento della registrazione"
+  },
+  "message.recordingUnsupported": {
+    "message": "Il browser attuale non supporta la registrazione audio",
+    "description": "Il browser non supporta MediaRecorder"
+  },
+  "message.recordingPermissionDenied": {
+    "message": "Permesso del microfono negato o non disponibile",
+    "description": "L'utente ha negato il permesso per il microfono"
+  },
   "button.video": {
     "message": "Video",
-    "description": "Testo del pulsante per il video"
+    "description": "Testo del pulsante video"
   },
   "button.download_video": {
     "message": "Scarica Video",
     "description": "Testo del pulsante per scaricare il video"
   },
   "button.download_wav": {
-    "message": "Scarica WAV",
-    "description": "Testo del pulsante per scaricare in formato WAV senza perdita"
+    "message": "Scarica WAV Lossless",
+    "description": "Testo del pulsante per scaricare il formato WAV lossless"
   },
   "button.download_midi": {
     "message": "Scarica MIDI",
-    "description": "Testo del pulsante per scaricare in formato MIDI"
+    "description": "Testo del pulsante per scaricare il formato MIDI"
   },
   "button.get_stems": {
     "message": "Separazione Tracce",
@@ -136,7 +208,7 @@
     "description": "Testo del pulsante per scaricare la musica"
   },
   "button.remaster": {
-    "message": "Remasterizza",
+    "message": "Remaster",
     "description": "Testo del pulsante per migliorare la qualità audio"
   },
   "button.replace_section": {
@@ -148,8 +220,8 @@
     "description": "Testo del pulsante per mescolare più canzoni"
   },
   "button.generate_lyrics": {
-    "message": "Genera Testo AI",
-    "description": "Testo del pulsante per generare automaticamente il testo con AI"
+    "message": "Genera Testo",
+    "description": "Testo del pulsante per generare automaticamente il testo"
   },
   "button.optimize_style": {
     "message": "Ottimizza Stile",
@@ -196,35 +268,35 @@
     "description": "Modello per generare musica"
   },
   "name.taskId": {
-    "message": "ID attività",
-    "description": "ID dell'attività"
+    "message": "ID Compito",
+    "description": "ID del compito"
   },
   "name.type": {
-    "message": "Modalità personalizzata",
+    "message": "Modalità Personalizzata",
     "description": "Nome della modalità personalizzata"
   },
   "name.prompt": {
-    "message": "Descrizione della canzone",
+    "message": "Descrizione Canzone",
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.extend": {
-    "message": "Estendi la canzone da",
+    "message": "Estendi Canzone Da",
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.cover": {
-    "message": "Canzone di copertura da",
+    "message": "Cover Canzone Da",
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.lyrics": {
     "message": "Testo",
-    "description": "Suggerimento per l'input del testo"
+    "description": "Suggerimento per l'input del contenuto del testo"
   },
   "name.style": {
     "message": "Stile",
-    "description": "Suggerimento per l'input dello stile della canzone"
+    "description": "Suggerimento per l'input del contenuto dello stile della canzone"
   },
   "name.styleNegative": {
-    "message": "Escludi stile",
+    "message": "Escludi Stile",
     "description": "Descrizione degli stili indesiderati"
   },
   "name.title": {
@@ -232,51 +304,51 @@
     "description": "Suggerimento per l'input del titolo della canzone"
   },
   "name.vocalGender": {
-    "message": "Genere vocale",
+    "message": "Genere Vocale",
     "description": "Seleziona il genere vocale"
   },
   "name.advancedParams": {
-    "message": "Parametri avanzati",
+    "message": "Parametri Avanzati",
     "description": "Impostazioni dei parametri avanzati"
   },
   "name.weirdness": {
     "message": "Creatività",
-    "description": "Controlla il livello di creatività della musica generata"
+    "description": "Controlla il livello di creatività nella musica generata"
   },
   "name.styleInfluence": {
-    "message": "Influenza dello stile",
-    "description": "Controlla il grado di influenza dello stile sul risultato generato"
+    "message": "Influenza Stile",
+    "description": "Controlla il livello di influenza dello stile sul risultato generato"
   },
   "name.variationCategory": {
-    "message": "Tipo di variazione",
-    "description": "Controlla il grado di diversità delle variazioni generate"
+    "message": "Tipo di Variazione",
+    "description": "Controlla il livello di diversità delle variazioni generate"
   },
   "name.audioWeight": {
-    "message": "Peso della canzone originale",
-    "description": "Peso dell'influenza della canzone originale durante la copertura"
+    "message": "Peso Originale",
+    "description": "Peso dell'influenza della canzone originale nella cover"
   },
   "name.lyricPrompt": {
-    "message": "Suggerimento per il testo",
+    "message": "Suggerimento Testo",
     "description": "Suggerimento per generare automaticamente il testo"
   },
   "name.failureReason": {
-    "message": "Motivo del fallimento",
-    "description": "Motivo del fallimento dell'attività"
+    "message": "Motivo di Fallimento",
+    "description": "Motivo del fallimento del compito"
   },
   "name.status": {
     "message": "Stato",
-    "description": "Stato dell'attività"
+    "description": "Stato del compito"
   },
   "name.traceId": {
-    "message": "ID di tracciamento",
-    "description": "ID di tracciamento dell'attività"
+    "message": "ID Tracciamento",
+    "description": "ID di tracciamento del compito"
   },
   "name.sunoBot": {
     "message": "Suno Bot",
     "description": "Nome del generatore Suno"
   },
   "name.replaceSection": {
-    "message": "Sostituisci sezione",
+    "message": "Sostituisci Sezione",
     "description": "Sostituisci una sezione della canzone"
   },
   "name.model": {
@@ -284,15 +356,15 @@
     "description": "Seleziona la versione del modello"
   },
   "name.songDescription": {
-    "message": "Descrizione della canzone",
+    "message": "Descrizione Canzone",
     "description": "Modalità di descrizione della canzone"
   },
   "description.prompt": {
-    "message": "Descrivi lo stile e il tema musicale desiderati",
+    "message": "Descrivi lo stile e il tema della musica desiderata",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.lyrics": {
-    "message": "Inserisci il testo personalizzato, supporta i marcatori di paragrafo [Verse], [Chorus], [Bridge], ecc.",
+    "message": "Inserisci il testo personalizzato, supporta marcatori di paragrafo come [Verse], [Chorus], [Bridge]",
     "description": "Descrizione del parametro 'lyrics'"
   },
   "description.style": {
@@ -301,59 +373,59 @@
   },
   "description.styleNegative": {
     "message": "Descrivi gli stili indesiderati, come heavy metal, screaming",
-    "description": "Descrizione del parametro di esclusione dello stile"
+    "description": "Descrizione del parametro per escludere stili"
   },
   "description.title": {
-    "message": "Titolo della canzone",
+    "message": "Titolo della Canzone",
     "description": "Descrizione del parametro 'title'"
   },
   "description.uploadAudios": {
-    "message": "Carica la musica come riferimento per la generazione, il caricamento richiede un po' di tempo, dopo il successo della generazione puoi generare in base alla musica caricata",
-    "description": "Descrizione del parametro di caricamento del riferimento"
+    "message": "Carica musica come riferimento per la generazione, il caricamento richiede un po' di tempo, una volta completato, puoi generare in base alla musica caricata",
+    "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.vocalGender": {
-    "message": "Seleziona il genere della voce generata (supportato solo nelle versioni v4.5 e superiori)",
+    "message": "Seleziona il genere della voce da generare (supportato solo nelle versioni v4.5 e superiori)",
     "description": "Descrizione del selettore di genere vocale"
   },
   "description.weirdness": {
-    "message": "Valore più alto significa musica più creativa e sperimentale (0-100)",
+    "message": "Valori più alti generano musica più creativa e sperimentale (0-100)",
     "description": "Descrizione del parametro di creatività"
   },
   "description.styleInfluence": {
-    "message": "Valore più alto significa maggiore influenza dell'etichetta di stile sul risultato generato (0-100)",
+    "message": "Valori più alti aumentano l'influenza dell'etichetta di stile sul risultato generato (0-100)",
     "description": "Descrizione del parametro di influenza dello stile"
   },
   "description.audioWeight": {
-    "message": "Peso dell'influenza della canzone originale sul risultato (0-100)",
-    "description": "Descrizione del parametro di peso della canzone originale"
+    "message": "Peso dell'originale sul risultato durante la cover (0-100)",
+    "description": "Descrizione del parametro di peso dell'originale"
   },
   "description.lyricPrompt": {
-    "message": "Inserisci la descrizione del testo, l'IA genererà automaticamente il testo",
-    "description": "Descrizione del suggerimento per il testo"
+    "message": "Inserisci una descrizione del testo, l'AI genererà automaticamente le liriche",
+    "description": "Descrizione del prompt per le liriche"
   },
   "description.replaceSection": {
-    "message": "Sostituisci il contenuto in un intervallo di tempo specificato nella canzone",
-    "description": "Descrizione della funzione di sostituzione della sezione"
+    "message": "Sostituisci il contenuto in un intervallo di tempo specificato della canzone",
+    "description": "Descrizione della funzione di sostituzione del segmento"
   },
   "status.pending": {
     "message": "In attesa",
-    "description": "Stato di attesa dell'attività"
+    "description": "Stato di attesa del compito"
   },
   "placeholder.prompt": {
-    "message": "Descrivi la musica desiderata, ad esempio: una calda ballata folk, sulla nostalgia dell'autunno...",
-    "description": "Segnaposto per l'input della descrizione della canzone"
+    "message": "Descrivi la musica che desideri, ad esempio: una dolce ballata folk, sulla nostalgia dell'autunno...",
+    "description": "Segnaposto per la descrizione della canzone"
   },
   "placeholder.lyrics": {
-    "message": "[Verse]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[Chorus]\nCantiamo insieme\nFino all'alba...",
-    "description": "Segnaposto per l'input del testo"
+    "message": "[Strofa]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[Ritornello]\nCantiamo insieme\nFino all'alba...",
+    "description": "Segnaposto per l'input delle liriche"
   },
   "placeholder.extend.lyrics": {
-    "message": "Inserisci il testo da estendere...",
-    "description": "Segnaposto per l'input del testo da estendere"
+    "message": "Inserisci le liriche da espandere...",
+    "description": "Segnaposto per l'input delle liriche da espandere"
   },
   "placeholder.extend.continue_at": {
-    "message": "Da quale secondo iniziare l'estensione...",
-    "description": "Segnaposto per l'orario di inizio dell'estensione"
+    "message": "Da quale secondo iniziare l'espansione...",
+    "description": "Segnaposto per l'orario di inizio dell'espansione"
   },
   "placeholder.style": {
     "message": "Ad esempio: pop acustico, jazz, R&B, elettronico...",
@@ -364,7 +436,7 @@
     "description": "Segnaposto per l'input degli stili da escludere"
   },
   "placeholder.title": {
-    "message": "Inserisci il nome della canzone...",
+    "message": "Inserisci il titolo della canzone...",
     "description": "Segnaposto per l'input del titolo"
   },
   "placeholder.select": {
@@ -376,16 +448,16 @@
     "description": "Segnaposto per l'input della posizione"
   },
   "placeholder.lyricPrompt": {
-    "message": "Descrivi il tema del testo, l'AI genererà automaticamente...",
-    "description": "Segnaposto per l'input del prompt del testo"
+    "message": "Descrivi il tema delle liriche, l'AI genererà automaticamente...",
+    "description": "Segnaposto per l'input del prompt delle liriche"
   },
   "placeholder.replaceSectionStart": {
     "message": "Tempo di inizio (secondi)",
-    "description": "Segnaposto per il tempo di inizio del segmento da sostituire"
+    "description": "Segnaposto per l'orario di inizio del segmento da sostituire"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Tempo di fine (secondi)",
-    "description": "Segnaposto per il tempo di fine del segmento da sostituire"
+    "description": "Segnaposto per l'orario di fine del segmento da sostituire"
   },
   "button.generate": {
     "message": "Genera",
@@ -411,6 +483,14 @@
     "message": "Bassa varietà",
     "description": "Opzione per varianti a bassa diversità"
   },
+  "lyricsMode.manual": {
+    "message": "Manuale",
+    "description": "Fornire le liriche manualmente"
+  },
+  "lyricsMode.auto": {
+    "message": "Automatico",
+    "description": "Lascia che l'AI generi automaticamente le liriche"
+  },
   "message.startingTask": {
     "message": "Avvio del compito in corso...",
     "description": "Messaggio all'inizio del compito di generazione musicale"
@@ -420,8 +500,8 @@
     "description": "Messaggio all'inizio del compito di generazione musicale"
   },
   "message.uploadReferencesExceed": {
-    "message": "Il numero massimo di musiche caricate è stato superato",
-    "description": "Messaggio di errore quando il numero massimo di musiche caricate è superato"
+    "message": "La musica caricata supera il numero massimo consentito",
+    "description": "Messaggio di errore quando la musica caricata supera il numero massimo"
   },
   "message.uploadReferencesError": {
     "message": "Caricamento della musica fallito",
@@ -432,12 +512,12 @@
     "description": "Messaggio di successo quando il compito di generazione musicale è avviato con successo"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Musica personalizzata caricata con successo",
-    "description": "Messaggio di successo quando il compito di generazione musicale è avviato con successo"
+    "message": "Caricamento della musica personalizzata avvenuto con successo",
+    "description": "Messaggio di successo quando il caricamento della musica personalizzata è avvenuto con successo"
   },
   "message.startUploadAudioFailed": {
     "message": "Caricamento della musica personalizzata fallito",
-    "description": "Messaggio di errore quando il compito di generazione musicale fallisce"
+    "description": "Messaggio di errore quando il caricamento della musica personalizzata fallisce"
   },
   "message.startTaskFailed": {
     "message": "Avvio del compito di generazione musicale fallito",
@@ -448,23 +528,23 @@
     "description": "Messaggio di errore quando il recupero del video fallisce"
   },
   "message.generatingLyrics": {
-    "message": "Generazione del testo in corso...",
-    "description": "Messaggio durante la generazione del testo"
+    "message": "Generazione delle liriche in corso...",
+    "description": "Messaggio durante la generazione delle liriche"
   },
   "message.generateLyricsSuccess": {
-    "message": "Testo generato con successo",
-    "description": "Messaggio quando il testo è generato con successo"
+    "message": "Generazione delle liriche avvenuta con successo",
+    "description": "Messaggio quando la generazione delle liriche ha successo"
   },
   "message.generateLyricsFailed": {
-    "message": "Generazione del testo fallita",
-    "description": "Messaggio quando la generazione del testo fallisce"
+    "message": "Generazione delle liriche fallita",
+    "description": "Messaggio quando la generazione delle liriche fallisce"
   },
   "message.optimizingStyle": {
     "message": "Ottimizzazione della descrizione dello stile in corso...",
     "description": "Messaggio durante l'ottimizzazione dello stile"
   },
   "message.optimizeStyleSuccess": {
-    "message": "Ottimizzazione dello stile riuscita",
+    "message": "Ottimizzazione dello stile avvenuta con successo",
     "description": "Messaggio quando l'ottimizzazione dello stile ha successo"
   },
   "message.optimizeStyleFailed": {
@@ -472,19 +552,19 @@
     "description": "Messaggio quando l'ottimizzazione dello stile fallisce"
   },
   "message.fetchingWav": {
-    "message": "Recupero del file WAV in corso...",
+    "message": "Caricamento file WAV in corso...",
     "description": "Messaggio durante il recupero del file WAV"
   },
   "message.fetchWavFailed": {
-    "message": "Recupero del file WAV fallito",
+    "message": "Impossibile recuperare il file WAV",
     "description": "Messaggio quando il recupero del file WAV fallisce"
   },
   "message.fetchingMidi": {
-    "message": "Recupero del file MIDI in corso...",
+    "message": "Caricamento file MIDI in corso...",
     "description": "Messaggio durante il recupero del file MIDI"
   },
   "message.fetchMidiFailed": {
-    "message": "Recupero del file MIDI fallito",
+    "message": "Impossibile recuperare il file MIDI",
     "description": "Messaggio quando il recupero del file MIDI fallisce"
   },
   "message.generating": {
@@ -504,8 +584,8 @@
     "description": "Messaggio quando non ci sono compiti"
   },
   "button.upload_cover": {
-    "message": "Carica la cover",
-    "description": "Testo del pulsante per caricare la cover dopo l'audio"
+    "message": "Carica cover",
+    "description": "Testo del pulsante per caricare la cover audio"
   },
   "button.artist_consistency": {
     "message": "Coerenza stilistica",
@@ -548,16 +628,16 @@
     "description": "Selezione dello stile artistico"
   },
   "name.overpaintingRange": {
-    "message": "Intervallo voce",
-    "description": "Aggiungi l'intervallo di tempo per la voce"
+    "message": "Intervallo vocale",
+    "description": "Intervallo di tempo per aggiungere la voce"
   },
   "name.underpaintingRange": {
     "message": "Intervallo accompagnamento",
-    "description": "Aggiungi l'intervallo di tempo per l'accompagnamento"
+    "description": "Intervallo di tempo per aggiungere l'accompagnamento"
   },
   "name.samplesRange": {
     "message": "Intervallo campioni",
-    "description": "Aggiungi l'intervallo di tempo per i campioni"
+    "description": "Intervallo di tempo per aggiungere campioni"
   },
   "placeholder.overpaintingStart": {
     "message": "Inizio (secondi)",
@@ -584,35 +664,35 @@
     "description": "Segnaposto per la fine dei campioni"
   },
   "placeholder.personaId": {
-    "message": "Inserisci ID stile cantante...",
-    "description": "Segnaposto per l'input dell'ID stile cantante"
+    "message": "Inserisci ID stile artista...",
+    "description": "Segnaposto per l'input dell'ID dello stile artistico"
   },
   "description.persona": {
-    "message": "Usa uno stile cantante creato per generare canzoni con uno stile coerente",
-    "description": "Descrizione della funzionalità dello stile cantante"
+    "message": "Utilizza uno stile artistico creato per generare canzoni con uno stile coerente",
+    "description": "Descrizione della funzionalità dello stile artistico"
   },
   "description.overpainting": {
-    "message": "Aggiungi voce alla musica caricata nell'intervallo di tempo specificato",
+    "message": "Aggiungi voce alla musica caricata in un intervallo di tempo specificato",
     "description": "Descrizione della funzionalità di aggiunta della voce"
   },
   "description.underpainting": {
-    "message": "Aggiungi accompagnamento alla musica caricata nell'intervallo di tempo specificato",
+    "message": "Aggiungi accompagnamento alla musica caricata in un intervallo di tempo specificato",
     "description": "Descrizione della funzionalità di aggiunta dell'accompagnamento"
   },
   "description.samples": {
-    "message": "Aggiungi campioni alla musica caricata nell'intervallo di tempo specificato",
+    "message": "Aggiungi campioni alla musica caricata in un intervallo di tempo specificato",
     "description": "Descrizione della funzionalità di aggiunta dei campioni"
   },
   "message.fetchingTiming": {
-    "message": "Recupero dati del tempo...",
+    "message": "Caricamento dati del tempo in corso...",
     "description": "Messaggio durante il recupero dei dati del tempo"
   },
   "message.fetchTimingFailed": {
-    "message": "Recupero dati del tempo fallito",
+    "message": "Impossibile recuperare i dati del tempo",
     "description": "Messaggio quando il recupero dei dati del tempo fallisce"
   },
   "message.fetchTimingSuccess": {
-    "message": "Recupero dati del tempo riuscito",
+    "message": "Dati del tempo recuperati con successo",
     "description": "Messaggio quando il recupero dei dati del tempo ha successo"
   },
   "message.extractingVocals": {
@@ -624,16 +704,16 @@
     "description": "Messaggio quando l'estrazione della voce fallisce"
   },
   "message.extractVocalsSuccess": {
-    "message": "Estrazione della voce riuscita",
+    "message": "Voce estratta con successo",
     "description": "Messaggio quando l'estrazione della voce ha successo"
   },
   "mode.simple": {
     "message": "Semplice",
-    "description": "Etichetta della modalità di creazione semplice"
+    "description": "Etichetta per la modalità di creazione semplice"
   },
   "mode.custom": {
     "message": "Personalizzato",
-    "description": "Etichetta della modalità di creazione personalizzata"
+    "description": "Etichetta per la modalità di creazione personalizzata"
   },
   "model.v55desc": {
     "message": "Voce personalizzata · Modello personalizzato",
@@ -644,7 +724,7 @@
     "description": "Descrizione del modello v5"
   },
   "model.v45plusdesc": {
-    "message": "Metodi di creazione avanzati",
+    "message": "Metodo di creazione avanzato",
     "description": "Descrizione del modello v4.5+"
   },
   "model.v45desc": {
@@ -665,26 +745,30 @@
   },
   "button.undo": {
     "message": "Annulla",
-    "description": "Messaggio del pulsante di annullamento"
+    "description": "Suggerimento per il pulsante di annullamento"
   },
   "button.clear_lyrics": {
     "message": "Cancella testi",
-    "description": "Messaggio del pulsante per cancellare i testi"
+    "description": "Suggerimento per il pulsante di cancellazione dei testi"
   },
   "button.expand_lyrics": {
     "message": "Espandi modifica",
-    "description": "Messaggio del pulsante per espandere la modifica dei testi a schermo intero"
+    "description": "Suggerimento per il pulsante di espansione della modifica dei testi a schermo intero"
   },
   "button.enhance_lyrics": {
     "message": "Migliora",
     "description": "Pulsante per migliorare i testi"
+  },
+  "button.clear_all": {
+    "message": "Cancella tutto",
+    "description": "Pulsante per cancellare tutti i moduli"
   },
   "placeholder.enhanceLyrics": {
     "message": "Inserisci istruzioni di modifica, ad esempio: rendi i testi più allegri...",
     "description": "Segnaposto per l'input di miglioramento dei testi"
   },
   "message.enhancingLyrics": {
-    "message": "Miglioramento dei testi in corso...",
+    "message": "Migliorando i testi...",
     "description": "Messaggio durante il miglioramento dei testi"
   },
   "message.enhanceLyricsSuccess": {
@@ -701,11 +785,11 @@
   },
   "sort.newest": {
     "message": "Più recenti",
-    "description": "Ordina per più recenti"
+    "description": "Ordina per i più recenti"
   },
   "sort.oldest": {
     "message": "Più vecchi",
-    "description": "Ordina per più vecchi"
+    "description": "Ordina per i più vecchi"
   },
   "button.delete": {
     "message": "Elimina",
@@ -729,7 +813,7 @@
   },
   "message.deleteFailed": {
     "message": "Eliminazione della canzone fallita",
-    "description": "Messaggio quando la canzone non può essere eliminata"
+    "description": "Messaggio quando l'eliminazione della canzone fallisce"
   },
   "name.generating": {
     "message": "Generazione in corso",

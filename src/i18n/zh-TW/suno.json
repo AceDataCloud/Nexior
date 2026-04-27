@@ -71,6 +71,26 @@
     "message": "暫無聲音，點擊上方按鈕創建",
     "description": "聲音列表為空時的提示"
   },
+  "voice.emptyFavorites": {
+    "message": "還沒收藏任何聲音，點擊星標添加",
+    "description": "收藏標籤為空時的提示"
+  },
+  "voice.tabAll": {
+    "message": "全部",
+    "description": "展示所有聲音的標籤"
+  },
+  "voice.tabFavorites": {
+    "message": "收藏",
+    "description": "展示收藏聲音的標籤"
+  },
+  "voice.favorite": {
+    "message": "添加到收藏",
+    "description": "未收藏時的星標提示"
+  },
+  "voice.unfavorite": {
+    "message": "從收藏中移除",
+    "description": "已收藏時的星標提示"
+  },
   "voice.delete": {
     "message": "刪除聲音",
     "description": "刪除聲音確認標題"
@@ -102,6 +122,58 @@
   "button.uploadAudios": {
     "message": "上傳",
     "description": "按鈕文本，允許用戶上傳參考"
+  },
+  "button.addAudio": {
+    "message": "+ 音頻",
+    "description": "打開添加音頻對話框的按鈕（瀏覽或錄製）"
+  },
+  "button.startRecord": {
+    "message": "開始錄製",
+    "description": "開始麥克風錄音按鈕"
+  },
+  "button.stopRecord": {
+    "message": "停止",
+    "description": "停止麥克風錄音按鈕"
+  },
+  "button.reRecord": {
+    "message": "重新錄製",
+    "description": "丟棄當前錄音並重新錄製"
+  },
+  "button.useRecording": {
+    "message": "使用此錄音",
+    "description": "將錄製的音頻作為參考上傳"
+  },
+  "name.addAudio": {
+    "message": "添加音頻",
+    "description": "添加音頻對話框的標題"
+  },
+  "tab.browse": {
+    "message": "瀏覽",
+    "description": "瀏覽本地音頻文件的標籤"
+  },
+  "tab.record": {
+    "message": "錄製",
+    "description": "錄製麥克風音頻的標籤"
+  },
+  "description.dropAudioHere": {
+    "message": "拖拽音頻到此處，或點擊上傳",
+    "description": "音頻拖拽區域的提示文字"
+  },
+  "description.audioFormats": {
+    "message": "支持格式：MP3、WAV、M4A",
+    "description": "支持的音頻格式提示"
+  },
+  "message.recordingReady": {
+    "message": "錄音已就緒",
+    "description": "錄音完成後顯示"
+  },
+  "message.recordingUnsupported": {
+    "message": "當前瀏覽器不支持音頻錄製",
+    "description": "瀏覽器不支持 MediaRecorder"
+  },
+  "message.recordingPermissionDenied": {
+    "message": "麥克風權限被拒絕或不可用",
+    "description": "用戶拒絕麥克風權限"
   },
   "button.video": {
     "message": "視頻",
@@ -308,7 +380,7 @@
     "description": "參數'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "上傳音樂作為生成的參考，過程需要等待，生成成功後可根據上傳的音樂進行生成",
+    "message": "上傳音樂作為生成的參考，過程需要等待一會，生成成功後可根據上傳的音樂進行生成",
     "description": "上傳參考參數的描述"
   },
   "description.vocalGender": {
@@ -410,6 +482,14 @@
   "variation.low": {
     "message": "低變體",
     "description": "低多樣性變體選項"
+  },
+  "lyricsMode.manual": {
+    "message": "手動",
+    "description": "手動提供歌詞"
+  },
+  "lyricsMode.auto": {
+    "message": "自動",
+    "description": "讓AI自動生成歌詞"
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
@@ -561,31 +641,31 @@
   },
   "placeholder.overpaintingStart": {
     "message": "開始時間 (秒)",
-    "description": "人聲開始時間的占位符"
+    "description": "人聲開始時間的佔位符"
   },
   "placeholder.overpaintingEnd": {
     "message": "結束時間 (秒)",
-    "description": "人聲結束時間的占位符"
+    "description": "人聲結束時間的佔位符"
   },
   "placeholder.underpaintingStart": {
     "message": "開始時間 (秒)",
-    "description": "伴奏開始時間的占位符"
+    "description": "伴奏開始時間的佔位符"
   },
   "placeholder.underpaintingEnd": {
     "message": "結束時間 (秒)",
-    "description": "伴奏結束時間的占位符"
+    "description": "伴奏結束時間的佔位符"
   },
   "placeholder.samplesStart": {
     "message": "開始時間 (秒)",
-    "description": "採樣開始時間的占位符"
+    "description": "採樣開始時間的佔位符"
   },
   "placeholder.samplesEnd": {
     "message": "結束時間 (秒)",
-    "description": "採樣結束時間的占位符"
+    "description": "採樣結束時間的佔位符"
   },
   "placeholder.personaId": {
     "message": "輸入歌手風格 ID...",
-    "description": "歌手風格 ID 輸入的占位符"
+    "description": "歌手風格 ID 輸入的佔位符"
   },
   "description.persona": {
     "message": "使用已創建的歌手風格來生成一致風格的歌曲",
@@ -644,7 +724,7 @@
     "description": "v5 模型描述"
   },
   "model.v45plusdesc": {
-    "message": "高級創作方法",
+    "message": "進階創作方法",
     "description": "v4.5+ 模型描述"
   },
   "model.v45desc": {
@@ -652,11 +732,11 @@
     "description": "v4.5 模型描述"
   },
   "model.v4desc": {
-    "message": "改進音質",
+    "message": "音質改善",
     "description": "v4 模型描述"
   },
   "model.v35desc": {
-    "message": "基礎歌曲結構",
+    "message": "基本歌曲結構",
     "description": "v3.5 模型描述"
   },
   "model.v3desc": {
@@ -679,9 +759,13 @@
     "message": "增強",
     "description": "增強歌詞按鈕"
   },
+  "button.clear_all": {
+    "message": "清空所有",
+    "description": "一鍵清空所有表單"
+  },
   "placeholder.enhanceLyrics": {
     "message": "輸入修改指令，例如：讓歌詞更歡快...",
-    "description": "歌詞增強輸入占位符"
+    "description": "歌詞增強輸入佔位符"
   },
   "message.enhancingLyrics": {
     "message": "正在增強歌詞...",
@@ -697,7 +781,7 @@
   },
   "placeholder.searchSongs": {
     "message": "搜索歌曲...",
-    "description": "歌曲搜索輸入的占位符"
+    "description": "歌曲搜索輸入的佔位符"
   },
   "sort.newest": {
     "message": "最新",
