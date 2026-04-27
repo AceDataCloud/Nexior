@@ -1,8 +1,20 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Apr 2026 03:30:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 27 Apr 2026 03:00:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.35.0
+
+Mon, 27 Apr 2026 03:00:31 GMT
+
+### Minor changes
+
+- Add standalone /connectors page with custom MCP servers and built-in provider directory (cqc@cuiqingcai.com)
+
+### Patches
+
+- fix(ui): sidebar logo respects site.logo / site.favicon again (cqc@cuiqingcai.com)
 
 ## 3.34.0
 
