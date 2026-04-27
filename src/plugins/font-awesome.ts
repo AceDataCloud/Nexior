@@ -114,7 +114,8 @@ import {
   faArrowDownWideShort as faSolidArrowDownWideShort,
   faPen as faSolidPen,
   faExpand as faSolidExpand,
-  faCompress as faSolidCompress
+  faCompress as faSolidCompress,
+  faBroom as faSolidBroom
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -228,3 +229,4 @@ library.add(faSolidArrowDownWideShort);
 library.add(faSolidPen);
 library.add(faSolidExpand);
 library.add(faSolidCompress);
+library.add(faSolidBroom);

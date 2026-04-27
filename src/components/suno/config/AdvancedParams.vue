@@ -55,6 +55,16 @@
         </div>
         <el-slider v-model="audioWeight" :min="0" :max="100" :step="1" />
       </div>
+      <!-- Lyrics Mode (Manual/Auto) -->
+      <div v-if="config?.custom && !config?.instrumental" class="mb-3">
+        <div class="flex items-center mb-1">
+          <span class="text-xs font-bold">{{ $t('suno.name.lyricsMode') }}</span>
+        </div>
+        <el-radio-group v-model="lyricsMode">
+          <el-radio-button value="manual">{{ $t('suno.lyricsMode.manual') }}</el-radio-button>
+          <el-radio-button value="auto">{{ $t('suno.lyricsMode.auto') }}</el-radio-button>
+        </el-radio-group>
+      </div>
     </el-collapse-item>
   </el-collapse>
 </template>
@@ -149,6 +159,17 @@ export default defineComponent({
         this.$store.commit('suno/setConfig', {
           ...this.$store.state.suno?.config,
           audio_weight: val
+        });
+      }
+    },
+    lyricsMode: {
+      get() {
+        return this.$store.state.suno?.config?.lyrics_mode || 'manual';
+      },
+      set(val: string) {
+        this.$store.commit('suno/setConfig', {
+          ...this.$store.state.suno?.config,
+          lyrics_mode: val
         });
       }
     }

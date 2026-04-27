@@ -59,6 +59,7 @@ export interface ISunoConfig {
   model?: string;
   lyric?: string;
   lyric_prompt?: string;
+  lyrics_mode?: string;
   custom?: boolean;
   instrumental?: boolean;
   title?: string;
@@ -90,6 +91,7 @@ export interface ISunoAudioRequest {
   model?: string;
   lyric?: string;
   lyric_prompt?: string;
+  lyrics_mode?: string;
   custom?: boolean;
   title?: string;
   style?: string;
