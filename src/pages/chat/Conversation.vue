@@ -814,21 +814,6 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   position: relative;
-  background:
-    radial-gradient(
-      circle at 88% 8%,
-      color-mix(in srgb, var(--el-color-primary-light-9) 75%, transparent) 0%,
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 8% 94%,
-      color-mix(in srgb, var(--el-color-primary-light-9) 65%, transparent) 0%,
-      transparent 24%
-    );
-
-  html.dark & {
-    background: none;
-  }
   .disclaimer {
     width: 100%;
     text-align: center;
