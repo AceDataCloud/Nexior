@@ -618,9 +618,10 @@ export default defineComponent({
         });
     },
     isMashupSelected(audio: ISunoAudio): boolean {
-      return this.mashupAudioIds.includes(audio.id);
+      return !!audio.id && this.mashupAudioIds.includes(audio.id);
     },
     onToggleMashup(audio: ISunoAudio) {
+      if (!audio.id) return;
       const ids = [...this.mashupAudioIds];
       const idx = ids.indexOf(audio.id);
       if (idx !== -1) {
@@ -642,7 +643,7 @@ export default defineComponent({
       }, 1000);
     },
     onStartTitleEdit(audio: ISunoAudio) {
-      this.editingAudioId = audio.id;
+      this.editingAudioId = audio.id ?? null;
       this.editingTitle = audio.title || '';
       this.$nextTick(() => {
         const input = this.$refs.titleInput as any;
