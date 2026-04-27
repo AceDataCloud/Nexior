@@ -90,47 +90,71 @@
             </el-tooltip>
           </span>
           <template #dropdown>
-            <el-dropdown-menu>
+            <el-dropdown-menu class="suno-action-menu">
+              <!-- Creation group -->
               <el-dropdown-item v-if="audio?.audio_url" @click.stop="onExtend($event, audio)">
+                <font-awesome-icon icon="fa-solid fa-forward" class="menu-icon" />
                 {{ $t('suno.button.extend') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
-                {{ $t('suno.button.get_stems') }}
-              </el-dropdown-item>
-              <el-dropdown-item v-if="audio.id" @click.stop="onGetAllStems(audio.id)">
-                {{ $t('suno.button.all_stems') }}
-              </el-dropdown-item>
               <el-dropdown-item @click.stop="onCover(audio)">
+                <font-awesome-icon icon="fa-solid fa-music" class="menu-icon" />
                 {{ $t('suno.button.cover_music') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio.id)">
-                {{ $t('suno.button.remaster') }}
-              </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
-                {{ $t('suno.button.replace_section') }}
-              </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onMashup(audio)">
+                <font-awesome-icon icon="fa-solid fa-shuffle" class="menu-icon" />
                 {{ $t('suno.button.mashup') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id && audio?.action === 'extend'" @click.stop="onConcatMusic(audio?.id)">
+                <font-awesome-icon icon="fa-solid fa-link" class="menu-icon" />
                 {{ $t('suno.button.concat_music') }}
               </el-dropdown-item>
+
+              <!-- Editing group -->
+              <div class="menu-divider" />
+              <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
+                <font-awesome-icon icon="fa-solid fa-scissors" class="menu-icon" />
+                {{ $t('suno.button.replace_section') }}
+              </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onOverpainting(audio)">
+                <font-awesome-icon icon="fa-solid fa-microphone" class="menu-icon" />
                 {{ $t('suno.button.overpainting') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onUnderpainting(audio)">
+                <font-awesome-icon icon="fa-solid fa-guitar" class="menu-icon" />
                 {{ $t('suno.button.underpainting') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onSamples(audio)">
+                <font-awesome-icon icon="fa-solid fa-drum" class="menu-icon" />
                 {{ $t('suno.button.samples') }}
               </el-dropdown-item>
-              <el-dropdown-item v-if="audio?.id" @click.stop="onArtistConsistency(audio)">
-                {{ $t('suno.button.artist_consistency') }}
+
+              <!-- Processing group -->
+              <div class="menu-divider" />
+              <el-dropdown-item v-if="audio.id" @click.stop="onGetStems(audio.id)">
+                <font-awesome-icon icon="fa-solid fa-layer-group" class="menu-icon" />
+                {{ $t('suno.button.get_stems') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio.id" @click.stop="onGetAllStems(audio.id)">
+                <font-awesome-icon icon="fa-solid fa-bars-staggered" class="menu-icon" />
+                {{ $t('suno.button.all_stems') }}
+              </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onRemaster(audio.id)">
+                <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="menu-icon" />
+                {{ $t('suno.button.remaster') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onExtractVocals(audio.id)">
+                <font-awesome-icon icon="fa-solid fa-headphones" class="menu-icon" />
                 {{ $t('suno.button.extract_vocals') }}
               </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onArtistConsistency(audio)">
+                <font-awesome-icon icon="fa-solid fa-palette" class="menu-icon" />
+                {{ $t('suno.button.artist_consistency') }}
+              </el-dropdown-item>
+
+              <!-- Utility group -->
+              <div class="menu-divider" />
               <el-dropdown-item v-if="audio?.id" @click.stop="onGetTiming(audio.id)">
+                <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -646,6 +670,20 @@ export default defineComponent({
         margin-right: 15px; /* Add margin to the right of the button */
       }
     }
+  }
+}
+
+.suno-action-menu {
+  .menu-icon {
+    width: 14px;
+    margin-right: 8px;
+    color: var(--el-text-color-secondary);
+  }
+
+  .menu-divider {
+    height: 1px;
+    background: var(--el-border-color-lighter);
+    margin: 4px 12px;
   }
 }
 </style>

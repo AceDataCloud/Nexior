@@ -5,16 +5,28 @@
         <span class="text-sm font-bold">{{ $t('suno.name.lyrics') }}</span>
         <info-icon :content="$t('suno.description.lyrics')" />
       </div>
-      <el-button
-        v-if="config?.action !== 'extend'"
-        size="small"
-        :loading="generatingLyrics"
-        round
-        @click="onGenerateLyrics"
-      >
-        <font-awesome-icon v-if="!generatingLyrics" icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
-        {{ $t('suno.button.generate_lyrics') }}
-      </el-button>
+      <div class="flex items-center gap-1">
+        <el-tooltip v-if="lyricHistory.length > 0" :content="$t('suno.button.undo')" placement="top">
+          <el-button size="small" circle @click="onUndo">
+            <font-awesome-icon icon="fa-solid fa-rotate-left" />
+          </el-button>
+        </el-tooltip>
+        <el-tooltip v-if="lyric" :content="$t('suno.button.clear_lyrics')" placement="top">
+          <el-button size="small" circle @click="onClear">
+            <font-awesome-icon icon="fa-solid fa-eraser" />
+          </el-button>
+        </el-tooltip>
+        <el-button
+          v-if="config?.action !== 'extend'"
+          size="small"
+          :loading="generatingLyrics"
+          round
+          @click="onGenerateLyrics"
+        >
+          <font-awesome-icon v-if="!generatingLyrics" icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+          {{ $t('suno.button.generate_lyrics') }}
+        </el-button>
+      </div>
     </div>
     <el-input
       v-if="config?.action !== 'extend'"
@@ -32,12 +44,29 @@
       class="lyrics"
       :placeholder="$t('suno.placeholder.extend.lyrics')"
     />
+    <!-- Enhance lyrics -->
+    <div v-if="lyric && config?.action !== 'extend'" class="enhance-bar">
+      <el-input
+        v-model="enhancePrompt"
+        size="small"
+        :placeholder="$t('suno.placeholder.enhanceLyrics')"
+        class="enhance-input"
+        @keyup.enter="onEnhanceLyrics"
+      >
+        <template #append>
+          <el-button :loading="enhancingLyrics" @click="onEnhanceLyrics">
+            <font-awesome-icon v-if="!enhancingLyrics" icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+            {{ $t('suno.button.enhance_lyrics') }}
+          </el-button>
+        </template>
+      </el-input>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElMessage } from 'element-plus';
+import { ElInput, ElButton, ElMessage, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { sunoOperator } from '@/operators';
@@ -49,12 +78,16 @@ export default defineComponent({
   components: {
     ElInput,
     ElButton,
+    ElTooltip,
     FontAwesomeIcon,
     InfoIcon
   },
   data() {
     return {
-      generatingLyrics: false
+      generatingLyrics: false,
+      enhancingLyrics: false,
+      enhancePrompt: '',
+      lyricHistory: [] as string[]
     };
   },
   computed: {
@@ -82,10 +115,49 @@ export default defineComponent({
     }
   },
   methods: {
+    pushHistory() {
+      if (this.lyric) {
+        this.lyricHistory.push(this.lyric);
+        if (this.lyricHistory.length > 20) this.lyricHistory.shift();
+      }
+    },
+    onUndo() {
+      const prev = this.lyricHistory.pop();
+      if (prev !== undefined) {
+        this.lyric = prev;
+      }
+    },
+    onClear() {
+      this.pushHistory();
+      this.lyric = '';
+    },
+    async onEnhanceLyrics() {
+      const token = this.credential?.token;
+      if (!token || !this.lyric || !this.enhancePrompt) return;
+
+      this.pushHistory();
+      this.enhancingLyrics = true;
+      ElMessage.info(this.$t('suno.message.enhancingLyrics'));
+      try {
+        const prompt = `${this.enhancePrompt}\n\nOriginal lyrics:\n${this.lyric}`;
+        const response = await sunoOperator.lyric({ prompt }, { token });
+        const data = response.data?.data;
+        if (data?.text) {
+          this.lyric = data.text;
+          this.enhancePrompt = '';
+          ElMessage.success(this.$t('suno.message.enhanceLyricsSuccess'));
+        }
+      } catch {
+        ElMessage.error(this.$t('suno.message.enhanceLyricsFailed'));
+      } finally {
+        this.enhancingLyrics = false;
+      }
+    },
     async onGenerateLyrics() {
       const token = this.credential?.token;
       if (!token) return;
 
+      this.pushHistory();
       const prompt = this.config?.style || this.config?.title || 'a beautiful song';
       this.generatingLyrics = true;
       ElMessage.info(this.$t('suno.message.generatingLyrics'));
@@ -119,6 +191,16 @@ export default defineComponent({
   :deep(.el-textarea__inner) {
     font-family: monospace;
     line-height: 1.6;
+  }
+}
+
+.enhance-bar {
+  margin-top: 6px;
+
+  .enhance-input {
+    :deep(.el-input-group__append) {
+      padding: 0 12px;
+    }
   }
 }
 </style>
