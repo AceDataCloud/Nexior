@@ -33,22 +33,25 @@
         </el-button>
       </div>
     </div>
-    <el-input
-      v-if="config?.action !== 'extend'"
-      v-model="lyric"
-      :rows="5"
-      type="textarea"
-      class="lyrics"
-      :placeholder="$t('suno.placeholder.lyrics')"
-    />
-    <el-input
-      v-else
-      v-model="lyric"
-      :rows="5"
-      type="textarea"
-      class="lyrics"
-      :placeholder="$t('suno.placeholder.extend.lyrics')"
-    />
+    <div class="relative">
+      <el-input
+        v-if="config?.action !== 'extend'"
+        v-model="lyric"
+        :rows="5"
+        type="textarea"
+        class="lyrics"
+        :placeholder="$t('suno.placeholder.lyrics')"
+      />
+      <el-input
+        v-else
+        v-model="lyric"
+        :rows="5"
+        type="textarea"
+        class="lyrics"
+        :placeholder="$t('suno.placeholder.extend.lyrics')"
+      />
+      <div class="text-xs text-right text-[var(--el-text-color-secondary)] mt-1">{{ lyric?.length || 0 }}/5000</div>
+    </div>
     <!-- Enhance lyrics -->
     <div v-if="lyric && config?.action !== 'extend'" class="enhance-bar">
       <el-input

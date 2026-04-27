@@ -10,7 +10,10 @@
         {{ $t('suno.button.optimize_style') }}
       </el-button>
     </div>
-    <el-input v-model="style" :rows="2" type="textarea" :placeholder="$t('suno.placeholder.style')" />
+    <div class="relative">
+      <el-input v-model="style" :rows="2" type="textarea" :placeholder="$t('suno.placeholder.style')" />
+      <div class="text-xs text-right text-[var(--el-text-color-secondary)] mt-1">{{ style?.length || 0 }}/1000</div>
+    </div>
     <!-- Style Tag Cloud -->
     <div class="style-tags">
       <button v-for="tag in visibleTags" :key="tag" class="style-tag" @click="onTagClick(tag)">

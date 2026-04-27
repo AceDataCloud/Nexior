@@ -17,12 +17,18 @@
       <samples-input v-if="config?.action === 'samples'" class="mb-4" />
       <advanced-params class="mb-4" />
     </div>
-    <div class="flex flex-col items-center justify-center px-5 pb-5">
+    <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2">
       <consumption :value="consumption" :service="service" />
-      <el-button type="primary" class="btn w-full" round @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
-        {{ generateButtonText }}
-      </el-button>
+      <div class="flex gap-2 w-full">
+        <el-button class="flex-1" @click="onClearAll">
+          <font-awesome-icon icon="fa-solid fa-broom" class="mr-1" />
+          {{ $t('suno.button.clear_all') }}
+        </el-button>
+        <el-button type="primary" class="flex-1" round @click="onGenerate">
+          <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+          {{ generateButtonText }}
+        </el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -111,6 +117,18 @@ export default defineComponent({
   methods: {
     onGenerate() {
       this.$emit('generate');
+    },
+    onClearAll() {
+      this.$store.commit('suno/setConfig', {
+        custom: false,
+        sounds: false,
+        instrumental: false,
+        lyric: '',
+        style: '',
+        title: '',
+        lyrics_mode: 'manual',
+        model: this.$store.state.suno?.config?.model
+      });
     }
   }
 });
