@@ -1,0 +1,322 @@
+{
+  "title": {
+    "message": "Connector",
+    "description": "Titel der Connector-Seite"
+  },
+  "subtitle": {
+    "message": "Verbindung externer Anwendungen mit benutzerdefinierten MCP-Servern zur Erweiterung der KI-Fähigkeiten",
+    "description": "Untertitel der Connector-Seite"
+  },
+  "search.placeholder": {
+    "message": "Connector suchen",
+    "description": "Platzhalter im Suchfeld der Seitenleiste"
+  },
+  "group.web": {
+    "message": "Web",
+    "description": "Titel der Gruppe für verbundene Web-Connectoren"
+  },
+  "group.custom": {
+    "message": "Benutzerdefiniert",
+    "description": "Titel der Gruppe für benutzerdefinierte MCP-Server"
+  },
+  "group.notConnected": {
+    "message": "Nicht verbunden",
+    "description": "Titel der Gruppe für nicht verbundene Connectoren"
+  },
+  "badge.custom": {
+    "message": "BENUTZERDEFINIERT",
+    "description": "Logo für benutzerdefinierte Connectoren"
+  },
+  "badge.builtin": {
+    "message": "Integriert",
+    "description": "Logo für integrierte MCP-Server"
+  },
+  "badge.comingSoon": {
+    "message": "Demnächst",
+    "description": "Logo für nicht konfigurierte OAuth-Anbieter"
+  },
+  "menu.browse": {
+    "message": "Connector durchsuchen",
+    "description": "Hinzufügen-Menü: Aus dem Katalog durchsuchen"
+  },
+  "menu.custom": {
+    "message": "Benutzerdefinierten Connector hinzufügen",
+    "description": "Hinzufügen-Menü: Benutzerdefinierten MCP-Connector hinzufügen"
+  },
+  "detail.connect": {
+    "message": "Verbinden",
+    "description": "Verbindungsbutton"
+  },
+  "detail.disconnect": {
+    "message": "Trennen",
+    "description": "Trennbutton"
+  },
+  "detail.disconnected": {
+    "message": "Getrennt",
+    "description": "Nachricht über erfolgreiche Trennung"
+  },
+  "detail.connected": {
+    "message": "Verbunden",
+    "description": "Nachricht über erfolgreiche Verbindung"
+  },
+  "detail.toolPermissions": {
+    "message": "Werkzeugberechtigungen",
+    "description": "Titel des Bereichs für Werkzeugberechtigungen"
+  },
+  "detail.toolPermissions.help": {
+    "message": "Wählen Sie aus, wann Nexior diese Werkzeuge verwenden darf.",
+    "description": "Beschreibung des Bereichs für Werkzeugberechtigungen"
+  },
+  "detail.readOnlyTools": {
+    "message": "Nur-Lese-Werkzeuge",
+    "description": "Titel der Gruppe für Nur-Lese-Werkzeuge"
+  },
+  "detail.tools": {
+    "message": "Werkzeuge",
+    "description": "Titel der Werkzeugliste"
+  },
+  "detail.empty": {
+    "message": "Wählen Sie einen Connector auf der linken Seite, um Details anzuzeigen.",
+    "description": "Hinweis, wenn kein Connector ausgewählt ist"
+  },
+  "detail.empty.title": {
+    "message": "Wählen Sie einen Connector",
+    "description": "Titel, wenn auf der rechten Seite nichts ausgewählt ist"
+  },
+  "detail.empty.desc": {
+    "message": "Wählen Sie ein verbundenes Element auf der linken Seite, um Details anzuzeigen, oder durchsuchen Sie den Katalog, um einen neuen Connector hinzuzufügen.",
+    "description": "Beschreibung, wenn auf der rechten Seite nichts ausgewählt ist"
+  },
+  "empty.title": {
+    "message": "Noch keine Connectoren",
+    "description": "Titel, wenn die Seitenleiste vollständig leer ist"
+  },
+  "empty.desc": {
+    "message": "Durchsuchen Sie den Katalog, um Connectoren hinzuzufügen, oder fügen Sie Ihren eigenen MCP-Server hinzu.",
+    "description": "Beschreibung, wenn die Seitenleiste vollständig leer ist"
+  },
+  "detail.noTools": {
+    "message": "Für diesen Connector wurden keine verfügbaren Werkzeuge gefunden.",
+    "description": "Hinweis, wenn keine Werkzeuge vorhanden sind"
+  },
+  "detail.profile": {
+    "message": "Eingeloggt",
+    "description": "Titel der Informationen zum verbundenen Konto"
+  },
+  "permission.always": {
+    "message": "Immer erlauben",
+    "description": "Werkzeugberechtigungen: Immer erlauben"
+  },
+  "permission.ask": {
+    "message": "Bestätigung erforderlich",
+    "description": "Werkzeugberechtigungen: Jedes Mal fragen"
+  },
+  "permission.never": {
+    "message": "Verweigern",
+    "description": "Werkzeugberechtigungen: Verweigern"
+  },
+  "custom.title": {
+    "message": "Benutzerdefinierten Connector hinzufügen",
+    "description": "Titel des Dialogs für benutzerdefinierte Connectoren"
+  },
+  "custom.beta": {
+    "message": "BETA",
+    "description": "Beta-Label"
+  },
+  "custom.intro": {
+    "message": "Verbinden Sie Nexior mit Ihren Daten und Werkzeugen.",
+    "description": "Einleitung des Dialogs für benutzerdefinierte Connectoren"
+  },
+  "custom.name": {
+    "message": "Name",
+    "description": "Feld für den Namen des benutzerdefinierten Connectors"
+  },
+  "custom.namePlaceholder": {
+    "message": "Geben Sie dem Connector einen Namen",
+    "description": "Platzhalter für den Namen des benutzerdefinierten Connectors"
+  },
+  "custom.url": {
+    "message": "URL des Remote-MCP-Servers",
+    "description": "Feld für die URL des benutzerdefinierten Connectors"
+  },
+  "custom.urlPlaceholder": {
+    "message": "https://example.com/mcp",
+    "description": "Platzhalter für die URL des benutzerdefinierten Connectors"
+  },
+  "custom.description": {
+    "message": "Beschreibung",
+    "description": "Feld für die Beschreibung des benutzerdefinierten Connectors"
+  },
+  "custom.descriptionPlaceholder": {
+    "message": "Optional: Beschreiben Sie den Zweck dieses Connectors",
+    "description": "Platzhalter für die Beschreibung des benutzerdefinierten Connectors"
+  },
+  "custom.advanced": {
+    "message": "Erweiterte Einstellungen",
+    "description": "Erweiterte Einstellungen für benutzerdefinierte Connectoren"
+  },
+  "custom.authType": {
+    "message": "Authentifizierungsmethode",
+    "description": "Feld für den Authentifizierungstyp"
+  },
+  "custom.authNone": {
+    "message": "Keine",
+    "description": "Authentifizierungsmethode: Keine"
+  },
+  "custom.authBearer": {
+    "message": "Bearer-Token",
+    "description": "Authentifizierungsmethode: Bearer-Token"
+  },
+  "custom.authOAuth": {
+    "message": "OAuth 2.0",
+    "description": "Authentifizierungsmethode: OAuth 2.0"
+  },
+  "custom.authToken": {
+    "message": "Token",
+    "description": "Feld für das Bearer-Token"
+  },
+  "custom.authTokenPlaceholder": {
+    "message": "Geben Sie das Bearer-Token ein",
+    "description": "Platzhalter für das Bearer-Token"
+  },
+  "custom.warning": {
+    "message": "Fügen Sie nur Connectoren von Entwicklern hinzu, denen Sie vertrauen. Nexior hat keine Kontrolle über die von Entwicklern bereitgestellten Werkzeuge und kann nicht garantieren, dass sie wie erwartet funktionieren oder sich nicht ändern.",
+    "description": "Warnung für benutzerdefinierte Connectoren"
+  },
+  "custom.add": {
+    "message": "Hinzufügen",
+    "description": "Button zum Einreichen eines benutzerdefinierten Connectors"
+  },
+  "custom.cancel": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button"
+  },
+  "custom.test": {
+    "message": "Verbindung testen",
+    "description": "Button zum Testen der MCP-Verbindung"
+  },
+  "custom.urlRequired": {
+    "message": "Bitte Name und URL ausfüllen",
+    "description": "Hinweis, dass Name und URL erforderlich sind"
+  },
+  "custom.created": {
+    "message": "Erfolgreich hinzugefügt",
+    "description": "Benutzerdefinierter Connector erfolgreich hinzugefügt"
+  },
+  "custom.updated": {
+    "message": "Erfolgreich aktualisiert",
+    "description": "Benutzerdefinierter Connector erfolgreich aktualisiert"
+  },
+  "custom.deleted": {
+    "message": "Erfolgreich gelöscht",
+    "description": "Benutzerdefinierter Connector erfolgreich gelöscht"
+  },
+  "custom.deleteConfirm": {
+    "message": "Löschen des Connectors \"{name}\" bestätigen?",
+    "description": "Bestätigung zum Löschen des benutzerdefinierten Connectors"
+  },
+  "custom.testSuccess": {
+    "message": "Verbindung erfolgreich, {count} Werkzeuge gefunden",
+    "description": "Test der MCP-Verbindung erfolgreich"
+  },
+  "custom.testFailed": {
+    "message": "Verbindung fehlgeschlagen",
+    "description": "Test der MCP-Verbindung fehlgeschlagen"
+  },
+  "custom.authorize": {
+    "message": "Autorisieren",
+    "description": "OAuth-Autorisierungsbutton"
+  },
+  "browse.title": {
+    "message": "Verzeichnis",
+    "description": "Titel der Seite zum Durchsuchen des Verzeichnisses"
+  },
+  "browse.searchPlaceholder": {
+    "message": "Connector suchen…",
+    "description": "Platzhalter im Suchfeld des Verzeichnisses"
+  },
+  "browse.subtitle": {
+    "message": "Bereitgestellt von AceDataCloud und Partnern",
+    "description": "Untertitel der Verzeichnisseite"
+  },
+  "browse.install": {
+    "message": "Installieren",
+    "description": "Installationsbutton auf der Verzeichniskarte"
+  },
+  "browse.installed": {
+    "message": "Installiert",
+    "description": "Status der installierten Verzeichniskarte"
+  },
+  "browse.empty": {
+    "message": "Keine passenden Connectoren gefunden.",
+    "description": "Suchergebnis im Verzeichnis ist leer"
+  },
+  "browse.builtinTitle": {
+    "message": "Integrierte MCP-Server",
+    "description": "Titel der Gruppe integrierter MCPs"
+  },
+  "browse.builtinDesc": {
+    "message": "Bereitgestellt von AceDataCloud, sofort einsatzbereit mit einem Klick.",
+    "description": "Beschreibung der Gruppe integrierter MCPs"
+  },
+  "browse.providersTitle": {
+    "message": "OAuth-Anbieter",
+    "description": "Titel der Gruppe von OAuth-Anbietern"
+  },
+  "browse.providersDesc": {
+    "message": "Verbinden Sie sich über OAuth mit Ihren Google-, GitHub-, Slack- usw. Konten.",
+    "description": "Beschreibung der Gruppe von OAuth-Anbietern"
+  },
+  "browse.customTitle": {
+    "message": "Benutzerdefinierte MCP-Server",
+    "description": "Titel der Gruppe benutzerdefinierter MCPs"
+  },
+  "browse.customDesc": {
+    "message": "Fügen Sie Ihren eigenen MCP-Server hinzu, um ihn in Nexior zu verwenden.",
+    "description": "Beschreibung der Gruppe benutzerdefinierter MCPs"
+  },
+  "browse.installSuccess": {
+    "message": "{name} installiert",
+    "description": "Nachricht über erfolgreiche Installation"
+  },
+  "browse.installFailed": {
+    "message": "Installation fehlgeschlagen",
+    "description": "Nachricht über fehlgeschlagene Installation"
+  },
+  "common.back": {
+    "message": "Zurück",
+    "description": "Zurück-Button"
+  },
+  "common.confirm": {
+    "message": "Bestätigen",
+    "description": "Bestätigungsbutton"
+  },
+  "common.cancel": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button"
+  },
+  "common.processing": {
+    "message": "Wird verarbeitet…",
+    "description": "Verarbeitung läuft"
+  },
+  "common.authSuccess": {
+    "message": "Autorisierung erfolgreich",
+    "description": "OAuth-Autorisierung erfolgreich"
+  },
+  "common.authFailed": {
+    "message": "Autorisierung fehlgeschlagen",
+    "description": "OAuth-Autorisierung fehlgeschlagen"
+  },
+  "common.closeWindow": {
+    "message": "Sie können dieses Fenster schließen.",
+    "description": "Hinweis an den Benutzer, dass er das Fenster schließen kann"
+  },
+  "common.loadError": {
+    "message": "Laden fehlgeschlagen, die Connector-Funktion ist möglicherweise noch nicht verfügbar.",
+    "description": "Fehler beim Laden des Connectors"
+  },
+  "common.toggleError": {
+    "message": "Statuswechsel fehlgeschlagen",
+    "description": "Fehler beim Aktivieren/Deaktivieren des Schalters"
+  }
+}
