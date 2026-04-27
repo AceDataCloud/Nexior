@@ -201,7 +201,7 @@ export default defineComponent({
       const providerId = this.item.provider?.id;
       openConnectionsManager(providerId);
     },
-    onToggleConnector() {
+    onToggleConnector(_enabled?: boolean) {
       const providerId = this.item.provider?.id;
       openConnectionsManager(providerId);
     },
