@@ -12,6 +12,8 @@ export interface IConnectorItem {
   description?: string;
   icon?: string;
   isCustom: boolean;
+  /** True for built-in MCP servers installed from the catalog. */
+  isBuiltin: boolean;
   connected: boolean;
   provider?: IConnectorProvider;
   connector?: IConnector;
@@ -21,10 +23,27 @@ export interface IConnectorItem {
 export const PROVIDER_ICONS: Record<string, string> = {
   google: 'fa-brands fa-google',
   github: 'fa-brands fa-github',
+  gitlab: 'fa-brands fa-gitlab',
   slack: 'fa-brands fa-slack',
   vercel: 'fa-brands fa-v',
-  figma: 'fa-brands fa-figma'
+  figma: 'fa-brands fa-figma',
+  notion: 'fa-solid fa-cube',
+  linear: 'fa-solid fa-cube'
 };
+
+/** Shared icon mapping for built-in MCP catalog entries. */
+export const BUILTIN_ICON_MAP: Record<string, string> = {
+  search: 'fa-solid fa-magnifying-glass',
+  link: 'fa-solid fa-link',
+  music: 'fa-solid fa-music',
+  image: 'fa-solid fa-image',
+  video: 'fa-solid fa-video'
+};
+
+export function resolveBuiltinIcon(key?: string): string {
+  if (!key) return 'fa-solid fa-cube';
+  return BUILTIN_ICON_MAP[key] || 'fa-solid fa-cube';
+}
 
 export type ToolPermission = 'always' | 'ask' | 'never';
 

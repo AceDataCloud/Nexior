@@ -8,7 +8,10 @@
         <div class="info">
           <div class="title-row">
             <span class="title">{{ item.name }}</span>
-            <el-tag v-if="item.isCustom" type="info" effect="plain" round>
+            <el-tag v-if="item.isBuiltin" type="success" effect="plain" round>
+              {{ $t('connector.badge.builtin') }}
+            </el-tag>
+            <el-tag v-else-if="item.isCustom" type="info" effect="plain" round>
               {{ $t('connector.badge.custom') }}
             </el-tag>
           </div>
