@@ -1,7 +1,95 @@
 {
+  "voice.title": {
+    "message": "음성 관리",
+    "description": "음성 관리 패널 제목"
+  },
+  "voice.manage": {
+    "message": "음성 관리",
+    "description": "음성 관리 버튼 텍스트"
+  },
+  "voice.create": {
+    "message": "음성 생성",
+    "description": "음성 생성 버튼 텍스트"
+  },
+  "voice.createTitle": {
+    "message": "새 음성 생성",
+    "description": "음성 생성 대화상자 제목"
+  },
+  "voice.name": {
+    "message": "이름",
+    "description": "음성 이름 레이블"
+  },
+  "voice.namePlaceholder": {
+    "message": "음성 이름 입력...",
+    "description": "음성 이름 입력 자리 표시자"
+  },
+  "voice.description": {
+    "message": "설명",
+    "description": "음성 설명 레이블"
+  },
+  "voice.descriptionPlaceholder": {
+    "message": "이 음성의 특징 설명...",
+    "description": "음성 설명 입력 자리 표시자"
+  },
+  "voice.sourceType": {
+    "message": "출처 유형",
+    "description": "음성 출처 유형 레이블"
+  },
+  "voice.fromSong": {
+    "message": "노래에서 생성",
+    "description": "기존 노래에서 음성을 생성하는 옵션"
+  },
+  "voice.fromUpload": {
+    "message": "오디오 업로드",
+    "description": "오디오 파일을 업로드하여 음성을 생성하는 옵션"
+  },
+  "voice.audioId": {
+    "message": "노래 ID",
+    "description": "노래 ID 레이블"
+  },
+  "voice.audioIdPlaceholder": {
+    "message": "노래 ID 입력...",
+    "description": "노래 ID 입력 자리 표시자"
+  },
+  "voice.audioUrl": {
+    "message": "오디오 URL",
+    "description": "오디오 URL 레이블"
+  },
+  "voice.audioUrlPlaceholder": {
+    "message": "오디오 파일 URL 입력...",
+    "description": "오디오 URL 입력 자리 표시자"
+  },
+  "voice.createSuccess": {
+    "message": "음성이 성공적으로 생성되었습니다. 목록에서 확인하세요.",
+    "description": "음성 생성 성공 메시지"
+  },
+  "voice.createFailed": {
+    "message": "음성 생성 실패",
+    "description": "음성 생성 실패 메시지"
+  },
+  "voice.empty": {
+    "message": "현재 음성이 없습니다. 위 버튼을 클릭하여 생성하세요.",
+    "description": "음성 목록이 비어 있을 때의 안내"
+  },
+  "voice.delete": {
+    "message": "음성 삭제",
+    "description": "음성 삭제 확인 제목"
+  },
+  "voice.confirmDelete": {
+    "message": "이 음성을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "description": "음성 삭제 확인 메시지"
+  },
+  "voice.deleteSuccess": {
+    "message": "음성이 삭제되었습니다.",
+    "description": "음성 삭제 성공 메시지"
+  },
+  "voice.deleteFailed": {
+    "message": "음성 삭제 실패",
+    "description": "음성 삭제 실패 메시지"
+  },
   "button.extend": {
-    "message": "계속 생성",
-    "description": "계속 생성 버튼 텍스트"
+    "message": "생성 계속",
+    "description": "생성 계속 버튼 텍스트"
   },
   "button.download": {
     "message": "다운로드",
@@ -13,7 +101,7 @@
   },
   "button.uploadAudios": {
     "message": "업로드",
-    "description": "버튼 텍스트, 사용자가 참조를 업로드할 수 있도록 허용"
+    "description": "사용자가 참조를 업로드할 수 있도록 하는 버튼 텍스트"
   },
   "button.video": {
     "message": "비디오",
@@ -73,11 +161,11 @@
   },
   "model.model1": {
     "message": "v2",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "model.model2": {
     "message": "v3",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "name.instrumental": {
     "message": "순수 음악",
@@ -89,23 +177,23 @@
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "model.model45": {
     "message": "v4.5",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "model.model5": {
     "message": "v5",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "model.model45plus": {
     "message": "v4.5+",
-    "description": "음악 생성에 사용되는 모델"
+    "description": "음성을 생성하는 모델"
   },
   "name.taskId": {
     "message": "작업 ID",
@@ -116,15 +204,15 @@
     "description": "커스터마이즈 모드의 이름"
   },
   "name.prompt": {
-    "message": "노래 설명",
+    "message": "곡 설명",
     "description": "내용 입력의 프롬프트"
   },
   "name.extend": {
-    "message": "확장된 노래 출처",
+    "message": "확장된 곡 출처",
     "description": "내용 입력의 프롬프트"
   },
   "name.cover": {
-    "message": "커버 노래 출처",
+    "message": "커버 곡 출처",
     "description": "내용 입력의 프롬프트"
   },
   "name.lyrics": {
@@ -133,7 +221,7 @@
   },
   "name.style": {
     "message": "스타일",
-    "description": "노래 스타일 내용 입력의 프롬프트"
+    "description": "곡 스타일 내용 입력의 프롬프트"
   },
   "name.styleNegative": {
     "message": "제외할 스타일",
@@ -141,7 +229,7 @@
   },
   "name.title": {
     "message": "제목",
-    "description": "노래 제목 내용 입력의 프롬프트"
+    "description": "곡 제목 내용 입력의 프롬프트"
   },
   "name.vocalGender": {
     "message": "보컬 성별",
@@ -161,15 +249,15 @@
   },
   "name.variationCategory": {
     "message": "변형 유형",
-    "description": "생성된 변형의 다양성 정도 조절"
+    "description": "생성 변형의 다양성 정도 조절"
   },
   "name.audioWeight": {
-    "message": "원곡 가중치",
-    "description": "커버 시 원곡의 영향 가중치"
+    "message": "원곡 비율",
+    "description": "커버 시 원곡의 영향 비율"
   },
   "name.lyricPrompt": {
     "message": "가사 프롬프트",
-    "description": "자동으로 가사를 생성하기 위한 프롬프트"
+    "description": "자동 생성 가사를 위한 프롬프트"
   },
   "name.failureReason": {
     "message": "실패 원인",
@@ -184,35 +272,35 @@
     "description": "작업의 추적 ID"
   },
   "name.sunoBot": {
-    "message": "Suno Bot",
+    "message": "Suno 봇",
     "description": "Suno 생성기의 이름"
   },
   "name.replaceSection": {
     "message": "구간 교체",
-    "description": "노래의 특정 구간을 교체"
+    "description": "곡의 특정 구간을 교체"
   },
   "name.model": {
     "message": "모델",
     "description": "모델 버전 선택"
   },
   "name.songDescription": {
-    "message": "노래 설명",
-    "description": "노래 설명 모드"
+    "message": "곡 설명",
+    "description": "곡 설명 모드"
   },
   "description.prompt": {
     "message": "원하는 음악 스타일과 주제를 설명하세요",
     "description": "매개변수 'prompt'의 설명"
   },
   "description.lyrics": {
-    "message": "사용자 정의 가사를 입력하세요. [Verse], [Chorus], [Bridge] 등의 구간 표기를 지원합니다.",
+    "message": "사용자 정의 가사를 입력하세요. [Verse], [Chorus], [Bridge] 등의 구간 태그를 지원합니다.",
     "description": "매개변수 'lyrics'의 설명"
   },
   "description.style": {
-    "message": "음악 스타일을 설명하세요, 예: 어쿠스틱 팝, 재즈, 전자",
+    "message": "음악 스타일을 설명하세요. 예: acoustic pop, jazz, electronic",
     "description": "매개변수 'style'의 설명"
   },
   "description.styleNegative": {
-    "message": "원하지 않는 스타일을 설명하세요, 예: 헤비 메탈, 비명",
+    "message": "원하지 않는 스타일을 설명하세요. 예: heavy metal, screaming",
     "description": "제외할 스타일 매개변수의 설명"
   },
   "description.title": {
@@ -220,23 +308,23 @@
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성의 참고로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성이 성공하면 업로드한 음악에 따라 생성됩니다.",
+    "message": "생성의 참고로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성 성공 후 업로드한 음악에 따라 생성됩니다.",
     "description": "참고 업로드 매개변수의 설명"
   },
   "description.vocalGender": {
-    "message": "생성할 목소리의 성별을 선택하세요 (v4.5 이상 버전에서만 지원)",
-    "description": "목소리 성별 선택기의 설명"
+    "message": "생성할 보컬의 성별을 선택하세요 (v4.5 이상 버전에서만 지원)",
+    "description": "보컬 성별 선택기의 설명"
   },
   "description.weirdness": {
-    "message": "값이 높을수록 생성되는 음악이 더 창의적이고 실험적입니다 (0-100)",
+    "message": "값이 높을수록 생성된 음악이 더 창의적이고 실험적입니다 (0-100)",
     "description": "창의성 매개변수의 설명"
   },
   "description.styleInfluence": {
-    "message": "값이 높을수록 스타일 태그가 생성 결과에 미치는 영향이 큽니다 (0-100)",
+    "message": "값이 높을수록 스타일 태그가 생성 결과에 미치는 영향이 커집니다 (0-100)",
     "description": "스타일 영향력 매개변수의 설명"
   },
   "description.audioWeight": {
-    "message": "리메이크 시 원곡이 결과에 미치는 영향의 비율 (0-100)",
+    "message": "커버 시 원곡이 결과에 미치는 영향 비율 (0-100)",
     "description": "원곡 비율 매개변수의 설명"
   },
   "description.lyricPrompt": {
@@ -244,19 +332,19 @@
     "description": "가사 프롬프트 설명"
   },
   "description.replaceSection": {
-    "message": "곡의 특정 시간대의 내용을 교체합니다.",
-    "description": "교체 구간 기능의 설명"
+    "message": "곡의 지정된 시간대의 내용을 교체합니다.",
+    "description": "구간 교체 기능의 설명"
   },
   "status.pending": {
     "message": "대기 중",
     "description": "작업의 대기 상태"
   },
   "placeholder.prompt": {
-    "message": "원하는 음악을 설명하세요, 예: 따뜻한 포크송, 가을에 대한 그리움...",
+    "message": "원하는 음악을 설명하세요. 예: 따뜻한 포크송, 가을에 대한 그리움...",
     "description": "곡 설명 입력의 자리 표시자"
   },
   "placeholder.lyrics": {
-    "message": "[Verse]\n이 고요한 밤에\n별들이 하늘에서 반짝입니다.\n\n[Chorus]\n함께 노래합시다\n날이 밝을 때까지...",
+    "message": "[Verse]\n이 고요한 밤에\n별들이 하늘에서 반짝이고\n\n[Chorus]\n함께 노래하자\n해가 뜰 때까지...",
     "description": "가사 입력의 자리 표시자"
   },
   "placeholder.extend.lyrics": {
@@ -268,11 +356,11 @@
     "description": "확장 시작 시간의 자리 표시자"
   },
   "placeholder.style": {
-    "message": "예: 어쿠스틱 팝, 재즈, R&B, 전자...",
+    "message": "예: acoustic pop, jazz, R&B, electronic...",
     "description": "스타일 입력의 자리 표시자"
   },
   "placeholder.styleNegative": {
-    "message": "예: 헤비 메탈, 비명...",
+    "message": "예: heavy metal, screaming...",
     "description": "제외할 스타일 입력의 자리 표시자"
   },
   "placeholder.title": {
@@ -288,16 +376,16 @@
     "description": "위치 입력의 자리 표시자"
   },
   "placeholder.lyricPrompt": {
-    "message": "가사 주제를 설명하세요. AI가 자동으로 생성합니다...",
+    "message": "가사 주제를 설명하세요, AI가 자동으로 생성합니다...",
     "description": "가사 프롬프트 입력의 자리 표시자"
   },
   "placeholder.replaceSectionStart": {
     "message": "시작 시간 (초)",
-    "description": "교체 구간 시작 시간의 자리 표시자"
+    "description": "대체 구간 시작 시간의 자리 표시자"
   },
   "placeholder.replaceSectionEnd": {
     "message": "종료 시간 (초)",
-    "description": "교체 구간 종료 시간의 자리 표시자"
+    "description": "대체 구간 종료 시간의 자리 표시자"
   },
   "button.generate": {
     "message": "생성",
@@ -305,15 +393,15 @@
   },
   "gender.male": {
     "message": "남성",
-    "description": "남성 목소리 옵션"
+    "description": "남성 음성 옵션"
   },
   "gender.female": {
     "message": "여성",
-    "description": "여성 목소리 옵션"
+    "description": "여성 음성 옵션"
   },
   "gender.auto": {
     "message": "자동",
-    "description": "목소리 성별 자동 선택"
+    "description": "음성 성별 자동 선택"
   },
   "variation.high": {
     "message": "높은 변형",
@@ -324,15 +412,15 @@
     "description": "낮은 다양성 변형 옵션"
   },
   "message.startingTask": {
-    "message": "작업을 시작하는 중...",
+    "message": "작업 시작 중...",
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.startingUploadAudio": {
-    "message": "사용자 정의 음악을 업로드하는 중...",
+    "message": "사용자 음악 업로드 중...",
     "description": "음악 생성 작업 시작 시의 메시지"
   },
   "message.uploadReferencesExceed": {
-    "message": "업로드한 음악이 최대 수량을 초과했습니다.",
+    "message": "업로드한 음악이 최대 수량을 초과했습니다",
     "description": "업로드한 음악이 최대 수량을 초과했을 때의 오류 메시지"
   },
   "message.uploadReferencesError": {
@@ -340,15 +428,15 @@
     "description": "음악 업로드 실패 시의 오류 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "음악 생성 작업을 성공적으로 시작했습니다.",
-    "description": "음악 생성 작업을 성공적으로 시작했을 때의 성공 메시지"
+    "message": "음악 생성 작업이 성공적으로 시작되었습니다",
+    "description": "음악 생성 작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startUploadAudioSuccess": {
-    "message": "사용자 정의 음악을 성공적으로 업로드했습니다.",
-    "description": "음악 생성 작업을 성공적으로 시작했을 때의 성공 메시지"
+    "message": "사용자 음악이 성공적으로 업로드되었습니다",
+    "description": "음악 생성 작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startUploadAudioFailed": {
-    "message": "사용자 정의 음악 업로드 실패",
+    "message": "사용자 음악 업로드 실패",
     "description": "음악 생성 작업 시작 실패 시의 오류 메시지"
   },
   "message.startTaskFailed": {
@@ -356,11 +444,11 @@
     "description": "음악 생성 작업 시작 실패 시의 오류 메시지"
   },
   "message.getVideoUrlFailed": {
-    "message": "음악 비디오를 가져오는 데 실패했습니다. 나중에 다시 시도하세요.",
+    "message": "음악 비디오 가져오기 실패, 나중에 다시 시도하세요",
     "description": "비디오 가져오기 실패 시의 오류 메시지"
   },
   "message.generatingLyrics": {
-    "message": "가사를 생성하는 중...",
+    "message": "가사 생성 중...",
     "description": "가사 생성 중의 메시지"
   },
   "message.generateLyricsSuccess": {
@@ -408,11 +496,11 @@
     "description": "음악 생성 실패 시의 메시지"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업 없음",
+    "message": "사용 가능한 작업이 없습니다",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "히스토리 작업이 없습니다. 왼쪽 구성 패널에서 음악을 생성하세요.",
+    "message": "이력 작업이 없습니다, 왼쪽 구성 패널에서 음악을 생성하세요",
     "description": "작업이 없을 때의 메시지"
   },
   "button.upload_cover": {
@@ -429,15 +517,15 @@
   },
   "button.underpainting": {
     "message": "반주 추가",
-    "description": "업로드한 곡에 반주 추가 버튼 텍스트"
+    "description": "업로드된 곡에 반주 추가 버튼 텍스트"
   },
   "button.overpainting": {
     "message": "보컬 추가",
-    "description": "업로드한 곡에 보컬 추가 버튼 텍스트"
+    "description": "업로드된 곡에 보컬 추가 버튼 텍스트"
   },
   "button.samples": {
     "message": "샘플 추가",
-    "description": "업로드한 곡에 샘플 추가 버튼 텍스트"
+    "description": "업로드된 곡에 샘플 추가 버튼 텍스트"
   },
   "button.extract_vocals": {
     "message": "보컬 추출",
@@ -461,15 +549,15 @@
   },
   "name.overpaintingRange": {
     "message": "보컬 범위",
-    "description": "보컬 추가 시간 범위"
+    "description": "보컬을 추가하는 시간 범위"
   },
   "name.underpaintingRange": {
     "message": "반주 범위",
-    "description": "반주 추가 시간 범위"
+    "description": "반주를 추가하는 시간 범위"
   },
   "name.samplesRange": {
     "message": "샘플 범위",
-    "description": "샘플 추가 시간 범위"
+    "description": "샘플을 추가하는 시간 범위"
   },
   "placeholder.overpaintingStart": {
     "message": "시작 시간 (초)",
@@ -504,20 +592,20 @@
     "description": "가수 스타일 기능의 설명"
   },
   "description.overpainting": {
-    "message": "지정된 시간 범위 내에서 업로드한 음악에 보컬을 추가합니다.",
+    "message": "지정된 시간 범위 내에서 업로드된 음악에 보컬을 추가합니다.",
     "description": "보컬 추가 기능의 설명"
   },
   "description.underpainting": {
-    "message": "지정된 시간 범위 내에서 업로드한 음악에 반주를 추가합니다.",
+    "message": "지정된 시간 범위 내에서 업로드된 음악에 반주를 추가합니다.",
     "description": "반주 추가 기능의 설명"
   },
   "description.samples": {
-    "message": "지정된 시간 범위 내에서 업로드한 음악에 샘플을 추가합니다.",
+    "message": "지정된 시간 범위 내에서 업로드된 음악에 샘플을 추가합니다.",
     "description": "샘플 추가 기능의 설명"
   },
   "message.fetchingTiming": {
-    "message": "비트 데이터 가져오는 중...",
-    "description": "비트 데이터 가져오는 중의 메시지"
+    "message": "비트 데이터를 가져오는 중...",
+    "description": "비트 데이터를 가져올 때의 메시지"
   },
   "message.fetchTimingFailed": {
     "message": "비트 데이터 가져오기 실패",
@@ -528,8 +616,8 @@
     "description": "비트 데이터 가져오기 성공 시의 메시지"
   },
   "message.extractingVocals": {
-    "message": "보컬 추출 중...",
-    "description": "보컬 추출 중의 메시지"
+    "message": "보컬을 추출하는 중...",
+    "description": "보컬을 추출할 때의 메시지"
   },
   "message.extractVocalsFailed": {
     "message": "보컬 추출 실패",
@@ -538,5 +626,113 @@
   "message.extractVocalsSuccess": {
     "message": "보컬 추출 성공",
     "description": "보컬 추출 성공 시의 메시지"
+  },
+  "mode.simple": {
+    "message": "간단",
+    "description": "간단 창작 모드 레이블"
+  },
+  "mode.custom": {
+    "message": "커스텀",
+    "description": "커스텀 창작 모드 레이블"
+  },
+  "model.v55desc": {
+    "message": "음성 캐릭터 · 커스텀 모델",
+    "description": "v5.5 모델 설명"
+  },
+  "model.v5desc": {
+    "message": "실제 보컬 · 고품질 오디오",
+    "description": "v5 모델 설명"
+  },
+  "model.v45plusdesc": {
+    "message": "고급 창작 방법",
+    "description": "v4.5+ 모델 설명"
+  },
+  "model.v45desc": {
+    "message": "스마트 프롬프트",
+    "description": "v4.5 모델 설명"
+  },
+  "model.v4desc": {
+    "message": "개선된 음질",
+    "description": "v4 모델 설명"
+  },
+  "model.v35desc": {
+    "message": "기본 곡 구조",
+    "description": "v3.5 모델 설명"
+  },
+  "model.v3desc": {
+    "message": "클래식",
+    "description": "v3 모델 설명"
+  },
+  "button.undo": {
+    "message": "실행 취소",
+    "description": "실행 취소 버튼提示"
+  },
+  "button.clear_lyrics": {
+    "message": "가사 지우기",
+    "description": "가사 지우기 버튼提示"
+  },
+  "button.expand_lyrics": {
+    "message": "편집 확장",
+    "description": "가사 전체 화면 편집 버튼提示"
+  },
+  "button.enhance_lyrics": {
+    "message": "강화",
+    "description": "가사 강화 버튼"
+  },
+  "placeholder.enhanceLyrics": {
+    "message": "수정 지시어 입력, 예: 가사를 더 경쾌하게...",
+    "description": "가사 강화 입력 자리 표시자"
+  },
+  "message.enhancingLyrics": {
+    "message": "가사를 강화하는 중...",
+    "description": "가사 강화 중의 메시지"
+  },
+  "message.enhanceLyricsSuccess": {
+    "message": "가사 강화 성공",
+    "description": "가사 강화 성공 시의 메시지"
+  },
+  "message.enhanceLyricsFailed": {
+    "message": "가사 강화 실패",
+    "description": "가사 강화 실패 시의 메시지"
+  },
+  "placeholder.searchSongs": {
+    "message": "곡 검색...",
+    "description": "곡 검색 입력의 자리 표시자"
+  },
+  "sort.newest": {
+    "message": "최신",
+    "description": "최신 순으로 정렬"
+  },
+  "sort.oldest": {
+    "message": "가장 오래된",
+    "description": "가장 오래된 순으로 정렬"
+  },
+  "button.delete": {
+    "message": "삭제",
+    "description": "곡 삭제 버튼 텍스트"
+  },
+  "button.editTitle": {
+    "message": "제목 편집",
+    "description": "곡 제목 편집 버튼 텍스트"
+  },
+  "message.noSearchResults": {
+    "message": "곡을 찾을 수 없습니다.",
+    "description": "검색 결과가 없을 때의 메시지"
+  },
+  "message.confirmDelete": {
+    "message": "이 곡을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "description": "곡 삭제 확인 메시지"
+  },
+  "message.deleteSuccess": {
+    "message": "곡이 삭제되었습니다.",
+    "description": "곡 삭제 성공 시의 메시지"
+  },
+  "message.deleteFailed": {
+    "message": "노래 삭제 실패",
+    "description": "노래 삭제 실패 시의 메시지"
+  },
+  "name.generating": {
+    "message": "생성 중",
+    "description": "노래가 생성되고 있는 상태 레이블"
   }
 }

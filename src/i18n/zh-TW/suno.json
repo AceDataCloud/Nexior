@@ -1,4 +1,92 @@
 {
+  "voice.title": {
+    "message": "聲音管理",
+    "description": "聲音管理面板標題"
+  },
+  "voice.manage": {
+    "message": "管理聲音",
+    "description": "管理聲音按鈕文本"
+  },
+  "voice.create": {
+    "message": "創建聲音",
+    "description": "創建聲音按鈕文本"
+  },
+  "voice.createTitle": {
+    "message": "創建新聲音",
+    "description": "創建聲音對話框標題"
+  },
+  "voice.name": {
+    "message": "名稱",
+    "description": "聲音名稱標籤"
+  },
+  "voice.namePlaceholder": {
+    "message": "為聲音取個名稱...",
+    "description": "聲音名稱輸入佔位符"
+  },
+  "voice.description": {
+    "message": "描述",
+    "description": "聲音描述標籤"
+  },
+  "voice.descriptionPlaceholder": {
+    "message": "描述這個聲音的特點...",
+    "description": "聲音描述輸入佔位符"
+  },
+  "voice.sourceType": {
+    "message": "來源類型",
+    "description": "聲音來源類型標籤"
+  },
+  "voice.fromSong": {
+    "message": "從歌曲創建",
+    "description": "從已有歌曲創建聲音選項"
+  },
+  "voice.fromUpload": {
+    "message": "上傳音頻克隆",
+    "description": "上傳音頻文件克隆聲音選項"
+  },
+  "voice.audioId": {
+    "message": "歌曲 ID",
+    "description": "歌曲 ID 標籤"
+  },
+  "voice.audioIdPlaceholder": {
+    "message": "輸入歌曲 ID...",
+    "description": "歌曲 ID 輸入佔位符"
+  },
+  "voice.audioUrl": {
+    "message": "音頻 URL",
+    "description": "音頻 URL 標籤"
+  },
+  "voice.audioUrlPlaceholder": {
+    "message": "輸入音頻文件 URL...",
+    "description": "音頻 URL 輸入佔位符"
+  },
+  "voice.createSuccess": {
+    "message": "聲音創建成功，請稍後在列表中查看",
+    "description": "聲音創建成功消息"
+  },
+  "voice.createFailed": {
+    "message": "聲音創建失敗",
+    "description": "聲音創建失敗消息"
+  },
+  "voice.empty": {
+    "message": "暫無聲音，點擊上方按鈕創建",
+    "description": "聲音列表為空時的提示"
+  },
+  "voice.delete": {
+    "message": "刪除聲音",
+    "description": "刪除聲音確認標題"
+  },
+  "voice.confirmDelete": {
+    "message": "確定要刪除這個聲音嗎？此操作不可撤銷。",
+    "description": "刪除聲音確認消息"
+  },
+  "voice.deleteSuccess": {
+    "message": "聲音已刪除",
+    "description": "聲音刪除成功消息"
+  },
+  "voice.deleteFailed": {
+    "message": "刪除聲音失敗",
+    "description": "聲音刪除失敗消息"
+  },
   "button.extend": {
     "message": "繼續生成",
     "description": "繼續生成按鈕文本"
@@ -220,7 +308,7 @@
     "description": "參數'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "上傳音樂作為生成的參考，過程需要等待一會，生成成功後可根據上傳的音樂進行生成",
+    "message": "上傳音樂作為生成的參考，過程需要等待，生成成功後可根據上傳的音樂進行生成",
     "description": "上傳參考參數的描述"
   },
   "description.vocalGender": {
@@ -368,7 +456,7 @@
     "description": "歌詞生成成功時的消息"
   },
   "message.generateLyricsFailed": {
-    "message": "生成歌詞失敗",
+    "message": "歌詞生成失敗",
     "description": "歌詞生成失敗時的消息"
   },
   "message.optimizingStyle": {
@@ -473,31 +561,31 @@
   },
   "placeholder.overpaintingStart": {
     "message": "開始時間 (秒)",
-    "description": "人聲開始時間的佔位符"
+    "description": "人聲開始時間的占位符"
   },
   "placeholder.overpaintingEnd": {
     "message": "結束時間 (秒)",
-    "description": "人聲結束時間的佔位符"
+    "description": "人聲結束時間的占位符"
   },
   "placeholder.underpaintingStart": {
     "message": "開始時間 (秒)",
-    "description": "伴奏開始時間的佔位符"
+    "description": "伴奏開始時間的占位符"
   },
   "placeholder.underpaintingEnd": {
     "message": "結束時間 (秒)",
-    "description": "伴奏結束時間的佔位符"
+    "description": "伴奏結束時間的占位符"
   },
   "placeholder.samplesStart": {
     "message": "開始時間 (秒)",
-    "description": "採樣開始時間的佔位符"
+    "description": "採樣開始時間的占位符"
   },
   "placeholder.samplesEnd": {
     "message": "結束時間 (秒)",
-    "description": "採樣結束時間的佔位符"
+    "description": "採樣結束時間的占位符"
   },
   "placeholder.personaId": {
     "message": "輸入歌手風格 ID...",
-    "description": "歌手風格 ID 輸入的佔位符"
+    "description": "歌手風格 ID 輸入的占位符"
   },
   "description.persona": {
     "message": "使用已創建的歌手風格來生成一致風格的歌曲",
@@ -538,5 +626,113 @@
   "message.extractVocalsSuccess": {
     "message": "人聲提取成功",
     "description": "提取人聲成功時的消息"
+  },
+  "mode.simple": {
+    "message": "簡單",
+    "description": "簡單創作模式標籤"
+  },
+  "mode.custom": {
+    "message": "定制",
+    "description": "定制創作模式標籤"
+  },
+  "model.v55desc": {
+    "message": "聲音人設 · 自定義模型",
+    "description": "v5.5 模型描述"
+  },
+  "model.v5desc": {
+    "message": "真實人聲 · 高品質音頻",
+    "description": "v5 模型描述"
+  },
+  "model.v45plusdesc": {
+    "message": "高級創作方法",
+    "description": "v4.5+ 模型描述"
+  },
+  "model.v45desc": {
+    "message": "智能提示詞",
+    "description": "v4.5 模型描述"
+  },
+  "model.v4desc": {
+    "message": "改進音質",
+    "description": "v4 模型描述"
+  },
+  "model.v35desc": {
+    "message": "基礎歌曲結構",
+    "description": "v3.5 模型描述"
+  },
+  "model.v3desc": {
+    "message": "經典",
+    "description": "v3 模型描述"
+  },
+  "button.undo": {
+    "message": "撤銷",
+    "description": "撤銷按鈕提示"
+  },
+  "button.clear_lyrics": {
+    "message": "清空歌詞",
+    "description": "清空歌詞按鈕提示"
+  },
+  "button.expand_lyrics": {
+    "message": "展開編輯",
+    "description": "展開歌詞全屏編輯按鈕提示"
+  },
+  "button.enhance_lyrics": {
+    "message": "增強",
+    "description": "增強歌詞按鈕"
+  },
+  "placeholder.enhanceLyrics": {
+    "message": "輸入修改指令，例如：讓歌詞更歡快...",
+    "description": "歌詞增強輸入占位符"
+  },
+  "message.enhancingLyrics": {
+    "message": "正在增強歌詞...",
+    "description": "增強歌詞時的消息"
+  },
+  "message.enhanceLyricsSuccess": {
+    "message": "歌詞增強成功",
+    "description": "增強歌詞成功時的消息"
+  },
+  "message.enhanceLyricsFailed": {
+    "message": "歌詞增強失敗",
+    "description": "增強歌詞失敗時的消息"
+  },
+  "placeholder.searchSongs": {
+    "message": "搜索歌曲...",
+    "description": "歌曲搜索輸入的占位符"
+  },
+  "sort.newest": {
+    "message": "最新",
+    "description": "按最新排序"
+  },
+  "sort.oldest": {
+    "message": "最舊",
+    "description": "按最舊排序"
+  },
+  "button.delete": {
+    "message": "刪除",
+    "description": "刪除歌曲的按鈕文本"
+  },
+  "button.editTitle": {
+    "message": "編輯標題",
+    "description": "編輯歌曲標題的按鈕文本"
+  },
+  "message.noSearchResults": {
+    "message": "未找到歌曲",
+    "description": "搜索無結果時的消息"
+  },
+  "message.confirmDelete": {
+    "message": "確定要刪除這首歌嗎？此操作不可撤銷。",
+    "description": "刪除歌曲的確認消息"
+  },
+  "message.deleteSuccess": {
+    "message": "歌曲已刪除",
+    "description": "歌曲刪除成功時的消息"
+  },
+  "message.deleteFailed": {
+    "message": "刪除歌曲失敗",
+    "description": "歌曲刪除失敗時的消息"
+  },
+  "name.generating": {
+    "message": "生成中",
+    "description": "歌曲正在生成的狀態標籤"
   }
 }

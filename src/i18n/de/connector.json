@@ -13,22 +13,26 @@
   },
   "group.web": {
     "message": "Web",
-    "description": "Titel der Gruppe für verbundene Web-Connectoren"
+    "description": "Titel der Gruppe verbundener Web-Connectoren"
+  },
+  "group.builtin": {
+    "message": "Integriert",
+    "description": "Titel der Gruppe integrierter MCP-Server"
   },
   "group.custom": {
     "message": "Benutzerdefiniert",
-    "description": "Titel der Gruppe für benutzerdefinierte MCP-Server"
+    "description": "Titel der Gruppe benutzerdefinierter MCP-Server"
   },
   "group.notConnected": {
     "message": "Nicht verbunden",
-    "description": "Titel der Gruppe für nicht verbundene Connectoren"
+    "description": "Titel der Gruppe nicht verbundener Connectoren"
   },
   "badge.custom": {
     "message": "BENUTZERDEFINIERT",
     "description": "Logo für benutzerdefinierte Connectoren"
   },
   "badge.builtin": {
-    "message": "Integriert",
+    "message": "INTEGRIERT",
     "description": "Logo für integrierte MCP-Server"
   },
   "badge.comingSoon": {
@@ -69,7 +73,7 @@
   },
   "detail.readOnlyTools": {
     "message": "Nur-Lese-Werkzeuge",
-    "description": "Titel der Gruppe für Nur-Lese-Werkzeuge"
+    "description": "Titel der Gruppe nur-lesbarer Werkzeuge"
   },
   "detail.tools": {
     "message": "Werkzeuge",
@@ -136,7 +140,7 @@
     "description": "Platzhalter für den Namen des benutzerdefinierten Connectors"
   },
   "custom.url": {
-    "message": "URL des Remote-MCP-Servers",
+    "message": "Remote MCP-Server-URL",
     "description": "Feld für die URL des benutzerdefinierten Connectors"
   },
   "custom.urlPlaceholder": {
@@ -180,20 +184,20 @@
     "description": "Platzhalter für das Bearer-Token"
   },
   "custom.warning": {
-    "message": "Fügen Sie nur Connectoren von Entwicklern hinzu, denen Sie vertrauen. Nexior hat keine Kontrolle über die von Entwicklern bereitgestellten Werkzeuge und kann nicht garantieren, dass sie wie erwartet funktionieren oder sich nicht ändern.",
+    "message": "Fügen Sie nur Connectoren von Entwicklern hinzu, denen Sie vertrauen. Nexior hat keine Kontrolle über die von Entwicklern bereitgestellten Tools und kann nicht garantieren, dass sie wie erwartet funktionieren oder sich nicht ändern.",
     "description": "Warnung für benutzerdefinierte Connectoren"
   },
   "custom.add": {
     "message": "Hinzufügen",
-    "description": "Button zum Einreichen eines benutzerdefinierten Connectors"
+    "description": "Schaltfläche zum Einreichen eines benutzerdefinierten Connectors"
   },
   "custom.cancel": {
     "message": "Abbrechen",
-    "description": "Abbrechen-Button"
+    "description": "Abbrechen-Schaltfläche"
   },
   "custom.test": {
     "message": "Verbindung testen",
-    "description": "Button zum Testen der MCP-Verbindung"
+    "description": "Schaltfläche zum Testen der MCP-Verbindung"
   },
   "custom.urlRequired": {
     "message": "Bitte Name und URL ausfüllen",
@@ -201,35 +205,35 @@
   },
   "custom.created": {
     "message": "Erfolgreich hinzugefügt",
-    "description": "Benutzerdefinierter Connector erfolgreich hinzugefügt"
+    "description": "Erfolgreiches Hinzufügen eines benutzerdefinierten Connectors"
   },
   "custom.updated": {
     "message": "Erfolgreich aktualisiert",
-    "description": "Benutzerdefinierter Connector erfolgreich aktualisiert"
+    "description": "Erfolgreiche Aktualisierung eines benutzerdefinierten Connectors"
   },
   "custom.deleted": {
     "message": "Erfolgreich gelöscht",
-    "description": "Benutzerdefinierter Connector erfolgreich gelöscht"
+    "description": "Erfolgreiches Löschen eines benutzerdefinierten Connectors"
   },
   "custom.deleteConfirm": {
-    "message": "Löschen des Connectors \"{name}\" bestätigen?",
-    "description": "Bestätigung zum Löschen des benutzerdefinierten Connectors"
+    "message": "Löschen Sie den Connector \"{name}\"?",
+    "description": "Bestätigung zum Löschen eines benutzerdefinierten Connectors"
   },
   "custom.testSuccess": {
-    "message": "Verbindung erfolgreich, {count} Werkzeuge gefunden",
-    "description": "Test der MCP-Verbindung erfolgreich"
+    "message": "Verbindung erfolgreich, {count} Tools gefunden",
+    "description": "Erfolgreicher Test der MCP-Verbindung"
   },
   "custom.testFailed": {
     "message": "Verbindung fehlgeschlagen",
-    "description": "Test der MCP-Verbindung fehlgeschlagen"
+    "description": "Fehler beim Testen der MCP-Verbindung"
   },
   "custom.authorize": {
     "message": "Autorisieren",
-    "description": "OAuth-Autorisierungsbutton"
+    "description": "OAuth-Autorisierungsschaltfläche"
   },
   "browse.title": {
     "message": "Verzeichnis",
-    "description": "Titel der Seite zum Durchsuchen des Verzeichnisses"
+    "description": "Titel der Verzeichnis-Browsing-Seite"
   },
   "browse.searchPlaceholder": {
     "message": "Connector suchen…",
@@ -237,43 +241,43 @@
   },
   "browse.subtitle": {
     "message": "Bereitgestellt von AceDataCloud und Partnern",
-    "description": "Untertitel der Verzeichnisseite"
+    "description": "Untertitel der Verzeichnis-Seite"
   },
   "browse.install": {
     "message": "Installieren",
-    "description": "Installationsbutton auf der Verzeichniskarte"
+    "description": "Installationsschaltfläche auf der Verzeichnis-Karte"
   },
   "browse.installed": {
     "message": "Installiert",
-    "description": "Status der installierten Verzeichniskarte"
+    "description": "Status der installierten Verzeichnis-Karte"
   },
   "browse.empty": {
     "message": "Keine passenden Connectoren gefunden.",
-    "description": "Suchergebnis im Verzeichnis ist leer"
+    "description": "Leere Verzeichnis-Suche"
   },
   "browse.builtinTitle": {
     "message": "Integrierte MCP-Server",
-    "description": "Titel der Gruppe integrierter MCPs"
+    "description": "Titel der Gruppe integrierte MCP"
   },
   "browse.builtinDesc": {
     "message": "Bereitgestellt von AceDataCloud, sofort einsatzbereit mit einem Klick.",
-    "description": "Beschreibung der Gruppe integrierter MCPs"
+    "description": "Beschreibung der Gruppe integrierte MCP"
   },
   "browse.providersTitle": {
     "message": "OAuth-Anbieter",
-    "description": "Titel der Gruppe von OAuth-Anbietern"
+    "description": "Titel der Gruppe OAuth-Anbieter"
   },
   "browse.providersDesc": {
     "message": "Verbinden Sie sich über OAuth mit Ihren Google-, GitHub-, Slack- usw. Konten.",
-    "description": "Beschreibung der Gruppe von OAuth-Anbietern"
+    "description": "Beschreibung der Gruppe OAuth-Anbieter"
   },
   "browse.customTitle": {
     "message": "Benutzerdefinierte MCP-Server",
-    "description": "Titel der Gruppe benutzerdefinierter MCPs"
+    "description": "Titel der Gruppe benutzerdefinierte MCP"
   },
   "browse.customDesc": {
     "message": "Fügen Sie Ihren eigenen MCP-Server hinzu, um ihn in Nexior zu verwenden.",
-    "description": "Beschreibung der Gruppe benutzerdefinierter MCPs"
+    "description": "Beschreibung der Gruppe benutzerdefinierte MCP"
   },
   "browse.installSuccess": {
     "message": "{name} installiert",
@@ -285,38 +289,38 @@
   },
   "common.back": {
     "message": "Zurück",
-    "description": "Zurück-Button"
+    "description": "Zurück-Schaltfläche"
   },
   "common.confirm": {
     "message": "Bestätigen",
-    "description": "Bestätigungsbutton"
+    "description": "Bestätigungs-Schaltfläche"
   },
   "common.cancel": {
     "message": "Abbrechen",
-    "description": "Abbrechen-Button"
+    "description": "Abbrechen-Schaltfläche"
   },
   "common.processing": {
     "message": "Wird verarbeitet…",
-    "description": "Verarbeitung läuft"
+    "description": "Verarbeitung"
   },
   "common.authSuccess": {
     "message": "Autorisierung erfolgreich",
-    "description": "OAuth-Autorisierung erfolgreich"
+    "description": "Erfolgreiche OAuth-Autorisierung"
   },
   "common.authFailed": {
     "message": "Autorisierung fehlgeschlagen",
-    "description": "OAuth-Autorisierung fehlgeschlagen"
+    "description": "Fehler bei der OAuth-Autorisierung"
   },
   "common.closeWindow": {
     "message": "Sie können dieses Fenster schließen.",
     "description": "Hinweis an den Benutzer, dass er das Fenster schließen kann"
   },
   "common.loadError": {
-    "message": "Laden fehlgeschlagen, die Connector-Funktion ist möglicherweise noch nicht verfügbar.",
+    "message": "Laden fehlgeschlagen, die Connector-Funktionalität ist möglicherweise noch nicht verfügbar.",
     "description": "Fehler beim Laden des Connectors"
   },
   "common.toggleError": {
     "message": "Statuswechsel fehlgeschlagen",
-    "description": "Fehler beim Aktivieren/Deaktivieren des Schalters"
+    "description": "Fehler beim Aktivieren/Deaktivieren des Wechsels"
   }
 }

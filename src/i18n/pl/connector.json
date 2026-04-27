@@ -13,7 +13,11 @@
   },
   "group.web": {
     "message": "Strony internetowe",
-    "description": "Tytuł grupy łączników klasy stron internetowych"
+    "description": "Tytuł grupy łączników klasy strony internetowej"
+  },
+  "group.builtin": {
+    "message": "Wbudowane",
+    "description": "Tytuł grupy wbudowanych serwerów MCP"
   },
   "group.custom": {
     "message": "Niestandardowe",
@@ -28,12 +32,12 @@
     "description": "Logo niestandardowego łącznika"
   },
   "badge.builtin": {
-    "message": "Wbudowany",
+    "message": "Wbudowane",
     "description": "Logo wbudowanego serwera MCP"
   },
   "badge.comingSoon": {
     "message": "Wkrótce",
-    "description": "Logo niekonfigurowanego dostawcy OAuth"
+    "description": "Logo nie skonfigurowanego dostawcy OAuth"
   },
   "menu.browse": {
     "message": "Przeglądaj łączniki",
@@ -112,8 +116,8 @@
     "description": "Uprawnienia narzędzi: pytaj za każdym razem"
   },
   "permission.never": {
-    "message": "Zabroń użycia",
-    "description": "Uprawnienia narzędzi: zabroń użycia"
+    "message": "Zabroń",
+    "description": "Uprawnienia narzędzi: zabroń"
   },
   "custom.title": {
     "message": "Dodaj niestandardowy łącznik",
@@ -173,19 +177,19 @@
   },
   "custom.authToken": {
     "message": "Token",
-    "description": "Pole tokena Bearer"
+    "description": "Pole tokenu Bearer"
   },
   "custom.authTokenPlaceholder": {
     "message": "Wprowadź token Bearer",
-    "description": "Placeholder dla tokena Bearer"
+    "description": "Placeholder dla tokenu Bearer"
   },
   "custom.warning": {
-    "message": "Dodawaj tylko łączniki od zaufanych deweloperów. Nexior nie kontroluje narzędzi dostarczanych przez deweloperów i nie może zagwarantować, że będą działać zgodnie z oczekiwaniami lub że nie ulegną zmianie.",
-    "description": "Ostrzeżenie dotyczące niestandardowego łącznika"
+    "message": "Dodawaj tylko konektory od zaufanych deweloperów. Nexior nie kontroluje narzędzi dostarczanych przez deweloperów i nie może zagwarantować, że będą działać zgodnie z oczekiwaniami lub że nie ulegną zmianie.",
+    "description": "Ostrzeżenie o niestandardowym konektorze"
   },
   "custom.add": {
     "message": "Dodaj",
-    "description": "Przycisk do przesyłania niestandardowego łącznika"
+    "description": "Przycisk do dodawania niestandardowego konektora"
   },
   "custom.cancel": {
     "message": "Anuluj",
@@ -193,7 +197,7 @@
   },
   "custom.test": {
     "message": "Testuj połączenie",
-    "description": "Przycisk testowania połączenia MCP"
+    "description": "Przycisk do testowania połączenia MCP"
   },
   "custom.urlRequired": {
     "message": "Proszę wypełnić nazwę i URL",
@@ -201,27 +205,27 @@
   },
   "custom.created": {
     "message": "Dodano pomyślnie",
-    "description": "Pomyślne dodanie niestandardowego łącznika"
+    "description": "Pomyślne dodanie niestandardowego konektora"
   },
   "custom.updated": {
     "message": "Zaktualizowano pomyślnie",
-    "description": "Pomyślna aktualizacja niestandardowego łącznika"
+    "description": "Pomyślna aktualizacja niestandardowego konektora"
   },
   "custom.deleted": {
     "message": "Usunięto pomyślnie",
-    "description": "Pomyślne usunięcie niestandardowego łącznika"
+    "description": "Pomyślne usunięcie niestandardowego konektora"
   },
   "custom.deleteConfirm": {
-    "message": "Czy na pewno chcesz usunąć łącznik \"{name}\"?",
-    "description": "Potwierdzenie usunięcia niestandardowego łącznika"
+    "message": "Czy na pewno chcesz usunąć konektor \"{name}\"?",
+    "description": "Potwierdzenie usunięcia niestandardowego konektora"
   },
   "custom.testSuccess": {
     "message": "Połączenie udane, znaleziono {count} narzędzi",
-    "description": "Pomyślny test połączenia MCP"
+    "description": "Pomyślne testowanie połączenia MCP"
   },
   "custom.testFailed": {
     "message": "Połączenie nieudane",
-    "description": "Nieudany test połączenia MCP"
+    "description": "Nieudane testowanie połączenia MCP"
   },
   "custom.authorize": {
     "message": "Autoryzuj",
@@ -232,7 +236,7 @@
     "description": "Tytuł strony przeglądania katalogu"
   },
   "browse.searchPlaceholder": {
-    "message": "Szukaj łącznika…",
+    "message": "Szukaj konektorów…",
     "description": "Placeholder w polu wyszukiwania katalogu"
   },
   "browse.subtitle": {
@@ -248,32 +252,32 @@
     "description": "Status zainstalowanej karty katalogu"
   },
   "browse.empty": {
-    "message": "Nie znaleziono pasujących łączników.",
+    "message": "Nie znaleziono pasujących konektorów.",
     "description": "Pusty wynik wyszukiwania w katalogu"
   },
   "browse.builtinTitle": {
-    "message": "Wbudowany serwer MCP",
-    "description": "Tytuł grupy wbudowanego MCP"
+    "message": "Wbudowane serwery MCP",
+    "description": "Tytuł grupy wbudowanych MCP"
   },
   "browse.builtinDesc": {
     "message": "Dostarczone przez AceDataCloud, gotowe do użycia po jednokrotnym kliknięciu.",
-    "description": "Opis grupy wbudowanego MCP"
+    "description": "Opis grupy wbudowanych MCP"
   },
   "browse.providersTitle": {
     "message": "Dostawcy OAuth",
     "description": "Tytuł grupy dostawców OAuth"
   },
   "browse.providersDesc": {
-    "message": "Połącz się z kontami Google, GitHub, Slack itp. przez OAuth.",
+    "message": "Połącz się z kontami Google, GitHub, Slack itp. za pomocą OAuth.",
     "description": "Opis grupy dostawców OAuth"
   },
   "browse.customTitle": {
-    "message": "Niestandardowy serwer MCP",
-    "description": "Tytuł grupy niestandardowego MCP"
+    "message": "Niestandardowe serwery MCP",
+    "description": "Tytuł grupy niestandardowych MCP"
   },
   "browse.customDesc": {
-    "message": "Dodaj własny serwer MCP do użycia w Nexior.",
-    "description": "Opis grupy niestandardowego MCP"
+    "message": "Dodaj własne serwery MCP do użycia w Nexior.",
+    "description": "Opis grupy niestandardowych MCP"
   },
   "browse.installSuccess": {
     "message": "Zainstalowano {name}",
@@ -312,8 +316,8 @@
     "description": "Informacja dla użytkownika, że może zamknąć okno"
   },
   "common.loadError": {
-    "message": "Ładowanie nieudane, funkcjonalność łącznika może być jeszcze niedostępna.",
-    "description": "Błąd ładowania łącznika"
+    "message": "Ładowanie nieudane, funkcjonalność konektora może być jeszcze niedostępna.",
+    "description": "Błąd ładowania konektora"
   },
   "common.toggleError": {
     "message": "Błąd przełączania stanu",

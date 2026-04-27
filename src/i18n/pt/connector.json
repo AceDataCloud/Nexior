@@ -15,41 +15,45 @@
     "message": "Web",
     "description": "Título do grupo de conectores da classe web conectados"
   },
+  "group.builtin": {
+    "message": "Integrado",
+    "description": "Título do grupo de servidores MCP integrados"
+  },
   "group.custom": {
     "message": "Personalizado",
     "description": "Título do grupo de servidores MCP personalizados"
   },
   "group.notConnected": {
-    "message": "Não Conectado",
+    "message": "Desconectado",
     "description": "Título do grupo de conectores ainda não conectados"
   },
   "badge.custom": {
     "message": "PERSONALIZADO",
-    "description": "Emblema de conector personalizado"
+    "description": "Emblema do conector personalizado"
   },
   "badge.builtin": {
     "message": "INTEGRADO",
     "description": "Emblema do servidor MCP integrado"
   },
   "badge.comingSoon": {
-    "message": "Em Breve",
-    "description": "Emblema de provedor OAuth não configurado"
+    "message": "Em breve",
+    "description": "Emblema do provedor OAuth não configurado"
   },
   "menu.browse": {
-    "message": "Navegar Conectores",
+    "message": "Navegar conectores",
     "description": "Menu de adição: navegar pelo diretório"
   },
   "menu.custom": {
-    "message": "Adicionar Conector Personalizado",
+    "message": "Adicionar conector personalizado",
     "description": "Menu de adição: adicionar conector MCP personalizado"
   },
   "detail.connect": {
     "message": "Conectar",
-    "description": "Botão de conexão"
+    "description": "Botão de conectar"
   },
   "detail.disconnect": {
     "message": "Desconectar",
-    "description": "Botão de desconexão"
+    "description": "Botão de desconectar"
   },
   "detail.disconnected": {
     "message": "Desconectado",
@@ -60,7 +64,7 @@
     "description": "Mensagem de conexão bem-sucedida"
   },
   "detail.toolPermissions": {
-    "message": "Permissões de Ferramentas",
+    "message": "Permissões de ferramentas",
     "description": "Título da seção de permissões de ferramentas"
   },
   "detail.toolPermissions.help": {
@@ -68,7 +72,7 @@
     "description": "Descrição da seção de permissões de ferramentas"
   },
   "detail.readOnlyTools": {
-    "message": "Ferramentas Somente Leitura",
+    "message": "Ferramentas somente leitura",
     "description": "Título do grupo de ferramentas somente leitura"
   },
   "detail.tools": {
@@ -80,7 +84,7 @@
     "description": "Dica quando nenhum conector está selecionado"
   },
   "detail.empty.title": {
-    "message": "Selecione um Conector",
+    "message": "Selecione um conector",
     "description": "Título quando nada está selecionado à direita"
   },
   "detail.empty.desc": {
@@ -88,7 +92,7 @@
     "description": "Descrição quando nada está selecionado à direita"
   },
   "empty.title": {
-    "message": "Ainda Não Há Conectores",
+    "message": "Ainda não há conectores",
     "description": "Título quando a barra lateral está completamente vazia"
   },
   "empty.desc": {
@@ -100,24 +104,24 @@
     "description": "Dica quando não há ferramentas"
   },
   "detail.profile": {
-    "message": "Conta Conectada",
+    "message": "Conta logada",
     "description": "Título das informações da conta conectada"
   },
   "permission.always": {
-    "message": "Sempre Permitir",
+    "message": "Sempre permitir",
     "description": "Permissões de ferramentas: sempre permitir"
   },
   "permission.ask": {
-    "message": "Requer Confirmação",
+    "message": "Requer confirmação",
     "description": "Permissões de ferramentas: perguntar sempre"
   },
   "permission.never": {
-    "message": "Proibir Uso",
-    "description": "Permissões de ferramentas: proibir uso"
+    "message": "Proibido",
+    "description": "Permissões de ferramentas: proibido"
   },
   "custom.title": {
-    "message": "Adicionar Conector Personalizado",
-    "description": "Título da caixa de diálogo de conector personalizado"
+    "message": "Adicionar conector personalizado",
+    "description": "Título da caixa de diálogo do conector personalizado"
   },
   "custom.beta": {
     "message": "BETA",
@@ -125,14 +129,14 @@
   },
   "custom.intro": {
     "message": "Conecte o Nexior aos seus dados e ferramentas.",
-    "description": "Introdução da caixa de diálogo de conector personalizado"
+    "description": "Introdução da caixa de diálogo do conector personalizado"
   },
   "custom.name": {
     "message": "Nome",
     "description": "Campo de nome do conector personalizado"
   },
   "custom.namePlaceholder": {
-    "message": "Nomeie o conector",
+    "message": "Dê um nome ao conector",
     "description": "Placeholder do nome do conector personalizado"
   },
   "custom.url": {
@@ -152,11 +156,11 @@
     "description": "Placeholder da descrição do conector personalizado"
   },
   "custom.advanced": {
-    "message": "Configurações Avançadas",
+    "message": "Configurações avançadas",
     "description": "Configurações avançadas do conector personalizado"
   },
   "custom.authType": {
-    "message": "Tipo de Autenticação",
+    "message": "Tipo de autenticação",
     "description": "Campo de tipo de autenticação"
   },
   "custom.authNone": {
@@ -180,7 +184,7 @@
     "description": "Placeholder do token Bearer"
   },
   "custom.warning": {
-    "message": "Adicione apenas conectores de desenvolvedores em quem você confia. O Nexior não controla as ferramentas fornecidas pelos desenvolvedores e não pode garantir que funcionem conforme esperado ou que não mudem.",
+    "message": "Adicione apenas conectores de desenvolvedores em quem você confia. A Nexior não controla as ferramentas fornecidas pelos desenvolvedores e não pode garantir que funcionem como esperado ou que não mudem.",
     "description": "Aviso sobre conectores personalizados"
   },
   "custom.add": {
@@ -192,7 +196,7 @@
     "description": "Botão de cancelar"
   },
   "custom.test": {
-    "message": "Testar Conexão",
+    "message": "Testar conexão",
     "description": "Botão para testar a conexão MCP"
   },
   "custom.urlRequired": {
@@ -201,15 +205,15 @@
   },
   "custom.created": {
     "message": "Adicionado com sucesso",
-    "description": "Conector personalizado adicionado com sucesso"
+    "description": "Sucesso ao adicionar conector personalizado"
   },
   "custom.updated": {
     "message": "Atualizado com sucesso",
-    "description": "Conector personalizado atualizado com sucesso"
+    "description": "Sucesso ao atualizar conector personalizado"
   },
   "custom.deleted": {
     "message": "Removido com sucesso",
-    "description": "Conector personalizado removido com sucesso"
+    "description": "Sucesso ao remover conector personalizado"
   },
   "custom.deleteConfirm": {
     "message": "Confirmar remoção do conector \"{name}\"?",
@@ -217,11 +221,11 @@
   },
   "custom.testSuccess": {
     "message": "Conexão bem-sucedida, {count} ferramentas encontradas",
-    "description": "Teste de conexão MCP bem-sucedido"
+    "description": "Sucesso ao testar a conexão MCP"
   },
   "custom.testFailed": {
     "message": "Falha na conexão",
-    "description": "Teste de conexão MCP falhou"
+    "description": "Falha ao testar a conexão MCP"
   },
   "custom.authorize": {
     "message": "Autorizar",
@@ -236,7 +240,7 @@
     "description": "Placeholder da caixa de pesquisa do catálogo"
   },
   "browse.subtitle": {
-    "message": "Fornecido pela AceDataCloud e parceiros",
+    "message": "Fornecido pela AceDataCloud em parceria",
     "description": "Subtítulo da página do catálogo"
   },
   "browse.install": {
@@ -253,11 +257,11 @@
   },
   "browse.builtinTitle": {
     "message": "Servidores MCP Integrados",
-    "description": "Título do grupo de MCP integrados"
+    "description": "Título do grupo de MCP integrado"
   },
   "browse.builtinDesc": {
     "message": "Fornecido pela AceDataCloud, pronto para uso com um clique.",
-    "description": "Descrição do grupo de MCP integrados"
+    "description": "Descrição do grupo de MCP integrado"
   },
   "browse.providersTitle": {
     "message": "Provedores OAuth",
@@ -269,15 +273,15 @@
   },
   "browse.customTitle": {
     "message": "Servidores MCP Personalizados",
-    "description": "Título do grupo de MCP personalizados"
+    "description": "Título do grupo de MCP personalizado"
   },
   "browse.customDesc": {
     "message": "Adicione seu próprio servidor MCP para uso no Nexior.",
-    "description": "Descrição do grupo de MCP personalizados"
+    "description": "Descrição do grupo de MCP personalizado"
   },
   "browse.installSuccess": {
     "message": "Instalado {name}",
-    "description": "Mensagem de sucesso da instalação"
+    "description": "Mensagem de sucesso de instalação"
   },
   "browse.installFailed": {
     "message": "Falha na instalação",
@@ -301,7 +305,7 @@
   },
   "common.authSuccess": {
     "message": "Autorização bem-sucedida",
-    "description": "Autorização OAuth bem-sucedida"
+    "description": "Sucesso na autorização OAuth"
   },
   "common.authFailed": {
     "message": "Falha na autorização",

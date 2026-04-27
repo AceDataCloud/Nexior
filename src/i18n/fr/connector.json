@@ -15,29 +15,33 @@
     "message": "Web",
     "description": "Titre du groupe de connecteurs de type web connectés"
   },
+  "group.builtin": {
+    "message": "Intégré",
+    "description": "Titre du groupe de serveurs MCP intégrés"
+  },
   "group.custom": {
     "message": "Personnalisé",
     "description": "Titre du groupe de serveurs MCP personnalisés"
   },
   "group.notConnected": {
     "message": "Non connecté",
-    "description": "Titre du groupe de connecteurs non encore connectés"
+    "description": "Titre du groupe de connecteurs non connectés"
   },
   "badge.custom": {
     "message": "PERSONNALISÉ",
     "description": "Insigne pour les connecteurs personnalisés"
   },
   "badge.builtin": {
-    "message": "Intégré",
-    "description": "Insigne pour le serveur MCP intégré"
+    "message": "INTÉGRÉ",
+    "description": "Insigne pour les serveurs MCP intégrés"
   },
   "badge.comingSoon": {
     "message": "À venir",
-    "description": "Insigne pour le fournisseur OAuth non configuré"
+    "description": "Insigne pour les fournisseurs OAuth non configurés"
   },
   "menu.browse": {
     "message": "Parcourir les connecteurs",
-    "description": "Menu d'ajout : parcourir le catalogue"
+    "description": "Menu d'ajout : parcourir le répertoire"
   },
   "menu.custom": {
     "message": "Ajouter un connecteur personnalisé",
@@ -53,11 +57,11 @@
   },
   "detail.disconnected": {
     "message": "Déconnecté",
-    "description": "Message de déconnexion réussie"
+    "description": "Message de succès de déconnexion"
   },
   "detail.connected": {
     "message": "Connecté",
-    "description": "Message de connexion réussie"
+    "description": "Message de succès de connexion"
   },
   "detail.toolPermissions": {
     "message": "Permissions des outils",
@@ -84,7 +88,7 @@
     "description": "Titre lorsque rien n'est sélectionné à droite"
   },
   "detail.empty.desc": {
-    "message": "Sélectionnez un élément connecté à gauche pour voir les détails, ou parcourez le catalogue pour ajouter un nouveau connecteur.",
+    "message": "Sélectionnez un élément connecté à gauche pour voir les détails, ou parcourez le répertoire pour ajouter un nouveau connecteur.",
     "description": "Description lorsque rien n'est sélectionné à droite"
   },
   "empty.title": {
@@ -92,7 +96,7 @@
     "description": "Titre lorsque la barre latérale est complètement vide"
   },
   "empty.desc": {
-    "message": "Parcourez le catalogue pour commencer à ajouter des connecteurs, ou ajoutez votre propre serveur MCP.",
+    "message": "Parcourez le répertoire pour commencer à ajouter des connecteurs, ou ajoutez votre propre serveur MCP.",
     "description": "Description lorsque la barre latérale est complètement vide"
   },
   "detail.noTools": {
@@ -108,7 +112,7 @@
     "description": "Permissions des outils : toujours autoriser"
   },
   "permission.ask": {
-    "message": "Demander confirmation",
+    "message": "Demande de confirmation",
     "description": "Permissions des outils : demander à chaque fois"
   },
   "permission.never": {
@@ -121,7 +125,7 @@
   },
   "custom.beta": {
     "message": "BÊTA",
-    "description": "Étiquette Beta"
+    "description": "Étiquette Bêta"
   },
   "custom.intro": {
     "message": "Connectez Nexior à vos données et outils.",
@@ -180,8 +184,8 @@
     "description": "Espace réservé pour le token Bearer"
   },
   "custom.warning": {
-    "message": "Ajoutez uniquement des connecteurs provenant de développeurs de confiance. Nexior ne contrôle pas les outils fournis par les développeurs et ne peut garantir qu'ils fonctionneront comme prévu ou qu'ils ne changeront pas.",
-    "description": "Avertissement pour le connecteur personnalisé"
+    "message": "N'ajoutez que des connecteurs provenant de développeurs de confiance. Nexior ne contrôle pas les outils fournis par les développeurs et ne peut garantir qu'ils fonctionneront comme prévu ou qu'ils ne changeront pas.",
+    "description": "Avertissement sur les connecteurs personnalisés"
   },
   "custom.add": {
     "message": "Ajouter",
@@ -197,7 +201,7 @@
   },
   "custom.urlRequired": {
     "message": "Veuillez remplir le nom et l'URL",
-    "description": "Message d'exigence pour le nom et l'URL"
+    "description": "Message d'indication que le nom et l'URL sont requis"
   },
   "custom.created": {
     "message": "Ajout réussi",
@@ -221,7 +225,7 @@
   },
   "custom.testFailed": {
     "message": "Échec de la connexion",
-    "description": "Test de connexion MCP échoué"
+    "description": "Échec du test de connexion MCP"
   },
   "custom.authorize": {
     "message": "Autoriser",
@@ -232,31 +236,31 @@
     "description": "Titre de la page de navigation du répertoire"
   },
   "browse.searchPlaceholder": {
-    "message": "Rechercher un connecteur…",
+    "message": "Rechercher des connecteurs…",
     "description": "Placeholder pour la barre de recherche du répertoire"
   },
   "browse.subtitle": {
-    "message": "Fournit par AceDataCloud et ses partenaires",
+    "message": "Fournit par AceDataCloud en partenariat",
     "description": "Sous-titre de la page du répertoire"
   },
   "browse.install": {
     "message": "Installer",
-    "description": "Bouton d'installation de la carte du répertoire"
+    "description": "Bouton d'installation sur la carte du répertoire"
   },
   "browse.installed": {
     "message": "Installé",
-    "description": "État installé de la carte du répertoire"
+    "description": "État installé sur la carte du répertoire"
   },
   "browse.empty": {
     "message": "Aucun connecteur correspondant trouvé.",
-    "description": "Recherche vide dans le répertoire"
+    "description": "Recherche dans le répertoire vide"
   },
   "browse.builtinTitle": {
     "message": "Serveurs MCP intégrés",
     "description": "Titre du groupe MCP intégré"
   },
   "browse.builtinDesc": {
-    "message": "Fournis par AceDataCloud, installation en un clic.",
+    "message": "Fournis par AceDataCloud, prêts à l'emploi avec un seul clic.",
     "description": "Description du groupe MCP intégré"
   },
   "browse.providersTitle": {
@@ -276,7 +280,7 @@
     "description": "Description du groupe MCP personnalisé"
   },
   "browse.installSuccess": {
-    "message": "{name} installé",
+    "message": "Installé {name}",
     "description": "Message de succès d'installation"
   },
   "browse.installFailed": {
@@ -312,7 +316,7 @@
     "description": "Indication à l'utilisateur qu'il peut fermer la fenêtre"
   },
   "common.loadError": {
-    "message": "Échec du chargement, les fonctionnalités du connecteur peuvent ne pas être disponibles.",
+    "message": "Échec du chargement, les fonctionnalités du connecteur peuvent ne pas être encore disponibles.",
     "description": "Échec du chargement du connecteur"
   },
   "common.toggleError": {

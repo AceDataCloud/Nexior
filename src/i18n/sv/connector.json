@@ -1,34 +1,38 @@
 {
   "title": {
     "message": "Anslutare",
-    "description": "Anslutare sida titel"
+    "description": "Titel på anslutarsidan"
   },
   "subtitle": {
-    "message": "Anslut externa applikationer med anpassad MCP-server, utöka AI-funktioner",
-    "description": "Anslutare sida undertitel"
+    "message": "Anslut externa applikationer och anpassade MCP-servrar, utöka AI-funktioner",
+    "description": "Undertitel på anslutarsidan"
   },
   "search.placeholder": {
     "message": "Sök anslutare",
-    "description": "Sidofält sökfält platsinnehåll"
+    "description": "Platshållare för sökfält i sidofältet"
   },
   "group.web": {
     "message": "Webb",
-    "description": "Gruppering av anslutare av webbklass"
+    "description": "Rubrik för grupp av anslutare av webbklass"
+  },
+  "group.builtin": {
+    "message": "Inbyggd",
+    "description": "Rubrik för grupp av inbyggda MCP-servrar"
   },
   "group.custom": {
     "message": "Anpassad",
-    "description": "Gruppering av anpassade MCP-servrar"
+    "description": "Rubrik för grupp av anpassade MCP-servrar"
   },
   "group.notConnected": {
     "message": "Ej ansluten",
-    "description": "Gruppering av anslutare som ännu inte är anslutna"
+    "description": "Rubrik för grupp av anslutare som inte är anslutna"
   },
   "badge.custom": {
     "message": "ANPASSAD",
     "description": "Märke för anpassad anslutare"
   },
   "badge.builtin": {
-    "message": "Inbyggd",
+    "message": "INBYGGD",
     "description": "Märke för inbyggd MCP-server"
   },
   "badge.comingSoon": {
@@ -36,7 +40,7 @@
     "description": "Märke för icke konfigurerad OAuth-leverantör"
   },
   "menu.browse": {
-    "message": "Bläddra anslutare",
+    "message": "Bläddra bland anslutare",
     "description": "Lägg till meny: bläddra i katalogen"
   },
   "menu.custom": {
@@ -49,7 +53,7 @@
   },
   "detail.disconnect": {
     "message": "Koppla bort",
-    "description": "Koppla bort knapp"
+    "description": "Koppla bort-knapp"
   },
   "detail.disconnected": {
     "message": "Kopplad bort",
@@ -61,11 +65,11 @@
   },
   "detail.toolPermissions": {
     "message": "Verktygsbehörigheter",
-    "description": "Rubrik för verktygsbehörighetsavsnitt"
+    "description": "Rubrik för avsnitt om verktygsbehörigheter"
   },
   "detail.toolPermissions.help": {
     "message": "Välj när Nexior får använda dessa verktyg.",
-    "description": "Beskrivning av verktygsbehörighetsavsnitt"
+    "description": "Beskrivning av avsnitt om verktygsbehörigheter"
   },
   "detail.readOnlyTools": {
     "message": "Endast läsverktyg",
@@ -96,7 +100,7 @@
     "description": "Beskrivning när sidofältet är helt tomt"
   },
   "detail.noTools": {
-    "message": "Denna anslutare har ännu inte upptäckt några tillgängliga verktyg.",
+    "message": "Denna anslutare har ännu inte några tillgängliga verktyg.",
     "description": "Tips när inga verktyg finns"
   },
   "detail.profile": {
@@ -133,7 +137,7 @@
   },
   "custom.namePlaceholder": {
     "message": "Ge anslutaren ett namn",
-    "description": "Platsinnehåll för namn på anpassad anslutare"
+    "description": "Platshållare för namn på anpassad anslutare"
   },
   "custom.url": {
     "message": "URL för fjärr-MCP-server",
@@ -141,15 +145,15 @@
   },
   "custom.urlPlaceholder": {
     "message": "https://example.com/mcp",
-    "description": "Platsinnehåll för URL för anpassad anslutare"
+    "description": "Platshållare för URL för anpassad anslutare"
   },
   "custom.description": {
     "message": "Beskrivning",
     "description": "Fält för beskrivning av anpassad anslutare"
   },
   "custom.descriptionPlaceholder": {
-    "message": "Valfritt: Beskriv syftet med denna anslutare",
-    "description": "Platsinnehåll för beskrivning av anpassad anslutare"
+    "message": "Valfritt: beskriv syftet med denna anslutare",
+    "description": "Platshållare för beskrivning av anpassad anslutare"
   },
   "custom.advanced": {
     "message": "Avancerade inställningar",
@@ -177,15 +181,15 @@
   },
   "custom.authTokenPlaceholder": {
     "message": "Ange Bearer Token",
-    "description": "Platsinnehåll för Bearer token"
+    "description": "Platshållare för Bearer token"
   },
   "custom.warning": {
-    "message": "Lägg endast till anslutare från utvecklare du litar på. Nexior kontrollerar inte verktyg som tillhandahålls av utvecklare och kan inte garantera att de fungerar som förväntat eller att de inte kommer att ändras.",
-    "description": "Varning för anpassad anslutare"
+    "message": "Lägg endast till anslutningar från betrodda utvecklare. Nexior kontrollerar inte verktyg som tillhandahålls av utvecklare och kan inte garantera att de fungerar som förväntat eller att de inte ändras.",
+    "description": "Varning för anpassad anslutning"
   },
   "custom.add": {
     "message": "Lägg till",
-    "description": "Knapp för att skicka en anpassad anslutare"
+    "description": "Knapp för att skicka anpassad anslutning"
   },
   "custom.cancel": {
     "message": "Avbryt",
@@ -201,27 +205,27 @@
   },
   "custom.created": {
     "message": "Tillagd",
-    "description": "Anpassad anslutare tillagd framgångsrikt"
+    "description": "Framgångsrik tillägg av anpassad anslutning"
   },
   "custom.updated": {
     "message": "Uppdaterad",
-    "description": "Anpassad anslutare uppdaterad framgångsrikt"
+    "description": "Framgångsrik uppdatering av anpassad anslutning"
   },
   "custom.deleted": {
     "message": "Borttagen",
-    "description": "Anpassad anslutare borttagen framgångsrikt"
+    "description": "Framgångsrik borttagning av anpassad anslutning"
   },
   "custom.deleteConfirm": {
-    "message": "Bekräfta borttagning av anslutare \"{name}\"?",
-    "description": "Bekräftelse för att ta bort anpassad anslutare"
+    "message": "Bekräfta borttagning av anslutning \"{name}\"?",
+    "description": "Bekräftelse för borttagning av anpassad anslutning"
   },
   "custom.testSuccess": {
     "message": "Anslutning lyckades, hittade {count} verktyg",
-    "description": "Test av MCP-anslutning lyckades"
+    "description": "Framgångsrik test av MCP-anslutning"
   },
   "custom.testFailed": {
     "message": "Anslutning misslyckades",
-    "description": "Test av MCP-anslutning misslyckades"
+    "description": "Misslyckad test av MCP-anslutning"
   },
   "custom.authorize": {
     "message": "Auktorisera",
@@ -232,8 +236,8 @@
     "description": "Titel på bläddringskatalogsidan"
   },
   "browse.searchPlaceholder": {
-    "message": "Sök anslutare…",
-    "description": "Platsinnehåll för sökfält i katalogen"
+    "message": "Sök anslutningar…",
+    "description": "Platshållare för sökfält i katalogen"
   },
   "browse.subtitle": {
     "message": "Tillhandahålls av AceDataCloud och partners",
@@ -245,10 +249,10 @@
   },
   "browse.installed": {
     "message": "Installerad",
-    "description": "Status för installerad katalogkort"
+    "description": "Installerad status på katalogkort"
   },
   "browse.empty": {
-    "message": "Inga matchande anslutare hittades.",
+    "message": "Inga matchande anslutningar hittades.",
     "description": "Katalogsökning är tom"
   },
   "browse.builtinTitle": {
@@ -277,7 +281,7 @@
   },
   "browse.installSuccess": {
     "message": "Installerad {name}",
-    "description": "Meddelande om lyckad installation"
+    "description": "Framgångsmeddelande för installation"
   },
   "browse.installFailed": {
     "message": "Installation misslyckades",
@@ -301,22 +305,22 @@
   },
   "common.authSuccess": {
     "message": "Auktorisering lyckades",
-    "description": "OAuth auktorisering lyckades"
+    "description": "Framgångsrik OAuth-auktorisering"
   },
   "common.authFailed": {
     "message": "Auktorisering misslyckades",
-    "description": "OAuth auktorisering misslyckades"
+    "description": "Misslyckad OAuth-auktorisering"
   },
   "common.closeWindow": {
     "message": "Du kan stänga detta fönster.",
     "description": "Meddelande till användaren om att fönstret kan stängas"
   },
   "common.loadError": {
-    "message": "Laddning misslyckades, anslutarfunktionen kanske inte är tillgänglig.",
-    "description": "Misslyckad laddning av anslutare"
+    "message": "Laddning misslyckades, anslutningsfunktioner kanske inte är tillgängliga.",
+    "description": "Misslyckad laddning av anslutning"
   },
   "common.toggleError": {
-    "message": "Misslyckades med att växla status",
-    "description": "Misslyckades med att aktivera/avaktivera växling"
+    "message": "Misslyckades att växla status",
+    "description": "Misslyckad aktivering/deaktivering av växling"
   }
 }
