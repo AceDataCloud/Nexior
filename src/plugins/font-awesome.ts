@@ -112,7 +112,9 @@ import {
   faClock as faSolidClock,
   faEraser as faSolidEraser,
   faArrowDownWideShort as faSolidArrowDownWideShort,
-  faPen as faSolidPen
+  faPen as faSolidPen,
+  faExpand as faSolidExpand,
+  faCompress as faSolidCompress
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -224,3 +226,5 @@ library.add(faSolidClock);
 library.add(faSolidEraser);
 library.add(faSolidArrowDownWideShort);
 library.add(faSolidPen);
+library.add(faSolidExpand);
+library.add(faSolidCompress);
