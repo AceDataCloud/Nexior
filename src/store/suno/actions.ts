@@ -2,7 +2,7 @@ import { applicationOperator, sunoOperator, serviceOperator, credentialOperator 
 import { ISunoState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, ISunoConfig, ISunoTask, IService } from '@/models';
+import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoTask, IService } from '@/models';
 import { Status } from '@/models/common';
 import { SUNO_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
@@ -173,6 +173,49 @@ export const getTasks = async (
   });
 };
 
+export const getPersonas = async ({
+  commit,
+  state,
+  rootState
+}: ActionContext<ISunoState, IRootState>): Promise<ISunoPersona[]> => {
+  const credential = state.credential;
+  const token = credential?.token;
+  if (!token) {
+    return [];
+  }
+  const userId = rootState?.user?.id;
+  if (!userId) {
+    return [];
+  }
+  try {
+    const { data } = await sunoOperator.personasList({ user_id: userId }, { token });
+    commit('setPersonas', data.items || []);
+    return data.items || [];
+  } catch (error) {
+    console.error('get personas failed', error);
+    return [];
+  }
+};
+
+export const deletePersona = async (
+  { state, dispatch, rootState }: ActionContext<ISunoState, IRootState>,
+  personaId: string
+): Promise<boolean> => {
+  const credential = state.credential;
+  const token = credential?.token;
+  if (!token) {
+    return false;
+  }
+  try {
+    await sunoOperator.personasDelete({ persona_id: personaId, user_id: rootState?.user?.id }, { token });
+    await dispatch('getPersonas');
+    return true;
+  } catch (error) {
+    console.error('delete persona failed', error);
+    return false;
+  }
+};
+
 export default {
   setService,
   getService,
@@ -188,5 +231,7 @@ export default {
   setTasksActive,
   getTasks,
   setAudio,
+  getPersonas,
+  deletePersona,
   createCredential
 };

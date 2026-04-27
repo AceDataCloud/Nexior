@@ -21,7 +21,8 @@ import {
   ISunoVoicesRequest,
   ISunoVoicesResponse,
   ISunoMashupLyricsRequest,
-  ISunoMashupLyricsResponse
+  ISunoMashupLyricsResponse,
+  ISunoPersonasListResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
@@ -303,6 +304,50 @@ class SunoOperator {
       },
       baseURL: BASE_URL_API
     });
+  }
+
+  // suno/personas - list user personas
+  async personasList(
+    data: { user_id: string; limit?: number; offset?: number },
+    options: { token: string }
+  ): Promise<AxiosResponse<ISunoPersonasListResponse>> {
+    return await axios.post(
+      '/suno/personas',
+      {
+        action: 'list',
+        ...data
+      },
+      {
+        headers: {
+          authorization: `Bearer ${options.token}`,
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
+        },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  // suno/personas - delete a persona
+  async personasDelete(
+    data: { persona_id: string; user_id?: string },
+    options: { token: string }
+  ): Promise<AxiosResponse<{ success: boolean }>> {
+    return await axios.post(
+      '/suno/personas',
+      {
+        action: 'delete',
+        ...data
+      },
+      {
+        headers: {
+          authorization: `Bearer ${options.token}`,
+          'content-type': 'application/json',
+          'x-record-exempt': 'true'
+        },
+        baseURL: BASE_URL_API
+      }
+    );
   }
 }
 

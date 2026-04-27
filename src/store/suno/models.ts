@@ -1,4 +1,4 @@
-import { IApplication, ICredential, IService, ISunoAudio, Status } from '@/models';
+import { IApplication, ICredential, IService, ISunoAudio, ISunoPersona, Status } from '@/models';
 import { ISunoConfig, ISunoTask } from '@/models';
 
 export interface ISunoState {
@@ -15,6 +15,7 @@ export interface ISunoState {
       }
     | undefined;
   audio: ISunoAudio | undefined;
+  personas: ISunoPersona[] | undefined;
   status: {
     getService: Status;
     getApplications: Status;

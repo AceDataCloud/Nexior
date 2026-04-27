@@ -1,4 +1,4 @@
-import { IApplication, ICredential, ISunoConfig, ISunoTask, IService } from '@/models';
+import { IApplication, ICredential, ISunoConfig, ISunoPersona, ISunoTask, IService } from '@/models';
 import { ISunoState } from './models';
 
 export const resetAll = (state: ISunoState): void => {
@@ -8,6 +8,7 @@ export const resetAll = (state: ISunoState): void => {
   state.config = undefined;
   state.credential = undefined;
   state.tasks = undefined;
+  state.personas = undefined;
 };
 
 export const setApplications = (state: ISunoState, payload: IApplication[]): void => {
@@ -62,6 +63,10 @@ export const setTasks = (state: ISunoState, payload: any): void => {
   state.tasks = payload;
 };
 
+export const setPersonas = (state: ISunoState, payload: ISunoPersona[]): void => {
+  state.personas = payload;
+};
+
 export default {
   setTasks,
   setApplication,
@@ -73,5 +78,6 @@ export default {
   setTasksItems,
   setTasksTotal,
   setAudio,
+  setPersonas,
   resetAll
 };

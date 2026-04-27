@@ -12,6 +12,7 @@ export default (): ISunoState => {
     },
     credential: undefined,
     config: undefined,
+    personas: undefined,
     status: {
       getService: Status.None,
       getApplications: Status.None,

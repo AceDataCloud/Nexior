@@ -171,14 +171,26 @@ export interface ISunoPersonaRequest {
 
 export interface ISunoPersona {
   id?: string;
+  persona_id?: string;
   name?: string;
   description?: string;
+  source_type?: 'persona' | 'voice';
+  source_audio_id?: string;
+  source_audio_url?: string;
+  user_id?: string;
+  task_id?: string;
+  created_at?: number;
 }
 
 export interface ISunoPersonaResponse {
   success?: boolean;
   task_id: string;
   data: ISunoPersona;
+}
+
+export interface ISunoPersonasListResponse {
+  items: ISunoPersona[];
+  count: number;
 }
 
 export interface ISunoVoxRequest {
