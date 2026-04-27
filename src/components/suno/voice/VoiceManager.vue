@@ -7,15 +7,19 @@
         {{ $t('suno.voice.create') }}
       </el-button>
     </div>
+    <el-tabs v-model="activeTab" class="voice-tabs" size="small">
+      <el-tab-pane name="all" :label="$t('suno.voice.tabAll') + ' (' + (personas?.length || 0) + ')'" />
+      <el-tab-pane name="favorites" :label="$t('suno.voice.tabFavorites') + ' (' + favoritePersonas.length + ')'" />
+    </el-tabs>
     <div v-if="loading" class="text-center py-6">
       <el-icon class="is-loading"><loading /></el-icon>
     </div>
-    <div v-else-if="!personas || personas.length === 0" class="text-center py-6 text-gray-400 text-sm">
-      {{ $t('suno.voice.empty') }}
+    <div v-else-if="visiblePersonas.length === 0" class="text-center py-6 text-gray-400 text-sm">
+      {{ activeTab === 'favorites' ? $t('suno.voice.emptyFavorites') : $t('suno.voice.empty') }}
     </div>
     <div v-else class="voice-list">
       <div
-        v-for="persona in personas"
+        v-for="persona in visiblePersonas"
         :key="persona.persona_id"
         class="voice-item"
         :class="{ active: selectedPersonaId === persona.persona_id }"
@@ -32,6 +36,19 @@
           <div v-if="persona.description" class="voice-desc">{{ persona.description }}</div>
         </div>
         <div class="voice-actions" @click.stop>
+          <el-tooltip
+            :content="isFavorite(persona.persona_id) ? $t('suno.voice.unfavorite') : $t('suno.voice.favorite')"
+            placement="top"
+          >
+            <el-button
+              size="small"
+              text
+              :class="{ 'voice-fav-active': isFavorite(persona.persona_id) }"
+              @click="onToggleFavorite(persona)"
+            >
+              <font-awesome-icon :icon="isFavorite(persona.persona_id) ? 'fa-solid fa-star' : 'fa-regular fa-star'" />
+            </el-button>
+          </el-tooltip>
           <el-button
             type="danger"
             size="small"
@@ -50,7 +67,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElIcon, ElMessage, ElMessageBox } from 'element-plus';
+import { ElButton, ElIcon, ElMessage, ElMessageBox, ElTabs, ElTabPane, ElTooltip } from 'element-plus';
 import { Loading } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VoiceCreateDialog from './VoiceCreateDialog.vue';
@@ -61,6 +78,9 @@ export default defineComponent({
   components: {
     ElButton,
     ElIcon,
+    ElTabs,
+    ElTabPane,
+    ElTooltip,
     Loading,
     FontAwesomeIcon,
     VoiceCreateDialog
@@ -69,12 +89,22 @@ export default defineComponent({
     return {
       showCreateDialog: false,
       loading: false,
-      deletingId: null as string | null
+      deletingId: null as string | null,
+      activeTab: 'all' as 'all' | 'favorites'
     };
   },
   computed: {
     personas(): ISunoPersona[] {
       return this.$store.state.suno?.personas || [];
+    },
+    favoriteIds(): string[] {
+      return this.$store.state.suno?.favoritePersonaIds || [];
+    },
+    favoritePersonas(): ISunoPersona[] {
+      return this.personas.filter((p) => p.persona_id && this.favoriteIds.includes(p.persona_id));
+    },
+    visiblePersonas(): ISunoPersona[] {
+      return this.activeTab === 'favorites' ? this.favoritePersonas : this.personas;
     },
     selectedPersonaId(): string | undefined {
       return this.$store.state.suno?.config?.persona_id;
@@ -89,6 +119,13 @@ export default defineComponent({
     }
   },
   methods: {
+    isFavorite(personaId?: string): boolean {
+      return !!personaId && this.favoriteIds.includes(personaId);
+    },
+    onToggleFavorite(persona: ISunoPersona) {
+      if (!persona.persona_id) return;
+      this.$store.commit('suno/togglePersonaFavorite', persona.persona_id);
+    },
     async loadPersonas() {
       if (!this.$store.state.suno?.credential?.token) return;
       this.loading = true;
@@ -128,6 +165,10 @@ export default defineComponent({
           const config = { ...this.$store.state.suno?.config, persona_id: undefined };
           this.$store.dispatch('suno/setConfig', config);
         }
+        // Also drop from favorites if present
+        if (this.favoriteIds.includes(persona.persona_id)) {
+          this.$store.commit('suno/togglePersonaFavorite', persona.persona_id);
+        }
       } else {
         ElMessage.error(this.$t('suno.voice.deleteFailed'));
       }
@@ -140,6 +181,15 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.voice-tabs {
+  margin-bottom: 8px;
+}
+.voice-tabs :deep(.el-tabs__header) {
+  margin: 0 0 8px 0;
+}
+.voice-tabs :deep(.el-tabs__nav-wrap::after) {
+  height: 1px;
+}
 .voice-list {
   display: flex;
   flex-direction: column;
@@ -188,5 +238,13 @@ export default defineComponent({
 .voice-actions {
   flex-shrink: 0;
   margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.voice-fav-active :deep(svg),
+.voice-fav-active {
+  color: #f5a623;
 }
 </style>

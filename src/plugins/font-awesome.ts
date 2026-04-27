@@ -9,7 +9,8 @@ import {
   faMessage as faRegularMessage,
   faFileAlt as faRegularFileAlt,
   faClock as faRegularClock,
-  faFile as faRegularFile
+  faFile as faRegularFile,
+  faStar as faRegularStar
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faDiscord as faBrandsDiscord,
@@ -115,7 +116,8 @@ import {
   faPen as faSolidPen,
   faExpand as faSolidExpand,
   faCompress as faSolidCompress,
-  faBroom as faSolidBroom
+  faBroom as faSolidBroom,
+  faStar as faSolidStar
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -128,6 +130,8 @@ library.add(faSolidPlayCircle);
 library.add(faSolidArrowUp);
 library.add(faRegularFileAlt);
 library.add(faSolidFilm);
+library.add(faSolidStar);
+library.add(faRegularStar);
 library.add(faSolidVideo);
 library.add(faSolidMusic);
 library.add(faRegularCopy);

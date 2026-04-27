@@ -67,6 +67,19 @@ export const setPersonas = (state: ISunoState, payload: ISunoPersona[]): void =>
   state.personas = payload;
 };
 
+export const togglePersonaFavorite = (state: ISunoState, personaId: string): void => {
+  if (!personaId) return;
+  if (!Array.isArray(state.favoritePersonaIds)) {
+    state.favoritePersonaIds = [];
+  }
+  const idx = state.favoritePersonaIds.indexOf(personaId);
+  if (idx >= 0) {
+    state.favoritePersonaIds.splice(idx, 1);
+  } else {
+    state.favoritePersonaIds.push(personaId);
+  }
+};
+
 export default {
   setTasks,
   setApplication,
@@ -79,5 +92,6 @@ export default {
   setTasksTotal,
   setAudio,
   setPersonas,
+  togglePersonaFavorite,
   resetAll
 };

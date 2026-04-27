@@ -13,6 +13,7 @@ export default (): ISunoState => {
     credential: undefined,
     config: undefined,
     personas: undefined,
+    favoritePersonaIds: [],
     status: {
       getService: Status.None,
       getApplications: Status.None,
