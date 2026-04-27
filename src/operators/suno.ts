@@ -306,48 +306,34 @@ class SunoOperator {
     });
   }
 
-  // suno/personas - list user personas
+  // GET /suno/persona - list user personas
   async personasList(
     data: { user_id: string; limit?: number; offset?: number },
     options: { token: string }
   ): Promise<AxiosResponse<ISunoPersonasListResponse>> {
-    return await axios.post(
-      '/suno/personas',
-      {
-        action: 'list',
-        ...data
+    return await axios.get('/suno/persona', {
+      params: data,
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'x-record-exempt': 'true'
       },
-      {
-        headers: {
-          authorization: `Bearer ${options.token}`,
-          'content-type': 'application/json',
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
-    );
+      baseURL: BASE_URL_API
+    });
   }
 
-  // suno/personas - delete a persona
+  // DELETE /suno/persona - delete a persona
   async personasDelete(
     data: { persona_id: string; user_id?: string },
     options: { token: string }
   ): Promise<AxiosResponse<{ success: boolean }>> {
-    return await axios.post(
-      '/suno/personas',
-      {
-        action: 'delete',
-        ...data
+    return await axios.delete('/suno/persona', {
+      params: data,
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'x-record-exempt': 'true'
       },
-      {
-        headers: {
-          authorization: `Bearer ${options.token}`,
-          'content-type': 'application/json',
-          'x-record-exempt': 'true'
-        },
-        baseURL: BASE_URL_API
-      }
-    );
+      baseURL: BASE_URL_API
+    });
   }
 }
 
