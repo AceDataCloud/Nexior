@@ -16,6 +16,7 @@ import {
   faWeixin as faBrandsWeixin,
   faGoogle as faBrandsGoogle,
   faGithub as faBrandsGithub,
+  faGitlab as faBrandsGitlab,
   faSlack as faBrandsSlack
 } from '@fortawesome/free-brands-svg-icons';
 import {
@@ -25,6 +26,7 @@ import {
   faPlayCircle as faSolidPlayCircle,
   faDownload as faSolidDownload,
   faFilm as faSolidFilm,
+  faVideo as faSolidVideo,
   faMusic as faSolidMusic,
   faLanguage as faSolidLanguage,
   faUser as faSolidUser,
@@ -111,6 +113,7 @@ library.add(faSolidPlayCircle);
 library.add(faSolidArrowUp);
 library.add(faRegularFileAlt);
 library.add(faSolidFilm);
+library.add(faSolidVideo);
 library.add(faSolidMusic);
 library.add(faRegularCopy);
 library.add(faRegularMessage);
@@ -195,4 +198,5 @@ library.add(faSolidCheckCircle);
 library.add(faSolidCircleExclamation);
 library.add(faBrandsGoogle);
 library.add(faBrandsGithub);
+library.add(faBrandsGitlab);
 library.add(faBrandsSlack);

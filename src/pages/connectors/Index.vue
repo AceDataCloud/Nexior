@@ -33,11 +33,33 @@
       <div v-loading="loading" class="rail-body">
         <div v-if="loadError" class="empty-hint">{{ $t('connector.common.loadError') }}</div>
 
-        <!-- Connected: built-in providers + custom MCP -->
+        <!-- Connected: OAuth providers + built-in MCPs + custom MCPs -->
+        <div v-if="builtinGroupItems.length" class="group">
+          <div class="group-title">{{ $t('connector.group.builtin') }}</div>
+          <connector-list-item
+            v-for="item in builtinGroupItems"
+            :key="item.id"
+            :item="item"
+            :selected="selectedId === item.id"
+            @click="selectedId = item.id"
+          />
+        </div>
+
         <div v-if="webGroupItems.length" class="group">
           <div class="group-title">{{ $t('connector.group.web') }}</div>
           <connector-list-item
             v-for="item in webGroupItems"
+            :key="item.id"
+            :item="item"
+            :selected="selectedId === item.id"
+            @click="selectedId = item.id"
+          />
+        </div>
+
+        <div v-if="customGroupItems.length" class="group">
+          <div class="group-title">{{ $t('connector.group.custom') }}</div>
+          <connector-list-item
+            v-for="item in customGroupItems"
             :key="item.id"
             :item="item"
             :selected="selectedId === item.id"
@@ -105,7 +127,7 @@ import { ROUTE_CONNECTORS_BROWSE } from '@/router/constants';
 import ConnectorListItem from '@/components/connectors/ConnectorListItem.vue';
 import ConnectorDetail from '@/components/connectors/ConnectorDetail.vue';
 import McpManager from '@/components/chat/McpManager.vue';
-import { IConnectorItem, PROVIDER_ICONS } from '@/components/connectors/types';
+import { IConnectorItem, PROVIDER_ICONS, resolveBuiltinIcon } from '@/components/connectors/types';
 
 export default defineComponent({
   name: 'ConnectorsIndex',
@@ -150,20 +172,25 @@ export default defineComponent({
           description: provider.description,
           icon: PROVIDER_ICONS[provider.id] || 'fa-solid fa-plug',
           isCustom: false,
+          isBuiltin: false,
           connected: !!connector || provider.connected,
           provider,
           connector
         });
       }
-      // User's MCP servers (custom + installed builtins)
+      // User's MCP servers (custom + installed builtins). Built-ins carry
+      // metadata.builtin_id and metadata.icon (set by the backend on install).
       for (const mcp of this.mcpServers) {
+        const builtinId = mcp.metadata?.builtin_id;
+        const isBuiltin = !!builtinId;
         result.push({
           id: `mcp:${mcp.id}`,
           kind: 'custom',
           name: mcp.name,
           description: mcp.description,
-          icon: 'fa-solid fa-cube',
-          isCustom: true,
+          icon: isBuiltin ? resolveBuiltinIcon(mcp.metadata?.icon) : 'fa-solid fa-cube',
+          isCustom: !isBuiltin,
+          isBuiltin,
           connected: true,
           mcp
         });
@@ -175,7 +202,14 @@ export default defineComponent({
       );
     },
     webGroupItems(): IConnectorItem[] {
-      return this.items.filter((it) => it.connected);
+      // OAuth providers that are already connected.
+      return this.items.filter((it) => it.connected && it.kind === 'provider');
+    },
+    builtinGroupItems(): IConnectorItem[] {
+      return this.items.filter((it) => it.connected && it.isBuiltin);
+    },
+    customGroupItems(): IConnectorItem[] {
+      return this.items.filter((it) => it.connected && it.isCustom);
     },
     notConnectedItems(): IConnectorItem[] {
       return this.items.filter((it) => !it.connected);

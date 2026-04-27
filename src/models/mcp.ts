@@ -12,6 +12,12 @@ export interface IMcpServer {
   created_at?: string;
   /** OAuth status: 'authorized' if tokens exist, undefined otherwise */
   oauth_status?: 'authorized' | 'pending';
+  /** Optional metadata; for built-in installs holds builtin_id, icon, tags. */
+  metadata?: {
+    builtin_id?: string;
+    icon?: string;
+    tags?: string[];
+  } & Record<string, unknown>;
 }
 
 export interface IMcpTool {

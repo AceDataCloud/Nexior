@@ -6,7 +6,10 @@
     <div class="meta">
       <div class="name-row">
         <span class="name">{{ item.name }}</span>
-        <el-tag v-if="item.isCustom" size="small" type="info" effect="plain" round class="custom-tag">
+        <el-tag v-if="item.isBuiltin" size="small" type="success" effect="plain" round class="custom-tag">
+          {{ $t('connector.badge.builtin') }}
+        </el-tag>
+        <el-tag v-else-if="item.isCustom" size="small" type="info" effect="plain" round class="custom-tag">
           {{ $t('connector.badge.custom') }}
         </el-tag>
       </div>

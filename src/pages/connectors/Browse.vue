@@ -122,16 +122,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { connectorOperator, mcpServerOperator } from '@/operators';
 import { IConnectorProvider, IBuiltinMcpServer } from '@/models';
 import { ROUTE_CONNECTORS_INDEX } from '@/router/constants';
-import { PROVIDER_ICONS } from '@/components/connectors/types';
+import { PROVIDER_ICONS, resolveBuiltinIcon } from '@/components/connectors/types';
 import McpManager from '@/components/chat/McpManager.vue';
-
-const BUILTIN_ICON_MAP: Record<string, string> = {
-  search: 'fa-solid fa-magnifying-glass',
-  link: 'fa-solid fa-link',
-  music: 'fa-solid fa-music',
-  image: 'fa-solid fa-image',
-  video: 'fa-solid fa-video'
-};
 
 export default defineComponent({
   name: 'ConnectorsBrowse',
@@ -179,7 +171,7 @@ export default defineComponent({
       return PROVIDER_ICONS[id] || 'fa-solid fa-plug';
     },
     getBuiltinIcon(key: string): string {
-      return BUILTIN_ICON_MAP[key] || 'fa-solid fa-cube';
+      return resolveBuiltinIcon(key);
     },
     async loadAll() {
       if (!this.token) return;
@@ -320,22 +312,25 @@ export default defineComponent({
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 12px;
 }
 
 .card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   padding: 16px;
   border: 1px solid var(--el-border-color-lighter);
   border-radius: 10px;
   background: var(--el-bg-color);
-  transition: border-color 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 
   &:hover {
     border-color: var(--el-border-color);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   }
 
   &.disabled {
@@ -371,9 +366,9 @@ export default defineComponent({
     .card-desc {
       margin-top: 4px;
       font-size: 12px;
+      line-height: 1.45;
       color: var(--el-text-color-secondary);
       overflow: hidden;
-      text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
@@ -383,6 +378,7 @@ export default defineComponent({
 
   .card-action {
     flex-shrink: 0;
+    margin-top: 4px;
   }
 }
 
