@@ -1,12 +1,14 @@
 import axios, { AxiosResponse } from 'axios';
-import {
-  IConnectorProvidersResponse,
-  IConnectorListResponse,
-  IConnectorAuthorizeResponse,
-  IConnectorExchangeResponse
-} from '@/models';
+import { IConnectorProvidersResponse, IConnectorListResponse } from '@/models';
 import { BASE_URL_API } from '@/constants';
 
+/**
+ * Read-only proxy to the aichat2 worker's `/connectors` endpoint.
+ * OAuth grant management has moved to AuthFrontend
+ * (auth.acedata.cloud/user/connections); use
+ * `openConnectionsManager()` from `@/utils/connections` to redirect
+ * the user there instead of calling write actions here.
+ */
 class ConnectorOperator {
   private getHeaders(token: string) {
     return {
@@ -27,38 +29,6 @@ class ConnectorOperator {
     return await axios.post(
       '/aichat2/connectors',
       { action: 'list' },
-      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
-    );
-  }
-
-  async authorize(provider: string, token: string): Promise<AxiosResponse<IConnectorAuthorizeResponse>> {
-    return await axios.post(
-      '/aichat2/connectors',
-      { action: 'authorize', provider },
-      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
-    );
-  }
-
-  async exchange(code: string, state: string, token: string): Promise<AxiosResponse<IConnectorExchangeResponse>> {
-    return await axios.post(
-      '/aichat2/connectors',
-      { action: 'exchange', code, state },
-      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
-    );
-  }
-
-  async disconnect(provider: string, token: string): Promise<AxiosResponse<{ success: boolean }>> {
-    return await axios.post(
-      '/aichat2/connectors',
-      { action: 'disconnect', provider },
-      { headers: this.getHeaders(token), baseURL: BASE_URL_API }
-    );
-  }
-
-  async toggle(provider: string, isEnabled: boolean, token: string): Promise<AxiosResponse<{ success: boolean }>> {
-    return await axios.post(
-      '/aichat2/connectors',
-      { action: 'toggle', provider, is_enabled: isEnabled },
       { headers: this.getHeaders(token), baseURL: BASE_URL_API }
     );
   }

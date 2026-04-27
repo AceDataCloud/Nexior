@@ -1,4 +1,4 @@
-import { ROUTE_CONNECTORS_INDEX, ROUTE_CONNECTORS_BROWSE, ROUTE_CONNECTORS_OAUTH_CALLBACK } from './constants';
+import { ROUTE_CONNECTORS_INDEX, ROUTE_CONNECTORS_BROWSE } from './constants';
 
 export default {
   path: '/connectors',
@@ -9,14 +9,6 @@ export default {
     appName: 'chat'
   },
   children: [
-    {
-      // OAuth popup callback — must NOT require auth (popup may not have session) and
-      // must NOT load the heavy Main layout (it just postMessages back to opener).
-      path: 'oauth/callback',
-      name: ROUTE_CONNECTORS_OAUTH_CALLBACK,
-      component: () => import('@/pages/connectors/OAuthCallback.vue'),
-      meta: { auth: false }
-    },
     {
       path: '',
       component: () => import('@/layouts/Main.vue'),

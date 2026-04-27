@@ -31,18 +31,3 @@ export interface IConnectorProvidersResponse {
 export interface IConnectorListResponse {
   items: IConnector[];
 }
-
-export interface IConnectorAuthorizeResponse {
-  authorization_url: string;
-  provider: string;
-}
-
-export interface IConnectorExchangeResponse {
-  success: boolean;
-  provider: string;
-  profile: {
-    name: string;
-    email: string;
-    avatar?: string;
-  };
-}
