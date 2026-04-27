@@ -1,6 +1,16 @@
 <template>
   <div class="task">
-    <div v-for="audio in audios" :key="audio.id" class="audio" @click.stop="onClick(audio)">
+    <div
+      v-for="audio in audios"
+      :key="audio.id"
+      class="audio"
+      :class="{ 'mashup-selected': isMashupSelected(audio) }"
+      @click.stop="onClick(audio)"
+    >
+      <!-- Mashup selection checkbox -->
+      <div v-if="isMashupMode && audio?.audio_url" class="mashup-check" @click.stop="onToggleMashup(audio)">
+        <el-checkbox :model-value="isMashupSelected(audio)" @click.stop />
+      </div>
       <div v-loading="!audio?.audio_url" class="left">
         <el-image :src="audio?.image_url" class="cover" fit="cover" lazy />
         <div
@@ -30,8 +40,38 @@
         </div>
       </div>
       <div class="info">
-        <h2 class="title">{{ audio?.title }}</h2>
+        <!-- Inline title editing -->
+        <div v-if="editingAudioId === audio.id" class="title-edit" @click.stop>
+          <el-input
+            ref="titleInput"
+            v-model="editingTitle"
+            size="small"
+            @keyup.enter="onSaveTitleEdit(audio)"
+            @keyup.escape="onCancelTitleEdit"
+            @blur="onSaveTitleEdit(audio)"
+          />
+        </div>
+        <div v-else class="title-row">
+          <h2 class="title">{{ audio?.title }}</h2>
+          <font-awesome-icon
+            v-if="audio?.audio_url"
+            icon="fa-solid fa-pen"
+            class="edit-icon"
+            @click.stop="onStartTitleEdit(audio)"
+          />
+        </div>
         <p class="style">{{ audio?.style }}</p>
+        <!-- Generation progress bar -->
+        <div v-if="!audio?.audio_url && audio?.progress != null && audio?.progress < 100" class="progress-row">
+          <el-progress
+            :percentage="Math.round(audio.progress)"
+            :stroke-width="4"
+            :show-text="false"
+            status="warning"
+            class="progress-bar"
+          />
+          <span class="progress-text">{{ $t('suno.name.generating') }} {{ Math.round(audio.progress) }}%</span>
+        </div>
       </div>
       <div class="right">
         <!-- <el-button v-if="audio?.audio_url" size="small" round @click.stop="onExtend($event, audio)">{{
@@ -157,6 +197,13 @@
                 <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
+
+              <!-- Delete group -->
+              <div class="menu-divider" />
+              <el-dropdown-item v-if="audio?.id" class="delete-item" @click.stop="onDelete(audio)">
+                <font-awesome-icon icon="fa-solid fa-trash" class="menu-icon delete-icon" />
+                {{ $t('suno.button.delete') }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -169,7 +216,19 @@
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
-import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
+import {
+  ElImage,
+  ElIcon,
+  ElTooltip,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElMessage,
+  ElInput,
+  ElMessageBox,
+  ElProgress,
+  ElCheckbox
+} from 'element-plus';
 import { Loading } from '@element-plus/icons-vue';
 import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
 import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
@@ -191,6 +250,9 @@ export default defineComponent({
     ElDropdown,
     ElDropdownMenu,
     ElDropdownItem,
+    ElInput,
+    ElProgress,
+    ElCheckbox,
     Loading
   },
   props: {
@@ -203,7 +265,9 @@ export default defineComponent({
     return {
       isFetchingVideoUrl: false,
       isFetchingWav: false,
-      isFetchingMidi: false
+      isFetchingMidi: false,
+      editingAudioId: null as string | null,
+      editingTitle: ''
     };
   },
   computed: {
@@ -230,6 +294,12 @@ export default defineComponent({
     },
     active() {
       return this.$store.state.suno?.tasks?.active;
+    },
+    isMashupMode(): boolean {
+      return this.$store.state.suno?.config?.action === 'mashup';
+    },
+    mashupAudioIds(): string[] {
+      return this.$store.state.suno?.config?.mashup_audio_ids || [];
     }
   },
   methods: {
@@ -547,6 +617,23 @@ export default defineComponent({
           await this.onScrollDown();
         });
     },
+    isMashupSelected(audio: ISunoAudio): boolean {
+      return !!audio.id && this.mashupAudioIds.includes(audio.id);
+    },
+    onToggleMashup(audio: ISunoAudio) {
+      if (!audio.id) return;
+      const ids = [...this.mashupAudioIds];
+      const idx = ids.indexOf(audio.id);
+      if (idx !== -1) {
+        ids.splice(idx, 1);
+      } else {
+        ids.push(audio.id);
+      }
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        mashup_audio_ids: ids
+      });
+    },
     async onScrollDown() {
       setTimeout(() => {
         const el = document.querySelector('.tasks');
@@ -554,6 +641,73 @@ export default defineComponent({
           el.scrollTop = el.scrollHeight;
         }
       }, 1000);
+    },
+    onStartTitleEdit(audio: ISunoAudio) {
+      this.editingAudioId = audio.id ?? null;
+      this.editingTitle = audio.title || '';
+      this.$nextTick(() => {
+        const input = this.$refs.titleInput as any;
+        input?.focus?.();
+      });
+    },
+    onSaveTitleEdit(audio: ISunoAudio) {
+      if (this.editingAudioId !== audio.id) return;
+      const newTitle = this.editingTitle.trim();
+      if (newTitle && newTitle !== audio.title) {
+        // Update title in-memory on the task store
+        const tasks = this.$store.state.suno?.tasks;
+        if (tasks?.items) {
+          for (const task of tasks.items) {
+            const data = (task?.response?.data ?? []) as ISunoAudio[];
+            const match = data.find((a: ISunoAudio) => a.id === audio.id);
+            if (match) {
+              match.title = newTitle;
+              break;
+            }
+          }
+        }
+      }
+      this.editingAudioId = null;
+      this.editingTitle = '';
+    },
+    onCancelTitleEdit() {
+      this.editingAudioId = null;
+      this.editingTitle = '';
+    },
+    async onDelete(audio: ISunoAudio) {
+      try {
+        await ElMessageBox.confirm(this.$t('suno.message.confirmDelete') as string, {
+          confirmButtonText: this.$t('suno.button.delete') as string,
+          cancelButtonText: this.$t('common.button.cancel') as string,
+          type: 'warning'
+        });
+      } catch {
+        return; // User cancelled
+      }
+      // Remove from local state
+      const tasks = this.$store.state.suno?.tasks;
+      if (tasks?.items) {
+        for (const task of tasks.items) {
+          const data = (task?.response?.data ?? []) as ISunoAudio[];
+          const idx = data.findIndex((a: ISunoAudio) => a.id === audio.id);
+          if (idx !== -1) {
+            data.splice(idx, 1);
+            // If task has no more audios, remove the task too
+            if (data.length === 0) {
+              const taskIdx = tasks.items.indexOf(task);
+              if (taskIdx !== -1) {
+                tasks.items.splice(taskIdx, 1);
+              }
+            }
+            break;
+          }
+        }
+      }
+      // Stop player if deleted audio is playing
+      if (this.$store.state?.suno?.audio?.id === audio.id) {
+        this.$store.dispatch('suno/setAudio', null);
+      }
+      ElMessage.success(this.$t('suno.message.deleteSuccess'));
     },
     async onGetTasks() {
       if (this.loading) {
@@ -637,6 +791,11 @@ export default defineComponent({
       flex: 1;
       min-width: 0;
       overflow: hidden;
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
       .title {
         font-size: 14px;
         font-weight: bold;
@@ -644,6 +803,19 @@ export default defineComponent({
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
+      }
+      .edit-icon {
+        font-size: 10px;
+        color: var(--el-text-color-placeholder);
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s;
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+      .title-edit {
+        margin-top: 4px;
+        margin-bottom: 2px;
       }
       .style {
         font-size: 12px;
@@ -653,6 +825,34 @@ export default defineComponent({
         word-break: break-word;
         overflow-wrap: anywhere;
       }
+      .progress-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 2px;
+        .progress-bar {
+          flex: 1;
+          max-width: 100px;
+        }
+        .progress-text {
+          font-size: 10px;
+          color: var(--el-text-color-placeholder);
+          white-space: nowrap;
+        }
+      }
+    }
+    &:hover .edit-icon {
+      opacity: 1;
+    }
+    .mashup-check {
+      display: flex;
+      align-items: center;
+      padding: 0 4px 0 8px;
+      flex-shrink: 0;
+    }
+    &.mashup-selected {
+      background-color: var(--el-color-primary-light-9);
+      border-radius: 8px;
     }
     .right {
       width: 120px;
@@ -684,6 +884,13 @@ export default defineComponent({
     height: 1px;
     background: var(--el-border-color-lighter);
     margin: 4px 12px;
+  }
+
+  .delete-item {
+    color: var(--el-color-danger);
+    .delete-icon {
+      color: var(--el-color-danger);
+    }
   }
 }
 </style>

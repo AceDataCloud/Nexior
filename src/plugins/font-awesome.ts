@@ -110,7 +110,9 @@ import {
   faBarsStaggered as faSolidBarsStaggered,
   faHeadphones as faSolidHeadphones,
   faClock as faSolidClock,
-  faEraser as faSolidEraser
+  faEraser as faSolidEraser,
+  faArrowDownWideShort as faSolidArrowDownWideShort,
+  faPen as faSolidPen
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -220,3 +222,5 @@ library.add(faSolidBarsStaggered);
 library.add(faSolidHeadphones);
 library.add(faSolidClock);
 library.add(faSolidEraser);
+library.add(faSolidArrowDownWideShort);
+library.add(faSolidPen);
