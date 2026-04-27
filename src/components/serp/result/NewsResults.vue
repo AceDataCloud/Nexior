@@ -20,10 +20,7 @@
             {{ item.snippet }}
           </p>
         </div>
-        <div
-          v-if="item.image_url"
-          class="flex-shrink-0 w-24 h-24 rounded overflow-hidden bg-gray-100 dark:bg-gray-800"
-        >
+        <div v-if="item.image_url" class="flex-shrink-0 w-24 h-24 rounded overflow-hidden bg-gray-100 dark:bg-gray-800">
           <img :src="item.image_url" :alt="item.title" class="w-full h-full object-cover" loading="lazy" />
         </div>
       </a>

@@ -39,7 +39,12 @@
         </div>
         <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
           <el-tooltip class="box-item" effect="dark" :content="$t('common.button.edit')" placement="top-start">
-            <el-button type="info" size="small" class="btn-action" @click.stop="onEdit(images?.[0]?.image_url || images?.[0]?.url)">
+            <el-button
+              type="info"
+              size="small"
+              class="btn-action"
+              @click.stop="onEdit(images?.[0]?.image_url || images?.[0]?.url)"
+            >
               {{ $t('common.button.edit') }}
             </el-button>
           </el-tooltip>
