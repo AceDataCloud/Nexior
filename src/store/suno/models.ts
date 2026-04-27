@@ -16,6 +16,7 @@ export interface ISunoState {
     | undefined;
   audio: ISunoAudio | undefined;
   personas: ISunoPersona[] | undefined;
+  favoritePersonaIds: string[];
   status: {
     getService: Status;
     getApplications: Status;
