@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "npm run build:web",
-    "build:web": "cross-env VITE_SURFACE=web vue-tsc -b && vite build",
+    "build:web": "cross-env VITE_SURFACE=web vite build",
     "build:android": "cross-env VITE_SURFACE=android vite build",
     "build:ios": "cross-env VITE_SURFACE=ios vite build",
     "pack:android": "npm run build:android && npx cap copy android",

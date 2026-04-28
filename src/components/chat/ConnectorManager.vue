@@ -62,8 +62,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { ElMessage } from 'element-plus';
 import { connectorOperator } from '@/operators';
+import { openConnectionsManager } from '@/utils';
 import { IConnectorProvider, IConnector } from '@/models';
 
 const PROVIDER_ICONS: Record<string, string> = {
@@ -134,67 +134,17 @@ export default defineComponent({
         this.loading = false;
       }
     },
-    async onConnect(providerId: string) {
-      const token = this.token;
-      if (!token) return;
-      this.connecting = providerId;
-      try {
-        const { data } = await connectorOperator.authorize(providerId, token);
-        // Open OAuth popup
-        const popup = window.open(data.authorization_url, 'oauth-popup', 'width=600,height=700,scrollbars=yes');
-        // Listen for callback message from popup
-        const handler = async (event: MessageEvent) => {
-          if (event.data?.type !== 'oauth-callback') return;
-          window.removeEventListener('message', handler);
-          const { code, state } = event.data;
-          if (!code || !state) {
-            ElMessage.error(this.$t('chat.connector.authFailed'));
-            return;
-          }
-          try {
-            await connectorOperator.exchange(code, state, token);
-            ElMessage.success(this.$t('chat.connector.connected'));
-            await this.loadData();
-            this.$emit('change');
-          } catch {
-            ElMessage.error(this.$t('chat.connector.authFailed'));
-          }
-        };
-        window.addEventListener('message', handler);
-        // Also poll for popup close
-        const pollTimer = setInterval(() => {
-          if (popup?.closed) {
-            clearInterval(pollTimer);
-            this.connecting = '';
-          }
-        }, 500);
-      } catch {
-        ElMessage.error(this.$t('chat.connector.authFailed'));
-      } finally {
-        this.connecting = '';
-      }
+    onConnect(providerId: string) {
+      // OAuth grants are managed centrally at AuthFrontend
+      // (auth.acedata.cloud/user/connections). Redirect there with a
+      // return_url so the user can come back to Nexior when finished.
+      openConnectionsManager(providerId);
     },
-    async onDisconnect(providerId: string) {
-      if (!this.token) return;
-      try {
-        await connectorOperator.disconnect(providerId, this.token);
-        ElMessage.success(this.$t('chat.connector.disconnected'));
-        await this.loadData();
-        this.$emit('change');
-      } catch {
-        ElMessage.error(this.$t('chat.connector.disconnectError'));
-      }
+    onDisconnect(providerId: string) {
+      openConnectionsManager(providerId);
     },
-    async onToggle(providerId: string, enabled: boolean) {
-      if (!this.token) return;
-      try {
-        await connectorOperator.toggle(providerId, enabled, this.token);
-        const connector = this.getConnector(providerId);
-        if (connector) connector.is_enabled = enabled;
-        this.$emit('change');
-      } catch {
-        ElMessage.error(this.$t('chat.connector.toggleError'));
-      }
+    onToggle(providerId: string) {
+      openConnectionsManager(providerId);
     }
   }
 });
