@@ -143,7 +143,8 @@ export default defineComponent({
     onDisconnect(providerId: string) {
       openConnectionsManager(providerId);
     },
-    onToggle(providerId: string) {
+    onToggle(providerId: string, _enabled: boolean) {
+      void _enabled;
       openConnectionsManager(providerId);
     }
   }
