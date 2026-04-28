@@ -107,6 +107,7 @@ import {
   faScissors as faSolidScissors,
   faGuitar as faSolidGuitar,
   faDrum as faSolidDrum,
+  faGaugeHigh as faSolidGaugeHigh,
   faLayerGroup as faSolidLayerGroup,
   faBarsStaggered as faSolidBarsStaggered,
   faHeadphones as faSolidHeadphones,
@@ -225,6 +226,7 @@ library.add(faSolidShuffle);
 library.add(faSolidScissors);
 library.add(faSolidGuitar);
 library.add(faSolidDrum);
+library.add(faSolidGaugeHigh);
 library.add(faSolidLayerGroup);
 library.add(faSolidBarsStaggered);
 library.add(faSolidHeadphones);

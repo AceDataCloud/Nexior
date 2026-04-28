@@ -84,6 +84,7 @@ export interface ISunoConfig {
   underpainting_end?: number;
   samples_start?: number;
   samples_end?: number;
+  speed?: number;
 }
 export interface ISunoAudioRequest {
   action?: string;
@@ -113,6 +114,7 @@ export interface ISunoAudioRequest {
   underpainting_end?: number;
   samples_start?: number;
   samples_end?: number;
+  speed?: number;
   callback_url?: string;
   instrumental?: boolean;
 }
