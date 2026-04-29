@@ -38,7 +38,7 @@
             <el-switch
               :model-value="getConnector(provider.id)?.is_enabled"
               size="small"
-              @change="onToggle(provider.id, $event as boolean)"
+              @change="(val) => onToggle(provider.id, val)"
             />
             <el-button size="small" type="danger" text @click="onDisconnect(provider.id)">
               {{ $t('chat.connector.disconnect') }}
