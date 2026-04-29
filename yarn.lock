@@ -1006,27 +1006,27 @@
   resolved "https://registry.npmjs.org/@marijn/find-cluster-break/-/find-cluster-break-1.0.2.tgz"
   integrity sha512-l0h88YhZFyKdXIFNfSWpyjStDjGHwZ/U7iobcK1cQQD8sejsONdQtTVU+1wVN1PBw40PiiHB1vA5S7VTfQiP9g==
 
-"@mdit/helper@0.22.1":
-  version "0.22.1"
-  resolved "https://registry.npmjs.org/@mdit/helper/-/helper-0.22.1.tgz"
-  integrity sha512-lDpajcdAk84aYCNAM/Mi3djw38DJq7ocLw5VOSMu/u2YKX3/OD37a6Qb59in8Uyp4SiAbQoSHa8px6hgHEpB5g==
+"@mdit/helper@0.23.2":
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/@mdit/helper/-/helper-0.23.2.tgz#2b0363166aebf3ce1c851113ee21160fd82e9e11"
+  integrity sha512-w4oja7kZYnkSiodfn4Neg1gmlIkvQtmCBJTLvLFOaET7xt8KomDNPQeumpGobQ9dWkXFqBKHlxjTYgroPH+CvA==
   dependencies:
     "@types/markdown-it" "^14.1.2"
 
-"@mdit/plugin-katex@^0.23.1":
-  version "0.23.1"
-  resolved "https://registry.npmjs.org/@mdit/plugin-katex/-/plugin-katex-0.23.1.tgz"
-  integrity sha512-4hyeDzjIqBplwS/NOGHGkxraE3jIi3KJ+WBKmG/dMDvEO+oYovVXY0pTW7/d0SH/4vqhRp6stQ5z+rgPAovhOg==
+"@mdit/plugin-katex@^0.25.2":
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/@mdit/plugin-katex/-/plugin-katex-0.25.2.tgz#333dafcf29ac8e30a2c1d14485f4bc6fa974a022"
+  integrity sha512-r7nKvngZP2XXVGsYIXZt4UNxhTAxwSbLSXQtW445nJGhcp0ZrWmdPoz3AFZAX5x51inARab/lnZhD3uq01V5Yg==
   dependencies:
-    "@mdit/helper" "0.22.1"
-    "@mdit/plugin-tex" "0.22.1"
+    "@mdit/helper" "0.23.2"
+    "@mdit/plugin-tex" "0.24.2"
     "@types/markdown-it" "^14.1.2"
-    katex "0.16.22"
+    katex "^0.16.44"
 
-"@mdit/plugin-tex@0.22.1":
-  version "0.22.1"
-  resolved "https://registry.npmjs.org/@mdit/plugin-tex/-/plugin-tex-0.22.1.tgz"
-  integrity sha512-sCoOHznJjECeWCd0SggYpiZfwDfGGZ5mN3sKQA9PCHVRRXHh0dEl3wwNNvp/L8f6jZ4SpG5mxtPqBvxlPbE5nw==
+"@mdit/plugin-tex@0.24.2":
+  version "0.24.2"
+  resolved "https://registry.yarnpkg.com/@mdit/plugin-tex/-/plugin-tex-0.24.2.tgz#42d261caaf31cbc4e0351ecbd3625971a383982b"
+  integrity sha512-nVKIJHQJHvgDByKMpCgFT6gdeEZUyzZby24BjCjxP2N10bkgK8IEwZIBu7G5n5WBw2D0kmFD4Top+YA2mjeiQQ==
   dependencies:
     "@types/markdown-it" "^14.1.2"
 
@@ -6605,10 +6605,10 @@ jwt-decode@^4.0.0:
   resolved "https://registry.npmjs.org/jwt-decode/-/jwt-decode-4.0.0.tgz"
   integrity sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==
 
-katex@0.16.22, katex@^0.16.22:
-  version "0.16.22"
-  resolved "https://registry.npmjs.org/katex/-/katex-0.16.22.tgz"
-  integrity sha512-XCHRdUw4lf3SKBaJe4EvgqIuWwkPSo9XoeO8GjQW94Bp7TWv9hNhzZjZ+OH9yf1UmLygb7DIT5GSFQiyt16zYg==
+katex@^0.16.22, katex@^0.16.44:
+  version "0.16.45"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.16.45.tgz#ba60d39c54746b6b8d39ce0e7f6eace07143149c"
+  integrity sha512-pQpZbdBu7wCTmQUh7ufPmLr0pFoObnGUoL/yhtwJDgmmQpbkg/0HSVti25Fu4rmd1oCR6NGWe9vqTWuWv3GcNA==
   dependencies:
     commander "^8.3.0"
 
