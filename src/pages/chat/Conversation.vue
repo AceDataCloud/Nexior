@@ -20,42 +20,13 @@
               <span v-if="activeSkillCount > 0" class="toolbar-count">{{ Math.min(activeSkillCount, 9) }}</span>
             </el-button>
           </el-tooltip>
-          <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
-            <el-button :class="['toolbar-btn', { active: enabledMcpCount > 0 }]" text @click="mcpManagerVisible = true">
-              <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
-              <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('chat.connector.tooltip')" placement="bottom">
-            <el-button
-              :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
-              text
-              @click="connectorManagerVisible = true"
-            >
+          <el-tooltip :content="$t('chat.connections.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="onOpenConnections">
               <font-awesome-icon icon="fa-solid fa-plug" />
-              <span v-if="enabledConnectorCount > 0" class="toolbar-count">{{
-                Math.min(enabledConnectorCount, 9)
-              }}</span>
             </el-button>
           </el-tooltip>
         </div>
       </div>
-      <mcp-manager
-        v-if="mcpManagerVisible"
-        v-model="mcpManagerVisible"
-        :auth-connections="customOauthConnections"
-        :enabled-connection-ids="enabledConnectionIds"
-        @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
-        @refresh-connections="onLoadAuthConnections"
-      />
-      <connector-manager
-        v-if="connectorManagerVisible"
-        v-model="connectorManagerVisible"
-        :auth-connections="presetConnections"
-        :enabled-connection-ids="enabledConnectionIds"
-        @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
-        @refresh-connections="onLoadAuthConnections"
-      />
       <skill-manager
         v-if="skillManagerVisible"
         v-model="skillManagerVisible"
@@ -111,8 +82,6 @@ import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/con
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import McpManager from '@/components/chat/McpManager.vue';
-import ConnectorManager from '@/components/chat/ConnectorManager.vue';
 import SkillManager from '@/components/chat/SkillManager.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
@@ -120,8 +89,8 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IConnection } from '@/models';
-import { chatOperator, agentOperator, connectionOperator } from '@/operators';
+import { IChatMessageContentItem } from '@/models';
+import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -133,10 +102,6 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  mcpManagerVisible: boolean;
-  connectorManagerVisible: boolean;
-  authConnections: IConnection[];
-  enabledConnectionIds: string[];
   skillManagerVisible: boolean;
   activeSkills: string[];
   agentManagerVisible: boolean;
@@ -152,8 +117,6 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ModelSelector,
-    McpManager,
-    ConnectorManager,
     SkillManager,
     DesktopAgentManager,
     Message,
@@ -170,10 +133,6 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      mcpManagerVisible: false,
-      connectorManagerVisible: false,
-      authConnections: [] as IConnection[],
-      enabledConnectionIds: [] as string[],
       skillManagerVisible: false,
       activeSkills: [] as string[],
       agentManagerVisible: false,
@@ -228,26 +187,6 @@ export default defineComponent({
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
     },
-    enabledMcpCount(): number {
-      return this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
-    },
-    enabledMcpIds(): string[] {
-      return this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).map((c) => c.id);
-    },
-    enabledConnectorCount(): number {
-      return this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
-    },
-    enabledConnectorProviders(): string[] {
-      return Array.from(
-        new Set(this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).map((c) => c.provider))
-      );
-    },
-    customOauthConnections(): IConnection[] {
-      return this.authConnections.filter((c) => c.kind === 'custom_oauth');
-    },
-    presetConnections(): IConnection[] {
-      return this.authConnections.filter((c) => c.kind === 'preset');
-    },
     activeSkillCount(): number {
       return this.activeSkills.length;
     }
@@ -267,44 +206,16 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    await this.onLoadAuthConnections();
-    this.onLoadEnabledConnectionIds();
     this.onLoadPersistedSkills();
     this.onCheckAgentStatus();
   },
   methods: {
-    async onLoadAuthConnections() {
-      // Source of truth for both MCP servers and OAuth connectors is
-      // AuthBackend (https://auth.acedata.cloud/user/connections). Nexior
-      // never persists OAuth tokens itself; it just renders the user's
-      // existing connections and forwards their ids to aichat2 on send.
-      try {
-        const { data } = await connectionOperator.list();
-        this.authConnections = data.items || [];
-      } catch {
-        // Silent fail - user might have no connections yet, or auth.acedata.cloud
-        // might be temporarily unreachable. Either way the chat still works.
-      }
-    },
-    onLoadEnabledConnectionIds() {
-      try {
-        const stored = localStorage.getItem('chat_enabled_connection_ids');
-        if (!stored) return;
-        const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed)) {
-          this.enabledConnectionIds = parsed.filter((x): x is string => typeof x === 'string');
-        }
-      } catch {
-        // ignore corrupt localStorage
-      }
-    },
-    onUpdateEnabledConnectionIds(ids: string[]) {
-      this.enabledConnectionIds = ids;
-      try {
-        localStorage.setItem('chat_enabled_connection_ids', JSON.stringify(ids));
-      } catch {
-        // ignore quota errors
-      }
+    onOpenConnections() {
+      // Connections (MCP + OAuth connectors) are managed exclusively in
+      // AuthBackend. Nexior is a thin entry point - clicking opens the
+      // canonical management page in a new tab. aichat2 reads the user's
+      // active connections from AuthBackend at request time.
+      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     },
     onLoadPersistedSkills() {
       try {
@@ -609,8 +520,6 @@ export default defineComponent({
             id: this.conversationId,
             stateful: true,
             tools_enabled: true,
-            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined,
-            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined,
             skills: this.activeSkills.length > 0 ? this.activeSkills : undefined
           },
           {

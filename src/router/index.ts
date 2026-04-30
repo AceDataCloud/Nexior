@@ -31,7 +31,6 @@ import serp from './serp';
 import wan from './wan';
 import site from './site';
 import profile from './profile';
-import connectors from './connectors';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
@@ -312,8 +311,7 @@ const routes = [
   distribution,
   download,
   site,
-  profile,
-  connectors
+  profile
 ];
 
 const router = createRouter({
