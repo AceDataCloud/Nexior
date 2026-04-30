@@ -3,6 +3,7 @@ import { getBaseUrlPlatform } from '@/utils';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 import { getCookie } from 'typescript-cookie';
+import { v4 as uuidv4 } from 'uuid';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: `${getBaseUrlPlatform()}/api/v1`,
@@ -22,7 +23,7 @@ httpClient.interceptors.request.use((config) => {
   const locale = getCookie('LOCALE');
   console.debug('userId', userId);
   console.debug('fingerprint', fingerprint);
-  config.headers['x-request-id'] = crypto.randomUUID();
+  config.headers['x-request-id'] = uuidv4();
   if (accessToken) {
     config.headers['Authorization'] = `Bearer ${accessToken}`;
   }
