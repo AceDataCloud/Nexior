@@ -211,10 +211,10 @@ export default defineComponent({
   },
   methods: {
     onOpenConnections() {
-      // Connections (MCP + OAuth connectors) are managed exclusively in
-      // AuthBackend. Nexior is a thin entry point - clicking opens the
-      // canonical management page in a new tab. aichat2 reads the user's
-      // active connections from AuthBackend at request time.
+      // Connections (MCP + OAuth connectors) are managed exclusively at
+      // auth.acedata.cloud. Nexior is a thin entry point - clicking opens
+      // the canonical management page in a new tab. aichat2 reads the
+      // user's active connections from auth.acedata.cloud at request time.
       window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     },
     onLoadPersistedSkills() {

@@ -96,7 +96,7 @@ export default defineComponent({
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
     },
     onConnectors() {
-      // Connections are managed exclusively in AuthBackend.
+      // Connections are managed exclusively at auth.acedata.cloud.
       window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     },
     onDistribution() {
