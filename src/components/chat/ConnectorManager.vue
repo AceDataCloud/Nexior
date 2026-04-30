@@ -6,21 +6,20 @@
     :close-on-click-modal="false"
     @close="$emit('update:modelValue', false)"
   >
-    <div v-loading="loading" class="connector-manager">
-      <!-- Provider List -->
-      <div v-if="providers.length === 0 && !loading && !loadError" class="empty">
-        {{ $t('chat.connector.noProviders') }}
+    <div class="connector-manager">
+      <div class="header">
+        <el-button type="primary" size="small" @click="onManageAtAuth">
+          <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+          {{ $t('chat.connector.manageAtAuth') }}
+        </el-button>
       </div>
-      <div v-if="loadError && !loading" class="empty">
-        {{ $t('chat.connector.loadErrorHint') }}
-      </div>
+
       <div v-for="provider in providers" :key="provider.id" class="provider-item">
         <div class="provider-icon">
           <font-awesome-icon :icon="getProviderIcon(provider.id)" class="icon" />
         </div>
         <div class="provider-info">
           <div class="provider-name">{{ provider.name }}</div>
-          <div class="provider-desc">{{ provider.description }}</div>
           <div v-if="getConnection(provider.id)" class="provider-profile">
             <img
               v-if="getConnection(provider.id)?.profile?.avatar"
@@ -49,17 +48,11 @@
             >
               <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
             </el-button>
-            <el-button size="small" type="danger" text @click="onDisconnect(provider.id)">
-              {{ $t('chat.connector.disconnect') }}
+            <el-button text size="small" :title="$t('chat.connector.manage')" @click="onManageAtAuth">
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" />
             </el-button>
           </template>
-          <el-button
-            v-else
-            size="small"
-            type="primary"
-            :loading="connecting === provider.id"
-            @click="onConnect(provider.id)"
-          >
+          <el-button v-else size="small" type="primary" @click="onConnect(provider.id)">
             <font-awesome-icon icon="fa-solid fa-plug" class="mr-1" />
             {{ $t('chat.connector.connect') }}
           </el-button>
@@ -71,19 +64,52 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { connectorOperator, connectionOperator } from '@/operators';
+import { ElDialog, ElButton, ElSwitch, ElMessage } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { connectionOperator } from '@/operators';
 import { openConnectionsManager } from '@/utils';
-import { IConnectorProvider, IConnection } from '@/models';
-import { ElMessage } from 'element-plus';
+import { IConnection } from '@/models';
+
+/**
+ * Connector picker for chat.
+ *
+ * Source of truth is AuthBackend `Connection` (kind=preset) — the user
+ * authorizes / revokes each provider at
+ * https://auth.acedata.cloud/user/connections. This dialog only lists
+ * the catalog of supported providers, lets the user toggle which
+ * already-connected ones are active in this chat (persisted by the
+ * parent), exposes a per-row token refresh, and deep-links to
+ * AuthBackend for any management action.
+ */
+
+interface IProviderEntry {
+  id: string;
+  name: string;
+}
+
+// Hard-coded so the picker works even when the user has no connections yet.
+// Mirrors AuthBackend's preset provider adapters.
+const PROVIDERS: IProviderEntry[] = [
+  { id: 'google', name: 'Google' },
+  { id: 'github', name: 'GitHub' },
+  { id: 'slack', name: 'Slack' },
+  { id: 'notion', name: 'Notion' },
+  { id: 'linear', name: 'Linear' },
+  { id: 'gitlab', name: 'GitLab' }
+];
 
 const PROVIDER_ICONS: Record<string, string> = {
   google: 'fa-brands fa-google',
   github: 'fa-brands fa-github',
-  slack: 'fa-brands fa-slack'
+  slack: 'fa-brands fa-slack',
+  notion: 'fa-solid fa-book',
+  linear: 'fa-solid fa-diagram-project',
+  gitlab: 'fa-brands fa-gitlab'
 };
 
 export default defineComponent({
   name: 'ConnectorManager',
+  components: { ElDialog, ElButton, ElSwitch, FontAwesomeIcon },
   props: {
     modelValue: {
       type: Boolean as PropType<boolean>,
@@ -101,10 +127,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'change', 'update:enabledConnectionIds', 'refresh-connections'],
   data() {
     return {
-      providers: [] as IConnectorProvider[],
-      loading: false,
-      loadError: false,
-      connecting: '' as string,
+      providers: PROVIDERS,
       refreshingId: null as string | null
     };
   },
@@ -115,16 +138,6 @@ export default defineComponent({
       },
       set(val: boolean) {
         this.$emit('update:modelValue', val);
-      }
-    },
-    token(): string | undefined {
-      return this.$store.state.chat?.credential?.token;
-    }
-  },
-  watch: {
-    modelValue(val: boolean) {
-      if (val) {
-        this.loadData();
       }
     }
   },
@@ -152,24 +165,11 @@ export default defineComponent({
       this.$emit('update:enabledConnectionIds', next);
       this.$emit('change');
     },
-    async loadData() {
-      if (!this.token) return;
-      this.loading = true;
-      this.loadError = false;
-      try {
-        const providersRes = await connectorOperator.listProviders(this.token);
-        this.providers = providersRes.data.providers || [];
-      } catch {
-        this.loadError = true;
-      } finally {
-        this.loading = false;
-      }
-    },
     onConnect(providerId: string) {
       openConnectionsManager(providerId);
     },
-    onDisconnect(providerId: string) {
-      openConnectionsManager(providerId);
+    onManageAtAuth() {
+      openConnectionsManager();
     },
     async onRefresh(providerId: string) {
       const conn = this.getConnection(providerId);
@@ -194,10 +194,8 @@ export default defineComponent({
   min-height: 120px;
 }
 
-.empty {
-  text-align: center;
-  color: var(--el-text-color-secondary);
-  padding: 40px 0;
+.header {
+  margin-bottom: 12px;
 }
 
 .provider-item {
@@ -238,12 +236,6 @@ export default defineComponent({
 .provider-name {
   font-weight: 600;
   font-size: 14px;
-}
-
-.provider-desc {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-  margin-top: 2px;
 }
 
 .provider-profile {

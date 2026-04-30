@@ -26,11 +26,7 @@
               <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
             </el-button>
           </el-tooltip>
-          <el-tooltip
-            v-if="hasConnectorProviders || presetConnections.length > 0"
-            :content="$t('chat.connector.tooltip')"
-            placement="bottom"
-          >
+          <el-tooltip :content="$t('chat.connector.tooltip')" placement="bottom">
             <el-button
               :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
               text
@@ -49,7 +45,6 @@
         v-model="mcpManagerVisible"
         :auth-connections="customOauthConnections"
         :enabled-connection-ids="enabledConnectionIds"
-        @change="onMcpChange"
         @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
         @refresh-connections="onLoadAuthConnections"
       />
@@ -58,7 +53,6 @@
         v-model="connectorManagerVisible"
         :auth-connections="presetConnections"
         :enabled-connection-ids="enabledConnectionIds"
-        @change="onConnectorChange"
         @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
         @refresh-connections="onLoadAuthConnections"
       />
@@ -126,8 +120,8 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer, IConnector, IConnection } from '@/models';
-import { chatOperator, mcpServerOperator, connectorOperator, agentOperator, connectionOperator } from '@/operators';
+import { IChatMessageContentItem, IConnection } from '@/models';
+import { chatOperator, agentOperator, connectionOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -140,10 +134,7 @@ export interface IData {
   messages: IChatMessage[];
   canceler: AbortController | undefined;
   mcpManagerVisible: boolean;
-  mcpServers: IMcpServer[];
   connectorManagerVisible: boolean;
-  connectors: IConnector[];
-  hasConnectorProviders: boolean;
   authConnections: IConnection[];
   enabledConnectionIds: string[];
   skillManagerVisible: boolean;
@@ -180,10 +171,7 @@ export default defineComponent({
       answering: false,
       canceler: undefined,
       mcpManagerVisible: false,
-      mcpServers: [] as IMcpServer[],
       connectorManagerVisible: false,
-      connectors: [] as IConnector[],
-      hasConnectorProviders: false,
       authConnections: [] as IConnection[],
       enabledConnectionIds: [] as string[],
       skillManagerVisible: false,
@@ -241,28 +229,18 @@ export default defineComponent({
       return !this.initializing && !!this.credential?.token && !!this.application;
     },
     enabledMcpCount(): number {
-      const local = this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
-      const remote = this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
-      return local + remote;
+      return this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
     },
     enabledMcpIds(): string[] {
-      const local = this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
-      const remote = this.customOauthConnections
-        .filter((c) => this.enabledConnectionIds.includes(c.id))
-        .map((c) => c.id);
-      return Array.from(new Set([...local, ...remote]));
+      return this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).map((c) => c.id);
     },
     enabledConnectorCount(): number {
-      const legacy = this.connectors.filter((c: IConnector) => c.is_enabled).length;
-      const remote = this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
-      return legacy + remote;
+      return this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
     },
     enabledConnectorProviders(): string[] {
-      const legacy = this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
-      const remote = this.presetConnections
-        .filter((c) => this.enabledConnectionIds.includes(c.id))
-        .map((c) => c.provider);
-      return Array.from(new Set([...legacy, ...remote]));
+      return Array.from(
+        new Set(this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).map((c) => c.provider))
+      );
     },
     customOauthConnections(): IConnection[] {
       return this.authConnections.filter((c) => c.kind === 'custom_oauth');
@@ -289,62 +267,32 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    await this.onLoadMcpServers();
-    await this.onLoadConnectors();
     await this.onLoadAuthConnections();
     this.onLoadEnabledConnectionIds();
     this.onLoadPersistedSkills();
     this.onCheckAgentStatus();
   },
   methods: {
-    async onLoadMcpServers() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const { data } = await mcpServerOperator.list(token);
-        this.mcpServers = data.items || [];
-      } catch {
-        // silently fail - MCP is optional
-      }
-    },
-    async onMcpChange() {
-      await this.onLoadMcpServers();
-    },
-    async onLoadConnectors() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const [connectorsRes, providersRes] = await Promise.all([
-          connectorOperator.list(token),
-          connectorOperator.listProviders(token)
-        ]);
-        this.connectors = connectorsRes.data.items || [];
-        this.hasConnectorProviders = (providersRes.data.providers || []).length > 0;
-      } catch {
-        // silently fail - connectors are optional
-      }
-    },
-    async onConnectorChange() {
-      await this.onLoadConnectors();
-    },
     async onLoadAuthConnections() {
+      // Source of truth for both MCP servers and OAuth connectors is
+      // AuthBackend (https://auth.acedata.cloud/user/connections). Nexior
+      // never persists OAuth tokens itself; it just renders the user's
+      // existing connections and forwards their ids to aichat2 on send.
       try {
         const { data } = await connectionOperator.list();
         this.authConnections = data.items || [];
       } catch {
-        // silently fail - the user might not have any connections yet,
-        // or auth.acedata.cloud might be unreachable. Either way the
-        // chat still works without them.
+        // Silent fail - user might have no connections yet, or auth.acedata.cloud
+        // might be temporarily unreachable. Either way the chat still works.
       }
     },
     onLoadEnabledConnectionIds() {
       try {
         const stored = localStorage.getItem('chat_enabled_connection_ids');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          if (Array.isArray(parsed)) {
-            this.enabledConnectionIds = parsed.filter((x): x is string => typeof x === 'string');
-          }
+        if (!stored) return;
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          this.enabledConnectionIds = parsed.filter((x): x is string => typeof x === 'string');
         }
       } catch {
         // ignore corrupt localStorage

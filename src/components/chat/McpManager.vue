@@ -7,162 +7,47 @@
     @close="$emit('update:modelValue', false)"
   >
     <div class="mcp-manager">
-      <!-- AuthBackend custom_oauth connections (Suno MCP, custom MCPs added at
-           auth.acedata.cloud). These come from the unified Connections API
-           and are the recommended path going forward. -->
-      <div v-if="authConnections.length > 0" class="auth-section">
-        <div class="section-title">
-          {{ $t('chat.mcp.fromAuthBackend') }}
-        </div>
-        <div class="server-list">
-          <div v-for="conn in authConnections" :key="conn.id" class="server-item auth-item">
-            <div class="server-info">
-              <div class="server-header">
-                <el-switch
-                  :model-value="isConnectionEnabled(conn.id)"
-                  size="small"
-                  @change="onToggleConnection(conn.id, $event as boolean)"
-                />
-                <span class="server-name">{{ getConnectionName(conn) }}</span>
-                <el-tag size="small" type="success" effect="plain">OAuth</el-tag>
-                <el-tag v-if="conn.status !== 'active'" size="small" type="warning" effect="plain">
-                  {{ conn.status }}
-                </el-tag>
-              </div>
-              <div class="server-url">{{ conn.server_url }}</div>
-            </div>
-            <div class="server-actions">
-              <el-button
-                text
-                size="small"
-                :loading="refreshingId === conn.id"
-                :title="$t('chat.mcp.refresh')"
-                @click="onRefreshConnection(conn)"
-              >
-                <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
-              </el-button>
-              <el-button text size="small" :title="$t('chat.mcp.manage')" @click="onManageAtAuth">
-                <font-awesome-icon icon="fa-solid fa-up-right-from-square" />
-              </el-button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="header">
-        <el-button size="small" @click="onManageAtAuth">
+        <el-button type="primary" size="small" @click="onManageAtAuth">
           <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
           {{ $t('chat.mcp.manageAtAuth') }}
         </el-button>
-        <el-button type="primary" size="small" @click="showAddForm = true">
-          <font-awesome-icon icon="fa-solid fa-plus" class="mr-1" />
-          {{ $t('chat.mcp.addServer') }}
-        </el-button>
       </div>
 
-      <!-- Add/Edit Form -->
-      <el-card v-if="showAddForm || editingServer" shadow="never" class="form-card">
-        <el-form :model="form" label-position="top" size="default">
-          <el-form-item :label="$t('chat.mcp.name')" required>
-            <el-input v-model="form.name" :placeholder="$t('chat.mcp.namePlaceholder')" />
-          </el-form-item>
-          <el-form-item :label="$t('chat.mcp.url')" required>
-            <el-input v-model="form.url" :placeholder="$t('chat.mcp.urlPlaceholder')" />
-          </el-form-item>
-          <el-form-item :label="$t('chat.mcp.description')">
-            <el-input v-model="form.description" :placeholder="$t('chat.mcp.descriptionPlaceholder')" />
-          </el-form-item>
-          <el-form-item :label="$t('chat.mcp.authType')">
-            <el-select v-model="form.auth_type" style="width: 100%">
-              <el-option value="none" :label="$t('chat.mcp.authNone')" />
-              <el-option value="bearer" :label="$t('chat.mcp.authBearer')" />
-              <el-option value="oauth" :label="$t('chat.mcp.authOAuth')" />
-            </el-select>
-          </el-form-item>
-          <el-form-item v-if="form.auth_type === 'bearer'" :label="$t('chat.mcp.authToken')">
-            <el-input
-              v-model="form.auth_token"
-              type="password"
-              show-password
-              :placeholder="$t('chat.mcp.authTokenPlaceholder')"
-            />
-          </el-form-item>
-          <div v-if="form.auth_type === 'oauth'" class="oauth-hint">
-            <el-text type="info" size="small">{{ $t('chat.mcp.oauthHint') }}</el-text>
-          </div>
-          <div class="form-actions">
-            <el-button size="small" @click="onCancelForm">{{ $t('common.button.cancel') }}</el-button>
-            <el-button size="small" :loading="testing" @click="onTest">
-              <font-awesome-icon icon="fa-solid fa-link" class="mr-1" />
-              {{ $t('chat.mcp.test') }}
-            </el-button>
-            <el-button type="primary" size="small" :loading="submitting" @click="onSave">
-              {{ editingServer ? $t('common.button.save') : $t('chat.mcp.addServer') }}
-            </el-button>
-          </div>
-        </el-form>
-        <!-- Test Results -->
-        <div v-if="testResult" class="test-result">
-          <el-tag :type="testResult.success ? 'success' : 'danger'" size="small" effect="dark">
-            {{ testResult.success ? $t('chat.mcp.testSuccess') : $t('chat.mcp.testFailed') }}
-          </el-tag>
-          <span v-if="testResult.success" class="test-info">
-            {{ $t('chat.mcp.toolsFound', { count: testResult.tools_count }) }}
-          </span>
-          <span v-else class="test-error">{{ testResult.error }}</span>
-          <div v-if="testResult.tools?.length" class="test-tools">
-            <div v-for="tool in testResult.tools" :key="tool.name" class="test-tool">
-              <span class="tool-name">{{ tool.name }}</span>
-              <span v-if="tool.description" class="tool-desc">{{ tool.description }}</span>
-            </div>
-          </div>
-        </div>
-      </el-card>
+      <div v-if="authConnections.length === 0" class="empty">
+        {{ $t('chat.mcp.empty') }}
+      </div>
 
-      <!-- Server List -->
-      <div v-loading="loading" class="server-list">
-        <div v-if="servers.length === 0 && !loading && !loadError" class="empty">
-          {{ $t('chat.mcp.empty') }}
-        </div>
-        <div v-if="loadError && !loading" class="empty">
-          {{ $t('chat.mcp.loadErrorHint') }}
-        </div>
-        <div v-for="server in servers" :key="server.id" class="server-item">
+      <div v-else class="server-list">
+        <div v-for="conn in authConnections" :key="conn.id" class="server-item">
           <div class="server-info">
             <div class="server-header">
-              <el-switch :model-value="server.is_enabled" size="small" @change="onToggle(server, $event as boolean)" />
-              <span class="server-name">{{ server.name }}</span>
-              <el-tag v-if="server.tools_cache?.length" size="small" type="info" effect="plain">
-                {{ server.tools_cache.length }} tools
-              </el-tag>
-              <el-tag
-                v-if="server.auth_type === 'oauth' && server.oauth_status === 'authorized'"
+              <el-switch
+                :model-value="isEnabled(conn.id)"
                 size="small"
-                type="success"
-                effect="plain"
-              >
-                OAuth
+                :disabled="conn.status !== 'active'"
+                @change="onToggle(conn.id, $event as boolean)"
+              />
+              <span class="server-name">{{ getName(conn) }}</span>
+              <el-tag size="small" type="success" effect="plain">OAuth</el-tag>
+              <el-tag v-if="conn.status !== 'active'" size="small" type="warning" effect="plain">
+                {{ conn.status }}
               </el-tag>
-              <el-button
-                v-if="server.auth_type === 'oauth' && server.oauth_status !== 'authorized'"
-                size="small"
-                type="warning"
-                :loading="authorizingServerId === server.id"
-                @click="onAuthorize(server)"
-              >
-                <font-awesome-icon icon="fa-solid fa-key" class="mr-1" />
-                {{ $t('chat.mcp.authorize') }}
-              </el-button>
             </div>
-            <div class="server-url">{{ server.url }}</div>
-            <div v-if="server.description" class="server-desc">{{ server.description }}</div>
+            <div class="server-url">{{ conn.server_url }}</div>
           </div>
           <div class="server-actions">
-            <el-button text size="small" @click="onEdit(server)">
-              <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+            <el-button
+              text
+              size="small"
+              :loading="refreshingId === conn.id"
+              :title="$t('chat.mcp.refresh')"
+              @click="onRefresh(conn)"
+            >
+              <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
             </el-button>
-            <el-button text size="small" type="danger" @click="onDelete(server)">
-              <font-awesome-icon icon="fa-solid fa-trash" />
+            <el-button text size="small" :title="$t('chat.mcp.manage')" @click="onManageAtAuth">
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" />
             </el-button>
           </div>
         </div>
@@ -173,50 +58,29 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import {
-  ElDialog,
-  ElButton,
-  ElForm,
-  ElFormItem,
-  ElInput,
-  ElSelect,
-  ElOption,
-  ElCard,
-  ElSwitch,
-  ElTag,
-  ElMessage,
-  ElMessageBox,
-  ElText
-} from 'element-plus';
+import { ElDialog, ElButton, ElSwitch, ElTag, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { mcpServerOperator, connectionOperator } from '@/operators';
-import { IMcpServer, IMcpServerTestResponse, IConnection } from '@/models';
+import { connectionOperator } from '@/operators';
+import { IConnection } from '@/models';
 import { openConnectionsManager } from '@/utils';
 
-interface IForm {
-  name: string;
-  url: string;
-  description: string;
-  auth_type: string;
-  auth_token: string;
-}
-
+/**
+ * MCP server picker for chat.
+ *
+ * Source of truth is AuthBackend `Connection` (kind=custom_oauth) — the
+ * user authorizes / adds / revokes MCP servers at
+ * https://auth.acedata.cloud/user/connections. This dialog only:
+ *   1. lists those connections,
+ *   2. lets the user toggle which ones to use in this chat (persisted
+ *      by the parent),
+ *   3. exposes a per-row token refresh,
+ *   4. deep-links to AuthBackend for any management action.
+ *
+ * No CRUD lives here. AuthBackend owns the secrets.
+ */
 export default defineComponent({
   name: 'McpManager',
-  components: {
-    ElDialog,
-    ElButton,
-    ElForm,
-    ElFormItem,
-    ElInput,
-    ElSelect,
-    ElOption,
-    ElCard,
-    ElSwitch,
-    ElTag,
-    ElText,
-    FontAwesomeIcon
-  },
+  components: { ElDialog, ElButton, ElSwitch, ElTag, FontAwesomeIcon },
   props: {
     modelValue: {
       type: Boolean,
@@ -234,24 +98,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'change', 'update:enabledConnectionIds', 'refresh-connections'],
   data() {
     return {
-      servers: [] as IMcpServer[],
-      loading: false,
-      loadError: false,
-      submitting: false,
-      testing: false,
-      showAddForm: false,
-      editingServer: null as IMcpServer | null,
-      testResult: null as IMcpServerTestResponse | null,
-      form: {
-        name: '',
-        url: '',
-        description: '',
-        auth_type: 'none',
-        auth_token: ''
-      } as IForm,
-      authorizingServerId: null as string | null,
-      refreshingId: null as string | null,
-      oauthMessageHandler: null as ((event: MessageEvent) => void) | null
+      refreshingId: null as string | null
     };
   },
   computed: {
@@ -262,31 +109,13 @@ export default defineComponent({
       set(val: boolean) {
         this.$emit('update:modelValue', val);
       }
-    },
-    token(): string {
-      return this.$store.state.chat?.credential?.token || '';
-    }
-  },
-  watch: {
-    modelValue: {
-      handler(val) {
-        if (val) {
-          this.onLoad();
-        }
-      },
-      immediate: true
-    }
-  },
-  beforeUnmount() {
-    if (this.oauthMessageHandler) {
-      window.removeEventListener('message', this.oauthMessageHandler);
     }
   },
   methods: {
-    isConnectionEnabled(id: string): boolean {
+    isEnabled(id: string): boolean {
       return this.enabledConnectionIds.includes(id);
     },
-    getConnectionName(conn: IConnection): string {
+    getName(conn: IConnection): string {
       return (
         (conn.metadata?.server_name as string | undefined) ||
         (conn.profile?.server_name as string | undefined) ||
@@ -295,7 +124,7 @@ export default defineComponent({
         conn.server_url
       );
     },
-    onToggleConnection(id: string, enabled: boolean) {
+    onToggle(id: string, enabled: boolean) {
       const next = enabled
         ? Array.from(new Set([...this.enabledConnectionIds, id]))
         : this.enabledConnectionIds.filter((x) => x !== id);
@@ -305,7 +134,7 @@ export default defineComponent({
     onManageAtAuth() {
       openConnectionsManager('mcp');
     },
-    async onRefreshConnection(conn: IConnection) {
+    async onRefresh(conn: IConnection) {
       this.refreshingId = conn.id;
       try {
         await connectionOperator.refresh(conn.id);
@@ -316,168 +145,6 @@ export default defineComponent({
       } finally {
         this.refreshingId = null;
       }
-    },
-    async onLoad() {
-      this.loading = true;
-      this.loadError = false;
-      try {
-        const { data } = await mcpServerOperator.list(this.token);
-        this.servers = data.items || [];
-      } catch {
-        this.loadError = true;
-      } finally {
-        this.loading = false;
-      }
-    },
-    resetForm() {
-      this.form = { name: '', url: '', description: '', auth_type: 'none', auth_token: '' };
-      this.testResult = null;
-      this.showAddForm = false;
-      this.editingServer = null;
-    },
-    onCancelForm() {
-      this.resetForm();
-    },
-    onEdit(server: IMcpServer) {
-      this.editingServer = server;
-      this.showAddForm = false;
-      this.testResult = null;
-      this.form = {
-        name: server.name,
-        url: server.url,
-        description: server.description || '',
-        auth_type: server.auth_type || 'none',
-        auth_token: server.auth_token || ''
-      };
-    },
-    async onSave() {
-      if (!this.form.name || !this.form.url) {
-        ElMessage.warning(this.$t('chat.mcp.nameUrlRequired') as string);
-        return;
-      }
-      this.submitting = true;
-      try {
-        if (this.editingServer) {
-          await mcpServerOperator.update({ id: this.editingServer.id, ...this.form }, this.token);
-          ElMessage.success(this.$t('chat.mcp.updated') as string);
-        } else {
-          await mcpServerOperator.create(this.form, this.token);
-          ElMessage.success(this.$t('chat.mcp.created') as string);
-        }
-        this.resetForm();
-        await this.onLoad();
-        this.$emit('change');
-      } catch {
-        ElMessage.error(this.$t('chat.mcp.saveFailed') as string);
-      } finally {
-        this.submitting = false;
-      }
-    },
-    async onDelete(server: IMcpServer) {
-      try {
-        await ElMessageBox.confirm(
-          this.$t('chat.mcp.deleteConfirm', { name: server.name }) as string,
-          this.$t('common.button.delete') as string,
-          { type: 'warning', confirmButtonClass: 'el-button--danger' }
-        );
-        await mcpServerOperator.delete(server.id, this.token);
-        ElMessage.success(this.$t('chat.mcp.deleted') as string);
-        await this.onLoad();
-        this.$emit('change');
-      } catch {
-        // cancelled
-      }
-    },
-    async onToggle(server: IMcpServer, enabled: boolean) {
-      try {
-        await mcpServerOperator.update({ id: server.id, is_enabled: enabled }, this.token);
-        server.is_enabled = enabled;
-        this.$emit('change');
-      } catch {
-        ElMessage.error('Failed to update server');
-      }
-    },
-    async onTest() {
-      if (!this.form.url) {
-        ElMessage.warning(this.$t('chat.mcp.urlRequired') as string);
-        return;
-      }
-      this.testing = true;
-      this.testResult = null;
-      try {
-        const { data } = await mcpServerOperator.test(
-          { url: this.form.url, auth_type: this.form.auth_type, auth_token: this.form.auth_token },
-          this.token
-        );
-        this.testResult = data;
-      } catch (err: any) {
-        this.testResult = {
-          success: false,
-          error: err?.response?.data?.error || 'Connection failed'
-        };
-      } finally {
-        this.testing = false;
-      }
-    },
-    async onAuthorize(server: IMcpServer) {
-      this.authorizingServerId = server.id;
-      try {
-        const { data } = await mcpServerOperator.oauthStart(server.id, this.token);
-        if (data.status === 'authorized') {
-          ElMessage.success(this.$t('chat.mcp.oauthAuthorized') as string);
-          await this.onLoad();
-          this.$emit('change');
-          return;
-        }
-        if (data.status === 'redirect' && data.authorization_url) {
-          const popup = window.open(data.authorization_url, 'mcp-oauth', 'width=600,height=700');
-          if (!popup) {
-            ElMessage.error(this.$t('chat.mcp.popupBlocked') as string);
-            return;
-          }
-          const popupPollTimer = window.setInterval(() => {
-            if (!popup.closed) return;
-            window.clearInterval(popupPollTimer);
-            if (this.oauthMessageHandler) {
-              window.removeEventListener('message', this.oauthMessageHandler);
-              this.oauthMessageHandler = null;
-            }
-            this.authorizingServerId = null;
-          }, 500);
-          // Clean up any previous listener
-          if (this.oauthMessageHandler) {
-            window.removeEventListener('message', this.oauthMessageHandler);
-          }
-          this.oauthMessageHandler = async (event: MessageEvent) => {
-            if (event.origin !== window.location.origin) return;
-            if (event.data?.type !== 'oauth-callback') return;
-            window.clearInterval(popupPollTimer);
-            window.removeEventListener('message', this.oauthMessageHandler!);
-            this.oauthMessageHandler = null;
-            try {
-              const { data: cbData } = await mcpServerOperator.oauthCallback(server.id, event.data.code, this.token);
-              if (cbData.status === 'authorized') {
-                ElMessage.success(this.$t('chat.mcp.oauthAuthorized') as string);
-                await this.onLoad();
-                this.$emit('change');
-              } else {
-                ElMessage.error(cbData.error || (this.$t('chat.mcp.oauthFailed') as string));
-              }
-            } catch {
-              ElMessage.error(this.$t('chat.mcp.oauthFailed') as string);
-            } finally {
-              this.authorizingServerId = null;
-            }
-          };
-          window.addEventListener('message', this.oauthMessageHandler);
-        }
-      } catch {
-        ElMessage.error(this.$t('chat.mcp.oauthFailed') as string);
-      } finally {
-        if (!this.oauthMessageHandler) {
-          this.authorizingServerId = null;
-        }
-      }
     }
   }
 });
@@ -485,93 +152,19 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .mcp-manager {
-  .auth-section {
-    margin-bottom: 16px;
-
-    .section-title {
-      font-size: 12px;
-      color: var(--el-text-color-secondary);
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-  }
-
-  .auth-item {
-    background: var(--el-fill-color-lighter);
-  }
-
   .header {
-    display: flex;
-    gap: 8px;
     margin-bottom: 12px;
   }
 
-  .form-card {
-    margin-bottom: 16px;
-
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    .oauth-hint {
-      margin-bottom: 12px;
-    }
-  }
-
-  .test-result {
-    margin-top: 12px;
-    padding: 8px 12px;
-    background: var(--el-fill-color-light);
-    border-radius: 6px;
-    font-size: 13px;
-
-    .test-info {
-      margin-left: 8px;
-      color: var(--el-text-color-secondary);
-    }
-
-    .test-error {
-      margin-left: 8px;
-      color: var(--el-color-danger);
-    }
-
-    .test-tools {
-      margin-top: 8px;
-
-      .test-tool {
-        padding: 4px 0;
-        display: flex;
-        gap: 8px;
-        align-items: baseline;
-
-        .tool-name {
-          font-family: monospace;
-          font-weight: 500;
-          color: var(--el-text-color-primary);
-        }
-
-        .tool-desc {
-          font-size: 12px;
-          color: var(--el-text-color-secondary);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-      }
-    }
+  .empty {
+    text-align: center;
+    color: var(--el-text-color-secondary);
+    padding: 32px 0;
+    font-size: 14px;
   }
 
   .server-list {
     min-height: 60px;
-
-    .empty {
-      text-align: center;
-      color: var(--el-text-color-secondary);
-      padding: 20px 0;
-      font-size: 14px;
-    }
   }
 
   .server-item {
@@ -606,28 +199,16 @@ export default defineComponent({
       .server-url {
         font-size: 12px;
         color: var(--el-text-color-secondary);
-        font-family: monospace;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .server-desc {
-        font-size: 12px;
-        color: var(--el-text-color-secondary);
-        margin-top: 2px;
+        word-break: break-all;
       }
     }
 
     .server-actions {
       display: flex;
-      gap: 2px;
+      align-items: center;
+      gap: 4px;
       flex-shrink: 0;
     }
   }
-}
-
-.mr-1 {
-  margin-right: 4px;
 }
 </style>
