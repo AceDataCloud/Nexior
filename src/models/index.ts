@@ -31,6 +31,7 @@ export * from './wan';
 export * from './site';
 export * from './mcp';
 export * from './connector';
+export * from './connection';
 export * from './skill';
 export * from './exchange';
 export * from './error';

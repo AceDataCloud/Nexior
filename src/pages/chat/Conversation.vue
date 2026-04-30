@@ -26,7 +26,11 @@
               <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
             </el-button>
           </el-tooltip>
-          <el-tooltip v-if="hasConnectorProviders" :content="$t('chat.connector.tooltip')" placement="bottom">
+          <el-tooltip
+            v-if="hasConnectorProviders || presetConnections.length > 0"
+            :content="$t('chat.connector.tooltip')"
+            placement="bottom"
+          >
             <el-button
               :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
               text
@@ -40,8 +44,24 @@
           </el-tooltip>
         </div>
       </div>
-      <mcp-manager v-if="mcpManagerVisible" v-model="mcpManagerVisible" @change="onMcpChange" />
-      <connector-manager v-if="connectorManagerVisible" v-model="connectorManagerVisible" @change="onConnectorChange" />
+      <mcp-manager
+        v-if="mcpManagerVisible"
+        v-model="mcpManagerVisible"
+        :auth-connections="customOauthConnections"
+        :enabled-connection-ids="enabledConnectionIds"
+        @change="onMcpChange"
+        @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
+        @refresh-connections="onLoadAuthConnections"
+      />
+      <connector-manager
+        v-if="connectorManagerVisible"
+        v-model="connectorManagerVisible"
+        :auth-connections="presetConnections"
+        :enabled-connection-ids="enabledConnectionIds"
+        @change="onConnectorChange"
+        @update:enabled-connection-ids="onUpdateEnabledConnectionIds"
+        @refresh-connections="onLoadAuthConnections"
+      />
       <skill-manager
         v-if="skillManagerVisible"
         v-model="skillManagerVisible"
@@ -106,8 +126,8 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
-import { chatOperator, mcpServerOperator, connectorOperator, agentOperator } from '@/operators';
+import { IChatMessageContentItem, IMcpServer, IConnector, IConnection } from '@/models';
+import { chatOperator, mcpServerOperator, connectorOperator, agentOperator, connectionOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -124,6 +144,8 @@ export interface IData {
   connectorManagerVisible: boolean;
   connectors: IConnector[];
   hasConnectorProviders: boolean;
+  authConnections: IConnection[];
+  enabledConnectionIds: string[];
   skillManagerVisible: boolean;
   activeSkills: string[];
   agentManagerVisible: boolean;
@@ -162,6 +184,8 @@ export default defineComponent({
       connectorManagerVisible: false,
       connectors: [] as IConnector[],
       hasConnectorProviders: false,
+      authConnections: [] as IConnection[],
+      enabledConnectionIds: [] as string[],
       skillManagerVisible: false,
       activeSkills: [] as string[],
       agentManagerVisible: false,
@@ -217,16 +241,34 @@ export default defineComponent({
       return !this.initializing && !!this.credential?.token && !!this.application;
     },
     enabledMcpCount(): number {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
+      const local = this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
+      const remote = this.customOauthConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
+      return local + remote;
     },
     enabledMcpIds(): string[] {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
+      const local = this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
+      const remote = this.customOauthConnections
+        .filter((c) => this.enabledConnectionIds.includes(c.id))
+        .map((c) => c.id);
+      return Array.from(new Set([...local, ...remote]));
     },
     enabledConnectorCount(): number {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).length;
+      const legacy = this.connectors.filter((c: IConnector) => c.is_enabled).length;
+      const remote = this.presetConnections.filter((c) => this.enabledConnectionIds.includes(c.id)).length;
+      return legacy + remote;
     },
     enabledConnectorProviders(): string[] {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
+      const legacy = this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
+      const remote = this.presetConnections
+        .filter((c) => this.enabledConnectionIds.includes(c.id))
+        .map((c) => c.provider);
+      return Array.from(new Set([...legacy, ...remote]));
+    },
+    customOauthConnections(): IConnection[] {
+      return this.authConnections.filter((c) => c.kind === 'custom_oauth');
+    },
+    presetConnections(): IConnection[] {
+      return this.authConnections.filter((c) => c.kind === 'preset');
     },
     activeSkillCount(): number {
       return this.activeSkills.length;
@@ -249,6 +291,8 @@ export default defineComponent({
     await this.onGetConversations();
     await this.onLoadMcpServers();
     await this.onLoadConnectors();
+    await this.onLoadAuthConnections();
+    this.onLoadEnabledConnectionIds();
     this.onLoadPersistedSkills();
     this.onCheckAgentStatus();
   },
@@ -282,6 +326,37 @@ export default defineComponent({
     },
     async onConnectorChange() {
       await this.onLoadConnectors();
+    },
+    async onLoadAuthConnections() {
+      try {
+        const { data } = await connectionOperator.list();
+        this.authConnections = data.items || [];
+      } catch {
+        // silently fail - the user might not have any connections yet,
+        // or auth.acedata.cloud might be unreachable. Either way the
+        // chat still works without them.
+      }
+    },
+    onLoadEnabledConnectionIds() {
+      try {
+        const stored = localStorage.getItem('chat_enabled_connection_ids');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed)) {
+            this.enabledConnectionIds = parsed.filter((x): x is string => typeof x === 'string');
+          }
+        }
+      } catch {
+        // ignore corrupt localStorage
+      }
+    },
+    onUpdateEnabledConnectionIds(ids: string[]) {
+      this.enabledConnectionIds = ids;
+      try {
+        localStorage.setItem('chat_enabled_connection_ids', JSON.stringify(ids));
+      } catch {
+        // ignore quota errors
+      }
     },
     onLoadPersistedSkills() {
       try {

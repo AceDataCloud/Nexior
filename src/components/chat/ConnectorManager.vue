@@ -21,25 +21,34 @@
         <div class="provider-info">
           <div class="provider-name">{{ provider.name }}</div>
           <div class="provider-desc">{{ provider.description }}</div>
-          <div v-if="getConnector(provider.id)" class="provider-profile">
+          <div v-if="getConnection(provider.id)" class="provider-profile">
             <img
-              v-if="getConnector(provider.id)?.profile?.avatar"
-              :src="getConnector(provider.id)?.profile?.avatar"
+              v-if="getConnection(provider.id)?.profile?.avatar"
+              :src="getConnection(provider.id)?.profile?.avatar"
               class="avatar"
             />
-            <span class="profile-name">{{ getConnector(provider.id)?.profile?.name }}</span>
-            <span v-if="getConnector(provider.id)?.profile?.email" class="profile-email">
-              ({{ getConnector(provider.id)?.profile?.email }})
+            <span class="profile-name">{{ getConnection(provider.id)?.profile?.name }}</span>
+            <span v-if="getConnection(provider.id)?.profile?.email" class="profile-email">
+              ({{ getConnection(provider.id)?.profile?.email }})
             </span>
           </div>
         </div>
         <div class="provider-actions">
-          <template v-if="provider.connected">
+          <template v-if="isConnected(provider.id)">
             <el-switch
-              :model-value="getConnector(provider.id)?.is_enabled"
+              :model-value="isEnabled(provider.id)"
               size="small"
-              @change="onToggle(provider.id, $event as boolean)"
+              @change="onToggleEnabled(provider.id, $event as boolean)"
             />
+            <el-button
+              text
+              size="small"
+              :loading="refreshingId === getConnection(provider.id)?.id"
+              :title="$t('chat.connector.refresh')"
+              @click="onRefresh(provider.id)"
+            >
+              <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
+            </el-button>
             <el-button size="small" type="danger" text @click="onDisconnect(provider.id)">
               {{ $t('chat.connector.disconnect') }}
             </el-button>
@@ -62,9 +71,10 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { connectorOperator } from '@/operators';
+import { connectorOperator, connectionOperator } from '@/operators';
 import { openConnectionsManager } from '@/utils';
-import { IConnectorProvider, IConnector } from '@/models';
+import { IConnectorProvider, IConnection } from '@/models';
+import { ElMessage } from 'element-plus';
 
 const PROVIDER_ICONS: Record<string, string> = {
   google: 'fa-brands fa-google',
@@ -78,16 +88,24 @@ export default defineComponent({
     modelValue: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+    authConnections: {
+      type: Array as PropType<IConnection[]>,
+      default: () => []
+    },
+    enabledConnectionIds: {
+      type: Array as PropType<string[]>,
+      default: () => []
     }
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'change', 'update:enabledConnectionIds', 'refresh-connections'],
   data() {
     return {
       providers: [] as IConnectorProvider[],
-      connectors: [] as IConnector[],
       loading: false,
       loadError: false,
-      connecting: '' as string
+      connecting: '' as string,
+      refreshingId: null as string | null
     };
   },
   computed: {
@@ -114,20 +132,33 @@ export default defineComponent({
     getProviderIcon(id: string): string {
       return PROVIDER_ICONS[id] || 'fa-solid fa-plug';
     },
-    getConnector(providerId: string): IConnector | undefined {
-      return this.connectors.find((c) => c.provider === providerId);
+    getConnection(providerId: string): IConnection | undefined {
+      return this.authConnections.find((c) => c.kind === 'preset' && c.provider === providerId);
+    },
+    isConnected(providerId: string): boolean {
+      const conn = this.getConnection(providerId);
+      return !!conn && conn.status === 'active';
+    },
+    isEnabled(providerId: string): boolean {
+      const conn = this.getConnection(providerId);
+      return !!conn && this.enabledConnectionIds.includes(conn.id);
+    },
+    onToggleEnabled(providerId: string, enabled: boolean) {
+      const conn = this.getConnection(providerId);
+      if (!conn) return;
+      const next = enabled
+        ? Array.from(new Set([...this.enabledConnectionIds, conn.id]))
+        : this.enabledConnectionIds.filter((x) => x !== conn.id);
+      this.$emit('update:enabledConnectionIds', next);
+      this.$emit('change');
     },
     async loadData() {
       if (!this.token) return;
       this.loading = true;
       this.loadError = false;
       try {
-        const [providersRes, connectorsRes] = await Promise.all([
-          connectorOperator.listProviders(this.token),
-          connectorOperator.list(this.token)
-        ]);
+        const providersRes = await connectorOperator.listProviders(this.token);
         this.providers = providersRes.data.providers || [];
-        this.connectors = connectorsRes.data.items || [];
       } catch {
         this.loadError = true;
       } finally {
@@ -135,16 +166,24 @@ export default defineComponent({
       }
     },
     onConnect(providerId: string) {
-      // OAuth grants are managed centrally at AuthFrontend
-      // (auth.acedata.cloud/user/connections). Redirect there with a
-      // return_url so the user can come back to Nexior when finished.
       openConnectionsManager(providerId);
     },
     onDisconnect(providerId: string) {
       openConnectionsManager(providerId);
     },
-    onToggle(providerId: string) {
-      openConnectionsManager(providerId);
+    async onRefresh(providerId: string) {
+      const conn = this.getConnection(providerId);
+      if (!conn) return;
+      this.refreshingId = conn.id;
+      try {
+        await connectionOperator.refresh(conn.id);
+        ElMessage.success(this.$t('chat.connector.refreshed') as string);
+        this.$emit('refresh-connections');
+      } catch {
+        ElMessage.error(this.$t('chat.connector.refreshFailed') as string);
+      } finally {
+        this.refreshingId = null;
+      }
     }
   }
 });

@@ -531,6 +531,30 @@
     "message": "Popup blocked, please allow popups from this site.",
     "description": "Hint when popup is blocked"
   },
+  "mcp.fromAuthBackend": {
+    "message": "MCPs authorized at auth.acedata.cloud",
+    "description": "Section title for AuthBackend custom_oauth connections"
+  },
+  "mcp.manageAtAuth": {
+    "message": "Manage at auth.acedata.cloud",
+    "description": "Open AuthBackend connections page"
+  },
+  "mcp.manage": {
+    "message": "Manage",
+    "description": "Manage MCP connection"
+  },
+  "mcp.refresh": {
+    "message": "Refresh token",
+    "description": "Refresh the OAuth token"
+  },
+  "mcp.refreshed": {
+    "message": "Token refreshed",
+    "description": "Refresh succeeded"
+  },
+  "mcp.refreshFailed": {
+    "message": "Failed to refresh token",
+    "description": "Refresh failed"
+  },
   "connector.title": {
     "message": "Connector",
     "description": "Connector management dialog title"
@@ -550,6 +574,18 @@
   "connector.disconnect": {
     "message": "Disconnect",
     "description": "Disconnect button"
+  },
+  "connector.refresh": {
+    "message": "Refresh token",
+    "description": "Refresh the connection's OAuth token"
+  },
+  "connector.refreshed": {
+    "message": "Token refreshed",
+    "description": "Refresh succeeded"
+  },
+  "connector.refreshFailed": {
+    "message": "Failed to refresh token",
+    "description": "Refresh failed"
   },
   "connector.connected": {
     "message": "Connector connected successfully",

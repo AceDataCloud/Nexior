@@ -31,6 +31,7 @@ export * from './seedance';
 export * from './serp';
 export * from './mcp';
 export * from './connector';
+export * from './connection';
 export * from './skill';
 export * from './wan';
 export * from './config';
