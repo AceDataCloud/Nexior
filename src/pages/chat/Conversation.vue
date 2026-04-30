@@ -20,28 +20,13 @@
               <span v-if="activeSkillCount > 0" class="toolbar-count">{{ Math.min(activeSkillCount, 9) }}</span>
             </el-button>
           </el-tooltip>
-          <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
-            <el-button :class="['toolbar-btn', { active: enabledMcpCount > 0 }]" text @click="mcpManagerVisible = true">
-              <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
-              <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
-            </el-button>
-          </el-tooltip>
-          <el-tooltip v-if="hasConnectorProviders" :content="$t('chat.connector.tooltip')" placement="bottom">
-            <el-button
-              :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
-              text
-              @click="connectorManagerVisible = true"
-            >
+          <el-tooltip :content="$t('chat.connections.tooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="onOpenConnections">
               <font-awesome-icon icon="fa-solid fa-plug" />
-              <span v-if="enabledConnectorCount > 0" class="toolbar-count">{{
-                Math.min(enabledConnectorCount, 9)
-              }}</span>
             </el-button>
           </el-tooltip>
         </div>
       </div>
-      <mcp-manager v-if="mcpManagerVisible" v-model="mcpManagerVisible" @change="onMcpChange" />
-      <connector-manager v-if="connectorManagerVisible" v-model="connectorManagerVisible" @change="onConnectorChange" />
       <skill-manager
         v-if="skillManagerVisible"
         v-model="skillManagerVisible"
@@ -97,8 +82,6 @@ import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/con
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import McpManager from '@/components/chat/McpManager.vue';
-import ConnectorManager from '@/components/chat/ConnectorManager.vue';
 import SkillManager from '@/components/chat/SkillManager.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
@@ -106,8 +89,8 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
-import { chatOperator, mcpServerOperator, connectorOperator, agentOperator } from '@/operators';
+import { IChatMessageContentItem } from '@/models';
+import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -119,11 +102,6 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  mcpManagerVisible: boolean;
-  mcpServers: IMcpServer[];
-  connectorManagerVisible: boolean;
-  connectors: IConnector[];
-  hasConnectorProviders: boolean;
   skillManagerVisible: boolean;
   activeSkills: string[];
   agentManagerVisible: boolean;
@@ -139,8 +117,6 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ModelSelector,
-    McpManager,
-    ConnectorManager,
     SkillManager,
     DesktopAgentManager,
     Message,
@@ -157,11 +133,6 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      mcpManagerVisible: false,
-      mcpServers: [] as IMcpServer[],
-      connectorManagerVisible: false,
-      connectors: [] as IConnector[],
-      hasConnectorProviders: false,
       skillManagerVisible: false,
       activeSkills: [] as string[],
       agentManagerVisible: false,
@@ -216,18 +187,6 @@ export default defineComponent({
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
     },
-    enabledMcpCount(): number {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
-    },
-    enabledMcpIds(): string[] {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
-    },
-    enabledConnectorCount(): number {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).length;
-    },
-    enabledConnectorProviders(): string[] {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
-    },
     activeSkillCount(): number {
       return this.activeSkills.length;
     }
@@ -247,41 +206,16 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    await this.onLoadMcpServers();
-    await this.onLoadConnectors();
     this.onLoadPersistedSkills();
     this.onCheckAgentStatus();
   },
   methods: {
-    async onLoadMcpServers() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const { data } = await mcpServerOperator.list(token);
-        this.mcpServers = data.items || [];
-      } catch {
-        // silently fail - MCP is optional
-      }
-    },
-    async onMcpChange() {
-      await this.onLoadMcpServers();
-    },
-    async onLoadConnectors() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const [connectorsRes, providersRes] = await Promise.all([
-          connectorOperator.list(token),
-          connectorOperator.listProviders(token)
-        ]);
-        this.connectors = connectorsRes.data.items || [];
-        this.hasConnectorProviders = (providersRes.data.providers || []).length > 0;
-      } catch {
-        // silently fail - connectors are optional
-      }
-    },
-    async onConnectorChange() {
-      await this.onLoadConnectors();
+    onOpenConnections() {
+      // Connections (MCP + OAuth connectors) are managed exclusively at
+      // auth.acedata.cloud. Nexior is a thin entry point - clicking opens
+      // the canonical management page in a new tab. aichat2 reads the
+      // user's active connections from auth.acedata.cloud at request time.
+      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     },
     onLoadPersistedSkills() {
       try {
@@ -586,8 +520,6 @@ export default defineComponent({
             id: this.conversationId,
             stateful: true,
             tools_enabled: true,
-            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined,
-            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined,
             skills: this.activeSkills.length > 0 ? this.activeSkills : undefined
           },
           {
