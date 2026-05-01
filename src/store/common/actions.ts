@@ -11,7 +11,7 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { getBaseUrlAuth, loginRedirect } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
@@ -222,7 +222,11 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
       flow: 'redirect'
     });
     console.debug('login redirect');
-    loginRedirect({ redirect: window.location.pathname, site });
+    // Preserve the original query string (e.g. ?inviter_id, ?utm_source) so
+    // it survives the auth round-trip and is still present when the user
+    // lands back on Nexior. inviter_id is also forwarded as a top-level
+    // query param by loginRedirect itself.
+    loginRedirect({ redirect: window.location.pathname + window.location.search, site });
   }
 };
 
@@ -252,10 +256,27 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
       visible: true
     });
   } else {
-    const currentUrl = window.location.href;
+    // Build the post-logout login URL via URLSearchParams so the inviter_id
+    // (and any other query params on the current page) survive as top-level
+    // query keys after AuthFrontend parses the URL — otherwise they end up
+    // nested inside the `redirect` value (because raw `?redirect=${url}`
+    // concatenation does no encoding) and AuthFrontend's
+    // `URLSearchParams.get('inviter_id')` returns null, breaking referral
+    // binding for OAuth signups (especially WeChat) on custom-domain sites.
     const baseUrlAuth = getBaseUrlAuth();
-    const loginUrl = `${baseUrlAuth}/auth/login?redirect=${currentUrl}`;
-    const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${loginUrl}`;
+    const baseUrlHub = getBaseUrlHub();
+    const site = window.location.origin;
+    const inviterId = getInviterId();
+    const callbackUrl = `${baseUrlHub}/auth/callback?${new URLSearchParams({
+      redirect: window.location.pathname + window.location.search
+    }).toString()}`;
+    const loginQuery: Record<string, string> = {
+      site,
+      ...(inviterId ? { inviter_id: inviterId } : {}),
+      redirect: callbackUrl
+    };
+    const loginUrl = `${baseUrlAuth}/auth/login?${new URLSearchParams(loginQuery).toString()}`;
+    const redirectUrl = `${baseUrlAuth}/auth/logout?${new URLSearchParams({ redirect: loginUrl }).toString()}`;
     window.location.href = redirectUrl;
   }
 };
