@@ -156,6 +156,17 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
+      // image2video requires at least one image; otherwise the upstream rejects with
+      // "image_urls is invalid when generate videos". Validate client-side so the user
+      // gets an actionable message instead of the generic failure toast.
+      if (request.action === 'image2video' && !(request.image_urls && request.image_urls.length > 0)) {
+        ElMessage.warning(this.$t('veo.message.imageRequired'));
+        return;
+      }
+      // Only send image_urls when it actually has values; the worker rejects empty arrays.
+      if (!request.image_urls || request.image_urls.length === 0) {
+        delete request.image_urls;
+      }
       ElMessage.info(this.$t('veo.message.startingTask'));
       veoOperator
         .generate(request, {
