@@ -15,7 +15,30 @@
       name="keywords"
       content="AI Hub,Midjourney,Suno,Flux,Luma,Sora,GPT,Claude,Gemini,DeepSeek,AI Image,AI Music,AI Video,AI Chat"
     />
-    <link rel="canonical" href="https://hub.acedata.cloud" />
+    <!--
+      Canonical and og:url are set dynamically below so the same bundle, served
+      independently from multiple official hostnames (hub.acedata.cloud,
+      studio.acedata.cloud, hub-test.acedata.cloud), advertises the correct
+      origin instead of always pointing at hub.acedata.cloud.
+    -->
+    <script>
+      (function () {
+        try {
+          var origin = window.location.origin;
+          var path = window.location.pathname || '/';
+          var canonical = document.createElement('link');
+          canonical.setAttribute('rel', 'canonical');
+          canonical.setAttribute('href', origin + path);
+          document.head.appendChild(canonical);
+          var ogUrl = document.createElement('meta');
+          ogUrl.setAttribute('property', 'og:url');
+          ogUrl.setAttribute('content', origin + path);
+          document.head.appendChild(ogUrl);
+        } catch (e) {
+          /* no-op */
+        }
+      })();
+    </script>
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ace Data Cloud" />
@@ -24,7 +47,6 @@
       property="og:description"
       content="AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek."
     />
-    <meta property="og:url" content="https://hub.acedata.cloud" />
     <meta property="og:image" content="https://cdn.acedata.cloud/logo.png" />
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
