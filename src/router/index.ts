@@ -336,10 +336,13 @@ router.afterEach((to) => {
       description: seoData.description,
       keywords: seoData.keywords
     });
+    // Use the current origin so the WebApplication schema URL reflects the
+    // hostname the visitor is actually on (hub.acedata.cloud, studio.acedata.cloud, etc.).
+    const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://hub.acedata.cloud';
     setWebApplicationSchema({
       name: seoData.title,
       description: seoData.description,
-      url: `https://hub.acedata.cloud/${prefix}`,
+      url: `${origin}/${prefix}`,
       category: seoData.category
     });
   } else {
