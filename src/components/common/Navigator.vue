@@ -1,7 +1,7 @@
 <template>
   <div :direction="direction" :class="['navigator', { collapsed: direction === 'column' }]">
     <div v-if="direction === 'column'" class="brand">
-      <logo @click.stop="onHome" />
+      <logo collapsed @click.stop="onHome" />
     </div>
     <div class="top">
       <div ref="linksContainer" class="links">
