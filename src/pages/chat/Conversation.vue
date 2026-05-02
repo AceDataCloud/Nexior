@@ -13,11 +13,13 @@
           <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="onOpenSkills">
               <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
             </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('chat.connections.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="onOpenConnections">
               <font-awesome-icon icon="fa-solid fa-plug" />
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
             </el-button>
           </el-tooltip>
         </div>
@@ -682,6 +684,12 @@ export default defineComponent({
     height: 8px;
     border-radius: 50%;
     background: var(--el-color-success);
+  }
+
+  .external-icon {
+    font-size: 9px;
+    opacity: 0.55;
+    margin-left: -2px;
   }
 }
 @media (max-width: 767px) {
