@@ -53,8 +53,8 @@ export default defineComponent({
 
   .collapsed & {
     &__image {
-      height: 28px;
-      max-width: 28px;
+      height: 35px;
+      max-width: 35px;
     }
   }
 }

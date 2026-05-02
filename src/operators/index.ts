@@ -29,7 +29,6 @@ export * from './openaiimage';
 export * from './seedream';
 export * from './seedance';
 export * from './serp';
-export * from './skill';
 export * from './wan';
 export * from './config';
 export * from './agent';

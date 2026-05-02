@@ -11,29 +11,19 @@
             </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
-            <el-button
-              :class="['toolbar-btn', { active: activeSkillCount > 0 }]"
-              text
-              @click="skillManagerVisible = true"
-            >
+            <el-button class="toolbar-btn" text @click="onOpenSkills">
               <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-              <span v-if="activeSkillCount > 0" class="toolbar-count">{{ Math.min(activeSkillCount, 9) }}</span>
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
             </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('chat.connections.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="onOpenConnections">
               <font-awesome-icon icon="fa-solid fa-plug" />
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
             </el-button>
           </el-tooltip>
         </div>
       </div>
-      <skill-manager
-        v-if="skillManagerVisible"
-        v-model="skillManagerVisible"
-        :active-skills="activeSkills"
-        :token="credential?.token"
-        @change="onSkillChange"
-      />
       <desktop-agent-manager
         v-if="agentManagerVisible"
         v-model="agentManagerVisible"
@@ -82,7 +72,6 @@ import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/con
 import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import SkillManager from '@/components/chat/SkillManager.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
@@ -102,8 +91,6 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  skillManagerVisible: boolean;
-  activeSkills: string[];
   agentManagerVisible: boolean;
   agentConnected: boolean;
   agentName: string;
@@ -117,7 +104,6 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ModelSelector,
-    SkillManager,
     DesktopAgentManager,
     Message,
     Layout,
@@ -133,8 +119,6 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      skillManagerVisible: false,
-      activeSkills: [] as string[],
       agentManagerVisible: false,
       agentConnected: false,
       agentName: '',
@@ -186,9 +170,6 @@ export default defineComponent({
       // Disable sending until token/application/credential are all initialized,
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
-    },
-    activeSkillCount(): number {
-      return this.activeSkills.length;
     }
   },
   watch: {
@@ -206,7 +187,6 @@ export default defineComponent({
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
-    this.onLoadPersistedSkills();
     this.onCheckAgentStatus();
   },
   methods: {
@@ -217,19 +197,14 @@ export default defineComponent({
       // user's active connections from auth.acedata.cloud at request time.
       window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     },
-    onLoadPersistedSkills() {
-      try {
-        const stored = localStorage.getItem('chat_active_skills');
-        if (stored) {
-          this.activeSkills = JSON.parse(stored);
-        }
-      } catch {
-        // ignore
-      }
-    },
-    onSkillChange(skills: string[]) {
-      this.activeSkills = skills;
-      localStorage.setItem('chat_active_skills', JSON.stringify(skills));
+    onOpenSkills() {
+      // Same model as connections: skills are managed exclusively at
+      // auth.acedata.cloud/user/skills. The aichat2 worker pulls the
+      // user's active skills (uploads + globals + bundled built-ins +
+      // virtual MCP-prompt skills) on every request and exposes them
+      // to the model via the <skills> system-prompt block, so there is
+      // nothing to toggle in-app.
+      window.open('https://auth.acedata.cloud/user/skills', '_blank', 'noopener');
     },
     async onCheckAgentStatus() {
       const token = this.credential?.token;
@@ -518,9 +493,7 @@ export default defineComponent({
             model: this.model.name,
             references,
             id: this.conversationId,
-            stateful: true,
-            tools_enabled: true,
-            skills: this.activeSkills.length > 0 ? this.activeSkills : undefined
+            stateful: true
           },
           {
             token,
@@ -703,26 +676,6 @@ export default defineComponent({
     color: var(--el-color-primary);
   }
 
-  &.active {
-    color: var(--el-color-primary);
-    background-color: var(--el-color-primary-light-9);
-  }
-
-  .toolbar-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 16px;
-    height: 16px;
-    padding: 0 5px;
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1;
-    color: #fff;
-    background-color: var(--el-color-primary);
-    border-radius: 9999px;
-  }
-
   .agent-dot {
     position: absolute;
     top: 2px;
@@ -731,6 +684,12 @@ export default defineComponent({
     height: 8px;
     border-radius: 50%;
     background: var(--el-color-success);
+  }
+
+  .external-icon {
+    font-size: 9px;
+    opacity: 0.55;
+    margin-left: -2px;
   }
 }
 @media (max-width: 767px) {
