@@ -35,14 +35,27 @@
             @remove="fileList.splice(fileList.indexOf(file), 1)"
           />
         </template>
-        <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
+        <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="top">
           <span
-            :class="{ btn: true, 'btn-upload': true, disabled: (!isFileSupported && !isImageSupported) || answering }"
+            :class="{ btn: true, 'btn-tool': true, disabled: (!isFileSupported && !isImageSupported) || answering }"
           >
             <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
+            <span class="btn-label">{{ $t('chat.composer.addFiles') }}</span>
           </span>
         </el-tooltip>
       </el-upload>
+      <el-tooltip class="box-item" effect="dark" :content="$t('chat.skill.tooltip')" placement="top">
+        <span class="btn btn-tool" @click="onOpenSkills">
+          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="icon" />
+          <span class="btn-label">{{ $t('chat.composer.skills') }}</span>
+        </span>
+      </el-tooltip>
+      <el-tooltip class="box-item" effect="dark" :content="$t('chat.connections.tooltip')" placement="top">
+        <span class="btn btn-tool" @click="onOpenConnections">
+          <font-awesome-icon icon="fa-solid fa-plug" class="icon" />
+          <span class="btn-label">{{ $t('chat.composer.connections') }}</span>
+        </span>
+      </el-tooltip>
     </div>
     <el-button
       :disabled="answering || !questionValue || uploading || !ready"
@@ -229,6 +242,17 @@ export default defineComponent({
     },
     onError() {
       ElMessage.error(this.$t('chat.message.uploadReferencesError'));
+    },
+    onOpenSkills() {
+      // Skills are managed exclusively at auth.acedata.cloud/user/skills.
+      // Nexior is a thin entry point - clicking opens the canonical
+      // management page in a new tab.
+      window.open('https://auth.acedata.cloud/user/skills', '_blank', 'noopener');
+    },
+    onOpenConnections() {
+      // Connections (MCP + OAuth connectors) are managed exclusively at
+      // auth.acedata.cloud/user/connections.
+      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
     }
   }
 });
@@ -308,7 +332,7 @@ textarea.input:focus {
   .upload {
     display: inline-block;
     &.disabled {
-      .btn-upload {
+      .btn-tool {
         cursor: not-allowed;
         pointer-events: none;
         color: var(--el-text-color-disabled) !important;
@@ -330,28 +354,37 @@ textarea.input:focus {
     position: absolute;
     left: 15px;
     bottom: 15px;
+    right: 60px;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
     .btn {
-      display: block;
-      margin-right: 10px;
+      display: inline-flex;
+      align-items: center;
       z-index: 100;
       cursor: pointer;
-      background-color: var(--el-fill-color-lighter);
-      width: fit-content;
-      height: 36px;
-      line-height: 36px;
       user-select: none;
-      &.btn-upload {
-        border-radius: 50%;
-        width: 36px;
-        text-align: center;
-        color: var(--el-text-color-secondary);
-        background-color: var(--el-bg-color);
-        .icon-attachment {
-          font-size: 16px;
+      &.btn-tool {
+        height: 32px;
+        padding: 0 12px;
+        border-radius: 16px;
+        background-color: var(--el-fill-color-light);
+        color: var(--el-text-color-primary);
+        font-size: 13px;
+        line-height: 32px;
+        gap: 6px;
+        transition: background-color 0.15s ease;
+        .icon {
+          font-size: 14px;
           color: var(--el-text-color-primary);
+        }
+        .btn-label {
+          white-space: nowrap;
+        }
+        &:hover {
+          background-color: var(--el-fill-color);
         }
       }
     }
@@ -398,6 +431,16 @@ textarea.input:focus {
     .tools {
       left: 12px;
       bottom: 12px;
+      gap: 4px;
+      .btn.btn-tool {
+        padding: 0 10px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        .btn-label {
+          display: none;
+        }
+      }
     }
 
     .btn-send,
