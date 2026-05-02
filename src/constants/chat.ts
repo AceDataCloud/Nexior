@@ -104,6 +104,7 @@ export const CHAT_MODEL_GROK_4: IChatModel = {
   name: CHAT_MODEL_NAME_GROK_4,
   icon: CHAT_MODEL_ICON_GROK,
   modelGroup: 'grok',
+  isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.grok4'),
   getDescription: () => i18n.global.t('chat.model.grok4Description')
 };
@@ -140,6 +141,8 @@ export const CHAT_MODEL_GEMINI_3_0_PRO: IChatModel = {
   name: CHAT_MODEL_NAME_GEMINI_3_0_PRO,
   icon: CHAT_MODEL_ICON_GEMINI,
   modelGroup: 'gemini',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini30Pro'),
   getDescription: () => i18n.global.t('chat.model.gemini30ProDescription')
 };
@@ -149,6 +152,8 @@ export const CHAT_MODEL_GEMINI_2_5_PRO: IChatModel = {
   name: CHAT_MODEL_NAME_GEMINI_2_5_PRO,
   icon: CHAT_MODEL_ICON_GEMINI,
   modelGroup: 'gemini',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini25Pro'),
   getDescription: () => i18n.global.t('chat.model.gemini25ProDescription')
 };
@@ -158,6 +163,8 @@ export const CHAT_MODEL_GEMINI_2_5_FLASH: IChatModel = {
   name: CHAT_MODEL_NAME_GEMINI_2_5_FLASH,
   icon: CHAT_MODEL_ICON_GEMINI,
   modelGroup: 'gemini',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini25Flash'),
   getDescription: () => i18n.global.t('chat.model.gemini25FlashDescription')
 };
@@ -167,6 +174,8 @@ export const CHAT_MODEL_CLAUDE_OPUS_4: IChatModel = {
   name: CHAT_MODEL_NAME_CLAUDE_OPUS_4,
   icon: CHAT_MODEL_ICON_CLAUDE,
   modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeOpus4'),
   getDescription: () => i18n.global.t('chat.model.claudeOpus4Description')
 };
@@ -176,6 +185,8 @@ export const CHAT_MODEL_CLAUDE_SONNET_4: IChatModel = {
   name: CHAT_MODEL_NAME_CLAUDE_SONNET_4,
   icon: CHAT_MODEL_ICON_CLAUDE,
   modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeSonnet4'),
   getDescription: () => i18n.global.t('chat.model.claudeSonnet4Description')
 };
@@ -185,6 +196,8 @@ export const CHAT_MODEL_CLAUDE_3_7_SONNET: IChatModel = {
   name: CHAT_MODEL_NAME_CLAUDE_3_7_SONNET,
   icon: CHAT_MODEL_ICON_CLAUDE,
   modelGroup: 'claude',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claude37Sonnet'),
   getDescription: () => i18n.global.t('chat.model.claude37SonnetDescription')
 };
