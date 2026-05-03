@@ -1,4 +1,5 @@
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
+import store from '@/store';
 
 // Resolve the current site origin at runtime so that the same bundle can be
 // served independently from multiple official hostnames (e.g. hub.acedata.cloud,
@@ -11,10 +12,32 @@ function getCurrentOrigin(): string {
   return 'https://hub.acedata.cloud';
 }
 
-const SITE_NAME = 'Ace Data Cloud - AI Hub';
-const DEFAULT_IMAGE = 'https://cdn.acedata.cloud/logo.png';
-const DEFAULT_DESCRIPTION =
+// Hardcoded fallbacks used when the per-origin Site row hasn't loaded yet
+// (e.g. very early boot, or the /sites/ API call failed). Once `getSite`
+// finishes, every helper here prefers the live values from store.state.site
+// so subsites can fully white-label their <title>, og:*, JSON-LD, etc.
+const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Hub';
+const FALLBACK_BRAND_NAME = 'Ace Data Cloud';
+const FALLBACK_IMAGE = 'https://cdn.acedata.cloud/logo.png';
+const FALLBACK_DESCRIPTION =
   'AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek.';
+
+// Read live brand fields from the current Site row. Each one falls back to
+// the AceDataCloud defaults so first-party origins keep working unchanged.
+function brand() {
+  const site = (store.state as { site?: Record<string, unknown> } | undefined)?.site as
+    | { title?: string; description?: string; logo?: string }
+    | undefined;
+  const title = (site?.title || '').trim();
+  const description = (site?.description || '').trim();
+  const logo = (site?.logo || '').trim();
+  return {
+    siteName: title || FALLBACK_SITE_NAME,
+    brandName: title || FALLBACK_BRAND_NAME,
+    description: description || FALLBACK_DESCRIPTION,
+    image: logo || FALLBACK_IMAGE
+  };
+}
 
 // Locale code → hreflang value mapping (BCP 47)
 const HREFLANG_MAP: Record<string, string> = {
@@ -116,6 +139,7 @@ function removeHreflang() {
 // ---- Structured data helpers ----
 
 export function setWebApplicationSchema(options: { name: string; description: string; url: string; category: string }) {
+  const { brandName } = brand();
   setJsonLd('seo-webapp-ld', {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -131,21 +155,21 @@ export function setWebApplicationSchema(options: { name: string; description: st
     },
     provider: {
       '@type': 'Organization',
-      name: 'Ace Data Cloud',
-      url: 'https://platform.acedata.cloud'
+      name: brandName,
+      url: getCurrentOrigin()
     }
   });
 }
 
 export function setOrganization() {
+  const { brandName, image, description } = brand();
   setJsonLd('seo-org-ld', {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Ace Data Cloud',
-    url: 'https://platform.acedata.cloud',
-    logo: DEFAULT_IMAGE,
-    description:
-      'Unified AI API platform providing REST APIs for 100+ AI services including LLM chat, image generation, video generation, music creation, and web search.',
+    name: brandName,
+    url: getCurrentOrigin(),
+    logo: image,
+    description,
     sameAs: ['https://github.com/AceDataCloud', 'https://x.com/AceDataCloud', 'https://hub.acedata.cloud']
   });
 }
@@ -153,10 +177,11 @@ export function setOrganization() {
 // ---- Main SEO updater ----
 
 export function updateSeo(options: SeoOptions) {
-  const title = options.title ? `${options.title} - ${SITE_NAME}` : SITE_NAME;
-  const description = options.description || DEFAULT_DESCRIPTION;
+  const { siteName, brandName, description: brandDescription, image: brandImage } = brand();
+  const title = options.title ? `${options.title} - ${siteName}` : siteName;
+  const description = options.description || brandDescription;
   const url = options.url || `${getCurrentOrigin()}${window.location.pathname}`;
-  const image = options.image || DEFAULT_IMAGE;
+  const image = options.image || brandImage;
   const ogType = options.type || 'website';
 
   // Title
@@ -177,7 +202,7 @@ export function updateSeo(options: SeoOptions) {
   setMeta('property="og:url"', url);
   setMeta('property="og:image"', image);
   setMeta('property="og:type"', ogType);
-  setMeta('property="og:site_name"', 'Ace Data Cloud');
+  setMeta('property="og:site_name"', brandName);
 
   // Twitter Cards
   setMeta('name="twitter:card"', 'summary_large_image');
@@ -196,17 +221,18 @@ export function updateSeo(options: SeoOptions) {
 
 export function resetSeo() {
   const origin = getCurrentOrigin();
-  document.title = SITE_NAME;
-  setMeta('name="description"', DEFAULT_DESCRIPTION);
+  const { siteName, description: brandDescription, image: brandImage } = brand();
+  document.title = siteName;
+  setMeta('name="description"', brandDescription);
   setCanonical(origin);
-  setMeta('property="og:title"', SITE_NAME);
-  setMeta('property="og:description"', DEFAULT_DESCRIPTION);
+  setMeta('property="og:title"', siteName);
+  setMeta('property="og:description"', brandDescription);
   setMeta('property="og:url"', origin);
-  setMeta('property="og:image"', DEFAULT_IMAGE);
+  setMeta('property="og:image"', brandImage);
   setMeta('property="og:type"', 'website');
-  setMeta('name="twitter:title"', SITE_NAME);
-  setMeta('name="twitter:description"', DEFAULT_DESCRIPTION);
-  setMeta('name="twitter:image"', DEFAULT_IMAGE);
+  setMeta('name="twitter:title"', siteName);
+  setMeta('name="twitter:description"', brandDescription);
+  setMeta('name="twitter:image"', brandImage);
   removeJsonLd('seo-page-ld');
   removeJsonLd('seo-webapp-ld');
   removeJsonLd('seo-org-ld');
