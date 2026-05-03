@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "Subsite {origin} has been created. Would you like to open it now to continue configuration?",
     "description": "Asks if the user wants to open immediately after creation"
+  },
+  "title.domains": {
+    "message": "Custom domains for {origin}",
+    "description": "Domain manager dialog title"
+  },
+  "title.bindDomain": {
+    "message": "Bind a new domain",
+    "description": "Bind form heading"
+  },
+  "button.domains": {
+    "message": "Domains",
+    "description": "Open the per-subsite domain manager dialog"
+  },
+  "button.bindDomain": {
+    "message": "Bind domain",
+    "description": "Submit the bind form"
+  },
+  "button.verify": {
+    "message": "Verify",
+    "description": "Check the TXT challenge and advance state"
+  },
+  "button.checkProgress": {
+    "message": "Check progress",
+    "description": "Re-sync state from EdgeOne"
+  },
+  "button.refresh": {
+    "message": "Refresh",
+    "description": "Reload row state"
+  },
+  "field.hostname": {
+    "message": "Your hostname",
+    "description": "hostname input label"
+  },
+  "field.recordType": {
+    "message": "Record type",
+    "description": "DNS record type column"
+  },
+  "field.recordName": {
+    "message": "Record name",
+    "description": "DNS record name column"
+  },
+  "field.recordValue": {
+    "message": "Record value",
+    "description": "DNS record value column"
+  },
+  "placeholder.hostname": {
+    "message": "e.g. studio.mybrand.com",
+    "description": "hostname input placeholder"
+  },
+  "message.domainsIntro": {
+    "message": "Bind a hostname you own to this subsite. You'll need to control its DNS. Once verified, EdgeOne automatically issues a free HTTPS certificate and starts serving traffic.",
+    "description": "Top-of-dialog explainer"
+  },
+  "message.domainsEmpty": {
+    "message": "No custom domains bound yet. Fill in the hostname below and click Bind to start.",
+    "description": "Empty list hint"
+  },
+  "message.hostnameTip": {
+    "message": "Must be a public DNS-resolvable hostname under a domain you control. acedata.cloud / surl.id subdomains are not allowed.",
+    "description": "hostname input tip"
+  },
+  "message.hostnameInvalid": {
+    "message": "Invalid hostname. Must be a public domain (no IPs, no scheme).",
+    "description": "Client-side validation failure"
+  },
+  "message.domainCreated": {
+    "message": "Domain submitted. Add the DNS record below to verify ownership.",
+    "description": "POST /site-domains/ success"
+  },
+  "message.domainCreateFailed": {
+    "message": "Failed to create the domain. Please try again.",
+    "description": "Create failure fallback"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Failed to load domain list.",
+    "description": "List load failed"
+  },
+  "message.domainProgressed": {
+    "message": "Verification advanced - hold tight while we finish provisioning.",
+    "description": "State machine progressed"
+  },
+  "message.domainActive": {
+    "message": "Domain is live! Your subsite is now reachable over your custom HTTPS hostname.",
+    "description": "Reached Active"
+  },
+  "message.domainFailed": {
+    "message": "Domain verification or provisioning failed.",
+    "description": "Failed fallback message"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verification failed. Check that the DNS record has propagated.",
+    "description": "verify endpoint 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Unbind {hostname}? After unbinding, users will no longer reach your subsite at this hostname.",
+    "description": "Delete confirm dialog"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Failed to unbind the domain.",
+    "description": "DELETE endpoint failure"
+  },
+  "status.pendingDnsVerification": {
+    "message": "Awaiting DNS",
+    "description": "PendingDnsVerification tag"
+  },
+  "status.provisioningEo": {
+    "message": "Provisioning edge",
+    "description": "ProvisioningEo tag"
+  },
+  "status.provisioningCert": {
+    "message": "Issuing cert",
+    "description": "ProvisioningCert tag"
+  },
+  "status.active": {
+    "message": "Active",
+    "description": "Active tag"
+  },
+  "status.failed": {
+    "message": "Failed",
+    "description": "Failed tag"
   }
 }

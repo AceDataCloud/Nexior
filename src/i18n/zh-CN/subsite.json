@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "分站 {origin} 已创建。是否现在打开它继续配置？",
     "description": "创建后是否立即打开"
+  },
+  "title.domains": {
+    "message": "{origin} 的自定义域名",
+    "description": "自定义域名对话框标题"
+  },
+  "title.bindDomain": {
+    "message": "绑定新域名",
+    "description": "绑定表单标题"
+  },
+  "button.domains": {
+    "message": "域名",
+    "description": "打开域名管理对话框的按钮"
+  },
+  "button.bindDomain": {
+    "message": "绑定域名",
+    "description": "提交绑定新域名"
+  },
+  "button.verify": {
+    "message": "验证",
+    "description": "检查 TXT 验证记录是否到位"
+  },
+  "button.checkProgress": {
+    "message": "检查进度",
+    "description": "从 EdgeOne 同步最新状态"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "重新拉取该域名的状态"
+  },
+  "field.hostname": {
+    "message": "你的域名",
+    "description": "输入你拥有的域名或子域名"
+  },
+  "field.recordType": {
+    "message": "记录类型",
+    "description": "DNS 记录类型列"
+  },
+  "field.recordName": {
+    "message": "记录名称",
+    "description": "DNS 记录名称列"
+  },
+  "field.recordValue": {
+    "message": "记录值",
+    "description": "DNS 记录值列"
+  },
+  "placeholder.hostname": {
+    "message": "例如 studio.mybrand.com",
+    "description": "hostname 输入框占位符"
+  },
+  "message.domainsIntro": {
+    "message": "将你拥有的域名绑定到该分站。你需要能修改该域名的 DNS。验证通过后我们会自动为你申请免费 HTTPS 证书并在 EdgeOne 上部署。",
+    "description": "对话框顶部说明"
+  },
+  "message.domainsEmpty": {
+    "message": "暂未绑定任何自定义域名。在下方表单中填写完整域名并点击“绑定”即可开始。",
+    "description": "空列表提示"
+  },
+  "message.hostnameTip": {
+    "message": "需是你能控制 DNS 的公网域名。不允许 acedata.cloud / surl.id 的任何子域名。",
+    "description": "hostname 输入提示"
+  },
+  "message.hostnameInvalid": {
+    "message": "域名格式不正确。必须是公网可解析的域名，不允许 IP 地址。",
+    "description": "hostname 本地校验失败"
+  },
+  "message.domainCreated": {
+    "message": "域名已提交，请按提示添加 DNS 记录。",
+    "description": "POST /site-domains/ 成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "创建域名失败，请稍后重试。",
+    "description": "创建失败兑底"
+  },
+  "message.domainsLoadFailed": {
+    "message": "加载域名列表失败。",
+    "description": "拉域名列表失败"
+  },
+  "message.domainProgressed": {
+    "message": "验证进入下一阶段，请耐心等待。",
+    "description": "状态机推进"
+  },
+  "message.domainActive": {
+    "message": "域名已上线！现在可以通过你的自定义 HTTPS 地址访问分站。",
+    "description": "进入 Active 状态"
+  },
+  "message.domainFailed": {
+    "message": "域名验证或上线失败。",
+    "description": "Failed 状态兑底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "验证失败，请检查 DNS 记录是否已生效。",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "确定要解绑 {hostname} 吗？解绑后用户将无法从该域名访问你的分站。",
+    "description": "删除确认"
+  },
+  "message.domainDeleteFailed": {
+    "message": "删除域名失败。",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "待验证 DNS",
+    "description": "PendingDnsVerification 状态标签"
+  },
+  "status.provisioningEo": {
+    "message": "接入边缘中",
+    "description": "ProvisioningEo 状态标签"
+  },
+  "status.provisioningCert": {
+    "message": "申请证书中",
+    "description": "ProvisioningCert 状态标签"
+  },
+  "status.active": {
+    "message": "已上线",
+    "description": "Active 状态标签"
+  },
+  "status.failed": {
+    "message": "失败",
+    "description": "Failed 状态标签"
   }
 }
