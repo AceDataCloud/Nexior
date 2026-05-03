@@ -51,8 +51,7 @@ import { ElDrawer, ElButton } from 'element-plus';
 import { Close } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { KLING_PRESET_GROUPS } from './presets';
-
-const SEPARATOR = ', ';
+import { appendChunk, removeChunk } from './promptChunks';
 
 export default defineComponent({
   name: 'InspirationDrawer',
@@ -116,39 +115,19 @@ export default defineComponent({
     onToggle(text: string) {
       if (!text) return;
       if (this.isSelected(text)) {
-        this.setPrompt(this.removeChunk(this.prompt, text));
+        this.setPrompt(removeChunk(this.prompt, text));
       } else {
-        this.setPrompt(this.appendChunk(this.prompt, text));
+        this.setPrompt(appendChunk(this.prompt, text));
       }
     },
     onClearSelected() {
       let next = this.prompt;
       for (const t of this.allChipTexts) {
         while (next.includes(t)) {
-          next = this.removeChunk(next, t);
+          next = removeChunk(next, t);
         }
       }
       this.setPrompt(next);
-    },
-    appendChunk(current: string, chunk: string): string {
-      const trimmed = current.trim();
-      if (!trimmed) return chunk;
-      // Avoid duplicating an already-present chunk.
-      if (trimmed.includes(chunk)) return trimmed;
-      return `${trimmed}${SEPARATOR}${chunk}`;
-    },
-    removeChunk(current: string, chunk: string): string {
-      // Remove the chunk plus any adjacent separator/space, preserving the rest.
-      const variants = [`${chunk}${SEPARATOR}`, `${SEPARATOR}${chunk}`, chunk];
-      let next = current;
-      for (const v of variants) {
-        if (next.includes(v)) {
-          next = next.replace(v, '');
-          break;
-        }
-      }
-      // Tidy trailing separators.
-      return next.replace(/(?:,\s*)+$/, '').replace(/^(?:,\s*)+/, '');
     }
   }
 });

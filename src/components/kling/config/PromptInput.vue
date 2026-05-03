@@ -10,6 +10,7 @@
         <info-icon :content="$t('kling.description.prompt')" class="info" />
       </div>
     </div>
+    <inspiration-pills />
     <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('kling.placeholder.prompt')" />
   </div>
 </template>
@@ -19,6 +20,7 @@ import { defineComponent } from 'vue';
 import { ElInput, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
+import InspirationPills from '../inspiration/InspirationPills.vue';
 
 export const DEFAULT_PROMPT = '';
 
@@ -28,7 +30,8 @@ export default defineComponent({
     ElInput,
     ElButton,
     FontAwesomeIcon,
-    InfoIcon
+    InfoIcon,
+    InspirationPills
   },
   emits: ['open-inspiration'],
   computed: {
