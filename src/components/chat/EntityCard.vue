@@ -1,0 +1,249 @@
+<template>
+  <div class="entity-card" :class="`entity-card--${cardType}`">
+    <!-- Audio -->
+    <div v-if="cardType === 'audio'" class="audio-card">
+      <div v-if="card.thumbnail" class="thumb">
+        <img :src="card.thumbnail" :alt="card.title || ''" />
+      </div>
+      <div class="meta">
+        <div v-if="card.title" class="title" :title="card.title">{{ card.title }}</div>
+        <div v-if="card.duration" class="sub">{{ formattedDuration }}</div>
+        <audio class="player" controls preload="metadata" :src="card.url" />
+        <div class="actions">
+          <a class="download" :href="card.url" target="_blank" rel="noopener noreferrer">
+            <font-awesome-icon icon="fa-solid fa-arrow-down" />
+            {{ $t('common.button.download') }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <div v-else-if="cardType === 'video'" class="video-card">
+      <video class="player" controls preload="metadata" :src="card.url" :poster="card.thumbnail || undefined" />
+      <div v-if="card.title || card.duration" class="meta">
+        <span v-if="card.title" class="title" :title="card.title">{{ card.title }}</span>
+        <span v-if="card.duration" class="sub">{{ formattedDuration }}</span>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div v-else-if="cardType === 'image'" class="image-card">
+      <el-image
+        :src="card.url"
+        :alt="card.alt || card.title || ''"
+        fit="contain"
+        class="image"
+        :preview-src-list="[card.url]"
+        :initial-index="0"
+        :hide-on-click-modal="true"
+      />
+      <div v-if="card.title" class="title" :title="card.title">{{ card.title }}</div>
+    </div>
+
+    <!-- File / fallback -->
+    <a
+      v-else
+      class="file-card"
+      :href="card.url"
+      target="_blank"
+      rel="noopener noreferrer"
+      :title="card.title || card.url"
+    >
+      <font-awesome-icon class="icon" :icon="fileIcon" />
+      <div class="info">
+        <div class="title">{{ card.title || cleanFileName }}</div>
+        <div class="sub">{{ card.mimeType || hostname }}</div>
+      </div>
+      <font-awesome-icon class="open" icon="fa-solid fa-arrow-up-right-from-square" />
+    </a>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, type PropType } from 'vue';
+import { ElImage } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import type { IChatCard } from '@/models';
+
+export default defineComponent({
+  name: 'EntityCard',
+  components: { ElImage, FontAwesomeIcon },
+  props: {
+    card: {
+      type: Object as PropType<IChatCard>,
+      required: true
+    }
+  },
+  computed: {
+    /** Normalize the card type into one of the four primary renderers. */
+    cardType(): 'audio' | 'video' | 'image' | 'file' {
+      const t = (this.card.type || '').toLowerCase();
+      if (t === 'audio' || t === 'video' || t === 'image') return t;
+      if (this.card.mimeType?.startsWith('audio/')) return 'audio';
+      if (this.card.mimeType?.startsWith('video/')) return 'video';
+      if (this.card.mimeType?.startsWith('image/')) return 'image';
+      return 'file';
+    },
+    formattedDuration(): string {
+      const total = this.card.duration ?? 0;
+      if (!Number.isFinite(total) || total <= 0) return '';
+      const mm = Math.floor(total / 60);
+      const ss = Math.floor(total % 60)
+        .toString()
+        .padStart(2, '0');
+      return `${mm}:${ss}`;
+    },
+    cleanFileName(): string {
+      try {
+        const u = new URL(this.card.url);
+        const segs = u.pathname.split('/').filter(Boolean);
+        return decodeURIComponent(segs[segs.length - 1] || u.hostname);
+      } catch {
+        return this.card.url;
+      }
+    },
+    hostname(): string {
+      try {
+        return new URL(this.card.url).hostname;
+      } catch {
+        return '';
+      }
+    },
+    fileIcon(): string {
+      const mime = (this.card.mimeType || '').toLowerCase();
+      if (mime.includes('pdf')) return 'fa-solid fa-file-pdf';
+      if (mime.includes('word') || mime.includes('msword')) return 'fa-solid fa-file-word';
+      if (mime.includes('sheet') || mime.includes('excel') || mime.includes('csv')) return 'fa-solid fa-file-excel';
+      if (mime.includes('zip') || mime.includes('compressed')) return 'fa-solid fa-file-zipper';
+      if (mime.startsWith('text/')) return 'fa-solid fa-file-lines';
+      return 'fa-solid fa-file';
+    }
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+.entity-card {
+  margin: 8px 0;
+  max-width: 480px;
+
+  .title {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sub {
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
+  }
+}
+
+.audio-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 12px;
+  background: var(--el-fill-color-light);
+
+  .thumb img {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+  }
+  .meta {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .player {
+    width: 100%;
+    height: 36px;
+    margin-top: 4px;
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .download {
+    color: var(--el-color-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .download:hover {
+    text-decoration: underline;
+  }
+}
+
+.video-card {
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+
+  .player {
+    width: 100%;
+    max-height: 360px;
+    display: block;
+    background: #000;
+  }
+  .meta {
+    padding: 8px 12px;
+    background: var(--el-fill-color-light);
+    color: var(--el-text-color-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+}
+
+.image-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+  }
+}
+
+.file-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--el-border-color-light);
+  border-radius: 10px;
+  background: var(--el-fill-color-light);
+  text-decoration: none;
+  color: inherit;
+
+  .icon {
+    font-size: 24px;
+    color: var(--el-color-primary);
+  }
+  .info {
+    flex: 1;
+    min-width: 0;
+  }
+  .open {
+    color: var(--el-text-color-secondary);
+  }
+}
+.file-card:hover {
+  background: var(--el-fill-color);
+}
+</style>

@@ -48,6 +48,7 @@
                 <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
               </div>
               <tool-activity v-if="item.type === 'tool_use'" :item="item" />
+              <entity-card v-if="item.type === 'card' && item.card" :card="item.card" />
             </div>
           </div>
         </div>
@@ -131,6 +132,7 @@ import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
+import EntityCard from './EntityCard.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -163,6 +165,7 @@ export default defineComponent({
     MarkdownRenderer,
     FilePreview,
     ToolActivity,
+    EntityCard,
     ElButton,
     ElImage,
     ElInput,
