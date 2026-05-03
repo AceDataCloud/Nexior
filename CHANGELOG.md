@@ -1,8 +1,28 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Apr 2026 03:30:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 03 May 2026 00:49:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.39.0
+
+Sun, 03 May 2026 00:49:31 GMT
+
+### Minor changes
+
+- Connectors polish: BUILT-IN badge, icons, GitLab brand, wider cards (cqc@cuiqingcai.com)
+- feat(studio): serve nexior independently at studio.acedata.cloud (separate K8s stack + host-aware SEO) (dev@acedata.cloud)
+- Add standalone /connectors page with custom MCP servers and built-in provider directory (cqc@cuiqingcai.com)
+
+### Patches
+
+- feat(chat): update Claude model lineup to Opus 4.7, Sonnet 4.6, Haiku 4.5 (dev@acedata.cloud)
+- fix logo style and navigator padding (cqc@cuiqingcai.com)
+- feat(chat): use external-link icon for skills/connections toolbar buttons (dev@acedata.cloud)
+- Fix inviter_id binding through auth redirect on custom-domain (white-label) sites (cqc@cuiqingcai.com)
+- Inline Skills and Connectors entries below the chat composer input (cqc@cuiqingcai.com)
+- fix(ui): sidebar logo respects site.logo / site.favicon again (cqc@cuiqingcai.com)
+- feat(chat): enable image/file upload entry for Claude, Gemini, Grok-4 (cqc@cuiqingcai.com)
 
 ## 3.34.0
 
