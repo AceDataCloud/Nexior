@@ -173,15 +173,15 @@
   },
   "message.recordingPermissionDenied": {
     "message": "マイクの権限が拒否されるか、使用できません",
-    "description": "ユーザーがマイクの権限を拒否"
+    "description": "ユーザーがマイクの権限を拒否した"
   },
   "button.video": {
-    "message": "動画",
-    "description": "動画ボタンのテキスト"
+    "message": "ビデオ",
+    "description": "ビデオボタンのテキスト"
   },
   "button.download_video": {
-    "message": "動画をダウンロード",
-    "description": "動画ダウンロードボタンのテキスト"
+    "message": "ビデオをダウンロード",
+    "description": "ビデオダウンロードボタンのテキスト"
   },
   "button.download_wav": {
     "message": "WAV 無損ダウンロード",
@@ -192,16 +192,16 @@
     "description": "MIDI形式ボタンテキスト"
   },
   "button.get_stems": {
-    "message": "ステム取得",
-    "description": "ステム取得ボタンテキスト"
+    "message": "音源分離",
+    "description": "音源分離ボタンテキスト"
   },
   "button.cover_music": {
     "message": "カバー",
     "description": "カバーボタンテキスト"
   },
   "button.concat_music": {
-    "message": "連結",
-    "description": "音楽を連結するボタンテキスト"
+    "message": "結合",
+    "description": "音楽を結合するボタンテキスト"
   },
   "button.download_audio": {
     "message": "音楽ダウンロード",
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "リマスター",
-    "description": "音質を向上させるリマスターボタンテキスト"
+    "description": "リマスター音質向上ボタンテキスト"
   },
   "button.replace_section": {
     "message": "セクション置換",
@@ -228,8 +228,8 @@
     "description": "AIでスタイルを最適化するボタンテキスト"
   },
   "button.all_stems": {
-    "message": "全ステム取得",
-    "description": "すべてのトラックを分離するボタンテキスト"
+    "message": "全ての音源分離",
+    "description": "全てのトラックを分離するボタンテキスト"
   },
   "model.model1": {
     "message": "v2",
@@ -324,8 +324,8 @@
     "description": "生成バリエーションの多様性を制御"
   },
   "name.audioWeight": {
-    "message": "元曲の重み",
-    "description": "カバー時の元曲の影響重み"
+    "message": "原曲の重み",
+    "description": "カバー時の原曲の影響重み"
   },
   "name.lyricPrompt": {
     "message": "歌詞プロンプト",
@@ -380,7 +380,7 @@
     "description": "パラメータ'title'の説明"
   },
   "description.uploadAudios": {
-    "message": "生成の参考として音楽をアップロード、アップロードには少し待つ必要があり、生成成功後にアップロードした音楽に基づいて生成可能",
+    "message": "生成の参考として音楽をアップロード、アップロードにはしばらく待つ必要があり、生成成功後にアップロードした音楽に基づいて生成可能",
     "description": "アップロード参考パラメータの説明"
   },
   "description.vocalGender": {
@@ -396,8 +396,8 @@
     "description": "スタイル影響力パラメータの説明"
   },
   "description.audioWeight": {
-    "message": "カバー時の元曲の影響の重み (0-100)",
-    "description": "元曲重みパラメータの説明"
+    "message": "カバー時の原曲の影響度 (0-100)",
+    "description": "原曲重みパラメータの説明"
   },
   "description.lyricPrompt": {
     "message": "歌詞の説明を入力すると、AIが自動的に歌詞を生成します",
@@ -465,11 +465,11 @@
   },
   "gender.male": {
     "message": "男性",
-    "description": "男性の声の選択肢"
+    "description": "男性の声のオプション"
   },
   "gender.female": {
     "message": "女性",
-    "description": "女性の声の選択肢"
+    "description": "女性の声のオプション"
   },
   "gender.auto": {
     "message": "自動",
@@ -517,7 +517,7 @@
   },
   "message.startUploadAudioFailed": {
     "message": "カスタム音楽のアップロードに失敗しました",
-    "description": "音楽生成タスク開始に失敗した時のエラーメッセージ"
+    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
   },
   "message.startTaskFailed": {
     "message": "音楽生成タスクの開始に失敗しました",
@@ -533,11 +533,11 @@
   },
   "message.generateLyricsSuccess": {
     "message": "歌詞の生成に成功しました",
-    "description": "歌詞生成成功時のメッセージ"
+    "description": "歌詞生成に成功した時のメッセージ"
   },
   "message.generateLyricsFailed": {
     "message": "歌詞の生成に失敗しました",
-    "description": "歌詞生成失敗時のメッセージ"
+    "description": "歌詞生成に失敗した時のメッセージ"
   },
   "message.optimizingStyle": {
     "message": "スタイル説明を最適化しています...",
@@ -545,11 +545,11 @@
   },
   "message.optimizeStyleSuccess": {
     "message": "スタイルの最適化に成功しました",
-    "description": "スタイル最適化成功時のメッセージ"
+    "description": "スタイル最適化に成功した時のメッセージ"
   },
   "message.optimizeStyleFailed": {
     "message": "スタイルの最適化に失敗しました",
-    "description": "スタイル最適化失敗時のメッセージ"
+    "description": "スタイル最適化に失敗した時のメッセージ"
   },
   "message.fetchingWav": {
     "message": "WAVファイルを取得中...",
@@ -604,8 +604,8 @@
     "description": "アップロードした曲にボーカルを追加するボタンテキスト"
   },
   "button.samples": {
-    "message": "サンプルを追加",
-    "description": "アップロードした曲にサンプルを追加するボタンテキスト"
+    "message": "サンプリングを追加",
+    "description": "アップロードした曲にサンプリングを追加するボタンテキスト"
   },
   "button.extract_vocals": {
     "message": "ボーカルを抽出",
@@ -636,8 +636,8 @@
     "description": "伴奏を追加する時間範囲"
   },
   "name.samplesRange": {
-    "message": "サンプル範囲",
-    "description": "サンプルを追加する時間範囲"
+    "message": "サンプリング範囲",
+    "description": "サンプリングを追加する時間範囲"
   },
   "placeholder.overpaintingStart": {
     "message": "開始時間 (秒)",
@@ -657,11 +657,11 @@
   },
   "placeholder.samplesStart": {
     "message": "開始時間 (秒)",
-    "description": "サンプルの開始時間のプレースホルダー"
+    "description": "サンプリングの開始時間のプレースホルダー"
   },
   "placeholder.samplesEnd": {
     "message": "終了時間 (秒)",
-    "description": "サンプルの終了時間のプレースホルダー"
+    "description": "サンプリングの終了時間のプレースホルダー"
   },
   "placeholder.personaId": {
     "message": "歌手スタイル ID を入力...",
@@ -680,8 +680,8 @@
     "description": "伴奏追加機能の説明"
   },
   "description.samples": {
-    "message": "指定した時間範囲内でアップロードした音楽にサンプルを追加します",
-    "description": "サンプル追加機能の説明"
+    "message": "指定した時間範囲内でアップロードした音楽にサンプリングを追加します",
+    "description": "サンプリング追加機能の説明"
   },
   "message.fetchingTiming": {
     "message": "ビートデータを取得中...",
@@ -716,7 +716,7 @@
     "description": "カスタム創作モードのラベル"
   },
   "model.v55desc": {
-    "message": "音声キャラクター · カスタムモデル",
+    "message": "声のキャラクター · カスタムモデル",
     "description": "v5.5モデルの説明"
   },
   "model.v5desc": {
@@ -728,11 +728,11 @@
     "description": "v4.5+ モデルの説明"
   },
   "model.v45desc": {
-    "message": "インテリジェントなプロンプト",
+    "message": "スマートプロンプト",
     "description": "v4.5 モデルの説明"
   },
   "model.v4desc": {
-    "message": "音質の改善",
+    "message": "音質改善",
     "description": "v4 モデルの説明"
   },
   "model.v35desc": {
@@ -785,11 +785,11 @@
   },
   "sort.newest": {
     "message": "最新",
-    "description": "最新順に並べる"
+    "description": "最新順に並べ替え"
   },
   "sort.oldest": {
     "message": "最古",
-    "description": "最古順に並べる"
+    "description": "最古順に並べ替え"
   },
   "filter.title": {
     "message": "フィルター",
@@ -881,14 +881,38 @@
   },
   "message.deleteSuccess": {
     "message": "曲が削除されました",
-    "description": "曲の削除が成功したときのメッセージ"
+    "description": "曲削除成功時のメッセージ"
   },
   "message.deleteFailed": {
     "message": "曲の削除に失敗しました",
-    "description": "曲の削除が失敗したときのメッセージ"
+    "description": "曲削除失敗時のメッセージ"
   },
   "name.generating": {
     "message": "生成中",
     "description": "曲が生成中の状態ラベル"
+  },
+  "button.adjust_speed": {
+    "message": "速度調整",
+    "description": "曲の再生速度を調整するボタンのテキスト"
+  },
+  "button.reuse_prompt": {
+    "message": "プロンプトを再利用",
+    "description": "既存のタスクプロンプトを再利用するボタンのテキスト"
+  },
+  "name.adjustSpeed": {
+    "message": "速度",
+    "description": "速度選択器のラベル"
+  },
+  "description.adjustSpeed": {
+    "message": "異なる再生速度で曲を再生成（0.5倍から2倍）",
+    "description": "速度調整機能の説明"
+  },
+  "message.reusePromptSuccess": {
+    "message": "プロンプトが再利用され、調整後に再生成可能",
+    "description": "プロンプト再利用成功後のメッセージ"
+  },
+  "message.reusePromptEmpty": {
+    "message": "再利用可能なプロンプトデータがありません",
+    "description": "タスクに再利用可能なプロンプトがないときのメッセージ"
   }
 }

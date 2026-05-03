@@ -41,7 +41,7 @@
   },
   "voice.fromUpload": {
     "message": "Ladda upp ljudklon",
-    "description": "Alternativ för att ladda upp ljudfil för att klona röst"
+    "description": "Alternativ för att klona ljudfil genom att ladda upp"
   },
   "voice.audioId": {
     "message": "Låt ID",
@@ -65,7 +65,7 @@
   },
   "voice.createFailed": {
     "message": "Misslyckades med att skapa röst",
-    "description": "Meddelande om att rösten skapades misslyckat"
+    "description": "Meddelande om att rösten skapades inte"
   },
   "voice.empty": {
     "message": "Inga röster tillgängliga, klicka på knappen ovan för att skapa",
@@ -121,7 +121,7 @@
   },
   "button.uploadAudios": {
     "message": "Ladda upp",
-    "description": "Text på knappen för att låta användaren ladda upp referens"
+    "description": "Text på knappen för att ladda upp referens"
   },
   "button.addAudio": {
     "message": "+ Ljud",
@@ -220,8 +220,8 @@
     "description": "Text för knappen för att skapa en mashup av flera låtar"
   },
   "button.generate_lyrics": {
-    "message": "Generera text",
-    "description": "Text för knappen för att automatiskt generera låttext"
+    "message": "Generera låttext",
+    "description": "Text för knappen för att automatiskt generera låttext med AI"
   },
   "button.optimize_style": {
     "message": "Optimera stil",
@@ -241,7 +241,7 @@
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Generera instrumental musik utan sång"
+    "description": "Generera ren instrumental musik utan sång"
   },
   "name.referenceAudios": {
     "message": "Referensmusik",
@@ -273,7 +273,7 @@
   },
   "name.type": {
     "message": "Anpassad läge",
-    "description": "Namn på det anpassade läget"
+    "description": "Namn på anpassad läge"
   },
   "name.prompt": {
     "message": "Låtbeskrivning",
@@ -288,8 +288,8 @@
     "description": "Prompt för innehållsinmatning"
   },
   "name.lyrics": {
-    "message": "Text",
-    "description": "Prompt för textinmatning"
+    "message": "Låttext",
+    "description": "Prompt för låttextinmatning"
   },
   "name.style": {
     "message": "Stil",
@@ -301,11 +301,11 @@
   },
   "name.title": {
     "message": "Titel",
-    "description": "Prompt för låtens titel"
+    "description": "Prompt för låtstitel"
   },
   "name.vocalGender": {
-    "message": "Sångarens kön",
-    "description": "Välj sångarens kön"
+    "message": "Sångstämma",
+    "description": "Välj sångstämma"
   },
   "name.advancedParams": {
     "message": "Avancerade parametrar",
@@ -317,19 +317,19 @@
   },
   "name.styleInfluence": {
     "message": "Stilens påverkan",
-    "description": "Kontrollera stilens påverkan på resultatet"
+    "description": "Kontrollera stilens påverkan på det genererade resultatet"
   },
   "name.variationCategory": {
-    "message": "Variationstyp",
-    "description": "Kontrollera mångfalden i de genererade variationerna"
+    "message": "Varianttyp",
+    "description": "Kontrollera mångfalden av genererade varianter"
   },
   "name.audioWeight": {
     "message": "Originalvikt",
     "description": "Vikt av originallåten vid tolkning"
   },
   "name.lyricPrompt": {
-    "message": "Textprompt",
-    "description": "Prompt för att automatiskt generera text"
+    "message": "Låttextprompt",
+    "description": "Prompt för att automatiskt generera låttext"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
@@ -357,14 +357,14 @@
   },
   "name.songDescription": {
     "message": "Låtbeskrivning",
-    "description": "Beskrivning av låten"
+    "description": "Låtbeskrivningsläge"
   },
   "description.prompt": {
     "message": "Beskriv den musikstil och tema du önskar",
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.lyrics": {
-    "message": "Ange anpassad text, stödjer [Vers], [Refräng], [Bro] etc. avsnittsmärkningar",
+    "message": "Ange anpassad låttext, stödjer [Vers], [Refräng], [Bro] etc. avsnittsmärkningar",
     "description": "Beskrivning av parametern 'lyrics'"
   },
   "description.style": {
@@ -380,8 +380,8 @@
     "description": "Beskrivning av parametern 'title'"
   },
   "description.uploadAudios": {
-    "message": "Ladda upp musik som referens för generering, uppladdningen kan ta en stund, genereringen kan göras baserat på den uppladdade musiken när den lyckas",
-    "description": "Beskrivning av parametern för att ladda upp referenser"
+    "message": "Ladda upp musik som referens för generering, uppladdningen kan ta en stund, genereringen kan göras baserat på den uppladdade musiken efter att den lyckats",
+    "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.vocalGender": {
     "message": "Välj kön för den genererade rösten (endast version 4.5 och senare stöds)",
@@ -412,56 +412,56 @@
     "description": "Väntande status för uppgiften"
   },
   "placeholder.prompt": {
-    "message": "Beskriv musiken du vill ha, till exempel: en varm folkmusik, om längtan efter hösten...",
-    "description": "Platshållare för låtbeskrivning"
+    "message": "Beskriv den musik du vill ha, till exempel: en varm folkmusik, om längtan efter hösten...",
+    "description": "Platsinnehavare för låtbeskrivning"
   },
   "placeholder.lyrics": {
     "message": "[Vers]\nI denna tysta natt\nStjärnorna blinkar på himlen\n\n[Refräng]\nLåt oss sjunga tillsammans\nTills gryningen...",
-    "description": "Platshållare för textinmatning"
+    "description": "Platsinnehavare för textinmatning"
   },
   "placeholder.extend.lyrics": {
     "message": "Skriv in texten som ska utökas...",
-    "description": "Platshållare för utökning av text"
+    "description": "Platsinnehavare för utökning av text"
   },
   "placeholder.extend.continue_at": {
     "message": "Från vilken sekund ska vi börja utöka...",
-    "description": "Platshållare för starttid för utökning"
+    "description": "Platsinnehavare för starttid för utökning"
   },
   "placeholder.style": {
     "message": "Till exempel: akustisk pop, jazz, R&B, elektronisk...",
-    "description": "Platshållare för stilinmatning"
+    "description": "Platsinnehavare för stilinmatning"
   },
   "placeholder.styleNegative": {
     "message": "Till exempel: heavy metal, skrikande...",
-    "description": "Platshållare för uteslutna stilar"
+    "description": "Platsinnehavare för uteslutna stilar"
   },
   "placeholder.title": {
     "message": "Skriv in låtens namn...",
-    "description": "Platshållare för titel"
+    "description": "Platsinnehavare för titel"
   },
   "placeholder.select": {
     "message": "Välj modell...",
-    "description": "Platshållare för modellval"
+    "description": "Platsinnehavare för modellval"
   },
   "placeholder.position": {
     "message": "Välj...",
-    "description": "Platshållare för position"
+    "description": "Platsinnehavare för position"
   },
   "placeholder.lyricPrompt": {
     "message": "Beskriv temat för texten, AI kommer automatiskt att generera...",
-    "description": "Platshållare för textprompt"
+    "description": "Platsinnehavare för textprompt"
   },
   "placeholder.replaceSectionStart": {
     "message": "Starttid (sekunder)",
-    "description": "Platshållare för starttid för ersättning"
+    "description": "Platsinnehavare för starttid för ersättning"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Sluttid (sekunder)",
-    "description": "Platshållare för sluttid för ersättning"
+    "description": "Platsinnehavare för sluttid för ersättning"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text för generera-knappen"
+    "description": "Text på generera-knappen"
   },
   "gender.male": {
     "message": "Manlig röst",
@@ -477,11 +477,11 @@
   },
   "variation.high": {
     "message": "Hög variation",
-    "description": "Alternativ för hög variation"
+    "description": "Alternativ för hög mångfald"
   },
   "variation.low": {
     "message": "Låg variation",
-    "description": "Alternativ för låg variation"
+    "description": "Alternativ för låg mångfald"
   },
   "lyricsMode.manual": {
     "message": "Manuell",
@@ -620,8 +620,8 @@
     "description": "Text på knappen för att skapa sångarstil"
   },
   "button.mashup_lyrics": {
-    "message": "Mixade texter",
-    "description": "Text på knappen för att mixa två texter"
+    "message": "Mashup-texter",
+    "description": "Text på knappen för att mashupa två texter"
   },
   "name.persona": {
     "message": "Sångarstil",
@@ -692,7 +692,7 @@
     "description": "Meddelande vid misslyckad hämtning av taktdata"
   },
   "message.fetchTimingSuccess": {
-    "message": "Taktdata hämtades framgångsrikt",
+    "message": "Taktdatan hämtades framgångsrikt",
     "description": "Meddelande vid framgångsrik hämtning av taktdata"
   },
   "message.extractingVocals": {
@@ -728,7 +728,7 @@
     "description": "v4.5+ modellbeskrivning"
   },
   "model.v45desc": {
-    "message": "Intelligenta tipsord",
+    "message": "Intelligenta nyckelord",
     "description": "v4.5 modellbeskrivning"
   },
   "model.v4desc": {
@@ -753,7 +753,7 @@
   },
   "button.expand_lyrics": {
     "message": "Expandera redigering",
-    "description": "Expandera text för fullskärmsredigering knapptext"
+    "description": "Expandera text för helskärmsredigering knapptext"
   },
   "button.enhance_lyrics": {
     "message": "Förbättra",
@@ -765,7 +765,7 @@
   },
   "placeholder.enhanceLyrics": {
     "message": "Skriv in ändringsinstruktioner, t.ex.: Gör texten gladare...",
-    "description": "Textförbättrings inmatningsplatshållare"
+    "description": "Platsinnehavare för textförbättring"
   },
   "message.enhancingLyrics": {
     "message": "Förbättrar text...",
@@ -781,7 +781,7 @@
   },
   "placeholder.searchSongs": {
     "message": "Sök låtar...",
-    "description": "Platshållare för låtsökning"
+    "description": "Platsinnehavare för låtsökning"
   },
   "sort.newest": {
     "message": "Nyast",
@@ -890,5 +890,29 @@
   "name.generating": {
     "message": "Genererar",
     "description": "Statusetikett för låt som genereras"
+  },
+  "button.adjust_speed": {
+    "message": "Justera hastighet",
+    "description": "Knapptext för att justera låtens uppspelningshastighet"
+  },
+  "button.reuse_prompt": {
+    "message": "Återanvänd nyckelord",
+    "description": "Knapptext för att återanvända befintliga uppgiftsnyckelord"
+  },
+  "name.adjustSpeed": {
+    "message": "Hastighet",
+    "description": "Etikett för hastighetsväljare"
+  },
+  "description.adjustSpeed": {
+    "message": "Återskapa låt med olika uppspelningshastigheter (0,5x till 2x)",
+    "description": "Beskrivning av justera hastighetsfunktion"
+  },
+  "message.reusePromptSuccess": {
+    "message": "Nyckelord har återanvänts, kan justeras och genereras igen",
+    "description": "Meddelande vid lyckad återanvändning av nyckelord"
+  },
+  "message.reusePromptEmpty": {
+    "message": "Inga nyckelord att återanvända",
+    "description": "Meddelande när det inte finns nyckelord att återanvända"
   }
 }

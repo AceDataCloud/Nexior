@@ -156,7 +156,7 @@
     "description": "마이크 오디오를 녹음하는 탭"
   },
   "description.dropAudioHere": {
-    "message": "여기로 오디오를 드래그하거나 업로드를 클릭하세요.",
+    "message": "여기에 오디오를 드래그하거나 업로드를 클릭하세요.",
     "description": "오디오 드래그 영역의 안내 텍스트"
   },
   "description.audioFormats": {
@@ -164,7 +164,7 @@
     "description": "지원하는 오디오 형식 안내"
   },
   "message.recordingReady": {
-    "message": "녹음 준비 완료",
+    "message": "녹음이 준비되었습니다.",
     "description": "녹음 완료 후 표시"
   },
   "message.recordingUnsupported": {
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "리마스터",
-    "description": "리마스터 음질 향상 버튼 텍스트"
+    "description": "리마스터하여 음질 향상 버튼 텍스트"
   },
   "button.replace_section": {
     "message": "구간 교체",
@@ -217,7 +217,7 @@
   },
   "button.mashup": {
     "message": "메시업",
-    "description": "여러 곡을 메시업하는 버튼 텍스트"
+    "description": "여러 곡을 혼합하는 버튼 텍스트"
   },
   "button.generate_lyrics": {
     "message": "AI 가사 생성",
@@ -313,7 +313,7 @@
   },
   "name.weirdness": {
     "message": "창의성",
-    "description": "생성 음악의 창의성 정도 조절"
+    "description": "생성된 음악의 창의성 정도 조절"
   },
   "name.styleInfluence": {
     "message": "스타일 영향력",
@@ -321,7 +321,7 @@
   },
   "name.variationCategory": {
     "message": "변형 유형",
-    "description": "생성 변형의 다양성 정도 조절"
+    "description": "생성된 변형의 다양성 정도 조절"
   },
   "name.audioWeight": {
     "message": "원곡 비율",
@@ -380,7 +380,7 @@
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성의 참조로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성 성공 후 업로드한 음악에 따라 생성됩니다.",
+    "message": "생성의 참조로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성 성공 후 업로드한 음악을 기반으로 생성됩니다.",
     "description": "참조 업로드 매개변수의 설명"
   },
   "description.vocalGender": {
@@ -501,7 +501,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "업로드한 음악이 최대 수량을 초과했습니다",
-    "description": "업로드한 음악이 최대 수량을 초과할 때의 오류 메시지"
+    "description": "업로드한 음악이 최대 수량을 초과했을 때의 오류 메시지"
   },
   "message.uploadReferencesError": {
     "message": "음악 업로드 실패",
@@ -696,7 +696,7 @@
     "description": "비트 데이터 가져오기 성공 시의 메시지"
   },
   "message.extractingVocals": {
-    "message": "보컬 추출 중...",
+    "message": "보컬을 추출하는 중...",
     "description": "보컬을 추출할 때의 메시지"
   },
   "message.extractVocalsFailed": {
@@ -889,6 +889,30 @@
   },
   "name.generating": {
     "message": "생성 중",
-    "description": "곡 생성 중 상태 레이블"
+    "description": "곡 생성 상태 레이블"
+  },
+  "button.adjust_speed": {
+    "message": "속도 조정",
+    "description": "곡 재생 속도 조정 버튼 텍스트"
+  },
+  "button.reuse_prompt": {
+    "message": "프롬프트 재사용",
+    "description": "기존 작업 프롬프트 재사용 버튼 텍스트"
+  },
+  "name.adjustSpeed": {
+    "message": "속도",
+    "description": "속도 선택기 레이블"
+  },
+  "description.adjustSpeed": {
+    "message": "다양한 재생 속도로 곡을 다시 생성합니다 (0.5배에서 2배)",
+    "description": "속도 조정 기능 설명"
+  },
+  "message.reusePromptSuccess": {
+    "message": "프롬프트가 재사용되었습니다. 조정 후 다시 생성할 수 있습니다.",
+    "description": "프롬프트 재사용 성공 후 메시지"
+  },
+  "message.reusePromptEmpty": {
+    "message": "재사용할 수 있는 프롬프트 데이터가 없습니다",
+    "description": "작업에 재사용할 프롬프트가 없을 때의 메시지"
   }
 }
