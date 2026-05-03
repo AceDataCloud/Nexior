@@ -62,7 +62,7 @@
             v-model="questionValue"
             type="textarea"
             class="mb-2"
-            @keydown.enter.exact.prevent="onEdit"
+            @keydown.enter.exact="onEditEnterKey"
           ></el-input>
           <div class="flex justify-end">
             <el-button round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
@@ -258,6 +258,17 @@ export default defineComponent({
     onEdit() {
       this.isEditing = false;
       this.onSubmit();
+    },
+    onEditEnterKey(evt: Event) {
+      // Skip IME composition: pressing Enter to commit a Chinese/Japanese/Korean
+      // candidate must NOT submit the edit. See Composer.vue for full rationale.
+      // ElInput types this event as `Event | KeyboardEvent`, hence the cast.
+      const e = evt as KeyboardEvent;
+      if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      e.preventDefault();
+      this.onEdit();
     },
     onSubmit() {
       this.$emit('edit', this.message, this.questionValue);
