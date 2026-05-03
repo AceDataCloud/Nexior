@@ -62,6 +62,7 @@ import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
 import { ensureStoreModule } from '@/store/lazy';
+import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -336,6 +337,18 @@ const router = createRouter({
 router.beforeEach(async (to, _from, next) => {
   const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
   await setI18nLanguage(locale);
+
+  // Cross-site identity guard: handle `?user_id=<id>` query param attached by
+  // outbound links from sibling sub-sites (auth / platform). See
+  // `src/utils/crossSiteUser.ts` for the full contract.
+  const decision = evaluateUserIdGuard(to);
+  if (decision.kind === 'strip') {
+    return next(decision.redirect);
+  }
+  if (decision.kind === 'mismatch') {
+    // Helper has already triggered a full-page SSO redirect; abort.
+    return next(false);
+  }
 
   // Lazily register the per-app Vuex store module owned by this route. The
   // mapping is `meta.appName` → store module name (set in each
