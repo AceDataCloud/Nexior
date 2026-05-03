@@ -1,0 +1,43 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hub-frontend
+  namespace: acedatacloud
+  annotations:
+    kubernetes.io/ingress.class: nginx-router
+    kubernetes.io/ingress.rule-mix: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # Force redirect every request (path + query preserved) to studio.acedata.cloud.
+    # `return 301` runs before the upstream is hit, so the dummy backend below is
+    # never reached — it only exists to satisfy the Ingress schema.
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      return 301 https://studio.acedata.cloud$request_uri;
+spec:
+  tls:
+    - hosts:
+        - hub.acedata.cloud
+      secretName: tls-wildcard-acedata-cloud
+    - hosts:
+        - "*.hub.acedata.cloud"
+      secretName: tls-wildcard-hub-acedata-cloud
+  rules:
+    - host: hub.acedata.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hub-frontend
+                port:
+                  number: 8083
+    - host: "*.hub.acedata.cloud"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hub-frontend
+                port:
+                  number: 8083
