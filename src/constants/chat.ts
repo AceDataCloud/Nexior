@@ -14,8 +14,6 @@ export const CHAT_MODEL_NAME_DEEPSEEK_V4_FLASH = 'deepseek-v4-flash';
 export const CHAT_MODEL_NAME_DEEPSEEK_REASONER = 'deepseek-r1';
 export const CHAT_MODEL_NAME_GROK_4 = 'grok-4';
 export const CHAT_MODEL_NAME_GROK_3 = 'grok-3';
-export const CHAT_MODEL_NAME_GROK_3_REASONER = 'grok-3-reasoning';
-export const CHAT_MODEL_NAME_GROK_3_DEEPSEARCH = 'grok-3-deepsearch';
 export const CHAT_MODEL_NAME_GEMINI_3_0_PRO = 'gemini-3.0-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_PRO = 'gemini-2.5-pro';
 export const CHAT_MODEL_NAME_GEMINI_2_5_FLASH = 'gemini-2.5-flash';
@@ -126,24 +124,6 @@ export const CHAT_MODEL_GROK_3: IChatModel = {
   modelGroup: 'grok',
   getDisplayName: () => i18n.global.t('chat.model.grok3'),
   getDescription: () => i18n.global.t('chat.model.grok3Description')
-};
-
-export const CHAT_MODEL_GROK_3_REASONER: IChatModel = {
-  enabled: true,
-  name: CHAT_MODEL_NAME_GROK_3_REASONER,
-  icon: CHAT_MODEL_ICON_GROK,
-  modelGroup: 'grok',
-  getDisplayName: () => i18n.global.t('chat.model.grok3Reasoner'),
-  getDescription: () => i18n.global.t('chat.model.grok3ReasonerDescription')
-};
-
-export const CHAT_MODEL_GROK_3_DEEPSEARCH: IChatModel = {
-  enabled: true,
-  name: CHAT_MODEL_NAME_GROK_3_DEEPSEARCH,
-  icon: CHAT_MODEL_ICON_GROK,
-  modelGroup: 'grok',
-  getDisplayName: () => i18n.global.t('chat.model.grok3Deepsearch'),
-  getDescription: () => i18n.global.t('chat.model.grok3DeepsearchDescription')
 };
 
 export const CHAT_MODEL_GEMINI_3_0_PRO: IChatModel = {
@@ -280,7 +260,7 @@ export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {
   name: 'grok',
   getDisplayName: () => i18n.global.t('chat.modelGroup.grok'),
   getDescription: () => i18n.global.t('chat.modelGroup.grokDescription'),
-  models: [CHAT_MODEL_GROK_4, CHAT_MODEL_GROK_3, CHAT_MODEL_GROK_3_REASONER, CHAT_MODEL_GROK_3_DEEPSEARCH]
+  models: [CHAT_MODEL_GROK_4, CHAT_MODEL_GROK_3]
 };
 
 export const CHAT_MODEL_GROUP_GEMINI: IChatModelGroup = {
@@ -323,8 +303,6 @@ export const CHAT_MODELS: IChatModel[] = [
   CHAT_MODEL_DEEPSEEK_REASONER,
   CHAT_MODEL_GROK_4,
   CHAT_MODEL_GROK_3,
-  CHAT_MODEL_GROK_3_REASONER,
-  CHAT_MODEL_GROK_3_DEEPSEARCH,
   CHAT_MODEL_GEMINI_3_0_PRO,
   CHAT_MODEL_GEMINI_2_5_PRO,
   CHAT_MODEL_GEMINI_2_5_FLASH,
