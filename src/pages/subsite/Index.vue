@@ -33,13 +33,16 @@
               <span>{{ formatDate(row.created_at) }}</span>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('subsite.field.actions')" width="160" fixed="right">
+          <el-table-column :label="$t('subsite.field.actions')" width="260" fixed="right">
             <template #default="{ row }">
               <el-button size="small" link type="primary" @click="onOpenSite(row)">
                 {{ $t('subsite.button.open') }}
               </el-button>
               <el-button size="small" link type="primary" @click="onManageSite(row)">
                 {{ $t('subsite.button.manage') }}
+              </el-button>
+              <el-button size="small" link type="primary" @click="onOpenDomains(row)">
+                {{ $t('subsite.button.domains') }}
               </el-button>
             </template>
           </el-table-column>
@@ -80,6 +83,8 @@
         </span>
       </template>
     </el-dialog>
+
+    <domains-dialog v-model="domainsDialog.visible" :site="domainsDialog.site" />
   </el-row>
 </template>
 
@@ -103,6 +108,7 @@ import {
 import { Plus } from '@element-plus/icons-vue';
 import { siteOperator } from '@/operators';
 import type { ISite } from '@/models';
+import DomainsDialog from './DomainsDialog.vue';
 
 const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
 
@@ -119,7 +125,8 @@ export default defineComponent({
     ElDialog,
     ElForm,
     ElFormItem,
-    ElInput
+    ElInput,
+    DomainsDialog
   },
   data() {
     return {
@@ -133,6 +140,10 @@ export default defineComponent({
           slug: '',
           title: ''
         }
+      },
+      domainsDialog: {
+        visible: false,
+        site: null as ISite | null
       }
     };
   },
@@ -258,6 +269,10 @@ export default defineComponent({
       // Each subsite is the source of truth for its own settings; deep-link to
       // /site on the subsite itself instead of trying to manage cross-origin.
       window.open(`https://${row.origin}/site`, '_blank', 'noopener');
+    },
+    onOpenDomains(row: ISite) {
+      this.domainsDialog.site = row;
+      this.domainsDialog.visible = true;
     },
     rowUrl(row: ISite) {
       return row.origin ? `https://${row.origin}/` : '#';
