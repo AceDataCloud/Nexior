@@ -1,24 +1,28 @@
 <template>
-  <div class="kling-tabs">
-    <div
-      v-for="tab in tabs"
-      :key="tab.value"
-      :class="{ tab: true, active: tab.value === modelValue, disabled: tab.disabled }"
-      @click="onSelect(tab)"
-    >
-      <font-awesome-icon v-if="tab.icon" :icon="tab.icon" class="mr-2" />
-      <span>{{ tab.label }}</span>
-      <el-tooltip v-if="tab.disabled && tab.disabledReason" effect="dark" :content="tab.disabledReason" placement="top">
-        <font-awesome-icon icon="fa-solid fa-info" class="info ml-2" />
-      </el-tooltip>
-      <el-tag v-if="tab.badge" size="small" type="warning" class="ml-2 badge">{{ tab.badge }}</el-tag>
-    </div>
-  </div>
+  <el-tabs :model-value="modelValue" class="kling-tabs" stretch @update:model-value="onUpdate">
+    <el-tab-pane v-for="tab in tabs" :key="tab.value" :name="tab.value" :disabled="tab.disabled">
+      <template #label>
+        <span class="tab-label">
+          <font-awesome-icon v-if="tab.icon" :icon="tab.icon" class="mr-2" />
+          <span>{{ tab.label }}</span>
+          <el-tooltip
+            v-if="tab.disabled && tab.disabledReason"
+            effect="dark"
+            :content="tab.disabledReason"
+            placement="top"
+          >
+            <font-awesome-icon icon="fa-solid fa-info" class="info ml-2" />
+          </el-tooltip>
+          <el-tag v-if="tab.badge" size="small" type="warning" class="ml-2 badge">{{ tab.badge }}</el-tag>
+        </span>
+      </template>
+    </el-tab-pane>
+  </el-tabs>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { ElTooltip, ElTag } from 'element-plus';
+import { ElTabs, ElTabPane, ElTooltip, ElTag } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IKlingTaskType } from '@/models';
 
@@ -34,6 +38,8 @@ interface ITab {
 export default defineComponent({
   name: 'KlingTabSwitcher',
   components: {
+    ElTabs,
+    ElTabPane,
     ElTooltip,
     ElTag,
     FontAwesomeIcon
@@ -70,10 +76,9 @@ export default defineComponent({
     }
   },
   methods: {
-    onSelect(tab: ITab) {
-      if (tab.disabled) return;
-      if (tab.value === 'avatar') return;
-      this.$emit('update:modelValue', tab.value);
+    onUpdate(value: string | number) {
+      if (value === 'avatar') return;
+      this.$emit('update:modelValue', value as IKlingTaskType);
     }
   }
 });
@@ -81,44 +86,30 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .kling-tabs {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--app-border-subtle);
+  padding: 0 16px;
   background-color: var(--app-content-bg);
-  overflow-x: auto;
+  border-bottom: 1px solid var(--app-border-subtle);
 
-  .tab {
+  :deep(.el-tabs__header) {
+    margin: 0;
+    border-bottom: none;
+  }
+
+  :deep(.el-tabs__nav-wrap::after) {
+    display: none;
+  }
+
+  :deep(.el-tabs__item) {
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    padding: 0 16px;
+  }
+
+  .tab-label {
     display: inline-flex;
     align-items: center;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 14px;
-    color: var(--el-text-color-regular);
-    cursor: pointer;
-    user-select: none;
     white-space: nowrap;
-    transition:
-      background-color 0.15s ease,
-      color 0.15s ease,
-      box-shadow 0.15s ease;
-
-    &:hover:not(.disabled):not(.active) {
-      background-color: var(--el-fill-color);
-    }
-
-    &.active {
-      background-color: var(--el-color-primary);
-      color: #fff;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    }
-
-    &.disabled {
-      color: var(--el-text-color-disabled);
-      cursor: not-allowed;
-    }
 
     .info {
       font-size: 11px;
@@ -141,11 +132,13 @@ export default defineComponent({
 
 @media (max-width: 767px) {
   .kling-tabs {
-    padding: 8px 12px;
-    gap: 4px;
-    .tab {
-      padding: 4px 10px;
+    padding: 0 8px;
+
+    :deep(.el-tabs__item) {
+      height: 38px;
+      line-height: 38px;
       font-size: 12px;
+      padding: 0 10px;
     }
   }
 }
