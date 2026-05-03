@@ -9,7 +9,7 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Tip sadržaja QR koda koji treba generisati, kao što su 'link', 'tekst' itd."
+    "description": "Tip sadržaja QR koda koji se generiše, kao što su 'link', 'tekst' itd."
   },
   "name.failure": {
     "message": "Neuspeh",
@@ -29,7 +29,7 @@
   },
   "name.size": {
     "message": "Veličina",
-    "description": "Veličina QR koda koji treba generisati"
+    "description": "Veličina QR koda koji se generiše"
   },
   "name.createdAt": {
     "message": "Datum kreiranja",
@@ -45,7 +45,7 @@
   },
   "name.content": {
     "message": "Sadržaj",
-    "description": "Sadržaj QR koda koji treba generisati"
+    "description": "Sadržaj QR koda koji se generiše"
   },
   "field.elements": {
     "message": "Stil lične fotografije",
@@ -57,7 +57,7 @@
   },
   "name.contentImageUrl": {
     "message": "Link do slike sadržaja",
-    "description": "URL slike sadržaja QR koda koji treba generisati"
+    "description": "URL slike sadržaja QR koda koji se generiše"
   },
   "inputWay.input": {
     "message": "Unesite sadržaj",
@@ -85,51 +85,51 @@
   },
   "button.fast": {
     "message": "Brzo",
-    "description": "Tekst na dugmetu koji omogućava korisniku da postavi 'brzi režim' za generisanje slike, mora se prevesti kao 'Brzo'"
+    "description": "Tekst dugmeta koji omogućava korisniku da postavi 'brzi režim' za generisanje slike, mora se prevesti kao 'Brzo'"
   },
   "button.relax": {
     "message": "Polako",
-    "description": "Tekst na dugmetu koji omogućava korisniku da postavi 'spori režim' za generisanje slike, mora se prevesti kao 'Polako'"
+    "description": "Tekst dugmeta koji omogućava korisniku da postavi 'spori režim' za generisanje slike, mora se prevesti kao 'Polako'"
   },
   "button.generate": {
     "message": "Generiši",
-    "description": "Tekst na dugmetu za generisanje ličnih fotografija"
+    "description": "Tekst dugmeta za generisanje ličnih fotografija"
   },
   "button.viewImage": {
     "message": "Pogledaj sliku",
-    "description": "Tekst na dugmetu za generisanje ličnih fotografija"
+    "description": "Tekst dugmeta za generisanje ličnih fotografija"
   },
   "button.download": {
     "message": "Preuzmi sliku",
-    "description": "Tekst na dugmetu za preuzimanje slike"
+    "description": "Tekst dugmeta za preuzimanje slike"
   },
   "button.uploadImageUrls": {
     "message": "Otpremi slike portreta",
-    "description": "Tekst na dugmetu za otpremanje slika portreta (na engleskom pojednostaviti na 'Upload', izbegavati predugačke reči)"
+    "description": "Tekst dugmeta za otpremanje slika portreta (na engleskom pojednostaviti na 'Upload', izbegavati predugačke reči)"
   },
   "message.uploadReferencesExceed": {
     "message": "Maksimalno možete otpremiti 5 slika",
-    "description": "Poruka o grešci kada je broj otpremljenih slika premašio limit"
+    "description": "Poruka greške kada je broj otpremljenih slika premašio limit"
   },
   "message.uploadReferencesSuccess": {
     "message": "Uspešno otpremljene slike",
-    "description": "Poruka o uspehu kada su slike uspešno otpremljene"
+    "description": "Poruka uspeha kada su slike uspešno otpremljene"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno otpremanje slika, molimo pokušajte ponovo kasnije",
-    "description": "Poruka o grešci kada otpremanje slika nije uspelo"
+    "message": "Neuspelo otpremanje slika, pokušajte ponovo kasnije",
+    "description": "Poruka greške kada otpremanje slika nije uspelo"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada započinje zadatak crtanja"
+    "description": "Poruka kada započinje zadatak"
   },
   "message.startTaskSuccess": {
-    "message": "Uspešno pokrenut zadatak generisanja",
-    "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
+    "message": "Uspešno pokrenut zadatak za generisanje",
+    "description": "Poruka uspeha kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
-    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
-    "description": "Poruka o grešci kada pokretanje zadatka crtanja nije uspelo"
+    "message": "Neuspelo pokretanje zadatka, kontaktirajte administratora",
+    "description": "Poruka greške kada pokretanje zadatka nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -144,7 +144,7 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.generateFailed": {
-    "message": "Generisanje slike nije uspelo",
+    "message": "Neuspelo generisanje slike",
     "description": "Poruka kada generisanje slike nije uspelo"
   },
   "message.noOperations": {
@@ -152,7 +152,7 @@
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorije zadataka, molimo kliknite levo da generišete video",
+    "message": "Nema istorije zadataka, molimo kliknite levo za generisanje videa",
     "description": "Poruka kada nema zadataka"
   },
   "styleCategory.styles": {
@@ -168,27 +168,35 @@
     "description": "Reč koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju ovaj stil"
   },
   "styleTag.kindergarten": {
-    "message": "Vrtićka fotografija",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "message": "Slika za upis u vrtić",
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
   },
   "styleTag.logoTshirt": {
-    "message": "Fotografija sa poslovnim logotipom na majici",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "message": "Slika sa korporativnim logotipom na majici",
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
   },
   "styleTag.wedding": {
-    "message": "Fotografija za venčanje",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "message": "Slika za venčanje",
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
   },
   "styleTag.businessPphoto": {
-    "message": "Poslovna fotografija",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "message": "Poslovni portret",
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
   },
   "styleTag.bobSuit": {
     "message": "Crno odelo sa bob frizurom",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
   },
   "styleTag.femalePortrait": {
     "message": "Ženski portret",
-    "description": "Reč stila koja se koristi za opisivanje i generisanje slika, generisane slike treba da uključuju stil ovog taga"
+    "description": "Reč stila koja se koristi za opisivanje i generisanje slike, generisana slika treba da uključuje stil ovog taga"
+  },
+  "message.uploadImageExceed": {
+    "message": "Možete da otpremite najviše 2 slike",
+    "description": "Poruka kada je broj otpremljenih referentnih slika premašio ograničenje"
+  },
+  "message.uploadImageError": {
+    "message": "Otprema slike nije uspela, molimo pokušajte ponovo kasnije",
+    "description": "Poruka greške kada otprema referentne slike nije uspela"
   }
 }

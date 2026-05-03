@@ -17,7 +17,7 @@
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "Razón del fallo de la tarea"
+    "description": "Razón por la que la tarea falló"
   },
   "name.status": {
     "message": "Estado",
@@ -33,7 +33,7 @@
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora de generación del código QR"
+    "description": "Fecha y hora en que se generó el código QR"
   },
   "name.endImageUrls": {
     "message": "Imágenes de retrato",
@@ -69,7 +69,7 @@
   },
   "status.processing": {
     "message": "En proceso",
-    "description": "Estado de espera de la tarea"
+    "description": "Estado de la tarea en proceso"
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
@@ -80,16 +80,16 @@
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese la frase para generar el estilo de video, por ejemplo: Astronautas viajando del espacio a un volcán",
+    "message": "Ingrese las palabras clave para el estilo de video a generar, por ejemplo: Astronautas viajando del espacio a un volcán",
     "description": "Texto de marcador de posición en el campo de sugerencias"
   },
   "button.fast": {
     "message": "Modo rápido",
-    "description": "Texto del botón que permite al usuario establecer el 'modo rápido' para generar la imagen"
+    "description": "Texto del botón que permite al usuario establecer el modo 'rápido' para generar la imagen"
   },
   "button.relax": {
     "message": "Modo lento",
-    "description": "Texto del botón que permite al usuario establecer el 'modo lento' para generar la imagen"
+    "description": "Texto del botón que permite al usuario establecer el modo 'lento' para generar la imagen"
   },
   "button.generate": {
     "message": "Generar",
@@ -104,8 +104,8 @@
     "description": "Texto del botón para descargar la imagen"
   },
   "button.uploadImageUrls": {
-    "message": "Subir imagen de retrato",
-    "description": "Texto del botón para subir la imagen de retrato (simplificado a 'Subir' para evitar que sea demasiado largo)"
+    "message": "Subir imágenes de retrato",
+    "description": "Texto del botón para subir imágenes de retrato (simplificado a 'Subir')"
   },
   "message.uploadReferencesExceed": {
     "message": "Se pueden subir hasta 5 imágenes",
@@ -113,11 +113,11 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
+    "description": "Mensaje de éxito al subir imágenes"
   },
   "message.uploadReferencesError": {
-    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la subida de la imagen falla"
+    "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando falla la subida de imágenes"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -132,8 +132,8 @@
     "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus puntos, por favor compre más para continuar usando",
-    "description": "Mensaje cuando se han agotado los puntos"
+    "message": "Se han agotado sus créditos, por favor compre más para continuar usando",
+    "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
@@ -141,11 +141,11 @@
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje mientras se genera la imagen"
+    "description": "Mensaje para descargar el video"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando la generación de la imagen falla"
+    "description": "Mensaje cuando falla la generación de la imagen"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
@@ -168,7 +168,7 @@
     "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
   },
   "styleTag.kindergarten": {
-    "message": "Foto de entrada al jardín de infancia",
+    "message": "Foto de ingreso a jardín de infantes",
     "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.logoTshirt": {
@@ -190,5 +190,13 @@
   "styleTag.femalePortrait": {
     "message": "Retrato femenino",
     "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+  },
+  "message.uploadImageExceed": {
+    "message": "Se pueden subir hasta 2 imágenes",
+    "description": "Mensaje de advertencia cuando se excede el límite de cantidad de imágenes de referencia"
+  },
+  "message.uploadImageError": {
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando la carga de la imagen de referencia falla"
   }
 }

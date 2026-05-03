@@ -36,11 +36,11 @@
     "description": "The date and time when the QR code was generated"
   },
   "name.endImageUrls": {
-    "message": "Portrait Images",
+    "message": "Portrait Image",
     "description": "The seed for generating the QR code"
   },
   "description.endImageUrls": {
-    "message": "Generate corresponding ID photos based on this portrait image",
+    "message": "Generate the corresponding ID photo based on this portrait image",
     "description": "The seed for generating the QR code"
   },
   "name.content": {
@@ -80,7 +80,7 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter a prompt for the video style to be generated, e.g., 'Astronauts shuttle from space to volcano'",
+    "message": "Enter prompt for the video style to generate, e.g., Astronauts shuttle from space to volcano",
     "description": "Placeholder text in the prompt field"
   },
   "button.fast": {
@@ -97,7 +97,7 @@
   },
   "button.viewImage": {
     "message": "View Original",
-    "description": "Button text for viewing the original Headshots ID photo"
+    "description": "Button text for viewing the generated Headshots ID photo"
   },
   "button.download": {
     "message": "Download Image",
@@ -121,18 +121,18 @@
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message when the drawing task starts"
+    "description": "Message when the drawing task begins"
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when the task is started successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more to continue using",
+    "message": "Your credits are exhausted, please purchase more to continue",
     "description": "Message when credits are used up"
   },
   "message.generating": {
@@ -156,19 +156,19 @@
     "description": "Message when there are no tasks"
   },
   "styleCategory.styles": {
-    "message": "ID Photo Styles",
-    "description": "Category term used to describe and generate images, generated images should include this category label"
+    "message": "ID Photo Style",
+    "description": "Category term used to describe and generate images, generated images should include this label's category"
   },
   "styleTag.malePportrait": {
     "message": "Male Portrait",
-    "description": "Style term used to describe and generate images, generated images should include this style label"
+    "description": "Style term used to describe and generate images, generated images should include this label's style"
   },
   "styleTag.malePportrait2": {
     "message": "Male Portrait 2",
-    "description": "Style term used to describe and generate images, generated images should include this style label"
+    "description": "Style term used to describe and generate images, generated images should include this label's style"
   },
   "styleTag.kindergarten": {
-    "message": "Kindergarten Entrance Photo",
+    "message": "Kindergarten Enrollment Photo",
     "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
   },
   "styleTag.logoTshirt": {
@@ -193,10 +193,10 @@
   },
   "message.uploadImageExceed": {
     "message": "You can upload up to 2 images",
-    "description": "Warning message shown when the number of uploaded reference images exceeds the limit"
+    "description": "Prompt when the number of uploaded reference images exceeds the limit."
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
-    "description": "Error message shown when uploading a reference image fails"
+    "message": "Image upload failed, please try again later",
+    "description": "Error message when the reference image upload fails."
   }
 }

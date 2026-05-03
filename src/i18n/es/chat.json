@@ -1,7 +1,15 @@
 {
+  "thinking.inProgress": {
+    "message": "Pensando...",
+    "description": "Etiqueta mostrada mientras el modelo genera el proceso de inferencia"
+  },
+  "thinking.done": {
+    "message": "Proceso de pensamiento",
+    "description": "Etiqueta para mostrar el proceso de inferencia una vez que el modelo ha terminado"
+  },
   "button.thinkDeeper": {
-    "message": "Reflexiona más profundo",
-    "description": "Botón para reflexionar más profundamente"
+    "message": "Pensar más profundo",
+    "description": "Botón para pensar más profundamente"
   },
   "button.deepsearch": {
     "message": "Búsqueda profunda",
@@ -9,7 +17,7 @@
   },
   "button.search": {
     "message": "Buscar",
-    "description": "Botón para buscar"
+    "description": "Botón de búsqueda"
   },
   "button.edit": {
     "message": "Editar mensaje",
@@ -37,7 +45,7 @@
   },
   "modelGroup.grokDescription": {
     "message": "Modelo de IA desarrollado por xAI",
-    "description": "Descripción del modelo Grok"
+    "description": "Descripción del modelo Grok3"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
@@ -96,7 +104,7 @@
     "description": "Descripción del modelo GPT 5.4 Mini"
   },
   "model.deepseekChat": {
-    "message": "Estándar 3.0",
+    "message": "3.0",
     "description": "Nombre del modelo del servicio, es decir, DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
@@ -104,20 +112,28 @@
     "description": "Descripción del modelo DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "Razonador R1",
+    "message": "R1",
     "description": "Nombre del modelo del servicio, es decir, DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adecuado para razonamiento y problemas de pensamiento profundo",
+    "message": "Adecuado para inferencias y problemas de pensamiento profundo",
     "description": "Descripción del modelo DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
-    "message": "Versión experimental V3.2",
+    "message": "3.2",
     "description": "Nombre del modelo del servicio, es decir, DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Última versión experimental",
-    "description": "Descripción del modelo DeepSeek V3.2"
+    "description": "Descripción del modelo experimental DeepSeek V3.2"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Nombre del modelo del servicio, es decir, DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Modelo insignia ligero de última generación, 1M contexto",
+    "description": "Descripción del modelo DeepSeek V4 Flash"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -148,7 +164,7 @@
     "description": "Nombre del modelo del servicio, es decir, Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Adecuado para tareas de razonamiento complejas",
+    "message": "Adecuado para tareas de inferencia complejas",
     "description": "Descripción del modelo Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
@@ -252,8 +268,8 @@
     "description": "Mensaje en la página que indica al usuario que hubo un error al subir el archivo, por favor intente de nuevo más tarde"
   },
   "message.notApplied": {
-    "message": "No ha solicitado este servicio, por favor solicite primero",
-    "description": "Mensaje en la página que indica al usuario que no ha solicitado este servicio, por favor solicite primero"
+    "message": "Aún no ha solicitado este servicio, por favor hágalo primero",
+    "description": "Mensaje en la página que indica al usuario que aún no ha solicitado este servicio, por favor hágalo primero"
   },
   "message.tryForFree": {
     "message": "Prueba gratuita",
@@ -264,12 +280,12 @@
     "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que escriba un código JavaScript que imprima 'Hello World'"
   },
   "message.question2": {
-    "message": "Crear una página web personal",
+    "message": "Hacer una página web personal",
     "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que escriba un correo electrónico a Mike informándole que se ha mudado"
   },
   "message.question3": {
     "message": "Diseñar un juego de programación interesante",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que explique en términos simples los principios básicos de la computación cuántica"
+    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que explique los principios básicos de la computación cuántica en un lenguaje sencillo"
   },
   "message.question4": {
     "message": "Experimentar Seúl como un local",
@@ -288,8 +304,8 @@
     "description": "Ejemplo de pregunta para iniciar la conversación, preguntando cómo mejorar la eficiencia del aprendizaje"
   },
   "message.question8": {
-    "message": "¿Cómo aumentar la concentración?",
-    "description": "Ejemplo de pregunta para iniciar la conversación, preguntando cómo aumentar la concentración"
+    "message": "¿Cómo mejorar la concentración?",
+    "description": "Ejemplo de pregunta para iniciar la conversación, preguntando cómo mejorar la concentración"
   },
   "message.errorApiError": {
     "message": "Error en la respuesta, por favor intente de nuevo más tarde",
@@ -308,36 +324,36 @@
     "description": "Mensaje en la página que informa al usuario que el contenido del problema es demasiado extenso, por favor acórtalo y vuelve a intentarlo"
   },
   "message.errorTooManyRequests": {
-    "message": "Has realizado demasiadas acciones, por favor intenta de nuevo más tarde",
-    "description": "Mensaje en la página que informa al usuario que ha realizado demasiadas acciones, por favor intenta de nuevo más tarde"
+    "message": "Sus acciones son demasiado frecuentes, por favor inténtelo más tarde",
+    "description": "Mensaje en la página que informa al usuario que sus acciones son demasiado frecuentes, por favor inténtelo más tarde"
   },
   "message.errorBusy": {
-    "message": "El servidor está ocupado, por favor intenta de nuevo más tarde",
-    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor intenta de nuevo más tarde"
+    "message": "El servidor está ocupado, por favor inténtelo más tarde",
+    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor inténtelo más tarde"
   },
   "message.errorUsedUp": {
-    "message": "Has agotado tus intentos, por favor compra más para continuar",
-    "description": "Mensaje en la página que informa al usuario que ha agotado sus intentos, por favor compra más para continuar"
+    "message": "Ha agotado su número de usos, por favor compre más para continuar",
+    "description": "Mensaje en la página que informa al usuario que ha agotado su número de usos, por favor compre más para continuar"
   },
   "message.errorUnknown": {
-    "message": "Se ha producido un error desconocido en el servidor, por favor intenta de nuevo más tarde o contacta al soporte",
-    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor intenta de nuevo más tarde o contacta al soporte"
+    "message": "Se ha producido un error desconocido en el servidor, por favor inténtelo más tarde o contacte con el soporte",
+    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor inténtelo más tarde o contacte con el soporte"
   },
   "message.errorTimeout": {
-    "message": "Se ha agotado el tiempo de respuesta, por favor intenta de nuevo más tarde",
-    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor intenta de nuevo más tarde"
+    "message": "Se ha agotado el tiempo de respuesta, por favor inténtelo más tarde",
+    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor inténtelo más tarde"
   },
   "message.errorNotApplied": {
-    "message": "No has solicitado este servicio, por favor solicita primero y luego continúa con la pregunta",
-    "description": "Mensaje en la página que informa al usuario que no ha solicitado este servicio, por favor solicita primero y luego continúa con la pregunta"
+    "message": "No ha solicitado este servicio, por favor solicítelo antes de continuar",
+    "description": "Mensaje en la página que informa al usuario que no ha solicitado este servicio, por favor solicítelo antes de continuar"
   },
   "message.confirmDelete": {
     "message": "Confirmar eliminación",
     "description": "Mensaje en la página que informa al usuario que debe confirmar la eliminación"
   },
   "message.howToUse": {
-    "message": "La IA puede cometer errores, por favor verifica la información importante.",
-    "description": "Mensaje en la página que informa al usuario que la IA puede cometer errores, por favor verifica la información importante"
+    "message": "La IA puede cometer errores, por favor verifique la información importante.",
+    "description": "Mensaje en la página que informa al usuario que la IA puede cometer errores, por favor verifique la información importante"
   },
   "title.chat": {
     "message": "Chat de IA",
@@ -384,7 +400,7 @@
     "description": "Nombre del grupo en la página, es decir, Más temprano"
   },
   "connector.authFailed": {
-    "message": "Autorización fallida, por favor intenta de nuevo.",
+    "message": "Autorización fallida, por favor intente de nuevo.",
     "description": "Mensaje de fallo de autorización"
   },
   "connector.processing": {
@@ -407,17 +423,21 @@
     "message": "Gestión de habilidades",
     "description": "Sugerencia del botón para ir a la página de gestión de habilidades en auth.acedata.cloud"
   },
+  "composer.addAction": {
+    "message": "Agregar contenido",
+    "description": "Sugerencia del botón de más en la parte inferior del cuadro de entrada, que al expandirse permite subir archivos, abrir habilidades o gestionar conexiones"
+  },
   "composer.addFiles": {
     "message": "Agregar fotos o archivos",
-    "description": "Botón debajo del campo de entrada: subir imágenes o archivos"
+    "description": "Elemento en el menú emergente del botón de más: subir imágenes o archivos"
   },
   "composer.skills": {
     "message": "Habilidades",
-    "description": "Botón debajo del campo de entrada: abrir gestión de habilidades"
+    "description": "Elemento en el menú emergente del botón de más: abrir gestión de habilidades"
   },
   "composer.connections": {
     "message": "Conexiones",
-    "description": "Botón debajo del campo de entrada: abrir gestión de conexiones"
+    "description": "Elemento en el menú emergente del botón de más: abrir gestión de conexiones"
   },
   "agent.title": {
     "message": "Agente de escritorio",
@@ -436,7 +456,7 @@
     "description": "Estado de no conexión del agente"
   },
   "agent.description": {
-    "message": "Conecta el agente de escritorio para acceder a archivos locales, ejecutar comandos y usar el servidor MCP local en la conversación de IA.",
+    "message": "Conecte el agente de escritorio para acceder a archivos locales, ejecutar comandos y usar el servidor MCP local en la conversación de IA.",
     "description": "Descripción del agente"
   },
   "agent.name": {
@@ -448,12 +468,12 @@
     "description": "Etiqueta del número de herramientas del agente"
   },
   "agent.connectedSince": {
-    "message": "Tiempo de conexión",
+    "message": "Conectado desde",
     "description": "Etiqueta del tiempo de conexión del agente"
   },
   "agent.connectedHint": {
-    "message": "El agente de escritorio está conectado y listo para usar.",
-    "description": "Mensaje que indica que el agente está conectado"
+    "message": "Su agente de escritorio está conectado y listo para usar.",
+    "description": "Sugerencia de que el agente está conectado"
   },
   "agent.installLabel": {
     "message": "Instalar agente de escritorio:",

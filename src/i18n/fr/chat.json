@@ -1,11 +1,19 @@
 {
+  "thinking.inProgress": {
+    "message": "En cours de réflexion...",
+    "description": "Étiquette affichée pendant que le modèle génère le processus de raisonnement"
+  },
+  "thinking.done": {
+    "message": "Processus de réflexion",
+    "description": "Étiquette utilisée pour afficher le processus de raisonnement une fois le modèle terminé"
+  },
   "button.thinkDeeper": {
     "message": "Réfléchir plus profondément",
     "description": "Bouton pour réfléchir plus profondément"
   },
   "button.deepsearch": {
     "message": "Recherche approfondie",
-    "description": "Bouton pour la recherche approfondie"
+    "description": "Bouton pour une recherche approfondie"
   },
   "button.search": {
     "message": "Rechercher",
@@ -17,7 +25,7 @@
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
-    "description": "Nom du modèle de service, c'est-à-dire GPT"
+    "description": "Nom du modèle du service, c'est-à-dire GPT"
   },
   "modelGroup.chatgptDescription": {
     "message": "Modèle d'IA développé par OpenAI",
@@ -25,7 +33,7 @@
   },
   "modelGroup.deepseek": {
     "message": "DeepSeek",
-    "description": "Nom du modèle de service, c'est-à-dire DeepSeek"
+    "description": "Nom du modèle du service, c'est-à-dire DeepSeek"
   },
   "modelGroup.deepseekDescription": {
     "message": "Modèle d'IA développé par DeepSeek",
@@ -33,15 +41,15 @@
   },
   "modelGroup.grok": {
     "message": "Grok",
-    "description": "Nom du modèle de service, c'est-à-dire Grok"
+    "description": "Nom du modèle du service, c'est-à-dire Grok"
   },
   "modelGroup.grokDescription": {
     "message": "Modèle d'IA développé par xAI",
-    "description": "Description du modèle Grok"
+    "description": "Description du modèle Grok3"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "Nom du modèle de service, c'est-à-dire Gemini"
+    "description": "Nom du modèle du service, c'est-à-dire Gemini"
   },
   "modelGroup.geminiDescription": {
     "message": "Modèle d'IA développé par Google",
@@ -49,7 +57,7 @@
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "Nom du modèle de service, c'est-à-dire Claude"
+    "description": "Nom du modèle du service, c'est-à-dire Claude"
   },
   "modelGroup.claudeDescription": {
     "message": "Modèle d'IA développé par Anthropic",
@@ -57,7 +65,7 @@
   },
   "modelGroup.kimi": {
     "message": "Kimi",
-    "description": "Nom du modèle de service, c'est-à-dire Kimi"
+    "description": "Nom du modèle du service, c'est-à-dire Kimi"
   },
   "modelGroup.kimiDescription": {
     "message": "Modèle d'IA développé par Dark Side of the Moon",
@@ -65,7 +73,7 @@
   },
   "modelGroup.glm": {
     "message": "GLM",
-    "description": "Nom du modèle de service, c'est-à-dire GLM"
+    "description": "Nom du modèle du service, c'est-à-dire GLM"
   },
   "modelGroup.glmDescription": {
     "message": "Modèle de langage développé par Zhiyu AI",
@@ -73,55 +81,63 @@
   },
   "model.55": {
     "message": "gpt-5.5",
-    "description": "Nom du modèle de service, c'est-à-dire GPT 5.5"
+    "description": "Nom du modèle du service, c'est-à-dire GPT 5.5"
   },
   "model.55Description": {
-    "message": "Modèle phare de la dernière génération, GPT 5.5",
+    "message": "Modèle phare de dernière génération GPT 5.5",
     "description": "Description du modèle GPT 5.5"
   },
   "model.54": {
     "message": "gpt-5.4",
-    "description": "Nom du modèle de service, c'est-à-dire GPT 5.4"
+    "description": "Nom du modèle du service, c'est-à-dire GPT 5.4"
   },
   "model.54Description": {
-    "message": "Modèle phare de la dernière génération, GPT 5.4",
+    "message": "Modèle phare de dernière génération GPT 5.4",
     "description": "Description du modèle GPT 5.4"
   },
   "model.54Mini": {
     "message": "gpt-5.4-mini",
-    "description": "Nom du modèle de service, c'est-à-dire GPT 5.4 Mini"
+    "description": "Nom du modèle du service, c'est-à-dire GPT 5.4 Mini"
   },
   "model.54MiniDescription": {
     "message": "Modèle GPT 5.4 plus rapide et plus léger",
     "description": "Description du modèle GPT 5.4 Mini"
   },
   "model.deepseekChat": {
-    "message": "Standard 3.0",
-    "description": "Nom du modèle de service, c'est-à-dire DeepSeek Chat"
+    "message": "3.0",
+    "description": "Nom du modèle du service, c'est-à-dire DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
     "message": "Pour les tâches quotidiennes",
     "description": "Description du modèle DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Raisonneur",
-    "description": "Nom du modèle de service, c'est-à-dire DeepSeek Raisonneur"
+    "message": "R1",
+    "description": "Nom du modèle du service, c'est-à-dire DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Pour le raisonnement et la réflexion approfondie",
-    "description": "Description du modèle DeepSeek Raisonneur"
+    "message": "Pour le raisonnement et les questions de réflexion approfondie",
+    "description": "Description du modèle DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
-    "message": "Version expérimentale V3.2",
-    "description": "Nom du modèle de service, c'est-à-dire DeepSeek V3.2 Exp"
+    "message": "3.2",
+    "description": "Nom du modèle du service, c'est-à-dire DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Dernière version expérimentale",
-    "description": "Description du modèle DeepSeek V3.2 Exp"
+    "description": "Description du modèle expérimental DeepSeek V3.2"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Nom du modèle du service, c'est-à-dire DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Modèle phare léger de dernière génération, 1M de contexte",
+    "description": "Description du modèle DeepSeek V4 Flash"
   },
   "model.grok4": {
     "message": "grok-4",
-    "description": "Nom du modèle de service, c'est-à-dire Grok 4"
+    "description": "Nom du modèle du service, c'est-à-dire Grok 4"
   },
   "model.grok4Description": {
     "message": "Modèle le plus avancé actuellement",
@@ -129,7 +145,7 @@
   },
   "model.grok3": {
     "message": "grok-3",
-    "description": "Nom du modèle de service"
+    "description": "Nom du modèle du service"
   },
   "model.grok3Description": {
     "message": "Pour la plupart des tâches",
@@ -137,7 +153,7 @@
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "Nom du modèle de service, c'est-à-dire Gemini 3.0 Pro"
+    "description": "Nom du modèle du service, c'est-à-dire Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
     "message": "Modèle le plus avancé actuellement",
@@ -145,7 +161,7 @@
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "Nom du modèle de service, c'est-à-dire Gemini 2.5 Pro"
+    "description": "Nom du modèle du service, c'est-à-dire Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
     "message": "Pour des tâches de raisonnement complexes",
@@ -153,7 +169,7 @@
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "Nom du modèle de service, c'est-à-dire Gemini 2.5 Flash"
+    "description": "Nom du modèle du service, c'est-à-dire Gemini 2.5 Flash"
   },
   "model.gemini25FlashDescription": {
     "message": "Modèle plus rapide et plus léger",
@@ -161,7 +177,7 @@
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
-    "description": "Nom du modèle de service, c'est-à-dire Claude Opus 4.7"
+    "description": "Nom du modèle du service, c'est-à-dire Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
     "message": "Modèle le plus avancé actuellement",
@@ -305,83 +321,83 @@
   },
   "message.errorContentTooLarge": {
     "message": "Le contenu de la question est trop long, veuillez le raccourcir et réessayer",
-    "description": "Message sur la page web, informant l'utilisateur que le contenu de la question est trop long, veuillez le raccourcir et réessayer"
+    "description": "Message sur la page, informant l'utilisateur que le contenu de la question est trop long, veuillez le raccourcir et réessayer"
   },
   "message.errorTooManyRequests": {
     "message": "Vos actions sont trop fréquentes, veuillez réessayer plus tard",
-    "description": "Message sur la page web, informant l'utilisateur que ses actions sont trop fréquentes, veuillez réessayer plus tard"
+    "description": "Message sur la page, informant l'utilisateur que ses actions sont trop fréquentes, veuillez réessayer plus tard"
   },
   "message.errorBusy": {
     "message": "Le serveur est occupé, veuillez réessayer plus tard",
-    "description": "Message sur la page web, informant l'utilisateur que le serveur est occupé, veuillez réessayer plus tard"
+    "description": "Message sur la page, informant l'utilisateur que le serveur est occupé, veuillez réessayer plus tard"
   },
   "message.errorUsedUp": {
     "message": "Vous avez épuisé vos quotas, veuillez en acheter davantage pour continuer",
-    "description": "Message sur la page web, informant l'utilisateur qu'il a épuisé ses quotas, veuillez en acheter davantage pour continuer"
+    "description": "Message sur la page, informant l'utilisateur qu'il a épuisé ses quotas, veuillez en acheter davantage pour continuer"
   },
   "message.errorUnknown": {
     "message": "Une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support",
-    "description": "Message sur la page web, informant l'utilisateur qu'une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support"
+    "description": "Message sur la page, informant l'utilisateur qu'une erreur inconnue s'est produite sur le serveur, veuillez réessayer plus tard ou contacter le support"
   },
   "message.errorTimeout": {
     "message": "Le temps de réponse a expiré, veuillez réessayer plus tard",
-    "description": "Message sur la page web, informant l'utilisateur que le temps de réponse a expiré, veuillez réessayer plus tard"
+    "description": "Message sur la page, informant l'utilisateur que le temps de réponse a expiré, veuillez réessayer plus tard"
   },
   "message.errorNotApplied": {
     "message": "Vous n'avez pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer",
-    "description": "Message sur la page web, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer"
+    "description": "Message sur la page, informant l'utilisateur qu'il n'a pas encore demandé ce service, veuillez d'abord faire une demande avant de continuer"
   },
   "message.confirmDelete": {
     "message": "Confirmer la suppression",
-    "description": "Message sur la page web, informant l'utilisateur de confirmer la suppression"
+    "description": "Message sur la page, informant l'utilisateur de confirmer la suppression"
   },
   "message.howToUse": {
-    "message": "L'IA peut se tromper, veuillez vérifier les informations importantes.",
-    "description": "Message sur la page web, informant l'utilisateur que l'IA peut se tromper, veuillez vérifier les informations importantes"
+    "message": "L'IA peut faire des erreurs, veuillez vérifier les informations importantes.",
+    "description": "Message sur la page, informant l'utilisateur que l'IA peut faire des erreurs, veuillez vérifier les informations importantes"
   },
   "title.chat": {
     "message": "Chat IA",
-    "description": "Titre de la page web, c'est-à-dire Chat IA"
+    "description": "Titre de la page, c'est-à-dire Chat IA"
   },
   "title.example": {
     "message": "Exemple",
-    "description": "Titre de la page web, c'est-à-dire Exemple"
+    "description": "Titre de la page, c'est-à-dire Exemple"
   },
   "title.capabilities": {
     "message": "Fonctionnalités",
-    "description": "Titre de la page web, c'est-à-dire Fonctionnalités"
+    "description": "Titre de la page, c'est-à-dire Fonctionnalités"
   },
   "title.limitations": {
     "message": "Limitations",
-    "description": "Titre sur la page web, indiquant que cette section concerne les limitations techniques du service"
+    "description": "Titre sur la page, indiquant que cette section concerne les limitations techniques du service"
   },
   "title.complexQuestion": {
     "message": "Répondre à des questions complexes",
-    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à répondre à des questions complexes"
+    "description": "Titre sur la page, indiquant que cette section concerne la capacité du service à répondre à des questions complexes"
   },
   "title.professionalQuestion": {
     "message": "Consulter des questions professionnelles",
-    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à consulter des questions professionnelles"
+    "description": "Titre sur la page, indiquant que cette section concerne la capacité du service à consulter des questions professionnelles"
   },
   "title.getTips": {
     "message": "Obtenir des idées et de l'inspiration",
-    "description": "Titre sur la page web, indiquant que cette section concerne la capacité du service à obtenir des idées et de l'inspiration"
+    "description": "Titre sur la page, indiquant que cette section concerne la capacité du service à obtenir des idées et de l'inspiration"
   },
   "group.today": {
     "message": "Aujourd'hui",
-    "description": "Nom du groupe sur la page web, c'est-à-dire Aujourd'hui"
+    "description": "Nom du groupe sur la page, c'est-à-dire Aujourd'hui"
   },
   "group.yesterday": {
     "message": "Hier",
-    "description": "Nom du groupe sur la page web, c'est-à-dire Hier"
+    "description": "Nom du groupe sur la page, c'est-à-dire Hier"
   },
   "group.thisWeek": {
     "message": "Cette semaine",
-    "description": "Nom du groupe sur la page web, c'est-à-dire Cette semaine"
+    "description": "Nom du groupe sur la page, c'est-à-dire Cette semaine"
   },
   "group.earlier": {
     "message": "Plus tôt",
-    "description": "Nom du groupe sur la page web, c'est-à-dire Plus tôt"
+    "description": "Nom du groupe sur la page, c'est-à-dire Plus tôt"
   },
   "connector.authFailed": {
     "message": "Échec de l'autorisation, veuillez réessayer.",
@@ -407,17 +423,21 @@
     "message": "Gestion des compétences",
     "description": "Astuce pour le bouton redirigeant vers la page de gestion des compétences auth.acedata.cloud"
   },
+  "composer.addAction": {
+    "message": "Ajouter du contenu",
+    "description": "Astuce pour le bouton plus sous la zone de saisie, qui permet de télécharger des fichiers, d'ouvrir la gestion des compétences ou des connexions"
+  },
   "composer.addFiles": {
     "message": "Ajouter des photos ou des fichiers",
-    "description": "Bouton sous le champ de saisie : télécharger des images ou des fichiers"
+    "description": "Élément du menu contextuel du bouton plus : télécharger des images ou des fichiers"
   },
   "composer.skills": {
     "message": "Compétences",
-    "description": "Bouton sous le champ de saisie : ouvrir la gestion des compétences"
+    "description": "Élément du menu contextuel du bouton plus : ouvrir la gestion des compétences"
   },
   "composer.connections": {
     "message": "Connexions",
-    "description": "Bouton sous le champ de saisie : ouvrir la gestion des connexions"
+    "description": "Élément du menu contextuel du bouton plus : ouvrir la gestion des connexions"
   },
   "agent.title": {
     "message": "Agent de bureau",
@@ -441,15 +461,15 @@
   },
   "agent.name": {
     "message": "Nom de l'agent",
-    "description": "Étiquette pour le nom de l'agent"
+    "description": "Étiquette du nom de l'agent"
   },
   "agent.tools": {
     "message": "Outils disponibles",
-    "description": "Étiquette pour le nombre d'outils de l'agent"
+    "description": "Étiquette du nombre d'outils de l'agent"
   },
   "agent.connectedSince": {
-    "message": "Temps de connexion",
-    "description": "Étiquette pour le temps de connexion de l'agent"
+    "message": "Connecté depuis",
+    "description": "Étiquette de la durée de connexion de l'agent"
   },
   "agent.connectedHint": {
     "message": "Votre agent de bureau est connecté et prêt à l'emploi.",
@@ -457,10 +477,10 @@
   },
   "agent.installLabel": {
     "message": "Installer l'agent de bureau :",
-    "description": "Étiquette d'instructions d'installation"
+    "description": "Étiquette des instructions d'installation"
   },
   "agent.runLabel": {
     "message": "Exécuter l'agent :",
-    "description": "Étiquette d'instructions d'exécution"
+    "description": "Étiquette des instructions d'exécution"
   }
 }

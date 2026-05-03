@@ -1,4 +1,12 @@
 {
+  "thinking.inProgress": {
+    "message": "Tänker...",
+    "description": "Label som visas när modellen genererar resonemanget"
+  },
+  "thinking.done": {
+    "message": "Resonemanget",
+    "description": "Label som används för att fälla ut resonemanget när modellen har slutfört"
+  },
   "button.thinkDeeper": {
     "message": "Tänk djupare",
     "description": "Knapp för att tänka djupare"
@@ -12,12 +20,12 @@
     "description": "Knapp för att söka"
   },
   "button.edit": {
-    "message": "Redigera",
-    "description": "Redigera meddelandet som skickats"
+    "message": "Redigera meddelande",
+    "description": "Redigera det skickade meddelandet"
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
-    "description": "Modellnamnet för tjänsten, dvs GPT"
+    "description": "Modellnamnet för tjänsten, det vill säga GPT"
   },
   "modelGroup.chatgptDescription": {
     "message": "AI-modell utvecklad av OpenAI",
@@ -25,7 +33,7 @@
   },
   "modelGroup.deepseek": {
     "message": "DeepSeek",
-    "description": "Modellnamnet för tjänsten, dvs DeepSeek"
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek"
   },
   "modelGroup.deepseekDescription": {
     "message": "AI-modell utvecklad av DeepSeek",
@@ -33,7 +41,7 @@
   },
   "modelGroup.grok": {
     "message": "Grok",
-    "description": "Modellnamnet för tjänsten, dvs Grok"
+    "description": "Modellnamnet för tjänsten, det vill säga Grok"
   },
   "modelGroup.grokDescription": {
     "message": "AI-modell utvecklad av xAI",
@@ -41,7 +49,7 @@
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "Modellnamnet för tjänsten, dvs Gemini"
+    "description": "Modellnamnet för tjänsten, det vill säga Gemini"
   },
   "modelGroup.geminiDescription": {
     "message": "AI-modell utvecklad av Google",
@@ -49,7 +57,7 @@
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "Modellnamnet för tjänsten, dvs Claude"
+    "description": "Modellnamnet för tjänsten, det vill säga Claude"
   },
   "modelGroup.claudeDescription": {
     "message": "AI-modell utvecklad av Anthropic",
@@ -57,7 +65,7 @@
   },
   "modelGroup.kimi": {
     "message": "Kimi",
-    "description": "Modellnamnet för tjänsten, dvs Kimi"
+    "description": "Modellnamnet för tjänsten, det vill säga Kimi"
   },
   "modelGroup.kimiDescription": {
     "message": "AI-modell utvecklad av Dark Side of the Moon",
@@ -65,7 +73,7 @@
   },
   "modelGroup.glm": {
     "message": "GLM",
-    "description": "Modellnamnet för tjänsten, dvs GLM"
+    "description": "Modellnamnet för tjänsten, det vill säga GLM"
   },
   "modelGroup.glmDescription": {
     "message": "Stort språkmodell utvecklad av Zhiyu AI",
@@ -73,7 +81,7 @@
   },
   "model.55": {
     "message": "gpt-5.5",
-    "description": "Modellnamnet för tjänsten, dvs GPT 5.5"
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 5.5"
   },
   "model.55Description": {
     "message": "Den senaste generationens flaggskepp GPT 5.5-modell",
@@ -81,7 +89,7 @@
   },
   "model.54": {
     "message": "gpt-5.4",
-    "description": "Modellnamnet för tjänsten, dvs GPT 5.4"
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 5.4"
   },
   "model.54Description": {
     "message": "Den senaste generationens flaggskepp GPT 5.4-modell",
@@ -89,39 +97,47 @@
   },
   "model.54Mini": {
     "message": "gpt-5.4-mini",
-    "description": "Modellnamnet för tjänsten, dvs GPT 5.4 Mini"
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 5.4 Mini"
   },
   "model.54MiniDescription": {
     "message": "Snabbare och lättare GPT 5.4-modell",
     "description": "Beskrivning av GPT 5.4 Mini-modellen"
   },
   "model.deepseekChat": {
-    "message": "3.0 Standard",
-    "description": "Modellnamnet för tjänsten, dvs DeepSeek Chat"
+    "message": "3.0",
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
-    "message": "För dagliga uppgifter",
+    "message": "För vardagliga uppgifter",
     "description": "Beskrivning av DeepSeek Chat-modellen"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Resonör",
-    "description": "Modellnamnet för tjänsten, dvs DeepSeek Resonör"
+    "message": "R1",
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
     "message": "För resonemang och djupare frågor",
-    "description": "Beskrivning av DeepSeek Resonör-modellen"
+    "description": "Beskrivning av DeepSeek Reasoner-modellen"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 Beta",
-    "description": "Modellnamnet för tjänsten, dvs DeepSeek V3.2 Exp"
+    "message": "3.2",
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
-    "message": "Den senaste beta-versionen",
-    "description": "Beskrivning av DeepSeek V3.2 beta-modellen"
+    "message": "Den senaste experimentella versionen",
+    "description": "Beskrivning av DeepSeek V3.2 experimentella modellen"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Den senaste generationens lätta flaggskepp, 1M kontext",
+    "description": "Beskrivning av DeepSeek V4 Flash-modellen"
   },
   "model.grok4": {
     "message": "grok-4",
-    "description": "Modellnamnet för tjänsten, dvs Grok 4"
+    "description": "Modellnamnet för tjänsten, det vill säga Grok 4"
   },
   "model.grok4Description": {
     "message": "Den mest avancerade modellen hittills",
@@ -137,7 +153,7 @@
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "Modellnamnet för tjänsten, dvs Gemini 3.0 Pro"
+    "description": "Modellnamnet för tjänsten, det vill säga Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
     "message": "Den mest avancerade modellen hittills",
@@ -145,7 +161,7 @@
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "Modellnamnet för tjänsten, dvs Gemini 2.5 Pro"
+    "description": "Modellnamnet för tjänsten, det vill säga Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
     "message": "För komplexa resonemangsuppgifter",
@@ -153,7 +169,7 @@
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "Modellnamnet för tjänsten, dvs Gemini 2.5 Flash"
+    "description": "Modellnamnet för tjänsten, det vill säga Gemini 2.5 Flash"
   },
   "model.gemini25FlashDescription": {
     "message": "Snabbare och lättare modell",
@@ -161,7 +177,7 @@
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
-    "description": "Modellnamnet för tjänsten, dvs Claude Opus 4.7"
+    "description": "Modellnamnet för tjänsten, det vill säga Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
     "message": "Den mest avancerade modellen hittills",
@@ -169,7 +185,7 @@
   },
   "model.claudeSonnet46": {
     "message": "claude-sonnet-4.6",
-    "description": "Modellnamn för tjänsten, dvs Claude Sonnet 4.6"
+    "description": "Modellnamnet för tjänsten, dvs Claude Sonnet 4.6"
   },
   "model.claudeSonnet46Description": {
     "message": "För de flesta uppgifter",
@@ -177,7 +193,7 @@
   },
   "model.claudeHaiku45": {
     "message": "claude-haiku-4.5",
-    "description": "Modellnamn för tjänsten, dvs Claude Haiku 4.5"
+    "description": "Modellnamnet för tjänsten, dvs Claude Haiku 4.5"
   },
   "model.claudeHaiku45Description": {
     "message": "Lätt och snabb modell",
@@ -185,31 +201,31 @@
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
-    "description": "Modellnamn för tjänsten, dvs Kimi K2.5"
+    "description": "Modellnamnet för tjänsten, dvs Kimi K2.5"
   },
   "model.kimiK25Description": {
     "message": "Den mest avancerade modellen",
     "description": "Beskrivning av Kimi K2.5-modellen"
   },
   "model.kimiK2Thinking": {
-    "message": "kimi-k2 resonemang",
-    "description": "Modellnamn för tjänsten, dvs Kimi K2 resonemang"
+    "message": "kimi-k2 tänkande",
+    "description": "Modellnamnet för tjänsten, dvs Kimi K2 tänkande"
   },
   "model.kimiK2ThinkingDescription": {
     "message": "För resonemang och djupgående frågor",
-    "description": "Beskrivning av Kimi K2 resonemangsmodellen"
+    "description": "Beskrivning av Kimi K2 tänkande-modellen"
   },
   "model.kimiK2ThinkingTurbo": {
-    "message": "kimi-k2 turbo resonemang",
-    "description": "Modellnamn för tjänsten, dvs Kimi K2 turbo resonemang"
+    "message": "kimi-k2 turbo tänkande",
+    "description": "Modellnamnet för tjänsten, dvs Kimi K2 turbo tänkande"
   },
   "model.kimiK2ThinkingTurboDescription": {
-    "message": "Snabbare resonemangsmodell",
-    "description": "Beskrivning av Kimi K2 turbo resonemangsmodellen"
+    "message": "Snabbare tänkande modell",
+    "description": "Beskrivning av Kimi K2 turbo tänkande-modellen"
   },
   "model.glm51": {
     "message": "glm-5.1",
-    "description": "Modellnamn för tjänsten, dvs GLM 5.1"
+    "description": "Modellnamnet för tjänsten, dvs GLM 5.1"
   },
   "model.glm51Description": {
     "message": "Den senaste flaggskeppsmodellen från Zhipu",
@@ -217,15 +233,15 @@
   },
   "model.glm47": {
     "message": "glm-4.7",
-    "description": "Modellnamn för tjänsten, dvs GLM 4.7"
+    "description": "Modellnamnet för tjänsten, dvs GLM 4.7"
   },
   "model.glm47Description": {
     "message": "Balans mellan prestanda och kostnad",
     "description": "Beskrivning av GLM 4.7-modellen"
   },
   "message.startNewChat": {
-    "message": "Börja ny konversation",
-    "description": "Meddelande på webbsidan som informerar användaren om att börja en ny konversation"
+    "message": "Starta ny konversation",
+    "description": "Meddelande på webbsidan som informerar användaren om att starta en ny konversation"
   },
   "message.uploadFile": {
     "message": "Ladda upp fil",
@@ -237,7 +253,7 @@
   },
   "message.newMessagePlaceholder": {
     "message": "Skriv din fråga...",
-    "description": "Platsinnehåll på webbsidan som informerar användaren om att skriva en fråga"
+    "description": "Platshållare på webbsidan som informerar användaren om att skriva en fråga"
   },
   "message.noInput": {
     "message": "Frågan får inte vara tom",
@@ -253,7 +269,7 @@
   },
   "message.notApplied": {
     "message": "Du har inte ansökt om denna tjänst, vänligen ansök först",
-    "description": "Meddelande på webbsidan som informerar användaren om att de inte har ansökt om tjänsten, vänligen ansök först"
+    "description": "Meddelande på webbsidan som informerar användaren om att de inte har ansökt om denna tjänst, vänligen ansök först"
   },
   "message.tryForFree": {
     "message": "Prova gratis",
@@ -269,7 +285,7 @@
   },
   "message.question3": {
     "message": "Designa roliga programmeringsspel",
-    "description": "Exempel på fråga för att starta en konversation, be användaren förklara de grundläggande principerna för kvantdatorer på ett enkelt sätt"
+    "description": "Exempel på fråga för att starta en konversation, be användaren förklara de grundläggande principerna för kvantdatorer med enkla ord"
   },
   "message.question4": {
     "message": "Upplev Seoul som en lokal",
@@ -296,28 +312,28 @@
     "description": "Meddelande på webbsidan som informerar användaren om att svaret misslyckades, försök igen senare"
   },
   "message.errorBadRequest": {
-    "message": "Felaktig begäran, vänligen ställ frågan igen",
-    "description": "Meddelande på webbsidan som informerar användaren om att begäran är felaktig, vänligen ställ frågan igen"
+    "message": "Begäran är ogiltig, vänligen ställ frågan igen",
+    "description": "Meddelande på webbsidan som informerar användaren om att begäran är ogiltig, vänligen ställ frågan igen"
   },
   "message.errorNoConversation": {
-    "message": "Konversationen finns inte eller har löpt ut, vänligen börja en ny konversation",
-    "description": "Meddelande på webbsidan som informerar användaren om att konversationen inte finns eller har löpt ut, vänligen börja en ny konversation"
+    "message": "Konversationen finns inte eller har gått ut, vänligen starta en ny konversation",
+    "description": "Meddelande på webbsidan som informerar användaren om att konversationen inte finns eller har gått ut, vänligen starta en ny konversation"
   },
   "message.errorContentTooLarge": {
     "message": "Innehållet är för långt, vänligen förkorta och försök igen",
     "description": "Meddelande på webbsidan som informerar användaren om att innehållet är för långt, vänligen förkorta och försök igen"
   },
   "message.errorTooManyRequests": {
-    "message": "Du har gjort för många förfrågningar, vänligen försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att de har gjort för många förfrågningar, vänligen försök igen senare"
+    "message": "Du gör för många förfrågningar, vänligen försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren om att de gör för många förfrågningar, vänligen försök igen senare"
   },
   "message.errorBusy": {
     "message": "Servern är upptagen, vänligen försök igen senare",
     "description": "Meddelande på webbsidan som informerar användaren om att servern är upptagen, vänligen försök igen senare"
   },
   "message.errorUsedUp": {
-    "message": "Du har använt upp dina tillgängliga gånger, vänligen köp fler för att fortsätta använda",
-    "description": "Meddelande på webbsidan som informerar användaren om att de har använt upp sina tillgängliga gånger, vänligen köp fler för att fortsätta använda"
+    "message": "Du har använt upp dina tillgångar, vänligen köp fler för att fortsätta använda",
+    "description": "Meddelande på webbsidan som informerar användaren om att de har använt upp sina tillgångar, vänligen köp fler för att fortsätta använda"
   },
   "message.errorUnknown": {
     "message": "Ett okänt fel har inträffat på servern, vänligen försök igen senare eller kontakta support",
@@ -389,35 +405,39 @@
   },
   "connector.processing": {
     "message": "Bearbetar autentisering...",
-    "description": "Meddelande om OAuth callback bearbetning"
+    "description": "Meddelande om bearbetning av OAuth-återkoppling"
   },
   "connector.authSuccess": {
     "message": "Autentisering lyckades!",
-    "description": "Meddelande om lyckad OAuth callback"
+    "description": "Meddelande om lyckad OAuth-återkoppling"
   },
   "connector.closeWindow": {
-    "message": "Detta fönster kommer att stängas automatiskt.",
-    "description": "Meddelande om stängning av OAuth callback"
+    "message": "Detta fönster stängs automatiskt.",
+    "description": "Meddelande om stängning av OAuth-återkoppling"
   },
   "connections.tooltip": {
     "message": "Hantera anslutningar",
-    "description": "Knappens tips för att gå till auth.acedata.cloud anslutningshanteringssidan"
+    "description": "Knappens tips för att gå till sidan för hantering av anslutningar på auth.acedata.cloud"
   },
   "skill.tooltip": {
     "message": "Hantera färdigheter",
-    "description": "Knappens tips för att gå till auth.acedata.cloud färdighets hanteringssidan"
+    "description": "Knappens tips för att gå till sidan för hantering av färdigheter på auth.acedata.cloud"
+  },
+  "composer.addAction": {
+    "message": "Lägg till innehåll",
+    "description": "Tips för plusknappen under inmatningsfältet, som öppnar för att ladda upp filer, öppna färdigheter eller hantera anslutningar"
   },
   "composer.addFiles": {
     "message": "Lägg till bilder eller filer",
-    "description": "Knapp under inmatningsfältet: Ladda upp bilder eller filer"
+    "description": "Alternativ i popup-menyn för plusknappen: ladda upp bilder eller filer"
   },
   "composer.skills": {
     "message": "Färdigheter",
-    "description": "Knapp under inmatningsfältet: Öppna färdighets hantering"
+    "description": "Alternativ i popup-menyn för plusknappen: öppna hantering av färdigheter"
   },
   "composer.connections": {
     "message": "Anslutningar",
-    "description": "Knapp under inmatningsfältet: Öppna anslutningshantering"
+    "description": "Alternativ i popup-menyn för plusknappen: öppna hantering av anslutningar"
   },
   "agent.title": {
     "message": "Skrivbordsagent",
@@ -436,7 +456,7 @@
     "description": "Status för icke ansluten agent"
   },
   "agent.description": {
-    "message": "Anslut skrivbordsagenten för att få åtkomst till lokala filer, köra kommandon och använda lokal MCP-server i AI-konversationer.",
+    "message": "Anslut skrivbordsagenten för att få åtkomst till lokala filer, köra kommandon och använda den lokala MCP-servern i AI-konversationer.",
     "description": "Beskrivning av agenten"
   },
   "agent.name": {
@@ -453,7 +473,7 @@
   },
   "agent.connectedHint": {
     "message": "Din skrivbordsagent är ansluten och kan användas.",
-    "description": "Hint om att agenten är ansluten"
+    "description": "Tips om att agenten är ansluten"
   },
   "agent.installLabel": {
     "message": "Installera skrivbordsagent:",

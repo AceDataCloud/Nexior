@@ -1,7 +1,15 @@
 {
+  "thinking.inProgress": {
+    "message": "Myślenie w toku...",
+    "description": "Etykieta wyświetlana podczas generowania procesu wnioskowania przez model"
+  },
+  "thinking.done": {
+    "message": "Proces myślenia",
+    "description": "Etykieta używana do złożenia wyświetlania procesu wnioskowania po zakończeniu przez model"
+  },
   "button.thinkDeeper": {
-    "message": "Myśl głębiej",
-    "description": "Przycisk do głębokiego myślenia"
+    "message": "Głębsze myślenie",
+    "description": "Przycisk do głębszego myślenia"
   },
   "button.deepsearch": {
     "message": "Głębokie wyszukiwanie",
@@ -68,7 +76,7 @@
     "description": "Nazwa modelu usługi, czyli GLM"
   },
   "modelGroup.glmDescription": {
-    "message": "Duży model językowy opracowany przez firmę Zhipu AI",
+    "message": "Model dużego języka opracowany przez firmę Zhipu AI",
     "description": "Opis grupy modeli GLM"
   },
   "model.55": {
@@ -96,7 +104,7 @@
     "description": "Opis modelu GPT 5.4 Mini"
   },
   "model.deepseekChat": {
-    "message": "Standard 3.0",
+    "message": "3.0",
     "description": "Nazwa modelu usługi, czyli DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
@@ -104,7 +112,7 @@
     "description": "Opis modelu DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Wnioskowanie",
+    "message": "R1",
     "description": "Nazwa modelu usługi, czyli DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
@@ -112,12 +120,20 @@
     "description": "Opis modelu DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
-    "message": "Wersja eksperymentalna V3.2",
+    "message": "3.2",
     "description": "Nazwa modelu usługi, czyli DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Najnowocześniejsza wersja eksperymentalna",
     "description": "Opis modelu DeepSeek V3.2"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Nazwa modelu usługi, czyli DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Najnowocześniejszy lekki model flagowy, 1M kontekstu",
+    "description": "Opis modelu DeepSeek V4 Flash"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -261,35 +277,35 @@
   },
   "message.question1": {
     "message": "Stwórz plan treningowy",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie kodu JavaScript, który wyświetla 'Hello World'"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o napisanie kodu JavaScript, który wyświetli Hello World"
   },
   "message.question2": {
-    "message": "Zrób osobistą stronę internetową",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o napisanie e-maila do Mike'a, informującego go, że właśnie się przeprowadził"
+    "message": "Stwórz osobistą stronę internetową",
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o napisanie e-maila do Mike'a, informując go, że właśnie się przeprowadziłeś"
   },
   "message.question3": {
     "message": "Zaprojektuj interesującą grę programistyczną",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o wyjaśnienie podstawowych zasad obliczeń kwantowych w prostych słowach"
   },
   "message.question4": {
     "message": "Doświadcz Seulu jak miejscowy",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące użytkownika o wyjaśnienie, jaki wpływ ma rzeczywistość wirtualna na twórczość artystyczną"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc użytkownika o wyjaśnienie, jaki wpływ ma rzeczywistość wirtualna na twórczość artystyczną"
   },
   "message.question5": {
     "message": "Które jest większe, 9.8 czy 9.11?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, proszące o porównanie dwóch liczb"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, prosząc o porównanie dwóch liczb"
   },
   "message.question6": {
     "message": "Jaki wpływ ma AI na przyszłość?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające o wpływ AI na przyszłość"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jaki wpływ ma AI na przyszłość?"
   },
   "message.question7": {
     "message": "Jak poprawić efektywność nauki?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające o sposoby na poprawę efektywności nauki"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jak poprawić swoją efektywność nauki?"
   },
   "message.question8": {
     "message": "Jak zwiększyć koncentrację?",
-    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, pytające o sposoby na zwiększenie koncentracji"
+    "description": "Przykładowe pytanie do rozpoczęcia rozmowy, jak zwiększyć swoją koncentrację?"
   },
   "message.errorApiError": {
     "message": "Odpowiedź nie powiodła się, spróbuj ponownie później",
@@ -304,8 +320,8 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że rozmowa nie istnieje lub wygasła, proszę rozpocząć nową rozmowę"
   },
   "message.errorContentTooLarge": {
-    "message": "Treść pytania jest zbyt długa, skróć ją i spróbuj ponownie",
-    "description": "Wiadomość na stronie, informująca użytkownika, że treść pytania jest zbyt długa, skróć ją i spróbuj ponownie"
+    "message": "Treść pytania jest za długa, skróć ją i spróbuj ponownie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że treść pytania jest za długa, skróć ją i spróbuj ponownie"
   },
   "message.errorTooManyRequests": {
     "message": "Twoje działania są zbyt częste, spróbuj ponownie później",
@@ -320,16 +336,16 @@
     "description": "Wiadomość na stronie, informująca użytkownika, że wykończył limit, kup więcej, aby kontynuować"
   },
   "message.errorUnknown": {
-    "message": "Wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą",
-    "description": "Wiadomość na stronie, informująca użytkownika, że wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą"
+    "message": "Wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą klienta",
+    "description": "Wiadomość na stronie, informująca użytkownika, że wystąpił nieznany błąd serwera, spróbuj ponownie później lub skontaktuj się z obsługą klienta"
   },
   "message.errorTimeout": {
     "message": "Przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później",
     "description": "Wiadomość na stronie, informująca użytkownika, że przekroczono czas oczekiwania na odpowiedź, spróbuj ponownie później"
   },
   "message.errorNotApplied": {
-    "message": "Nie złożyłeś wniosku o tę usługę, najpierw złóż wniosek, a potem pytaj",
-    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył wniosku o tę usługę, najpierw złóż wniosek, a potem pytaj"
+    "message": "Nie złożyłeś wniosku o tę usługę, najpierw złóż wniosek, a potem kontynuuj pytanie",
+    "description": "Wiadomość na stronie, informująca użytkownika, że nie złożył wniosku o tę usługę, najpierw złóż wniosek, a potem kontynuuj pytanie"
   },
   "message.confirmDelete": {
     "message": "Potwierdź usunięcie",
@@ -396,7 +412,7 @@
     "description": "Wiadomość o pomyślnym zwrotnym połączeniu OAuth"
   },
   "connector.closeWindow": {
-    "message": "To okno zamknie się automatycznie.",
+    "message": "To okno zostanie automatycznie zamknięte.",
     "description": "Wskazówka o zamknięciu okna zwrotnego połączenia OAuth"
   },
   "connections.tooltip": {
@@ -407,17 +423,21 @@
     "message": "Zarządzanie umiejętnościami",
     "description": "Wskazówka przycisku do przejścia do strony zarządzania umiejętnościami auth.acedata.cloud"
   },
+  "composer.addAction": {
+    "message": "Dodaj treść",
+    "description": "Wskazówka przycisku plus pod polem tekstowym, po rozwinięciu można przesłać pliki, otworzyć zarządzanie umiejętnościami lub połączeniami"
+  },
   "composer.addFiles": {
     "message": "Dodaj zdjęcia lub pliki",
-    "description": "Przycisk poniżej pola wejściowego: przesyłanie zdjęć lub plików"
+    "description": "Element w menu rozwijanym przycisku plus: przesyłanie zdjęć lub plików"
   },
   "composer.skills": {
     "message": "Umiejętności",
-    "description": "Przycisk poniżej pola wejściowego: otwórz zarządzanie umiejętnościami"
+    "description": "Element w menu rozwijanym przycisku plus: otwórz zarządzanie umiejętnościami"
   },
   "composer.connections": {
     "message": "Połączenia",
-    "description": "Przycisk poniżej pola wejściowego: otwórz zarządzanie połączeniami"
+    "description": "Element w menu rozwijanym przycisku plus: otwórz zarządzanie połączeniami"
   },
   "agent.title": {
     "message": "Agent stacjonarny",
@@ -448,12 +468,12 @@
     "description": "Etykieta liczby narzędzi agenta"
   },
   "agent.connectedSince": {
-    "message": "Czas połączenia",
+    "message": "Połączono od",
     "description": "Etykieta czasu połączenia agenta"
   },
   "agent.connectedHint": {
     "message": "Twój agent na komputerze jest połączony i gotowy do użycia.",
-    "description": "Wskazówka, że agent jest połączony"
+    "description": "Podpowiedź o połączeniu agenta"
   },
   "agent.installLabel": {
     "message": "Zainstaluj agenta na komputerze:",

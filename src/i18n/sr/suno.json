@@ -72,8 +72,8 @@
     "description": "Poruka kada je lista zvukova prazna"
   },
   "voice.emptyFavorites": {
-    "message": "Niste sačuvali nijedan zvuk, kliknite na zvezdicu da dodate",
-    "description": "Poruka kada je lista omiljenih prazna"
+    "message": "Niste dodali nijedan zvuk u omiljene, kliknite na zvezdicu da dodate",
+    "description": "Poruka kada su omiljeni zvuci prazni"
   },
   "voice.tabAll": {
     "message": "Sve",
@@ -85,11 +85,11 @@
   },
   "voice.favorite": {
     "message": "Dodaj u omiljene",
-    "description": "Poruka za dodavanje u omiljene kada nije sačuvano"
+    "description": "Poruka za dodavanje u omiljene kada nije već dodato"
   },
   "voice.unfavorite": {
     "message": "Ukloni iz omiljenih",
-    "description": "Poruka za uklanjanje iz omiljenih kada je sačuvano"
+    "description": "Poruka za uklanjanje iz omiljenih kada je već dodato"
   },
   "voice.delete": {
     "message": "Obriši zvuk",
@@ -108,7 +108,7 @@
     "description": "Poruka o neuspešnom brisanju zvuka"
   },
   "button.extend": {
-    "message": "Nastavi sa generisanjem",
+    "message": "Nastavi generisanje",
     "description": "Tekst dugmeta za nastavak generisanja"
   },
   "button.download": {
@@ -156,7 +156,7 @@
     "description": "Oznaka za snimanje audio putem mikrofona"
   },
   "description.dropAudioHere": {
-    "message": "Prevucite audio ovde ili kliknite za otpremanje",
+    "message": "Prevucite audio ovde ili kliknite za otpremu",
     "description": "Tekst u oblasti za prevlačenje audio"
   },
   "description.audioFormats": {
@@ -229,7 +229,7 @@
   },
   "button.all_stems": {
     "message": "Svi delovi",
-    "description": "Tekst dugmeta za izdvajanje svih zvučnih tragova"
+    "description": "Tekst dugmeta za izdvajanje svih audio zapisa"
   },
   "model.model1": {
     "message": "v2",
@@ -360,7 +360,7 @@
     "description": "Režim opisa pesme"
   },
   "description.prompt": {
-    "message": "Opišite željeni muzički stil i temu",
+    "message": "Opisujte željeni muzički stil i temu",
     "description": "Opis parametra 'prompt'"
   },
   "description.lyrics": {
@@ -368,11 +368,11 @@
     "description": "Opis parametra 'lyrics'"
   },
   "description.style": {
-    "message": "Opišite muzički stil, kao što su akustični pop, džez, elektronska muzika",
+    "message": "Opisujte muzički stil, kao što su akustični pop, džez, elektronska muzika",
     "description": "Opis parametra 'style'"
   },
   "description.styleNegative": {
-    "message": "Opišite stilove koje ne želite, kao što su heavy metal, vikanje",
+    "message": "Opisujte stilove koje ne želite, kao što su heavy metal, vikanje",
     "description": "Opis parametra za isključivanje stila"
   },
   "description.title": {
@@ -380,7 +380,7 @@
     "description": "Opis parametra 'title'"
   },
   "description.uploadAudios": {
-    "message": "Otpremite muziku kao referencu za generisanje, proces otpremanja može potrajati, nakon uspešnog generisanja možete koristiti otpremnu muziku za generisanje",
+    "message": "Otpremite muziku kao referencu za generisanje, proces otpremanja može potrajati, nakon uspešnog generisanja možete koristiti otpremljenu muziku",
     "description": "Opis parametra za otpremanje referenci"
   },
   "description.vocalGender": {
@@ -404,8 +404,8 @@
     "description": "Opis za prompt stihova"
   },
   "description.replaceSection": {
-    "message": "Zamenite sadržaj u određenom vremenskom intervalu pesme",
-    "description": "Opis funkcije zamene sekcije"
+    "message": "Zamenite sadržaj u određenom vremenskom periodu pesme",
+    "description": "Opis funkcije zamene segmenta"
   },
   "status.pending": {
     "message": "Na čekanju",
@@ -424,7 +424,7 @@
     "description": "Placeholder za unos proširenih stihova"
   },
   "placeholder.extend.continue_at": {
-    "message": "Od koje sekunde da se proširi...",
+    "message": "Od koje sekunde da počnemo proširenje...",
     "description": "Placeholder za početno vreme proširenja"
   },
   "placeholder.style": {
@@ -449,15 +449,15 @@
   },
   "placeholder.lyricPrompt": {
     "message": "Opisujte temu stihova, AI će automatski generisati...",
-    "description": "Placeholder za unos prompta stihova"
+    "description": "Placeholder za unos prompta za stihove"
   },
   "placeholder.replaceSectionStart": {
     "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme zamene sekcije"
+    "description": "Placeholder za početno vreme zamene segmenta"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Krajnje vreme (sekunde)",
-    "description": "Placeholder za krajnje vreme zamene sekcije"
+    "description": "Placeholder za krajnje vreme zamene segmenta"
   },
   "button.generate": {
     "message": "Generiši",
@@ -493,11 +493,11 @@
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se započinje zadatak generisanja muzike"
+    "description": "Poruka kada započinje zadatak generisanja muzike"
   },
   "message.startingUploadAudio": {
     "message": "Učitavanje prilagođene muzike...",
-    "description": "Poruka kada se započinje zadatak generisanja muzike"
+    "description": "Poruka kada započinje zadatak generisanja muzike"
   },
   "message.uploadReferencesExceed": {
     "message": "Prekoračen maksimalni broj učitanih muzika",
@@ -513,11 +513,11 @@
   },
   "message.startUploadAudioSuccess": {
     "message": "Uspešno učitana prilagođena muzika",
-    "description": "Poruka uspeha kada je učitavanje prilagođene muzike uspešno"
+    "description": "Poruka uspeha kada je prilagođena muzika uspešno učitana"
   },
   "message.startUploadAudioFailed": {
     "message": "Učitavanje prilagođene muzike nije uspelo",
-    "description": "Poruka greške kada učitavanje prilagođene muzike nije uspelo"
+    "description": "Poruka greške kada pokretanje zadatka generisanja muzike nije uspelo"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka generisanja muzike nije uspelo",
@@ -525,7 +525,7 @@
   },
   "message.getVideoUrlFailed": {
     "message": "Nije uspelo dobijanje URL-a za muziku, pokušajte ponovo kasnije",
-    "description": "Poruka greške kada dobijanje URL-a za video nije uspelo"
+    "description": "Poruka greške kada dobijanje video URL-a nije uspelo"
   },
   "message.generatingLyrics": {
     "message": "Generišu se stihovi...",
@@ -537,7 +537,7 @@
   },
   "message.generateLyricsFailed": {
     "message": "Generisanje stihova nije uspelo",
-    "description": "Poruka greške kada generisanje stihova nije uspelo"
+    "description": "Poruka kada generisanje stihova nije uspelo"
   },
   "message.optimizingStyle": {
     "message": "Optimizuje se opis stila...",
@@ -549,7 +549,7 @@
   },
   "message.optimizeStyleFailed": {
     "message": "Optimizacija stila nije uspela",
-    "description": "Poruka greške kada optimizacija stila nije uspela"
+    "description": "Poruka kada optimizacija stila nije uspela"
   },
   "message.fetchingWav": {
     "message": "Učitavanje WAV datoteke...",
@@ -592,7 +592,7 @@
     "description": "Tekst dugmeta za generisanje na osnovu stila izvođača"
   },
   "button.artist_consistency_vox": {
-    "message": "Doslednost vokalnog stila",
+    "message": "Doslednost vokala",
     "description": "Tekst dugmeta za generisanje na osnovu vokalnog stila izvođača"
   },
   "button.underpainting": {
@@ -621,7 +621,7 @@
   },
   "button.mashup_lyrics": {
     "message": "Kombinuj tekstove",
-    "description": "Tekst dugmeta za kombinovanje dva dela tekstova"
+    "description": "Tekst dugmeta za kombinovanje dva dela teksta"
   },
   "name.persona": {
     "message": "Stil izvođača",
@@ -669,19 +669,19 @@
   },
   "description.persona": {
     "message": "Koristite kreirani stil izvođača za generisanje pesama doslednog stila",
-    "description": "Opis funkcionalnosti stila izvođača"
+    "description": "Opis funkcije stila izvođača"
   },
   "description.overpainting": {
     "message": "Dodajte vokale na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcionalnosti dodavanja vokala"
+    "description": "Opis funkcije dodavanja vokala"
   },
   "description.underpainting": {
     "message": "Dodajte pratnju na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcionalnosti dodavanja pratnje"
+    "description": "Opis funkcije dodavanja pratnje"
   },
   "description.samples": {
     "message": "Dodajte uzorke na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcionalnosti dodavanja uzoraka"
+    "description": "Opis funkcije dodavanja uzoraka"
   },
   "message.fetchingTiming": {
     "message": "Učitavanje podataka o tempu...",
@@ -696,8 +696,8 @@
     "description": "Poruka kada su podaci o tempu uspešno preuzeti"
   },
   "message.extractingVocals": {
-    "message": "Učitavanje vokala...",
-    "description": "Poruka prilikom izvlačenja vokala"
+    "message": "Izvlačenje vokala...",
+    "description": "Poruka dok se vokali izvlače"
   },
   "message.extractVocalsFailed": {
     "message": "Izvlačenje vokala nije uspelo",
@@ -749,11 +749,11 @@
   },
   "button.clear_lyrics": {
     "message": "Obriši tekst",
-    "description": "Obriši tekst dugme"
+    "description": "Dugme za brisanje teksta"
   },
   "button.expand_lyrics": {
     "message": "Proširi uređivanje",
-    "description": "Proširi dugme za uređivanje teksta na punom ekranu"
+    "description": "Dugme za proširenje uređivanja teksta na punu ekran"
   },
   "button.enhance_lyrics": {
     "message": "Poboljšaj",
@@ -872,7 +872,7 @@
     "description": "Poruka kada nema rezultata pretrage"
   },
   "message.noFilterResults": {
-    "message": "Nema pesama koje odgovaraju filtriranim kriterijumima",
+    "message": "Nema pesama koje odgovaraju filtrima",
     "description": "Poruka kada nema rezultata filtriranja"
   },
   "message.confirmDelete": {
@@ -912,7 +912,11 @@
     "description": "Poruka nakon uspešne ponovne upotrebe ključnih reči"
   },
   "message.reusePromptEmpty": {
-    "message": "Nema podataka o ključnim rečima za ponovnu upotrebu",
+    "message": "Nema dostupnih ključnih reči za ponovnu upotrebu",
     "description": "Poruka kada nema ključnih reči za ponovnu upotrebu"
+  },
+  "name.lyricsMode": {
+    "message": "Režim teksta",
+    "description": "Oznaka selektora režima teksta (ručno / automatski)"
   }
 }

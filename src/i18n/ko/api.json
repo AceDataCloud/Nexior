@@ -17,7 +17,7 @@
   },
   "entity.requestHeader": {
     "message": "요청 헤더",
-    "description": "HTTP 요청의 요청 헤더, 단일 요청 헤더 형태."
+    "description": "HTTP 요청의 요청 헤더, 단일 형태."
   },
   "entity.responseHeaders": {
     "message": "응답 헤더",
@@ -45,7 +45,7 @@
   },
   "entity.arrayOf": {
     "message": "배열",
-    "description": "개체의 배열."
+    "description": "엔티티의 배열."
   },
   "entity.apiKey": {
     "message": "API 키",
@@ -53,7 +53,7 @@
   },
   "message.free": {
     "message": "무료",
-    "description": "가격이 무료임을 나타내며, API 서비스 사용 시 어떤 포인트나 화폐도 지불할 필요가 없습니다."
+    "description": "가격이 무료임을 나타내며, API 서비스를 사용할 때 포인트나 화폐를 지불할 필요가 없습니다."
   },
   "message.appliedCount": {
     "message": "신청 횟수",
@@ -61,15 +61,15 @@
   },
   "message.firstFree": {
     "message": "첫 무료",
-    "description": "API 서비스를 처음 사용할 때 무료임을 나타내며, 어떤 포인트나 화폐도 지불할 필요가 없습니다."
+    "description": "API 서비스를 처음 사용할 때 무료임을 나타내며, 포인트나 화폐를 지불할 필요가 없습니다."
   },
   "message.custom": {
     "message": "지정 금액",
-    "description": "가격이 지정되어 있으며, API 서비스 사용 시 지정된 포인트나 화폐를 지불해야 함을 나타냅니다."
+    "description": "가격이 지정된 금액임을 나타내며, API 서비스를 사용할 때 지정된 포인트나 화폐를 지불해야 합니다."
   },
   "message.present": {
-    "message": "증정",
-    "description": "API 서비스를 처음 사용할 때 포인트를 드립니다."
+    "message": "선물",
+    "description": "API 서비스를 처음 사용할 때 포인트를 선물로 드립니다."
   },
   "message.around": {
     "message": "약",
@@ -77,7 +77,7 @@
   },
   "message.successRate15min": {
     "message": "실시간 성공률",
-    "description": "API 서비스가 지난 15분간의 실시간 성공률."
+    "description": "API 서비스의 지난 15분 동안의 실시간 성공률."
   },
   "message.ySuccessRate": {
     "message": "성공률 (100%)",
@@ -88,16 +88,16 @@
     "description": "시간 (분)."
   },
   "message.streamUsage": {
-    "message": "온정의 알림: 스트리밍 요청에 대해서는 위의 코드가 완전히 적용되지 않을 수 있습니다. 통합 문서를 참조하여 수정하십시오.",
-    "description": "스트리밍 요청에 대해서는 위의 코드가 완전히 적용되지 않을 수 있습니다. 통합 문서를 참조하여 수정하십시오."
+    "message": "참고: 스트리밍 요청의 경우, 위 코드는 완전히 적용되지 않을 수 있습니다. 문서 참조하여 수정하세요.",
+    "description": "스트리밍 요청의 경우, 위 코드는 완전히 적용되지 않을 수 있습니다. 문서 참조하여 수정하세요."
   },
   "message.alphaStage": {
-    "message": "이 API는 알파 단계에 있으며, 초기 미리보기 버전으로 불안정성이 있을 수 있고 API 형식에 큰 변화가 있을 수 있어, 프로덕션 환경에서 사용하기를 권장하지 않습니다. 현재 가격은 상대적으로 저렴하며, 미래에 큰 가격 조정이 있을 수 있습니다.",
-    "description": "이 API는 알파 단계에 있으며, 초기 미리보기 버전으로 불안정성이 있을 수 있고 API 형식에 큰 변화가 있을 수 있어, 프로덕션 환경에서 사용하기를 권장하지 않습니다. 현재 가격은 상대적으로 저렴하며, 미래에 큰 가격 조정이 있을 수 있습니다."
+    "message": "이 API는 알파 단계에 있으며, 초기 미리보기 버전으로 잠재적인 불안정성이 있을 수 있습니다. API 형식이 크게 변경될 수 있으며, 프로덕션 환경에서 사용하지 않는 것이 좋습니다. 현재 가격이 상대적으로 낮으며, 향후 가격 조정이 있을 수 있습니다.",
+    "description": "이 API는 알파 단계에 있으며, 초기 미리보기 버전으로 잠재적인 불안정성이 있을 수 있습니다. API 형식이 크게 변경될 수 있으며, 프로덕션 환경에서 사용하지 않는 것이 좋습니다. 현재 가격이 상대적으로 낮으며, 향후 가격 조정이 있을 수 있습니다."
   },
   "message.betaStage": {
-    "message": "이 API는 베타 단계에 있으며, API 형식에 큰 변화는 없지만 불안정성이 있을 수 있으므로 프로덕션 환경에서 주의하여 사용하십시오. 현재 가격은 상대적으로 저렴하며, 미래에 적정한 가격 조정이 있을 수 있습니다.",
-    "description": "이 API는 베타 단계에 있으며, API 형식에 큰 변화는 없지만 불안정성이 있을 수 있으므로 프로덕션 환경에서 주의하여 사용하십시오. 현재 가격은 상대적으로 저렴하며, 미래에 적정한 가격 조정이 있을 수 있습니다."
+    "message": "이 API는 베타 단계에 있으며, API 형식이 크게 변경되지 않지만 잠재적인 불안정성이 있을 수 있습니다. 프로덕션 환경에서 주의하여 사용하세요. 현재 가격이 상대적으로 낮으며, 향후 가격 조정이 있을 수 있습니다.",
+    "description": "이 API는 베타 단계에 있으며, API 형식이 크게 변경되지 않지만 잠재적인 불안정성이 있을 수 있습니다. 프로덕션 환경에서 주의하여 사용하세요. 현재 가격이 상대적으로 낮으며, 향후 가격 조정이 있을 수 있습니다."
   },
   "unit.credit": {
     "message": "포인트",
@@ -105,15 +105,15 @@
   },
   "unit.Credit": {
     "message": "포인트",
-    "description": "포인트는 API 서비스에서 사용되는 가상 화폐, 대문자 형식입니다."
+    "description": "포인트는 API 서비스에서 사용되는 가상 화폐입니다. 대문자 형태입니다."
   },
   "unit.credits": {
     "message": "포인트",
-    "description": "포인트는 API 서비스에서 사용되는 가상 화폐, 복수형입니다."
+    "description": "포인트는 API 서비스에서 사용되는 가상 화폐입니다. 복수 형태입니다."
   },
   "unit.Credits": {
     "message": "포인트",
-    "description": "포인트는 API 서비스에서 사용되는 가상 화폐, 대문자 및 복수형입니다."
+    "description": "포인트는 API 서비스에서 사용되는 가상 화폐입니다. 대문자 및 복수 형태입니다."
   },
   "unit.call": {
     "message": "호출",
@@ -125,15 +125,15 @@
   },
   "unit.Call": {
     "message": "호출",
-    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다, 대문자 형식입니다."
+    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다. 대문자 형태입니다."
   },
   "unit.calls": {
     "message": "호출",
-    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다, 복수형입니다."
+    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다. 복수 형태입니다."
   },
   "unit.Calls": {
     "message": "호출",
-    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다, 대문자 및 복수형입니다."
+    "description": "호출은 API 서비스가 호출된 횟수를 나타냅니다. 대문자 및 복수 형태입니다."
   },
   "unit.MB": {
     "message": "MB",
@@ -142,5 +142,13 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB는 기가바이트를 나타내며, 디지털 정보 저장 단위입니다."
+  },
+  "message.cheaperThan": {
+    "message": "$[[value]]보다 저렴함",
+    "description": "현재 인터페이스 가격이 비교 대상보다 낮을 때 표시되는 문구, '$[[value]]'는 실행 시 대상 이름으로 대체됩니다."
+  },
+  "message.moreExpensiveThan": {
+    "message": "$[[value]]보다 비쌈",
+    "description": "현재 인터페이스 가격이 비교 대상보다 높을 때 표시되는 문구, '$[[value]]'는 실행 시 대상 이름으로 대체됩니다."
   }
 }

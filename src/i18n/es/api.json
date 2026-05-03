@@ -17,7 +17,7 @@
   },
   "entity.requestHeader": {
     "message": "Encabezado de solicitud",
-    "description": "Encabezado de la solicitud HTTP, forma singular de los encabezados."
+    "description": "Encabezado de la solicitud HTTP, forma singular del encabezado."
   },
   "entity.responseHeaders": {
     "message": "Encabezados de respuesta",
@@ -53,23 +53,23 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Indica que el precio es gratuito, no se requiere gastar créditos o moneda al usar el servicio API."
+    "description": "Indica que el precio es gratuito, no se requiere gastar puntos o dinero al usar el servicio API."
   },
   "message.appliedCount": {
-    "message": "Número de aplicaciones",
+    "message": "Número de solicitudes",
     "description": "Número de veces que se ha solicitado el servicio API."
   },
   "message.firstFree": {
     "message": "Primera vez gratis",
-    "description": "Indica que la primera vez que se utiliza el servicio API es gratuito."
+    "description": "Indica que la primera vez que se usa el servicio API es gratuita, sin necesidad de gastar puntos o dinero."
   },
   "message.custom": {
     "message": "Monto especificado",
-    "description": "Indica que el precio es especificado, se requiere gastar una cantidad de créditos o moneda al usar el servicio API."
+    "description": "Indica que el precio es un monto especificado, se requiere gastar puntos o dinero al usar el servicio API."
   },
   "message.present": {
     "message": "Regalo",
-    "description": "Al usar el servicio API por primera vez, te obsequiaremos créditos."
+    "description": "Al usar el servicio API por primera vez, le regalamos puntos."
   },
   "message.around": {
     "message": "Aproximadamente",
@@ -88,36 +88,36 @@
     "description": "Tiempo (minutos)."
   },
   "message.streamUsage": {
-    "message": "Nota: Para solicitudes en streaming, el código anterior puede no ser completamente aplicable. Consulta la documentación de integración para realizar modificaciones.",
-    "description": "Para solicitudes en streaming, el código anterior puede no ser completamente aplicable. Consulta la documentación de integración para realizar modificaciones."
+    "message": "Nota: Para solicitudes en streaming, el código anterior puede no ser completamente aplicable. Consulte la documentación de integración para realizar modificaciones.",
+    "description": "Para solicitudes en streaming, el código anterior puede no ser completamente aplicable. Consulte la documentación de integración para realizar modificaciones."
   },
   "message.alphaStage": {
-    "message": "Esta API está en fase Alpha, es una versión de vista previa temprana y puede tener inestabilidades, el formato de la API puede cambiar significativamente, no se recomienda su uso en producción. La tarifa actual es relativamente baja, puede haber ajustes significativos en el precio en el futuro.",
-    "description": "Esta API está en fase Alpha, es una versión de vista previa temprana y puede tener inestabilidades, el formato de la API puede cambiar significativamente, no se recomienda su uso en producción. La tarifa actual es relativamente baja, puede haber ajustes significativos en el precio en el futuro."
+    "message": "Esta API está en fase Alpha, es una versión de vista previa temprana, puede haber inestabilidad potencial, el formato de la API puede cambiar significativamente, no se recomienda su uso en producción. El precio actual es relativamente bajo, puede haber ajustes de precios significativos en el futuro.",
+    "description": "Esta API está en fase Alpha, es una versión de vista previa temprana, puede haber inestabilidad potencial, el formato de la API puede cambiar significativamente, no se recomienda su uso en producción. El precio actual es relativamente bajo, puede haber ajustes de precios significativos en el futuro."
   },
   "message.betaStage": {
-    "message": "Esta API está en fase Beta, el formato de la API no cambiará mucho, pero puede haber inestabilidades, utilice con precaución en producción. La tarifa actual es relativamente baja, puede haber ajustes moderados en el precio en el futuro.",
-    "description": "Esta API está en fase Beta, el formato de la API no cambiará mucho, pero puede haber inestabilidades, utilice con precaución en producción. La tarifa actual es relativamente baja, puede haber ajustes moderados en el precio en el futuro."
+    "message": "Esta API está en fase Beta, el formato de la API no cambiará mucho, pero puede haber inestabilidad potencial, utilícela con precaución en producción. El precio actual es relativamente bajo, puede haber ajustes de precios moderados en el futuro.",
+    "description": "Esta API está en fase Beta, el formato de la API no cambiará mucho, pero puede haber inestabilidad potencial, utilícela con precaución en producción. El precio actual es relativamente bajo, puede haber ajustes de precios moderados en el futuro."
   },
   "unit.credit": {
-    "message": "Créditos",
-    "description": "Los créditos son la moneda virtual utilizada en el servicio API."
+    "message": "Crédito",
+    "description": "El crédito es la moneda virtual utilizada en el servicio API."
   },
   "unit.Credit": {
     "message": "Crédito",
-    "description": "El crédito es la moneda virtual utilizada en el servicio API. Esta es la forma en mayúscula."
+    "description": "El crédito es la moneda virtual utilizada en el servicio API, esta es la forma en mayúsculas."
   },
   "unit.credits": {
     "message": "Créditos",
-    "description": "Los créditos son la moneda virtual utilizada en el servicio API. Esta es la forma plural."
+    "description": "El crédito es la moneda virtual utilizada en el servicio API, esta es la forma plural."
   },
   "unit.Credits": {
     "message": "Créditos",
-    "description": "Los créditos son la moneda virtual utilizada en el servicio API. Esta es la forma plural y en mayúscula."
+    "description": "El crédito es la moneda virtual utilizada en el servicio API, esta es la forma en mayúsculas y plural."
   },
   "unit.call": {
     "message": "Llamada",
-    "description": "Llamada indica el número de veces que se ha llamado al servicio API."
+    "description": "La llamada indica el número de veces que se ha llamado al servicio API."
   },
   "unit.count": {
     "message": "Veces",
@@ -125,22 +125,30 @@
   },
   "unit.Call": {
     "message": "Llamada",
-    "description": "Llamada indica el número de veces que se ha llamado al servicio API. Esta es la forma en mayúscula."
+    "description": "La llamada indica el número de veces que se ha llamado al servicio API, esta es la forma en mayúsculas."
   },
   "unit.calls": {
     "message": "Llamadas",
-    "description": "Llamada indica el número de veces que se ha llamado al servicio API. Esta es la forma plural."
+    "description": "La llamada indica el número de veces que se ha llamado al servicio API, esta es la forma plural."
   },
   "unit.Calls": {
     "message": "Llamadas",
-    "description": "Llamada indica el número de veces que se ha llamado al servicio API. Esta es la forma plural y en mayúscula."
+    "description": "La llamada indica el número de veces que se ha llamado al servicio API, esta es la forma en mayúsculas y plural."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB significa megabyte, una unidad de almacenamiento de información digital."
+    "description": "MB indica megabytes, una unidad de almacenamiento de información digital."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB significa gigabyte, una unidad de almacenamiento de información digital."
+    "description": "GB indica gigabytes, una unidad de almacenamiento de información digital."
+  },
+  "message.cheaperThan": {
+    "message": "Más barato que $[[value]]",
+    "description": "Texto mostrado cuando el precio actual es más bajo que el objetivo de comparación, '$[[value]]' será reemplazado en tiempo de ejecución por el nombre del objetivo"
+  },
+  "message.moreExpensiveThan": {
+    "message": "Más caro que $[[value]]",
+    "description": "Texto mostrado cuando el precio actual es más alto que el objetivo de comparación, '$[[value]]' será reemplazado en tiempo de ejecución por el nombre del objetivo"
   }
 }

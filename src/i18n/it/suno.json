@@ -41,7 +41,7 @@
   },
   "voice.fromUpload": {
     "message": "Carica Audio",
-    "description": "Opzione per clonare la voce da un file audio caricato"
+    "description": "Opzione per caricare un file audio per clonare la voce"
   },
   "voice.audioId": {
     "message": "ID Canzone",
@@ -56,7 +56,7 @@
     "description": "Etichetta per l'URL audio"
   },
   "voice.audioUrlPlaceholder": {
-    "message": "Inserisci URL del file audio...",
+    "message": "Inserisci URL File Audio...",
     "description": "Segnaposto per l'input dell'URL audio"
   },
   "voice.createSuccess": {
@@ -68,7 +68,7 @@
     "description": "Messaggio di errore per la creazione della voce"
   },
   "voice.empty": {
-    "message": "Nessuna voce disponibile, clicca il pulsante sopra per creare",
+    "message": "Nessuna voce disponibile, clicca il pulsante sopra per crearne una",
     "description": "Messaggio quando la lista delle voci è vuota"
   },
   "voice.emptyFavorites": {
@@ -96,7 +96,7 @@
     "description": "Titolo di conferma per l'eliminazione della voce"
   },
   "voice.confirmDelete": {
-    "message": "Sei sicuro di voler eliminare questa voce? Questa operazione non può essere annullata.",
+    "message": "Sei sicuro di voler eliminare questa voce? Questa operazione è irreversibile.",
     "description": "Messaggio di conferma per l'eliminazione della voce"
   },
   "voice.deleteSuccess": {
@@ -149,7 +149,7 @@
   },
   "tab.browse": {
     "message": "Sfoglia",
-    "description": "Etichetta per sfogliare i file audio locali"
+    "description": "Etichetta per sfogliare file audio locali"
   },
   "tab.record": {
     "message": "Registra",
@@ -221,7 +221,7 @@
   },
   "button.generate_lyrics": {
     "message": "Genera Testo",
-    "description": "Testo del pulsante per generare automaticamente il testo con AI"
+    "description": "Testo del pulsante per generare automaticamente il testo"
   },
   "button.optimize_style": {
     "message": "Ottimizza Stile",
@@ -277,23 +277,23 @@
   },
   "name.prompt": {
     "message": "Descrizione Canzone",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.extend": {
     "message": "Estendi Canzone Da",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.cover": {
     "message": "Cover Canzone Da",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.lyrics": {
     "message": "Testo",
-    "description": "Suggerimento per l'input del contenuto del testo"
+    "description": "Prompt per l'input del testo"
   },
   "name.style": {
     "message": "Stile",
-    "description": "Suggerimento per l'input del contenuto dello stile della canzone"
+    "description": "Prompt per l'input dello stile della canzone"
   },
   "name.styleNegative": {
     "message": "Escludi Stile",
@@ -301,7 +301,7 @@
   },
   "name.title": {
     "message": "Titolo",
-    "description": "Suggerimento per l'input del titolo della canzone"
+    "description": "Prompt per l'input del titolo della canzone"
   },
   "name.vocalGender": {
     "message": "Genere Vocale",
@@ -317,19 +317,19 @@
   },
   "name.styleInfluence": {
     "message": "Influenza Stile",
-    "description": "Controlla il grado di influenza dello stile sul risultato generato"
+    "description": "Controlla l'influenza dello stile sul risultato generato"
   },
   "name.variationCategory": {
     "message": "Tipo di Variazione",
-    "description": "Controlla il grado di varietà delle variazioni generate"
+    "description": "Controlla la varietà delle variazioni generate"
   },
   "name.audioWeight": {
     "message": "Peso Originale",
-    "description": "Peso dell'influenza della canzone originale nella cover"
+    "description": "Peso dell'originale durante la cover"
   },
   "name.lyricPrompt": {
-    "message": "Suggerimento Testo",
-    "description": "Suggerimento per generare automaticamente il testo"
+    "message": "Prompt Testo",
+    "description": "Prompt per generare automaticamente il testo"
   },
   "name.failureReason": {
     "message": "Motivo di Fallimento",
@@ -360,11 +360,11 @@
     "description": "Modalità di descrizione della canzone"
   },
   "description.prompt": {
-    "message": "Descrivi lo stile e il tema della musica che desideri",
+    "message": "Descrivi lo stile e il tema musicale desiderati",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.lyrics": {
-    "message": "Inserisci il testo personalizzato, supporta marcatori di paragrafo come [Verso], [Ritornello], [Bridge]",
+    "message": "Inserisci il testo personalizzato, supporta marcatori di paragrafo come [Verse], [Chorus], [Bridge]",
     "description": "Descrizione del parametro 'lyrics'"
   },
   "description.style": {
@@ -396,7 +396,7 @@
     "description": "Descrizione del parametro di influenza dello stile"
   },
   "description.audioWeight": {
-    "message": "Peso dell'originale sul risultato durante la cover (0-100)",
+    "message": "Peso dell'originale sul risultato durante il cover (0-100)",
     "description": "Descrizione del parametro di peso dell'originale"
   },
   "description.lyricPrompt": {
@@ -412,11 +412,11 @@
     "description": "Stato di attesa del compito"
   },
   "placeholder.prompt": {
-    "message": "Descrivi la musica che desideri, ad esempio: una ballata calda, sulla nostalgia dell'autunno...",
+    "message": "Descrivi la musica che desideri, ad esempio: una calda ballata folk, sulla nostalgia dell'autunno...",
     "description": "Segnaposto per la descrizione della canzone"
   },
   "placeholder.lyrics": {
-    "message": "[Strofa]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[Ritornello]\nCantiamo insieme\nFino all'alba...",
+    "message": "[Verso]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[ ritornello ]\nCantiamo insieme\nFino all'alba...",
     "description": "Segnaposto per l'input delle liriche"
   },
   "placeholder.extend.lyrics": {
@@ -465,11 +465,11 @@
   },
   "gender.male": {
     "message": "Voce maschile",
-    "description": "Opzione per voce maschile"
+    "description": "Opzione per la voce maschile"
   },
   "gender.female": {
     "message": "Voce femminile",
-    "description": "Opzione per voce femminile"
+    "description": "Opzione per la voce femminile"
   },
   "gender.auto": {
     "message": "Automatico",
@@ -585,7 +585,7 @@
   },
   "button.upload_cover": {
     "message": "Carica cover",
-    "description": "Testo del pulsante per caricare la cover dopo aver caricato l'audio"
+    "description": "Testo del pulsante per caricare la cover audio"
   },
   "button.artist_consistency": {
     "message": "Coerenza stilistica",
@@ -640,28 +640,28 @@
     "description": "Intervallo di tempo per aggiungere campioni"
   },
   "placeholder.overpaintingStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio della voce"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio della voce"
   },
   "placeholder.overpaintingEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine della voce"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine della voce"
   },
   "placeholder.underpaintingStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio dell'accompagnamento"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio dell'accompagnamento"
   },
   "placeholder.underpaintingEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine dell'accompagnamento"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine dell'accompagnamento"
   },
   "placeholder.samplesStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio dei campioni"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio dei campioni"
   },
   "placeholder.samplesEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine dei campioni"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine dei campioni"
   },
   "placeholder.personaId": {
     "message": "Inserisci ID stile artista...",
@@ -709,11 +709,11 @@
   },
   "mode.simple": {
     "message": "Semplice",
-    "description": "Etichetta per la modalità di creazione semplice"
+    "description": "Etichetta della modalità di creazione semplice"
   },
   "mode.custom": {
     "message": "Personalizzato",
-    "description": "Etichetta per la modalità di creazione personalizzata"
+    "description": "Etichetta della modalità di creazione personalizzata"
   },
   "model.v55desc": {
     "message": "Voce personalizzata · Modello personalizzato",
@@ -764,7 +764,7 @@
     "description": "Pulsante per cancellare tutti i moduli"
   },
   "placeholder.enhanceLyrics": {
-    "message": "Inserisci istruzioni di modifica, ad esempio: rendi i testi più allegri...",
+    "message": "Inserisci comandi di modifica, ad esempio: rendi i testi più allegri...",
     "description": "Segnaposto per l'input di miglioramento dei testi"
   },
   "message.enhancingLyrics": {
@@ -816,7 +816,7 @@
     "description": "Sezione di filtro: Durata della canzone"
   },
   "filter.durationAll": {
-    "message": "Tutti",
+    "message": "Tutte",
     "description": "Durata: Nessun limite"
   },
   "filter.durationShort": {
@@ -876,7 +876,7 @@
     "description": "Messaggio quando non ci sono risultati di filtro"
   },
   "message.confirmDelete": {
-    "message": "Sei sicuro di voler eliminare questa canzone? Questa operazione non è annullabile.",
+    "message": "Sei sicuro di voler eliminare questa canzone? Questa operazione non può essere annullata.",
     "description": "Messaggio di conferma per l'eliminazione della canzone"
   },
   "message.deleteSuccess": {
@@ -904,15 +904,19 @@
     "description": "Etichetta del selettore di velocità"
   },
   "description.adjustSpeed": {
-    "message": "Rigenera la canzone a diverse velocità di riproduzione (da 0.5x a 2x)",
+    "message": "Rigenera la canzone a diverse velocità di riproduzione (da 0,5x a 2x)",
     "description": "Descrizione della funzione di regolazione della velocità"
   },
   "message.reusePromptSuccess": {
     "message": "Suggerimento riutilizzato, può essere modificato e rigenerato",
-    "description": "Messaggio dopo il riutilizzo del suggerimento con successo"
+    "description": "Messaggio dopo il successo del riutilizzo del suggerimento"
   },
   "message.reusePromptEmpty": {
-    "message": "Nessun dato di suggerimento riutilizzabile",
-    "description": "Messaggio quando non ci sono suggerimenti da riutilizzare"
+    "message": "Nessun dato di suggerimento riutilizzabile disponibile",
+    "description": "Messaggio quando non ci sono suggerimenti riutilizzabili"
+  },
+  "name.lyricsMode": {
+    "message": "Modalità testi",
+    "description": "Etichetta del selettore della modalità testi (manuale / automatica)"
   }
 }

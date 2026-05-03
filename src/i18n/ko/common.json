@@ -13,7 +13,7 @@
   },
   "button.copied": {
     "message": "복사됨",
-    "description": "버튼 텍스트, 내용이 복사되었음을 나타내는 데 사용"
+    "description": "버튼 텍스트, 내용이 복사되었음을 나타냄"
   },
   "button.restart": {
     "message": "다시 생성",
@@ -21,7 +21,7 @@
   },
   "button.preview": {
     "message": "미리보기",
-    "description": "버튼 텍스트, URL을 통해 특정 파일의 미리보기를 여는 데 사용"
+    "description": "버튼 텍스트, URL을 통해 파일 미리보기를 여는 데 사용"
   },
   "button.seeRawImage": {
     "message": "원본 이미지 보기",
@@ -103,6 +103,10 @@
     "message": "무료 시작",
     "description": "버튼의 텍스트, 사용자가 무료로 시작하도록 함"
   },
+  "button.download": {
+    "message": "다운로드",
+    "description": "버튼의 텍스트, 파일(예: 오디오, 비디오, 이미지)을 다운로드하는 데 사용"
+  },
   "button.downloadAndroid": {
     "message": "안드로이드 다운로드",
     "description": "버튼의 텍스트, 안드로이드 설치 파일을 다운로드하는 데 사용"
@@ -137,15 +141,15 @@
   },
   "button.acquire": {
     "message": "획득",
-    "description": "버튼의 텍스트, 사용자가 API 서비스의 토큰이나 키를 획득하도록 함"
+    "description": "버튼의 텍스트, 사용자가 API 서비스의 토큰 또는 키를 획득하도록 함"
   },
   "button.fillExample": {
-    "message": "예시 작성",
-    "description": "버튼의 텍스트, 사용자가 예시 데이터를 작성하도록 함"
+    "message": "예제 작성",
+    "description": "버튼의 텍스트, 사용자가 예제 데이터를 작성하도록 함"
   },
   "button.buyMore": {
     "message": "충전",
-    "description": "버튼의 텍스트, 사용자가 충전하도록 함. 영어는 'Top Up'으로 번역해야 하며, 중국어는 '충전'으로 번역해야 함."
+    "description": "버튼의 텍스트, 사용자가 충전하도록 함. 영어는 'Top Up'으로 번역해야 하며, 한국어는 '충전'으로 번역해야 함."
   },
   "button.update": {
     "message": "업데이트",
@@ -161,23 +165,23 @@
   },
   "button.referralEarnings": {
     "message": "추천 수익",
-    "description": "버튼의 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 이 서비스를 사용하게 하여 수익을 얻을 수 있음을 의미"
+    "description": "버튼의 텍스트로, 추천 수익을 표시하며 사용자가 다른 사람을 초대하여 이 서비스를 통해 수익을 얻을 수 있음을 의미"
   },
   "button.finish": {
     "message": "완료",
-    "description": "버튼의 텍스트, 특정 작업을 완료하는 데 사용"
+    "description": "어떤 작업을 완료하기 위한 버튼의 텍스트"
   },
   "entity.id": {
     "message": "ID",
-    "description": "사용자에게 엔티티의 고유 식별자를 표시하는 데 사용됩니다."
+    "description": "엔티티의 고유 식별자를 표시"
   },
   "entity.type": {
     "message": "유형",
-    "description": "사용자에게 엔티티의 유형을 표시하는 데 사용됩니다."
+    "description": "엔티티의 유형을 표시"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "웹사이트 이름, 번역할 필요 없이 'Ace Data Cloud'로 유지합니다."
+    "description": "웹사이트 이름, 번역할 필요 없이 'Ace Data Cloud'로 유지"
   },
   "entity.copyright": {
     "message": "저작권",
@@ -185,7 +189,7 @@
   },
   "entity.platform": {
     "message": "플랫폼",
-    "description": "이것이 API 서비스 플랫폼임을 나타내는 텍스트"
+    "description": "API 서비스 플랫폼임을 나타내는 텍스트"
   },
   "entity.title": {
     "message": "제목",
@@ -221,7 +225,7 @@
   },
   "entity.order": {
     "message": "주문",
-    "description": "엔티티의 주문, 주문에는 금액 및 서비스 정보가 포함되며 사용자가 지불해야 합니다."
+    "description": "엔티티의 주문, 주문에는 금액 및 서비스 정보가 포함되며 사용자가 지불해야 함"
   },
   "message.noTasks": {
     "message": "히스토리 작업이 없습니다. 새로운 작업을 시작하세요～",
@@ -229,51 +233,51 @@
   },
   "message.usedAmount": {
     "message": "사용된 금액",
-    "description": "서비스에서 사용된 금액을 표시하는 데 사용됩니다."
+    "description": "서비스에서 사용된 금액을 표시"
   },
   "message.mobileAppDescription": {
-    "message": "휴대폰에서 AceData를 직접 사용하세요. 현재 Android APK를 다운로드하여 설치할 수 있으며, iOS 설치 패키지는 서명이 완료된 후 다운로드할 수 있습니다.",
+    "message": "휴대폰에서 AceData를 직접 사용하세요. 현재 Android APK를 다운로드하여 설치할 수 있으며, iOS 설치 패키지는 서명 완료 후 다운로드 가능합니다.",
     "description": "모바일 애플리케이션 다운로드 페이지의 설명 문구"
   },
   "message.mobileAndroidHint": {
-    "message": "Android 휴대폰 및 태블릿에 적합하며, QR 코드를 스캔하여 최신 APK를 다운로드하여 설치할 수 있습니다.",
+    "message": "Android 휴대폰 및 태블릿에 적합하며, QR코드를 스캔하여 최신 APK를 다운로드하고 설치할 수 있습니다.",
     "description": "Android 다운로드 카드 설명"
   },
   "message.mobileAndroidPending": {
     "message": "Android 설치 패키지가 아직 준비되지 않았습니다. 나중에 다시 시도해 주세요.",
-    "description": "Android 설치 패키지가 아직 사용 가능하지 않을 때의 알림"
+    "description": "Android 설치 패키지가 아직 사용 가능하지 않을 때의 안내"
   },
   "message.mobileAvailableNow": {
     "message": "Android 다운로드 가능",
-    "description": "Android가 다운로드 가능하다는 상태를 표시하는 데 사용됩니다."
+    "description": "Android가 다운로드 가능하다는 상태를 표시"
   },
   "message.mobileSecureDelivery": {
     "message": "안전한 CDN 배포",
-    "description": "다운로드 링크가 CDN을 통해 제공됨을 강조하는 데 사용됩니다."
+    "description": "다운로드 링크가 CDN을 통해 제공됨을 강조"
   },
   "message.mobileDirectInstall": {
     "message": "직접 APK 설치",
-    "description": "Android에서 직접 APK 설치 방식을 설명하는 데 사용됩니다."
+    "description": "Android에서 직접 APK 설치 방식을 설명"
   },
   "message.mobileLatestRelease": {
     "message": "현재 공개 버전",
-    "description": "현재 표시되는 것이 최신 공개 버전임을 설명하는 데 사용됩니다."
+    "description": "현재 표시되는 것이 최신 공개 버전임을 설명"
   },
   "message.mobileSharedAccount": {
-    "message": "웹과 계정 및 한도를 공유합니다.",
-    "description": "모바일과 웹이 계정을 공유함을 설명하는 데 사용됩니다."
+    "message": "웹과 동일한 계정 및 한도 사용",
+    "description": "모바일과 웹이 동일한 계정을 사용함을 설명"
   },
   "message.mobileIosHint": {
-    "message": "iPhone 및 iPad에 적합하며, 온라인에서 직접 설치할 수 있습니다. 시스템이 차단할 경우 IPA를 먼저 다운로드한 후 배포할 수 있습니다.",
+    "message": "iPhone 및 iPad에 적합하며, 온라인에서 직접 설치할 수 있습니다. 시스템이 차단할 경우 IPA를 다운로드한 후 배포할 수 있습니다.",
     "description": "iOS 다운로드 카드 설명"
   },
   "message.mobileIosPending": {
     "message": "iOS 설치 패키지가 아직 다운로드 가능하지 않습니다. Apple 인증서와 프로파일을 보완한 후 제공됩니다.",
-    "description": "iOS 설치 패키지가 아직 사용 가능하지 않을 때의 알림"
+    "description": "iOS 설치 패키지가 아직 사용 가능하지 않을 때의 안내"
   },
   "message.mobileInstallNote": {
     "message": "iOS에서 기업 또는 Ad Hoc 패키지를 처음 설치할 때, 시스템이 '설정 > 일반 > VPN 및 기기 관리'에서 인증서를 신뢰하도록 요구할 수 있습니다.",
-    "description": "모바일 애플리케이션 설치 알림"
+    "description": "모바일 애플리케이션 설치 안내"
   },
   "title.mobileApp": {
     "message": "모바일 다운로드",
@@ -284,11 +288,11 @@
     "description": "다운로드 페이지 장점 카드 제목, 빠른 설치 강조"
   },
   "title.mobileTrustedRelease": {
-    "message": "버전 집중 관리, 배포 안정성",
+    "message": "버전 집중 관리, 안정적인 배포",
     "description": "다운로드 페이지 장점 카드 제목, 버전 및 배포 안정성 강조"
   },
   "title.mobileUnifiedExperience": {
-    "message": "모바일과 웹의 경험을 일치시킵니다.",
+    "message": "모바일과 웹의 경험을 일치시킴",
     "description": "다운로드 페이지 장점 카드 제목, 통합된 경험 강조"
   },
   "nav.mobileApp": {
@@ -296,28 +300,28 @@
     "description": "내비게이션의 모바일 애플리케이션 다운로드 진입점"
   },
   "message.mobileFastAccess": {
-    "message": "사용자는 휴대폰에서 QR 코드를 스캔하여 직접 설치할 수 있으며, 데스크탑에서 APK를 다운로드한 후 팀원에게 배포할 수 있습니다. 빠른 시험 사용 및 내부 테스트에 적합합니다.",
+    "message": "사용자는 휴대폰에서 QR코드를 스캔하여 직접 설치할 수 있으며, 데스크탑에서 APK를 다운로드한 후 팀원에게 배포할 수 있습니다. 빠른 사용 및 내부 테스트에 적합합니다.",
     "description": "다운로드 페이지 장점 설명, 빠른 접근 강조"
   },
   "message.mobileTrustedRelease": {
-    "message": "다운로드 링크가 동일한 페이지에 집중되어 있어 버전 번호, 플랫폼 상태 및 설치 방법을 한눈에 볼 수 있어, 링크 분산으로 인한 커뮤니케이션 비용을 줄입니다.",
+    "message": "다운로드 링크가 동일한 페이지에 집중되어 있어 버전 번호, 플랫폼 상태 및 설치 방법을 한눈에 확인할 수 있으며, 링크 분산으로 인한 커뮤니케이션 비용을 줄입니다.",
     "description": "다운로드 페이지 장점 설명, 통합 배포 강조"
   },
   "message.mobileUnifiedExperience": {
-    "message": "로그인 후 계정 시스템, 한도 및 서비스 진입점이 웹과 일치하여 사용자가 데스크탑과 모바일 간에 원활하게 전환할 수 있습니다.",
-    "description": "다운로드 페이지 장점 설명, 통합된 계정 경험 강조"
+    "message": "로그인 후 계정 시스템, 한도 및 서비스 접근이 웹과 일치하여 데스크탑과 모바일 간에 원활하게 전환할 수 있습니다.",
+    "description": "다운로드 페이지 장점 설명, 통합 계정 경험 강조"
   },
   "message.remainingAmount": {
-    "message": "남은 금액",
-    "description": "서비스에서 남은 금액을 표시하는 데 사용됩니다."
+    "message": "잔여 금액",
+    "description": "서비스의 잔여 금액을 표시하는 데 사용"
   },
   "message.copied": {
     "message": "복사 성공",
-    "description": "내용이 성공적으로 복사되었음을 표시하는 메시지"
+    "description": "내용이 성공적으로 복사되었다는 메시지"
   },
   "message.restart": {
     "message": "다시 생성",
-    "description": "내용이 성공적으로 복사되었음을 표시하는 메시지"
+    "description": "내용을 다시 생성하는 버튼"
   },
   "message.confirmDelete": {
     "message": "정말 삭제하시겠습니까?",
@@ -325,22 +329,22 @@
   },
   "message.expiredAt": {
     "message": "만료 시간",
-    "description": "서비스의 만료 시간을 표시하는 메시지"
+    "description": "서비스의 만료 시간을 표시하는 데 사용"
   },
   "message.alert": {
     "message": "경고",
     "description": "사용자에게 경고하는 메시지"
   },
   "message.info": {
-    "message": "정보",
+    "message": "알림",
     "description": "정보를 표시하는 메시지"
   },
   "message.free": {
     "message": "무료",
-    "description": "이 서비스가 무료임을 표시하는 메시지, 즉 사용자가 지불할 필요가 없음을 의미"
+    "description": "이 서비스가 무료임을 나타내는 메시지, 사용자가 지불할 필요가 없음을 의미"
   },
   "message.startPrice": {
-    "message": "시작가",
+    "message": "시작 가격",
     "description": "서비스의 최저 가격을 표시하는 메시지"
   },
   "message.joinDiscord": {
@@ -348,7 +352,7 @@
     "description": "사용자가 Discord 채널에 가입하도록 유도하는 메시지"
   },
   "message.addWeChat": {
-    "message": "WeChat 추가",
+    "message": "WeChat 서비스",
     "description": "사용자가 WeChat 계정을 추가하도록 유도하는 메시지"
   },
   "message.serviceTech": {
@@ -365,151 +369,151 @@
   },
   "nav.home": {
     "message": "홈",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 홈 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 홈 페이지를 표시"
   },
   "nav.content": {
     "message": "내용",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 내용 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 내용 페이지를 표시"
   },
   "nav.category": {
     "message": "카테고리",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 카테고리 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 카테고리 페이지를 표시"
   },
   "nav.service": {
     "message": "모든 서비스",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 서비스 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 서비스 페이지를 표시"
   },
   "nav.profile": {
     "message": "내 프로필",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 개인 프로필 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 개인 프로필 페이지를 표시"
   },
   "nav.products": {
     "message": "제품",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 제품 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 제품 페이지를 표시"
   },
   "nav.referral": {
     "message": "추천 프로그램",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 추천 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 추천 페이지를 표시"
   },
   "nav.apiPlatform": {
     "message": "API 플랫폼",
-    "description": "웹사이트 내비게이션 바의 텍스트로, API 플랫폼 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, API 플랫폼 페이지를 표시"
   },
   "nav.document": {
     "message": "개발 문서",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 문서 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 문서 페이지를 표시"
   },
   "nav.console": {
     "message": "콘솔",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 콘솔 페이지를 표시"
+    "description": "웹사이트 내비게이션 바의 텍스트, 콘솔 페이지를 표시"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "웹사이트 내비게이션 바의 텍스트로, ChatGPT 페이지를 표시, 이 필드는 번역하지 말고 'ChatGPT'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, ChatGPT 페이지를 표시, 이 필드는 번역하지 말고 'ChatGPT'로 유지"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "웹사이트 내비게이션 바의 텍스트로, DeepSeek 페이지를 표시, 이 필드는 번역하지 말고 'DeepSeek'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, DeepSeek 페이지를 표시, 이 필드는 번역하지 말고 'DeepSeek'로 유지"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Grok 페이지를 표시, 이 필드는 번역하지 말고 'Grok'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, Grok 페이지를 표시, 이 필드는 번역하지 말고 'Grok'로 유지"
   },
   "nav.chat": {
     "message": "채팅",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Chat'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Chat'로 유지"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Veo'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Veo'로 유지"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "웹사이트 내비게이션 바의 텍스트로, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Sora'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, 채팅 페이지를 표시, 이 필드는 번역하지 말고 'Sora'로 유지"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Midjourney 페이지를 표시, 이 필드는 번역하지 말고 'Midjourney'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, Midjourney 페이지를 표시, 이 필드는 번역하지 말고 'Midjourney'로 유지"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "웹사이트 내비게이션 바의 텍스트로, QRArt 페이지를 표시, 이 필드는 번역하지 말고 'QRArt'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, QRArt 페이지를 표시, 이 필드는 번역하지 말고 'QRArt'로 유지"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Suno 페이지를 표시, 이 필드는 번역하지 말고 'Suno'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, Suno 페이지를 표시, 이 필드는 번역하지 말고 'Suno'로 유지"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Pixverse 페이지를 표시, 이 필드는 번역하지 말고 'Pixverse'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트, Pixverse 페이지를 표시, 이 필드는 번역하지 말고 'Pixverse'로 유지"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시, 이 필드는 번역하지 말고 'Flux'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트로, Flux 페이지를 표시합니다. 이 필드는 번역하지 말고 'Flux'로 유지해야 합니다."
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "웹사이트 내비게이션 바의 텍스트로, Nano Banana 페이지를 표시, 이 필드는 번역하지 말고 'Nano Banana'로 유지해야 함"
+    "description": "웹사이트 내비게이션 바의 텍스트로, Nano Banana 페이지를 표시합니다. 이 필드는 번역하지 말고 'Nano Banana'로 유지해야 합니다."
   },
   "nav.openaiimage": {
-    "message": "OpenAI 이미지",
-    "description": "웹사이트 내비게이션 바의 텍스트로, OpenAI 이미지 페이지를 표시, 이 필드는 번역하지 말고 'OpenAI Image'로 유지해야 함"
+    "message": "OpenAI Image",
+    "description": "웹사이트 내비게이션 바의 텍스트로, OpenAI Image 페이지를 표시합니다. 이 필드는 번역하지 말고 'OpenAI Image'로 유지해야 합니다."
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "웹사이트 내비게이션 바의 텍스트로 SeeDream 페이지를 표시합니다. 이 필드는 번역하지 말고 'SeeDream'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, SeeDream 페이지를 표시합니다. 이 필드는 번역하지 말고 'SeeDream'로 유지해야 합니다."
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "웹사이트 내비게이션 바의 텍스트로 SeeDance 페이지를 표시합니다. 이 필드는 번역하지 말고 'SeeDance'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, SeeDance 페이지를 표시합니다. 이 필드는 번역하지 말고 'SeeDance'로 유지해야 합니다."
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Luma 페이지를 표시합니다. 이 필드는 번역하지 말고 'Luma'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Luma 페이지를 표시합니다. 이 필드는 번역하지 말고 'Luma'로 유지해야 합니다."
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Pika 페이지를 표시합니다. 이 필드는 번역하지 말고 'Pika'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Pika 페이지를 표시합니다. 이 필드는 번역하지 말고 'Pika'로 유지해야 합니다."
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Kling 페이지를 표시합니다. 이 필드는 번역하지 말고 'Kling'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Kling 페이지를 표시합니다. 이 필드는 번역하지 말고 'Kling'로 유지해야 합니다."
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Hailuo 페이지를 표시합니다. 이 필드는 번역하지 말고 'Hailuo'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Hailuo 페이지를 표시합니다. 이 필드는 번역하지 말고 'Hailuo'로 유지해야 합니다."
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Wan 페이지를 표시합니다. 이 필드는 번역하지 말고 'Wan'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Wan 페이지를 표시합니다. 이 필드는 번역하지 말고 'Wan'로 유지해야 합니다."
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Producer 페이지를 표시합니다. 이 필드는 번역하지 말고 'Producer'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Producer 페이지를 표시합니다. 이 필드는 번역하지 말고 'Producer'로 유지해야 합니다."
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "웹사이트 내비게이션 바의 텍스트로 Kimi 페이지를 표시합니다. 이 필드는 번역하지 말고 'Kimi'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, Kimi 페이지를 표시합니다. 이 필드는 번역하지 말고 'Kimi'로 유지해야 합니다."
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "웹사이트 내비게이션 바의 텍스트로 SERP 페이지를 표시합니다. 이 필드는 번역하지 말고 'SERP'으로 유지해야 합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, SERP 페이지를 표시합니다. 이 필드는 번역하지 말고 'SERP'로 유지해야 합니다."
   },
   "nav.image": {
     "message": "이미지",
-    "description": "웹사이트 내비게이션 바의 텍스트로 이미지 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 이미지 페이지를 표시합니다."
   },
   "nav.music": {
     "message": "음악",
-    "description": "웹사이트 내비게이션 바의 텍스트로 음악 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 음악 페이지를 표시합니다."
   },
   "nav.video": {
     "message": "비디오",
-    "description": "웹사이트 내비게이션 바의 텍스트로 비디오 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 비디오 페이지를 표시합니다."
   },
   "nav.distribution": {
     "message": "추천 수익",
-    "description": "웹사이트 내비게이션 바의 텍스트로 추천 수익 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 추천 수익 페이지를 표시합니다."
   },
   "nav.connections": {
     "message": "연결",
@@ -517,35 +521,35 @@
   },
   "nav.logOut": {
     "message": "로그아웃",
-    "description": "웹사이트 내비게이션 바의 텍스트로 로그아웃을 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 로그아웃을 수행합니다."
   },
   "nav.site": {
     "message": "사이트 설정",
-    "description": "웹사이트 내비게이션 바의 텍스트로 사이트 설정 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 사이트 설정 페이지를 표시합니다."
   },
   "nav.setting": {
     "message": "설정",
-    "description": "웹사이트 내비게이션 바의 텍스트로 설정 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 설정 페이지를 표시합니다."
   },
   "nav.headshots": {
     "message": "AI 증명사진",
-    "description": "웹사이트 내비게이션 바의 텍스트로 사이트 설정 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 사이트 설정 페이지를 표시합니다."
   },
   "nav.more": {
     "message": "더보기",
-    "description": "웹사이트 내비게이션 바의 텍스트로 더 많은 서비스를 펼칩니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 더 많은 서비스를 펼칩니다."
   },
   "nav.locale": {
     "message": "언어 설정",
-    "description": "웹사이트 내비게이션 바의 텍스트로 언어를 변경합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 언어를 변경합니다."
   },
   "nav.support": {
     "message": "고객 지원",
-    "description": "웹사이트 내비게이션 바의 텍스트로 연락 페이지를 표시합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 연락처 페이지를 표시합니다."
   },
   "nav.darkMode": {
     "message": "다크 모드",
-    "description": "웹사이트 내비게이션 바의 텍스트로 다크 테마로 전환합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로, 다크 테마로 전환합니다."
   },
   "title.alert": {
     "message": "경고",
@@ -573,43 +577,43 @@
   },
   "title.buyMore": {
     "message": "충전",
-    "description": "충전을 위한 페이지 제목입니다. 영어는 'Top Up'으로 번역해야 하며, 한국어는 '충전'입니다."
+    "description": "충전 페이지 제목입니다. 영어는 'Top Up'으로 번역해야 하며, 한국어는 '충전'입니다."
   },
   "title.distribution": {
     "message": "추천 수익",
-    "description": "추천 수익을 표시하는 페이지 제목으로, 사용자가 다른 사람을 초대하여 이 서비스를 통해 수익을 얻을 수 있음을 의미합니다."
+    "description": "추천 수익을 표시하는 페이지 제목으로, 사용자가 다른 사람을 초대하여 서비스를 이용하게 하여 수익을 얻을 수 있음을 의미합니다."
   },
   "title.site": {
     "message": "사이트 설정",
-    "description": "사이트 설정을 표시하는 페이지 제목입니다."
+    "description": "사이트 설정의 페이지 제목"
   },
   "title.distributionHistory": {
     "message": "추천 기록",
-    "description": "추천 기록을 표시하는 페이지 제목입니다."
+    "description": "추천 기록의 페이지 제목"
   },
   "title.invitee": {
     "message": "초대자",
-    "description": "초대자를 표시하는 페이지 제목입니다."
+    "description": "초대자의 페이지 제목"
   },
   "title.allUsages": {
     "message": "사용 기록",
-    "description": "API 서비스의 모든 사용을 표시하는 페이지 제목입니다."
+    "description": "API 서비스의 모든 사용 기록 페이지 제목"
   },
   "title.allCredentials": {
     "message": "키",
-    "description": "모든 자격 증명을 표시하는 페이지 제목으로, 자격 증명은 API에 접근하는 데 사용됩니다."
+    "description": "모든 자격 증명의 페이지 제목, 자격 증명은 API 접근에 사용됨"
   },
   "about.title1": {
     "message": "연락처",
-    "description": "연락 정보 표시 부분 제목"
+    "description": "연락 정보의 섹션 제목"
   },
   "about.title2": {
     "message": "리소스",
-    "description": "링크 표시 부분 제목"
+    "description": "링크의 섹션 제목"
   },
   "about.title3": {
     "message": "링크",
-    "description": "지원 정보 표시 부분 제목"
+    "description": "지원 정보의 섹션 제목"
   },
   "about.address": {
     "message": "미국 델라웨어주 미들타운 북광장 651번지 201호",
@@ -669,39 +673,39 @@
   },
   "settings.general": {
     "message": "일반 설정",
-    "description": "설정 페이지의 일반 설정 부분 제목"
+    "description": "설정 페이지의 일반 설정 섹션 제목"
   },
   "settings.language": {
     "message": "언어",
-    "description": "설정 페이지의 언어 설정 부분 제목"
+    "description": "설정 페이지의 언어 설정 섹션 제목"
   },
   "settings.theme": {
     "message": "테마",
-    "description": "설정 페이지의 테마 설정 부분 제목"
+    "description": "설정 페이지의 테마 설정 섹션 제목"
   },
   "settings.seo": {
     "message": "SEO 설정",
-    "description": "설정 페이지의 SEO 설정 부분 제목"
+    "description": "설정 페이지의 SEO 설정 섹션 제목"
   },
   "settings.site": {
     "message": "사이트 설정",
-    "description": "설정 페이지의 사이트 설정 부분 제목"
+    "description": "설정 페이지의 사이트 설정 섹션 제목"
   },
   "settings.distribution": {
     "message": "배포 설정",
-    "description": "설정 페이지의 배포 설정 부분 제목"
+    "description": "설정 페이지의 배포 설정 섹션 제목"
   },
   "settings.function": {
     "message": "기능 설정",
-    "description": "설정 페이지의 기능 설정 부분 제목"
+    "description": "설정 페이지의 기능 설정 섹션 제목"
   },
   "nav.gemini": {
-    "message": "Gemini",
-    "description": "웹사이트 내비게이션 바에서 Gemini 페이지를 표시하는 텍스트, 'Gemini'로 유지해야 함"
+    "message": "제미니",
+    "description": "웹사이트 내비게이션 바에서 제미니 페이지를 표시하는 텍스트, '제미니'로 유지해야 함"
   },
   "nav.claude": {
-    "message": "Claude",
-    "description": "웹사이트 내비게이션 바에서 Claude 페이지를 표시하는 텍스트, 'Claude'로 유지해야 함"
+    "message": "클로드",
+    "description": "웹사이트 내비게이션 바에서 클로드 페이지를 표시하는 텍스트, '클로드'로 유지해야 함"
   },
   "button.detail": {
     "message": "자세히 보기",
@@ -709,11 +713,11 @@
   },
   "button.testEnv": {
     "message": "테스트 환경",
-    "description": "테스트 환경으로 전환하는 버튼의 텍스트"
+    "description": "버튼 내의 텍스트, 테스트 환경으로 전환하는 데 사용됨"
   },
   "button.upload": {
     "message": "업로드",
-    "description": "파일이나 내용을 업로드하는 버튼의 텍스트"
+    "description": "버튼 내의 텍스트, 파일이나 내용을 업로드하는 데 사용됨"
   },
   "message.cnbeian": {
     "message": "중국 지역备案",
@@ -729,15 +733,15 @@
   },
   "title.coin": {
     "message": "암호화폐",
-    "description": "암호화폐 페이지 제목"
+    "description": "암호화폐의 페이지 제목"
   },
   "title.distributionRank": {
     "message": "추천 순위",
-    "description": "추천 순위 페이지 제목"
+    "description": "추천 순위의 페이지 제목"
   },
   "title.distributionPlatformRank": {
     "message": "플랫폼 순위",
-    "description": "플랫폼 순위 페이지 제목"
+    "description": "플랫폼 순위의 페이지 제목"
   },
   "customers.name1": {
     "message": "마크 두",
@@ -760,7 +764,7 @@
     "description": "고객의 직업"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud는 훌륭한 통합 플랫폼이며 서비스 품질이 뛰어납니다.",
+    "message": "Ace Data Cloud는 훌륭한 통합 플랫폼이며, 서비스 품질이 뛰어납니다.",
     "description": "고객의 평가"
   },
   "customers.name3": {
@@ -772,7 +776,7 @@
     "description": "고객의 직업"
   },
   "customers.comment3": {
-    "message": "Ace Data Cloud의 서비스가 마음에 듭니다. 사용하기 편리하고 가격도 합리적입니다. 앞으로 더 좋아지길 바랍니다!",
+    "message": "Ace Data Cloud의 서비스가 마음에 들어요. 사용하기 편하고 가격도 합리적이며, 점점 더 좋아지길 바랍니다!",
     "description": "고객의 평가"
   },
   "nav.github": {
@@ -785,15 +789,15 @@
   },
   "settings.about": {
     "message": "정보",
-    "description": "설정 페이지의 정보 부분 제목"
+    "description": "설정 페이지의 정보 섹션 제목"
   },
   "settings.poweredBy": {
     "message": "오픈 소스 프로젝트",
-    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트의 제목"
+    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트 제목"
   },
   "settings.poweredByTip": {
     "message": "본 사이트는 Nexior 오픈 소스 프로젝트를 기반으로 하며, 코드가 완전히 오픈 소스입니다.",
-    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트에 대한 설명"
+    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트 설명"
   },
   "settings.apiService": {
     "message": "API 서비스",
@@ -801,11 +805,11 @@
   },
   "settings.apiServiceTip": {
     "message": "본 사이트의 API 서비스는 Ace Data Cloud에서 제공합니다.",
-    "description": "정보 페이지에서 API 서비스 제공자에 대한 설명"
+    "description": "정보 페이지에서 API 서비스 제공자의 설명"
   },
   "settings.buildYourOwn": {
     "message": "유사 사이트 구축",
-    "description": "정보 페이지에서 사용자에게 유사 사이트를 구축할 수 있음을 알리는 제목"
+    "description": "정보 페이지에서 사용자가 유사 사이트를 구축할 수 있다는 제목"
   },
   "settings.buildYourOwnTip": {
     "message": "같은 AI 사이트를 구축하고 싶으신가요? 배포 지원을 위해 저희에게 연락하세요.",
@@ -818,5 +822,29 @@
   "message.viewOnGithub": {
     "message": "GitHub에서 보기",
     "description": "GitHub에서 프로젝트를 보는 링크 텍스트"
+  },
+  "title.notFound": {
+    "message": "페이지를 찾을 수 없습니다",
+    "description": "404 페이지의 제목"
+  },
+  "message.notFound": {
+    "message": "접속하신 페이지가 존재하지 않습니다. 링크가 변경되었거나 삭제되었을 수 있습니다. 홈으로 돌아가 AceData의 AI 서비스를 계속 탐색하세요.",
+    "description": "404 페이지의 부제 설명"
+  },
+  "message.notFoundEyebrow": {
+    "message": "오류 발생",
+    "description": "404 페이지 상단의 작은 태그 텍스트"
+  },
+  "message.notFoundPath": {
+    "message": "요청 경로",
+    "description": "404 페이지에서 현재 요청 경로를 표시하는 태그"
+  },
+  "button.backToHome": {
+    "message": "홈으로 돌아가기",
+    "description": "홈으로 돌아가는 버튼 텍스트"
+  },
+  "button.goBack": {
+    "message": "이전 페이지로 돌아가기",
+    "description": "브라우징 기록의 이전 페이지로 돌아가는 버튼 텍스트"
   }
 }

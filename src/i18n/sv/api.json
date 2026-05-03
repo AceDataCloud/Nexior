@@ -1,6 +1,6 @@
 {
   "entity.requestQueries": {
-    "message": "Begäran frågar",
+    "message": "Begäran frågor",
     "description": "HTTP begärans frågeparametrar."
   },
   "entity.requestBody": {
@@ -12,16 +12,16 @@
     "description": "HTTP svarets svar kropp."
   },
   "entity.requestHeaders": {
-    "message": "Begäran rubriker",
-    "description": "HTTP begärans rubriker."
+    "message": "Begäran huvuden",
+    "description": "HTTP begärans huvuden."
   },
   "entity.requestHeader": {
-    "message": "Begäran rubrik",
-    "description": "HTTP begärans rubrik, endast enskild form av begäran rubriker."
+    "message": "Begäran huvud",
+    "description": "HTTP begärans huvud, endast enskild form av begäran huvud."
   },
   "entity.responseHeaders": {
-    "message": "Svar rubriker",
-    "description": "HTTP svarets rubriker."
+    "message": "Svar huvuden",
+    "description": "HTTP svarets huvuden."
   },
   "entity.response": {
     "message": "Svar",
@@ -53,67 +53,67 @@
   },
   "message.free": {
     "message": "Gratis",
-    "description": "Anger att priset är gratis, ingen kostnad i krediter eller valuta när man använder API-tjänsten."
+    "description": "Anger att priset är gratis, ingen kostnad för att använda API-tjänsten."
   },
   "message.appliedCount": {
-    "message": "Antal ansökningar",
-    "description": "Antal gånger API-tjänsten har begärts."
+    "message": "Ansökningar",
+    "description": "Antal gånger API-tjänsten har ansökts om."
   },
   "message.firstFree": {
-    "message": "Första gången gratis",
-    "description": "Anger att användningen av API-tjänsten är gratis för första gången, ingen kostnad i krediter eller valuta."
+    "message": "Första gratis",
+    "description": "Anger att första användningen av API-tjänsten är gratis."
   },
   "message.custom": {
-    "message": "Angivet belopp",
-    "description": "Anger att priset är specificerat, krediter eller valuta krävs för att använda API-tjänsten."
+    "message": "Specificerat belopp",
+    "description": "Anger att priset är specificerat, kostnad för att använda API-tjänsten."
   },
   "message.present": {
-    "message": "Present",
-    "description": "Vid första användningen av API-tjänsten får du krediter som en gåva."
+    "message": "Gåva",
+    "description": "Vid första användningen av API-tjänsten ger vi poäng."
   },
   "message.around": {
     "message": "Cirka",
     "description": "Priset är ungefär, det faktiska priset kan variera."
   },
   "message.successRate15min": {
-    "message": "Realtids framgångsgrad",
-    "description": "Realtids framgångsgrad för API-tjänsten under de senaste 15 minuterna."
+    "message": "Aktuell framgångsgrad",
+    "description": "API-tjänstens aktuella framgångsgrad under de senaste 15 minuterna."
   },
   "message.ySuccessRate": {
-    "message": "Framgångsgrad (100 %)",
-    "description": "Framgångsgraden för API-tjänsten."
+    "message": "Framgångsgrad (100%)",
+    "description": "API-tjänstens framgångsgrad."
   },
   "message.xMinutes": {
     "message": "Tid (minuter)",
     "description": "Tid (minuter)."
   },
   "message.streamUsage": {
-    "message": "Vänligen notera: För strömmande begäran kan ovanstående kod inte vara helt tillämplig. Vänligen konsultera integrationsdokumentationen för att göra ändringar.",
-    "description": "För strömmande begäran kan ovanstående kod inte vara helt tillämplig. Vänligen konsultera integrationsdokumentationen för att göra ändringar."
+    "message": "Vänligen notera: För strömmande begärningar kan ovanstående kod vara ofullständig. Vänligen se integrationsdokumentationen för ändringar.",
+    "description": "För strömmande begärningar kan ovanstående kod vara ofullständig. Vänligen se integrationsdokumentationen för ändringar."
   },
   "message.alphaStage": {
-    "message": "Denna API är i Alpha-stadium, detta är en tidig förhandsvisning och kan vara potentiellt instabilt, API-formatet kan genomgå betydande förändringar och det rekommenderas inte att använda i produktionsmiljö. Aktuella priser är relativt låga och kan justeras kraftigt i framtiden.",
-    "description": "Denna API är i Alpha-stadium, detta är en tidig förhandsvisning och kan vara potentiellt instabilt, API-formatet kan genomgå betydande förändringar och det rekommenderas inte att använda i produktionsmiljö. Aktuella priser är relativt låga och kan justeras kraftigt i framtiden."
+    "message": "Denna API är i Alpha-stadiet, en tidig förhandsversion som kan ha potentiell instabilitet. API-formatet kan förändras avsevärt, använd inte i produktionsmiljö. Nuvarande prissättning är relativt låg, framtida prisanpassningar kan ske.",
+    "description": "Denna API är i Alpha-stadiet, en tidig förhandsversion som kan ha potentiell instabilitet. API-formatet kan förändras avsevärt, använd inte i produktionsmiljö. Nuvarande prissättning är relativt låg, framtida prisanpassningar kan ske."
   },
   "message.betaStage": {
-    "message": "Denna API är i Beta-stadium och API-formatet kommer inte att förändras mycket, men det kan fortfarande finnas potentiellt instabilitet. Var försiktig när du använder det i produktionsmiljö. Aktuella priser är relativt låga och kan justeras måttligt i framtiden.",
-    "description": "Denna API är i Beta-stadium och API-formatet kommer inte att förändras mycket, men det kan fortfarande finnas potentiellt instabilitet. Var försiktig när du använder det i produktionsmiljö. Aktuella priser är relativt låga och kan justeras måttligt i framtiden."
+    "message": "Denna API är i Beta-stadiet, API-formatet kommer inte att förändras mycket, men det kan finnas potentiell instabilitet. Var försiktig med att använda i produktionsmiljö. Nuvarande prissättning är relativt låg, framtida prisanpassningar kan ske.",
+    "description": "Denna API är i Beta-stadiet, API-formatet kommer inte att förändras mycket, men det kan finnas potentiell instabilitet. Var försiktig med att använda i produktionsmiljö. Nuvarande prissättning är relativt låg, framtida prisanpassningar kan ske."
   },
   "unit.credit": {
-    "message": "Krediter",
-    "description": "Krediter är den virtuella valutan som används i API-tjänsten."
+    "message": "Poäng",
+    "description": "Poäng är den virtuella valutan som används i API-tjänsten."
   },
   "unit.Credit": {
-    "message": "Kredit",
-    "description": "Krediter är den virtuella valutan som används i API-tjänsten, detta är stor bokstav form."
+    "message": "Poäng",
+    "description": "Poäng är den virtuella valutan som används i API-tjänsten, detta är stor bokstav."
   },
   "unit.credits": {
-    "message": "Krediter",
-    "description": "Krediter är den virtuella valutan som används i API-tjänsten, detta är pluralform."
+    "message": "Poäng",
+    "description": "Poäng är den virtuella valutan som används i API-tjänsten, detta är pluralform."
   },
   "unit.Credits": {
-    "message": "Krediter",
-    "description": "Krediter är den virtuella valutan som används i API-tjänsten, detta är stor bokstav och pluralform."
+    "message": "Poäng",
+    "description": "Poäng är den virtuella valutan som används i API-tjänsten, detta är stor bokstav och pluralform."
   },
   "unit.call": {
     "message": "Anrop",
@@ -125,7 +125,7 @@
   },
   "unit.Call": {
     "message": "Anrop",
-    "description": "Anrop anger antalet gånger API-tjänsten har anropats, detta är stor bokstav form."
+    "description": "Anrop anger antalet gånger API-tjänsten har anropats, detta är stor bokstav."
   },
   "unit.calls": {
     "message": "Anrop",
@@ -142,5 +142,13 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB står för gigabyte, en enhet för digital informationslagring."
+  },
+  "message.cheaperThan": {
+    "message": "Billigare än $[[value]]",
+    "description": "Text som visas när det aktuella priset är lägre än jämförelsemålet, '$[[value]]' kommer att ersättas med målnamnet vid körning"
+  },
+  "message.moreExpensiveThan": {
+    "message": "Dyrare än $[[value]]",
+    "description": "Text som visas när det aktuella priset är högre än jämförelsemålet, '$[[value]]' kommer att ersättas med målnamnet vid körning"
   }
 }

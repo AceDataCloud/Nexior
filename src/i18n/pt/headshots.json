@@ -80,16 +80,16 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira a palavra-chave para o estilo do vídeo a ser gerado, por exemplo: Astronautas viajando do espaço para um vulcão",
+    "message": "Insira a palavra-chave para o estilo do vídeo a ser gerado, por exemplo: Astronautas viajando do espaço para o vulcão",
     "description": "Texto de placeholder no campo de prompt"
   },
   "button.fast": {
     "message": "Modo Rápido",
-    "description": "Texto do botão que permite ao usuário definir o modo 'rápido' para gerar a imagem"
+    "description": "Texto do botão que permite ao usuário definir o 'modo rápido' para gerar a imagem"
   },
   "button.relax": {
     "message": "Modo Lento",
-    "description": "Texto do botão que permite ao usuário definir o modo 'lento' para gerar a imagem"
+    "description": "Texto do botão que permite ao usuário definir o 'modo lento' para gerar a imagem"
   },
   "button.generate": {
     "message": "Gerar",
@@ -108,7 +108,7 @@
     "description": "Texto do botão para carregar imagens de retrato (simplificado para 'Carregar')"
   },
   "message.uploadReferencesExceed": {
-    "message": "Máximo de 5 imagens podem ser carregadas",
+    "message": "Máximo de 5 imagens permitidas",
     "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
@@ -117,7 +117,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Falha ao carregar imagens, por favor tente novamente mais tarde",
-    "description": "Mensagem de erro ao falhar no carregamento de imagens"
+    "description": "Mensagem de erro quando o carregamento de imagens falha"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -190,5 +190,13 @@
   "styleTag.femalePortrait": {
     "message": "Retrato feminino",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
+  },
+  "message.uploadImageExceed": {
+    "message": "Máximo de 2 imagens podem ser enviadas",
+    "description": "Mensagem de aviso quando o número de imagens de referência excede o limite"
+  },
+  "message.uploadImageError": {
+    "message": "Falha ao enviar a imagem, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro quando o envio da imagem de referência falha"
   }
 }

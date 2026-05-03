@@ -52,8 +52,8 @@
     "description": "Styl malarski do generowania obrazu"
   },
   "name.headshotsBot": {
-    "message": "Bot zdjęć portretowych",
-    "description": "Nazwa generowania zdjęć portretowych"
+    "message": "Bot do zdjęć",
+    "description": "Nazwa generowania zdjęć do dokumentów"
   },
   "name.contentImageUrl": {
     "message": "Link do obrazu treści",
@@ -93,11 +93,11 @@
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Tekst przycisku do generowania zdjęć portretowych"
+    "description": "Tekst przycisku do generowania zdjęć do dokumentów"
   },
   "button.viewImage": {
     "message": "Zobacz oryginał",
-    "description": "Tekst przycisku do generowania zdjęć portretowych"
+    "description": "Tekst przycisku do generowania zdjęć do dokumentów"
   },
   "button.download": {
     "message": "Pobierz obraz",
@@ -108,11 +108,11 @@
     "description": "Tekst przycisku do przesyłania zdjęć portretowych (proszę uprościć do 'Prześlij', aby uniknąć zbyt długiego tekstu)"
   },
   "message.uploadReferencesExceed": {
-    "message": "Można przesłać maksymalnie 5 zdjęć",
-    "description": "Komunikat o błędzie, gdy liczba przesyłanych zdjęć przekracza limit"
+    "message": "Możesz przesłać maksymalnie 5 zdjęć",
+    "description": "Komunikat o błędzie, gdy liczba przesłanych zdjęć przekracza limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Pomyślnie przesłano zdjęcia",
+    "message": "Zdjęcia przesłane pomyślnie",
     "description": "Komunikat o sukcesie po pomyślnym przesłaniu zdjęć"
   },
   "message.uploadReferencesError": {
@@ -124,7 +124,7 @@
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Pomyślnie uruchomiono zadanie generowania",
+    "message": "Zadanie generowania uruchomione pomyślnie",
     "description": "Komunikat o sukcesie po pomyślnym uruchomieniu zadania"
   },
   "message.startTaskFailed": {
@@ -157,38 +157,46 @@
   },
   "styleCategory.styles": {
     "message": "Styl zdjęcia",
-    "description": "Termin kategorii używany do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać tę kategorię"
+    "description": "Termin kategorii do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać tę kategorię"
   },
   "styleTag.malePportrait": {
     "message": "Męski portret",
-    "description": "Termin stylu używany do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać ten styl"
+    "description": "Termin stylu do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać ten styl"
   },
   "styleTag.malePportrait2": {
     "message": "Męski portret 2",
-    "description": "Termin stylu używany do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać ten styl"
+    "description": "Termin stylu do opisu i generowania obrazów, wygenerowane obrazy powinny zawierać ten styl"
   },
   "styleTag.kindergarten": {
-    "message": "Zdjęcie przedszkolne",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "message": "Zdjęcie do przedszkola",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
   },
   "styleTag.logoTshirt": {
     "message": "Zdjęcie z logo firmy na koszulce",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
   },
   "styleTag.wedding": {
-    "message": "Zdjęcie rejestracyjne ślubu",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "message": "Zdjęcie rejestracji ślubu",
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
   },
   "styleTag.businessPphoto": {
     "message": "Zdjęcie biznesowe",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
   },
   "styleTag.bobSuit": {
     "message": "Czarny garnitur z bobem",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
   },
   "styleTag.femalePortrait": {
     "message": "Portret kobiecy",
-    "description": "Słowo stylowe używane do opisu i generowania obrazów, generowany obraz powinien zawierać styl tego tagu"
+    "description": "Słowo stylu używane do opisu i generowania obrazu, wygenerowany obraz powinien zawierać styl tego tagu"
+  },
+  "message.uploadImageExceed": {
+    "message": "Można przesłać maksymalnie 2 zdjęcia",
+    "description": "Komunikat, gdy liczba przesyłanych zdjęć przekracza limit"
+  },
+  "message.uploadImageError": {
+    "message": "Nie udało się przesłać zdjęcia, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie zdjęcia nie powiodło się"
   }
 }

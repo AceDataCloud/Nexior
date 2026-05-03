@@ -1,7 +1,15 @@
 {
+  "thinking.inProgress": {
+    "message": "Ajatellaan...",
+    "description": "Malli näyttää etiketin, kun se generoi päättelyprosessia"
+  },
+  "thinking.done": {
+    "message": "Päättelyprosessi",
+    "description": "Malli käyttää etikettiä päättelyprosessin esittämiseen, kun se on valmis"
+  },
   "button.thinkDeeper": {
-    "message": "Syvennä ajattelua",
-    "description": "Syvennä ajattelua -painike"
+    "message": "Syvempää ajattelua",
+    "description": "Syvempää ajattelua -painike"
   },
   "button.deepsearch": {
     "message": "Syvä haku",
@@ -60,7 +68,7 @@
     "description": "Palvelun mallin nimi, eli Kimi"
   },
   "modelGroup.kimiDescription": {
-    "message": "Kuuvarjo-yhtiön kehittämä AI-malli",
+    "message": "Kuun pimeä puoli -yhtiön kehittämä AI-malli",
     "description": "Kimi-malliryhmän kuvaus"
   },
   "modelGroup.glm": {
@@ -96,7 +104,7 @@
     "description": "GPT 5.4 Mini -mallin kuvaus"
   },
   "model.deepseekChat": {
-    "message": "3.0 standardi",
+    "message": "3.0",
     "description": "Palvelun mallin nimi, eli DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
@@ -104,27 +112,35 @@
     "description": "DeepSeek Chat -mallin kuvaus"
   },
   "model.deepseekReasoner": {
-    "message": "R1 päättely",
+    "message": "R1",
     "description": "Palvelun mallin nimi, eli DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
+    "message": "Soveltuu päättelyyn ja syvään ajatteluun",
     "description": "DeepSeek Reasoner -mallin kuvaus"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 kokeiluversio",
+    "message": "3.2",
     "description": "Palvelun mallin nimi, eli DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
-    "message": "Uusin kokeiluversio",
-    "description": "DeepSeek V3.2 -kokeilumallin kuvaus"
+    "message": "Uusin kokeellinen versio",
+    "description": "DeepSeek V3.2 -kokeellisen mallin kuvaus"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Palvelun mallin nimi, eli DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Uuden sukupolven kevyt lippulaiva, 1M konteksti",
+    "description": "DeepSeek V4 Flash -mallin kuvaus"
   },
   "model.grok4": {
     "message": "grok-4",
     "description": "Palvelun mallin nimi, eli Grok 4"
   },
   "model.grok4Description": {
-    "message": "Tällä hetkellä edistyksellisin malli",
+    "message": "Tällä hetkellä edistynein malli",
     "description": "Grok 4 -mallin kuvaus"
   },
   "model.grok3": {
@@ -140,7 +156,7 @@
     "description": "Palvelun mallin nimi, eli Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
-    "message": "Tällä hetkellä edistyksellisin malli",
+    "message": "Tällä hetkellä edistynein malli",
     "description": "Gemini 3.0 Pro -mallin kuvaus"
   },
   "model.gemini25Pro": {
@@ -164,7 +180,7 @@
     "description": "Palvelun mallin nimi, eli Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
-    "message": "Tällä hetkellä edistyksellisin malli",
+    "message": "Tällä hetkellä edistynein malli",
     "description": "Claude Opus 4.7 -mallin kuvaus"
   },
   "model.claudeSonnet46": {
@@ -237,7 +253,7 @@
   },
   "message.newMessagePlaceholder": {
     "message": "Syötä kysymyksesi...",
-    "description": "Verkkosivun paikkamerkki, joka kertoo käyttäjälle syöttää kysymyksen"
+    "description": "Verkkosivun paikkamerkki, joka kertoo käyttäjälle syöttää kysymys"
   },
   "message.noInput": {
     "message": "Kysymys ei voi olla tyhjää",
@@ -261,7 +277,7 @@
   },
   "message.question1": {
     "message": "Luo harjoitusohjelma",
-    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan JavaScript-koodin, joka tulostaa Hello World"
+    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa Hello World"
   },
   "message.question2": {
     "message": "Tee henkilökohtainen verkkosivusto",
@@ -296,8 +312,8 @@
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle vastaus epäonnistui, yritä myöhemmin uudelleen"
   },
   "message.errorBadRequest": {
-    "message": "Pyyntö ei ole voimassa, kysy uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, kysy uudelleen"
+    "message": "Pyyntö ei ole voimassa, yritä uudelleen",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, yritä uudelleen"
   },
   "message.errorNoConversation": {
     "message": "Keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu",
@@ -308,8 +324,8 @@
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen"
   },
   "message.errorTooManyRequests": {
-    "message": "Toimintosi ovat liian tiheitä, yritä myöhemmin uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että hänen toimintonsa ovat liian tiheitä, yritä myöhemmin uudelleen"
+    "message": "Toimintosi on liian usein, yritä myöhemmin uudelleen",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että toimintosi on liian usein, yritä myöhemmin uudelleen"
   },
   "message.errorBusy": {
     "message": "Palvelin on kiireinen, yritä myöhemmin uudelleen",
@@ -317,7 +333,7 @@
   },
   "message.errorUsedUp": {
     "message": "Olet käyttänyt kaikki pakettisi kerrat, osta lisää jatkaaksesi käyttöä",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että hän on käyttänyt kaikki pakettinsa kerrat, osta lisää jatkaaksesi käyttöä"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että olet käyttänyt kaikki pakettisi kerrat, osta lisää jatkaaksesi käyttöä"
   },
   "message.errorUnknown": {
     "message": "Palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
@@ -329,15 +345,15 @@
   },
   "message.errorNotApplied": {
     "message": "Et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että hän ei ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että et ole vielä hakenut tätä palvelua, hae ensin ja jatka kysymistä"
   },
   "message.confirmDelete": {
     "message": "Vahvista poisto",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle vahvistamaan poiston"
   },
   "message.howToUse": {
-    "message": "AI voi tehdä virheitä, tarkista tärkeät tiedot.",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että AI voi tehdä virheitä, tarkista tärkeät tiedot"
+    "message": "AI saattaa tehdä virheitä, tarkista tärkeät tiedot.",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että AI saattaa tehdä virheitä, tarkista tärkeät tiedot"
   },
   "title.chat": {
     "message": "AI Keskustelu",
@@ -389,35 +405,39 @@
   },
   "connector.processing": {
     "message": "Valtuutusta käsitellään...",
-    "description": "OAuth-palautteen käsittelyviesti"
+    "description": "OAuth palautteen käsittelyviesti"
   },
   "connector.authSuccess": {
     "message": "Valtuutus onnistui!",
-    "description": "OAuth-palautteen onnistumisen viesti"
+    "description": "OAuth palautteen onnistumisen viesti"
   },
   "connector.closeWindow": {
     "message": "Tämä ikkuna sulkeutuu automaattisesti.",
-    "description": "OAuth-palautteen sulkemisvinkki"
+    "description": "OAuth palautteen sulkemisvinkki"
   },
   "connections.tooltip": {
     "message": "Yhteyksien hallinta",
-    "description": "Painikevinkki, joka siirtää auth.acedata.cloud -yhteyksien hallintapaneeliin"
+    "description": "Painikkeen vinkki, joka siirtää auth.acedata.cloud yhteyksien hallintapaneeliin"
   },
   "skill.tooltip": {
     "message": "Taitojen hallinta",
-    "description": "Painikevinkki, joka siirtää auth.acedata.cloud -taitojen hallintapaneeliin"
+    "description": "Painikkeen vinkki, joka siirtää auth.acedata.cloud taitojen hallintapaneeliin"
+  },
+  "composer.addAction": {
+    "message": "Lisää sisältöä",
+    "description": "Syöttökentän alapuolella olevan pluspainikkeen vinkki, avautuu tiedostojen lataamiseen, taitojen tai yhteyksien hallintaan"
   },
   "composer.addFiles": {
     "message": "Lisää valokuvia tai tiedostoja",
-    "description": "Syöttökentän alapuolella oleva painike: lataa kuvia tai tiedostoja"
+    "description": "Pluspainikkeen avautuvan valikon kohta: lataa kuvia tai tiedostoja"
   },
   "composer.skills": {
     "message": "Taidot",
-    "description": "Syöttökentän alapuolella oleva painike: avaa taitojen hallinta"
+    "description": "Pluspainikkeen avautuvan valikon kohta: avaa taitojen hallinta"
   },
   "composer.connections": {
     "message": "Yhteydet",
-    "description": "Syöttökentän alapuolella oleva painike: avaa yhteyksien hallinta"
+    "description": "Pluspainikkeen avautuvan valikon kohta: avaa yhteyksien hallinta"
   },
   "agent.title": {
     "message": "Työpöytäagentti",
@@ -441,26 +461,26 @@
   },
   "agent.name": {
     "message": "Agentin nimi",
-    "description": "Agentin nimen etiketti"
+    "description": "Agentin nimi -tunniste"
   },
   "agent.tools": {
     "message": "Saatavilla olevat työkalut",
-    "description": "Agentin työkalujen määrän etiketti"
+    "description": "Agentin työkalujen määrä -tunniste"
   },
   "agent.connectedSince": {
-    "message": "Yhdistämisaika",
-    "description": "Agentin yhdistämisajan etiketti"
+    "message": "Yhteydessä vuodesta",
+    "description": "Agentin yhteydenottopäivämäärä -tunniste"
   },
   "agent.connectedHint": {
-    "message": "Työpöytäagentti on yhdistetty ja käytettävissä.",
-    "description": "Agentin yhdistetty tila"
+    "message": "Työpöytäagenttisi on yhdistetty ja käytettävissä.",
+    "description": "Agentin yhdistetty -vinkki"
   },
   "agent.installLabel": {
     "message": "Asenna työpöytäagentti:",
-    "description": "Asennusohjeen etiketti"
+    "description": "Asennusohje -tunniste"
   },
   "agent.runLabel": {
     "message": "Suorita agentti:",
-    "description": "Suoritusohjeen etiketti"
+    "description": "Suoritusohje -tunniste"
   }
 }
