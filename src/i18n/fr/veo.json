@@ -20,8 +20,8 @@
     "description": "Raison de l'échec de la tâche"
   },
   "name.status": {
-    "message": "Statut",
-    "description": "Statut de la tâche"
+    "message": "État",
+    "description": "État de la tâche"
   },
   "name.traceId": {
     "message": "ID de suivi",
@@ -32,15 +32,15 @@
     "description": "Date et heure de génération de la vidéo Veo"
   },
   "name.startEndImage": {
-    "message": "Images de référence début/fin",
-    "description": "Étiquette du champ de formulaire : images de référence début/fin (en anglais, suggéré comme 'Start/End Frames', garder court pour éviter de masquer le bouton)"
+    "message": "Images de référence de début/fin",
+    "description": "Étiquette du champ de formulaire : images de référence de début/fin (en anglais, suggéré de traduire par 'Start/End Frames', garder court pour éviter de masquer le bouton)"
   },
   "name.action": {
     "message": "Action",
     "description": "Liste des actions disponibles"
   },
   "name.action3": {
-    "message": "Obtenir la vidéo en 1080p de",
+    "message": "Obtenir la vidéo en 1080p",
     "description": "Images de référence pour la vidéo à générer"
   },
   "name.prompt": {
@@ -68,7 +68,7 @@
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Invites pour générer des vidéos Veo",
+    "message": "Mots d'invite pour générer la vidéo Veo",
     "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartEndImage": {
@@ -96,7 +96,7 @@
     "description": "Espace réservé pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez des mots d'invite pour le style de vidéo à générer, par exemple : moving",
+    "message": "Entrez les mots d'invite pour le style de vidéo à générer, par exemple : moving",
     "description": "Texte d'espace réservé dans le champ d'invite"
   },
   "placeholder.position": {
@@ -116,7 +116,7 @@
     "description": "Texte du bouton pour générer la vidéo Veo"
   },
   "button.action3": {
-    "message": "Obtenir 1080p",
+    "message": "Obtenir en 1080p",
     "description": "Texte du bouton pour générer la vidéo Veo"
   },
   "button.download": {
@@ -159,8 +159,12 @@
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
+  "message.imageRequired": {
+    "message": "Veuillez d'abord télécharger au moins une image de référence avant de lancer la tâche de vidéo générée par image",
+    "description": "Invite lorsque aucune image n'est téléchargée en mode image2video"
+  },
   "message.usedUp": {
-    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer",
+    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer à utiliser",
     "description": "Message lorsque le crédit est épuisé"
   },
   "message.generating": {
@@ -176,36 +180,36 @@
     "description": "Message lors de l'échec de la génération de l'image"
   },
   "message.uploadVideoExceed": {
-    "message": "Le nombre d'images de première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
-    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
+    "description": "Message d'erreur lorsque la taille du fichier téléchargé ne peut pas dépasser 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Le fichier téléchargé doit être au format MP4 !",
-    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
+    "description": "Message d'erreur lorsque le fichier téléchargé doit être au format MP4 !"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Le nombre d'images de première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de dernière image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de dernière image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
   },
   "message.uploadStartImageError": {
-    "message": "Échec du téléchargement de l'image de première image",
-    "description": "Message d'erreur lorsque le téléchargement de l'image de première image échoue"
+    "message": "Échec du téléchargement de l'image de la première image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première image échoue"
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
     "description": "Message d'erreur lorsque le téléchargement de la vidéo échoue"
   },
   "message.uploadEndImageError": {
-    "message": "Échec du téléchargement de l'image de dernière image",
-    "description": "Message d'erreur lorsque le téléchargement de l'image de dernière image échoue"
+    "message": "Échec du téléchargement de l'image de la dernière image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la dernière image échoue"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",

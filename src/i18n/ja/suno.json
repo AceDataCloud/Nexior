@@ -72,7 +72,7 @@
     "description": "音声リストが空のときのメッセージ"
   },
   "voice.emptyFavorites": {
-    "message": "まだ音声をお気に入りに追加していません。星印をクリックして追加してください。",
+    "message": "まだ音声をお気に入りに追加していません。星マークをクリックして追加してください。",
     "description": "お気に入りタブが空のときのメッセージ"
   },
   "voice.tabAll": {
@@ -85,11 +85,11 @@
   },
   "voice.favorite": {
     "message": "お気に入りに追加",
-    "description": "未お気に入り時の星印のメッセージ"
+    "description": "未お気に入り時の星マークのメッセージ"
   },
   "voice.unfavorite": {
     "message": "お気に入りから削除",
-    "description": "お気に入り時の星印のメッセージ"
+    "description": "お気に入り時の星マークのメッセージ"
   },
   "voice.delete": {
     "message": "音声を削除",
@@ -161,7 +161,7 @@
   },
   "description.audioFormats": {
     "message": "対応フォーマット：MP3、WAV、M4A",
-    "description": "対応音声フォーマットのヒント"
+    "description": "対応する音声フォーマットのヒント"
   },
   "message.recordingReady": {
     "message": "録音が準備完了",
@@ -176,12 +176,12 @@
     "description": "ユーザーがマイクの権限を拒否"
   },
   "button.video": {
-    "message": "ビデオ",
-    "description": "ビデオボタンのテキスト"
+    "message": "動画",
+    "description": "動画ボタンのテキスト"
   },
   "button.download_video": {
-    "message": "ビデオをダウンロード",
-    "description": "ビデオダウンロードボタンのテキスト"
+    "message": "動画をダウンロード",
+    "description": "動画ダウンロードボタンのテキスト"
   },
   "button.download_wav": {
     "message": "WAV 無損ダウンロード",
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "リマスター",
-    "description": "リマスター音質向上ボタンテキスト"
+    "description": "音質を向上させるリマスターボタンテキスト"
   },
   "button.replace_section": {
     "message": "セクション置換",
@@ -228,7 +228,7 @@
     "description": "AIでスタイルを最適化するボタンテキスト"
   },
   "button.all_stems": {
-    "message": "すべてのステム",
+    "message": "全ステム取得",
     "description": "すべてのトラックを分離するボタンテキスト"
   },
   "model.model1": {
@@ -380,7 +380,7 @@
     "description": "パラメータ'title'の説明"
   },
   "description.uploadAudios": {
-    "message": "生成の参考として音楽をアップロード、アップロードにはしばらく待つ必要があり、生成成功後にアップロードした音楽に基づいて生成可能",
+    "message": "生成の参考として音楽をアップロード、アップロードには少し待つ必要があり、生成成功後にアップロードした音楽に基づいて生成可能",
     "description": "アップロード参考パラメータの説明"
   },
   "description.vocalGender": {
@@ -396,11 +396,11 @@
     "description": "スタイル影響力パラメータの説明"
   },
   "description.audioWeight": {
-    "message": "カバー時の原曲の影響度 (0-100)",
-    "description": "原曲重みパラメータの説明"
+    "message": "カバー時の元曲の影響の重み (0-100)",
+    "description": "元曲重みパラメータの説明"
   },
   "description.lyricPrompt": {
-    "message": "歌詞の説明を入力すると、AIが自動で歌詞を生成します",
+    "message": "歌詞の説明を入力すると、AIが自動的に歌詞を生成します",
     "description": "歌詞プロンプトの説明"
   },
   "description.replaceSection": {
@@ -412,7 +412,7 @@
     "description": "タスクの待機状態"
   },
   "placeholder.prompt": {
-    "message": "希望する音楽を説明してください。例：秋の思い出に関する温かいフォークソング...",
+    "message": "生成したい音楽を説明してください。例：秋の思い出に関する温かいフォークソング...",
     "description": "曲の説明入力のプレースホルダー"
   },
   "placeholder.lyrics": {
@@ -465,11 +465,11 @@
   },
   "gender.male": {
     "message": "男性",
-    "description": "男性の声のオプション"
+    "description": "男性の声の選択肢"
   },
   "gender.female": {
     "message": "女性",
-    "description": "女性の声のオプション"
+    "description": "女性の声の選択肢"
   },
   "gender.auto": {
     "message": "自動",
@@ -517,14 +517,14 @@
   },
   "message.startUploadAudioFailed": {
     "message": "カスタム音楽のアップロードに失敗しました",
-    "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
+    "description": "音楽生成タスク開始に失敗した時のエラーメッセージ"
   },
   "message.startTaskFailed": {
     "message": "音楽生成タスクの開始に失敗しました",
     "description": "音楽生成タスクの開始に失敗した時のエラーメッセージ"
   },
   "message.getVideoUrlFailed": {
-    "message": "音楽ビデオの取得に失敗しました。後で再試行してください",
+    "message": "音楽ビデオの取得に失敗しました。後でもう一度お試しください",
     "description": "ビデオ取得に失敗した時のエラーメッセージ"
   },
   "message.generatingLyrics": {
@@ -532,24 +532,24 @@
     "description": "歌詞生成時のメッセージ"
   },
   "message.generateLyricsSuccess": {
-    "message": "歌詞生成に成功しました",
-    "description": "歌詞生成に成功した時のメッセージ"
+    "message": "歌詞の生成に成功しました",
+    "description": "歌詞生成成功時のメッセージ"
   },
   "message.generateLyricsFailed": {
-    "message": "歌詞生成に失敗しました",
-    "description": "歌詞生成に失敗した時のメッセージ"
+    "message": "歌詞の生成に失敗しました",
+    "description": "歌詞生成失敗時のメッセージ"
   },
   "message.optimizingStyle": {
     "message": "スタイル説明を最適化しています...",
     "description": "スタイル最適化時のメッセージ"
   },
   "message.optimizeStyleSuccess": {
-    "message": "スタイル最適化に成功しました",
-    "description": "スタイル最適化に成功した時のメッセージ"
+    "message": "スタイルの最適化に成功しました",
+    "description": "スタイル最適化成功時のメッセージ"
   },
   "message.optimizeStyleFailed": {
-    "message": "スタイル最適化に失敗しました",
-    "description": "スタイル最適化に失敗した時のメッセージ"
+    "message": "スタイルの最適化に失敗しました",
+    "description": "スタイル最適化失敗時のメッセージ"
   },
   "message.fetchingWav": {
     "message": "WAVファイルを取得中...",
@@ -728,11 +728,11 @@
     "description": "v4.5+ モデルの説明"
   },
   "model.v45desc": {
-    "message": "インテリジェントプロンプト",
+    "message": "インテリジェントなプロンプト",
     "description": "v4.5 モデルの説明"
   },
   "model.v4desc": {
-    "message": "音質改善",
+    "message": "音質の改善",
     "description": "v4 モデルの説明"
   },
   "model.v35desc": {
@@ -764,8 +764,8 @@
     "description": "すべてのフォームを一度にクリア"
   },
   "placeholder.enhanceLyrics": {
-    "message": "修正指示を入力、例：歌詞をもっと明るく...",
-    "description": "歌詞強化の入力プレースホルダー"
+    "message": "修正指示を入力、例：歌詞をもっと楽しく...",
+    "description": "歌詞強化入力のプレースホルダー"
   },
   "message.enhancingLyrics": {
     "message": "歌詞を強化中...",
@@ -781,15 +781,83 @@
   },
   "placeholder.searchSongs": {
     "message": "曲を検索...",
-    "description": "曲検索の入力プレースホルダー"
+    "description": "曲検索入力のプレースホルダー"
   },
   "sort.newest": {
     "message": "最新",
-    "description": "最新順に並べ替え"
+    "description": "最新順に並べる"
   },
   "sort.oldest": {
     "message": "最古",
-    "description": "最古順に並べ替え"
+    "description": "最古順に並べる"
+  },
+  "filter.title": {
+    "message": "フィルター",
+    "description": "フィルターボタン"
+  },
+  "filter.type": {
+    "message": "タイプ",
+    "description": "フィルターセクション：ボーカル/インストゥルメンタル"
+  },
+  "filter.typeAll": {
+    "message": "すべて",
+    "description": "タイプ：すべて"
+  },
+  "filter.typeVocal": {
+    "message": "ボーカル",
+    "description": "タイプ：ボーカルを含む"
+  },
+  "filter.typeInstrumental": {
+    "message": "インストゥルメンタル",
+    "description": "タイプ：インストゥルメンタル"
+  },
+  "filter.duration": {
+    "message": "長さ",
+    "description": "フィルターセクション：曲の長さ"
+  },
+  "filter.durationAll": {
+    "message": "すべて",
+    "description": "長さ：制限なし"
+  },
+  "filter.durationShort": {
+    "message": "< 1 分",
+    "description": "長さ：1分未満"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 分",
+    "description": "長さ：1から3分"
+  },
+  "filter.durationLong": {
+    "message": "> 3 分",
+    "description": "長さ：3分以上"
+  },
+  "filter.video": {
+    "message": "動画",
+    "description": "フィルターセクション：動画の有無"
+  },
+  "filter.videoAll": {
+    "message": "すべて",
+    "description": "動画：制限なし"
+  },
+  "filter.videoWith": {
+    "message": "動画あり",
+    "description": "動画：動画のみ"
+  },
+  "filter.videoWithout": {
+    "message": "音声のみ",
+    "description": "動画：音声のみ"
+  },
+  "filter.model": {
+    "message": "モデル",
+    "description": "フィルターセクション：AIモデル"
+  },
+  "filter.modelAll": {
+    "message": "すべてのモデル",
+    "description": "モデル：制限なし"
+  },
+  "filter.reset": {
+    "message": "リセット",
+    "description": "すべてのフィルターをリセット"
   },
   "button.delete": {
     "message": "削除",
@@ -803,17 +871,21 @@
     "message": "曲が見つかりません",
     "description": "検索結果がないときのメッセージ"
   },
+  "message.noFilterResults": {
+    "message": "フィルター条件に合う曲がありません",
+    "description": "フィルター結果がないときのメッセージ"
+  },
   "message.confirmDelete": {
     "message": "この曲を削除してもよろしいですか？この操作は元に戻せません。",
-    "description": "曲を削除する際の確認メッセージ"
+    "description": "曲を削除する確認メッセージ"
   },
   "message.deleteSuccess": {
     "message": "曲が削除されました",
-    "description": "曲が削除に成功したときのメッセージ"
+    "description": "曲の削除が成功したときのメッセージ"
   },
   "message.deleteFailed": {
-    "message": "曲の削除に失敗",
-    "description": "曲の削除に失敗したときのメッセージ"
+    "message": "曲の削除に失敗しました",
+    "description": "曲の削除が失敗したときのメッセージ"
   },
   "name.generating": {
     "message": "生成中",

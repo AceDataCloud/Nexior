@@ -13,7 +13,7 @@
   },
   "button.copied": {
     "message": "복사됨",
-    "description": "버튼 텍스트, 내용이 복사되었음을 나타냄"
+    "description": "버튼 텍스트, 내용이 복사되었음을 나타내는 데 사용"
   },
   "button.restart": {
     "message": "다시 생성",
@@ -21,7 +21,7 @@
   },
   "button.preview": {
     "message": "미리보기",
-    "description": "버튼 텍스트, URL을 통해 파일 미리보기를 여는 데 사용"
+    "description": "버튼 텍스트, URL을 통해 특정 파일의 미리보기를 여는 데 사용"
   },
   "button.seeRawImage": {
     "message": "원본 이미지 보기",
@@ -45,7 +45,7 @@
   },
   "button.new": {
     "message": "새로 만들기",
-    "description": "버튼의 텍스트, 새 항목을 생성하는 데 사용"
+    "description": "버튼의 텍스트, 새 항목을 만드는 데 사용"
   },
   "button.delete": {
     "message": "삭제",
@@ -145,7 +145,7 @@
   },
   "button.buyMore": {
     "message": "충전",
-    "description": "버튼의 텍스트, 사용자가 충전하도록 함. 영어는 'Top Up'으로 번역해야 하며, 한국어는 '충전'으로 번역해야 함."
+    "description": "버튼의 텍스트, 사용자가 충전하도록 함. 영어는 'Top Up'으로 번역해야 하며, 중국어는 '충전'으로 번역해야 함."
   },
   "button.update": {
     "message": "업데이트",
@@ -161,7 +161,7 @@
   },
   "button.referralEarnings": {
     "message": "추천 수익",
-    "description": "버튼의 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 이 서비스를 통해 수익을 얻을 수 있음을 의미"
+    "description": "버튼의 텍스트, 추천 수익을 표시하며, 사용자가 다른 사람을 초대하여 이 서비스를 사용하게 하여 수익을 얻을 수 있음을 의미"
   },
   "button.finish": {
     "message": "완료",
@@ -173,7 +173,7 @@
   },
   "entity.type": {
     "message": "유형",
-    "description": "엔티티의 유형을 표시하는 데 사용됩니다."
+    "description": "사용자에게 엔티티의 유형을 표시하는 데 사용됩니다."
   },
   "entity.website": {
     "message": "Ace Data Cloud",
@@ -221,7 +221,7 @@
   },
   "entity.order": {
     "message": "주문",
-    "description": "엔티티의 주문, 주문에는 금전 및 서비스 정보가 포함되며 사용자가 지불해야 합니다."
+    "description": "엔티티의 주문, 주문에는 금액 및 서비스 정보가 포함되며 사용자가 지불해야 합니다."
   },
   "message.noTasks": {
     "message": "히스토리 작업이 없습니다. 새로운 작업을 시작하세요～",
@@ -236,7 +236,7 @@
     "description": "모바일 애플리케이션 다운로드 페이지의 설명 문구"
   },
   "message.mobileAndroidHint": {
-    "message": "Android 휴대폰 및 태블릿에 적합하며, QR코드를 스캔하여 최신 APK를 다운로드하여 설치할 수 있습니다.",
+    "message": "Android 휴대폰 및 태블릿에 적합하며, QR 코드를 스캔하여 최신 APK를 다운로드하여 설치할 수 있습니다.",
     "description": "Android 다운로드 카드 설명"
   },
   "message.mobileAndroidPending": {
@@ -296,16 +296,16 @@
     "description": "내비게이션의 모바일 애플리케이션 다운로드 진입점"
   },
   "message.mobileFastAccess": {
-    "message": "사용자는 휴대폰에서 QR코드를 스캔하여 직접 설치할 수 있으며, 데스크탑에서 APK를 다운로드한 후 팀원에게 배포할 수 있습니다. 빠른 사용 및 내부 테스트가 필요한 경우에 적합합니다.",
+    "message": "사용자는 휴대폰에서 QR 코드를 스캔하여 직접 설치할 수 있으며, 데스크탑에서 APK를 다운로드한 후 팀원에게 배포할 수 있습니다. 빠른 시험 사용 및 내부 테스트에 적합합니다.",
     "description": "다운로드 페이지 장점 설명, 빠른 접근 강조"
   },
   "message.mobileTrustedRelease": {
-    "message": "다운로드 진입점이 동일한 페이지에 집중되어 있어 버전 번호, 플랫폼 상태 및 설치 방법을 한눈에 볼 수 있어, 링크 분산으로 인한 커뮤니케이션 비용을 줄입니다.",
+    "message": "다운로드 링크가 동일한 페이지에 집중되어 있어 버전 번호, 플랫폼 상태 및 설치 방법을 한눈에 볼 수 있어, 링크 분산으로 인한 커뮤니케이션 비용을 줄입니다.",
     "description": "다운로드 페이지 장점 설명, 통합 배포 강조"
   },
   "message.mobileUnifiedExperience": {
     "message": "로그인 후 계정 시스템, 한도 및 서비스 진입점이 웹과 일치하여 사용자가 데스크탑과 모바일 간에 원활하게 전환할 수 있습니다.",
-    "description": "다운로드 페이지 장점 설명, 통합 계정 경험 강조"
+    "description": "다운로드 페이지 장점 설명, 통합된 계정 경험 강조"
   },
   "message.remainingAmount": {
     "message": "남은 금액",
@@ -511,9 +511,13 @@
     "message": "추천 수익",
     "description": "웹사이트 내비게이션 바의 텍스트로 추천 수익 페이지를 표시합니다."
   },
+  "nav.connections": {
+    "message": "연결",
+    "description": "auth.acedata.cloud 연결 관리 페이지로 이동하는 메뉴 항목입니다."
+  },
   "nav.logOut": {
     "message": "로그아웃",
-    "description": "웹사이트 내비게이션 바의 텍스트로 로그아웃합니다."
+    "description": "웹사이트 내비게이션 바의 텍스트로 로그아웃을 표시합니다."
   },
   "nav.site": {
     "message": "사이트 설정",
@@ -569,11 +573,11 @@
   },
   "title.buyMore": {
     "message": "충전",
-    "description": "충전 페이지 제목입니다. 영어는 'Top Up'으로 번역해야 하며, 중국어는 '충전'으로 번역해야 합니다."
+    "description": "충전을 위한 페이지 제목입니다. 영어는 'Top Up'으로 번역해야 하며, 한국어는 '충전'입니다."
   },
   "title.distribution": {
     "message": "추천 수익",
-    "description": "추천 수익을 표시하는 페이지 제목으로, 사용자가 다른 사람을 초대하여 이 서비스를 사용하게 하여 수익을 얻을 수 있음을 의미합니다."
+    "description": "추천 수익을 표시하는 페이지 제목으로, 사용자가 다른 사람을 초대하여 이 서비스를 통해 수익을 얻을 수 있음을 의미합니다."
   },
   "title.site": {
     "message": "사이트 설정",
@@ -584,8 +588,8 @@
     "description": "추천 기록을 표시하는 페이지 제목입니다."
   },
   "title.invitee": {
-    "message": "초대인",
-    "description": "초대인을 표시하는 페이지 제목입니다."
+    "message": "초대자",
+    "description": "초대자를 표시하는 페이지 제목입니다."
   },
   "title.allUsages": {
     "message": "사용 기록",
@@ -596,16 +600,16 @@
     "description": "모든 자격 증명을 표시하는 페이지 제목으로, 자격 증명은 API에 접근하는 데 사용됩니다."
   },
   "about.title1": {
-    "message": "연락하기",
-    "description": "연락 정보를 표시하는 부분 제목입니다."
+    "message": "연락처",
+    "description": "연락 정보 표시 부분 제목"
   },
   "about.title2": {
-    "message": "자원",
-    "description": "링크를 표시하는 부분 제목"
+    "message": "리소스",
+    "description": "링크 표시 부분 제목"
   },
   "about.title3": {
     "message": "링크",
-    "description": "지원 정보를 표시하는 부분 제목"
+    "description": "지원 정보 표시 부분 제목"
   },
   "about.address": {
     "message": "미국 델라웨어주 미들타운 북광장 651번지 201호",
@@ -756,7 +760,7 @@
     "description": "고객의 직업"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud는 훌륭한 통합 플랫폼이며, 서비스 품질이 뛰어납니다.",
+    "message": "Ace Data Cloud는 훌륭한 통합 플랫폼이며 서비스 품질이 뛰어납니다.",
     "description": "고객의 평가"
   },
   "customers.name3": {
@@ -785,34 +789,34 @@
   },
   "settings.poweredBy": {
     "message": "오픈 소스 프로젝트",
-    "description": "关于页面中展示本站基于哪个开源项目搭建的标题"
+    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트의 제목"
   },
   "settings.poweredByTip": {
     "message": "본 사이트는 Nexior 오픈 소스 프로젝트를 기반으로 하며, 코드가 완전히 오픈 소스입니다.",
-    "description": "关于页面中展示本站基于哪个开源项目的说明"
+    "description": "정보 페이지에서 본 사이트가 기반한 오픈 소스 프로젝트에 대한 설명"
   },
   "settings.apiService": {
     "message": "API 서비스",
-    "description": "关于页面中展示API服务提供方的标题"
+    "description": "정보 페이지에서 API 서비스 제공자의 제목"
   },
   "settings.apiServiceTip": {
     "message": "본 사이트의 API 서비스는 Ace Data Cloud에서 제공합니다.",
-    "description": "关于页面中展示API服务提供方的说明"
+    "description": "정보 페이지에서 API 서비스 제공자에 대한 설명"
   },
   "settings.buildYourOwn": {
     "message": "유사 사이트 구축",
-    "description": "关于页面中提示用户可以搭建同款站点的标题"
+    "description": "정보 페이지에서 사용자에게 유사 사이트를 구축할 수 있음을 알리는 제목"
   },
   "settings.buildYourOwnTip": {
-    "message": "같은 AI 사이트를 구축하고 싶으신가요? 배포 지원을 위해 저희에게 연락해 주세요.",
-    "description": "关于页面中搭建同款的说明"
+    "message": "같은 AI 사이트를 구축하고 싶으신가요? 배포 지원을 위해 저희에게 연락하세요.",
+    "description": "정보 페이지에서 유사 사이트 구축에 대한 설명"
   },
   "settings.contactUs": {
     "message": "고객 지원 문의",
-    "description": "联系客服按钮的文本"
+    "description": "고객 지원 문의 버튼의 텍스트"
   },
   "message.viewOnGithub": {
     "message": "GitHub에서 보기",
-    "description": "在GitHub上查看项目的链接文本"
+    "description": "GitHub에서 프로젝트를 보는 링크 텍스트"
   }
 }

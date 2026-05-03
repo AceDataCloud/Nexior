@@ -13,7 +13,7 @@
   },
   "voice.createTitle": {
     "message": "إنشاء صوت جديد",
-    "description": "عنوان مربع حوار إنشاء الصوت"
+    "description": "عنوان نافذة إنشاء الصوت"
   },
   "voice.name": {
     "message": "الاسم",
@@ -72,8 +72,8 @@
     "description": "رسالة عند كون قائمة الأصوات فارغة"
   },
   "voice.emptyFavorites": {
-    "message": "لم تقم بإضافة أي صوت إلى المفضلة، انقر على النجمة للإضافة",
-    "description": "رسالة عند كون قائمة المفضلة فارغة"
+    "message": "لم تقم بإضافة أي أصوات للمفضلة، انقر على النجمة للإضافة",
+    "description": "رسالة عند كون قائمة المفضلات فارغة"
   },
   "voice.tabAll": {
     "message": "الكل",
@@ -96,7 +96,7 @@
     "description": "عنوان تأكيد حذف الصوت"
   },
   "voice.confirmDelete": {
-    "message": "هل أنت متأكد أنك تريد حذف هذا الصوت؟ هذه العملية غير قابلة للتراجع.",
+    "message": "هل أنت متأكد أنك تريد حذف هذا الصوت؟ هذه العملية لا يمكن التراجع عنها.",
     "description": "رسالة تأكيد حذف الصوت"
   },
   "voice.deleteSuccess": {
@@ -112,8 +112,8 @@
     "description": "نص زر الاستمرار في التوليد"
   },
   "button.download": {
-    "message": "تنزيل",
-    "description": "نص زر التنزيل"
+    "message": "تحميل",
+    "description": "نص زر التحميل"
   },
   "button.more": {
     "message": "المزيد من الخيارات",
@@ -125,7 +125,7 @@
   },
   "button.addAudio": {
     "message": "+ صوت",
-    "description": "زر لفتح مربع حوار إضافة صوت (تصفح أو تسجيل)"
+    "description": "زر لفتح نافذة إضافة صوت (تصفح أو تسجيل)"
   },
   "button.startRecord": {
     "message": "بدء التسجيل",
@@ -137,7 +137,7 @@
   },
   "button.reRecord": {
     "message": "إعادة التسجيل",
-    "description": "تجاهل التسجيل الحالي وإعادة التسجيل"
+    "description": "التخلص من التسجيل الحالي وإعادة التسجيل"
   },
   "button.useRecording": {
     "message": "استخدام هذا التسجيل",
@@ -145,7 +145,7 @@
   },
   "name.addAudio": {
     "message": "إضافة صوت",
-    "description": "عنوان مربع حوار إضافة الصوت"
+    "description": "عنوان نافذة إضافة الصوت"
   },
   "tab.browse": {
     "message": "تصفح",
@@ -161,7 +161,7 @@
   },
   "description.audioFormats": {
     "message": "الصيغ المدعومة: MP3، WAV، M4A",
-    "description": "تلميح حول صيغ الصوت المدعومة"
+    "description": "نص تلميح للصيغ الصوتية المدعومة"
   },
   "message.recordingReady": {
     "message": "التسجيل جاهز",
@@ -180,8 +180,8 @@
     "description": "نص زر الفيديو"
   },
   "button.download_video": {
-    "message": "تنزيل الفيديو",
-    "description": "نص زر تنزيل الفيديو"
+    "message": "تحميل الفيديو",
+    "description": "نص زر تحميل الفيديو"
   },
   "button.download_wav": {
     "message": "تحميل WAV",
@@ -216,8 +216,8 @@
     "description": "نص زر استبدال مقطع في الأغنية"
   },
   "button.mashup": {
-    "message": "دمج الأغاني",
-    "description": "نص زر دمج عدة أغاني"
+    "message": "مزيج",
+    "description": "نص زر مزج عدة أغاني"
   },
   "button.generate_lyrics": {
     "message": "توليد كلمات الأغاني",
@@ -225,7 +225,7 @@
   },
   "button.optimize_style": {
     "message": "تحسين الأسلوب",
-    "description": "نص زر لتحسين وصف الأسلوب باستخدام الذكاء الاصطناعي"
+    "description": "نص زر لتحسين الأسلوب باستخدام الذكاء الاصطناعي"
   },
   "button.all_stems": {
     "message": "فصل الكل",
@@ -384,7 +384,7 @@
     "description": "وصف معلمة التحميل المرجعي"
   },
   "description.vocalGender": {
-    "message": "اختر جنس الصوت الذي تريد توليده (يدعم فقط النسخ 4.5 وما فوق)",
+    "message": "اختر جنس الصوت المولد (يدعم فقط النسخ 4.5 وما فوق)",
     "description": "وصف محدد اختيار جنس الصوت"
   },
   "description.weirdness": {
@@ -392,15 +392,15 @@
     "description": "وصف معلمة الإبداع"
   },
   "description.styleInfluence": {
-    "message": "كلما زادت القيمة، زادت تأثيرات علامات الأسلوب على النتائج (0-100)",
+    "message": "كلما زادت القيمة، زادت تأثيرات علامات الأسلوب على النتائج المولدة (0-100)",
     "description": "وصف معلمة تأثير الأسلوب"
   },
   "description.audioWeight": {
-    "message": "وزن تأثير الأغنية الأصلية على النتائج (0-100)",
+    "message": "وزن تأثير الأغنية الأصلية على النتائج عند إعادة الغناء (0-100)",
     "description": "وصف معلمة وزن الأغنية الأصلية"
   },
   "description.lyricPrompt": {
-    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي بتوليد الكلمات تلقائيًا",
+    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي بإنشاء الكلمات تلقائيًا",
     "description": "وصف موجه الكلمات"
   },
   "description.replaceSection": {
@@ -408,8 +408,8 @@
     "description": "وصف وظيفة استبدال المقطع"
   },
   "status.pending": {
-    "message": "في الانتظار",
-    "description": "حالة الانتظار للمهمة"
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار للمهام"
   },
   "placeholder.prompt": {
     "message": "صف الموسيقى التي تريدها، مثل: أغنية دافئة عن الحنين إلى الخريف...",
@@ -429,11 +429,11 @@
   },
   "placeholder.style": {
     "message": "مثل: بوب أكوستيك، جاز، R&B، إلكتروني...",
-    "description": "نص العنصر النائب للأسلوب"
+    "description": "نص العنصر النائب لنمط الموسيقى"
   },
   "placeholder.styleNegative": {
     "message": "مثل: ميتال ثقيل، صراخ...",
-    "description": "نص العنصر النائب لاستبعاد الأسلوب"
+    "description": "نص العنصر النائب لاستبعاد الأنماط"
   },
   "placeholder.title": {
     "message": "أدخل اسم الأغنية...",
@@ -448,7 +448,7 @@
     "description": "نص العنصر النائب للموقع"
   },
   "placeholder.lyricPrompt": {
-    "message": "صف موضوع الكلمات، ستقوم الذكاء الاصطناعي بالتوليد تلقائيًا...",
+    "message": "صف موضوع الكلمات، ستقوم الذكاء الاصطناعي بإنشاءها تلقائيًا...",
     "description": "نص العنصر النائب لموجه الكلمات"
   },
   "placeholder.replaceSectionStart": {
@@ -465,11 +465,11 @@
   },
   "gender.male": {
     "message": "صوت ذكر",
-    "description": "خيار الصوت الذكري"
+    "description": "خيار صوت الذكور"
   },
   "gender.female": {
     "message": "صوت أنثى",
-    "description": "خيار الصوت الأنثوي"
+    "description": "خيار صوت الإناث"
   },
   "gender.auto": {
     "message": "تلقائي",
@@ -489,7 +489,7 @@
   },
   "lyricsMode.auto": {
     "message": "تلقائي",
-    "description": "دع الذكاء الاصطناعي يولد الكلمات تلقائيًا"
+    "description": "دع الذكاء الاصطناعي ينشئ الكلمات تلقائيًا"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -589,11 +589,11 @@
   },
   "button.artist_consistency": {
     "message": "اتساق الأسلوب",
-    "description": "نص زر توليد يعتمد على أسلوب الفنان"
+    "description": "نص زر توليد بناءً على أسلوب الفنان"
   },
   "button.artist_consistency_vox": {
     "message": "اتساق أسلوب الصوت",
-    "description": "نص زر توليد يعتمد على أسلوب صوت الفنان"
+    "description": "نص زر توليد بناءً على أسلوب صوت الفنان"
   },
   "button.underpainting": {
     "message": "إضافة مرافقة",
@@ -616,16 +616,16 @@
     "description": "نص زر للحصول على بيانات إيقاع الأغنية"
   },
   "button.create_persona": {
-    "message": "إنشاء أسلوب فني",
-    "description": "نص زر لإنشاء أسلوب فني"
+    "message": "إنشاء أسلوب فنان",
+    "description": "نص زر لإنشاء أسلوب فنان"
   },
   "button.mashup_lyrics": {
     "message": "دمج الكلمات",
     "description": "نص زر لدمج مقطعين من الكلمات"
   },
   "name.persona": {
-    "message": "أسلوب فني",
-    "description": "اختيار أسلوب فني"
+    "message": "أسلوب الفنان",
+    "description": "اختيار أسلوب الفنان"
   },
   "name.overpaintingRange": {
     "message": "نطاق الصوت",
@@ -664,12 +664,12 @@
     "description": "نص مكان لوقت انتهاء العينات"
   },
   "placeholder.personaId": {
-    "message": "أدخل معرف الأسلوب الفني...",
-    "description": "نص مكان لإدخال معرف الأسلوب الفني"
+    "message": "أدخل معرف أسلوب الفنان...",
+    "description": "نص مكان لإدخال معرف أسلوب الفنان"
   },
   "description.persona": {
-    "message": "استخدم الأسلوب الفني الذي تم إنشاؤه لتوليد أغاني بأسلوب متسق",
-    "description": "وصف وظيفة الأسلوب الفني"
+    "message": "استخدم أسلوب الفنان الذي تم إنشاؤه لتوليد أغاني بأسلوب متسق",
+    "description": "وصف وظيفة أسلوب الفنان"
   },
   "description.overpainting": {
     "message": "إضافة صوت للموسيقى المرفوعة ضمن نطاق زمني محدد",
@@ -716,7 +716,7 @@
     "description": "علامة وضع الإبداع المخصص"
   },
   "model.v55desc": {
-    "message": "صوت فني · نموذج مخصص",
+    "message": "صوت الشخصية · نموذج مخصص",
     "description": "وصف نموذج v5.5"
   },
   "model.v5desc": {
@@ -761,11 +761,11 @@
   },
   "button.clear_all": {
     "message": "مسح الكل",
-    "description": "زر لمسح جميع النماذج دفعة واحدة"
+    "description": "زر لمسح جميع النماذج"
   },
   "placeholder.enhanceLyrics": {
     "message": "أدخل تعليمات التعديل، مثل: اجعل الكلمات أكثر بهجة...",
-    "description": "نص مكان لمدخل تعزيز الكلمات"
+    "description": "نص عنصر الإدخال لتعزيز الكلمات"
   },
   "message.enhancingLyrics": {
     "message": "جارٍ تعزيز الكلمات...",
@@ -781,7 +781,7 @@
   },
   "placeholder.searchSongs": {
     "message": "ابحث عن أغاني...",
-    "description": "نص مكان لمدخل بحث الأغاني"
+    "description": "نص عنصر الإدخال للبحث عن الأغاني"
   },
   "sort.newest": {
     "message": "الأحدث",
@@ -790,6 +790,74 @@
   "sort.oldest": {
     "message": "الأقدم",
     "description": "ترتيب حسب الأقدم"
+  },
+  "filter.title": {
+    "message": "تصفية",
+    "description": "زر التصفية"
+  },
+  "filter.type": {
+    "message": "النوع",
+    "description": "قسم التصفية: صوتي/موسيقى خالصة"
+  },
+  "filter.typeAll": {
+    "message": "الكل",
+    "description": "النوع: الكل"
+  },
+  "filter.typeVocal": {
+    "message": "صوتي",
+    "description": "النوع: يحتوي على صوت"
+  },
+  "filter.typeInstrumental": {
+    "message": "موسيقى خالصة",
+    "description": "النوع: موسيقى خالصة"
+  },
+  "filter.duration": {
+    "message": "المدة",
+    "description": "قسم التصفية: مدة الأغاني"
+  },
+  "filter.durationAll": {
+    "message": "الكل",
+    "description": "المدة: غير محدد"
+  },
+  "filter.durationShort": {
+    "message": "< 1 دقيقة",
+    "description": "المدة: أقل من 1 دقيقة"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 دقائق",
+    "description": "المدة: من 1 إلى 3 دقائق"
+  },
+  "filter.durationLong": {
+    "message": "> 3 دقائق",
+    "description": "المدة: أكثر من 3 دقائق"
+  },
+  "filter.video": {
+    "message": "فيديو",
+    "description": "قسم التصفية: هل يحتوي على فيديو"
+  },
+  "filter.videoAll": {
+    "message": "الكل",
+    "description": "الفيديو: غير محدد"
+  },
+  "filter.videoWith": {
+    "message": "يحتوي على فيديو",
+    "description": "الفيديو: يحتوي فقط على فيديو"
+  },
+  "filter.videoWithout": {
+    "message": "صوت فقط",
+    "description": "الفيديو: صوت فقط"
+  },
+  "filter.model": {
+    "message": "نموذج",
+    "description": "قسم التصفية: نموذج الذكاء الاصطناعي"
+  },
+  "filter.modelAll": {
+    "message": "جميع النماذج",
+    "description": "النموذج: غير محدد"
+  },
+  "filter.reset": {
+    "message": "إعادة تعيين",
+    "description": "إعادة تعيين جميع الفلاتر"
   },
   "button.delete": {
     "message": "حذف",
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "لم يتم العثور على أغاني",
     "description": "رسالة عند عدم وجود نتائج للبحث"
+  },
+  "message.noFilterResults": {
+    "message": "لا توجد أغاني تتوافق مع معايير التصفية",
+    "description": "رسالة عند عدم وجود نتائج للتصفية"
   },
   "message.confirmDelete": {
     "message": "هل أنت متأكد أنك تريد حذف هذه الأغنية؟ هذه العملية غير قابلة للتراجع.",

@@ -724,7 +724,7 @@
     "description": "v5 模型描述"
   },
   "model.v45plusdesc": {
-    "message": "進階創作方法",
+    "message": "高級創作方法",
     "description": "v4.5+ 模型描述"
   },
   "model.v45desc": {
@@ -732,11 +732,11 @@
     "description": "v4.5 模型描述"
   },
   "model.v4desc": {
-    "message": "音質改善",
+    "message": "改進音質",
     "description": "v4 模型描述"
   },
   "model.v35desc": {
-    "message": "基本歌曲結構",
+    "message": "基礎歌曲結構",
     "description": "v3.5 模型描述"
   },
   "model.v3desc": {
@@ -791,6 +791,74 @@
     "message": "最舊",
     "description": "按最舊排序"
   },
+  "filter.title": {
+    "message": "篩選",
+    "description": "篩選按鈕"
+  },
+  "filter.type": {
+    "message": "類型",
+    "description": "篩選分區：人聲/純音樂"
+  },
+  "filter.typeAll": {
+    "message": "全部",
+    "description": "類型：全部"
+  },
+  "filter.typeVocal": {
+    "message": "人聲",
+    "description": "類型：含人聲"
+  },
+  "filter.typeInstrumental": {
+    "message": "純音樂",
+    "description": "類型：純音樂"
+  },
+  "filter.duration": {
+    "message": "時長",
+    "description": "篩選分區：歌曲時長"
+  },
+  "filter.durationAll": {
+    "message": "全部",
+    "description": "時長：不限"
+  },
+  "filter.durationShort": {
+    "message": "< 1 分鐘",
+    "description": "時長：小於 1 分鐘"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 分鐘",
+    "description": "時長：1 到 3 分鐘"
+  },
+  "filter.durationLong": {
+    "message": "> 3 分鐘",
+    "description": "時長：大於 3 分鐘"
+  },
+  "filter.video": {
+    "message": "視頻",
+    "description": "篩選分區：是否含視頻"
+  },
+  "filter.videoAll": {
+    "message": "全部",
+    "description": "視頻：不限"
+  },
+  "filter.videoWith": {
+    "message": "含視頻",
+    "description": "視頻：僅含視頻"
+  },
+  "filter.videoWithout": {
+    "message": "僅音頻",
+    "description": "視頻：僅音頻"
+  },
+  "filter.model": {
+    "message": "模型",
+    "description": "篩選分區：AI 模型"
+  },
+  "filter.modelAll": {
+    "message": "全部模型",
+    "description": "模型：不限"
+  },
+  "filter.reset": {
+    "message": "重置",
+    "description": "重置所有篩選"
+  },
   "button.delete": {
     "message": "刪除",
     "description": "刪除歌曲的按鈕文本"
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "未找到歌曲",
     "description": "搜索無結果時的消息"
+  },
+  "message.noFilterResults": {
+    "message": "沒有符合篩選條件的歌曲",
+    "description": "篩選無結果時的消息"
   },
   "message.confirmDelete": {
     "message": "確定要刪除這首歌嗎？此操作不可撤銷。",

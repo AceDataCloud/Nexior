@@ -175,29 +175,29 @@
     "message": "更快更輕量的模型",
     "description": "Gemini 2.5 Flash 模型的描述"
   },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "服務的模型名稱，即 Claude Opus 4"
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "服務的模型名稱，即 Claude Opus 4.7"
   },
-  "model.claudeOpus4Description": {
+  "model.claudeOpus47Description": {
     "message": "目前最先進的模型",
-    "description": "Claude Opus 4 模型的描述"
+    "description": "Claude Opus 4.7 模型的描述"
   },
-  "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
-    "description": "服務的模型名稱，即 Claude Sonnet 4"
+  "model.claudeSonnet46": {
+    "message": "claude-sonnet-4.6",
+    "description": "服務的模型名稱，即 Claude Sonnet 4.6"
   },
-  "model.claudeSonnet4Description": {
+  "model.claudeSonnet46Description": {
     "message": "適用於大多數任務",
-    "description": "Claude Sonnet 4 模型的描述"
+    "description": "Claude Sonnet 4.6 模型的描述"
   },
-  "model.claude37Sonnet": {
-    "message": "claude-3.7-sonnet",
-    "description": "服務的模型名稱，即 Claude 3.7 Sonnet"
+  "model.claudeHaiku45": {
+    "message": "claude-haiku-4.5",
+    "description": "服務的模型名稱，即 Claude Haiku 4.5"
   },
-  "model.claude37SonnetDescription": {
-    "message": "均衡的性能和速度",
-    "description": "Claude 3.7 Sonnet 模型的描述"
+  "model.claudeHaiku45Description": {
+    "message": "輕量快速的模型",
+    "description": "Claude Haiku 4.5 模型的描述"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -320,12 +320,12 @@
     "description": "網頁中的消息，告訴用戶對話不存在或已過期，請開始新對話"
   },
   "message.errorContentTooLarge": {
-    "message": "問題內容過長，請縮短後重試",
-    "description": "網頁中的消息，告訴用戶問題內容過長，請縮短後重試"
+    "message": "內容過長，請縮短後重試",
+    "description": "網頁中的消息，告訴用戶內容過長，請縮短後重試"
   },
   "message.errorTooManyRequests": {
-    "message": "您的操作過於頻繁，請稍後重試",
-    "description": "網頁中的消息，告訴用戶您的操作過於頻繁，請稍後重試"
+    "message": "操作過於頻繁，請稍後重試",
+    "description": "網頁中的消息，告訴用戶操作過於頻繁，請稍後重試"
   },
   "message.errorBusy": {
     "message": "伺服器繁忙，請稍後重試",
@@ -333,7 +333,7 @@
   },
   "message.errorUsedUp": {
     "message": "您已用完套餐次數，請購買更多次數繼續使用",
-    "description": "網頁中的消息，告訴用戶您已用完套餐次數，請購買更多次數繼續使用"
+    "description": "網頁中的消息，告訴用戶已用完套餐次數，請購買更多次數繼續使用"
   },
   "message.errorUnknown": {
     "message": "伺服器發生未知錯誤，請稍後重試或聯繫客服",
@@ -345,7 +345,7 @@
   },
   "message.errorNotApplied": {
     "message": "您尚未申請此服務，請先申請再繼續提問",
-    "description": "網頁中的消息，告訴用戶您尚未申請此服務，請先申請再繼續提問"
+    "description": "網頁中的消息，告訴用戶尚未申請此服務，請先申請再繼續提問"
   },
   "message.confirmDelete": {
     "message": "確認刪除",
@@ -399,185 +399,9 @@
     "message": "更早",
     "description": "網頁中的分組名稱，即 更早"
   },
-  "mcp.title": {
-    "message": "MCP 伺服器",
-    "description": "MCP 伺服器管理對話框標題"
-  },
-  "mcp.addServer": {
-    "message": "添加伺服器",
-    "description": "添加 MCP 伺服器按鈕"
-  },
-  "mcp.name": {
-    "message": "名稱",
-    "description": "MCP 伺服器名稱"
-  },
-  "mcp.namePlaceholder": {
-    "message": "為伺服器命名",
-    "description": "MCP 伺服器名稱佔位符"
-  },
-  "mcp.url": {
-    "message": "URL",
-    "description": "MCP 伺服器 URL"
-  },
-  "mcp.urlPlaceholder": {
-    "message": "https://example.com/mcp",
-    "description": "MCP 伺服器 URL 佔位符"
-  },
-  "mcp.description": {
-    "message": "描述",
-    "description": "MCP 伺服器描述"
-  },
-  "mcp.descriptionPlaceholder": {
-    "message": "描述此伺服器的用途",
-    "description": "MCP 伺服器描述佔位符"
-  },
-  "mcp.authType": {
-    "message": "認證方式",
-    "description": "MCP 伺服器認證方式"
-  },
-  "mcp.authNone": {
-    "message": "無",
-    "description": "無認證"
-  },
-  "mcp.authBearer": {
-    "message": "Bearer Token",
-    "description": "Bearer Token 認證"
-  },
-  "mcp.authToken": {
-    "message": "Token",
-    "description": "認證 Token"
-  },
-  "mcp.authTokenPlaceholder": {
-    "message": "輸入認證 Token",
-    "description": "認證 Token 佔位符"
-  },
-  "mcp.test": {
-    "message": "測試連接",
-    "description": "測試 MCP 伺服器連接"
-  },
-  "mcp.testSuccess": {
-    "message": "連接成功",
-    "description": "連接測試成功"
-  },
-  "mcp.testFailed": {
-    "message": "連接失敗",
-    "description": "連接測試失敗"
-  },
-  "mcp.toolsFound": {
-    "message": "發現 {count} 個工具",
-    "description": "發現的工具數量"
-  },
-  "mcp.empty": {
-    "message": "暫無 MCP 伺服器，添加一個以擴展 AI 的能力",
-    "description": "MCP 伺服器列表為空"
-  },
-  "mcp.loadErrorHint": {
-    "message": "無法加載 MCP 伺服器，該功能可能暫未開放。",
-    "description": "MCP 伺服器因網路/CORS錯誤加載失敗時的提示"
-  },
-  "mcp.nameUrlRequired": {
-    "message": "請填寫名稱和 URL",
-    "description": "名稱和 URL 必填"
-  },
-  "mcp.urlRequired": {
-    "message": "請填寫 URL",
-    "description": "URL 必填"
-  },
-  "mcp.created": {
-    "message": "添加成功",
-    "description": "MCP 伺服器添加成功"
-  },
-  "mcp.updated": {
-    "message": "更新成功",
-    "description": "MCP 伺服器更新成功"
-  },
-  "mcp.deleted": {
-    "message": "刪除成功",
-    "description": "MCP 伺服器刪除成功"
-  },
-  "mcp.saveFailed": {
-    "message": "保存失敗",
-    "description": "MCP 伺服器保存失敗"
-  },
-  "mcp.deleteConfirm": {
-    "message": "確認刪除伺服器 \"{name}\"？",
-    "description": "刪除確認"
-  },
-  "mcp.tooltip": {
-    "message": "MCP 伺服器",
-    "description": "MCP 按鈕提示"
-  },
-  "mcp.authOAuth": {
-    "message": "OAuth 2.0",
-    "description": "OAuth 認證類型"
-  },
-  "mcp.oauthHint": {
-    "message": "保存後，在伺服器卡片上點擊「授權」按鈕完成 OAuth 認證。",
-    "description": "選擇 OAuth 認證類型時的提示"
-  },
-  "mcp.authorize": {
-    "message": "授權",
-    "description": "OAuth 授權按鈕"
-  },
-  "mcp.oauthAuthorized": {
-    "message": "OAuth 授權成功",
-    "description": "OAuth 授權成功消息"
-  },
-  "mcp.oauthFailed": {
-    "message": "OAuth 授權失敗",
-    "description": "OAuth 授權失敗消息"
-  },
-  "mcp.popupBlocked": {
-    "message": "彈出窗口被阻止，請允許本站彈出窗口。",
-    "description": "彈出窗口被阻止提示"
-  },
-  "connector.title": {
-    "message": "連接器",
-    "description": "連接器管理對話框標題"
-  },
-  "connector.tooltip": {
-    "message": "OAuth 連接器",
-    "description": "連接器按鈕提示"
-  },
-  "connector.noProviders": {
-    "message": "暫無可用連接器，請在服務端配置 OAuth 提供商。",
-    "description": "無提供商消息"
-  },
-  "connector.connect": {
-    "message": "連接",
-    "description": "連接按鈕"
-  },
-  "connector.disconnect": {
-    "message": "斷開",
-    "description": "斷開按鈕"
-  },
-  "connector.connected": {
-    "message": "連接器連接成功",
-    "description": "連接成功消息"
-  },
-  "connector.disconnected": {
-    "message": "連接器已斷開",
-    "description": "斷開成功消息"
-  },
   "connector.authFailed": {
     "message": "授權失敗，請重試。",
     "description": "授權失敗消息"
-  },
-  "connector.loadError": {
-    "message": "加載連接器失敗",
-    "description": "加載錯誤消息"
-  },
-  "connector.loadErrorHint": {
-    "message": "無法加載連接器，該功能可能暫未開放。",
-    "description": "連接器因網路/CORS錯誤加載失敗時的提示"
-  },
-  "connector.disconnectError": {
-    "message": "斷開連接器失敗",
-    "description": "斷開錯誤消息"
-  },
-  "connector.toggleError": {
-    "message": "更新連接器失敗",
-    "description": "切換錯誤消息"
   },
   "connector.processing": {
     "message": "正在處理授權...",
@@ -591,133 +415,25 @@
     "message": "此窗口將自動關閉。",
     "description": "OAuth 回調關閉提示"
   },
-  "skill.title": {
-    "message": "技能",
-    "description": "技能管理對話框標題"
+  "connections.tooltip": {
+    "message": "連接管理",
+    "description": "跳轉到 auth.acedata.cloud 連接管理頁的按鈕提示"
   },
   "skill.tooltip": {
-    "message": "AI 技能",
-    "description": "技能按鈕提示"
+    "message": "技能管理",
+    "description": "跳轉到 auth.acedata.cloud 技能管理頁的按鈕提示"
   },
-  "skill.builtin": {
-    "message": "內建",
-    "description": "內建技能標籤"
+  "composer.addFiles": {
+    "message": "添加照片或文件",
+    "description": "輸入框下方按鈕：上傳圖片或文件"
   },
-  "skill.empty": {
-    "message": "暫無可用技能。",
-    "description": "技能列表為空提示"
+  "composer.skills": {
+    "message": "技能",
+    "description": "輸入框下方按鈕：打開技能管理"
   },
-  "skill.loadError": {
-    "message": "加載技能失敗",
-    "description": "技能加載失敗提示"
-  },
-  "skill.add": {
-    "message": "添加技能",
-    "description": "添加技能按鈕標籤"
-  },
-  "skill.delete": {
-    "message": "刪除",
-    "description": "刪除技能按鈕標籤"
-  },
-  "skill.deleteConfirm": {
-    "message": "確認刪除技能「{name}」？此操作無法撤銷。",
-    "description": "刪除技能前的確認消息"
-  },
-  "skill.deleteSuccess": {
-    "message": "已刪除",
-    "description": "刪除技能成功消息"
-  },
-  "skill.deleteError": {
-    "message": "刪除失敗",
-    "description": "刪除技能錯誤消息"
-  },
-  "skill.createSuccess": {
-    "message": "技能已創建",
-    "description": "創建技能成功消息"
-  },
-  "skill.createError": {
-    "message": "創建技能失敗",
-    "description": "創建技能錯誤消息"
-  },
-  "skill.form.name": {
-    "message": "名稱",
-    "description": "技能表單名稱標籤"
-  },
-  "skill.form.namePlaceholder": {
-    "message": "例如 summarizer",
-    "description": "技能表單名稱佔位符"
-  },
-  "skill.form.nameRequired": {
-    "message": "請填寫名稱",
-    "description": "技能表單名稱必填消息"
-  },
-  "skill.form.displayName": {
-    "message": "顯示名稱",
-    "description": "技能表單顯示名稱標籤"
-  },
-  "skill.form.displayNamePlaceholder": {
-    "message": "在技能列表中展示的名稱",
-    "description": "技能表單顯示名稱佔位符"
-  },
-  "skill.form.icon": {
-    "message": "圖標（emoji）",
-    "description": "技能表單圖標標籤"
-  },
-  "skill.form.description": {
-    "message": "描述",
-    "description": "技能表單描述標籤"
-  },
-  "skill.form.type": {
-    "message": "類型",
-    "description": "技能表單類型標籤"
-  },
-  "skill.form.typePrompt": {
-    "message": "提示詞",
-    "description": "Prompt type label"
-  },
-  "skill.form.typeCode": {
-    "message": "程式碼",
-    "description": "Code type label"
-  },
-  "skill.form.instructions": {
-    "message": "提示詞內容",
-    "description": "Prompt instructions label"
-  },
-  "skill.form.instructionsPlaceholder": {
-    "message": "粘貼或編寫該技能對應的提示詞 / 指令...",
-    "description": "Prompt instructions placeholder"
-  },
-  "skill.form.instructionsRequired": {
-    "message": "提示詞類型必須填寫提示詞內容",
-    "description": "Prompt instructions required message"
-  },
-  "skill.form.code": {
-    "message": "程式碼",
-    "description": "Code skill label"
-  },
-  "skill.form.codePlaceholder": {
-    "message": "粘貼該技能對應的程式碼...",
-    "description": "Code skill placeholder"
-  },
-  "skill.form.codeRequired": {
-    "message": "程式碼類型必須填寫程式碼",
-    "description": "Code skill required message"
-  },
-  "skill.form.tags": {
-    "message": "標籤",
-    "description": "Skill form tags label"
-  },
-  "skill.form.tagsPlaceholder": {
-    "message": "用逗號分隔，如：寫作, 程式設計",
-    "description": "Skill form tags placeholder"
-  },
-  "skill.form.uploadText": {
-    "message": "上傳 .txt / .md 檔案",
-    "description": "Upload prompt file button"
-  },
-  "skill.form.uploadCode": {
-    "message": "上傳程式碼檔案",
-    "description": "Upload code file button"
+  "composer.connections": {
+    "message": "連接",
+    "description": "輸入框下方按鈕：打開連接管理"
   },
   "agent.title": {
     "message": "桌面代理",
@@ -736,7 +452,7 @@
     "description": "代理未連接狀態"
   },
   "agent.description": {
-    "message": "連接桌面代理以在 AI 對話中訪問本地檔案、執行命令和使用本地 MCP 伺服器。",
+    "message": "連接桌面代理以在 AI 對話中訪問本地文件、運行命令和使用本地 MCP 伺服器。",
     "description": "代理描述"
   },
   "agent.name": {
@@ -752,7 +468,7 @@
     "description": "代理連接時間標籤"
   },
   "agent.connectedHint": {
-    "message": "您的桌面代理已連接，可以使用。",
+    "message": "桌面代理已連接，可以使用。",
     "description": "代理已連接提示"
   },
   "agent.installLabel": {

@@ -77,7 +77,7 @@
   },
   "button.verify": {
     "message": "التحقق من الهوية",
-    "description": "النص في الزر، الذي يسمح للمستخدم بالتحقق من هويته"
+    "description": "النص في الزر، الذي يسمح للمستخدم بالتحقق من الهوية"
   },
   "button.profile": {
     "message": "الملف الشخصي",
@@ -168,7 +168,7 @@
     "description": "النص في الزر، المستخدم لإنهاء عملية معينة"
   },
   "entity.id": {
-    "message": "معرف",
+    "message": "معرّف",
     "description": "用于显示实体的唯一标识符"
   },
   "entity.type": {
@@ -224,7 +224,7 @@
     "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، ابدأ مهمة جديدة～",
+    "message": "لا توجد مهام تاريخية، يرجى بدء مهمة جديدة～",
     "description": "没有任务时的消息"
   },
   "message.usedAmount": {
@@ -260,7 +260,7 @@
     "description": "用于说明当前展示的是最新公开版本"
   },
   "message.mobileSharedAccount": {
-    "message": "مشاركة الحساب والحدود مع الويب",
+    "message": "مشاركة الحساب والرصيد مع النسخة على الويب",
     "description": "用于说明移动端与网页端共用账号"
   },
   "message.mobileIosHint": {
@@ -272,7 +272,7 @@
     "description": "iOS 安装包暂未可用时的提示"
   },
   "message.mobileInstallNote": {
-    "message": "عند تثبيت حزمة مؤسسية أو Ad Hoc على iOS لأول مرة، قد يطلب النظام أولاً الوثوق بالشهادة في \"الإعدادات > عام > VPN وإدارة الأجهزة\".",
+    "message": "عند تثبيت حزمة الشركات أو Ad Hoc على iOS لأول مرة، قد يطلب النظام أولاً الوثوق بالشهادة في \"الإعدادات > عام > VPN وإدارة الأجهزة\".",
     "description": "移动应用安装提示"
   },
   "title.mobileApp": {
@@ -280,7 +280,7 @@
     "description": "移动应用下载页标题"
   },
   "title.mobileFastAccess": {
-    "message": "وصول أسرع، بدون المرور عبر متجر التطبيقات",
+    "message": "الوصول الأسرع، بدون المرور عبر متجر التطبيقات",
     "description": "下载页优势卡片标题，强调快速安装"
   },
   "title.mobileTrustedRelease": {
@@ -296,7 +296,7 @@
     "description": "导航中的移动应用下载入口"
   },
   "message.mobileFastAccess": {
-    "message": "يمكن للمستخدمين مسح الرمز على الهاتف للتثبيت مباشرة، أو تنزيل APK على سطح المكتب ثم توزيعه على أعضاء الفريق، مناسب للاستخدام السريع والاختبار الداخلي.",
+    "message": "يمكن للمستخدمين تثبيت التطبيق مباشرة عبر الهاتف عن طريق مسح الرمز، أو تنزيل APK على سطح المكتب ثم توزيعه على أعضاء الفريق، مناسب للاستخدام السريع والاختبار الداخلي.",
     "description": "下载页优势说明，强调快速接入"
   },
   "message.mobileTrustedRelease": {
@@ -304,7 +304,7 @@
     "description": "下载页优势说明，强调统一分发"
   },
   "message.mobileUnifiedExperience": {
-    "message": "نظام الحسابات، الحدود ومدخلات الخدمة بعد تسجيل الدخول متطابقة مع الويب، مما يسهل على المستخدمين التبديل بسلاسة بين سطح المكتب والهاتف المحمول.",
+    "message": "نظام الحسابات، الرصيد، ونقاط الخدمة بعد تسجيل الدخول متطابقة مع النسخة على الويب، مما يسهل على المستخدمين التبديل بسلاسة بين سطح المكتب والهاتف المحمول.",
     "description": "下载页优势说明，强调统一账号体验"
   },
   "message.remainingAmount": {
@@ -317,231 +317,235 @@
   },
   "message.restart": {
     "message": "إعادة توليد",
-    "description": "用于显示内容已成功复制的消息"
+    "description": "رسالة تُظهر أن المحتوى قد تم نسخه بنجاح"
   },
   "message.confirmDelete": {
     "message": "هل أنت متأكد أنك تريد الحذف؟",
-    "description": "确认用户要删除某项内容的消息"
+    "description": "رسالة لتأكيد رغبة المستخدم في حذف محتوى معين"
   },
   "message.expiredAt": {
-    "message": "تاريخ انتهاء الصلاحية",
-    "description": "用于显示服务的过期时间"
+    "message": "تاريخ الانتهاء",
+    "description": "لإظهار تاريخ انتهاء الخدمة"
   },
   "message.alert": {
     "message": "تحذير",
-    "description": "警告用户的消息"
+    "description": "رسالة تحذر المستخدم"
   },
   "message.info": {
     "message": "معلومات",
-    "description": "显示信息的消息"
+    "description": "رسالة تعرض معلومات"
   },
   "message.free": {
     "message": "مجاني",
-    "description": "显示该服务是免费的消息，意味着用户无需支付"
+    "description": "رسالة تُظهر أن هذه الخدمة مجانية، مما يعني أن المستخدم لا يحتاج للدفع"
   },
   "message.startPrice": {
     "message": "سعر البداية",
-    "description": "显示服务的最低价格的消息"
+    "description": "رسالة تُظهر أقل سعر للخدمة"
   },
   "message.joinDiscord": {
     "message": "انضم إلى Discord",
-    "description": "让用户加入Discord频道的消息"
+    "description": "رسالة تدعو المستخدم للانضمام إلى قناة Discord"
   },
   "message.addWeChat": {
-    "message": "إضافة حساب WeChat",
-    "description": "让用户添加微信账户的消息"
+    "message": "خدمة WeChat",
+    "description": "رسالة تدعو المستخدم لإضافة حساب WeChat"
   },
   "message.serviceTech": {
-    "message": "الدعم الفني",
-    "description": "显示技术支持的消息"
+    "message": "دعم فني",
+    "description": "رسالة تُظهر الدعم الفني"
   },
   "message.businessCooperation": {
-    "message": "التعاون التجاري والبيانات",
-    "description": "显示商业合作的消息"
+    "message": "بيانات & تعاون تجاري",
+    "description": "رسالة تُظهر التعاون التجاري"
   },
   "message.noData": {
     "message": "لا توجد بيانات",
-    "description": "显示表或列表中没有数据的消息"
+    "description": "رسالة تُظهر عدم وجود بيانات في الجدول أو القائمة"
   },
   "nav.home": {
     "message": "الرئيسية",
-    "description": "网站导航栏中的文本，用于显示首页"
+    "description": "نص في شريط التنقل بالموقع، لعرض الصفحة الرئيسية"
   },
   "nav.content": {
     "message": "المحتوى",
-    "description": "网站导航栏中的文本，用于显示内容页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة المحتوى"
   },
   "nav.category": {
     "message": "الفئة",
-    "description": "网站导航栏中的文本，用于显示类别页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الفئات"
   },
   "nav.service": {
     "message": "جميع الخدمات",
-    "description": "网站导航栏中的文本，用于显示服务页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الخدمات"
   },
   "nav.profile": {
-    "message": "ملفي",
-    "description": "网站导航栏中的文本，用于显示个人资料页面"
+    "message": "ملفي الشخصي",
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الملف الشخصي"
   },
   "nav.products": {
     "message": "المنتجات",
-    "description": "网站导航栏中的文本，用于显示产品页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة المنتجات"
   },
   "nav.referral": {
     "message": "تحالف الإيرادات",
-    "description": "网站导航栏中的文本，用于显示推荐页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الإحالات"
   },
   "nav.apiPlatform": {
     "message": "منصة API",
-    "description": "网站导航栏中的文本，用于显示API平台页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة منصة API"
   },
   "nav.document": {
     "message": "وثائق التطوير",
-    "description": "网站导航栏中的文本，用于显示文档页面"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الوثائق"
   },
   "nav.console": {
-    "message": "لوحة التحكم",
-    "description": "网站导航栏中的文本，用于显示控制台页面"
+    "message": "وحدة التحكم",
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة وحدة التحكم"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "网站导航栏中的文本，用于显示ChatGPT页面，请不要翻译此字段，必须保持为'ChatGPT'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة ChatGPT، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "网站导航栏中的文本，用于显示DeepSeek页面，请不要翻译此字段，必须保持为'DeepSeek'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة DeepSeek، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "网站导航栏中的文本，用于显示Grok页面，请不要翻译此字段，必须保持为'Grok'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Grok، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Grok'"
   },
   "nav.chat": {
-    "message": "الدردشة",
-    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Chat'"
+    "message": "دردشة",
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الدردشة، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Veo'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Veo، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Sora'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Sora، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "网站导航栏中的文本，用于显示中途之旅页面，请不要翻译此字段，必须保持为'Midjourney'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Midjourney، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "网站导航栏中的文本，用于显示二维艺术页面，请不要翻译此字段，必须保持为'QRArt'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة الفن ثنائي الأبعاد، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "网站导航栏中的文本，用于显示Suno页面，请不要翻译此字段，必须保持为'Suno'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Suno، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "网站导航栏中的文本，用于显示Pixverse页面，请不要翻译此字段，必须保持为'Pixverse'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Pixverse، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Flux، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة Nano Banana، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'Nano Banana'"
   },
   "nav.openaiimage": {
     "message": "OpenAI Image",
-    "description": "网站导航栏中的文本，用于显示OpenAI Image页面，请不要翻译此字段，必须保持为'OpenAI Image'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة OpenAI Image، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى 'OpenAI Image'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDream، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDream'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة SeeDream، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDance، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDance'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة SeeDance، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Luma، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Luma'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Luma، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Pika، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Pika'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Pika، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kling، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kling'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Kling، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Hailuo، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Hailuo'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Hailuo، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Hailuo'"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Wan، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Wan'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Wan، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Wan'"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Producer، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Producer'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Producer، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Producer'"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kimi، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kimi'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة Kimi، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kimi'"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SERP، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SERP'"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة SERP، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SERP'"
   },
   "nav.image": {
-    "message": "صورة",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة الصور"
+    "message": "صور",
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الصور"
   },
   "nav.music": {
     "message": "موسيقى",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة الموسيقى"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الموسيقى"
   },
   "nav.video": {
     "message": "فيديو",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة الفيديو"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الفيديو"
   },
   "nav.distribution": {
     "message": "عائدات التوصية",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة عائدات التوصية"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة عائدات التوصية"
+  },
+  "nav.connections": {
+    "message": "اتصالات",
+    "description": "عنصر القائمة للانتقال إلى صفحة إدارة الاتصالات auth.acedata.cloud"
   },
   "nav.logOut": {
     "message": "تسجيل الخروج",
-    "description": "النص في شريط التنقل للموقع، لتسجيل الخروج"
+    "description": "النص في شريط التنقل بالموقع، لتسجيل الخروج"
   },
   "nav.site": {
     "message": "إعدادات الموقع",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة إعدادات الموقع"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة إعدادات الموقع"
   },
   "nav.setting": {
     "message": "إعدادات",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة الإعدادات"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الإعدادات"
   },
   "nav.headshots": {
     "message": "صور هوية AI",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة إعدادات الموقع"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة إعدادات الموقع"
   },
   "nav.more": {
     "message": "المزيد",
-    "description": "النص في شريط التنقل للموقع، لفتح المزيد من الخدمات"
+    "description": "النص في شريط التنقل بالموقع، لفتح المزيد من الخدمات"
   },
   "nav.locale": {
     "message": "إعدادات اللغة",
-    "description": "النص في شريط التنقل للموقع، لتغيير اللغة"
+    "description": "النص في شريط التنقل بالموقع، لتغيير اللغة"
   },
   "nav.support": {
     "message": "دعم العملاء",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة الاتصال"
+    "description": "النص في شريط التنقل بالموقع، لعرض صفحة الاتصال"
   },
   "nav.darkMode": {
     "message": "الوضع الداكن",
-    "description": "النص في شريط التنقل للموقع، للتبديل إلى السمة الداكنة"
+    "description": "النص في شريط التنقل بالموقع، للتبديل إلى السمة الداكنة"
   },
   "title.alert": {
     "message": "تحذير",
@@ -593,22 +597,22 @@
   },
   "title.allCredentials": {
     "message": "المفاتيح",
-    "description": "عنوان الصفحة لعرض جميع الشهادات، الشهادات تستخدم للوصول إلى API"
+    "description": "عنوان الصفحة لعرض جميع بيانات الاعتماد، والتي تستخدم للوصول إلى API"
   },
   "about.title1": {
     "message": "اتصل بنا",
-    "description": "عنوان الجزء لعرض معلومات الاتصال"
+    "description": "عرض عنوان قسم معلومات الاتصال"
   },
   "about.title2": {
     "message": "الموارد",
-    "description": "عرض عنوان الجزء الذي يحتوي على الروابط"
+    "description": "عرض عنوان قسم الروابط"
   },
   "about.title3": {
     "message": "الروابط",
-    "description": "عرض عنوان الجزء الذي يحتوي على معلومات الدعم"
+    "description": "عرض عنوان قسم معلومات الدعم"
   },
   "about.address": {
-    "message": "651 North Broad St, Suite 201, Middletown, DE, USA",
+    "message": "651 N Broad St, Suite 201, Middletown, DE, USA",
     "description": "عنوان الشركة"
   },
   "about.email": {
@@ -625,7 +629,7 @@
   },
   "about.link3": {
     "message": "اللوحة",
-    "description": "رابط إلى صفحة التحكم"
+    "description": "رابط إلى صفحة اللوحة"
   },
   "about.link4": {
     "message": "الملف الشخصي",
@@ -661,7 +665,7 @@
   },
   "theme.system": {
     "message": "نظام",
-    "description": "اسم سمة النظام، تشير إلى التبديل التلقائي للسمة بناءً على إعدادات النظام"
+    "description": "اسم السمة النظامية، تشير إلى التبديل التلقائي حسب إعدادات النظام"
   },
   "settings.general": {
     "message": "الإعدادات العامة",
@@ -676,8 +680,8 @@
     "description": "عنوان قسم إعدادات السمة في صفحة الإعدادات"
   },
   "settings.seo": {
-    "message": "إعدادات تحسين محركات البحث",
-    "description": "عنوان قسم إعدادات تحسين محركات البحث في صفحة الإعدادات"
+    "message": "إعدادات SEO",
+    "description": "عنوان قسم إعدادات SEO في صفحة الإعدادات"
   },
   "settings.site": {
     "message": "إعدادات الموقع",
@@ -693,11 +697,11 @@
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "النص في شريط التنقل في الموقع لعرض صفحة Gemini، يجب أن يبقى كما هو 'Gemini'"
+    "description": "نص في شريط التنقل بالموقع لعرض صفحة Gemini، يجب أن يبقى كما هو 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "النص في شريط التنقل في الموقع لعرض صفحة Claude، يجب أن يبقى كما هو 'Claude'"
+    "description": "نص في شريط التنقل بالموقع لعرض صفحة Claude، يجب أن يبقى كما هو 'Claude'"
   },
   "button.detail": {
     "message": "عرض التفاصيل",
@@ -705,11 +709,11 @@
   },
   "button.testEnv": {
     "message": "بيئة الاختبار",
-    "description": "النص في الزر للتبديل إلى بيئة الاختبار"
+    "description": "نص في الزر للتبديل إلى بيئة الاختبار"
   },
   "button.upload": {
     "message": "رفع",
-    "description": "النص في الزر لرفع الملفات أو المحتوى"
+    "description": "نص في الزر لرفع الملفات أو المحتوى"
   },
   "message.cnbeian": {
     "message": "تسجيل منطقة الصين",
@@ -721,7 +725,7 @@
   },
   "nav.tryNow": {
     "message": "جرب الآن",
-    "description": "النص في شريط التنقل في الموقع لتمكين المستخدم من تجربة الخدمة"
+    "description": "نص في شريط التنقل بالموقع لتمكين المستخدم من تجربة الخدمة"
   },
   "title.coin": {
     "message": "العملات المشفرة",
@@ -756,7 +760,7 @@
     "description": "مهنة العميل"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloud هي منصة تكامل رائعة، جودة الخدمة ممتازة.",
+    "message": "Ace Data Cloud هو منصة تكامل رائعة، جودة الخدمة ممتازة.",
     "description": "تقييم العميل"
   },
   "customers.name3": {

@@ -108,8 +108,8 @@
     "description": "Message d'échec pour la suppression d'un son"
   },
   "button.extend": {
-    "message": "Continuer la génération",
-    "description": "Texte du bouton pour continuer la génération"
+    "message": "Continuer à générer",
+    "description": "Texte du bouton pour continuer à générer"
   },
   "button.download": {
     "message": "Télécharger",
@@ -121,7 +121,7 @@
   },
   "button.uploadAudios": {
     "message": "Télécharger",
-    "description": "Texte du bouton pour permettre à l'utilisateur de télécharger une référence"
+    "description": "Texte du bouton permettant à l'utilisateur de télécharger une référence"
   },
   "button.addAudio": {
     "message": "+ Audio",
@@ -213,22 +213,22 @@
   },
   "button.replace_section": {
     "message": "Remplacer un extrait",
-    "description": "Texte du bouton pour remplacer un extrait d'une chanson"
+    "description": "Texte du bouton pour remplacer un extrait dans une chanson"
   },
   "button.mashup": {
     "message": "Mashup",
     "description": "Texte du bouton pour créer un mashup de plusieurs chansons"
   },
   "button.generate_lyrics": {
-    "message": "Générer des paroles AI",
-    "description": "Texte du bouton pour générer automatiquement des paroles avec AI"
+    "message": "Générer des paroles avec l'IA",
+    "description": "Texte du bouton pour générer automatiquement des paroles avec l'IA"
   },
   "button.optimize_style": {
     "message": "Optimiser le style",
-    "description": "Texte du bouton pour optimiser le style avec AI"
+    "description": "Texte du bouton pour optimiser la description du style avec l'IA"
   },
   "button.all_stems": {
-    "message": "Séparer tout",
+    "message": "Toutes les pistes",
     "description": "Texte du bouton pour séparer toutes les pistes"
   },
   "model.model1": {
@@ -349,7 +349,7 @@
   },
   "name.replaceSection": {
     "message": "Remplacer un extrait",
-    "description": "Remplacer un extrait d'une chanson"
+    "description": "Remplacer un extrait dans une chanson"
   },
   "name.model": {
     "message": "Modèle",
@@ -364,11 +364,11 @@
     "description": "Description du paramètre 'prompt'"
   },
   "description.lyrics": {
-    "message": "Entrez des paroles personnalisées, supporte les balises de paragraphes comme [Verse], [Chorus], [Bridge], etc.",
+    "message": "Entrez des paroles personnalisées, prenant en charge les balises de paragraphes comme [Verse], [Chorus], [Bridge], etc.",
     "description": "Description du paramètre 'lyrics'"
   },
   "description.style": {
-    "message": "Décrivez le style de musique, comme pop acoustique, jazz, électronique",
+    "message": "Décrivez le style musical, comme pop acoustique, jazz, électronique",
     "description": "Description du paramètre 'style'"
   },
   "description.styleNegative": {
@@ -384,7 +384,7 @@
     "description": "Description du paramètre de téléchargement de référence"
   },
   "description.vocalGender": {
-    "message": "Sélectionnez le genre de la voix générée (supporté uniquement par la version 4.5 et supérieure)",
+    "message": "Sélectionnez le genre de la voix générée (supporté uniquement à partir de la version v4.5)",
     "description": "Description du sélecteur de genre vocal"
   },
   "description.weirdness": {
@@ -420,7 +420,7 @@
     "description": "Placeholder pour l'entrée des paroles"
   },
   "placeholder.extend.lyrics": {
-    "message": "Entrez les paroles à étendre...",
+    "message": "Veuillez entrer les paroles à étendre...",
     "description": "Placeholder pour l'entrée des paroles à étendre"
   },
   "placeholder.extend.continue_at": {
@@ -508,20 +508,20 @@
     "description": "Message d'erreur lors de l'échec du téléchargement de la musique"
   },
   "message.startTaskSuccess": {
-    "message": "Tâche de génération musicale lancée avec succès",
-    "description": "Message de succès lors du lancement de la tâche de génération musicale"
+    "message": "Tâche de génération musicale démarrée avec succès",
+    "description": "Message de succès lors du démarrage de la tâche de génération musicale"
   },
   "message.startUploadAudioSuccess": {
     "message": "Musique personnalisée téléchargée avec succès",
-    "description": "Message de succès lors du lancement de la tâche de génération musicale"
+    "description": "Message de succès lors du démarrage de la tâche de génération musicale"
   },
   "message.startUploadAudioFailed": {
     "message": "Échec du téléchargement de la musique personnalisée",
-    "description": "Message d'erreur lors de l'échec du lancement de la tâche de génération musicale"
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de génération musicale"
   },
   "message.startTaskFailed": {
-    "message": "Échec du lancement de la tâche de génération musicale",
-    "description": "Message d'erreur lors de l'échec du lancement de la tâche de génération musicale"
+    "message": "Échec du démarrage de la tâche de génération musicale",
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de génération musicale"
   },
   "message.getVideoUrlFailed": {
     "message": "Échec de l'obtention de l'URL de la vidéo musicale, veuillez réessayer plus tard",
@@ -585,7 +585,7 @@
   },
   "button.upload_cover": {
     "message": "Télécharger la reprise",
-    "description": "Texte du bouton pour télécharger une reprise après avoir téléchargé l'audio"
+    "description": "Texte du bouton pour télécharger la reprise après avoir téléchargé l'audio"
   },
   "button.artist_consistency": {
     "message": "Cohérence de style",
@@ -765,7 +765,7 @@
   },
   "placeholder.enhanceLyrics": {
     "message": "Entrez des instructions de modification, par exemple : rendre les paroles plus joyeuses...",
-    "description": "Espace réservé pour l'entrée d'amélioration des paroles"
+    "description": "Espace réservé pour l'amélioration des paroles"
   },
   "message.enhancingLyrics": {
     "message": "Amélioration des paroles en cours...",
@@ -791,6 +791,74 @@
     "message": "Le plus ancien",
     "description": "Trier par le plus ancien"
   },
+  "filter.title": {
+    "message": "Filtrer",
+    "description": "Bouton de filtrage"
+  },
+  "filter.type": {
+    "message": "Type",
+    "description": "Section de filtrage : Voix / Musique instrumentale"
+  },
+  "filter.typeAll": {
+    "message": "Tout",
+    "description": "Type : Tout"
+  },
+  "filter.typeVocal": {
+    "message": "Voix",
+    "description": "Type : Avec voix"
+  },
+  "filter.typeInstrumental": {
+    "message": "Musique instrumentale",
+    "description": "Type : Musique instrumentale"
+  },
+  "filter.duration": {
+    "message": "Durée",
+    "description": "Section de filtrage : Durée des chansons"
+  },
+  "filter.durationAll": {
+    "message": "Tout",
+    "description": "Durée : Illimitée"
+  },
+  "filter.durationShort": {
+    "message": "< 1 minute",
+    "description": "Durée : Moins de 1 minute"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 minutes",
+    "description": "Durée : 1 à 3 minutes"
+  },
+  "filter.durationLong": {
+    "message": "> 3 minutes",
+    "description": "Durée : Plus de 3 minutes"
+  },
+  "filter.video": {
+    "message": "Vidéo",
+    "description": "Section de filtrage : Contient vidéo"
+  },
+  "filter.videoAll": {
+    "message": "Tout",
+    "description": "Vidéo : Illimitée"
+  },
+  "filter.videoWith": {
+    "message": "Avec vidéo",
+    "description": "Vidéo : Contient uniquement vidéo"
+  },
+  "filter.videoWithout": {
+    "message": "Audio uniquement",
+    "description": "Vidéo : Audio uniquement"
+  },
+  "filter.model": {
+    "message": "Modèle",
+    "description": "Section de filtrage : Modèle AI"
+  },
+  "filter.modelAll": {
+    "message": "Tous les modèles",
+    "description": "Modèle : Illimité"
+  },
+  "filter.reset": {
+    "message": "Réinitialiser",
+    "description": "Réinitialiser tous les filtres"
+  },
   "button.delete": {
     "message": "Supprimer",
     "description": "Bouton pour supprimer une chanson"
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "Aucune chanson trouvée",
     "description": "Message lorsque la recherche ne donne aucun résultat"
+  },
+  "message.noFilterResults": {
+    "message": "Aucune chanson ne correspond aux critères de filtrage",
+    "description": "Message lorsque le filtrage ne donne aucun résultat"
   },
   "message.confirmDelete": {
     "message": "Êtes-vous sûr de vouloir supprimer cette chanson ? Cette action est irréversible.",
