@@ -450,12 +450,12 @@ export default defineComponent({
   .operations {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-left: 4px;
-    margin-top: 2px;
+    margin-top: 4px;
     color: var(--el-text-color-placeholder);
     // Keep all action icons at the same size so they vertically align.
-    font-size: 12px;
+    font-size: 14px;
     .btn-edit {
       visibility: hidden;
     }
