@@ -120,7 +120,8 @@ import {
   faCompress as faSolidCompress,
   faBroom as faSolidBroom,
   faStar as faSolidStar,
-  faHouse as faSolidHouse
+  faHouse as faSolidHouse,
+  faBrain as faSolidBrain
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -153,6 +154,7 @@ library.add(faSolidFileLines);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
 library.add(faSolidFan);
+library.add(faSolidBrain);
 library.add(faSolidImage);
 library.add(faSolidXmark);
 library.add(faSolidFire);

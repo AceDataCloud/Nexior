@@ -103,6 +103,7 @@ export const CHAT_MODEL_DEEPSEEK_REASONER: IChatModel = {
   name: CHAT_MODEL_NAME_DEEPSEEK_REASONER,
   icon: CHAT_MODEL_ICON_DEEPSEEK,
   modelGroup: 'deepseek',
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.deepseekReasoner'),
   getDescription: () => i18n.global.t('chat.model.deepseekReasonerDescription')
 };
@@ -144,6 +145,7 @@ export const CHAT_MODEL_GEMINI_2_5_PRO: IChatModel = {
   modelGroup: 'gemini',
   isImageSupported: true,
   isFileSupported: true,
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini25Pro'),
   getDescription: () => i18n.global.t('chat.model.gemini25ProDescription')
 };
@@ -155,6 +157,7 @@ export const CHAT_MODEL_GEMINI_2_5_FLASH: IChatModel = {
   modelGroup: 'gemini',
   isImageSupported: true,
   isFileSupported: true,
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.gemini25Flash'),
   getDescription: () => i18n.global.t('chat.model.gemini25FlashDescription')
 };
@@ -166,6 +169,7 @@ export const CHAT_MODEL_CLAUDE_OPUS_4_7: IChatModel = {
   modelGroup: 'claude',
   isImageSupported: true,
   isFileSupported: true,
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeOpus47'),
   getDescription: () => i18n.global.t('chat.model.claudeOpus47Description')
 };
@@ -177,6 +181,7 @@ export const CHAT_MODEL_CLAUDE_SONNET_4_6: IChatModel = {
   modelGroup: 'claude',
   isImageSupported: true,
   isFileSupported: true,
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeSonnet46'),
   getDescription: () => i18n.global.t('chat.model.claudeSonnet46Description')
 };
@@ -188,6 +193,7 @@ export const CHAT_MODEL_CLAUDE_HAIKU_4_5: IChatModel = {
   modelGroup: 'claude',
   isImageSupported: true,
   isFileSupported: true,
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.claudeHaiku45'),
   getDescription: () => i18n.global.t('chat.model.claudeHaiku45Description')
 };
@@ -235,6 +241,7 @@ export const CHAT_MODEL_GLM_4_7: IChatModel = {
   name: CHAT_MODEL_NAME_GLM_4_7,
   icon: CHAT_MODEL_ICON_GLM,
   modelGroup: 'glm',
+  isReasoningSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.glm47'),
   getDescription: () => i18n.global.t('chat.model.glm47Description')
 };
@@ -252,7 +259,12 @@ export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
   name: 'deepseek',
   getDisplayName: () => i18n.global.t('chat.modelGroup.deepseek'),
   getDescription: () => i18n.global.t('chat.modelGroup.deepseekDescription'),
-  models: [CHAT_MODEL_DEEPSEEK_V4_FLASH, CHAT_MODEL_DEEPSEEK_CHAT, CHAT_MODEL_DEEPSEEK_CHAT32, CHAT_MODEL_DEEPSEEK_REASONER]
+  models: [
+    CHAT_MODEL_DEEPSEEK_V4_FLASH,
+    CHAT_MODEL_DEEPSEEK_CHAT,
+    CHAT_MODEL_DEEPSEEK_CHAT32,
+    CHAT_MODEL_DEEPSEEK_REASONER
+  ]
 };
 
 export const CHAT_MODEL_GROUP_GROK: IChatModelGroup = {

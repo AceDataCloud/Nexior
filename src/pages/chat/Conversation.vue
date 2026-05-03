@@ -553,7 +553,13 @@ export default defineComponent({
               const lastMessage = this.messages[this.messages.length - 1];
 
               // Handle tool-calling events
-              if (response.type === 'tool_use_start' && response.tool_id) {
+              if (response.type === 'thinking' && response.content) {
+                // Streamed chain-of-thought from a reasoning model.
+                // Accumulate on the assistant message; rendered above the
+                // visible answer by `<thinking-block>` in `Message.vue`.
+                const target = this.messages[this.messages.length - 1];
+                target.thinking = (target.thinking ?? '') + response.content;
+              } else if (response.type === 'tool_use_start' && response.tool_id) {
                 // Flush any accumulated text before tool
                 if (currentText) {
                   contentParts.push({ type: 'text', text: currentText });
@@ -620,6 +626,7 @@ export default defineComponent({
                 this.messages[this.messages.length - 1] = {
                   role: ROLE_ASSISTANT,
                   content: displayParts,
+                  thinking: lastMessage?.thinking,
                   state:
                     lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
                 };
@@ -627,6 +634,7 @@ export default defineComponent({
                 this.messages[this.messages.length - 1] = {
                   role: ROLE_ASSISTANT,
                   content: response.answer,
+                  thinking: lastMessage?.thinking,
                   state:
                     lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
                 };

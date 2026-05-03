@@ -24,6 +24,11 @@
         class="content"
       >
         <div v-if="!isEditing" class="message-content">
+          <thinking-block
+            v-if="message.role === 'assistant' && message.thinking"
+            :content="message.thinking"
+            :done="message.state === messageState.FINISHED || message.state === messageState.FAILED"
+          />
           <div v-if="!Array.isArray(message.content)">
             <markdown-renderer v-if="message.role === 'assistant'" :content="message?.content" />
             <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ message.content }}</pre>
@@ -133,6 +138,7 @@ import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
 import EntityCard from './EntityCard.vue';
+import ThinkingBlock from './ThinkingBlock.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -166,6 +172,7 @@ export default defineComponent({
     FilePreview,
     ToolActivity,
     EntityCard,
+    ThinkingBlock,
     ElButton,
     ElImage,
     ElInput,
