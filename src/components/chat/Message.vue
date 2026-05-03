@@ -259,9 +259,11 @@ export default defineComponent({
       this.isEditing = false;
       this.onSubmit();
     },
-    onEditEnterKey(e: KeyboardEvent) {
+    onEditEnterKey(evt: Event) {
       // Skip IME composition: pressing Enter to commit a Chinese/Japanese/Korean
       // candidate must NOT submit the edit. See Composer.vue for full rationale.
+      // ElInput types this event as `Event | KeyboardEvent`, hence the cast.
+      const e = evt as KeyboardEvent;
       if (e.isComposing || e.keyCode === 229) {
         return;
       }
