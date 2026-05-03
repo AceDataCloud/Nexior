@@ -47,7 +47,6 @@ const main = async () => {
   initializeDescription();
   initializeKeywords();
   initializeFavicon();
-  initializeFingerprint();
 
   const app = createApp(App);
 
@@ -61,6 +60,19 @@ const main = async () => {
   app.directive('loading', vLoading);
   app.mount('#app');
   console.debug('app mounted');
+
+  // Compute the visitor fingerprint after mount: `@fingerprintjs/fingerprintjs`
+  // is ~30 KB and its `get()` call is synchronously expensive (canvas/audio/
+  // font probes). Deferring keeps it out of the critical-path execution and
+  // lets the browser pick an idle moment when available.
+  const scheduleFingerprint = () => {
+    initializeFingerprint();
+  };
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(scheduleFingerprint, { timeout: 4000 });
+  } else {
+    setTimeout(scheduleFingerprint, 1500);
+  }
 
   // Lazy-load Solana wallets after mount to keep initial bundle small
   import('./plugins/solana-wallets').then(({ installSolanaWallets }) => {

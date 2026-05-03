@@ -13,7 +13,6 @@ import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken,
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
 import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -67,6 +66,10 @@ export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>)
 };
 
 export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRootState>) => {
+  // `@fingerprintjs/fingerprintjs` is ~30 KB minified and only needed once,
+  // typically well after first paint. Load it lazily so it stays out of the
+  // entry chunk and out of the critical-path execution time.
+  const { default: FingerprintJS } = await import('@fingerprintjs/fingerprintjs');
   const fp = await FingerprintJS.load();
   const result = await fp.get();
   const visitorId = result.visitorId;
