@@ -110,7 +110,21 @@ export interface IChatMessage {
 export interface IChatConversation {
   id?: string;
   model?: string;
+  /**
+   * Provider bucket the conversation belongs to (chatgpt | claude | gemini |
+   * grok | kimi | glm | deepseek | other). Filled by aichat2 from the model
+   * name; relied on by the side-panel to know which scenario page should
+   * own each row without having to look up the model registry.
+   */
+  model_group?: string;
   messages?: IChatMessage[];
+  /**
+   * Short text preview of the last user/assistant turn, returned by
+   * `retrieve_batch` so the side panel can show context without loading
+   * the entire `messages` array. Absent on full `retrieve` responses
+   * (which carry `messages` instead).
+   */
+  last_message_preview?: string;
   title?: string;
   deleting?: boolean;
   editing?: boolean;

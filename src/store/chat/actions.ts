@@ -134,28 +134,64 @@ export const getConversations = async ({
 }: ActionContext<IChatState, IRootState>): Promise<IChatConversation[]> => {
   state.status.getConversations = Status.Request;
   const credential = state.credential;
-  console.debug('credential', credential);
   const token = credential?.token;
-  if (!token) {
+  const modelGroup = state.modelGroup?.name;
+  // Without a token we can't authenticate; without a modelGroup we'd pull
+  // every scenario at once (chatgpt + claude + kimi + …) which can be
+  // hundreds of rows. Bail in both cases — the page reactively refetches
+  // once the modelGroup is selected.
+  if (!token || !modelGroup) {
     state.status.getConversations = Status.Error;
+    commit('setConversations', []);
     return [];
   }
   try {
     const { data } = await chatOperator.getConversations(
       {
-        userId: rootState.user?.id
+        userId: rootState.user?.id,
+        modelGroup
       },
       {
         token
       }
     );
-    console.debug('get conversations success', data?.items?.length);
+    console.debug('get conversations success', data?.items?.length, 'group=', modelGroup);
+    state.status.getConversations = Status.Success;
     commit('setConversations', data.items);
     return data.items;
   } catch (error) {
     state.status.getConversations = Status.Error;
     commit('setConversations', []);
     return [];
+  }
+};
+
+/**
+ * Lazy-load full message history for a single conversation. Used when the
+ * user clicks a row in the side panel — the panel itself only ever holds
+ * summaries (no `messages` array). Result is also merged back into
+ * `state.conversations` so subsequent reads are instant.
+ */
+export const getConversation = async (
+  { commit, state }: ActionContext<IChatState, IRootState>,
+  id: string
+): Promise<IChatConversation | undefined> => {
+  const token = state.credential?.token;
+  if (!token || !id) return undefined;
+  try {
+    const { data } = await chatOperator.getConversation(id, { token });
+    const list = state.conversations || [];
+    const idx = list.findIndex((c) => c.id === id);
+    const merged = idx > -1 ? { ...list[idx], ...data } : data;
+    if (idx > -1) {
+      const next = [...list];
+      next[idx] = merged;
+      commit('setConversations', next);
+    }
+    return merged;
+  } catch (error) {
+    console.error('getConversation failed', id, error);
+    return undefined;
   }
 };
 
@@ -172,5 +208,6 @@ export default {
   getApplications,
   setConversation,
   setConversations,
-  getConversations
+  getConversations,
+  getConversation
 };

@@ -123,6 +123,17 @@ class ChatOperator {
       ids?: string[];
       applicationId?: string;
       userId?: string;
+      /**
+       * Provider bucket to scope the side-panel list (`chatgpt`, `claude`,
+       * `gemini`, `grok`, `kimi`, `glm`, `deepseek`). Strongly recommended
+       * — without it the worker returns every conversation across every
+       * scenario, which can be hundreds of rows.
+       */
+      modelGroup?: string;
+      /** Filter by exact model name (rarely needed; modelGroup is usually enough). */
+      model?: string;
+      offset?: number;
+      limit?: number;
     },
     options: IChatConversationOptions
   ): Promise<AxiosResponse<IChatConversationsResponse>> {
@@ -130,21 +141,36 @@ class ChatOperator {
       `/aichat2/conversations`,
       {
         action: IChatConversationAction.RETRIEVE_BATCH,
-        ...(filter.ids
-          ? {
-              ids: filter.ids
-            }
-          : {}),
-        ...(filter.applicationId
-          ? {
-              application_id: filter.applicationId
-            }
-          : {}),
-        ...(filter.userId
-          ? {
-              user_id: filter.userId
-            }
-          : {})
+        ...(filter.ids ? { ids: filter.ids } : {}),
+        ...(filter.applicationId ? { application_id: filter.applicationId } : {}),
+        ...(filter.userId ? { user_id: filter.userId } : {}),
+        ...(filter.modelGroup ? { model_group: filter.modelGroup } : {}),
+        ...(filter.model ? { model: filter.model } : {}),
+        ...(filter.offset !== undefined ? { offset: filter.offset } : {}),
+        ...(filter.limit !== undefined ? { limit: filter.limit } : {})
+      },
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
+        },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  /**
+   * Lazy-load full message history for a single conversation.
+   * Side panel deliberately fetches summaries only (no `messages`); call
+   * this when the user clicks a row to actually open it.
+   */
+  async getConversation(id: string, options: IChatConversationOptions): Promise<AxiosResponse<IChatConversation>> {
+    return await axios.post(
+      `/aichat2/conversations`,
+      {
+        action: IChatConversationAction.RETRIEVE,
+        id
       },
       {
         headers: {
