@@ -485,6 +485,14 @@ export default defineComponent({
       const contentParts: IChatMessageContentItem[] = [];
       const toolMap = new Map<string, IChatMessageContentItem>();
       let currentText = '';
+      // The aichat2 operator emits `response.answer` as the full
+      // accumulated text since the start of the turn. Whenever we flush
+      // currentText as its own content block (because a tool_use or a
+      // card arrives mid-stream and has to land between text segments),
+      // bump this offset so the next text_delta only contains the
+      // *remaining* text instead of duplicating everything we already
+      // pushed.
+      let answerOffset = 0;
 
       chatOperator
         .chatConversation(
@@ -507,6 +515,7 @@ export default defineComponent({
                 if (currentText) {
                   contentParts.push({ type: 'text', text: currentText });
                   currentText = '';
+                  answerOffset = response.answer?.length ?? 0;
                 }
                 const toolItem: IChatMessageContentItem = {
                   type: 'tool_use',
@@ -542,8 +551,20 @@ export default defineComponent({
                     mimeType: response.artifact.mimeType
                   });
                 }
+              } else if (response.type === 'card' && response.card) {
+                // Rich-output entity card from the worker's <acard> stream
+                // parser. Flush any text we'd accumulated up to this
+                // point as its own block first so the card lands at the
+                // right position in the message; this mirrors how
+                // tool_use blocks bracket the text stream.
+                if (currentText) {
+                  contentParts.push({ type: 'text', text: currentText });
+                  currentText = '';
+                  answerOffset = response.answer?.length ?? 0;
+                }
+                contentParts.push({ type: 'card', card: response.card });
               } else if (response.delta_answer) {
-                currentText = response.answer;
+                currentText = (response.answer || '').slice(answerOffset);
               }
 
               // Build display content: parts + trailing text

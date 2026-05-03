@@ -98,6 +98,12 @@ export interface IChatMessageContentItem {
   is_error?: boolean;
   duration_ms?: number;
   status?: 'running' | 'done';
+  // Rich-output entity card (type='card') — payload mirrors the
+  // worker's `CardData` SSE event. `type` inside `card` is open-ended:
+  // 'audio' | 'video' | 'image' | 'file' today, with room for future
+  // entity types (e.g. 'task', 'location', 'code-canvas') that the
+  // EntityCard component can dispatch on without changing this shape.
+  card?: IChatCard;
 }
 
 export interface IChatMessage {
@@ -162,6 +168,8 @@ export interface IChatConversationResponse {
     mimeType: string;
     size?: number;
   };
+  // Rich-output entity card (`type === 'card'`). See `IChatCard` below.
+  card?: IChatCard;
 }
 
 export interface IChatConversationsResponse {
@@ -186,6 +194,26 @@ export interface IChatArtifact {
   url: string;
   name: string;
   mimeType: string;
+}
+
+/**
+ * Rich-output entity card emitted by aichat2 whenever the assistant
+ * surfaces a media artifact (audio / video / image / file). The
+ * worker streams `card` SSE events while parsing `<acard>` tags out of
+ * the LLM text deltas, and persists the same payload as a
+ * `{ type: 'card', card: IChatCard }` content block on the assistant
+ * message. `type` is intentionally open-ended so future entity types
+ * (e.g. 'task', 'location', 'code-canvas') only need a renderer on the
+ * frontend — protocol shape stays the same.
+ */
+export interface IChatCard {
+  type: string;
+  url: string;
+  title?: string;
+  thumbnail?: string;
+  duration?: number;
+  mimeType?: string;
+  alt?: string;
 }
 
 export interface IChatToolCall {
