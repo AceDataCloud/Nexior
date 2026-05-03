@@ -126,7 +126,7 @@ import {
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel } from '@/models';
-import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserId } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -305,12 +305,12 @@ export default defineComponent({
       // Skills are managed exclusively at auth.acedata.cloud/user/skills.
       // Nexior is a thin entry point - clicking opens the canonical
       // management page in a new tab.
-      window.open('https://auth.acedata.cloud/user/skills', '_blank', 'noopener');
+      window.open(withCurrentUserId('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
     },
     onOpenConnections() {
       // Connections (MCP + OAuth connectors) are managed exclusively at
       // auth.acedata.cloud/user/connections.
-      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
+      window.open(withCurrentUserId('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
     }
   }
 });

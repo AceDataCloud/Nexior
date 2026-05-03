@@ -45,6 +45,7 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { withCurrentUserId } from '@/utils';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -97,7 +98,9 @@ export default defineComponent({
     },
     onConnectors() {
       // Connections are managed exclusively at auth.acedata.cloud.
-      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
+      // Append `?user_id=` so a cross-site identity mismatch is detected
+      // and the user is bounced through SSO if needed.
+      window.open(withCurrentUserId('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
     },
     onDistribution() {
       this.$router.push({
