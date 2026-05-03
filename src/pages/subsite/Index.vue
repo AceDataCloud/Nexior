@@ -156,28 +156,36 @@ export default defineComponent({
     },
     subdomainZone(): string {
       const zone = this.parentSite?.features?.subsite?.subdomain_zone;
-      return zone || this.parentSite?.origin || '';
+      if (zone) return zone;
+      // Fall back to the bare current host so the create dialog can render
+      // even if `state.site` hasn't been hydrated with the subsite block yet
+      // (e.g. Vuex still has a stale persisted Site without features.subsite).
+      if (typeof window !== 'undefined' && window.location?.host) {
+        return window.location.host.split(':')[0];
+      }
+      return this.parentSite?.origin || '';
     },
     maxSubsitesPerUser(): number {
       const max = this.parentSite?.features?.subsite?.max_subsites_per_user;
       return typeof max === 'number' && max > 0 ? max : 5;
     },
     canCreate(): boolean {
-      return (
-        Boolean(this.parentSite?.features?.subsite?.enabled) &&
-        Boolean(this.subdomainZone) &&
-        Boolean(this.user?.id) &&
-        this.items.length < this.maxSubsitesPerUser
-      );
+      // Don't gate the button on `features.subsite.enabled` here —
+      // PlatformBackend (#382) is the source of truth and will return 403
+      // if the parent Site hasn't opted in. Gating client-side on a Vuex
+      // value that can be stale (rehydrated from localStorage before the
+      // backend fetch lands) was the original cause of the entry being
+      // unreachable on studio.acedata.cloud.
+      return Boolean(this.subdomainZone) && Boolean(this.user?.id) && this.items.length < this.maxSubsitesPerUser;
     }
   },
   mounted() {
-    if (!this.parentSite?.features?.subsite?.enabled) {
-      // Server-side check is the source of truth, but bail out here to avoid
-      // a 403 storm on origins that haven't opted in.
-      this.$router.replace('/');
-      return;
-    }
+    // Server-side check (PlatformBackend #382) is the source of truth.
+    // Skip the Vuex-state gate that historically bounced visitors to '/'
+    // when `state.site.features.subsite` hadn't loaded yet — the user
+    // would land on the page, see it flash, then be redirected away with
+    // no explanation. If they aren't authorized, fetchSubsites returns
+    // an empty list and the create button still surfaces a backend 403.
     this.fetchSubsites();
   },
   methods: {
