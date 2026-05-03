@@ -236,7 +236,11 @@ w3m-modal {
   --el-card-padding: 20px;
   box-shadow: var(--app-shadow-sm);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
-  background: var(--app-gradient-card);
+  // Use the standard Element Plus card background (white in light mode) so
+  // console panels (Applications / Orders / Top Up) read as clean white
+  // surfaces instead of being tinted by the brand gradient. The dark-mode
+  // override below restores the glass effect.
+  background: var(--el-card-bg-color);
   &:hover {
     box-shadow: var(--app-shadow-md);
   }
