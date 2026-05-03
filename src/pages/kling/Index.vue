@@ -1,11 +1,13 @@
 <template>
   <layout>
-    <template #tabs>
-      <tab-switcher :model-value="taskType" @update:model-value="onTabChange" />
-    </template>
     <template #config>
-      <config-panel v-if="taskType === 'videos'" @generate="onGenerate" />
-      <motion-panel v-else-if="taskType === 'motion'" @generate="onGenerateMotion" />
+      <div class="flex flex-col h-full">
+        <tab-switcher :model-value="taskType" @update:model-value="onTabChange" />
+        <div class="flex-1 min-h-0">
+          <config-panel v-if="taskType === 'videos'" @generate="onGenerate" />
+          <motion-panel v-else-if="taskType === 'motion'" @generate="onGenerateMotion" />
+        </div>
+      </div>
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
