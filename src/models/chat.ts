@@ -107,6 +107,14 @@ export interface IChatMessageContentItem {
 export interface IChatMessage {
   state?: IChatMessageState;
   content?: string | IChatMessageContentItem[];
+  /**
+   * Streamed chain-of-thought emitted by the model on the aichat2
+   * `type:"thinking"` SSE channel. Accumulated by `Conversation.vue`
+   * across deltas and rendered by `<thinking-block>` above the visible
+   * answer. Empty string / undefined means the model didn't reason
+   * (or the upstream doesn't expose it).
+   */
+  thinking?: string;
   role?: typeof ROLE_SYSTEM | typeof ROLE_ASSISTANT | typeof ROLE_USER;
   error?: IError;
 }
