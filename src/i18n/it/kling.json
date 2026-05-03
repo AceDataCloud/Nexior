@@ -15,6 +15,62 @@
     "message": "Alta qualità",
     "description": "Modalità alta qualità del video Kling"
   },
+  "name.mode4k": {
+    "message": "4K nativo",
+    "description": "Modalità Kling 4K (supportata solo da v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Controllo della camera",
+    "description": "Tipo e parametri di controllo della camera"
+  },
+  "name.cameraTypeNone": {
+    "message": "Nessun controllo",
+    "description": "Nessun controllo della camera"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Personalizzato (6 dimensioni)",
+    "description": "Utilizza parametri personalizzati a sei dimensioni"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Abbassare e indietro",
+    "description": "Preset di movimento: abbassare e indietro"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Avanti e su",
+    "description": "Preset di movimento: avanti e su"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Sinistra e avanti",
+    "description": "Preset di movimento: sinistra e avanti"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Destra e avanti",
+    "description": "Preset di movimento: destra e avanti"
+  },
+  "name.cc_horizontal": {
+    "message": "Movimento orizzontale",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Movimento verticale",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Panoramica orizzontale",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Inclinazione verticale",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Rotazione",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoom",
+    "description": "camera_control.config.zoom"
+  },
   "name.failure": {
     "message": "Fallito",
     "description": "Stato di fallimento dell'attività"
@@ -36,8 +92,8 @@
     "description": "Data e ora di generazione del video Kling"
   },
   "name.cfgScale": {
-    "message": "Livello di libertà",
-    "description": "Parametro di libertà per la generazione del video (0-1), maggiore è il valore, più si avvicina al riferimento"
+    "message": "Grado di libertà",
+    "description": "Parametro di libertà per la generazione del video (0-1), valori più alti si avvicinano al riferimento"
   },
   "name.generateAudio": {
     "message": "Genera audio sincronizzato",
@@ -68,11 +124,11 @@
     "description": "Durata del video"
   },
   "name.ingredients": {
-    "message": "Creazione video multi-immagine",
-    "description": "Interruttore/etichetta per la creazione di video multi-immagine"
+    "message": "Creazione video da più immagini",
+    "description": "Interruttore/etichetta per la creazione di video da più immagini"
   },
   "name.model": {
-    "message": "Versione modello",
+    "message": "Versione del modello",
     "description": "Versione del modello utilizzata per generare il video"
   },
   "name.ratio": {
@@ -85,10 +141,10 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili del modello"
+    "description": "Nome del parametro di stile per passare tra diverse versioni o stili del modello"
   },
   "name.ingredientsModel": {
-    "message": "Modello ingredienti",
+    "message": "Modello degli ingredienti",
     "description": "Versione del modello utilizzata per generare il video"
   },
   "name.klingBot": {
@@ -100,7 +156,7 @@
     "description": "Descrizione del parametro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Nel compito di creazione video multi-immagine, è necessario caricare più immagini.",
+    "message": "Nel compito di creazione video da più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
@@ -108,180 +164,220 @@
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Suggerimento di testo negativo, facoltativo, non oltre 200 caratteri",
+    "message": "Suggerimento di testo negativo, facoltativo, non può superare i 200 caratteri",
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine del fotogramma iniziale come riferimento per la generazione, il video finale si baserà sul fotogramma iniziale.",
+    "message": "Carica l'immagine iniziale come riferimento per la generazione, il video finale si baserà sull'immagine iniziale",
     "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine del fotogramma finale come riferimento per la generazione, il video finale si baserà sul fotogramma finale.",
+    "message": "Carica l'immagine finale come riferimento per la generazione; il video finale si baserà su questa immagine.",
     "description": "Descrizione del parametro di riferimento per il caricamento"
   },
   "description.cfgScale": {
-    "message": "Libertà di generazione del video, facoltativa [0,1]. Maggiore è il valore, più forte è la correlazione.",
-    "description": "Descrizione del parametro di riferimento per il caricamento"
+    "message": "Grado di libertà nella generazione del video, opzionale [0,1]. Valori più alti aumentano la correlazione",
+    "description": "上传参考参数的描述"
+  },
+  "description.mode": {
+    "message": "std: prestazioni più elevate, pro: qualità migliore; 4K supportato solo da v3 / v3-Omni e non può essere usato insieme al controllo della camera",
+    "description": "模式字段的整体说明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Supportato solo da kling-v3 / kling-v3-omni",
+    "description": "4k 选项被禁用的原因（模型不匹配）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Controllo della camera attivo, non compatibile con 4K",
+    "description": "4k 选项被禁用的原因（已设置运镜）"
+  },
+  "description.duration": {
+    "message": "Modelli normali supportano solo 5/10 sec; v3 / v3-Omni supportano 3/5/8/10/12/15 sec",
+    "description": "时长字段的整体说明"
+  },
+  "description.durationV3Only": {
+    "message": "Supportato solo da v3 / v3-Omni",
+    "description": "时长选项禁用原因"
+  },
+  "description.generateAudio": {
+    "message": "Genera effetti sonori durante la creazione del video. Supportato solo da kling-v3 / kling-v3-omni / kling-v2-6 (modalità pro)",
+    "description": "音效开关说明（已支持）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Modello attuale non supporta audio sincronizzato, disponibile solo su kling-v3 / kling-v3-omni / kling-v2-6 (modalità pro)",
+    "description": "音效开关说明（已禁用）"
+  },
+  "description.cameraControl": {
+    "message": "Controlla la direzione del movimento della camera. Seleziona “Personalizzato” per regolare fino a 6 dimensioni, valori da [-1, 1]",
+    "description": "运镜控制说明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "Modalità 4K selezionata, controllo della camera non disponibile. Passa a std / pro per abilitare",
+    "description": "运镜控制被禁用原因"
   },
   "status.pending": {
     "message": "In attesa",
-    "description": "Stato di attesa dell'attività"
+    "description": "任务的等待状态"
   },
   "status.processing": {
     "message": "In elaborazione",
-    "description": "Stato di elaborazione dell'attività"
+    "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del rumore di riempimento"
+    "description": "填充噪音输入的占位符"
   },
   "placeholder.select": {
     "message": "Seleziona",
-    "description": "Testo segnaposto nel campo di selezione"
+    "description": "选择字段中的占位文本"
   },
   "placeholder.paddingLevel": {
     "message": "Seleziona...",
-    "description": "Segnaposto per il livello di riempimento"
+    "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "Inserisci le parole chiave per lo stile del video da generare, ad esempio: moving",
-    "description": "Testo segnaposto nel campo di suggerimento"
+    "message": "Inserisci il prompt per lo stile del video, es.: moving",
+    "description": "提示字段中的占位文本"
   },
   "placeholder.negativePrompt": {
-    "message": "Inserisci le parole chiave negative per lo stile del video da generare, non oltre 200 caratteri",
-    "description": "Testo segnaposto nel campo di suggerimento"
+    "message": "Inserisci prompt negativo per lo stile del video, massimo 200 caratteri",
+    "description": "提示字段中的占位文本"
   },
   "placeholder.position": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della posizione"
+    "description": "位置输入的占位符"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del rapporto d'aspetto"
+    "description": "宽高比输入的占位符"
+  },
+  "placeholder.cameraType": {
+    "message": "Non usare",
+    "description": "运镜类型选择占位符"
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del preset"
+    "description": "预设输入的占位符"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della forma del marcatore"
+    "description": "标记形状输入的占位符"
   },
   "placeholder.rotate": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input della rotazione"
+    "description": "旋转输入的占位符"
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del sottomarcatori"
+    "description": "子标记输入的占位符"
   },
   "button.precise": {
     "message": "Preciso",
-    "description": "Testo del pulsante per generare video Kling"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.creative": {
     "message": "Creativo",
-    "description": "Testo del pulsante per generare video Kling"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare video Kling"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.extend": {
     "message": "Estendi video",
-    "description": "Testo del pulsante per estendere il video"
+    "description": "扩展视频按钮文本"
   },
   "button.download": {
     "message": "Scarica video",
-    "description": "Testo del pulsante per scaricare il video"
+    "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
     "message": "Carica",
-    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica', non usare 'Carica immagine')"
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
-    "description": "Testo del pulsante per caricare un video"
+    "description": "上传视频的按钮文本"
   },
   "button.uploadReferences": {
     "message": "Carica",
-    "description": "Testo del pulsante che consente all'utente di caricare riferimenti"
+    "description": "按钮文本，允许用户上传参考"
   },
   "message.uploadReferencesExceed": {
     "message": "Puoi caricare al massimo 1 immagine",
-    "description": "Messaggio di errore quando il numero di immagini caricate supera il limite"
+    "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
     "message": "Immagine caricata con successo",
-    "description": "Messaggio di successo quando l'immagine è stata caricata con successo"
+    "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
+    "message": "Errore nel caricamento dell'immagine, riprova più tardi",
+    "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
-    "message": "Avvio del compito in corso...",
-    "description": "Messaggio all'inizio del compito di disegno"
+    "message": "Avvio del task...",
+    "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Compito di generazione avviato con successo",
-    "description": "Messaggio di successo quando il compito è stato avviato con successo"
+    "message": "Task generato con successo",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Avvio del compito fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'avvio del compito di disegno fallisce"
+    "message": "Errore nell'avvio del task, contatta l'amministratore",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
-    "description": "Messaggio quando i crediti sono esauriti"
+    "message": "Hai esaurito i crediti, acquista altri per continuare",
+    "description": "已用完时的消息"
   },
   "message.generating": {
     "message": "Generazione in corso...",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mostrato mentre l'immagine è in fase di generazione"
   },
   "message.downloadVideo": {
     "message": "Scarica questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mostrato durante la generazione dell'immagine"
   },
   "message.extendVideo": {
     "message": "Continua a generare questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mostrato durante la generazione dell'immagine"
   },
   "message.generateFailed": {
     "message": "Generazione immagine fallita",
-    "description": "Messaggio quando la generazione dell'immagine fallisce"
+    "description": "Messaggio mostrato quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini della prima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
+    "message": "Numero di immagini iniziali superato",
+    "description": "Messaggio di errore quando il numero di immagini iniziali supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file caricato non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
+    "message": "Il file non può superare i 10MB!",
+    "description": "Messaggio di errore quando la dimensione del file supera 10MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Il file caricato deve essere in formato MP4!",
-    "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
+    "message": "Il file deve essere in formato MP4!",
+    "description": "Messaggio di errore quando il file non è MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Numero di immagini della prima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
+    "message": "Numero di immagini iniziali superato",
+    "description": "Messaggio di errore quando il numero di immagini iniziali supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Numero di immagini dell'ultima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
+    "message": "Numero di immagini finali superato",
+    "description": "Messaggio di errore quando il numero di immagini finali supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento immagine della prima cornice fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
+    "message": "Caricamento immagine iniziale fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine iniziale fallisce"
   },
   "message.uploadVideoError": {
     "message": "Caricamento video fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
+    "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento immagine dell'ultima cornice fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
+    "message": "Caricamento immagine finale fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine finale fallisce"
   },
   "message.uploadDocumentsError": {
     "message": "Caricamento documento fallito",
@@ -289,10 +385,10 @@
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",
-    "description": "Messaggio quando non ci sono operazioni disponibili"
+    "description": "Messaggio mostrato quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessun compito storico, fai clic a sinistra per generare un video",
-    "description": "Messaggio quando non ci sono compiti"
+    "message": "Nessun task storico, clicca a sinistra per generare un video",
+    "description": "Messaggio mostrato quando non ci sono task"
   }
 }
