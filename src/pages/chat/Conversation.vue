@@ -380,12 +380,23 @@ export default defineComponent({
           this.handleRequestError(error);
         });
     },
+    // Build a `/<prefix>/conversations[/<id>]` path from the matched
+    // parent route (e.g. `/chatgpt`, `/grok`). We can't use
+    // `router.push({ params: { id } })` here because Vue Router 4 keeps
+    // the *current* route name on a params-only push — and the new-chat
+    // route's path template has no `:id` slot, so the URL silently
+    // doesn't change when navigating from /chatgpt/conversations to
+    // /chatgpt/conversations/<id> (and vice versa).
+    conversationsPath(id?: string): string {
+      const prefix = this.$route.matched[0]?.path ?? '';
+      return id ? `${prefix}/conversations/${id}` : `${prefix}/conversations`;
+    },
     async onNewConversation() {
-      // Single-source-of-truth: drive everything off the URL. Calling
-      // router.push with an empty :id removes the path segment. The
+      // Single-source-of-truth: drive everything off the URL. Pushing
+      // the bare `/conversations` path drops the `:id` segment. The
       // `conversationId` watcher then resets messages/question/refs.
       if (this.conversationId) {
-        await this.$router.push({ params: { id: '' } });
+        await this.$router.push(this.conversationsPath());
       } else {
         // Already on /chatgpt/conversations — no route change to trigger
         // the watcher, so reset locally.
@@ -428,7 +439,7 @@ export default defineComponent({
         if (!target) await this.onNewConversation();
         return;
       }
-      await this.$router.push({ params: { id: target } });
+      await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -627,11 +638,7 @@ export default defineComponent({
           this.answering = false;
           if (conversationId) {
             this.skipNextRestoreId = conversationId;
-            await this.$router.push({
-              params: {
-                id: conversationId
-              }
-            });
+            await this.$router.push(this.conversationsPath(conversationId));
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
