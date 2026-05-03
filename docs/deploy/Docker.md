@@ -57,9 +57,9 @@ Then you will see like this:
  => => sha256:084b3c822003a20d41f793237286e112d1b5a1c0c7b8b04cb53a17a963a76ed7 2.00kB / 2.00kB                              0.0s
  => => sha256:ef847f8b5ae3554df13851034f22683a8b9aef31b3659033211775d8d6cb6b79 7.34kB / 7.34kB
  ...
-=> [build-stage 4/6] RUN yarn                                                                                             83.5s
+=> [build-stage 4/6] RUN npm ci                                                                                            83.5s
  => [build-stage 5/6] COPY . .                                                                                              0.3s
- => [build-stage 6/6] RUN yarn build                                                                                       16.3s
+ => [build-stage 6/6] RUN npm run build                                                                                    16.3s
  => [production-stage 2/3] COPY --from=build-stage /app/dist /usr/share/nginx/html                                          0.0s
  => [production-stage 3/3] COPY nginx.conf /etc/nginx/conf.d/default.conf                                                   0.0s
  => exporting to image                                                                                                      0.0s

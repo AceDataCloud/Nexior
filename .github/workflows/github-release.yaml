@@ -22,13 +22,13 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '20'
-          cache: yarn
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Prepare metadata
         id: meta
