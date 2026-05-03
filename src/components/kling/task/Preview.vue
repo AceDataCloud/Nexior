@@ -11,6 +11,18 @@
         </span>
       </div>
       <div class="info">
+        <div
+          v-if="referenceImages.length > 0"
+          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+        >
+          <image-preview
+            v-for="(image, idx) in referenceImages"
+            :key="idx"
+            :url="image.url"
+            :name="image.name"
+            :closable="false"
+          />
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('kling.status.pending') }}) </span>
@@ -117,6 +129,7 @@ import { IKlingTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -127,7 +140,8 @@ export default defineComponent({
     ElAlert,
     VideoPlayer,
     ElTooltip,
-    ElButton
+    ElButton,
+    ImagePreview
   },
   props: {
     modelValue: {
@@ -144,6 +158,18 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.kling?.config;
+    },
+    referenceImages(): { url: string; name: string }[] {
+      const images: { url: string; name: string }[] = [];
+      const startImageUrl = this.modelValue?.request?.start_image_url;
+      const endImageUrl = this.modelValue?.request?.end_image_url;
+      if (startImageUrl) {
+        images.push({ url: startImageUrl, name: 'start-image' });
+      }
+      if (endImageUrl) {
+        images.push({ url: endImageUrl, name: 'end-image' });
+      }
+      return images;
     }
   },
   methods: {
