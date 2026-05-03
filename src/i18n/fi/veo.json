@@ -89,7 +89,7 @@
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "Valintakentän paikkateksti"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
@@ -97,7 +97,7 @@
   },
   "placeholder.prompt": {
     "message": "Syötä videon tyylin ohje, esim. moving",
-    "description": "Ohje-kentän paikkamerkki"
+    "description": "Ohjekentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
@@ -159,8 +159,12 @@
     "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
+  "message.imageRequired": {
+    "message": "Lataa ensin vähintään yksi viittauskuva ennen kuin käynnistät kuvasta videon tehtävän",
+    "description": "Viesti, kun kuvaa ei ole ladattu image2video-tilassa"
+  },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi",
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
     "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
@@ -176,36 +180,36 @@
     "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattavien alkuperäiskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattavien alkuperäiskuvien määrä ylittää rajan"
+    "message": "Lähetettyjen ensimmäisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Lähetettävän tiedoston koko ei voi ylittää 10MB!",
-    "description": "Virheilmoitus, kun lähetettävän tiedoston koko ylittää 10MB!"
+    "message": "Lähetettävän tiedoston koko ei saa ylittää 10MB!",
+    "description": "Virheilmoitus, kun lähetettävän tiedoston koko ei saa ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Lähetettävän tiedoston on oltava MP4-muodossa!",
     "description": "Virheilmoitus, kun lähetettävän tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Lähetettävien aloituskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun lähetettävien aloituskuvien määrä ylittää rajan"
+    "message": "Lähetettyjen ensimmäisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Lähetettävien lopetuskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun lähetettävien lopetuskuvien määrä ylittää rajan"
+    "message": "Lähetettyjen viimeisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen viimeisten kehysten määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Aloituskuvan lähetys epäonnistui",
-    "description": "Virheilmoitus, kun aloituskuvan lähetys epäonnistuu"
+    "message": "Ensimmäisten kehysten lähetys epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kehysten lähetys epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lähetys epäonnistui",
     "description": "Virheilmoitus, kun videon lähetys epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Lopetuskuvan lähetys epäonnistui",
-    "description": "Virheilmoitus, kun lopetuskuvan lähetys epäonnistuu"
+    "message": "Viimeisten kehysten lähetys epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kehysten lähetys epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lähetys epäonnistui",

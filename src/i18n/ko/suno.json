@@ -161,10 +161,10 @@
   },
   "description.audioFormats": {
     "message": "지원 형식: MP3, WAV, M4A",
-    "description": "지원되는 오디오 형식 안내"
+    "description": "지원하는 오디오 형식 안내"
   },
   "message.recordingReady": {
-    "message": "녹음이 준비되었습니다.",
+    "message": "녹음 준비 완료",
     "description": "녹음 완료 후 표시"
   },
   "message.recordingUnsupported": {
@@ -217,7 +217,7 @@
   },
   "button.mashup": {
     "message": "메시업",
-    "description": "여러 곡을 메시업 버튼 텍스트"
+    "description": "여러 곡을 메시업하는 버튼 텍스트"
   },
   "button.generate_lyrics": {
     "message": "AI 가사 생성",
@@ -501,7 +501,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "업로드한 음악이 최대 수량을 초과했습니다",
-    "description": "업로드한 음악이 최대 수량을 초과했을 때의 오류 메시지"
+    "description": "업로드한 음악이 최대 수량을 초과할 때의 오류 메시지"
   },
   "message.uploadReferencesError": {
     "message": "음악 업로드 실패",
@@ -684,7 +684,7 @@
     "description": "샘플 추가 기능의 설명"
   },
   "message.fetchingTiming": {
-    "message": "비트 데이터 가져오는 중...",
+    "message": "비트 데이터를 가져오는 중...",
     "description": "비트 데이터를 가져올 때의 메시지"
   },
   "message.fetchTimingFailed": {
@@ -791,6 +791,74 @@
     "message": "가장 오래된",
     "description": "가장 오래된 순으로 정렬"
   },
+  "filter.title": {
+    "message": "필터",
+    "description": "필터 버튼"
+  },
+  "filter.type": {
+    "message": "유형",
+    "description": "필터 구역: 보컬/순수 음악"
+  },
+  "filter.typeAll": {
+    "message": "모두",
+    "description": "유형: 모두"
+  },
+  "filter.typeVocal": {
+    "message": "보컬",
+    "description": "유형: 보컬 포함"
+  },
+  "filter.typeInstrumental": {
+    "message": "순수 음악",
+    "description": "유형: 순수 음악"
+  },
+  "filter.duration": {
+    "message": "길이",
+    "description": "필터 구역: 곡 길이"
+  },
+  "filter.durationAll": {
+    "message": "모두",
+    "description": "길이: 제한 없음"
+  },
+  "filter.durationShort": {
+    "message": "< 1 분",
+    "description": "길이: 1분 미만"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 분",
+    "description": "길이: 1분에서 3분"
+  },
+  "filter.durationLong": {
+    "message": "> 3 분",
+    "description": "길이: 3분 초과"
+  },
+  "filter.video": {
+    "message": "비디오",
+    "description": "필터 구역: 비디오 포함 여부"
+  },
+  "filter.videoAll": {
+    "message": "모두",
+    "description": "비디오: 제한 없음"
+  },
+  "filter.videoWith": {
+    "message": "비디오 포함",
+    "description": "비디오: 비디오만 포함"
+  },
+  "filter.videoWithout": {
+    "message": "오디오만",
+    "description": "비디오: 오디오만"
+  },
+  "filter.model": {
+    "message": "모델",
+    "description": "필터 구역: AI 모델"
+  },
+  "filter.modelAll": {
+    "message": "모든 모델",
+    "description": "모델: 제한 없음"
+  },
+  "filter.reset": {
+    "message": "초기화",
+    "description": "모든 필터 초기화"
+  },
   "button.delete": {
     "message": "삭제",
     "description": "곡 삭제 버튼 텍스트"
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "곡을 찾을 수 없습니다",
     "description": "검색 결과가 없을 때의 메시지"
+  },
+  "message.noFilterResults": {
+    "message": "필터 조건에 맞는 곡이 없습니다",
+    "description": "필터 결과가 없을 때의 메시지"
   },
   "message.confirmDelete": {
     "message": "이 곡을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
@@ -817,6 +889,6 @@
   },
   "name.generating": {
     "message": "생성 중",
-    "description": "곡이 생성 중인 상태 레이블"
+    "description": "곡 생성 중 상태 레이블"
   }
 }

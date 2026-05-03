@@ -69,7 +69,7 @@
   },
   "button.publish": {
     "message": "Pubblica",
-    "description": "Testo nel pulsante, utilizzato per pubblicare un contenuto"
+    "description": "Testo nel pulsante, utilizzato per pubblicare contenuti"
   },
   "button.watch": {
     "message": "Guarda",
@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "Console",
-    "description": "Testo nel pulsante, utilizzato per visualizzare la pagina della console per controllare un contenuto"
+    "description": "Testo nel pulsante, utilizzato per visualizzare la pagina della console per controllare un contenuto nella pagina web"
   },
   "button.learn": {
     "message": "Impara",
@@ -117,7 +117,7 @@
   },
   "button.apply": {
     "message": "Richiedi",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di richiedere un servizio API"
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di richiedere il servizio API"
   },
   "button.refresh": {
     "message": "Aggiorna",
@@ -132,20 +132,20 @@
     "description": "Testo nel pulsante, utilizzato per consentire all'utente di continuare a pagare le spese del servizio"
   },
   "button.applied": {
-    "message": "Richiesta inviata",
-    "description": "Testo nel pulsante, utilizzato per indicare che l'utente ha richiesto il servizio"
+    "message": "Richiesto",
+    "description": "Testo nel pulsante, utilizzato per indicare che l'utente ha già richiesto il servizio"
   },
   "button.acquire": {
     "message": "Ottieni",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ottenere un token o una chiave per il servizio API"
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ottenere il token o la chiave del servizio API"
   },
   "button.fillExample": {
     "message": "Compila esempio",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di compilare dati di esempio"
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di compilare i dati di esempio"
   },
   "button.buyMore": {
     "message": "Ricarica",
-    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ricaricare. Deve essere tradotto come 'Top Up'."
+    "description": "Testo nel pulsante, utilizzato per consentire all'utente di ricaricare. Deve essere tradotto come 'Ricarica'."
   },
   "button.update": {
     "message": "Aggiorna",
@@ -200,7 +200,7 @@
     "description": "Stato dell'entità"
   },
   "status.loading": {
-    "message": "Caricamento in corso...",
+    "message": "Caricamento...",
     "description": "Testo di stato visualizzato durante il caricamento dei contenuti"
   },
   "entity.operation": {
@@ -232,7 +232,7 @@
     "description": "Utilizzato per visualizzare l'importo già utilizzato del servizio"
   },
   "message.mobileAppDescription": {
-    "message": "Usa AceData direttamente sul tuo telefono, attualmente disponibile per il download e l'installazione dell'APK Android, il pacchetto di installazione iOS sarà disponibile dopo la firma.",
+    "message": "Usa AceData direttamente sul telefono, attualmente disponibile per il download e l'installazione dell'APK Android, il pacchetto di installazione iOS sarà disponibile dopo la firma.",
     "description": "Testo descrittivo per la pagina di download dell'app mobile"
   },
   "message.mobileAndroidHint": {
@@ -257,10 +257,10 @@
   },
   "message.mobileLatestRelease": {
     "message": "Versione pubblica attuale",
-    "description": "Utilizzato per indicare che la versione attualmente visualizzata è l'ultima pubblica"
+    "description": "Utilizzato per indicare che la versione mostrata è l'ultima pubblica"
   },
   "message.mobileSharedAccount": {
-    "message": "Account e credito condivisi con la versione web",
+    "message": "Account e quota condivisi con la versione web",
     "description": "Utilizzato per indicare che l'app mobile condivide l'account con la versione web"
   },
   "message.mobileIosHint": {
@@ -285,7 +285,7 @@
   },
   "title.mobileTrustedRelease": {
     "message": "Gestione centralizzata delle versioni, distribuzione più stabile",
-    "description": "Titolo della scheda di vantaggio della pagina di download, enfatizza stabilità delle versioni e distribuzione"
+    "description": "Titolo della scheda di vantaggio della pagina di download, enfatizza la stabilità delle versioni e della distribuzione"
   },
   "title.mobileUnifiedExperience": {
     "message": "Esperienza mobile e web coerente",
@@ -300,11 +300,11 @@
     "description": "Descrizione del vantaggio della pagina di download, enfatizza l'accesso rapido"
   },
   "message.mobileTrustedRelease": {
-    "message": "L'ingresso per il download è centralizzato in un'unica pagina, numero di versione, stato della piattaforma e modalità di installazione sono visibili a colpo d'occhio, riducendo i costi di comunicazione dovuti alla dispersione dei link.",
+    "message": "L'ingresso per il download è centralizzato in un'unica pagina, numero di versione, stato della piattaforma e modalità di installazione sono visibili a colpo d'occhio, riducendo i costi di comunicazione causati dalla dispersione dei link.",
     "description": "Descrizione del vantaggio della pagina di download, enfatizza la distribuzione unificata"
   },
   "message.mobileUnifiedExperience": {
-    "message": "Il sistema di account, credito e ingressi di servizio dopo il login rimane coerente con il Web, facilitando il passaggio senza soluzione di continuità tra desktop e mobile.",
+    "message": "Il sistema di account, le quote e gli ingressi ai servizi dopo il login rimangono coerenti con il web, facilitando il passaggio senza soluzione di continuità tra desktop e mobile.",
     "description": "Descrizione del vantaggio della pagina di download, enfatizza l'esperienza unificata dell'account"
   },
   "message.remainingAmount": {
@@ -340,7 +340,7 @@
     "description": "Messaggio per indicare che il servizio è gratuito, significa che l'utente non deve pagare"
   },
   "message.startPrice": {
-    "message": "Prezzo iniziale",
+    "message": "Prezzo di partenza",
     "description": "Messaggio per mostrare il prezzo minimo del servizio"
   },
   "message.joinDiscord": {
@@ -511,9 +511,13 @@
     "message": "Guadagni da raccomandazione",
     "description": "Testo nella barra di navigazione del sito per visualizzare la pagina dei guadagni da raccomandazione"
   },
+  "nav.connections": {
+    "message": "Connessioni",
+    "description": "Voce di menu per accedere alla pagina di gestione delle connessioni su auth.acedata.cloud"
+  },
   "nav.logOut": {
     "message": "Esci",
-    "description": "Testo nella barra di navigazione del sito per uscire"
+    "description": "Testo nella barra di navigazione del sito per disconnettersi"
   },
   "nav.site": {
     "message": "Configurazione sito",
@@ -564,7 +568,7 @@
     "description": "Titolo della pagina che mostra tutti gli ordini"
   },
   "title.orderInfo": {
-    "message": "Informazioni ordine",
+    "message": "Informazioni sull'ordine",
     "description": "Titolo della pagina che mostra le informazioni sull'ordine"
   },
   "title.buyMore": {
@@ -581,7 +585,7 @@
   },
   "title.distributionHistory": {
     "message": "Storico raccomandazioni",
-    "description": "Titolo della pagina che mostra lo storico delle raccomandazioni"
+    "description": "Titolo della pagina che mostra la storia delle raccomandazioni"
   },
   "title.invitee": {
     "message": "Invitato",
@@ -601,19 +605,19 @@
   },
   "about.title2": {
     "message": "Risorse",
-    "description": "Parte del titolo che mostra i link"
+    "description": "Titolo della sezione che mostra i link"
   },
   "about.title3": {
-    "message": "Link",
-    "description": "Parte del titolo che mostra le informazioni di supporto"
+    "message": "Collegamenti",
+    "description": "Titolo della sezione che mostra le informazioni di supporto"
   },
   "about.address": {
-    "message": "201, North Broad St, Middletown, DE, USA",
-    "description": "L'indirizzo dell'azienda"
+    "message": "651 North Broad St, Suite 201, Middletown, DE, USA",
+    "description": "Indirizzo dell'azienda"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "L'email dell'azienda"
+    "description": "Email dell'azienda"
   },
   "about.link1": {
     "message": "Servizi",
@@ -665,31 +669,31 @@
   },
   "settings.general": {
     "message": "Impostazioni generali",
-    "description": "Titolo della sezione impostazioni generali nella pagina delle impostazioni"
+    "description": "Titolo della sezione delle impostazioni generali nella pagina delle impostazioni"
   },
   "settings.language": {
     "message": "Lingua",
-    "description": "Titolo della sezione impostazioni lingua nella pagina delle impostazioni"
+    "description": "Titolo della sezione delle impostazioni della lingua nella pagina delle impostazioni"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Titolo della sezione impostazioni tema nella pagina delle impostazioni"
+    "description": "Titolo della sezione delle impostazioni del tema nella pagina delle impostazioni"
   },
   "settings.seo": {
     "message": "Impostazioni SEO",
-    "description": "Titolo della sezione impostazioni SEO nella pagina delle impostazioni"
+    "description": "Titolo della sezione delle impostazioni SEO nella pagina delle impostazioni"
   },
   "settings.site": {
-    "message": "Impostazioni sito",
-    "description": "Titolo della sezione impostazioni sito nella pagina delle impostazioni"
+    "message": "Impostazioni del sito",
+    "description": "Titolo della sezione delle impostazioni del sito nella pagina delle impostazioni"
   },
   "settings.distribution": {
-    "message": "Impostazioni distribuzione",
-    "description": "Titolo della sezione impostazioni distribuzione nella pagina delle impostazioni"
+    "message": "Impostazioni di distribuzione",
+    "description": "Titolo della sezione delle impostazioni di distribuzione nella pagina delle impostazioni"
   },
   "settings.function": {
     "message": "Impostazioni funzionali",
-    "description": "Titolo della sezione impostazioni funzionali nella pagina delle impostazioni"
+    "description": "Titolo della sezione delle impostazioni funzionali nella pagina delle impostazioni"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -717,7 +721,7 @@
   },
   "message.copyFailed": {
     "message": "Copia fallita",
-    "description": "Messaggio che indica il fallimento della copia del contenuto"
+    "description": "Messaggio che indica che la copia del contenuto è fallita"
   },
   "nav.tryNow": {
     "message": "Prova ora",
@@ -729,7 +733,7 @@
   },
   "title.distributionRank": {
     "message": "Classifica referral",
-    "description": "Titolo della pagina che mostra la classifica dei referral"
+    "description": "Titolo della pagina che mostra la classifica referral"
   },
   "title.distributionPlatformRank": {
     "message": "Classifica piattaforma",

@@ -17,7 +17,7 @@
   },
   "button.restart": {
     "message": "Återställ",
-    "description": "Text i knappen för att återställa något"
+    "description": "Text i knappen för att återställa vissa innehåll"
   },
   "button.preview": {
     "message": "Förhandsgranska",
@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "Konsol",
-    "description": "Text i knappen för att visa konsolsidan för att kontrollera något på webbsidan"
+    "description": "Text i knappen för att visa konsolsidan för att kontrollera innehåll på webbsidan"
   },
   "button.learn": {
     "message": "Lär dig",
@@ -125,27 +125,27 @@
   },
   "button.pay": {
     "message": "Betala",
-    "description": "Text i knappen för att låta användaren betala för tjänsten"
+    "description": "Text i knappen för att låta användaren betala för tjänster"
   },
   "button.repay": {
     "message": "Fortsätt betala",
-    "description": "Text i knappen för att låta användaren fortsätta betala för tjänsten"
+    "description": "Text i knappen för att låta användaren fortsätta betala för tjänster"
   },
   "button.applied": {
     "message": "Ansökt",
     "description": "Text i knappen för att visa att användaren har ansökt om tjänsten"
   },
   "button.acquire": {
-    "message": "Få",
-    "description": "Text i knappen för att låta användaren få en token eller nyckel för API-tjänsten"
+    "message": "Hämta",
+    "description": "Text i knappen för att låta användaren hämta API-tjänstens token eller nyckel"
   },
   "button.fillExample": {
     "message": "Fyll i exempel",
     "description": "Text i knappen för att låta användaren fylla i exempeldata"
   },
   "button.buyMore": {
-    "message": "Top Up",
-    "description": "Text i knappen för att låta användaren fylla på. Engelsk översättning måste vara 'Top Up', svensk översättning är 'Fyll på'."
+    "message": "Toppa upp",
+    "description": "Text i knappen för att låta användaren toppa upp. Engelsk översättning måste vara 'Top Up', och på kinesiska '充值'."
   },
   "button.update": {
     "message": "Uppdatera",
@@ -177,7 +177,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Webbplatsens namn, ingen översättning behövs, behåll som 'Ace Data Cloud'"
+    "description": "Webbplatsnamn, ingen översättning behövs, behåll som 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Upphovsrätt",
@@ -204,8 +204,8 @@
     "description": "Statusmeddelande som visas när innehållet laddas"
   },
   "entity.operation": {
-    "message": "Åtgärd",
-    "description": "Åtgärden för enheten"
+    "message": "Operation",
+    "description": "Operationen för enheten"
   },
   "entity.description": {
     "message": "Beskrivning",
@@ -257,7 +257,7 @@
   },
   "message.mobileLatestRelease": {
     "message": "Aktuell offentlig version",
-    "description": "Används för att förklara att den aktuella visade versionen är den senaste offentliga versionen"
+    "description": "Används för att förklara att den aktuella visningen är den senaste offentliga versionen"
   },
   "message.mobileSharedAccount": {
     "message": "Dela konto och kvot med webbversionen",
@@ -272,7 +272,7 @@
     "description": "Meddelande när iOS-installationspaketet inte är tillgängligt"
   },
   "message.mobileInstallNote": {
-    "message": "Vid första installationen av företags- eller Ad Hoc-paket på iOS kan systemet kräva att du först litar på certifikatet i 'Inställningar > Allmänt > VPN och enhetshantering'.",
+    "message": "Vid första installationen av företags- eller Ad Hoc-paket på iOS kan systemet kräva att du först litar på certifikatet i 'Inställningar > Allmänt > VPN och enhetsadministration'.",
     "description": "Meddelande om installation av mobilapplikation"
   },
   "title.mobileApp": {
@@ -321,7 +321,7 @@
   },
   "message.confirmDelete": {
     "message": "Är du säker på att du vill ta bort?",
-    "description": "Bekräfta meddelande för att användaren ska ta bort något innehåll"
+    "description": "Bekräftar att användaren vill ta bort något innehåll"
   },
   "message.expiredAt": {
     "message": "Utgångstid",
@@ -377,7 +377,7 @@
   },
   "nav.service": {
     "message": "Alla tjänster",
-    "description": "Text i webbplatsens navigeringsfält för att visa tjänstsidan"
+    "description": "Text i webbplatsens navigeringsfält för att visa tjänstersidan"
   },
   "nav.profile": {
     "message": "Min profil",
@@ -392,7 +392,7 @@
     "description": "Text i webbplatsens navigeringsfält för att visa rekommendationssidan"
   },
   "nav.apiPlatform": {
-    "message": "API Plattform",
+    "message": "API-plattform",
     "description": "Text i webbplatsens navigeringsfält för att visa API-plattformssidan"
   },
   "nav.document": {
@@ -421,11 +421,11 @@
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Veo'"
+    "description": "Text i webbplatsens navigeringsfält för att visa Veo-sidan, vänligen översätt inte detta fält, det måste förbli 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Text i webbplatsens navigeringsfält för att visa chatt-sidan, vänligen översätt inte detta fält, det måste förbli 'Sora'"
+    "description": "Text i webbplatsens navigeringsfält för att visa Sora-sidan, vänligen översätt inte detta fält, det måste förbli 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
@@ -511,6 +511,10 @@
     "message": "Rekommenderad inkomst",
     "description": "Text in the website navigation bar for displaying the recommended income page"
   },
+  "nav.connections": {
+    "message": "Anslutningar",
+    "description": "Menu item to navigate to the connection management page at auth.acedata.cloud"
+  },
   "nav.logOut": {
     "message": "Logga ut",
     "description": "Text in the website navigation bar for logging out"
@@ -549,7 +553,7 @@
   },
   "title.placeholderOfSelect": {
     "message": "Vänligen välj",
-    "description": "Placeholder for select input"
+    "description": "Placeholder for selection input"
   },
   "title.placeholderOfInput": {
     "message": "Vänligen fyll i",
@@ -597,18 +601,18 @@
   },
   "about.title1": {
     "message": "Kontakta oss",
-    "description": "Title for the section displaying contact information"
+    "description": "Visar kontaktinformationens delrubrik"
   },
   "about.title2": {
     "message": "Resurser",
-    "description": "Visar delrubrik för länkar"
+    "description": "Visar länkarna delrubrik"
   },
   "about.title3": {
     "message": "Länkar",
-    "description": "Visar delrubrik för supportinformation"
+    "description": "Visar stödinformationens delrubrik"
   },
   "about.address": {
-    "message": "651 North Broad St, Suite 201, Middletown, Delaware, USA",
+    "message": "651 North Broad Street, Suite 201, Middletown, Delaware, USA",
     "description": "Företagets adress"
   },
   "about.email": {
@@ -653,43 +657,43 @@
   },
   "theme.light": {
     "message": "Ljust tema",
-    "description": "Namn på ljust tema"
+    "description": "Namn på det ljusa temat"
   },
   "theme.dark": {
     "message": "Mörkt tema",
-    "description": "Namn på mörkt tema"
+    "description": "Namn på det mörka temat"
   },
   "theme.system": {
     "message": "System",
-    "description": "Namn på systemtema, indikerar automatisk växling av tema baserat på systeminställningar"
+    "description": "Namn på systemtemat, vilket innebär att temat växlar automatiskt baserat på systeminställningar"
   },
   "settings.general": {
     "message": "Allmänna inställningar",
-    "description": "Rubrik för allmänna inställningar på inställningssidan"
+    "description": "Rubrik för den allmänna inställningsdelen på inställningssidan"
   },
   "settings.language": {
     "message": "Språk",
-    "description": "Rubrik för språkinställningar på inställningssidan"
+    "description": "Rubrik för språkinställningsdelen på inställningssidan"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Rubrik för tema-inställningar på inställningssidan"
+    "description": "Rubrik för tema-inställningsdelen på inställningssidan"
   },
   "settings.seo": {
     "message": "SEO-inställningar",
-    "description": "Rubrik för SEO-inställningar på inställningssidan"
+    "description": "Rubrik för SEO-inställningsdelen på inställningssidan"
   },
   "settings.site": {
     "message": "Webbplatsinställningar",
-    "description": "Rubrik för webbplatsinställningar på inställningssidan"
+    "description": "Rubrik för webbplatsinställningsdelen på inställningssidan"
   },
   "settings.distribution": {
     "message": "Distribueringsinställningar",
-    "description": "Rubrik för distribueringsinställningar på inställningssidan"
+    "description": "Rubrik för distribueringsinställningsdelen på inställningssidan"
   },
   "settings.function": {
     "message": "Funktionsinställningar",
-    "description": "Rubrik för funktionsinställningar på inställningssidan"
+    "description": "Rubrik för funktionsinställningsdelen på inställningssidan"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -712,8 +716,8 @@
     "description": "Text i knappen för att ladda upp filer eller innehåll"
   },
   "message.cnbeian": {
-    "message": "Kina-regionens registrering",
-    "description": "Information om registrering i Kina-regionen"
+    "message": "Kina-registrering",
+    "description": "Information om registrering i Kina"
   },
   "message.copyFailed": {
     "message": "Kopiering misslyckades",
@@ -725,15 +729,15 @@
   },
   "title.coin": {
     "message": "Kryptovaluta",
-    "description": "Visar sidrubrik för kryptovaluta"
+    "description": "Visar titeln på sidan för kryptovaluta"
   },
   "title.distributionRank": {
     "message": "Rekommendationsrankning",
-    "description": "Visar sidrubrik för rekommendationsrankning"
+    "description": "Visar titeln på sidan för rekommendationsrankning"
   },
   "title.distributionPlatformRank": {
     "message": "Plattformsrankning",
-    "description": "Visar sidrubrik för plattformsrankning"
+    "description": "Visar titeln på sidan för plattformsrankning"
   },
   "customers.name1": {
     "message": "Mark Du",
@@ -781,31 +785,31 @@
   },
   "settings.about": {
     "message": "Om",
-    "description": "Rubrik för om-sektionen på inställningssidan"
+    "description": "Rubrik för om-delen på inställningssidan"
   },
   "settings.poweredBy": {
     "message": "Öppen källkod",
-    "description": "Titel som visar vilket öppet källkodsprojekt denna webbplats är baserad på"
+    "description": "Titel som visar vilket öppet källkodsprojekt denna webbplats är baserad på i informationssidan"
   },
   "settings.poweredByTip": {
     "message": "Denna webbplats är baserad på Nexior öppet källkodsprojekt, koden är helt öppen.",
-    "description": "Förklaring som visar vilket öppet källkodsprojekt denna webbplats är baserad på"
+    "description": "Förklaring som visar vilket öppet källkodsprojekt denna webbplats är baserad på i informationssidan"
   },
   "settings.apiService": {
     "message": "API-tjänst",
-    "description": "Titel som visar API-tjänsteleverantören"
+    "description": "Titel som visar API-tjänsteleverantören i informationssidan"
   },
   "settings.apiServiceTip": {
     "message": "Denna API-tjänst tillhandahålls av Ace Data Cloud.",
-    "description": "Förklaring som visar API-tjänsteleverantören"
+    "description": "Förklaring som visar API-tjänsteleverantören i informationssidan"
   },
   "settings.buildYourOwn": {
     "message": "Bygg din egen",
-    "description": "Titel som uppmanar användare att bygga en liknande webbplats"
+    "description": "Titel som uppmanar användare att bygga en liknande webbplats i informationssidan"
   },
   "settings.buildYourOwnTip": {
     "message": "Vill du bygga en liknande AI-webbplats? Kontakta oss för distributionssupport.",
-    "description": "Förklaring om att bygga en liknande webbplats"
+    "description": "Förklaring om att bygga en liknande webbplats i informationssidan"
   },
   "settings.contactUs": {
     "message": "Kontakta support",

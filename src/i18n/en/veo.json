@@ -17,7 +17,7 @@
   },
   "name.failureReason": {
     "message": "Failure Reason",
-    "description": "The reason for task failure"
+    "description": "The reason for the task failure"
   },
   "name.status": {
     "message": "Status",
@@ -41,7 +41,7 @@
   },
   "name.action3": {
     "message": "Get 1080p Video From",
-    "description": "Reference image for the video to be generated"
+    "description": "Reference images for the video to be generated"
   },
   "name.prompt": {
     "message": "Video Prompt",
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Upload",
-    "description": "Button text to upload image"
+    "description": "Button text to upload images"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
@@ -160,31 +160,31 @@
     "description": "Error message when starting the drawing task fails"
   },
   "message.imageRequired": {
-    "message": "Please upload at least one reference image before starting an image-to-video task",
-    "description": "Shown when image2video is selected but no image was uploaded"
+    "message": "Please upload at least one reference image before starting the image-to-video task",
+    "description": "Prompt when no images are uploaded in image2video mode"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more to continue",
+    "message": "Your credits are exhausted, please purchase more credits to continue",
     "description": "Message when credits are used up"
   },
   "message.generating": {
     "message": "Generating...",
-    "description": "Message while the image is being generated"
+    "description": "Message when the image is being generated"
   },
   "message.downloadVideo": {
     "message": "Download this video",
-    "description": "Message while the image is being generated"
+    "description": "Message when the image is being generated"
   },
   "message.generateFailed": {
     "message": "Video generation failed",
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {
-    "message": "The number of uploaded start frame images exceeds the limit",
-    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "File size must not exceed 10MB!",
+    "message": "Uploaded file size cannot exceed 10MB!",
     "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
@@ -192,28 +192,28 @@
     "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Number of uploaded start frame images exceeds limit",
-    "description": "Error message when the number of uploaded start frame images exceeds the limit"
+    "message": "The number of uploaded first frame images exceeds the limit",
+    "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "Number of uploaded end frame images exceeds limit",
-    "description": "Error message when the number of uploaded end frame images exceeds the limit"
+    "message": "The number of uploaded last frame images exceeds the limit",
+    "description": "Error message when the number of uploaded last frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
-    "message": "Failed to upload start frame image",
-    "description": "Error message when the upload of the start frame image fails"
+    "message": "Failed to upload first frame image",
+    "description": "Error message when failing to upload the first frame image"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when the upload of the video fails"
+    "description": "Error message when failing to upload the video"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload end frame image",
-    "description": "Error message when the upload of the end frame image fails"
+    "message": "Failed to upload last frame image",
+    "description": "Error message when failing to upload the last frame image"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when the upload of the document fails"
+    "description": "Error message when failing to upload the document"
   },
   "message.noOperations": {
     "message": "No available operations",
