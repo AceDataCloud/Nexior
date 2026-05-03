@@ -54,7 +54,8 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
-  ROUTE_SERP_INDEX
+  ROUTE_SERP_INDEX,
+  ROUTE_NOT_FOUND
 } from './constants';
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
@@ -311,7 +312,19 @@ const routes = [
   distribution,
   download,
   site,
-  profile
+  profile,
+  {
+    path: '/:pathMatch(.*)*',
+    name: ROUTE_NOT_FOUND,
+    component: () => import('@/layouts/Index.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('@/pages/error/NotFound.vue'),
+        meta: { auth: false }
+      }
+    ]
+  }
 ];
 
 const router = createRouter({
