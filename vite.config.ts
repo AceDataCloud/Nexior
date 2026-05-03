@@ -14,7 +14,16 @@ const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string
   // visit a payment page. Letting Rollup pick natural chunk boundaries keeps
   // Web3 code split across small chunks that are only fetched lazily by
   // `utils/x402/solana.ts` and `plugins/solana-wallets.ts`.
-  ['vendor-element-plus', (id) => id.includes('/element-plus/')],
+  //
+  // Same rationale applies to `element-plus`: although every consumer in `src`
+  // uses selective `import { ElButton } from 'element-plus'` (so tree-shaking
+  // is already at work), forcing all retained components into a single shared
+  // chunk lumps ~115 component subtrees (570 KB / 180 KB-gz) onto the entry's
+  // static graph, because dozens of routes statically import from it. Letting
+  // Rollup do the splitting naturally keeps each component family in a small
+  // chunk co-located with its consumer route. The eager critical path then
+  // only carries the few components that App.vue / Layouts / `vLoading`
+  // actually need (ElConfigProvider, ElTag, ElIcon, ElDialog/Overlay/…).
   ['vendor-vue-router', (id) => id.includes('/vue-router/')],
   ['vendor-vue', (id) => id.includes('/node_modules/vue/') || id.includes('/node_modules/@vue/')],
   ['vendor-codemirror', (id) => id.includes('/codemirror/') || id.includes('/@codemirror/')],
