@@ -1,5 +1,6 @@
 export * from './baseUrl';
 export * from './mode';
+export * from './domain';
 export * from './initializer';
 export * from './highlight';
 export * from './is';

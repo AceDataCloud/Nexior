@@ -19,7 +19,7 @@ import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { ArrowDown } from '@element-plus/icons-vue';
 import { setCookie } from 'typescript-cookie';
-import { getDomain } from '@/utils/initializer';
+import { getDomain } from '@/utils';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import { setI18nLanguage } from '@/i18n';
 

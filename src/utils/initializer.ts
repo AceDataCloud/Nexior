@@ -3,24 +3,11 @@ import favicon from '@/assets/images/favicon.ico';
 import { applyTheme } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
-import { parse } from 'psl';
 import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
 import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
 
-export const getDomain = (host: string = window.location.hostname) => {
-  const parsed = parse(host);
-  if ('error' in parsed && parsed.error) {
-    return host;
-  }
-  if (!('listed' in parsed) || !parsed.listed) {
-    return host;
-  }
-  if (parsed.domain === host) {
-    return host;
-  }
-  return '.' + parsed.domain;
-};
+import { getDomain } from './domain';
 
 // @ts-ignore
 window.getDomain = getDomain;
