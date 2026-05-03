@@ -1,5 +1,0 @@
-# Cloudflare Pages SPA history-mode fallback.
-# Vue Router uses createWebHistory(), so deep links like /chat/<id> must be
-# rewritten to /index.html (status 200) on the edge — otherwise refreshing
-# any non-root route on a *.pages.dev preview returns 404.
-/*    /index.html   200
