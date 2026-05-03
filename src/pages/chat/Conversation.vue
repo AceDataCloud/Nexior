@@ -10,18 +10,6 @@
               <span v-if="agentConnected" class="agent-dot"></span>
             </el-button>
           </el-tooltip>
-          <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="onOpenSkills">
-              <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('chat.connections.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="onOpenConnections">
-              <font-awesome-icon icon="fa-solid fa-plug" />
-              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="external-icon" />
-            </el-button>
-          </el-tooltip>
         </div>
       </div>
       <desktop-agent-manager
@@ -221,22 +209,6 @@ export default defineComponent({
     this.onCheckAgentStatus();
   },
   methods: {
-    onOpenConnections() {
-      // Connections (MCP + OAuth connectors) are managed exclusively at
-      // auth.acedata.cloud. Nexior is a thin entry point - clicking opens
-      // the canonical management page in a new tab. aichat2 reads the
-      // user's active connections from auth.acedata.cloud at request time.
-      window.open('https://auth.acedata.cloud/user/connections', '_blank', 'noopener');
-    },
-    onOpenSkills() {
-      // Same model as connections: skills are managed exclusively at
-      // auth.acedata.cloud/user/skills. The aichat2 worker pulls the
-      // user's active skills (uploads + globals + bundled built-ins +
-      // virtual MCP-prompt skills) on every request and exposes them
-      // to the model via the <skills> system-prompt block, so there is
-      // nothing to toggle in-app.
-      window.open('https://auth.acedata.cloud/user/skills', '_blank', 'noopener');
-    },
     async onCheckAgentStatus() {
       const token = this.credential?.token;
       if (!token) return;
