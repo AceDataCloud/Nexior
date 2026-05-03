@@ -511,7 +511,7 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px 0 6px;
+      padding: 10px 0 10px;
       width: 100%;
     }
 
