@@ -15,6 +15,7 @@
       <overpainting-input v-if="config?.action === 'overpainting'" class="mb-4" />
       <underpainting-input v-if="config?.action === 'underpainting'" class="mb-4" />
       <samples-input v-if="config?.action === 'samples'" class="mb-4" />
+      <adjust-speed-input v-if="config?.action === 'adjust_speed'" class="mb-4" />
       <advanced-params class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5 gap-2">
@@ -50,6 +51,7 @@ import ReplaceSectionInput from './config/ReplaceSectionInput.vue';
 import OverpaintingInput from './config/OverpaintingInput.vue';
 import UnderpaintingInput from './config/UnderpaintingInput.vue';
 import SamplesInput from './config/SamplesInput.vue';
+import AdjustSpeedInput from './config/AdjustSpeedInput.vue';
 import PersonaInput from './config/PersonaInput.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
@@ -72,6 +74,7 @@ export default defineComponent({
     OverpaintingInput,
     UnderpaintingInput,
     SamplesInput,
+    AdjustSpeedInput,
     PersonaInput,
     FontAwesomeIcon,
     ElButton,
@@ -111,6 +114,7 @@ export default defineComponent({
       if (action === 'overpainting') return this.$t('suno.button.overpainting');
       if (action === 'underpainting') return this.$t('suno.button.underpainting');
       if (action === 'samples') return this.$t('suno.button.samples');
+      if (action === 'adjust_speed') return this.$t('suno.button.adjust_speed');
       return this.$t('suno.button.generate');
     }
   },
