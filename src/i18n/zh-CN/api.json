@@ -142,5 +142,13 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB 表示千兆字节，一种数字信息存储单位。"
+  },
+  "message.cheaperThan": {
+    "message": "比 $[[value]] 便宜",
+    "description": "当前接口价格低于对比目标时显示的文案，'$[[value]]' 会在运行时替换为目标名称"
+  },
+  "message.moreExpensiveThan": {
+    "message": "比 $[[value]] 贵",
+    "description": "当前接口价格高于对比目标时显示的文案，'$[[value]]' 会在运行时替换为目标名称"
   }
 }
