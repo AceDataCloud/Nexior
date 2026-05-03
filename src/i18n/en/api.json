@@ -142,5 +142,13 @@
   "unit.GB": {
     "message": "GB",
     "description": "GB stands for gigabytes, a unit of digital information storage."
+  },
+  "message.cheaperThan": {
+    "message": "Cheaper than $[[value]] by",
+    "description": "Comparison label rendered before the percentage when the current API price is lower than the named target. The literal '$[[value]]' is replaced at runtime with the target name."
+  },
+  "message.moreExpensiveThan": {
+    "message": "More expensive than $[[value]] by",
+    "description": "Comparison label rendered before the percentage when the current API price is higher than the named target. The literal '$[[value]]' is replaced at runtime with the target name."
   }
 }
