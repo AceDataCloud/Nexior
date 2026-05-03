@@ -96,6 +96,12 @@ export interface IData {
   agentName: string;
   agentToolCount: number;
   agentConnectedAt: string;
+  /**
+   * Set right before pushing the URL for a freshly-completed chat so the
+   * `conversationId` watcher can recognise the change as “already loaded
+   * locally” and skip the otherwise-redundant `retrieve` call.
+   */
+  skipNextRestoreId: string | undefined;
 }
 
 export default defineComponent({
@@ -124,10 +130,8 @@ export default defineComponent({
       agentName: '',
       agentToolCount: 0,
       agentConnectedAt: '',
-      messages:
-        this.$store.state.chat.conversations?.find(
-          (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
-        )?.messages || []
+      skipNextRestoreId: undefined,
+      messages: []
     };
   },
   computed: {
@@ -178,15 +182,42 @@ export default defineComponent({
     },
     async modelGroup(val) {
       console.debug('modelGroup changed', val);
+      // Side-panel list is server-filtered by model_group, so any change
+      // here forces a refresh. Reset local store first so the panel does
+      // not flash the previous group's rows during the round-trip.
+      this.$store.commit('chat/setConversations', []);
+      await this.$store.dispatch('chat/getConversations');
     },
-    async conversationId(val) {
+    async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
+      // URL is the source of truth: load (or reset) the conversation
+      // here. UI components dispatch onChangeConversation -> router.push
+      // -> this watcher fires.
+      if (!val) {
+        this.messages = [];
+        this.question = '';
+        this.references = [];
+        return;
+      }
+      // Just-completed chat already populated `this.messages` locally;
+      // skip the round-trip (the router push only changed the URL).
+      if (this.skipNextRestoreId && val === this.skipNextRestoreId) {
+        this.skipNextRestoreId = undefined;
+        return;
+      }
+      await this.onRestoreConversation(val);
     }
   },
   async mounted() {
     await this.onGetService();
     await this.onGetApplication();
     await this.onGetConversations();
+    // If the URL already carries a :id (deep-link / refresh), restore it
+    // now that store/credential are warm. The conversationId watcher
+    // doesn't fire `immediate` (we'd race the data() init with no token).
+    if (this.conversationId) {
+      await this.onRestoreConversation(this.conversationId);
+    }
     this.onCheckAgentStatus();
   },
   methods: {
@@ -378,29 +409,35 @@ export default defineComponent({
         });
     },
     async onNewConversation() {
-      this.$router.push({
-        params: {
-          id: ''
-        }
-      });
-      this.messages = [];
-      this.question = '';
-      this.references = [];
+      // Single-source-of-truth: drive everything off the URL. Calling
+      // router.push with an empty :id removes the path segment. The
+      // `conversationId` watcher then resets messages/question/refs.
+      if (this.conversationId) {
+        await this.$router.push({ params: { id: '' } });
+      } else {
+        // Already on /chatgpt/conversations — no route change to trigger
+        // the watcher, so reset locally.
+        this.messages = [];
+        this.question = '';
+        this.references = [];
+      }
     },
     async onRestoreConversation(id: string) {
       console.debug('onRestoreConversation id', id);
-      const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
-      // change the model and model group
+      // 1. Pull from store cache, or lazy-fetch full history from aichat2.
+      //    Side-panel summaries do NOT include `messages`, so we always
+      //    need a `retrieve` call the first time a conversation is opened.
+      let conversation: IChatConversation | undefined = this.conversations?.find((c: IChatConversation) => c.id === id);
+      if (!conversation || !conversation.messages) {
+        const fetched = await this.$store.dispatch('chat/getConversation', id);
+        if (fetched) conversation = fetched;
+      }
+      // 2. Switch model + model group to whatever this conversation used.
       const model = conversation?.model;
-      console.debug('conversation model', model);
       const targetModel = CHAT_MODELS.find((m) => m.name === model);
-      console.debug('target model', targetModel);
       const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
-      console.debug('target model group', targetModelGroup);
-      this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-      this.$store.dispatch('chat/setModel', targetModel);
-      console.debug('conversation', conversation);
-      console.debug('conversation messages', this.messages);
+      if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+      if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
       this.messages = conversation?.messages || [];
       this.onScrollDown();
     },
@@ -408,12 +445,18 @@ export default defineComponent({
       console.log('onChangeConversation in conversation', id);
       // stop the current request
       await this.onStop();
-      // if id is undefined, create a new conversation
-      if (!id) {
-        this.onNewConversation();
-      } else {
-        this.onRestoreConversation(id);
+      // Drive everything off the URL — router push triggers the
+      // conversationId watcher which then loads/resets state. This makes
+      // back/forward, refresh, and shareable URLs all behave correctly.
+      const target = id || '';
+      if (target === (this.conversationId || '')) {
+        // Same id (or both empty): nothing for the router to do, fall
+        // through to the explicit handlers so e.g. clicking "new" while
+        // already on a new chat still resets state.
+        if (!target) await this.onNewConversation();
+        return;
       }
+      await this.$router.push({ params: { id: target } });
     },
     async onSubmit() {
       if (this.references.length > 0) {
@@ -582,6 +625,7 @@ export default defineComponent({
           });
           this.answering = false;
           if (conversationId) {
+            this.skipNextRestoreId = conversationId;
             await this.$router.push({
               params: {
                 id: conversationId
