@@ -146,10 +146,24 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const { camera_control, ...rest } = this.config || {};
       const request = {
-        ...this.config,
+        ...rest,
         callback_url: CALLBACK_URL
       } as IKlingGenerateRequest;
+      // Only include camera_control when a type is set; clean empty config blocks.
+      if (camera_control?.type) {
+        request.camera_control = {
+          type: camera_control.type,
+          ...(camera_control.type === 'simple' && camera_control.config
+            ? {
+                config: Object.fromEntries(
+                  Object.entries(camera_control.config).filter(([, v]) => v !== undefined && v !== null)
+                )
+              }
+            : {})
+        };
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

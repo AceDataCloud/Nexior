@@ -9,6 +9,7 @@
       <duration-selector class="mb-4" />
       <mode-selector class="mb-4" />
       <generate-audio-selector class="mb-4" />
+      <camera-control-selector class="mb-4" />
       <cfg-scale-selector class="mb-4" />
       <negative-prompt-input class="mb-4" />
     </div>
@@ -45,6 +46,7 @@ import EndImage from './config/EndImage.vue';
 import Consumption from '../common/Consumption.vue';
 import CfgScaleSelector from './config/CfgScaleSelector.vue';
 import GenerateAudioSelector from './config/GenerateAudioSelector.vue';
+import CameraControlSelector from './config/CameraControlSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import NegativePromptInput from './config/NegativePromptInput.vue';
 import { getConsumption } from '@/utils';
@@ -64,6 +66,7 @@ export default defineComponent({
     StartImage,
     CfgScaleSelector,
     GenerateAudioSelector,
+    CameraControlSelector,
     EndImage
   },
   emits: ['generate'],
