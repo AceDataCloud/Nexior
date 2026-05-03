@@ -32,3 +32,4 @@ export * from './serp';
 export * from './wan';
 export * from './config';
 export * from './agent';
+export * from './byokCredential';
