@@ -77,12 +77,19 @@ html.dark,
 }
 
 html.dark {
-  --el-color-primary-light-9: #1e1635;
-  --el-bg-color: #0f1117;
-  --el-bg-color-page: #0b0f17;
-  --el-card-bg-color: rgba(26, 29, 46, 0.8);
-  --app-bg-surface: #111427;
-  --app-bg-section: #0f1117;
+  // Neutral, GitHub-style dark palette. Previously the dark surfaces were
+  // strongly blue/purple-tinted (e.g. #111427 = rgb(17,20,39), where blue is
+  // ~20 points higher than red), which gave the whole app a "deep navy" cast.
+  // The brand colour is teal (#277186), so a slight cool undertone is fine,
+  // but we now use balanced cool-grays close to GitHub's dark canvas tokens
+  // (#0d1117 / #161b22) and keep the teal only as accent (`primary-light-9`,
+  // hero gradient, glows).
+  --el-color-primary-light-9: #0e2a33; // dark teal for code-block bg etc.
+  --el-bg-color: #0d1117;
+  --el-bg-color-page: #08090c;
+  --el-card-bg-color: #161b22;
+  --app-bg-surface: #161b22;
+  --app-bg-section: #0d1117;
   --app-border-subtle: rgba(255, 255, 255, 0.06);
   --app-badge-bg: rgba(39, 113, 134, 0.15);
   --app-badge-border: #277186;
@@ -94,16 +101,16 @@ html.dark {
   --app-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
 
   /* Surface levels (dark) */
-  --app-nav-bg: #080a12;
-  --app-sidebar-bg: #0d0f1a;
-  --app-content-bg: #111427;
+  --app-nav-bg: #08090c;
+  --app-sidebar-bg: #0d1117;
+  --app-content-bg: #0d1117;
 
   /* Gradients (dark) */
   --app-gradient-card: linear-gradient(135deg, rgba(39, 113, 134, 0.06), rgba(31, 90, 107, 0.03));
   --app-gradient-subtle: linear-gradient(180deg, rgba(39, 113, 134, 0.05) 0%, transparent 100%);
 
-  /* Glass effect (dark) */
-  --app-glass-bg: rgba(17, 20, 39, 0.7);
+  /* Glass effect (dark) — matches surface, no blue-purple cast */
+  --app-glass-bg: rgba(22, 27, 34, 0.75);
   --app-glass-border: rgba(255, 255, 255, 0.06);
 
   /* Glow (dark - slightly stronger for visibility) */
