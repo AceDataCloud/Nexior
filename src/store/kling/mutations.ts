@@ -1,4 +1,12 @@
-import { IApplication, ICredential, IKlingConfig, IKlingTask, IService } from '@/models';
+import {
+  IApplication,
+  ICredential,
+  IKlingConfig,
+  IKlingMotionConfig,
+  IKlingTask,
+  IKlingTaskType,
+  IService
+} from '@/models';
 import initialState from './state';
 import { IKlingState } from './models';
 
@@ -24,6 +32,16 @@ export const setApplications = (state: IKlingState, payload: IApplication[]): vo
 
 export const setConfig = (state: IKlingState, payload: IKlingConfig): void => {
   state.config = payload;
+};
+
+export const setMotionConfig = (state: IKlingState, payload: IKlingMotionConfig): void => {
+  state.motionConfig = payload;
+};
+
+export const setTaskType = (state: IKlingState, payload: IKlingTaskType): void => {
+  state.taskType = payload;
+  // Switching tabs invalidates the task list cache so the next fetch fully reloads.
+  state.tasks = undefined;
 };
 
 export const setTasksItems = (state: IKlingState, payload: IKlingTask[]): void => {
@@ -59,6 +77,8 @@ export default {
   setApplication,
   setApplications,
   setConfig,
+  setMotionConfig,
+  setTaskType,
   setCredential,
   setService,
   setTasksActive,

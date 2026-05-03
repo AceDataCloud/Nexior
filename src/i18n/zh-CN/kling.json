@@ -1,4 +1,88 @@
 {
+  "tab.videoGeneration": {
+    "message": "视频生成",
+    "description": "Tab 标签：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "动作控制",
+    "description": "Tab 标签：Motion Control"
+  },
+  "tab.avatar": {
+    "message": "数字人",
+    "description": "Tab 标签：Avatar / AI-Human"
+  },
+  "tab.comingSoon": {
+    "message": "即将上线",
+    "description": "即将上线的起骨标签"
+  },
+  "tab.avatarComingSoon": {
+    "message": "数字人（股脸 + 语音合成说话视频）即将上线，敬请期待",
+    "description": "Avatar Tab 被禁用的 Tooltip 说明"
+  },
+  "name.motionImage": {
+    "message": "人物参考图片",
+    "description": "Motion Control 中的人物图输入"
+  },
+  "name.motionVideo": {
+    "message": "动作参考视频",
+    "description": "Motion Control 中的参考视频输入"
+  },
+  "name.motionPrompt": {
+    "message": "补充提示词（可选）",
+    "description": "Motion Control 中的补充提示词"
+  },
+  "name.characterOrientation": {
+    "message": "人物朝向",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "跟随图片",
+    "description": "人物朝向选项：跟随图片"
+  },
+  "name.orientationVideo": {
+    "message": "跟随视频",
+    "description": "人物朝向选项：跟随视频"
+  },
+  "name.keepOriginalSound": {
+    "message": "保留原始音频",
+    "description": "keep_original_sound 开关"
+  },
+  "description.motionImage": {
+    "message": "上传人物参考图，生成视频中的人物、背景等元素均以此为参照",
+    "description": "motion image_url 说明"
+  },
+  "description.motionVideo": {
+    "message": "上传动作参考视频，生成视频中的人物动作与该视频一致（MP4 / MOV，≤1 分钟，≤1 GB）",
+    "description": "motion video_url 说明"
+  },
+  "description.motionPrompt": {
+    "message": "可选。可以包含正向描述与负向描述，辅助生成效果",
+    "description": "motion prompt 说明"
+  },
+  "description.characterOrientation": {
+    "message": "选「跟随视频」时，复杂动作表现更好；选「跟随图片」时，人物朝向与参考图一致，镜头运动表现更好",
+    "description": "character_orientation 说明"
+  },
+  "description.motionMode": {
+    "message": "std 性能优先，pro 画质优先",
+    "description": "motion mode 说明"
+  },
+  "description.keepOriginalSound": {
+    "message": "开启后保留参考视频的原声；关闭后输出视频不包含原始音频",
+    "description": "keep_original_sound 说明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "例如：一个人在跳舅。可选。",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "生成动作控制视频",
+    "description": "Motion Control 生成按钮"
+  },
+  "message.motionMissingInputs": {
+    "message": "请同时上传人物图与动作参考视频",
+    "description": "Motion Control 缺少输入时的提示"
+  },
   "name.taskId": {
     "message": "任务 ID",
     "description": "任务的 ID"

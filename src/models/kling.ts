@@ -24,6 +24,28 @@ export interface IKlingElementRef {
   element_id?: string;
 }
 
+export type IKlingTaskType = 'videos' | 'motion';
+
+export interface IKlingMotionConfig {
+  prompt?: string;
+  image_url?: string;
+  video_url?: string;
+  character_orientation?: 'image' | 'video';
+  mode?: 'std' | 'pro';
+  keep_original_sound?: 'yes' | 'no';
+  callback_url?: string;
+}
+
+export interface IKlingMotionRequest {
+  prompt?: string;
+  image_url?: string;
+  video_url?: string;
+  character_orientation?: 'image' | 'video';
+  mode?: 'std' | 'pro';
+  keep_original_sound?: 'yes' | 'no';
+  callback_url?: string;
+}
+
 export interface IKlingConfig {
   action?: string;
   mode?: string;
@@ -89,7 +111,8 @@ export interface IKlingGenerateResponse {
 export interface IKlingTask {
   id: string;
   created_at?: number;
-  request?: IKlingGenerateRequest;
+  type?: IKlingTaskType;
+  request?: IKlingGenerateRequest & IKlingMotionRequest;
   response?: IKlingGenerateResponse;
 }
 

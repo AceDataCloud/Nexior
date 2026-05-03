@@ -123,7 +123,9 @@ import {
   faStar as faSolidStar,
   faHouse as faSolidHouse,
   faBrain as faSolidBrain,
-  faKey as faSolidKey
+  faKey as faSolidKey,
+  faPersonRunning as faSolidPersonRunning,
+  faUserTie as faSolidUserTie
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -246,3 +248,5 @@ library.add(faSolidCompress);
 library.add(faSolidBroom);
 library.add(faSolidHouse);
 library.add(faSolidKey);
+library.add(faSolidPersonRunning);
+library.add(faSolidUserTie);

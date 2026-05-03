@@ -1,19 +1,22 @@
 <template>
-  <div class="main flex flex-row flex-1">
-    <div
-      class="config w-[320px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
-    >
-      <slot name="config" />
+  <div class="kling-layout flex flex-col flex-1 min-h-0">
+    <slot v-if="$slots.tabs" name="tabs" />
+    <div class="main flex flex-row flex-1 min-h-0">
+      <div
+        class="config w-[320px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+      >
+        <slot name="config" />
+      </div>
+      <div class="result h-full p-6 flex-1 flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
+        <slot name="result" />
+      </div>
+      <el-button circle class="menu" @click="drawer = true">
+        <font-awesome-icon icon="fa-solid fa-magic" />
+      </el-button>
+      <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px">
+        <slot name="config" />
+      </el-drawer>
     </div>
-    <div class="result h-full p-6 flex-1 flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
-      <slot name="result" />
-    </div>
-    <el-button circle class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-magic" />
-    </el-button>
-    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px">
-      <slot name="config" />
-    </el-drawer>
   </div>
 </template>
 
