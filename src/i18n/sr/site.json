@@ -148,7 +148,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.featuresI18n": {
-    "message": "Podrška za više jezika",
+    "message": "Višelingvalna podrška",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.basicConfig": {
@@ -200,7 +200,7 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Уреди обавезни позивалац",
+    "message": "Уреди обавезног позиватеља",
     "description": "Приказује се у заглављу уређивања"
   },
   "title.editQR": {
@@ -232,32 +232,32 @@
     "description": "Приказује се у уређивању"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Унесите подразумевани ID позиваоца",
+    "message": "Унесите подразумевани ID позиватеља",
     "description": "Приказује се у уређивању"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Унесите обавезни ID позиваоца",
+    "message": "Унесите ID обавезног позиватеља",
     "description": "Приказује се у уређивању"
   },
   "message.uploadImageExceed": {
     "message": "Превише слика за учитавање",
-    "description": "Обавештење о превеликом броју слика"
+    "description": "Порука о превеликом учитавању слике"
   },
   "message.uploadImageError": {
     "message": "Грешка при учитавању слике",
-    "description": "Обавештење о грешци при учитавању слике"
+    "description": "Порука о грешци при учитавању слике"
   },
   "message.editLogoTip": {
     "message": "Препоручена величина: 200*60px",
-    "description": "Упутство за учитавање слике"
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editQRTip": {
     "message": "Препоручена величина: 200*200px",
-    "description": "Упутство за учитавање слике"
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editFaviconTip": {
     "message": "Препоручена величина: 32*32px",
-    "description": "Упутство за учитавање слике"
+    "description": "Језик упутства за учитавање слике"
   },
   "message.editUrl": {
     "message": "Унесите линк",
@@ -265,15 +265,15 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Мора остати бар један администратор",
-    "description": "Обавештење о потреби за администратором"
+    "description": "Упозорење о потреби за бар једним администратором"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID корисника подразумеваног позиваоца. Ако дистрибутивни линк не садржи параметар inviter_id, подразумевано ће се користити овај ID.",
-    "description": "Упутство о подразумеваном ID позиваоца"
+    "message": "ID корисника подразумеваног позиватеља. Ако дистрибутивни линк не садржи параметар inviter_id, користиће се овај ID као позиватељ.",
+    "description": "Упутство о подразумеваном ID позиватеља"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID корисника обавезног позиваоца. Ако је овај ID постављен, без обзира на то да ли дистрибутивни линк садржи параметар inviter_id, обавезно ће се користити овај ID.",
-    "description": "Упутство о обавезном ID позиваоца"
+    "message": "ID корисника обавезног позиватеља. Ако је овај ID подешен, без обзира на то да ли дистрибутивни линк садржи параметар inviter_id, користиће се овај ID као позиватељ.",
+    "description": "Упутство о обавезном ID позиватеља"
   },
   "message.originTip": {
     "message": "Домен сајта, конфигурација сајта је повезана са доменом и не може се променити.",
@@ -296,7 +296,7 @@
     "description": "Упутство о favicon-у сајта"
   },
   "message.adminsTip": {
-    "message": "ID администраторов сајта, подразумевано први корисник који креира сајт постаје администратор, само администратори могу управљати сајтом.",
+    "message": "ID администраторов сајта, подразумевано, први корисник који креира сајт постаје администратор, само администратори могу управљати сајтом.",
     "description": "Упутство о администраторима сајта"
   },
   "message.adminsTip2": {
@@ -413,7 +413,7 @@
   },
   "message.featuresSupport": {
     "message": "Uključi ili isključi korisničku podršku",
-    "description": "Opis funkcionalnosti podrške"
+    "description": "Opis podrške"
   },
   "message.featuresI18n": {
     "message": "Uključi ili isključi podršku za više jezika, nakon isključivanja, korisnici mogu koristiti samo podrazumevani jezik.",
@@ -446,5 +446,9 @@
   "message.featuresClaude": {
     "message": "Uključi ili isključi Claude funkcionalnost.",
     "description": "Opis Claude funkcionalnosti"
+  },
+  "placeholder.admins": {
+    "message": "Unesite ID korisnika administratora",
+    "description": "Placeholder u okviru za uređivanje administratora u podešavanjima sajta"
   }
 }

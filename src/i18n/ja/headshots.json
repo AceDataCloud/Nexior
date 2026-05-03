@@ -84,19 +84,19 @@
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "button.fast": {
-    "message": "高速",
-    "description": "ボタンテキスト、ユーザーが'高速モード'を設定して画像を生成するためのもの、'高速モード'に翻訳する必要があります"
+    "message": "高速モード",
+    "description": "ボタンテキスト、ユーザーが画像生成のために'高速モード'を設定できるようにする"
   },
   "button.relax": {
-    "message": "低速",
-    "description": "ボタンテキスト、ユーザーが'低速モード'を設定して画像を生成するためのもの、'低速モード'に翻訳する必要があります"
+    "message": "慢速モード",
+    "description": "ボタンテキスト、ユーザーが画像生成のために'慢速モード'を設定できるようにする"
   },
   "button.generate": {
     "message": "生成",
     "description": "ヘッドショット証明写真生成のボタンテキスト"
   },
   "button.viewImage": {
-    "message": "元画像を表示",
+    "message": "原画像を見る",
     "description": "ヘッドショット証明写真生成のボタンテキスト"
   },
   "button.download": {
@@ -105,19 +105,19 @@
   },
   "button.uploadImageUrls": {
     "message": "画像をアップロード",
-    "description": "人物画像アップロードボタンテキスト（英語は「Upload」に簡略化し、長すぎて隠れないようにする）"
+    "description": "人物画像アップロードボタンテキスト（英語は簡略化して「Upload」とし、長すぎて隠れないようにする）"
   },
   "message.uploadReferencesExceed": {
     "message": "最大 5 枚の画像をアップロードできます",
-    "description": "アップロードされた画像数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
-    "description": "画像のアップロードが成功したときの成功メッセージ"
+    "description": "画像のアップロードが成功したときのメッセージ"
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
-    "description": "画像アップロード失敗時のエラーメッセージ"
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -125,7 +125,7 @@
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
-    "description": "タスクを正常に開始したときの成功メッセージ"
+    "description": "タスクを正常に開始したときのメッセージ"
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
@@ -145,7 +145,7 @@
   },
   "message.generateFailed": {
     "message": "画像生成に失敗しました",
-    "description": "画像生成失敗時のメッセージ"
+    "description": "画像生成に失敗したときのメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
@@ -169,26 +169,34 @@
   },
   "styleTag.kindergarten": {
     "message": "幼稚園入園写真",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
   },
   "styleTag.logoTshirt": {
     "message": "企業ロゴTシャツ写真",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
   },
   "styleTag.wedding": {
     "message": "結婚登録写真",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
   },
   "styleTag.businessPphoto": {
     "message": "ビジネス風ポートレート",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
   },
   "styleTag.bobSuit": {
     "message": "黒いスーツのボブヘア",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
   },
   "styleTag.femalePortrait": {
     "message": "女性ポートレート",
-    "description": "画像のスタイルを説明し生成するためのスタイルワード。このタグのスタイルを含む画像を生成する必要があります。"
+    "description": "画像のスタイルを説明し生成するためのスタイルワード、生成される画像はこのタグのスタイルを含む必要があります"
+  },
+  "message.uploadImageExceed": {
+    "message": "最大2枚の画像をアップロードできます",
+    "description": "アップロードする参考画像が数量制限を超えたときのメッセージ"
+  },
+  "message.uploadImageError": {
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "description": "参考画像のアップロードに失敗したときのエラーメッセージ"
   }
 }

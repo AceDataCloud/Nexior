@@ -249,19 +249,19 @@
   },
   "message.editLogoTip": {
     "message": "Tamanho recomendado: 200*60px",
-    "description": "Mensagem de dica para o upload da imagem"
+    "description": "Mensagem de dica para o envio da imagem"
   },
   "message.editQRTip": {
     "message": "Tamanho recomendado: 200*200px",
-    "description": "Mensagem de dica para o upload da imagem"
+    "description": "Mensagem de dica para o envio da imagem"
   },
   "message.editFaviconTip": {
     "message": "Tamanho recomendado: 32*32px",
-    "description": "Mensagem de dica para o upload da imagem"
+    "description": "Mensagem de dica para o envio da imagem"
   },
   "message.editUrl": {
     "message": "Digite o link",
-    "description": "Mensagem de dica para inserir o link"
+    "description": "Mensagem de aviso para digitar o link"
   },
   "message.atLeastOneAdmin": {
     "message": "Mantenha pelo menos um administrador",
@@ -272,11 +272,11 @@
     "description": "Mensagem de dica para o ID do convidador padrão"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID do usuário do convidador forçado. Se este ID for definido, ele será usado como convidador, independentemente de o link de distribuição incluir o parâmetro inviter_id.",
+    "message": "ID do usuário do convidador forçado. Se este ID for definido, será usado como convidador, independentemente de o link de distribuição incluir o parâmetro inviter_id.",
     "description": "Mensagem de dica para o ID do convidador forçado"
   },
   "message.originTip": {
-    "message": "Domínio do site. A configuração do site está vinculada ao domínio e não pode ser alterada.",
+    "message": "Domínio do site, a configuração do site está vinculada ao domínio e não pode ser alterada.",
     "description": "Mensagem de dica para o domínio do site"
   },
   "message.titleTip": {
@@ -433,7 +433,7 @@
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Exibido como título na caixa de edição"
+    "description": "Exibido como o título na caixa de edição"
   },
   "message.featuresGemini": {
     "message": "Ativar ou desativar o módulo de recursos do Gemini.",
@@ -441,10 +441,14 @@
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Exibido como título na caixa de edição"
+    "description": "Exibido como o título na caixa de edição"
   },
   "message.featuresClaude": {
     "message": "Ativar ou desativar o módulo de recursos do Claude.",
     "description": "Descrição da funcionalidade do Claude"
+  },
+  "placeholder.admins": {
+    "message": "Digite o ID do usuário administrador",
+    "description": "Placeholder na caixa de edição de administrador nas configurações do site"
   }
 }

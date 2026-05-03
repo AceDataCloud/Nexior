@@ -1,7 +1,7 @@
 {
   "entity.requestQueries": {
     "message": "Request Queries",
-    "description": "HTTP request query parameters."
+    "description": "Query parameters for the HTTP request."
   },
   "entity.requestBody": {
     "message": "Request Body",
@@ -13,19 +13,19 @@
   },
   "entity.requestHeaders": {
     "message": "Request Headers",
-    "description": "HTTP request headers."
+    "description": "Headers for the HTTP request."
   },
   "entity.requestHeader": {
     "message": "Request Header",
-    "description": "A single HTTP request header."
+    "description": "A single form of the HTTP request header."
   },
   "entity.responseHeaders": {
     "message": "Response Headers",
-    "description": "HTTP response headers."
+    "description": "Headers for the HTTP response."
   },
   "entity.response": {
     "message": "Response",
-    "description": "An HTTP response."
+    "description": "The HTTP response."
   },
   "entity.success": {
     "message": "Success",
@@ -37,7 +37,7 @@
   },
   "entity.responseExample": {
     "message": "Example",
-    "description": "An example of a response."
+    "description": "An example of the response."
   },
   "entity.authentication": {
     "message": "Authentication",
@@ -53,31 +53,31 @@
   },
   "message.free": {
     "message": "Free",
-    "description": "Indicates that the price is free; no points or currency are required when using the API services."
+    "description": "Indicates that the price is free, no points or currency are required to use the API service."
   },
   "message.appliedCount": {
-    "message": "Application Count",
-    "description": "The number of times the API service has been applied."
+    "message": "Applied Count",
+    "description": "The number of times the API service has been applied for."
   },
   "message.firstFree": {
     "message": "First Free",
-    "description": "Indicates that the first use of the API service is free, requiring no points or currency."
+    "description": "Indicates that the first use of the API service is free, no points or currency are required."
   },
   "message.custom": {
-    "message": "Specified Amount",
-    "description": "Indicates that the price is specified; points or currency are required when using the API services."
+    "message": "Custom Amount",
+    "description": "Indicates that the price is a specified amount, points or currency are required to use the API service."
   },
   "message.present": {
-    "message": "Present",
-    "description": "Points will be gifted to you for your first use of the API services."
+    "message": "Gift",
+    "description": "We will gift points to you upon your first use of the API service."
   },
   "message.around": {
     "message": "Around",
-    "description": "The price is approximately as stated; actual prices may vary."
+    "description": "The price is approximately, the actual price may vary."
   },
   "message.successRate15min": {
-    "message": "Real-Time Success Rate",
-    "description": "The real-time success rate of the API service over the past 15 minutes."
+    "message": "Real-time Success Rate",
+    "description": "The real-time success rate of the API service in the past 15 minutes."
   },
   "message.ySuccessRate": {
     "message": "Success Rate (100%)",
@@ -85,70 +85,70 @@
   },
   "message.xMinutes": {
     "message": "Time (Minutes)",
-    "description": "Time expressed in minutes."
+    "description": "Time in minutes."
   },
   "message.streamUsage": {
-    "message": "Friendly Reminder: The above code may not be fully applicable for streaming requests. Please refer to the documentation for modifications.",
-    "description": "The above code may not be fully applicable for streaming requests. Please refer to the documentation for modifications."
+    "message": "Note: The above code may not fully apply to streaming requests. Please refer to the integration documentation for modifications.",
+    "description": "The above code may not fully apply to streaming requests. Please refer to the integration documentation for modifications."
   },
   "message.alphaStage": {
-    "message": "This API is in Alpha stage, an early preview version, which may have potential instability. The API format may undergo significant changes, and it is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future.",
-    "description": "This API is in Alpha stage, an early preview version, which may have potential instability. The API format may undergo significant changes, and it is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future."
+    "message": "This API is in the Alpha stage, an early preview version that may have potential instability. The API format may undergo significant changes, and it is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future.",
+    "description": "This API is in the Alpha stage, an early preview version that may have potential instability. The API format may undergo significant changes, and it is not recommended for production use. Current pricing is relatively low, and there may be significant price adjustments in the future."
   },
   "message.betaStage": {
-    "message": "This API is in Beta stage, and the API format is unlikely to change significantly, but there may be potential instability. Please use caution when using in production. Current pricing is relatively low, and there may be moderate price adjustments in the future.",
-    "description": "This API is in Beta stage, and the API format is unlikely to change significantly, but there may be potential instability. Please use caution when using in production. Current pricing is relatively low, and there may be moderate price adjustments in the future."
+    "message": "This API is in the Beta stage, the API format is unlikely to change significantly, but there may be potential instability. Please use with caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future.",
+    "description": "This API is in the Beta stage, the API format is unlikely to change significantly, but there may be potential instability. Please use with caution in production environments. Current pricing is relatively low, and there may be moderate price adjustments in the future."
   },
   "unit.credit": {
     "message": "Credit",
-    "description": "Credits are the virtual currency used for the API service."
+    "description": "Credits are the virtual currency used in the API service."
   },
   "unit.Credit": {
     "message": "Credit",
-    "description": "Credits are the virtual currency used for the API service; this is the uppercase form."
+    "description": "Credits are the virtual currency used in the API service, this is the uppercase form."
   },
   "unit.credits": {
     "message": "Credits",
-    "description": "Credits are the virtual currency used for the API service; this is the plural form."
+    "description": "Credits are the virtual currency used in the API service, this is the plural form."
   },
   "unit.Credits": {
     "message": "Credits",
-    "description": "Credits are the virtual currency used for the API service; this is both uppercase and plural form."
+    "description": "Credits are the virtual currency used in the API service, this is the uppercase and plural form."
   },
   "unit.call": {
     "message": "Call",
-    "description": "Call refers to the number of times the API service has been called."
+    "description": "A call represents the number of times the API service has been called."
   },
   "unit.count": {
     "message": "Times",
-    "description": "Times refers to the number of times the API service has been called."
+    "description": "Times represents the number of times the API service has been called."
   },
   "unit.Call": {
     "message": "Call",
-    "description": "Call refers to the number of times the API service has been called; this is the uppercase form."
+    "description": "A call represents the number of times the API service has been called, this is the uppercase form."
   },
   "unit.calls": {
     "message": "Calls",
-    "description": "Calls refers to the number of times the API service has been called; this is the plural form."
+    "description": "Calls represent the number of times the API service has been called, this is the plural form."
   },
   "unit.Calls": {
     "message": "Calls",
-    "description": "Calls refers to the number of times the API service has been called; this is both uppercase and plural form."
+    "description": "Calls represent the number of times the API service has been called, this is the uppercase and plural form."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB stands for megabytes, a unit of digital information storage."
+    "description": "MB stands for megabyte, a unit of digital information storage."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB stands for gigabytes, a unit of digital information storage."
+    "description": "GB stands for gigabyte, a unit of digital information storage."
   },
   "message.cheaperThan": {
-    "message": "Cheaper than $[[value]] by",
-    "description": "Comparison label rendered before the percentage when the current API price is lower than the named target. The literal '$[[value]]' is replaced at runtime with the target name."
+    "message": "Cheaper than $[[value]]",
+    "description": "Text displayed when the current interface price is lower than the comparison target, '$[[value]]' will be replaced with the target name at runtime."
   },
   "message.moreExpensiveThan": {
-    "message": "More expensive than $[[value]] by",
-    "description": "Comparison label rendered before the percentage when the current API price is higher than the named target. The literal '$[[value]]' is replaced at runtime with the target name."
+    "message": "More expensive than $[[value]]",
+    "description": "Text displayed when the current interface price is higher than the comparison target, '$[[value]]' will be replaced with the target name at runtime."
   }
 }

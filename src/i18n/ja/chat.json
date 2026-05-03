@@ -1,11 +1,19 @@
 {
+  "thinking.inProgress": {
+    "message": "思考中...",
+    "description": "モデルが推論プロセスを生成しているときに表示されるラベル"
+  },
+  "thinking.done": {
+    "message": "思考プロセス",
+    "description": "モデルが推論を完了した後に推論プロセスを折りたたんで表示するためのラベル"
+  },
   "button.thinkDeeper": {
     "message": "深く考える",
     "description": "深く考えるボタン"
   },
   "button.deepsearch": {
-    "message": "深い検索",
-    "description": "深い検索ボタン"
+    "message": "深層検索",
+    "description": "深層検索ボタン"
   },
   "button.search": {
     "message": "検索",
@@ -28,7 +36,7 @@
     "description": "サービスのモデル名、すなわち DeepSeek"
   },
   "modelGroup.deepseekDescription": {
-    "message": "DeepSeek社が開発したAIモデル",
+    "message": "深度求索が開発したAIモデル",
     "description": "DeepSeekモデルの説明"
   },
   "modelGroup.grok": {
@@ -60,7 +68,7 @@
     "description": "サービスのモデル名、すなわち Kimi"
   },
   "modelGroup.kimiDescription": {
-    "message": "月の裏側社が開発したAIモデル",
+    "message": "月の暗面が開発したAIモデル",
     "description": "Kimiモデルグループの説明"
   },
   "modelGroup.glm": {
@@ -96,35 +104,43 @@
     "description": "GPT 5.4 Miniモデルの説明"
   },
   "model.deepseekChat": {
-    "message": "3.0標準",
-    "description": "サービスのモデル名、すなわち DeepSeekチャット"
+    "message": "3.0",
+    "description": "サービスのモデル名、すなわち DeepSeek チャット"
   },
   "model.deepseekChatDescription": {
-    "message": "日常的なタスクに適した",
+    "message": "日常的なタスクに適しています",
     "description": "DeepSeekチャットモデルの説明"
   },
   "model.deepseekReasoner": {
-    "message": "R1推論",
-    "description": "サービスのモデル名、すなわち DeepSeek推論"
+    "message": "R1",
+    "description": "サービスのモデル名、すなわち DeepSeek 推論"
   },
   "model.deepseekReasonerDescription": {
-    "message": "推論や深い思考の問題に適した",
+    "message": "推論と深い思考の問題に適しています",
     "description": "DeepSeek推論モデルの説明"
   },
   "model.deepseekChat32": {
-    "message": "V3.2実験版",
+    "message": "3.2",
     "description": "サービスのモデル名、すなわち DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "最新の実験バージョン",
     "description": "DeepSeek V3.2実験モデルの説明"
   },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "サービスのモデル名、すなわち DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "最新世代の軽量フラッグシップ、1Mコンテキスト",
+    "description": "DeepSeek V4 Flashモデルの説明"
+  },
   "model.grok4": {
     "message": "grok-4",
     "description": "サービスのモデル名、すなわち Grok 4"
   },
   "model.grok4Description": {
-    "message": "現在最も進んだモデル",
+    "message": "現在最も先進的なモデル",
     "description": "Grok 4モデルの説明"
   },
   "model.grok3": {
@@ -132,7 +148,7 @@
     "description": "サービスのモデル名"
   },
   "model.grok3Description": {
-    "message": "ほとんどのタスクに適した",
+    "message": "ほとんどのタスクに適しています",
     "description": "Grok3モデルの説明"
   },
   "model.gemini30Pro": {
@@ -140,7 +156,7 @@
     "description": "サービスのモデル名、すなわち Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
-    "message": "現在最も進んだモデル",
+    "message": "現在最も先進的なモデル",
     "description": "Gemini 3.0 Proモデルの説明"
   },
   "model.gemini25Pro": {
@@ -148,7 +164,7 @@
     "description": "サービスのモデル名、すなわち Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "複雑な推論タスクに適した",
+    "message": "複雑な推論タスクに適しています",
     "description": "Gemini 2.5 Proモデルの説明"
   },
   "model.gemini25Flash": {
@@ -164,7 +180,7 @@
     "description": "サービスのモデル名、すなわち Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
-    "message": "現在最も進んだモデル",
+    "message": "現在最も先進的なモデル",
     "description": "Claude Opus 4.7モデルの説明"
   },
   "model.claudeSonnet46": {
@@ -188,7 +204,7 @@
     "description": "サービスのモデル名、すなわち Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "現在最も先進的なモデル",
+    "message": "現在の最先端モデル",
     "description": "Kimi K2.5 モデルの説明"
   },
   "model.kimiK2Thinking": {
@@ -196,7 +212,7 @@
     "description": "サービスのモデル名、すなわち Kimi K2 推論"
   },
   "model.kimiK2ThinkingDescription": {
-    "message": "推論と深い思考に適しています",
+    "message": "推論と深い思考問題に適しています",
     "description": "Kimi K2 推論モデルの説明"
   },
   "model.kimiK2ThinkingTurbo": {
@@ -273,22 +289,22 @@
   },
   "message.question4": {
     "message": "地元の人のようにソウルを体験",
-    "description": "対話を開始するためのサンプル質問、ユーザーに仮想現実がアート制作に与える影響を説明するように求める"
+    "description": "対話を開始するためのサンプル質問、ユーザーに仮想現実が芸術創作に与える影響を説明するように求める"
   },
   "message.question5": {
-    "message": "9.8と9.11はどちらが大きい？",
+    "message": "9.8と9.11はどちらが大きいですか？",
     "description": "対話を開始するためのサンプル質問、2つの数字の大きさを比較するように求める"
   },
   "message.question6": {
-    "message": "AIは未来にどのような影響を与えるか？",
+    "message": "AIは未来にどのような影響を与えますか？",
     "description": "対話を開始するためのサンプル質問、AIが未来に与える影響について尋ねる"
   },
   "message.question7": {
-    "message": "学習効率を向上させる方法は？",
+    "message": "学習効率を向上させるには？",
     "description": "対話を開始するためのサンプル質問、自分の学習効率を向上させる方法について尋ねる"
   },
   "message.question8": {
-    "message": "集中力を高める方法は？",
+    "message": "集中力を高めるには？",
     "description": "対話を開始するためのサンプル質問、自分の集中力を高める方法について尋ねる"
   },
   "message.errorApiError": {
@@ -305,83 +321,83 @@
   },
   "message.errorContentTooLarge": {
     "message": "問題の内容が長すぎます。短くして再試行してください。",
-    "description": "ウェブページのメッセージ、ユーザーに問題の内容が長すぎることを伝え、短くして再試行するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーに問題の内容が長すぎることを伝え、短くして再試行するように促します。"
   },
   "message.errorTooManyRequests": {
     "message": "操作が頻繁すぎます。後で再試行してください。",
-    "description": "ウェブページのメッセージ、ユーザーに操作が頻繁すぎることを伝え、後で再試行するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーに操作が頻繁すぎることを伝え、後で再試行するように促します。"
   },
   "message.errorBusy": {
     "message": "サーバーが忙しいです。後で再試行してください。",
-    "description": "ウェブページのメッセージ、ユーザーにサーバーが忙しいことを伝え、後で再試行するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーにサーバーが忙しいことを伝え、後で再試行するように促します。"
   },
   "message.errorUsedUp": {
     "message": "プランの回数を使い切りました。追加の回数を購入して続行してください。",
-    "description": "ウェブページのメッセージ、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続行するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーにプランの回数を使い切ったことを伝え、追加の回数を購入して続行するように促します。"
   },
   "message.errorUnknown": {
     "message": "サーバーで未知のエラーが発生しました。後で再試行するか、カスタマーサポートに連絡してください。",
-    "description": "ウェブページのメッセージ、ユーザーにサーバーで未知のエラーが発生したことを伝え、後で再試行するか、カスタマーサポートに連絡するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーにサーバーで未知のエラーが発生したことを伝え、後で再試行するか、カスタマーサポートに連絡するように促します。"
   },
   "message.errorTimeout": {
     "message": "回答がタイムアウトしました。後で再試行してください。",
-    "description": "ウェブページのメッセージ、ユーザーに回答がタイムアウトしたことを伝え、後で再試行するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーに回答がタイムアウトしたことを伝え、後で再試行するように促します。"
   },
   "message.errorNotApplied": {
     "message": "このサービスに申し込んでいません。先に申し込んでから質問を続けてください。",
-    "description": "ウェブページのメッセージ、ユーザーにこのサービスに申し込んでいないことを伝え、先に申し込んでから質問を続けるように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーにこのサービスに申し込んでいないことを伝え、先に申し込んでから質問を続けるように促します。"
   },
   "message.confirmDelete": {
     "message": "削除を確認",
-    "description": "ウェブページのメッセージ、ユーザーに削除を確認するように指示します。"
+    "description": "ウェブページのメッセージで、ユーザーに削除を確認するように促します。"
   },
   "message.howToUse": {
-    "message": "AIは間違えることがあります。重要な情報を確認してください。",
-    "description": "ウェブページのメッセージ、ユーザーにAIが間違える可能性があることを伝え、重要な情報を確認するように指示します。"
+    "message": "AIは間違える可能性があります。重要な情報を確認してください。",
+    "description": "ウェブページのメッセージで、ユーザーにAIが間違える可能性があることを伝え、重要な情報を確認するように促します。"
   },
   "title.chat": {
     "message": "AIチャット",
-    "description": "ウェブページのタイトル、AIチャットを示します。"
+    "description": "ウェブページのタイトル、すなわちAIチャット"
   },
   "title.example": {
     "message": "例",
-    "description": "ウェブページのタイトル、例を示します。"
+    "description": "ウェブページのタイトル、すなわち例"
   },
   "title.capabilities": {
     "message": "機能",
-    "description": "ウェブページのタイトル、機能を示します。"
+    "description": "ウェブページのタイトル、すなわち機能"
   },
   "title.limitations": {
     "message": "制限",
-    "description": "ウェブページのタイトル、サービスの技術的制限に関する内容を示します。"
+    "description": "ウェブページのタイトルで、この部分がサービスの技術的制限に関する内容であることを示します。"
   },
   "title.complexQuestion": {
     "message": "複雑な質問に回答",
-    "description": "ウェブページのタイトル、サービスが複雑な質問に回答する能力に関する内容を示します。"
+    "description": "ウェブページのタイトルで、この部分がサービスの複雑な質問に回答する能力に関する内容であることを示します。"
   },
   "title.professionalQuestion": {
     "message": "専門的な質問を相談",
-    "description": "ウェブページのタイトル、サービスが専門的な質問を相談する能力に関する内容を示します。"
+    "description": "ウェブページのタイトルで、この部分がサービスの専門的な質問を相談する能力に関する内容であることを示します。"
   },
   "title.getTips": {
     "message": "インスピレーションとアイデアを得る",
-    "description": "ウェブページのタイトル、サービスがインスピレーションとアイデアを得る能力に関する内容を示します。"
+    "description": "ウェブページのタイトルで、この部分がサービスのインスピレーションとアイデアを得る能力に関する内容であることを示します。"
   },
   "group.today": {
     "message": "今日",
-    "description": "ウェブページのグループ名、今日を示します。"
+    "description": "ウェブページのグループ名、すなわち今日"
   },
   "group.yesterday": {
     "message": "昨日",
-    "description": "ウェブページのグループ名、昨日を示します。"
+    "description": "ウェブページのグループ名、すなわち昨日"
   },
   "group.thisWeek": {
     "message": "今週",
-    "description": "ウェブページのグループ名、今週を示します。"
+    "description": "ウェブページのグループ名、すなわち今週"
   },
   "group.earlier": {
     "message": "以前",
-    "description": "ウェブページのグループ名、以前を示します。"
+    "description": "ウェブページのグループ名、すなわち以前"
   },
   "connector.authFailed": {
     "message": "認証に失敗しました。再試行してください。",
@@ -407,17 +423,21 @@
     "message": "スキル管理",
     "description": "auth.acedata.cloudスキル管理ページへのボタンヒント"
   },
+  "composer.addAction": {
+    "message": "コンテンツを追加",
+    "description": "入力ボックスの下にあるプラスボタンのヒントで、展開後にファイルをアップロードしたり、スキルや接続管理を開いたりできます。"
+  },
   "composer.addFiles": {
     "message": "写真やファイルを追加",
-    "description": "入力ボックスの下のボタン：画像やファイルをアップロード"
+    "description": "プラスボタンのポップアップメニューの項目：画像やファイルをアップロード"
   },
   "composer.skills": {
     "message": "スキル",
-    "description": "入力ボックスの下のボタン：スキル管理を開く"
+    "description": "プラスボタンのポップアップメニューの項目：スキル管理を開く"
   },
   "composer.connections": {
     "message": "接続",
-    "description": "入力ボックスの下のボタン：接続管理を開く"
+    "description": "プラスボタンのポップアップメニューの項目：接続管理を開く"
   },
   "agent.title": {
     "message": "デスクトップエージェント",
@@ -436,7 +456,7 @@
     "description": "エージェント未接続状態"
   },
   "agent.description": {
-    "message": "デスクトップエージェントに接続して、AI対話でローカルファイルにアクセスし、コマンドを実行し、ローカルMCPサーバーを使用します。",
+    "message": "デスクトップエージェントに接続して、AI対話でローカルファイルにアクセスしたり、コマンドを実行したり、ローカルMCPサーバーを使用したりします。",
     "description": "エージェントの説明"
   },
   "agent.name": {
@@ -448,12 +468,12 @@
     "description": "エージェントツール数ラベル"
   },
   "agent.connectedSince": {
-    "message": "接続時間",
+    "message": "接続日時",
     "description": "エージェント接続時間ラベル"
   },
   "agent.connectedHint": {
-    "message": "デスクトップエージェントが接続されました。",
-    "description": "エージェント接続のヒント"
+    "message": "デスクトップエージェントが接続されました。使用できます。",
+    "description": "エージェント接続ヒント"
   },
   "agent.installLabel": {
     "message": "デスクトップエージェントのインストール：",

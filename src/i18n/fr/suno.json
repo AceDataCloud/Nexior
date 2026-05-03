@@ -13,7 +13,7 @@
   },
   "voice.createTitle": {
     "message": "Créer un nouveau son",
-    "description": "Titre de la boîte de dialogue de création de son"
+    "description": "Titre de la boîte de dialogue pour créer un son"
   },
   "voice.name": {
     "message": "Nom",
@@ -156,7 +156,7 @@
     "description": "Étiquette pour enregistrer l'audio du microphone"
   },
   "description.dropAudioHere": {
-    "message": "Glissez l'audio ici ou cliquez pour télécharger",
+    "message": "Glissez l'audio ici, ou cliquez pour télécharger",
     "description": "Texte d'indication pour la zone de glisser-déposer audio"
   },
   "description.audioFormats": {
@@ -213,11 +213,11 @@
   },
   "button.replace_section": {
     "message": "Remplacer un extrait",
-    "description": "Texte du bouton pour remplacer un extrait d'une chanson"
+    "description": "Texte du bouton pour remplacer un extrait dans une chanson"
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Texte du bouton pour mixer plusieurs chansons"
+    "description": "Texte du bouton pour créer un mashup de plusieurs chansons"
   },
   "button.generate_lyrics": {
     "message": "Générer des paroles avec l'IA",
@@ -228,7 +228,7 @@
     "description": "Texte du bouton pour optimiser la description du style avec l'IA"
   },
   "button.all_stems": {
-    "message": "Séparer tout",
+    "message": "Toutes les pistes",
     "description": "Texte du bouton pour séparer toutes les pistes"
   },
   "model.model1": {
@@ -349,7 +349,7 @@
   },
   "name.replaceSection": {
     "message": "Remplacer un extrait",
-    "description": "Remplacer un extrait d'une chanson"
+    "description": "Remplacer un extrait dans une chanson"
   },
   "name.model": {
     "message": "Modèle",
@@ -384,7 +384,7 @@
     "description": "Description du paramètre de téléchargement de référence"
   },
   "description.vocalGender": {
-    "message": "Sélectionnez le genre de la voix générée (supporté uniquement par v4.5 et versions supérieures)",
+    "message": "Sélectionnez le genre de la voix générée (supporté uniquement à partir de la version v4.5)",
     "description": "Description du sélecteur de genre vocal"
   },
   "description.weirdness": {
@@ -420,7 +420,7 @@
     "description": "Placeholder pour l'entrée des paroles"
   },
   "placeholder.extend.lyrics": {
-    "message": "Entrez les paroles à étendre...",
+    "message": "Veuillez entrer les paroles à étendre...",
     "description": "Placeholder pour l'entrée des paroles à étendre"
   },
   "placeholder.extend.continue_at": {
@@ -501,7 +501,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Le nombre de musiques téléchargées dépasse la limite maximale",
-    "description": "Message d'erreur lorsque le nombre de musiques téléchargées dépasse la limite"
+    "description": "Message d'erreur lorsque le nombre de musiques téléchargées dépasse la limite maximale"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de la musique",
@@ -585,15 +585,15 @@
   },
   "button.upload_cover": {
     "message": "Télécharger la reprise",
-    "description": "Texte du bouton pour télécharger l'audio après la reprise"
+    "description": "Texte du bouton pour télécharger la reprise après avoir téléchargé l'audio"
   },
   "button.artist_consistency": {
     "message": "Cohérence de style",
-    "description": "Texte du bouton pour générer basé sur le style du chanteur"
+    "description": "Texte du bouton pour générer basé sur le style de l'artiste"
   },
   "button.artist_consistency_vox": {
     "message": "Cohérence de style vocal",
-    "description": "Texte du bouton pour générer basé sur le style vocal du chanteur"
+    "description": "Texte du bouton pour générer basé sur le style vocal de l'artiste"
   },
   "button.underpainting": {
     "message": "Ajouter accompagnement",
@@ -616,16 +616,16 @@
     "description": "Texte du bouton pour obtenir les données de tempo de la chanson"
   },
   "button.create_persona": {
-    "message": "Créer style de chanteur",
-    "description": "Texte du bouton pour créer un style de chanteur"
+    "message": "Créer style d'artiste",
+    "description": "Texte du bouton pour créer un style d'artiste"
   },
   "button.mashup_lyrics": {
-    "message": "Mélanger paroles",
+    "message": "Mélanger les paroles",
     "description": "Texte du bouton pour mélanger deux segments de paroles"
   },
   "name.persona": {
-    "message": "Style de chanteur",
-    "description": "Sélection du style de chanteur"
+    "message": "Style d'artiste",
+    "description": "Sélection du style d'artiste"
   },
   "name.overpaintingRange": {
     "message": "Plage vocale",
@@ -664,12 +664,12 @@
     "description": "Espace réservé pour l'heure de fin des échantillons"
   },
   "placeholder.personaId": {
-    "message": "Entrez l'ID du style de chanteur...",
-    "description": "Espace réservé pour l'entrée de l'ID du style de chanteur"
+    "message": "Entrez l'ID du style d'artiste...",
+    "description": "Espace réservé pour l'entrée de l'ID du style d'artiste"
   },
   "description.persona": {
-    "message": "Utilisez le style de chanteur créé pour générer des chansons au style cohérent",
-    "description": "Description de la fonctionnalité de style de chanteur"
+    "message": "Utilisez le style d'artiste créé pour générer des chansons au style cohérent",
+    "description": "Description de la fonctionnalité de style d'artiste"
   },
   "description.overpainting": {
     "message": "Ajouter des voix à la musique téléchargée dans une plage de temps spécifiée",
@@ -813,7 +813,7 @@
   },
   "filter.duration": {
     "message": "Durée",
-    "description": "Section de filtrage : Durée des chansons"
+    "description": "Section de filtrage : Durée de la chanson"
   },
   "filter.durationAll": {
     "message": "Tout",
@@ -833,7 +833,7 @@
   },
   "filter.video": {
     "message": "Vidéo",
-    "description": "Section de filtrage : Contient vidéo"
+    "description": "Section de filtrage : Contient une vidéo"
   },
   "filter.videoAll": {
     "message": "Tout",
@@ -841,7 +841,7 @@
   },
   "filter.videoWith": {
     "message": "Avec vidéo",
-    "description": "Vidéo : Contient uniquement vidéo"
+    "description": "Vidéo : Contient uniquement une vidéo"
   },
   "filter.videoWithout": {
     "message": "Audio uniquement",
@@ -881,7 +881,7 @@
   },
   "message.deleteSuccess": {
     "message": "Chanson supprimée",
-    "description": "Message lors de la réussite de la suppression d'une chanson"
+    "description": "Message lors de la suppression réussie d'une chanson"
   },
   "message.deleteFailed": {
     "message": "Échec de la suppression de la chanson",
@@ -908,11 +908,15 @@
     "description": "Description de la fonction d'ajustement de la vitesse"
   },
   "message.reusePromptSuccess": {
-    "message": "Prompt réutilisé, peut être ajusté et regénéré",
+    "message": "Le prompt a été réutilisé, vous pouvez l'ajuster et régénérer",
     "description": "Message après le succès de la réutilisation d'un prompt"
   },
   "message.reusePromptEmpty": {
     "message": "Aucune donnée de prompt réutilisable",
     "description": "Message lorsque aucune donnée de prompt n'est disponible pour réutilisation"
+  },
+  "name.lyricsMode": {
+    "message": "Mode paroles",
+    "description": "Étiquette du sélecteur de mode paroles (manuel / automatique)"
   }
 }

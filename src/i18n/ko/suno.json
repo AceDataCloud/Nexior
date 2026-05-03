@@ -28,7 +28,7 @@
     "description": "음성 설명 레이블"
   },
   "voice.descriptionPlaceholder": {
-    "message": "이 음성의 특징 설명...",
+    "message": "음성의 특징 설명...",
     "description": "음성 설명 입력 자리 표시자"
   },
   "voice.sourceType": {
@@ -96,7 +96,7 @@
     "description": "음성 삭제 확인 제목"
   },
   "voice.confirmDelete": {
-    "message": "이 음성을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "message": "이 음성을 정말 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
     "description": "음성 삭제 확인 메시지"
   },
   "voice.deleteSuccess": {
@@ -161,7 +161,7 @@
   },
   "description.audioFormats": {
     "message": "지원 형식: MP3, WAV, M4A",
-    "description": "지원하는 오디오 형식 안내"
+    "description": "지원되는 오디오 형식 안내"
   },
   "message.recordingReady": {
     "message": "녹음이 준비되었습니다.",
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "리마스터",
-    "description": "리마스터하여 음질 향상 버튼 텍스트"
+    "description": "리마스터 음질 향상 버튼 텍스트"
   },
   "button.replace_section": {
     "message": "구간 교체",
@@ -217,7 +217,7 @@
   },
   "button.mashup": {
     "message": "메시업",
-    "description": "여러 곡을 혼합하는 버튼 텍스트"
+    "description": "여러 곡을 메시업 버튼 텍스트"
   },
   "button.generate_lyrics": {
     "message": "AI 가사 생성",
@@ -313,7 +313,7 @@
   },
   "name.weirdness": {
     "message": "창의성",
-    "description": "생성된 음악의 창의성 정도 조절"
+    "description": "생성 음악의 창의성 정도 조절"
   },
   "name.styleInfluence": {
     "message": "스타일 영향력",
@@ -321,7 +321,7 @@
   },
   "name.variationCategory": {
     "message": "변형 유형",
-    "description": "생성된 변형의 다양성 정도 조절"
+    "description": "생성 변형의 다양성 정도 조절"
   },
   "name.audioWeight": {
     "message": "원곡 비율",
@@ -380,7 +380,7 @@
     "description": "매개변수 'title'의 설명"
   },
   "description.uploadAudios": {
-    "message": "생성의 참조로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성 성공 후 업로드한 음악을 기반으로 생성됩니다.",
+    "message": "생성의 참조로 음악을 업로드하세요. 업로드 과정에서 잠시 기다려야 하며, 생성 성공 후 업로드한 음악에 따라 생성됩니다.",
     "description": "참조 업로드 매개변수의 설명"
   },
   "description.vocalGender": {
@@ -869,11 +869,11 @@
   },
   "message.noSearchResults": {
     "message": "곡을 찾을 수 없습니다",
-    "description": "검색 결과가 없을 때의 메시지"
+    "description": "검색 결과가 없을 때 메시지"
   },
   "message.noFilterResults": {
     "message": "필터 조건에 맞는 곡이 없습니다",
-    "description": "필터 결과가 없을 때의 메시지"
+    "description": "필터 결과가 없을 때 메시지"
   },
   "message.confirmDelete": {
     "message": "이 곡을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
@@ -904,7 +904,7 @@
     "description": "속도 선택기 레이블"
   },
   "description.adjustSpeed": {
-    "message": "다양한 재생 속도로 곡을 다시 생성합니다 (0.5배에서 2배)",
+    "message": "다양한 재생 속도로 곡을 재생성합니다 (0.5배에서 2배)",
     "description": "속도 조정 기능 설명"
   },
   "message.reusePromptSuccess": {
@@ -913,6 +913,10 @@
   },
   "message.reusePromptEmpty": {
     "message": "재사용할 수 있는 프롬프트 데이터가 없습니다",
-    "description": "작업에 재사용할 프롬프트가 없을 때의 메시지"
+    "description": "작업에 재사용할 프롬프트가 없을 때 메시지"
+  },
+  "name.lyricsMode": {
+    "message": "가사 모드",
+    "description": "가사 모드 선택기 레이블(수동 / 자동)"
   }
 }

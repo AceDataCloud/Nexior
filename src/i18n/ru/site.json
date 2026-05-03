@@ -268,11 +268,11 @@
     "description": "至少保留一个管理员的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID пользователя по умолчанию для пригласителя. Если ссылка на распределение не содержит параметр inviter_id, будет использоваться этот ID.",
+    "message": "ID пользователя по умолчанию для пригласителя. Если ссылка на распределение не содержит параметр inviter_id, будет использоваться этот ID как пригласитель.",
     "description": "默认邀请人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID пользователя обязательного пригласителя. Если установлен этот ID, он будет использоваться независимо от наличия параметра inviter_id в ссылке на распределение.",
+    "message": "ID пользователя обязательного пригласителя. Если установлен этот ID, будет использоваться он как пригласитель, независимо от наличия параметра inviter_id в ссылке на распределение.",
     "description": "强制邀请人ID的提示"
   },
   "message.originTip": {
@@ -284,7 +284,7 @@
     "description": "站点标题的提示"
   },
   "message.descriptionTip": {
-    "message": "Описание сайта, находится в метаданных сайта, используется для SEO-оптимизации.",
+    "message": "Описание сайта, находится в метаданных сайта, используется для SEO-оптимизации сайта.",
     "description": "站点描述的提示"
   },
   "message.logoTip": {
@@ -296,7 +296,7 @@
     "description": "站点 Favicon 的提示"
   },
   "message.adminsTip": {
-    "message": "ID администраторов сайта. По умолчанию первый созданный пользователь становится администратором, только администраторы могут управлять сайтом.",
+    "message": "ID администраторов сайта. По умолчанию первый пользователь, создавший сайт, становится администратором. Только администраторы могут управлять сайтом.",
     "description": "站点管理员的提示"
   },
   "message.adminsTip2": {
@@ -304,7 +304,7 @@
     "description": "站点管理员的提示"
   },
   "message.keywordsTip": {
-    "message": "Ключевые слова сайта, находятся в метаданных сайта, используются для SEO-оптимизации.",
+    "message": "Ключевые слова сайта, находятся в метаданных сайта, используются для SEO-оптимизации сайта.",
     "description": "站点关键词的提示"
   },
   "message.keywordsTip2": {
@@ -348,67 +348,67 @@
     "description": "Sora 功能的描述"
   },
   "message.featuresSuno": {
-    "message": "Включить или отключить модуль функции Suno.",
+    "message": "Включить или отключить модуль функций Suno.",
     "description": "Описание функции Suno"
   },
   "message.featuresPixverse": {
-    "message": "Включить или отключить модуль функции Pixverse.",
+    "message": "Включить или отключить модуль функций Pixverse.",
     "description": "Описание функции Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Включить или отключить модуль функции FLux.",
+    "message": "Включить или отключить модуль функций FLux.",
     "description": "Описание функции FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Включить или отключить модуль функции Nano Banana.",
+    "message": "Включить или отключить модуль функций Nano Banana.",
     "description": "Описание функции Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Включить или отключить модуль функции OpenAI изображений.",
+    "message": "Включить или отключить модуль функций OpenAI изображений.",
     "description": "Описание функции OpenAI изображений"
   },
   "message.featuresSeedream": {
-    "message": "Включить или отключить модуль функции SeeDream.",
+    "message": "Включить или отключить модуль функций SeeDream.",
     "description": "Описание функции SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Включить или отключить модуль функции SeeDance.",
+    "message": "Включить или отключить модуль функций SeeDance.",
     "description": "Описание функции SeeDance"
   },
   "message.featuresWan": {
-    "message": "Включить или отключить модуль функции Wan.",
+    "message": "Включить или отключить модуль функций Wan.",
     "description": "Описание функции Wan"
   },
   "message.featuresProducer": {
-    "message": "Включить или отключить модуль функции Producer.",
+    "message": "Включить или отключить модуль функций Producer.",
     "description": "Описание функции Producer"
   },
   "message.featuresKimi": {
-    "message": "Включить или отключить модуль функции Kimi.",
+    "message": "Включить или отключить модуль функций Kimi.",
     "description": "Описание функции Kimi"
   },
   "message.featuresSerp": {
-    "message": "Включить или отключить модуль функции SERP.",
+    "message": "Включить или отключить модуль функций SERP.",
     "description": "Описание функции SERP"
   },
   "message.featuresLuma": {
-    "message": "Включить или отключить модуль функции Luma.",
+    "message": "Включить или отключить модуль функций Luma.",
     "description": "Описание функции Luma"
   },
   "message.featuresPika": {
-    "message": "Включить или отключить модуль функции Pika.",
+    "message": "Включить или отключить модуль функций Pika.",
     "description": "Описание функции Pika"
   },
   "message.featuresKling": {
-    "message": "Включить или отключить модуль функции Kling.",
+    "message": "Включить или отключить модуль функций Kling.",
     "description": "Описание функции Kling"
   },
   "message.featuresHailuo": {
-    "message": "Включить или отключить модуль функции Hailuo.",
+    "message": "Включить или отключить модуль функций Hailuo.",
     "description": "Описание функции Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Включить или отключить модуль функции AI удостоверений.",
+    "message": "Включить или отключить модуль функций AI удостоверений.",
     "description": "Описание функции AI удостоверений"
   },
   "message.featuresSupport": {
@@ -436,7 +436,7 @@
     "description": "Отображается как заголовок в редакторе"
   },
   "message.featuresGemini": {
-    "message": "Включить или отключить модуль функции Gemini.",
+    "message": "Включить или отключить модуль функций Gemini.",
     "description": "Описание функции Gemini"
   },
   "field.featuresClaude": {
@@ -444,7 +444,11 @@
     "description": "Отображается как заголовок в редакторе"
   },
   "message.featuresClaude": {
-    "message": "Включить или отключить модуль функции Claude.",
+    "message": "Включить или отключить модуль функций Claude.",
     "description": "Описание функции Claude"
+  },
+  "placeholder.admins": {
+    "message": "Введите ID пользователя администратора",
+    "description": "Заполнитель в поле редактирования администратора в настройках сайта"
   }
 }

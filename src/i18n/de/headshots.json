@@ -69,7 +69,7 @@
   },
   "status.processing": {
     "message": "Wird bearbeitet",
-    "description": "Bearbeitungszustand der Aufgabe"
+    "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte wählen...",
@@ -80,7 +80,7 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie den Prompt für den zu generierenden Video-Stil ein, z. B.: Astronauten fliegen vom Weltraum zum Vulkan",
+    "message": "Geben Sie den Prompt für den zu generierenden Video-Stil ein, z. B.: Astronauten, die vom Weltraum zum Vulkan fliegen",
     "description": "Platzhaltertext im Eingabefeld"
   },
   "button.fast": {
@@ -97,7 +97,7 @@
   },
   "button.viewImage": {
     "message": "Originalbild anzeigen",
-    "description": "Button-Text zur Anzeige von Headshots-Passbildern"
+    "description": "Button-Text zur Generierung von Headshots-Passbildern"
   },
   "button.download": {
     "message": "Bild herunterladen",
@@ -157,38 +157,46 @@
   },
   "styleCategory.styles": {
     "message": "Passbildstil",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, die Kategorie des generierten Bildes sollte dieses Label enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diese Kategorie enthalten"
   },
   "styleTag.malePportrait": {
     "message": "Männliches Porträt",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diesen Stil enthalten"
   },
   "styleTag.malePportrait2": {
     "message": "Männliches Porträt 2",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diesen Stil enthalten"
   },
   "styleTag.kindergarten": {
     "message": "Kindergarten-Eingangsfoto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.logoTshirt": {
-    "message": "Firmenlogo-T-Shirt-Foto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "message": "Unternehmenslogo-T-Shirt-Foto",
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.wedding": {
     "message": "Hochzeitsanmeldungsfoto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.businessPphoto": {
     "message": "Business-Porträt",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.bobSuit": {
-    "message": "Schwarzer Anzug mit Bob-Frisur",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "message": "Schwarzer Anzug mit Bob-Haarschnitt",
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.femalePortrait": {
     "message": "Weibliches Porträt",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten"
+  },
+  "message.uploadImageExceed": {
+    "message": "Maximal 2 Bilder können hochgeladen werden",
+    "description": "Hinweis, wenn die Anzahl der hochgeladenen Referenzbilder das Limit überschreitet"
+  },
+  "message.uploadImageError": {
+    "message": "Bild-Upload fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn der Upload der Referenzbilder fehlschlägt"
   }
 }

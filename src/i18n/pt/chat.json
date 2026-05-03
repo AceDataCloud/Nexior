@@ -1,10 +1,18 @@
 {
+  "thinking.inProgress": {
+    "message": "Pensando...",
+    "description": "Rótulo exibido enquanto o modelo gera o processo de raciocínio"
+  },
+  "thinking.done": {
+    "message": "Processo de pensamento",
+    "description": "Rótulo usado para colapsar a exibição do processo de raciocínio após a conclusão do modelo"
+  },
   "button.thinkDeeper": {
-    "message": "Pensar Profundamente",
-    "description": "Botão para pensar profundamente"
+    "message": "Pensar mais fundo",
+    "description": "Botão para pensar mais profundamente"
   },
   "button.deepsearch": {
-    "message": "Busca Profunda",
+    "message": "Busca profunda",
     "description": "Botão para busca profunda"
   },
   "button.search": {
@@ -12,7 +20,7 @@
     "description": "Botão de busca"
   },
   "button.edit": {
-    "message": "Editar",
+    "message": "Editar mensagem",
     "description": "Editar a mensagem enviada"
   },
   "modelGroup.chatgpt": {
@@ -37,7 +45,7 @@
   },
   "modelGroup.grokDescription": {
     "message": "Modelo de IA desenvolvido pela xAI",
-    "description": "Descrição do modelo Grok"
+    "description": "Descrição do modelo Grok3"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
@@ -96,7 +104,7 @@
     "description": "Descrição do modelo GPT 5.4 Mini"
   },
   "model.deepseekChat": {
-    "message": "Padrão 3.0",
+    "message": "3.0",
     "description": "Nome do modelo do serviço, ou seja, DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
@@ -104,20 +112,28 @@
     "description": "Descrição do modelo DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Raciocínio",
+    "message": "R1",
     "description": "Nome do modelo do serviço, ou seja, DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adequado para raciocínio e questões profundas",
+    "message": "Adequado para raciocínio e questões de pensamento profundo",
     "description": "Descrição do modelo DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
-    "message": "Versão Experimental V3.2",
+    "message": "3.2",
     "description": "Nome do modelo do serviço, ou seja, DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Última versão experimental",
-    "description": "Descrição do modelo DeepSeek V3.2 Experimental"
+    "description": "Descrição do modelo experimental DeepSeek V3.2"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Nome do modelo do serviço, ou seja, DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Modelo flagship leve de última geração, 1M de contexto",
+    "description": "Descrição do modelo DeepSeek V4 Flash"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -148,7 +164,7 @@
     "description": "Nome do modelo do serviço, ou seja, Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Adequado para tarefas de raciocínio complexas",
+    "message": "Adequado para tarefas de raciocínio complexo",
     "description": "Descrição do modelo Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
@@ -212,7 +228,7 @@
     "description": "Nome do modelo do serviço, ou seja, GLM 5.1"
   },
   "model.glm51Description": {
-    "message": "Modelo mais recente da Zhiyu",
+    "message": "Modelo mais recente da Zhipu",
     "description": "Descrição do modelo GLM 5.1"
   },
   "model.glm47": {
@@ -225,39 +241,39 @@
   },
   "message.startNewChat": {
     "message": "Iniciar nova conversa",
-    "description": "Mensagem na página que informa ao usuário para iniciar uma nova conversa"
+    "description": "Mensagem na página informando ao usuário para iniciar uma nova conversa"
   },
   "message.uploadFile": {
     "message": "Enviar arquivo",
-    "description": "Mensagem na página que informa ao usuário para enviar um arquivo"
+    "description": "Mensagem na página informando ao usuário para enviar um arquivo"
   },
   "message.noToken": {
     "message": "Por favor, solicite o serviço correspondente primeiro",
-    "description": "Mensagem na página que informa ao usuário para solicitar o serviço correspondente primeiro"
+    "description": "Mensagem na página informando ao usuário para solicitar o serviço correspondente primeiro"
   },
   "message.newMessagePlaceholder": {
     "message": "Digite sua pergunta...",
-    "description": "Placeholder na página que informa ao usuário para digitar uma pergunta"
+    "description": "Placeholder na página informando ao usuário para digitar uma pergunta"
   },
   "message.noInput": {
     "message": "A pergunta não pode estar vazia",
-    "description": "Mensagem na página que informa ao usuário que a pergunta não pode estar vazia"
+    "description": "Mensagem na página informando ao usuário que a pergunta não pode estar vazia"
   },
   "message.uploadReferencesExceed": {
     "message": "Você pode enviar no máximo 1 arquivo",
-    "description": "Mensagem na página que informa ao usuário que pode enviar no máximo 1 arquivo"
+    "description": "Mensagem na página informando ao usuário que pode enviar no máximo 1 arquivo"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar o arquivo, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página informando ao usuário que houve uma falha ao enviar o arquivo, por favor, tente novamente mais tarde"
   },
   "message.notApplied": {
     "message": "Você ainda não solicitou este serviço, por favor, faça isso primeiro",
-    "description": "Mensagem na página que informa ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
+    "description": "Mensagem na página informando ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
   },
   "message.tryForFree": {
     "message": "Experimente grátis",
-    "description": "Mensagem na página que informa ao usuário sobre a experiência gratuita"
+    "description": "Mensagem na página informando ao usuário sobre a experiência gratuita"
   },
   "message.question1": {
     "message": "Criar plano de treinamento",
@@ -277,7 +293,7 @@
   },
   "message.question5": {
     "message": "Qual é maior, 9.8 ou 9.11?",
-    "description": "Exemplo de pergunta para iniciar a conversa, pedindo para comparar o tamanho de dois números"
+    "description": "Exemplo de pergunta para iniciar a conversa, pedindo para comparar dois números"
   },
   "message.question6": {
     "message": "Qual é o impacto da IA no futuro?",
@@ -293,15 +309,15 @@
   },
   "message.errorApiError": {
     "message": "Falha na resposta, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página informando ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
   },
   "message.errorBadRequest": {
     "message": "Conteúdo da solicitação inválido, por favor, reformule sua pergunta",
-    "description": "Mensagem na página que informa ao usuário que o conteúdo da solicitação é inválido, por favor, reformule sua pergunta"
+    "description": "Mensagem na página informando ao usuário que o conteúdo da solicitação é inválido, por favor, reformule sua pergunta"
   },
   "message.errorNoConversation": {
     "message": "A conversa não existe ou expirou, por favor, inicie uma nova conversa",
-    "description": "Mensagem na página que informa ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
+    "description": "Mensagem na página informando ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
   },
   "message.errorContentTooLarge": {
     "message": "O conteúdo da pergunta é muito longo, por favor, encurte e tente novamente",
@@ -324,12 +340,12 @@
     "description": "Mensagem na página informando ao usuário que ocorreu um erro desconhecido no servidor, por favor, tente novamente mais tarde ou entre em contato com o suporte"
   },
   "message.errorTimeout": {
-    "message": "O tempo para responder a pergunta expirou, por favor, tente novamente",
-    "description": "Mensagem na página informando ao usuário que o tempo para responder a pergunta expirou, por favor, tente novamente"
+    "message": "O tempo para responder à pergunta expirou, por favor, tente novamente mais tarde",
+    "description": "Mensagem na página informando ao usuário que o tempo para responder à pergunta expirou, por favor, tente novamente mais tarde"
   },
   "message.errorNotApplied": {
-    "message": "Você ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar",
-    "description": "Mensagem na página informando ao usuário que ele ainda não solicitou este serviço, por favor, solicite antes de continuar a perguntar"
+    "message": "Você ainda não solicitou este serviço, por favor, solicite antes de continuar perguntando",
+    "description": "Mensagem na página informando ao usuário que ele ainda não solicitou este serviço, por favor, solicite antes de continuar perguntando"
   },
   "message.confirmDelete": {
     "message": "Confirmar exclusão",
@@ -407,17 +423,21 @@
     "message": "Gerenciamento de habilidades",
     "description": "Dica do botão para ir à página de gerenciamento de habilidades auth.acedata.cloud"
   },
+  "composer.addAction": {
+    "message": "Adicionar conteúdo",
+    "description": "Dica do botão de adição abaixo do campo de entrada, que ao expandir permite o upload de arquivos, abrir habilidades ou gerenciar conexões"
+  },
   "composer.addFiles": {
     "message": "Adicionar fotos ou arquivos",
-    "description": "Botão abaixo do campo de entrada: enviar imagens ou arquivos"
+    "description": "Item no menu pop-up do botão de adição: upload de imagens ou arquivos"
   },
   "composer.skills": {
     "message": "Habilidades",
-    "description": "Botão abaixo do campo de entrada: abrir gerenciamento de habilidades"
+    "description": "Item no menu pop-up do botão de adição: abrir gerenciamento de habilidades"
   },
   "composer.connections": {
     "message": "Conexões",
-    "description": "Botão abaixo do campo de entrada: abrir gerenciamento de conexões"
+    "description": "Item no menu pop-up do botão de adição: abrir gerenciamento de conexões"
   },
   "agent.title": {
     "message": "Agente de Desktop",
@@ -440,27 +460,27 @@
     "description": "Descrição do agente"
   },
   "agent.name": {
-    "message": "Nome do agente",
-    "description": "Rótulo do nome do agente"
+    "message": "Nome do Agente",
+    "description": "Etiqueta do nome do agente"
   },
   "agent.tools": {
-    "message": "Ferramentas disponíveis",
-    "description": "Rótulo da quantidade de ferramentas do agente"
+    "message": "Ferramentas Disponíveis",
+    "description": "Etiqueta do número de ferramentas do agente"
   },
   "agent.connectedSince": {
-    "message": "Tempo de conexão",
-    "description": "Rótulo do tempo de conexão do agente"
+    "message": "Conectado Desde",
+    "description": "Etiqueta do tempo de conexão do agente"
   },
   "agent.connectedHint": {
     "message": "Seu agente de desktop está conectado e pronto para uso.",
     "description": "Dica de que o agente está conectado"
   },
   "agent.installLabel": {
-    "message": "Instalar agente de desktop:",
-    "description": "Rótulo de instrução de instalação"
+    "message": "Instalar Agente de Desktop:",
+    "description": "Etiqueta de instruções de instalação"
   },
   "agent.runLabel": {
-    "message": "Executar agente:",
-    "description": "Rótulo de instrução de execução"
+    "message": "Executar Agente:",
+    "description": "Etiqueta de instruções de execução"
   }
 }

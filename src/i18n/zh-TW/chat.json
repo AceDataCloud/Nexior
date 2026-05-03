@@ -1,31 +1,39 @@
 {
+  "thinking.inProgress": {
+    "message": "思考中...",
+    "description": "模型正在生成推理过程时显示的标签"
+  },
+  "thinking.done": {
+    "message": "思考完成",
+    "description": "模型完成推理后用于折叠展示推理过程的标签"
+  },
   "button.thinkDeeper": {
-    "message": "深度思考",
-    "description": "深入思考按鈕"
+    "message": "深入思考",
+    "description": "深入思考按钮"
   },
   "button.deepsearch": {
     "message": "深度搜索",
-    "description": "深度搜索按鈕"
+    "description": "深度搜索按钮"
   },
   "button.search": {
     "message": "搜索",
-    "description": "搜索按鈕"
+    "description": "搜索按钮"
   },
   "button.edit": {
-    "message": "編輯",
-    "description": "編輯發送的消息"
+    "message": "编辑",
+    "description": "编辑发送的消息"
   },
   "modelGroup.chatgpt": {
     "message": "ChatGPT",
-    "description": "服務的模型名稱，即 GPT"
+    "description": "服务的模型名称，即 GPT"
   },
   "modelGroup.chatgptDescription": {
-    "message": "OpenAI 公司開發的 AI 模型",
+    "message": "OpenAI 開發的 AI 模型",
     "description": "ChatGPT 模型的描述"
   },
   "modelGroup.deepseek": {
     "message": "DeepSeek",
-    "description": "服務的模型名稱，即 DeepSeek"
+    "description": "服务的模型名称，即 DeepSeek"
   },
   "modelGroup.deepseekDescription": {
     "message": "深度求索公司開發的 AI 模型",
@@ -33,7 +41,7 @@
   },
   "modelGroup.grok": {
     "message": "Grok",
-    "description": "服務的模型名稱，即 Grok"
+    "description": "服务的模型名称，即 Grok"
   },
   "modelGroup.grokDescription": {
     "message": "xAI 公司開發的 AI 模型",
@@ -41,7 +49,7 @@
   },
   "modelGroup.gemini": {
     "message": "Gemini",
-    "description": "服務的模型名稱，即 Gemini"
+    "description": "服务的模型名称，即 Gemini"
   },
   "modelGroup.geminiDescription": {
     "message": "Google 開發的 AI 模型",
@@ -49,7 +57,7 @@
   },
   "modelGroup.claude": {
     "message": "Claude",
-    "description": "服務的模型名稱，即 Claude"
+    "description": "服务的模型名称，即 Claude"
   },
   "modelGroup.claudeDescription": {
     "message": "Anthropic 公司開發的 AI 模型",
@@ -57,7 +65,7 @@
   },
   "modelGroup.kimi": {
     "message": "Kimi",
-    "description": "服務的模型名稱，即 Kimi"
+    "description": "服务的模型名称，即 Kimi"
   },
   "modelGroup.kimiDescription": {
     "message": "月之暗面公司開發的 AI 模型",
@@ -65,7 +73,7 @@
   },
   "modelGroup.glm": {
     "message": "GLM",
-    "description": "服務的模型名稱，即 GLM"
+    "description": "服务的模型名称，即 GLM"
   },
   "modelGroup.glmDescription": {
     "message": "智譜 AI 開發的大語言模型",
@@ -73,7 +81,7 @@
   },
   "model.55": {
     "message": "gpt-5.5",
-    "description": "服務的模型名稱，即 GPT 5.5"
+    "description": "服务的模型名称，即 GPT 5.5"
   },
   "model.55Description": {
     "message": "最新一代旗艦 GPT 5.5 模型",
@@ -81,7 +89,7 @@
   },
   "model.54": {
     "message": "gpt-5.4",
-    "description": "服務的模型名稱，即 GPT 5.4"
+    "description": "服务的模型名称，即 GPT 5.4"
   },
   "model.54Description": {
     "message": "最新一代旗艦 GPT 5.4 模型",
@@ -89,39 +97,47 @@
   },
   "model.54Mini": {
     "message": "gpt-5.4-mini",
-    "description": "服務的模型名稱，即 GPT 5.4 Mini"
+    "description": "服务的模型名称，即 GPT 5.4 Mini"
   },
   "model.54MiniDescription": {
     "message": "更快更輕量的 GPT 5.4 模型",
     "description": "GPT 5.4 Mini 模型的描述"
   },
   "model.deepseekChat": {
-    "message": "3.0 標準",
-    "description": "服務的模型名稱，即 DeepSeek 聊天"
+    "message": "3.0",
+    "description": "服务的模型名称，即 DeepSeek 聊天"
   },
   "model.deepseekChatDescription": {
     "message": "適用於日常任務",
     "description": "DeepSeek 聊天模型的描述"
   },
   "model.deepseekReasoner": {
-    "message": "R1 推理",
-    "description": "服務的模型名稱，即 DeepSeek 推理"
+    "message": "R1",
+    "description": "服务的模型名称，即 DeepSeek 推理"
   },
   "model.deepseekReasonerDescription": {
     "message": "適用於推理和深度思考問題",
     "description": "DeepSeek 推理模型的描述"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 實驗版",
-    "description": "服務的模型名稱，即 DeepSeek V3.2 Exp"
+    "message": "3.2",
+    "description": "服务的模型名称，即 DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "最新實驗版本",
     "description": "DeepSeek V3.2 實驗模型的描述"
   },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "服务的模型名称，即 DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "最新一代輕量旗艦，1M 上下文",
+    "description": "DeepSeek V4 Flash 模型的描述"
+  },
   "model.grok4": {
     "message": "grok-4",
-    "description": "服務的模型名稱，即 Grok 4"
+    "description": "服务的模型名称，即 Grok 4"
   },
   "model.grok4Description": {
     "message": "目前最先進的模型",
@@ -129,7 +145,7 @@
   },
   "model.grok3": {
     "message": "grok-3",
-    "description": "服務的模型名稱"
+    "description": "服务的模型名称"
   },
   "model.grok3Description": {
     "message": "適用於大多數任務",
@@ -137,7 +153,7 @@
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
-    "description": "服務的模型名稱，即 Gemini 3.0 Pro"
+    "description": "服务的模型名称，即 Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
     "message": "目前最先進的模型",
@@ -145,7 +161,7 @@
   },
   "model.gemini25Pro": {
     "message": "gemini-2.5-pro",
-    "description": "服務的模型名稱，即 Gemini 2.5 Pro"
+    "description": "服务的模型名称，即 Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
     "message": "適用於複雜推理任務",
@@ -153,7 +169,7 @@
   },
   "model.gemini25Flash": {
     "message": "gemini-2.5-flash",
-    "description": "服務的模型名稱，即 Gemini 2.5 Flash"
+    "description": "服务的模型名称，即 Gemini 2.5 Flash"
   },
   "model.gemini25FlashDescription": {
     "message": "更快更輕量的模型",
@@ -161,7 +177,7 @@
   },
   "model.claudeOpus47": {
     "message": "claude-opus-4.7",
-    "description": "服務的模型名稱，即 Claude Opus 4.7"
+    "description": "服务的模型名称，即 Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
     "message": "目前最先進的模型",
@@ -304,12 +320,12 @@
     "description": "網頁中的消息，告訴用戶對話不存在或已過期，請開始新對話"
   },
   "message.errorContentTooLarge": {
-    "message": "內容過長，請縮短後重試",
-    "description": "網頁中的消息，告訴用戶內容過長，請縮短後重試"
+    "message": "問題內容過長，請縮短後重試",
+    "description": "網頁中的消息，告訴用戶問題內容過長，請縮短後重試"
   },
   "message.errorTooManyRequests": {
-    "message": "操作過於頻繁，請稍後重試",
-    "description": "網頁中的消息，告訴用戶操作過於頻繁，請稍後重試"
+    "message": "您的操作過於頻繁，請稍後重試",
+    "description": "網頁中的消息，告訴用戶您的操作過於頻繁，請稍後重試"
   },
   "message.errorBusy": {
     "message": "伺服器繁忙，請稍後重試",
@@ -317,7 +333,7 @@
   },
   "message.errorUsedUp": {
     "message": "您已用完套餐次數，請購買更多次數繼續使用",
-    "description": "網頁中的消息，告訴用戶已用完套餐次數，請購買更多次數繼續使用"
+    "description": "網頁中的消息，告訴用戶您已用完套餐次數，請購買更多次數繼續使用"
   },
   "message.errorUnknown": {
     "message": "伺服器發生未知錯誤，請稍後重試或聯繫客服",
@@ -329,7 +345,7 @@
   },
   "message.errorNotApplied": {
     "message": "您尚未申請此服務，請先申請再繼續提問",
-    "description": "網頁中的消息，告訴用戶尚未申請此服務，請先申請再繼續提問"
+    "description": "網頁中的消息，告訴用戶您尚未申請此服務，請先申請再繼續提問"
   },
   "message.confirmDelete": {
     "message": "確認刪除",
@@ -407,17 +423,21 @@
     "message": "技能管理",
     "description": "跳轉到 auth.acedata.cloud 技能管理頁的按鈕提示"
   },
+  "composer.addAction": {
+    "message": "添加內容",
+    "description": "輸入框下方加號按鈕的提示，展開後可上傳文件、打開技能或連接管理"
+  },
   "composer.addFiles": {
     "message": "添加照片或文件",
-    "description": "輸入框下方按鈕：上傳圖片或文件"
+    "description": "加號按鈕彈出菜單中的項：上傳圖片或文件"
   },
   "composer.skills": {
     "message": "技能",
-    "description": "輸入框下方按鈕：打開技能管理"
+    "description": "加號按鈕彈出菜單中的項：打開技能管理"
   },
   "composer.connections": {
     "message": "連接",
-    "description": "輸入框下方按鈕：打開連接管理"
+    "description": "加號按鈕彈出菜單中的項：打開連接管理"
   },
   "agent.title": {
     "message": "桌面代理",
@@ -452,7 +472,7 @@
     "description": "代理連接時間標籤"
   },
   "agent.connectedHint": {
-    "message": "桌面代理已連接，可以使用。",
+    "message": "您的桌面代理已連接，可以使用。",
     "description": "代理已連接提示"
   },
   "agent.installLabel": {

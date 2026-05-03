@@ -1,7 +1,15 @@
 {
+  "thinking.inProgress": {
+    "message": "Razmišljam...",
+    "description": "Oznaka koja se prikazuje dok model generiše proces zaključivanja"
+  },
+  "thinking.done": {
+    "message": "Proces razmišljanja",
+    "description": "Oznaka koja se koristi za prikazivanje završenog procesa zaključivanja"
+  },
   "button.thinkDeeper": {
-    "message": "Razmišljaj dublje",
-    "description": "Dugme za duboko razmišljanje"
+    "message": "Dublje razmišljanje",
+    "description": "Dugme za dublje razmišljanje"
   },
   "button.deepsearch": {
     "message": "Duboka pretraga",
@@ -28,7 +36,7 @@
     "description": "Naziv modela usluge, tj. DeepSeek"
   },
   "modelGroup.deepseekDescription": {
-    "message": "AI model razvijen od strane DeepSeek kompanije",
+    "message": "AI model razvijen od strane kompanije DeepSeek",
     "description": "Opis DeepSeek modela"
   },
   "modelGroup.grok": {
@@ -36,8 +44,8 @@
     "description": "Naziv modela usluge, tj. Grok"
   },
   "modelGroup.grokDescription": {
-    "message": "AI model razvijen od strane xAI kompanije",
-    "description": "Opis Grok3 modela"
+    "message": "AI model razvijen od strane xAI",
+    "description": "Opis Grok modela"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
@@ -52,7 +60,7 @@
     "description": "Naziv modela usluge, tj. Claude"
   },
   "modelGroup.claudeDescription": {
-    "message": "AI model razvijen od strane Anthropic kompanije",
+    "message": "AI model razvijen od strane Anthropic",
     "description": "Opis Claude model grupe"
   },
   "modelGroup.kimi": {
@@ -68,7 +76,7 @@
     "description": "Naziv modela usluge, tj. GLM"
   },
   "modelGroup.glmDescription": {
-    "message": "Veliki jezički model razvijen od strane ZhiPu AI",
+    "message": "Veliki jezički model razvijen od strane Zhipu AI",
     "description": "Opis GLM model grupe"
   },
   "model.55": {
@@ -96,7 +104,7 @@
     "description": "Opis GPT 5.4 Mini modela"
   },
   "model.deepseekChat": {
-    "message": "3.0 standard",
+    "message": "3.0",
     "description": "Naziv modela usluge, tj. DeepSeek chat"
   },
   "model.deepseekChatDescription": {
@@ -104,20 +112,28 @@
     "description": "Opis DeepSeek chat modela"
   },
   "model.deepseekReasoner": {
-    "message": "R1 rezonator",
-    "description": "Naziv modela usluge, tj. DeepSeek rezonator"
+    "message": "R1",
+    "description": "Naziv modela usluge, tj. DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Pogodno za rezonovanje i duboko razmišljanje",
-    "description": "Opis DeepSeek rezonator modela"
+    "message": "Pogodno za zaključivanje i duboko razmišljanje",
+    "description": "Opis DeepSeek Reasoner modela"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 eksperimentalna verzija",
+    "message": "3.2",
     "description": "Naziv modela usluge, tj. DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Najnovija eksperimentalna verzija",
     "description": "Opis DeepSeek V3.2 eksperimentalnog modela"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Naziv modela usluge, tj. DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Najnovija generacija laganog flagship modela, 1M konteksta",
+    "description": "Opis DeepSeek V4 Flash modela"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -148,7 +164,7 @@
     "description": "Naziv modela usluge, tj. Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Pogodno za složene rezonatorske zadatke",
+    "message": "Pogodno za složene zadatke zaključivanja",
     "description": "Opis Gemini 2.5 Pro modela"
   },
   "model.gemini25Flash": {
@@ -169,7 +185,7 @@
   },
   "model.claudeSonnet46": {
     "message": "claude-sonnet-4.6",
-    "description": "Naziv modela usluge, tj. Claude Sonnet 4.6"
+    "description": "Ime modela usluge, tj. Claude Sonnet 4.6"
   },
   "model.claudeSonnet46Description": {
     "message": "Pogodno za većinu zadataka",
@@ -177,7 +193,7 @@
   },
   "model.claudeHaiku45": {
     "message": "claude-haiku-4.5",
-    "description": "Naziv modela usluge, tj. Claude Haiku 4.5"
+    "description": "Ime modela usluge, tj. Claude Haiku 4.5"
   },
   "model.claudeHaiku45Description": {
     "message": "Lagani i brzi model",
@@ -185,7 +201,7 @@
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
-    "description": "Naziv modela usluge, tj. Kimi K2.5"
+    "description": "Ime modela usluge, tj. Kimi K2.5"
   },
   "model.kimiK25Description": {
     "message": "Trenutno najnapredniji model",
@@ -193,7 +209,7 @@
   },
   "model.kimiK2Thinking": {
     "message": "kimi-k2 razmišljanje",
-    "description": "Naziv modela usluge, tj. Kimi K2 razmišljanje"
+    "description": "Ime modela usluge, tj. Kimi K2 razmišljanje"
   },
   "model.kimiK2ThinkingDescription": {
     "message": "Pogodno za razmišljanje i duboko razumevanje",
@@ -201,7 +217,7 @@
   },
   "model.kimiK2ThinkingTurbo": {
     "message": "kimi-k2 turbo razmišljanje",
-    "description": "Naziv modela usluge, tj. Kimi K2 turbo razmišljanje"
+    "description": "Ime modela usluge, tj. Kimi K2 turbo razmišljanje"
   },
   "model.kimiK2ThinkingTurboDescription": {
     "message": "Brži model razmišljanja",
@@ -209,7 +225,7 @@
   },
   "model.glm51": {
     "message": "glm-5.1",
-    "description": "Naziv modela usluge, tj. GLM 5.1"
+    "description": "Ime modela usluge, tj. GLM 5.1"
   },
   "model.glm51Description": {
     "message": "Najnoviji flagship model",
@@ -217,7 +233,7 @@
   },
   "model.glm47": {
     "message": "glm-4.7",
-    "description": "Naziv modela usluge, tj. GLM 4.7"
+    "description": "Ime modela usluge, tj. GLM 4.7"
   },
   "model.glm47Description": {
     "message": "Izbalansirane performanse i troškovi",
@@ -253,7 +269,7 @@
   },
   "message.notApplied": {
     "message": "Niste još zatražili ovu uslugu, molimo vas da to učinite",
-    "description": "Poruka na vebu koja obaveštava korisnika da još nije zatražio ovu uslugu, molimo vas da to učinite"
+    "description": "Poruka na vebu koja obaveštava korisnika da nije još zatražio ovu uslugu, molimo vas da to učinite"
   },
   "message.tryForFree": {
     "message": "Probajte besplatno",
@@ -328,8 +344,8 @@
     "description": "Poruka na vebu koja obaveštava korisnika da je odgovor na pitanje istekao, pokušajte ponovo"
   },
   "message.errorNotApplied": {
-    "message": "Niste se prijavili za ovu uslugu, prvo se prijavite pa nastavite sa pitanjem",
-    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, prvo se prijavite pa nastavite sa pitanjem"
+    "message": "Niste se prijavili za ovu uslugu, prvo se prijavite pa nastavite sa pitanjima",
+    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, prvo se prijavite pa nastavite sa pitanjima"
   },
   "message.confirmDelete": {
     "message": "Potvrdi brisanje",
@@ -385,7 +401,7 @@
   },
   "connector.authFailed": {
     "message": "Autorizacija nije uspela, pokušajte ponovo.",
-    "description": "Poruka o neuspehu autorizacije"
+    "description": "Poruka o neuspešnoj autorizaciji"
   },
   "connector.processing": {
     "message": "Obrada autorizacije...",
@@ -393,7 +409,7 @@
   },
   "connector.authSuccess": {
     "message": "Autorizacija uspešna!",
-    "description": "Poruka o uspehu OAuth povratnog poziva"
+    "description": "Poruka o uspešnoj OAuth povratnoj informaciji"
   },
   "connector.closeWindow": {
     "message": "Ovaj prozor će se automatski zatvoriti.",
@@ -401,30 +417,34 @@
   },
   "connections.tooltip": {
     "message": "Upravljanje vezama",
-    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje vezama auth.acedata.cloud"
+    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje vezama na auth.acedata.cloud"
   },
   "skill.tooltip": {
     "message": "Upravljanje veštinama",
-    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje veštinama auth.acedata.cloud"
+    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje veštinama na auth.acedata.cloud"
+  },
+  "composer.addAction": {
+    "message": "Dodaj sadržaj",
+    "description": "Poruka koja se prikazuje ispod ulaznog okvira, dugme sa plusom koje omogućava upload fajlova, otvaranje veština ili upravljanje vezama"
   },
   "composer.addFiles": {
-    "message": "Dodaj fotografije ili datoteke",
-    "description": "Dugme ispod ulaznog okvira: otpremi slike ili datoteke"
+    "message": "Dodaj fotografije ili fajlove",
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: upload slika ili fajlova"
   },
   "composer.skills": {
     "message": "Veštine",
-    "description": "Dugme ispod ulaznog okvira: otvori upravljanje veštinama"
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: otvaranje upravljanja veštinama"
   },
   "composer.connections": {
-    "message": "Povezivanje",
-    "description": "Dugme ispod ulaznog okvira: otvori upravljanje vezama"
+    "message": "Veze",
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: otvaranje upravljanja vezama"
   },
   "agent.title": {
-    "message": "Desktop Agent",
+    "message": "Desktop agent",
     "description": "Naslov dijaloga za upravljanje agentima"
   },
   "agent.tooltip": {
-    "message": "Desktop Agent",
+    "message": "Desktop agent",
     "description": "Poruka koja se prikazuje kada se prelazi na dugme agenta"
   },
   "agent.connected": {
@@ -436,7 +456,7 @@
     "description": "Status agenta nije povezan"
   },
   "agent.description": {
-    "message": "Povežite desktop agenta da biste pristupili lokalnim datotekama, izvršavali komande i koristili lokalni MCP server u AI razgovoru.",
+    "message": "Povežite desktop agenta da biste pristupili lokalnim fajlovima, izvršavali komande i koristili lokalni MCP server u AI razgovoru.",
     "description": "Opis agenta"
   },
   "agent.name": {
@@ -448,12 +468,12 @@
     "description": "Oznaka za broj alata agenta"
   },
   "agent.connectedSince": {
-    "message": "Vreme povezivanja",
+    "message": "Povezan od",
     "description": "Oznaka za vreme povezivanja agenta"
   },
   "agent.connectedHint": {
     "message": "Vaš desktop agent je povezan i spreman za korišćenje.",
-    "description": "Poruka koja obaveštava korisnika da je agent povezan"
+    "description": "Poruka koja označava da je agent povezan"
   },
   "agent.installLabel": {
     "message": "Instalirajte desktop agenta:",
