@@ -421,8 +421,8 @@ export default defineComponent({
     }
   }
   .content {
-    border-radius: 16px;
-    padding: 10px 16px;
+    border-radius: 18px;
+    padding: 10px 20px;
     width: 100%;
     max-width: 800px;
     margin-bottom: 4px;
