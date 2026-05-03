@@ -11,9 +11,20 @@ spec:
   tls:
     - hosts:
         - studio.acedata.cloud
+        - "*.studio.acedata.cloud"
       secretName: tls-wildcard-acedata-cloud
   rules:
     - host: studio.acedata.cloud
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: studio-frontend
+                port:
+                  number: 8085
+    - host: "*.studio.acedata.cloud"
       http:
         paths:
           - path: /
