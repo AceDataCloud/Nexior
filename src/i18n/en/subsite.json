@@ -1,90 +1,90 @@
 {
   "title.index": {
-    "message": "My Subsites",
-    "description": "Subsite list page title"
+    "message": "My Subsite",
+    "description": "Main title for the subsite management homepage"
   },
   "title.create": {
-    "message": "Create a subsite",
-    "description": "Create-subsite dialog title"
+    "message": "Create Subsite",
+    "description": "Title for the new subsite dialog"
   },
   "title.openNow": {
-    "message": "Open the new subsite",
-    "description": "After-create confirm dialog title"
+    "message": "Visit Subsite Now",
+    "description": "Title for the dialog asking if the user wants to redirect immediately after successful creation"
   },
   "field.slug": {
-    "message": "Subdomain prefix",
-    "description": "slug input label"
+    "message": "Subdomain Prefix",
+    "description": "Title for the subsite slug input field"
   },
   "field.origin": {
-    "message": "Subsite hostname",
-    "description": "List column for the full origin"
+    "message": "Subsite Domain",
+    "description": "Domain column in the subsite list"
   },
   "field.title": {
-    "message": "Title",
-    "description": "Subsite title column / field"
+    "message": "Subsite Title",
+    "description": "Field for the subsite title"
   },
   "field.createdAt": {
-    "message": "Created at",
-    "description": "List column for created_at"
+    "message": "Creation Time",
+    "description": "Column for the subsite creation time"
   },
   "field.actions": {
     "message": "Actions",
-    "description": "List actions column"
+    "description": "Column for actions in the subsite list"
   },
   "placeholder.slug": {
     "message": "e.g. my-brand",
-    "description": "slug input placeholder"
+    "description": "Placeholder for the slug input field"
   },
   "placeholder.title": {
-    "message": "Shown in the browser tab and the subsite header",
-    "description": "title input placeholder"
+    "message": "Displayed in the subsite browser tab and site header",
+    "description": "Placeholder for the title input field"
   },
   "button.create": {
-    "message": "Create subsite",
-    "description": "Create button"
+    "message": "Create Subsite",
+    "description": "Button to create a subsite"
   },
   "button.open": {
     "message": "Open",
-    "description": "Open subsite button"
+    "description": "Button to open the subsite"
   },
   "button.manage": {
     "message": "Manage",
-    "description": "Enter subsite settings button"
+    "description": "Button to enter subsite settings"
   },
   "message.indexTip": {
-    "message": "Spin up a branded subsite under this parent — each one has its own logo, title, and feature set, no source-level deploy required.",
-    "description": "Index page subtitle"
+    "message": "Create independent brand subsites under the main site, each subsite can have its own logo, title, and feature set without needing to build separate source code.",
+    "description": "Description text for the subsite management homepage"
   },
   "message.empty": {
-    "message": "You haven't created any subsites yet. Click \"Create subsite\" to get started.",
-    "description": "Empty list hint"
+    "message": "You have not created any subsites yet. Click 'Create Subsite' in the top right to get started.",
+    "description": "Prompt for an empty list"
   },
   "message.slugTip": {
-    "message": "3-32 lowercase letters, digits, or hyphens; no leading/trailing hyphen, no consecutive hyphens.",
-    "description": "Slug field tip"
+    "message": "3-32 lowercase letters, numbers, or hyphens; cannot start or end with a hyphen, and cannot contain consecutive hyphens.",
+    "description": "Description for the slug field"
   },
   "message.slugInvalid": {
-    "message": "Subdomain prefix is not valid. Check the rules and try again.",
-    "description": "Client-side slug check failed"
+    "message": "Subdomain prefix format is incorrect, please check the rules and try again.",
+    "description": "Slug validation failed"
   },
   "message.zoneMissing": {
-    "message": "This parent site has no subdomain zone configured. Contact the site administrator.",
-    "description": "subdomain_zone missing"
+    "message": "The current main site is not configured with a subdomain zone, please contact the site administrator.",
+    "description": "Missing subdomain_zone"
   },
   "message.created": {
-    "message": "Subsite created!",
-    "description": "Create success"
+    "message": "Subsite created successfully!",
+    "description": "Indicates successful creation"
   },
   "message.createFailed": {
-    "message": "Failed to create subsite. Please try again.",
-    "description": "Create failed"
+    "message": "Failed to create subsite, please try again later.",
+    "description": "Indicates creation failure"
   },
   "message.loadFailed": {
-    "message": "Failed to load subsites.",
-    "description": "List load failed"
+    "message": "Failed to load the subsite list.",
+    "description": "Indicates failure to load the list"
   },
   "message.openNowConfirm": {
-    "message": "Subsite {origin} has been created. Open it now to continue configuring?",
-    "description": "Confirm dialog after create"
+    "message": "Subsite {origin} has been created. Would you like to open it now to continue configuration?",
+    "description": "Asks if the user wants to open immediately after creation"
   }
 }

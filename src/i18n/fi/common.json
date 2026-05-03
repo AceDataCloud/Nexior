@@ -81,7 +81,7 @@
   },
   "button.profile": {
     "message": "Profiili",
-    "description": "Painikkeen teksti, jota käytetään käyttäjäprofiilin näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään henkilökohtaisen profiilin näyttämiseen"
   },
   "button.console": {
     "message": "Konsoli",
@@ -205,7 +205,7 @@
   },
   "status.loading": {
     "message": "Ladataan...",
-    "description": "Teksti, joka näkyy sisällön lataamisen aikana."
+    "description": "Teksti, joka näytetään sisällön lataamisen aikana."
   },
   "entity.operation": {
     "message": "Toiminto",
@@ -248,7 +248,7 @@
     "description": "Vihje, kun Android-asennuspaketti ei ole saatavilla."
   },
   "message.mobileAvailableNow": {
-    "message": "Android ladattavissa nyt",
+    "message": "Android on nyt ladattavissa",
     "description": "Näyttää, että Android on ladattavissa."
   },
   "message.mobileSecureDelivery": {
@@ -261,7 +261,7 @@
   },
   "message.mobileLatestRelease": {
     "message": "Nykyinen julkinen versio",
-    "description": "Selittää, että näytettävä on uusin julkinen versio."
+    "description": "Selittää, että nykyinen esitettävä versio on uusin julkinen versio."
   },
   "message.mobileSharedAccount": {
     "message": "Yhteinen tili ja käyttöoikeus verkkosivuston kanssa",
@@ -272,7 +272,7 @@
     "description": "iOS-latauskortin selitys."
   },
   "message.mobileIosPending": {
-    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaattien ja -profiilien täydentäminen on kesken.",
+    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaattien ja -profiilien täydentäminen on käynnissä.",
     "description": "Vihje, kun iOS-asennuspaketti ei ole saatavilla."
   },
   "message.mobileInstallNote": {
@@ -304,7 +304,7 @@
     "description": "Lataussivun etuusselitys, korostaa nopeaa pääsyä."
   },
   "message.mobileTrustedRelease": {
-    "message": "Latauslinkit on keskitetty yhdelle sivulle, versiot, alustan tila ja asennustapa ovat heti nähtävissä, vähentää viestintäkustannuksia, jotka johtuvat hajautetusta linkistä.",
+    "message": "Latauslinkit on keskitetty samaan sivuun, versiotiedot, alustan tila ja asennustapa ovat heti nähtävissä, mikä vähentää viestintäkustannuksia, jotka johtuvat linkkien hajautumisesta.",
     "description": "Lataussivun etuusselitys, korostaa yhtenäistä jakelua."
   },
   "message.mobileUnifiedExperience": {
@@ -337,7 +337,7 @@
   },
   "message.info": {
     "message": "Tietoa",
-    "description": "Näyttää tietoviestin"
+    "description": "Näyttää tiedotuksen"
   },
   "message.free": {
     "message": "Ilmainen",
@@ -349,19 +349,19 @@
   },
   "message.joinDiscord": {
     "message": "Liity Discordiin",
-    "description": "Kehottaa käyttäjää liittymään Discord-kanavalle"
+    "description": "Kutsuu käyttäjää liittymään Discord-kanavaan"
   },
   "message.addWeChat": {
     "message": "WeChat-palvelu",
-    "description": "Kehottaa käyttäjää lisäämään WeChat-tilin"
+    "description": "Kutsuu käyttäjää lisäämään WeChat-tilin"
   },
   "message.serviceTech": {
     "message": "Tekninen tuki",
-    "description": "Näyttää teknisen tuen viestin"
+    "description": "Näyttää teknisen tuen tiedot"
   },
   "message.businessCooperation": {
     "message": "Data & Liiketoimintayhteistyö",
-    "description": "Näyttää liiketoimintayhteistyön viestin"
+    "description": "Näyttää liiketoimintayhteistyön tiedot"
   },
   "message.noData": {
     "message": "Ei tietoja",
@@ -401,11 +401,11 @@
   },
   "nav.document": {
     "message": "Kehittäjädokumentaatio",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumenttisivun"
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää dokumentaatiosivun"
   },
   "nav.console": {
-    "message": "Ohjauspaneeli",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää ohjauspaneelisivun"
+    "message": "Konsoli",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää konsolisivun"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
@@ -449,139 +449,143 @@
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Website navigation text for displaying the Flux page, must remain 'Flux'"
+    "description": "网站导航栏中的文本，用于显示Flux页面，请不要翻译此字段，必须保持为'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Website navigation text for displaying the Nano Banana page, must remain 'Nano Banana'"
+    "description": "网站导航栏中的文本，用于显示Nano Banana页面，请不要翻译此字段，必须保持为'Nano Banana'"
   },
   "nav.openaiimage": {
     "message": "OpenAI Image",
-    "description": "Website navigation text for displaying the OpenAI Image page, must remain 'OpenAI Image'"
+    "description": "网站导航栏中的文本，用于显示OpenAI Image页面，请不要翻译此字段，必须保持为'OpenAI Image'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Website navigation text for displaying the SeeDream page, must remain 'SeeDream'"
+    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Website navigation text for displaying the SeeDance page, must remain 'SeeDance'"
+    "description": "网站导航栏中的文本，用于显示SeeDance页面，请不要翻译此字段，必须保持为'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Website navigation text for displaying the Luma page, must remain 'Luma'"
+    "description": "网站导航栏中的文本，用于显示Luma页面，请不要翻译此字段，必须保持为'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Website navigation text for displaying the Pika page, must remain 'Pika'"
+    "description": "网站导航栏中的文本，用于显示Pika页面，请不要翻译此字段，必须保持为'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Website navigation text for displaying the Kling page, must remain 'Kling'"
+    "description": "网站导航栏中的文本，用于显示Kling页面，请不要翻译此字段，必须保持为'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Website navigation text for displaying the Hailuo page, must remain 'Hailuo'"
+    "description": "网站导航栏中的文本，用于显示Hailuo页面，请不要翻译此字段，必须保持为'Hailuo'"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "Website navigation text for displaying the Wan page, must remain 'Wan'"
+    "description": "网站导航栏中的文本，用于显示Wan页面，请不要翻译此字段，必须保持为'Wan'"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "Website navigation text for displaying the Producer page, must remain 'Producer'"
+    "description": "网站导航栏中的文本，用于显示Producer页面，请不要翻译此字段，必须保持为'Producer'"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "Website navigation text for displaying the Kimi page, must remain 'Kimi'"
+    "description": "网站导航栏中的文本，用于显示Kimi页面，请不要翻译此字段，必须保持为'Kimi'"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "Website navigation text for displaying the SERP page, must remain 'SERP'"
+    "description": "网站导航栏中的文本，用于显示SERP页面，请不要翻译此字段，必须保持为'SERP'"
   },
   "nav.image": {
     "message": "Kuva",
-    "description": "Website navigation text for displaying the image page"
+    "description": "网站导航栏中的文本，用于显示图片页面"
   },
   "nav.music": {
     "message": "Musiikki",
-    "description": "Website navigation text for displaying the music page"
+    "description": "网站导航栏中的文本，用于显示音乐页面"
   },
   "nav.video": {
     "message": "Video",
-    "description": "Website navigation text for displaying the video page"
+    "description": "网站导航栏中的文本，用于显示视频页面"
   },
   "nav.distribution": {
-    "message": "Suositustulot",
-    "description": "Website navigation text for displaying the referral income page"
+    "message": "Suositusvoitot",
+    "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
   "nav.connections": {
     "message": "Yhteydet",
-    "description": "Menu item to navigate to the connection management page at auth.acedata.cloud"
+    "description": "跳转到 auth.acedata.cloud 连接管理页的菜单项"
   },
   "nav.logOut": {
     "message": "Kirjaudu ulos",
-    "description": "Website navigation text for logging out"
+    "description": "网站导航栏中的文本，用于退出登录"
   },
   "nav.site": {
     "message": "Sivuston asetukset",
-    "description": "Website navigation text for displaying the site configuration page"
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
+  },
+  "nav.subsite": {
+    "message": "Omat alisivustot",
+    "description": "侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示"
   },
   "nav.setting": {
     "message": "Asetukset",
-    "description": "Website navigation text for displaying the settings page"
+    "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "AI-profiilikuva",
-    "description": "Website navigation text for displaying the site configuration page"
+    "message": "AI Passikuvat",
+    "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
     "message": "Lisää",
-    "description": "Website navigation text for expanding more services"
+    "description": "网站导航栏中的文本，用于展开更多服务"
   },
   "nav.locale": {
     "message": "Kieliasetukset",
-    "description": "Website navigation text for changing the language"
+    "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.support": {
     "message": "Asiakastuki",
-    "description": "Website navigation text for displaying the contact page"
+    "description": "网站导航栏中的文本，用于显示联系页面"
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "Website navigation text for switching to dark theme"
+    "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
     "message": "Varoitus",
-    "description": "Title for warning messages"
+    "description": "警告消息的标题"
   },
   "title.placeholderOfSelect": {
     "message": "Valitse",
-    "description": "Placeholder for selection input"
+    "description": "选择输入的占位符"
   },
   "title.placeholderOfInput": {
     "message": "Täytä",
-    "description": "Placeholder for input"
+    "description": "输入的占位符"
   },
   "title.allApplications": {
     "message": "Kaikki hakemukset",
-    "description": "Page title for displaying all applications"
+    "description": "显示所有申请的页面标题"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "Page title for displaying all orders"
+    "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "Page title for displaying order information"
+    "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
     "message": "Lataa lisää",
-    "description": "Page title for recharging. Must translate to 'Top Up'."
+    "description": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
   },
   "title.distribution": {
     "message": "Suositustulot",
-    "description": "Page title for displaying referral income, meaning users can earn by inviting others to use the service"
+    "description": "Näyttää suositustulojen sivun otsikon, tarkoittaa, että käyttäjä voi ansaita rahaa kutsumalla muita käyttämään palvelua"
   },
   "title.site": {
     "message": "Sivuston asetukset",
@@ -601,7 +605,7 @@
   },
   "title.allCredentials": {
     "message": "Avaimet",
-    "description": "Näyttää kaikkien todisteiden sivun otsikon, todisteet käytetään API:in pääsyyn"
+    "description": "Näyttää kaikkien todistusten sivun otsikon, todistukset käytetään API:in pääsyyn"
   },
   "about.title1": {
     "message": "Ota yhteyttä",
@@ -669,7 +673,7 @@
   },
   "theme.system": {
     "message": "Järjestelmä",
-    "description": "Järjestelmäteeman nimi, joka tarkoittaa automaattista teeman vaihtamista järjestelmäasetusten mukaan"
+    "description": "Järjestelmäteeman nimi, tarkoittaa automaattista teeman vaihtamista järjestelmäasetusten mukaan"
   },
   "settings.general": {
     "message": "Yleiset asetukset",
@@ -681,7 +685,7 @@
   },
   "settings.theme": {
     "message": "Teema",
-    "description": "Asetussivun teema-asetusten osan otsikko"
+    "description": "Asetussivun teemavalintojen osan otsikko"
   },
   "settings.seo": {
     "message": "SEO-asetukset",
@@ -725,11 +729,11 @@
   },
   "message.copyFailed": {
     "message": "Kopiointi epäonnistui",
-    "description": "Näyttää viestin, kun sisällön kopiointi epäonnistuu"
+    "description": "Näyttää viestin, että sisällön kopiointi epäonnistui"
   },
   "nav.tryNow": {
     "message": "Kokeile nyt",
-    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka kehottaa käyttäjää kokeilemaan palvelua"
+    "description": "Verkkosivuston navigointipalkissa oleva teksti, joka kannustaa käyttäjää kokeilemaan palvelua"
   },
   "title.coin": {
     "message": "Kryptovaluutta",
@@ -776,7 +780,7 @@
     "description": "Asiakkaan ammatti"
   },
   "customers.comment3": {
-    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja kohtuuhintaisia. Toivon, että ne paranevat entisestään!",
+    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja hinnat kohtuullisia, toivon niiden paranevan entisestään!",
     "description": "Asiakkaan arvio"
   },
   "nav.github": {
@@ -801,34 +805,34 @@
   },
   "settings.apiService": {
     "message": "API-palvelu",
-    "description": "Tietoa-sivulla esitettävä otsikko API-palvelun tarjoajasta"
+    "description": "Tietoa-sivulla esitettävä API-palveluntarjoajan otsikko"
   },
   "settings.apiServiceTip": {
-    "message": "Sivuston API-palvelun tarjoaa Ace Data Cloud.",
-    "description": "Tietoa-sivulla esitettävä selitys API-palvelun tarjoajasta"
+    "message": "API-palvelu tarjoaa Ace Data Cloud.",
+    "description": "Tietoa-sivulla esitettävä selitys API-palveluntarjoajasta"
   },
   "settings.buildYourOwn": {
     "message": "Rakenna oma",
     "description": "Tietoa-sivulla käyttäjälle, joka haluaa rakentaa samanlaisen sivuston, esitettävä otsikko"
   },
   "settings.buildYourOwnTip": {
-    "message": "Haluatko rakentaa samanlaisen AI-sivuston? Ota meihin yhteyttä saadaksesi käyttöönottoapua.",
-    "description": "Tietoa-sivulla samanlaisen rakentamisen selitys"
+    "message": "Haluatko rakentaa samanlaisen AI-sivuston? Ota meihin yhteyttä saadaksesi tukea käyttöönotossa.",
+    "description": "Tietoa-sivulla rakennettavan samanlaisen sivuston selitys"
   },
   "settings.contactUs": {
     "message": "Ota yhteyttä asiakaspalveluun",
-    "description": "Asiakaspalveluun ottamisen painikkeen teksti"
+    "description": "Asiakaspalvelun yhteydenottopainikkeen teksti"
   },
   "message.viewOnGithub": {
     "message": "Katso GitHubissa",
     "description": "Linkkiteksti projektin tarkasteluun GitHubissa"
   },
   "title.notFound": {
-    "message": "Sivu on kadonnut",
+    "message": "Sivua ei löytynyt",
     "description": "404-sivun otsikko"
   },
   "message.notFound": {
-    "message": "Käyttämäsi sivu ei ole olemassa, linkki on saattanut muuttua tai poistettu. Palaa etusivulle jatkaaksesi AceData AI -palveluiden tutkimista.",
+    "message": "Käyttämäsi sivu ei ole olemassa, linkki on saattanut muuttua tai se on poistettu. Palaa etusivulle jatkaaksesi AceData AI -palveluiden tutkimista.",
     "description": "404-sivun alaotsikon kuvaus"
   },
   "message.notFoundEyebrow": {
