@@ -156,13 +156,11 @@ export const getTasks = async (
         console.debug('get images tasks success', response.data.items);
         const existingItems = state?.tasks?.items || [];
         console.debug('existing items', existingItems);
-        const newItems = (response.data.items || []).filter((item) =>
-          ['images_generations', 'images_edits'].includes(item?.type || '')
-        );
+        const newItems = response.data.items || [];
         console.debug('new items', newItems);
         const mergedItems = mergeAndSortLists(existingItems, newItems);
         commit('setTasksItems', mergedItems);
-        commit('setTasksTotal', mergedItems.length);
+        commit('setTasksTotal', response.data.count);
         state.status.getTasks = Status.Success;
         resolve(newItems);
       })
