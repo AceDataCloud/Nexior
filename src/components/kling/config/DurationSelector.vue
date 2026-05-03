@@ -2,50 +2,39 @@
   <div class="field">
     <div class="header">
       <h2 class="title font-bold">{{ $t('kling.name.duration') }}</h2>
-      <info-icon :content="$t('kling.description.duration')" class="info-icon" />
+      <info-icon :content="$t('kling.description.duration')" class="info-icon ml-1" />
+      <span class="value-display">{{ value }}s</span>
     </div>
-    <el-select v-model="value" class="value" :placeholder="$t('kling.placeholder.select')">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-        :disabled="item.disabled"
-      >
-        <span :class="{ 'opt-disabled': item.disabled }">{{ item.label }}</span>
-        <span v-if="item.disabled" class="opt-tip">
-          {{ $t('kling.description.durationV3Only') }}
-        </span>
-      </el-option>
-    </el-select>
+    <el-slider
+      v-model="sliderValue"
+      class="slider"
+      :min="sliderMin"
+      :max="sliderMax"
+      :step="sliderStep"
+      :marks="marks"
+      :show-tooltip="false"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElSlider } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { KLING_DEFAULT_DURATION, KLING_V3_MODELS } from '@/constants';
 
-const ALL_DURATIONS: { value: number; label: string; v3Only: boolean }[] = [
-  { value: 3, label: '3s', v3Only: true },
-  { value: 5, label: '5s', v3Only: false },
-  { value: 8, label: '8s', v3Only: true },
-  { value: 10, label: '10s', v3Only: false },
-  { value: 12, label: '12s', v3Only: true },
-  { value: 15, label: '15s', v3Only: true }
-];
+const V3_VALUES = [3, 5, 8, 10, 12, 15];
+const STANDARD_VALUES = [5, 10];
 
 export default defineComponent({
   name: 'DurationSelector',
   components: {
-    ElSelect,
-    ElOption,
+    ElSlider,
     InfoIcon
   },
   props: {
     modelValue: {
-      type: String,
+      type: Number,
       default: undefined
     }
   },
@@ -57,15 +46,33 @@ export default defineComponent({
     isV3Model(): boolean {
       return KLING_V3_MODELS.includes(this.selectedModel);
     },
-    options() {
-      return ALL_DURATIONS.map((d) => ({
-        ...d,
-        disabled: d.v3Only && !this.isV3Model
-      }));
+    sliderMin(): number {
+      return this.isV3Model ? 3 : 5;
     },
-    value: {
-      get(): number | undefined {
-        return this.$store.state.kling?.config?.duration;
+    sliderMax(): number {
+      return this.isV3Model ? 15 : 10;
+    },
+    sliderStep(): number {
+      // Non-v3 only allows 5 and 10, so step over the range jumps directly between them.
+      return this.isV3Model ? 1 : 5;
+    },
+    marks() {
+      const values = this.isV3Model ? V3_VALUES : STANDARD_VALUES;
+      const m: Record<number, string> = {};
+      for (const v of values) m[v] = `${v}s`;
+      return m;
+    },
+    value(): number {
+      return this.$store.state.kling?.config?.duration ?? KLING_DEFAULT_DURATION;
+    },
+    sliderValue: {
+      get(): number {
+        // Clamp the persisted value into the slider's current valid range so the
+        // thumb is always visible when switching models.
+        const v = this.value;
+        if (v < this.sliderMin) return this.sliderMin;
+        if (v > this.sliderMax) return this.sliderMax;
+        return v;
       },
       set(val: number) {
         this.$store.commit('kling/setConfig', {
@@ -77,17 +84,16 @@ export default defineComponent({
   },
   watch: {
     isV3Model(_: boolean) {
-      // Auto-correct if the currently selected duration becomes disabled.
-      const current = this.value;
-      const enabled = this.options.filter((o) => !o.disabled).map((o) => o.value);
-      if (current !== undefined && !enabled.includes(current)) {
-        this.value = KLING_DEFAULT_DURATION;
+      // Auto-correct when the persisted duration falls outside the new range.
+      const valid = this.isV3Model ? V3_VALUES : STANDARD_VALUES;
+      if (!valid.includes(this.value)) {
+        this.sliderValue = KLING_DEFAULT_DURATION;
       }
     }
   },
   mounted() {
-    if (!this.value) {
-      this.value = KLING_DEFAULT_DURATION;
+    if (!this.$store.state.kling?.config?.duration) {
+      this.sliderValue = KLING_DEFAULT_DURATION;
     }
   }
 });
@@ -96,31 +102,28 @@ export default defineComponent({
 <style lang="scss" scoped>
 .field {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 
   .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 50%;
 
     .title {
       font-size: 14px;
       margin: 0;
     }
+    .value-display {
+      margin-left: auto;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--el-color-primary);
+      min-width: 40px;
+      text-align: right;
+    }
   }
-  .value {
-    width: 120px;
+  .slider {
+    margin: 4px 8px 18px;
   }
-}
-.opt-disabled {
-  color: var(--el-text-color-disabled);
-}
-.opt-tip {
-  margin-left: 8px;
-  font-size: 11px;
-  color: var(--el-text-color-placeholder);
 }
 </style>

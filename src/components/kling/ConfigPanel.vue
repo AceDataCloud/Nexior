@@ -14,6 +14,7 @@
       <negative-prompt-input class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
+      <summary-chip />
       <consumption :value="consumption" :service="service" />
       <el-button
         v-if="config?.video_url !== undefined || config?.custom"
@@ -51,6 +52,7 @@ import CameraControlSelector from './config/CameraControlSelector.vue';
 import PromptInput from './config/PromptInput.vue';
 import NegativePromptInput from './config/NegativePromptInput.vue';
 import InspirationDrawer from './inspiration/InspirationDrawer.vue';
+import SummaryChip from './SummaryChip.vue';
 import { getConsumption } from '@/utils';
 
 export default defineComponent({
@@ -70,6 +72,7 @@ export default defineComponent({
     GenerateAudioSelector,
     CameraControlSelector,
     InspirationDrawer,
+    SummaryChip,
     EndImage
   },
   emits: ['generate'],
