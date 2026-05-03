@@ -15,113 +15,205 @@
     "message": "고품질",
     "description": "Kling 비디오의 고품질 모드"
   },
+  "name.mode4k": {
+    "message": "네이티브 4K",
+    "description": "Kling 4K 모드 (v3 / v3-Omni만 지원)"
+  },
+  "name.cameraControl": {
+    "message": "카메라 제어",
+    "description": "카메라 제어 유형 및 매개변수"
+  },
+  "name.cameraTypeNone": {
+    "message": "사용 안 함",
+    "description": "카메라 제어를 사용하지 않음"
+  },
+  "name.cameraTypeSimple": {
+    "message": "사용자 지정 (6차원)",
+    "description": "사용자 지정 6차원 매개변수 사용"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "아래로 이동 및 뒤로",
+    "description": "사전 설정 카메라 제어: 아래로 이동 및 뒤로"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "앞으로 이동 및 위로",
+    "description": "사전 설정 카메라 제어: 앞으로 이동 및 위로"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "왼쪽 회전 및 앞으로",
+    "description": "사전 설정 카메라 제어: 왼쪽 회전 및 앞으로"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "오른쪽 회전 및 앞으로",
+    "description": "사전 설정 카메라 제어: 오른쪽 회전 및 앞으로"
+  },
+  "name.cc_horizontal": {
+    "message": "수평 이동",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "수직 이동",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "수평 팬",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "수직 틸트",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "롤",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "줌",
+    "description": "camera_control.config.zoom"
+  },
   "name.failure": {
     "message": "실패",
-    "description": "작업의 실패 상태"
+    "description": "작업 실패 상태"
   },
   "name.failureReason": {
-    "message": "실패 원인",
-    "description": "작업 실패의 원인"
+    "message": "실패 이유",
+    "description": "작업 실패 사유"
   },
   "name.status": {
     "message": "상태",
-    "description": "작업의 상태"
+    "description": "작업 상태"
   },
   "name.traceId": {
     "message": "추적 ID",
-    "description": "작업의 추적 ID"
+    "description": "작업 추적 ID"
   },
   "name.createdAt": {
-    "message": "생성 시간",
+    "message": "생성일",
     "description": "Kling 비디오 생성 날짜 및 시간"
   },
   "name.cfgScale": {
     "message": "자유도",
-    "description": "비디오 생성의 자유도 매개변수 (0-1), 값이 클수록 참조에 가까워짐 (영어 제안: Freedom Level)"
+    "description": "비디오 생성 자유도 매개변수 (0-1), 값이 클수록 참조와 가까움"
   },
   "name.generateAudio": {
-    "message": "오디오 동기 생성",
-    "description": "오디오를 동기 생성할지 여부, kling-v3, kling-v3-omni 및 kling-v2-6 (pro 모드) 지원"
+    "message": "오디오 동시 생성",
+    "description": "오디오를 동시 생성할지 여부, kling-v3, kling-v3-omni, kling-v2-6(pro 모드) 지원"
   },
   "name.startImage": {
-    "message": "첫 프레임 참조 이미지",
-    "description": "폼 필드 레이블: 첫 프레임 참조 이미지 (영어 제안: 'First Frame', 간결하게 유지하여 버튼 가림 방지)"
+    "message": "첫 프레임 참조",
+    "description": "폼 필드 레이블: 첫 프레임 참조 이미지 (간결하게 유지)"
   },
   "name.negativePrompt": {
-    "message": "부정적 프롬프트",
-    "description": "비디오 생성의 부정적 텍스트 프롬프트"
+    "message": "부정 프롬프트",
+    "description": "비디오 생성용 부정 텍스트 프롬프트"
   },
   "name.endImage": {
-    "message": "마지막 프레임 참조 이미지",
-    "description": "폼 필드 레이블: 마지막 프레임 참조 이미지 (영어 제안: 'Last Frame', 간결하게 유지하여 버튼 가림 방지)"
+    "message": "마지막 프레임 참조",
+    "description": "폼 필드 레이블: 마지막 프레임 참조 이미지 (간결하게 유지)"
   },
   "name.videoUrl": {
-    "message": "사용자 정의 비디오",
-    "description": "사용자 정의 비디오"
+    "message": "사용자 비디오",
+    "description": "사용자 지정 비디오"
   },
   "name.prompt": {
     "message": "비디오 프롬프트",
-    "description": "내용 입력의 프롬프트"
+    "description": "콘텐츠 입력 프롬프트"
   },
   "name.duration": {
     "message": "비디오 길이",
-    "description": "비디오의 길이"
+    "description": "비디오 길이"
   },
   "name.ingredients": {
-    "message": "다중 이미지 생성 비디오",
-    "description": "다중 이미지 생성 비디오 스위치/레이블 (영어 제안: Multi-Image, 간결하게 유지)"
+    "message": "멀티 이미지",
+    "description": "멀티 이미지 비디오 생성 토글/레이블 (간결하게 유지)"
   },
   "name.model": {
     "message": "모델 버전",
-    "description": "비디오 생성에 사용되는 모델 버전"
+    "description": "비디오 생성에 사용할 모델 버전"
   },
   "name.ratio": {
     "message": "비디오 비율",
-    "description": "비디오 생성에 사용되는 비디오 비율"
+    "description": "생성할 비디오의 비율"
   },
   "name.mode": {
     "message": "비디오 모드",
-    "description": "비디오 생성에 사용되는 모드"
+    "description": "생성할 비디오 모드"
   },
   "name.effect": {
     "message": "비디오 효과",
-    "description": "다양한 버전 또는 스타일의 모델 간 전환을 위한 스타일 매개변수 이름"
+    "description": "스타일 파라미터 이름, 다른 모델 버전/스타일 전환용"
   },
   "name.ingredientsModel": {
     "message": "성분 모델",
-    "description": "비디오 생성에 사용되는 모델 버전"
+    "description": "비디오 생성에 사용할 모델 버전"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Kling 비디오 생성기의 이름"
+    "description": "Kling 비디오 생성기 이름"
   },
   "description.ingredients": {
-    "message": "여러 이미지를 업로드하여 자신의 비디오를 생성하려면 이 버튼을 켜세요.",
-    "description": "매개변수 'ingredients'의 설명"
+    "message": "여러 이미지를 업로드해 자신만의 비디오를 만들려면 이 버튼을 켜세요.",
+    "description": "'ingredients' 매개변수 설명"
   },
   "description.imageUrl": {
-    "message": "다중 이미지 생성 비디오 작업에서 여러 이미지를 업로드해야 합니다.",
-    "description": "매개변수 'imageUrl'의 설명"
+    "message": "멀티 이미지 비디오 생성 시 여러 이미지를 업로드해야 합니다.",
+    "description": "'imageUrl' 매개변수 설명"
   },
   "description.prompt": {
-    "message": "Kling 비디오 생성을 위한 프롬프트",
-    "description": "매개변수 'prompt'의 설명"
+    "message": "Kling 비디오 생성용 프롬프트",
+    "description": "'prompt' 매개변수 설명"
   },
   "description.negativePrompt": {
-    "message": "부정적 텍스트 프롬프트, 선택 사항, 200자 이하",
-    "description": "매개변수 'negativePrompt'의 설명"
+    "message": "선택적 부정 텍스트 프롬프트, 200자 이하",
+    "description": "'negativePrompt' 매개변수 설명"
   },
   "description.uploadStartImage": {
-    "message": "생성된 참조로 첫 프레임 이미지를 업로드하세요. 최종 비디오는 첫 프레임을 참조하여 생성됩니다.",
-    "description": "업로드 참조 매개변수의 설명"
+    "message": "첫 프레임 이미지를 참조용으로 업로드하면 최종 비디오가 이를 기준으로 생성됩니다.",
+    "description": "참조 이미지 업로드 설명"
   },
   "description.uploadEndImage": {
-    "message": "생성된 참조로 마지막 프레임 이미지를 업로드하세요. 최종 비디오는 마지막 프레임을 참조하여 생성됩니다.",
-    "description": "업로드 참조 매개변수의 설명"
+    "message": "생성된 참조로서 마지막 프레임 이미지를 업로드합니다. 최종 비디오는 마지막 프레임을 참조하여 생성됩니다.",
+    "description": "업로드 참조 매개변수에 대한 설명"
   },
   "description.cfgScale": {
-    "message": "비디오 생성의 자유도, 선택 사항 [0,1]. 값이 클수록 관련성이 강해집니다.",
+    "message": "비디오 생성의 자유도, 선택 가능 [0,1]. 값이 클수록 관련성이 강해집니다.",
     "description": "업로드 참조 매개변수의 설명"
+  },
+  "description.mode": {
+    "message": "std는 성능이 더 높고, pro는 화질이 더 좋습니다; 4K는 v3 / v3-Omni에서만 지원되며, 카메라 제어와 동시에 사용할 수 없습니다.",
+    "description": "모드 필드의 전체 설명"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "kling-v3 / kling-v3-omni에서만 지원됩니다.",
+    "description": "4K 옵션이 비활성화된 이유 (모델 불일치)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "카메라 제어가 활성화되어 있어 4K와 동시에 사용할 수 없습니다.",
+    "description": "4K 옵션이 비활성화된 이유 (카메라 제어 설정됨)"
+  },
+  "description.duration": {
+    "message": "일반 모델은 5/10초만 지원합니다; v3 / v3-Omni는 3/5/8/10/12/15초를 지원합니다.",
+    "description": "지속 시간 필드의 전체 설명"
+  },
+  "description.durationV3Only": {
+    "message": "v3 / v3-Omni에서만 지원됩니다.",
+    "description": "지속 시간 옵션 비활성화 이유"
+  },
+  "description.generateAudio": {
+    "message": "비디오 생성 시 음향을 합성합니다. kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 지원됩니다.",
+    "description": "음향 스위치 설명 (지원됨)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "현재 모델은 동기화된 음향을 지원하지 않습니다. kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 사용 가능합니다.",
+    "description": "음향 스위치 설명 (비활성화됨)"
+  },
+  "description.cameraControl": {
+    "message": "카메라의 움직임 방향을 제어합니다. '사용자 정의'를 선택하면 6개 차원에서 미세 조정할 수 있으며, 각 항목의 값은 [-1, 1]입니다.",
+    "description": "카메라 제어 설명"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "4K 모드가 선택되어 카메라 제어를 사용할 수 없습니다. std / pro로 전환한 후 다시 활성화하세요.",
+    "description": "카메라 제어가 비활성화된 이유"
   },
   "status.pending": {
     "message": "대기 중",
@@ -148,7 +240,7 @@
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정적 프롬프트를 입력하세요, 200자 이하",
+    "message": "생성할 비디오 스타일의 부정적 프롬프트를 입력하세요, 200자 이내",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
@@ -157,7 +249,11 @@
   },
   "placeholder.aspectRatio": {
     "message": "선택하세요...",
-    "description": "가로 세로 비율 입력의 자리 표시자"
+    "description": "종횡비 입력의 자리 표시자"
+  },
+  "placeholder.cameraType": {
+    "message": "사용하지 않음",
+    "description": "카메라 유형 선택 자리 표시자"
   },
   "placeholder.preset": {
     "message": "선택하세요...",
@@ -165,7 +261,7 @@
   },
   "placeholder.markerShape": {
     "message": "선택하세요...",
-    "description": "마커 모양 입력의 자리 표시자"
+    "description": "마커 형태 입력의 자리 표시자"
   },
   "placeholder.rotate": {
     "message": "선택하세요...",
@@ -177,15 +273,15 @@
   },
   "button.precise": {
     "message": "정확하게",
-    "description": "Kling 비디오를 생성하는 버튼 텍스트"
+    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
   },
   "button.creative": {
     "message": "창의적",
-    "description": "Kling 비디오를 생성하는 버튼 텍스트"
+    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
   },
   "button.generate": {
     "message": "생성",
-    "description": "Kling 비디오를 생성하는 버튼 텍스트"
+    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
   },
   "button.extend": {
     "message": "비디오 확장",
@@ -197,7 +293,7 @@
   },
   "button.uploadImageUrl": {
     "message": "업로드",
-    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간단히 해주세요, 'Upload Image'는 사용하지 마세요)"
+    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간소화, 'Upload Image' 사용 금지)"
   },
   "button.uploadVideoUrl": {
     "message": "비디오 업로드",
@@ -205,46 +301,46 @@
   },
   "button.uploadReferences": {
     "message": "업로드",
-    "description": "사용자가 참조를 업로드할 수 있도록 하는 버튼 텍스트"
+    "description": "사용자가 참조를 업로드할 수 있도록 허용하는 버튼 텍스트"
   },
   "message.uploadReferencesExceed": {
-    "message": "최대 1장의 이미지만 업로드할 수 있습니다",
+    "message": "최대 1장의 이미지만 업로드할 수 있습니다.",
     "description": "업로드된 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadReferencesSuccess": {
     "message": "이미지 업로드 성공",
-    "description": "이미지 업로드가 성공했을 때의 성공 메시지"
+    "description": "이미지 업로드 성공 시의 성공 메시지"
   },
   "message.uploadReferencesError": {
-    "message": "이미지 업로드 실패, 나중에 다시 시도하세요",
+    "message": "이미지 업로드 실패, 나중에 다시 시도하세요.",
     "description": "이미지 업로드 실패 시의 오류 메시지"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
-    "description": "그리기 작업이 시작될 때의 메시지"
+    "description": "그림 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업 시작 성공",
-    "description": "작업 시작이 성공했을 때의 성공 메시지"
+    "message": "생성 작업이 성공적으로 시작되었습니다.",
+    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
-    "message": "작업 시작 실패, 관리자에게 문의하세요",
-    "description": "그리기 작업 시작 실패 시의 오류 메시지"
+    "message": "작업 시작 실패, 관리자에게 문의하세요.",
+    "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
   "message.usedUp": {
-    "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
+    "message": "포인트가 소진되었습니다. 추가 포인트를 구매한 후 계속 사용하세요.",
     "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "이미지가 생성 중일 때의 메시지"
+    "description": "이미지가 생성 중일 때 표시되는 메시지"
   },
   "message.downloadVideo": {
-    "message": "이 비디오 다운로드",
+    "message": "비디오 다운로드",
     "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.extendVideo": {
-    "message": "이 비디오 계속 생성",
+    "message": "비디오 생성 계속",
     "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
@@ -252,36 +348,36 @@
     "description": "이미지 생성 실패 시의 메시지"
   },
   "message.uploadVideoExceed": {
-    "message": "첫 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과할 때의 오류 메시지"
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 메시지"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
     "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 메시지"
   },
   "message.uploadStartImageExceed": {
-    "message": "첫 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadEndImageExceed": {
-    "message": "끝 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "끝 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다",
+    "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
   },
   "message.uploadStartImageError": {
-    "message": "첫 프레임 이미지 업로드 실패",
-    "description": "첫 프레임 이미지 업로드 실패 시의 오류 메시지"
+    "message": "첫 번째 프레임 이미지 업로드 실패",
+    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadVideoError": {
     "message": "비디오 업로드 실패",
     "description": "비디오 업로드 실패 시의 오류 메시지"
   },
   "message.uploadEndImageError": {
-    "message": "끝 프레임 이미지 업로드 실패",
-    "description": "끝 프레임 이미지 업로드 실패 시의 오류 메시지"
+    "message": "마지막 프레임 이미지 업로드 실패",
+    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 메시지"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
@@ -292,7 +388,7 @@
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 클릭하세요",
     "description": "작업이 없을 때의 메시지"
   }
 }

@@ -5,15 +5,71 @@
   },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 Kling視頻的內容類型，如'鏈接'、'文本'等"
+    "description": "要生成的 Kling 視頻的內容類型，如 '鏈接'、'文本' 等"
   },
   "name.modeStd": {
     "message": "標準",
-    "description": "Kling視頻的標準模式"
+    "description": "Kling 視頻的標準模式"
   },
   "name.modePro": {
     "message": "高品質",
-    "description": "Kling視頻的高品質模式"
+    "description": "Kling 視頻的高品質模式"
+  },
+  "name.mode4k": {
+    "message": "原生 4K",
+    "description": "Kling 4K 模式（僅 v3 / v3-Omni 支援）"
+  },
+  "name.cameraControl": {
+    "message": "運鏡控制",
+    "description": "相機控制類型與參數"
+  },
+  "name.cameraTypeNone": {
+    "message": "不使用",
+    "description": "不使用運鏡控制"
+  },
+  "name.cameraTypeSimple": {
+    "message": "自訂（6 維度）",
+    "description": "使用自訂六維度參數"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "下移並後退",
+    "description": "預設運鏡：下移並後退"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "向前並上移",
+    "description": "預設運鏡：向前並上移"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "左轉並前進",
+    "description": "預設運鏡：左轉並前進"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "右轉並前進",
+    "description": "預設運鏡：右轉並前進"
+  },
+  "name.cc_horizontal": {
+    "message": "水平移動",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "垂直移動",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "水平搖鏡（pan）",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "垂直搖鏡（tilt）",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "翻滾（roll）",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "推拉變焦（zoom）",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "失敗",
@@ -41,11 +97,11 @@
   },
   "name.generateAudio": {
     "message": "同步生成音效",
-    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
+    "description": "是否同步生成音效，支援 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
   },
   "name.startImage": {
     "message": "首幀參考圖片",
-    "description": "表單字段標籤：首幀參考圖（英文建議翻譯為“First Frame”，保持簡短避免遮擋按鈕）"
+    "description": "表單欄位標籤：首幀參考圖（英文建議翻譯為“First Frame”，保持簡短避免遮擋按鈕）"
   },
   "name.negativePrompt": {
     "message": "負向提示詞",
@@ -53,11 +109,11 @@
   },
   "name.endImage": {
     "message": "尾幀參考圖片",
-    "description": "表單字段標籤：尾幀參考圖（英文建議翻譯為“Last Frame”，保持簡短避免遮擋按鈕）"
+    "description": "表單欄位標籤：尾幀參考圖（英文建議翻譯為“Last Frame”，保持簡短避免遮擋按鈕）"
   },
   "name.videoUrl": {
-    "message": "自定義視頻",
-    "description": "自定義視頻"
+    "message": "自訂視頻",
+    "description": "自訂視頻"
   },
   "name.prompt": {
     "message": "視頻提示",
@@ -96,32 +152,68 @@
     "description": "Kling 視頻生成器的名稱"
   },
   "description.ingredients": {
-    "message": "如果您想上傳多張圖片來生成自己的視頻，請打開此按鈕。",
-    "description": "參數'ingredients'的描述"
+    "message": "如果您想上傳多張圖片來生成自己的視頻，請開啟此按鈕。",
+    "description": "參數 'ingredients' 的描述"
   },
   "description.imageUrl": {
     "message": "在多圖創建視頻的任務中，它必須上傳多張圖片。",
-    "description": "參數'imageUrl'的描述"
+    "description": "參數 'imageUrl' 的描述"
   },
   "description.prompt": {
-    "message": "生成Kling視頻的提示詞",
-    "description": "參數'prompt'的描述"
+    "message": "生成 Kling 視頻的提示詞",
+    "description": "參數 'prompt' 的描述"
   },
   "description.negativePrompt": {
     "message": "負向文本提示，可選，不能超過200個字符",
-    "description": "參數'prompt'的描述"
+    "description": "參數 'prompt' 的描述"
   },
   "description.uploadStartImage": {
     "message": "上傳首幀圖像作為生成的參考，最後的視頻會參考首幀生成",
     "description": "上傳參考參數的描述"
   },
   "description.uploadEndImage": {
-    "message": "上傳尾幀圖像作為生成的參考，最後的視頻會參考尾幀生成",
-    "description": "上傳參考參數的描述"
+    "message": "上傳尾幀作為生成參考，最終影片會依尾幀生成",
+    "description": "上傳參考參數的說明"
   },
   "description.cfgScale": {
-    "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強，",
+    "message": "生成影片的自由度，可選[0,1]。值越大，相關性越強，",
     "description": "上傳參考參數的描述"
+  },
+  "description.mode": {
+    "message": "std 性能較高，pro 畫質較好；4K 僅 v3 / v3-Omni 支援，且不可與運鏡控制同時使用",
+    "description": "模式欄位的整體說明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "僅 kling-v3 / kling-v3-omni 支援",
+    "description": "4K 選項被禁用的原因（模型不匹配）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "已開啟運鏡控制，不可與 4K 同時使用",
+    "description": "4K 選項被禁用的原因（已設定運鏡）"
+  },
+  "description.duration": {
+    "message": "普通模型僅支援 5/10 秒；v3 / v3-Omni 支援 3/5/8/10/12/15 秒",
+    "description": "時長欄位的整體說明"
+  },
+  "description.durationV3Only": {
+    "message": "僅 v3 / v3-Omni 支援",
+    "description": "時長選項禁用原因"
+  },
+  "description.generateAudio": {
+    "message": "在生成影片的同時合成音效。僅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）支援",
+    "description": "音效開關說明（已支援）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "當前模型不支援同步音效，僅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）可用",
+    "description": "音效開關說明（已禁用）"
+  },
+  "description.cameraControl": {
+    "message": "控制相機的運動方向。選擇「自訂」可在 6 個維度上微調，每項取值 [-1, 1]",
+    "description": "運鏡控制說明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "已選擇 4K 模式，運鏡控制不可用，請切換到 std / pro 後再啟用",
+    "description": "運鏡控制被禁用原因"
   },
   "status.pending": {
     "message": "等待中",
@@ -129,7 +221,7 @@
   },
   "status.processing": {
     "message": "處理中",
-    "description": "任務的等待狀態"
+    "description": "任務的處理狀態"
   },
   "placeholder.paddingNoise": {
     "message": "請選擇...",
@@ -137,19 +229,19 @@
   },
   "placeholder.select": {
     "message": "選擇",
-    "description": "選擇字段中的佔位文本"
+    "description": "選擇欄位中的佔位文本"
   },
   "placeholder.paddingLevel": {
     "message": "請選擇...",
     "description": "填充級別的佔位符"
   },
   "placeholder.prompt": {
-    "message": "輸入要生成的視頻風格的提示詞，例如：moving",
-    "description": "提示字段中的佔位文本"
+    "message": "輸入要生成的影片風格提示詞，例如：moving",
+    "description": "提示欄位中的佔位文本"
   },
   "placeholder.negativePrompt": {
-    "message": "輸入要生成的視頻風格的負向提示詞，不超過200字符",
-    "description": "提示字段中的佔位文本"
+    "message": "輸入要生成的影片風格的負向提示詞，不超過200字符",
+    "description": "提示欄位中的佔位文本"
   },
   "placeholder.position": {
     "message": "請選擇...",
@@ -158,6 +250,10 @@
   "placeholder.aspectRatio": {
     "message": "請選擇...",
     "description": "寬高比輸入的佔位符"
+  },
+  "placeholder.cameraType": {
+    "message": "不使用",
+    "description": "運鏡類型選擇佔位符"
   },
   "placeholder.preset": {
     "message": "請選擇...",
@@ -177,31 +273,31 @@
   },
   "button.precise": {
     "message": "精確",
-    "description": "生成Kling視頻的按鈕文本"
+    "description": "生成 Kling 影片的按鈕文本"
   },
   "button.creative": {
     "message": "創意",
-    "description": "生成Kling視頻的按鈕文本"
+    "description": "生成 Kling 影片的按鈕文本"
   },
   "button.generate": {
     "message": "生成",
-    "description": "生成Kling視頻的按鈕文本"
+    "description": "生成 Kling 影片的按鈕文本"
   },
   "button.extend": {
-    "message": "擴展視頻",
-    "description": "擴展視頻按鈕文本"
+    "message": "擴展影片",
+    "description": "擴展影片按鈕文本"
   },
   "button.download": {
-    "message": "下載視頻",
-    "description": "下載視頻按鈕文本"
+    "message": "下載影片",
+    "description": "下載影片按鈕文本"
   },
   "button.uploadImageUrl": {
-    "message": "上傳",
+    "message": "上傳圖片",
     "description": "上傳圖片按鈕文本（英文請簡化為“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
-    "message": "上傳視頻",
-    "description": "上傳視頻的按鈕文本"
+    "message": "上傳影片",
+    "description": "上傳影片的按鈕文本"
   },
   "button.uploadReferences": {
     "message": "上傳",
@@ -240,11 +336,11 @@
     "description": "圖像正在生成時的消息"
   },
   "message.downloadVideo": {
-    "message": "下載此視頻",
+    "message": "下載此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.extendVideo": {
-    "message": "繼續生成此視頻",
+    "message": "繼續生成此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
@@ -256,12 +352,12 @@
     "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳文件大小不能超過 10MB!",
-    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
+    "message": "上傳檔案大小不能超過 10MB！",
+    "description": "上傳檔案大小不能超過 10MB！時的錯誤信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳文件必須是 MP4 格式!",
-    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
+    "message": "上傳檔案必須是 MP4 格式！",
+    "description": "上傳檔案必須是 MP4 格式！的錯誤信息"
   },
   "message.uploadStartImageExceed": {
     "message": "上傳首幀圖片數量超過限制",
@@ -269,15 +365,15 @@
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
+    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
     "message": "上傳首幀圖片失敗",
     "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadVideoError": {
-    "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "message": "上傳影片失敗",
+    "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",
@@ -292,7 +388,7 @@
     "description": "沒有可用操作時的消息"
   },
   "message.noTasks": {
-    "message": "沒有歷史任務，請點擊左方生成視頻",
+    "message": "沒有歷史任務，請點擊左側生成影片",
     "description": "沒有任務時的消息"
   }
 }

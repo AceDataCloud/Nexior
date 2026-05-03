@@ -15,6 +15,62 @@
     "message": "Hög kvalitet",
     "description": "Kling-videos högkvalitetsläge"
   },
+  "name.mode4k": {
+    "message": "Ursprunglig 4K",
+    "description": "Kling 4K-läge (endast v3 / v3-Omni stöds)"
+  },
+  "name.cameraControl": {
+    "message": "Kamerakontroll",
+    "description": "Typ och parametrar för kamerakontroll"
+  },
+  "name.cameraTypeNone": {
+    "message": "Ingen",
+    "description": "Ingen kamerakontroll används"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Anpassad (6 dimensioner)",
+    "description": "Använd anpassade sexdimensionella parametrar"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Nedåt och bakåt",
+    "description": "Förinställd kamerarörelse: nedåt och bakåt"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Framåt och uppåt",
+    "description": "Förinställd kamerarörelse: framåt och uppåt"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Vänster och framåt",
+    "description": "Förinställd kamerarörelse: vänster och framåt"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Höger och framåt",
+    "description": "Förinställd kamerarörelse: höger och framåt"
+  },
+  "name.cc_horizontal": {
+    "message": "Horisontell rörelse",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Vertikal rörelse",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Horisontell panorering",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Vertikal lutning",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Rullning",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoom",
+    "description": "camera_control.config.zoom"
+  },
   "name.failure": {
     "message": "Misslyckande",
     "description": "Uppgiftens misslyckandestatus"
@@ -36,16 +92,16 @@
     "description": "Datum och tid för generering av Kling-video"
   },
   "name.cfgScale": {
-    "message": "Frihetsnivå",
-    "description": "Frihetsparameter för att generera video (0-1), ju högre värde desto mer likt referensen"
+    "message": "Frihetsgrad",
+    "description": "Frihetsgradens parameter för att generera video (0-1), ju högre värde desto närmare referensen"
   },
   "name.generateAudio": {
-    "message": "Generera ljud synkront",
+    "message": "Synkronisera ljud",
     "description": "Om ljud ska genereras synkront, stöder kling-v3, kling-v3-omni och kling-v2-6 (pro-läge)"
   },
   "name.startImage": {
     "message": "Första bildreferens",
-    "description": "Formulärfältets etikett: Första bildreferens (håll kort för att undvika att dölja knappen)"
+    "description": "Formulärfältets etikett: första bildreferens"
   },
   "name.negativePrompt": {
     "message": "Negativt prompt",
@@ -53,7 +109,7 @@
   },
   "name.endImage": {
     "message": "Sista bildreferens",
-    "description": "Formulärfältets etikett: Sista bildreferens (håll kort för att undvika att dölja knappen)"
+    "description": "Formulärfältets etikett: sista bildreferens"
   },
   "name.videoUrl": {
     "message": "Anpassad video",
@@ -69,7 +125,7 @@
   },
   "name.ingredients": {
     "message": "Flera bilder för video",
-    "description": "Växla/etikett för att skapa video med flera bilder (håll kort)"
+    "description": "Växla för att skapa video med flera bilder"
   },
   "name.model": {
     "message": "Modellversion",
@@ -104,52 +160,88 @@
     "description": "Beskrivning av parametern 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Promptord för att generera Kling-video",
+    "message": "Prompt för att generera Kling-video",
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Negativ textprompt, valfri, max 200 tecken",
+    "message": "Negativ textprompt, valfri, får inte överstiga 200 tecken",
     "description": "Beskrivning av parametern 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Ladda upp första bild som referens, den slutliga videon kommer att referera till första bilden.",
-    "description": "Beskrivning av referensparametern"
+    "message": "Ladda upp första bild som referens för genereringen, den slutliga videon kommer att referera till första bilden.",
+    "description": "Beskrivning av parametern för att ladda upp referens"
   },
   "description.uploadEndImage": {
-    "message": "Ladda upp sista bild som referens, den slutliga videon kommer att referera till sista bilden.",
+    "message": "Ladda upp slutbild som referens för genereringen, den sista videon kommer att baseras på slutbilden",
     "description": "Beskrivning av referensparametern"
   },
   "description.cfgScale": {
-    "message": "Frihetsnivå för att generera video, valfri [0,1]. Ju högre värde, desto starkare korrelation.",
-    "description": "Beskrivning av referensparametern"
+    "message": "Friheten för att generera video, val [0,1]. Ju högre värde, desto starkare korrelation.",
+    "description": "Beskrivning av referensparameter"
+  },
+  "description.mode": {
+    "message": "std har högre prestanda, pro har bättre kvalitet; 4K stöds endast av v3 / v3-Omni och kan inte användas med kamerakontroll samtidigt.",
+    "description": "Övergripande beskrivning av läget"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Endast kling-v3 / kling-v3-omni stöds",
+    "description": "Anledning till att 4K-alternativet är inaktiverat (modellmatchning)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Kamerakontroll är aktiverad och kan inte användas med 4K.",
+    "description": "Anledning till att 4K-alternativet är inaktiverat (kamerakontroll inställd)"
+  },
+  "description.duration": {
+    "message": "Vanliga modeller stöder endast 5/10 sekunder; v3 / v3-Omni stöder 3/5/8/10/12/15 sekunder.",
+    "description": "Övergripande beskrivning av varaktighet"
+  },
+  "description.durationV3Only": {
+    "message": "Endast v3 / v3-Omni stöds",
+    "description": "Anledning till att varaktighetsalternativet är inaktiverat"
+  },
+  "description.generateAudio": {
+    "message": "Syntetisera ljud samtidigt som video genereras. Endast kling-v3 / kling-v3-omni / kling-v2-6 (pro-läge) stöds.",
+    "description": "Beskrivning av ljudswitch (stött)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Den aktuella modellen stöder inte synkroniserat ljud, endast kling-v3 / kling-v3-omni / kling-v2-6 (pro-läge) är tillgängliga.",
+    "description": "Beskrivning av ljudswitch (inaktiverad)"
+  },
+  "description.cameraControl": {
+    "message": "Kontrollera kamerans rörelseriktning. Välj 'Anpassad' för att finjustera i 6 dimensioner, varje värde [-1, 1].",
+    "description": "Beskrivning av kamerakontroll"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "4K-läget är valt, kamerakontroll är inte tillgänglig, vänligen väx till std / pro och aktivera igen.",
+    "description": "Anledning till att kamerakontroll är inaktiverad"
   },
   "status.pending": {
     "message": "Väntar",
-    "description": "Uppgiftens väntande status"
+    "description": "Väntande status för uppgiften"
   },
   "status.processing": {
-    "message": "Behandlar",
-    "description": "Uppgiftens behandlingsstatus"
+    "message": "Bearbetar",
+    "description": "Bearbetande status för uppgiften"
   },
   "placeholder.paddingNoise": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av fyllnadsbrus"
+    "description": "Platshållare för fyllnadsbrus"
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platshållartext i urvalsfältet"
+    "description": "Platshållare för valfält"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: moving",
-    "description": "Platshållartext i promptfältet"
+    "message": "Skriv in nyckelord för den stil av video som ska genereras, till exempel: moving",
+    "description": "Platshållare för promptfält"
   },
   "placeholder.negativePrompt": {
-    "message": "Ange negativ prompt för den stil av video som ska genereras, max 200 tecken",
-    "description": "Platshållartext i promptfältet"
+    "message": "Skriv in negativa nyckelord för den stil av video som ska genereras, max 200 tecken",
+    "description": "Platshållare för negativt promptfält"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
@@ -157,7 +249,11 @@
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för bredd-höjd-förhållande"
+    "description": "Platshållare för bildförhållande"
+  },
+  "placeholder.cameraType": {
+    "message": "Ingen",
+    "description": "Platshållare för kameratypval"
   },
   "placeholder.preset": {
     "message": "Vänligen välj...",
@@ -165,18 +261,18 @@
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för markeringsform"
+    "description": "Platshållare för markörform"
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för rotationsinmatning"
+    "description": "Platshållare för rotationsinmatning"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för undermarkering"
+    "description": "Platshållare för undermarkör"
   },
   "button.precise": {
-    "message": "Exakt",
+    "message": "Precise",
     "description": "Knapptext för att generera Kling-video"
   },
   "button.creative": {
@@ -188,15 +284,15 @@
     "description": "Knapptext för att generera Kling-video"
   },
   "button.extend": {
-    "message": "Förläng video",
-    "description": "Knapptext för att förlänga video"
+    "message": "Utöka video",
+    "description": "Knapptext för att utöka video"
   },
   "button.download": {
     "message": "Ladda ner video",
     "description": "Knapptext för att ladda ner video"
   },
   "button.uploadImageUrl": {
-    "message": "Ladda upp",
+    "message": "Ladda upp bild",
     "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
@@ -228,7 +324,7 @@
     "description": "Framgångsmeddelande när uppgift har startats"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratör",
+    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratören",
     "description": "Felmeddelande när ritningsuppgift misslyckas"
   },
   "message.usedUp": {
@@ -237,31 +333,31 @@
   },
   "message.generating": {
     "message": "Genererar...",
-    "description": "Meddelande när bild genereras"
+    "description": "Meddelande när bilden genereras"
   },
   "message.downloadVideo": {
     "message": "Ladda ner denna video",
-    "description": "Meddelande när bild genereras"
+    "description": "Meddelande när bilden genereras"
   },
   "message.extendVideo": {
     "message": "Fortsätt generera denna video",
-    "description": "Meddelande när bild genereras"
+    "description": "Meddelande när bilden genereras"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera bild",
-    "description": "Meddelande när bildgenerering misslyckas"
+    "message": "Bildgenerering misslyckades",
+    "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.uploadVideoExceed": {
     "message": "Antalet uppladdade första bildrutor överskrider gränsen",
     "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad fil får inte överstiga 10MB!",
-    "description": "Felmeddelande när uppladdad fil överstiger 10MB"
+    "message": "Uppladdad fil får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när uppladdad fil inte är i MP4-format"
+    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
   },
   "message.uploadStartImageExceed": {
     "message": "Antalet uppladdade första bildrutor överskrider gränsen",
@@ -272,27 +368,27 @@
     "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp första bildruta",
-    "description": "Felmeddelande när uppladdning av första bildruta misslyckas"
+    "message": "Uppladdning av första bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp video",
-    "description": "Felmeddelande när uppladdning av video misslyckas"
+    "message": "Uppladdning av video misslyckades",
+    "description": "Felmeddelande när uppladdningen av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp sista bildruta",
-    "description": "Felmeddelande när uppladdning av sista bildruta misslyckas"
+    "message": "Uppladdning av sista bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokument",
-    "description": "Felmeddelande när uppladdning av dokument misslyckas"
+    "message": "Uppladdning av dokument misslyckades",
+    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
     "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när inga uppgifter finns"
+    "message": "Inga historiska uppgifter, klicka på vänster sida för att generera video",
+    "description": "Meddelande när det inte finns några uppgifter"
   }
 }

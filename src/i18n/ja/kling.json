@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "タイプ",
-    "description": "生成する Kling ビデオの内容タイプ、例：'リンク'、'テキスト'など"
+    "description": "生成する Kling ビデオの内容タイプ、例：'リンク'、'テキスト' など"
   },
   "name.modeStd": {
     "message": "標準",
@@ -14,6 +14,62 @@
   "name.modePro": {
     "message": "高品質",
     "description": "Kling ビデオの高品質モード"
+  },
+  "name.mode4k": {
+    "message": "ネイティブ 4K",
+    "description": "Kling 4K モード（v3 / v3-Omni のみサポート）"
+  },
+  "name.cameraControl": {
+    "message": "カメラ制御",
+    "description": "カメラ制御のタイプとパラメータ"
+  },
+  "name.cameraTypeNone": {
+    "message": "使用しない",
+    "description": "カメラ制御を使用しない"
+  },
+  "name.cameraTypeSimple": {
+    "message": "カスタム（6 次元）",
+    "description": "カスタムの六次元パラメータを使用"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "下移動と後退",
+    "description": "プリセットカメラ：下移動と後退"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "前進と上移動",
+    "description": "プリセットカメラ：前進と上移動"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "左回転と前進",
+    "description": "プリセットカメラ：左回転と前進"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "右回転と前進",
+    "description": "プリセットカメラ：右回転と前進"
+  },
+  "name.cc_horizontal": {
+    "message": "水平移動",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "垂直移動",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "水平パン",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "垂直ティルト",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "ロール",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "ズーム",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "失敗",
@@ -37,7 +93,7 @@
   },
   "name.cfgScale": {
     "message": "自由度",
-    "description": "生成ビデオの自由度パラメータ（0-1）、値が大きいほど参照に近くなる（英語の提案：Freedom Level）"
+    "description": "生成ビデオの自由度パラメータ（0-1）、値が大きいほど参考に近づく（英語の提案：Freedom Level）"
   },
   "name.generateAudio": {
     "message": "音声を同期生成",
@@ -69,7 +125,7 @@
   },
   "name.ingredients": {
     "message": "複数画像でビデオ作成",
-    "description": "複数画像でビデオ作成のスイッチ/ラベル（英語の提案：Multi-Image、短く）"
+    "description": "複数画像でビデオ作成のスイッチ/ラベル（英語の提案：Multi-Image、短く保つ）"
   },
   "name.model": {
     "message": "モデルバージョン",
@@ -85,7 +141,7 @@
   },
   "name.effect": {
     "message": "ビデオ効果",
-    "description": "異なるバージョンやスタイルのモデル間で切り替えるためのスタイルパラメータ名"
+    "description": "スタイルパラメータの名前、異なるバージョンやスタイルのモデル間で切り替えるために使用"
   },
   "name.ingredientsModel": {
     "message": "成分モデル",
@@ -116,12 +172,48 @@
     "description": "アップロード参考パラメータの説明"
   },
   "description.uploadEndImage": {
-    "message": "生成の参考として終フレーム画像をアップロードします。最終的なビデオは終フレームを参考に生成されます。",
-    "description": "アップロード参考パラメータの説明"
+    "message": "生成の参考としてエンドフレーム画像をアップロードします。最終的なビデオはエンドフレームを参考に生成されます。",
+    "description": "アップロードする参考パラメータの説明"
   },
   "description.cfgScale": {
-    "message": "生成ビデオの自由度、オプション [0,1]。値が大きいほど関連性が強くなります。",
+    "message": "生成ビデオの自由度、選択肢[0,1]。値が大きいほど関連性が強くなります。",
     "description": "アップロード参考パラメータの説明"
+  },
+  "description.mode": {
+    "message": "stdは性能が高く、proは画質が良い；4Kはv3 / v3-Omniのみ対応、カメラ制御と同時使用不可",
+    "description": "モードフィールドの全体説明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "kling-v3 / kling-v3-omniのみ対応",
+    "description": "4Kオプションが無効な理由（モデル不一致）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "カメラ制御が有効で、4Kと同時使用不可",
+    "description": "4Kオプションが無効な理由（カメラ制御が設定されている）"
+  },
+  "description.duration": {
+    "message": "通常モデルは5/10秒のみ対応；v3 / v3-Omniは3/5/8/10/12/15秒に対応",
+    "description": "時間フィールドの全体説明"
+  },
+  "description.durationV3Only": {
+    "message": "v3 / v3-Omniのみ対応",
+    "description": "時間オプションが無効な理由"
+  },
+  "description.generateAudio": {
+    "message": "ビデオ生成中に音声を合成します。kling-v3 / kling-v3-omni / kling-v2-6（proモード）のみ対応",
+    "description": "音声スイッチの説明（対応中）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "現在のモデルは音声の同期をサポートしていません。kling-v3 / kling-v3-omni / kling-v2-6（proモード）のみ利用可能",
+    "description": "音声スイッチの説明（無効）"
+  },
+  "description.cameraControl": {
+    "message": "カメラの動きの方向を制御します。「カスタム」を選択すると、6つの次元で微調整可能、各項目の値は[-1, 1]",
+    "description": "カメラ制御の説明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "4Kモードが選択されているため、カメラ制御は使用できません。std / proに切り替えてから再度有効にしてください",
+    "description": "カメラ制御が無効な理由"
   },
   "status.pending": {
     "message": "待機中",
@@ -159,6 +251,10 @@
     "message": "選択してください...",
     "description": "アスペクト比入力のプレースホルダー"
   },
+  "placeholder.cameraType": {
+    "message": "使用しない",
+    "description": "カメラタイプ選択のプレースホルダー"
+  },
   "placeholder.preset": {
     "message": "選択してください...",
     "description": "プリセット入力のプレースホルダー"
@@ -177,39 +273,39 @@
   },
   "button.precise": {
     "message": "精密",
-    "description": "Kling動画を生成するボタンのテキスト"
+    "description": "Klingビデオを生成するボタンテキスト"
   },
   "button.creative": {
     "message": "クリエイティブ",
-    "description": "Kling動画を生成するボタンのテキスト"
+    "description": "Klingビデオを生成するボタンテキスト"
   },
   "button.generate": {
     "message": "生成",
-    "description": "Kling動画を生成するボタンのテキスト"
+    "description": "Klingビデオを生成するボタンテキスト"
   },
   "button.extend": {
-    "message": "動画を拡張",
-    "description": "動画を拡張するボタンのテキスト"
+    "message": "ビデオを拡張",
+    "description": "ビデオ拡張ボタンテキスト"
   },
   "button.download": {
-    "message": "動画をダウンロード",
-    "description": "動画をダウンロードするボタンのテキスト"
+    "message": "ビデオをダウンロード",
+    "description": "ビデオダウンロードボタンテキスト"
   },
   "button.uploadImageUrl": {
     "message": "アップロード",
-    "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
+    "description": "画像アップロードボタンテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
   },
   "button.uploadVideoUrl": {
-    "message": "動画をアップロード",
-    "description": "動画をアップロードするボタンのテキスト"
+    "message": "ビデオをアップロード",
+    "description": "ビデオアップロードボタンテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
-    "description": "ユーザーが参考をアップロードできるボタンのテキスト"
+    "description": "ユーザーが参考をアップロードできるボタンテキスト"
   },
   "message.uploadReferencesExceed": {
     "message": "最大1枚の画像をアップロードできます",
-    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
@@ -217,22 +313,22 @@
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
-    "description": "画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "画像アップロードに失敗したときのエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
-    "description": "描画タスクが開始されるときのメッセージ"
+    "description": "描画タスク開始時のメッセージ"
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときの成功メッセージ"
+    "description": "タスクを正常に開始したときの成功メッセージ"
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
     "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入してから続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -241,58 +337,58 @@
   },
   "message.downloadVideo": {
     "message": "この動画をダウンロード",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中の時のメッセージ"
   },
   "message.extendVideo": {
     "message": "この動画の生成を続ける",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中の時のメッセージ"
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像の生成に失敗したときのメッセージ"
+    "description": "画像生成に失敗した時のメッセージ"
   },
   "message.uploadVideoExceed": {
-    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズが10MBを超えたときのエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
-    "message": "アップロード可能な最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最初のフレーム画像の数が制限を超えています",
+    "description": "最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "アップロード可能な最後のフレーム画像の数が制限を超えています",
-    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "message": "最後のフレーム画像の数が制限を超えています",
+    "description": "最後のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "動画のアップロードに失敗したときのエラーメッセージ"
+    "description": "動画のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "最後のフレーム画像のアップロードに失敗しました",
-    "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "最後のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",
-    "description": "文書のアップロードに失敗したときのエラーメッセージ"
+    "description": "文書のアップロードに失敗した時のエラーメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
-    "description": "タスクがないときのメッセージ"
+    "description": "タスクがない時のメッセージ"
   }
 }

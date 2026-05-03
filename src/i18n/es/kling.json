@@ -15,8 +15,64 @@
     "message": "Alta calidad",
     "description": "Modo de alta calidad del video Kling"
   },
+  "name.mode4k": {
+    "message": "4K nativo",
+    "description": "Modo Kling 4K (solo soportado en v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Control de cámara",
+    "description": "Tipo y parámetros de control de cámara"
+  },
+  "name.cameraTypeNone": {
+    "message": "No usar",
+    "description": "No usar control de cámara"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Personalizado (6 dimensiones)",
+    "description": "Usar parámetros personalizados de seis dimensiones"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Bajar y retroceder",
+    "description": "Preset de cámara: bajar y retroceder"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Avanzar y subir",
+    "description": "Preset de cámara: avanzar y subir"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Girar a la izquierda y avanzar",
+    "description": "Preset de cámara: girar a la izquierda y avanzar"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Girar a la derecha y avanzar",
+    "description": "Preset de cámara: girar a la derecha y avanzar"
+  },
+  "name.cc_horizontal": {
+    "message": "Movimiento horizontal",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Movimiento vertical",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Paneo horizontal",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Inclinación vertical",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Rodar",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoom",
+    "description": "camera_control.config.zoom"
+  },
   "name.failure": {
-    "message": "Fallido",
+    "message": "Fallo",
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
@@ -36,8 +92,8 @@
     "description": "Fecha y hora de generación del video Kling"
   },
   "name.cfgScale": {
-    "message": "Nivel de libertad",
-    "description": "Parámetro de libertad para generar el video (0-1), cuanto mayor sea, más se asemeja a la referencia"
+    "message": "Grado de libertad",
+    "description": "Parámetro de grado de libertad para generar el video (0-1), cuanto mayor sea el valor, más se asemejará a la referencia (sugerencia en inglés: Freedom Level)"
   },
   "name.generateAudio": {
     "message": "Generar audio sincronizado",
@@ -45,7 +101,7 @@
   },
   "name.startImage": {
     "message": "Imagen de referencia inicial",
-    "description": "Etiqueta del campo del formulario: imagen de referencia inicial"
+    "description": "Etiqueta del campo del formulario: imagen de referencia inicial (sugerencia en inglés: 'First Frame', mantenerlo breve para evitar obstruir el botón)"
   },
   "name.negativePrompt": {
     "message": "Palabras clave negativas",
@@ -53,15 +109,15 @@
   },
   "name.endImage": {
     "message": "Imagen de referencia final",
-    "description": "Etiqueta del campo del formulario: imagen de referencia final"
+    "description": "Etiqueta del campo del formulario: imagen de referencia final (sugerencia en inglés: 'Last Frame', mantenerlo breve para evitar obstruir el botón)"
   },
   "name.videoUrl": {
     "message": "Video personalizado",
     "description": "Video personalizado"
   },
   "name.prompt": {
-    "message": "Indicación del video",
-    "description": "Indicación de entrada del contenido"
+    "message": "Indicación de video",
+    "description": "Indicación para la entrada de contenido"
   },
   "name.duration": {
     "message": "Duración del video",
@@ -69,7 +125,7 @@
   },
   "name.ingredients": {
     "message": "Crear video con múltiples imágenes",
-    "description": "Interruptor/etiqueta para crear video con múltiples imágenes"
+    "description": "Interruptor/etiqueta para crear video con múltiples imágenes (sugerencia en inglés: Multi-Image, mantenerlo breve)"
   },
   "name.model": {
     "message": "Versión del modelo",
@@ -85,7 +141,7 @@
   },
   "name.effect": {
     "message": "Efecto de video",
-    "description": "Nombre del parámetro de estilo, utilizado para cambiar entre diferentes versiones o estilos de modelo"
+    "description": "Nombre del parámetro de estilo, utilizado para cambiar entre diferentes versiones o estilos de modelos"
   },
   "name.ingredientsModel": {
     "message": "Modelo de ingredientes",
@@ -96,7 +152,7 @@
     "description": "Nombre del generador de videos Kling"
   },
   "description.ingredients": {
-    "message": "Si desea subir varias imágenes para generar su video, active este botón.",
+    "message": "Si desea subir varias imágenes para generar su propio video, active este botón.",
     "description": "Descripción del parámetro 'ingredients'"
   },
   "description.imageUrl": {
@@ -108,7 +164,7 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Indicación de texto negativa, opcional, no más de 200 caracteres",
+    "message": "Texto de indicación negativa, opcional, no puede exceder 200 caracteres",
     "description": "Descripción del parámetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
@@ -116,64 +172,104 @@
     "description": "Descripción del parámetro de referencia de carga"
   },
   "description.uploadEndImage": {
-    "message": "Suba la imagen de la última trama como referencia para la generación, el video final se generará en base a la última trama",
-    "description": "Descripción del parámetro de referencia de carga"
+    "message": "Sube la imagen final como referencia para la generación, el video final se basará en esta imagen",
+    "description": "Descripción de los parámetros de referencia para la carga"
   },
   "description.cfgScale": {
-    "message": "Nivel de libertad para generar el video, opcional [0,1]. Cuanto mayor sea el valor, más fuerte será la correlación.",
-    "description": "Descripción del parámetro de referencia de carga"
+    "message": "Grado de libertad para generar el video, opción [0,1]. A mayor valor, mayor correlación",
+    "description": "Descripción de los parámetros de referencia subidos"
+  },
+  "description.mode": {
+    "message": "std más rápido, pro mejor calidad; 4K solo soportado en v3 / v3-Omni y no compatible con control de cámara",
+    "description": "Explicación general del campo de modo"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Solo soportado en kling-v3 / kling-v3-omni",
+    "description": "Razón por la que la opción 4K está deshabilitada (modelo incompatible)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Control de cámara activo, no se puede usar con 4K",
+    "description": "Razón por la que la opción 4K está deshabilitada (control de cámara configurado)"
+  },
+  "description.duration": {
+    "message": "Modelos normales solo soportan 5/10 s; v3 / v3-Omni soportan 3/5/8/10/12/15 s",
+    "description": "Explicación general del campo de duración"
+  },
+  "description.durationV3Only": {
+    "message": "Solo v3 / v3-Omni",
+    "description": "Razón por la que la opción de duración está deshabilitada"
+  },
+  "description.generateAudio": {
+    "message": "Genera audio junto con el video. Solo kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) soportado",
+    "description": "Explicación del interruptor de audio (habilitado)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Modelo actual no soporta audio, solo kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) disponible",
+    "description": "Explicación del interruptor de audio (deshabilitado)"
+  },
+  "description.cameraControl": {
+    "message": "Controla la dirección de la cámara. 'Personalizado' permite ajustar 6 dimensiones [-1, 1]",
+    "description": "Explicación del control de cámara"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "Modo 4K activado, control de cámara no disponible. Cambia a std / pro para habilitar",
+    "description": "Razón por la que el control de cámara está deshabilitado"
   },
   "status.pending": {
     "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
-    "message": "En proceso",
-    "description": "Estado de espera de la tarea"
+    "message": "Procesando",
+    "description": "Estado de procesamiento de la tarea"
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de ruido de relleno"
+    "description": "Marcador de posición para entrada de ruido"
   },
   "placeholder.select": {
     "message": "Seleccionar",
-    "description": "Texto de marcador de posición en el campo de selección"
+    "description": "Texto de marcador en campos de selección"
   },
   "placeholder.paddingLevel": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para el nivel de relleno"
+    "description": "Marcador de posición para nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese las palabras clave para el estilo del video a generar, por ejemplo: moving",
-    "description": "Texto de marcador de posición en el campo de indicación"
+    "message": "Ingrese la indicación para el estilo de video, ej.: moving",
+    "description": "Marcador de posición del campo de indicación"
   },
   "placeholder.negativePrompt": {
-    "message": "Ingrese las palabras clave negativas para el estilo del video a generar, no más de 200 caracteres",
-    "description": "Texto de marcador de posición en el campo de indicación"
+    "message": "Ingrese indicaciones negativas para el estilo de video, máximo 200 caracteres",
+    "description": "Marcador de posición del campo de indicación"
   },
   "placeholder.position": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de posición"
+    "description": "Marcador de posición para la posición"
   },
   "placeholder.aspectRatio": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de relación de aspecto"
+    "description": "Marcador de posición para proporción de aspecto"
+  },
+  "placeholder.cameraType": {
+    "message": "No usar",
+    "description": "Marcador de posición para tipo de cámara"
   },
   "placeholder.preset": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de preajuste"
+    "description": "Marcador de posición para preajuste"
   },
   "placeholder.markerShape": {
     "message": "Seleccione...",
-    "description": "Marcador de forma de entrada"
+    "description": "Marcador de posición para forma del marcador"
   },
   "placeholder.rotate": {
     "message": "Seleccione...",
-    "description": "Marcador de rotación de entrada"
+    "description": "Marcador de posición para rotación"
   },
   "placeholder.subMarker": {
     "message": "Seleccione...",
-    "description": "Marcador de subentrada"
+    "description": "Marcador de posición para submarcador"
   },
   "button.precise": {
     "message": "Preciso",
@@ -197,91 +293,91 @@
   },
   "button.uploadImageUrl": {
     "message": "Subir",
-    "description": "Texto del botón para subir imagen (simplificado a 'Subir')"
+    "description": "Texto del botón para subir imágenes (simplificado)"
   },
   "button.uploadVideoUrl": {
     "message": "Subir video",
-    "description": "Texto del botón para subir video"
+    "description": "Texto del botón para subir videos"
   },
   "button.uploadReferences": {
     "message": "Subir",
-    "description": "Texto del botón que permite al usuario subir referencias"
+    "description": "Botón para subir referencias"
   },
   "message.uploadReferencesExceed": {
-    "message": "Se puede subir un máximo de 1 imagen",
-    "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
+    "message": "Solo se puede subir 1 imagen",
+    "description": "Mensaje de error al exceder límite de imágenes"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagen subida con éxito",
-    "description": "Mensaje de éxito cuando se sube una imagen con éxito"
+    "message": "Imagen subida correctamente",
+    "description": "Mensaje de éxito al subir imagen"
   },
   "message.uploadReferencesError": {
-    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando falla la subida de la imagen"
+    "message": "Error al subir imagen, inténtelo más tarde",
+    "description": "Mensaje de error al fallar la subida"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
-    "description": "Mensaje al comenzar la tarea de dibujo"
+    "description": "Mensaje al iniciar la tarea de generación"
   },
   "message.startTaskSuccess": {
     "message": "Tarea de generación iniciada con éxito",
-    "description": "Mensaje de éxito al iniciar la tarea"
+    "description": "Mensaje de éxito al iniciar tarea"
   },
   "message.startTaskFailed": {
-    "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
+    "message": "Error al iniciar la tarea, contacte al administrador",
+    "description": "Mensaje de error al fallar la tarea"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus puntos, por favor compre más para continuar",
-    "description": "Mensaje cuando se han agotado los puntos"
+    "message": "Se han agotado sus créditos, compre más para continuar",
+    "description": "Mensaje cuando se han usado todos los créditos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras se genera la imagen"
+    "description": "Mensaje mostrado mientras se está generando la imagen"
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje mientras se genera la imagen"
+    "description": "Mensaje mostrado mientras se genera la imagen"
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje mientras se genera la imagen"
+    "description": "Mensaje mostrado mientras se genera la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando falla la generación de la imagen"
+    "description": "Mensaje mostrado cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Se ha excedido el límite de imágenes para la primera fotograma",
-    "description": "Mensaje de error cuando se excede el límite de imágenes para la primera fotograma"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "¡El tamaño del archivo no puede exceder 10MB!",
     "description": "Mensaje de error cuando el tamaño del archivo excede 10MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo subido debe ser en formato MP4!",
-    "description": "Mensaje de error cuando el archivo subido no es MP4"
+    "message": "¡El archivo debe estar en formato MP4!",
+    "description": "Mensaje de error cuando el archivo no está en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Se ha excedido el límite de imágenes para la primera fotograma",
-    "description": "Mensaje de error cuando se excede el límite de imágenes para la primera fotograma"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Se ha excedido el límite de imágenes para la última fotograma",
-    "description": "Mensaje de error cuando se excede el límite de imágenes para la última fotograma"
+    "message": "Número de imágenes de la última fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la última fotograma excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la primera fotograma",
-    "description": "Mensaje de error cuando falla la subida de la primera fotograma"
+    "message": "Error al subir la imagen de la primera fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida del video"
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la última fotograma",
-    "description": "Mensaje de error cuando falla la subida de la última fotograma"
+    "message": "Error al subir la imagen de la última fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
@@ -289,10 +385,10 @@
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
-    "description": "Mensaje cuando no hay operaciones disponibles"
+    "description": "Mensaje mostrado cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar video",
-    "description": "Mensaje cuando no hay tareas"
+    "message": "No hay tareas históricas, por favor haga clic en el video a la izquierda para generarlo",
+    "description": "Mensaje mostrado cuando no hay tareas"
   }
 }
