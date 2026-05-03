@@ -24,7 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # Use the bot PAT so that the commit pushed by create-pull-request below
+          # is authored by the bot user. This is required for the resulting PR to
+          # trigger downstream workflows (pull_request events created with the
+          # default GITHUB_TOKEN are intentionally suppressed by GitHub).
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -44,7 +48,9 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # MUST be a PAT (not GITHUB_TOKEN), otherwise the resulting PR will not
+          # trigger any workflows (including ci.yaml's pull_request job).
+          token: ${{ secrets.BOT_GITHUB_TOKEN }}
           commit-message: 'ci: auto-translate i18n from zh-CN'
           title: 'ci: auto-translate i18n from zh-CN'
           body: |
@@ -67,6 +73,6 @@ jobs:
       - name: Enable auto-merge for translation PR
         if: ${{ steps.cpr.outputs.pull-request-number }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN }}
         run: |
           gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --auto --squash --repo ${{ github.repository }}
