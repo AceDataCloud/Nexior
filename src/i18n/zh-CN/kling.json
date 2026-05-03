@@ -15,6 +15,62 @@
     "message": "高品质",
     "description": "Kling视频的高品质模式"
   },
+  "name.mode4k": {
+    "message": "原生 4K",
+    "description": "Kling 4K 模式（仅 v3 / v3-Omni 支持）"
+  },
+  "name.cameraControl": {
+    "message": "运镜控制",
+    "description": "相机控制类型与参数"
+  },
+  "name.cameraTypeNone": {
+    "message": "不使用",
+    "description": "不使用运镜控制"
+  },
+  "name.cameraTypeSimple": {
+    "message": "自定义（6 维度）",
+    "description": "使用自定义六维度参数"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "下移并后退",
+    "description": "预设运镜：下移并后退"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "向前并上移",
+    "description": "预设运镜：向前并上移"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "左转并前进",
+    "description": "预设运镜：左转并前进"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "右转并前进",
+    "description": "预设运镜：右转并前进"
+  },
+  "name.cc_horizontal": {
+    "message": "水平移动",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "垂直移动",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "水平摇镜（pan）",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "垂直摇镜（tilt）",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "翻滚（roll）",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "推拉变焦（zoom）",
+    "description": "camera_control.config.zoom"
+  },
   "name.failure": {
     "message": "失败",
     "description": "任务的失败状态"
@@ -123,6 +179,42 @@
     "message": "生成视频的自由度，可选[0,1]。值越大，相关性越强，",
     "description": "上传参考参数的描述"
   },
+  "description.mode": {
+    "message": "std 性能更高，pro 画质更好；4K 仅 v3 / v3-Omni 支持，且不可与运镜控制同时使用",
+    "description": "模式字段的整体说明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "仅 kling-v3 / kling-v3-omni 支持",
+    "description": "4k 选项被禁用的原因（模型不匹配）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "已开启运镜控制，不可与 4K 同时使用",
+    "description": "4k 选项被禁用的原因（已设置运镜）"
+  },
+  "description.duration": {
+    "message": "普通模型仅支持 5/10 秒；v3 / v3-Omni 支持 3/5/8/10/12/15 秒",
+    "description": "时长字段的整体说明"
+  },
+  "description.durationV3Only": {
+    "message": "仅 v3 / v3-Omni 支持",
+    "description": "时长选项禁用原因"
+  },
+  "description.generateAudio": {
+    "message": "在生成视频的同时合成音效。仅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）支持",
+    "description": "音效开关说明（已支持）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "当前模型不支持同步音效，仅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）可用",
+    "description": "音效开关说明（已禁用）"
+  },
+  "description.cameraControl": {
+    "message": "控制相机的运动方向。选择「自定义」可在 6 个维度上微调，每项取值 [-1, 1]",
+    "description": "运镜控制说明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "已选择 4K 模式，运镜控制不可用，请切换到 std / pro 后再启用",
+    "description": "运镜控制被禁用原因"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -158,6 +250,10 @@
   "placeholder.aspectRatio": {
     "message": "请选择...",
     "description": "宽高比输入的占位符"
+  },
+  "placeholder.cameraType": {
+    "message": "不使用",
+    "description": "运镜类型选择占位符"
   },
   "placeholder.preset": {
     "message": "请选择...",
