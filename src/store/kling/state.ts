@@ -9,6 +9,8 @@ export default (): IKlingState => {
     tasks: undefined,
     credential: undefined,
     config: undefined,
+    motionConfig: undefined,
+    taskType: 'videos',
     status: {
       getService: Status.None,
       getApplications: Status.None,

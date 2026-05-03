@@ -1,4 +1,88 @@
 {
+  "tab.videoGeneration": {
+    "message": "Video Generation",
+    "description": "Tab label"
+  },
+  "tab.motionControl": {
+    "message": "Motion Control",
+    "description": "Tab label"
+  },
+  "tab.avatar": {
+    "message": "Avatar",
+    "description": "Tab label: AI-Human / digital avatar"
+  },
+  "tab.comingSoon": {
+    "message": "Coming soon",
+    "description": "Coming-soon badge text"
+  },
+  "tab.avatarComingSoon": {
+    "message": "Avatar (face image + speech to talking-head video) is coming soon. Stay tuned.",
+    "description": "Tooltip explaining why Avatar tab is disabled"
+  },
+  "name.motionImage": {
+    "message": "Character image",
+    "description": "Motion Control character/scene reference image"
+  },
+  "name.motionVideo": {
+    "message": "Motion reference video",
+    "description": "Motion Control reference motion video"
+  },
+  "name.motionPrompt": {
+    "message": "Additional prompt (optional)",
+    "description": "Motion Control supplemental prompt"
+  },
+  "name.characterOrientation": {
+    "message": "Character orientation",
+    "description": "character_orientation field"
+  },
+  "name.orientationImage": {
+    "message": "Match image",
+    "description": "character_orientation = image"
+  },
+  "name.orientationVideo": {
+    "message": "Match video",
+    "description": "character_orientation = video"
+  },
+  "name.keepOriginalSound": {
+    "message": "Keep original sound",
+    "description": "keep_original_sound switch"
+  },
+  "description.motionImage": {
+    "message": "Upload the character reference image. The characters, backgrounds and other elements in the generated video will be based on this image.",
+    "description": "motion image_url description"
+  },
+  "description.motionVideo": {
+    "message": "Upload a motion reference video. Character movements in the generated video will follow this video (MP4 / MOV, ≤1 minute, ≤1 GB).",
+    "description": "motion video_url description"
+  },
+  "description.motionPrompt": {
+    "message": "Optional. May contain both positive and negative descriptions to refine the result.",
+    "description": "motion prompt description"
+  },
+  "description.characterOrientation": {
+    "message": "Choose 'Match video' for complex motions; choose 'Match image' to keep the character orientation aligned with the image and improve camera-movement fidelity.",
+    "description": "character_orientation description"
+  },
+  "description.motionMode": {
+    "message": "std prioritizes speed; pro prioritizes quality.",
+    "description": "motion mode description"
+  },
+  "description.keepOriginalSound": {
+    "message": "When ON, retain the original audio from the reference video. When OFF, the output will not contain the original audio.",
+    "description": "keep_original_sound description"
+  },
+  "placeholder.motionPrompt": {
+    "message": "e.g. A person dancing. Optional.",
+    "description": "motion prompt placeholder"
+  },
+  "button.generateMotion": {
+    "message": "Generate motion video",
+    "description": "Motion Control generate button"
+  },
+  "message.motionMissingInputs": {
+    "message": "Please upload both a character image and a motion reference video.",
+    "description": "Motion Control missing inputs warning"
+  },
   "name.taskId": {
     "message": "Task ID",
     "description": "The ID of the task"

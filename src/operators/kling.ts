@@ -1,5 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
-import { IKlingGenerateRequest, IKlingGenerateResponse, IKlingTaskResponse, IKlingTasksResponse } from '@/models';
+import {
+  IKlingGenerateRequest,
+  IKlingGenerateResponse,
+  IKlingMotionRequest,
+  IKlingTaskResponse,
+  IKlingTasksResponse
+} from '@/models';
 import { BASE_URL_API } from '@/constants';
 
 class KlingOperator {
@@ -99,6 +105,22 @@ class KlingOperator {
     }
   ): Promise<AxiosResponse<IKlingGenerateResponse>> {
     return await axios.post('/kling/videos', data, {
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json',
+        accept: 'application/x-ndjson'
+      },
+      baseURL: BASE_URL_API
+    });
+  }
+
+  async motion(
+    data: IKlingMotionRequest,
+    options: {
+      token: string;
+    }
+  ): Promise<AxiosResponse<IKlingGenerateResponse>> {
+    return await axios.post('/kling/motion', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
         'content-type': 'application/json',

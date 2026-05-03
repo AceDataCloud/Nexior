@@ -1,1 +1,1 @@
-export default ['kling.credential', 'kling.application', 'kling.applications', 'kling.tasks'];
+export default ['kling.credential', 'kling.application', 'kling.applications', 'kling.tasks', 'kling.taskType'];

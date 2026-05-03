@@ -2,7 +2,15 @@ import { applicationOperator, credentialOperator, klingOperator, serviceOperator
 import { IKlingState } from './models';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import { IApplication, ICredential, IKlingConfig, IKlingTask, IService } from '@/models';
+import {
+  IApplication,
+  ICredential,
+  IKlingConfig,
+  IKlingMotionConfig,
+  IKlingTask,
+  IKlingTaskType,
+  IService
+} from '@/models';
 import { Status } from '@/models/common';
 import { KLING_SERVICE_ID } from '@/constants';
 import { mergeAndSortLists } from '@/utils/merge';
@@ -106,6 +114,14 @@ export const setConfig = ({ commit }: any, payload: IKlingConfig) => {
   commit('setConfig', payload);
 };
 
+export const setMotionConfig = ({ commit }: any, payload: IKlingMotionConfig) => {
+  commit('setMotionConfig', payload);
+};
+
+export const setTaskType = ({ commit }: any, payload: IKlingTaskType) => {
+  commit('setTaskType', payload);
+};
+
 export const setTasks = ({ commit }: any, payload: any) => {
   commit('setTasks', payload);
 };
@@ -145,14 +161,14 @@ export const getTasks = async (
           userId: rootState?.user?.id,
           createdAtMin,
           createdAtMax,
-          type: 'videos'
+          type: state.taskType
         },
         {
           token
         }
       )
       .then((response) => {
-        console.debug('get videos tasks success', response.data.items);
+        console.debug('get kling tasks success', response.data.items);
         // merge with existing tasks
         const existingItems = state?.tasks?.items || [];
         console.debug('existing items', existingItems);
@@ -176,6 +192,8 @@ export default {
   resetAll,
   setCredential,
   setConfig,
+  setMotionConfig,
+  setTaskType,
   setApplication,
   setApplications,
   getApplications,
