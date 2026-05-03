@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Własny klucz API",
-    "addCredential": "Dodaj klucz API",
-    "editCredential": "Edytuj klucz API",
-    "deleteCredential": "Usuń klucz API"
+  "title.list": {
+    "message": "Własny klucz API",
+    "description": ""
   },
-  "description": {
-    "list": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy za pomocą twojego klucza, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp. będą działać normalnie."
+  "title.addCredential": {
+    "message": "Dodaj klucz API",
+    "description": ""
   },
-  "field": {
-    "provider": "Dostawca",
-    "label": "Uwagi",
-    "labelPlaceholder": "np. \"Mój numer roboczy\" (opcjonalnie)",
-    "apiKey": "Klucz API",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Pozostaw puste, aby zachować obecny klucz",
-    "baseUrl": "Własny adres URL bazowy",
-    "baseUrlPlaceholder": "Pozostaw puste, aby użyć domyślnego adresu dostawcy",
-    "isActive": "Aktywny",
-    "lastUsedAt": "Ostatnio używany",
-    "createdAt": "Data dodania"
+  "title.editCredential": {
+    "message": "Edytuj klucz API",
+    "description": ""
   },
-  "value": {
-    "active": "Aktywny",
-    "inactive": "Nieaktywny",
-    "never": "Nigdy nie używany",
-    "default": "Domyślny"
+  "title.deleteCredential": {
+    "message": "Usuń klucz API",
+    "description": ""
   },
-  "button": {
-    "add": "Dodaj klucz API",
-    "edit": "Edytuj",
-    "test": "Testuj",
-    "delete": "Usuń",
-    "save": "Zapisz",
-    "cancel": "Anuluj"
+  "description.list": {
+    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy za pomocą twojego klucza, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp. będą działać normalnie.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Czy na pewno chcesz usunąć ten klucz API? Następne rozmowy z modelem {provider} będą korzystać z domyślnego dostawcy platformy.",
-    "deleteSuccess": "Klucz API został usunięty.",
-    "saveSuccess": "Klucz API został zapisany.",
-    "testSuccess": "Połączenie działa poprawnie.",
-    "testFailed": "Test nie powiódł się: {message}",
-    "loadFailed": "Nie udało się załadować poświadczeń.",
-    "saveFailed": "Nie udało się zapisać poświadczeń.",
-    "empty": "Nie skonfigurowano jeszcze własnego klucza API. Kliknij \"Dodaj klucz API\", aby użyć swojego konta dostawcy.",
-    "advancedToggle": "Pokaż opcje zaawansowane",
-    "baseUrlHelp": "Opcjonalne. Własny adres URL dla upstream (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Dozwolone tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback."
+  "field.provider": {
+    "message": "Dostawca",
+    "description": ""
   },
-  "badge": {
-    "active": "Używasz swojego klucza {provider}",
-    "tooltip": "Ta rozmowa korzysta z twojego własnego klucza API {provider}, koszty są rozliczane przez konto {provider}, nie pomniejszając salda platformy."
+  "field.label": {
+    "message": "Uwagi",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "np. \"Mój numer roboczy\" (opcjonalnie)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "Klucz API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Pozostaw puste, aby zachować obecny klucz",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Własny adres URL bazowy",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Pozostaw puste, aby użyć domyślnego adresu dostawcy",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktywny",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Ostatnio używany",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Data dodania",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Aktywny",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Nieaktywny",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nigdy nie używany",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Domyślny",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Dodaj klucz API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Edytuj",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testuj",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Usuń",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Zapisz",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Anuluj",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Czy na pewno chcesz usunąć ten klucz API? Następne rozmowy z modelem {provider} będą korzystać z domyślnego dostawcy platformy.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Klucz API został usunięty.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Klucz API został zapisany.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Połączenie działa poprawnie.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test nie powiódł się: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Nie udało się załadować poświadczeń.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Nie udało się zapisać poświadczeń.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Nie skonfigurowano jeszcze własnego klucza API. Kliknij \"Dodaj klucz API\", aby użyć swojego konta dostawcy.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Pokaż opcje zaawansowane",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcjonalne. Własny adres URL dla upstream (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Dozwolone tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Używasz swojego klucza {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Ta rozmowa korzysta z twojego własnego klucza API {provider}, koszty są rozliczane przez konto {provider}, nie pomniejszając salda platformy.",
+    "description": ""
   }
 }

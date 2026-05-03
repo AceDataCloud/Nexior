@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Настраиваемый API Key",
-    "addCredential": "Добавить API Key",
-    "editCredential": "Редактировать API Key",
-    "deleteCredential": "Удалить API Key"
+  "title.list": {
+    "message": "Настраиваемый API Key",
+    "description": ""
   },
-  "description": {
-    "list": "Используйте свой собственный API Key от провайдера (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) вместо пула учетных записей платформы. После настройки запросы к моделям будут напрямую использовать ваш Key для вызова услуг провайдера, не расходуя кредиты платформы; вызовы инструментов, ссылки, артефакты, облачная история и другие функции будут работать как обычно."
+  "title.addCredential": {
+    "message": "Добавить API Key",
+    "description": ""
   },
-  "field": {
-    "provider": "Провайдер",
-    "label": "Примечание",
-    "labelPlaceholder": "например, \"Мой рабочий номер\" (необязательно)",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Оставьте пустым, чтобы сохранить текущий Key",
-    "baseUrl": "Настраиваемый Base URL",
-    "baseUrlPlaceholder": "Оставьте пустым для использования адреса по умолчанию провайдера",
-    "isActive": "Активен",
-    "lastUsedAt": "Последнее использование",
-    "createdAt": "Дата добавления"
+  "title.editCredential": {
+    "message": "Редактировать API Key",
+    "description": ""
   },
-  "value": {
-    "active": "Активен",
-    "inactive": "Неактивен",
-    "never": "Никогда не использовался",
-    "default": "По умолчанию"
+  "title.deleteCredential": {
+    "message": "Удалить API Key",
+    "description": ""
   },
-  "button": {
-    "add": "Добавить API Key",
-    "edit": "Редактировать",
-    "test": "Тестировать",
-    "delete": "Удалить",
-    "save": "Сохранить",
-    "cancel": "Отмена"
+  "description.list": {
+    "message": "Используйте свой собственный API Key от провайдера (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) вместо пула учетных записей платформы. После настройки запросы к моделям будут напрямую использовать ваш Key для вызова услуг провайдера, не расходуя кредиты платформы; вызовы инструментов, ссылки, артефакты, облачная история и другие функции будут работать как обычно.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Подтвердите удаление этого API Key? Последующие запросы к модели {provider} будут возвращены к стандартному провайдеру платформы.",
-    "deleteSuccess": "API Key удален.",
-    "saveSuccess": "API Key сохранен.",
-    "testSuccess": "Соединение успешно.",
-    "testFailed": "Тест не удался: {message}",
-    "loadFailed": "Не удалось загрузить учетные данные.",
-    "saveFailed": "Не удалось сохранить учетные данные.",
-    "empty": "Настраиваемый API Key еще не настроен. Нажмите \"Добавить API Key\", чтобы использовать свою учетную запись провайдера.",
-    "advancedToggle": "Показать расширенные параметры",
-    "baseUrlHelp": "Необязательно. Настраиваемый адрес провайдера (для OpenRouter, самодельного прокси, корпоративного шлюза и т.д.). Разрешен только HTTPS, не может указывать на внутренние/петлевые адреса."
+  "field.provider": {
+    "message": "Провайдер",
+    "description": ""
   },
-  "badge": {
-    "active": "Используйте свой {provider} Key",
-    "tooltip": "В этом диалоге используется ваш собственный {provider} API Key, расходы будут списаны с вашего {provider} аккаунта, не уменьшая баланс платформы."
+  "field.label": {
+    "message": "Примечание",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "например, \"Мой рабочий номер\" (необязательно)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Оставьте пустым, чтобы сохранить текущий Key",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Настраиваемый Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Оставьте пустым для использования адреса по умолчанию провайдера",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Активен",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Последнее использование",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Дата добавления",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Активен",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Неактивен",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Никогда не использовался",
+    "description": ""
+  },
+  "value.default": {
+    "message": "По умолчанию",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Добавить API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Редактировать",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Тестировать",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Удалить",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Сохранить",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Отмена",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Подтвердите удаление этого API Key? Последующие запросы к модели {provider} будут возвращены к стандартному провайдеру платформы.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key удален.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key сохранен.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Соединение успешно.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Тест не удался: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Не удалось загрузить учетные данные.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Не удалось сохранить учетные данные.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Настраиваемый API Key еще не настроен. Нажмите \"Добавить API Key\", чтобы использовать свою учетную запись провайдера.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Показать расширенные параметры",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Необязательно. Настраиваемый адрес провайдера (для OpenRouter, самодельного прокси, корпоративного шлюза и т.д.). Разрешен только HTTPS, не может указывать на внутренние/петлевые адреса.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Используйте свой {provider} Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "В этом диалоге используется ваш собственный {provider} API Key, расходы будут списаны с вашего {provider} аккаунта, не уменьшая баланс платформы.",
+    "description": ""
   }
 }

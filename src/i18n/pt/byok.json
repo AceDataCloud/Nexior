@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Chaves de API Personalizadas",
-    "addCredential": "Adicionar Chave de API",
-    "editCredential": "Editar Chave de API",
-    "deleteCredential": "Excluir Chave de API"
+  "title.list": {
+    "message": "Chaves de API Personalizadas",
+    "description": ""
   },
-  "description": {
-    "list": "Use sua própria chave de API do provedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) em vez da conta padrão da plataforma. Após a configuração, as solicitações de diálogo do modelo correspondente serão feitas diretamente com sua chave, sem consumir créditos da plataforma; chamadas de ferramentas, referências, artefatos, histórico em nuvem e outras funcionalidades funcionarão normalmente."
+  "title.addCredential": {
+    "message": "Adicionar Chave de API",
+    "description": ""
   },
-  "field": {
-    "provider": "Provedor",
-    "label": "Observações",
-    "labelPlaceholder": "Ex: \"Meu número de trabalho\" (opcional)",
-    "apiKey": "Chave de API",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Deixe em branco para manter a chave atual",
-    "baseUrl": "URL Base Personalizada",
-    "baseUrlPlaceholder": "Deixe em branco para usar o endereço padrão do provedor",
-    "isActive": "Ativo",
-    "lastUsedAt": "Último uso",
-    "createdAt": "Data de adição"
+  "title.editCredential": {
+    "message": "Editar Chave de API",
+    "description": ""
   },
-  "value": {
-    "active": "Ativo",
-    "inactive": "Inativo",
-    "never": "Nunca usado",
-    "default": "Padrão"
+  "title.deleteCredential": {
+    "message": "Excluir Chave de API",
+    "description": ""
   },
-  "button": {
-    "add": "Adicionar Chave de API",
-    "edit": "Editar",
-    "test": "Testar",
-    "delete": "Excluir",
-    "save": "Salvar",
-    "cancel": "Cancelar"
+  "description.list": {
+    "message": "Use sua própria chave de API do provedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) em vez da conta padrão da plataforma. Após a configuração, as solicitações de diálogo do modelo correspondente serão feitas diretamente com sua chave, sem consumir créditos da plataforma; chamadas de ferramentas, referências, artefatos, histórico em nuvem e outras funcionalidades funcionarão normalmente.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Confirmar a exclusão desta chave de API? As conversas do modelo {provider} voltarão para o padrão da plataforma.",
-    "deleteSuccess": "Chave de API excluída.",
-    "saveSuccess": "Chave de API salva.",
-    "testSuccess": "Conexão normal.",
-    "testFailed": "Teste falhou: {message}",
-    "loadFailed": "Falha ao carregar credenciais.",
-    "saveFailed": "Falha ao salvar credenciais.",
-    "empty": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta do provedor.",
-    "advancedToggle": "Mostrar opções avançadas",
-    "baseUrlHelp": "Opcional. Endereço upstream personalizado (para OpenRouter, proxy reverso próprio, gateway corporativo, etc.). Apenas HTTPS permitido, não pode apontar para endereços internos/loopback."
+  "field.provider": {
+    "message": "Provedor",
+    "description": ""
   },
-  "badge": {
-    "active": "Usando sua chave {provider}",
-    "tooltip": "Esta conversa usa sua própria chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma."
+  "field.label": {
+    "message": "Observações",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "Ex: \"Meu número de trabalho\" (opcional)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "Chave de API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Deixe em branco para manter a chave atual",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "URL Base Personalizada",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Deixe em branco para usar o endereço padrão do provedor",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Ativo",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Último uso",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Data de adição",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Ativo",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Inativo",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nunca usado",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Padrão",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Adicionar Chave de API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Editar",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testar",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Excluir",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Salvar",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Confirmar a exclusão desta chave de API? As conversas do modelo {provider} voltarão para o padrão da plataforma.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Chave de API excluída.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Chave de API salva.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Conexão normal.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Teste falhou: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Falha ao carregar credenciais.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Falha ao salvar credenciais.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta do provedor.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Mostrar opções avançadas",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcional. Endereço upstream personalizado (para OpenRouter, proxy reverso próprio, gateway corporativo, etc.). Apenas HTTPS permitido, não pode apontar para endereços internos/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Usando sua chave {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Esta conversa usa sua própria chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma.",
+    "description": ""
   }
 }

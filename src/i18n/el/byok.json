@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Προσαρμοσμένο API Key",
-    "addCredential": "Προσθήκη API Key",
-    "editCredential": "Επεξεργασία API Key",
-    "deleteCredential": "Διαγραφή API Key"
+  "title.list": {
+    "message": "Προσαρμοσμένο API Key",
+    "description": ""
   },
-  "description": {
-    "list": "Χρησιμοποιήστε το δικό σας API Key από τον πάροχο υπηρεσιών (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) αντί για την πισίνα λογαριασμών της πλατφόρμας. Μετά τη ρύθμιση, τα αιτήματα συνομιλίας για το αντίστοιχο μοντέλο θα καλούν απευθείας τον πάροχο υπηρεσιών με το Key σας, χωρίς να καταναλώνουν πιστώσεις της πλατφόρμας. Οι κλήσεις εργαλείων, αναφορές, αντικείμενα, ιστορικό cloud και άλλες λειτουργίες θα λειτουργούν κανονικά."
+  "title.addCredential": {
+    "message": "Προσθήκη API Key",
+    "description": ""
   },
-  "field": {
-    "provider": "Πάροχος",
-    "label": "Σημείωση",
-    "labelPlaceholder": "π.χ. \"Ο αριθμός εργασίας μου\" (προαιρετικό)",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Αφήστε κενό για να διατηρήσετε το τρέχον Key",
-    "baseUrl": "Προσαρμοσμένο Base URL",
-    "baseUrlPlaceholder": "Αφήστε κενό για να χρησιμοποιήσετε τη προεπιλεγμένη διεύθυνση του παρόχου",
-    "isActive": "Ενεργό",
-    "lastUsedAt": "Τελευταία χρήση",
-    "createdAt": "Ημερομηνία προσθήκης"
+  "title.editCredential": {
+    "message": "Επεξεργασία API Key",
+    "description": ""
   },
-  "value": {
-    "active": "Ενεργό",
-    "inactive": "Μη ενεργό",
-    "never": "Ποτέ δεν χρησιμοποιήθηκε",
-    "default": "Προεπιλογή"
+  "title.deleteCredential": {
+    "message": "Διαγραφή API Key",
+    "description": ""
   },
-  "button": {
-    "add": "Προσθήκη API Key",
-    "edit": "Επεξεργασία",
-    "test": "Δοκιμή",
-    "delete": "Διαγραφή",
-    "save": "Αποθήκευση",
-    "cancel": "Ακύρωση"
+  "description.list": {
+    "message": "Χρησιμοποιήστε το δικό σας API Key από τον πάροχο υπηρεσιών (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) αντί για την πισίνα λογαριασμών της πλατφόρμας. Μετά τη ρύθμιση, τα αιτήματα συνομιλίας για το αντίστοιχο μοντέλο θα καλούν απευθείας τον πάροχο υπηρεσιών με το Key σας, χωρίς να καταναλώνουν πιστώσεις της πλατφόρμας. Οι κλήσεις εργαλείων, αναφορές, αντικείμενα, ιστορικό cloud και άλλες λειτουργίες θα λειτουργούν κανονικά.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Επιβεβαίωση διαγραφής αυτού του API Key; Οι επόμενες συνομιλίες του μοντέλου {provider} θα επιστρέψουν στην προεπιλεγμένη πηγή της πλατφόρμας.",
-    "deleteSuccess": "Το API Key διαγράφηκε.",
-    "saveSuccess": "Το API Key αποθηκεύτηκε.",
-    "testSuccess": "Η σύνδεση είναι καλή.",
-    "testFailed": "Η δοκιμή απέτυχε: {message}",
-    "loadFailed": "Αποτυχία φόρτωσης πιστοποίησης.",
-    "saveFailed": "Αποτυχία αποθήκευσης πιστοποίησης.",
-    "empty": "Δεν έχει ρυθμιστεί κανένα προσαρμοσμένο API Key. Κάντε κλικ στο \"Προσθήκη API Key\" για να χρησιμοποιήσετε τον λογαριασμό του παρόχου σας.",
-    "advancedToggle": "Εμφάνιση προηγμένων επιλογών",
-    "baseUrlHelp": "Προαιρετικό. Προσαρμοσμένη διεύθυνση πηγής (για OpenRouter, αυτοσχέδιο reverse proxy, εταιρική πύλη κ.λπ.). Επιτρέπεται μόνο HTTPS, δεν μπορεί να δείχνει σε εσωτερική διεύθυνση/διεύθυνση loopback."
+  "field.provider": {
+    "message": "Πάροχος",
+    "description": ""
   },
-  "badge": {
-    "active": "Χρησιμοποιώντας το {provider} Key σας",
-    "tooltip": "Αυτή η συνομιλία χρησιμοποιεί το δικό σας API Key {provider}, οι χρεώσεις θα χρεωθούν στον λογαριασμό {provider}, χωρίς να αφαιρεθούν πιστώσεις από την πλατφόρμα."
+  "field.label": {
+    "message": "Σημείωση",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "π.χ. \"Ο αριθμός εργασίας μου\" (προαιρετικό)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Αφήστε κενό για να διατηρήσετε το τρέχον Key",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Προσαρμοσμένο Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Αφήστε κενό για να χρησιμοποιήσετε τη προεπιλεγμένη διεύθυνση του παρόχου",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Ενεργό",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Τελευταία χρήση",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Ημερομηνία προσθήκης",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Ενεργό",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Μη ενεργό",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Ποτέ δεν χρησιμοποιήθηκε",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Προεπιλογή",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Προσθήκη API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Επεξεργασία",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Δοκιμή",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Διαγραφή",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Αποθήκευση",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Ακύρωση",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Επιβεβαίωση διαγραφής αυτού του API Key; Οι επόμενες συνομιλίες του μοντέλου {provider} θα επιστρέψουν στην προεπιλεγμένη πηγή της πλατφόρμας.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Το API Key διαγράφηκε.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Το API Key αποθηκεύτηκε.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Η σύνδεση είναι καλή.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Η δοκιμή απέτυχε: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Αποτυχία φόρτωσης πιστοποίησης.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Αποτυχία αποθήκευσης πιστοποίησης.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Δεν έχει ρυθμιστεί κανένα προσαρμοσμένο API Key. Κάντε κλικ στο \"Προσθήκη API Key\" για να χρησιμοποιήσετε τον λογαριασμό του παρόχου σας.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Εμφάνιση προηγμένων επιλογών",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Προαιρετικό. Προσαρμοσμένη διεύθυνση πηγής (για OpenRouter, αυτοσχέδιο reverse proxy, εταιρική πύλη κ.λπ.). Επιτρέπεται μόνο HTTPS, δεν μπορεί να δείχνει σε εσωτερική διεύθυνση/διεύθυνση loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Χρησιμοποιώντας το {provider} Key σας",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Αυτή η συνομιλία χρησιμοποιεί το δικό σας API Key {provider}, οι χρεώσεις θα χρεωθούν στον λογαριασμό {provider}, χωρίς να αφαιρεθούν πιστώσεις από την πλατφόρμα.",
+    "description": ""
   }
 }

@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "カスタム API キー",
-    "addCredential": "API キーを追加",
-    "editCredential": "API キーを編集",
-    "deleteCredential": "API キーを削除"
+  "title.list": {
+    "message": "カスタム API キー",
+    "description": ""
   },
-  "description": {
-    "list": "プラットフォームのアカウントプールの代わりに、自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用します。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流のサービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。"
+  "title.addCredential": {
+    "message": "API キーを追加",
+    "description": ""
   },
-  "field": {
-    "provider": "サービスプロバイダー",
-    "label": "備考",
-    "labelPlaceholder": "例: \"私の作業番号\"（任意）",
-    "apiKey": "API キー",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "空白の場合、現在のキーを保持します",
-    "baseUrl": "カスタムベース URL",
-    "baseUrlPlaceholder": "空白の場合、サービスプロバイダーのデフォルトアドレスを使用",
-    "isActive": "有効",
-    "lastUsedAt": "最終使用",
-    "createdAt": "追加日時"
+  "title.editCredential": {
+    "message": "API キーを編集",
+    "description": ""
   },
-  "value": {
-    "active": "有効",
-    "inactive": "無効",
-    "never": "未使用",
-    "default": "デフォルト"
+  "title.deleteCredential": {
+    "message": "API キーを削除",
+    "description": ""
   },
-  "button": {
-    "add": "API キーを追加",
-    "edit": "編集",
-    "test": "テスト",
-    "delete": "削除",
-    "save": "保存",
-    "cancel": "キャンセル"
+  "description.list": {
+    "message": "プラットフォームのアカウントプールの代わりに、自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用します。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流のサービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "この API キーを削除してもよろしいですか？以降の {provider} モデルの対話はプラットフォームのデフォルトに戻ります。",
-    "deleteSuccess": "API キーが削除されました。",
-    "saveSuccess": "API キーが保存されました。",
-    "testSuccess": "接続正常。",
-    "testFailed": "テスト失敗：{message}",
-    "loadFailed": "資格情報の読み込みに失敗しました。",
-    "saveFailed": "資格情報の保存に失敗しました。",
-    "empty": "カスタム API キーはまだ設定されていません。「API キーを追加」をクリックして、自分のサービスプロバイダーアカウントを使用してください。",
-    "advancedToggle": "高度なオプションを表示",
-    "baseUrlHelp": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなど）。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。"
+  "field.provider": {
+    "message": "サービスプロバイダー",
+    "description": ""
   },
-  "badge": {
-    "active": "{provider} キーを使用中",
-    "tooltip": "この対話ではあなた自身の {provider} API キーを使用しており、費用は {provider} アカウントで精算され、プラットフォームの残高は減少しません。"
+  "field.label": {
+    "message": "備考",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "例: \"私の作業番号\"（任意）",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API キー",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "空白の場合、現在のキーを保持します",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "カスタムベース URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "空白の場合、サービスプロバイダーのデフォルトアドレスを使用",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "有効",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "最終使用",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "追加日時",
+    "description": ""
+  },
+  "value.active": {
+    "message": "有効",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "無効",
+    "description": ""
+  },
+  "value.never": {
+    "message": "未使用",
+    "description": ""
+  },
+  "value.default": {
+    "message": "デフォルト",
+    "description": ""
+  },
+  "button.add": {
+    "message": "API キーを追加",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "編集",
+    "description": ""
+  },
+  "button.test": {
+    "message": "テスト",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "削除",
+    "description": ""
+  },
+  "button.save": {
+    "message": "保存",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "キャンセル",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "この API キーを削除してもよろしいですか？以降の {provider} モデルの対話はプラットフォームのデフォルトに戻ります。",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API キーが削除されました。",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API キーが保存されました。",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "接続正常。",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "テスト失敗：{message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "資格情報の読み込みに失敗しました。",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "資格情報の保存に失敗しました。",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "カスタム API キーはまだ設定されていません。「API キーを追加」をクリックして、自分のサービスプロバイダーアカウントを使用してください。",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "高度なオプションを表示",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなど）。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "{provider} キーを使用中",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "この対話ではあなた自身の {provider} API キーを使用しており、費用は {provider} アカウントで精算され、プラットフォームの残高は減少しません。",
+    "description": ""
   }
 }

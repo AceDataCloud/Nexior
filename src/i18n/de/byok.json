@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Benutzerdefinierter API-Schlüssel",
-    "addCredential": "API-Schlüssel hinzufügen",
-    "editCredential": "API-Schlüssel bearbeiten",
-    "deleteCredential": "API-Schlüssel löschen"
+  "title.list": {
+    "message": "Benutzerdefinierter API-Schlüssel",
+    "description": ""
   },
-  "description": {
-    "list": "Verwende deinen eigenen Anbieter-API-Schlüssel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) anstelle des Plattformkontopools. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt."
+  "title.addCredential": {
+    "message": "API-Schlüssel hinzufügen",
+    "description": ""
   },
-  "field": {
-    "provider": "Anbieter",
-    "label": "Bemerkung",
-    "labelPlaceholder": "z. B. \"Meine Arbeitsnummer\" (optional)",
-    "apiKey": "API-Schlüssel",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Leer lassen, um den aktuellen Schlüssel beizubehalten",
-    "baseUrl": "Benutzerdefinierte Basis-URL",
-    "baseUrlPlaceholder": "Leer lassen, um die Standardadresse des Anbieters zu verwenden",
-    "isActive": "Aktiv",
-    "lastUsedAt": "Zuletzt verwendet",
-    "createdAt": "Hinzugefügt am"
+  "title.editCredential": {
+    "message": "API-Schlüssel bearbeiten",
+    "description": ""
   },
-  "value": {
-    "active": "Aktiv",
-    "inactive": "Inaktiv",
-    "never": "Nie verwendet",
-    "default": "Standard"
+  "title.deleteCredential": {
+    "message": "API-Schlüssel löschen",
+    "description": ""
   },
-  "button": {
-    "add": "API-Schlüssel hinzufügen",
-    "edit": "Bearbeiten",
-    "test": "Testen",
-    "delete": "Löschen",
-    "save": "Speichern",
-    "cancel": "Abbrechen"
+  "description.list": {
+    "message": "Verwende deinen eigenen Anbieter-API-Schlüssel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) anstelle des Plattformkontopools. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Bestätigen Sie das Löschen dieses API-Schlüssels? Zukünftige {provider}-Modellanfragen werden auf die Standardanbieter zurückfallen.",
-    "deleteSuccess": "API-Schlüssel wurde gelöscht.",
-    "saveSuccess": "API-Schlüssel wurde gespeichert.",
-    "testSuccess": "Verbindung erfolgreich.",
-    "testFailed": "Test fehlgeschlagen: {message}",
-    "loadFailed": "Laden der Anmeldeinformationen fehlgeschlagen.",
-    "saveFailed": "Speichern der Anmeldeinformationen fehlgeschlagen.",
-    "empty": "Es sind noch keine benutzerdefinierten API-Schlüssel konfiguriert. Klicken Sie auf \"API-Schlüssel hinzufügen\", um Ihr eigenes Anbieter-Konto zu verwenden.",
-    "advancedToggle": "Erweiterte Optionen anzeigen",
-    "baseUrlHelp": "Optional. Benutzerdefinierte Anbieteradresse (für OpenRouter, selbstgehostete Proxys, Unternehmensgateways usw.). Nur HTTPS erlaubt, keine internen/Loopback-Adressen."
+  "field.provider": {
+    "message": "Anbieter",
+    "description": ""
   },
-  "badge": {
-    "active": "Verwende deinen {provider}-Schlüssel",
-    "tooltip": "Dieses Gespräch verwendet deinen eigenen {provider}-API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten."
+  "field.label": {
+    "message": "Bemerkung",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "z. B. \"Meine Arbeitsnummer\" (optional)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API-Schlüssel",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Leer lassen, um den aktuellen Schlüssel beizubehalten",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Benutzerdefinierte Basis-URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Leer lassen, um die Standardadresse des Anbieters zu verwenden",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktiv",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Zuletzt verwendet",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Hinzugefügt am",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Aktiv",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Inaktiv",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nie verwendet",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Standard",
+    "description": ""
+  },
+  "button.add": {
+    "message": "API-Schlüssel hinzufügen",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Bearbeiten",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testen",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Löschen",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Speichern",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Abbrechen",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Bestätigen Sie das Löschen dieses API-Schlüssels? Zukünftige {provider}-Modellanfragen werden auf die Standardanbieter zurückfallen.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API-Schlüssel wurde gelöscht.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API-Schlüssel wurde gespeichert.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Verbindung erfolgreich.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test fehlgeschlagen: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Laden der Anmeldeinformationen fehlgeschlagen.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Speichern der Anmeldeinformationen fehlgeschlagen.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Es sind noch keine benutzerdefinierten API-Schlüssel konfiguriert. Klicken Sie auf \"API-Schlüssel hinzufügen\", um Ihr eigenes Anbieter-Konto zu verwenden.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Erweiterte Optionen anzeigen",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Optional. Benutzerdefinierte Anbieteradresse (für OpenRouter, selbstgehostete Proxys, Unternehmensgateways usw.). Nur HTTPS erlaubt, keine internen/Loopback-Adressen.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Verwende deinen {provider}-Schlüssel",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Dieses Gespräch verwendet deinen eigenen {provider}-API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten.",
+    "description": ""
   }
 }

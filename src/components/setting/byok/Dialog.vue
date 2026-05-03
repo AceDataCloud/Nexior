@@ -37,19 +37,10 @@
         />
       </el-form-item>
 
-      <div class="advanced-toggle" @click="advancedOpen = !advancedOpen">
-        <font-awesome-icon
-          :icon="advancedOpen ? 'fa-solid fa-chevron-down' : 'fa-solid fa-chevron-right'"
-          class="text-[10px]"
-        />
-        <span>{{ $t('byok.message.advancedToggle') }}</span>
-      </div>
-      <div v-if="advancedOpen" class="advanced-section">
-        <el-form-item :label="$t('byok.field.baseUrl')" prop="base_url">
-          <el-input v-model="form.base_url" :placeholder="placeholderBaseUrl" />
-          <p class="hint">{{ $t('byok.message.baseUrlHelp') }}</p>
-        </el-form-item>
-      </div>
+      <el-form-item :label="$t('byok.field.baseUrl')" prop="base_url">
+        <el-input v-model="form.base_url" :placeholder="placeholderBaseUrl" />
+        <p class="hint">{{ $t('byok.message.baseUrlHelp') }}</p>
+      </el-form-item>
     </el-form>
     <template #footer>
       <el-button @click="onClose(false)">{{ $t('byok.button.cancel') }}</el-button>
@@ -74,7 +65,6 @@ import {
   type FormInstance,
   type FormRules
 } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { byokCredentialOperator } from '@/operators';
 import type { IBYOKCredential, IBYOKCredentialCreatePayload, IBYOKProvider, IBYOKProviderInfo } from '@/models';
 
@@ -87,8 +77,7 @@ export default defineComponent({
     ElFormItem,
     ElInput,
     ElOption,
-    ElSelect,
-    FontAwesomeIcon
+    ElSelect
   },
   props: {
     visible: { type: Boolean, default: false },
@@ -106,7 +95,6 @@ export default defineComponent({
     };
     return {
       form,
-      advancedOpen: false,
       saving: false
     };
   },
@@ -141,7 +129,6 @@ export default defineComponent({
             base_url: row.base_url ?? '',
             label: row.label ?? ''
           };
-          this.advancedOpen = !!row.base_url;
         } else {
           this.form = {
             provider: this.providers?.[0]?.id ?? '',
@@ -149,7 +136,6 @@ export default defineComponent({
             base_url: '',
             label: ''
           };
-          this.advancedOpen = false;
         }
       }
     }
@@ -215,25 +201,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.advanced-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: var(--el-text-color-regular);
-  cursor: pointer;
-  user-select: none;
-  margin: -6px 0 8px;
-  &:hover {
-    color: var(--el-color-primary);
-  }
-}
-
-.advanced-section {
-  border-left: 2px solid var(--el-border-color-lighter);
-  padding-left: 12px;
-}
-
 .hint {
   font-size: 12px;
   color: var(--el-text-color-secondary);
