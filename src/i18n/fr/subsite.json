@@ -9,10 +9,10 @@
   },
   "title.openNow": {
     "message": "Accéder au sous-site maintenant",
-    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création réussie"
+    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création"
   },
   "field.slug": {
-    "message": "Préfixe de sous-domaine",
+    "message": "Préfixe du sous-domaine",
     "description": "Titre du champ d'entrée slug pour le sous-site"
   },
   "field.origin": {
@@ -64,7 +64,7 @@
     "description": "Explication du champ slug"
   },
   "message.slugInvalid": {
-    "message": "Le format du préfixe de sous-domaine est incorrect, veuillez vérifier les règles et réessayer.",
+    "message": "Le format du préfixe du sous-domaine est incorrect, veuillez vérifier les règles et réessayer.",
     "description": "Échec de la validation du slug"
   },
   "message.zoneMissing": {
@@ -73,7 +73,7 @@
   },
   "message.created": {
     "message": "Sous-site créé avec succès !",
-    "description": "Création réussie"
+    "description": "Confirmation de création réussie"
   },
   "message.createFailed": {
     "message": "Échec de la création du sous-site, veuillez réessayer plus tard.",
@@ -85,6 +85,126 @@
   },
   "message.openNowConfirm": {
     "message": "Le sous-site {origin} a été créé. Voulez-vous l'ouvrir maintenant pour continuer la configuration ?",
-    "description": "Demande d'ouverture immédiate après la création"
+    "description": "Demande d'ouverture immédiate après création"
+  },
+  "title.domains": {
+    "message": "Nom de domaine personnalisé pour {origin}",
+    "description": "Titre de la boîte de dialogue pour le nom de domaine personnalisé"
+  },
+  "title.bindDomain": {
+    "message": "Lier un nouveau domaine",
+    "description": "Titre du formulaire de liaison"
+  },
+  "button.domains": {
+    "message": "Domaines",
+    "description": "Bouton pour ouvrir la boîte de dialogue de gestion des domaines"
+  },
+  "button.bindDomain": {
+    "message": "Lier le domaine",
+    "description": "Soumettre la liaison d'un nouveau domaine"
+  },
+  "button.verify": {
+    "message": "Vérifier",
+    "description": "Vérifier si l'enregistrement TXT est en place"
+  },
+  "button.checkProgress": {
+    "message": "Vérifier l'avancement",
+    "description": "Synchroniser l'état le plus récent depuis EdgeOne"
+  },
+  "button.refresh": {
+    "message": "Rafraîchir",
+    "description": "Récupérer à nouveau l'état de ce domaine"
+  },
+  "field.hostname": {
+    "message": "Votre domaine",
+    "description": "Entrez le domaine ou sous-domaine que vous possédez"
+  },
+  "field.recordType": {
+    "message": "Type d'enregistrement",
+    "description": "Colonne de type d'enregistrement DNS"
+  },
+  "field.recordName": {
+    "message": "Nom de l'enregistrement",
+    "description": "Colonne de nom d'enregistrement DNS"
+  },
+  "field.recordValue": {
+    "message": "Valeur de l'enregistrement",
+    "description": "Colonne de valeur d'enregistrement DNS"
+  },
+  "placeholder.hostname": {
+    "message": "Par exemple studio.mybrand.com",
+    "description": "Placeholder pour le champ d'entrée hostname"
+  },
+  "message.domainsIntro": {
+    "message": "Liez le domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS de ce domaine. Une fois la vérification réussie, nous demanderons automatiquement un certificat HTTPS gratuit et le déploierons sur EdgeOne.",
+    "description": "Explication en haut de la boîte de dialogue"
+  },
+  "message.domainsEmpty": {
+    "message": "Aucun domaine personnalisé n'est encore lié. Remplissez le domaine complet dans le formulaire ci-dessous et cliquez sur 'Lier' pour commencer.",
+    "description": "Message d'indication pour une liste vide"
+  },
+  "message.hostnameTip": {
+    "message": "Doit être un domaine public dont vous pouvez contrôler le DNS. Aucun sous-domaine de acedata.cloud / surl.id n'est autorisé.",
+    "description": "Indication pour le champ hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "Le format du domaine est incorrect. Il doit s'agir d'un domaine public résolvable, les adresses IP ne sont pas autorisées.",
+    "description": "Échec de la validation locale du hostname"
+  },
+  "message.domainCreated": {
+    "message": "Le domaine a été soumis, veuillez ajouter les enregistrements DNS comme indiqué.",
+    "description": "Succès de la requête POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "Échec de la création du domaine, veuillez réessayer plus tard.",
+    "description": "Échec de la création"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Échec du chargement de la liste des domaines.",
+    "description": "Échec du chargement de la liste des domaines"
+  },
+  "message.domainProgressed": {
+    "message": "Validation en cours pour passer à la prochaine étape, veuillez patienter.",
+    "description": "État de la machine à états"
+  },
+  "message.domainActive": {
+    "message": "Le domaine est en ligne ! Vous pouvez maintenant accéder à votre sous-site via votre adresse HTTPS personnalisée.",
+    "description": "Entrée dans l'état actif"
+  },
+  "message.domainFailed": {
+    "message": "Échec de la vérification ou de la mise en ligne du domaine.",
+    "description": "Texte pour l'état échoué"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Échec de la vérification, veuillez vérifier si les enregistrements DNS sont effectifs.",
+    "description": "Interface de vérification 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Êtes-vous sûr de vouloir dissocier {hostname} ? Après la dissociation, les utilisateurs ne pourront plus accéder à votre sous-site via ce domaine.",
+    "description": "Confirmation de suppression"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Échec de la suppression du domaine.",
+    "description": "Interface DELETE 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "Vérification DNS en attente",
+    "description": "Étiquette d'état de vérification DNS en attente"
+  },
+  "status.provisioningEo": {
+    "message": "En cours d'intégration au réseau",
+    "description": "Étiquette d'état d'intégration au réseau"
+  },
+  "status.provisioningCert": {
+    "message": "Demande de certificat en cours",
+    "description": "Étiquette d'état de demande de certificat"
+  },
+  "status.active": {
+    "message": "En ligne",
+    "description": "Étiquette d'état actif"
+  },
+  "status.failed": {
+    "message": "Échoué",
+    "description": "Étiquette d'état échoué"
   }
 }

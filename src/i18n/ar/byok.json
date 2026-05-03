@@ -1,0 +1,168 @@
+{
+  "title": {
+    "list": {
+      "message": "مفتاح API مخصص",
+      "description": "عنوان لصفحة قائمة مفاتيح API المخصصة"
+    },
+    "addCredential": {
+      "message": "إضافة مفتاح API",
+      "description": "زر لإضافة مفتاح API جديد"
+    },
+    "editCredential": {
+      "message": "تعديل مفتاح API",
+      "description": "زر لتعديل مفتاح API موجود"
+    },
+    "deleteCredential": {
+      "message": "حذف مفتاح API",
+      "description": "زر لحذف مفتاح API"
+    }
+  },
+  "description": {
+    "list": {
+      "message": "استخدم مفتاح API الخاص بمزود الخدمة (OpenAI، Anthropic، Google، xAI، DeepSeek، Moonshot، Zhiyu) بدلاً من حسابات المنصة. بعد التكوين، ستتم معالجة طلبات المحادثة للنموذج المعني مباشرة باستخدام مفتاحك، دون استهلاك رصيد المنصة؛ ستعمل أدوات الاستدعاء، والمراجع، والأعمال، والسجل السحابي كما هو معتاد.",
+      "description": "وصف لصفحة قائمة مفاتيح API المخصصة"
+    }
+  },
+  "field": {
+    "provider": {
+      "message": "مزود الخدمة",
+      "description": "حقل لاختيار مزود الخدمة"
+    },
+    "label": {
+      "message": "ملاحظات",
+      "description": "حقل لإضافة ملاحظات"
+    },
+    "labelPlaceholder": {
+      "message": "مثل \"رقم عملي\" (اختياري)",
+      "description": "نص توضيحي لحقل الملاحظات"
+    },
+    "apiKey": {
+      "message": "مفتاح API",
+      "description": "حقل لإدخال مفتاح API"
+    },
+    "apiKeyPlaceholder": {
+      "message": "sk-...",
+      "description": "نص توضيحي لحقل مفتاح API"
+    },
+    "apiKeyEditPlaceholder": {
+      "message": "اتركه فارغًا للحفاظ على المفتاح الحالي",
+      "description": "نص توضيحي لحقل تعديل مفتاح API"
+    },
+    "baseUrl": {
+      "message": "عنوان URL أساسي مخصص",
+      "description": "حقل لإدخال عنوان URL الأساسي"
+    },
+    "baseUrlPlaceholder": {
+      "message": "اتركه فارغًا لاستخدام عنوان المزود الافتراضي",
+      "description": "نص توضيحي لحقل عنوان URL الأساسي"
+    },
+    "isActive": {
+      "message": "مفعل",
+      "description": "خيار لتفعيل المفتاح"
+    },
+    "lastUsedAt": {
+      "message": "آخر استخدام",
+      "description": "تاريخ آخر استخدام للمفتاح"
+    },
+    "createdAt": {
+      "message": "تاريخ الإضافة",
+      "description": "تاريخ إضافة المفتاح"
+    }
+  },
+  "value": {
+    "active": {
+      "message": "مفعل",
+      "description": "حالة المفتاح عند تفعيله"
+    },
+    "inactive": {
+      "message": "غير مفعل",
+      "description": "حالة المفتاح عند عدم تفعيله"
+    },
+    "never": {
+      "message": "لم يُستخدم أبدًا",
+      "description": "حالة المفتاح عند عدم استخدامه"
+    },
+    "default": {
+      "message": "افتراضي",
+      "description": "حالة المفتاح عند استخدامه كافتراضي"
+    }
+  },
+  "button": {
+    "add": {
+      "message": "إضافة مفتاح API",
+      "description": "زر لإضافة مفتاح API"
+    },
+    "edit": {
+      "message": "تعديل",
+      "description": "زر لتعديل المفتاح"
+    },
+    "test": {
+      "message": "اختبار",
+      "description": "زر لاختبار الاتصال بالمفتاح"
+    },
+    "delete": {
+      "message": "حذف",
+      "description": "زر لحذف المفتاح"
+    },
+    "save": {
+      "message": "حفظ",
+      "description": "زر لحفظ التغييرات"
+    },
+    "cancel": {
+      "message": "إلغاء",
+      "description": "زر لإلغاء العملية"
+    }
+  },
+  "message": {
+    "deleteConfirm": {
+      "message": "هل تؤكد حذف مفتاح API هذا؟ ستعود محادثات نموذج {provider} إلى الافتراضي.",
+      "description": "رسالة تأكيد لحذف مفتاح API"
+    },
+    "deleteSuccess": {
+      "message": "تم حذف مفتاح API.",
+      "description": "رسالة نجاح بعد حذف مفتاح API"
+    },
+    "saveSuccess": {
+      "message": "تم حفظ مفتاح API.",
+      "description": "رسالة نجاح بعد حفظ مفتاح API"
+    },
+    "testSuccess": {
+      "message": "الاتصال جيد.",
+      "description": "رسالة نجاح بعد اختبار الاتصال"
+    },
+    "testFailed": {
+      "message": "فشل الاختبار: {message}",
+      "description": "رسالة فشل الاختبار مع تفاصيل الخطأ"
+    },
+    "loadFailed": {
+      "message": "فشل تحميل الاعتماديات.",
+      "description": "رسالة فشل عند تحميل الاعتماديات"
+    },
+    "saveFailed": {
+      "message": "فشل حفظ الاعتماديات.",
+      "description": "رسالة فشل عند حفظ الاعتماديات"
+    },
+    "empty": {
+      "message": "لم يتم تكوين مفتاح API مخصص بعد. انقر على \"إضافة مفتاح API\" لاستخدام حساب مزود الخدمة الخاص بك.",
+      "description": "رسالة عند عدم وجود مفاتيح API مخصصة"
+    },
+    "advancedToggle": {
+      "message": "عرض الخيارات المتقدمة",
+      "description": "زر لتبديل عرض الخيارات المتقدمة"
+    },
+    "baseUrlHelp": {
+      "message": "اختياري. عنوان مخصص للمزود (لـ OpenRouter، أو عكس البناء، أو بوابة الشركات، إلخ). يسمح فقط بـ HTTPS، ولا يمكن أن يشير إلى عنوان داخلي/حلقي.",
+      "description": "مساعدة حول حقل عنوان URL الأساسي"
+    }
+  },
+  "badge": {
+    "active": {
+      "message": "استخدام مفتاح {provider} الخاص بك",
+      "description": "شعار يظهر أن المفتاح المستخدم هو مفتاح مزود الخدمة"
+    },
+    "tooltip": {
+      "message": "تستخدم هذه المحادثة مفتاح API الخاص بك من {provider}، ويتم تسوية التكاليف من حساب {provider}، دون خصم من رصيد المنصة.",
+      "description": "تلميح يظهر عند تمرير الماوس فوق الشعار"
+    }
+  }
+}

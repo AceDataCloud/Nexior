@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Mukautettu API-avain",
+    "addCredential": "Lisää API-avain",
+    "editCredential": "Muokkaa API-avain",
+    "deleteCredential": "Poista API-avain"
+  },
+  "description": {
+    "list": "Käytä omaa palveluntarjoajan API-avain (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) sen sijaan, että käyttäisit alustan tilipoolia. Konfiguroinnin jälkeen vastaavat mallin keskustelupyynnöt kutsuvat suoraan ylävirran palveluntarjoajaa avaimellasi, eikä se kuluta alustan krediittejä; työkalukutsut, viittaukset, artefaktit, pilvihistoria ja muut toiminnot toimivat normaalisti."
+  },
+  "field": {
+    "provider": "Palveluntarjoaja",
+    "label": "Huomautus",
+    "labelPlaceholder": "esim. \"Työnumero\" (valinnainen)",
+    "apiKey": "API-avain",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Jätä tyhjäksi, jotta nykyinen avain pysyy muuttumattomana",
+    "baseUrl": "Mukautettu perus-URL",
+    "baseUrlPlaceholder": "Jätä tyhjäksi käyttääksesi palveluntarjoajan oletusosoitetta",
+    "isActive": "Aktiivinen",
+    "lastUsedAt": "Viimeksi käytetty",
+    "createdAt": "Lisäysaika"
+  },
+  "value": {
+    "active": "Aktiivinen",
+    "inactive": "Ei aktiivinen",
+    "never": "Ei koskaan käytetty",
+    "default": "Oletus"
+  },
+  "button": {
+    "add": "Lisää API-avain",
+    "edit": "Muokkaa",
+    "test": "Testaa",
+    "delete": "Poista",
+    "save": "Tallenna",
+    "cancel": "Peruuta"
+  },
+  "message": {
+    "deleteConfirm": "Vahvistatko tämän API-avaimen poistamisen? Jatkossa {provider} mallin keskustelut palaavat alustan oletusylävirtaan.",
+    "deleteSuccess": "API-avain on poistettu.",
+    "saveSuccess": "API-avain on tallennettu.",
+    "testSuccess": "Yhteys on kunnossa.",
+    "testFailed": "Testi epäonnistui: {message}",
+    "loadFailed": "Todistusten lataaminen epäonnistui.",
+    "saveFailed": "Todistusten tallentaminen epäonnistui.",
+    "empty": "Mukautettua API-avainta ei ole vielä konfiguroitu. Napsauta \"Lisää API-avain\" käyttääksesi omaa palveluntarjoajan tiliäsi.",
+    "advancedToggle": "Näytä lisäasetukset",
+    "baseUrlHelp": "Valinnainen. Mukautettu ylävirran osoite (käytettävä OpenRouterissa, itse rakennetuissa käänteisissä proxyissä, yritysporttien jne. kanssa). Vain HTTPS sallittu, ei saa osoittaa sisäverkkoon/loopback-osoitteeseen."
+  },
+  "badge": {
+    "active": "Käyttää omaa {provider} avaintasi",
+    "tooltip": "Tässä keskustelussa käytetään omaa {provider} API-avaintasi, kustannukset veloitetaan {provider} tililtä, eikä se vähennä alustan saldoa."
+  }
+}

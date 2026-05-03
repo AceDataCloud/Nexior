@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Chiavi API personalizzate",
+    "addCredential": "Aggiungi chiave API",
+    "editCredential": "Modifica chiave API",
+    "deleteCredential": "Elimina chiave API"
+  },
+  "description": {
+    "list": "Utilizza la tua chiave API del fornitore di servizi (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) al posto del pool di account della piattaforma. Una volta configurato, le richieste di dialogo per il modello corrispondente verranno effettuate direttamente con la tua chiave, senza consumare crediti della piattaforma; le chiamate agli strumenti, le citazioni, i lavori e altre funzionalità come la cronologia cloud funzioneranno normalmente."
+  },
+  "field": {
+    "provider": "Fornitore",
+    "label": "Note",
+    "labelPlaceholder": "es. \"Il mio numero di lavoro\" (opzionale)",
+    "apiKey": "Chiave API",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Lascia vuoto per mantenere la chiave attuale",
+    "baseUrl": "URL base personalizzato",
+    "baseUrlPlaceholder": "Lascia vuoto per utilizzare l'indirizzo predefinito del fornitore",
+    "isActive": "Attivo",
+    "lastUsedAt": "Ultimo utilizzo",
+    "createdAt": "Data di aggiunta"
+  },
+  "value": {
+    "active": "Attivo",
+    "inactive": "Non attivo",
+    "never": "Mai utilizzato",
+    "default": "Predefinito"
+  },
+  "button": {
+    "add": "Aggiungi chiave API",
+    "edit": "Modifica",
+    "test": "Test",
+    "delete": "Elimina",
+    "save": "Salva",
+    "cancel": "Annulla"
+  },
+  "message": {
+    "deleteConfirm": "Confermi di voler eliminare questa chiave API? Le conversazioni del modello {provider} torneranno a utilizzare il fornitore predefinito della piattaforma.",
+    "deleteSuccess": "Chiave API eliminata.",
+    "saveSuccess": "Chiave API salvata.",
+    "testSuccess": "Connessione riuscita.",
+    "testFailed": "Test fallito: {message}",
+    "loadFailed": "Caricamento delle credenziali fallito.",
+    "saveFailed": "Salvataggio delle credenziali fallito.",
+    "empty": "Non hai ancora configurato una chiave API personalizzata. Clicca su \"Aggiungi chiave API\" per utilizzare il tuo account del fornitore.",
+    "advancedToggle": "Mostra opzioni avanzate",
+    "baseUrlHelp": "Opzionale. Indirizzo upstream personalizzato (per OpenRouter, reverse proxy, gateway aziendale, ecc.). Solo HTTPS consentito, non può puntare a indirizzi interni/loopback."
+  },
+  "badge": {
+    "active": "Utilizzando la tua chiave {provider}",
+    "tooltip": "Questa conversazione utilizza la tua chiave API {provider}, i costi saranno addebitati sul tuo account {provider}, senza ridurre il saldo della piattaforma."
+  }
+}

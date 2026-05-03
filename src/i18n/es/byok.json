@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Clave API personalizada",
+    "addCredential": "Agregar clave API",
+    "editCredential": "Editar clave API",
+    "deleteCredential": "Eliminar clave API"
+  },
+  "description": {
+    "list": "Utiliza tu propia clave API de proveedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) en lugar del pool de cuentas de la plataforma. Una vez configurado, las solicitudes de conversación del modelo correspondiente se realizarán directamente con tu clave a los proveedores, sin consumir créditos de la plataforma; las funciones de herramientas, referencias, artefactos, historial en la nube y otras seguirán funcionando normalmente."
+  },
+  "field": {
+    "provider": "Proveedor",
+    "label": "Notas",
+    "labelPlaceholder": "Ej. \"Mi número de trabajo\" (opcional)",
+    "apiKey": "Clave API",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Dejar vacío para mantener la clave actual",
+    "baseUrl": "URL base personalizada",
+    "baseUrlPlaceholder": "Dejar vacío para usar la dirección predeterminada del proveedor",
+    "isActive": "Habilitado",
+    "lastUsedAt": "Último uso",
+    "createdAt": "Fecha de adición"
+  },
+  "value": {
+    "active": "Habilitado",
+    "inactive": "No habilitado",
+    "never": "Nunca usado",
+    "default": "Predeterminado"
+  },
+  "button": {
+    "add": "Agregar clave API",
+    "edit": "Editar",
+    "test": "Probar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "message": {
+    "deleteConfirm": "¿Confirmar la eliminación de esta clave API? Las conversaciones del modelo {provider} volverán a la configuración predeterminada de la plataforma.",
+    "deleteSuccess": "Clave API eliminada.",
+    "saveSuccess": "Clave API guardada.",
+    "testSuccess": "Conexión exitosa.",
+    "testFailed": "Prueba fallida: {message}",
+    "loadFailed": "Error al cargar las credenciales.",
+    "saveFailed": "Error al guardar las credenciales.",
+    "empty": "Aún no se ha configurado una clave API personalizada. Haz clic en \"Agregar clave API\" para usar tu propia cuenta de proveedor.",
+    "advancedToggle": "Mostrar opciones avanzadas",
+    "baseUrlHelp": "Opcional. Dirección personalizada de upstream (para OpenRouter, proxy inverso propio, gateway empresarial, etc.). Solo se permite HTTPS, no puede apuntar a direcciones de red interna/loopback."
+  },
+  "badge": {
+    "active": "Usando tu clave {provider}",
+    "tooltip": "Esta conversación utiliza tu propia clave API de {provider}, los costos serán cobrados a la cuenta de {provider}, sin descontar el saldo de la plataforma."
+  }
+}

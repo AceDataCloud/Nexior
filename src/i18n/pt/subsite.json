@@ -32,7 +32,7 @@
     "description": "Coluna de ações na lista de subdomínios"
   },
   "placeholder.slug": {
-    "message": "Exemplo: minha-marca",
+    "message": "exemplo my-brand",
     "description": "Placeholder para o campo de entrada do slug"
   },
   "placeholder.title": {
@@ -52,7 +52,7 @@
     "description": "Botão para acessar as configurações do subdomínio"
   },
   "message.indexTip": {
-    "message": "Crie subdomínios independentes sob o site principal, cada subdomínio pode ter seu próprio logo, título e conjunto de funcionalidades, sem necessidade de construir o código-fonte separadamente.",
+    "message": "Crie subdomínios independentes sob o domínio principal, cada subdomínio pode ter seu próprio logo, título e conjunto de funcionalidades, sem necessidade de construir o código-fonte separadamente.",
     "description": "Texto explicativo na página de gerenciamento de subdomínios"
   },
   "message.empty": {
@@ -60,16 +60,16 @@
     "description": "Mensagem de lista vazia"
   },
   "message.slugTip": {
-    "message": "3-32 caracteres em letras minúsculas, números ou hífens; não pode começar ou terminar com hífen, e não pode conter hífens consecutivos.",
-    "description": "Instruções para o campo slug"
+    "message": "3-32 caracteres em letras minúsculas, números ou hífens; não pode começar ou terminar com hífen e não pode conter hífens consecutivos.",
+    "description": "Explicação do campo slug"
   },
   "message.slugInvalid": {
     "message": "Formato do prefixo do subdomínio inválido, verifique as regras e tente novamente.",
     "description": "Falha na validação do slug"
   },
   "message.zoneMissing": {
-    "message": "O domínio do subdomínio não está configurado no site principal, entre em contato com o administrador do site.",
-    "description": "Falta de subdomain_zone"
+    "message": "O domínio principal atual não está configurado com uma zona de subdomínio, entre em contato com o administrador do site.",
+    "description": "Zona de subdomínio ausente"
   },
   "message.created": {
     "message": "Subdomínio criado com sucesso!",
@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "Subdomínio {origin} foi criado. Deseja abri-lo agora para continuar a configuração?",
     "description": "Pergunta se deseja abrir imediatamente após a criação"
+  },
+  "title.domains": {
+    "message": "Domínio Personalizado de {origin}",
+    "description": "Título da caixa de diálogo de domínio personalizado"
+  },
+  "title.bindDomain": {
+    "message": "Vincular Novo Domínio",
+    "description": "Título do formulário de vinculação"
+  },
+  "button.domains": {
+    "message": "Domínios",
+    "description": "Botão para abrir a caixa de diálogo de gerenciamento de domínios"
+  },
+  "button.bindDomain": {
+    "message": "Vincular Domínio",
+    "description": "Botão para enviar a vinculação de um novo domínio"
+  },
+  "button.verify": {
+    "message": "Verificar",
+    "description": "Botão para checar se o registro de verificação TXT está correto"
+  },
+  "button.checkProgress": {
+    "message": "Verificar Progresso",
+    "description": "Botão para sincronizar o status mais recente do EdgeOne"
+  },
+  "button.refresh": {
+    "message": "Atualizar",
+    "description": "Botão para reobter o status do domínio"
+  },
+  "field.hostname": {
+    "message": "Seu Domínio",
+    "description": "Campo para inserir o domínio ou subdomínio que você possui"
+  },
+  "field.recordType": {
+    "message": "Tipo de Registro",
+    "description": "Coluna do tipo de registro DNS"
+  },
+  "field.recordName": {
+    "message": "Nome do Registro",
+    "description": "Coluna do nome do registro DNS"
+  },
+  "field.recordValue": {
+    "message": "Valor do Registro",
+    "description": "Coluna do valor do registro DNS"
+  },
+  "placeholder.hostname": {
+    "message": "exemplo studio.mybrand.com",
+    "description": "Placeholder para o campo de entrada do hostname"
+  },
+  "message.domainsIntro": {
+    "message": "Vincule o domínio que você possui a este subdomínio. Você precisa ter a capacidade de modificar o DNS desse domínio. Após a verificação, solicitaremos automaticamente um certificado HTTPS gratuito e o implantaremos no EdgeOne.",
+    "description": "Explicação no topo da caixa de diálogo"
+  },
+  "message.domainsEmpty": {
+    "message": "Nenhum domínio personalizado vinculado ainda. Preencha o domínio completo no formulário abaixo e clique em 'Vincular' para começar.",
+    "description": "Mensagem de lista vazia"
+  },
+  "message.hostnameTip": {
+    "message": "Deve ser um domínio público que você pode controlar o DNS. Não são permitidos subdomínios de acedata.cloud / surl.id.",
+    "description": "Dica para o campo de hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "Formato do domínio inválido. Deve ser um domínio público que pode ser resolvido, endereços IP não são permitidos.",
+    "description": "Falha na validação local do hostname"
+  },
+  "message.domainCreated": {
+    "message": "Domínio enviado, siga as instruções para adicionar registros DNS.",
+    "description": "Sucesso no POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "Falha ao criar o domínio, por favor, tente novamente mais tarde.",
+    "description": "Falha na criação do domínio"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Falha ao carregar a lista de domínios.",
+    "description": "Falha ao carregar a lista de domínios"
+  },
+  "message.domainProgressed": {
+    "message": "Validação em andamento, por favor, aguarde.",
+    "description": "Status da máquina de estados"
+  },
+  "message.domainActive": {
+    "message": "Domínio ativo! Agora você pode acessar a subestação pelo seu endereço HTTPS personalizado.",
+    "description": "Entrar no estado Ativo"
+  },
+  "message.domainFailed": {
+    "message": "Falha na verificação ou ativação do domínio.",
+    "description": "Texto para estado de falha"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verificação falhou, verifique se os registros DNS estão ativos.",
+    "description": "Interface de verificação 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Tem certeza de que deseja desvincular {hostname}? Após a desvinculação, os usuários não poderão acessar sua subestação por este domínio.",
+    "description": "Confirmação de exclusão"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Falha ao excluir o domínio.",
+    "description": "Interface DELETE 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "Aguardando verificação DNS",
+    "description": "Etiqueta de estado PendingDnsVerification"
+  },
+  "status.provisioningEo": {
+    "message": "Conectando à borda",
+    "description": "Etiqueta de estado ProvisioningEo"
+  },
+  "status.provisioningCert": {
+    "message": "Solicitando certificado",
+    "description": "Etiqueta de estado ProvisioningCert"
+  },
+  "status.active": {
+    "message": "Ativo",
+    "description": "Etiqueta de estado Ativo"
+  },
+  "status.failed": {
+    "message": "Falhou",
+    "description": "Etiqueta de estado Falhou"
   }
 }

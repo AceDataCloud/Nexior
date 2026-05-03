@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Clé API personnalisée",
+    "addCredential": "Ajouter une clé API",
+    "editCredential": "Modifier la clé API",
+    "deleteCredential": "Supprimer la clé API"
+  },
+  "description": {
+    "list": "Utilisez votre propre clé API de fournisseur (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) au lieu du pool de comptes de la plateforme. Une fois configuré, les requêtes de dialogue pour le modèle correspondant appelleront directement le fournisseur en amont avec votre clé, sans consommer de crédits de la plateforme ; les appels d'outils, références, artefacts, historique cloud et autres fonctionnalités fonctionneront normalement."
+  },
+  "field": {
+    "provider": "Fournisseur",
+    "label": "Remarque",
+    "labelPlaceholder": "ex. \"Mon numéro de travail\" (facultatif)",
+    "apiKey": "Clé API",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Laissez vide pour conserver la clé actuelle",
+    "baseUrl": "URL de base personnalisée",
+    "baseUrlPlaceholder": "Laissez vide pour utiliser l'adresse par défaut du fournisseur",
+    "isActive": "Activer",
+    "lastUsedAt": "Dernière utilisation",
+    "createdAt": "Date d'ajout"
+  },
+  "value": {
+    "active": "Activé",
+    "inactive": "Désactivé",
+    "never": "Jamais utilisé",
+    "default": "Par défaut"
+  },
+  "button": {
+    "add": "Ajouter une clé API",
+    "edit": "Modifier",
+    "test": "Tester",
+    "delete": "Supprimer",
+    "save": "Enregistrer",
+    "cancel": "Annuler"
+  },
+  "message": {
+    "deleteConfirm": "Confirmer la suppression de cette clé API ? Les dialogues du modèle {provider} reviendront à la plateforme par défaut.",
+    "deleteSuccess": "Clé API supprimée.",
+    "saveSuccess": "Clé API enregistrée.",
+    "testSuccess": "Connexion réussie.",
+    "testFailed": "Échec du test : {message}",
+    "loadFailed": "Échec du chargement des informations d'identification.",
+    "saveFailed": "Échec de l'enregistrement des informations d'identification.",
+    "empty": "Aucune clé API personnalisée configurée. Cliquez sur \"Ajouter une clé API\" pour utiliser votre propre compte fournisseur.",
+    "advancedToggle": "Afficher les options avancées",
+    "baseUrlHelp": "Facultatif. Adresse en amont personnalisée (pour OpenRouter, reverse proxy auto-hébergé, passerelle d'entreprise, etc.). Autorise uniquement HTTPS, ne peut pas pointer vers des adresses internes/loopback."
+  },
+  "badge": {
+    "active": "Utilisez votre clé {provider}",
+    "tooltip": "Cette conversation utilise votre propre clé API {provider}, les frais sont réglés par le compte {provider}, sans déduction du solde de la plateforme."
+  }
+}

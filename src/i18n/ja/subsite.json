@@ -9,7 +9,7 @@
   },
   "title.openNow": {
     "message": "サブサイトに今すぐアクセス",
-    "description": "新規作成成功後に即座に移動するかどうかを尋ねるダイアログタイトル"
+    "description": "新規作成後に即座に移動するかどうかを尋ねるダイアログのタイトル"
   },
   "field.slug": {
     "message": "サブドメインプレフィックス",
@@ -36,7 +36,7 @@
     "description": "スラッグ入力フィールドのプレースホルダー"
   },
   "placeholder.title": {
-    "message": "サブサイトのブラウザタブとサイトヘッダーに表示されます",
+    "message": "サブサイトブラウザタブとサイトヘッダーに表示されます",
     "description": "タイトル入力フィールドのプレースホルダー"
   },
   "button.create": {
@@ -52,7 +52,7 @@
     "description": "サブサイト設定に入るボタン"
   },
   "message.indexTip": {
-    "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持つことができ、ソースコードを個別に構築する必要はありません。",
+    "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持ち、ソースコードを個別に構築する必要はありません。",
     "description": "サブサイト管理ホームページの説明文"
   },
   "message.empty": {
@@ -60,7 +60,7 @@
     "description": "空のリストのヒント"
   },
   "message.slugTip": {
-    "message": "3-32文字の小文字、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めることはできません。",
+    "message": "3-32文字の小文字アルファベット、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めることはできません。",
     "description": "スラッグフィールドの説明"
   },
   "message.slugInvalid": {
@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "サブサイト {origin} が作成されました。今すぐ開いて設定を続けますか？",
     "description": "作成後に即座に開くかどうか"
+  },
+  "title.domains": {
+    "message": "{origin} のカスタムドメイン名",
+    "description": "カスタムドメイン名ダイアログのタイトル"
+  },
+  "title.bindDomain": {
+    "message": "新しいドメインをバインド",
+    "description": "バインドフォームのタイトル"
+  },
+  "button.domains": {
+    "message": "ドメイン",
+    "description": "ドメイン管理ダイアログを開くボタン"
+  },
+  "button.bindDomain": {
+    "message": "ドメインをバインド",
+    "description": "新しいドメインをバインドするために送信"
+  },
+  "button.verify": {
+    "message": "検証",
+    "description": "TXT検証レコードが整っているか確認"
+  },
+  "button.checkProgress": {
+    "message": "進捗を確認",
+    "description": "EdgeOneから最新の状態を同期"
+  },
+  "button.refresh": {
+    "message": "更新",
+    "description": "このドメインの状態を再取得"
+  },
+  "field.hostname": {
+    "message": "あなたのドメイン",
+    "description": "所有しているドメインまたはサブドメインを入力"
+  },
+  "field.recordType": {
+    "message": "レコードタイプ",
+    "description": "DNSレコードタイプ列"
+  },
+  "field.recordName": {
+    "message": "レコード名",
+    "description": "DNSレコード名列"
+  },
+  "field.recordValue": {
+    "message": "レコード値",
+    "description": "DNSレコード値列"
+  },
+  "placeholder.hostname": {
+    "message": "例: studio.mybrand.com",
+    "description": "hostname入力フィールドのプレースホルダー"
+  },
+  "message.domainsIntro": {
+    "message": "所有しているドメインをこのサブサイトにバインドします。DNSを変更できる必要があります。検証が通過した後、無料のHTTPS証明書を自動的に申請し、EdgeOneにデプロイします。",
+    "description": "ダイアログの上部説明"
+  },
+  "message.domainsEmpty": {
+    "message": "まだカスタムドメインをバインドしていません。下のフォームに完全なドメインを入力し、「バインド」をクリックして開始してください。",
+    "description": "空のリストのヒント"
+  },
+  "message.hostnameTip": {
+    "message": "あなたがDNSを制御できるパブリックドメイン名である必要があります。acedata.cloud / surl.idのいかなるサブドメインも許可されません。",
+    "description": "hostname入力のヒント"
+  },
+  "message.hostnameInvalid": {
+    "message": "ドメイン形式が正しくありません。パブリックに解決可能なドメインでなければならず、IPアドレスは許可されません。",
+    "description": "hostnameのローカル検証失敗"
+  },
+  "message.domainCreated": {
+    "message": "ドメインが提出されました。指示に従ってDNSレコードを追加してください。",
+    "description": "POST /site-domains/成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "ドメインの作成に失敗しました。後でもう一度お試しください。",
+    "description": "作成失敗"
+  },
+  "message.domainsLoadFailed": {
+    "message": "ドメインリストの読み込みに失敗しました。",
+    "description": "ドメインリストの取得失敗"
+  },
+  "message.domainProgressed": {
+    "message": "次のステージに進むための検証中です。しばらくお待ちください。",
+    "description": "状態機械の進行"
+  },
+  "message.domainActive": {
+    "message": "ドメインがアクティブになりました！あなたのカスタム HTTPS アドレスを通じてサブサイトにアクセスできます。",
+    "description": "アクティブ状態に入る"
+  },
+  "message.domainFailed": {
+    "message": "ドメインの検証またはアクティブ化に失敗しました。",
+    "description": "失敗状態の文言"
+  },
+  "message.domainVerifyFailed": {
+    "message": "検証に失敗しました。DNS レコードが有効になっているか確認してください。",
+    "description": "verify インターフェース 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "{hostname} のバインド解除を本当に行いますか？バインド解除後、ユーザーはこのドメインからあなたのサブサイトにアクセスできなくなります。",
+    "description": "削除確認"
+  },
+  "message.domainDeleteFailed": {
+    "message": "ドメインの削除に失敗しました。",
+    "description": "DELETE インターフェース 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "DNS 検証待ち",
+    "description": "PendingDnsVerification 状態ラベル"
+  },
+  "status.provisioningEo": {
+    "message": "エッジ接続中",
+    "description": "ProvisioningEo 状態ラベル"
+  },
+  "status.provisioningCert": {
+    "message": "証明書申請中",
+    "description": "ProvisioningCert 状態ラベル"
+  },
+  "status.active": {
+    "message": "アクティブ",
+    "description": "アクティブ状態ラベル"
+  },
+  "status.failed": {
+    "message": "失敗",
+    "description": "失敗状態ラベル"
   }
 }

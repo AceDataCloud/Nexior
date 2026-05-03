@@ -1,54 +1,168 @@
 {
   "title": {
-    "list": "Custom API Keys",
-    "addCredential": "Add API Key",
-    "editCredential": "Edit API Key",
-    "deleteCredential": "Delete API Key"
+    "list": {
+      "message": "Custom API Key",
+      "description": "Title for the list of custom API keys."
+    },
+    "addCredential": {
+      "message": "Add API Key",
+      "description": "Button text to add a new API key."
+    },
+    "editCredential": {
+      "message": "Edit API Key",
+      "description": "Button text to edit an existing API key."
+    },
+    "deleteCredential": {
+      "message": "Delete API Key",
+      "description": "Button text to delete an existing API key."
+    }
   },
   "description": {
-    "list": "Use your own provider API keys (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) instead of the platform's pooled accounts. When configured, chat traffic for the matching model goes directly from this app to the provider with your key — no platform credit is consumed. Tools, references, artifacts, cloud history and other features keep working unchanged."
+    "list": {
+      "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. Once configured, the corresponding model's dialogue requests will directly call the upstream service provider using your Key, without consuming platform credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
+      "description": "Description explaining the use of custom API keys."
+    }
   },
   "field": {
-    "provider": "Provider",
-    "label": "Label",
-    "labelPlaceholder": "e.g. \"My work account\" (optional)",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Leave empty to keep the current key",
-    "baseUrl": "Custom Base URL",
-    "baseUrlPlaceholder": "Leave empty for the provider's default",
-    "isActive": "Active",
-    "lastUsedAt": "Last used",
-    "createdAt": "Created"
+    "provider": {
+      "message": "Provider",
+      "description": "Label for the service provider field."
+    },
+    "label": {
+      "message": "Notes",
+      "description": "Label for the notes field."
+    },
+    "labelPlaceholder": {
+      "message": "e.g. \"My Work ID\" (optional)",
+      "description": "Placeholder text for the notes field."
+    },
+    "apiKey": {
+      "message": "API Key",
+      "description": "Label for the API key field."
+    },
+    "apiKeyPlaceholder": {
+      "message": "sk-...",
+      "description": "Placeholder text for the API key input."
+    },
+    "apiKeyEditPlaceholder": {
+      "message": "Leave empty to keep current Key unchanged",
+      "description": "Placeholder text for editing the API key."
+    },
+    "baseUrl": {
+      "message": "Custom Base URL",
+      "description": "Label for the custom base URL field."
+    },
+    "baseUrlPlaceholder": {
+      "message": "Leave empty to use provider's default address",
+      "description": "Placeholder text for the custom base URL input."
+    },
+    "isActive": {
+      "message": "Active",
+      "description": "Label for the active status field."
+    },
+    "lastUsedAt": {
+      "message": "Last Used",
+      "description": "Label for the last used timestamp."
+    },
+    "createdAt": {
+      "message": "Added At",
+      "description": "Label for the timestamp when the API key was added."
+    }
   },
   "value": {
-    "active": "Active",
-    "inactive": "Inactive",
-    "never": "Never",
-    "default": "Default"
+    "active": {
+      "message": "Active",
+      "description": "Status indicating the API key is active."
+    },
+    "inactive": {
+      "message": "Inactive",
+      "description": "Status indicating the API key is not active."
+    },
+    "never": {
+      "message": "Never Used",
+      "description": "Status indicating the API key has never been used."
+    },
+    "default": {
+      "message": "Default",
+      "description": "Status indicating the API key is the default one."
+    }
   },
   "button": {
-    "add": "Add API Key",
-    "edit": "Edit",
-    "test": "Test",
-    "delete": "Delete",
-    "save": "Save",
-    "cancel": "Cancel"
+    "add": {
+      "message": "Add API Key",
+      "description": "Button text to add a new API key."
+    },
+    "edit": {
+      "message": "Edit",
+      "description": "Button text to edit the selected API key."
+    },
+    "test": {
+      "message": "Test",
+      "description": "Button text to test the API key connection."
+    },
+    "delete": {
+      "message": "Delete",
+      "description": "Button text to delete the selected API key."
+    },
+    "save": {
+      "message": "Save",
+      "description": "Button text to save the API key."
+    },
+    "cancel": {
+      "message": "Cancel",
+      "description": "Button text to cancel the action."
+    }
   },
   "message": {
-    "deleteConfirm": "Delete this API key? Future chat requests for {provider} models will fall back to the platform's default upstream.",
-    "deleteSuccess": "API key deleted.",
-    "saveSuccess": "API key saved.",
-    "testSuccess": "Connection successful.",
-    "testFailed": "Test failed: {message}",
-    "loadFailed": "Failed to load credentials.",
-    "saveFailed": "Failed to save credential.",
-    "empty": "No custom API keys configured. Click \"Add API Key\" to use your own provider account for chat.",
-    "advancedToggle": "Show advanced options",
-    "baseUrlHelp": "Optional. Override the default endpoint to route through OpenRouter, a self-hosted proxy, or your own gateway. Must be HTTPS and not point at any private/loopback address."
+    "deleteConfirm": {
+      "message": "Confirm deletion of this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
+      "description": "Confirmation message for deleting an API key."
+    },
+    "deleteSuccess": {
+      "message": "API Key has been deleted.",
+      "description": "Message displayed after successfully deleting an API key."
+    },
+    "saveSuccess": {
+      "message": "API Key has been saved.",
+      "description": "Message displayed after successfully saving an API key."
+    },
+    "testSuccess": {
+      "message": "Connection is normal.",
+      "description": "Message displayed when the API key test is successful."
+    },
+    "testFailed": {
+      "message": "Test failed: {message}",
+      "description": "Message displayed when the API key test fails."
+    },
+    "loadFailed": {
+      "message": "Failed to load credentials.",
+      "description": "Message displayed when loading credentials fails."
+    },
+    "saveFailed": {
+      "message": "Failed to save credentials.",
+      "description": "Message displayed when saving credentials fails."
+    },
+    "empty": {
+      "message": "No custom API Key configured yet. Click \"Add API Key\" to use your own service provider account.",
+      "description": "Message displayed when no custom API keys are configured."
+    },
+    "advancedToggle": {
+      "message": "Show Advanced Options",
+      "description": "Button text to toggle advanced options."
+    },
+    "baseUrlHelp": {
+      "message": "Optional. Custom upstream address (for OpenRouter, self-built reverse proxy, enterprise gateway, etc.). Only HTTPS is allowed, cannot point to internal/loopback addresses.",
+      "description": "Help text for the custom base URL field."
+    }
   },
   "badge": {
-    "active": "Using your {provider} key",
-    "tooltip": "This conversation uses your own {provider} API key. Cost is billed to your {provider} account, not your platform balance."
+    "active": {
+      "message": "Using your {provider} Key",
+      "description": "Badge indicating that the current dialogue is using the user's own API key."
+    },
+    "tooltip": {
+      "message": "This dialogue uses your own {provider} API Key, costs will be settled by your {provider} account, and will not deduct from platform balance.",
+      "description": "Tooltip explaining the cost settlement for using the user's own API key."
+    }
   }
 }

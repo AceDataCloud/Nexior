@@ -13,7 +13,7 @@
   },
   "field.slug": {
     "message": "Subdomain Prefix",
-    "description": "Title for the subsite slug input field"
+    "description": "Label for the subsite slug input field"
   },
   "field.origin": {
     "message": "Subsite Domain",
@@ -32,7 +32,7 @@
     "description": "Column for actions in the subsite list"
   },
   "placeholder.slug": {
-    "message": "e.g. my-brand",
+    "message": "e.g., my-brand",
     "description": "Placeholder for the slug input field"
   },
   "placeholder.title": {
@@ -56,15 +56,15 @@
     "description": "Description text for the subsite management homepage"
   },
   "message.empty": {
-    "message": "You have not created any subsites yet. Click 'Create Subsite' in the top right to get started.",
-    "description": "Prompt for an empty list"
+    "message": "You haven't created any subsites yet. Click 'Create Subsite' in the top right to get started.",
+    "description": "Empty list prompt"
   },
   "message.slugTip": {
     "message": "3-32 lowercase letters, numbers, or hyphens; cannot start or end with a hyphen, and cannot contain consecutive hyphens.",
     "description": "Description for the slug field"
   },
   "message.slugInvalid": {
-    "message": "Subdomain prefix format is incorrect, please check the rules and try again.",
+    "message": "Invalid subdomain prefix format, please check the rules and try again.",
     "description": "Slug validation failed"
   },
   "message.zoneMissing": {
@@ -73,138 +73,138 @@
   },
   "message.created": {
     "message": "Subsite created successfully!",
-    "description": "Indicates successful creation"
+    "description": "Successful creation message"
   },
   "message.createFailed": {
     "message": "Failed to create subsite, please try again later.",
-    "description": "Indicates creation failure"
+    "description": "Creation failed message"
   },
   "message.loadFailed": {
     "message": "Failed to load the subsite list.",
-    "description": "Indicates failure to load the list"
+    "description": "Failed to load the list"
   },
   "message.openNowConfirm": {
     "message": "Subsite {origin} has been created. Would you like to open it now to continue configuration?",
-    "description": "Asks if the user wants to open immediately after creation"
+    "description": "Confirmation to open immediately after creation"
   },
   "title.domains": {
-    "message": "Custom domains for {origin}",
-    "description": "Domain manager dialog title"
+    "message": "Custom Domain for {origin}",
+    "description": "Title for the custom domain dialog"
   },
   "title.bindDomain": {
-    "message": "Bind a new domain",
-    "description": "Bind form heading"
+    "message": "Bind New Domain",
+    "description": "Title for the binding form"
   },
   "button.domains": {
     "message": "Domains",
-    "description": "Open the per-subsite domain manager dialog"
+    "description": "Button to open the domain management dialog"
   },
   "button.bindDomain": {
-    "message": "Bind domain",
-    "description": "Submit the bind form"
+    "message": "Bind Domain",
+    "description": "Button to submit the binding of a new domain"
   },
   "button.verify": {
     "message": "Verify",
-    "description": "Check the TXT challenge and advance state"
+    "description": "Button to check if the TXT verification record is in place"
   },
   "button.checkProgress": {
-    "message": "Check progress",
-    "description": "Re-sync state from EdgeOne"
+    "message": "Check Progress",
+    "description": "Button to sync the latest status from EdgeOne"
   },
   "button.refresh": {
     "message": "Refresh",
-    "description": "Reload row state"
+    "description": "Button to re-fetch the status of the domain"
   },
   "field.hostname": {
-    "message": "Your hostname",
-    "description": "hostname input label"
+    "message": "Your Domain",
+    "description": "Input your owned domain or subdomain"
   },
   "field.recordType": {
-    "message": "Record type",
-    "description": "DNS record type column"
+    "message": "Record Type",
+    "description": "Column for DNS record type"
   },
   "field.recordName": {
-    "message": "Record name",
-    "description": "DNS record name column"
+    "message": "Record Name",
+    "description": "Column for DNS record name"
   },
   "field.recordValue": {
-    "message": "Record value",
-    "description": "DNS record value column"
+    "message": "Record Value",
+    "description": "Column for DNS record value"
   },
   "placeholder.hostname": {
-    "message": "e.g. studio.mybrand.com",
-    "description": "hostname input placeholder"
+    "message": "e.g., studio.mybrand.com",
+    "description": "Placeholder for the hostname input field"
   },
   "message.domainsIntro": {
-    "message": "Bind a hostname you own to this subsite. You'll need to control its DNS. Once verified, EdgeOne automatically issues a free HTTPS certificate and starts serving traffic.",
-    "description": "Top-of-dialog explainer"
+    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Once verified, we will automatically apply for a free HTTPS certificate and deploy it on EdgeOne.",
+    "description": "Description at the top of the dialog"
   },
   "message.domainsEmpty": {
-    "message": "No custom domains bound yet. Fill in the hostname below and click Bind to start.",
-    "description": "Empty list hint"
+    "message": "No custom domains bound yet. Fill in the complete domain in the form below and click 'Bind' to get started.",
+    "description": "Empty list prompt"
   },
   "message.hostnameTip": {
-    "message": "Must be a public DNS-resolvable hostname under a domain you control. acedata.cloud / surl.id subdomains are not allowed.",
-    "description": "hostname input tip"
+    "message": "Must be a public domain name that you can control the DNS for. No subdomains of acedata.cloud / surl.id are allowed.",
+    "description": "Input tip for hostname"
   },
   "message.hostnameInvalid": {
-    "message": "Invalid hostname. Must be a public domain (no IPs, no scheme).",
-    "description": "Client-side validation failure"
+    "message": "Invalid domain format. Must be a publicly resolvable domain name, IP addresses are not allowed.",
+    "description": "Local validation failed for hostname"
   },
   "message.domainCreated": {
-    "message": "Domain submitted. Add the DNS record below to verify ownership.",
-    "description": "POST /site-domains/ success"
+    "message": "Domain has been submitted, please follow the instructions to add DNS records.",
+    "description": "Successful POST /site-domains/"
   },
   "message.domainCreateFailed": {
-    "message": "Failed to create the domain. Please try again.",
-    "description": "Create failure fallback"
+    "message": "Failed to create domain, please try again later.",
+    "description": "Creation failed message"
   },
   "message.domainsLoadFailed": {
-    "message": "Failed to load domain list.",
-    "description": "List load failed"
+    "message": "Failed to load the domain list.",
+    "description": "Failed to load the domain list"
   },
   "message.domainProgressed": {
-    "message": "Verification advanced - hold tight while we finish provisioning.",
-    "description": "State machine progressed"
+    "message": "Validation in progress, please wait.",
+    "description": "State machine advancement"
   },
   "message.domainActive": {
-    "message": "Domain is live! Your subsite is now reachable over your custom HTTPS hostname.",
-    "description": "Reached Active"
+    "message": "Domain is live! You can now access the substation via your custom HTTPS address.",
+    "description": "Entering Active status"
   },
   "message.domainFailed": {
-    "message": "Domain verification or provisioning failed.",
-    "description": "Failed fallback message"
+    "message": "Domain verification or activation failed.",
+    "description": "Failed status message"
   },
   "message.domainVerifyFailed": {
-    "message": "Verification failed. Check that the DNS record has propagated.",
-    "description": "verify endpoint 4xx"
+    "message": "Verification failed, please check if the DNS records have taken effect.",
+    "description": "verify interface 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Unbind {hostname}? After unbinding, users will no longer reach your subsite at this hostname.",
-    "description": "Delete confirm dialog"
+    "message": "Are you sure you want to unbind {hostname}? After unbinding, users will not be able to access your substation from this domain.",
+    "description": "Delete confirmation"
   },
   "message.domainDeleteFailed": {
-    "message": "Failed to unbind the domain.",
-    "description": "DELETE endpoint failure"
+    "message": "Failed to delete the domain.",
+    "description": "DELETE interface 5xx"
   },
   "status.pendingDnsVerification": {
-    "message": "Awaiting DNS",
-    "description": "PendingDnsVerification tag"
+    "message": "Pending DNS Verification",
+    "description": "PendingDnsVerification status label"
   },
   "status.provisioningEo": {
-    "message": "Provisioning edge",
-    "description": "ProvisioningEo tag"
+    "message": "Connecting to edge",
+    "description": "ProvisioningEo status label"
   },
   "status.provisioningCert": {
-    "message": "Issuing cert",
-    "description": "ProvisioningCert tag"
+    "message": "Requesting certificate",
+    "description": "ProvisioningCert status label"
   },
   "status.active": {
-    "message": "Active",
-    "description": "Active tag"
+    "message": "Live",
+    "description": "Active status label"
   },
   "status.failed": {
     "message": "Failed",
-    "description": "Failed tag"
+    "description": "Failed status label"
   }
 }

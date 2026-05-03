@@ -1,19 +1,19 @@
 {
   "title.index": {
     "message": "Mina underdomäner",
-    "description": "Huvudtitel för underdomänshantering"
+    "description": "Huvudrubrik för underdomänshantering"
   },
   "title.create": {
     "message": "Skapa underdomän",
-    "description": "Titel för dialogrutan för att skapa en ny underdomän"
+    "description": "Rubrik för dialogrutan för att skapa en ny underdomän"
   },
   "title.openNow": {
     "message": "Öppna underdomän nu",
-    "description": "Titel för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
+    "description": "Rubrik för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
   },
   "field.slug": {
-    "message": "Underdomänprefix",
-    "description": "Titel för inmatningsfältet för underdomän slug"
+    "message": "Underdomänsprefix",
+    "description": "Rubrik för inmatningsfältet för underdomän slug"
   },
   "field.origin": {
     "message": "Underdomänens domännamn",
@@ -24,8 +24,8 @@
     "description": "Fält för underdomänens titel"
   },
   "field.createdAt": {
-    "message": "Skapad",
-    "description": "Kolumn för skapad tid för underdomän"
+    "message": "Skapat den",
+    "description": "Kolumn för skapelsedatum för underdomänen"
   },
   "field.actions": {
     "message": "Åtgärder",
@@ -60,11 +60,11 @@
     "description": "Meddelande för tom lista"
   },
   "message.slugTip": {
-    "message": "3-32 tecken, små bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla två på varandra följande bindestreck.",
+    "message": "3-32 tecken låga bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla på varandra följande bindestreck.",
     "description": "Förklaring för slug-fältet"
   },
   "message.slugInvalid": {
-    "message": "Formatet för underdomänprefixet är felaktigt, vänligen kontrollera reglerna och försök igen.",
+    "message": "Formatet för underdomänsprefixet är felaktigt, vänligen kontrollera reglerna och försök igen.",
     "description": "Slug-validering misslyckades"
   },
   "message.zoneMissing": {
@@ -84,7 +84,127 @@
     "description": "Misslyckades med att hämta listan"
   },
   "message.openNowConfirm": {
-    "message": "Underdomän {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
-    "description": "Fråga om man vill öppna direkt efter skapande"
+    "message": "Underdomänen {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
+    "description": "Fråga om att öppna direkt efter skapande"
+  },
+  "title.domains": {
+    "message": "Anpassade domännamn för {origin}",
+    "description": "Rubrik för dialogrutan för anpassade domännamn"
+  },
+  "title.bindDomain": {
+    "message": "Bind ny domän",
+    "description": "Rubrik för bindningsformuläret"
+  },
+  "button.domains": {
+    "message": "Domäner",
+    "description": "Knapp för att öppna dialogrutan för domänhantering"
+  },
+  "button.bindDomain": {
+    "message": "Bind domän",
+    "description": "Skicka bindning av ny domän"
+  },
+  "button.verify": {
+    "message": "Verifiera",
+    "description": "Kontrollera om TXT-verifieringsposten är på plats"
+  },
+  "button.checkProgress": {
+    "message": "Kontrollera status",
+    "description": "Synkronisera senaste status från EdgeOne"
+  },
+  "button.refresh": {
+    "message": "Uppdatera",
+    "description": "Hämta status för denna domän igen"
+  },
+  "field.hostname": {
+    "message": "Din domän",
+    "description": "Ange domän eller underdomän som du äger"
+  },
+  "field.recordType": {
+    "message": "Posttyp",
+    "description": "Kolumn för DNS-posttyp"
+  },
+  "field.recordName": {
+    "message": "Postnamn",
+    "description": "Kolumn för DNS-postnamn"
+  },
+  "field.recordValue": {
+    "message": "Postvärde",
+    "description": "Kolumn för DNS-postvärde"
+  },
+  "placeholder.hostname": {
+    "message": "t.ex. studio.mybrand.com",
+    "description": "Platsinnehåll för hostname inmatningsfält"
+  },
+  "message.domainsIntro": {
+    "message": "Bind dina ägda domäner till denna underdomän. Du behöver kunna ändra DNS för den domänen. När verifieringen är klar kommer vi automatiskt att ansöka om ett gratis HTTPS-certifikat och distribuera det på EdgeOne.",
+    "description": "Förklarande text i dialogrutan"
+  },
+  "message.domainsEmpty": {
+    "message": "Inga anpassade domäner har bundits än. Fyll i den fullständiga domänen i formuläret nedan och klicka på 'Bind' för att börja.",
+    "description": "Meddelande för tom lista"
+  },
+  "message.hostnameTip": {
+    "message": "Måste vara en offentlig domän som du kan kontrollera DNS för. Inga underdomäner av acedata.cloud / surl.id tillåtna.",
+    "description": "Tips för hostname inmatning"
+  },
+  "message.hostnameInvalid": {
+    "message": "Domänformatet är felaktigt. Måste vara en offentligt upplösbar domän, IP-adresser är inte tillåtna.",
+    "description": "Lokala valideringsfel för hostname"
+  },
+  "message.domainCreated": {
+    "message": "Domänen har skickats, vänligen lägg till DNS-poster enligt instruktionerna.",
+    "description": "POST /site-domains/ lyckades"
+  },
+  "message.domainCreateFailed": {
+    "message": "Misslyckades med att skapa domän, vänligen försök igen senare.",
+    "description": "Skapande misslyckades"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Misslyckades med att ladda domänlistan.",
+    "description": "Misslyckades med att hämta domänlistan"
+  },
+  "message.domainProgressed": {
+    "message": "Verifierar för att gå vidare till nästa steg, vänligen vänta.",
+    "description": "Statusmaskinens framsteg"
+  },
+  "message.domainActive": {
+    "message": "Domänen är aktiv! Du kan nu nå din underdomän via din anpassade HTTPS-adress.",
+    "description": "Går in i aktivt tillstånd"
+  },
+  "message.domainFailed": {
+    "message": "Domänverifiering eller aktivering misslyckades.",
+    "description": "Misslyckat tillståndsmeddelande"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verifiering misslyckades, kontrollera att DNS-posterna har trätt i kraft.",
+    "description": "Verifiera API 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Vill du verkligen avbinda {hostname}? Efter avbindning kan användare inte nå din underdomän via denna domän.",
+    "description": "Bekräftelse för borttagning"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Borttagning av domän misslyckades.",
+    "description": "DELETE API 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "Väntar på DNS-verifiering",
+    "description": "Statusetikett för PendingDnsVerification"
+  },
+  "status.provisioningEo": {
+    "message": "Ansluter till kanten",
+    "description": "Statusetikett för ProvisioningEo"
+  },
+  "status.provisioningCert": {
+    "message": "Ansöker om certifikat",
+    "description": "Statusetikett för ProvisioningCert"
+  },
+  "status.active": {
+    "message": "Aktiv",
+    "description": "Statusetikett för aktiv"
+  },
+  "status.failed": {
+    "message": "Misslyckades",
+    "description": "Statusetikett för misslyckat"
   }
 }

@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Własny klucz API",
+    "addCredential": "Dodaj klucz API",
+    "editCredential": "Edytuj klucz API",
+    "deleteCredential": "Usuń klucz API"
+  },
+  "description": {
+    "list": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy za pomocą twojego klucza, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp. będą działać normalnie."
+  },
+  "field": {
+    "provider": "Dostawca",
+    "label": "Uwagi",
+    "labelPlaceholder": "np. \"Mój numer roboczy\" (opcjonalnie)",
+    "apiKey": "Klucz API",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Pozostaw puste, aby zachować obecny klucz",
+    "baseUrl": "Własny adres URL bazowy",
+    "baseUrlPlaceholder": "Pozostaw puste, aby użyć domyślnego adresu dostawcy",
+    "isActive": "Aktywny",
+    "lastUsedAt": "Ostatnio używany",
+    "createdAt": "Data dodania"
+  },
+  "value": {
+    "active": "Aktywny",
+    "inactive": "Nieaktywny",
+    "never": "Nigdy nie używany",
+    "default": "Domyślny"
+  },
+  "button": {
+    "add": "Dodaj klucz API",
+    "edit": "Edytuj",
+    "test": "Testuj",
+    "delete": "Usuń",
+    "save": "Zapisz",
+    "cancel": "Anuluj"
+  },
+  "message": {
+    "deleteConfirm": "Czy na pewno chcesz usunąć ten klucz API? Następne rozmowy z modelem {provider} będą korzystać z domyślnego dostawcy platformy.",
+    "deleteSuccess": "Klucz API został usunięty.",
+    "saveSuccess": "Klucz API został zapisany.",
+    "testSuccess": "Połączenie działa poprawnie.",
+    "testFailed": "Test nie powiódł się: {message}",
+    "loadFailed": "Nie udało się załadować poświadczeń.",
+    "saveFailed": "Nie udało się zapisać poświadczeń.",
+    "empty": "Nie skonfigurowano jeszcze własnego klucza API. Kliknij \"Dodaj klucz API\", aby użyć swojego konta dostawcy.",
+    "advancedToggle": "Pokaż opcje zaawansowane",
+    "baseUrlHelp": "Opcjonalne. Własny adres URL dla upstream (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Dozwolone tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback."
+  },
+  "badge": {
+    "active": "Używasz swojego klucza {provider}",
+    "tooltip": "Ta rozmowa korzysta z twojego własnego klucza API {provider}, koszty są rozliczane przez konto {provider}, nie pomniejszając salda platformy."
+  }
+}
