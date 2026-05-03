@@ -232,22 +232,15 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
 
 export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
   await dispatch('resetAll');
-  await dispatch('chat/resetAll');
-  await dispatch('midjourney/resetAll');
-  await dispatch('flux/resetAll');
-  await dispatch('hailuo/resetAll');
-  await dispatch('headshots/resetAll');
-  await dispatch('kling/resetAll');
-  await dispatch('luma/resetAll');
-  await dispatch('pika/resetAll');
-  await dispatch('pixverse/resetAll');
-  await dispatch('qrart/resetAll');
-  await dispatch('sora/resetAll');
-  await dispatch('suno/resetAll');
-  await dispatch('nanobanana/resetAll');
-  await dispatch('seedream/resetAll');
-  await dispatch('seedance/resetAll');
-  await dispatch('veo/resetAll');
+  // Per-app store modules are registered lazily (see `src/store/lazy.ts` and
+  // the router's `beforeEach` hook). Only fan out the reset to modules that
+  // are actually registered in the running session — there is nothing to
+  // reset for a module the user never opened, and dispatching to an
+  // unregistered module would emit a Vuex warning.
+  const { getRegisteredLazyModules } = await import('@/store/lazy');
+  for (const name of getRegisteredLazyModules()) {
+    await dispatch(`${name}/resetAll`);
+  }
   if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
     // On native platforms, show in-app login popup instead of navigating to
     // external auth URL (which would open Chrome and redirect to localhost)

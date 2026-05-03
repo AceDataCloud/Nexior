@@ -1,97 +1,35 @@
 import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
-import midjourney from './midjourney';
-import chat from './chat';
-import qrart from './qrart';
-import luma from './luma';
-import pika from './pika';
-import kling from './kling';
-import veo from './veo';
-import sora from './sora';
-import pixverse from './pixverse';
-import flux from './flux';
-import hailuo from './hailuo';
-import headshots from './headshots';
-import suno from './suno';
-import producer from './producer';
-import nanobanana from './nanobanana';
-import openaiimage from './openaiimage';
-import seedream from './seedream';
-import seedance from './seedance';
-import serp from './serp';
-import wan from './wan';
 import root from './common';
-import persistChat from './chat/persist';
-import persistMidjourney from './midjourney/persist';
-import persistQrart from './qrart/persist';
-import persistLuma from './luma/persist';
-import persistPika from './pika/persist';
-import persistKling from './kling/persist';
-import persistVeo from './veo/persist';
-import persistSora from './sora/persist';
-import persistPixverse from './pixverse/persist';
-import persistFlux from './flux/persist';
-import persistHailuo from './hailuo/persist';
-import persistHeadshots from './headshots/persist';
-import persistSuno from './suno/persist';
-import persistProducer from './producer/persist';
-import persistNanobanana from './nanobanana/persist';
-import persistOpenaiimage from './openaiimage/persist';
-import persistSeedream from './seedream/persist';
-import persistSeedance from './seedance/persist';
-import persistSerp from './serp/persist';
-import persistWan from './wan/persist';
 import persistRoot from './common/persist';
+
+// Per-app store modules (chat / midjourney / qrart / luma / pika / kling /
+// veo / sora / pixverse / flux / hailuo / headshots / suno / producer /
+// nanobanana / openaiimage / seedream / seedance / serp / wan) are
+// registered lazily at navigation time — see `src/store/lazy.ts` and the
+// router's `beforeEach` hook in `src/router/index.ts`. Only the root
+// (common) module is part of the entry chunk; opening the ChatGPT page no
+// longer loads Suno / Midjourney / Luma / Sora / etc. and their operators.
+
+// The persist *paths* are tiny string arrays so we eager-import every
+// `<module>/persist.ts` file via `import.meta.glob` — a few hundred bytes,
+// far smaller than registering a full `vuex-persistedstate` plugin per
+// module. The plugin then watches every listed path; entries belonging to a
+// not-yet-registered module are simply absent from `state` and become live
+// the moment the module is registered (state is seeded from localStorage by
+// `ensureStoreModule` so persisted values survive reloads even when the
+// module is registered for the first time later in the session).
+const lazyPersistModules = import.meta.glob<{ default: string[] }>(['./*/persist.ts', '!./common/persist.ts'], {
+  eager: true
+});
+
+const lazyPersistPaths: string[] = Object.values(lazyPersistModules).flatMap((m) => m.default);
 
 const store = createStore({
   ...root,
-  modules: {
-    midjourney: midjourney,
-    chat: chat,
-    qrart: qrart,
-    luma: luma,
-    pika: pika,
-    kling: kling,
-    veo: veo,
-    sora: sora,
-    pixverse: pixverse,
-    flux: flux,
-    hailuo: hailuo,
-    headshots: headshots,
-    suno: suno,
-    producer: producer,
-    nanobanana: nanobanana,
-    openaiimage: openaiimage,
-    seedream: seedream,
-    seedance: seedance,
-    serp: serp,
-    wan: wan
-  },
   plugins: [
     createPersistedState({
-      paths: [
-        ...persistRoot,
-        ...persistChat,
-        ...persistMidjourney,
-        ...persistQrart,
-        ...persistLuma,
-        ...persistPika,
-        ...persistKling,
-        ...persistVeo,
-        ...persistSora,
-        ...persistPixverse,
-        ...persistFlux,
-        ...persistHailuo,
-        ...persistHeadshots,
-        ...persistSuno,
-        ...persistProducer,
-        ...persistNanobanana,
-        ...persistOpenaiimage,
-        ...persistSeedream,
-        ...persistSeedance,
-        ...persistSerp,
-        ...persistWan
-      ]
+      paths: [...persistRoot, ...lazyPersistPaths]
     })
   ]
 });

@@ -60,6 +60,7 @@ import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
+import { ensureStoreModule } from '@/store/lazy';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -319,9 +320,24 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach(async (_to, _from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
   await setI18nLanguage(locale);
+
+  // Lazily register the per-app Vuex store module owned by this route. The
+  // mapping is `meta.appName` → store module name (set in each
+  // `src/router/<app>.ts`); routes without a per-app module (auth, console,
+  // profile, distribution, download, site) skip this branch entirely.
+  // Resolving the dynamic import here means the module's actions/mutations,
+  // its operator(s) and its model bindings are only fetched the first time
+  // the user navigates into that section of the app.
+  for (const matched of to.matched) {
+    const appName = matched.meta?.appName;
+    if (typeof appName === 'string' && appName) {
+      await ensureStoreModule(appName);
+    }
+  }
+
   return next();
 });
 
