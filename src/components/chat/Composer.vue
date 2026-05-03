@@ -370,10 +370,26 @@ textarea.input:focus {
   max-width: 800px;
   margin: auto;
   position: relative;
-  border-radius: 22px;
-  background-color: color-mix(in srgb, var(--el-bg-color) 94%, var(--el-color-primary-light-9) 6%);
-  box-shadow: var(--app-shadow-md);
+  border-radius: 26px;
+  // Plain surface, like ChatGPT's composer — let the page background show
+  // through cleanly instead of a tinted color-mix() that blurs the edge.
+  background-color: var(--el-bg-color);
+  // Thin hairline + a very soft drop shadow. The previous rule used
+  // `var(--app-shadow-md)` which is not defined anywhere in the codebase,
+  // so the browser was rendering an unintended fallback that looked fuzzy.
+  border: 1px solid var(--el-border-color-lighter);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   padding: 6px;
+
+  &:focus-within {
+    border-color: var(--el-border-color);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.05);
+  }
 
   .upload-hidden {
     position: absolute;
