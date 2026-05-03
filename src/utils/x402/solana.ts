@@ -12,15 +12,35 @@
  * 4. Confirm transaction after sending
  */
 
-import { Connection, PublicKey, Transaction, TransactionInstruction, ComputeBudgetProgram } from '@solana/web3.js';
+// `@solana/web3.js` is heavy (~2 MB / 650 KB gzipped). Keep types only at the top
+// level so the runtime module is loaded lazily inside the exported helpers and
+// never enters the application's static import graph (vendor-web3 chunk stays
+// dynamic-only and is no longer preloaded on initial page load).
+import type {
+  Connection as ConnectionType,
+  PublicKey as PublicKeyType,
+  Transaction as TransactionType,
+  TransactionInstruction as TransactionInstructionType
+} from '@solana/web3.js';
+
+type SolanaWeb3 = typeof import('@solana/web3.js');
+
+let solanaWeb3Promise: Promise<SolanaWeb3> | null = null;
+const loadSolanaWeb3 = (): Promise<SolanaWeb3> => {
+  if (!solanaWeb3Promise) {
+    solanaWeb3Promise = import('@solana/web3.js');
+  }
+  return solanaWeb3Promise;
+};
 
 // RPC endpoints
 const SOLANA_MAINNET_RPC = 'https://api.mainnet-beta.solana.com';
 const SOLANA_DEVNET_RPC = 'https://api.devnet.solana.com';
 
-// Solana program IDs
-const TOKEN_PROGRAM_ID = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
-const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
+// Solana program IDs (raw strings; `PublicKey` instances are constructed lazily
+// after the module is loaded).
+const TOKEN_PROGRAM_ID_STR = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+const ASSOCIATED_TOKEN_PROGRAM_ID_STR = 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
 
 /**
  * Convert Uint8Array to base64 string (browser-compatible, no Node.js Buffer)
@@ -45,10 +65,12 @@ function resolveRpcUrl(network: string, customRpcUrl?: string): string {
 /**
  * Find Associated Token Account address
  */
-function findAta(owner: PublicKey, mint: PublicKey): PublicKey {
-  const [ata] = PublicKey.findProgramAddressSync(
-    [owner.toBuffer(), TOKEN_PROGRAM_ID.toBuffer(), mint.toBuffer()],
-    ASSOCIATED_TOKEN_PROGRAM_ID
+function findAta(web3: SolanaWeb3, owner: PublicKeyType, mint: PublicKeyType): PublicKeyType {
+  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_STR);
+  const associatedTokenProgramId = new web3.PublicKey(ASSOCIATED_TOKEN_PROGRAM_ID_STR);
+  const [ata] = web3.PublicKey.findProgramAddressSync(
+    [owner.toBuffer(), tokenProgramId.toBuffer(), mint.toBuffer()],
+    associatedTokenProgramId
   );
   return ata;
 }
@@ -68,16 +90,18 @@ function createTransferCheckedData(amount: bigint, decimals: number): Uint8Array
  * Build SPL Token TransferChecked instruction
  */
 function buildTransferCheckedInstruction(
-  source: PublicKey,
-  mint: PublicKey,
-  destination: PublicKey,
-  authority: PublicKey,
+  web3: SolanaWeb3,
+  source: PublicKeyType,
+  mint: PublicKeyType,
+  destination: PublicKeyType,
+  authority: PublicKeyType,
   amount: bigint,
   decimals: number
-): TransactionInstruction {
+): TransactionInstructionType {
   const instructionData = createTransferCheckedData(amount, decimals);
-  return new TransactionInstruction({
-    programId: TOKEN_PROGRAM_ID,
+  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_STR);
+  return new web3.TransactionInstruction({
+    programId: tokenProgramId,
     keys: [
       { pubkey: source, isSigner: false, isWritable: true },
       { pubkey: mint, isSigner: false, isWritable: false },
@@ -122,7 +146,7 @@ export interface SolanaPaymentResult {
 export async function executeSolanaPayment(args: {
   requirements: SolanaPaymentRequirements;
   payerAddress: string;
-  signAndSendTransaction: (tx: Transaction) => Promise<string | { signature: string }>;
+  signAndSendTransaction: (tx: TransactionType) => Promise<string | { signature: string }>;
   fetchBlockhash?: (network: string) => Promise<string>;
 }): Promise<SolanaPaymentResult> {
   const { requirements, payerAddress, signAndSendTransaction, fetchBlockhash } = args;
@@ -148,25 +172,26 @@ export async function executeSolanaPayment(args: {
   const network = String(requirements.network || 'solana').toLowerCase();
   const rpcUrl = resolveRpcUrl(network, extra.rpcUrl || extra.rpc_url);
 
-  const connection = new Connection(rpcUrl, 'confirmed');
+  const web3 = await loadSolanaWeb3();
+  const connection = new web3.Connection(rpcUrl, 'confirmed');
 
-  const payerPubkey = new PublicKey(payerAddress);
-  const payToPubkey = new PublicKey(payTo);
-  const mint = new PublicKey(requirements.asset);
+  const payerPubkey = new web3.PublicKey(payerAddress);
+  const payToPubkey = new web3.PublicKey(payTo);
+  const mint = new web3.PublicKey(requirements.asset);
 
-  const sourceAta = findAta(payerPubkey, mint);
-  const destAta = findAta(payToPubkey, mint);
+  const sourceAta = findAta(web3, payerPubkey, mint);
+  const destAta = findAta(web3, payToPubkey, mint);
 
-  const tx = new Transaction();
+  const tx = new web3.Transaction();
 
   if (computeUnitLimit > 0) {
-    tx.add(ComputeBudgetProgram.setComputeUnitLimit({ units: computeUnitLimit }));
+    tx.add(web3.ComputeBudgetProgram.setComputeUnitLimit({ units: computeUnitLimit }));
   }
   if (computeUnitPriceMicroLamports > 0) {
-    tx.add(ComputeBudgetProgram.setComputeUnitPrice({ microLamports: computeUnitPriceMicroLamports }));
+    tx.add(web3.ComputeBudgetProgram.setComputeUnitPrice({ microLamports: computeUnitPriceMicroLamports }));
   }
 
-  tx.add(buildTransferCheckedInstruction(sourceAta, mint, destAta, payerPubkey, amount, decimals));
+  tx.add(buildTransferCheckedInstruction(web3, sourceAta, mint, destAta, payerPubkey, amount, decimals));
 
   // CRITICAL: User wallet is the fee payer
   tx.feePayer = payerPubkey;
@@ -250,11 +275,12 @@ export async function buildSolanaX402Header(args: {
   const network = String(requirements.network || 'solana').toLowerCase();
   const rpcUrl = resolveRpcUrl(network, extra.rpcUrl || extra.rpc_url);
 
-  const connection = args.connection || new Connection(rpcUrl, 'confirmed');
+  const web3 = await loadSolanaWeb3();
+  const connection: ConnectionType = args.connection || new web3.Connection(rpcUrl, 'confirmed');
 
-  const payerPubkey = new PublicKey(payerAddress);
-  const payTo = new PublicKey(String(requirements.payTo || requirements.pay_to));
-  const mint = new PublicKey(String(requirements.asset));
+  const payerPubkey = new web3.PublicKey(payerAddress);
+  const payTo = new web3.PublicKey(String(requirements.payTo || requirements.pay_to));
+  const mint = new web3.PublicKey(String(requirements.asset));
 
   const localDecimals = Number(extra.decimals ?? 6);
   const localComputeUnitLimit = Number(extra.computeUnitLimit ?? extra.compute_unit_limit ?? 200_000);
@@ -265,19 +291,19 @@ export async function buildSolanaX402Header(args: {
   const amount = BigInt(String(requirements.maxAmountRequired || requirements.max_amount_required || '0'));
   if (amount <= 0n) throw new Error('Invalid amount');
 
-  const sourceAta = findAta(payerPubkey, mint);
-  const destAta = findAta(payTo, mint);
+  const sourceAta = findAta(web3, payerPubkey, mint);
+  const destAta = findAta(web3, payTo, mint);
 
-  const tx = new Transaction();
+  const tx = new web3.Transaction();
   tx.feePayer = payerPubkey;
 
   if (localComputeUnitLimit > 0) {
-    tx.add(ComputeBudgetProgram.setComputeUnitLimit({ units: localComputeUnitLimit }));
+    tx.add(web3.ComputeBudgetProgram.setComputeUnitLimit({ units: localComputeUnitLimit }));
   }
   if (localComputeUnitPriceMicroLamports > 0) {
-    tx.add(ComputeBudgetProgram.setComputeUnitPrice({ microLamports: localComputeUnitPriceMicroLamports }));
+    tx.add(web3.ComputeBudgetProgram.setComputeUnitPrice({ microLamports: localComputeUnitPriceMicroLamports }));
   }
-  tx.add(buildTransferCheckedInstruction(sourceAta, mint, destAta, payerPubkey, amount, localDecimals));
+  tx.add(buildTransferCheckedInstruction(web3, sourceAta, mint, destAta, payerPubkey, amount, localDecimals));
 
   if (args.fetchLatestBlockhash) {
     tx.recentBlockhash = await args.fetchLatestBlockhash(network);

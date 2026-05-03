@@ -6,30 +6,14 @@ import * as path from 'path';
 const normalizeModuleId = (id: string) => id.replace(/\\/g, '/');
 
 const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string) => boolean]> = [
-  [
-    'vendor-web3',
-    (id) =>
-      id.includes('/@solana/') ||
-      id.includes('/solana-wallets-vue/') ||
-      id.includes('/ethers/') ||
-      id.includes('/@noble/') ||
-      id.includes('/@scure/') ||
-      id.includes('/@stablelib/') ||
-      id.includes('/bn.js/') ||
-      id.includes('/borsh/') ||
-      id.includes('/bs58/') ||
-      id.includes('/tweetnacl/') ||
-      id.includes('/superstruct/') ||
-      id.includes('/jayson/') ||
-      id.includes('/rpc-websockets/') ||
-      id.includes('/secp256k1/') ||
-      id.includes('/uint8arrays/') ||
-      id.includes('/multiformats/') ||
-      id.includes('/@lit/') ||
-      id.includes('/lit-html/') ||
-      id.includes('/@w3m/') ||
-      id.includes('/@reown/')
-  ],
+  // NOTE: We deliberately do NOT define a `vendor-web3` chunk here. Forcing
+  // every Web3 dependency into one giant chunk causes Rollup to hoist shared
+  // helpers (notably Vite's auto-generated `__vitePreload`) into that chunk,
+  // which makes the entry statically depend on it. The browser then preloads
+  // ~2 MB / 650 KB-gz of Solana code on first paint even for users who never
+  // visit a payment page. Letting Rollup pick natural chunk boundaries keeps
+  // Web3 code split across small chunks that are only fetched lazily by
+  // `utils/x402/solana.ts` and `plugins/solana-wallets.ts`.
   ['vendor-element-plus', (id) => id.includes('/element-plus/')],
   ['vendor-vue-router', (id) => id.includes('/vue-router/')],
   ['vendor-vue', (id) => id.includes('/node_modules/vue/') || id.includes('/node_modules/@vue/')],

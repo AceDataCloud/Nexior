@@ -63,14 +63,40 @@
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script>
+    <!--
+      Load Inter without blocking first paint: request via `media="print"` so
+      the browser does not block render on the stylesheet, then swap to `all`
+      once it loads. Falls back to a synchronous `<link>` for clients without JS.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>    <script>
       var _hmt = _hmt || [];
+      // Defer Baidu analytics so it never blocks initial paint or competes for
+      // bandwidth with the application bundle. `requestIdleCallback` lets the
+      // browser pick an idle moment; `setTimeout` is a fallback for Safari.
       (function () {
-        var hm = document.createElement('script');
-        hm.src = 'https://hm.baidu.com/hm.js?6216b5ba30d8e35b2319b4c0331cbf21';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(hm, s);
+        var inject = function () {
+          var hm = document.createElement('script');
+          hm.async = true;
+          hm.src = 'https://hm.baidu.com/hm.js?6216b5ba30d8e35b2319b4c0331cbf21';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(hm, s);
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(inject, { timeout: 4000 });
+        } else {
+          setTimeout(inject, 2000);
+        }
       })();
     </script>
     <style>
