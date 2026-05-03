@@ -2,7 +2,13 @@
   <div class="field">
     <div class="box">
       <h2 class="title font-bold">{{ $t('kling.name.prompt') }}</h2>
-      <info-icon :content="$t('kling.description.prompt')" class="info" />
+      <div class="actions">
+        <el-button text size="small" class="inspiration-btn" @click="$emit('open-inspiration')">
+          <font-awesome-icon icon="fa-regular fa-lightbulb" class="mr-1" />
+          {{ $t('kling.inspiration.openButton') }}
+        </el-button>
+        <info-icon :content="$t('kling.description.prompt')" class="info" />
+      </div>
     </div>
     <el-input v-model="prompt" :rows="3" type="textarea" class="prompt" :placeholder="$t('kling.placeholder.prompt')" />
   </div>
@@ -10,7 +16,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput } from 'element-plus';
+import { ElInput, ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export const DEFAULT_PROMPT = '';
@@ -19,8 +26,11 @@ export default defineComponent({
   name: 'PromptInput',
   components: {
     ElInput,
+    ElButton,
+    FontAwesomeIcon,
     InfoIcon
   },
+  emits: ['open-inspiration'],
   computed: {
     prompt: {
       get() {
@@ -49,15 +59,28 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; // Add this line to move the icon to the right
+    justify-content: space-between;
     position: relative;
+    margin-bottom: 6px;
+
     .title {
       font-size: 14px;
-      margin-bottom: 10px;
+      margin: 0;
+    }
+    .actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .inspiration-btn {
+      font-size: 12px;
+      color: var(--el-color-primary);
+      padding: 0 6px;
+      height: 24px;
     }
   }
   .info {
-    margin-left: auto; // Ensure the icon stays on the right
+    margin-left: 4px;
   }
 }
 </style>
