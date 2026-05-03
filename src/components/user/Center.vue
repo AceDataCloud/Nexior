@@ -75,12 +75,17 @@ export default defineComponent({
       return this.$store.getters?.user;
     },
     showSubsite() {
-      // Show 'My Subsites' only when the parent Site has explicitly opted
-      // into the subsite (white-label) feature. The /subsite route's own
-      // mounted() guard plus PlatformBackend's POST /api/v1/sites/ check
-      // stay the source of truth; this just hides the menu entry on
-      // origins that haven't enabled it.
-      return Boolean(this.$store?.state?.site?.features?.subsite?.enabled);
+      // Hostname-driven gate: any host whose Site row is intended to expose
+      // subsite (white-label) management surfaces the menu entry.
+      // PlatformBackend #382 enforces the real authorization on POST /sites/,
+      // so the worst case here is a logged-in user clicking through to a UI
+      // that returns 403 — cheap, and hugely better than the previous
+      // failure mode where a stale persisted `state.site` (without
+      // `features.subsite`) silently hid the entry on a subsite-enabled
+      // origin.
+      if (typeof window === 'undefined' || !window.location?.host) return false;
+      const host = window.location.host.split(':')[0];
+      return host === 'studio.acedata.cloud' || host.endsWith('.studio.acedata.cloud');
     }
   },
   mounted() {
