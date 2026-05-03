@@ -31,7 +31,6 @@ import serp from './serp';
 import wan from './wan';
 import site from './site';
 import profile from './profile';
-import connectors from './connectors';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
@@ -312,8 +311,7 @@ const routes = [
   distribution,
   download,
   site,
-  profile,
-  connectors
+  profile
 ];
 
 const router = createRouter({
@@ -338,10 +336,13 @@ router.afterEach((to) => {
       description: seoData.description,
       keywords: seoData.keywords
     });
+    // Use the current origin so the WebApplication schema URL reflects the
+    // hostname the visitor is actually on (hub.acedata.cloud, studio.acedata.cloud, etc.).
+    const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://hub.acedata.cloud';
     setWebApplicationSchema({
       name: seoData.title,
       description: seoData.description,
-      url: `https://hub.acedata.cloud/${prefix}`,
+      url: `${origin}/${prefix}`,
       category: seoData.category
     });
   } else {

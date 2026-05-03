@@ -9,7 +9,7 @@
   },
   "name.modePro": {
     "message": "Hohe Qualität",
-    "description": "Hochqualitätsmodus für Kling-Videos"
+    "description": "Hochqualitätsmodus von Kling-Videos"
   },
   "name.failure": {
     "message": "Fehler",
@@ -49,11 +49,11 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversion, die zur Erstellung des Videos verwendet wird"
+    "description": "Modellversion für die Videoerstellung"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Name des Veo-Videogenerators"
+    "description": "Name des Veo-Video-Generators"
   },
   "name.ratio": {
     "message": "Verhältnis",
@@ -96,7 +96,7 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie den Stil des zu generierenden Videos ein, z. B.: moving",
+    "message": "Geben Sie den Stil des zu generierenden Videos ein, z.B.: moving",
     "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.position": {
@@ -145,19 +145,23 @@
   },
   "message.uploadReferencesError": {
     "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung beim Fehlschlagen des Bilduploads"
+    "description": "Fehlermeldung beim Fehlschlagen des Bildhochladens"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
     "description": "Nachricht beim Starten der Zeichnungsaufgabe"
   },
   "message.startTaskSuccess": {
-    "message": "Aufgabenerstellung erfolgreich",
+    "message": "Aufgabe erfolgreich gestartet",
     "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Aufgabenerstellung fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
+  },
+  "message.imageRequired": {
+    "message": "Bitte laden Sie zuerst mindestens ein Referenzbild hoch, bevor Sie die Bild-zu-Video-Aufgabe starten",
+    "description": "Hinweis, wenn im image2video-Modus kein Bild hochgeladen wurde"
   },
   "message.usedUp": {
     "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
@@ -165,19 +169,19 @@
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht während der Bildgenerierung"
   },
   "message.downloadVideo": {
     "message": "Dieses Video herunterladen",
-    "description": "Nachricht während der Generierung des Bildes"
+    "description": "Nachricht während der Bildgenerierung"
   },
   "message.generateFailed": {
     "message": "Videoerstellung fehlgeschlagen",
     "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
   },
   "message.uploadVideoExceed": {
-    "message": "Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Die Dateigröße darf 10 MB nicht überschreiten!",
@@ -188,28 +192,28 @@
     "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Startbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Startbild nicht hochgeladen werden kann"
+    "message": "Fehler beim Hochladen des Erstbildes",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
   },
   "message.uploadVideoError": {
     "message": "Fehler beim Hochladen des Videos",
-    "description": "Fehlermeldung, wenn das Video nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
   },
   "message.uploadEndImageError": {
     "message": "Fehler beim Hochladen des Endbildes",
-    "description": "Fehlermeldung, wenn das Endbild nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
     "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Dokument nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Aktionen",

@@ -1,5 +1,15 @@
-import { BASE_URL_HUB } from '@/constants/endpoint';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
+
+// Resolve the current site origin at runtime so that the same bundle can be
+// served independently from multiple official hostnames (e.g. hub.acedata.cloud,
+// studio.acedata.cloud, hub-test.acedata.cloud) without canonicalizing them all
+// to a single URL.
+function getCurrentOrigin(): string {
+  if (typeof window !== 'undefined' && window.location && window.location.origin) {
+    return window.location.origin;
+  }
+  return 'https://hub.acedata.cloud';
+}
 
 const SITE_NAME = 'Ace Data Cloud - AI Hub';
 const DEFAULT_IMAGE = 'https://cdn.acedata.cloud/logo.png';
@@ -145,7 +155,7 @@ export function setOrganization() {
 export function updateSeo(options: SeoOptions) {
   const title = options.title ? `${options.title} - ${SITE_NAME}` : SITE_NAME;
   const description = options.description || DEFAULT_DESCRIPTION;
-  const url = options.url || `${BASE_URL_HUB}${window.location.pathname}`;
+  const url = options.url || `${getCurrentOrigin()}${window.location.pathname}`;
   const image = options.image || DEFAULT_IMAGE;
   const ogType = options.type || 'website';
 
@@ -185,12 +195,13 @@ export function updateSeo(options: SeoOptions) {
 }
 
 export function resetSeo() {
+  const origin = getCurrentOrigin();
   document.title = SITE_NAME;
   setMeta('name="description"', DEFAULT_DESCRIPTION);
-  setCanonical(BASE_URL_HUB);
+  setCanonical(origin);
   setMeta('property="og:title"', SITE_NAME);
   setMeta('property="og:description"', DEFAULT_DESCRIPTION);
-  setMeta('property="og:url"', BASE_URL_HUB);
+  setMeta('property="og:url"', origin);
   setMeta('property="og:image"', DEFAULT_IMAGE);
   setMeta('property="og:type"', 'website');
   setMeta('name="twitter:title"', SITE_NAME);

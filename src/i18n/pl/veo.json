@@ -32,8 +32,8 @@
     "description": "Data i czas utworzenia wideo Veo"
   },
   "name.startEndImage": {
-    "message": "Obrazy klatek startowej/końcowej",
-    "description": "Etykieta pola formularza: obrazy referencyjne klatki startowej/końcowej (proszę zachować krótko, aby nie zasłaniać przycisku)"
+    "message": "Obrazy klatki początkowej/końcowej",
+    "description": "Etykieta pola formularza: obrazy klatki początkowej/końcowej (proszę zachować krótko, aby nie zasłaniać przycisku)"
   },
   "name.action": {
     "message": "Akcja",
@@ -64,7 +64,7 @@
     "description": "Opis parametru 'translation'"
   },
   "description.imageUrl": {
-    "message": "W zadaniu tworzenia wideo z wieloma obrazami należy przesłać wiele obrazów.",
+    "message": "W przypadku zadań tworzenia wideo z wieloma obrazami, należy przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
@@ -72,7 +72,7 @@
     "description": "Opis parametru 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Tablica linków do obrazów referencyjnych, pierwszy to obraz klatki startowej, następnie obraz klatki końcowej",
+    "message": "Tablica linków do obrazów referencyjnych, pierwszy to klatka początkowa, następnie klatka końcowa",
     "description": "Opis parametru 'image_url'"
   },
   "status.pending": {
@@ -96,7 +96,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np.: moving",
+    "message": "Wprowadź podpowiedź stylu wideo, np.: moving",
     "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.position": {
@@ -144,8 +144,8 @@
     "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazów"
   },
   "message.uploadReferencesError": {
-    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
+    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazów się nie powiodło"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
@@ -153,14 +153,18 @@
   },
   "message.startTaskSuccess": {
     "message": "Zadanie generowania uruchomione pomyślnie",
-    "description": "Komunikat o sukcesie po pomyślnym uruchomieniu zadania"
+    "description": "Komunikat o sukcesie po uruchomieniu zadania"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
     "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania się nie powiodło"
   },
+  "message.imageRequired": {
+    "message": "Najpierw przesłać przynajmniej jeden obraz referencyjny, zanim uruchomisz zadanie wideo z obrazu",
+    "description": "Podpowiedź, gdy nie przesłano obrazów w trybie image2video"
+  },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
+    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować korzystanie",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
@@ -176,16 +180,16 @@
     "description": "Komunikat, gdy generowanie obrazu się nie powiodło"
   },
   "message.uploadVideoExceed": {
-    "message": "Liczba przesyłanych obrazów klatki startowej przekracza limit",
-    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki startowej przekracza limit"
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Rozmiar pliku nie może przekraczać 10MB!",
-    "description": "Komunikat o błędzie, gdy rozmiar pliku przekracza 10MB!"
+    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku nie może przekraczać 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Plik musi być w formacie MP4!",
-    "description": "Komunikat o błędzie, gdy plik nie jest w formacie MP4!"
+    "message": "Przesyłany plik musi być w formacie MP4!",
+    "description": "Komunikat o błędzie, gdy przesyłany plik musi być w formacie MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
@@ -197,19 +201,19 @@
   },
   "message.uploadStartImageError": {
     "message": "Nie udało się przesłać obrazu klatki początkowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki początkowej nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu klatki początkowej"
   },
   "message.uploadVideoError": {
     "message": "Nie udało się przesłać wideo",
-    "description": "Komunikat o błędzie, gdy przesyłanie wideo nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać wideo"
   },
   "message.uploadEndImageError": {
     "message": "Nie udało się przesłać obrazu klatki końcowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki końcowej nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu klatki końcowej"
   },
   "message.uploadDocumentsError": {
     "message": "Nie udało się przesłać dokumentu",
-    "description": "Komunikat o błędzie, gdy przesyłanie dokumentu nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać dokumentu"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",

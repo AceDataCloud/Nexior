@@ -133,7 +133,7 @@
   },
   "button.uploadReferences": {
     "message": "업로드",
-    "description": "사용자가 참조를 업로드할 수 있도록 하는 버튼 텍스트"
+    "description": "사용자가 참조를 업로드할 수 있도록 허용하는 버튼 텍스트"
   },
   "message.uploadReferencesExceed": {
     "message": "최대 2장의 이미지를 업로드할 수 있습니다",
@@ -159,64 +159,68 @@
     "message": "작업 시작 실패, 관리자에게 문의하세요",
     "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
+  "message.imageRequired": {
+    "message": "비디오 생성 작업을 시작하기 전에 최소한 하나의 참조 이미지를 업로드하세요",
+    "description": "image2video 모드에서 이미지를 업로드하지 않았을 때의 프롬프트"
+  },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
     "description": "소진 시의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "이미지 생성 중의 메시지"
+    "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.downloadVideo": {
     "message": "이 비디오 다운로드",
-    "description": "이미지 생성 중의 메시지"
+    "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
     "message": "비디오 생성 실패",
     "description": "이미지 생성 실패 시의 메시지"
   },
   "message.uploadVideoExceed": {
-    "message": "시작 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "시작 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기는 10MB를 초과할 수 없습니다! 시의 오류 정보"
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 정보"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일은 MP4 형식이어야 합니다! 의 오류 정보"
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 정보"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadEndImageExceed": {
-    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다",
+    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다.",
     "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadStartImageError": {
-    "message": "첫 번째 프레임 이미지 업로드 실패",
-    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 정보"
+    "message": "첫 프레임 이미지 업로드 실패",
+    "description": "첫 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadVideoError": {
     "message": "비디오 업로드 실패",
-    "description": "비디오 업로드 실패 시의 오류 정보"
+    "description": "비디오 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadEndImageError": {
     "message": "마지막 프레임 이미지 업로드 실패",
-    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 정보"
+    "description": "마지막 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
-    "description": "문서 업로드 실패 시의 오류 정보"
+    "description": "문서 업로드에 실패했을 때의 오류 정보"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
+    "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요.",
     "description": "작업이 없을 때의 메시지"
   }
 }

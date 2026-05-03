@@ -5,7 +5,7 @@
   },
   "name.translation": {
     "message": "Traduzione automatica",
-    "description": "Traduzione automatica per i video Veo"
+    "description": "Traduzione automatica dei video Veo"
   },
   "name.modePro": {
     "message": "Alta qualità",
@@ -33,7 +33,7 @@
   },
   "name.startEndImage": {
     "message": "Immagini di riferimento inizio/fine",
-    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (si consiglia di tradurre in modo conciso come 'Inizio/Fine')"
+    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (consigliato tradurre come 'Start/End Frames', mantenere breve per evitare di coprire il pulsante)"
   },
   "name.action": {
     "message": "Azione",
@@ -61,10 +61,10 @@
   },
   "description.translation": {
     "message": "È possibile attivare la traduzione automatica per le parole chiave durante la creazione del video.",
-    "description": "Descrizione del parametro 'traduzione'"
+    "description": "Descrizione del parametro 'translation'"
   },
   "description.imageUrl": {
-    "message": "Durante la creazione di video con più immagini, è necessario caricare più immagini.",
+    "message": "Nella creazione di video con più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
@@ -125,11 +125,11 @@
   },
   "button.uploadImageUrl": {
     "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica')"
+    "description": "Testo del pulsante per caricare l'immagine (semplificare in 'Carica')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
-    "description": "Testo del pulsante per caricare un video"
+    "description": "Testo del pulsante per caricare il video"
   },
   "button.uploadReferences": {
     "message": "Carica",
@@ -157,10 +157,14 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'attività di disegno non riesce a partire"
+    "description": "Messaggio di errore quando l'avvio dell'attività di disegno fallisce"
+  },
+  "message.imageRequired": {
+    "message": "Carica almeno un'immagine di riferimento prima di avviare l'attività di video da immagine",
+    "description": "Messaggio quando non è stata caricata alcuna immagine in modalità image2video"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
     "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
@@ -176,24 +180,24 @@
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini di inizio caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini di inizio caricate supera il limite"
+    "message": "Il numero di immagini della prima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file supera i 10 MB!"
+    "message": "La dimensione del file caricato non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Il numero di immagini della prima cornice supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
+    "message": "Il numero di immagini della prima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini dell'ultima cornice supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
+    "message": "Il numero di immagini dell'ultima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
     "message": "Caricamento dell'immagine della prima cornice fallito",

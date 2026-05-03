@@ -23,9 +23,16 @@ export const isWechatBrowser = (): boolean => {
 
 /**
  * isOfficial
+ *
+ * Returns true when the visitor is on one of the first-party Ace Data Cloud
+ * hostnames. The Nexior bundle is also served from `studio.acedata.cloud`
+ * (a separate ingress that runs the same image independently), so both hosts
+ * must be treated as "official" — otherwise white-label / site-tenant logic
+ * would incorrectly kick in on studio.acedata.cloud.
  */
 export const isOfficial = (): boolean => {
-  return window.location.host.includes(BASE_HOST_HUB);
+  const host = window.location.host;
+  return host.includes(BASE_HOST_HUB) || host.includes('studio.acedata.cloud');
 };
 
 /**

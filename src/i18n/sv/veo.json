@@ -33,7 +33,7 @@
   },
   "name.startEndImage": {
     "message": "Start/Slut bildreferens",
-    "description": "Formulärfältets etikett: Start/Slut bildreferens"
+    "description": "Formulärfältets etikett: Start/Slut bildreferens (håll kort för att undvika att dölja knappen)"
   },
   "name.action": {
     "message": "Åtgärd",
@@ -72,7 +72,7 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array av referensbildlänkar, den första är startbilden, den andra är slutbilden",
+    "message": "Array av bildreferenslänkar, den första är startbilden, den andra är slutbilden",
     "description": "Beskrivning av parametern 'image_url'"
   },
   "status.pending": {
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild"
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -153,11 +153,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Uppgift för generering har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats"
+    "description": "Framgångsmeddelande när uppgiften startas"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
     "description": "Felmeddelande när ritningsuppgiften misslyckas"
+  },
+  "message.imageRequired": {
+    "message": "Vänligen ladda upp minst en referensbild innan du startar bild-till-video-uppgiften",
+    "description": "Prompt när ingen bild har laddats upp i image2video-läget"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
@@ -173,43 +177,43 @@
   },
   "message.generateFailed": {
     "message": "Misslyckades med att generera video",
-    "description": "Meddelande när bildgenerering misslyckas"
+    "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.uploadVideoExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Filstorleken får inte överstiga 10 MB!",
-    "description": "Felmeddelande när filstorleken överstiger 10 MB!"
+    "message": "Uppladdad fil får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Filuppladdningen måste vara i MP4-format!",
-    "description": "Felmeddelande när filuppladdningen inte är i MP4-format!"
+    "message": "Uppladdad fil måste vara i MP4-format!",
+    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade slutbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
+    "message": "Antalet uppladdade sista bildrutor överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp startbilden",
-    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+    "message": "Uppladdning av första bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp videon",
-    "description": "Felmeddelande när uppladdningen av videon misslyckas"
+    "message": "Uppladdning av video misslyckades",
+    "description": "Felmeddelande när uppladdningen av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp slutbilden",
-    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
+    "message": "Uppladdning av sista bildruta misslyckades",
+    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokumentet",
-    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
+    "message": "Uppladdning av dokument misslyckades",
+    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",

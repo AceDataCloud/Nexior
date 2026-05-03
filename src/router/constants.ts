@@ -72,9 +72,6 @@ export const ROUTE_WAN_INDEX = 'wan-index';
 
 export const ROUTE_PROFILE_INDEX = 'profile-index';
 
-export const ROUTE_CONNECTORS_INDEX = 'connectors-index';
-export const ROUTE_CONNECTORS_BROWSE = 'connectors-browse';
-
 export const ROUTE_CONSOLE_ROOT = 'console-root';
 export const ROUTE_CONSOLE_ORDER_LIST = 'console-order-list';
 export const ROUTE_CONSOLE_ORDER_DETAIL = 'console-order-detail';
