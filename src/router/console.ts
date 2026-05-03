@@ -2,6 +2,7 @@ import {
   ROUTE_CONSOLE_APPLICATION_EXTRA,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+  ROUTE_CONSOLE_BYOK_LIST,
   ROUTE_CONSOLE_ORDER_DETAIL,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_ROOT,
@@ -51,6 +52,15 @@ export default {
       path: 'usages',
       name: ROUTE_CONSOLE_USAGE_LIST,
       component: () => import('@/pages/console/usage/List.vue')
+    },
+    {
+      path: 'byok',
+      name: ROUTE_CONSOLE_BYOK_LIST,
+      // Lazy-load the chat module on entry so the BYOK page can use
+      // the existing chat-Application credential token to authenticate
+      // against `/aichat2/credentials`.
+      meta: { appName: 'chat' },
+      component: () => import('@/pages/console/byok/List.vue')
     }
   ]
 };

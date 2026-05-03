@@ -86,4 +86,12 @@ export const ROUTE_DISTRIBUTION_INVITEES = 'distribution-invitees';
 
 export const ROUTE_CONSOLE_USAGE_LIST = 'console-usage-list';
 
+/**
+ * BYOK ("bring your own key") settings — manage user-supplied upstream
+ * API credentials for AI chat models. See
+ * `src/pages/console/byok/List.vue` and the matching aichat2 endpoint
+ * `POST /aichat2/credentials`.
+ */
+export const ROUTE_CONSOLE_BYOK_LIST = 'console-byok-list';
+
 export const ROUTE_NOT_FOUND = 'not-found';

@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "自定义 API Key",
+    "addCredential": "添加 API Key",
+    "editCredential": "编辑 API Key",
+    "deleteCredential": "删除 API Key"
+  },
+  "description": {
+    "list": "使用你自己的服务商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）代替平台账户池。配置后，对应模型的对话请求会直接以你的 Key 调用上游服务商，不消耗平台 Credit；工具调用、引用、工件、云端历史等其他功能照常工作。"
+  },
+  "field": {
+    "provider": "服务商",
+    "label": "备注",
+    "labelPlaceholder": "如 \"我的工作号\"（可选）",
+    "apiKey": "API Key",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "留空表示保持当前 Key 不变",
+    "baseUrl": "自定义 Base URL",
+    "baseUrlPlaceholder": "留空使用服务商默认地址",
+    "isActive": "启用",
+    "lastUsedAt": "上次使用",
+    "createdAt": "添加时间"
+  },
+  "value": {
+    "active": "启用中",
+    "inactive": "未启用",
+    "never": "从未使用",
+    "default": "默认"
+  },
+  "button": {
+    "add": "添加 API Key",
+    "edit": "编辑",
+    "test": "测试",
+    "delete": "删除",
+    "save": "保存",
+    "cancel": "取消"
+  },
+  "message": {
+    "deleteConfirm": "确认删除这个 API Key？后续 {provider} 模型的对话将回落到平台默认上游。",
+    "deleteSuccess": "API Key 已删除。",
+    "saveSuccess": "API Key 已保存。",
+    "testSuccess": "连接正常。",
+    "testFailed": "测试失败：{message}",
+    "loadFailed": "凭据加载失败。",
+    "saveFailed": "保存凭据失败。",
+    "empty": "尚未配置自定义 API Key。点击\"添加 API Key\"以使用你自己的服务商账户。",
+    "advancedToggle": "显示高级选项",
+    "baseUrlHelp": "可选。自定义上游地址（用于 OpenRouter、自建反代、企业网关等）。仅允许 HTTPS，不能指向内网/回环地址。"
+  },
+  "badge": {
+    "active": "使用你的 {provider} Key",
+    "tooltip": "本次对话使用你自己的 {provider} API Key，费用由 {provider} 账户结算，不扣减平台余额。"
+  }
+}

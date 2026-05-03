@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Custom API Keys",
+    "addCredential": "Add API Key",
+    "editCredential": "Edit API Key",
+    "deleteCredential": "Delete API Key"
+  },
+  "description": {
+    "list": "Use your own provider API keys (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) instead of the platform's pooled accounts. When configured, chat traffic for the matching model goes directly from this app to the provider with your key — no platform credit is consumed. Tools, references, artifacts, cloud history and other features keep working unchanged."
+  },
+  "field": {
+    "provider": "Provider",
+    "label": "Label",
+    "labelPlaceholder": "e.g. \"My work account\" (optional)",
+    "apiKey": "API Key",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Leave empty to keep the current key",
+    "baseUrl": "Custom Base URL",
+    "baseUrlPlaceholder": "Leave empty for the provider's default",
+    "isActive": "Active",
+    "lastUsedAt": "Last used",
+    "createdAt": "Created"
+  },
+  "value": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "never": "Never",
+    "default": "Default"
+  },
+  "button": {
+    "add": "Add API Key",
+    "edit": "Edit",
+    "test": "Test",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "message": {
+    "deleteConfirm": "Delete this API key? Future chat requests for {provider} models will fall back to the platform's default upstream.",
+    "deleteSuccess": "API key deleted.",
+    "saveSuccess": "API key saved.",
+    "testSuccess": "Connection successful.",
+    "testFailed": "Test failed: {message}",
+    "loadFailed": "Failed to load credentials.",
+    "saveFailed": "Failed to save credential.",
+    "empty": "No custom API keys configured. Click \"Add API Key\" to use your own provider account for chat.",
+    "advancedToggle": "Show advanced options",
+    "baseUrlHelp": "Optional. Override the default endpoint to route through OpenRouter, a self-hosted proxy, or your own gateway. Must be HTTPS and not point at any private/loopback address."
+  },
+  "badge": {
+    "active": "Using your {provider} key",
+    "tooltip": "This conversation uses your own {provider} API key. Cost is billed to your {provider} account, not your platform balance."
+  }
+}

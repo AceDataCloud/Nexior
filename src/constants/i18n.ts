@@ -56,5 +56,6 @@ export const I18N_SCOPES = [
   'chat',
   'midjourney',
   'serp',
-  'connector'
+  'connector',
+  'byok'
 ];

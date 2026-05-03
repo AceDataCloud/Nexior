@@ -122,7 +122,8 @@ import {
   faBroom as faSolidBroom,
   faStar as faSolidStar,
   faHouse as faSolidHouse,
-  faBrain as faSolidBrain
+  faBrain as faSolidBrain,
+  faKey as faSolidKey
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -244,3 +245,4 @@ library.add(faSolidExpand);
 library.add(faSolidCompress);
 library.add(faSolidBroom);
 library.add(faSolidHouse);
+library.add(faSolidKey);

@@ -2,7 +2,10 @@
   <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
       <div class="toolbar">
-        <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+        <div class="toolbar-left">
+          <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+          <byok-badge class="byok-badge" />
+        </div>
         <div class="toolbar-actions">
           <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
@@ -61,6 +64,7 @@ import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatM
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
+import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -99,6 +103,7 @@ export default defineComponent({
     Disclaimer,
     ModelSelector,
     DesktopAgentManager,
+    'byok-badge': BYOKBadge,
     Message,
     Layout,
     ElTooltip,
@@ -705,6 +710,17 @@ export default defineComponent({
 
 .selector {
   width: max-content;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.byok-badge {
+  flex-shrink: 0;
 }
 
 .toolbar-actions {
