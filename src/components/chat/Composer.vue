@@ -51,11 +51,20 @@
     ></textarea>
     <div class="tools">
       <el-dropdown trigger="click" placement="top-start" :hide-on-click="true" popper-class="composer-plus-popper">
-        <el-tooltip class="box-item" effect="dark" :content="$t('chat.composer.addAction')" placement="top">
-          <span :class="{ btn: true, 'btn-plus': true, disabled: answering }" :aria-disabled="answering" role="button">
-            <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-plus" />
-          </span>
-        </el-tooltip>
+        <!--
+          NOTE: el-dropdown and el-tooltip both rely on el-popper internally,
+          and each needs its OWN single-element trigger reference. Nesting
+          el-tooltip directly inside el-dropdown causes the inner popper to
+          steal the ref and the dropdown click handler never fires. We give
+          el-dropdown a dedicated <span> wrapper, and el-tooltip its own.
+        -->
+        <span class="btn-plus-trigger">
+          <el-tooltip class="box-item" effect="dark" :content="$t('chat.composer.addAction')" placement="top">
+            <span :class="{ btn: true, 'btn-plus': true, disabled: answering }" :aria-disabled="answering" role="button">
+              <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-plus" />
+            </span>
+          </el-tooltip>
+        </span>
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item :disabled="(!isFileSupported && !isImageSupported) || answering" @click="onTriggerUpload">
@@ -392,6 +401,11 @@ textarea.input:focus {
     flex-direction: row;
     align-items: center;
     gap: 6px;
+    .btn-plus-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
