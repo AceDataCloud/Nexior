@@ -62,6 +62,7 @@ import {
   faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
+  faSitemap as faSolidSitemap,
   faMugSaucer as faSolidMugSaucer,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
@@ -172,6 +173,7 @@ library.add(faSolidMoon);
 library.add(faSolidBolt);
 library.add(faSolidBook);
 library.add(faSolidGear);
+library.add(faSolidSitemap);
 library.add(faSolidMicrophone);
 library.add(faSolidBars);
 library.add(faSolidPlus);

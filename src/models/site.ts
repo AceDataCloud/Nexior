@@ -25,6 +25,13 @@ export interface ISiteFeatures {
   kimi?: any;
   serp?: any;
   support?: any;
+  subsite?: ISiteSubsiteFeature;
+}
+
+export interface ISiteSubsiteFeature {
+  enabled?: boolean;
+  max_subsites_per_user?: number;
+  subdomain_zone?: string;
 }
 
 export interface ISiteDistribution {
