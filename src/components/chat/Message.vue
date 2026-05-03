@@ -92,16 +92,12 @@
           @click="startEditing"
         />
         <copy-to-clipboard
-          v-if="
-            !Array.isArray(message.content) &&
-            (message.state === messageState.FINISHED || message.state === messageState.FAILED)
-          "
-          :content="message.content!"
+          v-if="copyableText && (message.state === messageState.FINISHED || message.state === messageState.FAILED)"
+          :content="copyableText"
           class="btn-copy"
         />
         <restart-to-generate
           v-if="
-            !Array.isArray(message.content) &&
             (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
             message.role === 'assistant' &&
             message === messages[messages.length - 1]
@@ -205,6 +201,23 @@ export default defineComponent({
   computed: {
     modelGroup() {
       return this.$store.state.chat.modelGroup;
+    },
+    // Plain-text view of `message.content` for the copy button. Assistant
+    // messages are now stored as IChatMessageContentItem[] (text + tool_use
+    // + card + artifact parts) even for plain prose answers, so we collect
+    // the text fragments here so copy still works.
+    copyableText(): string {
+      const c = this.message.content;
+      if (!c) return '';
+      if (typeof c === 'string') return c;
+      if (Array.isArray(c)) {
+        return c
+          .filter((item) => item && item.type === 'text' && typeof item.text === 'string')
+          .map((item) => item.text as string)
+          .join('\n\n')
+          .trim();
+      }
+      return '';
     },
     errorText() {
       console.debug('error', this.message.error);
@@ -368,6 +381,12 @@ export default defineComponent({
     align-items: start;
     .content {
       color: var(--el-text-color-primary);
+      // Avatar (32px) sits flush at the top of the row; drop the bubble
+      // padding/border-radius for assistant turns so the first text line
+      // top-aligns with the avatar instead of being pushed ~10px down.
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
     }
   }
   &.user {
@@ -430,18 +449,23 @@ export default defineComponent({
 
   .operations {
     display: flex;
+    align-items: center;
     gap: 8px;
     margin-left: 4px;
     margin-top: 2px;
     color: var(--el-text-color-placeholder);
+    // Keep all action icons at the same size so they vertically align.
+    font-size: 12px;
     .btn-edit {
       visibility: hidden;
     }
-    .btn-restart {
-      font-size: 12px;
-    }
-    .btn-copy {
-      font-size: 12px;
+    // CopyToClipboard / RestartToGenerate ship with their own
+    // `margin-left: 5px`; null it out so the parent `gap` is the single
+    // source of truth for spacing and the icons line up cleanly.
+    :deep(.icon-copy),
+    :deep(.icon-check),
+    :deep(.icon-sync) {
+      margin-left: 0;
     }
   }
 
