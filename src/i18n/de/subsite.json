@@ -21,7 +21,7 @@
   },
   "field.title": {
     "message": "Subdomain-Titel",
-    "description": "Feld für den Subdomain-Titel"
+    "description": "Feld für den Titel der Subdomain"
   },
   "field.createdAt": {
     "message": "Erstellungsdatum",
@@ -33,11 +33,11 @@
   },
   "placeholder.slug": {
     "message": "z.B. meine-marke",
-    "description": "Platzhalter für das Slug-Eingabefeld"
+    "description": "Platzhalter im Slug-Eingabefeld"
   },
   "placeholder.title": {
-    "message": "Für die Anzeige im Subdomain-Browser-Tab und im Kopf der Seite",
-    "description": "Platzhalter für das Titel-Eingabefeld"
+    "message": "Für die Anzeige im Tab des Subdomain-Browsers und im Kopf der Seite",
+    "description": "Platzhalter im Titel-Eingabefeld"
   },
   "button.create": {
     "message": "Subdomain erstellen",
@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "Subdomain {origin} wurde erstellt. Möchten Sie sie jetzt öffnen, um die Konfiguration fortzusetzen?",
     "description": "Sofort nach der Erstellung öffnen"
+  },
+  "title.domains": {
+    "message": "Benutzerdefinierte Domain für {origin}",
+    "description": "Titel des Dialogs für benutzerdefinierte Domains"
+  },
+  "title.bindDomain": {
+    "message": "Neue Domain binden",
+    "description": "Titel des Bindungsformulars"
+  },
+  "button.domains": {
+    "message": "Domains",
+    "description": "Button zum Öffnen des Dialogs zur Domainverwaltung"
+  },
+  "button.bindDomain": {
+    "message": "Domain binden",
+    "description": "Button zum Einreichen der Bindung einer neuen Domain"
+  },
+  "button.verify": {
+    "message": "Überprüfen",
+    "description": "Überprüfen, ob der TXT-Validierungsdatensatz vorhanden ist"
+  },
+  "button.checkProgress": {
+    "message": "Fortschritt überprüfen",
+    "description": "Aktuellen Status von EdgeOne synchronisieren"
+  },
+  "button.refresh": {
+    "message": "Aktualisieren",
+    "description": "Status dieser Domain erneut abrufen"
+  },
+  "field.hostname": {
+    "message": "Ihre Domain",
+    "description": "Geben Sie die Domain oder Subdomain ein, die Sie besitzen"
+  },
+  "field.recordType": {
+    "message": "Datensatztyp",
+    "description": "Spalte für den Typ des DNS-Datensatzes"
+  },
+  "field.recordName": {
+    "message": "Datensatzname",
+    "description": "Spalte für den Namen des DNS-Datensatzes"
+  },
+  "field.recordValue": {
+    "message": "Datensatzwert",
+    "description": "Spalte für den Wert des DNS-Datensatzes"
+  },
+  "placeholder.hostname": {
+    "message": "z.B. studio.meinemarke.com",
+    "description": "Platzhalter im Hostname-Eingabefeld"
+  },
+  "message.domainsIntro": {
+    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, die DNS dieser Domain zu ändern. Nach erfolgreicher Überprüfung beantragen wir automatisch ein kostenloses HTTPS-Zertifikat und setzen es auf EdgeOne ein.",
+    "description": "Erklärungstext oben im Dialog"
+  },
+  "message.domainsEmpty": {
+    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im Formular unten aus und klicken Sie auf „Binden“, um zu beginnen.",
+    "description": "Hinweis für leere Liste"
+  },
+  "message.hostnameTip": {
+    "message": "Muss eine öffentliche Domain sein, deren DNS Sie kontrollieren können. Keine Subdomains von acedata.cloud / surl.id erlaubt.",
+    "description": "Eingabeaufforderung für Hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "Das Domainformat ist ungültig. Es muss eine öffentlich auflösbare Domain sein, IP-Adressen sind nicht erlaubt.",
+    "description": "Hostname-Validierung fehlgeschlagen"
+  },
+  "message.domainCreated": {
+    "message": "Domain wurde eingereicht, bitte fügen Sie die DNS-Datensätze gemäß den Anweisungen hinzu.",
+    "description": "POST /site-domains/ erfolgreich"
+  },
+  "message.domainCreateFailed": {
+    "message": "Erstellung der Domain fehlgeschlagen, bitte versuchen Sie es später erneut.",
+    "description": "Erstellung fehlgeschlagen"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Laden der Domainliste fehlgeschlagen.",
+    "description": "Laden der Domainliste fehlgeschlagen"
+  },
+  "message.domainProgressed": {
+    "message": "Überprüfung für den nächsten Schritt, bitte geduldig warten.",
+    "description": "Statusmaschine vorantreiben"
+  },
+  "message.domainActive": {
+    "message": "Domain ist aktiv! Du kannst jetzt über deine benutzerdefinierte HTTPS-Adresse auf die Subdomain zugreifen.",
+    "description": "In den aktiven Status wechseln"
+  },
+  "message.domainFailed": {
+    "message": "Domainverifizierung oder Aktivierung fehlgeschlagen.",
+    "description": "Text für den Status 'Fehlgeschlagen'"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verifizierung fehlgeschlagen, bitte überprüfe, ob die DNS-Einträge wirksam sind.",
+    "description": "Verifizierungs-API 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Möchtest du {hostname} wirklich trennen? Nach der Trennung können Benutzer nicht mehr über diese Domain auf deine Subdomain zugreifen.",
+    "description": "Bestätigung zur Löschung"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Löschen der Domain fehlgeschlagen.",
+    "description": "DELETE-API 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "DNS-Verifizierung ausstehend",
+    "description": "Statuslabel für ausstehende DNS-Verifizierung"
+  },
+  "status.provisioningEo": {
+    "message": "Edge-Anbindung wird hergestellt",
+    "description": "Statuslabel für Edge-Provisionierung"
+  },
+  "status.provisioningCert": {
+    "message": "Zertifikat wird beantragt",
+    "description": "Statuslabel für Zertifikatsprovisionierung"
+  },
+  "status.active": {
+    "message": "Aktiv",
+    "description": "Statuslabel für aktiv"
+  },
+  "status.failed": {
+    "message": "Fehlgeschlagen",
+    "description": "Statuslabel für fehlgeschlagen"
   }
 }

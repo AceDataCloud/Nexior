@@ -1,0 +1,168 @@
+{
+  "title": {
+    "list": {
+      "message": "Anpassad API-nyckel",
+      "description": "Titel för listan över anpassade API-nycklar."
+    },
+    "addCredential": {
+      "message": "Lägg till API-nyckel",
+      "description": "Text i knappen för att lägga till en ny API-nyckel."
+    },
+    "editCredential": {
+      "message": "Redigera API-nyckel",
+      "description": "Text i knappen för att redigera en befintlig API-nyckel."
+    },
+    "deleteCredential": {
+      "message": "Ta bort API-nyckel",
+      "description": "Text i knappen för att ta bort en API-nyckel."
+    }
+  },
+  "description": {
+    "list": {
+      "message": "Använd din egen tjänsteleverantörs API-nyckel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) istället för plattformens kontopool. När det är konfigurerat kommer dialogförfrågningar för motsvarande modell att direkt anropas med din nyckel till den överordnade tjänsteleverantören, utan att förbruka plattformens kredit; verktygsanrop, referenser, artefakter, molnhistorik och andra funktioner fungerar som vanligt.",
+      "description": "Beskrivning av hur man använder anpassade API-nycklar."
+    }
+  },
+  "field": {
+    "provider": {
+      "message": "Tjänsteleverantör",
+      "description": "Fält för att ange tjänsteleverantörens namn."
+    },
+    "label": {
+      "message": "Anteckning",
+      "description": "Fältetikett för anteckningar."
+    },
+    "labelPlaceholder": {
+      "message": "t.ex. \"Mitt arbetsnummer\" (valfritt)",
+      "description": "Platshållare för anteckningsfältet."
+    },
+    "apiKey": {
+      "message": "API-nyckel",
+      "description": "Fält för att ange API-nyckeln."
+    },
+    "apiKeyPlaceholder": {
+      "message": "sk-...",
+      "description": "Platshållare för API-nyckelfältet."
+    },
+    "apiKeyEditPlaceholder": {
+      "message": "Lämna tomt för att behålla nuvarande nyckel",
+      "description": "Platshållare för redigering av API-nyckel."
+    },
+    "baseUrl": {
+      "message": "Anpassad bas-URL",
+      "description": "Fält för att ange en anpassad bas-URL."
+    },
+    "baseUrlPlaceholder": {
+      "message": "Lämna tomt för att använda tjänsteleverantörens standardadress",
+      "description": "Platshållare för bas-URL-fältet."
+    },
+    "isActive": {
+      "message": "Aktiverad",
+      "description": "Fält för att ange om API-nyckeln är aktiv."
+    },
+    "lastUsedAt": {
+      "message": "Senast använd",
+      "description": "Fält för att visa när API-nyckeln senast användes."
+    },
+    "createdAt": {
+      "message": "Tillagd",
+      "description": "Fält för att visa när API-nyckeln lades till."
+    }
+  },
+  "value": {
+    "active": {
+      "message": "Aktiv",
+      "description": "Visar att API-nyckeln är aktiv."
+    },
+    "inactive": {
+      "message": "Inaktiv",
+      "description": "Visar att API-nyckeln inte är aktiv."
+    },
+    "never": {
+      "message": "Aldrig använt",
+      "description": "Visar att API-nyckeln aldrig har använts."
+    },
+    "default": {
+      "message": "Standard",
+      "description": "Visar att detta är standardinställningen."
+    }
+  },
+  "button": {
+    "add": {
+      "message": "Lägg till API-nyckel",
+      "description": "Text i knappen för att lägga till en API-nyckel."
+    },
+    "edit": {
+      "message": "Redigera",
+      "description": "Text i knappen för att redigera."
+    },
+    "test": {
+      "message": "Testa",
+      "description": "Text i knappen för att testa API-nyckeln."
+    },
+    "delete": {
+      "message": "Ta bort",
+      "description": "Text i knappen för att ta bort."
+    },
+    "save": {
+      "message": "Spara",
+      "description": "Text i knappen för att spara."
+    },
+    "cancel": {
+      "message": "Avbryt",
+      "description": "Text i knappen för att avbryta."
+    }
+  },
+  "message": {
+    "deleteConfirm": {
+      "message": "Bekräfta borttagning av denna API-nyckel? Efter detta kommer dialogen för {provider}-modellen att återgå till plattformens standard.",
+      "description": "Bekräftelsemeddelande för att ta bort en API-nyckel."
+    },
+    "deleteSuccess": {
+      "message": "API-nyckeln har tagits bort.",
+      "description": "Meddelande som bekräftar att API-nyckeln har tagits bort."
+    },
+    "saveSuccess": {
+      "message": "API-nyckeln har sparats.",
+      "description": "Meddelande som bekräftar att API-nyckeln har sparats."
+    },
+    "testSuccess": {
+      "message": "Anslutning fungerar.",
+      "description": "Meddelande som bekräftar att testet var framgångsrikt."
+    },
+    "testFailed": {
+      "message": "Testet misslyckades: {message}",
+      "description": "Meddelande som visar att testet misslyckades."
+    },
+    "loadFailed": {
+      "message": "Misslyckades med att ladda uppgifter.",
+      "description": "Meddelande som visar att inläsningen av uppgifter misslyckades."
+    },
+    "saveFailed": {
+      "message": "Misslyckades med att spara uppgifter.",
+      "description": "Meddelande som visar att sparandet av uppgifter misslyckades."
+    },
+    "empty": {
+      "message": "Ingen anpassad API-nyckel har konfigurerats än. Klicka på \"Lägg till API-nyckel\" för att använda ditt eget tjänsteleverantörskonto.",
+      "description": "Meddelande som informerar om att ingen API-nyckel har konfigurerats."
+    },
+    "advancedToggle": {
+      "message": "Visa avancerade alternativ",
+      "description": "Text för att visa eller dölja avancerade alternativ."
+    },
+    "baseUrlHelp": {
+      "message": "Valfritt. Anpassad överordnad adress (för OpenRouter, egen proxy, företagsgateway etc.). Endast HTTPS tillåtet, kan inte peka på interna/loopback-adresser.",
+      "description": "Hjälpmeddelande för anpassad bas-URL."
+    }
+  },
+  "badge": {
+    "active": {
+      "message": "Använder din {provider} nyckel",
+      "description": "Visar att den aktuella dialogen använder användarens API-nyckel."
+    },
+    "tooltip": {
+      "message": "Denna dialog använder din egen {provider} API-nyckel, kostnaden debiteras ditt {provider} konto, ingen avdrag från plattformens saldo.",
+      "description": "Verktygstips som förklarar kostnaden för användning av API-nyckeln."
+    }
+  }
+}

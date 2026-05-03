@@ -1,0 +1,54 @@
+{
+  "title": {
+    "list": "Chaves de API Personalizadas",
+    "addCredential": "Adicionar Chave de API",
+    "editCredential": "Editar Chave de API",
+    "deleteCredential": "Excluir Chave de API"
+  },
+  "description": {
+    "list": "Use sua própria chave de API do provedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) em vez da conta padrão da plataforma. Após a configuração, as solicitações de diálogo do modelo correspondente serão feitas diretamente com sua chave, sem consumir créditos da plataforma; chamadas de ferramentas, referências, artefatos, histórico em nuvem e outras funcionalidades funcionarão normalmente."
+  },
+  "field": {
+    "provider": "Provedor",
+    "label": "Observações",
+    "labelPlaceholder": "Ex: \"Meu número de trabalho\" (opcional)",
+    "apiKey": "Chave de API",
+    "apiKeyPlaceholder": "sk-...",
+    "apiKeyEditPlaceholder": "Deixe em branco para manter a chave atual",
+    "baseUrl": "URL Base Personalizada",
+    "baseUrlPlaceholder": "Deixe em branco para usar o endereço padrão do provedor",
+    "isActive": "Ativo",
+    "lastUsedAt": "Último uso",
+    "createdAt": "Data de adição"
+  },
+  "value": {
+    "active": "Ativo",
+    "inactive": "Inativo",
+    "never": "Nunca usado",
+    "default": "Padrão"
+  },
+  "button": {
+    "add": "Adicionar Chave de API",
+    "edit": "Editar",
+    "test": "Testar",
+    "delete": "Excluir",
+    "save": "Salvar",
+    "cancel": "Cancelar"
+  },
+  "message": {
+    "deleteConfirm": "Confirmar a exclusão desta chave de API? As conversas do modelo {provider} voltarão para o padrão da plataforma.",
+    "deleteSuccess": "Chave de API excluída.",
+    "saveSuccess": "Chave de API salva.",
+    "testSuccess": "Conexão normal.",
+    "testFailed": "Teste falhou: {message}",
+    "loadFailed": "Falha ao carregar credenciais.",
+    "saveFailed": "Falha ao salvar credenciais.",
+    "empty": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta do provedor.",
+    "advancedToggle": "Mostrar opções avançadas",
+    "baseUrlHelp": "Opcional. Endereço upstream personalizado (para OpenRouter, proxy reverso próprio, gateway corporativo, etc.). Apenas HTTPS permitido, não pode apontar para endereços internos/loopback."
+  },
+  "badge": {
+    "active": "Usando sua chave {provider}",
+    "tooltip": "Esta conversa usa sua própria chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma."
+  }
+}

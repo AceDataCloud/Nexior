@@ -36,7 +36,7 @@
     "description": "slug 輸入框佔位符"
   },
   "placeholder.title": {
-    "message": "用於顯示在分站瀏覽器標籤和站點頭部",
+    "message": "顯示在分站瀏覽器標籤和網站頭部",
     "description": "標題輸入框佔位符"
   },
   "button.create": {
@@ -86,5 +86,125 @@
   "message.openNowConfirm": {
     "message": "分站 {origin} 已創建。是否現在打開它繼續配置？",
     "description": "創建後是否立即打開"
+  },
+  "title.domains": {
+    "message": "{origin} 的自定義域名",
+    "description": "自定義域名對話框標題"
+  },
+  "title.bindDomain": {
+    "message": "綁定新域名",
+    "description": "綁定表單標題"
+  },
+  "button.domains": {
+    "message": "域名",
+    "description": "打開域名管理對話框的按鈕"
+  },
+  "button.bindDomain": {
+    "message": "綁定域名",
+    "description": "提交綁定新域名"
+  },
+  "button.verify": {
+    "message": "驗證",
+    "description": "檢查 TXT 驗證記錄是否到位"
+  },
+  "button.checkProgress": {
+    "message": "檢查進度",
+    "description": "從 EdgeOne 同步最新狀態"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "重新拉取該域名的狀態"
+  },
+  "field.hostname": {
+    "message": "你的域名",
+    "description": "輸入你擁有的域名或子域名"
+  },
+  "field.recordType": {
+    "message": "記錄類型",
+    "description": "DNS 記錄類型列"
+  },
+  "field.recordName": {
+    "message": "記錄名稱",
+    "description": "DNS 記錄名稱列"
+  },
+  "field.recordValue": {
+    "message": "記錄值",
+    "description": "DNS 記錄值列"
+  },
+  "placeholder.hostname": {
+    "message": "例如 studio.mybrand.com",
+    "description": "hostname 輸入框佔位符"
+  },
+  "message.domainsIntro": {
+    "message": "將你擁有的域名綁定到該分站。你需要能修改該域名的 DNS。驗證通過後我們會自動為你申請免費 HTTPS 證書並在 EdgeOne 上部署。",
+    "description": "對話框頂部說明"
+  },
+  "message.domainsEmpty": {
+    "message": "暫未綁定任何自定義域名。在下方表單中填寫完整域名並點擊“綁定”即可開始。",
+    "description": "空列表提示"
+  },
+  "message.hostnameTip": {
+    "message": "需是你能控制 DNS 的公網域名。不允許 acedata.cloud / surl.id 的任何子域名。",
+    "description": "hostname 輸入提示"
+  },
+  "message.hostnameInvalid": {
+    "message": "域名格式不正確。必須是公網可解析的域名，不允許 IP 地址。",
+    "description": "hostname 本地校驗失敗"
+  },
+  "message.domainCreated": {
+    "message": "域名已提交，請按提示添加 DNS 記錄。",
+    "description": "POST /site-domains/ 成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "創建域名失敗，請稍後重試。",
+    "description": "創建失敗"
+  },
+  "message.domainsLoadFailed": {
+    "message": "加載域名列表失敗。",
+    "description": "拉域名列表失敗"
+  },
+  "message.domainProgressed": {
+    "message": "驗證進入下一階段，請耐心等待。",
+    "description": "狀態機推進"
+  },
+  "message.domainActive": {
+    "message": "域名已上線！現在可以透過你的自訂 HTTPS 地址訪問分站。",
+    "description": "進入 Active 狀態"
+  },
+  "message.domainFailed": {
+    "message": "域名驗證或上線失敗。",
+    "description": "Failed 狀態兌底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "驗證失敗，請檢查 DNS 記錄是否已生效。",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "確定要解除綁定 {hostname} 嗎？解除綁定後用戶將無法從該域名訪問你的分站。",
+    "description": "刪除確認"
+  },
+  "message.domainDeleteFailed": {
+    "message": "刪除域名失敗。",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pendingDnsVerification": {
+    "message": "待驗證 DNS",
+    "description": "PendingDnsVerification 狀態標籤"
+  },
+  "status.provisioningEo": {
+    "message": "接入邊緣中",
+    "description": "ProvisioningEo 狀態標籤"
+  },
+  "status.provisioningCert": {
+    "message": "申請證書中",
+    "description": "ProvisioningCert 狀態標籤"
+  },
+  "status.active": {
+    "message": "已上線",
+    "description": "Active 狀態標籤"
+  },
+  "status.failed": {
+    "message": "失敗",
+    "description": "Failed 狀態標籤"
   }
 }
