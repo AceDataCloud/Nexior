@@ -46,7 +46,7 @@
       class="input"
       :placeholder="$t('chat.message.newMessagePlaceholder')"
       :style="{ height: inputHeight }"
-      @keydown.enter.exact.prevent="onSubmit"
+      @keydown.enter.exact="onEnterKey"
       @input="adjustTextareaHeight"
     ></textarea>
     <div class="tools">
@@ -261,6 +261,17 @@ export default defineComponent({
         return;
       }
       this.$emit('submit');
+    },
+    onEnterKey(e: KeyboardEvent) {
+      // Avoid submitting while an IME (e.g. Chinese/Japanese/Korean) is
+      // composing — pressing Enter to confirm the IME candidate must NOT
+      // send the message. `isComposing` is true during composition; some
+      // browsers also report keyCode 229 for the same state.
+      if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      e.preventDefault();
+      this.onSubmit();
     },
     onStop() {
       this.$emit('stop');
