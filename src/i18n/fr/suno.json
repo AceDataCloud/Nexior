@@ -13,7 +13,7 @@
   },
   "voice.createTitle": {
     "message": "Créer un nouveau son",
-    "description": "Titre de la boîte de dialogue pour créer un son"
+    "description": "Titre de la boîte de dialogue de création de son"
   },
   "voice.name": {
     "message": "Nom",
@@ -108,8 +108,8 @@
     "description": "Message d'échec pour la suppression d'un son"
   },
   "button.extend": {
-    "message": "Continuer à générer",
-    "description": "Texte du bouton pour continuer à générer"
+    "message": "Continuer la génération",
+    "description": "Texte du bouton pour continuer la génération"
   },
   "button.download": {
     "message": "Télécharger",
@@ -213,11 +213,11 @@
   },
   "button.replace_section": {
     "message": "Remplacer un extrait",
-    "description": "Texte du bouton pour remplacer un extrait dans une chanson"
+    "description": "Texte du bouton pour remplacer un extrait d'une chanson"
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Texte du bouton pour créer un mashup de plusieurs chansons"
+    "description": "Texte du bouton pour mixer plusieurs chansons"
   },
   "button.generate_lyrics": {
     "message": "Générer des paroles avec l'IA",
@@ -228,7 +228,7 @@
     "description": "Texte du bouton pour optimiser la description du style avec l'IA"
   },
   "button.all_stems": {
-    "message": "Toutes les pistes",
+    "message": "Séparer tout",
     "description": "Texte du bouton pour séparer toutes les pistes"
   },
   "model.model1": {
@@ -349,7 +349,7 @@
   },
   "name.replaceSection": {
     "message": "Remplacer un extrait",
-    "description": "Remplacer un extrait dans une chanson"
+    "description": "Remplacer un extrait d'une chanson"
   },
   "name.model": {
     "message": "Modèle",
@@ -380,11 +380,11 @@
     "description": "Description du paramètre 'title'"
   },
   "description.uploadAudios": {
-    "message": "Téléchargez de la musique comme référence pour la génération, le téléchargement peut prendre un certain temps, une fois réussi, la génération peut se faire en fonction de la musique téléchargée",
+    "message": "Téléchargez de la musique comme référence pour la génération, le téléchargement peut prendre un certain temps, une fois généré avec succès, vous pourrez générer en fonction de la musique téléchargée",
     "description": "Description du paramètre de téléchargement de référence"
   },
   "description.vocalGender": {
-    "message": "Sélectionnez le genre de la voix générée (supporté uniquement à partir de la version v4.5)",
+    "message": "Sélectionnez le genre de la voix générée (supporté uniquement par v4.5 et versions supérieures)",
     "description": "Description du sélecteur de genre vocal"
   },
   "description.weirdness": {
@@ -420,7 +420,7 @@
     "description": "Placeholder pour l'entrée des paroles"
   },
   "placeholder.extend.lyrics": {
-    "message": "Veuillez entrer les paroles à étendre...",
+    "message": "Entrez les paroles à étendre...",
     "description": "Placeholder pour l'entrée des paroles à étendre"
   },
   "placeholder.extend.continue_at": {
@@ -500,8 +500,8 @@
     "description": "Message au début de la tâche de génération musicale"
   },
   "message.uploadReferencesExceed": {
-    "message": "Le nombre de musiques téléchargées dépasse le maximum autorisé",
-    "description": "Message d'erreur lorsque le nombre de musiques téléchargées dépasse le maximum"
+    "message": "Le nombre de musiques téléchargées dépasse la limite maximale",
+    "description": "Message d'erreur lorsque le nombre de musiques téléchargées dépasse la limite"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de la musique",
@@ -524,7 +524,7 @@
     "description": "Message d'erreur lors de l'échec du démarrage de la tâche de génération musicale"
   },
   "message.getVideoUrlFailed": {
-    "message": "Échec de l'obtention de l'URL de la vidéo musicale, veuillez réessayer plus tard",
+    "message": "Échec de l'obtention de la vidéo musicale, veuillez réessayer plus tard",
     "description": "Message d'erreur lors de l'échec de l'obtention de la vidéo"
   },
   "message.generatingLyrics": {
@@ -585,15 +585,15 @@
   },
   "button.upload_cover": {
     "message": "Télécharger la reprise",
-    "description": "Texte du bouton pour télécharger la reprise après avoir téléchargé l'audio"
+    "description": "Texte du bouton pour télécharger l'audio après la reprise"
   },
   "button.artist_consistency": {
     "message": "Cohérence de style",
-    "description": "Texte du bouton pour générer basé sur le style de l'artiste"
+    "description": "Texte du bouton pour générer basé sur le style du chanteur"
   },
   "button.artist_consistency_vox": {
     "message": "Cohérence de style vocal",
-    "description": "Texte du bouton pour générer basé sur le style vocal de l'artiste"
+    "description": "Texte du bouton pour générer basé sur le style vocal du chanteur"
   },
   "button.underpainting": {
     "message": "Ajouter accompagnement",
@@ -616,16 +616,16 @@
     "description": "Texte du bouton pour obtenir les données de tempo de la chanson"
   },
   "button.create_persona": {
-    "message": "Créer style d'artiste",
-    "description": "Texte du bouton pour créer un style d'artiste"
+    "message": "Créer style de chanteur",
+    "description": "Texte du bouton pour créer un style de chanteur"
   },
   "button.mashup_lyrics": {
-    "message": "Mélanger les paroles",
+    "message": "Mélanger paroles",
     "description": "Texte du bouton pour mélanger deux segments de paroles"
   },
   "name.persona": {
-    "message": "Style d'artiste",
-    "description": "Sélection du style d'artiste"
+    "message": "Style de chanteur",
+    "description": "Sélection du style de chanteur"
   },
   "name.overpaintingRange": {
     "message": "Plage vocale",
@@ -664,12 +664,12 @@
     "description": "Espace réservé pour l'heure de fin des échantillons"
   },
   "placeholder.personaId": {
-    "message": "Entrez l'ID du style d'artiste...",
-    "description": "Espace réservé pour l'entrée de l'ID du style d'artiste"
+    "message": "Entrez l'ID du style de chanteur...",
+    "description": "Espace réservé pour l'entrée de l'ID du style de chanteur"
   },
   "description.persona": {
-    "message": "Utilisez le style d'artiste créé pour générer des chansons au style cohérent",
-    "description": "Description de la fonctionnalité de style d'artiste"
+    "message": "Utilisez le style de chanteur créé pour générer des chansons au style cohérent",
+    "description": "Description de la fonctionnalité de style de chanteur"
   },
   "description.overpainting": {
     "message": "Ajouter des voix à la musique téléchargée dans une plage de temps spécifiée",
@@ -745,7 +745,7 @@
   },
   "button.undo": {
     "message": "Annuler",
-    "description": "Bouton d'annulation"
+    "description": "Bouton pour annuler l'action"
   },
   "button.clear_lyrics": {
     "message": "Effacer les paroles",
@@ -765,7 +765,7 @@
   },
   "placeholder.enhanceLyrics": {
     "message": "Entrez des instructions de modification, par exemple : rendre les paroles plus joyeuses...",
-    "description": "Espace réservé pour l'amélioration des paroles"
+    "description": "Espace réservé pour l'entrée d'amélioration des paroles"
   },
   "message.enhancingLyrics": {
     "message": "Amélioration des paroles en cours...",
@@ -890,5 +890,29 @@
   "name.generating": {
     "message": "Génération en cours",
     "description": "Étiquette d'état lors de la génération d'une chanson"
+  },
+  "button.adjust_speed": {
+    "message": "Ajuster la vitesse",
+    "description": "Bouton pour ajuster la vitesse de lecture d'une chanson"
+  },
+  "button.reuse_prompt": {
+    "message": "Réutiliser le prompt",
+    "description": "Bouton pour réutiliser un prompt existant"
+  },
+  "name.adjustSpeed": {
+    "message": "Vitesse",
+    "description": "Étiquette du sélecteur de vitesse"
+  },
+  "description.adjustSpeed": {
+    "message": "Regénérer la chanson à différentes vitesses de lecture (0,5x à 2x)",
+    "description": "Description de la fonction d'ajustement de la vitesse"
+  },
+  "message.reusePromptSuccess": {
+    "message": "Prompt réutilisé, peut être ajusté et regénéré",
+    "description": "Message après le succès de la réutilisation d'un prompt"
+  },
+  "message.reusePromptEmpty": {
+    "message": "Aucune donnée de prompt réutilisable",
+    "description": "Message lorsque aucune donnée de prompt n'est disponible pour réutilisation"
   }
 }
