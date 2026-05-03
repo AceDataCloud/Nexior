@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: yarn
+          cache: npm
 
       - name: Set up JDK
         uses: actions/setup-java@v5
@@ -47,10 +47,10 @@ jobs:
           cache: gradle
 
       - name: Install Node dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build web assets (Android surface)
-        run: yarn build:android
+        run: npm run build:android
 
       - name: Sync Android project
         run: npx cap sync android

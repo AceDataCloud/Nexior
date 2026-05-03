@@ -34,15 +34,15 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '20'
-          cache: yarn
+          cache: npm
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: npm ci
 
       - name: Run translation
         env:
           VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}
-        run: yarn translate
+        run: npm run translate
 
       - name: Create translation PR
         id: cpr

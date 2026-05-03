@@ -19,15 +19,16 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       - name: Run lint
-        run: yarn lint
+        run: npm run lint
 
       - name: Run tests
-        run: yarn test:run
+        run: npm run test:run
 
       - name: Build
-        run: yarn build
+        run: npm run build
