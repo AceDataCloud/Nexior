@@ -23,6 +23,10 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
+  },
   "name.createdAt": {
     "message": "Erstellt am",
     "description": "Datum und Uhrzeit der Erstellung des Pixverse-Videos"
@@ -88,12 +92,12 @@
     "description": "Aufforderung für die Inhaltseingabe"
   },
   "name.duration": {
-    "message": "Videodauer",
-    "description": "Dauer des Videos"
+    "message": "Videolänge",
+    "description": "Länge des Videos"
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversion, die für das zu generierende Video verwendet wird"
+    "description": "Modellversion, die für die Generierung des Videos verwendet wird"
   },
   "name.seed": {
     "message": "Seed",
@@ -101,7 +105,7 @@
   },
   "name.mode": {
     "message": "Videomodus",
-    "description": "Modus, der für das zu generierende Video verwendet wird"
+    "description": "Modus, der für die Videoerstellung verwendet wird"
   },
   "name.effect": {
     "message": "Videoeffekt",
@@ -109,14 +113,14 @@
   },
   "name.ingredientsModel": {
     "message": "Zutatenmodell",
-    "description": "Modellversion, die für das zu generierende Video verwendet wird"
+    "description": "Modellversion, die für die Generierung des Videos verwendet wird"
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
     "description": "Name des Pixverse-Videogenerators"
   },
   "description.ingredients": {
-    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diese Schaltfläche.",
+    "message": "Wenn Sie mehrere Bilder hochladen möchten, um Ihr eigenes Video zu erstellen, aktivieren Sie diesen Knopf.",
     "description": "Beschreibung des Parameters 'ingredients'"
   },
   "description.imageUrl": {
@@ -124,7 +128,7 @@
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Aufforderung zur Erstellung von Pixverse-Videos",
+    "message": "Aufforderung zur Generierung von Pixverse-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.negativePrompt": {
@@ -132,11 +136,11 @@
     "description": "Beschreibung des Parameters 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Laden Sie das erste Bild als Referenz hoch, das letzte Video wird sich auf das erste Bild beziehen.",
+    "message": "Laden Sie das erste Bild als Referenz hoch, das endgültige Video wird auf dem ersten Bild basieren.",
     "description": "Beschreibung des Hochladeparameters"
   },
   "description.uploadEndImage": {
-    "message": "Laden Sie das letzte Bild als Referenz hoch, das letzte Video wird sich auf das letzte Bild beziehen.",
+    "message": "Laden Sie das letzte Bild als Referenz hoch, das endgültige Video wird auf dem letzten Bild basieren.",
     "description": "Beschreibung des Hochladeparameters"
   },
   "description.seed": {
@@ -181,7 +185,7 @@
   },
   "placeholder.preset": {
     "message": "Bitte wählen...",
-    "description": "Platzhalter für die Eingabe der Voreinstellung"
+    "description": "Platzhalter für die vordefinierte Eingabe"
   },
   "placeholder.markerShape": {
     "message": "Bitte wählen...",
@@ -244,7 +248,7 @@
     "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
     "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {

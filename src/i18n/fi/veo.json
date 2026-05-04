@@ -1,219 +1,223 @@
 {
   "name.taskId": {
-    "message": "Tehtävä ID",
-    "description": "Tehtävän ID"
+    "message": "Tehtävä-ID",
+    "description": "任务的 ID"
   },
   "name.translation": {
     "message": "Automaattinen käännös",
-    "description": "Veo-videon automaattinen käännös"
+    "description": "Veo视频的自动翻译"
   },
   "name.modePro": {
     "message": "Korkea laatu",
-    "description": "Kling-videon korkean laadun tila"
+    "description": "Kling视频的高品质模式"
   },
   "name.failure": {
-    "message": "Epätosi",
-    "description": "Tehtävän epäonnistumisen tila"
+    "message": "Epäonnistui",
+    "description": "任务的失败状态"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
-    "description": "Tehtävän epäonnistumisen syy"
+    "description": "任务失败的原因"
   },
   "name.status": {
     "message": "Tila",
-    "description": "Tehtävän tila"
+    "description": "任务的状态"
   },
   "name.traceId": {
-    "message": "Seuranta ID",
-    "description": "Tehtävän seuranta ID"
+    "message": "Seuranta-ID",
+    "description": "任务的追踪 ID"
+  },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "任务的耗时（秒）"
   },
   "name.createdAt": {
     "message": "Luontiaika",
-    "description": "Veo-videon luontipäivämäärä ja -aika"
+    "description": "生成 Veo 视频的日期和时间"
   },
   "name.startEndImage": {
-    "message": "Alku-/loppukehys",
-    "description": "Lomakekenttä: alku-/loppukehyskuva (suositellaan käännöstä 'Start/End Frames', pidä lyhyenä, jotta se ei peitä painiketta)"
+    "message": "Alku/loppu kehys",
+    "description": "表单字段标签：首/尾帧参考图（英文建议翻译为“Start/End Frames”，保持简短避免遮挡按钮）"
   },
   "name.action": {
-    "message": "Toiminto",
-    "description": "Saatavilla olevien toimintojen lista"
+    "message": "Toiminnot",
+    "description": "可用的操作列表"
   },
   "name.action3": {
-    "message": "Hanki 1080p video",
-    "description": "Viittauskuva videon luomiseksi"
+    "message": "Hanki 1080p",
+    "description": "要生成的视频的参考图片"
   },
   "name.prompt": {
-    "message": "Videon ohje",
-    "description": "Sisällön syöttöohje"
+    "message": "Videon vihje",
+    "description": "内容输入的提示"
   },
   "name.model": {
     "message": "Malliversio",
-    "description": "Videon luomiseen käytettävä malliversio"
+    "description": "要生成视频所采用的模型版本"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Veo-videogeneraattorin nimi"
+    "description": "Veo 视频生成器的名称"
   },
   "name.ratio": {
     "message": "Suhde",
-    "description": "Suhdeparametrin nimi"
+    "description": "比例参数的名称"
   },
   "description.translation": {
-    "message": "Videon luomistehtävän aikana voit ottaa käyttöön automaattisen käännöksen ohjeista.",
-    "description": "Parametrin 'translation' kuvaus"
+    "message": "Videon luomisen yhteydessä vihje voidaan kääntää automaattisesti.",
+    "description": "参数'translation'的描述"
   },
   "description.imageUrl": {
-    "message": "Monikuvatehtävässä on ladattava useita kuvia.",
-    "description": "Parametrin 'imageUrl' kuvaus"
+    "message": "Monikuvatehtävissä on ladattava useampi kuva.",
+    "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
-    "message": "Veo-videon luomiseen tarvittavat ohjeet",
-    "description": "Parametrin 'prompt' kuvaus"
+    "message": "Vihje Veo-videon luomiseen",
+    "description": "参数'prompt'的描述"
   },
   "description.uploadStartEndImage": {
-    "message": "Viittauskuvien linkkien taulukko, ensimmäinen on alku- ja toinen loppukehyskuva",
-    "description": "Parametrin 'image_url' kuvaus"
+    "message": "Viitelinkkien taulukko: ensimmäinen alku, toinen loppu",
+    "description": "参数'image_url'的描述"
   },
   "status.pending": {
     "message": "Odottaa",
-    "description": "Tehtävän odotustila"
+    "description": "任务的等待状态"
   },
   "status.processing": {
-    "message": "Käsittelyssä",
-    "description": "Tehtävän käsittelytila"
+    "message": "Käsitellään",
+    "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyttömelun syötteen paikkamerkki"
+    "description": "填充噪音输入的占位符"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkateksti"
+    "description": "选择字段中的占位文本"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyttötason paikkamerkki"
+    "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
-    "message": "Syötä videon tyylin ohje, esim. moving",
-    "description": "Ohjekentän paikkateksti"
+    "message": "Kirjoita vihje videon tyylistä, esim. moving",
+    "description": "提示字段中的占位文本"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "位置输入的占位符"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Veo-videon luomisen painiketeksti"
+    "description": "生成Veo视频的按钮文本"
   },
   "button.action1": {
-    "message": "Tekstistä video",
-    "description": "Veo-videon luomisen painiketeksti"
+    "message": "Teksti→video",
+    "description": "生成Veo视频的按钮文本"
   },
   "button.action2": {
-    "message": "Kuvasta video",
-    "description": "Veo-videon luomisen painiketeksti"
+    "message": "Kuva→video",
+    "description": "生成Veo视频的按钮文本"
   },
   "button.action3": {
     "message": "Hanki 1080p",
-    "description": "Veo-videon luomisen painiketeksti"
+    "description": "生成Veo视频的按钮文本"
   },
   "button.download": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painiketeksti"
+    "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
-    "message": "Lataa kuva",
-    "description": "Kuvan lataamisen painiketeksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
+    "message": "Lataa",
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painiketeksti"
+    "description": "上传视频的按钮文本"
   },
   "button.uploadReferences": {
     "message": "Lataa",
-    "description": "Painiketeksti, joka sallii käyttäjän ladata viittauksia"
+    "description": "按钮文本，允许用户上传参考"
   },
   "message.uploadReferencesExceed": {
-    "message": "Voit ladata enintään 2 kuvaa",
-    "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
+    "message": "Enintään 2 kuvaa",
+    "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvien lataaminen onnistui",
-    "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
+    "message": "Kuvat ladattu onnistuneesti",
+    "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvien lataaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheilmoitus, kun kuvien lataaminen epäonnistuu"
+    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "图片上传失败时的错误消息"
   },
   "message.startingTask": {
-    "message": "Tehtävää käynnistetään...",
-    "description": "Viesti, kun piirustustehtävä alkaa"
+    "message": "Käynnistetään tehtävää...",
+    "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävän käynnistäminen onnistui",
-    "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
+    "message": "Tehtävä käynnistetty onnistuneesti",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
-    "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteys ylläpitäjään",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.imageRequired": {
-    "message": "Lataa ensin vähintään yksi viittauskuva ennen kuin käynnistät kuvasta videon tehtävän",
-    "description": "Viesti, kun kuvaa ei ole ladattu image2video-tilassa"
+    "message": "Lataa vähintään yksi viitekuva ennen videoiden luontia",
+    "description": "image2video 模式下未上传图片时的提示"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
-    "description": "Viesti, kun pisteet on käytetty loppuun"
+    "message": "Pisteesi on käytetty loppuun, osta lisää jatkaaksesi",
+    "description": "已用完时的消息"
   },
   "message.generating": {
     "message": "Luodaan...",
-    "description": "Viesti, kun kuvaa luodaan"
+    "description": "图像正在生成时的消息"
   },
   "message.downloadVideo": {
     "message": "Lataa tämä video",
-    "description": "Viesti, kun kuvaa luodaan"
+    "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
     "message": "Videon luominen epäonnistui",
-    "description": "Viesti, kun kuvan luominen epäonnistuu"
+    "description": "Viesti, kun videon luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Lähetettyjen ensimmäisten kehysten määrä ylittää rajan",
-    "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kehysten määrä ylittää rajan"
+    "message": "Lähetettyjen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Tiedoston koko ei voi ylittää 10MB!",
-    "description": "Virheilmoitus, kun tiedoston koko ei voi ylittää 10MB!"
+    "message": "Lähetettävän tiedoston koko ei saa ylittää 10MB!",
+    "description": "Virheilmoitus, kun lähetettävän tiedoston koko ei saa ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Tiedoston on oltava MP4-muodossa!",
-    "description": "Virheilmoitus, kun tiedoston on oltava MP4-muodossa!"
+    "message": "Lähetettävän tiedoston on oltava MP4-muodossa!",
+    "description": "Virheilmoitus, kun lähetettävän tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Alku- ja loppukuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun alku- ja loppukuvien määrä ylittää rajan"
+    "message": "Lähetettyjen ensimmäisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Loppukuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun loppukuvien määrä ylittää rajan"
+    "message": "Lähetettyjen viimeisten kuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun lähetettyjen viimeisten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Alkukuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun alkukuvan lataaminen epäonnistuu"
+    "message": "Ensimmäisten kuvien lähetys epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lähetys epäonnistuu"
   },
   "message.uploadVideoError": {
-    "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun videon lataaminen epäonnistuu"
+    "message": "Videon lähetys epäonnistui",
+    "description": "Virheilmoitus, kun videon lähetys epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Loppukuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun loppukuvan lataaminen epäonnistuu"
+    "message": "Viimeisten kuvien lähetys epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kuvien lähetys epäonnistuu"
   },
   "message.uploadDocumentsError": {
-    "message": "Asiakirjan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun asiakirjan lataaminen epäonnistuu"
+    "message": "Asiakirjan lähetys epäonnistui",
+    "description": "Virheilmoitus, kun asiakirjan lähetys epäonnistuu"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
@@ -233,7 +237,7 @@
   },
   "name.imageMask": {
     "message": "Alueen maski",
-    "description": "/veo/objects kuvan maski (valkoiset pikselit = toimintavyöhyke)"
+    "description": "/veo/objects kuvamaski (valkoiset pikselit = toimintavyöhyke)"
   },
   "name.videoId": {
     "message": "Videon ID",
@@ -248,20 +252,20 @@
     "description": "video_id syötekentän paikkamerkki"
   },
   "button.actionIngredients": {
-    "message": "Monikuvayhdistelmävideo",
+    "message": "Monikuvayhdistelmävideot",
     "description": "ingredients2video — 1-3 kuvaa yhdistetään uuden kohtauksen luomiseksi"
   },
   "button.actionUpsample": {
     "message": "Ylösnäytön / GIF-esikatselu",
-    "description": "/veo/upsample — Ylös 1080p/4K tai vie GIF"
+    "description": "/veo/upsample — Ylösnäytetään 1080p/4K tai viedään GIF"
   },
   "button.actionExtend": {
     "message": "Videon jatkaminen",
-    "description": "/veo/extend — Laajenna luodun videon kestoa"
+    "description": "/veo/extend — Pitennetään jo luodun videon kestoa"
   },
   "button.actionReshoot": {
-    "message": "Kameran vaihto ja uudelleenkuvaus",
-    "description": "/veo/reshoot — Sama sisältö, mutta eri kameraliike"
+    "message": "Uudelleenkuvaus",
+    "description": "/veo/reshoot — Samat sisällöt, mutta eri kameraliike"
   },
   "button.actionObjectInsert": {
     "message": "Lisää objekti",
@@ -272,12 +276,12 @@
     "description": "/veo/objects remove — Poista objekti videosta maskin avulla"
   },
   "button.actionUpsample1080p": {
-    "message": "Ylös 1080P",
-    "description": "Esikatselupainike — Ylösnäytön 1080P"
+    "message": "Ylösnäytön 1080P",
+    "description": "Esikatselupainike — Ylösnäytetään 1080P"
   },
   "button.actionUpsample4k": {
-    "message": "Ylös 4K",
-    "description": "Esikatselupainike — Ylösnäytön 4K"
+    "message": "Ylösnäytön 4K",
+    "description": "Esikatselupainike — Ylösnäytetään 4K"
   },
   "button.actionUpsampleGif": {
     "message": "Vie GIF",

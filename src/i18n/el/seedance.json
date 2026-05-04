@@ -13,7 +13,7 @@
   },
   "placeholder.prompt": {
     "message": "Περιγράψτε το βίντεό σας…",
-    "description": "Υπόδειξη χώρου"
+    "description": "Υπόδειξη για το placeholder"
   },
   "name.model": {
     "message": "Μοντέλο",
@@ -25,7 +25,7 @@
   },
   "placeholder.select": {
     "message": "Επιλέξτε",
-    "description": "Υπόδειξη χώρου για επιλογή"
+    "description": "Placeholder για επιλογή από αναπτυσσόμενη λίστα"
   },
   "name.duration": {
     "message": "Διάρκεια",
@@ -33,7 +33,7 @@
   },
   "description.duration": {
     "message": "Διάρκεια βίντεο (δευτερόλεπτα), εύρος 2-12 δευτερόλεπτα.",
-    "description": "Οδηγίες διάρκειας βίντεο"
+    "description": "Οδηγίες για τη διάρκεια βίντεο"
   },
   "name.generateAudio": {
     "message": "Δημιουργία ήχου",
@@ -73,7 +73,7 @@
   },
   "description.serviceTier": {
     "message": "Επίπεδο επεξεργασίας: default ή flex.",
-    "description": "Οδηγίες επιπέδου υπηρεσίας"
+    "description": "Οδηγίες για το επίπεδο υπηρεσίας"
   },
   "serviceTier.default": {
     "message": "default",
@@ -85,11 +85,11 @@
   },
   "name.returnLastFrame": {
     "message": "Επιστροφή τελευταίας καρέ",
-    "description": "Ετικέτα διακόπτη επιστροφής τελευταίας καρέ"
+    "description": "Ετικέτα διακόπτη για επιστροφή τελευταίας καρέ"
   },
   "description.returnLastFrame": {
     "message": "Εάν ενεργοποιηθεί, θα επιστραφεί επιπλέον η εικόνα της τελευταίας καρέ.",
-    "description": "Οδηγίες επιστροφής τελευταίας καρέ"
+    "description": "Οδηγίες για την επιστροφή τελευταίας καρέ"
   },
   "name.firstFrame": {
     "message": "Εικόνα πρώτης καρέ",
@@ -97,7 +97,7 @@
   },
   "description.firstFrame": {
     "message": "Προαιρετικό. Ανάβαση αναφοράς/εικόνας πρώτης καρέ.",
-    "description": "Οδηγίες εικόνας πρώτης καρέ"
+    "description": "Οδηγίες για την εικόνα πρώτης καρέ"
   },
   "name.lastFrame": {
     "message": "Εικόνα τελευταίας καρέ",
@@ -105,7 +105,7 @@
   },
   "description.lastFrame": {
     "message": "Προαιρετικό. Ανάβαση εικόνας τελευταίας καρέ (απαιτείται η πρώτη καρέ).",
-    "description": "Οδηγίες εικόνας τελευταίας καρέ"
+    "description": "Οδηγίες για την εικόνα τελευταίας καρέ"
   },
   "button.generate": {
     "message": "Δημιουργία",
@@ -129,38 +129,38 @@
   },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας SeeDance…",
-    "description": "Υπόδειξη για την έναρξη εργασίας"
+    "description": "Μήνυμα εκκίνησης εργασίας"
   },
   "message.startTaskSuccess": {
     "message": "Η εργασία έχει ξεκινήσει",
-    "description": "Υπόδειξη επιτυχίας έναρξης εργασίας"
+    "description": "Μήνυμα επιτυχίας εκκίνησης εργασίας"
   },
   "message.startTaskFailed": {
     "message": "Αποτυχία εκκίνησης:",
-    "description": "Υπόδειξη αποτυχίας έναρξης εργασίας"
+    "description": "Μήνυμα αποτυχίας εκκίνησης εργασίας"
   },
   "message.usedUp": {
     "message": "Η ποσόστωση έχει εξαντληθεί",
-    "description": "Υπόδειξη εξάντλησης ποσόστωσης"
+    "description": "Μήνυμα εξάντλησης ποσόστωσης"
   },
   "message.uploadExceed": {
     "message": "Μπορείτε να ανεβάσετε μόνο 1 εικόνα",
-    "description": "Υπόδειξη υπέρβασης ανάρτησης"
+    "description": "Μήνυμα υπέρβασης ανάρτησης"
   },
   "message.uploadError": {
     "message": "Αποτυχία ανάρτησης",
-    "description": "Υπόδειξη αποτυχίας ανάρτησης"
+    "description": "Μήνυμα αποτυχίας ανάρτησης"
   },
   "message.downloadVideo": {
     "message": "Λήψη βίντεο",
-    "description": "Υπόδειξη λήψης βίντεο"
+    "description": "Μήνυμα λήψης βίντεο"
   },
   "status.pending": {
     "message": "Σε αναμονή",
     "description": "Κατάσταση αναμονής"
   },
   "status.processing": {
-    "message": "Δημιουργείται",
+    "message": "Δημιουργία",
     "description": "Κατάσταση δημιουργίας"
   },
   "name.taskId": {
@@ -170,6 +170,10 @@
   "name.traceId": {
     "message": "Trace ID",
     "description": "Ετικέτα Trace ID"
+  },
+  "name.elapsed": {
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Χρόνος εκτέλεσης εργασίας (δευτερόλεπτα)"
   },
   "name.failure": {
     "message": "Αποτυχία",

@@ -75,6 +75,10 @@
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
+  },
   "name.createdAt": {
     "message": "Data de Criação",
     "description": "Data e hora em que o vídeo Pika foi gerado"
@@ -88,8 +92,8 @@
     "description": "Vídeo personalizado"
   },
   "name.prompt": {
-    "message": "Prompt de Vídeo",
-    "description": "Prompt para entrada de conteúdo"
+    "message": "Prompt do Vídeo",
+    "description": "Prompt de entrada de conteúdo"
   },
   "name.ingredients": {
     "message": "Criar Vídeo com Múltiplas Imagens",
@@ -100,7 +104,7 @@
     "description": "Versão do modelo utilizada para gerar o vídeo"
   },
   "name.effect": {
-    "message": "Efeito de Vídeo",
+    "message": "Efeito do Vídeo",
     "description": "Nome do parâmetro de estilo usado para alternar entre diferentes versões ou estilos do modelo"
   },
   "name.ingredientsModel": {
@@ -144,7 +148,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Digite o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Insira as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -196,8 +200,8 @@
     "description": "Texto do botão para enviar imagem (simplifique para 'Enviar')"
   },
   "button.uploadVideoUrl": {
-    "message": "Enviar Vídeo",
-    "description": "Texto do botão para enviar vídeo"
+    "message": "Carregar vídeo",
+    "description": "Texto do botão para carregar um vídeo"
   },
   "message.uploadReferencesExceed": {
     "message": "Máximo de 5 imagens permitidas",
@@ -205,7 +209,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagens carregadas com sucesso",
-    "description": "Mensagem de sucesso ao carregar imagens com sucesso"
+    "description": "Mensagem de sucesso quando as imagens são carregadas com sucesso"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao carregar imagens, por favor tente novamente mais tarde",
@@ -213,31 +217,31 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem ao iniciar a tarefa de desenho"
+    "description": "Mensagem quando a tarefa de desenho começa"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa"
+    "description": "Mensagem de sucesso quando a tarefa é iniciada com sucesso"
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
+    "description": "Mensagem de erro quando a tarefa de desenho falha ao iniciar"
   },
   "message.usedUp": {
     "message": "Seus créditos acabaram, por favor compre mais créditos para continuar",
-    "description": "Mensagem quando os créditos se esgotaram"
+    "description": "Mensagem quando os créditos se esgotam"
   },
   "message.generating": {
     "message": "Gerando...",
-    "description": "Mensagem enquanto a imagem está sendo gerada"
+    "description": "Mensagem quando a imagem está sendo gerada"
   },
   "message.downloadVideo": {
     "message": "Baixar este vídeo",
-    "description": "Mensagem enquanto a imagem está sendo gerada"
+    "description": "Mensagem quando a imagem está sendo gerada"
   },
   "message.extendVideo": {
     "message": "Continuar gerando este vídeo",
-    "description": "Mensagem enquanto a imagem está sendo gerada"
+    "description": "Mensagem quando a imagem está sendo gerada"
   },
   "message.generateFailed": {
     "message": "Falha ao gerar a imagem",
@@ -265,19 +269,19 @@
   },
   "message.uploadStartImageError": {
     "message": "Falha ao carregar a imagem da primeira frame",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem da primeira frame"
+    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira frame"
   },
   "message.uploadVideoError": {
     "message": "Falha ao carregar o vídeo",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem da primeira frame"
+    "description": "Mensagem de erro quando falha ao carregar a imagem da primeira frame"
   },
   "message.uploadEndImageError": {
     "message": "Falha ao carregar a imagem da última frame",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem da última frame"
+    "description": "Mensagem de erro quando falha ao carregar a imagem da última frame"
   },
   "message.uploadDocumentsError": {
     "message": "Falha ao carregar o documento",
-    "description": "Mensagem de erro ao falhar ao carregar o documento"
+    "description": "Mensagem de erro quando falha ao carregar o documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

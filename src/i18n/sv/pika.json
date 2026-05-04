@@ -75,6 +75,10 @@
     "message": "Spårnings ID",
     "description": "任务的追踪 ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "任务的耗时（秒）"
+  },
   "name.createdAt": {
     "message": "Skapat den",
     "description": "生成 Pika 视频的日期和时间"
@@ -92,7 +96,7 @@
     "description": "内容输入的提示"
   },
   "name.ingredients": {
-    "message": "Flera bilder",
+    "message": "Flera bilder för video",
     "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
   },
   "name.model": {
@@ -116,7 +120,7 @@
     "description": "参数'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "I uppgiften för flera bilder måste flera bilder laddas upp.",
+    "message": "I uppgiften för att skapa video med flera bilder måste flera bilder laddas upp.",
     "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
@@ -192,12 +196,12 @@
     "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
-    "message": "Ladda upp bild",
+    "message": "Ladda upp",
     "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
-    "description": "上传视频的按钮文本"
+    "description": "Text i knappen för att ladda upp video"
   },
   "message.uploadReferencesExceed": {
     "message": "Max 5 bilder kan laddas upp",
@@ -268,8 +272,8 @@
     "description": "Felmeddelande när uppladdningen av första bildramen misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp video",
-    "description": "Felmeddelande när uppladdningen av video misslyckas"
+    "message": "Misslyckades med att ladda upp videon",
+    "description": "Felmeddelande när uppladdningen av videon misslyckas"
   },
   "message.uploadEndImageError": {
     "message": "Misslyckades med att ladda upp sista bildramen",

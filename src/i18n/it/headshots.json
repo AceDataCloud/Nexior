@@ -27,6 +27,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (in secondi)"
+  },
   "name.size": {
     "message": "Dimensione",
     "description": "Dimensione del QR code da generare"
@@ -57,7 +61,7 @@
   },
   "name.contentImageUrl": {
     "message": "Link immagine contenuto",
-    "description": "URL dell'immagine contenuto del QR code da generare"
+    "description": "URL dell'immagine contenuto per il QR code da generare"
   },
   "inputWay.input": {
     "message": "Inserisci contenuto",
@@ -80,8 +84,8 @@
     "description": "Segnaposto per il livello di riempimento"
   },
   "placeholder.prompt": {
-    "message": "Inserisci un suggerimento per lo stile video da generare, ad esempio: Astronauti che si spostano dallo spazio a un vulcano",
-    "description": "Testo segnaposto nel campo suggerimenti"
+    "message": "Inserisci il prompt per generare lo stile video, ad esempio: Astronauti che si spostano dallo spazio a un vulcano",
+    "description": "Testo segnaposto nel campo del prompt"
   },
   "button.fast": {
     "message": "Modalità veloce",
@@ -129,7 +133,7 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'attività di disegno non riesce a partire"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
     "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
@@ -169,31 +173,31 @@
   },
   "styleTag.kindergarten": {
     "message": "Foto di ingresso all'asilo",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "description": "Usato per descrivere e generare immagini con uno stile, le immagini generate devono includere lo stile di questo tag"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto con logo aziendale su T-shirt",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "message": "Maglietta con logo aziendale",
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.wedding": {
     "message": "Foto di registrazione matrimonio",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.businessPphoto": {
     "message": "Ritratto professionale",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.bobSuit": {
-    "message": "Bob con abito nero",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "message": "Completo nero con bob",
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.femalePortrait": {
     "message": "Ritratto femminile",
-    "description": "Usato per descrivere e generare immagini con questo stile"
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "message.uploadImageExceed": {
-    "message": "Puoi caricare al massimo 2 immagini",
-    "description": "Messaggio di avviso quando il numero di immagini caricate supera il limite"
+    "message": "È possibile caricare al massimo 2 immagini",
+    "description": "Messaggio di avviso quando il numero di immagini di riferimento caricate supera il limite"
   },
   "message.uploadImageError": {
     "message": "Caricamento immagine fallito, riprova più tardi",

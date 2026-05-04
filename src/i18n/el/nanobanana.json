@@ -1,22 +1,22 @@
 {
   "name.taskId": {
-    "message": "Ταυτότητα εργασίας",
-    "description": "Ταυτότητα της εργασίας"
+    "message": "ID Εργασίας",
+    "description": "Το ID της εργασίας"
   },
   "name.task": {
-    "message": "Τύπος εργασίας",
+    "message": "Τύπος Εργασίας",
     "description": "Τύπος λειτουργίας εικόνας Nano Banana"
   },
   "name.generate": {
-    "message": "Δημιουργία εικόνας",
+    "message": "Δημιουργία Εικόνας",
     "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
   },
   "name.edits": {
-    "message": "Επεξεργασία εικόνας",
+    "message": "Επεξεργασία Εικόνας",
     "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
   },
   "name.imageUrls": {
-    "message": "Αναφορές εικόνας",
+    "message": "Αναφορές Εικόνας",
     "description": "Αναφορές εικόνας για επεξεργασία"
   },
   "name.failure": {
@@ -24,7 +24,7 @@
     "description": "Η εργασία απέτυχε"
   },
   "name.failureReason": {
-    "message": "Λόγος αποτυχίας",
+    "message": "Λόγος Αποτυχίας",
     "description": "Λόγος αποτυχίας της εργασίας"
   },
   "name.status": {
@@ -32,19 +32,23 @@
     "description": "Κατάσταση της εργασίας"
   },
   "name.traceId": {
-    "message": "Ταυτότητα παρακολούθησης",
-    "description": "Ταυτότητα παρακολούθησης"
+    "message": "ID Ιχνηλάτη",
+    "description": "ID ιχνηλάτη"
+  },
+  "name.elapsed": {
+    "message": "Χρόνος Εκτέλεσης",
+    "description": "Χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
   },
   "name.prompt": {
-    "message": "Υπόδειξη εικόνας",
+    "message": "Υπόδειξη Εικόνας",
     "description": "Λέξεις-κλειδιά για δημιουργία/επεξεργασία"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Όνομα του δημιουργού εικόνας Nano Banana"
+    "description": "Όνομα γεννήτριας εικόνας Nano Banana"
   },
   "name.aspectRatio": {
-    "message": "Αναλογία διαστάσεων",
+    "message": "Αναλογία Διαστάσεων",
     "description": "Αναλογία διαστάσεων της παραγόμενης εικόνας"
   },
   "name.resolution": {
@@ -60,7 +64,7 @@
     "description": "Περιγραφή λέξεων-κλειδιών"
   },
   "description.action": {
-    "message": "Ενέργεια για δημιουργία εικόνας. Αν είναι `generate`, θα δημιουργηθεί εικόνα με βάση τις λέξεις-κλειδιά; αν είναι `edit`, θα γίνει επεξεργασία με βάση τις λέξεις-κλειδιά και την ανεβασμένη εικόνα.",
+    "message": "Ενέργεια για δημιουργία εικόνας. Αν είναι `generate`, θα δημιουργήσει εικόνα με βάση τις λέξεις-κλειδιά; αν είναι `edit`, θα επεξεργαστεί με βάση τις λέξεις-κλειδιά και την ανεβασμένη εικόνα.",
     "description": "Περιγραφή παραμέτρου action"
   },
   "description.model": {
@@ -76,16 +80,16 @@
     "description": "Περιγραφή παραμέτρου aspect_ratio"
   },
   "status.pending": {
-    "message": "Σε αναμονή",
+    "message": "Σε Αναμονή",
     "description": "Κατάσταση αναμονής της εργασίας"
   },
   "placeholder.select": {
     "message": "Επιλέξτε",
-    "description": "Placeholder επιλογής"
+    "description": "Επιλογή placeholder"
   },
   "placeholder.prompt": {
-    "message": "Εισάγετε λέξεις-κλειδιά, π.χ.: μια λευκή σιαμέζα γάτα",
-    "description": "Placeholder λέξεων-κλειδιών"
+    "message": "Εισάγετε λέξεις-κλειδιά, π.χ.: μια λευκή Σιαμέζα γάτα",
+    "description": "Placeholder για λέξεις-κλειδιά"
   },
   "button.generate": {
     "message": "Δημιουργία",
@@ -101,14 +105,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Η εργασία δημιουργήθηκε επιτυχώς",
-    "description": "Η εργασία δημιουργήθηκε με επιτυχία"
+    "description": "Επιτυχής δημιουργία εργασίας"
   },
   "message.startTaskFailed": {
     "message": "Αποτυχία εκκίνησης εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή:",
     "description": "Αποτυχία δημιουργίας εργασίας"
   },
   "message.usedUp": {
-    "message": "Τα σημεία σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα σημεία για να συνεχίσετε",
+    "message": "Τα πόντοι σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερους πόντους για να συνεχίσετε",
     "description": "Μήνυμα εξάντλησης"
   },
   "message.uploadImageExceed": {
@@ -116,8 +120,8 @@
     "description": "Περιορισμός αριθμού εικόνων"
   },
   "message.uploadImageError": {
-    "message": "Αποτυχία ανάρτησης εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
-    "description": "Αποτυχία ανάρτησης"
+    "message": "Αποτυχία ανέβασματος εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
+    "description": "Αποτυχία ανέβασματος"
   },
   "name.model": {
     "message": "Μοντέλο",

@@ -9,7 +9,7 @@
   },
   "name.modePro": {
     "message": "Hohe Qualität",
-    "description": "Hochqualitätsmodus von Kling-Videos"
+    "description": "Hochqualitätsmodus für Kling-Videos"
   },
   "name.failure": {
     "message": "Fehler",
@@ -27,13 +27,17 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
+  },
   "name.createdAt": {
     "message": "Erstellt am",
     "description": "Datum und Uhrzeit der Erstellung des Veo-Videos"
   },
   "name.startEndImage": {
     "message": "Start-/Endbild",
-    "description": "Formularfeldbezeichnung: Start-/Endbildreferenz (kurz und prägnant)"
+    "description": "Formularfeldbezeichnung: Start-/Endbild (kurz und prägnant)"
   },
   "name.action": {
     "message": "Aktion",
@@ -96,8 +100,8 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Eingabeaufforderung für den Video-Stil ein, z.B.: moving",
-    "description": "Platzhaltertext im Eingabefeld"
+    "message": "Geben Sie die Eingabeaufforderung für den Video-Stil ein, z. B.: moving",
+    "description": "Platzhaltertext im Eingabefeld für die Eingabeaufforderung"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
@@ -124,7 +128,7 @@
     "description": "Buttontext zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
-    "message": "Bild hochladen",
+    "message": "Hochladen",
     "description": "Buttontext zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen)"
   },
   "button.uploadVideoUrl": {
@@ -145,19 +149,19 @@
   },
   "message.uploadReferencesError": {
     "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung beim Fehlschlagen des Bild-Uploads"
+    "description": "Fehlermeldung beim Fehlschlagen des Bildhochladens"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
+    "description": "Nachricht beim Starten der Zeichenaufgabe"
   },
   "message.startTaskSuccess": {
     "message": "Aufgabe erfolgreich gestartet",
     "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
-    "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
+    "message": "Starten der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichenaufgabe"
   },
   "message.imageRequired": {
     "message": "Bitte laden Sie zuerst mindestens ein Referenzbild hoch, bevor Sie die Bild-zu-Video-Aufgabe starten",
@@ -177,7 +181,7 @@
   },
   "message.generateFailed": {
     "message": "Videoerstellung fehlgeschlagen",
-    "description": "Nachricht beim Fehlschlagen der Bildgenerierung"
+    "description": "Nachricht, wenn die Videoerstellung fehlschlägt"
   },
   "message.uploadVideoExceed": {
     "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
@@ -185,39 +189,39 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Die Dateigröße darf 10 MB nicht überschreiten!",
-    "description": "Fehlermeldung, wenn die Dateigröße 10 MB überschreitet!"
+    "description": "Fehlermeldung, wenn die Dateigröße 10 MB überschreitet"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Die hochgeladene Datei muss im MP4-Format sein!",
-    "description": "Fehlermeldung, wenn die Datei nicht im MP4-Format ist!"
+    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der Startbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der Endbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Startbildes",
-    "description": "Fehlermeldung, wenn das Startbild nicht hochgeladen werden kann"
+    "message": "Fehler beim Hochladen des Erstbildes",
+    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
   },
   "message.uploadVideoError": {
     "message": "Fehler beim Hochladen des Videos",
-    "description": "Fehlermeldung, wenn das Video nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
   },
   "message.uploadEndImageError": {
     "message": "Fehler beim Hochladen des Endbildes",
-    "description": "Fehlermeldung, wenn das Endbild nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
   },
   "message.uploadDocumentsError": {
     "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Dokument nicht hochgeladen werden kann"
+    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Aktionen",
-    "description": "Nachricht, wenn keine Aktionen verfügbar sind"
+    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
@@ -229,7 +233,7 @@
   },
   "name.motionType": {
     "message": "Kamerabewegung",
-    "description": "Typ der Kamerabewegung für /veo/reshoot"
+    "description": "Bewegungstyp der Kamera für /veo/reshoot"
   },
   "name.imageMask": {
     "message": "Bereichsmaske",
@@ -244,7 +248,7 @@
     "description": "Platzhalter für das Eingabefeld image_mask"
   },
   "placeholder.videoId": {
-    "message": "Video-ID einfügen oder auf die Schaltfläche in der rechten Aufgabenliste klicken, um automatisch auszufüllen",
+    "message": "Video-ID einfügen oder auf die Aktionsschaltfläche in der rechten Aufgabenliste klicken, um automatisch auszufüllen",
     "description": "Platzhalter für das Eingabefeld video_id"
   },
   "button.actionIngredients": {
@@ -253,34 +257,34 @@
   },
   "button.actionUpsample": {
     "message": "Hochskalierung / GIF-Vorschau",
-    "description": "/veo/upsample — Hochskalierung auf 1080p/4K oder GIF exportieren"
+    "description": "/veo/upsample — auf 1080p/4K hochskalieren oder GIF exportieren"
   },
   "button.actionExtend": {
-    "message": "Video verlängern",
-    "description": "/veo/extend — Dauer des bereits generierten Videos verlängern"
+    "message": "Video fortsetzen",
+    "description": "/veo/extend — die Dauer des bereits generierten Videos verlängern"
   },
   "button.actionReshoot": {
     "message": "Neu drehen",
-    "description": "/veo/reshoot — Inhalt mit neuer Kamerabewegung neu generieren"
+    "description": "/veo/reshoot — denselben Inhalt mit einer anderen Kamerabewegung neu generieren"
   },
   "button.actionObjectInsert": {
     "message": "Objekt hinzufügen",
-    "description": "/veo/objects insert — Objekt im Video hinzufügen"
+    "description": "/veo/objects insert — ein Objekt im Video hinzufügen"
   },
   "button.actionObjectRemove": {
     "message": "Objekt entfernen",
-    "description": "/veo/objects remove — Objekt im Video durch Maske entfernen"
+    "description": "/veo/objects remove — ein Objekt im Video durch Maske entfernen"
   },
   "button.actionUpsample1080p": {
-    "message": "Hochskalierung auf 1080P",
-    "description": "Vorschau-Aktionsschaltfläche — Hochskalierung auf 1080P"
+    "message": "Auf 1080P hochskalieren",
+    "description": "Vorschau-Aktionsschaltfläche — auf 1080P hochskalieren"
   },
   "button.actionUpsample4k": {
-    "message": "Hochskalierung auf 4K",
-    "description": "Vorschau-Aktionsschaltfläche — Hochskalierung auf 4K"
+    "message": "Auf 4K hochskalieren",
+    "description": "Vorschau-Aktionsschaltfläche — auf 4K hochskalieren"
   },
   "button.actionUpsampleGif": {
     "message": "GIF exportieren",
-    "description": "Vorschau-Aktionsschaltfläche — In GIF-Vorschau umwandeln"
+    "description": "Vorschau-Aktionsschaltfläche — in GIF-Vorschau umwandeln"
   }
 }

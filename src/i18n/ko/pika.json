@@ -75,6 +75,10 @@
     "message": "추적 ID",
     "description": "任务的追踪 ID"
   },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "任务的耗时（秒）"
+  },
   "name.createdAt": {
     "message": "생성 시간",
     "description": "生成 Pika 视频的日期和时间"
@@ -116,7 +120,7 @@
     "description": "参数'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "다중 이미지 비디오 작업에서는 여러 이미지를 업로드해야 합니다.",
+    "message": "다중 이미지 비디오 생성 작업에서는 여러 이미지를 업로드해야 합니다.",
     "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
@@ -197,7 +201,7 @@
   },
   "button.uploadVideoUrl": {
     "message": "비디오 업로드",
-    "description": "上传视频的按钮文本"
+    "description": "비디오를 업로드하는 버튼 텍스트"
   },
   "message.uploadReferencesExceed": {
     "message": "최대 5개의 이미지를 업로드할 수 있습니다",
@@ -216,8 +220,8 @@
     "description": "그림 작업이 시작될 때의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업 시작 성공",
-    "description": "작업 시작이 성공했을 때의 성공 메시지"
+    "message": "생성 작업이 성공적으로 시작되었습니다",
+    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "작업 시작 실패, 관리자에게 문의하세요",

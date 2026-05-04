@@ -23,12 +23,16 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften tog (sekunder)"
+  },
   "name.size": {
     "message": "Storlek",
     "description": "Storleken på den QR-kod som ska genereras"
   },
   "name.createdAt": {
-    "message": "Skapat",
+    "message": "Skapat den",
     "description": "Datum och tid för när QR-koden genererades"
   },
   "name.pixelStyle": {
@@ -68,15 +72,15 @@
     "description": "Positionen för den QR-kod som ska genereras"
   },
   "name.prompt": {
-    "message": "Videoprompt",
-    "description": "Prompt för innehållsinmatning"
+    "message": "Videoinstruktion",
+    "description": "Instruktion för innehållsinmatning"
   },
   "name.rotate": {
     "message": "Rotationsvinkel",
     "description": "Rotationen för den QR-kod som ska genereras"
   },
   "name.enhancement": {
-    "message": "Promptförstärkning",
+    "message": "Förbättring av instruktioner",
     "description": "Avancerade inställningar för den QR-kod som ska genereras"
   },
   "name.custom": {
@@ -85,7 +89,7 @@
   },
   "name.extend": {
     "message": "Utöka video från",
-    "description": "Prompt för innehållsinmatning"
+    "description": "Instruktion för innehållsinmatning"
   },
   "name.loop": {
     "message": "Videoloop",
@@ -100,8 +104,8 @@
     "description": "Markeringsformen för den QR-kod som ska genereras"
   },
   "name.subMarker": {
-    "message": "Underkoder",
-    "description": "Underkoden för den QR-kod som ska genereras"
+    "message": "Underkänna",
+    "description": "Underkännan för den QR-kod som ska genereras"
   },
   "name.qrw": {
     "message": "Synlighet",
@@ -136,7 +140,7 @@
     "description": "Beskrivning av parametern 'qrw'"
   },
   "description.enhancement": {
-    "message": "Aktivera förstärkning av inmatningsprompt om du är osäker på hur du skriver prompttext.",
+    "message": "Aktivera förbättring av instruktioner om du är osäker på hur du skriver instruktionstext.",
     "description": "Beskrivning av parametern 'qrw'"
   },
   "description.custom": {
@@ -148,7 +152,7 @@
     "description": "Beskrivning av parametern 'steps'"
   },
   "description.videoUrl": {
-    "message": "Ladda upp URL för anpassad utvidgad video, som kommer att vara videon för den utvidgade videon.",
+    "message": "Ladda upp URL för anpassad video som kommer att vara videon för att utöka.",
     "description": "Beskrivning av parametern 'steps'"
   },
   "description.endImageUrl": {
@@ -156,7 +160,7 @@
     "description": "Beskrivning av parametern 'steps'"
   },
   "description.prompt": {
-    "message": "Promptord för att generera Luma-video",
+    "message": "Instruktioner för att generera Luma-video",
     "description": "Beskrivning av parametern 'prompt'"
   },
   "status.pending": {
@@ -169,31 +173,31 @@
   },
   "placeholder.paddingNoise": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för fyllnadsbrus"
+    "description": "Platshållare för inmatning av fyllnadsbrus"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för fyllnadsnivå"
+    "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för den stil av video som ska genereras, t.ex.: Astronauter som åker från rymden till vulkan",
-    "description": "Platsinnehåll för promptfält"
+    "message": "Ange instruktioner för den stil av video som ska genereras, t.ex.: Astronauter som åker från rymden till vulkan",
+    "description": "Platshållartext i instruktionfältet"
   },
   "placeholder.startImageUrl": {
     "message": "Länk till första bild",
-    "description": "Platsinnehåll för fröinmatning"
+    "description": "Platshållare för fröinmatning"
   },
   "placeholder.endImageUrl": {
     "message": "Länk till sista bild",
-    "description": "Platsinnehåll för fröinmatning"
+    "description": "Platshållare för fröinmatning"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
-    "description": "Platsinnehåll för position"
+    "description": "Platshållare för positioninmatning"
   },
   "placeholder.content": {
-    "message": "Ange innehållet för den QR-kod som ska genereras, t.ex.: https://www.google.com",
-    "description": "Platsinnehåll för innehållsfält"
+    "message": "Ange innehållet för att generera QR-koden, till exempel: https://www.google.com",
+    "description": "Platzhaltertext i innehållsfältet"
   },
   "placeholder.aspectRatio": {
     "message": "Vänligen välj...",
@@ -228,7 +232,7 @@
     "description": "Knapptext för att ladda ner video"
   },
   "button.uploadStartImageUrl": {
-    "message": "Ladda upp",
+    "message": "Ladda upp bild",
     "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
@@ -236,7 +240,7 @@
     "description": "Knapptext för att ladda upp QR-kod"
   },
   "button.uploadEndImageUrl": {
-    "message": "Ladda upp",
+    "message": "Ladda upp bild",
     "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "preset.sunset": {
@@ -336,12 +340,12 @@
     "description": "Förinställd stil för att generera QR-kod"
   },
   "message.uploadQr": {
-    "message": "Ladda upp QR-kod bild för att generera en konstnärlig QR-kod som matchar innehållet",
+    "message": "Ladda upp QR-kod bild för att generera en konstnärlig QR-kod som matchar QR-kodens innehåll",
     "description": "Beskrivning för att ladda upp QR-kod"
   },
   "message.promptPlaceholder": {
     "message": "Ange en mening som beskriver bilden som ska genereras, till exempel: en söt katt. Ytterligare parametrar kommer att överskrida standardinställningarna",
-    "description": "Platshållartext i promptfältet"
+    "description": "Platshållare för textfältet"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximalt 5 bilder kan laddas upp",
@@ -357,15 +361,15 @@
   },
   "message.startingTask": {
     "message": "Startar uppgiften...",
-    "description": "Meddelande när rituppgiften startar"
+    "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift har startats framgångsrikt",
+    "message": "Uppgiftsgenerering har initierats",
     "description": "Framgångsmeddelande när uppgiften har startats"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
-    "description": "Felmeddelande när rituppgiften misslyckas"
+    "message": "Misslyckades med att initiera uppgiften, vänligen kontakta administratören",
+    "description": "Felmeddelande när ritningsuppgiften misslyckas"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
@@ -384,43 +388,43 @@
     "description": "Meddelande när bilden genereras"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera bilden",
+    "message": "Bildgenerering misslyckades",
     "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.uploadVideoExceed": {
-    "message": "Överskridit gränsen för antal uppladdade första bilder",
-    "description": "Felmeddelande när antalet uppladdade första bilder överskrids"
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uppladdad fil får inte överstiga 10 MB!",
-    "description": "Felmeddelande när filstorleken överskrider 10 MB!"
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när filen inte är i MP4-format!"
+    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Överskridit gränsen för antal uppladdade första bilder",
-    "description": "Felmeddelande när antalet uppladdade första bilder överskrids"
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Överskridit gränsen för antal uppladdade sista bilder",
-    "description": "Felmeddelande när antalet uppladdade sista bilder överskrids"
+    "message": "Antalet uppladdade sista bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp första bilden",
-    "description": "Felmeddelande när uppladdningen av första bilden misslyckas"
+    "message": "Uppladdning av första bildbild misslyckades",
+    "description": "Felmeddelande när uppladdningen av första bildbild misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp video",
+    "message": "Uppladdning av video misslyckades",
     "description": "Felmeddelande när uppladdningen av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp sista bilden",
-    "description": "Felmeddelande när uppladdningen av sista bilden misslyckas"
+    "message": "Uppladdning av sista bildbild misslyckades",
+    "description": "Felmeddelande när uppladdningen av sista bildbild misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokument",
+    "message": "Uppladdning av dokument misslyckades",
     "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.noOperations": {
@@ -500,11 +504,11 @@
     "description": "Position för att generera QR-kod"
   },
   "position.top": {
-    "message": "Topp",
+    "message": "Över",
     "description": "Position för att generera QR-kod"
   },
   "position.bottom": {
-    "message": "Botten",
+    "message": "Under",
     "description": "Position för att generera QR-kod"
   },
   "position.left": {

@@ -39,6 +39,10 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.createdAt": {
     "message": "作成日時",
     "description": "生成したFlux画像の日付と時間"
@@ -137,11 +141,11 @@
   },
   "button.uploadImageUrl": {
     "message": "アップロード",
-    "description": "画像アップロードボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
+    "description": "画像アップロードボタンテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
   },
   "button.extend": {
     "message": "画像を拡張",
-    "description": "画像拡張ボタンのテキスト"
+    "description": "画像拡張ボタンテキスト"
   },
   "button.viewImage": {
     "message": "元画像を表示",
@@ -149,7 +153,7 @@
   },
   "button.download": {
     "message": "画像をダウンロード",
-    "description": "画像ダウンロードボタンのテキスト"
+    "description": "画像ダウンロードボタンテキスト"
   },
   "message.downloadImage": {
     "message": "画像の新しいウィンドウを開く",
@@ -157,7 +161,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "最大5枚の画像をアップロードできます",
-    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードした画像数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
@@ -189,7 +193,7 @@
   },
   "message.downloadVideo": {
     "message": "この画像をダウンロード",
-    "description": "画像が生成中のときのメッセージ"
+    "description": "画像が生成中のメッセージ"
   },
   "message.extendVideo": {
     "message": "この画像の生成を続ける",

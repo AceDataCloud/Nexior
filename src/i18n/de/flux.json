@@ -17,7 +17,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Inhaltstyp des zu erzeugenden Flux-Bildes, z. B. 'Link', 'Text' usw."
+    "description": "Inhaltstyp des zu erzeugenden Flux-Bildes, z.B. 'Link', 'Text' usw."
   },
   "name.imageUrl": {
     "message": "Referenzbild",
@@ -39,8 +39,12 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
+  },
   "name.createdAt": {
-    "message": "Erstellt am",
+    "message": "Erstellungszeit",
     "description": "Datum und Uhrzeit der Erstellung des Flux-Bildes"
   },
   "name.numbers": {
@@ -52,8 +56,8 @@
     "description": "Qualität des Bildes"
   },
   "name.prompt": {
-    "message": "Bildaufforderung",
-    "description": "Eingabeaufforderung für den Inhalt"
+    "message": "Bildhinweis",
+    "description": "Hinweis für die Eingabe des Inhalts"
   },
   "name.ratio": {
     "message": "Verhältnis",
@@ -76,7 +80,7 @@
     "description": "Beschreibung des Parameters 'quality'"
   },
   "description.prompt": {
-    "message": "Aufforderung zur Erzeugung von Flux-Bildern",
+    "message": "Hinweis für die Erzeugung von Flux-Bildern",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.imageUrl": {
@@ -104,8 +108,8 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderung für den Bildstil ein, z. B.: eine weiße Siamkatze",
-    "description": "Platzhaltertext im Aufforderungsfeld"
+    "message": "Geben Sie den Hinweis für den Bildstil ein, z.B.: eine weiße Siamkatze",
+    "description": "Platzhaltertext im Hinweisfeld"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
@@ -153,7 +157,7 @@
   },
   "message.downloadImage": {
     "message": "Bild in neuem Fenster öffnen",
-    "description": "Öffnen eines Bildes in einem neuen Fenster"
+    "description": "Bild in neuem Fenster öffnen"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximal 5 Bilder können hochgeladen werden",
@@ -185,11 +189,11 @@
   },
   "message.generating": {
     "message": "Wird erzeugt...",
-    "description": "Nachricht, während das Bild erzeugt wird"
+    "description": "Nachricht während der Bildgenerierung"
   },
   "message.downloadVideo": {
-    "message": "Dieses Bild herunterladen",
-    "description": "Nachricht, während das Bild erzeugt wird"
+    "message": "Laden Sie dieses Bild herunter",
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.extendVideo": {
     "message": "Bild weiterhin generieren",

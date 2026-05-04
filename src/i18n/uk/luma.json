@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Тип",
-    "description": "Тип вмісту QR-коду, який потрібно згенерувати, наприклад, 'посилання', 'текст' тощо"
+    "description": "Тип вмісту QR-коду, наприклад, 'посилання', 'текст' тощо"
   },
   "name.failure": {
     "message": "Не вдалося",
@@ -23,49 +23,53 @@
     "message": "ID відстеження",
     "description": "ID відстеження завдання"
   },
+  "name.elapsed": {
+    "message": "Час виконання",
+    "description": "Час виконання завдання (секунди)"
+  },
   "name.size": {
     "message": "Розмір",
-    "description": "Розмір QR-коду, який потрібно згенерувати"
+    "description": "Розмір QR-коду"
   },
   "name.createdAt": {
     "message": "Дата створення",
-    "description": "Дата та час генерації QR-коду"
+    "description": "Дата та час створення QR-коду"
   },
   "name.pixelStyle": {
     "message": "Піксельний стиль",
-    "description": "Піксельний стиль QR-коду, який потрібно згенерувати"
+    "description": "Піксельний стиль QR-коду"
   },
   "name.startImageUrl": {
     "message": "Початкове зображення",
-    "description": "Сидло для генерації QR-коду"
+    "description": "Сид для QR-коду"
   },
   "name.videoUrl": {
     "message": "Користувацьке відео",
-    "description": "Сидло для генерації QR-коду"
+    "description": "Сид для QR-коду"
   },
   "name.endImageUrl": {
     "message": "Кінцеве зображення",
-    "description": "Сидло для генерації QR-коду"
+    "description": "Сид для QR-коду"
   },
   "name.paddingLevel": {
     "message": "Рівень заповнення",
-    "description": "Рівень заповнення QR-коду, який потрібно згенерувати"
+    "description": "Рівень заповнення QR-коду"
   },
   "name.paddingNoise": {
     "message": "Шум заповнення",
-    "description": "Шум заповнення QR-коду, який потрібно згенерувати"
+    "description": "Шум заповнення QR-коду"
   },
   "name.content": {
     "message": "Вміст",
-    "description": "Вміст QR-коду, який потрібно згенерувати"
+    "description": "Вміст QR-коду"
   },
   "name.ecl": {
     "message": "Рівень корекції помилок",
-    "description": "Рівень корекції помилок QR-коду, який потрібно згенерувати"
+    "description": "Рівень корекції помилок QR-коду"
   },
   "name.position": {
     "message": "Позиція",
-    "description": "Позиція QR-коду, який потрібно згенерувати"
+    "description": "Позиція QR-коду"
   },
   "name.prompt": {
     "message": "Підказка для відео",
@@ -73,35 +77,35 @@
   },
   "name.rotate": {
     "message": "Кут обертання",
-    "description": "Кут обертання QR-коду, який потрібно згенерувати"
+    "description": "Обертання QR-коду"
   },
   "name.enhancement": {
     "message": "Покращення підказок",
-    "description": "Розширені налаштування QR-коду, який потрібно згенерувати"
+    "description": "Розширені налаштування QR-коду"
   },
   "name.custom": {
     "message": "Завантажити відео",
-    "description": "Користувацьке розширене відео"
+    "description": "Користувацьке відео"
   },
   "name.extend": {
-    "message": "Розширене відео з",
+    "message": "Розширити відео з",
     "description": "Підказка для введення вмісту"
   },
   "name.loop": {
-    "message": "Циклічне відео",
-    "description": "Розширені налаштування QR-коду, який потрібно згенерувати"
+    "message": "Циклічне відтворення відео",
+    "description": "Розширені налаштування QR-коду"
   },
   "name.aspectRatio": {
     "message": "Співвідношення сторін",
-    "description": "Співвідношення сторін QR-коду, який потрібно згенерувати"
+    "description": "Співвідношення сторін QR-коду"
   },
   "name.markerShape": {
     "message": "Форма маркера",
-    "description": "Форма маркера QR-коду, який потрібно згенерувати"
+    "description": "Форма маркера QR-коду"
   },
   "name.subMarker": {
-    "message": "Додатковий маркер",
-    "description": "Додатковий маркер QR-коду, який потрібно згенерувати"
+    "message": "Субмаркер",
+    "description": "Субмаркер QR-коду"
   },
   "name.qrw": {
     "message": "Видимість",
@@ -113,7 +117,7 @@
   },
   "name.preset": {
     "message": "Попередній стиль",
-    "description": "Попередній стиль QR-коду, який потрібно згенерувати"
+    "description": "Попередній стиль QR-коду"
   },
   "name.lumaBot": {
     "message": "Luma Bot",
@@ -121,7 +125,7 @@
   },
   "name.contentImageUrl": {
     "message": "URL зображення вмісту",
-    "description": "URL зображення вмісту QR-коду, який потрібно згенерувати"
+    "description": "URL зображення вмісту QR-коду"
   },
   "inputWay.input": {
     "message": "Ввести вміст",
@@ -132,7 +136,7 @@
     "description": "Спосіб введення"
   },
   "description.loop": {
-    "message": "Увімкніть циклічність для згенерованого відео.",
+    "message": "Увімкніть циклічне відтворення для згенерованого відео.",
     "description": "Опис параметра 'qrw'"
   },
   "description.enhancement": {
@@ -148,7 +152,7 @@
     "description": "Опис параметра 'steps'"
   },
   "description.videoUrl": {
-    "message": "URL завантаженого користувацького відео, яке буде розширеним відео.",
+    "message": "URL завантаженого користувацького відео, яке буде відео для розширення.",
     "description": "Опис параметра 'steps'"
   },
   "description.endImageUrl": {
@@ -176,24 +180,24 @@
     "description": "Плейсхолдер для рівня заповнення"
   },
   "placeholder.prompt": {
-    "message": "Введіть підказки для стилю відео, наприклад: Астронавти, що летять з космосу до вулкана",
-    "description": "Плейсхолдер у полі підказки"
+    "message": "Введіть підказки для стилю відео, наприклад: Астронавти, що переносяться з космосу до вулкана",
+    "description": "Плейсхолдер для поля підказки"
   },
   "placeholder.startImageUrl": {
-    "message": "Посилання на початкове зображення",
-    "description": "Плейсхолдер для введення сидла"
+    "message": "URL початкового зображення",
+    "description": "Плейсхолдер для сидів"
   },
   "placeholder.endImageUrl": {
-    "message": "Посилання на кінцеве зображення",
-    "description": "Плейсхолдер для введення сидла"
+    "message": "URL кінцевого зображення",
+    "description": "Плейсхолдер для сидів"
   },
   "placeholder.position": {
     "message": "Оберіть...",
-    "description": "Плейсхолдер для введення позиції"
+    "description": "Плейсхолдер для позиції"
   },
   "placeholder.content": {
-    "message": "Введіть вміст QR-коду, наприклад: https://www.google.com",
-    "description": "Плейсхолдер у полі вмісту"
+    "message": "Введіть вміст для генерації QR-коду, наприклад: https://www.google.com",
+    "description": "Текст-заповнювач у полі вмісту"
   },
   "placeholder.aspectRatio": {
     "message": "Виберіть...",
@@ -336,12 +340,12 @@
     "description": "Пресет стиль для генерації QR-коду"
   },
   "message.uploadQr": {
-    "message": "Завантажте зображення QR-коду, щоб створити художній QR-код, що відповідає вмісту QR-коду",
+    "message": "Завантажте зображення QR-коду, щоб створити мистецький QR-код, що відповідає вмісту QR-коду",
     "description": "Опис для завантаження QR-коду"
   },
   "message.promptPlaceholder": {
     "message": "Введіть речення для опису зображення, яке потрібно згенерувати, наприклад: милий кіт. Додаткові параметри замінять параметри за замовчуванням",
-    "description": "Плейсхолдер тексту в полі підказки"
+    "description": "Плейсхолдер у полі підказки"
   },
   "message.uploadReferencesExceed": {
     "message": "Максимум можна завантажити 5 зображень",
@@ -357,7 +361,7 @@
   },
   "message.startingTask": {
     "message": "Запуск завдання...",
-    "description": "Повідомлення на початку малювання завдання"
+    "description": "Повідомлення на початку малювання"
   },
   "message.startTaskSuccess": {
     "message": "Завдання на генерацію успішно ініційовано",
@@ -380,12 +384,12 @@
     "description": "Повідомлення під час генерації зображення"
   },
   "message.extendVideo": {
-    "message": "Продовжити генерацію цього відео",
+    "message": "Продовжити генерувати це відео",
     "description": "Повідомлення під час генерації зображення"
   },
   "message.generateFailed": {
     "message": "Не вдалося згенерувати зображення",
-    "description": "Повідомлення при невдачі генерації зображення"
+    "description": "Повідомлення про невдачу генерації зображення"
   },
   "message.uploadVideoExceed": {
     "message": "Кількість завантажених зображень першого кадру перевищує ліміт",
@@ -444,7 +448,7 @@
     "description": "Форма маркера для генерації QR-коду"
   },
   "markerShape.box": {
-    "message": "Прямокутник",
+    "message": "Коробка",
     "description": "Форма маркера для генерації QR-коду"
   },
   "markerShape.octagon": {
@@ -472,7 +476,7 @@
     "description": "Форма підмаркера для генерації QR-коду"
   },
   "subMarker.box": {
-    "message": "Прямокутник",
+    "message": "Коробка",
     "description": "Форма підмаркера для генерації QR-коду"
   },
   "subMarker.random": {
@@ -484,19 +488,19 @@
     "description": "Позиція для генерації QR-коду"
   },
   "position.topLeft": {
-    "message": "Лівий верхній",
+    "message": "Зверху зліва",
     "description": "Позиція для генерації QR-коду"
   },
   "position.topRight": {
-    "message": "Правий верхній",
+    "message": "Зверху справа",
     "description": "Позиція для генерації QR-коду"
   },
   "position.bottomLeft": {
-    "message": "Лівий нижній",
+    "message": "Знизу зліва",
     "description": "Позиція для генерації QR-коду"
   },
   "position.bottomRight": {
-    "message": "Правий нижній",
+    "message": "Знизу справа",
     "description": "Позиція для генерації QR-коду"
   },
   "position.top": {
@@ -508,11 +512,11 @@
     "description": "Позиція для генерації QR-коду"
   },
   "position.left": {
-    "message": "Ліворуч",
+    "message": "Зліва",
     "description": "Позиція для генерації QR-коду"
   },
   "position.right": {
-    "message": "Праворуч",
+    "message": "Справа",
     "description": "Позиція для генерації QR-коду"
   },
   "pixelStyle.row": {

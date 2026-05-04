@@ -7,60 +7,48 @@
     "message": "Bewegungssteuerung",
     "description": "Tab Label: Motion Control"
   },
-  "tab.avatar": {
-    "message": "Avatar",
-    "description": "Tab Label: Avatar / AI-Human"
-  },
-  "tab.comingSoon": {
-    "message": "Demnächst verfügbar",
-    "description": "Tab Label für kommende Funktionen"
-  },
-  "tab.avatarComingSoon": {
-    "message": "Avatar (Gesicht + Sprachsynthese für Videos) demnächst verfügbar, bleiben Sie dran",
-    "description": "Tooltip-Beschreibung für den deaktivierten Avatar-Tab"
-  },
   "name.motionImage": {
     "message": "Referenzbild",
-    "description": "Bild-Eingabe für die Bewegungssteuerung"
+    "description": "Bildinput für die Personensteuerung"
   },
   "name.motionVideo": {
     "message": "Referenzvideo",
-    "description": "Video-Eingabe für die Bewegungssteuerung"
+    "description": "Videoinput für die Bewegungssteuerung"
   },
   "name.motionPrompt": {
     "message": "Zusätzliche Hinweise (optional)",
     "description": "Zusätzliche Hinweise in der Bewegungssteuerung"
   },
   "name.characterOrientation": {
-    "message": "Charakterausrichtung",
-    "description": "Feld für die Charakterausrichtung"
+    "message": "Richtung der Person",
+    "description": "Feld für die Richtung der Person"
   },
   "name.orientationImage": {
-    "message": "Bild folgen",
-    "description": "Option für die Charakterausrichtung: Bild folgen"
+    "message": "Folgebild",
+    "description": "Option für die Richtung der Person: Folgebild"
   },
   "name.orientationVideo": {
-    "message": "Video folgen",
-    "description": "Option für die Charakterausrichtung: Video folgen"
+    "message": "Folgevideo",
+    "description": "Option für die Richtung der Person: Folgevideo"
   },
   "name.keepOriginalSound": {
     "message": "Originalton beibehalten",
     "description": "Schalter für den Originalton"
   },
   "description.motionImage": {
-    "message": "Laden Sie ein Referenzbild hoch, um die Charaktere, Hintergründe und andere Elemente im Video zu erstellen.",
+    "message": "Lade ein Referenzbild hoch, um die Personen, Hintergründe und andere Elemente im Video zu referenzieren.",
     "description": "Beschreibung für motion image_url"
   },
   "description.motionVideo": {
-    "message": "Laden Sie ein Referenzvideo hoch, um die Bewegungen der Charaktere im Video mit diesem Video abzugleichen (MP4 / MOV, ≤1 Minute, ≤1 GB).",
+    "message": "Lade ein Referenzvideo hoch, um die Bewegungen der Person im Video mit diesem Video abzugleichen (MP4 / MOV, ≤1 Minute, ≤1 GB).",
     "description": "Beschreibung für motion video_url"
   },
   "description.motionPrompt": {
-    "message": "Optional. Kann positive und negative Beschreibungen enthalten, um die Ergebnisse zu unterstützen.",
+    "message": "Optional. Kann positive und negative Beschreibungen enthalten, um den Effekt zu unterstützen.",
     "description": "Beschreibung für motion prompt"
   },
   "description.characterOrientation": {
-    "message": "Bei Auswahl von 'Video folgen' sind komplexe Bewegungen besser; bei 'Bild folgen' stimmt die Charakterausrichtung mit dem Referenzbild überein, was die Kamerabewegung verbessert.",
+    "message": "Bei Auswahl von 'Folgevideo' sind komplexe Bewegungen besser; bei 'Folgebild' stimmt die Richtung der Person mit dem Referenzbild überein, was die Kamerabewegung verbessert.",
     "description": "Beschreibung für character_orientation"
   },
   "description.motionMode": {
@@ -68,7 +56,7 @@
     "description": "Beschreibung für motion mode"
   },
   "description.keepOriginalSound": {
-    "message": "Aktiviert, um den Originalton des Referenzvideos beizubehalten; deaktiviert, um das Video ohne Originalton auszugeben.",
+    "message": "Aktiviert, um den Originalton des Referenzvideos beizubehalten; deaktiviert, um das Ausgangsvideo ohne Originalton zu erstellen.",
     "description": "Beschreibung für keep_original_sound"
   },
   "placeholder.motionPrompt": {
@@ -80,8 +68,8 @@
     "description": "Button zum Erstellen in der Bewegungssteuerung"
   },
   "message.motionMissingInputs": {
-    "message": "Bitte laden Sie sowohl das Referenzbild als auch das Referenzvideo hoch.",
-    "description": "Hinweis, wenn Eingaben in der Bewegungssteuerung fehlen"
+    "message": "Bitte lade sowohl das Personenbild als auch das Referenzvideo hoch.",
+    "description": "Hinweis bei fehlenden Eingaben in der Bewegungssteuerung"
   },
   "inspiration.title": {
     "message": "Inspiration und Voreinstellungen",
@@ -96,7 +84,7 @@
     "description": "Button zum Entfernen einer ausgewählten Voreinstellung im Hinweisbereich"
   },
   "inspiration.hint": {
-    "message": "Klicken Sie auf einen Satz, um ihn automatisch zu den Hinweisen hinzuzufügen; erneut klicken, um ihn zu entfernen.",
+    "message": "Klicke auf einen Satz, um ihn automatisch zu den Hinweisen hinzuzufügen; erneut klicken, um ihn zu entfernen.",
     "description": "Verwendungshinweis oben im Inspiration-Dock"
   },
   "inspiration.empty": {
@@ -108,8 +96,8 @@
     "description": "Anzahl der ausgewählten Voreinstellungen"
   },
   "inspiration.clearSelected": {
-    "message": "Alle löschen",
-    "description": "Button zum Löschen aller ausgewählten Voreinstellungen"
+    "message": "Alle entfernen",
+    "description": "Button zum Entfernen aller ausgewählten Voreinstellungen"
   },
   "inspiration.group.cameraMovements": {
     "message": "Kamerabewegungen",
@@ -192,19 +180,19 @@
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "Mittlere Aufnahme",
+    "message": "Halbnahe",
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Weitwinkelaufnahme",
+    "message": "Weitwinkel",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "Niedriger Winkel",
+    "message": "Aufnahme aus niedriger Perspektive",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "Hoher Winkel",
+    "message": "Aufnahme aus hoher Perspektive",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
@@ -220,7 +208,7 @@
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "Nahaufnahme",
+    "message": "Gesichtsnahaufnahme",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
@@ -240,7 +228,7 @@
     "description": ""
   },
   "inspiration.chip.lightWarm": {
-    "message": "Warmlicht",
+    "message": "Warmes Licht",
     "description": ""
   },
   "inspiration.chip.lightNature": {
@@ -285,7 +273,7 @@
   },
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "Aufgaben-ID"
+    "description": "ID der Aufgabe"
   },
   "name.type": {
     "message": "Typ",
@@ -317,19 +305,19 @@
   },
   "name.cameraTypeDownBack": {
     "message": "Nach unten und zurück",
-    "description": "Voreingestellte Kamerabewegung: Nach unten und zurück"
+    "description": "Voreingestellte Kamerasteuerung: Nach unten und zurück"
   },
   "name.cameraTypeForwardUp": {
     "message": "Nach vorne und nach oben",
-    "description": "Voreingestellte Kamerabewegung: Nach vorne und nach oben"
+    "description": "Voreingestellte Kamerasteuerung: Nach vorne und nach oben"
   },
   "name.cameraTypeLeftTurnForward": {
     "message": "Nach links drehen und vorwärts",
-    "description": "Voreingestellte Kamerabewegung: Nach links drehen und vorwärts"
+    "description": "Voreingestellte Kamerasteuerung: Nach links drehen und vorwärts"
   },
   "name.cameraTypeRightTurnForward": {
     "message": "Nach rechts drehen und vorwärts",
-    "description": "Voreingestellte Kamerabewegung: Nach rechts drehen und vorwärts"
+    "description": "Voreingestellte Kamerasteuerung: Nach rechts drehen und vorwärts"
   },
   "name.cc_horizontal": {
     "message": "Horizontale Bewegung",
@@ -361,7 +349,7 @@
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Grund für das Scheitern der Aufgabe"
+    "description": "Grund für den Fehler der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -371,29 +359,33 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Verstrichene Zeit",
+    "description": "Verstrichene Zeit der Aufgabe (Sekunden)"
+  },
   "name.createdAt": {
     "message": "Erstellungszeit",
     "description": "Datum und Uhrzeit der Erstellung des Kling-Videos"
   },
   "name.cfgScale": {
     "message": "Freiheitsgrad",
-    "description": "Freiheitsgradparameter für die Videoerstellung (0-1), je höher der Wert, desto näher am Referenzwert"
+    "description": "Freiheitsgradparameter für die Videoerstellung (0-1), je größer der Wert, desto näher am Referenzwert"
   },
   "name.generateAudio": {
     "message": "Audio synchron generieren",
     "description": "Ob Audio synchron generiert werden soll, unterstützt kling-v3, kling-v3-omni und kling-v2-6 (Pro-Modus)"
   },
   "name.startImage": {
-    "message": "Erstes Referenzbild",
-    "description": "Formularfeldbezeichnung: Erstes Referenzbild"
+    "message": "Erstes Bild",
+    "description": "Formularfeldbezeichnung: Erstes Bild (kurz halten, um Knöpfe nicht zu verdecken)"
   },
   "name.negativePrompt": {
     "message": "Negative Eingabe",
     "description": "Negative Texteingabe für die Videoerstellung"
   },
   "name.endImage": {
-    "message": "Letztes Referenzbild",
-    "description": "Formularfeldbezeichnung: Letztes Referenzbild"
+    "message": "Letztes Bild",
+    "description": "Formularfeldbezeichnung: Letztes Bild (kurz halten, um Knöpfe nicht zu verdecken)"
   },
   "name.videoUrl": {
     "message": "Benutzerdefiniertes Video",
@@ -404,24 +396,24 @@
     "description": "Eingabeaufforderung für den Inhalt"
   },
   "name.duration": {
-    "message": "Videodauer",
-    "description": "Die Dauer des Videos"
+    "message": "Videolänge",
+    "description": "Länge des Videos"
   },
   "name.ingredients": {
     "message": "Mehrbild-Videogenerierung",
-    "description": "Schalter/Label für die Mehrbild-Videogenerierung (Empfehlung auf Englisch: Multi-Image, kurz halten)"
+    "description": "Schalter/Label für die Mehrbild-Videogenerierung"
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Die Modellversion, die zur Videoerstellung verwendet wird"
+    "description": "Die Modellversion, die zur Erstellung des Videos verwendet wird"
   },
   "name.ratio": {
-    "message": "Videoformat",
-    "description": "Das Videoformat, das zur Videoerstellung verwendet wird"
+    "message": "Videoverhältnis",
+    "description": "Das Videoverhältnis, das zur Erstellung des Videos verwendet wird"
   },
   "name.mode": {
     "message": "Videomodus",
-    "description": "Der Modus, der zur Videoerstellung verwendet wird"
+    "description": "Der Modus, der zur Erstellung des Videos verwendet wird"
   },
   "name.effect": {
     "message": "Videoeffekt",
@@ -429,42 +421,42 @@
   },
   "name.ingredientsModel": {
     "message": "Zutatenmodell",
-    "description": "Die Modellversion, die zur Videoerstellung verwendet wird"
+    "description": "Die Modellversion, die zur Erstellung des Videos verwendet wird"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Name des Kling-Videogenerators"
+    "description": "Der Name des Kling Video-Generators"
   },
   "description.ingredients": {
-    "message": "Aktivieren Sie diesen Schalter, um mehrere Bilder hochzuladen und Ihr eigenes Video zu erstellen.",
+    "message": "Aktivieren Sie diese Schaltfläche, um mehrere Bilder hochzuladen und Ihr eigenes Video zu erstellen.",
     "description": "Beschreibung des Parameters 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Im Auftrag zur Mehrbild-Videogenerierung müssen mehrere Bilder hochgeladen werden.",
+    "message": "Bei der Erstellung eines Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Eingabeaufforderung zur Erstellung von Kling-Videos",
+    "message": "Eingabetext für die Erstellung von Kling-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Negativer Textprompt, optional, maximal 200 Zeichen",
+    "message": "Negativer Texteingabe, optional, maximal 200 Zeichen",
     "description": "Beschreibung des Parameters 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Laden Sie das erste Bild als Referenz für die Generierung hoch, das endgültige Video wird auf dem ersten Bild basieren.",
+    "message": "Laden Sie das erste Bild als Referenz hoch, das letzte Video wird auf das erste Bild basieren.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.uploadEndImage": {
-    "message": "Laden Sie das letzte Bild als Referenz für die Generierung hoch, das endgültige Video wird auf dem letzten Bild basieren.",
+    "message": "Laden Sie das letzte Bild als Referenz hoch, das letzte Video wird auf das letzte Bild basieren.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.cfgScale": {
-    "message": "Freiheitsgrad der Videoerstellung, optional [0,1]. Je größer der Wert, desto stärker die Relevanz.",
+    "message": "Freiheitsgrad für die Videoerstellung, optional [0,1]. Je größer der Wert, desto stärker die Relevanz.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.mode": {
-    "message": "std bietet höhere Leistung, pro bessere Bildqualität; 4K wird nur von v3 / v3-Omni unterstützt und kann nicht gleichzeitig mit Kamerasteuerung verwendet werden.",
+    "message": "std hat höhere Leistung, pro hat bessere Bildqualität; 4K wird nur von v3 / v3-Omni unterstützt und kann nicht gleichzeitig mit Kamerasteuerung verwendet werden.",
     "description": "Allgemeine Beschreibung des Modusfeldes"
   },
   "description.mode4kRequiresV3": {
@@ -473,10 +465,10 @@
   },
   "description.mode4kIncompatibleCamera": {
     "message": "Kamerasteuerung ist aktiviert, kann nicht gleichzeitig mit 4K verwendet werden.",
-    "description": "Grund für die Deaktivierung der 4K-Option (Kamerasteuerung eingestellt)"
+    "description": "Grund für die Deaktivierung der 4K-Option (Kamerasteuerung aktiviert)"
   },
   "description.duration": {
-    "message": "Das Standardmodell unterstützt nur 5/10 Sekunden; v3 / v3-Omni unterstützt 3/5/8/10/12/15 Sekunden.",
+    "message": "Das normale Modell unterstützt nur 5/10 Sekunden; v3 / v3-Omni unterstützt 3/5/8/10/12/15 Sekunden.",
     "description": "Allgemeine Beschreibung des Dauerfeldes"
   },
   "description.durationV3Only": {
@@ -484,11 +476,11 @@
     "description": "Grund für die Deaktivierung der Daueroption"
   },
   "description.generateAudio": {
-    "message": "Audioeffekte während der Videoerstellung generieren. Nur kling-v3 / kling-v3-omni / kling-v2-6 (Pro-Modus) unterstützt.",
+    "message": "Audioeffekte werden gleichzeitig mit dem Video generiert. Nur kling-v3 / kling-v3-omni / kling-v2-6 (pro-Modus) unterstützt.",
     "description": "Beschreibung des Audioeffekt-Schalters (aktiviert)"
   },
   "description.generateAudioUnsupported": {
-    "message": "Das aktuelle Modell unterstützt keine synchronisierten Audioeffekte, nur kling-v3 / kling-v3-omni / kling-v2-6 (Pro-Modus) verfügbar.",
+    "message": "Das aktuelle Modell unterstützt keine synchronisierten Audioeffekte, nur kling-v3 / kling-v3-omni / kling-v2-6 (pro-Modus) verfügbar.",
     "description": "Beschreibung des Audioeffekt-Schalters (deaktiviert)"
   },
   "description.cameraControl": {
@@ -520,12 +512,12 @@
     "description": "Platzhalter für die Eingabe des Füllniveaus"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Eingabeaufforderung für den gewünschten Video-Stil ein, z.B.: moving",
-    "description": "Platzhaltertext im Eingabefeld für die Eingabeaufforderung"
+    "message": "Geben Sie den Eingabetext für den gewünschten Videostil ein, z.B.: moving",
+    "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.negativePrompt": {
-    "message": "Geben Sie den negativen Textprompt für den gewünschten Video-Stil ein, maximal 200 Zeichen",
-    "description": "Platzhaltertext im Eingabefeld für den negativen Prompt"
+    "message": "Geben Sie den negativen Eingabetext für den gewünschten Videostil ein, maximal 200 Zeichen",
+    "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
@@ -545,7 +537,7 @@
   },
   "placeholder.markerShape": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe der Markerform"
+    "description": "Platzhalter für die Eingabe der Markierungsform"
   },
   "placeholder.rotate": {
     "message": "Bitte auswählen...",
@@ -553,51 +545,51 @@
   },
   "placeholder.subMarker": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe des Untermarkierers"
+    "description": "Platzhalter für die Eingabe des Untermarkierungs"
   },
   "button.precise": {
     "message": "Präzise",
-    "description": "Text in der Schaltfläche zum Generieren von Kling-Videos"
+    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
   },
   "button.creative": {
     "message": "Kreativ",
-    "description": "Text in der Schaltfläche zum Generieren von Kling-Videos"
+    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text in der Schaltfläche zum Generieren von Kling-Videos"
+    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
   },
   "button.extend": {
-    "message": "Video verlängern",
-    "description": "Text in der Schaltfläche zum Verlängern des Videos"
+    "message": "Video erweitern",
+    "description": "Text des Buttons zum Erweitern des Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Text in der Schaltfläche zum Herunterladen des Videos"
+    "description": "Text des Download-Buttons für Videos"
   },
   "button.uploadImageUrl": {
     "message": "Hochladen",
-    "description": "Text in der Schaltfläche zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
+    "description": "Text des Upload-Buttons für Bilder (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
-    "description": "Text in der Schaltfläche zum Hochladen von Videos"
+    "description": "Text des Upload-Buttons für Videos"
   },
   "button.uploadReferences": {
     "message": "Hochladen",
-    "description": "Text in der Schaltfläche, die es dem Benutzer ermöglicht, Referenzen hochzuladen"
+    "description": "Text des Buttons, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
   },
   "message.uploadReferencesExceed": {
-    "message": "Maximal 1 Bild hochladbar",
+    "message": "Maximal 1 Bild hochladen",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
     "message": "Bild erfolgreich hochgeladen",
-    "description": "Erfolgsnachricht, wenn das Bild erfolgreich hochgeladen wurde"
+    "description": "Erfolgsmeldung, wenn ein Bild erfolgreich hochgeladen wurde"
   },
   "message.uploadReferencesError": {
-    "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung, wenn das Hochladen des Bildes fehlschlägt"
+    "message": "Bild-Upload fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn der Bild-Upload fehlschlägt"
   },
   "message.endImageRequiresStart": {
     "message": "Bitte laden Sie zuerst das Startbild hoch, bevor Sie das Endbild verwenden",
@@ -613,7 +605,7 @@
   },
   "message.featureNotSupportedBody": {
     "message": "Die aktuelle Auswahl unterstützt die folgenden aktivierten Einstellungen nicht: {fields}. Das Fortfahren wird diese Einstellungen löschen.",
-    "description": "Hinweistext, wenn nach dem Wechseln von Modell/Modus/Dauer die gesammelten Einstellungen verloren gehen, {fields} wird durch Platzhalter ersetzt"
+    "description": "Hinweistext, wenn nach dem Wechsel von Modell/Modus/Dauer die gesammelten Einstellungen verloren gehen, {fields} wird durch die tatsächlichen Feldnamen ersetzt"
   },
   "message.featureRemovedNotice": {
     "message": "Nicht unterstützte Einstellungen gelöscht: {fields}",
@@ -629,18 +621,18 @@
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht, wenn die Zeichnungsaufgabe gestartet wird"
+    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
   },
   "message.startTaskSuccess": {
-    "message": "Aufgabe erfolgreich gestartet",
-    "description": "Erfolgsnachricht, wenn die Aufgabe erfolgreich gestartet wurde"
+    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "description": "Erfolgsmeldung, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
-    "message": "Aufgabe konnte nicht gestartet werden, bitte kontaktieren Sie den Administrator",
-    "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "description": "Fehlermeldung, wenn der Start der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
     "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
@@ -652,7 +644,7 @@
     "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.extendVideo": {
-    "message": "Dieses Video weiter generieren",
+    "message": "Fortfahren mit der Generierung dieses Videos",
     "description": "Nachricht, wenn das Bild generiert wird"
   },
   "message.generateFailed": {
@@ -696,11 +688,11 @@
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Nachricht, wenn keine Aktionen verfügbar sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

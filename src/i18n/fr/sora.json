@@ -16,15 +16,19 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de suivi",
-    "description": "ID de suivi de la tâche"
+    "message": "ID de traçage",
+    "description": "ID de traçage de la tâche"
+  },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (en secondes)"
   },
   "name.createdAt": {
     "message": "Date de création",
     "description": "Date et heure de génération de la vidéo Sora"
   },
   "name.startEndImage": {
-    "message": "Images de début/fin",
+    "message": "Images de référence de début/fin",
     "description": "Étiquette du champ de formulaire : images de référence de début/fin (en anglais, suggéré de traduire par 'Start/End Frames', garder court pour éviter de masquer le bouton)"
   },
   "name.action": {
@@ -64,7 +68,7 @@
     "description": "Nom du paramètre de qualité vidéo"
   },
   "description.imageUrl": {
-    "message": "Dans les tâches de création vidéo avec plusieurs images, plusieurs images doivent être téléchargées.",
+    "message": "Dans les tâches de création vidéo avec plusieurs images, il faut télécharger plusieurs images.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
@@ -112,11 +116,11 @@
     "description": "Texte du bouton pour générer la vidéo Sora"
   },
   "button.action1": {
-    "message": "Vidéo à partir de texte",
+    "message": "Vidéo générée par texte",
     "description": "Texte du bouton pour générer la vidéo Sora"
   },
   "button.action2": {
-    "message": "Vidéo à partir d'images",
+    "message": "Vidéo générée par image",
     "description": "Texte du bouton pour générer la vidéo Sora"
   },
   "button.download": {
@@ -128,8 +132,8 @@
     "description": "Texte du bouton pour télécharger une image (en anglais, simplifier à 'Upload', ne pas utiliser 'Upload Image')"
   },
   "button.uploadVideoUrl": {
-    "message": "Télécharger la vidéo",
-    "description": "Texte du bouton pour télécharger la vidéo"
+    "message": "Télécharger",
+    "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
     "message": "Télécharger",
@@ -141,11 +145,11 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Images téléchargées avec succès",
-    "description": "Message de succès lorsque les images sont téléchargées avec succès"
+    "description": "Message de succès lors du téléchargement réussi d'images"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
-    "description": "Message d'erreur lorsque le téléchargement des images échoue"
+    "description": "Message d'erreur lors de l'échec du téléchargement d'images"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -153,27 +157,27 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lorsque la tâche est lancée avec succès"
+    "description": "Message de succès lors du démarrage réussi de la tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
-    "description": "Message d'erreur lorsque le lancement de la tâche de dessin échoue"
+    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
   },
   "message.usedUp": {
-    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer",
-    "description": "Message lorsque le crédit est épuisé"
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
+    "description": "Message lorsque les crédits sont épuisés"
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message lorsque l'image est en cours de génération"
+    "description": "Message lors de la génération de l'image"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message lorsque l'image est en cours de génération"
+    "description": "Message lors de la génération de l'image"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de la vidéo",
-    "description": "Message lorsque la génération de l'image échoue"
+    "description": "Message affiché lorsque la génération de l'image échoue"
   },
   "message.uploadVideoExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
@@ -216,7 +220,7 @@
     "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer sur 'Générer une vidéo' à gauche",
+    "message": "Aucune tâche historique, veuillez cliquer sur le bouton à gauche pour générer une vidéo",
     "description": "Message lorsque aucune tâche n'est disponible"
   }
 }

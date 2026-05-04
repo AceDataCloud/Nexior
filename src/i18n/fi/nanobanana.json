@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Tehtävätyyppi",
-    "description": "Nano Banana kuvan käsittelytyyppi"
+    "description": "Nano Banana -kuvaoperaation tyyppi"
   },
   "name.generate": {
     "message": "Luo kuva",
@@ -16,8 +16,8 @@
     "description": "Toimintatyyppi: Muokkaa kuvaa"
   },
   "name.imageUrls": {
-    "message": "Viittauskuvat",
-    "description": "Viittauskuvat muokkaukseen"
+    "message": "Viitekuvat",
+    "description": "Muokkaukseen käytettävät viitekuvat"
   },
   "name.failure": {
     "message": "Epätosi",
@@ -35,13 +35,17 @@
     "message": "Seuranta ID",
     "description": "Seuranta ID"
   },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekunteina)"
+  },
   "name.prompt": {
-    "message": "Kuvan ohjeet",
-    "description": "Luomisen/muokkauksen ohjeet"
+    "message": "Kuvaprompt",
+    "description": "Luonnin/muokkauksen promptit"
   },
   "name.nanobananaBot": {
     "message": "Nano Banana Bot",
-    "description": "Nano Banana kuvan generaattorin nimi"
+    "description": "Nano Banana -kuvageneraattorin nimi"
   },
   "name.aspectRatio": {
     "message": "Kuvasuhde",
@@ -52,28 +56,28 @@
     "description": "Luotavan kuvan resoluutio"
   },
   "description.resolutionProOnly": {
-    "message": "Vain nano-banana-pro tukee resoluution asetuksia.",
-    "description": "Resoluutio vaihtoehdot ovat vain pro-mallille voimassa"
+    "message": "Vain nano-banana-pro tukee resoluutiomäärityksiä.",
+    "description": "Resoluutioasetukset vaikuttavat vain pro-malliin"
   },
   "description.prompt": {
-    "message": "Luomisen tai muokkauksen ohjeet",
-    "description": "Ohjeiden kuvaus"
+    "message": "Luodun tai muokatun kuvan promptit",
+    "description": "Promptin kuvaus"
   },
   "description.action": {
-    "message": "Kuvan luomisen toiminto. Jos `generate`, kuva luodaan ohjeiden mukaan; jos `edit`, kuvaa muokataan ohjeiden ja ladatun kuvan perusteella.",
-    "description": "action parametrin selitys"
+    "message": "Kuvan luontitoiminto. Jos `generate`, kuva luodaan promptin mukaan; jos `edit`, kuvaa muokataan promptin ja ladatun kuvan perusteella.",
+    "description": "action-parametrin selitys"
   },
   "description.model": {
-    "message": "Kuvan luomiseen käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image:n alias, nano-banana on gemini-2.5-flash-image:n alias.",
-    "description": "model parametrin selitys"
+    "message": "Kuvan luontiin käytettävä malli. Oletus on nano-banana. nano-banana-pro on gemini-3-pro-image -nimen alias, nano-banana on gemini-2.5-flash-image -nimen alias.",
+    "description": "model-parametrin selitys"
   },
   "description.imageUrls": {
     "message": "Muokkaustehtävässä on ladattava 1-5 kuvaa.",
-    "description": "image_urls parametrin selitys"
+    "description": "image_urls-parametrin selitys"
   },
   "description.aspectRatio": {
-    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, se perustuu `image_urls` ensimmäisen kuvan suhteeseen.",
-    "description": "aspect_ratio parametrin selitys"
+    "message": "Luotavan kuvan kuvasuhde. Tuetut arvot ovat `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Oletusarvo on `1:1`. Vain kun `action` on `generate`, se on voimassa; jos `action` on `edit`, se perustuu `image_urls` -listan ensimmäisen kuvan suhteeseen.",
+    "description": "aspect_ratio-parametrin selitys"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -84,16 +88,16 @@
     "description": "Valintapaikka"
   },
   "placeholder.prompt": {
-    "message": "Syötä ohjeet, esim: valkoinen siamilainen kissa",
-    "description": "Ohjeiden paikka"
+    "message": "Syötä prompt, esim: valkoinen siamilainen kissa",
+    "description": "Promptin paikka"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Luo-painike"
+    "description": "Luontipainike"
   },
   "button.uploadImageUrls": {
-    "message": "Lataa kuvat",
-    "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
+    "message": "Lataa",
+    "description": "Viitekuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Aloitetaan tehtävää...",
@@ -104,16 +108,16 @@
     "description": "Tehtävä luotiin onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä ylläpitäjään:",
+    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä ylläpitoon:",
     "description": "Tehtävän luominen epäonnistui"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "message": "Oikeutesi on käytetty loppuun, osta lisää oikeuksia jatkaaksesi",
     "description": "Loppunut ilmoitus"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
-    "description": "Kuvien määrä ylittää rajan"
+    "description": "Kuvamäärä ylittää rajan"
   },
   "message.uploadImageError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
@@ -121,18 +125,18 @@
   },
   "name.model": {
     "message": "Malli",
-    "description": "Nano Banana mallin valintatunnus"
+    "description": "Nano Banana -mallin valintatunnus"
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "Nano Banana perusmallin vaihtoehto"
+    "description": "Nano Banana -perusmallin vaihtoehto"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "Nano Banana ammattilaismallin vaihtoehto"
+    "description": "Nano Banana -ammattilaismallin vaihtoehto"
   },
   "model.nanoBanana2": {
     "message": "nano-banana-2",
-    "description": "Nano Banana 2 mallin vaihtoehto"
+    "description": "Nano Banana 2 -mallin vaihtoehto"
   }
 }

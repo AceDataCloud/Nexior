@@ -23,6 +23,10 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.createdAt": {
     "message": "作成日時",
     "description": "Hailuo ビデオ生成の日付と時間"
@@ -60,11 +64,11 @@
     "description": "Hailuo ビデオ生成器の名称"
   },
   "description.ingredients": {
-    "message": "複数の画像をアップロードして独自のビデオを生成したい場合は、このボタンをオンにしてください。",
+    "message": "複数の画像をアップロードして自分のビデオを生成したい場合は、このボタンをオンにしてください。",
     "description": "パラメータ 'ingredients' の説明"
   },
   "description.startImageUrl": {
-    "message": "初フレーム画像で、生成ビデオの最初のフレームになります。",
+    "message": "初フレーム画像、生成ビデオの最初のフレームになります。",
     "description": "パラメータ 'startImageUrl' の説明"
   },
   "description.prompt": {
@@ -92,7 +96,7 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成するビデオスタイルのプロンプトを入力してください。例：怒り",
+    "message": "生成するビデオスタイルのプロンプトを入力してください。例：火気",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.position": {
@@ -120,15 +124,15 @@
     "description": "サブマーカー入力のプレースホルダー"
   },
   "button.model1": {
-    "message": "文からビデオ生成",
+    "message": "文からビデオ",
     "description": "Hailuo ビデオ生成のボタンテキスト"
   },
   "button.model2": {
-    "message": "画像からビデオ生成",
+    "message": "画像からビデオ",
     "description": "Hailuo ビデオ生成のボタンテキスト"
   },
   "button.model3": {
-    "message": "画像からビデオ生成（ディレクターモード）",
+    "message": "画像からビデオ（ディレクターモード）",
     "description": "Hailuo ビデオ生成のボタンテキスト、ディレクターモード"
   },
   "button.generate": {
@@ -180,8 +184,8 @@
     "description": "画像が生成中のときのメッセージ"
   },
   "message.downloadVideo": {
-    "message": "このビデオをダウンロード",
-    "description": "画像が生成中のときのメッセージ"
+    "message": "この動画をダウンロード",
+    "description": "画像が生成されているときのメッセージ"
   },
   "message.extendVideo": {
     "message": "この動画の生成を続ける",

@@ -12,12 +12,12 @@
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير الصورة",
-    "description": "نوع العملية: تحرير الصورة"
+    "message": "تحرير صورة",
+    "description": "نوع العملية: تحرير صورة"
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
-    "description": "صور مرجعية للاستخدام في التحرير"
+    "description": "صور مرجعية للتحرير"
   },
   "name.failure": {
     "message": "فشل",
@@ -35,6 +35,10 @@
     "message": "معرف التتبع",
     "description": "معرف التتبع"
   },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
+  },
   "name.prompt": {
     "message": "نص الصورة",
     "description": "نص التوليد/التحرير"
@@ -49,14 +53,14 @@
   },
   "name.watermark": {
     "message": "علامة مائية",
-    "description": "هل تريد إضافة علامة مائية"
+    "description": "هل تضيف علامة مائية"
   },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
     "description": "وصف نص التوليد"
   },
   "description.model": {
-    "message": "النموذج المستخدم لتوليد أو تحرير الصورة.",
+    "message": "النموذج المستخدم لإنشاء أو تحرير الصور.",
     "description": "وصف معلمة النموذج"
   },
   "description.size": {
@@ -64,15 +68,15 @@
     "description": "وصف معلمة الحجم"
   },
   "description.watermark": {
-    "message": "هل تريد إضافة علامة مائية للصور الناتجة. مفعل بشكل افتراضي.",
+    "message": "هل تضيف علامة مائية للصور الناتجة. مفعل بشكل افتراضي.",
     "description": "وصف معلمة العلامة المائية"
   },
   "description.imageUrls": {
-    "message": "قم بتحميل من 1 إلى 14 صورة مرجعية لتمكين تحرير الصورة.",
+    "message": "قم بتحميل من 1 إلى 14 صورة مرجعية لتمكين تحرير الصور.",
     "description": "وصف معلمة الصور"
   },
   "status.pending": {
-    "message": "قيد الانتظار",
+    "message": "في الانتظار",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.select": {
@@ -89,7 +93,7 @@
   },
   "button.uploadImageUrls": {
     "message": "تحميل",
-    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل' بدلاً من 'تحميل الصور')"
+    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصور')"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -100,7 +104,7 @@
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
@@ -109,7 +113,7 @@
   },
   "message.uploadImageExceed": {
     "message": "يمكنك تحميل ما يصل إلى 14 صورة",
-    "description": "تجاوز عدد الصور الحد المسموح به"
+    "description": "عدد الصور يتجاوز الحد"
   },
   "message.uploadImageError": {
     "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",

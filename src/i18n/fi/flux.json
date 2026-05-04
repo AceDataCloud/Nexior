@@ -25,7 +25,7 @@
   },
   "name.failure": {
     "message": "Epätosi",
-    "description": "Tehtävän epäonnistumisen tila"
+    "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -38,6 +38,10 @@
   "name.traceId": {
     "message": "Seuranta ID",
     "description": "Tehtävän seuranta ID"
+  },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekuntia)"
   },
   "name.createdAt": {
     "message": "Luontiaika",
@@ -136,7 +140,7 @@
     "description": "Flux-kuvien luomisen painikkeen teksti"
   },
   "button.uploadImageUrl": {
-    "message": "Lataa kuva",
+    "message": "Lataa",
     "description": "Kuvan lataamisen painikkeen teksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
   },
   "button.extend": {
@@ -160,23 +164,23 @@
     "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuvan lataaminen onnistui",
-    "description": "Onnistumisviesti, kun kuva on ladattu onnistuneesti"
+    "message": "Kuva ladattu onnistuneesti",
+    "description": "Onnistuneen kuvan lataamisen viesti"
   },
   "message.uploadReferencesError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Tehtävää käynnistetään...",
+    "message": "Aloitetaan tehtävä...",
     "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävän käynnistäminen onnistui",
-    "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
+    "message": "Tehtävä käynnistetty onnistuneesti",
+    "description": "Onnistuneen tehtävän käynnistämisen viesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
@@ -189,7 +193,7 @@
   },
   "message.downloadVideo": {
     "message": "Lataa tämä kuva",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "description": "Viesti, kun kuvaa luodaan"
   },
   "message.extendVideo": {
     "message": "Jatka tämän kuvan luomista",
@@ -204,8 +208,8 @@
     "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Ladattavan tiedoston koko ei voi ylittää 10MB!",
-    "description": "Virheilmoitus, kun ladattavan tiedoston koko ei voi ylittää 10MB!"
+    "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
+    "description": "Virheilmoitus, kun ladattavan tiedoston koko ei saa ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Ladattavan tiedoston on oltava MP4-muodossa!",

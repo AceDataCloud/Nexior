@@ -5,7 +5,7 @@
   },
   "name.translation": {
     "message": "Traduzione automatica",
-    "description": "Traduzione automatica per i video Veo"
+    "description": "Traduzione automatica dei video Veo"
   },
   "name.modePro": {
     "message": "Alta qualità",
@@ -27,16 +27,20 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (in secondi)"
+  },
   "name.createdAt": {
     "message": "Data di creazione",
     "description": "Data e ora di generazione del video Veo"
   },
   "name.startEndImage": {
     "message": "Immagini di riferimento inizio/fine",
-    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (consigliato tradurre in 'Start/End Frames', mantenere breve per evitare di coprire il pulsante)"
+    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (traduzione suggerita: 'Start/End Frames', mantenere breve per evitare di sovrapporre il pulsante)"
   },
   "name.action": {
-    "message": "Azione",
+    "message": "Azioni",
     "description": "Elenco delle azioni disponibili"
   },
   "name.action3": {
@@ -64,15 +68,15 @@
     "description": "Descrizione del parametro 'translation'"
   },
   "description.imageUrl": {
-    "message": "Nell'attività di creazione video con più immagini, è necessario caricare più immagini.",
+    "message": "Nella creazione di video con più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare il video Veo",
+    "message": "Parole chiave per generare video Veo",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array di link delle immagini di riferimento, la prima è l'immagine di inizio, la seconda è l'immagine di fine",
+    "message": "Array di link alle immagini di riferimento, la prima è l'immagine di inizio, la seconda è l'immagine di fine",
     "description": "Descrizione del parametro 'image_url'"
   },
   "status.pending": {
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare l'immagine (semplificare in 'Upload')"
+    "description": "Testo del pulsante per caricare l'immagine (semplificare in 'Carica')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
@@ -157,7 +161,7 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce a partire"
   },
   "message.imageRequired": {
     "message": "Carica almeno un'immagine di riferimento prima di avviare l'attività di video da immagine",
@@ -184,20 +188,20 @@
     "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file supera i 10 MB!"
+    "message": "La dimensione del file caricato non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Il numero di immagini della prima cornice supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
+    "message": "Il numero di immagini della prima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini dell'ultima cornice supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
+    "message": "Il numero di immagini dell'ultima cornice caricate supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
     "message": "Caricamento dell'immagine della prima cornice fallito",
@@ -220,7 +224,7 @@
     "description": "Messaggio quando non ci sono operazioni disponibili"
   },
   "message.noTasks": {
-    "message": "Nessun compito storico, fai clic a sinistra per generare un video",
+    "message": "Nessun compito storico, fai clic su 'Genera video' a sinistra",
     "description": "Messaggio quando non ci sono compiti"
   },
   "name.upsampleAction": {
@@ -261,7 +265,7 @@
   },
   "button.actionReshoot": {
     "message": "Cambia angolazione e rigira",
-    "description": "/veo/reshoot — Rigenerazione con un diverso movimento della telecamera"
+    "description": "/veo/reshoot — Rigenera con un diverso movimento della telecamera"
   },
   "button.actionObjectInsert": {
     "message": "Aggiungi oggetto",
@@ -272,11 +276,11 @@
     "description": "/veo/objects remove — Rimuovi oggetti dal video tramite maschera"
   },
   "button.actionUpsample1080p": {
-    "message": "Upsampling 1080P",
+    "message": "Upsampling a 1080P",
     "description": "Pulsante di operazione Anteprima — Upsampling a 1080P"
   },
   "button.actionUpsample4k": {
-    "message": "Upsampling 4K",
+    "message": "Upsampling a 4K",
     "description": "Pulsante di operazione Anteprima — Upsampling a 4K"
   },
   "button.actionUpsampleGif": {

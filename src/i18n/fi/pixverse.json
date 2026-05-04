@@ -23,6 +23,10 @@
     "message": "Seuranta ID",
     "description": "Tehtävän seuranta ID"
   },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekunteina)"
+  },
   "name.createdAt": {
     "message": "Luontiaika",
     "description": "Pixverse-videon luontipäivämäärä ja -aika"
@@ -73,7 +77,7 @@
   },
   "name.startImage": {
     "message": "Ensimmäinen kehys",
-    "description": "Lomakekenttä: ensimmäinen kehys (suositellaan lyhyttä käännöstä, jotta se ei peitä painiketta)"
+    "description": "Lomakekenttä: ensimmäinen kehys (suositellaan käännettäväksi 'First Frame', pidä lyhyenä, jotta se ei peitä painiketta)"
   },
   "name.aspectRatio": {
     "message": "Kuvasuhde",
@@ -116,7 +120,7 @@
     "description": "Pixverse-videon luontityökalun nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia oman videon luomiseksi, avaa tämä painike.",
+    "message": "Jos haluat ladata useita kuvia oman videosi luomiseksi, avaa tämä painike.",
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.imageUrl": {
@@ -132,16 +136,16 @@
     "description": "Parametrin 'negativePrompt' kuvaus"
   },
   "description.uploadStartImage": {
-    "message": "Lataa ensimmäinen kehyskuva viittauksena, viimeinen video perustuu ensimmäiseen kehykseen.",
-    "description": "Latausparametrin kuvaus"
+    "message": "Lataa ensimmäinen kehyskuva viitteenä, viimeinen video perustuu ensimmäiseen kehykseen.",
+    "description": "Lataa viiteparametrin kuvaus"
   },
   "description.uploadEndImage": {
-    "message": "Lataa viimeinen kehyskuva viittauksena, viimeinen video perustuu viimeiseen kehykseen.",
-    "description": "Latausparametrin kuvaus"
+    "message": "Lataa viimeinen kehyskuva viitteenä, viimeinen video perustuu viimeiseen kehykseen.",
+    "description": "Lataa viiteparametrin kuvaus"
   },
   "description.seed": {
     "message": "Videon siemenarvo. Jos ei aseteta, käytetään satunnaista siementä.",
-    "description": "Latausparametrin kuvaus"
+    "description": "Lataa viiteparametrin kuvaus"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -157,7 +161,7 @@
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "Valintakentän paikkateksti"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
@@ -165,11 +169,11 @@
   },
   "placeholder.prompt": {
     "message": "Syötä videon tyylin ohje, esim. quiver",
-    "description": "Ohjekentän paikkamerkki"
+    "description": "Ohje kentän paikkateksti"
   },
   "placeholder.negativePrompt": {
     "message": "Syötä videon tyylin negatiivinen ohje, enintään 200 merkkiä",
-    "description": "Ohjekentän paikkamerkki"
+    "description": "Ohje kentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
@@ -209,7 +213,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Lataa",
-    "description": "Kuvan lataamisen painikkeen teksti (yksinkertaista 'Upload' ilman 'Upload Image')"
+    "description": "Kuvan lataamisen painikkeen teksti (yksinkertaista 'Upload' muotoon 'Lataa')"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
@@ -284,16 +288,16 @@
     "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisen kuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisen kuvan lataaminen epäonnistuu"
+    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisen kuvan lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisen kuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisen kuvan lataaminen epäonnistuu"
+    "message": "Viimeisten kuvien lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",

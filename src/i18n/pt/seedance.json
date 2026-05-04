@@ -8,7 +8,7 @@
     "description": "Prompt para gerar vídeo"
   },
   "description.prompt": {
-    "message": "Descreva o vídeo que deseja gerar, podendo adicionar parâmetros SeeDance (ex: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Descreva o vídeo que deseja gerar, podendo adicionar parâmetros do SeeDance (ex: --rs 720p --rt 16:9 --dur 5).",
     "description": "Instruções para entrada de prompt"
   },
   "placeholder.prompt": {
@@ -33,7 +33,7 @@
   },
   "description.duration": {
     "message": "Duração do vídeo (segundos), entre 2 e 12 segundos.",
-    "description": "Instruções sobre a duração do vídeo"
+    "description": "Instruções para duração do vídeo"
   },
   "name.generateAudio": {
     "message": "Gerar áudio",
@@ -41,7 +41,7 @@
   },
   "description.generateAudio": {
     "message": "Ativado, o vídeo incluirá áudio. Suportado apenas pelo modelo seedance-1.5-pro, com custo cerca de 2 vezes maior.",
-    "description": "Instruções sobre geração de áudio"
+    "description": "Instruções para geração de áudio"
   },
   "name.resolution": {
     "message": "Resolução",
@@ -73,7 +73,7 @@
   },
   "description.serviceTier": {
     "message": "Nível de processamento: default ou flex.",
-    "description": "Instruções sobre nível de serviço"
+    "description": "Instruções para nível de serviço"
   },
   "serviceTier.default": {
     "message": "default",
@@ -84,28 +84,28 @@
     "description": "Nível flexível"
   },
   "name.returnLastFrame": {
-    "message": "Retornar última imagem",
-    "description": "Rótulo para alternar retorno da última imagem"
+    "message": "Retornar último quadro",
+    "description": "Rótulo para opção de retornar último quadro"
   },
   "description.returnLastFrame": {
-    "message": "Ativado, retornará a imagem da última frame.",
-    "description": "Instruções sobre retorno da última imagem"
+    "message": "Ativado, retornará uma imagem do último quadro.",
+    "description": "Instruções para retornar último quadro"
   },
   "name.firstFrame": {
-    "message": "Imagem inicial",
-    "description": "Rótulo para upload da imagem inicial"
+    "message": "Imagem do primeiro quadro",
+    "description": "Rótulo para upload da imagem do primeiro quadro"
   },
   "description.firstFrame": {
-    "message": "Opcional. Faça upload da imagem de referência/inicial.",
-    "description": "Instruções sobre a imagem inicial"
+    "message": "Opcional. Faça upload da imagem de referência/primeiro quadro.",
+    "description": "Instruções para imagem do primeiro quadro"
   },
   "name.lastFrame": {
-    "message": "Imagem final",
-    "description": "Rótulo para upload da imagem final"
+    "message": "Imagem do último quadro",
+    "description": "Rótulo para upload da imagem do último quadro"
   },
   "description.lastFrame": {
-    "message": "Opcional. Faça upload da imagem final (necessita da imagem inicial).",
-    "description": "Instruções sobre a imagem final"
+    "message": "Opcional. Faça upload da imagem do último quadro (necessita do primeiro quadro).",
+    "description": "Instruções para imagem do último quadro"
   },
   "button.generate": {
     "message": "Gerar",
@@ -121,11 +121,11 @@
   },
   "button.on": {
     "message": "Ligado",
-    "description": "Texto para alternar ligado"
+    "description": "Texto para ativar o botão"
   },
   "button.off": {
     "message": "Desligado",
-    "description": "Texto para alternar desligado"
+    "description": "Texto para desativar o botão"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa SeeDance…",
@@ -165,11 +165,15 @@
   },
   "name.taskId": {
     "message": "ID da tarefa",
-    "description": "Rótulo do ID da tarefa"
+    "description": "Rótulo para ID da tarefa"
   },
   "name.traceId": {
     "message": "ID de rastreamento",
-    "description": "Rótulo do ID de rastreamento"
+    "description": "Rótulo para ID de rastreamento"
+  },
+  "name.elapsed": {
+    "message": "Tempo decorrido",
+    "description": "Tempo decorrido da tarefa (segundos)"
   },
   "name.failure": {
     "message": "Falha",
@@ -177,7 +181,7 @@
   },
   "name.failureReason": {
     "message": "Razão da falha",
-    "description": "Rótulo da razão da falha"
+    "description": "Rótulo para razão da falha"
   },
   "name.status": {
     "message": "Status",

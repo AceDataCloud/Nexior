@@ -13,19 +13,23 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Stan zadania"
+    "description": "Status zadania"
   },
   "name.traceId": {
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
+  },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
   },
   "name.createdAt": {
     "message": "Data utworzenia",
     "description": "Data i czas utworzenia wideo Sora"
   },
   "name.startEndImage": {
-    "message": "Obrazy klatki startowej/końcowej",
-    "description": "Etykieta pola formularza: Obrazy klatki startowej/końcowej (zachować krótko, aby nie zasłaniać przycisku)"
+    "message": "Obrazy kluczowe",
+    "description": "Etykieta pola formularza: obrazy kluczowe (sugerowane tłumaczenie: 'Start/End Frames', zachowaj krótkość, aby nie zasłaniać przycisku)"
   },
   "name.action": {
     "message": "Akcja",
@@ -49,11 +53,11 @@
   },
   "option.portrait": {
     "message": "Pionowo",
-    "description": "Tekst opcji: orientacja pionowa (zachować krótko)"
+    "description": "Tekst opcji: orientacja pionowa (sugerowane tłumaczenie: 'Portrait', zachowaj krótkość)"
   },
   "option.landscape": {
     "message": "Poziomo",
-    "description": "Tekst opcji: orientacja pozioma (zachować krótko)"
+    "description": "Tekst opcji: orientacja pozioma (sugerowane tłumaczenie: 'Landscape', zachowaj krótkość)"
   },
   "name.duration": {
     "message": "Czas trwania wideo",
@@ -64,15 +68,15 @@
     "description": "Nazwa parametru rozdzielczości wideo"
   },
   "description.imageUrl": {
-    "message": "W przypadku zadań tworzenia wideo z wieloma obrazami, należy przesłać wiele obrazów.",
+    "message": "W zadaniu tworzenia wideo z wieloma obrazami należy przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Podpowiedzi do generowania wideo Sora",
+    "message": "Podpowiedź do generowania wideo Sora",
     "description": "Opis parametru 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Tablica linków do obrazów referencyjnych, pierwszy to obraz klatki startowej, następnie obraz klatki końcowej",
+    "message": "Tablica linków do obrazów referencyjnych, pierwszy to obraz kluczowy, następnie obraz końcowy",
     "description": "Opis parametru 'image_url'"
   },
   "status.pending": {
@@ -96,7 +100,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np.: moving",
+    "message": "Wprowadź podpowiedź stylu wideo, np.: moving",
     "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.position": {
@@ -105,7 +109,7 @@
   },
   "tip.proOnly": {
     "message": "Tylko model sora-2-pro obsługuje modyfikację tego parametru",
-    "description": "Informacja dla użytkownika, że tylko profesjonalny model obsługuje modyfikację tego parametru"
+    "description": "Podpowiedź dla użytkownika, że tylko profesjonalny model obsługuje modyfikację tego parametru"
   },
   "button.generate": {
     "message": "Generuj",
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania obrazu (zachować jako 'Prześlij')"
+    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
   },
   "button.uploadVideoUrl": {
     "message": "Prześlij wideo",
@@ -152,8 +156,8 @@
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania uruchomione pomyślnie",
-    "description": "Komunikat o sukcesie po uruchomieniu zadania"
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "description": "Komunikat o sukcesie po pomyślnym uruchomieniu zadania"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
@@ -173,7 +177,7 @@
   },
   "message.generateFailed": {
     "message": "Nie udało się wygenerować wideo",
-    "description": "Komunikat, gdy generowanie obrazu się nie powiodło"
+    "description": "Wiadomość wyświetlana, gdy generowanie obrazu się nie powiodło"
   },
   "message.uploadVideoExceed": {
     "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",

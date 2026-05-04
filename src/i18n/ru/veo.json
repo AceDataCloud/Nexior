@@ -13,7 +13,7 @@
   },
   "name.failure": {
     "message": "Ошибка",
-    "description": "Статус ошибки задачи"
+    "description": "Состояние ошибки задачи"
   },
   "name.failureReason": {
     "message": "Причина ошибки",
@@ -27,12 +27,16 @@
     "message": "ID отслеживания",
     "description": "ID отслеживания задачи"
   },
+  "name.elapsed": {
+    "message": "Время выполнения",
+    "description": "Время выполнения задачи (в секундах)"
+  },
   "name.createdAt": {
     "message": "Дата создания",
     "description": "Дата и время создания видео Veo"
   },
   "name.startEndImage": {
-    "message": "Ссылки на начальные/конечные кадры",
+    "message": "Ссылки на начальные и конечные кадры",
     "description": "Метка поля формы: ссылки на начальные/конечные кадры (рекомендуется переводить как 'Start/End Frames', чтобы избежать затруднений с кнопками)"
   },
   "name.action": {
@@ -41,7 +45,7 @@
   },
   "name.action3": {
     "message": "Получить видео в 1080p",
-    "description": "Ссылки на изображения для генерации видео"
+    "description": "Ссылки на изображения для генерируемого видео"
   },
   "name.prompt": {
     "message": "Подсказка для видео",
@@ -77,19 +81,19 @@
   },
   "status.pending": {
     "message": "Ожидание",
-    "description": "Статус ожидания задачи"
+    "description": "Состояние ожидания задачи"
   },
   "status.processing": {
     "message": "Обработка",
-    "description": "Статус обработки задачи"
+    "description": "Состояние обработки задачи"
   },
   "placeholder.paddingNoise": {
     "message": "Пожалуйста, выберите...",
-    "description": "Заполнитель для ввода шума заполнения"
+    "description": "Заполнитель для ввода шумоподавления"
   },
   "placeholder.select": {
     "message": "Выбрать",
-    "description": "Заполнитель в поле выбора"
+    "description": "Заполнитель для поля выбора"
   },
   "placeholder.paddingLevel": {
     "message": "Пожалуйста, выберите...",
@@ -97,7 +101,7 @@
   },
   "placeholder.prompt": {
     "message": "Введите подсказку для стиля видео, например: moving",
-    "description": "Заполнитель в поле подсказки"
+    "description": "Заполнитель для поля подсказки"
   },
   "placeholder.position": {
     "message": "Пожалуйста, выберите...",
@@ -108,11 +112,11 @@
     "description": "Текст кнопки для генерации видео Veo"
   },
   "button.action1": {
-    "message": "Генерация видео",
+    "message": "Создать видео",
     "description": "Текст кнопки для генерации видео Veo"
   },
   "button.action2": {
-    "message": "Генерация видео из изображений",
+    "message": "Создать видео из изображений",
     "description": "Текст кнопки для генерации видео Veo"
   },
   "button.action3": {
@@ -160,7 +164,7 @@
     "description": "Сообщение об ошибке при запуске задачи рисования"
   },
   "message.imageRequired": {
-    "message": "Сначала загрузите хотя бы одно изображение, прежде чем запускать задачу генерации видео из изображений",
+    "message": "Сначала загрузите хотя бы одно изображение, прежде чем запускать задачу создания видео из изображений",
     "description": "Подсказка, когда изображения не загружены в режиме image2video"
   },
   "message.usedUp": {
@@ -177,7 +181,7 @@
   },
   "message.generateFailed": {
     "message": "Не удалось сгенерировать видео",
-    "description": "Сообщение об ошибке при генерации изображения"
+    "description": "Сообщение при неудачной генерации изображения"
   },
   "message.uploadVideoExceed": {
     "message": "Количество загружаемых изображений первой рамки превышает лимит",
@@ -228,7 +232,7 @@
     "description": "Целевой формат для /veo/upsample (1080p/4k/gif)"
   },
   "name.motionType": {
-    "message": "Тип движения камеры",
+    "message": "Движение камеры",
     "description": "Тип движения камеры для /veo/reshoot"
   },
   "name.imageMask": {
@@ -248,7 +252,7 @@
     "description": "Заполнитель для поля ввода video_id"
   },
   "button.actionIngredients": {
-    "message": "Смешать изображения в видео",
+    "message": "Смешать видео из нескольких изображений",
     "description": "ingredients2video — объединение 1-3 изображений для создания новой сцены"
   },
   "button.actionUpsample": {

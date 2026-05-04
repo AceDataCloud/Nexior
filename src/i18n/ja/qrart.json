@@ -23,6 +23,10 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.size": {
     "message": "サイズ",
     "description": "生成する QR コードのサイズ"
@@ -68,7 +72,7 @@
     "description": "生成する QR コードの回転"
   },
   "name.advanced": {
-    "message": "詳細",
+    "message": "詳細設定",
     "description": "生成する QR コードの詳細設定"
   },
   "name.aspectRatio": {
@@ -100,8 +104,8 @@
     "description": "QR コードジェネレーターの名称"
   },
   "name.contentImageUrl": {
-    "message": "コンテンツ画像リンク",
-    "description": "生成する QR コードのコンテンツ画像 URL"
+    "message": "内容画像リンク",
+    "description": "生成する QR コードの内容画像 URL"
   },
   "inputWay.input": {
     "message": "入力",
@@ -133,7 +137,7 @@
   },
   "placeholder.prompt": {
     "message": "生成する QR コードスタイルのプロンプトを入力してください、例：flowers",
-    "description": "プロンプトフィールドのプレースホルダーテキスト"
+    "description": "プロンプトフィールドのプレースホルダー"
   },
   "placeholder.seed": {
     "message": "シード範囲は 1 から 9007199254740991 です",
@@ -145,7 +149,7 @@
   },
   "placeholder.content": {
     "message": "生成する QR コードの内容を入力してください、例：https://www.google.com",
-    "description": "内容フィールドのプレースホルダーテキスト"
+    "description": "内容フィールドのプレースホルダー"
   },
   "placeholder.aspectRatio": {
     "message": "選択してください...",
@@ -173,7 +177,7 @@
   },
   "button.uploadQr": {
     "message": "QR コードをアップロード",
-    "description": "QR コードをアップロードするボタンテキスト"
+    "description": "QR コードアップロードのボタンテキスト"
   },
   "preset.sunset": {
     "message": "サンセット",
@@ -205,7 +209,7 @@
   },
   "preset.intricateStudio": {
     "message": "複雑なスタジオ",
-    "description": "生成するQRコードのプリセットスタイル"
+    "description": "生成する QR コードのプリセットスタイル"
   },
   "preset.symmetricMasterpiece": {
     "message": "対称的な傑作",
@@ -228,7 +232,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.goldenVista": {
-    "message": "黄金の景観",
+    "message": "黄金の景色",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.cinematicExpanse": {
@@ -248,7 +252,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.enigmaticJourney": {
-    "message": "謎めいた旅",
+    "message": "神秘的な旅",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.timelessCinematic": {
@@ -273,7 +277,7 @@
   },
   "message.uploadQr": {
     "message": "QRコード画像をアップロードして、QRコードの内容に一致するアートQRコードを生成します",
-    "description": "QRコードのアップロードに関する説明"
+    "description": "QRコードをアップロードする説明"
   },
   "message.promptPlaceholder": {
     "message": "生成する画像の説明文を入力してください。例：かわいい猫。追加のパラメータはデフォルトのプリセットパラメータを上書きします",
@@ -281,7 +285,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "最大5枚の画像をアップロードできます",
-    "description": "アップロードした画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードされた画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
@@ -304,7 +308,7 @@
     "description": "描画タスクの開始に失敗したときのエラーメッセージ"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。続行するには追加のポイントを購入してください",
+    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
     "description": "使い切ったときのメッセージ"
   },
   "message.generating": {
@@ -385,18 +389,18 @@
   },
   "position.bottomLeft": {
     "message": "左下",
-    "description": "QRコードを生成する位置"
+    "description": "QRコード生成に使用する位置"
   },
   "position.bottomRight": {
     "message": "右下",
     "description": "QRコードを生成する位置"
   },
   "position.top": {
-    "message": "上",
+    "message": "上部",
     "description": "QRコードを生成する位置"
   },
   "position.bottom": {
-    "message": "下",
+    "message": "下部",
     "description": "QRコードを生成する位置"
   },
   "position.left": {
@@ -452,8 +456,8 @@
     "description": "QRコードの内容タイプ"
   },
   "name.rawurl": {
-    "message": "原始リンク",
-    "description": "原始リンクをQRコードの内容として直接使用するかどうかのスイッチ"
+    "message": "生リンク",
+    "description": "生リンクをQRコードの内容として直接使用するかどうかのスイッチ"
   },
   "placeholder.ecl": {
     "message": "選択してください...",

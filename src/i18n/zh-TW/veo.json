@@ -27,6 +27,10 @@
     "message": "追蹤 ID",
     "description": "任務的追蹤 ID"
   },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "任務的耗時（秒）"
+  },
   "name.createdAt": {
     "message": "創建時間",
     "description": "生成 Veo 視頻的日期和時間"
@@ -176,111 +180,111 @@
     "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
-    "message": "生成視頻失敗",
+    "message": "生成影片失敗",
     "description": "圖像生成失敗時的消息"
   },
   "message.uploadVideoExceed": {
-    "message": "上传的首帧图片数量超出限制",
+    "message": "上传首帧图片数量超出限制",
     "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳文件大小不能超過 10MB!",
-    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
+    "message": "上传文件大小不得超过 10MB!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳文件必須是 MP4 格式!",
-    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
+    "message": "上传文件必须为 MP4 格式!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "上傳首幀圖片數量超過限制",
-    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
+    "message": "上传首帧图片数量超出限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
-    "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
+    "message": "上传尾帧图片数量超出限制",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
-    "message": "上傳首幀圖片失敗",
-    "description": "上傳首幀圖片失敗時的錯誤信息"
+    "message": "上传首帧图片失败",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadVideoError": {
-    "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "message": "上传视频失败",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadEndImageError": {
-    "message": "上傳尾幀圖片失敗",
-    "description": "上傳尾幀圖片失敗時的錯誤信息"
+    "message": "上传尾帧图片失败",
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.uploadDocumentsError": {
-    "message": "上傳文檔失敗",
-    "description": "上傳文檔失敗時的錯誤信息"
+    "message": "上传文档失败",
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
-    "message": "沒有可用操作",
-    "description": "沒有可用操作時的消息"
+    "message": "没有可用操作",
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "沒有歷史任務，請點擊左方生成視頻",
-    "description": "沒有任務時的消息"
+    "message": "没有历史任务，请点击左侧生成视频",
+    "description": "没有任务时的消息"
   },
   "name.upsampleAction": {
-    "message": "升採樣目標",
-    "description": "/veo/upsample 的目標格式（1080p/4k/gif）"
+    "message": "升采样目标",
+    "description": "/veo/upsample 的目标格式（1080p/4k/gif）"
   },
   "name.motionType": {
-    "message": "鏡頭運動",
-    "description": "/veo/reshoot 的鏡頭運動類型"
+    "message": "镜头运动",
+    "description": "/veo/reshoot 的镜头运动类型"
   },
   "name.imageMask": {
-    "message": "區域蒙版",
-    "description": "/veo/objects 的圖片蒙版（白色像素=操作區域）"
+    "message": "区域蒙版",
+    "description": "/veo/objects 的图片蒙版（白色像素=操作区域）"
   },
   "name.videoId": {
-    "message": "視頻 ID",
-    "description": "來源視頻的 ID（來自之前一次生成任務的 data[].id）"
+    "message": "视频 ID",
+    "description": "来源视频的 ID（来自之前一次生成任务的 data[].id）"
   },
   "placeholder.imageMask": {
-    "message": "蒙版圖片 URL 或 base64 編碼的 JPEG",
-    "description": "image_mask 輸入框佔位符"
+    "message": "蒙版图片 URL 或 base64 编码的 JPEG",
+    "description": "image_mask 输入框占位符"
   },
   "placeholder.videoId": {
-    "message": "粘貼視頻 ID，或在右側任務列表點擊操作按鈕自動填入",
-    "description": "video_id 輸入框佔位符"
+    "message": "粘贴视频 ID，或在右侧任务列表点击操作按钮自动填入",
+    "description": "video_id 输入框占位符"
   },
   "button.actionIngredients": {
-    "message": "多圖融合視頻",
-    "description": "ingredients2video — 1-3 張圖融合生成新場景"
+    "message": "多图融合视频",
+    "description": "ingredients2video — 1-3 张图融合生成新场景"
   },
   "button.actionUpsample": {
-    "message": "升採樣 / GIF 預覽",
-    "description": "/veo/upsample — 升 1080p/4K 或導出 GIF"
+    "message": "升采样 / GIF 预览",
+    "description": "/veo/upsample — 升 1080p/4K 或导出 GIF"
   },
   "button.actionExtend": {
-    "message": "續寫視頻",
-    "description": "/veo/extend — 延長已生成視頻時長"
+    "message": "续写视频",
+    "description": "/veo/extend — 延长已生成视频时长"
   },
   "button.actionReshoot": {
-    "message": "換鏡頭重拍",
-    "description": "/veo/reshoot — 同內容換鏡頭運動重新生成"
+    "message": "换镜头重拍",
+    "description": "/veo/reshoot — 同内容换镜头运动重新生成"
   },
   "button.actionObjectInsert": {
-    "message": "添加物體",
-    "description": "/veo/objects insert — 在視頻中添加物體"
+    "message": "添加物体",
+    "description": "/veo/objects insert — 在视频中添加物体"
   },
   "button.actionObjectRemove": {
-    "message": "移除物體",
-    "description": "/veo/objects remove — 通過蒙版抠除視頻中的物體"
+    "message": "移除物体",
+    "description": "/veo/objects remove — 通过蒙版抠除视频中的物体"
   },
   "button.actionUpsample1080p": {
     "message": "升 1080P",
-    "description": "Preview 操作按鈕 — 升採樣到 1080P"
+    "description": "Preview 操作按钮 — 升采样到 1080P"
   },
   "button.actionUpsample4k": {
     "message": "升 4K",
-    "description": "Preview 操作按鈕 — 升採樣到 4K"
+    "description": "Preview 操作按钮 — 升采样到 4K"
   },
   "button.actionUpsampleGif": {
-    "message": "導出 GIF",
-    "description": "Preview 操作按鈕 — 轉 GIF 預覽"
+    "message": "导出 GIF",
+    "description": "Preview 操作按钮 — 转 GIF 预览"
   }
 }

@@ -24,8 +24,8 @@
     "description": "The trace ID of the task"
   },
   "name.elapsed": {
-    "message": "Elapsed",
-    "description": "Elapsed time of the task in seconds"
+    "message": "Elapsed Time",
+    "description": "The time taken for the task (in seconds)"
   },
   "name.createdAt": {
     "message": "Created At",
@@ -124,7 +124,7 @@
     "description": "Description of the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In tasks creating videos with multiple images, multiple images must be uploaded.",
+    "message": "In tasks creating videos from multiple images, multiple images must be uploaded.",
     "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
@@ -213,7 +213,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Upload",
-    "description": "Button text to upload an image (simplified to 'Upload')"
+    "description": "Button text to upload an image (simplified to 'Upload', do not use 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
@@ -221,7 +221,7 @@
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Button text to allow user to upload references"
+    "description": "Button text allowing users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 1 image",
@@ -237,15 +237,15 @@
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message when drawing task starts"
+    "description": "Message when the drawing task starts"
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when task is successfully initiated"
+    "description": "Success message when the task is successfully initiated"
   },
   "message.startTaskFailed": {
     "message": "Task initiation failed, please contact the administrator",
-    "description": "Error message when drawing task initiation fails"
+    "description": "Error message when the drawing task fails to start"
   },
   "message.usedUp": {
     "message": "Your credits are exhausted, please purchase more to continue",
@@ -272,12 +272,12 @@
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when uploaded file size exceeds 10MB"
+    "message": "Uploaded file size must not exceed 10MB!",
+    "description": "Error message when the uploaded file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when uploaded file is not in MP4 format"
+    "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
     "message": "Number of uploaded first frame images exceeds the limit",
@@ -289,26 +289,26 @@
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload first frame image",
-    "description": "Error message when uploading the first frame image fails"
+    "description": "Error message when the first frame image upload fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when uploading the first frame image fails"
+    "description": "Error message when the video upload fails"
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",
-    "description": "Error message when uploading the last frame image fails"
+    "description": "Error message when the last frame image upload fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when uploading document fails"
+    "description": "Error message when document upload fails"
   },
   "message.noOperations": {
     "message": "No available operations",
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click to generate video on the left",
+    "message": "No historical tasks, please click on the left to generate a video",
     "description": "Message when there are no tasks"
   }
 }

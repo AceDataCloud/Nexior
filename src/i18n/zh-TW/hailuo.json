@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "類型",
-    "description": "要生成的 Hailuo視頻的內容類型，如'鏈接'、'文本'等"
+    "description": "要生成的 Hailuo視頻的內容類型，如'連結'、'文本'等"
   },
   "name.failure": {
     "message": "失敗",
@@ -22,6 +22,10 @@
   "name.traceId": {
     "message": "追蹤 ID",
     "description": "任務的追蹤 ID"
+  },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "任務的耗時（秒）"
   },
   "name.createdAt": {
     "message": "創建時間",
@@ -180,11 +184,11 @@
     "description": "圖像正在生成時的消息"
   },
   "message.downloadVideo": {
-    "message": "下載此視頻",
+    "message": "下載此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.extendVideo": {
-    "message": "繼續生成此視頻",
+    "message": "繼續生成此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
@@ -196,12 +200,12 @@
     "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳文件大小不能超過 10MB!",
-    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
+    "message": "上傳文件大小不能超過 10MB！",
+    "description": "上傳文件大小不能超過 10MB！時的錯誤信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳文件必須是 MP4 格式!",
-    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
+    "message": "上傳文件必須是 MP4 格式！",
+    "description": "上傳文件必須是 MP4 格式！的錯誤信息"
   },
   "message.uploadStartImageExceed": {
     "message": "上傳首幀圖片數量超過限制",
@@ -216,8 +220,8 @@
     "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadVideoError": {
-    "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "message": "上傳影片失敗",
+    "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",
@@ -232,7 +236,7 @@
     "description": "沒有可用操作時的消息"
   },
   "message.noTasks": {
-    "message": "沒有歷史任務，請點擊左方生成視頻",
+    "message": "沒有歷史任務，請點擊左方生成影片",
     "description": "沒有任務時的消息"
   }
 }

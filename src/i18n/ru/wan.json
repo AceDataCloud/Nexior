@@ -8,12 +8,12 @@
     "description": "Тип видео"
   },
   "name.failure": {
-    "message": "Ошибка",
-    "description": "Статус ошибки задачи"
+    "message": "Неудача",
+    "description": "Статус неудачи задачи"
   },
   "name.failureReason": {
-    "message": "Причина ошибки",
-    "description": "Причина ошибки задачи"
+    "message": "Причина неудачи",
+    "description": "Причина неудачи задачи"
   },
   "name.status": {
     "message": "Статус",
@@ -22,6 +22,10 @@
   "name.traceId": {
     "message": "ID отслеживания",
     "description": "ID отслеживания задачи"
+  },
+  "name.elapsed": {
+    "message": "Время выполнения",
+    "description": "Время выполнения задачи (в секундах)"
   },
   "name.createdAt": {
     "message": "Дата создания",
@@ -60,11 +64,11 @@
     "description": "Описание параметра imageUrl"
   },
   "status.pending": {
-    "message": "В ожидании",
+    "message": "Ожидание",
     "description": "Статус ожидания задачи"
   },
   "status.processing": {
-    "message": "В процессе",
+    "message": "Обработка",
     "description": "Статус обработки задачи"
   },
   "placeholder.prompt": {
@@ -132,8 +136,8 @@
     "description": "Превышен лимит загрузки изображений"
   },
   "message.uploadImageError": {
-    "message": "Не удалось загрузить изображение",
-    "description": "Ошибка загрузки изображения"
+    "message": "Ошибка загрузки изображения",
+    "description": "Неудачная загрузка изображения"
   },
   "name.resolution480p": {
     "message": "480P",

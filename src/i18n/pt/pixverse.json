@@ -23,6 +23,10 @@
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
+  },
   "name.createdAt": {
     "message": "Criado Em",
     "description": "Data e hora em que o vídeo Pixverse foi gerado"
@@ -73,7 +77,7 @@
   },
   "name.startImage": {
     "message": "Imagem de Referência Inicial",
-    "description": "Rótulo do campo do formulário: Imagem de referência inicial (sugestão de tradução em inglês: 'First Frame', mantenha curto para evitar obstruir o botão)"
+    "description": "Rótulo do campo do formulário: Imagem de referência inicial (sugestão em inglês: 'First Frame', mantenha curto para evitar obstruir o botão)"
   },
   "name.aspectRatio": {
     "message": "Proporção",
@@ -132,11 +136,11 @@
     "description": "Descrição do parâmetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Envie a imagem de referência inicial para que o vídeo final seja gerado com base na primeira imagem",
+    "message": "Envie a imagem de referência inicial para que o vídeo final seja gerado com base nela",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem de referência final para que o vídeo final seja gerado com base na última imagem",
+    "message": "Envie a imagem de referência final para que o vídeo final seja gerado com base nela",
     "description": "Descrição do parâmetro de upload de referência"
   },
   "description.seed": {
@@ -164,11 +168,11 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Digite as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: quiver",
+    "message": "Insira as palavras-chave para o estilo do vídeo, por exemplo: quiver",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.negativePrompt": {
-    "message": "Digite as palavras-chave negativas para o estilo do vídeo a ser gerado, não exceda 200 caracteres",
+    "message": "Insira as palavras-chave negativas para o estilo do vídeo, não exceda 200 caracteres",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -228,7 +232,7 @@
     "description": "Mensagem de sucesso ao enviar imagem com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar imagem, por favor tente novamente mais tarde",
+    "message": "Falha ao enviar imagem, por favor tente novamente",
     "description": "Mensagem de erro quando a imagem falha ao ser enviada"
   },
   "message.startingTask": {
@@ -245,7 +249,7 @@
   },
   "message.usedUp": {
     "message": "Seus pontos acabaram, por favor compre mais pontos para continuar",
-    "description": "Mensagem quando os pontos se esgotaram"
+    "description": "Mensagem quando os pontos se esgotam"
   },
   "message.generating": {
     "message": "Gerando...",
@@ -273,7 +277,7 @@
   },
   "message.uploadVideoTypeFailed": {
     "message": "O arquivo enviado deve ser no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+    "description": "Mensagem de erro quando o arquivo enviado não é no formato MP4!"
   },
   "message.uploadStartImageExceed": {
     "message": "Número de imagens da primeira frame excede o limite",
@@ -289,7 +293,7 @@
   },
   "message.uploadVideoError": {
     "message": "Falha ao enviar vídeo",
-    "description": "Mensagem de erro ao falhar ao enviar imagem da primeira frame"
+    "description": "Mensagem de erro ao falhar ao enviar vídeo"
   },
   "message.uploadEndImageError": {
     "message": "Falha ao enviar imagem da última frame",
