@@ -11,7 +11,7 @@
       v-model:file-list="fileList"
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-      :limit="5"
+      :limit="1"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"

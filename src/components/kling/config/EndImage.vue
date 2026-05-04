@@ -11,7 +11,7 @@
       v-model:file-list="fileList"
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-      :limit="5"
+      :limit="1"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
@@ -79,12 +79,12 @@ export default defineComponent({
     },
     value: {
       get() {
-        return this.$store.state?.kling?.config?.start_image_url;
+        return this.$store.state?.kling?.config?.end_image_url;
       },
       set() {
         // this.$store.commit('kling/setConfig', {
         //   ...this.$store.state?.kling?.config,
-        //   start_image_url: val
+        //   end_image_url: val
         // });
       }
     }

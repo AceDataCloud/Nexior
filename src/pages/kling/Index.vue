@@ -167,6 +167,22 @@ export default defineComponent({
         ...rest,
         callback_url: CALLBACK_URL
       } as IKlingGenerateRequest;
+      // Derive `action` from inputs if the user did not set one explicitly.
+      // Upstream Kling worker requires `action` and defaults to `text2video`,
+      // which rejects `start_image_url`/`end_image_url` (#bug: image refs ignored).
+      if (!request.action) {
+        if (request.video_id || (rest as any).video_url) {
+          request.action = 'extend';
+        } else if (request.start_image_url) {
+          request.action = 'image2video';
+        } else {
+          request.action = 'text2video';
+        }
+      }
+      // text2video does not accept end_image_url; strip it to avoid a 400.
+      if (request.action === 'text2video' && request.end_image_url) {
+        delete request.end_image_url;
+      }
       // Only include camera_control when a type is set; clean empty config blocks.
       if (camera_control?.type) {
         request.camera_control = {
