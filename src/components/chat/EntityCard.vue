@@ -51,6 +51,7 @@
         :preview-src-list="[card.url]"
         :initial-index="0"
         :hide-on-click-modal="true"
+        :preview-teleported="true"
       >
         <template #placeholder>
           <div class="image-placeholder" />
