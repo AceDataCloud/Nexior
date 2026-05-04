@@ -20,10 +20,6 @@
             <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
-          <el-dropdown-item class="py-2" @click="onConnectors">
-            <font-awesome-icon icon="fa-solid fa-plug" class="mr-2" />
-            {{ $t('common.nav.connections') }}
-          </el-dropdown-item>
           <el-dropdown-item v-if="showSubsite" class="py-2" @click="onSubsite">
             <font-awesome-icon icon="fa-solid fa-sitemap" class="mr-2" />
             {{ $t('common.nav.subsite') }}
@@ -49,7 +45,6 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD, ROUTE_SUBSITE_INDEX } from '@/router';
-import { withCurrentUserId } from '@/utils';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -118,12 +113,6 @@ export default defineComponent({
     },
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
-    },
-    onConnectors() {
-      // Connections are managed exclusively at auth.acedata.cloud.
-      // Append `?user_id=` so a cross-site identity mismatch is detected
-      // and the user is bounced through SSO if needed.
-      window.open(withCurrentUserId('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
     },
     onDistribution() {
       this.$router.push({
