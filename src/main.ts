@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import i18n from './i18n';
 import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
+import { initTelemetry, setUser, captureError } from './plugins/telemetry';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
@@ -42,6 +43,14 @@ const main = async () => {
   // user/site/config are independent after token is set — run in parallel
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
 
+  // Telemetry: initialize after token+user so we already know who the visitor
+  // is. Safe no-op when VITE_RUM_PROJECT_ID is unset (local dev / preview).
+  // We don't `await` so a slow CDN can't block first paint.
+  void initTelemetry({
+    uin: store.getters.user?.id,
+    release: import.meta.env.VITE_APP_VERSION as string | undefined
+  });
+
   // non-async and no need to await
   initializeCurrency();
   initializeTheme();
@@ -52,6 +61,19 @@ const main = async () => {
   initializeFavicon();
 
   const app = createApp(App);
+
+  // Vue render errors → RUM. Keep the existing console behavior so devs
+  // still see the trace locally.
+  app.config.errorHandler = (err, _instance, info) => {
+    captureError(err, { source: 'vue', route: info });
+    console.error('[vue:errorHandler]', err, info);
+  };
+
+  // Unhandled promise rejections → RUM. The browser already logs these,
+  // we just attach them to the same dashboard.
+  window.addEventListener('unhandledrejection', (event) => {
+    captureError(event.reason, { source: 'unhandledrejection' });
+  });
 
   app.use(router);
   app.use(store);
@@ -70,6 +92,10 @@ const main = async () => {
   // lets the browser pick an idle moment when available.
   const scheduleFingerprint = () => {
     initializeFingerprint();
+    // Once the fingerprint resolves, attach it to the RUM session as the
+    // anonymous id (`aid`). This lets pre-login activity for the same device
+    // be threaded together in the dashboard.
+    setUser(store.getters.user?.id, store.getters.fingerprint);
   };
   if ('requestIdleCallback' in window) {
     (window as any).requestIdleCallback(scheduleFingerprint, { timeout: 4000 });

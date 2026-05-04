@@ -245,6 +245,7 @@ import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
+import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
 const POLL_INTERVAL_MS = 7000;
@@ -488,8 +489,18 @@ export default defineComponent({
       else this.stopOrderPolling();
     },
     order: {
-      handler(val) {
+      handler(val, oldVal) {
         if (val?.state === OrderState.PAID) {
+          // Fire once on the PENDING→PAID transition (the polling watcher
+          // re-runs on every refresh tick).
+          if (oldVal?.state !== OrderState.PAID) {
+            track('payment_success', {
+              order_id: val?.id,
+              pay_way: val?.pay_way,
+              service: val?.application?.service?.alias,
+              amount: val?.price
+            });
+          }
           this.x402Session = undefined;
           setTimeout(() => {
             if (this.redirect) {

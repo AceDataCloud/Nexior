@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Nanobanana.vue';
 import ConfigPanel from '@/components/nanobanana/ConfigPanel.vue';
 import { nanobananaOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { INanobananaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
@@ -185,10 +186,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('nanobanana.message.startingTask'));
-      nanobananaOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('nanobanana', nanobananaOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('nanobanana.message.startTaskSuccess'));
         })

@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedream.vue';
 import ConfigPanel from '@/components/seedream/ConfigPanel.vue';
 import { seedreamOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -176,10 +177,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('seedream.message.startingTask'));
-      seedreamOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('seedream', seedreamOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('seedream.message.startTaskSuccess'));
         })

@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Pika.vue';
 import ConfigPanel from '@/components/pika/ConfigPanel.vue';
 import { applicationOperator, pikaOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IPikaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
@@ -188,10 +189,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('pika.message.startingTask'));
-      pikaOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('pika', pikaOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('pika.message.startTaskSuccess'));
           this.$store.commit('pika/setConfig', {

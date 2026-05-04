@@ -15,6 +15,7 @@ import Layout from '@/layouts/Seedance.vue';
 import ConfigPanel from '@/components/seedance/ConfigPanel.vue';
 import RecentPanel from '@/components/seedance/RecentPanel.vue';
 import { seedanceOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedanceGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -156,10 +157,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('seedance.message.startingTask'));
-      seedanceOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('seedance', seedanceOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('seedance.message.startTaskSuccess'));
         })

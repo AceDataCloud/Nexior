@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Luma.vue';
 import ConfigPanel from '@/components/luma/ConfigPanel.vue';
 import { lumaOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { ILumaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -162,10 +163,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('luma.message.startingTask'));
-      lumaOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('luma', lumaOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('luma.message.startTaskSuccess'));
         })

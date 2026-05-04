@@ -25,6 +25,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Headshots.vue';
 import ConfigPanel from '@/components/headshots/ConfigPanel.vue';
 import { applicationOperator, headshotsOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IHeadshotsGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
@@ -201,10 +202,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('headshots.message.startingTask'));
-      headshotsOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('headshots', headshotsOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('headshots.message.startTaskSuccess'));
           this.$store.commit('headshots/setConfig', {

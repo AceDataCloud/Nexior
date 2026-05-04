@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/OpenAIImage.vue';
 import ConfigPanel from '@/components/openaiimage/ConfigPanel.vue';
 import { openaiimageOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IOpenAIImageEditRequest, IOpenAIImageGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -187,13 +188,16 @@ export default defineComponent({
 
       ElMessage.info(this.$t('openaiimage.message.startingTask'));
 
-      const request = hasReferenceImages
-        ? openaiimageOperator.edit(editRequest, {
-            token
-          })
-        : openaiimageOperator.generate(generateRequest, {
-            token
-          });
+      const request = instrumentGeneration(
+        'openaiimage',
+        hasReferenceImages
+          ? openaiimageOperator.edit(editRequest, {
+              token
+            })
+          : openaiimageOperator.generate(generateRequest, {
+              token
+            })
+      );
 
       request
         .then((response) => {

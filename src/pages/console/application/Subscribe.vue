@@ -75,6 +75,7 @@ import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackag
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString } from '@/utils';
+import { track } from '@/plugins/telemetry';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 
@@ -271,6 +272,11 @@ export default defineComponent({
         this.creating = false;
         return;
       }
+      track('payment_initiated', {
+        service: this.service?.alias,
+        action: 'subscribe',
+        duration: subscription.duration
+      });
       orderOperator
         .create({
           application_ids: [this.application2.id],
@@ -286,9 +292,14 @@ export default defineComponent({
             }
           });
         })
-        .catch(() => {
+        .catch((error) => {
           ElMessage.error(this.$t('order.message.createFailed'));
           this.creating = false;
+          track('payment_failed', {
+            service: this.service?.alias,
+            action: 'subscribe',
+            error: error?.response?.data?.error?.message ?? String(error)
+          });
         });
     }
   }

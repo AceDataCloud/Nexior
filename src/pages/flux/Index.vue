@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Flux.vue';
 import ConfigPanel from '@/components/flux/ConfigPanel.vue';
 import { fluxOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IFluxGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -160,10 +161,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('flux.message.startingTask'));
-      fluxOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('flux', fluxOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('flux.message.startTaskSuccess'));
         })

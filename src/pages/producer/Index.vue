@@ -16,6 +16,7 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Producer.vue';
 import { applicationOperator, producerOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IProducerAudioRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { IProducerTask } from '@/models';
@@ -191,10 +192,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('producer.message.startingTask'));
-      producerOperator
-        .audio(request, {
-          token
-        })
+      instrumentGeneration('producer', producerOperator.audio(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('producer.message.startTaskSuccess'));
         })

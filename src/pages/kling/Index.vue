@@ -22,6 +22,7 @@ import ConfigPanel from '@/components/kling/ConfigPanel.vue';
 import MotionPanel from '@/components/kling/MotionPanel.vue';
 import TabSwitcher from '@/components/kling/TabSwitcher.vue';
 import { klingOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IKlingGenerateRequest, IKlingMotionRequest, IKlingTaskType, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -208,10 +209,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('kling.message.startingTask'));
-      klingOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('kling', klingOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('kling.message.startTaskSuccess'));
         })
@@ -262,8 +260,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('kling.message.startingTask'));
-      klingOperator
-        .motion(request, { token })
+      instrumentGeneration('kling', klingOperator.motion(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('kling.message.startTaskSuccess'));
         })
