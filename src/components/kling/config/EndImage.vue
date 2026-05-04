@@ -11,7 +11,8 @@
       v-model:file-list="fileList"
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-      :limit="5"
+      :limit="1"
+      :disabled="reachedLimit"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
@@ -30,17 +31,21 @@
           @remove="fileList.splice(fileList.indexOf(file), 1)"
         />
       </template>
-      <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
-        {{ $t('kling.button.uploadReferences') }}
-      </el-button>
+      <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
+        <span>
+          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="reachedLimit">
+            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            {{ $t('kling.button.uploadReferences') }}
+          </el-button>
+        </span>
+      </el-tooltip>
     </el-upload>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -56,6 +61,7 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
+    ElTooltip,
     ImagePreview,
     InfoIcon,
     FontAwesomeIcon
@@ -77,14 +83,17 @@ export default defineComponent({
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
+    reachedLimit(): boolean {
+      return (this.fileList?.length || 0) >= 1;
+    },
     value: {
       get() {
-        return this.$store.state?.kling?.config?.start_image_url;
+        return this.$store.state?.kling?.config?.end_image_url;
       },
       set() {
         // this.$store.commit('kling/setConfig', {
         //   ...this.$store.state?.kling?.config,
-        //   start_image_url: val
+        //   end_image_url: val
         // });
       }
     }
