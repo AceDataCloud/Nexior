@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Use sua própria chave de API do provedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) em vez da conta padrão da plataforma. Após a configuração, as solicitações de diálogo do modelo correspondente serão feitas diretamente com sua chave, sem consumir créditos da plataforma; chamadas de ferramentas, referências, artefatos, histórico em nuvem e outras funcionalidades funcionarão normalmente.",
+    "message": "Use sua própria chave de API de provedores (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) em vez do pool de contas da plataforma. Após a configuração, as solicitações de diálogo para o modelo correspondente serão feitas diretamente com sua chave, sem consumir créditos da plataforma; chamadas de ferramentas, referências, artefatos, histórico em nuvem e outras funcionalidades funcionarão normalmente.",
     "description": ""
   },
   "field.provider": {
@@ -24,11 +24,11 @@
     "description": ""
   },
   "field.label": {
-    "message": "Observações",
+    "message": "Observação",
     "description": ""
   },
   "field.labelPlaceholder": {
-    "message": "Ex: \"Meu número de trabalho\" (opcional)",
+    "message": "Ex: \"Meu ID de Trabalho\" (opcional)",
     "description": ""
   },
   "field.apiKey": {
@@ -56,11 +56,11 @@
     "description": ""
   },
   "field.lastUsedAt": {
-    "message": "Último uso",
+    "message": "Último Uso",
     "description": ""
   },
   "field.createdAt": {
-    "message": "Data de adição",
+    "message": "Data de Adição",
     "description": ""
   },
   "value.active": {
@@ -72,7 +72,7 @@
     "description": ""
   },
   "value.never": {
-    "message": "Nunca usado",
+    "message": "Nunca Usado",
     "description": ""
   },
   "value.default": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Confirmar a exclusão desta chave de API? As conversas do modelo {provider} voltarão para o padrão da plataforma.",
+    "message": "Confirmar a exclusão desta chave de API? As solicitações de diálogo do modelo {provider} voltarão para o padrão da plataforma.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -116,7 +116,7 @@
     "description": ""
   },
   "message.testSuccess": {
-    "message": "Conexão normal.",
+    "message": "Conexão bem-sucedida.",
     "description": ""
   },
   "message.testFailed": {
@@ -132,15 +132,15 @@
     "description": ""
   },
   "message.empty": {
-    "message": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta do provedor.",
+    "message": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta de provedor.",
     "description": ""
   },
   "message.advancedToggle": {
-    "message": "Mostrar opções avançadas",
+    "message": "Mostrar Opções Avançadas",
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "Opcional. Endereço upstream personalizado (para OpenRouter, proxy reverso próprio, gateway corporativo, etc.). Apenas HTTPS permitido, não pode apontar para endereços internos/loopback.",
+    "message": "Opcional. Endereço upstream personalizado (para OpenRouter, proxy próprio, gateway corporativo, etc.). Apenas HTTPS permitido, não pode apontar para endereços internos/loopback.",
     "description": ""
   },
   "badge.active": {
@@ -150,5 +150,61 @@
   "badge.tooltip": {
     "message": "Esta conversa usa sua própria chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma.",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "Clique para gerenciar suas chaves de API personalizadas",
+    "description": "Dica ao clicar no badge BYOK na página de chat: clique para abrir a aba de configuração da chave de API."
+  },
+  "button.testConnection": {
+    "message": "Salvar e Testar Conexão",
+    "description": "Botão no diálogo de adicionar/editar - primeiro salva as credenciais, depois chama /models para verificar a conectividade."
+  },
+  "test.success": {
+    "message": "Teste de conectividade bem-sucedido",
+    "description": "Título de sucesso na seção de resultados do teste de conectividade."
+  },
+  "test.failure": {
+    "message": "Teste de conectividade falhou",
+    "description": "Título de falha na seção de resultados do teste de conectividade."
+  },
+  "test.endpoint": {
+    "message": "Endereço da Solicitação",
+    "description": "Rótulo da URL da solicitação nos detalhes do resultado do teste."
+  },
+  "test.status": {
+    "message": "Código de Status",
+    "description": "Rótulo do código de status HTTP nos detalhes do resultado do teste."
+  },
+  "test.message": {
+    "message": "Resposta do Upstream",
+    "description": "Rótulo do texto de erro/aviso do upstream nos detalhes do resultado do teste."
+  },
+  "providerDesc.openai": {
+    "message": "Substitui as solicitações de diálogo do ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) neste site.",
+    "description": "Subtítulo da opção OpenAI no menu suspenso de provedores."
+  },
+  "providerDesc.anthropic": {
+    "message": "Substitui as solicitações de diálogo do Claude (Sonnet / Opus / Haiku, etc.) neste site.",
+    "description": "Subtítulo da opção Anthropic no menu suspenso de provedores."
+  },
+  "providerDesc.google": {
+    "message": "Substitui as solicitações de diálogo do Gemini (séries Pro / Flash) neste site.",
+    "description": "Subtítulo da opção Google no menu suspenso de provedores."
+  },
+  "providerDesc.xai": {
+    "message": "Substitui as solicitações de diálogo do Grok neste site.",
+    "description": "Subtítulo da opção xAI no menu suspenso de provedores."
+  },
+  "providerDesc.deepseek": {
+    "message": "Substitui as solicitações de diálogo do DeepSeek (V3 / R1, etc.) neste site.",
+    "description": "Subtítulo da opção DeepSeek no menu suspenso de provedores."
+  },
+  "providerDesc.moonshot": {
+    "message": "Substitui o pedido de conversa Kimi deste site.",
+    "description": "Subtítulo da opção Moonshot (Kimi) no menu suspenso do provedor."
+  },
+  "providerDesc.zhipu": {
+    "message": "Substitui as solicitações de diálogo da série GLM deste site.",
+    "description": "Subtítulo da opção Zhipu (GLM) no menu suspenso do provedor."
   }
 }

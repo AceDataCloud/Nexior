@@ -1,4 +1,284 @@
 {
+  "tab.videoGeneration": {
+    "message": "Генерация видео",
+    "description": "Tab 标签：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "Управление движением",
+    "description": "Tab 标签：Motion Control"
+  },
+  "tab.avatar": {
+    "message": "Аватар",
+    "description": "Tab 标签：Avatar / AI-Human"
+  },
+  "tab.comingSoon": {
+    "message": "Скоро",
+    "description": "即将上线的起骨标签"
+  },
+  "tab.avatarComingSoon": {
+    "message": "Аватар (лицо + синтез речи) скоро будет доступен, следите за обновлениями",
+    "description": "Avatar Tab 被禁用的 Tooltip 说明"
+  },
+  "name.motionImage": {
+    "message": "Изображение персонажа",
+    "description": "Motion Control 中的人物图输入"
+  },
+  "name.motionVideo": {
+    "message": "Видео с движением",
+    "description": "Motion Control 中的参考视频输入"
+  },
+  "name.motionPrompt": {
+    "message": "Дополнительные подсказки (по желанию)",
+    "description": "Motion Control 中的补充提示词"
+  },
+  "name.characterOrientation": {
+    "message": "Ориентация персонажа",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "Следующее изображение",
+    "description": "人物朝向选项：跟随图片"
+  },
+  "name.orientationVideo": {
+    "message": "Следующее видео",
+    "description": "人物朝向选项：跟随视频"
+  },
+  "name.keepOriginalSound": {
+    "message": "Сохранить оригинальный звук",
+    "description": "keep_original_sound 开关"
+  },
+  "description.motionImage": {
+    "message": "Загрузите изображение персонажа, чтобы элементы видео, такие как персонажи и фон, были основаны на этом.",
+    "description": "motion image_url 说明"
+  },
+  "description.motionVideo": {
+    "message": "Загрузите видео с движением, чтобы движения персонажа в видео соответствовали этому видео (MP4 / MOV, ≤1 минута, ≤1 ГБ)",
+    "description": "motion video_url 说明"
+  },
+  "description.motionPrompt": {
+    "message": "По желанию. Может содержать положительные и отрицательные описания для улучшения результата.",
+    "description": "motion prompt 说明"
+  },
+  "description.characterOrientation": {
+    "message": "При выборе «Следующее видео» сложные движения будут лучше; при выборе «Следующее изображение» ориентация персонажа будет соответствовать изображению, а движение камеры будет лучше.",
+    "description": "character_orientation 说明"
+  },
+  "description.motionMode": {
+    "message": "std - приоритет производительности, pro - приоритет качества",
+    "description": "motion mode 说明"
+  },
+  "description.keepOriginalSound": {
+    "message": "При включении сохраняется оригинальный звук из видео; при отключении выходное видео не содержит оригинального звука.",
+    "description": "keep_original_sound 说明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "Например: человек прыгает. По желанию.",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "Сгенерировать видео с управлением движением",
+    "description": "Motion Control 生成按钮"
+  },
+  "message.motionMissingInputs": {
+    "message": "Пожалуйста, загрузите изображение персонажа и видео с движением одновременно",
+    "description": "Motion Control 缺少输入时的提示"
+  },
+  "inspiration.title": {
+    "message": "Вдохновение и пресеты",
+    "description": "Inspiration 抽屉的标题"
+  },
+  "inspiration.openButton": {
+    "message": "Вдохновение",
+    "description": "打开 Inspiration 抽屉的按钮"
+  },
+  "inspiration.hint": {
+    "message": "Нажмите на фразу, чтобы автоматически добавить ее в подсказки; повторное нажатие удалит.",
+    "description": "Inspiration 抽屉顶部的使用说明"
+  },
+  "inspiration.empty": {
+    "message": "Нет доступных пресетов",
+    "description": "Inspiration 抽屉空状态"
+  },
+  "inspiration.selectedSummary": {
+    "message": "Выбрано {count} элементов",
+    "description": "已选择的预设数量"
+  },
+  "inspiration.clearSelected": {
+    "message": "Очистить все",
+    "description": "清除所有已选预设的按钮"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "Движение камеры",
+    "description": "Inspiration 分组：镜头运动"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "Скорость движения",
+    "description": "Inspiration 分组：运动速度"
+  },
+  "inspiration.group.shotType": {
+    "message": "Тип кадра",
+    "description": "Inspiration 分组：景别 / 视角"
+  },
+  "inspiration.group.light": {
+    "message": "Свет и тень",
+    "description": "Inspiration 分组：光影"
+  },
+  "inspiration.group.frame": {
+    "message": "Кадр",
+    "description": "Inspiration 分组：画面 / 构图"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "Атмосфера",
+    "description": "Inspiration 分组：氛围 / 风格"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "Камера вращается вокруг объекта",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "Камера неподвижна",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "Ручная съемка",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "Камера отдаляется",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "Камера приближается",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "Камера следует за объектом",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "Камера панорамирует вправо",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "Камера наклоняется вверх",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "Камера наклоняется вниз",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "Камера движется по орбите",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "Медленное движение камеры",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "Средняя скорость движения камеры",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "Быстрое движение камеры",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "Крупный план",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "Средний план",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "Дальний план",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "Низкий угол съемки",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "Высокий угол",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "Мелкая глубина резкости",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "Фронтальный ракурс",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "Профильный ракурс",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "Крупный план",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "Дрон",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "Солнечный свет",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "Мягкий свет",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "Неоновый свет",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "Теплый свет",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "Естественный свет",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "Свет свечи",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "Городские огни ночью",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "Богатые детали",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "Простой фон",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "Таинственная атмосфера",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "Спокойная атмосфера",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "Теплая атмосфера",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "Яркая атмосфера",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "Красочная атмосфера",
+    "description": ""
+  },
   "name.taskId": {
     "message": "ID задачи",
     "description": "ID задачи"
@@ -8,12 +288,68 @@
     "description": "Тип контента Kling видео, например, 'ссылка', 'текст' и т.д."
   },
   "name.modeStd": {
-    "message": "Стандартный",
-    "description": "Стандартный режим Kling видео"
+    "message": "Стандарт (720p)",
+    "description": "Стандартный режим Kling видео (вывод 720p)"
   },
   "name.modePro": {
-    "message": "Высокое качество",
-    "description": "Режим высокого качества Kling видео"
+    "message": "Высокое качество (1080p)",
+    "description": "Режим высокого качества Kling видео (вывод 1080p)"
+  },
+  "name.mode4k": {
+    "message": "Нативный 4K",
+    "description": "Режим Kling 4K (поддерживается только v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Управление камерой",
+    "description": "Тип и параметры управления камерой"
+  },
+  "name.cameraTypeNone": {
+    "message": "Не использовать",
+    "description": "Не использовать управление камерой"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Пользовательский (6 осей)",
+    "description": "Использовать пользовательские параметры шести осей"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Опустить и отступить",
+    "description": "Предустановленное управление: опустить и отступить"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Вперед и вверх",
+    "description": "Предустановленное управление: вперед и вверх"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Повернуть налево и вперед",
+    "description": "Предустановленное управление: повернуть налево и вперед"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Повернуть направо и вперед",
+    "description": "Предустановленное управление: повернуть направо и вперед"
+  },
+  "name.cc_horizontal": {
+    "message": "Горизонтальное движение",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Вертикальное движение",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Горизонтальный панорамирование",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Вертикальное наклонение",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Качание",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Зум",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "Ошибка",
@@ -21,7 +357,7 @@
   },
   "name.failureReason": {
     "message": "Причина ошибки",
-    "description": "Причина неудачи задачи"
+    "description": "Причина ошибки задачи"
   },
   "name.status": {
     "message": "Статус",
@@ -37,15 +373,15 @@
   },
   "name.cfgScale": {
     "message": "Свобода",
-    "description": "Параметр свободы для генерации видео (0-1), чем больше значение, тем ближе к эталону (рекомендуется: Уровень свободы)"
+    "description": "Параметр свободы для генерации видео (0-1), чем больше значение, тем ближе к эталону"
   },
   "name.generateAudio": {
-    "message": "Синхронная генерация звука",
-    "description": "Синхронная генерация звука, поддерживает kling-v3, kling-v3-omni и kling-v2-6 (pro режим)"
+    "message": "Синхронная генерация звуковых эффектов",
+    "description": "Синхронная генерация звуковых эффектов, поддерживается kling-v3, kling-v3-omni и kling-v2-6 (pro режим)"
   },
   "name.startImage": {
     "message": "Первый кадр",
-    "description": "Метка поля формы: первый кадр (рекомендуется: 'First Frame', чтобы избежать перекрытия кнопки)"
+    "description": "Метка поля формы: первый кадр (сохранять краткость, чтобы не перекрывать кнопку)"
   },
   "name.negativePrompt": {
     "message": "Отрицательный запрос",
@@ -53,7 +389,7 @@
   },
   "name.endImage": {
     "message": "Последний кадр",
-    "description": "Метка поля формы: последний кадр (рекомендуется: 'Last Frame', чтобы избежать перекрытия кнопки)"
+    "description": "Метка поля формы: последний кадр (сохранять краткость, чтобы не перекрывать кнопку)"
   },
   "name.videoUrl": {
     "message": "Пользовательское видео",
@@ -68,16 +404,16 @@
     "description": "Длительность видео"
   },
   "name.ingredients": {
-    "message": "Мульти-изображение",
-    "description": "Переключатель/метка для создания видео из нескольких изображений (рекомендуется: Multi-Image, чтобы сохранить краткость)"
+    "message": "Создание видео из нескольких изображений",
+    "description": "Переключатель/метка для создания видео из нескольких изображений"
   },
   "name.model": {
     "message": "Версия модели",
-    "description": "Версия модели, используемая для генерации видео"
+    "description": "Модель, используемая для генерации видео"
   },
   "name.ratio": {
-    "message": "Соотношение сторон",
-    "description": "Соотношение сторон, используемое для генерации видео"
+    "message": "Соотношение видео",
+    "description": "Соотношение видео, используемое для генерации видео"
   },
   "name.mode": {
     "message": "Режим видео",
@@ -85,7 +421,7 @@
   },
   "name.effect": {
     "message": "Эффект видео",
-    "description": "Название параметра стиля для переключения между различными версиями или стилями модели"
+    "description": "Название параметра стиля, используемого для переключения между различными версиями или стилями модели"
   },
   "name.ingredientsModel": {
     "message": "Модель ингредиентов",
@@ -93,63 +429,99 @@
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Название генератора Kling видео"
+    "description": "Название генератора видео Kling"
   },
   "description.ingredients": {
-    "message": "Если вы хотите загрузить несколько изображений для создания своего видео, активируйте эту кнопку.",
+    "message": "Если вы хотите загрузить несколько изображений для генерации своего видео, активируйте эту кнопку.",
     "description": "Описание параметра 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "В задаче создания видео из нескольких изображений необходимо загрузить несколько изображений.",
+    "message": "В задаче создания видео с несколькими изображениями необходимо загрузить несколько изображений.",
     "description": "Описание параметра 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Запрос для генерации Kling видео",
+    "message": "Подсказка для генерации видео Kling",
     "description": "Описание параметра 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Отрицательный текстовый запрос, необязательный, не более 200 символов",
-    "description": "Описание параметра 'negativePrompt'"
+    "message": "Отрицательная текстовая подсказка, необязательная, не более 200 символов",
+    "description": "Описание параметра 'prompt'"
   },
   "description.uploadStartImage": {
-    "message": "Загрузите изображение первого кадра в качестве ссылки для генерации, финальное видео будет основываться на первом кадре",
+    "message": "Загрузите изображение начального кадра в качестве ссылки для генерации, финальное видео будет основываться на начальном кадре",
     "description": "Описание параметра загрузки ссылки"
   },
   "description.uploadEndImage": {
-    "message": "Загрузите изображение последнего кадра в качестве ссылки для генерации, финальное видео будет основываться на последнем кадре",
+    "message": "Загрузите изображение конечного кадра в качестве ссылки для генерации, финальное видео будет основываться на конечном кадре",
     "description": "Описание параметра загрузки ссылки"
   },
   "description.cfgScale": {
-    "message": "Свобода генерации видео, необязательный [0,1]. Чем больше значение, тем сильнее связь.",
+    "message": "Степень свободы генерации видео, необязательная [0,1]. Чем больше значение, тем сильнее связь.",
     "description": "Описание параметра загрузки ссылки"
+  },
+  "description.mode": {
+    "message": "std обеспечивает более высокую производительность, pro - лучшее качество; 4K поддерживается только v3 / v3-Omni и не может использоваться одновременно с управлением камерой",
+    "description": "Общее описание поля режима"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Поддерживается только kling-v3 / kling-v3-omni",
+    "description": "Причина отключения опции 4k (несоответствие модели)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Включено управление камерой, нельзя использовать с 4K одновременно",
+    "description": "Причина отключения опции 4k (установлено управление камерой)"
+  },
+  "description.duration": {
+    "message": "Обычная модель поддерживает только 5/10 секунд; v3 / v3-Omni поддерживает 3/5/8/10/12/15 секунд",
+    "description": "Общее описание поля продолжительности"
+  },
+  "description.durationV3Only": {
+    "message": "Поддерживается только v3 / v3-Omni",
+    "description": "Причина отключения опции продолжительности"
+  },
+  "description.generateAudio": {
+    "message": "Синтезировать звуковые эффекты во время генерации видео. Поддерживается только kling-v3 / kling-v3-omni / kling-v2-6 (pro режим)",
+    "description": "Описание переключателя звуковых эффектов (поддерживается)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Текущая модель не поддерживает синхронизацию звуковых эффектов, доступно только kling-v3 / kling-v3-omni / kling-v2-6 (pro режим)",
+    "description": "Описание переключателя звуковых эффектов (отключено)"
+  },
+  "description.cameraControl": {
+    "message": "Управление направлением движения камеры. Выбор 'Пользовательский' позволяет настроить в 6 измерениях, каждое значение [-1, 1]",
+    "description": "Описание управления камерой"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "Выбран режим 4K, управление камерой недоступно, переключитесь на std / pro и затем включите",
+    "description": "Причина отключения управления камерой"
   },
   "status.pending": {
     "message": "Ожидание",
-    "description": "Статус ожидания задачи"
+    "description": "Состояние ожидания задачи"
   },
   "status.processing": {
     "message": "Обработка",
-    "description": "Статус обработки задачи"
+    "description": "Состояние ожидания задачи"
   },
   "placeholder.paddingNoise": {
     "message": "Пожалуйста, выберите...",
-    "description": "Заполнитель для ввода шумов заполнения"
+    "description": "Заполнитель для ввода шумоподавления"
   },
   "placeholder.select": {
     "message": "Выбрать",
-    "description": "Заполнитель для поля выбора"
+    "description": "Заполнитель текста в поле выбора"
   },
   "placeholder.paddingLevel": {
     "message": "Пожалуйста, выберите...",
     "description": "Заполнитель для уровня заполнения"
   },
   "placeholder.prompt": {
-    "message": "Введите запрос для стиля видео, например: moving",
-    "description": "Заполнитель для поля запроса"
+    "message": "Введите подсказку для стиля видео, например: moving",
+    "description": "Заполнитель текста в поле подсказки"
   },
   "placeholder.negativePrompt": {
-    "message": "Введите отрицательный запрос для стиля видео, не более 200 символов",
-    "description": "Заполнитель для поля запроса"
+    "message": "Введите отрицательную подсказку для стиля видео, не более 200 символов",
+    "description": "Заполнитель текста в поле подсказки"
   },
   "placeholder.position": {
     "message": "Пожалуйста, выберите...",
@@ -158,6 +530,10 @@
   "placeholder.aspectRatio": {
     "message": "Пожалуйста, выберите...",
     "description": "Заполнитель для ввода соотношения сторон"
+  },
+  "placeholder.cameraType": {
+    "message": "Не использовать",
+    "description": "Заполнитель для выбора типа камеры"
   },
   "placeholder.preset": {
     "message": "Пожалуйста, выберите...",
@@ -184,12 +560,12 @@
     "description": "Текст кнопки для генерации видео Kling"
   },
   "button.generate": {
-    "message": "Сгенерировать",
+    "message": "Генерировать",
     "description": "Текст кнопки для генерации видео Kling"
   },
   "button.extend": {
-    "message": "Продлить видео",
-    "description": "Текст кнопки для продления видео"
+    "message": "Расширить видео",
+    "description": "Текст кнопки для расширения видео"
   },
   "button.download": {
     "message": "Скачать видео",
@@ -205,7 +581,7 @@
   },
   "button.uploadReferences": {
     "message": "Загрузить",
-    "description": "Текст кнопки, позволяющий пользователю загрузить ссылки"
+    "description": "Текст кнопки, позволяющий пользователю загрузить ссылку"
   },
   "message.uploadReferencesExceed": {
     "message": "Можно загрузить не более 1 изображения",
@@ -219,12 +595,16 @@
     "message": "Ошибка загрузки изображения, пожалуйста, попробуйте позже",
     "description": "Сообщение об ошибке при неудачной загрузке изображения"
   },
+  "message.endImageRequiresStart": {
+    "message": "Сначала загрузите изображение начального кадра перед использованием изображения конечного кадра",
+    "description": "Сообщение об ошибке, когда пользователь загрузил только конечный кадр без начального"
+  },
   "message.startingTask": {
     "message": "Запуск задачи...",
     "description": "Сообщение при начале задачи рисования"
   },
   "message.startTaskSuccess": {
-    "message": "Задача успешно запущена",
+    "message": "Задача на генерацию успешно запущена",
     "description": "Сообщение об успешном запуске задачи"
   },
   "message.startTaskFailed": {
@@ -232,8 +612,8 @@
     "description": "Сообщение об ошибке при неудачном запуске задачи рисования"
   },
   "message.usedUp": {
-    "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
-    "description": "Сообщение при исчерпании кредитов"
+    "message": "Ваши баллы исчерпаны, пожалуйста, купите больше баллов для продолжения использования",
+    "description": "Сообщение, когда баллы исчерпаны"
   },
   "message.generating": {
     "message": "Генерация...",
@@ -248,40 +628,40 @@
     "description": "Сообщение во время генерации изображения"
   },
   "message.generateFailed": {
-    "message": "Ошибка генерации изображения",
+    "message": "Не удалось сгенерировать изображение",
     "description": "Сообщение при неудачной генерации изображения"
   },
   "message.uploadVideoExceed": {
-    "message": "Количество загружаемых изображений для первого кадра превышает лимит",
-    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для первого кадра"
+    "message": "Количество загружаемых изображений начального кадра превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загружаемых изображений начального кадра превышает лимит"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Размер загружаемого файла не должен превышать 10 МБ!",
-    "description": "Сообщение об ошибке при превышении размера загружаемого файла"
+    "description": "Сообщение об ошибке, когда размер загружаемого файла превышает 10 МБ!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Загружаемый файл должен быть в формате MP4!",
-    "description": "Сообщение об ошибке при неверном формате загружаемого файла"
+    "description": "Сообщение об ошибке, когда загружаемый файл не в формате MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Количество загружаемых изображений для первого кадра превышает лимит",
-    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для первого кадра"
+    "message": "Количество загружаемых изображений начального кадра превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загружаемых изображений начального кадра превышает лимит"
   },
   "message.uploadEndImageExceed": {
-    "message": "Количество загружаемых изображений для последнего кадра превышает лимит",
-    "description": "Сообщение об ошибке при превышении лимита загружаемых изображений для последнего кадра"
+    "message": "Количество загружаемых изображений конечного кадра превышает лимит",
+    "description": "Сообщение об ошибке, когда количество загружаемых изображений конечного кадра превышает лимит"
   },
   "message.uploadStartImageError": {
-    "message": "Ошибка загрузки изображения для первого кадра",
-    "description": "Сообщение об ошибке при неудачной загрузке изображения для первого кадра"
+    "message": "Ошибка загрузки изображения начального кадра",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения начального кадра"
   },
   "message.uploadVideoError": {
     "message": "Ошибка загрузки видео",
-    "description": "Сообщение об ошибке при неудачной загрузке видео"
+    "description": "Сообщение об ошибке при неудачной загрузке изображения начального кадра"
   },
   "message.uploadEndImageError": {
-    "message": "Ошибка загрузки изображения для последнего кадра",
-    "description": "Сообщение об ошибке при неудачной загрузке изображения для последнего кадра"
+    "message": "Ошибка загрузки изображения конечного кадра",
+    "description": "Сообщение об ошибке при неудачной загрузке изображения конечного кадра"
   },
   "message.uploadDocumentsError": {
     "message": "Ошибка загрузки документа",
@@ -289,10 +669,10 @@
   },
   "message.noOperations": {
     "message": "Нет доступных операций",
-    "description": "Сообщение при отсутствии доступных операций"
+    "description": "Сообщение, когда нет доступных операций"
   },
   "message.noTasks": {
     "message": "Нет историй задач, пожалуйста, нажмите слева для генерации видео",
-    "description": "Сообщение при отсутствии задач"
+    "description": "Сообщение, когда нет задач"
   }
 }

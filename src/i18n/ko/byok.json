@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "플랫폼 계정 풀 대신 자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하세요. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
+    "message": "자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하여 플랫폼 계정 풀을 대체합니다. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
     "description": ""
   },
   "field.provider": {
@@ -24,11 +24,11 @@
     "description": ""
   },
   "field.label": {
-    "message": "비고",
+    "message": "메모",
     "description": ""
   },
   "field.labelPlaceholder": {
-    "message": "예: \"내 작업 번호\" (선택 사항)",
+    "message": "\"내 작업 번호\" (선택 사항)",
     "description": ""
   },
   "field.apiKey": {
@@ -132,7 +132,7 @@
     "description": ""
   },
   "message.empty": {
-    "message": "사용자 정의 API 키가 아직 구성되지 않았습니다. \"API 키 추가\"를 클릭하여 자신의 서비스 제공업체 계정을 사용하세요.",
+    "message": "아직 사용자 정의 API 키가 구성되지 않았습니다. \"API 키 추가\"를 클릭하여 자신의 서비스 제공업체 계정을 사용하세요.",
     "description": ""
   },
   "message.advancedToggle": {
@@ -140,15 +140,71 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "선택 사항. 사용자 정의 상위 주소(예: OpenRouter, 자체 리버스 프록시, 기업 게이트웨이 등). HTTPS만 허용되며, 내부망/루프백 주소를 가리킬 수 없습니다.",
+    "message": "선택 사항. 사용자 정의 상위 주소(예: OpenRouter, 자체 리버스 프록시, 기업 게이트웨이 등). HTTPS만 허용되며, 내부 네트워크/루프백 주소를 가리킬 수 없습니다.",
     "description": ""
   },
   "badge.active": {
-    "message": "당신의 {provider} 키 사용 중",
+    "message": "당신의 {provider} 키 사용",
     "description": ""
   },
   "badge.tooltip": {
     "message": "이번 대화는 당신의 {provider} API 키를 사용하며, 비용은 {provider} 계정에서 정산되고 플랫폼 잔액은 차감되지 않습니다.",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "사용자 정의 API 키 관리 클릭",
+    "description": "채팅 페이지 BYOK 배지 클릭 후 팝업: API 키 탭을 열어 설정 대화 상자를 엽니다."
+  },
+  "button.testConnection": {
+    "message": "저장 및 연결 테스트",
+    "description": "새로 추가/편집 대화 상자에서 버튼 - 자격 증명을 먼저 저장한 후 상위 /models를 호출하여 연결성을 검증합니다."
+  },
+  "test.success": {
+    "message": "연결성 테스트 성공",
+    "description": "연결성 테스트 결과 영역의 성공 제목."
+  },
+  "test.failure": {
+    "message": "연결성 테스트 실패",
+    "description": "연결성 테스트 결과 영역의 실패 제목."
+  },
+  "test.endpoint": {
+    "message": "요청 주소",
+    "description": "테스트 결과 세부정보의 요청 URL 레이블."
+  },
+  "test.status": {
+    "message": "상태 코드",
+    "description": "테스트 결과 세부정보의 HTTP 상태 코드 레이블."
+  },
+  "test.message": {
+    "message": "상위 응답",
+    "description": "테스트 결과 세부정보의 상위 오류/알림 텍스트 레이블."
+  },
+  "providerDesc.openai": {
+    "message": "본 사이트의 ChatGPT(GPT-4 / GPT-4o / o1 / o3 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 OpenAI 옵션의 부제목."
+  },
+  "providerDesc.anthropic": {
+    "message": "본 사이트의 Claude(Sonnet / Opus / Haiku 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 Anthropic 옵션의 부제목."
+  },
+  "providerDesc.google": {
+    "message": "본 사이트의 Gemini(Pro / Flash 시리즈) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 Google 옵션의 부제목."
+  },
+  "providerDesc.xai": {
+    "message": "본 사이트의 Grok 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 xAI 옵션의 부제목."
+  },
+  "providerDesc.deepseek": {
+    "message": "본 사이트의 DeepSeek(V3 / R1 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 DeepSeek 옵션의 부제목."
+  },
+  "providerDesc.moonshot": {
+    "message": "이 사이트의 Kimi 대화 요청을 대체합니다.",
+    "description": "제공자 드롭다운에서 Moonshot (Kimi) 옵션의 부제목."
+  },
+  "providerDesc.zhipu": {
+    "message": "이 사이트의 GLM 시리즈 대화 요청을 대체합니다.",
+    "description": "제공자 드롭다운에서 Zhipu (GLM) 옵션의 부제목."
   }
 }

@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "プラットフォームのアカウントプールの代わりに、自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用します。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流のサービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
+    "message": "自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用して、プラットフォームのアカウントプールを置き換えます。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流のサービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
     "description": ""
   },
   "field.provider": {
@@ -24,11 +24,11 @@
     "description": ""
   },
   "field.label": {
-    "message": "備考",
+    "message": "メモ",
     "description": ""
   },
   "field.labelPlaceholder": {
-    "message": "例: \"私の作業番号\"（任意）",
+    "message": "\"私の作業番号\"（任意）",
     "description": ""
   },
   "field.apiKey": {
@@ -40,7 +40,7 @@
     "description": ""
   },
   "field.apiKeyEditPlaceholder": {
-    "message": "空白の場合、現在のキーを保持します",
+    "message": "空白のままにすると現在のキーが保持されます",
     "description": ""
   },
   "field.baseUrl": {
@@ -48,7 +48,7 @@
     "description": ""
   },
   "field.baseUrlPlaceholder": {
-    "message": "空白の場合、サービスプロバイダーのデフォルトアドレスを使用",
+    "message": "空白のままにするとサービスプロバイダーのデフォルトアドレスを使用します",
     "description": ""
   },
   "field.isActive": {
@@ -64,7 +64,7 @@
     "description": ""
   },
   "value.active": {
-    "message": "有効",
+    "message": "有効中",
     "description": ""
   },
   "value.inactive": {
@@ -132,23 +132,79 @@
     "description": ""
   },
   "message.empty": {
-    "message": "カスタム API キーはまだ設定されていません。「API キーを追加」をクリックして、自分のサービスプロバイダーアカウントを使用してください。",
+    "message": "カスタム API キーがまだ設定されていません。「API キーを追加」をクリックして、自分のサービスプロバイダーアカウントを使用してください。",
     "description": ""
   },
   "message.advancedToggle": {
-    "message": "高度なオプションを表示",
+    "message": "詳細オプションを表示",
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなど）。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
+    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなど）を指定します。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
     "description": ""
   },
   "badge.active": {
-    "message": "{provider} キーを使用中",
+    "message": "あなたの {provider} キーを使用中",
     "description": ""
   },
   "badge.tooltip": {
     "message": "この対話ではあなた自身の {provider} API キーを使用しており、費用は {provider} アカウントで精算され、プラットフォームの残高は減少しません。",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "カスタム API キーを管理するにはクリックしてください",
+    "description": "チャットページの BYOK バッジをクリックした後のヒント：API キータブの設定ダイアログを開くためにクリックします。"
+  },
+  "button.testConnection": {
+    "message": "保存して接続をテスト",
+    "description": "新規/編集ダイアログ内のボタン——資格情報を保存した後、上流の /models を呼び出して接続性を確認します。"
+  },
+  "test.success": {
+    "message": "接続性テスト成功",
+    "description": "接続性テスト結果セクションの成功タイトル。"
+  },
+  "test.failure": {
+    "message": "接続性テスト失敗",
+    "description": "接続性テスト結果セクションの失敗タイトル。"
+  },
+  "test.endpoint": {
+    "message": "リクエストアドレス",
+    "description": "テスト結果詳細のリクエスト URL ラベル。"
+  },
+  "test.status": {
+    "message": "ステータスコード",
+    "description": "テスト結果詳細の HTTP ステータスコードラベル。"
+  },
+  "test.message": {
+    "message": "上流の応答",
+    "description": "テスト結果詳細の上流エラー/メッセージテキストラベル。"
+  },
+  "providerDesc.openai": {
+    "message": "当サイトの ChatGPT（GPT-4 / GPT-4o / o1 / o3 など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の OpenAI オプションのサブタイトル。"
+  },
+  "providerDesc.anthropic": {
+    "message": "当サイトの Claude（Sonnet / Opus / Haiku など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の Anthropic オプションのサブタイトル。"
+  },
+  "providerDesc.google": {
+    "message": "当サイトの Gemini（Pro / Flash シリーズ）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の Google オプションのサブタイトル。"
+  },
+  "providerDesc.xai": {
+    "message": "当サイトの Grok の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の xAI オプションのサブタイトル。"
+  },
+  "providerDesc.deepseek": {
+    "message": "当サイトの DeepSeek（V3 / R1 など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の DeepSeek オプションのサブタイトル。"
+  },
+  "providerDesc.moonshot": {
+    "message": "このサイトの Kimi の対話リクエストを置き換えます。",
+    "description": "提供者のドロップダウンにある Moonshot (Kimi) オプションのサブタイトル。"
+  },
+  "providerDesc.zhipu": {
+    "message": "当サイトのGLMシリーズの対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウンにあるZhipu (GLM)オプションのサブタイトル。"
   }
 }

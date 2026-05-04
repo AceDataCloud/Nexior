@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Verwende deinen eigenen Anbieter-API-Schlüssel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) anstelle des Plattformkontopools. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt.",
+    "message": "Verwende deinen eigenen Anbieter-API-Schlüssel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu), um den Plattformkonto-Pool zu ersetzen. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt.",
     "description": ""
   },
   "field.provider": {
@@ -24,11 +24,11 @@
     "description": ""
   },
   "field.label": {
-    "message": "Bemerkung",
+    "message": "Notiz",
     "description": ""
   },
   "field.labelPlaceholder": {
-    "message": "z. B. \"Meine Arbeitsnummer\" (optional)",
+    "message": "z. B. \"Mein Arbeitskonto\" (optional)",
     "description": ""
   },
   "field.apiKey": {
@@ -52,7 +52,7 @@
     "description": ""
   },
   "field.isActive": {
-    "message": "Aktiv",
+    "message": "Aktivieren",
     "description": ""
   },
   "field.lastUsedAt": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Bestätigen Sie das Löschen dieses API-Schlüssels? Zukünftige {provider}-Modellanfragen werden auf die Standardanbieter zurückfallen.",
+    "message": "Möchten Sie diesen API-Schlüssel wirklich löschen? Zukünftige Dialoge mit dem {provider}-Modell werden auf den Standardanbieter zurückfallen.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -148,7 +148,63 @@
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Dieses Gespräch verwendet deinen eigenen {provider}-API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten.",
+    "message": "Dieser Dialog verwendet deinen eigenen {provider} API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten.",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "Klicken Sie hier, um Ihre benutzerdefinierten API-Schlüssel zu verwalten",
+    "description": "Hinweis nach dem Klicken auf das BYOK-Abzeichen auf der Chat-Seite: Klicken Sie, um den API-Schlüssel-Tab im Einstellungsdialog zu öffnen."
+  },
+  "button.testConnection": {
+    "message": "Speichern und Verbindung testen",
+    "description": "Schaltfläche im Hinzufügen/Bearbeiten-Dialog – zuerst Anmeldeinformationen speichern, dann /models aufrufen, um die Konnektivität zu überprüfen."
+  },
+  "test.success": {
+    "message": "Konnektivitätstest erfolgreich",
+    "description": "Erfolgstitel im Bereich der Testergebnisse."
+  },
+  "test.failure": {
+    "message": "Konnektivitätstest fehlgeschlagen",
+    "description": "Fehlertitel im Bereich der Testergebnisse."
+  },
+  "test.endpoint": {
+    "message": "Anforderungsadresse",
+    "description": "Label für die Anforderungs-URL im Detailbereich der Testergebnisse."
+  },
+  "test.status": {
+    "message": "Statuscode",
+    "description": "Label für den HTTP-Statuscode im Detailbereich der Testergebnisse."
+  },
+  "test.message": {
+    "message": "Antwort des Anbieters",
+    "description": "Label für die Anbieterfehler-/Hinweismeldung im Detailbereich der Testergebnisse."
+  },
+  "providerDesc.openai": {
+    "message": "Ersetzt die ChatGPT-Anfragen (GPT-4 / GPT-4o / o1 / o3 usw.) auf dieser Seite.",
+    "description": "Untertitel für die OpenAI-Option im Anbieter-Dropdown."
+  },
+  "providerDesc.anthropic": {
+    "message": "Ersetzt die Claude-Anfragen (Sonnet / Opus / Haiku usw.) auf dieser Seite.",
+    "description": "Untertitel für die Anthropic-Option im Anbieter-Dropdown."
+  },
+  "providerDesc.google": {
+    "message": "Ersetzt die Gemini-Anfragen (Pro / Flash-Serie) auf dieser Seite.",
+    "description": "Untertitel für die Google-Option im Anbieter-Dropdown."
+  },
+  "providerDesc.xai": {
+    "message": "Ersetzt die Grok-Anfragen auf dieser Seite.",
+    "description": "Untertitel für die xAI-Option im Anbieter-Dropdown."
+  },
+  "providerDesc.deepseek": {
+    "message": "Ersetzt die DeepSeek-Anfragen (V3 / R1 usw.) auf dieser Seite.",
+    "description": "Untertitel für die DeepSeek-Option im Anbieter-Dropdown."
+  },
+  "providerDesc.moonshot": {
+    "message": "Ersetzt die Kimi-Anfrage auf dieser Seite.",
+    "description": "Untertitel für die Moonshot (Kimi) Option im Anbieter-Dropdown."
+  },
+  "providerDesc.zhipu": {
+    "message": "Ersetzt die Dialoganfragen der GLM-Serie auf dieser Seite.",
+    "description": "Untertitel für die Zhipu (GLM) Option im Anbieter-Dropdown."
   }
 }

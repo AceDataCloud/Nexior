@@ -85,7 +85,7 @@
   },
   "button.console": {
     "message": "コンソール",
-    "description": "ボタンのテキスト、コンソールページを表示し、ウェブページの特定の内容を制御するため"
+    "description": "ボタンのテキスト、特定の内容を制御するためのコンソールページを表示する"
   },
   "button.learn": {
     "message": "学ぶ",
@@ -164,12 +164,12 @@
     "description": "ボタンのテキスト、特定の内容を作成するため"
   },
   "button.referralEarnings": {
-    "message": "紹介収入",
-    "description": "ボタン内のテキストで、紹介収入を表示し、ユーザーが他の人を招待してこのサービスを利用することでお金を稼げることを意味します"
+    "message": "紹介報酬",
+    "description": "ボタン内のテキストで、紹介報酬を表示します。ユーザーが他の人をこのサービスに招待することで収益を得られることを意味します"
   },
   "button.finish": {
     "message": "完了",
-    "description": "特定の操作を完了するためのボタン内のテキスト"
+    "description": "操作を完了するためのボタン内のテキスト"
   },
   "entity.id": {
     "message": "ID",
@@ -181,7 +181,7 @@
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "ウェブサイト名で、翻訳不要で'Ace Data Cloud'のままにします"
+    "description": "ウェブサイト名、翻訳不要で'Ace Data Cloud'のまま"
   },
   "entity.copyright": {
     "message": "著作権",
@@ -201,7 +201,7 @@
   },
   "entity.status": {
     "message": "ステータス",
-    "description": "エンティティのステータス"
+    "description": "エンティティの状態"
   },
   "status.loading": {
     "message": "読み込み中...",
@@ -225,7 +225,7 @@
   },
   "entity.order": {
     "message": "注文",
-    "description": "エンティティの注文で、金銭やサービス情報が含まれ、ユーザーが支払う必要があるもの"
+    "description": "エンティティの注文、注文には金銭やサービス情報が含まれ、ユーザーが支払う必要がある"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。新しいタスクを始めましょう～",
@@ -257,22 +257,22 @@
   },
   "message.mobileDirectInstall": {
     "message": "直接APKインストール",
-    "description": "Android端末での直接APKインストール方式を説明するためのテキスト"
+    "description": "Android端末が直接APKインストール方式であることを説明するためのテキスト"
   },
   "message.mobileLatestRelease": {
     "message": "現在の公開バージョン",
     "description": "現在表示されているのが最新の公開バージョンであることを説明するためのテキスト"
   },
   "message.mobileSharedAccount": {
-    "message": "ウェブ版とアカウントとクレジットを共有",
-    "description": "モバイル版とウェブ版がアカウントを共有することを説明するためのテキスト"
+    "message": "ウェブ版と共用のアカウントとクレジット",
+    "description": "モバイル版とウェブ版が共用のアカウントであることを説明するためのテキスト"
   },
   "message.mobileIosHint": {
     "message": "iPhoneとiPadに対応。オンラインで直接インストールできます。システムがブロックする場合は、IPAをダウンロードしてから配布することもできます。",
     "description": "iOSダウンロードカードの説明"
   },
   "message.mobileIosPending": {
-    "message": "iOSインストールパッケージはまだダウンロードできません。Appleの証明書とプロファイルを補完後に提供します。",
+    "message": "iOSインストールパッケージはまだダウンロード可能ではありません。Apple証明書とプロファイルを補完後に提供されます。",
     "description": "iOSインストールパッケージがまだ利用できないときのヒント"
   },
   "message.mobileInstallNote": {
@@ -285,58 +285,58 @@
   },
   "title.mobileFastAccess": {
     "message": "アプリストアを経由せずに迅速にアクセス",
-    "description": "ダウンロードページの利点カードのタイトルで、迅速なインストールを強調"
+    "description": "ダウンロードページの利点カードのタイトル、迅速なインストールを強調"
   },
   "title.mobileTrustedRelease": {
     "message": "バージョンを集中管理し、安定した配信",
-    "description": "ダウンロードページの利点カードのタイトルで、バージョンと配信の安定性を強調"
+    "description": "ダウンロードページの利点カードのタイトル、バージョンと配信の安定性を強調"
   },
   "title.mobileUnifiedExperience": {
     "message": "モバイル版とウェブ版の体験を統一",
-    "description": "ダウンロードページの利点カードのタイトルで、統一された体験を強調"
+    "description": "ダウンロードページの利点カードのタイトル、統一された体験を強調"
   },
   "nav.mobileApp": {
-    "message": "モバイル版",
+    "message": "モバイルアプリ",
     "description": "ナビゲーション内のモバイルアプリのダウンロード入口"
   },
   "message.mobileFastAccess": {
-    "message": "ユーザーはスマートフォンでQRコードをスキャンして直接インストールすることも、デスクトップでAPKをダウンロードしてチームメンバーに配布することもできます。迅速な試用と内部テストが必要なシーンに適しています。",
-    "description": "ダウンロードページの利点説明で、迅速な接続を強調"
+    "message": "ユーザーはスマートフォンでQRコードをスキャンして直接インストールすることも、デスクトップでAPKをダウンロードしてチームメンバーに配布することもできます。迅速な試用と内部テストに適しています。",
+    "description": "ダウンロードページの利点説明、迅速なアクセスを強調"
   },
   "message.mobileTrustedRelease": {
-    "message": "ダウンロード入口が同じページに集中しており、バージョン番号、プラットフォームの状態、インストール方法が一目でわかり、リンクの分散によるコミュニケーションコストを削減します。",
-    "description": "ダウンロードページの利点説明で、統一された配信を強調"
+    "message": "ダウンロード入口が同じページに集中しており、バージョン番号、プラットフォームの状態、インストール方法が一目でわかります。リンクの分散によるコミュニケーションコストを削減します。",
+    "description": "ダウンロードページの利点説明、統一された配信を強調"
   },
   "message.mobileUnifiedExperience": {
-    "message": "ログイン後のアカウント体系、限度額、サービス入口はWebと一致し、デスクトップとモバイル間のシームレスな切り替えを可能にします。",
+    "message": "ログイン後のアカウント体系、クレジット、サービス入口がWebと一致しており、ユーザーがデスクトップとモバイル間でシームレスに切り替えられます。",
     "description": "ダウンロードページの利点説明、統一されたアカウント体験を強調"
   },
   "message.remainingAmount": {
-    "message": "残高",
-    "description": "サービスの残りの金額を表示するため"
+    "message": "残り金額",
+    "description": "サービスの残り金額を表示するためのテキスト"
   },
   "message.copied": {
     "message": "コピー成功",
-    "description": "内容が成功裏にコピーされたことを示すメッセージ"
+    "description": "内容が正常にコピーされたことを示すメッセージ"
   },
   "message.restart": {
     "message": "再生成",
-    "description": "内容を再生成するためのメッセージ"
+    "description": "内容が正常にコピーされたことを示すメッセージ"
   },
   "message.confirmDelete": {
     "message": "本当に削除しますか？",
-    "description": "ユーザーが特定の内容を削除することを確認するメッセージ"
+    "description": "ユーザーがコンテンツを削除することを確認するメッセージ"
   },
   "message.expiredAt": {
     "message": "有効期限",
-    "description": "サービスの有効期限を表示するため"
+    "description": "サービスの有効期限を表示するためのメッセージ"
   },
   "message.alert": {
     "message": "警告",
     "description": "ユーザーに警告するメッセージ"
   },
   "message.info": {
-    "message": "お知らせ",
+    "message": "情報",
     "description": "情報を表示するメッセージ"
   },
   "message.free": {
@@ -376,15 +376,15 @@
     "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、コンテンツページを示す"
   },
   "nav.category": {
-    "message": "カテゴリー",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、カテゴリーページを示す"
+    "message": "カテゴリ",
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、カテゴリページを示す"
   },
   "nav.service": {
     "message": "すべてのサービス",
     "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、サービスページを示す"
   },
   "nav.profile": {
-    "message": "私",
+    "message": "プロフィール",
     "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、プロフィールページを示す"
   },
   "nav.products": {
@@ -400,8 +400,8 @@
     "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、APIプラットフォームページを示す"
   },
   "nav.document": {
-    "message": "開発文書",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、文書ページを示す"
+    "message": "開発ドキュメント",
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、ドキュメントページを示す"
   },
   "nav.console": {
     "message": "コンソール",
@@ -409,59 +409,59 @@
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、ChatGPTページを示す。翻訳しないでください、このフィールドは'ChatGPT'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、ChatGPTページを示す。このフィールドは翻訳しないでください。'ChatGPT'のままにしてください。"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、DeepSeekページを示す。翻訳しないでください、このフィールドは'DeepSeek'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、DeepSeekページを示す。このフィールドは翻訳しないでください。'DeepSeek'のままにしてください。"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Grokページを示す。翻訳しないでください、このフィールドは'Grok'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Grokページを示す。このフィールドは翻訳しないでください。'Grok'のままにしてください。"
   },
   "nav.chat": {
     "message": "チャット",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、チャットページを示す。翻訳しないでください、このフィールドは'Chat'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、チャットページを示す。このフィールドは翻訳しないでください。'Chat'のままにしてください。"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Veoページを示す。翻訳しないでください、このフィールドは'Veo'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、チャットページを示す。このフィールドは翻訳しないでください。'Veo'のままにしてください。"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Soraページを示す。翻訳しないでください、このフィールドは'Sora'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、チャットページを示す。このフィールドは翻訳しないでください。'Sora'のままにしてください。"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Midjourneyページを示す。翻訳しないでください、このフィールドは'Midjourney'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Midjourneyページを示す。このフィールドは翻訳しないでください。'Midjourney'のままにしてください。"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、QRArtページを示す。翻訳しないでください、このフィールドは'QRArt'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、QRアートページを示す。このフィールドは翻訳しないでください。'QRArt'のままにしてください。"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Sunoページを示す。翻訳しないでください、このフィールドは'Suno'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Sunoページを示す。このフィールドは翻訳しないでください。'Suno'のままにしてください。"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Pixverseページを示す。翻訳しないでください、このフィールドは'Pixverse'のままにしてください"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Pixverseページを示す。このフィールドは翻訳しないでください。'Pixverse'のままにしてください。"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "ウェブサイトのナビゲーションバーのテキストで、Fluxページを表示するためのものです。このフィールドは翻訳せず、'Flux'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Fluxページを示す。このフィールドは翻訳しないでください。'Flux'のままにしてください。"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "ウェブサイトのナビゲーションバーのテキストで、Nano Bananaページを表示するためのものです。このフィールドは翻訳せず、'Nano Banana'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、Nano Bananaページを示す。このフィールドは翻訳しないでください。'Nano Banana'のままにしてください。"
   },
   "nav.openaiimage": {
     "message": "OpenAI Image",
-    "description": "ウェブサイトのナビゲーションバーのテキストで、OpenAI Imageページを表示するためのものです。このフィールドは翻訳せず、'OpenAI Image'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、OpenAI Imageページを示す。このフィールドは翻訳しないでください。'OpenAI Image'のままにしてください。"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "ウェブサイトのナビゲーションバーのテキストで、SeeDreamページを表示するためのものです。このフィールドは翻訳せず、'SeeDream'のままにしてください。"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキストで、SeeDreamページを示します。このフィールドは翻訳せず、'SeeDream'のままにしてください。"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -585,42 +585,42 @@
   },
   "title.distribution": {
     "message": "推薦収益",
-    "description": "表示推薦収入のページタイトル、ユーザーが他の人を招待してこのサービスを利用することでお金を稼げることを意味します"
+    "description": "推薦収入を表示するページのタイトルで、ユーザーが他の人を招待してサービスを利用させることでお金を稼げることを意味します。"
   },
   "title.site": {
     "message": "サイト設定",
-    "description": "サイト設定のページタイトル"
+    "description": "サイト設定を表示するページのタイトルです。"
   },
   "title.distributionHistory": {
     "message": "推薦履歴",
-    "description": "推薦履歴のページタイトル"
+    "description": "推薦履歴を表示するページのタイトルです。"
   },
   "title.invitee": {
     "message": "招待者",
-    "description": "招待者のページタイトル"
+    "description": "招待者を表示するページのタイトルです。"
   },
   "title.allUsages": {
     "message": "使用履歴",
-    "description": "APIサービスのすべての使用のページタイトル"
+    "description": "APIサービスのすべての使用を表示するページのタイトルです。"
   },
   "title.allCredentials": {
     "message": "キー",
-    "description": "すべての認証情報のページタイトル、認証情報はAPIへのアクセスに使用されます"
+    "description": "すべての認証情報を表示するページのタイトルで、認証情報はAPIへのアクセスに使用されます。"
   },
   "about.title1": {
     "message": "お問い合わせ",
-    "description": "連絡先情報のセクションタイトル"
+    "description": "連絡先情報を表示する部分のタイトル"
   },
   "about.title2": {
     "message": "リソース",
-    "description": "リンクのセクションタイトル"
+    "description": "リンクの部分タイトル"
   },
   "about.title3": {
     "message": "リンク",
-    "description": "サポート情報のセクションタイトル"
+    "description": "サポート情報の部分タイトル"
   },
   "about.address": {
-    "message": "アメリカ合衆国デラウェア州ミドルタウン北広場651号201室",
+    "message": "アメリカ合衆国デラウェア州ミドルタウン北広街651号201室",
     "description": "会社の住所"
   },
   "about.email": {
@@ -673,35 +673,43 @@
   },
   "theme.system": {
     "message": "システム",
-    "description": "システムテーマの名称、システム設定に基づいて自動的にテーマを切り替えます"
+    "description": "システム設定に基づいて自動的にテーマを切り替えるシステムテーマの名称"
   },
   "settings.general": {
     "message": "一般設定",
-    "description": "設定ページの一般設定セクションのタイトル"
+    "description": "設定ページの一般設定部分のタイトル"
   },
   "settings.language": {
     "message": "言語",
-    "description": "設定ページの言語設定セクションのタイトル"
+    "description": "設定ページの言語設定部分のタイトル"
   },
   "settings.theme": {
     "message": "テーマ",
-    "description": "設定ページのテーマ設定セクションのタイトル"
+    "description": "設定ページのテーマ設定部分のタイトル"
   },
   "settings.seo": {
     "message": "SEO設定",
-    "description": "設定ページのSEO設定セクションのタイトル"
+    "description": "設定ページのSEO設定部分のタイトル"
   },
   "settings.site": {
     "message": "サイト設定",
-    "description": "設定ページのサイト設定セクションのタイトル"
+    "description": "設定ページのサイト設定部分のタイトル"
   },
   "settings.distribution": {
     "message": "配信設定",
-    "description": "設定ページの配信設定セクションのタイトル"
+    "description": "設定ページの配信設定部分のタイトル"
   },
   "settings.function": {
     "message": "機能設定",
-    "description": "設定ページの機能設定セクションのタイトル"
+    "description": "設定ページの機能設定部分のタイトル"
+  },
+  "settings.apiKey": {
+    "message": "APIキー",
+    "description": "設定ページのサイドバーのAPIキーラベル - ユーザー提供（BYOK）の上流サービスプロバイダーAPIキー管理"
+  },
+  "field.operations": {
+    "message": "操作",
+    "description": "一般的な列タイトル：表の行の操作ボタン列（編集、削除など）"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -717,23 +725,23 @@
   },
   "button.testEnv": {
     "message": "テスト環境",
-    "description": "ボタン内のテキスト、テスト環境に切り替えるために使用されます"
+    "description": "テスト環境に切り替えるためのボタン内のテキスト"
   },
   "button.upload": {
     "message": "アップロード",
-    "description": "ボタン内のテキスト、ファイルやコンテンツをアップロードするために使用されます"
+    "description": "ファイルやコンテンツをアップロードするためのボタン内のテキスト"
   },
   "message.cnbeian": {
     "message": "中国区の備案",
     "description": "中国区の備案に関する説明情報"
   },
   "message.copyFailed": {
-    "message": "コピー失敗",
-    "description": "内容のコピーに失敗したメッセージを表示します"
+    "message": "コピーに失敗しました",
+    "description": "内容のコピーに失敗したことを示すメッセージ"
   },
   "nav.tryNow": {
     "message": "今すぐ試す",
-    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、ユーザーにサービスを試してもらうためのものです"
+    "description": "ウェブサイトのナビゲーションバーに表示されるテキスト、ユーザーにサービスを試してもらうためのもの"
   },
   "title.coin": {
     "message": "暗号通貨",
@@ -756,7 +764,7 @@
     "description": "顧客の職業"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloudは私たちのチームに素晴らしいサービスを提供し、生産性を向上させるのに役立ちました。とても気に入っています！",
+    "message": "Ace Data Cloudは私たちのチームに素晴らしいサービスを提供し、生産性を向上させてくれました。とても気に入っています！",
     "description": "顧客の評価"
   },
   "customers.name2": {
@@ -768,7 +776,7 @@
     "description": "顧客の職業"
   },
   "customers.comment2": {
-    "message": "Ace Data Cloudは優れた統合プラットフォームで、サービスの質が高いです。",
+    "message": "Ace Data Cloudは素晴らしい統合プラットフォームで、サービスの質が優れています。",
     "description": "顧客の評価"
   },
   "customers.name3": {
@@ -780,7 +788,7 @@
     "description": "顧客の職業"
   },
   "customers.comment3": {
-    "message": "Ace Data Cloudのサービスが好きです。使いやすく、価格も手頃で、ますます良くなってほしいです！",
+    "message": "Ace Data Cloudのサービスが大好きです。使いやすく、価格も手頃で、ますます良くなってほしいです！",
     "description": "顧客の評価"
   },
   "nav.github": {
@@ -789,39 +797,39 @@
   },
   "settings.github": {
     "message": "ソースコード",
-    "description": "GitHubでソースコードを見るためのリンク"
+    "description": "GitHubでソースコードを表示するリンク"
   },
   "settings.about": {
-    "message": "について",
-    "description": "設定ページの「について」セクションのタイトル"
+    "message": "概要",
+    "description": "設定ページの概要セクションのタイトル"
   },
   "settings.poweredBy": {
     "message": "オープンソースプロジェクト",
-    "description": "「について」ページで当サイトが基づいているオープンソースプロジェクトのタイトル"
+    "description": "概要ページで当サイトが基づいているオープンソースプロジェクトのタイトル"
   },
   "settings.poweredByTip": {
-    "message": "当サイトはNexiorオープンソースプロジェクトに基づいて構築されており、コードは完全にオープンソースです。",
-    "description": "「について」ページで当サイトが基づいているオープンソースプロジェクトの説明"
+    "message": "当サイトはNexiorオープンソースプロジェクトに基づいており、コードは完全にオープンソースです。",
+    "description": "概要ページで当サイトが基づいているオープンソースプロジェクトの説明"
   },
   "settings.apiService": {
     "message": "APIサービス",
-    "description": "「について」ページでAPIサービス提供者のタイトル"
+    "description": "概要ページでAPIサービス提供者のタイトル"
   },
   "settings.apiServiceTip": {
     "message": "当サイトのAPIサービスはAce Data Cloudが提供しています。",
-    "description": "「について」ページでAPIサービス提供者の説明"
+    "description": "概要ページでAPIサービス提供者の説明"
   },
   "settings.buildYourOwn": {
     "message": "同様のサイトを構築",
-    "description": "「について」ページでユーザーが同様のサイトを構築できることを示すタイトル"
+    "description": "概要ページでユーザーが同様のサイトを構築できることを示すタイトル"
   },
   "settings.buildYourOwnTip": {
     "message": "同じAIサイトを構築したいですか？デプロイサポートを得るためにお問い合わせください。",
-    "description": "「について」ページで同様のサイトを構築するための説明"
+    "description": "概要ページで同様のサイトを構築することの説明"
   },
   "settings.contactUs": {
-    "message": "カスタマーサポートに連絡",
-    "description": "カスタマーサポートボタンのテキスト"
+    "message": "サポートに連絡",
+    "description": "サポートに連絡するボタンのテキスト"
   },
   "message.viewOnGithub": {
     "message": "GitHubで見る",
@@ -837,7 +845,7 @@
   },
   "message.notFoundEyebrow": {
     "message": "エラーが発生しました",
-    "description": "404ページの上部の小さなラベルテキスト"
+    "description": "404ページの上部の小ラベルテキスト"
   },
   "message.notFoundPath": {
     "message": "リクエストパス",

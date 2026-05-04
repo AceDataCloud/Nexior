@@ -1,4 +1,284 @@
 {
+  "tab.videoGeneration": {
+    "message": "Videon luonti",
+    "description": "Tab-otsikko: Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "Liikeohjaus",
+    "description": "Tab-otsikko: Motion Control"
+  },
+  "tab.avatar": {
+    "message": "Avatar",
+    "description": "Tab-otsikko: Avatar / AI-Human"
+  },
+  "tab.comingSoon": {
+    "message": "Tulossa pian",
+    "description": "Tulossa pian -välilehden otsikko"
+  },
+  "tab.avatarComingSoon": {
+    "message": "Avatar (kasvot + äänen synteesi) tulossa pian, pysykää kuulolla",
+    "description": "Avatar-välilehden poistettu tooltip-kuvaus"
+  },
+  "name.motionImage": {
+    "message": "Henkilökuva",
+    "description": "Liikeohjauksessa käytettävä henkilökuva"
+  },
+  "name.motionVideo": {
+    "message": "Liikevideo",
+    "description": "Liikeohjauksessa käytettävä viitevideo"
+  },
+  "name.motionPrompt": {
+    "message": "Lisäohjeet (valinnainen)",
+    "description": "Liikeohjauksessa käytettävät lisäohjeet"
+  },
+  "name.characterOrientation": {
+    "message": "Henkilön suunta",
+    "description": "Henkilön suunta -kenttä"
+  },
+  "name.orientationImage": {
+    "message": "Seuraa kuvaa",
+    "description": "Henkilön suunta -vaihtoehto: Seuraa kuvaa"
+  },
+  "name.orientationVideo": {
+    "message": "Seuraa videota",
+    "description": "Henkilön suunta -vaihtoehto: Seuraa videota"
+  },
+  "name.keepOriginalSound": {
+    "message": "Säilytä alkuperäinen ääni",
+    "description": "keep_original_sound-kytkin"
+  },
+  "description.motionImage": {
+    "message": "Lataa henkilökuva, jota käytetään videon henkilöiden, taustojen ja muiden elementtien viitteenä",
+    "description": "motion image_url -kuvaus"
+  },
+  "description.motionVideo": {
+    "message": "Lataa liikevideo, jonka mukaan videon henkilön liikkeet toteutetaan (MP4 / MOV, ≤1 minuutti, ≤1 GB)",
+    "description": "motion video_url -kuvaus"
+  },
+  "description.motionPrompt": {
+    "message": "Valinnainen. Voit sisältää positiivisia ja negatiivisia kuvastoja, jotka auttavat luomaan vaikutuksia.",
+    "description": "motion prompt -kuvaus"
+  },
+  "description.characterOrientation": {
+    "message": "Valitessasi 'Seuraa videota', monimutkaiset liikkeet toimivat paremmin; valitessasi 'Seuraa kuvaa', henkilön suunta vastaa viitteen kuvaa, ja kameran liike toimii paremmin.",
+    "description": "character_orientation -kuvaus"
+  },
+  "description.motionMode": {
+    "message": "std suorituskyky etusijalla, pro kuvanlaatu etusijalla",
+    "description": "motion mode -kuvaus"
+  },
+  "description.keepOriginalSound": {
+    "message": "Kun tämä on päällä, alkuperäinen ääni säilytetään viitevideossa; pois päältä ollessa videossa ei ole alkuperäistä ääntä.",
+    "description": "keep_original_sound -kuvaus"
+  },
+  "placeholder.motionPrompt": {
+    "message": "Esimerkiksi: joku hyppää. Valinnainen.",
+    "description": "motion prompt -paikkamerkki"
+  },
+  "button.generateMotion": {
+    "message": "Luo liikevideo",
+    "description": "Liikeohjauksen luontipainike"
+  },
+  "message.motionMissingInputs": {
+    "message": "Lataa sekä henkilökuva että liikevideo",
+    "description": "Liikeohjauksen puuttuvista syötteistä ilmoittava viesti"
+  },
+  "inspiration.title": {
+    "message": "Inspiraatio ja esiasetukset",
+    "description": "Inspiration-laatikon otsikko"
+  },
+  "inspiration.openButton": {
+    "message": "Inspiraatio",
+    "description": "Inspiration-laatikon avauspainike"
+  },
+  "inspiration.hint": {
+    "message": "Napsauta fraasia lisätäksesi sen ohjeisiin; napsauta uudelleen poistaaksesi sen.",
+    "description": "Inspiration-laatikon yläosan käyttöohje"
+  },
+  "inspiration.empty": {
+    "message": "Ei saatavilla olevia esiasetuksia",
+    "description": "Inspiration-laatikon tyhjät tilat"
+  },
+  "inspiration.selectedSummary": {
+    "message": "Valittu {count} kohdetta",
+    "description": "Valittujen esiasetusten määrä"
+  },
+  "inspiration.clearSelected": {
+    "message": "Tyhjennä kaikki",
+    "description": "Kaikkien valittujen esiasetusten tyhjennyspainike"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "Kameran liikkeet",
+    "description": "Inspiration-ryhmä: Kameran liikkeet"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "Liikenopeus",
+    "description": "Inspiration-ryhmä: Liikenopeus"
+  },
+  "inspiration.group.shotType": {
+    "message": "Kameran kuvakulma",
+    "description": "Inspiration-ryhmä: Kuvakulma / näkökulma"
+  },
+  "inspiration.group.light": {
+    "message": "Valo ja varjo",
+    "description": "Inspiration-ryhmä: Valo ja varjo"
+  },
+  "inspiration.group.frame": {
+    "message": "Kuva",
+    "description": "Inspiration-ryhmä: Kuva / sommittelu"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "Tunnelma",
+    "description": "Inspiration-ryhmä: Tunnelma / tyyli"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "Kamera kiertää kohteen ympäri",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "Kamera paikallaan",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "Käsikamera",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "Kamera zoomaa ulos",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "Kamera zoomaa sisään",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "Kamera seuraa kohteen liikettä",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "Kamera siirtyy oikealle",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "Kamera kallistuu ylös",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "Kamera kallistuu alas",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "Kamera kiertää kohteen ympäri",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "Kameran liike hidas",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "Kameran liike keskinopea",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "Kameran liike nopea",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "Lähikuva",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "Keskikuva",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "Kaukokuva",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "Alakulma alhaalta",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "Korkea kulma",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "Matala syvyys",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "Etukulmasta",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "Sivuprofiili",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "Lähiotoksia",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "Drone-näkymä",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "Auringonvalo",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "Pehmeä valo",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "Neonvalo",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "Lämmin valo",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "Luonnonvalo",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "Kynttilänvalo",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "Kaupungin yövalaistus",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "Rikkaat yksityiskohdat",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "Yksinkertainen tausta",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "Salaperäinen tunnelma",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "Rauhallinen tunnelma",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "Lämminhenkinen",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "Elävä",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "Värikäs",
+    "description": ""
+  },
   "name.taskId": {
     "message": "Tehtävä ID",
     "description": "Tehtävän ID"
@@ -8,15 +288,71 @@
     "description": "Kling-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.modeStd": {
-    "message": "Standardi",
-    "description": "Kling-videon standarditila"
+    "message": "Standardi (720p)",
+    "description": "Kling-videon standarditila (720p)"
   },
   "name.modePro": {
-    "message": "Korkea laatu",
-    "description": "Kling-videon korkealaatuinen tila"
+    "message": "Korkea laatu (1080p)",
+    "description": "Kling-videon korkean laadun tila (1080p)"
+  },
+  "name.mode4k": {
+    "message": "Natiivinen 4K",
+    "description": "Kling 4K -tila (vain v3 / v3-Omni tukee)"
+  },
+  "name.cameraControl": {
+    "message": "Kameran ohjaus",
+    "description": "Kameran ohjaustyyppi ja parametrit"
+  },
+  "name.cameraTypeNone": {
+    "message": "Ei käytössä",
+    "description": "Ei käytä kameran ohjausta"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Mukautettu (6 ulottuvuutta)",
+    "description": "Käyttää mukautettuja kuuden ulottuvuuden parametreja"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Alas ja taakse",
+    "description": "Esiasetettu kameran liike: alas ja taakse"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Eteenpäin ja ylös",
+    "description": "Esiasetettu kameran liike: eteenpäin ja ylös"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Vasemmalle kääntyminen ja eteenpäin",
+    "description": "Esiasetettu kameran liike: vasemmalle kääntyminen ja eteenpäin"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Oikealle kääntyminen ja eteenpäin",
+    "description": "Esiasetettu kameran liike: oikealle kääntyminen ja eteenpäin"
+  },
+  "name.cc_horizontal": {
+    "message": "Vaakasuora liike",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Pystysuora liike",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Vaakasuora pan (kääntö)",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Pystysuora kallistus",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Kääntö (roll)",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoomaus",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
-    "message": "Epätosi",
+    "message": "Epäonnistuminen",
     "description": "Tehtävän epäonnistumistila"
   },
   "name.failureReason": {
@@ -44,16 +380,16 @@
     "description": "Synkronoidaanko ääni, tukee kling-v3, kling-v3-omni ja kling-v2-6 (pro-tila)"
   },
   "name.startImage": {
-    "message": "Ensimmäinen kehys",
-    "description": "Lomakekentän etiketti: ensimmäinen kehys (pidä lyhyenä, jotta se ei peitä painiketta)"
+    "message": "Ensimmäinen viitekuva",
+    "description": "Lomakkeen kenttäotsikko: ensimmäinen viitekuva"
   },
   "name.negativePrompt": {
     "message": "Negatiivinen vihje",
     "description": "Videon negatiivinen tekstivihje"
   },
   "name.endImage": {
-    "message": "Viimeinen kehys",
-    "description": "Lomakekentän etiketti: viimeinen kehys (pidä lyhyenä, jotta se ei peitä painiketta)"
+    "message": "Viimeinen viitekuva",
+    "description": "Lomakkeen kenttäotsikko: viimeinen viitekuva"
   },
   "name.videoUrl": {
     "message": "Mukautettu video",
@@ -69,15 +405,15 @@
   },
   "name.ingredients": {
     "message": "Monikuva-video",
-    "description": "Monikuva-video kytkin/etiketti (pidä lyhyenä)"
+    "description": "Monikuva-video kytkin/otsikko"
   },
   "name.model": {
     "message": "Malliversio",
-    "description": "Videon luomiseen käytettävä malliversio"
+    "description": "Malliversio, jota käytetään videon luomiseen"
   },
   "name.ratio": {
-    "message": "Videosuhde",
-    "description": "Videon luomiseen käytettävä videosuhde"
+    "message": "Videon suhde",
+    "description": "Videon suhde, jota käytetään videon luomiseen"
   },
   "name.mode": {
     "message": "Videotila",
@@ -85,7 +421,7 @@
   },
   "name.effect": {
     "message": "Videotehoste",
-    "description": "Tyyliparametrin nimi, jota käytetään eri versioiden tai tyylien mallien välillä vaihtamiseen"
+    "description": "Tyyliparametrin nimi, jota käytetään mallin eri versioiden tai tyylien välillä vaihtamiseen"
   },
   "name.ingredientsModel": {
     "message": "Ainesosamalli",
@@ -93,47 +429,83 @@
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Kling-videon luontityökalun nimi"
+    "description": "Kling-videogeneraattorin nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia oman videosi luomiseksi, ota tämä painike käyttöön.",
+    "message": "Jos haluat ladata useita kuvia oman videon luomiseksi, avaa tämä painike.",
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.imageUrl": {
-    "message": "Monikuva-videon tehtävässä on ladattava useita kuvia.",
+    "message": "Monikuvatehtävässä on ladattava useita kuvia.",
     "description": "Parametrin 'imageUrl' kuvaus"
   },
   "description.prompt": {
-    "message": "Kling-videon luomiseen käytettävä vihje",
+    "message": "Kling-videon luomiseen käytettävä ohje",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.negativePrompt": {
-    "message": "Negatiivinen tekstivihje, valinnainen, enintään 200 merkkiä",
-    "description": "Parametrin 'negativePrompt' kuvaus"
+    "message": "Negatiivinen tekstiohje, valinnainen, enintään 200 merkkiä",
+    "description": "Parametrin 'prompt' kuvaus"
   },
   "description.uploadStartImage": {
-    "message": "Lataa ensimmäinen kehyskuva viittauksena, viimeinen video perustuu ensimmäiseen kehykseen",
+    "message": "Lataa ensimmäinen kehyskuva viittauksena luomiseen, lopullinen video perustuu ensimmäiseen kehykseen",
     "description": "Latausviittausparametrin kuvaus"
   },
   "description.uploadEndImage": {
-    "message": "Lataa viimeinen kehyskuva viittauksena, viimeinen video perustuu viimeiseen kehykseen",
+    "message": "Lataa viimeinen kehyskuva viittauksena luomiseen, lopullinen video perustuu viimeiseen kehykseen",
     "description": "Latausviittausparametrin kuvaus"
   },
   "description.cfgScale": {
     "message": "Videon luomisen vapausaste, valinnainen [0,1]. Suurempi arvo tarkoittaa vahvempaa korrelaatiota.",
     "description": "Latausviittausparametrin kuvaus"
   },
+  "description.mode": {
+    "message": "std tarjoaa paremman suorituskyvyn, pro parempaa laatua; 4K tukee vain v3 / v3-Omni, eikä sitä voi käyttää yhdessä kameran ohjauksen kanssa",
+    "description": "Tilakentän yleiskuvaus"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Vain kling-v3 / kling-v3-omni tukee",
+    "description": "4K-vaihtoehdon poistamisen syy (mallin yhteensopimattomuus)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Kameran ohjaus on käytössä, eikä sitä voi käyttää 4K:n kanssa",
+    "description": "4K-vaihtoehdon poistamisen syy (kameran ohjaus asetettu)"
+  },
+  "description.duration": {
+    "message": "Normaali malli tukee vain 5/10 sekuntia; v3 / v3-Omni tukee 3/5/8/10/12/15 sekuntia",
+    "description": "Keston kentän yleiskuvaus"
+  },
+  "description.durationV3Only": {
+    "message": "Vain v3 / v3-Omni tukee",
+    "description": "Kesto-vaihtoehdon poistamisen syy"
+  },
+  "description.generateAudio": {
+    "message": "Syntetisoi äänitehosteet videon luomisen yhteydessä. Vain kling-v3 / kling-v3-omni / kling-v2-6 (pro-tila) tukee",
+    "description": "Äänitehostekytkimen kuvaus (tuettu)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Nykyinen malli ei tue synkronoitua äänitehostetta, vain kling-v3 / kling-v3-omni / kling-v2-6 (pro-tila) on käytettävissä",
+    "description": "Äänitehostekytkimen kuvaus (poistettu käytöstä)"
+  },
+  "description.cameraControl": {
+    "message": "Ohjaa kameran liikettä. Valitse 'Mukautettu' hienosäätääksesi kuudessa ulottuvuudessa, jokaiselle arvot [-1, 1]",
+    "description": "Kameran ohjauksen kuvaus"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "4K-tila on valittu, kameran ohjaus ei ole käytettävissä, vaihda std / pro-tilaan ja aktivoi sitten",
+    "description": "Kameran ohjauksen poistamisen syy"
+  },
   "status.pending": {
     "message": "Odottaa",
     "description": "Tehtävän odotustila"
   },
   "status.processing": {
-    "message": "Käsittelyssä",
+    "message": "Käsitellään",
     "description": "Tehtävän odotustila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyteäänisyötteen paikkamerkki"
+    "description": "Täyteäänien syötteen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
@@ -144,20 +516,24 @@
     "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä videon tyylin vihje, esim. moving",
-    "description": "Vihjekentän paikkateksti"
+    "message": "Syötä videon tyylin ohje, esim. moving",
+    "description": "Ohje-kentän paikkateksti"
   },
   "placeholder.negativePrompt": {
-    "message": "Syötä videon tyylin negatiivinen vihje, enintään 200 merkkiä",
-    "description": "Vihjekentän paikkateksti"
+    "message": "Syötä videon tyylin negatiivinen ohje, enintään 200 merkkiä",
+    "description": "Ohje-kentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijaintisyötteen paikkamerkki"
+    "description": "Sijainnin syötteen paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
     "description": "Leveys-korkeus-suhteen syötteen paikkamerkki"
+  },
+  "placeholder.cameraType": {
+    "message": "Ei käytössä",
+    "description": "Kameratyypin valinnan paikkamerkki"
   },
   "placeholder.preset": {
     "message": "Valitse...",
@@ -165,43 +541,43 @@
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Paikkamerkki merkki muodon syötteelle"
+    "description": "Merkintämuodon syötteen paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Paikkamerkki kiertämisen syötteelle"
+    "description": "Kääntösyötteen paikkamerkki"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Paikkamerkki alamerkin syötteelle"
+    "description": "Alamerkin syötteen paikkamerkki"
   },
   "button.precise": {
     "message": "Tarkka",
-    "description": "Kling-videon luomisen painikkeen teksti"
+    "description": "Kling-videon luomiseen käytettävä painiketeksti"
   },
   "button.creative": {
     "message": "Luova",
-    "description": "Kling-videon luomisen painikkeen teksti"
+    "description": "Kling-videon luomiseen käytettävä painiketeksti"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Kling-videon luomisen painikkeen teksti"
+    "description": "Kling-videon luomiseen käytettävä painiketeksti"
   },
   "button.extend": {
     "message": "Laajenna videota",
-    "description": "Videon laajentamisen painikkeen teksti"
+    "description": "Laajenna video -painikkeen teksti"
   },
   "button.download": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painikkeen teksti"
+    "description": "Lataa video -painikkeen teksti"
   },
   "button.uploadImageUrl": {
     "message": "Lataa",
-    "description": "Kuvan lataamisen painikkeen teksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
+    "description": "Kuvien lataamiseen tarkoitettu painikkeen teksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painikkeen teksti"
+    "description": "Videon lataamiseen tarkoitettu painikkeen teksti"
   },
   "button.uploadReferences": {
     "message": "Lataa",
@@ -213,11 +589,15 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Kuva ladattu onnistuneesti",
-    "description": "Onnistuneen kuvan lataamisen onnistumisviesti"
+    "description": "Onnistuneesta kuvien lataamisesta ilmoittava viesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen myöhemmin",
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
     "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
+  },
+  "message.endImageRequiresStart": {
+    "message": "Lataa ensin aloituskuva ennen loppukuvan käyttöä",
+    "description": "Virheilmoitus, kun käyttäjä on ladannut vain loppukuvan ilman aloituskuvaa"
   },
   "message.startingTask": {
     "message": "Aloitetaan tehtävä...",
@@ -225,35 +605,35 @@
   },
   "message.startTaskSuccess": {
     "message": "Tehtävä käynnistetty onnistuneesti",
-    "description": "Onnistuneen tehtävän käynnistämisen onnistumisviesti"
+    "description": "Onnistuneesta tehtävän käynnistämisestä ilmoittava viesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi",
     "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
-    "message": "Luodaan...",
-    "description": "Viesti, kun kuvaa luodaan"
+    "message": "Generoidaan...",
+    "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.downloadVideo": {
     "message": "Lataa tämä video",
-    "description": "Viesti, kun kuvaa luodaan"
+    "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.extendVideo": {
-    "message": "Jatka tämän videon luomista",
-    "description": "Viesti, kun kuvaa luodaan"
+    "message": "Jatka tämän videon generoimista",
+    "description": "Viesti, kun kuvaa generoidaan"
   },
   "message.generateFailed": {
-    "message": "Kuvan luominen epäonnistui",
-    "description": "Viesti, kun kuvan luominen epäonnistuu"
+    "message": "Kuvan generoiminen epäonnistui",
+    "description": "Viesti, kun kuvan generoiminen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Aloituskuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun aloituskuvien määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
@@ -264,24 +644,24 @@
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Aloituskuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun aloituskuvien määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
+    "message": "Loppukuvien määrä ylittää rajan",
+    "description": "Virheilmoitus, kun loppukuvien määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "message": "Aloituskuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun aloituskuvan lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun videon lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
+    "message": "Loppukuvan lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun loppukuvan lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",
