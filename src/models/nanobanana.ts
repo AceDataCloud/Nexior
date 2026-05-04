@@ -38,6 +38,7 @@ export interface INanobananaGenerateResponse {
 export interface INanobananaTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: INanobananaGenerateRequest;
   response?: INanobananaGenerateResponse;
 }

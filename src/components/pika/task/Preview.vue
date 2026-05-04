@@ -49,6 +49,10 @@
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
+          <p v-if="modelValue?.elapsed" class="description">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('pika.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
         </el-alert>
       </div>
       <!-- Display error message -->
@@ -69,6 +73,10 @@
             {{ $t('pika.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="description">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('pika.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />

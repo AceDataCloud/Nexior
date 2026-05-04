@@ -46,6 +46,7 @@ export interface ISeedreamGenerateResponse {
 export interface ISeedreamTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: ISeedreamGenerateRequest;
   response?: ISeedreamGenerateResponse;
 }

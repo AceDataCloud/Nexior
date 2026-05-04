@@ -58,6 +58,7 @@ export interface ISeedanceGenerateResponse {
 export interface ISeedanceTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: ISeedanceGenerateRequest;
   response?: ISeedanceGenerateResponse;
 }

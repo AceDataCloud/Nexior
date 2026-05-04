@@ -42,11 +42,15 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('luma.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('luma.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
       </div>
@@ -71,6 +75,10 @@
             {{ $t('luma.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('luma.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />

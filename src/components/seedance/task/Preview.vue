@@ -80,6 +80,10 @@
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('seedance.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
           <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('seedance.name.traceId') }}:
@@ -105,6 +109,10 @@
             {{ $t('seedance.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy inline-block" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('seedance.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />

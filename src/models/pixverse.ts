@@ -60,6 +60,7 @@ export interface IPixverseGenerateResponse {
 export interface IPixverseTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IPixverseGenerateRequest;
   response?: IPixverseGenerateResponse;
 }
