@@ -603,6 +603,30 @@
     "message": "Please upload the first frame reference image before using the end frame reference image",
     "description": "Error message when the user has only uploaded the end frame without the first frame"
   },
+  "message.endImageNotSupported": {
+    "message": "The current model/mode/duration does not support an end-frame reference image. Adjust the configuration first (typically: mode pro, duration 5s).",
+    "description": "Shown when uploading an end frame to a model that does not support it"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirm change",
+    "description": "Title of the confirm dialog when switching parameters drops existing settings"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "The new selection does not support the following enabled settings: {fields}. Continuing will clear them.",
+    "description": "Body of the confirm dialog; {fields} is replaced with a comma-separated list of field names"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Cleared unsupported settings: {fields}",
+    "description": "Toast shown after the user confirms the switch"
+  },
+  "button.confirmContinue": {
+    "message": "Continue",
+    "description": "Primary button on the feature-removal confirm dialog"
+  },
+  "button.cancelSwitch": {
+    "message": "Cancel",
+    "description": "Cancel button on the feature-removal confirm dialog"
+  },
   "message.startingTask": {
     "message": "Starting task...",
     "description": "Message when the drawing task begins"
