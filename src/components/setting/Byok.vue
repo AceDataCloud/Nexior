@@ -52,11 +52,8 @@
           />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('common.field.operations')" width="180px" fixed="right">
+      <el-table-column :label="$t('common.field.operations')" width="160px" fixed="right">
         <template #default="scope">
-          <el-button size="small" :loading="testingId === scope.row.id" @click="onTest(scope.row)">
-            {{ $t('byok.button.test') }}
-          </el-button>
           <el-button size="small" @click="onEdit(scope.row)">
             {{ $t('byok.button.edit') }}
           </el-button>
@@ -106,7 +103,6 @@ export default defineComponent({
       credentials: [] as IBYOKCredential[],
       providers: [] as IBYOKProviderInfo[],
       togglingId: null as string | null,
-      testingId: null as string | null,
       dialog: {
         visible: false,
         credential: null as IBYOKCredential | null
@@ -199,23 +195,6 @@ export default defineComponent({
         ElMessage.error(this.$t('byok.message.saveFailed'));
       } finally {
         this.togglingId = null;
-      }
-    },
-    async onTest(row: IBYOKCredential) {
-      if (!this.token) return;
-      this.testingId = row.id;
-      try {
-        const { data } = await byokCredentialOperator.test(row.id, { token: this.token });
-        if (data?.ok) {
-          ElMessage.success(this.$t('byok.message.testSuccess'));
-        } else {
-          ElMessage.error(this.$t('byok.message.testFailed', { message: data?.message ?? 'unknown error' }));
-        }
-      } catch (err) {
-        const message = err instanceof Error ? err.message : 'unknown error';
-        ElMessage.error(this.$t('byok.message.testFailed', { message }));
-      } finally {
-        this.testingId = null;
       }
     },
     async onDelete(row: IBYOKCredential) {

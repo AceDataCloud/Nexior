@@ -86,6 +86,10 @@ export default defineComponent({
     visible: {
       type: Boolean,
       default: false
+    },
+    initialTab: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update:visible'],
@@ -124,6 +128,17 @@ export default defineComponent({
       // The BYOK tab renders a multi-column credential table that
       // doesn't fit the default 50% dialog width on most laptops.
       return this.activeTab === 'apiKey' ? '900px' : '50%';
+    }
+  },
+  watch: {
+    // When the parent opens the dialog with an explicit `initialTab`
+    // (e.g. clicking the in-chat BYOK badge -> tab=apiKey), respect
+    // that on each open. The default 'general' tab is restored when the
+    // parent opens it with no initialTab.
+    visible(open: boolean) {
+      if (open) {
+        this.activeTab = this.initialTab || 'general';
+      }
     }
   },
   methods: {

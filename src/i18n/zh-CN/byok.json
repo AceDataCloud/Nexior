@@ -149,6 +149,60 @@
   },
   "badge.tooltip": {
     "message": "本次对话使用你自己的 {provider} API Key，费用由 {provider} 账户结算，不扣减平台余额。",
-    "description": ""
-  }
+    "description": ""  },
+  "badge.manage": {
+    "message": "点击管理你的自定义 API Key",
+    "description": "聊天页面 BYOK 徽章点击后的提示：点击打开设置对话框的 API Key 选项卡。"
+  },
+  "button.testConnection": {
+    "message": "保存并测试连通",
+    "description": "新增/编辑对话框中的按钮——先保存凭据，再调用上游 /models 验证连通性。"
+  },
+  "test.success": {
+    "message": "连通性测试成功",
+    "description": "连通性测试结果区的成功标题。"
+  },
+  "test.failure": {
+    "message": "连通性测试失败",
+    "description": "连通性测试结果区的失败标题。"
+  },
+  "test.endpoint": {
+    "message": "请求地址",
+    "description": "测试结果详情中的请求 URL 标签。"
+  },
+  "test.status": {
+    "message": "状态码",
+    "description": "测试结果详情中的 HTTP 状态码标签。"
+  },
+  "test.message": {
+    "message": "上游响应",
+    "description": "测试结果详情中的上游错误/提示文本标签。"
+  },
+  "providerDesc.openai": {
+    "message": "替换本站 ChatGPT（GPT-4 / GPT-4o / o1 / o3 等）对话请求。",
+    "description": "提供商下拉里 OpenAI 选项的副标题。"
+  },
+  "providerDesc.anthropic": {
+    "message": "替换本站 Claude（Sonnet / Opus / Haiku 等）对话请求。",
+    "description": "提供商下拉里 Anthropic 选项的副标题。"
+  },
+  "providerDesc.google": {
+    "message": "替换本站 Gemini（Pro / Flash 系列）对话请求。",
+    "description": "提供商下拉里 Google 选项的副标题。"
+  },
+  "providerDesc.xai": {
+    "message": "替换本站 Grok 对话请求。",
+    "description": "提供商下拉里 xAI 选项的副标题。"
+  },
+  "providerDesc.deepseek": {
+    "message": "替换本站 DeepSeek（V3 / R1 等）对话请求。",
+    "description": "提供商下拉里 DeepSeek 选项的副标题。"
+  },
+  "providerDesc.moonshot": {
+    "message": "替换本站 Kimi 对话请求。",
+    "description": "提供商下拉里 Moonshot (Kimi) 选项的副标题。"
+  },
+  "providerDesc.zhipu": {
+    "message": "替换本站 GLM 系列对话请求。",
+    "description": "提供商下拉里 Zhipu (GLM) 选项的副标题。"  }
 }

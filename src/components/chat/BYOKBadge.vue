@@ -1,13 +1,13 @@
 <template>
   <el-tooltip
     v-if="show && providerLabel"
-    :content="$t('byok.badge.tooltip', { provider: providerLabel })"
+    :content="`${$t('byok.badge.tooltip', { provider: providerLabel })} — ${$t('byok.badge.manage')}`"
     placement="bottom"
   >
-    <span class="byok-badge">
+    <button type="button" class="byok-badge" @click="onClickManage">
       <font-awesome-icon icon="fa-solid fa-key" class="badge-icon" />
       <span class="badge-text">{{ $t('byok.badge.active', { provider: providerLabel }) }}</span>
-    </span>
+    </button>
   </el-tooltip>
 </template>
 
@@ -95,6 +95,13 @@ export default defineComponent({
         console.debug('BYOK badge fetch skipped', err);
         this.credentials = [];
       }
+    },
+    onClickManage() {
+      // Hand off to UserCenter (see `src/components/user/Center.vue`),
+      // which owns the only mounted instance of `<user-setting>`. We use
+      // a window-level CustomEvent to avoid wiring a Vuex flag for a
+      // single-purpose UX hook.
+      window.dispatchEvent(new CustomEvent('open-user-settings', { detail: { tab: 'apiKey' } }));
     }
   }
 });
@@ -106,14 +113,21 @@ export default defineComponent({
   align-items: center;
   gap: 4px;
   padding: 2px 8px;
+  border: none;
   border-radius: 999px;
   background-color: var(--el-color-primary-light-9, rgba(64, 158, 255, 0.12));
   color: var(--el-color-primary, #409eff);
   font-size: 12px;
   line-height: 1;
   white-space: nowrap;
-  cursor: default;
+  cursor: pointer;
   user-select: none;
+  font-family: inherit;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--el-color-primary-light-8, rgba(64, 158, 255, 0.18));
+  }
 
   .badge-icon {
     font-size: 10px;
