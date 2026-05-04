@@ -29,7 +29,15 @@ interface InitOptions {
 let aegis: AegisInstance | null = null;
 let initialized = false;
 
-const PROJECT_ID = '154475';
+// Aegis "report id" — the alphanumeric token shown on each Web app's "应用接入"
+// row in the RUM console (NOT the numeric "应用ID" / "业务系统 ID").
+// Pinned here intentionally: this value is shipped to every visitor anyway,
+// so there's nothing to gain from sourcing it from env vars, and pinning
+// keeps local dev / Capacitor / preview builds reporting to the same
+// dashboard as production.
+//   Console:  https://console.cloud.tencent.com/rum
+//   App:      Ace Data Cloud (numeric 应用ID 154475, business system rum-vK9sZMBo)
+const PROJECT_ID = 'LlKeKIj1mDzkYrY6na';
 const HOST_URL = 'https://rumt-zh.com';
 
 /**
