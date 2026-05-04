@@ -211,6 +211,14 @@ export default defineComponent({
     if (this.conversationId) {
       await this.onRestoreConversation(this.conversationId);
     }
+    // Cross-site deep-link: AuthFrontend's connector detail "Try It"
+    // chips open ``/<group>/conversations?query=<prompt>`` in a new
+    // tab. Paste the prompt into the composer (intentionally NOT
+    // auto-submitting — we want the user to see what's about to be
+    // sent and press Enter), then strip the param so a refresh does
+    // not re-prefill. Only acts on a fresh conversation, never
+    // overrides what the user is typing or a restored chat.
+    this.onApplyQueryFromUrl();
     this.onCheckAgentStatus();
   },
   methods: {
@@ -226,6 +234,52 @@ export default defineComponent({
       } catch {
         this.agentConnected = false;
       }
+    },
+    /**
+     * Cross-site entry-point: AuthFrontend's connector "Try It" chips
+     * (PR https://github.com/AceDataCloud/AuthFrontend/pull/83) open
+     * this page with ``?query=<prompt>`` so the prompt arrives
+     * pre-filled in the composer.
+     *
+     * Behaviour:
+     *   - Only fires on a NEW conversation (no `:id` in the route).
+     *     A restored conversation already has its own state — we
+     *     don't want to clobber the composer mid-edit.
+     *   - Only fires when the composer is empty. If the user already
+     *     started typing locally (vuex-persistedstate restores the
+     *     ``question`` field across reloads), we keep their draft.
+     *   - Does NOT auto-submit. Studio shows the prompt; user reads,
+     *     optionally tweaks, presses Enter. This matches the
+     *     ChatGPT / Claude suggestion-chip UX and prevents a
+     *     refresh-storm of duplicate sends.
+     *   - Strips ``query`` (and the cross-site ``user_id`` /
+     *     analytics ``source`` / ``connector`` / ``suggestion_id``
+     *     params) from the URL via ``router.replace`` so a manual
+     *     refresh does not re-prefill the composer with stale text.
+     */
+    onApplyQueryFromUrl() {
+      const raw = this.$route.query?.query;
+      const queryStr = Array.isArray(raw) ? raw[0] : raw;
+      if (!queryStr || typeof queryStr !== 'string') return;
+      if (this.conversationId) return;
+      if (this.question && this.question.trim().length > 0) return;
+      this.question = queryStr;
+      // Drop the deep-link params so a refresh / share doesn't replay
+      // the prompt. Keep any unrelated query keys the route may carry
+      // in the future. ``user_id`` is already stripped by Nexior's
+      // crossSiteUser router guard before we get here, but be
+      // defensive.
+      const STRIP = new Set(['query', 'source', 'suggestion_id', 'connector']);
+      const remaining: Record<string, string | string[]> = {};
+      for (const [k, v] of Object.entries(this.$route.query || {})) {
+        if (STRIP.has(k)) continue;
+        if (v == null) continue;
+        remaining[k] = v as string | string[];
+      }
+      // ``replace`` (vs ``push``) so the deep-link entry is replaced
+      // by the canonical URL — Back button doesn't bring the user to
+      // the prefilled state.
+      this.$router.replace({ path: this.$route.path, query: remaining });
     },
     async onGetService() {
       console.debug('start onGetService');
