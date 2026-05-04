@@ -355,20 +355,14 @@ export default defineComponent({
             // Re-hydrate the URL→name map so the regenerated user
             // message bubble keeps showing the filename instead of
             // falling back to the URL (Message.vue line ~46).
-            const item = problemMessage.content[i];
-            if (item.name) {
-              const url =
-                item.type === 'image_url'
-                  ? typeof item.image_url === 'string'
-                    ? item.image_url
-                    : item.image_url?.url
-                  : item.type === 'file_url'
-                    ? typeof item.file_url === 'string'
-                      ? item.file_url
-                      : item.file_url?.url
-                    : undefined;
+            const item: IChatMessageContentItem = problemMessage.content[i];
+            const itemName = item.name;
+            if (itemName) {
+              const ref =
+                item.type === 'image_url' ? item.image_url : item.type === 'file_url' ? item.file_url : undefined;
+              const url = typeof ref === 'string' ? ref : ref?.url;
               if (url) {
-                this.referenceNames[url] = item.name;
+                this.referenceNames[url] = itemName;
               }
             }
             if (problemMessage.content[i].type === 'text') {
