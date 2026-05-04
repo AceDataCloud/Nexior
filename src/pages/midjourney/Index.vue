@@ -255,6 +255,12 @@ export default defineComponent({
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
+      // Midjourney video generation is image-to-video only; pure text-to-video is not supported.
+      // For action=extend, image_url is replaced by video_id.
+      if (request.action !== MidjourneyVideosAction.EXTEND && !request.image_url) {
+        ElMessage.error(this.$t('midjourney.message.imageUrlRequired'));
+        return;
+      }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
       midjourneyOperator
         .videos(request, {

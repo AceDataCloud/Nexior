@@ -2,7 +2,10 @@
   <div class="relative">
     <div class="flex justify-between">
       <div class="flex justify-start items-center">
-        <span class="text-sm font-bold">{{ $t('midjourney.name.imageUrl') }}</span>
+        <span class="text-sm font-bold">
+          {{ $t('midjourney.name.imageUrl') }}
+          <span class="text-red-500" aria-hidden="true">*</span>
+        </span>
         <info-icon :content="$t('midjourney.description.imageUrl')" />
       </div>
     </div>
