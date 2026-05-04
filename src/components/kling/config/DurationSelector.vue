@@ -93,7 +93,9 @@ export default defineComponent({
     }
   },
   methods: {
-    async onChange(val: number) {
+    async onChange(raw: number | number[]) {
+      // ElSlider supports range mode (number[]); we only use single mode.
+      const val = Array.isArray(raw) ? raw[0] : raw;
       const config = this.$store.state.kling?.config || {};
       const conflicts = findKlingConflicts(config, { duration: val });
       if (conflicts.length === 0) {
