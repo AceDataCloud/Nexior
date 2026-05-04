@@ -77,23 +77,6 @@ data:
       redir https://{host}{uri} permanent
     }
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: caddy-tenant-proxy-data
-  namespace: acedatacloud
-  labels:
-    app: caddy-tenant-proxy
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      # Each Let's Encrypt cert + ACME state is ~10 KB. 5 GB is enough
-      # for ~50,000 tenant certs without any pruning policy.
-      storage: 5Gi
-  storageClassName: cbs
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -102,15 +85,17 @@ metadata:
   labels:
     app: caddy-tenant-proxy
 spec:
-  # Single replica for MVP. Caddy keeps cert state on a RWO PVC, so any
-  # multi-replica HA needs caddy-storage-redis (or postgres) as a
-  # follow-up; not worth the complexity until traffic justifies it.
+  # Single replica today. The mounted PVC (`caddy`, RWX cfs) supports
+  # multiple attachments, so future HA can scale this up if traffic
+  # ever justifies it -- Caddy will share `/data` (ACME account, certs,
+  # locks) across pods. RollingUpdate is fine because RWX volumes
+  # don't deadlock on pod transition.
   replicas: 1
   strategy:
-    # In-place restart so the new pod gets to attach the same RWO cbs
-    # volume the old one was using. RollingUpdate would deadlock
-    # (new pod can't bind RWO until old pod releases it).
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   selector:
     matchLabels:
       app: caddy-tenant-proxy
@@ -168,7 +153,10 @@ spec:
                 path: Caddyfile
         - name: data
           persistentVolumeClaim:
-            claimName: caddy-tenant-proxy-data
+            # Pre-existing `caddy` PVC (10Gi cfs RWX) provisioned out
+            # of band; lets us share /data across replicas if we ever
+            # scale this up.
+            claimName: caddy
         - name: config
           emptyDir: {}
 ---
