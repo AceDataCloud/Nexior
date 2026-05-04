@@ -30,7 +30,6 @@ import seedance from './seedance';
 import serp from './serp';
 import wan from './wan';
 import site from './site';
-import subsite from './subsite';
 import profile from './profile';
 
 import {
@@ -316,7 +315,6 @@ const routes = [
   distribution,
   download,
   site,
-  subsite,
   profile,
   {
     path: '/:pathMatch(.*)*',
