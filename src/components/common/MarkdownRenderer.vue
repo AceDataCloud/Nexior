@@ -1,12 +1,57 @@
 <template>
-  <vue-markdown v-highlight :source="content" class="markdown-body bg-transparent pt-[3px] text-[inherit]" />
+  <div class="markdown-with-citations">
+    <vue-markdown
+      v-highlight
+      :source="enrichedContent"
+      class="markdown-body bg-transparent pt-[3px] text-[inherit]"
+      @mouseover="onChipHover"
+      @mouseleave="onChipLeave"
+    />
+    <!-- Single shared popover instance, virtually anchored to the
+         chip the cursor is currently on. Cheaper than spawning one
+         popover per chip on long answers; also avoids fighting the
+         markdown renderer (which produces plain HTML, not Vue nodes). -->
+    <el-popover
+      v-if="hoveredCitation && popoverAnchor"
+      :virtual-ref="popoverAnchor"
+      virtual-triggering
+      trigger="hover"
+      :visible="popoverVisible"
+      placement="top"
+      :width="320"
+      popper-class="citation-popover"
+      :show-arrow="true"
+      :hide-after="120"
+    >
+      <citation-card :citation="hoveredCitation" />
+    </el-popover>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
+import { ElPopover } from 'element-plus';
 import VueMarkdown from './VueMarkdown.vue';
+import CitationCard from '@/components/chat/CitationCard.vue';
 import { highlight } from '@/utils';
+import type { IChatCitation } from '@/models';
 import 'highlight.js/styles/night-owl.css';
+
+/**
+ * Marker token the worker injects in place of every `<acite>` tag. We
+ * substitute it for an inline `[N]` chip BEFORE handing the source to
+ * the markdown renderer so the chip lives at exactly the position the
+ * model wanted it. The id charset matches the worker's parser
+ * (`tagParser.ts`'s `parseAciteTag`) so a marker that survives upstream
+ * round-trips through here losslessly.
+ */
+const CITATION_MARKER = /\[\^acite:([A-Za-z0-9_-]{1,32})\]/g;
+
+interface IData {
+  hoveredCitation: IChatCitation | null;
+  popoverAnchor: HTMLElement | null;
+  popoverVisible: boolean;
+}
 
 export default defineComponent({
   name: 'MarkdownRenderer',
@@ -14,23 +59,139 @@ export default defineComponent({
     highlight
   },
   components: {
-    VueMarkdown
+    VueMarkdown,
+    CitationCard,
+    ElPopover
   },
   props: {
     content: {
       type: String,
       required: false,
       default: ''
+    },
+    /**
+     * Sidecar map of citations referenced by `[^acite:<id>]` markers
+     * inside `content`. Streamed onto the assistant message by
+     * `Conversation.vue` and persisted on `IChatMessage.citations` so
+     * reload re-renders the same chips. Markers without a matching
+     * entry render as a degraded `[?]` chip — never as raw
+     * `[^acite:1]` text — so a brief race between text and citation
+     * events doesn't surface garbage.
+     */
+    citations: {
+      type: Object as PropType<Record<string, IChatCitation>>,
+      required: false,
+      default: () => ({})
+    }
+  },
+  data(): IData {
+    return {
+      hoveredCitation: null,
+      popoverAnchor: null,
+      popoverVisible: false
+    };
+  },
+  computed: {
+    /** First-occurrence id → display index (1, 2, 3, …) within this message. */
+    indexById(): Record<string, number> {
+      const order: Record<string, number> = {};
+      let next = 1;
+      const src = this.content || '';
+      // Walk markers in source order so the rendered chip number
+      // matches the model's intended footnote ordering. matchAll
+      // doesn't mutate `lastIndex` so it's safe to share the regex.
+      for (const m of src.matchAll(CITATION_MARKER)) {
+        const id = m[1];
+        if (!(id in order)) {
+          order[id] = next;
+          next += 1;
+        }
+      }
+      return order;
+    },
+    /** `content` with every marker swapped for an inline chip HTML. */
+    enrichedContent(): string {
+      const src = this.content || '';
+      if (!src.includes('[^acite:')) return src;
+      const cites = this.citations || {};
+      const indexById = this.indexById;
+      return src.replace(CITATION_MARKER, (_match, rawId: string) => {
+        const idx = indexById[rawId];
+        const cite = cites[rawId];
+        const label = idx ? String(idx) : '?';
+        const url = cite?.url ? escapeAttr(cite.url) : '';
+        const title = cite?.title || cite?.source || cite?.url || rawId;
+        const titleAttr = escapeAttr(title);
+        const idAttr = escapeAttr(rawId);
+        // The chip itself is an anchor so click works without JS, even
+        // when the popover is suppressed (touch / no-hover devices).
+        // `data-citation-id` is what `onChipHover` reads for the popover.
+        const inner = `<a class="citation-chip__link"${url ? ` href="${url}"` : ''} target="_blank" rel="noopener noreferrer" tabindex="-1">[${escapeAttr(label)}]</a>`;
+        return `<sup class="citation-chip" data-citation-id="${idAttr}" title="${titleAttr}">${inner}</sup>`;
+      });
+    }
+  },
+  methods: {
+    /**
+     * Single delegated mouseover handler for every chip rendered inside
+     * the markdown body. Looks up the metadata in `citations`, sets the
+     * hover state, and points the shared `<el-popover>` at the chip via
+     * Element Plus' `virtual-ref` trigger. Dramatically lighter than
+     * spawning one popover per chip on a 30-citation answer.
+     */
+    onChipHover(event: MouseEvent): void {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      const chip = target.closest<HTMLElement>('.citation-chip');
+      if (!chip) {
+        this.popoverVisible = false;
+        return;
+      }
+      const id = chip.dataset.citationId;
+      if (!id) return;
+      const cite = (this.citations || {})[id];
+      if (!cite) return;
+      this.hoveredCitation = cite;
+      this.popoverAnchor = chip;
+      this.popoverVisible = true;
+    },
+    onChipLeave(): void {
+      this.popoverVisible = false;
     }
   }
 });
+
+/** Tiny attribute-context HTML escape — enough for our chip output. */
+function escapeAttr(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
 </script>
 
 <style lang="scss">
 @import 'github-markdown-css/github-markdown.css';
+
+/* Element Plus mounts the popover content under document.body, so the
+   styles MUST be unscoped to apply. Kept narrow to `.citation-popover`
+   to avoid leaking into other popovers. */
+.el-popover.citation-popover {
+  padding: 0 !important;
+  border-radius: 10px;
+  box-shadow:
+    0 6px 24px rgba(15, 23, 42, 0.12),
+    0 1px 3px rgba(15, 23, 42, 0.08);
+}
 </style>
 
 <style lang="scss" scoped>
+.markdown-with-citations {
+  position: relative;
+}
+
 .markdown-body {
   ol {
     list-style: initial;
@@ -38,6 +199,53 @@ export default defineComponent({
 
   pre code {
     color: white;
+  }
+
+  /* Inline citation chip rendered in place of `[^acite:<id>]` markers.
+     Small, slightly raised, weakly tinted; never breaks the surrounding
+     text run so a paragraph with 5 citations stays one line of prose. */
+  :deep(.citation-chip) {
+    display: inline-block;
+    margin: 0 1px 0 2px;
+    padding: 0;
+    line-height: 1;
+    vertical-align: super;
+    font-size: 0.72em;
+    user-select: none;
+
+    .citation-chip__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 16px;
+      padding: 0 5px;
+      border-radius: 8px;
+      background: rgba(39, 113, 134, 0.1);
+      color: #277186;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        background 0.12s ease,
+        color 0.12s ease;
+
+      &:hover {
+        background: rgba(39, 113, 134, 0.18);
+        color: #1f5a6b;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .markdown-body :deep(.citation-chip) .citation-chip__link {
+    background: rgba(255, 255, 255, 0.08);
+    color: #d1d5db;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #f9fafb;
+    }
   }
 }
 </style>

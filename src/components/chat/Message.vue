@@ -30,7 +30,11 @@
             :done="message.state === messageState.FINISHED || message.state === messageState.FAILED"
           />
           <div v-if="!Array.isArray(message.content)">
-            <markdown-renderer v-if="message.role === 'assistant'" :content="message?.content" />
+            <markdown-renderer
+              v-if="message.role === 'assistant'"
+              :content="message?.content"
+              :citations="message.citations"
+            />
             <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ message.content }}</pre>
           </div>
           <div v-else>
@@ -49,7 +53,11 @@
                 class="mt-2"
               />
               <div v-if="item.type === 'text'">
-                <markdown-renderer v-if="message.role === 'assistant'" :content="item.text" />
+                <markdown-renderer
+                  v-if="message.role === 'assistant'"
+                  :content="item.text"
+                  :citations="message.citations"
+                />
                 <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
               </div>
               <tool-activity v-if="item.type === 'tool_use'" :item="item" />

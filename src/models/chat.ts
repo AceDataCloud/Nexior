@@ -126,6 +126,18 @@ export interface IChatMessage {
    * (or the upstream doesn't expose it).
    */
   thinking?: string;
+  /**
+   * Sidecar map of source citations referenced by `[^acite:<id>]`
+   * marker tokens embedded in the rendered text. Populated from the
+   * worker's streaming `citation` SSE events (one entry per unique
+   * `<acite>` tag the model emitted in this assistant turn). The
+   * markdown renderer swaps each marker for an inline `[N]` chip
+   * whose hover card / click target are looked up in this map by id.
+   * Reused on reload so historical conversations re-render the same
+   * chips without a refetch. Empty / undefined for messages produced
+   * before this protocol shipped.
+   */
+  citations?: Record<string, IChatCitation>;
   role?: typeof ROLE_SYSTEM | typeof ROLE_ASSISTANT | typeof ROLE_USER;
   error?: IError;
 }
@@ -201,6 +213,11 @@ export interface IChatConversationResponse {
   };
   // Rich-output entity card (`type === 'card'`). See `IChatCard` below.
   card?: IChatCard;
+  // Source citation footnote (`type === 'citation'`). See `IChatCitation`
+  // below. The worker streams one event per unique `<acite>` tag during
+  // the assistant turn; the frontend merges them into
+  // `IChatMessage.citations` keyed by `id`.
+  citation?: IChatCitation;
 }
 
 export interface IChatConversationsResponse {
@@ -245,6 +262,45 @@ export interface IChatCard {
   duration?: number;
   mimeType?: string;
   alt?: string;
+}
+
+/**
+ * Source citation footnote emitted by aichat2 whenever the assistant
+ * grounds a factual claim in a tool result (web search hit, MCP
+ * response, file listing, email, etc.). The worker streams `citation`
+ * SSE events while parsing `<acite>` tags out of the LLM text deltas
+ * and replaces each tag in the live text stream with a stable marker
+ * token `[^acite:<id>]`. The frontend's markdown renderer swaps the
+ * marker for an inline `[N]` chip; clicking the chip opens `url`,
+ * hovering it surfaces a preview card built from `title` /
+ * `source` / `icon` / `snippet`. The citation metadata is persisted on
+ * the message's `citations` map (a sidecar lookup table keyed by
+ * `id`) — NOT as a content block — so reuse across multiple sentences
+ * costs one row, and reload re-renders chips in place.
+ *
+ * `type` is intentionally open-ended (`file` | `page` | `issue` |
+ * `email` | `message` | `web` | …) so future surfaces only need a
+ * renderer hint, not a protocol change.
+ */
+export interface IChatCitation {
+  /** Stable identifier within a single assistant message. Same source
+   *  reuses the same id across every reference; the renderer assigns
+   *  the visible 1-based index based on first-occurrence order. */
+  id: string;
+  /** URL the chip links to on click. */
+  url: string;
+  /** Bold line on the hover card (e.g. `Document4.docx`). */
+  title?: string;
+  /** Surface label (e.g. `OneDrive`, `GitHub`, `Notion`, `Web`). */
+  source?: string;
+  /** Absolute URL of a 16-32px icon shown next to `source`. */
+  icon?: string;
+  /** 1-2 line excerpt under the title on the hover card. */
+  snippet?: string;
+  /** Loose entity hint (`file` | `page` | `issue` | `web` | …). */
+  type?: string;
+  /** MIME type, when known. */
+  mimeType?: string;
 }
 
 export interface IChatToolCall {

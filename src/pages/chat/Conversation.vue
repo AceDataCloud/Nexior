@@ -60,7 +60,14 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, IChatReference, BaseError } from '@/models';
+import {
+  IChatMessageState,
+  IChatConversationResponse,
+  IChatConversation,
+  IChatMessage,
+  IChatReference,
+  BaseError
+} from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
@@ -696,6 +703,19 @@ export default defineComponent({
                   answerOffset = response.answer?.length ?? 0;
                 }
                 contentParts.push({ type: 'card', card: response.card });
+              } else if (response.type === 'citation' && response.citation) {
+                // Source citation footnote from the worker's <acite>
+                // stream parser. Unlike `card`, citations DO NOT split
+                // the text stream — the worker injected a stable marker
+                // token `[^acite:<id>]` into the text where the chip
+                // should land, so we just stash the metadata on the
+                // assistant message's sidecar `citations` map. The
+                // markdown renderer pairs marker → metadata at render
+                // time. Last-write-wins on duplicate ids matches the
+                // worker's semantics (the model is taught to reuse the
+                // same id for the same source).
+                const target = this.messages[this.messages.length - 1];
+                target.citations = { ...(target.citations ?? {}), [response.citation.id]: response.citation };
               } else if (response.delta_answer) {
                 currentText = (response.answer || '').slice(answerOffset);
               }
@@ -711,6 +731,7 @@ export default defineComponent({
                   role: ROLE_ASSISTANT,
                   content: displayParts,
                   thinking: lastMessage?.thinking,
+                  citations: lastMessage?.citations,
                   state:
                     lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
                 };
@@ -719,6 +740,7 @@ export default defineComponent({
                   role: ROLE_ASSISTANT,
                   content: response.answer,
                   thinking: lastMessage?.thinking,
+                  citations: lastMessage?.citations,
                   state:
                     lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
                 };
