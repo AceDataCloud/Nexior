@@ -1,4 +1,284 @@
 {
+  "tab.videoGeneration": {
+    "message": "Génération vidéo",
+    "description": "Tab 标签：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "Contrôle de mouvement",
+    "description": "Tab 标签：Motion Control"
+  },
+  "tab.avatar": {
+    "message": "Avatar numérique",
+    "description": "Tab 标签：Avatar / AI-Human"
+  },
+  "tab.comingSoon": {
+    "message": "À venir",
+    "description": "即将上线的起骨标签"
+  },
+  "tab.avatarComingSoon": {
+    "message": "Avatar numérique (visage + vidéo de synthèse vocale) à venir, restez à l'écoute",
+    "description": "Avatar Tab 被禁用的 Tooltip 说明"
+  },
+  "name.motionImage": {
+    "message": "Image de référence",
+    "description": "Motion Control 中的人物图输入"
+  },
+  "name.motionVideo": {
+    "message": "Vidéo de référence",
+    "description": "Motion Control 中的参考视频输入"
+  },
+  "name.motionPrompt": {
+    "message": "Complément de prompt (optionnel)",
+    "description": "Motion Control 中的补充提示词"
+  },
+  "name.characterOrientation": {
+    "message": "Orientation du personnage",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "Image de suivi",
+    "description": "人物朝向选项：跟随图片"
+  },
+  "name.orientationVideo": {
+    "message": "Vidéo de suivi",
+    "description": "人物朝向选项：跟随视频"
+  },
+  "name.keepOriginalSound": {
+    "message": "Conserver l'audio original",
+    "description": "keep_original_sound 开关"
+  },
+  "description.motionImage": {
+    "message": "Téléchargez une image de référence pour que les personnages, arrière-plans, etc. dans la vidéo soient basés sur celle-ci.",
+    "description": "motion image_url 说明"
+  },
+  "description.motionVideo": {
+    "message": "Téléchargez une vidéo de référence pour que les mouvements des personnages dans la vidéo correspondent à cette vidéo (MP4 / MOV, ≤1 minute, ≤1 Go)",
+    "description": "motion video_url 说明"
+  },
+  "description.motionPrompt": {
+    "message": "Optionnel. Peut inclure des descriptions positives et négatives pour aider à générer des effets.",
+    "description": "motion prompt 说明"
+  },
+  "description.characterOrientation": {
+    "message": "Choisir 'Vidéo de suivi' permet de mieux gérer des mouvements complexes ; choisir 'Image de suivi' aligne l'orientation du personnage avec l'image de référence, offrant de meilleures performances de mouvement de caméra.",
+    "description": "character_orientation 说明"
+  },
+  "description.motionMode": {
+    "message": "std priorité performance, pro priorité qualité",
+    "description": "motion mode 说明"
+  },
+  "description.keepOriginalSound": {
+    "message": "Si activé, conserve l'audio original de la vidéo de référence ; si désactivé, la vidéo de sortie ne contient pas l'audio original.",
+    "description": "keep_original_sound 说明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "Par exemple : une personne en train de sauter. Optionnel.",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "Générer la vidéo de contrôle de mouvement",
+    "description": "Motion Control 生成按钮"
+  },
+  "message.motionMissingInputs": {
+    "message": "Veuillez télécharger à la fois l'image de référence et la vidéo de référence.",
+    "description": "Motion Control 缺少输入时的提示"
+  },
+  "inspiration.title": {
+    "message": "Inspiration et préréglages",
+    "description": "Inspiration 抽屉的标题"
+  },
+  "inspiration.openButton": {
+    "message": "Inspiration",
+    "description": "打开 Inspiration 抽屉的按钮"
+  },
+  "inspiration.hint": {
+    "message": "Cliquez sur une phrase pour l'ajouter automatiquement au prompt ; cliquez à nouveau pour la retirer.",
+    "description": "Inspiration 抽屉顶部的使用说明"
+  },
+  "inspiration.empty": {
+    "message": "Aucun préréglage disponible",
+    "description": "Inspiration 抽屉空状态"
+  },
+  "inspiration.selectedSummary": {
+    "message": "Sélectionné {count} éléments",
+    "description": "已选择的预设数量"
+  },
+  "inspiration.clearSelected": {
+    "message": "Tout effacer",
+    "description": "清除所有已选预设的按钮"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "Mouvements de caméra",
+    "description": "Inspiration 分组：镜头运动"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "Vitesse de mouvement",
+    "description": "Inspiration 分组：运动速度"
+  },
+  "inspiration.group.shotType": {
+    "message": "Type de plan",
+    "description": "Inspiration 分组：景别 / 视角"
+  },
+  "inspiration.group.light": {
+    "message": "Lumière et ombre",
+    "description": "Inspiration 分组：光影"
+  },
+  "inspiration.group.frame": {
+    "message": "Cadre",
+    "description": "Inspiration 分组：画面 / 构图"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "Atmosphère",
+    "description": "Inspiration 分组：氛围 / 风格"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "Caméra tournant autour du sujet",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "Caméra fixe",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "Prise de vue à main levée",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "Zoom arrière",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "Zoom avant",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "Caméra suivant le sujet",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "Panoramique à droite",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "Inclinaison vers le haut",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "Inclinaison vers le bas",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "Caméra en orbite",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "Mouvement de caméra lent",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "Mouvement de caméra moyen",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "Mouvement de caméra rapide",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "Gros plan",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "Plan moyen",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "Plan large",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "Prise de vue en contre-plongée",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "Angle élevé",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "Profondeur de champ faible",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "Vue de face",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "Vue de profil",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "Gros plan",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "Vue de drone",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "Lumière du soleil",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "Lumière douce",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "Lumière néon",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "Lumière chaude",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "Lumière naturelle",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "Lumière de bougie",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "Lumière de nuit en ville",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "Détails riches",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "Fond simple",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "Atmosphère mystérieuse",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "Atmosphère paisible",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "Chaleureux et réconfortant",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "Vif",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "Coloré",
+    "description": ""
+  },
   "name.taskId": {
     "message": "ID de tâche",
     "description": "ID de la tâche"
@@ -8,12 +288,68 @@
     "description": "Type de contenu du vidéo Kling à générer, comme 'lien', 'texte', etc."
   },
   "name.modeStd": {
-    "message": "Standard",
-    "description": "Mode standard du vidéo Kling"
+    "message": "Standard (720p)",
+    "description": "Mode standard du vidéo Kling (sortie 720p)"
   },
   "name.modePro": {
-    "message": "Haute qualité",
-    "description": "Mode haute qualité du vidéo Kling"
+    "message": "Haute qualité (1080p)",
+    "description": "Mode haute qualité du vidéo Kling (sortie 1080p)"
+  },
+  "name.mode4k": {
+    "message": "4K natif",
+    "description": "Mode Kling 4K (supporté uniquement par v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Contrôle de la caméra",
+    "description": "Type et paramètres de contrôle de la caméra"
+  },
+  "name.cameraTypeNone": {
+    "message": "Aucun",
+    "description": "Pas de contrôle de la caméra"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Personnalisé (6 dimensions)",
+    "description": "Utiliser des paramètres personnalisés à six dimensions"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Descendre et reculer",
+    "description": "Préréglage de mouvement : descendre et reculer"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Avancer et monter",
+    "description": "Préréglage de mouvement : avancer et monter"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Tourner à gauche et avancer",
+    "description": "Préréglage de mouvement : tourner à gauche et avancer"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Tourner à droite et avancer",
+    "description": "Préréglage de mouvement : tourner à droite et avancer"
+  },
+  "name.cc_horizontal": {
+    "message": "Mouvement horizontal",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Mouvement vertical",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Panoramique horizontal",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Inclinaison verticale",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Roulis",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoom",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "Échec",
@@ -37,7 +373,7 @@
   },
   "name.cfgScale": {
     "message": "Niveau de liberté",
-    "description": "Paramètre de liberté pour la génération de vidéo (0-1), plus la valeur est grande, plus elle est proche de la référence"
+    "description": "Paramètre de liberté pour générer la vidéo (0-1), plus la valeur est élevée, plus elle se rapproche de la référence"
   },
   "name.generateAudio": {
     "message": "Générer audio synchronisé",
@@ -45,23 +381,23 @@
   },
   "name.startImage": {
     "message": "Image de référence initiale",
-    "description": "Étiquette du champ de formulaire : image de référence initiale"
+    "description": "Étiquette de champ de formulaire : image de référence initiale"
   },
   "name.negativePrompt": {
-    "message": "Mots-clés négatifs",
-    "description": "Texte d'invite négatif pour la génération de vidéo"
+    "message": "Texte de prompt négatif",
+    "description": "Texte de prompt négatif pour générer la vidéo"
   },
   "name.endImage": {
     "message": "Image de référence finale",
-    "description": "Étiquette du champ de formulaire : image de référence finale"
+    "description": "Étiquette de champ de formulaire : image de référence finale"
   },
   "name.videoUrl": {
     "message": "Vidéo personnalisée",
     "description": "Vidéo personnalisée"
   },
   "name.prompt": {
-    "message": "Invite vidéo",
-    "description": "Texte d'invite pour le contenu"
+    "message": "Prompt vidéo",
+    "description": "Prompt pour l'entrée de contenu"
   },
   "name.duration": {
     "message": "Durée de la vidéo",
@@ -73,55 +409,91 @@
   },
   "name.model": {
     "message": "Version du modèle",
-    "description": "Version du modèle utilisée pour générer la vidéo"
+    "description": "Modèle utilisé pour générer la vidéo"
   },
   "name.ratio": {
     "message": "Ratio vidéo",
-    "description": "Ratio vidéo utilisé pour générer la vidéo"
+    "description": "Le ratio vidéo utilisé pour générer la vidéo"
   },
   "name.mode": {
     "message": "Mode vidéo",
-    "description": "Mode utilisé pour générer la vidéo"
+    "description": "Le mode utilisé pour générer la vidéo"
   },
   "name.effect": {
     "message": "Effet vidéo",
-    "description": "Nom du paramètre de style pour passer d'une version ou d'un style de modèle à un autre"
+    "description": "Nom du paramètre de style pour basculer entre différentes versions ou styles de modèle"
   },
   "name.ingredientsModel": {
     "message": "Modèle d'ingrédients",
-    "description": "Version du modèle utilisée pour générer la vidéo"
+    "description": "La version du modèle utilisée pour générer la vidéo"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Nom du générateur de vidéo Kling"
+    "description": "Nom du générateur de vidéos Kling"
   },
   "description.ingredients": {
     "message": "Si vous souhaitez télécharger plusieurs images pour générer votre vidéo, activez ce bouton.",
     "description": "Description du paramètre 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Dans la tâche de création vidéo multi-image, plusieurs images doivent être téléchargées.",
+    "message": "Dans la tâche de création de vidéo à partir de plusieurs images, plusieurs images doivent être téléchargées.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Mots-clés d'invite pour générer le vidéo Kling",
+    "message": "Mots-clés pour générer la vidéo Kling",
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
     "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
-    "description": "Description du paramètre 'negativePrompt'"
+    "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartImage": {
-    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur cette première image",
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.uploadEndImage": {
-    "message": "Téléchargez l'image de la dernière image comme référence pour la génération, la vidéo finale se basera sur la dernière image.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "message": "Téléchargez l'image de la dernière image comme référence pour la génération, la vidéo finale se basera sur cette dernière image",
+    "description": "Description du paramètre de référence de téléchargement"
   },
   "description.cfgScale": {
-    "message": "Niveau de liberté pour la génération de vidéo, optionnel [0,1]. Plus la valeur est grande, plus la corrélation est forte.",
-    "description": "Description du paramètre de téléchargement de référence"
+    "message": "Degré de liberté pour générer la vidéo, optionnel [0,1]. Plus la valeur est élevée, plus la corrélation est forte.",
+    "description": "Description du paramètre de référence de téléchargement"
+  },
+  "description.mode": {
+    "message": "std offre de meilleures performances, pro offre une meilleure qualité d'image ; 4K est uniquement pris en charge par v3 / v3-Omni et ne peut pas être utilisé avec le contrôle de caméra",
+    "description": "Description générale du champ de mode"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Uniquement pris en charge par kling-v3 / kling-v3-omni",
+    "description": "Raison pour laquelle l'option 4K est désactivée (modèle non compatible)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Le contrôle de caméra est activé, ne peut pas être utilisé avec 4K",
+    "description": "Raison pour laquelle l'option 4K est désactivée (contrôle de caméra activé)"
+  },
+  "description.duration": {
+    "message": "Le modèle standard ne prend en charge que 5/10 secondes ; v3 / v3-Omni prend en charge 3/5/8/10/12/15 secondes",
+    "description": "Description générale du champ de durée"
+  },
+  "description.durationV3Only": {
+    "message": "Uniquement pris en charge par v3 / v3-Omni",
+    "description": "Raison pour laquelle l'option de durée est désactivée"
+  },
+  "description.generateAudio": {
+    "message": "Générer des effets sonores en même temps que la vidéo. Uniquement pris en charge par kling-v3 / kling-v3-omni / kling-v2-6 (mode pro)",
+    "description": "Description de l'option d'effet sonore (activée)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Le modèle actuel ne prend pas en charge les effets sonores synchronisés, uniquement kling-v3 / kling-v3-omni / kling-v2-6 (mode pro) disponibles",
+    "description": "Description de l'option d'effet sonore (désactivée)"
+  },
+  "description.cameraControl": {
+    "message": "Contrôler la direction du mouvement de la caméra. Choisissez 'Personnalisé' pour ajuster finement sur 6 dimensions, chaque valeur étant [-1, 1]",
+    "description": "Description du contrôle de caméra"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "Le mode 4K est sélectionné, le contrôle de caméra n'est pas disponible, veuillez passer à std / pro avant de réactiver",
+    "description": "Raison pour laquelle le contrôle de caméra est désactivé"
   },
   "status.pending": {
     "message": "En attente",
@@ -159,13 +531,17 @@
     "message": "Veuillez sélectionner...",
     "description": "Espace réservé pour l'entrée de ratio d'aspect"
   },
+  "placeholder.cameraType": {
+    "message": "Ne pas utiliser",
+    "description": "Espace réservé pour le choix du type de caméra"
+  },
   "placeholder.preset": {
     "message": "Veuillez sélectionner...",
     "description": "Espace réservé pour l'entrée de préréglage"
   },
   "placeholder.markerShape": {
     "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de la forme du marqueur"
+    "description": "Espace réservé pour l'entrée de forme de marqueur"
   },
   "placeholder.rotate": {
     "message": "Veuillez sélectionner...",
@@ -177,15 +553,15 @@
   },
   "button.precise": {
     "message": "Précis",
-    "description": "Texte du bouton pour générer une vidéo Kling"
+    "description": "Texte du bouton pour générer la vidéo Kling"
   },
   "button.creative": {
     "message": "Créatif",
-    "description": "Texte du bouton pour générer une vidéo Kling"
+    "description": "Texte du bouton pour générer la vidéo Kling"
   },
   "button.generate": {
     "message": "Générer",
-    "description": "Texte du bouton pour générer une vidéo Kling"
+    "description": "Texte du bouton pour générer la vidéo Kling"
   },
   "button.extend": {
     "message": "Étendre la vidéo",
@@ -197,10 +573,10 @@
   },
   "button.uploadImageUrl": {
     "message": "Télécharger",
-    "description": "Texte du bouton pour télécharger une image (simplifié à 'Télécharger')"
+    "description": "Texte du bouton pour télécharger une image (simplifié en 'Télécharger')"
   },
   "button.uploadVideoUrl": {
-    "message": "Télécharger la vidéo",
+    "message": "Télécharger",
     "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
@@ -208,16 +584,20 @@
     "description": "Texte du bouton permettant à l'utilisateur de télécharger des références"
   },
   "message.uploadReferencesExceed": {
-    "message": "Vous pouvez télécharger jusqu'à 1 image",
+    "message": "Maximum de 1 image à télécharger",
     "description": "Message d'erreur lorsque le nombre d'images téléchargées dépasse la limite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Image téléchargée avec succès",
-    "description": "Message de succès lors du téléchargement réussi d'une image"
+    "description": "Message de succès lorsque l'image est téléchargée avec succès"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
-    "description": "Message d'erreur lors de l'échec du téléchargement de l'image"
+    "description": "Message d'erreur lorsque le téléchargement de l'image échoue"
+  },
+  "message.endImageRequiresStart": {
+    "message": "Veuillez d'abord télécharger l'image de la première image avant d'utiliser la référence de la dernière image",
+    "description": "Message d'erreur lorsque l'utilisateur a seulement téléchargé la dernière image sans la première"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -225,38 +605,38 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lors du démarrage réussi d'une tâche"
+    "description": "Message de succès lorsque la tâche est lancée avec succès"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
-    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
+    "description": "Message d'erreur lorsque le lancement de la tâche de dessin échoue"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez en acheter davantage pour continuer",
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
     "description": "Message lorsque les crédits sont épuisés"
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
-    "description": "Message pendant que l'image est en cours de génération"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message lors de l'échec de la génération de l'image"
+    "description": "Message lorsque la génération de l'image échoue"
   },
   "message.uploadVideoExceed": {
-    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image à télécharger dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
     "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo"
   },
   "message.uploadVideoTypeFailed": {
@@ -264,35 +644,35 @@
     "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première image à télécharger dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première image dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de la dernière image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la dernière image à télécharger dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière image dépasse la limite"
   },
   "message.uploadStartImageError": {
-    "message": "Échec du téléchargement de la première image",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la première image"
+    "message": "Échec du téléchargement de l'image de la première image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première image échoue"
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la vidéo"
+    "description": "Message d'erreur lorsque le téléchargement de la vidéo échoue"
   },
   "message.uploadEndImageError": {
-    "message": "Échec du téléchargement de la dernière image",
-    "description": "Message d'erreur lors de l'échec du téléchargement de la dernière image"
+    "message": "Échec du téléchargement de l'image de la dernière image",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la dernière image échoue"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",
-    "description": "Message d'erreur lors de l'échec du téléchargement du document"
+    "description": "Message d'erreur lorsque le téléchargement du document échoue"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
-    "description": "Message lorsqu'il n'y a pas d'opérations disponibles"
+    "description": "Message lorsque aucune opération n'est disponible"
   },
   "message.noTasks": {
-    "message": "Aucune tâche historique, veuillez cliquer à gauche pour générer une vidéo",
-    "description": "Message lorsqu'il n'y a pas de tâches"
+    "message": "Aucune tâche historique, veuillez cliquer sur 'Générer une vidéo' à gauche",
+    "description": "Message lorsque aucune tâche n'est disponible"
   }
 }

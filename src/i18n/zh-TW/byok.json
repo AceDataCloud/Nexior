@@ -1,22 +1,22 @@
 {
   "title.list": {
-    "message": "自訂 API Key",
+    "message": "自訂 API 金鑰",
     "description": ""
   },
   "title.addCredential": {
-    "message": "新增 API Key",
+    "message": "新增 API 金鑰",
     "description": ""
   },
   "title.editCredential": {
-    "message": "編輯 API Key",
+    "message": "編輯 API 金鑰",
     "description": ""
   },
   "title.deleteCredential": {
-    "message": "刪除 API Key",
+    "message": "刪除 API 金鑰",
     "description": ""
   },
   "description.list": {
-    "message": "使用你自己的服務商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智譜）取代平台帳戶池。配置後，對應模型的對話請求會直接以你的 Key 調用上游服務商，不消耗平台 Credit；工具調用、引用、工件、雲端歷史等其他功能照常運作。",
+    "message": "使用你自己的服務商 API 金鑰（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智譜）取代平台帳戶池。配置後，對應模型的對話請求將直接以你的金鑰調用上游服務商，不消耗平台信用；工具調用、引用、工件、雲端歷史等其他功能照常運作。",
     "description": ""
   },
   "field.provider": {
@@ -32,7 +32,7 @@
     "description": ""
   },
   "field.apiKey": {
-    "message": "API Key",
+    "message": "API 金鑰",
     "description": ""
   },
   "field.apiKeyPlaceholder": {
@@ -40,7 +40,7 @@
     "description": ""
   },
   "field.apiKeyEditPlaceholder": {
-    "message": "留空表示保持當前 Key 不變",
+    "message": "留空表示保持當前金鑰不變",
     "description": ""
   },
   "field.baseUrl": {
@@ -60,7 +60,7 @@
     "description": ""
   },
   "field.createdAt": {
-    "message": "新增時間",
+    "message": "添加時間",
     "description": ""
   },
   "value.active": {
@@ -80,7 +80,7 @@
     "description": ""
   },
   "button.add": {
-    "message": "新增 API Key",
+    "message": "新增 API 金鑰",
     "description": ""
   },
   "button.edit": {
@@ -104,15 +104,15 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "確認刪除這個 API Key？後續 {provider} 模型的對話將回落到平台預設上游。",
+    "message": "確認刪除這個 API 金鑰？後續 {provider} 模型的對話將回落到平台預設上游。",
     "description": ""
   },
   "message.deleteSuccess": {
-    "message": "API Key 已刪除。",
+    "message": "API 金鑰已刪除。",
     "description": ""
   },
   "message.saveSuccess": {
-    "message": "API Key 已儲存。",
+    "message": "API 金鑰已儲存。",
     "description": ""
   },
   "message.testSuccess": {
@@ -132,7 +132,7 @@
     "description": ""
   },
   "message.empty": {
-    "message": "尚未配置自訂 API Key。點擊\"新增 API Key\"以使用你自己的服務商帳戶。",
+    "message": "尚未配置自訂 API 金鑰。點擊\"新增 API 金鑰\"以使用你自己的服務商帳戶。",
     "description": ""
   },
   "message.advancedToggle": {
@@ -144,11 +144,67 @@
     "description": ""
   },
   "badge.active": {
-    "message": "使用你的 {provider} Key",
+    "message": "使用你的 {provider} 金鑰",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "本次對話使用你自己的 {provider} API Key，費用由 {provider} 帳戶結算，不扣減平台餘額。",
+    "message": "本次對話使用你自己的 {provider} API 金鑰，費用由 {provider} 帳戶結算，不扣減平台餘額。",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "點擊管理你的自訂 API 金鑰",
+    "description": "聊天頁面 BYOK 徽章點擊後的提示：點擊打開設定對話框的 API 金鑰選項卡。"
+  },
+  "button.testConnection": {
+    "message": "儲存並測試連通",
+    "description": "新增/編輯對話框中的按鈕——先儲存憑據，再調用上游 /models 驗證連通性。"
+  },
+  "test.success": {
+    "message": "連通性測試成功",
+    "description": "連通性測試結果區的成功標題。"
+  },
+  "test.failure": {
+    "message": "連通性測試失敗",
+    "description": "連通性測試結果區的失敗標題。"
+  },
+  "test.endpoint": {
+    "message": "請求地址",
+    "description": "測試結果詳情中的請求 URL 標籤。"
+  },
+  "test.status": {
+    "message": "狀態碼",
+    "description": "測試結果詳情中的 HTTP 狀態碼標籤。"
+  },
+  "test.message": {
+    "message": "上游響應",
+    "description": "測試結果詳情中的上游錯誤/提示文本標籤。"
+  },
+  "providerDesc.openai": {
+    "message": "替換本站 ChatGPT（GPT-4 / GPT-4o / o1 / o3 等）對話請求。",
+    "description": "提供商下拉裡 OpenAI 選項的副標題。"
+  },
+  "providerDesc.anthropic": {
+    "message": "替換本站 Claude（Sonnet / Opus / Haiku 等）對話請求。",
+    "description": "提供商下拉裡 Anthropic 選項的副標題。"
+  },
+  "providerDesc.google": {
+    "message": "替換本站 Gemini（Pro / Flash 系列）對話請求。",
+    "description": "提供商下拉裡 Google 選項的副標題。"
+  },
+  "providerDesc.xai": {
+    "message": "替換本站 Grok 對話請求。",
+    "description": "提供商下拉裡 xAI 選項的副標題。"
+  },
+  "providerDesc.deepseek": {
+    "message": "替換本站 DeepSeek（V3 / R1 等）對話請求。",
+    "description": "提供商下拉裡 DeepSeek 選項的副標題。"
+  },
+  "providerDesc.moonshot": {
+    "message": "替換本站 Kimi 對話請求。",
+    "description": "提供商下拉裡 Moonshot (Kimi) 選項的副標題。"
+  },
+  "providerDesc.zhipu": {
+    "message": "替換本站 GLM 系列對話請求。",
+    "description": "提供商下拉裡 Zhipu (GLM) 選項的副標題。"
   }
 }

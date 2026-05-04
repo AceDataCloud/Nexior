@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Utiliza tu propia clave API de proveedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) en lugar del pool de cuentas de la plataforma. Una vez configurado, las solicitudes de conversación del modelo correspondiente se realizarán directamente con tu clave a los proveedores, sin consumir créditos de la plataforma; las funciones de herramientas, referencias, artefactos, historial en la nube y otras seguirán funcionando normalmente.",
+    "message": "Utiliza tu propia clave API de proveedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) en lugar del pool de cuentas de la plataforma. Una vez configurado, las solicitudes de conversación del modelo correspondiente llamarán directamente al proveedor upstream con tu clave, sin consumir créditos de la plataforma; las funciones de herramientas, referencias, artefactos, historial en la nube, etc., funcionarán normalmente.",
     "description": ""
   },
   "field.provider": {
@@ -24,7 +24,7 @@
     "description": ""
   },
   "field.label": {
-    "message": "Notas",
+    "message": "Nota",
     "description": ""
   },
   "field.labelPlaceholder": {
@@ -40,7 +40,7 @@
     "description": ""
   },
   "field.apiKeyEditPlaceholder": {
-    "message": "Dejar vacío para mantener la clave actual",
+    "message": "Dejar en blanco para mantener la clave actual",
     "description": ""
   },
   "field.baseUrl": {
@@ -48,11 +48,11 @@
     "description": ""
   },
   "field.baseUrlPlaceholder": {
-    "message": "Dejar vacío para usar la dirección predeterminada del proveedor",
+    "message": "Dejar en blanco para usar la dirección predeterminada del proveedor",
     "description": ""
   },
   "field.isActive": {
-    "message": "Habilitado",
+    "message": "Habilitar",
     "description": ""
   },
   "field.lastUsedAt": {
@@ -64,11 +64,11 @@
     "description": ""
   },
   "value.active": {
-    "message": "Habilitado",
+    "message": "Activo",
     "description": ""
   },
   "value.inactive": {
-    "message": "No habilitado",
+    "message": "Inactivo",
     "description": ""
   },
   "value.never": {
@@ -140,7 +140,7 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "Opcional. Dirección personalizada de upstream (para OpenRouter, proxy inverso propio, gateway empresarial, etc.). Solo se permite HTTPS, no puede apuntar a direcciones de red interna/loopback.",
+    "message": "Opcional. Dirección upstream personalizada (para OpenRouter, proxy propio, puerta de enlace empresarial, etc.). Solo se permite HTTPS, no puede apuntar a direcciones internas/loopback.",
     "description": ""
   },
   "badge.active": {
@@ -148,7 +148,63 @@
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Esta conversación utiliza tu propia clave API de {provider}, los costos serán cobrados a la cuenta de {provider}, sin descontar el saldo de la plataforma.",
+    "message": "Esta conversación utiliza tu propia clave API {provider}, los costos se facturan a la cuenta {provider}, no se deduce del saldo de la plataforma.",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "Haz clic para gestionar tu clave API personalizada",
+    "description": "Sugerencia al hacer clic en la insignia BYOK en la página de chat: haz clic para abrir la pestaña de configuración de la clave API."
+  },
+  "button.testConnection": {
+    "message": "Guardar y probar conexión",
+    "description": "Botón en el cuadro de diálogo de agregar/editar: primero guarda las credenciales, luego llama a /models para verificar la conectividad."
+  },
+  "test.success": {
+    "message": "Prueba de conectividad exitosa",
+    "description": "Título de éxito en la sección de resultados de la prueba de conectividad."
+  },
+  "test.failure": {
+    "message": "Prueba de conectividad fallida",
+    "description": "Título de fallo en la sección de resultados de la prueba de conectividad."
+  },
+  "test.endpoint": {
+    "message": "Dirección de solicitud",
+    "description": "Etiqueta de URL de solicitud en los detalles de los resultados de la prueba."
+  },
+  "test.status": {
+    "message": "Código de estado",
+    "description": "Etiqueta de código de estado HTTP en los detalles de los resultados de la prueba."
+  },
+  "test.message": {
+    "message": "Respuesta upstream",
+    "description": "Etiqueta de texto de error/sugerencia upstream en los detalles de los resultados de la prueba."
+  },
+  "providerDesc.openai": {
+    "message": "Reemplaza las solicitudes de conversación de ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) en este sitio.",
+    "description": "Subtítulo de la opción OpenAI en el menú desplegable de proveedores."
+  },
+  "providerDesc.anthropic": {
+    "message": "Reemplaza las solicitudes de conversación de Claude (Sonnet / Opus / Haiku, etc.) en este sitio.",
+    "description": "Subtítulo de la opción Anthropic en el menú desplegable de proveedores."
+  },
+  "providerDesc.google": {
+    "message": "Reemplaza las solicitudes de conversación de Gemini (Pro / Flash series) en este sitio.",
+    "description": "Subtítulo de la opción Google en el menú desplegable de proveedores."
+  },
+  "providerDesc.xai": {
+    "message": "Reemplaza las solicitudes de conversación de Grok en este sitio.",
+    "description": "Subtítulo de la opción xAI en el menú desplegable de proveedores."
+  },
+  "providerDesc.deepseek": {
+    "message": "Reemplaza las solicitudes de conversación de DeepSeek (V3 / R1, etc.) en este sitio.",
+    "description": "Subtítulo de la opción DeepSeek en el menú desplegable de proveedores."
+  },
+  "providerDesc.moonshot": {
+    "message": "Reemplaza la solicitud de conversación de Kimi en este sitio.",
+    "description": "Subtítulo de la opción Moonshot (Kimi) en el menú desplegable de proveedores."
+  },
+  "providerDesc.zhipu": {
+    "message": "Reemplaza las solicitudes de conversación de la serie GLM de este sitio.",
+    "description": "Subtítulo de la opción Zhipu (GLM) en el menú desplegable de proveedores."
   }
 }

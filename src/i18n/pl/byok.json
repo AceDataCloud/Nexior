@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhipu) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy za pomocą twojego klucza, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp. będą działać normalnie.",
+    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot) zamiast klucza z konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze, będą działać normalnie.",
     "description": ""
   },
   "field.provider": {
@@ -24,7 +24,7 @@
     "description": ""
   },
   "field.label": {
-    "message": "Uwagi",
+    "message": "Opis",
     "description": ""
   },
   "field.labelPlaceholder": {
@@ -56,7 +56,7 @@
     "description": ""
   },
   "field.lastUsedAt": {
-    "message": "Ostatnio używany",
+    "message": "Ostatnie użycie",
     "description": ""
   },
   "field.createdAt": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Czy na pewno chcesz usunąć ten klucz API? Następne rozmowy z modelem {provider} będą korzystać z domyślnego dostawcy platformy.",
+    "message": "Czy na pewno chcesz usunąć ten klucz API? Kolejne zapytania do modelu {provider} będą korzystać z domyślnego dostawcy platformy.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -140,7 +140,7 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "Opcjonalne. Własny adres URL dla upstream (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Dozwolone tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback.",
+    "message": "Opcjonalne. Własny adres URL (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback.",
     "description": ""
   },
   "badge.active": {
@@ -148,7 +148,63 @@
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Ta rozmowa korzysta z twojego własnego klucza API {provider}, koszty są rozliczane przez konto {provider}, nie pomniejszając salda platformy.",
+    "message": "W tej rozmowie używasz swojego klucza API {provider}, koszty są rozliczane z konta {provider}, nie pomniejszają salda platformy.",
     "description": ""
+  },
+  "badge.manage": {
+    "message": "Kliknij, aby zarządzać swoim własnym kluczem API",
+    "description": "Podpowiedź po kliknięciu na odznakę BYOK na stronie czatu: kliknij, aby otworzyć zakładkę klucza API w oknie ustawień."
+  },
+  "button.testConnection": {
+    "message": "Zapisz i przetestuj połączenie",
+    "description": "Przycisk w oknie dodawania/edycji — najpierw zapisz poświadczenia, a następnie wywołaj /models, aby zweryfikować połączenie."
+  },
+  "test.success": {
+    "message": "Test połączenia zakończony sukcesem",
+    "description": "Nagłówek sekcji wyników testu połączenia."
+  },
+  "test.failure": {
+    "message": "Test połączenia nie powiódł się",
+    "description": "Nagłówek sekcji wyników testu połączenia."
+  },
+  "test.endpoint": {
+    "message": "Adres żądania",
+    "description": "Etykieta adresu URL w szczegółach wyników testu."
+  },
+  "test.status": {
+    "message": "Kod statusu",
+    "description": "Etykieta kodu HTTP w szczegółach wyników testu."
+  },
+  "test.message": {
+    "message": "Odpowiedź dostawcy",
+    "description": "Etykieta tekstu błędu/podpowiedzi dostawcy w szczegółach wyników testu."
+  },
+  "providerDesc.openai": {
+    "message": "Zastępuje zapytania do ChatGPT (GPT-4 / GPT-4o / o1 / o3 itp.) na tej stronie.",
+    "description": "Podtytuł opcji OpenAI w rozwijanym menu dostawcy."
+  },
+  "providerDesc.anthropic": {
+    "message": "Zastępuje zapytania do Claude (Sonnet / Opus / Haiku itp.) na tej stronie.",
+    "description": "Podtytuł opcji Anthropic w rozwijanym menu dostawcy."
+  },
+  "providerDesc.google": {
+    "message": "Zastępuje zapytania do Gemini (Pro / Flash) na tej stronie.",
+    "description": "Podtytuł opcji Google w rozwijanym menu dostawcy."
+  },
+  "providerDesc.xai": {
+    "message": "Zastępuje zapytania do Grok na tej stronie.",
+    "description": "Podtytuł opcji xAI w rozwijanym menu dostawcy."
+  },
+  "providerDesc.deepseek": {
+    "message": "Zastępuje zapytania do DeepSeek (V3 / R1 itp.) na tej stronie.",
+    "description": "Podtytuł opcji DeepSeek w rozwijanym menu dostawcy."
+  },
+  "providerDesc.moonshot": {
+    "message": "Zastąp prośby o rozmowę Kimi na tej stronie.",
+    "description": "Podtytuł opcji Moonshot (Kimi) w rozwijanym menu dostawcy."
+  },
+  "providerDesc.zhipu": {
+    "message": "Zastąp prośby o rozmowę serii GLM na tej stronie.",
+    "description": "Podtytuł opcji Zhipu (GLM) w rozwijanym menu dostawcy."
   }
 }
