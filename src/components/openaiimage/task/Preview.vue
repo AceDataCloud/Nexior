@@ -12,11 +12,11 @@
       </div>
       <div class="info">
         <div
-          v-if="modelValue?.request?.image_urls && modelValue?.request?.image_urls.length > 0"
+          v-if="referenceImages.length > 0"
           class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
         >
           <image-preview
-            v-for="(url, idx) in modelValue?.request?.image_urls"
+            v-for="(url, idx) in referenceImages"
             :key="idx"
             :url="url"
             :name="`image-${idx + 1}`"
@@ -215,6 +215,23 @@ export default defineComponent({
         });
       }
       return result;
+    },
+    // Reference images for an edit task. Reads two field shapes:
+    //   - `request.image_urls`: string[] — written by the worker after PR
+    //     PlatformService#821 (new tasks).
+    //   - `request.image`: string | string[] — legacy snapshot shape used by
+    //     the worker before #821, which mirrored the multipart `image` form
+    //     field 1:1 (singular for one ref, array for multiple). This branch
+    //     keeps history rendering correct for tasks already in MongoDB.
+    referenceImages(): string[] {
+      const req: any = this.modelValue?.request;
+      if (!req) return [];
+      const fromUrls = Array.isArray(req.image_urls) ? (req.image_urls as string[]) : [];
+      if (fromUrls.length > 0) return fromUrls.filter((u) => typeof u === 'string' && u.length > 0);
+      const raw = req.image;
+      if (Array.isArray(raw)) return raw.filter((u: unknown): u is string => typeof u === 'string' && u.length > 0);
+      if (typeof raw === 'string' && raw.length > 0) return [raw];
+      return [];
     }
   },
   methods: {
