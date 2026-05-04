@@ -72,14 +72,51 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       media="print"
-      onload="this.media='all'"
+      onload="this.media = 'all'"
     />
     <noscript>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       />
-    </noscript>    <script>
+    </noscript>
+    <script>
+      // Resolve the user's chosen theme BEFORE first paint and toggle
+      // `html.dark` accordingly. Without this, users who picked dark mode
+      // (or fall through to Nexior's `dark` cookie default — see
+      // `src/utils/initializer.ts` `initializeTheme`) get a white-flash
+      // boot screen until the Vue app boots and re-applies the cookie.
+      // Mirrors the pattern used in PlatformFrontend's index.html.
+      (() => {
+        try {
+          const normalizeTheme = (value) => {
+            if (!value) return null;
+            const lower = String(value).trim().toLowerCase();
+            if (lower === 'dark') return 'dark';
+            if (lower === 'light') return 'light';
+            return null;
+          };
+
+          const query = new URLSearchParams(window.location.search);
+          const queryTheme = normalizeTheme(query.get('theme'));
+          const cookieMatch = document.cookie.match(/(?:^|;\s*)THEME=([^;]+)/);
+          const cookieTheme = normalizeTheme(cookieMatch ? decodeURIComponent(cookieMatch[1]) : null);
+          const localTheme = normalizeTheme(localStorage.getItem('vueuse-color-scheme'));
+
+          // Priority: query > cookie > localStorage > Nexior default (`dark`).
+          // We do NOT fall back to OS preference here, because Nexior's app-
+          // level `initializeTheme` defaults missing cookies to `dark`; if we
+          // honored the OS we'd flicker from light → dark on first boot for
+          // light-OS users.
+          const resolvedTheme = queryTheme || cookieTheme || localTheme || 'dark';
+          document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+          document.documentElement.style.colorScheme = resolvedTheme === 'dark' ? 'dark' : 'light';
+        } catch (e) {
+          /* no-op */
+        }
+      })();
+    </script>
+    <script>
       var _hmt = _hmt || [];
       // Defer Baidu analytics so it never blocks initial paint or competes for
       // bandwidth with the application bundle. `requestIdleCallback` lets the
@@ -107,19 +144,19 @@
         --boot-spinner-1: #7c3aed;
         --boot-spinner-2: #818cf8;
         --boot-spinner-3: #a78bfa;
-        color-scheme: light;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --boot-bg: #000000;
-          --boot-fg: #ffffff;
-          --boot-muted: rgba(255, 255, 255, 0.65);
-          --boot-spinner-1: #7c3aed;
-          --boot-spinner-2: #818cf8;
-          --boot-spinner-3: #a78bfa;
-          color-scheme: dark;
-        }
+      /*
+       * Driven by the inline pre-paint theme script above (which sets
+       * `html.dark` from query/cookie/localStorage before first paint).
+       * Avoid `@media (prefers-color-scheme: dark)` here because Nexior's
+       * default cookie value is `dark` regardless of OS preference, and we
+       * don't want a light-OS user flashing white on every reload.
+       */
+      html.dark {
+        --boot-bg: #000000;
+        --boot-fg: #ffffff;
+        --boot-muted: rgba(255, 255, 255, 0.65);
       }
 
       html,
@@ -191,6 +228,14 @@
         }
       }
 
+      .boot__title {
+        font-size: 14px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        opacity: 0.92;
+        user-select: none;
+      }
+
       .boot__subtitle {
         font-size: 12px;
         color: var(--boot-muted);
@@ -210,6 +255,7 @@
       <div class="boot" aria-label="Loading" role="status">
         <div class="boot__content">
           <div class="boot__loader" aria-hidden="true"></div>
+          <div class="boot__title">Ace Data Cloud</div>
           <div class="boot__subtitle">Loading…</div>
         </div>
       </div>
