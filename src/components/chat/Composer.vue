@@ -49,6 +49,27 @@
       @keydown.enter.exact="onEnterKey"
       @input="adjustTextareaHeight"
     ></textarea>
+    <!--
+      Soft character counter. Hidden for short prompts (<800 chars) to avoid
+      visual noise; shows once the input is non-trivial; turns warning-orange
+      past 50k chars to flag prompts that are likely to bump into model
+      context limits or upstream payload caps. Intentionally NOT a hard cap:
+      different models have very different context windows and we don't want
+      to falsely block a Claude/Gemini long-context user.
+    -->
+    <el-tooltip
+      v-if="questionValue && questionValue.length >= COUNTER_VISIBLE_AT"
+      :content="
+        questionValue.length >= COUNTER_WARN_AT
+          ? $t('chat.composer.charactersWarning')
+          : $t('chat.composer.charactersHint')
+      "
+      placement="top"
+    >
+      <span :class="['char-counter', { warning: questionValue.length >= COUNTER_WARN_AT }]" aria-live="polite">
+        {{ questionValue.length.toLocaleString() }}
+      </span>
+    </el-tooltip>
     <div class="tools">
       <el-dropdown trigger="click" placement="top-start" :hide-on-click="true" popper-class="composer-plus-popper">
         <!--
@@ -60,7 +81,11 @@
         -->
         <span class="btn-plus-trigger">
           <el-tooltip class="box-item" effect="dark" :content="$t('chat.composer.addAction')" placement="top">
-            <span :class="{ btn: true, 'btn-plus': true, disabled: answering }" :aria-disabled="answering" role="button">
+            <span
+              :class="{ btn: true, 'btn-plus': true, disabled: answering }"
+              :aria-disabled="answering"
+              role="button"
+            >
               <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-plus" />
             </span>
           </el-tooltip>
@@ -171,7 +196,16 @@ export default defineComponent({
       inputHeight: '35px',
       questionValue: this.question || '',
       fileList: [] as UploadFile[],
-      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
+      // Soft thresholds for the composer character counter. Stay invisible
+      // during normal chat use (most messages are < 200 chars); show once
+      // the input is "essay-length"; warning-orange past a length where
+      // shorter-context endpoints (some image-edit / TTS / older models)
+      // start rejecting payloads. Intentionally NOT a hard cap — different
+      // models have very different context windows and a long-context
+      // Claude / Gemini user is legitimate.
+      COUNTER_VISIBLE_AT: 800,
+      COUNTER_WARN_AT: 50000
     };
   },
   computed: {
@@ -391,7 +425,9 @@ textarea.input:focus {
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.04),
     0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
   padding: 6px;
 
   &:focus-within {
@@ -429,6 +465,31 @@ textarea.input:focus {
     margin-top: 5px;
     font-size: 16px;
     margin-bottom: 50px;
+  }
+  .char-counter {
+    // Sits in the bottom-right corner of the composer, immediately to the
+    // left of the send button. Subtle by default; the parent toggles a
+    // .warning class once the prompt is long enough to risk upstream
+    // rejection.
+    position: absolute;
+    right: 100px;
+    bottom: 18px;
+    font-size: 12px;
+    line-height: 1;
+    color: var(--el-text-color-secondary);
+    background-color: var(--el-fill-color-light);
+    border-radius: 10px;
+    padding: 3px 8px;
+    user-select: none;
+    pointer-events: auto;
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease;
+    &.warning {
+      color: var(--el-color-warning);
+      background-color: var(--el-color-warning-light-9);
+      font-weight: 600;
+    }
   }
   .tools {
     position: absolute;
