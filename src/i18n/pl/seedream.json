@@ -35,6 +35,10 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (sekundy)"
+  },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
     "description": "Podpowiedź do generowania/edycji"
@@ -60,16 +64,16 @@
     "description": "Opis parametru model"
   },
   "description.size": {
-    "message": "Rozmiar obrazu. Obsługuje predefiniowane wartości `1K`, `2K`, `4K` lub niestandardowe `<szerokość>x<wysokość>`.",
-    "description": "Opis parametru rozmiaru"
+    "message": "Rozmiar obrazu. Obsługuje predefiniowane `1K`, `2K`, `4K` lub niestandardowe `<szerokość>x<wysokość>`.",
+    "description": "Opis parametru size"
   },
   "description.watermark": {
     "message": "Czy dodać znak wodny AI do generowanego obrazu. Domyślnie włączone.",
-    "description": "Opis parametru znaku wodnego"
+    "description": "Opis parametru watermark"
   },
   "description.imageUrls": {
-    "message": "Prześlij 1-14 obrazów referencyjnych, aby włączyć edycję obrazów.",
-    "description": "Opis parametru obrazu"
+    "message": "Prześlij 1-14 obrazów referencyjnych, aby włączyć edycję obrazu.",
+    "description": "Opis parametru image"
   },
   "status.pending": {
     "message": "Oczekiwanie",
@@ -113,7 +117,7 @@
   },
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Niepowodzenie przesyłania"
+    "description": "Błąd przesyłania"
   },
   "name.model": {
     "message": "Model",

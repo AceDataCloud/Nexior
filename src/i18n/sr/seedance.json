@@ -8,7 +8,7 @@
     "description": "Упутство за генерисање видеа"
   },
   "description.prompt": {
-    "message": "Описујте видео који желите да генеришете, можете додати SeeDance параметре (нпр: --rs 720p --rt 16:9 --dur 5).",
+    "message": "Описујте видео који желите да генеришете, можете додати SeeDance параметре (нпр.: --rs 720p --rt 16:9 --dur 5).",
     "description": "Упутство за унос упутства"
   },
   "placeholder.prompt": {
@@ -92,20 +92,20 @@
     "description": "Упутство за враћање последњег кадра"
   },
   "name.firstFrame": {
-    "message": "Слика првог кадра",
-    "description": "Ознака за учитавање слике првог кадра"
+    "message": "Прва слика",
+    "description": "Ознака за учитавање прве слике"
   },
   "description.firstFrame": {
-    "message": "Опционално. Учитајте референтну/слику првог кадра.",
-    "description": "Упутство за слику првог кадра"
+    "message": "Опционално. Учитајте референтну/прву слику.",
+    "description": "Упутство за прву слику"
   },
   "name.lastFrame": {
-    "message": "Слика последњег кадра",
-    "description": "Ознака за учитавање слике последњег кадра"
+    "message": "Последња слика",
+    "description": "Ознака за учитавање последње слике"
   },
   "description.lastFrame": {
-    "message": "Опционално. Учитајте слику последњег кадра (потребна слика првог кадра).",
-    "description": "Упутство за слику последњег кадра"
+    "message": "Опционално. Учитајте последњу слику (потребна прва слика).",
+    "description": "Упутство за последњу слику"
   },
   "button.generate": {
     "message": "Генериши",
@@ -128,7 +128,7 @@
     "description": "Текст за искључивање прекидача"
   },
   "message.startingTask": {
-    "message": "Покреће SeeDance задатак…",
+    "message": "Покреће се SeeDance задатак…",
     "description": "Порука за почетак задатка"
   },
   "message.startTaskSuccess": {
@@ -161,7 +161,7 @@
   },
   "status.processing": {
     "message": "Генерише се",
-    "description": "Статус генерације"
+    "description": "Статус у процесу генерисања"
   },
   "name.taskId": {
     "message": "ID задатка",
@@ -171,12 +171,16 @@
     "message": "Trace ID",
     "description": "Ознака за Trace ID"
   },
+  "name.elapsed": {
+    "message": "Прошло време",
+    "description": "Прошло време задатка (секунде)"
+  },
   "name.failure": {
     "message": "Неуспех",
     "description": "Ознака за неуспех"
   },
   "name.failureReason": {
-    "message": "Разлог неуспеха",
+    "message": "Разлог за неуспех",
     "description": "Ознака за разлог неуспеха"
   },
   "name.status": {

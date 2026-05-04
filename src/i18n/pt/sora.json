@@ -19,13 +19,17 @@
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
+  },
   "name.createdAt": {
-    "message": "Criado Em",
+    "message": "Data de Criação",
     "description": "Data e hora em que o vídeo Sora foi gerado"
   },
   "name.startEndImage": {
     "message": "Imagens de Referência",
-    "description": "Rótulo do campo do formulário: Imagens de referência (sugestão em inglês: 'Start/End Frames', mantenha curto para evitar obstrução do botão)"
+    "description": "Rótulo do campo do formulário: Imagens de referência (início/fim)"
   },
   "name.action": {
     "message": "Ação",
@@ -49,11 +53,11 @@
   },
   "option.portrait": {
     "message": "Retrato",
-    "description": "Texto da opção: orientação retrato (sugestão em inglês: 'Portrait', mantenha curto)"
+    "description": "Texto da opção: orientação retrato"
   },
   "option.landscape": {
     "message": "Paisagem",
-    "description": "Texto da opção: orientação paisagem (sugestão em inglês: 'Landscape', mantenha curto)"
+    "description": "Texto da opção: orientação paisagem"
   },
   "name.duration": {
     "message": "Duração do Vídeo",
@@ -64,7 +68,7 @@
     "description": "Nome do parâmetro de qualidade do vídeo"
   },
   "description.imageUrl": {
-    "message": "Em tarefas de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
+    "message": "Na tarefa de criação de vídeo com várias imagens, é necessário fazer o upload de várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -72,7 +76,7 @@
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de links de imagens de referência, a primeira é a imagem inicial, seguida pela imagem final",
+    "message": "Array de links de imagens de referência, a primeira é a imagem do quadro inicial, seguida pela imagem do quadro final",
     "description": "Descrição do parâmetro 'image_url'"
   },
   "status.pending": {
@@ -96,7 +100,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Insira o prompt para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Insira o prompt para o estilo do vídeo, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Fazer Upload",
-    "description": "Texto do botão para fazer upload de imagem (simplifique para 'Upload', não use 'Upload Image')"
+    "description": "Texto do botão para fazer upload de imagens"
   },
   "button.uploadVideoUrl": {
     "message": "Fazer Upload do Vídeo",
@@ -136,15 +140,15 @@
     "description": "Texto do botão que permite ao usuário fazer upload de referências"
   },
   "message.uploadReferencesExceed": {
-    "message": "É possível fazer upload de até 2 imagens",
-    "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
+    "message": "É possível fazer upload de no máximo 2 imagens",
+    "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imagens carregadas com sucesso",
-    "description": "Mensagem de sucesso ao carregar imagens com sucesso"
+    "message": "Imagens enviadas com sucesso",
+    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao carregar imagens, por favor, tente novamente mais tarde",
+    "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
     "description": "Mensagem de erro quando o upload de imagens falha"
   },
   "message.startingTask": {
@@ -173,7 +177,7 @@
   },
   "message.generateFailed": {
     "message": "Falha ao gerar vídeo",
-    "description": "Mensagem quando a geração de imagem falha"
+    "description": "Mensagem exibida quando a geração de vídeo falha"
   },
   "message.uploadVideoExceed": {
     "message": "Número de imagens da primeira frame excede o limite",

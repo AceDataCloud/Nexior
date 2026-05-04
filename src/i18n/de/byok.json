@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Verwende deinen eigenen Anbieter-API-Schlüssel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu), um den Plattformkonto-Pool zu ersetzen. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt.",
+    "message": "Verwende deinen eigenen API-Schlüssel von Anbietern (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu), anstelle des Plattformkontenpools. Nach der Konfiguration werden die Dialoganfragen des entsprechenden Modells direkt mit deinem Schlüssel an den Anbieter weitergeleitet, ohne Plattform-Credits zu verbrauchen; Toolaufrufe, Referenzen, Artefakte, Cloud-Historie und andere Funktionen funktionieren wie gewohnt.",
     "description": ""
   },
   "field.provider": {
@@ -144,27 +144,27 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Verwende deinen {provider}-Schlüssel",
+    "message": "Verwendet benutzerdefinierten {provider} API-Schlüssel",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Dieser Dialog verwendet deinen eigenen {provider} API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten.",
+    "message": "Der aktuelle Dialog verwendet Ihren {provider} API-Schlüssel, die Kosten werden über das {provider}-Konto abgerechnet, ohne das Plattformguthaben zu belasten.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Klicken Sie hier, um Ihre benutzerdefinierten API-Schlüssel zu verwalten",
-    "description": "Hinweis nach dem Klicken auf das BYOK-Abzeichen auf der Chat-Seite: Klicken Sie, um den API-Schlüssel-Tab im Einstellungsdialog zu öffnen."
+    "message": "Klicken Sie, um die API-Schlüssel-Einstellungen zu öffnen",
+    "description": "Hinweis nach dem Klicken auf das BYOK-Abzeichen auf der Chat-Seite: Klicken Sie, um den Tab für die API-Schlüssel-Einstellungen zu öffnen."
   },
   "button.testConnection": {
-    "message": "Speichern und Verbindung testen",
-    "description": "Schaltfläche im Hinzufügen/Bearbeiten-Dialog – zuerst Anmeldeinformationen speichern, dann /models aufrufen, um die Konnektivität zu überprüfen."
+    "message": "Testen",
+    "description": "Schaltfläche im neuen/bearbeiteten Dialogfeld – testet nur die aktuelle Formular-Konfiguration, speichert keine Anmeldeinformationen."
   },
   "test.success": {
-    "message": "Konnektivitätstest erfolgreich",
+    "message": "Verbindungstest erfolgreich",
     "description": "Erfolgstitel im Bereich der Testergebnisse."
   },
   "test.failure": {
-    "message": "Konnektivitätstest fehlgeschlagen",
+    "message": "Verbindungstest fehlgeschlagen",
     "description": "Fehlertitel im Bereich der Testergebnisse."
   },
   "test.endpoint": {
@@ -177,26 +177,26 @@
   },
   "test.message": {
     "message": "Antwort des Anbieters",
-    "description": "Label für die Anbieterfehler-/Hinweismeldung im Detailbereich der Testergebnisse."
+    "description": "Label für die Anbieterfehler-/Hinweistexte im Detailbereich der Testergebnisse."
   },
   "providerDesc.openai": {
-    "message": "Ersetzt die ChatGPT-Anfragen (GPT-4 / GPT-4o / o1 / o3 usw.) auf dieser Seite.",
+    "message": "Ersetzt die ChatGPT-Anfragen (GPT-4 / GPT-4o / o1 / o3 usw.) dieser Plattform.",
     "description": "Untertitel für die OpenAI-Option im Anbieter-Dropdown."
   },
   "providerDesc.anthropic": {
-    "message": "Ersetzt die Claude-Anfragen (Sonnet / Opus / Haiku usw.) auf dieser Seite.",
+    "message": "Ersetzt die Claude-Anfragen (Sonnet / Opus / Haiku usw.) dieser Plattform.",
     "description": "Untertitel für die Anthropic-Option im Anbieter-Dropdown."
   },
   "providerDesc.google": {
-    "message": "Ersetzt die Gemini-Anfragen (Pro / Flash-Serie) auf dieser Seite.",
+    "message": "Ersetzt die Gemini-Anfragen (Pro / Flash-Serie) dieser Plattform.",
     "description": "Untertitel für die Google-Option im Anbieter-Dropdown."
   },
   "providerDesc.xai": {
-    "message": "Ersetzt die Grok-Anfragen auf dieser Seite.",
+    "message": "Ersetzt die Grok-Anfragen dieser Plattform.",
     "description": "Untertitel für die xAI-Option im Anbieter-Dropdown."
   },
   "providerDesc.deepseek": {
-    "message": "Ersetzt die DeepSeek-Anfragen (V3 / R1 usw.) auf dieser Seite.",
+    "message": "Ersetzt die DeepSeek-Anfragen (V3 / R1 usw.) dieser Plattform.",
     "description": "Untertitel für die DeepSeek-Option im Anbieter-Dropdown."
   },
   "providerDesc.moonshot": {

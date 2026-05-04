@@ -17,7 +17,7 @@
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "Razón por la que la tarea falló"
+    "description": "Razón del fallo de la tarea"
   },
   "name.status": {
     "message": "Estado",
@@ -27,13 +27,17 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (en segundos)"
+  },
   "name.size": {
     "message": "Tamaño",
     "description": "Tamaño del código QR a generar"
   },
   "name.createdAt": {
     "message": "Fecha de creación",
-    "description": "Fecha y hora en que se generó el código QR"
+    "description": "Fecha y hora de generación del código QR"
   },
   "name.endImageUrls": {
     "message": "Imágenes de retrato",
@@ -64,7 +68,7 @@
     "description": "Método de entrada"
   },
   "status.pending": {
-    "message": "Pendiente",
+    "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
@@ -85,11 +89,11 @@
   },
   "button.fast": {
     "message": "Modo rápido",
-    "description": "Texto del botón que permite al usuario establecer el modo 'rápido' para generar la imagen"
+    "description": "Texto del botón que permite al usuario establecer el 'modo rápido' para generar la imagen"
   },
   "button.relax": {
     "message": "Modo lento",
-    "description": "Texto del botón que permite al usuario establecer el modo 'lento' para generar la imagen"
+    "description": "Texto del botón que permite al usuario establecer el 'modo lento' para generar la imagen"
   },
   "button.generate": {
     "message": "Generar",
@@ -104,20 +108,20 @@
     "description": "Texto del botón para descargar la imagen"
   },
   "button.uploadImageUrls": {
-    "message": "Subir imágenes de retrato",
-    "description": "Texto del botón para subir imágenes de retrato (simplificado a 'Subir')"
+    "message": "Subir imagen de retrato",
+    "description": "Texto del botón para subir la imagen de retrato (simplificado a 'Subir')"
   },
   "message.uploadReferencesExceed": {
     "message": "Se pueden subir hasta 5 imágenes",
     "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito al subir imágenes"
+    "message": "Imagen subida con éxito",
+    "description": "Mensaje de éxito al subir la imagen"
   },
   "message.uploadReferencesError": {
-    "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando falla la subida de imágenes"
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error al fallar la subida de la imagen"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -129,7 +133,7 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
     "message": "Se han agotado sus créditos, por favor compre más para continuar usando",
@@ -141,11 +145,11 @@
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje para descargar el video"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando falla la generación de la imagen"
+    "description": "Mensaje al fallar la generación de la imagen"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
@@ -168,28 +172,28 @@
     "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
   },
   "styleTag.kindergarten": {
-    "message": "Foto de ingreso a jardín de infantes",
+    "message": "Foto de jardín de infantes",
     "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto de camiseta con logo empresarial",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Camiseta con logo de empresa",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.wedding": {
     "message": "Foto de registro de matrimonio",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.businessPphoto": {
-    "message": "Retrato de estilo empresarial",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Retrato de negocios",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.bobSuit": {
-    "message": "Bob con traje negro",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Traje negro con bob",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.femalePortrait": {
     "message": "Retrato femenino",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "message.uploadImageExceed": {
     "message": "Se pueden subir hasta 2 imágenes",

@@ -27,13 +27,17 @@
     "message": "ID praćenja",
     "description": "ID praćenja zadatka"
   },
+  "name.elapsed": {
+    "message": "Proteklo vreme",
+    "description": "Proteklo vreme zadatka (u sekundama)"
+  },
   "name.createdAt": {
-    "message": "Datum kreiranja",
+    "message": "Datum i vreme kreiranja",
     "description": "Datum i vreme generisanja Veo videa"
   },
   "name.startEndImage": {
     "message": "Referentne slike",
-    "description": "Oznaka polja forme: referentne slike (preporučuje se prevod kao 'Start/End Frames', zadržati kratak da ne zakloni dugme)"
+    "description": "Oznaka polja forme: referentne slike (preporučuje se da se prevod zadrži kratak kako bi se izbeglo preklapanje dugmadi)"
   },
   "name.action": {
     "message": "Akcija",
@@ -53,7 +57,7 @@
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Ime Veo generatora videa"
+    "description": "Ime generatora Veo videa"
   },
   "name.ratio": {
     "message": "Odnos",
@@ -72,7 +76,7 @@
     "description": "Opis parametra 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Niz linkova referentnih slika, prva je početna slika, a druga je završna slika",
+    "message": "Niz linkova referentnih slika, prva je slika početnog okvira, a druga slika završnog okvira",
     "description": "Opis parametra 'image_url'"
   },
   "status.pending": {
@@ -108,11 +112,11 @@
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action1": {
-    "message": "Tekst u video",
+    "message": "Generiši video",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action2": {
-    "message": "Slika u video",
+    "message": "Generiši video iz slike",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action3": {
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Otpremi sliku",
-    "description": "Tekst dugmeta za otpremanje slike (na engleskom pojednostaviti na 'Upload', ne koristiti 'Upload Image')"
+    "description": "Tekst dugmeta za otpremanje slike (preporučuje se pojednostaviti na 'Otpremi')"
   },
   "button.uploadVideoUrl": {
     "message": "Otpremi video",
@@ -160,7 +164,7 @@
     "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.imageRequired": {
-    "message": "Molimo vas da prvo otpremite barem jednu referentnu sliku pre nego što pokrenete zadatak za video sa slikom",
+    "message": "Molimo vas da prvo otpremite najmanje jednu referentnu sliku pre nego što pokrenete zadatak za generisanje videa iz slike",
     "description": "Poruka kada nije otpremljena slika u režimu image2video"
   },
   "message.usedUp": {
@@ -176,8 +180,8 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.generateFailed": {
-    "message": "Generisanje videa nije uspelo",
-    "description": "Poruka kada generisanje slike nije uspelo"
+    "message": "生成视频失败",
+    "description": "Poruka kada generisanje videa nije uspelo"
   },
   "message.uploadVideoExceed": {
     "message": "Broj slika prvog okvira premašuje ograničenje",
@@ -185,35 +189,35 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Veličina datoteke ne može biti veća od 10MB!",
-    "description": "Poruka greške kada veličina datoteke ne može biti veća od 10MB!"
+    "description": "Greška kada veličina datoteke ne može biti veća od 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Datoteka mora biti u MP4 formatu!",
-    "description": "Poruka greške kada datoteka mora biti u MP4 formatu!"
+    "description": "Greška kada datoteka mora biti u MP4 formatu!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Broj slika za prvu sličicu premašuje ograničenje",
-    "description": "Poruka greške kada broj slika za prvu sličicu premašuje ograničenje"
+    "message": "Broj slika prvog okvira premašuje ograničenje",
+    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
   },
   "message.uploadEndImageExceed": {
-    "message": "Broj slika za poslednju sličicu premašuje ograničenje",
-    "description": "Poruka greške kada broj slika za poslednju sličicu premašuje ograničenje"
+    "message": "Broj slika poslednjeg okvira premašuje ograničenje",
+    "description": "Greška kada broj slika poslednjeg okvira premašuje ograničenje"
   },
   "message.uploadStartImageError": {
-    "message": "Greška pri upload-u prve sličice",
-    "description": "Poruka greške kada dođe do greške pri upload-u prve sličice"
+    "message": "Greška prilikom učitavanja slike prvog okvira",
+    "description": "Greška kada dođe do problema prilikom učitavanja slike prvog okvira"
   },
   "message.uploadVideoError": {
-    "message": "Greška pri upload-u videa",
-    "description": "Poruka greške kada dođe do greške pri upload-u videa"
+    "message": "Greška prilikom učitavanja videa",
+    "description": "Greška kada dođe do problema prilikom učitavanja videa"
   },
   "message.uploadEndImageError": {
-    "message": "Greška pri upload-u poslednje sličice",
-    "description": "Poruka greške kada dođe do greške pri upload-u poslednje sličice"
+    "message": "Greška prilikom učitavanja slike poslednjeg okvira",
+    "description": "Greška kada dođe do problema prilikom učitavanja slike poslednjeg okvira"
   },
   "message.uploadDocumentsError": {
-    "message": "Greška pri upload-u dokumenata",
-    "description": "Poruka greške kada dođe do greške pri upload-u dokumenata"
+    "message": "Greška prilikom učitavanja dokumenata",
+    "description": "Greška kada dođe do problema prilikom učitavanja dokumenata"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
@@ -233,7 +237,7 @@
   },
   "name.imageMask": {
     "message": "Maska područja",
-    "description": "Maska slike za /veo/objects (bele piksela = operativna područja)"
+    "description": "Maska slike za /veo/objects (bele piksela = operativna zona)"
   },
   "name.videoId": {
     "message": "ID videa",
@@ -241,46 +245,46 @@
   },
   "placeholder.imageMask": {
     "message": "URL maske slike ili base64 kodirani JPEG",
-    "description": "Placeholder za input polje image_mask"
+    "description": "Placeholder za unos image_mask"
   },
   "placeholder.videoId": {
-    "message": "Nalepite ID videa ili kliknite dugme za operaciju u desnom spisku zadataka da se automatski popuni",
-    "description": "Placeholder za input polje video_id"
+    "message": "Nalepite ID videa ili kliknite na dugme operacije u desnom spisku zadataka za automatsko popunjavanje",
+    "description": "Placeholder za unos video_id"
   },
   "button.actionIngredients": {
-    "message": "Kombinuj slike u video",
-    "description": "ingredients2video — Kombinuj 1-3 slike za generisanje nove scene"
+    "message": "Video fuzija više slika",
+    "description": "ingredients2video — fuzija 1-3 slike za generisanje nove scene"
   },
   "button.actionUpsample": {
     "message": "Uzorkovanje / GIF pregled",
-    "description": "/veo/upsample — Uzorkovanje na 1080p/4K ili izvoz GIF-a"
+    "description": "/veo/upsample — uzorkovanje na 1080p/4K ili izvoz GIF-a"
   },
   "button.actionExtend": {
     "message": "Produži video",
-    "description": "/veo/extend — Produži trajanje već generisanog videa"
+    "description": "/veo/extend — produžavanje trajanja već generisanog videa"
   },
   "button.actionReshoot": {
     "message": "Ponovno snimanje",
-    "description": "/veo/reshoot — Ponovno generisanje sa promenom pokreta kamere"
+    "description": "/veo/reshoot — ponovo generisanje sa promenom pokreta kamere"
   },
   "button.actionObjectInsert": {
     "message": "Dodaj objekat",
-    "description": "/veo/objects insert — Dodaj objekat u video"
+    "description": "/veo/objects insert — dodavanje objekta u video"
   },
   "button.actionObjectRemove": {
     "message": "Ukloni objekat",
-    "description": "/veo/objects remove — Ukloni objekat iz videa putem maske"
+    "description": "/veo/objects remove — uklanjanje objekta iz videa putem maske"
   },
   "button.actionUpsample1080p": {
-    "message": "Uzorkuj na 1080P",
-    "description": "Dugme za Preview operaciju — Uzorkovanje na 1080P"
+    "message": "Uzorkovanje 1080P",
+    "description": "Dugme za pregled — uzorkovanje na 1080P"
   },
   "button.actionUpsample4k": {
-    "message": "Uzorkuj na 4K",
-    "description": "Dugme za Preview operaciju — Uzorkovanje na 4K"
+    "message": "Uzorkovanje 4K",
+    "description": "Dugme za pregled — uzorkovanje na 4K"
   },
   "button.actionUpsampleGif": {
     "message": "Izvezi GIF",
-    "description": "Dugme za Preview operaciju — Pretvori u GIF pregled"
+    "description": "Dugme za pregled — konvertovanje u GIF pregled"
   }
 }

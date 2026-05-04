@@ -27,6 +27,10 @@
     "message": "추적 ID",
     "description": "작업의 추적 ID"
   },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "작업의 소요 시간(초)"
+  },
   "name.size": {
     "message": "크기",
     "description": "생성할 QR 코드의 크기"
@@ -80,7 +84,7 @@
     "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트 입력, 예: 우주에서 화산으로 이동하는 우주비행사",
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: 우주에서 화산으로 이동하는 우주비행사",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "button.fast": {
@@ -96,7 +100,7 @@
     "description": "헤드샷 증명사진 생성을 위한 버튼 텍스트"
   },
   "button.viewImage": {
-    "message": "원본 보기",
+    "message": "원본 이미지 보기",
     "description": "헤드샷 증명사진 생성을 위한 버튼 텍스트"
   },
   "button.download": {
@@ -105,7 +109,7 @@
   },
   "button.uploadImageUrls": {
     "message": "인물 사진 업로드",
-    "description": "인물 사진 업로드 버튼 텍스트 (영어는 'Upload'로 간단히 하여 길어지는 것을 피함)"
+    "description": "인물 사진 업로드 버튼 텍스트(영어는 'Upload'로 간단히 하여 길어지는 것을 피함)"
   },
   "message.uploadReferencesExceed": {
     "message": "최대 5장의 이미지를 업로드할 수 있습니다.",
@@ -124,8 +128,8 @@
     "description": "그림 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업 시작 성공",
-    "description": "작업 시작 성공 시의 성공 메시지"
+    "message": "생성 작업이 성공적으로 시작되었습니다.",
+    "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "작업 시작 실패, 관리자에게 문의하세요.",
@@ -133,7 +137,7 @@
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요.",
-    "description": "소진 시의 메시지"
+    "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -184,7 +188,7 @@
     "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
   },
   "styleTag.bobSuit": {
-    "message": "검은 정장과 보브 헤어",
+    "message": "검은색 정장과 보브 헤어",
     "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
   },
   "styleTag.femalePortrait": {
@@ -192,11 +196,11 @@
     "description": "이미지를 설명하고 생성하는 스타일 단어로, 생성된 이미지는 이 태그의 스타일을 포함해야 합니다."
   },
   "message.uploadImageExceed": {
-    "message": "최대 2장의 이미지를 업로드할 수 있습니다",
-    "description": "업로드할 참고 이미지 수가 제한을 초과할 때의 알림"
+    "message": "최대 2장의 이미지를 업로드할 수 있습니다.",
+    "description": "업로드할 수 있는 참고 이미지 수를 초과했을 때의 알림"
   },
   "message.uploadImageError": {
-    "message": "이미지 업로드에 실패했습니다. 나중에 다시 시도해 주세요",
-    "description": "참고 이미지 업로드 실패 시의 오류 알림"
+    "message": "이미지 업로드에 실패했습니다. 나중에 다시 시도해 주세요.",
+    "description": "참고 이미지 업로드 실패 시의 오류 메시지"
   }
 }

@@ -35,9 +35,13 @@
     "message": "Seuranta ID",
     "description": "Seuranta ID"
   },
+  "name.elapsed": {
+    "message": "Kulunut aika",
+    "description": "Tehtävän kesto (sekunteina)"
+  },
   "name.prompt": {
-    "message": "Kuvan kehotus",
-    "description": "Luomisen/muokkauksen kehotussanat"
+    "message": "Kuvaprompt",
+    "description": "Luonnin/muokkauksen promptit"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
@@ -45,23 +49,23 @@
   },
   "name.size": {
     "message": "Koko",
-    "description": "Tulostettavan kuvan koko"
+    "description": "Lähtökuvan koko"
   },
   "description.size": {
-    "message": "Kuvan luomiseen käytettävä tulostuskoko, yleiset arvot: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Koon selitys"
+    "message": "Kuvan luomiseen käytettävä lähtökoko, yleiset arvot: 1024x1024, 1536x1024, 1024x1536.",
+    "description": "Koon kuvaus"
   },
   "description.prompt": {
-    "message": "Kuvan luomiseen tai muokkaamiseen käytettävät kehotussanat",
-    "description": "Kehotussanojen kuvaus"
+    "message": "Kuvien luomiseen tai muokkaamiseen käytettävät promptit",
+    "description": "Promptin kuvaus"
   },
   "description.model": {
-    "message": "Kuvan luomiseen ja muokkaamiseen käytettävä malli.",
-    "description": "malli-parametrin selitys"
+    "message": "Kuvien luomiseen ja muokkaamiseen käytettävä malli.",
+    "description": "malli-parametrin kuvaus"
   },
   "description.imageUrls": {
     "message": "Lataa 1-5 viittauskuvaa päästäksesi muokkaustilaan.",
-    "description": "image_urls-parametrin selitys"
+    "description": "image_urls-parametrin kuvaus"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -72,8 +76,8 @@
     "description": "Valintapaikka"
   },
   "placeholder.prompt": {
-    "message": "Syötä kehotussanat, esim: vesiväri kissa pöydällä",
-    "description": "Kehotuksen paikka"
+    "message": "Syötä prompt, esim: vesiväri kissa pöydällä",
+    "description": "Promptin paikka"
   },
   "button.generate": {
     "message": "Luo",
@@ -92,7 +96,7 @@
     "description": "Tehtävä luotiin onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloitus epäonnistui, ota yhteyttä ylläpitäjään:",
+    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä ylläpitäjään:",
     "description": "Tehtävän luominen epäonnistui"
   },
   "message.usedUp": {
@@ -105,7 +109,7 @@
   },
   "message.uploadImageError": {
     "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Lataaminen epäonnistui"
+    "description": "Lataus epäonnistui"
   },
   "name.model": {
     "message": "Malli",

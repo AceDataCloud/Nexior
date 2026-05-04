@@ -9,14 +9,14 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållstypen för den QR-kod som ska genereras, såsom 'länk', 'text' etc."
+    "description": "Innehållstypen för den QR-kod som ska genereras, t.ex. 'länk', 'text' etc."
   },
   "name.failure": {
     "message": "Misslyckande",
     "description": "Uppgiftens misslyckandestatus"
   },
   "name.failureReason": {
-    "message": "Misslyckandeorsak",
+    "message": "Orsak till misslyckande",
     "description": "Anledningen till att uppgiften misslyckades"
   },
   "name.status": {
@@ -26,6 +26,10 @@
   "name.traceId": {
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
+  },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
   },
   "name.size": {
     "message": "Storlek",
@@ -80,7 +84,7 @@
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange en prompt för den videostil som ska genereras, till exempel: Astronauter som åker från rymden till vulkanen",
+    "message": "Ange en prompt för den videostil som ska genereras, t.ex.: Astronauter som åker från rymden till vulkanen",
     "description": "Platshållartext i promptfältet"
   },
   "button.fast": {
@@ -113,7 +117,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilderna har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när bilderna har laddats upp"
+    "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bilder, försök igen senare",
@@ -148,48 +152,48 @@
     "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga åtgärder är tillgängliga"
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när inga operationer är tillgängliga"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
     "description": "Meddelande när inga uppgifter finns"
   },
   "styleCategory.styles": {
-    "message": "ID-fotostil",
-    "description": "Kategorisk term som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna etikett"
+    "message": "ID-fotostilar",
+    "description": "Kategoriterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna etikettkategori"
   },
   "styleTag.malePportrait": {
     "message": "Manlig porträttbild",
-    "description": "Stilterm som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna stil"
+    "description": "Stilterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna stil"
   },
   "styleTag.malePportrait2": {
     "message": "Manlig porträttbild 2",
-    "description": "Stilterm som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna stil"
+    "description": "Stilterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna stil"
   },
   "styleTag.kindergarten": {
-    "message": "Förskolefoto",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "message": "Förskolebild",
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera stilen av denna etikett"
   },
   "styleTag.logoTshirt": {
-    "message": "Företagslogo T-shirt foto",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "message": "Företagslogo T-shirt",
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.wedding": {
     "message": "Bröllopsregistreringsfoto",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.businessPphoto": {
     "message": "Affärsporträtt",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.bobSuit": {
     "message": "Svart kostym med bobfrisyr",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.femalePortrait": {
     "message": "Kvinnoporträtt",
-    "description": "Används för att beskriva och generera bilder i den stil som denna tagg representerar"
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "message.uploadImageExceed": {
     "message": "Max 2 bilder kan laddas upp",

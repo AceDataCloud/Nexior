@@ -17,11 +17,15 @@
   },
   "name.status": {
     "message": "ステータス",
-    "description": "タスクの状態"
+    "description": "タスクのステータス"
   },
   "name.traceId": {
     "message": "トレース ID",
     "description": "タスクのトレース ID"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
   },
   "name.createdAt": {
     "message": "作成日時",
@@ -73,7 +77,7 @@
   },
   "name.startImage": {
     "message": "初フレーム参照画像",
-    "description": "フォームフィールドラベル：初フレーム参照画像（英語では'First Frame'と翻訳し、短くしてボタンを遮らないように）"
+    "description": "フォームフィールドラベル：初フレーム参照画像（英語は'First Frame'を推奨し、短くしてボタンを隠さないように）"
   },
   "name.aspectRatio": {
     "message": "アスペクト比",
@@ -116,7 +120,7 @@
     "description": "Pixverse ビデオ生成器の名前"
   },
   "description.ingredients": {
-    "message": "複数の画像をアップロードして自分のビデオを生成したい場合は、このボタンをオンにしてください。",
+    "message": "複数の画像をアップロードして自分のビデオを生成したい場合は、このボタンを開いてください。",
     "description": "パラメータ 'ingredients' の説明"
   },
   "description.imageUrl": {
@@ -201,19 +205,19 @@
   },
   "button.extend": {
     "message": "ビデオを拡張",
-    "description": "ビデオ拡張ボタンのテキスト"
+    "description": "ビデオを拡張するボタンのテキスト"
   },
   "button.download": {
     "message": "ビデオをダウンロード",
-    "description": "ビデオダウンロードボタンのテキスト"
+    "description": "ビデオをダウンロードするボタンのテキスト"
   },
   "button.uploadImageUrl": {
     "message": "アップロード",
-    "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
+    "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化してください）"
   },
   "button.uploadVideoUrl": {
     "message": "ビデオをアップロード",
-    "description": "ビデオアップロードボタンのテキスト"
+    "description": "ビデオをアップロードするボタンのテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
@@ -261,11 +265,11 @@
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像生成に失敗したときのメッセージ"
+    "description": "画像の生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードする最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
@@ -277,11 +281,11 @@
   },
   "message.uploadStartImageExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードする最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
     "message": "アップロードする最後のフレーム画像の数が制限を超えています",
-    "description": "最後のフレーム画像のアップロード数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードする最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",

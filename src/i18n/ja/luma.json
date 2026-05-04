@@ -17,11 +17,15 @@
   },
   "name.status": {
     "message": "ステータス",
-    "description": "タスクの状態"
+    "description": "タスクのステータス"
   },
   "name.traceId": {
     "message": "トレース ID",
     "description": "タスクのトレース ID"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
   },
   "name.size": {
     "message": "サイズ",
@@ -60,8 +64,8 @@
     "description": "生成する QR コードの内容"
   },
   "name.ecl": {
-    "message": "エラー訂正レベル",
-    "description": "生成する QR コードのエラー訂正レベル"
+    "message": "誤り訂正レベル",
+    "description": "生成する QR コードの誤り訂正レベル"
   },
   "name.position": {
     "message": "位置",
@@ -80,7 +84,7 @@
     "description": "生成する QR コードの高度な設定"
   },
   "name.custom": {
-    "message": "動画アップロード",
+    "message": "動画をアップロード",
     "description": "カスタム拡張動画"
   },
   "name.extend": {
@@ -105,7 +109,7 @@
   },
   "name.qrw": {
     "message": "可視性",
-    "description": "QR コードジェネレーターの名称"
+    "description": "QR コード生成器の名称"
   },
   "name.steps": {
     "message": "生成ステップ数",
@@ -124,15 +128,15 @@
     "description": "生成する QR コードの内容画像 URL"
   },
   "inputWay.input": {
-    "message": "内容入力",
+    "message": "内容を入力",
     "description": "入力方法"
   },
   "inputWay.upload": {
-    "message": "QR コードアップロード",
+    "message": "QR コードをアップロード",
     "description": "入力方法"
   },
   "description.loop": {
-    "message": "生成された動画のループを有効にします。",
+    "message": "生成する動画のループを有効にします。",
     "description": "パラメータ 'qrw' の説明"
   },
   "description.enhancement": {
@@ -160,8 +164,8 @@
     "description": "パラメータ 'prompt' の説明"
   },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "status.processing": {
     "message": "処理中",
@@ -192,8 +196,8 @@
     "description": "位置入力のプレースホルダー"
   },
   "placeholder.content": {
-    "message": "生成する QR コードの内容を入力してください。例：https://www.google.com",
-    "description": "内容フィールドのプレースホルダー"
+    "message": "生成するQRコードの内容を入力してください。例：https://www.google.com",
+    "description": "内容フィールドのプレースホルダーテキスト"
   },
   "placeholder.aspectRatio": {
     "message": "選択してください...",
@@ -232,7 +236,7 @@
     "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
   },
   "button.uploadVideoUrl": {
-    "message": "アップロード",
+    "message": "ビデオをアップロード",
     "description": "QRコードをアップロードするボタンのテキスト"
   },
   "button.uploadEndImageUrl": {
@@ -276,7 +280,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.luminousHighway": {
-    "message": "光る道",
+    "message": "光の道",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.celestialJourney": {
@@ -328,7 +332,7 @@
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.expressiveMural": {
-    "message": "表現豊かな壁画",
+    "message": "表現力豊かな壁画",
     "description": "生成するQRコードのプリセットスタイル"
   },
   "preset.sereneHaze": {
@@ -357,7 +361,7 @@
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
-    "description": "描画タスクが始まるときのメッセージ"
+    "description": "描画タスクが開始されるときのメッセージ"
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
@@ -377,59 +381,59 @@
   },
   "message.downloadVideo": {
     "message": "この動画をダウンロード",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中のメッセージ"
   },
   "message.extendVideo": {
     "message": "この動画の生成を続ける",
-    "description": "画像が生成されているときのメッセージ"
+    "description": "画像が生成中のメッセージ"
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像生成に失敗したときのメッセージ"
+    "description": "画像生成に失敗した時のメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズが10MBを超えたときのエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルがMP4形式でないときのエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartImageExceed": {
     "message": "最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
     "message": "最後のフレーム画像の数が制限を超えています",
-    "description": "最後のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "最後のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadStartImageError": {
     "message": "最初のフレーム画像のアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "最初のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "動画のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "最後のフレーム画像のアップロードに失敗しました",
-    "description": "最後のフレーム画像のアップロードに失敗したときのエラーメッセージ"
+    "description": "最後のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",
-    "description": "文書のアップロードに失敗したときのエラーメッセージ"
+    "description": "文書のアップロードに失敗した時のエラーメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がないときのメッセージ"
+    "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。左側をクリックして動画を生成してください",
-    "description": "タスクがないときのメッセージ"
+    "description": "タスクがない時のメッセージ"
   },
   "markerShape.square": {
     "message": "正方形",
@@ -440,11 +444,11 @@
     "description": "QRコード生成用のマーカー形状"
   },
   "markerShape.plus": {
-    "message": "加号",
+    "message": "プラス",
     "description": "QRコード生成用のマーカー形状"
   },
   "markerShape.box": {
-    "message": "方框",
+    "message": "ボックス",
     "description": "QRコード生成用のマーカー形状"
   },
   "markerShape.octagon": {
@@ -452,7 +456,7 @@
     "description": "QRコード生成用のマーカー形状"
   },
   "markerShape.tinyPlus": {
-    "message": "微加号",
+    "message": "小さなプラス",
     "description": "QRコード生成用のマーカー形状"
   },
   "markerShape.random": {
@@ -468,11 +472,11 @@
     "description": "QRコード生成用のサブマーカー形状"
   },
   "subMarker.plus": {
-    "message": "加号",
+    "message": "プラス",
     "description": "QRコード生成用のサブマーカー形状"
   },
   "subMarker.box": {
-    "message": "方框",
+    "message": "ボックス",
     "description": "QRコード生成用のサブマーカー形状"
   },
   "subMarker.random": {
@@ -480,7 +484,7 @@
     "description": "QRコード生成用のサブマーカー形状"
   },
   "position.center": {
-    "message": "中心",
+    "message": "中央",
     "description": "QRコード生成用の位置"
   },
   "position.topLeft": {

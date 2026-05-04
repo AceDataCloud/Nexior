@@ -29,7 +29,7 @@
   },
   "name.failureReason": {
     "message": "Причина ошибки",
-    "description": "Причина ошибки задачи"
+    "description": "Причина сбоя задачи"
   },
   "name.status": {
     "message": "Статус",
@@ -38,6 +38,10 @@
   "name.traceId": {
     "message": "ID отслеживания",
     "description": "ID отслеживания задачи"
+  },
+  "name.elapsed": {
+    "message": "Время выполнения",
+    "description": "Время выполнения задачи (в секундах)"
   },
   "name.createdAt": {
     "message": "Дата создания",
@@ -72,7 +76,7 @@
     "description": "Описание параметра 'numbers'"
   },
   "description.quality": {
-    "message": "Укажите качество генерируемых изображений, диапазон значений: 1-100.",
+    "message": "Укажите качество изображения, диапазон значений: 1-100.",
     "description": "Описание параметра 'quality'"
   },
   "description.prompt": {
@@ -80,7 +84,7 @@
     "description": "Описание параметра 'prompt'"
   },
   "description.imageUrl": {
-    "message": "При создании задачи на редактирование изображения необходимо загрузить одно изображение.",
+    "message": "При создании задачи редактирования изображения необходимо загрузить одно изображение.",
     "description": "Описание параметра 'imageUrl'"
   },
   "status.pending": {
@@ -92,7 +96,7 @@
     "description": "Статус обработки задачи"
   },
   "placeholder.paddingNoise": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода шумов заполнения"
   },
   "placeholder.select": {
@@ -100,7 +104,7 @@
     "description": "Заполнитель для поля выбора"
   },
   "placeholder.paddingLevel": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для уровня заполнения"
   },
   "placeholder.prompt": {
@@ -108,27 +112,27 @@
     "description": "Заполнитель для поля подсказки"
   },
   "placeholder.position": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода позиции"
   },
   "placeholder.aspectRatio": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода соотношения сторон"
   },
   "placeholder.preset": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода предустановки"
   },
   "placeholder.markerShape": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода формы маркера"
   },
   "placeholder.rotate": {
-    "message": "Пожалуйста, выберите...",
-    "description": "Заполнитель для ввода вращения"
+    "message": "Выберите...",
+    "description": "Заполнитель для ввода поворота"
   },
   "placeholder.subMarker": {
-    "message": "Пожалуйста, выберите...",
+    "message": "Выберите...",
     "description": "Заполнитель для ввода подмаркера"
   },
   "button.generate": {
@@ -172,11 +176,11 @@
     "description": "Сообщение при начале задачи рисования"
   },
   "message.startTaskSuccess": {
-    "message": "Задача успешно инициирована",
+    "message": "Задача на генерацию успешно запущена",
     "description": "Сообщение об успешном запуске задачи"
   },
   "message.startTaskFailed": {
-    "message": "Не удалось инициировать задачу, пожалуйста, свяжитесь с администратором",
+    "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором",
     "description": "Сообщение об ошибке при запуске задачи рисования"
   },
   "message.usedUp": {
@@ -189,10 +193,10 @@
   },
   "message.downloadVideo": {
     "message": "Скачать это изображение",
-    "description": "Сообщение во время генерации изображения"
+    "description": "Сообщение, когда изображение генерируется"
   },
   "message.extendVideo": {
-    "message": "Продолжить генерацию изображения",
+    "message": "Продолжить генерацию этого изображения",
     "description": "Сообщение, когда изображение генерируется"
   },
   "message.generateFailed": {

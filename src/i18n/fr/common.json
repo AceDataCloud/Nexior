@@ -16,7 +16,7 @@
     "description": "Texte du bouton, utilisé pour indiquer que le contenu a été copié"
   },
   "button.restart": {
-    "message": "Régénérer",
+    "message": "Regénérer",
     "description": "Texte du bouton, utilisé pour régénérer certains contenus"
   },
   "button.preview": {
@@ -81,11 +81,11 @@
   },
   "button.profile": {
     "message": "Profil",
-    "description": "Texte dans le bouton, utilisé pour afficher le profil de l'utilisateur"
+    "description": "Texte dans le bouton, utilisé pour afficher le profil"
   },
   "button.console": {
     "message": "Console",
-    "description": "Texte dans le bouton, utilisé pour afficher la page de la console pour contrôler un contenu sur la page web"
+    "description": "Texte dans le bouton, utilisé pour afficher la page de la console, afin de contrôler un contenu sur la page web"
   },
   "button.learn": {
     "message": "Apprendre",
@@ -105,7 +105,7 @@
   },
   "button.download": {
     "message": "Télécharger",
-    "description": "Texte dans le bouton, utilisé pour télécharger un fichier (comme audio, vidéo, image)"
+    "description": "Texte dans le bouton, utilisé pour télécharger des fichiers (comme audio, vidéo, image)"
   },
   "button.downloadAndroid": {
     "message": "Télécharger Android",
@@ -169,7 +169,7 @@
   },
   "button.finish": {
     "message": "Terminer",
-    "description": "Texte dans le bouton, utilisé pour compléter une opération"
+    "description": "Texte dans le bouton pour finaliser une opération"
   },
   "entity.id": {
     "message": "ID",
@@ -177,11 +177,11 @@
   },
   "entity.type": {
     "message": "Type",
-    "description": "Utilisé pour afficher le type de l'entité"
+    "description": "Type de l'entité à afficher"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Nom du site web, pas besoin de traduction, reste 'Ace Data Cloud'"
+    "description": "Nom du site, pas besoin de traduction, garder 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Droits d'auteur",
@@ -229,14 +229,14 @@
   },
   "message.noTasks": {
     "message": "Aucune tâche historique, veuillez commencer une nouvelle tâche～",
-    "description": "Message affiché lorsqu'il n'y a pas de tâches"
+    "description": "Message lorsque aucune tâche n'est disponible"
   },
   "message.usedAmount": {
     "message": "Montant utilisé",
-    "description": "Utilisé pour afficher le montant déjà utilisé pour le service"
+    "description": "Affiche le montant utilisé pour le service"
   },
   "message.mobileAppDescription": {
-    "message": "Utilisez AceData directement sur votre téléphone, APK Android disponible pour téléchargement, le package iOS sera ouvert au téléchargement après signature.",
+    "message": "Utilisez AceData directement sur votre téléphone, APK Android disponible pour téléchargement, le package iOS sera accessible après signature.",
     "description": "Texte explicatif sur la page de téléchargement de l'application mobile"
   },
   "message.mobileAndroidHint": {
@@ -249,26 +249,26 @@
   },
   "message.mobileAvailableNow": {
     "message": "Android disponible au téléchargement",
-    "description": "Utilisé pour afficher l'état de disponibilité du téléchargement Android"
+    "description": "Affiche l'état de disponibilité du téléchargement Android"
   },
   "message.mobileSecureDelivery": {
     "message": "Distribution CDN sécurisée",
-    "description": "Pour souligner que le lien de téléchargement est livré via CDN"
+    "description": "Met en avant que le lien de téléchargement est livré via CDN"
   },
   "message.mobileDirectInstall": {
-    "message": "Installation APK directe",
-    "description": "Pour décrire que l'installation sur Android se fait directement via APK"
+    "message": "Installation directe APK",
+    "description": "Décrit que l'installation Android se fait directement via APK"
   },
   "message.mobileLatestRelease": {
     "message": "Version publique actuelle",
-    "description": "Pour indiquer que la version affichée est la dernière version publique"
+    "description": "Indique que la version affichée est la dernière version publique"
   },
   "message.mobileSharedAccount": {
     "message": "Compte et quota partagés avec la version web",
-    "description": "Pour indiquer que le mobile partage le compte avec la version web"
+    "description": "Indique que le mobile partage le compte avec la version web"
   },
   "message.mobileIosHint": {
-    "message": "Pour iPhone et iPad, installation en ligne directe ; si le système bloque, vous pouvez d'abord télécharger l'IPA puis le distribuer.",
+    "message": "Pour iPhone et iPad, installation en ligne directe ; si le système bloque, téléchargez d'abord l'IPA puis distribuez.",
     "description": "Explication sur la carte de téléchargement iOS"
   },
   "message.mobileIosPending": {
@@ -276,7 +276,7 @@
     "description": "Alerte lorsque le package d'installation iOS n'est pas disponible"
   },
   "message.mobileInstallNote": {
-    "message": "Lors de la première installation d'un package d'entreprise ou Ad Hoc sur iOS, le système peut demander de faire confiance au certificat dans 'Réglages > Général > VPN et gestion des appareils'.",
+    "message": "Lors de la première installation d'un package entreprise ou Ad Hoc sur iOS, le système peut demander de faire confiance au certificat dans 'Réglages > Général > VPN et gestion des appareils'.",
     "description": "Alerte pour l'installation de l'application mobile"
   },
   "title.mobileApp": {
@@ -285,35 +285,35 @@
   },
   "title.mobileFastAccess": {
     "message": "Accès rapide, sans passer par l'App Store",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant l'installation rapide"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant l'installation rapide"
   },
   "title.mobileTrustedRelease": {
     "message": "Gestion centralisée des versions, distribution plus stable",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant la stabilité des versions et de la distribution"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant la stabilité des versions et de la distribution"
   },
   "title.mobileUnifiedExperience": {
     "message": "Expérience mobile et web cohérente",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant l'expérience unifiée"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant l'expérience unifiée"
   },
   "nav.mobileApp": {
     "message": "Application mobile",
     "description": "Entrée de téléchargement de l'application mobile dans la navigation"
   },
   "message.mobileFastAccess": {
-    "message": "Les utilisateurs peuvent scanner pour installer directement sur leur téléphone, ou télécharger l'APK sur le bureau puis le distribuer aux membres de l'équipe, idéal pour les essais rapides et les tests internes.",
-    "description": "Explication des avantages sur la page de téléchargement, soulignant l'accès rapide"
+    "message": "Les utilisateurs peuvent scanner pour installer directement sur leur téléphone, ou télécharger l'APK sur le bureau et le distribuer aux membres de l'équipe, idéal pour les essais rapides et les tests internes.",
+    "description": "Explication des avantages sur la page de téléchargement, mettant en avant l'accès rapide"
   },
   "message.mobileTrustedRelease": {
     "message": "Les points d'accès au téléchargement sont centralisés sur une seule page, avec numéro de version, état de la plateforme et méthode d'installation visibles d'un coup d'œil, réduisant les coûts de communication dus à la dispersion des liens.",
-    "description": "Explication des avantages sur la page de téléchargement, soulignant la distribution unifiée"
+    "description": "Explication des avantages sur la page de téléchargement, mettant en avant la distribution unifiée"
   },
   "message.mobileUnifiedExperience": {
     "message": "Le système de compte, les quotas et les points d'accès aux services après connexion sont cohérents avec le Web, facilitant la transition fluide entre le bureau et le mobile.",
-    "description": "Explication des avantages sur la page de téléchargement, soulignant l'expérience de compte unifiée"
+    "description": "Explication des avantages sur la page de téléchargement, mettant en avant l'expérience de compte unifiée"
   },
   "message.remainingAmount": {
     "message": "Montant restant",
-    "description": "Utilisé pour afficher le montant restant pour le service"
+    "description": "Affiche le montant restant pour le service"
   },
   "message.copied": {
     "message": "Copié avec succès",
@@ -336,7 +336,7 @@
     "description": "Message d'alerte pour l'utilisateur"
   },
   "message.info": {
-    "message": "Info",
+    "message": "Information",
     "description": "Message affichant des informations"
   },
   "message.free": {
@@ -352,7 +352,7 @@
     "description": "Message invitant l'utilisateur à rejoindre le canal Discord"
   },
   "message.addWeChat": {
-    "message": "Service WeChat",
+    "message": "Ajouter WeChat",
     "description": "Message invitant l'utilisateur à ajouter un compte WeChat"
   },
   "message.serviceTech": {
@@ -360,8 +360,8 @@
     "description": "Message affichant le support technique"
   },
   "message.businessCooperation": {
-    "message": "Données & Coopération commerciale",
-    "description": "Message affichant la coopération commerciale"
+    "message": "Coopération commerciale",
+    "description": "Message affichant des opportunités de coopération commerciale"
   },
   "message.noData": {
     "message": "Aucune donnée",
@@ -437,7 +437,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texte dans la barre de navigation du site pour afficher la page d'art 2D, ne pas traduire, doit rester 'QRArt'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page d'art QR, ne pas traduire, doit rester 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -620,7 +620,7 @@
     "description": "Affiche le titre de la section des informations de support"
   },
   "about.address": {
-    "message": "201 North Broad St, Middletown, DE, États-Unis",
+    "message": "201, North Broad Street, Middletown, DE, États-Unis",
     "description": "Adresse de l'entreprise"
   },
   "about.email": {
@@ -649,15 +649,15 @@
   },
   "about.link6": {
     "message": "Revenus recommandés",
-    "description": "Lien vers la page des revenus recommandés"
+    "description": "Lien vers la page des revenus de recommandation"
   },
   "about.link7": {
     "message": "Support",
     "description": "Lien vers la page de support"
   },
   "about.link8": {
-    "message": "Conditions de service",
-    "description": "Lien vers la page des conditions de service"
+    "message": "Conditions d'utilisation",
+    "description": "Lien vers la page des conditions d'utilisation"
   },
   "about.link9": {
     "message": "Politique de confidentialité",
@@ -788,7 +788,7 @@
     "description": "Profession du client"
   },
   "customers.comment3": {
-    "message": "J'aime le service d'Ace Data Cloud, facile à utiliser et à un prix raisonnable, j'espère qu'il s'améliorera !",
+    "message": "J'aime le service d'Ace Data Cloud, facile à utiliser et à un prix raisonnable, j'espère qu'il continuera à s'améliorer !",
     "description": "Évaluation du client"
   },
   "nav.github": {
@@ -801,31 +801,39 @@
   },
   "settings.about": {
     "message": "À propos",
-    "description": "Titre de la section à propos sur la page des paramètres"
+    "description": "Titre de la section à propos dans la page des paramètres"
+  },
+  "settings.subsites": {
+    "message": "Mes sous-sites",
+    "description": "Titre de l'onglet de gestion des sous-sites dans la fenêtre des paramètres. Visible uniquement sur le site principal officiel, les sous-sites ne s'affichent pas."
+  },
+  "settings.buildNow": {
+    "message": "Construire maintenant",
+    "description": "Texte du bouton 'Construire un sous-site' dans la page à propos, visible uniquement sur le site principal officiel"
   },
   "settings.poweredBy": {
     "message": "Projet open source",
-    "description": "Titre indiquant sur quel projet open source ce site est basé dans la page à propos"
+    "description": "Titre affichant sur quel projet open source ce site est basé dans la page à propos"
   },
   "settings.poweredByTip": {
-    "message": "Ce site est construit sur le projet open source Nexior, le code est entièrement open source.",
-    "description": "Description indiquant sur quel projet open source ce site est basé dans la page à propos"
+    "message": "Ce site est basé sur le projet open source Nexior, le code est entièrement open source.",
+    "description": "Explication affichant sur quel projet open source ce site est basé dans la page à propos"
   },
   "settings.apiService": {
     "message": "Service API",
-    "description": "Titre indiquant le fournisseur de service API dans la page à propos"
+    "description": "Titre affichant le fournisseur de service API dans la page à propos"
   },
   "settings.apiServiceTip": {
     "message": "Le service API de ce site est fourni par Ace Data Cloud.",
-    "description": "Description indiquant le fournisseur de service API dans la page à propos"
+    "description": "Explication affichant le fournisseur de service API dans la page à propos"
   },
   "settings.buildYourOwn": {
     "message": "Construisez le vôtre",
-    "description": "Titre invitant les utilisateurs à construire un site similaire dans la page à propos"
+    "description": "Titre indiquant aux utilisateurs qu'ils peuvent construire un site similaire dans la page à propos"
   },
   "settings.buildYourOwnTip": {
-    "message": "Vous souhaitez créer un site AI similaire ? Contactez-nous pour obtenir un support de déploiement.",
-    "description": "Description sur la construction d'un site similaire dans la page à propos"
+    "message": "Vous souhaitez construire un site AI similaire ? Contactez-nous pour obtenir un support de déploiement.",
+    "description": "Explication sur la construction d'un site similaire dans la page à propos"
   },
   "settings.contactUs": {
     "message": "Contactez le support",

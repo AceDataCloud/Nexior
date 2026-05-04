@@ -21,11 +21,11 @@
   },
   "name.failure": {
     "message": "Fallido",
-    "description": "Tarea fallida"
+    "description": "La tarea ha fallado"
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "Razón por la que la tarea falló"
+    "description": "Razón por la cual la tarea falló"
   },
   "name.status": {
     "message": "Estado",
@@ -35,13 +35,17 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (segundos)"
+  },
   "name.prompt": {
     "message": "Sugerencia de imagen",
     "description": "Palabras clave para generar/editar"
   },
   "name.openaiimageBot": {
     "message": "Bot de OpenAI Image",
-    "description": "Nombre del robot OpenAI Image"
+    "description": "Nombre del bot de OpenAI Image"
   },
   "name.size": {
     "message": "Tamaño",
@@ -52,12 +56,12 @@
     "description": "Descripción del tamaño"
   },
   "description.prompt": {
-    "message": "Palabras clave para generar o editar imágenes",
+    "message": "Palabras clave para generar o editar la imagen",
     "description": "Descripción de las palabras clave"
   },
   "description.model": {
     "message": "Modelo utilizado para la generación y edición de imágenes.",
-    "description": "Descripción del parámetro model"
+    "description": "Descripción del parámetro del modelo"
   },
   "description.imageUrls": {
     "message": "Sube de 1 a 5 imágenes de referencia para entrar en modo de edición.",
@@ -72,8 +76,8 @@
     "description": "Marcador de posición de selección"
   },
   "placeholder.prompt": {
-    "message": "Ingresa las palabras clave, por ejemplo: gato de acuarela en la mesa",
-    "description": "Marcador de posición de sugerencia"
+    "message": "Introduce las palabras clave, por ejemplo: gato de acuarela en la mesa",
+    "description": "Marcador de posición de palabras clave"
   },
   "button.generate": {
     "message": "Generar",
@@ -93,7 +97,7 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacta al administrador:",
-    "description": "Error al crear la tarea"
+    "description": "Error en la creación de la tarea"
   },
   "message.usedUp": {
     "message": "Se han agotado tus créditos, por favor compra más créditos para continuar",
@@ -105,7 +109,7 @@
   },
   "message.uploadImageError": {
     "message": "Error al subir la imagen, por favor intenta de nuevo más tarde",
-    "description": "Error de subida"
+    "description": "Error en la subida"
   },
   "name.model": {
     "message": "Modelo",

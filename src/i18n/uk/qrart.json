@@ -23,6 +23,10 @@
     "message": "ID відстеження",
     "description": "ID відстеження завдання"
   },
+  "name.elapsed": {
+    "message": "Час виконання",
+    "description": "Час виконання завдання (секунди)"
+  },
   "name.size": {
     "message": "Розмір",
     "description": "Розмір QR-коду"
@@ -205,74 +209,74 @@
   },
   "preset.intricateStudio": {
     "message": "Складна студія",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Пресет стиль для генерації QR-коду"
   },
   "preset.symmetricMasterpiece": {
     "message": "Симетричний шедевр",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.luminousHighway": {
-    "message": "Світлова магістраль",
-    "description": "Стиль пресету для генерації QR-коду"
+    "message": "Світлова дорога",
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.celestialJourney": {
     "message": "Небесна подорож",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.neonMech": {
     "message": "Неоновий механізм",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.etherealLowPoly": {
     "message": "Ефірний низькополігональний",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.goldenVista": {
     "message": "Золота панорама",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.cinematicExpanse": {
     "message": "Кінематографічна безмежність",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.cinematicWarm": {
     "message": "Кінематографічне тепло",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.desolateWilderness": {
     "message": "Пустельна дика природа",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.vibrantPalette": {
     "message": "Яскрава палітра",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.enigmaticJourney": {
     "message": "Загадкова подорож",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.timelessCinematic": {
     "message": "Безсмертний кінематограф",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.regalGalaxy": {
     "message": "Королівська галактика",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.illustriousCanvas": {
     "message": "Видатне полотно",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.expressiveMural": {
     "message": "Виразна фреска",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "preset.sereneHaze": {
     "message": "Спокійний туман",
-    "description": "Стиль пресету для генерації QR-коду"
+    "description": "Стиль за замовчуванням для генерації QR-коду"
   },
   "message.uploadQr": {
-    "message": "Завантажте зображення QR-коду для створення мистецького QR-коду, що відповідає вмісту",
+    "message": "Завантажте зображення QR-коду, щоб створити мистецький QR-код, що відповідає вмісту QR-коду",
     "description": "Опис для завантаження QR-коду"
   },
   "message.promptPlaceholder": {
@@ -288,7 +292,7 @@
     "description": "Повідомлення про успіх при успішному завантаженні зображення"
   },
   "message.uploadReferencesError": {
-    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз",
+    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
     "description": "Повідомлення про помилку при невдалому завантаженні зображення"
   },
   "message.startingTask": {
@@ -304,8 +308,8 @@
     "description": "Повідомлення про помилку при невдалому запуску завдання"
   },
   "message.usedUp": {
-    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів для продовження використання",
-    "description": "Повідомлення при вичерпанні балів"
+    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів, щоб продовжити користування",
+    "description": "Повідомлення, коли бали вичерпані"
   },
   "message.generating": {
     "message": "Генерація...",
@@ -313,14 +317,14 @@
   },
   "message.generateFailed": {
     "message": "Не вдалося згенерувати зображення",
-    "description": "Повідомлення при невдалому генеруванні зображення"
+    "description": "Повідомлення про невдалу генерацію зображення"
   },
   "message.noOperations": {
     "message": "Немає доступних операцій",
     "description": "Повідомлення, коли немає доступних операцій"
   },
   "message.noTasks": {
-    "message": "Немає історії завдань, будь ласка, натисніть нижче для створення нового QR-коду",
+    "message": "Немає історії завдань, натисніть нижче, щоб створити новий QR-код",
     "description": "Повідомлення, коли немає завдань"
   },
   "markerShape.square": {
@@ -385,75 +389,75 @@
   },
   "position.bottomLeft": {
     "message": "Лівий нижній",
-    "description": "Використовується для розміщення QR-коду"
+    "description": "Позиція для генерації QR-коду"
   },
   "position.bottomRight": {
-    "message": "Правий нижній",
+    "message": "Правий нижній кут",
     "description": "Використовується для розміщення QR-коду"
   },
   "position.top": {
-    "message": "Верхній",
-    "description": "Використовується для розміщення QR-коду"
+    "message": "Верх",
+    "description": "Для розміщення QR-коду"
   },
   "position.bottom": {
-    "message": "Нижній",
-    "description": "Використовується для розміщення QR-коду"
+    "message": "Низ",
+    "description": "Для розміщення QR-коду"
   },
   "position.left": {
-    "message": "Лівий",
-    "description": "Використовується для розміщення QR-коду"
+    "message": "Ліворуч",
+    "description": "Для розміщення QR-коду"
   },
   "position.right": {
-    "message": "Правий",
-    "description": "Використовується для розміщення QR-коду"
+    "message": "Праворуч",
+    "description": "Для розміщення QR-коду"
   },
   "pixelStyle.row": {
-    "message": "Рядок",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "message": "Ряд",
+    "description": "Стиль пікселів для QR-коду"
   },
   "pixelStyle.column": {
     "message": "Стовпець",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "description": "Стиль пікселів для QR-коду"
   },
   "pixelStyle.square": {
     "message": "Квадрат",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "description": "Стиль пікселів для QR-коду"
   },
   "pixelStyle.rounded": {
     "message": "Закруглений",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "description": "Стиль пікселів для QR-коду"
   },
   "pixelStyle.dot": {
     "message": "Точка",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "description": "Стиль пікселів для QR-коду"
   },
   "pixelStyle.squircle": {
-    "message": "Закруглений квадрат",
-    "description": "Використовується для стилю пікселів QR-коду"
+    "message": "Закруглений прямокутник",
+    "description": "Стиль пікселів для QR-коду"
   },
   "type.text": {
     "message": "Текст",
-    "description": "Використовується для типу вмісту QR-коду"
+    "description": "Тип вмісту для QR-коду"
   },
   "type.link": {
     "message": "Посилання",
-    "description": "Використовується для типу вмісту QR-коду"
+    "description": "Тип вмісту для QR-коду"
   },
   "type.email": {
     "message": "Електронна пошта",
-    "description": "Використовується для типу вмісту QR-коду"
+    "description": "Тип вмісту для QR-коду"
   },
   "type.phone": {
     "message": "Телефон",
-    "description": "Використовується для типу вмісту QR-коду"
+    "description": "Тип вмісту для QR-коду"
   },
   "type.sms": {
     "message": "СМС",
-    "description": "Використовується для типу вмісту QR-коду"
+    "description": "Тип вмісту для QR-коду"
   },
   "name.rawurl": {
     "message": "Сирий лінк",
-    "description": "Перемикач для використання сирого лінка без обробки як вміст QR-коду"
+    "description": "Перемикач для використання сирого лінка як вмісту QR-коду без обробки"
   },
   "placeholder.ecl": {
     "message": "Оберіть...",
@@ -473,6 +477,6 @@
   },
   "message.uploadDocumentsError": {
     "message": "Не вдалося завантажити зображення, спробуйте пізніше",
-    "description": "Повідомлення про помилку при невдалому завантаженні зображення"
+    "description": "Повідомлення про помилку при завантаженні зображення"
   }
 }

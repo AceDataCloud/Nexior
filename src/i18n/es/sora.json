@@ -8,7 +8,7 @@
     "description": "Estado de fallo de la tarea"
   },
   "name.failureReason": {
-    "message": "Razón de fallo",
+    "message": "Razón del fallo",
     "description": "Razón del fallo de la tarea"
   },
   "name.status": {
@@ -19,16 +19,20 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (en segundos)"
+  },
   "name.createdAt": {
     "message": "Fecha de creación",
     "description": "Fecha y hora de generación del video Sora"
   },
   "name.startEndImage": {
-    "message": "Imágenes de inicio y fin",
+    "message": "Imágenes de referencia de inicio/final",
     "description": "Etiqueta del campo del formulario: imágenes de referencia de inicio/final (se sugiere traducir como 'Start/End Frames', manteniendo la brevedad para evitar obstruir el botón)"
   },
   "name.action": {
-    "message": "Acción",
+    "message": "Acciones",
     "description": "Lista de acciones disponibles"
   },
   "name.prompt": {
@@ -72,7 +76,7 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de enlaces de imágenes de referencia, el primero es la imagen de inicio y el segundo es la imagen de fin",
+    "message": "Array de enlaces de imágenes de referencia, el primero es la imagen del primer fotograma, seguido de la imagen del último fotograma",
     "description": "Descripción del parámetro 'image_url'"
   },
   "status.pending": {
@@ -173,7 +177,7 @@
   },
   "message.generateFailed": {
     "message": "Error al generar el video",
-    "description": "Mensaje al fallar la generación de la imagen"
+    "description": "Mensaje cuando la generación de video falla"
   },
   "message.uploadVideoExceed": {
     "message": "La cantidad de imágenes de la primera fotograma excede el límite",

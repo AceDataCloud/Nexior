@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot) zamiast klucza z konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze, będą działać normalnie.",
+    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy z Twoim kluczem, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp., będą działać normalnie.",
     "description": ""
   },
   "field.provider": {
@@ -144,32 +144,32 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Używasz swojego klucza {provider}",
+    "message": "Używasz własnego klucza API {provider}",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "W tej rozmowie używasz swojego klucza API {provider}, koszty są rozliczane z konta {provider}, nie pomniejszają salda platformy.",
+    "message": "Obecna rozmowa korzysta z Twojego klucza API {provider}, opłaty są rozliczane z konta {provider}, nie pomniejszają salda platformy.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Kliknij, aby zarządzać swoim własnym kluczem API",
-    "description": "Podpowiedź po kliknięciu na odznakę BYOK na stronie czatu: kliknij, aby otworzyć zakładkę klucza API w oknie ustawień."
+    "message": "Kliknij, aby otworzyć ustawienia klucza API",
+    "description": "Podpowiedź po kliknięciu na odznakę BYOK na stronie czatu: kliknij, aby otworzyć zakładkę ustawień klucza API."
   },
   "button.testConnection": {
-    "message": "Zapisz i przetestuj połączenie",
-    "description": "Przycisk w oknie dodawania/edycji — najpierw zapisz poświadczenia, a następnie wywołaj /models, aby zweryfikować połączenie."
+    "message": "Testuj",
+    "description": "Przycisk w oknie dodawania/edycji - testuje tylko bieżącą konfigurację formularza, nie zapisuje poświadczeń."
   },
   "test.success": {
-    "message": "Test połączenia zakończony sukcesem",
-    "description": "Nagłówek sekcji wyników testu połączenia."
+    "message": "Test łączności zakończony sukcesem",
+    "description": "Tytuł sekcji wyników testu łączności, gdy test zakończył się sukcesem."
   },
   "test.failure": {
-    "message": "Test połączenia nie powiódł się",
-    "description": "Nagłówek sekcji wyników testu połączenia."
+    "message": "Test łączności nie powiódł się",
+    "description": "Tytuł sekcji wyników testu łączności, gdy test zakończył się niepowodzeniem."
   },
   "test.endpoint": {
     "message": "Adres żądania",
-    "description": "Etykieta adresu URL w szczegółach wyników testu."
+    "description": "Etykieta URL żądania w szczegółach wyników testu."
   },
   "test.status": {
     "message": "Kod statusu",
@@ -181,23 +181,23 @@
   },
   "providerDesc.openai": {
     "message": "Zastępuje zapytania do ChatGPT (GPT-4 / GPT-4o / o1 / o3 itp.) na tej stronie.",
-    "description": "Podtytuł opcji OpenAI w rozwijanym menu dostawcy."
+    "description": "Podtytuł opcji OpenAI w rozwijanym menu dostawców."
   },
   "providerDesc.anthropic": {
     "message": "Zastępuje zapytania do Claude (Sonnet / Opus / Haiku itp.) na tej stronie.",
-    "description": "Podtytuł opcji Anthropic w rozwijanym menu dostawcy."
+    "description": "Podtytuł opcji Anthropic w rozwijanym menu dostawców."
   },
   "providerDesc.google": {
     "message": "Zastępuje zapytania do Gemini (Pro / Flash) na tej stronie.",
-    "description": "Podtytuł opcji Google w rozwijanym menu dostawcy."
+    "description": "Podtytuł opcji Google w rozwijanym menu dostawców."
   },
   "providerDesc.xai": {
     "message": "Zastępuje zapytania do Grok na tej stronie.",
-    "description": "Podtytuł opcji xAI w rozwijanym menu dostawcy."
+    "description": "Podtytuł opcji xAI w rozwijanym menu dostawców."
   },
   "providerDesc.deepseek": {
     "message": "Zastępuje zapytania do DeepSeek (V3 / R1 itp.) na tej stronie.",
-    "description": "Podtytuł opcji DeepSeek w rozwijanym menu dostawcy."
+    "description": "Podtytuł opcji DeepSeek w rozwijanym menu dostawców."
   },
   "providerDesc.moonshot": {
     "message": "Zastąp prośby o rozmowę Kimi na tej stronie.",

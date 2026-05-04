@@ -23,6 +23,10 @@
     "message": "追蹤 ID",
     "description": "任務的追蹤 ID"
   },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "任務的耗時（秒）"
+  },
   "name.size": {
     "message": "尺寸",
     "description": "要生成的 QR 碼的尺寸"
@@ -192,8 +196,8 @@
     "description": "位置輸入的佔位符"
   },
   "placeholder.content": {
-    "message": "輸入要生成的 QR 碼的內容，例如：https://www.google.com",
-    "description": "內容字段中的佔位文本"
+    "message": "請輸入要生成的 QR 碼內容，例如：https://www.google.com",
+    "description": "內容字段中的占位文本"
   },
   "placeholder.aspectRatio": {
     "message": "請選擇...",
@@ -336,7 +340,7 @@
     "description": "要生成的 QR 碼的預設風格"
   },
   "message.uploadQr": {
-    "message": "上傳二維碼圖片，可生成和二維碼內容一致的藝術二維碼",
+    "message": "上傳二維碼圖片，可生成與二維碼內容一致的藝術二維碼",
     "description": "上傳二維碼的說明"
   },
   "message.promptPlaceholder": {
@@ -376,11 +380,11 @@
     "description": "圖像正在生成時的消息"
   },
   "message.downloadVideo": {
-    "message": "下載此視頻",
+    "message": "下載此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.extendVideo": {
-    "message": "繼續生成此視頻",
+    "message": "繼續生成此影片",
     "description": "圖像正在生成時的消息"
   },
   "message.generateFailed": {
@@ -392,12 +396,12 @@
     "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "上傳文件大小不能超過 10MB!",
-    "description": "上傳文件大小不能超過 10MB!時的錯誤信息"
+    "message": "上傳檔案大小不能超過 10MB!",
+    "description": "上傳檔案大小不能超過 10MB!時的錯誤信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "上傳文件必須是 MP4 格式!",
-    "description": "上傳文件必須是 MP4 格式!的錯誤信息"
+    "message": "上傳檔案必須是 MP4 格式!",
+    "description": "上傳檔案必須是 MP4 格式!的錯誤信息"
   },
   "message.uploadStartImageExceed": {
     "message": "上傳首幀圖片數量超過限制",
@@ -412,8 +416,8 @@
     "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadVideoError": {
-    "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "message": "上傳影片失敗",
+    "description": "上傳影片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",
@@ -428,7 +432,7 @@
     "description": "沒有可用操作時的消息"
   },
   "message.noTasks": {
-    "message": "沒有歷史任務，請點擊左方生成視頻",
+    "message": "沒有歷史任務，請點擊左方生成影片",
     "description": "沒有任務時的消息"
   },
   "markerShape.square": {
@@ -544,11 +548,11 @@
     "description": "用於生成QR碼的內容類型"
   },
   "type.link": {
-    "message": "鏈接",
+    "message": "連結",
     "description": "用於生成QR碼的內容類型"
   },
   "type.email": {
-    "message": "郵件",
+    "message": "電子郵件",
     "description": "用於生成QR碼的內容類型"
   },
   "type.phone": {
@@ -556,7 +560,7 @@
     "description": "用於生成QR碼的內容類型"
   },
   "type.sms": {
-    "message": "短信",
+    "message": "簡訊",
     "description": "用於生成QR碼的內容類型"
   }
 }

@@ -23,6 +23,10 @@
     "message": "معرف التتبع",
     "description": "معرف التتبع للمهمة"
   },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
+  },
   "name.createdAt": {
     "message": "تاريخ الإنشاء",
     "description": "تاريخ ووقت إنشاء فيديو Hailuo"
@@ -41,7 +45,7 @@
   },
   "name.ingredients": {
     "message": "إنشاء فيديو متعدد الصور",
-    "description": "زر/علامة لإنشاء فيديو متعدد الصور (اقتراح باللغة الإنجليزية: Multi-Image، حافظ على الاختصار)"
+    "description": "زر/علامة إنشاء فيديو متعدد الصور (اقتراح باللغة الإنجليزية: Multi-Image، حافظ على الاختصار)"
   },
   "name.model": {
     "message": "النموذج",
@@ -64,7 +68,7 @@
     "description": "وصف المعامل 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "صورة الإطار الأول، ستكون الإطار الأول للفيديو الناتج.",
+    "message": "صورة الإطار الأول، ستكون هي الإطار الأول للفيديو الناتج.",
     "description": "وصف المعامل 'startImageUrl'"
   },
   "description.prompt": {
@@ -177,11 +181,11 @@
   },
   "message.generating": {
     "message": "جارٍ الإنشاء...",
-    "description": "رسالة أثناء إنشاء الصورة"
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.downloadVideo": {
-    "message": "تحميل هذا الفيديو",
-    "description": "رسالة أثناء إنشاء الصورة"
+    "message": "تحميل الفيديو",
+    "description": "رسالة تظهر أثناء إنشاء الصورة"
   },
   "message.extendVideo": {
     "message": "استمر في إنشاء هذا الفيديو",
@@ -196,8 +200,8 @@
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة الحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "يجب ألا يتجاوز حجم الملف 10 ميجابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف 10 ميجابايت!"
+    "message": "لا يمكن أن يتجاوز حجم الملف 10 ميغابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف 10 ميغابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",

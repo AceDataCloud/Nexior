@@ -23,6 +23,10 @@
     "message": "ID praćenja",
     "description": "ID praćenja zadatka"
   },
+  "name.elapsed": {
+    "message": "Trajanje",
+    "description": "Trajanje zadatka (u sekundama)"
+  },
   "name.createdAt": {
     "message": "Datum kreiranja",
     "description": "Datum i vreme generisanja Hailuo videa"
@@ -40,8 +44,8 @@
     "description": "Uputstvo za unos sadržaja"
   },
   "name.ingredients": {
-    "message": "Više slika",
-    "description": "Prekidač/oznaka za kreiranje videa sa više slika (preporučeno: Multi-Image, zadržati kratko)"
+    "message": "Više slika za video",
+    "description": "Prekidač/oznaka za više slika za video (predlog na engleskom: Multi-Image, zadržati kratak)"
   },
   "name.model": {
     "message": "Model",
@@ -64,7 +68,7 @@
     "description": "Opis parametra 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Prva slika koja će biti prva slika generisanog videa.",
+    "message": "Prva slika koja će biti prva scena generisanog videa.",
     "description": "Opis parametra 'startImageUrl'"
   },
   "description.prompt": {
@@ -101,7 +105,7 @@
   },
   "placeholder.aspectRatio": {
     "message": "Izaberite...",
-    "description": "Placeholder za unos odnosa stranica"
+    "description": "Placeholder za unos odnosa širine i visine"
   },
   "placeholder.preset": {
     "message": "Izaberite...",
@@ -120,15 +124,15 @@
     "description": "Placeholder za unos podoznake"
   },
   "button.model1": {
-    "message": "Tekst u video",
+    "message": "Video iz teksta",
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.model2": {
-    "message": "Slika u video",
+    "message": "Video iz slike",
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.model3": {
-    "message": "Slika u video (režim režisera)",
+    "message": "Video iz slike (režim režisera)",
     "description": "Tekst dugmeta za generisanje Hailuo videa, režim režisera"
   },
   "button.generate": {
@@ -136,8 +140,8 @@
     "description": "Tekst dugmeta za generisanje Hailuo videa"
   },
   "button.extend": {
-    "message": "Proširi video",
-    "description": "Tekst dugmeta za proširenje videa"
+    "message": "Produži video",
+    "description": "Tekst dugmeta za produženje videa"
   },
   "button.download": {
     "message": "Preuzmi video",
@@ -145,7 +149,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Otpremi sliku",
-    "description": "Tekst dugmeta za otpremanje slike (skratiti na 'Otpremi')"
+    "description": "Tekst dugmeta za otpremanje slike (na engleskom pojednostaviti na 'Upload', ne koristiti 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Možete otpremiti najviše 5 slika",
@@ -156,7 +160,7 @@
     "description": "Poruka o uspehu kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspelo otpremanje slike, pokušajte ponovo kasnije",
+    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
     "description": "Poruka o grešci kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
@@ -168,11 +172,11 @@
     "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
-    "message": "Neuspelo pokretanje zadatka, kontaktirajte administratora",
+    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
     "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.usedUp": {
-    "message": "Vaši bodovi su potrošeni, kupite više bodova da biste nastavili sa korišćenjem",
+    "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
     "description": "Poruka kada su bodovi potrošeni"
   },
   "message.generating": {
@@ -180,8 +184,8 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.downloadVideo": {
-    "message": "Preuzmi ovaj video",
-    "description": "Poruka kada se slika generiše"
+    "message": "Preuzmi video",
+    "description": "Poruka dok se slika generiše"
   },
   "message.extendVideo": {
     "message": "Nastavi generisanje ovog videa",

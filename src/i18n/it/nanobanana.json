@@ -35,6 +35,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento"
   },
+  "name.elapsed": {
+    "message": "Tempo impiegato",
+    "description": "Tempo impiegato per l'attività (secondi)"
+  },
   "name.prompt": {
     "message": "Suggerimento immagine",
     "description": "Parole chiave per generare/modificare"
@@ -68,11 +72,11 @@
     "description": "Descrizione del parametro model"
   },
   "description.imageUrls": {
-    "message": "Devi caricare da 1 a 5 immagini per il compito di modifica dell'immagine.",
+    "message": "È necessario caricare da 1 a 5 immagini per il compito di modifica dell'immagine.",
     "description": "Descrizione del parametro image_urls"
   },
   "description.aspectRatio": {
-    "message": "Rapporto d'aspetto dell'immagine generata. I valori supportati sono `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Il valore predefinito è `1:1`. È valido solo quando `action` è `generate`; se `action` è `edit`, si basa sul rapporto della prima immagine in `image_urls`.",
+    "message": "Rapporto d'aspetto dell'immagine generata. I valori supportati sono `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. Il valore predefinito è `1:1`. Valido solo se `action` è `generate`; se `action` è `edit`, si basa sul rapporto della prima immagine in `image_urls`.",
     "description": "Descrizione del parametro aspect_ratio"
   },
   "status.pending": {
@@ -108,16 +112,16 @@
     "description": "Creazione dell'attività fallita"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
     "description": "Messaggio di esaurimento"
   },
   "message.uploadImageExceed": {
-    "message": "Puoi caricare al massimo 5 immagini",
+    "message": "È possibile caricare un massimo di 5 immagini",
     "description": "Numero di immagini oltre il limite"
   },
   "message.uploadImageError": {
     "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Caricamento fallito"
+    "description": "Errore di caricamento"
   },
   "name.model": {
     "message": "Modello",

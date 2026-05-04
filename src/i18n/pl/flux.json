@@ -39,6 +39,10 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
+  },
   "name.createdAt": {
     "message": "Data utworzenia",
     "description": "Data i czas wygenerowania obrazu Flux"
@@ -53,7 +57,7 @@
   },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
-    "description": "Podpowiedź do wprowadzenia treści"
+    "description": "Podpowiedź dla wprowadzonej treści"
   },
   "name.ratio": {
     "message": "Proporcja",
@@ -80,7 +84,7 @@
     "description": "Opis parametru 'prompt'"
   },
   "description.imageUrl": {
-    "message": "Podczas tworzenia zadania edycji obrazu, należy przesłać jeden obraz.",
+    "message": "Podczas tworzenia zadania edycji obrazu należy przesłać jeden obraz.",
     "description": "Opis parametru 'imageUrl'"
   },
   "status.pending": {
@@ -168,7 +172,7 @@
     "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
   },
   "message.startingTask": {
-    "message": "Rozpoczynam zadanie...",
+    "message": "Rozpoczynanie zadania...",
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
@@ -189,15 +193,15 @@
   },
   "message.downloadVideo": {
     "message": "Pobierz ten obraz",
-    "description": "Komunikat podczas generowania obrazu"
+    "description": "Wiadomość wyświetlana podczas generowania obrazu"
   },
   "message.extendVideo": {
     "message": "Kontynuuj generowanie tego obrazu",
     "description": "Wiadomość wyświetlana podczas generowania obrazu"
   },
   "message.generateFailed": {
-    "message": "Generowanie obrazu nie powiodło się",
-    "description": "Wiadomość wyświetlana, gdy generowanie obrazu się nie powiedzie"
+    "message": "Nie udało się wygenerować obrazu",
+    "description": "Wiadomość wyświetlana, gdy generowanie obrazu się nie powiodło"
   },
   "message.uploadVideoExceed": {
     "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
@@ -220,20 +224,20 @@
     "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki końcowej przekracza limit"
   },
   "message.uploadStartImageError": {
-    "message": "Przesyłanie obrazu referencyjnego nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu referencyjnego się nie powiedzie"
+    "message": "Nie udało się przesłać obrazu referencyjnego",
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu referencyjnego się nie powiodło"
   },
   "message.uploadVideoError": {
-    "message": "Przesyłanie obrazu nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki początkowej się nie powiedzie"
+    "message": "Nie udało się przesłać obrazu",
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki początkowej się nie powiodło"
   },
   "message.uploadEndImageError": {
-    "message": "Przesyłanie obrazu klatki końcowej nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki końcowej się nie powiedzie"
+    "message": "Nie udało się przesłać obrazu klatki końcowej",
+    "description": "Informacja o błędzie, gdy przesyłanie obrazu klatki końcowej się nie powiodło"
   },
   "message.uploadDocumentsError": {
-    "message": "Przesyłanie dokumentu nie powiodło się",
-    "description": "Informacja o błędzie, gdy przesyłanie dokumentu się nie powiedzie"
+    "message": "Nie udało się przesłać dokumentu",
+    "description": "Informacja o błędzie, gdy przesyłanie dokumentu się nie powiodło"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",

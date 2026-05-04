@@ -17,11 +17,11 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållstypen för den genererade Flux bilden, t.ex. 'länk', 'text' etc."
+    "description": "Innehållstyp för den genererade Flux bilden, t.ex. 'länk', 'text' etc."
   },
   "name.imageUrl": {
     "message": "Referensbild",
-    "description": "Namnet på referensbilden"
+    "description": "Namn på referensbilden"
   },
   "name.failure": {
     "message": "Misslyckades",
@@ -39,13 +39,17 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften tog (sekunder)"
+  },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för generering av Flux bild"
+    "description": "Datum och tid för när Flux bilden skapades"
   },
   "name.numbers": {
     "message": "Antal bilder",
-    "description": "Antalet bilder som ska genereras"
+    "description": "Antal bilder som ska genereras"
   },
   "name.quality": {
     "message": "Bildkvalitet",
@@ -57,26 +61,26 @@
   },
   "name.ratio": {
     "message": "Förhållande",
-    "description": "Namnet på förhållandeparametern"
+    "description": "Namn på förhållandeparameter"
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversionen som används för att generera bilden"
+    "description": "Modellversion som används för att generera bilden"
   },
   "name.fluxBot": {
     "message": "Flux Bot",
-    "description": "Namnet på Flux bildgenerator"
+    "description": "Namn på Flux bildgenerator"
   },
   "description.numbers": {
-    "message": "Ange antalet bilder som ska genereras, värdet kan vara mellan: 1-4.",
+    "message": "Ange antalet bilder som ska genereras, värdet kan vara: 1-4.",
     "description": "Beskrivning av parametern 'numbers'"
   },
   "description.quality": {
-    "message": "Ange bildens kvalitet, värdet kan vara mellan: 1-100.",
+    "message": "Ange bildens kvalitet, värdet kan vara: 1-100.",
     "description": "Beskrivning av parametern 'quality'"
   },
   "description.prompt": {
-    "message": "Promptord för att generera Flux bild",
+    "message": "Promptord för att generera Flux bilden",
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.imageUrl": {
@@ -104,7 +108,7 @@
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Ange promptord för bildstil, t.ex.: en vit siamesisk katt",
+    "message": "Ange promptord för bildstilen, t.ex.: en vit siamesisk katt",
     "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
@@ -129,15 +133,15 @@
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av undermarkör"
+    "description": "Platshållare för inmatning av under-markör"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Knapptext för att generera Flux bild"
+    "description": "Knapptext för att generera Flux bilden"
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp",
-    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp', använd inte 'Ladda upp bild')"
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.extend": {
     "message": "Utöka bild",
@@ -145,7 +149,7 @@
   },
   "button.viewImage": {
     "message": "Visa originalbild",
-    "description": "Knapptext för att visa genererad Flux bild"
+    "description": "Knapptext för att visa den genererade Flux bilden"
   },
   "button.download": {
     "message": "Ladda ner bild",
@@ -160,8 +164,8 @@
     "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bilder har laddats upp framgångsrikt",
-    "description": "Framgångsmeddelande när bilder har laddats upp"
+    "message": "Bilder uppladdade framgångsrikt",
+    "description": "Framgångsmeddelande när bilder laddas upp"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bild, försök igen senare",
@@ -169,15 +173,15 @@
   },
   "message.startingTask": {
     "message": "Startar uppgift...",
-    "description": "Meddelande när ritningsuppgift startar"
+    "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgift har startats"
+    "message": "Uppgift för generering initierad framgångsrikt",
+    "description": "Framgångsmeddelande när uppgiften startas"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgift, vänligen kontakta administratör",
-    "description": "Felmeddelande när ritningsuppgift misslyckas med att starta"
+    "message": "Misslyckades med att initiera uppgift, vänligen kontakta administratör",
+    "description": "Felmeddelande när ritningsuppgiften misslyckas"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",

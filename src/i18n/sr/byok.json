@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, ZhiPu) umesto platformskog naloga. Nakon konfiguracije, zahtevi za razgovor modela će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformske kredite; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
+    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, ZhiPu) umesto platformskog naloga. Nakon konfiguracije, zahtevi za razgovor modela će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformski kredit; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
     "description": ""
   },
   "field.provider": {
@@ -52,7 +52,7 @@
     "description": ""
   },
   "field.isActive": {
-    "message": "Aktivan",
+    "message": "Aktivno",
     "description": ""
   },
   "field.lastUsedAt": {
@@ -60,19 +60,19 @@
     "description": ""
   },
   "field.createdAt": {
-    "message": "Vreme dodavanja",
+    "message": "Datum dodavanja",
     "description": ""
   },
   "value.active": {
-    "message": "Aktivan",
+    "message": "Aktivno",
     "description": ""
   },
   "value.inactive": {
-    "message": "Neaktivan",
+    "message": "Neaktivno",
     "description": ""
   },
   "value.never": {
-    "message": "Nikada korišćen",
+    "message": "Nikada korišćeno",
     "description": ""
   },
   "value.default": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa modelom {provider} će se vratiti na podrazumevanu uslugu platforme.",
+    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa modelom {provider} će se vratiti na podrazumevanu platformsku uslugu.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -144,28 +144,28 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Koristite svoj {provider} ključ",
+    "message": "Koristi se prilagođeni {provider} API ključ",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Ovaj razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} nalogu, ne umanjujući saldo platforme.",
+    "message": "Trenutni razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} nalogu, ne umanjujući saldo platforme.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Kliknite da upravljate svojim prilagođenim API ključem",
-    "description": "Poruka nakon klika na BYOK oznaku na stranici za chat: Kliknite da otvorite karticu API ključeva u dijalogu za podešavanje."
+    "message": "Kliknite da otvorite podešavanja API ključeva",
+    "description": "Poruka koja se prikazuje nakon klika na BYOK oznaku na stranici za razgovor: kliknite da otvorite karticu sa podešavanjima API ključeva."
   },
   "button.testConnection": {
-    "message": "Sačuvaj i testiraj vezu",
-    "description": "Dugme u dijalogu za dodavanje/izmenu — prvo sačuvajte kredencijale, a zatim pozovite uslugu /models da biste proverili vezu."
+    "message": "Testiraj",
+    "description": "Dugme u dijalogu za dodavanje/izmenu — testira samo trenutnu konfiguraciju forme, ne čuva kredencijale."
   },
   "test.success": {
-    "message": "Testiranje veze uspešno",
-    "description": "Naslov uspeha u rezultatu testa veze."
+    "message": "Test povezanosti uspešan",
+    "description": "Naslov uspeha u rezultatu testa povezanosti."
   },
   "test.failure": {
-    "message": "Testiranje veze nije uspelo",
-    "description": "Naslov neuspeha u rezultatu testa veze."
+    "message": "Test povezanosti nije uspeo",
+    "description": "Naslov neuspeha u rezultatu testa povezanosti."
   },
   "test.endpoint": {
     "message": "Adresa zahteva",
@@ -177,30 +177,30 @@
   },
   "test.message": {
     "message": "Odgovor usluge",
-    "description": "Oznaka za grešku/poruku u detaljima rezultata testa."
+    "description": "Oznaka za tekst greške/poruke usluge u detaljima rezultata testa."
   },
   "providerDesc.openai": {
     "message": "Zameni razgovore sa ChatGPT (GPT-4 / GPT-4o / o1 / o3 itd.) na ovoj platformi.",
-    "description": "Podnaslov za OpenAI opciju u padajućem meniju provajdera."
+    "description": "Podnaslov za opciju OpenAI u padajućem meniju provajdera."
   },
   "providerDesc.anthropic": {
     "message": "Zameni razgovore sa Claude (Sonnet / Opus / Haiku itd.) na ovoj platformi.",
-    "description": "Podnaslov za Anthropic opciju u padajućem meniju provajdera."
+    "description": "Podnaslov za opciju Anthropic u padajućem meniju provajdera."
   },
   "providerDesc.google": {
     "message": "Zameni razgovore sa Gemini (Pro / Flash serija) na ovoj platformi.",
-    "description": "Podnaslov za Google opciju u padajućem meniju provajdera."
+    "description": "Podnaslov za opciju Google u padajućem meniju provajdera."
   },
   "providerDesc.xai": {
     "message": "Zameni razgovore sa Grok na ovoj platformi.",
-    "description": "Podnaslov za xAI opciju u padajućem meniju provajdera."
+    "description": "Podnaslov za opciju xAI u padajućem meniju provajdera."
   },
   "providerDesc.deepseek": {
     "message": "Zameni razgovore sa DeepSeek (V3 / R1 itd.) na ovoj platformi.",
-    "description": "Podnaslov za DeepSeek opciju u padajućem meniju provajdera."
+    "description": "Podnaslov za opciju DeepSeek u padajućem meniju provajdera."
   },
   "providerDesc.moonshot": {
-    "message": "Zameni Kimi zahtev za razgovor.",
+    "message": "Zameni Kimi razgovor na ovoj stranici.",
     "description": "Podnaslov opcije Moonshot (Kimi) u padajućem meniju provajdera."
   },
   "providerDesc.zhipu": {

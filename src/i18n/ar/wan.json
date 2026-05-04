@@ -1,7 +1,7 @@
 {
   "name.taskId": {
-    "message": "معرّف المهمة",
-    "description": "معرّف المهمة"
+    "message": "معرف المهمة",
+    "description": "معرف المهمة"
   },
   "name.type": {
     "message": "النوع",
@@ -20,12 +20,16 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرّف التتبع",
-    "description": "معرّف التتبع للمهمة"
+    "message": "معرف التتبع",
+    "description": "معرف التتبع للمهمة"
+  },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
   },
   "name.createdAt": {
     "message": "تاريخ الإنشاء",
-    "description": "تاريخ إنشاء الفيديو"
+    "description": "تاريخ إنشاء فيديو通义万象"
   },
   "name.prompt": {
     "message": "محتوى الفيديو",
@@ -33,7 +37,7 @@
   },
   "name.model": {
     "message": "النموذج",
-    "description": "نموذج توليد الفيديو"
+    "description": "نموذج إنشاء الفيديو"
   },
   "name.resolution": {
     "message": "الدقة",
@@ -45,18 +49,18 @@
   },
   "name.imageUrl": {
     "message": "صورة مرجعية",
-    "description": "صورة مرجعية لتوليد الفيديو"
+    "description": "الصورة المرجعية لإنشاء الفيديو"
   },
   "name.wanBot": {
     "message": "وان بوت",
-    "description": "مولد فيديو وان"
+    "description": "مولد فيديو通义万象"
   },
   "description.prompt": {
-    "message": "الكلمات الدلالية لتوليد فيديو وان",
+    "message": "الكلمات الدلالية لإنشاء فيديو通义万象",
     "description": "وصف معلمة prompt"
   },
   "description.imageUrl": {
-    "message": "الصورة الأولى، ستستخدم كالإطار الأول للفيديو.",
+    "message": "الصورة الأولى، ستستخدم كالإطار الأول للفيديو الناتج.",
     "description": "وصف معلمة imageUrl"
   },
   "status.pending": {
@@ -69,31 +73,31 @@
   },
   "placeholder.prompt": {
     "message": "أدخل محتوى الفيديو المطلوب",
-    "description": "نص مكان إدخال الكلمات الدلالية"
+    "description": "نص العنصر النائب لإدخال الكلمات الدلالية"
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص مكان حقل الاختيار"
+    "description": "نص العنصر النائب لحقول الاختيار"
   },
   "button.modelT2v": {
     "message": "نص إلى فيديو",
-    "description": "توليد فيديو من نص"
+    "description": "إنشاء فيديو من نص"
   },
   "button.modelI2v": {
     "message": "صورة إلى فيديو",
-    "description": "توليد فيديو من صورة"
+    "description": "إنشاء فيديو من صورة"
   },
   "button.modelI2vFlash": {
     "message": "صورة إلى فيديو (سريع)",
-    "description": "توليد فيديو سريع من صورة"
+    "description": "إنشاء فيديو سريع من صورة"
   },
   "button.modelR2v": {
-    "message": "توليد فيديو مرجعي",
-    "description": "توليد فيديو مرجعي"
+    "message": "إنشاء فيديو مرجعي",
+    "description": "إنشاء فيديو مرجعي"
   },
   "button.generate": {
-    "message": "توليد",
-    "description": "زر توليد الفيديو"
+    "message": "إنشاء",
+    "description": "زر إنشاء الفيديو"
   },
   "button.download": {
     "message": "تحميل الفيديو",
@@ -108,7 +112,7 @@
     "description": "بدء المهمة"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء المهمة بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "نجاح بدء المهمة"
   },
   "message.startTaskFailed": {
@@ -124,7 +128,7 @@
     "description": "تنبيه تحميل الفيديو"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على توليد الفيديو على اليسار",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على إنشاء فيديو على اليسار",
     "description": "تنبيه عدم وجود مهام"
   },
   "message.uploadImageExceed": {

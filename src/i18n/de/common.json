@@ -120,8 +120,8 @@
     "description": "Text im Button, der verwendet wird, um die iOS-Anwendung zu installieren"
   },
   "button.apply": {
-    "message": "Beantragen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung eines API-Dienstes zu ermöglichen"
+    "message": "Antrag stellen",
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung des API-Dienstes zu ermöglichen"
   },
   "button.refresh": {
     "message": "Aktualisieren",
@@ -129,19 +129,19 @@
   },
   "button.pay": {
     "message": "Bezahlen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Bezahlung von Dienstgebühren zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Zahlung der Dienstgebühren zu ermöglichen"
   },
   "button.repay": {
-    "message": "Weiter bezahlen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung von Dienstgebühren zu ermöglichen"
+    "message": "Zahlung fortsetzen",
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung der Dienstgebühren zu ermöglichen"
   },
   "button.applied": {
-    "message": "Beantragt",
-    "description": "Text im Button, der anzeigt, dass der Benutzer diesen Dienst beantragt hat"
+    "message": "Antrag gestellt",
+    "description": "Text im Button, der anzeigt, dass der Benutzer den Dienst beantragt hat"
   },
   "button.acquire": {
     "message": "Erhalten",
-    "description": "Text im Button, der verwendet wird, um den Benutzern das Erhalten eines API-Diensttokens oder -schlüssels zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern das Erhalten von API-Dienst-Token oder -Schlüsseln zu ermöglichen"
   },
   "button.fillExample": {
     "message": "Beispiel ausfüllen",
@@ -205,11 +205,11 @@
   },
   "status.loading": {
     "message": "Wird geladen...",
-    "description": "Statusnachricht, die beim Laden von Inhalten angezeigt wird"
+    "description": "Statusnachricht, die während des Ladens des Inhalts angezeigt wird"
   },
   "entity.operation": {
-    "message": "Operation",
-    "description": "Operation der Entität"
+    "message": "Aktion",
+    "description": "Aktion der Entität"
   },
   "entity.description": {
     "message": "Beschreibung",
@@ -236,7 +236,7 @@
     "description": "Zur Anzeige des bereits verwendeten Betrags für den Dienst"
   },
   "message.mobileAppDescription": {
-    "message": "Verwenden Sie AceData direkt auf Ihrem Handy, derzeit steht die Android APK zum Download zur Verfügung, das iOS-Installationspaket wird nach der Signierung zum Download freigegeben.",
+    "message": "Verwenden Sie AceData direkt auf Ihrem Handy. Derzeit steht das Android APK zum Download zur Verfügung, das iOS-Installationspaket wird nach der Signierung zum Download freigegeben.",
     "description": "Beschreibung auf der Download-Seite der mobilen Anwendung"
   },
   "message.mobileAndroidHint": {
@@ -281,7 +281,7 @@
   },
   "title.mobileApp": {
     "message": "Mobile Downloads",
-    "description": "Titel der Download-Seite für mobile Anwendungen"
+    "description": "Titel der Download-Seite für die mobile Anwendung"
   },
   "title.mobileFastAccess": {
     "message": "Schnellerer Zugriff, ohne den App Store zu umgehen",
@@ -352,7 +352,7 @@
     "description": "让用户加入Discord频道的消息"
   },
   "message.addWeChat": {
-    "message": "WeChat hinzufügen",
+    "message": "WeChat-Dienst",
     "description": "让用户添加微信账户的消息"
   },
   "message.serviceTech": {
@@ -396,7 +396,7 @@
     "description": "网站导航栏中的文本，用于显示推荐页面"
   },
   "nav.apiPlatform": {
-    "message": "API Plattform",
+    "message": "API-Plattform",
     "description": "网站导航栏中的文本，用于显示API平台页面"
   },
   "nav.document": {
@@ -621,11 +621,11 @@
   },
   "about.address": {
     "message": "651 North Broad St, Suite 201, Middletown, DE, USA",
-    "description": "Die Adresse des Unternehmens"
+    "description": "Adresse des Unternehmens"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Die E-Mail-Adresse des Unternehmens"
+    "description": "E-Mail des Unternehmens"
   },
   "about.link1": {
     "message": "Dienstleistungen",
@@ -661,7 +661,7 @@
   },
   "about.link9": {
     "message": "Datenschutzrichtlinie",
-    "description": "Link zur Seite mit der Datenschutzrichtlinie"
+    "description": "Link zur Datenschutzrichtseite"
   },
   "theme.light": {
     "message": "Helles Thema",
@@ -740,7 +740,7 @@
     "description": "Nachricht, die anzeigt, dass das Kopieren des Inhalts fehlgeschlagen ist"
   },
   "nav.tryNow": {
-    "message": "Schnell ausprobieren",
+    "message": "Jetzt ausprobieren",
     "description": "Text in der Navigationsleiste der Website, um den Benutzern zu ermöglichen, den Dienst auszuprobieren"
   },
   "title.coin": {
@@ -788,7 +788,7 @@
     "description": "Beruf des Kunden"
   },
   "customers.comment3": {
-    "message": "Ich liebe den Service von Ace Data Cloud, benutzerfreundlich und preiswert. Ich hoffe, es wird immer besser!",
+    "message": "Ich liebe den Service von Ace Data Cloud, er ist benutzerfreundlich und preiswert. Ich hoffe, es wird immer besser!",
     "description": "Bewertung des Kunden"
   },
   "nav.github": {
@@ -803,12 +803,20 @@
     "message": "Über",
     "description": "Titel des Abschnitts 'Über' auf der Einstellungsseite"
   },
+  "settings.subsites": {
+    "message": "Meine Subsites",
+    "description": "Titel des Tabs zur Verwaltung von Subsites im Einstellungs-Popup. Nur auf der offiziellen Hauptseite sichtbar, Subsites werden nicht angezeigt."
+  },
+  "settings.buildNow": {
+    "message": "Ein-Klick-Bau",
+    "description": "Text des Buttons 'Ein-Klick-Bau von Subsites' auf der Über-Seite, nur auf der offiziellen Hauptseite sichtbar"
+  },
   "settings.poweredBy": {
     "message": "Open-Source-Projekt",
     "description": "Titel, der auf der Über-Seite anzeigt, auf welchem Open-Source-Projekt diese Seite basiert"
   },
   "settings.poweredByTip": {
-    "message": "Diese Seite basiert auf dem Open-Source-Projekt Nexior, der Code ist vollständig offen.",
+    "message": "Diese Seite basiert auf dem Open-Source-Projekt Nexior, der Code ist vollständig Open Source.",
     "description": "Erklärung auf der Über-Seite, auf welchem Open-Source-Projekt diese Seite basiert"
   },
   "settings.apiService": {
@@ -817,15 +825,15 @@
   },
   "settings.apiServiceTip": {
     "message": "Der API-Dienst dieser Seite wird von Ace Data Cloud bereitgestellt.",
-    "description": "Erklärung auf der Über-Seite, die den Anbieter des API-Dienstes beschreibt"
+    "description": "Erklärung auf der Über-Seite, die den Anbieter des API-Dienstes anzeigt"
   },
   "settings.buildYourOwn": {
-    "message": "Eigenes Projekt erstellen",
-    "description": "Titel, der auf der Über-Seite den Benutzern anzeigt, dass sie ein ähnliches Projekt erstellen können"
+    "message": "Eigene Version erstellen",
+    "description": "Titel auf der Über-Seite, der den Benutzern anzeigt, dass sie eine ähnliche Seite erstellen können"
   },
   "settings.buildYourOwnTip": {
     "message": "Möchten Sie eine ähnliche AI-Seite erstellen? Kontaktieren Sie uns für Unterstützung bei der Bereitstellung.",
-    "description": "Erklärung auf der Über-Seite, wie man ein ähnliches Projekt erstellen kann"
+    "description": "Erklärung auf der Über-Seite zum Erstellen einer eigenen Version"
   },
   "settings.contactUs": {
     "message": "Kontaktieren Sie den Support",
@@ -833,7 +841,7 @@
   },
   "message.viewOnGithub": {
     "message": "Auf GitHub ansehen",
-    "description": "Linktext, um das Projekt auf GitHub anzusehen"
+    "description": "Text des Links, um das Projekt auf GitHub anzusehen"
   },
   "title.notFound": {
     "message": "Seite nicht gefunden",
@@ -849,7 +857,7 @@
   },
   "message.notFoundPath": {
     "message": "Angeforderter Pfad",
-    "description": "Label, das den aktuellen angeforderten Pfad auf der 404-Seite anzeigt"
+    "description": "Label auf der 404-Seite, das den aktuellen angeforderten Pfad anzeigt"
   },
   "button.backToHome": {
     "message": "Zur Startseite zurück",

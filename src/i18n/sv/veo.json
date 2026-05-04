@@ -27,13 +27,17 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
+  },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för att generera Veo-video"
+    "description": "Datum och tid för skapande av Veo-video"
   },
   "name.startEndImage": {
     "message": "Start/Slut bildreferens",
-    "description": "Formulärfältets etikett: Start/Slut bildreferens"
+    "description": "Formulärfältets etikett: Start/Slut bildreferens (håll kort för att undvika att dölja knappen)"
   },
   "name.action": {
     "message": "Åtgärd",
@@ -49,7 +53,7 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversionen som används för att generera video"
+    "description": "Modellversionen som används för att generera videon"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
@@ -89,7 +93,7 @@
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Platshållartext i urvalsfält"
+    "description": "Platshållartext i urvalsfältet"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
@@ -97,7 +101,7 @@
   },
   "placeholder.prompt": {
     "message": "Ange promptord för den stil av video som ska genereras, t.ex.: moving",
-    "description": "Platshållartext i promptfält"
+    "description": "Platshållartext i promptfältet"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild"
+    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -148,19 +152,19 @@
     "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
+    "message": "Startar uppgift...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
     "message": "Uppgift för generering har startats framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften startas"
+    "description": "Framgångsmeddelande när uppgiften har startats"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören",
     "description": "Felmeddelande när ritningsuppgiften misslyckas"
   },
   "message.imageRequired": {
-    "message": "Vänligen ladda upp minst en referensbild innan du startar bild-till-video uppgiften",
+    "message": "Vänligen ladda upp minst en referensbild innan du startar bild-till-video-uppgiften",
     "description": "Prompt när ingen bild har laddats upp i image2video-läget"
   },
   "message.usedUp": {
@@ -184,47 +188,47 @@
     "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Filstorleken får inte överstiga 10 MB!",
-    "description": "Felmeddelande när filstorleken överstiger 10 MB!"
+    "message": "Uppladdad fil får inte överstiga 10 MB!",
+    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Filuppladdningen måste vara i MP4-format!",
-    "description": "Felmeddelande när filuppladdningen inte är i MP4-format!"
+    "message": "Uppladdad fil måste vara i MP4-format!",
+    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade slutbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
+    "message": "Antalet uppladdade sista bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade sista bildbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Misslyckades med att ladda upp startbilden",
-    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+    "message": "Uppladdning av första bildbild misslyckades",
+    "description": "Felmeddelande när uppladdningen av första bildbild misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp videon",
-    "description": "Felmeddelande när uppladdningen av videon misslyckas"
+    "message": "Uppladdning av video misslyckades",
+    "description": "Felmeddelande när uppladdningen av video misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Misslyckades med att ladda upp slutbilden",
-    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
+    "message": "Uppladdning av sista bildbild misslyckades",
+    "description": "Felmeddelande när uppladdningen av sista bildbild misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokumentet",
-    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
+    "message": "Uppladdning av dokument misslyckades",
+    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
     "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, klicka på 'Generera video' till vänster",
-    "description": "Meddelande när inga uppgifter finns"
+    "message": "Inga historiska uppgifter, klicka på vänster sida för att generera video",
+    "description": "Meddelande när det inte finns några uppgifter"
   },
   "name.upsampleAction": {
-    "message": "Uppskalningsmål",
+    "message": "Uppskala mål",
     "description": "Målformat för /veo/upsample (1080p/4k/gif)"
   },
   "name.motionType": {
@@ -236,31 +240,31 @@
     "description": "Bildmask för /veo/objects (vita pixlar = operationsområde)"
   },
   "name.videoId": {
-    "message": "Video-ID",
-    "description": "ID för källvideon (från tidigare genererade uppgifter data[].id)"
+    "message": "Video ID",
+    "description": "ID för källvideon (från tidigare genereringsuppgifts data[].id)"
   },
   "placeholder.imageMask": {
-    "message": "Maskbildens URL eller base64-kodad JPEG",
-    "description": "Platshållare för image_mask inmatningsfält"
+    "message": "Maskbild URL eller base64-kodad JPEG",
+    "description": "Platsinnehåll för image_mask inmatningsfält"
   },
   "placeholder.videoId": {
-    "message": "Klistra in video-ID eller klicka på åtgärdsknappen i listan till höger för att fylla i automatiskt",
-    "description": "Platshållare för video_id inmatningsfält"
+    "message": "Klistra in video ID, eller klicka på åtgärdsknappen i högra uppgiftslistan för att fylla i automatiskt",
+    "description": "Platsinnehåll för video_id inmatningsfält"
   },
   "button.actionIngredients": {
     "message": "Flera bilder till video",
-    "description": "ingredients2video — Kombinera 1-3 bilder för att skapa en ny scen"
+    "description": "ingredients2video — 1-3 bilder kombineras för att skapa en ny scen"
   },
   "button.actionUpsample": {
-    "message": "Uppskalning / GIF-förhandsvisning",
+    "message": "Uppskala / GIF förhandsvisning",
     "description": "/veo/upsample — Uppskala till 1080p/4K eller exportera GIF"
   },
   "button.actionExtend": {
-    "message": "Förläng video",
-    "description": "/veo/extend — Förläng längden på den genererade videon"
+    "message": "Fortsätt video",
+    "description": "/veo/extend — Förläng den genererade videons längd"
   },
   "button.actionReshoot": {
-    "message": "Byt kameravinkel och spela in igen",
+    "message": "Byt kameravinkel och filma om",
     "description": "/veo/reshoot — Återskapa med ny kamerarörelse"
   },
   "button.actionObjectInsert": {
@@ -272,15 +276,15 @@
     "description": "/veo/objects remove — Ta bort objekt från videon med mask"
   },
   "button.actionUpsample1080p": {
-    "message": "Uppskalning 1080P",
-    "description": "Förhandsvisningsknapp — Uppskalning till 1080P"
+    "message": "Uppskala 1080P",
+    "description": "Förhandsvisningsåtgärdsknapp — Uppskala till 1080P"
   },
   "button.actionUpsample4k": {
-    "message": "Uppskalning 4K",
-    "description": "Förhandsvisningsknapp — Uppskalning till 4K"
+    "message": "Uppskala 4K",
+    "description": "Förhandsvisningsåtgärdsknapp — Uppskala till 4K"
   },
   "button.actionUpsampleGif": {
     "message": "Exportera GIF",
-    "description": "Förhandsvisningsknapp — Konvertera till GIF-förhandsvisning"
+    "description": "Förhandsvisningsåtgärdsknapp — Konvertera till GIF förhandsvisning"
   }
 }

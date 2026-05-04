@@ -12,7 +12,7 @@
     "description": "Estado de falha da tarefa"
   },
   "name.failureReason": {
-    "message": "Motivo da Falha",
+    "message": "Razão da Falha",
     "description": "Razão pela qual a tarefa falhou"
   },
   "name.status": {
@@ -22,6 +22,10 @@
   "name.traceId": {
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
+  },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
   },
   "name.size": {
     "message": "Tamanho",
@@ -37,7 +41,7 @@
   },
   "name.seed": {
     "message": "Valor da Semente",
-    "description": "Semente do QR Code a ser gerado"
+    "description": "Semente para gerar o QR Code"
   },
   "name.paddingLevel": {
     "message": "Nível de Preenchimento",
@@ -208,7 +212,7 @@
     "description": "Estilo predefinido para gerar o código QR"
   },
   "preset.symmetricMasterpiece": {
-    "message": "Obra-Prima Simétrica",
+    "message": "Obra-prima Simétrica",
     "description": "Estilo predefinido para gerar o código QR"
   },
   "preset.luminousHighway": {
@@ -272,11 +276,11 @@
     "description": "Estilo predefinido para gerar o código QR"
   },
   "message.uploadQr": {
-    "message": "Carregar imagem do QR Code para gerar um QR Code artístico correspondente",
+    "message": "Carregar imagem do QR Code para gerar um QR Code artístico correspondente ao conteúdo",
     "description": "Instrução para upload do QR Code"
   },
   "message.promptPlaceholder": {
-    "message": "Digite uma frase descrevendo a imagem a ser gerada, por exemplo: um gato adorável. Parâmetros adicionais substituirão os parâmetros predefinidos",
+    "message": "Digite uma frase descrevendo a imagem a ser gerada, por exemplo: um gato adorável. Parâmetros adicionais substituirão os parâmetros predefinidos.",
     "description": "Texto de espaço reservado no campo de prompt"
   },
   "message.uploadReferencesExceed": {
@@ -288,8 +292,8 @@
     "description": "Mensagem de sucesso ao carregar a imagem"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao carregar a imagem, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload da imagem falha"
+    "message": "Falha ao carregar a imagem, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro ao falhar no upload da imagem"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -300,11 +304,11 @@
     "description": "Mensagem de sucesso ao iniciar a tarefa"
   },
   "message.startTaskFailed": {
-    "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
+    "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar",
+    "message": "Seus créditos acabaram, por favor compre mais créditos para continuar",
     "description": "Mensagem quando os créditos se esgotam"
   },
   "message.generating": {
@@ -313,7 +317,7 @@
   },
   "message.generateFailed": {
     "message": "Falha ao gerar a imagem",
-    "description": "Mensagem quando a geração da imagem falha"
+    "description": "Mensagem ao falhar na geração da imagem"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
@@ -384,27 +388,27 @@
     "description": "Posição para gerar o QR Code"
   },
   "position.bottomLeft": {
-    "message": "Inferior Esquerdo",
+    "message": "Canto Inferior Esquerdo",
     "description": "Posição para gerar o QR Code"
   },
   "position.bottomRight": {
     "message": "Inferior Direito",
-    "description": "Posição para gerar o QR Code"
+    "description": "Usado para gerar a posição do QR Code"
   },
   "position.top": {
-    "message": "Superior",
+    "message": "Topo",
     "description": "Posição para gerar o QR Code"
   },
   "position.bottom": {
-    "message": "Inferior",
+    "message": "Fundo",
     "description": "Posição para gerar o QR Code"
   },
   "position.left": {
-    "message": "Esquerdo",
+    "message": "Esquerda",
     "description": "Posição para gerar o QR Code"
   },
   "position.right": {
-    "message": "Direito",
+    "message": "Direita",
     "description": "Posição para gerar o QR Code"
   },
   "pixelStyle.row": {
@@ -428,7 +432,7 @@
     "description": "Estilo de pixel para gerar o QR Code"
   },
   "pixelStyle.squircle": {
-    "message": "Retângulo Arredondado",
+    "message": "Squircle",
     "description": "Estilo de pixel para gerar o QR Code"
   },
   "type.text": {
@@ -452,7 +456,7 @@
     "description": "Tipo de conteúdo para gerar o QR Code"
   },
   "name.rawurl": {
-    "message": "Link Original",
+    "message": "Link original",
     "description": "Alternância para usar o link original diretamente como conteúdo do QR Code, sem processamento"
   },
   "placeholder.ecl": {
@@ -473,6 +477,6 @@
   },
   "message.uploadDocumentsError": {
     "message": "Falha ao enviar a imagem, por favor tente novamente mais tarde",
-    "description": "Mensagem de erro quando a imagem falha ao ser enviada"
+    "description": "Mensagem de erro quando o envio da imagem falha"
   }
 }

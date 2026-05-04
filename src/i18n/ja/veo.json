@@ -27,9 +27,13 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.createdAt": {
     "message": "作成日時",
-    "description": "Veo動画生成の日付と時間"
+    "description": "Veo動画生成の日時"
   },
   "name.startEndImage": {
     "message": "開始/終了フレーム",
@@ -60,11 +64,11 @@
     "description": "比率パラメータの名称"
   },
   "description.translation": {
-    "message": "動画生成タスクでプロンプトの自動翻訳を有効にできます。",
+    "message": "動画作成タスク時にプロンプトの自動翻訳を有効にできます。",
     "description": "パラメータ'translation'の説明"
   },
   "description.imageUrl": {
-    "message": "複数画像で動画を生成するタスクでは、複数の画像をアップロードする必要があります。",
+    "message": "複数画像で動画を作成するタスクでは、複数の画像をアップロードする必要があります。",
     "description": "パラメータ'imageUrl'の説明"
   },
   "description.prompt": {
@@ -96,7 +100,7 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成する動画スタイルのプロンプトを入力してください。例：moving",
+    "message": "生成する動画スタイルのプロンプトを入力してください（例：moving）",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.position": {
@@ -121,15 +125,15 @@
   },
   "button.download": {
     "message": "動画をダウンロード",
-    "description": "動画ダウンロードボタンのテキスト"
+    "description": "動画ダウンロードボタンテキスト"
   },
   "button.uploadImageUrl": {
     "message": "アップロード",
-    "description": "画像アップロードボタンのテキスト"
+    "description": "画像アップロードボタンテキスト"
   },
   "button.uploadVideoUrl": {
     "message": "動画をアップロード",
-    "description": "動画アップロードボタンのテキスト"
+    "description": "動画アップロードのボタンテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
@@ -145,7 +149,7 @@
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
-    "description": "画像アップロードに失敗したときのエラーメッセージ"
+    "description": "画像アップロード失敗時のエラーメッセージ"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -157,7 +161,7 @@
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
-    "description": "描画タスクの開始に失敗したときのエラーメッセージ"
+    "description": "描画タスク開始失敗時のエラーメッセージ"
   },
   "message.imageRequired": {
     "message": "まず少なくとも1枚の参考画像をアップロードしてから、画像から動画生成タスクを開始してください",
@@ -176,40 +180,40 @@
     "description": "画像が生成中のときのメッセージ"
   },
   "message.generateFailed": {
-    "message": "動画生成に失敗しました",
+    "message": "ビデオの生成に失敗しました",
     "description": "画像生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
-    "description": "最初のフレーム画像の数が制限を超えたときのエラーメッセージ"
+    "description": "アップロードする最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
     "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
-    "description": "アップロードファイルのサイズは10MBを超えてはいけません！時のエラーメッセージ"
+    "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
     "message": "アップロードファイルはMP4形式でなければなりません！",
-    "description": "アップロードファイルはMP4形式でなければなりません！のエラーメッセージ"
+    "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "先頭フレーム画像のアップロード数が制限を超えました",
-    "description": "先頭フレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
+    "message": "アップロードする最初のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadEndImageExceed": {
-    "message": "末尾フレーム画像のアップロード数が制限を超えました",
-    "description": "末尾フレーム画像のアップロード数が制限を超えた時のエラーメッセージ"
+    "message": "アップロードする最後のフレーム画像の数が制限を超えています",
+    "description": "アップロードする最後のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadStartImageError": {
-    "message": "先頭フレーム画像のアップロードに失敗しました",
-    "description": "先頭フレーム画像のアップロードに失敗した時のエラーメッセージ"
+    "message": "最初のフレーム画像のアップロードに失敗しました",
+    "description": "最初のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
     "description": "動画のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadEndImageError": {
-    "message": "末尾フレーム画像のアップロードに失敗しました",
-    "description": "末尾フレーム画像のアップロードに失敗した時のエラーメッセージ"
+    "message": "最後のフレーム画像のアップロードに失敗しました",
+    "description": "最後のフレーム画像のアップロードに失敗した時のエラーメッセージ"
   },
   "message.uploadDocumentsError": {
     "message": "文書のアップロードに失敗しました",
@@ -256,7 +260,7 @@
     "description": "/veo/upsample — 1080p/4KにアップサンプリングまたはGIFをエクスポート"
   },
   "button.actionExtend": {
-    "message": "動画を延長",
+    "message": "動画を続ける",
     "description": "/veo/extend — 生成された動画の長さを延長"
   },
   "button.actionReshoot": {

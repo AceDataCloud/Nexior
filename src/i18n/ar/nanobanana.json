@@ -12,8 +12,8 @@
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير صورة",
-    "description": "نوع العملية: تحرير صورة"
+    "message": "تحرير الصورة",
+    "description": "نوع العملية: تحرير الصورة"
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
@@ -34,6 +34,10 @@
   "name.traceId": {
     "message": "معرف التتبع",
     "description": "معرف التتبع"
+  },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
   },
   "name.prompt": {
     "message": "نص الصورة",
@@ -64,7 +68,7 @@
     "description": "وصف معلمة الإجراء"
   },
   "description.model": {
-    "message": "النموذج المستخدم لإنشاء الصورة. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، و nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
+    "message": "النموذج المستخدم لإنشاء الصورة. الافتراضي هو nano-banana. nano-banana-pro هو اسم مستعار لـ gemini-3-pro-image، nano-banana هو اسم مستعار لـ gemini-2.5-flash-image.",
     "description": "وصف معلمة النموذج"
   },
   "description.imageUrls": {
@@ -81,11 +85,11 @@
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص العنصر المحدد"
+    "description": "نص اختيار"
   },
   "placeholder.prompt": {
     "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
-    "description": "نص العنصر المحدد"
+    "description": "نص تلميح"
   },
   "button.generate": {
     "message": "إنشاء",
@@ -112,7 +116,7 @@
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
-    "message": "يمكن رفع ما يصل إلى 5 صور",
+    "message": "يمكنك رفع ما يصل إلى 5 صور",
     "description": "تجاوز عدد الصور الحد المسموح به"
   },
   "message.uploadImageError": {
@@ -125,11 +129,11 @@
   },
   "model.nanoBanana": {
     "message": "nano-banana",
-    "description": "خيار نموذج Nano Banana الأساسي"
+    "description": "خيار النموذج الأساسي Nano Banana"
   },
   "model.nanoBananaPro": {
     "message": "nano-banana-pro",
-    "description": "خيار نموذج Nano Banana المحترف"
+    "description": "خيار النموذج الاحترافي Nano Banana"
   },
   "model.nanoBanana2": {
     "message": "nano-banana-2",

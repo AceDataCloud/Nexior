@@ -132,11 +132,11 @@
     "description": ""
   },
   "message.empty": {
-    "message": "Nenhuma chave de API personalizada configurada. Clique em \"Adicionar Chave de API\" para usar sua própria conta de provedor.",
+    "message": "Nenhuma chave de API personalizada configurada ainda. Clique em \"Adicionar Chave de API\" para usar sua própria conta de provedor.",
     "description": ""
   },
   "message.advancedToggle": {
-    "message": "Mostrar Opções Avançadas",
+    "message": "Mostrar opções avançadas",
     "description": ""
   },
   "message.baseUrlHelp": {
@@ -144,20 +144,20 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Usando sua chave {provider}",
+    "message": "Usando chave de API personalizada {provider}",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Esta conversa usa sua própria chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma.",
+    "message": "A conversa atual está usando sua chave de API {provider}, com custos cobrados na conta {provider}, sem desconto no saldo da plataforma.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Clique para gerenciar suas chaves de API personalizadas",
-    "description": "Dica ao clicar no badge BYOK na página de chat: clique para abrir a aba de configuração da chave de API."
+    "message": "Clique para abrir as configurações da chave de API",
+    "description": "Dica ao clicar no badge BYOK na página de chat: clique para abrir a aba de configurações da chave de API."
   },
   "button.testConnection": {
-    "message": "Salvar e Testar Conexão",
-    "description": "Botão no diálogo de adicionar/editar - primeiro salva as credenciais, depois chama /models para verificar a conectividade."
+    "message": "Testar",
+    "description": "Botão no diálogo de adicionar/editar - apenas testa a configuração atual do formulário, não salva as credenciais."
   },
   "test.success": {
     "message": "Teste de conectividade bem-sucedido",
@@ -176,28 +176,28 @@
     "description": "Rótulo do código de status HTTP nos detalhes do resultado do teste."
   },
   "test.message": {
-    "message": "Resposta do Upstream",
+    "message": "Resposta do upstream",
     "description": "Rótulo do texto de erro/aviso do upstream nos detalhes do resultado do teste."
   },
   "providerDesc.openai": {
-    "message": "Substitui as solicitações de diálogo do ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) neste site.",
-    "description": "Subtítulo da opção OpenAI no menu suspenso de provedores."
+    "message": "Substitui as solicitações de diálogo do ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) deste site.",
+    "description": "Subtítulo da opção OpenAI no dropdown de provedores."
   },
   "providerDesc.anthropic": {
-    "message": "Substitui as solicitações de diálogo do Claude (Sonnet / Opus / Haiku, etc.) neste site.",
-    "description": "Subtítulo da opção Anthropic no menu suspenso de provedores."
+    "message": "Substitui as solicitações de diálogo do Claude (Sonnet / Opus / Haiku, etc.) deste site.",
+    "description": "Subtítulo da opção Anthropic no dropdown de provedores."
   },
   "providerDesc.google": {
-    "message": "Substitui as solicitações de diálogo do Gemini (séries Pro / Flash) neste site.",
-    "description": "Subtítulo da opção Google no menu suspenso de provedores."
+    "message": "Substitui as solicitações de diálogo do Gemini (séries Pro / Flash) deste site.",
+    "description": "Subtítulo da opção Google no dropdown de provedores."
   },
   "providerDesc.xai": {
-    "message": "Substitui as solicitações de diálogo do Grok neste site.",
-    "description": "Subtítulo da opção xAI no menu suspenso de provedores."
+    "message": "Substitui as solicitações de diálogo do Grok deste site.",
+    "description": "Subtítulo da opção xAI no dropdown de provedores."
   },
   "providerDesc.deepseek": {
-    "message": "Substitui as solicitações de diálogo do DeepSeek (V3 / R1, etc.) neste site.",
-    "description": "Subtítulo da opção DeepSeek no menu suspenso de provedores."
+    "message": "Substitui as solicitações de diálogo do DeepSeek (V3 / R1, etc.) deste site.",
+    "description": "Subtítulo da opção DeepSeek no dropdown de provedores."
   },
   "providerDesc.moonshot": {
     "message": "Substitui o pedido de conversa Kimi deste site.",

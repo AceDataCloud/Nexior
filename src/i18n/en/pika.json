@@ -76,8 +76,8 @@
     "description": "Trace ID of the task"
   },
   "name.elapsed": {
-    "message": "Elapsed",
-    "description": "Elapsed time of the task in seconds"
+    "message": "Elapsed Time",
+    "description": "Time taken for the task (in seconds)"
   },
   "name.createdAt": {
     "message": "Created At",
@@ -97,7 +97,7 @@
   },
   "name.ingredients": {
     "message": "Multi-Image",
-    "description": "Switch/label for creating videos with multiple images"
+    "description": "Switch/label for creating videos from multiple images (keep it short)"
   },
   "name.model": {
     "message": "Model Version",
@@ -117,15 +117,15 @@
   },
   "description.ingredients": {
     "message": "Enable this button if you want to upload multiple images to generate your video.",
-    "description": "Description of the 'ingredients' parameter"
+    "description": "Description for the 'ingredients' parameter"
   },
   "description.imageUrl": {
     "message": "In a multi-image video creation task, multiple images must be uploaded.",
-    "description": "Description of the 'imageUrl' parameter"
+    "description": "Description for the 'imageUrl' parameter"
   },
   "description.prompt": {
-    "message": "Prompt words for generating Pika videos",
-    "description": "Description of the 'prompt' parameter"
+    "message": "Prompt words for generating the Pika video",
+    "description": "Description for the 'prompt' parameter"
   },
   "status.pending": {
     "message": "Pending",
@@ -148,7 +148,7 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt words for the video style, e.g., moving",
+    "message": "Enter the prompt for the video style, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.position": {
@@ -197,11 +197,11 @@
   },
   "button.uploadImageUrl": {
     "message": "Upload",
-    "description": "Button text for uploading image"
+    "description": "Button text for uploading images (simplified to 'Upload')"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Button text for uploading video"
+    "description": "Text for the button to upload a video"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload up to 5 images",
@@ -237,11 +237,11 @@
   },
   "message.downloadVideo": {
     "message": "Download this video",
-    "description": "Message for downloading the video"
+    "description": "Message when the image is being generated"
   },
   "message.extendVideo": {
     "message": "Continue generating this video",
-    "description": "Message for continuing video generation"
+    "description": "Message when the image is being generated"
   },
   "message.generateFailed": {
     "message": "Image generation failed",
@@ -273,7 +273,7 @@
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when uploading the video fails"
+    "description": "Error message when uploading the first frame image fails"
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",

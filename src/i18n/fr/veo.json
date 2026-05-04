@@ -27,25 +27,29 @@
     "message": "ID de suivi",
     "description": "ID de suivi de la tâche"
   },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (en secondes)"
+  },
   "name.createdAt": {
     "message": "Date de création",
     "description": "Date et heure de génération de la vidéo Veo"
   },
   "name.startEndImage": {
-    "message": "Images de référence de début/fin",
-    "description": "Étiquette du champ de formulaire : images de référence de début/fin (en anglais, suggéré de traduire par 'Start/End Frames', garder court pour éviter de masquer le bouton)"
+    "message": "Images de référence début/fin",
+    "description": "Étiquette du champ de formulaire : images de référence début/fin (en anglais, suggéré comme 'Start/End Frames', garder court pour éviter de masquer le bouton)"
   },
   "name.action": {
-    "message": "Action",
+    "message": "Actions",
     "description": "Liste des actions disponibles"
   },
   "name.action3": {
-    "message": "Obtenir la vidéo en 1080p de",
+    "message": "Obtenir la vidéo en 1080p",
     "description": "Images de référence pour la vidéo à générer"
   },
   "name.prompt": {
     "message": "Invite vidéo",
-    "description": "Invite pour l'entrée de contenu"
+    "description": "Invite pour le contenu à entrer"
   },
   "name.model": {
     "message": "Version du modèle",
@@ -64,11 +68,11 @@
     "description": "Description du paramètre 'translation'"
   },
   "description.imageUrl": {
-    "message": "Dans les tâches de création de vidéos avec plusieurs images, plusieurs images doivent être téléchargées.",
+    "message": "Dans une tâche de création vidéo avec plusieurs images, plusieurs images doivent être téléchargées.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer la vidéo Veo",
+    "message": "Invites pour générer des vidéos Veo",
     "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartEndImage": {
@@ -96,7 +100,7 @@
     "description": "Espace réservé pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez des mots d'invite pour le style de vidéo à générer, par exemple : moving",
+    "message": "Entrez l'invite pour le style de vidéo à générer, par exemple : moving",
     "description": "Texte d'espace réservé dans le champ d'invite"
   },
   "placeholder.position": {
@@ -116,7 +120,7 @@
     "description": "Texte du bouton pour générer la vidéo Veo"
   },
   "button.action3": {
-    "message": "Obtenir 1080p",
+    "message": "Obtenir en 1080p",
     "description": "Texte du bouton pour générer la vidéo Veo"
   },
   "button.download": {
@@ -176,12 +180,12 @@
     "description": "Message lors de la génération de l'image"
   },
   "message.generateFailed": {
-    "message": "Échec de la génération de la vidéo",
-    "description": "Message lors de l'échec de la génération de l'image"
+    "message": "Échec de la génération vidéo",
+    "description": "Message affiché lorsque la génération de vidéo échoue"
   },
   "message.uploadVideoExceed": {
-    "message": "Le nombre d'images de la première image téléchargées dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
+    "message": "Le nombre d'images de la première trame téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première trame téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
@@ -192,24 +196,24 @@
     "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Le nombre d'images de la première image téléchargée dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargée dépasse la limite"
+    "message": "Le nombre d'images de la première trame téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la première trame téléchargées dépasse la limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Le nombre d'images de la dernière image téléchargée dépasse la limite",
-    "description": "Message d'erreur lorsque le nombre d'images de la dernière image téléchargée dépasse la limite"
+    "message": "Le nombre d'images de la dernière trame téléchargées dépasse la limite",
+    "description": "Message d'erreur lorsque le nombre d'images de la dernière trame téléchargées dépasse la limite"
   },
   "message.uploadStartImageError": {
-    "message": "Échec du téléchargement de la première image",
-    "description": "Message d'erreur lorsque le téléchargement de la première image échoue"
+    "message": "Échec du téléchargement de l'image de la première trame",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la première trame échoue"
   },
   "message.uploadVideoError": {
     "message": "Échec du téléchargement de la vidéo",
     "description": "Message d'erreur lorsque le téléchargement de la vidéo échoue"
   },
   "message.uploadEndImageError": {
-    "message": "Échec du téléchargement de la dernière image",
-    "description": "Message d'erreur lorsque le téléchargement de la dernière image échoue"
+    "message": "Échec du téléchargement de l'image de la dernière trame",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de la dernière trame échoue"
   },
   "message.uploadDocumentsError": {
     "message": "Échec du téléchargement du document",
@@ -224,7 +228,7 @@
     "description": "Message lorsque aucune tâche n'est disponible"
   },
   "name.upsampleAction": {
-    "message": "Cible de suréchantillonnage",
+    "message": "Objectif de suréchantillonnage",
     "description": "Format cible pour /veo/upsample (1080p/4k/gif)"
   },
   "name.motionType": {
@@ -248,12 +252,12 @@
     "description": "Placeholder pour le champ d'entrée video_id"
   },
   "button.actionIngredients": {
-    "message": "Vidéo fusionnée avec plusieurs images",
-    "description": "ingredients2video — Fusion de 1 à 3 images pour générer une nouvelle scène"
+    "message": "Vidéo de fusion d'images",
+    "description": "ingredients2video — Fusionner 1 à 3 images pour générer une nouvelle scène"
   },
   "button.actionUpsample": {
     "message": "Suréchantillonnage / Prévisualisation GIF",
-    "description": "/veo/upsample — Suréchantillonnage à 1080p/4K ou exportation GIF"
+    "description": "/veo/upsample — Suréchantillonner en 1080p/4K ou exporter en GIF"
   },
   "button.actionExtend": {
     "message": "Prolonger la vidéo",
@@ -261,7 +265,7 @@
   },
   "button.actionReshoot": {
     "message": "Reprendre avec un autre angle",
-    "description": "/veo/reshoot — Regénérer avec un autre mouvement de caméra sur le même contenu"
+    "description": "/veo/reshoot — Regénérer avec un mouvement de caméra différent pour le même contenu"
   },
   "button.actionObjectInsert": {
     "message": "Ajouter un objet",
@@ -272,15 +276,15 @@
     "description": "/veo/objects remove — Retirer un objet de la vidéo via un masque"
   },
   "button.actionUpsample1080p": {
-    "message": "Suréchantillonnage 1080P",
-    "description": "Bouton d'opération de prévisualisation — Suréchantillonnage à 1080P"
+    "message": "Suréchantillonner en 1080P",
+    "description": "Bouton d'opération de prévisualisation — Suréchantillonner en 1080P"
   },
   "button.actionUpsample4k": {
-    "message": "Suréchantillonnage 4K",
-    "description": "Bouton d'opération de prévisualisation — Suréchantillonnage à 4K"
+    "message": "Suréchantillonner en 4K",
+    "description": "Bouton d'opération de prévisualisation — Suréchantillonner en 4K"
   },
   "button.actionUpsampleGif": {
-    "message": "Exporter GIF",
+    "message": "Exporter en GIF",
     "description": "Bouton d'opération de prévisualisation — Convertir en prévisualisation GIF"
   }
 }

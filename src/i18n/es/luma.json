@@ -23,6 +23,10 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (segundos)"
+  },
   "name.size": {
     "message": "Tamaño",
     "description": "Tamaño del código QR a generar"
@@ -136,7 +140,7 @@
     "description": "Descripción del parámetro 'qrw'"
   },
   "description.enhancement": {
-    "message": "Si no está seguro de cómo escribir el texto de sugerencia, habilite la mejora de entrada de texto de sugerencia.",
+    "message": "Si no está seguro de cómo escribir el texto de sugerencia, habilite la mejora de entrada de texto.",
     "description": "Descripción del parámetro 'qrw'"
   },
   "description.custom": {
@@ -197,23 +201,23 @@
   },
   "placeholder.aspectRatio": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de relación de aspecto"
+    "description": "Placeholder para la entrada de relación de aspecto"
   },
   "placeholder.preset": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de preajuste"
+    "description": "Placeholder para la entrada de preajuste"
   },
   "placeholder.markerShape": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de forma de marcador"
+    "description": "Placeholder para la entrada de forma de marcador"
   },
   "placeholder.rotate": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de rotación"
+    "description": "Placeholder para la entrada de rotación"
   },
   "placeholder.subMarker": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de sub-marcador"
+    "description": "Placeholder para la entrada de sub-marcador"
   },
   "button.generate": {
     "message": "Generar",
@@ -341,7 +345,7 @@
   },
   "message.promptPlaceholder": {
     "message": "Ingrese una frase que describa la imagen a generar, por ejemplo: un gato adorable. Los parámetros adicionales sobrescribirán los parámetros preestablecidos por defecto",
-    "description": "Texto de marcador de posición en el campo de aviso"
+    "description": "Texto de placeholder en el campo de aviso"
   },
   "message.uploadReferencesExceed": {
     "message": "Se pueden subir hasta 5 imágenes",
@@ -368,56 +372,56 @@
     "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus créditos, por favor compre más créditos para continuar",
-    "description": "Mensaje cuando se han agotado los créditos"
+    "message": "Se han agotado sus puntos, por favor compre más puntos para continuar",
+    "description": "Mensaje cuando se han agotado los puntos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje cuando la imagen está siendo generada"
+    "description": "Mensaje que indica que la imagen se está generando"
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje cuando la imagen está siendo generada"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje cuando la imagen está siendo generada"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imágenes de fotogramas iniciales excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de fotogramas iniciales excede el límite"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo no puede exceder 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
+    "message": "¡El tamaño del archivo no puede exceder 10MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "¡El archivo debe ser en formato MP4!",
     "description": "Mensaje de error cuando el archivo no es en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Número de imágenes de fotogramas iniciales excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de fotogramas iniciales excede el límite"
+    "message": "Número de imágenes de la primera fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la primera fotograma excede el límite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Número de imágenes de fotogramas finales excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de fotogramas finales excede el límite"
+    "message": "Número de imágenes de la última fotograma excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de la última fotograma excede el límite"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de fotograma inicial",
-    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma inicial"
+    "message": "Error al subir la imagen de la primera fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida del video"
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de fotograma final",
-    "description": "Mensaje de error cuando falla la subida de la imagen de fotograma final"
+    "message": "Error al subir la imagen de la última fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
@@ -484,19 +488,19 @@
     "description": "Posición para generar códigos QR"
   },
   "position.topLeft": {
-    "message": "Arriba a la izquierda",
+    "message": "Arriba izquierda",
     "description": "Posición para generar códigos QR"
   },
   "position.topRight": {
-    "message": "Arriba a la derecha",
+    "message": "Arriba derecha",
     "description": "Posición para generar códigos QR"
   },
   "position.bottomLeft": {
-    "message": "Abajo a la izquierda",
+    "message": "Abajo izquierda",
     "description": "Posición para generar códigos QR"
   },
   "position.bottomRight": {
-    "message": "Abajo a la derecha",
+    "message": "Abajo derecha",
     "description": "Posición para generar códigos QR"
   },
   "position.top": {
@@ -548,7 +552,7 @@
     "description": "Tipo de contenido para generar códigos QR"
   },
   "type.email": {
-    "message": "Correo electrónico",
+    "message": "Correo",
     "description": "Tipo de contenido para generar códigos QR"
   },
   "type.phone": {

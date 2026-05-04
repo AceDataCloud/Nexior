@@ -1,66 +1,54 @@
 {
   "tab.videoGeneration": {
-    "message": "Generación de Video",
+    "message": "Generación de video",
     "description": "Tab etiqueta: Generación de Video"
   },
   "tab.motionControl": {
-    "message": "Control de Movimiento",
+    "message": "Control de movimiento",
     "description": "Tab etiqueta: Control de Movimiento"
   },
-  "tab.avatar": {
-    "message": "Avatar Digital",
-    "description": "Tab etiqueta: Avatar / AI-Human"
-  },
-  "tab.comingSoon": {
-    "message": "Próximamente",
-    "description": "Etiqueta de tab que indica que algo está por venir"
-  },
-  "tab.avatarComingSoon": {
-    "message": "Avatar Digital (cara + video de síntesis de voz) próximamente, mantente atento",
-    "description": "Tooltip que indica que la pestaña de Avatar está deshabilitada"
-  },
   "name.motionImage": {
-    "message": "Imagen de Referencia",
+    "message": "Imagen de referencia",
     "description": "Entrada de imagen de personaje en Control de Movimiento"
   },
   "name.motionVideo": {
-    "message": "Video de Referencia",
+    "message": "Video de referencia",
     "description": "Entrada de video de referencia en Control de Movimiento"
   },
   "name.motionPrompt": {
-    "message": "Sugerencias Adicionales (opcional)",
+    "message": "Sugerencias adicionales (opcional)",
     "description": "Sugerencias adicionales en Control de Movimiento"
   },
   "name.characterOrientation": {
-    "message": "Orientación del Personaje",
+    "message": "Orientación del personaje",
     "description": "Campo de orientación del personaje"
   },
   "name.orientationImage": {
-    "message": "Seguir Imagen",
-    "description": "Opción de orientación del personaje: seguir imagen"
+    "message": "Imagen de seguimiento",
+    "description": "Opción de orientación del personaje: imagen de seguimiento"
   },
   "name.orientationVideo": {
-    "message": "Seguir Video",
-    "description": "Opción de orientación del personaje: seguir video"
+    "message": "Video de seguimiento",
+    "description": "Opción de orientación del personaje: video de seguimiento"
   },
   "name.keepOriginalSound": {
-    "message": "Conservar Audio Original",
-    "description": "Interruptor para conservar el audio original"
+    "message": "Conservar audio original",
+    "description": "Interruptor de conservar audio original"
   },
   "description.motionImage": {
-    "message": "Sube una imagen de referencia del personaje, los elementos como el personaje y el fondo en el video se basarán en esto",
+    "message": "Sube una imagen de referencia del personaje, los elementos como el personaje y el fondo en el video se basarán en esto.",
     "description": "Descripción de motion image_url"
   },
   "description.motionVideo": {
-    "message": "Sube un video de referencia, los movimientos del personaje en el video se alinearán con este video (MP4 / MOV, ≤1 minuto, ≤1 GB)",
+    "message": "Sube un video de referencia, los movimientos del personaje en el video generado serán consistentes con este video (MP4 / MOV, ≤1 minuto, ≤1 GB)",
     "description": "Descripción de motion video_url"
   },
   "description.motionPrompt": {
-    "message": "Opcional. Puede incluir descripciones positivas y negativas para ayudar a generar el efecto",
+    "message": "Opcional. Puede incluir descripciones positivas y negativas para ayudar a generar el efecto.",
     "description": "Descripción de motion prompt"
   },
   "description.characterOrientation": {
-    "message": "Al seleccionar 'Seguir Video', los movimientos complejos se verán mejor; al seleccionar 'Seguir Imagen', la orientación del personaje será consistente con la imagen de referencia, mejorando el movimiento de la cámara",
+    "message": "Al seleccionar 'Video de seguimiento', los movimientos complejos se representan mejor; al seleccionar 'Imagen de seguimiento', la orientación del personaje será consistente con la imagen de referencia, y el movimiento de la cámara se representará mejor.",
     "description": "Descripción de character_orientation"
   },
   "description.motionMode": {
@@ -68,7 +56,7 @@
     "description": "Descripción de motion mode"
   },
   "description.keepOriginalSound": {
-    "message": "Si está activado, conserva el audio original del video de referencia; si está desactivado, el video de salida no incluirá el audio original",
+    "message": "Si está activado, se conservará el audio original del video de referencia; si está desactivado, el video de salida no incluirá audio original.",
     "description": "Descripción de keep_original_sound"
   },
   "placeholder.motionPrompt": {
@@ -76,15 +64,15 @@
     "description": "Placeholder para motion prompt"
   },
   "button.generateMotion": {
-    "message": "Generar Video de Control de Movimiento",
-    "description": "Botón para generar en Control de Movimiento"
+    "message": "Generar video de control de movimiento",
+    "description": "Botón de generación en Control de Movimiento"
   },
   "message.motionMissingInputs": {
-    "message": "Por favor, sube tanto la imagen del personaje como el video de referencia",
+    "message": "Por favor, sube tanto la imagen del personaje como el video de referencia.",
     "description": "Mensaje cuando faltan entradas en Control de Movimiento"
   },
   "inspiration.title": {
-    "message": "Inspiración y Preajustes",
+    "message": "Inspiración y preajustes",
     "description": "Título del cajón de Inspiración"
   },
   "inspiration.openButton": {
@@ -93,7 +81,7 @@
   },
   "inspiration.removeChip": {
     "message": "Eliminar este preajuste",
-    "description": "Botón para eliminar un preajuste seleccionado en la zona de sugerencias"
+    "description": "Botón aria-label para eliminar un preajuste seleccionado en la zona de sugerencias"
   },
   "inspiration.hint": {
     "message": "Haz clic en la frase para agregarla automáticamente a las sugerencias; haz clic nuevamente para eliminarla.",
@@ -108,24 +96,24 @@
     "description": "Cantidad de preajustes seleccionados"
   },
   "inspiration.clearSelected": {
-    "message": "Eliminar Todo",
+    "message": "Eliminar todo",
     "description": "Botón para eliminar todos los preajustes seleccionados"
   },
   "inspiration.group.cameraMovements": {
-    "message": "Movimientos de Cámara",
-    "description": "Grupo de Inspiración: Movimientos de Cámara"
+    "message": "Movimientos de cámara",
+    "description": "Grupo de Inspiración: Movimientos de cámara"
   },
   "inspiration.group.cameraSpeed": {
-    "message": "Velocidad de Movimiento",
-    "description": "Grupo de Inspiración: Velocidad de Movimiento"
+    "message": "Velocidad de movimiento",
+    "description": "Grupo de Inspiración: Velocidad de movimiento"
   },
   "inspiration.group.shotType": {
-    "message": "Tipo de Toma",
-    "description": "Grupo de Inspiración: Tipo de Toma / Perspectiva"
+    "message": "Tipo de plano",
+    "description": "Grupo de Inspiración: Plano / Ángulo"
   },
   "inspiration.group.light": {
-    "message": "Luz y Sombra",
-    "description": "Grupo de Inspiración: Luz y Sombra"
+    "message": "Luz y sombra",
+    "description": "Grupo de Inspiración: Luz y sombra"
   },
   "inspiration.group.frame": {
     "message": "Composición",
@@ -200,15 +188,15 @@
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "Ángulo bajo",
+    "message": "Toma en ángulo bajo",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "Ángulo alto",
+    "message": "Toma en ángulo alto",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
-    "message": "Profundidad de campo reducida",
+    "message": "Profundidad de campo superficial",
     "description": ""
   },
   "inspiration.chip.shotFront": {
@@ -272,15 +260,15 @@
     "description": ""
   },
   "inspiration.chip.atmosphereHeartwarming": {
-    "message": "Atmósfera reconfortante",
+    "message": "Cálido y reconfortante",
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "Atmósfera vívida",
+    "message": "Vivo",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
-    "message": "Atmósfera colorida",
+    "message": "Colorido",
     "description": ""
   },
   "name.taskId": {
@@ -348,7 +336,7 @@
     "description": "camera_control.config.tilt"
   },
   "name.cc_roll": {
-    "message": "Rotación",
+    "message": "Rodar",
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
@@ -371,13 +359,17 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (en segundos)"
+  },
   "name.createdAt": {
     "message": "Fecha de creación",
     "description": "Fecha y hora de generación del video Kling"
   },
   "name.cfgScale": {
-    "message": "Grado de libertad",
-    "description": "Parámetro de grado de libertad para generar el video (0-1), cuanto mayor sea, más se asemejará a la referencia"
+    "message": "Nivel de libertad",
+    "description": "Parámetro de libertad para generar el video (0-1), cuanto mayor sea el valor, más se asemejará a la referencia"
   },
   "name.generateAudio": {
     "message": "Generar audio sincronizado",
@@ -405,19 +397,19 @@
   },
   "name.duration": {
     "message": "Duración del video",
-    "description": "La duración del video"
+    "description": "Duración del video"
   },
   "name.ingredients": {
-    "message": "Creación de video con múltiples imágenes",
-    "description": "Etiqueta del interruptor para crear videos con múltiples imágenes (sugerencia en inglés: Multi-Image, mantenerlo breve)"
+    "message": "Crear video con múltiples imágenes",
+    "description": "Interruptor/etiqueta para crear video con múltiples imágenes"
   },
   "name.model": {
     "message": "Versión del modelo",
-    "description": "La versión del modelo utilizada para generar el video"
+    "description": "Modelo utilizado para generar el video"
   },
   "name.ratio": {
-    "message": "Proporción del video",
-    "description": "La proporción del video utilizada para generar el video"
+    "message": "Relación de aspecto",
+    "description": "El aspecto de video utilizado para generar el video"
   },
   "name.mode": {
     "message": "Modo de video",
@@ -425,7 +417,7 @@
   },
   "name.effect": {
     "message": "Efecto de video",
-    "description": "Nombre del parámetro de estilo para cambiar entre diferentes versiones o estilos de modelo"
+    "description": "Nombre del parámetro de estilo para alternar entre diferentes versiones o estilos del modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de ingredientes",
@@ -433,14 +425,14 @@
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Nombre del generador de videos Kling"
+    "description": "Nombre del generador de video Kling"
   },
   "description.ingredients": {
     "message": "Si desea subir varias imágenes para generar su propio video, active este botón.",
     "description": "Descripción del parámetro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "En la tarea de creación de video con múltiples imágenes, debe subir varias imágenes.",
+    "message": "En la tarea de crear un video con múltiples imágenes, debe subir varias imágenes.",
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "description.prompt": {
@@ -464,12 +456,12 @@
     "description": "Descripción del parámetro de referencia de carga"
   },
   "description.mode": {
-    "message": "std tiene mejor rendimiento, pro tiene mejor calidad; 4K solo es compatible con v3 / v3-Omni y no se puede usar con control de cámara al mismo tiempo.",
+    "message": "std tiene mejor rendimiento, pro tiene mejor calidad de imagen; 4K solo es compatible con v3 / v3-Omni y no se puede usar con control de cámara al mismo tiempo.",
     "description": "Descripción general del campo de modo"
   },
   "description.mode4kRequiresV3": {
-    "message": "Solo es compatible con kling-v3 / kling-v3-omni",
-    "description": "Razón por la que la opción 4K está deshabilitada (modelo no compatible)"
+    "message": "Solo compatible con kling-v3 / kling-v3-omni",
+    "description": "Razón por la que la opción 4K está deshabilitada (modelo no coincide)"
   },
   "description.mode4kIncompatibleCamera": {
     "message": "El control de cámara está activado y no se puede usar con 4K al mismo tiempo.",
@@ -480,11 +472,11 @@
     "description": "Descripción general del campo de duración"
   },
   "description.durationV3Only": {
-    "message": "Solo es compatible con v3 / v3-Omni",
+    "message": "Solo compatible con v3 / v3-Omni",
     "description": "Razón por la que la opción de duración está deshabilitada"
   },
   "description.generateAudio": {
-    "message": "Sintetizar efectos de sonido mientras se genera el video. Solo es compatible con kling-v3 / kling-v3-omni / kling-v2-6 (modo pro).",
+    "message": "Sintetizar efectos de sonido mientras se genera el video. Solo compatible con kling-v3 / kling-v3-omni / kling-v2-6 (modo pro).",
     "description": "Descripción del interruptor de efectos de sonido (habilitado)"
   },
   "description.generateAudioUnsupported": {
@@ -492,7 +484,7 @@
     "description": "Descripción del interruptor de efectos de sonido (deshabilitado)"
   },
   "description.cameraControl": {
-    "message": "Controlar la dirección del movimiento de la cámara. Seleccionar 'Personalizado' permite ajustar en 6 dimensiones, cada valor entre [-1, 1].",
+    "message": "Controlar la dirección del movimiento de la cámara. Seleccione 'Personalizado' para ajustar en 6 dimensiones, cada valor entre [-1, 1].",
     "description": "Descripción del control de cámara"
   },
   "description.cameraControlDisabled4k": {
@@ -537,7 +529,7 @@
   },
   "placeholder.cameraType": {
     "message": "No usar",
-    "description": "Marcador de posición para la selección del tipo de cámara"
+    "description": "Marcador de posición para la selección de tipo de cámara"
   },
   "placeholder.preset": {
     "message": "Seleccione...",
@@ -557,15 +549,15 @@
   },
   "button.precise": {
     "message": "Preciso",
-    "description": "Texto del botón para generar un video Kling"
+    "description": "Texto del botón para generar el video Kling"
   },
   "button.creative": {
     "message": "Creativo",
-    "description": "Texto del botón para generar videos Kling"
+    "description": "Texto del botón para generar el video Kling"
   },
   "button.generate": {
     "message": "Generar",
-    "description": "Texto del botón para generar videos Kling"
+    "description": "Texto del botón para generar el video Kling"
   },
   "button.extend": {
     "message": "Extender video",
@@ -593,19 +585,19 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagen subida con éxito",
-    "description": "Mensaje de éxito cuando se sube una imagen con éxito"
+    "description": "Mensaje de éxito al subir una imagen"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando falla la subida de la imagen"
+    "description": "Mensaje de error cuando la subida de la imagen falla"
   },
   "message.endImageRequiresStart": {
-    "message": "Por favor, suba primero la imagen de inicio antes de usar la imagen de final",
-    "description": "Mensaje de error cuando el usuario solo ha subido la imagen de final sin la de inicio"
+    "message": "Por favor, suba primero la imagen de inicio antes de usar la imagen de fin",
+    "description": "Mensaje de error cuando el usuario solo ha subido la imagen de fin sin la de inicio"
   },
   "message.endImageNotSupported": {
-    "message": "La imagen de final no es compatible con el modelo/modo/duración actual, ajuste la configuración (requisitos comunes: modo pro, duración 5s).",
-    "description": "Mensaje cuando la imagen de final no es compatible con el modelo actual"
+    "message": "La imagen de fin no es compatible con el modelo/modo/duración actual, ajuste la configuración primero (requisitos comunes: modo pro, duración 5s).",
+    "description": "Mensaje cuando la imagen de fin no es compatible con el modelo actual"
   },
   "message.featureNotSupportedTitle": {
     "message": "Confirmación requerida",
@@ -617,7 +609,7 @@
   },
   "message.featureRemovedNotice": {
     "message": "Se han limpiado las configuraciones no compatibles: {fields}",
-    "description": "Notificación toast después de que el usuario confirma el cambio"
+    "description": "Notificación toast al confirmar el cambio por parte del usuario"
   },
   "button.confirmContinue": {
     "message": "Continuar cambio",
@@ -637,35 +629,35 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
+    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
+    "message": "Se han agotado sus puntos, por favor compre más puntos para continuar usando",
     "description": "Mensaje cuando se han agotado los puntos"
   },
   "message.generating": {
     "message": "Generando...",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.downloadVideo": {
     "message": "Descargar este video",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.extendVideo": {
     "message": "Continuar generando este video",
-    "description": "Mensaje mientras se está generando la imagen"
+    "description": "Mensaje mientras se genera la imagen"
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando falla la generación de la imagen"
+    "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
     "message": "Se ha excedido el límite de imágenes de inicio",
     "description": "Mensaje de error cuando se excede el límite de imágenes de inicio"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "¡El tamaño del archivo subido no puede exceder 10MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10MB"
+    "message": "¡El tamaño del archivo subido no puede exceder 10 MB!",
+    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10 MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "¡El archivo subido debe ser en formato MP4!",
@@ -676,24 +668,24 @@
     "description": "Mensaje de error cuando se excede el límite de imágenes de inicio"
   },
   "message.uploadEndImageExceed": {
-    "message": "Se ha excedido el límite de imágenes de final",
-    "description": "Mensaje de error cuando se excede el límite de imágenes de final"
+    "message": "Se ha excedido el límite de imágenes de fin",
+    "description": "Mensaje de error cuando se excede el límite de imágenes de fin"
   },
   "message.uploadStartImageError": {
     "message": "Error al subir la imagen de inicio",
-    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
+    "description": "Mensaje de error al fallar al subir la imagen de inicio"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida de la imagen de inicio"
+    "description": "Mensaje de error al fallar al subir la imagen de inicio"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de final",
-    "description": "Mensaje de error cuando falla la subida de la imagen de final"
+    "message": "Error al subir la imagen de fin",
+    "description": "Mensaje de error al fallar al subir la imagen de fin"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
-    "description": "Mensaje de error cuando falla la subida del documento"
+    "description": "Mensaje de error al fallar al subir el documento"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
