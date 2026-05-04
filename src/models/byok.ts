@@ -45,6 +45,13 @@ export interface IBYOKCredentialUpdatePayload {
   is_active?: boolean;
 }
 
+export interface IBYOKCredentialTestPayload {
+  id?: string;
+  provider?: IBYOKProvider;
+  api_key?: string;
+  base_url?: string;
+}
+
 export interface IBYOKListResponse {
   items: IBYOKCredential[];
 }
@@ -55,6 +62,7 @@ export interface IBYOKProvidersResponse {
 
 export interface IBYOKTestResponse {
   ok: boolean;
+  endpoint?: string;
   status?: number;
   message?: string;
 }

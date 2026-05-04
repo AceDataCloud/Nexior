@@ -29,8 +29,12 @@
           type="password"
           autocomplete="new-password"
           show-password
-          :placeholder="credential ? $t('byok.field.apiKeyEditPlaceholder') : $t('byok.field.apiKeyPlaceholder')"
+          :placeholder="apiKeyPlaceholder"
         />
+        <p v-if="credential?.api_key_masked" class="current-key">
+          <code>{{ credential.api_key_masked }}</code>
+          <span>{{ $t('byok.field.apiKeyEditPlaceholder') }}</span>
+        </p>
       </el-form-item>
 
       <el-form-item :label="$t('byok.field.baseUrl')" prop="base_url">
@@ -73,8 +77,8 @@
 
     <template #footer>
       <el-button @click="onClose(false)">{{ $t('byok.button.cancel') }}</el-button>
-      <el-button :loading="testing" :disabled="saving || !canTest" @click="onSaveAndTest">
-        {{ $t('byok.button.testConnection') }}
+      <el-button :loading="testing" :disabled="saving || !canTest" @click="onTest">
+        {{ $t('byok.button.test') }}
       </el-button>
       <el-button type="primary" :loading="saving" @click="onSubmit">
         {{ $t('byok.button.save') }}
@@ -98,7 +102,13 @@ import {
   type FormRules
 } from 'element-plus';
 import { byokCredentialOperator } from '@/operators';
-import type { IBYOKCredential, IBYOKCredentialCreatePayload, IBYOKProvider, IBYOKProviderInfo } from '@/models';
+import type {
+  IBYOKCredential,
+  IBYOKCredentialCreatePayload,
+  IBYOKCredentialTestPayload,
+  IBYOKProvider,
+  IBYOKProviderInfo
+} from '@/models';
 
 interface ITestResult {
   ok: boolean;
@@ -160,12 +170,18 @@ export default defineComponent({
       const info = this.providers.find((p) => p.id === provider);
       return info?.default_base_url ?? this.$t('byok.field.baseUrlPlaceholder');
     },
+    apiKeyPlaceholder(): string {
+      if (!this.credential) return this.$t('byok.field.apiKeyPlaceholder');
+      if (this.credential.api_key_masked) {
+        return `${this.credential.api_key_masked} · ${this.$t('byok.field.apiKeyEditPlaceholder')}`;
+      }
+      return this.$t('byok.field.apiKeyEditPlaceholder');
+    },
     /**
      * On edit, the row already has an api_key on the server, so the
      * test button can run even when the api_key field is left blank
-     * (= "keep existing"). On create, we need a non-empty api_key
-     * because the row doesn't exist yet and the test button needs to
-     * save it first.
+     * (= "keep existing"). On create, the draft test payload needs a
+     * non-empty api_key because no saved row exists yet.
      */
     canTest(): boolean {
       if (!this.token) return false;
@@ -213,8 +229,7 @@ export default defineComponent({
     },
     /**
      * Persist the row (create or update). Returns the row's id on
-     * success so the caller can chain `test`. Returns null on
-     * validation / network failure (caller surfaces the error toast).
+     * success. Returns null on validation / network failure.
      */
     async persist(options: { silent?: boolean } = {}): Promise<string | null> {
       const formRef = this.$refs.formRef as FormInstance | undefined;
@@ -267,29 +282,45 @@ export default defineComponent({
       const id = await this.persist();
       if (id) this.$emit('saved');
     },
-    async onSaveAndTest() {
-      this.testResult = null;
-      // Save first so the test runs against exactly the config the
-      // user entered (api_key + base_url + provider) and reuses the
-      // existing `POST /aichat2/credentials {action: 'test'}` endpoint
-      // — there's no anonymous dry-run endpoint server-side.
-      const id = await this.persist({ silent: true });
-      if (!id) return;
+    async buildTestPayload(): Promise<IBYOKCredentialTestPayload | null> {
+      const formRef = this.$refs.formRef as FormInstance | undefined;
+      if (formRef) {
+        try {
+          await formRef.validate();
+        } catch {
+          return null;
+        }
+      }
+      const provider = this.form.provider;
+      if (!this.token || !provider) return null;
+      const apiKey = this.form.api_key.trim();
+      if (!this.credential && !apiKey) return null;
+      return {
+        ...(this.credential ? { id: this.credential.id } : {}),
+        provider,
+        ...(apiKey ? { api_key: apiKey } : {}),
+        base_url: this.form.base_url.trim()
+      };
+    },
+    resolveTestEndpoint(): string {
       const provider = this.providers.find((p) => p.id === this.form.provider);
       const baseUrl = (this.form.base_url || provider?.default_base_url || '').replace(/\/+$/, '');
-      const endpoint = `${baseUrl}/models`;
+      return `${baseUrl}/models`;
+    },
+    async onTest() {
+      this.testResult = null;
+      const payload = await this.buildTestPayload();
+      if (!payload) return;
+      const endpoint = this.resolveTestEndpoint();
       this.testing = true;
       try {
-        const { data } = await byokCredentialOperator.test(id, { token: this.token });
+        const { data } = await byokCredentialOperator.test(payload, { token: this.token });
         this.testResult = {
           ok: !!data?.ok,
-          endpoint,
+          endpoint: data?.endpoint || endpoint,
           status: data?.status,
           message: data?.message
         };
-        // The list view re-pulls credentials via the parent `saved`
-        // emit — `last_used_at` updates after a successful test.
-        this.$emit('saved');
       } catch (err) {
         const status = (err as { response?: { status?: number } })?.response?.status;
         const message =
@@ -315,6 +346,20 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
   line-height: 1.5;
   margin: 4px 0 0;
+}
+
+.current-key {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+
+  code {
+    color: var(--el-text-color-primary);
+  }
 }
 
 .w-full {
