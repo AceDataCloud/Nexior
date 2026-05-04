@@ -5,7 +5,7 @@
   },
   "name.translation": {
     "message": "Traduzione automatica",
-    "description": "Traduzione automatica dei video Veo"
+    "description": "Traduzione automatica per i video Veo"
   },
   "name.modePro": {
     "message": "Alta qualità",
@@ -33,7 +33,7 @@
   },
   "name.startEndImage": {
     "message": "Immagini di riferimento inizio/fine",
-    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (consigliato tradurre come 'Start/End Frames', mantenere breve per evitare di coprire il pulsante)"
+    "description": "Etichetta del campo del modulo: immagini di riferimento inizio/fine (consigliato tradurre in 'Start/End Frames', mantenere breve per evitare di coprire il pulsante)"
   },
   "name.action": {
     "message": "Azione",
@@ -64,11 +64,11 @@
     "description": "Descrizione del parametro 'translation'"
   },
   "description.imageUrl": {
-    "message": "Nella creazione di video con più immagini, è necessario caricare più immagini.",
+    "message": "Nell'attività di creazione video con più immagini, è necessario caricare più immagini.",
     "description": "Descrizione del parametro 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare video Veo",
+    "message": "Parole chiave per generare il video Veo",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.uploadStartEndImage": {
@@ -105,19 +105,19 @@
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Testo del pulsante per generare video Veo"
+    "description": "Testo del pulsante per generare il video Veo"
   },
   "button.action1": {
     "message": "Video da testo",
-    "description": "Testo del pulsante per generare video Veo"
+    "description": "Testo del pulsante per generare il video Veo"
   },
   "button.action2": {
     "message": "Video da immagine",
-    "description": "Testo del pulsante per generare video Veo"
+    "description": "Testo del pulsante per generare il video Veo"
   },
   "button.action3": {
     "message": "Ottieni 1080p",
-    "description": "Testo del pulsante per generare video Veo"
+    "description": "Testo del pulsante per generare il video Veo"
   },
   "button.download": {
     "message": "Scarica video",
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Carica immagine",
-    "description": "Testo del pulsante per caricare l'immagine (semplificare in 'Carica')"
+    "description": "Testo del pulsante per caricare l'immagine (semplificare in 'Upload')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
@@ -157,11 +157,11 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio dell'attività fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando l'avvio dell'attività di disegno fallisce"
+    "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.imageRequired": {
     "message": "Carica almeno un'immagine di riferimento prima di avviare l'attività di video da immagine",
-    "description": "Messaggio quando non è stata caricata alcuna immagine in modalità image2video"
+    "description": "Suggerimento quando non è stata caricata alcuna immagine in modalità image2video"
   },
   "message.usedUp": {
     "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
@@ -184,20 +184,20 @@
     "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file caricato non può superare i 10 MB!",
-    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
+    "message": "La dimensione del file non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Il numero di immagini della prima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
+    "message": "Il numero di immagini della prima cornice supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Il numero di immagini dell'ultima cornice caricate supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
+    "message": "Il numero di immagini dell'ultima cornice supera il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
   },
   "message.uploadStartImageError": {
     "message": "Caricamento dell'immagine della prima cornice fallito",
@@ -222,5 +222,65 @@
   "message.noTasks": {
     "message": "Nessun compito storico, fai clic a sinistra per generare un video",
     "description": "Messaggio quando non ci sono compiti"
+  },
+  "name.upsampleAction": {
+    "message": "Obiettivo di upsampling",
+    "description": "Formato obiettivo per /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Movimento della telecamera",
+    "description": "Tipo di movimento della telecamera per /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Maschera dell'area",
+    "description": "Maschera dell'immagine per /veo/objects (pixel bianchi = area operativa)"
+  },
+  "name.videoId": {
+    "message": "ID video",
+    "description": "ID del video sorgente (da data[].id della generazione precedente)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL dell'immagine maschera o JPEG codificato in base64",
+    "description": "Segnaposto per il campo di input image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Incolla l'ID video o fai clic sul pulsante di operazione nella lista a destra per riempirlo automaticamente",
+    "description": "Segnaposto per il campo di input video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Video di fusione multipla",
+    "description": "ingredients2video — Fusione di 1-3 immagini per generare una nuova scena"
+  },
+  "button.actionUpsample": {
+    "message": "Upsampling / Anteprima GIF",
+    "description": "/veo/upsample — Upsampling a 1080p/4K o esportazione GIF"
+  },
+  "button.actionExtend": {
+    "message": "Estendi video",
+    "description": "/veo/extend — Estendi la durata del video già generato"
+  },
+  "button.actionReshoot": {
+    "message": "Cambia angolazione e rigira",
+    "description": "/veo/reshoot — Rigenerazione con un diverso movimento della telecamera"
+  },
+  "button.actionObjectInsert": {
+    "message": "Aggiungi oggetto",
+    "description": "/veo/objects insert — Aggiungi oggetti nel video"
+  },
+  "button.actionObjectRemove": {
+    "message": "Rimuovi oggetto",
+    "description": "/veo/objects remove — Rimuovi oggetti dal video tramite maschera"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Upsampling 1080P",
+    "description": "Pulsante di operazione Anteprima — Upsampling a 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Upsampling 4K",
+    "description": "Pulsante di operazione Anteprima — Upsampling a 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Esporta GIF",
+    "description": "Pulsante di operazione Anteprima — Converti in anteprima GIF"
   }
 }

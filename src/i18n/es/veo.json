@@ -64,7 +64,7 @@
     "description": "Descripción del parámetro 'translation'"
   },
   "description.imageUrl": {
-    "message": "En la tarea de creación de video con múltiples imágenes, se deben subir varias imágenes.",
+    "message": "En la tarea de crear un video con múltiples imágenes, se deben subir varias imágenes.",
     "description": "Descripción del parámetro 'imageUrl'"
   },
   "description.prompt": {
@@ -76,12 +76,12 @@
     "description": "Descripción del parámetro 'image_url'"
   },
   "status.pending": {
-    "message": "Pendiente",
+    "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
     "message": "En proceso",
-    "description": "Estado de espera de la tarea"
+    "description": "Estado de procesamiento de la tarea"
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
@@ -145,7 +145,7 @@
   },
   "message.uploadReferencesError": {
     "message": "Error al subir imágenes, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error al fallar la subida de imágenes"
+    "description": "Mensaje de error cuando falla la subida de imágenes"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -157,7 +157,7 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
+    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
   },
   "message.imageRequired": {
     "message": "Por favor suba al menos una imagen de referencia antes de iniciar la tarea de video de imagen",
@@ -185,42 +185,102 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "¡El tamaño del archivo no puede exceder 10 MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo excede 10 MB"
+    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10 MB."
   },
   "message.uploadVideoTypeFailed": {
-    "message": "¡El archivo debe estar en formato MP4!",
-    "description": "Mensaje de error cuando el archivo no está en formato MP4"
+    "message": "¡El archivo subido debe ser en formato MP4!",
+    "description": "Mensaje de error cuando el archivo subido no es en formato MP4."
   },
   "message.uploadStartEndImageExceed": {
-    "message": "La cantidad de imágenes de la primera fotograma excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de la primera fotograma excede el límite"
+    "message": "Número de imágenes de inicio excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes de inicio subidas excede el límite."
   },
   "message.uploadEndImageExceed": {
-    "message": "La cantidad de imágenes de la última fotograma excede el límite",
-    "description": "Mensaje de error cuando la cantidad de imágenes de la última fotograma excede el límite"
+    "message": "Número de imágenes finales excede el límite",
+    "description": "Mensaje de error cuando el número de imágenes finales subidas excede el límite."
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de la primera fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
+    "message": "Error al subir la imagen de inicio",
+    "description": "Mensaje de error cuando falla la subida de la imagen de inicio."
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando falla la subida del video"
+    "description": "Mensaje de error cuando falla la subida del video."
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de la última fotograma",
-    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
+    "message": "Error al subir la imagen final",
+    "description": "Mensaje de error cuando falla la subida de la imagen final."
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
-    "description": "Mensaje de error cuando falla la subida del documento"
+    "description": "Mensaje de error cuando falla la subida del documento."
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
-    "description": "Mensaje cuando no hay operaciones disponibles"
+    "description": "Mensaje cuando no hay operaciones disponibles."
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en el botón de generar video a la izquierda",
-    "description": "Mensaje cuando no hay tareas"
+    "message": "No hay tareas históricas, haga clic en el botón de generar video a la izquierda",
+    "description": "Mensaje cuando no hay tareas."
+  },
+  "name.upsampleAction": {
+    "message": "Objetivo de aumento de resolución",
+    "description": "Formato objetivo para /veo/upsample (1080p/4k/gif)."
+  },
+  "name.motionType": {
+    "message": "Movimiento de cámara",
+    "description": "Tipo de movimiento de cámara para /veo/reshoot."
+  },
+  "name.imageMask": {
+    "message": "Máscara de área",
+    "description": "Máscara de imagen para /veo/objects (píxeles blancos = área de operación)."
+  },
+  "name.videoId": {
+    "message": "ID del video",
+    "description": "ID del video fuente (proveniente de la tarea de generación anterior data[].id)."
+  },
+  "placeholder.imageMask": {
+    "message": "URL de la imagen de máscara o JPEG codificado en base64",
+    "description": "Placeholder para el campo de entrada de image_mask."
+  },
+  "placeholder.videoId": {
+    "message": "Pegue el ID del video o haga clic en el botón de operación en la lista de tareas a la derecha para autocompletar",
+    "description": "Placeholder para el campo de entrada de video_id."
+  },
+  "button.actionIngredients": {
+    "message": "Fusionar video de múltiples imágenes",
+    "description": "ingredients2video — Fusionar 1-3 imágenes para generar una nueva escena."
+  },
+  "button.actionUpsample": {
+    "message": "Aumentar resolución / Vista previa de GIF",
+    "description": "/veo/upsample — Aumentar a 1080p/4K o exportar GIF."
+  },
+  "button.actionExtend": {
+    "message": "Extender video",
+    "description": "/veo/extend — Ampliar la duración del video generado."
+  },
+  "button.actionReshoot": {
+    "message": "Regrabación con nuevo ángulo",
+    "description": "/veo/reshoot — Regenerar con un nuevo movimiento de cámara para el mismo contenido."
+  },
+  "button.actionObjectInsert": {
+    "message": "Agregar objeto",
+    "description": "/veo/objects insert — Agregar un objeto al video."
+  },
+  "button.actionObjectRemove": {
+    "message": "Eliminar objeto",
+    "description": "/veo/objects remove — Eliminar un objeto del video mediante una máscara."
+  },
+  "button.actionUpsample1080p": {
+    "message": "Aumentar a 1080P",
+    "description": "Botón de operación de vista previa — Aumentar la resolución a 1080P."
+  },
+  "button.actionUpsample4k": {
+    "message": "Aumentar a 4K",
+    "description": "Botón de operación de vista previa — Aumentar la resolución a 4K."
+  },
+  "button.actionUpsampleGif": {
+    "message": "Exportar GIF",
+    "description": "Botón de operación de vista previa — Convertir a vista previa de GIF."
   }
 }
