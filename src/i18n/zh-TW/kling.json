@@ -91,6 +91,10 @@
     "message": "靈感",
     "description": "打開 Inspiration 抽屜的按鈕"
   },
+  "inspiration.removeChip": {
+    "message": "移除此預設",
+    "description": "移除提示詞區中已選預設的按鈕 aria-label"
+  },
   "inspiration.hint": {
     "message": "點擊短語自動追加到提示詞；再次點擊可移除。",
     "description": "Inspiration 抽屜頂部的使用說明"
@@ -184,7 +188,7 @@
     "description": ""
   },
   "inspiration.chip.shotClose": {
-    "message": "近景特寫",
+    "message": "特寫",
     "description": ""
   },
   "inspiration.chip.shotMedium": {
@@ -204,7 +208,7 @@
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
-    "message": "浅景深",
+    "message": "淺景深",
     "description": ""
   },
   "inspiration.chip.shotFront": {
@@ -400,8 +404,8 @@
     "description": "內容輸入的提示"
   },
   "name.duration": {
-    "message": "視頻時長",
-    "description": "視頻的時長"
+    "message": "影片長度",
+    "description": "影片的時長"
   },
   "name.ingredients": {
     "message": "多圖創建視頻",
@@ -413,11 +417,11 @@
   },
   "name.ratio": {
     "message": "視頻比例",
-    "description": "要生成視頻所采用的視頻比例"
+    "description": "要生成視頻所採用的視頻比例"
   },
   "name.mode": {
     "message": "視頻模式",
-    "description": "要生成視頻所采用的模式"
+    "description": "要生成視頻所採用的模式"
   },
   "name.effect": {
     "message": "視頻效果",
@@ -425,7 +429,7 @@
   },
   "name.ingredientsModel": {
     "message": "成分模型",
-    "description": "要生成視頻所采用的模型版本"
+    "description": "要生成視頻所採用的模型版本"
   },
   "name.klingBot": {
     "message": "Kling Bot",
@@ -436,7 +440,7 @@
     "description": "參數'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "在多圖創建視頻的任務中，必須上傳多張圖片。",
+    "message": "在多圖創建視頻的任務中，它必須上傳多張圖片。",
     "description": "參數'imageUrl'的描述"
   },
   "description.prompt": {
@@ -456,7 +460,7 @@
     "description": "上傳參考參數的描述"
   },
   "description.cfgScale": {
-    "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強。",
+    "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強，",
     "description": "上傳參考參數的描述"
   },
   "description.mode": {
@@ -564,8 +568,8 @@
     "description": "生成Kling視頻的按鈕文本"
   },
   "button.extend": {
-    "message": "擴展影片",
-    "description": "擴展影片按鈕文本"
+    "message": "擴展視頻",
+    "description": "擴展視頻按鈕文本"
   },
   "button.download": {
     "message": "下載視頻",
@@ -598,6 +602,30 @@
   "message.endImageRequiresStart": {
     "message": "使用尾幀參考圖前，請先上傳首幀參考圖",
     "description": "用戶只上傳了尾幀沒有首幀時的錯誤提示"
+  },
+  "message.endImageNotSupported": {
+    "message": "尾幀參考圖不被當前模型/模式/時長支持，請先調整配置（常見要求：模式 pro、時長 5s）。",
+    "description": "上傳尾幀時當前模型不支持的提示"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要確認",
+    "description": "切換參數時會丟失現有設置的確認彈窗標題"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "當前選擇不支持以下已啟用的設置：{fields}。繼續將清理這些設置。",
+    "description": "切換 model/mode/duration 後會丟失募集設置的提示文案，{fields} 會被佔位符替換為實際字段名"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的設置：{fields}",
+    "description": "用戶確認切換後的 toast 提醒"
+  },
+  "button.confirmContinue": {
+    "message": "繼續切換",
+    "description": "feature 丟失確認彈窗的主按鈕"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "feature 丟失確認彈窗的取消按鈕"
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
@@ -649,7 +677,7 @@
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
+    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
     "message": "上傳首幀圖片失敗",
@@ -657,7 +685,7 @@
   },
   "message.uploadVideoError": {
     "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",

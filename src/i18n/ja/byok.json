@@ -16,11 +16,11 @@
     "description": ""
   },
   "description.list": {
-    "message": "自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用して、プラットフォームのアカウントプールを置き換えます。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流のサービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
+    "message": "自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用して、プラットフォームアカウントプールの代わりにします。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流サービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
     "description": ""
   },
   "field.provider": {
-    "message": "サービスプロバイダー",
+    "message": "プロバイダー",
     "description": ""
   },
   "field.label": {
@@ -48,7 +48,7 @@
     "description": ""
   },
   "field.baseUrlPlaceholder": {
-    "message": "空白のままにするとサービスプロバイダーのデフォルトアドレスを使用します",
+    "message": "空白のままにするとプロバイダーのデフォルトアドレスが使用されます",
     "description": ""
   },
   "field.isActive": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "この API キーを削除してもよろしいですか？以降の {provider} モデルの対話はプラットフォームのデフォルトに戻ります。",
+    "message": "この API キーを削除してもよろしいですか？以降 {provider} モデルの対話はプラットフォームのデフォルトに戻ります。",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -140,32 +140,32 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなど）を指定します。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
+    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなどに使用）。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
     "description": ""
   },
   "badge.active": {
-    "message": "あなたの {provider} キーを使用中",
+    "message": "{provider} API キーを使用中",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "この対話ではあなた自身の {provider} API キーを使用しており、費用は {provider} アカウントで精算され、プラットフォームの残高は減少しません。",
+    "message": "現在の対話はあなたの {provider} API キーを使用しており、費用は {provider} アカウントで決済され、プラットフォームの残高は減少しません。",
     "description": ""
   },
   "badge.manage": {
-    "message": "カスタム API キーを管理するにはクリックしてください",
-    "description": "チャットページの BYOK バッジをクリックした後のヒント：API キータブの設定ダイアログを開くためにクリックします。"
+    "message": "クリックすると API キー設定が開きます",
+    "description": "チャットページの BYOK バッジをクリックした後のヒント：設定ダイアログの API キータブを開くためにクリックします。"
   },
   "button.testConnection": {
-    "message": "保存して接続をテスト",
-    "description": "新規/編集ダイアログ内のボタン——資格情報を保存した後、上流の /models を呼び出して接続性を確認します。"
+    "message": "テスト",
+    "description": "新規/編集ダイアログ内のボタン——現在のフォーム設定のみをテストし、資格情報は保存しません。"
   },
   "test.success": {
-    "message": "接続性テスト成功",
-    "description": "接続性テスト結果セクションの成功タイトル。"
+    "message": "接続テスト成功",
+    "description": "接続テスト結果セクションの成功タイトル。"
   },
   "test.failure": {
-    "message": "接続性テスト失敗",
-    "description": "接続性テスト結果セクションの失敗タイトル。"
+    "message": "接続テスト失敗",
+    "description": "接続テスト結果セクションの失敗タイトル。"
   },
   "test.endpoint": {
     "message": "リクエストアドレス",
@@ -176,7 +176,7 @@
     "description": "テスト結果詳細の HTTP ステータスコードラベル。"
   },
   "test.message": {
-    "message": "上流の応答",
+    "message": "上流応答",
     "description": "テスト結果詳細の上流エラー/メッセージテキストラベル。"
   },
   "providerDesc.openai": {

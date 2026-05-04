@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, ZhiPu) umesto platformskog naloga. Nakon konfiguracije, zahtevi za razgovor modela će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformske kredite; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
+    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, ZhiPu) umesto platformskog naloga. Nakon konfiguracije, zahtevi za razgovor modela će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformski kredit; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
     "description": ""
   },
   "field.provider": {
@@ -28,7 +28,7 @@
     "description": ""
   },
   "field.labelPlaceholder": {
-    "message": "npr. \"Moj radni broj\" (opciono)",
+    "message": "npr. \"Moj radni broj\" (opcionalno)",
     "description": ""
   },
   "field.apiKey": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa modelom {provider} će se vratiti na podrazumevanu uslugu platforme.",
+    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji zahtevi za razgovor modela {provider} će se vratiti na podrazumevanu platformsku uslugu.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -120,15 +120,15 @@
     "description": ""
   },
   "message.testFailed": {
-    "message": "Testiranje nije uspelo: {message}",
+    "message": "Test je neuspeo: {message}",
     "description": ""
   },
   "message.loadFailed": {
-    "message": "Učitavanje kredencijala nije uspelo.",
+    "message": "Učitavanje kredencijala je neuspešno.",
     "description": ""
   },
   "message.saveFailed": {
-    "message": "Čuvanje kredencijala nije uspelo.",
+    "message": "Čuvanje kredencijala je neuspešno.",
     "description": ""
   },
   "message.empty": {
@@ -140,32 +140,32 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "Opcionalno. Prilagođena adresa usluge (za OpenRouter, samostalne reverse proxy, korporativne prolaze itd.). Dozvoljen je samo HTTPS, ne može se usmeriti na unutrašnju mrežu/loopback adresu.",
+    "message": "Opcionalno. Prilagođena adresa usluge (za OpenRouter, samostalne reverse proxy, korporativne prolaze itd.). Dozvoljen je samo HTTPS, ne može se usmeriti na interne/loopback adrese.",
     "description": ""
   },
   "badge.active": {
-    "message": "Koristite svoj {provider} ključ",
+    "message": "Koristi se prilagođeni {provider} API ključ",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Ovaj razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} nalogu, ne umanjujući saldo platforme.",
+    "message": "Trenutni razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} nalogu, ne umanjujući saldo platforme.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Kliknite da upravljate svojim prilagođenim API ključem",
-    "description": "Poruka nakon klika na BYOK oznaku na stranici za chat: Kliknite da otvorite karticu API ključeva u dijalogu za podešavanje."
+    "message": "Kliknite da otvorite podešavanja API ključeva",
+    "description": "Poruka nakon klika na BYOK oznaku na stranici za razgovor: kliknite da otvorite karticu sa podešavanjima API ključeva."
   },
   "button.testConnection": {
-    "message": "Sačuvaj i testiraj vezu",
-    "description": "Dugme u dijalogu za dodavanje/izmenu — prvo sačuvajte kredencijale, a zatim pozovite uslugu /models da biste proverili vezu."
+    "message": "Testiraj",
+    "description": "Dugme u novom/izmenjenom dijalogu - samo testira trenutnu konfiguraciju forme, ne čuva kredencijale."
   },
   "test.success": {
-    "message": "Testiranje veze uspešno",
-    "description": "Naslov uspeha u rezultatu testa veze."
+    "message": "Test povezanosti uspešan",
+    "description": "Naslov uspeha u rezultatu testa povezanosti."
   },
   "test.failure": {
-    "message": "Testiranje veze nije uspelo",
-    "description": "Naslov neuspeha u rezultatu testa veze."
+    "message": "Test povezanosti neuspešan",
+    "description": "Naslov neuspeha u rezultatu testa povezanosti."
   },
   "test.endpoint": {
     "message": "Adresa zahteva",
@@ -177,7 +177,7 @@
   },
   "test.message": {
     "message": "Odgovor usluge",
-    "description": "Oznaka za grešku/poruku u detaljima rezultata testa."
+    "description": "Oznaka za tekst greške/poruke usluge u detaljima rezultata testa."
   },
   "providerDesc.openai": {
     "message": "Zameni razgovore sa ChatGPT (GPT-4 / GPT-4o / o1 / o3 itd.) na ovoj platformi.",

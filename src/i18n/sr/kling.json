@@ -13,11 +13,11 @@
   },
   "tab.comingSoon": {
     "message": "Uskoro",
-    "description": "Oznaka za tab koji dolazi"
+    "description": "Oznaka za tab koji dolazi uskoro"
   },
   "tab.avatarComingSoon": {
-    "message": "Avatar (lice + sinhronizacija glasa) uskoro dolazi, budite u toku",
-    "description": "Tooltip objašnjenje za onemogućeni Avatar Tab"
+    "message": "Avatar (lice + sinhronizacija glasa) uskoro dolazi, pratite nas",
+    "description": "Tooltip objašnjenje za onemogućen Avatar Tab"
   },
   "name.motionImage": {
     "message": "Referentna slika",
@@ -36,19 +36,19 @@
     "description": "Polje za orijentaciju lika"
   },
   "name.orientationImage": {
-    "message": "Pratite sliku",
-    "description": "Opcija orijentacije lika: Pratite sliku"
+    "message": "Pratiti sliku",
+    "description": "Opcija orijentacije lika: pratiti sliku"
   },
   "name.orientationVideo": {
-    "message": "Pratite video",
-    "description": "Opcija orijentacije lika: Pratite video"
+    "message": "Pratiti video",
+    "description": "Opcija orijentacije lika: pratiti video"
   },
   "name.keepOriginalSound": {
     "message": "Zadrži originalni zvuk",
     "description": "Prekidač za keep_original_sound"
   },
   "description.motionImage": {
-    "message": "Otpremite referentnu sliku, likovi, pozadine i drugi elementi u videu će se oslanjati na ovo",
+    "message": "Otpremite referentnu sliku, likovi, pozadine i drugi elementi u videu će se oslanjati na ovu sliku",
     "description": "Objašnjenje za motion image_url"
   },
   "description.motionVideo": {
@@ -56,15 +56,15 @@
     "description": "Objašnjenje za motion video_url"
   },
   "description.motionPrompt": {
-    "message": "Opcionalno. Može sadržati pozitivne i negativne opise za pomoć u generisanju efekata",
+    "message": "Opcionalno. Može sadržati pozitivne i negativne opise, pomaže u generisanju efekata",
     "description": "Objašnjenje za motion prompt"
   },
   "description.characterOrientation": {
-    "message": "Ako izaberete 'Pratite video', složeni pokreti će biti bolji; ako izaberete 'Pratite sliku', orijentacija lika će biti usklađena sa referentnom slikom, a pokreti kamere će biti bolji",
+    "message": "Ako izaberete 'Pratiti video', složeni pokreti će biti bolji; ako izaberete 'Pratiti sliku', orijentacija lika će biti usklađena sa referentnom slikom, a pokreti kamere će biti bolji",
     "description": "Objašnjenje za character_orientation"
   },
   "description.motionMode": {
-    "message": "std prioritet na performansama, pro prioritet na kvalitetu",
+    "message": "std prioritet na performanse, pro prioritet na kvalitetu",
     "description": "Objašnjenje za motion mode"
   },
   "description.keepOriginalSound": {
@@ -80,7 +80,7 @@
     "description": "Dugme za generisanje u Kontroli pokreta"
   },
   "message.motionMissingInputs": {
-    "message": "Molimo vas da otpremite i referentnu sliku i referentni video",
+    "message": "Molimo vas da otpremite i sliku lika i referentni video",
     "description": "Poruka kada nedostaju ulazi u Kontroli pokreta"
   },
   "inspiration.title": {
@@ -90,6 +90,10 @@
   "inspiration.openButton": {
     "message": "Inspiracija",
     "description": "Dugme za otvaranje Inspiration fioke"
+  },
+  "inspiration.removeChip": {
+    "message": "Ukloni ovaj predlog",
+    "description": "Dugme za uklanjanje izabranog predloga u oblasti sa opisima"
   },
   "inspiration.hint": {
     "message": "Kliknite na frazu da automatski dodate u opis; ponovni klik može ukloniti.",
@@ -184,7 +188,7 @@
     "description": ""
   },
   "inspiration.chip.shotClose": {
-    "message": "Kadar iz blizine",
+    "message": "Kratak kadar",
     "description": ""
   },
   "inspiration.chip.shotMedium": {
@@ -192,11 +196,11 @@
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Daleki kadar",
+    "message": "Dugi kadar",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "Niska perspektiva",
+    "message": "Nizak ugao",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
@@ -208,23 +212,23 @@
     "description": ""
   },
   "inspiration.chip.shotFront": {
-    "message": "Frontalni ugao",
+    "message": "Frontalni pogled",
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "Profilni ugao",
+    "message": "Profilni pogled",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "Krupni plan",
+    "message": "Kadar iz blizine",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
-    "message": "Perspektiva drona",
+    "message": "Pogled iz drona",
     "description": ""
   },
   "inspiration.chip.lightSunlight": {
-    "message": "Svetlost sunca",
+    "message": "Sunčeva svetlost",
     "description": ""
   },
   "inspiration.chip.lightSoft": {
@@ -285,7 +289,7 @@
   },
   "name.type": {
     "message": "Tip",
-    "description": "Tip sadržaja za generisanje Kling videa, kao što su 'link', 'tekst' itd."
+    "description": "Tip sadržaja Kling videa koji treba generisati, kao što su 'link', 'tekst' itd."
   },
   "name.modeStd": {
     "message": "Standard (720p)",
@@ -301,7 +305,7 @@
   },
   "name.cameraControl": {
     "message": "Kontrola kamere",
-    "description": "Tip i parametri kontrole kamere"
+    "description": "Tip kontrole kamere i parametri"
   },
   "name.cameraTypeNone": {
     "message": "Ne koristi",
@@ -344,11 +348,11 @@
     "description": "camera_control.config.tilt"
   },
   "name.cc_roll": {
-    "message": "Roll (prevrtanje)",
+    "message": "Okretanje (roll)",
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
-    "message": "Zoom (približavanje)",
+    "message": "Zoom (zoom)",
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
@@ -373,23 +377,23 @@
   },
   "name.cfgScale": {
     "message": "Stepen slobode",
-    "description": "Parametar stepena slobode za generisanje videa (0-1), veća vrednost bliža referenci"
+    "description": "Parametar stepena slobode za generisanje videa (0-1), veća vrednost bliža referenci (engleski predlog: Freedom Level)"
   },
   "name.generateAudio": {
-    "message": "Sinhronizovano generisanje zvuka",
-    "description": "Da li da se sinhronizovano generiše zvuk, podržava kling-v3, kling-v3-omni i kling-v2-6 (pro režim)"
+    "message": "Sinhronizuj zvučne efekte",
+    "description": "Da li da se sinhronizuje generisanje zvučnih efekata, podržava kling-v3, kling-v3-omni i kling-v2-6 (pro režim)"
   },
   "name.startImage": {
-    "message": "Referentna slika prvog okvira",
-    "description": "Oznaka polja forme: referentna slika prvog okvira"
+    "message": "Referentna slika za prvu frekvencu",
+    "description": "Oznaka polja forme: referentna slika za prvu frekvencu (engleski predlog: 'First Frame', zadržati kratak da ne zakloni dugme)"
   },
   "name.negativePrompt": {
     "message": "Negativni prompt",
     "description": "Negativni tekstualni prompt za generisanje videa"
   },
   "name.endImage": {
-    "message": "Referentna slika poslednjeg okvira",
-    "description": "Oznaka polja forme: referentna slika poslednjeg okvira"
+    "message": "Referentna slika za poslednju frekvencu",
+    "description": "Oznaka polja forme: referentna slika za poslednju frekvencu (engleski predlog: 'Last Frame', zadržati kratak da ne zakloni dugme)"
   },
   "name.videoUrl": {
     "message": "Prilagođeni video",
@@ -404,24 +408,24 @@
     "description": "Trajanje videa"
   },
   "name.ingredients": {
-    "message": "Kreiranje videa iz više slika",
-    "description": "Prekidač/oznaka za kreiranje videa iz više slika"
+    "message": "Više slika za video",
+    "description": "Prekidač/oznaka za više slika za video (predlog na engleskom: Multi-Image, zadržati kratak)"
   },
   "name.model": {
-    "message": "Model verzija",
-    "description": "Model verzija koja se koristi za generisanje videa"
+    "message": "Verzija modela",
+    "description": "Verzija modela koja se koristi za generisanje videa"
   },
   "name.ratio": {
-    "message": "Video odnos",
-    "description": "Odnos videa koji se koristi za generisanje videa"
+    "message": "Proporcija videa",
+    "description": "Proporcija videa koja se koristi za generisanje videa"
   },
   "name.mode": {
-    "message": "Video režim",
-    "description": "Režim koji se koristi za generisanje videa"
+    "message": "Način videa",
+    "description": "Način koji se koristi za generisanje videa"
   },
   "name.effect": {
     "message": "Video efekat",
-    "description": "Naziv stila parametra koji se koristi za prebacivanje između različitih verzija ili stilova modela"
+    "description": "Naziv parametra stila za prebacivanje između različitih verzija ili stilova modela"
   },
   "name.ingredientsModel": {
     "message": "Model sastojaka",
@@ -432,36 +436,36 @@
     "description": "Naziv Kling video generatora"
   },
   "description.ingredients": {
-    "message": "Ako želite da otpremite više slika za generisanje svog videa, uključite ovu opciju.",
+    "message": "Ako želite da otpremite više slika za generisanje svog videa, uključite ovaj prekidač.",
     "description": "Opis parametra 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "U zadatku za kreiranje videa sa više slika, potrebno je otpremiti više slika.",
+    "message": "U zadatku za više slika za video, potrebno je otpremiti više slika.",
     "description": "Opis parametra 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Ključne reči za generisanje Kling videa",
+    "message": "Uputstvo za generisanje Kling videa",
     "description": "Opis parametra 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Negativni tekstualni prompt, opcionalno, ne duže od 200 karaktera",
-    "description": "Opis parametra 'prompt'"
+    "message": "Negativni tekstualni uputstvo, opcionalno, ne više od 200 karaktera",
+    "description": "Opis parametra 'negativePrompt'"
   },
   "description.uploadStartImage": {
     "message": "Otpremite sliku prvog okvira kao referencu za generisanje, konačni video će se oslanjati na prvi okvir",
-    "description": "Opis parametra za otpremanje reference"
+    "description": "Opis parametra za otpremanje referenci"
   },
   "description.uploadEndImage": {
     "message": "Otpremite sliku poslednjeg okvira kao referencu za generisanje, konačni video će se oslanjati na poslednji okvir",
-    "description": "Opis parametra za otpremanje reference"
+    "description": "Opis parametra za otpremanje referenci"
   },
   "description.cfgScale": {
     "message": "Stepen slobode za generisanje videa, opcionalno [0,1]. Što je veća vrednost, jača je povezanost.",
-    "description": "Opis parametra za otpremanje reference"
+    "description": "Opis parametra za otpremanje referenci"
   },
   "description.mode": {
     "message": "std ima bolju performansu, pro ima bolji kvalitet; 4K podržava samo v3 / v3-Omni i ne može se koristiti sa kontrolom kamere",
-    "description": "Opšti opis polja režima"
+    "description": "Opšti opis polja za način"
   },
   "description.mode4kRequiresV3": {
     "message": "Samo kling-v3 / kling-v3-omni podržava",
@@ -473,18 +477,18 @@
   },
   "description.duration": {
     "message": "Obični modeli podržavaju samo 5/10 sekundi; v3 / v3-Omni podržava 3/5/8/10/12/15 sekundi",
-    "description": "Opšti opis polja trajanja"
+    "description": "Opšti opis polja za trajanje"
   },
   "description.durationV3Only": {
     "message": "Samo v3 / v3-Omni podržava",
     "description": "Razlog za onemogućavanje opcije trajanja"
   },
   "description.generateAudio": {
-    "message": "Sinteza zvučnih efekata tokom generisanja videa. Samo kling-v3 / kling-v3-omni / kling-v2-6 (pro režim) podržava",
+    "message": "Sinteza zvučnih efekata tokom generisanja videa. Samo kling-v3 / kling-v3-omni / kling-v2-6 (pro način) podržava",
     "description": "Opis prekidača za zvučne efekte (podržano)"
   },
   "description.generateAudioUnsupported": {
-    "message": "Trenutni model ne podržava sinhronizovane zvučne efekte, samo kling-v3 / kling-v3-omni / kling-v2-6 (pro režim) su dostupni",
+    "message": "Trenutni model ne podržava sinhronizovane zvučne efekte, samo kling-v3 / kling-v3-omni / kling-v2-6 (pro način) su dostupni",
     "description": "Opis prekidača za zvučne efekte (onemogućeno)"
   },
   "description.cameraControl": {
@@ -492,7 +496,7 @@
     "description": "Opis kontrole kamere"
   },
   "description.cameraControlDisabled4k": {
-    "message": "Izabran je 4K režim, kontrola kamere nije dostupna, prebacite se na std / pro i ponovo omogućite",
+    "message": "Izabran je 4K način, kontrola kamere nije dostupna, prebacite se na std / pro pre nego što omogućite",
     "description": "Razlog za onemogućavanje kontrole kamere"
   },
   "status.pending": {
@@ -516,12 +520,12 @@
     "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
-    "message": "Unesite ključne reči za stil videa koji želite da generišete, na primer: pokretni",
-    "description": "Placeholder za polje sa promptom"
+    "message": "Unesite uputstvo za stil videa koji želite da generišete, na primer: pokretni",
+    "description": "Placeholder za uputstvo u polju"
   },
   "placeholder.negativePrompt": {
-    "message": "Unesite negativne ključne reči za stil videa, ne duže od 200 karaktera",
-    "description": "Placeholder za polje sa promptom"
+    "message": "Unesite negativno uputstvo za stil videa, ne više od 200 karaktera",
+    "description": "Placeholder za negativno uputstvo u polju"
   },
   "placeholder.position": {
     "message": "Izaberite...",
@@ -532,12 +536,12 @@
     "description": "Placeholder za unos odnosa širine i visine"
   },
   "placeholder.cameraType": {
-    "message": "Ne koristiti",
+    "message": "Ne koristi",
     "description": "Placeholder za izbor tipa kamere"
   },
   "placeholder.preset": {
     "message": "Izaberite...",
-    "description": "Placeholder za unos unapred podešenih opcija"
+    "description": "Placeholder za unos unapred definisanih postavki"
   },
   "placeholder.markerShape": {
     "message": "Izaberite...",
@@ -564,8 +568,8 @@
     "description": "Tekst dugmeta za generisanje Kling videa"
   },
   "button.extend": {
-    "message": "Proširi video",
-    "description": "Tekst dugmeta za proširenje videa"
+    "message": "Produži video",
+    "description": "Tekst dugmeta za produženje videa"
   },
   "button.download": {
     "message": "Preuzmi video",
@@ -573,7 +577,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Otpremi",
-    "description": "Tekst dugmeta za otpremanje slike (jednostavno kao 'Otpremi')"
+    "description": "Tekst dugmeta za otpremanje slike (jednostavno kao 'Otpremi', ne koristiti 'Otpremi sliku')"
   },
   "button.uploadVideoUrl": {
     "message": "Otpremi video",
@@ -581,7 +585,7 @@
   },
   "button.uploadReferences": {
     "message": "Otpremi",
-    "description": "Tekst dugmeta koje omogućava korisniku da otpremi reference"
+    "description": "Tekst dugmeta koje omogućava korisniku da otpremi referencu"
   },
   "message.uploadReferencesExceed": {
     "message": "Možete otpremiti najviše 1 sliku",
@@ -599,17 +603,41 @@
     "message": "Pre nego što koristite referentnu sliku za kraj, prvo otpremite referentnu sliku za početak",
     "description": "Poruka greške kada je korisnik otpremio samo sliku za kraj bez slike za početak"
   },
+  "message.endImageNotSupported": {
+    "message": "Referentna slika za kraj nije podržana trenutnim modelom/načinom/trajanjem, molimo prilagodite podešavanja (uobičajeni zahtevi: način pro, trajanje 5s).",
+    "description": "Poruka kada trenutni model ne podržava otpremanje slike za kraj"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Potrebna potvrda",
+    "description": "Naslov potvrde kada se menjaju parametri i gube postojeća podešavanja"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Trenutni izbor ne podržava sledeća aktivna podešavanja: {fields}. Nastavak će očistiti ova podešavanja.",
+    "description": "Poruka kada se menjaju model/način/trajanje i gube se postojeća podešavanja, {fields} će biti zamenjeno stvarnim imenima polja"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Očistili ste nepodržana podešavanja: {fields}",
+    "description": "Toast obaveštenje nakon što korisnik potvrdi promenu"
+  },
+  "button.confirmContinue": {
+    "message": "Nastavi promenu",
+    "description": "Glavni dugme za potvrdu gubitka funkcionalnosti"
+  },
+  "button.cancelSwitch": {
+    "message": "Otkaži",
+    "description": "Dugme za otkazivanje u potvrdi gubitka funkcionalnosti"
+  },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se zadatak za crtanje pokreće"
+    "description": "Poruka kada započinje zadatak crtanja"
   },
   "message.startTaskSuccess": {
-    "message": "Uspešno pokrenut zadatak za generisanje",
+    "message": "Uspešno pokrenut zadatak generisanja",
     "description": "Poruka uspeha kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
-    "description": "Poruka greške kada pokretanje zadatka za crtanje nije uspelo"
+    "description": "Poruka greške kada pokretanje zadatka crtanja nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -624,7 +652,7 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.extendVideo": {
-    "message": "Nastavi sa generisanjem ovog videa",
+    "message": "Nastavi generisanje ovog videa",
     "description": "Poruka kada se slika generiše"
   },
   "message.generateFailed": {
@@ -637,11 +665,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Veličina otpremljenog fajla ne može biti veća od 10MB!",
-    "description": "Poruka greške kada veličina otpremljenog fajla premašuje 10MB"
+    "description": "Poruka greške kada veličina otpremljenog fajla premašuje 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Otpremljeni fajl mora biti u MP4 formatu!",
-    "description": "Poruka greške kada otpremljeni fajl nije u MP4 formatu"
+    "description": "Poruka greške kada otpremljeni fajl nije u MP4 formatu!"
   },
   "message.uploadStartImageExceed": {
     "message": "Broj otpremljenih slika za početak premašuje limit",
@@ -672,7 +700,7 @@
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo kliknite levo da generišete video",
+    "message": "Nema istorijskih zadataka, molimo kliknite levo za generisanje videa",
     "description": "Poruka kada nema zadataka"
   }
 }

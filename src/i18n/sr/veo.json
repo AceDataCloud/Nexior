@@ -53,7 +53,7 @@
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Ime Veo video generatora"
+    "description": "Ime Veo generatora videa"
   },
   "name.ratio": {
     "message": "Odnos",
@@ -96,8 +96,8 @@
     "description": "Placeholder za nivo popunjavanja"
   },
   "placeholder.prompt": {
-    "message": "Unesite prompt za stil videa, npr: moving",
-    "description": "Placeholder za prompt u polju"
+    "message": "Unesite prompt za stil videa, na primer: moving",
+    "description": "Placeholder u polju za prompt"
   },
   "placeholder.position": {
     "message": "Izaberite...",
@@ -112,7 +112,7 @@
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action2": {
-    "message": "Generiši video iz slika",
+    "message": "Generiši video iz slike",
     "description": "Tekst dugmeta za generisanje Veo videa"
   },
   "button.action3": {
@@ -144,7 +144,7 @@
     "description": "Poruka o uspehu kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
+    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
     "description": "Poruka o grešci kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
@@ -156,11 +156,11 @@
     "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
-    "message": "Pokretanje zadatka nije uspelo, kontaktirajte administratora",
+    "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora",
     "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.imageRequired": {
-    "message": "Molimo otpremite najmanje jednu referentnu sliku pre nego što pokrenete zadatak za generisanje videa iz slika",
+    "message": "Molimo prvo otpremite najmanje jednu referentnu sliku pre nego što pokrenete zadatak za generisanje videa iz slike",
     "description": "Poruka kada nije otpremljena slika u image2video režimu"
   },
   "message.usedUp": {
@@ -192,35 +192,95 @@
     "description": "Greška kada datoteka mora biti u MP4 formatu!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Broj slika prvog okvira premašuje ograničenje",
-    "description": "Greška kada broj slika prvog okvira premašuje ograničenje"
+    "message": "Broj slika za prvu sličicu premašuje ograničenje",
+    "description": "Greška kada broj slika za prvu sličicu premašuje ograničenje"
   },
   "message.uploadEndImageExceed": {
-    "message": "Broj slika poslednjeg okvira premašuje ograničenje",
-    "description": "Greška kada broj slika poslednjeg okvira premašuje ograničenje"
+    "message": "Broj slika za poslednju sličicu premašuje ograničenje",
+    "description": "Greška kada broj slika za poslednju sličicu premašuje ograničenje"
   },
   "message.uploadStartImageError": {
-    "message": "Greška pri upload-u slike prvog okvira",
-    "description": "Greška kada upload slike prvog okvira ne uspe"
+    "message": "Greška pri upload-u prve sličice",
+    "description": "Greška kada dođe do problema pri upload-u prve sličice"
   },
   "message.uploadVideoError": {
     "message": "Greška pri upload-u videa",
-    "description": "Greška kada upload videa ne uspe"
+    "description": "Greška kada dođe do problema pri upload-u videa"
   },
   "message.uploadEndImageError": {
-    "message": "Greška pri upload-u slike poslednjeg okvira",
-    "description": "Greška kada upload slike poslednjeg okvira ne uspe"
+    "message": "Greška pri upload-u poslednje sličice",
+    "description": "Greška kada dođe do problema pri upload-u poslednje sličice"
   },
   "message.uploadDocumentsError": {
     "message": "Greška pri upload-u dokumenata",
-    "description": "Greška kada upload dokumenata ne uspe"
+    "description": "Greška kada dođe do problema pri upload-u dokumenata"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
     "description": "Poruka kada nema dostupnih operacija"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo kliknite levo za generisanje videa",
+    "message": "Nema istorijskih zadataka, kliknite levo za generisanje videa",
     "description": "Poruka kada nema zadataka"
+  },
+  "name.upsampleAction": {
+    "message": "Cilj uzorkovanja",
+    "description": "Ciljni format za /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Tip pokreta kamere",
+    "description": "Tip pokreta kamere za /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Maska područja",
+    "description": "Maska slike za /veo/objects (bele piksela = operativna zona)"
+  },
+  "name.videoId": {
+    "message": "ID videa",
+    "description": "ID izvornog videa (iz prethodnog generisanog zadatka data[].id)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL maske slike ili base64 kodirani JPEG",
+    "description": "Placeholder za input polje image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Nalepite ID videa ili kliknite dugme za operaciju u desnom spisku zadataka da se automatski popuni",
+    "description": "Placeholder za input polje video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Video sa više slika",
+    "description": "ingredients2video — spojite 1-3 slike za generisanje nove scene"
+  },
+  "button.actionUpsample": {
+    "message": "Uzorkovanje / GIF pregled",
+    "description": "/veo/upsample — uzorkovanje na 1080p/4K ili izvoz GIF-a"
+  },
+  "button.actionExtend": {
+    "message": "Produži video",
+    "description": "/veo/extend — produži trajanje već generisanog videa"
+  },
+  "button.actionReshoot": {
+    "message": "Ponovno snimanje",
+    "description": "/veo/reshoot — ponovo generišite sa promenom pokreta kamere"
+  },
+  "button.actionObjectInsert": {
+    "message": "Dodaj objekat",
+    "description": "/veo/objects insert — dodajte objekat u video"
+  },
+  "button.actionObjectRemove": {
+    "message": "Ukloni objekat",
+    "description": "/veo/objects remove — uklonite objekat iz videa pomoću maske"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Uzorkovanje 1080P",
+    "description": "Dugme za Preview — uzorkovanje na 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Uzorkovanje 4K",
+    "description": "Dugme za Preview — uzorkovanje na 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Izvezi GIF",
+    "description": "Dugme za Preview — konvertuj u GIF pregled"
   }
 }

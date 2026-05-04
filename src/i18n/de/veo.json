@@ -49,11 +49,11 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversion für die Videoerstellung"
+    "description": "Modellversion, die zur Erstellung des Videos verwendet wird"
   },
   "name.veoBot": {
     "message": "Google Veo Bot",
-    "description": "Name des Veo-Video-Generators"
+    "description": "Name des Veo-Videogenerators"
   },
   "name.ratio": {
     "message": "Verhältnis",
@@ -81,7 +81,7 @@
   },
   "status.processing": {
     "message": "Wird bearbeitet",
-    "description": "Bearbeitungszustand der Aufgabe"
+    "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
     "message": "Bitte auswählen...",
@@ -96,23 +96,23 @@
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie den Stil des zu generierenden Videos ein, z.B.: moving",
+    "message": "Geben Sie die Eingabeaufforderung für den Video-Stil ein, z.B.: moving",
     "description": "Platzhaltertext im Eingabefeld"
   },
   "placeholder.position": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Positionseingabe"
+    "description": "Platzhalter für die Eingabe der Position"
   },
   "button.generate": {
     "message": "Generieren",
     "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action1": {
-    "message": "Text-zu-Video",
+    "message": "Text zu Video",
     "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action2": {
-    "message": "Bild-zu-Video",
+    "message": "Bild zu Video",
     "description": "Buttontext zum Generieren von Veo-Videos"
   },
   "button.action3": {
@@ -189,38 +189,98 @@
   },
   "message.uploadVideoTypeFailed": {
     "message": "Die hochgeladene Datei muss im MP4-Format sein!",
-    "description": "Fehlermeldung, wenn die hochgeladene Datei nicht im MP4-Format ist!"
+    "description": "Fehlermeldung, wenn die Datei nicht im MP4-Format ist!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Erstbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Erstbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Startbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der Startbilder das Limit überschreitet"
   },
   "message.uploadEndImageExceed": {
-    "message": "Die Anzahl der hochgeladenen Endbildbilder überschreitet das Limit",
-    "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Endbildbilder das Limit überschreitet"
+    "message": "Die Anzahl der hochgeladenen Endbilder überschreitet das Limit",
+    "description": "Fehlermeldung, wenn die Anzahl der Endbilder das Limit überschreitet"
   },
   "message.uploadStartImageError": {
-    "message": "Fehler beim Hochladen des Erstbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Erstbildes fehlschlägt"
+    "message": "Fehler beim Hochladen des Startbildes",
+    "description": "Fehlermeldung, wenn das Startbild nicht hochgeladen werden kann"
   },
   "message.uploadVideoError": {
     "message": "Fehler beim Hochladen des Videos",
-    "description": "Fehlermeldung, wenn das Hochladen des Videos fehlschlägt"
+    "description": "Fehlermeldung, wenn das Video nicht hochgeladen werden kann"
   },
   "message.uploadEndImageError": {
     "message": "Fehler beim Hochladen des Endbildes",
-    "description": "Fehlermeldung, wenn das Hochladen des Endbildes fehlschlägt"
+    "description": "Fehlermeldung, wenn das Endbild nicht hochgeladen werden kann"
   },
   "message.uploadDocumentsError": {
     "message": "Fehler beim Hochladen des Dokuments",
-    "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
+    "description": "Fehlermeldung, wenn das Dokument nicht hochgeladen werden kann"
   },
   "message.noOperations": {
     "message": "Keine verfügbaren Aktionen",
-    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
+    "description": "Nachricht, wenn keine Aktionen verfügbar sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
+  },
+  "name.upsampleAction": {
+    "message": "Ziel für Hochskalierung",
+    "description": "Zielformat für /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Kamerabewegung",
+    "description": "Bewegungstyp für /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Bereichsmaske",
+    "description": "Bildmaske für /veo/objects (weiße Pixel = Aktionsbereich)"
+  },
+  "name.videoId": {
+    "message": "Video-ID",
+    "description": "ID des Quellvideos (aus der vorherigen Generierungsaufgabe data[].id)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL der Maskenbild oder base64-kodiertes JPEG",
+    "description": "Platzhalter für das Eingabefeld image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Video-ID einfügen oder auf die Schaltfläche in der rechten Aufgabenliste klicken, um automatisch auszufüllen",
+    "description": "Platzhalter für das Eingabefeld video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Mehrbildfusion Video",
+    "description": "ingredients2video — 1-3 Bilder fusionieren, um eine neue Szene zu erstellen"
+  },
+  "button.actionUpsample": {
+    "message": "Hochskalierung / GIF-Vorschau",
+    "description": "/veo/upsample — Hochskalierung auf 1080p/4K oder GIF exportieren"
+  },
+  "button.actionExtend": {
+    "message": "Video verlängern",
+    "description": "/veo/extend — Dauer des bereits generierten Videos verlängern"
+  },
+  "button.actionReshoot": {
+    "message": "Neu drehen",
+    "description": "/veo/reshoot — Inhalt mit neuer Kamerabewegung neu generieren"
+  },
+  "button.actionObjectInsert": {
+    "message": "Objekt hinzufügen",
+    "description": "/veo/objects insert — Objekt im Video hinzufügen"
+  },
+  "button.actionObjectRemove": {
+    "message": "Objekt entfernen",
+    "description": "/veo/objects remove — Objekt im Video durch Maske entfernen"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Hochskalierung auf 1080P",
+    "description": "Vorschau-Aktionsschaltfläche — Hochskalierung auf 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Hochskalierung auf 4K",
+    "description": "Vorschau-Aktionsschaltfläche — Hochskalierung auf 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "GIF exportieren",
+    "description": "Vorschau-Aktionsschaltfläche — In GIF-Vorschau umwandeln"
   }
 }

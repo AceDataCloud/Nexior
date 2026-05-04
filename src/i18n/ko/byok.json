@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하여 플랫폼 계정 풀을 대체합니다. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
+    "message": "자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하여 플랫폼 계정 풀을 대체합니다. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키를 사용하여 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
     "description": ""
   },
   "field.provider": {
@@ -40,7 +40,7 @@
     "description": ""
   },
   "field.apiKeyEditPlaceholder": {
-    "message": "비워두면 현재 키 유지",
+    "message": "비워두면 현재 키가 유지됩니다",
     "description": ""
   },
   "field.baseUrl": {
@@ -48,7 +48,7 @@
     "description": ""
   },
   "field.baseUrlPlaceholder": {
-    "message": "비워두면 서비스 제공업체 기본 주소 사용",
+    "message": "비워두면 서비스 제공업체의 기본 주소를 사용합니다",
     "description": ""
   },
   "field.isActive": {
@@ -144,28 +144,28 @@
     "description": ""
   },
   "badge.active": {
-    "message": "당신의 {provider} 키 사용",
+    "message": "사용자 정의 {provider} API 키 사용 중",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "이번 대화는 당신의 {provider} API 키를 사용하며, 비용은 {provider} 계정에서 정산되고 플랫폼 잔액은 차감되지 않습니다.",
+    "message": "현재 대화는 귀하의 {provider} API 키를 사용하고 있으며, 비용은 {provider} 계정에서 정산되며 플랫폼 잔액은 차감되지 않습니다.",
     "description": ""
   },
   "badge.manage": {
-    "message": "사용자 정의 API 키 관리 클릭",
-    "description": "채팅 페이지 BYOK 배지 클릭 후 팝업: API 키 탭을 열어 설정 대화 상자를 엽니다."
+    "message": "클릭하면 API 키 설정을 엽니다",
+    "description": "채팅 페이지 BYOK 배지 클릭 후의 팁: 클릭하여 설정 대화 상자의 API 키 탭을 엽니다."
   },
   "button.testConnection": {
-    "message": "저장 및 연결 테스트",
-    "description": "새로 추가/편집 대화 상자에서 버튼 - 자격 증명을 먼저 저장한 후 상위 /models를 호출하여 연결성을 검증합니다."
+    "message": "테스트",
+    "description": "새로 추가/편집 대화 상자 내의 버튼 - 현재 양식 구성을 테스트하며, 자격 증명을 저장하지 않습니다."
   },
   "test.success": {
-    "message": "연결성 테스트 성공",
-    "description": "연결성 테스트 결과 영역의 성공 제목."
+    "message": "연결 테스트 성공",
+    "description": "연결성 테스트 결과 구역의 성공 제목."
   },
   "test.failure": {
     "message": "연결성 테스트 실패",
-    "description": "연결성 테스트 결과 영역의 실패 제목."
+    "description": "연결성 테스트 결과 구역의 실패 제목."
   },
   "test.endpoint": {
     "message": "요청 주소",
@@ -204,7 +204,7 @@
     "description": "제공자 드롭다운에서 Moonshot (Kimi) 옵션의 부제목."
   },
   "providerDesc.zhipu": {
-    "message": "이 사이트의 GLM 시리즈 대화 요청을 대체합니다.",
+    "message": "사이트의 GLM 시리즈 대화 요청을 대체합니다.",
     "description": "제공자 드롭다운에서 Zhipu (GLM) 옵션의 부제목."
   }
 }

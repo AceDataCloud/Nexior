@@ -144,40 +144,40 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Usando tu clave {provider}",
+    "message": "Usando clave API personalizada de {provider}",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Esta conversación utiliza tu propia clave API {provider}, los costos se facturan a la cuenta {provider}, no se deduce del saldo de la plataforma.",
+    "message": "La conversación actual está utilizando tu clave API de {provider}, los costos se facturan a la cuenta de {provider}, no se deduce del saldo de la plataforma.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Haz clic para gestionar tu clave API personalizada",
+    "message": "Haz clic para abrir la configuración de la clave API",
     "description": "Sugerencia al hacer clic en la insignia BYOK en la página de chat: haz clic para abrir la pestaña de configuración de la clave API."
   },
   "button.testConnection": {
-    "message": "Guardar y probar conexión",
-    "description": "Botón en el cuadro de diálogo de agregar/editar: primero guarda las credenciales, luego llama a /models para verificar la conectividad."
+    "message": "Probar",
+    "description": "Botón en el cuadro de diálogo de agregar/editar: solo prueba la configuración actual del formulario, no guarda las credenciales."
   },
   "test.success": {
     "message": "Prueba de conectividad exitosa",
-    "description": "Título de éxito en la sección de resultados de la prueba de conectividad."
+    "description": "Título de éxito en la sección de resultados de conectividad."
   },
   "test.failure": {
     "message": "Prueba de conectividad fallida",
-    "description": "Título de fallo en la sección de resultados de la prueba de conectividad."
+    "description": "Título de fallo en la sección de resultados de conectividad."
   },
   "test.endpoint": {
     "message": "Dirección de solicitud",
-    "description": "Etiqueta de URL de solicitud en los detalles de los resultados de la prueba."
+    "description": "Etiqueta de URL de solicitud en los detalles de los resultados de prueba."
   },
   "test.status": {
     "message": "Código de estado",
-    "description": "Etiqueta de código de estado HTTP en los detalles de los resultados de la prueba."
+    "description": "Etiqueta de código de estado HTTP en los detalles de los resultados de prueba."
   },
   "test.message": {
     "message": "Respuesta upstream",
-    "description": "Etiqueta de texto de error/sugerencia upstream en los detalles de los resultados de la prueba."
+    "description": "Etiqueta de texto de error/sugerencia upstream en los detalles de los resultados de prueba."
   },
   "providerDesc.openai": {
     "message": "Reemplaza las solicitudes de conversación de ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) en este sitio.",
@@ -200,8 +200,8 @@
     "description": "Subtítulo de la opción DeepSeek en el menú desplegable de proveedores."
   },
   "providerDesc.moonshot": {
-    "message": "Reemplaza la solicitud de conversación de Kimi en este sitio.",
-    "description": "Subtítulo de la opción Moonshot (Kimi) en el menú desplegable de proveedores."
+    "message": "Reemplazar la solicitud de conversación Kimi en este sitio.",
+    "description": "Subtítulo de la opción Moonshot (Kimi) en el menú desplegable del proveedor."
   },
   "providerDesc.zhipu": {
     "message": "Reemplaza las solicitudes de conversación de la serie GLM de este sitio.",

@@ -140,24 +140,24 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "可選。自訂上游地址（用於 OpenRouter、自建反代、企業網關等）。僅允許 HTTPS，不能指向內網/回環地址。",
+    "message": "可選。自訂上游地址（用於 OpenRouter、自建反向代理、企業網關等）。僅允許 HTTPS，不能指向內網/回環地址。",
     "description": ""
   },
   "badge.active": {
-    "message": "使用你的 {provider} 金鑰",
+    "message": "正在使用自訂 {provider} API 金鑰",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "本次對話使用你自己的 {provider} API 金鑰，費用由 {provider} 帳戶結算，不扣減平台餘額。",
+    "message": "當前對話正在使用你的 {provider} API 金鑰，費用由 {provider} 帳戶結算，不扣減平台餘額。",
     "description": ""
   },
   "badge.manage": {
-    "message": "點擊管理你的自訂 API 金鑰",
+    "message": "點擊可打開 API 金鑰設定",
     "description": "聊天頁面 BYOK 徽章點擊後的提示：點擊打開設定對話框的 API 金鑰選項卡。"
   },
   "button.testConnection": {
-    "message": "儲存並測試連通",
-    "description": "新增/編輯對話框中的按鈕——先儲存憑據，再調用上游 /models 驗證連通性。"
+    "message": "測試",
+    "description": "新增/編輯對話框中的按鈕——只測試當前表單配置，不儲存憑據。"
   },
   "test.success": {
     "message": "連通性測試成功",

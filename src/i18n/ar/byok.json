@@ -24,7 +24,7 @@
     "description": ""
   },
   "field.label": {
-    "message": "ملاحظة",
+    "message": "ملاحظات",
     "description": ""
   },
   "field.labelPlaceholder": {
@@ -144,27 +144,27 @@
     "description": ""
   },
   "badge.active": {
-    "message": "استخدام مفتاح {provider} الخاص بك",
+    "message": "يتم استخدام مفتاح API مخصص {provider}",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "تستخدم هذه المحادثة مفتاح API الخاص بك من {provider}، ويتم تسوية التكاليف من حساب {provider}، دون خصم من رصيد المنصة.",
+    "message": "المحادثة الحالية تستخدم مفتاح API الخاص بك من {provider}، والتكاليف يتم تسويتها من حساب {provider}، دون خصم من رصيد المنصة.",
     "description": ""
   },
   "badge.manage": {
-    "message": "انقر لإدارة مفتاح API المخصص الخاص بك",
+    "message": "انقر لفتح إعدادات مفتاح API",
     "description": "تلميح عند النقر على شارة BYOK في صفحة الدردشة: انقر لفتح علامة تبويب إعدادات مفتاح API."
   },
   "button.testConnection": {
-    "message": "حفظ واختبار الاتصال",
-    "description": "زر في مربع الحوار لإضافة/تعديل - احفظ الاعتماديات أولاً، ثم تحقق من الاتصال باستخدام /models."
+    "message": "اختبار",
+    "description": "زر في مربع الحوار الجديد/التعديل - فقط اختبر تكوين النموذج الحالي، دون حفظ الاعتماديات."
   },
   "test.success": {
     "message": "اختبار الاتصال ناجح",
     "description": "عنوان النجاح في منطقة نتائج اختبار الاتصال."
   },
   "test.failure": {
-    "message": "فشل اختبار الاتصال",
+    "message": "اختبار الاتصال فشل",
     "description": "عنوان الفشل في منطقة نتائج اختبار الاتصال."
   },
   "test.endpoint": {
@@ -176,35 +176,35 @@
     "description": "علامة رمز الحالة HTTP في تفاصيل نتائج الاختبار."
   },
   "test.message": {
-    "message": "استجابة من المصدر",
-    "description": "علامة نص الخطأ/التلميح من المصدر في تفاصيل نتائج الاختبار."
+    "message": "استجابة المصدر",
+    "description": "علامة نص الخطأ/التلميح في تفاصيل نتائج الاختبار."
   },
   "providerDesc.openai": {
     "message": "استبدال طلبات المحادثة لـ ChatGPT (GPT-4 / GPT-4o / o1 / o3، إلخ) في هذا الموقع.",
-    "description": "العنوان الفرعي لخيار OpenAI في قائمة المزودين."
+    "description": "العنوان الفرعي لخيار OpenAI في القائمة المنسدلة للمزود."
   },
   "providerDesc.anthropic": {
     "message": "استبدال طلبات المحادثة لـ Claude (Sonnet / Opus / Haiku، إلخ) في هذا الموقع.",
-    "description": "العنوان الفرعي لخيار Anthropic في قائمة المزودين."
+    "description": "العنوان الفرعي لخيار Anthropic في القائمة المنسدلة للمزود."
   },
   "providerDesc.google": {
     "message": "استبدال طلبات المحادثة لـ Gemini (Pro / Flash) في هذا الموقع.",
-    "description": "العنوان الفرعي لخيار Google في قائمة المزودين."
+    "description": "العنوان الفرعي لخيار Google في القائمة المنسدلة للمزود."
   },
   "providerDesc.xai": {
     "message": "استبدال طلبات المحادثة لـ Grok في هذا الموقع.",
-    "description": "العنوان الفرعي لخيار xAI في قائمة المزودين."
+    "description": "العنوان الفرعي لخيار xAI في القائمة المنسدلة للمزود."
   },
   "providerDesc.deepseek": {
     "message": "استبدال طلبات المحادثة لـ DeepSeek (V3 / R1، إلخ) في هذا الموقع.",
-    "description": "العنوان الفرعي لخيار DeepSeek في قائمة المزودين."
+    "description": "العنوان الفرعي لخيار DeepSeek في القائمة المنسدلة للمزود."
   },
   "providerDesc.moonshot": {
     "message": "استبدال طلبات محادثة Kimi في هذا الموقع.",
     "description": "العنوان الفرعي لخيار Moonshot (Kimi) في القائمة المنسدلة للمزود."
   },
   "providerDesc.zhipu": {
-    "message": "استبدال طلبات المحادثة لسلسلة GLM الخاصة بالموقع.",
+    "message": "استبدال طلبات المحادثة لسلسلة GLM في هذا الموقع.",
     "description": "العنوان الفرعي لخيار Zhipu (GLM) في القائمة المنسدلة لمزود الخدمة."
   }
 }

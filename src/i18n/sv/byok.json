@@ -120,7 +120,7 @@
     "description": ""
   },
   "message.testFailed": {
-    "message": "Testet misslyckades: {message}",
+    "message": "Test misslyckades: {message}",
     "description": ""
   },
   "message.loadFailed": {
@@ -144,67 +144,67 @@
     "description": ""
   },
   "badge.active": {
-    "message": "Använder din {provider} nyckel",
+    "message": "Använder anpassad {provider} API-nyckel",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Denna dialog använder din egen {provider} API-nyckel, kostnaden debiteras ditt {provider} konto, ingen av plattformens saldo dras.",
+    "message": "Den aktuella dialogen använder din {provider} API-nyckel, kostnaden debiteras från {provider} kontot, ingen avdrag från plattformens saldo.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Klicka för att hantera din anpassade API-nyckel",
+    "message": "Klicka för att öppna API-nyckelinställningar",
     "description": "Tips efter att ha klickat på BYOK-märket på chatt-sidan: Klicka för att öppna inställningsdialogrutan för API-nyckel-fliken."
   },
   "button.testConnection": {
-    "message": "Spara och testa anslutning",
-    "description": "Knapp i dialogrutan för att lägga till/redigera - spara uppgifterna först, sedan anropa den överordnade /models för att verifiera anslutningen."
+    "message": "Testa",
+    "description": "Knapp i dialogrutan för att lägga till/redigera - testar endast den aktuella formulärkonfigurationen, sparar inte uppgifter."
   },
   "test.success": {
-    "message": "Anslutningstestet lyckades",
-    "description": "Rubrik för framgång i anslutningstestresultatet."
+    "message": "Anslutningstest lyckades",
+    "description": "Rubrik för framgång i resultatområdet för anslutningstest."
   },
   "test.failure": {
-    "message": "Anslutningstestet misslyckades",
-    "description": "Rubrik för misslyckande i anslutningstestresultatet."
+    "message": "Anslutningstest misslyckades",
+    "description": "Rubrik för misslyckande i resultatområdet för anslutningstest."
   },
   "test.endpoint": {
     "message": "Begärningsadress",
-    "description": "Etikett för begärnings-URL i testresultatdetaljer."
+    "description": "Etikett för begärnings-URL i detaljerna för testresultat."
   },
   "test.status": {
     "message": "Statuskod",
-    "description": "Etikett för HTTP-statuskod i testresultatdetaljer."
+    "description": "Etikett för HTTP-statuskod i detaljerna för testresultat."
   },
   "test.message": {
     "message": "Överordnad respons",
-    "description": "Etikett för överordnad fel-/meddelandetext i testresultatdetaljer."
+    "description": "Etikett för överordnad fel-/meddelandetext i detaljerna för testresultat."
   },
   "providerDesc.openai": {
     "message": "Ersätt ChatGPT (GPT-4 / GPT-4o / o1 / o3 etc.) dialogförfrågningar på denna webbplats.",
-    "description": "Underrubrik för OpenAI-alternativet i tjänsteleverantörens rullgardinsmeny."
+    "description": "Underrubrik för OpenAI-alternativet i rullgardinsmenyn för tjänsteleverantörer."
   },
   "providerDesc.anthropic": {
     "message": "Ersätt Claude (Sonnet / Opus / Haiku etc.) dialogförfrågningar på denna webbplats.",
-    "description": "Underrubrik för Anthropic-alternativet i tjänsteleverantörens rullgardinsmeny."
+    "description": "Underrubrik för Anthropic-alternativet i rullgardinsmenyn för tjänsteleverantörer."
   },
   "providerDesc.google": {
     "message": "Ersätt Gemini (Pro / Flash-serien) dialogförfrågningar på denna webbplats.",
-    "description": "Underrubrik för Google-alternativet i tjänsteleverantörens rullgardinsmeny."
+    "description": "Underrubrik för Google-alternativet i rullgardinsmenyn för tjänsteleverantörer."
   },
   "providerDesc.xai": {
     "message": "Ersätt Grok dialogförfrågningar på denna webbplats.",
-    "description": "Underrubrik för xAI-alternativet i tjänsteleverantörens rullgardinsmeny."
+    "description": "Underrubrik för xAI-alternativet i rullgardinsmenyn för tjänsteleverantörer."
   },
   "providerDesc.deepseek": {
     "message": "Ersätt DeepSeek (V3 / R1 etc.) dialogförfrågningar på denna webbplats.",
-    "description": "Underrubrik för DeepSeek-alternativet i tjänsteleverantörens rullgardinsmeny."
+    "description": "Underrubrik för DeepSeek-alternativet i rullgardinsmenyn för tjänsteleverantörer."
   },
   "providerDesc.moonshot": {
     "message": "Ersätt Kimi konversationsförfrågan.",
     "description": "Underrubrik för Moonshot (Kimi) alternativet i leverantörens rullgardinsmeny."
   },
   "providerDesc.zhipu": {
-    "message": "Ersätt konversationsförfrågningar för GLM-serien på denna webbplats.",
+    "message": "Ersätt konversationsförfrågningar för GLM-serien.",
     "description": "Underrubrik för Zhipu (GLM) alternativet i leverantörens rullgardinsmeny."
   }
 }

@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Käytä omaa palveluntarjoajan API-avain (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) korvaten alustan tilit. Konfiguroinnin jälkeen vastaavan mallin keskustelupyynnöt kutsuvat suoraan ylävirran palveluntarjoajaa avaimellasi, eikä se kuluta alustan krediittejä; työkalukutsut, viittaukset, artefaktit, pilvihistoria ja muut toiminnot toimivat normaalisti.",
+    "message": "Käytä omaa palveluntarjoajan API-avain (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) korvaamaan alustan tilit. Konfiguroinnin jälkeen vastaavat mallin keskustelupyynnöt kutsuvat suoraan ylävirran palveluntarjoajaa avaimellasi, eikä se kuluta alustan krediittejä; työkalukutsut, viittaukset, artefaktit, pilvihistoria ja muut toiminnot toimivat normaalisti.",
     "description": ""
   },
   "field.provider": {
@@ -140,24 +140,24 @@
     "description": ""
   },
   "message.baseUrlHelp": {
-    "message": "Valinnainen. Mukautettu ylävirran osoite (käytettävä OpenRouterissa, itse rakennetuissa käänteissä, yritysporttina jne.). Vain HTTPS sallittu, ei saa osoittaa sisäverkkoon/loopback-osoitteeseen.",
+    "message": "Valinnainen. Mukautettu ylävirran osoite (käytetään OpenRouterissa, omassa käänteispalvelimessa, yritysportissa jne.). Vain HTTPS sallittu, ei saa osoittaa sisäverkkoon/loopback-osoitteeseen.",
     "description": ""
   },
   "badge.active": {
-    "message": "Käytä omaa {provider} avaintasi",
+    "message": "Käytössä mukautettu {provider} API-avain",
     "description": ""
   },
   "badge.tooltip": {
-    "message": "Tässä keskustelussa käytetään omaa {provider} API-avainta, kustannukset veloitetaan {provider} tililtä, eikä se vähennä alustan saldoa.",
+    "message": "Nykyinen keskustelu käyttää sinun {provider} API-avain, kustannukset veloitetaan {provider} tililtä, eikä se vähennä alustan saldoa.",
     "description": ""
   },
   "badge.manage": {
-    "message": "Napsauta hallitaksesi mukautettua API-avaintasi",
-    "description": "Chattauksen sivun BYOK-merkinnän napsautuksen jälkeen näkyvä viesti: napsauta avataksesi asetuskeskustelun API-avaimen välilehden."
+    "message": "Napsauta avataksesi API-avain asetukset",
+    "description": "Chattauksen sivun BYOK-merkinnän napsautuksen jälkeen näkyvä viesti: Napsauta avataksesi asetuskeskustelun API-avain-välilehden."
   },
   "button.testConnection": {
-    "message": "Tallenna ja testaa yhteys",
-    "description": "Uuden/ muokkausikkunan painike - tallenna ensin todistukset, sitten kutsu ylävirran /models varmistaaksesi yhteyden."
+    "message": "Testaa",
+    "description": "Uuden/muokkausikkunan painike - testaa vain nykyisen lomakeasetuksen, ei tallenna todistuksia."
   },
   "test.success": {
     "message": "Yhteystesti onnistui",
@@ -177,7 +177,7 @@
   },
   "test.message": {
     "message": "Ylävirran vastaus",
-    "description": "Testitulosten yksityiskohtien ylävirran virhe/viesti-merkintä."
+    "description": "Testitulosten yksityiskohtien ylävirran virhe-/ilmoitusviestin merkintä."
   },
   "providerDesc.openai": {
     "message": "Korvata tämän sivuston ChatGPT (GPT-4 / GPT-4o / o1 / o3 jne.) keskustelupyynnöt.",
@@ -200,8 +200,8 @@
     "description": "Palveluntarjoajan alasvetovalikon DeepSeek-vaihtoehdon alaotsikko."
   },
   "providerDesc.moonshot": {
-    "message": "Korvataan Kimi-keskustelupyynnöt.",
-    "description": "Alatunniste Moonshot (Kimi) -vaihtoehdolle tarjoajavalikossa."
+    "message": "Korvataan Kimi keskustelupyynnöt.",
+    "description": "Tarjoajan alasvetovalikossa Moonshot (Kimi) vaihtoehdon alaotsikko."
   },
   "providerDesc.zhipu": {
     "message": "Korvataan tämän sivuston GLM-sarjan keskustelupyynnöt.",

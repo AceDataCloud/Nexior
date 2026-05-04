@@ -56,7 +56,7 @@
     "description": "Beschreibung für motion video_url"
   },
   "description.motionPrompt": {
-    "message": "Optional. Kann positive und negative Beschreibungen enthalten, um den Effekt zu unterstützen.",
+    "message": "Optional. Kann positive und negative Beschreibungen enthalten, um die Ergebnisse zu unterstützen.",
     "description": "Beschreibung für motion prompt"
   },
   "description.characterOrientation": {
@@ -68,7 +68,7 @@
     "description": "Beschreibung für motion mode"
   },
   "description.keepOriginalSound": {
-    "message": "Aktiviert, um den Originalton des Referenzvideos beizubehalten; deaktiviert, um das Video ohne Originalton auszugeben.",
+    "message": "Wenn aktiviert, wird der Originalton des Referenzvideos beibehalten; wenn deaktiviert, enthält das Ausgabevideo keinen Originalton.",
     "description": "Beschreibung für keep_original_sound"
   },
   "placeholder.motionPrompt": {
@@ -91,6 +91,10 @@
     "message": "Inspiration",
     "description": "Button zum Öffnen des Inspiration-Docks"
   },
+  "inspiration.removeChip": {
+    "message": "Diese Voreinstellung entfernen",
+    "description": "Button zum Entfernen einer ausgewählten Voreinstellung im Hinweisbereich"
+  },
   "inspiration.hint": {
     "message": "Klicken Sie auf einen Begriff, um ihn automatisch zu den Hinweisen hinzuzufügen; erneut klicken, um ihn zu entfernen.",
     "description": "Verwendungshinweis oben im Inspiration-Dock"
@@ -104,8 +108,8 @@
     "description": "Anzahl der ausgewählten Voreinstellungen"
   },
   "inspiration.clearSelected": {
-    "message": "Alles löschen",
-    "description": "Button zum Löschen aller ausgewählten Voreinstellungen"
+    "message": "Alle entfernen",
+    "description": "Button zum Entfernen aller ausgewählten Voreinstellungen"
   },
   "inspiration.group.cameraMovements": {
     "message": "Kamerabewegungen",
@@ -132,7 +136,7 @@
     "description": "Inspiration-Gruppe: Atmosphäre / Stil"
   },
   "inspiration.chip.rotateAround": {
-    "message": "Kamera um das Subjekt drehen",
+    "message": "Kamera um das Subjekt rotieren",
     "description": ""
   },
   "inspiration.chip.stationary": {
@@ -188,7 +192,7 @@
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "Halbnahe",
+    "message": "Mittelaufnahme",
     "description": ""
   },
   "inspiration.chip.shotLong": {
@@ -200,7 +204,7 @@
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "Hoher Winkel",
+    "message": "Hochwinkelaufnahme",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
@@ -236,7 +240,7 @@
     "description": ""
   },
   "inspiration.chip.lightWarm": {
-    "message": "Warmlicht",
+    "message": "Warmes Licht",
     "description": ""
   },
   "inspiration.chip.lightNature": {
@@ -281,19 +285,19 @@
   },
   "name.taskId": {
     "message": "Aufgaben-ID",
-    "description": "ID der Aufgabe"
+    "description": "Aufgaben-ID"
   },
   "name.type": {
     "message": "Typ",
-    "description": "Inhaltstyp des zu generierenden Kling-Videos, z. B. 'Link', 'Text' usw."
+    "description": "Inhaltstyp des zu generierenden Kling-Videos, z.B. 'Link', 'Text' usw."
   },
   "name.modeStd": {
     "message": "Standard (720p)",
-    "description": "Standardmodus des Kling-Videos (Ausgabe 720p)"
+    "description": "Standardmodus für Kling-Videos (Ausgabe 720p)"
   },
   "name.modePro": {
     "message": "Hohe Qualität (1080p)",
-    "description": "Hochqualitätsmodus des Kling-Videos (Ausgabe 1080p)"
+    "description": "Hochqualitätsmodus für Kling-Videos (Ausgabe 1080p)"
   },
   "name.mode4k": {
     "message": "Echtes 4K",
@@ -309,7 +313,7 @@
   },
   "name.cameraTypeSimple": {
     "message": "Benutzerdefiniert (6 Dimensionen)",
-    "description": "Verwendung benutzerdefinierter sechs-dimensionaler Parameter"
+    "description": "Benutzerdefinierte sechs Dimensionen verwenden"
   },
   "name.cameraTypeDownBack": {
     "message": "Nach unten und zurück",
@@ -373,23 +377,23 @@
   },
   "name.cfgScale": {
     "message": "Freiheitsgrad",
-    "description": "Freiheitsgradparameter für die Videoerstellung (0-1), je größer der Wert, desto näher am Referenzwert (Empfehlung auf Englisch: Freedom Level)"
+    "description": "Freiheitsgradparameter für die Videoerstellung (0-1), je höher der Wert, desto näher am Referenzwert (Empfehlung auf Englisch: Freedom Level)"
   },
   "name.generateAudio": {
     "message": "Audio synchron generieren",
     "description": "Ob Audio synchron generiert werden soll, unterstützt kling-v3, kling-v3-omni und kling-v2-6 (Pro-Modus)"
   },
   "name.startImage": {
-    "message": "Erstes Bild",
-    "description": "Formularfeldbezeichnung: Erstes Bild (Empfehlung auf Englisch: 'First Frame', kurz halten, um Knöpfe nicht zu verdecken)"
+    "message": "Erstes Referenzbild",
+    "description": "Formularfeldbezeichnung: Erstes Referenzbild (Empfehlung auf Englisch: 'First Frame', kurz halten, um Button nicht zu verdecken)"
   },
   "name.negativePrompt": {
     "message": "Negative Eingabe",
     "description": "Negative Texteingabe für die Videoerstellung"
   },
   "name.endImage": {
-    "message": "Letztes Bild",
-    "description": "Formularfeldbezeichnung: Letztes Bild (Empfehlung auf Englisch: 'Last Frame', kurz halten, um Knöpfe nicht zu verdecken)"
+    "message": "Letztes Referenzbild",
+    "description": "Formularfeldbezeichnung: Letztes Referenzbild (Empfehlung auf Englisch: 'Last Frame', kurz halten, um Button nicht zu verdecken)"
   },
   "name.videoUrl": {
     "message": "Benutzerdefiniertes Video",
@@ -401,7 +405,7 @@
   },
   "name.duration": {
     "message": "Videodauer",
-    "description": "Dauer des Videos"
+    "description": "Die Dauer des Videos"
   },
   "name.ingredients": {
     "message": "Mehrbild-Videogenerierung",
@@ -409,15 +413,15 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Das Modell, das zur Erstellung des Videos verwendet wird"
+    "description": "Die Modellversion, die zur Videogenerierung verwendet wird"
   },
   "name.ratio": {
-    "message": "Videoverhältnis",
-    "description": "Das Videoverhältnis, das zur Erstellung des Videos verwendet wird"
+    "message": "Videoformat",
+    "description": "Das Videoformat, das zur Videogenerierung verwendet wird"
   },
   "name.mode": {
     "message": "Videomodus",
-    "description": "Der Modus, der zur Erstellung des Videos verwendet wird"
+    "description": "Der Modus, der zur Videogenerierung verwendet wird"
   },
   "name.effect": {
     "message": "Videoeffekt",
@@ -425,22 +429,22 @@
   },
   "name.ingredientsModel": {
     "message": "Zutatenmodell",
-    "description": "Die Modellversion, die zur Erstellung des Videos verwendet wird"
+    "description": "Die Modellversion, die zur Videogenerierung verwendet wird"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Der Name des Kling Video-Generators"
+    "description": "Name des Kling-Videogenerators"
   },
   "description.ingredients": {
-    "message": "Aktivieren Sie diese Schaltfläche, um mehrere Bilder hochzuladen und Ihr eigenes Video zu erstellen.",
+    "message": "Aktivieren Sie diesen Schalter, um mehrere Bilder hochzuladen und Ihr eigenes Video zu generieren.",
     "description": "Beschreibung des Parameters 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Bei der Erstellung von Videos mit mehreren Bildern müssen mehrere Bilder hochgeladen werden.",
+    "message": "Im Auftrag zur Mehrbild-Videogenerierung müssen mehrere Bilder hochgeladen werden.",
     "description": "Beschreibung des Parameters 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Eingabetext für die Erstellung von Kling-Videos",
+    "message": "Eingabetext zur Generierung von Kling-Videos",
     "description": "Beschreibung des Parameters 'prompt'"
   },
   "description.negativePrompt": {
@@ -448,15 +452,15 @@
     "description": "Beschreibung des Parameters 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Laden Sie das erste Bild als Referenz hoch, das letzte Video wird auf das erste Bild basieren.",
+    "message": "Laden Sie das erste Bild als Referenz hoch, das letzte Video wird auf dem ersten Bild basieren.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.uploadEndImage": {
-    "message": "Laden Sie das letzte Bild als Referenz hoch, das letzte Video wird auf das letzte Bild basieren.",
+    "message": "Laden Sie das letzte Bild als Referenz hoch, das letzte Video wird auf dem letzten Bild basieren.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.cfgScale": {
-    "message": "Freiheitsgrad für die Videoerstellung, optional [0,1]. Je größer der Wert, desto stärker die Relevanz.",
+    "message": "Freiheitsgrad für die Videogenerierung, optional [0,1]. Je größer der Wert, desto stärker die Relevanz.",
     "description": "Beschreibung des Upload-Referenzparameters"
   },
   "description.mode": {
@@ -469,10 +473,10 @@
   },
   "description.mode4kIncompatibleCamera": {
     "message": "Kamerasteuerung ist aktiviert, kann nicht gleichzeitig mit 4K verwendet werden.",
-    "description": "Grund für die Deaktivierung der 4K-Option (Kamerasteuerung aktiviert)"
+    "description": "Grund für die Deaktivierung der 4K-Option (Kamerasteuerung eingestellt)"
   },
   "description.duration": {
-    "message": "Das normale Modell unterstützt nur 5/10 Sekunden; v3 / v3-Omni unterstützt 3/5/8/10/12/15 Sekunden.",
+    "message": "Das Standardmodell unterstützt nur 5/10 Sekunden; v3 / v3-Omni unterstützt 3/5/8/10/12/15 Sekunden.",
     "description": "Allgemeine Beschreibung des Dauerfeldes"
   },
   "description.durationV3Only": {
@@ -480,11 +484,11 @@
     "description": "Grund für die Deaktivierung der Daueroption"
   },
   "description.generateAudio": {
-    "message": "Audioeffekte werden gleichzeitig mit dem Video generiert. Nur kling-v3 / kling-v3-omni / kling-v2-6 (pro-Modus) unterstützt.",
+    "message": "Audioeffekte werden gleichzeitig mit dem Video generiert. Nur kling-v3 / kling-v3-omni / kling-v2-6 (Pro-Modus) unterstützt.",
     "description": "Beschreibung des Audioeffekt-Schalters (aktiviert)"
   },
   "description.generateAudioUnsupported": {
-    "message": "Das aktuelle Modell unterstützt keine synchronisierten Audioeffekte, nur kling-v3 / kling-v3-omni / kling-v2-6 (pro-Modus) verfügbar.",
+    "message": "Das aktuelle Modell unterstützt keine synchronisierten Audioeffekte, nur kling-v3 / kling-v3-omni / kling-v2-6 (Pro-Modus) verfügbar.",
     "description": "Beschreibung des Audioeffekt-Schalters (deaktiviert)"
   },
   "description.cameraControl": {
@@ -545,7 +549,7 @@
   },
   "placeholder.rotate": {
     "message": "Bitte auswählen...",
-    "description": "Platzhalter für die Eingabe der Drehung"
+    "description": "Platzhalter für die Eingabe der Rotation"
   },
   "placeholder.subMarker": {
     "message": "Bitte auswählen...",
@@ -553,58 +557,82 @@
   },
   "button.precise": {
     "message": "Präzise",
-    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
+    "description": "Text in der Schaltfläche zum Generieren von Kling-Videos"
   },
   "button.creative": {
     "message": "Kreativ",
-    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
+    "description": "Text in Button zum Generieren von Kling-Videos"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Text der Schaltfläche zur Erstellung von Kling-Videos"
+    "description": "Text in Button zum Generieren von Kling-Videos"
   },
   "button.extend": {
-    "message": "Video erweitern",
-    "description": "Text des Buttons zum Erweitern des Videos"
+    "message": "Video verlängern",
+    "description": "Text in Button zum Verlängern des Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Text des Buttons zum Herunterladen des Videos"
+    "description": "Text in Button zum Herunterladen des Videos"
   },
   "button.uploadImageUrl": {
     "message": "Hochladen",
-    "description": "Text des Buttons zum Hochladen eines Bildes (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
+    "description": "Text in Button zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
   },
   "button.uploadVideoUrl": {
     "message": "Video hochladen",
-    "description": "Text des Buttons zum Hochladen eines Videos"
+    "description": "Text in Button zum Hochladen von Videos"
   },
   "button.uploadReferences": {
     "message": "Hochladen",
-    "description": "Text des Buttons, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
+    "description": "Text in Button, der es dem Benutzer ermöglicht, Referenzen hochzuladen"
   },
   "message.uploadReferencesExceed": {
-    "message": "Maximal 1 Bild hochladen",
+    "message": "Maximal 1 Bild hochladbar",
     "description": "Fehlermeldung, wenn die Anzahl der hochgeladenen Bilder das Limit überschreitet"
   },
   "message.uploadReferencesSuccess": {
     "message": "Bild erfolgreich hochgeladen",
-    "description": "Erfolgsnachricht, wenn ein Bild erfolgreich hochgeladen wurde"
+    "description": "Erfolgsnachricht, wenn das Bild erfolgreich hochgeladen wurde"
   },
   "message.uploadReferencesError": {
     "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung, wenn das Hochladen eines Bildes fehlschlägt"
+    "description": "Fehlermeldung, wenn das Hochladen des Bildes fehlschlägt"
   },
   "message.endImageRequiresStart": {
     "message": "Bitte laden Sie zuerst das Startbild hoch, bevor Sie das Endbild verwenden",
     "description": "Fehlermeldung, wenn der Benutzer nur das Endbild ohne das Startbild hochgeladen hat"
   },
+  "message.endImageNotSupported": {
+    "message": "Das Endbild wird vom aktuellen Modell/Modus/Dauer nicht unterstützt, bitte passen Sie die Einstellungen an (häufige Anforderungen: Modus pro, Dauer 5s).",
+    "description": "Hinweis, wenn das hochgeladene Endbild vom aktuellen Modell nicht unterstützt wird"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Bestätigung erforderlich",
+    "description": "Titel des Bestätigungs-Popups, wenn beim Wechseln der Parameter vorhandene Einstellungen verloren gehen"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Die aktuelle Auswahl unterstützt die folgenden aktivierten Einstellungen nicht: {fields}. Das Fortfahren wird diese Einstellungen löschen.",
+    "description": "Hinweistext, wenn nach dem Wechseln von Modell/Modus/Dauer die gesammelten Einstellungen verloren gehen, {fields} wird durch Platzhalter ersetzt"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Nicht unterstützte Einstellungen gelöscht: {fields}",
+    "description": "Toast-Benachrichtigung, wenn der Benutzer den Wechsel bestätigt"
+  },
+  "button.confirmContinue": {
+    "message": "Wechsel fortsetzen",
+    "description": "Hauptbutton im Bestätigungs-Popup für den Verlust von Funktionen"
+  },
+  "button.cancelSwitch": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button im Bestätigungs-Popup für den Verlust von Funktionen"
+  },
   "message.startingTask": {
-    "message": "Aufgabe wird gestartet...",
-    "description": "Nachricht, wenn die Zeichnungsaufgabe beginnt"
+    "message": "Starte Aufgabe...",
+    "description": "Nachricht, wenn die Zeichnungsaufgabe gestartet wird"
   },
   "message.startTaskSuccess": {
-    "message": "Generierungsaufgabe erfolgreich gestartet",
+    "message": "Aufgabe erfolgreich gestartet",
     "description": "Erfolgsnachricht, wenn die Aufgabe erfolgreich gestartet wurde"
   },
   "message.startTaskFailed": {
@@ -612,7 +640,7 @@
     "description": "Fehlermeldung, wenn das Starten der Zeichnungsaufgabe fehlschlägt"
   },
   "message.usedUp": {
-    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Punkte, um fortzufahren",
+    "message": "Ihr Guthaben ist aufgebraucht, bitte kaufen Sie mehr Guthaben, um fortzufahren",
     "description": "Nachricht, wenn das Guthaben aufgebraucht ist"
   },
   "message.generating": {
@@ -668,11 +696,11 @@
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Aktionen",
-    "description": "Nachricht, wenn keine Aktionen verfügbar sind"
+    "message": "Keine verfügbaren Operationen",
+    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
   },
   "message.noTasks": {
-    "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",
+    "message": "Keine historischen Aufgaben, bitte klicken Sie links auf 'Video generieren'",
     "description": "Nachricht, wenn keine Aufgaben vorhanden sind"
   }
 }

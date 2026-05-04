@@ -13,10 +13,10 @@
   },
   "tab.comingSoon": {
     "message": "Em Breve",
-    "description": "Tab Label para conteúdo que está por vir"
+    "description": "Rótulo de aba para conteúdo que está por vir"
   },
   "tab.avatarComingSoon": {
-    "message": "Avatar Digital (Rosto + Vídeo com Síntese de Voz) em breve, aguarde!",
+    "message": "Avatar Digital (Rosto + Vídeo com Síntese de Voz) em breve, aguarde.",
     "description": "Tooltip explicativo para a aba Avatar que está desativada"
   },
   "name.motionImage": {
@@ -36,43 +36,43 @@
     "description": "Campo de orientação do personagem"
   },
   "name.orientationImage": {
-    "message": "Imagem de Seguimento",
-    "description": "Opção de orientação do personagem: imagem de seguimento"
+    "message": "Imagem de Referência",
+    "description": "Opção de orientação do personagem: imagem de referência"
   },
   "name.orientationVideo": {
-    "message": "Vídeo de Seguimento",
-    "description": "Opção de orientação do personagem: vídeo de seguimento"
+    "message": "Vídeo de Referência",
+    "description": "Opção de orientação do personagem: vídeo de referência"
   },
   "name.keepOriginalSound": {
     "message": "Manter Áudio Original",
-    "description": "Interruptor para manter o áudio original"
+    "description": "Alternância para manter o áudio original"
   },
   "description.motionImage": {
-    "message": "Envie uma imagem de referência do personagem; os elementos no vídeo, como personagem e fundo, serão baseados nela.",
-    "description": "Descrição da imagem de movimento"
+    "message": "Envie uma imagem de referência do personagem, que servirá como base para os elementos no vídeo, como personagem e fundo.",
+    "description": "Descrição da URL da imagem de movimento"
   },
   "description.motionVideo": {
-    "message": "Envie um vídeo de referência; os movimentos do personagem no vídeo gerado serão consistentes com este (MP4 / MOV, ≤1 minuto, ≤1 GB).",
-    "description": "Descrição do vídeo de movimento"
+    "message": "Envie um vídeo de referência de movimento, o movimento do personagem no vídeo gerado será consistente com este vídeo (MP4 / MOV, ≤1 minuto, ≤1 GB).",
+    "description": "Descrição da URL do vídeo de movimento"
   },
   "description.motionPrompt": {
-    "message": "Opcional. Pode incluir descrições positivas e negativas para ajudar na geração.",
+    "message": "Opcional. Pode incluir descrições positivas e negativas para ajudar na geração do efeito.",
     "description": "Descrição do prompt de movimento"
   },
   "description.characterOrientation": {
-    "message": "Ao escolher 'Vídeo de Seguimento', movimentos complexos são melhor representados; ao escolher 'Imagem de Seguimento', a orientação do personagem será consistente com a imagem de referência, resultando em melhores movimentos de câmera.",
+    "message": "Selecionar 'Vídeo de Referência' resulta em melhor desempenho para movimentos complexos; selecionar 'Imagem de Referência' alinha a orientação do personagem com a imagem de referência, melhorando o movimento da câmera.",
     "description": "Descrição da orientação do personagem"
   },
   "description.motionMode": {
-    "message": "std prioriza desempenho, pro prioriza qualidade de imagem",
+    "message": "std prioriza desempenho, pro prioriza qualidade de imagem.",
     "description": "Descrição do modo de movimento"
   },
   "description.keepOriginalSound": {
     "message": "Se ativado, mantém o áudio original do vídeo de referência; se desativado, o vídeo gerado não incluirá o áudio original.",
-    "description": "Descrição para manter o áudio original"
+    "description": "Descrição da opção de manter o áudio original"
   },
   "placeholder.motionPrompt": {
-    "message": "Exemplo: uma pessoa está pulando. Opcional.",
+    "message": "Exemplo: uma pessoa pulando. Opcional.",
     "description": "Placeholder para o prompt de movimento"
   },
   "button.generateMotion": {
@@ -91,6 +91,10 @@
     "message": "Inspiração",
     "description": "Botão para abrir a aba de Inspiração"
   },
+  "inspiration.removeChip": {
+    "message": "Remover esta predefinição",
+    "description": "Botão para remover uma predefinição selecionada na área de prompts"
+  },
   "inspiration.hint": {
     "message": "Clique na frase para adicionar automaticamente ao prompt; clique novamente para remover.",
     "description": "Instruções de uso no topo da aba de Inspiração"
@@ -100,7 +104,7 @@
     "description": "Estado vazio da aba de Inspiração"
   },
   "inspiration.selectedSummary": {
-    "message": "Selecionado {count} itens",
+    "message": "Selecionado {count} item(s)",
     "description": "Número de predefinições selecionadas"
   },
   "inspiration.clearSelected": {
@@ -188,11 +192,11 @@
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "Plano Médio",
+    "message": "Plano médio",
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Plano Longo",
+    "message": "Plano longo",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
@@ -212,11 +216,11 @@
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "Perfil",
+    "message": "Vista lateral",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "Close-up",
+    "message": "Close-up facial",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
@@ -224,7 +228,7 @@
     "description": ""
   },
   "inspiration.chip.lightSunlight": {
-    "message": "Luz do sol",
+    "message": "Luz solar",
     "description": ""
   },
   "inspiration.chip.lightSoft": {
@@ -248,7 +252,7 @@
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
-    "message": "Luz da cidade à noite",
+    "message": "Luz noturna da cidade",
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
@@ -272,7 +276,7 @@
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "Vivo",
+    "message": "Vibrante",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
@@ -296,7 +300,7 @@
     "description": "Modo de alta qualidade do vídeo Kling (saída 1080p)"
   },
   "name.mode4k": {
-    "message": "4K nativo",
+    "message": "Nativo 4K",
     "description": "Modo Kling 4K (apenas suportado por v3 / v3-Omni)"
   },
   "name.cameraControl": {
@@ -313,19 +317,19 @@
   },
   "name.cameraTypeDownBack": {
     "message": "Descer e recuar",
-    "description": "Pré-definição de movimento: descer e recuar"
+    "description": "Pré-definição de movimento de câmera: descer e recuar"
   },
   "name.cameraTypeForwardUp": {
     "message": "Avançar e subir",
-    "description": "Pré-definição de movimento: avançar e subir"
+    "description": "Pré-definição de movimento de câmera: avançar e subir"
   },
   "name.cameraTypeLeftTurnForward": {
     "message": "Virar à esquerda e avançar",
-    "description": "Pré-definição de movimento: virar à esquerda e avançar"
+    "description": "Pré-definição de movimento de câmera: virar à esquerda e avançar"
   },
   "name.cameraTypeRightTurnForward": {
     "message": "Virar à direita e avançar",
-    "description": "Pré-definição de movimento: virar à direita e avançar"
+    "description": "Pré-definição de movimento de câmera: virar à direita e avançar"
   },
   "name.cc_horizontal": {
     "message": "Movimento horizontal",
@@ -404,39 +408,39 @@
     "description": "Duração do vídeo"
   },
   "name.ingredients": {
-    "message": "Criar vídeo com várias imagens",
-    "description": "Alternância/rótulo para criar vídeo com várias imagens"
+    "message": "Vídeo com Múltiplas Imagens",
+    "description": "Multi-Image video switch/label (English suggestion: Multi-Image, keep it short)"
   },
   "name.model": {
-    "message": "Versão do modelo",
+    "message": "Versão do Modelo",
     "description": "Modelo utilizado para gerar o vídeo"
   },
   "name.ratio": {
-    "message": "Proporção do vídeo",
-    "description": "A proporção do vídeo utilizada para gerar o vídeo"
+    "message": "Proporção do Vídeo",
+    "description": "Proporção do vídeo a ser gerado"
   },
   "name.mode": {
-    "message": "Modo de vídeo",
-    "description": "O modo utilizado para gerar o vídeo"
+    "message": "Modo do Vídeo",
+    "description": "Modo utilizado para gerar o vídeo"
   },
   "name.effect": {
-    "message": "Efeito de vídeo",
-    "description": "Nome do parâmetro de estilo usado para alternar entre diferentes versões ou estilos do modelo"
+    "message": "Efeito do Vídeo",
+    "description": "Nome do parâmetro de estilo para alternar entre diferentes versões ou estilos do modelo"
   },
   "name.ingredientsModel": {
-    "message": "Modelo de ingredientes",
-    "description": "A versão do modelo utilizada para gerar o vídeo"
+    "message": "Modelo de Ingredientes",
+    "description": "Modelo utilizado para gerar o vídeo"
   },
   "name.klingBot": {
     "message": "Kling Bot",
     "description": "Nome do gerador de vídeo Kling"
   },
   "description.ingredients": {
-    "message": "Ative este botão se quiser enviar várias imagens para gerar seu próprio vídeo.",
+    "message": "Ative este botão se quiser enviar várias imagens para gerar seu vídeo.",
     "description": "Descrição do parâmetro 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "No tarefa de criar vídeo com várias imagens, é necessário enviar várias imagens.",
+    "message": "No tarefa de vídeo com múltiplas imagens, é necessário enviar várias imagens.",
     "description": "Descrição do parâmetro 'imageUrl'"
   },
   "description.prompt": {
@@ -448,51 +452,51 @@
     "description": "Descrição do parâmetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Envie a imagem do quadro inicial como referência para a geração; o vídeo final será gerado com base no quadro inicial",
-    "description": "Descrição do parâmetro de referência de upload"
+    "message": "Envie a imagem do quadro inicial como referência para a geração; o vídeo final será gerado com base no quadro inicial.",
+    "description": "Descrição do parâmetro de upload de referência"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem do quadro final como referência para a geração; o vídeo final será gerado com base no quadro final",
-    "description": "Descrição do parâmetro de referência de upload"
+    "message": "Envie a imagem do quadro final como referência para a geração; o vídeo final será gerado com base no quadro final.",
+    "description": "Descrição do parâmetro de upload de referência"
   },
   "description.cfgScale": {
     "message": "Grau de liberdade na geração do vídeo, opcional [0,1]. Quanto maior o valor, mais forte a correlação.",
-    "description": "Descrição do parâmetro de referência de upload"
+    "description": "Descrição do parâmetro de upload de referência"
   },
   "description.mode": {
-    "message": "std tem melhor desempenho, pro tem melhor qualidade; 4K é suportado apenas por v3 / v3-Omni e não pode ser usado com controle de câmera ao mesmo tempo",
+    "message": "std tem melhor desempenho, pro tem melhor qualidade; 4K é suportado apenas por v3 / v3-Omni e não pode ser usado com controle de câmera ao mesmo tempo.",
     "description": "Descrição geral do campo de modo"
   },
   "description.mode4kRequiresV3": {
-    "message": "Apenas kling-v3 / kling-v3-omni suportam",
+    "message": "Apenas kling-v3 / kling-v3-omni suportados",
     "description": "Razão pela qual a opção 4K está desativada (modelo incompatível)"
   },
   "description.mode4kIncompatibleCamera": {
-    "message": "O controle de câmera está ativado e não pode ser usado com 4K ao mesmo tempo",
+    "message": "Controle de câmera ativado, não pode ser usado com 4K ao mesmo tempo.",
     "description": "Razão pela qual a opção 4K está desativada (controle de câmera configurado)"
   },
   "description.duration": {
-    "message": "Modelos normais suportam apenas 5/10 segundos; v3 / v3-Omni suportam 3/5/8/10/12/15 segundos",
+    "message": "Modelo normal suporta apenas 5/10 segundos; v3 / v3-Omni suporta 3/5/8/10/12/15 segundos.",
     "description": "Descrição geral do campo de duração"
   },
   "description.durationV3Only": {
-    "message": "Apenas v3 / v3-Omni suportam",
+    "message": "Apenas v3 / v3-Omni suportados",
     "description": "Razão pela qual a opção de duração está desativada"
   },
   "description.generateAudio": {
-    "message": "Sintetiza efeitos sonoros enquanto gera o vídeo. Apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) suportam",
-    "description": "Descrição do botão de efeitos sonoros (ativado)"
+    "message": "Sintetiza efeitos sonoros enquanto gera o vídeo. Apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) suportados.",
+    "description": "Descrição do botão de efeitos sonoros (suportado)"
   },
   "description.generateAudioUnsupported": {
-    "message": "O modelo atual não suporta efeitos sonoros sincronizados, apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) estão disponíveis",
+    "message": "Modelo atual não suporta efeitos sonoros sincronizados, apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) disponíveis.",
     "description": "Descrição do botão de efeitos sonoros (desativado)"
   },
   "description.cameraControl": {
-    "message": "Controla a direção do movimento da câmera. Escolha 'Personalizado' para ajustar em 6 dimensões, cada valor entre [-1, 1]",
+    "message": "Controla a direção do movimento da câmera. Escolha 'Personalizado' para ajustar em 6 dimensões, cada valor entre [-1, 1].",
     "description": "Descrição do controle de câmera"
   },
   "description.cameraControlDisabled4k": {
-    "message": "Modo 4K selecionado, controle de câmera não disponível, mude para std / pro e ative novamente",
+    "message": "Modo 4K selecionado, controle de câmera não disponível, mude para std / pro e ative novamente.",
     "description": "Razão pela qual o controle de câmera está desativado"
   },
   "status.pending": {
@@ -553,10 +557,10 @@
   },
   "button.precise": {
     "message": "Preciso",
-    "description": "Texto do botão para gerar vídeo Kling"
+    "description": "Texto do botão para gerar vídeos Kling"
   },
   "button.creative": {
-    "message": "Criativo",
+    "message": "Criar",
     "description": "Texto do botão para gerar vídeo Kling"
   },
   "button.generate": {
@@ -565,7 +569,7 @@
   },
   "button.extend": {
     "message": "Expandir vídeo",
-    "description": "Texto do botão para expandir o vídeo"
+    "description": "Texto do botão para expandir vídeo"
   },
   "button.download": {
     "message": "Baixar vídeo",
@@ -589,15 +593,39 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagem carregada com sucesso",
-    "description": "Mensagem de sucesso ao carregar uma imagem com sucesso"
+    "description": "Mensagem de sucesso ao carregar imagem com sucesso"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao carregar imagem, por favor tente novamente",
     "description": "Mensagem de erro quando o carregamento da imagem falha"
   },
   "message.endImageRequiresStart": {
-    "message": "Por favor, carregue a imagem do quadro inicial antes de usar a referência do quadro final",
-    "description": "Mensagem de erro quando o usuário só carregou o quadro final sem o inicial"
+    "message": "Por favor, carregue a imagem da primeira frame antes de usar a imagem da última frame",
+    "description": "Mensagem de erro quando o usuário só carregou a última frame sem a primeira"
+  },
+  "message.endImageNotSupported": {
+    "message": "A imagem da última frame não é suportada pelo modelo/modo/duração atual, por favor ajuste as configurações (requisitos comuns: modo pro, duração 5s).",
+    "description": "Mensagem quando a última frame carregada não é suportada pelo modelo atual"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirmação necessária",
+    "description": "Título da janela de confirmação ao mudar parâmetros que perderão as configurações existentes"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "A seleção atual não suporta as seguintes configurações habilitadas: {fields}. Continuar irá limpar essas configurações.",
+    "description": "Mensagem informando que as configurações serão perdidas após mudar model/mode/duration, {fields} será substituído pelo nome real dos campos"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Configurações não suportadas limpas: {fields}",
+    "description": "Notificação toast após o usuário confirmar a mudança"
+  },
+  "button.confirmContinue": {
+    "message": "Continuar mudança",
+    "description": "Botão principal da janela de confirmação de perda de feature"
+  },
+  "button.cancelSwitch": {
+    "message": "Cancelar",
+    "description": "Botão de cancelar na janela de confirmação de perda de feature"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -612,7 +640,7 @@
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
   "message.usedUp": {
-    "message": "Seus pontos acabaram, por favor compre mais pontos para continuar",
+    "message": "Seus pontos acabaram, por favor compre mais pontos para continuar usando",
     "description": "Mensagem quando os pontos se esgotaram"
   },
   "message.generating": {
@@ -628,44 +656,44 @@
     "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar imagem",
+    "message": "Falha ao gerar a imagem",
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imagens do quadro inicial excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do quadro inicial excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "O tamanho do arquivo não pode exceder 10MB!",
     "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo deve estar no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo não está no formato MP4"
+    "message": "O arquivo carregado deve ser no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo carregado não está no formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Número de imagens do quadro inicial excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do quadro inicial excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Número de imagens do quadro final excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do quadro final excede o limite"
+    "message": "Número de imagens da última frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da última frame excede o limite"
   },
   "message.uploadStartImageError": {
-    "message": "Falha ao carregar imagem do quadro inicial",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro inicial"
+    "message": "Falha ao carregar imagem da primeira frame",
+    "description": "Mensagem de erro ao falhar ao carregar a imagem da primeira frame"
   },
   "message.uploadVideoError": {
     "message": "Falha ao carregar vídeo",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro inicial"
+    "description": "Mensagem de erro ao falhar ao carregar a imagem da primeira frame"
   },
   "message.uploadEndImageError": {
-    "message": "Falha ao carregar imagem do quadro final",
-    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro final"
+    "message": "Falha ao carregar imagem da última frame",
+    "description": "Mensagem de erro ao falhar ao carregar a imagem da última frame"
   },
   "message.uploadDocumentsError": {
     "message": "Falha ao carregar documento",
-    "description": "Mensagem de erro ao falhar ao carregar um documento"
+    "description": "Mensagem de erro ao falhar ao carregar documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

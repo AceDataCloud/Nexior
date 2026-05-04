@@ -16,7 +16,7 @@
     "description": ""
   },
   "description.list": {
-    "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. After configuration, the dialogue requests for the corresponding model will directly call the upstream service provider with your Key, not consuming platform Credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
+    "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. Once configured, the dialogue requests for the corresponding model will directly call the upstream service provider with your Key, without consuming platform credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
     "description": ""
   },
   "field.provider": {
@@ -104,7 +104,7 @@
     "description": ""
   },
   "message.deleteConfirm": {
-    "message": "Confirm deletion of this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
+    "message": "Are you sure you want to delete this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
     "description": ""
   },
   "message.deleteSuccess": {
@@ -148,7 +148,7 @@
     "description": ""
   },
   "badge.tooltip": {
-    "message": "This conversation is using your {provider} API Key. Costs are settled by your {provider} account and do not deduct platform balance.",
+    "message": "The current dialogue is using your {provider} API Key, and costs will be settled by the {provider} account, without deducting from platform balance.",
     "description": ""
   },
   "badge.manage": {
@@ -157,46 +157,46 @@
   },
   "button.testConnection": {
     "message": "Test",
-    "description": "Button in the add/edit dialog - only tests the current form configuration without saving credentials."
+    "description": "Button in the add/edit dialog—only tests the current form configuration, does not save credentials."
   },
   "test.success": {
-    "message": "Connectivity Test Successful",
-    "description": "Success title in the connectivity test result area."
+    "message": "Connectivity test successful",
+    "description": "Success title in the connectivity test results area."
   },
   "test.failure": {
-    "message": "Connectivity Test Failed",
-    "description": "Failure title in the connectivity test result area."
+    "message": "Connectivity test failed",
+    "description": "Failure title in the connectivity test results area."
   },
   "test.endpoint": {
-    "message": "Request URL",
-    "description": "Label for the request URL in the test result details."
+    "message": "Request Address",
+    "description": "Label for the request URL in the test results details."
   },
   "test.status": {
     "message": "Status Code",
-    "description": "Label for the HTTP status code in the test result details."
+    "description": "Label for the HTTP status code in the test results details."
   },
   "test.message": {
     "message": "Upstream Response",
-    "description": "Label for upstream error/message text in the test result details."
+    "description": "Label for upstream error/message text in the test results details."
   },
   "providerDesc.openai": {
-    "message": "Replace the site's ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) dialogue requests.",
+    "message": "Replace ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) dialogue requests on this site.",
     "description": "Subtitle for the OpenAI option in the provider dropdown."
   },
   "providerDesc.anthropic": {
-    "message": "Replace the site's Claude (Sonnet / Opus / Haiku, etc.) dialogue requests.",
+    "message": "Replace Claude (Sonnet / Opus / Haiku, etc.) dialogue requests on this site.",
     "description": "Subtitle for the Anthropic option in the provider dropdown."
   },
   "providerDesc.google": {
-    "message": "Replace the site's Gemini (Pro / Flash series) dialogue requests.",
+    "message": "Replace Gemini (Pro / Flash series) dialogue requests on this site.",
     "description": "Subtitle for the Google option in the provider dropdown."
   },
   "providerDesc.xai": {
-    "message": "Replace the site's Grok dialogue requests.",
+    "message": "Replace Grok dialogue requests on this site.",
     "description": "Subtitle for the xAI option in the provider dropdown."
   },
   "providerDesc.deepseek": {
-    "message": "Replace the site's DeepSeek (V3 / R1, etc.) dialogue requests.",
+    "message": "Replace DeepSeek (V3 / R1, etc.) dialogue requests on this site.",
     "description": "Subtitle for the DeepSeek option in the provider dropdown."
   },
   "providerDesc.moonshot": {
