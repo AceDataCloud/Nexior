@@ -16,20 +16,20 @@
     "description": "近日公開のタブラベル"
   },
   "tab.avatarComingSoon": {
-    "message": "アバター（顔 + 音声合成による動画）近日公開、乞うご期待",
+    "message": "アバター（顔 + 音声合成動画）近日公開、乞うご期待",
     "description": "Avatarタブが無効のツールチップ説明"
   },
   "name.motionImage": {
     "message": "人物参考画像",
-    "description": "モーションコントロール内の人物画像入力"
+    "description": "モーションコントロールの人物画像入力"
   },
   "name.motionVideo": {
     "message": "動作参考動画",
-    "description": "モーションコントロール内の参考動画入力"
+    "description": "モーションコントロールの参考動画入力"
   },
   "name.motionPrompt": {
     "message": "補足プロンプト（任意）",
-    "description": "モーションコントロール内の補足プロンプト"
+    "description": "モーションコントロールの補足プロンプト"
   },
   "name.characterOrientation": {
     "message": "人物の向き",
@@ -76,12 +76,12 @@
     "description": "motion promptのプレースホルダー"
   },
   "button.generateMotion": {
-    "message": "モーションコントロール動画を生成",
+    "message": "動作コントロール動画を生成",
     "description": "モーションコントロール生成ボタン"
   },
   "message.motionMissingInputs": {
     "message": "人物画像と動作参考動画を同時にアップロードしてください",
-    "description": "モーションコントロールで入力が不足しているときのメッセージ"
+    "description": "モーションコントロールの入力が不足している時のメッセージ"
   },
   "inspiration.title": {
     "message": "インスピレーションとプリセット",
@@ -90,6 +90,10 @@
   "inspiration.openButton": {
     "message": "インスピレーション",
     "description": "インスピレーションドロワーを開くボタン"
+  },
+  "inspiration.removeChip": {
+    "message": "このプリセットを削除",
+    "description": "選択したプリセットを削除するボタンのaria-label"
   },
   "inspiration.hint": {
     "message": "フレーズをクリックするとプロンプトに自動追加されます。再度クリックすると削除されます。",
@@ -100,12 +104,12 @@
     "description": "インスピレーションドロワーの空状態"
   },
   "inspiration.selectedSummary": {
-    "message": "選択済み {count} 件",
+    "message": "選択した項目 {count} 件",
     "description": "選択されたプリセットの数"
   },
   "inspiration.clearSelected": {
     "message": "すべてクリア",
-    "description": "選択されたすべてのプリセットをクリアするボタン"
+    "description": "すべての選択されたプリセットをクリアするボタン"
   },
   "inspiration.group.cameraMovements": {
     "message": "カメラの動き",
@@ -124,8 +128,8 @@
     "description": "インスピレーショングループ：光と影"
   },
   "inspiration.group.frame": {
-    "message": "画面",
-    "description": "インスピレーショングループ：画面 / 構図"
+    "message": "フレーム",
+    "description": "インスピレーショングループ：フレーム / 構図"
   },
   "inspiration.group.atmosphere": {
     "message": "雰囲気",
@@ -152,7 +156,7 @@
     "description": ""
   },
   "inspiration.chip.follow": {
-    "message": "主体に従ってカメラ移動",
+    "message": "主体にカメラが追従",
     "description": ""
   },
   "inspiration.chip.panRight": {
@@ -168,7 +172,7 @@
     "description": ""
   },
   "inspiration.chip.orbit": {
-    "message": "カメラを周回させる",
+    "message": "カメラが周回",
     "description": ""
   },
   "inspiration.chip.speedSlow": {
@@ -188,23 +192,23 @@
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "ミディアムショット",
+    "message": "中景",
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "ロングショット",
+    "message": "遠景",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "低角度ショット",
+    "message": "低角度",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "高角度俯拍",
+    "message": "高角度",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
-    "message": "浅景深",
+    "message": "浅い被写界深度",
     "description": ""
   },
   "inspiration.chip.shotFront": {
@@ -212,31 +216,31 @@
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "侧面",
+    "message": "側面",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "特写",
+    "message": "クローズアップ",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
-    "message": "无人机视角",
+    "message": "ドローン視点",
     "description": ""
   },
   "inspiration.chip.lightSunlight": {
-    "message": "阳光",
+    "message": "日光",
     "description": ""
   },
   "inspiration.chip.lightSoft": {
-    "message": "柔光",
+    "message": "ソフトライト",
     "description": ""
   },
   "inspiration.chip.lightNeon": {
-    "message": "霓虹",
+    "message": "ネオンライト",
     "description": ""
   },
   "inspiration.chip.lightWarm": {
-    "message": "暖光",
+    "message": "暖色光",
     "description": ""
   },
   "inspiration.chip.lightNature": {
@@ -244,88 +248,88 @@
     "description": ""
   },
   "inspiration.chip.lightCandle": {
-    "message": "烛光",
+    "message": "キャンドルライト",
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
-    "message": "城市夜景",
+    "message": "都市の夜景",
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
-    "message": "丰富细节",
+    "message": "詳細豊富",
     "description": ""
   },
   "inspiration.chip.frameSimpleBg": {
-    "message": "简洁背景",
+    "message": "シンプルな背景",
     "description": ""
   },
   "inspiration.chip.atmosphereMysterious": {
-    "message": "神秘氛围",
+    "message": "神秘的な雰囲気",
     "description": ""
   },
   "inspiration.chip.atmospherePeaceful": {
-    "message": "宁静氛围",
+    "message": "穏やかな雰囲気",
     "description": ""
   },
   "inspiration.chip.atmosphereHeartwarming": {
-    "message": "温暖治愈",
+    "message": "心温まる",
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "生动鲜活",
+    "message": "鮮やか",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
-    "message": "色彩丰富",
+    "message": "色とりどり",
     "description": ""
   },
   "name.taskId": {
     "message": "タスク ID",
-    "description": "任务的 ID"
+    "description": "タスクの ID"
   },
   "name.type": {
     "message": "タイプ",
-    "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
+    "description": "生成する Kling ビデオの内容タイプ（例：'リンク'、'テキスト'など）"
   },
   "name.modeStd": {
     "message": "標準 (720p)",
-    "description": "Kling视频的标准模式（输出 720p）"
+    "description": "Kling ビデオの標準モード（720p 出力）"
   },
   "name.modePro": {
     "message": "高品質 (1080p)",
-    "description": "Kling视频的高品质模式（输出 1080p）"
+    "description": "Kling ビデオの高品質モード（1080p 出力）"
   },
   "name.mode4k": {
     "message": "ネイティブ 4K",
-    "description": "Kling 4K 模式（仅 v3 / v3-Omni 支持）"
+    "description": "Kling 4K モード（v3 / v3-Omni のみサポート）"
   },
   "name.cameraControl": {
     "message": "カメラ制御",
-    "description": "相机控制类型与参数"
+    "description": "カメラ制御のタイプとパラメータ"
   },
   "name.cameraTypeNone": {
     "message": "使用しない",
-    "description": "不使用运镜控制"
+    "description": "カメラ制御を使用しない"
   },
   "name.cameraTypeSimple": {
     "message": "カスタム（6次元）",
-    "description": "使用自定义六维度参数"
+    "description": "カスタムの6次元パラメータを使用"
   },
   "name.cameraTypeDownBack": {
-    "message": "下移して後退",
-    "description": "预设运镜：下移并后退"
+    "message": "下移動と後退",
+    "description": "プリセットカメラ制御：下移動と後退"
   },
   "name.cameraTypeForwardUp": {
-    "message": "前進して上昇",
-    "description": "预设运镜：向前并上移"
+    "message": "前進と上移動",
+    "description": "プリセットカメラ制御：前進と上移動"
   },
   "name.cameraTypeLeftTurnForward": {
-    "message": "左に回転して前進",
-    "description": "预设运镜：左转并前进"
+    "message": "左回転と前進",
+    "description": "プリセットカメラ制御：左回転と前進"
   },
   "name.cameraTypeRightTurnForward": {
-    "message": "右に回転して前進",
-    "description": "预设运镜：右转并前进"
+    "message": "右回転と前進",
+    "description": "プリセットカメラ制御：右回転と前進"
   },
   "name.cc_horizontal": {
     "message": "水平移動",
@@ -353,115 +357,115 @@
   },
   "name.failure": {
     "message": "失敗",
-    "description": "任务的失败状态"
+    "description": "タスクの失敗状態"
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "任务失败的原因"
+    "description": "タスク失敗の理由"
   },
   "name.status": {
     "message": "ステータス",
-    "description": "任务的状态"
+    "description": "タスクのステータス"
   },
   "name.traceId": {
     "message": "トレース ID",
-    "description": "任务的追踪 ID"
+    "description": "タスクのトレース ID"
   },
   "name.createdAt": {
     "message": "作成日時",
-    "description": "生成 Kling 视频的日期和时间"
+    "description": "Kling ビデオ生成の日付と時間"
   },
   "name.cfgScale": {
     "message": "自由度",
-    "description": "生成视频的自由度参数（0-1），值越大越贴近参考（英文建议：Freedom Level）"
+    "description": "生成ビデオの自由度パラメータ（0-1）、値が大きいほど参照に近づく（英語の提案：Freedom Level）"
   },
   "name.generateAudio": {
     "message": "音声を同期生成",
-    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
+    "description": "音声を同期生成するかどうか、kling-v3、kling-v3-omni、kling-v2-6（プロモード）をサポート"
   },
   "name.startImage": {
-    "message": "初フレーム画像",
-    "description": "表单字段标签：首帧参考图（英文建议翻译为“First Frame”，保持简短避免遮挡按钮）"
+    "message": "初フレーム参照画像",
+    "description": "フォームフィールドラベル：初フレーム参照画像（英語の提案：'First Frame'、短くしてボタンを隠さないように）"
   },
   "name.negativePrompt": {
     "message": "ネガティブプロンプト",
-    "description": "生成视频的负向文本提示"
+    "description": "生成ビデオのネガティブテキストプロンプト"
   },
   "name.endImage": {
-    "message": "終フレーム画像",
-    "description": "表单字段标签：尾帧参考图（英文建议翻译为“Last Frame”，保持简短避免遮挡按钮）"
+    "message": "終フレーム参照画像",
+    "description": "フォームフィールドラベル：終フレーム参照画像（英語の提案：'Last Frame'、短くしてボタンを隠さないように）"
   },
   "name.videoUrl": {
-    "message": "カスタム動画",
-    "description": "自定义视频"
+    "message": "カスタムビデオ",
+    "description": "カスタムビデオ"
   },
   "name.prompt": {
-    "message": "動画プロンプト",
-    "description": "内容输入的提示"
+    "message": "ビデオプロンプト",
+    "description": "内容入力のプロンプト"
   },
   "name.duration": {
     "message": "動画の長さ",
-    "description": "视频的时长"
+    "description": "動画の長さ"
   },
   "name.ingredients": {
-    "message": "複数画像で動画作成",
-    "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
+    "message": "マルチ画像動画",
+    "description": "マルチ画像動画のスイッチ/ラベル（英語の提案：Multi-Image、短く保つ）"
   },
   "name.model": {
     "message": "モデルバージョン",
     "description": "動画生成に使用されるモデルのバージョン"
   },
   "name.ratio": {
-    "message": "ビデオ比率",
-    "description": "生成するビデオに使用されるビデオ比率"
+    "message": "動画比率",
+    "description": "動画生成に使用される比率"
   },
   "name.mode": {
-    "message": "ビデオモード",
-    "description": "生成するビデオに使用されるモード"
+    "message": "動画モード",
+    "description": "動画生成に使用されるモード"
   },
   "name.effect": {
-    "message": "ビデオ効果",
-    "description": "異なるバージョンやスタイルのモデル間で切り替えるためのスタイルパラメータの名前"
+    "message": "動画効果",
+    "description": "異なるバージョンやスタイルのモデル間で切り替えるためのスタイルパラメータ名"
   },
   "name.ingredientsModel": {
     "message": "成分モデル",
-    "description": "生成するビデオに使用されるモデルバージョン"
+    "description": "動画生成に使用されるモデルのバージョン"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Klingビデオ生成器の名前"
+    "description": "Kling動画生成器の名称"
   },
   "description.ingredients": {
-    "message": "複数の画像をアップロードして自分のビデオを生成したい場合は、このボタンを開いてください。",
+    "message": "複数の画像をアップロードして自分の動画を生成したい場合は、このボタンをオンにしてください。",
     "description": "パラメータ'ingredients'の説明"
   },
   "description.imageUrl": {
-    "message": "複数画像でビデオを作成するタスクでは、複数の画像をアップロードする必要があります。",
+    "message": "マルチ画像動画のタスクでは、複数の画像をアップロードする必要があります。",
     "description": "パラメータ'imageUrl'の説明"
   },
   "description.prompt": {
-    "message": "Klingビデオを生成するためのプロンプト",
+    "message": "Kling動画生成のためのプロンプト",
     "description": "パラメータ'prompt'の説明"
   },
   "description.negativePrompt": {
-    "message": "ネガティブテキストプロンプト（オプション、200文字以内）",
+    "message": "ネガティブテキストプロンプト、オプション、200文字以内",
     "description": "パラメータ'prompt'の説明"
   },
   "description.uploadStartImage": {
-    "message": "生成の参考として初フレーム画像をアップロードします。最終的なビデオは初フレームを参考に生成されます。",
+    "message": "生成の参考として初フレーム画像をアップロードします。最終的な動画は初フレームを参考に生成されます。",
     "description": "アップロード参考パラメータの説明"
   },
   "description.uploadEndImage": {
-    "message": "生成の参考として終フレーム画像をアップロードします。最終的なビデオは終フレームを参考に生成されます。",
+    "message": "生成の参考として終フレーム画像をアップロードします。最終的な動画は終フレームを参考に生成されます。",
     "description": "アップロード参考パラメータの説明"
   },
   "description.cfgScale": {
-    "message": "生成ビデオの自由度（オプション）[0,1]。値が大きいほど関連性が強くなります。",
+    "message": "動画生成の自由度、オプション[0,1]。値が大きいほど関連性が強くなります。",
     "description": "アップロード参考パラメータの説明"
   },
   "description.mode": {
     "message": "stdは性能が高く、proは画質が良い；4Kはv3 / v3-Omniのみサポートされ、カメラ制御と同時に使用できません。",
-    "description": "モードフィールドの全体的な説明"
+    "description": "モードフィールドの全体説明"
   },
   "description.mode4kRequiresV3": {
     "message": "kling-v3 / kling-v3-omniのみサポート",
@@ -472,15 +476,15 @@
     "description": "4Kオプションが無効な理由（カメラ制御が設定されている）"
   },
   "description.duration": {
-    "message": "通常モデルは5/10秒のみサポート；v3 / v3-Omniは3/5/8/10/12/15秒をサポート",
-    "description": "長さフィールドの全体的な説明"
+    "message": "通常のモデルは5/10秒のみサポート；v3 / v3-Omniは3/5/8/10/12/15秒をサポート",
+    "description": "長さフィールドの全体説明"
   },
   "description.durationV3Only": {
     "message": "v3 / v3-Omniのみサポート",
     "description": "長さオプションが無効な理由"
   },
   "description.generateAudio": {
-    "message": "ビデオ生成中に音声効果を合成します。kling-v3 / kling-v3-omni / kling-v2-6（proモード）のみサポート",
+    "message": "動画生成と同時に音声効果を合成します。kling-v3 / kling-v3-omni / kling-v2-6（proモード）のみサポート",
     "description": "音声効果スイッチの説明（サポートされている）"
   },
   "description.generateAudioUnsupported": {
@@ -501,7 +505,7 @@
   },
   "status.processing": {
     "message": "処理中",
-    "description": "タスクの待機状態"
+    "description": "タスクの処理状態"
   },
   "placeholder.paddingNoise": {
     "message": "選択してください...",
@@ -516,11 +520,11 @@
     "description": "パディングレベルのプレースホルダー"
   },
   "placeholder.prompt": {
-    "message": "生成するビデオスタイルのプロンプトを入力してください。例：moving",
+    "message": "生成する動画スタイルのプロンプトを入力してください。例：moving",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.negativePrompt": {
-    "message": "生成するビデオスタイルのネガティブプロンプトを入力してください。200文字以内",
+    "message": "生成する動画スタイルのネガティブプロンプトを入力してください。200文字以内",
     "description": "プロンプトフィールドのプレースホルダーテキスト"
   },
   "placeholder.position": {
@@ -553,35 +557,35 @@
   },
   "button.precise": {
     "message": "精密",
-    "description": "Klingビデオを生成するボタンテキスト"
+    "description": "Kling動画を生成するためのボタンテキスト"
   },
   "button.creative": {
     "message": "クリエイティブ",
-    "description": "Klingビデオを生成するボタンテキスト"
+    "description": "Kling動画を生成するボタンのテキスト"
   },
   "button.generate": {
     "message": "生成",
-    "description": "Klingビデオを生成するボタンテキスト"
+    "description": "Kling動画を生成するボタンのテキスト"
   },
   "button.extend": {
-    "message": "ビデオを拡張",
-    "description": "ビデオ拡張ボタンのテキスト"
+    "message": "動画を拡張",
+    "description": "動画を拡張するボタンのテキスト"
   },
   "button.download": {
     "message": "動画をダウンロード",
-    "description": "動画ダウンロードボタンのテキスト"
+    "description": "動画をダウンロードするボタンのテキスト"
   },
   "button.uploadImageUrl": {
     "message": "アップロード",
-    "description": "画像アップロードボタンのテキスト（英語は「Upload」に簡略化、'Upload Image'は使用しない）"
+    "description": "画像をアップロードするボタンのテキスト（英語は「Upload」に簡略化し、「Upload Image」は使用しない）"
   },
   "button.uploadVideoUrl": {
     "message": "動画をアップロード",
-    "description": "動画アップロードボタンのテキスト"
+    "description": "動画をアップロードするボタンのテキスト"
   },
   "button.uploadReferences": {
     "message": "アップロード",
-    "description": "ユーザーが参考資料をアップロードするためのボタンテキスト"
+    "description": "ユーザーが参考をアップロードするためのボタンのテキスト"
   },
   "message.uploadReferencesExceed": {
     "message": "最大1枚の画像をアップロードできます",
@@ -598,6 +602,30 @@
   "message.endImageRequiresStart": {
     "message": "尾フレームの参考画像を使用する前に、先に首フレームの参考画像をアップロードしてください",
     "description": "ユーザーが首フレームをアップロードせずに尾フレームだけをアップロードしたときのエラーメッセージ"
+  },
+  "message.endImageNotSupported": {
+    "message": "尾フレームの参考画像は現在のモデル/モード/長さではサポートされていません。設定を調整してください（一般的な要件：モード pro、長さ 5秒）。",
+    "description": "尾フレームをアップロードしたときに現在のモデルがサポートしていないことを示すメッセージ"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "確認が必要",
+    "description": "パラメータを切り替えると既存の設定が失われることを確認するポップアップのタイトル"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "現在の選択は以下の有効な設定をサポートしていません：{fields}。続行するとこれらの設定がクリアされます。",
+    "description": "モデル/モード/期間を切り替えた後に失われる設定についてのメッセージ、{fields}は実際のフィールド名に置き換えられます"
+  },
+  "message.featureRemovedNotice": {
+    "message": "サポートされていない設定がクリアされました：{fields}",
+    "description": "ユーザーが切り替えを確認した後のトースト通知"
+  },
+  "button.confirmContinue": {
+    "message": "切り替えを続行",
+    "description": "機能喪失確認ポップアップの主ボタン"
+  },
+  "button.cancelSwitch": {
+    "message": "キャンセル",
+    "description": "機能喪失確認ポップアップのキャンセルボタン"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -624,12 +652,12 @@
     "description": "画像が生成されているときのメッセージ"
   },
   "message.extendVideo": {
-    "message": "この動画の生成を続ける",
+    "message": "この動画の生成を続行",
     "description": "画像が生成されているときのメッセージ"
   },
   "message.generateFailed": {
     "message": "画像の生成に失敗しました",
-    "description": "画像生成に失敗したときのメッセージ"
+    "description": "画像の生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "首フレーム画像のアップロード数が制限を超えています",
@@ -657,7 +685,7 @@
   },
   "message.uploadVideoError": {
     "message": "動画のアップロードに失敗しました",
-    "description": "動画のアップロードに失敗したときのエラーメッセージ"
+    "description": "首フレーム画像のアップロードに失敗したときのエラーメッセージ"
   },
   "message.uploadEndImageError": {
     "message": "尾フレーム画像のアップロードに失敗しました",

@@ -8,7 +8,7 @@
     "description": "Tab 标签：Motion Control"
   },
   "tab.avatar": {
-    "message": "아바타",
+    "message": "디지털 아바타",
     "description": "Tab 标签：Avatar / AI-Human"
   },
   "tab.comingSoon": {
@@ -16,7 +16,7 @@
     "description": "即将上线的起骨标签"
   },
   "tab.avatarComingSoon": {
-    "message": "아바타(주식 얼굴 + 음성 합성 비디오) 곧 출시 예정, 기대해 주세요",
+    "message": "디지털 아바타(주얼 + 음성 합성 비디오) 곧 출시 예정, 기대해 주세요",
     "description": "Avatar Tab 被禁用的 Tooltip 说明"
   },
   "name.motionImage": {
@@ -24,7 +24,7 @@
     "description": "Motion Control 中的人物图输入"
   },
   "name.motionVideo": {
-    "message": "모션 참조 비디오",
+    "message": "동작 참조 비디오",
     "description": "Motion Control 中的参考视频输入"
   },
   "name.motionPrompt": {
@@ -48,19 +48,19 @@
     "description": "keep_original_sound 开关"
   },
   "description.motionImage": {
-    "message": "인물 참조 이미지를 업로드하여 비디오의 인물, 배경 등 요소를 이로 참조하여 생성합니다.",
+    "message": "인물 참조 이미지를 업로드하여 비디오의 인물, 배경 등 요소를 이 이미지에 기반하여 생성합니다.",
     "description": "motion image_url 说明"
   },
   "description.motionVideo": {
-    "message": "모션 참조 비디오를 업로드하여 비디오의 인물 동작이 해당 비디오와 일치합니다(MP4 / MOV, ≤1 분, ≤1 GB)",
+    "message": "동작 참조 비디오를 업로드하여 비디오의 인물 동작이 해당 비디오와 일치하도록 생성합니다(MP4 / MOV, ≤1 분, ≤1 GB)",
     "description": "motion video_url 说明"
   },
   "description.motionPrompt": {
-    "message": "선택 사항. 긍정적 설명과 부정적 설명을 포함할 수 있으며, 생성 효과를 보조합니다.",
+    "message": "선택 사항입니다. 긍정적 및 부정적 설명을 포함할 수 있으며, 생성 효과를 보조합니다.",
     "description": "motion prompt 说明"
   },
   "description.characterOrientation": {
-    "message": "‘따라갈 비디오’를 선택하면 복잡한 동작 표현이 더 좋습니다; ‘따라갈 이미지’를 선택하면 인물 방향이 참조 이미지와 일치하고 카메라 움직임 표현이 더 좋습니다.",
+    "message": "‘따라갈 비디오’를 선택하면 복잡한 동작 표현이 더 좋습니다. ‘따라갈 이미지’를 선택하면 인물 방향이 참조 이미지와 일치하며, 카메라 움직임 표현이 더 좋습니다.",
     "description": "character_orientation 说明"
   },
   "description.motionMode": {
@@ -68,11 +68,11 @@
     "description": "motion mode 说明"
   },
   "description.keepOriginalSound": {
-    "message": "활성화 시 참조 비디오의 원본 사운드를 유지합니다; 비활성화 시 출력 비디오에 원본 오디오가 포함되지 않습니다.",
+    "message": "활성화 시 참조 비디오의 원본 사운드를 유지합니다. 비활성화 시 출력 비디오에 원본 오디오가 포함되지 않습니다.",
     "description": "keep_original_sound 说明"
   },
   "placeholder.motionPrompt": {
-    "message": "예: 한 사람이 춤추고 있습니다. 선택 사항.",
+    "message": "예: 한 사람이 춤을 추고 있습니다. 선택 사항입니다.",
     "description": "motion prompt 占位符"
   },
   "button.generateMotion": {
@@ -80,7 +80,7 @@
     "description": "Motion Control 生成按钮"
   },
   "message.motionMissingInputs": {
-    "message": "인물 이미지와 모션 참조 비디오를 모두 업로드해 주세요.",
+    "message": "인물 이미지와 동작 참조 비디오를 모두 업로드해 주세요.",
     "description": "Motion Control 缺少输入时的提示"
   },
   "inspiration.title": {
@@ -91,8 +91,12 @@
     "message": "영감",
     "description": "打开 Inspiration 抽屉的按钮"
   },
+  "inspiration.removeChip": {
+    "message": "이 프리셋 제거",
+    "description": "移除提示词区中已选预设的按钮 aria-label"
+  },
   "inspiration.hint": {
-    "message": "문구를 클릭하면 자동으로 프롬프트에 추가됩니다; 다시 클릭하면 제거됩니다.",
+    "message": "구문을 클릭하면 자동으로 프롬프트에 추가됩니다. 다시 클릭하면 제거됩니다.",
     "description": "Inspiration 抽屉顶部的使用说明"
   },
   "inspiration.empty": {
@@ -100,7 +104,7 @@
     "description": "Inspiration 抽屉空状态"
   },
   "inspiration.selectedSummary": {
-    "message": "선택된 항목 {count}개",
+    "message": "{count} 항목 선택됨",
     "description": "已选择的预设数量"
   },
   "inspiration.clearSelected": {
@@ -132,7 +136,7 @@
     "description": "Inspiration 分组：氛围 / 风格"
   },
   "inspiration.chip.rotateAround": {
-    "message": "주제를 중심으로 카메라 회전",
+    "message": "주제를 중심으로 회전",
     "description": ""
   },
   "inspiration.chip.stationary": {
@@ -144,11 +148,11 @@
     "description": ""
   },
   "inspiration.chip.zoomOut": {
-    "message": "카메라 줌 아웃",
+    "message": "줌 아웃",
     "description": ""
   },
   "inspiration.chip.zoomIn": {
-    "message": "카메라 줌 인",
+    "message": "줌 인",
     "description": ""
   },
   "inspiration.chip.follow": {
@@ -176,7 +180,7 @@
     "description": ""
   },
   "inspiration.chip.speedMedium": {
-    "message": "카메라 움직임 중간",
+    "message": "카메라 움직임 중간 속도",
     "description": ""
   },
   "inspiration.chip.speedFast": {
@@ -184,23 +188,23 @@
     "description": ""
   },
   "inspiration.chip.shotClose": {
-    "message": "근접 샷",
+    "message": "근접 촬영",
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "중간 샷",
+    "message": "중경",
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "원거리 샷",
+    "message": "원경",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "저각 촬영",
+    "message": "저각도 촬영",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "높은 각도 촬영",
+    "message": "고각도 촬영",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
@@ -252,7 +256,7 @@
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
-    "message": "세부 사항이 풍부함",
+    "message": "세부사항 풍부",
     "description": ""
   },
   "inspiration.chip.frameSimpleBg": {
@@ -268,11 +272,11 @@
     "description": ""
   },
   "inspiration.chip.atmosphereHeartwarming": {
-    "message": "따뜻하고 치유되는",
+    "message": "따뜻한 치유",
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "생동감 있는",
+    "message": "생동감 넘치는",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
@@ -376,8 +380,8 @@
     "description": "비디오 생성의 자유도 매개변수 (0-1), 값이 클수록 참조에 가까워짐 (영어 제안: Freedom Level)"
   },
   "name.generateAudio": {
-    "message": "오디오 동기 생성",
-    "description": "오디오를 동기 생성할지 여부, kling-v3, kling-v3-omni 및 kling-v2-6 (pro 모드) 지원"
+    "message": "음향 동기 생성",
+    "description": "음향을 동기 생성할지 여부, kling-v3, kling-v3-omni 및 kling-v2-6 (pro 모드) 지원"
   },
   "name.startImage": {
     "message": "첫 프레임 참조 이미지",
@@ -404,8 +408,8 @@
     "description": "비디오의 길이"
   },
   "name.ingredients": {
-    "message": "다중 이미지 생성 비디오",
-    "description": "다중 이미지 생성 비디오 스위치/레이블 (영어 제안: Multi-Image, 간결하게 유지)"
+    "message": "다중 이미지 비디오 생성",
+    "description": "다중 이미지 비디오 스위치/라벨 (영어 제안: Multi-Image, 간결하게 유지)"
   },
   "name.model": {
     "message": "모델 버전",
@@ -413,30 +417,30 @@
   },
   "name.ratio": {
     "message": "비디오 비율",
-    "description": "비디오 생성에 사용되는 비디오 비율"
+    "description": "비디오 생성을 위해 사용되는 비디오 비율"
   },
   "name.mode": {
     "message": "비디오 모드",
-    "description": "비디오 생성에 사용되는 모드"
+    "description": "비디오 생성을 위해 사용되는 모드"
   },
   "name.effect": {
     "message": "비디오 효과",
-    "description": "다양한 버전 또는 스타일의 모델 간 전환에 사용되는 스타일 매개변수의 이름"
+    "description": "다양한 버전 또는 스타일의 모델 간 전환을 위한 스타일 매개변수 이름"
   },
   "name.ingredientsModel": {
     "message": "성분 모델",
-    "description": "비디오 생성에 사용되는 모델 버전"
+    "description": "비디오 생성을 위해 사용되는 모델 버전"
   },
   "name.klingBot": {
     "message": "Kling Bot",
     "description": "Kling 비디오 생성기의 이름"
   },
   "description.ingredients": {
-    "message": "자신의 비디오를 생성하기 위해 여러 이미지를 업로드하려면 이 버튼을 활성화하세요.",
+    "message": "비디오 생성을 위해 여러 이미지를 업로드하려면 이 버튼을 활성화하세요.",
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.imageUrl": {
-    "message": "다중 이미지로 비디오를 생성하는 작업에서는 여러 이미지를 업로드해야 합니다.",
+    "message": "다중 이미지 비디오 작업에서 여러 이미지를 업로드해야 합니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "description.prompt": {
@@ -448,15 +452,15 @@
     "description": "매개변수 'negativePrompt'의 설명"
   },
   "description.uploadStartImage": {
-    "message": "생성된 비디오의 참조로 첫 프레임 이미지를 업로드하세요. 마지막 비디오는 첫 프레임을 참조하여 생성됩니다.",
+    "message": "생성된 비디오의 참조로 첫 프레임 이미지를 업로드하세요.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.uploadEndImage": {
-    "message": "생성된 비디오의 참조로 마지막 프레임 이미지를 업로드하세요. 마지막 비디오는 마지막 프레임을 참조하여 생성됩니다.",
+    "message": "생성된 비디오의 참조로 마지막 프레임 이미지를 업로드하세요.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.cfgScale": {
-    "message": "비디오 생성의 자유도, 선택 사항 [0,1]. 값이 클수록 관련성이 강해집니다.",
+    "message": "비디오 생성의 자유도, 선택 사항 [0,1]. 값이 클수록 관련성이 높아집니다.",
     "description": "업로드 참조 매개변수의 설명"
   },
   "description.mode": {
@@ -480,15 +484,15 @@
     "description": "지속 시간 옵션 비활성화 이유"
   },
   "description.generateAudio": {
-    "message": "비디오 생성과 동시에 음향 효과를 합성합니다. 오직 kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 지원됩니다.",
-    "description": "음향 효과 스위치 설명 (지원됨)"
+    "message": "비디오 생성과 동시에 음향을 합성합니다. 오직 kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 지원됩니다.",
+    "description": "음향 스위치 설명 (지원됨)"
   },
   "description.generateAudioUnsupported": {
-    "message": "현재 모델은 동기화된 음향 효과를 지원하지 않습니다. 오직 kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 사용 가능합니다.",
-    "description": "음향 효과 스위치 설명 (비활성화됨)"
+    "message": "현재 모델은 동기화된 음향을 지원하지 않습니다. 오직 kling-v3 / kling-v3-omni / kling-v2-6 (pro 모드)에서만 사용 가능합니다.",
+    "description": "음향 스위치 설명 (비활성화됨)"
   },
   "description.cameraControl": {
-    "message": "카메라의 움직임 방향을 제어합니다. '사용자 정의'를 선택하면 6개의 차원에서 미세 조정할 수 있으며, 각 항목의 값은 [-1, 1]입니다.",
+    "message": "카메라의 움직임 방향을 제어합니다. '사용자 정의'를 선택하면 6개의 축에서 미세 조정할 수 있으며, 각 항목의 값은 [-1, 1]입니다.",
     "description": "카메라 제어 설명"
   },
   "description.cameraControlDisabled4k": {
@@ -516,11 +520,11 @@
     "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요. 예: moving",
+    "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: moving",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정적인 프롬프트를 입력하세요. 200자 이내",
+    "message": "생성할 비디오 스타일의 부정적인 프롬프트를 입력하세요, 200자 이내",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
@@ -553,15 +557,15 @@
   },
   "button.precise": {
     "message": "정확하게",
-    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
+    "description": "Kling 비디오를 생성하는 버튼 텍스트"
   },
   "button.creative": {
     "message": "창의적",
-    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
+    "description": "Kling 비디오를 생성하는 버튼 텍스트"
   },
   "button.generate": {
     "message": "생성",
-    "description": "Kling 비디오 생성을 위한 버튼 텍스트"
+    "description": "Kling 비디오를 생성하는 버튼 텍스트"
   },
   "button.extend": {
     "message": "비디오 확장",
@@ -573,7 +577,7 @@
   },
   "button.uploadImageUrl": {
     "message": "업로드",
-    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간소화, 'Upload Image' 사용 금지)"
+    "description": "이미지를 업로드하는 버튼 텍스트 (영어는 'Upload'로 간단히 해주세요, 'Upload Image'는 사용하지 마세요)"
   },
   "button.uploadVideoUrl": {
     "message": "비디오 업로드",
@@ -596,15 +600,39 @@
     "description": "이미지 업로드 실패 시의 오류 메시지"
   },
   "message.endImageRequiresStart": {
-    "message": "끝 프레임 참조 이미지를 사용하기 전에 시작 프레임 참조 이미지를 업로드하세요",
+    "message": "끝 프레임 참조 이미지를 사용하기 전에 시작 프레임 참조 이미지를 먼저 업로드하세요",
     "description": "사용자가 시작 프레임 없이 끝 프레임만 업로드했을 때의 오류 메시지"
+  },
+  "message.endImageNotSupported": {
+    "message": "현재 모델/모드/길이가 끝 프레임 참조 이미지를 지원하지 않습니다. 설정을 조정하세요 (일반 요구 사항: 모드 pro, 길이 5초).",
+    "description": "끝 프레임을 업로드할 때 현재 모델이 지원하지 않는 경우의 메시지"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "확인 필요",
+    "description": "매개변수를 전환할 때 기존 설정이 손실될 것이라는 확인 팝업 제목"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "현재 선택한 내용이 다음의 활성화된 설정을 지원하지 않습니다: {fields}. 계속하면 이러한 설정이 지워집니다.",
+    "description": "모델/모드/지속 시간을 전환한 후 설정이 손실될 것이라는 메시지, {fields}는 실제 필드 이름으로 대체됩니다"
+  },
+  "message.featureRemovedNotice": {
+    "message": "지원되지 않는 설정이 지워졌습니다: {fields}",
+    "description": "사용자가 전환을 확인한 후의 toast 알림"
+  },
+  "button.confirmContinue": {
+    "message": "전환 계속",
+    "description": "기능 손실 확인 팝업의 주 버튼"
+  },
+  "button.cancelSwitch": {
+    "message": "취소",
+    "description": "기능 손실 확인 팝업의 취소 버튼"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
     "description": "그림 작업이 시작될 때의 메시지"
   },
   "message.startTaskSuccess": {
-    "message": "생성 작업 시작 성공",
+    "message": "생성 작업이 성공적으로 시작되었습니다",
     "description": "작업이 성공적으로 시작되었을 때의 성공 메시지"
   },
   "message.startTaskFailed": {
@@ -613,7 +641,7 @@
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
-    "description": "포인트가 소진되었을 때의 메시지"
+    "description": "소진되었을 때의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -633,11 +661,11 @@
   },
   "message.uploadVideoExceed": {
     "message": "시작 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "시작 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
+    "description": "시작 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 메시지"
+    "description": "업로드 파일 크기가 10MB를 초과할 때의 오류 메시지"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
@@ -645,11 +673,11 @@
   },
   "message.uploadStartImageExceed": {
     "message": "시작 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "시작 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
+    "description": "시작 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadEndImageExceed": {
     "message": "끝 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "끝 프레임 이미지 수가 제한을 초과했을 때의 오류 메시지"
+    "description": "끝 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
   },
   "message.uploadStartImageError": {
     "message": "시작 프레임 이미지 업로드 실패",

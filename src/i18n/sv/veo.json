@@ -33,7 +33,7 @@
   },
   "name.startEndImage": {
     "message": "Start/Slut bildreferens",
-    "description": "Formulärfältets etikett: Start/Slut bildreferens (håll kort för att undvika att dölja knappen)"
+    "description": "Formulärfältets etikett: Start/Slut bildreferens"
   },
   "name.action": {
     "message": "Åtgärd",
@@ -125,7 +125,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
+    "description": "Knapptext för att ladda upp bild"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -148,7 +148,7 @@
     "description": "Felmeddelande när bilduppladdning misslyckas"
   },
   "message.startingTask": {
-    "message": "Startar uppgift...",
+    "message": "Startar uppgiften...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
@@ -160,7 +160,7 @@
     "description": "Felmeddelande när ritningsuppgiften misslyckas"
   },
   "message.imageRequired": {
-    "message": "Vänligen ladda upp minst en referensbild innan du startar bild-till-video-uppgiften",
+    "message": "Vänligen ladda upp minst en referensbild innan du startar bild-till-video uppgiften",
     "description": "Prompt när ingen bild har laddats upp i image2video-läget"
   },
   "message.usedUp": {
@@ -177,50 +177,110 @@
   },
   "message.generateFailed": {
     "message": "Misslyckades med att generera video",
-    "description": "Meddelande när bildgenereringen misslyckas"
+    "description": "Meddelande när bildgenerering misslyckas"
   },
   "message.uploadVideoExceed": {
-    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
+    "message": "Antalet uppladdade första bildbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade första bildbilder överskrider gränsen"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad fil får inte överstiga 10 MB!",
-    "description": "Felmeddelande när den uppladdade filens storlek överstiger 10 MB!"
+    "message": "Filstorleken får inte överstiga 10 MB!",
+    "description": "Felmeddelande när filstorleken överstiger 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när den uppladdade filen inte är i MP4-format!"
+    "message": "Filuppladdningen måste vara i MP4-format!",
+    "description": "Felmeddelande när filuppladdningen inte är i MP4-format!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "Antalet uppladdade första bildrutor överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade första bildrutor överskrider gränsen"
+    "message": "Antalet uppladdade startbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade sista bildrutor överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
+    "message": "Antalet uppladdade slutbilder överskrider gränsen",
+    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Uppladdning av första bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
+    "message": "Misslyckades med att ladda upp startbilden",
+    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Uppladdning av video misslyckades",
-    "description": "Felmeddelande när uppladdningen av video misslyckas"
+    "message": "Misslyckades med att ladda upp videon",
+    "description": "Felmeddelande när uppladdningen av videon misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Uppladdning av sista bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
+    "message": "Misslyckades med att ladda upp slutbilden",
+    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Uppladdning av dokument misslyckades",
-    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
+    "message": "Misslyckades med att ladda upp dokumentet",
+    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
     "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när det inte finns några uppgifter"
+    "message": "Inga historiska uppgifter, klicka på 'Generera video' till vänster",
+    "description": "Meddelande när inga uppgifter finns"
+  },
+  "name.upsampleAction": {
+    "message": "Uppskalningsmål",
+    "description": "Målformat för /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Kamerarörelse",
+    "description": "Kamerarörelsetyp för /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Områdesmask",
+    "description": "Bildmask för /veo/objects (vita pixlar = operationsområde)"
+  },
+  "name.videoId": {
+    "message": "Video-ID",
+    "description": "ID för källvideon (från tidigare genererade uppgifter data[].id)"
+  },
+  "placeholder.imageMask": {
+    "message": "Maskbildens URL eller base64-kodad JPEG",
+    "description": "Platshållare för image_mask inmatningsfält"
+  },
+  "placeholder.videoId": {
+    "message": "Klistra in video-ID eller klicka på åtgärdsknappen i listan till höger för att fylla i automatiskt",
+    "description": "Platshållare för video_id inmatningsfält"
+  },
+  "button.actionIngredients": {
+    "message": "Flera bilder till video",
+    "description": "ingredients2video — Kombinera 1-3 bilder för att skapa en ny scen"
+  },
+  "button.actionUpsample": {
+    "message": "Uppskalning / GIF-förhandsvisning",
+    "description": "/veo/upsample — Uppskala till 1080p/4K eller exportera GIF"
+  },
+  "button.actionExtend": {
+    "message": "Förläng video",
+    "description": "/veo/extend — Förläng längden på den genererade videon"
+  },
+  "button.actionReshoot": {
+    "message": "Byt kameravinkel och spela in igen",
+    "description": "/veo/reshoot — Återskapa med ny kamerarörelse"
+  },
+  "button.actionObjectInsert": {
+    "message": "Lägg till objekt",
+    "description": "/veo/objects insert — Lägg till objekt i videon"
+  },
+  "button.actionObjectRemove": {
+    "message": "Ta bort objekt",
+    "description": "/veo/objects remove — Ta bort objekt från videon med mask"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Uppskalning 1080P",
+    "description": "Förhandsvisningsknapp — Uppskalning till 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Uppskalning 4K",
+    "description": "Förhandsvisningsknapp — Uppskalning till 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Exportera GIF",
+    "description": "Förhandsvisningsknapp — Konvertera till GIF-förhandsvisning"
   }
 }
