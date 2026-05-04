@@ -6,24 +6,25 @@
  * uses subdomains under <subdomain_zone>; Phase 2 (this model) lets the
  * tenant CNAME their own apex/sub from a registrar they control.
  *
- * The `status` field walks a small DAG; see `SiteDomainStatus` below.
- * `dns_instructions` is a UI-friendly hint the backend appends to the
- * GET / verify response so the page doesn't have to re-derive the TXT
- * or CNAME copy itself.
+ * The actual TLS provisioning happens at the edge (Caddy +
+ * Let's Encrypt on-demand-TLS, see Nexior `deploy/production/tenant-proxy.yaml`),
+ * so the row only carries `hostname`, `status`, `proxy_cname`, and
+ * audit fields. `dns_instructions` is a UI-friendly hint the backend
+ * appends to the GET / verify response so the page doesn't have to
+ * re-derive the CNAME copy itself.
  */
 
 export enum SiteDomainStatus {
-  PendingDnsVerification = 'PendingDnsVerification',
-  ProvisioningEo = 'ProvisioningEo',
-  ProvisioningCert = 'ProvisioningCert',
+  Pending = 'Pending',
   Active = 'Active',
   Failed = 'Failed'
 }
 
 export interface ISiteDomainDnsInstructions {
-  step: 'txt' | 'cname';
+  // Reserved for future protocol expansions; today only 'cname' is emitted.
+  step: 'cname';
   record_name: string;
-  record_type: 'TXT' | 'CNAME';
+  record_type: 'CNAME';
   record_value: string;
   instructions: string;
 }
@@ -34,16 +35,17 @@ export interface ISiteDomain {
   hostname?: string;
   status?: SiteDomainStatus;
   status_reason?: string | null;
-  verification_token?: string;
-  eo_zone_id?: string | null;
-  eo_cname?: string | null;
+  // CNAME target the tenant must point `hostname` at. Snapshotted on
+  // the row when it was created so historical rows keep their original
+  // instruction even if the platform default ever rotates.
+  proxy_cname?: string;
   user_id?: string | null;
   created_at?: string;
   updated_at?: string;
-  last_synced_at?: string | null;
   tags?: string[];
   metadata?: Record<string, unknown> | null;
-  // Server-appended hint, only present on detail / verify responses.
+  // Server-appended hint, only present on detail / verify responses
+  // (and only when the row is non-Active).
   dns_instructions?: ISiteDomainDnsInstructions | null;
 }
 

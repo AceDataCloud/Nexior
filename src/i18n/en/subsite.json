@@ -104,12 +104,8 @@
     "description": "Button to submit the binding of a new domain"
   },
   "button.verify": {
-    "message": "Verify",
-    "description": "Button to check if the TXT verification record is in place"
-  },
-  "button.checkProgress": {
-    "message": "Check Progress",
-    "description": "Button to sync the latest status from EdgeOne"
+    "message": "Verify Now",
+    "description": "Probe the domain through our reverse proxy to confirm DNS is in place and the certificate has been issued"
   },
   "button.refresh": {
     "message": "Refresh",
@@ -136,7 +132,7 @@
     "description": "Placeholder for the hostname input field"
   },
   "message.domainsIntro": {
-    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Once verified, we will automatically apply for a free HTTPS certificate and deploy it on EdgeOne.",
+    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Add the CNAME shown below and click 'Verify Now' — we'll automatically issue and renew a free HTTPS certificate via Let's Encrypt.",
     "description": "Description at the top of the dialog"
   },
   "message.domainsEmpty": {
@@ -152,7 +148,7 @@
     "description": "Local validation failed for hostname"
   },
   "message.domainCreated": {
-    "message": "Domain has been submitted, please follow the instructions to add DNS records.",
+    "message": "Domain has been submitted, please follow the instructions to add the CNAME record.",
     "description": "Successful POST /site-domains/"
   },
   "message.domainCreateFailed": {
@@ -163,10 +159,6 @@
     "message": "Failed to load the domain list.",
     "description": "Failed to load the domain list"
   },
-  "message.domainProgressed": {
-    "message": "Validation in progress, please wait.",
-    "description": "State machine advancement"
-  },
   "message.domainActive": {
     "message": "Domain is live! You can now access the substation via your custom HTTPS address.",
     "description": "Entering Active status"
@@ -176,7 +168,7 @@
     "description": "Failed status message"
   },
   "message.domainVerifyFailed": {
-    "message": "Verification failed, please check if the DNS records have taken effect.",
+    "message": "Verification failed. Check that the CNAME record points at our reverse proxy and DNS has propagated.",
     "description": "verify interface 4xx"
   },
   "message.domainDeleteConfirm": {
@@ -187,17 +179,9 @@
     "message": "Failed to delete the domain.",
     "description": "DELETE interface 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Pending DNS Verification",
-    "description": "PendingDnsVerification status label"
-  },
-  "status.provisioningEo": {
-    "message": "Connecting to edge",
-    "description": "ProvisioningEo status label"
-  },
-  "status.provisioningCert": {
-    "message": "Requesting certificate",
-    "description": "ProvisioningCert status label"
+  "status.pending": {
+    "message": "Pending",
+    "description": "Pending status label: waiting for the user to add the CNAME and click 'Verify Now'"
   },
   "status.active": {
     "message": "Live",
