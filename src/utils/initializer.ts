@@ -133,7 +133,9 @@ export const initializeSite = async () => {
   const site = store.state.site;
   console.debug('site', site);
   // if site is not set, try to initialize site
-  if (!site?.origin) {
+  const shouldClaimEmptyAdminSite =
+    !!store.state.token?.access && site?.origin && (!site.admins || site.admins.length === 0);
+  if (!site?.origin || shouldClaimEmptyAdminSite) {
     await store.dispatch('initializeSite');
   }
 };
