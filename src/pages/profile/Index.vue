@@ -33,7 +33,6 @@ import { defineComponent } from 'vue';
 import { ElImage } from 'element-plus';
 import {
   ROUTE_CONSOLE_APPLICATION_LIST,
-  ROUTE_CONSOLE_BYOK_LIST,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_DISTRIBUTION_INDEX,
@@ -116,12 +115,6 @@ export default defineComponent({
           text: this.$t('console.menu.usageList'),
           name: ROUTE_CONSOLE_USAGE_LIST,
           icon: 'fa-solid fa-rotate-left'
-        },
-        {
-          key: 'byok-list',
-          text: this.$t('console.menu.byokList'),
-          name: ROUTE_CONSOLE_BYOK_LIST,
-          icon: 'fa-solid fa-key'
         },
         {
           key: 'distribution-index',

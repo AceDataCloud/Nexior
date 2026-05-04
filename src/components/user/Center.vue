@@ -40,7 +40,7 @@
       </template>
     </el-dropdown>
   </div>
-  <user-setting v-model:visible="showSetting" />
+  <user-setting v-model:visible="showSetting" :initial-tab="settingTab" />
 </template>
 
 <script lang="ts">
@@ -67,7 +67,8 @@ export default defineComponent({
   data() {
     return {
       showMenu: false,
-      showSetting: false
+      showSetting: false,
+      settingTab: ''
     };
   },
   computed: {
@@ -90,9 +91,14 @@ export default defineComponent({
   },
   mounted() {
     document.addEventListener('click', this.closeMenu);
+    // Other components (e.g. the in-chat BYOK badge) ask UserCenter to
+    // open the settings dialog at a specific tab via this CustomEvent
+    // — we own the only mounted `<user-setting>` instance.
+    window.addEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
   },
   unmounted() {
     document.removeEventListener('click', this.closeMenu);
+    window.removeEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
   },
   methods: {
     toggleMenu() {
@@ -130,6 +136,11 @@ export default defineComponent({
       });
     },
     onSettings() {
+      this.settingTab = '';
+      this.showSetting = true;
+    },
+    onOpenSettingsEvent(event: CustomEvent<{ tab?: string }>) {
+      this.settingTab = event?.detail?.tab ?? '';
       this.showSetting = true;
     }
   }

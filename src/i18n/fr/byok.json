@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Clé API personnalisée",
-    "addCredential": "Ajouter une clé API",
-    "editCredential": "Modifier la clé API",
-    "deleteCredential": "Supprimer la clé API"
+  "title.list": {
+    "message": "Clé API personnalisée",
+    "description": ""
   },
-  "description": {
-    "list": "Utilisez votre propre clé API de fournisseur (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) au lieu du pool de comptes de la plateforme. Une fois configuré, les requêtes de dialogue pour le modèle correspondant appelleront directement le fournisseur en amont avec votre clé, sans consommer de crédits de la plateforme ; les appels d'outils, références, artefacts, historique cloud et autres fonctionnalités fonctionneront normalement."
+  "title.addCredential": {
+    "message": "Ajouter une clé API",
+    "description": ""
   },
-  "field": {
-    "provider": "Fournisseur",
-    "label": "Remarque",
-    "labelPlaceholder": "ex. \"Mon numéro de travail\" (facultatif)",
-    "apiKey": "Clé API",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Laissez vide pour conserver la clé actuelle",
-    "baseUrl": "URL de base personnalisée",
-    "baseUrlPlaceholder": "Laissez vide pour utiliser l'adresse par défaut du fournisseur",
-    "isActive": "Activer",
-    "lastUsedAt": "Dernière utilisation",
-    "createdAt": "Date d'ajout"
+  "title.editCredential": {
+    "message": "Modifier la clé API",
+    "description": ""
   },
-  "value": {
-    "active": "Activé",
-    "inactive": "Désactivé",
-    "never": "Jamais utilisé",
-    "default": "Par défaut"
+  "title.deleteCredential": {
+    "message": "Supprimer la clé API",
+    "description": ""
   },
-  "button": {
-    "add": "Ajouter une clé API",
-    "edit": "Modifier",
-    "test": "Tester",
-    "delete": "Supprimer",
-    "save": "Enregistrer",
-    "cancel": "Annuler"
+  "description.list": {
+    "message": "Utilisez votre propre clé API de fournisseur (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) au lieu du pool de comptes de la plateforme. Une fois configuré, les requêtes de dialogue pour le modèle correspondant appelleront directement le fournisseur en amont avec votre clé, sans consommer de crédits de la plateforme ; les appels d'outils, références, artefacts, historique cloud et autres fonctionnalités fonctionneront normalement.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Confirmer la suppression de cette clé API ? Les dialogues du modèle {provider} reviendront à la plateforme par défaut.",
-    "deleteSuccess": "Clé API supprimée.",
-    "saveSuccess": "Clé API enregistrée.",
-    "testSuccess": "Connexion réussie.",
-    "testFailed": "Échec du test : {message}",
-    "loadFailed": "Échec du chargement des informations d'identification.",
-    "saveFailed": "Échec de l'enregistrement des informations d'identification.",
-    "empty": "Aucune clé API personnalisée configurée. Cliquez sur \"Ajouter une clé API\" pour utiliser votre propre compte fournisseur.",
-    "advancedToggle": "Afficher les options avancées",
-    "baseUrlHelp": "Facultatif. Adresse en amont personnalisée (pour OpenRouter, reverse proxy auto-hébergé, passerelle d'entreprise, etc.). Autorise uniquement HTTPS, ne peut pas pointer vers des adresses internes/loopback."
+  "field.provider": {
+    "message": "Fournisseur",
+    "description": ""
   },
-  "badge": {
-    "active": "Utilisez votre clé {provider}",
-    "tooltip": "Cette conversation utilise votre propre clé API {provider}, les frais sont réglés par le compte {provider}, sans déduction du solde de la plateforme."
+  "field.label": {
+    "message": "Remarque",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "ex. \"Mon numéro de travail\" (facultatif)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "Clé API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Laissez vide pour conserver la clé actuelle",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "URL de base personnalisée",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Laissez vide pour utiliser l'adresse par défaut du fournisseur",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Activer",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Dernière utilisation",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Date d'ajout",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Activé",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Désactivé",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Jamais utilisé",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Par défaut",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Ajouter une clé API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Modifier",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Tester",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Supprimer",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Enregistrer",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Annuler",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Confirmer la suppression de cette clé API ? Les dialogues du modèle {provider} reviendront à la plateforme par défaut.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Clé API supprimée.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Clé API enregistrée.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Connexion réussie.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Échec du test : {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Échec du chargement des informations d'identification.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Échec de l'enregistrement des informations d'identification.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Aucune clé API personnalisée configurée. Cliquez sur \"Ajouter une clé API\" pour utiliser votre propre compte fournisseur.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Afficher les options avancées",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Facultatif. Adresse en amont personnalisée (pour OpenRouter, reverse proxy auto-hébergé, passerelle d'entreprise, etc.). Autorise uniquement HTTPS, ne peut pas pointer vers des adresses internes/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Utilisez votre clé {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Cette conversation utilise votre propre clé API {provider}, les frais sont réglés par le compte {provider}, sans déduction du solde de la plateforme.",
+    "description": ""
   }
 }

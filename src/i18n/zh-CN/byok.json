@@ -1,54 +1,208 @@
 {
-  "title": {
-    "list": "自定义 API Key",
-    "addCredential": "添加 API Key",
-    "editCredential": "编辑 API Key",
-    "deleteCredential": "删除 API Key"
+  "title.list": {
+    "message": "自定义 API Key",
+    "description": ""
   },
-  "description": {
-    "list": "使用你自己的服务商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）代替平台账户池。配置后，对应模型的对话请求会直接以你的 Key 调用上游服务商，不消耗平台 Credit；工具调用、引用、工件、云端历史等其他功能照常工作。"
+  "title.addCredential": {
+    "message": "添加 API Key",
+    "description": ""
   },
-  "field": {
-    "provider": "服务商",
-    "label": "备注",
-    "labelPlaceholder": "如 \"我的工作号\"（可选）",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "留空表示保持当前 Key 不变",
-    "baseUrl": "自定义 Base URL",
-    "baseUrlPlaceholder": "留空使用服务商默认地址",
-    "isActive": "启用",
-    "lastUsedAt": "上次使用",
-    "createdAt": "添加时间"
+  "title.editCredential": {
+    "message": "编辑 API Key",
+    "description": ""
   },
-  "value": {
-    "active": "启用中",
-    "inactive": "未启用",
-    "never": "从未使用",
-    "default": "默认"
+  "title.deleteCredential": {
+    "message": "删除 API Key",
+    "description": ""
   },
-  "button": {
-    "add": "添加 API Key",
-    "edit": "编辑",
-    "test": "测试",
-    "delete": "删除",
-    "save": "保存",
-    "cancel": "取消"
+  "description.list": {
+    "message": "使用你自己的服务商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）代替平台账户池。配置后，对应模型的对话请求会直接以你的 Key 调用上游服务商，不消耗平台 Credit；工具调用、引用、工件、云端历史等其他功能照常工作。",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "确认删除这个 API Key？后续 {provider} 模型的对话将回落到平台默认上游。",
-    "deleteSuccess": "API Key 已删除。",
-    "saveSuccess": "API Key 已保存。",
-    "testSuccess": "连接正常。",
-    "testFailed": "测试失败：{message}",
-    "loadFailed": "凭据加载失败。",
-    "saveFailed": "保存凭据失败。",
-    "empty": "尚未配置自定义 API Key。点击\"添加 API Key\"以使用你自己的服务商账户。",
-    "advancedToggle": "显示高级选项",
-    "baseUrlHelp": "可选。自定义上游地址（用于 OpenRouter、自建反代、企业网关等）。仅允许 HTTPS，不能指向内网/回环地址。"
+  "field.provider": {
+    "message": "服务商",
+    "description": ""
   },
-  "badge": {
-    "active": "使用你的 {provider} Key",
-    "tooltip": "本次对话使用你自己的 {provider} API Key，费用由 {provider} 账户结算，不扣减平台余额。"
-  }
+  "field.label": {
+    "message": "备注",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "如 \"我的工作号\"（可选）",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "留空表示保持当前 Key 不变",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "自定义 Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "留空使用服务商默认地址",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "启用",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "上次使用",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "添加时间",
+    "description": ""
+  },
+  "value.active": {
+    "message": "启用中",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "未启用",
+    "description": ""
+  },
+  "value.never": {
+    "message": "从未使用",
+    "description": ""
+  },
+  "value.default": {
+    "message": "默认",
+    "description": ""
+  },
+  "button.add": {
+    "message": "添加 API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "编辑",
+    "description": ""
+  },
+  "button.test": {
+    "message": "测试",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "删除",
+    "description": ""
+  },
+  "button.save": {
+    "message": "保存",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "确认删除这个 API Key？后续 {provider} 模型的对话将回落到平台默认上游。",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key 已删除。",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key 已保存。",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "连接正常。",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "测试失败：{message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "凭据加载失败。",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "保存凭据失败。",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "尚未配置自定义 API Key。点击\"添加 API Key\"以使用你自己的服务商账户。",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "显示高级选项",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "可选。自定义上游地址（用于 OpenRouter、自建反代、企业网关等）。仅允许 HTTPS，不能指向内网/回环地址。",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "使用你的 {provider} Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "本次对话使用你自己的 {provider} API Key，费用由 {provider} 账户结算，不扣减平台余额。",
+    "description": ""  },
+  "badge.manage": {
+    "message": "点击管理你的自定义 API Key",
+    "description": "聊天页面 BYOK 徽章点击后的提示：点击打开设置对话框的 API Key 选项卡。"
+  },
+  "button.testConnection": {
+    "message": "保存并测试连通",
+    "description": "新增/编辑对话框中的按钮——先保存凭据，再调用上游 /models 验证连通性。"
+  },
+  "test.success": {
+    "message": "连通性测试成功",
+    "description": "连通性测试结果区的成功标题。"
+  },
+  "test.failure": {
+    "message": "连通性测试失败",
+    "description": "连通性测试结果区的失败标题。"
+  },
+  "test.endpoint": {
+    "message": "请求地址",
+    "description": "测试结果详情中的请求 URL 标签。"
+  },
+  "test.status": {
+    "message": "状态码",
+    "description": "测试结果详情中的 HTTP 状态码标签。"
+  },
+  "test.message": {
+    "message": "上游响应",
+    "description": "测试结果详情中的上游错误/提示文本标签。"
+  },
+  "providerDesc.openai": {
+    "message": "替换本站 ChatGPT（GPT-4 / GPT-4o / o1 / o3 等）对话请求。",
+    "description": "提供商下拉里 OpenAI 选项的副标题。"
+  },
+  "providerDesc.anthropic": {
+    "message": "替换本站 Claude（Sonnet / Opus / Haiku 等）对话请求。",
+    "description": "提供商下拉里 Anthropic 选项的副标题。"
+  },
+  "providerDesc.google": {
+    "message": "替换本站 Gemini（Pro / Flash 系列）对话请求。",
+    "description": "提供商下拉里 Google 选项的副标题。"
+  },
+  "providerDesc.xai": {
+    "message": "替换本站 Grok 对话请求。",
+    "description": "提供商下拉里 xAI 选项的副标题。"
+  },
+  "providerDesc.deepseek": {
+    "message": "替换本站 DeepSeek（V3 / R1 等）对话请求。",
+    "description": "提供商下拉里 DeepSeek 选项的副标题。"
+  },
+  "providerDesc.moonshot": {
+    "message": "替换本站 Kimi 对话请求。",
+    "description": "提供商下拉里 Moonshot (Kimi) 选项的副标题。"
+  },
+  "providerDesc.zhipu": {
+    "message": "替换本站 GLM 系列对话请求。",
+    "description": "提供商下拉里 Zhipu (GLM) 选项的副标题。"  }
 }

@@ -1,168 +1,154 @@
 {
-  "title": {
-    "list": {
-      "message": "Prilagođeni API ključ",
-      "description": "Naslov za listu API ključeva"
-    },
-    "addCredential": {
-      "message": "Dodaj API ključ",
-      "description": "Dugme za dodavanje novog API ključa"
-    },
-    "editCredential": {
-      "message": "Izmeni API ključ",
-      "description": "Dugme za izmenu postojećeg API ključa"
-    },
-    "deleteCredential": {
-      "message": "Obriši API ključ",
-      "description": "Dugme za brisanje API ključa"
-    }
+  "title.list": {
+    "message": "Prilagođeni API ključ",
+    "description": "Naslov za listu API ključeva"
   },
-  "description": {
-    "list": {
-      "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) umesto platformskog računa. Nakon konfiguracije, zahtevi za razgovor sa odgovarajućim modelom će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformske kredite; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
-      "description": "Objašnjenje o korišćenju prilagođenog API ključa"
-    }
+  "title.addCredential": {
+    "message": "Dodaj API ključ",
+    "description": "Dugme za dodavanje novog API ključa"
   },
-  "field": {
-    "provider": {
-      "message": "Provajder",
-      "description": "Polje za izbor provajdera API ključa"
-    },
-    "label": {
-      "message": "Napomena",
-      "description": "Polje za dodatne informacije o API ključu"
-    },
-    "labelPlaceholder": {
-      "message": "npr. \"Moj radni broj\" (opcionalno)",
-      "description": "Placeholder za napomenu"
-    },
-    "apiKey": {
-      "message": "API ključ",
-      "description": "Polje za unos API ključa"
-    },
-    "apiKeyPlaceholder": {
-      "message": "sk-...",
-      "description": "Placeholder za unos API ključa"
-    },
-    "apiKeyEditPlaceholder": {
-      "message": "Ostavite prazno da zadržite trenutni ključ",
-      "description": "Placeholder za izmenu API ključa"
-    },
-    "baseUrl": {
-      "message": "Prilagođeni osnovni URL",
-      "description": "Polje za unos prilagođenog osnovnog URL-a"
-    },
-    "baseUrlPlaceholder": {
-      "message": "Ostavite prazno za korišćenje podrazumevane adrese provajdera",
-      "description": "Placeholder za osnovni URL"
-    },
-    "isActive": {
-      "message": "Aktivan",
-      "description": "Polje za označavanje da li je ključ aktivan"
-    },
-    "lastUsedAt": {
-      "message": "Poslednja upotreba",
-      "description": "Polje za prikaz poslednjeg vremena korišćenja"
-    },
-    "createdAt": {
-      "message": "Vreme dodavanja",
-      "description": "Polje za prikaz vremena kada je ključ dodat"
-    }
+  "title.editCredential": {
+    "message": "Izmeni API ključ",
+    "description": "Dugme za izmenu postojećeg API ključa"
   },
-  "value": {
-    "active": {
-      "message": "Aktivan",
-      "description": "Status ključa kada je aktivan"
-    },
-    "inactive": {
-      "message": "Neaktivan",
-      "description": "Status ključa kada nije aktivan"
-    },
-    "never": {
-      "message": "Nikada korišćen",
-      "description": "Status ključa kada nikada nije korišćen"
-    },
-    "default": {
-      "message": "Podrazumevano",
-      "description": "Status ključa kada je podrazumevan"
-    }
+  "title.deleteCredential": {
+    "message": "Obriši API ključ",
+    "description": "Dugme za brisanje API ključa"
   },
-  "button": {
-    "add": {
-      "message": "Dodaj API ključ",
-      "description": "Dugme za dodavanje API ključa"
-    },
-    "edit": {
-      "message": "Izmeni",
-      "description": "Dugme za izmenu"
-    },
-    "test": {
-      "message": "Testiraj",
-      "description": "Dugme za testiranje veze"
-    },
-    "delete": {
-      "message": "Obriši",
-      "description": "Dugme za brisanje"
-    },
-    "save": {
-      "message": "Sačuvaj",
-      "description": "Dugme za čuvanje"
-    },
-    "cancel": {
-      "message": "Otkaži",
-      "description": "Dugme za otkazivanje"
-    }
+  "description.list": {
+    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) umesto platformskog računa. Nakon konfiguracije, zahtevi za razgovor sa odgovarajućim modelom će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformske kredite; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
+    "description": "Objašnjenje o korišćenju prilagođenog API ključa"
   },
-  "message": {
-    "deleteConfirm": {
-      "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa {provider} modelom će se vratiti na podrazumevanu platformsku uslugu.",
-      "description": "Potvrda za brisanje API ključa"
-    },
-    "deleteSuccess": {
-      "message": "API ključ je obrisan.",
-      "description": "Poruka o uspešnom brisanju API ključa"
-    },
-    "saveSuccess": {
-      "message": "API ključ je sačuvan.",
-      "description": "Poruka o uspešnom čuvanju API ključa"
-    },
-    "testSuccess": {
-      "message": "Veza je normalna.",
-      "description": "Poruka o uspešnom testiranju veze"
-    },
-    "testFailed": {
-      "message": "Testiranje nije uspelo: {message}",
-      "description": "Poruka o neuspehu testiranja"
-    },
-    "loadFailed": {
-      "message": "Učitavanje kredencijala nije uspelo.",
-      "description": "Poruka o neuspehu učitavanja kredencijala"
-    },
-    "saveFailed": {
-      "message": "Čuvanje kredencijala nije uspelo.",
-      "description": "Poruka o neuspehu čuvanja kredencijala"
-    },
-    "empty": {
-      "message": "Još niste konfigurisali prilagođeni API ključ. Kliknite \"Dodaj API ključ\" da biste koristili svoj provajderski račun.",
-      "description": "Poruka kada nema konfigurisane API ključeve"
-    },
-    "advancedToggle": {
-      "message": "Prikaži napredne opcije",
-      "description": "Dugme za prikaz naprednih opcija"
-    },
-    "baseUrlHelp": {
-      "message": "Opcionalno. Prilagođena adresa usluge (za OpenRouter, samostalne reverse proxy, korporativne prolaze itd.). Dozvoljen je samo HTTPS, ne može se usmeriti na interne/loopback adrese.",
-      "description": "Pomoć za osnovni URL"
-    }
+  "field.provider": {
+    "message": "Provajder",
+    "description": "Polje za izbor provajdera API ključa"
   },
-  "badge": {
-    "active": {
-      "message": "Koristite svoj {provider} ključ",
-      "description": "Obaveštenje o korišćenju provajderskog ključa"
-    },
-    "tooltip": {
-      "message": "Ovaj razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} računu, ne umanjujući platformski saldo.",
-      "description": "Tooltip za badge o korišćenju API ključa"
-    }
+  "field.label": {
+    "message": "Napomena",
+    "description": "Polje za dodatne informacije o API ključu"
+  },
+  "field.labelPlaceholder": {
+    "message": "npr. \"Moj radni broj\" (opcionalno)",
+    "description": "Placeholder za napomenu"
+  },
+  "field.apiKey": {
+    "message": "API ključ",
+    "description": "Polje za unos API ključa"
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": "Placeholder za unos API ključa"
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Ostavite prazno da zadržite trenutni ključ",
+    "description": "Placeholder za izmenu API ključa"
+  },
+  "field.baseUrl": {
+    "message": "Prilagođeni osnovni URL",
+    "description": "Polje za unos prilagođenog osnovnog URL-a"
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Ostavite prazno za korišćenje podrazumevane adrese provajdera",
+    "description": "Placeholder za osnovni URL"
+  },
+  "field.isActive": {
+    "message": "Aktivan",
+    "description": "Polje za označavanje da li je ključ aktivan"
+  },
+  "field.lastUsedAt": {
+    "message": "Poslednja upotreba",
+    "description": "Polje za prikaz poslednjeg vremena korišćenja"
+  },
+  "field.createdAt": {
+    "message": "Vreme dodavanja",
+    "description": "Polje za prikaz vremena kada je ključ dodat"
+  },
+  "value.active": {
+    "message": "Aktivan",
+    "description": "Status ključa kada je aktivan"
+  },
+  "value.inactive": {
+    "message": "Neaktivan",
+    "description": "Status ključa kada nije aktivan"
+  },
+  "value.never": {
+    "message": "Nikada korišćen",
+    "description": "Status ključa kada nikada nije korišćen"
+  },
+  "value.default": {
+    "message": "Podrazumevano",
+    "description": "Status ključa kada je podrazumevan"
+  },
+  "button.add": {
+    "message": "Dodaj API ključ",
+    "description": "Dugme za dodavanje API ključa"
+  },
+  "button.edit": {
+    "message": "Izmeni",
+    "description": "Dugme za izmenu"
+  },
+  "button.test": {
+    "message": "Testiraj",
+    "description": "Dugme za testiranje veze"
+  },
+  "button.delete": {
+    "message": "Obriši",
+    "description": "Dugme za brisanje"
+  },
+  "button.save": {
+    "message": "Sačuvaj",
+    "description": "Dugme za čuvanje"
+  },
+  "button.cancel": {
+    "message": "Otkaži",
+    "description": "Dugme za otkazivanje"
+  },
+  "message.deleteConfirm": {
+    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa {provider} modelom će se vratiti na podrazumevanu platformsku uslugu.",
+    "description": "Potvrda za brisanje API ključa"
+  },
+  "message.deleteSuccess": {
+    "message": "API ključ je obrisan.",
+    "description": "Poruka o uspešnom brisanju API ključa"
+  },
+  "message.saveSuccess": {
+    "message": "API ključ je sačuvan.",
+    "description": "Poruka o uspešnom čuvanju API ključa"
+  },
+  "message.testSuccess": {
+    "message": "Veza je normalna.",
+    "description": "Poruka o uspešnom testiranju veze"
+  },
+  "message.testFailed": {
+    "message": "Testiranje nije uspelo: {message}",
+    "description": "Poruka o neuspehu testiranja"
+  },
+  "message.loadFailed": {
+    "message": "Učitavanje kredencijala nije uspelo.",
+    "description": "Poruka o neuspehu učitavanja kredencijala"
+  },
+  "message.saveFailed": {
+    "message": "Čuvanje kredencijala nije uspelo.",
+    "description": "Poruka o neuspehu čuvanja kredencijala"
+  },
+  "message.empty": {
+    "message": "Još niste konfigurisali prilagođeni API ključ. Kliknite \"Dodaj API ključ\" da biste koristili svoj provajderski račun.",
+    "description": "Poruka kada nema konfigurisane API ključeve"
+  },
+  "message.advancedToggle": {
+    "message": "Prikaži napredne opcije",
+    "description": "Dugme za prikaz naprednih opcija"
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcionalno. Prilagođena adresa usluge (za OpenRouter, samostalne reverse proxy, korporativne prolaze itd.). Dozvoljen je samo HTTPS, ne može se usmeriti na interne/loopback adrese.",
+    "description": "Pomoć za osnovni URL"
+  },
+  "badge.active": {
+    "message": "Koristite svoj {provider} ključ",
+    "description": "Obaveštenje o korišćenju provajderskog ključa"
+  },
+  "badge.tooltip": {
+    "message": "Ovaj razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} računu, ne umanjujući platformski saldo.",
+    "description": "Tooltip za badge o korišćenju API ključa"
   }
 }

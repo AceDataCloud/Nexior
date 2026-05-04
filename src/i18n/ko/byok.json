@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "사용자 정의 API 키",
-    "addCredential": "API 키 추가",
-    "editCredential": "API 키 편집",
-    "deleteCredential": "API 키 삭제"
+  "title.list": {
+    "message": "사용자 정의 API 키",
+    "description": ""
   },
-  "description": {
-    "list": "플랫폼 계정 풀 대신 자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하세요. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다."
+  "title.addCredential": {
+    "message": "API 키 추가",
+    "description": ""
   },
-  "field": {
-    "provider": "서비스 제공업체",
-    "label": "비고",
-    "labelPlaceholder": "예: \"내 작업 번호\" (선택 사항)",
-    "apiKey": "API 키",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "비워두면 현재 키 유지",
-    "baseUrl": "사용자 정의 기본 URL",
-    "baseUrlPlaceholder": "비워두면 서비스 제공업체 기본 주소 사용",
-    "isActive": "활성화",
-    "lastUsedAt": "마지막 사용",
-    "createdAt": "추가 시간"
+  "title.editCredential": {
+    "message": "API 키 편집",
+    "description": ""
   },
-  "value": {
-    "active": "활성화됨",
-    "inactive": "비활성화됨",
-    "never": "한 번도 사용하지 않음",
-    "default": "기본"
+  "title.deleteCredential": {
+    "message": "API 키 삭제",
+    "description": ""
   },
-  "button": {
-    "add": "API 키 추가",
-    "edit": "편집",
-    "test": "테스트",
-    "delete": "삭제",
-    "save": "저장",
-    "cancel": "취소"
+  "description.list": {
+    "message": "플랫폼 계정 풀 대신 자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하세요. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다. 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "이 API 키를 삭제하시겠습니까? 이후 {provider} 모델의 대화는 플랫폼 기본 상위로 돌아갑니다.",
-    "deleteSuccess": "API 키가 삭제되었습니다.",
-    "saveSuccess": "API 키가 저장되었습니다.",
-    "testSuccess": "연결이 정상입니다.",
-    "testFailed": "테스트 실패: {message}",
-    "loadFailed": "자격 증명 로드 실패.",
-    "saveFailed": "자격 증명 저장 실패.",
-    "empty": "사용자 정의 API 키가 아직 구성되지 않았습니다. \"API 키 추가\"를 클릭하여 자신의 서비스 제공업체 계정을 사용하세요.",
-    "advancedToggle": "고급 옵션 표시",
-    "baseUrlHelp": "선택 사항. 사용자 정의 상위 주소(예: OpenRouter, 자체 리버스 프록시, 기업 게이트웨이 등). HTTPS만 허용되며, 내부망/루프백 주소를 가리킬 수 없습니다."
+  "field.provider": {
+    "message": "서비스 제공업체",
+    "description": ""
   },
-  "badge": {
-    "active": "당신의 {provider} 키 사용 중",
-    "tooltip": "이번 대화는 당신의 {provider} API 키를 사용하며, 비용은 {provider} 계정에서 정산되고 플랫폼 잔액은 차감되지 않습니다."
+  "field.label": {
+    "message": "비고",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "예: \"내 작업 번호\" (선택 사항)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API 키",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "비워두면 현재 키 유지",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "사용자 정의 기본 URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "비워두면 서비스 제공업체 기본 주소 사용",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "활성화",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "마지막 사용",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "추가 시간",
+    "description": ""
+  },
+  "value.active": {
+    "message": "활성화됨",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "비활성화됨",
+    "description": ""
+  },
+  "value.never": {
+    "message": "한 번도 사용하지 않음",
+    "description": ""
+  },
+  "value.default": {
+    "message": "기본",
+    "description": ""
+  },
+  "button.add": {
+    "message": "API 키 추가",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "편집",
+    "description": ""
+  },
+  "button.test": {
+    "message": "테스트",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "삭제",
+    "description": ""
+  },
+  "button.save": {
+    "message": "저장",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "취소",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "이 API 키를 삭제하시겠습니까? 이후 {provider} 모델의 대화는 플랫폼 기본 상위로 돌아갑니다.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API 키가 삭제되었습니다.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API 키가 저장되었습니다.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "연결이 정상입니다.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "테스트 실패: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "자격 증명 로드 실패.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "자격 증명 저장 실패.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "사용자 정의 API 키가 아직 구성되지 않았습니다. \"API 키 추가\"를 클릭하여 자신의 서비스 제공업체 계정을 사용하세요.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "고급 옵션 표시",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "선택 사항. 사용자 정의 상위 주소(예: OpenRouter, 자체 리버스 프록시, 기업 게이트웨이 등). HTTPS만 허용되며, 내부망/루프백 주소를 가리킬 수 없습니다.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "당신의 {provider} 키 사용 중",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "이번 대화는 당신의 {provider} API 키를 사용하며, 비용은 {provider} 계정에서 정산되고 플랫폼 잔액은 차감되지 않습니다.",
+    "description": ""
   }
 }

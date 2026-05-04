@@ -1,168 +1,210 @@
 {
-  "title": {
-    "list": {
-      "message": "Custom API Key",
-      "description": "Title for the list of custom API keys."
-    },
-    "addCredential": {
-      "message": "Add API Key",
-      "description": "Button text to add a new API key."
-    },
-    "editCredential": {
-      "message": "Edit API Key",
-      "description": "Button text to edit an existing API key."
-    },
-    "deleteCredential": {
-      "message": "Delete API Key",
-      "description": "Button text to delete an existing API key."
-    }
+  "title.list": {
+    "message": "Custom API Key",
+    "description": "Title for the list of custom API keys."
   },
-  "description": {
-    "list": {
-      "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. Once configured, the corresponding model's dialogue requests will directly call the upstream service provider using your Key, without consuming platform credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
-      "description": "Description explaining the use of custom API keys."
-    }
+  "title.addCredential": {
+    "message": "Add API Key",
+    "description": "Button text to add a new API key."
   },
-  "field": {
-    "provider": {
-      "message": "Provider",
-      "description": "Label for the service provider field."
-    },
-    "label": {
-      "message": "Notes",
-      "description": "Label for the notes field."
-    },
-    "labelPlaceholder": {
-      "message": "e.g. \"My Work ID\" (optional)",
-      "description": "Placeholder text for the notes field."
-    },
-    "apiKey": {
-      "message": "API Key",
-      "description": "Label for the API key field."
-    },
-    "apiKeyPlaceholder": {
-      "message": "sk-...",
-      "description": "Placeholder text for the API key input."
-    },
-    "apiKeyEditPlaceholder": {
-      "message": "Leave empty to keep current Key unchanged",
-      "description": "Placeholder text for editing the API key."
-    },
-    "baseUrl": {
-      "message": "Custom Base URL",
-      "description": "Label for the custom base URL field."
-    },
-    "baseUrlPlaceholder": {
-      "message": "Leave empty to use provider's default address",
-      "description": "Placeholder text for the custom base URL input."
-    },
-    "isActive": {
-      "message": "Active",
-      "description": "Label for the active status field."
-    },
-    "lastUsedAt": {
-      "message": "Last Used",
-      "description": "Label for the last used timestamp."
-    },
-    "createdAt": {
-      "message": "Added At",
-      "description": "Label for the timestamp when the API key was added."
-    }
+  "title.editCredential": {
+    "message": "Edit API Key",
+    "description": "Button text to edit an existing API key."
   },
-  "value": {
-    "active": {
-      "message": "Active",
-      "description": "Status indicating the API key is active."
-    },
-    "inactive": {
-      "message": "Inactive",
-      "description": "Status indicating the API key is not active."
-    },
-    "never": {
-      "message": "Never Used",
-      "description": "Status indicating the API key has never been used."
-    },
-    "default": {
-      "message": "Default",
-      "description": "Status indicating the API key is the default one."
-    }
+  "title.deleteCredential": {
+    "message": "Delete API Key",
+    "description": "Button text to delete an existing API key."
   },
-  "button": {
-    "add": {
-      "message": "Add API Key",
-      "description": "Button text to add a new API key."
-    },
-    "edit": {
-      "message": "Edit",
-      "description": "Button text to edit the selected API key."
-    },
-    "test": {
-      "message": "Test",
-      "description": "Button text to test the API key connection."
-    },
-    "delete": {
-      "message": "Delete",
-      "description": "Button text to delete the selected API key."
-    },
-    "save": {
-      "message": "Save",
-      "description": "Button text to save the API key."
-    },
-    "cancel": {
-      "message": "Cancel",
-      "description": "Button text to cancel the action."
-    }
+  "description.list": {
+    "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. Once configured, the corresponding model's dialogue requests will directly call the upstream service provider using your Key, without consuming platform credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
+    "description": "Description explaining the use of custom API keys."
   },
-  "message": {
-    "deleteConfirm": {
-      "message": "Confirm deletion of this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
-      "description": "Confirmation message for deleting an API key."
-    },
-    "deleteSuccess": {
-      "message": "API Key has been deleted.",
-      "description": "Message displayed after successfully deleting an API key."
-    },
-    "saveSuccess": {
-      "message": "API Key has been saved.",
-      "description": "Message displayed after successfully saving an API key."
-    },
-    "testSuccess": {
-      "message": "Connection is normal.",
-      "description": "Message displayed when the API key test is successful."
-    },
-    "testFailed": {
-      "message": "Test failed: {message}",
-      "description": "Message displayed when the API key test fails."
-    },
-    "loadFailed": {
-      "message": "Failed to load credentials.",
-      "description": "Message displayed when loading credentials fails."
-    },
-    "saveFailed": {
-      "message": "Failed to save credentials.",
-      "description": "Message displayed when saving credentials fails."
-    },
-    "empty": {
-      "message": "No custom API Key configured yet. Click \"Add API Key\" to use your own service provider account.",
-      "description": "Message displayed when no custom API keys are configured."
-    },
-    "advancedToggle": {
-      "message": "Show Advanced Options",
-      "description": "Button text to toggle advanced options."
-    },
-    "baseUrlHelp": {
-      "message": "Optional. Custom upstream address (for OpenRouter, self-built reverse proxy, enterprise gateway, etc.). Only HTTPS is allowed, cannot point to internal/loopback addresses.",
-      "description": "Help text for the custom base URL field."
-    }
+  "field.provider": {
+    "message": "Provider",
+    "description": "Label for the service provider field."
   },
-  "badge": {
-    "active": {
-      "message": "Using your {provider} Key",
-      "description": "Badge indicating that the current dialogue is using the user's own API key."
-    },
-    "tooltip": {
-      "message": "This dialogue uses your own {provider} API Key, costs will be settled by your {provider} account, and will not deduct from platform balance.",
-      "description": "Tooltip explaining the cost settlement for using the user's own API key."
-    }
+  "field.label": {
+    "message": "Notes",
+    "description": "Label for the notes field."
+  },
+  "field.labelPlaceholder": {
+    "message": "e.g. \"My Work ID\" (optional)",
+    "description": "Placeholder text for the notes field."
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": "Label for the API key field."
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": "Placeholder text for the API key input."
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Leave empty to keep current Key unchanged",
+    "description": "Placeholder text for editing the API key."
+  },
+  "field.baseUrl": {
+    "message": "Custom Base URL",
+    "description": "Label for the custom base URL field."
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Leave empty to use provider's default address",
+    "description": "Placeholder text for the custom base URL input."
+  },
+  "field.isActive": {
+    "message": "Active",
+    "description": "Label for the active status field."
+  },
+  "field.lastUsedAt": {
+    "message": "Last Used",
+    "description": "Label for the last used timestamp."
+  },
+  "field.createdAt": {
+    "message": "Added At",
+    "description": "Label for the timestamp when the API key was added."
+  },
+  "value.active": {
+    "message": "Active",
+    "description": "Status indicating the API key is active."
+  },
+  "value.inactive": {
+    "message": "Inactive",
+    "description": "Status indicating the API key is not active."
+  },
+  "value.never": {
+    "message": "Never Used",
+    "description": "Status indicating the API key has never been used."
+  },
+  "value.default": {
+    "message": "Default",
+    "description": "Status indicating the API key is the default one."
+  },
+  "button.add": {
+    "message": "Add API Key",
+    "description": "Button text to add a new API key."
+  },
+  "button.edit": {
+    "message": "Edit",
+    "description": "Button text to edit the selected API key."
+  },
+  "button.test": {
+    "message": "Test",
+    "description": "Button text to test the API key connection."
+  },
+  "button.delete": {
+    "message": "Delete",
+    "description": "Button text to delete the selected API key."
+  },
+  "button.save": {
+    "message": "Save",
+    "description": "Button text to save the API key."
+  },
+  "button.cancel": {
+    "message": "Cancel",
+    "description": "Button text to cancel the action."
+  },
+  "message.deleteConfirm": {
+    "message": "Confirm deletion of this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
+    "description": "Confirmation message for deleting an API key."
+  },
+  "message.deleteSuccess": {
+    "message": "API Key has been deleted.",
+    "description": "Message displayed after successfully deleting an API key."
+  },
+  "message.saveSuccess": {
+    "message": "API Key has been saved.",
+    "description": "Message displayed after successfully saving an API key."
+  },
+  "message.testSuccess": {
+    "message": "Connection is normal.",
+    "description": "Message displayed when the API key test is successful."
+  },
+  "message.testFailed": {
+    "message": "Test failed: {message}",
+    "description": "Message displayed when the API key test fails."
+  },
+  "message.loadFailed": {
+    "message": "Failed to load credentials.",
+    "description": "Message displayed when loading credentials fails."
+  },
+  "message.saveFailed": {
+    "message": "Failed to save credentials.",
+    "description": "Message displayed when saving credentials fails."
+  },
+  "message.empty": {
+    "message": "No custom API Key configured yet. Click \"Add API Key\" to use your own service provider account.",
+    "description": "Message displayed when no custom API keys are configured."
+  },
+  "message.advancedToggle": {
+    "message": "Show Advanced Options",
+    "description": "Button text to toggle advanced options."
+  },
+  "message.baseUrlHelp": {
+    "message": "Optional. Custom upstream address (for OpenRouter, self-built reverse proxy, enterprise gateway, etc.). Only HTTPS is allowed, cannot point to internal/loopback addresses.",
+    "description": "Help text for the custom base URL field."
+  },
+  "badge.active": {
+    "message": "Using your {provider} Key",
+    "description": "Badge indicating that the current dialogue is using the user's own API key."
+  },
+  "badge.tooltip": {
+    "message": "This dialogue uses your own {provider} API Key, costs will be settled by your {provider} account, and will not deduct from platform balance.",
+    "description": "Tooltip explaining the cost settlement for using the user's own API key."
+  },
+  "badge.manage": {
+    "message": "Click to manage your custom API Keys",
+    "description": "Click hint shown on the in-chat BYOK badge: opens the settings dialog at the API Key tab."
+  },
+  "button.testConnection": {
+    "message": "Save and test connection",
+    "description": "Add/edit dialog button — saves the credential first, then hits upstream /models to verify connectivity."
+  },
+  "test.success": {
+    "message": "Connection test succeeded",
+    "description": "Heading of the success state in the connection-test result panel."
+  },
+  "test.failure": {
+    "message": "Connection test failed",
+    "description": "Heading of the failure state in the connection-test result panel."
+  },
+  "test.endpoint": {
+    "message": "Endpoint",
+    "description": "Label for the request URL row in the connection-test result detail."
+  },
+  "test.status": {
+    "message": "HTTP status",
+    "description": "Label for the HTTP status row in the connection-test result detail."
+  },
+  "test.message": {
+    "message": "Upstream response",
+    "description": "Label for the upstream error / message row in the connection-test result detail."
+  },
+  "providerDesc.openai": {
+    "message": "Replaces this site's ChatGPT requests (GPT-4 / GPT-4o / o1 / o3, etc.).",
+    "description": "Subtitle shown beneath the OpenAI option in the provider dropdown."
+  },
+  "providerDesc.anthropic": {
+    "message": "Replaces this site's Claude requests (Sonnet / Opus / Haiku, etc.).",
+    "description": "Subtitle shown beneath the Anthropic option in the provider dropdown."
+  },
+  "providerDesc.google": {
+    "message": "Replaces this site's Gemini requests (Pro / Flash family).",
+    "description": "Subtitle shown beneath the Google option in the provider dropdown."
+  },
+  "providerDesc.xai": {
+    "message": "Replaces this site's Grok requests.",
+    "description": "Subtitle shown beneath the xAI option in the provider dropdown."
+  },
+  "providerDesc.deepseek": {
+    "message": "Replaces this site's DeepSeek requests (V3 / R1, etc.).",
+    "description": "Subtitle shown beneath the DeepSeek option in the provider dropdown."
+  },
+  "providerDesc.moonshot": {
+    "message": "Replaces this site's Kimi requests.",
+    "description": "Subtitle shown beneath the Moonshot (Kimi) option in the provider dropdown."
+  },
+  "providerDesc.zhipu": {
+    "message": "Replaces this site's GLM-family requests.",
+    "description": "Subtitle shown beneath the Zhipu (GLM) option in the provider dropdown."
   }
 }

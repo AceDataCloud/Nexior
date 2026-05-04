@@ -1,5 +1,5 @@
 <template>
-  <el-dialog class="min-w-[450px]" :model-value="visible" @close="onClose">
+  <el-dialog class="min-w-[450px]" :model-value="visible" :width="dialogWidth" @close="onClose">
     <div class="flex settings h-[450px]">
       <aside class="h-full border-r">
         <el-menu class="border-r-0 settings-menu">
@@ -22,6 +22,9 @@
       <main class="flex-1 p-6 overflow-y-auto">
         <div v-if="activeTab === 'general'">
           <general-setting />
+        </div>
+        <div v-else-if="activeTab === 'apiKey'">
+          <byok-setting />
         </div>
         <div v-else-if="activeTab === 'site'">
           <site-setting />
@@ -47,8 +50,17 @@
 import { defineComponent } from 'vue';
 import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faCog, faBell, faUserShield, faMagic, faMoneyBill, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCog,
+  faBell,
+  faKey,
+  faUserShield,
+  faMagic,
+  faMoneyBill,
+  faInfoCircle
+} from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
+import ByokSetting from '@/components/setting/Byok.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
@@ -63,6 +75,7 @@ export default defineComponent({
     ElMenuItem,
     FontAwesomeIcon,
     GeneralSetting,
+    ByokSetting,
     SiteSetting,
     SeoSetting,
     DistributionSetting,
@@ -73,6 +86,10 @@ export default defineComponent({
     visible: {
       type: Boolean,
       default: false
+    },
+    initialTab: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update:visible'],
@@ -86,6 +103,7 @@ export default defineComponent({
     navItems() {
       return [
         { key: 'general', label: this.$t('common.settings.general'), icon: faCog, visible: true },
+        { key: 'apiKey', label: this.$t('common.settings.apiKey'), icon: faKey, visible: true },
         { key: 'site', label: this.$t('common.settings.site'), icon: faBell, visible: this.isSiteAdmin },
         { key: 'seo', label: this.$t('common.settings.seo'), icon: faUserShield, visible: this.isSiteAdmin },
         {
@@ -105,6 +123,22 @@ export default defineComponent({
     },
     isSiteAdmin(): boolean {
       return !!this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
+    },
+    dialogWidth(): string {
+      // The BYOK tab renders a multi-column credential table that
+      // doesn't fit the default 50% dialog width on most laptops.
+      return this.activeTab === 'apiKey' ? '900px' : '50%';
+    }
+  },
+  watch: {
+    // When the parent opens the dialog with an explicit `initialTab`
+    // (e.g. clicking the in-chat BYOK badge -> tab=apiKey), respect
+    // that on each open. The default 'general' tab is restored when the
+    // parent opens it with no initialTab.
+    visible(open: boolean) {
+      if (open) {
+        this.activeTab = this.initialTab || 'general';
+      }
     }
   },
   methods: {

@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "Користувацький API Key",
-    "addCredential": "Додати API Key",
-    "editCredential": "Редагувати API Key",
-    "deleteCredential": "Видалити API Key"
+  "title.list": {
+    "message": "Користувацький API Key",
+    "description": ""
   },
-  "description": {
-    "list": "Використовуйте свій власний API Key постачальника (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) замість пулу облікових записів платформи. Після налаштування запити до моделі будуть безпосередньо викликати послуги постачальника за вашим ключем, не витрачаючи кредити платформи; інші функції, такі як виклики інструментів, посилання, артефакти, історія в хмарі тощо, працюватимуть як зазвичай."
+  "title.addCredential": {
+    "message": "Додати API Key",
+    "description": ""
   },
-  "field": {
-    "provider": "Постачальник",
-    "label": "Примітка",
-    "labelPlaceholder": "Наприклад, \"Мій робочий номер\" (необов'язково)",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "Залиште порожнім, щоб зберегти поточний ключ",
-    "baseUrl": "Користувацька базова URL",
-    "baseUrlPlaceholder": "Залиште порожнім для використання за замовчуванням постачальника",
-    "isActive": "Активно",
-    "lastUsedAt": "Останнє використання",
-    "createdAt": "Час додавання"
+  "title.editCredential": {
+    "message": "Редагувати API Key",
+    "description": ""
   },
-  "value": {
-    "active": "Активно",
-    "inactive": "Неактивно",
-    "never": "Ніколи не використовувався",
-    "default": "За замовчуванням"
+  "title.deleteCredential": {
+    "message": "Видалити API Key",
+    "description": ""
   },
-  "button": {
-    "add": "Додати API Key",
-    "edit": "Редагувати",
-    "test": "Тестувати",
-    "delete": "Видалити",
-    "save": "Зберегти",
-    "cancel": "Скасувати"
+  "description.list": {
+    "message": "Використовуйте свій власний API Key постачальника (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhìpǔ) замість пулу облікових записів платформи. Після налаштування запити до моделі будуть безпосередньо викликати послуги постачальника за вашим ключем, не витрачаючи кредити платформи; інші функції, такі як виклики інструментів, посилання, артефакти, історія в хмарі тощо, працюватимуть як зазвичай.",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "Підтвердити видалення цього API Key? Наступні діалоги з моделлю {provider} повернуться до стандартного постачальника платформи.",
-    "deleteSuccess": "API Key видалено.",
-    "saveSuccess": "API Key збережено.",
-    "testSuccess": "З'єднання в нормі.",
-    "testFailed": "Тестування не вдалося: {message}",
-    "loadFailed": "Не вдалося завантажити облікові дані.",
-    "saveFailed": "Не вдалося зберегти облікові дані.",
-    "empty": "Користувацький API Key ще не налаштовано. Натисніть \"Додати API Key\", щоб використовувати свій обліковий запис постачальника.",
-    "advancedToggle": "Показати розширені параметри",
-    "baseUrlHelp": "Необов'язково. Користувацька адреса для послуг (для OpenRouter, самостійного зворотного проксі, корпоративних шлюзів тощо). Дозволяється лише HTTPS, не може вказувати на внутрішню мережу/цикл."
+  "field.provider": {
+    "message": "Постачальник",
+    "description": ""
   },
-  "badge": {
-    "active": "Використовуйте свій {provider} Key",
-    "tooltip": "Цей діалог використовує ваш власний API Key {provider}, витрати покриває обліковий запис {provider}, не зменшуючи баланс платформи."
+  "field.label": {
+    "message": "Примітка",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "Наприклад, \"Мій робочий номер\" (необов'язково)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Залиште порожнім, щоб зберегти поточний ключ",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Користувацька базова URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Залиште порожнім для використання за замовчуванням постачальника",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Активно",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Останнє використання",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Час додавання",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Активно",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Неактивно",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Ніколи не використовувався",
+    "description": ""
+  },
+  "value.default": {
+    "message": "За замовчуванням",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Додати API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Редагувати",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Тестувати",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Видалити",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Зберегти",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Скасувати",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Підтвердити видалення цього API Key? Наступні діалоги з моделлю {provider} повернуться до стандартного постачальника платформи.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key видалено.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key збережено.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "З'єднання в нормі.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Тестування не вдалося: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Не вдалося завантажити облікові дані.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Не вдалося зберегти облікові дані.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Користувацький API Key ще не налаштовано. Натисніть \"Додати API Key\", щоб використовувати свій обліковий запис постачальника.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Показати розширені параметри",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Необов'язково. Користувацька адреса для послуг (для OpenRouter, самостійного зворотного проксі, корпоративних шлюзів тощо). Дозволяється лише HTTPS, не може вказувати на внутрішню мережу/цикл.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Використовуйте свій {provider} Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Цей діалог використовує ваш власний API Key {provider}, витрати покриває обліковий запис {provider}, не зменшуючи баланс платформи.",
+    "description": ""
   }
 }

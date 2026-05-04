@@ -1,54 +1,154 @@
 {
-  "title": {
-    "list": "自訂 API Key",
-    "addCredential": "新增 API Key",
-    "editCredential": "編輯 API Key",
-    "deleteCredential": "刪除 API Key"
+  "title.list": {
+    "message": "自訂 API Key",
+    "description": ""
   },
-  "description": {
-    "list": "使用你自己的服務商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智譜）取代平台帳戶池。配置後，對應模型的對話請求會直接以你的 Key 調用上游服務商，不消耗平台 Credit；工具調用、引用、工件、雲端歷史等其他功能照常運作。"
+  "title.addCredential": {
+    "message": "新增 API Key",
+    "description": ""
   },
-  "field": {
-    "provider": "服務商",
-    "label": "備註",
-    "labelPlaceholder": "如 \"我的工作號\"（可選）",
-    "apiKey": "API Key",
-    "apiKeyPlaceholder": "sk-...",
-    "apiKeyEditPlaceholder": "留空表示保持當前 Key 不變",
-    "baseUrl": "自訂 Base URL",
-    "baseUrlPlaceholder": "留空使用服務商預設地址",
-    "isActive": "啟用",
-    "lastUsedAt": "上次使用",
-    "createdAt": "新增時間"
+  "title.editCredential": {
+    "message": "編輯 API Key",
+    "description": ""
   },
-  "value": {
-    "active": "啟用中",
-    "inactive": "未啟用",
-    "never": "從未使用",
-    "default": "預設"
+  "title.deleteCredential": {
+    "message": "刪除 API Key",
+    "description": ""
   },
-  "button": {
-    "add": "新增 API Key",
-    "edit": "編輯",
-    "test": "測試",
-    "delete": "刪除",
-    "save": "儲存",
-    "cancel": "取消"
+  "description.list": {
+    "message": "使用你自己的服務商 API Key（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智譜）取代平台帳戶池。配置後，對應模型的對話請求會直接以你的 Key 調用上游服務商，不消耗平台 Credit；工具調用、引用、工件、雲端歷史等其他功能照常運作。",
+    "description": ""
   },
-  "message": {
-    "deleteConfirm": "確認刪除這個 API Key？後續 {provider} 模型的對話將回落到平台預設上游。",
-    "deleteSuccess": "API Key 已刪除。",
-    "saveSuccess": "API Key 已儲存。",
-    "testSuccess": "連接正常。",
-    "testFailed": "測試失敗：{message}",
-    "loadFailed": "憑據加載失敗。",
-    "saveFailed": "儲存憑據失敗。",
-    "empty": "尚未配置自訂 API Key。點擊\"新增 API Key\"以使用你自己的服務商帳戶。",
-    "advancedToggle": "顯示進階選項",
-    "baseUrlHelp": "可選。自訂上游地址（用於 OpenRouter、自建反代、企業網關等）。僅允許 HTTPS，不能指向內網/回環地址。"
+  "field.provider": {
+    "message": "服務商",
+    "description": ""
   },
-  "badge": {
-    "active": "使用你的 {provider} Key",
-    "tooltip": "本次對話使用你自己的 {provider} API Key，費用由 {provider} 帳戶結算，不扣減平台餘額。"
+  "field.label": {
+    "message": "備註",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "如 \"我的工作號\"（可選）",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "留空表示保持當前 Key 不變",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "自訂 Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "留空使用服務商預設地址",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "啟用",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "上次使用",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "新增時間",
+    "description": ""
+  },
+  "value.active": {
+    "message": "啟用中",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "未啟用",
+    "description": ""
+  },
+  "value.never": {
+    "message": "從未使用",
+    "description": ""
+  },
+  "value.default": {
+    "message": "預設",
+    "description": ""
+  },
+  "button.add": {
+    "message": "新增 API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "編輯",
+    "description": ""
+  },
+  "button.test": {
+    "message": "測試",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "刪除",
+    "description": ""
+  },
+  "button.save": {
+    "message": "儲存",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "確認刪除這個 API Key？後續 {provider} 模型的對話將回落到平台預設上游。",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key 已刪除。",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key 已儲存。",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "連接正常。",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "測試失敗：{message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "憑據加載失敗。",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "儲存憑據失敗。",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "尚未配置自訂 API Key。點擊\"新增 API Key\"以使用你自己的服務商帳戶。",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "顯示進階選項",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "可選。自訂上游地址（用於 OpenRouter、自建反代、企業網關等）。僅允許 HTTPS，不能指向內網/回環地址。",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "使用你的 {provider} Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "本次對話使用你自己的 {provider} API Key，費用由 {provider} 帳戶結算，不扣減平台餘額。",
+    "description": ""
   }
 }
