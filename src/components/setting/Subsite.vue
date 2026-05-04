@@ -12,17 +12,13 @@
 
     <el-card v-loading="loading" shadow="never" class="list-card">
       <el-empty v-if="!loading && items.length === 0" :description="$t('subsite.message.empty')" />
-      <el-table v-else :data="items" stripe>
-        <el-table-column :label="$t('subsite.field.origin')" prop="origin">
+      <el-table v-else :data="items" stripe class="subsite-table">
+        <el-table-column :label="$t('subsite.field.origin')" prop="origin" min-width="220">
           <template #default="{ row }">
             <a :href="rowUrl(row)" target="_blank" rel="noopener" class="origin-link">
               {{ row.origin }}
             </a>
-          </template>
-        </el-table-column>
-        <el-table-column :label="$t('subsite.field.title')" prop="title">
-          <template #default="{ row }">
-            <span>{{ row.title || '-' }}</span>
+            <div v-if="row.title" class="row-title">{{ row.title }}</div>
           </template>
         </el-table-column>
         <el-table-column :label="$t('subsite.field.createdAt')" prop="created_at" width="170">
@@ -30,17 +26,19 @@
             <span>{{ formatDate(row.created_at) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('subsite.field.actions')" width="240" fixed="right">
+        <el-table-column :label="$t('subsite.field.actions')" width="260" fixed="right" align="right">
           <template #default="{ row }">
-            <el-button size="small" link type="primary" @click="onOpenSite(row)">
-              {{ $t('subsite.button.open') }}
-            </el-button>
-            <el-button size="small" link type="primary" @click="onManageSite(row)">
-              {{ $t('subsite.button.manage') }}
-            </el-button>
-            <el-button size="small" link type="primary" @click="onOpenDomains(row)">
-              {{ $t('subsite.button.domains') }}
-            </el-button>
+            <span class="row-actions">
+              <el-button size="small" round @click="onOpenSite(row)">
+                {{ $t('subsite.button.open') }}
+              </el-button>
+              <el-button size="small" round @click="onManageSite(row)">
+                {{ $t('subsite.button.manage') }}
+              </el-button>
+              <el-button size="small" round type="primary" plain @click="onOpenDomains(row)">
+                {{ $t('subsite.button.domains') }}
+              </el-button>
+            </span>
           </template>
         </el-table-column>
       </el-table>
@@ -332,9 +330,25 @@ export default defineComponent({
   .origin-link {
     color: var(--el-color-primary);
     text-decoration: none;
+    word-break: break-all;
     &:hover {
       text-decoration: underline;
     }
+  }
+  .row-title {
+    margin-top: 2px;
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
+    line-height: 1.4;
+  }
+  .row-actions {
+    display: inline-flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .subsite-table :deep(.el-button + .el-button) {
+    margin-left: 0;
   }
 
   .form .hint {

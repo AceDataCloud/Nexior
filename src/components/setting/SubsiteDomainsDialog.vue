@@ -9,7 +9,11 @@
     <div v-loading="loading" class="domains-body">
       <p class="tip">{{ $t('subsite.message.domainsIntro') }}</p>
 
-      <el-empty v-if="!loading && domains.length === 0" :description="$t('subsite.message.domainsEmpty')" />
+      <el-empty
+        v-if="!loading && domains.length === 0"
+        :description="$t('subsite.message.domainsEmpty')"
+        :image-size="80"
+      />
 
       <div v-for="d in domains" :key="d.id" class="domain-row">
         <div class="domain-row-head">
@@ -341,7 +345,12 @@ export default defineComponent({
     margin: 0 0 18px 0;
   }
   :deep(.el-empty) {
-    padding: 24px 0 16px;
+    padding: 8px 0 16px;
+    .el-empty__description {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--el-text-color-secondary);
+    }
   }
   .domain-row {
     border: 1px solid var(--el-border-color-lighter);
