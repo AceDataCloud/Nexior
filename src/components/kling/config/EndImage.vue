@@ -12,11 +12,12 @@
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
       :limit="1"
-      :disabled="reachedLimit"
+      :disabled="uploadDisabled"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
       list-type="picture"
+      :before-upload="onBeforeUpload"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-success="onSuccess"
@@ -31,9 +32,9 @@
           @remove="fileList.splice(fileList.indexOf(file), 1)"
         />
       </template>
-      <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
+      <el-tooltip :content="uploadTooltip" :disabled="!uploadDisabled" placement="top">
         <span>
-          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="reachedLimit">
+          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="uploadDisabled">
             <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
             {{ $t('kling.button.uploadReferences') }}
           </el-button>
@@ -48,6 +49,7 @@ import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
+import { getKlingCapabilities } from '@/utils/kling/capabilities';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -86,15 +88,39 @@ export default defineComponent({
     reachedLimit(): boolean {
       return (this.fileList?.length || 0) >= 1;
     },
+    klingConfig(): Record<string, any> {
+      return this.$store.state?.kling?.config || {};
+    },
+    endImageSupported(): boolean {
+      return getKlingCapabilities(this.klingConfig.model, this.klingConfig.mode, this.klingConfig.duration).endImage;
+    },
+    uploadDisabled(): boolean {
+      return this.reachedLimit || !this.endImageSupported;
+    },
+    uploadTooltip(): string {
+      if (!this.endImageSupported) return this.$t('kling.message.endImageNotSupported');
+      if (this.reachedLimit) return this.$t('kling.message.uploadReferencesExceed');
+      return '';
+    },
+    storeValue(): string | undefined {
+      return this.klingConfig.end_image_url;
+    },
     value: {
-      get() {
-        return this.$store.state?.kling?.config?.end_image_url;
+      get(): string | undefined {
+        return this.storeValue;
       },
       set() {
-        // this.$store.commit('kling/setConfig', {
-        //   ...this.$store.state?.kling?.config,
-        //   end_image_url: val
-        // });
+        // Mutation flows through onSetEndImageUrl/store only.
+      }
+    }
+  },
+  watch: {
+    storeValue(val: string | undefined) {
+      // When the store clears the value (e.g. user confirmed dropping it after
+      // switching to an incompatible model), drop the local thumbnail too so
+      // the UI stays in sync.
+      if (!val && this.fileList.length > 0) {
+        this.fileList = [];
       }
     }
   },
@@ -105,6 +131,13 @@ export default defineComponent({
     this.onSetEndImageUrl();
   },
   methods: {
+    onBeforeUpload(): boolean {
+      if (!this.endImageSupported) {
+        ElMessage.warning(this.$t('kling.message.endImageNotSupported'));
+        return false;
+      }
+      return true;
+    },
     onExceed() {
       ElMessage.warning(this.$t('kling.message.uploadReferencesExceed'));
     },

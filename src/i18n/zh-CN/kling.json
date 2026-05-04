@@ -603,6 +603,30 @@
     "message": "使用尾帧参考图前，请先上传首帧参考图",
     "description": "用户只上传了尾帧没有首帧时的错误提示"
   },
+  "message.endImageNotSupported": {
+    "message": "尾帧参考图不被当前模型/模式/时长支持，请先调整配置（常见要求：模式 pro、时长 5s）。",
+    "description": "上传尾帧时当前模型不支持的提示"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要确认",
+    "description": "切换参数时会丢失现有设置的确认弹窗标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "当前选择不支持以下已启用的设置：{fields}。继续将清理这些设置。",
+    "description": "切换 model/mode/duration 后会丢失募集设置的提示文案，{fields} 会被占位符替换为实际字段名"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的设置：{fields}",
+    "description": "用户确认切换后的 toast 提醒"
+  },
+  "button.confirmContinue": {
+    "message": "继续切换",
+    "description": "feature 丢失确认弹窗的主按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "feature 丢失确认弹窗的取消按钮"
+  },
   "message.startingTask": {
     "message": "正在启动任务...",
     "description": "绘图任务开始时的消息"

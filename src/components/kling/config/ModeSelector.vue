@@ -4,7 +4,14 @@
       <h2 class="title font-bold">{{ $t('kling.name.mode') }}</h2>
       <info-icon :content="$t('kling.description.mode')" class="info-icon" />
     </div>
-    <el-select v-model="value" class="value" :placeholder="$t('kling.placeholder.select')" :clearable="true">
+    <el-select
+      :key="revertKey"
+      :model-value="value"
+      class="value"
+      :placeholder="$t('kling.placeholder.select')"
+      :clearable="true"
+      @change="onChange"
+    >
       <el-option
         v-for="item in options"
         :key="item.value"
@@ -23,9 +30,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElSelect, ElOption, ElMessage, ElMessageBox } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { KLING_DEFAULT_MODE, KLING_V3_MODELS } from '@/constants';
+import { findKlingConflicts, clearKlingConflicts } from '@/utils/kling/capabilities';
 
 export default defineComponent({
   name: 'ModeSelector',
@@ -41,6 +49,11 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue'],
+  data() {
+    return {
+      revertKey: 0
+    };
+  },
   computed: {
     selectedModel(): string {
       return this.$store.state.kling?.config?.model || '';
@@ -70,29 +83,54 @@ export default defineComponent({
         }
       ];
     },
-    value: {
-      get(): string | undefined {
-        return this.$store.state.kling?.config?.mode;
-      },
-      set(val: string) {
-        this.$store.commit('kling/setConfig', {
-          ...this.$store.state.kling.config,
-          mode: val
-        });
-      }
+    value(): string | undefined {
+      return this.$store.state.kling?.config?.mode;
     }
   },
   watch: {
     fourKReason(reason: string) {
       // If 4k becomes invalid (e.g. user switched model away from v3), revert to default.
       if (reason && this.value === '4k') {
-        this.value = KLING_DEFAULT_MODE;
+        this.applyMode(KLING_DEFAULT_MODE);
       }
     }
   },
   mounted() {
     if (!this.value) {
-      this.value = KLING_DEFAULT_MODE;
+      this.applyMode(KLING_DEFAULT_MODE);
+    }
+  },
+  methods: {
+    async onChange(val: string) {
+      const config = this.$store.state.kling?.config || {};
+      const conflicts = findKlingConflicts(config, { mode: val });
+      if (conflicts.length === 0) {
+        this.applyMode(val);
+        return;
+      }
+      const fields = conflicts.map((c) => this.$t(c.i18nLabel)).join('、');
+      try {
+        await ElMessageBox.confirm(
+          this.$t('kling.message.featureNotSupportedBody', { fields }),
+          this.$t('kling.message.featureNotSupportedTitle'),
+          {
+            confirmButtonText: this.$t('kling.button.confirmContinue'),
+            cancelButtonText: this.$t('kling.button.cancelSwitch'),
+            type: 'warning'
+          }
+        );
+        const cleared = clearKlingConflicts({ ...config, mode: val }, conflicts);
+        this.$store.commit('kling/setConfig', cleared);
+        ElMessage.success(this.$t('kling.message.featureRemovedNotice', { fields }));
+      } catch {
+        this.revertKey += 1;
+      }
+    },
+    applyMode(val: string) {
+      this.$store.commit('kling/setConfig', {
+        ...this.$store.state.kling.config,
+        mode: val
+      });
     }
   }
 });
