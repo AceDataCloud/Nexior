@@ -15,6 +15,7 @@ import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
 import { ElMessage } from 'element-plus';
 import { midjourneyOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { MidjourneyVideosAction, Status } from '@/models';
@@ -223,10 +224,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .imagine(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.imagine(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
         })
@@ -262,10 +260,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .videos(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.videos(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startVideosTaskSuccess'));
         })
@@ -291,10 +286,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .describe(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.describe(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startDescribeTaskSuccess'));
         })

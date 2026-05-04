@@ -112,6 +112,7 @@ import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from 
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
+import { track } from '@/plugins/telemetry';
 import ServiceEstimation from '@/components/service/Estimation.vue';
 
 interface IData {
@@ -238,6 +239,12 @@ export default defineComponent({
       }
       this.creating = true;
       const unit = this.$t(`service.unit.${this.application?.service?.unit}s`);
+      track('payment_initiated', {
+        service: this.application?.service?.alias,
+        amount: this.package?.amount,
+        package_id: this.package?.id,
+        action: 'extra'
+      });
       orderOperator
         .create({
           application_id: this.application?.id,
@@ -265,9 +272,14 @@ export default defineComponent({
             }
           });
         })
-        .catch(() => {
+        .catch((error) => {
           ElMessage.error(this.$t('order.message.createFailed'));
           this.creating = false;
+          track('payment_failed', {
+            service: this.application?.service?.alias,
+            action: 'extra',
+            error: error?.response?.data?.error?.message ?? String(error)
+          });
         });
     }
   }

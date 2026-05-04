@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Veo.vue';
 import ConfigPanel from '@/components/veo/ConfigPanel.vue';
 import { veoOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IVeoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -168,10 +169,7 @@ export default defineComponent({
         delete request.image_urls;
       }
       ElMessage.info(this.$t('veo.message.startingTask'));
-      veoOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('veo', veoOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('veo.message.startTaskSuccess'));
         })

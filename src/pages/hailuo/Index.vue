@@ -14,6 +14,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/hailuo/ConfigPanel.vue';
 import { hailuoOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IHailuoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -162,10 +163,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('hailuo.message.startingTask'));
-      hailuoOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('hailuo', hailuoOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('hailuo.message.startTaskSuccess'));
         })

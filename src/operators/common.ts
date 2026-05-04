@@ -1,5 +1,6 @@
 import store from '@/store';
 import { getBaseUrlPlatform } from '@/utils';
+import { trackApiFailure } from '@/plugins/telemetry';
 import axios, { AxiosInstance } from 'axios';
 import qs from 'qs';
 import { getCookie } from 'typescript-cookie';
@@ -50,6 +51,18 @@ httpClient.interceptors.response.use(
     const traceId = error?.response?.data?.trace_id || error?.response?.headers?.['x-request-id'];
     if (traceId) {
       console.error(`Request failed [trace_id=${traceId}]`, error?.response?.status, error?.response?.data);
+    }
+    // Forward 4xx/5xx to RUM with the server-side trace_id attached so the
+    // entry can be cross-referenced with PlatformGateway CLS logs. Network
+    // errors (no `response`) are still captured because Aegis's built-in
+    // `reportApiSpeed` covers them.
+    if (error?.response) {
+      trackApiFailure({
+        url: error.config?.url ?? '',
+        method: error.config?.method,
+        status: error.response.status,
+        trace_id: traceId
+      });
     }
     return Promise.reject(error);
   }
