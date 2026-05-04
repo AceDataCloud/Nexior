@@ -44,6 +44,7 @@ export interface IPikaGenerateResponse {
 export interface IPikaTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IPikaGenerateRequest;
   response?: IPikaGenerateResponse;
 }

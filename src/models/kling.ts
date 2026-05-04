@@ -111,6 +111,7 @@ export interface IKlingGenerateResponse {
 export interface IKlingTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   type?: IKlingTaskType;
   request?: IKlingGenerateRequest & IKlingMotionRequest;
   response?: IKlingGenerateResponse;

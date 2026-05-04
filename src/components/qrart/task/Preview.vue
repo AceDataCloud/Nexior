@@ -67,6 +67,10 @@
               class="btn-copy"
             />
           </p>
+          <p v-if="modelValue?.elapsed" class="description">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('qrart.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
         </el-alert>
       </div>
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
@@ -86,6 +90,10 @@
             {{ $t('qrart.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
+          </p>
+          <p v-if="modelValue?.elapsed" class="description">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('qrart.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />

@@ -55,6 +55,7 @@ export interface IVeoGenerateResponse {
 export interface IVeoTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IVeoGenerateRequest;
   response?: IVeoGenerateResponse;
 }

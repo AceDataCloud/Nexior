@@ -38,6 +38,7 @@ export interface IFluxGenerateResponse {
 export interface IFluxTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IFluxGenerateRequest;
   response?: IFluxGenerateResponse;
 }

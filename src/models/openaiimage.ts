@@ -46,6 +46,7 @@ export interface IOpenAIImageTask {
   id: string;
   type?: string;
   created_at?: number;
+  elapsed?: number;
   request?: IOpenAIImageGenerateRequest | IOpenAIImageEditRequest;
   response?: IOpenAIImageGenerateResponse;
 }

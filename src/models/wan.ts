@@ -50,6 +50,7 @@ export interface IWanGenerateResponse {
 export interface IWanTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IWanGenerateRequest;
   response?: IWanGenerateResponse;
 }
