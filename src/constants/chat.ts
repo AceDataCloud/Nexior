@@ -94,6 +94,8 @@ export const CHAT_MODEL_DEEPSEEK_V4_FLASH: IChatModel = {
   name: CHAT_MODEL_NAME_DEEPSEEK_V4_FLASH,
   icon: CHAT_MODEL_ICON_DEEPSEEK,
   modelGroup: 'deepseek',
+  isImageSupported: true,
+  isFileSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.deepseekV4Flash'),
   getDescription: () => i18n.global.t('chat.model.deepseekV4FlashDescription')
 };
