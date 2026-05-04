@@ -21,6 +21,7 @@ import {
   SEEDREAM_MODEL_3_0_T2I,
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
+  SEEDREAM_MODEL_5_0,
   SEEDREAM_MODEL_SEEDEDIT_3_0_I2I
 } from '@/constants';
 
@@ -34,6 +35,10 @@ export default defineComponent({
   data() {
     return {
       options: [
+        {
+          value: SEEDREAM_MODEL_5_0,
+          label: this.$t('seedream.model.seedream50')
+        },
         {
           value: SEEDREAM_MODEL_4_5,
           label: this.$t('seedream.model.seedream45')
