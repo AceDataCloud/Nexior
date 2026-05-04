@@ -34,6 +34,10 @@ export const setConversations = (state: IChatState, payload: IChatConversation[]
   state.conversations = payload;
 };
 
+export const setPendingDraft = (state: IChatState, payload: string): void => {
+  state.pendingDraft = payload || '';
+};
+
 export default {
   setModel,
   setModelGroup,
@@ -42,5 +46,6 @@ export default {
   setConversations,
   setApplication,
   setApplications,
+  setPendingDraft,
   resetAll
 };

@@ -11,6 +11,7 @@ export default (): IChatState => {
     conversations: undefined,
     service: undefined,
     credential: undefined,
+    pendingDraft: '',
     status: {
       getService: Status.None,
       getApplications: Status.None,
