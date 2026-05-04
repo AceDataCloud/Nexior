@@ -37,8 +37,15 @@
         :preview-src-list="[card.url]"
         :initial-index="0"
         :hide-on-click-modal="true"
-      />
-      <div v-if="card.title" class="title" :title="card.title">{{ card.title }}</div>
+      >
+        <template #placeholder>
+          <div class="image-placeholder" />
+        </template>
+        <template #error>
+          <div class="image-placeholder image-placeholder--error" />
+        </template>
+      </el-image>
+      <div v-if="card.title" class="caption" :title="card.title">{{ card.title }}</div>
     </div>
 
     <!-- File / fallback -->
@@ -211,12 +218,56 @@ export default defineComponent({
 .image-card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 
   .image {
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    min-height: 240px;
     max-height: 400px;
     border-radius: 8px;
+    overflow: hidden;
+  }
+  .image-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    border-radius: 8px;
+    background: linear-gradient(
+      90deg,
+      var(--el-fill-color) 0%,
+      var(--el-fill-color-light) 50%,
+      var(--el-fill-color) 100%
+    );
+    background-size: 200% 100%;
+    animation: image-card-shimmer 1.4s ease-in-out infinite;
+  }
+  .image-placeholder--error {
+    animation: none;
+    background: var(--el-fill-color);
+  }
+  .caption {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--el-text-color-secondary);
+    text-align: center;
+    line-height: 1.4;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    opacity: 0.75;
+  }
+}
+
+@keyframes image-card-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
