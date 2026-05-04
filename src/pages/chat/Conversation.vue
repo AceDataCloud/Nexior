@@ -45,6 +45,7 @@
             :ready="ready"
             :references="references"
             @update:references="references = $event"
+            @update:reference-names="referenceNames = $event"
             @submit="onSubmit"
             @stop="onStop"
           />
@@ -80,6 +81,14 @@ export interface IData {
   question: string;
   upload: boolean;
   references: string[];
+  /**
+   * Map of uploaded reference URL → original display filename. The chat
+   * API only takes URL strings (`IChatConversationRequest.references`),
+   * but the message bubble shows the *name* (Message.vue reads
+   * `item.name`). We carry the names in this parallel map so they
+   * survive into the rendered content items below.
+   */
+  referenceNames: Record<string, string>;
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
@@ -115,6 +124,7 @@ export default defineComponent({
       drawer: false,
       question: '',
       references: [],
+      referenceNames: {},
       upload: false,
       answering: false,
       canceler: undefined,
@@ -190,6 +200,7 @@ export default defineComponent({
         this.messages = [];
         this.question = '';
         this.references = [];
+        this.referenceNames = {};
         return;
       }
       // Just-completed chat already populated `this.messages` locally;
@@ -318,6 +329,7 @@ export default defineComponent({
         this.messages = this.messages.slice(0, targetIndex);
         // @ts-ignore
         this.references = [];
+        this.referenceNames = {};
         if (typeof problemMessage.content === 'string') {
           this.question = problemMessage.content;
         } else if (Array.isArray(problemMessage.content)) {
@@ -338,6 +350,25 @@ export default defineComponent({
               } else {
                 // @ts-ignore
                 this.references.push(problemMessage?.content?.[i]?.file_url?.url);
+              }
+            }
+            // Re-hydrate the URL→name map so the regenerated user
+            // message bubble keeps showing the filename instead of
+            // falling back to the URL (Message.vue line ~46).
+            const item = problemMessage.content[i];
+            if (item.name) {
+              const url =
+                item.type === 'image_url'
+                  ? typeof item.image_url === 'string'
+                    ? item.image_url
+                    : item.image_url?.url
+                  : item.type === 'file_url'
+                    ? typeof item.file_url === 'string'
+                      ? item.file_url
+                      : item.file_url?.url
+                    : undefined;
+              if (url) {
+                this.referenceNames[url] = item.name;
               }
             }
             if (problemMessage.content[i].type === 'text') {
@@ -462,6 +493,7 @@ export default defineComponent({
         this.messages = [];
         this.question = '';
         this.references = [];
+        this.referenceNames = {};
       }
     },
     async onRestoreConversation(id: string) {
@@ -508,15 +540,22 @@ export default defineComponent({
           text: this.question.trim()
         });
         for (let i = 0; i < this.references.length; i++) {
-          if (isImageUrl(this.references[i])) {
+          const url = this.references[i];
+          // Carry the original filename forward so the chat bubble shows
+          // e.g. `report.pdf` instead of the opaque CDN URL
+          // (Message.vue reads `item.name` first).
+          const name = this.referenceNames[url];
+          if (isImageUrl(url)) {
             content.push({
               type: 'image_url',
-              image_url: this.references[i]
+              image_url: url,
+              ...(name ? { name } : {})
             });
           } else {
             content.push({
               type: 'file_url',
-              file_url: this.references[i]
+              file_url: url,
+              ...(name ? { name } : {})
             });
           }
         }
@@ -544,6 +583,7 @@ export default defineComponent({
       // reset question and references
       this.question = '';
       this.references = [];
+      this.referenceNames = {};
       if (!token || !question) {
         console.error('no token or endpoint or question');
         this.messages.push({

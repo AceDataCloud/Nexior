@@ -165,7 +165,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['update:question', 'update:references', 'submit', 'stop'],
+  emits: ['update:question', 'update:references', 'update:referenceNames', 'submit', 'stop'],
   data() {
     return {
       inputHeight: '35px',
@@ -196,6 +196,20 @@ export default defineComponent({
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
+    // Map of uploaded file URL -> original display name. Emitted in
+    // parallel with `urls` so the parent can render the filename in the
+    // chat bubble instead of the opaque CDN URL (see Message.vue).
+    urlNames(): Record<string, string> {
+      const names: Record<string, string> = {};
+      for (const file of this.fileList) {
+        // @ts-ignore
+        const url = file?.response?.file_url as string | undefined;
+        if (url && file?.name) {
+          names[url] = file.name;
+        }
+      }
+      return names;
+    },
     uploading() {
       // if at least file is uploading, return true
       return !!this.fileList.find(
@@ -220,6 +234,7 @@ export default defineComponent({
       console.debug('File URLs:', val);
       if (val.length > 0) {
         this.$emit('update:references', val);
+        this.$emit('update:referenceNames', this.urlNames);
       }
     },
     questionValue(val: string) {
