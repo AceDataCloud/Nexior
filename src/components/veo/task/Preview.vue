@@ -28,17 +28,69 @@
           <video-player :src="modelValue?.response?.data[0]?.video_url" />
         </div>
         <div v-if="modelValue?.response.success" :class="{ operations: true, 'mt-2': true }">
-          <el-tooltip class="box-item" effect="dark" :content="$t('veo.message.downloadVideo')" placement="top-start">
-            <el-button
-              v-if="modelValue?.response?.data[0]?.video_url"
-              type="info"
-              size="small"
-              class="btn-action"
-              @click="onGet1080p($event, modelValue?.response)"
-            >
-              {{ $t('veo.button.action3') }}
-            </el-button>
-          </el-tooltip>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'upsample', '1080p')"
+          >
+            {{ $t('veo.button.actionUpsample1080p') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'upsample', '4k')"
+          >
+            {{ $t('veo.button.actionUpsample4k') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'upsample', 'gif')"
+          >
+            {{ $t('veo.button.actionUpsampleGif') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'extend')"
+          >
+            {{ $t('veo.button.actionExtend') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'reshoot')"
+          >
+            {{ $t('veo.button.actionReshoot') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'object_insert')"
+          >
+            {{ $t('veo.button.actionObjectInsert') }}
+          </el-button>
+          <el-button
+            v-if="modelValue?.response?.data[0]?.video_url"
+            type="info"
+            size="small"
+            class="btn-action"
+            @click="onPickAction($event, modelValue?.response, 'object_remove')"
+          >
+            {{ $t('veo.button.actionObjectRemove') }}
+          </el-button>
           <el-tooltip class="box-item" effect="dark" :content="$t('veo.message.downloadVideo')" placement="top-start">
             <el-button
               v-if="modelValue?.response?.data[0]?.video_url"
@@ -155,16 +207,20 @@ export default defineComponent({
     }
   },
   methods: {
-    onGet1080p(_event: MouseEvent, response: IVeoGenerateResponse) {
-      // extend url here
-      console.debug('set config', response);
+    onPickAction(_event: MouseEvent, response: IVeoGenerateResponse, action: string, upsampleAction?: string) {
+      // Seed config so the user lands on the chosen post-processing form
+      // with video_id + video_url already filled. Specific extra fields
+      // (motion_type, prompt, image_mask, model) are left for the user
+      // to fill in via the now-visible per-action inputs.
+      console.debug('seed config from preview', { action, upsampleAction, response });
       this.$store.commit('veo/setConfig', {
         ...this.$store.state.veo?.config,
+        action,
         // @ts-ignore
         video_id: response?.data?.[0]?.id,
         // @ts-ignore
-        video_url: response?.data[0]?.video_url,
-        action: 'get1080p'
+        video_url: response?.data?.[0]?.video_url,
+        ...(upsampleAction ? { upsample_action: upsampleAction } : {})
       });
     },
     onDownload(event: MouseEvent, video_url: string) {

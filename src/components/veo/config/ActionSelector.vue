@@ -35,8 +35,28 @@ export default defineComponent({
           label: this.$t('veo.button.action2')
         },
         {
-          value: 'get1080p',
-          label: this.$t('veo.button.action3')
+          value: 'ingredients2video',
+          label: this.$t('veo.button.actionIngredients')
+        },
+        {
+          value: 'upsample',
+          label: this.$t('veo.button.actionUpsample')
+        },
+        {
+          value: 'extend',
+          label: this.$t('veo.button.actionExtend')
+        },
+        {
+          value: 'reshoot',
+          label: this.$t('veo.button.actionReshoot')
+        },
+        {
+          value: 'object_insert',
+          label: this.$t('veo.button.actionObjectInsert')
+        },
+        {
+          value: 'object_remove',
+          label: this.$t('veo.button.actionObjectRemove')
         }
       ];
     },
