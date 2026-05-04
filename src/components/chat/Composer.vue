@@ -125,7 +125,7 @@ import {
   ElDropdownItem
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { IChatModel } from '@/models';
+import { IChatModel, IChatReference } from '@/models';
 import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserId } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -192,9 +192,19 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
-    urls(): string[] {
-      // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    // Fully-formed `{ url, name }` references derived from the upload
+    // pipeline. Emitted as a single value to the parent so it can both
+    // POST the URLs to the chat API and render the original filename in
+    // the user message bubble (see Message.vue / IChatReference).
+    refs(): IChatReference[] {
+      const out: IChatReference[] = [];
+      for (const file of this.fileList) {
+        // @ts-ignore — el-upload types `response` as unknown.
+        const url = file?.response?.file_url as string | undefined;
+        if (!url) continue;
+        out.push(file?.name ? { url, name: file.name } : { url });
+      }
+      return out;
     },
     uploading() {
       // if at least file is uploading, return true
@@ -216,8 +226,8 @@ export default defineComponent({
     }
   },
   watch: {
-    urls(val) {
-      console.debug('File URLs:', val);
+    refs(val: IChatReference[]) {
+      console.debug('References:', val);
       if (val.length > 0) {
         this.$emit('update:references', val);
       }
@@ -230,7 +240,7 @@ export default defineComponent({
         this.questionValue = val;
       }
     },
-    references(val: string[]) {
+    references(val: IChatReference[]) {
       console.debug('References updated:', val);
       if (val.length === 0) {
         this.fileList = [];

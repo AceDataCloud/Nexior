@@ -60,7 +60,7 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
+import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, IChatReference, BaseError } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
@@ -79,7 +79,13 @@ export interface IData {
   drawer: boolean;
   question: string;
   upload: boolean;
-  references: string[];
+  /**
+   * User-attached references (uploaded images / files) for the next
+   * outgoing message. Each entry carries the CDN URL plus the original
+   * filename so the message bubble can render `report.pdf` instead of
+   * the opaque URL. The chat API gets the URLs only — see `onRequest`.
+   */
+  references: IChatReference[];
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
@@ -367,33 +373,19 @@ export default defineComponent({
         // @ts-ignore
         updatedMessages = this.messages.slice(0, targetIndex - 1);
         this.messages = this.messages.slice(0, targetIndex);
-        // @ts-ignore
         this.references = [];
         if (typeof problemMessage.content === 'string') {
           this.question = problemMessage.content;
         } else if (Array.isArray(problemMessage.content)) {
-          for (let i = 0; i < problemMessage?.content.length; i++) {
-            if (problemMessage.content[i].type === 'image_url') {
-              if (typeof problemMessage?.content?.[i]?.image_url === 'string') {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.image_url);
-              } else {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.image_url?.url);
+          for (const item of problemMessage.content) {
+            if (item.type === 'image_url' || item.type === 'file_url') {
+              const ref = item.type === 'image_url' ? item.image_url : item.file_url;
+              const url = typeof ref === 'string' ? ref : ref?.url;
+              if (url) {
+                this.references.push(item.name ? { url, name: item.name } : { url });
               }
-            }
-            if (problemMessage.content[i].type === 'file_url') {
-              if (typeof problemMessage?.content?.[i]?.file_url === 'string') {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.file_url);
-              } else {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.file_url?.url);
-              }
-            }
-            if (problemMessage.content[i].type === 'text') {
-              // @ts-ignore
-              this.question = problemMessage.content[i].text;
+            } else if (item.type === 'text' && item.text) {
+              this.question = item.text;
             }
           }
         }
@@ -553,27 +545,24 @@ export default defineComponent({
     },
     async onSubmit() {
       if (this.references.length > 0) {
-        let content = [];
-        content.push({
-          type: 'text',
-          text: this.question.trim()
-        });
-        for (let i = 0; i < this.references.length; i++) {
-          if (isImageUrl(this.references[i])) {
-            content.push({
-              type: 'image_url',
-              image_url: this.references[i]
-            });
-          } else {
-            content.push({
-              type: 'file_url',
-              file_url: this.references[i]
-            });
+        const content: IChatMessageContentItem[] = [
+          {
+            type: 'text',
+            text: this.question.trim()
           }
+        ];
+        for (const ref of this.references) {
+          // Carry the original filename forward so the chat bubble shows
+          // e.g. `report.pdf` instead of the opaque CDN URL
+          // (Message.vue reads `item.name` first).
+          const item: IChatMessageContentItem = isImageUrl(ref.url)
+            ? { type: 'image_url', image_url: ref.url }
+            : { type: 'file_url', file_url: ref.url };
+          if (ref.name) item.name = ref.name;
+          content.push(item);
         }
         this.messages.push({
-          // @ts-ignore
-          content: content,
+          content,
           role: ROLE_USER
         });
       } else {
@@ -590,7 +579,9 @@ export default defineComponent({
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question.trim();
-      const references = this.references;
+      // Wire format only takes URL strings; the names live on the
+      // rendered message item via `IChatReference.name`.
+      const references = this.references.map((r) => r.url);
       console.debug('validated', question, references);
       // reset question and references
       this.question = '';

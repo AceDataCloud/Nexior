@@ -104,6 +104,17 @@ export interface IChatMessageContentItem {
   card?: IChatCard;
 }
 
+/**
+ * A user-attached reference (image or file) carried alongside the
+ * composer prompt. The chat API only needs the URL on the wire, but
+ * the chat UI also wants the original display filename so the message
+ * bubble can render `report.pdf` instead of an opaque CDN URL.
+ */
+export interface IChatReference {
+  url: string;
+  name?: string;
+}
+
 export interface IChatMessage {
   state?: IChatMessageState;
   content?: string | IChatMessageContentItem[];
