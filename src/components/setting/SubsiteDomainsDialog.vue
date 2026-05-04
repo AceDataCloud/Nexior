@@ -14,7 +14,7 @@
       <div v-for="d in domains" :key="d.id" class="domain-row">
         <div class="domain-row-head">
           <strong class="hostname">{{ d.hostname }}</strong>
-          <el-tag :type="statusTagType(d.status)" size="small" class="status-tag">
+          <el-tag :type="statusTagType(d.status)" size="small" class="status-tag" round>
             {{ statusLabel(d.status) }}
           </el-tag>
           <span class="row-actions">
@@ -22,16 +22,32 @@
               v-if="d.status !== 'Active'"
               size="small"
               type="primary"
-              :loading="busyId === d.id"
-              link
+              round
+              :loading="isBusy(d, 'verify')"
+              :disabled="isBusy(d) && !isBusy(d, 'verify')"
               @click="onVerify(d)"
             >
               {{ $t('subsite.button.verify') }}
             </el-button>
-            <el-button v-if="d.status === 'Active'" size="small" link :loading="busyId === d.id" @click="onRefresh(d)">
+            <el-button
+              v-if="d.status === 'Active'"
+              size="small"
+              round
+              :loading="isBusy(d, 'refresh')"
+              :disabled="isBusy(d) && !isBusy(d, 'refresh')"
+              @click="onRefresh(d)"
+            >
               {{ $t('subsite.button.refresh') }}
             </el-button>
-            <el-button size="small" link type="danger" :loading="busyId === d.id" @click="onDelete(d)">
+            <el-button
+              size="small"
+              type="danger"
+              round
+              plain
+              :loading="isBusy(d, 'delete')"
+              :disabled="isBusy(d) && !isBusy(d, 'delete')"
+              @click="onDelete(d)"
+            >
               {{ $t('common.button.delete') }}
             </el-button>
           </span>
@@ -170,7 +186,10 @@ export default defineComponent({
       domains: [] as ISiteDomain[],
       bind: { hostname: '' },
       binding: false,
-      busyId: null as string | null
+      // Tracks which row + which action is currently in flight, so that
+      // e.g. clicking Verify only spins the Verify button (not the
+      // sibling Delete button on the same row). Cleared in finally{}.
+      busy: { id: null as string | null, action: null as 'verify' | 'refresh' | 'delete' | null }
     };
   },
   watch: {
@@ -180,7 +199,7 @@ export default defineComponent({
       } else if (!open) {
         this.domains = [];
         this.bind.hostname = '';
-        this.busyId = null;
+        this.busy = { id: null, action: null };
       }
     }
   },
@@ -224,7 +243,7 @@ export default defineComponent({
     },
     async onVerify(d: ISiteDomain) {
       if (!d.id) return;
-      this.busyId = d.id;
+      this.busy = { id: d.id, action: 'verify' };
       try {
         // The backend verify endpoint always returns 200 with the
         // updated row (status flipped to Active OR Failed); it never
@@ -242,19 +261,19 @@ export default defineComponent({
         const detail = e?.response?.data?.detail || e?.message;
         ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.domainVerifyFailed'));
       } finally {
-        this.busyId = null;
+        this.busy = { id: null, action: null };
       }
     },
     async onRefresh(d: ISiteDomain) {
       if (!d.id) return;
-      this.busyId = d.id;
+      this.busy = { id: d.id, action: 'refresh' };
       try {
         const { data } = await siteDomainOperator.get(d.id);
         this.replaceRow(data);
       } catch (e) {
         console.error('refresh failed', e);
       } finally {
-        this.busyId = null;
+        this.busy = { id: null, action: null };
       }
     },
     async onDelete(d: ISiteDomain) {
@@ -272,7 +291,7 @@ export default defineComponent({
       } catch {
         return;
       }
-      this.busyId = d.id;
+      this.busy = { id: d.id, action: 'delete' };
       try {
         await siteDomainOperator.delete(d.id);
         this.domains = this.domains.filter((x) => x.id !== d.id);
@@ -280,13 +299,19 @@ export default defineComponent({
         const detail = e?.response?.data?.detail || e?.message;
         ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.domainDeleteFailed'));
       } finally {
-        this.busyId = null;
+        this.busy = { id: null, action: null };
       }
     },
     replaceRow(updated: ISiteDomain) {
       const idx = this.domains.findIndex((x) => x.id === updated.id);
       if (idx >= 0) this.domains.splice(idx, 1, updated);
       else this.domains = [updated, ...this.domains];
+    },
+    /** True when this row has any in-flight action (no `action` arg),
+     *  or specifically when the named action is in flight. */
+    isBusy(d: ISiteDomain, action?: 'verify' | 'refresh' | 'delete'): boolean {
+      if (this.busy.id !== d.id) return false;
+      return action ? this.busy.action === action : this.busy.action !== null;
     },
     statusLabel(status?: string): string {
       if (!status) return '-';
@@ -306,25 +331,38 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .domains-dialog {
+  .domains-body {
+    padding: 4px 4px 0;
+  }
   .tip {
     color: var(--el-text-color-secondary);
     font-size: 13px;
-    margin: 0 0 16px 0;
+    line-height: 1.6;
+    margin: 0 0 18px 0;
+  }
+  :deep(.el-empty) {
+    padding: 24px 0 16px;
   }
   .domain-row {
     border: 1px solid var(--el-border-color-lighter);
-    border-radius: 6px;
-    padding: 12px 14px;
-    margin-bottom: 12px;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    background: var(--el-fill-color-blank);
+    transition: border-color 0.15s ease;
+    &:hover {
+      border-color: var(--el-border-color);
+    }
     .domain-row-head {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
       .hostname {
         font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         flex: 1 1 auto;
         word-break: break-all;
+        font-size: 14px;
       }
       .status-tag {
         flex: 0 0 auto;
@@ -332,11 +370,12 @@ export default defineComponent({
       .row-actions {
         margin-left: auto;
         display: flex;
-        gap: 4px;
+        gap: 8px;
+        flex-wrap: wrap;
       }
     }
     .status-reason {
-      margin-top: 8px;
+      margin-top: 10px;
       font-size: 12px;
       color: var(--el-color-danger);
       &.error {
@@ -344,11 +383,14 @@ export default defineComponent({
       }
     }
     .dns-instructions {
-      margin-top: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--el-border-color-lighter);
       .instructions {
-        margin: 0 0 8px 0;
+        margin: 0 0 10px 0;
         color: var(--el-text-color-regular);
         font-size: 13px;
+        line-height: 1.6;
       }
       .dns-record {
         width: 100%;
@@ -359,15 +401,15 @@ export default defineComponent({
           width: 110px;
           color: var(--el-text-color-secondary);
           font-weight: normal;
-          padding: 4px 8px 4px 0;
+          padding: 6px 10px 6px 0;
           vertical-align: top;
         }
         td {
-          padding: 4px 0;
+          padding: 6px 0;
           code {
             background: var(--el-fill-color-lighter);
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 3px 8px;
+            border-radius: 6px;
             font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
             font-size: 12px;
           }
@@ -380,14 +422,19 @@ export default defineComponent({
   }
   .bind-title {
     font-size: 14px;
-    margin: 0 0 12px 0;
+    margin: 4px 0 14px 0;
     color: var(--el-text-color-primary);
+    font-weight: 600;
   }
   .form .tip {
     display: block;
-    margin-top: 4px;
+    margin-top: 6px;
     font-size: 12px;
     color: var(--el-text-color-secondary);
+    line-height: 1.5;
+  }
+  :deep(.el-divider) {
+    margin: 20px 0;
   }
 }
 </style>
