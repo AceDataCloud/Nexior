@@ -18,9 +18,23 @@
       </div>
     </div>
 
-    <!-- Video -->
+    <!-- Video — rendered as an iframe by default. The aichat2 worker
+         normalizes YouTube watch URLs to the canonical embed form, and
+         iframes also play direct media URLs (browser shows its native
+         video viewer) so a single renderer covers both. -->
     <div v-else-if="cardType === 'video'" class="video-card">
-      <video class="player" controls preload="metadata" :src="card.url" :poster="card.thumbnail || undefined" />
+      <div class="frame">
+        <iframe
+          class="player"
+          :src="card.url"
+          :title="card.title || ''"
+          frameborder="0"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        />
+      </div>
       <div v-if="card.title || card.duration" class="meta">
         <span v-if="card.title" class="title" :title="card.title">{{ card.title }}</span>
         <span v-if="card.duration" class="sub">{{ formattedDuration }}</span>
@@ -76,10 +90,14 @@ export default defineComponent({
     }
   },
   computed: {
-    /** Normalize the card type into one of the four primary renderers. */
+    /** Normalize the card type into one of the primary renderers. The
+     * legacy `embed` type (briefly emitted by PlatformService #826) is
+     * folded back into `video` so historical cards still render — the
+     * worker no longer flips type, see PlatformService #827. */
     cardType(): 'audio' | 'video' | 'image' | 'file' {
       const t = (this.card.type || '').toLowerCase();
-      if (t === 'audio' || t === 'video' || t === 'image') return t;
+      if (t === 'audio' || t === 'image') return t;
+      if (t === 'video' || t === 'embed') return 'video';
       if (this.card.mimeType?.startsWith('audio/')) return 'audio';
       if (this.card.mimeType?.startsWith('video/')) return 'video';
       if (this.card.mimeType?.startsWith('image/')) return 'image';
@@ -191,9 +209,18 @@ export default defineComponent({
   overflow: hidden;
   background: #000;
 
-  .player {
+  .frame {
+    position: relative;
     width: 100%;
-    max-height: 360px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  .player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
     display: block;
     background: #000;
   }
