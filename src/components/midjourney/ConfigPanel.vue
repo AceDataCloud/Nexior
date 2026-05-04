@@ -3,7 +3,7 @@
     <div class="flex-1 overflow-y-auto p-5">
       <el-tabs v-model="type" class="demo-tabs" stretch>
         <el-tab-pane :label="$t('midjourney.tab.images')" name="imagine">
-          <div class="pt-2">
+          <div class="pt-2 px-1">
             <model-selector class="mb-2" />
             <prompt-input class="mb-4" />
             <reference-image class="mb-2" />
@@ -23,7 +23,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.videos')" name="videos">
-          <div class="pt-2">
+          <div class="pt-2 px-1">
             <video-from-input v-show="config?.action === 'extend'" class="mb-4" />
             <image-url-input class="mb-2" />
             <end-image-url-input class="mb-2" />
@@ -33,7 +33,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane :label="$t('midjourney.tab.describe')" name="describe">
-          <div class="pt-2">
+          <div class="pt-2 px-1">
             <image-url-input2 class="mb-2" />
           </div>
         </el-tab-pane>
