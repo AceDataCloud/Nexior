@@ -60,7 +60,7 @@
     "description": "Wiadomość o pustej liście"
   },
   "message.slugTip": {
-    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem i nie mogą zawierać podwójnych myślników.",
+    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem, ani zawierać podwójnych myślników.",
     "description": "Opis pola slug"
   },
   "message.slugInvalid": {
@@ -73,7 +73,7 @@
   },
   "message.created": {
     "message": "Subdomena została pomyślnie utworzona!",
-    "description": "Sukces utworzenia"
+    "description": "Sukces tworzenia"
   },
   "message.createFailed": {
     "message": "Nie udało się utworzyć subdomeny, spróbuj ponownie później.",
@@ -104,16 +104,12 @@
     "description": "Przycisk do przesłania powiązania nowej domeny"
   },
   "button.verify": {
-    "message": "Weryfikuj",
-    "description": "Sprawdź, czy rekord TXT jest poprawny"
-  },
-  "button.checkProgress": {
-    "message": "Sprawdź postęp",
-    "description": "Synchronizuj najnowszy stan z EdgeOne"
+    "message": "Zweryfikuj teraz",
+    "description": "Sprawdź, czy ta domena jest poprawnie rozwiązywana i czy można wydać certyfikat"
   },
   "button.refresh": {
     "message": "Odśwież",
-    "description": "Ponownie pobierz stan tej domeny"
+    "description": "Ponownie pobierz status tej domeny"
   },
   "field.hostname": {
     "message": "Twoja domena",
@@ -136,23 +132,23 @@
     "description": "Placeholder dla pola hostname"
   },
   "message.domainsIntro": {
-    "message": "Powiąż posiadaną domenę z tą subdomeną. Musisz mieć możliwość modyfikacji DNS tej domeny. Po weryfikacji automatycznie złożymy wniosek o bezpłatny certyfikat HTTPS i wdrożymy go na EdgeOne.",
+    "message": "Powiąż posiadaną domenę z tą subdomeną. Musisz mieć możliwość modyfikacji DNS tej domeny. Dodaj rekord CNAME zgodnie z poniższymi wskazówkami, a następnie kliknij „Zweryfikuj teraz”, a my automatycznie wydamy i odnowimy certyfikat HTTPS za pomocą Let's Encrypt.",
     "description": "Opis na górze okna dialogowego"
   },
   "message.domainsEmpty": {
-    "message": "Nie powiązano jeszcze żadnych dostosowanych domen. Wypełnij pełną domenę w formularzu poniżej i kliknij „Powiąż”, aby rozpocząć.",
+    "message": "Nie powiązano jeszcze żadnej dostosowanej domeny. Wypełnij pełną domenę w formularzu poniżej i kliknij „Powiąż”, aby rozpocząć.",
     "description": "Wiadomość o pustej liście"
   },
   "message.hostnameTip": {
-    "message": "Musi to być publiczna domena, którą możesz kontrolować. Nie zezwala się na subdomeny acedata.cloud / surl.id.",
+    "message": "Musi to być publiczna domena, nad którą masz kontrolę nad DNS. Nie są dozwolone subdomeny acedata.cloud / surl.id.",
     "description": "Wskazówka dla pola hostname"
   },
   "message.hostnameInvalid": {
-    "message": "Format domeny jest nieprawidłowy. Musi to być publiczna domena, która może być rozwiązywana, nie zezwala się na adresy IP.",
+    "message": "Format domeny jest nieprawidłowy. Musi to być publicznie rozwiązywana domena, nie są dozwolone adresy IP.",
     "description": "Błąd walidacji lokalnej dla hostname"
   },
   "message.domainCreated": {
-    "message": "Domena została zgłoszona, dodaj rekordy DNS zgodnie z instrukcjami.",
+    "message": "Domena została zgłoszona, proszę dodać rekord CNAME zgodnie z instrukcjami.",
     "description": "Sukces POST /site-domains/"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Nie udało się załadować listy domen.",
     "description": "Błąd ładowania listy domen"
   },
-  "message.domainProgressed": {
-    "message": "Weryfikacja postępu do następnego etapu, proszę czekać.",
-    "description": "Status maszyny stanów"
-  },
   "message.domainActive": {
     "message": "Domena jest aktywna! Możesz teraz uzyskać dostęp do podstrony za pomocą swojego niestandardowego adresu HTTPS.",
     "description": "Wejście w stan aktywny"
   },
   "message.domainFailed": {
     "message": "Weryfikacja domeny lub uruchomienie nie powiodło się.",
-    "description": "Tekst dla stanu niepowodzenia"
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Weryfikacja nie powiodła się, sprawdź, czy rekordy DNS są aktywne.",
-    "description": "Interfejs weryfikacji 4xx"
+    "message": "Weryfikacja nie powiodła się, sprawdź, czy rekord CNAME wskazuje na nasz serwer proxy i czy propagacja DNS została zakończona.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
     "message": "Czy na pewno chcesz odłączyć {hostname}? Po odłączeniu użytkownicy nie będą mogli uzyskać dostępu do twojej podstrony z tej domeny.",
-    "description": "Potwierdzenie usunięcia"
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
     "message": "Usunięcie domeny nie powiodło się.",
-    "description": "Interfejs DELETE 5xx"
+    "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Oczekiwanie na weryfikację DNS",
-    "description": "Etykieta stanu oczekiwania na weryfikację DNS"
-  },
-  "status.provisioningEo": {
-    "message": "W trakcie podłączania do krawędzi",
-    "description": "Etykieta stanu podłączania do krawędzi"
-  },
-  "status.provisioningCert": {
-    "message": "W trakcie ubiegania się o certyfikat",
-    "description": "Etykieta stanu ubiegania się o certyfikat"
+  "status.pending": {
+    "message": "Do weryfikacji",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
   },
   "status.active": {
     "message": "Aktywny",
-    "description": "Etykieta stanu aktywnego"
+    "description": "Active 状态标签"
   },
   "status.failed": {
     "message": "Niepowodzenie",
-    "description": "Etykieta stanu niepowodzenia"
+    "description": "Failed 状态标签"
   }
 }

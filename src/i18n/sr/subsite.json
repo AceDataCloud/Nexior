@@ -29,14 +29,14 @@
   },
   "field.actions": {
     "message": "Akcije",
-    "description": "Kolona za akcije u listi poddomena"
+    "description": "Kolona akcija u listi poddomena"
   },
   "placeholder.slug": {
     "message": "Na primer my-brand",
     "description": "Placeholder za unos slug-a"
   },
   "placeholder.title": {
-    "message": "Za prikaz u pretraživaču i zaglavlju sajta",
+    "message": "Za prikaz u pretraživaču poddomena i na vrhu sajta",
     "description": "Placeholder za unos naslova"
   },
   "button.create": {
@@ -52,8 +52,8 @@
     "description": "Dugme za ulazak u podešavanja poddomene"
   },
   "message.indexTip": {
-    "message": "Kreirajte nezavisne brend poddomene ispod glavnog sajta, svaka poddomena može imati svoj logo, naslov i skup funkcija, bez potrebe za zasebnim kodiranjem.",
-    "description": "Objašnjenje na početnoj stranici za upravljanje poddomenama"
+    "message": "Kreirajte nezavisne brend poddomene ispod glavnog sajta, svaka poddomena može imati svoj logo, naslov i skup funkcija, bez potrebe za zasebnim postavljanjem izvornog koda.",
+    "description": "Objašnjenje na početnoj stranici upravljanja poddomenama"
   },
   "message.empty": {
     "message": "Još niste kreirali nijednu poddomenu. Kliknite na 'Kreiraj poddomenу' u gornjem desnom uglu da počnete.",
@@ -64,7 +64,7 @@
     "description": "Objašnjenje za slug polje"
   },
   "message.slugInvalid": {
-    "message": "Format prefiksa poddomene nije ispravan, proverite pravila i pokušajte ponovo.",
+    "message": "Format prefiksa poddomene nije ispravan, molimo proverite pravila i pokušajte ponovo.",
     "description": "Provera slug-a nije uspela"
   },
   "message.zoneMissing": {
@@ -101,19 +101,15 @@
   },
   "button.bindDomain": {
     "message": "Poveži domen",
-    "description": "Dugme za slanje zahteva za povezivanje novog domena"
+    "description": "Dugme za slanje povezivanja novog domena"
   },
   "button.verify": {
-    "message": "Verifikuj",
-    "description": "Proverite da li su TXT verifikacijski zapisi prisutni"
-  },
-  "button.checkProgress": {
-    "message": "Proveri napredak",
-    "description": "Sinhronizujte najnoviji status sa EdgeOne"
+    "message": "Verifikuj odmah",
+    "description": "Proverite da li se domen može normalno rešiti i izdata je sertifikat putem našeg obrnuto-proxy"
   },
   "button.refresh": {
     "message": "Osveži",
-    "description": "Ponovo učitaj status ovog domena"
+    "description": "Ponovo učitaj status domena"
   },
   "field.hostname": {
     "message": "Vaš domen",
@@ -136,11 +132,11 @@
     "description": "Placeholder za unos hostname-a"
   },
   "message.domainsIntro": {
-    "message": "Povežite domen koji posedujete sa ovom poddomenom. Morate moći da menjate DNS tog domena. Nakon verifikacije, automatski ćemo zatražiti besplatan HTTPS sertifikat i implementirati ga na EdgeOne.",
+    "message": "Povežite domen koji posedujete sa ovom poddomenom. Morate moći da menjate DNS tog domena. Dodajte CNAME zapis prema uputstvima ispod i kliknite 'Verifikuj odmah', automatski ćemo vam izdata besplatni HTTPS sertifikat putem Let's Encrypt.",
     "description": "Objašnjenje na vrhu dijaloga"
   },
   "message.domainsEmpty": {
-    "message": "Trenutno nije povezan nijedan prilagođeni domen. Ispunite kompletan domen u formi ispod i kliknite 'Poveži' da biste započeli.",
+    "message": "Još niste povezali nijedan prilagođeni domen. Ispunite kompletan domen u formi ispod i kliknite 'Poveži' da biste počeli.",
     "description": "Poruka za praznu listu"
   },
   "message.hostnameTip": {
@@ -149,10 +145,10 @@
   },
   "message.hostnameInvalid": {
     "message": "Format domena nije ispravan. Mora biti javno rešiv domen, IP adrese nisu dozvoljene.",
-    "description": "Lokalna provera hostname-a nije uspela"
+    "description": "Provera hostname-a nije uspela"
   },
   "message.domainCreated": {
-    "message": "Domen je podnet, molimo dodajte DNS zapise prema uputstvima.",
+    "message": "Domen je podnet, molimo dodajte CNAME zapis prema uputstvima.",
     "description": "POST /site-domains/ uspešno"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Učitavanje liste domena nije uspelo.",
     "description": "Učitavanje liste domena nije uspelo"
   },
-  "message.domainProgressed": {
-    "message": "Proverava se prelazak u sledeću fazu, molimo vas za strpljenje.",
-    "description": "Napredovanje stanja"
-  },
   "message.domainActive": {
-    "message": "Domen je aktivan! Sada možete pristupiti poddomeni putem vaše prilagođene HTTPS adrese.",
-    "description": "Ulazak u aktivno stanje"
+    "message": "Домен је активан! Сада можете приступити поддомену преко ваше прилагођене HTTPS адресе.",
+    "description": "Улазак у активни статус"
   },
   "message.domainFailed": {
-    "message": "Verifikacija domena ili aktivacija je neuspešna.",
-    "description": "Tekst za neuspešno stanje"
+    "message": "Provera domena ili pokretanje je neuspešno.",
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Verifikacija nije uspela, molimo proverite da li su DNS zapisi aktivni.",
-    "description": "Verifikacija interfejsa 4xx"
+    "message": "Provera je neuspešna, molimo proverite da li CNAME zapis pokazuje na našu obrnutu proxy i da li je DNS propagacija završena.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Da li ste sigurni da želite da odvojite {hostname}? Nakon odvajanja, korisnici neće moći da pristupe vašoj poddomeni putem ovog domena.",
-    "description": "Potvrda brisanja"
+    "message": "Da li ste sigurni da želite da odvojite {hostname}? Nakon odvajanja, korisnici neće moći da pristupe vašem poddomeni sa ovog domena.",
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
-    "message": "Brisanje domena nije uspelo.",
-    "description": "DELETE interfejs 5xx"
+    "message": "Brisanje domena je neuspešno.",
+    "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Čeka se verifikacija DNS-a",
-    "description": "Oznaka stanja za čekanje verifikacije DNS-a"
-  },
-  "status.provisioningEo": {
-    "message": "U procesu povezivanja sa ivicom",
-    "description": "Oznaka stanja za povezivanje sa ivicom"
-  },
-  "status.provisioningCert": {
-    "message": "U procesu podnošenja zahteva za sertifikat",
-    "description": "Oznaka stanja za podnošenje zahteva za sertifikat"
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
   },
   "status.active": {
     "message": "Aktivan",
-    "description": "Oznaka aktivnog stanja"
+    "description": "Active 状态标签"
   },
   "status.failed": {
     "message": "Neuspešno",
-    "description": "Oznaka neuspešnog stanja"
+    "description": "Failed 状态标签"
   }
 }

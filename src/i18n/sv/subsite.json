@@ -12,7 +12,7 @@
     "description": "Rubrik för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
   },
   "field.slug": {
-    "message": "Underdomänsprefix",
+    "message": "Underdomänprefix",
     "description": "Rubrik för inmatningsfältet för underdomän slug"
   },
   "field.origin": {
@@ -52,7 +52,7 @@
     "description": "Knapp för att gå till underdomänens inställningar"
   },
   "message.indexTip": {
-    "message": "Skapa oberoende varumärkesunderdomäner under huvuddomänen. Varje underdomän kan ha sin egen logotyp, titel och funktioner utan att behöva bygga källkoden separat.",
+    "message": "Skapa självständiga underdomäner under huvuddomänen, varje underdomän kan ha sin egen logotyp, titel och funktioner utan att behöva bygga källkoden separat.",
     "description": "Förklarande text på startsidan för underdomänshantering"
   },
   "message.empty": {
@@ -60,11 +60,11 @@
     "description": "Meddelande för tom lista"
   },
   "message.slugTip": {
-    "message": "3-32 tecken låga bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla på varandra följande bindestreck.",
+    "message": "3-32 tecken långa små bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla två på varandra följande bindestreck.",
     "description": "Förklaring för slug-fältet"
   },
   "message.slugInvalid": {
-    "message": "Formatet för underdomänsprefixet är felaktigt, vänligen kontrollera reglerna och försök igen.",
+    "message": "Formatet för underdomänprefixet är felaktigt, vänligen kontrollera reglerna och försök igen.",
     "description": "Slug-validering misslyckades"
   },
   "message.zoneMissing": {
@@ -104,20 +104,16 @@
     "description": "Skicka bindning av ny domän"
   },
   "button.verify": {
-    "message": "Verifiera",
-    "description": "Kontrollera om TXT-verifieringsposten är på plats"
-  },
-  "button.checkProgress": {
-    "message": "Kontrollera status",
-    "description": "Synkronisera senaste status från EdgeOne"
+    "message": "Verifiera nu",
+    "description": "Kontrollera om domänen kan lösas och certifikat kan utfärdas via vår omvända proxy"
   },
   "button.refresh": {
     "message": "Uppdatera",
-    "description": "Hämta status för denna domän igen"
+    "description": "Hämta domänens status på nytt"
   },
   "field.hostname": {
     "message": "Din domän",
-    "description": "Ange domän eller underdomän som du äger"
+    "description": "Ange din ägda domän eller underdomän"
   },
   "field.recordType": {
     "message": "Posttyp",
@@ -136,23 +132,23 @@
     "description": "Platsinnehåll för hostname inmatningsfält"
   },
   "message.domainsIntro": {
-    "message": "Bind dina ägda domäner till denna underdomän. Du behöver kunna ändra DNS för den domänen. När verifieringen är klar kommer vi automatiskt att ansöka om ett gratis HTTPS-certifikat och distribuera det på EdgeOne.",
+    "message": "Bind din ägda domän till denna underdomän. Du behöver kunna ändra DNS för den domänen. Följ instruktionerna nedan för att lägga till en CNAME-post och klicka sedan på 'Verifiera nu', så kommer vi automatiskt att utfärda och förnya HTTPS-certifikat gratis via Let's Encrypt.",
     "description": "Förklarande text i dialogrutan"
   },
   "message.domainsEmpty": {
-    "message": "Inga anpassade domäner har bundits än. Fyll i den fullständiga domänen i formuläret nedan och klicka på 'Bind' för att börja.",
+    "message": "Inga anpassade domäner har bundits ännu. Fyll i den fullständiga domänen i formuläret nedan och klicka på 'Bind' för att börja.",
     "description": "Meddelande för tom lista"
   },
   "message.hostnameTip": {
-    "message": "Måste vara en offentlig domän som du kan kontrollera DNS för. Inga underdomäner av acedata.cloud / surl.id tillåtna.",
+    "message": "Måste vara en offentlig domän som du kan kontrollera DNS för. Inga underdomäner av acedata.cloud / surl.id är tillåtna.",
     "description": "Tips för hostname inmatning"
   },
   "message.hostnameInvalid": {
-    "message": "Domänformatet är felaktigt. Måste vara en offentligt upplösbar domän, IP-adresser är inte tillåtna.",
-    "description": "Lokala valideringsfel för hostname"
+    "message": "Domänformatet är felaktigt. Måste vara en offentlig domän som kan lösas, IP-adresser är inte tillåtna.",
+    "description": "Lokala valideringen av hostname misslyckades"
   },
   "message.domainCreated": {
-    "message": "Domänen har skickats, vänligen lägg till DNS-poster enligt instruktionerna.",
+    "message": "Domänen har skickats, vänligen lägg till CNAME-posten enligt instruktionerna.",
     "description": "POST /site-domains/ lyckades"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Misslyckades med att ladda domänlistan.",
     "description": "Misslyckades med att hämta domänlistan"
   },
-  "message.domainProgressed": {
-    "message": "Verifierar för att gå vidare till nästa steg, vänligen vänta.",
-    "description": "Statusmaskinens framsteg"
-  },
   "message.domainActive": {
-    "message": "Domänen är aktiv! Du kan nu nå din underdomän via din anpassade HTTPS-adress.",
+    "message": "Domänen är aktiv! Du kan nu nå underdomänen via din anpassade HTTPS-adress.",
     "description": "Går in i aktivt tillstånd"
   },
   "message.domainFailed": {
-    "message": "Domänverifiering eller aktivering misslyckades.",
-    "description": "Misslyckat tillståndsmeddelande"
+    "message": "Domänverifiering eller publicering misslyckades.",
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Verifiering misslyckades, kontrollera att DNS-posterna har trätt i kraft.",
-    "description": "Verifiera API 4xx"
+    "message": "Verifiering misslyckades, kontrollera att CNAME-posten pekar på vår omvända proxy och att DNS-spridningen är klar.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
     "message": "Vill du verkligen avbinda {hostname}? Efter avbindning kan användare inte nå din underdomän via denna domän.",
-    "description": "Bekräftelse för borttagning"
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
     "message": "Borttagning av domän misslyckades.",
-    "description": "DELETE API 5xx"
+    "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Väntar på DNS-verifiering",
-    "description": "Statusetikett för PendingDnsVerification"
-  },
-  "status.provisioningEo": {
-    "message": "Ansluter till kanten",
-    "description": "Statusetikett för ProvisioningEo"
-  },
-  "status.provisioningCert": {
-    "message": "Ansöker om certifikat",
-    "description": "Statusetikett för ProvisioningCert"
+  "status.pending": {
+    "message": "Väntar på verifiering",
+    "description": "Pending 状态标签：väntar på att användaren lägger till CNAME och klickar på 'Verifiera nu'"
   },
   "status.active": {
     "message": "Aktiv",
-    "description": "Statusetikett för aktiv"
+    "description": "Active 状态标签"
   },
   "status.failed": {
     "message": "Misslyckades",
-    "description": "Statusetikett för misslyckat"
+    "description": "Failed 状态标签"
   }
 }

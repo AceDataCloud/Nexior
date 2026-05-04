@@ -9,11 +9,11 @@
   },
   "title.openNow": {
     "message": "Visit Subsite Now",
-    "description": "Title for the dialog asking if the user wants to redirect immediately after successful creation"
+    "description": "Title for the dialog asking if the user wants to redirect after successful creation"
   },
   "field.slug": {
     "message": "Subdomain Prefix",
-    "description": "Label for the subsite slug input field"
+    "description": "Title for the subsite slug input field"
   },
   "field.origin": {
     "message": "Subsite Domain",
@@ -32,7 +32,7 @@
     "description": "Column for actions in the subsite list"
   },
   "placeholder.slug": {
-    "message": "e.g., my-brand",
+    "message": "e.g. my-brand",
     "description": "Placeholder for the slug input field"
   },
   "placeholder.title": {
@@ -101,15 +101,15 @@
   },
   "button.bindDomain": {
     "message": "Bind Domain",
-    "description": "Button to submit the binding of a new domain"
+    "description": "Submit to bind a new domain"
   },
   "button.verify": {
     "message": "Verify Now",
-    "description": "Probe the domain through our reverse proxy to confirm DNS is in place and the certificate has been issued"
+    "description": "Check if the domain can be resolved and a certificate issued through our reverse proxy"
   },
   "button.refresh": {
     "message": "Refresh",
-    "description": "Button to re-fetch the status of the domain"
+    "description": "Re-fetch the status of the domain"
   },
   "field.hostname": {
     "message": "Your Domain",
@@ -128,12 +128,12 @@
     "description": "Column for DNS record value"
   },
   "placeholder.hostname": {
-    "message": "e.g., studio.mybrand.com",
+    "message": "e.g. studio.mybrand.com",
     "description": "Placeholder for the hostname input field"
   },
   "message.domainsIntro": {
-    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Add the CNAME shown below and click 'Verify Now' — we'll automatically issue and renew a free HTTPS certificate via Let's Encrypt.",
-    "description": "Description at the top of the dialog"
+    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Follow the prompts below to add a CNAME record and then click 'Verify Now', we will automatically issue and renew an HTTPS certificate for you for free through Let's Encrypt.",
+    "description": "Top description for the dialog"
   },
   "message.domainsEmpty": {
     "message": "No custom domains bound yet. Fill in the complete domain in the form below and click 'Bind' to get started.",
@@ -144,11 +144,11 @@
     "description": "Input tip for hostname"
   },
   "message.hostnameInvalid": {
-    "message": "Invalid domain format. Must be a publicly resolvable domain name, IP addresses are not allowed.",
+    "message": "Invalid domain format. Must be a publicly resolvable domain, IP addresses are not allowed.",
     "description": "Local validation failed for hostname"
   },
   "message.domainCreated": {
-    "message": "Domain has been submitted, please follow the instructions to add the CNAME record.",
+    "message": "Domain has been submitted, please follow the prompts to add a CNAME record.",
     "description": "Successful POST /site-domains/"
   },
   "message.domainCreateFailed": {
@@ -160,16 +160,16 @@
     "description": "Failed to load the domain list"
   },
   "message.domainActive": {
-    "message": "Domain is live! You can now access the substation via your custom HTTPS address.",
-    "description": "Entering Active status"
+    "message": "Domain is live! You can now access the subsite via your custom HTTPS address.",
+    "description": "Indicates that the domain has entered Active status"
   },
   "message.domainFailed": {
-    "message": "Domain verification or activation failed.",
+    "message": "Domain verification or launch failed.",
     "description": "Failed status message"
   },
   "message.domainVerifyFailed": {
-    "message": "Verification failed. Check that the CNAME record points at our reverse proxy and DNS has propagated.",
-    "description": "verify interface 4xx"
+    "message": "Verification failed. Please check if the CNAME record points to our reverse proxy and that DNS propagation is complete.",
+    "description": "Verify interface 4xx"
   },
   "message.domainDeleteConfirm": {
     "message": "Are you sure you want to unbind {hostname}? After unbinding, users will not be able to access your substation from this domain.",
@@ -181,10 +181,10 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Pending status label: waiting for the user to add the CNAME and click 'Verify Now'"
+    "description": "Pending status label: waiting for the user to add CNAME and click 'Verify Now'"
   },
   "status.active": {
-    "message": "Live",
+    "message": "Active",
     "description": "Active status label"
   },
   "status.failed": {

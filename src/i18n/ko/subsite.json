@@ -57,7 +57,7 @@
   },
   "message.empty": {
     "message": "아직 생성된 분사이트가 없습니다. 오른쪽 상단의 '분사이트 생성'을 클릭하여 시작하세요.",
-    "description": "빈 목록 안내"
+    "description": "빈 목록提示"
   },
   "message.slugTip": {
     "message": "3-32자의 소문자, 숫자 또는 하이픈; 하이픈으로 시작하거나 끝날 수 없으며, 연속 하이픈을 포함할 수 없습니다.",
@@ -104,12 +104,8 @@
     "description": "새 도메인 바인딩 제출"
   },
   "button.verify": {
-    "message": "검증",
-    "description": "TXT 검증 기록이 제대로 설정되었는지 확인"
-  },
-  "button.checkProgress": {
-    "message": "진행 상황 확인",
-    "description": "EdgeOne에서 최신 상태 동기화"
+    "message": "즉시 검증",
+    "description": "우리의 리버스 프록시를 통해 해당 도메인이 정상적으로 해석되고 인증서가 발급되었는지 확인"
   },
   "button.refresh": {
     "message": "새로 고침",
@@ -117,7 +113,7 @@
   },
   "field.hostname": {
     "message": "당신의 도메인",
-    "description": "소유한 도메인 또는 서브 도메인을 입력"
+    "description": "소유한 도메인 또는 서브 도메인을 입력하세요"
   },
   "field.recordType": {
     "message": "레코드 유형",
@@ -136,23 +132,23 @@
     "description": "hostname 입력란 자리 표시자"
   },
   "message.domainsIntro": {
-    "message": "소유한 도메인을 이 분사이트에 바인딩하세요. 해당 도메인의 DNS를 수정할 수 있어야 합니다. 검증이 완료되면 무료 HTTPS 인증서를 자동으로 신청하고 EdgeOne에 배포합니다.",
+    "message": "소유한 도메인을 이 분사이트에 바인딩하세요. 해당 도메인의 DNS를 수정할 수 있어야 합니다. 아래의 지침에 따라 CNAME 레코드를 추가한 후 '즉시 검증'을 클릭하면, 우리는 자동으로 Let's Encrypt를 통해 무료로 HTTPS 인증서를 발급하고 갱신합니다.",
     "description": "대화 상자 상단 설명"
   },
   "message.domainsEmpty": {
     "message": "아직 사용자 정의 도메인이 바인딩되지 않았습니다. 아래 양식에 전체 도메인을 입력하고 '바인딩'을 클릭하여 시작하세요.",
-    "description": "빈 목록 안내"
+    "description": "빈 목록提示"
   },
   "message.hostnameTip": {
     "message": "DNS를 제어할 수 있는 공용 도메인이어야 합니다. acedata.cloud / surl.id의 모든 서브 도메인은 허용되지 않습니다.",
-    "description": "hostname 입력 안내"
+    "description": "hostname 입력提示"
   },
   "message.hostnameInvalid": {
     "message": "도메인 형식이 올바르지 않습니다. 공용으로 해석 가능한 도메인이어야 하며, IP 주소는 허용되지 않습니다.",
     "description": "hostname 로컬 검증 실패"
   },
   "message.domainCreated": {
-    "message": "도메인이 제출되었습니다. 안내에 따라 DNS 레코드를 추가하세요.",
+    "message": "도메인이 제출되었습니다. 지침에 따라 CNAME 레코드를 추가하세요.",
     "description": "POST /site-domains/ 성공"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "도메인 목록 로드에 실패했습니다.",
     "description": "도메인 목록 로드 실패"
   },
-  "message.domainProgressed": {
-    "message": "다음 단계로 진행 중입니다. 잠시 기다려 주십시오.",
-    "description": "상태 기계 진행"
-  },
   "message.domainActive": {
     "message": "도메인이 활성화되었습니다! 이제 사용자 정의 HTTPS 주소를 통해 서브사이트에 접근할 수 있습니다.",
-    "description": "활성 상태"
+    "description": "활성 상태로 전환"
   },
   "message.domainFailed": {
-    "message": "도메인 검증 또는 활성화에 실패했습니다.",
-    "description": "실패 상태 문구"
+    "message": "도메인 검증 또는 배포 실패.",
+    "description": "Failed 상태에 대한 문구"
   },
   "message.domainVerifyFailed": {
-    "message": "검증에 실패했습니다. DNS 기록이 적용되었는지 확인하세요.",
-    "description": "검증 인터페이스 4xx"
+    "message": "검증 실패, CNAME 레코드가 우리의 리버스 프록시를 가리키고 DNS 전파가 완료되었는지 확인하세요.",
+    "description": "verify 인터페이스 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "{hostname}의 연결을 해제하시겠습니까? 연결 해제 후 사용자는 해당 도메인에서 서브사이트에 접근할 수 없습니다.",
+    "message": "{hostname}의 연결을 해제하시겠습니까? 연결 해제 후 사용자는 해당 도메인에서 귀하의 서브사이트에 접근할 수 없습니다.",
     "description": "삭제 확인"
   },
   "message.domainDeleteFailed": {
-    "message": "도메인 삭제에 실패했습니다.",
+    "message": "도메인 삭제 실패.",
     "description": "DELETE 인터페이스 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "DNS 검증 대기 중",
-    "description": "PendingDnsVerification 상태 레이블"
-  },
-  "status.provisioningEo": {
-    "message": "엣지 연결 중",
-    "description": "ProvisioningEo 상태 레이블"
-  },
-  "status.provisioningCert": {
-    "message": "인증서 신청 중",
-    "description": "ProvisioningCert 상태 레이블"
+  "status.pending": {
+    "message": "검증 대기 중",
+    "description": "Pending 상태 레이블: 사용자가 CNAME을 추가하고 '즉시 검증'을 클릭할 때까지 대기"
   },
   "status.active": {
-    "message": "활성화됨",
-    "description": "활성 상태 레이블"
+    "message": "온라인",
+    "description": "Active 상태 레이블"
   },
   "status.failed": {
     "message": "실패",
-    "description": "실패 상태 레이블"
+    "description": "Failed 상태 레이블"
   }
 }
