@@ -108,10 +108,10 @@ export default defineComponent({
       return this.$store.state.veo?.service;
     },
     isPostProcessing() {
-      return POST_PROCESSING_ACTIONS.includes(this.config?.action);
+      return POST_PROCESSING_ACTIONS.includes(this.config?.action ?? '');
     },
     isGeneration() {
-      return GENERATION_ACTIONS.includes(this.config?.action);
+      return GENERATION_ACTIONS.includes(this.config?.action ?? '');
     }
   },
   methods: {
