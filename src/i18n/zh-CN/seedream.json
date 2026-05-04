@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "SeeEdit 3.0 i2i 模型选项"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
+  },
+  "name.maxImages": {
+    "message": "图片张数",
+    "description": "组图生成的图片张数（max_images）"
+  },
+  "description.maxImages": {
+    "message": "一次请求生成的图片数量（1-15）。设为 1 时为单图模式；大于 1 时自动启用组图（sequential_image_generation=auto），跨图保持角色、风格与细节一致。仅支持 doubao-seedream-5.0 / 4.5 / 4.0；如同时上传参考图，需满足 (参考图数 + 生成数) ≤ 15。计费按实际生成的图片张数。",
+    "description": "max_images 参数说明"
   }
 }

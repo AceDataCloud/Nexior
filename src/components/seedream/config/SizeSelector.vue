@@ -23,7 +23,13 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_DEFAULT_SIZE, SEEDREAM_SIZE_1K, SEEDREAM_SIZE_2K, SEEDREAM_SIZE_4K } from '@/constants';
+import {
+  SEEDREAM_DEFAULT_SIZE,
+  SEEDREAM_SIZE_1K,
+  SEEDREAM_SIZE_2K,
+  SEEDREAM_SIZE_3K,
+  SEEDREAM_SIZE_4K
+} from '@/constants';
 
 export default defineComponent({
   name: 'SeedreamSizeSelector',
@@ -37,6 +43,7 @@ export default defineComponent({
       options: [
         { value: SEEDREAM_SIZE_1K, label: SEEDREAM_SIZE_1K },
         { value: SEEDREAM_SIZE_2K, label: SEEDREAM_SIZE_2K },
+        { value: SEEDREAM_SIZE_3K, label: SEEDREAM_SIZE_3K },
         { value: SEEDREAM_SIZE_4K, label: SEEDREAM_SIZE_4K }
       ]
     };

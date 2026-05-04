@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "SeeEdit 3.0 i2i model option"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "SeeDream 5.0 model option (supports group generation and streaming)"
+  },
+  "name.maxImages": {
+    "message": "Image count",
+    "description": "Number of images for group generation (max_images)"
+  },
+  "description.maxImages": {
+    "message": "How many images to generate in a single request (1-15). Set to 1 for single-image mode; values >1 automatically enable group generation (sequential_image_generation=auto) which keeps character, style and details consistent across images. Supported on doubao-seedream-5.0 / 4.5 / 4.0 only. With reference images, the constraint is (reference image count + generated count) ≤ 15. Billed per actually generated image.",
+    "description": "Description of the max_images parameter"
   }
 }

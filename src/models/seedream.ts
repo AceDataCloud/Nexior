@@ -1,3 +1,7 @@
+export interface ISeedreamSequentialOptions {
+  max_images?: number;
+}
+
 export interface ISeedreamConfig {
   model?: string;
   prompt?: string;
@@ -5,6 +9,7 @@ export interface ISeedreamConfig {
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
+  sequential_image_generation_options?: ISeedreamSequentialOptions;
   stream?: boolean;
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
@@ -19,6 +24,7 @@ export interface ISeedreamGenerateRequest {
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
+  sequential_image_generation_options?: ISeedreamSequentialOptions;
   stream?: boolean;
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
