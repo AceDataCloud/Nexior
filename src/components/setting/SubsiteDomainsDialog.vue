@@ -19,16 +19,16 @@
           </el-tag>
           <span class="row-actions">
             <el-button
-              v-if="canVerify(d)"
+              v-if="d.status !== 'Active'"
               size="small"
               type="primary"
               :loading="busyId === d.id"
               link
               @click="onVerify(d)"
             >
-              {{ verifyButtonLabel(d.status) }}
+              {{ $t('subsite.button.verify') }}
             </el-button>
-            <el-button v-if="d.status !== 'Active'" size="small" link :loading="busyId === d.id" @click="onRefresh(d)">
+            <el-button v-if="d.status === 'Active'" size="small" link :loading="busyId === d.id" @click="onRefresh(d)">
               {{ $t('subsite.button.refresh') }}
             </el-button>
             <el-button size="small" link type="danger" :loading="busyId === d.id" @click="onDelete(d)">
@@ -226,18 +226,20 @@ export default defineComponent({
       if (!d.id) return;
       this.busyId = d.id;
       try {
+        // The backend verify endpoint always returns 200 with the
+        // updated row (status flipped to Active OR Failed); it never
+        // throws on a failed probe so the body's status_reason can
+        // surface the cause. We mirror that contract here.
         const { data } = await siteDomainOperator.verify(d.id);
         this.replaceRow(data);
         if (data.status === 'Active') {
           ElMessage.success(this.$t('subsite.message.domainActive'));
         } else if (data.status === 'Failed') {
           ElMessage.error(data.status_reason || this.$t('subsite.message.domainFailed'));
-        } else {
-          ElMessage.info(this.$t('subsite.message.domainProgressed'));
         }
       } catch (e: any) {
-        const detail =
-          e?.response?.data?.verification || e?.response?.data?.edgeone || e?.response?.data?.detail || e?.message;
+        // Reachable on auth / network errors only.
+        const detail = e?.response?.data?.detail || e?.message;
         ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.domainVerifyFailed'));
       } finally {
         this.busyId = null;
@@ -286,22 +288,16 @@ export default defineComponent({
       if (idx >= 0) this.domains.splice(idx, 1, updated);
       else this.domains = [updated, ...this.domains];
     },
-    canVerify(d: ISiteDomain): boolean {
-      return d.status === 'PendingDnsVerification' || d.status === 'ProvisioningEo' || d.status === 'ProvisioningCert';
-    },
-    verifyButtonLabel(status?: string): string {
-      if (status === 'PendingDnsVerification') return this.$t('subsite.button.verify') as string;
-      return this.$t('subsite.button.checkProgress') as string;
-    },
     statusLabel(status?: string): string {
       if (!status) return '-';
+      // Lower-case the first char so 'Pending' -> 'subsite.status.pending'.
       const key = `subsite.status.${status.charAt(0).toLowerCase() + status.slice(1)}`;
       return this.$t(key) as string;
     },
     statusTagType(status?: string): 'success' | 'warning' | 'info' | 'danger' {
       if (status === 'Active') return 'success';
       if (status === 'Failed') return 'danger';
-      if (status === 'PendingDnsVerification') return 'info';
+      // 'Pending' (and any unknown future state) renders as a neutral warning tag.
       return 'warning';
     }
   }

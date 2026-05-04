@@ -104,12 +104,8 @@
     "description": "提交绑定新域名"
   },
   "button.verify": {
-    "message": "验证",
-    "description": "检查 TXT 验证记录是否到位"
-  },
-  "button.checkProgress": {
-    "message": "检查进度",
-    "description": "从 EdgeOne 同步最新状态"
+    "message": "立即验证",
+    "description": "通过我们的反向代理探测该域名是否已能正常解析并签发证书"
   },
   "button.refresh": {
     "message": "刷新",
@@ -136,7 +132,7 @@
     "description": "hostname 输入框占位符"
   },
   "message.domainsIntro": {
-    "message": "将你拥有的域名绑定到该分站。你需要能修改该域名的 DNS。验证通过后我们会自动为你申请免费 HTTPS 证书并在 EdgeOne 上部署。",
+    "message": "将你拥有的域名绑定到该分站。你需要能修改该域名的 DNS。按照下方提示添加一条 CNAME 后点击“立即验证”即可，我们会自动通过 Let's Encrypt 为你免费签发并续期 HTTPS 证书。",
     "description": "对话框顶部说明"
   },
   "message.domainsEmpty": {
@@ -152,7 +148,7 @@
     "description": "hostname 本地校验失败"
   },
   "message.domainCreated": {
-    "message": "域名已提交，请按提示添加 DNS 记录。",
+    "message": "域名已提交，请按提示添加 CNAME 记录。",
     "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
@@ -163,10 +159,6 @@
     "message": "加载域名列表失败。",
     "description": "拉域名列表失败"
   },
-  "message.domainProgressed": {
-    "message": "验证进入下一阶段，请耐心等待。",
-    "description": "状态机推进"
-  },
   "message.domainActive": {
     "message": "域名已上线！现在可以通过你的自定义 HTTPS 地址访问分站。",
     "description": "进入 Active 状态"
@@ -176,7 +168,7 @@
     "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "验证失败，请检查 DNS 记录是否已生效。",
+    "message": "验证失败，请检查 CNAME 记录是否已指向我们的反向代理并完成 DNS 传播。",
     "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
@@ -187,17 +179,9 @@
     "message": "删除域名失败。",
     "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "待验证 DNS",
-    "description": "PendingDnsVerification 状态标签"
-  },
-  "status.provisioningEo": {
-    "message": "接入边缘中",
-    "description": "ProvisioningEo 状态标签"
-  },
-  "status.provisioningCert": {
-    "message": "申请证书中",
-    "description": "ProvisioningCert 状态标签"
+  "status.pending": {
+    "message": "待验证",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
   },
   "status.active": {
     "message": "已上线",
