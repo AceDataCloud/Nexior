@@ -19,6 +19,7 @@ import axios, { AxiosResponse } from 'axios';
 import {
   IBYOKCredential,
   IBYOKCredentialCreatePayload,
+  IBYOKCredentialTestPayload,
   IBYOKCredentialUpdatePayload,
   IBYOKListResponse,
   IBYOKProvidersResponse,
@@ -100,10 +101,10 @@ class BYOKCredentialOperator {
    * endpoint. Returns `{ok: false, message}` on failure rather than
    * throwing — the UI wants to show "401 unauthorized" inline.
    */
-  async test(id: string, options: AuthOptions): Promise<AxiosResponse<IBYOKTestResponse>> {
+  async test(payload: IBYOKCredentialTestPayload, options: AuthOptions): Promise<AxiosResponse<IBYOKTestResponse>> {
     return await axios.post(
       ENDPOINT,
-      { action: 'test', id },
+      { action: 'test', ...payload },
       { headers: authHeaders(options.token), baseURL: BASE_URL_API }
     );
   }
