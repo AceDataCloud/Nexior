@@ -20,10 +20,7 @@
             <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
-          <el-dropdown-item v-if="showSubsite" class="py-2" @click="onSubsite">
-            <font-awesome-icon icon="fa-solid fa-sitemap" class="mr-2" />
-            {{ $t('common.nav.subsite') }}
-          </el-dropdown-item>
+
           <el-dropdown-item class="py-2" @click="onConsole">
             <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
             {{ $t('common.nav.console') }}
@@ -44,7 +41,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD, ROUTE_SUBSITE_INDEX } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -69,19 +66,6 @@ export default defineComponent({
   computed: {
     user() {
       return this.$store.getters?.user;
-    },
-    showSubsite() {
-      // Hostname-driven gate: any host whose Site row is intended to expose
-      // subsite (white-label) management surfaces the menu entry.
-      // PlatformBackend #382 enforces the real authorization on POST /sites/,
-      // so the worst case here is a logged-in user clicking through to a UI
-      // that returns 403 — cheap, and hugely better than the previous
-      // failure mode where a stale persisted `state.site` (without
-      // `features.subsite`) silently hid the entry on a subsite-enabled
-      // origin.
-      if (typeof window === 'undefined' || !window.location?.host) return false;
-      const host = window.location.host.split(':')[0];
-      return host === 'studio.acedata.cloud' || host.endsWith('.studio.acedata.cloud');
     }
   },
   mounted() {
@@ -117,11 +101,6 @@ export default defineComponent({
     onDistribution() {
       this.$router.push({
         name: ROUTE_DISTRIBUTION_INDEX
-      });
-    },
-    onSubsite() {
-      this.$router.push({
-        name: ROUTE_SUBSITE_INDEX
       });
     },
     onSettings() {

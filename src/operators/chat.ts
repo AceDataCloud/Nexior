@@ -10,6 +10,17 @@ import {
   IChatConversationsResponse
 } from '@/models';
 import { BASE_URL_API, ERROR_CODE_API_ERROR } from '@/constants';
+import { currentSiteOrigin } from '@/utils';
+
+/**
+ * Headers carrying the calling Site's bare host. Shared with
+ * `byokCredential.ts` via `@/utils.currentSiteOrigin` so the chat and
+ * BYOK CRUD paths cannot disagree on what "current Site" means.
+ */
+function siteHeaders(): Record<string, string> {
+  const origin = currentSiteOrigin();
+  return origin ? { 'x-site-origin': origin } : {};
+}
 
 class ChatOperator {
   async chatConversation(
@@ -23,7 +34,8 @@ class ChatOperator {
           headers: {
             authorization: `Bearer ${options.token}`,
             'Content-Type': 'application/json',
-            Accept: 'text/event-stream'
+            Accept: 'text/event-stream',
+            ...siteHeaders()
           },
           signal: options.signal,
           body: JSON.stringify(data)

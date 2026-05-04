@@ -43,6 +43,39 @@ export const isSubOfficial = (): boolean => {
 };
 
 /**
+ * isMainOfficial
+ *
+ * Strict check for the bare official main host (currently
+ * ``studio.acedata.cloud``). Unlike ``isOfficial()``, this returns
+ * ``false`` for any subsite (``*.studio.acedata.cloud``) and for
+ * white-label tenants on custom domains. Use this for surfaces that
+ * should ONLY appear on the parent / commercial origin — e.g. the
+ * subsite-management entry in the user-settings dialog.
+ */
+export const isMainOfficial = (): boolean => {
+  if (typeof window === 'undefined' || !window.location?.host) return false;
+  const host = window.location.host.split(':')[0].toLowerCase();
+  return host === 'studio.acedata.cloud';
+};
+
+/**
+ * currentSiteOrigin
+ *
+ * Bare host of the calling Site (e.g. ``studio.acedata.cloud``,
+ * ``my-brand.studio.acedata.cloud``), lower-cased and with any port
+ * stripped. Returns the empty string in non-browser contexts.
+ *
+ * The aichat2 worker uses this value (sent via the ``x-site-origin``
+ * header) to scope per-Site state such as BYOK credentials, so the
+ * same user can keep separate keys on the main site and on each
+ * subsite they administer.
+ */
+export const currentSiteOrigin = (): string => {
+  if (typeof window === 'undefined' || !window.location?.host) return '';
+  return window.location.host.split(':')[0].toLowerCase();
+};
+
+/**
  * is image url
  */
 export function isImageUrl(url: string | undefined): boolean {

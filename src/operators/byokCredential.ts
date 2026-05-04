@@ -26,6 +26,7 @@ import {
   IBYOKTestResponse
 } from '@/models';
 import { BASE_URL_API } from '@/constants';
+import { currentSiteOrigin } from '@/utils';
 
 interface AuthOptions {
   /** Chat-Application credential token. */
@@ -35,7 +36,7 @@ interface AuthOptions {
 const ENDPOINT = '/aichat2/credentials';
 
 function authHeaders(token: string) {
-  return {
+  const headers: Record<string, string> = {
     'content-type': 'application/json',
     authorization: `Bearer ${token}`,
     // BYOK CRUD is metadata, not chat — skip the platform's billing
@@ -43,6 +44,13 @@ function authHeaders(token: string) {
     // delete actions do.
     'x-record-exempt': 'true'
   };
+  // Tag the calling Site so the worker can scope BYOK rows per-Site
+  // (see PlatformService aichat2 PR feat/byok-site-origin). The helper
+  // is shared with chat.ts via @/utils so the two paths can never
+  // disagree on what "current Site" means.
+  const origin = currentSiteOrigin();
+  if (origin) headers['x-site-origin'] = origin;
+  return headers;
 }
 
 class BYOKCredentialOperator {

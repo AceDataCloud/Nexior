@@ -37,8 +37,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
-  ROUTE_SITE_INDEX,
-  ROUTE_SUBSITE_INDEX
+  ROUTE_SITE_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserId } from '@/utils';
@@ -83,13 +82,6 @@ export default defineComponent({
     showSite() {
       return this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
     },
-    showSubsite() {
-      // Show the "my subsites" entry only when the current parent site has
-      // explicitly opted into the subsite (white-label) feature. This is
-      // gated server-side too — the menu link just hides UI noise on sites
-      // that haven't enabled it.
-      return Boolean(this.$store?.state?.site?.features?.subsite?.enabled);
-    },
     links(): ILink[] {
       let links: ILink[] = [
         {
@@ -129,16 +121,6 @@ export default defineComponent({
                 text: this.$t('common.nav.site'),
                 name: ROUTE_SITE_INDEX,
                 icon: 'fa-solid fa-gear'
-              }
-            ]
-          : []),
-        ...(this.showSubsite
-          ? [
-              {
-                key: 'subsite-index',
-                text: this.$t('common.nav.subsite'),
-                name: ROUTE_SUBSITE_INDEX,
-                icon: 'fa-solid fa-sitemap'
               }
             ]
           : []),
