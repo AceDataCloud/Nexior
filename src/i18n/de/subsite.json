@@ -1,7 +1,7 @@
 {
   "title.index": {
     "message": "Meine Subdomain",
-    "description": "Haupttitel der Subdomain-Verwaltung"
+    "description": "Hauptüberschrift der Subdomain-Verwaltung"
   },
   "title.create": {
     "message": "Subdomain erstellen",
@@ -36,7 +36,7 @@
     "description": "Platzhalter im Slug-Eingabefeld"
   },
   "placeholder.title": {
-    "message": "Für die Anzeige im Tab des Subdomain-Browsers und im Kopf der Seite",
+    "message": "Für die Anzeige im Tab des Browsers und im Kopf der Subdomain",
     "description": "Platzhalter im Titel-Eingabefeld"
   },
   "button.create": {
@@ -49,10 +49,10 @@
   },
   "button.manage": {
     "message": "Verwalten",
-    "description": "Button zum Zugriff auf die Subdomain-Einstellungen"
+    "description": "Button zum Zugriff auf die Einstellungen der Subdomain"
   },
   "message.indexTip": {
-    "message": "Erstellen Sie unabhängige Subdomains unter der Hauptseite, jede Subdomain kann ihr eigenes Logo, ihren Titel und ihre Funktionalitäten haben, ohne dass der Quellcode separat aufgebaut werden muss.",
+    "message": "Erstellen Sie unabhängige Subdomains unter der Hauptdomain, jede Subdomain kann ihr eigenes Logo, ihren Titel und ihre Funktionalitäten haben, ohne dass der Quellcode separat aufgebaut werden muss.",
     "description": "Erklärungstext auf der Hauptseite der Subdomain-Verwaltung"
   },
   "message.empty": {
@@ -68,7 +68,7 @@
     "description": "Slug-Validierung fehlgeschlagen"
   },
   "message.zoneMissing": {
-    "message": "Die aktuelle Hauptseite hat keine Subdomain-Domainzone konfiguriert, bitte kontaktieren Sie den Seitenadministrator.",
+    "message": "Die aktuelle Hauptdomain hat keine Subdomain-Domainzone konfiguriert, bitte kontaktieren Sie den Administrator der Seite.",
     "description": "Fehlende subdomain_zone"
   },
   "message.created": {
@@ -104,16 +104,12 @@
     "description": "Button zum Einreichen der Bindung einer neuen Domain"
   },
   "button.verify": {
-    "message": "Überprüfen",
-    "description": "Überprüfen, ob der TXT-Validierungsdatensatz vorhanden ist"
-  },
-  "button.checkProgress": {
-    "message": "Fortschritt überprüfen",
-    "description": "Aktuellen Status von EdgeOne synchronisieren"
+    "message": "Jetzt überprüfen",
+    "description": "Überprüfen, ob die Domain über unseren Reverse-Proxy normal aufgelöst werden kann und ein Zertifikat ausgestellt wird"
   },
   "button.refresh": {
     "message": "Aktualisieren",
-    "description": "Status dieser Domain erneut abrufen"
+    "description": "Status der Domain erneut abrufen"
   },
   "field.hostname": {
     "message": "Ihre Domain",
@@ -121,26 +117,26 @@
   },
   "field.recordType": {
     "message": "Datensatztyp",
-    "description": "Spalte für den Typ des DNS-Datensatzes"
+    "description": "Spalte für den DNS-Datensatztyp"
   },
   "field.recordName": {
     "message": "Datensatzname",
-    "description": "Spalte für den Namen des DNS-Datensatzes"
+    "description": "Spalte für den DNS-Datensatznamen"
   },
   "field.recordValue": {
     "message": "Datensatzwert",
-    "description": "Spalte für den Wert des DNS-Datensatzes"
+    "description": "Spalte für den DNS-Datensatzwert"
   },
   "placeholder.hostname": {
     "message": "z.B. studio.meinemarke.com",
     "description": "Platzhalter im Hostname-Eingabefeld"
   },
   "message.domainsIntro": {
-    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, die DNS dieser Domain zu ändern. Nach erfolgreicher Überprüfung beantragen wir automatisch ein kostenloses HTTPS-Zertifikat und setzen es auf EdgeOne ein.",
+    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, den DNS dieser Domain zu ändern. Fügen Sie einen CNAME gemäß den untenstehenden Anweisungen hinzu und klicken Sie auf „Jetzt überprüfen“, wir werden automatisch ein kostenloses HTTPS-Zertifikat über Let's Encrypt für Sie ausstellen und verlängern.",
     "description": "Erklärungstext oben im Dialog"
   },
   "message.domainsEmpty": {
-    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im Formular unten aus und klicken Sie auf „Binden“, um zu beginnen.",
+    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im untenstehenden Formular aus und klicken Sie auf „Binden“, um zu beginnen.",
     "description": "Hinweis für leere Liste"
   },
   "message.hostnameTip": {
@@ -149,10 +145,10 @@
   },
   "message.hostnameInvalid": {
     "message": "Das Domainformat ist ungültig. Es muss eine öffentlich auflösbare Domain sein, IP-Adressen sind nicht erlaubt.",
-    "description": "Hostname-Validierung fehlgeschlagen"
+    "description": "Lokale Validierung des Hostnamens fehlgeschlagen"
   },
   "message.domainCreated": {
-    "message": "Domain wurde eingereicht, bitte fügen Sie die DNS-Datensätze gemäß den Anweisungen hinzu.",
+    "message": "Domain wurde eingereicht, bitte fügen Sie den CNAME-Datensatz gemäß den Anweisungen hinzu.",
     "description": "POST /site-domains/ erfolgreich"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Laden der Domainliste fehlgeschlagen.",
     "description": "Laden der Domainliste fehlgeschlagen"
   },
-  "message.domainProgressed": {
-    "message": "Überprüfung für den nächsten Schritt, bitte geduldig warten.",
-    "description": "Statusmaschine vorantreiben"
-  },
   "message.domainActive": {
     "message": "Domain ist aktiv! Du kannst jetzt über deine benutzerdefinierte HTTPS-Adresse auf die Subdomain zugreifen.",
-    "description": "In den aktiven Status wechseln"
+    "description": "In aktiven Zustand"
   },
   "message.domainFailed": {
-    "message": "Domainverifizierung oder Aktivierung fehlgeschlagen.",
-    "description": "Text für den Status 'Fehlgeschlagen'"
+    "message": "Domainüberprüfung oder -bereitstellung fehlgeschlagen.",
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Verifizierung fehlgeschlagen, bitte überprüfe, ob die DNS-Einträge wirksam sind.",
-    "description": "Verifizierungs-API 4xx"
+    "message": "Überprüfung fehlgeschlagen, bitte überprüfen Sie, ob der CNAME-Eintrag auf unseren Reverse-Proxy zeigt und die DNS-Verbreitung abgeschlossen ist.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Möchtest du {hostname} wirklich trennen? Nach der Trennung können Benutzer nicht mehr über diese Domain auf deine Subdomain zugreifen.",
-    "description": "Bestätigung zur Löschung"
+    "message": "Möchten Sie {hostname} wirklich trennen? Nach der Trennung können Benutzer nicht mehr über diese Domain auf Ihre Subsite zugreifen.",
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
     "message": "Löschen der Domain fehlgeschlagen.",
-    "description": "DELETE-API 5xx"
+    "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "DNS-Verifizierung ausstehend",
-    "description": "Statuslabel für ausstehende DNS-Verifizierung"
-  },
-  "status.provisioningEo": {
-    "message": "Edge-Anbindung wird hergestellt",
-    "description": "Statuslabel für Edge-Provisionierung"
-  },
-  "status.provisioningCert": {
-    "message": "Zertifikat wird beantragt",
-    "description": "Statuslabel für Zertifikatsprovisionierung"
+  "status.pending": {
+    "message": "Warten auf Bestätigung",
+    "description": "Pending 状态标签：Warten auf Benutzer, um CNAME hinzuzufügen und auf 'Jetzt überprüfen' zu klicken"
   },
   "status.active": {
     "message": "Aktiv",
-    "description": "Statuslabel für aktiv"
+    "description": "Active 状态标签"
   },
   "status.failed": {
     "message": "Fehlgeschlagen",
-    "description": "Statuslabel für fehlgeschlagen"
+    "description": "Failed 状态标签"
   }
 }

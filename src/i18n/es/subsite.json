@@ -9,7 +9,7 @@
   },
   "title.openNow": {
     "message": "Visitar subdominio ahora",
-    "description": "Título del cuadro de diálogo que pregunta si se desea redirigir inmediatamente después de la creación exitosa"
+    "description": "Título del cuadro de diálogo que pregunta si se desea redirigir inmediatamente después de crear con éxito"
   },
   "field.slug": {
     "message": "Prefijo del subdominio",
@@ -32,7 +32,7 @@
     "description": "Columna de acciones en la lista de subdominios"
   },
   "placeholder.slug": {
-    "message": "Ejemplo: mi-marca",
+    "message": "Por ejemplo, mi-marca",
     "description": "Placeholder para el campo de entrada del slug"
   },
   "placeholder.title": {
@@ -53,7 +53,7 @@
   },
   "message.indexTip": {
     "message": "Crea subdominios de marca independientes bajo el sitio principal, cada subdominio puede tener su propio logo, título y conjunto de funciones, sin necesidad de construir el código fuente por separado.",
-    "description": "Texto de explicación en la página de gestión de subdominios"
+    "description": "Texto explicativo en la página de gestión de subdominios"
   },
   "message.empty": {
     "message": "Aún no has creado ningún subdominio. Haz clic en 'Crear subdominio' en la esquina superior derecha para comenzar.",
@@ -61,7 +61,7 @@
   },
   "message.slugTip": {
     "message": "3-32 caracteres en minúsculas, números o guiones; no puede comenzar o terminar con un guion, ni contener guiones consecutivos.",
-    "description": "Explicación del campo slug"
+    "description": "Descripción del campo slug"
   },
   "message.slugInvalid": {
     "message": "El formato del prefijo del subdominio es incorrecto, por favor verifica las reglas y vuelve a intentarlo.",
@@ -104,16 +104,12 @@
     "description": "Botón para enviar la vinculación de un nuevo dominio"
   },
   "button.verify": {
-    "message": "Verificar",
-    "description": "Botón para comprobar si el registro de verificación TXT está en su lugar"
-  },
-  "button.checkProgress": {
-    "message": "Comprobar progreso",
-    "description": "Botón para sincronizar el estado más reciente desde EdgeOne"
+    "message": "Verificar ahora",
+    "description": "Verifica si el dominio puede resolverse correctamente y emitir un certificado a través de nuestro proxy inverso"
   },
   "button.refresh": {
     "message": "Actualizar",
-    "description": "Botón para volver a obtener el estado de ese dominio"
+    "description": "Vuelve a obtener el estado de ese dominio"
   },
   "field.hostname": {
     "message": "Tu dominio",
@@ -132,27 +128,27 @@
     "description": "Columna de valor de registro DNS"
   },
   "placeholder.hostname": {
-    "message": "Ejemplo: studio.mimarca.com",
+    "message": "Por ejemplo, estudio.mimarca.com",
     "description": "Placeholder para el campo de entrada del hostname"
   },
   "message.domainsIntro": {
-    "message": "Vincula el dominio que posees a este subdominio. Necesitas poder modificar el DNS de ese dominio. Una vez verificado, solicitaremos automáticamente un certificado HTTPS gratuito y lo desplegaremos en EdgeOne.",
+    "message": "Vincula el dominio que posees a este subdominio. Necesitas poder modificar el DNS de ese dominio. Agrega un registro CNAME según las instrucciones a continuación y haz clic en 'Verificar ahora', nosotros emitiremos y renovaremos automáticamente el certificado HTTPS de forma gratuita a través de Let's Encrypt.",
     "description": "Explicación en la parte superior del cuadro de diálogo"
   },
   "message.domainsEmpty": {
-    "message": "Aún no has vinculado ningún dominio personalizado. Completa el dominio completo en el formulario a continuación y haz clic en 'Vincular' para comenzar.",
+    "message": "No has vinculado ningún dominio personalizado. Completa el dominio completo en el formulario a continuación y haz clic en 'Vincular' para comenzar.",
     "description": "Mensaje de lista vacía"
   },
   "message.hostnameTip": {
     "message": "Debe ser un dominio público cuyo DNS puedas controlar. No se permiten subdominios de acedata.cloud / surl.id.",
-    "description": "Sugerencia para el campo de entrada del hostname"
+    "description": "Sugerencia para el campo hostname"
   },
   "message.hostnameInvalid": {
-    "message": "El formato del dominio es incorrecto. Debe ser un dominio público que se pueda resolver, no se permiten direcciones IP.",
+    "message": "El formato del dominio es incorrecto. Debe ser un dominio que se pueda resolver públicamente, no se permiten direcciones IP.",
     "description": "Validación local fallida del hostname"
   },
   "message.domainCreated": {
-    "message": "Dominio enviado, por favor sigue las instrucciones para agregar los registros DNS.",
+    "message": "El dominio ha sido enviado, por favor agrega el registro CNAME según las instrucciones.",
     "description": "POST /site-domains/ exitoso"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Error al cargar la lista de dominios.",
     "description": "Error al cargar la lista de dominios"
   },
-  "message.domainProgressed": {
-    "message": "Validando para avanzar a la siguiente etapa, por favor espere.",
-    "description": "Estado de la máquina en progreso"
-  },
   "message.domainActive": {
-    "message": "¡Dominio activo! Ahora puedes acceder a la subestación a través de tu dirección HTTPS personalizada.",
+    "message": "¡Dominio activo! Ahora puedes acceder al subdominio a través de tu dirección HTTPS personalizada.",
     "description": "Entrar en estado activo"
   },
   "message.domainFailed": {
-    "message": "La verificación del dominio o el lanzamiento fallaron.",
-    "description": "Texto para estado fallido"
+    "message": "Fallo en la verificación o activación del dominio.",
+    "description": "Texto para el estado de fallo"
   },
   "message.domainVerifyFailed": {
-    "message": "Verificación fallida, por favor verifica si los registros DNS han tomado efecto.",
+    "message": "Verificación fallida, por favor verifica que el registro CNAME apunte a nuestro proxy inverso y que la propagación DNS esté completa.",
     "description": "Interfaz de verificación 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "¿Estás seguro de que deseas desvincular {hostname}? Después de desvincular, los usuarios no podrán acceder a tu subestación desde este dominio.",
+    "message": "¿Estás seguro de que deseas desvincular {hostname}? Después de desvincular, los usuarios no podrán acceder a tu sub-sitio desde este dominio.",
     "description": "Confirmación de eliminación"
   },
   "message.domainDeleteFailed": {
-    "message": "Error al eliminar el dominio.",
+    "message": "Fallo al eliminar el dominio.",
     "description": "Interfaz DELETE 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Verificación de DNS pendiente",
-    "description": "Etiqueta de estado de verificación de DNS pendiente"
-  },
-  "status.provisioningEo": {
-    "message": "Conectando a la red de borde",
-    "description": "Etiqueta de estado de aprovisionamiento de red de borde"
-  },
-  "status.provisioningCert": {
-    "message": "Solicitando certificado",
-    "description": "Etiqueta de estado de aprovisionamiento de certificado"
+  "status.pending": {
+    "message": "Pendiente",
+    "description": "Etiqueta de estado pendiente: esperando que el usuario agregue CNAME y haga clic en 'Verificar ahora'"
   },
   "status.active": {
     "message": "Activo",
     "description": "Etiqueta de estado activo"
   },
   "status.failed": {
-    "message": "Fallido",
+    "message": "Fallo",
     "description": "Etiqueta de estado fallido"
   }
 }

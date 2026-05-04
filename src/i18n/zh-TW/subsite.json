@@ -1,7 +1,7 @@
 {
   "title.index": {
     "message": "我的分站",
-    "description": "分站管理首頁大標題"
+    "description": "分站管理首页大标题"
   },
   "title.create": {
     "message": "創建分站",
@@ -104,12 +104,8 @@
     "description": "提交綁定新域名"
   },
   "button.verify": {
-    "message": "驗證",
-    "description": "檢查 TXT 驗證記錄是否到位"
-  },
-  "button.checkProgress": {
-    "message": "檢查進度",
-    "description": "從 EdgeOne 同步最新狀態"
+    "message": "立即驗證",
+    "description": "通過我們的反向代理探測該域名是否已能正常解析並簽發證書"
   },
   "button.refresh": {
     "message": "刷新",
@@ -136,7 +132,7 @@
     "description": "hostname 輸入框佔位符"
   },
   "message.domainsIntro": {
-    "message": "將你擁有的域名綁定到該分站。你需要能修改該域名的 DNS。驗證通過後我們會自動為你申請免費 HTTPS 證書並在 EdgeOne 上部署。",
+    "message": "將你擁有的域名綁定到該分站。你需要能修改該域名的 DNS。按照下方提示添加一條 CNAME 後點擊“立即驗證”即可，我們會自動通過 Let's Encrypt 為你免費簽發並續期 HTTPS 證書。",
     "description": "對話框頂部說明"
   },
   "message.domainsEmpty": {
@@ -152,7 +148,7 @@
     "description": "hostname 本地校驗失敗"
   },
   "message.domainCreated": {
-    "message": "域名已提交，請按提示添加 DNS 記錄。",
+    "message": "域名已提交，請按提示添加 CNAME 記錄。",
     "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
@@ -163,20 +159,16 @@
     "message": "加載域名列表失敗。",
     "description": "拉域名列表失敗"
   },
-  "message.domainProgressed": {
-    "message": "驗證進入下一階段，請耐心等待。",
-    "description": "狀態機推進"
-  },
   "message.domainActive": {
-    "message": "域名已上線！現在可以透過你的自訂 HTTPS 地址訪問分站。",
+    "message": "域名已啟用！現在可以透過你的自訂 HTTPS 地址訪問子站。",
     "description": "進入 Active 狀態"
   },
   "message.domainFailed": {
     "message": "域名驗證或上線失敗。",
-    "description": "Failed 狀態兌底文案"
+    "description": "Failed 狀態對應文案"
   },
   "message.domainVerifyFailed": {
-    "message": "驗證失敗，請檢查 DNS 記錄是否已生效。",
+    "message": "驗證失敗，請檢查 CNAME 記錄是否已指向我們的反向代理並完成 DNS 傳播。",
     "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
@@ -187,17 +179,9 @@
     "message": "刪除域名失敗。",
     "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "待驗證 DNS",
-    "description": "PendingDnsVerification 狀態標籤"
-  },
-  "status.provisioningEo": {
-    "message": "接入邊緣中",
-    "description": "ProvisioningEo 狀態標籤"
-  },
-  "status.provisioningCert": {
-    "message": "申請證書中",
-    "description": "ProvisioningCert 狀態標籤"
+  "status.pending": {
+    "message": "待驗證",
+    "description": "Pending 狀態標籤：等待用戶加 CNAME 並點擊“立即驗證”"
   },
   "status.active": {
     "message": "已上線",

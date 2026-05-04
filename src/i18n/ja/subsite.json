@@ -1,7 +1,7 @@
 {
   "title.index": {
     "message": "私のサブサイト",
-    "description": "サブサイト管理ホームページの大タイトル"
+    "description": "サブサイト管理のホームページの大タイトル"
   },
   "title.create": {
     "message": "サブサイトを作成",
@@ -52,15 +52,15 @@
     "description": "サブサイト設定に入るボタン"
   },
   "message.indexTip": {
-    "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持ち、ソースコードを個別に構築する必要はありません。",
-    "description": "サブサイト管理ホームページの説明文"
+    "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持つことができ、ソースコードを個別に構築する必要はありません。",
+    "description": "サブサイト管理のホームページの説明文"
   },
   "message.empty": {
     "message": "まだサブサイトを作成していません。右上の「サブサイトを作成」をクリックして始めてください。",
     "description": "空のリストのヒント"
   },
   "message.slugTip": {
-    "message": "3-32文字の小文字アルファベット、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めることはできません。",
+    "message": "3-32文字の小文字、数字、またはハイフン；ハイフンで始まったり終わったりすることはできず、連続したハイフンを含むことはできません。",
     "description": "スラッグフィールドの説明"
   },
   "message.slugInvalid": {
@@ -101,19 +101,15 @@
   },
   "button.bindDomain": {
     "message": "ドメインをバインド",
-    "description": "新しいドメインをバインドするために送信"
+    "description": "新しいドメインをバインドするための送信ボタン"
   },
   "button.verify": {
-    "message": "検証",
-    "description": "TXT検証レコードが整っているか確認"
-  },
-  "button.checkProgress": {
-    "message": "進捗を確認",
-    "description": "EdgeOneから最新の状態を同期"
+    "message": "今すぐ検証",
+    "description": "当社のリバースプロキシを通じて、そのドメインが正常に解決され、証明書が発行されているかを検出します"
   },
   "button.refresh": {
     "message": "更新",
-    "description": "このドメインの状態を再取得"
+    "description": "そのドメインの状態を再取得"
   },
   "field.hostname": {
     "message": "あなたのドメイン",
@@ -136,15 +132,15 @@
     "description": "hostname入力フィールドのプレースホルダー"
   },
   "message.domainsIntro": {
-    "message": "所有しているドメインをこのサブサイトにバインドします。DNSを変更できる必要があります。検証が通過した後、無料のHTTPS証明書を自動的に申請し、EdgeOneにデプロイします。",
-    "description": "ダイアログの上部説明"
+    "message": "所有しているドメインをこのサブサイトにバインドします。DNSを変更できる必要があります。下の指示に従ってCNAMEを追加し、「今すぐ検証」をクリックしてください。私たちは自動的にLet's Encryptを通じて無料でHTTPS証明書を発行し、更新します。",
+    "description": "ダイアログの上部の説明"
   },
   "message.domainsEmpty": {
     "message": "まだカスタムドメインをバインドしていません。下のフォームに完全なドメインを入力し、「バインド」をクリックして開始してください。",
     "description": "空のリストのヒント"
   },
   "message.hostnameTip": {
-    "message": "あなたがDNSを制御できるパブリックドメイン名である必要があります。acedata.cloud / surl.idのいかなるサブドメインも許可されません。",
+    "message": "あなたがDNSを制御できるパブリックドメインである必要があります。acedata.cloud / surl.idのいかなるサブドメインも許可されません。",
     "description": "hostname入力のヒント"
   },
   "message.hostnameInvalid": {
@@ -152,7 +148,7 @@
     "description": "hostnameのローカル検証失敗"
   },
   "message.domainCreated": {
-    "message": "ドメインが提出されました。指示に従ってDNSレコードを追加してください。",
+    "message": "ドメインが提出されました。指示に従ってCNAMEレコードを追加してください。",
     "description": "POST /site-domains/成功"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "ドメインリストの読み込みに失敗しました。",
     "description": "ドメインリストの取得失敗"
   },
-  "message.domainProgressed": {
-    "message": "次のステージに進むための検証中です。しばらくお待ちください。",
-    "description": "状態機械の進行"
-  },
   "message.domainActive": {
-    "message": "ドメインがアクティブになりました！あなたのカスタム HTTPS アドレスを通じてサブサイトにアクセスできます。",
+    "message": "ドメインがアクティブになりました！あなたのカスタム HTTPS アドレスでサブサイトにアクセスできます。",
     "description": "アクティブ状態に入る"
   },
   "message.domainFailed": {
-    "message": "ドメインの検証またはアクティブ化に失敗しました。",
-    "description": "失敗状態の文言"
+    "message": "ドメインの検証または公開に失敗しました。",
+    "description": "Failed 状態の文言"
   },
   "message.domainVerifyFailed": {
-    "message": "検証に失敗しました。DNS レコードが有効になっているか確認してください。",
+    "message": "検証に失敗しました。CNAME レコードが当社のリバースプロキシを指しているか、DNS の伝播が完了しているか確認してください。",
     "description": "verify インターフェース 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "{hostname} のバインド解除を本当に行いますか？バインド解除後、ユーザーはこのドメインからあなたのサブサイトにアクセスできなくなります。",
+    "message": "{hostname} のバインドを解除してもよろしいですか？バインドを解除すると、ユーザーはこのドメインからあなたのサブサイトにアクセスできなくなります。",
     "description": "削除確認"
   },
   "message.domainDeleteFailed": {
     "message": "ドメインの削除に失敗しました。",
     "description": "DELETE インターフェース 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "DNS 検証待ち",
-    "description": "PendingDnsVerification 状態ラベル"
-  },
-  "status.provisioningEo": {
-    "message": "エッジ接続中",
-    "description": "ProvisioningEo 状態ラベル"
-  },
-  "status.provisioningCert": {
-    "message": "証明書申請中",
-    "description": "ProvisioningCert 状態ラベル"
+  "status.pending": {
+    "message": "検証待ち",
+    "description": "Pending 状態ラベル：ユーザーが CNAME を追加し、「今すぐ検証」をクリックするのを待っています"
   },
   "status.active": {
-    "message": "アクティブ",
-    "description": "アクティブ状態ラベル"
+    "message": "公開中",
+    "description": "Active 状態ラベル"
   },
   "status.failed": {
     "message": "失敗",
-    "description": "失敗状態ラベル"
+    "description": "Failed 状態ラベル"
   }
 }

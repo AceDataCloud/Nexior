@@ -52,15 +52,15 @@
     "description": "Siirry alisivuston asetuksiin -painike"
   },
   "message.indexTip": {
-    "message": "Luo itsenäisiä alisivustoja pääsivuston alle. Jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
+    "message": "Luo itsenäisiä alisivustoja pääsivuston alle, jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet, eikä erillistä lähdekoodia tarvitse rakentaa.",
     "description": "Alisivuston hallinnan etusivun selitysteksti"
   },
   "message.empty": {
     "message": "Et ole vielä luonut yhtään alisivustoa. Klikkaa oikeasta yläkulmasta 'Luo alisivusto' aloittaaksesi.",
-    "description": "Tyhjälle listalle annettava viesti"
+    "description": "Tyhjän luettelon ilmoitus"
   },
   "message.slugTip": {
-    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivaan, eikä voi sisältää peräkkäisiä viivoja.",
+    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivaan, eikä sisältää peräkkäisiä viivoja.",
     "description": "slug-kentän selitys"
   },
   "message.slugInvalid": {
@@ -85,10 +85,10 @@
   },
   "message.openNowConfirm": {
     "message": "Alisivusto {origin} on luotu. Haluatko avata sen nyt jatkaaksesi asetusten määrittämistä?",
-    "description": "Luomisen jälkeen kysytään, avataanko se heti"
+    "description": "Luomisen jälkeen kysytään, avataanko heti"
   },
   "title.domains": {
-    "message": "Mukautettu verkkotunnus {origin}",
+    "message": "{origin} mukautettu verkkotunnus",
     "description": "Mukautetun verkkotunnuksen dialogin otsikko"
   },
   "title.bindDomain": {
@@ -104,16 +104,12 @@
     "description": "Lähetä uusi verkkotunnus"
   },
   "button.verify": {
-    "message": "Vahvista",
-    "description": "Tarkista, onko TXT-vahvistustietue kunnossa"
-  },
-  "button.checkProgress": {
-    "message": "Tarkista edistyminen",
-    "description": "Synkronoi viimeisin tila EdgeOnelta"
+    "message": "Vahvista nyt",
+    "description": "Tarkista, onko verkkotunnus jo käytettävissä ja onko sertifikaatti myönnetty"
   },
   "button.refresh": {
     "message": "Päivitä",
-    "description": "Hae tämän verkkotunnuksen tila uudelleen"
+    "description": "Hae verkkotunnuksen tila uudelleen"
   },
   "field.hostname": {
     "message": "Verkkotunnuksesi",
@@ -121,30 +117,30 @@
   },
   "field.recordType": {
     "message": "Tietueen tyyppi",
-    "description": "DNS-tietueen tyypin sarake"
+    "description": "DNS-tietueen tyyppisarake"
   },
   "field.recordName": {
     "message": "Tietueen nimi",
-    "description": "DNS-tietueen nimen sarake"
+    "description": "DNS-tietueen nimisarake"
   },
   "field.recordValue": {
     "message": "Tietueen arvo",
-    "description": "DNS-tietueen arvon sarake"
+    "description": "DNS-tietueen arvokenttä"
   },
   "placeholder.hostname": {
     "message": "esim. studio.mybrand.com",
     "description": "hostname-syöttökentän paikkamerkki"
   },
   "message.domainsIntro": {
-    "message": "Sitota omistamasi verkkotunnus tähän alisivustoon. Sinun on voitava muokata tämän verkkotunnuksen DNS:ää. Vahvistuksen jälkeen haemme automaattisesti sinulle ilmaisen HTTPS-sertifikaatin ja otamme sen käyttöön EdgeOnella.",
+    "message": "Sitota omistamasi verkkotunnus tähän alisivustoon. Sinun on voitava muokata verkkotunnuksen DNS:ää. Lisää CNAME-tietue ohjeiden mukaan ja napsauta 'Vahvista nyt', niin me myönnämme ja uusimme HTTPS-sertifikaatin ilmaiseksi Let's Encryptin kautta.",
     "description": "Dialogin yläosan selitys"
   },
   "message.domainsEmpty": {
-    "message": "Et ole vielä sitonut mitään mukautettuja verkkotunnuksia. Täytä alla olevaan lomakkeeseen täydellinen verkkotunnus ja napsauta 'Sitota' aloittaaksesi.",
-    "description": "Tyhjälle listalle annettava viesti"
+    "message": "Et ole vielä sitonut mitään mukautettuja verkkotunnuksia. Täytä alapuolella olevaan lomakkeeseen täydellinen verkkotunnus ja napsauta 'Sitota' aloittaaksesi.",
+    "description": "Tyhjän luettelon ilmoitus"
   },
   "message.hostnameTip": {
-    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita. Acdata.cloud / surl.id -verkkotunnuksen alidomainit eivät ole sallittuja.",
+    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita. Acdata.cloud / surl.id -verkkotunnusten alidomainit eivät ole sallittuja.",
     "description": "hostname-syöttöohje"
   },
   "message.hostnameInvalid": {
@@ -152,7 +148,7 @@
     "description": "hostname-lokalisointi epäonnistui"
   },
   "message.domainCreated": {
-    "message": "Verkkotunnus on lähetetty, lisää DNS-tietueet ohjeiden mukaan.",
+    "message": "Verkkotunnus on lähetetty, lisää CNAME-tietue ohjeiden mukaan.",
     "description": "POST /site-domains/ onnistui"
   },
   "message.domainCreateFailed": {
@@ -163,48 +159,36 @@
     "message": "Verkkotunnusluettelon lataaminen epäonnistui.",
     "description": "Verkkotunnusluettelon lataaminen epäonnistui"
   },
-  "message.domainProgressed": {
-    "message": "Vahvistus seuraavaan vaiheeseen, ole kärsivällinen.",
-    "description": "Tilakoneen edistyminen"
-  },
   "message.domainActive": {
-    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivustoa mukautetun HTTPS-osoitteesi kautta.",
+    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivua mukautetun HTTPS-osoitteesi kautta.",
     "description": "Siirtyminen aktiiviseen tilaan"
   },
   "message.domainFailed": {
-    "message": "Verkkotunnuksen vahvistaminen tai aktivointi epäonnistui.",
-    "description": "Epäonnistunut tila"
+    "message": "Verkkotunnuksen vahvistaminen tai julkaisu epäonnistui.",
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Vahvistus epäonnistui, tarkista DNS-tietueiden voimassaolo.",
-    "description": "Vahvistusliittymä 4xx"
+    "message": "Vahvistus epäonnistui, tarkista että CNAME-tietue osoittaa meidän käänteiseen välimuistiin ja että DNS-levitys on valmis.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät voi käyttää aliverkkosivustoa tämän verkkotunnuksen kautta.",
+    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse aliverkkotunnuksellesi tämän verkkotunnuksen kautta.",
     "description": "Poiston vahvistus"
   },
   "message.domainDeleteFailed": {
     "message": "Verkkotunnuksen poistaminen epäonnistui.",
-    "description": "DELETE-liittymä 5xx"
+    "description": "DELETE 接口 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Odottava DNS-vahvistus",
-    "description": "Odottava DNS-vahvistus -tilan etiketti"
-  },
-  "status.provisioningEo": {
-    "message": "Liitetään reunapalvelimeen",
-    "description": "ProvisioningEo -tilan etiketti"
-  },
-  "status.provisioningCert": {
-    "message": "Hakemassa sertifikaattia",
-    "description": "ProvisioningCert -tilan etiketti"
+  "status.pending": {
+    "message": "Vahvistusta odottamassa",
+    "description": "Pending 状态标签：odottaa käyttäjän lisäävän CNAME:n ja napsauttavan 'Vahvista nyt'"
   },
   "status.active": {
-    "message": "Aktiivinen",
-    "description": "Aktiivinen tila -etiketti"
+    "message": "Julkaistu",
+    "description": "Active 状态标签"
   },
   "status.failed": {
-    "message": "Epäonnistunut",
-    "description": "Epäonnistunut tila -etiketti"
+    "message": "Epäonnistui",
+    "description": "Failed 状态标签"
   }
 }

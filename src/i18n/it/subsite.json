@@ -9,7 +9,7 @@
   },
   "title.openNow": {
     "message": "Visita subito il sottodominio",
-    "description": "Titolo della finestra di dialogo che chiede se si desidera reindirizzarsi subito dopo la creazione"
+    "description": "Titolo della finestra di dialogo che chiede se si desidera reindirizzare subito dopo la creazione"
   },
   "field.slug": {
     "message": "Prefisso del sottodominio",
@@ -104,12 +104,8 @@
     "description": "Invia il collegamento di un nuovo dominio"
   },
   "button.verify": {
-    "message": "Verifica",
-    "description": "Controlla se il record TXT di verifica è presente"
-  },
-  "button.checkProgress": {
-    "message": "Controlla il progresso",
-    "description": "Sincronizza lo stato più recente da EdgeOne"
+    "message": "Verifica ora",
+    "description": "Controlla se il dominio può essere risolto e certificato tramite il nostro proxy inverso"
   },
   "button.refresh": {
     "message": "Aggiorna",
@@ -132,15 +128,15 @@
     "description": "Colonna del valore del record DNS"
   },
   "placeholder.hostname": {
-    "message": "es. studio.mybrand.com",
+    "message": "es. studio.mymarca.com",
     "description": "Segnaposto per il campo di input dell'hostname"
   },
   "message.domainsIntro": {
-    "message": "Collega il dominio di tua proprietà a questo sottodominio. Devi poter modificare il DNS di quel dominio. Una volta verificato, richiederemo automaticamente un certificato HTTPS gratuito e lo deployeremo su EdgeOne.",
+    "message": "Collega il dominio di tua proprietà a questo sottodominio. Devi poter modificare il DNS di quel dominio. Aggiungi un record CNAME come indicato qui sotto e clicca su 'Verifica ora', provvederemo automaticamente a rilasciare e rinnovare il certificato HTTPS gratuitamente tramite Let's Encrypt.",
     "description": "Spiegazione in cima alla finestra di dialogo"
   },
   "message.domainsEmpty": {
-    "message": "Non hai ancora collegato alcun dominio personalizzato. Compila il dominio completo nel modulo sottostante e clicca su 'Collega' per iniziare.",
+    "message": "Non hai ancora collegato alcun dominio personalizzato. Compila il dominio completo nel modulo qui sotto e clicca su 'Collega' per iniziare.",
     "description": "Messaggio per lista vuota"
   },
   "message.hostnameTip": {
@@ -152,52 +148,40 @@
     "description": "Errore di validazione locale dell'hostname"
   },
   "message.domainCreated": {
-    "message": "Dominio inviato, segui le istruzioni per aggiungere i record DNS.",
+    "message": "Dominio inviato, segui le istruzioni per aggiungere il record CNAME.",
     "description": "POST /site-domains/ riuscito"
   },
   "message.domainCreateFailed": {
     "message": "Creazione del dominio fallita, riprova più tardi.",
-    "description": "Errore nella creazione del dominio"
+    "description": "Errore nella creazione"
   },
   "message.domainsLoadFailed": {
     "message": "Caricamento della lista dei domini fallito.",
     "description": "Errore nel caricamento della lista dei domini"
   },
-  "message.domainProgressed": {
-    "message": "Verifica in corso per passare alla fase successiva, attendere prego.",
-    "description": "Stato della macchina avanzato"
-  },
   "message.domainActive": {
-    "message": "Dominio attivo! Ora puoi accedere al tuo sottodominio tramite il tuo indirizzo HTTPS personalizzato.",
+    "message": "Dominio attivo! Ora puoi accedere al sottodominio tramite il tuo indirizzo HTTPS personalizzato.",
     "description": "Entrato nello stato attivo"
   },
   "message.domainFailed": {
     "message": "Verifica del dominio o attivazione fallita.",
-    "description": "Testo per stato fallito"
+    "description": "Testo per lo stato di errore"
   },
   "message.domainVerifyFailed": {
-    "message": "Verifica fallita, controlla se i record DNS sono attivi.",
+    "message": "Verifica fallita, controlla se il record CNAME punta al nostro reverse proxy e se la propagazione DNS è completata.",
     "description": "Interfaccia di verifica 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Sei sicuro di voler dissociare {hostname}? Dopo la dissociazione, gli utenti non potranno accedere al tuo sottodominio tramite questo dominio.",
+    "message": "Sei sicuro di voler dissociare {hostname}? Dopo la dissociazione, gli utenti non potranno accedere alla tua sottodirectory da questo dominio.",
     "description": "Conferma di eliminazione"
   },
   "message.domainDeleteFailed": {
     "message": "Eliminazione del dominio fallita.",
     "description": "Interfaccia DELETE 5xx"
   },
-  "status.pendingDnsVerification": {
-    "message": "Verifica DNS in sospeso",
-    "description": "Etichetta di stato PendingDnsVerification"
-  },
-  "status.provisioningEo": {
-    "message": "In fase di integrazione edge",
-    "description": "Etichetta di stato ProvisioningEo"
-  },
-  "status.provisioningCert": {
-    "message": "Richiesta certificato in corso",
-    "description": "Etichetta di stato ProvisioningCert"
+  "status.pending": {
+    "message": "In attesa di verifica",
+    "description": "Etichetta di stato in attesa: attende che l'utente aggiunga il CNAME e clicchi su 'Verifica ora'"
   },
   "status.active": {
     "message": "Attivo",
