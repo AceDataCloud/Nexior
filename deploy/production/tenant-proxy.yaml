@@ -70,11 +70,20 @@ data:
       }
     }
 
-    # Plain HTTP redirects to HTTPS. Caddy still serves the
-    # /.well-known/acme-challenge/* path for HTTP-01 challenges
-    # automatically, regardless of this redirect.
+    # Plain HTTP: serves /.well-known/acme-challenge/* for HTTP-01
+    # challenges (built-in), a /healthz endpoint for the kubelet
+    # readiness probe (so it doesn't follow the 80->443 redirect into
+    # on-demand-TLS land where Caddy would refuse to sign for an IP),
+    # and redirects everything else to HTTPS. `handle` blocks are
+    # mutually exclusive and override Caddy's default directive order
+    # (which would otherwise run `redir` before `respond`).
     http:// {
-      redir https://{host}{uri} permanent
+      handle /healthz {
+        respond "ok" 200
+      }
+      handle {
+        redir https://{host}{uri} permanent
+      }
     }
 ---
 apiVersion: apps/v1
@@ -130,9 +139,13 @@ spec:
             limits:
               cpu: 1
               memory: 1Gi
+          # Readiness hits the dedicated /healthz handler in the http://
+          # block above; we explicitly bypass Caddy's 80->443 redirect
+          # because the redirect target is the pod IP, which on-demand-tls
+          # rightly refuses to sign a cert for (`tls: internal error`).
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: 80
               scheme: HTTP
             initialDelaySeconds: 5
