@@ -173,6 +173,16 @@ export default defineComponent({
     async references(val) {
       console.log('references changed', val);
     },
+    /**
+     * Mirror the unsubmitted composer text into vuex on every
+     * keystroke so a route-level remount (clicking ChatGPT in the
+     * sidebar while editing a draft on Claude) can pick it back up
+     * via ``onConsumePendingDraft`` in the new component instance.
+     * Cleared once the message is submitted (see ``onRequest``).
+     */
+    question(val: string) {
+      this.$store.commit('chat/setPendingDraft', val || '');
+    },
     async modelGroup(val) {
       console.debug('modelGroup changed', val);
       // Side-panel list is server-filtered by model_group, so any change
@@ -211,6 +221,15 @@ export default defineComponent({
     if (this.conversationId) {
       await this.onRestoreConversation(this.conversationId);
     }
+    // Cross-group draft persistence: when the user clicks a different
+    // chat group in the sidebar (e.g. Claude → ChatGPT), Vue Router
+    // remounts this component because the route changes, which would
+    // otherwise drop ``this.question``. We mirror the composer text
+    // into ``store.chat.pendingDraft`` on every keystroke (see the
+    // ``question`` watcher) and consume it back here. URL ``?query=``
+    // (deep-link from AuthFrontend connector chips) wins over the
+    // mirrored draft because it represents fresher user intent.
+    this.onConsumePendingDraft();
     // Cross-site deep-link: AuthFrontend's connector detail "Try It"
     // chips open ``/<group>/conversations?query=<prompt>`` in a new
     // tab. Paste the prompt into the composer (intentionally NOT
@@ -236,6 +255,29 @@ export default defineComponent({
       }
     },
     /**
+     * Restore the unsubmitted composer draft after a route-level
+     * remount (typically: user clicks a different chat group in the
+     * sidebar — Claude → ChatGPT). The draft was mirrored into
+     * ``store.chat.pendingDraft`` keystroke-by-keystroke by the
+     * ``question`` watcher, and lives in-memory only (NOT in
+     * ``persist.ts``) so it doesn't leak across browser sessions.
+     *
+     * Skips when:
+     *   - There's a ``:id`` in the route — restoring an existing
+     *     chat already populates its own state; the pending draft
+     *     belonged to a different (new) conversation.
+     *   - The composer is non-empty — preserves anything the user
+     *     just started typing in this fresh mount.
+     *   - The pending draft is empty.
+     */
+    onConsumePendingDraft() {
+      if (this.conversationId) return;
+      if (this.question && this.question.trim().length > 0) return;
+      const draft: string | undefined = this.$store.state.chat?.pendingDraft;
+      if (!draft) return;
+      this.question = draft;
+    },
+    /**
      * Cross-site entry-point: AuthFrontend's connector "Try It" chips
      * (PR https://github.com/AceDataCloud/AuthFrontend/pull/83) open
      * this page with ``?query=<prompt>`` so the prompt arrives
@@ -245,9 +287,9 @@ export default defineComponent({
      *   - Only fires on a NEW conversation (no `:id` in the route).
      *     A restored conversation already has its own state — we
      *     don't want to clobber the composer mid-edit.
-     *   - Only fires when the composer is empty. If the user already
-     *     started typing locally (vuex-persistedstate restores the
-     *     ``question`` field across reloads), we keep their draft.
+     *   - When ``?query=`` is present we DO override an in-memory
+     *     pendingDraft from a prior group, because a fresh
+     *     deep-link is the user's most recent intent.
      *   - Does NOT auto-submit. Studio shows the prompt; user reads,
      *     optionally tweaks, presses Enter. This matches the
      *     ChatGPT / Claude suggestion-chip UX and prevents a
@@ -262,7 +304,16 @@ export default defineComponent({
       const queryStr = Array.isArray(raw) ? raw[0] : raw;
       if (!queryStr || typeof queryStr !== 'string') return;
       if (this.conversationId) return;
-      if (this.question && this.question.trim().length > 0) return;
+      // Override pendingDraft from a stale prior group, but still
+      // never clobber a draft the user is actively typing in this
+      // mount — same guard as before, only relaxed against the
+      // mirrored ``pendingDraft`` (which we want to overwrite when
+      // the user explicitly clicked a deep-link).
+      if (this.question && this.question.trim().length > 0) {
+        const draft: string | undefined = this.$store.state.chat?.pendingDraft;
+        const isMirroredDraft = draft != null && this.question === draft;
+        if (!isMirroredDraft) return;
+      }
       this.question = queryStr;
       // Drop the deep-link params so a refresh / share doesn't replay
       // the prompt. Keep any unrelated query keys the route may carry
