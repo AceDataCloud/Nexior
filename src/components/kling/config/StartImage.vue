@@ -12,6 +12,7 @@
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
       :limit="1"
+      :disabled="reachedLimit"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
@@ -30,17 +31,21 @@
           @remove="fileList.splice(fileList.indexOf(file), 1)"
         />
       </template>
-      <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
-        {{ $t('kling.button.uploadReferences') }}
-      </el-button>
+      <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
+        <span>
+          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="reachedLimit">
+            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            {{ $t('kling.button.uploadReferences') }}
+          </el-button>
+        </span>
+      </el-tooltip>
     </el-upload>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -56,6 +61,7 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
+    ElTooltip,
     InfoIcon,
     FontAwesomeIcon,
     ImagePreview
@@ -77,6 +83,9 @@ export default defineComponent({
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    },
+    reachedLimit(): boolean {
+      return (this.fileList?.length || 0) >= 1;
     },
     value: {
       get() {

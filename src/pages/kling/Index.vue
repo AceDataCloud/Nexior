@@ -167,6 +167,12 @@ export default defineComponent({
         ...rest,
         callback_url: CALLBACK_URL
       } as IKlingGenerateRequest;
+      // Reject "only end frame, no start frame" — Kling can't anchor an
+      // end-frame without a starting reference.
+      if (!request.video_id && !(rest as any).video_url && !request.start_image_url && request.end_image_url) {
+        ElMessage.warning(this.$t('kling.message.endImageRequiresStart'));
+        return;
+      }
       // Derive `action` from inputs if the user did not set one explicitly.
       // Upstream Kling worker requires `action` and defaults to `text2video`,
       // which rejects `start_image_url`/`end_image_url` (#bug: image refs ignored).
