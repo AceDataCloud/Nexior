@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import i18n from './i18n';
+import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
@@ -26,6 +27,8 @@ import {
   initializeRedirect,
   initializeFingerprint
 } from './utils/initializer';
+
+initializeChunkLoadErrorHandler();
 
 const main = async () => {
   // async and need to await
@@ -84,4 +87,8 @@ const main = async () => {
   window.app = app;
 };
 
-main();
+main().catch((error) => {
+  if (!handleChunkLoadError(error)) {
+    console.error(error);
+  }
+});

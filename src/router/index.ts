@@ -64,6 +64,7 @@ import { getLocale, setI18nLanguage } from '@/i18n';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
 import { ensureStoreModule } from '@/store/lazy';
 import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
+import { handleChunkLoadError } from '@/utils/chunkLoadError';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -334,6 +335,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+});
+
+router.onError((error) => {
+  handleChunkLoadError(error);
 });
 
 router.beforeEach(async (to, _from, next) => {
