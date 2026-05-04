@@ -17,7 +17,7 @@ import { ElTabs, ElTabPane, ElTag } from 'element-plus';
 import { IKlingTaskType } from '@/models';
 
 interface ITab {
-  value: IKlingTaskType | 'avatar';
+  value: IKlingTaskType;
   label: string;
   disabled?: boolean;
   disabledReason?: string;
@@ -48,20 +48,12 @@ export default defineComponent({
         {
           value: 'motion',
           label: this.$t('kling.tab.motionControl')
-        },
-        {
-          value: 'avatar',
-          label: this.$t('kling.tab.avatar'),
-          disabled: true,
-          disabledReason: this.$t('kling.tab.avatarComingSoon'),
-          badge: this.$t('kling.tab.comingSoon')
         }
       ];
     }
   },
   methods: {
     onUpdate(value: string | number) {
-      if (value === 'avatar') return;
       this.$emit('update:modelValue', value as IKlingTaskType);
     }
   }
