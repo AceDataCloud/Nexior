@@ -75,6 +75,12 @@ export default defineConfig((config: ConfigEnv) => {
       }
     },
     build: {
+      // Computing gzip size for ~10 MB of chunks blows past the 2 GB V8
+      // heap on Cloudflare Workers Builds. The report is stdout-only,
+      // so disabling it costs nothing functional and shaves ~15 s off
+      // every build (also resolves the OOM crash at the
+      // `computing gzip size` step).
+      reportCompressedSize: false,
       rollupOptions: {
         output: {
           manualChunks(id) {

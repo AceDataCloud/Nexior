@@ -485,23 +485,35 @@
   },
   "askUserQuestion.submit": {
     "message": "Submit",
-    "description": "Submit button on the ask-user-question card"
+    "description": "Submit button on the last question of the ask-user-question wizard"
   },
-  "askUserQuestion.skip": {
-    "message": "Skip",
-    "description": "Skip button on the ask-user-question card"
+  "askUserQuestion.next": {
+    "message": "Next",
+    "description": "Advance to the next question in the ask-user-question wizard"
+  },
+  "askUserQuestion.back": {
+    "message": "Back",
+    "description": "Go back to the previous question in the ask-user-question wizard"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Skip all",
+    "description": "Skip the entire ask-user-question wizard and let the model proceed without answers"
   },
   "askUserQuestion.other": {
     "message": "Other",
-    "description": "Label for the custom answer input field on the ask-user-question card"
+    "description": "Pseudo-option label that reveals a per-question free-text input"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Type your own answer.",
+    "description": "Helper text under the Other pseudo-option"
   },
   "askUserQuestion.placeholder": {
-    "message": "Enter custom answer…",
-    "description": "Placeholder text for the custom answer input field"
+    "message": "Type your answer…",
+    "description": "Placeholder for the per-question Other free-text input"
   },
   "askUserQuestion.multiSelectHint": {
-    "message": "Select one or more options",
-    "description": "Hint displayed when multiple choice questions are supported"
+    "message": "Select one or more",
+    "description": "Hint shown on questions that accept multiple answers"
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Your Answer",
