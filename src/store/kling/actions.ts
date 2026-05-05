@@ -1,206 +1,37 @@
-import { applicationOperator, credentialOperator, klingOperator, serviceOperator } from '@/operators';
-import { IKlingState } from './models';
+import { klingOperator } from '@/operators';
+import { IKlingConfig, IKlingMotionConfig, IKlingTask, IKlingTaskType } from '@/models';
+import { KLING_SERVICE_ID } from '@/constants';
+import { createTaskActions, IGetTasksArgs } from '@/store/factories/createTaskActions';
+import { ITaskListFilter } from '@/operators/baseTaskOperator';
 import { ActionContext } from 'vuex';
 import { IRootState } from '../common/models';
-import {
-  IApplication,
-  ICredential,
-  IKlingConfig,
-  IKlingMotionConfig,
-  IKlingTask,
-  IKlingTaskType,
-  IService
-} from '@/models';
-import { Status } from '@/models/common';
-import { KLING_SERVICE_ID } from '@/constants';
-import { mergeAndSortLists } from '@/utils/merge';
+import { IKlingState } from './models';
 
-export const resetAll = ({ commit }: ActionContext<IKlingState, IRootState>): void => {
-  commit('resetAll');
-};
+type KlingTasksFilter = ITaskListFilter & { type?: IKlingTaskType };
 
-export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
-  console.debug('set application', payload);
-  commit('setApplication', payload);
-  if (!payload) {
-    console.debug('application is null, return');
-    return;
-  }
-  const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
-  if (credential) {
-    console.debug('credential exists, set credential', credential);
-    commit('setCredential', credential);
-  } else {
-    console.debug('credential not exists, start to create credential for application', payload);
-    await dispatch('createCredential');
-  }
-};
+const baseActions = createTaskActions<IKlingConfig, IKlingTask, KlingTasksFilter>({
+  serviceId: KLING_SERVICE_ID,
+  operator: klingOperator,
+  buildFilter: (rootState, args: IGetTasksArgs): KlingTasksFilter => ({
+    userId: rootState?.user?.id,
+    createdAtMin: args.createdAtMin,
+    createdAtMax: args.createdAtMax,
+    type: rootState?.kling?.taskType
+  })
+});
 
-export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications', payload);
-  commit('setApplications', payload);
-};
-
-export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  console.debug('set service', payload);
-  commit('setService', payload);
-};
-
-export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  console.debug('set credential', payload);
-  commit('setCredential', payload);
-};
-
-export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
-  const application = state.application;
-  console.debug('prepare to create credential for application', application);
-  if (!application) {
-    console.error('Application not found');
-    return undefined;
-  }
-  console.debug('creating create credential for application', application);
-  const { data: credential } = await credentialOperator.create({
-    application_id: application?.id,
-    host: window.location.origin
-  });
-  console.debug('created credential success', credential);
-  commit('setCredential', credential);
-  console.debug('end createCredential');
-  return credential;
-};
-
-export const getService = async ({
-  commit,
-  state
-}: ActionContext<IKlingState, IRootState>): Promise<IService | undefined> => {
-  state.status.getService = Status.Request;
-  try {
-    const { data: service } = await serviceOperator.get(KLING_SERVICE_ID);
-    state.status.getService = Status.Success;
-    commit('setService', service);
-    return service;
-  } catch (error) {
-    state.status.getService = Status.Error;
-    commit('setService', undefined);
-  }
-};
-
-export const getApplications = async ({
-  commit,
-  state,
-  rootState
-}: ActionContext<IKlingState, IRootState>): Promise<IApplication[] | undefined> => {
-  console.debug('start to get applications for chat');
-  state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
-  try {
-    const { data: applications } = await applicationOperator.getAll({
-      user_id: rootState?.user?.id,
-      service_id: KLING_SERVICE_ID
-    });
-    state.status.getApplications = Status.Success;
-    commit('setApplications', applications.items);
-    return applications.items;
-  } catch (error) {
-    console.error('get applications failed', error);
-    state.status.getApplications = Status.Error;
-    commit('setApplications', undefined);
-    commit('setApplication', undefined);
-  }
-};
-
-export const setConfig = ({ commit }: any, payload: IKlingConfig) => {
-  commit('setConfig', payload);
-};
-
-export const setMotionConfig = ({ commit }: any, payload: IKlingMotionConfig) => {
+const setMotionConfig = ({ commit }: ActionContext<IKlingState, IRootState>, payload: IKlingMotionConfig): void => {
   commit('setMotionConfig', payload);
 };
 
-export const setTaskType = ({ commit }: any, payload: IKlingTaskType) => {
+const setTaskType = ({ commit }: ActionContext<IKlingState, IRootState>, payload: IKlingTaskType): void => {
   commit('setTaskType', payload);
 };
 
-export const setTasks = ({ commit }: any, payload: any) => {
-  commit('setTasks', payload);
-};
-
-export const setTasksItems = ({ commit }: any, payload: IKlingTask[]) => {
-  commit('setTasksItems', payload);
-};
-
-export const setTasksTotal = ({ commit }: any, payload: number) => {
-  commit('setTasksTotal', payload);
-};
-
-export const setTasksActive = ({ commit }: any, payload: IKlingTask) => {
-  commit('setTasksActive', payload);
-};
-
-export const getTasks = async (
-  { commit, state, rootState }: ActionContext<IKlingState, IRootState>,
-  {
-    offset,
-    limit,
-    createdAtMin,
-    createdAtMax
-  }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
-): Promise<IKlingTask[]> => {
-  return new Promise((resolve, reject) => {
-    console.debug('start to get tasks', offset, limit);
-    const credential = state.credential;
-    console.debug('current credential', credential);
-    const token = credential?.token;
-    if (!token) {
-      return reject('no token');
-    }
-    klingOperator
-      .tasks(
-        {
-          userId: rootState?.user?.id,
-          createdAtMin,
-          createdAtMax,
-          type: state.taskType
-        },
-        {
-          token
-        }
-      )
-      .then((response) => {
-        console.debug('get kling tasks success', response.data.items);
-        // merge with existing tasks
-        const existingItems = state?.tasks?.items || [];
-        console.debug('existing items', existingItems);
-        const newItems = response.data.items || [];
-        console.debug('new items', newItems);
-        // sort and de-duplicate using created_at
-        const mergedItems = mergeAndSortLists(existingItems, newItems);
-        commit('setTasksItems', mergedItems);
-        commit('setTasksTotal', response.data.count);
-        resolve(response.data.items);
-      })
-      .catch((error) => {
-        return reject(error);
-      });
-  });
-};
-
-export default {
-  setService,
-  getService,
-  resetAll,
-  setCredential,
-  setConfig,
+const actions = {
+  ...baseActions,
   setMotionConfig,
-  setTaskType,
-  setApplication,
-  setApplications,
-  getApplications,
-  setTasks,
-  setTasksItems,
-  setTasksTotal,
-  setTasksActive,
-  getTasks,
-  createCredential
+  setTaskType
 };
+
+export default actions;
