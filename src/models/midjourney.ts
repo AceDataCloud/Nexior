@@ -146,6 +146,7 @@ export interface IMidjourneyImagineTask {
   id: string;
   type: 'imagine';
   created_at?: number;
+  elapsed?: number;
   trace_id?: string;
   request?: IMidjourneyImagineRequest;
   response?: IMidjourneyImagineResponse;
@@ -155,6 +156,7 @@ export interface IMidjourneyVideosTask {
   id: string;
   type: 'videos';
   created_at?: number;
+  elapsed?: number;
   trace_id?: string;
   request?: IMidjourneyVideosRequest;
   response?: IMidjourneyVideosResponse;
@@ -165,6 +167,7 @@ export interface IMidjourneyDescribeTask {
   id: string;
   type: 'describe';
   created_at?: number;
+  elapsed?: number;
   request?: IMidjourneyDescribeRequest;
   response?: IMidjourneyDescribeResponse;
   trace_id?: string;
