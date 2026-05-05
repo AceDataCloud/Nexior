@@ -86,21 +86,23 @@ export default defineComponent({
     }
   },
   mounted() {
-    // renew models if modelGroup is already set
-    console.debug('ModelSelector mounted, checking model group');
-    const modelGroups = [
-      CHAT_MODEL_GROUP_CHATGPT,
-      CHAT_MODEL_GROUP_DEEPSEEK,
-      CHAT_MODEL_GROUP_GROK,
-      CHAT_MODEL_GROUP_GEMINI,
-      CHAT_MODEL_GROUP_CLAUDE,
-      CHAT_MODEL_GROUP_KIMI
-    ];
-    const foundGroup = modelGroups.find((group) => group.name === this.modelGroup.name);
-    console.debug('Found model group:', foundGroup);
-    if (foundGroup) {
-      this.$store.dispatch('chat/setModelGroup', foundGroup);
-      this.$store.dispatch('chat/setModel', foundGroup.models[0]);
+    // Sync the route-derived modelGroup into the store on first mount.
+    // `chat.modelGroup` is intentionally not persisted (see persist.ts);
+    // the route is the source of truth and the store mirror only exists
+    // so other components can subscribe via `state.chat.modelGroup`.
+    //
+    // We also reconcile `chat.model` (which IS persisted): if the
+    // remembered model belongs to a different group than the route, fall
+    // back to the new group's first model. Otherwise leave the user's
+    // selection alone \u2014 a refresh shouldn't snap them from gpt-5-mini
+    // back to gpt-5.
+    const route = this.modelGroup;
+    if (this.$store.state.chat?.modelGroup?.name !== route.name) {
+      this.$store.dispatch('chat/setModelGroup', route);
+    }
+    const persistedModel = this.$store.state.chat?.model;
+    if (!route.models.some((m) => m.name === persistedModel?.name)) {
+      this.$store.dispatch('chat/setModel', route.models[0]);
     }
   },
   methods: {
