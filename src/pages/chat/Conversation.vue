@@ -206,6 +206,17 @@ export default defineComponent({
       this.$store.commit('chat/setConversations', []);
       await this.$store.dispatch('chat/getConversations');
     },
+    // First-load race: Main.vue creates the credential asynchronously,
+    // in parallel with this component's mounted() hook. If credential
+    // isn't ready when onGetConversations() fires, the action bails
+    // (no token → empty list, status=Error) and the side panel stays
+    // empty until the user manually interacts. Re-dispatch once the
+    // token finally lands.
+    async 'credential.token'(val: string | undefined) {
+      if (!val) return;
+      if (this.$store.state.chat.status.getConversations === Status.Success) return;
+      await this.$store.dispatch('chat/getConversations');
+    },
     async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
       // URL is the source of truth: load (or reset) the conversation
