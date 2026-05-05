@@ -20,6 +20,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NANO_BANANA_PRO } from '@/constants';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
+import { loadPreviousPage } from '@/utils/pagination';
 
 const CALLBACK_URL = 'https://webhook.acedata.cloud/nanobanana';
 
@@ -95,36 +96,19 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      console.debug('reached top');
-      if (this.loading || this.tasksLoading) {
-        return;
-      }
-      const total = this.tasks?.total;
-      const currentLength = this.tasks?.items?.length || 0;
-      if (total !== undefined && total <= currentLength) {
-        return;
-      }
-      const oldest = this.tasks?.items?.[0];
-      if (!oldest?.created_at) {
-        return;
-      }
-      const panel = this.$refs.recentPanel as any;
-      const el = panel?.getScrollElement?.() as HTMLElement | undefined;
-      const previousHeight = el?.scrollHeight || 0;
-      const previousScrollTop = el?.scrollTop || 0;
-      this.loading = true;
-      try {
-        await this.onGetTasks({
-          createdAtMax: oldest.created_at
-        });
-        await this.$nextTick();
-        if (el) {
-          const newHeight = el.scrollHeight;
-          el.scrollTop = newHeight - previousHeight + previousScrollTop;
-        }
-      } finally {
-        this.loading = false;
-      }
+      // Use the shared paginator. preserveScroll=false leaves scrollTop at 0
+      // so a continued upward gesture keeps firing reach-top for further
+      // pages instead of getting stranded after the first prepend.
+      await loadPreviousPage({
+        tasks: this.tasks,
+        getTasks: () => this.tasks,
+        loading: this.loading,
+        setLoading: (v) => (this.loading = v),
+        isBlocked: () => this.tasksLoading,
+        fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
+        getScrollElement: () => this.getTasksScrollElement(),
+        preserveScroll: false
+      });
     },
     async onGetService() {
       console.debug('start onGetService');
