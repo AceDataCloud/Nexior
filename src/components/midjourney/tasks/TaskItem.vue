@@ -129,6 +129,23 @@
         </span>
       </div>
       <div class="info">
+        <div
+          v-if="modelValue?.request?.image_url || modelValue?.request?.end_image_url"
+          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+        >
+          <image-preview
+            v-if="modelValue?.request?.image_url"
+            :url="modelValue.request.image_url"
+            :name="$t('midjourney.name.imageUrl')"
+            :closable="false"
+          />
+          <image-preview
+            v-if="modelValue?.request?.end_image_url"
+            :url="modelValue.request.end_image_url"
+            :name="$t('midjourney.name.endImageUrl')"
+            :closable="false"
+          />
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('midjourney.status.pending') }}) </span>
@@ -146,6 +163,26 @@
       <!-- response error -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
         <el-alert :closable="false" class="failure">
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('midjourney.field.action') }}:
+            {{ modelValue?.request?.action }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            {{ $t('midjourney.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('midjourney.name.mode') }}:
+            {{ modelValue?.request?.mode }}
+          </p>
+          <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            {{ $t('midjourney.name.loop') }}:
+            {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -196,6 +233,26 @@
           </el-tooltip>
         </div>
         <el-alert :closable="false" class="mt-2 success">
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('midjourney.field.action') }}:
+            {{ modelValue?.request?.action }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            {{ $t('midjourney.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('midjourney.name.mode') }}:
+            {{ modelValue?.request?.mode }}
+          </p>
+          <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            {{ $t('midjourney.name.loop') }}:
+            {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -223,6 +280,26 @@
       <!-- response pending -->
       <div v-if="!modelValue?.response">
         <el-alert :closable="false" class="info">
+          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('midjourney.field.action') }}:
+            {{ modelValue?.request?.action }}
+          </p>
+          <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            {{ $t('midjourney.name.resolution') }}:
+            {{ modelValue?.request?.resolution }}
+          </p>
+          <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('midjourney.name.mode') }}:
+            {{ modelValue?.request?.mode }}
+          </p>
+          <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            {{ $t('midjourney.name.loop') }}:
+            {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('midjourney.field.taskId') }}:
@@ -344,6 +421,7 @@ import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidj
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import { getConsumption } from '@/utils';
 interface IData {
@@ -357,6 +435,7 @@ export default defineComponent({
   components: {
     ElImage,
     ImageWrapper,
+    ImagePreview,
     ElButton,
     FontAwesomeIcon,
     ElTooltip,
