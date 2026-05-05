@@ -1,44 +1,46 @@
 <template>
-  <div class="field">
-    <div class="label">
-      <div class="box">
-        <h2 class="title font-bold">{{ $t('seedream.name.imageUrls') }}</h2>
-        <info-icon :content="$t('seedream.description.imageUrls')" class="info" />
+  <div v-if="supported">
+    <div class="field">
+      <div class="label">
+        <div class="box">
+          <h2 class="title font-bold">{{ $t('seedream.name.imageUrls') }}</h2>
+          <info-icon :content="$t('seedream.description.imageUrls')" class="info" />
+        </div>
+      </div>
+      <div class="value">
+        <el-upload
+          ref="uploader"
+          v-model:file-list="fileList"
+          accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
+          name="file"
+          :limit="14"
+          :multiple="true"
+          :show-file-list="false"
+          :action="uploadUrl"
+          :on-exceed="onExceed"
+          :on-error="onError"
+          :on-success="onSuccess"
+          :on-change="onChange"
+          :on-remove="onRemove"
+          :headers="headers"
+        >
+          <el-button size="small" type="primary" round>
+            <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+            {{ $t('seedream.button.uploadImageUrls') }}
+          </el-button>
+        </el-upload>
       </div>
     </div>
-    <div class="value">
-      <el-upload
-        ref="uploader"
-        v-model:file-list="fileList"
-        accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-        name="file"
-        :limit="14"
-        :multiple="true"
-        :show-file-list="false"
-        :action="uploadUrl"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :on-success="onSuccess"
-        :on-change="onChange"
-        :on-remove="onRemove"
-        :headers="headers"
-      >
-        <el-button size="small" type="primary" round>
-          <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
-          {{ $t('seedream.button.uploadImageUrls') }}
-        </el-button>
-      </el-upload>
+    <div class="file-list mt-2 flex flex-wrap gap-[10px]">
+      <image-preview
+        v-for="(file, idx) in fileList"
+        :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
+        :url="(file as any).url || (file as any)?.response?.file_url"
+        :name="(file as any).name"
+        :percentage="(file as any).percentage"
+        @remove="onRemovePreview(idx, file)"
+      />
     </div>
-  </div>
-  <div class="file-list mt-2 flex flex-wrap gap-[10px]">
-    <image-preview
-      v-for="(file, idx) in fileList"
-      :key="(file as any).uid || (file as any)?.response?.file_url || (file as any).url || idx"
-      :url="(file as any).url || (file as any)?.response?.file_url"
-      :name="(file as any).name"
-      :percentage="(file as any).percentage"
-      @remove="onRemovePreview(idx, file)"
-    />
   </div>
 </template>
 
@@ -49,6 +51,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 interface IData {
   fileList: UploadFiles;
@@ -91,6 +94,12 @@ export default defineComponent({
     },
     value(): string[] | undefined {
       return this.$store.state.seedream?.config?.image;
+    },
+    model(): string | undefined {
+      return this.$store.state.seedream?.config?.model;
+    },
+    supported(): boolean {
+      return getSeedreamCapabilities(this.model).image;
     }
   },
   watch: {

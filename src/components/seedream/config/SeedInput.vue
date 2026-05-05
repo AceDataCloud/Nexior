@@ -24,7 +24,7 @@
 import { defineComponent } from 'vue';
 import { ElInputNumber } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { supportsSeedreamSeed } from '@/constants';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamSeedInput',
@@ -37,7 +37,7 @@ export default defineComponent({
       return this.$store.state.seedream?.config || {};
     },
     supported(): boolean {
-      return supportsSeedreamSeed(this.config?.model);
+      return getSeedreamCapabilities(this.config?.model).seed;
     },
     value: {
       get(): number {
@@ -49,21 +49,6 @@ export default defineComponent({
         const next = typeof val === 'number' && Number.isInteger(val) ? val : -1;
         cfg.seed = next;
         this.$store.commit('seedream/setConfig', cfg);
-      }
-    }
-  },
-  watch: {
-    // Drop `seed` when the user picks a model that doesn't support it so the
-    // request doesn't get rejected upstream.
-    supported: {
-      immediate: true,
-      handler(v: boolean) {
-        if (v) return;
-        const cfg = { ...(this.config || {}) };
-        if (cfg.seed !== undefined) {
-          delete cfg.seed;
-          this.$store.commit('seedream/setConfig', cfg);
-        }
       }
     }
   }

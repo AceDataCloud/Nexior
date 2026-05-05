@@ -24,7 +24,8 @@
 import { defineComponent } from 'vue';
 import { ElInputNumber } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_DEFAULT_MAX_IMAGES, SEEDREAM_MAX_IMAGES_LIMIT, supportsSeedreamGroupGeneration } from '@/constants';
+import { SEEDREAM_DEFAULT_MAX_IMAGES, SEEDREAM_MAX_IMAGES_LIMIT } from '@/constants';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamMaxImagesSelector',
@@ -37,7 +38,7 @@ export default defineComponent({
       return this.$store.state.seedream?.config || {};
     },
     supported(): boolean {
-      return supportsSeedreamGroupGeneration(this.config?.model);
+      return getSeedreamCapabilities(this.config?.model).groupGeneration;
     },
     referenceImageCount(): number {
       const image = this.config?.image;
@@ -78,26 +79,6 @@ export default defineComponent({
     }
   },
   watch: {
-    // If the user switches to a model that doesn't support group generation
-    // (e.g. doubao-seedream-3.0-t2i), strip the multi-image fields so the
-    // request stays valid.
-    supported: {
-      immediate: true,
-      handler(v: boolean) {
-        if (v) return;
-        const cfg = { ...(this.config || {}) };
-        let dirty = false;
-        if (cfg.sequential_image_generation) {
-          delete cfg.sequential_image_generation;
-          dirty = true;
-        }
-        if (cfg.sequential_image_generation_options) {
-          delete cfg.sequential_image_generation_options;
-          dirty = true;
-        }
-        if (dirty) this.$store.commit('seedream/setConfig', cfg);
-      }
-    },
     // If the user shrinks the picker by uploading more reference images,
     // clamp the stored value so it stays valid.
     effectiveMax(max: number) {
