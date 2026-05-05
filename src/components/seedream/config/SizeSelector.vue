@@ -14,21 +14,40 @@
       allow-create
       default-first-option
     >
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+      <el-option-group :label="$t('seedream.size.group.tier')">
+        <el-option v-for="item in tierOptions" :key="item.value" :label="item.label" :value="item.value" />
+      </el-option-group>
+      <el-option-group :label="$t('seedream.size.group.adaptive')">
+        <el-option
+          :key="SEEDREAM_SIZE_ADAPTIVE"
+          :label="$t('seedream.size.adaptive')"
+          :value="SEEDREAM_SIZE_ADAPTIVE"
+        />
+      </el-option-group>
+      <el-option-group :label="$t('seedream.size.group.pixel')">
+        <el-option
+          v-for="item in pixelOptions"
+          :key="item.value"
+          :label="`${item.value} (${item.ratio})`"
+          :value="item.value"
+        />
+      </el-option-group>
     </el-select>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElSelect, ElOption, ElOptionGroup } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   SEEDREAM_DEFAULT_SIZE,
+  SEEDREAM_PIXEL_PRESETS,
   SEEDREAM_SIZE_1K,
   SEEDREAM_SIZE_2K,
   SEEDREAM_SIZE_3K,
-  SEEDREAM_SIZE_4K
+  SEEDREAM_SIZE_4K,
+  SEEDREAM_SIZE_ADAPTIVE
 } from '@/constants';
 
 export default defineComponent({
@@ -36,16 +55,19 @@ export default defineComponent({
   components: {
     ElSelect,
     ElOption,
+    ElOptionGroup,
     InfoIcon
   },
   data() {
     return {
-      options: [
+      SEEDREAM_SIZE_ADAPTIVE,
+      tierOptions: [
         { value: SEEDREAM_SIZE_1K, label: SEEDREAM_SIZE_1K },
         { value: SEEDREAM_SIZE_2K, label: SEEDREAM_SIZE_2K },
         { value: SEEDREAM_SIZE_3K, label: SEEDREAM_SIZE_3K },
         { value: SEEDREAM_SIZE_4K, label: SEEDREAM_SIZE_4K }
-      ]
+      ],
+      pixelOptions: SEEDREAM_PIXEL_PRESETS
     };
   },
   computed: {
@@ -98,7 +120,7 @@ export default defineComponent({
   }
 
   .value {
-    width: 160px;
+    width: 200px;
   }
 }
 </style>

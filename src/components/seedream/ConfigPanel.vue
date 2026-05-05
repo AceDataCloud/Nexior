@@ -4,6 +4,10 @@
       <model-selector class="mb-4" />
       <size-selector class="mb-4" />
       <max-images-selector class="mb-4" />
+      <output-format-selector class="mb-4" />
+      <seed-input class="mb-4" />
+      <guidance-scale-input class="mb-4" />
+      <watermark-switch class="mb-4" />
       <prompt-input class="mb-4" />
       <image-input class="mb-4" />
     </div>
@@ -28,6 +32,10 @@ import { getConsumption } from '@/utils';
 import ModelSelector from './config/ModelSelector.vue';
 import SizeSelector from './config/SizeSelector.vue';
 import MaxImagesSelector from './config/MaxImagesSelector.vue';
+import OutputFormatSelector from './config/OutputFormatSelector.vue';
+import SeedInput from './config/SeedInput.vue';
+import GuidanceScaleInput from './config/GuidanceScaleInput.vue';
+import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import { getSeedreamShortModel } from '@/constants';
 
 export default defineComponent({
@@ -40,7 +48,11 @@ export default defineComponent({
     ImageInput,
     ModelSelector,
     SizeSelector,
-    MaxImagesSelector
+    MaxImagesSelector,
+    OutputFormatSelector,
+    SeedInput,
+    GuidanceScaleInput,
+    WatermarkSwitch
   },
   emits: ['generate'],
   computed: {

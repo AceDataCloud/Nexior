@@ -14,6 +14,7 @@ export interface ISeedreamConfig {
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
   watermark?: boolean;
+  output_format?: 'jpeg' | 'png';
   callback_url?: string;
 }
 
@@ -29,6 +30,7 @@ export interface ISeedreamGenerateRequest {
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
   watermark?: boolean;
+  output_format?: 'jpeg' | 'png';
   callback_url?: string;
 }
 
