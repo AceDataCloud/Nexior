@@ -21,6 +21,7 @@ export interface IOpenAIImageEditRequest {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
+  size?: string;
   image_urls?: string[];
   callback_url?: string;
 }

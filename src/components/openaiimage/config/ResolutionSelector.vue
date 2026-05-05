@@ -84,6 +84,7 @@ interface IGroup {
 }
 
 interface IData {
+  customMode: boolean;
   customWidth: number;
   customHeight: number;
 }
@@ -107,6 +108,7 @@ export default defineComponent({
   },
   data(): IData {
     return {
+      customMode: false,
       customWidth: 1024,
       customHeight: 1024
     };
@@ -136,13 +138,13 @@ export default defineComponent({
     },
     useCustom: {
       get(): boolean {
-        if (!this.customSupported) return false;
-        const size = this.storedSize;
-        if (!size) return false;
-        return !this.presets.includes(size);
+        return this.customSupported && this.customMode;
       },
       set(val: boolean) {
+        if (val && !this.customSupported) return;
+        this.customMode = val;
         if (val) {
+          if (this.customError) return;
           this.commitSize(`${this.customWidth}x${this.customHeight}`);
         } else {
           const fallback = this.presets[0] ?? OPENAIIMAGE_SIZE_1024;
@@ -157,6 +159,7 @@ export default defineComponent({
         return this.presets[0] ?? OPENAIIMAGE_SIZE_1024;
       },
       set(val: string) {
+        this.customMode = false;
         this.commitSize(val);
       }
     },
@@ -196,24 +199,26 @@ export default defineComponent({
     model: {
       immediate: false,
       handler() {
-        // When switching to a model whose preset list doesn't include the
-        // current size and which doesn't support custom, snap to the model's
-        // first preset to avoid sending a size the model rejects.
-        const size = this.storedSize;
-        if (!size) {
-          this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
-          return;
-        }
-        if (this.presets.includes(size)) return;
-        if (this.customSupported && parseSize(size)) {
-          const parsed = parseSize(size);
-          if (parsed) {
-            this.customWidth = parsed.w;
-            this.customHeight = parsed.h;
+        // Reset custom mode when switching to a model that doesn't support
+        // custom sizes; snap stored size to a valid preset if needed.
+        if (!this.customSupported) {
+          this.customMode = false;
+          const size = this.storedSize;
+          if (!size || !this.presets.includes(size)) {
+            this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
           }
           return;
         }
-        this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
+        // Custom-supported model: keep customMode if active and current
+        // dims are valid; otherwise fall back to first preset.
+        const size = this.storedSize;
+        if (this.customMode && !this.customError) {
+          this.commitSize(`${this.customWidth}x${this.customHeight}`);
+          return;
+        }
+        if (!size || !this.presets.includes(size)) {
+          this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
+        }
       }
     },
     customWidth() {
@@ -228,8 +233,10 @@ export default defineComponent({
       this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
       return;
     }
+    // Re-hydrate custom mode if the stored size came from a previous custom entry.
     const parsed = parseSize(this.storedSize);
-    if (parsed && !this.presets.includes(this.storedSize) && this.customSupported) {
+    if (parsed && this.customSupported && !this.presets.includes(this.storedSize)) {
+      this.customMode = true;
       this.customWidth = parsed.w;
       this.customHeight = parsed.h;
     }
