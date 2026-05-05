@@ -63,37 +63,81 @@
     "message": "伴奏替换",
     "description": "伴奏替换按钮文本"
   },
+  "button.clear_all": {
+    "message": "清空",
+    "description": "清空全部配置项的按钮文本"
+  },
+  "mode.simple": {
+    "message": "简单模式",
+    "description": "简单生成模式 Tab 的标签"
+  },
+  "mode.custom": {
+    "message": "定制模式",
+    "description": "定制生成模式 Tab 的标签"
+  },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
     "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20proDesc": {
+    "message": "最长 8 分钟 · 最佳音质",
+    "description": "FUZZ-2.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
     "description": "用于生成音乐的模型"
   },
+  "model.fuzz20desc": {
+    "message": "最长 8 分钟 · 性价比均衡",
+    "description": "FUZZ-2.0 在模型下拉中的描述"
+  },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
     "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "最长 8 分钟 · 更原生粗糙的人声",
+    "description": "FUZZ-2.0 Raw 在模型下拉中的描述"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
     "description": "用于生成音乐的模型"
   },
+  "model.fuzz11proDesc": {
+    "message": "最长 4 分钟 · 旧版精修",
+    "description": "FUZZ-1.1 Pro 在模型下拉中的描述"
+  },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
     "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10proDesc": {
+    "message": "最长 4 分钟 · 旧版稳定",
+    "description": "FUZZ-1.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
     "description": "用于生成音乐的模型"
   },
+  "model.fuzz10desc": {
+    "message": "最长 2 分钟 · 旧版",
+    "description": "FUZZ-1.0 在模型下拉中的描述"
+  },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
     "description": "用于生成音乐的模型"
   },
+  "model.fuzz11desc": {
+    "message": "最长 4 分钟 · 旧版改良",
+    "description": "FUZZ-1.1 在模型下拉中的描述"
+  },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
     "description": "用于生成音乐的模型"
+  },
+  "model.fuzz08desc": {
+    "message": "最长 2 分钟 · 早期版本",
+    "description": "FUZZ-0.8 在模型下拉中的描述"
   },
   "name.instrumental": {
     "message": "纯音乐",
@@ -246,6 +290,10 @@
   "description.replaceSection": {
     "message": "替换歌曲中指定时间段的内容",
     "description": "替换片段功能的描述"
+  },
+  "description.instrumental": {
+    "message": "生成不含人声的纯音乐，歌词输入将被忽略",
+    "description": "纯音乐开关的提示描述"
   },
   "status.pending": {
     "message": "等待中",

@@ -1,29 +1,31 @@
 <template>
   <div>
-    <!-- Custom Mode Toggle -->
-    <div class="flex items-center justify-between mb-3">
-      <span class="text-sm font-bold">{{ $t('producer.name.type') }}</span>
-      <el-switch v-model="custom" />
-    </div>
-
     <!-- Model Selection -->
     <div class="mb-3">
       <div class="flex items-center mb-1">
         <span class="text-sm font-bold">{{ $t('producer.name.model') }}</span>
       </div>
-      <el-select v-model="model" class="w-full" size="default" :placeholder="$t('producer.placeholder.select')">
+      <el-select
+        v-model="model"
+        class="w-full model-select"
+        size="default"
+        :placeholder="$t('producer.placeholder.select')"
+      >
         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-          <div class="flex items-center justify-between w-full">
-            <span>{{ item.label }}</span>
-            <span class="text-xs text-[var(--el-text-color-placeholder)]">{{ item.info }}</span>
+          <div class="model-option">
+            <span class="model-option-name">{{ item.label }}</span>
+            <span class="model-option-desc">{{ item.desc }}</span>
           </div>
         </el-option>
       </el-select>
     </div>
 
-    <!-- Song Description / Instrumental Toggle -->
+    <!-- Instrumental Toggle (custom mode only) -->
     <div v-if="custom" class="flex items-center justify-between mb-3">
-      <span class="text-sm font-bold">{{ $t('producer.name.instrumental') }}</span>
+      <div class="flex items-center">
+        <span class="text-sm font-bold">{{ $t('producer.name.instrumental') }}</span>
+        <info-icon :content="$t('producer.description.instrumental')" />
+      </div>
       <el-switch v-model="instrumental" />
     </div>
   </div>
@@ -32,59 +34,35 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElSwitch } from 'element-plus';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 import { PRODUCER_DEFAULT_MODEL } from '@/constants';
+
+interface ModelOption {
+  label: string;
+  value: string;
+  desc: string;
+}
 
 export default defineComponent({
   name: 'TypeSelector',
   components: {
     ElSelect,
     ElOption,
-    ElSwitch
+    ElSwitch,
+    InfoIcon
   },
   data() {
     return {
       options: [
-        {
-          label: 'FUZZ-2.0 Pro',
-          value: 'FUZZ-2.0 Pro',
-          info: '8 min'
-        },
-        {
-          label: 'FUZZ-2.0',
-          value: 'FUZZ-2.0',
-          info: '8 min'
-        },
-        {
-          label: 'FUZZ-2.0 Raw',
-          value: 'FUZZ-2.0 Raw',
-          info: '8 min'
-        },
-        {
-          label: 'FUZZ-1.1 Pro',
-          value: 'FUZZ-1.1 Pro',
-          info: '4 min'
-        },
-        {
-          label: 'FUZZ-1.0 Pro',
-          value: 'FUZZ-1.0 Pro',
-          info: '4 min'
-        },
-        {
-          label: 'FUZZ-1.1',
-          value: 'FUZZ-1.1',
-          info: '4 min'
-        },
-        {
-          label: 'FUZZ-1.0',
-          value: 'FUZZ-1.0',
-          info: '2 min'
-        },
-        {
-          label: 'FUZZ-0.8',
-          value: 'FUZZ-0.8',
-          info: '2 min'
-        }
-      ]
+        { label: 'FUZZ-2.0 Pro', value: 'FUZZ-2.0 Pro', desc: this.$t('producer.model.fuzz20proDesc') },
+        { label: 'FUZZ-2.0', value: 'FUZZ-2.0', desc: this.$t('producer.model.fuzz20desc') },
+        { label: 'FUZZ-2.0 Raw', value: 'FUZZ-2.0 Raw', desc: this.$t('producer.model.fuzz20rawDesc') },
+        { label: 'FUZZ-1.1 Pro', value: 'FUZZ-1.1 Pro', desc: this.$t('producer.model.fuzz11proDesc') },
+        { label: 'FUZZ-1.1', value: 'FUZZ-1.1', desc: this.$t('producer.model.fuzz11desc') },
+        { label: 'FUZZ-1.0 Pro', value: 'FUZZ-1.0 Pro', desc: this.$t('producer.model.fuzz10proDesc') },
+        { label: 'FUZZ-1.0', value: 'FUZZ-1.0', desc: this.$t('producer.model.fuzz10desc') },
+        { label: 'FUZZ-0.8', value: 'FUZZ-0.8', desc: this.$t('producer.model.fuzz08desc') }
+      ] as ModelOption[]
     };
   },
   computed: {
@@ -129,3 +107,24 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.model-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2px 0;
+}
+
+.model-option-name {
+  font-weight: 500;
+}
+
+.model-option-desc {
+  font-size: 12px;
+  color: var(--el-text-color-placeholder);
+  margin-left: 8px;
+  white-space: nowrap;
+}
+</style>

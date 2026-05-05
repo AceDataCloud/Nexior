@@ -1,43 +1,55 @@
 <template>
   <div class="relative">
-    <div class="flex justify-between">
+    <div class="flex justify-between items-center mb-2">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('producer.name.referenceAudios') }}</span>
         <info-icon :content="$t('producer.description.uploadAudios')" />
       </div>
+      <el-upload
+        v-model:file-list="fileList"
+        name="file"
+        :limit="1"
+        class="upload-wrapper inline-upload"
+        :action="uploadUrl"
+        accept=".mp3,.wav,.m4a,audio/*"
+        :show-file-list="false"
+        :on-exceed="onExceed"
+        :on-error="onError"
+        :on-success="onSuccess"
+        :headers="headers"
+      >
+        <el-button round type="primary" size="small" :loading="uploading">
+          <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+          {{ $t('producer.button.uploadAudios') }}
+        </el-button>
+      </el-upload>
     </div>
-    <el-upload
-      v-model:file-list="fileList"
-      name="file"
-      :limit="1"
-      class="upload-wrapper"
-      :action="uploadUrl"
-      accept=".mp3"
-      :show-file-list="true"
-      :on-exceed="onExceed"
-      :on-error="onError"
-      :on-success="onSuccess"
-      :headers="headers"
-    >
-      <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
-        {{ $t('producer.button.uploadAudios') }}
-      </el-button>
-    </el-upload>
+    <div v-if="audioPreviewUrl" class="mb-2">
+      <audio :src="audioPreviewUrl" controls class="w-full" />
+    </div>
+    <div v-if="hasUploadedAudio" class="mt-1">
+      <el-radio-group v-model="uploadAction" size="small">
+        <el-radio-button value="upload_extend">{{ $t('producer.button.extend') }}</el-radio-button>
+        <el-radio-button value="upload_cover">{{ $t('producer.button.cover_music') }}</el-radio-button>
+      </el-radio-group>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, ElRadioGroup, ElRadioButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IProducerUploadRequest } from '@/models';
 import { producerOperator } from '@/operators';
+
 interface IData {
   fileList: UploadFiles;
   uploadUrl: string;
+  audioPreviewUrl: string | null;
+  uploading: boolean;
 }
 
 export default defineComponent({
@@ -45,6 +57,8 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
+    ElRadioGroup,
+    ElRadioButton,
     InfoIcon,
     FontAwesomeIcon
   },
@@ -52,7 +66,9 @@ export default defineComponent({
   data(): IData {
     return {
       fileList: [],
-      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
+      audioPreviewUrl: null,
+      uploading: false
     };
   },
   computed: {
@@ -71,11 +87,20 @@ export default defineComponent({
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
     },
-    value: {
+    hasUploadedAudio() {
+      const action = this.$store.state.producer?.config?.action;
+      return action === 'upload_extend' || action === 'upload_cover';
+    },
+    uploadAction: {
       get() {
-        return this.$store.state.producer?.config?.audio_id;
+        return this.$store.state.producer?.config?.action || 'upload_extend';
       },
-      set() {}
+      set(val: string) {
+        this.$store.commit('producer/setConfig', {
+          ...this.$store.state.producer?.config,
+          action: val
+        });
+      }
     }
   },
   watch: {
@@ -85,78 +110,56 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
-    if (!this.value) {
-      this.value = undefined;
-    }
-    this.onSetAudio();
-  },
   methods: {
     onExceed() {
       ElMessage.warning(this.$t('producer.message.uploadReferencesExceed'));
     },
     onError() {
+      this.uploading = false;
       ElMessage.error(this.$t('producer.message.uploadReferencesError'));
     },
     async onSuccess() {
       const url = this.urls?.[0];
+      if (!url) {
+        this.uploading = false;
+        return;
+      }
+      this.audioPreviewUrl = url;
       await this.onGenerateAudioId(url);
     },
     async onGenerateAudioId(audio_url: string) {
-      const request = {
-        audio_url
-      } as IProducerUploadRequest;
+      const request = { audio_url } as IProducerUploadRequest;
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
+        this.uploading = false;
         return;
       }
+      this.uploading = true;
       ElMessage.info(this.$t('producer.message.startingUploadAudio'));
-      producerOperator
-        .upload(request, {
-          token
-        })
-        .then((response) => {
-          console.debug('get upload music success', response.data);
-          const audio_id = response.data?.data.audio_id;
-          this.$store.commit('producer/setConfig', {
-            ...this.$store.state.producer?.config,
-            audio_id: audio_id,
-            action: 'upload_extend'
-          });
-          ElMessage.success(this.$t('producer.message.startUploadAudioSuccess'));
-        })
-        .catch((error) => {
-          ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startUploadAudioFailed'));
+      try {
+        const response = await producerOperator.upload(request, { token });
+        const audio_id = response.data?.data.audio_id;
+        this.$store.commit('producer/setConfig', {
+          ...this.$store.state.producer?.config,
+          audio_id,
+          action: 'upload_extend'
         });
-    },
-    onSetAudio() {
-      // placeholder for future logic
+        ElMessage.success(this.$t('producer.message.startUploadAudioSuccess'));
+      } catch (error: any) {
+        ElMessage.error(error?.response?.data?.error?.message || this.$t('producer.message.startUploadAudioFailed'));
+      } finally {
+        this.uploading = false;
+      }
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.title {
-  font-size: 14px;
-  margin-bottom: 0;
-  width: 30%;
-}
-.btn.btn-upload {
-  position: absolute;
-  top: 5px;
-  right: 0;
-}
-</style>
-
-<style lang="scss">
-.upload-wrapper {
-  height: auto;
-  display: flex;
-  .el-upload-list {
-    margin: 0;
-    width: 100%;
+.upload-wrapper.inline-upload {
+  :deep(.el-upload) {
+    display: inline-flex;
   }
 }
 </style>
