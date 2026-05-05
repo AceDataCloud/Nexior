@@ -1,4 +1,5 @@
 import { BASE_URL_AUTH, BASE_URL_PLATFORM, BASE_URL_HUB } from '@/constants';
+import { isNative } from './surface';
 
 /**
  * Get base url of platform app
@@ -21,7 +22,7 @@ export const getBaseUrlHub = () => {
   }
   // On native platforms (Capacitor), window.location.origin is http://localhost
   // which is not the real hub URL — use the hardcoded constant instead
-  if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+  if (isNative()) {
     return BASE_URL_HUB;
   }
   return window.location.origin || BASE_URL_HUB;

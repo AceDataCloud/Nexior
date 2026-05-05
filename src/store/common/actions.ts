@@ -12,7 +12,7 @@ import {
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
-import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
+import { isNative } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -214,7 +214,7 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
 
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+  if (isNative()) {
     commit('setAuth', {
       flow: 'popup',
       visible: true
@@ -244,7 +244,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
   for (const name of getRegisteredLazyModules()) {
     await dispatch(`${name}/resetAll`);
   }
-  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+  if (isNative()) {
     // On native platforms, show in-app login popup instead of navigating to
     // external auth URL (which would open Chrome and redirect to localhost)
     commit('setAuth', {

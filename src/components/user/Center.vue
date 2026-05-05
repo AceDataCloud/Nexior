@@ -42,7 +42,7 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
-import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
+import { isNative as isNativeSurface } from '@/utils/surface';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -69,8 +69,7 @@ export default defineComponent({
       return this.$store.getters?.user;
     },
     isNative() {
-      const surface = import.meta.env.VITE_SURFACE;
-      return surface === SURFACE_IOS || surface === SURFACE_ANDROID;
+      return isNativeSurface();
     }
   },
   mounted() {
