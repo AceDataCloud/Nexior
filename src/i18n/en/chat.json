@@ -248,12 +248,12 @@
     "description": "Message on the webpage informing the user to upload a file"
   },
   "message.noToken": {
-    "message": "Please apply for the corresponding service first",
-    "description": "Message on the webpage informing the user to apply for the corresponding service first"
+    "message": "Please apply for the relevant service first",
+    "description": "Message on the webpage informing the user to apply for the relevant service first"
   },
   "message.newMessagePlaceholder": {
     "message": "Please enter your question...",
-    "description": "Placeholder on the webpage informing the user to input a question"
+    "description": "Placeholder on the webpage informing the user to enter a question"
   },
   "message.noInput": {
     "message": "Question cannot be empty",
@@ -293,7 +293,7 @@
   },
   "message.question5": {
     "message": "Which is larger, 9.8 or 9.11?",
-    "description": "Example question to start a conversation, asking to compare the size of two numbers"
+    "description": "Example question to start a conversation, asking to compare the sizes of two numbers"
   },
   "message.question6": {
     "message": "What impact does AI have on the future?",
@@ -325,7 +325,7 @@
   },
   "message.errorTooManyRequests": {
     "message": "Your requests are too frequent, please try again later",
-    "description": "Message on the webpage informing the user that their requests are too frequent and to try again later"
+    "description": "Message in the webpage informing the user that their requests are too frequent and to try again later"
   },
   "message.errorBusy": {
     "message": "Server is busy, please try again later.",
@@ -405,7 +405,7 @@
   },
   "connector.processing": {
     "message": "Processing authorization...",
-    "description": "Message during OAuth callback processing."
+    "description": "Message indicating that OAuth callback is being processed."
   },
   "connector.authSuccess": {
     "message": "Authorization successful!",
@@ -485,35 +485,35 @@
   },
   "askUserQuestion.submit": {
     "message": "Submit",
-    "description": "Submit button on the last question of the ask-user-question wizard"
+    "description": "Submit button for the last question in the ask-user-question wizard"
   },
   "askUserQuestion.next": {
-    "message": "Next",
+    "message": "Next Question",
     "description": "Advance to the next question in the ask-user-question wizard"
   },
   "askUserQuestion.back": {
-    "message": "Back",
+    "message": "Previous Question",
     "description": "Go back to the previous question in the ask-user-question wizard"
   },
   "askUserQuestion.skipAll": {
-    "message": "Skip all",
-    "description": "Skip the entire ask-user-question wizard and let the model proceed without answers"
+    "message": "Skip All",
+    "description": "Skip the entire ask-user-question wizard, allowing the model to continue without answers"
   },
   "askUserQuestion.other": {
     "message": "Other",
-    "description": "Pseudo-option label that reveals a per-question free-text input"
+    "description": "Pseudo-option; selecting this will expand a custom text input box for the question"
   },
   "askUserQuestion.otherDesc": {
-    "message": "Type your own answer.",
-    "description": "Helper text under the Other pseudo-option"
+    "message": "Enter your own answer",
+    "description": "Helper text below the other option"
   },
   "askUserQuestion.placeholder": {
-    "message": "Type your answer…",
-    "description": "Placeholder for the per-question Other free-text input"
+    "message": "Please enter your answer…",
+    "description": "Placeholder text for the custom answer input box for each question"
   },
   "askUserQuestion.multiSelectHint": {
-    "message": "Select one or more",
-    "description": "Hint shown on questions that accept multiple answers"
+    "message": "Select one or more options",
+    "description": "Hint displayed when multiple choice questions are supported"
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Your Answer",

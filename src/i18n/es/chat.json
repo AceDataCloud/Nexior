@@ -1,11 +1,11 @@
 {
   "thinking.inProgress": {
     "message": "Pensando...",
-    "description": "Etiqueta mostrada mientras el modelo genera el proceso de razonamiento"
+    "description": "Etiqueta mostrada mientras el modelo genera el proceso de inferencia"
   },
   "thinking.done": {
     "message": "Proceso de pensamiento",
-    "description": "Etiqueta utilizada para mostrar el proceso de razonamiento una vez que el modelo ha terminado"
+    "description": "Etiqueta para mostrar el proceso de inferencia una vez que el modelo ha terminado"
   },
   "button.thinkDeeper": {
     "message": "Pensar más profundo",
@@ -113,11 +113,11 @@
   },
   "model.deepseekReasoner": {
     "message": "R1",
-    "description": "Nombre del modelo del servicio, es decir, DeepSeek Razonador"
+    "description": "Nombre del modelo del servicio, es decir, DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adecuado para razonamiento y preguntas de pensamiento profundo",
-    "description": "Descripción del modelo DeepSeek Razonador"
+    "message": "Adecuado para inferencias y problemas de pensamiento profundo",
+    "description": "Descripción del modelo DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
     "message": "3.2",
@@ -164,7 +164,7 @@
     "description": "Nombre del modelo del servicio, es decir, Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Adecuado para tareas de razonamiento complejas",
+    "message": "Adecuado para tareas de inferencia complejas",
     "description": "Descripción del modelo Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
@@ -285,7 +285,7 @@
   },
   "message.question3": {
     "message": "Diseñar un juego de programación interesante",
-    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que explique los principios básicos de la computación cuántica en un lenguaje sencillo"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que explique en términos simples los principios básicos de la computación cuántica"
   },
   "message.question4": {
     "message": "Experimentar Seúl como un local",
@@ -293,7 +293,7 @@
   },
   "message.question5": {
     "message": "¿Cuál es mayor, 9.8 o 9.11?",
-    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo comparar dos números"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo comparar el tamaño de dos números"
   },
   "message.question6": {
     "message": "¿Qué impacto tiene la IA en el futuro?",
@@ -304,8 +304,8 @@
     "description": "Pregunta de ejemplo para iniciar la conversación, preguntando cómo mejorar la eficiencia del aprendizaje"
   },
   "message.question8": {
-    "message": "¿Cómo aumentar la concentración?",
-    "description": "Pregunta de ejemplo para iniciar la conversación, preguntando cómo aumentar la concentración"
+    "message": "¿Cómo mejorar la concentración?",
+    "description": "Pregunta de ejemplo para iniciar la conversación, preguntando cómo mejorar la concentración"
   },
   "message.errorApiError": {
     "message": "Error en la respuesta, por favor intente de nuevo más tarde",
@@ -325,23 +325,23 @@
   },
   "message.errorTooManyRequests": {
     "message": "Demasiadas solicitudes, por favor intente más tarde",
-    "description": "Mensaje en la página que informa al usuario que ha realizado demasiadas solicitudes, por favor intente más tarde"
+    "description": "Mensaje en la página que informa al usuario que ha realizado demasiadas solicitudes y debe intentar más tarde"
   },
   "message.errorBusy": {
-    "message": "El servidor está ocupado, por favor intente de nuevo más tarde",
-    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor intente de nuevo más tarde"
+    "message": "El servidor está ocupado, por favor intente más tarde",
+    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor intente más tarde"
   },
   "message.errorUsedUp": {
     "message": "Ha agotado su número de usos, por favor compre más para continuar",
     "description": "Mensaje en la página que informa al usuario que ha agotado su número de usos, por favor compre más para continuar"
   },
   "message.errorUnknown": {
-    "message": "Se ha producido un error desconocido en el servidor, por favor intente de nuevo más tarde o contacte al soporte",
-    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor intente de nuevo más tarde o contacte al soporte"
+    "message": "Se ha producido un error desconocido en el servidor, por favor intente más tarde o contacte al soporte",
+    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor intente más tarde o contacte al soporte"
   },
   "message.errorTimeout": {
-    "message": "Se ha agotado el tiempo de respuesta, por favor intente de nuevo más tarde",
-    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor intente de nuevo más tarde"
+    "message": "Se ha agotado el tiempo de respuesta, por favor intente más tarde",
+    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor intente más tarde"
   },
   "message.errorNotApplied": {
     "message": "No ha solicitado este servicio, por favor solicítelo antes de continuar",
@@ -401,7 +401,7 @@
   },
   "connector.authFailed": {
     "message": "Autorización fallida, por favor intente de nuevo.",
-    "description": "Mensaje de fallo de autorización"
+    "description": "Mensaje de autorización fallida"
   },
   "connector.processing": {
     "message": "Procesando autorización...",
@@ -425,7 +425,7 @@
   },
   "composer.addAction": {
     "message": "Agregar contenido",
-    "description": "Sugerencia del botón de más en la parte inferior del cuadro de entrada, que al expandirse permite subir archivos, abrir habilidades o gestionar conexiones"
+    "description": "Sugerencia del botón de más en la parte inferior del cuadro de entrada, al expandirse se pueden subir archivos, abrir habilidades o gestionar conexiones"
   },
   "composer.addFiles": {
     "message": "Agregar fotos o archivos",
@@ -449,11 +449,11 @@
   },
   "agent.connected": {
     "message": "Conectado",
-    "description": "Estado de conexión del agente"
+    "description": "Estado de agente conectado"
   },
   "agent.notConnected": {
     "message": "No conectado",
-    "description": "Estado de no conexión del agente"
+    "description": "Estado de agente no conectado"
   },
   "agent.description": {
     "message": "Conecte el agente de escritorio para acceder a archivos locales, ejecutar comandos y usar el servidor MCP local en la conversación de IA.",
@@ -473,7 +473,7 @@
   },
   "agent.connectedHint": {
     "message": "Su agente de escritorio está conectado y disponible para usar.",
-    "description": "Sugerencia de que el agente está conectado"
+    "description": "Sugerencia de agente conectado"
   },
   "agent.installLabel": {
     "message": "Instalar agente de escritorio:",
@@ -485,22 +485,34 @@
   },
   "askUserQuestion.submit": {
     "message": "Enviar",
-    "description": "Botón de enviar en la tarjeta de preguntar al usuario"
+    "description": "Botón de envío para la última pregunta del asistente ask-user-question"
   },
-  "askUserQuestion.skip": {
-    "message": "Omitir",
-    "description": "Botón de omitir en la tarjeta de preguntar al usuario"
+  "askUserQuestion.next": {
+    "message": "Siguiente pregunta",
+    "description": "Avanza a la siguiente pregunta en el asistente ask-user-question"
+  },
+  "askUserQuestion.back": {
+    "message": "Pregunta anterior",
+    "description": "Regresa a la pregunta anterior en el asistente ask-user-question"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Saltar todo",
+    "description": "Saltar todo el asistente ask-user-question, permitiendo que el modelo continúe sin respuestas"
   },
   "askUserQuestion.other": {
     "message": "Otro",
-    "description": "Etiqueta del campo de entrada de respuesta personalizada en la tarjeta de preguntar al usuario"
+    "description": "Opción falsa; al seleccionarla, se despliega un cuadro de entrada de texto personalizado"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Ingresa tu propia respuesta",
+    "description": "Descripción auxiliar debajo de la opción 'Otro'"
   },
   "askUserQuestion.placeholder": {
-    "message": "Ingresa una respuesta personalizada…",
-    "description": "Texto de marcador de posición en el campo de entrada de respuesta personalizada"
+    "message": "Ingresa tu respuesta…",
+    "description": "Texto de marcador de posición para el cuadro de entrada de respuesta personalizada de cada pregunta"
   },
   "askUserQuestion.multiSelectHint": {
-    "message": "Selecciona una o más opciones",
+    "message": "Puedes seleccionar una o más opciones",
     "description": "Sugerencia mostrada al soportar preguntas de selección múltiple"
   },
   "askUserQuestion.collapsedAnswerLabel": {
