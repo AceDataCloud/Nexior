@@ -11,6 +11,18 @@
         </span>
       </div>
       <div class="info">
+        <div
+          v-if="referenceImages.length > 0"
+          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+        >
+          <image-preview
+            v-for="(image, idx) in referenceImages"
+            :key="idx"
+            :url="image.url"
+            :name="image.name"
+            :closable="false"
+          />
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('seedance.status.pending') }}) </span>
@@ -154,6 +166,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 import { SEEDANCE_LOGO } from '@/constants';
 
 export default defineComponent({
@@ -166,7 +179,8 @@ export default defineComponent({
     VideoPlayer,
     ElTooltip,
     ElButton,
-    ImageWrapper
+    ImageWrapper,
+    ImagePreview
   },
   props: {
     modelValue: {
@@ -182,6 +196,27 @@ export default defineComponent({
   computed: {
     video(): ISeedanceVideo | undefined {
       return this.modelValue?.response?.data;
+    },
+    referenceImages(): { url: string; name: string }[] {
+      const images = this.modelValue?.request?.images;
+      if (!Array.isArray(images)) {
+        return [];
+      }
+      const ordered: { url: string; name: string }[] = [];
+      const firstFrame = images.find((img) => img?.role === 'first_frame');
+      if (firstFrame?.url) {
+        ordered.push({ url: firstFrame.url, name: 'first-frame' });
+      }
+      const lastFrame = images.find((img) => img?.role === 'last_frame');
+      if (lastFrame?.url) {
+        ordered.push({ url: lastFrame.url, name: 'last-frame' });
+      }
+      images.forEach((img, idx) => {
+        if (img?.url && img.role !== 'first_frame' && img.role !== 'last_frame') {
+          ordered.push({ url: img.url, name: img.role || `image-${idx}` });
+        }
+      });
+      return ordered;
     }
   },
   methods: {

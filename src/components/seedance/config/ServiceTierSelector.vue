@@ -74,16 +74,18 @@ export default defineComponent({
       .title {
         font-size: 14px;
         margin: 0;
+        white-space: nowrap;
       }
 
       .info {
         margin-left: 6px;
+        flex-shrink: 0;
       }
     }
   }
 
   .value {
-    width: 160px;
+    width: 110px;
   }
 }
 </style>
