@@ -1,25 +1,34 @@
 <template>
-  <el-dialog class="min-w-[450px]" :model-value="visible" :width="dialogWidth" @close="onClose">
-    <div class="flex settings h-[450px]">
-      <aside class="h-full border-r">
-        <el-menu class="border-r-0 settings-menu">
+  <el-dialog
+    :class="['settings-dialog', mobile ? 'is-mobile' : '']"
+    :model-value="visible"
+    :width="dialogWidth"
+    @close="onClose"
+  >
+    <div :class="['settings', mobile ? 'flex flex-col' : 'flex h-[450px]']">
+      <aside :class="mobile ? 'border-b w-full' : 'h-full border-r'">
+        <el-menu
+          :class="['border-r-0 settings-menu', mobile ? 'is-mobile flex flex-row overflow-x-auto' : '']"
+          :mode="mobile ? 'horizontal' : 'vertical'"
+        >
           <el-menu-item
             v-for="(item, index) in navItems"
             :key="index"
             :index="item.key"
             :class="[
-              'flex w-[180px] items-center px-2 cursor-pointer py-2',
+              'items-center cursor-pointer',
+              mobile ? 'flex-shrink-0 px-3 py-2 text-sm' : 'flex w-[180px] px-2 py-2',
               activeTab === item.key ? 'active' : '',
               item.visible ? '' : 'hidden'
             ]"
             @click="activeTab = item.key"
           >
-            <font-awesome-icon :icon="item.icon" class="mr-2" />
+            <font-awesome-icon :icon="item.icon" :class="mobile ? 'mr-1.5' : 'mr-2'" />
             {{ item.label }}
           </el-menu-item>
         </el-menu>
       </aside>
-      <main class="flex-1 p-6 overflow-y-auto">
+      <main :class="['flex-1 overflow-y-auto', mobile ? 'p-4' : 'p-6']">
         <div v-if="activeTab === SETTING_TAB_GENERAL">
           <general-setting />
         </div>
@@ -124,7 +133,8 @@ export default defineComponent({
       SETTING_TAB_SUBSITES,
       SETTING_TAB_ABOUT,
       activeTab: SETTING_TAB_GENERAL as SettingTabKey,
-      autoOpenCreateSubsite: false
+      autoOpenCreateSubsite: false,
+      mobile: typeof window !== 'undefined' && window.innerWidth < 768
     };
   },
   computed: {
@@ -172,6 +182,9 @@ export default defineComponent({
       return isMainOfficial();
     },
     dialogWidth(): string {
+      // Phone-sized viewports: take almost full width so the 450px-min
+      // sidebar layout can't push the dialog past the screen edge.
+      if (this.mobile) return '94vw';
       // BYOK and Subsites both render multi-column tables that don't fit
       // the default 50% dialog width on most laptops.
       return this.activeTab === SETTING_TAB_API_KEY || this.activeTab === SETTING_TAB_SUBSITES ? '900px' : '50%';
@@ -187,7 +200,16 @@ export default defineComponent({
       }
     }
   },
+  mounted() {
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  },
   methods: {
+    onResize() {
+      this.mobile = window.innerWidth < 768;
+    },
     onClose() {
       this.$emit('update:visible', false);
     },
@@ -289,5 +311,34 @@ export default defineComponent({
     text-align: left;
     width: 100%;
   }
+}
+
+// Mobile horizontal tab strip — replaces the desktop vertical sidebar so
+// the dialog can fit on a phone-sized viewport. Element Plus' horizontal
+// menu adds an underline indicator we don't want here.
+:deep(.settings-dialog.is-mobile .el-dialog__body) {
+  padding: 0 8px 16px;
+}
+
+:deep(.settings-menu.is-mobile) {
+  border-bottom: none;
+  padding: 4px 0;
+  height: auto;
+  white-space: nowrap;
+}
+
+:deep(.settings-menu.is-mobile .el-menu-item) {
+  height: 36px;
+  line-height: 36px;
+  border-bottom: none !important;
+  border-radius: 6px;
+  margin: 0 4px;
+  padding: 0 10px !important;
+}
+
+:deep(.settings-menu.is-mobile .el-menu-item.active),
+:deep(.settings-menu.is-mobile .el-menu-item.is-active) {
+  background: var(--el-color-primary-light-9);
+  color: var(--el-color-primary);
 }
 </style>
