@@ -64,7 +64,7 @@
     "description": "model 参数说明"
   },
   "description.size": {
-    "message": "图片尺寸。支持预设 `1K`、`2K`、`4K` 或自定义 `<宽>x<高>`。",
+    "message": "图片尺寸。可选分辨率档位（1K-4K）、自适应（与参考图比例一致）或具体像素尺寸如 `1024x1024`、`1280x720`，也可在下拉框中直接输入任意 `<宽>x<高>`。",
     "description": "size 参数说明"
   },
   "description.watermark": {
@@ -150,5 +150,45 @@
   "description.maxImages": {
     "message": "一次请求生成的图片数量（1-15）。设为 1 时为单图模式；大于 1 时自动启用组图（sequential_image_generation=auto），跨图保持角色、风格与细节一致。仅支持 doubao-seedream-5.0 / 4.5 / 4.0；如同时上传参考图，需满足 (参考图数 + 生成数) ≤ 15。计费按实际生成的图片张数。",
     "description": "max_images 参数说明"
+  },
+  "name.seed": {
+    "message": "随机种子",
+    "description": "seed 参数标签"
+  },
+  "description.seed": {
+    "message": "用于复现的随机种子，范围 [-1, 2147483647]。-1 表示每次随机。仅支持 doubao-seedream-3.0-t2i 与 doubao-seededit-3.0-i2i。",
+    "description": "seed 参数说明"
+  },
+  "name.guidanceScale": {
+    "message": "提示词权重",
+    "description": "guidance_scale 参数标签"
+  },
+  "description.guidanceScale": {
+    "message": "提示词遵循强度，范围 [1, 10]。值越大越贴近提示词。doubao-seedream-3.0-t2i 默认 2.5，doubao-seededit-3.0-i2i 默认 5.5。",
+    "description": "guidance_scale 参数说明"
+  },
+  "name.outputFormat": {
+    "message": "输出格式",
+    "description": "output_format 参数标签"
+  },
+  "description.outputFormat": {
+    "message": "生成图片的文件格式，jpeg 或 png，默认 jpeg。仅 doubao-seedream-5.0 支持。",
+    "description": "output_format 参数说明"
+  },
+  "size.group.tier": {
+    "message": "分辨率档位",
+    "description": "尺寸下拉的档位分组（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "自适应",
+    "description": "尺寸下拉的自适应分组"
+  },
+  "size.group.pixel": {
+    "message": "具体像素尺寸",
+    "description": "尺寸下拉的像素尺寸分组"
+  },
+  "size.adaptive": {
+    "message": "自适应（与参考图一致）",
+    "description": "adaptive 选项标签"
   }
 }

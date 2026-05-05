@@ -64,7 +64,7 @@
     "description": "Description of the model parameter"
   },
   "description.size": {
-    "message": "Image size. Supports presets `1K`, `2K`, `4K` or custom `<width>x<height>`.",
+    "message": "Image size. Pick a resolution tier (1K-4K), `adaptive` (match the reference image), or an explicit `<width>x<height>` like `1024x1024` or `1280x720`. You can also type any `<width>x<height>` directly into the dropdown.",
     "description": "Description of the size parameter"
   },
   "description.watermark": {
@@ -150,5 +150,45 @@
   "description.maxImages": {
     "message": "Number of images generated in a single request (1-15). Set to 1 for single image mode; greater than 1 automatically enables image sets (sequential_image_generation=auto), maintaining character, style, and detail consistency across images. Only supports doubao-seedream-5.0 / 4.5 / 4.0; if reference images are uploaded, must satisfy (number of reference images + number generated) ≤ 15. Billing is based on the actual number of images generated.",
     "description": "Description of the max_images parameter"
+  },
+  "name.seed": {
+    "message": "Seed",
+    "description": "seed parameter label"
+  },
+  "description.seed": {
+    "message": "Random seed for reproducible results, range [-1, 2147483647]. -1 means random each time. Only supported by doubao-seedream-3.0-t2i and doubao-seededit-3.0-i2i.",
+    "description": "Description of the seed parameter"
+  },
+  "name.guidanceScale": {
+    "message": "Guidance Scale",
+    "description": "guidance_scale parameter label"
+  },
+  "description.guidanceScale": {
+    "message": "Prompt-following strength, range [1, 10]. Higher values follow the prompt more closely. Default 2.5 for doubao-seedream-3.0-t2i, 5.5 for doubao-seededit-3.0-i2i.",
+    "description": "Description of the guidance_scale parameter"
+  },
+  "name.outputFormat": {
+    "message": "Output Format",
+    "description": "output_format parameter label"
+  },
+  "description.outputFormat": {
+    "message": "File format of the generated image, jpeg or png. Default is jpeg. Only supported by doubao-seedream-5.0.",
+    "description": "Description of the output_format parameter"
+  },
+  "size.group.tier": {
+    "message": "Resolution tier",
+    "description": "Group label for the 1K-4K presets in the size dropdown"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptive",
+    "description": "Group label for the adaptive option in the size dropdown"
+  },
+  "size.group.pixel": {
+    "message": "Explicit dimensions",
+    "description": "Group label for the pixel presets in the size dropdown"
+  },
+  "size.adaptive": {
+    "message": "Adaptive (match reference)",
+    "description": "Label for the adaptive option"
   }
 }
