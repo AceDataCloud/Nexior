@@ -134,7 +134,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElMessage, ElTooltip, ElDialog } from 'element-plus';
+import { ElInput, ElButton, ElMessage, ElMessageBox, ElTooltip, ElDialog } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { sunoOperator } from '@/operators';
@@ -227,13 +227,33 @@ export default defineComponent({
       const token = this.credential?.token;
       if (!token) return;
 
+      let theme: string;
+      try {
+        const result = await ElMessageBox.prompt(
+          this.$t('suno.message.lyricsThemePromptMessage') as string,
+          this.$t('suno.message.lyricsThemePromptTitle') as string,
+          {
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string,
+            inputPlaceholder: this.$t('suno.placeholder.lyricsTheme') as string,
+            inputValue: this.config?.title || '',
+            inputType: 'textarea',
+            inputValidator: (v) =>
+              (typeof v === 'string' && v.trim().length > 0) || (this.$t('suno.message.lyricsThemeRequired') as string)
+          }
+        );
+        theme = ((result as { value: string }).value || '').trim();
+      } catch {
+        return;
+      }
+      if (!theme) return;
+
       this.pushHistory();
-      const prompt = this.config?.style || this.config?.title || 'a beautiful song';
       this.generatingLyrics = true;
       ElMessage.info(this.$t('suno.message.generatingLyrics'));
 
       try {
-        const response = await sunoOperator.lyric({ prompt }, { token });
+        const response = await sunoOperator.lyric({ prompt: theme }, { token });
         const data = response.data?.data;
         if (data?.text) {
           this.lyric = data.text;
