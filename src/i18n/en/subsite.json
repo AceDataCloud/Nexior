@@ -65,7 +65,7 @@
   },
   "message.slugInvalid": {
     "message": "Invalid subdomain prefix format, please check the rules and try again.",
-    "description": "Slug validation failed"
+    "description": "Slug validation failure"
   },
   "message.zoneMissing": {
     "message": "The current main site is not configured with a subdomain zone, please contact the site administrator.",
@@ -73,19 +73,19 @@
   },
   "message.created": {
     "message": "Subsite created successfully!",
-    "description": "Successful creation message"
+    "description": "Success message for creation"
   },
   "message.createFailed": {
     "message": "Failed to create subsite, please try again later.",
-    "description": "Creation failed message"
+    "description": "Failure message for creation"
   },
   "message.loadFailed": {
     "message": "Failed to load the subsite list.",
-    "description": "Failed to load the list"
+    "description": "Failure message for loading the list"
   },
   "message.openNowConfirm": {
     "message": "Subsite {origin} has been created. Would you like to open it now to continue configuration?",
-    "description": "Confirmation to open immediately after creation"
+    "description": "Prompt to open immediately after creation"
   },
   "title.domains": {
     "message": "Custom Domain for {origin}",
@@ -101,7 +101,7 @@
   },
   "button.bindDomain": {
     "message": "Bind Domain",
-    "description": "Submit to bind a new domain"
+    "description": "Button to submit binding a new domain"
   },
   "button.verify": {
     "message": "Verify Now",
@@ -145,30 +145,30 @@
   },
   "message.hostnameInvalid": {
     "message": "Invalid domain format. Must be a publicly resolvable domain, IP addresses are not allowed.",
-    "description": "Local validation failed for hostname"
+    "description": "Local validation failure for hostname"
   },
   "message.domainCreated": {
     "message": "Domain has been submitted, please follow the prompts to add a CNAME record.",
-    "description": "Successful POST /site-domains/"
+    "description": "Success message for POST /site-domains/"
   },
   "message.domainCreateFailed": {
     "message": "Failed to create domain, please try again later.",
-    "description": "Creation failed message"
+    "description": "Failure message for domain creation"
   },
   "message.domainsLoadFailed": {
     "message": "Failed to load the domain list.",
-    "description": "Failed to load the domain list"
+    "description": "Failure message for loading the domain list"
   },
   "message.domainActive": {
-    "message": "Domain is live! You can now access the subsite via your custom HTTPS address.",
-    "description": "Indicates that the domain has entered Active status"
+    "message": "Domain is live! You can now access the substation via your custom HTTPS address.",
+    "description": "Indicates that the domain has entered the Active state"
   },
   "message.domainFailed": {
     "message": "Domain verification or launch failed.",
     "description": "Failed status message"
   },
   "message.domainVerifyFailed": {
-    "message": "Verification failed. Please check if the CNAME record points to our reverse proxy and that DNS propagation is complete.",
+    "message": "Verification failed, please check if the CNAME record points to our reverse proxy and DNS propagation is complete.",
     "description": "Verify interface 4xx"
   },
   "message.domainDeleteConfirm": {
@@ -181,7 +181,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Pending status label: waiting for the user to add CNAME and click 'Verify Now'"
+    "description": "Pending status label: waiting for user to add CNAME and click 'Verify Now'"
   },
   "status.active": {
     "message": "Active",

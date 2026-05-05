@@ -1,6 +1,6 @@
 {
   "title.index": {
-    "message": "Mon sous-site",
+    "message": "Mes sous-sites",
     "description": "Titre principal de la page de gestion des sous-sites"
   },
   "title.create": {
@@ -9,7 +9,7 @@
   },
   "title.openNow": {
     "message": "Accéder au sous-site maintenant",
-    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création réussie"
+    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création"
   },
   "field.slug": {
     "message": "Préfixe du sous-domaine",
@@ -37,7 +37,7 @@
   },
   "placeholder.title": {
     "message": "À afficher dans l'onglet du navigateur et l'en-tête du site",
-    "description": "Placeholder pour le champ d'entrée de titre"
+    "description": "Placeholder pour le champ de titre"
   },
   "button.create": {
     "message": "Créer un sous-site",
@@ -68,12 +68,12 @@
     "description": "Échec de la validation du slug"
   },
   "message.zoneMissing": {
-    "message": "Le site principal actuel n'a pas de zone de nom de domaine pour les sous-sites configurée, veuillez contacter l'administrateur du site.",
+    "message": "Le domaine du sous-site n'est pas configuré sur le site principal, veuillez contacter l'administrateur du site.",
     "description": "Zone de sous-domaine manquante"
   },
   "message.created": {
     "message": "Sous-site créé avec succès !",
-    "description": "Création réussie"
+    "description": "Confirmation de création réussie"
   },
   "message.createFailed": {
     "message": "Échec de la création du sous-site, veuillez réessayer plus tard.",
@@ -105,11 +105,11 @@
   },
   "button.verify": {
     "message": "Vérifier maintenant",
-    "description": "Vérifier si ce domaine peut être résolu et obtenir un certificat via notre proxy inverse"
+    "description": "Vérifier si le domaine peut être résolu et obtenir un certificat via notre proxy inverse"
   },
   "button.refresh": {
     "message": "Rafraîchir",
-    "description": "Récupérer à nouveau l'état de ce domaine"
+    "description": "Récupérer à nouveau l'état du domaine"
   },
   "field.hostname": {
     "message": "Votre domaine",
@@ -132,7 +132,7 @@
     "description": "Placeholder pour le champ d'entrée hostname"
   },
   "message.domainsIntro": {
-    "message": "Liez le domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS de ce domaine. Ajoutez un enregistrement CNAME comme indiqué ci-dessous, puis cliquez sur 'Vérifier maintenant', nous obtiendrons automatiquement un certificat HTTPS gratuit et le renouvellerons via Let's Encrypt.",
+    "message": "Liez le domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS de ce domaine. Ajoutez un enregistrement CNAME comme indiqué ci-dessous, puis cliquez sur 'Vérifier maintenant', nous vous délivrerons automatiquement un certificat HTTPS gratuit via Let's Encrypt.",
     "description": "Explication en haut de la boîte de dialogue"
   },
   "message.domainsEmpty": {
@@ -140,7 +140,7 @@
     "description": "Message d'indication pour une liste vide"
   },
   "message.hostnameTip": {
-    "message": "Doit être un domaine public dont vous pouvez contrôler le DNS. Aucun sous-domaine de acedata.cloud / surl.id n'est autorisé.",
+    "message": "Doit être un domaine public dont vous pouvez contrôler le DNS.",
     "description": "Indication pour le champ hostname"
   },
   "message.hostnameInvalid": {
@@ -149,7 +149,7 @@
   },
   "message.domainCreated": {
     "message": "Le domaine a été soumis, veuillez ajouter l'enregistrement CNAME comme indiqué.",
-    "description": "POST /site-domains/ réussi"
+    "description": "Succès de la requête POST /site-domains/"
   },
   "message.domainCreateFailed": {
     "message": "Échec de la création du domaine, veuillez réessayer plus tard.",
@@ -160,7 +160,7 @@
     "description": "Échec du chargement de la liste des domaines"
   },
   "message.domainActive": {
-    "message": "Le domaine est actif ! Vous pouvez maintenant accéder à votre sous-site via votre adresse HTTPS personnalisée.",
+    "message": "Le domaine est actif ! Vous pouvez maintenant accéder à la sous-site via votre adresse HTTPS personnalisée.",
     "description": "Indique que le domaine est en état actif"
   },
   "message.domainFailed": {
@@ -185,7 +185,7 @@
   },
   "status.active": {
     "message": "En ligne",
-    "description": "Étiquette d'état active"
+    "description": "Étiquette d'état actif"
   },
   "status.failed": {
     "message": "Échoué",

@@ -37,7 +37,7 @@
   },
   "button.login": {
     "message": "Kirjaudu sisään",
-    "description": "Painikkeen teksti, jota käytetään sisäänkirjautumiseen"
+    "description": "Painikkeen teksti, jota käytetään kirjautumiseen"
   },
   "button.logout": {
     "message": "Kirjaudu ulos",
@@ -58,6 +58,10 @@
   "button.cancel": {
     "message": "Peruuta",
     "description": "Painikkeen teksti, jota käytetään toiminnan peruuttamiseen"
+  },
+  "button.close": {
+    "message": "Sulje",
+    "description": "Painikkeen teksti, jota käytetään dialogin tai paneelin sulkemiseen"
   },
   "button.alert": {
     "message": "Varoitus",
@@ -81,7 +85,7 @@
   },
   "button.profile": {
     "message": "Profiili",
-    "description": "Painikkeen teksti, jota käytetään henkilökohtaisen profiilin näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään käyttäjäprofiilin näyttämiseen"
   },
   "button.console": {
     "message": "Konsoli",
@@ -136,7 +140,7 @@
     "description": "Painikkeen teksti, jota käytetään käyttäjän maksamisen jatkamiseen"
   },
   "button.applied": {
-    "message": "On haettu",
+    "message": "Hakemus lähetetty",
     "description": "Painikkeen teksti, jota käytetään näyttämään, että käyttäjä on hakenut palvelua"
   },
   "button.acquire": {
@@ -157,15 +161,15 @@
   },
   "button.view": {
     "message": "Näytä",
-    "description": "Painikkeen teksti, jota käytetään tietyn sisällön näyttämiseen"
+    "description": "Painikkeen teksti, jota käytetään sisällön näyttämiseen"
   },
   "button.create": {
     "message": "Luo",
-    "description": "Painikkeen teksti, jota käytetään tietyn sisällön luomiseen"
+    "description": "Painikkeen teksti, jota käytetään sisällön luomiseen"
   },
   "button.referralEarnings": {
     "message": "Suositustulot",
-    "description": "Painikkeen teksti, joka näyttää suositustulot, tarkoittaa, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua."
+    "description": "Painikkeen teksti, joka näyttää suositustulot, tarkoittaa, että käyttäjä voi ansaita kutsumalla muita käyttämään palvelua"
   },
   "button.finish": {
     "message": "Valmis",
@@ -205,7 +209,7 @@
   },
   "status.loading": {
     "message": "Ladataan...",
-    "description": "Tila-teksti, joka näytetään sisällön lataamisen aikana"
+    "description": "Sisällön lataamisen aikana näytettävä tilateksti"
   },
   "entity.operation": {
     "message": "Toiminto",
@@ -236,7 +240,7 @@
     "description": "Näyttää käytetyn palvelumäärän"
   },
   "message.mobileAppDescription": {
-    "message": "Käytä AceData suoraan puhelimella, tällä hetkellä saatavilla Android APK:n lataaminen ja asennus, iOS-asennuspaketti avataan latausta varten, kun se on allekirjoitettu.",
+    "message": "Käytä AceData suoraan puhelimella, tällä hetkellä saatavilla Android APK:n lataaminen, iOS-asennuspaketti avataan latausta varten, kun se on allekirjoitettu.",
     "description": "Mobiilisovelluksen lataussivun selitys"
   },
   "message.mobileAndroidHint": {
@@ -252,31 +256,31 @@
     "description": "Näyttää, että Android on ladattavissa"
   },
   "message.mobileSecureDelivery": {
-    "message": "Turvallinen CDN-jakelus",
+    "message": "Turvallinen CDN-jakelu",
     "description": "Korostaa, että latauslinkki toimitetaan CDN:n kautta"
   },
   "message.mobileDirectInstall": {
     "message": "Suora APK-asennus",
-    "description": "Kuvaa Android-puolen suoraa APK-asennustapaa"
+    "description": "Kuvaa, että Android-puolella on suora APK-asennustapa"
   },
   "message.mobileLatestRelease": {
     "message": "Nykyinen julkinen versio",
-    "description": "Selittää, että näytetään uusin julkinen versio"
+    "description": "Selittää, että näytettävä on uusin julkinen versio"
   },
   "message.mobileSharedAccount": {
-    "message": "Yhteinen tili ja käyttöoikeus verkkosivuston kanssa",
-    "description": "Selittää, että mobiilipuoli jakaa tilin verkkosivuston kanssa"
+    "message": "Jaettu tili ja käyttöoikeus verkkosivuston kanssa",
+    "description": "Selittää, että mobiiliversio jakaa tilin verkkosivuston kanssa"
   },
   "message.mobileIosHint": {
-    "message": "Sopii iPhoneen ja iPadiin, voidaan asentaa suoraan verkossa; jos järjestelmä estää, voit myös ladata IPA:n ja jakaa sen.",
+    "message": "Sopii iPhoneen ja iPadiin, voidaan asentaa suoraan verkosta; jos järjestelmä estää, voit myös ladata IPA:n ja jakaa sen.",
     "description": "iOS-latauskortin selitys"
   },
   "message.mobileIosPending": {
-    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaatti ja kuvaustiedosto ovat työn alla.",
+    "message": "iOS-asennuspaketti ei ole vielä ladattavissa, Apple-sertifikaatti ja -profiili ovat työn alla.",
     "description": "Vihje, kun iOS-asennuspaketti ei ole saatavilla"
   },
   "message.mobileInstallNote": {
-    "message": "Kun asennat iOS:ää ensimmäistä kertaa yritys- tai Ad Hoc-paketilla, järjestelmä saattaa vaatia, että ensin luotat sertifikaattiin kohdassa 'Asetukset > Yleiset > VPN ja laitehallinta'.",
+    "message": "Kun asennat iOS:lle ensimmäistä kertaa yritys- tai Ad Hoc-pakettia, järjestelmä saattaa vaatia ensin luottamusta sertifikaattiin 'Asetukset > Yleiset > VPN ja laitehallinta' -valikossa.",
     "description": "Mobiilisovelluksen asennusvinkki"
   },
   "title.mobileApp": {
@@ -289,14 +293,14 @@
   },
   "title.mobileTrustedRelease": {
     "message": "Versioiden keskitetty hallinta, vakaampi jakelu",
-    "description": "Lataussivun etuuskortin otsikko, korostaa version ja jakelun vakautta"
+    "description": "Lataussivun etuuskortin otsikko, korostaa versiota ja jakelun vakautta"
   },
   "title.mobileUnifiedExperience": {
-    "message": "Mobiili- ja verkkosivustokokemus on yhtenäinen",
+    "message": "Mobiiliversion ja verkkosivuston kokemus on yhtenäinen",
     "description": "Lataussivun etuuskortin otsikko, korostaa yhtenäistä kokemusta"
   },
   "nav.mobileApp": {
-    "message": "Mobiilisovellus",
+    "message": "Mobiiliversio",
     "description": "Navigoinnin mobiilisovelluksen latauslinkki"
   },
   "message.mobileFastAccess": {
@@ -304,7 +308,7 @@
     "description": "Lataussivun etuusselitys, korostaa nopeaa pääsyä"
   },
   "message.mobileTrustedRelease": {
-    "message": "Latauslinkit on keskitetty yhdelle sivulle, versiot, alustan tila ja asennustapa ovat heti nähtävissä, mikä vähentää viestintäkustannuksia, jotka johtuvat hajautetusta linkistä.",
+    "message": "Latauslinkit on keskitetty yhdelle sivulle, versiotiedot, alustan tila ja asennustapa ovat heti nähtävissä, mikä vähentää viestintäkustannuksia, jotka johtuvat linkkien hajautumisesta.",
     "description": "Lataussivun etuusselitys, korostaa yhtenäistä jakelua"
   },
   "message.mobileUnifiedExperience": {
@@ -320,7 +324,7 @@
     "description": "Näyttää viestin, että sisältö on onnistuneesti kopioitu"
   },
   "message.restart": {
-    "message": "Uudelleen tuottaminen",
+    "message": "Uudelleenluo",
     "description": "Viesti, joka ilmoittaa, että sisältö on onnistuneesti kopioitu"
   },
   "message.confirmDelete": {
@@ -392,8 +396,8 @@
     "description": "Verkkosivuston navigointipalkin teksti, joka näyttää tuotesivun"
   },
   "nav.referral": {
-    "message": "Suositusohjelma",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää suositussivun"
+    "message": "Kumppanuusohjelma",
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää suosittelusivun"
   },
   "nav.apiPlatform": {
     "message": "API-alusta",
@@ -437,7 +441,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää QR-taide-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
+    "description": "Verkkosivuston navigointipalkin teksti, joka näyttää QRArt-sivun, älä käännä tätä kenttää, se on säilytettävä 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -609,7 +613,7 @@
   },
   "about.title1": {
     "message": "Ota yhteyttä",
-    "description": "Näyttää yhteystiedot osion otsikon"
+    "description": "Näyttää yhteystiedot -osion pääotsikon"
   },
   "about.title2": {
     "message": "Resurssit",
@@ -656,8 +660,8 @@
     "description": "Linkki tukisivulle"
   },
   "about.link8": {
-    "message": "Palveluehdot",
-    "description": "Linkki palveluehtosivulle"
+    "message": "Käyttöehdot",
+    "description": "Linkki käyttöehtosivulle"
   },
   "about.link9": {
     "message": "Tietosuojakäytäntö",
@@ -705,11 +709,11 @@
   },
   "settings.apiKey": {
     "message": "API-avain",
-    "description": "Asetussivun sivupalkin API-avain -käytön etiketti, käyttäjän tuomien (BYOK) yläpuolisten palveluntarjoajien API-avainhallinta"
+    "description": "Asetussivun sivupalkin API-avain -käytön hallinta"
   },
   "field.operations": {
     "message": "Toiminnot",
-    "description": "Yleinen sarakeotsikko: taulukon rivien toimintopainikkeiden sarake (muokkaa, poista jne.)"
+    "description": "Yleinen sarakeotsikko: taulukon rivien toimintopainikkeet (muokkaa, poista jne.)"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -725,11 +729,11 @@
   },
   "button.testEnv": {
     "message": "Testiympäristö",
-    "description": "Painikkeen teksti, jota käytetään siirtymiseen testiympäristöön"
+    "description": "Painikkeen teksti, joka vaihtaa testiympäristöön"
   },
   "button.upload": {
     "message": "Lataa",
-    "description": "Painikkeen teksti, jota käytetään tiedostojen tai sisällön lataamiseen"
+    "description": "Painikkeen teksti, joka lataa tiedostoja tai sisältöä"
   },
   "message.cnbeian": {
     "message": "Kiinan alueen rekisteröinti",
@@ -788,7 +792,7 @@
     "description": "Asiakkaan ammatti"
   },
   "customers.comment3": {
-    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja kohtuuhintaisia, toivon niiden kehittyvän entisestään!",
+    "message": "Pidän Ace Data Cloudin palveluista, ne ovat helppokäyttöisiä ja kohtuuhintaisia, toivon niiden paranevan entisestään!",
     "description": "Asiakkaan arvio"
   },
   "nav.github": {

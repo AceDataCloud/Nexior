@@ -44,7 +44,7 @@
     "description": "Palavras-chave para gerar/editar"
   },
   "name.seedreamBot": {
-    "message": "Bot SeeDream",
+    "message": "SeeDream Bot",
     "description": "Nome do gerador de imagens SeeDream"
   },
   "name.size": {
@@ -64,11 +64,11 @@
     "description": "Descrição do parâmetro model"
   },
   "description.size": {
-    "message": "Tamanho da imagem. Suporta predefinições `1K`, `2K`, `4K` ou personalizado `<largura>x<altura>`.",
+    "message": "Tamanho da imagem. Suporta predefinições `1K`, `2K`, `4K` ou personalizadas `<largura>x<altura>`.",
     "description": "Descrição do parâmetro size"
   },
   "description.watermark": {
-    "message": "Adicionar marca d'água à imagem gerada. Ativado por padrão.",
+    "message": "Adicionar marca d'água AI à imagem gerada. Ativado por padrão.",
     "description": "Descrição do parâmetro watermark"
   },
   "description.imageUrls": {
@@ -92,8 +92,8 @@
     "description": "Botão de gerar"
   },
   "button.uploadImageUrls": {
-    "message": "Enviar Imagem",
-    "description": "Botão para enviar imagens de referência (simplificar para 'Enviar')"
+    "message": "Enviar",
+    "description": "Botão para enviar imagens de referência (simplificado para 'Enviar')"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -112,11 +112,11 @@
     "description": "Mensagem de créditos esgotados"
   },
   "message.uploadImageExceed": {
-    "message": "Máximo de 14 imagens permitidas",
+    "message": "Máximo de 14 imagens podem ser enviadas",
     "description": "Número de imagens excedeu o limite"
   },
   "message.uploadImageError": {
-    "message": "Falha ao enviar imagem, por favor, tente novamente mais tarde",
+    "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
     "description": "Falha no envio"
   },
   "name.model": {
@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Opção de modelo SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Opção de modelo SeeDream 5.0 (suporta geração de imagens em grupo e saída contínua)"
+  },
+  "name.maxImages": {
+    "message": "Número de Imagens",
+    "description": "Número de imagens geradas em grupo (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Número de imagens geradas em uma única solicitação (1-15). Definido como 1 para modo de imagem única; maior que 1 ativa automaticamente a geração de imagens em grupo (sequential_image_generation=auto), mantendo personagens, estilo e detalhes consistentes entre as imagens. Suporta apenas doubao-seedream-5.0 / 4.5 / 4.0; se imagens de referência forem enviadas, deve-se atender a (número de imagens de referência + número gerado) ≤ 15. A cobrança é feita com base no número real de imagens geradas.",
+    "description": "Descrição do parâmetro max_images"
   }
 }

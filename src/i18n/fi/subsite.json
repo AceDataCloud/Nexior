@@ -52,7 +52,7 @@
     "description": "Siirry alisivuston asetuksiin -painike"
   },
   "message.indexTip": {
-    "message": "Luo itsenäisiä alisivustoja pääsivuston alle, jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet, eikä erillistä lähdekoodia tarvitse rakentaa.",
+    "message": "Luo itsenäisiä alisivustoja pääsivuston alle. Jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
     "description": "Alisivuston hallinnan etusivun selitysteksti"
   },
   "message.empty": {
@@ -60,7 +60,7 @@
     "description": "Tyhjän luettelon ilmoitus"
   },
   "message.slugTip": {
-    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivaan, eikä sisältää peräkkäisiä viivoja.",
+    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivalla, eikä voi sisältää peräkkäisiä viivoja.",
     "description": "slug-kentän selitys"
   },
   "message.slugInvalid": {
@@ -117,35 +117,35 @@
   },
   "field.recordType": {
     "message": "Tietueen tyyppi",
-    "description": "DNS-tietueen tyyppisarake"
+    "description": "DNS-tietueen tyypin sarake"
   },
   "field.recordName": {
     "message": "Tietueen nimi",
-    "description": "DNS-tietueen nimisarake"
+    "description": "DNS-tietueen nimen sarake"
   },
   "field.recordValue": {
     "message": "Tietueen arvo",
-    "description": "DNS-tietueen arvokenttä"
+    "description": "DNS-tietueen arvon sarake"
   },
   "placeholder.hostname": {
     "message": "esim. studio.mybrand.com",
     "description": "hostname-syöttökentän paikkamerkki"
   },
   "message.domainsIntro": {
-    "message": "Sitota omistamasi verkkotunnus tähän alisivustoon. Sinun on voitava muokata verkkotunnuksen DNS:ää. Lisää CNAME-tietue ohjeiden mukaan ja napsauta 'Vahvista nyt', niin me myönnämme ja uusimme HTTPS-sertifikaatin ilmaiseksi Let's Encryptin kautta.",
+    "message": "Sitota omistamasi verkkotunnus tähän alisivustoon. Sinun on voitava muokata verkkotunnuksen DNS:ää. Lisää CNAME-tietue alla olevien ohjeiden mukaan ja napsauta 'Vahvista nyt', niin me myönnämme ja uusimme HTTPS-sertifikaatin ilmaiseksi Let's Encryptin kautta.",
     "description": "Dialogin yläosan selitys"
   },
   "message.domainsEmpty": {
-    "message": "Et ole vielä sitonut mitään mukautettuja verkkotunnuksia. Täytä alapuolella olevaan lomakkeeseen täydellinen verkkotunnus ja napsauta 'Sitota' aloittaaksesi.",
+    "message": "Et ole vielä sitonut mitään mukautettuja verkkotunnuksia. Täytä alla olevaan lomakkeeseen täydellinen verkkotunnus ja napsauta 'Sitota' aloittaaksesi.",
     "description": "Tyhjän luettelon ilmoitus"
   },
   "message.hostnameTip": {
-    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita. Acdata.cloud / surl.id -verkkotunnusten alidomainit eivät ole sallittuja.",
+    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita.",
     "description": "hostname-syöttöohje"
   },
   "message.hostnameInvalid": {
     "message": "Verkkotunnuksen muoto on virheellinen. Sen on oltava julkisesti ratkaistavissa oleva verkkotunnus, IP-osoitteet eivät ole sallittuja.",
-    "description": "hostname-lokalisointi epäonnistui"
+    "description": "hostname-lokaatio tarkistus epäonnistui"
   },
   "message.domainCreated": {
     "message": "Verkkotunnus on lähetetty, lisää CNAME-tietue ohjeiden mukaan.",
@@ -160,11 +160,11 @@
     "description": "Verkkotunnusluettelon lataaminen epäonnistui"
   },
   "message.domainActive": {
-    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivua mukautetun HTTPS-osoitteesi kautta.",
+    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivustoa mukautetun HTTPS-osoitteesi kautta.",
     "description": "Siirtyminen aktiiviseen tilaan"
   },
   "message.domainFailed": {
-    "message": "Verkkotunnuksen vahvistaminen tai julkaisu epäonnistui.",
+    "message": "Verkkotunnuksen vahvistus tai julkaisu epäonnistui.",
     "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
@@ -172,7 +172,7 @@
     "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse aliverkkotunnuksellesi tämän verkkotunnuksen kautta.",
+    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse käsiksi aliverkkotunnukseesi tämän verkkotunnuksen kautta.",
     "description": "Poiston vahvistus"
   },
   "message.domainDeleteFailed": {

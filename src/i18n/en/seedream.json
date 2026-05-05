@@ -100,11 +100,11 @@
     "description": "Message indicating task start"
   },
   "message.startTaskSuccess": {
-    "message": "Task successfully initiated",
-    "description": "Task successfully created"
+    "message": "Task generation initiated successfully",
+    "description": "Task created successfully"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator:",
+    "message": "Task initiation failed, please contact the administrator:",
     "description": "Task creation failed"
   },
   "message.usedUp": {
@@ -116,7 +116,7 @@
     "description": "Image count exceeds limit"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
+    "message": "Image upload failed, please try again later",
     "description": "Upload failure"
   },
   "name.model": {
@@ -141,14 +141,14 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 model option (supports group generation and streaming)"
+    "description": "SeeDream 5.0 model option (supports image sets and streaming output)"
   },
   "name.maxImages": {
-    "message": "Image count",
-    "description": "Number of images for group generation (max_images)"
+    "message": "Number of Images",
+    "description": "Number of images for generating image sets (max_images)"
   },
   "description.maxImages": {
-    "message": "How many images to generate in a single request (1-15). Set to 1 for single-image mode; values >1 automatically enable group generation (sequential_image_generation=auto) which keeps character, style and details consistent across images. Supported on doubao-seedream-5.0 / 4.5 / 4.0 only. With reference images, the constraint is (reference image count + generated count) ≤ 15. Billed per actually generated image.",
+    "message": "Number of images generated in a single request (1-15). Set to 1 for single image mode; greater than 1 automatically enables image sets (sequential_image_generation=auto), maintaining character, style, and detail consistency across images. Only supports doubao-seedream-5.0 / 4.5 / 4.0; if reference images are uploaded, must satisfy (number of reference images + number generated) ≤ 15. Billing is based on the actual number of images generated.",
     "description": "Description of the max_images parameter"
   }
 }

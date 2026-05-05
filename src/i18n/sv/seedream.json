@@ -37,7 +37,7 @@
   },
   "name.elapsed": {
     "message": "Tid förbrukad",
-    "description": "Tid för uppgiften (sekunder)"
+    "description": "Tid som uppgiften tog (sekunder)"
   },
   "name.prompt": {
     "message": "Bildprompt",
@@ -60,7 +60,7 @@
     "description": "Beskrivning av prompt"
   },
   "description.model": {
-    "message": "Modell som används för att generera eller redigera bilder.",
+    "message": "Modellen som används för att generera eller redigera bilder.",
     "description": "Beskrivning av model parameter"
   },
   "description.size": {
@@ -109,15 +109,15 @@
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
-    "description": "Meddelande om att poäng är slut"
+    "description": "Meddelande om att poängen är slut"
   },
   "message.uploadImageExceed": {
     "message": "Maximalt 14 bilder kan laddas upp",
-    "description": "Bildantalet överskrider gränsen"
+    "description": "Antalet bilder överskrider gränsen"
   },
   "message.uploadImageError": {
     "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
-    "description": "Misslyckad uppladdning"
+    "description": "Misslyckades med uppladdning"
   },
   "name.model": {
     "message": "Modell",
@@ -125,18 +125,30 @@
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Alternativ för SeeDream 4.5-modell"
+    "description": "Val av SeeDream 4.5-modell"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Alternativ för SeeDream 4.0-modell"
+    "description": "Val av SeeDream 4.0-modell"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Alternativ för SeeDream 3.0 t2i-modell"
+    "description": "Val av SeeDream 3.0 t2i-modell"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Alternativ för SeeEdit 3.0 i2i-modell"
+    "description": "Val av SeeEdit 3.0 i2i-modell"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Val av SeeDream 5.0-modell (stöder bildserie och strömmande utdata)"
+  },
+  "name.maxImages": {
+    "message": "Antal bilder",
+    "description": "Antal bilder som genereras i en bildserie (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Antal bilder som genereras i en begäran (1-15). Sätt till 1 för enstaka bildläge; mer än 1 aktiverar automatiskt bildserie (sequential_image_generation=auto), och håller karaktär, stil och detaljer konsekventa över bilder. Endast doubao-seedream-5.0 / 4.5 / 4.0 stöds; om referensbilder laddas upp, måste (antal referensbilder + antal genererade) ≤ 15. Avgifter baseras på det faktiska antalet genererade bilder.",
+    "description": "Beskrivning av max_images parameter"
   }
 }

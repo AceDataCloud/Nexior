@@ -5,7 +5,7 @@
   },
   "button.start": {
     "message": "Iniciar",
-    "description": "Texto no botão para começar alguma operação"
+    "description": "Texto no botão para iniciar alguma operação"
   },
   "button.copy": {
     "message": "Copiar",
@@ -28,7 +28,7 @@
     "description": "Texto no botão para ver a imagem original"
   },
   "button.seeRawVideo": {
-    "message": "Ver Vídeo Original",
+    "message": "Ver Vídeo",
     "description": "Texto no botão para ver o vídeo original"
   },
   "button.edit": {
@@ -58,6 +58,10 @@
   "button.cancel": {
     "message": "Cancelar",
     "description": "Texto no botão para cancelar uma operação"
+  },
+  "button.close": {
+    "message": "Fechar",
+    "description": "Texto no botão para fechar uma caixa de diálogo ou painel"
   },
   "button.alert": {
     "message": "Alerta",
@@ -112,8 +116,8 @@
     "description": "Texto no botão para baixar o pacote de instalação do Android"
   },
   "button.downloadIos": {
-    "message": "Baixar Pacote iOS",
-    "description": "Texto no botão para baixar o arquivo do pacote de instalação do iOS"
+    "message": "Baixar iOS",
+    "description": "Texto no botão para baixar o arquivo de instalação do iOS"
   },
   "button.installIos": {
     "message": "Instalar iOS",
@@ -121,7 +125,7 @@
   },
   "button.apply": {
     "message": "Solicitar",
-    "description": "Texto no botão para permitir que o usuário solicite serviços de API"
+    "description": "Texto no botão para permitir que o usuário solicite o serviço de API"
   },
   "button.refresh": {
     "message": "Atualizar",
@@ -129,11 +133,11 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Texto no botão para permitir que o usuário pague pela prestação de serviços"
+    "description": "Texto no botão para permitir que o usuário pague a taxa de serviço"
   },
   "button.repay": {
     "message": "Continuar Pagamento",
-    "description": "Texto no botão para permitir que o usuário continue o pagamento pela prestação de serviços"
+    "description": "Texto no botão para permitir que o usuário continue o pagamento da taxa de serviço"
   },
   "button.applied": {
     "message": "Solicitado",
@@ -225,7 +229,7 @@
   },
   "entity.order": {
     "message": "Pedido",
-    "description": "Pedido da entidade, que inclui informações financeiras e de serviço que o usuário precisa pagar"
+    "description": "Pedido da entidade, que inclui informações financeiras e de serviço, que o usuário precisa pagar"
   },
   "message.noTasks": {
     "message": "Nenhuma tarefa histórica, comece uma nova tarefa～",
@@ -233,10 +237,10 @@
   },
   "message.usedAmount": {
     "message": "Valor utilizado",
-    "description": "Texto para exibir o valor já utilizado do serviço"
+    "description": "Usado para exibir o valor já utilizado do serviço"
   },
   "message.mobileAppDescription": {
-    "message": "Use o AceData diretamente no celular, atualmente disponível para download do APK Android, pacote de instalação do iOS será disponibilizado após a assinatura.",
+    "message": "Use o AceData diretamente no celular, atualmente disponível para download do APK Android, pacote de instalação iOS será disponibilizado após a assinatura.",
     "description": "Texto explicativo na página de download do aplicativo móvel"
   },
   "message.mobileAndroidHint": {
@@ -249,26 +253,26 @@
   },
   "message.mobileAvailableNow": {
     "message": "Android disponível para download",
-    "description": "Texto para indicar que o Android já pode ser baixado"
+    "description": "Usado para exibir o status de que o Android está disponível para download"
   },
   "message.mobileSecureDelivery": {
     "message": "Distribuição segura via CDN",
-    "description": "Para enfatizar que o link de download é entregue via CDN"
+    "description": "Usado para enfatizar que o link de download é entregue via CDN"
   },
   "message.mobileDirectInstall": {
     "message": "Instalação direta do APK",
-    "description": "Para descrever que a instalação no Android é feita diretamente pelo APK"
+    "description": "Usado para descrever que a instalação no Android é feita diretamente via APK"
   },
   "message.mobileLatestRelease": {
     "message": "Versão pública atual",
-    "description": "Para indicar que a versão exibida é a mais recente disponível"
+    "description": "Usado para indicar que a versão exibida é a mais recente disponível"
   },
   "message.mobileSharedAccount": {
     "message": "Conta e créditos compartilhados com a versão web",
-    "description": "Para indicar que a versão móvel compartilha a conta com a versão web"
+    "description": "Usado para indicar que a versão móvel compartilha a conta com a versão web"
   },
   "message.mobileIosHint": {
-    "message": "Compatível com iPhone e iPad, pode ser instalado diretamente online; se o sistema bloquear, você pode baixar o IPA e depois distribuir.",
+    "message": "Compatível com iPhone e iPad, pode ser instalado online; se o sistema bloquear, você pode baixar o IPA e depois distribuir.",
     "description": "Descrição do cartão de download iOS"
   },
   "message.mobileIosPending": {
@@ -280,7 +284,7 @@
     "description": "Dica de instalação do aplicativo móvel"
   },
   "title.mobileApp": {
-    "message": "Download para Móvel",
+    "message": "Download do Móvel",
     "description": "Título da página de download do aplicativo móvel"
   },
   "title.mobileFastAccess": {
@@ -292,7 +296,7 @@
     "description": "Título do cartão de vantagens na página de download, enfatizando a estabilidade de versões e distribuição"
   },
   "title.mobileUnifiedExperience": {
-    "message": "Experiência unificada entre móvel e web",
+    "message": "Experiência móvel e web consistente",
     "description": "Título do cartão de vantagens na página de download, enfatizando a experiência unificada"
   },
   "nav.mobileApp": {
@@ -300,20 +304,20 @@
     "description": "Entrada de download do aplicativo móvel na navegação"
   },
   "message.mobileFastAccess": {
-    "message": "Os usuários podem escanear diretamente no celular para instalar, ou baixar o APK no desktop e distribuir para os membros da equipe, ideal para testes rápidos e beta.",
+    "message": "Os usuários podem escanear para instalar diretamente no celular ou baixar o APK no desktop e depois distribuir para os membros da equipe, ideal para testes rápidos e cenários de beta.",
     "description": "Descrição de vantagens na página de download, enfatizando o acesso rápido"
   },
   "message.mobileTrustedRelease": {
-    "message": "Os links de download estão centralizados em uma única página, com número da versão, status da plataforma e método de instalação visíveis, reduzindo custos de comunicação devido à dispersão de links.",
+    "message": "Os links de download estão centralizados em uma única página, com número da versão, status da plataforma e método de instalação visíveis, reduzindo os custos de comunicação causados pela dispersão de links.",
     "description": "Descrição de vantagens na página de download, enfatizando a distribuição unificada"
   },
   "message.mobileUnifiedExperience": {
-    "message": "O sistema de contas, créditos e entradas de serviço após o login é o mesmo da versão web, facilitando a troca entre desktop e móvel.",
+    "message": "O sistema de contas, créditos e entradas de serviço após o login é consistente com a versão web, facilitando a troca sem costura entre desktop e móvel.",
     "description": "Descrição de vantagens na página de download, enfatizando a experiência de conta unificada"
   },
   "message.remainingAmount": {
     "message": "Valor restante",
-    "description": "Texto para exibir o valor restante do serviço"
+    "description": "Usado para exibir o valor restante do serviço"
   },
   "message.copied": {
     "message": "Copiado com sucesso",
@@ -512,8 +516,8 @@
     "description": "Texto na barra de navegação do site para exibir a página de vídeo"
   },
   "nav.distribution": {
-    "message": "Renda de Recomendação",
-    "description": "Texto na barra de navegação do site para exibir a página de renda de recomendação"
+    "message": "Rendimentos de Recomendação",
+    "description": "Texto na barra de navegação do site para exibir a página de rendimentos de recomendação"
   },
   "nav.connections": {
     "message": "Conexões",
@@ -529,7 +533,7 @@
   },
   "nav.subsite": {
     "message": "Meu Subsite",
-    "description": "Entrada 'Meu Subsite' na barra lateral, exibida apenas quando a configuração features.subsite está ativada"
+    "description": "Entrada 'Meu Subsite' na barra lateral, exibida apenas quando a funcionalidade features.subsite está ativada"
   },
   "nav.setting": {
     "message": "Configurações",
@@ -584,8 +588,8 @@
     "description": "Título da página para recarregar. Deve ser traduzido como 'Recarregar'."
   },
   "title.distribution": {
-    "message": "Renda de Recomendação",
-    "description": "Título da página que exibe a renda de recomendação, indicando que o usuário pode ganhar dinheiro convidando outros a usar o serviço"
+    "message": "Rendimentos de Recomendação",
+    "description": "Título da página que exibe rendimentos de recomendação, indicando que o usuário pode ganhar dinheiro convidando outros a usar o serviço"
   },
   "title.site": {
     "message": "Configuração do Site",
@@ -597,7 +601,7 @@
   },
   "title.invitee": {
     "message": "Convidado",
-    "description": "Título da página que exibe o convidado"
+    "description": "Título da página que exibe informações sobre o convidado"
   },
   "title.allUsages": {
     "message": "Histórico de Uso",
@@ -673,7 +677,7 @@
   },
   "theme.system": {
     "message": "Sistema",
-    "description": "Nome do tema do sistema, indicando que o tema muda automaticamente com base nas configurações do sistema"
+    "description": "Nome do tema do sistema, indicando a troca automática de tema com base nas configurações do sistema"
   },
   "settings.general": {
     "message": "Configurações Gerais",
@@ -704,12 +708,12 @@
     "description": "Título da seção de configurações de funcionalidade na página de configurações"
   },
   "settings.apiKey": {
-    "message": "Chave API",
-    "description": "Rótulo da Chave API na barra lateral da página de configurações - gerenciamento da Chave API do provedor de serviços upstream (BYOK)"
+    "message": "Chave da API",
+    "description": "Rótulo da Chave da API na barra lateral da página de configurações - gerenciamento da Chave da API do provedor de serviços upstream (BYOK)"
   },
   "field.operations": {
     "message": "Operações",
-    "description": "Título da coluna genérica: coluna de botões de operação das linhas da tabela (editar, excluir, etc.)"
+    "description": "Título da coluna genérica: coluna de botões de operação da linha da tabela (editar, excluir, etc.)"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -776,7 +780,7 @@
     "description": "Profissão do cliente"
   },
   "customers.comment2": {
-    "message": "A Ace Data Cloud é uma ótima plataforma de integração, com qualidade de serviço excelente.",
+    "message": "A Ace Data Cloud é uma ótima plataforma de integração, com qualidade de serviço excepcional.",
     "description": "Avaliação do cliente"
   },
   "customers.name3": {
@@ -793,7 +797,7 @@
   },
   "nav.github": {
     "message": "GitHub",
-    "description": "Link para o repositório GitHub"
+    "description": "Link para o repositório do GitHub"
   },
   "settings.github": {
     "message": "Código Fonte",
@@ -813,19 +817,19 @@
   },
   "settings.poweredBy": {
     "message": "Projeto Open Source",
-    "description": "Título que mostra em qual projeto open source este site é baseado na página sobre"
+    "description": "Título que mostra em qual projeto open source o site é baseado na página sobre"
   },
   "settings.poweredByTip": {
     "message": "Este site é baseado no projeto open source Nexior, com código totalmente aberto.",
-    "description": "Descrição que mostra em qual projeto open source este site é baseado na página sobre"
+    "description": "Descrição que mostra em qual projeto open source o site é baseado na página sobre"
   },
   "settings.apiService": {
     "message": "Serviço API",
-    "description": "Título que mostra o provedor de serviços API na página sobre"
+    "description": "Título que mostra o provedor do serviço API na página sobre"
   },
   "settings.apiServiceTip": {
     "message": "O serviço API deste site é fornecido pela Ace Data Cloud.",
-    "description": "Descrição que mostra o provedor de serviços API na página sobre"
+    "description": "Descrição que mostra o provedor do serviço API na página sobre"
   },
   "settings.buildYourOwn": {
     "message": "Construa o Seu",

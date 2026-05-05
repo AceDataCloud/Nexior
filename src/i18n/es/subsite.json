@@ -9,7 +9,7 @@
   },
   "title.openNow": {
     "message": "Visitar subdominio ahora",
-    "description": "Título del cuadro de diálogo que pregunta si se desea redirigir inmediatamente después de crear con éxito"
+    "description": "Título del cuadro de diálogo que pregunta si se desea redirigir inmediatamente después de la creación exitosa"
   },
   "field.slug": {
     "message": "Prefijo del subdominio",
@@ -52,7 +52,7 @@
     "description": "Botón para acceder a la configuración del subdominio"
   },
   "message.indexTip": {
-    "message": "Crea subdominios de marca independientes bajo el sitio principal, cada subdominio puede tener su propio logo, título y conjunto de funciones, sin necesidad de construir el código fuente por separado.",
+    "message": "Crea subdominios de marca independientes bajo el dominio principal, cada subdominio puede tener su propio logo, título y conjunto de funciones, sin necesidad de construir el código fuente por separado.",
     "description": "Texto explicativo en la página de gestión de subdominios"
   },
   "message.empty": {
@@ -68,8 +68,8 @@
     "description": "Validación fallida del slug"
   },
   "message.zoneMissing": {
-    "message": "El sitio principal actual no tiene configurado un dominio de subdominio, por favor contacta al administrador del sitio.",
-    "description": "Falta subdomain_zone"
+    "message": "El dominio principal actual no tiene configurada la zona de subdominio, por favor contacta al administrador del sitio.",
+    "description": "Zona de subdominio faltante"
   },
   "message.created": {
     "message": "¡Subdominio creado con éxito!",
@@ -121,11 +121,11 @@
   },
   "field.recordName": {
     "message": "Nombre del registro",
-    "description": "Columna de nombre de registro DNS"
+    "description": "Columna de nombre del registro DNS"
   },
   "field.recordValue": {
     "message": "Valor del registro",
-    "description": "Columna de valor de registro DNS"
+    "description": "Columna de valor del registro DNS"
   },
   "placeholder.hostname": {
     "message": "Por ejemplo, estudio.mimarca.com",
@@ -140,7 +140,7 @@
     "description": "Mensaje de lista vacía"
   },
   "message.hostnameTip": {
-    "message": "Debe ser un dominio público cuyo DNS puedas controlar. No se permiten subdominios de acedata.cloud / surl.id.",
+    "message": "Debe ser un dominio público cuyo DNS puedas controlar.",
     "description": "Sugerencia para el campo hostname"
   },
   "message.hostnameInvalid": {
@@ -148,8 +148,8 @@
     "description": "Validación local fallida del hostname"
   },
   "message.domainCreated": {
-    "message": "El dominio ha sido enviado, por favor agrega el registro CNAME según las instrucciones.",
-    "description": "POST /site-domains/ exitoso"
+    "message": "Dominio enviado, por favor agrega el registro CNAME según las instrucciones.",
+    "description": "Éxito en POST /site-domains/"
   },
   "message.domainCreateFailed": {
     "message": "Error al crear el dominio, por favor intenta de nuevo más tarde.",
@@ -160,7 +160,7 @@
     "description": "Error al cargar la lista de dominios"
   },
   "message.domainActive": {
-    "message": "¡Dominio activo! Ahora puedes acceder al subdominio a través de tu dirección HTTPS personalizada.",
+    "message": "¡Dominio activo! Ahora puedes acceder a la subpágina a través de tu dirección HTTPS personalizada.",
     "description": "Entrar en estado activo"
   },
   "message.domainFailed": {
@@ -188,7 +188,7 @@
     "description": "Etiqueta de estado activo"
   },
   "status.failed": {
-    "message": "Fallo",
+    "message": "Fallido",
     "description": "Etiqueta de estado fallido"
   }
 }
