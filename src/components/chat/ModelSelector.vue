@@ -3,7 +3,7 @@
     <el-dropdown trigger="click" popper-class="model-selector-popper">
       <div class="trigger">
         <img v-if="model?.icon" :src="model.icon" class="trigger-icon" />
-        <span class="trigger-name">{{ model?.getDisplayName() }}</span>
+        <span class="trigger-name">{{ model?.getDisplayName?.() ?? model?.name ?? '' }}</span>
         <font-awesome-icon icon="fa-solid fa-chevron-down" class="trigger-arrow" />
       </div>
       <template #dropdown>
