@@ -52,8 +52,56 @@
     "description": "输出图像尺寸"
   },
   "description.size": {
-    "message": "用于生成图片的输出尺寸，常用值：1024x1024、1536x1024、1024x1536。",
+    "message": "输出图像尺寸。不同模型支持的尺寸不同：gpt-image-1 / gpt-image-1.5 仅支持 1024x1024、1536x1024、1024x1536；gpt-image-2 还支持 1792x1024、1024x1792，以及 2K/4K 预设；gpt-image-2 可启用自定义尺寸。",
     "description": "尺寸说明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K 标准（基础价）",
+    "description": "1K 尺寸分组标题，按基础价计费"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K 预设（1.5 倍价）",
+    "description": "2K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K 预设（1.5 倍价）",
+    "description": "4K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "name.customSize": {
+    "message": "自定义尺寸",
+    "description": "自定义尺寸开关标签"
+  },
+  "description.customSize": {
+    "message": "启用后可自由设置宽高（仅 gpt-image-2 支持）。需为 16 的倍数，最长边 ≤ 3840，总像素 ≤ 8,294,400。非 1K 标准尺寸按 1.5 倍价计费。",
+    "description": "自定义尺寸说明"
+  },
+  "name.width": {
+    "message": "宽",
+    "description": "宽度输入框标签"
+  },
+  "name.height": {
+    "message": "高",
+    "description": "高度输入框标签"
+  },
+  "error.customSizePositive": {
+    "message": "宽高必须为正整数",
+    "description": "自定义尺寸必须为正整数"
+  },
+  "error.customSizeMultiple": {
+    "message": "宽高必须为 {multiple} 的倍数",
+    "description": "自定义尺寸必须为 16 的倍数"
+  },
+  "error.customSizeMin": {
+    "message": "宽高不能小于 {min}",
+    "description": "自定义尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "最长边不能超过 {max}",
+    "description": "自定义尺寸最长边上限"
+  },
+  "error.customSizePixels": {
+    "message": "总像素不能超过 {pixels}",
+    "description": "自定义尺寸总像素上限"
   },
   "description.prompt": {
     "message": "生成或编辑图像的提示词",

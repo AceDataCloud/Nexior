@@ -156,6 +156,7 @@ export default defineComponent({
         action: 'edit',
         model: cfg?.model,
         prompt: cfg?.prompt,
+        size: cfg?.size,
         image_urls: cfg?.image_urls || [],
         callback_url: CALLBACK_URL
       } as IOpenAIImageEditRequest;
