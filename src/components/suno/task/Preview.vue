@@ -222,6 +222,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { getWebhookCallbackUrl } from '@/constants';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
 import {
@@ -244,7 +245,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
+const CALLBACK_URL = getWebhookCallbackUrl('suno');
 
 export default defineComponent({
   name: 'TaskPreview',

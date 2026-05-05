@@ -17,12 +17,12 @@ import { hailuoOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IHailuoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/hailuo/RecentPanel.vue';
 import { IHailuoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/hailuo';
+const CALLBACK_URL = getWebhookCallbackUrl('hailuo');
 
 interface IData {
   task: IHailuoTask | undefined;

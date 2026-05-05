@@ -31,7 +31,8 @@ import {
   MIDJOURNEY_DEFAULT_STYLIZE,
   MIDJOURNEY_DEFAULT_WIRED,
   MIDJOURNEY_DEFAULT_MODE,
-  MIDJOURNEY_DEFAULT_QUALITY
+  MIDJOURNEY_DEFAULT_QUALITY,
+  getWebhookCallbackUrl
 } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 
@@ -42,7 +43,7 @@ interface IData {
   fetchingTasks: boolean;
 }
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
+const CALLBACK_URL = getWebhookCallbackUrl('midjourney');
 
 export default defineComponent({
   name: 'MidjourneyIndex',

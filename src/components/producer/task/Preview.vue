@@ -114,6 +114,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { getWebhookCallbackUrl } from '@/constants';
 import { useFormatDuring } from '@/utils/number';
 import { IProducerAudio, IProducerTask } from '@/models';
 import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
@@ -124,7 +125,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/producer';
+const CALLBACK_URL = getWebhookCallbackUrl('producer');
 
 export default defineComponent({
   name: 'TaskPreview',

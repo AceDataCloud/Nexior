@@ -17,12 +17,12 @@ import { openaiimageOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IOpenAIImageEditRequest, IOpenAIImageGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { IOpenAIImageTask } from '@/models';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/openaiimage';
+const CALLBACK_URL = getWebhookCallbackUrl('openaiimage');
 
 interface IData {
   task: IOpenAIImageTask | undefined;
