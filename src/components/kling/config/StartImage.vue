@@ -147,5 +147,17 @@ export default defineComponent({
     margin: 0;
     width: 100%;
   }
+  // Element Plus's default `.el-upload-list--picture .el-upload-list__item` has
+  // 92px height and 90px left padding to host its built-in thumbnail. We use a
+  // custom #file slot rendering a 50x50 ImagePreview, so those defaults leave a
+  // big empty rectangle to the left of the preview. Neutralize them.
+  .el-upload-list--picture .el-upload-list__item {
+    height: auto;
+    padding: 0;
+    margin: 8px 0 0;
+    border: none;
+    background-color: transparent;
+    overflow: visible;
+  }
 }
 </style>

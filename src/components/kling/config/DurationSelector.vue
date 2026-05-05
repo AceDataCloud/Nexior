@@ -1,27 +1,26 @@
 <template>
   <div class="field">
-    <div class="header">
-      <h2 class="title font-bold">{{ $t('kling.name.duration') }}</h2>
-      <info-icon :content="$t('kling.description.duration')" class="info-icon ml-1" />
-      <span class="value-display">{{ value }}s</span>
+    <div class="control">
+      <div class="label">
+        <h2 class="title font-bold">{{ $t('kling.name.duration') }}</h2>
+        <info-icon :content="$t('kling.description.duration')" class="info-icon ml-1" />
+      </div>
+      <el-select
+        :key="revertKey"
+        :model-value="selectValue"
+        class="value"
+        :placeholder="$t('kling.placeholder.select')"
+        @change="onChange"
+      >
+        <el-option v-for="d in allowedDurations" :key="d" :label="`${d}s`" :value="d" />
+      </el-select>
     </div>
-    <el-slider
-      :key="revertKey"
-      :model-value="sliderValue"
-      class="slider"
-      :min="sliderMin"
-      :max="sliderMax"
-      :step="sliderStep"
-      :marks="marks"
-      :show-tooltip="false"
-      @change="onChange"
-    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSlider, ElMessage, ElMessageBox } from 'element-plus';
+import { ElSelect, ElOption, ElMessage, ElMessageBox } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { KLING_DEFAULT_DURATION, KLING_V3_MODELS } from '@/constants';
 import { findKlingConflicts, clearKlingConflicts } from '@/utils/kling/capabilities';
@@ -32,18 +31,15 @@ const STANDARD_VALUES = [5, 10];
 export default defineComponent({
   name: 'DurationSelector',
   components: {
-    ElSlider,
+    ElSelect,
+    ElOption,
     InfoIcon
   },
-  props: {
-    modelValue: {
-      type: Number,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
   data() {
     return {
+      // Bumped to force-rerender the select when the user cancels a
+      // conflict-resolution prompt, so the dropdown snaps back to the
+      // previous value.
       revertKey: 0
     };
   },
@@ -54,35 +50,23 @@ export default defineComponent({
     isV3Model(): boolean {
       return KLING_V3_MODELS.includes(this.selectedModel);
     },
-    sliderMin(): number {
-      return this.isV3Model ? 3 : 5;
-    },
-    sliderMax(): number {
-      return this.isV3Model ? 15 : 10;
-    },
-    sliderStep(): number {
-      return this.isV3Model ? 1 : 5;
-    },
-    marks() {
-      const values = this.isV3Model ? V3_VALUES : STANDARD_VALUES;
-      const m: Record<number, string> = {};
-      for (const v of values) m[v] = `${v}s`;
-      return m;
+    allowedDurations(): number[] {
+      return this.isV3Model ? V3_VALUES : STANDARD_VALUES;
     },
     value(): number {
       return this.$store.state.kling?.config?.duration ?? KLING_DEFAULT_DURATION;
     },
-    sliderValue(): number {
-      const v = this.value;
-      if (v < this.sliderMin) return this.sliderMin;
-      if (v > this.sliderMax) return this.sliderMax;
-      return v;
+    selectValue(): number {
+      // Clamp the displayed value to a member of allowedDurations so the
+      // select doesn't render a stale entry while a model switch is in flight.
+      const allowed = this.allowedDurations;
+      if (allowed.includes(this.value)) return this.value;
+      return allowed.includes(KLING_DEFAULT_DURATION) ? KLING_DEFAULT_DURATION : allowed[0];
     }
   },
   watch: {
-    isV3Model(_: boolean) {
-      const valid = this.isV3Model ? V3_VALUES : STANDARD_VALUES;
-      if (!valid.includes(this.value)) {
+    isV3Model() {
+      if (!this.allowedDurations.includes(this.value)) {
         this.applyDuration(KLING_DEFAULT_DURATION);
       }
     }
@@ -93,9 +77,7 @@ export default defineComponent({
     }
   },
   methods: {
-    async onChange(raw: number | number[]) {
-      // ElSlider supports range mode (number[]); we only use single mode.
-      const val = Array.isArray(raw) ? raw[0] : raw;
+    async onChange(val: number) {
       const config = this.$store.state.kling?.config || {};
       const conflicts = findKlingConflicts(config, { duration: val });
       if (conflicts.length === 0) {
@@ -117,7 +99,7 @@ export default defineComponent({
         this.$store.commit('kling/setConfig', cleared);
         ElMessage.success(this.$t('kling.message.featureRemovedNotice', { fields }));
       } catch {
-        // User cancelled — repaint slider with the previous value.
+        // User cancelled — repaint the dropdown with the previous value.
         this.revertKey += 1;
       }
     },
@@ -135,27 +117,23 @@ export default defineComponent({
 .field {
   display: flex;
   flex-direction: column;
-
-  .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    .title {
-      font-size: 14px;
-      margin: 0;
-    }
-    .value-display {
-      margin-left: auto;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--el-color-primary);
-      min-width: 40px;
-      text-align: right;
-    }
-  }
-  .slider {
-    margin: 4px 8px 18px;
-  }
+}
+.control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.title {
+  font-size: 14px;
+  margin: 0;
+}
+.value {
+  width: 120px;
 }
 </style>
