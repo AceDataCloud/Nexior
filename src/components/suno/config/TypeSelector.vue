@@ -21,7 +21,6 @@
           <div class="model-option">
             <div class="model-option-left">
               <span class="model-option-name">{{ item.label }}</span>
-              <el-tag v-if="item.pro" size="small" type="warning" effect="plain" class="model-option-pro">Pro</el-tag>
             </div>
             <span class="model-option-desc">{{ item.desc }}</span>
           </div>
@@ -39,14 +38,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption, ElSwitch, ElTag } from 'element-plus';
+import { ElSelect, ElOption, ElSwitch } from 'element-plus';
 import { SUNO_DEFAULT_MODEL } from '@/constants';
 
 interface ModelOption {
   label: string;
   value: string;
   desc: string;
-  pro?: boolean;
   dividerAfter?: boolean;
 }
 
@@ -55,8 +53,7 @@ export default defineComponent({
   components: {
     ElSelect,
     ElOption,
-    ElSwitch,
-    ElTag
+    ElSwitch
   },
   data() {
     return {
@@ -64,26 +61,22 @@ export default defineComponent({
         {
           label: 'v5.5',
           value: 'chirp-v5-5',
-          desc: this.$t('suno.model.v55desc'),
-          pro: true
+          desc: this.$t('suno.model.v55desc')
         },
         {
           label: 'v5',
           value: 'chirp-v5',
-          desc: this.$t('suno.model.v5desc'),
-          pro: true
+          desc: this.$t('suno.model.v5desc')
         },
         {
           label: 'v4.5+',
           value: 'chirp-v4-5-plus',
-          desc: this.$t('suno.model.v45plusdesc'),
-          pro: true
+          desc: this.$t('suno.model.v45plusdesc')
         },
         {
           label: 'v4.5',
           value: 'chirp-v4-5',
           desc: this.$t('suno.model.v45desc'),
-          pro: true,
           dividerAfter: true
         },
         {
@@ -164,14 +157,6 @@ export default defineComponent({
 
 .model-option-name {
   font-weight: 500;
-}
-
-.model-option-pro {
-  font-size: 10px !important;
-  padding: 0 4px !important;
-  height: 18px !important;
-  line-height: 16px !important;
-  border-radius: 4px !important;
 }
 
 .model-option-desc {
