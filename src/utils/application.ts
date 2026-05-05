@@ -46,7 +46,23 @@ export function isApplicationUsable(application: IApplication | undefined): bool
 
 /**
  * get final application from applications
- * @param applications
+ *
+ * If the user already has a `currentApplication` (either restored from
+ * localStorage on a page reload, or just-selected via the wallet dialog),
+ * we keep it as long as it still exists in the freshly-fetched list —
+ * regardless of whether it's expired or exhausted. The previous behaviour
+ * silently re-ran the auto-pick on every page load, which meant a user
+ * who explicitly selected a Period package that later expired (or one
+ * with depleted credits) would see their choice replaced by a different
+ * package on every refresh — see https://github.com/AceDataCloud/Nexior
+ * issue: "wallet selection doesn't stick after refresh".
+ *
+ * The auto-fallback (global > individual, period > usage) only runs when
+ * there is no current selection, or when the previously-selected
+ * application has been deleted server-side.
+ *
+ * @param applications full list of applications visible to the user
+ * @param currentApplication the persisted / freshly-selected one, if any
  * @returns application
  */
 export function getFinalApplication(
@@ -54,12 +70,8 @@ export function getFinalApplication(
   currentApplication?: IApplication
 ): IApplication | undefined {
   console.debug('start to execute getFinalApplication', applications, currentApplication);
-  if (
-    currentApplication &&
-    isApplicationUsable(currentApplication) &&
-    applications?.some((app) => app.id === currentApplication.id)
-  ) {
-    console.debug('current application is usable', currentApplication);
+  if (currentApplication && applications?.some((app) => app.id === currentApplication.id)) {
+    console.debug('current application is preserved (respect user selection)', currentApplication);
     return currentApplication;
   }
   console.debug('get final application from applications', applications);
