@@ -1,6 +1,7 @@
 import { ISite } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { BASE_HOST_HUB } from '@/constants';
+import { isNative } from './surface';
 
 /**
  * Resolve the origin we send to PlatformBackend's
@@ -35,7 +36,7 @@ export const getSiteOrigin = (site?: ISite) => {
   // On native shells (Capacitor on Android / iOS) window.location.host
   // is "localhost" and useless; fall back to studio's bare host so the
   // app boots against the canonical first-party Site row.
-  if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+  if (isNative()) {
     return STUDIO_HOST;
   }
   if (typeof window === 'undefined' || !window.location?.host) {

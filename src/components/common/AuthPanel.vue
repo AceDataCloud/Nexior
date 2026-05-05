@@ -37,6 +37,7 @@ import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SITE_INDEX } from '@/router';
 import { Browser } from '@capacitor/browser';
+import { isNative as isNativeSurface } from '@/utils/surface';
 
 export default defineComponent({
   name: 'AuthPanel',
@@ -53,7 +54,7 @@ export default defineComponent({
   },
   computed: {
     isNative() {
-      return import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android';
+      return isNativeSurface();
     },
     iframeUrl() {
       let url = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
@@ -118,13 +119,13 @@ export default defineComponent({
           // navigate to site config page for white-label site owners,
           // but skip on native platforms (Android/iOS) where users are
           // always on the official site
-          if (import.meta.env.VITE_SURFACE !== 'android' && import.meta.env.VITE_SURFACE !== 'ios') {
+          if (!isNativeSurface()) {
             await this.$router.push({
               name: ROUTE_SITE_INDEX
             });
           }
         }
-        if (import.meta.env.VITE_SURFACE === 'ios' || import.meta.env.VITE_SURFACE === 'android') {
+        if (isNativeSurface()) {
           // On native platforms, hide the auth panel and navigate home instead
           // of reloading — window.location.reload() in Capacitor WKWebView can
           // fail to re-trigger the auth check, leaving users on a blank screen.
