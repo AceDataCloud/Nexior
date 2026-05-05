@@ -105,20 +105,7 @@ export default defineComponent({
         // the chip pops in. Beats showing "[?]" or raw "[acite:1]" in
         // the meantime.
         if (!cite) return '';
-
-        const label = labelFor(cite);
-        const url = cite.url ? escapeAttr(cite.url) : '';
-        const titleAttr = escapeAttr(cite.title || cite.source || cite.url || rawId);
-        const idAttr = escapeAttr(rawId);
-        const favicon = faviconUrl(cite);
-        const iconHtml = favicon
-          ? `<img class="citation-chip__icon" src="${escapeAttr(favicon)}" alt="" referrerpolicy="no-referrer" loading="lazy" />`
-          : '';
-        // The chip itself is an anchor so click works without JS, even
-        // when the popover is suppressed (touch / no-hover devices).
-        // `data-citation-id` is what `onChipHover` reads for the popover.
-        const inner = `<a class="citation-chip__link"${url ? ` href="${url}"` : ''} target="_blank" rel="noopener noreferrer" tabindex="-1">${iconHtml}<span class="citation-chip__label">${escapeAttr(label)}</span></a>`;
-        return `<span class="citation-chip" data-citation-id="${idAttr}" title="${titleAttr}">${inner}</span>`;
+        return renderChip(rawId, cite);
       });
     }
   },
@@ -176,25 +163,6 @@ function labelFor(c: IChatCitation): string {
   return raw.length > 24 ? raw.slice(0, 23) + '\u2026' : raw;
 }
 
-/**
- * Resolve the inline favicon URL for a chip. Preference:
- *   1. Citation-supplied `icon` (the model can specify a brand logo).
- *   2. Google's S2 favicon CDN keyed by the URL host (free, public,
- *      no signup, returns a transparent fallback for unknown sites).
- * Empty string when the URL is unparseable — the chip just won't show
- * an icon, which is fine.
- */
-function faviconUrl(c: IChatCitation): string {
-  if (c.icon) return c.icon;
-  try {
-    const host = new URL(c.url).host;
-    if (!host) return '';
-    return `https://www.google.com/s2/favicons?domain=${encodeURIComponent(host)}&sz=64`;
-  } catch {
-    return '';
-  }
-}
-
 /** Tiny attribute-context HTML escape — enough for our chip output. */
 function escapeAttr(s: string): string {
   return s
@@ -203,6 +171,31 @@ function escapeAttr(s: string): string {
     .replace(/'/g, '&#39;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
+}
+
+/**
+ * Build the inline chip HTML for one citation. Returned as a string
+ * (not a VNode) because it's spliced into the markdown source BEFORE
+ * vue-markdown parses it — the renderer outputs plain HTML, not Vue
+ * nodes, so there's nowhere to mount a child component.
+ *
+ * The outer chip is also an `<a>` so click works without JS on
+ * touch / no-hover devices where the popover never opens. Hover state
+ * (preview popover) is wired up by `data-citation-id` + a single
+ * delegated handler in `onChipHover`.
+ */
+function renderChip(id: string, c: IChatCitation): string {
+  const safeId = escapeAttr(id);
+  const safeTitle = escapeAttr(c.title || c.source || c.url || id);
+  const safeLabel = escapeAttr(labelFor(c));
+  const hrefAttr = c.url ? ` href="${escapeAttr(c.url)}"` : '';
+  return [
+    `<span class="citation-chip" data-citation-id="${safeId}" title="${safeTitle}">`,
+    `<a class="citation-chip__link"${hrefAttr} target="_blank" rel="noopener noreferrer" tabindex="-1">`,
+    `<span class="citation-chip__label">${safeLabel}</span>`,
+    `</a>`,
+    `</span>`
+  ].join('');
 }
 </script>
 
@@ -255,7 +248,7 @@ function escapeAttr(s: string): string {
      don't push their row taller than its neighbours. */
   :deep(.citation-chip) {
     display: inline-block;
-    margin: 0 2px;
+    margin: 0 3px;
     padding: 0;
     line-height: 1;
     user-select: none;
@@ -268,13 +261,12 @@ function escapeAttr(s: string): string {
     .citation-chip__link {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      height: 18px;
-      padding: 0 8px 0 6px;
+      height: 22px;
+      padding: 0 12px;
       border-radius: 999px;
       background: rgba(39, 113, 134, 0.1);
       color: #1f5a6b;
-      font-size: 0.78em;
+      font-size: 0.82em;
       font-weight: 500;
       text-decoration: none;
       transition:
@@ -287,18 +279,6 @@ function escapeAttr(s: string): string {
         color: #144859;
         text-decoration: none;
         transform: translateY(-0.5px);
-      }
-    }
-
-    .citation-chip__icon {
-      width: 12px;
-      height: 12px;
-      flex: 0 0 12px;
-      object-fit: contain;
-      border-radius: 2px;
-      /* Hide broken-icon glyph if the favicon CDN 404s (rare). */
-      &[src=''] {
-        display: none;
       }
     }
 
