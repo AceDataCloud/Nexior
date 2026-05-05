@@ -84,8 +84,23 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
         tools: true
       };
     case SEEDREAM_MODEL_4_5:
+      // 4.5: tier presets 2K/4K (no 1K, no 3K). Verified live —
+      // 4.5 + 1K returns "the specified size is not supported for model
+      // doubao-seedream-4-5". Pixel min is 3,686,400 (≈2K), same as 5.0.
+      return {
+        image: true,
+        imageRequired: false,
+        sizeTiers: [SEEDREAM_SIZE_2K, SEEDREAM_SIZE_4K],
+        sizeAdaptive: true,
+        sizePixel: true,
+        groupGeneration: true,
+        seed: false,
+        guidanceScale: false,
+        outputFormat: false,
+        tools: false
+      };
     case SEEDREAM_MODEL_4_0:
-      // 4.5 / 4.0: tier presets 1K/2K/4K (no 3K).
+      // 4.0: tier presets 1K/2K/4K (no 3K). Pixel min is 921,600 (≈1K).
       return {
         image: true,
         imageRequired: false,
@@ -116,6 +131,9 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
       };
     case SEEDREAM_MODEL_SEEDEDIT_3_0_I2I:
       // seededit-3.0-i2i: image-to-image only, pixel-only sizes.
+      // Note: official Volcengine docs limit `seed` to 3.0-t2i only — our
+      // worker is permissive but upstream Volcengine rejects seed on
+      // seededit-3.0-i2i. Keep seed=false here.
       return {
         image: true,
         imageRequired: true,
@@ -124,7 +142,7 @@ export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
         sizePixel: true,
         sizePixelDefault: '1024x1024',
         groupGeneration: false,
-        seed: true,
+        seed: false,
         guidanceScale: true,
         guidanceScaleDefault: SEEDREAM_GUIDANCE_SCALE_DEFAULTS[SEEDREAM_MODEL_SEEDEDIT_3_0_I2I],
         outputFormat: false,
