@@ -451,7 +451,8 @@ export default defineComponent({
         // @ts-ignore
         video_url: response.video_urls?.[0],
         action: 'extend',
-        active_tab: 'video',
+        // switch ConfigPanel to the Video Generation tab so the extend form is visible
+        type: 'videos',
         is_videos: true
       });
     },
