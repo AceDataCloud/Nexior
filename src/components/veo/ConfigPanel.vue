@@ -26,10 +26,7 @@
       <!-- Generation actions: text2video, image2video, ingredients2video -->
       <template v-if="isGeneration">
         <translation-selector class="mb-4" />
-        <aspect-ratio-selector
-          v-if="config?.action === 'image2video' || config?.action === 'ingredients2video'"
-          class="mb-4"
-        />
+        <aspect-ratio-selector class="mb-4" />
         <prompt-input class="mb-4" />
         <model-selector v-if="config?.action !== 'ingredients2video'" class="mb-4" />
         <start-end-image
