@@ -91,10 +91,12 @@ export default defineComponent({
       if (this.config.elements && this.config.elements.length > 0) {
         content += ',' + this.config.elements.map((item) => item.value).join(',');
       }
+      const isNiji = this.config?.model?.includes('niji');
       if (this.config?.model && !content.includes(`--${this.config.model}`)) {
         content += ` --${this.config.model}`;
       }
-      if (this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
+      // niji models carry their own version (e.g. `niji 5`) and reject --version
+      if (!isNiji && this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
         content += ` --version ${this.config.version}`;
       }
       if (this.config?.chaos && this.config?.advanced && !content.includes(`--chaos `)) {
@@ -148,8 +150,8 @@ export default defineComponent({
       if (this.config?.style && this.config?.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.config?.style}`;
       }
-      // V8 --hd parameter
-      if (this.config?.hd && !content.includes(`--hd`)) {
+      // V8 --hd parameter (not supported by niji models)
+      if (!isNiji && this.config?.hd && !content.includes(`--hd`)) {
         content += ` --hd`;
       }
       // remove `--fast`, `--relax`, `--turbo`
