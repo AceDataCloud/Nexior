@@ -2,6 +2,187 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Tue, 05 May 2026 06:57:45 GMT",
+      "version": "3.143.0",
+      "tag": "@acedatacloud/nexior_v3.143.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Conversation list now scoped per scenario; URL reflects active conversation; lazy-load message history"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(chat): render aichat2 entity cards (audio/video/image/file) inline"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Inline source-citation chips with hover preview cards in chat answers"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Connectors polish: BUILT-IN badge, icons, GitLab brand, wider cards"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(studio): serve nexior independently at studio.acedata.cloud (separate K8s stack + host-aware SEO)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Move subsite management into the user-settings dialog (official main host only); add one-click 'Build same site' button on About; scope BYOK credentials per Site via x-site-origin header"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(aichat2): render ask_user_question card and resume on submit"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Add standalone /connectors page with custom MCP servers and built-in provider directory"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(telemetry): integrate Tencent Cloud RUM (Aegis) for frontend errors, API speed, PV, and 6 business events (payment_initiated/failed/success, generation_submit/success/failed). No-op when VITE_RUM_PROJECT_ID is unset."
+          }
+        ],
+        "patch": [
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(chat): enable image/file upload entry for Claude, Gemini, Grok-4"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(application): respect user's wallet selection across page reloads (no longer auto-replace expired/exhausted current pick)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(chat): update Claude model lineup to Opus 4.7, Sonnet 4.6, Haiku 4.5"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix logo style and navigator padding"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(openaiimage): drop stale type filter so /openai-image task list renders"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Claim existing empty-admin sites during authenticated initialization."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Drop unused react/psl deps and switch to per-adapter Solana wallet imports (-367 packages in node_modules)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(chat): use external-link icon for skills/connections toolbar buttons"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Fix inviter_id binding through auth redirect on custom-domain (white-label) sites"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(chat): consolidate composer actions into + popover; fix file preview overlap"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "Inline Skills and Connectors entries below the chat composer input"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "feat(application): show balance amount in the wallet pill in the top-right corner"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(ui): sidebar logo respects site.logo / site.favicon again"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(chat): conversation id no longer dropped from URL on refresh — stop persisting derived `chat.modelGroup`, delete the redundant SidePanel watcher that hijacked `:id`, and stop ModelSelector from snapping `chat.model` back to first-of-group on every mount"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(user-center): hide \"Mobile App\" download entry in user dropdown when running on native iOS/Android"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "fix(telemetry): use Aegis 'report id' instead of numeric 应用ID — RUM /collect/* was returning 403 because the numeric ID is not a valid SDK identifier"
+          }
+        ],
+        "none": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "ci: use BOT_GITHUB_TOKEN in translate workflow so generated PRs trigger checks"
+          },
+          {
+            "author": "cqc@cuiqingcai.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "chore: switch pre-commit to lint-staged"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "f55d94ac3206286ecb0736d65f8e3a9412fbc85a",
+            "comment": "ci(release): auto-sync package.json baseline to npm latest before publish"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 19 Apr 2026 03:30:51 GMT",
       "version": "3.34.0",
       "tag": "@acedatacloud/nexior_v3.34.0",
