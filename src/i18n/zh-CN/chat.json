@@ -485,19 +485,31 @@
   },
   "askUserQuestion.submit": {
     "message": "提交",
-    "description": "ask-user-question 卡片上的提交按钮"
+    "description": "ask-user-question 向导最后一题的提交按钮"
   },
-  "askUserQuestion.skip": {
-    "message": "跳过",
-    "description": "ask-user-question 卡片上的跳过按钮"
+  "askUserQuestion.next": {
+    "message": "下一题",
+    "description": "ask-user-question 向导前进到下一题"
+  },
+  "askUserQuestion.back": {
+    "message": "上一题",
+    "description": "ask-user-question 向导回到上一题"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "全部跳过",
+    "description": "跳过整个 ask-user-question 向导，让模型在没有答案的情况下继续"
   },
   "askUserQuestion.other": {
     "message": "其他",
-    "description": "ask-user-question 卡片自定义回答输入框的标签"
+    "description": "伪选项；选中后该题展开自定义文本输入框"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "输入你自己的回答",
+    "description": "其他选项下方的辅助说明"
   },
   "askUserQuestion.placeholder": {
-    "message": "输入自定义回答…",
-    "description": "自定义回答输入框的占位文案"
+    "message": "请输入回答…",
+    "description": "每道题自定义回答输入框的占位文案"
   },
   "askUserQuestion.multiSelectHint": {
     "message": "可选一项或多项",
