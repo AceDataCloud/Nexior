@@ -94,11 +94,15 @@ export default defineComponent({
     endImageSupported(): boolean {
       return getKlingCapabilities(this.klingConfig.model, this.klingConfig.mode, this.klingConfig.duration).endImage;
     },
+    hasStartImage(): boolean {
+      return Boolean(this.klingConfig.start_image_url);
+    },
     uploadDisabled(): boolean {
-      return this.reachedLimit || !this.endImageSupported;
+      return this.reachedLimit || !this.endImageSupported || !this.hasStartImage;
     },
     uploadTooltip(): string {
       if (!this.endImageSupported) return this.$t('kling.message.endImageNotSupported');
+      if (!this.hasStartImage) return this.$t('kling.message.endImageRequiresStart');
       if (this.reachedLimit) return this.$t('kling.message.uploadReferencesExceed');
       return '';
     },
@@ -122,6 +126,17 @@ export default defineComponent({
       if (!val && this.fileList.length > 0) {
         this.fileList = [];
       }
+    },
+    hasStartImage(now: boolean) {
+      // End frame is only meaningful when paired with a start frame; if the
+      // user removes the start image, drop the end image too.
+      if (!now && this.storeValue) {
+        this.fileList = [];
+        this.$store.commit('kling/setConfig', {
+          ...this.$store.state.kling?.config,
+          end_image_url: undefined
+        });
+      }
     }
   },
   mounted() {
@@ -134,6 +149,10 @@ export default defineComponent({
     onBeforeUpload(): boolean {
       if (!this.endImageSupported) {
         ElMessage.warning(this.$t('kling.message.endImageNotSupported'));
+        return false;
+      }
+      if (!this.hasStartImage) {
+        ElMessage.warning(this.$t('kling.message.endImageRequiresStart'));
         return false;
       }
       return true;

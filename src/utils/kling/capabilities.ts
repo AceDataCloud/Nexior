@@ -15,7 +15,9 @@ export interface IKlingCapability {
   endImage: boolean;
   /** generate_audio (background sound, not voice/lip-sync). */
   audio: boolean;
-  /** camera_control / motion control. */
+  /** camera_control / motion control. NOTE: cross-cutting upstream rule rejects
+   *  camera_control whenever start_image_url is set, regardless of this flag —
+   *  see findKlingConflicts. */
   motionControl: boolean;
 }
 
@@ -134,8 +136,12 @@ export function findKlingConflicts(
   if (config.generate_audio && !caps.audio) {
     conflicts.push({ field: 'generate_audio', i18nLabel: 'kling.name.generateAudio' });
   }
-  if (config.camera_control?.type && !caps.motionControl) {
-    conflicts.push({ field: 'camera_control', i18nLabel: 'kling.name.cameraControl' });
+  // camera_control is rejected by the model matrix and additionally by the
+  // upstream worker for any image2video request (start_image_url set).
+  if (config.camera_control?.type) {
+    if (!caps.motionControl || config.start_image_url) {
+      conflicts.push({ field: 'camera_control', i18nLabel: 'kling.name.cameraControl' });
+    }
   }
 
   return conflicts;
@@ -145,10 +151,7 @@ export function findKlingConflicts(
  * Apply the conflict resolutions to a config object. Returns a new config with
  * the offending fields cleared.
  */
-export function clearKlingConflicts(
-  config: Record<string, any>,
-  conflicts: IKlingConflict[]
-): Record<string, any> {
+export function clearKlingConflicts(config: Record<string, any>, conflicts: IKlingConflict[]): Record<string, any> {
   const next = { ...config };
   for (const c of conflicts) {
     if (c.field === 'end_image_url') next.end_image_url = undefined;
