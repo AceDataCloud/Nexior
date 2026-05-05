@@ -25,7 +25,7 @@ export async function loadPreviousPage(options: {
     isBlocked,
     fetch,
     getScrollElement,
-    reachThreshold = 40
+    reachThreshold = 200
   } = options;
   const currentTasks = getTasks ? getTasks() : tasks;
   if ((loading && !ignoreLoadingGuard) || isBlocked?.()) {
