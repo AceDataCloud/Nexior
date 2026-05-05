@@ -64,8 +64,8 @@
     "description": "Description of the model parameter"
   },
   "description.size": {
-    "message": "Image size. Pick a resolution tier (1K-4K), `adaptive` (match the reference image), or an explicit `<width>x<height>` like `1024x1024` or `1280x720`. You can also type any `<width>x<height>` directly into the dropdown.",
-    "description": "Description of the size parameter"
+    "message": "Image size. Allowed tier presets vary by model: 5.0 supports 2K/3K/4K, 4.5/4.0 support 1K/2K/4K, and 3.0-t2i / seededit-3.0-i2i only accept explicit `<width>x<height>` pixel values (e.g. 1024x1024, 1280x720). On preset-supporting models you can also pick `adaptive` (match the reference image) or type any `<width>x<height>` directly into the dropdown.",
+    "description": "Description of the size parameter (per-model)"
   },
   "description.watermark": {
     "message": "Whether to add an AI watermark to the generated image. Enabled by default.",
@@ -83,6 +83,10 @@
     "message": "Select",
     "description": "Selection placeholder"
   },
+  "placeholder.size": {
+    "message": "Pick a preset or type <width>x<height>",
+    "description": "size selector placeholder (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Enter prompt, e.g., a white Siamese cat",
     "description": "Prompt placeholder"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Upload",
     "description": "Upload reference images button (simplified to 'Upload')"
+  },
+  "button.confirmContinue": {
+    "message": "Continue Switching",
+    "description": "Confirm button on the capability-conflict prompt"
+  },
+  "button.cancelSwitch": {
+    "message": "Cancel",
+    "description": "Cancel button on the capability-conflict prompt"
   },
   "message.startingTask": {
     "message": "Starting task...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Image upload failed, please try again later",
     "description": "Upload failure"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirmation Required",
+    "description": "Title of the capability-conflict prompt"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "The current selection does not support the following enabled settings: {fields}. Continuing will clear these settings.",
+    "description": "Body of the capability-conflict prompt"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Cleared unsupported settings: {fields}",
+    "description": "Toast shown after the user confirms the capability-conflict prompt"
   },
   "name.model": {
     "message": "Model",

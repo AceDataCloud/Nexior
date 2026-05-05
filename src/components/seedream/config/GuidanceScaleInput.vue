@@ -25,7 +25,7 @@
 import { defineComponent } from 'vue';
 import { ElInputNumber } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_GUIDANCE_SCALE_DEFAULTS, supportsSeedreamGuidanceScale } from '@/constants';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamGuidanceScaleInput',
@@ -38,11 +38,10 @@ export default defineComponent({
       return this.$store.state.seedream?.config || {};
     },
     supported(): boolean {
-      return supportsSeedreamGuidanceScale(this.config?.model);
+      return getSeedreamCapabilities(this.config?.model).guidanceScale;
     },
     defaultValue(): number {
-      const m: string | undefined = this.config?.model;
-      return (m && SEEDREAM_GUIDANCE_SCALE_DEFAULTS[m]) || 2.5;
+      return getSeedreamCapabilities(this.config?.model).guidanceScaleDefault ?? 2.5;
     },
     value: {
       get(): number {
@@ -54,19 +53,6 @@ export default defineComponent({
         const next = typeof val === 'number' && val >= 1 && val <= 10 ? val : this.defaultValue;
         cfg.guidance_scale = next;
         this.$store.commit('seedream/setConfig', cfg);
-      }
-    }
-  },
-  watch: {
-    supported: {
-      immediate: true,
-      handler(v: boolean) {
-        if (v) return;
-        const cfg = { ...(this.config || {}) };
-        if (cfg.guidance_scale !== undefined) {
-          delete cfg.guidance_scale;
-          this.$store.commit('seedream/setConfig', cfg);
-        }
       }
     }
   }

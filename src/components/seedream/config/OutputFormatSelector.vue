@@ -16,7 +16,8 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDREAM_OUTPUT_FORMATS, supportsSeedreamOutputFormat } from '@/constants';
+import { SEEDREAM_OUTPUT_FORMATS } from '@/constants';
+import { getSeedreamCapabilities } from '@/utils/seedream/capabilities';
 
 export default defineComponent({
   name: 'SeedreamOutputFormatSelector',
@@ -35,7 +36,7 @@ export default defineComponent({
       return this.$store.state.seedream?.config || {};
     },
     supported(): boolean {
-      return supportsSeedreamOutputFormat(this.config?.model);
+      return getSeedreamCapabilities(this.config?.model).outputFormat;
     },
     value: {
       get(): string | undefined {
@@ -45,19 +46,6 @@ export default defineComponent({
         const cfg = { ...(this.config || {}) };
         cfg.output_format = val;
         this.$store.commit('seedream/setConfig', cfg);
-      }
-    }
-  },
-  watch: {
-    supported: {
-      immediate: true,
-      handler(v: boolean) {
-        if (v) return;
-        const cfg = { ...(this.config || {}) };
-        if (cfg.output_format !== undefined) {
-          delete cfg.output_format;
-          this.$store.commit('seedream/setConfig', cfg);
-        }
       }
     }
   }

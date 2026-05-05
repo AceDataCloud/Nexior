@@ -64,8 +64,8 @@
     "description": "model 参数说明"
   },
   "description.size": {
-    "message": "图片尺寸。可选分辨率档位（1K-4K）、自适应（与参考图比例一致）或具体像素尺寸如 `1024x1024`、`1280x720`，也可在下拉框中直接输入任意 `<宽>x<高>`。",
-    "description": "size 参数说明"
+    "message": "图片尺寸。不同模型支持的预设不同：5.0 仅支持 2K/3K/4K，4.5/4.0 支持 1K/2K/4K，3.0-t2i 与 seededit-3.0-i2i 仅支持 `<宽>x<高>` 像素值（如 1024x1024、1280x720）。预设模型还可选择「自适应」（与参考图保持一致比例），也可在下拉框中直接输入任意 `<宽>x<高>`。",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
     "message": "是否在生成的图片中添加 AI 水印。默认开启。",
@@ -83,6 +83,10 @@
     "message": "选择",
     "description": "选择占位"
   },
+  "placeholder.size": {
+    "message": "选择预设或输入 <宽>x<高>",
+    "description": "size 选择/输入占位（el-select allow-create）"
+  },
   "placeholder.prompt": {
     "message": "输入提示词，例如：一只白色的暹罗猫",
     "description": "提示占位"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "上传图片",
     "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "继续切换",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
     "message": "正在启动任务...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "上传图片失败，请稍后重试",
     "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要确认",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "当前选择不支持以下已启用的设置：{fields}。继续将清理这些设置。",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的设置：{fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "模型",
