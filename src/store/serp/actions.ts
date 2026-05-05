@@ -11,52 +11,41 @@ export const resetAll = ({ commit }: ActionContext<ISerpState, IRootState>): voi
 };
 
 export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
-  console.debug('set application', payload);
   commit('setApplication', payload);
   if (!payload) {
-    console.debug('application is null, return');
     return;
   }
   const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
   if (credential) {
-    console.debug('credential exists, set credential', credential);
     commit('setCredential', credential);
   } else {
-    console.debug('credential not exists, start to create credential for application', payload);
     await dispatch('createCredential');
   }
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications', payload);
   commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  console.debug('set service', payload);
   commit('setService', payload);
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  console.debug('set credential', payload);
   commit('setCredential', payload);
 };
 
 export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
   const application = state.application;
-  console.debug('prepare to create credential for application', application);
   if (!application) {
     console.error('Application not found');
     return undefined;
   }
-  console.debug('creating create credential for application', application);
   const { data: credential } = await credentialOperator.create({
     application_id: application?.id,
     host: window.location.origin
   });
-  console.debug('created credential success', credential);
   commit('setCredential', credential);
-  console.debug('end createCredential');
   return credential;
 };
 
@@ -81,7 +70,6 @@ export const getApplications = async ({
   state,
   rootState
 }: ActionContext<ISerpState, IRootState>): Promise<IApplication[] | undefined> => {
-  console.debug('start to get applications for serp');
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({

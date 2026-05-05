@@ -12,52 +12,41 @@ export const resetAll = ({ commit }: ActionContext<IPixverseState, IRootState>):
 };
 
 export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
-  console.debug('set application', payload);
   commit('setApplication', payload);
   if (!payload) {
-    console.debug('application is null, return');
     return;
   }
   const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
   if (credential) {
-    console.debug('credential exists, set credential', credential);
     commit('setCredential', credential);
   } else {
-    console.debug('credential not exists, start to create credential for application', payload);
     await dispatch('createCredential');
   }
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications', payload);
   commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  console.debug('set service', payload);
   commit('setService', payload);
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  console.debug('set credential', payload);
   commit('setCredential', payload);
 };
 
 export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
   const application = state.application;
-  console.debug('prepare to create credential for application', application);
   if (!application) {
     console.error('Application not found');
     return undefined;
   }
-  console.debug('creating create credential for application', application);
   const { data: credential } = await credentialOperator.create({
     application_id: application?.id,
     host: window.location.origin
   });
-  console.debug('created credential success', credential);
   commit('setCredential', credential);
-  console.debug('end createCredential');
   return credential;
 };
 
@@ -82,10 +71,7 @@ export const getApplications = async ({
   state,
   rootState
 }: ActionContext<IPixverseState, IRootState>): Promise<IApplication[] | undefined> => {
-  console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
-  const currentApplication = state.application;
-  console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
       user_id: rootState?.user?.id,
@@ -125,16 +111,12 @@ export const setTasksActive = ({ commit }: any, payload: IPixverseTask) => {
 export const getTasks = async (
   { commit, state, rootState }: ActionContext<IPixverseState, IRootState>,
   {
-    offset,
-    limit,
     createdAtMin,
     createdAtMax
   }: { offset?: number; limit?: number; createdAtMin?: number; createdAtMax?: number }
 ): Promise<IPixverseTask[]> => {
   return new Promise((resolve, reject) => {
-    console.debug('start to get tasks', offset, limit);
     const credential = state.credential;
-    console.debug('current credential', credential);
     const token = credential?.token;
     if (!token) {
       return reject('no token');
@@ -152,12 +134,9 @@ export const getTasks = async (
         }
       )
       .then((response) => {
-        console.debug('get videos tasks success', response.data.items);
         // merge with existing tasks
         const existingItems = state?.tasks?.items || [];
-        console.debug('existing items', existingItems);
         const newItems = response.data.items || [];
-        console.debug('new items', newItems);
         // sort and de-duplicate using created_at
         const mergedItems = mergeAndSortLists(existingItems, newItems);
         commit('setTasksItems', mergedItems);

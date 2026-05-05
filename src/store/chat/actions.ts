@@ -10,53 +10,41 @@ export const resetAll = ({ commit }: ActionContext<IChatState, IRootState>): voi
 };
 
 export const setApplication = async ({ commit, dispatch }: any, payload: IApplication): Promise<void> => {
-  console.debug('set application', payload);
   commit('setApplication', payload);
-  console.debug('application is set');
   if (!payload) {
-    console.debug('application is null, return');
     return;
   }
   const credential = payload?.credentials?.find((credential) => credential?.host === window.location.origin);
   if (credential) {
-    console.debug('credential exists, set credential', credential);
     commit('setCredential', credential);
   } else {
-    console.debug('credential not exists, start to create credential for application', payload);
     await dispatch('createCredential');
   }
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications for chat', payload);
   commit('setApplications', payload);
 };
 
 export const setService = async ({ commit }: any, payload: IService): Promise<void> => {
-  console.debug('set service for chat', payload);
   commit('setService', payload);
 };
 
 export const setCredential = async ({ commit }: any, payload: ICredential): Promise<void> => {
-  console.debug('set credential', payload);
   commit('setCredential', payload);
 };
 
 export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
   const application = state.application;
-  console.debug('prepare to create credential for application for chat', application);
   if (!application) {
     console.error('Application not found');
     return undefined;
   }
-  console.debug('creating create credential for application for chat', application);
   const { data: credential } = await credentialOperator.create({
     application_id: application?.id,
     host: window.location.origin
   });
-  console.debug('created credential success', credential);
   commit('setCredential', credential);
-  console.debug('end createCredential');
   return credential;
 };
 
@@ -81,17 +69,14 @@ export const getApplications = async ({
   state,
   rootState
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
-  console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({
       user_id: rootState?.user?.id,
       service_id: CHAT_SERVICE_ID
     });
-    console.debug('get applications success for chat', applications);
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
-    console.debug('set applications for chat', applications.items);
     return applications.items;
   } catch (error) {
     console.error('get applications failed for chat', error);
@@ -110,7 +95,6 @@ export const setModelGroup = async ({ commit }: any, payload: IChatModelGroup): 
 };
 
 export const setConversation = async ({ commit, state }: any, payload: IChatConversation): Promise<void> => {
-  console.debug('set conversation', payload);
   const conversations = state.conversations || [];
   const index = conversations?.findIndex((conversation: IChatConversation) => conversation.id === payload.id);
   if (index > -1) {
@@ -119,11 +103,9 @@ export const setConversation = async ({ commit, state }: any, payload: IChatConv
     conversations?.unshift(payload);
   }
   commit('setConversations', conversations);
-  console.debug('set conversation success', conversations);
 };
 
 export const setConversations = async ({ commit }: any, payload: IChatConversation[]): Promise<void> => {
-  console.debug('set conversations', payload);
   commit('setConversations', payload);
 };
 
@@ -155,7 +137,6 @@ export const getConversations = async ({
         token
       }
     );
-    console.debug('get conversations success', data?.items?.length, 'group=', modelGroup);
     state.status.getConversations = Status.Success;
     commit('setConversations', data.items);
     return data.items;

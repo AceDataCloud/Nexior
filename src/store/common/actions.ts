@@ -52,12 +52,10 @@ export const setFingerprint = ({ commit }: ActionContext<IRootState, IRootState>
 };
 
 export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>): Promise<IUser | undefined> => {
-  console.debug('start to get user');
   try {
     commit('resetUser');
     const { data: user } = await userOperator.getMe();
     commit('setUser', user);
-    console.debug('get user success', user);
     return user;
   } catch (error) {
     console.error('get user failed', error);
@@ -73,26 +71,22 @@ export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRoot
   const fp = await FingerprintJS.load();
   const result = await fp.get();
   const visitorId = result.visitorId;
-  console.debug('visitorId', visitorId);
   commit('setFingerprint', visitorId);
   return visitorId;
 };
 
 export const getToken = async ({ commit }: ActionContext<IRootState, IRootState>, code: string) => {
-  console.debug('start to get token using code', code);
   try {
     commit('resetToken');
     const { data } = await ssoOperator.token({
       code
     });
-    console.debug('get token success', data);
     const token = {
       access: data.access_token,
       refresh: data.refresh_token,
       expiration: data.expires_in
     };
     commit('setToken', token);
-    console.debug('get token success', data);
     return token;
   } catch (error) {
     console.error('get token failed', error);
@@ -107,10 +101,8 @@ export const getExchangeRate = async (
     return;
   }
   const key = `${payload.source}-${payload.target}`;
-  console.debug('start to get exchange rate', key);
   try {
     const { data } = await exchangeOperator.rate(payload);
-    console.debug('get exchange rate success', data);
     commit('setExchange', {
       [key]: data.rate
     });
@@ -121,12 +113,10 @@ export const getExchangeRate = async (
 };
 
 export const initializeSite = async ({ state, commit, dispatch }: ActionContext<IRootState, IRootState>) => {
-  console.debug('start to initialize site');
   const origin = getSiteOrigin(state?.site);
   try {
     const { data } = await siteOperator.initialize({ origin });
     commit('setSite', data);
-    console.debug('initialize site success', data);
   } catch (error) {
     console.error('initialize site failed', error);
     dispatch('login');
@@ -134,7 +124,6 @@ export const initializeSite = async ({ state, commit, dispatch }: ActionContext<
 };
 
 export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
-  console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
     const site = (
@@ -143,14 +132,12 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
       })
     )?.data?.items?.[0];
     commit('setSite', site);
-    console.debug('get site success', site);
   } catch (error) {
     console.error('get site failed', error);
   }
 };
 
 export const fetchConfig = async ({ commit }: ActionContext<IRootState, IRootState>) => {
-  console.debug('start to fetch config');
   try {
     const { data } = await configOperator.get();
     commit('setConfig', data);
@@ -163,7 +150,6 @@ export const fetchConfig = async ({ commit }: ActionContext<IRootState, IRootSta
 };
 
 export const setApplications = async ({ commit }: any, payload: IApplication[]): Promise<void> => {
-  console.debug('set applications', payload);
   commit('setApplications', payload);
 };
 
@@ -172,7 +158,6 @@ export const getApplications = async ({
   state,
   rootState
 }: ActionContext<IRootState, IRootState>): Promise<IApplication[] | undefined> => {
-  console.debug('start to get applications for global');
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({
@@ -183,7 +168,6 @@ export const getApplications = async ({
       type: IApplicationType.USAGE,
       scope: IApplicationScope.GLOBAL
     });
-    console.debug('global applications from online', applications);
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
     return applications.items;
@@ -196,19 +180,15 @@ export const getApplications = async ({
 
 export const createCredential = async ({ commit, state }: any): Promise<ICredential | undefined> => {
   const application = state.application;
-  console.debug('prepare to create credential for application', application);
   if (!application) {
     console.error('Application not found');
     return undefined;
   }
-  console.debug('creating create credential for application', application);
   const { data: credential } = await credentialOperator.create({
     application_id: application?.id,
     host: window.location.origin
   });
-  console.debug('created credential success', credential);
   commit('setCredential', credential);
-  console.debug('end createCredential');
   return credential;
 };
 
@@ -219,12 +199,10 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
       flow: 'popup',
       visible: true
     });
-    console.debug('login popup');
   } else {
     commit('setAuth', {
       flow: 'redirect'
     });
-    console.debug('login redirect');
     // Preserve the original query string (e.g. ?inviter_id, ?utm_source) so
     // it survives the auth round-trip and is still present when the user
     // lands back on Nexior. inviter_id is also forwarded as a top-level
