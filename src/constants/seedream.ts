@@ -39,42 +39,22 @@ export const SEEDREAM_PIXEL_PRESETS: { value: string; ratio: string }[] = [
   { value: '1728x2304', ratio: '3:4' }
 ];
 
-// Models that support `seed` and `guidance_scale`. Mirrors the upstream
-// validation in PlatformService/volcengine/worker/src/handlers/seedream/images.ts.
-export const SEEDREAM_SEED_MODELS: string[] = [SEEDREAM_MODEL_3_0_T2I, SEEDREAM_MODEL_SEEDEDIT_3_0_I2I];
-
+// Per-model `guidance_scale` defaults — read by both GuidanceScaleInput and
+// `utils/seedream/capabilities.ts`. Mirrors the upstream defaults at
+// PlatformService/volcengine/worker/src/handlers/seedream/images.ts.
 export const SEEDREAM_GUIDANCE_SCALE_DEFAULTS: Record<string, number> = {
   [SEEDREAM_MODEL_3_0_T2I]: 2.5,
   [SEEDREAM_MODEL_SEEDEDIT_3_0_I2I]: 5.5
 };
 
-// `output_format` is only accepted for doubao-seedream-5.0 by the upstream.
-export const SEEDREAM_OUTPUT_FORMAT_MODELS: string[] = [SEEDREAM_MODEL_5_0];
 export const SEEDREAM_OUTPUT_FORMATS = ['jpeg', 'png'] as const;
-
-export const supportsSeedreamSeed = (model?: string): boolean =>
-  !!model && SEEDREAM_SEED_MODELS.includes(model);
-
-export const supportsSeedreamGuidanceScale = (model?: string): boolean =>
-  !!model && SEEDREAM_SEED_MODELS.includes(model);
-
-export const supportsSeedreamOutputFormat = (model?: string): boolean =>
-  !!model && SEEDREAM_OUTPUT_FORMAT_MODELS.includes(model);
 
 // Group / multi-image generation:
 // Volcengine LAS supports up to 15 images per request when
 // `sequential_image_generation=auto`, gated by:
 //   (input reference images) + (generated images) <= 15.
-// 4.0 / 4.5 / 5.0 are the only models that support it; 3.0-t2i and
-// seededit-3.0-i2i are single-image only.
 export const SEEDREAM_MAX_IMAGES_LIMIT = 15;
 export const SEEDREAM_DEFAULT_MAX_IMAGES = 1;
-export const SEEDREAM_GROUP_GENERATION_MODELS: string[] = [SEEDREAM_MODEL_5_0, SEEDREAM_MODEL_4_5, SEEDREAM_MODEL_4_0];
-
-export const supportsSeedreamGroupGeneration = (model?: string): boolean => {
-  if (!model) return false;
-  return SEEDREAM_GROUP_GENERATION_MODELS.includes(model);
-};
 
 export const SEEDREAM_MODEL_FULL_TO_SHORT: Record<string, string> = {
   [SEEDREAM_MODEL_5_0]: 'doubao-seedream-5.0',
