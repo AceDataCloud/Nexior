@@ -70,9 +70,17 @@ export function getFinalApplication(
   currentApplication?: IApplication
 ): IApplication | undefined {
   console.debug('start to execute getFinalApplication', applications, currentApplication);
-  if (currentApplication && applications?.some((app) => app.id === currentApplication.id)) {
-    console.debug('current application is preserved (respect user selection)', currentApplication);
-    return currentApplication;
+  if (currentApplication) {
+    const fresh = applications?.find((app) => app.id === currentApplication.id);
+    if (fresh) {
+      // The previously-selected app still exists. Return the FRESH copy
+      // from the just-fetched list (not `currentApplication` itself), so
+      // mutable fields like `remaining_amount` / `used_amount` /
+      // `expired_at` reflect server truth instead of a stale persisted
+      // snapshot.
+      console.debug('current application is preserved (respect user selection)', fresh);
+      return fresh;
+    }
   }
   console.debug('get final application from applications', applications);
   // check if there is any application with 'Global' scope and 'Period' type, if yes, use it
