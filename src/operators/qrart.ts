@@ -9,7 +9,7 @@ class QrartOperator extends BaseTaskOperator<
   ITaskListFilter
 > {
   constructor() {
-    super({ tasksPath: '/qrart/tasks', generatePath: '/qrart/images' });
+    super({ tasksPath: '/qrart/tasks', generatePath: '/qrart/generate' });
   }
 }
 

@@ -14,7 +14,7 @@ class NanobananaOperator extends BaseTaskOperator<
   ITaskListFilter & { type?: string }
 > {
   constructor() {
-    super({ tasksPath: '/nanobanana/tasks', generatePath: '/nanobanana/images' });
+    super({ tasksPath: '/nano-banana/tasks', generatePath: '/nano-banana/images' });
   }
 }
 
