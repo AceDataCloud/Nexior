@@ -1,10 +1,20 @@
 import type { App } from 'vue';
 
 export async function installSolanaWallets(app: App): Promise<void> {
-  const [{ default: SolanaWallets }, { WalletAdapterNetwork }, walletAdapters] = await Promise.all([
+  const [
+    { default: SolanaWallets },
+    { WalletAdapterNetwork },
+    { PhantomWalletAdapter },
+    { SolflareWalletAdapter },
+    { NightlyWalletAdapter },
+    { WalletConnectWalletAdapter }
+  ] = await Promise.all([
     import('solana-wallets-vue'),
     import('@solana/wallet-adapter-base'),
-    import('@solana/wallet-adapter-wallets')
+    import('@solana/wallet-adapter-phantom'),
+    import('@solana/wallet-adapter-solflare'),
+    import('@solana/wallet-adapter-nightly'),
+    import('@solana/wallet-adapter-walletconnect')
   ]);
 
   // Load the CSS
@@ -14,10 +24,10 @@ export async function installSolanaWallets(app: App): Promise<void> {
 
   const walletOptions = {
     wallets: [
-      new walletAdapters.PhantomWalletAdapter(),
-      new walletAdapters.SolflareWalletAdapter({ network: WalletAdapterNetwork.Mainnet }),
-      new walletAdapters.NightlyWalletAdapter(),
-      new walletAdapters.WalletConnectWalletAdapter({
+      new PhantomWalletAdapter(),
+      new SolflareWalletAdapter({ network: WalletAdapterNetwork.Mainnet }),
+      new NightlyWalletAdapter(),
+      new WalletConnectWalletAdapter({
         network: WalletAdapterNetwork.Mainnet,
         options: {
           projectId: walletConnectProjectId,
