@@ -27,13 +27,13 @@ import { applicationOperator, qrartOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IQrartGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/qrart';
+const CALLBACK_URL = getWebhookCallbackUrl('qrart');
 
 interface IData {
   task: IQrartTask | undefined;

@@ -17,12 +17,12 @@ import { applicationOperator, pikaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IPikaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/pika/RecentPanel.vue';
 import { IPikaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/pika';
+const CALLBACK_URL = getWebhookCallbackUrl('pika');
 
 interface IData {
   task: IPikaTask | undefined;
