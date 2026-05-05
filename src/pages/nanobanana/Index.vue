@@ -96,9 +96,6 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      // Use the shared paginator. preserveScroll=false leaves scrollTop at 0
-      // so a continued upward gesture keeps firing reach-top for further
-      // pages instead of getting stranded after the first prepend.
       await loadPreviousPage({
         tasks: this.tasks,
         getTasks: () => this.tasks,
@@ -106,8 +103,7 @@ export default defineComponent({
         setLoading: (v) => (this.loading = v),
         isBlocked: () => this.tasksLoading,
         fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
-        getScrollElement: () => this.getTasksScrollElement(),
-        preserveScroll: false
+        getScrollElement: () => this.getTasksScrollElement()
       });
     },
     async onGetService() {

@@ -103,8 +103,7 @@ export default defineComponent({
         setLoading: (v) => (this.loading = v),
         isBlocked: () => this.tasksLoading,
         fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
-        getScrollElement: () => this.getTasksScrollElement(),
-        preserveScroll: false
+        getScrollElement: () => this.getTasksScrollElement()
       });
     },
     async onGetService() {
