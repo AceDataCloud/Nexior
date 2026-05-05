@@ -9,8 +9,8 @@
             <reference-image class="mb-2" />
             <ratio-selector class="mb-4" />
             <quality-selector class="mb-4" />
-            <version-selector class="mb-4" />
-            <hd-selector v-if="isV8" class="mb-4" />
+            <version-selector v-if="!isNiji" class="mb-4" />
+            <hd-selector v-if="isV8 && !isNiji" class="mb-4" />
             <elements-selector class="mb-2" />
             <advanced-selector class="mb-2" />
             <div v-show="config?.advanced">
@@ -118,6 +118,9 @@ export default defineComponent({
     },
     isV8(): boolean {
       return this.config?.version === '8';
+    },
+    isNiji(): boolean {
+      return !!this.config?.model?.includes('niji');
     },
     type: {
       get() {
