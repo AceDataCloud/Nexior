@@ -227,50 +227,53 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   }
 };
 
-// Map every routeable feature key to the route name it should land on.
-// Note: this map only declares "this feature has a landing page". The order
-// of the user's default route is taken from the site's `features` config
-// (insertion order returned by the API), NOT from this map — so operators
-// can control which feature greets new visitors by ordering site.features.
-const FEATURE_ROUTE_NAME: Record<string, string> = {
-  chatgpt: ROUTE_CHATGPT_CONVERSATION_NEW,
-  deepseek: ROUTE_DEEPSEEK_CONVERSATION_NEW,
-  grok: ROUTE_GROK_CONVERSATION_NEW,
-  gemini: ROUTE_GEMINI_CONVERSATION_NEW,
-  claude: ROUTE_CLAUDE_CONVERSATION_NEW,
-  kimi: ROUTE_KIMI_CONVERSATION_NEW,
-  midjourney: ROUTE_MIDJOURNEY_INDEX,
-  flux: ROUTE_FLUX_INDEX,
-  nanobanana: ROUTE_NANOBANANA_INDEX,
-  openaiimage: ROUTE_OPENAIIMAGE_INDEX,
-  seedream: ROUTE_SEEDREAM_INDEX,
-  suno: ROUTE_SUNO_INDEX,
-  producer: ROUTE_PRODUCER_INDEX,
-  seedance: ROUTE_SEEDANCE_INDEX,
-  luma: ROUTE_LUMA_INDEX,
-  hailuo: ROUTE_HAILUO_INDEX,
-  kling: ROUTE_KLING_INDEX,
-  veo: ROUTE_VEO_INDEX,
-  sora: ROUTE_SORA_INDEX,
-  pixverse: ROUTE_PIXVERSE_INDEX,
-  wan: ROUTE_WAN_INDEX,
-  serp: ROUTE_SERP_INDEX
-};
+// Ordered priority list: each entry is [feature key, landing route name].
+// `getDefaultRoute()` walks this list top-to-bottom and picks the first
+// feature that is enabled in `site.features`. This order — NOT the order
+// of keys in the API response — controls which feature greets new visitors.
+//
+// Why not trust `site.features` insertion order? `Site.features` is stored
+// in PostgreSQL `jsonb`, which does NOT preserve key order across writes:
+// any partial update can shuffle keys. Relying on that order has bitten us
+// (e.g. studio.acedata.cloud landed on /veo because `veo` happened to be
+// the first key after a feature toggle re-serialized the jsonb blob).
+const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
+  ['chatgpt', ROUTE_CHATGPT_CONVERSATION_NEW],
+  ['claude', ROUTE_CLAUDE_CONVERSATION_NEW],
+  ['gemini', ROUTE_GEMINI_CONVERSATION_NEW],
+  ['grok', ROUTE_GROK_CONVERSATION_NEW],
+  ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW],
+  ['kimi', ROUTE_KIMI_CONVERSATION_NEW],
+  ['midjourney', ROUTE_MIDJOURNEY_INDEX],
+  ['nanobanana', ROUTE_NANOBANANA_INDEX],
+  ['flux', ROUTE_FLUX_INDEX],
+  ['seedream', ROUTE_SEEDREAM_INDEX],
+  ['openaiimage', ROUTE_OPENAIIMAGE_INDEX],
+  ['suno', ROUTE_SUNO_INDEX],
+  ['producer', ROUTE_PRODUCER_INDEX],
+  ['veo', ROUTE_VEO_INDEX],
+  ['sora', ROUTE_SORA_INDEX],
+  ['kling', ROUTE_KLING_INDEX],
+  ['luma', ROUTE_LUMA_INDEX],
+  ['hailuo', ROUTE_HAILUO_INDEX],
+  ['seedance', ROUTE_SEEDANCE_INDEX],
+  ['pixverse', ROUTE_PIXVERSE_INDEX],
+  ['wan', ROUTE_WAN_INDEX],
+  ['serp', ROUTE_SERP_INDEX]
+];
 
 const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
-  // Walk site.features in the order the API returned them and pick the
-  // first enabled feature that maps to a known landing route.
-  for (const key of Object.keys(features)) {
-    if (!features[key]?.enabled) continue;
-    const name = FEATURE_ROUTE_NAME[key];
-    // IMPORTANT: must return { name } — returning a bare string makes
-    // vue-router treat it as a *path*, which would navigate to e.g.
-    // /chatgpt-conversation-new (the route name) instead of the actual
-    // path /chatgpt/conversations.
-    if (name) return { name };
+  for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
+    if (features[key]?.enabled) {
+      // IMPORTANT: must return { name } — returning a bare string makes
+      // vue-router treat it as a *path*, which would navigate to e.g.
+      // /chatgpt-conversation-new (the route name) instead of the actual
+      // path /chatgpt/conversations.
+      return { name };
+    }
   }
-  // Fallback: if no enabled feature has a landing route, use chatgpt.
+  // Fallback: if no priority feature is enabled, use chatgpt.
   return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
 };
 
