@@ -1,15 +1,5 @@
 <template>
   <div>
-    <!-- Creation Mode Tabs -->
-    <div class="mode-tabs mb-3">
-      <button class="mode-tab" :class="{ active: !custom }" @click="custom = false">
-        {{ $t('suno.mode.simple') }}
-      </button>
-      <button class="mode-tab" :class="{ active: custom }" @click="custom = true">
-        {{ $t('suno.mode.custom') }}
-      </button>
-    </div>
-
     <!-- Model Selection -->
     <div class="mb-3">
       <div class="flex items-center mb-1">
@@ -158,37 +148,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.mode-tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--el-fill-color-light);
-  border-radius: 8px;
-  padding: 3px;
-}
-
-.mode-tab {
-  flex: 1;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--el-text-color-secondary);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &.active {
-    background: var(--el-bg-color);
-    color: var(--el-text-color-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-
-  &:hover:not(.active) {
-    color: var(--el-text-color-primary);
-  }
-}
-
 .model-option {
   display: flex;
   align-items: center;
