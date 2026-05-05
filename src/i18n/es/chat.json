@@ -1,11 +1,11 @@
 {
   "thinking.inProgress": {
     "message": "Pensando...",
-    "description": "Etiqueta mostrada mientras el modelo genera el proceso de inferencia"
+    "description": "Etiqueta mostrada mientras el modelo genera el proceso de razonamiento"
   },
   "thinking.done": {
     "message": "Proceso de pensamiento",
-    "description": "Etiqueta para mostrar el proceso de inferencia una vez que el modelo ha terminado"
+    "description": "Etiqueta utilizada para mostrar el proceso de razonamiento una vez que el modelo ha terminado"
   },
   "button.thinkDeeper": {
     "message": "Pensar más profundo",
@@ -113,11 +113,11 @@
   },
   "model.deepseekReasoner": {
     "message": "R1",
-    "description": "Nombre del modelo del servicio, es decir, DeepSeek Reasoner"
+    "description": "Nombre del modelo del servicio, es decir, DeepSeek Razonador"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Adecuado para inferencias y problemas de pensamiento profundo",
-    "description": "Descripción del modelo DeepSeek Reasoner"
+    "message": "Adecuado para razonamiento y preguntas de pensamiento profundo",
+    "description": "Descripción del modelo DeepSeek Razonador"
   },
   "model.deepseekChat32": {
     "message": "3.2",
@@ -164,7 +164,7 @@
     "description": "Nombre del modelo del servicio, es decir, Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Adecuado para tareas de inferencia complejas",
+    "message": "Adecuado para tareas de razonamiento complejas",
     "description": "Descripción del modelo Gemini 2.5 Pro"
   },
   "model.gemini25Flash": {
@@ -228,7 +228,7 @@
     "description": "Nombre del modelo del servicio, es decir, GLM 5.1"
   },
   "model.glm51Description": {
-    "message": "Último modelo insignia de Zhipu",
+    "message": "Modelo insignia más reciente de Zhipu",
     "description": "Descripción del modelo GLM 5.1"
   },
   "model.glm47": {
@@ -268,8 +268,8 @@
     "description": "Mensaje en la página que indica al usuario que hubo un error al subir el archivo, por favor intente de nuevo más tarde"
   },
   "message.notApplied": {
-    "message": "Aún no ha solicitado este servicio, por favor hágalo primero",
-    "description": "Mensaje en la página que indica al usuario que aún no ha solicitado este servicio, por favor hágalo primero"
+    "message": "No ha solicitado este servicio, por favor hágalo primero",
+    "description": "Mensaje en la página que indica al usuario que no ha solicitado este servicio, por favor hágalo primero"
   },
   "message.tryForFree": {
     "message": "Prueba gratuita",
@@ -277,35 +277,35 @@
   },
   "message.question1": {
     "message": "Crear un plan de entrenamiento",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que escriba un código JavaScript que imprima 'Hello World'"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que escriba un código JavaScript que imprima 'Hello World'"
   },
   "message.question2": {
     "message": "Hacer una página web personal",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que escriba un correo electrónico a Mike informándole que se ha mudado"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que escriba un correo electrónico a Mike informándole que se ha mudado"
   },
   "message.question3": {
     "message": "Diseñar un juego de programación interesante",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que explique los principios básicos de la computación cuántica en un lenguaje sencillo"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que explique los principios básicos de la computación cuántica en un lenguaje sencillo"
   },
   "message.question4": {
     "message": "Experimentar Seúl como un local",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo al usuario que explique el impacto de la realidad virtual en la creación artística"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo al usuario que explique el impacto de la realidad virtual en la creación artística"
   },
   "message.question5": {
     "message": "¿Cuál es mayor, 9.8 o 9.11?",
-    "description": "Ejemplo de pregunta para iniciar la conversación, pidiendo comparar el tamaño de dos números"
+    "description": "Pregunta de ejemplo para iniciar la conversación, pidiendo comparar dos números"
   },
   "message.question6": {
     "message": "¿Qué impacto tiene la IA en el futuro?",
-    "description": "Ejemplo de pregunta para iniciar la conversación, preguntando sobre el impacto de la IA en el futuro"
+    "description": "Pregunta de ejemplo para iniciar la conversación, preguntando sobre el impacto de la IA en el futuro"
   },
   "message.question7": {
     "message": "¿Cómo mejorar la eficiencia del aprendizaje?",
-    "description": "Ejemplo de pregunta para iniciar la conversación, preguntando cómo mejorar la eficiencia del aprendizaje"
+    "description": "Pregunta de ejemplo para iniciar la conversación, preguntando cómo mejorar la eficiencia del aprendizaje"
   },
   "message.question8": {
-    "message": "¿Cómo mejorar la concentración?",
-    "description": "Ejemplo de pregunta para iniciar la conversación, preguntando cómo mejorar la concentración"
+    "message": "¿Cómo aumentar la concentración?",
+    "description": "Pregunta de ejemplo para iniciar la conversación, preguntando cómo aumentar la concentración"
   },
   "message.errorApiError": {
     "message": "Error en la respuesta, por favor intente de nuevo más tarde",
@@ -320,28 +320,28 @@
     "description": "Mensaje en la página que indica al usuario que la conversación no existe o ha expirado, por favor inicie una nueva conversación"
   },
   "message.errorContentTooLarge": {
-    "message": "El contenido del problema es demasiado extenso, por favor acórtalo y vuelve a intentarlo",
-    "description": "Mensaje en la página que informa al usuario que el contenido del problema es demasiado extenso, por favor acórtalo y vuelve a intentarlo"
+    "message": "El contenido de la pregunta es demasiado largo, por favor acórtelo y vuelva a intentarlo",
+    "description": "Mensaje en la página que indica al usuario que el contenido de la pregunta es demasiado largo, por favor acórtelo y vuelva a intentarlo"
   },
   "message.errorTooManyRequests": {
-    "message": "Sus acciones son demasiado frecuentes, por favor inténtelo más tarde",
-    "description": "Mensaje en la página que informa al usuario que sus acciones son demasiado frecuentes, por favor inténtelo más tarde"
+    "message": "Demasiadas solicitudes, por favor intente más tarde",
+    "description": "Mensaje en la página que informa al usuario que ha realizado demasiadas solicitudes, por favor intente más tarde"
   },
   "message.errorBusy": {
-    "message": "El servidor está ocupado, por favor inténtelo más tarde",
-    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor inténtelo más tarde"
+    "message": "El servidor está ocupado, por favor intente de nuevo más tarde",
+    "description": "Mensaje en la página que informa al usuario que el servidor está ocupado, por favor intente de nuevo más tarde"
   },
   "message.errorUsedUp": {
     "message": "Ha agotado su número de usos, por favor compre más para continuar",
     "description": "Mensaje en la página que informa al usuario que ha agotado su número de usos, por favor compre más para continuar"
   },
   "message.errorUnknown": {
-    "message": "Se ha producido un error desconocido en el servidor, por favor inténtelo más tarde o contacte con el soporte",
-    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor inténtelo más tarde o contacte con el soporte"
+    "message": "Se ha producido un error desconocido en el servidor, por favor intente de nuevo más tarde o contacte al soporte",
+    "description": "Mensaje en la página que informa al usuario que se ha producido un error desconocido en el servidor, por favor intente de nuevo más tarde o contacte al soporte"
   },
   "message.errorTimeout": {
-    "message": "Se ha agotado el tiempo de respuesta, por favor inténtelo más tarde",
-    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor inténtelo más tarde"
+    "message": "Se ha agotado el tiempo de respuesta, por favor intente de nuevo más tarde",
+    "description": "Mensaje en la página que informa al usuario que se ha agotado el tiempo de respuesta, por favor intente de nuevo más tarde"
   },
   "message.errorNotApplied": {
     "message": "No ha solicitado este servicio, por favor solicítelo antes de continuar",
@@ -468,11 +468,11 @@
     "description": "Etiqueta del número de herramientas del agente"
   },
   "agent.connectedSince": {
-    "message": "Conectado desde",
+    "message": "Tiempo de conexión",
     "description": "Etiqueta del tiempo de conexión del agente"
   },
   "agent.connectedHint": {
-    "message": "Su agente de escritorio está conectado y listo para usar.",
+    "message": "Su agente de escritorio está conectado y disponible para usar.",
     "description": "Sugerencia de que el agente está conectado"
   },
   "agent.installLabel": {
@@ -481,6 +481,30 @@
   },
   "agent.runLabel": {
     "message": "Ejecutar agente:",
-    "description": "Etiqueta de instrucciones de ejecución"
+    "description": "Etiqueta de descripción de ejecución"
+  },
+  "askUserQuestion.submit": {
+    "message": "Enviar",
+    "description": "Botón de enviar en la tarjeta de preguntar al usuario"
+  },
+  "askUserQuestion.skip": {
+    "message": "Omitir",
+    "description": "Botón de omitir en la tarjeta de preguntar al usuario"
+  },
+  "askUserQuestion.other": {
+    "message": "Otro",
+    "description": "Etiqueta del campo de entrada de respuesta personalizada en la tarjeta de preguntar al usuario"
+  },
+  "askUserQuestion.placeholder": {
+    "message": "Ingresa una respuesta personalizada…",
+    "description": "Texto de marcador de posición en el campo de entrada de respuesta personalizada"
+  },
+  "askUserQuestion.multiSelectHint": {
+    "message": "Selecciona una o más opciones",
+    "description": "Sugerencia mostrada al soportar preguntas de selección múltiple"
+  },
+  "askUserQuestion.collapsedAnswerLabel": {
+    "message": "Tu respuesta",
+    "description": "Texto de respaldo cuando no se puede extraer una respuesta específica de la salida histórica"
   }
 }

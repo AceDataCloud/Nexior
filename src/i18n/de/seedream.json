@@ -25,7 +25,7 @@
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Grund für das Scheitern der Aufgabe"
+    "description": "Ursache für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -53,7 +53,7 @@
   },
   "name.watermark": {
     "message": "Wasserzeichen",
-    "description": "Ob Wasserzeichen hinzugefügt werden soll"
+    "description": "Ob ein Wasserzeichen hinzugefügt werden soll"
   },
   "description.prompt": {
     "message": "Aufforderung zum Erstellen oder Bearbeiten von Bildern",
@@ -84,7 +84,7 @@
     "description": "Platzhalter für Auswahl"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderung ein, z. B.: eine weiße Siamkatze",
+    "message": "Geben Sie die Aufforderung ein, z.B.: eine weiße Siamkatze",
     "description": "Platzhalter für Aufforderung"
   },
   "button.generate": {
@@ -93,7 +93,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Hochladen",
-    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch vereinfachen zu 'Upload', nicht 'Upload Images')"
+    "description": "Button zum Hochladen von Referenzbildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bilder hochladen')"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -125,18 +125,30 @@
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "SeeDream 4.5 Modelloption"
+    "description": "Option für das SeeDream 4.5 Modell"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "SeeDream 4.0 Modelloption"
+    "description": "Option für das SeeDream 4.0 Modell"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "SeeDream 3.0 t2i Modelloption"
+    "description": "Option für das SeeDream 3.0 t2i Modell"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "SeeEdit 3.0 i2i Modelloption"
+    "description": "Option für das SeeEdit 3.0 i2i Modell"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Option für das SeeDream 5.0 Modell (unterstützt Gruppenbilder und Streaming-Ausgabe)"
+  },
+  "name.maxImages": {
+    "message": "Anzahl der Bilder",
+    "description": "Anzahl der Bilder bei der Erstellung von Gruppenbildern (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 ist es der Einzelbildmodus; bei mehr als 1 wird automatisch die Gruppenbildfunktion aktiviert (sequential_image_generation=auto), wobei Charakter, Stil und Details über die Bilder hinweg konsistent bleiben. Unterstützt nur doubao-seedream-5.0 / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
+    "description": "Beschreibung des max_images Parameters"
   }
 }

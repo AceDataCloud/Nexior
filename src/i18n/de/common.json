@@ -17,7 +17,7 @@
   },
   "button.restart": {
     "message": "Neu generieren",
-    "description": "Text im Button, der verwendet wird, um bestimmte Inhalte zurückzusetzen"
+    "description": "Text im Button, der verwendet wird, um bestimmte Inhalte neu zu generieren"
   },
   "button.preview": {
     "message": "Vorschau",
@@ -58,6 +58,10 @@
   "button.cancel": {
     "message": "Abbrechen",
     "description": "Text im Button, der verwendet wird, um eine Aktion abzubrechen"
+  },
+  "button.close": {
+    "message": "Schließen",
+    "description": "Text im Button, der verwendet wird, um ein Dialogfeld oder Panel zu schließen"
   },
   "button.alert": {
     "message": "Warnung",
@@ -120,8 +124,8 @@
     "description": "Text im Button, der verwendet wird, um die iOS-Anwendung zu installieren"
   },
   "button.apply": {
-    "message": "Antrag stellen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung des API-Dienstes zu ermöglichen"
+    "message": "Beantragen",
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Beantragung eines API-Dienstes zu ermöglichen"
   },
   "button.refresh": {
     "message": "Aktualisieren",
@@ -129,19 +133,19 @@
   },
   "button.pay": {
     "message": "Bezahlen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Zahlung der Dienstgebühren zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Zahlung von Dienstgebühren zu ermöglichen"
   },
   "button.repay": {
     "message": "Zahlung fortsetzen",
-    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung der Dienstgebühren zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern die Fortsetzung der Zahlung von Dienstgebühren zu ermöglichen"
   },
   "button.applied": {
-    "message": "Antrag gestellt",
-    "description": "Text im Button, der anzeigt, dass der Benutzer den Dienst beantragt hat"
+    "message": "Beantragt",
+    "description": "Text im Button, der anzeigt, dass der Benutzer diesen Dienst beantragt hat"
   },
   "button.acquire": {
     "message": "Erhalten",
-    "description": "Text im Button, der verwendet wird, um den Benutzern das Erhalten von API-Dienst-Token oder -Schlüsseln zu ermöglichen"
+    "description": "Text im Button, der verwendet wird, um den Benutzern das Erhalten eines Tokens oder Schlüssels für den API-Dienst zu ermöglichen"
   },
   "button.fillExample": {
     "message": "Beispiel ausfüllen",
@@ -205,11 +209,11 @@
   },
   "status.loading": {
     "message": "Wird geladen...",
-    "description": "Statusnachricht, die während des Ladens des Inhalts angezeigt wird"
+    "description": "Statusnachricht, die beim Laden von Inhalten angezeigt wird"
   },
   "entity.operation": {
-    "message": "Aktion",
-    "description": "Aktion der Entität"
+    "message": "Operation",
+    "description": "Operation der Entität"
   },
   "entity.description": {
     "message": "Beschreibung",
@@ -236,7 +240,7 @@
     "description": "Zur Anzeige des bereits verwendeten Betrags für den Dienst"
   },
   "message.mobileAppDescription": {
-    "message": "Verwenden Sie AceData direkt auf Ihrem Handy. Derzeit steht das Android APK zum Download zur Verfügung, das iOS-Installationspaket wird nach der Signierung zum Download freigegeben.",
+    "message": "Verwenden Sie AceData direkt auf Ihrem Handy. Derzeit steht die Android APK zum Download zur Verfügung, das iOS-Installationspaket wird nach der Signierung zum Download freigegeben.",
     "description": "Beschreibung auf der Download-Seite der mobilen Anwendung"
   },
   "message.mobileAndroidHint": {
@@ -244,7 +248,7 @@
     "description": "Hinweis auf der Android-Downloadkarte"
   },
   "message.mobileAndroidPending": {
-    "message": "Das Android-Installationspaket ist noch nicht verfügbar, bitte versuchen Sie es später erneut.",
+    "message": "Das Android-Installationspaket ist noch nicht bereit, bitte versuchen Sie es später erneut.",
     "description": "Hinweis, wenn das Android-Installationspaket noch nicht verfügbar ist"
   },
   "message.mobileAvailableNow": {
@@ -257,22 +261,22 @@
   },
   "message.mobileDirectInstall": {
     "message": "Direkte APK-Installation",
-    "description": "Zur Beschreibung, dass die Android-Version eine direkte APK-Installationsmethode ist"
+    "description": "Zur Beschreibung der direkten APK-Installationsmethode für Android"
   },
   "message.mobileLatestRelease": {
     "message": "Aktuelle öffentliche Version",
     "description": "Zur Erklärung, dass die aktuelle Anzeige die neueste öffentliche Version ist"
   },
   "message.mobileSharedAccount": {
-    "message": "Gemeinsames Konto und Kontingent mit der Web-Version",
-    "description": "Zur Erklärung, dass die mobile Version das Konto mit der Web-Version teilt"
+    "message": "Gemeinsames Konto und Kontingent mit der Webversion",
+    "description": "Zur Erklärung, dass das mobile Konto mit dem Webkonto geteilt wird"
   },
   "message.mobileIosHint": {
     "message": "Für iPhone und iPad, kann direkt online installiert werden; wenn das System blockiert, kann auch zuerst die IPA heruntergeladen und dann verteilt werden.",
     "description": "Hinweis auf der iOS-Downloadkarte"
   },
   "message.mobileIosPending": {
-    "message": "Das iOS-Installationspaket ist noch nicht zum Download verfügbar, wird bereitgestellt, nachdem die Apple-Zertifikate und -Profile vervollständigt sind.",
+    "message": "Das iOS-Installationspaket ist noch nicht zum Download verfügbar, wird nach der Vervollständigung des Apple-Zertifikats und der Beschreibung bereitgestellt.",
     "description": "Hinweis, wenn das iOS-Installationspaket noch nicht verfügbar ist"
   },
   "message.mobileInstallNote": {
@@ -281,18 +285,18 @@
   },
   "title.mobileApp": {
     "message": "Mobile Downloads",
-    "description": "Titel der Download-Seite für die mobile Anwendung"
+    "description": "Titel der Download-Seite für mobile Anwendungen"
   },
   "title.mobileFastAccess": {
     "message": "Schnellerer Zugriff, ohne den App Store zu umgehen",
     "description": "Titel der Vorteilskarte auf der Download-Seite, die schnelle Installation betont"
   },
   "title.mobileTrustedRelease": {
-    "message": "Zentralisierte Versionsverwaltung, stabilere Verteilung",
+    "message": "Versionen zentral verwalten, stabiler verteilen",
     "description": "Titel der Vorteilskarte auf der Download-Seite, die Stabilität von Versionen und Verteilung betont"
   },
   "title.mobileUnifiedExperience": {
-    "message": "Erlebnis auf Mobilgeräten und Web bleibt konsistent",
+    "message": "Erlebnis auf Mobilgeräten und im Web einheitlich",
     "description": "Titel der Vorteilskarte auf der Download-Seite, die ein einheitliches Erlebnis betont"
   },
   "nav.mobileApp": {
@@ -300,7 +304,7 @@
     "description": "Eingang zur mobilen Anwendungsdownload im Navigationsbereich"
   },
   "message.mobileFastAccess": {
-    "message": "Benutzer können die App direkt auf dem Handy scannen und installieren oder zuerst die APK auf dem Desktop herunterladen und dann an Teammitglieder verteilen, geeignet für Szenarien, die eine schnelle Test- und interne Testphase erfordern.",
+    "message": "Benutzer können den QR-Code auf dem Handy scannen, um direkt zu installieren, oder zuerst die APK auf dem Desktop herunterladen und dann an Teammitglieder verteilen, geeignet für Szenarien, die eine schnelle Nutzung und interne Tests erfordern.",
     "description": "Vorteilsbeschreibung auf der Download-Seite, die schnellen Zugang betont"
   },
   "message.mobileTrustedRelease": {
@@ -308,8 +312,8 @@
     "description": "Vorteilsbeschreibung auf der Download-Seite, die einheitliche Verteilung betont"
   },
   "message.mobileUnifiedExperience": {
-    "message": "Das Kontosystem, Kontingent und die Dienstzugänge nach dem Login bleiben mit der Web-Version konsistent, was den nahtlosen Wechsel zwischen Desktop und Mobil erleichtert.",
-    "description": "Vorteilsbeschreibung auf der Download-Seite, die ein einheitliches Kontenerlebnis betont"
+    "message": "Das Kontosystem, Kontingent und die Dienstzugänge nach dem Login sind mit der Webversion identisch, was den nahtlosen Wechsel zwischen Desktop und Mobil erleichtert.",
+    "description": "Vorteilsbeschreibung auf der Download-Seite, die ein einheitliches Kontow Erlebnis betont"
   },
   "message.remainingAmount": {
     "message": "Verbleibender Betrag",
@@ -352,7 +356,7 @@
     "description": "让用户加入Discord频道的消息"
   },
   "message.addWeChat": {
-    "message": "WeChat-Dienst",
+    "message": "WeChat hinzufügen",
     "description": "让用户添加微信账户的消息"
   },
   "message.serviceTech": {
@@ -396,7 +400,7 @@
     "description": "网站导航栏中的文本，用于显示推荐页面"
   },
   "nav.apiPlatform": {
-    "message": "API-Plattform",
+    "message": "API Plattform",
     "description": "网站导航栏中的文本，用于显示API平台页面"
   },
   "nav.document": {
@@ -465,39 +469,39 @@
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Website-Navigationsleiste, um die SeeDance-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'SeeDance' bleiben"
+    "description": "Website-Navigationsleiste, um die SeeDance-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'SeeDance' beibehalten werden"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Website-Navigationsleiste, um die Luma-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Luma' bleiben"
+    "description": "Website-Navigationsleiste, um die Luma-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Luma' beibehalten werden"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Website-Navigationsleiste, um die Pika-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Pika' bleiben"
+    "description": "Website-Navigationsleiste, um die Pika-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Pika' beibehalten werden"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Website-Navigationsleiste, um die Kling-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Kling' bleiben"
+    "description": "Website-Navigationsleiste, um die Kling-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Kling' beibehalten werden"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Website-Navigationsleiste, um die Hailuo-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Hailuo' bleiben"
+    "description": "Website-Navigationsleiste, um die Hailuo-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Hailuo' beibehalten werden"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "Website-Navigationsleiste, um die Wan-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Wan' bleiben"
+    "description": "Website-Navigationsleiste, um die Wan-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Wan' beibehalten werden"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "Website-Navigationsleiste, um die Producer-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Producer' bleiben"
+    "description": "Website-Navigationsleiste, um die Producer-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Producer' beibehalten werden"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "Website-Navigationsleiste, um die Kimi-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'Kimi' bleiben"
+    "description": "Website-Navigationsleiste, um die Kimi-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'Kimi' beibehalten werden"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "Website-Navigationsleiste, um die SERP-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss 'SERP' bleiben"
+    "description": "Website-Navigationsleiste, um die SERP-Seite anzuzeigen, bitte dieses Feld nicht übersetzen, muss als 'SERP' beibehalten werden"
   },
   "nav.image": {
     "message": "Bild",
@@ -536,7 +540,7 @@
     "description": "Website-Navigationsleiste, um die Einstellungsseite anzuzeigen"
   },
   "nav.headshots": {
-    "message": "AI-Porträt",
+    "message": "AI Passfoto",
     "description": "Website-Navigationsleiste, um die Seite für die Site-Konfiguration anzuzeigen"
   },
   "nav.more": {
@@ -557,7 +561,7 @@
   },
   "title.alert": {
     "message": "Warnung",
-    "description": "Titel der Warnmeldung"
+    "description": "Titel der Warnnachricht"
   },
   "title.placeholderOfSelect": {
     "message": "Bitte auswählen",
@@ -620,12 +624,12 @@
     "description": "Teilüberschrift, die Unterstützungsinformationen anzeigt"
   },
   "about.address": {
-    "message": "651 North Broad St, Suite 201, Middletown, DE, USA",
-    "description": "Adresse des Unternehmens"
+    "message": "651 North Broad Street, Suite 201, Middletown, DE, USA",
+    "description": "Die Adresse des Unternehmens"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "E-Mail des Unternehmens"
+    "description": "Die E-Mail-Adresse des Unternehmens"
   },
   "about.link1": {
     "message": "Dienstleistungen",
@@ -661,7 +665,7 @@
   },
   "about.link9": {
     "message": "Datenschutzrichtlinie",
-    "description": "Link zur Datenschutzrichtseite"
+    "description": "Link zur Seite mit der Datenschutzrichtlinie"
   },
   "theme.light": {
     "message": "Helles Thema",
@@ -816,7 +820,7 @@
     "description": "Titel, der auf der Über-Seite anzeigt, auf welchem Open-Source-Projekt diese Seite basiert"
   },
   "settings.poweredByTip": {
-    "message": "Diese Seite basiert auf dem Open-Source-Projekt Nexior, der Code ist vollständig Open Source.",
+    "message": "Diese Seite basiert auf dem Open-Source-Projekt Nexior, der Code ist vollständig Open-Source.",
     "description": "Erklärung auf der Über-Seite, auf welchem Open-Source-Projekt diese Seite basiert"
   },
   "settings.apiService": {
@@ -829,7 +833,7 @@
   },
   "settings.buildYourOwn": {
     "message": "Eigene Version erstellen",
-    "description": "Titel auf der Über-Seite, der den Benutzern anzeigt, dass sie eine ähnliche Seite erstellen können"
+    "description": "Titel auf der Über-Seite, der den Nutzern anzeigt, dass sie eine ähnliche Seite erstellen können"
   },
   "settings.buildYourOwnTip": {
     "message": "Möchten Sie eine ähnliche AI-Seite erstellen? Kontaktieren Sie uns für Unterstützung bei der Bereitstellung.",
@@ -865,6 +869,6 @@
   },
   "button.goBack": {
     "message": "Zurück zur vorherigen Seite",
-    "description": "Text des Buttons, um zur vorherigen Seite der Browsing-Historie zurückzukehren"
+    "description": "Text des Buttons, um zur vorherigen Seite im Verlauf zurückzukehren"
   }
 }

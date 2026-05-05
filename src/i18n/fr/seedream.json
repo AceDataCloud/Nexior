@@ -1,19 +1,19 @@
 {
   "name.taskId": {
-    "message": "ID de la tâche",
+    "message": "ID de tâche",
     "description": "ID de la tâche"
   },
   "name.task": {
     "message": "Type de tâche",
-    "description": "Type d'opération SeeDream pour les images"
+    "description": "Type d'opération d'image SeeDream"
   },
   "name.generate": {
-    "message": "Créer l'image",
-    "description": "Type d'opération : Créer l'image"
+    "message": "Créer une image",
+    "description": "Type d'opération : créer une image"
   },
   "name.edits": {
-    "message": "Modifier l'image",
-    "description": "Type d'opération : Modifier l'image"
+    "message": "Éditer une image",
+    "description": "Type d'opération : éditer une image"
   },
   "name.imageUrls": {
     "message": "Images de référence",
@@ -32,60 +32,60 @@
     "description": "Statut de la tâche"
   },
   "name.traceId": {
-    "message": "ID de trace",
-    "description": "ID de trace"
+    "message": "ID de suivi",
+    "description": "ID de suivi"
   },
   "name.elapsed": {
-    "message": "Durée",
-    "description": "Temps écoulé pour la tâche (en secondes)"
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (secondes)"
   },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Mot-clé pour générer/éditer l'image"
+    "description": "Mots d'invite pour générer/éditer"
   },
   "name.seedreamBot": {
-    "message": "SeeDream Bot",
+    "message": "Bot SeeDream",
     "description": "Nom du générateur d'images SeeDream"
   },
   "name.size": {
     "message": "Taille",
-    "description": "Taille de l'image générée"
+    "description": "Taille de l'image de sortie"
   },
   "name.watermark": {
     "message": "Filigrane",
-    "description": "Ajouter un filigrane à l'image"
+    "description": "Ajouter un filigrane ou non"
   },
   "description.prompt": {
-    "message": "Mot-clé pour générer ou éditer l'image",
-    "description": "Description du mot-clé"
+    "message": "Mots d'invite pour générer ou éditer une image",
+    "description": "Description des mots d'invite"
   },
   "description.model": {
-    "message": "Modèle utilisé pour générer ou éditer l'image.",
-    "description": "Explication du paramètre modèle"
+    "message": "Modèle utilisé pour générer ou éditer des images.",
+    "description": "Description du paramètre modèle"
   },
   "description.size": {
-    "message": "Taille de l'image. Prend en charge les préréglages `1K`, `2K`, `4K` ou une taille personnalisée `<largeur>x<hauteur>`.",
-    "description": "Explication du paramètre taille"
+    "message": "Taille de l'image. Prend en charge les préréglages `1K`, `2K`, `4K` ou personnalisée `<largeur>x<hauteur>`.",
+    "description": "Description du paramètre taille"
   },
   "description.watermark": {
     "message": "Ajouter un filigrane AI à l'image générée. Activé par défaut.",
-    "description": "Explication du paramètre filigrane"
+    "description": "Description du paramètre filigrane"
   },
   "description.imageUrls": {
     "message": "Téléchargez 1 à 14 images de référence pour activer l'édition d'images.",
-    "description": "Explication du paramètre image"
+    "description": "Description du paramètre image"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "Statut de la tâche en attente"
+    "description": "État d'attente de la tâche"
   },
   "placeholder.select": {
     "message": "Sélectionner",
-    "description": "Placeholder pour sélection"
+    "description": "Espace réservé pour la sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez un mot-clé, par exemple : un chat siamois blanc",
-    "description": "Placeholder pour le mot-clé"
+    "message": "Entrez les mots d'invite, par exemple : un chat siamois blanc",
+    "description": "Espace réservé pour les mots d'invite"
   },
   "button.generate": {
     "message": "Générer",
@@ -93,11 +93,11 @@
   },
   "button.uploadImageUrls": {
     "message": "Télécharger",
-    "description": "Bouton pour télécharger des images de référence (utilisez simplement 'Télécharger' et non 'Télécharger les images')"
+    "description": "Bouton pour télécharger des images de référence (simplifiez en anglais à 'Upload', ne pas utiliser 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message de démarrage de la tâche"
+    "description": "Message de début de tâche"
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
@@ -108,16 +108,16 @@
     "description": "Échec de la création de la tâche"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer.",
-    "description": "Message lorsque les crédits sont épuisés"
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
+    "description": "Message d'épuisement"
   },
   "message.uploadImageExceed": {
     "message": "Vous pouvez télécharger jusqu'à 14 images",
-    "description": "Message lorsque le nombre d'images dépasse la limite"
+    "description": "Nombre d'images dépassant la limite"
   },
   "message.uploadImageError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
-    "description": "Message d'échec de téléchargement"
+    "description": "Échec du téléchargement"
   },
   "name.model": {
     "message": "Modèle",
@@ -125,18 +125,30 @@
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Option du modèle SeeDream 4.5"
+    "description": "Option de modèle SeeDream 4.5"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Option du modèle SeeDream 4.0"
+    "description": "Option de modèle SeeDream 4.0"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Option du modèle SeeDream 3.0 t2i"
+    "description": "Option de modèle SeeDream 3.0 t2i"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Option du modèle SeeEdit 3.0 i2i"
+    "description": "Option de modèle SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Option de modèle SeeDream 5.0 (prend en charge la génération d'images en série et la sortie en continu)"
+  },
+  "name.maxImages": {
+    "message": "Nombre d'images",
+    "description": "Nombre d'images générées pour la série d'images (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Nombre d'images générées par demande (1-15). Défini à 1 pour le mode image unique ; supérieur à 1 active automatiquement la génération d'images en série (sequential_image_generation=auto), en maintenant la cohérence des personnages, du style et des détails entre les images. Prend uniquement en charge doubao-seedream-5.0 / 4.5 / 4.0 ; si des images de référence sont téléchargées en même temps, il faut respecter (nombre d'images de référence + nombre généré) ≤ 15. La facturation est basée sur le nombre d'images réellement générées.",
+    "description": "Description du paramètre max_images"
   }
 }

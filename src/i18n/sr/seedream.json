@@ -101,14 +101,14 @@
   },
   "message.startTaskSuccess": {
     "message": "Zadatak za generisanje uspešno pokrenut",
-    "description": "Zadatak je uspešno kreiran"
+    "description": "Zadatak uspešno kreiran"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, kontaktirajte administratora:",
     "description": "Neuspeh pri kreiranju zadatka"
   },
   "message.usedUp": {
-    "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
+    "message": "Vaši bodovi su potrošeni, kupite više bodova da biste nastavili sa korišćenjem",
     "description": "Poruka o potrošenim bodovima"
   },
   "message.uploadImageExceed": {
@@ -116,7 +116,7 @@
     "description": "Prekoračenje broja slika"
   },
   "message.uploadImageError": {
-    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
+    "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
     "description": "Neuspeh pri otpremanju"
   },
   "name.model": {
@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Opcija modela SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Opcija modela SeeDream 5.0 (podržava grupne slike i kontinuirani izlaz)"
+  },
+  "name.maxImages": {
+    "message": "Broj slika",
+    "description": "Broj slika generisanih u grupi (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Broj slika generisanih u jednom zahtevu (1-15). Postavite na 1 za pojedinačni način; veće od 1 automatski aktivira grupno generisanje (sequential_image_generation=auto), održavajući lik, stil i detalje doslednim između slika. Podržani su samo doubao-seedream-5.0 / 4.5 / 4.0; ako se istovremeno otpremaju referentne slike, mora se zadovoljiti (broj referentnih slika + broj generisanih) ≤ 15. Naplata se vrši prema stvarnom broju generisanih slika.",
+    "description": "Objašnjenje parametra max_images"
   }
 }

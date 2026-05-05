@@ -16,7 +16,7 @@
     "description": "Texte du bouton, utilisé pour indiquer que le contenu a été copié"
   },
   "button.restart": {
-    "message": "Regénérer",
+    "message": "Régénérer",
     "description": "Texte du bouton, utilisé pour régénérer certains contenus"
   },
   "button.preview": {
@@ -59,12 +59,16 @@
     "message": "Annuler",
     "description": "Texte dans le bouton, utilisé pour annuler une action"
   },
+  "button.close": {
+    "message": "Fermer",
+    "description": "Texte dans le bouton, utilisé pour fermer une boîte de dialogue ou un panneau"
+  },
   "button.alert": {
     "message": "Alerte",
     "description": "Texte dans le bouton, utilisé pour émettre une alerte"
   },
   "button.info": {
-    "message": "Information",
+    "message": "Informations",
     "description": "Texte dans le bouton, utilisé pour afficher des informations"
   },
   "button.publish": {
@@ -73,7 +77,7 @@
   },
   "button.watch": {
     "message": "Regarder",
-    "description": "Texte dans le bouton, utilisé pour regarder un contenu"
+    "description": "Texte dans le bouton, utilisé pour visionner un contenu"
   },
   "button.verify": {
     "message": "Vérification d'identité",
@@ -81,11 +85,11 @@
   },
   "button.profile": {
     "message": "Profil",
-    "description": "Texte dans le bouton, utilisé pour afficher le profil"
+    "description": "Texte dans le bouton, utilisé pour afficher le profil de l'utilisateur"
   },
   "button.console": {
     "message": "Console",
-    "description": "Texte dans le bouton, utilisé pour afficher la page de la console, afin de contrôler un contenu sur la page web"
+    "description": "Texte dans le bouton, utilisé pour afficher la page de la console pour contrôler un contenu sur la page web"
   },
   "button.learn": {
     "message": "Apprendre",
@@ -112,7 +116,7 @@
     "description": "Texte dans le bouton, utilisé pour télécharger le package d'installation Android"
   },
   "button.downloadIos": {
-    "message": "Télécharger le package iOS",
+    "message": "Télécharger le package d'installation iOS",
     "description": "Texte dans le bouton, utilisé pour télécharger le fichier d'installation iOS"
   },
   "button.installIos": {
@@ -169,7 +173,7 @@
   },
   "button.finish": {
     "message": "Terminer",
-    "description": "Texte dans le bouton pour finaliser une opération"
+    "description": "Texte dans le bouton, utilisé pour compléter une opération"
   },
   "entity.id": {
     "message": "ID",
@@ -177,11 +181,11 @@
   },
   "entity.type": {
     "message": "Type",
-    "description": "Type de l'entité à afficher"
+    "description": "Utilisé pour afficher le type de l'entité"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Nom du site, pas besoin de traduction, garder 'Ace Data Cloud'"
+    "description": "Nom du site web, pas besoin de traduction, reste 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Droits d'auteur",
@@ -233,15 +237,15 @@
   },
   "message.usedAmount": {
     "message": "Montant utilisé",
-    "description": "Affiche le montant utilisé pour le service"
+    "description": "Utilisé pour afficher le montant utilisé du service"
   },
   "message.mobileAppDescription": {
-    "message": "Utilisez AceData directement sur votre téléphone, APK Android disponible pour téléchargement, le package iOS sera accessible après signature.",
+    "message": "Utilisez AceData directement sur votre téléphone, APK Android disponible pour téléchargement, le package iOS sera ouvert au téléchargement après signature.",
     "description": "Texte explicatif sur la page de téléchargement de l'application mobile"
   },
   "message.mobileAndroidHint": {
     "message": "Pour les téléphones et tablettes Android, scannez pour télécharger et installer le dernier APK.",
-    "description": "Explication sur la carte de téléchargement Android"
+    "description": "Explication de la carte de téléchargement Android"
   },
   "message.mobileAndroidPending": {
     "message": "Le package d'installation Android n'est pas encore prêt, veuillez réessayer plus tard.",
@@ -249,35 +253,35 @@
   },
   "message.mobileAvailableNow": {
     "message": "Android disponible au téléchargement",
-    "description": "Affiche l'état de disponibilité du téléchargement Android"
+    "description": "Utilisé pour afficher l'état de disponibilité du téléchargement Android"
   },
   "message.mobileSecureDelivery": {
     "message": "Distribution CDN sécurisée",
-    "description": "Met en avant que le lien de téléchargement est livré via CDN"
+    "description": "Utilisé pour souligner que le lien de téléchargement est livré via CDN"
   },
   "message.mobileDirectInstall": {
-    "message": "Installation directe APK",
-    "description": "Décrit que l'installation Android se fait directement via APK"
+    "message": "Installation APK directe",
+    "description": "Utilisé pour décrire que l'installation Android se fait directement via APK"
   },
   "message.mobileLatestRelease": {
     "message": "Version publique actuelle",
-    "description": "Indique que la version affichée est la dernière version publique"
+    "description": "Utilisé pour indiquer que la version affichée est la dernière version publique"
   },
   "message.mobileSharedAccount": {
     "message": "Compte et quota partagés avec la version web",
-    "description": "Indique que le mobile partage le compte avec la version web"
+    "description": "Utilisé pour indiquer que l'application mobile partage le compte avec la version web"
   },
   "message.mobileIosHint": {
-    "message": "Pour iPhone et iPad, installation en ligne directe ; si le système bloque, téléchargez d'abord l'IPA puis distribuez.",
-    "description": "Explication sur la carte de téléchargement iOS"
+    "message": "Pour iPhone et iPad, installation en ligne directe ; si le système bloque, vous pouvez d'abord télécharger l'IPA puis le distribuer.",
+    "description": "Explication de la carte de téléchargement iOS"
   },
   "message.mobileIosPending": {
-    "message": "Le package d'installation iOS n'est pas encore disponible, en attente de certificats et de profils Apple.",
+    "message": "Le package d'installation iOS n'est pas encore disponible, il sera fourni après la complétion des certificats et des profils Apple.",
     "description": "Alerte lorsque le package d'installation iOS n'est pas disponible"
   },
   "message.mobileInstallNote": {
-    "message": "Lors de la première installation d'un package entreprise ou Ad Hoc sur iOS, le système peut demander de faire confiance au certificat dans 'Réglages > Général > VPN et gestion des appareils'.",
-    "description": "Alerte pour l'installation de l'application mobile"
+    "message": "Lors de la première installation d'un package d'entreprise ou Ad Hoc sur iOS, le système peut demander de faire confiance au certificat dans 'Réglages > Général > VPN et gestion des appareils'.",
+    "description": "Alerte d'installation de l'application mobile"
   },
   "title.mobileApp": {
     "message": "Téléchargement mobile",
@@ -285,35 +289,35 @@
   },
   "title.mobileFastAccess": {
     "message": "Accès rapide, sans passer par l'App Store",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant l'installation rapide"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant l'installation rapide"
   },
   "title.mobileTrustedRelease": {
     "message": "Gestion centralisée des versions, distribution plus stable",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant la stabilité des versions et de la distribution"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant la stabilité des versions et de la distribution"
   },
   "title.mobileUnifiedExperience": {
     "message": "Expérience mobile et web cohérente",
-    "description": "Titre de la carte d'avantages sur la page de téléchargement, mettant en avant l'expérience unifiée"
+    "description": "Titre de la carte d'avantages sur la page de téléchargement, soulignant l'expérience unifiée"
   },
   "nav.mobileApp": {
     "message": "Application mobile",
     "description": "Entrée de téléchargement de l'application mobile dans la navigation"
   },
   "message.mobileFastAccess": {
-    "message": "Les utilisateurs peuvent scanner pour installer directement sur leur téléphone, ou télécharger l'APK sur le bureau et le distribuer aux membres de l'équipe, idéal pour les essais rapides et les tests internes.",
-    "description": "Explication des avantages sur la page de téléchargement, mettant en avant l'accès rapide"
+    "message": "Les utilisateurs peuvent scanner pour installer directement sur leur téléphone, ou télécharger l'APK sur le bureau puis le distribuer aux membres de l'équipe, idéal pour les essais rapides et les tests internes.",
+    "description": "Explication des avantages sur la page de téléchargement, soulignant l'accès rapide"
   },
   "message.mobileTrustedRelease": {
-    "message": "Les points d'accès au téléchargement sont centralisés sur une seule page, avec numéro de version, état de la plateforme et méthode d'installation visibles d'un coup d'œil, réduisant les coûts de communication dus à la dispersion des liens.",
-    "description": "Explication des avantages sur la page de téléchargement, mettant en avant la distribution unifiée"
+    "message": "Les points d'accès au téléchargement sont centralisés sur une seule page, avec le numéro de version, l'état de la plateforme et le mode d'installation visibles d'un coup d'œil, réduisant les coûts de communication dus à la dispersion des liens.",
+    "description": "Explication des avantages sur la page de téléchargement, soulignant la distribution unifiée"
   },
   "message.mobileUnifiedExperience": {
-    "message": "Le système de compte, les quotas et les points d'accès aux services après connexion sont cohérents avec le Web, facilitant la transition fluide entre le bureau et le mobile.",
-    "description": "Explication des avantages sur la page de téléchargement, mettant en avant l'expérience de compte unifiée"
+    "message": "Le système de compte, le quota et les points d'accès aux services après connexion restent cohérents avec le Web, facilitant la transition fluide entre le bureau et le mobile.",
+    "description": "Explication des avantages sur la page de téléchargement, soulignant l'expérience de compte unifiée"
   },
   "message.remainingAmount": {
     "message": "Montant restant",
-    "description": "Affiche le montant restant pour le service"
+    "description": "Utilisé pour afficher le montant restant du service"
   },
   "message.copied": {
     "message": "Copié avec succès",
@@ -352,7 +356,7 @@
     "description": "Message invitant l'utilisateur à rejoindre le canal Discord"
   },
   "message.addWeChat": {
-    "message": "Ajouter WeChat",
+    "message": "Service WeChat",
     "description": "Message invitant l'utilisateur à ajouter un compte WeChat"
   },
   "message.serviceTech": {
@@ -360,8 +364,8 @@
     "description": "Message affichant le support technique"
   },
   "message.businessCooperation": {
-    "message": "Coopération commerciale",
-    "description": "Message affichant des opportunités de coopération commerciale"
+    "message": "Données & Coopération commerciale",
+    "description": "Message affichant la coopération commerciale"
   },
   "message.noData": {
     "message": "Aucune donnée",
@@ -437,7 +441,7 @@
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Texte dans la barre de navigation du site pour afficher la page d'art QR, ne pas traduire, doit rester 'QRArt'"
+    "description": "Texte dans la barre de navigation du site pour afficher la page d'art 2D, ne pas traduire, doit rester 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
@@ -649,15 +653,15 @@
   },
   "about.link6": {
     "message": "Revenus recommandés",
-    "description": "Lien vers la page des revenus de recommandation"
+    "description": "Lien vers la page des revenus recommandés"
   },
   "about.link7": {
     "message": "Support",
     "description": "Lien vers la page de support"
   },
   "about.link8": {
-    "message": "Conditions d'utilisation",
-    "description": "Lien vers la page des conditions d'utilisation"
+    "message": "Conditions de service",
+    "description": "Lien vers la page des conditions de service"
   },
   "about.link9": {
     "message": "Politique de confidentialité",
@@ -733,7 +737,7 @@
   },
   "message.cnbeian": {
     "message": "Enregistrement en Chine",
-    "description": "Informations sur l'enregistrement en Chine"
+    "description": "Informations explicatives sur l'enregistrement en Chine"
   },
   "message.copyFailed": {
     "message": "Échec de la copie",
@@ -788,7 +792,7 @@
     "description": "Profession du client"
   },
   "customers.comment3": {
-    "message": "J'aime le service d'Ace Data Cloud, facile à utiliser et à un prix raisonnable, j'espère qu'il continuera à s'améliorer !",
+    "message": "J'aime le service d'Ace Data Cloud, facile à utiliser et à un prix raisonnable, j'espère qu'il s'améliorera !",
     "description": "Évaluation du client"
   },
   "nav.github": {
@@ -829,14 +833,14 @@
   },
   "settings.buildYourOwn": {
     "message": "Construisez le vôtre",
-    "description": "Titre indiquant aux utilisateurs qu'ils peuvent construire un site similaire dans la page à propos"
+    "description": "Titre indiquant à l'utilisateur qu'il peut construire un site similaire dans la page à propos"
   },
   "settings.buildYourOwnTip": {
     "message": "Vous souhaitez construire un site AI similaire ? Contactez-nous pour obtenir un support de déploiement.",
     "description": "Explication sur la construction d'un site similaire dans la page à propos"
   },
   "settings.contactUs": {
-    "message": "Contactez le support",
+    "message": "Contacter le support",
     "description": "Texte du bouton pour contacter le support"
   },
   "message.viewOnGithub": {

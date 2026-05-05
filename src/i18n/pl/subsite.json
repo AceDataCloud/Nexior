@@ -60,7 +60,7 @@
     "description": "Wiadomość o pustej liście"
   },
   "message.slugTip": {
-    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem, ani zawierać podwójnych myślników.",
+    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem i nie mogą zawierać podwójnych myślników.",
     "description": "Opis pola slug"
   },
   "message.slugInvalid": {
@@ -73,15 +73,15 @@
   },
   "message.created": {
     "message": "Subdomena została pomyślnie utworzona!",
-    "description": "Sukces tworzenia"
+    "description": "Sukces utworzenia"
   },
   "message.createFailed": {
     "message": "Nie udało się utworzyć subdomeny, spróbuj ponownie później.",
-    "description": "Błąd tworzenia"
+    "description": "Błąd podczas tworzenia"
   },
   "message.loadFailed": {
     "message": "Nie udało się załadować listy subdomen.",
-    "description": "Błąd ładowania listy"
+    "description": "Błąd podczas ładowania listy"
   },
   "message.openNowConfirm": {
     "message": "Subdomena {origin} została utworzona. Czy chcesz teraz ją otworzyć, aby kontynuować konfigurację?",
@@ -140,7 +140,7 @@
     "description": "Wiadomość o pustej liście"
   },
   "message.hostnameTip": {
-    "message": "Musi to być publiczna domena, nad którą masz kontrolę nad DNS. Nie są dozwolone subdomeny acedata.cloud / surl.id.",
+    "message": "Musi to być publiczna domena, nad którą masz kontrolę nad DNS.",
     "description": "Wskazówka dla pola hostname"
   },
   "message.hostnameInvalid": {
@@ -153,11 +153,11 @@
   },
   "message.domainCreateFailed": {
     "message": "Nie udało się utworzyć domeny, spróbuj ponownie później.",
-    "description": "Błąd tworzenia"
+    "description": "Błąd podczas tworzenia"
   },
   "message.domainsLoadFailed": {
     "message": "Nie udało się załadować listy domen.",
-    "description": "Błąd ładowania listy domen"
+    "description": "Błąd podczas ładowania listy domen"
   },
   "message.domainActive": {
     "message": "Domena jest aktywna! Możesz teraz uzyskać dostęp do podstrony za pomocą swojego niestandardowego adresu HTTPS.",
@@ -181,10 +181,10 @@
   },
   "status.pending": {
     "message": "Do weryfikacji",
-    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
+    "description": "Pending 状态标签：czekanie na dodanie CNAME i kliknięcie „Zweryfikuj teraz”"
   },
   "status.active": {
-    "message": "Aktywny",
+    "message": "Aktywna",
     "description": "Active 状态标签"
   },
   "status.failed": {

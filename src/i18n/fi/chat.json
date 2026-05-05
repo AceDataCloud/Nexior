@@ -1,15 +1,15 @@
 {
   "thinking.inProgress": {
     "message": "Ajatellaan...",
-    "description": "Malli näyttää etiketin, kun se generoi päättelyprosessia"
+    "description": "Malli näyttää etenevän prosessin aikana"
   },
   "thinking.done": {
-    "message": "Päättelyprosessi",
-    "description": "Malli käyttää etikettiä päättelyprosessin esittämiseen, kun se on valmis"
+    "message": "Ajatusprosessi",
+    "description": "Malli näyttää valmiin prosessin"
   },
   "button.thinkDeeper": {
-    "message": "Syvempää ajattelua",
-    "description": "Syvempää ajattelua -painike"
+    "message": "Syvällinen ajattelu",
+    "description": "Syvällinen ajattelu -painike"
   },
   "button.deepsearch": {
     "message": "Syvä haku",
@@ -116,7 +116,7 @@
     "description": "Palvelun mallin nimi, eli DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Soveltuu päättelyyn ja syvään ajatteluun",
+    "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
     "description": "DeepSeek Reasoner -mallin kuvaus"
   },
   "model.deepseekChat32": {
@@ -253,7 +253,7 @@
   },
   "message.newMessagePlaceholder": {
     "message": "Syötä kysymyksesi...",
-    "description": "Verkkosivun paikkamerkki, joka kertoo käyttäjälle syöttää kysymys"
+    "description": "Verkkosivun paikkamerkki, joka kertoo käyttäjälle syöttää kysymyksen"
   },
   "message.noInput": {
     "message": "Kysymys ei voi olla tyhjää",
@@ -261,7 +261,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 1 tiedoston",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle voit ladata enintään 1 tiedoston"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle voi ladata enintään 1 tiedoston"
   },
   "message.uploadReferencesError": {
     "message": "Tiedoston lataus epäonnistui, yritä myöhemmin uudelleen",
@@ -277,43 +277,43 @@
   },
   "message.question1": {
     "message": "Luo harjoitusohjelma",
-    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa Hello World"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa Hello World"
   },
   "message.question2": {
     "message": "Tee henkilökohtainen verkkosivusto",
-    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että hän on juuri muuttanut"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että hän on juuri muuttanut"
   },
   "message.question3": {
     "message": "Suunnittele mielenkiintoinen ohjelmointipeli",
-    "description": "Keskustelun aloituskysymys, pyytää käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
   },
   "message.question4": {
     "message": "Koe Soul kuin paikallinen",
-    "description": "Keskustelun aloituskysymys, pyytää käyttäjää selittämään, miten virtuaalitodellisuus on vaikuttanut taiteelliseen luomiseen"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään, mitä vaikutuksia virtuaalitodellisuudella on taiteelliseen luomiseen"
   },
   "message.question5": {
     "message": "Kumpi on suurempi, 9.8 vai 9.11?",
-    "description": "Keskustelun aloituskysymys, pyytää vertaamaan kahta numeroa"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä vertaamaan kahta numeroa"
   },
   "message.question6": {
     "message": "Miten AI vaikuttaa tulevaisuuteen?",
-    "description": "Keskustelun aloituskysymys, miten AI vaikuttaa tulevaisuuteen?"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten AI vaikuttaa tulevaisuuteen?"
   },
   "message.question7": {
     "message": "Miten parantaa oppimisnopeutta?",
-    "description": "Keskustelun aloituskysymys, miten parantaa omaa oppimisnopeutta?"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa oppimisnopeutta?"
   },
   "message.question8": {
     "message": "Miten parantaa keskittymiskykyä?",
-    "description": "Keskustelun aloituskysymys, miten parantaa omaa keskittymiskykyä?"
+    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa keskittymiskykyä?"
   },
   "message.errorApiError": {
     "message": "Vastaus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle vastaus epäonnistui, yritä myöhemmin uudelleen"
   },
   "message.errorBadRequest": {
-    "message": "Pyyntö ei ole voimassa, yritä uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, yritä uudelleen"
+    "message": "Pyyntö ei ole voimassa, kysy uudelleen",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, kysy uudelleen"
   },
   "message.errorNoConversation": {
     "message": "Keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu",
@@ -321,19 +321,19 @@
   },
   "message.errorContentTooLarge": {
     "message": "Kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle kysymyksen sisältö on liian pitkä, lyhennä ja yritä uudelleen"
   },
   "message.errorTooManyRequests": {
-    "message": "Toimintosi on liian usein, yritä myöhemmin uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että toimintosi on liian usein, yritä myöhemmin uudelleen"
+    "message": "Liian monta pyyntöä, yritä myöhemmin uudelleen",
+    "description": "Verkkosivulla näkyvä viesti, joka kertoo käyttäjälle, että hänen toimintansa on liian usein, ja pyytää yrittämään myöhemmin uudelleen"
   },
   "message.errorBusy": {
     "message": "Palvelin on kiireinen, yritä myöhemmin uudelleen",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että palvelin on kiireinen, yritä myöhemmin uudelleen"
   },
   "message.errorUsedUp": {
-    "message": "Olet käyttänyt kaikki pakettisi kerrat, osta lisää jatkaaksesi käyttöä",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että olet käyttänyt kaikki pakettisi kerrat, osta lisää jatkaaksesi käyttöä"
+    "message": "Olet käyttänyt kaikki pakettisi, osta lisää jatkaaksesi käyttöä",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että olet käyttänyt kaikki pakettisi, osta lisää jatkaaksesi käyttöä"
   },
   "message.errorUnknown": {
     "message": "Palvelimella tapahtui tuntematon virhe, yritä myöhemmin uudelleen tai ota yhteyttä asiakaspalveluun",
@@ -376,12 +376,12 @@
     "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä vastata monimutkaisiin kysymyksiin"
   },
   "title.professionalQuestion": {
-    "message": "Konsultoi ammatillisia kysymyksiä",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä konsultoida ammatillisia kysymyksiä"
+    "message": "Konsultointi ammatillisissa kysymyksissä",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä konsultoida ammatillisissa kysymyksissä"
   },
   "title.getTips": {
-    "message": "Hanki inspiraatiota ja ideoita",
-    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä hankkia inspiraatiota ja ideoita"
+    "message": "Inspiraation ja ideoiden saaminen",
+    "description": "Verkkosivun otsikko, joka osoittaa, että tämä osa käsittelee palvelun kykyä saada inspiraatiota ja ideoita"
   },
   "group.today": {
     "message": "Tänään",
@@ -417,11 +417,11 @@
   },
   "connections.tooltip": {
     "message": "Yhteyksien hallinta",
-    "description": "Painikkeen vinkki, joka siirtää auth.acedata.cloud yhteyksien hallintapaneeliin"
+    "description": "Painikevinkki, joka ohjaa auth.acedata.cloud yhteyksien hallintapaneeliin"
   },
   "skill.tooltip": {
     "message": "Taitojen hallinta",
-    "description": "Painikkeen vinkki, joka siirtää auth.acedata.cloud taitojen hallintapaneeliin"
+    "description": "Painikevinkki, joka ohjaa auth.acedata.cloud taitojen hallintapaneeliin"
   },
   "composer.addAction": {
     "message": "Lisää sisältöä",
@@ -461,26 +461,50 @@
   },
   "agent.name": {
     "message": "Agentin nimi",
-    "description": "Agentin nimi -tunniste"
+    "description": "Agentin nimen etiketti"
   },
   "agent.tools": {
     "message": "Saatavilla olevat työkalut",
-    "description": "Agentin työkalujen määrä -tunniste"
+    "description": "Agentin työkalujen määrän etiketti"
   },
   "agent.connectedSince": {
-    "message": "Yhteydessä vuodesta",
-    "description": "Agentin yhteydenottopäivämäärä -tunniste"
+    "message": "Yhdistetty ajasta",
+    "description": "Agentin yhdistämisajan etiketti"
   },
   "agent.connectedHint": {
     "message": "Työpöytäagenttisi on yhdistetty ja käytettävissä.",
-    "description": "Agentin yhdistetty -vinkki"
+    "description": "Agentin yhdistetty vinkki"
   },
   "agent.installLabel": {
     "message": "Asenna työpöytäagentti:",
-    "description": "Asennusohje -tunniste"
+    "description": "Asennusohjeen etiketti"
   },
   "agent.runLabel": {
     "message": "Suorita agentti:",
-    "description": "Suoritusohje -tunniste"
+    "description": "Suoritusohjeen etiketti"
+  },
+  "askUserQuestion.submit": {
+    "message": "Lähetä",
+    "description": "ask-user-question-kortin lähetyspainike"
+  },
+  "askUserQuestion.skip": {
+    "message": "Ohita",
+    "description": "ask-user-question-kortin ohituspainike"
+  },
+  "askUserQuestion.other": {
+    "message": "Muu",
+    "description": "ask-user-question-kortin mukautetun vastauksen syöttökentän etiketti"
+  },
+  "askUserQuestion.placeholder": {
+    "message": "Syötä mukautettu vastaus…",
+    "description": "Mukautetun vastauksen syöttökentän paikkamerkki"
+  },
+  "askUserQuestion.multiSelectHint": {
+    "message": "Valitse yksi tai useampi",
+    "description": "Monivalintakysymyksissä näytettävä vihje"
+  },
+  "askUserQuestion.collapsedAnswerLabel": {
+    "message": "Vastauksesi",
+    "description": "Kun tarkkaa vastausta ei voida poimia historiasta, käytettävä teksti"
   }
 }

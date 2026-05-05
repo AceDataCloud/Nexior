@@ -1,7 +1,7 @@
 {
   "title.index": {
     "message": "Meine Subdomain",
-    "description": "Hauptüberschrift der Subdomain-Verwaltung"
+    "description": "Haupttitel der Subdomain-Verwaltung"
   },
   "title.create": {
     "message": "Subdomain erstellen",
@@ -105,7 +105,7 @@
   },
   "button.verify": {
     "message": "Jetzt überprüfen",
-    "description": "Überprüfen, ob die Domain über unseren Reverse-Proxy normal aufgelöst werden kann und ein Zertifikat ausgestellt wird"
+    "description": "Überprüfen, ob die Domain über unseren Reverse-Proxy normal aufgelöst werden kann und ein Zertifikat ausgestellt werden kann"
   },
   "button.refresh": {
     "message": "Aktualisieren",
@@ -128,20 +128,20 @@
     "description": "Spalte für den DNS-Datensatzwert"
   },
   "placeholder.hostname": {
-    "message": "z.B. studio.meinemarke.com",
+    "message": "z.B. studio.meine-marke.com",
     "description": "Platzhalter im Hostname-Eingabefeld"
   },
   "message.domainsIntro": {
-    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, den DNS dieser Domain zu ändern. Fügen Sie einen CNAME gemäß den untenstehenden Anweisungen hinzu und klicken Sie auf „Jetzt überprüfen“, wir werden automatisch ein kostenloses HTTPS-Zertifikat über Let's Encrypt für Sie ausstellen und verlängern.",
+    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, den DNS dieser Domain zu ändern. Fügen Sie einen CNAME gemäß den untenstehenden Anweisungen hinzu und klicken Sie dann auf „Jetzt überprüfen“, wir werden automatisch ein kostenloses HTTPS-Zertifikat über Let's Encrypt für Sie ausstellen und verlängern.",
     "description": "Erklärungstext oben im Dialog"
   },
   "message.domainsEmpty": {
-    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im untenstehenden Formular aus und klicken Sie auf „Binden“, um zu beginnen.",
+    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im Formular unten aus und klicken Sie auf „Binden“, um zu beginnen.",
     "description": "Hinweis für leere Liste"
   },
   "message.hostnameTip": {
-    "message": "Muss eine öffentliche Domain sein, deren DNS Sie kontrollieren können. Keine Subdomains von acedata.cloud / surl.id erlaubt.",
-    "description": "Eingabeaufforderung für Hostname"
+    "message": "Muss eine öffentliche Domain sein, deren DNS Sie kontrollieren können.",
+    "description": "Eingabeaufforderung für den Hostnamen"
   },
   "message.hostnameInvalid": {
     "message": "Das Domainformat ist ungültig. Es muss eine öffentlich auflösbare Domain sein, IP-Adressen sind nicht erlaubt.",
@@ -161,10 +161,10 @@
   },
   "message.domainActive": {
     "message": "Domain ist aktiv! Du kannst jetzt über deine benutzerdefinierte HTTPS-Adresse auf die Subdomain zugreifen.",
-    "description": "In aktiven Zustand"
+    "description": "In aktiven Status wechseln"
   },
   "message.domainFailed": {
-    "message": "Domainüberprüfung oder -bereitstellung fehlgeschlagen.",
+    "message": "Domainüberprüfung oder Bereitstellung fehlgeschlagen.",
     "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
@@ -180,7 +180,7 @@
     "description": "DELETE 接口 5xx"
   },
   "status.pending": {
-    "message": "Warten auf Bestätigung",
+    "message": "Ausstehend",
     "description": "Pending 状态标签：Warten auf Benutzer, um CNAME hinzuzufügen und auf 'Jetzt überprüfen' zu klicken"
   },
   "status.active": {

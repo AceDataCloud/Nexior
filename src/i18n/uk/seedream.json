@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Тип завдання",
-    "description": "Тип операції з зображеннями SeeDream"
+    "description": "Тип операції з зображенням SeeDream"
   },
   "name.generate": {
     "message": "Створити зображення",
@@ -76,7 +76,7 @@
     "description": "Опис параметра image"
   },
   "status.pending": {
-    "message": "В очікуванні",
+    "message": "Очікування",
     "description": "Статус очікування завдання"
   },
   "placeholder.select": {
@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Опція моделі SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Опція моделі SeeDream 5.0 (підтримує групові зображення та потоковий вихід)"
+  },
+  "name.maxImages": {
+    "message": "Кількість зображень",
+    "description": "Кількість зображень для генерації групи (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Кількість зображень, що генеруються за один запит (1-15). Якщо встановлено 1, то це режим одиночного зображення; більше 1 автоматично активує групу зображень (sequential_image_generation=auto), зберігаючи персонажа, стиль та деталі між зображеннями. Підтримуються лише doubao-seedream-5.0 / 4.5 / 4.0; якщо одночасно завантажуються посилання на зображення, потрібно дотримуватись (кількість посилань + кількість згенерованих) ≤ 15. Оплата за фактичну кількість згенерованих зображень.",
+    "description": "Опис параметра max_images"
   }
 }

@@ -17,7 +17,7 @@
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
-    "description": "صور مرجعية للتحرير"
+    "description": "صور مرجعية للاستخدام في التحرير"
   },
   "name.failure": {
     "message": "فشل",
@@ -45,7 +45,7 @@
   },
   "name.seedreamBot": {
     "message": "روبوت SeeDream",
-    "description": "اسم مولد صور SeeDream"
+    "description": "اسم مولد الصور SeeDream"
   },
   "name.size": {
     "message": "الحجم",
@@ -53,22 +53,22 @@
   },
   "name.watermark": {
     "message": "علامة مائية",
-    "description": "هل تضيف علامة مائية"
+    "description": "هل يتم إضافة علامة مائية"
   },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
     "description": "وصف نص التوليد"
   },
   "description.model": {
-    "message": "النموذج المستخدم لإنشاء أو تحرير الصور.",
+    "message": "النموذج المستخدم لتوليد أو تحرير الصور.",
     "description": "وصف معلمة النموذج"
   },
   "description.size": {
-    "message": "حجم الصورة. يدعم الإعدادات المسبقة `1K`، `2K`، `4K` أو مخصص `<عرض>x<ارتفاع>`.",
+    "message": "حجم الصورة. يدعم الإعدادات المسبقة `1K`، `2K`، `4K` أو حجم مخصص `<عرض>x<ارتفاع>`.",
     "description": "وصف معلمة الحجم"
   },
   "description.watermark": {
-    "message": "هل تضيف علامة مائية للصور الناتجة. مفعل بشكل افتراضي.",
+    "message": "هل يتم إضافة علامة مائية للذكاء الاصطناعي في الصورة الناتجة. مفعل بشكل افتراضي.",
     "description": "وصف معلمة العلامة المائية"
   },
   "description.imageUrls": {
@@ -81,11 +81,11 @@
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص مكان للاختيار"
+    "description": "نص العنصر المحدد"
   },
   "placeholder.prompt": {
     "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
-    "description": "نص مكان لنص التوليد"
+    "description": "نص العنصر المحدد"
   },
   "button.generate": {
     "message": "توليد",
@@ -104,7 +104,7 @@
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
+    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
@@ -113,7 +113,7 @@
   },
   "message.uploadImageExceed": {
     "message": "يمكنك تحميل ما يصل إلى 14 صورة",
-    "description": "عدد الصور يتجاوز الحد"
+    "description": "تجاوز عدد الصور الحد المسموح به"
   },
   "message.uploadImageError": {
     "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
@@ -138,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "خيار نموذج SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "خيار نموذج SeeDream 5.0 (يدعم توليد الصور المتسلسلة والإخراج المتدفق)"
+  },
+  "name.maxImages": {
+    "message": "عدد الصور",
+    "description": "عدد الصور التي يتم توليدها في مجموعة الصور (max_images)"
+  },
+  "description.maxImages": {
+    "message": "عدد الصور التي يتم توليدها في طلب واحد (1-15). إذا تم تعيينها إلى 1، فهي وضع صورة واحدة؛ إذا كانت أكبر من 1، يتم تفعيل مجموعة الصور تلقائيًا (sequential_image_generation=auto)، مع الحفاظ على الشخصيات والأسلوب والتفاصيل متسقة عبر الصور. يدعم فقط doubao-seedream-5.0 / 4.5 / 4.0؛ إذا تم تحميل صور مرجعية، يجب أن تفي بالشرط (عدد الصور المرجعية + عدد الصور الناتجة) ≤ 15. يتم احتساب الرسوم بناءً على عدد الصور الناتجة الفعلي.",
+    "description": "وصف معلمة max_images"
   }
 }

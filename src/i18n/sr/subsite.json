@@ -36,7 +36,7 @@
     "description": "Placeholder za unos slug-a"
   },
   "placeholder.title": {
-    "message": "Za prikaz u pretraživaču poddomena i na vrhu sajta",
+    "message": "Za prikaz u pretraživaču i zaglavlju sajta",
     "description": "Placeholder za unos naslova"
   },
   "button.create": {
@@ -101,11 +101,11 @@
   },
   "button.bindDomain": {
     "message": "Poveži domen",
-    "description": "Dugme za slanje povezivanja novog domena"
+    "description": "Dugme za slanje zahteva za povezivanje novog domena"
   },
   "button.verify": {
     "message": "Verifikuj odmah",
-    "description": "Proverite da li se domen može normalno rešiti i izdata je sertifikat putem našeg obrnuto-proxy"
+    "description": "Proverite da li se domen može normalno rešiti i izdata je sertifikat putem našeg obrnutog proksija"
   },
   "button.refresh": {
     "message": "Osveži",
@@ -132,15 +132,15 @@
     "description": "Placeholder za unos hostname-a"
   },
   "message.domainsIntro": {
-    "message": "Povežite domen koji posedujete sa ovom poddomenom. Morate moći da menjate DNS tog domena. Dodajte CNAME zapis prema uputstvima ispod i kliknite 'Verifikuj odmah', automatski ćemo vam izdata besplatni HTTPS sertifikat putem Let's Encrypt.",
+    "message": "Povežite domen koji posedujete sa ovom poddomenom. Morate moći da menjate DNS tog domena. Dodajte CNAME zapis prema uputstvima ispod i kliknite na 'Verifikuj odmah', automatski ćemo vam izdata besplatni HTTPS sertifikat putem Let's Encrypt.",
     "description": "Objašnjenje na vrhu dijaloga"
   },
   "message.domainsEmpty": {
-    "message": "Još niste povezali nijedan prilagođeni domen. Ispunite kompletan domen u formi ispod i kliknite 'Poveži' da biste počeli.",
+    "message": "Još niste povezali nijedan prilagođeni domen. Ispunite kompletan domen u formi ispod i kliknite na 'Poveži' da biste počeli.",
     "description": "Poruka za praznu listu"
   },
   "message.hostnameTip": {
-    "message": "Mora biti javni domen čiji DNS možete kontrolisati. Nisu dozvoljeni poddomeni acedata.cloud / surl.id.",
+    "message": "Mora biti javni domen čiji DNS možete kontrolisati.",
     "description": "Uputstvo za unos hostname-a"
   },
   "message.hostnameInvalid": {
@@ -149,7 +149,7 @@
   },
   "message.domainCreated": {
     "message": "Domen je podnet, molimo dodajte CNAME zapis prema uputstvima.",
-    "description": "POST /site-domains/ uspešno"
+    "description": "Uspešno POST /site-domains/"
   },
   "message.domainCreateFailed": {
     "message": "Kreiranje domena nije uspelo, molimo pokušajte ponovo kasnije.",
@@ -164,7 +164,7 @@
     "description": "Улазак у активни статус"
   },
   "message.domainFailed": {
-    "message": "Provera domena ili pokretanje je neuspešno.",
+    "message": "Provera domena ili puštanje u rad je neuspešno.",
     "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
