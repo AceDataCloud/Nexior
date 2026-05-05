@@ -46,6 +46,7 @@ import { defineComponent } from 'vue';
 import { ElSelect, ElOption, ElSlider, ElInputNumber } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IKlingCameraType, IKlingCameraControlConfig } from '@/models';
+import { getKlingCapabilities } from '@/utils/kling/capabilities';
 
 const CONFIG_KEYS: (keyof IKlingCameraControlConfig)[] = ['horizontal', 'vertical', 'pan', 'tilt', 'roll', 'zoom'];
 
@@ -81,13 +82,36 @@ export default defineComponent({
     selectedMode(): string {
       return this.$store.state.kling?.config?.mode || '';
     },
+    selectedModel(): string {
+      return this.$store.state.kling?.config?.model || '';
+    },
+    selectedDuration(): number | undefined {
+      return this.$store.state.kling?.config?.duration;
+    },
+    motionControlSupported(): boolean {
+      // Per the official Kling matrix, motion control is allowed only on a
+      // narrow subset of (model, mode, duration) combos — not just non-4k.
+      // E.g. v1-6 / v2-6 / v3-omni / video-o1 never support it; v1 only at 5s;
+      // v3 only outside 4k mode.
+      return getKlingCapabilities(this.selectedModel, this.selectedMode, this.selectedDuration).motionControl;
+    },
+    hasStartImage(): boolean {
+      return Boolean(this.$store.state.kling?.config?.start_image_url);
+    },
     disabled(): boolean {
-      // 4k mode is incompatible with motion / camera control per API spec.
-      return this.selectedMode === '4k';
+      // image2video (start_image_url set) is rejected by the upstream worker
+      // regardless of model/mode.
+      return !this.motionControlSupported || this.hasStartImage;
     },
     tooltipContent(): string {
-      if (this.disabled) {
-        return this.$t('kling.description.cameraControlDisabled4k');
+      if (!this.motionControlSupported) {
+        // Single message regardless of why (4k mode, omni model, v1 at 10s,
+        // v1-6/v2-6 any mode, etc.) — saying "switch to std/pro" only helps
+        // for kling-v3 4k and would mislead users on every other case.
+        return this.$t('kling.description.cameraControlNotSupported');
+      }
+      if (this.hasStartImage) {
+        return this.$t('kling.description.cameraControlDisabledImage2Video');
       }
       return this.$t('kling.description.cameraControl');
     },
@@ -124,7 +148,9 @@ export default defineComponent({
   },
   watch: {
     disabled(now: boolean) {
-      // Auto-clear camera_control when 4k mode is selected so the request stays valid.
+      // Auto-clear camera_control when the current (model, mode, duration) combo
+      // no longer supports motion control, or when the user uploads a start
+      // image (image2video), so the request stays valid.
       if (now && this.selectedType !== undefined) {
         this.selectedTypeRaw = '';
       }
