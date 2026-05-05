@@ -266,8 +266,21 @@ export default defineComponent({
             /* user dismissed */
           });
       } catch (e: any) {
-        const detail = e?.response?.data?.origin || e?.response?.data?.detail || e?.message;
-        ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.createFailed'));
+        const resp = e?.response?.data;
+        // Backend returns `{ detail: { origin: '...' }, code: 'duplication' }`
+        // for slug collisions — show a localized "already taken" message
+        // and keep the dialog open so the user can edit the slug instead
+        // of dumping raw JSON via ElMessage.
+        if (resp?.code === 'duplication') {
+          ElMessage.error(this.$t('subsite.message.slugTaken', { origin }));
+          return;
+        }
+        // Pull whatever readable string the server gave us (legacy paths
+        // may still respond with a top-level `origin` array, or a string
+        // `detail`). Anything non-string falls back to the generic copy.
+        const raw = resp?.detail?.origin ?? resp?.origin ?? resp?.detail ?? e?.message;
+        const message = Array.isArray(raw) ? raw[0] : raw;
+        ElMessage.error(typeof message === 'string' && message ? message : this.$t('subsite.message.createFailed'));
       } finally {
         this.creating.submitting = false;
       }
