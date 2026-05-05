@@ -1,15 +1,15 @@
 {
   "thinking.inProgress": {
     "message": "Ajatellaan...",
-    "description": "Malli näyttää etenevän prosessin aikana"
+    "description": "Malli näyttää etiketin, kun se generoi päättelyprosessia"
   },
   "thinking.done": {
-    "message": "Ajatusprosessi",
-    "description": "Malli näyttää valmiin prosessin"
+    "message": "Päättelyprosessi",
+    "description": "Malli käyttää etikettiä päättelyprosessin esittämiseen, kun se on valmis"
   },
   "button.thinkDeeper": {
-    "message": "Syvällinen ajattelu",
-    "description": "Syvällinen ajattelu -painike"
+    "message": "Syvempää ajattelua",
+    "description": "Syvempää ajattelua -painike"
   },
   "button.deepsearch": {
     "message": "Syvä haku",
@@ -116,7 +116,7 @@
     "description": "Palvelun mallin nimi, eli DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Soveltuu päättelyyn ja syvälliseen ajatteluun",
+    "message": "Soveltuu päättelyyn ja syvään ajatteluun",
     "description": "DeepSeek Reasoner -mallin kuvaus"
   },
   "model.deepseekChat32": {
@@ -140,7 +140,7 @@
     "description": "Palvelun mallin nimi, eli Grok 4"
   },
   "model.grok4Description": {
-    "message": "Tällä hetkellä edistynein malli",
+    "message": "Tällä hetkellä edistyksellisin malli",
     "description": "Grok 4 -mallin kuvaus"
   },
   "model.grok3": {
@@ -156,7 +156,7 @@
     "description": "Palvelun mallin nimi, eli Gemini 3.0 Pro"
   },
   "model.gemini30ProDescription": {
-    "message": "Tällä hetkellä edistynein malli",
+    "message": "Tällä hetkellä edistyksellisin malli",
     "description": "Gemini 3.0 Pro -mallin kuvaus"
   },
   "model.gemini25Pro": {
@@ -180,7 +180,7 @@
     "description": "Palvelun mallin nimi, eli Claude Opus 4.7"
   },
   "model.claudeOpus47Description": {
-    "message": "Tällä hetkellä edistynein malli",
+    "message": "Tällä hetkellä edistyksellisin malli",
     "description": "Claude Opus 4.7 -mallin kuvaus"
   },
   "model.claudeSonnet46": {
@@ -204,7 +204,7 @@
     "description": "Palvelun mallin nimi, eli Kimi K2.5"
   },
   "model.kimiK25Description": {
-    "message": "Tällä hetkellä huipputeknologiaa",
+    "message": "Tällä hetkellä huipputason malli",
     "description": "Kimi K2.5 mallin kuvaus"
   },
   "model.kimiK2Thinking": {
@@ -261,7 +261,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 1 tiedoston",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle voi ladata enintään 1 tiedoston"
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle voit ladata enintään 1 tiedoston"
   },
   "message.uploadReferencesError": {
     "message": "Tiedoston lataus epäonnistui, yritä myöhemmin uudelleen",
@@ -277,43 +277,43 @@
   },
   "message.question1": {
     "message": "Luo harjoitusohjelma",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa Hello World"
+    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan JavaScript-koodi, joka tulostaa Hello World"
   },
   "message.question2": {
     "message": "Tee henkilökohtainen verkkosivusto",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää kirjoittamaan Mike:lle sähköposti, jossa kerrotaan, että hän on juuri muuttanut"
+    "description": "Keskustelun aloituskysymys, pyytää käyttäjää kirjoittamaan Mike:lle sähköpostia, kertomaan että on juuri muuttanut"
   },
   "message.question3": {
     "message": "Suunnittele mielenkiintoinen ohjelmointipeli",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
+    "description": "Keskustelun aloituskysymys, pyytää käyttäjää selittämään kvanttilaskennan perusperiaatteet yksinkertaisella kielellä"
   },
   "message.question4": {
     "message": "Koe Soul kuin paikallinen",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä käyttäjää selittämään, mitä vaikutuksia virtuaalitodellisuudella on taiteelliseen luomiseen"
+    "description": "Keskustelun aloituskysymys, pyytää käyttäjää selittämään, mitä vaikutuksia virtuaalitodellisuudella on taiteelliseen luomiseen"
   },
   "message.question5": {
     "message": "Kumpi on suurempi, 9.8 vai 9.11?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, pyydä vertaamaan kahta numeroa"
+    "description": "Keskustelun aloituskysymys, pyytää vertaamaan kahta numeroa"
   },
   "message.question6": {
     "message": "Miten AI vaikuttaa tulevaisuuteen?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten AI vaikuttaa tulevaisuuteen?"
+    "description": "Keskustelun aloituskysymys, miten AI vaikuttaa tulevaisuuteen?"
   },
   "message.question7": {
     "message": "Miten parantaa oppimisnopeutta?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa oppimisnopeutta?"
+    "description": "Keskustelun aloituskysymys, miten parantaa omaa oppimisnopeutta?"
   },
   "message.question8": {
     "message": "Miten parantaa keskittymiskykyä?",
-    "description": "Esimerkkikysymys keskustelun aloittamiseksi, miten parantaa omaa keskittymiskykyä?"
+    "description": "Keskustelun aloituskysymys, miten parantaa omaa keskittymiskykyä?"
   },
   "message.errorApiError": {
     "message": "Vastaus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle vastaus epäonnistui, yritä myöhemmin uudelleen"
   },
   "message.errorBadRequest": {
-    "message": "Pyyntö ei ole voimassa, kysy uudelleen",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, kysy uudelleen"
+    "message": "Pyyntö ei ole voimassa, yritä uudelleen",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle pyyntö ei ole voimassa, yritä uudelleen"
   },
   "message.errorNoConversation": {
     "message": "Keskustelua ei ole tai se on vanhentunut, aloita uusi keskustelu",
@@ -352,8 +352,8 @@
     "description": "Verkkosivun viesti, joka kertoo käyttäjälle vahvistamaan poiston"
   },
   "message.howToUse": {
-    "message": "AI saattaa tehdä virheitä, tarkista tärkeät tiedot.",
-    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että AI saattaa tehdä virheitä, tarkista tärkeät tiedot"
+    "message": "AI voi tehdä virheitä, tarkista tärkeät tiedot.",
+    "description": "Verkkosivun viesti, joka kertoo käyttäjälle, että AI voi tehdä virheitä, tarkista tärkeät tiedot"
   },
   "title.chat": {
     "message": "AI Keskustelu",
@@ -456,7 +456,7 @@
     "description": "Agentin ei-yhdistetty tila"
   },
   "agent.description": {
-    "message": "Yhdistä työpöytäagentti päästäksesi paikallisiin tiedostoihin, suorittaaksesi komentoja ja käyttämään paikallista MCP-palvelinta AI-keskustelussa.",
+    "message": "Yhdistä työpöytäagentti päästäksesi paikallisiin tiedostoihin, suorittaaksesi komentoja ja käyttääksesi paikallista MCP-palvelinta AI-keskustelussa.",
     "description": "Agentin kuvaus"
   },
   "agent.name": {
@@ -485,19 +485,31 @@
   },
   "askUserQuestion.submit": {
     "message": "Lähetä",
-    "description": "ask-user-question-kortin lähetyspainike"
+    "description": "ask-user-question -opastuksen viimeisen kysymyksen lähetyspainike"
   },
-  "askUserQuestion.skip": {
-    "message": "Ohita",
-    "description": "ask-user-question-kortin ohituspainike"
+  "askUserQuestion.next": {
+    "message": "Seuraava kysymys",
+    "description": "ask-user-question -opastus siirtyy seuraavaan kysymykseen"
+  },
+  "askUserQuestion.back": {
+    "message": "Edellinen kysymys",
+    "description": "ask-user-question -opastus palaa edelliseen kysymykseen"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Ohita kaikki",
+    "description": "Ohita koko ask-user-question -opastus, jotta malli voi jatkaa ilman vastauksia"
   },
   "askUserQuestion.other": {
     "message": "Muu",
-    "description": "ask-user-question-kortin mukautetun vastauksen syöttökentän etiketti"
+    "description": "Valevaihtoehto; valitsemalla tämä kysymys avaa mukautetun tekstikentän"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Syötä oma vastauksesi",
+    "description": "Muu vaihtoehto -kohdan alla oleva ohje"
   },
   "askUserQuestion.placeholder": {
-    "message": "Syötä mukautettu vastaus…",
-    "description": "Mukautetun vastauksen syöttökentän paikkamerkki"
+    "message": "Syötä vastaus…",
+    "description": "Jokaisen kysymyksen mukautetun vastauskentän paikkamerkkiteksti"
   },
   "askUserQuestion.multiSelectHint": {
     "message": "Valitse yksi tai useampi",
@@ -505,6 +517,6 @@
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Vastauksesi",
-    "description": "Kun tarkkaa vastausta ei voida poimia historiasta, käytettävä teksti"
+    "description": "Kun ei voida poimia tarkkaa vastausta historiasta, käytetään tätä tekstiä"
   }
 }

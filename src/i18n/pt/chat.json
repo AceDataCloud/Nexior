@@ -76,7 +76,7 @@
     "description": "Nome do modelo do serviço, ou seja, GLM"
   },
   "modelGroup.glmDescription": {
-    "message": "Modelo de linguagem de grande escala desenvolvido pela Zhiyu AI",
+    "message": "Modelo de linguagem desenvolvido pela Zhiyu AI",
     "description": "Descrição do grupo de modelos GLM"
   },
   "model.55": {
@@ -241,39 +241,39 @@
   },
   "message.startNewChat": {
     "message": "Iniciar nova conversa",
-    "description": "Mensagem na página informando ao usuário para iniciar uma nova conversa"
+    "description": "Mensagem na página que informa ao usuário para iniciar uma nova conversa"
   },
   "message.uploadFile": {
     "message": "Enviar arquivo",
-    "description": "Mensagem na página informando ao usuário para enviar um arquivo"
+    "description": "Mensagem na página que informa ao usuário para enviar um arquivo"
   },
   "message.noToken": {
     "message": "Por favor, solicite o serviço correspondente primeiro",
-    "description": "Mensagem na página informando ao usuário para solicitar o serviço correspondente primeiro"
+    "description": "Mensagem na página que informa ao usuário para solicitar o serviço correspondente primeiro"
   },
   "message.newMessagePlaceholder": {
     "message": "Digite sua pergunta...",
-    "description": "Placeholder na página informando ao usuário para digitar uma pergunta"
+    "description": "Placeholder na página que informa ao usuário para digitar uma pergunta"
   },
   "message.noInput": {
     "message": "A pergunta não pode estar vazia",
-    "description": "Mensagem na página informando ao usuário que a pergunta não pode estar vazia"
+    "description": "Mensagem na página que informa ao usuário que a pergunta não pode estar vazia"
   },
   "message.uploadReferencesExceed": {
     "message": "Você pode enviar no máximo 1 arquivo",
-    "description": "Mensagem na página informando ao usuário que pode enviar no máximo 1 arquivo"
+    "description": "Mensagem na página que informa ao usuário que pode enviar no máximo 1 arquivo"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar o arquivo, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página informando ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página que informa ao usuário que a falha ao enviar o arquivo, por favor, tente novamente mais tarde"
   },
   "message.notApplied": {
     "message": "Você ainda não solicitou este serviço, por favor, faça isso primeiro",
-    "description": "Mensagem na página informando ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
+    "description": "Mensagem na página que informa ao usuário que ainda não solicitou este serviço, por favor, faça isso primeiro"
   },
   "message.tryForFree": {
     "message": "Teste grátis",
-    "description": "Mensagem na página informando ao usuário sobre o teste grátis"
+    "description": "Mensagem na página que informa ao usuário sobre o teste grátis"
   },
   "message.question1": {
     "message": "Criar plano de treinamento",
@@ -281,7 +281,7 @@
   },
   "message.question2": {
     "message": "Criar uma página pessoal",
-    "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um e-mail para Mike informando que acabou de se mudar"
+    "description": "Exemplo de pergunta para iniciar a conversa, pedindo ao usuário para escrever um e-mail para Mike informando que ele acabou de se mudar"
   },
   "message.question3": {
     "message": "Projetar um jogo de programação interessante",
@@ -309,23 +309,23 @@
   },
   "message.errorApiError": {
     "message": "Falha na resposta, por favor, tente novamente mais tarde",
-    "description": "Mensagem na página informando ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
+    "description": "Mensagem na página que informa ao usuário que houve uma falha na resposta, por favor, tente novamente mais tarde"
   },
   "message.errorBadRequest": {
     "message": "Conteúdo da solicitação inválido, por favor, reformule sua pergunta",
-    "description": "Mensagem na página informando ao usuário que o conteúdo da solicitação é inválido, por favor, reformule sua pergunta"
+    "description": "Mensagem na página que informa ao usuário que o conteúdo da solicitação é inválido, por favor, reformule sua pergunta"
   },
   "message.errorNoConversation": {
     "message": "A conversa não existe ou expirou, por favor, inicie uma nova conversa",
-    "description": "Mensagem na página informando ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
+    "description": "Mensagem na página que informa ao usuário que a conversa não existe ou expirou, por favor, inicie uma nova conversa"
   },
   "message.errorContentTooLarge": {
     "message": "O conteúdo da pergunta é muito longo, por favor, encurte e tente novamente",
-    "description": "Mensagem na página informando ao usuário que o conteúdo da pergunta é muito longo, por favor, encurte e tente novamente"
+    "description": "Mensagem na página que informa ao usuário que o conteúdo da pergunta é muito longo, por favor, encurte e tente novamente"
   },
   "message.errorTooManyRequests": {
-    "message": "Você fez muitas solicitações, por favor tente novamente mais tarde",
-    "description": "Mensagem na página que informa ao usuário que ele fez muitas solicitações, por favor tente novamente mais tarde"
+    "message": "Você está fazendo muitas solicitações, por favor tente novamente mais tarde",
+    "description": "Mensagem na página que informa ao usuário que ele está fazendo muitas solicitações, por favor tente novamente mais tarde"
   },
   "message.errorBusy": {
     "message": "Servidor ocupado, por favor tente novamente mais tarde",
@@ -425,7 +425,7 @@
   },
   "composer.addAction": {
     "message": "Adicionar conteúdo",
-    "description": "Dica do botão de adição abaixo do campo de entrada, que ao ser expandido permite o upload de arquivos, abrir habilidades ou gerenciar conexões"
+    "description": "Dica do botão de adição abaixo do campo de entrada, que ao expandir permite o upload de arquivos, abrir habilidades ou gerenciamento de conexões"
   },
   "composer.addFiles": {
     "message": "Adicionar fotos ou arquivos",
@@ -485,19 +485,31 @@
   },
   "askUserQuestion.submit": {
     "message": "Enviar",
-    "description": "Botão de envio no cartão ask-user-question"
+    "description": "Botão de envio da última pergunta do assistente ask-user-question"
   },
-  "askUserQuestion.skip": {
-    "message": "Pular",
-    "description": "Botão de pular no cartão ask-user-question"
+  "askUserQuestion.next": {
+    "message": "Próxima pergunta",
+    "description": "Avançar para a próxima pergunta no assistente ask-user-question"
+  },
+  "askUserQuestion.back": {
+    "message": "Pergunta anterior",
+    "description": "Voltar para a pergunta anterior no assistente ask-user-question"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Pular tudo",
+    "description": "Pular todo o assistente ask-user-question, permitindo que o modelo continue sem respostas"
   },
   "askUserQuestion.other": {
     "message": "Outro",
-    "description": "Rótulo do campo de entrada de resposta personalizada no cartão ask-user-question"
+    "description": "Opção falsa; ao selecionar, a pergunta expande um campo de entrada de texto personalizado"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Digite sua própria resposta",
+    "description": "Instrução auxiliar abaixo da opção 'Outro'"
   },
   "askUserQuestion.placeholder": {
-    "message": "Digite uma resposta personalizada…",
-    "description": "Texto de espaço reservado para o campo de entrada de resposta personalizada"
+    "message": "Digite sua resposta…",
+    "description": "Texto de espaço reservado para o campo de entrada de resposta personalizada de cada pergunta"
   },
   "askUserQuestion.multiSelectHint": {
     "message": "Selecione uma ou mais opções",

@@ -108,7 +108,7 @@
     "description": "Modellnamnet för tjänsten, det vill säga DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
-    "message": "För dagliga uppgifter",
+    "message": "För vardagliga uppgifter",
     "description": "Beskrivning av DeepSeek Chat-modellen"
   },
   "model.deepseekReasoner": {
@@ -253,7 +253,7 @@
   },
   "message.newMessagePlaceholder": {
     "message": "Skriv din fråga...",
-    "description": "Platsinnehavare på webbsidan som informerar användaren om att skriva en fråga"
+    "description": "Platshållare på webbsidan som informerar användaren om att skriva en fråga"
   },
   "message.noInput": {
     "message": "Frågan får inte vara tom",
@@ -285,11 +285,11 @@
   },
   "message.question3": {
     "message": "Designa roliga programmeringsspel",
-    "description": "Exempel på fråga för att starta en konversation, be användaren förklara grunderna i kvantdatorer med enkla ord"
+    "description": "Exempel på fråga för att starta en konversation, be användaren förklara de grundläggande principerna för kvantdatorer med enkla ord"
   },
   "message.question4": {
     "message": "Upplev Seoul som en lokal",
-    "description": "Exempel på fråga för att starta en konversation, be användaren förklara hur virtuell verklighet påverkar konstnärligt skapande"
+    "description": "Exempel på fråga för att starta en konversation, be användaren förklara hur virtuell verklighet påverkar konstskapande"
   },
   "message.question5": {
     "message": "Vilket är större, 9.8 eller 9.11?",
@@ -312,8 +312,8 @@
     "description": "Meddelande på webbsidan som informerar användaren om att svaret misslyckades, försök igen senare"
   },
   "message.errorBadRequest": {
-    "message": "Begäran är ogiltig, vänligen ställ frågan igen",
-    "description": "Meddelande på webbsidan som informerar användaren om att begäran är ogiltig, vänligen ställ frågan igen"
+    "message": "Förfrågan är ogiltig, vänligen ställ frågan igen",
+    "description": "Meddelande på webbsidan som informerar användaren om att förfrågan är ogiltig, vänligen ställ frågan igen"
   },
   "message.errorNoConversation": {
     "message": "Konversationen finns inte eller har gått ut, vänligen börja en ny konversation",
@@ -340,8 +340,8 @@
     "description": "Meddelande på webbsidan som informerar användaren om att ett okänt fel har inträffat på servern, försök igen senare eller kontakta support"
   },
   "message.errorTimeout": {
-    "message": "Svarstiden har överskridits, försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att svarstiden har överskridits, försök igen senare"
+    "message": "Svarstiden har gått ut, försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren om att svarstiden har gått ut, försök igen senare"
   },
   "message.errorNotApplied": {
     "message": "Du har inte ansökt om denna tjänst, vänligen ansök först innan du fortsätter",
@@ -413,7 +413,7 @@
   },
   "connector.closeWindow": {
     "message": "Detta fönster stängs automatiskt.",
-    "description": "Meddelande om stängning av OAuth callback"
+    "description": "Meddelande om att stänga OAuth callback"
   },
   "connections.tooltip": {
     "message": "Hantera anslutningar",
@@ -429,15 +429,15 @@
   },
   "composer.addFiles": {
     "message": "Lägg till bilder eller filer",
-    "description": "Post i popup-menyn för plusknappen: ladda upp bilder eller filer"
+    "description": "Alternativ i popup-menyn för plusknappen: ladda upp bilder eller filer"
   },
   "composer.skills": {
     "message": "Färdigheter",
-    "description": "Post i popup-menyn för plusknappen: öppna färdighets hantering"
+    "description": "Alternativ i popup-menyn för plusknappen: öppna färdighets hantering"
   },
   "composer.connections": {
     "message": "Anslutningar",
-    "description": "Post i popup-menyn för plusknappen: öppna anslutningshantering"
+    "description": "Alternativ i popup-menyn för plusknappen: öppna anslutningshantering"
   },
   "agent.title": {
     "message": "Skrivbordsagent",
@@ -456,7 +456,7 @@
     "description": "Status för icke ansluten agent"
   },
   "agent.description": {
-    "message": "Anslut skrivbordsagenten för att få åtkomst till lokala filer, köra kommandon och använda lokal MCP-server i AI-konversationer.",
+    "message": "Anslut skrivbordsagenten för att få åtkomst till lokala filer, köra kommandon och använda den lokala MCP-servern i AI-konversationer.",
     "description": "Beskrivning av agenten"
   },
   "agent.name": {
@@ -481,23 +481,35 @@
   },
   "agent.runLabel": {
     "message": "Kör agent:",
-    "description": "Körningsbeskrivning etikett"
+    "description": "Label för körningsbeskrivning"
   },
   "askUserQuestion.submit": {
     "message": "Skicka",
-    "description": "Skicka-knappen på ask-user-question-kortet"
+    "description": "Knappen för att skicka den sista frågan i ask-user-question-guiden"
   },
-  "askUserQuestion.skip": {
-    "message": "Hoppa över",
-    "description": "Hoppa över-knappen på ask-user-question-kortet"
+  "askUserQuestion.next": {
+    "message": "Nästa fråga",
+    "description": "Gå vidare till nästa fråga i ask-user-question-guiden"
+  },
+  "askUserQuestion.back": {
+    "message": "Föregående fråga",
+    "description": "Gå tillbaka till föregående fråga i ask-user-question-guiden"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Hoppa över allt",
+    "description": "Hoppa över hela ask-user-question-guiden och låt modellen fortsätta utan svar"
   },
   "askUserQuestion.other": {
     "message": "Annat",
-    "description": "Etikett för anpassad svarinmatningsruta på ask-user-question-kortet"
+    "description": "Pseudoval; när det väljs visas en anpassad textinmatningsruta"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Skriv ditt eget svar",
+    "description": "Hjälptext under alternativet 'Annat'"
   },
   "askUserQuestion.placeholder": {
-    "message": "Skriv in anpassat svar…",
-    "description": "Platshållartext för anpassad svarinmatningsruta"
+    "message": "Ange svar…",
+    "description": "Platshållartext för anpassad svarsinmatningsruta för varje fråga"
   },
   "askUserQuestion.multiSelectHint": {
     "message": "Välj en eller flera",
@@ -505,6 +517,6 @@
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Ditt svar",
-    "description": "Fallback-text när specifikt svar inte kan extraheras från historisk utdata"
+    "description": "Fallback-text när ett specifikt svar inte kan extraheras från historisk utdata"
   }
 }

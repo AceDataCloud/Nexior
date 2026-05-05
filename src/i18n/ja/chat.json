@@ -36,7 +36,7 @@
     "description": "サービスのモデル名、すなわち DeepSeek"
   },
   "modelGroup.deepseekDescription": {
-    "message": "深度求索が開発したAIモデル",
+    "message": "DeepSeek社が開発したAIモデル",
     "description": "DeepSeekモデルの説明"
   },
   "modelGroup.grok": {
@@ -68,7 +68,7 @@
     "description": "サービスのモデル名、すなわち Kimi"
   },
   "modelGroup.kimiDescription": {
-    "message": "月の暗面が開発したAIモデル",
+    "message": "月の暗面社が開発したAIモデル",
     "description": "Kimiモデルグループの説明"
   },
   "modelGroup.glm": {
@@ -116,7 +116,7 @@
     "description": "サービスのモデル名、すなわち DeepSeek 推論"
   },
   "model.deepseekReasonerDescription": {
-    "message": "推論や深い思考の問題に適しています",
+    "message": "推論と深い思考の問題に適しています",
     "description": "DeepSeek推論モデルの説明"
   },
   "model.deepseekChat32": {
@@ -185,7 +185,7 @@
   },
   "model.claudeSonnet46": {
     "message": "クラウド・ソネット4.6",
-    "description": "サービスのモデル名、つまりClaude Sonnet 4.6"
+    "description": "サービスのモデル名、すなわち Claude Sonnet 4.6"
   },
   "model.claudeSonnet46Description": {
     "message": "ほとんどのタスクに適しています",
@@ -273,7 +273,7 @@
   },
   "message.tryForFree": {
     "message": "無料トライアル",
-    "description": "ウェブページのメッセージ、ユーザーに無料トライアルを提供することを伝える"
+    "description": "ウェブページのメッセージ、ユーザーに無料トライアルを提供する"
   },
   "message.question1": {
     "message": "トレーニングプランを作成",
@@ -300,12 +300,12 @@
     "description": "会話を開始するためのサンプル質問、AIが未来に与える影響について尋ねる"
   },
   "message.question7": {
-    "message": "学習効率を向上させる方法は？",
-    "description": "会話を開始するためのサンプル質問、自分の学習効率を向上させる方法について尋ねる"
+    "message": "学習効率を向上させるには？",
+    "description": "会話を開始するためのサンプル質問、自分の学習効率を向上させる方法を尋ねる"
   },
   "message.question8": {
-    "message": "集中力を高める方法は？",
-    "description": "会話を開始するためのサンプル質問、自分の集中力を高める方法について尋ねる"
+    "message": "集中力を高めるには？",
+    "description": "会話を開始するためのサンプル質問、自分の集中力を高める方法を尋ねる"
   },
   "message.errorApiError": {
     "message": "回答に失敗しました。後で再試行してください",
@@ -317,15 +317,15 @@
   },
   "message.errorNoConversation": {
     "message": "会話が存在しないか、期限切れです。新しい会話を開始してください",
-    "description": "ウェブページのメッセージ、ユーザーに会話が存在しないか期限切れであることを伝える"
+    "description": "ウェブページのメッセージ、ユーザーに会話が存在しないか、期限切れであることを伝える"
   },
   "message.errorContentTooLarge": {
     "message": "質問内容が長すぎます。短くして再試行してください",
     "description": "ウェブページのメッセージ、ユーザーに質問内容が長すぎることを伝える"
   },
   "message.errorTooManyRequests": {
-    "message": "操作が多すぎます。後で再試行してください。",
-    "description": "ウェブページ内のメッセージで、ユーザーに操作が多すぎることを伝え、後で再試行するように促します。"
+    "message": "操作が多すぎます。しばらくしてから再試行してください。",
+    "description": "ウェブページ内のメッセージで、ユーザーに操作が多すぎることを伝え、しばらくしてから再試行するように促します。"
   },
   "message.errorBusy": {
     "message": "サーバーが忙しいです。後で再試行してください。",
@@ -377,7 +377,7 @@
   },
   "title.professionalQuestion": {
     "message": "専門的な質問を相談",
-    "description": "ウェブページのタイトルで、この部分がサービスの専門的な質問に相談する能力に関する内容であることを示します。"
+    "description": "ウェブページのタイトルで、この部分がサービスの専門的な質問を相談する能力に関する内容であることを示します。"
   },
   "title.getTips": {
     "message": "インスピレーションとアイデアを得る",
@@ -449,11 +449,11 @@
   },
   "agent.connected": {
     "message": "接続済み",
-    "description": "エージェントが接続されている状態。"
+    "description": "エージェントの接続状態。"
   },
   "agent.notConnected": {
     "message": "未接続",
-    "description": "エージェントが未接続の状態。"
+    "description": "エージェントの未接続状態。"
   },
   "agent.description": {
     "message": "デスクトップエージェントに接続して、AI対話でローカルファイルにアクセスしたり、コマンドを実行したり、ローカルMCPサーバーを使用したりします。",
@@ -485,23 +485,35 @@
   },
   "askUserQuestion.submit": {
     "message": "送信",
-    "description": "ask-user-question カード上の送信ボタン"
+    "description": "ask-user-question ウィザードの最後の質問の送信ボタン"
   },
-  "askUserQuestion.skip": {
-    "message": "スキップ",
-    "description": "ask-user-question カード上のスキップボタン"
+  "askUserQuestion.next": {
+    "message": "次の質問",
+    "description": "ask-user-question ウィザードで次の質問に進む"
+  },
+  "askUserQuestion.back": {
+    "message": "前の質問",
+    "description": "ask-user-question ウィザードで前の質問に戻る"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "すべてスキップ",
+    "description": "ask-user-question ウィザード全体をスキップし、モデルが回答なしで続行する"
   },
   "askUserQuestion.other": {
     "message": "その他",
-    "description": "ask-user-question カードのカスタム回答入力フィールドのラベル"
+    "description": "擬似オプション；選択するとカスタムテキスト入力ボックスが展開される"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "自分の回答を入力",
+    "description": "その他のオプションの下にある補助説明"
   },
   "askUserQuestion.placeholder": {
-    "message": "カスタム回答を入力…",
-    "description": "カスタム回答入力フィールドのプレースホルダー文"
+    "message": "回答を入力してください…",
+    "description": "各質問のカスタム回答入力ボックスのプレースホルダー文"
   },
   "askUserQuestion.multiSelectHint": {
-    "message": "1つまたは複数を選択可能",
-    "description": "複数選択可能な質問時に表示されるヒント"
+    "message": "1つまたは複数選択可能",
+    "description": "複数選択の質問をサポートする際に表示されるヒント"
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "あなたの回答",
