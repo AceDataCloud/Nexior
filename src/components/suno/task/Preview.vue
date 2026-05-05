@@ -623,14 +623,17 @@ export default defineComponent({
         this.isFetchingWav = true;
         ElMessage.info(this.$t('suno.message.fetchingWav'));
         const response = await sunoOperator.wav({ audio_id: audio.id }, { token });
-        const wavUrl = response.data?.data?.audio_url;
+        // Worker returns `data: [{ file_url }]` (array, not an object).
+        const wavUrl = response.data?.data?.[0]?.file_url;
         if (wavUrl) {
           this.onDownload(null, wavUrl);
         } else {
           ElMessage.error(this.$t('suno.message.fetchWavFailed'));
         }
-      } catch {
-        ElMessage.error(this.$t('suno.message.fetchWavFailed'));
+      } catch (error) {
+        const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
+          ?.message;
+        ElMessage.error(message || this.$t('suno.message.fetchWavFailed'));
       } finally {
         this.isFetchingWav = false;
       }
@@ -643,14 +646,19 @@ export default defineComponent({
         this.isFetchingMidi = true;
         ElMessage.info(this.$t('suno.message.fetchingMidi'));
         const response = await sunoOperator.midi({ audio_id: audio.id }, { token });
-        const midiUrl = response.data?.data?.midi_url;
-        if (midiUrl) {
-          this.onDownload(null, midiUrl);
-        } else {
+        // Worker returns structured note data, no URL — save raw JSON for the user.
+        const data = response.data?.data;
+        if (!data?.length) {
           ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+          return;
         }
-      } catch {
-        ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+        const filename = (audio.title || audio.id || 'suno').replace(/[^\w.-]+/g, '_') + '.json';
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        saveAs(blob, filename);
+      } catch (error) {
+        const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
+          ?.message;
+        ElMessage.error(message || this.$t('suno.message.fetchMidiFailed'));
       } finally {
         this.isFetchingMidi = false;
       }
