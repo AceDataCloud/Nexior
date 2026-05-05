@@ -95,13 +95,48 @@ export interface IChatMessageContentItem {
   output?: string;
   is_error?: boolean;
   duration_ms?: number;
-  status?: 'running' | 'done';
+  // `awaiting_input` is set on a `tool_use` block when the worker pauses the
+  // turn for a user reply (see `ask_user_question` tool). `output` is absent
+  // until the user submits an answer, which folds the block back to `done`.
+  status?: 'running' | 'awaiting_input' | 'done';
+  // Present iff `status === 'awaiting_input'` and `tool_name === 'ask_user_question'`.
+  // The card UI renders this; on submit, it's stripped and `output` is set.
+  pending_question?: IAskUserQuestionPayload;
   // Rich-output entity card (type='card') — payload mirrors the
   // worker's `CardData` SSE event. `type` inside `card` is open-ended:
   // 'audio' | 'video' | 'image' | 'file' today, with room for future
   // entity types (e.g. 'task', 'location', 'code-canvas') that the
   // EntityCard component can dispatch on without changing this shape.
   card?: IChatCard;
+}
+
+// ===== ask_user_question tool payload =====
+// Mirrors aichat2 worker contract (frozen). When the model calls the
+// `ask_user_question` tool, the worker pauses the turn and emits a single
+// SSE event of type `ask_user_question` carrying this payload, followed by
+// a terminal `done` with `terminal_reason: 'awaiting_user_input'`.
+
+export interface IAskUserQuestionOption {
+  /** Display label, 1–5 words. */
+  label: string;
+  /** Free-text explanation; what choosing this means / its trade-off. */
+  description: string;
+}
+
+export interface IAskUserQuestion {
+  /** Complete question, ends with '?'. */
+  question: string;
+  /** Very short chip/tag label, ≤12 chars. */
+  header: string;
+  /** 2–4 distinct options. */
+  options: IAskUserQuestionOption[];
+  /** When true, multiple options can be selected. Default false. */
+  multiSelect?: boolean;
+}
+
+export interface IAskUserQuestionPayload {
+  /** 1–4 questions. */
+  questions: IAskUserQuestion[];
 }
 
 /**
@@ -187,6 +222,11 @@ export interface IChatConversationRequest {
   mcp_servers?: string[];
   connectors?: string[];
   skills?: string[];
+  // Resume payload for a paused conversation. When present, the conversation
+  // MUST be in `awaiting_user_input` state and `tool_results` MUST contain
+  // exactly one entry whose `tool_use_id` matches the pending `tool_use`
+  // block. `question` / `message` / `references` are ignored when this is set.
+  tool_results?: { tool_use_id: string; output: string; is_error?: boolean }[];
 }
 
 export interface IChatConversationResponse {
@@ -218,6 +258,10 @@ export interface IChatConversationResponse {
   // the assistant turn; the frontend merges them into
   // `IChatMessage.citations` keyed by `id`.
   citation?: IChatCitation;
+  // ask_user_question SSE event (`type === 'ask_user_question'`). The worker
+  // pauses the turn and asks the user one or more multi-choice questions; the
+  // payload is rendered as a card (see AskUserQuestionCard.vue).
+  payload?: IAskUserQuestionPayload;
 }
 
 export interface IChatConversationsResponse {

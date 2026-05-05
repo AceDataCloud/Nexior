@@ -60,7 +60,36 @@
                 />
                 <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
               </div>
-              <tool-activity v-if="item.type === 'tool_use'" :item="item" />
+              <tool-activity
+                v-if="
+                  item.type === 'tool_use' &&
+                  !(
+                    item.tool_name === 'ask_user_question' &&
+                    (item.status === 'awaiting_input' || item.status === 'done')
+                  )
+                "
+                :item="item"
+              />
+              <ask-user-question-card
+                v-if="
+                  item.type === 'tool_use' &&
+                  item.tool_name === 'ask_user_question' &&
+                  item.status === 'awaiting_input' &&
+                  item.pending_question
+                "
+                :tool-use-id="item.tool_id || ''"
+                :payload="item.pending_question"
+                :collapsed="false"
+                @submit="onAskUserQuestionSubmit"
+                @skip="onAskUserQuestionSkip"
+              />
+              <ask-user-question-card
+                v-if="item.type === 'tool_use' && item.tool_name === 'ask_user_question' && item.status === 'done'"
+                :tool-use-id="item.tool_id || ''"
+                :payload="askUserQuestionPayloadFromBlock(item)"
+                :collapsed="true"
+                :previous-output="item.output || ''"
+              />
               <entity-card v-if="item.type === 'card' && item.card" :card="item.card" />
             </div>
           </div>
@@ -136,6 +165,7 @@ import { ElButton, ElImage, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
+import type { IAskUserQuestionPayload, IChatMessageContentItem } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
@@ -143,6 +173,7 @@ import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
 import EntityCard from './EntityCard.vue';
 import ThinkingBlock from './ThinkingBlock.vue';
+import AskUserQuestionCard from './AskUserQuestionCard.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -177,6 +208,7 @@ export default defineComponent({
     ToolActivity,
     EntityCard,
     ThinkingBlock,
+    AskUserQuestionCard,
     ElButton,
     ElImage,
     ElInput,
@@ -197,7 +229,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop', 'edit', 'restart'],
+  emits: ['stop', 'edit', 'restart', 'answerAskUserQuestion', 'skipAskUserQuestion'],
   data(): IData {
     return {
       copied: false,
@@ -310,6 +342,21 @@ export default defineComponent({
           id: this.application?.id
         }
       });
+    },
+    onAskUserQuestionSubmit(payload: { tool_use_id: string; output: string }) {
+      this.$emit('answerAskUserQuestion', payload);
+    },
+    onAskUserQuestionSkip(payload: { tool_use_id: string }) {
+      this.$emit('skipAskUserQuestion', payload);
+    },
+    askUserQuestionPayloadFromBlock(item: IChatMessageContentItem): IAskUserQuestionPayload {
+      // Done blocks shouldn't carry `pending_question` per the contract,
+      // but we still want a payload to render the collapsed summary against.
+      // Reconstruct it from `input.questions` (the model's tool input).
+      if (item.pending_question) return item.pending_question;
+      const input = item.input as { questions?: unknown } | undefined;
+      const qs = (input?.questions as IAskUserQuestionPayload['questions']) || [];
+      return { questions: qs };
     }
   }
 });
