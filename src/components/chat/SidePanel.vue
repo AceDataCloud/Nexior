@@ -122,9 +122,6 @@ export default defineComponent({
     };
   },
   computed: {
-    modelGroup() {
-      return this.$store.state.chat.modelGroup;
-    },
     conversationId() {
       console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();
@@ -183,14 +180,6 @@ export default defineComponent({
     },
     token() {
       return this.$store.state.chat?.credential?.token;
-    }
-  },
-  watch: {
-    modelGroup() {
-      console.debug('modelGroup changed, refreshing conversations');
-      const firstConversation = this.conversations?.[0];
-      // will create new conversation once no conversation
-      this.$emit('change-conversation', firstConversation?.id);
     }
   },
   methods: {
