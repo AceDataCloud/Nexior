@@ -25,6 +25,25 @@ const lazyPersistModules = import.meta.glob<{ default: string[] }>(['./*/persist
 
 const lazyPersistPaths: string[] = Object.values(lazyPersistModules).flatMap((m) => m.default);
 
+// One-shot migration: strip stale `chat.model` / `chat.modelGroup` from any
+// previously persisted snapshot — they used to be persisted but their
+// methods get dropped by JSON, crashing ModelSelector.vue on rehydration.
+try {
+  if (typeof localStorage !== 'undefined') {
+    const raw = localStorage.getItem('vuex');
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (data && data.chat && (data.chat.model !== undefined || data.chat.modelGroup !== undefined)) {
+        delete data.chat.model;
+        delete data.chat.modelGroup;
+        localStorage.setItem('vuex', JSON.stringify(data));
+      }
+    }
+  }
+} catch {
+  // ignore: storage unavailable / corrupted JSON
+}
+
 const store = createStore({
   ...root,
   plugins: [

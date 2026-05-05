@@ -3,7 +3,7 @@
     <el-dropdown trigger="click" popper-class="model-selector-popper">
       <div class="trigger">
         <img v-if="model?.icon" :src="model.icon" class="trigger-icon" />
-        <span class="trigger-name">{{ model?.getDisplayName() }}</span>
+        <span class="trigger-name">{{ model?.getDisplayName?.() ?? model?.name ?? '' }}</span>
         <font-awesome-icon icon="fa-solid fa-chevron-down" class="trigger-arrow" />
       </div>
       <template #dropdown>
@@ -17,8 +17,8 @@
             <div class="item">
               <img v-if="option?.icon" :src="option.icon" class="item-icon" />
               <div class="item-info">
-                <p v-if="option?.getDisplayName" class="item-name">{{ option?.getDisplayName() }}</p>
-                <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
+                <p v-if="option?.getDisplayName" class="item-name">{{ option.getDisplayName() }}</p>
+                <p v-if="option?.getDescription" class="item-desc">{{ option.getDescription() }}</p>
               </div>
               <font-awesome-icon v-if="model?.name === option?.name" icon="fa-solid fa-check" class="item-check" />
             </div>
