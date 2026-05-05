@@ -260,7 +260,7 @@ export default defineComponent({
 .field {
   :deep(.el-textarea__inner) {
     font-family: monospace;
-    font-size: 12.5px;
+    font-size: 13px;
     line-height: 1.6;
   }
 }

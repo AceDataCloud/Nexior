@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-2">
+  <div>
     <div class="flex items-center mb-1">
       <span class="text-sm font-bold">{{ $t('suno.name.vocalGender') }}</span>
       <info-icon :content="$t('suno.description.vocalGender')" />
