@@ -6,7 +6,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.styleNegative') }}</span>
         </div>
-        <el-input v-model="styleNegative" :placeholder="$t('suno.placeholder.styleNegative')" />
+        <el-input v-model="styleNegative" size="small" :placeholder="$t('suno.placeholder.styleNegative')" />
       </div>
 
       <!-- Lyric Prompt (auto-generate lyrics) -->
@@ -14,7 +14,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.lyricPrompt') }}</span>
         </div>
-        <el-input v-model="lyricPrompt" :placeholder="$t('suno.placeholder.lyricPrompt')" />
+        <el-input v-model="lyricPrompt" size="small" :placeholder="$t('suno.placeholder.lyricPrompt')" />
       </div>
 
       <!-- Weirdness -->
@@ -40,7 +40,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.variationCategory') }}</span>
         </div>
-        <el-radio-group v-model="variationCategory">
+        <el-radio-group v-model="variationCategory" size="small">
           <el-radio-button value="">{{ $t('suno.gender.auto') }}</el-radio-button>
           <el-radio-button value="high">{{ $t('suno.variation.high') }}</el-radio-button>
           <el-radio-button value="low">{{ $t('suno.variation.low') }}</el-radio-button>
@@ -60,7 +60,7 @@
         <div class="flex items-center mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.lyricsMode') }}</span>
         </div>
-        <el-radio-group v-model="lyricsMode">
+        <el-radio-group v-model="lyricsMode" size="small">
           <el-radio-button value="manual">{{ $t('suno.lyricsMode.manual') }}</el-radio-button>
           <el-radio-button value="auto">{{ $t('suno.lyricsMode.auto') }}</el-radio-button>
         </el-radio-group>
