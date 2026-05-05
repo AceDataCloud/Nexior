@@ -623,7 +623,9 @@ export default defineComponent({
         this.isFetchingWav = true;
         ElMessage.info(this.$t('suno.message.fetchingWav'));
         const response = await sunoOperator.wav({ audio_id: audio.id }, { token });
-        const wavUrl = response.data?.data?.audio_url;
+        // Upstream returns { data: [{ file_url }] } — read the first entry's file_url
+        const data = response.data?.data;
+        const wavUrl = Array.isArray(data) ? data[0]?.file_url : data?.file_url || data?.audio_url;
         if (wavUrl) {
           this.onDownload(null, wavUrl);
         } else {
