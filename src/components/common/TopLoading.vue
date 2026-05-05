@@ -25,7 +25,7 @@ export default defineComponent({
     },
     size: {
       type: Number,
-      default: 16
+      default: 12
     },
     floating: {
       type: Boolean,
@@ -44,16 +44,18 @@ export default defineComponent({
 .top-loading {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
   border-radius: 999px;
   background: var(--el-bg-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  color: var(--el-text-color-regular);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  color: var(--el-text-color-secondary);
   pointer-events: none;
   &.floating {
     position: absolute;
-    top: 8px;
+    top: 6px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
