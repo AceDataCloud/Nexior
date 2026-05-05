@@ -206,67 +206,57 @@ export default defineComponent({
       this.$store.commit('chat/setConversations', []);
       await this.$store.dispatch('chat/getConversations');
     },
-    // First-load race: Main.vue creates the credential asynchronously,
-    // in parallel with this component's mounted() hook. If credential
-    // isn't ready when onGetConversations() fires, the action bails
-    // (no token → empty list, status=Error) and the side panel stays
-    // empty until the user manually interacts. Re-dispatch once the
-    // token finally lands.
-    async 'credential.token'(val: string | undefined) {
-      if (!val) return;
-      if (this.$store.state.chat.status.getConversations === Status.Success) return;
-      await this.$store.dispatch('chat/getConversations');
+    // First-mount race: `Main.vue` picks the application & creates the
+    // credential in parallel with this component's mount, so any work
+    // that needs `credential.token` has to wait for it reactively
+    // rather than running in mounted().
+    'credential.token': {
+      immediate: true,
+      async handler(val: string | undefined) {
+        if (!val) return;
+        if (this.modelGroup?.name) {
+          await this.$store.dispatch('chat/getConversations');
+        }
+        await this.onRestoreCurrentConversation();
+        this.onCheckAgentStatus();
+      }
     },
+    // URL is the source of truth for which conversation is open. Side-
+    // panel clicks dispatch onChangeConversation -> router.push -> here.
     async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
-      // URL is the source of truth: load (or reset) the conversation
-      // here. UI components dispatch onChangeConversation -> router.push
-      // -> this watcher fires.
       if (!val) {
-        this.messages = [];
-        this.question = '';
-        this.references = [];
+        this.resetConversation();
         return;
       }
-      // Just-completed chat already populated `this.messages` locally;
-      // skip the round-trip (the router push only changed the URL).
-      if (this.skipNextRestoreId && val === this.skipNextRestoreId) {
-        this.skipNextRestoreId = undefined;
-        return;
-      }
-      await this.onRestoreConversation(val);
+      await this.onRestoreCurrentConversation();
     }
   },
   async mounted() {
     await this.onGetService();
     await this.onGetApplication();
-    await this.onGetConversations();
-    // If the URL already carries a :id (deep-link / refresh), restore it
-    // now that store/credential are warm. The conversationId watcher
-    // doesn't fire `immediate` (we'd race the data() init with no token).
-    if (this.conversationId) {
-      await this.onRestoreConversation(this.conversationId);
-    }
-    // Cross-group draft persistence: when the user clicks a different
-    // chat group in the sidebar (e.g. Claude → ChatGPT), Vue Router
-    // remounts this component because the route changes, which would
-    // otherwise drop ``this.question``. We mirror the composer text
-    // into ``store.chat.pendingDraft`` on every keystroke (see the
-    // ``question`` watcher) and consume it back here. URL ``?query=``
-    // (deep-link from AuthFrontend connector chips) wins over the
-    // mirrored draft because it represents fresher user intent.
     this.onConsumePendingDraft();
-    // Cross-site deep-link: AuthFrontend's connector detail "Try It"
-    // chips open ``/<group>/conversations?query=<prompt>`` in a new
-    // tab. Paste the prompt into the composer (intentionally NOT
-    // auto-submitting — we want the user to see what's about to be
-    // sent and press Enter), then strip the param so a refresh does
-    // not re-prefill. Only acts on a fresh conversation, never
-    // overrides what the user is typing or a restored chat.
     this.onApplyQueryFromUrl();
-    this.onCheckAgentStatus();
   },
   methods: {
+    resetConversation() {
+      this.messages = [];
+      this.question = '';
+      this.references = [];
+    },
+    // Idempotent restore for the URL-pinned conversation. Bails on
+    // missing token (credential.token watcher will retry), missing :id
+    // (new chat), or the skip flag set by `onRequest` after a stream
+    // completes (we already have the messages locally).
+    async onRestoreCurrentConversation() {
+      const id = this.conversationId;
+      if (!id || !this.credential?.token) return;
+      if (this.skipNextRestoreId === id) {
+        this.skipNextRestoreId = undefined;
+        return;
+      }
+      await this.onRestoreConversation(id);
+    },
     async onCheckAgentStatus() {
       const token = this.credential?.token;
       if (!token) return;
@@ -367,11 +357,6 @@ export default defineComponent({
       console.debug('start onGetApplication');
       await this.$store.dispatch('chat/getApplications');
       console.debug('end onGetApplication');
-    },
-    async onGetConversations() {
-      console.debug('start onGetConversations');
-      await this.$store.dispatch('chat/getConversations');
-      console.debug('end onGetConversations');
     },
     async onDraft(question: string) {
       this.question = question;
@@ -522,9 +507,7 @@ export default defineComponent({
       } else {
         // Already on /chatgpt/conversations — no route change to trigger
         // the watcher, so reset locally.
-        this.messages = [];
-        this.question = '';
-        this.references = [];
+        this.resetConversation();
       }
     },
     async onRestoreConversation(id: string) {
