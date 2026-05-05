@@ -8,7 +8,7 @@
         </div>
         <el-divider v-if="user.email" class="mb-1 mt-1" />
         <el-dropdown-menu>
-          <el-dropdown-item class="py-2" @click="onDownload">
+          <el-dropdown-item v-if="!isNative" class="py-2" @click="onDownload">
             <font-awesome-icon icon="fa-solid fa-mobile-screen-button" class="mr-2" />
             {{ $t('common.nav.mobileApp') }}
           </el-dropdown-item>
@@ -42,6 +42,7 @@ import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -66,6 +67,10 @@ export default defineComponent({
   computed: {
     user() {
       return this.$store.getters?.user;
+    },
+    isNative() {
+      const surface = import.meta.env.VITE_SURFACE;
+      return surface === SURFACE_IOS || surface === SURFACE_ANDROID;
     }
   },
   mounted() {
