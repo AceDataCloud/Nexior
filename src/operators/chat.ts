@@ -112,7 +112,8 @@ class ChatOperator {
                     content: json.content,
                     artifact: json.artifact,
                     card: json.card,
-                    citation: json.citation
+                    citation: json.citation,
+                    payload: json.payload
                   });
                 }
               } catch (err) {

@@ -36,6 +36,8 @@
             @update:question="question = $event"
             @edit="onEdit"
             @restart="onRestart"
+            @answer-ask-user-question="onAnswerAskUserQuestion"
+            @skip-ask-user-question="onSkipAskUserQuestion"
           />
         </div>
         <div class="starter">
@@ -615,6 +617,95 @@ export default defineComponent({
       // request server to get answer
       this.answering = true;
       this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          question,
+          model: this.model.name,
+          references,
+          id: this.conversationId,
+          stateful: true
+        },
+        token,
+        conversationId
+      );
+    },
+    /**
+     * Resume a paused conversation by submitting a tool result for the
+     * `ask_user_question` block on the last assistant message. Marks the
+     * pending block as `done` locally (so the card collapses immediately
+     * to the readonly summary), pushes a fresh pending assistant message,
+     * and runs the next streaming turn against `tool_results`.
+     */
+    async onAnswerAskUserQuestion(payload: { tool_use_id: string; output: string }) {
+      const token = this.credential?.token;
+      if (!token || !this.conversationId) {
+        console.error('cannot resume: no token or no conversation id');
+        return;
+      }
+      // Locally fold the pending block so the card flips to the collapsed
+      // summary instantly (the worker will fold its own copy on the resume
+      // request — both stay in sync).
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (lastAssistant && Array.isArray(lastAssistant.content)) {
+        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+        );
+        if (block) {
+          block.status = 'done';
+          block.output = payload.output;
+          delete block.pending_question;
+        }
+      }
+      // Push fresh pending assistant message for the resumed turn.
+      this.messages.push({
+        content: '',
+        role: ROLE_ASSISTANT,
+        state: IChatMessageState.PENDING
+      });
+      this.onScrollDown();
+      this.answering = true;
+      this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          id: this.conversationId,
+          model: this.model.name,
+          stateful: true,
+          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }]
+        },
+        token,
+        this.conversationId
+      );
+    },
+    /**
+     * Visual-only "skip" of an ask_user_question card. Marks the pending
+     * block as done with a sentinel error output so the card collapses
+     * locally; no resume request is sent. The next user message they type
+     * goes through the worker's "user skipped" branch (see contract §5).
+     */
+    onSkipAskUserQuestion(payload: { tool_use_id: string }) {
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (!lastAssistant || !Array.isArray(lastAssistant.content)) return;
+      const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+        (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+      );
+      if (!block) return;
+      block.status = 'done';
+      block.is_error = true;
+      block.output = block.output || '';
+      delete block.pending_question;
+    },
+    /**
+     * Shared SSE-driven assistant-turn streamer. Handles deltas, tool_use,
+     * cards, citations, ask_user_question, and final state transitions.
+     * Caller is responsible for pushing the pending assistant message,
+     * resetting `answering`/`canceler`, and providing the request body.
+     */
+    _streamAssistantTurn(
+      body: Parameters<typeof chatOperator.chatConversation>[0],
+      token: string,
+      initialConversationId: string | undefined
+    ) {
+      let conversationId = initialConversationId;
       // Track content parts for tool-calling interleaving
       const contentParts: IChatMessageContentItem[] = [];
       const toolMap = new Map<string, IChatMessageContentItem>();
@@ -629,127 +720,133 @@ export default defineComponent({
       let answerOffset = 0;
 
       chatOperator
-        .chatConversation(
-          {
-            question,
-            model: this.model.name,
-            references,
-            id: this.conversationId,
-            stateful: true
-          },
-          {
-            token,
-            stream: (response: IChatConversationResponse) => {
-              console.debug('stream response', response);
-              const lastMessage = this.messages[this.messages.length - 1];
+        .chatConversation(body, {
+          token,
+          stream: (response: IChatConversationResponse) => {
+            console.debug('stream response', response);
+            const lastMessage = this.messages[this.messages.length - 1];
 
-              // Handle tool-calling events
-              if (response.type === 'thinking' && response.content) {
-                // Streamed chain-of-thought from a reasoning model.
-                // Accumulate on the assistant message; rendered above the
-                // visible answer by `<thinking-block>` in `Message.vue`.
-                const target = this.messages[this.messages.length - 1];
-                target.thinking = (target.thinking ?? '') + response.content;
-              } else if (response.type === 'tool_use_start' && response.tool_id) {
-                // Flush any accumulated text before tool
-                if (currentText) {
-                  contentParts.push({ type: 'text', text: currentText });
-                  currentText = '';
-                  answerOffset = response.answer?.length ?? 0;
-                }
-                const toolItem: IChatMessageContentItem = {
-                  type: 'tool_use',
-                  tool_id: response.tool_id,
-                  tool_name: response.tool_name,
-                  tool_display_name: response.tool_display_name,
-                  input: response.input,
-                  status: 'running'
-                };
-                contentParts.push(toolItem);
-                toolMap.set(response.tool_id, toolItem);
-              } else if (response.type === 'tool_result' && response.tool_id) {
-                const toolItem = toolMap.get(response.tool_id);
-                if (toolItem) {
-                  toolItem.output = response.output;
-                  toolItem.is_error = response.is_error;
-                  toolItem.duration_ms = response.duration_ms;
-                  toolItem.status = 'done';
-                }
-              } else if (response.type === 'artifact' && response.artifact) {
-                if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {
-                  contentParts.push({
-                    type: 'image_url',
-                    image_url: response.artifact.url,
-                    name: response.artifact.name,
-                    mimeType: response.artifact.mimeType
-                  });
-                } else {
-                  contentParts.push({
-                    type: 'file_url',
-                    file_url: response.artifact.url,
-                    name: response.artifact.name,
-                    mimeType: response.artifact.mimeType
-                  });
-                }
-              } else if (response.type === 'card' && response.card) {
-                // Rich-output entity card from the worker's <acard> stream
-                // parser. Flush any text we'd accumulated up to this
-                // point as its own block first so the card lands at the
-                // right position in the message; this mirrors how
-                // tool_use blocks bracket the text stream.
-                if (currentText) {
-                  contentParts.push({ type: 'text', text: currentText });
-                  currentText = '';
-                  answerOffset = response.answer?.length ?? 0;
-                }
-                contentParts.push({ type: 'card', card: response.card });
-              } else if (response.type === 'citation' && response.citation) {
-                // Source citation footnote from the worker's <acite>
-                // stream parser. Unlike `card`, citations DO NOT split
-                // the text stream — the worker injected a stable marker
-                // token `[^acite:<id>]` into the text where the chip
-                // should land, so we just stash the metadata on the
-                // assistant message's sidecar `citations` map. The
-                // markdown renderer pairs marker → metadata at render
-                // time. Last-write-wins on duplicate ids matches the
-                // worker's semantics (the model is taught to reuse the
-                // same id for the same source).
-                const target = this.messages[this.messages.length - 1];
-                target.citations = { ...(target.citations ?? {}), [response.citation.id]: response.citation };
-              } else if (response.delta_answer) {
-                currentText = (response.answer || '').slice(answerOffset);
-              }
-
-              // Build display content: parts + trailing text
-              const displayParts: IChatMessageContentItem[] = [...contentParts];
+            // Handle tool-calling events
+            if (response.type === 'thinking' && response.content) {
+              // Streamed chain-of-thought from a reasoning model.
+              // Accumulate on the assistant message; rendered above the
+              // visible answer by `<thinking-block>` in `Message.vue`.
+              const target = this.messages[this.messages.length - 1];
+              target.thinking = (target.thinking ?? '') + response.content;
+            } else if (response.type === 'tool_use_start' && response.tool_id) {
+              // Flush any accumulated text before tool
               if (currentText) {
-                displayParts.push({ type: 'text', text: currentText });
+                contentParts.push({ type: 'text', text: currentText });
+                currentText = '';
+                answerOffset = response.answer?.length ?? 0;
               }
-
-              if (displayParts.length > 0) {
-                this.messages[this.messages.length - 1] = {
-                  role: ROLE_ASSISTANT,
-                  content: displayParts,
-                  thinking: lastMessage?.thinking,
-                  citations: lastMessage?.citations,
-                  state:
-                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
-                };
+              const toolItem: IChatMessageContentItem = {
+                type: 'tool_use',
+                tool_id: response.tool_id,
+                tool_name: response.tool_name,
+                tool_display_name: response.tool_display_name,
+                input: response.input,
+                status: 'running'
+              };
+              contentParts.push(toolItem);
+              toolMap.set(response.tool_id, toolItem);
+            } else if (response.type === 'tool_result' && response.tool_id) {
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.output = response.output;
+                toolItem.is_error = response.is_error;
+                toolItem.duration_ms = response.duration_ms;
+                toolItem.status = 'done';
+                // Strip stale pending_question after fold (defensive — the
+                // worker shouldn't emit tool_result for an awaiting block,
+                // but if it does, the card must collapse cleanly).
+                delete toolItem.pending_question;
+              }
+            } else if (response.type === 'ask_user_question' && response.tool_id && response.payload) {
+              // Worker pauses the turn for a user reply. Find the matching
+              // tool_use block on the in-flight assistant message and flip
+              // it to `awaiting_input`; the renderer will swap in
+              // <AskUserQuestionCard>. SSE then ends with terminal_reason
+              // 'awaiting_user_input'.
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.status = 'awaiting_input';
+                toolItem.pending_question = response.payload;
+              }
+            } else if (response.type === 'artifact' && response.artifact) {
+              if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {
+                contentParts.push({
+                  type: 'image_url',
+                  image_url: response.artifact.url,
+                  name: response.artifact.name,
+                  mimeType: response.artifact.mimeType
+                });
               } else {
-                this.messages[this.messages.length - 1] = {
-                  role: ROLE_ASSISTANT,
-                  content: response.answer,
-                  thinking: lastMessage?.thinking,
-                  citations: lastMessage?.citations,
-                  state:
-                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
-                };
+                contentParts.push({
+                  type: 'file_url',
+                  file_url: response.artifact.url,
+                  name: response.artifact.name,
+                  mimeType: response.artifact.mimeType
+                });
               }
-              conversationId = response?.id;
-            },
-            signal: this.canceler.signal
-          }
-        )
+            } else if (response.type === 'card' && response.card) {
+              // Rich-output entity card from the worker's <acard> stream
+              // parser. Flush any text we'd accumulated up to this
+              // point as its own block first so the card lands at the
+              // right position in the message; this mirrors how
+              // tool_use blocks bracket the text stream.
+              if (currentText) {
+                contentParts.push({ type: 'text', text: currentText });
+                currentText = '';
+                answerOffset = response.answer?.length ?? 0;
+              }
+              contentParts.push({ type: 'card', card: response.card });
+            } else if (response.type === 'citation' && response.citation) {
+              // Source citation footnote from the worker's <acite>
+              // stream parser. Unlike `card`, citations DO NOT split
+              // the text stream — the worker injected a stable marker
+              // token `[^acite:<id>]` into the text where the chip
+              // should land, so we just stash the metadata on the
+              // assistant message's sidecar `citations` map. The
+              // markdown renderer pairs marker → metadata at render
+              // time. Last-write-wins on duplicate ids matches the
+              // worker's semantics (the model is taught to reuse the
+              // same id for the same source).
+              const target = this.messages[this.messages.length - 1];
+              target.citations = { ...(target.citations ?? {}), [response.citation.id]: response.citation };
+            } else if (response.delta_answer) {
+              currentText = (response.answer || '').slice(answerOffset);
+            }
+
+            // Build display content: parts + trailing text
+            const displayParts: IChatMessageContentItem[] = [...contentParts];
+            if (currentText) {
+              displayParts.push({ type: 'text', text: currentText });
+            }
+
+            if (displayParts.length > 0) {
+              this.messages[this.messages.length - 1] = {
+                role: ROLE_ASSISTANT,
+                content: displayParts,
+                thinking: lastMessage?.thinking,
+                citations: lastMessage?.citations,
+                state:
+                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+              };
+            } else {
+              this.messages[this.messages.length - 1] = {
+                role: ROLE_ASSISTANT,
+                content: response.answer,
+                thinking: lastMessage?.thinking,
+                citations: lastMessage?.citations,
+                state:
+                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+              };
+            }
+            conversationId = response?.id;
+          },
+          signal: this.canceler!.signal
+        })
         .then(async () => {
           console.debug('finished fetch answer', this.messages);
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
