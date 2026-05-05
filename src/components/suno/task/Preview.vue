@@ -889,6 +889,11 @@ export default defineComponent({
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .progress-row {
         display: flex;
