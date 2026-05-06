@@ -16,6 +16,7 @@ import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
 import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
+import { isNative } from '@/utils/surface';
 import { ssoOperator } from '@/operators';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
@@ -70,7 +71,7 @@ export default defineComponent({
   },
   mounted() {
     // Listen for deep link callbacks from native OAuth flow
-    if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+    if (isNative()) {
       CapApp.addListener('appUrlOpen', async ({ url }) => {
         console.debug('deep link received:', url);
         // Expected format: com.acedatacloud.nexior://auth/callback?code=XXX
@@ -107,14 +108,22 @@ export default defineComponent({
     const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
     console.debug('App mounted, authenticated:', authenticated);
     if (!authenticated) {
-      if (import.meta.env.VITE_SURFACE === 'android' || import.meta.env.VITE_SURFACE === 'ios') {
+      if (isNative()) {
         // On native platforms, just reset state and show login popup.
         // Don't dispatch 'logout' which would navigate the WebView to an
         // external auth URL, opening Chrome and landing on localhost.
         this.$store.dispatch('resetAll');
         this.$store.dispatch('login');
       } else {
-        this.$store.dispatch('logout');
+        // Don't dispatch 'logout' here — there's nothing to log out from when
+        // the user isn't authenticated, and 'logout' races with 'login' for
+        // window.location.href. Because 'logout' has many awaits, it would win
+        // the race and overwrite 'login's properly-encoded URL with a raw
+        // string-concatenated one, causing inviter_id to end up nested inside
+        // the redirect= value where AuthFrontend can't find it. This silently
+        // breaks the referral binding for users who arrive via share links on
+        // custom-domain (white-label) deployments.
+        this.$store.dispatch('resetAll');
         this.$store.dispatch('login');
       }
     }

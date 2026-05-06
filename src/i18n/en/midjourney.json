@@ -1543,6 +1543,22 @@
     "message": "Trace ID",
     "description": "Trace ID used to track the image generation request, do not translate, keep as 'Trace ID'"
   },
+  "field.elapsed": {
+    "message": "Elapsed Time",
+    "description": "Time taken for the task (seconds)"
+  },
+  "field.action": {
+    "message": "Action",
+    "description": "Name of the action performed by the request (e.g. generate / extend)"
+  },
+  "field.on": {
+    "message": "On",
+    "description": "Text shown when a boolean parameter is true"
+  },
+  "field.off": {
+    "message": "Off",
+    "description": "Text shown when a boolean parameter is false"
+  },
   "description.model": {
     "message": "Select the model for generating images; 'General' is suitable for most scenarios, 'Niji' is suitable for anime style.",
     "description": "Description of the model parameter"

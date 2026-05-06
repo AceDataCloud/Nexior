@@ -1,15 +1,15 @@
 {
   "button.suggested": {
     "message": "Zalecane",
-    "description": "Tekst na przycisku, który oznacza przycisk zalecany"
+    "description": "Tekst przycisku, który oznacza przycisk zalecający"
   },
   "menu.orderList": {
     "message": "Lista zamówień",
-    "description": "Tekst w menu strony, zamówienie odnosi się do zamówień użytkownika na usługi"
+    "description": "Tekst w menu strony, zamówienia odnoszą się do zamówień użytkownika na usługi"
   },
   "menu.applicationList": {
     "message": "Lista aplikacji",
-    "description": "Tekst w menu strony, aplikacja odnosi się do wniosków użytkownika o usługi"
+    "description": "Tekst w menu strony, aplikacje odnoszą się do wniosków użytkownika o usługi"
   },
   "menu.userProfile": {
     "message": "Profil użytkownika",
@@ -25,11 +25,15 @@
   },
   "menu.distributionIndex": {
     "message": "Zyski z poleceń",
-    "description": "Tekst w menu strony, zyski z poleceń odnoszą się do dochodów użytkownika z poleceń"
+    "description": "Tekst w menu strony, zyski z poleceń odnoszą się do dochodów z poleceń użytkownika"
   },
   "menu.developerPlatform": {
     "message": "Platforma dewelopera",
-    "description": "Tekst w menu strony, platforma dewelopera odnosi się do platformy dla deweloperów"
+    "description": "Tekst w menu strony, platforma dewelopera oznacza platformę dla deweloperów"
+  },
+  "menu.byokList": {
+    "message": "Własne klucze API",
+    "description": "Element menu bocznego: lista kluczy API (BYOK) dostarczonych przez użytkownika"
   },
   "menu.usageList": {
     "message": "Historia użycia",
@@ -37,15 +41,15 @@
   },
   "menu.credentialIndex": {
     "message": "Poświadczenia",
-    "description": "Tekst w menu strony, poświadczenia odnoszą się do poświadczeń dostępu do API"
+    "description": "Tekst w menu strony, poświadczenia odnoszą się do danych dostępowych do API"
   },
   "menu.manageOrder": {
     "message": "Zarządzanie zamówieniami",
-    "description": "Tekst w menu strony, zarządzanie zamówieniami odnosi się do zarządzania zamówieniami użytkownika, zamówienie odnosi się do zamówień na usługi"
+    "description": "Tekst w menu strony, zarządzanie zamówieniami odnosi się do zarządzania zamówieniami użytkownika"
   },
   "menu.manageDistributionStatus": {
     "message": "Zarządzanie dystrybucją",
-    "description": "Tekst w menu strony, zarządzanie dystrybucją odnosi się do zarządzania stanem dystrybucji użytkownika, związane z dochodami z poleceń"
+    "description": "Tekst w menu strony, zarządzanie dystrybucją odnosi się do zarządzania stanem dystrybucji użytkownika"
   },
   "message.benefit1": {
     "message": "Wsparcie dedykowanego konsultanta",
@@ -64,11 +68,11 @@
     "description": "Tekst na stronie głównej, subskrypcja członkostwa oznacza, że użytkownik może subskrybować członkostwo"
   },
   "message.doNotWantSubscribe": {
-    "message": "Nie chcesz subskrybować członkostwa cyklicznego? Możesz również spróbować zakupu limitu osobno.",
+    "message": "Nie chcesz subskrybować członkostwa? Możesz również spróbować zakupu limitu osobno.",
     "description": "Tekst na stronie głównej, nie chcesz subskrybować oznacza, że użytkownik nie chce subskrybować członkostwa"
   },
   "message.doNotWantExtra": {
-    "message": "Nie chcesz kupić limitu? Możesz również spróbować subskrybować członkostwo cykliczne.",
+    "message": "Nie chcesz kupić limitu? Możesz również spróbować subskrybować członkostwo.",
     "description": "Tekst na stronie głównej, nie chcesz kupić limitu oznacza, że użytkownik nie chce kupić limitu"
   },
   "message.applicationNotFound": {
@@ -76,12 +80,12 @@
     "description": "Wiadomość wyświetlana użytkownikowi, gdy aplikacja nie istnieje."
   },
   "subscription.title": {
-    "message": "Subskrybuj członkostwo, aby cieszyć się większymi korzyściami",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy subskrybuje usługę."
+    "message": "Subskrybuj członkostwo, aby cieszyć się dodatkowymi korzyściami",
+    "description": "Wiadomość wyświetlana użytkownikowi podczas subskrypcji usługi."
   },
   "subscription.3days": {
-    "message": "3-dniowe członkostwo próbne",
-    "description": "Typ członkostwa, 3-dniowe członkostwo próbne"
+    "message": "3-dniowe członkostwo",
+    "description": "Typ członkostwa, 3-dniowe członkostwo"
   },
   "subscription.3days.description": {
     "message": "Członkostwo próbne, idealne do krótkoterminowego użytku.",
@@ -100,7 +104,7 @@
     "description": "Typ członkostwa, członkostwo roczne oznacza, że użytkownik kupił członkostwo roczne"
   },
   "subscription.weekly.description": {
-    "message": "Członkostwo tygodniowe próbne, idealne do krótkoterminowego użytku.",
+    "message": "Członkostwo próbne tygodniowe, idealne do krótkoterminowego użytku.",
     "description": "Opis typu członkostwa, członkostwo tygodniowe oznacza, że użytkownik kupił członkostwo tygodniowe"
   },
   "subscription.monthly.description": {
@@ -113,7 +117,7 @@
   },
   "subscription.introduction": {
     "message": "Subskrybuj członkostwo, aby odblokować wszystkie usługi AI na stronie.",
-    "description": "Opis członkostwa, przedstawiający korzyści z członkostwa"
+    "description": "Opis członkostwa"
   },
   "menu.coinIndex": {
     "message": "Integracja kryptowalut",
@@ -121,7 +125,7 @@
   },
   "menu.platformTokenIndex": {
     "message": "Token platformy",
-    "description": "Tekst w menu strony, token platformy odnosi się do tokena używanego do dostępu do platformy Ace Data Cloud"
+    "description": "Tekst w menu strony, token platformy odnosi się do tokenu używanego do uzyskania dostępu do platformy Ace Data Cloud"
   },
   "menu.publishIndex": {
     "message": "Centrum publikacji",
@@ -133,14 +137,14 @@
   },
   "menu.manageOrderDiscount": {
     "message": "Zarządzanie rabatami",
-    "description": "Tekst w menu strony, wejście do zarządzania rabatami na zamówienia, widoczne tylko dla administratorów"
+    "description": "Tekst w menu strony, dostęp do zarządzania rabatami na zamówienia, widoczny tylko dla administratorów"
   },
   "menu.manageUser": {
     "message": "Zarządzanie użytkownikami",
-    "description": "Tekst w menu strony, wejście do zarządzania użytkownikami, widoczne tylko dla administratorów"
+    "description": "Tekst w menu strony, dostęp do zarządzania użytkownikami, widoczny tylko dla administratorów"
   },
   "menu.revenueAnalysis": {
     "message": "Analiza dochodów",
-    "description": "Tekst w menu strony, wejście do analizy dochodów, widoczne tylko dla administratorów"
+    "description": "Tekst w menu strony, dostęp do analizy dochodów, widoczny tylko dla administratorów"
   }
 }

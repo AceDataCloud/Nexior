@@ -14,14 +14,15 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Veo.vue';
 import ConfigPanel from '@/components/veo/ConfigPanel.vue';
 import { veoOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IVeoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/veo/RecentPanel.vue';
 import { IVeoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/veo';
+const CALLBACK_URL = getWebhookCallbackUrl('veo');
 
 interface IData {
   task: IVeoTask | undefined;
@@ -156,11 +157,19 @@ export default defineComponent({
         console.error('no token specified');
         return;
       }
+      // image2video requires at least one image; otherwise the upstream rejects with
+      // "image_urls is invalid when generate videos". Validate client-side so the user
+      // gets an actionable message instead of the generic failure toast.
+      if (request.action === 'image2video' && !(request.image_urls && request.image_urls.length > 0)) {
+        ElMessage.warning(this.$t('veo.message.imageRequired'));
+        return;
+      }
+      // Only send image_urls when it actually has values; the worker rejects empty arrays.
+      if (!request.image_urls || request.image_urls.length === 0) {
+        delete request.image_urls;
+      }
       ElMessage.info(this.$t('veo.message.startingTask'));
-      veoOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('veo', veoOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('veo.message.startTaskSuccess'));
         })

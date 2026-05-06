@@ -8,8 +8,8 @@
     "description": "Nano Banana 画像操作タイプ"
   },
   "name.generate": {
-    "message": "画像生成",
-    "description": "操作タイプ：画像生成"
+    "message": "画像作成",
+    "description": "操作タイプ：画像作成"
   },
   "name.edits": {
     "message": "画像編集",
@@ -35,6 +35,10 @@
     "message": "トレース ID",
     "description": "トレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.prompt": {
     "message": "画像プロンプト",
     "description": "生成/編集のプロンプト"
@@ -56,15 +60,15 @@
     "description": "解像度オプションは pro モデルにのみ適用されます"
   },
   "description.prompt": {
-    "message": "画像生成または編集のためのプロンプト",
+    "message": "画像を生成または編集するためのプロンプト",
     "description": "プロンプトの説明"
   },
   "description.action": {
-    "message": "画像を生成するアクション。`generate` の場合、プロンプトに基づいて画像を生成します；`edit` の場合、プロンプトとアップロードされた画像に基づいて編集します。",
+    "message": "画像を生成するアクション。`generate`の場合、プロンプトに基づいて画像を生成します；`edit`の場合、プロンプトとアップロードされた画像に基づいて編集します。",
     "description": "action パラメータの説明"
   },
   "description.model": {
-    "message": "画像生成に使用するモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image のエイリアスで、nano-banana は gemini-2.5-flash-image のエイリアスです。",
+    "message": "画像を生成するためのモデル。デフォルトは nano-banana。nano-banana-pro は gemini-3-pro-image のエイリアスで、nano-banana は gemini-2.5-flash-image のエイリアスです。",
     "description": "model パラメータの説明"
   },
   "description.imageUrls": {
@@ -109,14 +113,14 @@
   },
   "message.usedUp": {
     "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
-    "description": "使い切りのメッセージ"
+    "description": "使い切れたメッセージ"
   },
   "message.uploadImageExceed": {
     "message": "最大 5 枚の画像をアップロードできます",
-    "description": "画像数が制限を超えています"
+    "description": "画像数が制限を超えました"
   },
   "message.uploadImageError": {
-    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
+    "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "アップロード失敗"
   },
   "name.model": {

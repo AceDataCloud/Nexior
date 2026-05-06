@@ -59,6 +59,10 @@
     "message": "Otkaži",
     "description": "Tekst u dugmetu, koji se koristi za otkazivanje neke operacije"
   },
+  "button.close": {
+    "message": "Zatvori",
+    "description": "Tekst u dugmetu, koji se koristi za zatvaranje dijaloga ili panela"
+  },
   "button.alert": {
     "message": "Upozorenje",
     "description": "Tekst u dugmetu, koji se koristi za slanje upozorenja"
@@ -85,7 +89,7 @@
   },
   "button.console": {
     "message": "Konzola",
-    "description": "Tekst u dugmetu, koji se koristi za prikaz konzole za kontrolu nekog sadržaja na vebu"
+    "description": "Tekst u dugmetu, koji se koristi za prikaz konzole za upravljanje sadržajem na vebu"
   },
   "button.learn": {
     "message": "Uči",
@@ -103,12 +107,16 @@
     "message": "Započni besplatno",
     "description": "Tekst u dugmetu, koji se koristi za omogućavanje korisniku da započne besplatno"
   },
+  "button.download": {
+    "message": "Preuzmi",
+    "description": "Tekst u dugmetu, koji se koristi za preuzimanje fajlova (npr. audio, video, slike)"
+  },
   "button.downloadAndroid": {
     "message": "Preuzmi Android",
     "description": "Tekst u dugmetu, koji se koristi za preuzimanje Android instalacionog paketa"
   },
   "button.downloadIos": {
-    "message": "Preuzmi iOS paket",
+    "message": "Preuzmi iOS instalacioni paket",
     "description": "Tekst u dugmetu, koji se koristi za preuzimanje iOS instalacionog paketa"
   },
   "button.installIos": {
@@ -145,7 +153,7 @@
   },
   "button.buyMore": {
     "message": "Dopuni",
-    "description": "Tekst u dugmetu, koji se koristi za omogućavanje korisniku da dopuni svoj račun."
+    "description": "Tekst u dugmetu, koji se koristi za omogućavanje korisniku da dopuni. Engleski mora biti preveden kao 'Top Up', a kineski kao '充值'."
   },
   "button.update": {
     "message": "Ažuriraj",
@@ -160,12 +168,12 @@
     "description": "Tekst u dugmetu, koji se koristi za kreiranje nekog sadržaja"
   },
   "button.referralEarnings": {
-    "message": "Preporučena zarada",
-    "description": "Tekst u dugmetu, koji se koristi za prikaz preporučene zarade, što znači da korisnik može zarađivati pozivanjem drugih da koriste ovu uslugu"
+    "message": "Zarađeni prihodi od preporuka",
+    "description": "Tekst u dugmetu koji prikazuje prihode od preporuka, što znači da korisnik može zarađivati pozivajući druge da koriste ovu uslugu"
   },
   "button.finish": {
     "message": "Završi",
-    "description": "Tekst u dugmetu, koji se koristi za završavanje neke operacije"
+    "description": "Tekst u dugmetu koji se koristi za završavanje neke operacije"
   },
   "entity.id": {
     "message": "ID",
@@ -173,11 +181,11 @@
   },
   "entity.type": {
     "message": "Tip",
-    "description": "Prikazuje tip entiteta"
+    "description": "Tip entiteta"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "Naziv sajta, ne prevoditi, ostaviti kao 'Ace Data Cloud'"
+    "description": "Ime sajta, ne treba prevoditi, ostaviti kao 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Autorska prava",
@@ -229,11 +237,11 @@
   },
   "message.usedAmount": {
     "message": "Iskorišćeni iznos",
-    "description": "Prikazuje iznos koji je usluga iskoristila"
+    "description": "Za prikaz iznosa koji je usluga već iskoristila"
   },
   "message.mobileAppDescription": {
-    "message": "Direktno koristite AceData na telefonu, trenutno je dostupan Android APK za preuzimanje i instalaciju, iOS instalacioni paket će biti dostupan nakon potpisivanja.",
-    "description": "Objašnjenje na stranici za preuzimanje mobilne aplikacije"
+    "message": "Koristite AceData direktno na telefonu, trenutno je dostupan Android APK za preuzimanje i instalaciju, iOS instalacioni paket će biti dostupan nakon potpisivanja.",
+    "description": "Opis na stranici za preuzimanje mobilne aplikacije"
   },
   "message.mobileAndroidHint": {
     "message": "Za Android telefone i tablete, skenirajte QR kod za preuzimanje najnovijeg APK-a.",
@@ -245,23 +253,23 @@
   },
   "message.mobileAvailableNow": {
     "message": "Android je dostupan za preuzimanje",
-    "description": "Prikazuje status da je Android dostupan za preuzimanje"
+    "description": "Za prikaz statusa kada je Android dostupan za preuzimanje"
   },
   "message.mobileSecureDelivery": {
     "message": "Sigurna CDN isporuka",
-    "description": "Naglašava da se preuzimanje vrši putem CDN-a"
+    "description": "Za naglašavanje da se preuzimanje vrši putem CDN-a"
   },
   "message.mobileDirectInstall": {
     "message": "Direktna APK instalacija",
-    "description": "Opisuje da je Android instalacija direktna APK instalacija"
+    "description": "Za opis Android strane kao direktne APK instalacije"
   },
   "message.mobileLatestRelease": {
     "message": "Trenutna javna verzija",
-    "description": "Objašnjava da je prikazana najnovija javna verzija"
+    "description": "Za objašnjenje da je trenutna prikazana verzija najnovija javna verzija"
   },
   "message.mobileSharedAccount": {
     "message": "Deljenje naloga i limita sa web verzijom",
-    "description": "Objašnjava da mobilna verzija deli nalog sa web verzijom"
+    "description": "Za objašnjenje da mobilna verzija deli nalog sa web verzijom"
   },
   "message.mobileIosHint": {
     "message": "Za iPhone i iPad, može se direktno instalirati online; ako sistem blokira, može se prvo preuzeti IPA pa distribuirati.",
@@ -272,8 +280,8 @@
     "description": "Poruka kada iOS instalacioni paket nije dostupan"
   },
   "message.mobileInstallNote": {
-    "message": "Prilikom prve instalacije iOS poslovnog ili Ad Hoc paketa, sistem može zatražiti da prvo verifikujete sertifikat u 'Podešavanja > Opšte > VPN i upravljanje uređajem'.",
-    "description": "Obaveštenje o instalaciji mobilne aplikacije"
+    "message": "Prilikom prve instalacije preduzeća ili Ad Hoc paketa na iOS-u, sistem može zatražiti da prvo verifikujete sertifikat u 'Podešavanja > Opšte > VPN i upravljanje uređajem'.",
+    "description": "Poruka za instalaciju mobilne aplikacije"
   },
   "title.mobileApp": {
     "message": "Preuzimanje mobilne aplikacije",
@@ -288,7 +296,7 @@
     "description": "Naslov kartice prednosti na stranici za preuzimanje, naglašava stabilnost verzija i isporuke"
   },
   "title.mobileUnifiedExperience": {
-    "message": "Iskustvo na mobilnom i webu je usklađeno",
+    "message": "Iskustvo na mobilnom i web-u je usklađeno",
     "description": "Naslov kartice prednosti na stranici za preuzimanje, naglašava jedinstveno iskustvo"
   },
   "nav.mobileApp": {
@@ -296,11 +304,11 @@
     "description": "Ulaz za preuzimanje mobilne aplikacije u navigaciji"
   },
   "message.mobileFastAccess": {
-    "message": "Korisnici mogu skenirati QR kod na telefonu za direktnu instalaciju, ili preuzeti APK na desktopu i distribuirati ga članovima tima, pogodno za brze probne i interne testove.",
+    "message": "Korisnici mogu skenirati QR kod za direktnu instalaciju na telefonu, ili prvo preuzeti APK na desktopu i zatim ga distribuirati članovima tima, što je pogodno za brze probne i interne testove.",
     "description": "Objašnjenje prednosti na stranici za preuzimanje, naglašava brzi pristup"
   },
   "message.mobileTrustedRelease": {
-    "message": "Svi ulazi za preuzimanje su centralizovani na jednoj stranici, verzije, status platforme i načini instalacije su lako uočljivi, smanjuje troškove komunikacije zbog raspršenih linkova.",
+    "message": "Svi linkovi za preuzimanje su na jednoj stranici, verzije, status platforme i načini instalacije su lako uočljivi, smanjuje troškove komunikacije zbog raspršenih linkova.",
     "description": "Objašnjenje prednosti na stranici za preuzimanje, naglašava jedinstvenu isporuku"
   },
   "message.mobileUnifiedExperience": {
@@ -309,11 +317,11 @@
   },
   "message.remainingAmount": {
     "message": "Preostali iznos",
-    "description": "Prikazuje preostali iznos usluge"
+    "description": "Za prikaz preostalog iznosa usluge"
   },
   "message.copied": {
-    "message": "Uspešno kopirano",
-    "description": "Poruka koja se prikazuje kada je sadržaj uspešno kopiran"
+    "message": "Копирано",
+    "description": "Порука која се приказује када је садржај успешно копиран"
   },
   "message.restart": {
     "message": "Ponovo generiši",
@@ -369,95 +377,95 @@
   },
   "nav.content": {
     "message": "Sadržaj",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa sadržajem"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa sadržajem"
   },
   "nav.category": {
     "message": "Kategorija",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa kategorijama"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa kategorijama"
   },
   "nav.service": {
     "message": "Sve usluge",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa uslugama"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa uslugama"
   },
   "nav.profile": {
     "message": "Moj profil",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa profilom"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa profilom"
   },
   "nav.products": {
     "message": "Proizvodi",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa proizvodima"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa proizvodima"
   },
   "nav.referral": {
     "message": "Referral program",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa preporukama"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa preporukama"
   },
   "nav.apiPlatform": {
     "message": "API platforma",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa API platformom"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa API platformom"
   },
   "nav.document": {
     "message": "Razvojna dokumentacija",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa dokumentacijom"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa dokumentacijom"
   },
   "nav.console": {
     "message": "Konzola",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu sa konzolom"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa konzolom"
   },
   "nav.chatgpt": {
     "message": "ChatGPT",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu ChatGPT, ne prevoditi, mora ostati 'ChatGPT'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa ChatGPT-om, ne prevoditi, mora ostati 'ChatGPT'"
   },
   "nav.deepseek": {
     "message": "DeepSeek",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu DeepSeek, ne prevoditi, mora ostati 'DeepSeek'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa DeepSeek-om, ne prevoditi, mora ostati 'DeepSeek'"
   },
   "nav.grok": {
     "message": "Grok",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Grok, ne prevoditi, mora ostati 'Grok'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Grok-om, ne prevoditi, mora ostati 'Grok'"
   },
   "nav.chat": {
     "message": "Chat",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu za chat, ne prevoditi, mora ostati 'Chat'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa chat-om, ne prevoditi, mora ostati 'Chat'"
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Veo, ne prevoditi, mora ostati 'Veo'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Veo-om, ne prevoditi, mora ostati 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Sora, ne prevoditi, mora ostati 'Sora'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Sora-om, ne prevoditi, mora ostati 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Midjourney, ne prevoditi, mora ostati 'Midjourney'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Midjourney-om, ne prevoditi, mora ostati 'Midjourney'"
   },
   "nav.qrart": {
     "message": "QRArt",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu QRArt, ne prevoditi, mora ostati 'QRArt'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa QRArt-om, ne prevoditi, mora ostati 'QRArt'"
   },
   "nav.suno": {
     "message": "Suno",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Suno, ne prevoditi, mora ostati 'Suno'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Suno-om, ne prevoditi, mora ostati 'Suno'"
   },
   "nav.pixverse": {
     "message": "Pixverse",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Pixverse, ne prevoditi, mora ostati 'Pixverse'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Pixverse-om, ne prevoditi, mora ostati 'Pixverse'"
   },
   "nav.flux": {
     "message": "Flux",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Flux, ne prevoditi, mora ostati 'Flux'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Flux-om, ne prevoditi, mora ostati 'Flux'"
   },
   "nav.nanobanana": {
     "message": "Nano Banana",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu Nano Banana, ne prevoditi, mora ostati 'Nano Banana'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa Nano Banana-om, ne prevoditi, mora ostati 'Nano Banana'"
   },
   "nav.openaiimage": {
     "message": "OpenAI Image",
-    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranicu OpenAI Image, ne prevoditi, mora ostati 'OpenAI Image'"
+    "description": "Tekst u navigacionoj traci sajta koji prikazuje stranu sa OpenAI Image-om, ne prevoditi, mora ostati 'OpenAI Image'"
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
+    "description": "Текст у навигационом бару вебсајта, који приказује SeeDream страницу, не преводите ово поље, мора остати 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -511,6 +519,10 @@
     "message": "Preporučena dobit",
     "description": "网站导航栏中的文本，用于显示推荐收益页面"
   },
+  "nav.connections": {
+    "message": "Povezivanje",
+    "description": "跳转到 auth.acedata.cloud 连接管理页的菜单项"
+  },
   "nav.logOut": {
     "message": "Odjavi se",
     "description": "网站导航栏中的文本，用于退出登录"
@@ -518,6 +530,10 @@
   "nav.site": {
     "message": "Podešavanje sajta",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
+  },
+  "nav.subsite": {
+    "message": "Moja podstran",
+    "description": "侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示"
   },
   "nav.setting": {
     "message": "Podešavanja",
@@ -597,7 +613,7 @@
   },
   "about.title1": {
     "message": "Kontaktirajte nas",
-    "description": "显示联系信息的部分标题"
+    "description": "Naslov dela koji prikazuje kontakt informacije"
   },
   "about.title2": {
     "message": "Resursi",
@@ -608,7 +624,7 @@
     "description": "Prikazuje deo naslova sa informacijama o podršci"
   },
   "about.address": {
-    "message": "651 N Broad St, Suite 201, Middletown, Delaware, USA",
+    "message": "651 N Broad St, Suite 201, Middletown, DE, USA",
     "description": "Adresa kompanije"
   },
   "about.email": {
@@ -661,43 +677,51 @@
   },
   "theme.system": {
     "message": "Sistem",
-    "description": "Naziv sistemske teme, koja automatski menja temu prema sistemskim postavkama"
+    "description": "Naziv sistemske teme, koja automatski menja temu prema sistemskim podešavanjima"
   },
   "settings.general": {
-    "message": "Opšte postavke",
-    "description": "Naslov dela sa opštim postavkama na stranici sa postavkama"
+    "message": "Opšta podešavanja",
+    "description": "Naslov dela sa opštim podešavanjima na stranici sa podešavanjima"
   },
   "settings.language": {
     "message": "Jezik",
-    "description": "Naslov dela sa postavkama jezika na stranici sa postavkama"
+    "description": "Naslov dela sa podešavanjima jezika na stranici sa podešavanjima"
   },
   "settings.theme": {
     "message": "Tema",
-    "description": "Naslov dela sa postavkama teme na stranici sa postavkama"
+    "description": "Naslov dela sa podešavanjima teme na stranici sa podešavanjima"
   },
   "settings.seo": {
-    "message": "SEO postavke",
-    "description": "Naslov dela sa SEO postavkama na stranici sa postavkama"
+    "message": "SEO podešavanja",
+    "description": "Naslov dela sa SEO podešavanjima na stranici sa podešavanjima"
   },
   "settings.site": {
-    "message": "Postavke sajta",
-    "description": "Naslov dela sa postavkama sajta na stranici sa postavkama"
+    "message": "Podešavanja sajta",
+    "description": "Naslov dela sa podešavanjima sajta na stranici sa podešavanjima"
   },
   "settings.distribution": {
-    "message": "Postavke distribucije",
-    "description": "Naslov dela sa postavkama distribucije na stranici sa postavkama"
+    "message": "Podešavanja distribucije",
+    "description": "Naslov dela sa podešavanjima distribucije na stranici sa podešavanjima"
   },
   "settings.function": {
-    "message": "Postavke funkcija",
-    "description": "Naslov dela sa postavkama funkcija na stranici sa postavkama"
+    "message": "Podešavanja funkcija",
+    "description": "Naslov dela sa podešavanjima funkcija na stranici sa podešavanjima"
+  },
+  "settings.apiKey": {
+    "message": "API Ključ",
+    "description": "Oznaka API Ključa u bočnoj traci stranice sa podešavanjima - upravljanje API ključem dobavljača usluga (BYOK)"
+  },
+  "field.operations": {
+    "message": "Operacije",
+    "description": "Opšti naslov kolone: kolona sa dugmadima za operacije u redovima tabele (uredi, obriši itd.)"
   },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "Tekst u navigacionoj traci sajta za prikaz Gemini stranice, mora ostati 'Gemini'"
+    "description": "Tekst u navigacionoj traci sajta za prikaz Gemini stranice, mora ostati kao 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "Tekst u navigacionoj traci sajta za prikaz Claude stranice, mora ostati 'Claude'"
+    "description": "Tekst u navigacionoj traci sajta za prikaz Claude stranice, mora ostati kao 'Claude'"
   },
   "button.detail": {
     "message": "Pogledaj detalje",
@@ -725,15 +749,15 @@
   },
   "title.coin": {
     "message": "Kriptovaluta",
-    "description": "Naslov stranice koja prikazuje kriptovalute"
+    "description": "Prikazuje naslov stranice sa kriptovalutama"
   },
   "title.distributionRank": {
     "message": "Preporučeni rang",
-    "description": "Naslov stranice koja prikazuje preporučene rangove"
+    "description": "Prikazuje naslov stranice sa preporučenim rangom"
   },
   "title.distributionPlatformRank": {
-    "message": "Rang platformi",
-    "description": "Naslov stranice koja prikazuje rang platformi"
+    "message": "Rang platforme",
+    "description": "Prikazuje naslov stranice sa rangom platforme"
   },
   "customers.name1": {
     "message": "Mark Du",
@@ -780,32 +804,40 @@
     "description": "Link za pregled izvornog koda na GitHub-u"
   },
   "settings.about": {
-    "message": "O nama",
-    "description": "Naslov dela sa informacijama o nama na stranici sa postavkama"
+    "message": "O aplikaciji",
+    "description": "Naslov sekcije o aplikaciji na stranici sa podešavanjima"
+  },
+  "settings.subsites": {
+    "message": "Moje podstranice",
+    "description": "Naslov taba za upravljanje podstranicama u prozoru sa podešavanjima. Vidljivo samo na zvaničnoj glavnoj stranici, podstranice se ne prikazuju."
+  },
+  "settings.buildNow": {
+    "message": "Jednim klikom",
+    "description": "Tekst dugmeta 'Jednim klikom izgradite podstranicu' na stranici o aplikaciji, vidljivo samo na zvaničnoj glavnoj stranici"
   },
   "settings.poweredBy": {
     "message": "Otvoreni projekat",
-    "description": "Naslov koji prikazuje na kojem otvorenom projektu je ova stranica zasnovana"
+    "description": "Naslov koji prikazuje na kojem otvorenom projektu je zasnovana ova stranica na stranici o aplikaciji"
   },
   "settings.poweredByTip": {
     "message": "Ova stranica je zasnovana na Nexior otvorenom projektu, kod je potpuno otvoren.",
-    "description": "Objašnjenje o kojem otvorenom projektu je ova stranica zasnovana"
+    "description": "Objašnjenje na stranici o aplikaciji o kojem otvorenom projektu je zasnovana ova stranica"
   },
   "settings.apiService": {
     "message": "API usluga",
-    "description": "Naslov koji prikazuje pružatelja API usluga na stranici 'O nama'"
+    "description": "Naslov koji prikazuje pružatelja API usluga na stranici o aplikaciji"
   },
   "settings.apiServiceTip": {
     "message": "API uslugu pruža Ace Data Cloud.",
-    "description": "Objašnjenje o pružatelju API usluga na stranici 'O nama'"
+    "description": "Objašnjenje na stranici o aplikaciji o pružatelju API usluga"
   },
   "settings.buildYourOwn": {
-    "message": "Izgradite svoj",
-    "description": "Naslov koji podseća korisnike da mogu izgraditi sličnu stranicu"
+    "message": "Izgradite svoju verziju",
+    "description": "Naslov koji podseća korisnike da mogu izgraditi sličnu stranicu na stranici o aplikaciji"
   },
   "settings.buildYourOwnTip": {
     "message": "Želite da izgradite sličnu AI stranicu? Kontaktirajte nas za podršku pri implementaciji.",
-    "description": "Objašnjenje o izgradnji slične stranice na stranici 'O nama'"
+    "description": "Objašnjenje o izgradnji slične verzije na stranici o aplikaciji"
   },
   "settings.contactUs": {
     "message": "Kontaktirajte podršku",
@@ -814,5 +846,29 @@
   "message.viewOnGithub": {
     "message": "Pogledajte na GitHub-u",
     "description": "Tekst linka za pregled projekta na GitHub-u"
+  },
+  "title.notFound": {
+    "message": "Stranica nije pronađena",
+    "description": "Naslov 404 stranice"
+  },
+  "message.notFound": {
+    "message": "Stranica koju ste tražili ne postoji, možda je link promenjen ili uklonjen. Vratite se na početnu stranicu i nastavite istraživanje AI usluga AceData.",
+    "description": "Opis podnaslova 404 stranice"
+  },
+  "message.notFoundEyebrow": {
+    "message": "Došlo je do greške",
+    "description": "Tekst male oznake na vrhu 404 stranice"
+  },
+  "message.notFoundPath": {
+    "message": "Zahtevani put",
+    "description": "Oznaka koja prikazuje trenutni zahtevani put na 404 stranici"
+  },
+  "button.backToHome": {
+    "message": "Povratak na početnu stranicu",
+    "description": "Tekst dugmeta za povratak na početnu stranicu"
+  },
+  "button.goBack": {
+    "message": "Povratak na prethodnu stranicu",
+    "description": "Tekst dugmeta za povratak na prethodnu stranicu u istoriji pregleda"
   }
 }

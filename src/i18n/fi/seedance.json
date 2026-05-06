@@ -9,15 +9,15 @@
   },
   "description.prompt": {
     "message": "Kuvaile videota, jonka haluat generoida, voit liittää SeeDance-parametreja (esim.: --rs 720p --rt 16:9 --dur 5).",
-    "description": "Kehotteen syöttöohje"
+    "description": "Kehotuksen syöttöohje"
   },
   "placeholder.prompt": {
     "message": "Kuvaile videota…",
-    "description": "Kehotteen paikkamerkki"
+    "description": "Kehotuksen paikkamerkki"
   },
   "name.model": {
     "message": "Malli",
-    "description": "Mallin valintatunniste"
+    "description": "Mallin valintatunnus"
   },
   "description.model": {
     "message": "Valitse SeeDance-malliversio, jota käytetään generoimiseen.",
@@ -29,7 +29,7 @@
   },
   "name.duration": {
     "message": "Kesto",
-    "description": "Videon keston valintatunniste"
+    "description": "Videon keston valintatunnus"
   },
   "description.duration": {
     "message": "Videon kesto (sekunteina), alue 2-12 sekuntia.",
@@ -37,15 +37,15 @@
   },
   "name.generateAudio": {
     "message": "Generoi ääni",
-    "description": "Äänen generoimisen valintatunniste"
+    "description": "Äänen generoimisen valintatunnus"
   },
   "description.generateAudio": {
-    "message": "Kun tämä on päällä, videoon liitetään ääni. Vain seedance-1.5-pro-malli tukee tätä, kustannus noin 2-kertainen.",
+    "message": "Kun tämä on päällä, videoon liitetään ääni. Vain seedance-1.5-pro-malli tukee, kustannus noin 2-kertainen.",
     "description": "Äänen generoimisen ohje"
   },
   "name.resolution": {
     "message": "Resoluutio",
-    "description": "Videon resoluutiotunniste"
+    "description": "Videon resoluutiotunnus"
   },
   "model.seedance10pro": {
     "message": "doubao-seedance-1.0-pro",
@@ -69,18 +69,18 @@
   },
   "name.serviceTier": {
     "message": "Palvelutaso",
-    "description": "Palvelutason valintatunniste"
+    "description": "Palvelutason valintatunnus"
   },
   "description.serviceTier": {
     "message": "Käsittelytaso: default tai flex.",
     "description": "Palvelutason ohje"
   },
   "serviceTier.default": {
-    "message": "default",
+    "message": "oletus",
     "description": "Oletustaso"
   },
   "serviceTier.flex": {
-    "message": "flex",
+    "message": "joustava",
     "description": "Joustava taso"
   },
   "name.returnLastFrame": {
@@ -93,7 +93,7 @@
   },
   "name.firstFrame": {
     "message": "Ensimmäinen kehyskuva",
-    "description": "Ensimmäisen kehyksen kuvan lataustunniste"
+    "description": "Ensimmäisen kehyksen kuvan lataustunnus"
   },
   "description.firstFrame": {
     "message": "Valinnainen. Lataa viite/ensimmäinen kehyskuva.",
@@ -101,7 +101,7 @@
   },
   "name.lastFrame": {
     "message": "Viimeinen kehyskuva",
-    "description": "Viimeisen kehyksen kuvan lataustunniste"
+    "description": "Viimeisen kehyksen kuvan lataustunnus"
   },
   "description.lastFrame": {
     "message": "Valinnainen. Lataa viimeinen kehyskuva (vaatii ensimmäisen kehyksen).",
@@ -165,22 +165,26 @@
   },
   "name.taskId": {
     "message": "Tehtävä ID",
-    "description": "Tehtävä ID -tunniste"
+    "description": "Tehtävä ID -tunnus"
   },
   "name.traceId": {
     "message": "Trace ID",
-    "description": "Trace ID -tunniste"
+    "description": "Trace ID -tunnus"
+  },
+  "name.elapsed": {
+    "message": "Kuluva aika",
+    "description": "Tehtävän kuluva aika (sekunteina)"
   },
   "name.failure": {
     "message": "Epäonnistuminen",
-    "description": "Epäonnistumisen tunniste"
+    "description": "Epäonnistumisen tunnus"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
-    "description": "Epäonnistumisen syyn tunniste"
+    "description": "Epäonnistumisen syyn tunnus"
   },
   "name.status": {
     "message": "Tila",
-    "description": "Tilatunniste"
+    "description": "Tilatunnus"
   }
 }

@@ -23,6 +23,10 @@
     "message": "추적 ID",
     "description": "작업의 추적 ID"
   },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "작업의 소요 시간(초)"
+  },
   "name.createdAt": {
     "message": "생성 시간",
     "description": "Pixverse 비디오 생성 날짜 및 시간"
@@ -73,7 +77,7 @@
   },
   "name.startImage": {
     "message": "첫 프레임 참조 이미지",
-    "description": "폼 필드 레이블: 첫 프레임 참조 이미지 (영어로는 'First Frame'으로 번역, 간결하게 유지하여 버튼을 가리지 않도록)"
+    "description": "폼 필드 레이블: 첫 프레임 참조 이미지(영어로는 'First Frame'으로 번역, 간결하게 유지하여 버튼을 가리지 않도록)"
   },
   "name.aspectRatio": {
     "message": "종횡비",
@@ -120,7 +124,7 @@
     "description": "매개변수 'ingredients'의 설명"
   },
   "description.imageUrl": {
-    "message": "다중 이미지로 비디오를 생성하는 작업에서 여러 이미지를 업로드해야 합니다.",
+    "message": "다중 이미지로 비디오를 생성하는 작업에서는 여러 이미지를 업로드해야 합니다.",
     "description": "매개변수 'imageUrl'의 설명"
   },
   "description.prompt": {
@@ -128,8 +132,8 @@
     "description": "매개변수 'prompt'의 설명"
   },
   "description.negativePrompt": {
-    "message": "부정 텍스트 프롬프트, 선택 사항, 200자 이내",
-    "description": "매개변수 'negativePrompt'의 설명"
+    "message": "부정적 텍스트 프롬프트, 선택 사항, 200자 이내",
+    "description": "매개변수 'prompt'의 설명"
   },
   "description.uploadStartImage": {
     "message": "생성의 참조로 첫 프레임 이미지를 업로드하세요. 최종 비디오는 첫 프레임을 참조하여 생성됩니다.",
@@ -161,14 +165,14 @@
   },
   "placeholder.paddingLevel": {
     "message": "선택하세요...",
-    "description": "패딩 레벨의 자리 표시자"
+    "description": "패딩 수준의 자리 표시자"
   },
   "placeholder.prompt": {
     "message": "생성할 비디오 스타일의 프롬프트를 입력하세요, 예: quiver",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.negativePrompt": {
-    "message": "생성할 비디오 스타일의 부정 프롬프트를 입력하세요, 200자 이내",
+    "message": "생성할 비디오 스타일의 부정적 프롬프트를 입력하세요, 200자 이내",
     "description": "프롬프트 필드의 자리 표시자 텍스트"
   },
   "placeholder.position": {
@@ -185,7 +189,7 @@
   },
   "placeholder.markerShape": {
     "message": "선택하세요...",
-    "description": "마커 모양 입력의 자리 표시자"
+    "description": "마커 형태 입력의 자리 표시자"
   },
   "placeholder.rotate": {
     "message": "선택하세요...",
@@ -209,7 +213,7 @@
   },
   "button.uploadImageUrl": {
     "message": "업로드",
-    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간단히 해주세요, 'Upload Image'는 사용하지 마세요)"
+    "description": "이미지 업로드 버튼 텍스트 (영어는 'Upload'로 간소화, 'Upload Image' 사용 금지)"
   },
   "button.uploadVideoUrl": {
     "message": "비디오 업로드",
@@ -225,7 +229,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "이미지 업로드 성공",
-    "description": "이미지 업로드가 성공했을 때의 성공 메시지"
+    "description": "이미지 업로드 성공 시의 성공 메시지"
   },
   "message.uploadReferencesError": {
     "message": "이미지 업로드 실패, 나중에 다시 시도하세요",
@@ -233,11 +237,11 @@
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
-    "description": "그리기 작업이 시작될 때의 메시지"
+    "description": "그리기 작업 시작 시의 메시지"
   },
   "message.startTaskSuccess": {
     "message": "생성 작업 시작 성공",
-    "description": "작업 시작이 성공했을 때의 성공 메시지"
+    "description": "작업 시작 성공 시의 성공 메시지"
   },
   "message.startTaskFailed": {
     "message": "작업 시작 실패, 관리자에게 문의하세요",
@@ -245,7 +249,7 @@
   },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
-    "description": "소진되었을 때의 메시지"
+    "description": "소진 시의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
@@ -304,7 +308,7 @@
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
+    "message": "이력 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
     "description": "작업이 없을 때의 메시지"
   }
 }

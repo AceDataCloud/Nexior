@@ -16,7 +16,7 @@
     "description": "Uppgiftens misslyckandestatus"
   },
   "name.failureReason": {
-    "message": "Misslyckandeorsak",
+    "message": "Orsak till misslyckande",
     "description": "Anledningen till att uppgiften misslyckades"
   },
   "name.status": {
@@ -26,6 +26,10 @@
   "name.traceId": {
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
+  },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
   },
   "name.size": {
     "message": "Storlek",
@@ -53,7 +57,7 @@
   },
   "name.headshotsBot": {
     "message": "Headshots Bot",
-    "description": "Namnet på Headshots ID-fotogeneratorn"
+    "description": "Namn för generering av Headshots ID-foton"
   },
   "name.contentImageUrl": {
     "message": "Innehållsbildlänk",
@@ -93,11 +97,11 @@
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Knapptext för att generera Headshots ID-foto"
+    "description": "Knapptext för att generera Headshots ID-foton"
   },
   "button.viewImage": {
     "message": "Visa originalbild",
-    "description": "Knapptext för att visa Headshots ID-foto"
+    "description": "Knapptext för att visa Headshots ID-foton"
   },
   "button.download": {
     "message": "Ladda ner bild",
@@ -108,7 +112,7 @@
     "description": "Knapptext för att ladda upp porträttbilder (engelska bör förenklas till 'Upload', undvik för långa texter)"
   },
   "message.uploadReferencesExceed": {
-    "message": "Max 5 bilder kan laddas upp",
+    "message": "Maximalt 5 bilder kan laddas upp",
     "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
   },
   "message.uploadReferencesSuccess": {
@@ -116,11 +120,11 @@
     "description": "Framgångsmeddelande när bilder har laddats upp"
   },
   "message.uploadReferencesError": {
-    "message": "Misslyckades med att ladda upp bilden, försök igen senare",
+    "message": "Misslyckades med att ladda upp bilder, försök igen senare",
     "description": "Felmeddelande när bilduppladdningen misslyckas"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
+    "message": "Startar uppgift...",
     "description": "Meddelande när ritningsuppgiften startar"
   },
   "message.startTaskSuccess": {
@@ -148,8 +152,8 @@
     "description": "Meddelande när bildgenereringen misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga åtgärder är tillgängliga"
+    "message": "Inga tillgängliga operationer",
+    "description": "Meddelande när inga operationer är tillgängliga"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
@@ -157,38 +161,46 @@
   },
   "styleCategory.styles": {
     "message": "ID-fotostilar",
-    "description": "Kategoriska ord som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna etikettkategori"
+    "description": "Kategoriterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna etikettkategori"
   },
   "styleTag.malePportrait": {
     "message": "Manlig porträttbild",
-    "description": "Stilord som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna stil"
+    "description": "Stilterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna stil"
   },
   "styleTag.malePportrait2": {
     "message": "Manlig porträttbild 2",
-    "description": "Stilord som används för att beskriva och generera bilden, den genererade bilden bör inkludera denna stil"
+    "description": "Stilterm som används för att beskriva och generera bilder, de genererade bilderna ska inkludera denna stil"
   },
   "styleTag.kindergarten": {
-    "message": "Förskoleporträtt",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "message": "Förskolebild",
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera stilen av denna etikett"
   },
   "styleTag.logoTshirt": {
     "message": "Företagslogo T-shirt",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.wedding": {
-    "message": "Bröllopsregistreringsporträtt",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "message": "Bröllopsregistreringsfoto",
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.businessPphoto": {
     "message": "Affärsporträtt",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.bobSuit": {
     "message": "Svart kostym med bobfrisyr",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
   },
   "styleTag.femalePortrait": {
     "message": "Kvinnoporträtt",
-    "description": "Används för att beskriva och generera bilder i denna stil, den genererade bilden ska inkludera denna stil."
+    "description": "Används för att beskriva och generera bildens stil, den genererade bilden ska inkludera denna stils etikett"
+  },
+  "message.uploadImageExceed": {
+    "message": "Max 2 bilder kan laddas upp",
+    "description": "Meddelande när antalet uppladdade referensbilder överskrider gränsen"
+  },
+  "message.uploadImageError": {
+    "message": "Bilduppladdning misslyckades, försök igen senare",
+    "description": "Felmeddelande när uppladdningen av referensbilder misslyckas"
   }
 }

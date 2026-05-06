@@ -23,6 +23,10 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (segundos)"
+  },
   "name.createdAt": {
     "message": "Fecha de creación",
     "description": "Fecha y hora de generación del video Pixverse"
@@ -128,7 +132,7 @@
     "description": "Descripción del parámetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Sugerencia de texto negativa, opcional, no más de 200 caracteres",
+    "message": "Texto de sugerencia negativa, opcional, no más de 200 caracteres",
     "description": "Descripción del parámetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
@@ -169,7 +173,7 @@
   },
   "placeholder.negativePrompt": {
     "message": "Ingrese las palabras clave negativas para el estilo del video a generar, no más de 200 caracteres",
-    "description": "Texto de marcador de posición en el campo de sugerencia"
+    "description": "Texto de marcador de posición en el campo de sugerencia negativa"
   },
   "placeholder.position": {
     "message": "Seleccione...",
@@ -181,7 +185,7 @@
   },
   "placeholder.preset": {
     "message": "Seleccione...",
-    "description": "Marcador de posición para la entrada de preajuste"
+    "description": "Marcador de posición para la entrada de preajustes"
   },
   "placeholder.markerShape": {
     "message": "Seleccione...",
@@ -221,11 +225,11 @@
   },
   "message.uploadReferencesExceed": {
     "message": "Se puede subir un máximo de 1 imagen",
-    "description": "Mensaje de error cuando el número de imágenes subidas excede el límite"
+    "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagen subida con éxito",
-    "description": "Mensaje de éxito cuando la imagen se sube correctamente"
+    "description": "Mensaje de éxito cuando se sube una imagen con éxito"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
@@ -264,47 +268,47 @@
     "description": "Mensaje cuando la generación de la imagen falla"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imágenes de la primera trama excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera trama subidas excede el límite"
+    "message": "Se ha excedido el límite de imágenes de la primera fotograma",
+    "description": "Mensaje de error cuando se excede el límite de imágenes de la primera fotograma"
   },
   "message.uploadVideoSizeExceed": {
     "message": "¡El tamaño del archivo no puede exceder 10MB!",
-    "description": "Mensaje de error cuando el tamaño del archivo subido excede 10MB"
+    "description": "Mensaje de error cuando el tamaño del archivo excede 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "¡El archivo subido debe ser en formato MP4!",
     "description": "Mensaje de error cuando el archivo subido no es en formato MP4"
   },
   "message.uploadStartImageExceed": {
-    "message": "Número de imágenes de la primera trama excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la primera trama subidas excede el límite"
+    "message": "Se ha excedido el límite de imágenes de la primera fotograma",
+    "description": "Mensaje de error cuando se excede el límite de imágenes de la primera fotograma"
   },
   "message.uploadEndImageExceed": {
-    "message": "Número de imágenes de la última trama excede el límite",
-    "description": "Mensaje de error cuando el número de imágenes de la última trama subidas excede el límite"
+    "message": "Se ha excedido el límite de imágenes de la última fotograma",
+    "description": "Mensaje de error cuando se excede el límite de imágenes de la última fotograma"
   },
   "message.uploadStartImageError": {
-    "message": "Error al subir la imagen de la primera trama",
-    "description": "Mensaje de error cuando la subida de la imagen de la primera trama falla"
+    "message": "Error al subir la imagen de la primera fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadVideoError": {
     "message": "Error al subir el video",
-    "description": "Mensaje de error cuando la subida de la imagen de la primera trama falla"
+    "description": "Mensaje de error cuando falla la subida de la imagen de la primera fotograma"
   },
   "message.uploadEndImageError": {
-    "message": "Error al subir la imagen de la última trama",
-    "description": "Mensaje de error cuando la subida de la imagen de la última trama falla"
+    "message": "Error al subir la imagen de la última fotograma",
+    "description": "Mensaje de error cuando falla la subida de la imagen de la última fotograma"
   },
   "message.uploadDocumentsError": {
     "message": "Error al subir el documento",
-    "description": "Mensaje de error cuando la subida del documento falla"
+    "description": "Mensaje de error cuando falla la subida del documento"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
     "description": "Mensaje cuando no hay operaciones disponibles"
   },
   "message.noTasks": {
-    "message": "No hay tareas históricas, por favor haga clic en la izquierda para generar un video",
+    "message": "No hay tareas históricas, por favor haga clic en el video para generarlo",
     "description": "Mensaje cuando no hay tareas"
   }
 }

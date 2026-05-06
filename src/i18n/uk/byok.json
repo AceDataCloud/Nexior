@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Користувацький API Key",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Додати API Key",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Редагувати API Key",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Видалити API Key",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Використовуйте свій власний API Key постачальника (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) замість облікового запису платформи. Після налаштування запити до моделі будуть безпосередньо викликати послуги постачальника за вашим ключем, не витрачаючи кредити платформи; інші функції, такі як виклики інструментів, посилання, артефакти, історія в хмарі тощо, працюватимуть як зазвичай.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Постачальник",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Примітка",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "Наприклад, \"Мій робочий номер\" (необов'язково)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Залиште порожнім, щоб зберегти поточний ключ",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Користувацька базова URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Залиште порожнім, щоб використовувати стандартну адресу постачальника",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Активно",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Останнє використання",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Час додавання",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Активно",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Неактивно",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Ніколи не використовувався",
+    "description": ""
+  },
+  "value.default": {
+    "message": "За замовчуванням",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Додати API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Редагувати",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Тестувати",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Видалити",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Зберегти",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Скасувати",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Підтвердити видалення цього API Key? Подальші запити до моделі {provider} повернуться до стандартного постачальника платформи.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key видалено.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key збережено.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "З'єднання в порядку.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Тест не вдався: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Не вдалося завантажити облікові дані.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Не вдалося зберегти облікові дані.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Користувацький API Key ще не налаштовано. Натисніть \"Додати API Key\", щоб використовувати свій обліковий запис постачальника.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Показати розширені параметри",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Необов'язково. Користувацька адреса постачальника (для OpenRouter, самостійного зворотного проксі, корпоративного шлюзу тощо). Дозволяється лише HTTPS, не може вказувати на внутрішню мережу/адресу циклу.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Використовується користувацький {provider} API Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Поточний діалог використовує ваш {provider} API Key, витрати покриває обліковий запис {provider}, не зменшуючи баланс платформи.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Натисніть, щоб відкрити налаштування API Key",
+    "description": "Підказка після натискання на значок BYOK на сторінці чату: натисніть, щоб відкрити вкладку налаштувань API Key."
+  },
+  "button.testConnection": {
+    "message": "Тестувати",
+    "description": "Кнопка в діалоговому вікні додавання/редагування — тестує лише поточну конфігурацію форми, не зберігаючи облікові дані."
+  },
+  "test.success": {
+    "message": "Тест з'єднання успішний",
+    "description": "Заголовок успіху в розділі результатів тесту з'єднання."
+  },
+  "test.failure": {
+    "message": "Тест з'єднання не вдався",
+    "description": "Заголовок невдачі в розділі результатів тесту з'єднання."
+  },
+  "test.endpoint": {
+    "message": "Адреса запиту",
+    "description": "Мітка URL запиту в деталях результату тесту."
+  },
+  "test.status": {
+    "message": "Код статусу",
+    "description": "Мітка HTTP коду статусу в деталях результату тесту."
+  },
+  "test.message": {
+    "message": "Відповідь постачальника",
+    "description": "Мітка тексту помилки/підказки постачальника в деталях результату тесту."
+  },
+  "providerDesc.openai": {
+    "message": "Замінює запити до ChatGPT (GPT-4 / GPT-4o / o1 / o3 тощо) на цьому сайті.",
+    "description": "Підзаголовок для опції OpenAI в випадаючому списку постачальників."
+  },
+  "providerDesc.anthropic": {
+    "message": "Замінює запити до Claude (Sonnet / Opus / Haiku тощо) на цьому сайті.",
+    "description": "Підзаголовок для опції Anthropic в випадаючому списку постачальників."
+  },
+  "providerDesc.google": {
+    "message": "Замінює запити до Gemini (Pro / Flash серії) на цьому сайті.",
+    "description": "Підзаголовок для опції Google в випадаючому списку постачальників."
+  },
+  "providerDesc.xai": {
+    "message": "Замінює запити до Grok на цьому сайті.",
+    "description": "Підзаголовок для опції xAI в випадаючому списку постачальників."
+  },
+  "providerDesc.deepseek": {
+    "message": "Замінює запити до DeepSeek (V3 / R1 тощо) на цьому сайті.",
+    "description": "Підзаголовок для опції DeepSeek в випадаючому списку постачальників."
+  },
+  "providerDesc.moonshot": {
+    "message": "Замініть запит на діалог Kimi на цьому сайті.",
+    "description": "Підзаголовок для опції Moonshot (Kimi) у випадаючому списку постачальників."
+  },
+  "providerDesc.zhipu": {
+    "message": "Заміна запитів для GLM серії на цьому сайті.",
+    "description": "Підзаголовок опції Zhipu (GLM) в випадаючому списку постачальника."
+  }
+}

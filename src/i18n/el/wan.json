@@ -23,6 +23,10 @@
     "message": "ID Ιχνηλάτη",
     "description": "Το ID ιχνηλάτη της εργασίας"
   },
+  "name.elapsed": {
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Ο χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
+  },
   "name.createdAt": {
     "message": "Ημερομηνία Δημιουργίας",
     "description": "Η ημερομηνία δημιουργίας του βίντεο"
@@ -33,7 +37,7 @@
   },
   "name.model": {
     "message": "Μοντέλο",
-    "description": "Μοντέλο δημιουργίας βίντεο"
+    "description": "Το μοντέλο δημιουργίας βίντεο"
   },
   "name.resolution": {
     "message": "Ανάλυση",
@@ -49,23 +53,23 @@
   },
   "name.wanBot": {
     "message": "Wan Bot",
-    "description": "Δημιουργός βίντεο Wan"
+    "description": "Ο δημιουργός βίντεο Wan"
   },
   "description.prompt": {
-    "message": "Υπόδειξη για τη δημιουργία βίντεο",
-    "description": "Περιγραφή της παραμέτρου prompt"
+    "message": "Λέξεις-κλειδιά για τη δημιουργία βίντεο",
+    "description": "Η περιγραφή της παραμέτρου prompt"
   },
   "description.imageUrl": {
     "message": "Η αρχική εικόνα, που θα χρησιμοποιηθεί ως το πρώτο καρέ του βίντεο.",
-    "description": "Περιγραφή της παραμέτρου imageUrl"
+    "description": "Η περιγραφή της παραμέτρου imageUrl"
   },
   "status.pending": {
-    "message": "Σε Αναμονή",
-    "description": "Κατάσταση αναμονής της εργασίας"
+    "message": "Σε αναμονή",
+    "description": "Η κατάσταση αναμονής της εργασίας"
   },
   "status.processing": {
     "message": "Επεξεργασία",
-    "description": "Κατάσταση επεξεργασίας της εργασίας"
+    "description": "Η κατάσταση επεξεργασίας της εργασίας"
   },
   "placeholder.prompt": {
     "message": "Εισάγετε την υπόδειξη περιεχομένου για το βίντεο",
@@ -105,7 +109,7 @@
   },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας...",
-    "description": "Η εργασία ξεκινά"
+    "description": "Η εργασία είναι σε διαδικασία εκκίνησης"
   },
   "message.startTaskSuccess": {
     "message": "Η εργασία δημιουργίας ξεκίνησε επιτυχώς",
@@ -129,10 +133,10 @@
   },
   "message.uploadImageExceed": {
     "message": "Ο αριθμός των εικόνων που ανέβηκαν υπερβαίνει το όριο",
-    "description": "Υπέρβαση ορίου ανέβασμα εικόνας"
+    "description": "Υπέρβαση ορίου για το ανέβασμα εικόνας"
   },
   "message.uploadImageError": {
-    "message": "Αποτυχία ανέβασμα εικόνας",
+    "message": "Αποτυχία ανάρτησης εικόνας",
     "description": "Αποτυχία στην ανάρτηση εικόνας"
   },
   "name.resolution480p": {

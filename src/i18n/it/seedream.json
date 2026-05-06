@@ -35,6 +35,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento"
   },
+  "name.elapsed": {
+    "message": "Tempo impiegato",
+    "description": "Tempo impiegato per l'attività (secondi)"
+  },
   "name.prompt": {
     "message": "Suggerimento immagine",
     "description": "Parole chiave per generare/modificare"
@@ -49,7 +53,7 @@
   },
   "name.watermark": {
     "message": "Filigrana",
-    "description": "Aggiungere filigrana"
+    "description": "Se aggiungere una filigrana"
   },
   "description.prompt": {
     "message": "Parole chiave per generare o modificare l'immagine",
@@ -57,19 +61,19 @@
   },
   "description.model": {
     "message": "Modello utilizzato per generare o modificare l'immagine.",
-    "description": "Descrizione del parametro modello"
+    "description": "Descrizione del parametro model"
   },
   "description.size": {
     "message": "Dimensione dell'immagine. Supporta preset `1K`, `2K`, `4K` o personalizzati `<larghezza>x<altezza>`.",
-    "description": "Descrizione del parametro dimensione"
+    "description": "Descrizione del parametro size"
   },
   "description.watermark": {
-    "message": "Aggiungere una filigrana AI all'immagine generata. Attivato per impostazione predefinita.",
-    "description": "Descrizione del parametro filigrana"
+    "message": "Se aggiungere una filigrana AI all'immagine generata. Attivato per impostazione predefinita.",
+    "description": "Descrizione del parametro watermark"
   },
   "description.imageUrls": {
     "message": "Carica da 1 a 14 immagini di riferimento per abilitare la modifica dell'immagine.",
-    "description": "Descrizione del parametro immagine"
+    "description": "Descrizione del parametro image"
   },
   "status.pending": {
     "message": "In attesa",
@@ -77,7 +81,7 @@
   },
   "placeholder.select": {
     "message": "Seleziona",
-    "description": "Segnaposto di selezione"
+    "description": "Segnaposto per la selezione"
   },
   "placeholder.prompt": {
     "message": "Inserisci parole chiave, ad esempio: un gatto siamese bianco",
@@ -104,7 +108,7 @@
     "description": "Creazione dell'attività fallita"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
     "description": "Messaggio di esaurimento"
   },
   "message.uploadImageExceed": {
@@ -113,7 +117,7 @@
   },
   "message.uploadImageError": {
     "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Errore di caricamento"
+    "description": "Caricamento fallito"
   },
   "name.model": {
     "message": "Modello",
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Opzione modello SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Opzione modello SeeDream 5.0 (supporta output a gruppi e in streaming)"
+  },
+  "name.maxImages": {
+    "message": "Numero di immagini",
+    "description": "Numero di immagini generate in un gruppo (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Numero di immagini generate in una singola richiesta (1-15). Impostato su 1 per la modalità singola; maggiore di 1 attiva automaticamente il gruppo (sequential_image_generation=auto), mantenendo coerenza di personaggi, stile e dettagli tra le immagini. Supporta solo doubao-seedream-5.0 / 4.5 / 4.0; se caricate immagini di riferimento, devono soddisfare (numero di immagini di riferimento + numero di generazione) ≤ 15. La fatturazione è basata sul numero effettivo di immagini generate.",
+    "description": "Descrizione del parametro max_images"
   }
 }

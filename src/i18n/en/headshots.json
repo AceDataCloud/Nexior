@@ -27,12 +27,16 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The elapsed time of the task (in seconds)"
+  },
   "name.size": {
     "message": "Size",
     "description": "The size of the QR code to be generated"
   },
   "name.createdAt": {
-    "message": "Created At",
+    "message": "Creation Time",
     "description": "The date and time when the QR code was generated"
   },
   "name.endImageUrls": {
@@ -49,7 +53,7 @@
   },
   "field.elements": {
     "message": "ID Photo Style",
-    "description": "The painting style used for generating the image"
+    "description": "The painting style used to generate the image"
   },
   "name.headshotsBot": {
     "message": "Headshots Bot",
@@ -97,15 +101,15 @@
   },
   "button.viewImage": {
     "message": "View Original",
-    "description": "Button text for viewing the original Headshots ID photo"
+    "description": "Button text for viewing the generated Headshots ID photo"
   },
   "button.download": {
     "message": "Download Image",
     "description": "Button text for downloading the image"
   },
   "button.uploadImageUrls": {
-    "message": "Upload",
-    "description": "Button text for uploading portrait images (simplified to 'Upload' to avoid long text)"
+    "message": "Upload Portrait Images",
+    "description": "Button text for uploading portrait images (simplified to 'Upload' in English to avoid long text)"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload up to 5 images",
@@ -121,18 +125,18 @@
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message when the drawing task starts"
+    "description": "Message when the drawing task begins"
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is successfully started"
+    "description": "Success message when the task is started successfully"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more to continue using",
+    "message": "Your credits are exhausted, please purchase more credits to continue",
     "description": "Message when credits are used up"
   },
   "message.generating": {
@@ -157,38 +161,46 @@
   },
   "styleCategory.styles": {
     "message": "ID Photo Styles",
-    "description": "Category term used to describe and generate images, generated images should include this category label"
+    "description": "Category term used to describe and generate images, generated images should include this label's category"
   },
   "styleTag.malePportrait": {
     "message": "Male Portrait",
-    "description": "Style term used to describe and generate images, generated images should include this style label"
+    "description": "Style term used to describe and generate images, generated images should include this label's style"
   },
   "styleTag.malePportrait2": {
     "message": "Male Portrait 2",
-    "description": "Style term used to describe and generate images, generated images should include this style label"
+    "description": "Style term used to describe and generate images, generated images should include this label's style"
   },
   "styleTag.kindergarten": {
     "message": "Kindergarten Entrance Photo",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "A style term used to describe and generate images, the generated image should include the style of this tag."
   },
   "styleTag.logoTshirt": {
     "message": "Corporate Logo T-Shirt Photo",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "Style term used to describe and generate images, the generated image should include the style of this tag"
   },
   "styleTag.wedding": {
     "message": "Wedding Registration Photo",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "Style term used to describe and generate images, the generated image should include the style of this tag"
   },
   "styleTag.businessPphoto": {
     "message": "Business Portrait",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "Style term used to describe and generate images, the generated image should include the style of this tag"
   },
   "styleTag.bobSuit": {
     "message": "Black Suit with Bob Cut",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "Style term used to describe and generate images, the generated image should include the style of this tag"
   },
   "styleTag.femalePortrait": {
     "message": "Female Portrait",
-    "description": "A style term used to describe and generate images; the generated image should include the style of this tag."
+    "description": "Style term used to describe and generate images, the generated image should include the style of this tag"
+  },
+  "message.uploadImageExceed": {
+    "message": "You can upload up to 2 images",
+    "description": "Prompt when the number of uploaded reference images exceeds the limit"
+  },
+  "message.uploadImageError": {
+    "message": "Image upload failed, please try again later",
+    "description": "Error prompt when the reference image upload fails"
   }
 }

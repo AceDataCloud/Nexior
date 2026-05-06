@@ -23,6 +23,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (secondi)"
+  },
   "name.size": {
     "message": "Dimensione",
     "description": "Dimensione del QR code da generare"
@@ -60,8 +64,8 @@
     "description": "Contenuto del QR code da generare"
   },
   "name.ecl": {
-    "message": "Livello di correzione",
-    "description": "Livello di correzione del QR code da generare"
+    "message": "Livello di correzione errori",
+    "description": "Livello di correzione errori del QR code da generare"
   },
   "name.position": {
     "message": "Posizione",
@@ -84,7 +88,7 @@
     "description": "Video personalizzato da estendere"
   },
   "name.extend": {
-    "message": "Video esteso da",
+    "message": "Estendi video da",
     "description": "Suggerimento per l'input del contenuto"
   },
   "name.loop": {
@@ -125,11 +129,11 @@
   },
   "inputWay.input": {
     "message": "Inserisci contenuto",
-    "description": "Metodo di input"
+    "description": "Modalità di input"
   },
   "inputWay.upload": {
     "message": "Carica QR code",
-    "description": "Metodo di input"
+    "description": "Modalità di input"
   },
   "description.loop": {
     "message": "Abilita il loop per il video generato.",
@@ -192,8 +196,8 @@
     "description": "Segnaposto per l'input della posizione"
   },
   "placeholder.content": {
-    "message": "Inserisci il contenuto del QR code da generare, ad esempio: https://www.google.com",
-    "description": "Testo segnaposto nel campo del contenuto"
+    "message": "Inserisci il contenuto del QR code, ad esempio: https://www.google.com",
+    "description": "Testo segnaposto nel campo di contenuto"
   },
   "placeholder.aspectRatio": {
     "message": "Seleziona...",
@@ -213,7 +217,7 @@
   },
   "placeholder.subMarker": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input del sottomarcatori"
+    "description": "Segnaposto per l'input del sottomark"
   },
   "button.generate": {
     "message": "Genera",
@@ -373,15 +377,15 @@
   },
   "message.generating": {
     "message": "Generazione in corso...",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mostrato mentre l'immagine è in fase di generazione"
   },
   "message.downloadVideo": {
     "message": "Scarica questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.extendVideo": {
     "message": "Continua a generare questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.generateFailed": {
     "message": "Generazione immagine fallita",
@@ -408,7 +412,7 @@
     "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento immagine della prima cornice fallito",
+    "message": "Caricamento dell'immagine della prima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
@@ -416,7 +420,7 @@
     "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento immagine dell'ultima cornice fallito",
+    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
     "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
@@ -461,23 +465,23 @@
   },
   "subMarker.square": {
     "message": "Quadrato",
-    "description": "Forma del sottomarker per generare un codice QR"
+    "description": "Forma del sottomark per generare un codice QR"
   },
   "subMarker.circle": {
     "message": "Cerchio",
-    "description": "Forma del sottomarker per generare un codice QR"
+    "description": "Forma del sottomark per generare un codice QR"
   },
   "subMarker.plus": {
     "message": "Più",
-    "description": "Forma del sottomarker per generare un codice QR"
+    "description": "Forma del sottomark per generare un codice QR"
   },
   "subMarker.box": {
     "message": "Scatola",
-    "description": "Forma del sottomarker per generare un codice QR"
+    "description": "Forma del sottomark per generare un codice QR"
   },
   "subMarker.random": {
     "message": "Casuale",
-    "description": "Forma del sottomarker per generare un codice QR"
+    "description": "Forma del sottomark per generare un codice QR"
   },
   "position.center": {
     "message": "Centro",

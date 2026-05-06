@@ -12,8 +12,8 @@
     "description": "Uppgiftens misslyckande status"
   },
   "name.failureReason": {
-    "message": "Orsak till misslyckande",
-    "description": "Anledningen till att uppgiften misslyckades"
+    "message": "Misslyckande orsak",
+    "description": "Orsaken till uppgiftens misslyckande"
   },
   "name.status": {
     "message": "Status",
@@ -23,13 +23,17 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
+  },
   "name.createdAt": {
-    "message": "Skapat",
+    "message": "Skapat vid",
     "description": "Tidpunkt för skapande av videon"
   },
   "name.prompt": {
     "message": "Videoinnehåll",
-    "description": "Inmatningens prompt"
+    "description": "Inmatningsprompt för innehållet"
   },
   "name.model": {
     "message": "Modell",
@@ -52,7 +56,7 @@
     "description": "Videogenerator för allmänna syften"
   },
   "description.prompt": {
-    "message": "Promptord för att generera video",
+    "message": "Promptord för att generera videon",
     "description": "Beskrivning av parametern prompt"
   },
   "description.imageUrl": {
@@ -68,7 +72,7 @@
     "description": "Uppgiftens bearbetningsstatus"
   },
   "placeholder.prompt": {
-    "message": "Ange videoinnehållsprompt",
+    "message": "Ange innehåll för att generera video",
     "description": "Platsinnehåll för promptinmatning"
   },
   "placeholder.select": {
@@ -93,15 +97,15 @@
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Knappt för att generera video"
+    "description": "Knapp för att generera video"
   },
   "button.download": {
     "message": "Ladda ner video",
-    "description": "Knappt för att ladda ner video"
+    "description": "Knapp för att ladda ner video"
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp bild",
-    "description": "Knappt för att ladda upp bild"
+    "description": "Knapp för att ladda upp bild"
   },
   "message.startingTask": {
     "message": "Startar uppgift...",
@@ -109,11 +113,11 @@
   },
   "message.startTaskSuccess": {
     "message": "Uppgift för generering startad",
-    "description": "Uppgiften startade framgångsrikt"
+    "description": "Uppgiften startades framgångsrikt"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta uppgift, vänligen kontakta administratören",
-    "description": "Uppgiften kunde inte startas"
+    "description": "Uppgiftens start misslyckades"
   },
   "message.usedUp": {
     "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",

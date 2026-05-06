@@ -28,7 +28,7 @@
     "description": "Texto en el botón, utilizado para ver la imagen original"
   },
   "button.seeRawVideo": {
-    "message": "Ver video",
+    "message": "Ver video original",
     "description": "Texto en el botón, utilizado para ver el video original"
   },
   "button.edit": {
@@ -59,8 +59,12 @@
     "message": "Cancelar",
     "description": "Texto en el botón, utilizado para cancelar una acción"
   },
+  "button.close": {
+    "message": "Cerrar",
+    "description": "Texto en el botón, utilizado para cerrar un cuadro de diálogo o panel"
+  },
   "button.alert": {
-    "message": "Advertencia",
+    "message": "Alerta",
     "description": "Texto en el botón, utilizado para emitir una alerta"
   },
   "button.info": {
@@ -77,7 +81,7 @@
   },
   "button.verify": {
     "message": "Verificación de identidad",
-    "description": "Texto en el botón, utilizado para que el usuario realice la verificación de identidad"
+    "description": "Texto en el botón, que permite al usuario realizar la verificación de identidad"
   },
   "button.profile": {
     "message": "Perfil",
@@ -89,27 +93,31 @@
   },
   "button.learn": {
     "message": "Aprender",
-    "description": "Texto en el botón, utilizado para que el usuario aprenda sobre un tema"
+    "description": "Texto en el botón, utilizado para permitir al usuario aprender sobre un tema"
   },
   "button.buy": {
     "message": "Comprar",
-    "description": "Texto en el botón, utilizado para que el usuario compre un contenido"
+    "description": "Texto en el botón, utilizado para permitir al usuario comprar algo"
   },
   "button.try": {
     "message": "Probar",
-    "description": "Texto en el botón, utilizado para que el usuario intente un contenido"
+    "description": "Texto en el botón, utilizado para permitir al usuario probar algo"
   },
   "button.startForFree": {
     "message": "Comenzar gratis",
-    "description": "Texto en el botón, utilizado para que el usuario comience de forma gratuita"
+    "description": "Texto en el botón, utilizado para permitir al usuario comenzar de forma gratuita"
+  },
+  "button.download": {
+    "message": "Descargar",
+    "description": "Texto en el botón, utilizado para descargar archivos (como audio, video, imágenes)"
   },
   "button.downloadAndroid": {
     "message": "Descargar Android",
     "description": "Texto en el botón, utilizado para descargar el paquete de instalación de Android"
   },
   "button.downloadIos": {
-    "message": "Descargar iOS",
-    "description": "Texto en el botón, utilizado para descargar el paquete de instalación de iOS"
+    "message": "Descargar paquete de instalación de iOS",
+    "description": "Texto en el botón, utilizado para descargar el archivo del paquete de instalación de iOS"
   },
   "button.installIos": {
     "message": "Instalar iOS",
@@ -117,7 +125,7 @@
   },
   "button.apply": {
     "message": "Solicitar",
-    "description": "Texto en el botón, utilizado para que el usuario solicite el servicio API"
+    "description": "Texto en el botón, utilizado para permitir al usuario solicitar el servicio API"
   },
   "button.refresh": {
     "message": "Actualizar",
@@ -125,11 +133,11 @@
   },
   "button.pay": {
     "message": "Pagar",
-    "description": "Texto en el botón, utilizado para que el usuario pague por el servicio"
+    "description": "Texto en el botón, utilizado para permitir al usuario pagar por el servicio"
   },
   "button.repay": {
     "message": "Continuar pagando",
-    "description": "Texto en el botón, utilizado para que el usuario continúe pagando por el servicio"
+    "description": "Texto en el botón, utilizado para permitir al usuario continuar pagando por el servicio"
   },
   "button.applied": {
     "message": "Solicitado",
@@ -137,15 +145,15 @@
   },
   "button.acquire": {
     "message": "Obtener",
-    "description": "Texto en el botón, utilizado para que el usuario obtenga el token o clave del servicio API"
+    "description": "Texto en el botón, utilizado para permitir al usuario obtener un token o clave del servicio API"
   },
   "button.fillExample": {
     "message": "Completar ejemplo",
-    "description": "Texto en el botón, utilizado para que el usuario complete datos de ejemplo"
+    "description": "Texto en el botón, utilizado para permitir al usuario completar datos de ejemplo"
   },
   "button.buyMore": {
     "message": "Recargar",
-    "description": "Texto en el botón, utilizado para que el usuario recargue. Debe traducirse como 'Recargar'."
+    "description": "Texto en el botón, utilizado para permitir al usuario recargar. Debe traducirse como 'Recargar'."
   },
   "button.update": {
     "message": "Actualizar",
@@ -161,166 +169,166 @@
   },
   "button.referralEarnings": {
     "message": "Ingresos por referidos",
-    "description": "Texto en el botón, utilizado para mostrar ingresos por referidos, lo que significa que el usuario puede ganar dinero al invitar a otros a usar el servicio"
+    "description": "Texto en el botón que muestra los ingresos por referidos, significa que el usuario puede ganar dinero invitando a otros a usar el servicio."
   },
   "button.finish": {
     "message": "Finalizar",
-    "description": "Texto en el botón, utilizado para completar una acción"
+    "description": "Texto en el botón para completar una acción"
   },
   "entity.id": {
     "message": "ID",
-    "description": "用于显示实体的唯一标识符"
+    "description": "Identificador único para mostrar la entidad"
   },
   "entity.type": {
     "message": "Tipo",
-    "description": "用于显示实体的类型"
+    "description": "Tipo de entidad a mostrar"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
+    "description": "Nombre del sitio web, no necesita traducción, mantener como 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "Derechos de autor",
-    "description": "显示版权的文本"
+    "description": "Texto que muestra los derechos de autor"
   },
   "entity.platform": {
     "message": "Plataforma",
-    "description": "指示这是API服务平台的文本"
+    "description": "Texto que indica que este es un servicio de plataforma API"
   },
   "entity.title": {
     "message": "Título",
-    "description": "实体的标题"
+    "description": "Título de la entidad"
   },
   "entity.icon": {
     "message": "Ícono",
-    "description": "实体的图标"
+    "description": "Ícono de la entidad"
   },
   "entity.status": {
     "message": "Estado",
-    "description": "实体的状态"
+    "description": "Estado de la entidad"
   },
   "status.loading": {
     "message": "Cargando...",
-    "description": "内容加载时显示的状态文案"
+    "description": "Texto de estado mostrado mientras se carga el contenido"
   },
   "entity.operation": {
     "message": "Operación",
-    "description": "实体的操作"
+    "description": "Operación de la entidad"
   },
   "entity.description": {
     "message": "Descripción",
-    "description": "实体的描述"
+    "description": "Descripción de la entidad"
   },
   "entity.createdAt": {
-    "message": "Creado en",
-    "description": "实体创建的时间"
+    "message": "Creado el",
+    "description": "Fecha de creación de la entidad"
   },
   "entity.updatedAt": {
-    "message": "Actualizado en",
-    "description": "实体更新的时间"
+    "message": "Actualizado el",
+    "description": "Fecha de actualización de la entidad"
   },
   "entity.order": {
     "message": "Orden",
-    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
+    "description": "Orden de la entidad, que incluye información sobre dinero y servicios que el usuario debe pagar"
   },
   "message.noTasks": {
     "message": "No hay tareas históricas, ¡comienza una nueva tarea!～",
-    "description": "没有任务时的消息"
+    "description": "Mensaje cuando no hay tareas"
   },
   "message.usedAmount": {
     "message": "Monto utilizado",
-    "description": "用于显示服务已使用的金额"
+    "description": "Para mostrar el monto utilizado del servicio"
   },
   "message.mobileAppDescription": {
     "message": "Usa AceData directamente en tu teléfono, actualmente se ofrece la descarga del APK de Android. El paquete de instalación de iOS estará disponible después de completar la firma.",
-    "description": "移动应用下载页的说明文案"
+    "description": "Texto descriptivo en la página de descarga de la aplicación móvil"
   },
   "message.mobileAndroidHint": {
     "message": "Compatible con teléfonos y tabletas Android, escanea para descargar e instalar el último APK.",
-    "description": "Android 下载卡片说明"
+    "description": "Descripción de la tarjeta de descarga de Android"
   },
   "message.mobileAndroidPending": {
     "message": "El paquete de instalación de Android aún no está listo, por favor intenta más tarde.",
-    "description": "Android 安装包暂未可用时的提示"
+    "description": "Mensaje cuando el paquete de instalación de Android no está disponible"
   },
   "message.mobileAvailableNow": {
     "message": "Android disponible para descarga",
-    "description": "用于显示 Android 已可下载的状态"
+    "description": "Para mostrar el estado de que Android ya está disponible para descargar"
   },
   "message.mobileSecureDelivery": {
     "message": "Distribución segura por CDN",
-    "description": "用于强调下载链接通过 CDN 交付"
+    "description": "Para enfatizar que el enlace de descarga se entrega a través de CDN"
   },
   "message.mobileDirectInstall": {
     "message": "Instalación directa de APK",
-    "description": "用于描述 Android 端为直接 APK 安装方式"
+    "description": "Para describir que la instalación en Android es mediante APK directa"
   },
   "message.mobileLatestRelease": {
     "message": "Versión pública actual",
-    "description": "用于说明当前展示的是最新公开版本"
+    "description": "Para indicar que la versión mostrada es la última pública"
   },
   "message.mobileSharedAccount": {
     "message": "Cuenta y cuota compartidas con la versión web",
-    "description": "用于说明移动端与网页端共用账号"
+    "description": "Para indicar que la versión móvil comparte cuenta con la versión web"
   },
   "message.mobileIosHint": {
-    "message": "Compatible con iPhone y iPad, se puede instalar directamente en línea; si el sistema lo bloquea, también se puede descargar el IPA y luego distribuirlo.",
-    "description": "iOS 下载卡片说明"
+    "message": "Compatible con iPhone y iPad, se puede instalar directamente en línea; si el sistema bloquea, también se puede descargar el IPA y luego distribuir.",
+    "description": "Descripción de la tarjeta de descarga de iOS"
   },
   "message.mobileIosPending": {
     "message": "El paquete de instalación de iOS aún no está disponible para descarga, se proporcionará después de completar los certificados y perfiles de Apple.",
-    "description": "iOS 安装包暂未可用时的提示"
+    "description": "Mensaje cuando el paquete de instalación de iOS no está disponible"
   },
   "message.mobileInstallNote": {
     "message": "Al instalar por primera vez un paquete empresarial o Ad Hoc en iOS, el sistema puede requerir que confíes en el certificado en 'Configuración > General > VPN y gestión de dispositivos'.",
-    "description": "移动应用安装提示"
+    "description": "Consejo de instalación de la aplicación móvil"
   },
   "title.mobileApp": {
     "message": "Descarga móvil",
-    "description": "移动应用下载页标题"
+    "description": "Título de la página de descarga de la aplicación móvil"
   },
   "title.mobileFastAccess": {
     "message": "Acceso más rápido, sin pasar por la tienda de aplicaciones",
-    "description": "下载页优势卡片标题，强调快速安装"
+    "description": "Título de la tarjeta de ventajas en la página de descarga, enfatizando la instalación rápida"
   },
   "title.mobileTrustedRelease": {
     "message": "Gestión centralizada de versiones, distribución más estable",
-    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+    "description": "Título de la tarjeta de ventajas en la página de descarga, enfatizando la estabilidad de versiones y distribución"
   },
   "title.mobileUnifiedExperience": {
     "message": "Experiencia unificada entre móvil y web",
-    "description": "下载页优势卡片标题，强调统一体验"
+    "description": "Título de la tarjeta de ventajas en la página de descarga, enfatizando la experiencia unificada"
   },
   "nav.mobileApp": {
     "message": "Aplicación móvil",
-    "description": "导航中的移动应用下载入口"
+    "description": "Entrada de descarga de la aplicación móvil en la navegación"
   },
   "message.mobileFastAccess": {
-    "message": "Los usuarios pueden escanear el código en el teléfono para instalar directamente, o pueden descargar el APK en el escritorio y luego distribuirlo a los miembros del equipo, ideal para pruebas rápidas y pruebas internas.",
-    "description": "下载页优势说明，强调快速接入"
+    "message": "Los usuarios pueden escanear en el teléfono para instalar directamente, o pueden descargar el APK en el escritorio y luego distribuirlo a los miembros del equipo, ideal para pruebas rápidas y pruebas internas.",
+    "description": "Descripción de ventajas en la página de descarga, enfatizando el acceso rápido"
   },
   "message.mobileTrustedRelease": {
-    "message": "Los enlaces de descarga están centralizados en una sola página, con el número de versión, estado de la plataforma y método de instalación visibles de un vistazo, reduciendo los costos de comunicación causados por la dispersión de enlaces.",
-    "description": "下载页优势说明，强调统一分发"
+    "message": "Los enlaces de descarga están centralizados en una sola página, con número de versión, estado de la plataforma y método de instalación visibles de un vistazo, reduciendo los costos de comunicación causados por la dispersión de enlaces.",
+    "description": "Descripción de ventajas en la página de descarga, enfatizando la distribución unificada"
   },
   "message.mobileUnifiedExperience": {
-    "message": "El sistema de cuentas, cuotas y accesos a servicios después de iniciar sesión se mantiene consistente con la versión web, facilitando a los usuarios el cambio sin problemas entre escritorio y móvil.",
-    "description": "下载页优势说明，强调统一账号体验"
+    "message": "El sistema de cuentas, cuotas y entradas de servicio después de iniciar sesión se mantiene consistente con la versión web, facilitando a los usuarios cambiar sin problemas entre el escritorio y el móvil.",
+    "description": "Descripción de ventajas en la página de descarga, enfatizando la experiencia de cuenta unificada"
   },
   "message.remainingAmount": {
     "message": "Monto restante",
-    "description": "用于显示服务剩余的金额"
+    "description": "Para mostrar el monto restante del servicio"
   },
   "message.copied": {
     "message": "Copiado con éxito",
-    "description": "显示内容已成功复制的消息"
+    "description": "Mensaje que indica que el contenido se ha copiado con éxito"
   },
   "message.restart": {
     "message": "Regenerar",
     "description": "Mensaje que indica que el contenido se ha copiado con éxito"
   },
   "message.confirmDelete": {
-    "message": "¿Está seguro de que desea eliminar?",
+    "message": "¿Estás seguro de que deseas eliminarlo?",
     "description": "Mensaje que confirma que el usuario desea eliminar un contenido"
   },
   "message.expiredAt": {
@@ -457,7 +465,7 @@
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "网站导航栏中的文本，用于显示SeeDream页面，请不要翻译此字段，必须保持为'SeeDream'"
+    "description": "Texto en la barra de navegación del sitio, que muestra la página SeeDream, no debe traducirse, debe permanecer como 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -508,8 +516,12 @@
     "description": "网站导航栏中的文本，用于显示视频页面"
   },
   "nav.distribution": {
-    "message": "Ingresos por Referencia",
+    "message": "Recompensas",
     "description": "网站导航栏中的文本，用于显示推荐收益页面"
+  },
+  "nav.connections": {
+    "message": "Conexiones",
+    "description": "跳转到 auth.acedata.cloud 连接管理页的菜单项"
   },
   "nav.logOut": {
     "message": "Cerrar sesión",
@@ -519,12 +531,16 @@
     "message": "Configuración del sitio",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
+  "nav.subsite": {
+    "message": "Mis subsitios",
+    "description": "侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示"
+  },
   "nav.setting": {
     "message": "Configuración",
     "description": "网站导航栏中的文本，用于显示设置页面"
   },
   "nav.headshots": {
-    "message": "Foto de Identidad AI",
+    "message": "Foto de identificación AI",
     "description": "网站导航栏中的文本，用于显示站点配置页面"
   },
   "nav.more": {
@@ -536,11 +552,11 @@
     "description": "网站导航栏中的文本，用于更改语言"
   },
   "nav.support": {
-    "message": "Soporte al Cliente",
+    "message": "Soporte al cliente",
     "description": "网站导航栏中的文本，用于显示联系页面"
   },
   "nav.darkMode": {
-    "message": "Modo Oscuro",
+    "message": "Modo oscuro",
     "description": "网站导航栏中的文本，用于切换到深色主题"
   },
   "title.alert": {
@@ -556,15 +572,15 @@
     "description": "输入的占位符"
   },
   "title.allApplications": {
-    "message": "Todas las Solicitudes",
+    "message": "Todas las solicitudes",
     "description": "显示所有申请的页面标题"
   },
   "title.allOrders": {
-    "message": "Todos los Pedidos",
+    "message": "Todos los pedidos",
     "description": "显示所有订单的页面标题"
   },
   "title.orderInfo": {
-    "message": "Información del Pedido",
+    "message": "Información del pedido",
     "description": "显示订单信息的页面标题"
   },
   "title.buyMore": {
@@ -572,15 +588,15 @@
     "description": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
   },
   "title.distribution": {
-    "message": "Ingresos por Referencia",
+    "message": "Recompensas",
     "description": "显示推荐收入的页面标题，意味着用户可以通过邀请他人使用该服务来赚钱"
   },
   "title.site": {
-    "message": "Configuración del Sitio",
+    "message": "Configuración del sitio",
     "description": "显示站点配置的页面标题"
   },
   "title.distributionHistory": {
-    "message": "Historial de Referencias",
+    "message": "Historial de recomendaciones",
     "description": "显示推荐历史的页面标题"
   },
   "title.invitee": {
@@ -588,16 +604,16 @@
     "description": "显示邀请人的页面标题"
   },
   "title.allUsages": {
-    "message": "Historial de Uso",
+    "message": "Historial de uso",
     "description": "显示API服务所有使用的页面标题"
   },
   "title.allCredentials": {
-    "message": "Credenciales",
+    "message": "Claves",
     "description": "显示所有凭证的页面标题，凭证用于访问API"
   },
   "about.title1": {
-    "message": "Contáctenos",
-    "description": "显示联系信息的部分标题"
+    "message": "Contáctanos",
+    "description": "Título de la sección que muestra la información de contacto"
   },
   "about.title2": {
     "message": "Recursos",
@@ -609,11 +625,11 @@
   },
   "about.address": {
     "message": "651 N Broad St, Suite 201, Middletown, DE, EE. UU.",
-    "description": "Dirección de la empresa"
+    "description": "La dirección de la empresa"
   },
   "about.email": {
     "message": "office@acedata.cloud",
-    "description": "Correo electrónico de la empresa"
+    "description": "El correo electrónico de la empresa"
   },
   "about.link1": {
     "message": "Servicios",
@@ -690,6 +706,14 @@
   "settings.function": {
     "message": "Configuración de funciones",
     "description": "Título de la sección de configuración de funciones en la página de configuración"
+  },
+  "settings.apiKey": {
+    "message": "Clave API",
+    "description": "Etiqueta de la clave API en la barra lateral de la página de configuración: gestión de claves API de proveedores de servicios upstream (BYOK)"
+  },
+  "field.operations": {
+    "message": "Operaciones",
+    "description": "Título de columna genérico: columna de botones de operación en las filas de la tabla (editar, eliminar, etc.)"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -781,31 +805,39 @@
   },
   "settings.about": {
     "message": "Acerca de",
-    "description": "Título de la sección acerca de en la página de configuración"
+    "description": "Título de la sección 'Acerca de' en la página de configuración"
+  },
+  "settings.subsites": {
+    "message": "Mis subsitios",
+    "description": "Título de la pestaña de gestión de subsitios en el cuadro de configuración. Solo visible en el sitio principal oficial, los subsitios no se muestran."
+  },
+  "settings.buildNow": {
+    "message": "Construir ahora",
+    "description": "Texto del botón 'Construir subsitio' en la página 'Acerca de', solo visible en el sitio principal oficial"
   },
   "settings.poweredBy": {
     "message": "Proyecto de código abierto",
-    "description": "Título que muestra en la página 'Acerca de' en qué proyecto de código abierto se basa este sitio"
+    "description": "Título que muestra en qué proyecto de código abierto se basa este sitio en la página 'Acerca de'"
   },
   "settings.poweredByTip": {
     "message": "Este sitio se basa en el proyecto de código abierto Nexior, el código es completamente abierto.",
-    "description": "Descripción que muestra en la página 'Acerca de' en qué proyecto de código abierto se basa este sitio"
+    "description": "Descripción que muestra en qué proyecto de código abierto se basa este sitio en la página 'Acerca de'"
   },
   "settings.apiService": {
     "message": "Servicio API",
-    "description": "Título que muestra en la página 'Acerca de' el proveedor del servicio API"
+    "description": "Título que muestra el proveedor del servicio API en la página 'Acerca de'"
   },
   "settings.apiServiceTip": {
     "message": "El servicio API de este sitio es proporcionado por Ace Data Cloud.",
-    "description": "Descripción que muestra en la página 'Acerca de' el proveedor del servicio API"
+    "description": "Descripción que muestra el proveedor del servicio API en la página 'Acerca de'"
   },
   "settings.buildYourOwn": {
-    "message": "Crea el tuyo",
-    "description": "Título que indica a los usuarios que pueden crear un sitio similar en la página 'Acerca de'"
+    "message": "Construye el tuyo",
+    "description": "Título que indica a los usuarios que pueden construir un sitio similar en la página 'Acerca de'"
   },
   "settings.buildYourOwnTip": {
-    "message": "¿Quieres crear un sitio de IA similar? Contáctanos para obtener soporte de implementación.",
-    "description": "Descripción sobre cómo crear un sitio similar en la página 'Acerca de'"
+    "message": "¿Quieres construir un sitio de IA similar? Contáctanos para obtener soporte de implementación.",
+    "description": "Descripción sobre cómo construir un sitio similar en la página 'Acerca de'"
   },
   "settings.contactUs": {
     "message": "Contactar soporte",
@@ -814,5 +846,29 @@
   "message.viewOnGithub": {
     "message": "Ver en GitHub",
     "description": "Texto del enlace para ver el proyecto en GitHub"
+  },
+  "title.notFound": {
+    "message": "Página no encontrada",
+    "description": "Título de la página 404"
+  },
+  "message.notFound": {
+    "message": "La página que buscas no existe, es posible que el enlace haya cambiado o haya sido eliminado. Regresa a la página de inicio para seguir explorando los servicios de IA de AceData.",
+    "description": "Descripción secundaria de la página 404"
+  },
+  "message.notFoundEyebrow": {
+    "message": "¡Ha ocurrido un error!",
+    "description": "Texto de la etiqueta pequeña en la parte superior de la página 404"
+  },
+  "message.notFoundPath": {
+    "message": "Ruta solicitada",
+    "description": "Etiqueta que muestra la ruta de solicitud actual en la página 404"
+  },
+  "button.backToHome": {
+    "message": "Volver a la página de inicio",
+    "description": "Texto del botón para regresar a la página de inicio"
+  },
+  "button.goBack": {
+    "message": "Regresar a la página anterior",
+    "description": "Texto del botón para regresar a la página anterior en el historial de navegación"
   }
 }

@@ -35,6 +35,10 @@
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento"
   },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
+  },
   "name.prompt": {
     "message": "Prompt da Imagem",
     "description": "Palavras-chave para gerar/editar"
@@ -52,15 +56,15 @@
     "description": "Resolução da imagem gerada"
   },
   "description.resolutionProOnly": {
-    "message": "A configuração de resolução é suportada apenas no nano-banana-pro.",
-    "description": "As opções de resolução são válidas apenas para o modelo pro"
+    "message": "Ajustes de resolução apenas suportados no nano-banana-pro.",
+    "description": "Opções de resolução válidas apenas para o modelo pro"
   },
   "description.prompt": {
     "message": "Palavras-chave para gerar ou editar a imagem",
     "description": "Descrição das palavras-chave"
   },
   "description.action": {
-    "message": "Ação para gerar a imagem. Se for `generate`, a imagem será gerada com base nas palavras-chave; se for `edit`, a imagem será editada com base nas palavras-chave e na imagem enviada.",
+    "message": "Ação para gerar a imagem. Se for `generate`, a imagem será gerada com base nas palavras-chave; se for `edit`, a edição será feita com base nas palavras-chave e na imagem enviada.",
     "description": "Descrição do parâmetro de ação"
   },
   "description.model": {
@@ -68,7 +72,7 @@
     "description": "Descrição do parâmetro de modelo"
   },
   "description.imageUrls": {
-    "message": "É necessário enviar de 1 a 5 imagens na tarefa de edição de imagem.",
+    "message": "Deve-se enviar de 1 a 5 imagens na tarefa de edição de imagem.",
     "description": "Descrição do parâmetro image_urls"
   },
   "description.aspectRatio": {
@@ -112,7 +116,7 @@
     "description": "Mensagem de esgotamento"
   },
   "message.uploadImageExceed": {
-    "message": "É possível enviar no máximo 5 imagens",
+    "message": "Máximo de 5 imagens podem ser enviadas",
     "description": "Número de imagens excedeu o limite"
   },
   "message.uploadImageError": {

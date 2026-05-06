@@ -59,9 +59,13 @@
     "message": "إلغاء",
     "description": "النص في الزر، المستخدم لإلغاء عملية معينة"
   },
+  "button.close": {
+    "message": "إغلاق",
+    "description": "النص في الزر، المستخدم لإغلاق مربع الحوار أو اللوحة"
+  },
   "button.alert": {
-    "message": "تنبيه",
-    "description": "النص في الزر، المستخدم لإصدار تنبيه"
+    "message": "تحذير",
+    "description": "النص في الزر، المستخدم لإصدار تحذير"
   },
   "button.info": {
     "message": "معلومات",
@@ -77,7 +81,7 @@
   },
   "button.verify": {
     "message": "التحقق من الهوية",
-    "description": "النص في الزر، الذي يسمح للمستخدم بالتحقق من هويته"
+    "description": "النص في الزر، المستخدم للسماح للمستخدم بالتحقق من الهوية"
   },
   "button.profile": {
     "message": "الملف الشخصي",
@@ -103,13 +107,17 @@
     "message": "ابدأ مجانًا",
     "description": "النص في الزر، المستخدم للسماح للمستخدم بالبدء مجانًا"
   },
+  "button.download": {
+    "message": "تنزيل",
+    "description": "النص في الزر، المستخدم لتنزيل الملفات (مثل الصوت، الفيديو، الصور)"
+  },
   "button.downloadAndroid": {
-    "message": "تحميل Android",
-    "description": "النص في الزر، المستخدم لتحميل حزمة تثبيت Android"
+    "message": "تنزيل Android",
+    "description": "النص في الزر، المستخدم لتنزيل حزمة تثبيت Android"
   },
   "button.downloadIos": {
-    "message": "تحميل حزمة iOS",
-    "description": "النص في الزر، المستخدم لتحميل ملف حزمة تثبيت iOS"
+    "message": "تنزيل حزمة تثبيت iOS",
+    "description": "النص في الزر، المستخدم لتنزيل ملف حزمة تثبيت iOS"
   },
   "button.installIos": {
     "message": "تثبيت iOS",
@@ -160,167 +168,167 @@
     "description": "النص في الزر، المستخدم لإنشاء محتوى معين"
   },
   "button.referralEarnings": {
-    "message": "دخل الإحالة",
-    "description": "النص في الزر، المستخدم لعرض دخل الإحالة، مما يعني أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام هذه الخدمة"
+    "message": "إيرادات الإحالة",
+    "description": "النص في الزر، الذي يعرض إيرادات الإحالة، مما يعني أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام هذه الخدمة"
   },
   "button.finish": {
     "message": "إنهاء",
-    "description": "النص في الزر، المستخدم لإنهاء عملية معينة"
+    "description": "النص الموجود في الزر، المستخدم لإكمال عملية معينة"
   },
   "entity.id": {
     "message": "معرف",
-    "description": "用于显示实体的唯一标识符"
+    "description": "لإظهار المعرف الفريد للكيان"
   },
   "entity.type": {
     "message": "نوع",
-    "description": "用于显示实体的类型"
+    "description": "لإظهار نوع الكيان"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
-    "description": "网站名称，无需翻译，保持为'Ace Data Cloud'"
+    "description": "اسم الموقع، لا حاجة للترجمة، احتفظ بـ 'Ace Data Cloud'"
   },
   "entity.copyright": {
     "message": "حقوق الطبع والنشر",
-    "description": "显示版权的文本"
+    "description": "النص الذي يعرض حقوق الطبع والنشر"
   },
   "entity.platform": {
     "message": "منصة",
-    "description": "指示这是API服务平台的文本"
+    "description": "نص يشير إلى أن هذه هي منصة خدمة API"
   },
   "entity.title": {
     "message": "عنوان",
-    "description": "实体的标题"
+    "description": "عنوان الكيان"
   },
   "entity.icon": {
     "message": "أيقونة",
-    "description": "实体的图标"
+    "description": "أيقونة الكيان"
   },
   "entity.status": {
     "message": "حالة",
-    "description": "实体的状态"
+    "description": "حالة الكيان"
   },
   "status.loading": {
     "message": "جارٍ التحميل...",
-    "description": "内容加载时显示的状态文案"
+    "description": "النص الذي يظهر أثناء تحميل المحتوى"
   },
   "entity.operation": {
     "message": "عملية",
-    "description": "实体的操作"
+    "description": "عملية الكيان"
   },
   "entity.description": {
     "message": "وصف",
-    "description": "实体的描述"
+    "description": "وصف الكيان"
   },
   "entity.createdAt": {
     "message": "تاريخ الإنشاء",
-    "description": "实体创建的时间"
+    "description": "تاريخ إنشاء الكيان"
   },
   "entity.updatedAt": {
     "message": "تاريخ التحديث",
-    "description": "实体更新的时间"
+    "description": "تاريخ تحديث الكيان"
   },
   "entity.order": {
     "message": "طلب",
-    "description": "实体的订单，订单包含金钱、服务信息，用户需要为其支付"
+    "description": "طلب الكيان، الطلب يتضمن معلومات مالية وخدمية، يحتاج المستخدم للدفع مقابلها"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، ابدأ مهمة جديدة～",
-    "description": "没有任务时的消息"
+    "message": "لا توجد مهام تاريخية، يرجى بدء مهمة جديدة～",
+    "description": "رسالة عند عدم وجود مهام"
   },
   "message.usedAmount": {
     "message": "المبلغ المستخدم",
-    "description": "用于显示服务已使用的金额"
+    "description": "لإظهار المبلغ الذي تم استخدامه من الخدمة"
   },
   "message.mobileAppDescription": {
-    "message": "استخدم AceData مباشرة على الهاتف، يتوفر حاليًا تنزيل APK لنظام Android، وسيتم فتح حزمة تثبيت iOS بعد التوقيع.",
-    "description": "移动应用下载页的说明文案"
+    "message": "استخدم AceData مباشرة على الهاتف، يتوفر حاليًا تنزيل APK لنظام Android، وسيتم فتح تنزيل حزمة iOS بعد إكمال التوقيع.",
+    "description": "نص توضيحي لصفحة تنزيل التطبيق المحمول"
   },
   "message.mobileAndroidHint": {
     "message": "متوافق مع هواتف وأجهزة Android اللوحية، امسح الرمز لتنزيل أحدث APK.",
-    "description": "Android 下载卡片说明"
+    "description": "نص توضيحي لبطاقة تنزيل Android"
   },
   "message.mobileAndroidPending": {
-    "message": "حزمة تثبيت Android غير جاهزة بعد، يرجى المحاولة لاحقًا.",
-    "description": "Android 安装包暂未可用时的提示"
+    "message": "حزمة Android غير جاهزة بعد، يرجى المحاولة لاحقًا.",
+    "description": "تنبيه عند عدم توفر حزمة Android"
   },
   "message.mobileAvailableNow": {
     "message": "تم فتح تنزيل Android",
-    "description": "用于显示 Android 已可下载的状态"
+    "description": "لإظهار حالة توفر تنزيل Android"
   },
   "message.mobileSecureDelivery": {
     "message": "توزيع آمن عبر CDN",
-    "description": "用于强调下载链接通过 CDN 交付"
+    "description": "لتأكيد أن رابط التنزيل يتم تسليمه عبر CDN"
   },
   "message.mobileDirectInstall": {
     "message": "تثبيت APK مباشر",
-    "description": "用于描述 Android 端为直接 APK 安装方式"
+    "description": "لوصف طريقة تثبيت APK المباشرة على Android"
   },
   "message.mobileLatestRelease": {
     "message": "الإصدار العام الحالي",
-    "description": "用于说明当前展示的是最新公开版本"
+    "description": "لإيضاح أن النسخة المعروضة هي أحدث إصدار عام"
   },
   "message.mobileSharedAccount": {
-    "message": "مشاركة الحساب والحدود مع الويب",
-    "description": "用于说明移动端与网页端共用账号"
+    "message": "مشاركة الحساب والحدود مع النسخة على الويب",
+    "description": "لإيضاح أن النسخة المحمولة تشارك الحساب مع النسخة على الويب"
   },
   "message.mobileIosHint": {
-    "message": "متوافق مع iPhone و iPad، يمكن التثبيت مباشرة عبر الإنترنت؛ إذا تم حظر النظام، يمكن تنزيل IPA أولاً ثم توزيعه.",
-    "description": "iOS 下载卡片说明"
+    "message": "متوافق مع iPhone و iPad، يمكن تثبيته مباشرة عبر الإنترنت؛ إذا تم حظر النظام، يمكن تنزيل IPA أولاً ثم توزيعه.",
+    "description": "نص توضيحي لبطاقة تنزيل iOS"
   },
   "message.mobileIosPending": {
-    "message": "حزمة تثبيت iOS غير متاحة للتنزيل بعد، جارٍ استكمال شهادة Apple وملف التعريف.",
-    "description": "iOS 安装包暂未可用时的提示"
+    "message": "حزمة iOS غير متاحة للتنزيل بعد، جارٍ استكمال شهادة Apple وملف التعريف.",
+    "description": "تنبيه عند عدم توفر حزمة iOS"
   },
   "message.mobileInstallNote": {
     "message": "عند تثبيت حزمة مؤسسية أو Ad Hoc على iOS لأول مرة، قد يطلب النظام أولاً الوثوق بالشهادة في \"الإعدادات > عام > VPN وإدارة الأجهزة\".",
-    "description": "移动应用安装提示"
+    "description": "تنبيه لتثبيت التطبيق المحمول"
   },
   "title.mobileApp": {
-    "message": "تنزيل الهاتف المحمول",
-    "description": "移动应用下载页标题"
+    "message": "تنزيل التطبيق المحمول",
+    "description": "عنوان صفحة تنزيل التطبيق المحمول"
   },
   "title.mobileFastAccess": {
     "message": "وصول أسرع، بدون المرور عبر متجر التطبيقات",
-    "description": "下载页优势卡片标题，强调快速安装"
+    "description": "عنوان بطاقة مزايا صفحة التنزيل، يؤكد على التثبيت السريع"
   },
   "title.mobileTrustedRelease": {
     "message": "إدارة مركزية للإصدارات، توزيع أكثر استقرارًا",
-    "description": "下载页优势卡片标题，强调版本和分发稳定性"
+    "description": "عنوان بطاقة مزايا صفحة التنزيل، يؤكد على استقرار الإصدارات والتوزيع"
   },
   "title.mobileUnifiedExperience": {
-    "message": "تجربة موحدة بين الهاتف المحمول والويب",
-    "description": "下载页优势卡片标题，强调统一体验"
+    "message": "تجربة موحدة بين النسخة المحمولة والنسخة على الويب",
+    "description": "عنوان بطاقة مزايا صفحة التنزيل، يؤكد على التجربة الموحدة"
   },
   "nav.mobileApp": {
-    "message": "الهاتف المحمول",
-    "description": "导航中的移动应用下载入口"
+    "message": "التطبيق المحمول",
+    "description": "مدخل تنزيل التطبيق المحمول في التنقل"
   },
   "message.mobileFastAccess": {
-    "message": "يمكن للمستخدمين مسح الرمز على الهاتف للتثبيت مباشرة، أو تنزيل APK على سطح المكتب ثم توزيعه على أعضاء الفريق، مناسب للاستخدام السريع والاختبار الداخلي.",
-    "description": "下载页优势说明，强调快速接入"
+    "message": "يمكن للمستخدمين تثبيت التطبيق مباشرة عبر الهاتف عن طريق مسح الرمز، أو يمكنهم تنزيل APK على سطح المكتب ثم توزيعه على أعضاء الفريق، مناسب للمواقف التي تتطلب تجربة سريعة واختبار داخلي.",
+    "description": "شرح مزايا صفحة التنزيل، يؤكد على الوصول السريع"
   },
   "message.mobileTrustedRelease": {
-    "message": "تتركز نقاط تنزيل في صفحة واحدة، رقم الإصدار، حالة النظام الأساسي وطريقة التثبيت مرئية بوضوح، مما يقلل من تكاليف التواصل الناتجة عن تشتت الروابط.",
-    "description": "下载页优势说明，强调统一分发"
+    "message": "تتركز نقاط تنزيل في صفحة واحدة، رقم الإصدار، حالة المنصة وطريقة التثبيت واضحة، مما يقلل من تكاليف التواصل الناتجة عن تشتت الروابط.",
+    "description": "شرح مزايا صفحة التنزيل، يؤكد على التوزيع الموحد"
   },
   "message.mobileUnifiedExperience": {
-    "message": "نظام الحسابات، الحدود ومدخلات الخدمة بعد تسجيل الدخول متطابقة مع الويب، مما يسهل على المستخدمين التبديل بسلاسة بين سطح المكتب والهاتف المحمول.",
-    "description": "下载页优势说明，强调统一账号体验"
+    "message": "نظام الحسابات، الحدود ومدخلات الخدمة بعد تسجيل الدخول متطابقة مع النسخة على الويب، مما يسهل على المستخدمين التبديل بسلاسة بين سطح المكتب والنسخة المحمولة.",
+    "description": "شرح مزايا صفحة التنزيل، يؤكد على تجربة الحساب الموحدة"
   },
   "message.remainingAmount": {
     "message": "المبلغ المتبقي",
-    "description": "用于显示服务剩余的金额"
+    "description": "لإظهار المبلغ المتبقي من الخدمة"
   },
   "message.copied": {
     "message": "تم النسخ بنجاح",
-    "description": "显示内容已成功复制的消息"
+    "description": "عرض رسالة تفيد بأن المحتوى قد تم نسخه بنجاح"
   },
   "message.restart": {
     "message": "إعادة توليد",
     "description": "用于显示内容已成功复制的消息"
   },
   "message.confirmDelete": {
-    "message": "هل أنت متأكد أنك تريد الحذف؟",
+    "message": "هل أنت متأكد من الحذف؟",
     "description": "确认用户要删除某项内容的消息"
   },
   "message.expiredAt": {
@@ -348,11 +356,11 @@
     "description": "让用户加入Discord频道的消息"
   },
   "message.addWeChat": {
-    "message": "إضافة حساب WeChat",
+    "message": "إضافة WeChat",
     "description": "让用户添加微信账户的消息"
   },
   "message.serviceTech": {
-    "message": "الدعم الفني",
+    "message": "دعم فني",
     "description": "显示技术支持的消息"
   },
   "message.businessCooperation": {
@@ -416,7 +424,7 @@
     "description": "网站导航栏中的文本，用于显示Grok页面，请不要翻译此字段，必须保持为'Grok'"
   },
   "nav.chat": {
-    "message": "الدردشة",
+    "message": "دردشة",
     "description": "网站导航栏中的文本，用于显示聊天页面，请不要翻译此字段，必须保持为'Chat'"
   },
   "nav.veo": {
@@ -457,43 +465,43 @@
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDream، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDream'"
+    "description": "نص في شريط التنقل بالموقع، لعرض صفحة SeeDream، يرجى عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDance، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SeeDance'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDance، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Luma، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Luma'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Luma، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Pika، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Pika'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Pika، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kling، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kling'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kling، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Hailuo، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Hailuo'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Hailuo، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Hailuo'"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Wan، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Wan'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Wan، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Wan'"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Producer، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Producer'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Producer، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Producer'"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kimi، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'Kimi'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة Kimi، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'Kimi'"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة SERP، يجب عدم ترجمة هذا الحقل، يجب أن يبقى كما هو 'SERP'"
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة SERP، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'SERP'"
   },
   "nav.image": {
     "message": "صورة",
@@ -508,8 +516,12 @@
     "description": "النص في شريط التنقل للموقع، لعرض صفحة الفيديو"
   },
   "nav.distribution": {
-    "message": "عائدات التوصية",
-    "description": "النص في شريط التنقل للموقع، لعرض صفحة عائدات التوصية"
+    "message": "إيرادات التوصية",
+    "description": "النص في شريط التنقل للموقع، لعرض صفحة إيرادات التوصية"
+  },
+  "nav.connections": {
+    "message": "اتصالات",
+    "description": "عنصر القائمة للانتقال إلى صفحة إدارة الاتصالات في auth.acedata.cloud"
   },
   "nav.logOut": {
     "message": "تسجيل الخروج",
@@ -519,12 +531,16 @@
     "message": "إعدادات الموقع",
     "description": "النص في شريط التنقل للموقع، لعرض صفحة إعدادات الموقع"
   },
+  "nav.subsite": {
+    "message": "موقعي الفرعي",
+    "description": "مدخل الشريط الجانبي 'موقعي الفرعي'، يظهر فقط عند تفعيل features.subsite"
+  },
   "nav.setting": {
     "message": "إعدادات",
     "description": "النص في شريط التنقل للموقع، لعرض صفحة الإعدادات"
   },
   "nav.headshots": {
-    "message": "صور هوية AI",
+    "message": "صور الهوية AI",
     "description": "النص في شريط التنقل للموقع، لعرض صفحة إعدادات الموقع"
   },
   "nav.more": {
@@ -549,11 +565,11 @@
   },
   "title.placeholderOfSelect": {
     "message": "يرجى الاختيار",
-    "description": "نص العنصر النائب للاختيار"
+    "description": "نص العنصر المحدد"
   },
   "title.placeholderOfInput": {
     "message": "يرجى الإدخال",
-    "description": "نص العنصر النائب للإدخال"
+    "description": "نص الإدخال"
   },
   "title.allApplications": {
     "message": "جميع الطلبات",
@@ -572,8 +588,8 @@
     "description": "عنوان الصفحة لإعادة الشحن. يجب ترجمة الإنجليزية إلى 'Top Up'، والصينية إلى 'إعادة شحن'."
   },
   "title.distribution": {
-    "message": "عائدات التوصية",
-    "description": "عنوان الصفحة لعرض عائدات التوصية، مما يعني أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام هذه الخدمة"
+    "message": "إيرادات التوصية",
+    "description": "عنوان الصفحة لعرض إيرادات التوصية، مما يعني أن المستخدم يمكنه كسب المال من خلال دعوة الآخرين لاستخدام هذه الخدمة"
   },
   "title.site": {
     "message": "إعدادات الموقع",
@@ -593,11 +609,11 @@
   },
   "title.allCredentials": {
     "message": "المفاتيح",
-    "description": "عنوان الصفحة لعرض جميع الشهادات، الشهادات تستخدم للوصول إلى API"
+    "description": "عنوان الصفحة لعرض جميع بيانات الاعتماد، والتي تستخدم للوصول إلى API"
   },
   "about.title1": {
     "message": "اتصل بنا",
-    "description": "عنوان الجزء لعرض معلومات الاتصال"
+    "description": "عنوان الجزء الذي يعرض معلومات الاتصال"
   },
   "about.title2": {
     "message": "الموارد",
@@ -676,8 +692,8 @@
     "description": "عنوان قسم إعدادات السمة في صفحة الإعدادات"
   },
   "settings.seo": {
-    "message": "إعدادات تحسين محركات البحث",
-    "description": "عنوان قسم إعدادات تحسين محركات البحث في صفحة الإعدادات"
+    "message": "إعدادات SEO",
+    "description": "عنوان قسم إعدادات SEO في صفحة الإعدادات"
   },
   "settings.site": {
     "message": "إعدادات الموقع",
@@ -691,13 +707,21 @@
     "message": "إعدادات الوظائف",
     "description": "عنوان قسم إعدادات الوظائف في صفحة الإعدادات"
   },
+  "settings.apiKey": {
+    "message": "مفتاح API",
+    "description": "علامة مفتاح API في الشريط الجانبي لصفحة الإعدادات - إدارة مفتاح API لمزود الخدمة العلوي (BYOK)"
+  },
+  "field.operations": {
+    "message": "العمليات",
+    "description": "عنوان عمود عام: عمود أزرار العمليات في صفوف الجدول (تعديل، حذف، إلخ)"
+  },
   "nav.gemini": {
     "message": "Gemini",
-    "description": "النص في شريط التنقل في الموقع لعرض صفحة Gemini، يجب أن يبقى كما هو 'Gemini'"
+    "description": "نص في شريط التنقل بالموقع لعرض صفحة Gemini، يجب أن يبقى كما هو 'Gemini'"
   },
   "nav.claude": {
     "message": "Claude",
-    "description": "النص في شريط التنقل في الموقع لعرض صفحة Claude، يجب أن يبقى كما هو 'Claude'"
+    "description": "نص في شريط التنقل بالموقع لعرض صفحة Claude، يجب أن يبقى كما هو 'Claude'"
   },
   "button.detail": {
     "message": "عرض التفاصيل",
@@ -705,11 +729,11 @@
   },
   "button.testEnv": {
     "message": "بيئة الاختبار",
-    "description": "النص في الزر للتبديل إلى بيئة الاختبار"
+    "description": "نص في الزر للتبديل إلى بيئة الاختبار"
   },
   "button.upload": {
     "message": "رفع",
-    "description": "النص في الزر لرفع الملفات أو المحتوى"
+    "description": "نص في الزر لرفع الملفات أو المحتوى"
   },
   "message.cnbeian": {
     "message": "تسجيل منطقة الصين",
@@ -717,11 +741,11 @@
   },
   "message.copyFailed": {
     "message": "فشل النسخ",
-    "description": "رسالة تفيد بفشل نسخ المحتوى"
+    "description": "رسالة تظهر عند فشل نسخ المحتوى"
   },
   "nav.tryNow": {
     "message": "جرب الآن",
-    "description": "النص في شريط التنقل في الموقع لتمكين المستخدم من تجربة الخدمة"
+    "description": "نص في شريط التنقل بالموقع لتمكين المستخدم من تجربة الخدمة"
   },
   "title.coin": {
     "message": "العملات المشفرة",
@@ -783,29 +807,37 @@
     "message": "حول",
     "description": "عنوان قسم حول في صفحة الإعدادات"
   },
+  "settings.subsites": {
+    "message": "مواقعي الفرعية",
+    "description": "عنوان علامة تبويب إدارة المواقع الفرعية في نافذة الإعدادات. يظهر فقط في الموقع الرسمي، المواقع الفرعية لا تظهر."
+  },
+  "settings.buildNow": {
+    "message": "إنشاء بنقرة واحدة",
+    "description": "نص زر 'إنشاء موقع فرعي بنقرة واحدة' في صفحة حول، يظهر فقط في الموقع الرسمي"
+  },
   "settings.poweredBy": {
     "message": "مشروع مفتوح المصدر",
-    "description": "عنوان يعرض في صفحة حول المشروع الذي يعتمد عليه الموقع"
+    "description": "عنوان عرض المشروع المفتوح المصدر الذي يعتمد عليه هذا الموقع في صفحة حول"
   },
   "settings.poweredByTip": {
-    "message": "هذا الموقع مبني على مشروع Nexior مفتوح المصدر، الشيفرة مفتوحة بالكامل.",
-    "description": "شرح يعرض في صفحة حول المشروع الذي يعتمد عليه الموقع"
+    "message": "هذا الموقع يعتمد على مشروع Nexior مفتوح المصدر، الشيفرة مفتوحة بالكامل.",
+    "description": "شرح عرض المشروع المفتوح المصدر الذي يعتمد عليه هذا الموقع في صفحة حول"
   },
   "settings.apiService": {
     "message": "خدمة API",
-    "description": "عنوان يعرض في صفحة حول مزود خدمة API"
+    "description": "عنوان عرض مزود خدمة API في صفحة حول"
   },
   "settings.apiServiceTip": {
     "message": "خدمة API لهذا الموقع مقدمة من Ace Data Cloud.",
-    "description": "شرح يعرض في صفحة حول مزود خدمة API"
+    "description": "شرح عرض مزود خدمة API في صفحة حول"
   },
   "settings.buildYourOwn": {
     "message": "أنشئ موقعك الخاص",
-    "description": "عنوان ينبه المستخدمين بأنه يمكنهم إنشاء موقع مشابه"
+    "description": "عنوان يوجه المستخدمين لإنشاء موقع مشابه في صفحة حول"
   },
   "settings.buildYourOwnTip": {
     "message": "هل ترغب في إنشاء موقع AI مشابه؟ اتصل بنا للحصول على دعم النشر.",
-    "description": "شرح يعرض في صفحة حول إنشاء موقع مشابه"
+    "description": "شرح إنشاء موقع مشابه في صفحة حول"
   },
   "settings.contactUs": {
     "message": "اتصل بالدعم",
@@ -814,5 +846,29 @@
   "message.viewOnGithub": {
     "message": "عرض على GitHub",
     "description": "نص رابط لعرض المشروع على GitHub"
+  },
+  "title.notFound": {
+    "message": "الصفحة مفقودة",
+    "description": "عنوان صفحة 404"
+  },
+  "message.notFound": {
+    "message": "الصفحة التي زرتها غير موجودة، قد يكون الرابط قد تغير أو تم إزالته. عد إلى الصفحة الرئيسية لاستكشاف خدمات AceData AI.",
+    "description": "وصف فرعي لصفحة 404"
+  },
+  "message.notFoundEyebrow": {
+    "message": "حدث خطأ",
+    "description": "نص علامة صغيرة في أعلى صفحة 404"
+  },
+  "message.notFoundPath": {
+    "message": "مسار الطلب",
+    "description": "علامة تعرض المسار الحالي للطلب في صفحة 404"
+  },
+  "button.backToHome": {
+    "message": "العودة إلى الصفحة الرئيسية",
+    "description": "نص الزر للانتقال إلى الصفحة الرئيسية"
+  },
+  "button.goBack": {
+    "message": "العودة إلى الصفحة السابقة",
+    "description": "نص الزر للعودة إلى الصفحة السابقة في تاريخ التصفح"
   }
 }

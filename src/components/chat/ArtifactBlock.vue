@@ -8,6 +8,7 @@
         fit="contain"
         style="max-width: 400px; max-height: 400px; border-radius: 8px"
         :preview-src-list="[artifact.url]"
+        :preview-teleported="true"
       />
       <div class="artifact-name">{{ artifact.name }}</div>
     </div>

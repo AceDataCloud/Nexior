@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "Moje poddomenе",
+    "description": "Glavni naslov za upravljanje poddomenama"
+  },
+  "title.create": {
+    "message": "Kreiraj poddomenу",
+    "description": "Naslov dijaloga za kreiranje nove poddomene"
+  },
+  "title.openNow": {
+    "message": "Posetite poddomenу odmah",
+    "description": "Naslov dijaloga koji pita da li da se odmah pređe nakon uspešnog kreiranja"
+  },
+  "field.slug": {
+    "message": "Prefiks poddomenе",
+    "description": "Naslov za unos slug-a poddomene"
+  },
+  "field.origin": {
+    "message": "Domen poddomene",
+    "description": "Kolona domena u listi poddomena"
+  },
+  "field.title": {
+    "message": "Naslov poddomene",
+    "description": "Polje za naslov poddomene"
+  },
+  "field.createdAt": {
+    "message": "Vreme kreiranja",
+    "description": "Kolona za vreme kreiranja poddomene"
+  },
+  "field.actions": {
+    "message": "Akcije",
+    "description": "Kolona akcija u listi poddomena"
+  },
+  "placeholder.slug": {
+    "message": "Na primer my-brand",
+    "description": "Placeholder za unos slug-a"
+  },
+  "placeholder.title": {
+    "message": "Za prikaz u pretraživaču i zaglavlju sajta",
+    "description": "Placeholder za unos naslova"
+  },
+  "button.create": {
+    "message": "Kreiraj poddomenу",
+    "description": "Dugme za kreiranje poddomene"
+  },
+  "button.open": {
+    "message": "Otvorite",
+    "description": "Dugme za otvaranje poddomene"
+  },
+  "button.manage": {
+    "message": "Upravljaj",
+    "description": "Dugme za ulazak u podešavanja poddomene"
+  },
+  "message.indexTip": {
+    "message": "Kreirajte nezavisne brend poddomene ispod glavnog sajta, svaka poddomena može imati svoj logo, naslov i skup funkcija, bez potrebe za zasebnim postavljanjem izvornog koda.",
+    "description": "Objašnjenje na početnoj stranici upravljanja poddomenama"
+  },
+  "message.empty": {
+    "message": "Još niste kreirali nijednu poddomenu. Kliknite na 'Kreiraj poddomenу' u gornjem desnom uglu da počnete.",
+    "description": "Poruka za praznu listu"
+  },
+  "message.slugTip": {
+    "message": "3-32 mala slova, brojevi ili crtice; ne može početi ili završiti sa crticom, niti sadržati uzastopne crtice.",
+    "description": "Objašnjenje za slug polje"
+  },
+  "message.slugInvalid": {
+    "message": "Format prefiksa poddomene nije ispravan, molimo proverite pravila i pokušajte ponovo.",
+    "description": "Provera slug-a nije uspela"
+  },
+  "message.zoneMissing": {
+    "message": "Trenutni glavni sajt nije konfigurisao zonu domena za poddomene, molimo kontaktirajte administratora sajta.",
+    "description": "Nedostaje subdomain_zone"
+  },
+  "message.created": {
+    "message": "Poddomena je uspešno kreirana!",
+    "description": "Uspešno kreirano"
+  },
+  "message.createFailed": {
+    "message": "Kreiranje poddomene nije uspelo, molimo pokušajte ponovo kasnije.",
+    "description": "Kreiranje nije uspelo"
+  },
+  "message.loadFailed": {
+    "message": "Učitavanje liste poddomena nije uspelo.",
+    "description": "Učitavanje liste nije uspelo"
+  },
+  "message.openNowConfirm": {
+    "message": "Poddomena {origin} je kreirana. Da li želite da je odmah otvorite za dalju konfiguraciju?",
+    "description": "Da li otvoriti odmah nakon kreiranja"
+  },
+  "title.domains": {
+    "message": "Prilagođeni domen {origin}",
+    "description": "Naslov dijaloga za prilagođeni domen"
+  },
+  "title.bindDomain": {
+    "message": "Poveži novi domen",
+    "description": "Naslov forme za povezivanje"
+  },
+  "button.domains": {
+    "message": "Domeni",
+    "description": "Dugme za otvaranje dijaloga za upravljanje domenima"
+  },
+  "button.bindDomain": {
+    "message": "Poveži domen",
+    "description": "Dugme za slanje zahteva za povezivanje novog domena"
+  },
+  "button.verify": {
+    "message": "Verifikuj odmah",
+    "description": "Proverite da li se domen može normalno rešiti i izdata je sertifikat putem našeg obrnutog proksija"
+  },
+  "button.refresh": {
+    "message": "Osveži",
+    "description": "Ponovo učitaj status domena"
+  },
+  "field.hostname": {
+    "message": "Vaš domen",
+    "description": "Unesite domen ili poddomen koji posedujete"
+  },
+  "field.recordType": {
+    "message": "Tip zapisa",
+    "description": "Kolona tipa DNS zapisa"
+  },
+  "field.recordName": {
+    "message": "Naziv zapisa",
+    "description": "Kolona naziva DNS zapisa"
+  },
+  "field.recordValue": {
+    "message": "Vrednost zapisa",
+    "description": "Kolona vrednosti DNS zapisa"
+  },
+  "placeholder.hostname": {
+    "message": "Na primer studio.mybrand.com",
+    "description": "Placeholder za unos hostname-a"
+  },
+  "message.domainsIntro": {
+    "message": "Povežite domen koji posedujete sa ovom poddomenom. Morate moći da menjate DNS tog domena. Dodajte CNAME zapis prema uputstvima ispod i kliknite na 'Verifikuj odmah', automatski ćemo vam izdata besplatni HTTPS sertifikat putem Let's Encrypt.",
+    "description": "Objašnjenje na vrhu dijaloga"
+  },
+  "message.domainsEmpty": {
+    "message": "Još niste povezali nijedan prilagođeni domen. Ispunite kompletan domen u formi ispod i kliknite na 'Poveži' da biste počeli.",
+    "description": "Poruka za praznu listu"
+  },
+  "message.hostnameTip": {
+    "message": "Mora biti javni domen čiji DNS možete kontrolisati.",
+    "description": "Uputstvo za unos hostname-a"
+  },
+  "message.hostnameInvalid": {
+    "message": "Format domena nije ispravan. Mora biti javno rešiv domen, IP adrese nisu dozvoljene.",
+    "description": "Provera hostname-a nije uspela"
+  },
+  "message.domainCreated": {
+    "message": "Domen je podnet, molimo dodajte CNAME zapis prema uputstvima.",
+    "description": "Uspešno POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "Kreiranje domena nije uspelo, molimo pokušajte ponovo kasnije.",
+    "description": "Kreiranje nije uspelo"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Učitavanje liste domena nije uspelo.",
+    "description": "Učitavanje liste domena nije uspelo"
+  },
+  "message.domainActive": {
+    "message": "Домен је активан! Сада можете приступити поддомену преко ваше прилагођене HTTPS адресе.",
+    "description": "Улазак у активни статус"
+  },
+  "message.domainFailed": {
+    "message": "Provera domena ili puštanje u rad je neuspešno.",
+    "description": "Failed 状态兑底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Provera je neuspešna, molimo proverite da li CNAME zapis pokazuje na našu obrnutu proxy i da li je DNS propagacija završena.",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Da li ste sigurni da želite da odvojite {hostname}? Nakon odvajanja, korisnici neće moći da pristupe vašem poddomeni sa ovog domena.",
+    "description": "删除确认"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Brisanje domena je neuspešno.",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pending": {
+    "message": "Na čekanju",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
+  },
+  "status.active": {
+    "message": "Aktivan",
+    "description": "Active 状态标签"
+  },
+  "status.failed": {
+    "message": "Neuspešno",
+    "description": "Failed 状态标签"
+  }
+}

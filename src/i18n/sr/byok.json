@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Prilagođeni API ključ",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Dodaj API ključ",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Izmeni API ključ",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Obriši API ključ",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Koristite svoj API ključ od provajdera (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, ZhiPu) umesto platformskog naloga. Nakon konfiguracije, zahtevi za razgovor modela će direktno koristiti vaš ključ za pozivanje usluga, ne trošeći platformski kredit; alati, reference, artefakti, istorija u oblaku i druge funkcije će raditi kao i obično.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Provajder",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Napomena",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "npr. \"Moj radni broj\" (opciono)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API ključ",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Ostavite prazno da zadržite trenutni ključ",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Prilagođeni osnovni URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Ostavite prazno za korišćenje podrazumevane adrese provajdera",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktivno",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Poslednja upotreba",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Datum dodavanja",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Aktivno",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Neaktivno",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nikada korišćeno",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Podrazumevano",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Dodaj API ključ",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Izmeni",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testiraj",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Obriši",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Sačuvaj",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Otkaži",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Da li ste sigurni da želite da obrišete ovaj API ključ? Kasniji razgovori sa modelom {provider} će se vratiti na podrazumevanu platformsku uslugu.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API ključ je obrisan.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API ključ je sačuvan.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Veza je normalna.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Testiranje nije uspelo: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Učitavanje kredencijala nije uspelo.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Čuvanje kredencijala nije uspelo.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Još niste konfigurisali prilagođeni API ključ. Kliknite \"Dodaj API ključ\" da biste koristili svoj nalog provajdera.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Prikaži napredne opcije",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcionalno. Prilagođena adresa usluge (za OpenRouter, samostalne reverse proxy, korporativne prolaze itd.). Dozvoljen je samo HTTPS, ne može se usmeriti na unutrašnju mrežu/loopback adresu.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Koristi se prilagođeni {provider} API ključ",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Trenutni razgovor koristi vaš {provider} API ključ, troškovi se obračunavaju na {provider} nalogu, ne umanjujući saldo platforme.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Kliknite da otvorite podešavanja API ključeva",
+    "description": "Poruka koja se prikazuje nakon klika na BYOK oznaku na stranici za razgovor: kliknite da otvorite karticu sa podešavanjima API ključeva."
+  },
+  "button.testConnection": {
+    "message": "Testiraj",
+    "description": "Dugme u dijalogu za dodavanje/izmenu — testira samo trenutnu konfiguraciju forme, ne čuva kredencijale."
+  },
+  "test.success": {
+    "message": "Test povezanosti uspešan",
+    "description": "Naslov uspeha u rezultatu testa povezanosti."
+  },
+  "test.failure": {
+    "message": "Test povezanosti nije uspeo",
+    "description": "Naslov neuspeha u rezultatu testa povezanosti."
+  },
+  "test.endpoint": {
+    "message": "Adresa zahteva",
+    "description": "Oznaka URL-a zahteva u detaljima rezultata testa."
+  },
+  "test.status": {
+    "message": "Status kod",
+    "description": "Oznaka HTTP status koda u detaljima rezultata testa."
+  },
+  "test.message": {
+    "message": "Odgovor usluge",
+    "description": "Oznaka za tekst greške/poruke usluge u detaljima rezultata testa."
+  },
+  "providerDesc.openai": {
+    "message": "Zameni razgovore sa ChatGPT (GPT-4 / GPT-4o / o1 / o3 itd.) na ovoj platformi.",
+    "description": "Podnaslov za opciju OpenAI u padajućem meniju provajdera."
+  },
+  "providerDesc.anthropic": {
+    "message": "Zameni razgovore sa Claude (Sonnet / Opus / Haiku itd.) na ovoj platformi.",
+    "description": "Podnaslov za opciju Anthropic u padajućem meniju provajdera."
+  },
+  "providerDesc.google": {
+    "message": "Zameni razgovore sa Gemini (Pro / Flash serija) na ovoj platformi.",
+    "description": "Podnaslov za opciju Google u padajućem meniju provajdera."
+  },
+  "providerDesc.xai": {
+    "message": "Zameni razgovore sa Grok na ovoj platformi.",
+    "description": "Podnaslov za opciju xAI u padajućem meniju provajdera."
+  },
+  "providerDesc.deepseek": {
+    "message": "Zameni razgovore sa DeepSeek (V3 / R1 itd.) na ovoj platformi.",
+    "description": "Podnaslov za opciju DeepSeek u padajućem meniju provajdera."
+  },
+  "providerDesc.moonshot": {
+    "message": "Zameni Kimi razgovor na ovoj stranici.",
+    "description": "Podnaslov opcije Moonshot (Kimi) u padajućem meniju provajdera."
+  },
+  "providerDesc.zhipu": {
+    "message": "Zamenite GLM seriju zahteva za razgovor.",
+    "description": "Podnaslov opcije Zhipu (GLM) u padajućem meniju provajdera."
+  }
+}

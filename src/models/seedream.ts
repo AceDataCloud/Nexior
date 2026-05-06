@@ -1,3 +1,7 @@
+export interface ISeedreamSequentialOptions {
+  max_images?: number;
+}
+
 export interface ISeedreamConfig {
   model?: string;
   prompt?: string;
@@ -5,10 +9,12 @@ export interface ISeedreamConfig {
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
+  sequential_image_generation_options?: ISeedreamSequentialOptions;
   stream?: boolean;
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
   watermark?: boolean;
+  output_format?: 'jpeg' | 'png';
   callback_url?: string;
 }
 
@@ -19,10 +25,12 @@ export interface ISeedreamGenerateRequest {
   size?: string;
   seed?: number;
   sequential_image_generation?: 'auto' | 'disabled';
+  sequential_image_generation_options?: ISeedreamSequentialOptions;
   stream?: boolean;
   guidance_scale?: number;
   response_format?: 'url' | 'b64_json';
   watermark?: boolean;
+  output_format?: 'jpeg' | 'png';
   callback_url?: string;
 }
 
@@ -46,6 +54,7 @@ export interface ISeedreamGenerateResponse {
 export interface ISeedreamTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: ISeedreamGenerateRequest;
   response?: ISeedreamGenerateResponse;
 }

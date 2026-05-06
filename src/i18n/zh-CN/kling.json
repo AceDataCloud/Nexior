@@ -1,4 +1,276 @@
 {
+  "tab.videoGeneration": {
+    "message": "视频生成",
+    "description": "Tab 标签：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "动作控制",
+    "description": "Tab 标签：Motion Control"
+  },
+  "name.motionImage": {
+    "message": "人物参考图片",
+    "description": "Motion Control 中的人物图输入"
+  },
+  "name.motionVideo": {
+    "message": "动作参考视频",
+    "description": "Motion Control 中的参考视频输入"
+  },
+  "name.motionPrompt": {
+    "message": "补充提示词（可选）",
+    "description": "Motion Control 中的补充提示词"
+  },
+  "name.characterOrientation": {
+    "message": "人物朝向",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "跟随图片",
+    "description": "人物朝向选项：跟随图片"
+  },
+  "name.orientationVideo": {
+    "message": "跟随视频",
+    "description": "人物朝向选项：跟随视频"
+  },
+  "name.keepOriginalSound": {
+    "message": "保留原始音频",
+    "description": "keep_original_sound 开关"
+  },
+  "description.motionImage": {
+    "message": "上传人物参考图，生成视频中的人物、背景等元素均以此为参照",
+    "description": "motion image_url 说明"
+  },
+  "description.motionVideo": {
+    "message": "上传动作参考视频，生成视频中的人物动作与该视频一致（MP4 / MOV，≤1 分钟，≤1 GB）",
+    "description": "motion video_url 说明"
+  },
+  "description.motionPrompt": {
+    "message": "可选。可以包含正向描述与负向描述，辅助生成效果",
+    "description": "motion prompt 说明"
+  },
+  "description.characterOrientation": {
+    "message": "选「跟随视频」时，复杂动作表现更好；选「跟随图片」时，人物朝向与参考图一致，镜头运动表现更好",
+    "description": "character_orientation 说明"
+  },
+  "description.motionMode": {
+    "message": "std 性能优先，pro 画质优先",
+    "description": "motion mode 说明"
+  },
+  "description.keepOriginalSound": {
+    "message": "开启后保留参考视频的原声；关闭后输出视频不包含原始音频",
+    "description": "keep_original_sound 说明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "例如：一个人在跳舅。可选。",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "生成动作控制视频",
+    "description": "Motion Control 生成按钮"
+  },
+  "message.motionMissingInputs": {
+    "message": "请同时上传人物图与动作参考视频",
+    "description": "Motion Control 缺少输入时的提示"
+  },
+  "inspiration.title": {
+    "message": "灵感与预设",
+    "description": "Inspiration 抽屉的标题"
+  },
+  "inspiration.openButton": {
+    "message": "灵感",
+    "description": "打开 Inspiration 抽屉的按钮"
+  },
+  "inspiration.removeChip": {
+    "message": "移除此预设",
+    "description": "移除提示词区中已选预设的按钮 aria-label"
+  },
+  "inspiration.hint": {
+    "message": "点击短语自动追加到提示词；再次点击可移除。",
+    "description": "Inspiration 抽屉顶部的使用说明"
+  },
+  "inspiration.empty": {
+    "message": "暂无可用预设",
+    "description": "Inspiration 抽屉空状态"
+  },
+  "inspiration.selectedSummary": {
+    "message": "已选 {count} 项",
+    "description": "已选择的预设数量"
+  },
+  "inspiration.clearSelected": {
+    "message": "全部清除",
+    "description": "清除所有已选预设的按钮"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "镜头运动",
+    "description": "Inspiration 分组：镜头运动"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "运动速度",
+    "description": "Inspiration 分组：运动速度"
+  },
+  "inspiration.group.shotType": {
+    "message": "镜头景别",
+    "description": "Inspiration 分组：景别 / 视角"
+  },
+  "inspiration.group.light": {
+    "message": "光影",
+    "description": "Inspiration 分组：光影"
+  },
+  "inspiration.group.frame": {
+    "message": "画面",
+    "description": "Inspiration 分组：画面 / 构图"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "氛围",
+    "description": "Inspiration 分组：氛围 / 风格"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "镜头围绕主体旋转",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "镜头静止",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "手持拍摄",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "镜头拉远",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "镜头推近",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "镜头跟随主体移动",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "镜头向右平移",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "镜头向上倾斜",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "镜头向下倾斜",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "镜头环绕推进",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "镜头运动缓慢",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "镜头运动中速",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "镜头运动快速",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "近景特写",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "中景",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "远景",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "低角度仰拍",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "高角度俯拍",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "浅景深",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "正面视角",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "侧面视角",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "面部特写",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "无人机视角",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "阳光",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "柔光",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "霓虹光",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "暖光",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "自然光",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "烛光",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "城市夜景灯光",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "细节丰富",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "简洁背景",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "神秘氛围",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "宁静氛围",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "温暖治愈",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "鲜活生动",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "色彩丰富",
+    "description": ""
+  },
   "name.taskId": {
     "message": "任务 ID",
     "description": "任务的 ID"
@@ -8,12 +280,68 @@
     "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
   },
   "name.modeStd": {
-    "message": "标准",
-    "description": "Kling视频的标准模式"
+    "message": "标准 (720p)",
+    "description": "Kling视频的标准模式（输出 720p）"
   },
   "name.modePro": {
-    "message": "高品质",
-    "description": "Kling视频的高品质模式"
+    "message": "高品质 (1080p)",
+    "description": "Kling视频的高品质模式（输出 1080p）"
+  },
+  "name.mode4k": {
+    "message": "原生 4K",
+    "description": "Kling 4K 模式（仅 v3 / v3-Omni 支持）"
+  },
+  "name.cameraControl": {
+    "message": "运镜控制",
+    "description": "相机控制类型与参数"
+  },
+  "name.cameraTypeNone": {
+    "message": "不使用",
+    "description": "不使用运镜控制"
+  },
+  "name.cameraTypeSimple": {
+    "message": "自定义（6 维度）",
+    "description": "使用自定义六维度参数"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "下移并后退",
+    "description": "预设运镜：下移并后退"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "向前并上移",
+    "description": "预设运镜：向前并上移"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "左转并前进",
+    "description": "预设运镜：左转并前进"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "右转并前进",
+    "description": "预设运镜：右转并前进"
+  },
+  "name.cc_horizontal": {
+    "message": "水平移动",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "垂直移动",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "水平摇镜（pan）",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "垂直摇镜（tilt）",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "翻滚（roll）",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "推拉变焦（zoom）",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "失败",
@@ -30,6 +358,10 @@
   "name.traceId": {
     "message": "追踪 ID",
     "description": "任务的追踪 ID"
+  },
+  "name.elapsed": {
+    "message": "耗时",
+    "description": "任务的耗时（秒）"
   },
   "name.createdAt": {
     "message": "创建时间",
@@ -123,6 +455,50 @@
     "message": "生成视频的自由度，可选[0,1]。值越大，相关性越强，",
     "description": "上传参考参数的描述"
   },
+  "description.mode": {
+    "message": "std 性能更高，pro 画质更好；4K 仅 v3 / v3-Omni 支持，且不可与运镜控制同时使用",
+    "description": "模式字段的整体说明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "仅 kling-v3 / kling-v3-omni 支持",
+    "description": "4k 选项被禁用的原因（模型不匹配）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "已开启运镜控制，不可与 4K 同时使用",
+    "description": "4k 选项被禁用的原因（已设置运镜）"
+  },
+  "description.duration": {
+    "message": "普通模型仅支持 5/10 秒；v3 / v3-Omni 支持 3/5/8/10/12/15 秒",
+    "description": "时长字段的整体说明"
+  },
+  "description.durationV3Only": {
+    "message": "仅 v3 / v3-Omni 支持",
+    "description": "时长选项禁用原因"
+  },
+  "description.generateAudio": {
+    "message": "在生成视频的同时合成音效。仅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）支持",
+    "description": "音效开关说明（已支持）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "当前模型不支持同步音效，仅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）可用",
+    "description": "音效开关说明（已禁用）"
+  },
+  "description.cameraControl": {
+    "message": "控制相机的运动方向。选择「自定义」可在 6 个维度上微调，每项取值 [-1, 1]",
+    "description": "运镜控制说明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "已选择 4K 模式，运镜控制不可用，请切换到 std / pro 后再启用",
+    "description": "运镜控制被禁用原因"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "上传首帧参考图后不支持运镜控制，请移除首帧参考图后再使用",
+    "description": "运镜控制被禁用原因（image2video）"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "当前模型/模式/时长不支持运镜控制，请先调整配置后再启用",
+    "description": "运镜控制被禁用原因（模型不支持）"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任务的等待状态"
@@ -158,6 +534,10 @@
   "placeholder.aspectRatio": {
     "message": "请选择...",
     "description": "宽高比输入的占位符"
+  },
+  "placeholder.cameraType": {
+    "message": "不使用",
+    "description": "运镜类型选择占位符"
   },
   "placeholder.preset": {
     "message": "请选择...",
@@ -218,6 +598,34 @@
   "message.uploadReferencesError": {
     "message": "上传图片失败，请稍后重试",
     "description": "图片上传失败时的错误消息"
+  },
+  "message.endImageRequiresStart": {
+    "message": "使用尾帧参考图前，请先上传首帧参考图",
+    "description": "用户只上传了尾帧没有首帧时的错误提示"
+  },
+  "message.endImageNotSupported": {
+    "message": "尾帧参考图不被当前模型/模式/时长支持，请先调整配置（常见要求：模式 pro、时长 5s）。",
+    "description": "上传尾帧时当前模型不支持的提示"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要确认",
+    "description": "切换参数时会丢失现有设置的确认弹窗标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "当前选择不支持以下已启用的设置：{fields}。继续将清理这些设置。",
+    "description": "切换 model/mode/duration 后会丢失募集设置的提示文案，{fields} 会被占位符替换为实际字段名"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的设置：{fields}",
+    "description": "用户确认切换后的 toast 提醒"
+  },
+  "button.confirmContinue": {
+    "message": "继续切换",
+    "description": "feature 丢失确认弹窗的主按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "feature 丢失确认弹窗的取消按钮"
   },
   "message.startingTask": {
     "message": "正在启动任务...",
@@ -294,5 +702,9 @@
   "message.noTasks": {
     "message": "没有历史任务，请点击左方生成视频",
     "description": "没有任务时的消息"
+  },
+  "placeholder.select": {
+    "message": "请选择",
+    "description": "下拉选择字段中的占位文本"
   }
 }

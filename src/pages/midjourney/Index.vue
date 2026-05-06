@@ -15,6 +15,7 @@ import Layout from '@/layouts/Midjourney.vue';
 import ConfigPanel from '@/components/midjourney/ConfigPanel.vue';
 import { ElMessage } from 'element-plus';
 import { midjourneyOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import TaskList from '@/components/midjourney/tasks/TaskList.vue';
 import { ERROR_CODE_USED_UP } from '@/constants/errorCode';
 import { MidjourneyVideosAction, Status } from '@/models';
@@ -30,7 +31,8 @@ import {
   MIDJOURNEY_DEFAULT_STYLIZE,
   MIDJOURNEY_DEFAULT_WIRED,
   MIDJOURNEY_DEFAULT_MODE,
-  MIDJOURNEY_DEFAULT_QUALITY
+  MIDJOURNEY_DEFAULT_QUALITY,
+  getWebhookCallbackUrl
 } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 
@@ -41,7 +43,7 @@ interface IData {
   fetchingTasks: boolean;
 }
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/midjourney';
+const CALLBACK_URL = getWebhookCallbackUrl('midjourney');
 
 export default defineComponent({
   name: 'MidjourneyIndex',
@@ -89,10 +91,12 @@ export default defineComponent({
       if (this.config.elements && this.config.elements.length > 0) {
         content += ',' + this.config.elements.map((item) => item.value).join(',');
       }
+      const isNiji = this.config?.model?.includes('niji');
       if (this.config?.model && !content.includes(`--${this.config.model}`)) {
         content += ` --${this.config.model}`;
       }
-      if (this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
+      // niji models carry their own version (e.g. `niji 5`) and reject --version
+      if (!isNiji && this.config?.version && !content.includes(`--version `) && !content.includes(`--v `)) {
         content += ` --version ${this.config.version}`;
       }
       if (this.config?.chaos && this.config?.advanced && !content.includes(`--chaos `)) {
@@ -146,8 +150,8 @@ export default defineComponent({
       if (this.config?.style && this.config?.advanced && !content.includes(`--style`)) {
         content += ` --style ${this.config?.style}`;
       }
-      // V8 --hd parameter
-      if (this.config?.hd && !content.includes(`--hd`)) {
+      // V8 --hd parameter (not supported by niji models)
+      if (!isNiji && this.config?.hd && !content.includes(`--hd`)) {
         content += ` --hd`;
       }
       // remove `--fast`, `--relax`, `--turbo`
@@ -223,10 +227,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .imagine(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.imagine(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startTaskSuccess'));
         })
@@ -255,11 +256,14 @@ export default defineComponent({
         ElMessage.error(this.$t('midjourney.message.promptRequired'));
         return;
       }
+      // Midjourney video generation is image-to-video only; pure text-to-video is not supported.
+      // For action=extend, image_url is replaced by video_id.
+      if (request.action !== MidjourneyVideosAction.EXTEND && !request.image_url) {
+        ElMessage.error(this.$t('midjourney.message.imageUrlRequired'));
+        return;
+      }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .videos(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.videos(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startVideosTaskSuccess'));
         })
@@ -285,10 +289,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('midjourney.message.startingTask'));
-      midjourneyOperator
-        .describe(request, {
-          token
-        })
+      instrumentGeneration('midjourney', midjourneyOperator.describe(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('midjourney.message.startDescribeTaskSuccess'));
         })

@@ -1,48 +1,89 @@
 <template>
   <div class="composer">
+    <!-- Hidden el-upload: only used for its file-picker + upload pipeline.
+         The file list is rendered separately above the textarea (see
+         .file-previews below) and the trigger is fired programmatically
+         from the + popover. -->
+    <el-upload
+      ref="uploader"
+      v-model:file-list="fileList"
+      class="upload-hidden"
+      :accept="extensions"
+      :disabled="(!isFileSupported && !isImageSupported) || answering"
+      name="file"
+      :limit="10"
+      :multiple="true"
+      :action="uploadUrl"
+      :show-file-list="false"
+      :on-exceed="onExceed"
+      :on-error="onError"
+      :on-progress="onProgress"
+      :headers="headers"
+    >
+      <span ref="uploadTrigger" class="upload-trigger" aria-hidden="true"></span>
+    </el-upload>
+    <div v-if="fileList.length > 0" class="file-previews">
+      <template v-for="file in fileList" :key="file.uid">
+        <image-preview
+          v-if="isImageUrl(file.name)"
+          :url="file.url || (file.response as any)?.file_url"
+          :name="file.name"
+          :percentage="file.percentage"
+          @remove="fileList.splice(fileList.indexOf(file), 1)"
+        />
+        <file-preview
+          v-else
+          :name="file.name"
+          :percentage="file.percentage"
+          @remove="fileList.splice(fileList.indexOf(file), 1)"
+        />
+      </template>
+    </div>
+    <textarea
+      ref="textarea"
+      v-model="questionValue"
+      :disabled="answering"
+      class="input"
+      :placeholder="$t('chat.message.newMessagePlaceholder')"
+      :style="{ height: inputHeight }"
+      @keydown.enter.exact="onEnterKey"
+      @input="adjustTextareaHeight"
+    ></textarea>
     <div class="tools">
-      <el-upload
-        ref="uploader"
-        v-model:file-list="fileList"
-        :class="{
-          upload: true,
-          disabled: (!isFileSupported && !isImageSupported) || answering
-        }"
-        :accept="extensions"
-        :disabled="(!isFileSupported && !isImageSupported) || answering"
-        name="file"
-        :limit="10"
-        :multiple="true"
-        :action="uploadUrl"
-        list-type="picture"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :on-progress="onProgress"
-        :headers="headers"
-      >
-        <template #file="{ file }">
-          <image-preview
-            v-if="isImageUrl(file.name)"
-            :url="file.url || (file.response as any)?.file_url"
-            :name="file.name"
-            :percentage="file.percentage"
-            @remove="fileList.splice(fileList.indexOf(file), 1)"
-          />
-          <file-preview
-            v-else
-            :name="file.name"
-            :percentage="file.percentage"
-            @remove="fileList.splice(fileList.indexOf(file), 1)"
-          />
+      <el-dropdown trigger="click" placement="top-start" :hide-on-click="true" popper-class="composer-plus-popper">
+        <!--
+          NOTE: el-dropdown and el-tooltip both rely on el-popper internally,
+          and each needs its OWN single-element trigger reference. Nesting
+          el-tooltip directly inside el-dropdown causes the inner popper to
+          steal the ref and the dropdown click handler never fires. We give
+          el-dropdown a dedicated <span> wrapper, and el-tooltip its own.
+        -->
+        <span class="btn-plus-trigger">
+          <el-tooltip class="box-item" effect="dark" :content="$t('chat.composer.addAction')" placement="top">
+            <span :class="{ btn: true, 'btn-plus': true, disabled: answering }" :aria-disabled="answering" role="button">
+              <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-plus" />
+            </span>
+          </el-tooltip>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item :disabled="(!isFileSupported && !isImageSupported) || answering" @click="onTriggerUpload">
+              <font-awesome-icon icon="fa-regular fa-file-alt" class="menu-icon" />
+              <span>{{ $t('chat.composer.addFiles') }}</span>
+            </el-dropdown-item>
+            <el-dropdown-item @click="onOpenSkills">
+              <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="menu-icon" />
+              <span>{{ $t('chat.composer.skills') }}</span>
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="menu-external" />
+            </el-dropdown-item>
+            <el-dropdown-item @click="onOpenConnections">
+              <font-awesome-icon icon="fa-solid fa-plug" class="menu-icon" />
+              <span>{{ $t('chat.composer.connections') }}</span>
+              <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="menu-external" />
+            </el-dropdown-item>
+          </el-dropdown-menu>
         </template>
-        <el-tooltip class="box-item" effect="dark" :content="$t('chat.message.uploadFile')" placement="bottom">
-          <span
-            :class="{ btn: true, 'btn-upload': true, disabled: (!isFileSupported && !isImageSupported) || answering }"
-          >
-            <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-attachment" />
-          </span>
-        </el-tooltip>
-      </el-upload>
+      </el-dropdown>
     </div>
     <el-button
       :disabled="answering || !questionValue || uploading || !ready"
@@ -67,25 +108,25 @@
     >
       <font-awesome-icon icon="fa-solid fa-stop" class="icon icon-stop" />
     </el-button>
-    <textarea
-      ref="textarea"
-      v-model="questionValue"
-      :disabled="answering"
-      class="input"
-      :placeholder="$t('chat.message.newMessagePlaceholder')"
-      :style="{ height: inputHeight }"
-      @keydown.enter.exact.prevent="onSubmit"
-      @input="adjustTextareaHeight"
-    ></textarea>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElTooltip, ElUpload, UploadFile, UploadProgressEvent, ElButton } from 'element-plus';
+import {
+  ElMessage,
+  ElTooltip,
+  ElUpload,
+  UploadFile,
+  UploadProgressEvent,
+  ElButton,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem
+} from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { IChatModel } from '@/models';
-import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin } from '@/utils';
+import { IChatModel, IChatReference } from '@/models';
+import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserId } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -97,7 +138,10 @@ export default defineComponent({
     ElTooltip,
     FontAwesomeIcon,
     ElUpload,
-    ElButton
+    ElButton,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem
   },
   mixins: [pasteUploadMixin],
   props: {
@@ -148,9 +192,19 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
-    urls(): string[] {
-      // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    // Fully-formed `{ url, name }` references derived from the upload
+    // pipeline. Emitted as a single value to the parent so it can both
+    // POST the URLs to the chat API and render the original filename in
+    // the user message bubble (see Message.vue / IChatReference).
+    refs(): IChatReference[] {
+      const out: IChatReference[] = [];
+      for (const file of this.fileList) {
+        // @ts-ignore — el-upload types `response` as unknown.
+        const url = file?.response?.file_url as string | undefined;
+        if (!url) continue;
+        out.push(file?.name ? { url, name: file.name } : { url });
+      }
+      return out;
     },
     uploading() {
       // if at least file is uploading, return true
@@ -172,8 +226,8 @@ export default defineComponent({
     }
   },
   watch: {
-    urls(val) {
-      console.debug('File URLs:', val);
+    refs(val: IChatReference[]) {
+      console.debug('References:', val);
       if (val.length > 0) {
         this.$emit('update:references', val);
       }
@@ -186,7 +240,7 @@ export default defineComponent({
         this.questionValue = val;
       }
     },
-    references(val: string[]) {
+    references(val: IChatReference[]) {
       console.debug('References updated:', val);
       if (val.length === 0) {
         this.fileList = [];
@@ -218,6 +272,17 @@ export default defineComponent({
       }
       this.$emit('submit');
     },
+    onEnterKey(e: KeyboardEvent) {
+      // Avoid submitting while an IME (e.g. Chinese/Japanese/Korean) is
+      // composing — pressing Enter to confirm the IME candidate must NOT
+      // send the message. `isComposing` is true during composition; some
+      // browsers also report keyCode 229 for the same state.
+      if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      e.preventDefault();
+      this.onSubmit();
+    },
     onStop() {
       this.$emit('stop');
     },
@@ -229,6 +294,33 @@ export default defineComponent({
     },
     onError() {
       ElMessage.error(this.$t('chat.message.uploadReferencesError'));
+    },
+    onTriggerUpload() {
+      if ((!this.isFileSupported && !this.isImageSupported) || this.answering) {
+        return;
+      }
+      // Programmatically open the native file picker that el-upload owns.
+      // We hide el-upload's UI and render the file list ourselves above
+      // the textarea, so the dropdown menu item has to forward the click
+      // to el-upload's <input type="file">.
+      this.$nextTick(() => {
+        const root = (this.$refs.uploader as any)?.$el as HTMLElement | undefined;
+        const input =
+          (root?.querySelector('input.el-upload__input') as HTMLInputElement | null) ||
+          (root?.querySelector('input[type="file"]') as HTMLInputElement | null);
+        input?.click();
+      });
+    },
+    onOpenSkills() {
+      // Skills are managed exclusively at auth.acedata.cloud/user/skills.
+      // Nexior is a thin entry point - clicking opens the canonical
+      // management page in a new tab.
+      window.open(withCurrentUserId('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
+    },
+    onOpenConnections() {
+      // Connections (MCP + OAuth connectors) are managed exclusively at
+      // auth.acedata.cloud/user/connections.
+      window.open(withCurrentUserId('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
     }
   }
 });
@@ -263,34 +355,21 @@ textarea.input:focus {
       line-height: 35px;
     }
   }
-  .el-upload-list {
-    position: absolute;
-    bottom: -5px;
-    left: 50px;
-    height: 50px;
-    width: 700px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: 5px;
-    overflow-y: scroll;
-    flex-wrap: wrap;
-    .el-upload-list__item {
-      margin: 0;
-      width: fit-content;
-      height: 50px;
-      padding: 0;
-      border-radius: 10px;
-      position: relative;
-    }
-  }
 
   .el-textarea.is-disabled .el-textarea__inner {
     background-color: initial;
+  }
+}
+.composer-plus-popper {
+  .menu-icon {
+    width: 16px;
+    margin-right: 8px;
+    color: var(--el-text-color-regular);
+  }
+  .menu-external {
+    margin-left: 8px;
+    font-size: 11px;
+    color: var(--el-text-color-secondary);
   }
 }
 </style>
@@ -301,22 +380,47 @@ textarea.input:focus {
   max-width: 800px;
   margin: auto;
   position: relative;
-  border-radius: 22px;
-  background-color: color-mix(in srgb, var(--el-bg-color) 94%, var(--el-color-primary-light-9) 6%);
-  box-shadow: var(--app-shadow-md);
+  border-radius: 26px;
+  // Plain surface, like ChatGPT's composer — let the page background show
+  // through cleanly instead of a tinted color-mix() that blurs the edge.
+  background-color: var(--el-bg-color);
+  // Thin hairline + a very soft drop shadow. The previous rule used
+  // `var(--app-shadow-md)` which is not defined anywhere in the codebase,
+  // so the browser was rendering an unintended fallback that looked fuzzy.
+  border: 1px solid var(--el-border-color-lighter);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
   padding: 6px;
-  .upload {
-    display: inline-block;
-    &.disabled {
-      .btn-upload {
-        cursor: not-allowed;
-        pointer-events: none;
-        color: var(--el-text-color-disabled) !important;
-        .icon-attachment {
-          color: var(--el-text-color-disabled) !important;
-        }
-      }
-    }
+
+  &:focus-within {
+    border-color: var(--el-border-color);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .upload-hidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .upload-trigger {
+    display: block;
+    width: 0;
+    height: 0;
+  }
+  .file-previews {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px 0;
+    margin-bottom: 4px;
   }
   .input {
     border: none;
@@ -328,30 +432,44 @@ textarea.input:focus {
   }
   .tools {
     position: absolute;
-    left: 15px;
-    bottom: 15px;
+    left: 12px;
+    bottom: 12px;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
+    gap: 6px;
+    .btn-plus-trigger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
     .btn {
-      display: block;
-      margin-right: 10px;
-      z-index: 100;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      background-color: var(--el-fill-color-lighter);
-      width: fit-content;
-      height: 36px;
-      line-height: 36px;
       user-select: none;
-      &.btn-upload {
-        border-radius: 50%;
+      &.btn-plus {
         width: 36px;
-        text-align: center;
-        color: var(--el-text-color-secondary);
-        background-color: var(--el-bg-color);
-        .icon-attachment {
+        height: 36px;
+        border-radius: 50%;
+        background-color: var(--el-fill-color-light);
+        color: var(--el-text-color-primary);
+        font-size: 16px;
+        transition: background-color 0.15s ease;
+        &:hover {
+          background-color: var(--el-fill-color);
+        }
+        &.disabled {
+          cursor: not-allowed;
+          color: var(--el-text-color-disabled) !important;
+          background-color: var(--el-fill-color-lighter);
+          .icon-plus {
+            color: var(--el-text-color-disabled) !important;
+          }
+        }
+        .icon-plus {
           font-size: 16px;
-          color: var(--el-text-color-primary);
         }
       }
     }
@@ -372,8 +490,8 @@ textarea.input:focus {
     --el-button-disabled-bg-color: var(--el-color-primary-light-5);
     --el-button-disabled-border-color: var(--el-color-primary-light-5);
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 12px;
+    right: 12px;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -396,14 +514,21 @@ textarea.input:focus {
     }
 
     .tools {
-      left: 12px;
-      bottom: 12px;
+      left: 10px;
+      bottom: 10px;
+      .btn.btn-plus {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
     }
 
     .btn-send,
     .btn-stop {
-      right: 12px;
-      bottom: 12px;
+      right: 10px;
+      bottom: 10px;
+      width: 32px;
+      height: 32px;
     }
   }
 }

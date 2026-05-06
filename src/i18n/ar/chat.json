@@ -1,15 +1,23 @@
 {
+  "thinking.inProgress": {
+    "message": "تفكير جاري...",
+    "description": "التسمية المعروضة أثناء عملية الاستدلال التي يقوم بها النموذج"
+  },
+  "thinking.done": {
+    "message": "عملية التفكير",
+    "description": "التسمية المستخدمة لعرض عملية الاستدلال بعد انتهاء النموذج"
+  },
   "button.thinkDeeper": {
     "message": "فكر بعمق",
-    "description": "زر التفكير العميق"
+    "description": "زر للتفكير بعمق"
   },
   "button.deepsearch": {
     "message": "بحث عميق",
-    "description": "زر البحث العميق"
+    "description": "زر للبحث العميق"
   },
   "button.search": {
     "message": "بحث",
-    "description": "زر البحث"
+    "description": "زر للبحث"
   },
   "button.edit": {
     "message": "تعديل الرسالة",
@@ -37,7 +45,7 @@
   },
   "modelGroup.grokDescription": {
     "message": "نموذج الذكاء الاصطناعي الذي طورته شركة xAI",
-    "description": "وصف نموذج Grok"
+    "description": "وصف نموذج Grok3"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
@@ -71,6 +79,14 @@
     "message": "نموذج اللغة الكبير الذي طورته شركة Zhiyu AI",
     "description": "وصف مجموعة نماذج GLM"
   },
+  "model.55": {
+    "message": "gpt-5.5",
+    "description": "اسم النموذج للخدمة، أي GPT 5.5"
+  },
+  "model.55Description": {
+    "message": "نموذج GPT 5.5 الرائد من الجيل الأحدث",
+    "description": "وصف نموذج GPT 5.5"
+  },
   "model.54": {
     "message": "gpt-5.4",
     "description": "اسم النموذج للخدمة، أي GPT 5.4"
@@ -87,37 +103,37 @@
     "message": "نموذج GPT 5.4 الأسرع والأخف",
     "description": "وصف نموذج GPT 5.4 Mini"
   },
-  "model.54Nano": {
-    "message": "gpt-5.4-nano",
-    "description": "اسم النموذج للخدمة، أي GPT 5.4 Nano"
-  },
-  "model.54NanoDescription": {
-    "message": "أصغر وأسرع نموذج GPT 5.4",
-    "description": "وصف نموذج GPT 5.4 Nano"
-  },
   "model.deepseekChat": {
-    "message": "معيار 3.0",
-    "description": "اسم النموذج للخدمة، أي دردشة DeepSeek"
+    "message": "3.0",
+    "description": "اسم النموذج للخدمة، أي DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
     "message": "مناسب للمهام اليومية",
-    "description": "وصف نموذج دردشة DeepSeek"
+    "description": "وصف نموذج DeepSeek Chat"
   },
   "model.deepseekReasoner": {
-    "message": "R1 استدلال",
-    "description": "اسم النموذج للخدمة، أي استدلال DeepSeek"
+    "message": "R1",
+    "description": "اسم النموذج للخدمة، أي DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
-    "description": "وصف نموذج استدلال DeepSeek"
+    "message": "مناسب للاستدلال والأسئلة العميقة",
+    "description": "وصف نموذج DeepSeek Reasoner"
   },
   "model.deepseekChat32": {
-    "message": "إصدار V3.2 التجريبي",
+    "message": "3.2",
     "description": "اسم النموذج للخدمة، أي DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "أحدث إصدار تجريبي",
     "description": "وصف نموذج DeepSeek V3.2 التجريبي"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "اسم النموذج للخدمة، أي DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "الجيل الأحدث من النموذج الخفيف، 1M سياق",
+    "description": "وصف نموذج DeepSeek V4 Flash"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -134,22 +150,6 @@
   "model.grok3Description": {
     "message": "مناسب لمعظم المهام",
     "description": "وصف نموذج Grok3"
-  },
-  "model.grok3Reasoner": {
-    "message": "grok-3 استدلال",
-    "description": "اسم النموذج للخدمة، أي استدلال Grok3"
-  },
-  "model.grok3ReasonerDescription": {
-    "message": "مناسب للاستدلال والتفكير العميق",
-    "description": "وصف نموذج استدلال Grok3"
-  },
-  "model.grok3Deepsearch": {
-    "message": "grok-3 بحث عميق",
-    "description": "اسم النموذج للخدمة، أي Grok3 بحث عميق"
-  },
-  "model.grok3DeepsearchDescription": {
-    "message": "مناسب للبحث العميق والمشاكل المعقدة",
-    "description": "وصف نموذج Grok3 بحث عميق"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
@@ -175,64 +175,64 @@
     "message": "نموذج أسرع وأخف",
     "description": "وصف نموذج Gemini 2.5 Flash"
   },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "اسم النموذج للخدمة، أي Claude Opus 4"
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "اسم النموذج للخدمة، أي Claude Opus 4.7"
   },
-  "model.claudeOpus4Description": {
+  "model.claudeOpus47Description": {
     "message": "النموذج الأكثر تقدمًا حاليًا",
-    "description": "وصف نموذج Claude Opus 4"
+    "description": "وصف نموذج Claude Opus 4.7"
   },
-  "model.claudeSonnet4": {
-    "message": "كلود سونيت 4",
-    "description": "اسم النموذج للخدمة، وهو كلود سونيت 4"
+  "model.claudeSonnet46": {
+    "message": "كلود سونيت 4.6",
+    "description": "اسم نموذج الخدمة، أي كلود سونيت 4.6"
   },
-  "model.claudeSonnet4Description": {
+  "model.claudeSonnet46Description": {
     "message": "مناسب لمعظم المهام",
-    "description": "وصف نموذج كلود سونيت 4"
+    "description": "وصف نموذج Claude Sonnet 4.6"
   },
-  "model.claude37Sonnet": {
-    "message": "كلود 3.7 سونيت",
-    "description": "اسم النموذج للخدمة، وهو كلود 3.7 سونيت"
+  "model.claudeHaiku45": {
+    "message": "claude-haiku-4.5",
+    "description": "اسم النموذج للخدمة، وهو Claude Haiku 4.5"
   },
-  "model.claude37SonnetDescription": {
-    "message": "توازن بين الأداء والسرعة",
-    "description": "وصف نموذج كلود 3.7 سونيت"
+  "model.claudeHaiku45Description": {
+    "message": "نموذج خفيف وسريع",
+    "description": "وصف نموذج Claude Haiku 4.5"
   },
   "model.kimiK25": {
-    "message": "كيمي ك2.5",
-    "description": "اسم النموذج للخدمة، وهو كيمي ك2.5"
+    "message": "kimi-k2.5",
+    "description": "اسم النموذج للخدمة، وهو Kimi K2.5"
   },
   "model.kimiK25Description": {
     "message": "النموذج الأكثر تقدمًا حاليًا",
-    "description": "وصف نموذج كيمي ك2.5"
+    "description": "وصف نموذج Kimi K2.5"
   },
   "model.kimiK2Thinking": {
-    "message": "كيمي ك2 تفكير",
-    "description": "اسم النموذج للخدمة، وهو كيمي ك2 تفكير"
+    "message": "kimi-k2 استدلال",
+    "description": "اسم النموذج للخدمة، وهو Kimi K2 استدلال"
   },
   "model.kimiK2ThinkingDescription": {
-    "message": "مناسب للتفكير العميق وحل المشكلات",
-    "description": "وصف نموذج كيمي ك2 تفكير"
+    "message": "مناسب للاستدلال والتفكير العميق",
+    "description": "وصف نموذج Kimi K2 استدلال"
   },
   "model.kimiK2ThinkingTurbo": {
-    "message": "كيمي ك2 تفكير سريع",
-    "description": "اسم النموذج للخدمة، وهو كيمي ك2 تفكير سريع"
+    "message": "kimi-k2 استدلال سريع",
+    "description": "اسم النموذج للخدمة، وهو Kimi K2 استدلال سريع"
   },
   "model.kimiK2ThinkingTurboDescription": {
-    "message": "نموذج تفكير أسرع",
-    "description": "وصف نموذج كيمي ك2 تفكير سريع"
+    "message": "نموذج استدلال أسرع",
+    "description": "وصف نموذج Kimi K2 استدلال سريع"
   },
   "model.glm51": {
-    "message": "GLM 5.1",
+    "message": "glm-5.1",
     "description": "اسم النموذج للخدمة، وهو GLM 5.1"
   },
   "model.glm51Description": {
-    "message": "النموذج الرائد من زيبوت",
+    "message": "النموذج الرائد من Zhiyu",
     "description": "وصف نموذج GLM 5.1"
   },
   "model.glm47": {
-    "message": "GLM 4.7",
+    "message": "glm-4.7",
     "description": "اسم النموذج للخدمة، وهو GLM 4.7"
   },
   "model.glm47Description": {
@@ -241,54 +241,54 @@
   },
   "message.startNewChat": {
     "message": "بدء محادثة جديدة",
-    "description": "رسالة على الويب تخبر المستخدم ببدء محادثة جديدة"
+    "description": "رسالة في الصفحة تخبر المستخدم ببدء محادثة جديدة"
   },
   "message.uploadFile": {
     "message": "رفع ملف",
-    "description": "رسالة على الويب تخبر المستخدم برفع ملف"
+    "description": "رسالة في الصفحة تخبر المستخدم برفع ملف"
   },
   "message.noToken": {
     "message": "يرجى التقدم للحصول على الخدمة المناسبة أولاً",
-    "description": "رسالة على الويب تخبر المستخدم بالتقدم للحصول على الخدمة المناسبة أولاً"
+    "description": "رسالة في الصفحة تخبر المستخدم بالتقدم للحصول على الخدمة المناسبة أولاً"
   },
   "message.newMessagePlaceholder": {
     "message": "أدخل سؤالك...",
-    "description": "نص مكان في الويب يخبر المستخدم بإدخال السؤال"
+    "description": "نص مكان في الصفحة يخبر المستخدم بإدخال السؤال"
   },
   "message.noInput": {
     "message": "لا يمكن أن يكون السؤال فارغًا",
-    "description": "رسالة على الويب تخبر المستخدم أن السؤال لا يمكن أن يكون فارغًا"
+    "description": "رسالة في الصفحة تخبر المستخدم أن السؤال لا يمكن أن يكون فارغًا"
   },
   "message.uploadReferencesExceed": {
     "message": "يمكنك رفع ملف واحد فقط كحد أقصى",
-    "description": "رسالة على الويب تخبر المستخدم أنه يمكن رفع ملف واحد فقط كحد أقصى"
+    "description": "رسالة في الصفحة تخبر المستخدم أنه يمكنه رفع ملف واحد فقط كحد أقصى"
   },
   "message.uploadReferencesError": {
     "message": "فشل رفع الملف، يرجى المحاولة لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم بفشل رفع الملف، يرجى المحاولة لاحقًا"
+    "description": "رسالة في الصفحة تخبر المستخدم بفشل رفع الملف، يرجى المحاولة لاحقًا"
   },
   "message.notApplied": {
     "message": "لم تتقدم لهذه الخدمة بعد، يرجى التقدم أولاً",
-    "description": "رسالة على الويب تخبر المستخدم أنه لم يتقدم لهذه الخدمة بعد، يرجى التقدم أولاً"
+    "description": "رسالة في الصفحة تخبر المستخدم أنه لم يتقدم لهذه الخدمة بعد، يرجى التقدم أولاً"
   },
   "message.tryForFree": {
     "message": "تجربة مجانية",
-    "description": "رسالة على الويب تخبر المستخدم بتجربة مجانية"
+    "description": "رسالة في الصفحة تخبر المستخدم بتجربة مجانية"
   },
   "message.question1": {
     "message": "إنشاء خطة تدريب",
-    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة كود JavaScript لطباعة Hello World"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة كود JavaScript لإخراج Hello World"
   },
   "message.question2": {
     "message": "إنشاء صفحة ويب شخصية",
-    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة بريد إلكتروني لمايك ليخبره أنه انتقل حديثًا"
+    "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم كتابة بريد إلكتروني إلى مايك ليخبره أنه انتقل للتو"
   },
   "message.question3": {
     "message": "تصميم لعبة برمجة ممتعة",
     "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم شرح مبادئ الحوسبة الكمومية بلغة بسيطة"
   },
   "message.question4": {
-    "message": "تجربة سيول كالسكان المحليين",
+    "message": "تجربة سيول كما يفعل السكان المحليون",
     "description": "سؤال مثال لبدء المحادثة، يطلب من المستخدم شرح تأثير الواقع الافتراضي على الإبداع الفني"
   },
   "message.question5": {
@@ -301,63 +301,63 @@
   },
   "message.question7": {
     "message": "كيف يمكن تحسين كفاءة التعلم؟",
-    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين كفاءة التعلم؟"
+    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين كفاءة التعلم الخاصة بك؟"
   },
   "message.question8": {
     "message": "كيف يمكن تحسين التركيز؟",
-    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين التركيز؟"
+    "description": "سؤال مثال لبدء المحادثة، كيف يمكن تحسين تركيزك؟"
   },
   "message.errorApiError": {
     "message": "فشل الرد، يرجى المحاولة لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم بفشل الرد، يرجى المحاولة لاحقًا"
+    "description": "رسالة في الصفحة تخبر المستخدم بفشل الرد، يرجى المحاولة لاحقًا"
   },
   "message.errorBadRequest": {
     "message": "محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال",
-    "description": "رسالة على الويب تخبر المستخدم أن محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال"
+    "description": "رسالة في الصفحة تخبر المستخدم أن محتوى الطلب غير صحيح، يرجى إعادة طرح السؤال"
   },
   "message.errorNoConversation": {
     "message": "المحادثة غير موجودة أو انتهت، يرجى بدء محادثة جديدة",
-    "description": "رسالة على الويب تخبر المستخدم أن المحادثة غير موجودة أو انتهت، يرجى بدء محادثة جديدة"
+    "description": "رسالة في الصفحة تخبر المستخدم أن المحادثة غير موجودة أو انتهت، يرجى بدء محادثة جديدة"
   },
   "message.errorContentTooLarge": {
-    "message": "محتوى المشكلة كبير جدًا، يرجى تقصيره والمحاولة مرة أخرى",
-    "description": "رسالة على الويب تخبر المستخدم أن محتوى المشكلة كبير جدًا، يرجى تقصيره والمحاولة مرة أخرى"
+    "message": "محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى",
+    "description": "رسالة في الصفحة تخبر المستخدم أن محتوى السؤال طويل جدًا، يرجى تقصيره والمحاولة مرة أخرى"
   },
   "message.errorTooManyRequests": {
-    "message": "لقد قمت بإجراء عمليات كثيرة جدًا، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم أنه قام بإجراء عمليات كثيرة جدًا، يرجى المحاولة مرة أخرى لاحقًا"
+    "message": "لقد قمت بإجراء عمليات كثيرة جدًا، يرجى المحاولة لاحقًا",
+    "description": "رسالة في الصفحة تخبر المستخدم أنه قام بإجراء عمليات كثيرة جدًا، يرجى المحاولة لاحقًا"
   },
   "message.errorBusy": {
-    "message": "الخادم مشغول، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم أن الخادم مشغول، يرجى المحاولة مرة أخرى لاحقًا"
+    "message": "الخادم مشغول، يرجى المحاولة لاحقًا",
+    "description": "رسالة على الويب تخبر المستخدم أن الخادم مشغول، يرجى المحاولة لاحقًا"
   },
   "message.errorUsedUp": {
-    "message": "لقد استنفدت عدد الاستخدامات، يرجى شراء المزيد للاستمرار",
-    "description": "رسالة على الويب تخبر المستخدم أنه استنفد عدد الاستخدامات، يرجى شراء المزيد للاستمرار"
+    "message": "لقد استنفدت عدد مرات الاستخدام، يرجى شراء المزيد للاستمرار",
+    "description": "رسالة على الويب تخبر المستخدم أنه قد استنفد عدد مرات الاستخدام، يرجى شراء المزيد للاستمرار"
   },
   "message.errorUnknown": {
-    "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم",
-    "description": "رسالة على الويب تخبر المستخدم أنه حدث خطأ غير معروف في الخادم، يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم"
+    "message": "حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بالدعم",
+    "description": "رسالة على الويب تخبر المستخدم أنه حدث خطأ غير معروف في الخادم، يرجى المحاولة لاحقًا أو الاتصال بالدعم"
   },
   "message.errorTimeout": {
-    "message": "انتهت مهلة الإجابة، يرجى المحاولة مرة أخرى لاحقًا",
-    "description": "رسالة على الويب تخبر المستخدم أن مهلة الإجابة انتهت، يرجى المحاولة مرة أخرى لاحقًا"
+    "message": "انتهت مهلة الإجابة، يرجى المحاولة لاحقًا",
+    "description": "رسالة على الويب تخبر المستخدم أن مهلة الإجابة قد انتهت، يرجى المحاولة لاحقًا"
   },
   "message.errorNotApplied": {
-    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً ثم متابعة السؤال",
-    "description": "رسالة على الويب تخبر المستخدم أنه لم يقدم طلبًا لهذه الخدمة، يرجى التقديم أولاً ثم متابعة السؤال"
+    "message": "لم تقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً ثم متابعة الأسئلة",
+    "description": "رسالة على الويب تخبر المستخدم أنه لم يقم بتقديم طلب لهذه الخدمة، يرجى التقديم أولاً ثم متابعة الأسئلة"
   },
   "message.confirmDelete": {
     "message": "تأكيد الحذف",
     "description": "رسالة على الويب تخبر المستخدم بتأكيد الحذف"
   },
   "message.howToUse": {
-    "message": "قد تحدث أخطاء من AI، يرجى التحقق من المعلومات المهمة.",
-    "description": "رسالة على الويب تخبر المستخدم أن AI قد تحدث أخطاء، يرجى التحقق من المعلومات المهمة"
+    "message": "قد تخطئ الذكاء الاصطناعي، يرجى التحقق من المعلومات المهمة.",
+    "description": "رسالة على الويب تخبر المستخدم أن الذكاء الاصطناعي قد يخطيء، يرجى التحقق من المعلومات المهمة"
   },
   "title.chat": {
-    "message": "دردشة AI",
-    "description": "عنوان الصفحة، أي دردشة AI"
+    "message": "دردشة الذكاء الاصطناعي",
+    "description": "عنوان الصفحة، أي دردشة الذكاء الاصطناعي"
   },
   "title.example": {
     "message": "مثال",
@@ -396,188 +396,12 @@
     "description": "اسم المجموعة على الويب، أي هذا الأسبوع"
   },
   "group.earlier": {
-    "message": "أكثر سابقًا",
-    "description": "اسم المجموعة على الويب، أي أكثر سابقًا"
-  },
-  "mcp.title": {
-    "message": "خادم MCP",
-    "description": "عنوان مربع حوار إدارة خادم MCP"
-  },
-  "mcp.addServer": {
-    "message": "إضافة خادم",
-    "description": "زر إضافة خادم MCP"
-  },
-  "mcp.name": {
-    "message": "الاسم",
-    "description": "اسم خادم MCP"
-  },
-  "mcp.namePlaceholder": {
-    "message": "قم بتسمية الخادم",
-    "description": "نص العنصر النائب لاسم خادم MCP"
-  },
-  "mcp.url": {
-    "message": "الرابط",
-    "description": "رابط خادم MCP"
-  },
-  "mcp.urlPlaceholder": {
-    "message": "https://example.com/mcp",
-    "description": "نص العنصر النائب لرابط خادم MCP"
-  },
-  "mcp.description": {
-    "message": "الوصف",
-    "description": "وصف خادم MCP"
-  },
-  "mcp.descriptionPlaceholder": {
-    "message": "وصف استخدام هذا الخادم",
-    "description": "نص العنصر النائب لوصف خادم MCP"
-  },
-  "mcp.authType": {
-    "message": "نوع المصادقة",
-    "description": "نوع مصادقة خادم MCP"
-  },
-  "mcp.authNone": {
-    "message": "لا شيء",
-    "description": "بدون مصادقة"
-  },
-  "mcp.authBearer": {
-    "message": "رمز Bearer",
-    "description": "مصادقة رمز Bearer"
-  },
-  "mcp.authToken": {
-    "message": "رمز",
-    "description": "رمز المصادقة"
-  },
-  "mcp.authTokenPlaceholder": {
-    "message": "أدخل رمز المصادقة",
-    "description": "نص العنصر النائب لرمز المصادقة"
-  },
-  "mcp.test": {
-    "message": "اختبار الاتصال",
-    "description": "اختبار اتصال خادم MCP"
-  },
-  "mcp.testSuccess": {
-    "message": "تم الاتصال بنجاح",
-    "description": "نجاح اختبار الاتصال"
-  },
-  "mcp.testFailed": {
-    "message": "فشل الاتصال",
-    "description": "فشل اختبار الاتصال"
-  },
-  "mcp.toolsFound": {
-    "message": "تم العثور على {count} أداة",
-    "description": "عدد الأدوات التي تم العثور عليها"
-  },
-  "mcp.empty": {
-    "message": "لا توجد خوادم MCP، أضف واحدة لتوسيع قدرات AI",
-    "description": "قائمة خوادم MCP فارغة"
-  },
-  "mcp.loadErrorHint": {
-    "message": "تعذر تحميل خادم MCP، قد لا تكون هذه الميزة متاحة بعد.",
-    "description": "ملاحظة عند فشل تحميل خادم MCP بسبب أخطاء الشبكة/CORS"
-  },
-  "mcp.nameUrlRequired": {
-    "message": "يرجى ملء الاسم و URL",
-    "description": "الاسم و URL مطلوبان"
-  },
-  "mcp.urlRequired": {
-    "message": "يرجى ملء URL",
-    "description": "URL مطلوب"
-  },
-  "mcp.created": {
-    "message": "تم الإضافة بنجاح",
-    "description": "تم إضافة خادم MCP بنجاح"
-  },
-  "mcp.updated": {
-    "message": "تم التحديث بنجاح",
-    "description": "تم تحديث خادم MCP بنجاح"
-  },
-  "mcp.deleted": {
-    "message": "تم الحذف بنجاح",
-    "description": "تم حذف خادم MCP بنجاح"
-  },
-  "mcp.saveFailed": {
-    "message": "فشل الحفظ",
-    "description": "فشل حفظ خادم MCP"
-  },
-  "mcp.deleteConfirm": {
-    "message": "هل تؤكد حذف الخادم \"{name}\"؟",
-    "description": "تأكيد الحذف"
-  },
-  "mcp.tooltip": {
-    "message": "خادم MCP",
-    "description": "تلميح زر MCP"
-  },
-  "mcp.authOAuth": {
-    "message": "OAuth 2.0",
-    "description": "نوع مصادقة OAuth"
-  },
-  "mcp.oauthHint": {
-    "message": "بعد الحفظ، انقر على زر «تفويض» في بطاقة الخادم لإكمال مصادقة OAuth.",
-    "description": "تلميح عند اختيار نوع مصادقة OAuth"
-  },
-  "mcp.authorize": {
-    "message": "تفويض",
-    "description": "زر تفويض OAuth"
-  },
-  "mcp.oauthAuthorized": {
-    "message": "تم التفويض بنجاح",
-    "description": "رسالة نجاح تفويض OAuth"
-  },
-  "mcp.oauthFailed": {
-    "message": "فشل التفويض",
-    "description": "رسالة فشل تفويض OAuth"
-  },
-  "mcp.popupBlocked": {
-    "message": "تم حظر النافذة المنبثقة، يرجى السماح لنافذة منبثقة من هذا الموقع.",
-    "description": "ملاحظة عند حظر النافذة المنبثقة"
-  },
-  "connector.title": {
-    "message": "موصل",
-    "description": "عنوان مربع حوار إدارة الموصل"
-  },
-  "connector.tooltip": {
-    "message": "موصل OAuth",
-    "description": "تلميح زر الموصل"
-  },
-  "connector.noProviders": {
-    "message": "لا توجد موصلات متاحة، يرجى تكوين مزود OAuth على الخادم.",
-    "description": "رسالة عدم وجود مزودين"
-  },
-  "connector.connect": {
-    "message": "اتصال",
-    "description": "زر الاتصال"
-  },
-  "connector.disconnect": {
-    "message": "فصل",
-    "description": "زر الفصل"
-  },
-  "connector.connected": {
-    "message": "تم الاتصال بالموصل بنجاح",
-    "description": "رسالة نجاح الاتصال"
-  },
-  "connector.disconnected": {
-    "message": "تم فصل الموصل",
-    "description": "رسالة نجاح الفصل"
+    "message": "في وقت سابق",
+    "description": "اسم المجموعة على الويب، أي في وقت سابق"
   },
   "connector.authFailed": {
     "message": "فشل التفويض، يرجى المحاولة مرة أخرى.",
     "description": "رسالة فشل التفويض"
-  },
-  "connector.loadError": {
-    "message": "فشل تحميل الموصل",
-    "description": "رسالة خطأ التحميل"
-  },
-  "connector.loadErrorHint": {
-    "message": "تعذر تحميل الموصل، قد لا تكون هذه الميزة متاحة بعد.",
-    "description": "ملاحظة عند فشل تحميل الموصل بسبب أخطاء الشبكة/CORS"
-  },
-  "connector.disconnectError": {
-    "message": "فشل فصل الموصل",
-    "description": "رسالة خطأ الفصل"
-  },
-  "connector.toggleError": {
-    "message": "فشل تحديث الموصل",
-    "description": "رسالة خطأ التبديل"
   },
   "connector.processing": {
     "message": "جارٍ معالجة التفويض...",
@@ -589,178 +413,110 @@
   },
   "connector.closeWindow": {
     "message": "ستغلق هذه النافذة تلقائيًا.",
-    "description": "تلميح إغلاق رد الاتصال OAuth"
+    "description": "إشعار إغلاق رد الاتصال OAuth"
   },
-  "skill.title": {
-    "message": "مهارة",
-    "description": "عنوان مربع حوار إدارة المهارات"
+  "connections.tooltip": {
+    "message": "إدارة الاتصالات",
+    "description": "نص الزر للانتقال إلى صفحة إدارة الاتصالات auth.acedata.cloud"
   },
   "skill.tooltip": {
-    "message": "مهارات الذكاء الاصطناعي",
-    "description": "تلميح زر المهارة"
+    "message": "إدارة المهارات",
+    "description": "نص الزر للانتقال إلى صفحة إدارة المهارات auth.acedata.cloud"
   },
-  "skill.builtin": {
-    "message": "مضمنة",
-    "description": "علامة المهارات المضمنة"
+  "composer.addAction": {
+    "message": "إضافة محتوى",
+    "description": "نص الزر تحت مربع الإدخال، بعد الفتح يمكن رفع الملفات، فتح المهارات أو إدارة الاتصالات"
   },
-  "skill.empty": {
-    "message": "لا توجد مهارات متاحة.",
-    "description": "ملاحظة عند كون قائمة المهارات فارغة"
+  "composer.addFiles": {
+    "message": "إضافة صور أو ملفات",
+    "description": "عنصر في قائمة منبثقة من زر الإضافة: رفع الصور أو الملفات"
   },
-  "skill.loadError": {
-    "message": "فشل تحميل المهارات",
-    "description": "ملاحظة فشل تحميل المهارات"
+  "composer.skills": {
+    "message": "المهارات",
+    "description": "عنصر في قائمة منبثقة من زر الإضافة: فتح إدارة المهارات"
   },
-  "skill.add": {
-    "message": "إضافة مهارة",
-    "description": "تسمية زر إضافة المهارة"
-  },
-  "skill.delete": {
-    "message": "حذف",
-    "description": "تسمية زر حذف المهارة"
-  },
-  "skill.deleteConfirm": {
-    "message": "هل تؤكد حذف المهارة «{name}»؟ لا يمكن التراجع عن هذا الإجراء.",
-    "description": "رسالة تأكيد قبل حذف مهارة"
-  },
-  "skill.deleteSuccess": {
-    "message": "تم الحذف",
-    "description": "رسالة نجاح حذف المهارة"
-  },
-  "skill.deleteError": {
-    "message": "فشل الحذف",
-    "description": "رسالة خطأ حذف المهارة"
-  },
-  "skill.createSuccess": {
-    "message": "تم إنشاء المهارة",
-    "description": "رسالة نجاح إنشاء المهارة"
-  },
-  "skill.createError": {
-    "message": "فشل إنشاء المهارة",
-    "description": "رسالة خطأ إنشاء المهارة"
-  },
-  "skill.form.name": {
-    "message": "الاسم",
-    "description": "تسمية حقل الاسم في نموذج المهارة"
-  },
-  "skill.form.namePlaceholder": {
-    "message": "مثل ملخص",
-    "description": "نص توضيحي لحقل الاسم في نموذج المهارة"
-  },
-  "skill.form.nameRequired": {
-    "message": "يرجى ملء الاسم",
-    "description": "رسالة مطلوبة لحقل الاسم في نموذج المهارة"
-  },
-  "skill.form.displayName": {
-    "message": "اسم العرض",
-    "description": "تسمية حقل اسم العرض في نموذج المهارة"
-  },
-  "skill.form.displayNamePlaceholder": {
-    "message": "الاسم المعروض في قائمة المهارات",
-    "description": "نص توضيحي لحقل اسم العرض في نموذج المهارة"
-  },
-  "skill.form.icon": {
-    "message": "الأيقونة (رمز تعبيري)",
-    "description": "تسمية حقل الأيقونة في نموذج المهارة"
-  },
-  "skill.form.description": {
-    "message": "الوصف",
-    "description": "تسمية حقل الوصف في نموذج المهارة"
-  },
-  "skill.form.type": {
-    "message": "النوع",
-    "description": "تسمية حقل النوع في نموذج المهارة"
-  },
-  "skill.form.typePrompt": {
-    "message": "نوع الموجه",
-    "description": "Prompt type label"
-  },
-  "skill.form.typeCode": {
-    "message": "رمز",
-    "description": "Code type label"
-  },
-  "skill.form.instructions": {
-    "message": "محتوى الموجه",
-    "description": "Prompt instructions label"
-  },
-  "skill.form.instructionsPlaceholder": {
-    "message": "الصق أو اكتب الموجه / التعليمات الخاصة بهذه المهارة...",
-    "description": "Prompt instructions placeholder"
-  },
-  "skill.form.instructionsRequired": {
-    "message": "يجب ملء محتوى الموجه لنوع الموجه",
-    "description": "Prompt instructions required message"
-  },
-  "skill.form.code": {
-    "message": "رمز",
-    "description": "Code skill label"
-  },
-  "skill.form.codePlaceholder": {
-    "message": "الصق الرمز الخاص بهذه المهارة...",
-    "description": "Code skill placeholder"
-  },
-  "skill.form.codeRequired": {
-    "message": "يجب ملء الرمز لنوع الرمز",
-    "description": "Code skill required message"
-  },
-  "skill.form.tags": {
-    "message": "علامات",
-    "description": "Skill form tags label"
-  },
-  "skill.form.tagsPlaceholder": {
-    "message": "افصل بين العلامات بفواصل، مثل: كتابة، برمجة",
-    "description": "Skill form tags placeholder"
-  },
-  "skill.form.uploadText": {
-    "message": "رفع ملف .txt / .md",
-    "description": "Upload prompt file button"
-  },
-  "skill.form.uploadCode": {
-    "message": "رفع ملف الرمز",
-    "description": "Upload code file button"
+  "composer.connections": {
+    "message": "الاتصالات",
+    "description": "عنصر في قائمة منبثقة من زر الإضافة: فتح إدارة الاتصالات"
   },
   "agent.title": {
     "message": "وكيل سطح المكتب",
-    "description": "代理管理对话框标题"
+    "description": "عنوان مربع حوار إدارة الوكلاء"
   },
   "agent.tooltip": {
     "message": "وكيل سطح المكتب",
-    "description": "代理按钮提示"
+    "description": "نص الزر لوكيل الوكلاء"
   },
   "agent.connected": {
     "message": "متصل",
-    "description": "代理已连接状态"
+    "description": "حالة الوكيل المتصل"
   },
   "agent.notConnected": {
     "message": "غير متصل",
-    "description": "代理未连接状态"
+    "description": "حالة الوكيل غير المتصل"
   },
   "agent.description": {
-    "message": "قم بتوصيل وكيل سطح المكتب للوصول إلى الملفات المحلية، وتشغيل الأوامر، واستخدام خادم MCP المحلي في محادثات الذكاء الاصطناعي.",
-    "description": "代理描述"
+    "message": "اتصل بوكيل سطح المكتب للوصول إلى الملفات المحلية، تشغيل الأوامر واستخدام خادم MCP المحلي في محادثات الذكاء الاصطناعي.",
+    "description": "وصف الوكيل"
   },
   "agent.name": {
     "message": "اسم الوكيل",
-    "description": "代理名称标签"
+    "description": "تسمية اسم الوكيل"
   },
   "agent.tools": {
     "message": "الأدوات المتاحة",
-    "description": "代理工具数量标签"
+    "description": "تسمية عدد أدوات الوكيل"
   },
   "agent.connectedSince": {
     "message": "وقت الاتصال",
-    "description": "代理连接时间标签"
+    "description": "تسمية وقت اتصال الوكيل"
   },
   "agent.connectedHint": {
-    "message": "لقد تم توصيل وكيل سطح المكتب الخاص بك، يمكنك استخدامه.",
-    "description": "代理已连接提示"
+    "message": "لقد تم الاتصال بوكيل سطح المكتب، يمكنك استخدامه.",
+    "description": "إشعار الوكيل المتصل"
   },
   "agent.installLabel": {
-    "message": "تثبيت وكيل سطح المكتب:",
-    "description": "安装说明标签"
+    "message": "تثبيت الوكيل على سطح المكتب:",
+    "description": "تسمية تعليمات التثبيت"
   },
   "agent.runLabel": {
     "message": "تشغيل الوكيل:",
-    "description": "运行说明标签"
+    "description": "تسمية توضيحية للتشغيل"
+  },
+  "askUserQuestion.submit": {
+    "message": "إرسال",
+    "description": "زر إرسال في آخر سؤال من دليل ask-user-question"
+  },
+  "askUserQuestion.next": {
+    "message": "السؤال التالي",
+    "description": "للانتقال إلى السؤال التالي في دليل ask-user-question"
+  },
+  "askUserQuestion.back": {
+    "message": "السؤال السابق",
+    "description": "للعودة إلى السؤال السابق في دليل ask-user-question"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "تخطي الكل",
+    "description": "تخطي دليل ask-user-question بالكامل، مما يسمح للنموذج بالاستمرار دون إجابات"
+  },
+  "askUserQuestion.other": {
+    "message": "أخرى",
+    "description": "خيار زائف؛ عند تحديده، يتم فتح مربع إدخال نص مخصص"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "أدخل إجابتك الخاصة",
+    "description": "وصف مساعد أسفل خيار أخرى"
+  },
+  "askUserQuestion.placeholder": {
+    "message": "يرجى إدخال الإجابة…",
+    "description": "نص العنصر النائب لمربع إدخال الإجابة المخصص لكل سؤال"
+  },
+  "askUserQuestion.multiSelectHint": {
+    "message": "يمكن اختيار واحدة أو أكثر",
+    "description": "نصيحة تظهر عند دعم الأسئلة متعددة الاختيارات"
+  },
+  "askUserQuestion.collapsedAnswerLabel": {
+    "message": "إجابتك",
+    "description": "نص احتياطي عند عدم القدرة على استخراج إجابة محددة من المخرجات التاريخية"
   }
 }

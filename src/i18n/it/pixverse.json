@@ -13,7 +13,7 @@
   },
   "name.failureReason": {
     "message": "Motivo del fallimento",
-    "description": "Motivo del fallimento dell'attività"
+    "description": "Motivo per cui l'attività è fallita"
   },
   "name.status": {
     "message": "Stato",
@@ -22,6 +22,10 @@
   "name.traceId": {
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
+  },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (in secondi)"
   },
   "name.createdAt": {
     "message": "Data di creazione",
@@ -132,11 +136,11 @@
     "description": "Descrizione del parametro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Carica l'immagine di riferimento iniziale per la generazione, il video finale si baserà sull'immagine iniziale",
+    "message": "Carica l'immagine di riferimento iniziale per la generazione; il video finale si baserà sull'immagine iniziale.",
     "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.uploadEndImage": {
-    "message": "Carica l'immagine di riferimento finale per la generazione, il video finale si baserà sull'immagine finale",
+    "message": "Carica l'immagine di riferimento finale per la generazione; il video finale si baserà sull'immagine finale.",
     "description": "Descrizione del parametro di caricamento di riferimento"
   },
   "description.seed": {
@@ -181,7 +185,7 @@
   },
   "placeholder.preset": {
     "message": "Seleziona...",
-    "description": "Segnaposto per l'input preimpostato"
+    "description": "Segnaposto per l'input predefinito"
   },
   "placeholder.markerShape": {
     "message": "Seleziona...",
@@ -209,7 +213,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Carica",
-    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica', non usare 'Carica immagine')"
+    "description": "Testo del pulsante per caricare un'immagine (semplificare in 'Carica')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
@@ -260,7 +264,7 @@
     "description": "Messaggio durante la generazione dell'immagine"
   },
   "message.generateFailed": {
-    "message": "Generazione immagine fallita",
+    "message": "Generazione dell'immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {

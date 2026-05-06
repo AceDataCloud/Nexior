@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Anpassad API-nyckel",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Lägg till API-nyckel",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Redigera API-nyckel",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Ta bort API-nyckel",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Använd din egen tjänsteleverantörs API-nyckel (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) istället för plattformens kontopool. När det är konfigurerat kommer dialogförfrågningar för motsvarande modeller att direkt anropa den överordnade tjänsteleverantören med din nyckel, utan att förbruka plattformens kredit; verktygsanrop, referenser, artefakter, molnhistorik och andra funktioner fungerar som vanligt.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Tjänsteleverantör",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Anteckning",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "t.ex. \"Mitt arbetskonto\" (valfritt)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API-nyckel",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Lämna tomt för att behålla nuvarande nyckel",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Anpassad bas-URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Lämna tomt för att använda tjänsteleverantörens standardadress",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktiverad",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Senast använd",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Tillagd",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Aktiv",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Inaktiv",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Aldrig använd",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Standard",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Lägg till API-nyckel",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Redigera",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testa",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Ta bort",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Spara",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Avbryt",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Bekräfta att du vill ta bort denna API-nyckel? Efter detta kommer dialoger för {provider}-modellen att återgå till plattformens standard.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API-nyckel har tagits bort.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API-nyckel har sparats.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Anslutning fungerar.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test misslyckades: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Misslyckades med att ladda uppgifter.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Misslyckades med att spara uppgifter.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Ingen anpassad API-nyckel har konfigurerats ännu. Klicka på \"Lägg till API-nyckel\" för att använda ditt eget tjänsteleverantörskonto.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Visa avancerade alternativ",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Valfritt. Anpassad överordnad adress (för OpenRouter, egen proxy, företagsgateway etc.). Endast HTTPS tillåtet, kan inte peka på interna/loopback-adresser.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Använder anpassad {provider} API-nyckel",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Den aktuella dialogen använder din {provider} API-nyckel, kostnaden debiteras från {provider} kontot, ingen avdrag från plattformens saldo.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Klicka för att öppna API-nyckelinställningar",
+    "description": "Tips efter att ha klickat på BYOK-märket på chatt-sidan: Klicka för att öppna inställningsdialogrutan för API-nyckel-fliken."
+  },
+  "button.testConnection": {
+    "message": "Testa",
+    "description": "Knapp i dialogrutan för att lägga till/redigera - testar endast den aktuella formulärkonfigurationen, sparar inte uppgifter."
+  },
+  "test.success": {
+    "message": "Anslutningstest lyckades",
+    "description": "Rubrik för framgång i anslutningstestresultatet."
+  },
+  "test.failure": {
+    "message": "Anslutningstest misslyckades",
+    "description": "Rubrik för misslyckande i anslutningstestresultatet."
+  },
+  "test.endpoint": {
+    "message": "Begärningsadress",
+    "description": "Etikett för begärnings-URL i testresultatdetaljer."
+  },
+  "test.status": {
+    "message": "Statuskod",
+    "description": "Etikett för HTTP-statuskod i testresultatdetaljer."
+  },
+  "test.message": {
+    "message": "Överordnad respons",
+    "description": "Etikett för överordnad fel-/meddelandetext i testresultatdetaljer."
+  },
+  "providerDesc.openai": {
+    "message": "Ersätt ChatGPT (GPT-4 / GPT-4o / o1 / o3 etc.) dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för OpenAI-alternativet i tjänsteleverantörens rullgardinsmeny."
+  },
+  "providerDesc.anthropic": {
+    "message": "Ersätt Claude (Sonnet / Opus / Haiku etc.) dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för Anthropic-alternativet i tjänsteleverantörens rullgardinsmeny."
+  },
+  "providerDesc.google": {
+    "message": "Ersätt Gemini (Pro / Flash-serien) dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för Google-alternativet i tjänsteleverantörens rullgardinsmeny."
+  },
+  "providerDesc.xai": {
+    "message": "Ersätt Grok dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för xAI-alternativet i tjänsteleverantörens rullgardinsmeny."
+  },
+  "providerDesc.deepseek": {
+    "message": "Ersätt DeepSeek (V3 / R1 etc.) dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för DeepSeek-alternativet i tjänsteleverantörens rullgardinsmeny."
+  },
+  "providerDesc.moonshot": {
+    "message": "Ersätt Kimi konversationsförfrågan.",
+    "description": "Underrubrik för Moonshot (Kimi) alternativet i leverantörens rullgardinsmeny."
+  },
+  "providerDesc.zhipu": {
+    "message": "Ersätt GLM-seriens dialogförfrågningar på denna webbplats.",
+    "description": "Underrubrik för Zhipu (GLM) alternativet i leverantörens rullgardinsmeny."
+  }
+}

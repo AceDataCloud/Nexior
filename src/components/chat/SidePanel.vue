@@ -122,25 +122,15 @@ export default defineComponent({
     };
   },
   computed: {
-    modelGroup() {
-      return this.$store.state.chat.modelGroup;
-    },
     conversationId() {
       console.debug('conversationId in side', this.$route.params?.id);
       return this.$route.params?.id?.toString();
     },
     conversations() {
-      let conversations = this.$store.state.chat.conversations;
-      console.debug('conversations', conversations);
-      console.debug('modelGroup', this.modelGroup);
-      // filter by model group
-      conversations = conversations?.filter(
-        (conversation: IChatConversation) =>
-          conversation?.model &&
-          this.modelGroup?.models?.map((item) => item.name as string)?.includes(conversation?.model)
-      );
-      console.debug('filtered conversations', conversations);
-      return conversations;
+      // Server already filters by `model_group` (chat store action passes
+      // `state.modelGroup.name`), so the panel just renders whatever the
+      // store currently holds. No client-side filter needed.
+      return this.$store.state.chat.conversations;
     },
     conversationGroups() {
       // split our 4 groups according to the `updated_at` field, to 'today', 'yesterday', 'this week', 'earlier'.
@@ -192,14 +182,6 @@ export default defineComponent({
       return this.$store.state.chat?.credential?.token;
     }
   },
-  watch: {
-    modelGroup() {
-      console.debug('modelGroup changed, refreshing conversations');
-      const firstConversation = this.conversations?.[0];
-      // will create new conversation once no conversation
-      this.$emit('change-conversation', firstConversation?.id);
-    }
-  },
   methods: {
     async onNewConversation() {
       console.debug('onNewConversation from side panel');
@@ -210,12 +192,11 @@ export default defineComponent({
       this.$emit('change-conversation', id);
     },
     getConversationTitle(conversation: IChatConversation) {
-      return (
-        conversation?.title ||
-        conversation?.messages?.[conversation?.messages.length - 1]?.content ||
-        conversation?.messages?.[0]?.content ||
-        ''
-      );
+      // Backend writes `title` on every save (buildConversationTitle in
+      // aichat2). For really old rows that never got a title we fall back
+      // to the server-supplied `last_message_preview`. Don't try to dig
+      // into `messages` here — list responses no longer carry it.
+      return conversation?.title || conversation?.last_message_preview || '';
     },
     onConversationCommand(command: ConversationCommand, conversation: IChatConversation) {
       if (command === 'rename') {

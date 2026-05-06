@@ -35,9 +35,13 @@
     "message": "ID de suivi",
     "description": "ID de suivi"
   },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (secondes)"
+  },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Mots-clés pour générer/éditer"
+    "description": "Mots d'invite pour générer/éditer"
   },
   "name.seedreamBot": {
     "message": "Bot SeeDream",
@@ -52,8 +56,8 @@
     "description": "Ajouter un filigrane ou non"
   },
   "description.prompt": {
-    "message": "Mots-clés pour générer ou éditer une image",
-    "description": "Description des mots-clés"
+    "message": "Mots d'invite pour générer ou éditer une image",
+    "description": "Description des mots d'invite"
   },
   "description.model": {
     "message": "Modèle utilisé pour générer ou éditer des images.",
@@ -80,8 +84,8 @@
     "description": "Espace réservé pour la sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots-clés, par exemple : un chat siamois blanc",
-    "description": "Espace réservé pour les mots-clés"
+    "message": "Entrez les mots d'invite, par exemple : un chat siamois blanc",
+    "description": "Espace réservé pour les mots d'invite"
   },
   "button.generate": {
     "message": "Générer",
@@ -109,7 +113,7 @@
   },
   "message.uploadImageExceed": {
     "message": "Vous pouvez télécharger jusqu'à 14 images",
-    "description": "Limite de nombre d'images dépassée"
+    "description": "Nombre d'images dépassant la limite"
   },
   "message.uploadImageError": {
     "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Option de modèle SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Option de modèle SeeDream 5.0 (prend en charge la génération d'images en série et la sortie en continu)"
+  },
+  "name.maxImages": {
+    "message": "Nombre d'images",
+    "description": "Nombre d'images générées pour la série d'images (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Nombre d'images générées par demande (1-15). Défini à 1 pour le mode image unique ; supérieur à 1 active automatiquement la génération d'images en série (sequential_image_generation=auto), en maintenant la cohérence des personnages, du style et des détails entre les images. Prend uniquement en charge doubao-seedream-5.0 / 4.5 / 4.0 ; si des images de référence sont téléchargées en même temps, il faut respecter (nombre d'images de référence + nombre généré) ≤ 15. La facturation est basée sur le nombre d'images réellement générées.",
+    "description": "Description du paramètre max_images"
   }
 }

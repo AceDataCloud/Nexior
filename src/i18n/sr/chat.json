@@ -1,7 +1,15 @@
 {
+  "thinking.inProgress": {
+    "message": "Razmišljam...",
+    "description": "Oznaka koja se prikazuje dok model generiše proces zaključivanja"
+  },
+  "thinking.done": {
+    "message": "Proces razmišljanja",
+    "description": "Oznaka koja se koristi za prikazivanje završenog procesa zaključivanja"
+  },
   "button.thinkDeeper": {
-    "message": "Razmišljaj dublje",
-    "description": "Dugme za duboko razmišljanje"
+    "message": "Dublje razmišljanje",
+    "description": "Dugme za dublje razmišljanje"
   },
   "button.deepsearch": {
     "message": "Duboka pretraga",
@@ -37,7 +45,7 @@
   },
   "modelGroup.grokDescription": {
     "message": "AI model razvijen od strane xAI kompanije",
-    "description": "Opis Grok modela"
+    "description": "Opis Grok3 modela"
   },
   "modelGroup.gemini": {
     "message": "Gemini",
@@ -45,7 +53,7 @@
   },
   "modelGroup.geminiDescription": {
     "message": "AI model razvijen od strane Google-a",
-    "description": "Opis Gemini modela"
+    "description": "Opis Gemini model grupe"
   },
   "modelGroup.claude": {
     "message": "Claude",
@@ -53,7 +61,7 @@
   },
   "modelGroup.claudeDescription": {
     "message": "AI model razvijen od strane Anthropic kompanije",
-    "description": "Opis Claude modela"
+    "description": "Opis Claude model grupe"
   },
   "modelGroup.kimi": {
     "message": "Kimi",
@@ -61,7 +69,7 @@
   },
   "modelGroup.kimiDescription": {
     "message": "AI model razvijen od strane kompanije Mračna strana meseca",
-    "description": "Opis Kimi modela"
+    "description": "Opis Kimi model grupe"
   },
   "modelGroup.glm": {
     "message": "GLM",
@@ -69,7 +77,15 @@
   },
   "modelGroup.glmDescription": {
     "message": "Veliki jezički model razvijen od strane ZhiPu AI",
-    "description": "Opis GLM modela"
+    "description": "Opis GLM model grupe"
+  },
+  "model.55": {
+    "message": "gpt-5.5",
+    "description": "Naziv modela usluge, tj. GPT 5.5"
+  },
+  "model.55Description": {
+    "message": "Najnovija generacija flagship GPT 5.5 modela",
+    "description": "Opis GPT 5.5 modela"
   },
   "model.54": {
     "message": "gpt-5.4",
@@ -87,16 +103,8 @@
     "message": "Brži i lakši GPT 5.4 model",
     "description": "Opis GPT 5.4 Mini modela"
   },
-  "model.54Nano": {
-    "message": "gpt-5.4-nano",
-    "description": "Naziv modela usluge, tj. GPT 5.4 Nano"
-  },
-  "model.54NanoDescription": {
-    "message": "Najmanji i najbrži GPT 5.4 model",
-    "description": "Opis GPT 5.4 Nano modela"
-  },
   "model.deepseekChat": {
-    "message": "3.0 standard",
+    "message": "3.0",
     "description": "Naziv modela usluge, tj. DeepSeek chat"
   },
   "model.deepseekChatDescription": {
@@ -104,20 +112,28 @@
     "description": "Opis DeepSeek chat modela"
   },
   "model.deepseekReasoner": {
-    "message": "R1 rezonator",
-    "description": "Naziv modela usluge, tj. DeepSeek rezonator"
+    "message": "R1",
+    "description": "Naziv modela usluge, tj. DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
-    "message": "Pogodno za rezonovanje i duboko razmišljanje",
-    "description": "Opis DeepSeek rezonator modela"
+    "message": "Pogodno za zaključivanje i duboko razmišljanje",
+    "description": "Opis DeepSeek Reasoner modela"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 eksperimentalna verzija",
+    "message": "3.2",
     "description": "Naziv modela usluge, tj. DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
     "message": "Najnovija eksperimentalna verzija",
     "description": "Opis DeepSeek V3.2 eksperimentalnog modela"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Naziv modela usluge, tj. DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Najnovija generacija laganog flagship modela, 1M kontekst",
+    "description": "Opis DeepSeek V4 Flash modela"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -135,22 +151,6 @@
     "message": "Pogodno za većinu zadataka",
     "description": "Opis Grok3 modela"
   },
-  "model.grok3Reasoner": {
-    "message": "grok-3 rezonator",
-    "description": "Naziv modela usluge, tj. Grok3 rezonator"
-  },
-  "model.grok3ReasonerDescription": {
-    "message": "Pogodno za rezonovanje i duboko razmišljanje",
-    "description": "Opis Grok3 rezonator modela"
-  },
-  "model.grok3Deepsearch": {
-    "message": "grok-3 duboka istraživanja",
-    "description": "Naziv modela usluge, tj. Grok3 duboka istraživanja"
-  },
-  "model.grok3DeepsearchDescription": {
-    "message": "Pogodno za duboka istraživanja i složene probleme",
-    "description": "Opis Grok3 dubokih istraživanja modela"
-  },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
     "description": "Naziv modela usluge, tj. Gemini 3.0 Pro"
@@ -164,7 +164,7 @@
     "description": "Naziv modela usluge, tj. Gemini 2.5 Pro"
   },
   "model.gemini25ProDescription": {
-    "message": "Pogodno za složene zadatke rezonovanja",
+    "message": "Pogodno za složene zadatke zaključivanja",
     "description": "Opis Gemini 2.5 Pro modela"
   },
   "model.gemini25Flash": {
@@ -175,29 +175,29 @@
     "message": "Brži i lakši model",
     "description": "Opis Gemini 2.5 Flash modela"
   },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "Naziv modela usluge, tj. Claude Opus 4"
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "Naziv modela usluge, tj. Claude Opus 4.7"
   },
-  "model.claudeOpus4Description": {
+  "model.claudeOpus47Description": {
     "message": "Trenutno najnapredniji model",
-    "description": "Opis Claude Opus 4 modela"
+    "description": "Opis Claude Opus 4.7 modela"
   },
-  "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
-    "description": "Naziv modela usluge, tj. Claude Sonnet 4"
+  "model.claudeSonnet46": {
+    "message": "claude-sonnet-4.6",
+    "description": "Ime modela usluge, tj. Claude Sonnet 4.6"
   },
-  "model.claudeSonnet4Description": {
+  "model.claudeSonnet46Description": {
     "message": "Pogodan za većinu zadataka",
-    "description": "Opis modela Claude Sonnet 4"
+    "description": "Opis Claude Sonnet 4.6 modela"
   },
-  "model.claude37Sonnet": {
-    "message": "claude-3.7-sonnet",
-    "description": "Naziv modela usluge, tj. Claude 3.7 Sonnet"
+  "model.claudeHaiku45": {
+    "message": "claude-haiku-4.5",
+    "description": "Naziv modela usluge, tj. Claude Haiku 4.5"
   },
-  "model.claude37SonnetDescription": {
-    "message": "Izbalansirane performanse i brzina",
-    "description": "Opis modela Claude 3.7 Sonnet"
+  "model.claudeHaiku45Description": {
+    "message": "Lagani i brzi model",
+    "description": "Opis Claude Haiku 4.5 modela"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
@@ -205,7 +205,7 @@
   },
   "model.kimiK25Description": {
     "message": "Trenutno najnapredniji model",
-    "description": "Opis modela Kimi K2.5"
+    "description": "Opis Kimi K2.5 modela"
   },
   "model.kimiK2Thinking": {
     "message": "kimi-k2 razmišljanje",
@@ -213,7 +213,7 @@
   },
   "model.kimiK2ThinkingDescription": {
     "message": "Pogodan za razmišljanje i duboka pitanja",
-    "description": "Opis modela Kimi K2 razmišljanje"
+    "description": "Opis Kimi K2 razmišljanje modela"
   },
   "model.kimiK2ThinkingTurbo": {
     "message": "kimi-k2 turbo razmišljanje",
@@ -221,7 +221,7 @@
   },
   "model.kimiK2ThinkingTurboDescription": {
     "message": "Brži model razmišljanja",
-    "description": "Opis modela Kimi K2 turbo razmišljanje"
+    "description": "Opis Kimi K2 turbo razmišljanje modela"
   },
   "model.glm51": {
     "message": "glm-5.1",
@@ -229,7 +229,7 @@
   },
   "model.glm51Description": {
     "message": "Najnoviji flagship model od Zhipu",
-    "description": "Opis modela GLM 5.1"
+    "description": "Opis GLM 5.1 modela"
   },
   "model.glm47": {
     "message": "glm-4.7",
@@ -237,7 +237,7 @@
   },
   "model.glm47Description": {
     "message": "Izbalansirane performanse i troškovi",
-    "description": "Opis modela GLM 4.7"
+    "description": "Opis GLM 4.7 modela"
   },
   "message.startNewChat": {
     "message": "Započni novi razgovor",
@@ -268,8 +268,8 @@
     "description": "Poruka na vebu koja obaveštava korisnika da otpremanje datoteke nije uspelo, pokušajte ponovo kasnije"
   },
   "message.notApplied": {
-    "message": "Još niste zatražili ovu uslugu, molimo vas da prvo zatražite",
-    "description": "Poruka na vebu koja obaveštava korisnika da još nije zatražio ovu uslugu, molimo vas da prvo zatražite"
+    "message": "Niste zatražili ovu uslugu, molimo vas da prvo zatražite",
+    "description": "Poruka na vebu koja obaveštava korisnika da nije zatražio ovu uslugu, molimo vas da prvo zatražite"
   },
   "message.tryForFree": {
     "message": "Besplatno probanje",
@@ -300,8 +300,8 @@
     "description": "Primer pitanja za započinjanje razgovora, kakav uticaj ima AI na budućnost?"
   },
   "message.question7": {
-    "message": "Kako poboljšati efikasnost u učenju?",
-    "description": "Primer pitanja za započinjanje razgovora, kako poboljšati svoju efikasnost u učenju?"
+    "message": "Kako poboljšati efikasnost učenja?",
+    "description": "Primer pitanja za započinjanje razgovora, kako poboljšati svoju efikasnost učenja?"
   },
   "message.question8": {
     "message": "Kako poboljšati fokus?",
@@ -320,447 +320,203 @@
     "description": "Poruka na vebu koja obaveštava korisnika da razgovor ne postoji ili je istekao, molimo započnite novi razgovor"
   },
   "message.errorContentTooLarge": {
-    "message": "Sadržaj pitanja je predug, skratite ga i pokušajte ponovo",
-    "description": "Poruka na vebu koja obaveštava korisnika da je sadržaj pitanja predug, skratite ga i pokušajte ponovo"
+    "message": "Sadržaj pitanja je predug, skratite i pokušajte ponovo",
+    "description": "Poruka na vebu koja obaveštava korisnika da je sadržaj pitanja predug, skratite i pokušajte ponovo"
   },
   "message.errorTooManyRequests": {
-    "message": "Vaša akcija je previše učestala, pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je njegova akcija previše učestala, pokušajte ponovo kasnije"
+    "message": "Previše zahteva, molimo pokušajte ponovo kasnije",
+    "description": "Poruka na vebu koja obaveštava korisnika da su njegovi zahtevi prečesti, molimo pokušajte ponovo kasnije"
   },
   "message.errorBusy": {
-    "message": "Server je zauzet, pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da je server zauzet, pokušajte ponovo kasnije"
+    "message": "Server je zauzet, pokušajte ponovo kasnije.",
+    "description": "Poruka na vebu koja obaveštava korisnika da je server zauzet, molimo pokušajte ponovo kasnije."
   },
   "message.errorUsedUp": {
-    "message": "Iskoristili ste sve dostupne pokušaje, kupite više da biste nastavili",
-    "description": "Poruka na vebu koja obaveštava korisnika da je iskoristio sve dostupne pokušaje, kupite više da biste nastavili"
+    "message": "Iskoristili ste sve pakete, kupite više da biste nastavili sa korišćenjem.",
+    "description": "Poruka na vebu koja obaveštava korisnika da je iskoristio sve pakete, molimo kupite više da biste nastavili sa korišćenjem."
   },
   "message.errorUnknown": {
-    "message": "Došlo je do nepoznate greške na serveru, pokušajte ponovo ili kontaktirajte podršku",
-    "description": "Poruka na vebu koja obaveštava korisnika da je došlo do nepoznate greške na serveru, pokušajte ponovo ili kontaktirajte podršku"
+    "message": "Došlo je do nepoznate greške na serveru, pokušajte ponovo kasnije ili kontaktirajte podršku.",
+    "description": "Poruka na vebu koja obaveštava korisnika da je došlo do nepoznate greške na serveru, molimo pokušajte ponovo kasnije ili kontaktirajte podršku."
   },
   "message.errorTimeout": {
-    "message": "Odgovor na pitanje je istekao, pokušajte ponovo",
-    "description": "Poruka na vebu koja obaveštava korisnika da je odgovor na pitanje istekao, pokušajte ponovo"
+    "message": "Odgovor je istekao, pokušajte ponovo kasnije.",
+    "description": "Poruka na vebu koja obaveštava korisnika da je odgovor istekao, molimo pokušajte ponovo kasnije."
   },
   "message.errorNotApplied": {
-    "message": "Niste se prijavili za ovu uslugu, prijavite se pre nego što nastavite sa pitanjima",
-    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, prijavite se pre nego što nastavite sa pitanjima"
+    "message": "Niste se prijavili za ovu uslugu, molimo prijavite se pre nego što nastavite sa pitanjima.",
+    "description": "Poruka na vebu koja obaveštava korisnika da se nije prijavio za ovu uslugu, molimo prijavite se pre nego što nastavite sa pitanjima."
   },
   "message.confirmDelete": {
     "message": "Potvrdi brisanje",
-    "description": "Poruka na vebu koja obaveštava korisnika da potvrdi brisanje"
+    "description": "Poruka na vebu koja obaveštava korisnika da potvrdi brisanje."
   },
   "message.howToUse": {
     "message": "AI može napraviti greške, proverite važne informacije.",
-    "description": "Poruka na vebu koja obaveštava korisnika da AI može napraviti greške, proverite važne informacije"
+    "description": "Poruka na vebu koja obaveštava korisnika da AI može napraviti greške, molimo proverite važne informacije."
   },
   "title.chat": {
     "message": "AI Čat",
-    "description": "Naslov veba, tj. AI Čat"
+    "description": "Naslov veba, tj. AI čat."
   },
   "title.example": {
     "message": "Primer",
-    "description": "Naslov veba, tj. Primer"
+    "description": "Naslov veba, tj. primer."
   },
   "title.capabilities": {
     "message": "Mogućnosti",
-    "description": "Naslov veba, tj. Mogućnosti"
+    "description": "Naslov veba, tj. mogućnosti."
   },
   "title.limitations": {
     "message": "Ograničenja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na tehnička ograničenja usluge"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na tehnička ograničenja usluge."
   },
   "title.complexQuestion": {
     "message": "Odgovaranje na složena pitanja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da odgovara na složena pitanja"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da odgovara na složena pitanja."
   },
   "title.professionalQuestion": {
     "message": "Konsultacije o profesionalnim pitanjima",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da konsultuje o profesionalnim pitanjima"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da konsultuje profesionalna pitanja."
   },
   "title.getTips": {
     "message": "Dobijanje inspiracije i ideja",
-    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da dobije inspiraciju i ideje"
+    "description": "Naslov na vebu koji ukazuje da se ovaj deo odnosi na sposobnost usluge da dobije inspiraciju i ideje."
   },
   "group.today": {
     "message": "Danas",
-    "description": "Naziv grupe na vebu, tj. Danas"
+    "description": "Naziv grupe na vebu, tj. danas."
   },
   "group.yesterday": {
     "message": "Juče",
-    "description": "Naziv grupe na vebu, tj. Juče"
+    "description": "Naziv grupe na vebu, tj. juče."
   },
   "group.thisWeek": {
     "message": "Ove nedelje",
-    "description": "Naziv grupe na vebu, tj. Ove nedelje"
+    "description": "Naziv grupe na vebu, tj. ove nedelje."
   },
   "group.earlier": {
     "message": "Ranije",
-    "description": "Naziv grupe na vebu, tj. Ranije"
-  },
-  "mcp.title": {
-    "message": "MCP Server",
-    "description": "Naslov dijaloga za upravljanje MCP serverom"
-  },
-  "mcp.addServer": {
-    "message": "Dodaj server",
-    "description": "Dugme za dodavanje MCP servera"
-  },
-  "mcp.name": {
-    "message": "Ime",
-    "description": "Ime MCP servera"
-  },
-  "mcp.namePlaceholder": {
-    "message": "Imenujte server",
-    "description": "Placeholder za ime MCP servera"
-  },
-  "mcp.url": {
-    "message": "URL",
-    "description": "URL MCP servera"
-  },
-  "mcp.urlPlaceholder": {
-    "message": "https://example.com/mcp",
-    "description": "Placeholder za URL MCP servera"
-  },
-  "mcp.description": {
-    "message": "Opis",
-    "description": "Opis MCP servera"
-  },
-  "mcp.descriptionPlaceholder": {
-    "message": "Opišite svrhu ovog servera",
-    "description": "Placeholder za opis MCP servera"
-  },
-  "mcp.authType": {
-    "message": "Tip autentifikacije",
-    "description": "Tip autentifikacije MCP servera"
-  },
-  "mcp.authNone": {
-    "message": "Nema",
-    "description": "Bez autentifikacije"
-  },
-  "mcp.authBearer": {
-    "message": "Bearer Token",
-    "description": "Bearer Token autentifikacija"
-  },
-  "mcp.authToken": {
-    "message": "Token",
-    "description": "Autentifikacioni Token"
-  },
-  "mcp.authTokenPlaceholder": {
-    "message": "Unesite autentifikacioni Token",
-    "description": "Placeholder za autentifikacioni Token"
-  },
-  "mcp.test": {
-    "message": "Testiraj vezu",
-    "description": "Testiranje veze sa MCP serverom"
-  },
-  "mcp.testSuccess": {
-    "message": "Veza uspešna",
-    "description": "Testiranje veze je uspešno"
-  },
-  "mcp.testFailed": {
-    "message": "Veza nije uspela",
-    "description": "Testiranje veze nije uspelo"
-  },
-  "mcp.toolsFound": {
-    "message": "Pronađeno {count} alata",
-    "description": "Broj pronađenih alata"
-  },
-  "mcp.empty": {
-    "message": "Nema MCP servera, dodajte jedan da proširite mogućnosti AI-a",
-    "description": "Lista MCP servera je prazna"
-  },
-  "mcp.loadErrorHint": {
-    "message": "Nije moguće učitati MCP server, ova funkcija možda još nije dostupna.",
-    "description": "Poruka kada učitavanje MCP servera ne uspe zbog mrežnih/CORS grešaka"
-  },
-  "mcp.nameUrlRequired": {
-    "message": "Molimo unesite naziv i URL",
-    "description": "Naziv i URL su obavezni"
-  },
-  "mcp.urlRequired": {
-    "message": "Molimo unesite URL",
-    "description": "URL je obavezan"
-  },
-  "mcp.created": {
-    "message": "Uspešno dodato",
-    "description": "MCP server je uspešno dodat"
-  },
-  "mcp.updated": {
-    "message": "Uspešno ažurirano",
-    "description": "MCP server je uspešno ažuriran"
-  },
-  "mcp.deleted": {
-    "message": "Uspešno obrisano",
-    "description": "MCP server je uspešno obrisan"
-  },
-  "mcp.saveFailed": {
-    "message": "Čuvanje nije uspelo",
-    "description": "MCP server nije uspeo da se sačuva"
-  },
-  "mcp.deleteConfirm": {
-    "message": "Da li ste sigurni da želite da obrišete server \"{name}\"?",
-    "description": "Potvrda brisanja"
-  },
-  "mcp.tooltip": {
-    "message": "MCP server",
-    "description": "Tooltip za MCP dugme"
-  },
-  "mcp.authOAuth": {
-    "message": "OAuth 2.0",
-    "description": "Tip autentifikacije OAuth"
-  },
-  "mcp.oauthHint": {
-    "message": "Nakon čuvanja, kliknite na dugme 'Autorizuj' na kartici servera da završite OAuth autentifikaciju.",
-    "description": "Poruka kada se bira tip OAuth autentifikacije"
-  },
-  "mcp.authorize": {
-    "message": "Autorizuj",
-    "description": "Dugme za OAuth autorizaciju"
-  },
-  "mcp.oauthAuthorized": {
-    "message": "OAuth autorizacija uspešna",
-    "description": "Poruka o uspešnoj OAuth autorizaciji"
-  },
-  "mcp.oauthFailed": {
-    "message": "OAuth autorizacija nije uspela",
-    "description": "Poruka o neuspešnoj OAuth autorizaciji"
-  },
-  "mcp.popupBlocked": {
-    "message": "Iskočni prozor je blokiran, molimo dozvolite iskačuće prozore za ovu stranicu.",
-    "description": "Poruka kada je iskačući prozor blokiran"
-  },
-  "connector.title": {
-    "message": "Konektor",
-    "description": "Naslov dijaloga za upravljanje konektorima"
-  },
-  "connector.tooltip": {
-    "message": "OAuth konektor",
-    "description": "Tooltip za konektor dugme"
-  },
-  "connector.noProviders": {
-    "message": "Nema dostupnih konektora, molimo konfigurišite OAuth provajdere na serveru.",
-    "description": "Poruka kada nema provajdera"
-  },
-  "connector.connect": {
-    "message": "Poveži",
-    "description": "Dugme za povezivanje"
-  },
-  "connector.disconnect": {
-    "message": "Prekini",
-    "description": "Dugme za prekidanje veze"
-  },
-  "connector.connected": {
-    "message": "Konektor je uspešno povezan",
-    "description": "Poruka o uspešnom povezivanju"
-  },
-  "connector.disconnected": {
-    "message": "Konektor je prekinut",
-    "description": "Poruka o uspešnom prekidu"
+    "description": "Naziv grupe na vebu, tj. ranije."
   },
   "connector.authFailed": {
-    "message": "Autorizacija nije uspela, molimo pokušajte ponovo.",
-    "description": "Poruka o neuspešnoj autorizaciji"
-  },
-  "connector.loadError": {
-    "message": "Učitavanje konektora nije uspelo",
-    "description": "Poruka o grešci prilikom učitavanja"
-  },
-  "connector.loadErrorHint": {
-    "message": "Nije moguće učitati konektor, ova funkcija možda još nije dostupna.",
-    "description": "Poruka kada učitavanje konektora ne uspe zbog mrežnih/CORS grešaka"
-  },
-  "connector.disconnectError": {
-    "message": "Prekid konektora nije uspeo",
-    "description": "Poruka o grešci prilikom prekida"
-  },
-  "connector.toggleError": {
-    "message": "Ažuriranje konektora nije uspelo",
-    "description": "Poruka o grešci prilikom prebacivanja"
+    "message": "Autentifikacija nije uspela, pokušajte ponovo.",
+    "description": "Poruka o neuspešnoj autentifikaciji."
   },
   "connector.processing": {
-    "message": "Obrada autorizacije...",
-    "description": "Poruka o obradi OAuth povratnog poziva"
+    "message": "Obrada autentifikacije...",
+    "description": "Poruka o obradi OAuth povratnog poziva."
   },
   "connector.authSuccess": {
-    "message": "Autorizacija uspešna!",
-    "description": "Poruka o uspešnom OAuth povratnom pozivu"
+    "message": "Autentifikacija uspešna!",
+    "description": "Poruka o uspešnoj OAuth povratnoj informaciji."
   },
   "connector.closeWindow": {
     "message": "Ovaj prozor će se automatski zatvoriti.",
-    "description": "Poruka o zatvaranju prozora nakon OAuth povratnog poziva"
+    "description": "Poruka o zatvaranju OAuth povratnog poziva."
   },
-  "skill.title": {
-    "message": "Veštine",
-    "description": "Naslov dijaloga za upravljanje veštinama"
+  "connections.tooltip": {
+    "message": "Upravljanje vezama",
+    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje vezama na auth.acedata.cloud."
   },
   "skill.tooltip": {
-    "message": "AI veštine",
-    "description": "Tooltip za veštine dugme"
+    "message": "Upravljanje veštinama",
+    "description": "Poruka koja se prikazuje kada se prelazi na stranicu za upravljanje veštinama na auth.acedata.cloud."
   },
-  "skill.builtin": {
-    "message": "Ugrađene",
-    "description": "Oznaka za ugrađene veštine"
+  "composer.addAction": {
+    "message": "Dodaj sadržaj",
+    "description": "Poruka koja se prikazuje ispod ulaznog okvira kada se pritisne dugme plus, omogućava upload fajlova, otvaranje veština ili upravljanje vezama."
   },
-  "skill.empty": {
-    "message": "Nema dostupnih veština.",
-    "description": "Poruka kada je lista veština prazna"
+  "composer.addFiles": {
+    "message": "Dodaj fotografije ili fajlove",
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: upload slika ili fajlova."
   },
-  "skill.loadError": {
-    "message": "Učitavanje veština nije uspelo",
-    "description": "Poruka o grešci prilikom učitavanja veština"
+  "composer.skills": {
+    "message": "Veštine",
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: otvori upravljanje veštinama."
   },
-  "skill.add": {
-    "message": "Dodaj veštinu",
-    "description": "Oznaka dugmeta za dodavanje veštine"
-  },
-  "skill.delete": {
-    "message": "Obriši",
-    "description": "Oznaka dugmeta za brisanje veštine"
-  },
-  "skill.deleteConfirm": {
-    "message": "Da li ste sigurni da želite da obrišete veštinu „{name}“? Ova akcija se ne može poništiti.",
-    "description": "Poruka za potvrdu pre brisanja veštine"
-  },
-  "skill.deleteSuccess": {
-    "message": "Obrisano",
-    "description": "Poruka o uspešnom brisanju veštine"
-  },
-  "skill.deleteError": {
-    "message": "Brisanje nije uspelo",
-    "description": "Poruka o grešci prilikom brisanja veštine"
-  },
-  "skill.createSuccess": {
-    "message": "Veština je kreirana",
-    "description": "Poruka o uspešnom kreiranju veštine"
-  },
-  "skill.createError": {
-    "message": "Kreiranje veštine nije uspelo",
-    "description": "Poruka o grešci prilikom kreiranja veštine"
-  },
-  "skill.form.name": {
-    "message": "Naziv",
-    "description": "Oznaka za naziv forme veštine"
-  },
-  "skill.form.namePlaceholder": {
-    "message": "Na primer, sažimatelj",
-    "description": "Placeholder za naziv forme veštine"
-  },
-  "skill.form.nameRequired": {
-    "message": "Molimo unesite naziv",
-    "description": "Poruka o obaveznom nazivu forme veštine"
-  },
-  "skill.form.displayName": {
-    "message": "Prikazni naziv",
-    "description": "Oznaka za prikazni naziv forme veštine"
-  },
-  "skill.form.displayNamePlaceholder": {
-    "message": "Naziv koji će se prikazivati na listi veština",
-    "description": "Placeholder za prikazni naziv forme veštine"
-  },
-  "skill.form.icon": {
-    "message": "Ikona (emoji)",
-    "description": "Oznaka za ikonu forme veštine"
-  },
-  "skill.form.description": {
-    "message": "Opis",
-    "description": "Oznaka za opis forme veštine"
-  },
-  "skill.form.type": {
-    "message": "Tip",
-    "description": "Oznaka za tip forme veštine"
-  },
-  "skill.form.typePrompt": {
-    "message": "Tip podsticaja",
-    "description": "Prompt type label"
-  },
-  "skill.form.typeCode": {
-    "message": "Kod",
-    "description": "Code type label"
-  },
-  "skill.form.instructions": {
-    "message": "Sadržaj podsticaja",
-    "description": "Prompt instructions label"
-  },
-  "skill.form.instructionsPlaceholder": {
-    "message": "Nalepite ili napišite podsticaj / instrukciju za ovu veštinu...",
-    "description": "Prompt instructions placeholder"
-  },
-  "skill.form.instructionsRequired": {
-    "message": "Tip podsticaja mora sadržati sadržaj podsticaja",
-    "description": "Prompt instructions required message"
-  },
-  "skill.form.code": {
-    "message": "Kod",
-    "description": "Code skill label"
-  },
-  "skill.form.codePlaceholder": {
-    "message": "Nalepite kod za ovu veštinu...",
-    "description": "Code skill placeholder"
-  },
-  "skill.form.codeRequired": {
-    "message": "Tip koda mora sadržati kod",
-    "description": "Code skill required message"
-  },
-  "skill.form.tags": {
-    "message": "Oznake",
-    "description": "Skill form tags label"
-  },
-  "skill.form.tagsPlaceholder": {
-    "message": "Odvojite zarezima, npr: pisanje, programiranje",
-    "description": "Skill form tags placeholder"
-  },
-  "skill.form.uploadText": {
-    "message": "Otpremi .txt / .md datoteku",
-    "description": "Upload prompt file button"
-  },
-  "skill.form.uploadCode": {
-    "message": "Otpremi datoteku sa kodom",
-    "description": "Upload code file button"
+  "composer.connections": {
+    "message": "Veze",
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: otvori upravljanje vezama."
   },
   "agent.title": {
     "message": "Desktop agent",
-    "description": "代理管理对话框标题"
+    "description": "Naslov dijaloga za upravljanje agentima."
   },
   "agent.tooltip": {
     "message": "Desktop agent",
-    "description": "代理按钮提示"
+    "description": "Poruka koja se prikazuje kada se pređe preko dugmeta agenta."
   },
   "agent.connected": {
     "message": "Povezano",
-    "description": "代理已连接状态"
+    "description": "Status agenta kada je povezan."
   },
   "agent.notConnected": {
     "message": "Nije povezano",
-    "description": "代理未连接状态"
+    "description": "Status agenta kada nije povezan."
   },
   "agent.description": {
-    "message": "Povežite desktop agent da biste pristupili lokalnim datotekama, izvršavali komande i koristili lokalni MCP server u AI razgovorima.",
-    "description": "代理描述"
+    "message": "Povežite desktop agenta da biste pristupili lokalnim fajlovima, izvršavali komande i koristili lokalni MCP server u AI razgovoru.",
+    "description": "Opis agenta."
   },
   "agent.name": {
     "message": "Ime agenta",
-    "description": "代理名称标签"
+    "description": "Oznaka za ime agenta."
   },
   "agent.tools": {
     "message": "Dostupni alati",
-    "description": "代理工具数量标签"
+    "description": "Oznaka za broj alata agenta."
   },
   "agent.connectedSince": {
     "message": "Vreme povezivanja",
-    "description": "代理连接时间标签"
+    "description": "Oznaka za vreme povezivanja agenta."
   },
   "agent.connectedHint": {
     "message": "Vaš desktop agent je povezan i spreman za korišćenje.",
-    "description": "代理已连接提示"
+    "description": "Poruka koja obaveštava da je agent povezan."
   },
   "agent.installLabel": {
-    "message": "Instalirajte desktop agenta:",
-    "description": "安装说明标签"
+    "message": "Инсталирајте десктоп агента:",
+    "description": "Ознака за упутство за инсталацију"
   },
   "agent.runLabel": {
-    "message": "Pokrenite agenta:",
-    "description": "运行说明标签"
+    "message": "Pokreni agenta:",
+    "description": "Oznaka za pokretanje"
+  },
+  "askUserQuestion.submit": {
+    "message": "Pošalji",
+    "description": "Dugme za slanje poslednjeg pitanja u ask-user-question čarobnjaku"
+  },
+  "askUserQuestion.next": {
+    "message": "Sledeće pitanje",
+    "description": "Napredovanje na sledeće pitanje u ask-user-question čarobnjaku"
+  },
+  "askUserQuestion.back": {
+    "message": "Prethodno pitanje",
+    "description": "Povratak na prethodno pitanje u ask-user-question čarobnjaku"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Preskoči sve",
+    "description": "Preskoči ceo ask-user-question čarobnjak i nastavi bez odgovora"
+  },
+  "askUserQuestion.other": {
+    "message": "Drugo",
+    "description": "Lažna opcija; kada je izabrana, otvara se prilagođeni tekstualni unos"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Unesite svoj odgovor",
+    "description": "Pomoćni opis ispod druge opcije"
+  },
+  "askUserQuestion.placeholder": {
+    "message": "Unesite odgovor…",
+    "description": "Placeholder za prilagođeni unos odgovora za svako pitanje"
+  },
+  "askUserQuestion.multiSelectHint": {
+    "message": "Možete izabrati jednu ili više opcija",
+    "description": "Poruka koja se prikazuje kada je podržano višestruko biranje"
+  },
+  "askUserQuestion.collapsedAnswerLabel": {
+    "message": "Vaš odgovor",
+    "description": "Završna poruka kada se konkretan odgovor ne može izvući iz istorijskog izlaza"
   }
 }

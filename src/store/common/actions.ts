@@ -11,9 +11,8 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { getBaseUrlAuth, loginRedirect } from '@/utils';
-import { SURFACE_ANDROID, SURFACE_IOS } from '@/constants';
-import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
+import { isNative } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -67,6 +66,10 @@ export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>)
 };
 
 export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRootState>) => {
+  // `@fingerprintjs/fingerprintjs` is ~30 KB minified and only needed once,
+  // typically well after first paint. Load it lazily so it stays out of the
+  // entry chunk and out of the critical-path execution time.
+  const { default: FingerprintJS } = await import('@fingerprintjs/fingerprintjs');
   const fp = await FingerprintJS.load();
   const result = await fp.get();
   const visitorId = result.visitorId;
@@ -211,7 +214,7 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
 
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+  if (isNative()) {
     commit('setAuth', {
       flow: 'popup',
       visible: true
@@ -222,29 +225,26 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
       flow: 'redirect'
     });
     console.debug('login redirect');
-    loginRedirect({ redirect: window.location.pathname, site });
+    // Preserve the original query string (e.g. ?inviter_id, ?utm_source) so
+    // it survives the auth round-trip and is still present when the user
+    // lands back on Nexior. inviter_id is also forwarded as a top-level
+    // query param by loginRedirect itself.
+    loginRedirect({ redirect: window.location.pathname + window.location.search, site });
   }
 };
 
 export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRootState>) => {
   await dispatch('resetAll');
-  await dispatch('chat/resetAll');
-  await dispatch('midjourney/resetAll');
-  await dispatch('flux/resetAll');
-  await dispatch('hailuo/resetAll');
-  await dispatch('headshots/resetAll');
-  await dispatch('kling/resetAll');
-  await dispatch('luma/resetAll');
-  await dispatch('pika/resetAll');
-  await dispatch('pixverse/resetAll');
-  await dispatch('qrart/resetAll');
-  await dispatch('sora/resetAll');
-  await dispatch('suno/resetAll');
-  await dispatch('nanobanana/resetAll');
-  await dispatch('seedream/resetAll');
-  await dispatch('seedance/resetAll');
-  await dispatch('veo/resetAll');
-  if (import.meta.env.VITE_SURFACE === SURFACE_IOS || import.meta.env.VITE_SURFACE === SURFACE_ANDROID) {
+  // Per-app store modules are registered lazily (see `src/store/lazy.ts` and
+  // the router's `beforeEach` hook). Only fan out the reset to modules that
+  // are actually registered in the running session — there is nothing to
+  // reset for a module the user never opened, and dispatching to an
+  // unregistered module would emit a Vuex warning.
+  const { getRegisteredLazyModules } = await import('@/store/lazy');
+  for (const name of getRegisteredLazyModules()) {
+    await dispatch(`${name}/resetAll`);
+  }
+  if (isNative()) {
     // On native platforms, show in-app login popup instead of navigating to
     // external auth URL (which would open Chrome and redirect to localhost)
     commit('setAuth', {
@@ -252,10 +252,27 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
       visible: true
     });
   } else {
-    const currentUrl = window.location.href;
+    // Build the post-logout login URL via URLSearchParams so the inviter_id
+    // (and any other query params on the current page) survive as top-level
+    // query keys after AuthFrontend parses the URL — otherwise they end up
+    // nested inside the `redirect` value (because raw `?redirect=${url}`
+    // concatenation does no encoding) and AuthFrontend's
+    // `URLSearchParams.get('inviter_id')` returns null, breaking referral
+    // binding for OAuth signups (especially WeChat) on custom-domain sites.
     const baseUrlAuth = getBaseUrlAuth();
-    const loginUrl = `${baseUrlAuth}/auth/login?redirect=${currentUrl}`;
-    const redirectUrl = `${baseUrlAuth}/auth/logout?redirect=${loginUrl}`;
+    const baseUrlHub = getBaseUrlHub();
+    const site = window.location.origin;
+    const inviterId = getInviterId();
+    const callbackUrl = `${baseUrlHub}/auth/callback?${new URLSearchParams({
+      redirect: window.location.pathname + window.location.search
+    }).toString()}`;
+    const loginQuery: Record<string, string> = {
+      site,
+      ...(inviterId ? { inviter_id: inviterId } : {}),
+      redirect: callbackUrl
+    };
+    const loginUrl = `${baseUrlAuth}/auth/login?${new URLSearchParams(loginQuery).toString()}`;
+    const redirectUrl = `${baseUrlAuth}/auth/logout?${new URLSearchParams({ redirect: loginUrl }).toString()}`;
     window.location.href = redirectUrl;
   }
 };

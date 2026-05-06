@@ -5,19 +5,19 @@
   },
   "name.task": {
     "message": "Typ zadania",
-    "description": "Typ operacji obrazu OpenAI"
+    "description": "Typ operacji obrazu OpenAI Image"
   },
   "name.generate": {
     "message": "Utwórz obraz",
-    "description": "Typ operacji: utwórz obraz"
+    "description": "Typ operacji: Utwórz obraz"
   },
   "name.edits": {
     "message": "Edytuj obraz",
-    "description": "Typ operacji: edytuj obraz"
+    "description": "Typ operacji: Edytuj obraz"
   },
   "name.imageUrls": {
     "message": "Obrazy referencyjne",
-    "description": "Obrazy referencyjne do edycji"
+    "description": "Obrazy referencyjne do edytowania"
   },
   "name.failure": {
     "message": "Niepowodzenie",
@@ -35,12 +35,16 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
+  },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
-    "description": "Podpowiedź do generowania/edycji"
+    "description": "Podpowiedź do generowania/edycji obrazu"
   },
   "name.openaiimageBot": {
-    "message": "Bot OpenAI Image",
+    "message": "OpenAI Image Bot",
     "description": "Nazwa bota OpenAI Image"
   },
   "name.size": {
@@ -48,7 +52,7 @@
     "description": "Rozmiar wyjściowego obrazu"
   },
   "description.size": {
-    "message": "Rozmiar wyjściowy do generowania obrazów, popularne wartości: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Rozmiar wyjściowy obrazu do generowania, popularne wartości: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Opis rozmiaru"
   },
   "description.prompt": {
@@ -56,7 +60,7 @@
     "description": "Opis podpowiedzi"
   },
   "description.model": {
-    "message": "Model do generowania i edytowania obrazów.",
+    "message": "Model używany do generowania i edytowania obrazów.",
     "description": "Opis parametru modelu"
   },
   "description.imageUrls": {
@@ -69,47 +73,47 @@
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Placeholder wyboru"
+    "description": "Miejsce na wybór"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź, np.: mały kotek z akwareli na stole",
-    "description": "Placeholder podpowiedzi"
+    "message": "Wpisz podpowiedź, np. mały kotek na stole z akwarelami",
+    "description": "Miejsce na podpowiedź"
   },
   "button.generate": {
     "message": "Generuj",
     "description": "Przycisk generowania"
   },
   "button.uploadImageUrls": {
-    "message": "Prześlij",
-    "description": "Przycisk przesyłania obrazów referencyjnych (proszę uprościć do 'Prześlij', nie używaj 'Prześlij obrazy')"
+    "message": "Prześlij obrazy",
+    "description": "Przycisk do przesyłania obrazów referencyjnych (proszę użyć 'Prześlij' zamiast 'Upload Images')"
   },
   "message.startingTask": {
-    "message": "Rozpoczynam zadanie...",
-    "description": "Wiadomość rozpoczynająca zadanie"
+    "message": "Rozpoczynanie zadania...",
+    "description": "Wiadomość rozpoczynania zadania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "message": "Zadanie zostało pomyślnie rozpoczęte",
     "description": "Zadanie zostało pomyślnie utworzone"
   },
   "message.startTaskFailed": {
-    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem:",
-    "description": "Niepowodzenie w tworzeniu zadania"
+    "message": "Nie udało się rozpocząć zadania, skontaktuj się z administratorem:",
+    "description": "Zadanie nie zostało utworzone"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować",
-    "description": "Wiadomość o wyczerpaniu"
+    "message": "Twoje punkty zostały wyczerpane, proszę zakupić więcej punktów, aby kontynuować",
+    "description": "Komunikat o wyczerpaniu punktów"
   },
   "message.uploadImageExceed": {
-    "message": "Można przesłać maksymalnie 5 obrazów",
-    "description": "Liczba obrazów przekracza limit"
+    "message": "Możesz przesłać maksymalnie 5 obrazów",
+    "description": "Przekroczono limit liczby obrazów"
   },
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Błąd przesyłania"
+    "description": "Błąd przesyłania obrazu"
   },
   "name.model": {
     "message": "Model",
-    "description": "Etykieta wyboru modelu OpenAI"
+    "description": "Etykieta wyboru modelu OpenAI Image"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",

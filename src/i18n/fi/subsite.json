@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "Oma alisivusto",
+    "description": "Alisivuston hallinnan etusivun pääotsikko"
+  },
+  "title.create": {
+    "message": "Luo alisivusto",
+    "description": "Uuden alisivuston luontidialogin otsikko"
+  },
+  "title.openNow": {
+    "message": "Siirry alisivustolle nyt",
+    "description": "Uuden alisivuston luomisen jälkeen kysytään, siirrytäänkö heti"
+  },
+  "field.slug": {
+    "message": "Alidomainin etuliite",
+    "description": "Alisivuston slug-syöttökentän otsikko"
+  },
+  "field.origin": {
+    "message": "Alisivuston verkkotunnus",
+    "description": "Alisivustoluettelon verkkotunnussarake"
+  },
+  "field.title": {
+    "message": "Alisivuston otsikko",
+    "description": "Alisivuston otsikkokenttä"
+  },
+  "field.createdAt": {
+    "message": "Luontiaika",
+    "description": "Alisivuston luontiaikasarake"
+  },
+  "field.actions": {
+    "message": "Toiminnot",
+    "description": "Alisivustoluettelon toimintasarake"
+  },
+  "placeholder.slug": {
+    "message": "esim. my-brand",
+    "description": "slug-syöttökentän paikkamerkki"
+  },
+  "placeholder.title": {
+    "message": "Näkyy alisivuston selaimen välilehdessä ja sivuston yläosassa",
+    "description": "Otsikkosyöttökentän paikkamerkki"
+  },
+  "button.create": {
+    "message": "Luo alisivusto",
+    "description": "Luo alisivusto -painike"
+  },
+  "button.open": {
+    "message": "Avaa",
+    "description": "Avaa alisivusto -painike"
+  },
+  "button.manage": {
+    "message": "Hallitse",
+    "description": "Siirry alisivuston asetuksiin -painike"
+  },
+  "message.indexTip": {
+    "message": "Luo itsenäisiä alisivustoja pääsivuston alle. Jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
+    "description": "Alisivuston hallinnan etusivun selitysteksti"
+  },
+  "message.empty": {
+    "message": "Et ole vielä luonut yhtään alisivustoa. Klikkaa oikeasta yläkulmasta 'Luo alisivusto' aloittaaksesi.",
+    "description": "Tyhjän luettelon ilmoitus"
+  },
+  "message.slugTip": {
+    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivalla, eikä voi sisältää peräkkäisiä viivoja.",
+    "description": "slug-kentän selitys"
+  },
+  "message.slugInvalid": {
+    "message": "Alidomainin etuliitteen muoto on virheellinen, tarkista säännöt ja yritä uudelleen.",
+    "description": "slug-tarkistus epäonnistui"
+  },
+  "message.zoneMissing": {
+    "message": "Nykyiselle pääsivustolle ei ole määritetty alisivuston verkkotunnusaluetta, ota yhteyttä sivuston ylläpitäjään.",
+    "description": "subdomain_zone puuttuu"
+  },
+  "message.created": {
+    "message": "Alisivusto luotiin onnistuneesti!",
+    "description": "Luonti onnistui"
+  },
+  "message.createFailed": {
+    "message": "Alisivuston luominen epäonnistui, yritä myöhemmin uudelleen.",
+    "description": "Luonti epäonnistui"
+  },
+  "message.loadFailed": {
+    "message": "Alisivustoluettelon lataaminen epäonnistui.",
+    "description": "Luettelon lataaminen epäonnistui"
+  },
+  "message.openNowConfirm": {
+    "message": "Alisivusto {origin} on luotu. Haluatko avata sen nyt jatkaaksesi asetusten määrittämistä?",
+    "description": "Luomisen jälkeen kysytään, avataanko heti"
+  },
+  "title.domains": {
+    "message": "{origin} mukautettu verkkotunnus",
+    "description": "Mukautetun verkkotunnuksen dialogin otsikko"
+  },
+  "title.bindDomain": {
+    "message": "Sitota uusi verkkotunnus",
+    "description": "Sitomislomakkeen otsikko"
+  },
+  "button.domains": {
+    "message": "Verkkotunnukset",
+    "description": "Avaa verkkotunnusten hallintadialogi -painike"
+  },
+  "button.bindDomain": {
+    "message": "Sitota verkkotunnus",
+    "description": "Lähetä uusi verkkotunnus"
+  },
+  "button.verify": {
+    "message": "Vahvista nyt",
+    "description": "Tarkista, onko verkkotunnus jo käytettävissä ja onko sertifikaatti myönnetty"
+  },
+  "button.refresh": {
+    "message": "Päivitä",
+    "description": "Hae verkkotunnuksen tila uudelleen"
+  },
+  "field.hostname": {
+    "message": "Verkkotunnuksesi",
+    "description": "Syötä omistamasi verkkotunnus tai alidomain"
+  },
+  "field.recordType": {
+    "message": "Tietueen tyyppi",
+    "description": "DNS-tietueen tyypin sarake"
+  },
+  "field.recordName": {
+    "message": "Tietueen nimi",
+    "description": "DNS-tietueen nimen sarake"
+  },
+  "field.recordValue": {
+    "message": "Tietueen arvo",
+    "description": "DNS-tietueen arvon sarake"
+  },
+  "placeholder.hostname": {
+    "message": "esim. studio.mybrand.com",
+    "description": "hostname-syöttökentän paikkamerkki"
+  },
+  "message.domainsIntro": {
+    "message": "Sitota omistamasi verkkotunnus tähän alisivustoon. Sinun on voitava muokata verkkotunnuksen DNS:ää. Lisää CNAME-tietue alla olevien ohjeiden mukaan ja napsauta 'Vahvista nyt', niin me myönnämme ja uusimme HTTPS-sertifikaatin ilmaiseksi Let's Encryptin kautta.",
+    "description": "Dialogin yläosan selitys"
+  },
+  "message.domainsEmpty": {
+    "message": "Et ole vielä sitonut mitään mukautettuja verkkotunnuksia. Täytä alla olevaan lomakkeeseen täydellinen verkkotunnus ja napsauta 'Sitota' aloittaaksesi.",
+    "description": "Tyhjän luettelon ilmoitus"
+  },
+  "message.hostnameTip": {
+    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita.",
+    "description": "hostname-syöttöohje"
+  },
+  "message.hostnameInvalid": {
+    "message": "Verkkotunnuksen muoto on virheellinen. Sen on oltava julkisesti ratkaistavissa oleva verkkotunnus, IP-osoitteet eivät ole sallittuja.",
+    "description": "hostname-lokaatio tarkistus epäonnistui"
+  },
+  "message.domainCreated": {
+    "message": "Verkkotunnus on lähetetty, lisää CNAME-tietue ohjeiden mukaan.",
+    "description": "POST /site-domains/ onnistui"
+  },
+  "message.domainCreateFailed": {
+    "message": "Verkkotunnuksen luominen epäonnistui, yritä myöhemmin uudelleen.",
+    "description": "Luonti epäonnistui"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Verkkotunnusluettelon lataaminen epäonnistui.",
+    "description": "Verkkotunnusluettelon lataaminen epäonnistui"
+  },
+  "message.domainActive": {
+    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivustoa mukautetun HTTPS-osoitteesi kautta.",
+    "description": "Siirtyminen aktiiviseen tilaan"
+  },
+  "message.domainFailed": {
+    "message": "Verkkotunnuksen vahvistus tai julkaisu epäonnistui.",
+    "description": "Failed 状态兑底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Vahvistus epäonnistui, tarkista että CNAME-tietue osoittaa meidän käänteiseen välimuistiin ja että DNS-levitys on valmis.",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse käsiksi aliverkkotunnukseesi tämän verkkotunnuksen kautta.",
+    "description": "Poiston vahvistus"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Verkkotunnuksen poistaminen epäonnistui.",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pending": {
+    "message": "Vahvistusta odottamassa",
+    "description": "Pending 状态标签：odottaa käyttäjän lisäävän CNAME:n ja napsauttavan 'Vahvista nyt'"
+  },
+  "status.active": {
+    "message": "Julkaistu",
+    "description": "Active 状态标签"
+  },
+  "status.failed": {
+    "message": "Epäonnistui",
+    "description": "Failed 状态标签"
+  }
+}

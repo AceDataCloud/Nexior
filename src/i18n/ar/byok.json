@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "مفتاح API مخصص",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "إضافة مفتاح API",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "تعديل مفتاح API",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "حذف مفتاح API",
+    "description": ""
+  },
+  "description.list": {
+    "message": "استخدم مفتاح API الخاص بمزود الخدمة الخاص بك (OpenAI، Anthropic، Google، xAI، DeepSeek، Moonshot، Zhiyu) بدلاً من مجموعة حسابات المنصة. بعد التكوين، ستتم معالجة طلبات المحادثة للنموذج المعني مباشرة باستخدام مفتاحك، دون استهلاك رصيد المنصة؛ ستعمل أدوات الاستدعاء، والمراجع، والأعمال، والسجل السحابي كما هو معتاد.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "مزود الخدمة",
+    "description": ""
+  },
+  "field.label": {
+    "message": "ملاحظات",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "مثل \"رقم عملي\" (اختياري)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "مفتاح API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "اتركه فارغًا للحفاظ على المفتاح الحالي",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "عنوان URL أساسي مخصص",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "اتركه فارغًا لاستخدام عنوان المزود الافتراضي",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "مفعل",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "آخر استخدام",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "تاريخ الإضافة",
+    "description": ""
+  },
+  "value.active": {
+    "message": "مفعل",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "غير مفعل",
+    "description": ""
+  },
+  "value.never": {
+    "message": "لم يتم استخدامه أبدًا",
+    "description": ""
+  },
+  "value.default": {
+    "message": "افتراضي",
+    "description": ""
+  },
+  "button.add": {
+    "message": "إضافة مفتاح API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "تعديل",
+    "description": ""
+  },
+  "button.test": {
+    "message": "اختبار",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "حذف",
+    "description": ""
+  },
+  "button.save": {
+    "message": "حفظ",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "إلغاء",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "هل تؤكد حذف مفتاح API هذا؟ ستعود محادثات نموذج {provider} إلى الافتراضي.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "تم حذف مفتاح API.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "تم حفظ مفتاح API.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "الاتصال جيد.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "فشل الاختبار: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "فشل تحميل الاعتماديات.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "فشل حفظ الاعتماديات.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "لم يتم تكوين مفتاح API مخصص بعد. انقر على \"إضافة مفتاح API\" لاستخدام حساب مزود الخدمة الخاص بك.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "عرض الخيارات المتقدمة",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "اختياري. عنوان مخصص للمزود (لـ OpenRouter، أو عكس البناء، أو بوابة الشركات، إلخ). يسمح فقط بـ HTTPS، ولا يمكن أن يشير إلى عنوان داخلي/حلقي.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "يتم استخدام مفتاح API مخصص {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "المحادثة الحالية تستخدم مفتاح API الخاص بك من {provider}، والتكاليف يتم تسويتها من حساب {provider}، دون خصم من رصيد المنصة.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "انقر لفتح إعدادات مفتاح API",
+    "description": "تلميح عند النقر على شارة BYOK في صفحة الدردشة: انقر لفتح علامة تبويب إعدادات مفتاح API."
+  },
+  "button.testConnection": {
+    "message": "اختبار",
+    "description": "زر في مربع الحوار الجديد/التعديل - فقط اختبر تكوين النموذج الحالي، دون حفظ الاعتماديات."
+  },
+  "test.success": {
+    "message": "اختبار الاتصال ناجح",
+    "description": "عنوان النجاح في منطقة نتائج اختبار الاتصال."
+  },
+  "test.failure": {
+    "message": "اختبار الاتصال فشل",
+    "description": "عنوان الفشل في منطقة نتائج اختبار الاتصال."
+  },
+  "test.endpoint": {
+    "message": "عنوان الطلب",
+    "description": "علامة URL الطلب في تفاصيل نتائج الاختبار."
+  },
+  "test.status": {
+    "message": "رمز الحالة",
+    "description": "علامة رمز الحالة HTTP في تفاصيل نتائج الاختبار."
+  },
+  "test.message": {
+    "message": "استجابة المزود",
+    "description": "علامة نص الخطأ/التلميح من المزود في تفاصيل نتائج الاختبار."
+  },
+  "providerDesc.openai": {
+    "message": "استبدال طلبات المحادثة لـ ChatGPT (GPT-4 / GPT-4o / o1 / o3، إلخ) في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار OpenAI في قائمة المزودين."
+  },
+  "providerDesc.anthropic": {
+    "message": "استبدال طلبات المحادثة لـ Claude (Sonnet / Opus / Haiku، إلخ) في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار Anthropic في قائمة المزودين."
+  },
+  "providerDesc.google": {
+    "message": "استبدال طلبات المحادثة لـ Gemini (Pro / Flash) في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار Google في قائمة المزودين."
+  },
+  "providerDesc.xai": {
+    "message": "استبدال طلبات المحادثة لـ Grok في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار xAI في قائمة المزودين."
+  },
+  "providerDesc.deepseek": {
+    "message": "استبدال طلبات المحادثة لـ DeepSeek (V3 / R1، إلخ) في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار DeepSeek في قائمة المزودين."
+  },
+  "providerDesc.moonshot": {
+    "message": "استبدال طلبات محادثة Kimi في هذا الموقع.",
+    "description": "العنوان الفرعي لخيار Moonshot (Kimi) في القائمة المنسدلة للمزود."
+  },
+  "providerDesc.zhipu": {
+    "message": "استبدال طلبات المحادثة لسلسلة GLM الخاصة بالموقع.",
+    "description": "العنوان الفرعي لخيار Zhipu (GLM) في القائمة المنسدلة لمزود الخدمة."
+  }
+}

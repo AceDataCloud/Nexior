@@ -46,7 +46,23 @@ export function isApplicationUsable(application: IApplication | undefined): bool
 
 /**
  * get final application from applications
- * @param applications
+ *
+ * If the user already has a `currentApplication` (either restored from
+ * localStorage on a page reload, or just-selected via the wallet dialog),
+ * we keep it as long as it still exists in the freshly-fetched list —
+ * regardless of whether it's expired or exhausted. The previous behaviour
+ * silently re-ran the auto-pick on every page load, which meant a user
+ * who explicitly selected a Period package that later expired (or one
+ * with depleted credits) would see their choice replaced by a different
+ * package on every refresh — see https://github.com/AceDataCloud/Nexior
+ * issue: "wallet selection doesn't stick after refresh".
+ *
+ * The auto-fallback (global > individual, period > usage) only runs when
+ * there is no current selection, or when the previously-selected
+ * application has been deleted server-side.
+ *
+ * @param applications full list of applications visible to the user
+ * @param currentApplication the persisted / freshly-selected one, if any
  * @returns application
  */
 export function getFinalApplication(
@@ -54,13 +70,17 @@ export function getFinalApplication(
   currentApplication?: IApplication
 ): IApplication | undefined {
   console.debug('start to execute getFinalApplication', applications, currentApplication);
-  if (
-    currentApplication &&
-    isApplicationUsable(currentApplication) &&
-    applications?.some((app) => app.id === currentApplication.id)
-  ) {
-    console.debug('current application is usable', currentApplication);
-    return currentApplication;
+  if (currentApplication) {
+    const fresh = applications?.find((app) => app.id === currentApplication.id);
+    if (fresh) {
+      // The previously-selected app still exists. Return the FRESH copy
+      // from the just-fetched list (not `currentApplication` itself), so
+      // mutable fields like `remaining_amount` / `used_amount` /
+      // `expired_at` reflect server truth instead of a stale persisted
+      // snapshot.
+      console.debug('current application is preserved (respect user selection)', fresh);
+      return fresh;
+    }
   }
   console.debug('get final application from applications', applications);
   // check if there is any application with 'Global' scope and 'Period' type, if yes, use it

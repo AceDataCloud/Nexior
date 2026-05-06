@@ -12,8 +12,8 @@
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير الصورة",
-    "description": "نوع العملية: تحرير الصورة"
+    "message": "تحرير صورة",
+    "description": "نوع العملية: تحرير صورة"
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
@@ -35,13 +35,17 @@
     "message": "معرف التتبع",
     "description": "معرف التتبع"
   },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
+  },
   "name.prompt": {
     "message": "نص الصورة",
     "description": "نص التوليد/التحرير"
   },
   "name.seedreamBot": {
     "message": "روبوت SeeDream",
-    "description": "اسم مولد صور SeeDream"
+    "description": "اسم مولد الصور SeeDream"
   },
   "name.size": {
     "message": "الحجم",
@@ -49,39 +53,39 @@
   },
   "name.watermark": {
     "message": "علامة مائية",
-    "description": "هل تريد إضافة علامة مائية"
+    "description": "هل يتم إضافة علامة مائية"
   },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
     "description": "وصف نص التوليد"
   },
   "description.model": {
-    "message": "النموذج المستخدم لتوليد أو تحرير الصورة.",
+    "message": "النموذج المستخدم لتوليد أو تحرير الصور.",
     "description": "وصف معلمة النموذج"
   },
   "description.size": {
-    "message": "حجم الصورة. يدعم الإعدادات المسبقة `1K`، `2K`، `4K` أو مخصص `<عرض>x<ارتفاع>`.",
+    "message": "حجم الصورة. يدعم الإعدادات المسبقة `1K`، `2K`، `4K` أو حجم مخصص `<عرض>x<ارتفاع>`.",
     "description": "وصف معلمة الحجم"
   },
   "description.watermark": {
-    "message": "هل تريد إضافة علامة مائية للصور الناتجة. مفعل بشكل افتراضي.",
+    "message": "هل يتم إضافة علامة مائية للذكاء الاصطناعي في الصورة الناتجة. مفعل بشكل افتراضي.",
     "description": "وصف معلمة العلامة المائية"
   },
   "description.imageUrls": {
-    "message": "قم بتحميل من 1 إلى 14 صورة مرجعية لتمكين تحرير الصورة.",
+    "message": "قم بتحميل من 1 إلى 14 صورة مرجعية لتمكين تحرير الصور.",
     "description": "وصف معلمة الصور"
   },
   "status.pending": {
-    "message": "قيد الانتظار",
+    "message": "في الانتظار",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص مكان للاختيار"
+    "description": "نص العنصر المحدد"
   },
   "placeholder.prompt": {
     "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
-    "description": "نص مكان لنص التوليد"
+    "description": "نص العنصر المحدد"
   },
   "button.generate": {
     "message": "توليد",
@@ -89,7 +93,7 @@
   },
   "button.uploadImageUrls": {
     "message": "تحميل",
-    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل' بدلاً من 'تحميل الصور')"
+    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصور')"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "خيار نموذج SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "خيار نموذج SeeDream 5.0 (يدعم توليد الصور المتسلسلة والإخراج المتدفق)"
+  },
+  "name.maxImages": {
+    "message": "عدد الصور",
+    "description": "عدد الصور التي يتم توليدها في مجموعة الصور (max_images)"
+  },
+  "description.maxImages": {
+    "message": "عدد الصور التي يتم توليدها في طلب واحد (1-15). إذا تم تعيينها إلى 1، فهي وضع صورة واحدة؛ إذا كانت أكبر من 1، يتم تفعيل مجموعة الصور تلقائيًا (sequential_image_generation=auto)، مع الحفاظ على الشخصيات والأسلوب والتفاصيل متسقة عبر الصور. يدعم فقط doubao-seedream-5.0 / 4.5 / 4.0؛ إذا تم تحميل صور مرجعية، يجب أن تفي بالشرط (عدد الصور المرجعية + عدد الصور الناتجة) ≤ 15. يتم احتساب الرسوم بناءً على عدد الصور الناتجة الفعلي.",
+    "description": "وصف معلمة max_images"
   }
 }

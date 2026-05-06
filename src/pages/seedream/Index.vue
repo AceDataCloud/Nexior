@@ -14,13 +14,15 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Seedream.vue';
 import ConfigPanel from '@/components/seedream/ConfigPanel.vue';
 import { seedreamOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
+import { loadPreviousPage } from '@/utils/pagination';
 import { ISeedreamTask } from '@/models';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/seedream';
+const CALLBACK_URL = getWebhookCallbackUrl('seedream');
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -94,36 +96,15 @@ export default defineComponent({
   },
   methods: {
     async onReachTop() {
-      console.debug('reached top');
-      if (this.loading || this.tasksLoading) {
-        return;
-      }
-      const total = this.tasks?.total;
-      const currentLength = this.tasks?.items?.length || 0;
-      if (total !== undefined && total <= currentLength) {
-        return;
-      }
-      const oldest = this.tasks?.items?.[0];
-      if (!oldest?.created_at) {
-        return;
-      }
-      const panel = this.$refs.recentPanel as any;
-      const el = panel?.getScrollElement?.() as HTMLElement | undefined;
-      const previousHeight = el?.scrollHeight || 0;
-      const previousScrollTop = el?.scrollTop || 0;
-      this.loading = true;
-      try {
-        await this.onGetTasks({
-          createdAtMax: oldest.created_at
-        });
-        await this.$nextTick();
-        if (el) {
-          const newHeight = el.scrollHeight;
-          el.scrollTop = newHeight - previousHeight + previousScrollTop;
-        }
-      } finally {
-        this.loading = false;
-      }
+      await loadPreviousPage({
+        tasks: this.tasks,
+        getTasks: () => this.tasks,
+        loading: this.loading,
+        setLoading: (v) => (this.loading = v),
+        isBlocked: () => this.tasksLoading,
+        fetch: (createdAtMax) => this.onGetTasks({ createdAtMax }),
+        getScrollElement: () => this.getTasksScrollElement()
+      });
     },
     async onGetService() {
       console.debug('start onGetService');
@@ -176,10 +157,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('seedream.message.startingTask'));
-      seedreamOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('seedream', seedreamOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('seedream.message.startTaskSuccess'));
         })

@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "我的分站",
+    "description": "分站管理首頁大標題"
+  },
+  "title.create": {
+    "message": "創建分站",
+    "description": "新建分站對話框標題"
+  },
+  "title.openNow": {
+    "message": "立即訪問分站",
+    "description": "新建成功後詢問是否立即跳轉的對話框標題"
+  },
+  "field.slug": {
+    "message": "子域名前綴",
+    "description": "分站 slug 輸入框標題"
+  },
+  "field.origin": {
+    "message": "分站域名",
+    "description": "分站列表的域名列"
+  },
+  "field.title": {
+    "message": "分站標題",
+    "description": "分站標題字段"
+  },
+  "field.createdAt": {
+    "message": "創建時間",
+    "description": "分站創建時間列"
+  },
+  "field.actions": {
+    "message": "操作",
+    "description": "分站列表操作列"
+  },
+  "placeholder.slug": {
+    "message": "例如 my-brand",
+    "description": "slug 輸入框佔位符"
+  },
+  "placeholder.title": {
+    "message": "用於顯示在分站瀏覽器標籤和站點頭部",
+    "description": "標題輸入框佔位符"
+  },
+  "button.create": {
+    "message": "創建分站",
+    "description": "創建分站按鈕"
+  },
+  "button.open": {
+    "message": "打開",
+    "description": "打開分站按鈕"
+  },
+  "button.manage": {
+    "message": "管理",
+    "description": "進入分站設置按鈕"
+  },
+  "message.indexTip": {
+    "message": "在主站之下創建獨立品牌的分站，每個分站可以擁有自己的 Logo、標題和功能集，不需要單獨搭建源代碼。",
+    "description": "分站管理首頁說明文字"
+  },
+  "message.empty": {
+    "message": "你還沒有創建任何分站。點擊右上角“創建分站”開始。",
+    "description": "空列表提示"
+  },
+  "message.slugTip": {
+    "message": "3-32 位小寫字母、數字或短橫線；不能以短橫線開頭或結尾，也不能包含連續短橫線。",
+    "description": "slug 字段說明"
+  },
+  "message.slugInvalid": {
+    "message": "子域名前綴格式不正確，請檢查規則後重試。",
+    "description": "slug 校驗失敗"
+  },
+  "message.zoneMissing": {
+    "message": "當前主站未配置分站域名區，請聯繫站點管理員。",
+    "description": "subdomain_zone 缺失"
+  },
+  "message.created": {
+    "message": "分站創建成功！",
+    "description": "創建成功"
+  },
+  "message.createFailed": {
+    "message": "創建分站失敗，請稍後重試。",
+    "description": "創建失敗"
+  },
+  "message.loadFailed": {
+    "message": "加載分站列表失敗。",
+    "description": "拉列表失敗"
+  },
+  "message.openNowConfirm": {
+    "message": "分站 {origin} 已創建。是否現在打開它繼續配置？",
+    "description": "創建後是否立即打開"
+  },
+  "title.domains": {
+    "message": "{origin} 的自定義域名",
+    "description": "自定義域名對話框標題"
+  },
+  "title.bindDomain": {
+    "message": "綁定新域名",
+    "description": "綁定表單標題"
+  },
+  "button.domains": {
+    "message": "域名",
+    "description": "打開域名管理對話框的按鈕"
+  },
+  "button.bindDomain": {
+    "message": "綁定域名",
+    "description": "提交綁定新域名"
+  },
+  "button.verify": {
+    "message": "立即驗證",
+    "description": "通過我們的反向代理探測該域名是否已能正常解析並簽發證書"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "重新拉取該域名的狀態"
+  },
+  "field.hostname": {
+    "message": "你的域名",
+    "description": "輸入你擁有的域名或子域名"
+  },
+  "field.recordType": {
+    "message": "記錄類型",
+    "description": "DNS 記錄類型列"
+  },
+  "field.recordName": {
+    "message": "記錄名稱",
+    "description": "DNS 記錄名稱列"
+  },
+  "field.recordValue": {
+    "message": "記錄值",
+    "description": "DNS 記錄值列"
+  },
+  "placeholder.hostname": {
+    "message": "例如 studio.mybrand.com",
+    "description": "hostname 輸入框佔位符"
+  },
+  "message.domainsIntro": {
+    "message": "將你擁有的域名綁定到該分站。你需要能修改該域名的 DNS。按照下方提示添加一條 CNAME 後點擊“立即驗證”即可，我們會自動通過 Let's Encrypt 為你免費簽發並續期 HTTPS 證書。",
+    "description": "對話框頂部說明"
+  },
+  "message.domainsEmpty": {
+    "message": "暫未綁定任何自定義域名。在下方表單中填寫完整域名並點擊“綁定”即可開始。",
+    "description": "空列表提示"
+  },
+  "message.hostnameTip": {
+    "message": "需是你能控制 DNS 的公網域名。",
+    "description": "hostname 輸入提示"
+  },
+  "message.hostnameInvalid": {
+    "message": "域名格式不正確。必須是公網可解析的域名，不允許 IP 地址。",
+    "description": "hostname 本地校驗失敗"
+  },
+  "message.domainCreated": {
+    "message": "域名已提交，請按提示添加 CNAME 記錄。",
+    "description": "POST /site-domains/ 成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "創建域名失敗，請稍後重試。",
+    "description": "創建失敗"
+  },
+  "message.domainsLoadFailed": {
+    "message": "加載域名列表失敗。",
+    "description": "拉域名列表失敗"
+  },
+  "message.domainActive": {
+    "message": "域名已啟用！現在可以透過你的自訂 HTTPS 地址訪問子站。",
+    "description": "進入 Active 狀態"
+  },
+  "message.domainFailed": {
+    "message": "域名驗證或上線失敗。",
+    "description": "Failed 狀態對應文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "驗證失敗，請檢查 CNAME 記錄是否已指向我們的反向代理並完成 DNS 傳播。",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "確定要解除綁定 {hostname} 嗎？解除綁定後用戶將無法從該域名訪問你的分站。",
+    "description": "刪除確認"
+  },
+  "message.domainDeleteFailed": {
+    "message": "刪除域名失敗。",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pending": {
+    "message": "待驗證",
+    "description": "Pending 狀態標籤：等待用戶加 CNAME 並點擊“立即驗證”"
+  },
+  "status.active": {
+    "message": "已上線",
+    "description": "Active 狀態標籤"
+  },
+  "status.failed": {
+    "message": "失敗",
+    "description": "Failed 狀態標籤"
+  }
+}

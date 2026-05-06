@@ -62,6 +62,7 @@ import {
   faPalette as faSolidPalette,
   faBars as faSolidBars,
   faGear as faSolidGear,
+  faSitemap as faSolidSitemap,
   faMugSaucer as faSolidMugSaucer,
   faRotateRight as faSolidRotateRight,
   faCheck as faSolidCheck,
@@ -107,6 +108,7 @@ import {
   faScissors as faSolidScissors,
   faGuitar as faSolidGuitar,
   faDrum as faSolidDrum,
+  faGaugeHigh as faSolidGaugeHigh,
   faLayerGroup as faSolidLayerGroup,
   faBarsStaggered as faSolidBarsStaggered,
   faHeadphones as faSolidHeadphones,
@@ -118,7 +120,12 @@ import {
   faExpand as faSolidExpand,
   faCompress as faSolidCompress,
   faBroom as faSolidBroom,
-  faStar as faSolidStar
+  faStar as faSolidStar,
+  faHouse as faSolidHouse,
+  faBrain as faSolidBrain,
+  faKey as faSolidKey,
+  faPersonRunning as faSolidPersonRunning,
+  faUserTie as faSolidUserTie
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -151,6 +158,7 @@ library.add(faSolidFileLines);
 library.add(faSolidCompass);
 library.add(faSolidPaperclip);
 library.add(faSolidFan);
+library.add(faSolidBrain);
 library.add(faSolidImage);
 library.add(faSolidXmark);
 library.add(faSolidFire);
@@ -168,6 +176,7 @@ library.add(faSolidMoon);
 library.add(faSolidBolt);
 library.add(faSolidBook);
 library.add(faSolidGear);
+library.add(faSolidSitemap);
 library.add(faSolidMicrophone);
 library.add(faSolidBars);
 library.add(faSolidPlus);
@@ -225,6 +234,7 @@ library.add(faSolidShuffle);
 library.add(faSolidScissors);
 library.add(faSolidGuitar);
 library.add(faSolidDrum);
+library.add(faSolidGaugeHigh);
 library.add(faSolidLayerGroup);
 library.add(faSolidBarsStaggered);
 library.add(faSolidHeadphones);
@@ -236,3 +246,7 @@ library.add(faSolidPen);
 library.add(faSolidExpand);
 library.add(faSolidCompress);
 library.add(faSolidBroom);
+library.add(faSolidHouse);
+library.add(faSolidKey);
+library.add(faSolidPersonRunning);
+library.add(faSolidUserTie);

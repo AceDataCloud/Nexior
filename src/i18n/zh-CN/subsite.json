@@ -1,0 +1,198 @@
+{
+  "title.index": {
+    "message": "我的分站",
+    "description": "分站管理首页大标题"
+  },
+  "title.create": {
+    "message": "创建分站",
+    "description": "新建分站对话框标题"
+  },
+  "title.openNow": {
+    "message": "立即访问分站",
+    "description": "新建成功后询问是否立即跳转的对话框标题"
+  },
+  "field.slug": {
+    "message": "子域名前缀",
+    "description": "分站 slug 输入框标题"
+  },
+  "field.origin": {
+    "message": "分站域名",
+    "description": "分站列表的域名列"
+  },
+  "field.title": {
+    "message": "分站标题",
+    "description": "分站标题字段"
+  },
+  "field.createdAt": {
+    "message": "创建时间",
+    "description": "分站创建时间列"
+  },
+  "field.actions": {
+    "message": "操作",
+    "description": "分站列表操作列"
+  },
+  "placeholder.slug": {
+    "message": "例如 my-brand",
+    "description": "slug 输入框占位符"
+  },
+  "placeholder.title": {
+    "message": "用于显示在分站浏览器标签和站点头部",
+    "description": "标题输入框占位符"
+  },
+  "button.create": {
+    "message": "创建分站",
+    "description": "创建分站按钮"
+  },
+  "button.open": {
+    "message": "打开",
+    "description": "打开分站按钮"
+  },
+  "button.manage": {
+    "message": "管理",
+    "description": "进入分站设置按钮"
+  },
+  "message.indexTip": {
+    "message": "在主站之下创建独立品牌的分站，每个分站可以拥有自己的 Logo、标题和功能集，不需要单独搭建源代码。",
+    "description": "分站管理首页说明文字"
+  },
+  "message.empty": {
+    "message": "你还没有创建任何分站。点击右上角“创建分站”开始。",
+    "description": "空列表提示"
+  },
+  "message.slugTip": {
+    "message": "3-32 位小写字母、数字或短横线；不能以短横线开头或结尾，也不能包含连续短横线。",
+    "description": "slug 字段说明"
+  },
+  "message.slugInvalid": {
+    "message": "子域名前缀格式不正确，请检查规则后重试。",
+    "description": "slug 校验失败"
+  },
+  "message.zoneMissing": {
+    "message": "当前主站未配置分站域名区，请联系站点管理员。",
+    "description": "subdomain_zone 缺失"
+  },
+  "message.created": {
+    "message": "分站创建成功！",
+    "description": "创建成功"
+  },
+  "message.createFailed": {
+    "message": "创建分站失败，请稍后重试。",
+    "description": "创建失败"
+  },
+  "message.slugTaken": {
+    "message": "子域名 {origin} 已被使用，请换一个再试。",
+    "description": "创建分站时，slug 已被占用（后端返回 code=duplication）"
+  },
+  "message.loadFailed": {
+    "message": "加载分站列表失败。",
+    "description": "拉列表失败"
+  },
+  "message.openNowConfirm": {
+    "message": "分站 {origin} 已创建。是否现在打开它继续配置？",
+    "description": "创建后是否立即打开"
+  },
+  "title.domains": {
+    "message": "{origin} 的自定义域名",
+    "description": "自定义域名对话框标题"
+  },
+  "title.bindDomain": {
+    "message": "绑定新域名",
+    "description": "绑定表单标题"
+  },
+  "button.domains": {
+    "message": "域名",
+    "description": "打开域名管理对话框的按钮"
+  },
+  "button.bindDomain": {
+    "message": "绑定域名",
+    "description": "提交绑定新域名"
+  },
+  "button.verify": {
+    "message": "立即验证",
+    "description": "通过我们的反向代理探测该域名是否已能正常解析并签发证书"
+  },
+  "button.refresh": {
+    "message": "刷新",
+    "description": "重新拉取该域名的状态"
+  },
+  "field.hostname": {
+    "message": "你的域名",
+    "description": "输入你拥有的域名或子域名"
+  },
+  "field.recordType": {
+    "message": "记录类型",
+    "description": "DNS 记录类型列"
+  },
+  "field.recordName": {
+    "message": "记录名称",
+    "description": "DNS 记录名称列"
+  },
+  "field.recordValue": {
+    "message": "记录值",
+    "description": "DNS 记录值列"
+  },
+  "placeholder.hostname": {
+    "message": "例如 studio.mybrand.com",
+    "description": "hostname 输入框占位符"
+  },
+  "message.domainsIntro": {
+    "message": "将你拥有的域名绑定到该分站。你需要能修改该域名的 DNS。按照下方提示添加一条 CNAME 后点击“立即验证”即可，我们会自动通过 Let's Encrypt 为你免费签发并续期 HTTPS 证书。",
+    "description": "对话框顶部说明"
+  },
+  "message.domainsEmpty": {
+    "message": "暂未绑定任何自定义域名。在下方表单中填写完整域名并点击“绑定”即可开始。",
+    "description": "空列表提示"
+  },
+  "message.hostnameTip": {
+    "message": "需是你能控制 DNS 的公网域名。",
+    "description": "hostname 输入提示"
+  },
+  "message.hostnameInvalid": {
+    "message": "域名格式不正确。必须是公网可解析的域名，不允许 IP 地址。",
+    "description": "hostname 本地校验失败"
+  },
+  "message.domainCreated": {
+    "message": "域名已提交，请按提示添加 CNAME 记录。",
+    "description": "POST /site-domains/ 成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "创建域名失败，请稍后重试。",
+    "description": "创建失败兑底"
+  },
+  "message.domainsLoadFailed": {
+    "message": "加载域名列表失败。",
+    "description": "拉域名列表失败"
+  },
+  "message.domainActive": {
+    "message": "域名已上线！现在可以通过你的自定义 HTTPS 地址访问分站。",
+    "description": "进入 Active 状态"
+  },
+  "message.domainFailed": {
+    "message": "域名验证或上线失败。",
+    "description": "Failed 状态兑底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "验证失败，请检查 CNAME 记录是否已指向我们的反向代理并完成 DNS 传播。",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "确定要解绑 {hostname} 吗？解绑后用户将无法从该域名访问你的分站。",
+    "description": "删除确认"
+  },
+  "message.domainDeleteFailed": {
+    "message": "删除域名失败。",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pending": {
+    "message": "待验证",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
+  },
+  "status.active": {
+    "message": "已上线",
+    "description": "Active 状态标签"
+  },
+  "status.failed": {
+    "message": "失败",
+    "description": "Failed 状态标签"
+  }
+}

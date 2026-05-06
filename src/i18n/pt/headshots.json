@@ -21,11 +21,15 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Estado da tarefa"
+    "description": "Status da tarefa"
   },
   "name.traceId": {
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
+  },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
   },
   "name.size": {
     "message": "Tamanho",
@@ -108,7 +112,7 @@
     "description": "Texto do botão para carregar imagens de retrato (simplificado para 'Carregar')"
   },
   "message.uploadReferencesExceed": {
-    "message": "Máximo de 5 imagens podem ser carregadas",
+    "message": "Máximo de 5 imagens permitidas",
     "description": "Mensagem de erro quando o número de imagens carregadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
@@ -145,7 +149,7 @@
   },
   "message.generateFailed": {
     "message": "Falha ao gerar a imagem",
-    "description": "Mensagem quando a geração da imagem falha"
+    "description": "Mensagem ao falhar na geração da imagem"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",
@@ -168,27 +172,35 @@
     "description": "Palavra de estilo usada para descrever e gerar a imagem, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.kindergarten": {
-    "message": "Foto de entrada na pré-escola",
+    "message": "Foto de Jardim de Infância",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto de camiseta com logo da empresa",
+    "message": "Camiseta com Logo da Empresa",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.wedding": {
-    "message": "Foto de registro de casamento",
+    "message": "Foto de Registro de Casamento",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.businessPphoto": {
-    "message": "Retrato profissional",
+    "message": "Retrato Empresarial",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.bobSuit": {
-    "message": "Cabelo bob com terno preto",
+    "message": "Cabelo Bob com Terno Preto",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
   },
   "styleTag.femalePortrait": {
-    "message": "Retrato feminino",
+    "message": "Retrato Feminino",
     "description": "Usado para descrever e gerar imagens com o estilo, a imagem gerada deve incluir o estilo desta etiqueta"
+  },
+  "message.uploadImageExceed": {
+    "message": "Máximo de 2 imagens podem ser enviadas",
+    "description": "Mensagem de aviso quando o número de imagens de referência excede o limite"
+  },
+  "message.uploadImageError": {
+    "message": "Falha ao enviar a imagem, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro quando o envio da imagem de referência falha"
   }
 }

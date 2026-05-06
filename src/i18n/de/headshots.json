@@ -27,12 +27,16 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
+  },
   "name.size": {
     "message": "Größe",
     "description": "Größe des zu generierenden QR-Codes"
   },
   "name.createdAt": {
-    "message": "Erstellt am",
+    "message": "Erstellungszeit",
     "description": "Datum und Uhrzeit der QR-Code-Generierung"
   },
   "name.endImageUrls": {
@@ -69,19 +73,19 @@
   },
   "status.processing": {
     "message": "Wird bearbeitet",
-    "description": "Bearbeitungszustand der Aufgabe"
+    "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe von Füllrauschen"
   },
   "placeholder.paddingLevel": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
-    "message": "Geben Sie den Prompt für den zu generierenden Video-Stil ein, z. B.: Astronauten fliegen vom Weltraum zum Vulkan",
-    "description": "Platzhaltertext im Eingabefeld"
+    "message": "Geben Sie den Hinweis für den zu generierenden Video-Stil ein, z. B.: Astronauten, die vom Weltraum zum Vulkan fliegen",
+    "description": "Platzhaltertext im Hinweisfeld"
   },
   "button.fast": {
     "message": "Schnell",
@@ -97,7 +101,7 @@
   },
   "button.viewImage": {
     "message": "Originalbild anzeigen",
-    "description": "Button-Text zur Anzeige von Headshots-Passbildern"
+    "description": "Button-Text zur Generierung von Headshots-Passbildern"
   },
   "button.download": {
     "message": "Bild herunterladen",
@@ -128,7 +132,7 @@
     "description": "Erfolgsmeldung beim erfolgreichen Start der Aufgabe"
   },
   "message.startTaskFailed": {
-    "message": "Start der Aufgabe fehlgeschlagen, bitte kontaktieren Sie den Administrator",
+    "message": "Aufgabenstart fehlgeschlagen, bitte kontaktieren Sie den Administrator",
     "description": "Fehlermeldung beim Fehlschlagen des Starts der Zeichnungsaufgabe"
   },
   "message.usedUp": {
@@ -157,38 +161,46 @@
   },
   "styleCategory.styles": {
     "message": "Passbildstil",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, die Kategorie des generierten Bildes sollte dieses Label enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diese Kategorie enthalten"
   },
   "styleTag.malePportrait": {
     "message": "Männliches Porträt",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diesen Stil enthalten"
   },
   "styleTag.malePportrait2": {
     "message": "Männliches Porträt 2",
-    "description": "Begriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
+    "description": "Begriff zur Beschreibung und Generierung von Bildern, die generierten Bilder sollten diesen Stil enthalten"
   },
   "styleTag.kindergarten": {
     "message": "Kindergarten-Eingangsfoto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Wort für den Stil, das zur Beschreibung und Generierung von Bildern verwendet wird, das generierte Bild sollte den Stil dieses Tags enthalten"
   },
   "styleTag.logoTshirt": {
-    "message": "Firmenlogo-T-Shirt-Foto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "message": "Unternehmenslogo T-Shirt Foto",
+    "description": "Stilbegriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.wedding": {
-    "message": "Hochzeitsanmeldungsfoto",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "message": "Hochzeitsregistrierungsfoto",
+    "description": "Stilbegriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.businessPphoto": {
     "message": "Business-Porträt",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Stilbegriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.bobSuit": {
     "message": "Schwarzer Anzug mit Bob-Frisur",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Stilbegriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
   },
   "styleTag.femalePortrait": {
     "message": "Weibliches Porträt",
-    "description": "Verwendet zur Beschreibung und Generierung von Bildern im Stil, das generierte Bild sollte diesen Stil enthalten."
+    "description": "Stilbegriff zur Beschreibung und Generierung von Bildern, das generierte Bild sollte diesen Stil enthalten"
+  },
+  "message.uploadImageExceed": {
+    "message": "Maximal 2 Bilder hochladen",
+    "description": "Hinweis, wenn die Anzahl der hochgeladenen Referenzbilder das Limit überschreitet"
+  },
+  "message.uploadImageError": {
+    "message": "Bild-Upload fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fehlermeldung, wenn der Upload der Referenzbilder fehlschlägt"
   }
 }

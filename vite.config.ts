@@ -6,31 +6,24 @@ import * as path from 'path';
 const normalizeModuleId = (id: string) => id.replace(/\\/g, '/');
 
 const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string) => boolean]> = [
-  [
-    'vendor-web3',
-    (id) =>
-      id.includes('/@solana/') ||
-      id.includes('/solana-wallets-vue/') ||
-      id.includes('/ethers/') ||
-      id.includes('/@noble/') ||
-      id.includes('/@scure/') ||
-      id.includes('/@stablelib/') ||
-      id.includes('/bn.js/') ||
-      id.includes('/borsh/') ||
-      id.includes('/bs58/') ||
-      id.includes('/tweetnacl/') ||
-      id.includes('/superstruct/') ||
-      id.includes('/jayson/') ||
-      id.includes('/rpc-websockets/') ||
-      id.includes('/secp256k1/') ||
-      id.includes('/uint8arrays/') ||
-      id.includes('/multiformats/') ||
-      id.includes('/@lit/') ||
-      id.includes('/lit-html/') ||
-      id.includes('/@w3m/') ||
-      id.includes('/@reown/')
-  ],
-  ['vendor-element-plus', (id) => id.includes('/element-plus/')],
+  // NOTE: We deliberately do NOT define a `vendor-web3` chunk here. Forcing
+  // every Web3 dependency into one giant chunk causes Rollup to hoist shared
+  // helpers (notably Vite's auto-generated `__vitePreload`) into that chunk,
+  // which makes the entry statically depend on it. The browser then preloads
+  // ~2 MB / 650 KB-gz of Solana code on first paint even for users who never
+  // visit a payment page. Letting Rollup pick natural chunk boundaries keeps
+  // Web3 code split across small chunks that are only fetched lazily by
+  // `utils/x402/solana.ts` and `plugins/solana-wallets.ts`.
+  //
+  // Same rationale applies to `element-plus`: although every consumer in `src`
+  // uses selective `import { ElButton } from 'element-plus'` (so tree-shaking
+  // is already at work), forcing all retained components into a single shared
+  // chunk lumps ~115 component subtrees (570 KB / 180 KB-gz) onto the entry's
+  // static graph, because dozens of routes statically import from it. Letting
+  // Rollup do the splitting naturally keeps each component family in a small
+  // chunk co-located with its consumer route. The eager critical path then
+  // only carries the few components that App.vue / Layouts / `vLoading`
+  // actually need (ElConfigProvider, ElTag, ElIcon, ElDialog/Overlay/…).
   ['vendor-vue-router', (id) => id.includes('/vue-router/')],
   ['vendor-vue', (id) => id.includes('/node_modules/vue/') || id.includes('/node_modules/@vue/')],
   ['vendor-codemirror', (id) => id.includes('/codemirror/') || id.includes('/@codemirror/')],
@@ -82,6 +75,12 @@ export default defineConfig((config: ConfigEnv) => {
       }
     },
     build: {
+      // Computing gzip size for ~10 MB of chunks blows past the 2 GB V8
+      // heap on Cloudflare Workers Builds. The report is stdout-only,
+      // so disabling it costs nothing functional and shaves ~15 s off
+      // every build (also resolves the OOM crash at the
+      // `computing gzip size` step).
+      reportCompressedSize: false,
       rollupOptions: {
         output: {
           manualChunks(id) {

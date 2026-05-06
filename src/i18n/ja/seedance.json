@@ -76,12 +76,12 @@
     "description": "サービス階層の説明"
   },
   "serviceTier.default": {
-    "message": "デフォルト",
+    "message": "default",
     "description": "デフォルト階層"
   },
   "serviceTier.flex": {
-    "message": "フレックス",
-    "description": "フレックス階層"
+    "message": "flex",
+    "description": "フレキシブル階層"
   },
   "name.returnLastFrame": {
     "message": "最後のフレームを返す",
@@ -93,7 +93,7 @@
   },
   "name.firstFrame": {
     "message": "最初のフレーム画像",
-    "description": "最初のフレーム画像アップロードラベル"
+    "description": "最初のフレーム画像のアップロードラベル"
   },
   "description.firstFrame": {
     "message": "オプション。参照用/最初のフレーム画像をアップロードします。",
@@ -101,7 +101,7 @@
   },
   "name.lastFrame": {
     "message": "最後のフレーム画像",
-    "description": "最後のフレーム画像アップロードラベル"
+    "description": "最後のフレーム画像のアップロードラベル"
   },
   "description.lastFrame": {
     "message": "オプション。最後のフレーム画像をアップロードします（最初のフレームが必要です）。",
@@ -121,11 +121,11 @@
   },
   "button.on": {
     "message": "オン",
-    "description": "スイッチオンの文言"
+    "description": "スイッチのオン文言"
   },
   "button.off": {
     "message": "オフ",
-    "description": "スイッチオフの文言"
+    "description": "スイッチのオフ文言"
   },
   "message.startingTask": {
     "message": "SeeDance タスクを開始しています…",
@@ -136,7 +136,7 @@
     "description": "タスク開始成功の提示"
   },
   "message.startTaskFailed": {
-    "message": "開始失敗：",
+    "message": "開始に失敗しました：",
     "description": "タスク開始失敗の提示"
   },
   "message.usedUp": {
@@ -148,7 +148,7 @@
     "description": "アップロード超過の提示"
   },
   "message.uploadError": {
-    "message": "アップロード失敗",
+    "message": "アップロードに失敗しました",
     "description": "アップロード失敗の提示"
   },
   "message.downloadVideo": {
@@ -170,6 +170,10 @@
   "name.traceId": {
     "message": "トレース ID",
     "description": "トレース ID ラベル"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
   },
   "name.failure": {
     "message": "失敗",

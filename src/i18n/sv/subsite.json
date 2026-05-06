@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "Mina underdomäner",
+    "description": "Huvudrubrik för underdomänshantering"
+  },
+  "title.create": {
+    "message": "Skapa underdomän",
+    "description": "Rubrik för dialogrutan för att skapa en ny underdomän"
+  },
+  "title.openNow": {
+    "message": "Öppna underdomän nu",
+    "description": "Rubrik för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
+  },
+  "field.slug": {
+    "message": "Underdomänprefix",
+    "description": "Rubrik för inmatningsfältet för slug"
+  },
+  "field.origin": {
+    "message": "Underdomänens domännamn",
+    "description": "Domännamns kolumn i underdomänlistan"
+  },
+  "field.title": {
+    "message": "Underdomänens titel",
+    "description": "Fält för underdomänens titel"
+  },
+  "field.createdAt": {
+    "message": "Skapat den",
+    "description": "Kolumn för skapelsedatum för underdomänen"
+  },
+  "field.actions": {
+    "message": "Åtgärder",
+    "description": "Kolumn för åtgärder i underdomänlistan"
+  },
+  "placeholder.slug": {
+    "message": "t.ex. my-brand",
+    "description": "Platsinnehåll för slug-inmatningsfältet"
+  },
+  "placeholder.title": {
+    "message": "Visas i webbläsartabben och sidhuvudet",
+    "description": "Platsinnehåll för titel-inmatningsfältet"
+  },
+  "button.create": {
+    "message": "Skapa underdomän",
+    "description": "Knapp för att skapa en underdomän"
+  },
+  "button.open": {
+    "message": "Öppna",
+    "description": "Knapp för att öppna underdomänen"
+  },
+  "button.manage": {
+    "message": "Hantera",
+    "description": "Knapp för att gå till inställningarna för underdomänen"
+  },
+  "message.indexTip": {
+    "message": "Skapa självständiga underdomäner under huvuddomänen, varje underdomän kan ha sin egen logotyp, titel och funktioner utan att behöva bygga källkoden separat.",
+    "description": "Förklarande text på startsidan för underdomänshantering"
+  },
+  "message.empty": {
+    "message": "Du har ännu inte skapat några underdomäner. Klicka på 'Skapa underdomän' uppe till höger för att börja.",
+    "description": "Meddelande för tom lista"
+  },
+  "message.slugTip": {
+    "message": "3-32 små bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla på varandra följande bindestreck.",
+    "description": "Förklaring för slug-fältet"
+  },
+  "message.slugInvalid": {
+    "message": "Formatet för underdomänprefixet är felaktigt, vänligen kontrollera reglerna och försök igen.",
+    "description": "Slug-validering misslyckades"
+  },
+  "message.zoneMissing": {
+    "message": "Den aktuella huvuddomänen har inte konfigurerat underdomänens domännamnsområde, vänligen kontakta webbplatsadministratören.",
+    "description": "subdomain_zone saknas"
+  },
+  "message.created": {
+    "message": "Underdomän skapad!",
+    "description": "Skapande lyckades"
+  },
+  "message.createFailed": {
+    "message": "Misslyckades med att skapa underdomän, vänligen försök igen senare.",
+    "description": "Skapande misslyckades"
+  },
+  "message.loadFailed": {
+    "message": "Misslyckades med att ladda underdomänlistan.",
+    "description": "Misslyckades med att hämta listan"
+  },
+  "message.openNowConfirm": {
+    "message": "Underdomänen {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
+    "description": "Fråga om att öppna direkt efter skapande"
+  },
+  "title.domains": {
+    "message": "Anpassade domännamn för {origin}",
+    "description": "Rubrik för dialogrutan för anpassade domännamn"
+  },
+  "title.bindDomain": {
+    "message": "Bind ny domän",
+    "description": "Rubrik för bindningsformuläret"
+  },
+  "button.domains": {
+    "message": "Domäner",
+    "description": "Knapp för att öppna dialogrutan för domänhantering"
+  },
+  "button.bindDomain": {
+    "message": "Bind domän",
+    "description": "Skicka bindning av ny domän"
+  },
+  "button.verify": {
+    "message": "Verifiera nu",
+    "description": "Kontrollera om domänen kan lösas och certifikat kan utfärdas via vår omvända proxy"
+  },
+  "button.refresh": {
+    "message": "Uppdatera",
+    "description": "Hämta status för domänen igen"
+  },
+  "field.hostname": {
+    "message": "Din domän",
+    "description": "Ange domän eller underdomän som du äger"
+  },
+  "field.recordType": {
+    "message": "Posttyp",
+    "description": "Kolumn för DNS-posttyp"
+  },
+  "field.recordName": {
+    "message": "Postnamn",
+    "description": "Kolumn för DNS-postnamn"
+  },
+  "field.recordValue": {
+    "message": "Postvärde",
+    "description": "Kolumn för DNS-postvärde"
+  },
+  "placeholder.hostname": {
+    "message": "t.ex. studio.mybrand.com",
+    "description": "Platsinnehåll för hostname-inmatningsfältet"
+  },
+  "message.domainsIntro": {
+    "message": "Bind domänen du äger till denna underdomän. Du behöver kunna ändra DNS för den domänen. Följ instruktionerna nedan för att lägga till en CNAME-post och klicka sedan på 'Verifiera nu', så kommer vi automatiskt att utfärda och förnya HTTPS-certifikat gratis via Let's Encrypt.",
+    "description": "Förklarande text i dialogrutan"
+  },
+  "message.domainsEmpty": {
+    "message": "Inga anpassade domännamn har bundits än. Fyll i det fullständiga domännamnet i formuläret nedan och klicka på 'Bind' för att börja.",
+    "description": "Meddelande för tom lista"
+  },
+  "message.hostnameTip": {
+    "message": "Måste vara en offentlig domän som du kan kontrollera DNS för.",
+    "description": "Tips för hostname-inmatning"
+  },
+  "message.hostnameInvalid": {
+    "message": "Domänformatet är felaktigt. Måste vara en offentlig domän som kan lösas, IP-adresser är inte tillåtna.",
+    "description": "Validering av hostname misslyckades"
+  },
+  "message.domainCreated": {
+    "message": "Domänen har skickats, vänligen lägg till CNAME-posten enligt instruktionerna.",
+    "description": "POST /site-domains/ lyckades"
+  },
+  "message.domainCreateFailed": {
+    "message": "Misslyckades med att skapa domän, vänligen försök igen senare.",
+    "description": "Skapande misslyckades"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Misslyckades med att ladda domänlistan.",
+    "description": "Misslyckades med att hämta domänlistan"
+  },
+  "message.domainActive": {
+    "message": "Domänen är aktiv! Du kan nu nå underdomänen via din anpassade HTTPS-adress.",
+    "description": "Går in i aktivt tillstånd"
+  },
+  "message.domainFailed": {
+    "message": "Domänverifiering eller lansering misslyckades.",
+    "description": "Failed 状态兑底文案"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verifiering misslyckades, kontrollera att CNAME-posten pekar på vår omvända proxy och att DNS-spridningen är klar.",
+    "description": "verify 接口 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Är du säker på att du vill avbinda {hostname}? Efter avbindning kan användare inte nå din underdomän från denna domän.",
+    "description": "删除确认"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Borttagning av domän misslyckades.",
+    "description": "DELETE 接口 5xx"
+  },
+  "status.pending": {
+    "message": "Väntar på verifiering",
+    "description": "Pending 状态标签：väntar på att användaren lägger till CNAME och klickar på 'Verifiera nu'"
+  },
+  "status.active": {
+    "message": "Aktiv",
+    "description": "Active 状态标签"
+  },
+  "status.failed": {
+    "message": "Misslyckades",
+    "description": "Failed 状态标签"
+  }
+}

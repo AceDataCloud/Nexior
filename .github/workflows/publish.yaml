@@ -17,15 +17,16 @@ jobs:
           persist-credentials: false
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20'
+          cache: npm
 
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
       - name: Setup .npmrc
         run: |
@@ -39,7 +40,32 @@ jobs:
           git config --global user.email 'actions@github.com'
           git remote set-url origin "https://${{ secrets.BOT_GITHUB_TOKEN }}@github.com/AceDataCloud/Nexior"
 
+      # Auto-recover from "version already exists" errors caused by partial
+      # publishes (npm push succeeded, git push failed). If the local
+      # package.json baseline is behind the npm registry's latest version,
+      # bump the baseline so beachball computes a fresh next version instead
+      # of trying to re-publish an already-taken one.
+      - name: Sync package.json baseline to npm latest
+        run: |
+          set -e
+          PKG=$(node -p "require('./package.json').name")
+          LOCAL=$(node -p "require('./package.json').version")
+          NPM_LATEST=$(npm view "$PKG" version 2>/dev/null || true)
+          if [ -z "$NPM_LATEST" ]; then
+            echo "Could not fetch npm latest for $PKG; skipping baseline sync."
+            exit 0
+          fi
+          HIGHER=$(node -e "const s=require('semver'); console.log(s.gt(process.argv[1], process.argv[2]) ? '1' : '0')" "$NPM_LATEST" "$LOCAL")
+          if [ "$HIGHER" = "1" ]; then
+            echo "::warning::Local package.json version ($LOCAL) is behind npm registry ($NPM_LATEST). Syncing baseline so beachball can publish."
+            sed -i.bak -E "s/(\"version\": \")[^\"]+(\")/\\1${NPM_LATEST}\\2/" package.json
+            rm -f package.json.bak
+            echo "package.json baseline now at $NPM_LATEST"
+          else
+            echo "Local version ($LOCAL) >= npm registry ($NPM_LATEST). No sync needed."
+          fi
+
       - name: Publish
-        run: yarn release
+        run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -767,6 +767,22 @@
     "message": "输入修改指令，例如：让歌词更欢快...",
     "description": "歌词增强输入占位符"
   },
+  "placeholder.lyricsTheme": {
+    "message": "例如：一首关于秋日思念的舒缓民谣",
+    "description": "AI 生成歌词主题输入占位符"
+  },
+  "message.lyricsThemePromptTitle": {
+    "message": "AI 生成歌词",
+    "description": "AI 生成歌词输入弹窗标题"
+  },
+  "message.lyricsThemePromptMessage": {
+    "message": "请描述这首歌想表达的主题或故事，AI 会据此生成歌词",
+    "description": "AI 生成歌词输入弹窗的说明文本"
+  },
+  "message.lyricsThemeRequired": {
+    "message": "请先描述一下歌曲主题",
+    "description": "主题输入为空时的校验提示"
+  },
   "message.enhancingLyrics": {
     "message": "正在增强歌词...",
     "description": "增强歌词时的消息"
@@ -890,5 +906,33 @@
   "name.generating": {
     "message": "生成中",
     "description": "歌曲正在生成的状态标签"
+  },
+  "button.adjust_speed": {
+    "message": "调整速度",
+    "description": "调整歌曲播放速度的按钮文本"
+  },
+  "button.reuse_prompt": {
+    "message": "复用提示词",
+    "description": "复用已有任务提示词的按钮文本"
+  },
+  "name.adjustSpeed": {
+    "message": "速度",
+    "description": "速度选择器的标签"
+  },
+  "description.adjustSpeed": {
+    "message": "以不同的播放速度重新生成歌曲（0.5 倍到 2 倍）",
+    "description": "调整速度功能的描述"
+  },
+  "message.reusePromptSuccess": {
+    "message": "提示词已复用，可调整后再次生成",
+    "description": "复用提示词成功后的提示信息"
+  },
+  "message.reusePromptEmpty": {
+    "message": "没有可复用的提示词数据",
+    "description": "当任务没有提示词可复用时的提示"
+  },
+  "name.lyricsMode": {
+    "message": "歌词模式",
+    "description": "歌词模式选择器的标签（手动 / 自动）"
   }
 }

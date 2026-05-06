@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Προσαρμοσμένο API Key",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Προσθήκη API Key",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Επεξεργασία API Key",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Διαγραφή API Key",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Χρησιμοποιήστε το δικό σας API Key από τον πάροχο (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) αντί για την πισίνα λογαριασμών της πλατφόρμας. Μετά τη ρύθμιση, τα αιτήματα συνομιλίας για το αντίστοιχο μοντέλο θα καλούν απευθείας την υπηρεσία του παρόχου σας με το Key σας, χωρίς να καταναλώνουν πιστώσεις της πλατφόρμας. Οι κλήσεις εργαλείων, αναφορές, έργα, ιστορικό cloud και άλλες λειτουργίες θα λειτουργούν κανονικά.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Πάροχος",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Σημείωση",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "π.χ. \"Ο λογαριασμός μου\" (προαιρετικό)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Αφήστε κενό για να διατηρήσετε το τρέχον Key",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Προσαρμοσμένο Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Αφήστε κενό για να χρησιμοποιήσετε τη προεπιλεγμένη διεύθυνση του παρόχου",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Ενεργό",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Τελευταία χρήση",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Ημερομηνία προσθήκης",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Ενεργό",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Μη ενεργό",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Ποτέ δεν χρησιμοποιήθηκε",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Προεπιλογή",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Προσθήκη API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Επεξεργασία",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Δοκιμή",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Διαγραφή",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Αποθήκευση",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Ακύρωση",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Επιβεβαίωση διαγραφής αυτού του API Key; Οι επόμενες συνομιλίες του μοντέλου {provider} θα επιστρέψουν στην προεπιλεγμένη υπηρεσία της πλατφόρμας.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Το API Key διαγράφηκε.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Το API Key αποθηκεύτηκε.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Η σύνδεση είναι καλή.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Η δοκιμή απέτυχε: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Η φόρτωση των πιστοποιητικών απέτυχε.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Η αποθήκευση των πιστοποιητικών απέτυχε.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Δεν έχει ρυθμιστεί κανένα προσαρμοσμένο API Key. Κάντε κλικ στο \"Προσθήκη API Key\" για να χρησιμοποιήσετε τον λογαριασμό του παρόχου σας.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Εμφάνιση προηγμένων επιλογών",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Προαιρετικό. Προσαρμοσμένη διεύθυνση ανώτερης υπηρεσίας (για OpenRouter, αυτοσχέδιο proxy, εταιρική πύλη κ.λπ.). Επιτρέπεται μόνο HTTPS, δεν μπορεί να δείχνει σε εσωτερικές/loopback διευθύνσεις.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Χρησιμοποιείται το προσαρμοσμένο API Key {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Η τρέχουσα συνομιλία χρησιμοποιεί το API Key σας από τον {provider}, οι χρεώσεις θα χρεωθούν στον λογαριασμό {provider}, χωρίς να αφαιρούνται από την πλατφόρμα.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Κάντε κλικ για να ανοίξετε τις ρυθμίσεις του API Key",
+    "description": "Υπόδειξη μετά το κλικ στο badge BYOK στη σελίδα συνομιλίας: κάντε κλικ για να ανοίξετε την καρτέλα ρυθμίσεων του API Key."
+  },
+  "button.testConnection": {
+    "message": "Δοκιμή",
+    "description": "Κουμπί στο παράθυρο προσθήκης/επεξεργασίας — δοκιμάζει μόνο την τρέχουσα ρύθμιση της φόρμας, χωρίς να αποθηκεύει τα πιστοποιητικά."
+  },
+  "test.success": {
+    "message": "Η δοκιμή συνδεσιμότητας ήταν επιτυχής",
+    "description": "Τίτλος επιτυχίας στην περιοχή αποτελεσμάτων δοκιμής συνδεσιμότητας."
+  },
+  "test.failure": {
+    "message": "Η δοκιμή συνδεσιμότητας απέτυχε",
+    "description": "Τίτλος αποτυχίας στην περιοχή αποτελεσμάτων δοκιμής συνδεσιμότητας."
+  },
+  "test.endpoint": {
+    "message": "Διεύθυνση αιτήματος",
+    "description": "Ετικέτα URL αιτήματος στα αποτελέσματα δοκιμής."
+  },
+  "test.status": {
+    "message": "Κωδικός κατάστασης",
+    "description": "Ετικέτα HTTP κωδικού κατάστασης στα αποτελέσματα δοκιμής."
+  },
+  "test.message": {
+    "message": "Απάντηση ανώτερης υπηρεσίας",
+    "description": "Ετικέτα κειμένου σφάλματος/υπόδειξης ανώτερης υπηρεσίας στα αποτελέσματα δοκιμής."
+  },
+  "providerDesc.openai": {
+    "message": "Αντικαθιστά τα αιτήματα συνομιλίας του ChatGPT (GPT-4 / GPT-4o / o1 / o3 κ.λπ.) της πλατφόρμας.",
+    "description": "Υπότιτλος επιλογής OpenAI στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.anthropic": {
+    "message": "Αντικαθιστά τα αιτήματα συνομιλίας του Claude (Sonnet / Opus / Haiku κ.λπ.) της πλατφόρμας.",
+    "description": "Υπότιτλος επιλογής Anthropic στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.google": {
+    "message": "Αντικαθιστά τα αιτήματα συνομιλίας του Gemini (Pro / Flash σειρά) της πλατφόρμας.",
+    "description": "Υπότιτλος επιλογής Google στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.xai": {
+    "message": "Αντικαθιστά τα αιτήματα συνομιλίας του Grok της πλατφόρμας.",
+    "description": "Υπότιτλος επιλογής xAI στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.deepseek": {
+    "message": "Αντικαθιστά τα αιτήματα συνομιλίας του DeepSeek (V3 / R1 κ.λπ.) της πλατφόρμας.",
+    "description": "Υπότιτλος επιλογής DeepSeek στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.moonshot": {
+    "message": "Αντικαταστήστε το αίτημα συνομιλίας Kimi αυτού του ιστότοπου.",
+    "description": "Υπότιτλος για την επιλογή Moonshot (Kimi) στο αναπτυσσόμενο μενού παρόχων."
+  },
+  "providerDesc.zhipu": {
+    "message": "Αντικαταστήστε τα αιτήματα συνομιλίας της σειράς GLM του ιστότοπου.",
+    "description": "Υπότιτλος για την επιλογή Zhipu (GLM) στο αναπτυσσόμενο μενού παρόχων."
+  }
+}

@@ -31,7 +31,6 @@ import serp from './serp';
 import wan from './wan';
 import site from './site';
 import profile from './profile';
-import connectors from './connectors';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
@@ -55,12 +54,16 @@ import {
   ROUTE_SORA_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
-  ROUTE_SERP_INDEX
+  ROUTE_SERP_INDEX,
+  ROUTE_NOT_FOUND
 } from './constants';
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
+import { ensureStoreModule } from '@/store/lazy';
+import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
+import { handleChunkLoadError } from '@/utils/chunkLoadError';
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -224,50 +227,53 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   }
 };
 
-// Map every routeable feature key to the route name it should land on.
-// Note: this map only declares "this feature has a landing page". The order
-// of the user's default route is taken from the site's `features` config
-// (insertion order returned by the API), NOT from this map — so operators
-// can control which feature greets new visitors by ordering site.features.
-const FEATURE_ROUTE_NAME: Record<string, string> = {
-  chatgpt: ROUTE_CHATGPT_CONVERSATION_NEW,
-  deepseek: ROUTE_DEEPSEEK_CONVERSATION_NEW,
-  grok: ROUTE_GROK_CONVERSATION_NEW,
-  gemini: ROUTE_GEMINI_CONVERSATION_NEW,
-  claude: ROUTE_CLAUDE_CONVERSATION_NEW,
-  kimi: ROUTE_KIMI_CONVERSATION_NEW,
-  midjourney: ROUTE_MIDJOURNEY_INDEX,
-  flux: ROUTE_FLUX_INDEX,
-  nanobanana: ROUTE_NANOBANANA_INDEX,
-  openaiimage: ROUTE_OPENAIIMAGE_INDEX,
-  seedream: ROUTE_SEEDREAM_INDEX,
-  suno: ROUTE_SUNO_INDEX,
-  producer: ROUTE_PRODUCER_INDEX,
-  seedance: ROUTE_SEEDANCE_INDEX,
-  luma: ROUTE_LUMA_INDEX,
-  hailuo: ROUTE_HAILUO_INDEX,
-  kling: ROUTE_KLING_INDEX,
-  veo: ROUTE_VEO_INDEX,
-  sora: ROUTE_SORA_INDEX,
-  pixverse: ROUTE_PIXVERSE_INDEX,
-  wan: ROUTE_WAN_INDEX,
-  serp: ROUTE_SERP_INDEX
-};
+// Ordered priority list: each entry is [feature key, landing route name].
+// `getDefaultRoute()` walks this list top-to-bottom and picks the first
+// feature that is enabled in `site.features`. This order — NOT the order
+// of keys in the API response — controls which feature greets new visitors.
+//
+// Why not trust `site.features` insertion order? `Site.features` is stored
+// in PostgreSQL `jsonb`, which does NOT preserve key order across writes:
+// any partial update can shuffle keys. Relying on that order has bitten us
+// (e.g. studio.acedata.cloud landed on /veo because `veo` happened to be
+// the first key after a feature toggle re-serialized the jsonb blob).
+const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
+  ['chatgpt', ROUTE_CHATGPT_CONVERSATION_NEW],
+  ['claude', ROUTE_CLAUDE_CONVERSATION_NEW],
+  ['gemini', ROUTE_GEMINI_CONVERSATION_NEW],
+  ['grok', ROUTE_GROK_CONVERSATION_NEW],
+  ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW],
+  ['kimi', ROUTE_KIMI_CONVERSATION_NEW],
+  ['midjourney', ROUTE_MIDJOURNEY_INDEX],
+  ['nanobanana', ROUTE_NANOBANANA_INDEX],
+  ['flux', ROUTE_FLUX_INDEX],
+  ['seedream', ROUTE_SEEDREAM_INDEX],
+  ['openaiimage', ROUTE_OPENAIIMAGE_INDEX],
+  ['suno', ROUTE_SUNO_INDEX],
+  ['producer', ROUTE_PRODUCER_INDEX],
+  ['veo', ROUTE_VEO_INDEX],
+  ['sora', ROUTE_SORA_INDEX],
+  ['kling', ROUTE_KLING_INDEX],
+  ['luma', ROUTE_LUMA_INDEX],
+  ['hailuo', ROUTE_HAILUO_INDEX],
+  ['seedance', ROUTE_SEEDANCE_INDEX],
+  ['pixverse', ROUTE_PIXVERSE_INDEX],
+  ['wan', ROUTE_WAN_INDEX],
+  ['serp', ROUTE_SERP_INDEX]
+];
 
 const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
-  // Walk site.features in the order the API returned them and pick the
-  // first enabled feature that maps to a known landing route.
-  for (const key of Object.keys(features)) {
-    if (!features[key]?.enabled) continue;
-    const name = FEATURE_ROUTE_NAME[key];
-    // IMPORTANT: must return { name } — returning a bare string makes
-    // vue-router treat it as a *path*, which would navigate to e.g.
-    // /chatgpt-conversation-new (the route name) instead of the actual
-    // path /chatgpt/conversations.
-    if (name) return { name };
+  for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
+    if (features[key]?.enabled) {
+      // IMPORTANT: must return { name } — returning a bare string makes
+      // vue-router treat it as a *path*, which would navigate to e.g.
+      // /chatgpt-conversation-new (the route name) instead of the actual
+      // path /chatgpt/conversations.
+      return { name };
+    }
   }
-  // Fallback: if no enabled feature has a landing route, use chatgpt.
+  // Fallback: if no priority feature is enabled, use chatgpt.
   return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
 };
 
@@ -313,7 +319,18 @@ const routes = [
   download,
   site,
   profile,
-  connectors
+  {
+    path: '/:pathMatch(.*)*',
+    name: ROUTE_NOT_FOUND,
+    component: () => import('@/layouts/Index.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('@/pages/error/NotFound.vue'),
+        meta: { auth: false }
+      }
+    ]
+  }
 ];
 
 const router = createRouter({
@@ -321,9 +338,40 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach(async (_to, _from, next) => {
+router.onError((error) => {
+  handleChunkLoadError(error);
+});
+
+router.beforeEach(async (to, _from, next) => {
   const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
   await setI18nLanguage(locale);
+
+  // Cross-site identity guard: handle `?user_id=<id>` query param attached by
+  // outbound links from sibling sub-sites (auth / platform). See
+  // `src/utils/crossSiteUser.ts` for the full contract.
+  const decision = evaluateUserIdGuard(to);
+  if (decision.kind === 'strip') {
+    return next(decision.redirect);
+  }
+  if (decision.kind === 'mismatch') {
+    // Helper has already triggered a full-page SSO redirect; abort.
+    return next(false);
+  }
+
+  // Lazily register the per-app Vuex store module owned by this route. The
+  // mapping is `meta.appName` → store module name (set in each
+  // `src/router/<app>.ts`); routes without a per-app module (auth, console,
+  // profile, distribution, download, site) skip this branch entirely.
+  // Resolving the dynamic import here means the module's actions/mutations,
+  // its operator(s) and its model bindings are only fetched the first time
+  // the user navigates into that section of the app.
+  for (const matched of to.matched) {
+    const appName = matched.meta?.appName;
+    if (typeof appName === 'string' && appName) {
+      await ensureStoreModule(appName);
+    }
+  }
+
   return next();
 });
 
@@ -338,10 +386,13 @@ router.afterEach((to) => {
       description: seoData.description,
       keywords: seoData.keywords
     });
+    // Use the current origin so the WebApplication schema URL reflects the
+    // hostname the visitor is actually on (studio.acedata.cloud, hub.acedata.cloud, etc.).
+    const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://studio.acedata.cloud';
     setWebApplicationSchema({
       name: seoData.title,
       description: seoData.description,
-      url: `https://hub.acedata.cloud/${prefix}`,
+      url: `${origin}/${prefix}`,
       category: seoData.category
     });
   } else {

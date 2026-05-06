@@ -19,12 +19,16 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
+  },
   "name.createdAt": {
     "message": "Skapat den",
-    "description": "Datum och tid för skapande av Sora-video"
+    "description": "Datum och tid för att generera Sora-video"
   },
   "name.startEndImage": {
-    "message": "Start/Slut bild",
+    "message": "Start/Slut bildreferens",
     "description": "Formulärfältets etikett: Start/Slut bildreferens (håll det kort för att undvika att dölja knappen)"
   },
   "name.action": {
@@ -37,7 +41,7 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversionen som används för att generera videon"
+    "description": "Modellversionen som används för att generera video"
   },
   "name.soraBot": {
     "message": "OpenAI Sora Bot",
@@ -72,7 +76,7 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array av bildreferenslänkar, den första är startbilden, den andra är slutbilden",
+    "message": "Array av referensbildlänkar, den första är startbilden, följt av slutbilden",
     "description": "Beskrivning av parametern 'image_url'"
   },
   "status.pending": {
@@ -104,8 +108,8 @@
     "description": "Platshållare för positionsinmatning"
   },
   "tip.proOnly": {
-    "message": "Endast sora-2-pro-modellen stöder ändring av denna parameter",
-    "description": "Tips till användaren att endast professionella modeller stöder ändring av denna parameter"
+    "message": "Endast sora-2-pro modellen stödjer ändring av denna parameter",
+    "description": "Tips till användaren att endast professionella modeller stödjer ändring av denna parameter"
   },
   "button.generate": {
     "message": "Generera",
@@ -124,8 +128,8 @@
     "description": "Knapptext för att ladda ner video"
   },
   "button.uploadImageUrl": {
-    "message": "Ladda upp bild",
-    "description": "Knapptext för att ladda upp bild (förenkla till 'Ladda upp')"
+    "message": "Ladda upp",
+    "description": "Knapptext för att ladda upp bilder (förenkla till 'Upload')"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
@@ -173,7 +177,7 @@
   },
   "message.generateFailed": {
     "message": "Misslyckades med att generera video",
-    "description": "Meddelande när bildgenereringen misslyckas"
+    "description": "Meddelande när bildgenerering misslyckas"
   },
   "message.uploadVideoExceed": {
     "message": "Antalet uppladdade första bildrutor överskrider gränsen",
@@ -196,20 +200,20 @@
     "description": "Felmeddelande när antalet uppladdade sista bildrutor överskrider gränsen"
   },
   "message.uploadStartImageError": {
-    "message": "Uppladdning av första bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av första bildruta misslyckas"
+    "message": "Misslyckades med att ladda upp första bildrutan",
+    "description": "Felmeddelande när uppladdningen av första bildrutan misslyckas"
   },
   "message.uploadVideoError": {
-    "message": "Uppladdning av video misslyckades",
-    "description": "Felmeddelande när uppladdningen av video misslyckas"
+    "message": "Misslyckades med att ladda upp videon",
+    "description": "Felmeddelande när uppladdningen av videon misslyckas"
   },
   "message.uploadEndImageError": {
-    "message": "Uppladdning av sista bildruta misslyckades",
-    "description": "Felmeddelande när uppladdningen av sista bildruta misslyckas"
+    "message": "Misslyckades med att ladda upp sista bildrutan",
+    "description": "Felmeddelande när uppladdningen av sista bildrutan misslyckas"
   },
   "message.uploadDocumentsError": {
-    "message": "Uppladdning av dokument misslyckades",
-    "description": "Felmeddelande när uppladdningen av dokument misslyckas"
+    "message": "Misslyckades med att ladda upp dokumentet",
+    "description": "Felmeddelande när uppladdningen av dokumentet misslyckas"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",

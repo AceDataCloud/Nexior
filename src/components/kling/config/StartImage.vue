@@ -11,7 +11,8 @@
       v-model:file-list="fileList"
       name="file"
       accept=".png,.jpg,.jpeg,.gif,.bmp,.webp"
-      :limit="5"
+      :limit="1"
+      :disabled="reachedLimit"
       class="upload-wrapper"
       :multiple="false"
       :action="uploadUrl"
@@ -30,17 +31,21 @@
           @remove="fileList.splice(fileList.indexOf(file), 1)"
         />
       </template>
-      <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
-        {{ $t('kling.button.uploadReferences') }}
-      </el-button>
+      <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
+        <span>
+          <el-button round type="primary" size="small" class="btn btn-upload" :disabled="reachedLimit">
+            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            {{ $t('kling.button.uploadReferences') }}
+          </el-button>
+        </span>
+      </el-tooltip>
     </el-upload>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
+import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -56,6 +61,7 @@ export default defineComponent({
   components: {
     ElUpload,
     ElButton,
+    ElTooltip,
     InfoIcon,
     FontAwesomeIcon,
     ImagePreview
@@ -77,6 +83,9 @@ export default defineComponent({
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    },
+    reachedLimit(): boolean {
+      return (this.fileList?.length || 0) >= 1;
     },
     value: {
       get() {
@@ -137,6 +146,18 @@ export default defineComponent({
   .el-upload-list {
     margin: 0;
     width: 100%;
+  }
+  // Element Plus's default `.el-upload-list--picture .el-upload-list__item` has
+  // 92px height and 90px left padding to host its built-in thumbnail. We use a
+  // custom #file slot rendering a 50x50 ImagePreview, so those defaults leave a
+  // big empty rectangle to the left of the preview. Neutralize them.
+  .el-upload-list--picture .el-upload-list__item {
+    height: auto;
+    padding: 0;
+    margin: 8px 0 0;
+    border: none;
+    background-color: transparent;
+    overflow: visible;
   }
 }
 </style>

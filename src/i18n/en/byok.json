@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Custom API Key",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Add API Key",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Edit API Key",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Delete API Key",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Use your own service provider API Key (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) instead of the platform account pool. Once configured, the dialogue requests for the corresponding model will directly call the upstream service provider with your Key, without consuming platform credits; tool calls, references, artifacts, cloud history, and other functions will work as usual.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Provider",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Label",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "e.g. \"My Work ID\" (optional)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Leave blank to keep current Key unchanged",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Custom Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Leave blank to use provider's default address",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Active",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Last Used",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Added On",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Active",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Inactive",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Never Used",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Default",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Add API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Edit",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Test",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Delete",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Save",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Cancel",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Confirm deletion of this API Key? Subsequent {provider} model dialogues will revert to the platform's default upstream.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key has been deleted.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key has been saved.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Connection is normal.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test failed: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Failed to load credentials.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Failed to save credentials.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "No custom API Key configured yet. Click \"Add API Key\" to use your own service provider account.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Show Advanced Options",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Optional. Custom upstream address (for OpenRouter, self-built reverse proxy, enterprise gateway, etc.). Only HTTPS is allowed, cannot point to internal network/loopback addresses.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Using custom {provider} API Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "The current dialogue is using your {provider} API Key, with costs settled by the {provider} account, not deducted from platform balance.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Click to open API Key settings",
+    "description": "Prompt after clicking the BYOK badge on the chat page: Click to open the API Key tab in the settings dialog."
+  },
+  "button.testConnection": {
+    "message": "Test",
+    "description": "Button in the add/edit dialog—only tests the current form configuration, does not save credentials."
+  },
+  "test.success": {
+    "message": "Connectivity test successful",
+    "description": "Success title in the connectivity test results area."
+  },
+  "test.failure": {
+    "message": "Connectivity test failed",
+    "description": "Failure title in the connectivity test results area."
+  },
+  "test.endpoint": {
+    "message": "Request URL",
+    "description": "Label for the request URL in the test results details."
+  },
+  "test.status": {
+    "message": "Status Code",
+    "description": "Label for the HTTP status code in the test results details."
+  },
+  "test.message": {
+    "message": "Upstream Response",
+    "description": "Label for the upstream error/message text in the test results details."
+  },
+  "providerDesc.openai": {
+    "message": "Replace ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) dialogue requests on this site.",
+    "description": "Subtitle for the OpenAI option in the provider dropdown."
+  },
+  "providerDesc.anthropic": {
+    "message": "Replace Claude (Sonnet / Opus / Haiku, etc.) dialogue requests on this site.",
+    "description": "Subtitle for the Anthropic option in the provider dropdown."
+  },
+  "providerDesc.google": {
+    "message": "Replace Gemini (Pro / Flash series) dialogue requests on this site.",
+    "description": "Subtitle for the Google option in the provider dropdown."
+  },
+  "providerDesc.xai": {
+    "message": "Replace Grok dialogue requests on this site.",
+    "description": "Subtitle for the xAI option in the provider dropdown."
+  },
+  "providerDesc.deepseek": {
+    "message": "Replace DeepSeek (V3 / R1, etc.) dialogue requests on this site.",
+    "description": "Subtitle for the DeepSeek option in the provider dropdown."
+  },
+  "providerDesc.moonshot": {
+    "message": "Replace Kimi conversation requests on this site.",
+    "description": "Subtitle for the Moonshot (Kimi) option in the provider dropdown."
+  },
+  "providerDesc.zhipu": {
+    "message": "Replace the site's GLM series dialogue requests.",
+    "description": "Subtitle for the Zhipu (GLM) option in the provider dropdown."
+  }
+}

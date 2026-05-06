@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "自訂 API 金鑰",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "新增 API 金鑰",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "編輯 API 金鑰",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "刪除 API 金鑰",
+    "description": ""
+  },
+  "description.list": {
+    "message": "使用您自己的服務商 API 金鑰（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智譜）取代平台帳戶池。配置後，對應模型的對話請求將直接以您的金鑰調用上游服務商，不消耗平台信用；工具調用、引用、工件、雲端歷史等其他功能照常運作。",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "服務商",
+    "description": ""
+  },
+  "field.label": {
+    "message": "備註",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "如 \"我的工作號\"（可選）",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API 金鑰",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "留空表示保持當前金鑰不變",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "自訂 Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "留空使用服務商預設地址",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "啟用",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "上次使用",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "添加時間",
+    "description": ""
+  },
+  "value.active": {
+    "message": "啟用中",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "未啟用",
+    "description": ""
+  },
+  "value.never": {
+    "message": "從未使用",
+    "description": ""
+  },
+  "value.default": {
+    "message": "預設",
+    "description": ""
+  },
+  "button.add": {
+    "message": "新增 API 金鑰",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "編輯",
+    "description": ""
+  },
+  "button.test": {
+    "message": "測試",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "刪除",
+    "description": ""
+  },
+  "button.save": {
+    "message": "儲存",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "確認刪除這個 API 金鑰？後續 {provider} 模型的對話將回落到平台預設上游。",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API 金鑰已刪除。",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API 金鑰已儲存。",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "連接正常。",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "測試失敗：{message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "憑據加載失敗。",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "儲存憑據失敗。",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "尚未配置自訂 API 金鑰。點擊\"新增 API 金鑰\"以使用您自己的服務商帳戶。",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "顯示進階選項",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "可選。自訂上游地址（用於 OpenRouter、自建反向代理、企業網關等）。僅允許 HTTPS，不能指向內網/回環地址。",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "正在使用自訂 {provider} API 金鑰",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "當前對話正在使用您的 {provider} API 金鑰，費用由 {provider} 帳戶結算，不扣減平台餘額。",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "點擊可打開 API 金鑰設定",
+    "description": "聊天頁面 BYOK 徽章點擊後的提示：點擊打開設定對話框的 API 金鑰選項卡。"
+  },
+  "button.testConnection": {
+    "message": "測試",
+    "description": "新增/編輯對話框中的按鈕——只測試當前表單配置，不儲存憑據。"
+  },
+  "test.success": {
+    "message": "連通性測試成功",
+    "description": "連通性測試結果區的成功標題。"
+  },
+  "test.failure": {
+    "message": "連通性測試失敗",
+    "description": "連通性測試結果區的失敗標題。"
+  },
+  "test.endpoint": {
+    "message": "請求地址",
+    "description": "測試結果詳情中的請求 URL 標籤。"
+  },
+  "test.status": {
+    "message": "狀態碼",
+    "description": "測試結果詳情中的 HTTP 狀態碼標籤。"
+  },
+  "test.message": {
+    "message": "上游響應",
+    "description": "測試結果詳情中的上游錯誤/提示文本標籤。"
+  },
+  "providerDesc.openai": {
+    "message": "替換本站 ChatGPT（GPT-4 / GPT-4o / o1 / o3 等）對話請求。",
+    "description": "提供商下拉裡 OpenAI 選項的副標題。"
+  },
+  "providerDesc.anthropic": {
+    "message": "替換本站 Claude（Sonnet / Opus / Haiku 等）對話請求。",
+    "description": "提供商下拉裡 Anthropic 選項的副標題。"
+  },
+  "providerDesc.google": {
+    "message": "替換本站 Gemini（Pro / Flash 系列）對話請求。",
+    "description": "提供商下拉裡 Google 選項的副標題。"
+  },
+  "providerDesc.xai": {
+    "message": "替換本站 Grok 對話請求。",
+    "description": "提供商下拉裡 xAI 選項的副標題。"
+  },
+  "providerDesc.deepseek": {
+    "message": "替換本站 DeepSeek（V3 / R1 等）對話請求。",
+    "description": "提供商下拉裡 DeepSeek 選項的副標題。"
+  },
+  "providerDesc.moonshot": {
+    "message": "替換本站 Kimi 對話請求。",
+    "description": "提供商下拉裡 Moonshot (Kimi) 選項的副標題。"
+  },
+  "providerDesc.zhipu": {
+    "message": "替換本站 GLM 系列對話請求。",
+    "description": "提供商下拉裡 Zhipu (GLM) 選項的副標題。"
+  }
+}

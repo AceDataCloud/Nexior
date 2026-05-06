@@ -6,6 +6,8 @@
  * via the `return_url` query parameter.
  */
 
+import { withCurrentUserId } from './crossSiteUser';
+
 const CONNECTIONS_MANAGER_URL = 'https://auth.acedata.cloud/user/connections';
 
 /**
@@ -14,6 +16,9 @@ const CONNECTIONS_MANAGER_URL = 'https://auth.acedata.cloud/user/connections';
  *
  * Use a new tab (vs same-tab navigation) so the user does not lose
  * their current Nexior context (chat draft, scroll position, etc.).
+ *
+ * Also annotates the URL with `?user_id=<currentUserId>` so AuthFrontend
+ * can detect a cross-site identity mismatch and re-auth.
  */
 export function openConnectionsManager(provider?: string): void {
   const returnUrl = window.location.href;
@@ -22,5 +27,5 @@ export function openConnectionsManager(provider?: string): void {
   if (provider) {
     url.searchParams.set('provider', provider);
   }
-  window.open(url.toString(), '_blank', 'noopener,noreferrer');
+  window.open(withCurrentUserId(url.toString()), '_blank', 'noopener,noreferrer');
 }

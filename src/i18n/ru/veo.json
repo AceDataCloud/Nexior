@@ -13,11 +13,11 @@
   },
   "name.failure": {
     "message": "Ошибка",
-    "description": "Статус ошибки задачи"
+    "description": "Состояние ошибки задачи"
   },
   "name.failureReason": {
     "message": "Причина ошибки",
-    "description": "Причина неудачи задачи"
+    "description": "Причина ошибки задачи"
   },
   "name.status": {
     "message": "Статус",
@@ -27,12 +27,16 @@
     "message": "ID отслеживания",
     "description": "ID отслеживания задачи"
   },
+  "name.elapsed": {
+    "message": "Время выполнения",
+    "description": "Время выполнения задачи (в секундах)"
+  },
   "name.createdAt": {
     "message": "Дата создания",
     "description": "Дата и время создания видео Veo"
   },
   "name.startEndImage": {
-    "message": "Ссылки на начальные/конечные кадры",
+    "message": "Ссылки на начальные и конечные кадры",
     "description": "Метка поля формы: ссылки на начальные/конечные кадры (рекомендуется переводить как 'Start/End Frames', чтобы избежать затруднений с кнопками)"
   },
   "name.action": {
@@ -64,7 +68,7 @@
     "description": "Описание параметра 'translation'"
   },
   "description.imageUrl": {
-    "message": "При создании видео из нескольких изображений необходимо загрузить несколько изображений.",
+    "message": "В задаче по созданию видео из нескольких изображений необходимо загрузить несколько изображений.",
     "description": "Описание параметра 'imageUrl'"
   },
   "description.prompt": {
@@ -77,19 +81,19 @@
   },
   "status.pending": {
     "message": "Ожидание",
-    "description": "Статус ожидания задачи"
+    "description": "Состояние ожидания задачи"
   },
   "status.processing": {
     "message": "Обработка",
-    "description": "Статус обработки задачи"
+    "description": "Состояние обработки задачи"
   },
   "placeholder.paddingNoise": {
     "message": "Пожалуйста, выберите...",
-    "description": "Заполнитель для ввода шума заполнения"
+    "description": "Заполнитель для ввода шумоподавления"
   },
   "placeholder.select": {
     "message": "Выбрать",
-    "description": "Заполнитель в поле выбора"
+    "description": "Заполнитель для поля выбора"
   },
   "placeholder.paddingLevel": {
     "message": "Пожалуйста, выберите...",
@@ -97,7 +101,7 @@
   },
   "placeholder.prompt": {
     "message": "Введите подсказку для стиля видео, например: moving",
-    "description": "Заполнитель в поле подсказки"
+    "description": "Заполнитель для поля подсказки"
   },
   "placeholder.position": {
     "message": "Пожалуйста, выберите...",
@@ -159,9 +163,13 @@
     "message": "Не удалось запустить задачу, пожалуйста, свяжитесь с администратором",
     "description": "Сообщение об ошибке при запуске задачи рисования"
   },
+  "message.imageRequired": {
+    "message": "Сначала загрузите хотя бы одно изображение, прежде чем запускать задачу создания видео из изображений",
+    "description": "Подсказка, когда изображения не загружены в режиме image2video"
+  },
   "message.usedUp": {
     "message": "Ваши кредиты исчерпаны, пожалуйста, купите больше кредитов для продолжения использования",
-    "description": "Сообщение при исчерпании кредитов"
+    "description": "Сообщение, когда кредиты исчерпаны"
   },
   "message.generating": {
     "message": "Генерация...",
@@ -173,11 +181,11 @@
   },
   "message.generateFailed": {
     "message": "Не удалось сгенерировать видео",
-    "description": "Сообщение об ошибке при генерации изображения"
+    "description": "Сообщение при неудачной генерации изображения"
   },
   "message.uploadVideoExceed": {
-    "message": "Количество загружаемых изображений для начального кадра превышает лимит",
-    "description": "Сообщение об ошибке, когда количество загружаемых изображений для начального кадра превышает лимит"
+    "message": "Количество загружаемых изображений первой рамки превышает лимит",
+    "description": "Ошибка, когда количество загружаемых изображений первой рамки превышает лимит"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Размер загружаемого файла не должен превышать 10 МБ!",
@@ -218,5 +226,65 @@
   "message.noTasks": {
     "message": "Нет историй задач, пожалуйста, нажмите слева для генерации видео",
     "description": "Сообщение, когда нет задач"
+  },
+  "name.upsampleAction": {
+    "message": "Цель повышения разрешения",
+    "description": "Целевой формат для /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Движение камеры",
+    "description": "Тип движения камеры для /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Область маски",
+    "description": "Маска изображения для /veo/objects (белые пиксели = область действия)"
+  },
+  "name.videoId": {
+    "message": "ID видео",
+    "description": "ID исходного видео (из data[].id предыдущей задачи генерации)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL маски изображения или base64 закодированный JPEG",
+    "description": "Заполнитель для поля ввода image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Вставьте ID видео или нажмите кнопку действия в списке задач справа для автоматического заполнения",
+    "description": "Заполнитель для поля ввода video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Смешать видео из нескольких изображений",
+    "description": "ingredients2video — объединение 1-3 изображений для создания новой сцены"
+  },
+  "button.actionUpsample": {
+    "message": "Повысить разрешение / Предварительный просмотр GIF",
+    "description": "/veo/upsample — повысить до 1080p/4K или экспортировать GIF"
+  },
+  "button.actionExtend": {
+    "message": "Продлить видео",
+    "description": "/veo/extend — увеличить продолжительность уже сгенерированного видео"
+  },
+  "button.actionReshoot": {
+    "message": "Переснять с другим ракурсом",
+    "description": "/veo/reshoot — пересоздать с тем же содержанием, но с другим движением камеры"
+  },
+  "button.actionObjectInsert": {
+    "message": "Добавить объект",
+    "description": "/veo/objects insert — добавить объект в видео"
+  },
+  "button.actionObjectRemove": {
+    "message": "Удалить объект",
+    "description": "/veo/objects remove — удалить объект из видео с помощью маски"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Повысить до 1080P",
+    "description": "Кнопка операции Preview — повысить разрешение до 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Повысить до 4K",
+    "description": "Кнопка операции Preview — повысить разрешение до 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Экспортировать GIF",
+    "description": "Кнопка операции Preview — преобразовать в GIF для предварительного просмотра"
   }
 }

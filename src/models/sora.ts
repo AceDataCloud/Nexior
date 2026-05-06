@@ -45,6 +45,7 @@ export interface ISoraGenerateResponse {
 export interface ISoraTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: ISoraGenerateRequest;
   response?: ISoraGenerateResponse;
 }

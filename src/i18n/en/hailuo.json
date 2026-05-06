@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Type",
-    "description": "The content type of the Hailuo video to be generated, such as 'link', 'text', etc."
+    "description": "The content type of the Hailuo video to be generated, such as 'Link', 'Text', etc."
   },
   "name.failure": {
     "message": "Failed",
@@ -23,9 +23,13 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The time taken for the task (in seconds)"
+  },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time the Hailuo video was generated"
+    "description": "The date and time when the Hailuo video was generated"
   },
   "name.imageUrl": {
     "message": "Reference Image",
@@ -41,7 +45,7 @@
   },
   "name.ingredients": {
     "message": "Multi-Image",
-    "description": "Switch/label for creating videos with multiple images (keep it short)"
+    "description": "Switch/label for creating videos with multiple images (keep it concise)"
   },
   "name.model": {
     "message": "Model",
@@ -60,7 +64,7 @@
     "description": "The name of the Hailuo video generator"
   },
   "description.ingredients": {
-    "message": "If you want to upload multiple images to create your video, please enable this button.",
+    "message": "Enable this button if you want to upload multiple images to create your video.",
     "description": "Description for the 'ingredients' parameter"
   },
   "description.startImageUrl": {
@@ -68,7 +72,7 @@
     "description": "Description for the 'startImageUrl' parameter"
   },
   "description.prompt": {
-    "message": "The prompt words for generating the Hailuo video",
+    "message": "The prompt for generating the Hailuo video",
     "description": "Description for the 'prompt' parameter"
   },
   "status.pending": {
@@ -165,7 +169,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Task initiated successfully",
-    "description": "Success message when the task is started successfully"
+    "description": "Success message when the task is successfully started"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator",
@@ -181,7 +185,7 @@
   },
   "message.downloadVideo": {
     "message": "Download this video",
-    "description": "Message when the image is being generated"
+    "description": "Message displayed while the image is being generated"
   },
   "message.extendVideo": {
     "message": "Continue generating this video",

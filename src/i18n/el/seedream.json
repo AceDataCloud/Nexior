@@ -1,22 +1,22 @@
 {
   "name.taskId": {
-    "message": "ID Εργασίας",
+    "message": "ID εργασίας",
     "description": "Το ID της εργασίας"
   },
   "name.task": {
-    "message": "Τύπος Εργασίας",
+    "message": "Τύπος εργασίας",
     "description": "Τύπος λειτουργίας εικόνας SeeDream"
   },
   "name.generate": {
-    "message": "Δημιουργία Εικόνας",
+    "message": "Δημιουργία εικόνας",
     "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
   },
   "name.edits": {
-    "message": "Επεξεργασία Εικόνας",
+    "message": "Επεξεργασία εικόνας",
     "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
   },
   "name.imageUrls": {
-    "message": "Αναφορές Εικόνας",
+    "message": "Αναφορές εικόνας",
     "description": "Αναφορές εικόνας για επεξεργασία"
   },
   "name.failure": {
@@ -24,7 +24,7 @@
     "description": "Η εργασία απέτυχε"
   },
   "name.failureReason": {
-    "message": "Λόγος Αποτυχίας",
+    "message": "Λόγος αποτυχίας",
     "description": "Λόγος αποτυχίας της εργασίας"
   },
   "name.status": {
@@ -32,20 +32,24 @@
     "description": "Κατάσταση της εργασίας"
   },
   "name.traceId": {
-    "message": "ID Ιχνηλάτη",
-    "description": "ID ιχνηλάτη"
+    "message": "ID παρακολούθησης",
+    "description": "ID παρακολούθησης"
+  },
+  "name.elapsed": {
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
   },
   "name.prompt": {
-    "message": "Υπόδειξη Εικόνας",
+    "message": "Υπόδειξη εικόνας",
     "description": "Λέξεις-κλειδιά για δημιουργία/επεξεργασία"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Όνομα του γεννήτορα εικόνας SeeDream"
+    "description": "Όνομα του δημιουργού εικόνας SeeDream"
   },
   "name.size": {
     "message": "Μέγεθος",
-    "description": "Μέγεθος εξόδου εικόνας"
+    "description": "Μέγεθος της εξόδου εικόνας"
   },
   "name.watermark": {
     "message": "Υδατογράφημα",
@@ -72,7 +76,7 @@
     "description": "Περιγραφή παραμέτρου εικόνας"
   },
   "status.pending": {
-    "message": "Σε Αναμονή",
+    "message": "Σε αναμονή",
     "description": "Κατάσταση αναμονής της εργασίας"
   },
   "placeholder.select": {
@@ -80,8 +84,8 @@
     "description": "Επιλογή placeholder"
   },
   "placeholder.prompt": {
-    "message": "Εισάγετε λέξεις-κλειδιά, π.χ.: μια λευκή σιαμέζα γάτα",
-    "description": "Placeholder για λέξεις-κλειδιά"
+    "message": "Εισάγετε λέξεις-κλειδιά, π.χ.: μια λευκή Σιαμέζα γάτα",
+    "description": "Placeholder λέξεων-κλειδιών"
   },
   "button.generate": {
     "message": "Δημιουργία",
@@ -89,7 +93,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Ανέβασμα",
-    "description": "Κουμπί για ανέβασμα αναφορών εικόνας (απλοποιήστε στα Αγγλικά σε 'Upload', μην χρησιμοποιήσετε 'Upload Images')"
+    "description": "Κουμπί ανέβασμα αναφορών εικόνας (απλοποιήστε στα Αγγλικά σε 'Upload', μην χρησιμοποιήσετε 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας...",
@@ -104,7 +108,7 @@
     "description": "Αποτυχία δημιουργίας εργασίας"
   },
   "message.usedUp": {
-    "message": "Τα πόντοι σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερους πόντους για να συνεχίσετε",
+    "message": "Τα σημεία σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα σημεία για να συνεχίσετε",
     "description": "Μήνυμα εξάντλησης"
   },
   "message.uploadImageExceed": {
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Επιλογή μοντέλου SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Επιλογή μοντέλου SeeDream 5.0 (υποστηρίζει ομαδική και ροή εξόδου)"
+  },
+  "name.maxImages": {
+    "message": "Αριθμός εικόνων",
+    "description": "Αριθμός εικόνων για ομαδική δημιουργία (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Αριθμός εικόνων που δημιουργούνται σε μία αίτηση (1-15). Αν οριστεί σε 1, είναι σε λειτουργία μεμονωμένης εικόνας; αν είναι μεγαλύτερο από 1, ενεργοποιείται αυτόματα η ομαδική δημιουργία (sequential_image_generation=auto), διατηρώντας τον χαρακτήρα, το στυλ και τις λεπτομέρειες σταυρωτά. Υποστηρίζεται μόνο από doubao-seedream-5.0 / 4.5 / 4.0; αν ανεβάσετε αναφορές εικόνας, πρέπει να πληρούν (αριθμός αναφορών + αριθμός δημιουργίας) ≤ 15. Η χρέωση γίνεται με βάση τον πραγματικό αριθμό εικόνων που δημιουργούνται.",
+    "description": "Περιγραφή παραμέτρου max_images"
   }
 }

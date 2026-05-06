@@ -19,13 +19,14 @@ import { applicationOperator, sunoOperator } from '@/operators';
 import { IApplicationDetailResponse, ISunoAudioRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ISunoTask } from '@/models';
-import { ERROR_CODE_DUPLICATION } from '@/constants';
+import { ERROR_CODE_DUPLICATION, getWebhookCallbackUrl } from '@/constants';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import ConfigPanel from '@/components/suno/ConfigPanel.vue';
 import RecentPanel from '@/components/suno/RecentPanel.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
+const CALLBACK_URL = getWebhookCallbackUrl('suno');
 
 interface IData {
   task: ISunoTask | undefined;
@@ -193,10 +194,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('suno.message.startingTask'));
-      sunoOperator
-        .audio(request, {
-          token
-        })
+      instrumentGeneration('suno', sunoOperator.audio(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('suno.message.startTaskSuccess'));
         })

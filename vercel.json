@@ -1,6 +1,6 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "installCommand": "yarn",
+  "installCommand": "npm ci",
   "routes": [{ "handle": "filesystem" }, { "src": "/(.*)", "dest": "/index.html" }]
 }

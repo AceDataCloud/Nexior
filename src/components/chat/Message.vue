@@ -24,8 +24,17 @@
         class="content"
       >
         <div v-if="!isEditing" class="message-content">
+          <thinking-block
+            v-if="message.role === 'assistant' && message.thinking"
+            :content="message.thinking"
+            :done="message.state === messageState.FINISHED || message.state === messageState.FAILED"
+          />
           <div v-if="!Array.isArray(message.content)">
-            <markdown-renderer v-if="message.role === 'assistant'" :content="message?.content" />
+            <markdown-renderer
+              v-if="message.role === 'assistant'"
+              :content="message?.content"
+              :citations="message.citations"
+            />
             <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ message.content }}</pre>
           </div>
           <div v-else>
@@ -44,10 +53,44 @@
                 class="mt-2"
               />
               <div v-if="item.type === 'text'">
-                <markdown-renderer v-if="message.role === 'assistant'" :content="item.text" />
+                <markdown-renderer
+                  v-if="message.role === 'assistant'"
+                  :content="item.text"
+                  :citations="message.citations"
+                />
                 <pre v-else class="whitespace-pre-wrap break-words w-fit max-w-full py-1">{{ item.text?.trim() }}</pre>
               </div>
-              <tool-activity v-if="item.type === 'tool_use'" :item="item" />
+              <tool-activity
+                v-if="
+                  item.type === 'tool_use' &&
+                  !(
+                    item.tool_name === 'ask_user_question' &&
+                    (item.status === 'awaiting_input' || item.status === 'done')
+                  )
+                "
+                :item="item"
+              />
+              <ask-user-question-card
+                v-if="
+                  item.type === 'tool_use' &&
+                  item.tool_name === 'ask_user_question' &&
+                  item.status === 'awaiting_input' &&
+                  item.pending_question
+                "
+                :tool-use-id="item.tool_id || ''"
+                :payload="item.pending_question"
+                :collapsed="false"
+                @submit="onAskUserQuestionSubmit"
+                @skip="onAskUserQuestionSkip"
+              />
+              <ask-user-question-card
+                v-if="item.type === 'tool_use' && item.tool_name === 'ask_user_question' && item.status === 'done'"
+                :tool-use-id="item.tool_id || ''"
+                :payload="askUserQuestionPayloadFromBlock(item)"
+                :collapsed="true"
+                :previous-output="item.output || ''"
+              />
+              <entity-card v-if="item.type === 'card' && item.card" :card="item.card" />
             </div>
           </div>
         </div>
@@ -56,7 +99,7 @@
             v-model="questionValue"
             type="textarea"
             class="mb-2"
-            @keydown.enter.exact.prevent="onEdit"
+            @keydown.enter.exact="onEditEnterKey"
           ></el-input>
           <div class="flex justify-end">
             <el-button round @click="cancelEdit">{{ $t('common.button.cancel') }}</el-button>
@@ -86,16 +129,12 @@
           @click="startEditing"
         />
         <copy-to-clipboard
-          v-if="
-            !Array.isArray(message.content) &&
-            (message.state === messageState.FINISHED || message.state === messageState.FAILED)
-          "
-          :content="message.content!"
+          v-if="copyableText && (message.state === messageState.FINISHED || message.state === messageState.FAILED)"
+          :content="copyableText"
           class="btn-copy"
         />
         <restart-to-generate
           v-if="
-            !Array.isArray(message.content) &&
             (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
             message.role === 'assistant' &&
             message === messages[messages.length - 1]
@@ -126,11 +165,15 @@ import { ElButton, ElImage, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 import { IApplication, IChatMessage, IChatMessageState } from '@/models';
+import type { IAskUserQuestionPayload, IChatMessageContentItem } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
+import EntityCard from './EntityCard.vue';
+import ThinkingBlock from './ThinkingBlock.vue';
+import AskUserQuestionCard from './AskUserQuestionCard.vue';
 import {
   ERROR_CODE_API_ERROR,
   ERROR_CODE_BAD_REQUEST,
@@ -163,6 +206,9 @@ export default defineComponent({
     MarkdownRenderer,
     FilePreview,
     ToolActivity,
+    EntityCard,
+    ThinkingBlock,
+    AskUserQuestionCard,
     ElButton,
     ElImage,
     ElInput,
@@ -183,7 +229,7 @@ export default defineComponent({
       required: true
     }
   },
-  emits: ['stop', 'edit', 'restart'],
+  emits: ['stop', 'edit', 'restart', 'answerAskUserQuestion', 'skipAskUserQuestion'],
   data(): IData {
     return {
       copied: false,
@@ -195,6 +241,23 @@ export default defineComponent({
   computed: {
     modelGroup() {
       return this.$store.state.chat.modelGroup;
+    },
+    // Plain-text view of `message.content` for the copy button. Assistant
+    // messages are now stored as IChatMessageContentItem[] (text + tool_use
+    // + card + artifact parts) even for plain prose answers, so we collect
+    // the text fragments here so copy still works.
+    copyableText(): string {
+      const c = this.message.content;
+      if (!c) return '';
+      if (typeof c === 'string') return c;
+      if (Array.isArray(c)) {
+        return c
+          .filter((item) => item && item.type === 'text' && typeof item.text === 'string')
+          .map((item) => item.text as string)
+          .join('\n\n')
+          .trim();
+      }
+      return '';
     },
     errorText() {
       console.debug('error', this.message.error);
@@ -249,6 +312,17 @@ export default defineComponent({
       this.isEditing = false;
       this.onSubmit();
     },
+    onEditEnterKey(evt: Event) {
+      // Skip IME composition: pressing Enter to commit a Chinese/Japanese/Korean
+      // candidate must NOT submit the edit. See Composer.vue for full rationale.
+      // ElInput types this event as `Event | KeyboardEvent`, hence the cast.
+      const e = evt as KeyboardEvent;
+      if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      e.preventDefault();
+      this.onEdit();
+    },
     onSubmit() {
       this.$emit('edit', this.message, this.questionValue);
     },
@@ -268,6 +342,21 @@ export default defineComponent({
           id: this.application?.id
         }
       });
+    },
+    onAskUserQuestionSubmit(payload: { tool_use_id: string; output: string }) {
+      this.$emit('answerAskUserQuestion', payload);
+    },
+    onAskUserQuestionSkip(payload: { tool_use_id: string }) {
+      this.$emit('skipAskUserQuestion', payload);
+    },
+    askUserQuestionPayloadFromBlock(item: IChatMessageContentItem): IAskUserQuestionPayload {
+      // Done blocks shouldn't carry `pending_question` per the contract,
+      // but we still want a payload to render the collapsed summary against.
+      // Reconstruct it from `input.questions` (the model's tool input).
+      if (item.pending_question) return item.pending_question;
+      const input = item.input as { questions?: unknown } | undefined;
+      const qs = (input?.questions as IAskUserQuestionPayload['questions']) || [];
+      return { questions: qs };
     }
   }
 });
@@ -347,6 +436,12 @@ export default defineComponent({
     align-items: start;
     .content {
       color: var(--el-text-color-primary);
+      // Avatar (32px) sits flush at the top of the row; drop the bubble
+      // padding/border-radius for assistant turns so the first text line
+      // top-aligns with the avatar instead of being pushed ~10px down.
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
     }
   }
   &.user {
@@ -381,8 +476,8 @@ export default defineComponent({
     }
   }
   .content {
-    border-radius: 16px;
-    padding: 10px 16px;
+    border-radius: 18px;
+    padding: 10px 20px;
     width: 100%;
     max-width: 800px;
     margin-bottom: 4px;
@@ -409,18 +504,23 @@ export default defineComponent({
 
   .operations {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     margin-left: 4px;
-    margin-top: 2px;
+    margin-top: 4px;
     color: var(--el-text-color-placeholder);
+    // Keep all action icons at the same size so they vertically align.
+    font-size: 14px;
     .btn-edit {
       visibility: hidden;
     }
-    .btn-restart {
-      font-size: 12px;
-    }
-    .btn-copy {
-      font-size: 12px;
+    // CopyToClipboard / RestartToGenerate ship with their own
+    // `margin-left: 5px`; null it out so the parent `gap` is the single
+    // source of truth for spacing and the icons line up cleanly.
+    :deep(.icon-copy),
+    :deep(.icon-check),
+    :deep(.icon-sync) {
+      margin-left: 0;
     }
   }
 

@@ -3,24 +3,11 @@ import favicon from '@/assets/images/favicon.ico';
 import { applyTheme } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
-import { parse } from 'psl';
 import { BASE_HOST_HUB, LOCALE_CURRENCY_MAPPING } from '@/constants';
 import { isOfficial, isSubOfficial, isWechatBrowser } from './is';
 import { getLocale } from '@/i18n';
 
-export const getDomain = (host: string = window.location.hostname) => {
-  const parsed = parse(host);
-  if ('error' in parsed && parsed.error) {
-    return host;
-  }
-  if (!('listed' in parsed) || !parsed.listed) {
-    return host;
-  }
-  if (parsed.domain === host) {
-    return host;
-  }
-  return '.' + parsed.domain;
-};
+import { getDomain } from './domain';
 
 // @ts-ignore
 window.getDomain = getDomain;
@@ -146,7 +133,9 @@ export const initializeSite = async () => {
   const site = store.state.site;
   console.debug('site', site);
   // if site is not set, try to initialize site
-  if (!site?.origin) {
+  const shouldClaimEmptyAdminSite =
+    !!store.state.token?.access && site?.origin && (!site.admins || site.admins.length === 0);
+  if (!site?.origin || shouldClaimEmptyAdminSite) {
     await store.dispatch('initializeSite');
   }
 };

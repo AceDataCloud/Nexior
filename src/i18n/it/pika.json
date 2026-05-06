@@ -1,6 +1,6 @@
 {
   "style.effect1": {
-    "message": "Levita",
+    "message": "Levitare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect2": {
@@ -16,39 +16,39 @@
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect5": {
-    "message": "Sgonfia",
+    "message": "Sgonfiare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect6": {
-    "message": "Sbriciola",
+    "message": "Sbriciolare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect7": {
-    "message": "Dissolvi",
+    "message": "Dissolvere",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect8": {
-    "message": "Schiaccia",
+    "message": "Schiacciare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect9": {
-    "message": "Gonfia",
+    "message": "Gonfiare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect10": {
-    "message": "Sciogli",
+    "message": "Sciogliere",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect11": {
-    "message": "Rendi torta",
+    "message": "Torta-ificare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect12": {
-    "message": "Schiaccia",
+    "message": "Schiacciare",
     "description": "Nome dell'effetto video di Pika"
   },
   "style.effect13": {
-    "message": "Esplodi",
+    "message": "Esplodere",
     "description": "Nome dell'effetto video di Pika"
   },
   "name.taskId": {
@@ -75,6 +75,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (in secondi)"
+  },
   "name.createdAt": {
     "message": "Data di creazione",
     "description": "Data e ora di generazione del video Pika"
@@ -93,7 +97,7 @@
   },
   "name.ingredients": {
     "message": "Video da più immagini",
-    "description": "Interruttore/etichetta per la creazione di video da più immagini (consigliato in inglese: Multi-Image, mantenere breve)"
+    "description": "Interruttore/etichetta per la creazione di video da più immagini (suggerimento in inglese: Multi-Image, mantenere breve)"
   },
   "name.model": {
     "message": "Versione del modello",
@@ -101,7 +105,7 @@
   },
   "name.effect": {
     "message": "Effetto video",
-    "description": "Nome del parametro di stile per passare tra diverse versioni o stili del modello"
+    "description": "Nome del parametro di stile, utilizzato per passare tra diverse versioni o stili del modello"
   },
   "name.ingredientsModel": {
     "message": "Modello ingredienti",
@@ -192,12 +196,12 @@
     "description": "Testo del pulsante per scaricare il video"
   },
   "button.uploadImageUrl": {
-    "message": "Carica",
+    "message": "Carica immagine",
     "description": "Testo del pulsante per caricare l'immagine (semplificare in inglese a 'Upload', non usare 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Carica video",
-    "description": "Testo del pulsante per caricare il video"
+    "description": "Testo del pulsante per caricare un video"
   },
   "message.uploadReferencesExceed": {
     "message": "È possibile caricare al massimo 5 immagini",
@@ -208,8 +212,8 @@
     "description": "Messaggio di successo quando le immagini vengono caricate con successo"
   },
   "message.uploadReferencesError": {
-    "message": "Caricamento dell'immagine fallito, riprova più tardi",
-    "description": "Messaggio di errore quando il caricamento dell'immagine fallisce"
+    "message": "Caricamento immagini fallito, riprova più tardi",
+    "description": "Messaggio di errore quando il caricamento delle immagini fallisce"
   },
   "message.startingTask": {
     "message": "Avvio del compito in corso...",
@@ -221,7 +225,7 @@
   },
   "message.startTaskFailed": {
     "message": "Avvio del compito fallito, contattare l'amministratore",
-    "description": "Messaggio di errore quando il compito di disegno non riesce ad avviarsi"
+    "description": "Messaggio di errore quando l'avvio del compito di disegno fallisce"
   },
   "message.usedUp": {
     "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
@@ -229,55 +233,55 @@
   },
   "message.generating": {
     "message": "Generazione in corso...",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.downloadVideo": {
     "message": "Scarica questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.extendVideo": {
     "message": "Continua a generare questo video",
-    "description": "Messaggio durante la generazione dell'immagine"
+    "description": "Messaggio mentre l'immagine viene generata"
   },
   "message.generateFailed": {
     "message": "Generazione dell'immagine fallita",
     "description": "Messaggio quando la generazione dell'immagine fallisce"
   },
   "message.uploadVideoExceed": {
-    "message": "Numero di immagini del fotogramma iniziale supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma iniziale supera il limite"
+    "message": "Numero di immagini della prima cornice caricate oltre il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La dimensione del file caricato non può superare i 10MB!",
-    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10MB!"
+    "message": "La dimensione del file caricato non può superare i 10 MB!",
+    "description": "Messaggio di errore quando la dimensione del file caricato supera i 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Il file caricato deve essere in formato MP4!",
     "description": "Messaggio di errore quando il file caricato non è in formato MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Numero di immagini del fotogramma iniziale supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma iniziale supera il limite"
+    "message": "Numero di immagini della prima cornice caricate oltre il limite",
+    "description": "Messaggio di errore quando il numero di immagini della prima cornice caricate supera il limite"
   },
   "message.uploadEndImageExceed": {
-    "message": "Numero di immagini del fotogramma finale supera il limite",
-    "description": "Messaggio di errore quando il numero di immagini del fotogramma finale supera il limite"
+    "message": "Numero di immagini dell'ultima cornice caricate oltre il limite",
+    "description": "Messaggio di errore quando il numero di immagini dell'ultima cornice caricate supera il limite"
   },
   "message.uploadStartImageError": {
-    "message": "Caricamento dell'immagine del fotogramma iniziale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del fotogramma iniziale fallisce"
+    "message": "Caricamento dell'immagine della prima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine della prima cornice fallisce"
   },
   "message.uploadVideoError": {
-    "message": "Caricamento del video fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del fotogramma iniziale fallisce"
+    "message": "Caricamento video fallito",
+    "description": "Messaggio di errore quando il caricamento del video fallisce"
   },
   "message.uploadEndImageError": {
-    "message": "Caricamento dell'immagine del fotogramma finale fallito",
-    "description": "Messaggio di errore quando il caricamento dell'immagine del fotogramma finale fallisce"
+    "message": "Caricamento dell'immagine dell'ultima cornice fallito",
+    "description": "Messaggio di errore quando il caricamento dell'immagine dell'ultima cornice fallisce"
   },
   "message.uploadDocumentsError": {
-    "message": "Caricamento del documento fallito",
-    "description": "Messaggio di errore quando il caricamento del documento fallisce"
+    "message": "Caricamento documenti fallito",
+    "description": "Messaggio di errore quando il caricamento dei documenti fallisce"
   },
   "message.noOperations": {
     "message": "Nessuna operazione disponibile",

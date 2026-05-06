@@ -1,15 +1,5 @@
 <template>
   <div>
-    <!-- Creation Mode Tabs -->
-    <div class="mode-tabs mb-3">
-      <button class="mode-tab" :class="{ active: !custom }" @click="custom = false">
-        {{ $t('suno.mode.simple') }}
-      </button>
-      <button class="mode-tab" :class="{ active: custom }" @click="custom = true">
-        {{ $t('suno.mode.custom') }}
-      </button>
-    </div>
-
     <!-- Model Selection -->
     <div class="mb-3">
       <div class="flex items-center mb-1">
@@ -31,7 +21,6 @@
           <div class="model-option">
             <div class="model-option-left">
               <span class="model-option-name">{{ item.label }}</span>
-              <el-tag v-if="item.pro" size="small" type="warning" effect="plain" class="model-option-pro">Pro</el-tag>
             </div>
             <span class="model-option-desc">{{ item.desc }}</span>
           </div>
@@ -49,14 +38,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption, ElSwitch, ElTag } from 'element-plus';
+import { ElSelect, ElOption, ElSwitch } from 'element-plus';
 import { SUNO_DEFAULT_MODEL } from '@/constants';
 
 interface ModelOption {
   label: string;
   value: string;
   desc: string;
-  pro?: boolean;
   dividerAfter?: boolean;
 }
 
@@ -65,8 +53,7 @@ export default defineComponent({
   components: {
     ElSelect,
     ElOption,
-    ElSwitch,
-    ElTag
+    ElSwitch
   },
   data() {
     return {
@@ -74,26 +61,22 @@ export default defineComponent({
         {
           label: 'v5.5',
           value: 'chirp-v5-5',
-          desc: this.$t('suno.model.v55desc'),
-          pro: true
+          desc: this.$t('suno.model.v55desc')
         },
         {
           label: 'v5',
           value: 'chirp-v5',
-          desc: this.$t('suno.model.v5desc'),
-          pro: true
+          desc: this.$t('suno.model.v5desc')
         },
         {
           label: 'v4.5+',
           value: 'chirp-v4-5-plus',
-          desc: this.$t('suno.model.v45plusdesc'),
-          pro: true
+          desc: this.$t('suno.model.v45plusdesc')
         },
         {
           label: 'v4.5',
           value: 'chirp-v4-5',
           desc: this.$t('suno.model.v45desc'),
-          pro: true,
           dividerAfter: true
         },
         {
@@ -158,37 +141,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.mode-tabs {
-  display: flex;
-  gap: 4px;
-  background: var(--el-fill-color-light);
-  border-radius: 8px;
-  padding: 3px;
-}
-
-.mode-tab {
-  flex: 1;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--el-text-color-secondary);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &.active {
-    background: var(--el-bg-color);
-    color: var(--el-text-color-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-
-  &:hover:not(.active) {
-    color: var(--el-text-color-primary);
-  }
-}
-
 .model-option {
   display: flex;
   align-items: center;
@@ -205,14 +157,6 @@ export default defineComponent({
 
 .model-option-name {
   font-weight: 500;
-}
-
-.model-option-pro {
-  font-size: 10px !important;
-  padding: 0 4px !important;
-  height: 18px !important;
-  line-height: 16px !important;
-  border-radius: 4px !important;
 }
 
 .model-option-desc {

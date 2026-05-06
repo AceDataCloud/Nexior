@@ -1,23 +1,351 @@
 {
+  "tab.videoGeneration": {
+    "message": "Δημιουργία Βίντεο",
+    "description": "Tab 标签：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "Έλεγχος Κίνησης",
+    "description": "Tab 标签：Motion Control"
+  },
+  "name.motionImage": {
+    "message": "Εικόνα Αναφοράς Προσώπου",
+    "description": "Motion Control 中的人物图输入"
+  },
+  "name.motionVideo": {
+    "message": "Βίντεο Αναφοράς Κίνησης",
+    "description": "Motion Control 中的参考视频输入"
+  },
+  "name.motionPrompt": {
+    "message": "Συμπληρωματική Υπόδειξη (Προαιρετική)",
+    "description": "Motion Control 中的补充提示词"
+  },
+  "name.characterOrientation": {
+    "message": "Κατεύθυνση Προσώπου",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "Ακολουθία Εικόνας",
+    "description": "人物朝向选项：跟随图片"
+  },
+  "name.orientationVideo": {
+    "message": "Ακολουθία Βίντεο",
+    "description": "人物朝向选项：跟随视频"
+  },
+  "name.keepOriginalSound": {
+    "message": "Διατήρηση Πρωτότυπου Ήχου",
+    "description": "keep_original_sound 开关"
+  },
+  "description.motionImage": {
+    "message": "Ανεβάστε την εικόνα αναφοράς προσώπου, για να δημιουργηθούν τα στοιχεία του βίντεο όπως το πρόσωπο και το φόντο.",
+    "description": "motion image_url 说明"
+  },
+  "description.motionVideo": {
+    "message": "Ανεβάστε το βίντεο αναφοράς κίνησης, για να ευθυγραμμιστούν οι κινήσεις του προσώπου με αυτό το βίντεο (MP4 / MOV, ≤1 λεπτό, ≤1 GB).",
+    "description": "motion video_url 说明"
+  },
+  "description.motionPrompt": {
+    "message": "Προαιρετικό. Μπορεί να περιλαμβάνει θετικές και αρνητικές περιγραφές για να βοηθήσει στη δημιουργία αποτελεσμάτων.",
+    "description": "motion prompt 说明"
+  },
+  "description.characterOrientation": {
+    "message": "Επιλέγοντας 'Ακολουθία Βίντεο', οι πολύπλοκες κινήσεις αποδίδονται καλύτερα. Επιλέγοντας 'Ακολουθία Εικόνας', η κατεύθυνση του προσώπου ευθυγραμμίζεται με την εικόνα αναφοράς.",
+    "description": "character_orientation 说明"
+  },
+  "description.motionMode": {
+    "message": "std προτεραιότητα απόδοσης, pro προτεραιότητα ποιότητας.",
+    "description": "motion mode 说明"
+  },
+  "description.keepOriginalSound": {
+    "message": "Ενεργοποιώντας, διατηρείτε τον πρωτότυπο ήχο του βίντεο αναφοράς. Απενεργοποιώντας, το παραγόμενο βίντεο δεν περιλαμβάνει τον πρωτότυπο ήχο.",
+    "description": "keep_original_sound 说明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "Για παράδειγμα: Ένα άτομο χορεύει. Προαιρετικό.",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "Δημιουργία Βίντεο Ελέγχου Κίνησης",
+    "description": "Motion Control 生成按钮"
+  },
+  "message.motionMissingInputs": {
+    "message": "Παρακαλώ ανεβάστε ταυτόχρονα την εικόνα προσώπου και το βίντεο αναφοράς κίνησης.",
+    "description": "Motion Control 缺少输入时的提示"
+  },
+  "inspiration.title": {
+    "message": "Έμπνευση και Προεπιλογές",
+    "description": "Inspiration 抽屉的标题"
+  },
+  "inspiration.openButton": {
+    "message": "Έμπνευση",
+    "description": "打开 Inspiration 抽屉的按钮"
+  },
+  "inspiration.removeChip": {
+    "message": "Αφαίρεση Αυτής της Προεπιλογής",
+    "description": "移除提示词区中已选预设的按钮 aria-label"
+  },
+  "inspiration.hint": {
+    "message": "Κάντε κλικ στη φράση για να προστεθεί αυτόματα στην υπόδειξη. Κάντε ξανά κλικ για να αφαιρεθεί.",
+    "description": "Inspiration 抽屉顶部的使用说明"
+  },
+  "inspiration.empty": {
+    "message": "Δεν υπάρχουν διαθέσιμες προεπιλογές",
+    "description": "Inspiration 抽屉空状态"
+  },
+  "inspiration.selectedSummary": {
+    "message": "Επιλέχθηκαν {count} στοιχεία",
+    "description": "已选择的预设数量"
+  },
+  "inspiration.clearSelected": {
+    "message": "Καθαρισμός Όλων",
+    "description": "清除所有已选预设的按钮"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "Κινήσεις Κάμερας",
+    "description": "Inspiration 分组：镜头运动"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "Ταχύτητα Κίνησης",
+    "description": "Inspiration 分组：运动速度"
+  },
+  "inspiration.group.shotType": {
+    "message": "Τύπος Λήψης",
+    "description": "Inspiration 分组：景别 / 视角"
+  },
+  "inspiration.group.light": {
+    "message": "Φως και Σκιά",
+    "description": "Inspiration 分组：光影"
+  },
+  "inspiration.group.frame": {
+    "message": "Πλάνο",
+    "description": "Inspiration 分组：画面 / 构图"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "Ατμόσφαιρα",
+    "description": "Inspiration 分组：氛围 / 风格"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "Η κάμερα περιστρέφεται γύρω από το θέμα",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "Η κάμερα είναι σταθερή",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "Χειροκίνητη λήψη",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "Η κάμερα απομακρύνεται",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "Η κάμερα πλησιάζει",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "Η κάμερα ακολουθεί την κίνηση του θέματος",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "Η κάμερα μετακινείται δεξιά",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "Η κάμερα κλίνει προς τα πάνω",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "Η κάμερα κλίνει προς τα κάτω",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "Η κάμερα περιστρέφεται γύρω από το θέμα",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "Αργή κίνηση κάμερας",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "Μέτρια κίνηση κάμερας",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "Γρήγορη κίνηση κάμερας",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "Κοντινό πλάνο",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "Μέτριο πλάνο",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "Μακρινό πλάνο",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "Λήψη από χαμηλή γωνία",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "Λήψη από ψηλή γωνία",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "Ρηχή εστίαση",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "Μπροστινή όψη",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "Προφίλ",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "Κοντινό πρόσωπο",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "Άποψη από drone",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "Φως ήλιου",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "Απαλό φως",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "Νεον φως",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "Ζεστό φως",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "Φως φύσης",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "Φως κεριού",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "Φώτα νύχτας πόλης",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "Πλούσιες λεπτομέρειες",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "Απλό φόντο",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "Μυστηριώδης ατμόσφαιρα",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "Ήρεμη ατμόσφαιρα",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "Θερμή και θεραπευτική",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "Ζωντανή",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "Πολύχρωμη",
+    "description": ""
+  },
   "name.taskId": {
-    "message": "Ταυτότητα εργασίας",
+    "message": "ID εργασίας",
     "description": "Το ID της εργασίας"
   },
   "name.type": {
     "message": "Τύπος",
-    "description": "Ο τύπος περιεχομένου του Kling βίντεο που θα παραχθεί, όπως 'σύνδεσμος', 'κείμενο' κ.λπ."
+    "description": "Τύπος περιεχομένου του Kling βίντεο, όπως 'σύνδεσμος', 'κείμενο' κ.λπ."
   },
   "name.modeStd": {
-    "message": "Κανονικό",
-    "description": "Η κανονική λειτουργία του Kling βίντεο"
+    "message": "Κανονικό (720p)",
+    "description": "Κανονική λειτουργία Kling βίντεο (έξοδος 720p)"
   },
   "name.modePro": {
-    "message": "Υψηλή ποιότητα",
-    "description": "Η λειτουργία υψηλής ποιότητας του Kling βίντεο"
+    "message": "Υψηλή ποιότητα (1080p)",
+    "description": "Λειτουργία υψηλής ποιότητας Kling βίντεο (έξοδος 1080p)"
+  },
+  "name.mode4k": {
+    "message": "Γενέθλια 4K",
+    "description": "Λειτουργία Kling 4K (μόνο υποστηρίζεται από v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Έλεγχος κάμερας",
+    "description": "Τύπος και παράμετροι ελέγχου κάμερας"
+  },
+  "name.cameraTypeNone": {
+    "message": "Καμία χρήση",
+    "description": "Χωρίς έλεγχο κάμερας"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Προσαρμοσμένο (6 διαστάσεις)",
+    "description": "Χρήση προσαρμοσμένων παραμέτρων έξι διαστάσεων"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Κατέβασμα και πίσω",
+    "description": "Προκαθορισμένος έλεγχος: κατέβασμα και πίσω"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Προώθηση και ανύψωση",
+    "description": "Προκαθορισμένος έλεγχος: προώθηση και ανύψωση"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Αριστερή στροφή και προώθηση",
+    "description": "Προκαθορισμένος έλεγχος: αριστερή στροφή και προώθηση"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Δεξιά στροφή και προώθηση",
+    "description": "Προκαθορισμένος έλεγχος: δεξιά στροφή και προώθηση"
+  },
+  "name.cc_horizontal": {
+    "message": "Οριζόντια κίνηση",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Κατακόρυφη κίνηση",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Οριζόντια κίνηση (pan)",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Κατακόρυφη κίνηση (tilt)",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Ρολάρισμα (roll)",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Ζουμ (zoom)",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "Αποτυχία",
-    "description": "Η κατάσταση αποτυχίας της εργασίας"
+    "description": "Κατάσταση αποτυχίας της εργασίας"
   },
   "name.failureReason": {
     "message": "Λόγος αποτυχίας",
@@ -28,8 +356,12 @@
     "description": "Η κατάσταση της εργασίας"
   },
   "name.traceId": {
-    "message": "Ταυτότητα παρακολούθησης",
-    "description": "Η ταυτότητα παρακολούθησης της εργασίας"
+    "message": "ID παρακολούθησης",
+    "description": "Το ID παρακολούθησης της εργασίας"
+  },
+  "name.elapsed": {
+    "message": "Χρόνος εκτέλεσης",
+    "description": "Ο χρόνος εκτέλεσης της εργασίας (δευτερόλεπτα)"
   },
   "name.createdAt": {
     "message": "Ημερομηνία δημιουργίας",
@@ -37,23 +369,23 @@
   },
   "name.cfgScale": {
     "message": "Επίπεδο ελευθερίας",
-    "description": "Η παράμετρος ελευθερίας για την παραγωγή του βίντεο (0-1), όσο μεγαλύτερη η τιμή, τόσο πιο κοντά στο αναφορά"
+    "description": "Η παράμετρος ελευθερίας για τη δημιουργία βίντεο (0-1), μεγαλύτερη τιμή σημαίνει πιο κοντά στην αναφορά"
   },
   "name.generateAudio": {
     "message": "Συγχρονισμένη παραγωγή ήχου",
     "description": "Εάν θα παραχθεί συγχρονισμένος ήχος, υποστηρίζει kling-v3, kling-v3-omni και kling-v2-6 (pro mode)"
   },
   "name.startImage": {
-    "message": "Αρχική εικόνα",
-    "description": "Ετικέτα πεδίου φόρμας: Αρχική εικόνα αναφοράς (διατηρήστε το σύντομο για να μην καλύπτει το κουμπί)"
+    "message": "Αρχική εικόνα αναφοράς",
+    "description": "Ετικέτα πεδίου φόρμας: αρχική εικόνα αναφοράς"
   },
   "name.negativePrompt": {
     "message": "Αρνητική προτροπή",
-    "description": "Η αρνητική κειμενική προτροπή για την παραγωγή του βίντεο"
+    "description": "Αρνητικό κείμενο προτροπής για τη δημιουργία βίντεο"
   },
   "name.endImage": {
-    "message": "Τελική εικόνα",
-    "description": "Ετικέτα πεδίου φόρμας: Τελική εικόνα αναφοράς (διατηρήστε το σύντομο για να μην καλύπτει το κουμπί)"
+    "message": "Τελική εικόνα αναφοράς",
+    "description": "Ετικέτα πεδίου φόρμας: τελική εικόνα αναφοράς"
   },
   "name.videoUrl": {
     "message": "Προσαρμοσμένο βίντεο",
@@ -61,7 +393,7 @@
   },
   "name.prompt": {
     "message": "Προτροπή βίντεο",
-    "description": "Η προτροπή για την είσοδο περιεχομένου"
+    "description": "Προτροπή για την είσοδο περιεχομένου"
   },
   "name.duration": {
     "message": "Διάρκεια βίντεο",
@@ -69,71 +401,107 @@
   },
   "name.ingredients": {
     "message": "Δημιουργία βίντεο από πολλές εικόνες",
-    "description": "Εναλλαγή/ετικέτα για τη δημιουργία βίντεο από πολλές εικόνες (διατηρήστε το σύντομο)"
+    "description": "Διακόπτης/ετικέτα για τη δημιουργία βίντεο από πολλές εικόνες"
   },
   "name.model": {
     "message": "Έκδοση μοντέλου",
-    "description": "Η έκδοση του μοντέλου που χρησιμοποιείται για την παραγωγή του βίντεο"
+    "description": "Η έκδοση του μοντέλου που χρησιμοποιείται για τη δημιουργία του βίντεο"
   },
   "name.ratio": {
     "message": "Αναλογία βίντεο",
-    "description": "Η αναλογία του βίντεο που χρησιμοποιείται για την παραγωγή"
+    "description": "Το βίντεο που θα παραχθεί θα χρησιμοποιήσει αυτή την αναλογία"
   },
   "name.mode": {
     "message": "Λειτουργία βίντεο",
-    "description": "Η λειτουργία που χρησιμοποιείται για την παραγωγή του βίντεο"
+    "description": "Η λειτουργία που θα χρησιμοποιηθεί για την παραγωγή του βίντεο"
   },
   "name.effect": {
     "message": "Εφέ βίντεο",
-    "description": "Το όνομα της παραμέτρου στυλ, που χρησιμοποιείται για την εναλλαγή μεταξύ διαφορετικών εκδόσεων ή στυλ μοντέλων"
+    "description": "Το όνομα της παραμέτρου στυλ για εναλλαγή μεταξύ διαφορετικών εκδόσεων ή στυλ μοντέλων"
   },
   "name.ingredientsModel": {
     "message": "Μοντέλο συστατικών",
-    "description": "Η έκδοση του μοντέλου που χρησιμοποιείται για την παραγωγή του βίντεο"
+    "description": "Η έκδοση του μοντέλου που θα χρησιμοποιηθεί για την παραγωγή του βίντεο"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Το όνομα του δημιουργού Kling βίντεο"
+    "description": "Το όνομα του δημιουργού βίντεο Kling"
   },
   "description.ingredients": {
-    "message": "Εάν θέλετε να ανεβάσετε πολλές εικόνες για να δημιουργήσετε το δικό σας βίντεο, ενεργοποιήστε αυτό το κουμπί.",
+    "message": "Ανοίξτε αυτό το κουμπί αν θέλετε να ανεβάσετε πολλές εικόνες για να δημιουργήσετε το δικό σας βίντεο.",
     "description": "Περιγραφή της παραμέτρου 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Στην εργασία δημιουργίας βίντεο από πολλές εικόνες, πρέπει να ανεβάσετε πολλές εικόνες.",
+    "message": "Πρέπει να ανεβάσετε πολλές εικόνες για την εργασία δημιουργίας βίντεο με πολλές εικόνες.",
     "description": "Περιγραφή της παραμέτρου 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Η προτροπή για τη δημιουργία του Kling βίντεο",
+    "message": "Λέξεις-κλειδιά για τη δημιουργία του βίντεο Kling",
     "description": "Περιγραφή της παραμέτρου 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Αρνητική κειμενική προτροπή, προαιρετική, δεν πρέπει να υπερβαίνει τους 200 χαρακτήρες",
+    "message": "Αρνητικό κείμενο προτροπής, προαιρετικό, έως 200 χαρακτήρες",
     "description": "Περιγραφή της παραμέτρου 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Ανεβάστε την αρχική εικόνα ως αναφορά, το τελικό βίντεο θα αναφέρεται στην αρχική εικόνα",
-    "description": "Περιγραφή της παραμέτρου αναφοράς"
+    "message": "Ανεβάστε την αρχική εικόνα ως αναφορά για τη δημιουργία, το τελικό βίντεο θα αναφέρεται στην αρχική εικόνα",
+    "description": "Περιγραφή της παραμέτρου 'uploadStartImage'"
   },
   "description.uploadEndImage": {
-    "message": "Ανεβάστε την τελική εικόνα ως αναφορά, το τελικό βίντεο θα αναφέρεται στην τελική εικόνα",
-    "description": "Περιγραφή της παραμέτρου αναφοράς"
+    "message": "Ανεβάστε την τελική εικόνα ως αναφορά για τη δημιουργία, το τελικό βίντεο θα αναφέρεται στην τελική εικόνα",
+    "description": "Περιγραφή της παραμέτρου 'uploadEndImage'"
   },
   "description.cfgScale": {
-    "message": "Η ελευθερία του βίντεο, προαιρετική [0,1]. Όσο μεγαλύτερη η τιμή, τόσο ισχυρότερη η συσχέτιση.",
-    "description": "Περιγραφή της παραμέτρου αναφοράς"
+    "message": "Ελευθερία παραγωγής βίντεο, προαιρετική [0,1]. Όσο μεγαλύτερη η τιμή, τόσο ισχυρότερη η συσχέτιση.",
+    "description": "Περιγραφή της παραμέτρου 'cfgScale'"
+  },
+  "description.mode": {
+    "message": "Η std έχει καλύτερη απόδοση, η pro έχει καλύτερη ποιότητα εικόνας; Το 4K υποστηρίζεται μόνο από v3 / v3-Omni και δεν μπορεί να χρησιμοποιηθεί ταυτόχρονα με τον έλεγχο κίνησης.",
+    "description": "Γενική περιγραφή του πεδίου λειτουργίας"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Υποστηρίζεται μόνο από kling-v3 / kling-v3-omni",
+    "description": "Λόγος απενεργοποίησης της επιλογής 4k (μη συμβατό μοντέλο)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Ο έλεγχος κίνησης είναι ενεργοποιημένος, δεν μπορεί να χρησιμοποιηθεί ταυτόχρονα με το 4K",
+    "description": "Λόγος απενεργοποίησης της επιλογής 4k (έχει ρυθμιστεί ο έλεγχος κίνησης)"
+  },
+  "description.duration": {
+    "message": "Το κανονικό μοντέλο υποστηρίζει μόνο 5/10 δευτερόλεπτα; Το v3 / v3-Omni υποστηρίζει 3/5/8/10/12/15 δευτερόλεπτα",
+    "description": "Γενική περιγραφή του πεδίου διάρκειας"
+  },
+  "description.durationV3Only": {
+    "message": "Υποστηρίζεται μόνο από v3 / v3-Omni",
+    "description": "Λόγος απενεργοποίησης της επιλογής διάρκειας"
+  },
+  "description.generateAudio": {
+    "message": "Σύνθεση ήχου κατά τη διάρκεια της παραγωγής του βίντεο. Υποστηρίζεται μόνο από kling-v3 / kling-v3-omni / kling-v2-6 (pro mode)",
+    "description": "Περιγραφή του διακόπτη ήχου (υποστηρίζεται)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "Το τρέχον μοντέλο δεν υποστηρίζει συγχρονισμό ήχου, διαθέσιμο μόνο σε kling-v3 / kling-v3-omni / kling-v2-6 (pro mode)",
+    "description": "Περιγραφή του διακόπτη ήχου (απενεργοποιημένος)"
+  },
+  "description.cameraControl": {
+    "message": "Ελέγξτε την κατεύθυνση κίνησης της κάμερας. Επιλέξτε 'Προσαρμοσμένο' για να ρυθμίσετε σε 6 διαστάσεις, κάθε τιμή [-1, 1]",
+    "description": "Περιγραφή του ελέγχου κίνησης"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "Επιλέχθηκε η λειτουργία 4K, ο έλεγχος κίνησης δεν είναι διαθέσιμος, παρακαλώ αλλάξτε σε std / pro και ενεργοποιήστε ξανά",
+    "description": "Λόγος απενεργοποίησης του ελέγχου κίνησης"
   },
   "status.pending": {
     "message": "Σε αναμονή",
-    "description": "Η κατάσταση αναμονής της εργασίας"
+    "description": "Κατάσταση αναμονής της εργασίας"
   },
   "status.processing": {
     "message": "Επεξεργασία",
-    "description": "Η κατάσταση επεξεργασίας της εργασίας"
+    "description": "Κατάσταση επεξεργασίας της εργασίας"
   },
   "placeholder.paddingNoise": {
     "message": "Επιλέξτε...",
-    "description": "Placeholder για την είσοδο θορύβου πλήρωσης"
+    "description": "Placeholder για την είσοδο θορύβου padding"
   },
   "placeholder.select": {
     "message": "Επιλέξτε",
@@ -141,14 +509,14 @@
   },
   "placeholder.paddingLevel": {
     "message": "Επιλέξτε...",
-    "description": "Placeholder για το επίπεδο πλήρωσης"
+    "description": "Placeholder για το επίπεδο padding"
   },
   "placeholder.prompt": {
-    "message": "Εισάγετε την προτροπή για το στυλ του βίντεο, π.χ.: moving",
+    "message": "Εισάγετε λέξεις-κλειδιά για το στυλ του βίντεο, π.χ.: moving",
     "description": "Placeholder για το πεδίο προτροπής"
   },
   "placeholder.negativePrompt": {
-    "message": "Εισάγετε την αρνητική προτροπή για το στυλ του βίντεο, έως 200 χαρακτήρες",
+    "message": "Εισάγετε αρνητικές λέξεις-κλειδιά για το στυλ του βίντεο, έως 200 χαρακτήρες",
     "description": "Placeholder για το πεδίο αρνητικής προτροπής"
   },
   "placeholder.position": {
@@ -159,21 +527,25 @@
     "message": "Επιλέξτε...",
     "description": "Placeholder για την είσοδο αναλογίας διαστάσεων"
   },
+  "placeholder.cameraType": {
+    "message": "Μη χρήση",
+    "description": "Placeholder για την επιλογή τύπου κίνησης"
+  },
   "placeholder.preset": {
     "message": "Επιλέξτε...",
     "description": "Placeholder για την είσοδο προεπιλογής"
   },
   "placeholder.markerShape": {
     "message": "Επιλέξτε...",
-    "description": "Καταχωρητής για το σχήμα του δείκτη"
+    "description": "Placeholder για την είσοδο σχήματος δείκτη"
   },
   "placeholder.rotate": {
     "message": "Επιλέξτε...",
-    "description": "Καταχωρητής για την περιστροφή"
+    "description": "Placeholder για την είσοδο περιστροφής"
   },
   "placeholder.subMarker": {
     "message": "Επιλέξτε...",
-    "description": "Καταχωρητής για το υποδείκτη"
+    "description": "Placeholder για την είσοδο υποδείκτη"
   },
   "button.precise": {
     "message": "Ακριβές",
@@ -193,7 +565,7 @@
   },
   "button.download": {
     "message": "Λήψη βίντεο",
-    "description": "Κείμενο κουμπιού για τη λήψη του βίντεο"
+    "description": "Κείμενο κουμπιού για τη λήψη βίντεο"
   },
   "button.uploadImageUrl": {
     "message": "Ανέβασμα",
@@ -208,7 +580,7 @@
     "description": "Κείμενο κουμπιού που επιτρέπει στον χρήστη να ανεβάσει αναφορές"
   },
   "message.uploadReferencesExceed": {
-    "message": "Μπορείτε να ανεβάσετε έως 1 εικόνα",
+    "message": "Μπορείτε να ανεβάσετε το πολύ 1 εικόνα",
     "description": "Μήνυμα σφάλματος όταν ο αριθμός των ανεβασμένων εικόνων υπερβαίνει το όριο"
   },
   "message.uploadReferencesSuccess": {
@@ -219,16 +591,44 @@
     "message": "Αποτυχία ανάρτησης εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
     "description": "Μήνυμα σφάλματος όταν η ανάρτηση εικόνας αποτυγχάνει"
   },
+  "message.endImageRequiresStart": {
+    "message": "Πρέπει πρώτα να ανεβάσετε την αρχική εικόνα πριν χρησιμοποιήσετε την εικόνα αναφοράς του τελικού καρέ",
+    "description": "Μήνυμα σφάλματος όταν ο χρήστης έχει ανεβάσει μόνο την εικόνα του τελικού καρέ χωρίς την αρχική"
+  },
+  "message.endImageNotSupported": {
+    "message": "Η εικόνα αναφοράς του τελικού καρέ δεν υποστηρίζεται από το τρέχον μοντέλο/λειτουργία/διάρκεια, παρακαλώ προσαρμόστε τις ρυθμίσεις σας (συνηθισμένες απαιτήσεις: λειτουργία pro, διάρκεια 5s).",
+    "description": "Μήνυμα όταν το τρέχον μοντέλο δεν υποστηρίζει την ανάρτηση της εικόνας του τελικού καρέ"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Απαιτείται επιβεβαίωση",
+    "description": "Τίτλος αναδυόμενου παραθύρου επιβεβαίωσης όταν αλλάζουν οι παράμετροι και χάνονται οι υπάρχουσες ρυθμίσεις"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Η τρέχουσα επιλογή δεν υποστηρίζει τις παρακάτω ενεργοποιημένες ρυθμίσεις: {fields}. Η συνέχιση θα καθαρίσει αυτές τις ρυθμίσεις.",
+    "description": "Μήνυμα που ενημερώνει ότι οι ρυθμίσεις θα χαθούν μετά την αλλαγή του μοντέλου/λειτουργίας/διάρκειας, το {fields} θα αντικατασταθεί με τα πραγματικά ονόματα πεδίων"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Καθαρίστηκαν οι μη υποστηριζόμενες ρυθμίσεις: {fields}",
+    "description": "Μήνυμα toast που ενημερώνει τον χρήστη μετά την επιβεβαίωση της αλλαγής"
+  },
+  "button.confirmContinue": {
+    "message": "Συνέχεια αλλαγής",
+    "description": "Κύριο κουμπί επιβεβαίωσης στο αναδυόμενο παράθυρο απώλειας λειτουργίας"
+  },
+  "button.cancelSwitch": {
+    "message": "Ακύρωση",
+    "description": "Κουμπί ακύρωσης στο αναδυόμενο παράθυρο απώλειας λειτουργίας"
+  },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας...",
     "description": "Μήνυμα κατά την έναρξη της εργασίας σχεδίασης"
   },
   "message.startTaskSuccess": {
-    "message": "Επιτυχής εκκίνηση της εργασίας δημιουργίας",
+    "message": "Επιτυχής εκκίνηση εργασίας δημιουργίας",
     "description": "Μήνυμα επιτυχίας όταν η εργασία εκκινείται επιτυχώς"
   },
   "message.startTaskFailed": {
-    "message": "Αποτυχία εκκίνησης της εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή",
+    "message": "Αποτυχία εκκίνησης εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή",
     "description": "Μήνυμα σφάλματος όταν η εκκίνηση της εργασίας σχεδίασης αποτυγχάνει"
   },
   "message.usedUp": {
@@ -237,23 +637,23 @@
   },
   "message.generating": {
     "message": "Δημιουργία σε εξέλιξη...",
-    "description": "Μήνυμα κατά τη διάρκεια της δημιουργίας εικόνας"
+    "description": "Μήνυμα όταν η εικόνα είναι σε διαδικασία δημιουργίας"
   },
   "message.downloadVideo": {
     "message": "Λήψη αυτού του βίντεο",
-    "description": "Μήνυμα κατά τη διάρκεια της δημιουργίας εικόνας"
+    "description": "Μήνυμα όταν η εικόνα είναι σε διαδικασία δημιουργίας"
   },
   "message.extendVideo": {
     "message": "Συνέχεια δημιουργίας αυτού του βίντεο",
-    "description": "Μήνυμα κατά τη διάρκεια της δημιουργίας εικόνας"
+    "description": "Μήνυμα όταν η εικόνα είναι σε διαδικασία δημιουργίας"
   },
   "message.generateFailed": {
     "message": "Αποτυχία δημιουργίας εικόνας",
     "description": "Μήνυμα όταν η δημιουργία εικόνας αποτυγχάνει"
   },
   "message.uploadVideoExceed": {
-    "message": "Ο αριθμός των ανεβασμένων εικόνων πρώτης καρέ υπερβαίνει το όριο",
-    "description": "Μήνυμα σφάλματος όταν ο αριθμός των ανεβασμένων εικόνων πρώτης καρέ υπερβαίνει το όριο"
+    "message": "Ο αριθμός των εικόνων του αρχικού καρέ υπερβαίνει το όριο",
+    "description": "Μήνυμα σφάλματος όταν ο αριθμός των εικόνων του αρχικού καρέ υπερβαίνει το όριο"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Το μέγεθος του ανεβασμένου αρχείου δεν μπορεί να υπερβαίνει τα 10MB!",
@@ -264,24 +664,24 @@
     "description": "Μήνυμα σφάλματος όταν το ανεβασμένο αρχείο δεν είναι σε μορφή MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ο αριθμός των ανεβασμένων εικόνων πρώτης καρέ υπερβαίνει το όριο",
-    "description": "Μήνυμα σφάλματος όταν ο αριθμός των ανεβασμένων εικόνων πρώτης καρέ υπερβαίνει το όριο"
+    "message": "Ο αριθμός των εικόνων του αρχικού καρέ υπερβαίνει το όριο",
+    "description": "Μήνυμα σφάλματος όταν ο αριθμός των εικόνων του αρχικού καρέ υπερβαίνει το όριο"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ο αριθμός των ανεβασμένων εικόνων τελευταίας καρέ υπερβαίνει το όριο",
-    "description": "Μήνυμα σφάλματος όταν ο αριθμός των ανεβασμένων εικόνων τελευταίας καρέ υπερβαίνει το όριο"
+    "message": "Ο αριθμός των εικόνων του τελικού καρέ υπερβαίνει το όριο",
+    "description": "Μήνυμα σφάλματος όταν ο αριθμός των εικόνων του τελικού καρέ υπερβαίνει το όριο"
   },
   "message.uploadStartImageError": {
-    "message": "Αποτυχία ανάρτησης εικόνας πρώτης καρέ",
-    "description": "Μήνυμα σφάλματος όταν η ανάρτηση εικόνας πρώτης καρέ αποτυγχάνει"
+    "message": "Αποτυχία ανάρτησης εικόνας του αρχικού καρέ",
+    "description": "Μήνυμα σφάλματος όταν η ανάρτηση της εικόνας του αρχικού καρέ αποτυγχάνει"
   },
   "message.uploadVideoError": {
     "message": "Αποτυχία ανάρτησης βίντεο",
-    "description": "Μήνυμα σφάλματος όταν η ανάρτηση βίντεο αποτυγχάνει"
+    "description": "Μήνυμα σφάλματος όταν η ανάρτηση της εικόνας του αρχικού καρέ αποτυγχάνει"
   },
   "message.uploadEndImageError": {
-    "message": "Αποτυχία ανάρτησης εικόνας τελευταίας καρέ",
-    "description": "Μήνυμα σφάλματος όταν η ανάρτηση εικόνας τελευταίας καρέ αποτυγχάνει"
+    "message": "Αποτυχία ανάρτησης εικόνας του τελικού καρέ",
+    "description": "Μήνυμα σφάλματος όταν η ανάρτηση της εικόνας του τελικού καρέ αποτυγχάνει"
   },
   "message.uploadDocumentsError": {
     "message": "Αποτυχία ανάρτησης εγγράφων",

@@ -5,7 +5,7 @@
   },
   "button.start": {
     "message": "Start",
-    "description": "Button text for starting an operation"
+    "description": "Text in button for starting an operation"
   },
   "button.copy": {
     "message": "Copy",
@@ -13,23 +13,23 @@
   },
   "button.copied": {
     "message": "Copied",
-    "description": "Button text indicating content has been copied"
+    "description": "Text in button indicating content has been copied"
   },
   "button.restart": {
     "message": "Regenerate",
-    "description": "Button text for regenerating content"
+    "description": "Text in button for regenerating content"
   },
   "button.preview": {
     "message": "Preview",
-    "description": "Button text for opening a file preview via URL"
+    "description": "Text in button to open a preview of a file via URL"
   },
   "button.seeRawImage": {
     "message": "View Original Image",
-    "description": "Button text for viewing the original image"
+    "description": "Text in button for viewing the original image"
   },
   "button.seeRawVideo": {
     "message": "View Video",
-    "description": "Button text for viewing the original video"
+    "description": "Text in button for viewing the original video"
   },
   "button.edit": {
     "message": "Edit",
@@ -59,6 +59,10 @@
     "message": "Cancel",
     "description": "Text in button for canceling an action"
   },
+  "button.close": {
+    "message": "Close",
+    "description": "Text in button for closing a dialog or panel"
+  },
   "button.alert": {
     "message": "Alert",
     "description": "Text in button for issuing an alert"
@@ -85,7 +89,7 @@
   },
   "button.console": {
     "message": "Console",
-    "description": "Text in button for displaying the console page to control content"
+    "description": "Text in button for displaying the console page to control content on the webpage"
   },
   "button.learn": {
     "message": "Learn",
@@ -103,13 +107,17 @@
     "message": "Start for Free",
     "description": "Text in button for allowing users to start for free"
   },
+  "button.download": {
+    "message": "Download",
+    "description": "Text in button for downloading files (e.g., audio, video, images)"
+  },
   "button.downloadAndroid": {
     "message": "Download Android",
-    "description": "Text in button for downloading the Android installer"
+    "description": "Text in button for downloading the Android installation package"
   },
   "button.downloadIos": {
     "message": "Download iOS",
-    "description": "Text in button for downloading the iOS installer"
+    "description": "Text in button for downloading the iOS installation package"
   },
   "button.installIos": {
     "message": "Install iOS",
@@ -136,16 +144,16 @@
     "description": "Text in button indicating the user has applied for the service"
   },
   "button.acquire": {
-    "message": "Get",
+    "message": "Acquire",
     "description": "Text in button for allowing users to acquire API service tokens or keys"
   },
   "button.fillExample": {
     "message": "Fill Example",
-    "description": "Text in button for allowing users to fill example data"
+    "description": "Text in button for allowing users to fill in example data"
   },
   "button.buyMore": {
     "message": "Top Up",
-    "description": "Text in button for allowing users to recharge. Must translate to 'Top Up'."
+    "description": "Text in button for allowing users to top up. Must translate to 'Top Up'."
   },
   "button.update": {
     "message": "Update",
@@ -161,11 +169,11 @@
   },
   "button.referralEarnings": {
     "message": "Referral Earnings",
-    "description": "Text in button for displaying referral earnings, meaning users can earn by inviting others to use the service"
+    "description": "Text in the button that displays referral earnings, indicating that users can earn money by inviting others to use the service."
   },
   "button.finish": {
     "message": "Finish",
-    "description": "Text in button for completing an action"
+    "description": "Text in the button used to complete an operation"
   },
   "entity.id": {
     "message": "ID",
@@ -213,11 +221,11 @@
   },
   "entity.createdAt": {
     "message": "Created At",
-    "description": "The time when the entity was created"
+    "description": "The time the entity was created"
   },
   "entity.updatedAt": {
     "message": "Updated At",
-    "description": "The time when the entity was updated"
+    "description": "The time the entity was updated"
   },
   "entity.order": {
     "message": "Order",
@@ -225,7 +233,7 @@
   },
   "message.noTasks": {
     "message": "No historical tasks, please start a new task~",
-    "description": "Message displayed when there are no tasks"
+    "description": "Message when there are no tasks"
   },
   "message.usedAmount": {
     "message": "Used Amount",
@@ -245,7 +253,7 @@
   },
   "message.mobileAvailableNow": {
     "message": "Android is available for download",
-    "description": "Used to indicate that Android is available for download"
+    "description": "Used to display the status that Android is available for download"
   },
   "message.mobileSecureDelivery": {
     "message": "Secure CDN Delivery",
@@ -253,7 +261,7 @@
   },
   "message.mobileDirectInstall": {
     "message": "Direct APK Installation",
-    "description": "Used to describe that the Android version is a direct APK installation method"
+    "description": "Used to describe the Android side as a direct APK installation method"
   },
   "message.mobileLatestRelease": {
     "message": "Current Public Version",
@@ -261,14 +269,14 @@
   },
   "message.mobileSharedAccount": {
     "message": "Shared account and quota with the web version",
-    "description": "Used to indicate that the mobile version shares the account with the web version"
+    "description": "Used to explain that the mobile version shares the account with the web version"
   },
   "message.mobileIosHint": {
-    "message": "For iPhone and iPad, can be installed online directly; if the system intercepts, you can also download the IPA first and then distribute it.",
+    "message": "For iPhone and iPad, can be installed directly online; if the system intercepts, you can also download the IPA first and then distribute it.",
     "description": "iOS download card description"
   },
   "message.mobileIosPending": {
-    "message": "The iOS installation package is not available for download yet, it will be provided after completing the Apple certificate and provisioning profile.",
+    "message": "The iOS installation package is not yet available for download, it is being prepared with Apple certificates and provisioning profiles.",
     "description": "Hint when the iOS installation package is not available"
   },
   "message.mobileInstallNote": {
@@ -293,7 +301,7 @@
   },
   "nav.mobileApp": {
     "message": "Mobile",
-    "description": "Mobile app download entry in the navigation"
+    "description": "Navigation entry for mobile app download"
   },
   "message.mobileFastAccess": {
     "message": "Users can scan the code on their phone for direct installation, or download the APK on the desktop and distribute it to team members, suitable for quick trials and internal testing.",
@@ -304,7 +312,7 @@
     "description": "Download page advantage description, emphasizing unified distribution"
   },
   "message.mobileUnifiedExperience": {
-    "message": "The account system, quota, and service entry after logging in remain consistent with the web version, allowing users to switch seamlessly between desktop and mobile.",
+    "message": "The account system, quota, and service entry after logging in are consistent with the web version, making it easy for users to switch seamlessly between desktop and mobile.",
     "description": "Download page advantage description, emphasizing unified account experience"
   },
   "message.remainingAmount": {
@@ -312,7 +320,7 @@
     "description": "Used to display the remaining amount of service"
   },
   "message.copied": {
-    "message": "Copied Successfully",
+    "message": "Copied successfully",
     "description": "Message indicating that the content has been successfully copied"
   },
   "message.restart": {
@@ -357,7 +365,7 @@
   },
   "message.businessCooperation": {
     "message": "Data & Business Cooperation",
-    "description": "Message displaying information about business cooperation"
+    "description": "Message displaying business cooperation information"
   },
   "message.noData": {
     "message": "No Data",
@@ -457,7 +465,7 @@
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Text in the website navigation bar to display the SeeDream page, must remain as 'SeeDream'"
+    "description": "Text in the website navigation bar to display the SeeDream page, please do not translate this field, must remain as 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
@@ -511,6 +519,10 @@
     "message": "Referral Earnings",
     "description": "Text in the website navigation bar to display the referral earnings page"
   },
+  "nav.connections": {
+    "message": "Connections",
+    "description": "Menu item to navigate to the connection management page at auth.acedata.cloud"
+  },
   "nav.logOut": {
     "message": "Log Out",
     "description": "Text in the website navigation bar to log out"
@@ -518,6 +530,10 @@
   "nav.site": {
     "message": "Site Configuration",
     "description": "Text in the website navigation bar to display the site configuration page"
+  },
+  "nav.subsite": {
+    "message": "My Subsite",
+    "description": "Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled"
   },
   "nav.setting": {
     "message": "Settings",
@@ -545,7 +561,7 @@
   },
   "title.alert": {
     "message": "Alert",
-    "description": "Title for alert messages"
+    "description": "Title of the alert message"
   },
   "title.placeholderOfSelect": {
     "message": "Please Select",
@@ -557,15 +573,15 @@
   },
   "title.allApplications": {
     "message": "All Applications",
-    "description": "Title for the page displaying all applications"
+    "description": "Page title to display all applications"
   },
   "title.allOrders": {
     "message": "All Orders",
-    "description": "Title for the page displaying all orders"
+    "description": "Page title to display all orders"
   },
   "title.orderInfo": {
     "message": "Order Information",
-    "description": "Title for the page displaying order information"
+    "description": "Page title to display order information"
   },
   "title.buyMore": {
     "message": "Top Up",
@@ -573,27 +589,27 @@
   },
   "title.distribution": {
     "message": "Referral Earnings",
-    "description": "Title for the page displaying referral income, meaning users can earn by inviting others to use the service"
+    "description": "Page title to display referral income, indicating users can earn by inviting others to use the service"
   },
   "title.site": {
     "message": "Site Configuration",
-    "description": "Title for the page displaying site configuration"
+    "description": "Page title to display site configuration"
   },
   "title.distributionHistory": {
     "message": "Referral History",
-    "description": "Title for the page displaying referral history"
+    "description": "Page title to display referral history"
   },
   "title.invitee": {
     "message": "Inviter",
-    "description": "Title for the page displaying the inviter"
+    "description": "Page title to display the inviter"
   },
   "title.allUsages": {
     "message": "Usage History",
-    "description": "Title for the page displaying all API service usage"
+    "description": "Page title to display all usage of the API service"
   },
   "title.allCredentials": {
-    "message": "Credentials",
-    "description": "Title for the page displaying all credentials used to access the API"
+    "message": "Keys",
+    "description": "Page title to display all credentials used to access the API"
   },
   "about.title1": {
     "message": "Contact Us",
@@ -661,35 +677,43 @@
   },
   "theme.system": {
     "message": "System",
-    "description": "Name of the system theme, indicating automatic switching based on system settings"
+    "description": "Name of the system theme, indicating automatic theme switching based on system settings"
   },
   "settings.general": {
     "message": "General Settings",
-    "description": "Title for the general settings section on the settings page"
+    "description": "Title for the general settings section in the settings page"
   },
   "settings.language": {
     "message": "Language",
-    "description": "Title for the language settings section on the settings page"
+    "description": "Title for the language settings section in the settings page"
   },
   "settings.theme": {
     "message": "Theme",
-    "description": "Title for the theme settings section on the settings page"
+    "description": "Title for the theme settings section in the settings page"
   },
   "settings.seo": {
     "message": "SEO Settings",
-    "description": "Title for the SEO settings section on the settings page"
+    "description": "Title for the SEO settings section in the settings page"
   },
   "settings.site": {
     "message": "Site Settings",
-    "description": "Title for the site settings section on the settings page"
+    "description": "Title for the site settings section in the settings page"
   },
   "settings.distribution": {
     "message": "Distribution Settings",
-    "description": "Title for the distribution settings section on the settings page"
+    "description": "Title for the distribution settings section in the settings page"
   },
   "settings.function": {
     "message": "Function Settings",
-    "description": "Title for the function settings section on the settings page"
+    "description": "Title for the function settings section in the settings page"
+  },
+  "settings.apiKey": {
+    "message": "API Key",
+    "description": "API Key label in the settings page sidebar - management of user-provided (BYOK) upstream service provider API Keys"
+  },
+  "field.operations": {
+    "message": "Actions",
+    "description": "Generic column title: column for action buttons in table rows (edit, delete, etc.)"
   },
   "nav.gemini": {
     "message": "Gemini",
@@ -709,7 +733,7 @@
   },
   "button.upload": {
     "message": "Upload",
-    "description": "Text in the button to upload files or content"
+    "description": "Text in the button for uploading files or content"
   },
   "message.cnbeian": {
     "message": "China Region Filing",
@@ -721,7 +745,7 @@
   },
   "nav.tryNow": {
     "message": "Try Now",
-    "description": "Text in the website navigation bar to let users try the service"
+    "description": "Text in the website navigation bar to encourage users to try the service"
   },
   "title.coin": {
     "message": "Cryptocurrency",
@@ -744,8 +768,8 @@
     "description": "Customer's job title"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloud has provided great service to our team, helping us improve productivity. Love it!",
-    "description": "Customer's feedback"
+    "message": "Ace Data Cloud has provided great service to our team, helping us improve productivity. We love it!",
+    "description": "Customer's testimonial"
   },
   "customers.name2": {
     "message": "Jacob Williams",
@@ -757,7 +781,7 @@
   },
   "customers.comment2": {
     "message": "Ace Data Cloud is a great integration platform with excellent service quality.",
-    "description": "Customer's feedback"
+    "description": "Customer's testimonial"
   },
   "customers.name3": {
     "message": "Larry Henry",
@@ -768,8 +792,8 @@
     "description": "Customer's job title"
   },
   "customers.comment3": {
-    "message": "I love the service from Ace Data Cloud, it's user-friendly and reasonably priced. Hope it gets even better!",
-    "description": "Customer's feedback"
+    "message": "I love the service from Ace Data Cloud, it's user-friendly and reasonably priced. I hope it keeps getting better!",
+    "description": "Customer's testimonial"
   },
   "nav.github": {
     "message": "GitHub",
@@ -781,15 +805,23 @@
   },
   "settings.about": {
     "message": "About",
-    "description": "Title for the about section on the settings page"
+    "description": "Title for the about section in the settings page"
+  },
+  "settings.subsites": {
+    "message": "My Subsites",
+    "description": "Title for the subsites management tab in the settings popup. Visible only on the official main site; subsites are not displayed."
+  },
+  "settings.buildNow": {
+    "message": "Build Now",
+    "description": "Text for the 'Build Subsite' button in the about page, visible only on the official main site"
   },
   "settings.poweredBy": {
-    "message": "Open Source Project",
-    "description": "Title displaying which open source project this site is based on in the about page"
+    "message": "Powered By",
+    "description": "Title displaying which open-source project this site is built on in the about page"
   },
   "settings.poweredByTip": {
-    "message": "This site is built on the Nexior open source project, and the code is fully open source.",
-    "description": "Description displaying which open source project this site is based on in the about page"
+    "message": "This site is built on the Nexior open-source project, with fully open-source code.",
+    "description": "Description in the about page showing which open-source project this site is based on"
   },
   "settings.apiService": {
     "message": "API Service",
@@ -797,7 +829,7 @@
   },
   "settings.apiServiceTip": {
     "message": "The API service for this site is provided by Ace Data Cloud.",
-    "description": "Description displaying the API service provider in the about page"
+    "description": "Description in the about page showing the API service provider"
   },
   "settings.buildYourOwn": {
     "message": "Build Your Own",
@@ -805,7 +837,7 @@
   },
   "settings.buildYourOwnTip": {
     "message": "Want to build a similar AI site? Contact us for deployment support.",
-    "description": "Description for building a similar site in the about page"
+    "description": "Description in the about page for building a similar site"
   },
   "settings.contactUs": {
     "message": "Contact Support",
@@ -814,5 +846,29 @@
   "message.viewOnGithub": {
     "message": "View on GitHub",
     "description": "Link text to view the project on GitHub"
+  },
+  "title.notFound": {
+    "message": "Page Not Found",
+    "description": "Title for the 404 page"
+  },
+  "message.notFound": {
+    "message": "The page you are looking for does not exist. The link may have changed or been removed. Return to the homepage to continue exploring AceData's AI services.",
+    "description": "Subtitle description for the 404 page"
+  },
+  "message.notFoundEyebrow": {
+    "message": "Oops!",
+    "description": "Text for the small label at the top of the 404 page"
+  },
+  "message.notFoundPath": {
+    "message": "Requested Path",
+    "description": "Label displaying the current requested path on the 404 page"
+  },
+  "button.backToHome": {
+    "message": "Back to Homepage",
+    "description": "Button text for navigating back to the homepage"
+  },
+  "button.goBack": {
+    "message": "Go Back",
+    "description": "Button text for returning to the previous page in browsing history"
   }
 }

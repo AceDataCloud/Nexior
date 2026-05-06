@@ -2,17 +2,16 @@
   <div class="field">
     <div class="flex items-center justify-between mb-2">
       <div class="flex items-center">
-        <h2 class="text-sm font-bold m-0">{{ $t('suno.name.persona') }}</h2>
+        <span class="text-sm font-bold">{{ $t('suno.name.persona') }}</span>
         <info-icon :content="$t('suno.description.persona')" />
       </div>
-      <el-button type="primary" size="small" text @click="showManager = true">
+      <el-button size="small" round @click="showManager = true">
         <font-awesome-icon icon="fa-solid fa-microphone" class="mr-1" />
         {{ $t('suno.voice.manage') }}
       </el-button>
     </div>
     <el-select
       v-model="personaId"
-      size="small"
       :placeholder="$t('suno.placeholder.personaId')"
       clearable
       filterable

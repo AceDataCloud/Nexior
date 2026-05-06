@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "API Key personalizzato",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Aggiungi API Key",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Modifica API Key",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Elimina API Key",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Utilizza il tuo API Key del fornitore (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot) al posto del pool di account della piattaforma. Una volta configurato, le richieste di dialogo per il modello corrispondente utilizzeranno direttamente il tuo Key per chiamare il fornitore, senza consumare crediti della piattaforma; le funzionalità come chiamate agli strumenti, riferimenti, artefatti e cronologia cloud funzioneranno normalmente.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Fornitore",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Nota",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "es. \"Il mio numero di lavoro\" (opzionale)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Lascia vuoto per mantenere il Key attuale",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Base URL personalizzata",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Lascia vuoto per utilizzare l'indirizzo predefinito del fornitore",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Attivo",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Ultimo utilizzo",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Data di aggiunta",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Attivo",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Non attivo",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Mai utilizzato",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Predefinito",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Aggiungi API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Modifica",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Test",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Elimina",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Salva",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Annulla",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Confermi di voler eliminare questa API Key? Le richieste di dialogo per il modello {provider} torneranno a utilizzare il fornitore predefinito della piattaforma.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key eliminata.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key salvata.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Connessione riuscita.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test fallito: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Caricamento delle credenziali fallito.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Salvataggio delle credenziali fallito.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Non hai ancora configurato un API Key personalizzato. Clicca su \"Aggiungi API Key\" per utilizzare il tuo account del fornitore.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Mostra opzioni avanzate",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opzionale. Indirizzo upstream personalizzato (per OpenRouter, reverse proxy, gateway aziendale, ecc.). Solo HTTPS consentito, non può puntare a indirizzi interni/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Utilizzo dell'API Key personalizzata {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "La conversazione attuale sta utilizzando la tua API Key {provider}, i costi saranno addebitati sul tuo account {provider}, senza ridurre il saldo della piattaforma.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Clicca per aprire le impostazioni dell'API Key",
+    "description": "Messaggio dopo il clic sul badge BYOK nella pagina di chat: clicca per aprire la scheda delle impostazioni dell'API Key."
+  },
+  "button.testConnection": {
+    "message": "Test",
+    "description": "Pulsante nella finestra di dialogo per aggiungere/modificare—testa solo la configurazione attuale del modulo, senza salvare le credenziali."
+  },
+  "test.success": {
+    "message": "Test di connettività riuscito",
+    "description": "Titolo di successo nella sezione dei risultati del test di connettività."
+  },
+  "test.failure": {
+    "message": "Test di connettività fallito",
+    "description": "Titolo di fallimento nella sezione dei risultati del test di connettività."
+  },
+  "test.endpoint": {
+    "message": "Indirizzo della richiesta",
+    "description": "Etichetta dell'URL della richiesta nei dettagli dei risultati del test."
+  },
+  "test.status": {
+    "message": "Codice di stato",
+    "description": "Etichetta del codice di stato HTTP nei dettagli dei risultati del test."
+  },
+  "test.message": {
+    "message": "Risposta upstream",
+    "description": "Etichetta del testo di errore/avviso upstream nei dettagli dei risultati del test."
+  },
+  "providerDesc.openai": {
+    "message": "Sostituisce le richieste di dialogo ChatGPT (GPT-4 / GPT-4o / o1 / o3, ecc.) su questo sito.",
+    "description": "Sottotitolo per l'opzione OpenAI nel menu a discesa dei fornitori."
+  },
+  "providerDesc.anthropic": {
+    "message": "Sostituisce le richieste di dialogo Claude (Sonnet / Opus / Haiku, ecc.) su questo sito.",
+    "description": "Sottotitolo per l'opzione Anthropic nel menu a discesa dei fornitori."
+  },
+  "providerDesc.google": {
+    "message": "Sostituisce le richieste di dialogo Gemini (Pro / Flash series) su questo sito.",
+    "description": "Sottotitolo per l'opzione Google nel menu a discesa dei fornitori."
+  },
+  "providerDesc.xai": {
+    "message": "Sostituisce le richieste di dialogo Grok su questo sito.",
+    "description": "Sottotitolo per l'opzione xAI nel menu a discesa dei fornitori."
+  },
+  "providerDesc.deepseek": {
+    "message": "Sostituisce le richieste di dialogo DeepSeek (V3 / R1, ecc.) su questo sito.",
+    "description": "Sottotitolo per l'opzione DeepSeek nel menu a discesa dei fornitori."
+  },
+  "providerDesc.moonshot": {
+    "message": "Sostituisci la richiesta di dialogo Kimi di questo sito.",
+    "description": "Sottotitolo per l'opzione Moonshot (Kimi) nel menu a discesa dei fornitori."
+  },
+  "providerDesc.zhipu": {
+    "message": "Sostituisce le richieste di dialogo della serie GLM di questo sito.",
+    "description": "Sottotitolo per l'opzione Zhipu (GLM) nel menu a discesa dei fornitori."
+  }
+}

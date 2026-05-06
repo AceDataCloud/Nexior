@@ -13,7 +13,7 @@
   },
   "voice.createTitle": {
     "message": "Skapa ny röst",
-    "description": "Titel på dialogrutan för att skapa röst"
+    "description": "Titel på dialogrutan för att skapa en röst"
   },
   "voice.name": {
     "message": "Namn",
@@ -44,12 +44,12 @@
     "description": "Alternativ för att klona ljudfil genom att ladda upp"
   },
   "voice.audioId": {
-    "message": "Låt ID",
-    "description": "Etikett för låt ID"
+    "message": "Låt-ID",
+    "description": "Etikett för låt-ID"
   },
   "voice.audioIdPlaceholder": {
-    "message": "Ange låt ID...",
-    "description": "Platshållare för låt ID"
+    "message": "Ange låt-ID...",
+    "description": "Platshållare för låt-ID"
   },
   "voice.audioUrl": {
     "message": "Ljud-URL",
@@ -85,11 +85,11 @@
   },
   "voice.favorite": {
     "message": "Lägg till i favoriter",
-    "description": "Meddelande för att lägga till i favoriter när det inte är favoriter"
+    "description": "Meddelande för att lägga till i favoriter när det inte är en favorit"
   },
   "voice.unfavorite": {
     "message": "Ta bort från favoriter",
-    "description": "Meddelande för att ta bort från favoriter när det är favoriter"
+    "description": "Meddelande för att ta bort från favoriter när det är en favorit"
   },
   "voice.delete": {
     "message": "Ta bort röst",
@@ -121,7 +121,7 @@
   },
   "button.uploadAudios": {
     "message": "Ladda upp",
-    "description": "Text på knappen som tillåter användare att ladda upp referens"
+    "description": "Text på knappen som tillåter användare att ladda upp referenser"
   },
   "button.addAudio": {
     "message": "+ Ljud",
@@ -137,7 +137,7 @@
   },
   "button.reRecord": {
     "message": "Spela in igen",
-    "description": "Kasta nuvarande inspelning och spela in igen"
+    "description": "Kasta den aktuella inspelningen och spela in igen"
   },
   "button.useRecording": {
     "message": "Använd denna inspelning",
@@ -157,7 +157,7 @@
   },
   "description.dropAudioHere": {
     "message": "Dra ljud hit, eller klicka för att ladda upp",
-    "description": "Text i drag-och-släpp området för ljud"
+    "description": "Text för drag-och-släpp område för ljud"
   },
   "description.audioFormats": {
     "message": "Stödda format: MP3, WAV, M4A",
@@ -192,8 +192,8 @@
     "description": "Text för knappen för att ladda ner MIDI-format"
   },
   "button.get_stems": {
-    "message": "Få ljudspår",
-    "description": "Text för knappen för att få ljudspår"
+    "message": "Separera ljudspår",
+    "description": "Text för knappen för att separera ljudspår"
   },
   "button.cover_music": {
     "message": "Tolka",
@@ -228,7 +228,7 @@
     "description": "Text för knappen för att optimera stilbeskrivningen med AI"
   },
   "button.all_stems": {
-    "message": "Alla spår",
+    "message": "Separera alla",
     "description": "Text för knappen för att separera alla ljudspår"
   },
   "model.model1": {
@@ -321,7 +321,7 @@
   },
   "name.variationCategory": {
     "message": "Varianttyp",
-    "description": "Kontrollera mångfalden av genererade varianter"
+    "description": "Kontrollera mångfalden av de genererade varianterna"
   },
   "name.audioWeight": {
     "message": "Originalvikt",
@@ -364,7 +364,7 @@
     "description": "Beskrivning av parametern 'prompt'"
   },
   "description.lyrics": {
-    "message": "Ange anpassad text, stödjer [Vers], [Refräng], [Bro] etc. avsnittsmärkningar",
+    "message": "Ange anpassad text, stödjer [Vers]、[Refräng]、[Brygga] etc. avsnittsmärkningar",
     "description": "Beskrivning av parametern 'lyrics'"
   },
   "description.style": {
@@ -380,7 +380,7 @@
     "description": "Beskrivning av parametern 'title'"
   },
   "description.uploadAudios": {
-    "message": "Ladda upp musik som referens för generering, uppladdningen kan ta en stund, efter lyckad generering kan du skapa baserat på den uppladdade musiken",
+    "message": "Ladda upp musik som referens för generering, uppladdningen kan ta en stund, när genereringen är klar kan du använda den uppladdade musiken för att generera",
     "description": "Beskrivning av parametern för att ladda upp referenser"
   },
   "description.vocalGender": {
@@ -412,52 +412,52 @@
     "description": "Väntande status för uppgiften"
   },
   "placeholder.prompt": {
-    "message": "Beskriv den musik du vill ha, till exempel: en varm folkmusik, om längtan efter hösten...",
-    "description": "Platsinnehavare för låtbeskrivning"
+    "message": "Beskriv musiken du vill ha, till exempel: en varm folkmusik om längtan efter hösten...",
+    "description": "Platsinnehåll för låtbeskrivning"
   },
   "placeholder.lyrics": {
     "message": "[Vers]\nI denna tysta natt\nStjärnorna blinkar på himlen\n\n[Refräng]\nLåt oss sjunga tillsammans\nTills gryningen...",
-    "description": "Platsinnehavare för textinmatning"
+    "description": "Platsinnehåll för textinmatning"
   },
   "placeholder.extend.lyrics": {
     "message": "Skriv in texten som ska utökas...",
-    "description": "Platsinnehavare för utökning av text"
+    "description": "Platsinnehåll för utökning av text"
   },
   "placeholder.extend.continue_at": {
     "message": "Från vilken sekund ska vi börja utöka...",
-    "description": "Platsinnehavare för starttid för utökning"
+    "description": "Platsinnehåll för starttid för utökning"
   },
   "placeholder.style": {
     "message": "Till exempel: akustisk pop, jazz, R&B, elektronisk...",
-    "description": "Platsinnehavare för stilinmatning"
+    "description": "Platsinnehåll för stilinmatning"
   },
   "placeholder.styleNegative": {
     "message": "Till exempel: heavy metal, skrikande...",
-    "description": "Platsinnehavare för uteslutna stilar"
+    "description": "Platsinnehåll för uteslutning av stil"
   },
   "placeholder.title": {
     "message": "Skriv in låtens namn...",
-    "description": "Platsinnehavare för titel"
+    "description": "Platsinnehåll för titel"
   },
   "placeholder.select": {
     "message": "Välj modell...",
-    "description": "Platsinnehavare för modellval"
+    "description": "Platsinnehåll för modellval"
   },
   "placeholder.position": {
     "message": "Välj...",
-    "description": "Platsinnehavare för position"
+    "description": "Platsinnehåll för position"
   },
   "placeholder.lyricPrompt": {
     "message": "Beskriv temat för texten, AI kommer automatiskt att generera...",
-    "description": "Platsinnehavare för textprompt"
+    "description": "Platsinnehåll för textprompt"
   },
   "placeholder.replaceSectionStart": {
     "message": "Starttid (sekunder)",
-    "description": "Platsinnehavare för starttid för ersättning"
+    "description": "Platsinnehåll för starttid för ersättning"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Sluttid (sekunder)",
-    "description": "Platsinnehavare för sluttid för ersättning"
+    "description": "Platsinnehåll för sluttid för ersättning"
   },
   "button.generate": {
     "message": "Generera",
@@ -473,19 +473,19 @@
   },
   "gender.auto": {
     "message": "Automatisk",
-    "description": "Automatisk val av röstens kön"
+    "description": "Automatiskt val av röstens kön"
   },
   "variation.high": {
     "message": "Hög variation",
-    "description": "Alternativ för hög variation"
+    "description": "Alternativ för hög mångfald"
   },
   "variation.low": {
     "message": "Låg variation",
-    "description": "Alternativ för låg variation"
+    "description": "Alternativ för låg mångfald"
   },
   "lyricsMode.manual": {
     "message": "Manuell",
-    "description": "Manuell tillhandahållande av text"
+    "description": "Manuellt tillhandahållen text"
   },
   "lyricsMode.auto": {
     "message": "Automatisk",
@@ -513,11 +513,11 @@
   },
   "message.startUploadAudioSuccess": {
     "message": "Anpassad musik uppladdad framgångsrikt",
-    "description": "Meddelande vid framgångsrik start av musikgenereringsuppgift"
+    "description": "Meddelande vid framgångsrik uppladdning av anpassad musik"
   },
   "message.startUploadAudioFailed": {
     "message": "Uppladdning av anpassad musik misslyckades",
-    "description": "Felmeddelande vid misslyckad start av musikgenereringsuppgift"
+    "description": "Felmeddelande vid misslyckad uppladdning av anpassad musik"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att starta musikgenereringsuppgift",
@@ -536,27 +536,27 @@
     "description": "Meddelande vid framgångsrik textgenerering"
   },
   "message.generateLyricsFailed": {
-    "message": "Misslyckades med att generera text",
-    "description": "Felmeddelande vid misslyckad textgenerering"
+    "message": "Textgenerering misslyckades",
+    "description": "Meddelande vid misslyckad textgenerering"
   },
   "message.optimizingStyle": {
     "message": "Optimerar stilbeskrivning...",
     "description": "Meddelande vid stiloptimering"
   },
   "message.optimizeStyleSuccess": {
-    "message": "Stil optimerad framgångsrikt",
-    "description": "Meddelande vid framgångsrik stiloptimering"
+    "message": "Stiloptimering lyckades",
+    "description": "Meddelande vid lyckad stiloptimering"
   },
   "message.optimizeStyleFailed": {
-    "message": "Misslyckades med att optimera stil",
-    "description": "Felmeddelande vid misslyckad stiloptimering"
+    "message": "Stiloptimering misslyckades",
+    "description": "Meddelande vid misslyckad stiloptimering"
   },
   "message.fetchingWav": {
     "message": "Hämtar WAV-fil...",
     "description": "Meddelande vid hämtning av WAV-fil"
   },
   "message.fetchWavFailed": {
-    "message": "Misslyckades med att hämta WAV-fil",
+    "message": "Hämtning av WAV-fil misslyckades",
     "description": "Meddelande vid misslyckad hämtning av WAV-fil"
   },
   "message.fetchingMidi": {
@@ -564,7 +564,7 @@
     "description": "Meddelande vid hämtning av MIDI-fil"
   },
   "message.fetchMidiFailed": {
-    "message": "Misslyckades med att hämta MIDI-fil",
+    "message": "Hämtning av MIDI-fil misslyckades",
     "description": "Meddelande vid misslyckad hämtning av MIDI-fil"
   },
   "message.generating": {
@@ -572,7 +572,7 @@
     "description": "Meddelande när musik genereras"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera musik",
+    "message": "Musikgenerering misslyckades",
     "description": "Meddelande vid misslyckad musikgenerering"
   },
   "message.noOperations": {
@@ -628,7 +628,7 @@
     "description": "Val av sångarstil"
   },
   "name.overpaintingRange": {
-    "message": "Sångområde",
+    "message": "Vokalområde",
     "description": "Tidsområde för att lägga till sång"
   },
   "name.underpaintingRange": {
@@ -669,7 +669,7 @@
   },
   "description.persona": {
     "message": "Använd den skapade sångarstilen för att generera låtar med konsekvent stil",
-    "description": "Beskrivning av sångarstilens funktion"
+    "description": "Beskrivning av sångarstil-funktionen"
   },
   "description.overpainting": {
     "message": "Lägg till sång till den uppladdade musiken inom angivet tidsområde",
@@ -688,11 +688,11 @@
     "description": "Meddelande vid hämtning av taktdata"
   },
   "message.fetchTimingFailed": {
-    "message": "Misslyckades med att hämta taktdata",
+    "message": "Hämtning av taktdata misslyckades",
     "description": "Meddelande vid misslyckad hämtning av taktdata"
   },
   "message.fetchTimingSuccess": {
-    "message": "Taktdatan hämtades framgångsrikt",
+    "message": "Taktdata hämtades framgångsrikt",
     "description": "Meddelande vid framgångsrik hämtning av taktdata"
   },
   "message.extractingVocals": {
@@ -700,11 +700,11 @@
     "description": "Meddelande vid extrahering av sång"
   },
   "message.extractVocalsFailed": {
-    "message": "Misslyckades med att extrahera sång",
+    "message": "Extrahering av sång misslyckades",
     "description": "Meddelande vid misslyckad extrahering av sång"
   },
   "message.extractVocalsSuccess": {
-    "message": "Sången extraherades framgångsrikt",
+    "message": "Sången har extraherats framgångsrikt",
     "description": "Meddelande vid framgångsrik extrahering av sång"
   },
   "mode.simple": {
@@ -720,7 +720,7 @@
     "description": "Beskrivning av v5.5-modellen"
   },
   "model.v5desc": {
-    "message": "Äkta sång · Högkvalitativt ljud",
+    "message": "Äkta röst · Högkvalitativt ljud",
     "description": "Beskrivning av v5-modellen"
   },
   "model.v45plusdesc": {
@@ -791,6 +791,74 @@
     "message": "Äldst",
     "description": "Sortera efter äldst"
   },
+  "filter.title": {
+    "message": "Filtrera",
+    "description": "Filtreringsknapp"
+  },
+  "filter.type": {
+    "message": "Typ",
+    "description": "Filtreringskategori: sång/ren musik"
+  },
+  "filter.typeAll": {
+    "message": "Alla",
+    "description": "Typ: alla"
+  },
+  "filter.typeVocal": {
+    "message": "Sång",
+    "description": "Typ: med sång"
+  },
+  "filter.typeInstrumental": {
+    "message": "Ren musik",
+    "description": "Typ: ren musik"
+  },
+  "filter.duration": {
+    "message": "Längd",
+    "description": "Filtreringskategori: låtlängd"
+  },
+  "filter.durationAll": {
+    "message": "Alla",
+    "description": "Längd: obegränsad"
+  },
+  "filter.durationShort": {
+    "message": "< 1 minut",
+    "description": "Längd: mindre än 1 minut"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 minuter",
+    "description": "Längd: 1 till 3 minuter"
+  },
+  "filter.durationLong": {
+    "message": "> 3 minuter",
+    "description": "Längd: mer än 3 minuter"
+  },
+  "filter.video": {
+    "message": "Video",
+    "description": "Filtreringskategori: innehåller video"
+  },
+  "filter.videoAll": {
+    "message": "Alla",
+    "description": "Video: obegränsad"
+  },
+  "filter.videoWith": {
+    "message": "Innehåller video",
+    "description": "Video: endast med video"
+  },
+  "filter.videoWithout": {
+    "message": "Endast ljud",
+    "description": "Video: endast ljud"
+  },
+  "filter.model": {
+    "message": "Modell",
+    "description": "Filtreringskategori: AI-modell"
+  },
+  "filter.modelAll": {
+    "message": "Alla modeller",
+    "description": "Modell: obegränsad"
+  },
+  "filter.reset": {
+    "message": "Återställ",
+    "description": "Återställ alla filter"
+  },
   "button.delete": {
     "message": "Ta bort",
     "description": "Knapptext för att ta bort låt"
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "Inga låtar hittades",
     "description": "Meddelande vid inga sökresultat"
+  },
+  "message.noFilterResults": {
+    "message": "Inga låtar matchar filtreringskriterierna",
+    "description": "Meddelande vid inga filtreringsresultat"
   },
   "message.confirmDelete": {
     "message": "Vill du verkligen ta bort denna låt? Denna åtgärd kan inte ångras.",
@@ -818,5 +890,33 @@
   "name.generating": {
     "message": "Genererar",
     "description": "Statusetikett för låt som genereras"
+  },
+  "button.adjust_speed": {
+    "message": "Justera hastighet",
+    "description": "Knapptext för att justera låtens uppspelningshastighet"
+  },
+  "button.reuse_prompt": {
+    "message": "Återanvänd nyckelord",
+    "description": "Knapptext för att återanvända befintliga uppgiftsnyckelord"
+  },
+  "name.adjustSpeed": {
+    "message": "Hastighet",
+    "description": "Etikett för hastighetsväljare"
+  },
+  "description.adjustSpeed": {
+    "message": "Återskapa låt med olika uppspelningshastigheter (0,5x till 2x)",
+    "description": "Beskrivning av justera hastighetsfunktion"
+  },
+  "message.reusePromptSuccess": {
+    "message": "Nyckelord har återanvänts, kan justeras och genereras igen",
+    "description": "Meddelande vid lyckad återanvändning av nyckelord"
+  },
+  "message.reusePromptEmpty": {
+    "message": "Inga nyckelord att återanvända",
+    "description": "Meddelande när det inte finns nyckelord att återanvända"
+  },
+  "name.lyricsMode": {
+    "message": "Textläge",
+    "description": "Etikett för växlare av textläge (manuell / automatisk)"
   }
 }

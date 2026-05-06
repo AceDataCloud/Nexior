@@ -44,7 +44,8 @@ export default defineComponent({
     return {
       initialized: false,
       applying: false,
-      mobile: window.innerWidth < 768
+      mobile: window.innerWidth < 768,
+      initializeRunId: 0
     };
   },
   computed: {
@@ -68,11 +69,19 @@ export default defineComponent({
     },
     service() {
       return this.$store.state[this.appName]?.service;
+    },
+    userId() {
+      return this.$store.state.user?.id;
     }
   },
   watch: {
     appName() {
       this.initialize();
+    },
+    userId(newValue: string | undefined, oldValue: string | undefined) {
+      if (newValue && newValue !== oldValue) {
+        this.initialize();
+      }
     }
   },
   mounted() {
@@ -85,30 +94,33 @@ export default defineComponent({
   },
   methods: {
     async initialize() {
+      const runId = ++this.initializeRunId;
       this.initialized = false;
       console.debug('Fetching all individual and global applications for', this.appName);
-      Promise.all([
+      await Promise.allSettled([
         this.$store.dispatch('getApplications'),
         this.$store.dispatch(`${this.appName}/getApplications`)
-      ]).finally(async () => {
-        console.debug('Fetched all applications', this.applications);
-        // Check if we need to apply for a global application
-        if (this.$store.state.applications?.length === 0) {
-          // If no global applications exist, we need to apply
-          this.applying = true;
-        }
-        // set the application if it exists
-        const currentApplication = this.$store.state[this.appName]?.application;
-        console.debug('current application', currentApplication);
-        const finalApplication = getFinalApplication(this.applications, currentApplication);
-        console.debug('final application', finalApplication);
-        if (finalApplication) {
-          console.debug('set final application', finalApplication, finalApplication?.type);
-          await this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
-        }
-        console.debug('finished initialization');
-        this.initialized = true;
-      });
+      ]);
+      if (runId !== this.initializeRunId) {
+        return;
+      }
+      console.debug('Fetched all applications', this.applications);
+      // Check if we need to apply for a global application
+      if (this.$store.state.applications?.length === 0) {
+        // If no global applications exist, we need to apply
+        this.applying = true;
+      }
+      // set the application if it exists
+      const currentApplication = this.$store.state[this.appName]?.application;
+      console.debug('current application', currentApplication);
+      const finalApplication = getFinalApplication(this.applications, currentApplication);
+      console.debug('final application', finalApplication);
+      if (finalApplication) {
+        console.debug('set final application', finalApplication, finalApplication?.type);
+        await this.$store.dispatch(`${this.appName}/setApplication`, finalApplication);
+      }
+      console.debug('finished initialization');
+      this.initialized = true;
     },
     onApply() {
       // Only can apply for global application, not individual application

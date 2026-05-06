@@ -190,9 +190,17 @@
                 <font-awesome-icon icon="fa-solid fa-palette" class="menu-icon" />
                 {{ $t('suno.button.artist_consistency') }}
               </el-dropdown-item>
+              <el-dropdown-item v-if="audio?.id" @click.stop="onAdjustSpeed(audio)">
+                <font-awesome-icon icon="fa-solid fa-gauge-high" class="menu-icon" />
+                {{ $t('suno.button.adjust_speed') }}
+              </el-dropdown-item>
 
               <!-- Utility group -->
               <div class="menu-divider" />
+              <el-dropdown-item @click.stop="onReusePrompt(audio)">
+                <font-awesome-icon icon="fa-solid fa-rotate-left" class="menu-icon" />
+                {{ $t('suno.button.reuse_prompt') }}
+              </el-dropdown-item>
               <el-dropdown-item v-if="audio?.id" @click.stop="onGetTiming(audio.id)">
                 <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
                 {{ $t('suno.button.get_timing') }}
@@ -214,6 +222,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { getWebhookCallbackUrl } from '@/constants';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
 import {
@@ -236,7 +245,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/suno';
+const CALLBACK_URL = getWebhookCallbackUrl('suno');
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -519,6 +528,62 @@ export default defineComponent({
         audio_id: audio.id
       });
     },
+    onAdjustSpeed(audio: ISunoAudio) {
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: audio.model,
+        custom: true,
+        style: audio.style,
+        action: 'adjust_speed',
+        audio: audio,
+        audio_id: audio.id,
+        speed: 1
+      });
+    },
+    onReusePrompt(audio: ISunoAudio) {
+      const req = (this.modelValue?.request ?? {}) as ISunoAudioRequest;
+      const hasContent =
+        req.prompt || req.lyric || req.style || req.title || req.lyric_prompt || req.style_negative || req.persona_id;
+      if (!hasContent) {
+        ElMessage.warning(this.$t('suno.message.reusePromptEmpty'));
+        return;
+      }
+      this.$store.commit('suno/setConfig', {
+        ...this.$store.state.suno?.config,
+        model: req.model ?? audio.model,
+        custom: req.custom ?? false,
+        instrumental: req.instrumental ?? false,
+        prompt: req.prompt ?? '',
+        lyric: req.lyric ?? '',
+        lyric_prompt: req.lyric_prompt ?? '',
+        lyrics_mode: req.lyrics_mode ?? 'manual',
+        title: req.title ?? '',
+        style: req.style ?? '',
+        style_negative: req.style_negative ?? '',
+        vocal_gender: req.vocal_gender,
+        weirdness: req.weirdness,
+        style_influence: req.style_influence,
+        variation_category: req.variation_category,
+        audio_weight: req.audio_weight,
+        persona_id: req.persona_id,
+        // reset to a fresh generation
+        action: undefined,
+        audio: undefined,
+        audio_id: undefined,
+        mashup_audio_ids: undefined,
+        continue_at: undefined,
+        speed: undefined,
+        replace_section_start: undefined,
+        replace_section_end: undefined,
+        overpainting_start: undefined,
+        overpainting_end: undefined,
+        underpainting_start: undefined,
+        underpainting_end: undefined,
+        samples_start: undefined,
+        samples_end: undefined
+      });
+      ElMessage.success(this.$t('suno.message.reusePromptSuccess'));
+    },
     async onExtractVocals(audioId: string) {
       const token = this.credential?.token;
       if (!token) return;
@@ -558,14 +623,17 @@ export default defineComponent({
         this.isFetchingWav = true;
         ElMessage.info(this.$t('suno.message.fetchingWav'));
         const response = await sunoOperator.wav({ audio_id: audio.id }, { token });
-        const wavUrl = response.data?.data?.audio_url;
+        // Worker returns `data: [{ file_url }]` (array, not an object).
+        const wavUrl = response.data?.data?.[0]?.file_url;
         if (wavUrl) {
           this.onDownload(null, wavUrl);
         } else {
           ElMessage.error(this.$t('suno.message.fetchWavFailed'));
         }
-      } catch {
-        ElMessage.error(this.$t('suno.message.fetchWavFailed'));
+      } catch (error) {
+        const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
+          ?.message;
+        ElMessage.error(message || this.$t('suno.message.fetchWavFailed'));
       } finally {
         this.isFetchingWav = false;
       }
@@ -578,14 +646,19 @@ export default defineComponent({
         this.isFetchingMidi = true;
         ElMessage.info(this.$t('suno.message.fetchingMidi'));
         const response = await sunoOperator.midi({ audio_id: audio.id }, { token });
-        const midiUrl = response.data?.data?.midi_url;
-        if (midiUrl) {
-          this.onDownload(null, midiUrl);
-        } else {
+        // Worker returns structured note data, no URL — save raw JSON for the user.
+        const data = response.data?.data;
+        if (!data?.length) {
           ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+          return;
         }
-      } catch {
-        ElMessage.error(this.$t('suno.message.fetchMidiFailed'));
+        const filename = (audio.title || audio.id || 'suno').replace(/[^\w.-]+/g, '_') + '.json';
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        saveAs(blob, filename);
+      } catch (error) {
+        const message = (error as { response?: { data?: { error?: { message?: string } } } })?.response?.data?.error
+          ?.message;
+        ElMessage.error(message || this.$t('suno.message.fetchMidiFailed'));
       } finally {
         this.isFetchingMidi = false;
       }
@@ -824,6 +897,11 @@ export default defineComponent({
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .progress-row {
         display: flex;

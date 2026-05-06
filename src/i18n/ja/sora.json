@@ -19,13 +19,17 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.createdAt": {
     "message": "作成日時",
-    "description": "Sora ビデオ生成の日付と時間"
+    "description": "Sora ビデオ生成の日時"
   },
   "name.startEndImage": {
     "message": "開始/終了フレーム",
-    "description": "フォームフィールドラベル：開始/終了フレーム参照画像（英語では「Start/End Frames」と翻訳し、簡潔に保つ）"
+    "description": "フォームフィールドラベル：開始/終了フレームの参考画像"
   },
   "name.action": {
     "message": "アクション",
@@ -49,11 +53,11 @@
   },
   "option.portrait": {
     "message": "縦向き",
-    "description": "オプションテキスト：縦向き方向（英語では「Portrait」と翻訳し、簡潔に保つ）"
+    "description": "オプションテキスト：縦向き方向"
   },
   "option.landscape": {
     "message": "横向き",
-    "description": "オプションテキスト：横向き方向（英語では「Landscape」と翻訳し、簡潔に保つ）"
+    "description": "オプションテキスト：横向き方向"
   },
   "name.duration": {
     "message": "ビデオの長さ",
@@ -65,15 +69,15 @@
   },
   "description.imageUrl": {
     "message": "複数画像でビデオを作成するタスクでは、複数の画像をアップロードする必要があります。",
-    "description": "パラメータ 'imageUrl' の説明"
+    "description": "パラメータ'imageUrl'の説明"
   },
   "description.prompt": {
     "message": "Sora ビデオ生成のためのプロンプト",
-    "description": "パラメータ 'prompt' の説明"
+    "description": "パラメータ'prompt'の説明"
   },
   "description.uploadStartEndImage": {
-    "message": "参照画像リンクの配列、最初が開始フレーム、次が終了フレーム画像",
-    "description": "パラメータ 'image_url' の説明"
+    "message": "参考画像リンクの配列、最初が開始フレーム、次が終了フレーム画像",
+    "description": "パラメータ'image_url'の説明"
   },
   "status.pending": {
     "message": "保留中",
@@ -104,8 +108,8 @@
     "description": "位置入力のプレースホルダー"
   },
   "tip.proOnly": {
-    "message": "sora-2-pro モデルのみがこのパラメータの変更をサポートしています",
-    "description": "ユーザーに専門モデルのみがこのパラメータの変更をサポートしていることを示すヒント"
+    "message": "このパラメータの変更は sora-2-pro モデルのみサポートされています",
+    "description": "ユーザーに専門モデルのみがこのパラメータの変更をサポートしていることを伝える"
   },
   "button.generate": {
     "message": "生成",
@@ -125,7 +129,7 @@
   },
   "button.uploadImageUrl": {
     "message": "画像をアップロード",
-    "description": "画像アップロードボタンのテキスト（英語では「Upload」と簡略化）"
+    "description": "画像アップロードボタンのテキスト"
   },
   "button.uploadVideoUrl": {
     "message": "ビデオをアップロード",
@@ -133,7 +137,7 @@
   },
   "button.uploadReferences": {
     "message": "アップロード",
-    "description": "ユーザーが参照をアップロードできるボタンテキスト"
+    "description": "ユーザーが参考をアップロードできるボタンテキスト"
   },
   "message.uploadReferencesExceed": {
     "message": "最大 2 枚の画像をアップロードできます",
@@ -141,7 +145,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "画像のアップロードに成功しました",
-    "description": "画像のアップロードが成功したときの成功メッセージ"
+    "description": "画像のアップロードが成功したときのメッセージ"
   },
   "message.uploadReferencesError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
@@ -153,7 +157,7 @@
   },
   "message.startTaskSuccess": {
     "message": "生成タスクを正常に開始しました",
-    "description": "タスクが正常に開始されたときの成功メッセージ"
+    "description": "タスクが正常に開始されたときのメッセージ"
   },
   "message.startTaskFailed": {
     "message": "タスクの開始に失敗しました。管理者に連絡してください",
@@ -172,19 +176,19 @@
     "description": "画像が生成中のときのメッセージ"
   },
   "message.generateFailed": {
-    "message": "ビデオ生成に失敗しました",
-    "description": "画像生成が失敗したときのメッセージ"
+    "message": "ビデオの生成に失敗しました",
+    "description": "画像生成に失敗したときのメッセージ"
   },
   "message.uploadVideoExceed": {
     "message": "アップロードする最初のフレーム画像の数が制限を超えています",
     "description": "アップロードする最初のフレーム画像の数が制限を超えた時のエラーメッセージ"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "アップロードファイルのサイズは10MBを超えてはいけません！",
+    "message": "アップロードファイルのサイズは10MBを超えてはいけません!",
     "description": "アップロードファイルのサイズが10MBを超えた時のエラーメッセージ"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "アップロードファイルはMP4形式でなければなりません！",
+    "message": "アップロードファイルはMP4形式でなければなりません!",
     "description": "アップロードファイルがMP4形式でない時のエラーメッセージ"
   },
   "message.uploadStartEndImageExceed": {

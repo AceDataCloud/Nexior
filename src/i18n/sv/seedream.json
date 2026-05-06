@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Uppgiftstyp",
-    "description": "SeeDream bildoperations typ"
+    "description": "SeeDream bildoperationstyp"
   },
   "name.generate": {
     "message": "Skapa bild",
@@ -35,6 +35,10 @@
     "message": "Spårnings ID",
     "description": "Spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften tog (sekunder)"
+  },
   "name.prompt": {
     "message": "Bildprompt",
     "description": "Prompt för att generera/redigera"
@@ -56,7 +60,7 @@
     "description": "Beskrivning av prompt"
   },
   "description.model": {
-    "message": "Modell som används för att generera eller redigera bilder.",
+    "message": "Modellen som används för att generera eller redigera bilder.",
     "description": "Beskrivning av model parameter"
   },
   "description.size": {
@@ -113,7 +117,7 @@
   },
   "message.uploadImageError": {
     "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
-    "description": "Misslyckad uppladdning"
+    "description": "Misslyckades med uppladdning"
   },
   "name.model": {
     "message": "Modell",
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Val av SeeEdit 3.0 i2i-modell"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Val av SeeDream 5.0-modell (stöder bildserie och strömmande utdata)"
+  },
+  "name.maxImages": {
+    "message": "Antal bilder",
+    "description": "Antal bilder som genereras i en bildserie (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Antal bilder som genereras i en begäran (1-15). Sätt till 1 för enstaka bildläge; mer än 1 aktiverar automatiskt bildserie (sequential_image_generation=auto), och håller karaktär, stil och detaljer konsekventa över bilder. Endast doubao-seedream-5.0 / 4.5 / 4.0 stöds; om referensbilder laddas upp, måste (antal referensbilder + antal genererade) ≤ 15. Avgifter baseras på det faktiska antalet genererade bilder.",
+    "description": "Beskrivning av max_images parameter"
   }
 }

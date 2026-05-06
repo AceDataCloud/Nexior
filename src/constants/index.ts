@@ -25,3 +25,4 @@ export * from './wan';
 export * from './mapping';
 export * from './surface';
 export * from './mobile';
+export * from './setting';

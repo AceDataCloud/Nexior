@@ -1,7 +1,13 @@
 <template>
   <div class="field">
     <h2 class="title font-bold">{{ $t('pika.name.model') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('pika.placeholder.select')">
+    <el-select
+      :key="revertKey"
+      :model-value="value"
+      class="value"
+      :placeholder="$t('pika.placeholder.select')"
+      @change="onChange"
+    >
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -9,8 +15,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElSelect, ElOption, ElMessage, ElMessageBox } from 'element-plus';
 import { KLING_DEFAULT_MODEL } from '@/constants';
+import { findKlingConflicts, clearKlingConflicts } from '@/utils/kling/capabilities';
 
 export default defineComponent({
   name: 'ModelSelector',
@@ -27,6 +34,9 @@ export default defineComponent({
   emits: ['update:modelValue'],
   data() {
     return {
+      // Bumped to force el-select to re-render and revert its internal display
+      // when the user cancels a model switch.
+      revertKey: 0,
       options: [
         {
           value: 'kling-v3',
@@ -68,21 +78,47 @@ export default defineComponent({
     };
   },
   computed: {
-    value: {
-      get() {
-        return this.$store.state.kling?.config?.model;
-      },
-      set(val: string) {
-        this.$store.commit('kling/setConfig', {
-          ...this.$store.state.kling.config,
-          model: val
-        });
-      }
+    value(): string | undefined {
+      return this.$store.state.kling?.config?.model;
     }
   },
   mounted() {
     if (!this.value) {
-      this.value = KLING_DEFAULT_MODEL;
+      this.applyModel(KLING_DEFAULT_MODEL);
+    }
+  },
+  methods: {
+    async onChange(val: string) {
+      const config = this.$store.state.kling?.config || {};
+      const conflicts = findKlingConflicts(config, { model: val });
+      if (conflicts.length === 0) {
+        this.applyModel(val);
+        return;
+      }
+      const fields = conflicts.map((c) => this.$t(c.i18nLabel)).join('、');
+      try {
+        await ElMessageBox.confirm(
+          this.$t('kling.message.featureNotSupportedBody', { fields }),
+          this.$t('kling.message.featureNotSupportedTitle'),
+          {
+            confirmButtonText: this.$t('kling.button.confirmContinue'),
+            cancelButtonText: this.$t('kling.button.cancelSwitch'),
+            type: 'warning'
+          }
+        );
+        const cleared = clearKlingConflicts({ ...config, model: val }, conflicts);
+        this.$store.commit('kling/setConfig', cleared);
+        ElMessage.success(this.$t('kling.message.featureRemovedNotice', { fields }));
+      } catch {
+        // User cancelled — force el-select to repaint with the current store value.
+        this.revertKey += 1;
+      }
+    },
+    applyModel(val: string) {
+      this.$store.commit('kling/setConfig', {
+        ...this.$store.state.kling.config,
+        model: val
+      });
     }
   }
 });

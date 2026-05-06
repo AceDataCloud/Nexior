@@ -17,11 +17,15 @@
   },
   "name.status": {
     "message": "Status",
-    "description": "Stan zadania"
+    "description": "Status zadania"
   },
   "name.traceId": {
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
+  },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (sekundy)"
   },
   "name.createdAt": {
     "message": "Data utworzenia",
@@ -76,20 +80,20 @@
     "description": "Tekst zastępczy dla pola wyboru"
   },
   "button.modelT2v": {
-    "message": "Wideo z tekstu",
+    "message": "Tekst na wideo",
     "description": "Generowanie wideo z tekstu"
   },
   "button.modelI2v": {
-    "message": "Wideo z obrazu",
+    "message": "Obraz na wideo",
     "description": "Generowanie wideo z obrazu"
   },
   "button.modelI2vFlash": {
-    "message": "Wideo z obrazu (szybkie)",
+    "message": "Obraz na wideo (szybko)",
     "description": "Szybkie generowanie wideo z obrazu"
   },
   "button.modelR2v": {
     "message": "Generowanie wideo referencyjnego",
-    "description": "Generowanie wideo referencyjnego"
+    "description": "Generowanie wideo na podstawie referencji"
   },
   "button.generate": {
     "message": "Generuj",
@@ -105,15 +109,15 @@
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
-    "description": "Rozpoczynanie zadania"
+    "description": "Zadanie w trakcie uruchamiania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie zostało pomyślnie uruchomione",
-    "description": "Pomyślne uruchomienie zadania"
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "description": "Zadanie uruchomione pomyślnie"
   },
   "message.startTaskFailed": {
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
-    "description": "Niepowodzenie w uruchomieniu zadania"
+    "description": "Niepowodzenie uruchomienia zadania"
   },
   "message.usedUp": {
     "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",

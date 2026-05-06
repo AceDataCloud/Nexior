@@ -8,7 +8,7 @@
     "description": "Tehtävän epäonnistumisen tila"
   },
   "name.failureReason": {
-    "message": "Epäonnistumisen syy",
+    "message": "Epätavallisuuden syy",
     "description": "Tehtävän epäonnistumisen syy"
   },
   "name.status": {
@@ -19,13 +19,17 @@
     "message": "Seuranta ID",
     "description": "Tehtävän seuranta ID"
   },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekunteina)"
+  },
   "name.createdAt": {
     "message": "Luontiaika",
     "description": "Sora-videon luontipäivämäärä ja -aika"
   },
   "name.startEndImage": {
     "message": "Alku/Loppu Kehys",
-    "description": "Lomakekenttä: Alku/Loppu kehyskuva (pitäisi olla lyhyt, jotta se ei peitä painiketta)"
+    "description": "Lomakekenttä: alku/loppu kehyskuva (suositus: 'Start/End Frames', pidä lyhyenä, vältä peittämistä)"
   },
   "name.action": {
     "message": "Toiminto",
@@ -49,11 +53,11 @@
   },
   "option.portrait": {
     "message": "Pysty",
-    "description": "Valintateksti: Pysty suunta (pitäisi olla lyhyt)"
+    "description": "Valintateksti: pystysuuntainen suunta (suositus: 'Portrait', pidä lyhyenä)"
   },
   "option.landscape": {
     "message": "Vaaka",
-    "description": "Valintateksti: Vaaka suunta (pitäisi olla lyhyt)"
+    "description": "Valintateksti: vaakasuuntainen suunta (suositus: 'Landscape', pidä lyhyenä)"
   },
   "name.duration": {
     "message": "Videon kesto",
@@ -64,11 +68,11 @@
     "description": "Videon laatu-parametrin nimi"
   },
   "description.imageUrl": {
-    "message": "Monikuvatehtävässä on ladattava useita kuvia.",
+    "message": "Monikuvavideon luontitehtävässä on ladattava useita kuvia.",
     "description": "Parametrin 'imageUrl' kuvaus"
   },
   "description.prompt": {
-    "message": "Sora-videon luomiseen käytettävä ohje",
+    "message": "Sora-videon luontiohjeet",
     "description": "Parametrin 'prompt' kuvaus"
   },
   "description.uploadStartEndImage": {
@@ -96,7 +100,7 @@
     "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä videon tyylin ohje, esim: moving",
+    "message": "Syötä videon tyylin ohjeet, esim: moving",
     "description": "Ohje-kentän paikkateksti"
   },
   "placeholder.position": {
@@ -105,47 +109,47 @@
   },
   "tip.proOnly": {
     "message": "Vain sora-2-pro malli tukee tämän parametrin muokkaamista",
-    "description": "Vihje käyttäjälle, että vain ammattimalli tukee tämän parametrin muokkaamista"
+    "description": "Vihje käyttäjälle, että vain ammattilaismallit tukevat tämän parametrin muokkaamista"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Sora-videon luomisen painiketeksti"
+    "description": "Sora-videon luontipainikkeen teksti"
   },
   "button.action1": {
     "message": "Tekstistä video",
-    "description": "Sora-videon luomisen painiketeksti"
+    "description": "Sora-videon luontipainikkeen teksti"
   },
   "button.action2": {
     "message": "Kuvasta video",
-    "description": "Sora-videon luomisen painiketeksti"
+    "description": "Sora-videon luontipainikkeen teksti"
   },
   "button.download": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painiketeksti"
+    "description": "Videon latauspainikkeen teksti"
   },
   "button.uploadImageUrl": {
     "message": "Lataa kuva",
-    "description": "Kuvan lataamisen painiketeksti (lyhennä englanniksi 'Upload')"
+    "description": "Kuvan latauspainikkeen teksti (suositus: 'Upload', vältä 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "Videon lataamisen painiketeksti"
+    "description": "Videon latauspainikkeen teksti"
   },
   "button.uploadReferences": {
     "message": "Lataa",
-    "description": "Painiketeksti, joka sallii käyttäjän ladata viittauksia"
+    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittauksia"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 2 kuvaa",
     "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Kuva ladattu onnistuneesti",
-    "description": "Onnistumisviesti, kun kuva on ladattu onnistuneesti"
+    "message": "Kuvien lataus onnistui",
+    "description": "Onnistumisviesti, kun kuvat on ladattu onnistuneesti"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen myöhemmin",
-    "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
+    "message": "Kuvien lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheilmoitus, kun kuvien lataus epäonnistuu"
   },
   "message.startingTask": {
     "message": "Tehtävää käynnistetään...",
@@ -156,12 +160,12 @@
     "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
-    "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
+    "message": "Tehtävän käynnistys epäonnistui, ota yhteyttä ylläpitoon",
+    "description": "Virheilmoitus, kun piirustustehtävän käynnistys epäonnistuu"
   },
   "message.usedUp": {
-    "message": "Oikeutesi on käytetty loppuun, osta lisää oikeuksia jatkaaksesi",
-    "description": "Viesti, kun oikeudet on käytetty loppuun"
+    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
+    "description": "Viesti, kun pisteet on käytetty loppuun"
   },
   "message.generating": {
     "message": "Luodaan...",
@@ -173,15 +177,15 @@
   },
   "message.generateFailed": {
     "message": "Videon luominen epäonnistui",
-    "description": "Viesti, kun kuvan luominen epäonnistuu"
+    "description": "Viesti, kun videon luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
     "message": "Lähetettyjen ensimmäisten kehysten määrä ylittää rajan",
     "description": "Virheilmoitus, kun lähetettyjen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Lähetettävän tiedoston koko ei saa ylittää 10MB!",
-    "description": "Virheilmoitus, kun lähetettävän tiedoston koko ei saa ylittää 10MB!"
+    "message": "Lähetettävän tiedoston koko ei voi ylittää 10MB!",
+    "description": "Virheilmoitus, kun lähetettävän tiedoston koko ei voi ylittää 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Lähetettävän tiedoston on oltava MP4-muodossa!",

@@ -14,14 +14,15 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Pixverse.vue';
 import ConfigPanel from '@/components/pixverse/ConfigPanel.vue';
 import { pixverseOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IPixverseGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/pixverse/RecentPanel.vue';
 import { IPixverseTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/pixverse';
+const CALLBACK_URL = getWebhookCallbackUrl('pixverse');
 
 interface IData {
   task: IPixverseTask | undefined;
@@ -157,10 +158,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('pixverse.message.startingTask'));
-      pixverseOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('pixverse', pixverseOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('pixverse.message.startTaskSuccess'));
         })

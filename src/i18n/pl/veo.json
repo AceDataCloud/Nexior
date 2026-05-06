@@ -27,20 +27,24 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
+  },
   "name.createdAt": {
     "message": "Data utworzenia",
     "description": "Data i czas utworzenia wideo Veo"
   },
   "name.startEndImage": {
-    "message": "Obrazy klatek startowej/końcowej",
-    "description": "Etykieta pola formularza: obrazy referencyjne klatki startowej/końcowej (proszę zachować krótko, aby nie zasłaniać przycisku)"
+    "message": "Obrazy kluczowe",
+    "description": "Etykieta pola formularza: obrazy kluczowe (zaleca się, aby tłumaczenie było krótkie, aby nie zasłaniało przycisku)"
   },
   "name.action": {
     "message": "Akcja",
     "description": "Lista dostępnych akcji"
   },
   "name.action3": {
-    "message": "Pobierz wideo w 1080p z",
+    "message": "Pobierz wideo w 1080p",
     "description": "Obraz referencyjny dla generowanego wideo"
   },
   "name.prompt": {
@@ -60,11 +64,11 @@
     "description": "Nazwa parametru proporcji"
   },
   "description.translation": {
-    "message": "Możesz włączyć automatyczne tłumaczenie dla podpowiedzi podczas tworzenia zadania wideo.",
+    "message": "Podczas tworzenia zadania wideo można włączyć automatyczne tłumaczenie podpowiedzi.",
     "description": "Opis parametru 'translation'"
   },
   "description.imageUrl": {
-    "message": "W zadaniu tworzenia wideo z wieloma obrazami należy przesłać wiele obrazów.",
+    "message": "W zadaniach tworzenia wideo z wieloma obrazami należy przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
@@ -72,7 +76,7 @@
     "description": "Opis parametru 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Tablica linków do obrazów referencyjnych, pierwszy to obraz klatki startowej, następnie obraz klatki końcowej",
+    "message": "Tablica linków do obrazów referencyjnych, pierwszy to obraz kluczowy, następnie obraz końcowy",
     "description": "Opis parametru 'image_url'"
   },
   "status.pending": {
@@ -96,7 +100,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np.: moving",
+    "message": "Wprowadź podpowiedź stylu wideo, np.: moving",
     "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.position": {
@@ -108,11 +112,11 @@
     "description": "Tekst przycisku do generowania wideo Veo"
   },
   "button.action1": {
-    "message": "Wideo z tekstu",
+    "message": "Generuj wideo",
     "description": "Tekst przycisku do generowania wideo Veo"
   },
   "button.action2": {
-    "message": "Wideo z obrazu",
+    "message": "Generuj wideo z obrazów",
     "description": "Tekst przycisku do generowania wideo Veo"
   },
   "button.action3": {
@@ -124,8 +128,8 @@
     "description": "Tekst przycisku do pobierania wideo"
   },
   "button.uploadImageUrl": {
-    "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
+    "message": "Prześlij",
+    "description": "Tekst przycisku do przesyłania obrazów (proszę uprościć do 'Prześlij')"
   },
   "button.uploadVideoUrl": {
     "message": "Prześlij wideo",
@@ -144,8 +148,8 @@
     "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazów"
   },
   "message.uploadReferencesError": {
-    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
+    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazów się nie powiodło"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
@@ -159,8 +163,12 @@
     "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem",
     "description": "Komunikat o błędzie, gdy uruchomienie zadania rysowania się nie powiodło"
   },
+  "message.imageRequired": {
+    "message": "Najpierw należy przesłać przynajmniej jeden obraz referencyjny, zanim uruchomisz zadanie generowania wideo z obrazów",
+    "description": "Podpowiedź, gdy w trybie image2video nie przesłano obrazów"
+  },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, kup więcej punktów, aby kontynuować",
+    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować korzystanie",
     "description": "Komunikat, gdy punkty zostały wyczerpane"
   },
   "message.generating": {
@@ -173,19 +181,19 @@
   },
   "message.generateFailed": {
     "message": "Nie udało się wygenerować wideo",
-    "description": "Komunikat, gdy generowanie obrazu się nie powiodło"
+    "description": "Wiadomość wyświetlana, gdy generowanie obrazu się nie powiodło"
   },
   "message.uploadVideoExceed": {
-    "message": "Liczba przesyłanych obrazów klatki startowej przekracza limit",
-    "description": "Informacja o błędzie, gdy liczba przesyłanych obrazów klatki startowej przekracza limit"
+    "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
+    "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów klatki początkowej przekracza limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Rozmiar pliku nie może przekraczać 10MB!",
-    "description": "Komunikat o błędzie, gdy rozmiar pliku przekracza 10MB!"
+    "message": "Rozmiar przesyłanego pliku nie może przekraczać 10 MB!",
+    "description": "Komunikat o błędzie, gdy rozmiar przesyłanego pliku nie może przekraczać 10 MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Plik musi być w formacie MP4!",
-    "description": "Komunikat o błędzie, gdy plik nie jest w formacie MP4!"
+    "message": "Przesyłany plik musi być w formacie MP4!",
+    "description": "Komunikat o błędzie, gdy przesyłany plik musi być w formacie MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Liczba przesyłanych obrazów klatki początkowej przekracza limit",
@@ -197,19 +205,19 @@
   },
   "message.uploadStartImageError": {
     "message": "Nie udało się przesłać obrazu klatki początkowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki początkowej nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu klatki początkowej"
   },
   "message.uploadVideoError": {
     "message": "Nie udało się przesłać wideo",
-    "description": "Komunikat o błędzie, gdy przesyłanie wideo nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać wideo"
   },
   "message.uploadEndImageError": {
     "message": "Nie udało się przesłać obrazu klatki końcowej",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazu klatki końcowej nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać obrazu klatki końcowej"
   },
   "message.uploadDocumentsError": {
     "message": "Nie udało się przesłać dokumentu",
-    "description": "Komunikat o błędzie, gdy przesyłanie dokumentu nie powiodło się"
+    "description": "Komunikat o błędzie, gdy nie udało się przesłać dokumentu"
   },
   "message.noOperations": {
     "message": "Brak dostępnych operacji",
@@ -218,5 +226,65 @@
   "message.noTasks": {
     "message": "Brak historii zadań, kliknij po lewej, aby wygenerować wideo",
     "description": "Komunikat, gdy nie ma zadań"
+  },
+  "name.upsampleAction": {
+    "message": "Cel podnoszenia rozdzielczości",
+    "description": "Format docelowy dla /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Ruch kamery",
+    "description": "Typ ruchu kamery dla /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Maska obszaru",
+    "description": "Maska obrazu dla /veo/objects (białe piksele = obszar działania)"
+  },
+  "name.videoId": {
+    "message": "ID wideo",
+    "description": "ID źródłowego wideo (z data[].id poprzedniego zadania generowania)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL maski obrazu lub zakodowany w base64 JPEG",
+    "description": "Placeholder dla pola wejściowego image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Wklej ID wideo lub kliknij przycisk operacji w prawej liście zadań, aby automatycznie wypełnić",
+    "description": "Placeholder dla pola wejściowego video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Wideo z wielu obrazów",
+    "description": "ingredients2video — połączenie 1-3 obrazów w nową scenę"
+  },
+  "button.actionUpsample": {
+    "message": "Podnieś rozdzielczość / Podgląd GIF",
+    "description": "/veo/upsample — podnieś do 1080p/4K lub wyeksportuj GIF"
+  },
+  "button.actionExtend": {
+    "message": "Przedłuż wideo",
+    "description": "/veo/extend — wydłuż czas trwania już wygenerowanego wideo"
+  },
+  "button.actionReshoot": {
+    "message": "Zmień kąt i nagraj ponownie",
+    "description": "/veo/reshoot — ponownie wygeneruj ten sam materiał z innym ruchem kamery"
+  },
+  "button.actionObjectInsert": {
+    "message": "Dodaj obiekt",
+    "description": "/veo/objects insert — dodaj obiekt do wideo"
+  },
+  "button.actionObjectRemove": {
+    "message": "Usuń obiekt",
+    "description": "/veo/objects remove — usuń obiekt z wideo za pomocą maski"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Podnieś do 1080P",
+    "description": "Przycisk operacji podglądu — podnieś rozdzielczość do 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Podnieś do 4K",
+    "description": "Przycisk operacji podglądu — podnieś rozdzielczość do 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Eksportuj GIF",
+    "description": "Przycisk operacji podglądu — przekształć w podgląd GIF"
   }
 }

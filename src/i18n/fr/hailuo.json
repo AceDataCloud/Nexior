@@ -23,6 +23,10 @@
     "message": "ID de traçage",
     "description": "ID de traçage de la tâche"
   },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (en secondes)"
+  },
   "name.createdAt": {
     "message": "Date de création",
     "description": "Date et heure de génération de la vidéo Hailuo"
@@ -41,7 +45,7 @@
   },
   "name.ingredients": {
     "message": "Vidéo multi-image",
-    "description": "Commutateur/étiquette pour créer une vidéo à partir de plusieurs images (en anglais : Multi-Image, garder court)"
+    "description": "Commutateur/étiquette pour créer une vidéo à partir de plusieurs images (en anglais : Multi-Image, restez concis)"
   },
   "name.model": {
     "message": "Modèle",
@@ -49,7 +53,7 @@
   },
   "name.startImageUrl": {
     "message": "Image de départ",
-    "description": "Graine pour générer le code QR"
+    "description": "Graine pour le QR code à générer"
   },
   "name.ingredientsModel": {
     "message": "Modèle d'ingrédients",
@@ -60,7 +64,7 @@
     "description": "Nom du générateur de vidéos Hailuo"
   },
   "description.ingredients": {
-    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre vidéo, activez ce bouton.",
+    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, activez ce bouton.",
     "description": "Description du paramètre 'ingredients'"
   },
   "description.startImageUrl": {
@@ -145,7 +149,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Télécharger",
-    "description": "Texte du bouton pour télécharger une image (en anglais, simplifiez en 'Upload', ne pas utiliser 'Upload Image')"
+    "description": "Texte du bouton pour télécharger une image (en anglais, simplifiez à 'Upload', ne pas utiliser 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Vous pouvez télécharger jusqu'à 5 images",
@@ -153,7 +157,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Images téléchargées avec succès",
-    "description": "Message de succès lors du téléchargement d'images"
+    "description": "Message de succès lors du téléchargement réussi d'images"
   },
   "message.uploadReferencesError": {
     "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
@@ -165,7 +169,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Message de succès lors du démarrage de la tâche"
+    "description": "Message de succès lors du démarrage réussi de la tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
@@ -181,7 +185,7 @@
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message lors de la génération de l'image"
+    "description": "Message affiché pendant que l'image est en cours de génération"
   },
   "message.extendVideo": {
     "message": "Continuer à générer cette vidéo",
@@ -196,7 +200,7 @@
     "description": "Message d'erreur lorsque le nombre d'images de la première image téléchargées dépasse la limite"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
+    "message": "La taille du fichier téléchargé ne peut pas dépasser 10 Mo !",
     "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {

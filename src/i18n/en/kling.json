@@ -1,19 +1,347 @@
 {
+  "tab.videoGeneration": {
+    "message": "Video Generation",
+    "description": "Tab label: Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "Motion Control",
+    "description": "Tab label: Motion Control"
+  },
+  "name.motionImage": {
+    "message": "Character Reference Image",
+    "description": "Character image input in Motion Control"
+  },
+  "name.motionVideo": {
+    "message": "Motion Reference Video",
+    "description": "Reference video input in Motion Control"
+  },
+  "name.motionPrompt": {
+    "message": "Additional Prompt (Optional)",
+    "description": "Additional prompt in Motion Control"
+  },
+  "name.characterOrientation": {
+    "message": "Character Orientation",
+    "description": "Character orientation field"
+  },
+  "name.orientationImage": {
+    "message": "Follow Image",
+    "description": "Character orientation option: Follow Image"
+  },
+  "name.orientationVideo": {
+    "message": "Follow Video",
+    "description": "Character orientation option: Follow Video"
+  },
+  "name.keepOriginalSound": {
+    "message": "Keep Original Audio",
+    "description": "keep_original_sound toggle"
+  },
+  "description.motionImage": {
+    "message": "Upload a character reference image; elements like character and background in the generated video will reference this.",
+    "description": "motion image_url description"
+  },
+  "description.motionVideo": {
+    "message": "Upload a motion reference video; the character's actions in the generated video will match this video (MP4 / MOV, ≤1 minute, ≤1 GB).",
+    "description": "motion video_url description"
+  },
+  "description.motionPrompt": {
+    "message": "Optional. Can include positive and negative descriptions to assist in generating effects.",
+    "description": "motion prompt description"
+  },
+  "description.characterOrientation": {
+    "message": "Choosing 'Follow Video' performs better for complex actions; choosing 'Follow Image' aligns the character's orientation with the reference image, improving camera movement.",
+    "description": "character_orientation description"
+  },
+  "description.motionMode": {
+    "message": "std prioritizes performance, pro prioritizes quality.",
+    "description": "motion mode description"
+  },
+  "description.keepOriginalSound": {
+    "message": "Enabling keeps the original audio from the reference video; disabling outputs a video without the original audio.",
+    "description": "keep_original_sound description"
+  },
+  "placeholder.motionPrompt": {
+    "message": "For example: A person is jumping. Optional.",
+    "description": "motion prompt placeholder"
+  },
+  "button.generateMotion": {
+    "message": "Generate Motion Control Video",
+    "description": "Motion Control generate button"
+  },
+  "message.motionMissingInputs": {
+    "message": "Please upload both the character image and motion reference video.",
+    "description": "Prompt when inputs are missing in Motion Control"
+  },
+  "inspiration.title": {
+    "message": "Inspiration and Presets",
+    "description": "Title of the Inspiration drawer"
+  },
+  "inspiration.openButton": {
+    "message": "Inspiration",
+    "description": "Button to open the Inspiration drawer"
+  },
+  "inspiration.removeChip": {
+    "message": "Remove this preset",
+    "description": "Button aria-label to remove selected preset in the prompt area"
+  },
+  "inspiration.hint": {
+    "message": "Click a phrase to automatically add it to the prompt; click again to remove it.",
+    "description": "Usage instructions at the top of the Inspiration drawer"
+  },
+  "inspiration.empty": {
+    "message": "No available presets",
+    "description": "Empty state of the Inspiration drawer"
+  },
+  "inspiration.selectedSummary": {
+    "message": "{count} items selected",
+    "description": "Number of selected presets"
+  },
+  "inspiration.clearSelected": {
+    "message": "Clear All",
+    "description": "Button to clear all selected presets"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "Camera Movements",
+    "description": "Inspiration group: Camera Movements"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "Movement Speed",
+    "description": "Inspiration group: Movement Speed"
+  },
+  "inspiration.group.shotType": {
+    "message": "Shot Type",
+    "description": "Inspiration group: Shot Type / Perspective"
+  },
+  "inspiration.group.light": {
+    "message": "Lighting",
+    "description": "Inspiration group: Lighting"
+  },
+  "inspiration.group.frame": {
+    "message": "Framing",
+    "description": "Inspiration group: Framing / Composition"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "Atmosphere",
+    "description": "Inspiration group: Atmosphere / Style"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "Camera rotates around the subject",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "Camera is stationary",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "Handheld shooting",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "Camera zooms out",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "Camera zooms in",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "Camera follows the subject",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "Camera pans right",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "Camera tilts up",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "Camera tilts down",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "Camera orbits in",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "Camera movement slow",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "Camera movement medium",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "Camera movement fast",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "Close-up shot",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "Medium shot",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "Long shot",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "Low angle shot",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "High angle shot",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "Shallow Depth of Field",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "Front View",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "Side View",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "Close-Up",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "Drone View",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "Sunlight",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "Soft Light",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "Neon Light",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "Warm Light",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "Natural Light",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "Candlelight",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "City Night Lights",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "Rich Details",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "Simple Background",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "Mysterious Atmosphere",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "Peaceful Atmosphere",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "Heartwarming",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "Vivid",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "Colorful",
+    "description": ""
+  },
   "name.taskId": {
     "message": "Task ID",
     "description": "The ID of the task"
   },
   "name.type": {
     "message": "Type",
-    "description": "The content type of the Kling video to be generated, such as 'link', 'text', etc."
+    "description": "Content type of the Kling video to be generated, such as 'link', 'text', etc."
   },
   "name.modeStd": {
-    "message": "Standard",
-    "description": "The standard mode of the Kling video"
+    "message": "Standard (720p)",
+    "description": "Standard mode for Kling video (outputs 720p)"
   },
   "name.modePro": {
-    "message": "High Quality",
-    "description": "The high-quality mode of the Kling video"
+    "message": "High Quality (1080p)",
+    "description": "High quality mode for Kling video (outputs 1080p)"
+  },
+  "name.mode4k": {
+    "message": "Native 4K",
+    "description": "Kling 4K mode (supported only by v3 / v3-Omni)"
+  },
+  "name.cameraControl": {
+    "message": "Camera Control",
+    "description": "Type and parameters of camera control"
+  },
+  "name.cameraTypeNone": {
+    "message": "None",
+    "description": "No camera control used"
+  },
+  "name.cameraTypeSimple": {
+    "message": "Custom (6 Dimensions)",
+    "description": "Using custom six-dimensional parameters"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "Down and Back",
+    "description": "Preset camera movement: down and back"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "Forward and Up",
+    "description": "Preset camera movement: forward and up"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "Left Turn and Forward",
+    "description": "Preset camera movement: left turn and forward"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "Right Turn and Forward",
+    "description": "Preset camera movement: right turn and forward"
+  },
+  "name.cc_horizontal": {
+    "message": "Horizontal Movement",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "Vertical Movement",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "Pan",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "Tilt",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "Roll",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "Zoom",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "Failure",
@@ -31,29 +359,33 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The elapsed time of the task (in seconds)"
+  },
   "name.createdAt": {
     "message": "Created At",
     "description": "The date and time the Kling video was generated"
   },
   "name.cfgScale": {
     "message": "Freedom Level",
-    "description": "The freedom parameter for generating the video (0-1), larger values are closer to the reference"
+    "description": "The freedom level parameter for video generation (0-1), larger values are closer to the reference"
   },
   "name.generateAudio": {
-    "message": "Generate Audio Synchronously",
-    "description": "Whether to generate audio synchronously, supports kling-v3, kling-v3-omni, and kling-v2-6 (pro mode)"
+    "message": "Generate Audio Sync",
+    "description": "Whether to generate audio sync, supports kling-v3, kling-v3-omni, and kling-v2-6 (pro mode)"
   },
   "name.startImage": {
     "message": "First Frame",
-    "description": "Form field label: First frame reference image"
+    "description": "Form field label: first frame reference image"
   },
   "name.negativePrompt": {
     "message": "Negative Prompt",
-    "description": "The negative text prompt for generating the video"
+    "description": "Negative text prompt for video generation"
   },
   "name.endImage": {
     "message": "Last Frame",
-    "description": "Form field label: Last frame reference image"
+    "description": "Form field label: last frame reference image"
   },
   "name.videoUrl": {
     "message": "Custom Video",
@@ -61,7 +393,7 @@
   },
   "name.prompt": {
     "message": "Video Prompt",
-    "description": "The prompt for content input"
+    "description": "Prompt for content input"
   },
   "name.duration": {
     "message": "Video Duration",
@@ -69,15 +401,15 @@
   },
   "name.ingredients": {
     "message": "Multi-Image",
-    "description": "Multi-image creation toggle/label"
+    "description": "Multi-image video creation toggle/label"
   },
   "name.model": {
     "message": "Model Version",
     "description": "The model version used to generate the video"
   },
   "name.ratio": {
-    "message": "Aspect Ratio",
-    "description": "The aspect ratio used to generate the video"
+    "message": "Video Ratio",
+    "description": "The video ratio used to generate the video"
   },
   "name.mode": {
     "message": "Video Mode",
@@ -96,36 +428,80 @@
     "description": "The name of the Kling video generator"
   },
   "description.ingredients": {
-    "message": "Enable this button if you want to upload multiple images to create your video.",
-    "description": "Description for the 'ingredients' parameter"
+    "message": "Enable this button if you want to upload multiple images to generate your video.",
+    "description": "Description of the 'ingredients' parameter"
   },
   "description.imageUrl": {
-    "message": "In multi-image video creation tasks, multiple images must be uploaded.",
-    "description": "Description for the 'imageUrl' parameter"
+    "message": "In the task of creating a video from multiple images, multiple images must be uploaded.",
+    "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
-    "message": "The prompt for generating the Kling video",
-    "description": "Description for the 'prompt' parameter"
+    "message": "Prompt words for generating Kling videos",
+    "description": "Description of the 'prompt' parameter"
   },
   "description.negativePrompt": {
     "message": "Negative text prompt, optional, must not exceed 200 characters",
-    "description": "Description for the 'negativePrompt' parameter"
+    "description": "Description of the 'negativePrompt' parameter"
   },
   "description.uploadStartImage": {
     "message": "Upload the first frame image as a reference for generation; the final video will reference the first frame.",
-    "description": "Description for the upload reference parameter"
+    "description": "Description of the upload reference parameter"
   },
   "description.uploadEndImage": {
     "message": "Upload the last frame image as a reference for generation; the final video will reference the last frame.",
-    "description": "Description for the upload reference parameter"
+    "description": "Description of the upload reference parameter"
   },
   "description.cfgScale": {
-    "message": "The freedom level for generating the video, optional [0,1]. Larger values indicate stronger relevance.",
-    "description": "Description for the upload reference parameter"
+    "message": "The degree of freedom for generating the video, optional [0,1]. The larger the value, the stronger the correlation.",
+    "description": "Description of the upload reference parameter"
+  },
+  "description.mode": {
+    "message": "std has better performance, pro has better quality; 4K is only supported by v3 / v3-Omni and cannot be used with camera control simultaneously.",
+    "description": "Overall description of the mode field"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "Only kling-v3 / kling-v3-omni is supported",
+    "description": "Reason for 4K option being disabled (model mismatch)"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "Camera control is enabled and cannot be used with 4K simultaneously.",
+    "description": "Reason for 4K option being disabled (camera control set)"
+  },
+  "description.duration": {
+    "message": "The standard model only supports 5/10 seconds; v3 / v3-Omni supports 3/5/8/10/12/15 seconds.",
+    "description": "Overall description of the duration field"
+  },
+  "description.durationV3Only": {
+    "message": "Only v3 / v3-Omni is supported",
+    "description": "Reason for duration option being disabled"
+  },
+  "description.generateAudio": {
+    "message": "Synthesize sound effects while generating the video. Only kling-v3 / kling-v3-omni / kling-v2-6 (pro mode) is supported.",
+    "description": "Description of the audio effect switch (enabled)"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "The current model does not support synchronized sound effects; only kling-v3 / kling-v3-omni / kling-v2-6 (pro mode) is available.",
+    "description": "Description of the audio effect switch (disabled)"
+  },
+  "description.cameraControl": {
+    "message": "Control the direction of camera movement. Selecting 'Custom' allows fine-tuning across 6 dimensions, each value [-1, 1].",
+    "description": "Description of camera control"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "4K mode is selected, camera control is unavailable; please switch to std / pro and then enable.",
+    "description": "Reason for camera control being disabled"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "Camera control is not supported when a start-frame image is uploaded (image-to-video). Remove the start-frame image to use camera control.",
+    "description": "Reason for camera control being disabled (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Camera control is not supported by the current model / mode / duration combination. Adjust the configuration first to enable it.",
+    "description": "Reason for camera control being disabled (model does not support it)"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The pending status of the task"
+    "description": "The waiting status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -144,11 +520,11 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter the prompt for the video style, e.g., moving",
+    "message": "Enter prompt words for the video style, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.negativePrompt": {
-    "message": "Enter the negative prompt for the video style, up to 200 characters",
+    "message": "Enter negative prompt words for the video style, up to 200 characters",
     "description": "Placeholder text in the negative prompt field"
   },
   "placeholder.position": {
@@ -158,6 +534,10 @@
   "placeholder.aspectRatio": {
     "message": "Please select...",
     "description": "Placeholder for aspect ratio input"
+  },
+  "placeholder.cameraType": {
+    "message": "Not used",
+    "description": "Placeholder for camera type selection"
   },
   "placeholder.preset": {
     "message": "Please select...",
@@ -177,35 +557,35 @@
   },
   "button.precise": {
     "message": "Precise",
-    "description": "Button text for generating a Kling video"
+    "description": "Button text for generating Kling videos"
   },
   "button.creative": {
     "message": "Creative",
-    "description": "Button text for generating a Kling video"
+    "description": "Button text for generating Kling videos"
   },
   "button.generate": {
     "message": "Generate",
-    "description": "Button text for generating a Kling video"
+    "description": "Button text for generating Kling videos"
   },
   "button.extend": {
     "message": "Extend Video",
-    "description": "Button text for extending the video"
+    "description": "Text for the button that allows the user to extend the video"
   },
   "button.download": {
     "message": "Download Video",
-    "description": "Button text for downloading the video"
+    "description": "Text for the button to download the video"
   },
   "button.uploadImageUrl": {
     "message": "Upload",
-    "description": "Button text for uploading an image (simplified to 'Upload', do not use 'Upload Image')"
+    "description": "Text for the button to upload an image (simplified to 'Upload', do not use 'Upload Image')"
   },
   "button.uploadVideoUrl": {
     "message": "Upload Video",
-    "description": "Button text for uploading a video"
+    "description": "Text for the button to upload a video"
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Button text allowing users to upload references"
+    "description": "Text for the button that allows users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 1 image",
@@ -218,6 +598,34 @@
   "message.uploadReferencesError": {
     "message": "Image upload failed, please try again later",
     "description": "Error message when image upload fails"
+  },
+  "message.endImageRequiresStart": {
+    "message": "Please upload the first frame reference image before using the end frame reference image",
+    "description": "Error message when the user has only uploaded the end frame without the first frame"
+  },
+  "message.endImageNotSupported": {
+    "message": "The end frame reference image is not supported by the current model/mode/duration, please adjust the settings (common requirements: mode pro, duration 5s).",
+    "description": "Message when the current model does not support the uploaded end frame"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirmation Required",
+    "description": "Title for the confirmation popup when switching parameters will lose existing settings"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "The current selection does not support the following enabled settings: {fields}. Continuing will clear these settings.",
+    "description": "Message indicating that switching model/mode/duration will lose existing settings, {fields} will be replaced with actual field names"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Cleared unsupported settings: {fields}",
+    "description": "Toast notification after the user confirms the switch"
+  },
+  "button.confirmContinue": {
+    "message": "Continue Switching",
+    "description": "Main button for the feature loss confirmation popup"
+  },
+  "button.cancelSwitch": {
+    "message": "Cancel",
+    "description": "Cancel button for the feature loss confirmation popup"
   },
   "message.startingTask": {
     "message": "Starting task...",
@@ -232,19 +640,19 @@
     "description": "Error message when starting the drawing task fails"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue",
-    "description": "Message when credits are used up"
+    "message": "Your credits are exhausted, please purchase more credits to continue using",
+    "description": "Message when credits are exhausted"
   },
   "message.generating": {
     "message": "Generating...",
     "description": "Message when the image is being generated"
   },
   "message.downloadVideo": {
-    "message": "Download this video",
+    "message": "Download This Video",
     "description": "Message when the image is being generated"
   },
   "message.extendVideo": {
-    "message": "Continue generating this video",
+    "message": "Continue Generating This Video",
     "description": "Message when the image is being generated"
   },
   "message.generateFailed": {
@@ -257,35 +665,35 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when the uploaded file size exceeds 10MB!"
+    "description": "Error message when the uploaded file size exceeds 10MB"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",
-    "description": "Error message when the uploaded file is not in MP4 format!"
+    "description": "Error message when the uploaded file is not in MP4 format"
   },
   "message.uploadStartImageExceed": {
     "message": "The number of uploaded first frame images exceeds the limit",
     "description": "Error message when the number of uploaded first frame images exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "The number of uploaded last frame images exceeds the limit",
-    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+    "message": "The number of uploaded end frame images exceeds the limit",
+    "description": "Error message when the number of uploaded end frame images exceeds the limit"
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload first frame image",
-    "description": "Error message when uploading the first frame image fails"
+    "description": "Error message when the first frame image upload fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when uploading the first frame image fails"
+    "description": "Error message when the first frame image upload fails"
   },
   "message.uploadEndImageError": {
-    "message": "Failed to upload last frame image",
-    "description": "Error message when uploading the last frame image fails"
+    "message": "Failed to upload end frame image",
+    "description": "Error message when the end frame image upload fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when uploading a document fails"
+    "description": "Error message when document upload fails"
   },
   "message.noOperations": {
     "message": "No available operations",
@@ -294,5 +702,9 @@
   "message.noTasks": {
     "message": "No historical tasks, please click on the left to generate a video",
     "description": "Message when there are no tasks"
+  },
+  "placeholder.select": {
+    "message": "Select",
+    "description": "Placeholder text for select fields"
   }
 }

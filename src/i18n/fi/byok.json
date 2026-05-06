@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Mukautettu API-avain",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Lisää API-avain",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Muokkaa API-avain",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Poista API-avain",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Käytä omaa palveluntarjoajan API-avain (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) korvaamaan alustan tilit. Konfiguroinnin jälkeen vastaavat mallin keskustelupyynnöt kutsuvat suoraan ylävirran palveluntarjoajaa avaimellasi, eikä se kuluta alustan krediittejä; työkalujen kutsuminen, viittaukset, artefaktit, pilvihistoria ja muut toiminnot toimivat normaalisti.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Palveluntarjoaja",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Huomautus",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "esim. \"Työtilini\" (valinnainen)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API-avain",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Jätä tyhjäksi, jos haluat säilyttää nykyisen avaimen",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Mukautettu perus-URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Jätä tyhjäksi käyttääksesi palveluntarjoajan oletusosoitetta",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktivoitu",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Viimeksi käytetty",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Lisäysaika",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Käytössä",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Ei käytössä",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Ei koskaan käytetty",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Oletus",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Lisää API-avain",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Muokkaa",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testaa",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Poista",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Tallenna",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Peruuta",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Vahvistatko tämän API-avaimen poistamisen? Jatkossa {provider} mallin keskustelut palautuvat alustan oletusylävirtaan.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API-avain on poistettu.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API-avain on tallennettu.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Yhteys on kunnossa.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Testi epäonnistui: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Todistusten lataaminen epäonnistui.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Todistusten tallentaminen epäonnistui.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Mukautettua API-avainta ei ole vielä määritetty. Napsauta \"Lisää API-avain\" käyttääksesi omaa palveluntarjoajan tiliäsi.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Näytä lisäasetukset",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Valinnainen. Mukautettu ylävirran osoite (käytetään OpenRouterissa, omassa käänteispalvelimessa, yritysportissa jne.). Vain HTTPS sallittu, ei saa osoittaa sisäverkkoon/loopback-osoitteeseen.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Käytetään mukautettua {provider} API-avainta",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Nykyinen keskustelu käyttää sinun {provider} API-avainta, kustannukset veloitetaan {provider} tililtä, eikä se vähennä alustan saldoa.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Napsauta avataksesi API-avaimen asetukset",
+    "description": "Chattauksen sivun BYOK-merkinnän napsautuksen jälkeen näkyvä viesti: Napsauta avataksesi asetuskeskustelun API-avaimen välilehden."
+  },
+  "button.testConnection": {
+    "message": "Testaa",
+    "description": "Uuden/muokkausikkunan painike - testaa vain nykyisen lomakeasetuksen, ei tallenna todistuksia."
+  },
+  "test.success": {
+    "message": "Yhteystesti onnistui",
+    "description": "Yhteystestin tulosalueen onnistumisen otsikko."
+  },
+  "test.failure": {
+    "message": "Yhteystesti epäonnistui",
+    "description": "Yhteystestin tulosalueen epäonnistumisen otsikko."
+  },
+  "test.endpoint": {
+    "message": "Pyyntöosoite",
+    "description": "Testitulosten yksityiskohtien pyyntö-URL-merkintä."
+  },
+  "test.status": {
+    "message": "Tilakoodi",
+    "description": "Testitulosten yksityiskohtien HTTP-tilakoodimerkintä."
+  },
+  "test.message": {
+    "message": "Ylävirran vastaus",
+    "description": "Testitulosten yksityiskohtien ylävirran virhe-/ilmoitusviestin merkintä."
+  },
+  "providerDesc.openai": {
+    "message": "Korvata tämän sivuston ChatGPT (GPT-4 / GPT-4o / o1 / o3 jne.) keskustelupyynnöt.",
+    "description": "Palveluntarjoajan alasvetovalikon OpenAI-vaihtoehdon alaotsikko."
+  },
+  "providerDesc.anthropic": {
+    "message": "Korvata tämän sivuston Claude (Sonnet / Opus / Haiku jne.) keskustelupyynnöt.",
+    "description": "Palveluntarjoajan alasvetovalikon Anthropic-vaihtoehdon alaotsikko."
+  },
+  "providerDesc.google": {
+    "message": "Korvata tämän sivuston Gemini (Pro / Flash-sarja) keskustelupyynnöt.",
+    "description": "Palveluntarjoajan alasvetovalikon Google-vaihtoehdon alaotsikko."
+  },
+  "providerDesc.xai": {
+    "message": "Korvata tämän sivuston Grok keskustelupyynnöt.",
+    "description": "Palveluntarjoajan alasvetovalikon xAI-vaihtoehdon alaotsikko."
+  },
+  "providerDesc.deepseek": {
+    "message": "Korvata tämän sivuston DeepSeek (V3 / R1 jne.) keskustelupyynnöt.",
+    "description": "Palveluntarjoajan alasvetovalikon DeepSeek-vaihtoehdon alaotsikko."
+  },
+  "providerDesc.moonshot": {
+    "message": "Korvataan Kimi keskustelupyynnöt.",
+    "description": "Tarjoajan alasvetovalikon Moonshot (Kimi) vaihtoehdon alaotsikko."
+  },
+  "providerDesc.zhipu": {
+    "message": "Korvataan tämän sivuston GLM-sarjan keskustelupyynnöt.",
+    "description": "Tarjoajan alasvetovalikon Zhipu (GLM) vaihtoehdon alaotsikko."
+  }
+}

@@ -1,38 +1,38 @@
 {
   "entity.requestQueries": {
     "message": "Pyyntö kyselyt",
-    "description": "HTTP-pyynnön kyselyparametrit."
+    "description": "HTTP pyynnön kyselyparametrit."
   },
   "entity.requestBody": {
-    "message": "Pyyntöruumis",
-    "description": "HTTP-pyynnön pyyntöruumis."
+    "message": "Pyyntö runko",
+    "description": "HTTP pyynnön runko."
   },
   "entity.responseBody": {
-    "message": "Vastausruumis",
-    "description": "HTTP-vastauksen vastausruumis."
+    "message": "Vastaus runko",
+    "description": "HTTP vastauksen runko."
   },
   "entity.requestHeaders": {
-    "message": "Pyyntöotsikot",
-    "description": "HTTP-pyynnön pyyntöotsikot."
+    "message": "Pyyntö otsikot",
+    "description": "HTTP pyynnön otsikot."
   },
   "entity.requestHeader": {
-    "message": "Pyyntöotsikko",
-    "description": "HTTP-pyynnön pyyntöotsikko, yksittäinen muoto pyyntöotsikosta."
+    "message": "Pyyntö otsikko",
+    "description": "HTTP pyynnön otsikko, vain yksittäinen muoto."
   },
   "entity.responseHeaders": {
-    "message": "Vastausotsikot",
-    "description": "HTTP-vastauksen vastausotsikot."
+    "message": "Vastaus otsikot",
+    "description": "HTTP vastauksen otsikot."
   },
   "entity.response": {
     "message": "Vastaus",
-    "description": "HTTP-vastaus."
+    "description": "HTTP vastaus."
   },
   "entity.success": {
-    "message": "Onnistuminen",
+    "message": "Onnistui",
     "description": "Onnistunut vastaus."
   },
   "entity.failure": {
-    "message": "Epäsuccess",
+    "message": "Epäonnistui",
     "description": "Epäonnistunut vastaus."
   },
   "entity.responseExample": {
@@ -53,23 +53,23 @@
   },
   "message.free": {
     "message": "Ilmainen",
-    "description": "Ilmaista hintaa, ei kustannuksia API-palvelun käytössä."
+    "description": "Ilmaista hintaa, ei tarvitse käyttää pisteitä tai rahaa API-palvelun käytössä."
   },
   "message.appliedCount": {
     "message": "Hakemusten määrä",
-    "description": "API-palvelua hakeneiden määrät."
+    "description": "API-palvelun hakemusten määrä."
   },
   "message.firstFree": {
     "message": "Ensimmäinen ilmainen",
-    "description": "Ensimmäisen käytön ilmaiseksi API-palvelussa, ei kustannuksia."
+    "description": "Ensimmäinen API-palvelun käyttö on ilmainen, ei tarvitse käyttää pisteitä tai rahaa."
   },
   "message.custom": {
-    "message": "Määritetty määrä",
-    "description": "Hinta on määritetty, käyttö tarvitsee määritetyn summan."
+    "message": "Määritetty summa",
+    "description": "Hinta on määritetty, API-palvelun käytössä tarvitaan määritetty määrä pisteitä tai rahaa."
   },
   "message.present": {
     "message": "Lahja",
-    "description": "Ensimmäisellä käytöllä API-palvelussa annamme sinulle krediittejä."
+    "description": "Ensimmäisellä API-palvelun käytöllä annamme sinulle pisteitä."
   },
   "message.around": {
     "message": "Noin",
@@ -77,7 +77,7 @@
   },
   "message.successRate15min": {
     "message": "Reaaliaikainen onnistumisprosentti",
-    "description": "API-palvelun reaaliaikainen onnistumisprosentti viimeisten 15 minuutin aikana."
+    "description": "API-palvelun reaaliaikainen onnistumisprosentti viimeisen 15 minuutin aikana."
   },
   "message.ySuccessRate": {
     "message": "Onnistumisprosentti (100%)",
@@ -88,59 +88,67 @@
     "description": "Aika (minuutit)."
   },
   "message.streamUsage": {
-    "message": "Huomautus: Virtaavan pyynnön osalta edellä oleva koodi ei ehkä päde täydellisesti. Tarkista liittymisasiakirjat muokkauksia varten.",
-    "description": "Virtaavan pyynnön osalta edellä oleva koodi ei ehkä päde täydellisesti. Tarkista liittymisasiakirjat muokkauksia varten."
+    "message": "Huomio: Virtaushakemuksille yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Tarkista integrointidokumentaatio muokkausta varten.",
+    "description": "Virtaushakemuksille yllä oleva koodi ei välttämättä ole täysin sovellettavissa. Tarkista integrointidokumentaatio muokkausta varten."
   },
   "message.alphaStage": {
-    "message": "Tämä API on Alpha-vaiheessa, aikainen esiversio, voi olla mahdollisia epävakausongelmia, API-muoto voi muuttua merkittävästi, ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen matala, tulevaisuudessa voi olla merkittäviä hintamuutoksia.",
-    "description": "Tämä API on Alpha-vaiheessa, aikainen esiversio, voi olla mahdollisia epävakausongelmia, API-muoto voi muuttua merkittävästi, ei suositella tuotantoympäristössä käytettäväksi. Nykyinen hinnoittelu on suhteellisen matala, tulevaisuudessa voi olla merkittäviä hintamuutoksia."
+    "message": "Tämä API on Alpha-vaiheessa, tämä on varhaisen esikatseluversion, joka saattaa sisältää mahdollisia epävakausongelmia, API-muoto voi muuttua merkittävästi, ei suositella käytettäväksi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla merkittäviä hintamuutoksia.",
+    "description": "Tämä API on Alpha-vaiheessa, tämä on varhaisen esikatseluversion, joka saattaa sisältää mahdollisia epävakausongelmia, API-muoto voi muuttua merkittävästi, ei suositella käytettäväksi tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla merkittäviä hintamuutoksia."
   },
   "message.betaStage": {
-    "message": "Tämä API on Beta-vaiheessa, API-muoto ei todennäköisesti muutu paljon, mutta voi olla mahdollisia epävakausongelmia, käytä varovaisesti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen matala, tulevaisuudessa voi olla kohtuullisia hintamuutoksia.",
-    "description": "Tämä API on Beta-vaiheessa, API-muoto ei todennäköisesti muutu paljon, mutta voi olla mahdollisia epävakausongelmia, käytä varovaisesti tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen matala, tulevaisuudessa voi olla kohtuullisia hintamuutoksia."
+    "message": "Tämä API on Beta-vaiheessa, API-muoto ei muutu merkittävästi, mutta saattaa sisältää mahdollisia epävakausongelmia, käytä varoen tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla kohtuullisia hintamuutoksia.",
+    "description": "Tämä API on Beta-vaiheessa, API-muoto ei muutu merkittävästi, mutta saattaa sisältää mahdollisia epävakausongelmia, käytä varoen tuotantoympäristössä. Nykyinen hinnoittelu on suhteellisen alhainen, tulevaisuudessa voi olla kohtuullisia hintamuutoksia."
   },
   "unit.credit": {
-    "message": "Krediitti",
-    "description": "Krediitti on API-palveluissa käytettävä virtuaalinen valuutta."
+    "message": "Pisteet",
+    "description": "Pisteet ovat API-palvelussa käytettävä virtuaalinen valuutta."
   },
   "unit.Credit": {
-    "message": "Krediitti",
-    "description": "Krediitti on API-palveluissa käytettävä virtuaalinen valuutta, tämä on isolla muodolla."
+    "message": "Pisteet",
+    "description": "Pisteet ovat API-palvelussa käytettävä virtuaalinen valuutta, tämä on suurilla kirjaimilla."
   },
   "unit.credits": {
-    "message": "Krediitit",
-    "description": "Krediitti on API-palveluissa käytettävä virtuaalinen valuutta, tämä on monikossa."
+    "message": "Pisteet",
+    "description": "Pisteet ovat API-palvelussa käytettävä virtuaalinen valuutta, tämä on monikkomuoto."
   },
   "unit.Credits": {
-    "message": "Krediitit",
-    "description": "Krediitti on API-palveluissa käytettävä virtuaalinen valuutta, tämä on isolla ja monikossa."
+    "message": "Pisteet",
+    "description": "Pisteet ovat API-palvelussa käytettävä virtuaalinen valuutta, tämä on suurilla kirjaimilla ja monikkomuoto."
   },
   "unit.call": {
     "message": "Kutsu",
-    "description": "Kutsu merkitsee API-palveluiden kutsumiskertojen määrää."
+    "description": "Kutsu tarkoittaa API-palvelun kutsumisten määrää."
   },
   "unit.count": {
     "message": "Kertaa",
-    "description": "Kerrat merkitsee API-palveluiden kutsumiskertojen määrää."
+    "description": "Kertaa tarkoittaa API-palvelun kutsumisten määrää."
   },
   "unit.Call": {
     "message": "Kutsu",
-    "description": "Kutsu merkitsee API-palveluiden kutsumiskertojen määrää, tämä on isolla muodolla."
+    "description": "Kutsu tarkoittaa API-palvelun kutsumisten määrää, tämä on suurilla kirjaimilla."
   },
   "unit.calls": {
     "message": "Kutsut",
-    "description": "Kutsu merkitsee API-palveluiden kutsumiskertojen määrää, tämä on monikossa."
+    "description": "Kutsu tarkoittaa API-palvelun kutsumisten määrää, tämä on monikkomuoto."
   },
   "unit.Calls": {
     "message": "Kutsut",
-    "description": "Kutsu merkitsee API-palveluiden kutsumiskertojen määrää, tämä on isolla ja monikossa."
+    "description": "Kutsu tarkoittaa API-palvelun kutsumisten määrää, tämä on suurilla kirjaimilla ja monikkomuoto."
   },
   "unit.MB": {
     "message": "MB",
-    "description": "MB merkitsee megatavua, digitaalisen tiedon tallennusyksikkö."
+    "description": "MB tarkoittaa megatavua, digitaalisen tiedon tallennusyksikkö."
   },
   "unit.GB": {
     "message": "GB",
-    "description": "GB merkitsee gigatavua, digitaalisen tiedon tallennusyksikkö."
+    "description": "GB tarkoittaa gigatavua, digitaalisen tiedon tallennusyksikkö."
+  },
+  "message.cheaperThan": {
+    "message": "Halvempi kuin $[[value]]",
+    "description": "Näytetään, kun nykyinen hinta on alhaisempi kuin vertailutavoite, '$[[value]]' korvataan ajon aikana vertailunimellä"
+  },
+  "message.moreExpensiveThan": {
+    "message": "Kalliimpi kuin $[[value]]",
+    "description": "Näytetään, kun nykyinen hinta on korkeampi kuin vertailutavoite, '$[[value]]' korvataan ajon aikana vertailunimellä"
   }
 }

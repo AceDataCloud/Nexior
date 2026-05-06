@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "مواقعي الفرعية",
+    "description": "العنوان الرئيسي لصفحة إدارة المواقع الفرعية"
+  },
+  "title.create": {
+    "message": "إنشاء موقع فرعي",
+    "description": "عنوان نافذة الحوار لإنشاء موقع فرعي جديد"
+  },
+  "title.openNow": {
+    "message": "زيارة الموقع الفرعي الآن",
+    "description": "عنوان نافذة الحوار للسؤال عما إذا كان يجب الانتقال بعد النجاح في الإنشاء"
+  },
+  "field.slug": {
+    "message": "بادئة اسم النطاق الفرعي",
+    "description": "عنوان حقل إدخال slug للموقع الفرعي"
+  },
+  "field.origin": {
+    "message": "اسم نطاق الموقع الفرعي",
+    "description": "عمود اسم النطاق في قائمة المواقع الفرعية"
+  },
+  "field.title": {
+    "message": "عنوان الموقع الفرعي",
+    "description": "حقل عنوان الموقع الفرعي"
+  },
+  "field.createdAt": {
+    "message": "تاريخ الإنشاء",
+    "description": "عمود تاريخ إنشاء الموقع الفرعي"
+  },
+  "field.actions": {
+    "message": "الإجراءات",
+    "description": "عمود الإجراءات في قائمة المواقع الفرعية"
+  },
+  "placeholder.slug": {
+    "message": "مثل my-brand",
+    "description": "نص العنصر النائب لحقل إدخال slug"
+  },
+  "placeholder.title": {
+    "message": "للعرض في علامة المتصفح ورأس الموقع",
+    "description": "نص العنصر النائب لحقل إدخال العنوان"
+  },
+  "button.create": {
+    "message": "إنشاء موقع فرعي",
+    "description": "زر إنشاء موقع فرعي"
+  },
+  "button.open": {
+    "message": "فتح",
+    "description": "زر فتح الموقع الفرعي"
+  },
+  "button.manage": {
+    "message": "إدارة",
+    "description": "زر الدخول إلى إعدادات الموقع الفرعي"
+  },
+  "message.indexTip": {
+    "message": "قم بإنشاء مواقع فرعية مستقلة تحت الموقع الرئيسي، يمكن لكل موقع فرعي أن يمتلك شعاره وعنوانه ومجموعة من الميزات، دون الحاجة لبناء كود مصدر منفصل.",
+    "description": "نص توضيحي لصفحة إدارة المواقع الفرعية"
+  },
+  "message.empty": {
+    "message": "لم تقم بإنشاء أي مواقع فرعية بعد. انقر على \"إنشاء موقع فرعي\" في الزاوية العلوية اليمنى للبدء.",
+    "description": "رسالة قائمة فارغة"
+  },
+  "message.slugTip": {
+    "message": "3-32 حرفًا من الأحرف الصغيرة أو الأرقام أو الشرطات؛ لا يمكن أن تبدأ أو تنتهي بشرطة، ولا يمكن أن تحتوي على شرطات متتالية.",
+    "description": "توضيح حقل slug"
+  },
+  "message.slugInvalid": {
+    "message": "تنسيق بادئة اسم النطاق الفرعي غير صحيح، يرجى التحقق من القواعد والمحاولة مرة أخرى.",
+    "description": "فشل التحقق من slug"
+  },
+  "message.zoneMissing": {
+    "message": "لم يتم تكوين منطقة اسم النطاق الفرعي للموقع الرئيسي الحالي، يرجى الاتصال بمدير الموقع.",
+    "description": "فقدان subdomain_zone"
+  },
+  "message.created": {
+    "message": "تم إنشاء الموقع الفرعي بنجاح!",
+    "description": "نجاح الإنشاء"
+  },
+  "message.createFailed": {
+    "message": "فشل إنشاء الموقع الفرعي، يرجى المحاولة مرة أخرى لاحقًا.",
+    "description": "فشل الإنشاء"
+  },
+  "message.loadFailed": {
+    "message": "فشل في تحميل قائمة المواقع الفرعية.",
+    "description": "فشل في جلب القائمة"
+  },
+  "message.openNowConfirm": {
+    "message": "تم إنشاء الموقع الفرعي {origin}. هل ترغب في فتحه الآن لمتابعة الإعداد؟",
+    "description": "هل تفتح الآن بعد الإنشاء"
+  },
+  "title.domains": {
+    "message": "اسم النطاق المخصص لـ {origin}",
+    "description": "عنوان نافذة الحوار لاسم النطاق المخصص"
+  },
+  "title.bindDomain": {
+    "message": "ربط اسم نطاق جديد",
+    "description": "عنوان نموذج الربط"
+  },
+  "button.domains": {
+    "message": "أسماء النطاقات",
+    "description": "زر فتح نافذة إدارة أسماء النطاقات"
+  },
+  "button.bindDomain": {
+    "message": "ربط اسم النطاق",
+    "description": "تقديم ربط اسم نطاق جديد"
+  },
+  "button.verify": {
+    "message": "تحقق الآن",
+    "description": "تحقق مما إذا كان اسم النطاق يمكن أن يتم حله بشكل صحيح وإصدار شهادة من خلال وكيلنا العكسي"
+  },
+  "button.refresh": {
+    "message": "تحديث",
+    "description": "إعادة جلب حالة اسم النطاق"
+  },
+  "field.hostname": {
+    "message": "اسم نطاقك",
+    "description": "أدخل اسم النطاق أو النطاق الفرعي الذي تملكه"
+  },
+  "field.recordType": {
+    "message": "نوع السجل",
+    "description": "عمود نوع سجل DNS"
+  },
+  "field.recordName": {
+    "message": "اسم السجل",
+    "description": "عمود اسم سجل DNS"
+  },
+  "field.recordValue": {
+    "message": "قيمة السجل",
+    "description": "عمود قيمة سجل DNS"
+  },
+  "placeholder.hostname": {
+    "message": "مثل studio.mybrand.com",
+    "description": "نص العنصر النائب لحقل إدخال hostname"
+  },
+  "message.domainsIntro": {
+    "message": "قم بربط أسماء النطاقات التي تملكها بهذا الموقع الفرعي. تحتاج إلى القدرة على تعديل DNS لهذا النطاق. اتبع التعليمات أدناه لإضافة سجل CNAME ثم انقر على \"تحقق الآن\"، وسنقوم تلقائيًا بإصدار وتجديد شهادة HTTPS مجانًا لك عبر Let's Encrypt.",
+    "description": "نص توضيحي في أعلى النافذة"
+  },
+  "message.domainsEmpty": {
+    "message": "لم يتم ربط أي أسماء نطاقات مخصصة بعد. املأ اسم النطاق الكامل في النموذج أدناه وانقر على \"ربط\" للبدء.",
+    "description": "رسالة قائمة فارغة"
+  },
+  "message.hostnameTip": {
+    "message": "يجب أن يكون اسم نطاق عام يمكنك التحكم في DNS الخاص به.",
+    "description": "نصيحة إدخال hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "تنسيق اسم النطاق غير صحيح. يجب أن يكون اسم نطاق عام يمكن حله، ولا يُسمح باستخدام عنوان IP.",
+    "description": "فشل التحقق المحلي لـ hostname"
+  },
+  "message.domainCreated": {
+    "message": "تم تقديم اسم النطاق، يرجى اتباع التعليمات لإضافة سجل CNAME.",
+    "description": "نجاح POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "فشل إنشاء اسم النطاق، يرجى المحاولة مرة أخرى لاحقًا.",
+    "description": "فشل الإنشاء"
+  },
+  "message.domainsLoadFailed": {
+    "message": "فشل في تحميل قائمة أسماء النطاقات.",
+    "description": "فشل في جلب قائمة أسماء النطاقات"
+  },
+  "message.domainActive": {
+    "message": "النطاق مفعل! يمكنك الآن الوصول إلى الموقع الفرعي عبر عنوان HTTPS المخصص الخاص بك.",
+    "description": "يدل على أن الحالة نشطة"
+  },
+  "message.domainFailed": {
+    "message": "فشل التحقق من النطاق أو الإطلاق.",
+    "description": "نص حالة الفشل"
+  },
+  "message.domainVerifyFailed": {
+    "message": "فشل التحقق، يرجى التحقق مما إذا كانت سجلات CNAME تشير إلى وكيلنا العكسي وإكمال انتشار DNS.",
+    "description": "واجهة التحقق 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "هل أنت متأكد أنك تريد فصل {hostname}؟ بعد الفصل، لن يتمكن المستخدمون من الوصول إلى موقعك الفرعي من هذا النطاق.",
+    "description": "تأكيد الحذف"
+  },
+  "message.domainDeleteFailed": {
+    "message": "فشل حذف النطاق.",
+    "description": "واجهة DELETE 5xx"
+  },
+  "status.pending": {
+    "message": "قيد التحقق",
+    "description": "علامة حالة قيد الانتظار: انتظار المستخدم لإضافة CNAME والنقر على 'التحقق الآن'"
+  },
+  "status.active": {
+    "message": "مفعل",
+    "description": "علامة حالة مفعل"
+  },
+  "status.failed": {
+    "message": "فشل",
+    "description": "علامة حالة الفشل"
+  }
+}

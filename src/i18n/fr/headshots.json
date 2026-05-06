@@ -27,6 +27,10 @@
     "message": "ID de suivi",
     "description": "ID de suivi de la tâche"
   },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (en secondes)"
+  },
   "name.size": {
     "message": "Taille",
     "description": "Taille du QR code à générer"
@@ -40,7 +44,7 @@
     "description": "Graine pour générer le QR code"
   },
   "description.endImageUrls": {
-    "message": "Générer la photo d'identité correspondante à partir de cette image de portrait",
+    "message": "Générer une photo d'identité correspondante à partir de cette image de portrait",
     "description": "Graine pour générer le QR code"
   },
   "name.content": {
@@ -68,7 +72,7 @@
     "description": "État d'attente de la tâche"
   },
   "status.processing": {
-    "message": "En cours",
+    "message": "En cours de traitement",
     "description": "État de traitement de la tâche"
   },
   "placeholder.paddingNoise": {
@@ -80,8 +84,8 @@
     "description": "Espace réservé pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots-clés pour le style vidéo à générer, par exemple : Astronautes se déplaçant de l'espace au volcan",
-    "description": "Texte d'espace réservé dans le champ d'invite"
+    "message": "Entrez un prompt pour générer le style vidéo, par exemple : Astronautes se déplaçant de l'espace au volcan",
+    "description": "Texte d'espace réservé dans le champ de prompt"
   },
   "button.fast": {
     "message": "Mode rapide",
@@ -93,11 +97,11 @@
   },
   "button.generate": {
     "message": "Générer",
-    "description": "Texte du bouton pour générer la photo d'identité"
+    "description": "Texte du bouton pour générer des photos d'identité"
   },
   "button.viewImage": {
     "message": "Voir l'image originale",
-    "description": "Texte du bouton pour voir la photo d'identité générée"
+    "description": "Texte du bouton pour voir l'image originale des photos d'identité"
   },
   "button.download": {
     "message": "Télécharger l'image",
@@ -105,7 +109,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Télécharger des images de portrait",
-    "description": "Texte du bouton pour télécharger des images de portrait (simplifier en 'Télécharger')"
+    "description": "Texte du bouton pour télécharger des images de portrait (simplifié en 'Télécharger')"
   },
   "message.uploadReferencesExceed": {
     "message": "Vous pouvez télécharger jusqu'à 5 images",
@@ -116,7 +120,7 @@
     "description": "Message de succès lors du téléchargement d'images"
   },
   "message.uploadReferencesError": {
-    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
+    "message": "Échec du téléchargement des images, veuillez réessayer plus tard",
     "description": "Message d'erreur lors de l'échec du téléchargement d'images"
   },
   "message.startingTask": {
@@ -137,15 +141,15 @@
   },
   "message.generating": {
     "message": "Génération en cours...",
-    "description": "Message pendant la génération de l'image"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.downloadVideo": {
     "message": "Télécharger cette vidéo",
-    "description": "Message pendant la génération de l'image"
+    "description": "Message lorsque l'image est en cours de génération"
   },
   "message.generateFailed": {
     "message": "Échec de la génération de l'image",
-    "description": "Message lors de l'échec de la génération de l'image"
+    "description": "Message lorsque la génération de l'image échoue"
   },
   "message.noOperations": {
     "message": "Aucune opération disponible",
@@ -168,27 +172,35 @@
     "description": "Terme de style utilisé pour décrire et générer des images, les images générées doivent inclure le style de cette étiquette"
   },
   "styleTag.kindergarten": {
-    "message": "Photo d'entrée à la maternelle",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "message": "Photo de jardin d'enfants",
+    "description": "Terme de style utilisé pour décrire et générer des images, les images générées doivent inclure le style de cette étiquette"
   },
   "styleTag.logoTshirt": {
-    "message": "Photo de T-shirt avec logo d'entreprise",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "message": "T-shirt avec logo d'entreprise",
+    "description": "Terme de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette étiquette"
   },
   "styleTag.wedding": {
     "message": "Photo d'enregistrement de mariage",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "description": "Terme de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette étiquette"
   },
   "styleTag.businessPphoto": {
     "message": "Photo professionnelle",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "description": "Terme de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette étiquette"
   },
   "styleTag.bobSuit": {
-    "message": "Coupe bob en costume noir",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "message": "Costume noir avec coupe au carré",
+    "description": "Terme de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette étiquette"
   },
   "styleTag.femalePortrait": {
     "message": "Portrait féminin",
-    "description": "Terme de style utilisé pour décrire et générer des images, l'image générée doit inclure le style de cette étiquette"
+    "description": "Terme de style utilisé pour décrire et générer une image, l'image générée doit inclure le style de cette étiquette"
+  },
+  "message.uploadImageExceed": {
+    "message": "Vous pouvez télécharger jusqu'à 2 images",
+    "description": "Alerte lorsque le nombre d'images de référence téléchargées dépasse la limite"
+  },
+  "message.uploadImageError": {
+    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
+    "description": "Message d'erreur lorsque le téléchargement de l'image de référence échoue"
   }
 }

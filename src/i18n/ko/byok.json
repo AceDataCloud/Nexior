@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "사용자 정의 API 키",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "API 키 추가",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "API 키 편집",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "API 키 삭제",
+    "description": ""
+  },
+  "description.list": {
+    "message": "자신의 서비스 제공업체 API 키(예: OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu)를 사용하여 플랫폼 계정 풀을 대체합니다. 설정 후, 해당 모델의 대화 요청은 직접 귀하의 키로 상위 서비스 제공업체를 호출하며, 플랫폼 크레딧을 소모하지 않습니다; 도구 호출, 참조, 아티팩트, 클라우드 기록 등 다른 기능은 정상적으로 작동합니다.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "서비스 제공업체",
+    "description": ""
+  },
+  "field.label": {
+    "message": "메모",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "\"내 작업 번호\" (선택 사항)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API 키",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "현재 키를 유지하려면 비워 두세요",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "사용자 정의 기본 URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "비워 두면 서비스 제공업체의 기본 주소를 사용합니다",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "활성화",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "마지막 사용",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "추가 시간",
+    "description": ""
+  },
+  "value.active": {
+    "message": "활성화됨",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "비활성화됨",
+    "description": ""
+  },
+  "value.never": {
+    "message": "한 번도 사용하지 않음",
+    "description": ""
+  },
+  "value.default": {
+    "message": "기본",
+    "description": ""
+  },
+  "button.add": {
+    "message": "API 키 추가",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "편집",
+    "description": ""
+  },
+  "button.test": {
+    "message": "테스트",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "삭제",
+    "description": ""
+  },
+  "button.save": {
+    "message": "저장",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "취소",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "이 API 키를 삭제하시겠습니까? 이후 {provider} 모델의 대화는 플랫폼 기본 상위로 돌아갑니다.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API 키가 삭제되었습니다.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API 키가 저장되었습니다.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "연결이 정상입니다.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "테스트 실패: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "자격 증명 로드 실패.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "자격 증명 저장 실패.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "아직 사용자 정의 API 키가 구성되지 않았습니다. \"API 키 추가\"를 클릭하여 자신의 서비스 제공업체 계정을 사용하세요.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "고급 옵션 표시",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "선택 사항. 사용자 정의 상위 주소(예: OpenRouter, 자체 리버스 프록시, 기업 게이트웨이 등). HTTPS만 허용되며, 내부 네트워크/루프백 주소를 가리킬 수 없습니다.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "사용자 정의 {provider} API 키 사용 중",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "현재 대화는 귀하의 {provider} API 키를 사용하고 있으며, 비용은 {provider} 계정에서 정산되며, 플랫폼 잔액은 차감되지 않습니다.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "클릭하면 API 키 설정을 엽니다",
+    "description": "채팅 페이지 BYOK 배지 클릭 후의 팁: 클릭하여 설정 대화 상자의 API 키 탭을 엽니다."
+  },
+  "button.testConnection": {
+    "message": "테스트",
+    "description": "새로 추가/편집 대화 상자 내의 버튼 - 현재 양식 구성을 테스트하며, 자격 증명을 저장하지 않습니다."
+  },
+  "test.success": {
+    "message": "연결 테스트 성공",
+    "description": "연결성 테스트 결과 구역의 성공 제목."
+  },
+  "test.failure": {
+    "message": "연결성 테스트 실패",
+    "description": "연결성 테스트 결과 구역의 실패 제목."
+  },
+  "test.endpoint": {
+    "message": "요청 주소",
+    "description": "테스트 결과 세부 정보의 요청 URL 레이블."
+  },
+  "test.status": {
+    "message": "상태 코드",
+    "description": "테스트 결과 세부 정보의 HTTP 상태 코드 레이블."
+  },
+  "test.message": {
+    "message": "상위 응답",
+    "description": "테스트 결과 세부 정보의 상위 오류/알림 텍스트 레이블."
+  },
+  "providerDesc.openai": {
+    "message": "본 사이트의 ChatGPT(GPT-4 / GPT-4o / o1 / o3 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 OpenAI 옵션의 부제목."
+  },
+  "providerDesc.anthropic": {
+    "message": "본 사이트의 Claude(Sonnet / Opus / Haiku 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 Anthropic 옵션의 부제목."
+  },
+  "providerDesc.google": {
+    "message": "본 사이트의 Gemini(Pro / Flash 시리즈) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 Google 옵션의 부제목."
+  },
+  "providerDesc.xai": {
+    "message": "본 사이트의 Grok 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 xAI 옵션의 부제목."
+  },
+  "providerDesc.deepseek": {
+    "message": "본 사이트의 DeepSeek(V3 / R1 등) 대화 요청을 대체합니다.",
+    "description": "제공업체 드롭다운의 DeepSeek 옵션의 부제목."
+  },
+  "providerDesc.moonshot": {
+    "message": "이 사이트의 Kimi 대화 요청을 대체합니다.",
+    "description": "제공자 드롭다운에서 Moonshot (Kimi) 옵션의 부제목."
+  },
+  "providerDesc.zhipu": {
+    "message": "이 사이트의 GLM 시리즈 대화 요청을 대체합니다.",
+    "description": "제공자 드롭다운에서 Zhipu (GLM) 옵션의 부제목."
+  }
+}

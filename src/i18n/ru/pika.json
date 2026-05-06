@@ -4,11 +4,11 @@
     "description": "Pika的视频效果名称"
   },
   "style.effect2": {
-    "message": "Декапитация",
+    "message": "Отсечение головы",
     "description": "Pika的视频效果名称"
   },
   "style.effect3": {
-    "message": "Выпуклые глаза",
+    "message": "Выпуклость глаз",
     "description": "Pika的视频效果名称"
   },
   "style.effect4": {
@@ -75,6 +75,10 @@
     "message": "ID отслеживания",
     "description": "任务的追踪 ID"
   },
+  "name.elapsed": {
+    "message": "Время выполнения",
+    "description": "任务的耗时（秒）"
+  },
   "name.createdAt": {
     "message": "Дата создания",
     "description": "生成 Pika 视频的日期和时间"
@@ -84,7 +88,7 @@
     "description": "要生成的视频的参考图片"
   },
   "name.videoUrl": {
-    "message": "Ссылка на видео",
+    "message": "Пользовательское видео",
     "description": "自定义视频"
   },
   "name.prompt": {
@@ -180,7 +184,7 @@
     "description": "生成Pika视频的按钮文本"
   },
   "button.generate": {
-    "message": "Создать",
+    "message": "Сгенерировать",
     "description": "生成Pika视频的按钮文本"
   },
   "button.extend": {
@@ -197,7 +201,7 @@
   },
   "button.uploadVideoUrl": {
     "message": "Загрузить видео",
-    "description": "上传视频的按钮文本"
+    "description": "Текст кнопки для загрузки видео"
   },
   "message.uploadReferencesExceed": {
     "message": "Максимум можно загрузить 5 изображений",
@@ -216,7 +220,7 @@
     "description": "Сообщение при начале задачи рисования"
   },
   "message.startTaskSuccess": {
-    "message": "Задача на генерацию успешно запущена",
+    "message": "Задача по генерации успешно запущена",
     "description": "Сообщение об успешном запуске задачи"
   },
   "message.startTaskFailed": {

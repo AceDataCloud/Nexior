@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "カスタム API キー",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "API キーを追加",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "API キーを編集",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "API キーを削除",
+    "description": ""
+  },
+  "description.list": {
+    "message": "自分のサービスプロバイダーの API キー（OpenAI、Anthropic、Google、xAI、DeepSeek、Moonshot、智谱）を使用して、プラットフォームアカウントプールの代わりにします。設定後、対応するモデルの対話リクエストは直接あなたのキーで上流サービスプロバイダーを呼び出し、プラットフォームのクレジットを消費しません。ツールの呼び出し、参照、アーティファクト、クラウド履歴などの他の機能は通常通り動作します。",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "プロバイダー",
+    "description": ""
+  },
+  "field.label": {
+    "message": "メモ",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "\"私の作業番号\"（任意）",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API キー",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "空白の場合は現在のキーを保持",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "カスタムベース URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "空白の場合はプロバイダーのデフォルトアドレスを使用",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "有効",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "最終使用",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "追加日時",
+    "description": ""
+  },
+  "value.active": {
+    "message": "有効",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "無効",
+    "description": ""
+  },
+  "value.never": {
+    "message": "未使用",
+    "description": ""
+  },
+  "value.default": {
+    "message": "デフォルト",
+    "description": ""
+  },
+  "button.add": {
+    "message": "API キーを追加",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "編集",
+    "description": ""
+  },
+  "button.test": {
+    "message": "テスト",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "削除",
+    "description": ""
+  },
+  "button.save": {
+    "message": "保存",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "キャンセル",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "この API キーを削除してもよろしいですか？以降の {provider} モデルの対話はプラットフォームのデフォルトに戻ります。",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API キーが削除されました。",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API キーが保存されました。",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "接続正常。",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "テスト失敗：{message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "資格情報の読み込みに失敗しました。",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "資格情報の保存に失敗しました。",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "カスタム API キーがまだ設定されていません。「API キーを追加」をクリックして、自分のサービスプロバイダーアカウントを使用してください。",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "高度なオプションを表示",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "任意。カスタム上流アドレス（OpenRouter、自前のリバースプロキシ、企業ゲートウェイなどに使用）。HTTPS のみ許可され、内部ネットワーク/ループバックアドレスを指すことはできません。",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "{provider} API キーを使用中",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "現在の対話はあなたの {provider} API キーを使用しており、費用は {provider} アカウントで決済され、プラットフォームの残高は減少しません。",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "クリックすると API キー設定が開きます",
+    "description": "チャットページの BYOK バッジをクリックした後のヒント：設定ダイアログの API キータブを開くためにクリックします。"
+  },
+  "button.testConnection": {
+    "message": "テスト",
+    "description": "新規/編集ダイアログ内のボタン——現在のフォーム設定のみをテストし、資格情報は保存しません。"
+  },
+  "test.success": {
+    "message": "接続テスト成功",
+    "description": "接続テスト結果セクションの成功タイトル。"
+  },
+  "test.failure": {
+    "message": "接続テスト失敗",
+    "description": "接続テスト結果セクションの失敗タイトル。"
+  },
+  "test.endpoint": {
+    "message": "リクエストアドレス",
+    "description": "テスト結果詳細のリクエスト URL ラベル。"
+  },
+  "test.status": {
+    "message": "ステータスコード",
+    "description": "テスト結果詳細の HTTP ステータスコードラベル。"
+  },
+  "test.message": {
+    "message": "上流応答",
+    "description": "テスト結果詳細の上流エラー/メッセージテキストラベル。"
+  },
+  "providerDesc.openai": {
+    "message": "当サイトの ChatGPT（GPT-4 / GPT-4o / o1 / o3 など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の OpenAI オプションのサブタイトル。"
+  },
+  "providerDesc.anthropic": {
+    "message": "当サイトの Claude（Sonnet / Opus / Haiku など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の Anthropic オプションのサブタイトル。"
+  },
+  "providerDesc.google": {
+    "message": "当サイトの Gemini（Pro / Flash シリーズ）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の Google オプションのサブタイトル。"
+  },
+  "providerDesc.xai": {
+    "message": "当サイトの Grok の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の xAI オプションのサブタイトル。"
+  },
+  "providerDesc.deepseek": {
+    "message": "当サイトの DeepSeek（V3 / R1 など）の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウン内の DeepSeek オプションのサブタイトル。"
+  },
+  "providerDesc.moonshot": {
+    "message": "このサイトの Kimi の対話リクエストを置き換えます。",
+    "description": "プロバイダーのドロップダウンにある Moonshot (Kimi) オプションのサブタイトル。"
+  },
+  "providerDesc.zhipu": {
+    "message": "当サイトのGLMシリーズの対話リクエストを置き換えます。",
+    "description": "提供者のドロップダウンにあるZhipu (GLM)オプションのサブタイトル。"
+  }
+}

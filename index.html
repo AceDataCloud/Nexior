@@ -15,7 +15,30 @@
       name="keywords"
       content="AI Hub,Midjourney,Suno,Flux,Luma,Sora,GPT,Claude,Gemini,DeepSeek,AI Image,AI Music,AI Video,AI Chat"
     />
-    <link rel="canonical" href="https://hub.acedata.cloud" />
+    <!--
+      Canonical and og:url are set dynamically below so the same bundle, served
+      independently from multiple official hostnames (hub.acedata.cloud,
+      studio.acedata.cloud, hub-test.acedata.cloud), advertises the correct
+      origin instead of always pointing at hub.acedata.cloud.
+    -->
+    <script>
+      (function () {
+        try {
+          var origin = window.location.origin;
+          var path = window.location.pathname || '/';
+          var canonical = document.createElement('link');
+          canonical.setAttribute('rel', 'canonical');
+          canonical.setAttribute('href', origin + path);
+          document.head.appendChild(canonical);
+          var ogUrl = document.createElement('meta');
+          ogUrl.setAttribute('property', 'og:url');
+          ogUrl.setAttribute('content', origin + path);
+          document.head.appendChild(ogUrl);
+        } catch (e) {
+          /* no-op */
+        }
+      })();
+    </script>
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ace Data Cloud" />
@@ -24,7 +47,6 @@
       property="og:description"
       content="AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek."
     />
-    <meta property="og:url" content="https://hub.acedata.cloud" />
     <meta property="og:image" content="https://cdn.acedata.cloud/logo.png" />
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -41,14 +63,77 @@
     <!-- Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!--
+      Load Inter without blocking first paint: request via `media="print"` so
+      the browser does not block render on the stylesheet, then swap to `all`
+      once it loads. Falls back to a synchronous `<link>` for clients without JS.
+    -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
+    <script>
+      // Resolve the user's chosen theme BEFORE first paint and toggle
+      // `html.dark` accordingly. Without this, users who picked dark mode
+      // (or fall through to Nexior's `dark` cookie default — see
+      // `src/utils/initializer.ts` `initializeTheme`) get a white-flash
+      // boot screen until the Vue app boots and re-applies the cookie.
+      // Mirrors the pattern used in PlatformFrontend's index.html.
+      (() => {
+        try {
+          const normalizeTheme = (value) => {
+            if (!value) return null;
+            const lower = String(value).trim().toLowerCase();
+            if (lower === 'dark') return 'dark';
+            if (lower === 'light') return 'light';
+            return null;
+          };
+
+          const query = new URLSearchParams(window.location.search);
+          const queryTheme = normalizeTheme(query.get('theme'));
+          const cookieMatch = document.cookie.match(/(?:^|;\s*)THEME=([^;]+)/);
+          const cookieTheme = normalizeTheme(cookieMatch ? decodeURIComponent(cookieMatch[1]) : null);
+          const localTheme = normalizeTheme(localStorage.getItem('vueuse-color-scheme'));
+
+          // Priority: query > cookie > localStorage > Nexior default (`dark`).
+          // We do NOT fall back to OS preference here, because Nexior's app-
+          // level `initializeTheme` defaults missing cookies to `dark`; if we
+          // honored the OS we'd flicker from light → dark on first boot for
+          // light-OS users.
+          const resolvedTheme = queryTheme || cookieTheme || localTheme || 'dark';
+          document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+          document.documentElement.style.colorScheme = resolvedTheme === 'dark' ? 'dark' : 'light';
+        } catch (e) {
+          /* no-op */
+        }
+      })();
+    </script>
     <script>
       var _hmt = _hmt || [];
+      // Defer Baidu analytics so it never blocks initial paint or competes for
+      // bandwidth with the application bundle. `requestIdleCallback` lets the
+      // browser pick an idle moment; `setTimeout` is a fallback for Safari.
       (function () {
-        var hm = document.createElement('script');
-        hm.src = 'https://hm.baidu.com/hm.js?6216b5ba30d8e35b2319b4c0331cbf21';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(hm, s);
+        var inject = function () {
+          var hm = document.createElement('script');
+          hm.async = true;
+          hm.src = 'https://hm.baidu.com/hm.js?6216b5ba30d8e35b2319b4c0331cbf21';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(hm, s);
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(inject, { timeout: 4000 });
+        } else {
+          setTimeout(inject, 2000);
+        }
       })();
     </script>
     <style>
@@ -59,19 +144,19 @@
         --boot-spinner-1: #7c3aed;
         --boot-spinner-2: #818cf8;
         --boot-spinner-3: #a78bfa;
-        color-scheme: light;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --boot-bg: #000000;
-          --boot-fg: #ffffff;
-          --boot-muted: rgba(255, 255, 255, 0.65);
-          --boot-spinner-1: #7c3aed;
-          --boot-spinner-2: #818cf8;
-          --boot-spinner-3: #a78bfa;
-          color-scheme: dark;
-        }
+      /*
+       * Driven by the inline pre-paint theme script above (which sets
+       * `html.dark` from query/cookie/localStorage before first paint).
+       * Avoid `@media (prefers-color-scheme: dark)` here because Nexior's
+       * default cookie value is `dark` regardless of OS preference, and we
+       * don't want a light-OS user flashing white on every reload.
+       */
+      html.dark {
+        --boot-bg: #000000;
+        --boot-fg: #ffffff;
+        --boot-muted: rgba(255, 255, 255, 0.65);
       }
 
       html,
@@ -143,6 +228,14 @@
         }
       }
 
+      .boot__title {
+        font-size: 14px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        opacity: 0.92;
+        user-select: none;
+      }
+
       .boot__subtitle {
         font-size: 12px;
         color: var(--boot-muted);
@@ -162,6 +255,7 @@
       <div class="boot" aria-label="Loading" role="status">
         <div class="boot__content">
           <div class="boot__loader" aria-hidden="true"></div>
+          <div class="boot__title">Ace Data Cloud</div>
           <div class="boot__subtitle">Loading…</div>
         </div>
       </div>

@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "私のサブサイト",
+    "description": "サブサイト管理ホームページの大タイトル"
+  },
+  "title.create": {
+    "message": "サブサイトを作成",
+    "description": "新しいサブサイトダイアログのタイトル"
+  },
+  "title.openNow": {
+    "message": "サブサイトに今すぐアクセス",
+    "description": "新規作成後に即座に移動するかどうかを尋ねるダイアログのタイトル"
+  },
+  "field.slug": {
+    "message": "サブドメインプレフィックス",
+    "description": "サブサイトのスラッグ入力フィールドのタイトル"
+  },
+  "field.origin": {
+    "message": "サブサイトのドメイン名",
+    "description": "サブサイトリストのドメイン名列"
+  },
+  "field.title": {
+    "message": "サブサイトのタイトル",
+    "description": "サブサイトタイトルフィールド"
+  },
+  "field.createdAt": {
+    "message": "作成日時",
+    "description": "サブサイト作成日時列"
+  },
+  "field.actions": {
+    "message": "操作",
+    "description": "サブサイトリストの操作列"
+  },
+  "placeholder.slug": {
+    "message": "例: my-brand",
+    "description": "スラッグ入力フィールドのプレースホルダー"
+  },
+  "placeholder.title": {
+    "message": "サブサイトのブラウザタブとサイトヘッダーに表示されます",
+    "description": "タイトル入力フィールドのプレースホルダー"
+  },
+  "button.create": {
+    "message": "サブサイトを作成",
+    "description": "サブサイト作成ボタン"
+  },
+  "button.open": {
+    "message": "開く",
+    "description": "サブサイトを開くボタン"
+  },
+  "button.manage": {
+    "message": "管理",
+    "description": "サブサイト設定に入るボタン"
+  },
+  "message.indexTip": {
+    "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持ち、ソースコードを個別に構築する必要はありません。",
+    "description": "サブサイト管理ホームページの説明文"
+  },
+  "message.empty": {
+    "message": "まだサブサイトを作成していません。「サブサイトを作成」をクリックして始めましょう。",
+    "description": "空のリストのヒント"
+  },
+  "message.slugTip": {
+    "message": "3-32文字の小文字、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めることはできません。",
+    "description": "スラッグフィールドの説明"
+  },
+  "message.slugInvalid": {
+    "message": "サブドメインプレフィックスの形式が正しくありません。ルールを確認して再試行してください。",
+    "description": "スラッグの検証失敗"
+  },
+  "message.zoneMissing": {
+    "message": "現在のメインサイトにはサブサイトのドメイン名ゾーンが設定されていません。サイト管理者に連絡してください。",
+    "description": "subdomain_zoneが欠落"
+  },
+  "message.created": {
+    "message": "サブサイトが作成されました！",
+    "description": "作成成功"
+  },
+  "message.createFailed": {
+    "message": "サブサイトの作成に失敗しました。後でもう一度お試しください。",
+    "description": "作成失敗"
+  },
+  "message.loadFailed": {
+    "message": "サブサイトリストの読み込みに失敗しました。",
+    "description": "リストの取得失敗"
+  },
+  "message.openNowConfirm": {
+    "message": "サブサイト {origin} が作成されました。今すぐ開いて設定を続けますか？",
+    "description": "作成後に即座に開くかどうか"
+  },
+  "title.domains": {
+    "message": "{origin} のカスタムドメイン名",
+    "description": "カスタムドメイン名ダイアログのタイトル"
+  },
+  "title.bindDomain": {
+    "message": "新しいドメインをバインド",
+    "description": "バインドフォームのタイトル"
+  },
+  "button.domains": {
+    "message": "ドメイン",
+    "description": "ドメイン管理ダイアログを開くボタン"
+  },
+  "button.bindDomain": {
+    "message": "ドメインをバインド",
+    "description": "新しいドメインをバインドするための送信ボタン"
+  },
+  "button.verify": {
+    "message": "今すぐ検証",
+    "description": "私たちのリバースプロキシを通じて、そのドメインが正常に解決され、証明書が発行されているかを検証します"
+  },
+  "button.refresh": {
+    "message": "更新",
+    "description": "そのドメインの状態を再取得"
+  },
+  "field.hostname": {
+    "message": "あなたのドメイン",
+    "description": "所有しているドメインまたはサブドメインを入力"
+  },
+  "field.recordType": {
+    "message": "レコードタイプ",
+    "description": "DNSレコードタイプ列"
+  },
+  "field.recordName": {
+    "message": "レコード名",
+    "description": "DNSレコード名列"
+  },
+  "field.recordValue": {
+    "message": "レコード値",
+    "description": "DNSレコード値列"
+  },
+  "placeholder.hostname": {
+    "message": "例: studio.mybrand.com",
+    "description": "hostname入力フィールドのプレースホルダー"
+  },
+  "message.domainsIntro": {
+    "message": "所有しているドメインをこのサブサイトにバインドします。そのドメインのDNSを変更できる必要があります。下の指示に従ってCNAMEを追加し、「今すぐ検証」をクリックしてください。私たちは自動的にLet's Encryptを通じて無料でHTTPS証明書を発行し、更新します。",
+    "description": "ダイアログの上部説明"
+  },
+  "message.domainsEmpty": {
+    "message": "まだカスタムドメインをバインドしていません。下のフォームに完全なドメインを入力し、「バインド」をクリックして開始してください。",
+    "description": "空のリストのヒント"
+  },
+  "message.hostnameTip": {
+    "message": "あなたがDNSを制御できるパブリックドメインである必要があります。",
+    "description": "hostname入力のヒント"
+  },
+  "message.hostnameInvalid": {
+    "message": "ドメイン形式が正しくありません。パブリックに解決可能なドメインでなければならず、IPアドレスは許可されません。",
+    "description": "hostnameのローカル検証失敗"
+  },
+  "message.domainCreated": {
+    "message": "ドメインが提出されました。指示に従ってCNAMEレコードを追加してください。",
+    "description": "POST /site-domains/成功"
+  },
+  "message.domainCreateFailed": {
+    "message": "ドメインの作成に失敗しました。後でもう一度お試しください。",
+    "description": "作成失敗"
+  },
+  "message.domainsLoadFailed": {
+    "message": "ドメインリストの読み込みに失敗しました。",
+    "description": "ドメインリストの取得失敗"
+  },
+  "message.domainActive": {
+    "message": "ドメインがアクティブになりました！あなたのカスタム HTTPS アドレスでサブサイトにアクセスできます。",
+    "description": "アクティブ状態に入る"
+  },
+  "message.domainFailed": {
+    "message": "ドメインの検証または公開に失敗しました。",
+    "description": "Failed 状態の文言"
+  },
+  "message.domainVerifyFailed": {
+    "message": "検証に失敗しました。CNAME レコードが当社のリバースプロキシを指しているか、DNS の伝播が完了しているか確認してください。",
+    "description": "verify インターフェース 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "{hostname} のバインド解除を本当に行いますか？バインド解除後、ユーザーはこのドメインからあなたのサブサイトにアクセスできなくなります。",
+    "description": "削除確認"
+  },
+  "message.domainDeleteFailed": {
+    "message": "ドメインの削除に失敗しました。",
+    "description": "DELETE インターフェース 5xx"
+  },
+  "status.pending": {
+    "message": "検証待ち",
+    "description": "Pending 状態ラベル：ユーザーが CNAME を追加し、「今すぐ検証」をクリックするのを待っています"
+  },
+  "status.active": {
+    "message": "公開中",
+    "description": "Active 状態ラベル"
+  },
+  "status.failed": {
+    "message": "失敗",
+    "description": "Failed 状態ラベル"
+  }
+}

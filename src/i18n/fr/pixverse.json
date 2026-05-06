@@ -1,19 +1,19 @@
 {
   "name.taskId": {
     "message": "ID de tâche",
-    "description": "ID de la tâche"
+    "description": "Identifiant de la tâche"
   },
   "name.type": {
     "message": "Type",
-    "description": "Type de contenu du vidéo Pixverse à générer, comme 'lien', 'texte', etc."
+    "description": "Type de contenu du vidéo Pixverse à générer, comme 'Lien', 'Texte', etc."
   },
   "name.failure": {
     "message": "Échec",
-    "description": "État d'échec de la tâche"
+    "description": "État de la tâche en cas d'échec"
   },
   "name.failureReason": {
     "message": "Raison de l'échec",
-    "description": "Raison de l'échec de la tâche"
+    "description": "Raison pour laquelle la tâche a échoué"
   },
   "name.status": {
     "message": "Statut",
@@ -23,73 +23,77 @@
     "message": "ID de suivi",
     "description": "ID de suivi de la tâche"
   },
+  "name.elapsed": {
+    "message": "Durée",
+    "description": "Durée de la tâche (en secondes)"
+  },
   "name.createdAt": {
-    "message": "Date de création",
-    "description": "Date et heure de génération de la vidéo Pixverse"
+    "message": "Créé le",
+    "description": "Date et heure de génération du vidéo Pixverse"
   },
   "name.style": {
     "message": "Style",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style1": {
     "message": "Cyberpunk",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style2": {
     "message": "Anime",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style3": {
     "message": "Bande dessinée",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style4": {
     "message": "Argile",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style5": {
     "message": "Animation 3D",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.style6": {
     "message": "Réaliste",
-    "description": "Style de la vidéo à générer"
+    "description": "Style du vidéo à générer"
   },
   "name.motion": {
     "message": "Mode vidéo",
-    "description": "Mode de la vidéo à générer"
+    "description": "Mode du vidéo à générer"
   },
   "name.motion1": {
     "message": "Standard",
-    "description": "Mode de la vidéo à générer"
+    "description": "Mode du vidéo à générer"
   },
   "name.motion2": {
     "message": "Rapide",
-    "description": "Mode de la vidéo à générer"
+    "description": "Mode du vidéo à générer"
   },
   "name.quality": {
     "message": "Qualité vidéo",
-    "description": "Qualité de la vidéo à générer"
+    "description": "Qualité du vidéo à générer"
   },
   "name.startImage": {
-    "message": "Image de référence",
-    "description": "Étiquette du champ de formulaire : image de référence (en anglais, suggéré de traduire par 'First Frame', garder court pour éviter de masquer le bouton)"
+    "message": "Première image",
+    "description": "Étiquette du champ de formulaire pour la première image de référence (en anglais : 'First Frame', courte pour ne pas gêner le bouton)"
   },
   "name.aspectRatio": {
-    "message": "Ratio d'aspect",
-    "description": "Ratio d'aspect de la vidéo à générer"
+    "message": "Ratio",
+    "description": "Ratio largeur/hauteur du vidéo à générer"
   },
   "name.videoUrl": {
     "message": "Vidéo personnalisée",
     "description": "Vidéo personnalisée"
   },
   "name.prompt": {
-    "message": "Invite vidéo",
-    "description": "Invite pour le contenu à entrer"
+    "message": "Prompt vidéo",
+    "description": "Prompt pour le contenu à générer"
   },
   "name.duration": {
     "message": "Durée vidéo",
-    "description": "Durée de la vidéo"
+    "description": "Durée du vidéo"
   },
   "name.model": {
     "message": "Version du modèle",
@@ -105,79 +109,79 @@
   },
   "name.effect": {
     "message": "Effet vidéo",
-    "description": "Nom du paramètre de style, utilisé pour basculer entre différentes versions ou styles de modèles"
+    "description": "Nom du paramètre de style pour basculer entre différentes versions ou styles du modèle"
   },
   "name.ingredientsModel": {
-    "message": "Modèle d'ingrédients",
+    "message": "Modèle d’ingrédients",
     "description": "Version du modèle utilisée pour générer la vidéo"
   },
   "name.pixverseBot": {
     "message": "Pixverse Bot",
-    "description": "Nom du générateur de vidéos Pixverse"
+    "description": "Nom du générateur de vidéo Pixverse"
   },
   "description.ingredients": {
-    "message": "Si vous souhaitez télécharger plusieurs images pour générer votre propre vidéo, activez ce bouton.",
+    "message": "Activez ce bouton si vous souhaitez télécharger plusieurs images pour créer votre vidéo.",
     "description": "Description du paramètre 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "Dans la tâche de création de vidéo avec plusieurs images, plusieurs images doivent être téléchargées.",
+    "message": "Pour créer un vidéo à partir de plusieurs images, il est nécessaire de télécharger plusieurs images.",
     "description": "Description du paramètre 'imageUrl'"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer la vidéo Pixverse",
+    "message": "Prompt pour générer un vidéo Pixverse",
     "description": "Description du paramètre 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Texte d'invite négatif, optionnel, ne dépassant pas 200 caractères",
+    "message": "Prompt négatif, optionnel, ne doit pas dépasser 200 caractères",
     "description": "Description du paramètre 'prompt'"
   },
   "description.uploadStartImage": {
-    "message": "Téléchargez l'image de la première image comme référence pour la génération, la vidéo finale se basera sur la première image.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "message": "Téléchargez l'image de la première frame comme référence pour la génération, le vidéo final s'en inspirera.",
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.uploadEndImage": {
-    "message": "Téléchargez l'image de la dernière image comme référence pour la génération, la vidéo finale se basera sur la dernière image.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "message": "Téléchargez l'image de la dernière frame comme référence pour la génération, le vidéo final s'en inspirera.",
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "description.seed": {
     "message": "Valeur de la graine pour générer la vidéo. Si non définie, une graine aléatoire sera utilisée.",
-    "description": "Description du paramètre de référence de téléchargement"
+    "description": "Description du paramètre de téléchargement de référence"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État d'attente de la tâche"
+    "description": "État de la tâche en attente"
   },
   "status.processing": {
-    "message": "En cours de traitement",
-    "description": "État d'attente de la tâche"
+    "message": "En cours",
+    "description": "État de la tâche en traitement"
   },
   "placeholder.paddingNoise": {
-    "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de bruit de remplissage"
+    "message": "Veuillez choisir...",
+    "description": "Texte d’espace réservé pour le bruit de remplissage"
   },
   "placeholder.select": {
     "message": "Sélectionner",
-    "description": "Texte d'espace réservé dans le champ de sélection"
+    "description": "Texte d’espace réservé pour un champ de sélection"
   },
   "placeholder.paddingLevel": {
-    "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour le niveau de remplissage"
+    "message": "Veuillez choisir...",
+    "description": "Texte d’espace réservé pour le niveau de remplissage"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots d'invite pour le style de vidéo à générer, par exemple : quiver",
-    "description": "Texte d'espace réservé dans le champ d'invite"
+    "message": "Entrez un prompt pour le style du vidéo, par ex. : quiver",
+    "description": "Texte d’espace réservé pour le champ de prompt"
   },
   "placeholder.negativePrompt": {
-    "message": "Entrez les mots d'invite négatifs pour le style de vidéo à générer, ne dépassant pas 200 caractères",
-    "description": "Texte d'espace réservé dans le champ d'invite"
+    "message": "Entrez un prompt négatif pour le style du vidéo, max 200 caractères",
+    "description": "Texte d’espace réservé pour le champ de prompt"
   },
   "placeholder.position": {
-    "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de position"
+    "message": "Veuillez choisir...",
+    "description": "Texte d’espace réservé pour la position"
   },
   "placeholder.aspectRatio": {
-    "message": "Veuillez sélectionner...",
-    "description": "Espace réservé pour l'entrée de ratio d'aspect"
+    "message": "Veuillez choisir...",
+    "description": "Texte d’espace réservé pour le ratio"
   },
   "placeholder.preset": {
     "message": "Veuillez sélectionner...",
@@ -185,15 +189,15 @@
   },
   "placeholder.markerShape": {
     "message": "Veuillez sélectionner...",
-    "description": "Placeholder pour l'entrée de forme de marqueur"
+    "description": "Espace réservé pour l'entrée de la forme du marqueur"
   },
   "placeholder.rotate": {
     "message": "Veuillez sélectionner...",
-    "description": "Placeholder pour l'entrée de rotation"
+    "description": "Espace réservé pour l'entrée de rotation"
   },
   "placeholder.subMarker": {
     "message": "Veuillez sélectionner...",
-    "description": "Placeholder pour l'entrée de sous-marqueur"
+    "description": "Espace réservé pour l'entrée de sous-marqueur"
   },
   "button.generate": {
     "message": "Générer",
@@ -213,7 +217,7 @@
   },
   "button.uploadVideoUrl": {
     "message": "Télécharger la vidéo",
-    "description": "Texte du bouton pour télécharger la vidéo"
+    "description": "Texte du bouton pour télécharger une vidéo"
   },
   "button.uploadReferences": {
     "message": "Télécharger",
@@ -233,7 +237,7 @@
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message au début de la tâche de dessin"
+    "description": "Message au début d'une tâche de dessin"
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
@@ -241,7 +245,7 @@
   },
   "message.startTaskFailed": {
     "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur",
-    "description": "Message d'erreur lors de l'échec du démarrage de la tâche de dessin"
+    "description": "Message d'erreur lors de l'échec du démarrage d'une tâche de dessin"
   },
   "message.usedUp": {
     "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
@@ -269,11 +273,11 @@
   },
   "message.uploadVideoSizeExceed": {
     "message": "La taille du fichier téléchargé ne doit pas dépasser 10 Mo !",
-    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo"
+    "description": "Message d'erreur lorsque la taille du fichier téléchargé dépasse 10 Mo !"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Le fichier téléchargé doit être au format MP4 !",
-    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4"
+    "description": "Message d'erreur lorsque le fichier téléchargé n'est pas au format MP4 !"
   },
   "message.uploadStartImageExceed": {
     "message": "Le nombre d'images de la première image téléchargées dépasse la limite",

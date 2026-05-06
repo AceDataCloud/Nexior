@@ -12,8 +12,8 @@
     "description": "QR-koodin sisältötyyppi, kuten 'linkki', 'teksti' jne."
   },
   "name.failure": {
-    "message": "Epäonnistuminen",
-    "description": "Tehtävän epäonnistumistila"
+    "message": "Epätosi",
+    "description": "Tehtävän epäonnistumisen tila"
   },
   "name.failureReason": {
     "message": "Epäonnistumisen syy",
@@ -26,6 +26,10 @@
   "name.traceId": {
     "message": "Seuranta ID",
     "description": "Tehtävän seuranta ID"
+  },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekuntia)"
   },
   "name.size": {
     "message": "Koko",
@@ -49,7 +53,7 @@
   },
   "field.elements": {
     "message": "Henkilökorttityyli",
-    "description": "Kuvien generointiin käytettävä taidetyyli"
+    "description": "Kuvan generointiin käytettävä taidetyyli"
   },
   "name.headshotsBot": {
     "message": "Headshots Bot",
@@ -80,8 +84,8 @@
     "description": "Täyteasteen paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä videotyylin generointiin liittyvä ohje, esim.: Astronautit kulkevat avaruudesta tulivuorelle",
-    "description": "Ohjekentän paikkamerkki"
+    "message": "Syötä videon tyylin generointiin liittyvä ohje, esim: Astronautit kulkevat avaruudesta tulivuorelle",
+    "description": "Ohje kentän paikkamerkki"
   },
   "button.fast": {
     "message": "Nopea",
@@ -149,46 +153,54 @@
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun käytettävissä ei ole toimintoja"
+    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, napsauta vasemmalla generoidaksesi videon",
-    "description": "Viesti, kun tehtäviä ei ole"
+    "description": "Viesti, kun ei ole tehtäviä"
   },
   "styleCategory.styles": {
     "message": "Henkilökorttityyli",
-    "description": "Kuvien kuvaamiseen ja generointiin käytettävä kategoria, generoitujen kuvien tulisi sisältää tämän tunnisteen kategoria"
+    "description": "Kuvaileva ja generointiin käytettävä kategoria, generoidun kuvan tulisi sisältää tämän tunnisteen kategoria"
   },
   "styleTag.malePportrait": {
     "message": "Mieskuva",
-    "description": "Kuvien kuvaamiseen ja generointiin käytettävä tyylitunniste, generoitujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Kuvaileva ja generointiin käytettävä tyylitermi, generoidun kuvan tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.malePportrait2": {
     "message": "Mieskuva 2",
-    "description": "Kuvien kuvaamiseen ja generointiin käytettävä tyylitunniste, generoitujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Kuvaileva ja generointiin käytettävä tyylitermi, generoidun kuvan tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.kindergarten": {
-    "message": "Lastentarhan sisäänkäyntikuva",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Lastentarhan kuva",
+    "description": "Kuvaileva ja kuvagenerointiin käytettävä tyylisana, luodun kuvan tulisi sisältää tämän tunnisteen tyyli"
   },
   "styleTag.logoTshirt": {
-    "message": "Yrityksen logo T-paitakuva",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Yrityksen logo T-paita",
+    "description": "Kuvaa ja luo kuvaa tyylitermi, luodun kuvan tulee sisältää tämän tunnisteen tyyli"
   },
   "styleTag.wedding": {
     "message": "Häiden rekisteröintikuva",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Kuvaa ja luo kuvaa tyylitermi, luodun kuvan tulee sisältää tämän tunnisteen tyyli"
   },
   "styleTag.businessPphoto": {
-    "message": "Liiketoimintatyylinen muotokuva",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Liiketoimintatyylinen valokuva",
+    "description": "Kuvaa ja luo kuvaa tyylitermi, luodun kuvan tulee sisältää tämän tunnisteen tyyli"
   },
   "styleTag.bobSuit": {
     "message": "Musta puku ja bob-leikkaus",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "description": "Kuvaa ja luo kuvaa tyylitermi, luodun kuvan tulee sisältää tämän tunnisteen tyyli"
   },
   "styleTag.femalePortrait": {
-    "message": "Naiskuva",
-    "description": "Käytetään tyylisanana kuvien kuvaamiseen ja luomiseen, luotujen kuvien tulisi sisältää tämän tunnisteen tyyli"
+    "message": "Naispotretti",
+    "description": "Kuvaa ja luo kuvaa tyylitermi, luodun kuvan tulee sisältää tämän tunnisteen tyyli"
+  },
+  "message.uploadImageExceed": {
+    "message": "Voit ladata enintään 2 kuvaa",
+    "description": "Vihje, kun ladattavien viittauskuvien määrä ylittää rajoituksen"
+  },
+  "message.uploadImageError": {
+    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "description": "Virheilmoitus, kun viittauskuvan lataaminen epäonnistuu"
   }
 }

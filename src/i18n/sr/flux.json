@@ -39,6 +39,10 @@
     "message": "ID praćenja",
     "description": "ID praćenja zadatka"
   },
+  "name.elapsed": {
+    "message": "Proteklo vreme",
+    "description": "Proteklo vreme zadatka (u sekundama)"
+  },
   "name.createdAt": {
     "message": "Vreme kreiranja",
     "description": "Datum i vreme generisanja Flux slike"
@@ -80,7 +84,7 @@
     "description": "Opis parametra 'prompt'"
   },
   "description.imageUrl": {
-    "message": "Tokom kreiranja zadatka za uređivanje slike, potrebno je da se otpremi jedna slika.",
+    "message": "Tokom kreiranja zadatka za uređivanje slike, potrebno je da se otpremi slika.",
     "description": "Opis parametra 'imageUrl'"
   },
   "status.pending": {
@@ -137,7 +141,7 @@
   },
   "button.uploadImageUrl": {
     "message": "Otpremi",
-    "description": "Tekst dugmeta za otpremanje slike (skratiti na 'Otpremi', ne koristiti 'Otpremi sliku')"
+    "description": "Tekst dugmeta za otpremanje slike (skratiti na 'Otpremi')"
   },
   "button.extend": {
     "message": "Proširi sliku",
@@ -164,7 +168,7 @@
     "description": "Poruka o uspehu kada je slika uspešno otpremljena"
   },
   "message.uploadReferencesError": {
-    "message": "Neuspelo otpremanje slike, pokušajte ponovo kasnije",
+    "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
     "description": "Poruka o grešci kada otpremanje slike nije uspelo"
   },
   "message.startingTask": {
@@ -176,7 +180,7 @@
     "description": "Poruka o uspehu kada je zadatak uspešno pokrenut"
   },
   "message.startTaskFailed": {
-    "message": "Neuspelo pokretanje zadatka, kontaktirajte administratora",
+    "message": "Pokretanje zadatka nije uspelo, kontaktirajte administratora",
     "description": "Poruka o grešci kada pokretanje zadatka za crtanje nije uspelo"
   },
   "message.usedUp": {
@@ -188,8 +192,8 @@
     "description": "Poruka kada se slika generiše"
   },
   "message.downloadVideo": {
-    "message": "Preuzmi ovu sliku",
-    "description": "Poruka kada se slika generiše"
+    "message": "Preuzmi ovaj video",
+    "description": "Poruka dok se video generiše"
   },
   "message.extendVideo": {
     "message": "Nastavi generisanje ove slike",

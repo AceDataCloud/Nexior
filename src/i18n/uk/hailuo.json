@@ -5,7 +5,7 @@
   },
   "name.type": {
     "message": "Тип",
-    "description": "Тип контенту Hailuo відео, що генерується, наприклад, 'посилання', 'текст' тощо"
+    "description": "Тип контенту Hailuo відео, наприклад, 'посилання', 'текст' тощо"
   },
   "name.failure": {
     "message": "Не вдалося",
@@ -23,13 +23,17 @@
     "message": "ID відстеження",
     "description": "ID відстеження завдання"
   },
+  "name.elapsed": {
+    "message": "Час виконання",
+    "description": "Час виконання завдання (секунди)"
+  },
   "name.createdAt": {
     "message": "Дата створення",
     "description": "Дата та час створення Hailuo відео"
   },
   "name.imageUrl": {
-    "message": "Посилання на зображення",
-    "description": "Посилання на зображення для генерованого відео"
+    "message": "Зображення для посилання",
+    "description": "Зображення для створення відео"
   },
   "name.videoUrl": {
     "message": "Користувацьке відео",
@@ -45,30 +49,30 @@
   },
   "name.model": {
     "message": "Модель",
-    "description": "Версія моделі, що використовується для генерації відео"
+    "description": "Версія моделі, що використовується для створення відео"
   },
   "name.startImageUrl": {
-    "message": "Перше зображення",
-    "description": "Сид для генерованого QR коду"
+    "message": "Зображення першого кадру",
+    "description": "Сид для QR-коду, що генерується"
   },
   "name.ingredientsModel": {
     "message": "Модель інгредієнтів",
-    "description": "Версія моделі, що використовується для генерації відео"
+    "description": "Версія моделі, що використовується для створення відео"
   },
   "name.hailuoBot": {
     "message": "Hailuo Bot",
     "description": "Назва генератора Hailuo відео"
   },
   "description.ingredients": {
-    "message": "Якщо ви хочете завантажити кілька зображень для створення власного відео, увімкніть цю кнопку.",
+    "message": "Якщо ви хочете завантажити кілька зображень для створення власного відео, активуйте цю кнопку.",
     "description": "Опис параметра 'ingredients'"
   },
   "description.startImageUrl": {
-    "message": "Перше зображення, яке буде першим кадром генерованого відео.",
+    "message": "Зображення першого кадру, яке буде першим кадром створеного відео.",
     "description": "Опис параметра 'startImageUrl'"
   },
   "description.prompt": {
-    "message": "Підказка для генерації Hailuo відео",
+    "message": "Підказка для створення Hailuo відео",
     "description": "Опис параметра 'prompt'"
   },
   "status.pending": {
@@ -97,7 +101,7 @@
   },
   "placeholder.position": {
     "message": "Виберіть...",
-    "description": "Заповнювальний текст для позиції"
+    "description": "Заповнювальний текст для введення позиції"
   },
   "placeholder.aspectRatio": {
     "message": "Виберіть...",
@@ -121,19 +125,19 @@
   },
   "button.model1": {
     "message": "Текст у відео",
-    "description": "Текст кнопки для генерації Hailuo відео"
+    "description": "Текст кнопки для створення Hailuo відео"
   },
   "button.model2": {
     "message": "Зображення у відео",
-    "description": "Текст кнопки для генерації Hailuo відео"
+    "description": "Текст кнопки для створення Hailuo відео"
   },
   "button.model3": {
     "message": "Зображення у відео (режим режисера)",
-    "description": "Текст кнопки для генерації Hailuo відео, режим режисера"
+    "description": "Текст кнопки для створення Hailuo відео, режим режисера"
   },
   "button.generate": {
-    "message": "Генерувати",
-    "description": "Текст кнопки для генерації Hailuo відео"
+    "message": "Створити",
+    "description": "Текст кнопки для створення Hailuo відео"
   },
   "button.extend": {
     "message": "Розширити відео",
@@ -144,7 +148,7 @@
     "description": "Текст кнопки для завантаження відео"
   },
   "button.uploadStartImageUrl": {
-    "message": "Завантажити зображення",
+    "message": "Завантажити",
     "description": "Текст кнопки для завантаження зображення (спростити до 'Завантажити')"
   },
   "message.uploadReferencesExceed": {
@@ -189,7 +193,7 @@
   },
   "message.generateFailed": {
     "message": "Не вдалося згенерувати зображення",
-    "description": "Повідомлення при невдачі генерації зображення"
+    "description": "Повідомлення про невдалу генерацію зображення"
   },
   "message.uploadVideoExceed": {
     "message": "Кількість завантажених зображень першого кадру перевищує ліміт",

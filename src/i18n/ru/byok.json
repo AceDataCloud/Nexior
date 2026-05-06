@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Настраиваемый API Key",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Добавить API Key",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Редактировать API Key",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Удалить API Key",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Используйте свой собственный API Key от провайдера (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) вместо учетной записи платформы. После настройки запросы к моделям будут напрямую использовать ваш Key для вызова услуг провайдера, не расходуя кредиты платформы; другие функции, такие как вызовы инструментов, ссылки, артефакты, облачная история и т.д., будут работать как обычно.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Провайдер",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Заметка",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "Например, \"Мой рабочий номер\" (необязательно)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "API Key",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Оставьте пустым, чтобы сохранить текущий Key",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Настраиваемый Base URL",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Оставьте пустым для использования адреса по умолчанию провайдера",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Активен",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Последнее использование",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Дата добавления",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Активен",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Неактивен",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Никогда не использовался",
+    "description": ""
+  },
+  "value.default": {
+    "message": "По умолчанию",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Добавить API Key",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Редактировать",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Тестировать",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Удалить",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Сохранить",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Отмена",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Подтвердите удаление этого API Key? Последующие запросы к модели {provider} будут возвращены к стандартному провайдеру платформы.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "API Key удален.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "API Key сохранен.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Соединение в порядке.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Тест не удался: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Не удалось загрузить учетные данные.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Не удалось сохранить учетные данные.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Настраиваемый API Key еще не настроен. Нажмите \"Добавить API Key\", чтобы использовать свою учетную запись провайдера.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Показать дополнительные параметры",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Необязательно. Настраиваемый адрес провайдера (для OpenRouter, самодельного прокси, корпоративного шлюза и т.д.). Разрешен только HTTPS, не может указывать на внутренние/петлевые адреса.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Используется настраиваемый {provider} API Key",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Текущий диалог использует ваш {provider} API Key, расходы оплачиваются с учетной записи {provider}, не уменьшая баланс платформы.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Нажмите, чтобы открыть настройки API Key",
+    "description": "Подсказка при нажатии на значок BYOK на странице чата: нажмите, чтобы открыть вкладку настроек API Key."
+  },
+  "button.testConnection": {
+    "message": "Тестировать",
+    "description": "Кнопка в диалоговом окне добавления/редактирования — только тестирует текущую конфигурацию формы, не сохраняет учетные данные."
+  },
+  "test.success": {
+    "message": "Тест соединения успешен",
+    "description": "Заголовок успешного результата теста соединения."
+  },
+  "test.failure": {
+    "message": "Тест соединения не удался",
+    "description": "Заголовок неудачного результата теста соединения."
+  },
+  "test.endpoint": {
+    "message": "Адрес запроса",
+    "description": "Метка URL запроса в деталях результата теста."
+  },
+  "test.status": {
+    "message": "Код состояния",
+    "description": "Метка HTTP кода состояния в деталях результата теста."
+  },
+  "test.message": {
+    "message": "Ответ провайдера",
+    "description": "Метка текста ошибки/подсказки провайдера в деталях результата теста."
+  },
+  "providerDesc.openai": {
+    "message": "Заменяет запросы к ChatGPT (GPT-4 / GPT-4o / o1 / o3 и т.д.) на этом сайте.",
+    "description": "Подзаголовок для опции OpenAI в выпадающем списке провайдеров."
+  },
+  "providerDesc.anthropic": {
+    "message": "Заменяет запросы к Claude (Sonnet / Opus / Haiku и т.д.) на этом сайте.",
+    "description": "Подзаголовок для опции Anthropic в выпадающем списке провайдеров."
+  },
+  "providerDesc.google": {
+    "message": "Заменяет запросы к Gemini (Pro / Flash серии) на этом сайте.",
+    "description": "Подзаголовок для опции Google в выпадающем списке провайдеров."
+  },
+  "providerDesc.xai": {
+    "message": "Заменяет запросы к Grok на этом сайте.",
+    "description": "Подзаголовок для опции xAI в выпадающем списке провайдеров."
+  },
+  "providerDesc.deepseek": {
+    "message": "Заменяет запросы к DeepSeek (V3 / R1 и т.д.) на этом сайте.",
+    "description": "Подзаголовок для опции DeepSeek в выпадающем списке провайдеров."
+  },
+  "providerDesc.moonshot": {
+    "message": "Заменить запросы на диалог Kimi на этом сайте.",
+    "description": "Подзаголовок для опции Moonshot (Kimi) в выпадающем списке провайдеров."
+  },
+  "providerDesc.zhipu": {
+    "message": "Заменяет запросы на диалог GLM серии на этом сайте.",
+    "description": "Подзаголовок для опции Zhipu (GLM) в выпадающем списке провайдеров."
+  }
+}

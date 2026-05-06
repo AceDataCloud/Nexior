@@ -23,9 +23,13 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
+  },
   "name.createdAt": {
     "message": "Data utworzenia",
-    "description": "Data i czas wygenerowania wideo Hailuo"
+    "description": "Data i czas utworzenia wideo Hailuo"
   },
   "name.imageUrl": {
     "message": "Obraz referencyjny",
@@ -33,7 +37,7 @@
   },
   "name.videoUrl": {
     "message": "Wideo niestandardowe",
-    "description": "Wideo niestandardowe"
+    "description": "Niestandardowe wideo"
   },
   "name.prompt": {
     "message": "Podpowiedź wideo",
@@ -41,7 +45,7 @@
   },
   "name.ingredients": {
     "message": "Wideo z wielu obrazów",
-    "description": "Przełącznik/etykieta do tworzenia wideo z wielu obrazów (propozycja w języku angielskim: Multi-Image, zachowaj krótko)"
+    "description": "Przełącznik/etykieta do tworzenia wideo z wielu obrazów (propozycja: Multi-Image, zachowaj krótko)"
   },
   "name.model": {
     "message": "Model",
@@ -81,7 +85,7 @@
   },
   "placeholder.paddingNoise": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia szumów wypełniających"
+    "description": "Placeholder dla wejścia szumów wypełniających"
   },
   "placeholder.select": {
     "message": "Wybierz",
@@ -92,32 +96,32 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np.: złość",
+    "message": "Wprowadź podpowiedź stylu wideo, np.: złość",
     "description": "Placeholder dla pola podpowiedzi"
   },
   "placeholder.position": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia pozycji"
+    "description": "Placeholder dla wejścia pozycji"
   },
   "placeholder.aspectRatio": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia proporcji"
+    "description": "Placeholder dla wejścia proporcji"
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia presetów"
+    "description": "Placeholder dla wejścia preset"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia kształtu znacznika"
+    "description": "Placeholder dla wejścia kształtu znacznika"
   },
   "placeholder.rotate": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia obrotu"
+    "description": "Placeholder dla wejścia obrotu"
   },
   "placeholder.subMarker": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wprowadzenia podznacznika"
+    "description": "Placeholder dla wejścia podznacznika"
   },
   "button.model1": {
     "message": "Wideo z tekstu",
@@ -145,26 +149,26 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Prześlij obraz",
-    "description": "Tekst przycisku do przesyłania obrazów (proszę uprościć do 'Prześlij')"
+    "description": "Tekst przycisku do przesyłania obrazu (proszę uprościć do 'Prześlij')"
   },
   "message.uploadReferencesExceed": {
     "message": "Można przesłać maksymalnie 5 obrazów",
     "description": "Komunikat o błędzie, gdy liczba przesyłanych obrazów przekracza limit"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Obrazy przesłane pomyślnie",
-    "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazów"
+    "message": "Obraz przesłany pomyślnie",
+    "description": "Komunikat o sukcesie po pomyślnym przesłaniu obrazu"
   },
   "message.uploadReferencesError": {
-    "message": "Nie udało się przesłać obrazów, spróbuj ponownie później",
-    "description": "Komunikat o błędzie, gdy przesyłanie obrazów się nie powiodło"
+    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
+    "description": "Komunikat o błędzie, gdy przesyłanie obrazu się nie powiodło"
   },
   "message.startingTask": {
     "message": "Rozpoczynanie zadania...",
     "description": "Komunikat na początku zadania rysowania"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "message": "Zadanie generowania uruchomione pomyślnie",
     "description": "Komunikat o sukcesie po pomyślnym uruchomieniu zadania"
   },
   "message.startTaskFailed": {
@@ -180,8 +184,8 @@
     "description": "Komunikat podczas generowania obrazu"
   },
   "message.downloadVideo": {
-    "message": "Pobierz to wideo",
-    "description": "Komunikat podczas generowania obrazu"
+    "message": "Pobierz wideo",
+    "description": "Wiadomość podczas generowania obrazu"
   },
   "message.extendVideo": {
     "message": "Kontynuuj generowanie tego wideo",

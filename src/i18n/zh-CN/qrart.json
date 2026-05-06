@@ -23,6 +23,10 @@
     "message": "追踪 ID",
     "description": "任务的追踪 ID"
   },
+  "name.elapsed": {
+    "message": "耗时",
+    "description": "任务的耗时（秒）"
+  },
   "name.size": {
     "message": "尺寸",
     "description": "要生成的 QR 码的尺寸"
@@ -450,5 +454,29 @@
   "type.sms": {
     "message": "短信",
     "description": "用于生成QR码的内容类型"
+  },
+  "name.rawurl": {
+    "message": "原始链接",
+    "description": "是否将原始链接直接作为二维码内容、不做任何处理的开关"
+  },
+  "placeholder.ecl": {
+    "message": "请选择...",
+    "description": "纠错级别选择框的占位符"
+  },
+  "placeholder.pixelStyle": {
+    "message": "请选择...",
+    "description": "像素风格选择框的占位符"
+  },
+  "placeholder.select": {
+    "message": "请选择...",
+    "description": "二维码类型选择框的通用占位符"
+  },
+  "message.uploadDocumentsExceed": {
+    "message": "最多可上传 1 张图片",
+    "description": "上传内容图片超出数量限制时的提示"
+  },
+  "message.uploadDocumentsError": {
+    "message": "图片上传失败，请稍后重试",
+    "description": "内容图片上传失败时的错误提示"
   }
 }

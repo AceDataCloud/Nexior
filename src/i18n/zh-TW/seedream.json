@@ -35,6 +35,10 @@
     "message": "追蹤 ID",
     "description": "追蹤 ID"
   },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "任務的耗時（秒）"
+  },
   "name.prompt": {
     "message": "圖像提示",
     "description": "生成/編輯的提示詞"
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "SeeEdit 3.0 i2i 模型選項"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "SeeDream 5.0 模型選項（支持組圖與流式輸出）"
+  },
+  "name.maxImages": {
+    "message": "圖片張數",
+    "description": "組圖生成的圖片張數（max_images）"
+  },
+  "description.maxImages": {
+    "message": "一次請求生成的圖片數量（1-15）。設為 1 時為單圖模式；大於 1 時自動啟用組圖（sequential_image_generation=auto），跨圖保持角色、風格與細節一致。僅支持 doubao-seedream-5.0 / 4.5 / 4.0；如同時上傳參考圖，需滿足 (參考圖數 + 生成數) ≤ 15。計費按實際生成的圖片張數。",
+    "description": "max_images 參數說明"
   }
 }

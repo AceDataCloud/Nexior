@@ -268,11 +268,11 @@
     "description": "少なくとも1人の管理者を保持するためのヒント"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "デフォルト招待者のユーザーID。分配リンクがinviter_idパラメータを持たない場合、このユーザーIDが招待者として使用されます。",
+    "message": "デフォルト招待者のユーザーID。分配リンクにinviter_idパラメータが含まれていない場合、このユーザーIDが招待者として使用されます。",
     "description": "デフォルト招待者IDのヒント"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクがinviter_idパラメータを持っていても、このユーザーIDが招待者として強制的に使用されます。",
+    "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクにinviter_idパラメータが含まれていても、このユーザーIDが招待者として強制的に使用されます。",
     "description": "強制招待者IDのヒント"
   },
   "message.originTip": {
@@ -425,15 +425,15 @@
   },
   "button.enabled": {
     "message": "有効",
-    "description": "スイッチのテキスト、有効であることを示します"
+    "description": "スイッチのテキスト、すでに有効であることを示します"
   },
   "button.disabled": {
     "message": "無効",
-    "description": "スイッチのテキスト、無効であることを示します"
+    "description": "スイッチのテキスト、すでに無効であることを示します"
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "編集ボックスのタイトルとして表示"
+    "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresGemini": {
     "message": "Gemini 機能モジュールを有効または無効にします。",
@@ -441,10 +441,14 @@
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "編集ボックスのタイトルとして表示"
+    "description": "編集ボックスのタイトルとして表示されます"
   },
   "message.featuresClaude": {
     "message": "Claude 機能モジュールを有効または無効にします。",
     "description": "Claude 機能の説明"
+  },
+  "placeholder.admins": {
+    "message": "管理者ユーザー ID を入力してください",
+    "description": "サイト設定の管理者編集ボックスのプレースホルダー"
   }
 }

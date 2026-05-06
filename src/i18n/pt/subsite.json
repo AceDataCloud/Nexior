@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "Meu Subdomínio",
+    "description": "Título principal da página de gerenciamento de subdomínios"
+  },
+  "title.create": {
+    "message": "Criar Subdomínio",
+    "description": "Título da caixa de diálogo para criar um novo subdomínio"
+  },
+  "title.openNow": {
+    "message": "Acessar Subdomínio Agora",
+    "description": "Título da caixa de diálogo perguntando se deseja redirecionar após a criação bem-sucedida"
+  },
+  "field.slug": {
+    "message": "Prefixo do Subdomínio",
+    "description": "Título do campo de entrada para o slug do subdomínio"
+  },
+  "field.origin": {
+    "message": "Domínio do Subdomínio",
+    "description": "Coluna de domínio na lista de subdomínios"
+  },
+  "field.title": {
+    "message": "Título do Subdomínio",
+    "description": "Campo para o título do subdomínio"
+  },
+  "field.createdAt": {
+    "message": "Data de Criação",
+    "description": "Coluna de data de criação do subdomínio"
+  },
+  "field.actions": {
+    "message": "Ações",
+    "description": "Coluna de ações na lista de subdomínios"
+  },
+  "placeholder.slug": {
+    "message": "Exemplo: minha-marca",
+    "description": "Placeholder para o campo de entrada do slug"
+  },
+  "placeholder.title": {
+    "message": "Para exibir na aba do navegador e no cabeçalho do site",
+    "description": "Placeholder para o campo de entrada do título"
+  },
+  "button.create": {
+    "message": "Criar Subdomínio",
+    "description": "Botão para criar um subdomínio"
+  },
+  "button.open": {
+    "message": "Abrir",
+    "description": "Botão para abrir o subdomínio"
+  },
+  "button.manage": {
+    "message": "Gerenciar",
+    "description": "Botão para acessar as configurações do subdomínio"
+  },
+  "message.indexTip": {
+    "message": "Crie subdomínios independentes sob o domínio principal, cada subdomínio pode ter seu próprio logo, título e conjunto de funcionalidades, sem necessidade de construir o código-fonte separadamente.",
+    "description": "Texto explicativo na página de gerenciamento de subdomínios"
+  },
+  "message.empty": {
+    "message": "Você ainda não criou nenhum subdomínio. Clique em 'Criar Subdomínio' no canto superior direito para começar.",
+    "description": "Mensagem de lista vazia"
+  },
+  "message.slugTip": {
+    "message": "3-32 caracteres em letras minúsculas, números ou hífens; não pode começar ou terminar com hífen e não pode conter hífens consecutivos.",
+    "description": "Explicação do campo slug"
+  },
+  "message.slugInvalid": {
+    "message": "Formato do prefixo do subdomínio inválido, verifique as regras e tente novamente.",
+    "description": "Falha na validação do slug"
+  },
+  "message.zoneMissing": {
+    "message": "O domínio principal atual não está configurado com uma zona de subdomínio, entre em contato com o administrador do site.",
+    "description": "Zona de subdomínio ausente"
+  },
+  "message.created": {
+    "message": "Subdomínio criado com sucesso!",
+    "description": "Confirmação de criação bem-sucedida"
+  },
+  "message.createFailed": {
+    "message": "Falha ao criar o subdomínio, por favor, tente novamente mais tarde.",
+    "description": "Falha na criação"
+  },
+  "message.loadFailed": {
+    "message": "Falha ao carregar a lista de subdomínios.",
+    "description": "Falha ao carregar a lista"
+  },
+  "message.openNowConfirm": {
+    "message": "Subdomínio {origin} criado. Deseja abri-lo agora para continuar a configuração?",
+    "description": "Pergunta se deseja abrir imediatamente após a criação"
+  },
+  "title.domains": {
+    "message": "Domínio Personalizado de {origin}",
+    "description": "Título da caixa de diálogo de domínio personalizado"
+  },
+  "title.bindDomain": {
+    "message": "Vincular Novo Domínio",
+    "description": "Título do formulário de vinculação"
+  },
+  "button.domains": {
+    "message": "Domínios",
+    "description": "Botão para abrir a caixa de diálogo de gerenciamento de domínios"
+  },
+  "button.bindDomain": {
+    "message": "Vincular Domínio",
+    "description": "Botão para enviar a vinculação de um novo domínio"
+  },
+  "button.verify": {
+    "message": "Verificar Agora",
+    "description": "Verifica se o domínio pode ser resolvido e se o certificado pode ser emitido através do nosso proxy reverso"
+  },
+  "button.refresh": {
+    "message": "Atualizar",
+    "description": "Recarrega o status do domínio"
+  },
+  "field.hostname": {
+    "message": "Seu Domínio",
+    "description": "Insira o domínio ou subdomínio que você possui"
+  },
+  "field.recordType": {
+    "message": "Tipo de Registro",
+    "description": "Coluna de tipo de registro DNS"
+  },
+  "field.recordName": {
+    "message": "Nome do Registro",
+    "description": "Coluna de nome do registro DNS"
+  },
+  "field.recordValue": {
+    "message": "Valor do Registro",
+    "description": "Coluna de valor do registro DNS"
+  },
+  "placeholder.hostname": {
+    "message": "Exemplo: studio.minhamarca.com",
+    "description": "Placeholder para o campo de entrada do hostname"
+  },
+  "message.domainsIntro": {
+    "message": "Vincule o domínio que você possui a este subdomínio. Você precisa ter a capacidade de modificar o DNS desse domínio. Siga as instruções abaixo para adicionar um registro CNAME e clique em 'Verificar Agora', nós automaticamente emitiremos e renovaremos o certificado HTTPS gratuitamente através do Let's Encrypt.",
+    "description": "Explicação no topo da caixa de diálogo"
+  },
+  "message.domainsEmpty": {
+    "message": "Nenhum domínio personalizado vinculado ainda. Preencha o domínio completo no formulário abaixo e clique em 'Vincular' para começar.",
+    "description": "Mensagem de lista vazia"
+  },
+  "message.hostnameTip": {
+    "message": "Deve ser um domínio público cujo DNS você pode controlar.",
+    "description": "Dica para o campo hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "Formato do domínio inválido. Deve ser um domínio público que pode ser resolvido, endereços IP não são permitidos.",
+    "description": "Falha na validação local do hostname"
+  },
+  "message.domainCreated": {
+    "message": "Domínio submetido, por favor, siga as instruções para adicionar o registro CNAME.",
+    "description": "Sucesso no POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "Falha ao criar o domínio, por favor, tente novamente mais tarde.",
+    "description": "Falha na criação"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Falha ao carregar a lista de domínios.",
+    "description": "Falha ao carregar a lista de domínios"
+  },
+  "message.domainActive": {
+    "message": "Domínio ativo! Agora você pode acessar o subsite pelo seu endereço HTTPS personalizado.",
+    "description": "Indica que o domínio entrou no estado Ativo"
+  },
+  "message.domainFailed": {
+    "message": "Falha na verificação ou ativação do domínio.",
+    "description": "Texto de estado de falha"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Verificação falhou, verifique se o registro CNAME está apontando para nosso proxy reverso e se a propagação DNS foi concluída.",
+    "description": "Interface de verificação 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Tem certeza de que deseja desvincular {hostname}? Após a desvinculação, os usuários não poderão acessar sua subpágina por meio deste domínio.",
+    "description": "Confirmação de exclusão"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Falha ao excluir o domínio.",
+    "description": "Interface DELETE 5xx"
+  },
+  "status.pending": {
+    "message": "Aguardando verificação",
+    "description": "Etiqueta de estado pendente: aguardando que o usuário adicione o CNAME e clique em 'Verificar agora'"
+  },
+  "status.active": {
+    "message": "Ativo",
+    "description": "Etiqueta de estado ativo"
+  },
+  "status.failed": {
+    "message": "Falhou",
+    "description": "Etiqueta de estado de falha"
+  }
+}

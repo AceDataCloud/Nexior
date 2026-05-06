@@ -23,6 +23,10 @@
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
   },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
+  },
   "name.createdAt": {
     "message": "Erstellt am",
     "description": "Datum und Uhrzeit der Erstellung des Hailuo-Videos"
@@ -80,7 +84,7 @@
     "description": "Wartezustand der Aufgabe"
   },
   "placeholder.paddingNoise": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe von Füllrauschen"
   },
   "placeholder.select": {
@@ -88,7 +92,7 @@
     "description": "Platzhaltertext im Auswahlfeld"
   },
   "placeholder.paddingLevel": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für das Füllniveau"
   },
   "placeholder.prompt": {
@@ -96,56 +100,56 @@
     "description": "Platzhaltertext im Aufforderungsfeld"
   },
   "placeholder.position": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Positionseingabe"
   },
   "placeholder.aspectRatio": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für das Seitenverhältnis"
   },
   "placeholder.preset": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Voreinstellung"
   },
   "placeholder.markerShape": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe der Markierungsform"
   },
   "placeholder.rotate": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe der Drehung"
   },
   "placeholder.subMarker": {
-    "message": "Bitte wählen...",
+    "message": "Bitte auswählen...",
     "description": "Platzhalter für die Eingabe des Untermarkierungs"
   },
   "button.model1": {
     "message": "Text zu Video",
-    "description": "Buttontext zur Generierung des Hailuo-Videos"
+    "description": "Text des Buttons zur Generierung des Hailuo-Videos"
   },
   "button.model2": {
     "message": "Bild zu Video",
-    "description": "Buttontext zur Generierung des Hailuo-Videos"
+    "description": "Text des Buttons zur Generierung des Hailuo-Videos"
   },
   "button.model3": {
     "message": "Bild zu Video (Regie-Modus)",
-    "description": "Buttontext zur Generierung des Hailuo-Videos, Regie-Modus"
+    "description": "Text des Buttons zur Generierung des Hailuo-Videos, Regie-Modus"
   },
   "button.generate": {
     "message": "Generieren",
-    "description": "Buttontext zur Generierung des Hailuo-Videos"
+    "description": "Text des Buttons zur Generierung des Hailuo-Videos"
   },
   "button.extend": {
     "message": "Video erweitern",
-    "description": "Buttontext zum Erweitern des Videos"
+    "description": "Text des Buttons zum Erweitern des Videos"
   },
   "button.download": {
     "message": "Video herunterladen",
-    "description": "Buttontext zum Herunterladen des Videos"
+    "description": "Text des Buttons zum Herunterladen des Videos"
   },
   "button.uploadStartImageUrl": {
-    "message": "Bild hochladen",
-    "description": "Buttontext zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
+    "message": "Hochladen",
+    "description": "Text des Buttons zum Hochladen von Bildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bild hochladen')"
   },
   "message.uploadReferencesExceed": {
     "message": "Maximal 5 Bilder können hochgeladen werden",
@@ -157,11 +161,11 @@
   },
   "message.uploadReferencesError": {
     "message": "Hochladen der Bilder fehlgeschlagen, bitte später erneut versuchen",
-    "description": "Fehlermeldung beim Fehlschlagen des Bilduploads"
+    "description": "Fehlermeldung beim Fehlschlagen des Bildhochladens"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
-    "description": "Nachricht beim Start der Zeichnungsaufgabe"
+    "description": "Nachricht beim Starten der Zeichnungsaufgabe"
   },
   "message.startTaskSuccess": {
     "message": "Generierungsaufgabe erfolgreich gestartet",
@@ -177,11 +181,11 @@
   },
   "message.generating": {
     "message": "Wird generiert...",
-    "description": "Nachricht während der Bildgenerierung"
+    "description": "Nachricht während der Generierung des Bildes"
   },
   "message.downloadVideo": {
-    "message": "Dieses Video herunterladen",
-    "description": "Nachricht während der Bildgenerierung"
+    "message": "Video herunterladen",
+    "description": "Nachricht, während das Bild generiert wird"
   },
   "message.extendVideo": {
     "message": "Video fortsetzen",
@@ -228,8 +232,8 @@
     "description": "Fehlermeldung, wenn das Hochladen des Dokuments fehlschlägt"
   },
   "message.noOperations": {
-    "message": "Keine verfügbaren Operationen",
-    "description": "Nachricht, wenn keine verfügbaren Operationen vorhanden sind"
+    "message": "Keine verfügbaren Aktionen",
+    "description": "Nachricht, wenn keine verfügbaren Aktionen vorhanden sind"
   },
   "message.noTasks": {
     "message": "Keine historischen Aufgaben, bitte klicken Sie links, um ein Video zu generieren",

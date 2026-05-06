@@ -8,7 +8,7 @@
     "description": "Mots-clés pour générer la vidéo"
   },
   "description.prompt": {
-    "message": "Décrivez la vidéo à générer, vous pouvez ajouter des paramètres SeeDance (ex : --rs 720p --rt 16:9 --dur 5).",
+    "message": "Décrivez la vidéo que vous souhaitez générer, vous pouvez ajouter des paramètres SeeDance (par exemple : --rs 720p --rt 16:9 --dur 5).",
     "description": "Instructions pour l'entrée des mots-clés"
   },
   "placeholder.prompt": {
@@ -41,7 +41,7 @@
   },
   "description.generateAudio": {
     "message": "Si activé, la vidéo sera accompagnée d'un audio. Supporté uniquement par le modèle seedance-1.5-pro, coût environ 2 fois plus.",
-    "description": "Instructions sur la génération d'audio"
+    "description": "Instructions pour la génération audio"
   },
   "name.resolution": {
     "message": "Résolution",
@@ -132,12 +132,12 @@
     "description": "Message de début de tâche"
   },
   "message.startTaskSuccess": {
-    "message": "Tâche lancée",
-    "description": "Message de succès de début de tâche"
+    "message": "Tâche démarrée",
+    "description": "Message de succès de démarrage de tâche"
   },
   "message.startTaskFailed": {
     "message": "Échec du démarrage :",
-    "description": "Message d'échec de début de tâche"
+    "description": "Message d'échec de démarrage de tâche"
   },
   "message.usedUp": {
     "message": "Quota épuisé",
@@ -145,7 +145,7 @@
   },
   "message.uploadExceed": {
     "message": "Vous ne pouvez télécharger qu'une seule image",
-    "description": "Message de dépassement de téléchargement"
+    "description": "Message de dépassement de limite de téléchargement"
   },
   "message.uploadError": {
     "message": "Échec du téléchargement",
@@ -170,6 +170,10 @@
   "name.traceId": {
     "message": "ID de trace",
     "description": "Étiquette de l'ID de trace"
+  },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé de la tâche (secondes)"
   },
   "name.failure": {
     "message": "Échec",

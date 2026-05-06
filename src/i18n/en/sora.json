@@ -19,16 +19,20 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The elapsed time of the task (in seconds)"
+  },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time the Sora video was generated"
+    "description": "The date and time when the Sora video was generated"
   },
   "name.startEndImage": {
     "message": "Start/End Frames",
     "description": "Form field label: Start/End frame reference images"
   },
   "name.action": {
-    "message": "Action",
+    "message": "Actions",
     "description": "List of available actions"
   },
   "name.prompt": {
@@ -64,7 +68,7 @@
     "description": "The name of the video quality parameter"
   },
   "description.imageUrl": {
-    "message": "Multiple images must be uploaded for tasks creating videos from multiple images.",
+    "message": "In tasks creating videos from multiple images, multiple images must be uploaded.",
     "description": "Description for the 'imageUrl' parameter"
   },
   "description.prompt": {
@@ -96,7 +100,7 @@
     "description": "Placeholder for padding level"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt words for the video style, e.g., moving",
+    "message": "Enter prompt for the video style, e.g., moving",
     "description": "Placeholder text in the prompt field"
   },
   "placeholder.position": {
@@ -105,7 +109,7 @@
   },
   "tip.proOnly": {
     "message": "Only the sora-2-pro model supports modifying this parameter",
-    "description": "Tip to inform users that only the professional model supports modifying this parameter"
+    "description": "Tip to inform users that only the pro model supports modifying this parameter"
   },
   "button.generate": {
     "message": "Generate",
@@ -121,7 +125,7 @@
   },
   "button.download": {
     "message": "Download Video",
-    "description": "Button text to download video"
+    "description": "Button text to download the video"
   },
   "button.uploadImageUrl": {
     "message": "Upload",
@@ -133,7 +137,7 @@
   },
   "button.uploadReferences": {
     "message": "Upload",
-    "description": "Button text allowing users to upload references"
+    "description": "Button text to allow users to upload references"
   },
   "message.uploadReferencesExceed": {
     "message": "You can upload a maximum of 2 images",
@@ -173,7 +177,7 @@
   },
   "message.generateFailed": {
     "message": "Video generation failed",
-    "description": "Message when video generation fails"
+    "description": "Message displayed when video generation fails"
   },
   "message.uploadVideoExceed": {
     "message": "The number of uploaded first frame images exceeds the limit",
@@ -197,19 +201,19 @@
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload first frame image",
-    "description": "Error message when failing to upload the first frame image"
+    "description": "Error message when the upload of the first frame image fails"
   },
   "message.uploadVideoError": {
     "message": "Failed to upload video",
-    "description": "Error message when failing to upload the video"
+    "description": "Error message when the upload of the video fails"
   },
   "message.uploadEndImageError": {
     "message": "Failed to upload last frame image",
-    "description": "Error message when failing to upload the last frame image"
+    "description": "Error message when the upload of the last frame image fails"
   },
   "message.uploadDocumentsError": {
     "message": "Failed to upload document",
-    "description": "Error message when failing to upload the document"
+    "description": "Error message when the upload of the document fails"
   },
   "message.noOperations": {
     "message": "No available operations",

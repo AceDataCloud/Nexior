@@ -2,7 +2,10 @@
   <layout @change-conversation="onChangeConversation($event)">
     <template #chat>
       <div class="toolbar">
-        <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+        <div class="toolbar-left">
+          <model-selector class="selector" @model-group-changed="onChangeConversation(undefined)" />
+          <byok-badge class="byok-badge" />
+        </div>
         <div class="toolbar-actions">
           <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
@@ -10,45 +13,8 @@
               <span v-if="agentConnected" class="agent-dot"></span>
             </el-button>
           </el-tooltip>
-          <el-tooltip :content="$t('chat.skill.tooltip')" placement="bottom">
-            <el-button
-              :class="['toolbar-btn', { active: activeSkillCount > 0 }]"
-              text
-              @click="skillManagerVisible = true"
-            >
-              <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
-              <span v-if="activeSkillCount > 0" class="toolbar-count">{{ Math.min(activeSkillCount, 9) }}</span>
-            </el-button>
-          </el-tooltip>
-          <el-tooltip :content="$t('chat.mcp.tooltip')" placement="bottom">
-            <el-button :class="['toolbar-btn', { active: enabledMcpCount > 0 }]" text @click="mcpManagerVisible = true">
-              <font-awesome-icon icon="fa-solid fa-cubes-stacked" />
-              <span v-if="enabledMcpCount > 0" class="toolbar-count">{{ Math.min(enabledMcpCount, 9) }}</span>
-            </el-button>
-          </el-tooltip>
-          <el-tooltip v-if="hasConnectorProviders" :content="$t('chat.connector.tooltip')" placement="bottom">
-            <el-button
-              :class="['toolbar-btn', { active: enabledConnectorCount > 0 }]"
-              text
-              @click="connectorManagerVisible = true"
-            >
-              <font-awesome-icon icon="fa-solid fa-plug" />
-              <span v-if="enabledConnectorCount > 0" class="toolbar-count">{{
-                Math.min(enabledConnectorCount, 9)
-              }}</span>
-            </el-button>
-          </el-tooltip>
         </div>
       </div>
-      <mcp-manager v-if="mcpManagerVisible" v-model="mcpManagerVisible" @change="onMcpChange" />
-      <connector-manager v-if="connectorManagerVisible" v-model="connectorManagerVisible" @change="onConnectorChange" />
-      <skill-manager
-        v-if="skillManagerVisible"
-        v-model="skillManagerVisible"
-        :active-skills="activeSkills"
-        :token="credential?.token"
-        @change="onSkillChange"
-      />
       <desktop-agent-manager
         v-if="agentManagerVisible"
         v-model="agentManagerVisible"
@@ -70,6 +36,8 @@
             @update:question="question = $event"
             @edit="onEdit"
             @restart="onRestart"
+            @answer-ask-user-question="onAnswerAskUserQuestion"
+            @skip-ask-user-question="onSkipAskUserQuestion"
           />
         </div>
         <div class="starter">
@@ -94,20 +62,25 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
-import { IChatMessageState, IChatConversationResponse, IChatConversation, IChatMessage, BaseError } from '@/models';
+import {
+  IChatMessageState,
+  IChatConversationResponse,
+  IChatConversation,
+  IChatMessage,
+  IChatReference,
+  BaseError
+} from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import McpManager from '@/components/chat/McpManager.vue';
-import ConnectorManager from '@/components/chat/ConnectorManager.vue';
-import SkillManager from '@/components/chat/SkillManager.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
+import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem, IMcpServer, IConnector } from '@/models';
-import { chatOperator, mcpServerOperator, connectorOperator, agentOperator } from '@/operators';
+import { IChatMessageContentItem } from '@/models';
+import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -115,22 +88,27 @@ export interface IData {
   drawer: boolean;
   question: string;
   upload: boolean;
-  references: string[];
+  /**
+   * User-attached references (uploaded images / files) for the next
+   * outgoing message. Each entry carries the CDN URL plus the original
+   * filename so the message bubble can render `report.pdf` instead of
+   * the opaque URL. The chat API gets the URLs only — see `onRequest`.
+   */
+  references: IChatReference[];
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  mcpManagerVisible: boolean;
-  mcpServers: IMcpServer[];
-  connectorManagerVisible: boolean;
-  connectors: IConnector[];
-  hasConnectorProviders: boolean;
-  skillManagerVisible: boolean;
-  activeSkills: string[];
   agentManagerVisible: boolean;
   agentConnected: boolean;
   agentName: string;
   agentToolCount: number;
   agentConnectedAt: string;
+  /**
+   * Set right before pushing the URL for a freshly-completed chat so the
+   * `conversationId` watcher can recognise the change as “already loaded
+   * locally” and skip the otherwise-redundant `retrieve` call.
+   */
+  skipNextRestoreId: string | undefined;
 }
 
 export default defineComponent({
@@ -139,10 +117,8 @@ export default defineComponent({
     Composer,
     Disclaimer,
     ModelSelector,
-    McpManager,
-    ConnectorManager,
-    SkillManager,
     DesktopAgentManager,
+    'byok-badge': BYOKBadge,
     Message,
     Layout,
     ElTooltip,
@@ -157,22 +133,13 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      mcpManagerVisible: false,
-      mcpServers: [] as IMcpServer[],
-      connectorManagerVisible: false,
-      connectors: [] as IConnector[],
-      hasConnectorProviders: false,
-      skillManagerVisible: false,
-      activeSkills: [] as string[],
       agentManagerVisible: false,
       agentConnected: false,
       agentName: '',
       agentToolCount: 0,
       agentConnectedAt: '',
-      messages:
-        this.$store.state.chat.conversations?.find(
-          (conversation: IChatConversation) => conversation.id === this.$route.params.id?.toString()
-        )?.messages || []
+      skipNextRestoreId: undefined,
+      messages: []
     };
   },
   computed: {
@@ -215,87 +182,80 @@ export default defineComponent({
       // Disable sending until token/application/credential are all initialized,
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
-    },
-    enabledMcpCount(): number {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).length;
-    },
-    enabledMcpIds(): string[] {
-      return this.mcpServers.filter((s: IMcpServer) => s.is_enabled).map((s: IMcpServer) => s.id);
-    },
-    enabledConnectorCount(): number {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).length;
-    },
-    enabledConnectorProviders(): string[] {
-      return this.connectors.filter((c: IConnector) => c.is_enabled).map((c: IConnector) => c.provider);
-    },
-    activeSkillCount(): number {
-      return this.activeSkills.length;
     }
   },
   watch: {
     async references(val) {
       console.log('references changed', val);
     },
+    /**
+     * Mirror the unsubmitted composer text into vuex on every
+     * keystroke so a route-level remount (clicking ChatGPT in the
+     * sidebar while editing a draft on Claude) can pick it back up
+     * via ``onConsumePendingDraft`` in the new component instance.
+     * Cleared once the message is submitted (see ``onRequest``).
+     */
+    question(val: string) {
+      this.$store.commit('chat/setPendingDraft', val || '');
+    },
     async modelGroup(val) {
       console.debug('modelGroup changed', val);
+      // Side-panel list is server-filtered by model_group, so any change
+      // here forces a refresh. Reset local store first so the panel does
+      // not flash the previous group's rows during the round-trip.
+      this.$store.commit('chat/setConversations', []);
+      await this.$store.dispatch('chat/getConversations');
     },
-    async conversationId(val) {
+    // First-mount race: `Main.vue` picks the application & creates the
+    // credential in parallel with this component's mount, so any work
+    // that needs `credential.token` has to wait for it reactively
+    // rather than running in mounted().
+    'credential.token': {
+      immediate: true,
+      async handler(val: string | undefined) {
+        if (!val) return;
+        if (this.modelGroup?.name) {
+          await this.$store.dispatch('chat/getConversations');
+        }
+        await this.onRestoreCurrentConversation();
+        this.onCheckAgentStatus();
+      }
+    },
+    // URL is the source of truth for which conversation is open. Side-
+    // panel clicks dispatch onChangeConversation -> router.push -> here.
+    async conversationId(val: string | undefined) {
       console.debug('conversationId changed', val);
+      if (!val) {
+        this.resetConversation();
+        return;
+      }
+      await this.onRestoreCurrentConversation();
     }
   },
   async mounted() {
     await this.onGetService();
     await this.onGetApplication();
-    await this.onGetConversations();
-    await this.onLoadMcpServers();
-    await this.onLoadConnectors();
-    this.onLoadPersistedSkills();
-    this.onCheckAgentStatus();
+    this.onConsumePendingDraft();
+    this.onApplyQueryFromUrl();
   },
   methods: {
-    async onLoadMcpServers() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const { data } = await mcpServerOperator.list(token);
-        this.mcpServers = data.items || [];
-      } catch {
-        // silently fail - MCP is optional
+    resetConversation() {
+      this.messages = [];
+      this.question = '';
+      this.references = [];
+    },
+    // Idempotent restore for the URL-pinned conversation. Bails on
+    // missing token (credential.token watcher will retry), missing :id
+    // (new chat), or the skip flag set by `onRequest` after a stream
+    // completes (we already have the messages locally).
+    async onRestoreCurrentConversation() {
+      const id = this.conversationId;
+      if (!id || !this.credential?.token) return;
+      if (this.skipNextRestoreId === id) {
+        this.skipNextRestoreId = undefined;
+        return;
       }
-    },
-    async onMcpChange() {
-      await this.onLoadMcpServers();
-    },
-    async onLoadConnectors() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const [connectorsRes, providersRes] = await Promise.all([
-          connectorOperator.list(token),
-          connectorOperator.listProviders(token)
-        ]);
-        this.connectors = connectorsRes.data.items || [];
-        this.hasConnectorProviders = (providersRes.data.providers || []).length > 0;
-      } catch {
-        // silently fail - connectors are optional
-      }
-    },
-    async onConnectorChange() {
-      await this.onLoadConnectors();
-    },
-    onLoadPersistedSkills() {
-      try {
-        const stored = localStorage.getItem('chat_active_skills');
-        if (stored) {
-          this.activeSkills = JSON.parse(stored);
-        }
-      } catch {
-        // ignore
-      }
-    },
-    onSkillChange(skills: string[]) {
-      this.activeSkills = skills;
-      localStorage.setItem('chat_active_skills', JSON.stringify(skills));
+      await this.onRestoreConversation(id);
     },
     async onCheckAgentStatus() {
       const token = this.credential?.token;
@@ -310,6 +270,84 @@ export default defineComponent({
         this.agentConnected = false;
       }
     },
+    /**
+     * Restore the unsubmitted composer draft after a route-level
+     * remount (typically: user clicks a different chat group in the
+     * sidebar — Claude → ChatGPT). The draft was mirrored into
+     * ``store.chat.pendingDraft`` keystroke-by-keystroke by the
+     * ``question`` watcher, and lives in-memory only (NOT in
+     * ``persist.ts``) so it doesn't leak across browser sessions.
+     *
+     * Skips when:
+     *   - There's a ``:id`` in the route — restoring an existing
+     *     chat already populates its own state; the pending draft
+     *     belonged to a different (new) conversation.
+     *   - The composer is non-empty — preserves anything the user
+     *     just started typing in this fresh mount.
+     *   - The pending draft is empty.
+     */
+    onConsumePendingDraft() {
+      if (this.conversationId) return;
+      if (this.question && this.question.trim().length > 0) return;
+      const draft: string | undefined = this.$store.state.chat?.pendingDraft;
+      if (!draft) return;
+      this.question = draft;
+    },
+    /**
+     * Cross-site entry-point: AuthFrontend's connector "Try It" chips
+     * (PR https://github.com/AceDataCloud/AuthFrontend/pull/83) open
+     * this page with ``?query=<prompt>`` so the prompt arrives
+     * pre-filled in the composer.
+     *
+     * Behaviour:
+     *   - Only fires on a NEW conversation (no `:id` in the route).
+     *     A restored conversation already has its own state — we
+     *     don't want to clobber the composer mid-edit.
+     *   - When ``?query=`` is present we DO override an in-memory
+     *     pendingDraft from a prior group, because a fresh
+     *     deep-link is the user's most recent intent.
+     *   - Does NOT auto-submit. Studio shows the prompt; user reads,
+     *     optionally tweaks, presses Enter. This matches the
+     *     ChatGPT / Claude suggestion-chip UX and prevents a
+     *     refresh-storm of duplicate sends.
+     *   - Strips ``query`` (and the cross-site ``user_id`` /
+     *     analytics ``source`` / ``connector`` / ``suggestion_id``
+     *     params) from the URL via ``router.replace`` so a manual
+     *     refresh does not re-prefill the composer with stale text.
+     */
+    onApplyQueryFromUrl() {
+      const raw = this.$route.query?.query;
+      const queryStr = Array.isArray(raw) ? raw[0] : raw;
+      if (!queryStr || typeof queryStr !== 'string') return;
+      if (this.conversationId) return;
+      // Override pendingDraft from a stale prior group, but still
+      // never clobber a draft the user is actively typing in this
+      // mount — same guard as before, only relaxed against the
+      // mirrored ``pendingDraft`` (which we want to overwrite when
+      // the user explicitly clicked a deep-link).
+      if (this.question && this.question.trim().length > 0) {
+        const draft: string | undefined = this.$store.state.chat?.pendingDraft;
+        const isMirroredDraft = draft != null && this.question === draft;
+        if (!isMirroredDraft) return;
+      }
+      this.question = queryStr;
+      // Drop the deep-link params so a refresh / share doesn't replay
+      // the prompt. Keep any unrelated query keys the route may carry
+      // in the future. ``user_id`` is already stripped by Nexior's
+      // crossSiteUser router guard before we get here, but be
+      // defensive.
+      const STRIP = new Set(['query', 'source', 'suggestion_id', 'connector']);
+      const remaining: Record<string, string | string[]> = {};
+      for (const [k, v] of Object.entries(this.$route.query || {})) {
+        if (STRIP.has(k)) continue;
+        if (v == null) continue;
+        remaining[k] = v as string | string[];
+      }
+      // ``replace`` (vs ``push``) so the deep-link entry is replaced
+      // by the canonical URL — Back button doesn't bring the user to
+      // the prefilled state.
+      this.$router.replace({ path: this.$route.path, query: remaining });
+    },
     async onGetService() {
       console.debug('start onGetService');
       await this.$store.dispatch('chat/getService');
@@ -319,11 +357,6 @@ export default defineComponent({
       console.debug('start onGetApplication');
       await this.$store.dispatch('chat/getApplications');
       console.debug('end onGetApplication');
-    },
-    async onGetConversations() {
-      console.debug('start onGetConversations');
-      await this.$store.dispatch('chat/getConversations');
-      console.debug('end onGetConversations');
     },
     async onDraft(question: string) {
       this.question = question;
@@ -345,33 +378,19 @@ export default defineComponent({
         // @ts-ignore
         updatedMessages = this.messages.slice(0, targetIndex - 1);
         this.messages = this.messages.slice(0, targetIndex);
-        // @ts-ignore
         this.references = [];
         if (typeof problemMessage.content === 'string') {
           this.question = problemMessage.content;
         } else if (Array.isArray(problemMessage.content)) {
-          for (let i = 0; i < problemMessage?.content.length; i++) {
-            if (problemMessage.content[i].type === 'image_url') {
-              if (typeof problemMessage?.content?.[i]?.image_url === 'string') {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.image_url);
-              } else {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.image_url?.url);
+          for (const item of problemMessage.content) {
+            if (item.type === 'image_url' || item.type === 'file_url') {
+              const ref = item.type === 'image_url' ? item.image_url : item.file_url;
+              const url = typeof ref === 'string' ? ref : ref?.url;
+              if (url) {
+                this.references.push(item.name ? { url, name: item.name } : { url });
               }
-            }
-            if (problemMessage.content[i].type === 'file_url') {
-              if (typeof problemMessage?.content?.[i]?.file_url === 'string') {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.file_url);
-              } else {
-                // @ts-ignore
-                this.references.push(problemMessage?.content?.[i]?.file_url?.url);
-              }
-            }
-            if (problemMessage.content[i].type === 'text') {
-              // @ts-ignore
-              this.question = problemMessage.content[i].text;
+            } else if (item.type === 'text' && item.text) {
+              this.question = item.text;
             }
           }
         }
@@ -468,30 +487,45 @@ export default defineComponent({
           this.handleRequestError(error);
         });
     },
+    // Build a `/<prefix>/conversations[/<id>]` path from the matched
+    // parent route (e.g. `/chatgpt`, `/grok`). We can't use
+    // `router.push({ params: { id } })` here because Vue Router 4 keeps
+    // the *current* route name on a params-only push — and the new-chat
+    // route's path template has no `:id` slot, so the URL silently
+    // doesn't change when navigating from /chatgpt/conversations to
+    // /chatgpt/conversations/<id> (and vice versa).
+    conversationsPath(id?: string): string {
+      const prefix = this.$route.matched[0]?.path ?? '';
+      return id ? `${prefix}/conversations/${id}` : `${prefix}/conversations`;
+    },
     async onNewConversation() {
-      this.$router.push({
-        params: {
-          id: ''
-        }
-      });
-      this.messages = [];
-      this.question = '';
-      this.references = [];
+      // Single-source-of-truth: drive everything off the URL. Pushing
+      // the bare `/conversations` path drops the `:id` segment. The
+      // `conversationId` watcher then resets messages/question/refs.
+      if (this.conversationId) {
+        await this.$router.push(this.conversationsPath());
+      } else {
+        // Already on /chatgpt/conversations — no route change to trigger
+        // the watcher, so reset locally.
+        this.resetConversation();
+      }
     },
     async onRestoreConversation(id: string) {
       console.debug('onRestoreConversation id', id);
-      const conversation = this.conversations?.find((conversation: IChatConversation) => conversation.id === id);
-      // change the model and model group
+      // 1. Pull from store cache, or lazy-fetch full history from aichat2.
+      //    Side-panel summaries do NOT include `messages`, so we always
+      //    need a `retrieve` call the first time a conversation is opened.
+      let conversation: IChatConversation | undefined = this.conversations?.find((c: IChatConversation) => c.id === id);
+      if (!conversation || !conversation.messages) {
+        const fetched = await this.$store.dispatch('chat/getConversation', id);
+        if (fetched) conversation = fetched;
+      }
+      // 2. Switch model + model group to whatever this conversation used.
       const model = conversation?.model;
-      console.debug('conversation model', model);
       const targetModel = CHAT_MODELS.find((m) => m.name === model);
-      console.debug('target model', targetModel);
       const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
-      console.debug('target model group', targetModelGroup);
-      this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-      this.$store.dispatch('chat/setModel', targetModel);
-      console.debug('conversation', conversation);
-      console.debug('conversation messages', this.messages);
+      if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+      if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
       this.messages = conversation?.messages || [];
       this.onScrollDown();
     },
@@ -499,36 +533,39 @@ export default defineComponent({
       console.log('onChangeConversation in conversation', id);
       // stop the current request
       await this.onStop();
-      // if id is undefined, create a new conversation
-      if (!id) {
-        this.onNewConversation();
-      } else {
-        this.onRestoreConversation(id);
+      // Drive everything off the URL — router push triggers the
+      // conversationId watcher which then loads/resets state. This makes
+      // back/forward, refresh, and shareable URLs all behave correctly.
+      const target = id || '';
+      if (target === (this.conversationId || '')) {
+        // Same id (or both empty): nothing for the router to do, fall
+        // through to the explicit handlers so e.g. clicking "new" while
+        // already on a new chat still resets state.
+        if (!target) await this.onNewConversation();
+        return;
       }
+      await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
       if (this.references.length > 0) {
-        let content = [];
-        content.push({
-          type: 'text',
-          text: this.question.trim()
-        });
-        for (let i = 0; i < this.references.length; i++) {
-          if (isImageUrl(this.references[i])) {
-            content.push({
-              type: 'image_url',
-              image_url: this.references[i]
-            });
-          } else {
-            content.push({
-              type: 'file_url',
-              file_url: this.references[i]
-            });
+        const content: IChatMessageContentItem[] = [
+          {
+            type: 'text',
+            text: this.question.trim()
           }
+        ];
+        for (const ref of this.references) {
+          // Carry the original filename forward so the chat bubble shows
+          // e.g. `report.pdf` instead of the opaque CDN URL
+          // (Message.vue reads `item.name` first).
+          const item: IChatMessageContentItem = isImageUrl(ref.url)
+            ? { type: 'image_url', image_url: ref.url }
+            : { type: 'file_url', file_url: ref.url };
+          if (ref.name) item.name = ref.name;
+          content.push(item);
         }
         this.messages.push({
-          // @ts-ignore
-          content: content,
+          content,
           role: ROLE_USER
         });
       } else {
@@ -545,7 +582,9 @@ export default defineComponent({
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question.trim();
-      const references = this.references;
+      // Wire format only takes URL strings; the names live on the
+      // rendered message item via `IChatReference.name`.
+      const references = this.references.map((r) => r.url);
       console.debug('validated', question, references);
       // reset question and references
       this.question = '';
@@ -572,101 +611,236 @@ export default defineComponent({
       // request server to get answer
       this.answering = true;
       this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          question,
+          model: this.model.name,
+          references,
+          id: this.conversationId,
+          stateful: true
+        },
+        token,
+        conversationId
+      );
+    },
+    /**
+     * Resume a paused conversation by submitting a tool result for the
+     * `ask_user_question` block on the last assistant message. Marks the
+     * pending block as `done` locally (so the card collapses immediately
+     * to the readonly summary), pushes a fresh pending assistant message,
+     * and runs the next streaming turn against `tool_results`.
+     */
+    async onAnswerAskUserQuestion(payload: { tool_use_id: string; output: string }) {
+      const token = this.credential?.token;
+      if (!token || !this.conversationId) {
+        console.error('cannot resume: no token or no conversation id');
+        return;
+      }
+      // Locally fold the pending block so the card flips to the collapsed
+      // summary instantly (the worker will fold its own copy on the resume
+      // request — both stay in sync).
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (lastAssistant && Array.isArray(lastAssistant.content)) {
+        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+        );
+        if (block) {
+          block.status = 'done';
+          block.output = payload.output;
+          delete block.pending_question;
+        }
+      }
+      // Push fresh pending assistant message for the resumed turn.
+      this.messages.push({
+        content: '',
+        role: ROLE_ASSISTANT,
+        state: IChatMessageState.PENDING
+      });
+      this.onScrollDown();
+      this.answering = true;
+      this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          id: this.conversationId,
+          model: this.model.name,
+          stateful: true,
+          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }]
+        },
+        token,
+        this.conversationId
+      );
+    },
+    /**
+     * Visual-only "skip" of an ask_user_question card. Marks the pending
+     * block as done with a sentinel error output so the card collapses
+     * locally; no resume request is sent. The next user message they type
+     * goes through the worker's "user skipped" branch (see contract §5).
+     */
+    onSkipAskUserQuestion(payload: { tool_use_id: string }) {
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (!lastAssistant || !Array.isArray(lastAssistant.content)) return;
+      const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+        (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+      );
+      if (!block) return;
+      block.status = 'done';
+      block.is_error = true;
+      block.output = block.output || '';
+      delete block.pending_question;
+    },
+    /**
+     * Shared SSE-driven assistant-turn streamer. Handles deltas, tool_use,
+     * cards, citations, ask_user_question, and final state transitions.
+     * Caller is responsible for pushing the pending assistant message,
+     * resetting `answering`/`canceler`, and providing the request body.
+     */
+    _streamAssistantTurn(
+      body: Parameters<typeof chatOperator.chatConversation>[0],
+      token: string,
+      initialConversationId: string | undefined
+    ) {
+      let conversationId = initialConversationId;
       // Track content parts for tool-calling interleaving
       const contentParts: IChatMessageContentItem[] = [];
       const toolMap = new Map<string, IChatMessageContentItem>();
       let currentText = '';
+      // The aichat2 operator emits `response.answer` as the full
+      // accumulated text since the start of the turn. Whenever we flush
+      // currentText as its own content block (because a tool_use or a
+      // card arrives mid-stream and has to land between text segments),
+      // bump this offset so the next text_delta only contains the
+      // *remaining* text instead of duplicating everything we already
+      // pushed.
+      let answerOffset = 0;
 
       chatOperator
-        .chatConversation(
-          {
-            question,
-            model: this.model.name,
-            references,
-            id: this.conversationId,
-            stateful: true,
-            tools_enabled: true,
-            mcp_servers: this.enabledMcpIds.length > 0 ? this.enabledMcpIds : undefined,
-            connectors: this.enabledConnectorProviders.length > 0 ? this.enabledConnectorProviders : undefined,
-            skills: this.activeSkills.length > 0 ? this.activeSkills : undefined
-          },
-          {
-            token,
-            stream: (response: IChatConversationResponse) => {
-              console.debug('stream response', response);
-              const lastMessage = this.messages[this.messages.length - 1];
+        .chatConversation(body, {
+          token,
+          stream: (response: IChatConversationResponse) => {
+            console.debug('stream response', response);
+            const lastMessage = this.messages[this.messages.length - 1];
 
-              // Handle tool-calling events
-              if (response.type === 'tool_use_start' && response.tool_id) {
-                // Flush any accumulated text before tool
-                if (currentText) {
-                  contentParts.push({ type: 'text', text: currentText });
-                  currentText = '';
-                }
-                const toolItem: IChatMessageContentItem = {
-                  type: 'tool_use',
-                  tool_id: response.tool_id,
-                  tool_name: response.tool_name,
-                  tool_display_name: response.tool_display_name,
-                  input: response.input,
-                  status: 'running'
-                };
-                contentParts.push(toolItem);
-                toolMap.set(response.tool_id, toolItem);
-              } else if (response.type === 'tool_result' && response.tool_id) {
-                const toolItem = toolMap.get(response.tool_id);
-                if (toolItem) {
-                  toolItem.output = response.output;
-                  toolItem.is_error = response.is_error;
-                  toolItem.duration_ms = response.duration_ms;
-                  toolItem.status = 'done';
-                }
-              } else if (response.type === 'artifact' && response.artifact) {
-                if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {
-                  contentParts.push({
-                    type: 'image_url',
-                    image_url: response.artifact.url,
-                    name: response.artifact.name,
-                    mimeType: response.artifact.mimeType
-                  });
-                } else {
-                  contentParts.push({
-                    type: 'file_url',
-                    file_url: response.artifact.url,
-                    name: response.artifact.name,
-                    mimeType: response.artifact.mimeType
-                  });
-                }
-              } else if (response.delta_answer) {
-                currentText = response.answer;
-              }
-
-              // Build display content: parts + trailing text
-              const displayParts: IChatMessageContentItem[] = [...contentParts];
+            // Handle tool-calling events
+            if (response.type === 'thinking' && response.content) {
+              // Streamed chain-of-thought from a reasoning model.
+              // Accumulate on the assistant message; rendered above the
+              // visible answer by `<thinking-block>` in `Message.vue`.
+              const target = this.messages[this.messages.length - 1];
+              target.thinking = (target.thinking ?? '') + response.content;
+            } else if (response.type === 'tool_use_start' && response.tool_id) {
+              // Flush any accumulated text before tool
               if (currentText) {
-                displayParts.push({ type: 'text', text: currentText });
+                contentParts.push({ type: 'text', text: currentText });
+                currentText = '';
+                answerOffset = response.answer?.length ?? 0;
               }
-
-              if (displayParts.length > 0) {
-                this.messages[this.messages.length - 1] = {
-                  role: ROLE_ASSISTANT,
-                  content: displayParts,
-                  state:
-                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
-                };
+              const toolItem: IChatMessageContentItem = {
+                type: 'tool_use',
+                tool_id: response.tool_id,
+                tool_name: response.tool_name,
+                tool_display_name: response.tool_display_name,
+                input: response.input,
+                status: 'running'
+              };
+              contentParts.push(toolItem);
+              toolMap.set(response.tool_id, toolItem);
+            } else if (response.type === 'tool_result' && response.tool_id) {
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.output = response.output;
+                toolItem.is_error = response.is_error;
+                toolItem.duration_ms = response.duration_ms;
+                toolItem.status = 'done';
+                // Strip stale pending_question after fold (defensive — the
+                // worker shouldn't emit tool_result for an awaiting block,
+                // but if it does, the card must collapse cleanly).
+                delete toolItem.pending_question;
+              }
+            } else if (response.type === 'ask_user_question' && response.tool_id && response.payload) {
+              // Worker pauses the turn for a user reply. Find the matching
+              // tool_use block on the in-flight assistant message and flip
+              // it to `awaiting_input`; the renderer will swap in
+              // <AskUserQuestionCard>. SSE then ends with terminal_reason
+              // 'awaiting_user_input'.
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.status = 'awaiting_input';
+                toolItem.pending_question = response.payload;
+              }
+            } else if (response.type === 'artifact' && response.artifact) {
+              if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {
+                contentParts.push({
+                  type: 'image_url',
+                  image_url: response.artifact.url,
+                  name: response.artifact.name,
+                  mimeType: response.artifact.mimeType
+                });
               } else {
-                this.messages[this.messages.length - 1] = {
-                  role: ROLE_ASSISTANT,
-                  content: response.answer,
-                  state:
-                    lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
-                };
+                contentParts.push({
+                  type: 'file_url',
+                  file_url: response.artifact.url,
+                  name: response.artifact.name,
+                  mimeType: response.artifact.mimeType
+                });
               }
-              conversationId = response?.id;
-            },
-            signal: this.canceler.signal
-          }
-        )
+            } else if (response.type === 'card' && response.card) {
+              // Rich-output entity card from the worker's <acard> stream
+              // parser. Flush any text we'd accumulated up to this
+              // point as its own block first so the card lands at the
+              // right position in the message; this mirrors how
+              // tool_use blocks bracket the text stream.
+              if (currentText) {
+                contentParts.push({ type: 'text', text: currentText });
+                currentText = '';
+                answerOffset = response.answer?.length ?? 0;
+              }
+              contentParts.push({ type: 'card', card: response.card });
+            } else if (response.type === 'citation' && response.citation) {
+              // Source citation footnote from the worker's <acite>
+              // stream parser. Unlike `card`, citations DO NOT split
+              // the text stream — the worker injected a stable marker
+              // token `[^acite:<id>]` into the text where the chip
+              // should land, so we just stash the metadata on the
+              // assistant message's sidecar `citations` map. The
+              // markdown renderer pairs marker → metadata at render
+              // time. Last-write-wins on duplicate ids matches the
+              // worker's semantics (the model is taught to reuse the
+              // same id for the same source).
+              const target = this.messages[this.messages.length - 1];
+              target.citations = { ...(target.citations ?? {}), [response.citation.id]: response.citation };
+            } else if (response.delta_answer) {
+              currentText = (response.answer || '').slice(answerOffset);
+            }
+
+            // Build display content: parts + trailing text
+            const displayParts: IChatMessageContentItem[] = [...contentParts];
+            if (currentText) {
+              displayParts.push({ type: 'text', text: currentText });
+            }
+
+            if (displayParts.length > 0) {
+              this.messages[this.messages.length - 1] = {
+                role: ROLE_ASSISTANT,
+                content: displayParts,
+                thinking: lastMessage?.thinking,
+                citations: lastMessage?.citations,
+                state:
+                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+              };
+            } else {
+              this.messages[this.messages.length - 1] = {
+                role: ROLE_ASSISTANT,
+                content: response.answer,
+                thinking: lastMessage?.thinking,
+                citations: lastMessage?.citations,
+                state:
+                  lastMessage?.state !== IChatMessageState.FINISHED ? IChatMessageState.ANSWERING : lastMessage?.state
+              };
+            }
+            conversationId = response?.id;
+          },
+          signal: this.canceler!.signal
+        })
         .then(async () => {
           console.debug('finished fetch answer', this.messages);
           this.messages[this.messages.length - 1].state = IChatMessageState.FINISHED;
@@ -677,11 +851,8 @@ export default defineComponent({
           });
           this.answering = false;
           if (conversationId) {
-            await this.$router.push({
-              params: {
-                id: conversationId
-              }
-            });
+            this.skipNextRestoreId = conversationId;
+            await this.$router.push(this.conversationsPath(conversationId));
           }
           this.onScrollDown();
           await this.$store.dispatch('chat/getConversations');
@@ -750,6 +921,17 @@ export default defineComponent({
   width: max-content;
 }
 
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.byok-badge {
+  flex-shrink: 0;
+}
+
 .toolbar-actions {
   display: flex;
   align-items: center;
@@ -771,26 +953,6 @@ export default defineComponent({
     color: var(--el-color-primary);
   }
 
-  &.active {
-    color: var(--el-color-primary);
-    background-color: var(--el-color-primary-light-9);
-  }
-
-  .toolbar-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 16px;
-    height: 16px;
-    padding: 0 5px;
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1;
-    color: #fff;
-    background-color: var(--el-color-primary);
-    border-radius: 9999px;
-  }
-
   .agent-dot {
     position: absolute;
     top: 2px;
@@ -799,6 +961,12 @@ export default defineComponent({
     height: 8px;
     border-radius: 50%;
     background: var(--el-color-success);
+  }
+
+  .external-icon {
+    font-size: 9px;
+    opacity: 0.55;
+    margin-left: -2px;
   }
 }
 @media (max-width: 767px) {

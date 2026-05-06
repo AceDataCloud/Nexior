@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Własny klucz API",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Dodaj klucz API",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Edytuj klucz API",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Usuń klucz API",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Użyj własnego klucza API dostawcy (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot) zamiast klucza konta platformy. Po skonfigurowaniu, zapytania do modelu będą bezpośrednio wywoływać usługi dostawcy z Twoim kluczem, nie zużywając kredytów platformy; inne funkcje, takie jak wywołania narzędzi, cytaty, artefakty, historia w chmurze itp., będą działać normalnie.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Dostawca",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Opis",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "np. \"Mój numer roboczy\" (opcjonalnie)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "Klucz API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Pozostaw puste, aby zachować obecny klucz",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "Własny adres URL bazowy",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Pozostaw puste, aby użyć domyślnego adresu dostawcy",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Aktywny",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Ostatnie użycie",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Data dodania",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Aktywny",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Nieaktywny",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nigdy nie używany",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Domyślny",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Dodaj klucz API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Edytuj",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Testuj",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Usuń",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Zapisz",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Anuluj",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "Czy na pewno chcesz usunąć ten klucz API? Kolejne zapytania do modelu {provider} będą korzystać z domyślnego dostawcy platformy.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Klucz API został usunięty.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Klucz API został zapisany.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Połączenie działa poprawnie.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Test nie powiódł się: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Nie udało się załadować poświadczeń.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Nie udało się zapisać poświadczeń.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Nie skonfigurowano jeszcze własnego klucza API. Kliknij \"Dodaj klucz API\", aby użyć swojego konta dostawcy.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Pokaż opcje zaawansowane",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcjonalne. Własny adres URL (do OpenRouter, własnych proxy, bram przedsiębiorstwa itp.). Tylko HTTPS, nie może wskazywać na adresy wewnętrzne/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Używasz własnego klucza API {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "Obecna rozmowa korzysta z Twojego klucza API {provider}, opłaty są rozliczane z konta {provider}, nie pomniejszają salda platformy.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Kliknij, aby otworzyć ustawienia klucza API",
+    "description": "Podpowiedź po kliknięciu na odznakę BYOK na stronie czatu: kliknij, aby otworzyć zakładkę ustawień klucza API."
+  },
+  "button.testConnection": {
+    "message": "Testuj",
+    "description": "Przycisk w oknie dodawania/edycji - testuje tylko bieżącą konfigurację formularza, nie zapisuje poświadczeń."
+  },
+  "test.success": {
+    "message": "Test łączności zakończony sukcesem",
+    "description": "Tytuł sekcji wyników testu łączności, gdy test zakończył się sukcesem."
+  },
+  "test.failure": {
+    "message": "Test łączności nie powiódł się",
+    "description": "Tytuł sekcji wyników testu łączności, gdy test zakończył się niepowodzeniem."
+  },
+  "test.endpoint": {
+    "message": "Adres żądania",
+    "description": "Etykieta URL żądania w szczegółach wyników testu."
+  },
+  "test.status": {
+    "message": "Kod statusu",
+    "description": "Etykieta kodu HTTP w szczegółach wyników testu."
+  },
+  "test.message": {
+    "message": "Odpowiedź dostawcy",
+    "description": "Etykieta tekstu błędu/podpowiedzi dostawcy w szczegółach wyników testu."
+  },
+  "providerDesc.openai": {
+    "message": "Zastępuje zapytania do ChatGPT (GPT-4 / GPT-4o / o1 / o3 itp.) na tej stronie.",
+    "description": "Podtytuł opcji OpenAI w rozwijanym menu dostawców."
+  },
+  "providerDesc.anthropic": {
+    "message": "Zastępuje zapytania do Claude (Sonnet / Opus / Haiku itp.) na tej stronie.",
+    "description": "Podtytuł opcji Anthropic w rozwijanym menu dostawców."
+  },
+  "providerDesc.google": {
+    "message": "Zastępuje zapytania do Gemini (Pro / Flash) na tej stronie.",
+    "description": "Podtytuł opcji Google w rozwijanym menu dostawców."
+  },
+  "providerDesc.xai": {
+    "message": "Zastępuje zapytania do Grok na tej stronie.",
+    "description": "Podtytuł opcji xAI w rozwijanym menu dostawców."
+  },
+  "providerDesc.deepseek": {
+    "message": "Zastępuje zapytania do DeepSeek (V3 / R1 itp.) na tej stronie.",
+    "description": "Podtytuł opcji DeepSeek w rozwijanym menu dostawców."
+  },
+  "providerDesc.moonshot": {
+    "message": "Zastąp prośby o rozmowę Kimi na tej stronie.",
+    "description": "Podtytuł opcji Moonshot (Kimi) w rozwijanym menu dostawcy."
+  },
+  "providerDesc.zhipu": {
+    "message": "Zastąp prośby o rozmowę serii GLM na tej stronie.",
+    "description": "Podtytuł opcji Zhipu (GLM) w rozwijanym menu dostawcy."
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "title.list": {
+    "message": "Clave API personalizada",
+    "description": ""
+  },
+  "title.addCredential": {
+    "message": "Agregar clave API",
+    "description": ""
+  },
+  "title.editCredential": {
+    "message": "Editar clave API",
+    "description": ""
+  },
+  "title.deleteCredential": {
+    "message": "Eliminar clave API",
+    "description": ""
+  },
+  "description.list": {
+    "message": "Usa tu propia clave API de proveedor (OpenAI, Anthropic, Google, xAI, DeepSeek, Moonshot, Zhiyu) en lugar del pool de cuentas de la plataforma. Una vez configurado, las solicitudes de conversación del modelo correspondiente se realizarán directamente con tu clave a los proveedores, sin consumir créditos de la plataforma; las funciones de herramientas, referencias, artefactos, historial en la nube, etc., funcionarán normalmente.",
+    "description": ""
+  },
+  "field.provider": {
+    "message": "Proveedor",
+    "description": ""
+  },
+  "field.label": {
+    "message": "Nota",
+    "description": ""
+  },
+  "field.labelPlaceholder": {
+    "message": "Ej. \"Mi número de trabajo\" (opcional)",
+    "description": ""
+  },
+  "field.apiKey": {
+    "message": "Clave API",
+    "description": ""
+  },
+  "field.apiKeyPlaceholder": {
+    "message": "sk-...",
+    "description": ""
+  },
+  "field.apiKeyEditPlaceholder": {
+    "message": "Dejar en blanco para mantener la clave actual",
+    "description": ""
+  },
+  "field.baseUrl": {
+    "message": "URL base personalizada",
+    "description": ""
+  },
+  "field.baseUrlPlaceholder": {
+    "message": "Dejar en blanco para usar la dirección predeterminada del proveedor",
+    "description": ""
+  },
+  "field.isActive": {
+    "message": "Activar",
+    "description": ""
+  },
+  "field.lastUsedAt": {
+    "message": "Último uso",
+    "description": ""
+  },
+  "field.createdAt": {
+    "message": "Fecha de adición",
+    "description": ""
+  },
+  "value.active": {
+    "message": "Activo",
+    "description": ""
+  },
+  "value.inactive": {
+    "message": "Inactivo",
+    "description": ""
+  },
+  "value.never": {
+    "message": "Nunca usado",
+    "description": ""
+  },
+  "value.default": {
+    "message": "Predeterminado",
+    "description": ""
+  },
+  "button.add": {
+    "message": "Agregar clave API",
+    "description": ""
+  },
+  "button.edit": {
+    "message": "Editar",
+    "description": ""
+  },
+  "button.test": {
+    "message": "Probar",
+    "description": ""
+  },
+  "button.delete": {
+    "message": "Eliminar",
+    "description": ""
+  },
+  "button.save": {
+    "message": "Guardar",
+    "description": ""
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": ""
+  },
+  "message.deleteConfirm": {
+    "message": "¿Confirmar la eliminación de esta clave API? Las conversaciones del modelo {provider} volverán a la configuración predeterminada de la plataforma.",
+    "description": ""
+  },
+  "message.deleteSuccess": {
+    "message": "Clave API eliminada.",
+    "description": ""
+  },
+  "message.saveSuccess": {
+    "message": "Clave API guardada.",
+    "description": ""
+  },
+  "message.testSuccess": {
+    "message": "Conexión exitosa.",
+    "description": ""
+  },
+  "message.testFailed": {
+    "message": "Prueba fallida: {message}",
+    "description": ""
+  },
+  "message.loadFailed": {
+    "message": "Error al cargar las credenciales.",
+    "description": ""
+  },
+  "message.saveFailed": {
+    "message": "Error al guardar las credenciales.",
+    "description": ""
+  },
+  "message.empty": {
+    "message": "Aún no se ha configurado una clave API personalizada. Haz clic en \"Agregar clave API\" para usar tu propia cuenta de proveedor.",
+    "description": ""
+  },
+  "message.advancedToggle": {
+    "message": "Mostrar opciones avanzadas",
+    "description": ""
+  },
+  "message.baseUrlHelp": {
+    "message": "Opcional. Dirección personalizada del proveedor (para OpenRouter, proxy propio, puerta de enlace empresarial, etc.). Solo se permite HTTPS, no puede apuntar a direcciones internas/loopback.",
+    "description": ""
+  },
+  "badge.active": {
+    "message": "Usando clave API personalizada de {provider}",
+    "description": ""
+  },
+  "badge.tooltip": {
+    "message": "La conversación actual está usando tu clave API de {provider}, los costos se facturan a la cuenta de {provider}, no se deduce del saldo de la plataforma.",
+    "description": ""
+  },
+  "badge.manage": {
+    "message": "Haz clic para abrir la configuración de la clave API",
+    "description": "Sugerencia al hacer clic en el distintivo BYOK en la página de chat: haz clic para abrir la pestaña de configuración de la clave API."
+  },
+  "button.testConnection": {
+    "message": "Probar",
+    "description": "Botón en el cuadro de diálogo de agregar/editar: solo prueba la configuración actual del formulario, no guarda las credenciales."
+  },
+  "test.success": {
+    "message": "Prueba de conectividad exitosa",
+    "description": "Título de éxito en la sección de resultados de conectividad."
+  },
+  "test.failure": {
+    "message": "Prueba de conectividad fallida",
+    "description": "Título de fallo en la sección de resultados de conectividad."
+  },
+  "test.endpoint": {
+    "message": "Dirección de solicitud",
+    "description": "Etiqueta de URL de solicitud en los detalles de resultados de prueba."
+  },
+  "test.status": {
+    "message": "Código de estado",
+    "description": "Etiqueta de código de estado HTTP en los detalles de resultados de prueba."
+  },
+  "test.message": {
+    "message": "Respuesta del proveedor",
+    "description": "Etiqueta de texto de error/sugerencia del proveedor en los detalles de resultados de prueba."
+  },
+  "providerDesc.openai": {
+    "message": "Reemplaza las solicitudes de conversación de ChatGPT (GPT-4 / GPT-4o / o1 / o3, etc.) en este sitio.",
+    "description": "Subtítulo de la opción OpenAI en el menú desplegable de proveedores."
+  },
+  "providerDesc.anthropic": {
+    "message": "Reemplaza las solicitudes de conversación de Claude (Sonnet / Opus / Haiku, etc.) en este sitio.",
+    "description": "Subtítulo de la opción Anthropic en el menú desplegable de proveedores."
+  },
+  "providerDesc.google": {
+    "message": "Reemplaza las solicitudes de conversación de Gemini (Pro / Flash series) en este sitio.",
+    "description": "Subtítulo de la opción Google en el menú desplegable de proveedores."
+  },
+  "providerDesc.xai": {
+    "message": "Reemplaza las solicitudes de conversación de Grok en este sitio.",
+    "description": "Subtítulo de la opción xAI en el menú desplegable de proveedores."
+  },
+  "providerDesc.deepseek": {
+    "message": "Reemplaza las solicitudes de conversación de DeepSeek (V3 / R1, etc.) en este sitio.",
+    "description": "Subtítulo de la opción DeepSeek en el menú desplegable de proveedores."
+  },
+  "providerDesc.moonshot": {
+    "message": "Reemplaza la solicitud de conversación de Kimi en este sitio.",
+    "description": "Subtítulo de la opción Moonshot (Kimi) en el menú desplegable de proveedores."
+  },
+  "providerDesc.zhipu": {
+    "message": "Reemplaza las solicitudes de conversación de la serie GLM de este sitio.",
+    "description": "Subtítulo de la opción Zhipu (GLM) en el menú desplegable de proveedores."
+  }
+}

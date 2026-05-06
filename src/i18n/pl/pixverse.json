@@ -23,9 +23,13 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia zadania"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (w sekundach)"
+  },
   "name.createdAt": {
     "message": "Data utworzenia",
-    "description": "Data i czas wygenerowania wideo Pixverse"
+    "description": "Data i czas utworzenia wideo Pixverse"
   },
   "name.style": {
     "message": "Styl",
@@ -120,7 +124,7 @@
     "description": "Opis parametru 'ingredients'"
   },
   "description.imageUrl": {
-    "message": "W przypadku zadań tworzenia wideo z wieloma obrazami, musisz przesłać wiele obrazów.",
+    "message": "W przypadku zadań tworzenia wideo z wieloma obrazami, należy przesłać wiele obrazów.",
     "description": "Opis parametru 'imageUrl'"
   },
   "description.prompt": {
@@ -129,18 +133,18 @@
   },
   "description.negativePrompt": {
     "message": "Negatywna podpowiedź tekstowa, opcjonalna, nie może przekraczać 200 znaków",
-    "description": "Opis parametru 'negativePrompt'"
+    "description": "Opis parametru 'prompt'"
   },
   "description.uploadStartImage": {
-    "message": "Prześlij obraz pierwszej klatki jako referencję do generowania, ostatnie wideo będzie odnosić się do pierwszej klatki",
+    "message": "Prześlij obraz pierwszej klatki jako referencję do generacji, ostatnie wideo będzie odnosić się do pierwszej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.uploadEndImage": {
-    "message": "Prześlij obraz ostatniej klatki jako referencję do generowania, ostatnie wideo będzie odnosić się do ostatniej klatki",
+    "message": "Prześlij obraz ostatniej klatki jako referencję do generacji, ostatnie wideo będzie odnosić się do ostatniej klatki",
     "description": "Opis parametru przesyłania referencji"
   },
   "description.seed": {
-    "message": "Wartość ziarna do generowania wideo. Jeśli nie ustawisz, użyje losowego ziarna.",
+    "message": "Wartość ziarna do generowania wideo. Jeśli nie ustawione, używane jest losowe ziarno.",
     "description": "Opis parametru przesyłania referencji"
   },
   "status.pending": {
@@ -148,7 +152,7 @@
     "description": "Stan oczekiwania zadania"
   },
   "status.processing": {
-    "message": "W trakcie przetwarzania",
+    "message": "W przetwarzaniu",
     "description": "Stan oczekiwania zadania"
   },
   "placeholder.paddingNoise": {
@@ -164,7 +168,7 @@
     "description": "Placeholder dla poziomu wypełnienia"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź dla stylu wideo, np. quiver",
+    "message": "Wprowadź podpowiedź dla stylu wideo, np.: quiver",
     "description": "Placeholder w polu podpowiedzi"
   },
   "placeholder.negativePrompt": {
@@ -181,7 +185,7 @@
   },
   "placeholder.preset": {
     "message": "Wybierz...",
-    "description": "Placeholder dla wejścia preset"
+    "description": "Placeholder dla wprowadzenia presetów"
   },
   "placeholder.markerShape": {
     "message": "Wybierz...",

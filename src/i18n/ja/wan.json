@@ -23,6 +23,10 @@
     "message": "トレース ID",
     "description": "タスクのトレース ID"
   },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "タスクの経過時間（秒）"
+  },
   "name.createdAt": {
     "message": "作成日時",
     "description": "通義万象ビデオ作成日時"
@@ -44,8 +48,8 @@
     "description": "ビデオの長さ"
   },
   "name.imageUrl": {
-    "message": "参考画像",
-    "description": "生成ビデオの参考画像"
+    "message": "参照画像",
+    "description": "生成ビデオの参照画像"
   },
   "name.wanBot": {
     "message": "Wan Bot",
@@ -68,7 +72,7 @@
     "description": "タスク処理状態"
   },
   "placeholder.prompt": {
-    "message": "生成するビデオ内容のプロンプトを入力",
+    "message": "生成するビデオの内容プロンプトを入力",
     "description": "プロンプト入力のプレースホルダーテキスト"
   },
   "placeholder.select": {
@@ -84,12 +88,12 @@
     "description": "画像生成ビデオ"
   },
   "button.modelI2vFlash": {
-    "message": "画像からビデオ(高速)",
+    "message": "画像からビデオ（高速）",
     "description": "高速画像生成ビデオ"
   },
   "button.modelR2v": {
-    "message": "参考ビデオ生成",
-    "description": "参考ビデオ生成"
+    "message": "参照ビデオ生成",
+    "description": "参照ビデオ生成"
   },
   "button.generate": {
     "message": "生成",
@@ -117,7 +121,7 @@
   },
   "message.usedUp": {
     "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
-    "description": "ポイントが使い切れた"
+    "description": "ポイント使い切れ"
   },
   "message.downloadVideo": {
     "message": "このビデオをダウンロード",
@@ -128,7 +132,7 @@
     "description": "タスクなしのヒント"
   },
   "message.uploadImageExceed": {
-    "message": "アップロード画像の数が制限を超えました",
+    "message": "アップロードする画像の数が制限を超えました",
     "description": "画像アップロード超過"
   },
   "message.uploadImageError": {

@@ -23,6 +23,10 @@
     "message": "Spårnings ID",
     "description": "Uppgiftens spårnings ID"
   },
+  "name.elapsed": {
+    "message": "Tid förbrukad",
+    "description": "Tid som uppgiften har tagit (sekunder)"
+  },
   "name.createdAt": {
     "message": "Skapat den",
     "description": "Datum och tid för generering av Hailuo-video"
@@ -40,8 +44,8 @@
     "description": "Prompt för innehållsinmatning"
   },
   "name.ingredients": {
-    "message": "Flera bilder",
-    "description": "Växeln/etiketten för att skapa video med flera bilder (engelska förslag: Multi-Image, håll det kort)"
+    "message": "Flera bilder för video",
+    "description": "Växla/etikett för att skapa video med flera bilder (engelska förslag: Multi-Image, håll det kort)"
   },
   "name.model": {
     "message": "Modell",
@@ -49,7 +53,7 @@
   },
   "name.startImageUrl": {
     "message": "Första bild",
-    "description": "Fröet för den QR-kod som ska genereras"
+    "description": "Frö för QR-koden som ska genereras"
   },
   "name.ingredientsModel": {
     "message": "Ingrediensmodell",
@@ -57,7 +61,7 @@
   },
   "name.hailuoBot": {
     "message": "Hailuo Bot",
-    "description": "Namnet på Hailuo videogenerator"
+    "description": "Namn på Hailuo videogenerator"
   },
   "description.ingredients": {
     "message": "Om du vill ladda upp flera bilder för att skapa din egen video, aktivera denna knapp.",
@@ -105,7 +109,7 @@
   },
   "placeholder.preset": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för förinställning"
+    "description": "Platshållare för inmatning av förinställning"
   },
   "placeholder.markerShape": {
     "message": "Vänligen välj...",
@@ -113,7 +117,7 @@
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för rotationsinmatning"
+    "description": "Platshållare för inmatning av rotation"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
@@ -136,8 +140,8 @@
     "description": "Knapptext för att generera Hailuo-video"
   },
   "button.extend": {
-    "message": "Förläng video",
-    "description": "Knapptext för att förlänga video"
+    "message": "Utöka video",
+    "description": "Knapptext för att utöka video"
   },
   "button.download": {
     "message": "Ladda ner video",
@@ -153,7 +157,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Bilder uppladdade framgångsrikt",
-    "description": "Framgångsmeddelande när bilder har laddats upp"
+    "description": "Framgångsmeddelande när bilder har laddats upp framgångsrikt"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bilder, försök igen senare",
@@ -165,7 +169,7 @@
   },
   "message.startTaskSuccess": {
     "message": "Uppgift för generering initierad framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats"
+    "description": "Framgångsmeddelande när uppgiften har startats framgångsrikt"
   },
   "message.startTaskFailed": {
     "message": "Misslyckades med att initiera uppgiften, vänligen kontakta administratören",
@@ -229,10 +233,10 @@
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga tillgängliga åtgärder finns"
+    "description": "Meddelande när inga åtgärder är tillgängliga"
   },
   "message.noTasks": {
     "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när inga uppgifter finns"
+    "description": "Meddelande när det inte finns några uppgifter"
   }
 }

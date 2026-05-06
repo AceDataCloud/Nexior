@@ -21,6 +21,7 @@ export interface IOpenAIImageEditRequest {
   action?: 'generate' | 'edit';
   model?: string;
   prompt?: string;
+  size?: string;
   image_urls?: string[];
   callback_url?: string;
 }
@@ -46,6 +47,7 @@ export interface IOpenAIImageTask {
   id: string;
   type?: string;
   created_at?: number;
+  elapsed?: number;
   request?: IOpenAIImageGenerateRequest | IOpenAIImageEditRequest;
   response?: IOpenAIImageGenerateResponse;
 }

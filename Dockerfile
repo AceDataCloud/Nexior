@@ -1,10 +1,10 @@
 # build stage
 FROM node:20 as build-stage
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn
+COPY package.json package-lock.json .npmrc ./
+RUN npm ci
 COPY . .
-RUN yarn build
+RUN npm run build
 
 # production stage
 FROM nginx:stable-alpine as production-stage

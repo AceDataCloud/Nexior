@@ -35,6 +35,10 @@
     "message": "추적 ID",
     "description": "추적 ID"
   },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "작업의 소요 시간(초)"
+  },
   "name.prompt": {
     "message": "이미지 프롬프트",
     "description": "생성/편집의 프롬프트"
@@ -60,7 +64,7 @@
     "description": "model 매개변수 설명"
   },
   "description.size": {
-    "message": "이미지 크기. `1K`, `2K`, `4K` 또는 사용자 정의 `<너비>x<높이>`를 지원합니다.",
+    "message": "이미지 크기. 사전 설정된 `1K`, `2K`, `4K` 또는 사용자 정의 `<너비>x<높이>`를 지원합니다.",
     "description": "size 매개변수 설명"
   },
   "description.watermark": {
@@ -68,7 +72,7 @@
     "description": "watermark 매개변수 설명"
   },
   "description.imageUrls": {
-    "message": "이미지 편집을 활성화하려면 1-14개의 참조 이미지를 업로드하세요.",
+    "message": "이미지 편집을 활성화하기 위해 1-14개의 참조 이미지를 업로드하세요.",
     "description": "image 매개변수 설명"
   },
   "status.pending": {
@@ -80,7 +84,7 @@
     "description": "선택 자리 표시자"
   },
   "placeholder.prompt": {
-    "message": "프롬프트 입력, 예: 흰색 샴 고양이 한 마리",
+    "message": "프롬프트 입력, 예: 흰색 샴 고양이",
     "description": "프롬프트 자리 표시자"
   },
   "button.generate": {
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "SeeEdit 3.0 i2i 모델 옵션"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "SeeDream 5.0 모델 옵션 (그룹 이미지 및 스트리밍 출력 지원)"
+  },
+  "name.maxImages": {
+    "message": "이미지 수",
+    "description": "그룹 이미지 생성의 이미지 수 (max_images)"
+  },
+  "description.maxImages": {
+    "message": "한 번의 요청으로 생성할 수 있는 이미지 수 (1-15). 1로 설정하면 단일 이미지 모드; 1보다 크면 자동으로 그룹 이미지 활성화 (sequential_image_generation=auto), 이미지 간 캐릭터, 스타일 및 세부 사항 일관성 유지. doubao-seedream-5.0 / 4.5 / 4.0만 지원; 참조 이미지를 동시에 업로드할 경우 (참조 이미지 수 + 생성 수) ≤ 15를 충족해야 합니다. 실제 생성된 이미지 수에 따라 요금이 부과됩니다.",
+    "description": "max_images 매개변수 설명"
   }
 }

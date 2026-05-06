@@ -23,13 +23,17 @@
     "message": "Seuranta ID",
     "description": "Tehtävän seuranta ID"
   },
+  "name.elapsed": {
+    "message": "Kesto",
+    "description": "Tehtävän kesto (sekunteina)"
+  },
   "name.createdAt": {
     "message": "Luontiaika",
     "description": "Hailuo-videon luontipäivämäärä ja -aika"
   },
   "name.imageUrl": {
     "message": "Viitekuva",
-    "description": "Viitekuva, jota käytetään videon luomiseen"
+    "description": "Viitekuva videon luomiseksi"
   },
   "name.videoUrl": {
     "message": "Mukautettu video",
@@ -49,7 +53,7 @@
   },
   "name.startImageUrl": {
     "message": "Ensimmäinen kuva",
-    "description": "QR-koodin siemen, jota käytetään videon luomiseen"
+    "description": "QR-koodin siemen, joka luodaan"
   },
   "name.ingredientsModel": {
     "message": "Ainesosamalli",
@@ -60,7 +64,7 @@
     "description": "Hailuo-videogeneraattorin nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia oman videon luomiseksi, ota tämä painike käyttöön.",
+    "message": "Jos haluat ladata useita kuvia oman videosi luomiseksi, ota tämä painike käyttöön.",
     "description": "Parametrin 'ingredients' kuvaus"
   },
   "description.startImageUrl": {
@@ -93,7 +97,7 @@
   },
   "placeholder.prompt": {
     "message": "Syötä videon tyylin ohje, esim: tulipalo",
-    "description": "Ohje-kentän paikkateksti"
+    "description": "Ohje kentän paikkateksti"
   },
   "placeholder.position": {
     "message": "Valitse...",
@@ -109,7 +113,7 @@
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkintämuodon syötteen paikkamerkki"
+    "description": "Merkki muodon syötteen paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
@@ -145,7 +149,7 @@
   },
   "button.uploadStartImageUrl": {
     "message": "Lataa kuva",
-    "description": "Kuvan lataamiseen käytettävä painiketeksti (englanniksi yksinkertaista 'Upload', älä käytä 'Upload Image')"
+    "description": "Kuvan lataamiseen käytettävä painiketeksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
   },
   "message.uploadReferencesExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
@@ -160,15 +164,15 @@
     "description": "Virheilmoitus, kun kuvien lataaminen epäonnistuu"
   },
   "message.startingTask": {
-    "message": "Tehtävän käynnistäminen...",
+    "message": "Tehtävää käynnistetään...",
     "description": "Viesti, kun piirustustehtävä alkaa"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävän käynnistäminen onnistui",
+    "message": "Tehtävä luotiin onnistuneesti",
     "description": "Onnistumisviesti, kun tehtävä on käynnistetty onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitoon",
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
     "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
   },
   "message.usedUp": {
@@ -192,8 +196,8 @@
     "description": "Viesti, kun kuvan luominen epäonnistuu"
   },
   "message.uploadVideoExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
@@ -204,24 +208,24 @@
     "description": "Virheilmoitus, kun ladattavan tiedoston on oltava MP4-muodossa!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Ladattujen ensimmäisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen ensimmäisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen ensimmäisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen ensimmäisten kehysten määrä ylittää rajan"
   },
   "message.uploadEndImageExceed": {
-    "message": "Ladattujen viimeisten kuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun ladattujen viimeisten kuvien määrä ylittää rajan"
+    "message": "Ladattujen viimeisten kehysten määrä ylittää rajan",
+    "description": "Virheilmoitus, kun ladattujen viimeisten kehysten määrä ylittää rajan"
   },
   "message.uploadStartImageError": {
-    "message": "Ensimmäisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "message": "Ensimmäisten kehysten lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun ensimmäisten kehysten lataaminen epäonnistuu"
   },
   "message.uploadVideoError": {
     "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun ensimmäisten kuvien lataaminen epäonnistuu"
+    "description": "Virheilmoitus, kun videon lataaminen epäonnistuu"
   },
   "message.uploadEndImageError": {
-    "message": "Viimeisten kuvien lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun viimeisten kuvien lataaminen epäonnistuu"
+    "message": "Viimeisten kehysten lataaminen epäonnistui",
+    "description": "Virheilmoitus, kun viimeisten kehysten lataaminen epäonnistuu"
   },
   "message.uploadDocumentsError": {
     "message": "Asiakirjan lataaminen epäonnistui",
@@ -229,10 +233,10 @@
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun ei ole käytettävissä olevia toimintoja"
+    "description": "Viesti, kun käytettävissä ei ole toimintoja"
   },
   "message.noTasks": {
     "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi videon",
-    "description": "Viesti, kun ei ole tehtäviä"
+    "description": "Viesti, kun tehtäviä ei ole"
   }
 }

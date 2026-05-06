@@ -35,6 +35,10 @@
     "message": "ID śledzenia",
     "description": "ID śledzenia"
   },
+  "name.elapsed": {
+    "message": "Czas trwania",
+    "description": "Czas trwania zadania (sekundy)"
+  },
   "name.prompt": {
     "message": "Podpowiedź obrazu",
     "description": "Podpowiedź do generowania/edycji"
@@ -61,15 +65,15 @@
   },
   "description.size": {
     "message": "Rozmiar obrazu. Obsługuje predefiniowane wartości `1K`, `2K`, `4K` lub niestandardowe `<szerokość>x<wysokość>`.",
-    "description": "Opis parametru rozmiaru"
+    "description": "Opis parametru size"
   },
   "description.watermark": {
     "message": "Czy dodać znak wodny AI do generowanego obrazu. Domyślnie włączone.",
-    "description": "Opis parametru znaku wodnego"
+    "description": "Opis parametru watermark"
   },
   "description.imageUrls": {
-    "message": "Prześlij 1-14 obrazów referencyjnych, aby włączyć edycję obrazów.",
-    "description": "Opis parametru obrazu"
+    "message": "Prześlij 1-14 obrazów referencyjnych, aby włączyć edycję obrazu.",
+    "description": "Opis parametru image"
   },
   "status.pending": {
     "message": "Oczekiwanie",
@@ -92,7 +96,7 @@
     "description": "Przycisk przesyłania obrazów referencyjnych (proszę uprościć do 'Prześlij')"
   },
   "message.startingTask": {
-    "message": "Rozpoczynanie zadania...",
+    "message": "Rozpoczynam zadanie...",
     "description": "Wiadomość rozpoczynająca zadanie"
   },
   "message.startTaskSuccess": {
@@ -113,7 +117,7 @@
   },
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Niepowodzenie przesyłania"
+    "description": "Błąd przesyłania"
   },
   "name.model": {
     "message": "Model",
@@ -134,5 +138,17 @@
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
     "description": "Opcja modelu SeeEdit 3.0 i2i"
+  },
+  "model.seedream50": {
+    "message": "doubao-seedream-5.0",
+    "description": "Opcja modelu SeeDream 5.0 (obsługuje generowanie serii i strumieniowe wyjście)"
+  },
+  "name.maxImages": {
+    "message": "Liczba obrazów",
+    "description": "Liczba obrazów generowanych w serii (max_images)"
+  },
+  "description.maxImages": {
+    "message": "Liczba obrazów generowanych w jednym żądaniu (1-15). Ustawienie na 1 oznacza tryb pojedynczego obrazu; większe niż 1 automatycznie włącza generowanie serii (sequential_image_generation=auto), zachowując spójność postaci, stylu i szczegółów między obrazami. Obsługiwane tylko przez doubao-seedream-5.0 / 4.5 / 4.0; jeśli przesyłasz obrazy referencyjne, muszą spełniać warunek (liczba obrazów referencyjnych + liczba generowanych) ≤ 15. Opłaty są naliczane na podstawie rzeczywistej liczby wygenerowanych obrazów.",
+    "description": "Opis parametru max_images"
   }
 }

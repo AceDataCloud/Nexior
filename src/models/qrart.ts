@@ -59,6 +59,7 @@ export interface IQrartGenerateResponse {
 export interface IQrartTask {
   id: string;
   created_at?: number;
+  elapsed?: number;
   request?: IQrartGenerateRequest;
   response?: IQrartGenerateResponse;
 }

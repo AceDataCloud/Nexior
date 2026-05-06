@@ -27,6 +27,10 @@
     "message": "ID tracciamento",
     "description": "ID di tracciamento dell'attività"
   },
+  "name.elapsed": {
+    "message": "Tempo trascorso",
+    "description": "Tempo trascorso per l'attività (in secondi)"
+  },
   "name.size": {
     "message": "Dimensione",
     "description": "Dimensione del QR code da generare"
@@ -57,7 +61,7 @@
   },
   "name.contentImageUrl": {
     "message": "Link immagine contenuto",
-    "description": "URL dell'immagine contenuto del QR code da generare"
+    "description": "URL dell'immagine contenuto per il QR code da generare"
   },
   "inputWay.input": {
     "message": "Inserisci contenuto",
@@ -80,8 +84,8 @@
     "description": "Segnaposto per il livello di riempimento"
   },
   "placeholder.prompt": {
-    "message": "Inserisci un suggerimento per lo stile video da generare, ad esempio: Astronauti che si spostano dallo spazio a un vulcano",
-    "description": "Testo segnaposto nel campo suggerimenti"
+    "message": "Inserisci il prompt per generare lo stile video, ad esempio: Astronauti che si spostano dallo spazio a un vulcano",
+    "description": "Testo segnaposto nel campo del prompt"
   },
   "button.fast": {
     "message": "Modalità veloce",
@@ -97,7 +101,7 @@
   },
   "button.viewImage": {
     "message": "Visualizza immagine originale",
-    "description": "Testo del pulsante per visualizzare la foto identificativa generata"
+    "description": "Testo del pulsante per visualizzare la foto identificativa"
   },
   "button.download": {
     "message": "Scarica immagine",
@@ -132,7 +136,7 @@
     "description": "Messaggio di errore quando l'attività di disegno non riesce ad avviarsi"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
+    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare",
     "description": "Messaggio quando i crediti sono esauriti"
   },
   "message.generating": {
@@ -157,38 +161,46 @@
   },
   "styleCategory.styles": {
     "message": "Stile foto identificativa",
-    "description": "Termine di categoria utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere la categoria di questo tag"
+    "description": "Termine di categoria utilizzato per descrivere e generare immagini, le immagini generate devono includere la categoria di questo tag"
   },
   "styleTag.malePportrait": {
     "message": "Ritratto maschile",
-    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere lo stile di questo tag"
+    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate devono includere lo stile di questo tag"
   },
   "styleTag.malePportrait2": {
     "message": "Ritratto maschile 2",
-    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate dovrebbero includere lo stile di questo tag"
+    "description": "Termine di stile utilizzato per descrivere e generare immagini, le immagini generate devono includere lo stile di questo tag"
   },
   "styleTag.kindergarten": {
     "message": "Foto di ingresso all'asilo",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "description": "Usato per descrivere e generare immagini con uno stile, le immagini generate devono includere lo stile di questo tag"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto con logo aziendale su T-shirt",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "message": "Maglietta con logo aziendale",
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.wedding": {
     "message": "Foto di registrazione matrimonio",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.businessPphoto": {
-    "message": "Foto professionale",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "message": "Ritratto professionale",
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.bobSuit": {
-    "message": "Bob con abito nero",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "message": "Completo nero con bob",
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
   },
   "styleTag.femalePortrait": {
     "message": "Ritratto femminile",
-    "description": "Usato per descrivere e generare immagini con questo stile, l'immagine generata deve includere lo stile di questo tag"
+    "description": "Parola di stile per descrivere e generare immagini, l'immagine generata deve includere lo stile di questo tag"
+  },
+  "message.uploadImageExceed": {
+    "message": "È possibile caricare al massimo 2 immagini",
+    "description": "Messaggio di avviso quando il numero di immagini di riferimento caricate supera il limite"
+  },
+  "message.uploadImageError": {
+    "message": "Caricamento immagine fallito, riprova più tardi",
+    "description": "Messaggio di errore quando il caricamento dell'immagine di riferimento fallisce"
   }
 }

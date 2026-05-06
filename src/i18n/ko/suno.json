@@ -28,7 +28,7 @@
     "description": "음성 설명 레이블"
   },
   "voice.descriptionPlaceholder": {
-    "message": "이 음성의 특징 설명...",
+    "message": "음성의 특징 설명...",
     "description": "음성 설명 입력 자리 표시자"
   },
   "voice.sourceType": {
@@ -96,7 +96,7 @@
     "description": "음성 삭제 확인 제목"
   },
   "voice.confirmDelete": {
-    "message": "이 음성을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "message": "이 음성을 정말 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
     "description": "음성 삭제 확인 메시지"
   },
   "voice.deleteSuccess": {
@@ -156,7 +156,7 @@
     "description": "마이크 오디오를 녹음하는 탭"
   },
   "description.dropAudioHere": {
-    "message": "여기로 오디오를 드래그하거나 업로드를 클릭하세요.",
+    "message": "여기에 오디오를 드래그하거나 업로드를 클릭하세요.",
     "description": "오디오 드래그 영역의 안내 텍스트"
   },
   "description.audioFormats": {
@@ -684,7 +684,7 @@
     "description": "샘플 추가 기능의 설명"
   },
   "message.fetchingTiming": {
-    "message": "비트 데이터 가져오는 중...",
+    "message": "비트 데이터를 가져오는 중...",
     "description": "비트 데이터를 가져올 때의 메시지"
   },
   "message.fetchTimingFailed": {
@@ -696,7 +696,7 @@
     "description": "비트 데이터 가져오기 성공 시의 메시지"
   },
   "message.extractingVocals": {
-    "message": "보컬 추출 중...",
+    "message": "보컬을 추출하는 중...",
     "description": "보컬을 추출할 때의 메시지"
   },
   "message.extractVocalsFailed": {
@@ -791,6 +791,74 @@
     "message": "가장 오래된",
     "description": "가장 오래된 순으로 정렬"
   },
+  "filter.title": {
+    "message": "필터",
+    "description": "필터 버튼"
+  },
+  "filter.type": {
+    "message": "유형",
+    "description": "필터 구역: 보컬/순수 음악"
+  },
+  "filter.typeAll": {
+    "message": "모두",
+    "description": "유형: 모두"
+  },
+  "filter.typeVocal": {
+    "message": "보컬",
+    "description": "유형: 보컬 포함"
+  },
+  "filter.typeInstrumental": {
+    "message": "순수 음악",
+    "description": "유형: 순수 음악"
+  },
+  "filter.duration": {
+    "message": "길이",
+    "description": "필터 구역: 곡 길이"
+  },
+  "filter.durationAll": {
+    "message": "모두",
+    "description": "길이: 제한 없음"
+  },
+  "filter.durationShort": {
+    "message": "< 1 분",
+    "description": "길이: 1분 미만"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 분",
+    "description": "길이: 1분에서 3분"
+  },
+  "filter.durationLong": {
+    "message": "> 3 분",
+    "description": "길이: 3분 초과"
+  },
+  "filter.video": {
+    "message": "비디오",
+    "description": "필터 구역: 비디오 포함 여부"
+  },
+  "filter.videoAll": {
+    "message": "모두",
+    "description": "비디오: 제한 없음"
+  },
+  "filter.videoWith": {
+    "message": "비디오 포함",
+    "description": "비디오: 비디오만 포함"
+  },
+  "filter.videoWithout": {
+    "message": "오디오만",
+    "description": "비디오: 오디오만"
+  },
+  "filter.model": {
+    "message": "모델",
+    "description": "필터 구역: AI 모델"
+  },
+  "filter.modelAll": {
+    "message": "모든 모델",
+    "description": "모델: 제한 없음"
+  },
+  "filter.reset": {
+    "message": "초기화",
+    "description": "모든 필터 초기화"
+  },
   "button.delete": {
     "message": "삭제",
     "description": "곡 삭제 버튼 텍스트"
@@ -801,7 +869,11 @@
   },
   "message.noSearchResults": {
     "message": "곡을 찾을 수 없습니다",
-    "description": "검색 결과가 없을 때의 메시지"
+    "description": "검색 결과가 없을 때 메시지"
+  },
+  "message.noFilterResults": {
+    "message": "필터 조건에 맞는 곡이 없습니다",
+    "description": "필터 결과가 없을 때 메시지"
   },
   "message.confirmDelete": {
     "message": "이 곡을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
@@ -817,6 +889,34 @@
   },
   "name.generating": {
     "message": "생성 중",
-    "description": "곡이 생성 중인 상태 레이블"
+    "description": "곡 생성 상태 레이블"
+  },
+  "button.adjust_speed": {
+    "message": "속도 조정",
+    "description": "곡 재생 속도 조정 버튼 텍스트"
+  },
+  "button.reuse_prompt": {
+    "message": "프롬프트 재사용",
+    "description": "기존 작업 프롬프트 재사용 버튼 텍스트"
+  },
+  "name.adjustSpeed": {
+    "message": "속도",
+    "description": "속도 선택기 레이블"
+  },
+  "description.adjustSpeed": {
+    "message": "다양한 재생 속도로 곡을 재생성합니다 (0.5배에서 2배)",
+    "description": "속도 조정 기능 설명"
+  },
+  "message.reusePromptSuccess": {
+    "message": "프롬프트가 재사용되었습니다. 조정 후 다시 생성할 수 있습니다.",
+    "description": "프롬프트 재사용 성공 후 메시지"
+  },
+  "message.reusePromptEmpty": {
+    "message": "재사용할 수 있는 프롬프트 데이터가 없습니다",
+    "description": "작업에 재사용할 프롬프트가 없을 때 메시지"
+  },
+  "name.lyricsMode": {
+    "message": "가사 모드",
+    "description": "가사 모드 선택기 레이블(수동 / 자동)"
   }
 }

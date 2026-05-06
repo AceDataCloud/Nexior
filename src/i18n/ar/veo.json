@@ -27,25 +27,29 @@
     "message": "معرف التتبع",
     "description": "معرف التتبع للمهمة"
   },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "الوقت المستغرق للمهمة (بالثواني)"
+  },
   "name.createdAt": {
     "message": "تاريخ الإنشاء",
     "description": "تاريخ ووقت إنشاء فيديو Veo"
   },
   "name.startEndImage": {
     "message": "صور الإطارين",
-    "description": "تسمية حقل النموذج: صور الإطارين (يُفضل ترجمتها إلى 'Start/End Frames' للحفاظ على الاختصار وتجنب حجب الأزرار)"
+    "description": "تسمية حقل النموذج: صور الإطارين (يُفضل أن تُترجم إلى 'Start/End Frames' للحفاظ على الاختصار وتجنب حجب الأزرار)"
   },
   "name.action": {
-    "message": "إجراء",
+    "message": "الإجراء",
     "description": "قائمة الإجراءات المتاحة"
   },
   "name.action3": {
     "message": "الحصول على فيديو بدقة 1080p من",
-    "description": "صور الإطار المرجعي للفيديو المراد إنشاؤه"
+    "description": "صور الإطار المرجعية للفيديو المراد إنشاؤه"
   },
   "name.prompt": {
-    "message": "إشارة الفيديو",
-    "description": "إشارة إدخال المحتوى"
+    "message": "نص الفيديو",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.model": {
     "message": "إصدار النموذج",
@@ -56,7 +60,7 @@
     "description": "اسم مولد فيديو Veo"
   },
   "name.ratio": {
-    "message": "نسبة",
+    "message": "النسبة",
     "description": "اسم معلمة النسبة"
   },
   "description.translation": {
@@ -77,11 +81,11 @@
   },
   "status.pending": {
     "message": "في الانتظار",
-    "description": "حالة الانتظار للمهمة"
+    "description": "حالة انتظار المهمة"
   },
   "status.processing": {
-    "message": "جارٍ المعالجة",
-    "description": "حالة الانتظار للمهمة"
+    "message": "يتم المعالجة",
+    "description": "حالة انتظار المهمة"
   },
   "placeholder.paddingNoise": {
     "message": "يرجى الاختيار...",
@@ -97,7 +101,7 @@
   },
   "placeholder.prompt": {
     "message": "أدخل الكلمات الرئيسية لنمط الفيديو المراد إنشاؤه، مثل: moving",
-    "description": "نص العنصر النائب في حقل الإشارة"
+    "description": "نص العنصر النائب في حقل النص"
   },
   "placeholder.position": {
     "message": "يرجى الاختيار...",
@@ -112,7 +116,7 @@
     "description": "نص زر إنشاء فيديو Veo"
   },
   "button.action2": {
-    "message": "إنشاء فيديو صوري",
+    "message": "إنشاء فيديو بالصورة",
     "description": "نص زر إنشاء فيديو Veo"
   },
   "button.action3": {
@@ -137,7 +141,7 @@
   },
   "message.uploadReferencesExceed": {
     "message": "يمكن رفع ما يصل إلى صورتين",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح به"
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد"
   },
   "message.uploadReferencesSuccess": {
     "message": "تم رفع الصورة بنجاح",
@@ -159,6 +163,10 @@
     "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول",
     "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
   },
+  "message.imageRequired": {
+    "message": "يرجى رفع صورة مرجعية واحدة على الأقل قبل بدء مهمة إنشاء الفيديو بالصورة",
+    "description": "تنبيه عند عدم رفع صورة في وضع image2video"
+  },
   "message.usedUp": {
     "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
     "description": "رسالة عند نفاد النقاط"
@@ -172,43 +180,43 @@
     "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل إنشاء الفيديو",
+    "message": "فشل في إنشاء الفيديو",
     "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد صور الإطار الأول المرفوعة تجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد صور الإطار الأول المرفوعة للحد المسموح به"
+    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "حجم الملف المرفوع لا يمكن أن يتجاوز 10 ميغابايت!",
-    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميغابايت!"
+    "message": "حجم الملف المرفوع لا يمكن أن يتجاوز 10 ميجابايت!",
+    "description": "رسالة خطأ عند تجاوز حجم الملف المرفوع 10 ميجابايت!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "يجب أن يكون الملف المرفوع بتنسيق MP4!",
     "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "عدد الصور المرفوعة للإطار الأول يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأول الحد المسموح به"
+    "message": "عدد الصور الأولى المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور الأولى المرفوعة الحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد الصور المرفوعة للإطار الأخير يتجاوز الحد المسموح به",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للإطار الأخير الحد المسموح به"
+    "message": "عدد الصور النهائية المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد الصور النهائية المرفوعة الحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل في رفع صورة الإطار الأول",
-    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأول"
+    "message": "فشل رفع الصورة الأولى",
+    "description": "رسالة خطأ عند فشل رفع الصورة الأولى"
   },
   "message.uploadVideoError": {
-    "message": "فشل في رفع الفيديو",
+    "message": "فشل رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع الفيديو"
   },
   "message.uploadEndImageError": {
-    "message": "فشل في رفع صورة الإطار الأخير",
-    "description": "رسالة خطأ عند فشل رفع صورة الإطار الأخير"
+    "message": "فشل رفع الصورة النهائية",
+    "description": "رسالة خطأ عند فشل رفع الصورة النهائية"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل في رفع المستندات",
+    "message": "فشل رفع المستندات",
     "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {
@@ -216,7 +224,67 @@
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء فيديو",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على زر إنشاء الفيديو على اليسار",
     "description": "رسالة عند عدم وجود مهام"
+  },
+  "name.upsampleAction": {
+    "message": "هدف الرفع",
+    "description": "تنسيق الهدف لـ /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "نوع حركة الكاميرا",
+    "description": "نوع حركة الكاميرا لـ /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "قناع المنطقة",
+    "description": "قناع الصورة لـ /veo/objects (بكسلات بيضاء = منطقة العمل)"
+  },
+  "name.videoId": {
+    "message": "معرف الفيديو",
+    "description": "معرف الفيديو المصدر (من مهمة سابقة data[].id)"
+  },
+  "placeholder.imageMask": {
+    "message": "رابط صورة القناع أو JPEG مشفر بـ base64",
+    "description": "نص العنصر النائب لحقل إدخال image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "الصق معرف الفيديو، أو انقر على زر العملية في قائمة المهام على اليمين لملء تلقائي",
+    "description": "نص العنصر النائب لحقل إدخال video_id"
+  },
+  "button.actionIngredients": {
+    "message": "دمج فيديو متعدد الصور",
+    "description": "ingredients2video — دمج 1-3 صور لإنشاء مشهد جديد"
+  },
+  "button.actionUpsample": {
+    "message": "رفع / معاينة GIF",
+    "description": "/veo/upsample — رفع إلى 1080p/4K أو تصدير GIF"
+  },
+  "button.actionExtend": {
+    "message": "تمديد الفيديو",
+    "description": "/veo/extend — تمديد مدة الفيديو الذي تم إنشاؤه"
+  },
+  "button.actionReshoot": {
+    "message": "إعادة تصوير بلقطة جديدة",
+    "description": "/veo/reshoot — إعادة إنشاء بنفس المحتوى مع حركة كاميرا مختلفة"
+  },
+  "button.actionObjectInsert": {
+    "message": "إضافة كائن",
+    "description": "/veo/objects insert — إضافة كائن إلى الفيديو"
+  },
+  "button.actionObjectRemove": {
+    "message": "إزالة كائن",
+    "description": "/veo/objects remove — إزالة كائن من الفيديو باستخدام القناع"
+  },
+  "button.actionUpsample1080p": {
+    "message": "رفع 1080P",
+    "description": "زر عملية المعاينة — رفع إلى 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "رفع 4K",
+    "description": "زر عملية المعاينة — رفع إلى 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "تصدير GIF",
+    "description": "زر عملية المعاينة — تحويل إلى معاينة GIF"
   }
 }

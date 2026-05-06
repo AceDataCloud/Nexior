@@ -8,12 +8,12 @@
     "description": "Videotyp"
   },
   "name.failure": {
-    "message": "Fehler",
+    "message": "Fehlgeschlagen",
     "description": "Fehlerstatus der Aufgabe"
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Grund für den Fehler der Aufgabe"
+    "description": "Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -22,6 +22,10 @@
   "name.traceId": {
     "message": "Verfolgungs-ID",
     "description": "Verfolgungs-ID der Aufgabe"
+  },
+  "name.elapsed": {
+    "message": "Dauer",
+    "description": "Dauer der Aufgabe (Sekunden)"
   },
   "name.createdAt": {
     "message": "Erstellt am",
@@ -60,7 +64,7 @@
     "description": "Beschreibung des Parameters imageUrl"
   },
   "status.pending": {
-    "message": "Warten",
+    "message": "Wartend",
     "description": "Wartezustand der Aufgabe"
   },
   "status.processing": {

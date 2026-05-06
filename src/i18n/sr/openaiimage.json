@@ -35,6 +35,10 @@
     "message": "ID praćenja",
     "description": "ID praćenja"
   },
+  "name.elapsed": {
+    "message": "Proteklo vreme",
+    "description": "Proteklo vreme zadatka (sekunde)"
+  },
   "name.prompt": {
     "message": "Uputstvo za sliku",
     "description": "Uputstvo za generisanje/uređivanje"
@@ -44,12 +48,12 @@
     "description": "Ime OpenAI Image robota"
   },
   "name.size": {
-    "message": "Veličina",
-    "description": "Veličina izlazne slike"
+    "message": "Dimenzije",
+    "description": "Dimenzije izlazne slike"
   },
   "description.size": {
-    "message": "Izlazna veličina za generisanje slika, uobičajene vrednosti: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Objašnjenje veličine"
+    "message": "Izlazne dimenzije za generisanje slika, uobičajene vrednosti: 1024x1024, 1536x1024, 1024x1536.",
+    "description": "Objašnjenje dimenzija"
   },
   "description.prompt": {
     "message": "Uputstvo za generisanje ili uređivanje slike",
@@ -72,7 +76,7 @@
     "description": "Placeholder za izbor"
   },
   "placeholder.prompt": {
-    "message": "Unesite uputstvo, na primer: vodena boja mačke na stolu",
+    "message": "Unesite uputstvo, na primer: vodena mačka na stolu",
     "description": "Placeholder za uputstvo"
   },
   "button.generate": {
@@ -93,7 +97,7 @@
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, molimo kontaktirajte administratora:",
-    "description": "Neuspeh pri kreiranju zadatka"
+    "description": "Kreiranje zadatka nije uspelo"
   },
   "message.usedUp": {
     "message": "Vaši bodovi su potrošeni, molimo kupite više bodova da biste nastavili sa korišćenjem",
@@ -104,7 +108,7 @@
     "description": "Prekoračenje broja slika"
   },
   "message.uploadImageError": {
-    "message": "Neuspešno otpremanje slike, molimo pokušajte ponovo kasnije",
+    "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo kasnije",
     "description": "Neuspeh pri otpremanju"
   },
   "name.model": {

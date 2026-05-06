@@ -4,7 +4,7 @@
     "description": "Tekst w przycisku, używany do przeprowadzania ustawień"
   },
   "button.start": {
-    "message": "Start",
+    "message": "Rozpocznij",
     "description": "Tekst w przycisku, używany do rozpoczęcia pewnych działań"
   },
   "button.copy": {
@@ -59,9 +59,13 @@
     "message": "Anuluj",
     "description": "Tekst w przycisku, używany do anulowania pewnych działań"
   },
+  "button.close": {
+    "message": "Zamknij",
+    "description": "Tekst w przycisku, używany do zamykania okna dialogowego lub panelu"
+  },
   "button.alert": {
     "message": "Ostrzeżenie",
-    "description": "Tekst w przycisku, używany do wydawania ostrzeżeń"
+    "description": "Tekst w przycisku, używany do wydawania ostrzeżenia"
   },
   "button.info": {
     "message": "Informacje",
@@ -89,26 +93,30 @@
   },
   "button.learn": {
     "message": "Ucz się",
-    "description": "Tekst w przycisku, używany do nauki pewnych treści"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi nauki pewnej treści"
   },
   "button.buy": {
     "message": "Kup",
-    "description": "Tekst w przycisku, używany do zakupu pewnej treści"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi zakupu pewnej treści"
   },
   "button.try": {
     "message": "Wypróbuj",
-    "description": "Tekst w przycisku, używany do wypróbowania pewnej treści"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi wypróbowania pewnej treści"
   },
   "button.startForFree": {
     "message": "Rozpocznij za darmo",
     "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi darmowego rozpoczęcia"
+  },
+  "button.download": {
+    "message": "Pobierz",
+    "description": "Tekst w przycisku, używany do pobierania plików (np. audio, wideo, obrazy)"
   },
   "button.downloadAndroid": {
     "message": "Pobierz Android",
     "description": "Tekst w przycisku, używany do pobierania pakietu instalacyjnego Android"
   },
   "button.downloadIos": {
-    "message": "Pobierz iOS",
+    "message": "Pobierz pakiet instalacyjny iOS",
     "description": "Tekst w przycisku, używany do pobierania pliku instalacyjnego iOS"
   },
   "button.installIos": {
@@ -117,7 +125,7 @@
   },
   "button.apply": {
     "message": "Aplikuj",
-    "description": "Tekst w przycisku, używany do aplikowania o usługę API"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi aplikacji o usługę API"
   },
   "button.refresh": {
     "message": "Odśwież",
@@ -125,27 +133,27 @@
   },
   "button.pay": {
     "message": "Zapłać",
-    "description": "Tekst w przycisku, używany do dokonywania płatności za usługi"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi zapłaty za usługi"
   },
   "button.repay": {
     "message": "Kontynuuj płatność",
-    "description": "Tekst w przycisku, używany do kontynuowania płatności za usługi"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi kontynuowania płatności za usługi"
   },
   "button.applied": {
     "message": "Złożono",
-    "description": "Tekst w przycisku, używany do oznaczenia, że użytkownik złożył wniosek o tę usługę"
+    "description": "Tekst w przycisku, używany do wyświetlania, że użytkownik złożył wniosek o tę usługę"
   },
   "button.acquire": {
     "message": "Uzyskaj",
-    "description": "Tekst w przycisku, używany do uzyskania tokena lub klucza usługi API"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi uzyskania tokena lub klucza usługi API"
   },
   "button.fillExample": {
     "message": "Wypełnij przykład",
-    "description": "Tekst w przycisku, używany do wypełnienia przykładowych danych"
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi wypełnienia przykładowych danych"
   },
   "button.buyMore": {
     "message": "Doładuj",
-    "description": "Tekst w przycisku, używany do doładowania. Angielski musi być przetłumaczony na 'Top Up', a chiński na '充值'."
+    "description": "Tekst w przycisku, używany do umożliwienia użytkownikowi doładowania. Angielski musi być przetłumaczony na 'Top Up', a chiński na '充值'."
   },
   "button.update": {
     "message": "Aktualizuj",
@@ -160,12 +168,12 @@
     "description": "Tekst w przycisku, używany do tworzenia pewnej treści"
   },
   "button.referralEarnings": {
-    "message": "Dochody z poleceń",
-    "description": "Tekst w przycisku, używany do wyświetlania dochodów z poleceń, co oznacza, że użytkownik może zarabiać, zapraszając innych do korzystania z tej usługi"
+    "message": "Zarobki z polecenia",
+    "description": "Tekst w przycisku, który wyświetla zarobki z polecenia, oznacza, że użytkownik może zarabiać, zapraszając innych do korzystania z tej usługi"
   },
   "button.finish": {
     "message": "Zakończ",
-    "description": "Tekst w przycisku, używany do zakończenia pewnych działań"
+    "description": "Tekst w przycisku, który służy do zakończenia operacji"
   },
   "entity.id": {
     "message": "ID",
@@ -173,7 +181,7 @@
   },
   "entity.type": {
     "message": "Typ",
-    "description": "Wyświetlanie typu encji"
+    "description": "Typ wyświetlający encję"
   },
   "entity.website": {
     "message": "Ace Data Cloud",
@@ -229,23 +237,23 @@
   },
   "message.usedAmount": {
     "message": "Wykorzystana kwota",
-    "description": "Wyświetlanie kwoty wykorzystanej w usłudze"
+    "description": "Tekst wyświetlający kwotę wykorzystaną w usłudze"
   },
   "message.mobileAppDescription": {
-    "message": "Bezpośrednie korzystanie z AceData na telefonie, obecnie dostępne do pobrania jako APK na Androida, pakiet instalacyjny iOS będzie dostępny po podpisaniu.",
+    "message": "Bezpośrednio korzystaj z AceData na telefonie, obecnie dostępne do pobrania Android APK, pakiet instalacyjny iOS będzie dostępny po podpisaniu.",
     "description": "Opis na stronie pobierania aplikacji mobilnej"
   },
   "message.mobileAndroidHint": {
     "message": "Dla telefonów i tabletów z Androidem, zeskanuj kod QR, aby pobrać najnowsze APK.",
-    "description": "Opis karty pobierania Androida"
+    "description": "Opis karty pobierania Android"
   },
   "message.mobileAndroidPending": {
-    "message": "Pakiet instalacyjny Androida nie jest jeszcze gotowy, spróbuj ponownie później.",
-    "description": "Wskazówka, gdy pakiet instalacyjny Androida nie jest dostępny"
+    "message": "Pakiet instalacyjny Android nie jest jeszcze gotowy, spróbuj ponownie później.",
+    "description": "Wskazówka, gdy pakiet instalacyjny Android nie jest dostępny"
   },
   "message.mobileAvailableNow": {
     "message": "Android dostępny do pobrania",
-    "description": "Wyświetlanie statusu, że Android jest dostępny do pobrania"
+    "description": "Tekst wyświetlający status dostępności Android"
   },
   "message.mobileSecureDelivery": {
     "message": "Bezpieczna dystrybucja CDN",
@@ -288,7 +296,7 @@
     "description": "Tytuł karty z zaletami na stronie pobierania, podkreślający stabilność wersji i dystrybucji"
   },
   "title.mobileUnifiedExperience": {
-    "message": "Jednolita doświadczenie na urządzeniach mobilnych i webowych",
+    "message": "Jednolita doświadczenie na mobilnych i webowych",
     "description": "Tytuł karty z zaletami na stronie pobierania, podkreślający jednolite doświadczenie"
   },
   "nav.mobileApp": {
@@ -296,24 +304,24 @@
     "description": "Wejście do pobierania aplikacji mobilnej w nawigacji"
   },
   "message.mobileFastAccess": {
-    "message": "Użytkownicy mogą zeskanować kod QR na telefonie, aby zainstalować, lub najpierw pobrać APK na komputerze i rozprowadzić je wśród członków zespołu, co jest odpowiednie do szybkiego testowania i beta testów.",
+    "message": "Użytkownicy mogą zeskanować kod QR, aby zainstalować bezpośrednio na telefonie, lub najpierw pobrać APK na komputerze i rozprowadzić je wśród członków zespołu, co jest odpowiednie dla szybkiego testowania i beta testów.",
     "description": "Opis zalet na stronie pobierania, podkreślający szybki dostęp"
   },
   "message.mobileTrustedRelease": {
-    "message": "Punkty pobierania są skoncentrowane na jednej stronie, numery wersji, status platformy i metody instalacji są widoczne na pierwszy rzut oka, co zmniejsza koszty komunikacji spowodowane rozproszeniem linków.",
+    "message": "Wszystkie linki do pobrania w jednym miejscu, numery wersji, status platformy i metody instalacji są widoczne na pierwszy rzut oka, co zmniejsza koszty komunikacji spowodowane rozproszeniem linków.",
     "description": "Opis zalet na stronie pobierania, podkreślający jednolitą dystrybucję"
   },
   "message.mobileUnifiedExperience": {
-    "message": "System kont, limity i punkty dostępu do usług po zalogowaniu są zgodne z wersją webową, co ułatwia użytkownikom płynne przełączanie się między wersją desktopową a mobilną.",
+    "message": "System konta, limity i wejścia do usług po zalogowaniu są zgodne z wersją webową, co ułatwia użytkownikom płynne przełączanie się między wersją desktopową a mobilną.",
     "description": "Opis zalet na stronie pobierania, podkreślający jednolite doświadczenie konta"
   },
   "message.remainingAmount": {
     "message": "Pozostała kwota",
-    "description": "Wyświetlanie pozostałej kwoty w usłudze"
+    "description": "Tekst wyświetlający pozostałą kwotę w usłudze"
   },
   "message.copied": {
-    "message": "Skopiowano pomyślnie",
-    "description": "Wiadomość informująca, że treść została pomyślnie skopiowana"
+    "message": "Skopiowano",
+    "description": "Wyświetla wiadomość o pomyślnym skopiowaniu treści"
   },
   "message.restart": {
     "message": "Generuj ponownie",
@@ -421,11 +429,11 @@
   },
   "nav.veo": {
     "message": "Veo",
-    "description": "Tekst w nawigacji strony, używany do wyświetlenia strony Veo, nie tłumacz tego pola, musi pozostać jako 'Veo'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlenia strony czatu, nie tłumacz tego pola, musi pozostać jako 'Veo'"
   },
   "nav.sora": {
     "message": "Sora",
-    "description": "Tekst w nawigacji strony, używany do wyświetlenia strony Sora, nie tłumacz tego pola, musi pozostać jako 'Sora'"
+    "description": "Tekst w nawigacji strony, używany do wyświetlenia strony czatu, nie tłumacz tego pola, musi pozostać jako 'Sora'"
   },
   "nav.midjourney": {
     "message": "Midjourney",
@@ -457,147 +465,155 @@
   },
   "nav.seedream": {
     "message": "SeeDream",
-    "description": "Text in the website navigation bar for displaying the SeeDream page, must remain as 'SeeDream'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę SeeDream, proszę nie tłumaczyć tego pola, musi pozostać jako 'SeeDream'"
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "Text in the website navigation bar for displaying the SeeDance page, must remain as 'SeeDance'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę SeeDance, nie tłumaczyć, musi pozostać 'SeeDance'"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "Text in the website navigation bar for displaying the Luma page, must remain as 'Luma'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Luma, nie tłumaczyć, musi pozostać 'Luma'"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "Text in the website navigation bar for displaying the Pika page, must remain as 'Pika'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Pika, nie tłumaczyć, musi pozostać 'Pika'"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "Text in the website navigation bar for displaying the Kling page, must remain as 'Kling'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Kling, nie tłumaczyć, musi pozostać 'Kling'"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "Text in the website navigation bar for displaying the Hailuo page, must remain as 'Hailuo'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Hailuo, nie tłumaczyć, musi pozostać 'Hailuo'"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "Text in the website navigation bar for displaying the Wan page, must remain as 'Wan'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Wan, nie tłumaczyć, musi pozostać 'Wan'"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "Text in the website navigation bar for displaying the Producer page, must remain as 'Producer'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Producer, nie tłumaczyć, musi pozostać 'Producer'"
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "Text in the website navigation bar for displaying the Kimi page, must remain as 'Kimi'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę Kimi, nie tłumaczyć, musi pozostać 'Kimi'"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "Text in the website navigation bar for displaying the SERP page, must remain as 'SERP'"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę SERP, nie tłumaczyć, musi pozostać 'SERP'"
   },
   "nav.image": {
     "message": "Obraz",
-    "description": "Text in the website navigation bar for displaying the image page"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę obrazu"
   },
   "nav.music": {
     "message": "Muzyka",
-    "description": "Text in the website navigation bar for displaying the music page"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę muzyki"
   },
   "nav.video": {
     "message": "Wideo",
-    "description": "Text in the website navigation bar for displaying the video page"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę wideo"
   },
   "nav.distribution": {
-    "message": "Zyski z polecenia",
-    "description": "Text in the website navigation bar for displaying the referral earnings page"
+    "message": "Zyski z poleceń",
+    "description": "Tekst w nawigacji strony, który wyświetla stronę zysków z poleceń"
+  },
+  "nav.connections": {
+    "message": "Połączenia",
+    "description": "Element menu prowadzący do strony zarządzania połączeniami auth.acedata.cloud"
   },
   "nav.logOut": {
     "message": "Wyloguj się",
-    "description": "Text in the website navigation bar for logging out"
+    "description": "Tekst w nawigacji strony, który służy do wylogowania"
   },
   "nav.site": {
-    "message": "Konfiguracja witryny",
-    "description": "Text in the website navigation bar for displaying the site configuration page"
+    "message": "Konfiguracja strony",
+    "description": "Tekst w nawigacji strony, który wyświetla stronę konfiguracji strony"
+  },
+  "nav.subsite": {
+    "message": "Moje podstrony",
+    "description": "Element bocznego menu 'Moje podstrony', widoczny tylko gdy funkcja features.subsite jest włączona"
   },
   "nav.setting": {
     "message": "Ustawienia",
-    "description": "Text in the website navigation bar for displaying the settings page"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę ustawień"
   },
   "nav.headshots": {
     "message": "AI Zdjęcia",
-    "description": "Text in the website navigation bar for displaying the site configuration page"
+    "description": "Tekst w nawigacji strony, który wyświetla stronę konfiguracji strony"
   },
   "nav.more": {
     "message": "Więcej",
-    "description": "Text in the website navigation bar for expanding more services"
+    "description": "Tekst w nawigacji strony, który rozwija więcej usług"
   },
   "nav.locale": {
     "message": "Ustawienia języka",
-    "description": "Text in the website navigation bar for changing the language"
+    "description": "Tekst w nawigacji strony, który służy do zmiany języka"
   },
   "nav.support": {
-    "message": "Wsparcie klienta",
-    "description": "Text in the website navigation bar for displaying the contact page"
+    "message": "Wsparcie",
+    "description": "Tekst w nawigacji strony, który wyświetla stronę kontaktową"
   },
   "nav.darkMode": {
     "message": "Tryb ciemny",
-    "description": "Text in the website navigation bar for switching to dark theme"
+    "description": "Tekst w nawigacji strony, który służy do przełączania na ciemny motyw"
   },
   "title.alert": {
     "message": "Ostrzeżenie",
-    "description": "Title of the warning message"
+    "description": "Tytuł wiadomości ostrzegawczej"
   },
   "title.placeholderOfSelect": {
     "message": "Wybierz",
-    "description": "Placeholder for selection input"
+    "description": "Placeholder dla wyboru"
   },
   "title.placeholderOfInput": {
     "message": "Wypełnij",
-    "description": "Placeholder for input"
+    "description": "Placeholder dla wejścia"
   },
   "title.allApplications": {
     "message": "Wszystkie aplikacje",
-    "description": "Title of the page displaying all applications"
+    "description": "Tytuł strony wyświetlającej wszystkie aplikacje"
   },
   "title.allOrders": {
     "message": "Wszystkie zamówienia",
-    "description": "Title of the page displaying all orders"
+    "description": "Tytuł strony wyświetlającej wszystkie zamówienia"
   },
   "title.orderInfo": {
     "message": "Informacje o zamówieniu",
-    "description": "Title of the page displaying order information"
+    "description": "Tytuł strony wyświetlającej informacje o zamówieniu"
   },
   "title.buyMore": {
     "message": "Doładuj",
-    "description": "Page title for recharging. Must translate to 'Doładuj'."
+    "description": "Tytuł strony do doładowania. Musi być przetłumaczone na 'Doładuj'."
   },
   "title.distribution": {
-    "message": "Zyski z polecenia",
-    "description": "Title of the page displaying referral income, meaning users can earn by inviting others to use the service"
+    "message": "Zyski z poleceń",
+    "description": "Tytuł strony wyświetlającej zyski z poleceń, co oznacza, że użytkownik może zarabiać, zapraszając innych do korzystania z tej usługi"
   },
   "title.site": {
-    "message": "Konfiguracja witryny",
-    "description": "Title of the page displaying site configuration"
+    "message": "Konfiguracja strony",
+    "description": "Tytuł strony wyświetlającej konfigurację strony"
   },
   "title.distributionHistory": {
     "message": "Historia poleceń",
-    "description": "Title of the page displaying referral history"
+    "description": "Tytuł strony wyświetlającej historię poleceń"
   },
   "title.invitee": {
     "message": "Osoba zapraszająca",
-    "description": "Title of the page displaying the inviter"
+    "description": "Tytuł strony wyświetlającej osobę zapraszającą"
   },
   "title.allUsages": {
     "message": "Historia użycia",
-    "description": "Title of the page displaying all usages of the API service"
+    "description": "Tytuł strony wyświetlającej wszystkie użycia usługi API"
   },
   "title.allCredentials": {
     "message": "Klucze",
-    "description": "Title of the page displaying all credentials used to access the API"
+    "description": "Tytuł strony wyświetlającej wszystkie poświadczenia, które służą do uzyskania dostępu do API"
   },
   "about.title1": {
-    "message": "Skontaktuj się z nami",
-    "description": "Title of the section displaying contact information"
+    "message": "Kontakt",
+    "description": "Tytuł sekcji wyświetlającej informacje kontaktowe"
   },
   "about.title2": {
     "message": "Zasoby",
@@ -691,6 +707,14 @@
     "message": "Ustawienia funkcji",
     "description": "Tytuł sekcji ustawień funkcji na stronie ustawień"
   },
+  "settings.apiKey": {
+    "message": "Klucz API",
+    "description": "Etykieta Klucz API w bocznym pasku na stronie ustawień - zarządzanie kluczem API dostawcy usług upstream (BYOK)"
+  },
+  "field.operations": {
+    "message": "Operacje",
+    "description": "Ogólny tytuł kolumny: kolumna przycisków operacji w wierszach tabeli (edytuj, usuń itp.)"
+  },
   "nav.gemini": {
     "message": "Gemini",
     "description": "Tekst w pasku nawigacyjnym strony, aby wyświetlić stronę Gemini, musi pozostać jako 'Gemini'"
@@ -744,7 +768,7 @@
     "description": "Zawód klienta"
   },
   "customers.comment1": {
-    "message": "Ace Data Cloud zapewnił naszemu zespołowi doskonałą obsługę, pomagając zwiększyć naszą wydajność. Bardzo polecam!",
+    "message": "Ace Data Cloud zapewnił naszemu zespołowi doskonałą obsługę, pomagając nam zwiększyć wydajność. Bardzo polecam!",
     "description": "Ocena klienta"
   },
   "customers.name2": {
@@ -780,32 +804,40 @@
     "description": "Link do przeglądania kodu źródłowego na GitHubie"
   },
   "settings.about": {
-    "message": "O nas",
-    "description": "Tytuł sekcji o nas na stronie ustawień"
+    "message": "O aplikacji",
+    "description": "Tytuł sekcji o aplikacji na stronie ustawień"
+  },
+  "settings.subsites": {
+    "message": "Moje podstrony",
+    "description": "Tytuł zakładki zarządzania podstronami w oknie ustawień. Widoczne tylko na oficjalnej stronie głównej, podstrony nie są wyświetlane."
+  },
+  "settings.buildNow": {
+    "message": "Zbuduj teraz",
+    "description": "Tekst przycisku 'Zbuduj podstronę' na stronie o aplikacji, widoczny tylko na oficjalnej stronie głównej"
   },
   "settings.poweredBy": {
     "message": "Projekt open source",
-    "description": "Tytuł wyświetlający, na jakim projekcie open source oparta jest strona"
+    "description": "Tytuł sekcji na stronie o aplikacji, która pokazuje, na jakim projekcie open source oparta jest ta strona"
   },
   "settings.poweredByTip": {
-    "message": "Nasza strona oparta jest na projekcie open source Nexior, kod jest całkowicie otwarty.",
-    "description": "Opis wyświetlający, na jakim projekcie open source oparta jest strona"
+    "message": "Ta strona oparta jest na projekcie open source Nexior, kod jest całkowicie otwarty.",
+    "description": "Opis na stronie o aplikacji, który pokazuje, na jakim projekcie open source oparta jest ta strona"
   },
   "settings.apiService": {
     "message": "Usługa API",
-    "description": "Tytuł wyświetlający dostawcę usługi API"
+    "description": "Tytuł sekcji na stronie o aplikacji, która pokazuje dostawcę usługi API"
   },
   "settings.apiServiceTip": {
-    "message": "Usługa API jest dostarczana przez Ace Data Cloud.",
-    "description": "Opis wyświetlający dostawcę usługi API"
+    "message": "Usługa API tej strony jest dostarczana przez Ace Data Cloud.",
+    "description": "Opis na stronie o aplikacji, który pokazuje dostawcę usługi API"
   },
   "settings.buildYourOwn": {
-    "message": "Zbuduj własną wersję",
-    "description": "Tytuł informujący użytkowników, że mogą zbudować podobną stronę"
+    "message": "Zbuduj własną",
+    "description": "Tytuł sekcji na stronie o aplikacji, która informuje użytkowników, że mogą zbudować podobną stronę"
   },
   "settings.buildYourOwnTip": {
     "message": "Chcesz zbudować podobną stronę AI? Skontaktuj się z nami, aby uzyskać wsparcie w zakresie wdrożenia.",
-    "description": "Opis dotyczący budowy własnej wersji"
+    "description": "Opis na stronie o aplikacji dotyczący budowy podobnej strony"
   },
   "settings.contactUs": {
     "message": "Skontaktuj się z nami",
@@ -814,5 +846,29 @@
   "message.viewOnGithub": {
     "message": "Zobacz na GitHubie",
     "description": "Tekst linku do przeglądania projektu na GitHubie"
+  },
+  "title.notFound": {
+    "message": "Strona nie znaleziona",
+    "description": "Tytuł strony 404"
+  },
+  "message.notFound": {
+    "message": "Strona, którą próbujesz odwiedzić, nie istnieje, być może link został zmieniony lub usunięty. Wróć na stronę główną, aby kontynuować odkrywanie usług AI AceData.",
+    "description": "Opis podtytułu na stronie 404"
+  },
+  "message.notFoundEyebrow": {
+    "message": "Coś poszło nie tak",
+    "description": "Tekst małej etykiety na górze strony 404"
+  },
+  "message.notFoundPath": {
+    "message": "Ścieżka żądania",
+    "description": "Etykieta wyświetlająca aktualną ścieżkę żądania na stronie 404"
+  },
+  "button.backToHome": {
+    "message": "Wróć na stronę główną",
+    "description": "Tekst przycisku do powrotu na stronę główną"
+  },
+  "button.goBack": {
+    "message": "Wróć do poprzedniej strony",
+    "description": "Tekst przycisku do powrotu do poprzedniej strony w historii przeglądania"
   }
 }

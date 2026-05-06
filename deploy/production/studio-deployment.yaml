@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: studio-frontend
+  name: studio-frontend
+  namespace: acedatacloud
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: studio-frontend
+  template:
+    metadata:
+      labels:
+        app: studio-frontend
+    spec:
+      containers:
+        - image: ghcr.io/acedatacloud/hub-frontend:${TAG}
+          name: studio-frontend
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 10
+          resources:
+            requests:
+              memory: '50Mi'
+              cpu: '10m'
+            limits:
+              memory: '100Mi'
+              cpu: '30m'
+      imagePullSecrets:
+        - name: docker-registry
+      restartPolicy: Always

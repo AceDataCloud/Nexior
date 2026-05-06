@@ -8,7 +8,7 @@
         </div>
         <el-divider v-if="user.email" class="mb-1 mt-1" />
         <el-dropdown-menu>
-          <el-dropdown-item class="py-2" @click="onDownload">
+          <el-dropdown-item v-if="!isNative" class="py-2" @click="onDownload">
             <font-awesome-icon icon="fa-solid fa-mobile-screen-button" class="mr-2" />
             {{ $t('common.nav.mobileApp') }}
           </el-dropdown-item>
@@ -20,10 +20,7 @@
             <font-awesome-icon icon="fa-solid fa-coins" class="mr-2" />
             {{ $t('common.nav.distribution') }}
           </el-dropdown-item>
-          <el-dropdown-item class="py-2" @click="onConnectors">
-            <font-awesome-icon icon="fa-solid fa-plug" class="mr-2" />
-            {{ $t('connector.title') }}
-          </el-dropdown-item>
+
           <el-dropdown-item class="py-2" @click="onConsole">
             <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
             {{ $t('common.nav.console') }}
@@ -36,7 +33,7 @@
       </template>
     </el-dropdown>
   </div>
-  <user-setting v-model:visible="showSetting" />
+  <user-setting v-model:visible="showSetting" :initial-tab="settingTab" />
 </template>
 
 <script lang="ts">
@@ -44,7 +41,8 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD, ROUTE_CONNECTORS_INDEX } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { isNative as isNativeSurface } from '@/utils/surface';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -62,19 +60,28 @@ export default defineComponent({
   data() {
     return {
       showMenu: false,
-      showSetting: false
+      showSetting: false,
+      settingTab: ''
     };
   },
   computed: {
     user() {
       return this.$store.getters?.user;
+    },
+    isNative() {
+      return isNativeSurface();
     }
   },
   mounted() {
     document.addEventListener('click', this.closeMenu);
+    // Other components (e.g. the in-chat BYOK badge) ask UserCenter to
+    // open the settings dialog at a specific tab via this CustomEvent
+    // — we own the only mounted `<user-setting>` instance.
+    window.addEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
   },
   unmounted() {
     document.removeEventListener('click', this.closeMenu);
+    window.removeEventListener('open-user-settings', this.onOpenSettingsEvent as EventListener);
   },
   methods: {
     toggleMenu() {
@@ -95,15 +102,17 @@ export default defineComponent({
     onConsole() {
       this.$router.push({ name: ROUTE_CONSOLE_ROOT });
     },
-    onConnectors() {
-      this.$router.push({ name: ROUTE_CONNECTORS_INDEX });
-    },
     onDistribution() {
       this.$router.push({
         name: ROUTE_DISTRIBUTION_INDEX
       });
     },
     onSettings() {
+      this.settingTab = '';
+      this.showSetting = true;
+    },
+    onOpenSettingsEvent(event: CustomEvent<{ tab?: string }>) {
+      this.settingTab = event?.detail?.tab ?? '';
       this.showSetting = true;
     }
   }

@@ -14,14 +14,15 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/hailuo/ConfigPanel.vue';
 import { hailuoOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IHailuoGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/hailuo/RecentPanel.vue';
 import { IHailuoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/hailuo';
+const CALLBACK_URL = getWebhookCallbackUrl('hailuo');
 
 interface IData {
   task: IHailuoTask | undefined;
@@ -162,10 +163,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('hailuo.message.startingTask'));
-      hailuoOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('hailuo', hailuoOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('hailuo.message.startTaskSuccess'));
         })

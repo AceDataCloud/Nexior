@@ -27,20 +27,24 @@
     "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
+  "name.elapsed": {
+    "message": "Tempo Decorrido",
+    "description": "Tempo decorrido da tarefa (em segundos)"
+  },
   "name.createdAt": {
     "message": "Data de Criação",
     "description": "Data e hora em que o vídeo Veo foi gerado"
   },
   "name.startEndImage": {
-    "message": "Imagens de Referência Início/Fim",
-    "description": "Rótulo do campo do formulário: Imagens de referência do início/fim (sugestão em inglês: 'Start/End Frames', manter curto para evitar obstrução do botão)"
+    "message": "Imagens de Referência",
+    "description": "Rótulo do campo do formulário: Imagens de referência (sugestão em inglês: 'Start/End Frames', mantenha curto para evitar obstruir o botão)"
   },
   "name.action": {
     "message": "Ação",
     "description": "Lista de ações disponíveis"
   },
   "name.action3": {
-    "message": "Obter vídeo em 1080p de",
+    "message": "Obter vídeo em 1080p",
     "description": "Imagens de referência para o vídeo a ser gerado"
   },
   "name.prompt": {
@@ -60,7 +64,7 @@
     "description": "Nome do parâmetro de proporção"
   },
   "description.translation": {
-    "message": "Ao criar a tarefa de vídeo, você pode ativar a tradução automática para as palavras-chave.",
+    "message": "Ao criar uma tarefa de vídeo, você pode ativar a tradução automática para as palavras-chave.",
     "description": "Descrição do parâmetro 'translation'"
   },
   "description.imageUrl": {
@@ -72,7 +76,7 @@
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.uploadStartEndImage": {
-    "message": "Array de links de imagens de referência, a primeira é a imagem do início, seguida pela imagem do fim",
+    "message": "Array de links de imagens de referência, a primeira é a imagem do primeiro quadro, seguida pela imagem do último quadro",
     "description": "Descrição do parâmetro 'image_url'"
   },
   "status.pending": {
@@ -96,7 +100,7 @@
     "description": "Placeholder para nível de preenchimento"
   },
   "placeholder.prompt": {
-    "message": "Digite as palavras-chave para o estilo do vídeo a ser gerado, por exemplo: moving",
+    "message": "Insira o estilo do vídeo a ser gerado, por exemplo: moving",
     "description": "Texto de placeholder no campo de prompt"
   },
   "placeholder.position": {
@@ -125,27 +129,27 @@
   },
   "button.uploadImageUrl": {
     "message": "Fazer Upload",
-    "description": "Texto do botão para fazer upload de imagens (simplificar para 'Upload', não usar 'Upload Image')"
+    "description": "Texto do botão para fazer upload de imagens (simplificado para 'Upload')"
   },
   "button.uploadVideoUrl": {
-    "message": "Fazer Upload do Vídeo",
-    "description": "Texto do botão para fazer upload do vídeo"
+    "message": "Fazer Upload de Vídeo",
+    "description": "Texto do botão para fazer upload de vídeo"
   },
   "button.uploadReferences": {
     "message": "Fazer Upload",
     "description": "Texto do botão que permite ao usuário fazer upload de referências"
   },
   "message.uploadReferencesExceed": {
-    "message": "Máximo de 2 imagens podem ser enviadas",
+    "message": "Máximo de 2 imagens permitidas",
     "description": "Mensagem de erro quando o número de imagens enviadas excede o limite"
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagens enviadas com sucesso",
-    "description": "Mensagem de sucesso quando as imagens são enviadas com sucesso"
+    "description": "Mensagem de sucesso ao enviar imagens com sucesso"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao enviar imagens, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro quando o upload das imagens falha"
+    "description": "Mensagem de erro quando o envio de imagens falha"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -159,9 +163,13 @@
     "message": "Falha ao iniciar a tarefa, por favor, contate o administrador",
     "description": "Mensagem de erro ao falhar ao iniciar a tarefa de desenho"
   },
+  "message.imageRequired": {
+    "message": "Por favor, faça upload de pelo menos uma imagem de referência antes de iniciar a tarefa de vídeo de imagem",
+    "description": "Aviso quando nenhuma imagem foi enviada no modo image2video"
+  },
   "message.usedUp": {
     "message": "Seus créditos acabaram, por favor, compre mais créditos para continuar usando",
-    "description": "Mensagem quando os créditos se esgotam"
+    "description": "Mensagem quando os créditos se esgotaram"
   },
   "message.generating": {
     "message": "Gerando...",
@@ -173,19 +181,19 @@
   },
   "message.generateFailed": {
     "message": "Falha ao gerar vídeo",
-    "description": "Mensagem quando a geração da imagem falha"
+    "description": "Mensagem exibida quando a geração de vídeo falha"
   },
   "message.uploadVideoExceed": {
-    "message": "Número de imagens do quadro inicial excede o limite",
-    "description": "Mensagem de erro quando o número de imagens do quadro inicial excede o limite"
+    "message": "Número de imagens da primeira frame excede o limite",
+    "description": "Mensagem de erro quando o número de imagens da primeira frame excede o limite"
   },
   "message.uploadVideoSizeExceed": {
     "message": "O tamanho do arquivo não pode exceder 10MB!",
-    "description": "Mensagem de erro quando o tamanho do arquivo enviado excede 10MB!"
+    "description": "Mensagem de erro quando o tamanho do arquivo excede 10MB!"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "O arquivo enviado deve ser no formato MP4!",
-    "description": "Mensagem de erro quando o arquivo enviado não está no formato MP4!"
+    "message": "O arquivo deve estar no formato MP4!",
+    "description": "Mensagem de erro quando o arquivo não está no formato MP4!"
   },
   "message.uploadStartEndImageExceed": {
     "message": "Número de imagens da primeira frame excede o limite",
@@ -218,5 +226,65 @@
   "message.noTasks": {
     "message": "Nenhuma tarefa histórica, clique à esquerda para gerar vídeo",
     "description": "Mensagem quando não há tarefas"
+  },
+  "name.upsampleAction": {
+    "message": "Objetivo de upsampling",
+    "description": "Formato de destino para /veo/upsample (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "Movimento da câmera",
+    "description": "Tipo de movimento da câmera para /veo/reshoot"
+  },
+  "name.imageMask": {
+    "message": "Máscara de imagem",
+    "description": "Máscara de imagem para /veo/objects (pixels brancos = área de operação)"
+  },
+  "name.videoId": {
+    "message": "ID do vídeo",
+    "description": "ID do vídeo de origem (proveniente da tarefa de geração anterior data[].id)"
+  },
+  "placeholder.imageMask": {
+    "message": "URL da imagem da máscara ou JPEG codificado em base64",
+    "description": "Placeholder para o campo de entrada image_mask"
+  },
+  "placeholder.videoId": {
+    "message": "Cole o ID do vídeo ou clique no botão de operação na lista de tarefas à direita para preencher automaticamente",
+    "description": "Placeholder para o campo de entrada video_id"
+  },
+  "button.actionIngredients": {
+    "message": "Vídeo de fusão de múltiplas imagens",
+    "description": "ingredients2video — Fusão de 1-3 imagens para gerar uma nova cena"
+  },
+  "button.actionUpsample": {
+    "message": "Upsampling / Pré-visualização GIF",
+    "description": "/veo/upsample — Aumentar para 1080p/4K ou exportar GIF"
+  },
+  "button.actionExtend": {
+    "message": "Continuar vídeo",
+    "description": "/veo/extend — Estender a duração do vídeo gerado"
+  },
+  "button.actionReshoot": {
+    "message": "Regravar com nova câmera",
+    "description": "/veo/reshoot — Regerar com novo movimento de câmera para o mesmo conteúdo"
+  },
+  "button.actionObjectInsert": {
+    "message": "Adicionar objeto",
+    "description": "/veo/objects insert — Adicionar objeto ao vídeo"
+  },
+  "button.actionObjectRemove": {
+    "message": "Remover objeto",
+    "description": "/veo/objects remove — Remover objeto do vídeo usando máscara"
+  },
+  "button.actionUpsample1080p": {
+    "message": "Aumentar 1080P",
+    "description": "Botão de operação de pré-visualização — Aumentar para 1080P"
+  },
+  "button.actionUpsample4k": {
+    "message": "Aumentar 4K",
+    "description": "Botão de operação de pré-visualização — Aumentar para 4K"
+  },
+  "button.actionUpsampleGif": {
+    "message": "Exportar GIF",
+    "description": "Botão de operação de pré-visualização — Converter para pré-visualização GIF"
   }
 }

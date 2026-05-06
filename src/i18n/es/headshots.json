@@ -27,6 +27,10 @@
     "message": "ID de seguimiento",
     "description": "ID de seguimiento de la tarea"
   },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (en segundos)"
+  },
   "name.size": {
     "message": "Tamaño",
     "description": "Tamaño del código QR a generar"
@@ -64,12 +68,12 @@
     "description": "Método de entrada"
   },
   "status.pending": {
-    "message": "Pendiente",
+    "message": "En espera",
     "description": "Estado de espera de la tarea"
   },
   "status.processing": {
     "message": "En proceso",
-    "description": "Estado de espera de la tarea"
+    "description": "Estado de la tarea en proceso"
   },
   "placeholder.paddingNoise": {
     "message": "Seleccione...",
@@ -80,7 +84,7 @@
     "description": "Marcador de posición para el nivel de relleno"
   },
   "placeholder.prompt": {
-    "message": "Ingrese la frase para generar el estilo de video, por ejemplo: Astronautas viajando del espacio a un volcán",
+    "message": "Ingrese las palabras clave para el estilo de video a generar, por ejemplo: Astronautas viajando del espacio a un volcán",
     "description": "Texto de marcador de posición en el campo de sugerencias"
   },
   "button.fast": {
@@ -105,19 +109,19 @@
   },
   "button.uploadImageUrls": {
     "message": "Subir imagen de retrato",
-    "description": "Texto del botón para subir la imagen de retrato (simplificado a 'Subir' para evitar que sea demasiado largo)"
+    "description": "Texto del botón para subir la imagen de retrato (simplificado a 'Subir')"
   },
   "message.uploadReferencesExceed": {
     "message": "Se pueden subir hasta 5 imágenes",
     "description": "Mensaje de error cuando se excede el límite de imágenes subidas"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Imágenes subidas con éxito",
-    "description": "Mensaje de éxito cuando las imágenes se suben correctamente"
+    "message": "Imagen subida con éxito",
+    "description": "Mensaje de éxito al subir la imagen"
   },
   "message.uploadReferencesError": {
     "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Mensaje de error cuando la subida de la imagen falla"
+    "description": "Mensaje de error al fallar la subida de la imagen"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -129,11 +133,11 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacte al administrador",
-    "description": "Mensaje de error al fallar al iniciar la tarea de dibujo"
+    "description": "Mensaje de error al fallar el inicio de la tarea de dibujo"
   },
   "message.usedUp": {
-    "message": "Se han agotado sus puntos, por favor compre más para continuar usando",
-    "description": "Mensaje cuando se han agotado los puntos"
+    "message": "Se han agotado sus créditos, por favor compre más para continuar usando",
+    "description": "Mensaje cuando se han agotado los créditos"
   },
   "message.generating": {
     "message": "Generando...",
@@ -145,7 +149,7 @@
   },
   "message.generateFailed": {
     "message": "Error al generar la imagen",
-    "description": "Mensaje cuando la generación de la imagen falla"
+    "description": "Mensaje al fallar la generación de la imagen"
   },
   "message.noOperations": {
     "message": "No hay operaciones disponibles",
@@ -168,27 +172,35 @@
     "description": "Palabra de estilo utilizada para describir y generar imágenes, las imágenes generadas deben incluir el estilo de esta etiqueta"
   },
   "styleTag.kindergarten": {
-    "message": "Foto de entrada al jardín de infancia",
+    "message": "Foto de jardín de infantes",
     "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.logoTshirt": {
-    "message": "Foto de camiseta con logo empresarial",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Camiseta con logo de empresa",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.wedding": {
     "message": "Foto de registro de matrimonio",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.businessPphoto": {
-    "message": "Retrato de estilo empresarial",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Retrato de negocios",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.bobSuit": {
-    "message": "Bob con traje negro",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "message": "Traje negro con bob",
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
   },
   "styleTag.femalePortrait": {
     "message": "Retrato femenino",
-    "description": "Palabra de estilo utilizada para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+    "description": "Palabra de estilo para describir y generar imágenes, la imagen generada debe incluir el estilo de esta etiqueta"
+  },
+  "message.uploadImageExceed": {
+    "message": "Se pueden subir hasta 2 imágenes",
+    "description": "Mensaje de advertencia cuando se excede el límite de cantidad de imágenes de referencia"
+  },
+  "message.uploadImageError": {
+    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Mensaje de error cuando la carga de la imagen de referencia falla"
   }
 }

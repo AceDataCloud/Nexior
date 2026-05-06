@@ -27,12 +27,16 @@
     "message": "추적 ID",
     "description": "작업의 추적 ID"
   },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "작업의 소요 시간(초)"
+  },
   "name.createdAt": {
     "message": "생성 시간",
     "description": "Veo 비디오 생성 날짜 및 시간"
   },
   "name.startEndImage": {
-    "message": "시작/종료 프레임",
+    "message": "시작/종료 프레임 참조 이미지",
     "description": "폼 필드 레이블: 시작/종료 프레임 참조 이미지"
   },
   "name.action": {
@@ -124,7 +128,7 @@
     "description": "비디오 다운로드 버튼 텍스트"
   },
   "button.uploadImageUrl": {
-    "message": "업로드",
+    "message": "이미지 업로드",
     "description": "이미지 업로드 버튼 텍스트"
   },
   "button.uploadVideoUrl": {
@@ -159,64 +163,128 @@
     "message": "작업 시작 실패, 관리자에게 문의하세요",
     "description": "그림 작업 시작 실패 시의 오류 메시지"
   },
+  "message.imageRequired": {
+    "message": "비디오 생성 작업을 시작하기 전에 최소한 하나의 참조 이미지를 업로드하세요",
+    "description": "image2video 모드에서 이미지를 업로드하지 않았을 때의 프롬프트"
+  },
   "message.usedUp": {
     "message": "포인트가 소진되었습니다. 더 많은 포인트를 구매한 후 계속 사용하세요",
     "description": "소진 시의 메시지"
   },
   "message.generating": {
     "message": "생성 중...",
-    "description": "이미지 생성 중의 메시지"
+    "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.downloadVideo": {
     "message": "이 비디오 다운로드",
-    "description": "이미지 생성 중의 메시지"
+    "description": "이미지가 생성 중일 때의 메시지"
   },
   "message.generateFailed": {
     "message": "비디오 생성 실패",
-    "description": "이미지 생성 실패 시의 메시지"
+    "description": "영상 생성 실패 시의 메시지"
   },
   "message.uploadVideoExceed": {
-    "message": "시작 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "시작 프레임 이미지 수가 제한을 초과할 때의 오류 메시지"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadVideoSizeExceed": {
     "message": "업로드 파일 크기는 10MB를 초과할 수 없습니다!",
-    "description": "업로드 파일 크기는 10MB를 초과할 수 없습니다! 시의 오류 정보"
+    "description": "업로드 파일 크기가 10MB를 초과했을 때의 오류 정보"
   },
   "message.uploadVideoTypeFailed": {
     "message": "업로드 파일은 MP4 형식이어야 합니다!",
-    "description": "업로드 파일은 MP4 형식이어야 합니다! 의 오류 정보"
+    "description": "업로드 파일이 MP4 형식이 아닐 때의 오류 정보"
   },
   "message.uploadStartEndImageExceed": {
-    "message": "첫 번째 프레임 이미지 수가 제한을 초과했습니다",
-    "description": "첫 번째 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
+    "message": "첫 프레임 이미지 수가 제한을 초과했습니다.",
+    "description": "첫 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadEndImageExceed": {
-    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다",
+    "message": "마지막 프레임 이미지 수가 제한을 초과했습니다.",
     "description": "마지막 프레임 이미지 수가 제한을 초과했을 때의 오류 정보"
   },
   "message.uploadStartImageError": {
-    "message": "첫 번째 프레임 이미지 업로드 실패",
-    "description": "첫 번째 프레임 이미지 업로드 실패 시의 오류 정보"
+    "message": "첫 프레임 이미지 업로드 실패",
+    "description": "첫 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadVideoError": {
     "message": "비디오 업로드 실패",
-    "description": "비디오 업로드 실패 시의 오류 정보"
+    "description": "비디오 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadEndImageError": {
     "message": "마지막 프레임 이미지 업로드 실패",
-    "description": "마지막 프레임 이미지 업로드 실패 시의 오류 정보"
+    "description": "마지막 프레임 이미지 업로드에 실패했을 때의 오류 정보"
   },
   "message.uploadDocumentsError": {
     "message": "문서 업로드 실패",
-    "description": "문서 업로드 실패 시의 오류 정보"
+    "description": "문서 업로드에 실패했을 때의 오류 정보"
   },
   "message.noOperations": {
-    "message": "사용 가능한 작업이 없습니다",
+    "message": "사용 가능한 작업이 없습니다.",
     "description": "사용 가능한 작업이 없을 때의 메시지"
   },
   "message.noTasks": {
-    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요",
+    "message": "역사적 작업이 없습니다. 왼쪽에서 비디오 생성 버튼을 클릭하세요.",
     "description": "작업이 없을 때의 메시지"
+  },
+  "name.upsampleAction": {
+    "message": "업샘플링 목표",
+    "description": "/veo/upsample의 목표 형식 (1080p/4k/gif)"
+  },
+  "name.motionType": {
+    "message": "카메라 움직임",
+    "description": "/veo/reshoot의 카메라 움직임 유형"
+  },
+  "name.imageMask": {
+    "message": "영역 마스크",
+    "description": "/veo/objects의 이미지 마스크 (흰색 픽셀 = 작업 영역)"
+  },
+  "name.videoId": {
+    "message": "비디오 ID",
+    "description": "원본 비디오의 ID (이전 생성 작업의 data[].id에서 가져옴)"
+  },
+  "placeholder.imageMask": {
+    "message": "마스크 이미지 URL 또는 base64 인코딩된 JPEG",
+    "description": "image_mask 입력란의 자리 표시자"
+  },
+  "placeholder.videoId": {
+    "message": "비디오 ID를 붙여넣거나 오른쪽 작업 목록에서 작업 버튼을 클릭하여 자동으로 입력하세요.",
+    "description": "video_id 입력란의 자리 표시자"
+  },
+  "button.actionIngredients": {
+    "message": "다중 이미지 융합 비디오",
+    "description": "ingredients2video — 1-3장의 이미지를 융합하여 새로운 장면 생성"
+  },
+  "button.actionUpsample": {
+    "message": "업샘플링 / GIF 미리보기",
+    "description": "/veo/upsample — 1080p/4K로 업샘플링 또는 GIF 내보내기"
+  },
+  "button.actionExtend": {
+    "message": "비디오 연장",
+    "description": "/veo/extend — 생성된 비디오의 길이 연장"
+  },
+  "button.actionReshoot": {
+    "message": "장면 변경 재촬영",
+    "description": "/veo/reshoot — 동일한 내용을 다른 카메라 움직임으로 재생성"
+  },
+  "button.actionObjectInsert": {
+    "message": "물체 추가",
+    "description": "/veo/objects insert — 비디오에 물체 추가"
+  },
+  "button.actionObjectRemove": {
+    "message": "물체 제거",
+    "description": "/veo/objects remove — 마스크를 통해 비디오에서 물체 제거"
+  },
+  "button.actionUpsample1080p": {
+    "message": "1080P 업샘플링",
+    "description": "미리보기 작업 버튼 — 1080P로 업샘플링"
+  },
+  "button.actionUpsample4k": {
+    "message": "4K 업샘플링",
+    "description": "미리보기 작업 버튼 — 4K로 업샘플링"
+  },
+  "button.actionUpsampleGif": {
+    "message": "GIF 내보내기",
+    "description": "미리보기 작업 버튼 — GIF로 변환 미리보기"
   }
 }

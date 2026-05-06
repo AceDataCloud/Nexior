@@ -25,7 +25,7 @@
   },
   "name.failureReason": {
     "message": "Razón del fallo",
-    "description": "Razón por la que la tarea ha fallado"
+    "description": "Razón por la cual la tarea falló"
   },
   "name.status": {
     "message": "Estado",
@@ -34,6 +34,10 @@
   "name.traceId": {
     "message": "ID de seguimiento",
     "description": "ID de seguimiento"
+  },
+  "name.elapsed": {
+    "message": "Tiempo transcurrido",
+    "description": "Tiempo transcurrido de la tarea (segundos)"
   },
   "name.prompt": {
     "message": "Sugerencia de imagen",
@@ -69,11 +73,11 @@
   },
   "description.imageUrls": {
     "message": "Se deben subir de 1 a 5 imágenes en la tarea de edición de imágenes.",
-    "description": "Descripción del parámetro image_urls"
+    "description": "Descripción del parámetro de image_urls"
   },
   "description.aspectRatio": {
-    "message": "Relación de aspecto de la imagen generada. Los valores admitidos son `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. El valor predeterminado es `1:1`. Solo es efectivo cuando `action` es `generate`; si `action` es `edit`, se tomará la proporción de la primera imagen en `image_urls`.",
-    "description": "Descripción del parámetro aspect_ratio"
+    "message": "Relación de aspecto de la imagen generada. Los valores soportados son `1:1`, `3:2`, `2:3`, `16:9`, `9:16`, `4:3`, `3:4`. El valor por defecto es `1:1`. Solo es efectivo cuando `action` es `generate`; si `action` es `edit`, se tomará la proporción de la primera imagen en `image_urls`.",
+    "description": "Descripción del parámetro de aspect_ratio"
   },
   "status.pending": {
     "message": "En espera",
@@ -84,7 +88,7 @@
     "description": "Marcador de posición de selección"
   },
   "placeholder.prompt": {
-    "message": "Ingrese las palabras clave, por ejemplo: un gato siamés blanco",
+    "message": "Ingrese las palabras clave, por ejemplo: un gato siames blanco",
     "description": "Marcador de posición de palabras clave"
   },
   "button.generate": {
@@ -93,7 +97,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Subir",
-    "description": "Botón para subir imágenes de referencia (simplificado a 'Subir')"
+    "description": "Botón para subir imágenes de referencia (simplificar a 'Subir', no usar 'Subir imágenes')"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -104,11 +108,11 @@
     "description": "Tarea creada con éxito"
   },
   "message.startTaskFailed": {
-    "message": "Error al iniciar la tarea, por favor contacte al administrador:",
-    "description": "Error al crear la tarea"
+    "message": "Fallo al iniciar la tarea, por favor contacte al administrador:",
+    "description": "Fallo en la creación de la tarea"
   },
   "message.usedUp": {
-    "message": "Sus créditos se han agotado, por favor compre más créditos para continuar usando",
+    "message": "Sus puntos se han agotado, por favor compre más puntos para continuar usando",
     "description": "Mensaje de agotamiento"
   },
   "message.uploadImageExceed": {
@@ -116,8 +120,8 @@
     "description": "Número de imágenes excede el límite"
   },
   "message.uploadImageError": {
-    "message": "Error al subir la imagen, por favor intente de nuevo más tarde",
-    "description": "Error de subida"
+    "message": "Fallo al subir la imagen, por favor intente de nuevo más tarde",
+    "description": "Fallo en la subida"
   },
   "name.model": {
     "message": "Modelo",

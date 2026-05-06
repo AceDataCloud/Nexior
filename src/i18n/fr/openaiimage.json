@@ -5,23 +5,23 @@
   },
   "name.task": {
     "message": "Type de tâche",
-    "description": "Type d'opération d'image OpenAI"
+    "description": "Type d'opération de l'image OpenAI"
   },
   "name.generate": {
-    "message": "Créer une image",
-    "description": "Type d'opération : créer une image"
+    "message": "Créer l'image",
+    "description": "Type d'opération : Créer une image"
   },
   "name.edits": {
-    "message": "Éditer une image",
-    "description": "Type d'opération : éditer une image"
+    "message": "Éditer l'image",
+    "description": "Type d'opération : Éditer une image"
   },
   "name.imageUrls": {
     "message": "Images de référence",
-    "description": "Images de référence pour l'édition"
+    "description": "Images de référence utilisées pour l'édition"
   },
   "name.failure": {
     "message": "Échec",
-    "description": "Échec de la tâche"
+    "description": "La tâche a échoué"
   },
   "name.failureReason": {
     "message": "Raison de l'échec",
@@ -35,45 +35,49 @@
     "message": "ID de suivi",
     "description": "ID de suivi"
   },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Temps écoulé pour la tâche (en secondes)"
+  },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Mots d'invite pour générer/éditer"
+    "description": "Invite pour générer/éditer l'image"
   },
   "name.openaiimageBot": {
-    "message": "Bot d'image OpenAI",
+    "message": "OpenAI Image Bot",
     "description": "Nom du robot OpenAI Image"
   },
   "name.size": {
     "message": "Taille",
-    "description": "Taille de l'image de sortie"
+    "description": "Taille de l'image générée"
   },
   "description.size": {
-    "message": "Taille de sortie pour générer l'image, valeurs courantes : 1024x1024, 1536x1024, 1024x1536.",
+    "message": "La taille de sortie pour générer une image, tailles courantes : 1024x1024, 1536x1024, 1024x1536.",
     "description": "Description de la taille"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer ou éditer l'image",
-    "description": "Description des mots d'invite"
+    "message": "L'invite pour générer ou éditer une image",
+    "description": "Description de l'invite"
   },
   "description.model": {
     "message": "Modèle utilisé pour la génération et l'édition d'images.",
     "description": "Description du paramètre modèle"
   },
   "description.imageUrls": {
-    "message": "Téléchargez 1 à 5 images de référence pour entrer en mode d'édition.",
+    "message": "Téléchargez 1 à 5 images de référence pour passer en mode édition.",
     "description": "Description du paramètre image_urls"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État d'attente de la tâche"
+    "description": "État en attente de la tâche"
   },
   "placeholder.select": {
     "message": "Sélectionner",
-    "description": "Espace réservé pour la sélection"
+    "description": "Placeholder de sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots d'invite, par exemple : un chat en aquarelle sur la table",
-    "description": "Espace réservé pour les mots d'invite"
+    "message": "Entrez l'invite, par exemple : un petit chat en aquarelle sur une table",
+    "description": "Placeholder de l'invite"
   },
   "button.generate": {
     "message": "Générer",
@@ -81,7 +85,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Télécharger",
-    "description": "Bouton pour télécharger des images de référence (simplifiez en anglais à 'Upload', ne pas utiliser 'Upload Images')"
+    "description": "Bouton de téléchargement des images de référence (en anglais, simplifié à 'Upload', ne pas utiliser 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -89,15 +93,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Tâche créée avec succès"
+    "description": "Création de la tâche réussie"
   },
   "message.startTaskFailed": {
-    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur :",
+    "message": "Échec de la tâche, veuillez contacter l'administrateur :",
     "description": "Échec de la création de la tâche"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
-    "description": "Message d'épuisement"
+    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser le service",
+    "description": "Message d'épuisement des crédits"
   },
   "message.uploadImageExceed": {
     "message": "Vous pouvez télécharger jusqu'à 5 images",
@@ -109,18 +113,18 @@
   },
   "name.model": {
     "message": "Modèle",
-    "description": "Étiquette de sélection du modèle d'image OpenAI"
+    "description": "Étiquette de sélection du modèle OpenAI pour l'image"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option de modèle gpt-image-1"
+    "description": "Option pour le modèle gpt-image-1"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option de modèle gpt-image-1.5"
+    "description": "Option pour le modèle gpt-image-1.5"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option de modèle gpt-image-2"
+    "description": "Option pour le modèle gpt-image-2"
   }
 }

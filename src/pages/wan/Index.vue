@@ -14,14 +14,15 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Wan.vue';
 import ConfigPanel from '@/components/wan/ConfigPanel.vue';
 import { wanOperator } from '@/operators';
+import { instrumentGeneration } from '@/plugins/telemetry';
 import { IWanGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/wan/RecentPanel.vue';
 import { IWanTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/wan';
+const CALLBACK_URL = getWebhookCallbackUrl('wan');
 
 interface IData {
   task: IWanTask | undefined;
@@ -161,10 +162,7 @@ export default defineComponent({
         return;
       }
       ElMessage.info(this.$t('wan.message.startingTask'));
-      wanOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('wan', wanOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('wan.message.startTaskSuccess'));
         })

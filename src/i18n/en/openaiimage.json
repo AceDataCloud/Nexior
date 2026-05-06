@@ -35,6 +35,10 @@
     "message": "Trace ID",
     "description": "Trace ID"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "Time taken for the task (seconds)"
+  },
   "name.prompt": {
     "message": "Image Prompt",
     "description": "Prompt for generating/editing"
@@ -48,8 +52,56 @@
     "description": "Output image size"
   },
   "description.size": {
-    "message": "Output size for generated images, common values: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Output image size. Supported values vary by model: gpt-image-1 / gpt-image-1.5 only accept 1024x1024, 1536x1024, 1024x1536. gpt-image-2 additionally supports 1792x1024, 1024x1792 and 2K/4K presets, and allows custom dimensions.",
     "description": "Size description"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (base rate)",
+    "description": "Heading for the 1K size group billed at the base rate"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Presets (1.5× rate)",
+    "description": "Heading for the 2K size group billed at 1.5×"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Presets (1.5× rate)",
+    "description": "Heading for the 4K size group billed at 1.5×"
+  },
+  "name.customSize": {
+    "message": "Custom Size",
+    "description": "Custom-size toggle label"
+  },
+  "description.customSize": {
+    "message": "Enable to set width and height freely (gpt-image-2 only). Each side must be a multiple of 16, the longer side ≤ 3840, and total pixels ≤ 8,294,400. Non-1K standard sizes are billed at 1.5× the base rate.",
+    "description": "Custom-size toggle description"
+  },
+  "name.width": {
+    "message": "Width",
+    "description": "Width input label"
+  },
+  "name.height": {
+    "message": "Height",
+    "description": "Height input label"
+  },
+  "error.customSizePositive": {
+    "message": "Width and height must be positive integers",
+    "description": "Custom-size positive validation"
+  },
+  "error.customSizeMultiple": {
+    "message": "Width and height must be multiples of {multiple}",
+    "description": "Custom-size multiple validation"
+  },
+  "error.customSizeMin": {
+    "message": "Width and height must be at least {min}",
+    "description": "Custom-size minimum validation"
+  },
+  "error.customSizeMax": {
+    "message": "Longer side cannot exceed {max}",
+    "description": "Custom-size maximum validation"
+  },
+  "error.customSizePixels": {
+    "message": "Total pixels cannot exceed {pixels}",
+    "description": "Custom-size pixel-budget validation"
   },
   "description.prompt": {
     "message": "Prompt for generating or editing images",
@@ -65,7 +117,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "Task waiting status"
+    "description": "Task pending status"
   },
   "placeholder.select": {
     "message": "Select",
@@ -88,15 +140,15 @@
     "description": "Message indicating task is starting"
   },
   "message.startTaskSuccess": {
-    "message": "Task generation initiated successfully",
-    "description": "Task created successfully"
+    "message": "Successfully initiated generation task",
+    "description": "Task successfully created"
   },
   "message.startTaskFailed": {
     "message": "Failed to initiate task, please contact the administrator:",
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more to continue using",
+    "message": "Your credits are exhausted, please purchase more credits to continue",
     "description": "Exhausted credits message"
   },
   "message.uploadImageExceed": {
@@ -104,7 +156,7 @@
     "description": "Image count exceeds limit"
   },
   "message.uploadImageError": {
-    "message": "Image upload failed, please try again later",
+    "message": "Failed to upload image, please try again later",
     "description": "Upload failure"
   },
   "name.model": {

@@ -1,30 +1,30 @@
 {
   "name.taskId": {
-    "message": "Ταυτότητα εργασίας",
-    "description": "Ταυτότητα της εργασίας"
+    "message": "ID Εργασίας",
+    "description": "Το ID της εργασίας"
   },
   "name.task": {
-    "message": "Τύπος εργασίας",
+    "message": "Τύπος Εργασίας",
     "description": "Τύπος λειτουργίας εικόνας OpenAI"
   },
   "name.generate": {
-    "message": "Δημιουργία εικόνας",
+    "message": "Δημιουργία Εικόνας",
     "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
   },
   "name.edits": {
-    "message": "Επεξεργασία εικόνας",
+    "message": "Επεξεργασία Εικόνας",
     "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
   },
   "name.imageUrls": {
-    "message": "Αναφορές εικόνας",
+    "message": "Αναφορές Εικόνας",
     "description": "Αναφορές εικόνας για επεξεργασία"
   },
   "name.failure": {
     "message": "Αποτυχία",
-    "description": "Αποτυχία εργασίας"
+    "description": "Η εργασία απέτυχε"
   },
   "name.failureReason": {
-    "message": "Λόγος αποτυχίας",
+    "message": "Λόγος Αποτυχίας",
     "description": "Λόγος αποτυχίας της εργασίας"
   },
   "name.status": {
@@ -32,11 +32,15 @@
     "description": "Κατάσταση της εργασίας"
   },
   "name.traceId": {
-    "message": "Ταυτότητα παρακολούθησης",
-    "description": "Ταυτότητα παρακολούθησης"
+    "message": "ID Ιχνηλάτη",
+    "description": "ID ιχνηλάτη"
+  },
+  "name.elapsed": {
+    "message": "Χρόνος Εκτέλεσης",
+    "description": "Χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
   },
   "name.prompt": {
-    "message": "Υπόδειξη εικόνας",
+    "message": "Υπόδειξη Εικόνας",
     "description": "Υπόδειξη για δημιουργία/επεξεργασία"
   },
   "name.openaiimageBot": {
@@ -64,16 +68,16 @@
     "description": "Περιγραφή παραμέτρου image_urls"
   },
   "status.pending": {
-    "message": "Σε αναμονή",
-    "description": "Κατάσταση αναμονής εργασίας"
+    "message": "Σε Αναμονή",
+    "description": "Κατάσταση αναμονής της εργασίας"
   },
   "placeholder.select": {
     "message": "Επιλέξτε",
-    "description": "Καταληκτική επιλογής"
+    "description": "Καταληκτική επιλογή"
   },
   "placeholder.prompt": {
     "message": "Εισάγετε υπόδειξη, π.χ.: Γατάκι με νερομπογιές στο τραπέζι",
-    "description": "Καταληκτική υπόδειξης"
+    "description": "Καταληκτική υπόδειξη"
   },
   "button.generate": {
     "message": "Δημιουργία",
@@ -89,23 +93,23 @@
   },
   "message.startTaskSuccess": {
     "message": "Επιτυχής εκκίνηση εργασίας δημιουργίας",
-    "description": "Η εργασία δημιουργήθηκε με επιτυχία"
+    "description": "Η εργασία δημιουργήθηκε επιτυχώς"
   },
   "message.startTaskFailed": {
     "message": "Αποτυχία εκκίνησης εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή:",
     "description": "Αποτυχία δημιουργίας εργασίας"
   },
   "message.usedUp": {
-    "message": "Τα σημεία σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα σημεία για να συνεχίσετε",
+    "message": "Τα πιστωτικά σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα για να συνεχίσετε",
     "description": "Μήνυμα εξάντλησης"
   },
   "message.uploadImageExceed": {
     "message": "Μπορείτε να ανεβάσετε έως 5 εικόνες",
-    "description": "Περιορισμός αριθμού εικόνων"
+    "description": "Περιορισμός αριθμού εικόνας"
   },
   "message.uploadImageError": {
-    "message": "Αποτυχία ανάρτησης εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
-    "description": "Αποτυχία ανάρτησης"
+    "message": "Αποτυχία ανέβασματος εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
+    "description": "Αποτυχία ανέβασματος"
   },
   "name.model": {
     "message": "Μοντέλο",

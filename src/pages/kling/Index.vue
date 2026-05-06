@@ -1,7 +1,13 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <div class="flex flex-col h-full">
+        <tab-switcher :model-value="taskType" @update:model-value="onTabChange" />
+        <div class="flex-1 min-h-0">
+          <config-panel v-if="taskType === 'videos'" @generate="onGenerate" />
+          <motion-panel v-else-if="taskType === 'motion'" @generate="onGenerateMotion" />
+        </div>
+      </div>
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
@@ -13,15 +19,18 @@
 import { defineComponent } from 'vue';
 import Layout from '@/layouts/Kling.vue';
 import ConfigPanel from '@/components/kling/ConfigPanel.vue';
+import MotionPanel from '@/components/kling/MotionPanel.vue';
+import TabSwitcher from '@/components/kling/TabSwitcher.vue';
 import { klingOperator } from '@/operators';
-import { IKlingGenerateRequest, Status } from '@/models';
+import { instrumentGeneration } from '@/plugins/telemetry';
+import { IKlingGenerateRequest, IKlingMotionRequest, IKlingTaskType, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP } from '@/constants';
+import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 
-const CALLBACK_URL = 'https://webhook.acedata.cloud/kling';
+const CALLBACK_URL = getWebhookCallbackUrl('kling');
 
 interface IData {
   task: IKlingTask | undefined;
@@ -34,6 +43,8 @@ export default defineComponent({
   name: 'KlingIndex',
   components: {
     ConfigPanel,
+    MotionPanel,
+    TabSwitcher,
     Layout,
     RecentPanel
   },
@@ -58,6 +69,12 @@ export default defineComponent({
     },
     config() {
       return this.$store.state.kling.config;
+    },
+    motionConfig() {
+      return this.$store.state.kling.motionConfig;
+    },
+    taskType(): IKlingTaskType {
+      return this.$store.state.kling.taskType || 'videos';
     },
     tasks() {
       return this.$store.state.kling.tasks;
@@ -146,20 +163,53 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      const { camera_control, ...rest } = this.config || {};
       const request = {
-        ...this.config,
+        ...rest,
         callback_url: CALLBACK_URL
       } as IKlingGenerateRequest;
+      // Reject "only end frame, no start frame" — Kling can't anchor an
+      // end-frame without a starting reference.
+      if (!request.video_id && !(rest as any).video_url && !request.start_image_url && request.end_image_url) {
+        ElMessage.warning(this.$t('kling.message.endImageRequiresStart'));
+        return;
+      }
+      // Derive `action` from inputs if the user did not set one explicitly.
+      // Upstream Kling worker requires `action` and defaults to `text2video`,
+      // which rejects `start_image_url`/`end_image_url` (#bug: image refs ignored).
+      if (!request.action) {
+        if (request.video_id || (rest as any).video_url) {
+          request.action = 'extend';
+        } else if (request.start_image_url) {
+          request.action = 'image2video';
+        } else {
+          request.action = 'text2video';
+        }
+      }
+      // text2video does not accept end_image_url; strip it to avoid a 400.
+      if (request.action === 'text2video' && request.end_image_url) {
+        delete request.end_image_url;
+      }
+      // Only include camera_control when a type is set; clean empty config blocks.
+      if (camera_control?.type) {
+        request.camera_control = {
+          type: camera_control.type,
+          ...(camera_control.type === 'simple' && camera_control.config
+            ? {
+                config: Object.fromEntries(
+                  Object.entries(camera_control.config).filter(([, v]) => v !== undefined && v !== null)
+                )
+              }
+            : {})
+        };
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
         return;
       }
       ElMessage.info(this.$t('kling.message.startingTask'));
-      klingOperator
-        .generate(request, {
-          token
-        })
+      instrumentGeneration('kling', klingOperator.generate(request, { token }))
         .then(() => {
           ElMessage.success(this.$t('kling.message.startTaskSuccess'));
         })
@@ -181,6 +231,53 @@ export default defineComponent({
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;
       return panel?.getScrollElement?.();
+    },
+    async onTabChange(value: IKlingTaskType) {
+      if (value === this.taskType) return;
+      await this.$store.dispatch('kling/setTaskType', value);
+      // taskType change clears tasks; re-fetch.
+      await this.onGetTasks();
+      await this.onScrollDown();
+    },
+    async onGenerateMotion() {
+      const cfg = this.motionConfig || {};
+      if (!cfg.image_url || !cfg.video_url) {
+        ElMessage.warning(this.$t('kling.message.motionMissingInputs'));
+        return;
+      }
+      const request: IKlingMotionRequest = {
+        image_url: cfg.image_url,
+        video_url: cfg.video_url,
+        character_orientation: cfg.character_orientation || 'video',
+        mode: cfg.mode || 'std',
+        keep_original_sound: cfg.keep_original_sound ?? 'yes',
+        ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
+        callback_url: CALLBACK_URL
+      };
+      const token = this.credential?.token;
+      if (!token) {
+        console.error('no token specified');
+        return;
+      }
+      ElMessage.info(this.$t('kling.message.startingTask'));
+      instrumentGeneration('kling', klingOperator.motion(request, { token }))
+        .then(() => {
+          ElMessage.success(this.$t('kling.message.startTaskSuccess'));
+        })
+        .catch((error) => {
+          const response = error?.response?.data;
+          if (response?.error?.code === ERROR_CODE_USED_UP) {
+            ElMessage.error(this.$t('kling.message.usedUp'));
+          } else {
+            ElMessage.error(this.$t('kling.message.startTaskFailed'));
+          }
+        })
+        .finally(async () => {
+          setTimeout(async () => {
+            await this.onGetTasks();
+            await this.onScrollDown();
+          }, 1000);
+        });
     }
   }
 });

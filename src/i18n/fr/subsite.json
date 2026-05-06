@@ -1,0 +1,194 @@
+{
+  "title.index": {
+    "message": "Mes sous-sites",
+    "description": "Titre principal de la page de gestion des sous-sites"
+  },
+  "title.create": {
+    "message": "Créer un sous-site",
+    "description": "Titre de la boîte de dialogue pour créer un nouveau sous-site"
+  },
+  "title.openNow": {
+    "message": "Accéder au sous-site maintenant",
+    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création"
+  },
+  "field.slug": {
+    "message": "Préfixe du sous-domaine",
+    "description": "Titre du champ d'entrée slug pour le sous-site"
+  },
+  "field.origin": {
+    "message": "Nom de domaine du sous-site",
+    "description": "Colonne de nom de domaine dans la liste des sous-sites"
+  },
+  "field.title": {
+    "message": "Titre du sous-site",
+    "description": "Champ de titre pour le sous-site"
+  },
+  "field.createdAt": {
+    "message": "Date de création",
+    "description": "Colonne de date de création du sous-site"
+  },
+  "field.actions": {
+    "message": "Actions",
+    "description": "Colonne d'actions dans la liste des sous-sites"
+  },
+  "placeholder.slug": {
+    "message": "Par exemple my-brand",
+    "description": "Placeholder pour le champ d'entrée slug"
+  },
+  "placeholder.title": {
+    "message": "À afficher dans l'onglet du navigateur et l'en-tête du site",
+    "description": "Placeholder pour le champ de titre"
+  },
+  "button.create": {
+    "message": "Créer un sous-site",
+    "description": "Bouton pour créer un sous-site"
+  },
+  "button.open": {
+    "message": "Ouvrir",
+    "description": "Bouton pour ouvrir le sous-site"
+  },
+  "button.manage": {
+    "message": "Gérer",
+    "description": "Bouton pour accéder aux paramètres du sous-site"
+  },
+  "message.indexTip": {
+    "message": "Créez des sous-sites de marque indépendants sous le site principal, chaque sous-site peut avoir son propre logo, titre et ensemble de fonctionnalités, sans avoir besoin de construire le code source séparément.",
+    "description": "Texte explicatif sur la page de gestion des sous-sites"
+  },
+  "message.empty": {
+    "message": "Vous n'avez pas encore créé de sous-site. Cliquez sur 'Créer un sous-site' en haut à droite pour commencer.",
+    "description": "Message d'indication pour une liste vide"
+  },
+  "message.slugTip": {
+    "message": "3-32 caractères en minuscules, chiffres ou tirets ; ne peut pas commencer ou se terminer par un tiret, et ne peut pas contenir de tirets consécutifs.",
+    "description": "Explication du champ slug"
+  },
+  "message.slugInvalid": {
+    "message": "Le format du préfixe du sous-domaine est incorrect, veuillez vérifier les règles et réessayer.",
+    "description": "Échec de la validation du slug"
+  },
+  "message.zoneMissing": {
+    "message": "Le domaine du sous-site n'est pas configuré sur le site principal, veuillez contacter l'administrateur du site.",
+    "description": "Zone de sous-domaine manquante"
+  },
+  "message.created": {
+    "message": "Sous-site créé avec succès !",
+    "description": "Confirmation de création réussie"
+  },
+  "message.createFailed": {
+    "message": "Échec de la création du sous-site, veuillez réessayer plus tard.",
+    "description": "Échec de la création"
+  },
+  "message.loadFailed": {
+    "message": "Échec du chargement de la liste des sous-sites.",
+    "description": "Échec du chargement de la liste"
+  },
+  "message.openNowConfirm": {
+    "message": "Le sous-site {origin} a été créé. Voulez-vous l'ouvrir maintenant pour continuer la configuration ?",
+    "description": "Demande d'ouverture immédiate après création"
+  },
+  "title.domains": {
+    "message": "Nom de domaine personnalisé pour {origin}",
+    "description": "Titre de la boîte de dialogue pour le nom de domaine personnalisé"
+  },
+  "title.bindDomain": {
+    "message": "Lier un nouveau domaine",
+    "description": "Titre du formulaire de liaison"
+  },
+  "button.domains": {
+    "message": "Domaines",
+    "description": "Bouton pour ouvrir la boîte de dialogue de gestion des domaines"
+  },
+  "button.bindDomain": {
+    "message": "Lier le domaine",
+    "description": "Soumettre la liaison d'un nouveau domaine"
+  },
+  "button.verify": {
+    "message": "Vérifier maintenant",
+    "description": "Vérifier si le domaine peut être résolu et obtenir un certificat via notre proxy inverse"
+  },
+  "button.refresh": {
+    "message": "Rafraîchir",
+    "description": "Récupérer à nouveau l'état du domaine"
+  },
+  "field.hostname": {
+    "message": "Votre domaine",
+    "description": "Entrez le domaine ou sous-domaine que vous possédez"
+  },
+  "field.recordType": {
+    "message": "Type d'enregistrement",
+    "description": "Colonne de type d'enregistrement DNS"
+  },
+  "field.recordName": {
+    "message": "Nom de l'enregistrement",
+    "description": "Colonne de nom d'enregistrement DNS"
+  },
+  "field.recordValue": {
+    "message": "Valeur de l'enregistrement",
+    "description": "Colonne de valeur d'enregistrement DNS"
+  },
+  "placeholder.hostname": {
+    "message": "Par exemple studio.mybrand.com",
+    "description": "Placeholder pour le champ d'entrée hostname"
+  },
+  "message.domainsIntro": {
+    "message": "Liez le domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS de ce domaine. Ajoutez un enregistrement CNAME comme indiqué ci-dessous, puis cliquez sur 'Vérifier maintenant', nous vous délivrerons automatiquement un certificat HTTPS gratuit via Let's Encrypt.",
+    "description": "Explication en haut de la boîte de dialogue"
+  },
+  "message.domainsEmpty": {
+    "message": "Aucun domaine personnalisé n'est encore lié. Remplissez le domaine complet dans le formulaire ci-dessous et cliquez sur 'Lier' pour commencer.",
+    "description": "Message d'indication pour une liste vide"
+  },
+  "message.hostnameTip": {
+    "message": "Doit être un domaine public dont vous pouvez contrôler le DNS.",
+    "description": "Indication pour le champ hostname"
+  },
+  "message.hostnameInvalid": {
+    "message": "Le format du domaine est incorrect. Doit être un domaine public résolvable, les adresses IP ne sont pas autorisées.",
+    "description": "Échec de la validation locale du hostname"
+  },
+  "message.domainCreated": {
+    "message": "Le domaine a été soumis, veuillez ajouter l'enregistrement CNAME comme indiqué.",
+    "description": "Succès de la requête POST /site-domains/"
+  },
+  "message.domainCreateFailed": {
+    "message": "Échec de la création du domaine, veuillez réessayer plus tard.",
+    "description": "Échec de la création"
+  },
+  "message.domainsLoadFailed": {
+    "message": "Échec du chargement de la liste des domaines.",
+    "description": "Échec du chargement de la liste des domaines"
+  },
+  "message.domainActive": {
+    "message": "Le domaine est actif ! Vous pouvez maintenant accéder à la sous-site via votre adresse HTTPS personnalisée.",
+    "description": "Indique que le domaine est en état actif"
+  },
+  "message.domainFailed": {
+    "message": "Échec de la validation ou de la mise en ligne du domaine.",
+    "description": "Texte d'état pour le statut échoué"
+  },
+  "message.domainVerifyFailed": {
+    "message": "Échec de la validation, veuillez vérifier si l'enregistrement CNAME pointe vers notre proxy inverse et si la propagation DNS est terminée.",
+    "description": "Interface de vérification 4xx"
+  },
+  "message.domainDeleteConfirm": {
+    "message": "Êtes-vous sûr de vouloir dissocier {hostname} ? Après la dissociation, les utilisateurs ne pourront plus accéder à votre sous-site via ce domaine.",
+    "description": "Confirmation de suppression"
+  },
+  "message.domainDeleteFailed": {
+    "message": "Échec de la suppression du domaine.",
+    "description": "Interface DELETE 5xx"
+  },
+  "status.pending": {
+    "message": "En attente de validation",
+    "description": "Étiquette d'état en attente : en attente que l'utilisateur ajoute le CNAME et clique sur 'Vérifier maintenant'"
+  },
+  "status.active": {
+    "message": "En ligne",
+    "description": "Étiquette d'état actif"
+  },
+  "status.failed": {
+    "message": "Échoué",
+    "description": "Étiquette d'état échoué"
+  }
+}

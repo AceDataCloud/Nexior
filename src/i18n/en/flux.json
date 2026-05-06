@@ -39,9 +39,13 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The elapsed time of the task (in seconds)"
+  },
   "name.createdAt": {
     "message": "Created At",
-    "description": "The date and time the Flux image was generated"
+    "description": "The date and time when the Flux image was generated"
   },
   "name.numbers": {
     "message": "Image Count",
@@ -72,7 +76,7 @@
     "description": "Description of the 'numbers' parameter"
   },
   "description.quality": {
-    "message": "Specify the quality of the generated image, with a range of values: 1-100.",
+    "message": "Specify the quality of the generated images, with a range of values: 1-100.",
     "description": "Description of the 'quality' parameter"
   },
   "description.prompt": {
@@ -85,7 +89,7 @@
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The pending status of the task"
+    "description": "The waiting status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -148,7 +152,7 @@
     "description": "Button text for viewing the generated Flux image"
   },
   "button.download": {
-    "message": "Download Image",
+    "message": "Download",
     "description": "Button text for downloading an image"
   },
   "message.downloadImage": {
@@ -189,7 +193,7 @@
   },
   "message.downloadVideo": {
     "message": "Download this image",
-    "description": "Message when the image is being generated"
+    "description": "Message displayed while the image is being generated"
   },
   "message.extendVideo": {
     "message": "Continue generating this image",
@@ -200,8 +204,8 @@
     "description": "Message when image generation fails"
   },
   "message.uploadVideoExceed": {
-    "message": "Uploaded number of first frame images exceeds limit",
-    "description": "Error message when the number of uploaded first frame images exceeds the limit"
+    "message": "Exceeded the limit for the number of first frame images uploaded",
+    "description": "Error message when the number of first frame images uploaded exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
     "message": "Uploaded file size must not exceed 10MB!",
@@ -212,12 +216,12 @@
     "description": "Error message when the uploaded file is not in MP4 format!"
   },
   "message.uploadStartImageExceed": {
-    "message": "Uploaded number of reference images exceeds limit",
-    "description": "Error message when the number of uploaded reference images exceeds the limit"
+    "message": "Exceeded the limit for the number of reference images uploaded",
+    "description": "Error message when the number of reference images uploaded exceeds the limit"
   },
   "message.uploadEndImageExceed": {
-    "message": "Uploaded number of last frame images exceeds limit",
-    "description": "Error message when the number of uploaded last frame images exceeds the limit"
+    "message": "Exceeded the limit for the number of last frame images uploaded",
+    "description": "Error message when the number of last frame images uploaded exceeds the limit"
   },
   "message.uploadStartImageError": {
     "message": "Failed to upload reference image",
@@ -240,7 +244,7 @@
     "description": "Message when there are no available operations"
   },
   "message.noTasks": {
-    "message": "No historical tasks, please click to generate an image on the left",
+    "message": "No historical tasks, please click on the left to generate an image",
     "description": "Message when there are no tasks"
   }
 }

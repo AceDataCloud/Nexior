@@ -1,4 +1,276 @@
 {
+  "tab.videoGeneration": {
+    "message": "視頻生成",
+    "description": "Tab 標籤：Video Generation"
+  },
+  "tab.motionControl": {
+    "message": "動作控制",
+    "description": "Tab 標籤：Motion Control"
+  },
+  "name.motionImage": {
+    "message": "人物參考圖片",
+    "description": "Motion Control 中的人物圖輸入"
+  },
+  "name.motionVideo": {
+    "message": "動作參考視頻",
+    "description": "Motion Control 中的參考視頻輸入"
+  },
+  "name.motionPrompt": {
+    "message": "補充提示詞（可選）",
+    "description": "Motion Control 中的補充提示詞"
+  },
+  "name.characterOrientation": {
+    "message": "人物朝向",
+    "description": "人物朝向字段"
+  },
+  "name.orientationImage": {
+    "message": "跟隨圖片",
+    "description": "人物朝向選項：跟隨圖片"
+  },
+  "name.orientationVideo": {
+    "message": "跟隨視頻",
+    "description": "人物朝向選項：跟隨視頻"
+  },
+  "name.keepOriginalSound": {
+    "message": "保留原始音頻",
+    "description": "keep_original_sound 開關"
+  },
+  "description.motionImage": {
+    "message": "上傳人物參考圖，生成視頻中的人物、背景等元素均以此為參照",
+    "description": "motion image_url 說明"
+  },
+  "description.motionVideo": {
+    "message": "上傳動作參考視頻，生成視頻中的人物動作與該視頻一致（MP4 / MOV，≤1 分鐘，≤1 GB）",
+    "description": "motion video_url 說明"
+  },
+  "description.motionPrompt": {
+    "message": "可選。可以包含正向描述與負向描述，輔助生成效果",
+    "description": "motion prompt 說明"
+  },
+  "description.characterOrientation": {
+    "message": "選「跟隨視頻」時，複雜動作表現更好；選「跟隨圖片」時，人物朝向與參考圖一致，鏡頭運動表現更好",
+    "description": "character_orientation 說明"
+  },
+  "description.motionMode": {
+    "message": "std 性能優先，pro 畫質優先",
+    "description": "motion mode 說明"
+  },
+  "description.keepOriginalSound": {
+    "message": "開啟後保留參考視頻的原聲；關閉後輸出視頻不包含原始音頻",
+    "description": "keep_original_sound 說明"
+  },
+  "placeholder.motionPrompt": {
+    "message": "例如：一個人在跳舞。可選。",
+    "description": "motion prompt 占位符"
+  },
+  "button.generateMotion": {
+    "message": "生成動作控制視頻",
+    "description": "Motion Control 生成按鈕"
+  },
+  "message.motionMissingInputs": {
+    "message": "請同時上傳人物圖與動作參考視頻",
+    "description": "Motion Control 缺少輸入時的提示"
+  },
+  "inspiration.title": {
+    "message": "靈感與預設",
+    "description": "Inspiration 抽屜的標題"
+  },
+  "inspiration.openButton": {
+    "message": "靈感",
+    "description": "打開 Inspiration 抽屜的按鈕"
+  },
+  "inspiration.removeChip": {
+    "message": "移除此預設",
+    "description": "移除提示詞區中已選預設的按鈕 aria-label"
+  },
+  "inspiration.hint": {
+    "message": "點擊短語自動追加到提示詞；再次點擊可移除。",
+    "description": "Inspiration 抽屜頂部的使用說明"
+  },
+  "inspiration.empty": {
+    "message": "暫無可用預設",
+    "description": "Inspiration 抽屜空狀態"
+  },
+  "inspiration.selectedSummary": {
+    "message": "已選 {count} 項",
+    "description": "已選擇的預設數量"
+  },
+  "inspiration.clearSelected": {
+    "message": "全部清除",
+    "description": "清除所有已選預設的按鈕"
+  },
+  "inspiration.group.cameraMovements": {
+    "message": "鏡頭運動",
+    "description": "Inspiration 分組：鏡頭運動"
+  },
+  "inspiration.group.cameraSpeed": {
+    "message": "運動速度",
+    "description": "Inspiration 分組：運動速度"
+  },
+  "inspiration.group.shotType": {
+    "message": "鏡頭景別",
+    "description": "Inspiration 分組：景別 / 角度"
+  },
+  "inspiration.group.light": {
+    "message": "光影",
+    "description": "Inspiration 分組：光影"
+  },
+  "inspiration.group.frame": {
+    "message": "畫面",
+    "description": "Inspiration 分組：畫面 / 構圖"
+  },
+  "inspiration.group.atmosphere": {
+    "message": "氛圍",
+    "description": "Inspiration 分組：氛圍 / 風格"
+  },
+  "inspiration.chip.rotateAround": {
+    "message": "鏡頭圍繞主體旋轉",
+    "description": ""
+  },
+  "inspiration.chip.stationary": {
+    "message": "鏡頭靜止",
+    "description": ""
+  },
+  "inspiration.chip.handheld": {
+    "message": "手持拍攝",
+    "description": ""
+  },
+  "inspiration.chip.zoomOut": {
+    "message": "鏡頭拉遠",
+    "description": ""
+  },
+  "inspiration.chip.zoomIn": {
+    "message": "鏡頭推近",
+    "description": ""
+  },
+  "inspiration.chip.follow": {
+    "message": "鏡頭跟隨主體移動",
+    "description": ""
+  },
+  "inspiration.chip.panRight": {
+    "message": "鏡頭向右平移",
+    "description": ""
+  },
+  "inspiration.chip.tiltUp": {
+    "message": "鏡頭向上傾斜",
+    "description": ""
+  },
+  "inspiration.chip.tiltDown": {
+    "message": "鏡頭向下傾斜",
+    "description": ""
+  },
+  "inspiration.chip.orbit": {
+    "message": "鏡頭環繞推進",
+    "description": ""
+  },
+  "inspiration.chip.speedSlow": {
+    "message": "鏡頭運動緩慢",
+    "description": ""
+  },
+  "inspiration.chip.speedMedium": {
+    "message": "鏡頭運動中速",
+    "description": ""
+  },
+  "inspiration.chip.speedFast": {
+    "message": "鏡頭運動快速",
+    "description": ""
+  },
+  "inspiration.chip.shotClose": {
+    "message": "近景特寫",
+    "description": ""
+  },
+  "inspiration.chip.shotMedium": {
+    "message": "中景",
+    "description": ""
+  },
+  "inspiration.chip.shotLong": {
+    "message": "遠景",
+    "description": ""
+  },
+  "inspiration.chip.shotLowAngle": {
+    "message": "低角度仰拍",
+    "description": ""
+  },
+  "inspiration.chip.shotHighAngle": {
+    "message": "高角度俯拍",
+    "description": ""
+  },
+  "inspiration.chip.shotShallowDof": {
+    "message": "淺景深",
+    "description": ""
+  },
+  "inspiration.chip.shotFront": {
+    "message": "正面視角",
+    "description": ""
+  },
+  "inspiration.chip.shotProfile": {
+    "message": "側面視角",
+    "description": ""
+  },
+  "inspiration.chip.shotCloseUp": {
+    "message": "面部特寫",
+    "description": ""
+  },
+  "inspiration.chip.shotDrone": {
+    "message": "無人機視角",
+    "description": ""
+  },
+  "inspiration.chip.lightSunlight": {
+    "message": "陽光",
+    "description": ""
+  },
+  "inspiration.chip.lightSoft": {
+    "message": "柔光",
+    "description": ""
+  },
+  "inspiration.chip.lightNeon": {
+    "message": "霓虹光",
+    "description": ""
+  },
+  "inspiration.chip.lightWarm": {
+    "message": "暖光",
+    "description": ""
+  },
+  "inspiration.chip.lightNature": {
+    "message": "自然光",
+    "description": ""
+  },
+  "inspiration.chip.lightCandle": {
+    "message": "燭光",
+    "description": ""
+  },
+  "inspiration.chip.lightCityNight": {
+    "message": "城市夜景燈光",
+    "description": ""
+  },
+  "inspiration.chip.frameRichDetails": {
+    "message": "細節豐富",
+    "description": ""
+  },
+  "inspiration.chip.frameSimpleBg": {
+    "message": "簡潔背景",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereMysterious": {
+    "message": "神秘氛圍",
+    "description": ""
+  },
+  "inspiration.chip.atmospherePeaceful": {
+    "message": "寧靜氛圍",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereHeartwarming": {
+    "message": "溫暖治癒",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereVivid": {
+    "message": "鮮活生動",
+    "description": ""
+  },
+  "inspiration.chip.atmosphereColorful": {
+    "message": "色彩豐富",
+    "description": ""
+  },
   "name.taskId": {
     "message": "任務 ID",
     "description": "任務的 ID"
@@ -8,12 +280,68 @@
     "description": "要生成的 Kling視頻的內容類型，如'鏈接'、'文本'等"
   },
   "name.modeStd": {
-    "message": "標準",
-    "description": "Kling視頻的標準模式"
+    "message": "標準 (720p)",
+    "description": "Kling視頻的標準模式（輸出 720p）"
   },
   "name.modePro": {
-    "message": "高品質",
-    "description": "Kling視頻的高品質模式"
+    "message": "高品質 (1080p)",
+    "description": "Kling視頻的高品質模式（輸出 1080p）"
+  },
+  "name.mode4k": {
+    "message": "原生 4K",
+    "description": "Kling 4K 模式（僅 v3 / v3-Omni 支持）"
+  },
+  "name.cameraControl": {
+    "message": "運鏡控制",
+    "description": "相機控制類型與參數"
+  },
+  "name.cameraTypeNone": {
+    "message": "不使用",
+    "description": "不使用運鏡控制"
+  },
+  "name.cameraTypeSimple": {
+    "message": "自定義（6 維度）",
+    "description": "使用自定義六維度參數"
+  },
+  "name.cameraTypeDownBack": {
+    "message": "下移並後退",
+    "description": "預設運鏡：下移並後退"
+  },
+  "name.cameraTypeForwardUp": {
+    "message": "向前並上移",
+    "description": "預設運鏡：向前並上移"
+  },
+  "name.cameraTypeLeftTurnForward": {
+    "message": "左轉並前進",
+    "description": "預設運鏡：左轉並前進"
+  },
+  "name.cameraTypeRightTurnForward": {
+    "message": "右轉並前進",
+    "description": "預設運鏡：右轉並前進"
+  },
+  "name.cc_horizontal": {
+    "message": "水平移動",
+    "description": "camera_control.config.horizontal"
+  },
+  "name.cc_vertical": {
+    "message": "垂直移動",
+    "description": "camera_control.config.vertical"
+  },
+  "name.cc_pan": {
+    "message": "水平搖鏡（pan）",
+    "description": "camera_control.config.pan"
+  },
+  "name.cc_tilt": {
+    "message": "垂直搖鏡（tilt）",
+    "description": "camera_control.config.tilt"
+  },
+  "name.cc_roll": {
+    "message": "翻滾（roll）",
+    "description": "camera_control.config.roll"
+  },
+  "name.cc_zoom": {
+    "message": "推拉變焦（zoom）",
+    "description": "camera_control.config.zoom"
   },
   "name.failure": {
     "message": "失敗",
@@ -30,6 +358,10 @@
   "name.traceId": {
     "message": "追蹤 ID",
     "description": "任務的追蹤 ID"
+  },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "任務的耗時（秒）"
   },
   "name.createdAt": {
     "message": "創建時間",
@@ -77,11 +409,11 @@
   },
   "name.ratio": {
     "message": "視頻比例",
-    "description": "要生成視頻所採用的視頻比例"
+    "description": "要生成視頻所采用的視頻比例"
   },
   "name.mode": {
     "message": "視頻模式",
-    "description": "要生成視頻所採用的模式"
+    "description": "要生成視頻所采用的模式"
   },
   "name.effect": {
     "message": "視頻效果",
@@ -89,7 +421,7 @@
   },
   "name.ingredientsModel": {
     "message": "成分模型",
-    "description": "要生成視頻所採用的模型版本"
+    "description": "要生成視頻所采用的模型版本"
   },
   "name.klingBot": {
     "message": "Kling Bot",
@@ -100,7 +432,7 @@
     "description": "參數'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "在多圖創建視頻的任務中，它必須上傳多張圖片。",
+    "message": "在多圖創建視頻的任務中，必須上傳多張圖片。",
     "description": "參數'imageUrl'的描述"
   },
   "description.prompt": {
@@ -122,6 +454,42 @@
   "description.cfgScale": {
     "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強，",
     "description": "上傳參考參數的描述"
+  },
+  "description.mode": {
+    "message": "std 性能更高，pro 畫質更好；4K 僅 v3 / v3-Omni 支持，且不可與運鏡控制同時使用",
+    "description": "模式字段的整體說明"
+  },
+  "description.mode4kRequiresV3": {
+    "message": "僅 kling-v3 / kling-v3-omni 支持",
+    "description": "4k 選項被禁用的原因（模型不匹配）"
+  },
+  "description.mode4kIncompatibleCamera": {
+    "message": "已開啟運鏡控制，不可與 4K 同時使用",
+    "description": "4k 選項被禁用的原因（已設置運鏡）"
+  },
+  "description.duration": {
+    "message": "普通模型僅支持 5/10 秒；v3 / v3-Omni 支持 3/5/8/10/12/15 秒",
+    "description": "時長字段的整體說明"
+  },
+  "description.durationV3Only": {
+    "message": "僅 v3 / v3-Omni 支持",
+    "description": "時長選項禁用原因"
+  },
+  "description.generateAudio": {
+    "message": "在生成視頻的同時合成音效。僅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）支持",
+    "description": "音效開關說明（已支持）"
+  },
+  "description.generateAudioUnsupported": {
+    "message": "當前模型不支持同步音效，僅 kling-v3 / kling-v3-omni / kling-v2-6（pro 模式）可用",
+    "description": "音效開關說明（已禁用）"
+  },
+  "description.cameraControl": {
+    "message": "控制相機的運動方向。選擇「自定義」可在 6 個維度上微調，每項取值 [-1, 1]",
+    "description": "運鏡控制說明"
+  },
+  "description.cameraControlDisabled4k": {
+    "message": "已選擇 4K 模式，運鏡控制不可用，請切換到 std / pro 後再啟用",
+    "description": "運鏡控制被禁用原因"
   },
   "status.pending": {
     "message": "等待中",
@@ -159,6 +527,10 @@
     "message": "請選擇...",
     "description": "寬高比輸入的佔位符"
   },
+  "placeholder.cameraType": {
+    "message": "不使用",
+    "description": "運鏡類型選擇佔位符"
+  },
   "placeholder.preset": {
     "message": "請選擇...",
     "description": "預設輸入的佔位符"
@@ -188,8 +560,8 @@
     "description": "生成Kling視頻的按鈕文本"
   },
   "button.extend": {
-    "message": "擴展視頻",
-    "description": "擴展視頻按鈕文本"
+    "message": "擴展影片",
+    "description": "擴展影片按鈕文本"
   },
   "button.download": {
     "message": "下載視頻",
@@ -218,6 +590,34 @@
   "message.uploadReferencesError": {
     "message": "上傳圖片失敗，請稍後重試",
     "description": "圖片上傳失敗時的錯誤消息"
+  },
+  "message.endImageRequiresStart": {
+    "message": "使用尾幀參考圖前，請先上傳首幀參考圖",
+    "description": "用戶只上傳了尾幀沒有首幀時的錯誤提示"
+  },
+  "message.endImageNotSupported": {
+    "message": "尾幀參考圖不被當前模型/模式/時長支持，請先調整配置（常見要求：模式 pro、時長 5s）。",
+    "description": "上傳尾幀時當前模型不支持的提示"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要確認",
+    "description": "切換參數時會丟失現有設置的確認彈窗標題"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "當前選擇不支持以下已啟用的設置：{fields}。繼續將清理這些設置。",
+    "description": "切換 model/mode/duration 後會丟失募集設置的提示文案，{fields} 會被佔位符替換為實際字段名"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的設置：{fields}",
+    "description": "用戶確認切換後的 toast 提醒"
+  },
+  "button.confirmContinue": {
+    "message": "繼續切換",
+    "description": "feature 丟失確認彈窗的主按鈕"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "feature 丟失確認彈窗的取消按鈕"
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
@@ -269,7 +669,7 @@
   },
   "message.uploadEndImageExceed": {
     "message": "上傳尾幀圖片數量超過限制",
-    "description": "上傳尾幀圖片數量超過限制時的錯誤信息"
+    "description": "上傳首幀圖片數量超過限制時的錯誤信息"
   },
   "message.uploadStartImageError": {
     "message": "上傳首幀圖片失敗",
@@ -277,7 +677,7 @@
   },
   "message.uploadVideoError": {
     "message": "上傳視頻失敗",
-    "description": "上傳視頻失敗時的錯誤信息"
+    "description": "上傳首幀圖片失敗時的錯誤信息"
   },
   "message.uploadEndImageError": {
     "message": "上傳尾幀圖片失敗",

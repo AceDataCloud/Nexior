@@ -40,7 +40,7 @@ import {
   ROUTE_SITE_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlAuth, getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserId } from '@/utils';
 import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
@@ -183,7 +183,9 @@ export default defineComponent({
           name: link.name
         });
       } else if (link.href) {
-        window.open(link.href, '_blank');
+        // Append `?user_id=<currentUserId>` so the destination site can
+        // detect a cross-site identity mismatch and re-auth.
+        window.open(withCurrentUserId(link.href), '_blank');
       } else if (link.callback) {
         link.callback();
       }

@@ -1,4 +1,12 @@
 {
+  "thinking.inProgress": {
+    "message": "Tänker...",
+    "description": "Label som visas när modellen genererar resonemanget"
+  },
+  "thinking.done": {
+    "message": "Resonemanget",
+    "description": "Label som används för att fälla ut resonemanget när modellen har slutfört"
+  },
   "button.thinkDeeper": {
     "message": "Tänk djupare",
     "description": "Knapp för att tänka djupare"
@@ -71,6 +79,14 @@
     "message": "Stort språkmodell utvecklad av Zhiyu AI",
     "description": "Beskrivning av GLM-modellgruppen"
   },
+  "model.55": {
+    "message": "gpt-5.5",
+    "description": "Modellnamnet för tjänsten, det vill säga GPT 5.5"
+  },
+  "model.55Description": {
+    "message": "Den senaste generationens flaggskepp GPT 5.5-modell",
+    "description": "Beskrivning av GPT 5.5-modellen"
+  },
   "model.54": {
     "message": "gpt-5.4",
     "description": "Modellnamnet för tjänsten, det vill säga GPT 5.4"
@@ -87,24 +103,16 @@
     "message": "Snabbare och lättare GPT 5.4-modell",
     "description": "Beskrivning av GPT 5.4 Mini-modellen"
   },
-  "model.54Nano": {
-    "message": "gpt-5.4-nano",
-    "description": "Modellnamnet för tjänsten, det vill säga GPT 5.4 Nano"
-  },
-  "model.54NanoDescription": {
-    "message": "Den minsta och snabbaste GPT 5.4-modellen",
-    "description": "Beskrivning av GPT 5.4 Nano-modellen"
-  },
   "model.deepseekChat": {
-    "message": "3.0 Standard",
+    "message": "3.0",
     "description": "Modellnamnet för tjänsten, det vill säga DeepSeek Chat"
   },
   "model.deepseekChatDescription": {
-    "message": "För dagliga uppgifter",
+    "message": "För vardagliga uppgifter",
     "description": "Beskrivning av DeepSeek Chat-modellen"
   },
   "model.deepseekReasoner": {
-    "message": "R1 Resonör",
+    "message": "R1",
     "description": "Modellnamnet för tjänsten, det vill säga DeepSeek Reasoner"
   },
   "model.deepseekReasonerDescription": {
@@ -112,12 +120,20 @@
     "description": "Beskrivning av DeepSeek Reasoner-modellen"
   },
   "model.deepseekChat32": {
-    "message": "V3.2 Beta",
+    "message": "3.2",
     "description": "Modellnamnet för tjänsten, det vill säga DeepSeek V3.2 Exp"
   },
   "model.deepseekChat32Description": {
-    "message": "Den senaste beta-versionen",
-    "description": "Beskrivning av DeepSeek V3.2 beta-modellen"
+    "message": "Den senaste experimentella versionen",
+    "description": "Beskrivning av DeepSeek V3.2 experimentella modellen"
+  },
+  "model.deepseekV4Flash": {
+    "message": "4.0",
+    "description": "Modellnamnet för tjänsten, det vill säga DeepSeek V4 Flash"
+  },
+  "model.deepseekV4FlashDescription": {
+    "message": "Den senaste generationens lätta flaggskepp, 1M kontext",
+    "description": "Beskrivning av DeepSeek V4 Flash-modellen"
   },
   "model.grok4": {
     "message": "grok-4",
@@ -134,22 +150,6 @@
   "model.grok3Description": {
     "message": "För de flesta uppgifter",
     "description": "Beskrivning av Grok3-modellen"
-  },
-  "model.grok3Reasoner": {
-    "message": "grok-3 Resonör",
-    "description": "Modellnamnet för tjänsten, det vill säga Grok3 Resonör"
-  },
-  "model.grok3ReasonerDescription": {
-    "message": "För resonemang och djupare frågor",
-    "description": "Beskrivning av Grok3 Resonör-modellen"
-  },
-  "model.grok3Deepsearch": {
-    "message": "grok-3 Djupforskning",
-    "description": "Modellnamnet för tjänsten, det vill säga Grok3 Djupforskning"
-  },
-  "model.grok3DeepsearchDescription": {
-    "message": "För djup forskning och komplexa frågor",
-    "description": "Beskrivning av Grok3 Djupforskning-modellen"
   },
   "model.gemini30Pro": {
     "message": "gemini-3.0-pro",
@@ -175,57 +175,57 @@
     "message": "Snabbare och lättare modell",
     "description": "Beskrivning av Gemini 2.5 Flash-modellen"
   },
-  "model.claudeOpus4": {
-    "message": "claude-opus-4",
-    "description": "Modellnamnet för tjänsten, det vill säga Claude Opus 4"
+  "model.claudeOpus47": {
+    "message": "claude-opus-4.7",
+    "description": "Modellnamnet för tjänsten, det vill säga Claude Opus 4.7"
   },
-  "model.claudeOpus4Description": {
+  "model.claudeOpus47Description": {
     "message": "Den mest avancerade modellen hittills",
-    "description": "Beskrivning av Claude Opus 4-modellen"
+    "description": "Beskrivning av Claude Opus 4.7-modellen"
   },
-  "model.claudeSonnet4": {
-    "message": "claude-sonnet-4",
-    "description": "Modellnamnet för tjänsten, det vill säga Claude Sonnet 4"
+  "model.claudeSonnet46": {
+    "message": "claude-sonett-4.6",
+    "description": "Modellnamnet för tjänsten, det vill säga Claude Sonett 4.6"
   },
-  "model.claudeSonnet4Description": {
-    "message": "Passar de flesta uppgifter",
-    "description": "Beskrivning av Claude Sonnet 4-modellen"
+  "model.claudeSonnet46Description": {
+    "message": "Passar för de flesta uppgifter",
+    "description": "Beskrivning av Claude Sonnet 4.6-modellen"
   },
-  "model.claude37Sonnet": {
-    "message": "claude-3.7-sonnet",
-    "description": "Modellnamnet för tjänsten, det vill säga Claude 3.7 Sonnet"
+  "model.claudeHaiku45": {
+    "message": "claude-haiku-4.5",
+    "description": "Modellnamn för tjänsten, dvs Claude Haiku 4.5"
   },
-  "model.claude37SonnetDescription": {
-    "message": "Balanserad prestanda och hastighet",
-    "description": "Beskrivning av Claude 3.7 Sonnet-modellen"
+  "model.claudeHaiku45Description": {
+    "message": "Lätt och snabb modell",
+    "description": "Beskrivning av Claude Haiku 4.5-modellen"
   },
   "model.kimiK25": {
     "message": "kimi-k2.5",
-    "description": "Modellnamnet för tjänsten, det vill säga Kimi K2.5"
+    "description": "Modellnamn för tjänsten, dvs Kimi K2.5"
   },
   "model.kimiK25Description": {
     "message": "För närvarande den mest avancerade modellen",
     "description": "Beskrivning av Kimi K2.5-modellen"
   },
   "model.kimiK2Thinking": {
-    "message": "kimi-k2 tänkande",
-    "description": "Modellnamnet för tjänsten, det vill säga Kimi K2 tänkande"
+    "message": "kimi-k2 resonemang",
+    "description": "Modellnamn för tjänsten, dvs Kimi K2 resonemang"
   },
   "model.kimiK2ThinkingDescription": {
     "message": "Passar för resonemang och djupgående frågor",
-    "description": "Beskrivning av Kimi K2 tänkande-modellen"
+    "description": "Beskrivning av Kimi K2 resonemangsmodellen"
   },
   "model.kimiK2ThinkingTurbo": {
-    "message": "kimi-k2 turbo tänkande",
-    "description": "Modellnamnet för tjänsten, det vill säga Kimi K2 turbo tänkande"
+    "message": "kimi-k2 turbo resonemang",
+    "description": "Modellnamn för tjänsten, dvs Kimi K2 turbo resonemang"
   },
   "model.kimiK2ThinkingTurboDescription": {
-    "message": "Snabbare tänkande modell",
-    "description": "Beskrivning av Kimi K2 turbo tänkande-modellen"
+    "message": "Snabbare resonemangsmodell",
+    "description": "Beskrivning av Kimi K2 turbo resonemangsmodellen"
   },
   "model.glm51": {
     "message": "glm-5.1",
-    "description": "Modellnamnet för tjänsten, det vill säga GLM 5.1"
+    "description": "Modellnamn för tjänsten, dvs GLM 5.1"
   },
   "model.glm51Description": {
     "message": "Den senaste flaggskeppsmodellen från Zhipu",
@@ -233,10 +233,10 @@
   },
   "model.glm47": {
     "message": "glm-4.7",
-    "description": "Modellnamnet för tjänsten, det vill säga GLM 4.7"
+    "description": "Modellnamn för tjänsten, dvs GLM 4.7"
   },
   "model.glm47Description": {
-    "message": "Balanserad prestanda och kostnad",
+    "message": "Balans mellan prestanda och kostnad",
     "description": "Beskrivning av GLM 4.7-modellen"
   },
   "message.startNewChat": {
@@ -252,8 +252,8 @@
     "description": "Meddelande på webbsidan som informerar användaren om att ansöka om relevant tjänst först"
   },
   "message.newMessagePlaceholder": {
-    "message": "Skriv ditt meddelande...",
-    "description": "Platsinnehåll på webbsidan som informerar användaren om att skriva ett meddelande"
+    "message": "Skriv din fråga...",
+    "description": "Platshållare på webbsidan som informerar användaren om att skriva en fråga"
   },
   "message.noInput": {
     "message": "Frågan får inte vara tom",
@@ -280,7 +280,7 @@
     "description": "Exempel på fråga för att starta en konversation, be användaren skriva en JavaScript-kod som skriver ut Hello World"
   },
   "message.question2": {
-    "message": "Skapa en personlig webbplats",
+    "message": "Skapa en personlig webbsida",
     "description": "Exempel på fråga för att starta en konversation, be användaren skriva ett e-postmeddelande till Mike och berätta att de just har flyttat"
   },
   "message.question3": {
@@ -312,36 +312,36 @@
     "description": "Meddelande på webbsidan som informerar användaren om att svaret misslyckades, försök igen senare"
   },
   "message.errorBadRequest": {
-    "message": "Begäran är ogiltig, vänligen ställ frågan igen",
-    "description": "Meddelande på webbsidan som informerar användaren om att begäran är ogiltig, vänligen ställ frågan igen"
+    "message": "Förfrågan är ogiltig, vänligen ställ frågan igen",
+    "description": "Meddelande på webbsidan som informerar användaren om att förfrågan är ogiltig, vänligen ställ frågan igen"
   },
   "message.errorNoConversation": {
     "message": "Konversationen finns inte eller har gått ut, vänligen börja en ny konversation",
     "description": "Meddelande på webbsidan som informerar användaren om att konversationen inte finns eller har gått ut, vänligen börja en ny konversation"
   },
   "message.errorContentTooLarge": {
-    "message": "Innehållet är för långt, vänligen förkorta och försök igen",
-    "description": "Meddelande på webbsidan som informerar användaren om att innehållet är för långt, vänligen förkorta och försök igen"
+    "message": "Frågan är för lång, vänligen förkorta den och försök igen",
+    "description": "Meddelande på webbsidan som informerar användaren om att frågan är för lång, vänligen förkorta den och försök igen"
   },
   "message.errorTooManyRequests": {
     "message": "Dina åtgärder är för frekventa, vänligen försök igen senare",
     "description": "Meddelande på webbsidan som informerar användaren om att deras åtgärder är för frekventa, vänligen försök igen senare"
   },
   "message.errorBusy": {
-    "message": "Servern är upptagen, vänligen försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att servern är upptagen, vänligen försök igen senare"
+    "message": "Servern är upptagen, försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren om att servern är upptagen, försök igen senare"
   },
   "message.errorUsedUp": {
-    "message": "Du har använt upp dina paket, vänligen köp fler för att fortsätta använda",
-    "description": "Meddelande på webbsidan som informerar användaren om att de har använt upp sina paket, vänligen köp fler för att fortsätta använda"
+    "message": "Du har använt upp dina paket, köp fler för att fortsätta använda",
+    "description": "Meddelande på webbsidan som informerar användaren om att de har använt upp sina paket, köp fler för att fortsätta använda"
   },
   "message.errorUnknown": {
-    "message": "Ett okänt fel har inträffat på servern, vänligen försök igen senare eller kontakta support",
-    "description": "Meddelande på webbsidan som informerar användaren om att ett okänt fel har inträffat på servern, vänligen försök igen senare eller kontakta support"
+    "message": "Ett okänt fel har inträffat på servern, försök igen senare eller kontakta support",
+    "description": "Meddelande på webbsidan som informerar användaren om att ett okänt fel har inträffat på servern, försök igen senare eller kontakta support"
   },
   "message.errorTimeout": {
-    "message": "Svarstiden har överskridits, vänligen försök igen senare",
-    "description": "Meddelande på webbsidan som informerar användaren om att svarstiden har överskridits, vänligen försök igen senare"
+    "message": "Svarstiden har gått ut, försök igen senare",
+    "description": "Meddelande på webbsidan som informerar användaren om att svarstiden har gått ut, försök igen senare"
   },
   "message.errorNotApplied": {
     "message": "Du har inte ansökt om denna tjänst, vänligen ansök först innan du fortsätter",
@@ -352,8 +352,8 @@
     "description": "Meddelande på webbsidan som informerar användaren om att bekräfta borttagning"
   },
   "message.howToUse": {
-    "message": "AI kan göra misstag, vänligen kontrollera viktig information.",
-    "description": "Meddelande på webbsidan som informerar användaren om att AI kan göra misstag, vänligen kontrollera viktig information"
+    "message": "AI kan göra misstag, kontrollera viktig information.",
+    "description": "Meddelande på webbsidan som informerar användaren om att AI kan göra misstag, kontrollera viktig information"
   },
   "title.chat": {
     "message": "AI Chatt",
@@ -399,368 +399,124 @@
     "message": "Tidigare",
     "description": "Webbsidans gruppnamn, det vill säga Tidigare"
   },
-  "mcp.title": {
-    "message": "MCP Server",
-    "description": "Titel på dialogrutan för MCP serverhantering"
-  },
-  "mcp.addServer": {
-    "message": "Lägg till server",
-    "description": "Knapptitel för att lägga till MCP server"
-  },
-  "mcp.name": {
-    "message": "Namn",
-    "description": "Namn på MCP server"
-  },
-  "mcp.namePlaceholder": {
-    "message": "Ge servern ett namn",
-    "description": "Platshållare för MCP servernamn"
-  },
-  "mcp.url": {
-    "message": "URL",
-    "description": "MCP server URL"
-  },
-  "mcp.urlPlaceholder": {
-    "message": "https://example.com/mcp",
-    "description": "Platshållare för MCP server URL"
-  },
-  "mcp.description": {
-    "message": "Beskrivning",
-    "description": "Beskrivning av MCP server"
-  },
-  "mcp.descriptionPlaceholder": {
-    "message": "Beskriv syftet med denna server",
-    "description": "Platshållare för MCP serverbeskrivning"
-  },
-  "mcp.authType": {
-    "message": "Autentiseringstyp",
-    "description": "Autentiseringstyp för MCP server"
-  },
-  "mcp.authNone": {
-    "message": "Ingen",
-    "description": "Ingen autentisering"
-  },
-  "mcp.authBearer": {
-    "message": "Bearer Token",
-    "description": "Bearer Token autentisering"
-  },
-  "mcp.authToken": {
-    "message": "Token",
-    "description": "Autentiseringstoken"
-  },
-  "mcp.authTokenPlaceholder": {
-    "message": "Ange autentiseringstoken",
-    "description": "Platshållare för autentiseringstoken"
-  },
-  "mcp.test": {
-    "message": "Testa anslutning",
-    "description": "Testa anslutning till MCP server"
-  },
-  "mcp.testSuccess": {
-    "message": "Anslutning lyckades",
-    "description": "Test av anslutning lyckades"
-  },
-  "mcp.testFailed": {
-    "message": "Anslutning misslyckades",
-    "description": "Test av anslutning misslyckades"
-  },
-  "mcp.toolsFound": {
-    "message": "Hittade {count} verktyg",
-    "description": "Antal hittade verktyg"
-  },
-  "mcp.empty": {
-    "message": "Inga MCP servrar tillgängliga, lägg till en för att utöka AI:s kapabiliteter",
-    "description": "MCP serverlista är tom"
-  },
-  "mcp.loadErrorHint": {
-    "message": "Kunde inte ladda MCP-servern, denna funktion kanske inte är tillgänglig än.",
-    "description": "Meddelande när MCP-servern misslyckas med att laddas på grund av nätverks-/CORS-fel"
-  },
-  "mcp.nameUrlRequired": {
-    "message": "Fyll i namn och URL",
-    "description": "Namn och URL är obligatoriska"
-  },
-  "mcp.urlRequired": {
-    "message": "Fyll i URL",
-    "description": "URL är obligatorisk"
-  },
-  "mcp.created": {
-    "message": "Tillagd",
-    "description": "MCP-servern har lagts till"
-  },
-  "mcp.updated": {
-    "message": "Uppdaterad",
-    "description": "MCP-servern har uppdaterats"
-  },
-  "mcp.deleted": {
-    "message": "Borttagen",
-    "description": "MCP-servern har tagits bort"
-  },
-  "mcp.saveFailed": {
-    "message": "Sparande misslyckades",
-    "description": "MCP-servern kunde inte sparas"
-  },
-  "mcp.deleteConfirm": {
-    "message": "Bekräfta borttagning av servern \"{name}\"?",
-    "description": "Bekräftelsemeddelande för borttagning"
-  },
-  "mcp.tooltip": {
-    "message": "MCP-server",
-    "description": "Meddelande för MCP-knappen"
-  },
-  "mcp.authOAuth": {
-    "message": "OAuth 2.0",
-    "description": "OAuth autentiseringstyp"
-  },
-  "mcp.oauthHint": {
-    "message": "Klicka på \"Autorisera\"-knappen på serverkortet för att slutföra OAuth-autentiseringen.",
-    "description": "Meddelande när OAuth autentiseringstyp väljs"
-  },
-  "mcp.authorize": {
-    "message": "Autorisera",
-    "description": "OAuth auktoriseringsknapp"
-  },
-  "mcp.oauthAuthorized": {
-    "message": "OAuth-auktorisering lyckades",
-    "description": "Meddelande om lyckad OAuth-auktorisering"
-  },
-  "mcp.oauthFailed": {
-    "message": "OAuth-auktorisering misslyckades",
-    "description": "Meddelande om misslyckad OAuth-auktorisering"
-  },
-  "mcp.popupBlocked": {
-    "message": "Popup-fönstret blockerades, vänligen tillåt popup-fönster från denna webbplats.",
-    "description": "Meddelande när popup-fönstret blockeras"
-  },
-  "connector.title": {
-    "message": "Anslutare",
-    "description": "Titel på dialogrutan för hantering av anslutare"
-  },
-  "connector.tooltip": {
-    "message": "OAuth-anslutare",
-    "description": "Meddelande för anslutarknappen"
-  },
-  "connector.noProviders": {
-    "message": "Inga tillgängliga anslutare, vänligen konfigurera OAuth-leverantörer på servern.",
-    "description": "Meddelande när inga leverantörer finns"
-  },
-  "connector.connect": {
-    "message": "Anslut",
-    "description": "Anslutningsknapp"
-  },
-  "connector.disconnect": {
-    "message": "Koppla bort",
-    "description": "Koppla bort-knapp"
-  },
-  "connector.connected": {
-    "message": "Anslutaren har anslutits",
-    "description": "Meddelande om lyckad anslutning"
-  },
-  "connector.disconnected": {
-    "message": "Anslutaren har kopplats bort",
-    "description": "Meddelande om lyckad bortkoppling"
-  },
   "connector.authFailed": {
-    "message": "Auktorisering misslyckades, vänligen försök igen.",
-    "description": "Meddelande om misslyckad auktorisering"
-  },
-  "connector.loadError": {
-    "message": "Kunde inte ladda anslutaren",
-    "description": "Meddelande om laddningsfel"
-  },
-  "connector.loadErrorHint": {
-    "message": "Kunde inte ladda anslutaren, denna funktion kanske inte är tillgänglig än.",
-    "description": "Meddelande när anslutaren misslyckas med att laddas på grund av nätverks-/CORS-fel"
-  },
-  "connector.disconnectError": {
-    "message": "Koppling av anslutaren misslyckades",
-    "description": "Meddelande om fel vid bortkoppling"
-  },
-  "connector.toggleError": {
-    "message": "Uppdatering av anslutaren misslyckades",
-    "description": "Meddelande om fel vid växling"
+    "message": "Autentisering misslyckades, försök igen.",
+    "description": "Meddelande om misslyckad autentisering"
   },
   "connector.processing": {
-    "message": "Bearbetar auktorisering...",
-    "description": "Meddelande om OAuth-återkoppling"
+    "message": "Bearbetar autentisering...",
+    "description": "Meddelande om OAuth callback-bearbetning"
   },
   "connector.authSuccess": {
-    "message": "Auktorisering lyckades!",
-    "description": "Meddelande om lyckad OAuth-återkoppling"
+    "message": "Autentisering lyckades!",
+    "description": "Meddelande om lyckad OAuth callback"
   },
   "connector.closeWindow": {
-    "message": "Detta fönster kommer att stängas automatiskt.",
-    "description": "Meddelande om stängning av OAuth-återkoppling"
+    "message": "Detta fönster stängs automatiskt.",
+    "description": "Meddelande om att stänga OAuth callback"
   },
-  "skill.title": {
-    "message": "Färdigheter",
-    "description": "Titel på dialogrutan för hantering av färdigheter"
+  "connections.tooltip": {
+    "message": "Hantera anslutningar",
+    "description": "Verktygstips för att gå till auth.acedata.cloud anslutningshanteringssidan"
   },
   "skill.tooltip": {
-    "message": "AI-färdigheter",
-    "description": "Meddelande för färdighetsknappen"
+    "message": "Hantera färdigheter",
+    "description": "Verktygstips för att gå till auth.acedata.cloud färdighets hanteringssidan"
   },
-  "skill.builtin": {
-    "message": "Inbyggd",
-    "description": "Etikett för inbyggda färdigheter"
+  "composer.addAction": {
+    "message": "Lägg till innehåll",
+    "description": "Tips för plusknappen under inmatningsfältet, som när den expanderas kan ladda upp filer, öppna färdigheter eller hantera anslutningar"
   },
-  "skill.empty": {
-    "message": "Inga tillgängliga färdigheter.",
-    "description": "Meddelande när färdighetslistan är tom"
+  "composer.addFiles": {
+    "message": "Lägg till bilder eller filer",
+    "description": "Alternativ i popup-menyn för plusknappen: ladda upp bilder eller filer"
   },
-  "skill.loadError": {
-    "message": "Kunde inte ladda färdigheter",
-    "description": "Meddelande om misslyckad laddning av färdigheter"
+  "composer.skills": {
+    "message": "Färdigheter",
+    "description": "Alternativ i popup-menyn för plusknappen: öppna färdighets hantering"
   },
-  "skill.add": {
-    "message": "Lägg till färdighet",
-    "description": "Knapptext för att lägga till färdighet"
-  },
-  "skill.delete": {
-    "message": "Ta bort",
-    "description": "Knapptext för att ta bort färdighet"
-  },
-  "skill.deleteConfirm": {
-    "message": "Bekräfta borttagning av färdigheten \"{name}\"? Denna åtgärd kan inte ångras.",
-    "description": "Bekräftelsemeddelande innan en färdighet tas bort"
-  },
-  "skill.deleteSuccess": {
-    "message": "Borttagen",
-    "description": "Meddelande om lyckad borttagning av färdighet"
-  },
-  "skill.deleteError": {
-    "message": "Borttagning misslyckades",
-    "description": "Meddelande om fel vid borttagning av färdighet"
-  },
-  "skill.createSuccess": {
-    "message": "Färdigheten har skapats",
-    "description": "Meddelande om lyckad skapelse av färdighet"
-  },
-  "skill.createError": {
-    "message": "Skapande av färdighet misslyckades",
-    "description": "Meddelande om fel vid skapande av färdighet"
-  },
-  "skill.form.name": {
-    "message": "Namn",
-    "description": "Etikett för namn i färdighetsformuläret"
-  },
-  "skill.form.namePlaceholder": {
-    "message": "Till exempel sammanfattare",
-    "description": "Platshållare för namn i färdighetsformuläret"
-  },
-  "skill.form.nameRequired": {
-    "message": "Fyll i namn",
-    "description": "Meddelande om obligatoriskt namn i färdighetsformuläret"
-  },
-  "skill.form.displayName": {
-    "message": "Visningsnamn",
-    "description": "Etikett för visningsnamn i färdighetsformuläret"
-  },
-  "skill.form.displayNamePlaceholder": {
-    "message": "Namnet som visas i färdighetslistan",
-    "description": "Platshållare för visningsnamn i färdighetsformuläret"
-  },
-  "skill.form.icon": {
-    "message": "Ikon (emoji)",
-    "description": "Etikett för ikon i färdighetsformuläret"
-  },
-  "skill.form.description": {
-    "message": "Beskrivning",
-    "description": "Etikett för beskrivning i färdighetsformuläret"
-  },
-  "skill.form.type": {
-    "message": "Typ",
-    "description": "Etikett för typ i färdighetsformuläret"
-  },
-  "skill.form.typePrompt": {
-    "message": "Prompt-typ",
-    "description": "Prompt type label"
-  },
-  "skill.form.typeCode": {
-    "message": "Kod",
-    "description": "Code type label"
-  },
-  "skill.form.instructions": {
-    "message": "Prompt-innehåll",
-    "description": "Prompt instructions label"
-  },
-  "skill.form.instructionsPlaceholder": {
-    "message": "Klistra in eller skriv prompten / instruktionerna för denna färdighet...",
-    "description": "Prompt instructions placeholder"
-  },
-  "skill.form.instructionsRequired": {
-    "message": "Prompt-typ måste ha ett ifyllt innehåll",
-    "description": "Prompt instructions required message"
-  },
-  "skill.form.code": {
-    "message": "Kod",
-    "description": "Code skill label"
-  },
-  "skill.form.codePlaceholder": {
-    "message": "Klistra in koden för denna färdighet...",
-    "description": "Code skill placeholder"
-  },
-  "skill.form.codeRequired": {
-    "message": "Kodtyp måste ha en ifylld kod",
-    "description": "Code skill required message"
-  },
-  "skill.form.tags": {
-    "message": "Taggar",
-    "description": "Skill form tags label"
-  },
-  "skill.form.tagsPlaceholder": {
-    "message": "Separera med kommatecken, t.ex.: skrivande, programmering",
-    "description": "Skill form tags placeholder"
-  },
-  "skill.form.uploadText": {
-    "message": "Ladda upp .txt / .md-fil",
-    "description": "Upload prompt file button"
-  },
-  "skill.form.uploadCode": {
-    "message": "Ladda upp kodfil",
-    "description": "Upload code file button"
+  "composer.connections": {
+    "message": "Anslutningar",
+    "description": "Alternativ i popup-menyn för plusknappen: öppna anslutningshantering"
   },
   "agent.title": {
     "message": "Skrivbordsagent",
-    "description": "代理管理对话框标题"
+    "description": "Titel på dialogrutan för agenthantering"
   },
   "agent.tooltip": {
     "message": "Skrivbordsagent",
-    "description": "代理按钮提示"
+    "description": "Verktygstips för agentknappen"
   },
   "agent.connected": {
     "message": "Ansluten",
-    "description": "代理已连接状态"
+    "description": "Status för ansluten agent"
   },
   "agent.notConnected": {
-    "message": "Ej ansluten",
-    "description": "代理未连接状态"
+    "message": "Inte ansluten",
+    "description": "Status för icke ansluten agent"
   },
   "agent.description": {
     "message": "Anslut skrivbordsagenten för att få åtkomst till lokala filer, köra kommandon och använda den lokala MCP-servern i AI-konversationer.",
-    "description": "代理描述"
+    "description": "Beskrivning av agenten"
   },
   "agent.name": {
     "message": "Agentnamn",
-    "description": "代理名称标签"
+    "description": "Etikett för agentnamn"
   },
   "agent.tools": {
     "message": "Tillgängliga verktyg",
-    "description": "代理工具数量标签"
+    "description": "Etikett för antal agentverktyg"
   },
   "agent.connectedSince": {
     "message": "Ansluten sedan",
-    "description": "代理连接时间标签"
+    "description": "Etikett för agentens anslutningstid"
   },
   "agent.connectedHint": {
     "message": "Din skrivbordsagent är ansluten och kan användas.",
-    "description": "代理已连接提示"
+    "description": "Tips om att agenten är ansluten"
   },
   "agent.installLabel": {
     "message": "Installera skrivbordsagent:",
-    "description": "安装说明标签"
+    "description": "Installationsinstruktionens etikett"
   },
   "agent.runLabel": {
     "message": "Kör agent:",
-    "description": "运行说明标签"
+    "description": "Label för körningsbeskrivning"
+  },
+  "askUserQuestion.submit": {
+    "message": "Skicka",
+    "description": "Knappen för att skicka den sista frågan i ask-user-question-guiden"
+  },
+  "askUserQuestion.next": {
+    "message": "Nästa fråga",
+    "description": "Gå vidare till nästa fråga i ask-user-question-guiden"
+  },
+  "askUserQuestion.back": {
+    "message": "Föregående fråga",
+    "description": "Gå tillbaka till föregående fråga i ask-user-question-guiden"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Hoppa över allt",
+    "description": "Hoppa över hela ask-user-question-guiden och låt modellen fortsätta utan svar"
+  },
+  "askUserQuestion.other": {
+    "message": "Annat",
+    "description": "Pseudoval; när det väljs visas en anpassad textinmatningsruta"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Skriv ditt eget svar",
+    "description": "Hjälptext under alternativet 'Annat'"
+  },
+  "askUserQuestion.placeholder": {
+    "message": "Ange svar…",
+    "description": "Platshållartext för anpassad svarsinmatningsruta för varje fråga"
+  },
+  "askUserQuestion.multiSelectHint": {
+    "message": "Välj en eller flera",
+    "description": "Tips som visas när flera val är möjliga"
+  },
+  "askUserQuestion.collapsedAnswerLabel": {
+    "message": "Ditt svar",
+    "description": "Fallback-text när ett specifikt svar inte kan extraheras från historisk utdata"
   }
 }

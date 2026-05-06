@@ -23,6 +23,10 @@
     "message": "Trace ID",
     "description": "The trace ID of the task"
   },
+  "name.elapsed": {
+    "message": "Elapsed Time",
+    "description": "The elapsed time of the task (in seconds)"
+  },
   "name.size": {
     "message": "Size",
     "description": "The size of the QR code to be generated"
@@ -133,35 +137,35 @@
   },
   "description.loop": {
     "message": "Enable looping for the generated video.",
-    "description": "Description of the 'qrw' parameter"
+    "description": "Description of the parameter 'qrw'"
   },
   "description.enhancement": {
     "message": "If you're unsure how to write the prompt text, enable the enhancement for input prompts.",
-    "description": "Description of the 'qrw' parameter"
+    "description": "Description of the parameter 'qrw'"
   },
   "description.custom": {
     "message": "If you want to upload your own video to extend the video, turn on this button.",
-    "description": "Description of the 'qrw' parameter"
+    "description": "Description of the parameter 'qrw'"
   },
   "description.startImageUrl": {
     "message": "The URL of the start image, which will be the first frame of the generated video.",
-    "description": "Description of the 'steps' parameter"
+    "description": "Description of the parameter 'steps'"
   },
   "description.videoUrl": {
-    "message": "The URL of the uploaded custom extended video, which will be the extended video.",
-    "description": "Description of the 'steps' parameter"
+    "message": "Upload the URL of the custom extended video, which will be the video for the extended video.",
+    "description": "Description of the parameter 'steps'"
   },
   "description.endImageUrl": {
     "message": "The URL of the end image, which will be the last frame of the generated video.",
-    "description": "Description of the 'steps' parameter"
+    "description": "Description of the parameter 'steps'"
   },
   "description.prompt": {
-    "message": "The prompt for generating Luma videos",
-    "description": "Description of the 'prompt' parameter"
+    "message": "The prompt for generating Luma video",
+    "description": "Description of the parameter 'prompt'"
   },
   "status.pending": {
     "message": "Pending",
-    "description": "The waiting status of the task"
+    "description": "The pending status of the task"
   },
   "status.processing": {
     "message": "Processing",
@@ -192,7 +196,7 @@
     "description": "Placeholder for position input"
   },
   "placeholder.content": {
-    "message": "Enter the content for the QR code to be generated, e.g., https://www.google.com",
+    "message": "Enter the content for the QR code, e.g., https://www.google.com",
     "description": "Placeholder text in the content field"
   },
   "placeholder.aspectRatio": {
@@ -376,15 +380,15 @@
     "description": "Message displayed while the image is being generated"
   },
   "message.downloadVideo": {
-    "message": "Download this video",
+    "message": "Download Video",
     "description": "Message displayed while the image is being generated"
   },
   "message.extendVideo": {
-    "message": "Continue generating this video",
+    "message": "Continue Generating Video",
     "description": "Message displayed while the image is being generated"
   },
   "message.generateFailed": {
-    "message": "Image generation failed",
+    "message": "Image Generation Failed",
     "description": "Message displayed when image generation fails"
   },
   "message.uploadVideoExceed": {
@@ -392,8 +396,8 @@
     "description": "Error message when the number of first frame images exceeds the limit"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 10MB!",
-    "description": "Error message when the uploaded file size exceeds 10MB!"
+    "message": "File size must not exceed 10MB!",
+    "description": "Error message when the file size exceeds 10MB!"
   },
   "message.uploadVideoTypeFailed": {
     "message": "Uploaded file must be in MP4 format!",

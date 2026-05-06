@@ -277,23 +277,23 @@
   },
   "name.prompt": {
     "message": "Descrizione Canzone",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.extend": {
     "message": "Estendi Canzone Da",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.cover": {
     "message": "Cover Canzone Da",
-    "description": "Suggerimento per l'input del contenuto"
+    "description": "Prompt per l'input del contenuto"
   },
   "name.lyrics": {
     "message": "Testo",
-    "description": "Suggerimento per l'input del contenuto del testo"
+    "description": "Prompt per l'input del testo"
   },
   "name.style": {
     "message": "Stile",
-    "description": "Suggerimento per l'input del contenuto dello stile della canzone"
+    "description": "Prompt per l'input dello stile della canzone"
   },
   "name.styleNegative": {
     "message": "Escludi Stile",
@@ -301,7 +301,7 @@
   },
   "name.title": {
     "message": "Titolo",
-    "description": "Suggerimento per l'input del titolo della canzone"
+    "description": "Prompt per l'input del titolo della canzone"
   },
   "name.vocalGender": {
     "message": "Genere Vocale",
@@ -317,19 +317,19 @@
   },
   "name.styleInfluence": {
     "message": "Influenza Stile",
-    "description": "Controlla il livello di influenza dello stile sul risultato generato"
+    "description": "Controlla l'influenza dello stile sul risultato generato"
   },
   "name.variationCategory": {
     "message": "Tipo di Variazione",
-    "description": "Controlla il livello di diversità delle variazioni generate"
+    "description": "Controlla la varietà delle variazioni generate"
   },
   "name.audioWeight": {
     "message": "Peso Originale",
-    "description": "Peso dell'influenza della canzone originale nella cover"
+    "description": "Peso dell'originale durante la cover"
   },
   "name.lyricPrompt": {
-    "message": "Suggerimento Testo",
-    "description": "Suggerimento per generare automaticamente il testo"
+    "message": "Prompt Testo",
+    "description": "Prompt per generare automaticamente il testo"
   },
   "name.failureReason": {
     "message": "Motivo di Fallimento",
@@ -360,7 +360,7 @@
     "description": "Modalità di descrizione della canzone"
   },
   "description.prompt": {
-    "message": "Descrivi lo stile e il tema della musica desiderata",
+    "message": "Descrivi lo stile e il tema musicale desiderati",
     "description": "Descrizione del parametro 'prompt'"
   },
   "description.lyrics": {
@@ -396,7 +396,7 @@
     "description": "Descrizione del parametro di influenza dello stile"
   },
   "description.audioWeight": {
-    "message": "Peso dell'originale sul risultato durante la cover (0-100)",
+    "message": "Peso dell'originale sul risultato durante il cover (0-100)",
     "description": "Descrizione del parametro di peso dell'originale"
   },
   "description.lyricPrompt": {
@@ -412,11 +412,11 @@
     "description": "Stato di attesa del compito"
   },
   "placeholder.prompt": {
-    "message": "Descrivi la musica che desideri, ad esempio: una dolce ballata folk, sulla nostalgia dell'autunno...",
+    "message": "Descrivi la musica che desideri, ad esempio: una calda ballata folk, sulla nostalgia dell'autunno...",
     "description": "Segnaposto per la descrizione della canzone"
   },
   "placeholder.lyrics": {
-    "message": "[Strofa]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[Ritornello]\nCantiamo insieme\nFino all'alba...",
+    "message": "[Verso]\nIn questa notte silenziosa\nLe stelle brillano nel cielo\n\n[ ritornello ]\nCantiamo insieme\nFino all'alba...",
     "description": "Segnaposto per l'input delle liriche"
   },
   "placeholder.extend.lyrics": {
@@ -453,11 +453,11 @@
   },
   "placeholder.replaceSectionStart": {
     "message": "Tempo di inizio (secondi)",
-    "description": "Segnaposto per l'orario di inizio del segmento da sostituire"
+    "description": "Segnaposto per il tempo di inizio del segmento da sostituire"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Tempo di fine (secondi)",
-    "description": "Segnaposto per l'orario di fine del segmento da sostituire"
+    "description": "Segnaposto per il tempo di fine del segmento da sostituire"
   },
   "button.generate": {
     "message": "Genera",
@@ -465,11 +465,11 @@
   },
   "gender.male": {
     "message": "Voce maschile",
-    "description": "Opzione per voce maschile"
+    "description": "Opzione per la voce maschile"
   },
   "gender.female": {
     "message": "Voce femminile",
-    "description": "Opzione per voce femminile"
+    "description": "Opzione per la voce femminile"
   },
   "gender.auto": {
     "message": "Automatico",
@@ -552,7 +552,7 @@
     "description": "Messaggio quando l'ottimizzazione dello stile fallisce"
   },
   "message.fetchingWav": {
-    "message": "Caricamento file WAV in corso...",
+    "message": "Caricamento del file WAV in corso...",
     "description": "Messaggio durante il recupero del file WAV"
   },
   "message.fetchWavFailed": {
@@ -560,7 +560,7 @@
     "description": "Messaggio quando il recupero del file WAV fallisce"
   },
   "message.fetchingMidi": {
-    "message": "Caricamento file MIDI in corso...",
+    "message": "Caricamento del file MIDI in corso...",
     "description": "Messaggio durante il recupero del file MIDI"
   },
   "message.fetchMidiFailed": {
@@ -632,7 +632,7 @@
     "description": "Intervallo di tempo per aggiungere la voce"
   },
   "name.underpaintingRange": {
-    "message": "Intervallo accompagnamento",
+    "message": "Intervallo di accompagnamento",
     "description": "Intervallo di tempo per aggiungere l'accompagnamento"
   },
   "name.samplesRange": {
@@ -640,28 +640,28 @@
     "description": "Intervallo di tempo per aggiungere campioni"
   },
   "placeholder.overpaintingStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio della voce"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio della voce"
   },
   "placeholder.overpaintingEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine della voce"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine della voce"
   },
   "placeholder.underpaintingStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio dell'accompagnamento"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio dell'accompagnamento"
   },
   "placeholder.underpaintingEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine dell'accompagnamento"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine dell'accompagnamento"
   },
   "placeholder.samplesStart": {
-    "message": "Inizio (secondi)",
-    "description": "Segnaposto per l'inizio dei campioni"
+    "message": "Tempo di inizio (secondi)",
+    "description": "Segnaposto per il tempo di inizio dei campioni"
   },
   "placeholder.samplesEnd": {
-    "message": "Fine (secondi)",
-    "description": "Segnaposto per la fine dei campioni"
+    "message": "Tempo di fine (secondi)",
+    "description": "Segnaposto per il tempo di fine dei campioni"
   },
   "placeholder.personaId": {
     "message": "Inserisci ID stile artista...",
@@ -684,7 +684,7 @@
     "description": "Descrizione della funzionalità di aggiunta dei campioni"
   },
   "message.fetchingTiming": {
-    "message": "Caricamento dati del tempo in corso...",
+    "message": "Caricamento dei dati del tempo in corso...",
     "description": "Messaggio durante il recupero dei dati del tempo"
   },
   "message.fetchTimingFailed": {
@@ -709,11 +709,11 @@
   },
   "mode.simple": {
     "message": "Semplice",
-    "description": "Etichetta per la modalità di creazione semplice"
+    "description": "Etichetta della modalità di creazione semplice"
   },
   "mode.custom": {
     "message": "Personalizzato",
-    "description": "Etichetta per la modalità di creazione personalizzata"
+    "description": "Etichetta della modalità di creazione personalizzata"
   },
   "model.v55desc": {
     "message": "Voce personalizzata · Modello personalizzato",
@@ -764,11 +764,11 @@
     "description": "Pulsante per cancellare tutti i moduli"
   },
   "placeholder.enhanceLyrics": {
-    "message": "Inserisci istruzioni di modifica, ad esempio: rendi i testi più allegri...",
+    "message": "Inserisci comandi di modifica, ad esempio: rendi i testi più allegri...",
     "description": "Segnaposto per l'input di miglioramento dei testi"
   },
   "message.enhancingLyrics": {
-    "message": "Migliorando i testi...",
+    "message": "Miglioramento dei testi in corso...",
     "description": "Messaggio durante il miglioramento dei testi"
   },
   "message.enhanceLyricsSuccess": {
@@ -785,11 +785,79 @@
   },
   "sort.newest": {
     "message": "Più recenti",
-    "description": "Ordina per i più recenti"
+    "description": "Ordina per più recenti"
   },
   "sort.oldest": {
     "message": "Più vecchi",
-    "description": "Ordina per i più vecchi"
+    "description": "Ordina per più vecchi"
+  },
+  "filter.title": {
+    "message": "Filtra",
+    "description": "Pulsante di filtro"
+  },
+  "filter.type": {
+    "message": "Tipo",
+    "description": "Sezione di filtro: Voce/Musica strumentale"
+  },
+  "filter.typeAll": {
+    "message": "Tutti",
+    "description": "Tipo: Tutti"
+  },
+  "filter.typeVocal": {
+    "message": "Voce",
+    "description": "Tipo: Con voce"
+  },
+  "filter.typeInstrumental": {
+    "message": "Musica strumentale",
+    "description": "Tipo: Musica strumentale"
+  },
+  "filter.duration": {
+    "message": "Durata",
+    "description": "Sezione di filtro: Durata della canzone"
+  },
+  "filter.durationAll": {
+    "message": "Tutte",
+    "description": "Durata: Nessun limite"
+  },
+  "filter.durationShort": {
+    "message": "< 1 minuto",
+    "description": "Durata: Meno di 1 minuto"
+  },
+  "filter.durationMedium": {
+    "message": "1-3 minuti",
+    "description": "Durata: Da 1 a 3 minuti"
+  },
+  "filter.durationLong": {
+    "message": "> 3 minuti",
+    "description": "Durata: Maggiore di 3 minuti"
+  },
+  "filter.video": {
+    "message": "Video",
+    "description": "Sezione di filtro: Contiene video"
+  },
+  "filter.videoAll": {
+    "message": "Tutti",
+    "description": "Video: Nessun limite"
+  },
+  "filter.videoWith": {
+    "message": "Con video",
+    "description": "Video: Solo con video"
+  },
+  "filter.videoWithout": {
+    "message": "Solo audio",
+    "description": "Video: Solo audio"
+  },
+  "filter.model": {
+    "message": "Modello",
+    "description": "Sezione di filtro: Modello AI"
+  },
+  "filter.modelAll": {
+    "message": "Tutti i modelli",
+    "description": "Modello: Nessun limite"
+  },
+  "filter.reset": {
+    "message": "Ripristina",
+    "description": "Ripristina tutti i filtri"
   },
   "button.delete": {
     "message": "Elimina",
@@ -802,6 +870,10 @@
   "message.noSearchResults": {
     "message": "Nessuna canzone trovata",
     "description": "Messaggio quando non ci sono risultati di ricerca"
+  },
+  "message.noFilterResults": {
+    "message": "Nessuna canzone corrispondente ai criteri di filtro",
+    "description": "Messaggio quando non ci sono risultati di filtro"
   },
   "message.confirmDelete": {
     "message": "Sei sicuro di voler eliminare questa canzone? Questa operazione non può essere annullata.",
@@ -816,7 +888,35 @@
     "description": "Messaggio quando l'eliminazione della canzone fallisce"
   },
   "name.generating": {
-    "message": "Generazione in corso",
+    "message": "Generando",
     "description": "Etichetta di stato mentre la canzone è in fase di generazione"
+  },
+  "button.adjust_speed": {
+    "message": "Regola velocità",
+    "description": "Testo del pulsante per regolare la velocità di riproduzione della canzone"
+  },
+  "button.reuse_prompt": {
+    "message": "Riutilizza suggerimento",
+    "description": "Testo del pulsante per riutilizzare un suggerimento esistente"
+  },
+  "name.adjustSpeed": {
+    "message": "Velocità",
+    "description": "Etichetta del selettore di velocità"
+  },
+  "description.adjustSpeed": {
+    "message": "Rigenera la canzone a diverse velocità di riproduzione (da 0,5x a 2x)",
+    "description": "Descrizione della funzione di regolazione della velocità"
+  },
+  "message.reusePromptSuccess": {
+    "message": "Suggerimento riutilizzato, può essere modificato e rigenerato",
+    "description": "Messaggio dopo il successo del riutilizzo del suggerimento"
+  },
+  "message.reusePromptEmpty": {
+    "message": "Nessun dato di suggerimento riutilizzabile disponibile",
+    "description": "Messaggio quando non ci sono suggerimenti riutilizzabili"
+  },
+  "name.lyricsMode": {
+    "message": "Modalità testi",
+    "description": "Etichetta del selettore della modalità testi (manuale / automatica)"
   }
 }
