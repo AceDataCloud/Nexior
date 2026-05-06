@@ -45,7 +45,8 @@ export default defineComponent({
       initialized: false,
       applying: false,
       mobile: window.innerWidth < 768,
-      initializeRunId: 0
+      initializeRunId: 0,
+      welcomeShown: false
     };
   },
   computed: {
@@ -105,10 +106,13 @@ export default defineComponent({
         return;
       }
       console.debug('Fetched all applications', this.applications);
-      // Check if we need to apply for a global application
+      // Auto-create the global application silently for first-time users and
+      // greet them with a welcome toast. Avoid the previous "apply for service"
+      // confirm dialog that interrupted every first service visit.
       if (this.$store.state.applications?.length === 0) {
-        // If no global applications exist, we need to apply
-        this.applying = true;
+        await this.onAutoApply();
+      } else if (!this.welcomeShown && this.$store.state.token?.access) {
+        this.showWelcomeToast(false);
       }
       // set the application if it exists
       const currentApplication = this.$store.state[this.appName]?.application;
@@ -123,23 +127,47 @@ export default defineComponent({
       this.initialized = true;
     },
     onApply() {
-      // Only can apply for global application, not individual application
-      applicationOperator
-        .create({
+      // Legacy entry kept for the <application-confirm> dialog (no longer
+      // auto-opened, but still emits 'apply' if some other path triggers it).
+      this.onAutoApply();
+    },
+    async onAutoApply() {
+      try {
+        await applicationOperator.create({
           type: IApplicationType.USAGE,
           scope: IApplicationScope.GLOBAL,
           user_id: this.$store.getters.user.id
-        })
-        .then(() => {
-          ElMessage.success(this.$t('application.message.applySuccessfully'));
-          this.initialize();
-          this.applying = false;
-        })
-        .catch((error) => {
-          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-            ElMessage.error(this.$t('application.message.alreadyApplied'));
-          }
         });
+        this.applying = false;
+        await this.$store.dispatch('getApplications');
+        this.showWelcomeToast(true);
+      } catch (error: any) {
+        if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+          // Backend already had the global app — refresh and continue silently.
+          await this.$store.dispatch('getApplications');
+        } else {
+          ElMessage.error(this.$t('application.message.applyFailed'));
+        }
+      }
+    },
+    showWelcomeToast(firstTime: boolean) {
+      if (this.welcomeShown) return;
+      const userId = this.$store.state.user?.id;
+      if (!userId) return;
+      const storageKey = `nexior:welcomeShown:${userId}`;
+      if (!firstTime && localStorage.getItem(storageKey)) {
+        this.welcomeShown = true;
+        return;
+      }
+      const globalApp = this.$store.state.applications?.[0];
+      const credits = Math.floor(globalApp?.remaining_amount ?? 0);
+      const message =
+        credits > 0
+          ? this.$t('application.message.welcomeWithCredits', { credits })
+          : this.$t('application.message.welcomeNoCredits');
+      ElMessage({ message: message as string, type: 'success', duration: 6000, showClose: true });
+      localStorage.setItem(storageKey, '1');
+      this.welcomeShown = true;
     }
   }
 });
