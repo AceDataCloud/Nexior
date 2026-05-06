@@ -135,6 +135,18 @@
     "message": "Application Successful",
     "description": "Message displayed when the user successfully applies for this service."
   },
+  "message.applyFailed": {
+    "message": "Failed to activate your free trial. Please refresh and try again.",
+    "description": "Toast shown when the silent global application creation fails."
+  },
+  "message.welcomeWithCredits": {
+    "message": "🎉 Welcome! We've credited your account with {credits} free credits — enjoy every service on Nexior.",
+    "description": "Welcome toast shown after the global application is created or on the first visit when one already exists. {credits} is the remaining balance of the global application."
+  },
+  "message.welcomeNoCredits": {
+    "message": "🎉 Welcome to Nexior! Your account is ready — feel free to explore every service.",
+    "description": "Welcome toast shown when the global application has no remaining free credits to highlight."
+  },
   "message.notApplied": {
     "message": "You have not applied for this service, please apply before use.",
     "description": "Message displayed when the user has not applied for this service."
