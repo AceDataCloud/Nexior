@@ -79,13 +79,15 @@ export default defineComponent({
     flex-direction: column;
     .navigator {
       width: 100%;
-      height: 60px;
+      // Reserve room for the iOS home indicator below the navigator links.
+      height: calc(60px + env(safe-area-inset-bottom));
+      padding-bottom: env(safe-area-inset-bottom);
       position: fixed;
       bottom: 0;
       z-index: 10000;
     }
     .main {
-      height: calc(100% - 60px);
+      height: calc(100% - 60px - env(safe-area-inset-bottom));
       width: 100%;
       flex: 1;
       display: flex;
@@ -94,7 +96,7 @@ export default defineComponent({
         width: 100%;
         padding: 30px;
         background-color: var(--el-bg-color-page);
-        padding-bottom: 80px;
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
         box-sizing: border-box;
         overflow-x: hidden;
         overflow-y: auto;

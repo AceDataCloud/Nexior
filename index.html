@@ -2,7 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--
+      `viewport-fit=cover` is required so iOS Safari / Capacitor expose
+      `env(safe-area-inset-*)` (notch + home indicator) — without it those
+      env vars all resolve to 0px and our mobile layout draws under the
+      Dynamic Island / home bar. The other flags are retained from the
+      previous tag to keep the existing keyboard / pinch behaviour.
+    -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
+    />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, max-age=0, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
