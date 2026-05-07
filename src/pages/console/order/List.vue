@@ -58,7 +58,12 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('order.field.createdAt')" width="250px">
+              <el-table-column
+                :label="$t('order.field.createdAt')"
+                width="250px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
