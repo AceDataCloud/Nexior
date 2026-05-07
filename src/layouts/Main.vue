@@ -87,12 +87,19 @@ export default defineComponent({
   mounted() {
     // Fetch applications when the component is mounted
     this.initialize();
-    // Update mobile state on resize
-    window.addEventListener('resize', () => {
-      this.mobile = window.innerWidth < 768;
-    });
+    // Update mobile state on resize. Stored as a stable reference so that
+    // beforeUnmount can remove it — Main.vue is re-mounted on every
+    // service-page navigation, so the anonymous-arrow version was leaking
+    // one listener per visit, all of which kept the mounted instance alive.
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onResize);
   },
   methods: {
+    onResize() {
+      this.mobile = window.innerWidth < 768;
+    },
     async initialize() {
       const runId = ++this.initializeRunId;
       this.initialized = false;
