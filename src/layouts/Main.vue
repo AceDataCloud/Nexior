@@ -4,7 +4,7 @@
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
       v-if="application"
-      class="fixed right-2 top-2 z-[200]"
+      class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
       :show-price="false"
@@ -185,6 +185,14 @@ export default defineComponent({
   }
 }
 
+// Wallet / balance pill in the top-right corner. On iOS with a notch /
+// Dynamic Island the default `top: 0.5rem` (Tailwind `top-2`) would draw
+// under the inset; nudge it down by `safe-area-inset-top` instead so it
+// stays clear on every device while keeping a sensible web fallback.
+.status-floating {
+  top: max(0.5rem, env(safe-area-inset-top));
+}
+
 @media (max-width: 767px) {
   .wrapper {
     width: 100%;
@@ -192,13 +200,16 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     .main {
-      height: calc(100% - 60px);
+      // Bottom navigator is 60px tall + iOS home-indicator inset.
+      height: calc(100% - 60px - env(safe-area-inset-bottom));
       width: 100%;
       flex: 1;
     }
     .navigator {
       width: 100%;
-      height: 60px;
+      height: calc(60px + env(safe-area-inset-bottom));
+      // Push the actual links above the home indicator on iPhone.
+      padding-bottom: env(safe-area-inset-bottom);
     }
   }
 }

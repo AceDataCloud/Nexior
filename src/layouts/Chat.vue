@@ -91,7 +91,7 @@ export default defineComponent({
     display: block;
     position: fixed;
     left: 12px;
-    top: 48px;
+    top: calc(48px + env(safe-area-inset-top));
     z-index: 2000;
     box-shadow: var(--app-shadow-md);
   }
