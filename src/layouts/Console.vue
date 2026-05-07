@@ -94,7 +94,10 @@ export default defineComponent({
       flex-direction: column;
       .panel {
         width: 100%;
-        padding: 30px;
+        // 30px x 2 padding on a 360px phone leaves 300px for tables that
+        // hardcode ~1100px of column widths. Tighten to 12px on mobile so
+        // the el-table container has more room before horizontal scroll.
+        padding: 12px;
         background-color: var(--el-bg-color-page);
         padding-bottom: calc(80px + env(safe-area-inset-bottom));
         box-sizing: border-box;
