@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -30,6 +31,20 @@ import {
 } from './utils/initializer';
 
 initializeChunkLoadErrorHandler();
+
+// `index.html` ships with `maximum-scale=1.0, user-scalable=0` so that
+// Capacitor's WKWebView doesn't auto-zoom when an input field gains focus
+// on iOS — a long-standing native-shell quirk. On the web (and Android
+// Chrome) that flag has the unfortunate side-effect of disabling
+// pinch-zoom, which fails WCAG 1.4.4 (Resize Text) and is the one piece
+// of accessibility regression the audit flagged. Drop the zoom-lock at
+// runtime when we're NOT running inside Capacitor; native shells keep it.
+if (!Capacitor.isNativePlatform()) {
+  const meta = document.querySelector('meta[name="viewport"]');
+  if (meta) {
+    meta.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+  }
+}
 
 const main = async () => {
   // async and need to await
