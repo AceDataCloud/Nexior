@@ -25,9 +25,17 @@ export default defineComponent({
     };
   },
   mounted() {
-    window.addEventListener('resize', () => {
+    // Stable reference so beforeUnmount can remove it — see Main.vue for
+    // the same pattern; without removal each navigation leaked one listener.
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  },
+  methods: {
+    onResize() {
       this.mobile = window.innerWidth < 768;
-    });
+    }
   }
 });
 </script>
