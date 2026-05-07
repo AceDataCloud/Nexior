@@ -2,14 +2,14 @@
   <el-dialog v-model="editing" :title="title" width="400px" class="edit-dialog">
     <div class="edit-body">
       <div class="cropper-wrapper" :style="{ width: canvasWidth + 'px', height: canvasHeight + 'px' }">
-        <avatar-editor
+        <image-editor
           ref="cropper"
           class="cropper"
           :width="width"
           :height="height"
           :rotation="rotation"
           :scale="scale"
-          @vue-avatar-editor:image-ready="onImageReady"
+          @image-ready="onImageReady"
           @select-file="onFileSelected"
         />
         <div v-show="!imageLoaded" class="hint">
@@ -60,7 +60,7 @@ import { Edit, ZoomIn, ZoomOut } from '@element-plus/icons-vue';
 import { getBaseUrlPlatform } from '@/utils';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 // @ts-ignore - plain JS Vue component, no types
-import AvatarEditor from '@/components/common/AvatarEditor.vue';
+import ImageEditor from '@/components/common/ImageEditor.vue';
 
 const CROPPER_BORDER = 25;
 
@@ -75,7 +75,7 @@ export default defineComponent({
     Edit,
     ZoomIn,
     ZoomOut,
-    AvatarEditor
+    ImageEditor
   },
   props: {
     modelValue: {

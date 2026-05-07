@@ -1,8 +1,8 @@
 <template>
   <div>
     <canvas
-      id="avatarEditorCanvas"
-      ref="avatarEditorCanvas"
+      id="imageEditorCanvas"
+      ref="imageEditorCanvas"
       :width="canvasWidth"
       :height="canvasHeight"
       class="cursorPointer"
@@ -27,11 +27,6 @@ export default {
     accept: {
       type: String,
       default: 'image/*'
-    },
-    placeholderSvg: {
-      type: String,
-      default:
-        '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65"><defs><style>.cls-1{fill:#000;}</style></defs><title>Upload_Upload</title><path class="cls-1" d="M32.5,1A31.5,31.5,0,1,1,1,32.5,31.54,31.54,0,0,1,32.5,1m0-1A32.5,32.5,0,1,0,65,32.5,32.5,32.5,0,0,0,32.5,0h0Z"/><polygon class="cls-1" points="41.91 28.2 32.59 18.65 23.09 28.39 24.17 29.44 31.87 21.54 31.87 40.05 33.37 40.05 33.37 21.59 40.83 29.25 41.91 28.2"/><polygon class="cls-1" points="40.66 40.35 40.66 44.35 24.34 44.35 24.34 40.35 22.34 40.35 22.34 44.35 22.34 46.35 24.34 46.35 40.66 46.35 42.66 46.35 42.66 44.35 42.66 40.35 40.66 40.35"/></svg>'
     },
     border: {
       type: Number,
@@ -120,20 +115,11 @@ export default {
     }
   },
   mounted() {
-    let self = this;
-    this.canvas = this.$refs.avatarEditorCanvas;
+    this.canvas = this.$refs.imageEditorCanvas;
     this.context = this.canvas.getContext('2d');
     this.paint();
 
-    if (!this.image) {
-      var placeHolder = this.svgToImage(this.placeholderSvg);
-
-      placeHolder.onload = function () {
-        var x = self.canvasWidth / 2 - this.width / 2;
-        var y = self.canvasHeight / 2 - this.height / 2;
-        self.context.drawImage(placeHolder, x, y, this.width, this.height);
-      };
-    } else {
+    if (this.image) {
       this.loadImage(this.image);
     }
   },
@@ -154,14 +140,6 @@ export default {
         context.arc(borderRadius, heightMinusRad, borderRadius, Math.PI * 0.5, Math.PI);
         context.translate(-x, -y);
       }
-    },
-    svgToImage(rawSVG) {
-      let svg = new Blob([rawSVG], { type: 'image/svg+xml;charset=utf-8' });
-      let domURL = self.URL || self.webkitURL || self;
-      let url = domURL.createObjectURL(svg);
-      let img = new Image();
-      img.src = url;
-      return img;
     },
     setState(state1) {
       var min = Math.ceil(1);
@@ -313,7 +291,7 @@ export default {
         self.state.image.width = imageState.width;
         self.state.image.height = imageState.height;
         self.state.drag = false;
-        self.$emit('vue-avatar-editor:image-ready', self.scale);
+        self.$emit('image-ready', self.scale);
         self.imageLoaded = true;
         this.$emit('imageLoaded', self.imageLoaded);
         self.cursor = 'cursorGrab';
@@ -494,7 +472,7 @@ export default {
     },
     resetImage() {
       let self = this;
-      this.canvas = this.$refs.avatarEditorCanvas;
+      this.canvas = this.$refs.imageEditorCanvas;
       this.context = this.canvas.getContext('2d');
       self.imageLoaded = false;
       this.$emit('imageLoaded', self.imageLoaded);
@@ -511,14 +489,6 @@ export default {
       };
       this.context.clearRect(0, 0, this.getDimensions().canvas.width, this.getDimensions().canvas.height);
       this.paint();
-
-      var placeHolder = this.svgToImage(this.placeholderSvg);
-
-      placeHolder.onload = function () {
-        var x = self.canvasWidth / 2 - this.width / 2;
-        var y = self.canvasHeight / 2 - this.height / 2;
-        self.context.drawImage(placeHolder, x, y, this.width, this.height);
-      };
     }
   }
 };
