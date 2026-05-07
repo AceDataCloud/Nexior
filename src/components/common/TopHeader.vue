@@ -165,6 +165,11 @@ $height: 64px;
   border-bottom: 1px solid var(--app-border-subtle);
   position: sticky;
   top: 0;
+  // With viewport-fit=cover (set in index.html for iOS safe-area support),
+  // the page extends under the notch / Dynamic Island. Pad the sticky
+  // header by the inset so its contents start below the notch while the
+  // backdrop-blurred background still extends edge-to-edge.
+  padding-top: env(safe-area-inset-top);
 
   .brand-col {
     display: flex;
