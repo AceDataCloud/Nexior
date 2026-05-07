@@ -44,16 +44,64 @@
     "description": "生成/編輯的提示詞"
   },
   "name.openaiimageBot": {
-    "message": "OpenAI Image Bot",
-    "description": "OpenAI Image 機器人名稱"
+    "message": "OpenAI 圖像機器人",
+    "description": "OpenAI Image 机器人的名稱"
   },
   "name.size": {
     "message": "尺寸",
     "description": "輸出圖像尺寸"
   },
   "description.size": {
-    "message": "用於生成圖片的輸出尺寸，常用值：1024x1024、1536x1024、1024x1536。",
+    "message": "輸出圖像尺寸。不同模型支持的尺寸不同：gpt-image-1 / gpt-image-1.5 僅支持 1024x1024、1536x1024、1024x1536；gpt-image-2 還支持 1792x1024、1024x1792，以及 2K/4K 預設；gpt-image-2 可啟用自定義尺寸。",
     "description": "尺寸說明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K 標準（基礎價）",
+    "description": "1K 尺寸分組標題，按基礎價計費"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K 預設（1.5 倍價）",
+    "description": "2K 尺寸分組標題，按 1.5 倍價計費"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K 預設（1.5 倍價）",
+    "description": "4K 尺寸分組標題，按 1.5 倍價計費"
+  },
+  "name.customSize": {
+    "message": "自定義尺寸",
+    "description": "自定義尺寸開關標籤"
+  },
+  "description.customSize": {
+    "message": "啟用後可自由設置寬高（僅 gpt-image-2 支持）。需為 16 的倍數，最長邊 ≤ 3840，總像素 ≤ 8,294,400。非 1K 標準尺寸按 1.5 倍價計費。",
+    "description": "自定義尺寸說明"
+  },
+  "name.width": {
+    "message": "寬",
+    "description": "寬度輸入框標籤"
+  },
+  "name.height": {
+    "message": "高",
+    "description": "高度輸入框標籤"
+  },
+  "error.customSizePositive": {
+    "message": "寬高必須為正整數",
+    "description": "自定義尺寸必須為正整數"
+  },
+  "error.customSizeMultiple": {
+    "message": "寬高必須為 {multiple} 的倍數",
+    "description": "自定義尺寸必須為 16 的倍數"
+  },
+  "error.customSizeMin": {
+    "message": "寬高不能小於 {min}",
+    "description": "自定義尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "最長邊不能超過 {max}",
+    "description": "自定義尺寸最長邊上限"
+  },
+  "error.customSizePixels": {
+    "message": "總像素不能超過 {pixels}",
+    "description": "自定義尺寸總像素上限"
   },
   "description.prompt": {
     "message": "生成或編輯圖像的提示詞",

@@ -25,7 +25,7 @@
   },
   "button.download_wav": {
     "message": "تنزيل WAV بدون فقد",
-    "description": "نص زر تنزيل تنسيق WAV بدون فقد"
+    "description": "نص زر تنزيل صيغة WAV بدون فقد"
   },
   "button.get_stems": {
     "message": "فصل الأصوات",
@@ -63,41 +63,85 @@
     "message": "استبدال الموسيقى",
     "description": "نص زر استبدال الموسيقى"
   },
+  "button.clear_all": {
+    "message": "مسح الكل",
+    "description": "نص زر لمسح جميع الإعدادات"
+  },
+  "mode.simple": {
+    "message": "وضع بسيط",
+    "description": "علامة تبويب وضع التوليد البسيط"
+  },
+  "mode.custom": {
+    "message": "وضع مخصص",
+    "description": "علامة تبويب وضع التوليد المخصص"
+  },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
     "description": "نموذج لتوليد الموسيقى"
+  },
+  "model.fuzz20proDesc": {
+    "message": "حتى 8 دقائق · أفضل جودة صوت",
+    "description": "وصف FUZZ-2.0 Pro في قائمة النماذج"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
     "description": "نموذج لتوليد الموسيقى"
   },
+  "model.fuzz20desc": {
+    "message": "حتى 8 دقائق · توازن جيد في السعر والأداء",
+    "description": "وصف FUZZ-2.0 في قائمة النماذج"
+  },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
     "description": "نموذج لتوليد الموسيقى"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "حتى 8 دقائق · أصوات أكثر خشونة وطبيعية",
+    "description": "وصف FUZZ-2.0 Raw في قائمة النماذج"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
     "description": "نموذج لتوليد الموسيقى"
   },
+  "model.fuzz11proDesc": {
+    "message": "حتى 4 دقائق · تحسينات على النسخة القديمة",
+    "description": "وصف FUZZ-1.1 Pro في قائمة النماذج"
+  },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
     "description": "نموذج لتوليد الموسيقى"
+  },
+  "model.fuzz10proDesc": {
+    "message": "حتى 4 دقائق · استقرار النسخة القديمة",
+    "description": "وصف FUZZ-1.0 Pro في قائمة النماذج"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
     "description": "نموذج لتوليد الموسيقى"
   },
+  "model.fuzz10desc": {
+    "message": "حتى 2 دقائق · النسخة القديمة",
+    "description": "وصف FUZZ-1.0 في قائمة النماذج"
+  },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
     "description": "نموذج لتوليد الموسيقى"
+  },
+  "model.fuzz11desc": {
+    "message": "حتى 4 دقائق · تحسينات على النسخة القديمة",
+    "description": "وصف FUZZ-1.1 في قائمة النماذج"
   },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
     "description": "نموذج لتوليد الموسيقى"
   },
+  "model.fuzz08desc": {
+    "message": "حتى 2 دقائق · إصدار مبكر",
+    "description": "وصف FUZZ-0.8 في قائمة النماذج"
+  },
   "name.instrumental": {
     "message": "موسيقى بدون كلمات",
-    "description": "توليد موسيقى بدون كلمات"
+    "description": "توليد موسيقى بدون أصوات"
   },
   "name.referenceAudios": {
     "message": "موسيقى مرجعية",
@@ -113,31 +157,31 @@
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "موجه لإدخال المحتوى"
+    "description": "نص الإدخال للمحتوى"
   },
   "name.extend": {
-    "message": "توسيع الأغنية من",
-    "description": "موجه لإدخال المحتوى"
+    "message": "الأغنية الموسعة من",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.cover": {
-    "message": "تغطية الأغنية من",
-    "description": "موجه لإدخال المحتوى"
+    "message": "الأغنية المغطاة من",
+    "description": "نص الإدخال للمحتوى"
   },
   "name.lyrics": {
     "message": "كلمات الأغاني",
-    "description": "موجه لإدخال محتوى الكلمات"
+    "description": "نص الإدخال لمحتوى الكلمات"
   },
   "name.style": {
-    "message": "أسلوب",
-    "description": "موجه لإدخال أسلوب الأغنية"
+    "message": "الأسلوب",
+    "description": "نص الإدخال لمحتوى أسلوب الأغنية"
   },
   "name.styleNegative": {
     "message": "استبعاد الأسلوب",
     "description": "وصف الأسلوب غير المرغوب فيه"
   },
   "name.title": {
-    "message": "عنوان",
-    "description": "موجه لإدخال عنوان الأغنية"
+    "message": "العنوان",
+    "description": "نص الإدخال لمحتوى عنوان الأغنية"
   },
   "name.vocalGender": {
     "message": "جنس الصوت",
@@ -149,19 +193,19 @@
   },
   "name.weirdness": {
     "message": "درجة الإبداع",
-    "description": "التحكم في درجة إبداع الموسيقى المولدة"
+    "description": "التحكم في مستوى إبداع الموسيقى المولدة"
   },
   "name.soundStrength": {
-    "message": "قوة الصوت",
-    "description": "التحكم في قوة الصوت المولد"
+    "message": "شدة الصوت",
+    "description": "التحكم في شدة الصوت الناتج"
   },
   "name.lyricsStrength": {
-    "message": "قوة الكلمات",
-    "description": "التحكم في تأثير الكلمات على النتيجة المولدة"
+    "message": "شدة الكلمات",
+    "description": "التحكم في تأثير الكلمات على النتيجة الناتجة"
   },
   "name.seed": {
-    "message": "بذور",
-    "description": "بذور عشوائية للتوليد القابل للتكرار"
+    "message": "البذور",
+    "description": "بذور عشوائية لإعادة الإنتاج"
   },
   "name.lyricPrompt": {
     "message": "موجه الكلمات",
@@ -180,59 +224,59 @@
     "description": "معرف تتبع المهمة"
   },
   "name.producerBot": {
-    "message": "روبوت المنتج",
-    "description": "اسم مولد المنتج"
+    "message": "روبوت الإنتاج",
+    "description": "اسم مولد الإنتاج"
   },
   "name.replaceSection": {
     "message": "استبدال المقطع",
-    "description": "استبدال مقطع في الأغنية"
+    "description": "استبدال مقطع معين في الأغنية"
   },
   "name.model": {
-    "message": "نموذج",
+    "message": "النموذج",
     "description": "اختيار إصدار النموذج"
   },
   "name.songDescription": {
     "message": "وصف الأغنية",
-    "description": "وصف نمط الأغنية"
+    "description": "وضع وصف الأغنية"
   },
   "description.prompt": {
-    "message": "وصف نمط الموسيقى والموضوع الذي تريده",
-    "description": "وصف المعلمة 'prompt'"
+    "message": "صف نمط الموسيقى والموضوع الذي تريده",
+    "description": "وصف المعامل 'prompt'"
   },
   "description.lyrics": {
-    "message": "أدخل كلمات مخصصة، تدعم علامات الفقرات مثل [Verse]، [Chorus]، [Bridge] وغيرها",
-    "description": "وصف المعلمة 'lyrics'"
+    "message": "أدخل كلمات مخصصة، تدعم علامات الفقرات مثل [Verse]، [Chorus]، [Bridge]...",
+    "description": "وصف المعامل 'lyrics'"
   },
   "description.style": {
-    "message": "وصف نمط الموسيقى، مثل البوب الصوتي، الجاز، الإلكتروني",
-    "description": "وصف المعلمة 'style'"
+    "message": "صف نمط الموسيقى، مثل البوب الصوتي، الجاز، الإلكتروني",
+    "description": "وصف المعامل 'style'"
   },
   "description.styleNegative": {
-    "message": "وصف الأنماط غير المرغوب فيها، مثل: ميتال ثقيل، صراخ",
+    "message": "صف الأنماط التي لا تريدها، مثل الميتال الثقيل، الصراخ",
     "description": "وصف معلمة استبعاد الأنماط"
   },
   "description.title": {
     "message": "عنوان الأغنية",
-    "description": "وصف معلمة 'title'"
+    "description": "وصف المعامل 'title'"
   },
   "description.uploadAudios": {
     "message": "قم بتحميل الموسيقى كمرجع للتوليد، قد تحتاج إلى الانتظار قليلاً أثناء التحميل، بعد النجاح يمكنك التوليد بناءً على الموسيقى المحملة",
-    "description": "وصف معلمة تحميل المرجع"
+    "description": "وصف معلمة التحميل المرجعي"
   },
   "description.vocalGender": {
-    "message": "اختر جنس الصوت الذي سيتم توليده",
+    "message": "اختر جنس الصوت البشري الناتج",
     "description": "وصف محدد اختيار جنس الصوت"
   },
   "description.weirdness": {
-    "message": "كلما زادت القيمة، كانت الموسيقى أكثر إبداعًا وتجريبية (0-100)",
+    "message": "كلما زادت القيمة، كانت الموسيقى الناتجة أكثر إبداعًا وتجريبية (0-100)",
     "description": "وصف معلمة الإبداع"
   },
   "description.soundStrength": {
-    "message": "تحكم في شدة الصوت الناتج (0-100)",
+    "message": "التحكم في شدة الصوت الناتج (0-100)",
     "description": "وصف معلمة شدة الصوت"
   },
   "description.lyricsStrength": {
-    "message": "تحكم في تأثير الكلمات على النتيجة الناتجة (0-100)",
+    "message": "التحكم في تأثير الكلمات على النتيجة الناتجة (0-100)",
     "description": "وصف معلمة شدة الكلمات"
   },
   "description.seed": {
@@ -240,44 +284,48 @@
     "description": "وصف معلمة البذور"
   },
   "description.lyricPrompt": {
-    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي تلقائيًا بإنشاء الكلمات",
-    "description": "وصف تلميح الكلمات"
+    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي بتوليد الكلمات تلقائيًا",
+    "description": "وصف موجه الكلمات"
   },
   "description.replaceSection": {
-    "message": "استبدل محتوى جزء محدد من الأغنية",
-    "description": "وصف وظيفة استبدال المقاطع"
+    "message": "استبدال محتوى الفترة الزمنية المحددة في الأغنية",
+    "description": "وصف وظيفة استبدال المقطع"
+  },
+  "description.instrumental": {
+    "message": "توليد موسيقى خالصة بدون صوت بشري، سيتم تجاهل إدخال الكلمات",
+    "description": "وصف مفتاح الموسيقى الخالصة"
   },
   "status.pending": {
     "message": "في الانتظار",
-    "description": "حالة الانتظار للمهام"
+    "description": "حالة الانتظار للمهمة"
   },
   "placeholder.prompt": {
-    "message": "وصف الموسيقى التي تريدها، مثل: أغنية دافئة، عن الحنين إلى الخريف...",
+    "message": "صف الموسيقى التي تريدها، مثل: أغنية دافئة عن الحنين إلى الخريف...",
     "description": "نص العنصر النائب لوصف الأغنية"
   },
   "placeholder.lyrics": {
-    "message": "[المقطع]\nفي هذه الليلة الهادئة\nتتألق النجوم في السماء\n\n[الكورس]\nدعنا نغني معًا\nحتى الفجر...",
-    "description": "نص العنصر النائب لكلمات الأغاني"
+    "message": "[Verse]\nفي هذه الليلة الهادئة\nتتألق النجوم في السماء\n\n[Chorus]\nدعنا نغني معًا\nحتى الفجر...",
+    "description": "نص العنصر النائب لإدخال الكلمات"
   },
   "placeholder.extend.lyrics": {
     "message": "أدخل الكلمات التي تحتاج إلى توسيع...",
-    "description": "نص العنصر النائب لتوسيع الكلمات"
+    "description": "نص العنصر النائب لإدخال كلمات موسعة"
   },
   "placeholder.extend.continue_at": {
     "message": "من أي ثانية تبدأ التوسيع...",
     "description": "نص العنصر النائب لوقت بدء التوسيع"
   },
   "placeholder.style": {
-    "message": "مثل: بوب أكوستيك، جاز، R&B، إلكتروني...",
-    "description": "نص العنصر النائب للأنماط"
+    "message": "مثل: بوب صوتي، جاز، R&B، إلكتروني...",
+    "description": "نص العنصر النائب لإدخال النمط"
   },
   "placeholder.styleNegative": {
     "message": "مثل: ميتال ثقيل، صراخ...",
-    "description": "نص العنصر النائب لاستبعاد الأنماط"
+    "description": "نص العنصر النائب لإدخال الأنماط المستبعدة"
   },
   "placeholder.title": {
     "message": "أدخل اسم الأغنية...",
-    "description": "نص العنصر النائب لعنوان"
+    "description": "نص العنصر النائب لإدخال العنوان"
   },
   "placeholder.select": {
     "message": "اختر النموذج...",
@@ -285,23 +333,23 @@
   },
   "placeholder.position": {
     "message": "اختر...",
-    "description": "نص العنصر النائب للموقع"
+    "description": "نص العنصر النائب لإدخال الموقع"
   },
   "placeholder.lyricPrompt": {
-    "message": "وصف موضوع الكلمات، ستقوم الذكاء الاصطناعي تلقائيًا بإنشاء...",
-    "description": "نص العنصر النائب لتلميح الكلمات"
+    "message": "صف موضوع الكلمات، ستقوم الذكاء الاصطناعي بالتوليد تلقائيًا...",
+    "description": "نص العنصر النائب لموجه الكلمات"
   },
   "placeholder.replaceSectionStart": {
     "message": "وقت البدء (ثانية)",
-    "description": "نص العنصر النائب لوقت بدء استبدال المقاطع"
+    "description": "نص العنصر النائب لوقت بدء استبدال المقطع"
   },
   "placeholder.replaceSectionEnd": {
     "message": "وقت الانتهاء (ثانية)",
-    "description": "نص العنصر النائب لوقت انتهاء استبدال المقاطع"
+    "description": "نص العنصر النائب لوقت انتهاء استبدال المقطع"
   },
   "placeholder.seed": {
     "message": "أدخل قيمة البذور (اختياري)...",
-    "description": "نص العنصر النائب للبذور"
+    "description": "نص العنصر النائب لإدخال البذور"
   },
   "button.generate": {
     "message": "توليد",
@@ -317,34 +365,34 @@
   },
   "gender.auto": {
     "message": "تلقائي",
-    "description": "اختيار جنس الصوت تلقائيًا"
+    "description": "اختيار تلقائي لجنس الصوت"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
-    "description": "رسالة عند بدء مهمة توليد الموسيقى"
+    "description": "رسالة تظهر عند بدء مهمة توليد الموسيقى"
   },
   "message.startingUploadAudio": {
-    "message": "جارٍ تحميل الموسيقى المخصصة...",
+    "message": "جارٍ رفع الموسيقى المخصصة...",
     "description": "رسالة عند بدء مهمة توليد الموسيقى"
   },
   "message.uploadReferencesExceed": {
-    "message": "تجاوز عدد الموسيقى المحملة الحد الأقصى",
-    "description": "رسالة خطأ عند تجاوز عدد الموسيقى المحملة الحد الأقصى"
+    "message": "تجاوز عدد الموسيقى المرفوعة الحد الأقصى",
+    "description": "رسالة خطأ عند رفع عدد موسيقى أكبر من الحد المسموح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل تحميل الموسيقى",
-    "description": "رسالة خطأ عند فشل تحميل الموسيقى"
+    "message": "فشل رفع الموسيقى",
+    "description": "رسالة خطأ عند فشل رفع الموسيقى"
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى"
   },
   "message.startUploadAudioSuccess": {
-    "message": "تم تحميل الموسيقى المخصصة بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "message": "تم رفع الموسيقى المخصصة بنجاح",
+    "description": "رسالة نجاح عند رفع الموسيقى المخصصة"
   },
   "message.startUploadAudioFailed": {
-    "message": "فشل تحميل الموسيقى المخصصة",
+    "message": "فشل رفع الموسيقى المخصصة",
     "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.startTaskFailed": {
@@ -352,43 +400,43 @@
     "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
   },
   "message.getVideoUrlFailed": {
-    "message": "فشل الحصول على فيديو الموسيقى، يرجى المحاولة لاحقًا",
+    "message": "فشل الحصول على فيديو الموسيقى، الرجاء المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل الحصول على الفيديو"
   },
   "message.generatingLyrics": {
-    "message": "جارٍ توليد الكلمات...",
-    "description": "رسالة عند توليد الكلمات"
+    "message": "جارٍ توليد كلمات الأغنية...",
+    "description": "رسالة عند توليد كلمات الأغنية"
   },
   "message.generateLyricsSuccess": {
-    "message": "تم توليد الكلمات بنجاح",
-    "description": "رسالة عند نجاح توليد الكلمات"
+    "message": "تم توليد كلمات الأغنية بنجاح",
+    "description": "رسالة نجاح عند توليد كلمات الأغنية"
   },
   "message.generateLyricsFailed": {
-    "message": "فشل توليد الكلمات",
-    "description": "رسالة عند فشل توليد الكلمات"
+    "message": "فشل توليد كلمات الأغنية",
+    "description": "رسالة خطأ عند فشل توليد كلمات الأغنية"
   },
   "message.fetchingWav": {
-    "message": "جارٍ جلب ملف WAV...",
-    "description": "رسالة عند جلب ملف WAV"
+    "message": "جارٍ الحصول على ملف WAV...",
+    "description": "رسالة عند الحصول على ملف WAV"
   },
   "message.fetchWavFailed": {
-    "message": "فشل في جلب ملف WAV",
-    "description": "رسالة عند فشل جلب ملف WAV"
+    "message": "فشل الحصول على ملف WAV",
+    "description": "رسالة خطأ عند فشل الحصول على ملف WAV"
   },
   "message.generating": {
     "message": "جارٍ التوليد...",
     "description": "رسالة عند توليد الموسيقى"
   },
   "message.generateFailed": {
-    "message": "فشل في توليد الموسيقى",
-    "description": "رسالة عند فشل توليد الموسيقى"
+    "message": "فشل توليد الموسيقى",
+    "description": "رسالة خطأ عند فشل توليد الموسيقى"
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى توليد الموسيقى من الشريط الجانبي الأيسر",
+    "message": "لا توجد مهام سابقة، يرجى إنشاء موسيقى من القائمة الجانبية",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

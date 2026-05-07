@@ -56,11 +56,11 @@
     "description": "Opis na stronie zarządzania subdomenami"
   },
   "message.empty": {
-    "message": "Nie utworzyłeś jeszcze żadnej subdomeny. Kliknij „Utwórz subdomenę” w prawym górnym rogu, aby rozpocząć.",
+    "message": "Nie utworzyłeś jeszcze żadnej subdomeny. Kliknij „Utwórz subdomenę” w prawym górnym rogu, aby zacząć.",
     "description": "Wiadomość o pustej liście"
   },
   "message.slugTip": {
-    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem i nie mogą zawierać podwójnych myślników.",
+    "message": "3-32 znaki: małe litery, cyfry lub myślniki; nie mogą zaczynać się ani kończyć myślnikiem, ani zawierać podwójnych myślników.",
     "description": "Opis pola slug"
   },
   "message.slugInvalid": {
@@ -73,15 +73,19 @@
   },
   "message.created": {
     "message": "Subdomena została pomyślnie utworzona!",
-    "description": "Sukces utworzenia"
+    "description": "Sukces tworzenia"
   },
   "message.createFailed": {
     "message": "Nie udało się utworzyć subdomeny, spróbuj ponownie później.",
-    "description": "Błąd podczas tworzenia"
+    "description": "Błąd tworzenia"
+  },
+  "message.slugTaken": {
+    "message": "Prefiks subdomeny {origin} jest już zajęty, spróbuj innego.",
+    "description": "Podczas tworzenia subdomeny, slug jest zajęty (kod=duplication zwrócony przez backend)"
   },
   "message.loadFailed": {
     "message": "Nie udało się załadować listy subdomen.",
-    "description": "Błąd podczas ładowania listy"
+    "description": "Błąd ładowania listy"
   },
   "message.openNowConfirm": {
     "message": "Subdomena {origin} została utworzona. Czy chcesz teraz ją otworzyć, aby kontynuować konfigurację?",
@@ -89,7 +93,7 @@
   },
   "title.domains": {
     "message": "Dostosowana domena dla {origin}",
-    "description": "Tytuł okna dialogowego dla dostosowanej domeny"
+    "description": "Tytuł okna dialogowego dostosowanej domeny"
   },
   "title.bindDomain": {
     "message": "Powiąż nową domenę",
@@ -97,7 +101,7 @@
   },
   "button.domains": {
     "message": "Domeny",
-    "description": "Przycisk do otwarcia okna zarządzania domenami"
+    "description": "Przycisk do otwarcia okna dialogowego zarządzania domenami"
   },
   "button.bindDomain": {
     "message": "Powiąż domenę",
@@ -132,7 +136,7 @@
     "description": "Placeholder dla pola hostname"
   },
   "message.domainsIntro": {
-    "message": "Powiąż posiadaną domenę z tą subdomeną. Musisz mieć możliwość modyfikacji DNS tej domeny. Dodaj rekord CNAME zgodnie z poniższymi wskazówkami, a następnie kliknij „Zweryfikuj teraz”, a my automatycznie wydamy i odnowimy certyfikat HTTPS za pomocą Let's Encrypt.",
+    "message": "Powiąż posiadaną domenę z tą subdomeną. Musisz mieć możliwość modyfikacji DNS tej domeny. Dodaj rekord CNAME zgodnie z poniższymi wskazówkami, a następnie kliknij „Zweryfikuj teraz”, abyśmy mogli automatycznie wydać i odnowić certyfikat HTTPS za pomocą Let's Encrypt.",
     "description": "Opis na górze okna dialogowego"
   },
   "message.domainsEmpty": {
@@ -140,11 +144,11 @@
     "description": "Wiadomość o pustej liście"
   },
   "message.hostnameTip": {
-    "message": "Musi to być publiczna domena, nad którą masz kontrolę nad DNS.",
+    "message": "Musi być publiczną domeną, nad którą masz kontrolę nad DNS.",
     "description": "Wskazówka dla pola hostname"
   },
   "message.hostnameInvalid": {
-    "message": "Format domeny jest nieprawidłowy. Musi to być publicznie rozwiązywana domena, nie są dozwolone adresy IP.",
+    "message": "Format domeny jest nieprawidłowy. Musi być publicznie rozwiązywalną domeną, nie można używać adresów IP.",
     "description": "Błąd walidacji lokalnej dla hostname"
   },
   "message.domainCreated": {
@@ -152,43 +156,43 @@
     "description": "Sukces POST /site-domains/"
   },
   "message.domainCreateFailed": {
-    "message": "Nie udało się utworzyć domeny, spróbuj ponownie później.",
-    "description": "Błąd podczas tworzenia"
+    "message": "Tworzenie domeny nie powiodło się, spróbuj ponownie później.",
+    "description": "Komunikat o błędzie przy tworzeniu domeny"
   },
   "message.domainsLoadFailed": {
     "message": "Nie udało się załadować listy domen.",
     "description": "Błąd podczas ładowania listy domen"
   },
   "message.domainActive": {
-    "message": "Domena jest aktywna! Możesz teraz uzyskać dostęp do podstrony za pomocą swojego niestandardowego adresu HTTPS.",
+    "message": "Domena jest aktywna! Teraz możesz uzyskać dostęp do podstrony za pomocą swojego niestandardowego adresu HTTPS.",
     "description": "Wejście w stan aktywny"
   },
   "message.domainFailed": {
     "message": "Weryfikacja domeny lub uruchomienie nie powiodło się.",
-    "description": "Failed 状态兑底文案"
+    "description": "Tekst dla stanu niepowodzenia"
   },
   "message.domainVerifyFailed": {
     "message": "Weryfikacja nie powiodła się, sprawdź, czy rekord CNAME wskazuje na nasz serwer proxy i czy propagacja DNS została zakończona.",
-    "description": "verify 接口 4xx"
+    "description": "Błąd weryfikacji, kod 4xx"
   },
   "message.domainDeleteConfirm": {
     "message": "Czy na pewno chcesz odłączyć {hostname}? Po odłączeniu użytkownicy nie będą mogli uzyskać dostępu do twojej podstrony z tej domeny.",
-    "description": "删除确认"
+    "description": "Potwierdzenie usunięcia"
   },
   "message.domainDeleteFailed": {
-    "message": "Usunięcie domeny nie powiodło się.",
-    "description": "DELETE 接口 5xx"
+    "message": "Nie udało się usunąć domeny.",
+    "description": "Błąd w DELETE, kod 5xx"
   },
   "status.pending": {
     "message": "Do weryfikacji",
-    "description": "Pending 状态标签：czekanie na dodanie CNAME i kliknięcie „Zweryfikuj teraz”"
+    "description": "Etykieta stanu oczekującego: czeka na dodanie CNAME i kliknięcie 'Zweryfikuj teraz'"
   },
   "status.active": {
     "message": "Aktywna",
-    "description": "Active 状态标签"
+    "description": "Etykieta stanu aktywnego"
   },
   "status.failed": {
     "message": "Niepowodzenie",
-    "description": "Failed 状态标签"
+    "description": "Etykieta stanu niepowodzenia"
   }
 }

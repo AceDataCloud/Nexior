@@ -5,23 +5,23 @@
   },
   "name.task": {
     "message": "Type de tâche",
-    "description": "Type d'opération de l'image OpenAI"
+    "description": "Type d'opération d'image OpenAI"
   },
   "name.generate": {
-    "message": "Créer l'image",
-    "description": "Type d'opération : Créer une image"
+    "message": "Créer une image",
+    "description": "Type d'opération : créer une image"
   },
   "name.edits": {
-    "message": "Éditer l'image",
-    "description": "Type d'opération : Éditer une image"
+    "message": "Éditer une image",
+    "description": "Type d'opération : éditer une image"
   },
   "name.imageUrls": {
     "message": "Images de référence",
-    "description": "Images de référence utilisées pour l'édition"
+    "description": "Images de référence pour l'édition"
   },
   "name.failure": {
     "message": "Échec",
-    "description": "La tâche a échoué"
+    "description": "Échec de la tâche"
   },
   "name.failureReason": {
     "message": "Raison de l'échec",
@@ -41,43 +41,91 @@
   },
   "name.prompt": {
     "message": "Invite d'image",
-    "description": "Invite pour générer/éditer l'image"
+    "description": "Mots d'invite pour générer/éditer"
   },
   "name.openaiimageBot": {
-    "message": "OpenAI Image Bot",
+    "message": "Bot OpenAI Image",
     "description": "Nom du robot OpenAI Image"
   },
   "name.size": {
     "message": "Taille",
-    "description": "Taille de l'image générée"
+    "description": "Taille de l'image de sortie"
   },
   "description.size": {
-    "message": "La taille de sortie pour générer une image, tailles courantes : 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Taille de l'image de sortie. Différents modèles prennent en charge différentes tailles : gpt-image-1 / gpt-image-1.5 ne prennent en charge que 1024x1024, 1536x1024, 1024x1536 ; gpt-image-2 prend également en charge 1792x1024, 1024x1792, ainsi que les préréglages 2K/4K ; gpt-image-2 peut activer des tailles personnalisées.",
     "description": "Description de la taille"
   },
+  "sizeGroup.standard1k": {
+    "message": "Standard 1K (prix de base)",
+    "description": "Titre du groupe de taille 1K, facturé au prix de base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Préréglage 2K (1,5 fois le prix)",
+    "description": "Titre du groupe de taille 2K, facturé à 1,5 fois le prix"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Préréglage 4K (1,5 fois le prix)",
+    "description": "Titre du groupe de taille 4K, facturé à 1,5 fois le prix"
+  },
+  "name.customSize": {
+    "message": "Taille personnalisée",
+    "description": "Étiquette du commutateur de taille personnalisée"
+  },
+  "description.customSize": {
+    "message": "Une fois activé, vous pouvez définir librement la largeur et la hauteur (uniquement pris en charge par gpt-image-2). Doit être un multiple de 16, côté le plus long ≤ 3840, total des pixels ≤ 8 294 400. Les tailles non standard 1K sont facturées à 1,5 fois le prix.",
+    "description": "Description de la taille personnalisée"
+  },
+  "name.width": {
+    "message": "Largeur",
+    "description": "Étiquette du champ de saisie de la largeur"
+  },
+  "name.height": {
+    "message": "Hauteur",
+    "description": "Étiquette du champ de saisie de la hauteur"
+  },
+  "error.customSizePositive": {
+    "message": "La largeur et la hauteur doivent être des entiers positifs",
+    "description": "La taille personnalisée doit être un entier positif"
+  },
+  "error.customSizeMultiple": {
+    "message": "La largeur et la hauteur doivent être des multiples de {multiple}",
+    "description": "La taille personnalisée doit être un multiple de 16"
+  },
+  "error.customSizeMin": {
+    "message": "La largeur et la hauteur ne peuvent pas être inférieures à {min}",
+    "description": "Limite inférieure de la taille personnalisée"
+  },
+  "error.customSizeMax": {
+    "message": "Le côté le plus long ne peut pas dépasser {max}",
+    "description": "Limite supérieure du côté le plus long de la taille personnalisée"
+  },
+  "error.customSizePixels": {
+    "message": "Le total des pixels ne peut pas dépasser {pixels}",
+    "description": "Limite supérieure du total des pixels pour la taille personnalisée"
+  },
   "description.prompt": {
-    "message": "L'invite pour générer ou éditer une image",
-    "description": "Description de l'invite"
+    "message": "Mots d'invite pour générer ou éditer une image",
+    "description": "Description des mots d'invite"
   },
   "description.model": {
     "message": "Modèle utilisé pour la génération et l'édition d'images.",
-    "description": "Description du paramètre modèle"
+    "description": "Description du paramètre model"
   },
   "description.imageUrls": {
-    "message": "Téléchargez 1 à 5 images de référence pour passer en mode édition.",
+    "message": "Téléchargez 1 à 5 images de référence pour entrer en mode d'édition.",
     "description": "Description du paramètre image_urls"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État en attente de la tâche"
+    "description": "État d'attente de la tâche"
   },
   "placeholder.select": {
     "message": "Sélectionner",
-    "description": "Placeholder de sélection"
+    "description": "Espace réservé pour la sélection"
   },
   "placeholder.prompt": {
-    "message": "Entrez l'invite, par exemple : un petit chat en aquarelle sur une table",
-    "description": "Placeholder de l'invite"
+    "message": "Entrez les mots d'invite, par exemple : un chat en aquarelle sur la table",
+    "description": "Espace réservé pour les mots d'invite"
   },
   "button.generate": {
     "message": "Générer",
@@ -85,7 +133,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Télécharger",
-    "description": "Bouton de téléchargement des images de référence (en anglais, simplifié à 'Upload', ne pas utiliser 'Upload Images')"
+    "description": "Bouton pour télécharger des images de référence (simplifiez en anglais à 'Upload', ne pas utiliser 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
@@ -93,15 +141,15 @@
   },
   "message.startTaskSuccess": {
     "message": "Tâche de génération lancée avec succès",
-    "description": "Création de la tâche réussie"
+    "description": "Tâche créée avec succès"
   },
   "message.startTaskFailed": {
-    "message": "Échec de la tâche, veuillez contacter l'administrateur :",
+    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur :",
     "description": "Échec de la création de la tâche"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer à utiliser le service",
-    "description": "Message d'épuisement des crédits"
+    "message": "Votre crédit est épuisé, veuillez acheter plus de crédits pour continuer à utiliser",
+    "description": "Message d'épuisement"
   },
   "message.uploadImageExceed": {
     "message": "Vous pouvez télécharger jusqu'à 5 images",
@@ -113,18 +161,18 @@
   },
   "name.model": {
     "message": "Modèle",
-    "description": "Étiquette de sélection du modèle OpenAI pour l'image"
+    "description": "Étiquette de sélection du modèle d'image OpenAI"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option pour le modèle gpt-image-1"
+    "description": "Option de modèle gpt-image-1"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option pour le modèle gpt-image-1.5"
+    "description": "Option de modèle gpt-image-1.5"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option pour le modèle gpt-image-2"
+    "description": "Option de modèle gpt-image-2"
   }
 }

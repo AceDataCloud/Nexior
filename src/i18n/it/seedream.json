@@ -1,154 +1,218 @@
 {
   "name.taskId": {
     "message": "ID attività",
-    "description": "ID dell'attività"
+    "description": "任务的 ID"
   },
   "name.task": {
-    "message": "Tipo di attività",
-    "description": "Tipo di operazione dell'immagine SeeDream"
+    "message": "Tipo attività",
+    "description": "SeeDream 图片操作类型"
   },
   "name.generate": {
-    "message": "Crea immagine",
-    "description": "Tipo di operazione: crea immagine"
+    "message": "Crea",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Modifica immagine",
-    "description": "Tipo di operazione: modifica immagine"
+    "message": "Modifica",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Immagini di riferimento",
-    "description": "Immagini di riferimento per la modifica"
+    "message": "Riferimenti",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Fallito",
-    "description": "Attività fallita"
+    "description": "任务失败"
   },
   "name.failureReason": {
-    "message": "Motivo del fallimento",
-    "description": "Motivo del fallimento dell'attività"
+    "message": "Motivo",
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Stato",
-    "description": "Stato dell'attività"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID tracciamento",
-    "description": "ID di tracciamento"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
-    "message": "Tempo impiegato",
-    "description": "Tempo impiegato per l'attività (secondi)"
+    "message": "Durata",
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Suggerimento immagine",
-    "description": "Parole chiave per generare/modificare"
+    "message": "Prompt",
+    "description": "生成/编辑的提示词"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Nome del generatore di immagini SeeDream"
+    "description": "SeeDream 图片生成器名称"
   },
   "name.size": {
     "message": "Dimensione",
-    "description": "Dimensione dell'immagine di output"
+    "description": "输出图片尺寸"
   },
   "name.watermark": {
     "message": "Filigrana",
-    "description": "Se aggiungere una filigrana"
+    "description": "是否添加水印"
   },
   "description.prompt": {
-    "message": "Parole chiave per generare o modificare l'immagine",
-    "description": "Descrizione delle parole chiave"
+    "message": "Prompt per generare o modificare l'immagine",
+    "description": "提示词描述"
   },
   "description.model": {
     "message": "Modello utilizzato per generare o modificare l'immagine.",
-    "description": "Descrizione del parametro model"
+    "description": "model 参数说明"
   },
   "description.size": {
-    "message": "Dimensione dell'immagine. Supporta preset `1K`, `2K`, `4K` o personalizzati `<larghezza>x<altezza>`.",
-    "description": "Descrizione del parametro size"
+    "message": "Dimensione immagine. Modelli diversi supportano preset differenti: 5.0 supporta solo 2K/3K/4K, 4.5/4.0 supportano 1K/2K/4K, 3.0-t2i e seededit-3.0-i2i supportano solo `<larghezza>x<altezza>` (es. 1024x1024, 1280x720). I modelli preset possono anche usare “Adatta” per mantenere proporzioni della referenza o inserire direttamente `<larghezza>x<altezza>`.",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
-    "message": "Se aggiungere una filigrana AI all'immagine generata. Attivato per impostazione predefinita.",
-    "description": "Descrizione del parametro watermark"
+    "message": "Aggiungi filigrana AI all'immagine generata. Attivo di default.",
+    "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "Carica da 1 a 14 immagini di riferimento per abilitare la modifica dell'immagine.",
-    "description": "Descrizione del parametro image"
+    "message": "Carica 1-14 immagini di riferimento per modificare.",
+    "description": "image 参数说明"
   },
   "status.pending": {
     "message": "In attesa",
-    "description": "Stato di attesa dell'attività"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
     "message": "Seleziona",
-    "description": "Segnaposto per la selezione"
+    "description": "选择占位"
+  },
+  "placeholder.size": {
+    "message": "Seleziona preset o inserisci <larghezza>x<altezza>",
+    "description": "size 选择/输入占位（el-select allow-create）"
   },
   "placeholder.prompt": {
-    "message": "Inserisci parole chiave, ad esempio: un gatto siamese bianco",
-    "description": "Segnaposto per le parole chiave"
+    "message": "Inserisci prompt, es: un gatto siamese bianco",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Genera",
-    "description": "Pulsante di generazione"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Carica",
-    "description": "Pulsante per caricare immagini di riferimento (semplificare in 'Carica', non usare 'Carica immagini')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "Continua",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "Annulla",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
-    "message": "Avvio dell'attività in corso...",
-    "description": "Messaggio di avvio dell'attività"
+    "message": "Avvio attività...",
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Attività di generazione avviata con successo",
-    "description": "Attività creata con successo"
+    "message": "Attività creata con successo",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Avvio dell'attività fallito, contattare l'amministratore:",
-    "description": "Creazione dell'attività fallita"
+    "message": "Creazione attività fallita, contatta l'amministratore:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "I tuoi crediti sono esauriti, acquista più crediti per continuare a utilizzare",
-    "description": "Messaggio di esaurimento"
+    "message": "Hai esaurito i crediti, acquista altri per continuare",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Puoi caricare al massimo 14 immagini",
-    "description": "Numero di immagini oltre il limite"
+    "message": "Puoi caricare fino a 14 immagini",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Caricamento fallito"
+    "message": "Caricamento fallito, riprova più tardi",
+    "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Conferma richiesta",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "La selezione attuale non supporta le seguenti impostazioni attive: {fields}. Continuando verranno rimosse.",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Impostazioni non supportate rimosse: {fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "Modello",
-    "description": "Etichetta di selezione del modello SeeDream"
+    "description": "SeeDream 模型选择标签"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Opzione modello SeeDream 4.5"
+    "description": "SeeDream 4.5 模型选项"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Opzione modello SeeDream 4.0"
+    "description": "SeeDream 4.0 模型选项"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Opzione modello SeeDream 3.0 t2i"
+    "description": "SeeDream 3.0 t2i 模型选项"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Opzione modello SeeEdit 3.0 i2i"
+    "description": "SeeEdit 3.0 i2i 模型选项"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Opzione modello SeeDream 5.0 (supporta output a gruppi e in streaming)"
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
   },
   "name.maxImages": {
-    "message": "Numero di immagini",
-    "description": "Numero di immagini generate in un gruppo (max_images)"
+    "message": "Numero immagini",
+    "description": "组图生成的图片张数（max_images）"
   },
   "description.maxImages": {
-    "message": "Numero di immagini generate in una singola richiesta (1-15). Impostato su 1 per la modalità singola; maggiore di 1 attiva automaticamente il gruppo (sequential_image_generation=auto), mantenendo coerenza di personaggi, stile e dettagli tra le immagini. Supporta solo doubao-seedream-5.0 / 4.5 / 4.0; se caricate immagini di riferimento, devono soddisfare (numero di immagini di riferimento + numero di generazione) ≤ 15. La fatturazione è basata sul numero effettivo di immagini generate.",
+    "message": "Numero di immagini generate per richiesta (1-15). Se impostato su 1, viene usata la modalità immagine singola; se maggiore di 1, viene attivata automaticamente la generazione di gruppo (sequential_image_generation=auto), mantenendo coerenza tra personaggi, stile e dettagli. Supportato solo da doubao-seedream-5.0 / 4.5 / 4.0; se vengono caricate immagini di riferimento, deve essere rispettata la condizione (numero immagini di riferimento + numero immagini generate) ≤ 15. La fatturazione si basa sul numero effettivo di immagini generate.",
     "description": "Descrizione del parametro max_images"
+  },
+  "name.seed": {
+    "message": "Seed casuale",
+    "description": "seed 参数标签"
+  },
+  "description.seed": {
+    "message": "Seed casuale per la riproduzione, intervallo [-1, 2147483647]. -1 indica casualità ogni volta. Supporta solo doubao-seedream-3.0-t2i e doubao-seededit-3.0-i2i.",
+    "description": "seed 参数说明"
+  },
+  "name.guidanceScale": {
+    "message": "Peso del prompt",
+    "description": "guidance_scale 参数标签"
+  },
+  "description.guidanceScale": {
+    "message": "Intensità di adesione al prompt, intervallo [1, 10]. Maggiore è il valore, più ci si avvicina al prompt. Doubao-seedream-3.0-t2i predefinito 2.5, doubao-seededit-3.0-i2i predefinito 5.5.",
+    "description": "guidance_scale 参数说明"
+  },
+  "name.outputFormat": {
+    "message": "Formato di output",
+    "description": "output_format 参数标签"
+  },
+  "description.outputFormat": {
+    "message": "Formato del file dell'immagine generata, jpeg o png, predefinito jpeg. Supportato solo da doubao-seedream-5.0.",
+    "description": "output_format 参数说明"
+  },
+  "size.group.tier": {
+    "message": "Livello di risoluzione",
+    "description": "尺寸下拉的档位分组（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "Adattivo",
+    "description": "尺寸下拉的自适应分组"
+  },
+  "size.group.pixel": {
+    "message": "Dimensioni pixel specifiche",
+    "description": "尺寸下拉的像素尺寸分组"
+  },
+  "size.adaptive": {
+    "message": "Adattivo (coerente con l'immagine di riferimento)",
+    "description": "adaptive 选项标签"
   }
 }

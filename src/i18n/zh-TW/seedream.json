@@ -64,8 +64,8 @@
     "description": "model 參數說明"
   },
   "description.size": {
-    "message": "圖片尺寸。支持預設 `1K`、`2K`、`4K` 或自定義 `<寬>x<高>`。",
-    "description": "size 參數說明"
+    "message": "圖片尺寸。不同模型支持的預設不同：5.0 僅支持 2K/3K/4K，4.5/4.0 支持 1K/2K/4K，3.0-t2i 與 seededit-3.0-i2i 僅支持 `<寬>x<高>` 像素值（如 1024x1024、1280x720）。預設模型還可選擇「自適應」（與參考圖保持一致比例），也可在下拉框中直接輸入任意 `<寬>x<高>`。",
+    "description": "size 參數說明（按模型）"
   },
   "description.watermark": {
     "message": "是否在生成的圖片中添加 AI 水印。默認開啟。",
@@ -83,6 +83,10 @@
     "message": "選擇",
     "description": "選擇佔位"
   },
+  "placeholder.size": {
+    "message": "選擇預設或輸入 <寬>x<高>",
+    "description": "size 選擇/輸入佔位（el-select allow-create）"
+  },
   "placeholder.prompt": {
     "message": "輸入提示詞，例如：一隻白色的暹羅貓",
     "description": "提示佔位"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "上傳圖片",
     "description": "上傳參考圖片按鈕（英文請簡化為“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "繼續切換",
+    "description": "能力衝突提示框的確認按鈕"
+  },
+  "button.cancelSwitch": {
+    "message": "取消",
+    "description": "能力衝突提示框的取消按鈕"
   },
   "message.startingTask": {
     "message": "正在啟動任務...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "上傳圖片失敗，請稍後重試",
     "description": "上傳失敗"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "需要確認",
+    "description": "能力衝突提示框標題"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "當前選擇不支持以下已啟用的設置：{fields}。繼續將清理這些設置。",
+    "description": "能力衝突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "已清理不支持的設置：{fields}",
+    "description": "能力衝突清理後的提示消息"
   },
   "name.model": {
     "message": "模型",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "一次請求生成的圖片數量（1-15）。設為 1 時為單圖模式；大於 1 時自動啟用組圖（sequential_image_generation=auto），跨圖保持角色、風格與細節一致。僅支持 doubao-seedream-5.0 / 4.5 / 4.0；如同時上傳參考圖，需滿足 (參考圖數 + 生成數) ≤ 15。計費按實際生成的圖片張數。",
     "description": "max_images 參數說明"
+  },
+  "name.seed": {
+    "message": "隨機種子",
+    "description": "seed 參數標籤"
+  },
+  "description.seed": {
+    "message": "用於重現的隨機種子，範圍 [-1, 2147483647]。-1 表示每次隨機。僅支持 doubao-seedream-3.0-t2i 與 doubao-seededit-3.0-i2i。",
+    "description": "seed 參數說明"
+  },
+  "name.guidanceScale": {
+    "message": "提示詞權重",
+    "description": "guidance_scale 參數標籤"
+  },
+  "description.guidanceScale": {
+    "message": "提示詞遵循強度，範圍 [1, 10]。值越大越貼近提示詞。doubao-seedream-3.0-t2i 預設 2.5，doubao-seededit-3.0-i2i 預設 5.5。",
+    "description": "guidance_scale 參數說明"
+  },
+  "name.outputFormat": {
+    "message": "輸出格式",
+    "description": "output_format 參數標籤"
+  },
+  "description.outputFormat": {
+    "message": "生成圖片的文件格式，jpeg 或 png，預設 jpeg。僅 doubao-seedream-5.0 支持。",
+    "description": "output_format 參數說明"
+  },
+  "size.group.tier": {
+    "message": "解析度檔位",
+    "description": "尺寸下拉的檔位分組（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "自適應",
+    "description": "尺寸下拉的自適應分組"
+  },
+  "size.group.pixel": {
+    "message": "具體像素尺寸",
+    "description": "尺寸下拉的像素尺寸分組"
+  },
+  "size.adaptive": {
+    "message": "自適應（與參考圖一致）",
+    "description": "adaptive 選項標籤"
   }
 }

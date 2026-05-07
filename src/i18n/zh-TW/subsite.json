@@ -36,7 +36,7 @@
     "description": "slug 輸入框佔位符"
   },
   "placeholder.title": {
-    "message": "用於顯示在分站瀏覽器標籤和站點頭部",
+    "message": "顯示在分站瀏覽器標籤和網站頭部",
     "description": "標題輸入框佔位符"
   },
   "button.create": {
@@ -78,6 +78,10 @@
   "message.createFailed": {
     "message": "創建分站失敗，請稍後重試。",
     "description": "創建失敗"
+  },
+  "message.slugTaken": {
+    "message": "子域名 {origin} 已被使用，請換一個再試。",
+    "description": "創建分站時，slug 已被占用（後端返回 code=duplication）"
   },
   "message.loadFailed": {
     "message": "加載分站列表失敗。",
@@ -153,14 +157,14 @@
   },
   "message.domainCreateFailed": {
     "message": "創建域名失敗，請稍後重試。",
-    "description": "創建失敗"
+    "description": "創建失敗的提示"
   },
   "message.domainsLoadFailed": {
-    "message": "加載域名列表失敗。",
+    "message": "無法加載域名列表。",
     "description": "拉域名列表失敗"
   },
   "message.domainActive": {
-    "message": "域名已啟用！現在可以透過你的自訂 HTTPS 地址訪問子站。",
+    "message": "域名已上線！現在可以通過你的自定義 HTTPS 地址訪問分站。",
     "description": "進入 Active 狀態"
   },
   "message.domainFailed": {

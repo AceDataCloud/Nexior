@@ -1,30 +1,30 @@
 {
   "name.taskId": {
     "message": "Task ID",
-    "description": "The ID of the task"
+    "description": "Task ID"
   },
   "name.task": {
     "message": "Task Type",
     "description": "SeeDream image operation type"
   },
   "name.generate": {
-    "message": "Create Image",
-    "description": "Operation type: Create Image"
+    "message": "Create",
+    "description": "Operation type: create image"
   },
   "name.edits": {
-    "message": "Edit Image",
-    "description": "Operation type: Edit Image"
+    "message": "Edit",
+    "description": "Operation type: edit image"
   },
   "name.imageUrls": {
-    "message": "Reference Images",
+    "message": "Reference",
     "description": "Reference images for editing"
   },
   "name.failure": {
-    "message": "Failure",
-    "description": "Task failure"
+    "message": "Failed",
+    "description": "Task failed"
   },
   "name.failureReason": {
-    "message": "Failure Reason",
+    "message": "Reason",
     "description": "Reason for task failure"
   },
   "name.status": {
@@ -36,16 +36,16 @@
     "description": "Trace ID"
   },
   "name.elapsed": {
-    "message": "Elapsed Time",
-    "description": "Time taken for the task (seconds)"
+    "message": "Elapsed",
+    "description": "Task elapsed time (seconds)"
   },
   "name.prompt": {
-    "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "message": "Prompt",
+    "description": "Prompt for generation/editing"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Name of the SeeDream image generator"
+    "description": "SeeDream image generator name"
   },
   "name.size": {
     "message": "Size",
@@ -56,24 +56,24 @@
     "description": "Whether to add a watermark"
   },
   "description.prompt": {
-    "message": "Prompt for generating or editing an image",
-    "description": "Description of the prompt"
+    "message": "Prompt for generating or editing images",
+    "description": "Prompt description"
   },
   "description.model": {
     "message": "Model used for generating or editing images.",
-    "description": "Description of the model parameter"
+    "description": "Model parameter description"
   },
   "description.size": {
-    "message": "Image size. Allowed tier presets vary by model: 5.0 supports 2K/3K/4K, 4.5/4.0 support 1K/2K/4K, and 3.0-t2i / seededit-3.0-i2i only accept explicit `<width>x<height>` pixel values (e.g. 1024x1024, 1280x720). On preset-supporting models you can also pick `adaptive` (match the reference image) or type any `<width>x<height>` directly into the dropdown.",
-    "description": "Description of the size parameter (per-model)"
+    "message": "Image size. Different models support different presets: 5.0 only supports 2K/3K/4K, 4.5/4.0 supports 1K/2K/4K, 3.0-t2i and seededit-3.0-i2i only support `<width>x<height>` pixels (e.g., 1024x1024, 1280x720). Preset models also allow 'Adaptive' (keep ratio with reference images), or you can enter any `<width>x<height>` directly in the dropdown.",
+    "description": "Size parameter description (by model)"
   },
   "description.watermark": {
     "message": "Whether to add an AI watermark to the generated image. Enabled by default.",
-    "description": "Description of the watermark parameter"
+    "description": "Watermark parameter description"
   },
   "description.imageUrls": {
-    "message": "Upload 1-14 reference images to enable image editing.",
-    "description": "Description of the image parameter"
+    "message": "Upload 1-14 reference images to enable editing.",
+    "description": "Image parameter description"
   },
   "status.pending": {
     "message": "Pending",
@@ -81,14 +81,14 @@
   },
   "placeholder.select": {
     "message": "Select",
-    "description": "Selection placeholder"
+    "description": "Select placeholder"
   },
   "placeholder.size": {
-    "message": "Pick a preset or type <width>x<height>",
-    "description": "size selector placeholder (el-select allow-create)"
+    "message": "Select preset or enter <width>x<height>",
+    "description": "Size select/input placeholder (el-select allow-create)"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., a white Siamese cat",
+    "message": "Enter a prompt, e.g., a white Siamese cat",
     "description": "Prompt placeholder"
   },
   "button.generate": {
@@ -97,51 +97,51 @@
   },
   "button.uploadImageUrls": {
     "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload')"
+    "description": "Upload reference image button (simplified English)"
   },
   "button.confirmContinue": {
-    "message": "Continue Switching",
-    "description": "Confirm button on the capability-conflict prompt"
+    "message": "Continue",
+    "description": "Confirm button in capability conflict dialog"
   },
   "button.cancelSwitch": {
     "message": "Cancel",
-    "description": "Cancel button on the capability-conflict prompt"
+    "description": "Cancel button in capability conflict dialog"
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message indicating task start"
+    "description": "Task start message"
   },
   "message.startTaskSuccess": {
-    "message": "Task generation initiated successfully",
+    "message": "Task started successfully",
     "description": "Task created successfully"
   },
   "message.startTaskFailed": {
-    "message": "Task initiation failed, please contact the administrator:",
+    "message": "Failed to start task. Contact admin:",
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more to continue using",
-    "description": "Exhausted credits message"
+    "message": "You’ve used up your credits. Please purchase more to continue.",
+    "description": "Credits used up message"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 14 images",
-    "description": "Image count exceeds limit"
+    "message": "You can upload up to 14 images",
+    "description": "Image number limit exceeded"
   },
   "message.uploadImageError": {
-    "message": "Image upload failed, please try again later",
-    "description": "Upload failure"
+    "message": "Failed to upload. Please try again later",
+    "description": "Upload failed"
   },
   "message.featureNotSupportedTitle": {
     "message": "Confirmation Required",
-    "description": "Title of the capability-conflict prompt"
+    "description": "Capability conflict dialog title"
   },
   "message.featureNotSupportedBody": {
     "message": "The current selection does not support the following enabled settings: {fields}. Continuing will clear these settings.",
-    "description": "Body of the capability-conflict prompt"
+    "description": "Capability conflict dialog body"
   },
   "message.featureRemovedNotice": {
-    "message": "Cleared unsupported settings: {fields}",
-    "description": "Toast shown after the user confirms the capability-conflict prompt"
+    "message": "Unsupported settings cleared: {fields}",
+    "description": "Notice after clearing unsupported settings"
   },
   "name.model": {
     "message": "Model",
@@ -165,54 +165,54 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 model option (supports image sets and streaming output)"
+    "description": "SeeDream 5.0 model option (supports multi-image & streaming)"
   },
   "name.maxImages": {
-    "message": "Number of Images",
-    "description": "Number of images for generating image sets (max_images)"
+    "message": "Images",
+    "description": "Number of images in multi-image generation (max_images)"
   },
   "description.maxImages": {
-    "message": "Number of images generated in a single request (1-15). Set to 1 for single image mode; greater than 1 automatically enables image sets (sequential_image_generation=auto), maintaining character, style, and detail consistency across images. Only supports doubao-seedream-5.0 / 4.5 / 4.0; if reference images are uploaded, must satisfy (number of reference images + number generated) ≤ 15. Billing is based on the actual number of images generated.",
-    "description": "Description of the max_images parameter"
+    "message": "Number of images to generate per request (1-15). Set to 1 for single image mode; more than 1 automatically enables sequential image generation, keeping character, style, and details consistent across images. Only supported on doubao-seedream-5.0 / 4.5 / 4.0. If reference images are uploaded, ensure (reference images + generated images) ≤ 15. Billing is based on the actual number of images generated.",
+    "description": "Explanation of the max_images parameter"
   },
   "name.seed": {
     "message": "Seed",
-    "description": "seed parameter label"
+    "description": "Label for the seed parameter"
   },
   "description.seed": {
-    "message": "Random seed for reproducible results, range [-1, 2147483647]. -1 means random each time. Only supported by doubao-seedream-3.0-t2i and doubao-seededit-3.0-i2i.",
-    "description": "Description of the seed parameter"
+    "message": "Random seed for reproducibility, range [-1, 2147483647]. -1 means random each time. Only supported by doubao-seedream-3.0-t2i and doubao-seededit-3.0-i2i.",
+    "description": "Explanation for the seed parameter"
   },
   "name.guidanceScale": {
-    "message": "Guidance Scale",
-    "description": "guidance_scale parameter label"
+    "message": "Prompt Strength",
+    "description": "Label for guidance_scale parameter"
   },
   "description.guidanceScale": {
-    "message": "Prompt-following strength, range [1, 10]. Higher values follow the prompt more closely. Default 2.5 for doubao-seedream-3.0-t2i, 5.5 for doubao-seededit-3.0-i2i.",
-    "description": "Description of the guidance_scale parameter"
+    "message": "Controls adherence to the prompt, range [1, 10]. Higher values follow the prompt more closely. Default: 2.5 for doubao-seedream-3.0-t2i, 5.5 for doubao-seededit-3.0-i2i.",
+    "description": "Explanation for the guidance_scale parameter"
   },
   "name.outputFormat": {
     "message": "Output Format",
-    "description": "output_format parameter label"
+    "description": "Label for output_format parameter"
   },
   "description.outputFormat": {
-    "message": "File format of the generated image, jpeg or png. Default is jpeg. Only supported by doubao-seedream-5.0.",
-    "description": "Description of the output_format parameter"
+    "message": "File format for generated images, jpeg or png. Default is jpeg. Supported only by doubao-seedream-5.0.",
+    "description": "Explanation for the output_format parameter"
   },
   "size.group.tier": {
-    "message": "Resolution tier",
-    "description": "Group label for the 1K-4K presets in the size dropdown"
+    "message": "Resolution Tier",
+    "description": "Dropdown group for resolution tiers (1K-4K)"
   },
   "size.group.adaptive": {
     "message": "Adaptive",
-    "description": "Group label for the adaptive option in the size dropdown"
+    "description": "Dropdown group for adaptive sizes"
   },
   "size.group.pixel": {
-    "message": "Explicit dimensions",
-    "description": "Group label for the pixel presets in the size dropdown"
+    "message": "Exact Pixels",
+    "description": "Dropdown group for specific pixel sizes"
   },
   "size.adaptive": {
-    "message": "Adaptive (match reference)",
-    "description": "Label for the adaptive option"
+    "message": "Adaptive (matches reference)",
+    "description": "Label for adaptive option"
   }
 }

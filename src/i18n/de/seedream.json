@@ -25,7 +25,7 @@
   },
   "name.failureReason": {
     "message": "Fehlerursache",
-    "description": "Ursache für das Scheitern der Aufgabe"
+    "description": "Grund für das Scheitern der Aufgabe"
   },
   "name.status": {
     "message": "Status",
@@ -64,16 +64,16 @@
     "description": "Beschreibung des Modellparameters"
   },
   "description.size": {
-    "message": "Bildgröße. Unterstützt die Voreinstellungen `1K`, `2K`, `4K` oder benutzerdefinierte `<Breite>x<Höhe>`.",
-    "description": "Beschreibung des Größenparameters"
+    "message": "Bildgröße. Verschiedene Modelle unterstützen unterschiedliche Voreinstellungen: 5.0 unterstützt nur 2K/3K/4K, 4.5/4.0 unterstützen 1K/2K/4K, 3.0-t2i und seededit-3.0-i2i unterstützen nur `<Breite>x<Höhe>` Pixelwerte (z. B. 1024x1024, 1280x720). Voreinstellungsmodelle können auch 'adaptiv' (im Verhältnis zum Referenzbild) wählen oder direkt eine beliebige `<Breite>x<Höhe>` im Dropdown eingeben.",
+    "description": "Beschreibung des size-Parameters (nach Modell)"
   },
   "description.watermark": {
     "message": "Ob ein KI-Wasserzeichen im generierten Bild hinzugefügt werden soll. Standardmäßig aktiviert.",
-    "description": "Beschreibung des Wasserzeichenparameters"
+    "description": "Beschreibung des watermark-Parameters"
   },
   "description.imageUrls": {
     "message": "Laden Sie 1-14 Referenzbilder hoch, um die Bildbearbeitung zu aktivieren.",
-    "description": "Beschreibung des Bildparameters"
+    "description": "Beschreibung des image-Parameters"
   },
   "status.pending": {
     "message": "Warten",
@@ -83,9 +83,13 @@
     "message": "Auswählen",
     "description": "Platzhalter für Auswahl"
   },
+  "placeholder.size": {
+    "message": "Voreinstellung auswählen oder <Breite>x<Höhe> eingeben",
+    "description": "Platzhalter für die Auswahl/Eingabe der Größe (el-select allow-create)"
+  },
   "placeholder.prompt": {
-    "message": "Geben Sie die Aufforderung ein, z.B.: eine weiße Siamkatze",
-    "description": "Platzhalter für Aufforderung"
+    "message": "Geben Sie die Aufforderung ein, z. B.: eine weiße Siamkatze",
+    "description": "Platzhalter für die Aufforderung"
   },
   "button.generate": {
     "message": "Generieren",
@@ -93,7 +97,15 @@
   },
   "button.uploadImageUrls": {
     "message": "Hochladen",
-    "description": "Button zum Hochladen von Referenzbildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bilder hochladen')"
+    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch auf 'Upload' vereinfachen, nicht 'Upload Images')"
+  },
+  "button.confirmContinue": {
+    "message": "Weiter",
+    "description": "Bestätigungsbutton im Konfliktwarnungsdialog"
+  },
+  "button.cancelSwitch": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button im Konfliktwarnungsdialog"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -116,8 +128,20 @@
     "description": "Bildanzahl überschreitet das Limit"
   },
   "message.uploadImageError": {
-    "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
+    "message": "Hochladen des Bildes fehlgeschlagen, bitte später erneut versuchen",
     "description": "Hochladen fehlgeschlagen"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Bestätigung erforderlich",
+    "description": "Titel des Konfliktwarnungsdialogs"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Die aktuelle Auswahl unterstützt die folgenden aktivierten Einstellungen nicht: {fields}. Das Fortfahren wird diese Einstellungen löschen.",
+    "description": "Text im Konfliktwarnungsdialog"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Nicht unterstützte Einstellungen wurden gelöscht: {fields}",
+    "description": "Hinweis nach der Bereinigung von Konflikten"
   },
   "name.model": {
     "message": "Modell",
@@ -145,10 +169,50 @@
   },
   "name.maxImages": {
     "message": "Anzahl der Bilder",
-    "description": "Anzahl der Bilder bei der Erstellung von Gruppenbildern (max_images)"
+    "description": "Anzahl der Bilder für die Erstellung von Gruppenbildern (max_images)"
   },
   "description.maxImages": {
-    "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 ist es der Einzelbildmodus; bei mehr als 1 wird automatisch die Gruppenbildfunktion aktiviert (sequential_image_generation=auto), wobei Charakter, Stil und Details über die Bilder hinweg konsistent bleiben. Unterstützt nur doubao-seedream-5.0 / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
-    "description": "Beschreibung des max_images Parameters"
+    "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 wird der Einzelbildmodus aktiviert; bei mehr als 1 wird automatisch der Gruppenbildmodus (sequential_image_generation=auto) aktiviert, wobei Charakter, Stil und Details zwischen den Bildern konsistent bleiben. Unterstützt nur doubao-seedream-5.0 / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Die Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
+    "description": "max_images Parameterbeschreibung"
+  },
+  "name.seed": {
+    "message": "Zufallssamen",
+    "description": "Seed-Parameterbezeichnung"
+  },
+  "description.seed": {
+    "message": "Zufallssamen zur Reproduzierbarkeit, Bereich [-1, 2147483647]. -1 = jedes Mal zufällig. Unterstützt nur doubao-seedream-3.0-t2i und doubao-seededit-3.0-i2i.",
+    "description": "Seed-Parameterbeschreibung"
+  },
+  "name.guidanceScale": {
+    "message": "Prompt-Gewicht",
+    "description": "Guidance_scale-Parameterbezeichnung"
+  },
+  "description.guidanceScale": {
+    "message": "Stärke der Prompt-Beachtung, Bereich [1, 10]. Höhere Werte = stärker an Prompt orientiert. Standard: doubao-seedream-3.0-t2i = 2,5, doubao-seededit-3.0-i2i = 5,5.",
+    "description": "Guidance_scale-Parameterbeschreibung"
+  },
+  "name.outputFormat": {
+    "message": "Ausgabeformat",
+    "description": "Output_format-Parameterbezeichnung"
+  },
+  "description.outputFormat": {
+    "message": "Dateiformat der generierten Bilder, jpeg oder png, Standard: jpeg. Nur doubao-seedream-5.0 unterstützt.",
+    "description": "Output_format-Parameterbeschreibung"
+  },
+  "size.group.tier": {
+    "message": "Auflösungsstufe",
+    "description": "Größen-Dropdown Gruppierung (1K–4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptiv",
+    "description": "Größen-Dropdown adaptive Gruppe"
+  },
+  "size.group.pixel": {
+    "message": "Exakte Pixelgröße",
+    "description": "Größen-Dropdown Pixelgröße Gruppe"
+  },
+  "size.adaptive": {
+    "message": "Adaptiv (entspricht Referenzbild)",
+    "description": "Adaptive-Option Label"
   }
 }

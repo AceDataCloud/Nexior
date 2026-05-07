@@ -1,178 +1,182 @@
 {
   "title.index": {
-    "message": "Il mio sottodominio",
-    "description": "Titolo principale della pagina di gestione dei sottodomini"
+    "message": "I miei siti secondari",
+    "description": "分站管理首页大标题"
   },
   "title.create": {
-    "message": "Crea sottodominio",
-    "description": "Titolo della finestra di dialogo per la creazione di un nuovo sottodominio"
+    "message": "Crea sito secondario",
+    "description": "新建分站对话框标题"
   },
   "title.openNow": {
-    "message": "Visita subito il sottodominio",
-    "description": "Titolo della finestra di dialogo che chiede se si desidera passare subito dopo la creazione"
+    "message": "Apri subito il sito",
+    "description": "新建成功后询问是否立即跳转的对话框标题"
   },
   "field.slug": {
-    "message": "Prefisso del sottodominio",
-    "description": "Titolo del campo di input per il slug del sottodominio"
+    "message": "Prefisso sottodominio",
+    "description": "分站 slug 输入框标题"
   },
   "field.origin": {
-    "message": "Dominio del sottodominio",
-    "description": "Colonna del dominio nella lista dei sottodomini"
+    "message": "Dominio del sito",
+    "description": "分站列表的域名列"
   },
   "field.title": {
-    "message": "Titolo del sottodominio",
-    "description": "Campo per il titolo del sottodominio"
+    "message": "Titolo del sito",
+    "description": "分站标题字段"
   },
   "field.createdAt": {
-    "message": "Data di creazione",
-    "description": "Colonna della data di creazione del sottodominio"
+    "message": "Data creazione",
+    "description": "分站创建时间列"
   },
   "field.actions": {
     "message": "Azioni",
-    "description": "Colonna delle azioni nella lista dei sottodomini"
+    "description": "分站列表操作列"
   },
   "placeholder.slug": {
-    "message": "es. my-brand",
-    "description": "Segnaposto per il campo di input dello slug"
+    "message": "es. mio-brand",
+    "description": "slug 输入框占位符"
   },
   "placeholder.title": {
-    "message": "Da visualizzare nella scheda del browser e nell'intestazione del sito",
-    "description": "Segnaposto per il campo di input del titolo"
+    "message": "Mostrato nella scheda del browser e nell’intestazione del sito",
+    "description": "标题输入框占位符"
   },
   "button.create": {
-    "message": "Crea sottodominio",
-    "description": "Pulsante per creare un sottodominio"
+    "message": "Crea sito",
+    "description": "创建分站按钮"
   },
   "button.open": {
     "message": "Apri",
-    "description": "Pulsante per aprire il sottodominio"
+    "description": "打开分站按钮"
   },
   "button.manage": {
     "message": "Gestisci",
-    "description": "Pulsante per accedere alle impostazioni del sottodominio"
+    "description": "进入分站设置按钮"
   },
   "message.indexTip": {
-    "message": "Crea sottodomini di marchi indipendenti sotto il sito principale, ogni sottodominio può avere il proprio logo, titolo e funzionalità, senza necessità di costruire codice sorgente separato.",
-    "description": "Testo esplicativo della pagina di gestione dei sottodomini"
+    "message": "Crea siti secondari indipendenti sotto il sito principale. Ogni sito può avere logo, titolo e funzionalità proprie senza dover configurare codice sorgente separato.",
+    "description": "分站管理首页说明文字"
   },
   "message.empty": {
-    "message": "Non hai ancora creato alcun sottodominio. Clicca su 'Crea sottodominio' in alto a destra per iniziare.",
-    "description": "Messaggio per lista vuota"
+    "message": "Non hai ancora creato siti secondari. Clicca “Crea sito” in alto a destra per iniziare.",
+    "description": "空列表提示"
   },
   "message.slugTip": {
-    "message": "Lettere minuscole, numeri o trattini da 3 a 32 caratteri; non può iniziare o finire con un trattino e non può contenere trattini consecutivi.",
-    "description": "Spiegazione del campo slug"
+    "message": "3-32 caratteri minuscoli, numeri o trattini; non iniziare o terminare con un trattino e non usare trattini consecutivi.",
+    "description": "slug 字段说明"
   },
   "message.slugInvalid": {
-    "message": "Formato del prefisso del sottodominio non valido, controlla le regole e riprova.",
-    "description": "Errore di validazione dello slug"
+    "message": "Formato prefisso sottodominio non valido. Controlla le regole e riprova.",
+    "description": "slug 校验失败"
   },
   "message.zoneMissing": {
-    "message": "Il dominio del sottodominio non è configurato nel sito principale, contatta l'amministratore del sito.",
-    "description": "Zona del sottodominio mancante"
+    "message": "Il sito principale non ha configurato la zona per i sottodomini. Contatta l’amministratore.",
+    "description": "subdomain_zone 缺失"
   },
   "message.created": {
-    "message": "Sottodominio creato con successo!",
-    "description": "Messaggio di successo della creazione"
+    "message": "Sito creato con successo!",
+    "description": "创建成功"
   },
   "message.createFailed": {
-    "message": "Creazione del sottodominio fallita, riprova più tardi.",
-    "description": "Messaggio di errore nella creazione"
+    "message": "Creazione del sito fallita. Riprova più tardi.",
+    "description": "创建失败"
+  },
+  "message.slugTaken": {
+    "message": "Il sottodominio {origin} è già in uso. Scegline un altro.",
+    "description": "创建分站时，slug 已被占用（后端返回 code=duplication）"
   },
   "message.loadFailed": {
-    "message": "Caricamento della lista dei sottodomini fallito.",
-    "description": "Errore nel caricamento della lista"
+    "message": "Caricamento della lista siti fallito.",
+    "description": "拉列表失败"
   },
   "message.openNowConfirm": {
-    "message": "Il sottodominio {origin} è stato creato. Vuoi aprirlo ora per continuare la configurazione?",
-    "description": "Conferma per aprire subito dopo la creazione"
+    "message": "Il sito {origin} è stato creato. Vuoi aprirlo ora per continuare la configurazione?",
+    "description": "创建后是否立即打开"
   },
   "title.domains": {
-    "message": "Dominio personalizzato per {origin}",
-    "description": "Titolo della finestra di dialogo per il dominio personalizzato"
+    "message": "Domini personalizzati di {origin}",
+    "description": "自定义域名对话框标题"
   },
   "title.bindDomain": {
-    "message": "Collega un nuovo dominio",
-    "description": "Titolo del modulo di collegamento"
+    "message": "Aggiungi nuovo dominio",
+    "description": "绑定表单标题"
   },
   "button.domains": {
     "message": "Domini",
-    "description": "Pulsante per aprire la finestra di gestione dei domini"
+    "description": "打开域名管理对话框的按钮"
   },
   "button.bindDomain": {
-    "message": "Collega dominio",
-    "description": "Invia il collegamento di un nuovo dominio"
+    "message": "Aggiungi dominio",
+    "description": "提交绑定新域名"
   },
   "button.verify": {
     "message": "Verifica ora",
-    "description": "Controlla se il dominio può essere risolto e certificato tramite il nostro proxy inverso"
+    "description": "通过我们的反向代理探测该域名是否已能正常解析并签发证书"
   },
   "button.refresh": {
     "message": "Aggiorna",
-    "description": "Ricarica lo stato di questo dominio"
+    "description": "重新拉取该域名的状态"
   },
   "field.hostname": {
     "message": "Il tuo dominio",
-    "description": "Inserisci il dominio o sottodominio di tua proprietà"
+    "description": "输入你拥有的域名或子域名"
   },
   "field.recordType": {
-    "message": "Tipo di record",
-    "description": "Colonna del tipo di record DNS"
+    "message": "Tipo record",
+    "description": "DNS 记录类型列"
   },
   "field.recordName": {
-    "message": "Nome del record",
-    "description": "Colonna del nome del record DNS"
+    "message": "Nome record",
+    "description": "DNS 记录名称列"
   },
   "field.recordValue": {
-    "message": "Valore del record",
-    "description": "Colonna del valore del record DNS"
+    "message": "Valore record",
+    "description": "DNS 记录值列"
   },
   "placeholder.hostname": {
-    "message": "es. studio.mybrand.com",
-    "description": "Segnaposto per il campo di input dell'hostname"
+    "message": "es. studio.mio-brand.com",
+    "description": "hostname 输入框占位符"
   },
   "message.domainsIntro": {
-    "message": "Collega il dominio di tua proprietà a questo sottodominio. Devi poter modificare il DNS di quel dominio. Aggiungi un record CNAME come indicato qui sotto e clicca su 'Verifica ora', provvederemo noi a rilasciare e rinnovare gratuitamente il certificato HTTPS tramite Let's Encrypt.",
-    "description": "Spiegazione in cima alla finestra di dialogo"
+    "message": "Collega i tuoi domini a questo sito. Devi poter modificare il DNS del dominio. Aggiungi un record CNAME come indicato e clicca “Verifica ora”. Generiamo automaticamente certificati HTTPS gratuiti tramite Let's Encrypt.",
+    "description": "对话框顶部说明"
   },
   "message.domainsEmpty": {
-    "message": "Non hai ancora collegato alcun dominio personalizzato. Compila il dominio completo nel modulo qui sotto e clicca su 'Collega' per iniziare.",
-    "description": "Messaggio per lista vuota"
+    "message": "Nessun dominio personalizzato collegato. Inserisci un dominio completo nel form sottostante e clicca “Aggiungi” per iniziare.",
+    "description": "空列表提示"
   },
   "message.hostnameTip": {
     "message": "Deve essere un dominio pubblico di cui puoi controllare il DNS.",
-    "description": "Suggerimento per l'input dell'hostname"
+    "description": "hostname 输入提示"
   },
   "message.hostnameInvalid": {
-    "message": "Formato del dominio non valido. Deve essere un dominio pubblico risolvibile, non sono consentiti indirizzi IP.",
-    "description": "Errore di validazione locale dell'hostname"
+    "message": "Formato dominio non valido. Deve essere un dominio pubblico risolvibile, non un indirizzo IP.",
+    "description": "hostname 本地校验失败"
   },
   "message.domainCreated": {
-    "message": "Dominio inviato, segui le istruzioni per aggiungere il record CNAME.",
-    "description": "POST /site-domains/ riuscito"
+    "message": "Dominio inviato, aggiungi il record CNAME come indicato.",
+    "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
-    "message": "Creazione del dominio fallita, riprova più tardi.",
-    "description": "Errore nella creazione del dominio"
+    "message": "Creazione del dominio non riuscita, riprova più tardi.",
+    "description": "Creazione fallita"
   },
   "message.domainsLoadFailed": {
     "message": "Caricamento della lista dei domini fallito.",
     "description": "Errore nel caricamento della lista dei domini"
   },
   "message.domainActive": {
-    "message": "Dominio attivo! Ora puoi accedere al sottodominio tramite il tuo indirizzo HTTPS personalizzato.",
+    "message": "Dominio attivo! Ora puoi accedere al tuo sottodominio tramite il tuo indirizzo HTTPS personalizzato.",
     "description": "Entrato nello stato attivo"
   },
   "message.domainFailed": {
     "message": "Verifica del dominio o attivazione fallita.",
-    "description": "Testo per lo stato di errore"
+    "description": "Testo per stato fallito"
   },
   "message.domainVerifyFailed": {
     "message": "Verifica fallita, controlla se il record CNAME punta al nostro reverse proxy e se la propagazione DNS è completata.",
     "description": "Interfaccia di verifica 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Sei sicuro di voler dissociare {hostname}? Dopo la dissociazione, gli utenti non potranno accedere alla tua sottodirectory da questo dominio.",
+    "message": "Sei sicuro di voler dissociare {hostname}? Dopo la dissociazione, gli utenti non potranno accedere al tuo sottodominio tramite questo dominio.",
     "description": "Conferma di eliminazione"
   },
   "message.domainDeleteFailed": {
@@ -181,7 +185,7 @@
   },
   "status.pending": {
     "message": "In attesa di verifica",
-    "description": "Etichetta di stato in attesa: attende che l'utente aggiunga il CNAME e clicchi su 'Verifica ora'"
+    "description": "Etichetta di stato in attesa: attesa che l'utente aggiunga CNAME e clicchi su 'Verifica ora'"
   },
   "status.active": {
     "message": "Attivo",

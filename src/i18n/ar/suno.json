@@ -73,7 +73,7 @@
   },
   "voice.emptyFavorites": {
     "message": "لم تقم بإضافة أي أصوات للمفضلة، انقر على النجمة للإضافة",
-    "description": "رسالة عند كون علامة المفضلة فارغة"
+    "description": "رسالة عند كون قائمة المفضلات فارغة"
   },
   "voice.tabAll": {
     "message": "الكل",
@@ -96,7 +96,7 @@
     "description": "عنوان تأكيد حذف الصوت"
   },
   "voice.confirmDelete": {
-    "message": "هل أنت متأكد أنك تريد حذف هذا الصوت؟ هذه العملية غير قابلة للتراجع.",
+    "message": "هل أنت متأكد أنك تريد حذف هذا الصوت؟ هذه العملية لا يمكن التراجع عنها.",
     "description": "رسالة تأكيد حذف الصوت"
   },
   "voice.deleteSuccess": {
@@ -141,7 +141,7 @@
   },
   "button.useRecording": {
     "message": "استخدام هذا التسجيل",
-    "description": "رفع الصوت المسجل كمرجع"
+    "description": "رفع التسجيل الصوتي كمرجع"
   },
   "name.addAudio": {
     "message": "إضافة صوت",
@@ -161,7 +161,7 @@
   },
   "description.audioFormats": {
     "message": "الصيغ المدعومة: MP3، WAV، M4A",
-    "description": "نص تلميح للصيغ الصوتية المدعومة"
+    "description": "تلميح حول صيغ الصوت المدعومة"
   },
   "message.recordingReady": {
     "message": "التسجيل جاهز",
@@ -184,152 +184,152 @@
     "description": "نص زر تنزيل الفيديو"
   },
   "button.download_wav": {
-    "message": "تحميل WAV",
-    "description": "نص زر تحميل تنسيق WAV بدون فقدان"
+    "message": "تنزيل WAV بدون فقدان",
+    "description": "نص زر تنزيل بصيغة WAV بدون فقدان"
   },
   "button.download_midi": {
     "message": "تحميل MIDI",
-    "description": "نص زر تحميل تنسيق MIDI"
+    "description": "زر تحميل صيغة MIDI"
   },
   "button.get_stems": {
-    "message": "فصل الأصوات",
-    "description": "نص زر فصل الأصوات"
+    "message": "فصل المسارات",
+    "description": "زر لفصل المسارات الصوتية"
   },
   "button.cover_music": {
-    "message": "تغطية",
-    "description": "نص زر تغطية"
+    "message": "أداء غنائي",
+    "description": "زر أداء غنائي للأغنية"
   },
   "button.concat_music": {
     "message": "دمج",
-    "description": "نص زر دمج الموسيقى"
+    "description": "زر لدمج الأغاني"
   },
   "button.download_audio": {
-    "message": "تحميل الموسيقى",
-    "description": "نص زر تحميل الموسيقى"
+    "message": "تحميل الأغنية",
+    "description": "زر لتحميل الأغنية"
   },
   "button.remaster": {
-    "message": "إعادة إنتاج",
-    "description": "نص زر إعادة إنتاج لتحسين جودة الصوت"
+    "message": "تحسين الجودة",
+    "description": "زر لتحسين جودة الماستر"
   },
   "button.replace_section": {
     "message": "استبدال مقطع",
-    "description": "نص زر استبدال مقطع في الأغنية"
+    "description": "زر لاستبدال جزء من الأغنية"
   },
   "button.mashup": {
-    "message": "دمج الأغاني",
-    "description": "نص زر دمج عدة أغاني"
+    "message": "مزيج",
+    "description": "زر لمزج عدة أغاني"
   },
   "button.generate_lyrics": {
-    "message": "توليد كلمات الأغاني",
-    "description": "نص زر لتوليد كلمات الأغاني باستخدام الذكاء الاصطناعي"
+    "message": "توليد كلمات",
+    "description": "زر لتوليد كلمات الأغنية باستخدام AI"
   },
   "button.optimize_style": {
     "message": "تحسين الأسلوب",
-    "description": "نص زر لتحسين وصف الأسلوب باستخدام الذكاء الاصطناعي"
+    "description": "زر لتحسين أسلوب الأغنية باستخدام AI"
   },
   "button.all_stems": {
-    "message": "فصل الكل",
-    "description": "نص زر لفصل جميع المسارات"
+    "message": "جميع المسارات",
+    "description": "زر لفصل جميع المسارات"
   },
   "model.model1": {
     "message": "v2",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "model.model2": {
     "message": "v3",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "name.instrumental": {
-    "message": "موسيقى بدون كلمات",
-    "description": "توليد موسيقى بدون كلمات"
+    "message": "موسيقى صافية",
+    "description": "إنشاء موسيقى بدون صوت"
   },
   "name.referenceAudios": {
-    "message": "موسيقى مرجعية",
-    "description": "اسم الموسيقى المرجعية"
+    "message": "أغاني مرجعية",
+    "description": "اسم الأغاني المرجعية"
   },
   "model.model3": {
     "message": "v3.5",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "model.model4": {
     "message": "v4.0",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "model.model45": {
     "message": "v4.5",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "model.model5": {
     "message": "v5",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "model.model45plus": {
     "message": "v4.5+",
-    "description": "نموذج لتوليد الموسيقى"
+    "description": "نموذج لإنشاء الموسيقى"
   },
   "name.taskId": {
-    "message": "معرف المهمة",
-    "description": "معرف المهمة"
+    "message": "معرّف المهمة",
+    "description": "معرّف المهمة"
   },
   "name.type": {
-    "message": "وضع مخصص",
+    "message": "الوضع المخصص",
     "description": "اسم الوضع المخصص"
   },
   "name.prompt": {
     "message": "وصف الأغنية",
-    "description": "موجه لإدخال المحتوى"
+    "description": "تلميح لإدخال المحتوى"
   },
   "name.extend": {
     "message": "توسيع الأغنية من",
-    "description": "موجه لإدخال المحتوى"
+    "description": "تلميح لإدخال المحتوى"
   },
   "name.cover": {
-    "message": "تغطية الأغنية من",
-    "description": "موجه لإدخال المحتوى"
+    "message": "أداء الأغنية من",
+    "description": "تلميح لإدخال المحتوى"
   },
   "name.lyrics": {
-    "message": "كلمات الأغاني",
-    "description": "موجه لإدخال محتوى الكلمات"
+    "message": "كلمات الأغنية",
+    "description": "تلميح لإدخال كلمات الأغنية"
   },
   "name.style": {
-    "message": "أسلوب",
-    "description": "موجه لإدخال أسلوب الأغنية"
+    "message": "الأسلوب",
+    "description": "تلميح لإدخال أسلوب الأغنية"
   },
   "name.styleNegative": {
-    "message": "استبعاد الأسلوب",
+    "message": "استبعاد أسلوب",
     "description": "وصف الأسلوب غير المرغوب فيه"
   },
   "name.title": {
-    "message": "عنوان",
-    "description": "موجه لإدخال عنوان الأغنية"
+    "message": "العنوان",
+    "description": "تلميح لإدخال عنوان الأغنية"
   },
   "name.vocalGender": {
     "message": "جنس الصوت",
-    "description": "اختيار جنس الصوت"
+    "description": "اختيار جنس المغني"
   },
   "name.advancedParams": {
-    "message": "معلمات متقدمة",
-    "description": "إعدادات المعلمات المتقدمة"
+    "message": "خيارات متقدمة",
+    "description": "إعدادات الخيارات المتقدمة"
   },
   "name.weirdness": {
     "message": "درجة الإبداع",
-    "description": "التحكم في درجة إبداع الموسيقى المولدة"
+    "description": "ضبط مدى إبداعية الموسيقى الناتجة"
   },
   "name.styleInfluence": {
     "message": "تأثير الأسلوب",
-    "description": "التحكم في تأثير الأسلوب على النتائج المولدة"
+    "description": "ضبط مدى تأثير الأسلوب على النتيجة"
   },
   "name.variationCategory": {
-    "message": "نوع التباين",
-    "description": "التحكم في تنوع التباينات المولدة"
+    "message": "نوع التنويع",
+    "description": "ضبط تنوع النسخ المولدة"
   },
   "name.audioWeight": {
-    "message": "وزن الأغنية الأصلية",
-    "description": "وزن تأثير الأغنية الأصلية عند التغطية"
+    "message": "وزن الأصل",
+    "description": "ضبط تأثير الأغنية الأصلية عند الأداء"
   },
   "name.lyricPrompt": {
-    "message": "موجه الكلمات",
-    "description": "موجه لتوليد كلمات الأغاني تلقائيًا"
+    "message": "تلميح الكلمات",
+    "description": "تلميح لتوليد كلمات الأغنية تلقائيًا"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -340,124 +340,124 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرف التتبع",
-    "description": "معرف تتبع المهمة"
+    "message": "معرّف التتبع",
+    "description": "معرّف تتبع المهمة"
   },
   "name.sunoBot": {
-    "message": "روبوت سونو",
-    "description": "اسم مولد سونو"
+    "message": "Suno بوت",
+    "description": "اسم منشئ Suno"
   },
   "name.replaceSection": {
     "message": "استبدال مقطع",
-    "description": "استبدال مقطع في الأغنية"
+    "description": "استبدال جزء من الأغنية"
   },
   "name.model": {
-    "message": "نموذج",
-    "description": "اختيار إصدار النموذج"
+    "message": "النموذج",
+    "description": "اختيار نسخة النموذج"
   },
   "name.songDescription": {
     "message": "وصف الأغنية",
     "description": "وضع وصف الأغنية"
   },
   "description.prompt": {
-    "message": "وصف الأسلوب والموضوع الموسيقي الذي تريده",
-    "description": "وصف المعلمة 'prompt'"
+    "message": "وصف أسلوب الموسيقى والموضوع المطلوب",
+    "description": "وصف لمعامل 'prompt'"
   },
   "description.lyrics": {
-    "message": "أدخل كلمات مخصصة، تدعم علامات الفقرات مثل [Verse]، [Chorus]، [Bridge] وغيرها",
-    "description": "وصف المعلمة 'lyrics'"
+    "message": "أدخل كلمات مخصصة، مع دعم [Verse]، [Chorus]، [Bridge] إلخ",
+    "description": "وصف لمعامل 'lyrics'"
   },
   "description.style": {
-    "message": "وصف الأسلوب الموسيقي، مثل acoustic pop، jazz، electronic",
-    "description": "وصف المعلمة 'style'"
+    "message": "وصف أسلوب الموسيقى، مثل acoustic pop، jazz، electronic",
+    "description": "وصف لمعامل 'style'"
   },
   "description.styleNegative": {
-    "message": "وصف الأسلوب غير المرغوب فيه، مثل heavy metal، screaming",
-    "description": "وصف معلمة استبعاد الأسلوب"
+    "message": "وصف الأساليب غير المرغوب فيها، مثل heavy metal، screaming",
+    "description": "وصف لمعامل استبعاد الأسلوب"
   },
   "description.title": {
     "message": "عنوان الأغنية",
-    "description": "وصف المعلمة 'title'"
+    "description": "وصف لمعامل 'title'"
   },
   "description.uploadAudios": {
-    "message": "قم بتحميل الموسيقى كمرجع للتوليد، قد تحتاج عملية التحميل إلى بعض الوقت، بعد النجاح يمكنك التوليد بناءً على الموسيقى المحملة",
-    "description": "وصف معلمة التحميل المرجعي"
+    "message": "ارفع الموسيقى كمصدر مرجعي، سيستغرق التحميل بعض الوقت، وبعد النجاح يمكنك إنشاء الموسيقى استنادًا إلى الأغاني المرفوعة",
+    "description": "وصف لمعامل تحميل الأغاني المرجعية"
   },
   "description.vocalGender": {
-    "message": "اختر جنس الصوت الذي تريد توليده (يدعم فقط النسخ 4.5 وما فوق)",
-    "description": "وصف محدد اختيار جنس الصوت"
+    "message": "اختر جنس الصوت الناتج (مدعوم فقط في الإصدار 4.5 وما بعده)",
+    "description": "وصف لمحدد جنس الصوت"
   },
   "description.weirdness": {
     "message": "كلما زادت القيمة، كانت الموسيقى أكثر إبداعًا وتجريبية (0-100)",
-    "description": "وصف معلمة الإبداع"
+    "description": "وصف معامل الإبداع"
   },
   "description.styleInfluence": {
-    "message": "كلما زادت القيمة، زادت تأثيرات علامات الأسلوب على النتائج (0-100)",
-    "description": "وصف معلمة تأثير الأسلوب"
+    "message": "كلما زادت القيمة، زاد تأثير وسم النمط على النتيجة (0-100)",
+    "description": "وصف معامل تأثير النمط"
   },
   "description.audioWeight": {
-    "message": "وزن تأثير الأغنية الأصلية على النتائج عند إعادة الغناء (0-100)",
-    "description": "وصف معلمة وزن الأغنية الأصلية"
+    "message": "وزن تأثير الأغنية الأصلية عند إعادة الأداء (0-100)",
+    "description": "وصف معامل وزن الأغنية الأصلية"
   },
   "description.lyricPrompt": {
-    "message": "أدخل وصف الكلمات، ستقوم الذكاء الاصطناعي بتوليد الكلمات تلقائيًا",
-    "description": "وصف موجه الكلمات"
+    "message": "أدخل وصف كلمات الأغنية، وسيقوم الذكاء الاصطناعي بتوليدها تلقائيًا",
+    "description": "وصف تلميح الكلمات"
   },
   "description.replaceSection": {
-    "message": "استبدال المحتوى في فترة زمنية محددة من الأغنية",
-    "description": "وصف وظيفة استبدال المقطع"
+    "message": "استبدال جزء محدد من الأغنية بالوقت",
+    "description": "وصف ميزة استبدال المقطع"
   },
   "status.pending": {
-    "message": "في الانتظار",
-    "description": "حالة الانتظار للمهام"
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار للمهمة"
   },
   "placeholder.prompt": {
-    "message": "صف الموسيقى التي تريدها، مثل: أغنية دافئة عن الحنين إلى الخريف...",
-    "description": "نص العنصر النائب لوصف الأغنية"
+    "message": "وصف الموسيقى التي تريدها، مثل: أغنية فلكلورية دافئة عن الحنين إلى الخريف...",
+    "description": "عنصر نائب لإدخال وصف الأغنية"
   },
   "placeholder.lyrics": {
-    "message": "[المقطع]\nفي هذه الليلة الهادئة\nتتألق النجوم في السماء\n\n[الكورس]\nدعنا نغني معًا\nحتى الفجر...",
-    "description": "نص العنصر النائب لكلمات الأغاني"
+    "message": "[المقطع]\nفي هذا الليل الهادئ\nتتألق النجوم في السماء\n\n[الكورس]\nدعونا نغني معًا\nحتى الفجر...",
+    "description": "عنصر نائب لإدخال كلمات الأغنية"
   },
   "placeholder.extend.lyrics": {
-    "message": "أدخل الكلمات التي تحتاج إلى توسيع...",
-    "description": "نص العنصر النائب لتوسيع الكلمات"
+    "message": "أدخل الكلمات التي تريد توسيعها...",
+    "description": "عنصر نائب لتوسيع كلمات الأغنية"
   },
   "placeholder.extend.continue_at": {
-    "message": "من أي ثانية تبدأ التوسيع...",
-    "description": "نص العنصر النائب لوقت بدء التوسيع"
+    "message": "ابدأ التوسيع من الثانية...",
+    "description": "عنصر نائب لتحديد وقت بدء التوسيع"
   },
   "placeholder.style": {
-    "message": "مثل: بوب أكوستيك، جاز، R&B، إلكتروني...",
-    "description": "نص العنصر النائب للأسلوب"
+    "message": "مثال: acoustic pop, jazz, R&B, electronic...",
+    "description": "عنصر نائب لإدخال النمط"
   },
   "placeholder.styleNegative": {
-    "message": "مثل: ميتال ثقيل، صراخ...",
-    "description": "نص العنصر النائب لاستبعاد الأسلوب"
+    "message": "مثال: heavy metal, screaming...",
+    "description": "عنصر نائب لإدخال النمط المستبعد"
   },
   "placeholder.title": {
     "message": "أدخل اسم الأغنية...",
-    "description": "نص العنصر النائب لعنوان الأغنية"
+    "description": "عنصر نائب لإدخال العنوان"
   },
   "placeholder.select": {
     "message": "اختر النموذج...",
-    "description": "نص العنصر النائب لاختيار النموذج"
+    "description": "عنصر نائب لاختيار النموذج"
   },
   "placeholder.position": {
     "message": "اختر...",
-    "description": "نص العنصر النائب للموقع"
+    "description": "عنصر نائب لتحديد الموقع"
   },
   "placeholder.lyricPrompt": {
-    "message": "صف موضوع الكلمات، ستقوم الذكاء الاصطناعي بالتوليد تلقائيًا...",
-    "description": "نص العنصر النائب لموجه الكلمات"
+    "message": "وصف موضوع الكلمات، وسيقوم الذكاء الاصطناعي بتوليدها...",
+    "description": "عنصر نائب لتلميح الكلمات"
   },
   "placeholder.replaceSectionStart": {
-    "message": "وقت البدء (ثانية)",
-    "description": "نص العنصر النائب لوقت بدء استبدال المقطع"
+    "message": "وقت البداية (ثانية)",
+    "description": "عنصر نائب لبداية استبدال المقطع"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "وقت الانتهاء (ثانية)",
-    "description": "نص العنصر النائب لوقت انتهاء استبدال المقطع"
+    "message": "وقت النهاية (ثانية)",
+    "description": "عنصر نائب لنهاية استبدال المقطع"
   },
   "button.generate": {
     "message": "توليد",
@@ -468,7 +468,7 @@
     "description": "خيار الصوت الذكري"
   },
   "gender.female": {
-    "message": "صوت أنثوي",
+    "message": "صوت أنثى",
     "description": "خيار الصوت الأنثوي"
   },
   "gender.auto": {
@@ -476,12 +476,12 @@
     "description": "اختيار جنس الصوت تلقائيًا"
   },
   "variation.high": {
-    "message": "تنوع عالي",
-    "description": "خيار تنوع عالي"
+    "message": "متغير عالي",
+    "description": "خيار التنوع العالي"
   },
   "variation.low": {
-    "message": "تنوع منخفض",
-    "description": "خيار تنوع منخفض"
+    "message": "متغير منخفض",
+    "description": "خيار التنوع المنخفض"
   },
   "lyricsMode.manual": {
     "message": "يدوي",
@@ -489,7 +489,7 @@
   },
   "lyricsMode.auto": {
     "message": "تلقائي",
-    "description": "دع الذكاء الاصطناعي يولد الكلمات تلقائيًا"
+    "description": "توليد الكلمات تلقائيًا بواسطة الذكاء الاصطناعي"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -497,11 +497,11 @@
   },
   "message.startingUploadAudio": {
     "message": "جارٍ رفع الموسيقى المخصصة...",
-    "description": "رسالة عند بدء مهمة توليد الموسيقى"
+    "description": "رسالة عند بدء رفع الموسيقى"
   },
   "message.uploadReferencesExceed": {
-    "message": "تجاوز عدد الموسيقى المرفوعة الحد الأقصى",
-    "description": "رسالة خطأ عند تجاوز عدد الموسيقى المرفوعة الحد الأقصى"
+    "message": "عدد الأغاني المرفوعة تجاوز الحد الأقصى",
+    "description": "رسالة خطأ عند تجاوز الحد الأقصى للأغاني"
   },
   "message.uploadReferencesError": {
     "message": "فشل رفع الموسيقى",
@@ -509,63 +509,63 @@
   },
   "message.startTaskSuccess": {
     "message": "تم بدء مهمة توليد الموسيقى بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة نجاح عند بدء المهمة"
   },
   "message.startUploadAudioSuccess": {
     "message": "تم رفع الموسيقى المخصصة بنجاح",
-    "description": "رسالة نجاح عند بدء مهمة توليد الموسيقى بنجاح"
+    "description": "رسالة نجاح عند رفع الموسيقى"
   },
   "message.startUploadAudioFailed": {
     "message": "فشل رفع الموسيقى المخصصة",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة خطأ عند فشل رفع الموسيقى"
   },
   "message.startTaskFailed": {
     "message": "فشل بدء مهمة توليد الموسيقى",
-    "description": "رسالة خطأ عند فشل بدء مهمة توليد الموسيقى"
+    "description": "رسالة خطأ عند فشل بدء المهمة"
   },
   "message.getVideoUrlFailed": {
-    "message": "فشل الحصول على فيديو الموسيقى، يرجى المحاولة لاحقًا",
+    "message": "فشل الحصول على فيديو الموسيقى، حاول لاحقًا",
     "description": "رسالة خطأ عند فشل الحصول على الفيديو"
   },
   "message.generatingLyrics": {
     "message": "جارٍ توليد الكلمات...",
-    "description": "رسالة عند توليد الكلمات"
+    "description": "رسالة عند توليد كلمات الأغنية"
   },
   "message.generateLyricsSuccess": {
-    "message": "تم توليد الكلمات بنجاح",
-    "description": "رسالة عند نجاح توليد الكلمات"
+    "message": "تم توليد كلمات الأغنية بنجاح",
+    "description": "رسالة نجاح عند توليد الكلمات"
   },
   "message.generateLyricsFailed": {
-    "message": "فشل توليد الكلمات",
-    "description": "رسالة عند فشل توليد الكلمات"
+    "message": "فشل توليد كلمات الأغنية",
+    "description": "رسالة خطأ عند فشل توليد الكلمات"
   },
   "message.optimizingStyle": {
-    "message": "جارٍ تحسين وصف الأسلوب...",
-    "description": "رسالة عند تحسين الأسلوب"
+    "message": "جارٍ تحسين وصف النمط...",
+    "description": "رسالة عند تحسين النمط"
   },
   "message.optimizeStyleSuccess": {
-    "message": "تم تحسين الأسلوب بنجاح",
-    "description": "رسالة عند نجاح تحسين الأسلوب"
+    "message": "تم تحسين النمط بنجاح",
+    "description": "رسالة نجاح عند تحسين النمط"
   },
   "message.optimizeStyleFailed": {
-    "message": "فشل تحسين الأسلوب",
-    "description": "رسالة عند فشل تحسين الأسلوب"
+    "message": "فشل تحسين النمط",
+    "description": "رسالة خطأ عند فشل تحسين النمط"
   },
   "message.fetchingWav": {
     "message": "جارٍ الحصول على ملف WAV...",
     "description": "رسالة عند الحصول على ملف WAV"
   },
   "message.fetchWavFailed": {
-    "message": "فشل في الحصول على ملف WAV",
-    "description": "رسالة عند فشل الحصول على ملف WAV"
+    "message": "فشل في جلب ملف WAV",
+    "description": "رسالة تظهر عند فشل الحصول على ملف WAV"
   },
   "message.fetchingMidi": {
-    "message": "جارٍ الحصول على ملف MIDI...",
-    "description": "رسالة عند الحصول على ملف MIDI"
+    "message": "جارٍ جلب ملف MIDI...",
+    "description": "رسالة عند جلب ملف MIDI"
   },
   "message.fetchMidiFailed": {
-    "message": "فشل في الحصول على ملف MIDI",
-    "description": "رسالة عند فشل الحصول على ملف MIDI"
+    "message": "فشل في جلب ملف MIDI",
+    "description": "رسالة عند فشل جلب ملف MIDI"
   },
   "message.generating": {
     "message": "جارٍ التوليد...",
@@ -584,8 +584,8 @@
     "description": "رسالة عند عدم وجود مهام"
   },
   "button.upload_cover": {
-    "message": "رفع التغطية",
-    "description": "نص زر رفع التغطية بعد رفع الصوت"
+    "message": "رفع تغطية",
+    "description": "نص زر رفع تغطية بعد رفع الصوت"
   },
   "button.artist_consistency": {
     "message": "اتساق الأسلوب",
@@ -684,16 +684,16 @@
     "description": "وصف وظيفة إضافة العينات"
   },
   "message.fetchingTiming": {
-    "message": "جارٍ الحصول على بيانات الإيقاع...",
-    "description": "رسالة عند الحصول على بيانات الإيقاع"
+    "message": "جارٍ جلب بيانات الإيقاع...",
+    "description": "رسالة عند جلب بيانات الإيقاع"
   },
   "message.fetchTimingFailed": {
-    "message": "فشل في الحصول على بيانات الإيقاع",
-    "description": "رسالة عند فشل الحصول على بيانات الإيقاع"
+    "message": "فشل في جلب بيانات الإيقاع",
+    "description": "رسالة عند فشل جلب بيانات الإيقاع"
   },
   "message.fetchTimingSuccess": {
-    "message": "تم الحصول على بيانات الإيقاع بنجاح",
-    "description": "رسالة عند نجاح الحصول على بيانات الإيقاع"
+    "message": "تم جلب بيانات الإيقاع بنجاح",
+    "description": "رسالة عند نجاح جلب بيانات الإيقاع"
   },
   "message.extractingVocals": {
     "message": "جارٍ استخراج الصوت...",
@@ -724,11 +724,11 @@
     "description": "وصف نموذج v5"
   },
   "model.v45plusdesc": {
-    "message": "طريقة إبداعية متقدمة",
+    "message": "طرق إبداعية متقدمة",
     "description": "وصف نموذج v4.5+"
   },
   "model.v45desc": {
-    "message": "نصائح ذكية",
+    "message": "نصوص ذكية",
     "description": "وصف نموذج v4.5"
   },
   "model.v4desc": {
@@ -736,187 +736,203 @@
     "description": "وصف نموذج v4"
   },
   "model.v35desc": {
-    "message": "هيكل أغنية أساسي",
+    "message": "هيكل الأغنية الأساسي",
     "description": "وصف نموذج v3.5"
   },
   "model.v3desc": {
     "message": "كلاسيكي",
-    "description": "وصف نموذج v3"
+    "description": "v3 模型描述"
   },
   "button.undo": {
     "message": "تراجع",
-    "description": "نص زر التراجع"
+    "description": "撤销按钮提示"
   },
   "button.clear_lyrics": {
     "message": "مسح الكلمات",
-    "description": "نص زر مسح الكلمات"
+    "description": "清空歌词按钮提示"
   },
   "button.expand_lyrics": {
     "message": "توسيع التحرير",
-    "description": "نص زر توسيع تحرير الكلمات بالكامل"
+    "description": "展开歌词全屏编辑按钮提示"
   },
   "button.enhance_lyrics": {
-    "message": "تعزيز",
-    "description": "زر تعزيز الكلمات"
+    "message": "تحسين",
+    "description": "增强歌词按钮"
   },
   "button.clear_all": {
     "message": "مسح الكل",
-    "description": "زر لمسح جميع النماذج"
+    "description": "一键清空所有表单"
   },
   "placeholder.enhanceLyrics": {
-    "message": "أدخل تعليمات التعديل، مثل: اجعل الكلمات أكثر بهجة...",
-    "description": "نص مكان لمدخل تعزيز الكلمات"
+    "message": "أدخل تعليمات التعديل، مثال: اجعل الكلمات أكثر مرحًا...",
+    "description": "歌词增强输入占位符"
+  },
+  "placeholder.lyricsTheme": {
+    "message": "مثال: أغنية هادئة عن الحنين في فصل الخريف",
+    "description": "AI 生成歌词主题输入占位符"
+  },
+  "message.lyricsThemePromptTitle": {
+    "message": "إنشاء كلمات الأغنية بالذكاء الاصطناعي",
+    "description": "AI 生成歌词输入弹窗标题"
+  },
+  "message.lyricsThemePromptMessage": {
+    "message": "يرجى وصف موضوع أو قصة الأغنية، سيقوم الذكاء الاصطناعي بتوليد الكلمات بناءً على ذلك",
+    "description": "AI 生成歌词输入弹窗的说明文本"
+  },
+  "message.lyricsThemeRequired": {
+    "message": "يرجى وصف موضوع الأغنية أولاً",
+    "description": "主题输入为空时的校验提示"
   },
   "message.enhancingLyrics": {
-    "message": "جارٍ تعزيز الكلمات...",
-    "description": "رسالة أثناء تعزيز الكلمات"
+    "message": "جاري تحسين الكلمات...",
+    "description": "增强歌词时的消息"
   },
   "message.enhanceLyricsSuccess": {
-    "message": "تم تعزيز الكلمات بنجاح",
-    "description": "رسالة عند نجاح تعزيز الكلمات"
+    "message": "تم تحسين الكلمات بنجاح",
+    "description": "增强歌词成功时的消息"
   },
   "message.enhanceLyricsFailed": {
-    "message": "فشل تعزيز الكلمات",
-    "description": "رسالة عند فشل تعزيز الكلمات"
+    "message": "فشل في تحسين الكلمات",
+    "description": "增强歌词失败时的消息"
   },
   "placeholder.searchSongs": {
-    "message": "ابحث عن أغاني...",
-    "description": "نص مكان لمدخل البحث عن الأغاني"
+    "message": "ابحث عن الأغاني...",
+    "description": "歌曲搜索输入的占位符"
   },
   "sort.newest": {
     "message": "الأحدث",
-    "description": "ترتيب حسب الأحدث"
+    "description": "按最新排序"
   },
   "sort.oldest": {
     "message": "الأقدم",
-    "description": "ترتيب حسب الأقدم"
+    "description": "按最旧排序"
   },
   "filter.title": {
     "message": "تصفية",
-    "description": "زر التصفية"
+    "description": "筛选按钮"
   },
   "filter.type": {
     "message": "النوع",
-    "description": "قسم التصفية: صوتي/موسيقى خالصة"
+    "description": "筛选分区：人声/纯音乐"
   },
   "filter.typeAll": {
     "message": "الكل",
-    "description": "النوع: الكل"
+    "description": "类型：全部"
   },
   "filter.typeVocal": {
-    "message": "صوتي",
-    "description": "النوع: يحتوي على صوت"
+    "message": "غناء",
+    "description": "类型：含人声"
   },
   "filter.typeInstrumental": {
-    "message": "موسيقى خالصة",
-    "description": "النوع: موسيقى خالصة"
+    "message": "آلاتي",
+    "description": "类型：纯音乐"
   },
   "filter.duration": {
     "message": "المدة",
-    "description": "قسم التصفية: مدة الأغاني"
+    "description": "筛选分区：歌曲时长"
   },
   "filter.durationAll": {
     "message": "الكل",
-    "description": "المدة: غير محدد"
+    "description": "时长：不限"
   },
   "filter.durationShort": {
-    "message": "< 1 دقيقة",
-    "description": "المدة: أقل من 1 دقيقة"
+    "message": "< دقيقة",
+    "description": "时长：小于 1 分钟"
   },
   "filter.durationMedium": {
     "message": "1-3 دقائق",
-    "description": "المدة: من 1 إلى 3 دقائق"
+    "description": "时长：1 到 3 分钟"
   },
   "filter.durationLong": {
     "message": "> 3 دقائق",
-    "description": "المدة: أكثر من 3 دقائق"
+    "description": "时长：大于 3 分钟"
   },
   "filter.video": {
     "message": "فيديو",
-    "description": "قسم التصفية: هل يحتوي على فيديو"
+    "description": "筛选分区：是否含视频"
   },
   "filter.videoAll": {
     "message": "الكل",
-    "description": "الفيديو: غير محدد"
+    "description": "视频：不限"
   },
   "filter.videoWith": {
-    "message": "يحتوي على فيديو",
-    "description": "الفيديو: يحتوي فقط على فيديو"
+    "message": "مع فيديو",
+    "description": "视频：仅含视频"
   },
   "filter.videoWithout": {
     "message": "صوت فقط",
-    "description": "الفيديو: صوت فقط"
+    "description": "视频：仅音频"
   },
   "filter.model": {
-    "message": "نموذج",
-    "description": "قسم التصفية: نموذج الذكاء الاصطناعي"
+    "message": "النموذج",
+    "description": "筛选分区：AI 模型"
   },
   "filter.modelAll": {
-    "message": "جميع النماذج",
-    "description": "النموذج: غير محدد"
+    "message": "كل النماذج",
+    "description": "模型：不限"
   },
   "filter.reset": {
-    "message": "إعادة تعيين",
-    "description": "إعادة تعيين جميع الفلاتر"
+    "message": "إعادة ضبط",
+    "description": "重置所有筛选"
   },
   "button.delete": {
     "message": "حذف",
-    "description": "نص زر حذف الأغنية"
+    "description": "删除歌曲的按钮文本"
   },
   "button.editTitle": {
     "message": "تعديل العنوان",
-    "description": "نص زر تعديل عنوان الأغنية"
+    "description": "编辑歌曲标题的按钮文本"
   },
   "message.noSearchResults": {
     "message": "لم يتم العثور على أغاني",
-    "description": "رسالة عند عدم وجود نتائج للبحث"
+    "description": "搜索无结果时的消息"
   },
   "message.noFilterResults": {
-    "message": "لا توجد أغاني تتوافق مع معايير التصفية",
-    "description": "رسالة عند عدم وجود نتائج للتصفية"
+    "message": "لا توجد أغاني مطابقة لمرشحاتك",
+    "description": "筛选无结果时的消息"
   },
   "message.confirmDelete": {
-    "message": "هل أنت متأكد أنك تريد حذف هذه الأغنية؟ هذه العملية لا يمكن التراجع عنها.",
-    "description": "رسالة تأكيد حذف الأغنية"
+    "message": "هل أنت متأكد من حذف هذه الأغنية؟ لا يمكن التراجع عن هذا الإجراء.",
+    "description": "删除歌曲的确认消息"
   },
   "message.deleteSuccess": {
     "message": "تم حذف الأغنية",
-    "description": "رسالة عند نجاح حذف الأغنية"
+    "description": "歌曲删除成功时的消息"
   },
   "message.deleteFailed": {
     "message": "فشل حذف الأغنية",
-    "description": "رسالة عند فشل حذف الأغنية"
+    "description": "歌曲删除失败时的消息"
   },
   "name.generating": {
-    "message": "جارٍ التوليد",
-    "description": "علامة حالة الأغنية أثناء التوليد"
+    "message": "جارٍ الإنشاء",
+    "description": "歌曲正在生成的状态标签"
   },
   "button.adjust_speed": {
-    "message": "تعديل السرعة",
-    "description": "نص زر تعديل سرعة تشغيل الأغنية"
+    "message": "تغيير السرعة",
+    "description": "调整歌曲播放速度的按钮文本"
   },
   "button.reuse_prompt": {
-    "message": "إعادة استخدام النص",
-    "description": "نص زر إعادة استخدام نص المهمة الحالي"
+    "message": "إعادة استخدام التعليمات",
+    "description": "复用已有任务提示词的按钮文本"
   },
   "name.adjustSpeed": {
     "message": "السرعة",
-    "description": "علامة اختيار السرعة"
+    "description": "速度选择器的标签"
   },
   "description.adjustSpeed": {
-    "message": "إعادة توليد الأغنية بسرعات تشغيل مختلفة (من 0.5 إلى 2 ضعف)",
-    "description": "وصف وظيفة تعديل السرعة"
+    "message": "إعادة إنشاء الأغنية بسرعات تشغيل مختلفة (من 0.5x إلى 2x)",
+    "description": "调整速度功能的描述"
   },
   "message.reusePromptSuccess": {
-    "message": "تم إعادة استخدام النص، يمكن تعديله وإعادة التوليد",
-    "description": "رسالة عند نجاح إعادة استخدام النص"
+    "message": "تم إعادة استخدام التعليمات، يمكنك تعديلها ثم إنشاء الأغنية مرة أخرى",
+    "description": "复用提示词成功后的提示信息"
   },
   "message.reusePromptEmpty": {
-    "message": "لا توجد بيانات نص يمكن إعادة استخدامها",
-    "description": "رسالة عند عدم وجود نص يمكن إعادة استخدامه"
+    "message": "لا توجد بيانات تعليمات قابلة لإعادة الاستخدام",
+    "description": "نص يظهر عندما لا توجد تعليمات قابلة لإعادة الاستخدام للمهمة"
   },
   "name.lyricsMode": {
     "message": "وضع الكلمات",
-    "description": "تسمية محدد وضع الكلمات (يدوي / تلقائي)"
+    "description": "تسمية محدد وضع كلمات الأغاني (يدوي / تلقائي)"
   }
 }

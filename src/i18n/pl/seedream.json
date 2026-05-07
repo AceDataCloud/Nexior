@@ -1,154 +1,218 @@
 {
   "name.taskId": {
     "message": "ID zadania",
-    "description": "ID zadania"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Typ zadania",
-    "description": "Typ operacji SeeDream"
+    "description": "SeeDream 图片操作类型"
   },
   "name.generate": {
-    "message": "Utwórz obraz",
-    "description": "Typ operacji: utwórz obraz"
+    "message": "Utwórz",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Edytuj obraz",
-    "description": "Typ operacji: edytuj obraz"
+    "message": "Edytuj",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
     "message": "Obrazy referencyjne",
-    "description": "Obrazy referencyjne do edycji"
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Niepowodzenie",
-    "description": "Zadanie nie powiodło się"
+    "description": "任务失败"
   },
   "name.failureReason": {
     "message": "Powód niepowodzenia",
-    "description": "Powód niepowodzenia zadania"
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status zadania"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID śledzenia",
-    "description": "ID śledzenia"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
     "message": "Czas trwania",
-    "description": "Czas trwania zadania (sekundy)"
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Podpowiedź obrazu",
-    "description": "Podpowiedź do generowania/edycji"
+    "message": "Opis obrazu",
+    "description": "生成/编辑的提示词"
   },
   "name.seedreamBot": {
-    "message": "Bot SeeDream",
-    "description": "Nazwa generatora obrazów SeeDream"
+    "message": "SeeDream Bot",
+    "description": "SeeDream 图片生成器名称"
   },
   "name.size": {
     "message": "Rozmiar",
-    "description": "Rozmiar wyjściowego obrazu"
+    "description": "输出图片尺寸"
   },
   "name.watermark": {
     "message": "Znak wodny",
-    "description": "Czy dodać znak wodny"
+    "description": "是否添加水印"
   },
   "description.prompt": {
-    "message": "Podpowiedź do generowania lub edytowania obrazu",
-    "description": "Opis podpowiedzi"
+    "message": "Opis do wygenerowania lub edycji obrazu",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Model używany do generowania lub edytowania obrazów.",
-    "description": "Opis parametru model"
+    "message": "Model używany do generowania lub edycji obrazów.",
+    "description": "model 参数说明"
   },
   "description.size": {
-    "message": "Rozmiar obrazu. Obsługuje predefiniowane wartości `1K`, `2K`, `4K` lub niestandardowe `<szerokość>x<wysokość>`.",
-    "description": "Opis parametru size"
+    "message": "Rozmiar obrazu. Wsparcie zależne od modelu: 5.0 tylko 2K/3K/4K, 4.5/4.0 1K/2K/4K, 3.0-t2i i seededit-3.0-i2i tylko `<szer>x<wys>` (np. 1024x1024, 1280x720). Predefiniowane modele mogą użyć „Dopasuj” lub ręcznie wpisać `<szer>x<wys>`.",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
-    "message": "Czy dodać znak wodny AI do generowanego obrazu. Domyślnie włączone.",
-    "description": "Opis parametru watermark"
+    "message": "Czy dodać znak wodny AI do wygenerowanego obrazu. Domyślnie włączone.",
+    "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "Prześlij 1-14 obrazów referencyjnych, aby włączyć edycję obrazu.",
-    "description": "Opis parametru image"
+    "message": "Prześlij 1-14 obrazów referencyjnych, aby edytować obraz.",
+    "description": "image 参数说明"
   },
   "status.pending": {
-    "message": "Oczekiwanie",
-    "description": "Status oczekiwania zadania"
+    "message": "Oczekuje",
+    "description": "任务等待状态"
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Placeholder wyboru"
+    "description": "选择占位"
+  },
+  "placeholder.size": {
+    "message": "Wybierz lub wpisz <szer>x<wys>",
+    "description": "size 选择/输入占位（el-select allow-create）"
   },
   "placeholder.prompt": {
-    "message": "Wprowadź podpowiedź, np.: biały kot syjamski",
-    "description": "Placeholder podpowiedzi"
+    "message": "Wpisz opis, np.: biały kot syjamski",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Przycisk generowania"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Prześlij",
-    "description": "Przycisk przesyłania obrazów referencyjnych (proszę uprościć do 'Prześlij')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "Kontynuuj zmianę",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "Anuluj",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
-    "message": "Rozpoczynam zadanie...",
-    "description": "Wiadomość rozpoczynająca zadanie"
+    "message": "Uruchamianie zadania...",
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie generowania zostało pomyślnie uruchomione",
-    "description": "Zadanie zostało pomyślnie utworzone"
+    "message": "Zadanie wygenerowane pomyślnie",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem:",
-    "description": "Niepowodzenie w tworzeniu zadania"
+    "message": "Nie udało się utworzyć zadania, skontaktuj się z administratorem:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę kupić więcej punktów, aby kontynuować",
-    "description": "Wiadomość o wyczerpaniu"
+    "message": "Twoje punkty zostały wykorzystane, kup więcej, aby kontynuować",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
     "message": "Można przesłać maksymalnie 14 obrazów",
-    "description": "Liczba obrazów przekracza limit"
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Błąd przesyłania"
+    "message": "Błąd przesyłania obrazu, spróbuj ponownie później",
+    "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Wymagana potwierdzenie",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Wybrane ustawienia nie obsługują: {fields}. Kontynuacja spowoduje ich usunięcie.",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Usunięto nieobsługiwane ustawienia: {fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "Model",
-    "description": "Etykieta wyboru modelu SeeDream"
+    "description": "SeeDream 模型选择标签"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Opcja modelu SeeDream 4.5"
+    "description": "SeeDream 4.5 模型选项"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Opcja modelu SeeDream 4.0"
+    "description": "SeeDream 4.0 模型选项"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Opcja modelu SeeDream 3.0 t2i"
+    "description": "SeeDream 3.0 t2i 模型选项"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Opcja modelu SeeEdit 3.0 i2i"
+    "description": "SeeEdit 3.0 i2i 模型选项"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Opcja modelu SeeDream 5.0 (obsługuje generowanie serii i strumieniowe wyjście)"
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
   },
   "name.maxImages": {
     "message": "Liczba obrazów",
-    "description": "Liczba obrazów generowanych w serii (max_images)"
+    "description": "组图生成的图片张数（max_images）"
   },
   "description.maxImages": {
-    "message": "Liczba obrazów generowanych w jednym żądaniu (1-15). Ustawienie na 1 oznacza tryb pojedynczego obrazu; większe niż 1 automatycznie włącza generowanie serii (sequential_image_generation=auto), zachowując spójność postaci, stylu i szczegółów między obrazami. Obsługiwane tylko przez doubao-seedream-5.0 / 4.5 / 4.0; jeśli przesyłasz obrazy referencyjne, muszą spełniać warunek (liczba obrazów referencyjnych + liczba generowanych) ≤ 15. Opłaty są naliczane na podstawie rzeczywistej liczby wygenerowanych obrazów.",
+    "message": "Liczba obrazów generowanych w jednym żądaniu (1-15). Ustawienie na 1 oznacza tryb pojedynczego obrazu; większa liczba automatycznie włącza generowanie grupowe (sequential_image_generation=auto), zachowując spójność postaci, stylu i detali między obrazami. Obsługiwane tylko doubao-seedream-5.0 / 4.5 / 4.0; jeśli przesyłane są obrazy referencyjne, łączna liczba (obrazów referencyjnych + liczba generowanych) musi być ≤ 15. Opłaty naliczane są na podstawie faktycznej liczby wygenerowanych obrazów.",
     "description": "Opis parametru max_images"
+  },
+  "name.seed": {
+    "message": "Losowy seed",
+    "description": "seed 参数标签"
+  },
+  "description.seed": {
+    "message": "Seed do odtworzenia wyników, zakres [-1, 2147483647]. -1 oznacza losowy seed przy każdym uruchomieniu. Obsługiwane tylko doubao-seedream-3.0-t2i i doubao-seededit-3.0-i2i.",
+    "description": "seed 参数说明"
+  },
+  "name.guidanceScale": {
+    "message": "Waga promptu",
+    "description": "guidance_scale 参数标签"
+  },
+  "description.guidanceScale": {
+    "message": "Siła przestrzegania promptu, zakres [1, 10]. Im większa wartość, tym bliżej promptu. doubao-seedream-3.0-t2i domyślnie 2.5, doubao-seededit-3.0-i2i domyślnie 5.5.",
+    "description": "guidance_scale 参数说明"
+  },
+  "name.outputFormat": {
+    "message": "Format wyjściowy",
+    "description": "output_format 参数标签"
+  },
+  "description.outputFormat": {
+    "message": "Format pliku generowanego obrazu: jpeg lub png, domyślnie jpeg. Obsługiwane tylko przez doubao-seedream-5.0.",
+    "description": "output_format 参数说明"
+  },
+  "size.group.tier": {
+    "message": "Poziom rozdzielczości",
+    "description": "尺寸下拉的档位分组（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptacyjny",
+    "description": "尺寸下拉的自适应分组"
+  },
+  "size.group.pixel": {
+    "message": "Dokładne wymiary",
+    "description": "尺寸下拉的像素尺寸分组"
+  },
+  "size.adaptive": {
+    "message": "Adaptacyjny (zgodny z obrazem referencyjnym)",
+    "description": "adaptive 选项标签"
   }
 }

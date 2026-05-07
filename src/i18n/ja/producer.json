@@ -13,7 +13,7 @@
   },
   "button.uploadAudios": {
     "message": "アップロード",
-    "description": "ユーザーが参考をアップロードできるボタンのテキスト"
+    "description": "参照をアップロードするためのボタンのテキスト"
   },
   "button.video": {
     "message": "動画",
@@ -63,37 +63,81 @@
     "message": "インストゥルメンタルを置き換える",
     "description": "インストゥルメンタルを置き換えるボタンのテキスト"
   },
+  "button.clear_all": {
+    "message": "すべてクリア",
+    "description": "すべての設定をクリアするボタンのテキスト"
+  },
+  "mode.simple": {
+    "message": "シンプルモード",
+    "description": "シンプル生成モードタブのラベル"
+  },
+  "mode.custom": {
+    "message": "カスタムモード",
+    "description": "カスタム生成モードタブのラベル"
+  },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
     "description": "音楽生成用のモデル"
+  },
+  "model.fuzz20proDesc": {
+    "message": "最大8分 · 最良の音質",
+    "description": "FUZZ-2.0 Proのモデルドロップダウン内の説明"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
     "description": "音楽生成用のモデル"
   },
+  "model.fuzz20desc": {
+    "message": "最大8分 · コストパフォーマンスのバランス",
+    "description": "FUZZ-2.0のモデルドロップダウン内の説明"
+  },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
     "description": "音楽生成用のモデル"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "最大8分 · より原始的で粗いボーカル",
+    "description": "FUZZ-2.0 Rawのモデルドロップダウン内の説明"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
     "description": "音楽生成用のモデル"
   },
+  "model.fuzz11proDesc": {
+    "message": "最大4分 · 旧版の精修",
+    "description": "FUZZ-1.1 Proのモデルドロップダウン内の説明"
+  },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
     "description": "音楽生成用のモデル"
+  },
+  "model.fuzz10proDesc": {
+    "message": "最大4分 · 旧版の安定性",
+    "description": "FUZZ-1.0 Proのモデルドロップダウン内の説明"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
     "description": "音楽生成用のモデル"
   },
+  "model.fuzz10desc": {
+    "message": "最大2分 · 旧版",
+    "description": "FUZZ-1.0のモデルドロップダウン内の説明"
+  },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
     "description": "音楽生成用のモデル"
   },
+  "model.fuzz11desc": {
+    "message": "最大4分 · 旧版の改良",
+    "description": "FUZZ-1.1のモデルドロップダウン内の説明"
+  },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
     "description": "音楽生成用のモデル"
+  },
+  "model.fuzz08desc": {
+    "message": "最大2分 · 初期バージョン",
+    "description": "FUZZ-0.8のモデルドロップダウン内の説明"
   },
   "name.instrumental": {
     "message": "インストゥルメンタル",
@@ -104,8 +148,8 @@
     "description": "参考音楽の名称"
   },
   "name.taskId": {
-    "message": "タスク ID",
-    "description": "タスクの ID"
+    "message": "タスクID",
+    "description": "タスクのID"
   },
   "name.type": {
     "message": "カスタムモード",
@@ -116,11 +160,11 @@
     "description": "内容入力のプロンプト"
   },
   "name.extend": {
-    "message": "曲を拡張する元",
+    "message": "拡張曲の出所",
     "description": "内容入力のプロンプト"
   },
   "name.cover": {
-    "message": "カバー曲の元",
+    "message": "カバー曲の出所",
     "description": "内容入力のプロンプト"
   },
   "name.lyrics": {
@@ -148,16 +192,16 @@
     "description": "高度なパラメータ設定"
   },
   "name.weirdness": {
-    "message": "クリエイティビティ",
-    "description": "生成される音楽のクリエイティブ度を制御"
+    "message": "創造性",
+    "description": "生成する音楽の創造性を制御します"
   },
   "name.soundStrength": {
-    "message": "音の強度",
-    "description": "生成される音の強度を制御"
+    "message": "音の強さ",
+    "description": "生成する音の強さを制御します"
   },
   "name.lyricsStrength": {
-    "message": "歌詞の強度",
-    "description": "生成結果に対する歌詞の影響度を制御"
+    "message": "歌詞の強さ",
+    "description": "生成結果に対する歌詞の影響度を制御します"
   },
   "name.seed": {
     "message": "シード",
@@ -165,31 +209,31 @@
   },
   "name.lyricPrompt": {
     "message": "歌詞プロンプト",
-    "description": "自動生成歌詞のためのプロンプト"
+    "description": "自動生成される歌詞のためのプロンプト"
   },
   "name.failureReason": {
     "message": "失敗理由",
-    "description": "タスク失敗の理由"
+    "description": "タスクが失敗した理由"
   },
   "name.status": {
     "message": "ステータス",
-    "description": "タスクのステータス"
+    "description": "タスクの状態"
   },
   "name.traceId": {
-    "message": "トレース ID",
-    "description": "タスクのトレース ID"
+    "message": "トレースID",
+    "description": "タスクのトレースID"
   },
   "name.producerBot": {
-    "message": "Producer Bot",
-    "description": "Producer生成器の名称"
+    "message": "プロデューサーボット",
+    "description": "プロデューサー生成器の名称"
   },
   "name.replaceSection": {
     "message": "セクションを置き換える",
-    "description": "曲の特定のセクションを置き換える"
+    "description": "曲の特定のセクションを置き換えます"
   },
   "name.model": {
     "message": "モデル",
-    "description": "モデルバージョンを選択"
+    "description": "モデルのバージョンを選択します"
   },
   "name.songDescription": {
     "message": "曲の説明",
@@ -200,15 +244,15 @@
     "description": "パラメータ'prompt'の説明"
   },
   "description.lyrics": {
-    "message": "カスタム歌詞を入力、[Verse]、[Chorus]、[Bridge]などの段落マークをサポート",
+    "message": "カスタム歌詞を入力してください。段落マーク [Verse]、[Chorus]、[Bridge] などをサポートします",
     "description": "パラメータ'lyrics'の説明"
   },
   "description.style": {
-    "message": "音楽スタイルを説明、例：アコースティックポップ、ジャズ、エレクトロニック",
+    "message": "音楽スタイルを説明してください。例：アコースティックポップ、ジャズ、エレクトロニック",
     "description": "パラメータ'style'の説明"
   },
   "description.styleNegative": {
-    "message": "望まないスタイルを説明してください。例：ヘビーメタル、叫び声",
+    "message": "望まないスタイルを説明してください。例：ヘビーメタル、スクリーミング",
     "description": "除外スタイルパラメータの説明"
   },
   "description.title": {
@@ -216,7 +260,7 @@
     "description": "パラメータ'title'の説明"
   },
   "description.uploadAudios": {
-    "message": "生成の参考として音楽をアップロードします。アップロードには少し時間がかかり、成功後にアップロードした音楽に基づいて生成されます。",
+    "message": "生成の参考として音楽をアップロードします。アップロードには少し時間がかかります。生成が成功した後、アップロードした音楽に基づいて生成できます",
     "description": "アップロード参考パラメータの説明"
   },
   "description.vocalGender": {
@@ -224,35 +268,39 @@
     "description": "声の性別選択器の説明"
   },
   "description.weirdness": {
-    "message": "値が高いほど生成される音楽はより創造的で実験的になります (0-100)",
+    "message": "値が高いほど生成される音楽がより創造的で実験的になります (0-100)",
     "description": "創造性パラメータの説明"
   },
   "description.soundStrength": {
-    "message": "生成される音の強度を制御します (0-100)",
-    "description": "音の強度パラメータの説明"
+    "message": "生成する音の強さを制御します (0-100)",
+    "description": "音の強さパラメータの説明"
   },
   "description.lyricsStrength": {
-    "message": "歌詞が生成結果に与える影響の程度を制御します (0-100)",
-    "description": "歌詞強度パラメータの説明"
+    "message": "生成結果に対する歌詞の影響度を制御します (0-100)",
+    "description": "歌詞の強さパラメータの説明"
   },
   "description.seed": {
-    "message": "再現可能な結果を得るためにシード値を入力します。空白の場合はランダムになります。",
+    "message": "再現可能な結果を得るためにシード値を入力します。空白の場合はランダムになります",
     "description": "シードパラメータの説明"
   },
   "description.lyricPrompt": {
-    "message": "歌詞の説明を入力すると、AIが自動的に歌詞を生成します",
+    "message": "歌詞の説明を入力してください。AIが自動的に歌詞を生成します",
     "description": "歌詞プロンプトの説明"
   },
   "description.replaceSection": {
-    "message": "曲の指定した時間帯の内容を置き換えます",
-    "description": "置き換えセクション機能の説明"
+    "message": "曲の指定された時間帯の内容を置き換えます",
+    "description": "セクション置き換え機能の説明"
+  },
+  "description.instrumental": {
+    "message": "ボーカルなしの純音楽を生成します。歌詞の入力は無視されます",
+    "description": "純音楽スイッチの説明"
   },
   "status.pending": {
     "message": "待機中",
     "description": "タスクの待機状態"
   },
   "placeholder.prompt": {
-    "message": "望む音楽を説明してください。例：秋の思い出に関する温かいフォークソング...",
+    "message": "希望する音楽を説明してください。例：温かいフォークソング、秋の思い出について...",
     "description": "曲の説明入力のプレースホルダー"
   },
   "placeholder.lyrics": {
@@ -272,7 +320,7 @@
     "description": "スタイル入力のプレースホルダー"
   },
   "placeholder.styleNegative": {
-    "message": "例：ヘビーメタル、叫び声...",
+    "message": "例：ヘビーメタル、スクリーミング...",
     "description": "除外スタイル入力のプレースホルダー"
   },
   "placeholder.title": {
@@ -293,11 +341,11 @@
   },
   "placeholder.replaceSectionStart": {
     "message": "開始時間 (秒)",
-    "description": "置き換えセクション開始時間のプレースホルダー"
+    "description": "セクション置き換え開始時間のプレースホルダー"
   },
   "placeholder.replaceSectionEnd": {
     "message": "終了時間 (秒)",
-    "description": "置き換えセクション終了時間のプレースホルダー"
+    "description": "セクション置き換え終了時間のプレースホルダー"
   },
   "placeholder.seed": {
     "message": "シード値を入力してください（オプション）...",
@@ -324,12 +372,12 @@
     "description": "音楽生成タスク開始時のメッセージ"
   },
   "message.startingUploadAudio": {
-    "message": "カスタム音楽をアップロードしています...",
+    "message": "カスタム音楽をアップロード中...",
     "description": "音楽生成タスク開始時のメッセージ"
   },
   "message.uploadReferencesExceed": {
-    "message": "アップロードされた音楽が最大数を超えました",
-    "description": "アップロードされた音楽が最大数を超えた時のエラーメッセージ"
+    "message": "アップロードした音楽が最大数を超えました",
+    "description": "アップロードした音楽が最大数を超えた時のエラーメッセージ"
   },
   "message.uploadReferencesError": {
     "message": "音楽のアップロードに失敗しました",
@@ -356,39 +404,39 @@
     "description": "ビデオ取得に失敗した時のエラーメッセージ"
   },
   "message.generatingLyrics": {
-    "message": "歌詞を生成しています...",
+    "message": "歌詞を生成中...",
     "description": "歌詞生成時のメッセージ"
   },
   "message.generateLyricsSuccess": {
     "message": "歌詞の生成に成功しました",
-    "description": "歌詞生成成功時のメッセージ"
+    "description": "歌詞生成に成功した時のメッセージ"
   },
   "message.generateLyricsFailed": {
     "message": "歌詞の生成に失敗しました",
-    "description": "歌詞生成失敗時のメッセージ"
+    "description": "歌詞生成に失敗した時のメッセージ"
   },
   "message.fetchingWav": {
     "message": "WAVファイルを取得中...",
-    "description": "WAVファイルを取得する際のメッセージ"
+    "description": "WAVファイル取得時のメッセージ"
   },
   "message.fetchWavFailed": {
     "message": "WAVファイルの取得に失敗しました",
-    "description": "WAVファイルの取得に失敗した際のメッセージ"
+    "description": "WAVファイル取得に失敗した時のメッセージ"
   },
   "message.generating": {
     "message": "生成中...",
-    "description": "音楽を生成している際のメッセージ"
+    "description": "音楽生成中のメッセージ"
   },
   "message.generateFailed": {
     "message": "音楽の生成に失敗しました",
-    "description": "音楽の生成に失敗した際のメッセージ"
+    "description": "音楽生成に失敗した時のメッセージ"
   },
   "message.noOperations": {
     "message": "利用可能な操作はありません",
-    "description": "利用可能な操作がない際のメッセージ"
+    "description": "利用可能な操作がない時のメッセージ"
   },
   "message.noTasks": {
     "message": "履歴タスクはありません。左側の設定バーで音楽を生成してください",
-    "description": "タスクがない際のメッセージ"
+    "description": "タスクがない時のメッセージ"
   }
 }

@@ -1,191 +1,235 @@
 {
   "button.extend": {
-    "message": "Fortsätt generera",
-    "description": "Text i knappen för att fortsätta generera"
+    "message": "Fortsätt",
+    "description": "继续生成按钮文本"
   },
   "button.download": {
     "message": "Ladda ner",
-    "description": "Text i nedladdningsknappen"
+    "description": "下载按钮文本"
   },
   "button.more": {
-    "message": "Fler alternativ",
-    "description": "Text i knappen för fler alternativ"
+    "message": "Mer",
+    "description": "更多操作按钮文本"
   },
   "button.uploadAudios": {
     "message": "Ladda upp",
-    "description": "Knapptext som tillåter användare att ladda upp referenser"
+    "description": "按钮文本，允许用户上传参考"
   },
   "button.video": {
     "message": "Video",
-    "description": "Text i videoknappen"
+    "description": "视频按钮文本"
   },
   "button.download_video": {
     "message": "Ladda ner video",
-    "description": "Text i knappen för att ladda ner video"
+    "description": "下载视频按钮文本"
   },
   "button.download_wav": {
     "message": "Ladda ner WAV",
-    "description": "Text i knappen för att ladda ner WAV-format"
+    "description": "下载WAV无损格式按钮文本"
   },
   "button.get_stems": {
-    "message": "Separera ljudspår",
-    "description": "Text i knappen för att separera ljudspår"
+    "message": "Separera spår",
+    "description": "声曲分离按钮文本"
   },
   "button.cover_music": {
-    "message": "Tolka",
-    "description": "Text i tolkningsknappen"
+    "message": "Coversång",
+    "description": "翻唱按钮文本"
   },
   "button.download_audio": {
     "message": "Ladda ner musik",
-    "description": "Text i knappen för att ladda ner musik"
+    "description": "下载音乐按钮文本"
   },
   "button.replace_section": {
-    "message": "Ersätt avsnitt",
-    "description": "Text i knappen för att ersätta ett avsnitt i låten"
+    "message": "Byt del",
+    "description": "替换歌曲中的某个片段按钮文本"
   },
   "button.generate_lyrics": {
-    "message": "AI-genererade texter",
-    "description": "Text i knappen för att automatiskt generera texter med AI"
+    "message": "AI-genererad text",
+    "description": "使用AI自动生成歌词按钮文本"
   },
   "button.all_stems": {
-    "message": "Separera alla",
-    "description": "Text i knappen för att separera alla ljudspår"
+    "message": "Alla spår",
+    "description": "分离所有音轨按钮文本"
   },
   "button.variation": {
     "message": "Variation",
-    "description": "Text i variationsknappen"
+    "description": "变体按钮文本"
   },
   "button.swap_vocals": {
     "message": "Byt sång",
-    "description": "Text i knappen för att byta sång"
+    "description": "人声替换按钮文本"
   },
   "button.swap_instrumentals": {
-    "message": "Byt instrumentals",
-    "description": "Text i knappen för att byta instrumentals"
+    "message": "Byt bakgrund",
+    "description": "伴奏替换按钮文本"
+  },
+  "button.clear_all": {
+    "message": "Rensa allt",
+    "description": "清空全部配置项的按钮文本"
+  },
+  "mode.simple": {
+    "message": "Enkel",
+    "description": "简单生成模式 Tab 的标签"
+  },
+  "mode.custom": {
+    "message": "Anpassad",
+    "description": "定制生成模式 Tab 的标签"
   },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20proDesc": {
+    "message": "Upp till 8 min · Bäst ljudkvalitet",
+    "description": "FUZZ-2.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20desc": {
+    "message": "Upp till 8 min · Pris/prestanda balanserad",
+    "description": "FUZZ-2.0 在模型下拉中的描述"
   },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "Upp till 8 min · Mer rå sång",
+    "description": "FUZZ-2.0 Raw 在模型下拉中的描述"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11proDesc": {
+    "message": "Upp till 4 min · Förbättrad äldre version",
+    "description": "FUZZ-1.1 Pro 在模型下拉中的描述"
   },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10proDesc": {
+    "message": "Upp till 4 min · Stabil äldre version",
+    "description": "FUZZ-1.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10desc": {
+    "message": "Upp till 2 min · Äldre version",
+    "description": "FUZZ-1.0 在模型下拉中的描述"
   },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11desc": {
+    "message": "Upp till 4 min · Förbättrad äldre version",
+    "description": "FUZZ-1.1 在模型下拉中的描述"
   },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
-    "description": "Modell för att generera musik"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz08desc": {
+    "message": "Upp till 2 min · Tidig version",
+    "description": "FUZZ-0.8 在模型下拉中的描述"
   },
   "name.instrumental": {
     "message": "Instrumental",
-    "description": "Generera ren musik utan sång"
+    "description": "生成纯音乐无人声"
   },
   "name.referenceAudios": {
     "message": "Referensmusik",
-    "description": "Namn på referensmusiken"
+    "description": "参考音乐的名称"
   },
   "name.taskId": {
-    "message": "Uppgift ID",
-    "description": "ID för uppgiften"
+    "message": "Uppgifts-ID",
+    "description": "任务的 ID"
   },
   "name.type": {
-    "message": "Anpassad läge",
-    "description": "Namn på det anpassade läget"
+    "message": "Anpassad",
+    "description": "定制模式的名称"
   },
   "name.prompt": {
-    "message": "Låtbeskrivning",
-    "description": "Prompt för innehållsinmatning"
+    "message": "Beskrivning",
+    "description": "内容输入的提示"
   },
   "name.extend": {
-    "message": "Utöka låt från",
-    "description": "Prompt för innehållsinmatning"
+    "message": "Fortsätt från",
+    "description": "内容输入的提示"
   },
   "name.cover": {
-    "message": "Tolkning av låt från",
-    "description": "Prompt för innehållsinmatning"
+    "message": "Coversång från",
+    "description": "内容输入的提示"
   },
   "name.lyrics": {
-    "message": "Texter",
-    "description": "Prompt för textinmatning"
+    "message": "Text",
+    "description": "歌词内容输入的提示"
   },
   "name.style": {
     "message": "Stil",
-    "description": "Prompt för låtstil"
+    "description": "歌曲风格内容输入的提示"
   },
   "name.styleNegative": {
-    "message": "Uteslut stil",
-    "description": "Beskrivning av oönskad stil"
+    "message": "Exkludera stil",
+    "description": "不想要的风格描述"
   },
   "name.title": {
     "message": "Titel",
-    "description": "Prompt för låtens titel"
+    "description": "歌曲标题内容输入的提示"
   },
   "name.vocalGender": {
-    "message": "Sångens kön",
-    "description": "Välj sångens kön"
+    "message": "Sångarens kön",
+    "description": "选择人声性别"
   },
   "name.advancedParams": {
-    "message": "Avancerade parametrar",
-    "description": "Inställningar för avancerade parametrar"
+    "message": "Avancerade inställningar",
+    "description": "高级参数设置"
   },
   "name.weirdness": {
     "message": "Kreativitet",
-    "description": "Kontrollera graden av kreativitet i den genererade musiken"
+    "description": "Kontrollerar graden av kreativitet vid musikgenerering"
   },
   "name.soundStrength": {
     "message": "Ljudstyrka",
-    "description": "Kontrollera styrkan på det genererade ljudet"
+    "description": "Kontrollerar styrkan på det genererade ljudet"
   },
   "name.lyricsStrength": {
     "message": "Textstyrka",
-    "description": "Kontrollera hur mycket texterna påverkar det genererade resultatet"
+    "description": "Kontrollerar hur mycket texten påverkar resultatet"
   },
   "name.seed": {
-    "message": "Frö",
-    "description": "Slumptal för reproducerbar generering"
+    "message": "Seed",
+    "description": "Slumpvärde för reproducerbar generering"
   },
   "name.lyricPrompt": {
     "message": "Textprompt",
-    "description": "Prompt för automatisk generering av texter"
+    "description": "Prompt för automatisk generering av text"
   },
   "name.failureReason": {
-    "message": "Orsak till misslyckande",
-    "description": "Orsaken till att uppgiften misslyckades"
+    "message": "Felorsak",
+    "description": "Anledning till att uppgiften misslyckades"
   },
   "name.status": {
     "message": "Status",
-    "description": "Uppgiftens status"
+    "description": "Status för uppgiften"
   },
   "name.traceId": {
-    "message": "Spårnings ID",
-    "description": "Uppgiftens spårnings ID"
+    "message": "Spårnings-ID",
+    "description": "Spårnings-ID för uppgiften"
   },
   "name.producerBot": {
     "message": "Producer Bot",
-    "description": "Namn på Producer-genereraren"
+    "description": "Namn på produceraren"
   },
   "name.replaceSection": {
-    "message": "Ersätt avsnitt",
-    "description": "Ersätt ett avsnitt i låten"
+    "message": "Byt del",
+    "description": "Byt ut en del av låten"
   },
   "name.model": {
     "message": "Modell",
@@ -193,202 +237,206 @@
   },
   "name.songDescription": {
     "message": "Låtbeskrivning",
-    "description": "Beskrivning av låten"
+    "description": "Låtbeskrivningsläge"
   },
   "description.prompt": {
-    "message": "Beskriv den musikstil och tema du önskar",
-    "description": "Beskrivning av parametern 'prompt'"
+    "message": "Beskriv önskad musikstil och tema",
+    "description": "Beskrivning för parametern 'prompt'"
   },
   "description.lyrics": {
-    "message": "Ange anpassade texter, stödjer [Vers]、[Refräng]、[Bro] etc. avsnittsmärkningar",
-    "description": "Beskrivning av parametern 'lyrics'"
+    "message": "Skriv in anpassad text, stöder [Verse], [Chorus], [Bridge] etc.",
+    "description": "Beskrivning för parametern 'lyrics'"
   },
   "description.style": {
-    "message": "Beskriv musikstilen, som akustisk pop, jazz, elektronisk",
-    "description": "Beskrivning av parametern 'style'"
+    "message": "Beskriv musikstil, t.ex. acoustic pop, jazz, electronic",
+    "description": "Beskrivning för parametern 'style'"
   },
   "description.styleNegative": {
-    "message": "Beskriv stilar du inte vill ha, som heavy metal, screaming",
-    "description": "Beskrivning av parameter för att utesluta stilar"
+    "message": "Beskriv stilar som inte önskas, t.ex. heavy metal, screaming",
+    "description": "Beskrivning för att exkludera stilar"
   },
   "description.title": {
-    "message": "Låtens titel",
-    "description": "Beskrivning av parametern 'title'"
+    "message": "Låttitel",
+    "description": "Beskrivning för parametern 'title'"
   },
   "description.uploadAudios": {
-    "message": "Ladda upp musik som referens för genereringen. Laddningen kan ta en stund, och när den är klar kan du generera baserat på den uppladdade musiken.",
-    "description": "Beskrivning av referensparameter för uppladdning"
+    "message": "Ladda upp musik som referens för generering. Vänta under uppladdning, resultatet baseras på uppladdad musik",
+    "description": "Beskrivning för uppladdningsreferens"
   },
   "description.vocalGender": {
-    "message": "Välj könet på den genererade rösten",
-    "description": "Beskrivning av röstkönsval"
+    "message": "Välj kön för den genererade rösten",
+    "description": "Beskrivning för röstkön"
   },
   "description.weirdness": {
-    "message": "Högre värden ger mer kreativ och experimentell musik (0-100)",
-    "description": "Beskrivning av kreativitetens parameter"
+    "message": "Högre värde ger mer kreativ och experimentell musik (0-100)",
+    "description": "Beskrivning för kreativitet"
   },
   "description.soundStrength": {
-    "message": "Kontrollera styrkan på den genererade ljudet (0-100)",
-    "description": "Beskrivning av ljudstyrkeparameter"
+    "message": "Kontrollerar ljudstyrkan (0-100)",
+    "description": "Beskrivning för ljudstyrka"
   },
   "description.lyricsStrength": {
-    "message": "Kontrollera hur mycket texten påverkar resultatet (0-100)",
-    "description": "Beskrivning av textstyrkeparameter"
+    "message": "Kontrollerar hur mycket texten påverkar resultatet (0-100)",
+    "description": "Beskrivning för textstyrka"
   },
   "description.seed": {
-    "message": "Ange ett frövärde för att få upprepade resultat, lämna tomt för slumpmässigt",
-    "description": "Beskrivning av fröparameter"
+    "message": "Ange seed för reproducerbara resultat, lämna tomt för slump",
+    "description": "Beskrivning för seed"
   },
   "description.lyricPrompt": {
-    "message": "Ange en beskrivning av texten, AI kommer automatiskt att generera texten",
-    "description": "Beskrivning av textprompt"
+    "message": "Ange textbeskrivning, AI genererar text automatiskt",
+    "description": "Beskrivning för textprompt"
   },
   "description.replaceSection": {
-    "message": "Ersätt innehållet i en angiven tidsperiod i låten",
-    "description": "Beskrivning av funktionen för att ersätta sektioner"
+    "message": "Byt ut innehåll i angiven tidsperiod",
+    "description": "Beskrivning för byta del-funktion"
+  },
+  "description.instrumental": {
+    "message": "Generera instrumental utan röst, text ignoreras",
+    "description": "Beskrivning för instrumentalläge"
   },
   "status.pending": {
     "message": "Väntar",
-    "description": "Väntande status för uppgiften"
+    "description": "Uppgiftens väntestatus"
   },
   "placeholder.prompt": {
-    "message": "Beskriv den musik du vill ha, till exempel: en varm folkmusik om längtan efter hösten...",
+    "message": "Beskriv önskad musik, t.ex.: en varm folkvisa om höstens nostalgi...",
     "description": "Platshållare för låtbeskrivning"
   },
   "placeholder.lyrics": {
-    "message": "[Vers]\nI denna tysta natt\nStjärnorna blinkar på himlen\n\n[Refräng]\nLåt oss sjunga tillsammans\nTills gryningen...",
+    "message": "[Verse]\nI den tysta natten\nStjärnorna glimmar på himlen\n\n[Chorus]\nLåt oss sjunga tillsammans\nTills gryningen...",
     "description": "Platshållare för textinmatning"
   },
   "placeholder.extend.lyrics": {
-    "message": "Ange texten som ska utökas...",
-    "description": "Platshållare för att utöka textinmatning"
+    "message": "Skriv text som ska utökas...",
+    "description": "Platshållare för utökning av text"
   },
   "placeholder.extend.continue_at": {
-    "message": "Från vilken sekund ska vi börja utöka...",
-    "description": "Platshållare för starttid för utökning"
+    "message": "Fortsätt från sekund...",
+    "description": "Platshållare för starttid"
   },
   "placeholder.style": {
-    "message": "Till exempel: akustisk pop, jazz, R&B, elektronisk...",
+    "message": "t.ex.: acoustic pop, jazz, R&B, electronic...",
     "description": "Platshållare för stilinmatning"
   },
   "placeholder.styleNegative": {
-    "message": "Till exempel: heavy metal, screaming...",
-    "description": "Platshållare för att utesluta stilinmatning"
+    "message": "t.ex.: heavy metal, screaming...",
+    "description": "Platshållare för exkluderad stil"
   },
   "placeholder.title": {
-    "message": "Ange låtens namn...",
-    "description": "Platshållare för titelinmatning"
+    "message": "Ange låtnamn...",
+    "description": "Platshållare för titel"
   },
   "placeholder.select": {
-    "message": "Vänligen välj modell...",
+    "message": "Välj modell...",
     "description": "Platshållare för modellval"
   },
   "placeholder.position": {
-    "message": "Vänligen välj...",
-    "description": "Platshållare för positionsinmatning"
+    "message": "Välj...",
+    "description": "Platshållare för position"
   },
   "placeholder.lyricPrompt": {
-    "message": "Beskriv temat för texten, AI kommer automatiskt att generera...",
-    "description": "Platshållare för textpromptinmatning"
+    "message": "Beskriv textämne, AI genererar automatiskt...",
+    "description": "Platshållare för textprompt"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Starttid (sekunder)",
-    "description": "Platshållare för starttid för att ersätta sektion"
+    "message": "Starttid (sek)",
+    "description": "Platshållare för starttid vid byte"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Sluttid (sekunder)",
-    "description": "Platshållare för sluttid för att ersätta sektion"
+    "message": "Sluttid (sek)",
+    "description": "Platshållare för sluttid vid byte"
   },
   "placeholder.seed": {
-    "message": "Ange frövärde (valfritt)...",
-    "description": "Platshållare för fröinmatning"
+    "message": "Ange seed (valfritt)...",
+    "description": "Platshållare för seed"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Text för generera-knappen"
+    "description": "Text på genereringsknapp"
   },
   "gender.male": {
-    "message": "Manlig röst",
+    "message": "Manlig",
     "description": "Alternativ för manlig röst"
   },
   "gender.female": {
-    "message": "Kvinnlig röst",
+    "message": "Kvinnlig",
     "description": "Alternativ för kvinnlig röst"
   },
   "gender.auto": {
     "message": "Automatisk",
-    "description": "Automatisk val av röstens kön"
+    "description": "Automatiskt val av röst"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
+    "message": "Startar uppgift...",
     "description": "Meddelande när musikgenereringsuppgiften startar"
   },
   "message.startingUploadAudio": {
     "message": "Laddar upp anpassad musik...",
-    "description": "Meddelande när musikgenereringsuppgiften startar"
+    "description": "Meddelande när musikgenereringsuppgift startar"
   },
   "message.uploadReferencesExceed": {
-    "message": "Uppladdad musik överskrider det maximala antalet",
-    "description": "Felmeddelande när uppladdad musik överskrider det maximala antalet"
+    "message": "Maxantal musikfiler överskridet",
+    "description": "Felmeddelande när uppladdade musikfiler överstiger maxantal"
   },
   "message.uploadReferencesError": {
-    "message": "Uppladdning av musik misslyckades",
-    "description": "Felmeddelande när uppladdning av musik misslyckas"
+    "message": "Misslyckades med att ladda upp musik",
+    "description": "Felmeddelande när musikuppladdning misslyckas"
   },
   "message.startTaskSuccess": {
-    "message": "Musikgenereringsuppgift startad framgångsrikt",
-    "description": "Meddelande när musikgenereringsuppgiften startas framgångsrikt"
+    "message": "Musikgenereringsuppgift startad",
+    "description": "Meddelande vid lyckad start av musikgenereringsuppgift"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Anpassad musik uppladdad framgångsrikt",
-    "description": "Meddelande när musikgenereringsuppgiften startas framgångsrikt"
+    "message": "Anpassad musik uppladdad",
+    "description": "Meddelande vid lyckad uppladdning av musik"
   },
   "message.startUploadAudioFailed": {
-    "message": "Uppladdning av anpassad musik misslyckades",
-    "description": "Felmeddelande när musikgenereringsuppgiften misslyckas"
+    "message": "Misslyckades med att ladda upp musik",
+    "description": "Felmeddelande när start av musikgenerering misslyckas"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta musikgenereringsuppgift",
-    "description": "Felmeddelande när musikgenereringsuppgiften misslyckas"
+    "message": "Misslyckades med att starta musikuppgift",
+    "description": "Felmeddelande när musikgenereringsuppgift inte kan startas"
   },
   "message.getVideoUrlFailed": {
     "message": "Misslyckades med att hämta musikvideo, försök igen senare",
-    "description": "Felmeddelande när video inte kan hämtas"
+    "description": "Felmeddelande när videohämtning misslyckas"
   },
   "message.generatingLyrics": {
     "message": "Genererar text...",
-    "description": "Meddelande när text genereras"
+    "description": "Meddelande när låttext genereras"
   },
   "message.generateLyricsSuccess": {
-    "message": "Text genererad framgångsrikt",
-    "description": "Meddelande när text genereras framgångsrikt"
+    "message": "Text genererad",
+    "description": "Meddelande när låttext genererats framgångsrikt"
   },
   "message.generateLyricsFailed": {
     "message": "Misslyckades med att generera text",
-    "description": "Meddelande när textgenerering misslyckas"
+    "description": "Meddelande när generering av låttext misslyckas"
   },
   "message.fetchingWav": {
     "message": "Hämtar WAV-fil...",
-    "description": "Meddelande vid hämtning av WAV-fil"
+    "description": "Meddelande när WAV-fil hämtas"
   },
   "message.fetchWavFailed": {
-    "message": "Hämtning av WAV-fil misslyckades",
-    "description": "Meddelande vid misslyckad hämtning av WAV-fil"
+    "message": "Misslyckades med att hämta WAV-fil",
+    "description": "Meddelande när hämtning av WAV-fil misslyckas"
   },
   "message.generating": {
     "message": "Genererar...",
     "description": "Meddelande när musiken genereras"
   },
   "message.generateFailed": {
-    "message": "Musikgenerering misslyckades",
-    "description": "Meddelande vid misslyckad musikgenerering"
+    "message": "Misslyckades med att generera musik",
+    "description": "Meddelande när musikgenerering misslyckas"
   },
   "message.noOperations": {
-    "message": "Inga tillgängliga operationer",
-    "description": "Meddelande när inga operationer är tillgängliga"
+    "message": "Inga tillgängliga åtgärder",
+    "description": "Meddelande när inga åtgärder finns"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen generera musik i konfigurationspanelen till vänster",
-    "description": "Meddelande när det inte finns några uppgifter"
+    "message": "Inga tidigare uppgifter, skapa musik från panelen till vänster",
+    "description": "Meddelande när inga uppgifter finns"
   }
 }

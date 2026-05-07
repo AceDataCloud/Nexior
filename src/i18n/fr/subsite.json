@@ -1,194 +1,198 @@
 {
   "title.index": {
     "message": "Mes sous-sites",
-    "description": "Titre principal de la page de gestion des sous-sites"
+    "description": "分站管理首页大标题"
   },
   "title.create": {
     "message": "Créer un sous-site",
-    "description": "Titre de la boîte de dialogue pour créer un nouveau sous-site"
+    "description": "新建分站对话框标题"
   },
   "title.openNow": {
-    "message": "Accéder au sous-site maintenant",
-    "description": "Titre de la boîte de dialogue demandant si l'utilisateur souhaite rediriger immédiatement après la création"
+    "message": "Visiter le sous-site",
+    "description": "新建成功后询问是否立即跳转的对话框标题"
   },
   "field.slug": {
     "message": "Préfixe du sous-domaine",
-    "description": "Titre du champ d'entrée slug pour le sous-site"
+    "description": "分站 slug 输入框标题"
   },
   "field.origin": {
-    "message": "Nom de domaine du sous-site",
-    "description": "Colonne de nom de domaine dans la liste des sous-sites"
+    "message": "Domaine du sous-site",
+    "description": "分站列表的域名列"
   },
   "field.title": {
     "message": "Titre du sous-site",
-    "description": "Champ de titre pour le sous-site"
+    "description": "分站标题字段"
   },
   "field.createdAt": {
     "message": "Date de création",
-    "description": "Colonne de date de création du sous-site"
+    "description": "分站创建时间列"
   },
   "field.actions": {
     "message": "Actions",
-    "description": "Colonne d'actions dans la liste des sous-sites"
+    "description": "分站列表操作列"
   },
   "placeholder.slug": {
-    "message": "Par exemple my-brand",
-    "description": "Placeholder pour le champ d'entrée slug"
+    "message": "ex. mon-marque",
+    "description": "slug 输入框占位符"
   },
   "placeholder.title": {
-    "message": "À afficher dans l'onglet du navigateur et l'en-tête du site",
-    "description": "Placeholder pour le champ de titre"
+    "message": "Sera affiché dans l’onglet du navigateur et en en-tête",
+    "description": "标题输入框占位符"
   },
   "button.create": {
-    "message": "Créer un sous-site",
-    "description": "Bouton pour créer un sous-site"
+    "message": "Créer",
+    "description": "创建分站按钮"
   },
   "button.open": {
     "message": "Ouvrir",
-    "description": "Bouton pour ouvrir le sous-site"
+    "description": "打开分站按钮"
   },
   "button.manage": {
     "message": "Gérer",
-    "description": "Bouton pour accéder aux paramètres du sous-site"
+    "description": "进入分站设置按钮"
   },
   "message.indexTip": {
-    "message": "Créez des sous-sites de marque indépendants sous le site principal, chaque sous-site peut avoir son propre logo, titre et ensemble de fonctionnalités, sans avoir besoin de construire le code source séparément.",
-    "description": "Texte explicatif sur la page de gestion des sous-sites"
+    "message": "Créez des sous-sites indépendants pour chaque marque sous le site principal, chacun avec son propre logo, titre et fonctionnalités, sans avoir à déployer le code source séparément.",
+    "description": "分站管理首页说明文字"
   },
   "message.empty": {
-    "message": "Vous n'avez pas encore créé de sous-site. Cliquez sur 'Créer un sous-site' en haut à droite pour commencer.",
-    "description": "Message d'indication pour une liste vide"
+    "message": "Vous n’avez encore créé aucun sous-site. Cliquez sur «Créer un sous-site» en haut à droite pour commencer.",
+    "description": "空列表提示"
   },
   "message.slugTip": {
-    "message": "3-32 caractères en minuscules, chiffres ou tirets ; ne peut pas commencer ou se terminer par un tiret, et ne peut pas contenir de tirets consécutifs.",
-    "description": "Explication du champ slug"
+    "message": "3 à 32 caractères : lettres minuscules, chiffres ou tirets ; ne commence ni ne termine par un tiret, pas de tirets consécutifs.",
+    "description": "slug 字段说明"
   },
   "message.slugInvalid": {
-    "message": "Le format du préfixe du sous-domaine est incorrect, veuillez vérifier les règles et réessayer.",
-    "description": "Échec de la validation du slug"
+    "message": "Le préfixe du sous-domaine est invalide. Vérifiez les règles et réessayez.",
+    "description": "slug 校验失败"
   },
   "message.zoneMissing": {
-    "message": "Le domaine du sous-site n'est pas configuré sur le site principal, veuillez contacter l'administrateur du site.",
-    "description": "Zone de sous-domaine manquante"
+    "message": "Le site principal n’a pas configuré de zone de sous-domaines. Contactez l’administrateur.",
+    "description": "subdomain_zone 缺失"
   },
   "message.created": {
     "message": "Sous-site créé avec succès !",
-    "description": "Confirmation de création réussie"
+    "description": "创建成功"
   },
   "message.createFailed": {
-    "message": "Échec de la création du sous-site, veuillez réessayer plus tard.",
-    "description": "Échec de la création"
+    "message": "Échec de la création du sous-site. Réessayez plus tard.",
+    "description": "创建失败"
+  },
+  "message.slugTaken": {
+    "message": "Le sous-domaine {origin} est déjà utilisé, choisissez-en un autre.",
+    "description": "创建分站时，slug 已被占用（后端返回 code=duplication）"
   },
   "message.loadFailed": {
     "message": "Échec du chargement de la liste des sous-sites.",
-    "description": "Échec du chargement de la liste"
+    "description": "拉列表失败"
   },
   "message.openNowConfirm": {
-    "message": "Le sous-site {origin} a été créé. Voulez-vous l'ouvrir maintenant pour continuer la configuration ?",
-    "description": "Demande d'ouverture immédiate après création"
+    "message": "Le sous-site {origin} a été créé. Voulez-vous l’ouvrir maintenant pour continuer la configuration ?",
+    "description": "创建后是否立即打开"
   },
   "title.domains": {
-    "message": "Nom de domaine personnalisé pour {origin}",
-    "description": "Titre de la boîte de dialogue pour le nom de domaine personnalisé"
+    "message": "Domaines personnalisés de {origin}",
+    "description": "自定义域名对话框标题"
   },
   "title.bindDomain": {
     "message": "Lier un nouveau domaine",
-    "description": "Titre du formulaire de liaison"
+    "description": "绑定表单标题"
   },
   "button.domains": {
     "message": "Domaines",
-    "description": "Bouton pour ouvrir la boîte de dialogue de gestion des domaines"
+    "description": "打开域名管理对话框的按钮"
   },
   "button.bindDomain": {
-    "message": "Lier le domaine",
-    "description": "Soumettre la liaison d'un nouveau domaine"
+    "message": "Lier",
+    "description": "提交绑定新域名"
   },
   "button.verify": {
     "message": "Vérifier maintenant",
-    "description": "Vérifier si le domaine peut être résolu et obtenir un certificat via notre proxy inverse"
+    "description": "通过我们的反向代理探测该域名是否已能正常解析并签发证书"
   },
   "button.refresh": {
     "message": "Rafraîchir",
-    "description": "Récupérer à nouveau l'état du domaine"
+    "description": "重新拉取该域名的状态"
   },
   "field.hostname": {
     "message": "Votre domaine",
-    "description": "Entrez le domaine ou sous-domaine que vous possédez"
+    "description": "输入你拥有的域名或子域名"
   },
   "field.recordType": {
-    "message": "Type d'enregistrement",
-    "description": "Colonne de type d'enregistrement DNS"
+    "message": "Type d’enregistrement",
+    "description": "DNS 记录类型列"
   },
   "field.recordName": {
-    "message": "Nom de l'enregistrement",
-    "description": "Colonne de nom d'enregistrement DNS"
+    "message": "Nom",
+    "description": "DNS 记录名称列"
   },
   "field.recordValue": {
-    "message": "Valeur de l'enregistrement",
-    "description": "Colonne de valeur d'enregistrement DNS"
+    "message": "Valeur",
+    "description": "DNS 记录值列"
   },
   "placeholder.hostname": {
-    "message": "Par exemple studio.mybrand.com",
-    "description": "Placeholder pour le champ d'entrée hostname"
+    "message": "ex. studio.monmarque.com",
+    "description": "hostname 输入框占位符"
   },
   "message.domainsIntro": {
-    "message": "Liez le domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS de ce domaine. Ajoutez un enregistrement CNAME comme indiqué ci-dessous, puis cliquez sur 'Vérifier maintenant', nous vous délivrerons automatiquement un certificat HTTPS gratuit via Let's Encrypt.",
-    "description": "Explication en haut de la boîte de dialogue"
+    "message": "Liez un domaine que vous possédez à ce sous-site. Vous devez pouvoir modifier le DNS. Ajoutez un enregistrement CNAME comme indiqué et cliquez sur «Vérifier maintenant». Nous émettrons et renouvellerons automatiquement un certificat HTTPS gratuit via Let's Encrypt.",
+    "description": "对话框顶部说明"
   },
   "message.domainsEmpty": {
-    "message": "Aucun domaine personnalisé n'est encore lié. Remplissez le domaine complet dans le formulaire ci-dessous et cliquez sur 'Lier' pour commencer.",
-    "description": "Message d'indication pour une liste vide"
+    "message": "Aucun domaine personnalisé lié. Remplissez le formulaire ci-dessous et cliquez sur «Lier» pour commencer.",
+    "description": "空列表提示"
   },
   "message.hostnameTip": {
-    "message": "Doit être un domaine public dont vous pouvez contrôler le DNS.",
-    "description": "Indication pour le champ hostname"
+    "message": "Doit être un domaine public que vous contrôlez.",
+    "description": "hostname 输入提示"
   },
   "message.hostnameInvalid": {
-    "message": "Le format du domaine est incorrect. Doit être un domaine public résolvable, les adresses IP ne sont pas autorisées.",
-    "description": "Échec de la validation locale du hostname"
+    "message": "Format de domaine invalide. Doit être un domaine public, les adresses IP ne sont pas autorisées.",
+    "description": "hostname 本地校验失败"
   },
   "message.domainCreated": {
-    "message": "Le domaine a été soumis, veuillez ajouter l'enregistrement CNAME comme indiqué.",
-    "description": "Succès de la requête POST /site-domains/"
+    "message": "Domaine soumis. Ajoutez l’enregistrement CNAME comme indiqué.",
+    "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
     "message": "Échec de la création du domaine, veuillez réessayer plus tard.",
-    "description": "Échec de la création"
+    "description": "Création échouée"
   },
   "message.domainsLoadFailed": {
     "message": "Échec du chargement de la liste des domaines.",
-    "description": "Échec du chargement de la liste des domaines"
+    "description": "拉域名列表失败"
   },
   "message.domainActive": {
-    "message": "Le domaine est actif ! Vous pouvez maintenant accéder à la sous-site via votre adresse HTTPS personnalisée.",
-    "description": "Indique que le domaine est en état actif"
+    "message": "Le domaine est en ligne ! Votre site est désormais accessible via votre adresse HTTPS personnalisée.",
+    "description": "进入 Active 状态"
   },
   "message.domainFailed": {
-    "message": "Échec de la validation ou de la mise en ligne du domaine.",
-    "description": "Texte d'état pour le statut échoué"
+    "message": "Échec de la vérification ou de la mise en ligne du domaine.",
+    "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Échec de la validation, veuillez vérifier si l'enregistrement CNAME pointe vers notre proxy inverse et si la propagation DNS est terminée.",
-    "description": "Interface de vérification 4xx"
+    "message": "Échec de la vérification. Vérifiez que l’enregistrement CNAME pointe vers notre proxy inverse et que la propagation DNS est terminée.",
+    "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Êtes-vous sûr de vouloir dissocier {hostname} ? Après la dissociation, les utilisateurs ne pourront plus accéder à votre sous-site via ce domaine.",
-    "description": "Confirmation de suppression"
+    "message": "Voulez-vous vraiment dissocier {hostname} ? Les utilisateurs ne pourront plus accéder à votre site via ce domaine.",
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
     "message": "Échec de la suppression du domaine.",
-    "description": "Interface DELETE 5xx"
+    "description": "DELETE 接口 5xx"
   },
   "status.pending": {
-    "message": "En attente de validation",
-    "description": "Étiquette d'état en attente : en attente que l'utilisateur ajoute le CNAME et clique sur 'Vérifier maintenant'"
+    "message": "En attente",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
   },
   "status.active": {
     "message": "En ligne",
-    "description": "Étiquette d'état actif"
+    "description": "Active 状态标签"
   },
   "status.failed": {
-    "message": "Échoué",
-    "description": "Étiquette d'état échoué"
+    "message": "Échec",
+    "description": "Failed 状态标签"
   }
 }

@@ -37,14 +37,14 @@
   },
   "name.elapsed": {
     "message": "Tempo Decorrido",
-    "description": "Tempo decorrido da tarefa (segundos)"
+    "description": "Tempo decorrido da tarefa (em segundos)"
   },
   "name.prompt": {
     "message": "Prompt de Imagem",
     "description": "Palavras-chave para gerar/editar"
   },
   "name.seedreamBot": {
-    "message": "SeeDream Bot",
+    "message": "Bot SeeDream",
     "description": "Nome do gerador de imagens SeeDream"
   },
   "name.size": {
@@ -64,11 +64,11 @@
     "description": "Descrição do parâmetro model"
   },
   "description.size": {
-    "message": "Tamanho da imagem. Suporta predefinições `1K`, `2K`, `4K` ou personalizadas `<largura>x<altura>`.",
-    "description": "Descrição do parâmetro size"
+    "message": "Tamanho da imagem. Diferentes modelos suportam presets diferentes: 5.0 suporta apenas 2K/3K/4K, 4.5/4.0 suportam 1K/2K/4K, 3.0-t2i e seededit-3.0-i2i suportam apenas valores de pixels `<largura>x<altura>` (como 1024x1024, 1280x720). Modelos preset também podem escolher 'Adaptativo' (mantendo a proporção da imagem de referência), ou pode-se inserir diretamente qualquer `<largura>x<altura>` no campo de seleção.",
+    "description": "Descrição do parâmetro size (por modelo)"
   },
   "description.watermark": {
-    "message": "Adicionar marca d'água AI à imagem gerada. Ativado por padrão.",
+    "message": "Adicionar marca d'água à imagem gerada. Ativado por padrão.",
     "description": "Descrição do parâmetro watermark"
   },
   "description.imageUrls": {
@@ -83,8 +83,12 @@
     "message": "Selecionar",
     "description": "Placeholder de seleção"
   },
+  "placeholder.size": {
+    "message": "Escolha um preset ou insira <largura>x<altura>",
+    "description": "Placeholder de seleção/entrada de size (el-select allow-create)"
+  },
   "placeholder.prompt": {
-    "message": "Digite o prompt, por exemplo: um gato siames branco",
+    "message": "Insira as palavras-chave, por exemplo: um gato siames branco",
     "description": "Placeholder do prompt"
   },
   "button.generate": {
@@ -92,8 +96,16 @@
     "description": "Botão de gerar"
   },
   "button.uploadImageUrls": {
-    "message": "Enviar",
-    "description": "Botão para enviar imagens de referência (simplificado para 'Enviar')"
+    "message": "Enviar Imagem",
+    "description": "Botão para enviar imagens de referência (simplifique para 'Enviar')"
+  },
+  "button.confirmContinue": {
+    "message": "Continuar",
+    "description": "Botão de confirmação na caixa de aviso de conflito de capacidade"
+  },
+  "button.cancelSwitch": {
+    "message": "Cancelar",
+    "description": "Botão de cancelamento na caixa de aviso de conflito de capacidade"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -113,11 +125,23 @@
   },
   "message.uploadImageExceed": {
     "message": "Máximo de 14 imagens podem ser enviadas",
-    "description": "Número de imagens excedeu o limite"
+    "description": "Limite de número de imagens excedido"
   },
   "message.uploadImageError": {
     "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
     "description": "Falha no envio"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirmação Necessária",
+    "description": "Título da caixa de aviso de conflito de capacidade"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "A seleção atual não suporta as seguintes configurações habilitadas: {fields}. Continuar irá limpar essas configurações.",
+    "description": "Corpo da caixa de aviso de conflito de capacidade"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Configurações não suportadas limpas: {fields}",
+    "description": "Mensagem de aviso após limpeza de conflito de capacidade"
   },
   "name.model": {
     "message": "Modelo",
@@ -141,14 +165,54 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Opção de modelo SeeDream 5.0 (suporta geração de imagens em grupo e saída contínua)"
+    "description": "Opção de modelo SeeDream 5.0 (suporta geração de imagens em grupo e saída em fluxo)"
   },
   "name.maxImages": {
     "message": "Número de Imagens",
     "description": "Número de imagens geradas em grupo (max_images)"
   },
   "description.maxImages": {
-    "message": "Número de imagens geradas em uma única solicitação (1-15). Definido como 1 para modo de imagem única; maior que 1 ativa automaticamente a geração de imagens em grupo (sequential_image_generation=auto), mantendo personagens, estilo e detalhes consistentes entre as imagens. Suporta apenas doubao-seedream-5.0 / 4.5 / 4.0; se imagens de referência forem enviadas, deve-se atender a (número de imagens de referência + número gerado) ≤ 15. A cobrança é feita com base no número real de imagens geradas.",
+    "message": "Número de imagens geradas por solicitação (1-15). Definido como 1 para modo de imagem única; maior que 1 ativa automaticamente o modo de grupo (sequential_image_generation=auto), mantendo personagens, estilo e detalhes consistentes entre as imagens. Suporta apenas doubao-seedream-5.0 / 4.5 / 4.0; se imagens de referência forem enviadas, deve-se atender a (número de imagens de referência + número gerado) ≤ 15. A cobrança é feita com base no número real de imagens geradas.",
     "description": "Descrição do parâmetro max_images"
+  },
+  "name.seed": {
+    "message": "Semente Aleatória",
+    "description": "Etiqueta do parâmetro seed"
+  },
+  "description.seed": {
+    "message": "Semente aleatória para reprodução, intervalo [-1, 2147483647]. -1 significa aleatório a cada vez. Suporta apenas doubao-seedream-3.0-t2i e doubao-seededit-3.0-i2i.",
+    "description": "Descrição do parâmetro seed"
+  },
+  "name.guidanceScale": {
+    "message": "Peso da Sugestão",
+    "description": "Etiqueta do parâmetro guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Intensidade de seguimento da sugestão, intervalo [1, 10]. Quanto maior o valor, mais próximo da sugestão. doubao-seedream-3.0-t2i padrão 2.5, doubao-seededit-3.0-i2i padrão 5.5.",
+    "description": "Descrição do parâmetro guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Formato de Saída",
+    "description": "Etiqueta do parâmetro output_format"
+  },
+  "description.outputFormat": {
+    "message": "Formato do arquivo da imagem gerada, jpeg ou png, padrão jpeg. Apenas doubao-seedream-5.0 suporta.",
+    "description": "Descrição do parâmetro output_format"
+  },
+  "size.group.tier": {
+    "message": "Nível de Resolução",
+    "description": "Grupo de níveis do dropdown de tamanhos (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptativo",
+    "description": "Grupo adaptativo do dropdown de tamanhos"
+  },
+  "size.group.pixel": {
+    "message": "Tamanho de Pixel Específico",
+    "description": "Grupo de tamanhos de pixel do dropdown"
+  },
+  "size.adaptive": {
+    "message": "Adaptativo (igual à imagem de referência)",
+    "description": "Etiqueta da opção adaptive"
   }
 }

@@ -1,127 +1,127 @@
 {
   "tab.videoGeneration": {
     "message": "Videon luonti",
-    "description": "Tab-otsikko: Video Generation"
+    "description": "Tab 标签：Video Generation"
   },
   "tab.motionControl": {
     "message": "Liikeohjaus",
-    "description": "Tab-otsikko: Motion Control"
+    "description": "Tab 标签：Motion Control"
   },
   "name.motionImage": {
-    "message": "Henkilökuva",
-    "description": "Liikeohjauksen henkilöhahmon kuva"
+    "message": "Hahmon referenssikuva",
+    "description": "Motion Control 中的人物图输入"
   },
   "name.motionVideo": {
-    "message": "Liikevideo",
-    "description": "Liikeohjauksen viitevideo"
+    "message": "Liikereferenssivideo",
+    "description": "Motion Control 中的参考视频输入"
   },
   "name.motionPrompt": {
-    "message": "Lisäohjeet (valinnainen)",
-    "description": "Liikeohjauksen lisäohjeet"
+    "message": "Lisävihje (valinnainen)",
+    "description": "Motion Control 中的补充提示词"
   },
   "name.characterOrientation": {
-    "message": "Henkilön suunta",
-    "description": "Henkilön suunta -kenttä"
+    "message": "Hahmon suunta",
+    "description": "人物朝向字段"
   },
   "name.orientationImage": {
     "message": "Seuraa kuvaa",
-    "description": "Henkilön suunta -vaihtoehto: Seuraa kuvaa"
+    "description": "人物朝向选项：跟随图片"
   },
   "name.orientationVideo": {
     "message": "Seuraa videota",
-    "description": "Henkilön suunta -vaihtoehto: Seuraa videota"
+    "description": "人物朝向选项：跟随视频"
   },
   "name.keepOriginalSound": {
     "message": "Säilytä alkuperäinen ääni",
-    "description": "keep_original_sound-kytkin"
+    "description": "keep_original_sound 开关"
   },
   "description.motionImage": {
-    "message": "Lataa henkilökuva, jota käytetään viitteenä videon henkilöille, taustalle jne.",
-    "description": "motion image_url -kuvaus"
+    "message": "Lataa hahmon referenssikuva, jota käytetään hahmon ja taustan luontiin videossa",
+    "description": "motion image_url 说明"
   },
   "description.motionVideo": {
-    "message": "Lataa liikevideo, jonka mukaan videon henkilöhahmojen liikkeet toteutetaan (MP4 / MOV, ≤1 minuutti, ≤1 GB)",
-    "description": "motion video_url -kuvaus"
+    "message": "Lataa liikereferenssivideo, hahmon liikkeet synkronoituvat videon kanssa (MP4 / MOV, ≤1 min, ≤1 GB)",
+    "description": "motion video_url 说明"
   },
   "description.motionPrompt": {
-    "message": "Valinnainen. Voit sisältää positiivisia ja negatiivisia kuvastoja, jotka auttavat luomaan vaikutusta.",
-    "description": "motion prompt -kuvaus"
+    "message": "Valinnainen. Sisältää positiivisia ja negatiivisia kuvauksia tuloksen tukemiseksi",
+    "description": "motion prompt 说明"
   },
   "description.characterOrientation": {
-    "message": "Valitessasi 'Seuraa videota', monimutkaiset liikkeet toimivat paremmin; valitessasi 'Seuraa kuvaa', henkilön suunta vastaa viitettä, ja kameran liike toimii paremmin.",
-    "description": "character_orientation -kuvaus"
+    "message": "Valitse 'Seuraa videota' monimutkaisiin liikkeisiin; 'Seuraa kuvaa' säilyttää hahmon suunnan ja kameraliikkeet paremmin",
+    "description": "character_orientation 说明"
   },
   "description.motionMode": {
-    "message": "std suorituskyky etusijalla, pro kuvanlaatu etusijalla",
-    "description": "motion mode -kuvaus"
+    "message": "std = suorituskyky edellä, pro = laatu edellä",
+    "description": "motion mode 说明"
   },
   "description.keepOriginalSound": {
-    "message": "Kun tämä on päällä, alkuperäinen ääni säilytetään viitevideosta; kun se on pois päältä, tuotetussa videossa ei ole alkuperäistä ääntä.",
-    "description": "keep_original_sound -kuvaus"
+    "message": "Päällä: säilytä videon alkuperäinen ääni; Pois: videossa ei alkuperäistä ääntä",
+    "description": "keep_original_sound 说明"
   },
   "placeholder.motionPrompt": {
-    "message": "Esimerkiksi: henkilö hyppää. Valinnainen.",
-    "description": "motion prompt -paikkamerkki"
+    "message": "Esim.: Henkilö tanssii. Valinnainen.",
+    "description": "motion prompt 占位符"
   },
   "button.generateMotion": {
-    "message": "Luo liikevideo",
-    "description": "Liikeohjauksen luontipainike"
+    "message": "Luo liikeohjausvideo",
+    "description": "Motion Control 生成按钮"
   },
   "message.motionMissingInputs": {
-    "message": "Lataa sekä henkilökuva että liikevideo",
-    "description": "Liikeohjauksen puuttuvista syötteistä ilmoittava viesti"
+    "message": "Lataa sekä hahmon kuva että liikereferenssivideo",
+    "description": "Motion Control 缺少输入时的提示"
   },
   "inspiration.title": {
-    "message": "Inspiraatio ja esiasetukset",
-    "description": "Inspiration-laatikon otsikko"
+    "message": "Inspiraatio & Presetit",
+    "description": "Inspiration 抽屉的标题"
   },
   "inspiration.openButton": {
     "message": "Inspiraatio",
-    "description": "Inspiration-laatikon avauspainike"
+    "description": "打开 Inspiration 抽屉的按钮"
   },
   "inspiration.removeChip": {
-    "message": "Poista tämä esiasetus",
-    "description": "Poista valitun esiasetuksen painike aria-label"
+    "message": "Poista preset",
+    "description": "移除提示词区中已选预设的按钮 aria-label"
   },
   "inspiration.hint": {
-    "message": "Napsauta fraasia lisätäksesi sen automaattisesti ohjeisiin; napsauta uudelleen poistaaksesi sen.",
-    "description": "Inspiration-laatikon yläosan käyttöohje"
+    "message": "Klikkaa lisätäksesi vihjeeseen; uudelleen klikkaamalla poistat.",
+    "description": "Inspiration 抽屉顶部的使用说明"
   },
   "inspiration.empty": {
-    "message": "Ei saatavilla olevia esiasetuksia",
-    "description": "Inspiration-laatikon tyhjät tila"
+    "message": "Ei saatavilla presetit",
+    "description": "Inspiration 抽屉空状态"
   },
   "inspiration.selectedSummary": {
-    "message": "Valittu {count} kohdetta",
-    "description": "Valittujen esiasetusten määrä"
+    "message": "Valittu {count}",
+    "description": "已选择的预设数量"
   },
   "inspiration.clearSelected": {
     "message": "Tyhjennä kaikki",
-    "description": "Poista kaikki valitut esiasetukset -painike"
+    "description": "清除所有已选预设的按钮"
   },
   "inspiration.group.cameraMovements": {
-    "message": "Kameran liikkeet",
-    "description": "Inspiration-ryhmä: Kameran liikkeet"
+    "message": "Kameraliike",
+    "description": "Inspiration 分组：镜头运动"
   },
   "inspiration.group.cameraSpeed": {
-    "message": "Liikenopeus",
-    "description": "Inspiration-ryhmä: Liikenopeus"
+    "message": "Liikkeen nopeus",
+    "description": "Inspiration 分组：运动速度"
   },
   "inspiration.group.shotType": {
-    "message": "Kameran kuvakulma",
-    "description": "Inspiration-ryhmä: Kuvakulma / näkökulma"
+    "message": "Kuvakulma",
+    "description": "Inspiration 分组：景别 / 视角"
   },
   "inspiration.group.light": {
-    "message": "Valo ja varjo",
-    "description": "Inspiration-ryhmä: Valo ja varjo"
+    "message": "Valo & varjo",
+    "description": "Inspiration 分组：光影"
   },
   "inspiration.group.frame": {
-    "message": "Kuva",
-    "description": "Inspiration-ryhmä: Kuva / sommittelu"
+    "message": "Kuvaus",
+    "description": "Inspiration 分组：画面 / 构图"
   },
   "inspiration.group.atmosphere": {
     "message": "Tunnelma",
-    "description": "Inspiration-ryhmä: Tunnelma / tyyli"
+    "description": "Inspiration 分组：氛围 / 风格"
   },
   "inspiration.chip.rotateAround": {
     "message": "Kamera kiertää kohteen ympäri",
@@ -132,23 +132,23 @@
     "description": ""
   },
   "inspiration.chip.handheld": {
-    "message": "Käsikamera",
+    "message": "Käsivaralla kuvaten",
     "description": ""
   },
   "inspiration.chip.zoomOut": {
-    "message": "Kamera zoomaa ulos",
+    "message": "Zoomaa ulospäin",
     "description": ""
   },
   "inspiration.chip.zoomIn": {
-    "message": "Kamera zoomaa sisään",
+    "message": "Zoomaa lähemmäs",
     "description": ""
   },
   "inspiration.chip.follow": {
-    "message": "Kamera seuraa kohteen liikettä",
+    "message": "Kamera seuraa kohdetta",
     "description": ""
   },
   "inspiration.chip.panRight": {
-    "message": "Kamera siirtyy oikealle",
+    "message": "Kameran panorointi oikealle",
     "description": ""
   },
   "inspiration.chip.tiltUp": {
@@ -160,19 +160,19 @@
     "description": ""
   },
   "inspiration.chip.orbit": {
-    "message": "Kamera kiertää kohteen ympäri",
+    "message": "Kamera kiertää ja lähestyy",
     "description": ""
   },
   "inspiration.chip.speedSlow": {
-    "message": "Kameran liike hidas",
+    "message": "Hidas kameraliike",
     "description": ""
   },
   "inspiration.chip.speedMedium": {
-    "message": "Kameran liike keskinopea",
+    "message": "Keskinopea liike",
     "description": ""
   },
   "inspiration.chip.speedFast": {
-    "message": "Kameran liike nopea",
+    "message": "Nopea kameraliike",
     "description": ""
   },
   "inspiration.chip.shotClose": {
@@ -184,7 +184,7 @@
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Kaukokuva",
+    "message": "Yleiskuva",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
@@ -192,7 +192,7 @@
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "Ylänkulma",
+    "message": "Yläkulma",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
@@ -200,15 +200,15 @@
     "description": ""
   },
   "inspiration.chip.shotFront": {
-    "message": "Etunäkymä",
+    "message": "Edestä",
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "Sivunäkymä",
+    "message": "Sivulta",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "Kasvokuva",
+    "message": "Lähikuva",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
@@ -240,11 +240,11 @@
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
-    "message": "Kaupungin yövalaistus",
+    "message": "Kaupunginvalot",
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
-    "message": "Rikkaat yksityiskohdat",
+    "message": "Runsaasti yksityiskohtia",
     "description": ""
   },
   "inspiration.chip.frameSimpleBg": {
@@ -252,11 +252,11 @@
     "description": ""
   },
   "inspiration.chip.atmosphereMysterious": {
-    "message": "Salaperäinen tunnelma",
+    "message": "Salaperäinen",
     "description": ""
   },
   "inspiration.chip.atmospherePeaceful": {
-    "message": "Rauhallinen tunnelma",
+    "message": "Rauhallinen",
     "description": ""
   },
   "inspiration.chip.atmosphereHeartwarming": {
@@ -272,67 +272,67 @@
     "description": ""
   },
   "name.taskId": {
-    "message": "Tehtävän ID",
-    "description": "Tehtävän ID"
+    "message": "Tehtävä-ID",
+    "description": "任务的 ID"
   },
   "name.type": {
     "message": "Tyyppi",
-    "description": "Kling-videon sisältötyyppi, kuten 'linkki', 'teksti' jne."
+    "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
   },
   "name.modeStd": {
-    "message": "Standardi (720p)",
-    "description": "Kling-videon standarditila (720p)"
+    "message": "Vakio (720p)",
+    "description": "Kling视频的标准模式（输出 720p）"
   },
   "name.modePro": {
-    "message": "Korkea laatu (1080p)",
-    "description": "Kling-videon korkean laadun tila (1080p)"
+    "message": "Laadukas (1080p)",
+    "description": "Kling视频的高品质模式（输出 1080p）"
   },
   "name.mode4k": {
     "message": "Natiivinen 4K",
-    "description": "Kling 4K -tila (vain v3 / v3-Omni tukee)"
+    "description": "Kling 4K 模式（仅 v3 / v3-Omni 支持）"
   },
   "name.cameraControl": {
     "message": "Kameran ohjaus",
-    "description": "Kameran ohjaustyyppi ja parametrit"
+    "description": "相机控制类型与参数"
   },
   "name.cameraTypeNone": {
     "message": "Ei käytössä",
-    "description": "Ei käytä kameran ohjausta"
+    "description": "不使用运镜控制"
   },
   "name.cameraTypeSimple": {
-    "message": "Mukautettu (6 ulottuvuutta)",
-    "description": "Käyttää mukautettuja kuuden ulottuvuuden parametreja"
+    "message": "Mukautettu (6D)",
+    "description": "使用自定义六维度参数"
   },
   "name.cameraTypeDownBack": {
     "message": "Alas ja taakse",
-    "description": "Esiasetettu kameran liike: alas ja taakse"
+    "description": "预设运镜：下移并后退"
   },
   "name.cameraTypeForwardUp": {
-    "message": "Eteenpäin ja ylös",
-    "description": "Esiasetettu kameran liike: eteenpäin ja ylös"
+    "message": "Eteen ja ylös",
+    "description": "预设运镜：向前并上移"
   },
   "name.cameraTypeLeftTurnForward": {
-    "message": "Vasemmalle kääntyminen ja eteenpäin",
-    "description": "Esiasetettu kameran liike: vasemmalle kääntyminen ja eteenpäin"
+    "message": "Vasemmalle ja eteen",
+    "description": "预设运镜：左转并前进"
   },
   "name.cameraTypeRightTurnForward": {
-    "message": "Oikealle kääntyminen ja eteenpäin",
-    "description": "Esiasetettu kameran liike: oikealle kääntyminen ja eteenpäin"
+    "message": "Oikealle ja eteen",
+    "description": "预设运镜：右转并前进"
   },
   "name.cc_horizontal": {
-    "message": "Vaakasuora liike",
+    "message": "Vaaka",
     "description": "camera_control.config.horizontal"
   },
   "name.cc_vertical": {
-    "message": "Pystysuora liike",
+    "message": "Pysty",
     "description": "camera_control.config.vertical"
   },
   "name.cc_pan": {
-    "message": "Vaakasuora pan (kääntö)",
+    "message": "Panorointi",
     "description": "camera_control.config.pan"
   },
   "name.cc_tilt": {
-    "message": "Pystysuora kallistus",
+    "message": "Kallistus",
     "description": "camera_control.config.tilt"
   },
   "name.cc_roll": {
@@ -344,152 +344,160 @@
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
-    "message": "Epäonnistuminen",
-    "description": "Tehtävän epäonnistumistila"
+    "message": "Epäonnistui",
+    "description": "任务的失败状态"
   },
   "name.failureReason": {
-    "message": "Epäonnistumisen syy",
-    "description": "Tehtävän epäonnistumisen syy"
+    "message": "Syytä",
+    "description": "任务失败的原因"
   },
   "name.status": {
     "message": "Tila",
-    "description": "Tehtävän tila"
+    "description": "任务的状态"
   },
   "name.traceId": {
-    "message": "Seuranta ID",
-    "description": "Tehtävän seuranta ID"
+    "message": "Seuranta-ID",
+    "description": "任务的追踪 ID"
   },
   "name.elapsed": {
     "message": "Kesto",
-    "description": "Tehtävän kesto (sekuntia)"
+    "description": "任务的耗时（秒）"
   },
   "name.createdAt": {
-    "message": "Luontiaika",
-    "description": "Kling-videon luontipäivämäärä ja -aika"
+    "message": "Luotu",
+    "description": "生成 Kling 视频的日期和时间"
   },
   "name.cfgScale": {
     "message": "Vapausaste",
-    "description": "Videon luomisen vapausasteparametri (0-1), suurempi arvo tarkoittaa läheisyyttä viittaukseen"
+    "description": "生成视频的自由度参数（0-1），值越大越贴近参考（英文建议：Freedom Level）"
   },
   "name.generateAudio": {
     "message": "Synkronoi ääni",
-    "description": "Synkronoidaanko ääni, tukee kling-v3, kling-v3-omni ja kling-v2-6 (pro-tila)"
+    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
   },
   "name.startImage": {
-    "message": "Ensimmäinen kehys",
-    "description": "Lomakkeen kenttäotsikko: ensimmäinen kehys (pitäisi olla lyhyt, jotta se ei peitä painiketta)"
+    "message": "Alku",
+    "description": "表单字段标签：首帧参考图（英文建议翻译为“First Frame”，保持简短避免遮挡按钮）"
   },
   "name.negativePrompt": {
-    "message": "Negatiivinen vihje",
-    "description": "Videon negatiivinen tekstivihje"
+    "message": "Vastaehdot",
+    "description": "生成视频的负向文本提示"
   },
   "name.endImage": {
-    "message": "Viimeinen kehys",
-    "description": "Lomakkeen kenttäotsikko: viimeinen kehys (pitäisi olla lyhyt, jotta se ei peitä painiketta)"
+    "message": "Loppu",
+    "description": "表单字段标签：尾帧参考图（英文建议翻译为“Last Frame”，保持简短避免遮挡按钮）"
   },
   "name.videoUrl": {
     "message": "Mukautettu video",
-    "description": "Mukautettu video"
+    "description": "自定义视频"
   },
   "name.prompt": {
-    "message": "Videovihje",
-    "description": "Sisältösyötteen vihje"
+    "message": "Video-kehote",
+    "description": "内容输入的提示"
   },
   "name.duration": {
-    "message": "Videon kesto",
-    "description": "Videon kesto"
+    "message": "Kesto",
+    "description": "视频的时长"
   },
   "name.ingredients": {
-    "message": "Monikuva-video",
-    "description": "Monikuva-video kytkin/otsikko (pitäisi olla lyhyt)"
+    "message": "Monikuvainen",
+    "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
   },
   "name.model": {
     "message": "Malliversio",
-    "description": "Malliversio, jota käytetään videon luomiseen"
+    "description": "要生成视频所采用的模型版本"
   },
   "name.ratio": {
     "message": "Videon suhde",
-    "description": "Videon suhde, jota käytetään videon luomiseen"
+    "description": "Valittava videon kuvasuhde videon luomiseksi"
   },
   "name.mode": {
     "message": "Videotila",
-    "description": "Videon luomiseen käytettävä tila"
+    "description": "Valittava tila videon luomiseksi"
   },
   "name.effect": {
-    "message": "Videotehoste",
-    "description": "Tyyliparametrin nimi, jota käytetään mallin eri versioiden tai tyylien välillä vaihtamiseen"
+    "message": "Tehoste",
+    "description": "Tyyliparametrin nimi, jolla vaihdetaan eri malliversioiden tai tyylien välillä"
   },
   "name.ingredientsModel": {
-    "message": "Ainesosamalli",
-    "description": "Videon luomiseen käytettävä malliversio"
+    "message": "Malliversio",
+    "description": "Valittava malliversio videon luomiseksi"
   },
   "name.klingBot": {
     "message": "Kling Bot",
     "description": "Kling-videogeneraattorin nimi"
   },
   "description.ingredients": {
-    "message": "Jos haluat ladata useita kuvia oman videon luomiseksi, avaa tämä painike.",
-    "description": "Parametrin 'ingredients' kuvaus"
+    "message": "Avaa tämä, jos haluat ladata useita kuvia oman videosi luomiseksi.",
+    "description": "'ingredients'-parametrin kuvaus"
   },
   "description.imageUrl": {
-    "message": "Monikuvatehtävässä on ladattava useita kuvia.",
-    "description": "Parametrin 'imageUrl' kuvaus"
+    "message": "Monikuvan videotehtävissä tulee ladata useita kuvia.",
+    "description": "'imageUrl'-parametrin kuvaus"
   },
   "description.prompt": {
-    "message": "Kling-videon luomiseen käytettävä kehotus",
-    "description": "Parametrin 'prompt' kuvaus"
+    "message": "Kling-videon luomiseen käytettävä kehoteteksti",
+    "description": "'prompt'-parametrin kuvaus"
   },
   "description.negativePrompt": {
-    "message": "Negatiivinen tekstikehotus, valinnainen, enintään 200 merkkiä",
-    "description": "Parametrin 'prompt' kuvaus"
+    "message": "Valinnainen negatiivinen kehoteteksti, enintään 200 merkkiä",
+    "description": "'prompt'-parametrin kuvaus"
   },
   "description.uploadStartImage": {
-    "message": "Lataa ensimmäinen kehyskuva viittauksena luomiseen, lopullinen video perustuu ensimmäiseen kehykseen",
-    "description": "Latausviittausparametrin kuvaus"
+    "message": "Lataa ensimmäinen kuva referenssiksi; video mukautuu ensimmäiseen kuvaan",
+    "description": "Latausreferenssin kuvaus"
   },
   "description.uploadEndImage": {
-    "message": "Lataa viimeinen kehyskuva viittauksena luomiseen, lopullinen video perustuu viimeiseen kehykseen",
-    "description": "Latausviittausparametrin kuvaus"
+    "message": "Lataa viimeinen kuva referenssiksi; video mukautuu viimeiseen kuvaan",
+    "description": "Latausreferenssin kuvaus"
   },
   "description.cfgScale": {
-    "message": "Videon luomisen vapausaste, valinnainen [0,1]. Suurempi arvo tarkoittaa vahvempaa korrelaatiota.",
-    "description": "Latausviittausparametrin kuvaus"
+    "message": "Videon vapausaste, valinnainen [0,1]. Suurempi arvo lisää sidonnaisuutta",
+    "description": "Latausreferenssin kuvaus"
   },
   "description.mode": {
-    "message": "std tarjoaa paremman suorituskyvyn, pro parempaa laatua; 4K tukee vain v3 / v3-Omni, eikä sitä voi käyttää yhdessä kameran ohjauksen kanssa",
-    "description": "Tilakentän yleiskuvaus"
+    "message": "std tarjoaa paremman suorituskyvyn, pro parempaa laatua; 4K vain v3/v3-Omni, ei yhteensopiva kameran liikkeen kanssa",
+    "description": "Kokonaiskuva tilakentästä"
   },
   "description.mode4kRequiresV3": {
-    "message": "Vain kling-v3 / kling-v3-omni tukee",
-    "description": "4K-vaihtoehdon poistamisen syy (mallin yhteensopimattomuus)"
+    "message": "Vain kling-v3 / kling-v3-omni tuettu",
+    "description": "4K-valinnan poissulkemisen syy (malli ei sovi)"
   },
   "description.mode4kIncompatibleCamera": {
-    "message": "Kameran ohjaus on käytössä, eikä sitä voi käyttää 4K:n kanssa",
-    "description": "4K-vaihtoehdon poistamisen syy (kameran ohjaus asetettu)"
+    "message": "Kameran liikeohjaus päällä, ei yhteensopiva 4K:n kanssa",
+    "description": "4K-valinnan poissulkemisen syy (kameran liike asetettu)"
   },
   "description.duration": {
-    "message": "Normaali malli tukee vain 5/10 sekuntia; v3 / v3-Omni tukee 3/5/8/10/12/15 sekuntia",
-    "description": "Keston kentän yleiskuvaus"
+    "message": "Tavallinen malli tukee 5/10 s; v3/v3-Omni tukee 3/5/8/10/12/15 s",
+    "description": "Kokonaiskuva kestokentästä"
   },
   "description.durationV3Only": {
-    "message": "Vain v3 / v3-Omni tukee",
-    "description": "Kesto-vaihtoehdon poistamisen syy"
+    "message": "Vain v3/v3-Omni tuettu",
+    "description": "Keston valinnan poissulkemisen syy"
   },
   "description.generateAudio": {
-    "message": "Syntetisoi äänitehosteet videon luomisen yhteydessä. Vain kling-v3 / kling-v3-omni / kling-v2-6 (pro-tila) tukee",
-    "description": "Äänitehostekytkimen kuvaus (tuettu)"
+    "message": "Luo ääni videoiden mukana. Vain kling-v3/v3-Omni/v2-6 (pro) tuettu",
+    "description": "Äänivalinnan selitys (tuettu)"
   },
   "description.generateAudioUnsupported": {
-    "message": "Nykyinen malli ei tue synkronoitua äänitehostetta, vain kling-v3 / kling-v3-omni / kling-v2-6 (pro-tila) on käytettävissä",
-    "description": "Äänitehostekytkimen kuvaus (poistettu käytöstä)"
+    "message": "Valittu malli ei tue ääntä, vain kling-v3/v3-Omni/v2-6 (pro) käytettävissä",
+    "description": "Äänivalinnan selitys (pois käytöstä)"
   },
   "description.cameraControl": {
-    "message": "Ohjaa kameran liikettä. Valitse 'Mukautettu' hienosäätääksesi kuudessa ulottuvuudessa, jokaiselle arvot [-1, 1]",
-    "description": "Kameran ohjauksen kuvaus"
+    "message": "Ohjaa kameran liikesuuntaa. Valitse 'Mukautettu' säätääksesi 6 ulottuvuuden arvoja [-1, 1]",
+    "description": "Kameran liikeohjauksen selitys"
   },
   "description.cameraControlDisabled4k": {
-    "message": "4K-tila on valittu, kameran ohjaus ei ole käytettävissä, vaihda std / pro-tilaan ja aktivoi sitten",
-    "description": "Kameran ohjauksen poistamisen syy"
+    "message": "4K-tila valittu, kameran liikeohjaus ei käytettävissä, vaihda std/pro ennen aktivointia",
+    "description": "Kameran liikeohjauksen poissulkemisen syy"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "Ensimmäisen kuvan referenssi ladattuna, kameran liikeohjaus ei käytettävissä, poista referenssi",
+    "description": "Kameran liikeohjauksen poissulkemisen syy (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Valittu malli/tila/kesto ei tue kameran liikettä, säädä asetukset ennen aktivointia",
+    "description": "Kameran liikeohjauksen poissulkemisen syy (malli ei tue)"
   },
   "status.pending": {
     "message": "Odottaa",
@@ -497,35 +505,35 @@
   },
   "status.processing": {
     "message": "Käsitellään",
-    "description": "Tehtävän odotustila"
+    "description": "Tehtävän käsittelytila"
   },
   "placeholder.paddingNoise": {
     "message": "Valitse...",
-    "description": "Täyteäänien syötteen paikkamerkki"
+    "description": "Täyttömelun kentän paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintakentän paikkamerkki"
+    "description": "Pudotusvalikon paikkamerkki"
   },
   "placeholder.paddingLevel": {
     "message": "Valitse...",
-    "description": "Täyteasteen paikkamerkki"
+    "description": "Täyttötason kentän paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä videon tyylin kehotus, esim. moving",
-    "description": "Kehotuskentän paikkamerkki"
+    "message": "Syötä videon tyylikehotus, esim.: moving",
+    "description": "Kehotekentän paikkamerkki"
   },
   "placeholder.negativePrompt": {
-    "message": "Syötä videon tyylin negatiivinen kehotus, enintään 200 merkkiä",
-    "description": "Kehotuskentän paikkamerkki"
+    "message": "Syötä negatiivinen kehotus, enintään 200 merkkiä",
+    "description": "Kehotekentän paikkamerkki"
   },
   "placeholder.position": {
     "message": "Valitse...",
-    "description": "Sijainnin syötteen paikkamerkki"
+    "description": "Sijainnin kentän paikkamerkki"
   },
   "placeholder.aspectRatio": {
     "message": "Valitse...",
-    "description": "Leveys-korkeus-suhteen syötteen paikkamerkki"
+    "description": "Kuvasuhteen kentän paikkamerkki"
   },
   "placeholder.cameraType": {
     "message": "Ei käytössä",
@@ -533,166 +541,166 @@
   },
   "placeholder.preset": {
     "message": "Valitse...",
-    "description": "Esiasetuksen syötteen paikkamerkki"
+    "description": "Esiasetusten kentän paikkamerkki"
   },
   "placeholder.markerShape": {
     "message": "Valitse...",
-    "description": "Merkki muodon syötteen paikkamerkki"
+    "description": "Merkin muodon kentän paikkamerkki"
   },
   "placeholder.rotate": {
     "message": "Valitse...",
-    "description": "Kääntösyötteen paikkamerkki"
+    "description": "旋转输入的占位符"
   },
   "placeholder.subMarker": {
     "message": "Valitse...",
-    "description": "Alamerkin syötteen paikkamerkki"
+    "description": "子标记输入的占位符"
   },
   "button.precise": {
     "message": "Tarkka",
-    "description": "Kling-videon luomiseen käytettävä painiketeksti"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.creative": {
     "message": "Luova",
-    "description": "Kling-videon luomiseen käytettävä painiketeksti"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.generate": {
     "message": "Luo",
-    "description": "Kling-videon luomiseen käytettävä painiketeksti"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.extend": {
-    "message": "Laajenna videota",
-    "description": "Laajenna videota -painikkeen teksti"
+    "message": "Laajenna video",
+    "description": "扩展视频按钮文本"
   },
   "button.download": {
     "message": "Lataa video",
-    "description": "Lataa video -painikkeen teksti"
+    "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
     "message": "Lataa",
-    "description": "Kuvien lataamiseen tarkoitettu painikkeen teksti (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Image')"
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Lataa video",
-    "description": "Videon lataamiseen tarkoitettu painikkeen teksti"
+    "description": "上传视频的按钮文本"
   },
   "button.uploadReferences": {
     "message": "Lataa",
-    "description": "Painikkeen teksti, joka sallii käyttäjän ladata viittauksia"
+    "description": "按钮文本，允许用户上传参考"
   },
   "message.uploadReferencesExceed": {
-    "message": "Voit ladata enintään 1 kuva",
-    "description": "Virheilmoitus, kun ladattujen kuvien määrä ylittää rajan"
+    "message": "Voit ladata enintään 1 kuvan",
+    "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
     "message": "Kuva ladattu onnistuneesti",
-    "description": "Onnistuneesta kuvien lataamisesta ilmoittava viesti"
+    "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
-    "description": "Virheilmoitus, kun kuvan lataaminen epäonnistuu"
+    "message": "Kuvan lataus epäonnistui, yritä myöhemmin uudelleen",
+    "description": "图片上传失败时的错误消息"
   },
   "message.endImageRequiresStart": {
-    "message": "Lataa ensin aloituskuva ennen loppukuvan käyttöä",
-    "description": "Virheilmoitus, kun käyttäjä on ladannut vain loppukuvan ilman aloituskuvaa"
+    "message": "Lataa ensin aloituskuva ennen lopetuskuvaa",
+    "description": "用户只上传了尾帧没有首帧时的错误提示"
   },
   "message.endImageNotSupported": {
-    "message": "Loppukuvaa ei tueta nykyisellä mallilla/tilalla/kestolla, säädä asetuksia (yleiset vaatimukset: tila pro, kesto 5s).",
-    "description": "Ilmoitus, kun loppukuva ei ole tuettu nykyisellä mallilla"
+    "message": "Lopetuskuva ei ole tuettu nykyisessä mallissa/tilassa/kestossa, säädä asetuksia ensin (yleinen vaatimus: tila pro, kesto 5s).",
+    "description": "上传尾帧时当前模型不支持的提示"
   },
   "message.featureNotSupportedTitle": {
     "message": "Vahvistus tarvitaan",
-    "description": "Vahvistusikkunan otsikko, kun asetusten vaihtaminen johtaa nykyisten asetusten menettämiseen"
+    "description": "切换参数时会丢失现有设置的确认弹窗标题"
   },
   "message.featureNotSupportedBody": {
     "message": "Nykyinen valinta ei tue seuraavia käytössä olevia asetuksia: {fields}. Jatkaminen poistaa nämä asetukset.",
-    "description": "Ilmoitus, kun mallin/tilan/keston vaihtaminen johtaa asetusten menettämiseen, {fields} korvataan todellisilla kentän nimillä"
+    "description": "切换 model/mode/duration 后会丢失募集设置的提示文案，{fields} 会被占位符替换为实际字段名"
   },
   "message.featureRemovedNotice": {
-    "message": "Poistettu tuettomat asetukset: {fields}",
-    "description": "Toast-ilmoitus käyttäjän vahvistettua vaihdon"
+    "message": "Poistetut tuettomat asetukset: {fields}",
+    "description": "用户确认切换后的 toast 提醒"
   },
   "button.confirmContinue": {
-    "message": "Jatka vaihtamista",
-    "description": "Pääpainike ominaisuuden menettämisen vahvistusikkunassa"
+    "message": "Jatka vaihtoa",
+    "description": "feature 丢失确认弹窗的主按钮"
   },
   "button.cancelSwitch": {
     "message": "Peruuta",
-    "description": "Peruuta-painike ominaisuuden menettämisen vahvistusikkunassa"
+    "description": "feature 丢失确认弹窗的取消按钮"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävä...",
-    "description": "Viesti, kun piirustustehtävä alkaa"
+    "message": "Käynnistetään tehtävää...",
+    "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä käynnistetty onnistuneesti",
-    "description": "Onnistuneesta tehtävän käynnistämisestä ilmoittava viesti"
+    "message": "Generointitehtävä aloitettu onnistuneesti",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään",
-    "description": "Virheilmoitus, kun piirustustehtävän käynnistäminen epäonnistuu"
+    "message": "Tehtävän aloitus epäonnistui, ota yhteyttä ylläpitäjään",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
-    "description": "Viesti, kun pisteet on käytetty loppuun"
+    "message": "Pisteesi on käytetty, osta lisää pisteitä jatkaaksesi",
+    "description": "已用完时的消息"
   },
   "message.generating": {
-    "message": "Generoidaan...",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "message": "Luodaan...",
+    "description": "图像正在生成时的消息"
   },
   "message.downloadVideo": {
     "message": "Lataa tämä video",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "description": "图像正在生成时的消息"
   },
   "message.extendVideo": {
-    "message": "Jatka tämän videon generoimista",
-    "description": "Viesti, kun kuvaa generoidaan"
+    "message": "Jatka tämän videon luomista",
+    "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
-    "message": "Kuvan generoiminen epäonnistui",
-    "description": "Viesti, kun kuvan generoiminen epäonnistuu"
+    "message": "Kuvan luonti epäonnistui",
+    "description": "图像生成失败时的消息"
   },
   "message.uploadVideoExceed": {
-    "message": "Aloituskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun aloituskuvien määrä ylittää rajan"
+    "message": "Aloituskuvien määrä ylittää sallitun rajan",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Ladattavan tiedoston koko ei saa ylittää 10MB!",
-    "description": "Virheilmoitus, kun ladattavan tiedoston koko ylittää 10MB"
+    "message": "Tiedoston koko ei saa ylittää 10 Mt!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Ladattavan tiedoston on oltava MP4-muodossa!",
-    "description": "Virheilmoitus, kun ladattavan tiedoston muoto ei ole MP4"
+    "message": "Tiedoston on oltava MP4-muodossa!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartImageExceed": {
-    "message": "Aloituskuvien määrä ylittää rajan",
-    "description": "Virheilmoitus, kun aloituskuvien määrä ylittää rajan"
+    "message": "Aloituskuvien määrä ylittää sallitun rajan",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
-    "message": "Loppukuva määrän ylittää rajan",
-    "description": "Virheilmoitus, kun loppukuvien määrä ylittää rajan"
+    "message": "Lopetuskuvien määrä ylittää sallitun rajan",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
-    "message": "Aloituskuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun aloituskuvan lataaminen epäonnistuu"
+    "message": "Aloituskuvan lataus epäonnistui",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadVideoError": {
-    "message": "Videon lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun videon lataaminen epäonnistuu"
+    "message": "Videon lataus epäonnistui",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadEndImageError": {
-    "message": "Loppukuvan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun loppukuvan lataaminen epäonnistuu"
+    "message": "Lopetuskuvan lataus epäonnistui",
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.uploadDocumentsError": {
-    "message": "Asiakirjan lataaminen epäonnistui",
-    "description": "Virheilmoitus, kun asiakirjan lataaminen epäonnistuu"
+    "message": "Dokumentin lataus epäonnistui",
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
     "message": "Ei käytettävissä olevia toimintoja",
-    "description": "Viesti, kun käytettävissä ei ole toimintoja"
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Ei historiallisia tehtäviä, napsauta vasemmalla luodaksesi videon",
-    "description": "Viesti, kun tehtäviä ei ole"
+    "message": "Ei aiempia tehtäviä, napsauta vasemmalta luodaksesi video",
+    "description": "没有任务时的消息"
   }
 }

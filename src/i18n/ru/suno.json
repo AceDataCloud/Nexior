@@ -4,15 +4,15 @@
     "description": "Заголовок панели управления звуком"
   },
   "voice.manage": {
-    "message": "Управлять звуком",
-    "description": "Текст кнопки управления звуком"
+    "message": "Управлять звуками",
+    "description": "Текст кнопки управления звуками"
   },
   "voice.create": {
     "message": "Создать звук",
     "description": "Текст кнопки создания звука"
   },
   "voice.createTitle": {
-    "message": "Создать новый звук",
+    "message": "Создание нового звука",
     "description": "Заголовок диалогового окна создания звука"
   },
   "voice.name": {
@@ -109,11 +109,11 @@
   },
   "button.extend": {
     "message": "Продолжить генерацию",
-    "description": "Текст кнопки для продолжения генерации"
+    "description": "Текст кнопки продолжения генерации"
   },
   "button.download": {
     "message": "Скачать",
-    "description": "Текст кнопки для скачивания"
+    "description": "Текст кнопки скачивания"
   },
   "button.more": {
     "message": "Больше действий",
@@ -185,11 +185,11 @@
   },
   "button.download_wav": {
     "message": "Скачать WAV",
-    "description": "Текст кнопки для скачивания формата WAV"
+    "description": "Текст кнопки для скачивания в формате WAV"
   },
   "button.download_midi": {
     "message": "Скачать MIDI",
-    "description": "Текст кнопки для скачивания формата MIDI"
+    "description": "Текст кнопки для скачивания в формате MIDI"
   },
   "button.get_stems": {
     "message": "Извлечь треки",
@@ -272,8 +272,8 @@
     "description": "ID задачи"
   },
   "name.type": {
-    "message": "Кастомный режим",
-    "description": "Название кастомного режима"
+    "message": "Режим настройки",
+    "description": "Название режима настройки"
   },
   "name.prompt": {
     "message": "Описание песни",
@@ -325,7 +325,7 @@
   },
   "name.audioWeight": {
     "message": "Вес оригинала",
-    "description": "Вес оригинала при создании кавера"
+    "description": "Вес влияния оригинала при создании кавера"
   },
   "name.lyricPrompt": {
     "message": "Подсказка для текста",
@@ -349,7 +349,7 @@
   },
   "name.replaceSection": {
     "message": "Заменить фрагмент",
-    "description": "Заменить фрагмент песни"
+    "description": "Замена фрагмента песни"
   },
   "name.model": {
     "message": "Модель",
@@ -364,7 +364,7 @@
     "description": "Описание параметра 'prompt'"
   },
   "description.lyrics": {
-    "message": "Введите пользовательский текст, поддерживающий разметку [Verse], [Chorus], [Bridge] и т.д.",
+    "message": "Введите пользовательский текст, поддерживающий разметку [Куплет], [Припев], [Бридж] и т.д.",
     "description": "Описание параметра 'lyrics'"
   },
   "description.style": {
@@ -384,8 +384,8 @@
     "description": "Описание параметра загрузки референса"
   },
   "description.vocalGender": {
-    "message": "Выберите пол голоса для генерации (поддерживается только в версиях 4.5 и выше)",
-    "description": "Описание селектора пола голоса"
+    "message": "Выберите пол генерируемого голоса (только для версии v4.5 и выше)",
+    "description": "Описание селектора выбора пола голоса"
   },
   "description.weirdness": {
     "message": "Чем выше значение, тем более креативная и экспериментальная музыка (0-100)",
@@ -396,7 +396,7 @@
     "description": "Описание параметра влияния стиля"
   },
   "description.audioWeight": {
-    "message": "Вес оригинальной песни на результат при кавере (0-100)",
+    "message": "Вес оригинала на результат при кавере (0-100)",
     "description": "Описание параметра веса оригинала"
   },
   "description.lyricPrompt": {
@@ -408,8 +408,8 @@
     "description": "Описание функции замены фрагмента"
   },
   "status.pending": {
-    "message": "Ожидание",
-    "description": "Состояние ожидания задачи"
+    "message": "В ожидании",
+    "description": "Статус ожидания задачи"
   },
   "placeholder.prompt": {
     "message": "Опишите желаемую музыку, например: теплая народная песня о ностальгии по осени...",
@@ -425,14 +425,14 @@
   },
   "placeholder.extend.continue_at": {
     "message": "С какого момента начать расширение...",
-    "description": "Заполнитель для начала времени расширения"
+    "description": "Заполнитель для ввода времени начала расширения"
   },
   "placeholder.style": {
     "message": "Например: акустический поп, джаз, R&B, электронная музыка...",
     "description": "Заполнитель для ввода стиля"
   },
   "placeholder.styleNegative": {
-    "message": "Например: хэви-метал, крики...",
+    "message": "Например: хэви-метал, крик...",
     "description": "Заполнитель для ввода исключаемого стиля"
   },
   "placeholder.title": {
@@ -452,12 +452,12 @@
     "description": "Заполнитель для ввода подсказки текста"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Время начала (секунды)",
-    "description": "Заполнитель для времени начала замены фрагмента"
+    "message": "Время начала (сек)",
+    "description": "Заполнитель для ввода времени начала замены фрагмента"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Время окончания (секунды)",
-    "description": "Заполнитель для времени окончания замены фрагмента"
+    "message": "Время окончания (сек)",
+    "description": "Заполнитель для ввода времени окончания замены фрагмента"
   },
   "button.generate": {
     "message": "Сгенерировать",
@@ -556,8 +556,8 @@
     "description": "Сообщение при получении WAV файла"
   },
   "message.fetchWavFailed": {
-    "message": "Не удалось получить WAV файл",
-    "description": "Сообщение при неудаче получения WAV файла"
+    "message": "Не удалось получить WAV-файл",
+    "description": "Сообщение, отображаемое при неудачной попытке получить WAV-файл"
   },
   "message.fetchingMidi": {
     "message": "Получение MIDI файла...",
@@ -585,15 +585,15 @@
   },
   "button.upload_cover": {
     "message": "Загрузить кавер",
-    "description": "Текст кнопки для загрузки аудио и создания кавера"
+    "description": "Текст кнопки для загрузки аудио кавера"
   },
   "button.artist_consistency": {
-    "message": "Стиль исполнителя",
+    "message": "Согласованность стиля",
     "description": "Текст кнопки для генерации на основе стиля исполнителя"
   },
   "button.artist_consistency_vox": {
-    "message": "Стиль вокала",
-    "description": "Текст кнопки для генерации на основе стиля вокала исполнителя"
+    "message": "Согласованность вокала",
+    "description": "Текст кнопки для генерации на основе вокального стиля исполнителя"
   },
   "button.underpainting": {
     "message": "Добавить аккомпанемент",
@@ -720,11 +720,11 @@
     "description": "Описание модели v5.5"
   },
   "model.v5desc": {
-    "message": "Настоящий вокал · Высококачественный аудио",
+    "message": "Настоящий вокал · Высококачественный звук",
     "description": "Описание модели v5"
   },
   "model.v45plusdesc": {
-    "message": "Расширенный метод создания",
+    "message": "Расширенные методы создания",
     "description": "Описание модели v4.5+"
   },
   "model.v45desc": {
@@ -736,184 +736,200 @@
     "description": "Описание модели v4"
   },
   "model.v35desc": {
-    "message": "Основная структура песни",
+    "message": "Базовая структура песни",
     "description": "Описание модели v3.5"
   },
   "model.v3desc": {
-    "message": "Классика",
-    "description": "Описание модели v3"
+    "message": "Классический",
+    "description": "v3 模型描述"
   },
   "button.undo": {
     "message": "Отменить",
-    "description": "Подсказка для кнопки отмены"
+    "description": "撤销按钮提示"
   },
   "button.clear_lyrics": {
     "message": "Очистить текст",
-    "description": "Подсказка для кнопки очистки текста"
+    "description": "清空歌词按钮提示"
   },
   "button.expand_lyrics": {
-    "message": "Развернуть редактирование",
-    "description": "Подсказка для кнопки развертывания текста на полный экран"
+    "message": "Развернуть",
+    "description": "展开歌词全屏编辑按钮提示"
   },
   "button.enhance_lyrics": {
     "message": "Улучшить",
-    "description": "Кнопка для улучшения текста"
+    "description": "增强歌词按钮"
   },
   "button.clear_all": {
-    "message": "Очистить все",
-    "description": "Кнопка для одновременной очистки всех форм"
+    "message": "Очистить всё",
+    "description": "一键清空所有表单"
   },
   "placeholder.enhanceLyrics": {
-    "message": "Введите команду для изменения, например: сделайте текст более веселым...",
-    "description": "Заполнитель для ввода улучшения текста"
+    "message": "Введите инструкцию, например: сделать текст веселее...",
+    "description": "歌词增强输入占位符"
+  },
+  "placeholder.lyricsTheme": {
+    "message": "Например: спокойная народная песня о осенней тоске",
+    "description": "AI 生成歌词主题输入占位符"
+  },
+  "message.lyricsThemePromptTitle": {
+    "message": "Создание текста AI",
+    "description": "AI 生成歌词输入弹窗标题"
+  },
+  "message.lyricsThemePromptMessage": {
+    "message": "Опишите тему или историю песни, и AI сгенерирует текст",
+    "description": "AI 生成歌词输入弹窗的说明文本"
+  },
+  "message.lyricsThemeRequired": {
+    "message": "Сначала опишите тему песни",
+    "description": "主题输入为空时的校验提示"
   },
   "message.enhancingLyrics": {
     "message": "Улучшение текста...",
-    "description": "Сообщение во время улучшения текста"
+    "description": "增强歌词时的消息"
   },
   "message.enhanceLyricsSuccess": {
     "message": "Текст успешно улучшен",
-    "description": "Сообщение при успешном улучшении текста"
+    "description": "增强歌词成功时的消息"
   },
   "message.enhanceLyricsFailed": {
     "message": "Не удалось улучшить текст",
-    "description": "Сообщение при неудачном улучшении текста"
+    "description": "增强歌词失败时的消息"
   },
   "placeholder.searchSongs": {
-    "message": "Поиск песен...",
-    "description": "Заполнитель для ввода поиска песен"
+    "message": "Поиск песни...",
+    "description": "歌曲搜索输入的占位符"
   },
   "sort.newest": {
-    "message": "Новейшие",
-    "description": "Сортировка по новизне"
+    "message": "Новые",
+    "description": "按最新排序"
   },
   "sort.oldest": {
-    "message": "Старейшие",
-    "description": "Сортировка по старизне"
+    "message": "Старые",
+    "description": "按最旧排序"
   },
   "filter.title": {
     "message": "Фильтр",
-    "description": "Кнопка фильтрации"
+    "description": "筛选按钮"
   },
   "filter.type": {
     "message": "Тип",
-    "description": "Фильтрация по категории: вокал/инструментальная музыка"
+    "description": "筛选分区：人声/纯音乐"
   },
   "filter.typeAll": {
     "message": "Все",
-    "description": "Тип: все"
+    "description": "类型：全部"
   },
   "filter.typeVocal": {
     "message": "Вокал",
-    "description": "Тип: с вокалом"
+    "description": "类型：含人声"
   },
   "filter.typeInstrumental": {
-    "message": "Инструментальная",
-    "description": "Тип: инструментальная музыка"
+    "message": "Инструментал",
+    "description": "类型：纯音乐"
   },
   "filter.duration": {
     "message": "Длительность",
-    "description": "Фильтрация по длительности песни"
+    "description": "筛选分区：歌曲时长"
   },
   "filter.durationAll": {
-    "message": "Все",
-    "description": "Длительность: не ограничено"
+    "message": "Любая",
+    "description": "时长：不限"
   },
   "filter.durationShort": {
-    "message": "< 1 минута",
-    "description": "Длительность: менее 1 минуты"
+    "message": "< 1 мин",
+    "description": "时长：小于 1 分钟"
   },
   "filter.durationMedium": {
-    "message": "1-3 минуты",
-    "description": "Длительность: от 1 до 3 минут"
+    "message": "1-3 мин",
+    "description": "时长：1 到 3 分钟"
   },
   "filter.durationLong": {
-    "message": "> 3 минуты",
-    "description": "Длительность: более 3 минут"
+    "message": "> 3 мин",
+    "description": "时长：大于 3 分钟"
   },
   "filter.video": {
     "message": "Видео",
-    "description": "Фильтрация по наличию видео"
+    "description": "筛选分区：是否含视频"
   },
   "filter.videoAll": {
     "message": "Все",
-    "description": "Видео: не ограничено"
+    "description": "视频：不限"
   },
   "filter.videoWith": {
     "message": "С видео",
-    "description": "Видео: только с видео"
+    "description": "视频：仅含视频"
   },
   "filter.videoWithout": {
     "message": "Только аудио",
-    "description": "Видео: только аудио"
+    "description": "视频：仅音频"
   },
   "filter.model": {
     "message": "Модель",
-    "description": "Фильтрация по AI модели"
+    "description": "筛选分区：AI 模型"
   },
   "filter.modelAll": {
     "message": "Все модели",
-    "description": "Модель: не ограничено"
+    "description": "模型：不限"
   },
   "filter.reset": {
-    "message": "Сбросить",
-    "description": "Сброс всех фильтров"
+    "message": "Сброс",
+    "description": "重置所有筛选"
   },
   "button.delete": {
     "message": "Удалить",
-    "description": "Текст кнопки для удаления песни"
+    "description": "删除歌曲的按钮文本"
   },
   "button.editTitle": {
-    "message": "Редактировать заголовок",
-    "description": "Текст кнопки для редактирования заголовка песни"
+    "message": "Редактировать",
+    "description": "编辑歌曲标题的按钮文本"
   },
   "message.noSearchResults": {
     "message": "Песни не найдены",
-    "description": "Сообщение при отсутствии результатов поиска"
+    "description": "搜索无结果时的消息"
   },
   "message.noFilterResults": {
-    "message": "Нет песен, соответствующих фильтрам",
-    "description": "Сообщение при отсутствии результатов фильтрации"
+    "message": "Нет песен по фильтру",
+    "description": "筛选无结果时的消息"
   },
   "message.confirmDelete": {
-    "message": "Вы уверены, что хотите удалить эту песню? Это действие нельзя отменить.",
-    "description": "Сообщение подтверждения удаления песни"
+    "message": "Удалить эту песню? Действие необратимо.",
+    "description": "删除歌曲的确认消息"
   },
   "message.deleteSuccess": {
     "message": "Песня удалена",
-    "description": "Сообщение при успешном удалении песни"
+    "description": "歌曲删除成功时的消息"
   },
   "message.deleteFailed": {
     "message": "Не удалось удалить песню",
-    "description": "Сообщение при неудачном удалении песни"
+    "description": "歌曲删除失败时的消息"
   },
   "name.generating": {
     "message": "Генерация",
-    "description": "Статус генерации песни"
+    "description": "歌曲正在生成的状态标签"
   },
   "button.adjust_speed": {
-    "message": "Настроить скорость",
-    "description": "Текст кнопки для настройки скорости воспроизведения песни"
+    "message": "Скорость",
+    "description": "调整歌曲播放速度的按钮文本"
   },
   "button.reuse_prompt": {
-    "message": "Повторное использование подсказки",
-    "description": "Текст кнопки для повторного использования существующей подсказки"
+    "message": "Использовать подсказку",
+    "description": "复用已有任务提示词的按钮文本"
   },
   "name.adjustSpeed": {
     "message": "Скорость",
-    "description": "Метка для селектора скорости"
+    "description": "速度选择器的标签"
   },
   "description.adjustSpeed": {
-    "message": "Перегенерировать песню с разной скоростью воспроизведения (от 0.5 до 2 раз)",
-    "description": "Описание функции настройки скорости"
+    "message": "Сгенерировать песню с другой скоростью (0.5x – 2x)",
+    "description": "调整速度功能的描述"
   },
   "message.reusePromptSuccess": {
-    "message": "Подсказка повторно использована, можно изменить и снова сгенерировать",
-    "description": "Сообщение при успешном повторном использовании подсказки"
+    "message": "Подсказка применена, можно изменить и сгенерировать снова",
+    "description": "复用提示词成功后的提示信息"
   },
   "message.reusePromptEmpty": {
-    "message": "Нет доступных данных для повторного использования подсказки",
-    "description": "Сообщение, когда нет подсказок для повторного использования"
+    "message": "Нет доступных данных для повторного использования подсказок",
+    "description": "Сообщение, когда нет подсказок для повторного использования в задаче"
   },
   "name.lyricsMode": {
     "message": "Режим текста",

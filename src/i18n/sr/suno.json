@@ -93,7 +93,7 @@
   },
   "voice.delete": {
     "message": "Obriši zvuk",
-    "description": "Naslov za potvrdu brisanja zvuka"
+    "description": "Potvrda za brisanje zvuka"
   },
   "voice.confirmDelete": {
     "message": "Da li ste sigurni da želite da obrišete ovaj zvuk? Ova akcija se ne može poništiti.",
@@ -108,7 +108,7 @@
     "description": "Poruka o neuspešnom brisanju zvuka"
   },
   "button.extend": {
-    "message": "Nastavi generisanje",
+    "message": "Nastavi sa generisanjem",
     "description": "Tekst dugmeta za nastavak generisanja"
   },
   "button.download": {
@@ -156,8 +156,8 @@
     "description": "Oznaka za snimanje audio putem mikrofona"
   },
   "description.dropAudioHere": {
-    "message": "Prevucite audio ovde ili kliknite za otpremu",
-    "description": "Tekst u oblasti za prevlačenje audio"
+    "message": "Prevucite audio ovde ili kliknite za otpremanje",
+    "description": "Poruka u oblasti za prevlačenje audio"
   },
   "description.audioFormats": {
     "message": "Podržani formati: MP3, WAV, M4A",
@@ -185,11 +185,11 @@
   },
   "button.download_wav": {
     "message": "Preuzmi WAV bez gubitaka",
-    "description": "Tekst dugmeta za preuzimanje WAV bez gubitaka"
+    "description": "Tekst dugmeta za preuzimanje WAV formata bez gubitaka"
   },
   "button.download_midi": {
     "message": "Preuzmi MIDI",
-    "description": "Tekst dugmeta za preuzimanje MIDI formata"
+    "description": "Tekst dugmeta za preuzimanje u MIDI formatu"
   },
   "button.get_stems": {
     "message": "Izvuci delove",
@@ -209,7 +209,7 @@
   },
   "button.remaster": {
     "message": "Remaster",
-    "description": "Tekst dugmeta za remastering zvučnog zapisa"
+    "description": "Tekst dugmeta za poboljšanje kvaliteta zvuka"
   },
   "button.replace_section": {
     "message": "Zameni deo",
@@ -217,19 +217,19 @@
   },
   "button.mashup": {
     "message": "Mashup",
-    "description": "Tekst dugmeta za pravljenje mashup-a"
+    "description": "Tekst dugmeta za mešanje više pesama"
   },
   "button.generate_lyrics": {
-    "message": "AI generiši tekst",
-    "description": "Tekst dugmeta za automatsko generisanje teksta pesme pomoću AI"
+    "message": "Generiši tekst",
+    "description": "Tekst dugmeta za automatsko generisanje teksta"
   },
   "button.optimize_style": {
     "message": "Optimizuj stil",
-    "description": "Tekst dugmeta za optimizaciju stila pomoću AI"
+    "description": "Tekst dugmeta za optimizaciju stila uz pomoć AI"
   },
   "button.all_stems": {
     "message": "Svi delovi",
-    "description": "Tekst dugmeta za izdvajanje svih audio zapisa"
+    "description": "Tekst dugmeta za izdvajanje svih audio tragova"
   },
   "model.model1": {
     "message": "v2",
@@ -240,7 +240,7 @@
     "description": "Model za generisanje muzike"
   },
   "name.instrumental": {
-    "message": "Instrumentalna muzika",
+    "message": "Instrumental",
     "description": "Generiše instrumentalnu muziku bez vokala"
   },
   "name.referenceAudios": {
@@ -317,7 +317,7 @@
   },
   "name.styleInfluence": {
     "message": "Uticaj stila",
-    "description": "Kontrola uticaja stila na generisani rezultat"
+    "description": "Kontrola uticaja stila na generisane rezultate"
   },
   "name.variationCategory": {
     "message": "Tip varijacije",
@@ -360,7 +360,7 @@
     "description": "Režim opisa pesme"
   },
   "description.prompt": {
-    "message": "Opisujte željeni muzički stil i temu",
+    "message": "Opišite željeni muzički stil i temu",
     "description": "Opis parametra 'prompt'"
   },
   "description.lyrics": {
@@ -368,12 +368,12 @@
     "description": "Opis parametra 'lyrics'"
   },
   "description.style": {
-    "message": "Opisujte muzički stil, kao što su akustični pop, džez, elektronska muzika",
+    "message": "Opišite muzički stil, kao što su akustični pop, džez, elektronska muzika",
     "description": "Opis parametra 'style'"
   },
   "description.styleNegative": {
-    "message": "Opisujte stilove koje ne želite, kao što su heavy metal, vikanje",
-    "description": "Opis parametra za isključivanje stila"
+    "message": "Opišite stilove koje ne želite, kao što su heavy metal, vikanje",
+    "description": "Opis parametra za isključivanje stilova"
   },
   "description.title": {
     "message": "Naslov pesme",
@@ -384,56 +384,56 @@
     "description": "Opis parametra za otpremanje referenci"
   },
   "description.vocalGender": {
-    "message": "Izaberite pol za generisanje ljudskog glasa (samo za verzije v4.5 i više)",
-    "description": "Opis selektora pola ljudskog glasa"
+    "message": "Izaberite pol generisanog glasa (samo za verziju 4.5 i novije)",
+    "description": "Opis selektora pola glasa"
   },
   "description.weirdness": {
-    "message": "Što je veća vrednost, muzika je kreativnija i eksperimentalnija (0-100)",
+    "message": "Što je vrednost veća, muzika je kreativnija i eksperimentalnija (0-100)",
     "description": "Opis parametra kreativnosti"
   },
   "description.styleInfluence": {
-    "message": "Što je veća vrednost, uticaj stilskih oznaka na generisani rezultat je veći (0-100)",
+    "message": "Što je vrednost veća, stil više utiče na rezultat (0-100)",
     "description": "Opis parametra uticaja stila"
   },
   "description.audioWeight": {
-    "message": "Težina uticaja originalne pesme na rezultat (0-100)",
+    "message": "Težina originalne pesme pri obradi (0-100)",
     "description": "Opis parametra težine originalne pesme"
   },
   "description.lyricPrompt": {
-    "message": "Unesite opis stihova, AI će automatski generisati stihove",
-    "description": "Opis za prompt stihova"
+    "message": "Unesite opis teksta, AI će ga automatski generisati",
+    "description": "Opis za unos teksta pesme"
   },
   "description.replaceSection": {
-    "message": "Zamenite sadržaj u određenom vremenskom periodu pesme",
-    "description": "Opis funkcije zamene segmenta"
+    "message": "Zameni deo pesme u odabranom vremenskom intervalu",
+    "description": "Opis funkcije zamene dela pesme"
   },
   "status.pending": {
     "message": "Na čekanju",
-    "description": "Status čekanja zadatka"
+    "description": "Status zadatka na čekanju"
   },
   "placeholder.prompt": {
-    "message": "Opisujte muziku koju želite, na primer: topla folk pesma o jesenjoj nostalgiji...",
+    "message": "Opis muzike koju želite, npr.: topla folk pesma o jesenjem sećanju...",
     "description": "Placeholder za unos opisa pesme"
   },
   "placeholder.lyrics": {
-    "message": "[Strofa]\nU ovoj tišini noći\nZvezde sijaju na nebu\n\n[Refren]\nPevaćemo zajedno\nDok ne svane dan...",
-    "description": "Placeholder za unos stihova"
+    "message": "[Strofa]\nU ovoj tihoj noći\nZvezde svetlucaju na nebu\n\n[Refren]\nPevaćemo zajedno\nDo jutra...",
+    "description": "Placeholder za unos teksta pesme"
   },
   "placeholder.extend.lyrics": {
-    "message": "Unesite stihove koje treba proširiti...",
-    "description": "Placeholder za unos proširenih stihova"
+    "message": "Unesite tekst koji želite proširiti...",
+    "description": "Placeholder za proširenje teksta"
   },
   "placeholder.extend.continue_at": {
-    "message": "Od koje sekunde da počnemo proširenje...",
-    "description": "Placeholder za početno vreme proširenja"
+    "message": "Proširi od sekunde...",
+    "description": "Placeholder za vreme početka proširenja"
   },
   "placeholder.style": {
-    "message": "Na primer: akustični pop, džez, R&B, elektronska muzika...",
+    "message": "npr.: acoustic pop, jazz, R&B, electronic...",
     "description": "Placeholder za unos stila"
   },
   "placeholder.styleNegative": {
-    "message": "Na primer: heavy metal, vikanje...",
-    "description": "Placeholder za unos isključenih stilova"
+    "message": "npr.: heavy metal, screaming...",
+    "description": "Placeholder za isključivanje stilova"
   },
   "placeholder.title": {
     "message": "Unesite naziv pesme...",
@@ -445,299 +445,299 @@
   },
   "placeholder.position": {
     "message": "Izaberite...",
-    "description": "Placeholder za unos pozicije"
+    "description": "Placeholder za izbor pozicije"
   },
   "placeholder.lyricPrompt": {
-    "message": "Opisujte temu stihova, AI će automatski generisati...",
-    "description": "Placeholder za unos prompta za stihove"
+    "message": "Opis teme teksta, AI će generisati...",
+    "description": "Placeholder za unos teksta pesme"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme zamene segmenta"
+    "message": "Početak (s)",
+    "description": "Placeholder za početak zamene dela pesme"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Krajnje vreme (sekunde)",
-    "description": "Placeholder za krajnje vreme zamene segmenta"
+    "message": "Kraj (s)",
+    "description": "Placeholder za kraj zamene dela pesme"
   },
   "button.generate": {
     "message": "Generiši",
     "description": "Tekst dugmeta za generisanje"
   },
   "gender.male": {
-    "message": "Muški glas",
-    "description": "Opcija za muški ljudski glas"
+    "message": "Muški",
+    "description": "Opcija muškog glasa"
   },
   "gender.female": {
-    "message": "Ženski glas",
-    "description": "Opcija za ženski ljudski glas"
+    "message": "Ženski",
+    "description": "Opcija ženskog glasa"
   },
   "gender.auto": {
     "message": "Automatski",
-    "description": "Automatski izbor pola ljudskog glasa"
+    "description": "Automatski izbor pola glasa"
   },
   "variation.high": {
-    "message": "Visoka varijanta",
-    "description": "Opcija za visoku raznolikost varijante"
+    "message": "Visoka varijacija",
+    "description": "Opcija visoke raznovrsnosti"
   },
   "variation.low": {
-    "message": "Niska varijanta",
-    "description": "Opcija za nisku raznolikost varijante"
+    "message": "Niska varijacija",
+    "description": "Opcija niske raznovrsnosti"
   },
   "lyricsMode.manual": {
-    "message": "Ručni",
-    "description": "Ručni unos stihova"
+    "message": "Ručno",
+    "description": "Ručno unošenje teksta"
   },
   "lyricsMode.auto": {
     "message": "Automatski",
-    "description": "AI automatski generiše stihove"
+    "description": "AI generisanje teksta"
   },
   "message.startingTask": {
-    "message": "Pokreće se zadatak...",
-    "description": "Poruka kada započinje zadatak generisanja muzike"
+    "message": "Pokretanje zadatka...",
+    "description": "Poruka prilikom početka generisanja muzike"
   },
   "message.startingUploadAudio": {
-    "message": "Učitavanje prilagođene muzike...",
-    "description": "Poruka kada započinje zadatak generisanja muzike"
+    "message": "Otpremanje prilagođene muzike...",
+    "description": "Poruka prilikom otpremanja muzike"
   },
   "message.uploadReferencesExceed": {
-    "message": "Prekoračen maksimalni broj učitanih muzika",
-    "description": "Poruka greške kada je prekoračen maksimalni broj učitanih muzika"
+    "message": "Prekoračen maksimalni broj otpremljenih pesama",
+    "description": "Greška kada je otpremljeno previše muzike"
   },
   "message.uploadReferencesError": {
-    "message": "Učitavanje muzike nije uspelo",
-    "description": "Poruka greške kada učitavanje muzike nije uspelo"
+    "message": "Greška pri otpremanju muzike",
+    "description": "Greška prilikom otpremanja muzike"
   },
   "message.startTaskSuccess": {
-    "message": "Uspešno pokrenut zadatak generisanja muzike",
-    "description": "Poruka uspeha kada je zadatak generisanja muzike uspešno pokrenut"
+    "message": "Zadatak generisanja muzike uspešno pokrenut",
+    "description": "Poruka o uspešnom pokretanju zadatka"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Uspešno učitana prilagođena muzika",
-    "description": "Poruka uspeha kada je prilagođena muzika uspešno učitana"
+    "message": "Prilagođena muzika uspešno otpremljena",
+    "description": "Poruka o uspešnom otpremanju muzike"
   },
   "message.startUploadAudioFailed": {
-    "message": "Učitavanje prilagođene muzike nije uspelo",
-    "description": "Poruka greške kada pokretanje zadatka generisanja muzike nije uspelo"
+    "message": "Greška pri otpremanju muzike",
+    "description": "Poruka o neuspehu otpremanja muzike"
   },
   "message.startTaskFailed": {
-    "message": "Pokretanje zadatka generisanja muzike nije uspelo",
-    "description": "Poruka greške kada pokretanje zadatka generisanja muzike nije uspelo"
+    "message": "Neuspešno pokretanje zadatka generisanja muzike",
+    "description": "Poruka o neuspehu pokretanja zadatka"
   },
   "message.getVideoUrlFailed": {
-    "message": "Nije uspelo dobijanje URL-a za muziku, pokušajte ponovo kasnije",
-    "description": "Poruka greške kada dobijanje video URL-a nije uspelo"
+    "message": "Neuspešno dobijanje video muzike, pokušajte kasnije",
+    "description": "Poruka o neuspehu preuzimanja videa"
   },
   "message.generatingLyrics": {
-    "message": "Generišu se stihovi...",
-    "description": "Poruka kada se generišu stihovi"
+    "message": "Generisanje teksta...",
+    "description": "Poruka tokom generisanja teksta"
   },
   "message.generateLyricsSuccess": {
-    "message": "Stihovi su uspešno generisani",
-    "description": "Poruka kada su stihovi uspešno generisani"
+    "message": "Tekst uspešno generisan",
+    "description": "Poruka o uspešnom generisanju teksta"
   },
   "message.generateLyricsFailed": {
-    "message": "Generisanje stihova nije uspelo",
-    "description": "Poruka kada generisanje stihova nije uspelo"
+    "message": "Greška pri generisanju teksta",
+    "description": "Poruka o neuspehu generisanja teksta"
   },
   "message.optimizingStyle": {
-    "message": "Optimizuje se opis stila...",
-    "description": "Poruka kada se optimizuje stil"
+    "message": "Optimizacija stila...",
+    "description": "Poruka tokom optimizacije stila"
   },
   "message.optimizeStyleSuccess": {
-    "message": "Optimizacija stila je uspešna",
-    "description": "Poruka kada je optimizacija stila uspešna"
+    "message": "Stil uspešno optimizovan",
+    "description": "Poruka o uspešnoj optimizaciji stila"
   },
   "message.optimizeStyleFailed": {
-    "message": "Optimizacija stila nije uspela",
-    "description": "Poruka kada optimizacija stila nije uspela"
+    "message": "Greška pri optimizaciji stila",
+    "description": "Poruka o neuspehu optimizacije stila"
   },
   "message.fetchingWav": {
-    "message": "Učitavanje WAV datoteke...",
-    "description": "Poruka prilikom preuzimanja WAV datoteke"
+    "message": "Preuzimanje WAV fajla...",
+    "description": "Poruka tokom preuzimanja WAV fajla"
   },
   "message.fetchWavFailed": {
     "message": "Preuzimanje WAV datoteke nije uspelo",
-    "description": "Poruka kada preuzimanje WAV datoteke ne uspe"
+    "description": "Poruka kada preuzimanje WAV datoteke nije uspelo"
   },
   "message.fetchingMidi": {
-    "message": "Učitavanje MIDI datoteke...",
-    "description": "Poruka prilikom preuzimanja MIDI datoteke"
+    "message": "Učitavam MIDI fajl...",
+    "description": "获取MIDI文件时的消息"
   },
   "message.fetchMidiFailed": {
-    "message": "Preuzimanje MIDI datoteke nije uspelo",
-    "description": "Poruka kada preuzimanje MIDI datoteke ne uspe"
+    "message": "Neuspešno učitavanje MIDI fajla",
+    "description": "获取MIDI文件失败时的消息"
   },
   "message.generating": {
-    "message": "Generišem...",
-    "description": "Poruka dok se muzika generiše"
+    "message": "Generiše se...",
+    "description": "音乐正在生成时的消息"
   },
   "message.generateFailed": {
     "message": "Generisanje muzike nije uspelo",
-    "description": "Poruka kada generisanje muzike ne uspe"
+    "description": "音乐生成失败时的消息"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
-    "description": "Poruka kada nema dostupnih operacija"
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo generišite muziku u levom konfiguracionom panelu",
-    "description": "Poruka kada nema zadataka"
+    "message": "Nema istorijskih zadataka, kreirajte muziku u levom panelu",
+    "description": "没有任务时的消息"
   },
   "button.upload_cover": {
     "message": "Otpremi obradu",
-    "description": "Tekst dugmeta za otpremanje obrade nakon otpremanja audio zapisa"
+    "description": "上传音频后翻唱按钮文本"
   },
   "button.artist_consistency": {
-    "message": "Doslednost stila",
-    "description": "Tekst dugmeta za generisanje na osnovu stila izvođača"
+    "message": "Stil izvođača",
+    "description": "基于歌手风格生成按钮文本"
   },
   "button.artist_consistency_vox": {
-    "message": "Doslednost vokala",
-    "description": "Tekst dugmeta za generisanje na osnovu vokalnog stila izvođača"
+    "message": "Stil vokala",
+    "description": "基于歌手人声风格生成按钮文本"
   },
   "button.underpainting": {
     "message": "Dodaj pratnju",
-    "description": "Tekst dugmeta za dodavanje pratnje otpremljenoj pesmi"
+    "description": "为上传的歌曲添加伴奏按钮文本"
   },
   "button.overpainting": {
-    "message": "Dodaj vokale",
-    "description": "Tekst dugmeta za dodavanje vokala otpremljenoj pesmi"
+    "message": "Dodaj vokal",
+    "description": "为上传的歌曲添加人声按钮文本"
   },
   "button.samples": {
-    "message": "Dodaj uzorke",
-    "description": "Tekst dugmeta za dodavanje uzoraka otpremljenoj pesmi"
+    "message": "Dodaj semplove",
+    "description": "为上传的歌曲添加采样按钮文本"
   },
   "button.extract_vocals": {
-    "message": "Izvuci vokale",
-    "description": "Tekst dugmeta za izvlačenje vokala iz pesme"
+    "message": "Ekstraktuj vokale",
+    "description": "从歌曲中提取人声按钮文本"
   },
   "button.get_timing": {
-    "message": "Preuzmi tempo",
-    "description": "Tekst dugmeta za preuzimanje podataka o tempu pesme"
+    "message": "Dobij ritam",
+    "description": "获取歌曲节拍数据按钮文本"
   },
   "button.create_persona": {
     "message": "Kreiraj stil izvođača",
-    "description": "Tekst dugmeta za kreiranje stila izvođača"
+    "description": "创建歌手风格按钮文本"
   },
   "button.mashup_lyrics": {
-    "message": "Kombinuj tekstove",
-    "description": "Tekst dugmeta za kombinovanje dva dela teksta"
+    "message": "Spoji tekstove",
+    "description": "混搭两段歌词按钮文本"
   },
   "name.persona": {
     "message": "Stil izvođača",
-    "description": "Izbor stila izvođača"
+    "description": "歌手风格选择"
   },
   "name.overpaintingRange": {
     "message": "Opseg vokala",
-    "description": "Vremenski opseg za dodavanje vokala"
+    "description": "添加人声的时间范围"
   },
   "name.underpaintingRange": {
     "message": "Opseg pratnje",
-    "description": "Vremenski opseg za dodavanje pratnje"
+    "description": "添加伴奏的时间范围"
   },
   "name.samplesRange": {
-    "message": "Opseg uzoraka",
-    "description": "Vremenski opseg za dodavanje uzoraka"
+    "message": "Opseg semplova",
+    "description": "添加采样的时间范围"
   },
   "placeholder.overpaintingStart": {
-    "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme vokala"
+    "message": "Početak (s)",
+    "description": "人声开始时间的占位符"
   },
   "placeholder.overpaintingEnd": {
-    "message": "Završno vreme (sekunde)",
-    "description": "Placeholder za završno vreme vokala"
+    "message": "Kraj (s)",
+    "description": "人声结束时间的占位符"
   },
   "placeholder.underpaintingStart": {
-    "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme pratnje"
+    "message": "Početak (s)",
+    "description": "伴奏开始时间的占位符"
   },
   "placeholder.underpaintingEnd": {
-    "message": "Završno vreme (sekunde)",
-    "description": "Placeholder za završno vreme pratnje"
+    "message": "Kraj (s)",
+    "description": "伴奏结束时间的占位符"
   },
   "placeholder.samplesStart": {
-    "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme uzoraka"
+    "message": "Početak (s)",
+    "description": "采样开始时间的占位符"
   },
   "placeholder.samplesEnd": {
-    "message": "Završno vreme (sekunde)",
-    "description": "Placeholder za završno vreme uzoraka"
+    "message": "Kraj (s)",
+    "description": "采样结束时间的占位符"
   },
   "placeholder.personaId": {
     "message": "Unesite ID stila izvođača...",
-    "description": "Placeholder za unos ID stila izvođača"
+    "description": "歌手风格 ID 输入的占位符"
   },
   "description.persona": {
-    "message": "Koristite kreirani stil izvođača za generisanje pesama doslednog stila",
-    "description": "Opis funkcije stila izvođača"
+    "message": "Koristite kreirani stil izvođača za konzistentnu muziku",
+    "description": "歌手风格功能的描述"
   },
   "description.overpainting": {
-    "message": "Dodajte vokale na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcije dodavanja vokala"
+    "message": "Dodajte vokal u odabrani vremenski opseg",
+    "description": "添加人声功能的描述"
   },
   "description.underpainting": {
-    "message": "Dodajte pratnju na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcije dodavanja pratnje"
+    "message": "Dodajte pratnju u odabrani vremenski opseg",
+    "description": "添加伴奏功能的描述"
   },
   "description.samples": {
-    "message": "Dodajte uzorke na otpremljenu muziku u određenom vremenskom opsegu",
-    "description": "Opis funkcije dodavanja uzoraka"
+    "message": "Dodajte semplove u odabrani vremenski opseg",
+    "description": "添加采样功能的描述"
   },
   "message.fetchingTiming": {
-    "message": "Učitavanje podataka o tempu...",
-    "description": "Poruka prilikom preuzimanja podataka o tempu"
+    "message": "Učitavam ritam...",
+    "description": "获取节拍数据时的消息"
   },
   "message.fetchTimingFailed": {
-    "message": "Preuzimanje podataka o tempu nije uspelo",
-    "description": "Poruka kada preuzimanje podataka o tempu ne uspe"
+    "message": "Neuspešno dobijanje ritma",
+    "description": "获取节拍数据失败时的消息"
   },
   "message.fetchTimingSuccess": {
-    "message": "Podaci o tempu uspešno preuzeti",
-    "description": "Poruka kada su podaci o tempu uspešno preuzeti"
+    "message": "Ritam uspešno dobijen",
+    "description": "获取节拍数据成功时的消息"
   },
   "message.extractingVocals": {
-    "message": "Izvlačenje vokala...",
-    "description": "Poruka dok se vokali izvlače"
+    "message": "Ekstraktujem vokale...",
+    "description": "提取人声时的消息"
   },
   "message.extractVocalsFailed": {
-    "message": "Izvlačenje vokala nije uspelo",
-    "description": "Poruka kada izvlačenje vokala ne uspe"
+    "message": "Ekstraktovanje vokala nije uspelo",
+    "description": "提取人声失败时的消息"
   },
   "message.extractVocalsSuccess": {
-    "message": "Vokali uspešno izvučeni",
-    "description": "Poruka kada su vokali uspešno izvučeni"
+    "message": "Vokali uspešno ekstraktovani",
+    "description": "提取人声成功时的消息"
   },
   "mode.simple": {
     "message": "Jednostavno",
-    "description": "Oznaka za jednostavni način kreacije"
+    "description": "简单创作模式标签"
   },
   "mode.custom": {
     "message": "Prilagođeno",
-    "description": "Oznaka za prilagođeni način kreacije"
+    "description": "定制创作模式标签"
   },
   "model.v55desc": {
-    "message": "Glasovni identitet · Prilagođeni model",
-    "description": "Opis v5.5 modela"
+    "message": "Glasovni profil · Prilagođeni model",
+    "description": "v5.5 模型描述"
   },
   "model.v5desc": {
-    "message": "Pravi vokali · Visokokvalitetni audio",
-    "description": "Opis v5 modela"
+    "message": "Realističan vokal · Visok kvalitet zvuka",
+    "description": "v5 模型描述"
   },
   "model.v45plusdesc": {
-    "message": "Napredna metoda kreacije",
-    "description": "v4.5+ model opis"
+    "message": "Napredne metode kreiranja",
+    "description": "v4.5+ 模型描述"
   },
   "model.v45desc": {
-    "message": "Pametne ključne reči",
-    "description": "v4.5 model opis"
+    "message": "Pametni predlozi",
+    "description": "v4.5 模型描述"
   },
   "model.v4desc": {
     "message": "Poboljšan kvalitet zvuka",
-    "description": "v4 model opis"
+    "description": "v4 模型描述"
   },
   "model.v35desc": {
     "message": "Osnovna struktura pesme",
-    "description": "v3.5 model opis"
+    "description": "Opis modela v3.5"
   },
   "model.v3desc": {
     "message": "Klasično",
@@ -749,35 +749,51 @@
   },
   "button.clear_lyrics": {
     "message": "Obriši tekst",
-    "description": "Dugme za brisanje teksta"
+    "description": "Dugme za brisanje teksta pesme"
   },
   "button.expand_lyrics": {
-    "message": "Proširi uređivanje",
-    "description": "Dugme za proširenje uređivanja teksta na punu ekran"
+    "message": "Proširi",
+    "description": "Dugme za proširenje uređivanja teksta pesme"
   },
   "button.enhance_lyrics": {
-    "message": "Poboljšaj",
-    "description": "Dugme za poboljšanje teksta"
+    "message": "Unapredi",
+    "description": "Dugme za unapređenje teksta pesme"
   },
   "button.clear_all": {
     "message": "Obriši sve",
-    "description": "Dugme za brisanje svih podataka"
+    "description": "Dugme za brisanje svih polja u formi"
   },
   "placeholder.enhanceLyrics": {
-    "message": "Unesite uputstvo za izmene, npr: učinite tekst veselijim...",
-    "description": "Placeholder za unos poboljšanja teksta"
+    "message": "Unesite instrukciju za izmenu, npr.: učini pesmu veselijom...",
+    "description": "Placeholder za unos unapređenja teksta pesme"
+  },
+  "placeholder.lyricsTheme": {
+    "message": "Na primer: smirena pesma o jesenjoj čežnji",
+    "description": "Placeholder za unos teme AI generisane pesme"
+  },
+  "message.lyricsThemePromptTitle": {
+    "message": "AI generisanje teksta",
+    "description": "Naslov popupa za unos AI generisane pesme"
+  },
+  "message.lyricsThemePromptMessage": {
+    "message": "Opišite temu ili priču pesme, AI će na osnovu toga generisati tekst",
+    "description": "Objašnjenje u popup-u za generisanje pesme AI-jem"
+  },
+  "message.lyricsThemeRequired": {
+    "message": "Molimo prvo opišite temu pesme",
+    "description": "Poruka kada tema pesme nije uneta"
   },
   "message.enhancingLyrics": {
-    "message": "Poboljšavam tekst...",
-    "description": "Poruka tokom poboljšanja teksta"
+    "message": "Unapređujem tekst pesme...",
+    "description": "Poruka tokom unapređenja teksta pesme"
   },
   "message.enhanceLyricsSuccess": {
-    "message": "Tekst je uspešno poboljšan",
-    "description": "Poruka kada je poboljšanje teksta uspešno"
+    "message": "Tekst pesme uspešno unapređen",
+    "description": "Poruka kada je unapređenje teksta uspešno"
   },
   "message.enhanceLyricsFailed": {
-    "message": "Poboljšanje teksta nije uspelo",
-    "description": "Poruka kada poboljšanje teksta nije uspelo"
+    "message": "Neuspešno unapređenje teksta pesme",
+    "description": "Poruka kada unapređenje teksta nije uspelo"
   },
   "placeholder.searchSongs": {
     "message": "Pretraži pesme...",
@@ -785,55 +801,55 @@
   },
   "sort.newest": {
     "message": "Najnovije",
-    "description": "Sortiraj po najnovijem"
+    "description": "Sortiranje po najnovijem"
   },
   "sort.oldest": {
     "message": "Najstarije",
-    "description": "Sortiraj po najstarijem"
+    "description": "Sortiranje po najstarijem"
   },
   "filter.title": {
-    "message": "Filtriraj",
+    "message": "Filter",
     "description": "Dugme za filtriranje"
   },
   "filter.type": {
     "message": "Tip",
-    "description": "Filtriranje po tipu: vokal/čista muzika"
+    "description": "Filter po tipu: vokal/instrumental"
   },
   "filter.typeAll": {
     "message": "Sve",
-    "description": "Tip: sve"
+    "description": "Tip: svi"
   },
   "filter.typeVocal": {
     "message": "Vokal",
     "description": "Tip: sa vokalom"
   },
   "filter.typeInstrumental": {
-    "message": "Čista muzika",
-    "description": "Tip: čista muzika"
+    "message": "Instrumental",
+    "description": "Tip: instrumentalno"
   },
   "filter.duration": {
     "message": "Trajanje",
-    "description": "Filtriranje po trajanju pesme"
+    "description": "Filter po trajanju pesme"
   },
   "filter.durationAll": {
     "message": "Sve",
     "description": "Trajanje: neograničeno"
   },
   "filter.durationShort": {
-    "message": "< 1 minut",
+    "message": "< 1 min",
     "description": "Trajanje: manje od 1 minuta"
   },
   "filter.durationMedium": {
-    "message": "1-3 minuta",
-    "description": "Trajanje: od 1 do 3 minuta"
+    "message": "1-3 min",
+    "description": "Trajanje: 1 do 3 minuta"
   },
   "filter.durationLong": {
-    "message": "> 3 minuta",
+    "message": "> 3 min",
     "description": "Trajanje: više od 3 minuta"
   },
   "filter.video": {
     "message": "Video",
-    "description": "Filtriranje po prisustvu videa"
+    "description": "Filter po prisustvu videa"
   },
   "filter.videoAll": {
     "message": "Sve",
@@ -849,7 +865,7 @@
   },
   "filter.model": {
     "message": "Model",
-    "description": "Filtriranje po AI modelu"
+    "description": "Filter po AI modelu"
   },
   "filter.modelAll": {
     "message": "Svi modeli",
@@ -857,30 +873,30 @@
   },
   "filter.reset": {
     "message": "Resetuj",
-    "description": "Resetuj sve filtere"
+    "description": "Resetovanje svih filtera"
   },
   "button.delete": {
     "message": "Obriši",
     "description": "Dugme za brisanje pesme"
   },
   "button.editTitle": {
-    "message": "Uredi naslov",
-    "description": "Dugme za uređivanje naslova pesme"
+    "message": "Izmeni naslov",
+    "description": "Dugme za izmenu naslova pesme"
   },
   "message.noSearchResults": {
-    "message": "Nema pronađenih pesama",
-    "description": "Poruka kada nema rezultata pretrage"
+    "message": "Nema pesama",
+    "description": "Poruka kada pretraga ne daje rezultate"
   },
   "message.noFilterResults": {
-    "message": "Nema pesama koje odgovaraju filtrima",
-    "description": "Poruka kada nema rezultata filtriranja"
+    "message": "Nema pesama po izabranim filterima",
+    "description": "Poruka kada filter ne daje rezultate"
   },
   "message.confirmDelete": {
-    "message": "Da li ste sigurni da želite da obrišete ovu pesmu? Ova akcija se ne može poništiti.",
+    "message": "Da li ste sigurni da želite obrisati ovu pesmu? Ova radnja se ne može opozvati.",
     "description": "Poruka za potvrdu brisanja pesme"
   },
   "message.deleteSuccess": {
-    "message": "Pesma je obrisana",
+    "message": "Pesma obrisana",
     "description": "Poruka kada je pesma uspešno obrisana"
   },
   "message.deleteFailed": {
@@ -888,35 +904,35 @@
     "description": "Poruka kada brisanje pesme nije uspelo"
   },
   "name.generating": {
-    "message": "Generišem",
-    "description": "Oznaka statusa dok se pesma generiše"
+    "message": "Generiše se",
+    "description": "Status oznaka kada se pesma generiše"
   },
   "button.adjust_speed": {
     "message": "Podesi brzinu",
-    "description": "Dugme za podešavanje brzine reprodukcije pesme"
+    "description": "Dugme za podešavanje brzine pesme"
   },
   "button.reuse_prompt": {
-    "message": "Ponovo iskoristi ključne reči",
-    "description": "Dugme za ponovnu upotrebu postojećih ključnih reči"
+    "message": "Ponovo iskoristi instrukciju",
+    "description": "Dugme za ponovnu upotrebu prethodne instrukcije"
   },
   "name.adjustSpeed": {
     "message": "Brzina",
-    "description": "Oznaka za selektor brzine"
+    "description": "Oznaka za kontrolu brzine"
   },
   "description.adjustSpeed": {
-    "message": "Ponovo generišite pesmu različitom brzinom (0.5x do 2x)",
+    "message": "Ponovo generiši pesmu različitim brzinama (0,5x do 2x)",
     "description": "Opis funkcije podešavanja brzine"
   },
   "message.reusePromptSuccess": {
-    "message": "Ključne reči su ponovo iskorišćene, mogu se prilagoditi za ponovnu generaciju",
-    "description": "Poruka nakon uspešne ponovne upotrebe ključnih reči"
+    "message": "Instrukcija ponovo primenjena, možete je prilagoditi i generisati ponovo",
+    "description": "Poruka kada je instrukcija uspešno ponovo primenjena"
   },
   "message.reusePromptEmpty": {
-    "message": "Nema dostupnih ključnih reči za ponovnu upotrebu",
-    "description": "Poruka kada nema ključnih reči za ponovnu upotrebu"
+    "message": "Nema dostupnih podataka za ponovno korišćenje upita",
+    "description": "Poruka koja se prikazuje kada nema upita koji se mogu ponovo koristiti za zadatak"
   },
   "name.lyricsMode": {
-    "message": "Režim teksta",
-    "description": "Oznaka selektora režima teksta (ručno / automatski)"
+    "message": "Mod za tekst pesme",
+    "description": "Oznaka selektora moda teksta pesme (ručno / automatski)"
   }
 }

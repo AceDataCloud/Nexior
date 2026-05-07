@@ -64,7 +64,7 @@
     "description": "motion prompt 占位符"
   },
   "button.generateMotion": {
-    "message": "توليد فيديو التحكم في الحركة",
+    "message": "إنشاء فيديو تحكم الحركة",
     "description": "Motion Control 生成按钮"
   },
   "message.motionMissingInputs": {
@@ -124,7 +124,7 @@
     "description": "Inspiration 分组：氛围 / 风格"
   },
   "inspiration.chip.rotateAround": {
-    "message": "تدوير الكاميرا حول الموضوع",
+    "message": "الكاميرا تدور حول الموضوع",
     "description": ""
   },
   "inspiration.chip.stationary": {
@@ -152,15 +152,15 @@
     "description": ""
   },
   "inspiration.chip.tiltUp": {
-    "message": "إمالة الكاميرا لأعلى",
+    "message": "ميل الكاميرا لأعلى",
     "description": ""
   },
   "inspiration.chip.tiltDown": {
-    "message": "إمالة الكاميرا لأسفل",
+    "message": "ميل الكاميرا لأسفل",
     "description": ""
   },
   "inspiration.chip.orbit": {
-    "message": "دوران الكاميرا حول الموضوع",
+    "message": "الكاميرا تدور حول الموضوع",
     "description": ""
   },
   "inspiration.chip.speedSlow": {
@@ -236,7 +236,7 @@
     "description": ""
   },
   "inspiration.chip.lightCandle": {
-    "message": "ضوء الشمعة",
+    "message": "ضوء الشموع",
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
@@ -340,7 +340,7 @@
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
-    "message": "تكبير/تصغير (zoom)",
+    "message": "تكبير وتصغير (zoom)",
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
@@ -380,8 +380,8 @@
     "description": "تسمية حقل النموذج: صورة الإطار الأول"
   },
   "name.negativePrompt": {
-    "message": "نص التوجيه السلبي",
-    "description": "نص التوجيه السلبي لإنشاء الفيديو"
+    "message": "الكلمات السلبية",
+    "description": "نص التلميح السلبي لإنشاء الفيديو"
   },
   "name.endImage": {
     "message": "صورة الإطار الأخير",
@@ -392,8 +392,8 @@
     "description": "فيديو مخصص"
   },
   "name.prompt": {
-    "message": "نص الفيديو",
-    "description": "نص الإدخال للمحتوى"
+    "message": "تلميح الفيديو",
+    "description": "تلميح لإدخال المحتوى"
   },
   "name.duration": {
     "message": "مدة الفيديو",
@@ -401,11 +401,11 @@
   },
   "name.ingredients": {
     "message": "إنشاء فيديو متعدد الصور",
-    "description": "زر/تسمية إنشاء فيديو متعدد الصور"
+    "description": "زر/تبديل لإنشاء فيديو متعدد الصور"
   },
   "name.model": {
     "message": "إصدار النموذج",
-    "description": "إصدار النموذج المستخدم لإنشاء الفيديو"
+    "description": "نموذج الإصدار المستخدم لإنشاء الفيديو"
   },
   "name.ratio": {
     "message": "نسبة الفيديو",
@@ -440,23 +440,23 @@
     "description": "وصف المعلمة 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "نص تحذيري اختياري، لا يتجاوز 200 حرف",
+    "message": "نص سلبي اختياري، لا يتجاوز 200 حرف",
     "description": "وصف المعلمة 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "قم بتحميل صورة الإطار الأول كمرجع للتوليد، الفيديو النهائي سيستند إلى الإطار الأول",
-    "description": "وصف معلمة التحميل المرجعي"
+    "message": "قم بتحميل صورة الإطار الأول كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأول.",
+    "description": "وصف معلمة التحميل المرجعية"
   },
   "description.uploadEndImage": {
-    "message": "قم بتحميل صورة الإطار الأخير كمرجع للتوليد، الفيديو النهائي سيستند إلى الإطار الأخير",
-    "description": "وصف معلمة التحميل المرجعي"
+    "message": "قم بتحميل صورة الإطار الأخير كمرجع للتوليد، الفيديو النهائي سيعتمد على الإطار الأخير.",
+    "description": "وصف معلمة التحميل المرجعية"
   },
   "description.cfgScale": {
-    "message": "درجة حرية إنشاء الفيديو، اختياري [0,1]. كلما زادت القيمة، زادت الصلة.",
-    "description": "وصف معلمة التحميل المرجعي"
+    "message": "درجة حرية إنشاء الفيديو، اختياري [0,1]. كلما زادت القيمة، زادت العلاقة.",
+    "description": "وصف معلمة التحميل المرجعية"
   },
   "description.mode": {
-    "message": "وضع std أداء أعلى، pro جودة أفضل؛ 4K مدعوم فقط في v3 / v3-Omni، ولا يمكن استخدامه مع التحكم في الحركة في نفس الوقت",
+    "message": "وضع std أداء أعلى، pro جودة أفضل؛ 4K مدعوم فقط في v3 / v3-Omni، ولا يمكن استخدامه مع التحكم في الحركة في نفس الوقت.",
     "description": "وصف عام لحقل الوضع"
   },
   "description.mode4kRequiresV3": {
@@ -464,32 +464,40 @@
     "description": "سبب تعطيل خيار 4K (عدم توافق النموذج)"
   },
   "description.mode4kIncompatibleCamera": {
-    "message": "تم تفعيل التحكم في الحركة، لا يمكن استخدامه مع 4K في نفس الوقت",
-    "description": "سبب تعطيل خيار 4K (تم تعيين التحكم في الحركة)"
+    "message": "تم تفعيل التحكم في الحركة، ولا يمكن استخدامه مع 4K في نفس الوقت.",
+    "description": "سبب تعطيل خيار 4K (تم تعيين الحركة)"
   },
   "description.duration": {
-    "message": "النموذج العادي يدعم فقط 5/10 ثوانٍ؛ v3 / v3-Omni يدعم 3/5/8/10/12/15 ثانية",
+    "message": "النموذج العادي يدعم فقط 5/10 ثوانٍ؛ v3 / v3-Omni يدعم 3/5/8/10/12/15 ثانية.",
     "description": "وصف عام لحقل المدة"
   },
   "description.durationV3Only": {
     "message": "مدعوم فقط في v3 / v3-Omni",
-    "description": "سبب تعطيل خيار المدة"
+    "description": "سبب تعطيل خيارات المدة"
   },
   "description.generateAudio": {
-    "message": "توليد المؤثرات الصوتية أثناء إنشاء الفيديو. مدعوم فقط في kling-v3 / kling-v3-omni / kling-v2-6 (وضع pro)",
+    "message": "توليد مؤثرات صوتية أثناء إنشاء الفيديو. مدعوم فقط في kling-v3 / kling-v3-omni / kling-v2-6 (وضع pro).",
     "description": "وصف مفتاح الصوت (مدعوم)"
   },
   "description.generateAudioUnsupported": {
-    "message": "النموذج الحالي لا يدعم المؤثرات الصوتية المتزامنة، مدعوم فقط في kling-v3 / kling-v3-omni / kling-v2-6 (وضع pro)",
+    "message": "النموذج الحالي لا يدعم المؤثرات الصوتية المتزامنة، مدعوم فقط في kling-v3 / kling-v3-omni / kling-v2-6 (وضع pro).",
     "description": "وصف مفتاح الصوت (معطل)"
   },
   "description.cameraControl": {
-    "message": "التحكم في اتجاه حركة الكاميرا. اختيار 'مخصص' يسمح بتعديل دقيق في 6 أبعاد، كل قيمة تتراوح بين [-1, 1]",
+    "message": "التحكم في اتجاه حركة الكاميرا. اختيار 'مخصص' يسمح بتعديل دقيق في 6 أبعاد، كل قيمة [-1, 1].",
     "description": "وصف التحكم في الحركة"
   },
   "description.cameraControlDisabled4k": {
-    "message": "تم اختيار وضع 4K، التحكم في الحركة غير متاح، يرجى التبديل إلى std / pro ثم تفعيله",
+    "message": "تم اختيار وضع 4K، التحكم في الحركة غير متاح، يرجى التبديل إلى std / pro ثم تفعيله.",
     "description": "سبب تعطيل التحكم في الحركة"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "لا يدعم التحكم في الحركة بعد تحميل صورة الإطار الأول، يرجى إزالة صورة الإطار الأول ثم الاستخدام.",
+    "description": "سبب تعطيل التحكم في الحركة (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "النموذج/الوضع/المدة الحالية لا تدعم التحكم في الحركة، يرجى ضبط الإعدادات ثم تفعيله.",
+    "description": "سبب تعطيل التحكم في الحركة (النموذج غير مدعوم)"
   },
   "status.pending": {
     "message": "في الانتظار",
@@ -504,8 +512,8 @@
     "description": "نص العنصر النائب لإدخال ضوضاء التعبئة"
   },
   "placeholder.select": {
-    "message": "اختر",
-    "description": "نص العنصر النائب في حقل الاختيار"
+    "message": "يرجى الاختيار",
+    "description": "نص العنصر النائب في حقل الاختيار المنسدل"
   },
   "placeholder.paddingLevel": {
     "message": "يرجى الاختيار...",
@@ -516,7 +524,7 @@
     "description": "نص العنصر النائب في حقل الكلمات الدلالية"
   },
   "placeholder.negativePrompt": {
-    "message": "أدخل الكلمات الدلالية التحذيرية لنمط الفيديو المراد إنشاؤه، لا تتجاوز 200 حرف",
+    "message": "أدخل الكلمات الدلالية السلبية لنمط الفيديو المراد إنشاؤه، لا تتجاوز 200 حرف",
     "description": "نص العنصر النائب في حقل الكلمات الدلالية"
   },
   "placeholder.position": {
@@ -540,8 +548,8 @@
     "description": "نص العنصر النائب لإدخال شكل العلامة"
   },
   "placeholder.rotate": {
-    "message": "يرجى الاختيار...",
-    "description": "نص العنصر النائب لإدخال الدوران"
+    "message": "اختر...",
+    "description": "نص العنصر النائب لإدخال التدوير"
   },
   "placeholder.subMarker": {
     "message": "يرجى الاختيار...",
@@ -549,46 +557,46 @@
   },
   "button.precise": {
     "message": "دقيق",
-    "description": "نص الزر لإنشاء فيديو Kling"
+    "description": "نص زر لإنشاء فيديو Kling"
   },
   "button.creative": {
     "message": "إبداعي",
-    "description": "نص الزر لإنشاء فيديو Kling"
+    "description": "نص زر لإنشاء فيديو Kling"
   },
   "button.generate": {
     "message": "إنشاء",
-    "description": "نص الزر لإنشاء فيديو Kling"
+    "description": "نص زر لإنشاء فيديو Kling"
   },
   "button.extend": {
-    "message": "توسيع الفيديو",
-    "description": "نص زر توسيع الفيديو"
+    "message": "تمديد الفيديو",
+    "description": "نص زر لتمديد الفيديو"
   },
   "button.download": {
-    "message": "تحميل الفيديو",
-    "description": "نص زر تحميل الفيديو"
+    "message": "تنزيل الفيديو",
+    "description": "نص زر لتنزيل الفيديو"
   },
   "button.uploadImageUrl": {
     "message": "رفع",
-    "description": "نص زر رفع الصورة (يرجى تبسيط إلى 'رفع')"
+    "description": "نص زر لرفع الصورة (يرجى تبسيط إلى 'رفع')"
   },
   "button.uploadVideoUrl": {
     "message": "رفع الفيديو",
-    "description": "نص زر رفع الفيديو"
+    "description": "نص زر لرفع الفيديو"
   },
   "button.uploadReferences": {
     "message": "رفع",
     "description": "نص الزر الذي يسمح للمستخدم برفع المراجع"
   },
   "message.uploadReferencesExceed": {
-    "message": "يمكنك رفع صورة واحدة فقط",
-    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح"
+    "message": "يمكن رفع صورة واحدة كحد أقصى",
+    "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد المسموح به"
   },
   "message.uploadReferencesSuccess": {
     "message": "تم رفع الصورة بنجاح",
     "description": "رسالة نجاح عند رفع الصورة بنجاح"
   },
   "message.uploadReferencesError": {
-    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
+    "message": "فشل في رفع الصورة، يرجى المحاولة لاحقًا",
     "description": "رسالة خطأ عند فشل رفع الصورة"
   },
   "message.endImageRequiresStart": {
@@ -596,20 +604,20 @@
     "description": "رسالة خطأ عندما يرفع المستخدم صورة النهاية فقط دون صورة البداية"
   },
   "message.endImageNotSupported": {
-    "message": "صورة النهاية غير مدعومة من قبل النموذج/الوضع/المدة الحالية، يرجى تعديل الإعدادات (المتطلبات الشائعة: وضع pro، مدة 5 ثواني).",
+    "message": "صورة النهاية غير مدعومة من قبل النموذج/الوضع/المدة الحالية، يرجى تعديل الإعدادات (المتطلبات الشائعة: الوضع pro، المدة 5 ثواني).",
     "description": "رسالة عند عدم دعم النموذج الحالي لصورة النهاية المرفوعة"
   },
   "message.featureNotSupportedTitle": {
     "message": "تأكيد مطلوب",
-    "description": "عنوان نافذة التأكيد عند تغيير الإعدادات الحالية"
+    "description": "عنوان نافذة التأكيد عند فقدان الإعدادات الحالية عند تغيير المعلمات"
   },
   "message.featureNotSupportedBody": {
-    "message": "الاختيار الحالي لا يدعم الإعدادات المفعلة التالية: {fields}. الاستمرار سيؤدي إلى مسح هذه الإعدادات.",
-    "description": "نص التحذير عند فقدان الإعدادات بعد تغيير النموذج/الوضع/المدة، {fields} سيتم استبداله بأسماء الحقول الفعلية"
+    "message": "الإعدادات المفعلة التالية غير مدعومة: {fields}. الاستمرار سيؤدي إلى مسح هذه الإعدادات.",
+    "description": "نص الرسالة عند فقدان الإعدادات بعد تغيير النموذج/الوضع/المدة، {fields} سيتم استبداله بأسماء الحقول الفعلية"
   },
   "message.featureRemovedNotice": {
     "message": "تم مسح الإعدادات غير المدعومة: {fields}",
-    "description": "إشعار توست بعد تأكيد المستخدم للتغيير"
+    "description": "إشعار toast بعد تأكيد المستخدم للتغيير"
   },
   "button.confirmContinue": {
     "message": "استمرار التغيير",
@@ -624,11 +632,11 @@
     "description": "رسالة عند بدء مهمة الرسم"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة التوليد بنجاح",
+    "message": "تم بدء مهمة الإنشاء بنجاح",
     "description": "رسالة نجاح عند بدء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير",
+    "message": "فشل في بدء المهمة، يرجى الاتصال بالمسؤول",
     "description": "رسالة خطأ عند فشل بدء مهمة الرسم"
   },
   "message.usedUp": {
@@ -636,24 +644,24 @@
     "description": "رسالة عند نفاد النقاط"
   },
   "message.generating": {
-    "message": "جارٍ التوليد...",
-    "description": "رسالة عند توليد الصورة"
+    "message": "جارٍ الإنشاء...",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.downloadVideo": {
-    "message": "تحميل هذا الفيديو",
-    "description": "رسالة عند توليد الصورة"
+    "message": "تنزيل هذا الفيديو",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.extendVideo": {
-    "message": "استمرار توليد هذا الفيديو",
-    "description": "رسالة عند توليد الصورة"
+    "message": "استمرار إنشاء هذا الفيديو",
+    "description": "رسالة عند إنشاء الصورة"
   },
   "message.generateFailed": {
-    "message": "فشل توليد الصورة",
-    "description": "رسالة عند فشل توليد الصورة"
+    "message": "فشل في إنشاء الصورة",
+    "description": "رسالة عند فشل إنشاء الصورة"
   },
   "message.uploadVideoExceed": {
-    "message": "عدد صور البداية المرفوعة تجاوز الحد المسموح",
-    "description": "رسالة خطأ عند تجاوز عدد صور البداية المرفوعة للحد المسموح"
+    "message": "عدد صور البداية المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد صور البداية المرفوعة للحد المسموح به"
   },
   "message.uploadVideoSizeExceed": {
     "message": "يجب ألا يتجاوز حجم الملف المرفوع 10 ميغابايت!",
@@ -664,35 +672,35 @@
     "description": "رسالة خطأ عند عدم كون الملف المرفوع بتنسيق MP4!"
   },
   "message.uploadStartImageExceed": {
-    "message": "عدد صور البداية المرفوعة تجاوز الحد المسموح",
-    "description": "رسالة خطأ عند تجاوز عدد صور البداية المرفوعة للحد المسموح"
+    "message": "عدد صور البداية المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد صور البداية المرفوعة للحد المسموح به"
   },
   "message.uploadEndImageExceed": {
-    "message": "عدد صور النهاية المرفوعة تجاوز الحد المسموح",
-    "description": "رسالة خطأ عند تجاوز عدد صور النهاية المرفوعة للحد المسموح"
+    "message": "عدد صور النهاية المرفوعة يتجاوز الحد المسموح به",
+    "description": "رسالة خطأ عند تجاوز عدد صور النهاية المرفوعة للحد المسموح به"
   },
   "message.uploadStartImageError": {
-    "message": "فشل رفع صورة البداية",
+    "message": "فشل في رفع صورة البداية",
     "description": "رسالة خطأ عند فشل رفع صورة البداية"
   },
   "message.uploadVideoError": {
-    "message": "فشل رفع الفيديو",
+    "message": "فشل في رفع الفيديو",
     "description": "رسالة خطأ عند فشل رفع صورة البداية"
   },
   "message.uploadEndImageError": {
-    "message": "فشل رفع صورة النهاية",
+    "message": "فشل في رفع صورة النهاية",
     "description": "رسالة خطأ عند فشل رفع صورة النهاية"
   },
   "message.uploadDocumentsError": {
-    "message": "فشل رفع الوثائق",
-    "description": "رسالة خطأ عند فشل رفع الوثائق"
+    "message": "فشل في رفع المستندات",
+    "description": "رسالة خطأ عند فشل رفع المستندات"
   },
   "message.noOperations": {
     "message": "لا توجد عمليات متاحة",
     "description": "رسالة عند عدم وجود عمليات متاحة"
   },
   "message.noTasks": {
-    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لتوليد الفيديو",
+    "message": "لا توجد مهام تاريخية، يرجى النقر على الجهة اليسرى لإنشاء فيديو",
     "description": "رسالة عند عدم وجود مهام"
   }
 }

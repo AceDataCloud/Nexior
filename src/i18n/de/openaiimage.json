@@ -5,7 +5,7 @@
   },
   "name.task": {
     "message": "Aufgabentyp",
-    "description": "OpenAI Image Bildoperationstyp"
+    "description": "OpenAI Bildoperationstyp"
   },
   "name.generate": {
     "message": "Bild erstellen",
@@ -44,19 +44,67 @@
     "description": "Aufforderung zum Erstellen/Bearbeiten"
   },
   "name.openaiimageBot": {
-    "message": "OpenAI Image Bot",
-    "description": "Name des OpenAI Image Bots"
+    "message": "OpenAI Bild Bot",
+    "description": "Name des OpenAI Bildbots"
   },
   "name.size": {
     "message": "Größe",
     "description": "Ausgabebildgröße"
   },
   "description.size": {
-    "message": "Ausgabemaß für die Erstellung von Bildern, gängige Werte: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Ausgabebildgröße. Verschiedene Modelle unterstützen unterschiedliche Größen: gpt-image-1 / gpt-image-1.5 unterstützen nur 1024x1024, 1536x1024, 1024x1536; gpt-image-2 unterstützt auch 1792x1024, 1024x1792 sowie 2K/4K Voreinstellungen; gpt-image-2 kann benutzerdefinierte Größen aktivieren.",
     "description": "Größenbeschreibung"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (Basispreis)",
+    "description": "1K Größenkategorie, abgerechnet zum Basispreis"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Voreinstellung (1,5-facher Preis)",
+    "description": "2K Größenkategorie, abgerechnet zum 1,5-fachen Preis"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Voreinstellung (1,5-facher Preis)",
+    "description": "4K Größenkategorie, abgerechnet zum 1,5-fachen Preis"
+  },
+  "name.customSize": {
+    "message": "Benutzerdefinierte Größe",
+    "description": "Schalterlabel für benutzerdefinierte Größe"
+  },
+  "description.customSize": {
+    "message": "Nach Aktivierung können Breite und Höhe frei festgelegt werden (nur gpt-image-2 unterstützt). Muss ein Vielfaches von 16 sein, längste Seite ≤ 3840, Gesamtpixel ≤ 8.294.400. Nicht 1K Standardgrößen werden zum 1,5-fachen Preis abgerechnet.",
+    "description": "Beschreibung der benutzerdefinierten Größe"
+  },
+  "name.width": {
+    "message": "Breite",
+    "description": "Label für das Breiten-Eingabefeld"
+  },
+  "name.height": {
+    "message": "Höhe",
+    "description": "Label für das Höhen-Eingabefeld"
+  },
+  "error.customSizePositive": {
+    "message": "Breite und Höhe müssen positive ganze Zahlen sein",
+    "description": "Benutzerdefinierte Größe muss positive ganze Zahlen sein"
+  },
+  "error.customSizeMultiple": {
+    "message": "Breite und Höhe müssen Vielfache von {multiple} sein",
+    "description": "Benutzerdefinierte Größe muss Vielfache von 16 sein"
+  },
+  "error.customSizeMin": {
+    "message": "Breite und Höhe dürfen nicht kleiner als {min} sein",
+    "description": "Untergrenze der benutzerdefinierten Größe"
+  },
+  "error.customSizeMax": {
+    "message": "Längste Seite darf {max} nicht überschreiten",
+    "description": "Obergrenze der längsten Seite der benutzerdefinierten Größe"
+  },
+  "error.customSizePixels": {
+    "message": "Gesamtpixel dürfen {pixels} nicht überschreiten",
+    "description": "Obergrenze der Gesamtpixel der benutzerdefinierten Größe"
+  },
   "description.prompt": {
-    "message": "Aufforderung zum Erstellen oder Bearbeiten von Bildern",
+    "message": "Aufforderung zum Erstellen oder Bearbeiten eines Bildes",
     "description": "Beschreibung der Aufforderung"
   },
   "description.model": {
@@ -77,7 +125,7 @@
   },
   "placeholder.prompt": {
     "message": "Geben Sie die Aufforderung ein, z.B.: Wasserfarbenkätzchen auf dem Tisch",
-    "description": "Platzhalter für Aufforderung"
+    "description": "Platzhalter für die Aufforderung"
   },
   "button.generate": {
     "message": "Generieren",
@@ -85,7 +133,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Hochladen",
-    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch als 'Upload' vereinfachen, nicht 'Upload Images')"
+    "description": "Button zum Hochladen von Referenzbildern (bitte auf Englisch auf 'Upload' vereinfachen, nicht 'Upload Images')"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -113,18 +161,18 @@
   },
   "name.model": {
     "message": "Modell",
-    "description": "Auswahlfeld für OpenAI Bildmodell"
+    "description": "Label zur Auswahl des OpenAI Bildmodells"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Option für das Modell gpt-image-1"
+    "description": "Option für das gpt-image-1 Modell"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Option für das Modell gpt-image-1.5"
+    "description": "Option für das gpt-image-1.5 Modell"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Option für das Modell gpt-image-2"
+    "description": "Option für das gpt-image-2 Modell"
   }
 }

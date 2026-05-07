@@ -1,26 +1,26 @@
 {
   "name.taskId": {
-    "message": "Tehtävä ID",
+    "message": "Tehtävä-ID",
     "description": "Tehtävän ID"
   },
   "name.task": {
     "message": "Tehtävätyyppi",
-    "description": "SeeDream kuvaoperaation tyyppi"
+    "description": "SeeDream-kuvatoimintotyyppi"
   },
   "name.generate": {
     "message": "Luo kuva",
-    "description": "Toimintatyyppi: Luo kuva"
+    "description": "Toimintotyyppi: Luo kuva"
   },
   "name.edits": {
     "message": "Muokkaa kuvaa",
-    "description": "Toimintatyyppi: Muokkaa kuvaa"
+    "description": "Toimintotyyppi: Muokkaa kuvaa"
   },
   "name.imageUrls": {
-    "message": "Viittauskuvat",
-    "description": "Viittauskuvat muokkausta varten"
+    "message": "Viitekuvat",
+    "description": "Viitekuvat muokkausta varten"
   },
   "name.failure": {
-    "message": "Epätosi",
+    "message": "Epäonnistui",
     "description": "Tehtävä epäonnistui"
   },
   "name.failureReason": {
@@ -32,123 +32,187 @@
     "description": "Tehtävän tila"
   },
   "name.traceId": {
-    "message": "Seuranta ID",
-    "description": "Seuranta ID"
+    "message": "Seuranta-ID",
+    "description": "Seuranta-ID"
   },
   "name.elapsed": {
     "message": "Kesto",
     "description": "Tehtävän kesto (sekunteina)"
   },
   "name.prompt": {
-    "message": "Kuvaprompt",
-    "description": "Luonnin/muokkauksen promptit"
+    "message": "Kuvakehote",
+    "description": "Luo/muokkaa kuvakehote"
   },
   "name.seedreamBot": {
-    "message": "SeeDream Bot",
-    "description": "SeeDream kuvageneraattorin nimi"
+    "message": "SeeDream-botti",
+    "description": "SeeDream-kuvageneraattorin nimi"
   },
   "name.size": {
     "message": "Koko",
-    "description": "Lähtökuvan koko"
+    "description": "Tulostetun kuvan koko"
   },
   "name.watermark": {
     "message": "Vesileima",
     "description": "Lisätäänkö vesileima"
   },
   "description.prompt": {
-    "message": "Kuvien luonti tai muokkaus promptit",
-    "description": "Promptin kuvaus"
+    "message": "Kehote kuvan luontiin tai muokkaukseen",
+    "description": "Kehotteen kuvaus"
   },
   "description.model": {
-    "message": "Kuvaa luontiin tai muokkaukseen käytettävä malli.",
-    "description": "malli-parametrin selitys"
+    "message": "Malli kuvan luontiin tai muokkaukseen.",
+    "description": "malli-parametrin kuvaus"
   },
   "description.size": {
-    "message": "Kuvan koko. Tuetaan esiasetuksia `1K`, `2K`, `4K` tai mukautettua `<leveys>x<korkeus>`.",
-    "description": "koko-parametrin selitys"
+    "message": "Kuvan koko. Eri mallit tukevat eri esiasetuksia: 5.0 tukee vain 2K/3K/4K, 4.5/4.0 tukee 1K/2K/4K, 3.0-t2i ja seededit-3.0-i2i tukevat vain `<leveys>x<korkeus>` (esim. 1024x1024, 1280x720). Esiasetetuilla malleilla voi valita myös “Sovita” (säilyttää kuvasuhteen viitekuvan mukaan) tai syöttää suoraan halutun `<leveys>x<korkeus>`.",
+    "description": "koko-parametrin kuvaus (mallikohtainen)"
   },
   "description.watermark": {
-    "message": "Lisätäänkö AI-vesileima luotuun kuvaan. Oletuksena päällä.",
-    "description": "vesileima-parametrin selitys"
+    "message": "Lisätäänkö AI-vesileima luotuihin kuviin. Oletuksena päällä.",
+    "description": "vesileima-parametrin kuvaus"
   },
   "description.imageUrls": {
-    "message": "Lataa 1-14 viittauskuvaa kuvan muokkausta varten.",
-    "description": "kuva-parametrin selitys"
+    "message": "Lataa 1–14 viitekuvaa kuvan muokkausta varten.",
+    "description": "kuva-parametrin kuvaus"
   },
   "status.pending": {
     "message": "Odottaa",
-    "description": "Tehtävän odotustila"
+    "description": "Tehtävä odotustilassa"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintapaikka"
+    "description": "Valinnan paikkamerkki"
+  },
+  "placeholder.size": {
+    "message": "Valitse esiasetus tai syötä <leveys>x<korkeus>",
+    "description": "koko-valinta/paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä prompt, esim: valkoinen siamilainen kissa",
-    "description": "Promptin paikka"
+    "message": "Syötä kehote, esim.: valkoinen siamilaistyyppinen kissa",
+    "description": "Kehotteen paikkamerkki"
   },
   "button.generate": {
     "message": "Luo",
     "description": "Luo-painike"
   },
   "button.uploadImageUrls": {
-    "message": "Lataa kuvat",
-    "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
+    "message": "Lataa",
+    "description": "Lataa viitekuvia -painike (yksinkertaista englanniksi “Upload”)"
+  },
+  "button.confirmContinue": {
+    "message": "Jatka vaihtoa",
+    "description": "Vahvista painike kapasiteettikonfliktissa"
+  },
+  "button.cancelSwitch": {
+    "message": "Peruuta",
+    "description": "Peruuta-painike kapasiteettikonfliktissa"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävää...",
+    "message": "Käynnistetään tehtävää...",
     "description": "Tehtävän aloitusviesti"
   },
   "message.startTaskSuccess": {
     "message": "Tehtävä luotu onnistuneesti",
-    "description": "Tehtävä luotiin onnistuneesti"
+    "description": "Tehtävä onnistuneesti luotu"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloitus epäonnistui, ota yhteyttä ylläpitäjään:",
+    "message": "Tehtävän luominen epäonnistui, ota yhteyttä ylläpitäjään:",
     "description": "Tehtävän luonti epäonnistui"
   },
   "message.usedUp": {
-    "message": "Pisteesi on käytetty loppuun, osta lisää pisteitä jatkaaksesi käyttöä",
-    "description": "Loppunut ilmoitus"
+    "message": "Sinun pisteesi ovat loppuneet, osta lisää jatkaaksesi",
+    "description": "Pisteet loppuneet"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 14 kuvaa",
-    "description": "Kuvamäärä ylittää rajan"
+    "description": "Liikaa kuvia ladattuna"
   },
   "message.uploadImageError": {
     "message": "Kuvan lataus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
   },
+  "message.featureNotSupportedTitle": {
+    "message": "Tarvitaan vahvistus",
+    "description": "Kapasiteettikonfliktin otsikko"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Valinta ei tue seuraavia käytössä olevia asetuksia: {fields}. Jatkaminen poistaa nämä asetukset.",
+    "description": "Kapasiteettikonfliktin teksti"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Poistetut tukemattomat asetukset: {fields}",
+    "description": "Konfliktin puhdistuksen jälkeen"
+  },
   "name.model": {
     "message": "Malli",
-    "description": "SeeDream mallin valintatunnus"
+    "description": "SeeDream-mallin valintalabel"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "SeeDream 4.5 mallivaihtoehto"
+    "description": "SeeDream 4.5 -malli"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "SeeDream 4.0 mallivaihtoehto"
+    "description": "SeeDream 4.0 -malli"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "SeeDream 3.0 t2i mallivaihtoehto"
+    "description": "SeeDream 3.0 t2i -malli"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "SeeEdit 3.0 i2i mallivaihtoehto"
+    "description": "SeeEdit 3.0 i2i -malli"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "SeeDream 5.0 mallivaihtoehto (tukee sarjakuvia ja jatkuvaa tuotantoa)"
+    "description": "SeeDream 5.0 -malli (tukee ryhmäkuvia ja stream-lähtöä)"
   },
   "name.maxImages": {
     "message": "Kuvien määrä",
-    "description": "Sarjakuvien luontiin käytettävien kuvien määrä (max_images)"
+    "description": "Ryhmäkuvien maksimimäärä (max_images)"
   },
   "description.maxImages": {
-    "message": "Kuvien määrä, joka luodaan yhdellä pyynnöllä (1-15). Aseta 1 yksittäiseksi kuvaksi; yli 1 aktivoi automaattisesti sarjakuvatuotannon (sequential_image_generation=auto), säilyttäen hahmot, tyylit ja yksityiskohdat. Tuetaan vain doubao-seedream-5.0 / 4.5 / 4.0; jos lataat viittauskuvia, niiden määrä + luotujen kuvien määrä ≤ 15. Laskutus perustuu todellisiin luotuihin kuviin.",
+    "message": "Yhden pyynnön aikana luotavien kuvien määrä (1–15). Aseta 1: yksittäinen kuva; yli 1: automaattinen sarjakuvaus (sequential_image_generation=auto), hahmo, tyyli ja yksityiskohdat säilyvät kuvien välillä. Tukee vain doubao-seedream-5.0 / 4.5 / 4.0. Jos mukana viitteellisiä kuvia, vaatimuksena (viitekuvien määrä + luotavien määrä) ≤ 15. Maksu perustuu todelliseen luotujen kuvien määrään.",
     "description": "max_images-parametrin selitys"
+  },
+  "name.seed": {
+    "message": "Satunnainen siemen",
+    "description": "seed 参数标签"
+  },
+  "description.seed": {
+    "message": "Satunnainen siemen toistettavuuteen, arvo [-1, 2147483647]. -1 = satunnainen joka kerta. Tukee vain doubao-seedream-3.0-t2i ja doubao-seededit-3.0-i2i.",
+    "description": "seed 参数说明"
+  },
+  "name.guidanceScale": {
+    "message": "Ohjauksen paino",
+    "description": "guidance_scale 参数标签"
+  },
+  "description.guidanceScale": {
+    "message": "Ohjaa, kuinka tarkasti lopputulos noudattaa ohjetta, arvo [1, 10]. Suurempi arvo = tarkempi. doubao-seedream-3.0-t2i oletus 2.5, doubao-seededit-3.0-i2i oletus 5.5.",
+    "description": "guidance_scale 参数说明"
+  },
+  "name.outputFormat": {
+    "message": "Tulosteen muoto",
+    "description": "output_format 参数标签"
+  },
+  "description.outputFormat": {
+    "message": "Kuvan tiedostomuoto, jpeg tai png, oletus jpeg. Vain doubao-seedream-5.0 tukee.",
+    "description": "output_format 参数说明"
+  },
+  "size.group.tier": {
+    "message": "Resoluutioportaikko",
+    "description": "尺寸下拉的档位分组（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "Sovita automaattisesti",
+    "description": "尺寸下拉的自适应分组"
+  },
+  "size.group.pixel": {
+    "message": "Tarkka pikselikoko",
+    "description": "尺寸下拉的像素尺寸分组"
+  },
+  "size.adaptive": {
+    "message": "Sovita automaattisesti (kuten referenssikuva)",
+    "description": "adaptive 选项标签"
   }
 }

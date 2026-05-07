@@ -1,130 +1,178 @@
 {
   "name.taskId": {
     "message": "ID zadania",
-    "description": "ID zadania"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Typ zadania",
-    "description": "Typ operacji obrazu OpenAI Image"
+    "description": "OpenAI Image 图片操作类型"
   },
   "name.generate": {
     "message": "Utwórz obraz",
-    "description": "Typ operacji: Utwórz obraz"
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
     "message": "Edytuj obraz",
-    "description": "Typ operacji: Edytuj obraz"
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
     "message": "Obrazy referencyjne",
-    "description": "Obrazy referencyjne do edytowania"
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Niepowodzenie",
-    "description": "Zadanie nie powiodło się"
+    "description": "任务失败"
   },
   "name.failureReason": {
     "message": "Powód niepowodzenia",
-    "description": "Powód niepowodzenia zadania"
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status zadania"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID śledzenia",
-    "description": "ID śledzenia"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
     "message": "Czas trwania",
-    "description": "Czas trwania zadania (w sekundach)"
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Podpowiedź obrazu",
-    "description": "Podpowiedź do generowania/edycji obrazu"
+    "message": "Podpowiedź",
+    "description": "生成/编辑的提示词"
   },
   "name.openaiimageBot": {
-    "message": "OpenAI Image Bot",
-    "description": "Nazwa bota OpenAI Image"
+    "message": "Bot OpenAI Image",
+    "description": "OpenAI Image 机器人名称"
   },
   "name.size": {
     "message": "Rozmiar",
-    "description": "Rozmiar wyjściowego obrazu"
+    "description": "输出图像尺寸"
   },
   "description.size": {
-    "message": "Rozmiar wyjściowy obrazu do generowania, popularne wartości: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Opis rozmiaru"
+    "message": "Rozmiar wyjściowy obrazu. Różne modele obsługują różne rozmiary: gpt-image-1 / gpt-image-1.5 tylko 1024x1024, 1536x1024, 1024x1536; gpt-image-2 także 1792x1024, 1024x1792 oraz ustawienia 2K/4K; gpt-image-2 pozwala na niestandardowy rozmiar.",
+    "description": "尺寸说明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "Standard 1K (podstawowa cena)",
+    "description": "1K 尺寸分组标题，按基础价计费"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Ustawienie 2K (1,5x cena)",
+    "description": "2K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Ustawienie 4K (1,5x cena)",
+    "description": "4K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "name.customSize": {
+    "message": "Niestandardowy rozmiar",
+    "description": "自定义尺寸开关标签"
+  },
+  "description.customSize": {
+    "message": "Po włączeniu można ustawić dowolną szerokość i wysokość (tylko gpt-image-2). Wartości muszą być wielokrotnością 16, najdłuższy bok ≤ 3840, całkowita liczba pikseli ≤ 8 294 400. Niestandardowe rozmiary poza standardem 1K są liczone jako 1,5x cena.",
+    "description": "自定义尺寸说明"
+  },
+  "name.width": {
+    "message": "Szerokość",
+    "description": "宽度输入框标签"
+  },
+  "name.height": {
+    "message": "Wysokość",
+    "description": "高度输入框标签"
+  },
+  "error.customSizePositive": {
+    "message": "Szerokość i wysokość muszą być dodatnie",
+    "description": "自定义尺寸必须为正整数"
+  },
+  "error.customSizeMultiple": {
+    "message": "Szerokość i wysokość muszą być wielokrotnością {multiple}",
+    "description": "自定义尺寸必须为 16 的倍数"
+  },
+  "error.customSizeMin": {
+    "message": "Szerokość i wysokość nie mogą być mniejsze niż {min}",
+    "description": "自定义尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "Najdłuższy bok nie może przekraczać {max}",
+    "description": "自定义尺寸最长边上限"
+  },
+  "error.customSizePixels": {
+    "message": "Całkowita liczba pikseli nie może przekraczać {pixels}",
+    "description": "自定义尺寸总像素上限"
   },
   "description.prompt": {
-    "message": "Podpowiedź do generowania lub edytowania obrazu",
-    "description": "Opis podpowiedzi"
+    "message": "Podpowiedź do generowania lub edycji obrazu",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Model używany do generowania i edytowania obrazów.",
-    "description": "Opis parametru modelu"
+    "message": "Model używany do generowania i edycji obrazów.",
+    "description": "model 参数说明"
   },
   "description.imageUrls": {
-    "message": "Prześlij 1-5 obrazów referencyjnych, aby przejść do trybu edycji.",
-    "description": "Opis parametru image_urls"
+    "message": "Prześlij 1–5 obrazów referencyjnych, aby przejść w tryb edycji.",
+    "description": "image_urls 参数说明"
   },
   "status.pending": {
     "message": "Oczekiwanie",
-    "description": "Status oczekiwania zadania"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
     "message": "Wybierz",
-    "description": "Miejsce na wybór"
+    "description": "选择占位"
   },
   "placeholder.prompt": {
-    "message": "Wpisz podpowiedź, np. mały kotek na stole z akwarelami",
-    "description": "Miejsce na podpowiedź"
+    "message": "Wpisz podpowiedź, np.: akwarelowy kot na stole",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Generuj",
-    "description": "Przycisk generowania"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
-    "message": "Prześlij obrazy",
-    "description": "Przycisk do przesyłania obrazów referencyjnych (proszę użyć 'Prześlij' zamiast 'Upload Images')"
+    "message": "Prześlij",
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
   },
   "message.startingTask": {
-    "message": "Rozpoczynanie zadania...",
-    "description": "Wiadomość rozpoczynania zadania"
+    "message": "Uruchamianie zadania...",
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Zadanie zostało pomyślnie rozpoczęte",
-    "description": "Zadanie zostało pomyślnie utworzone"
+    "message": "Zadanie generowania zostało pomyślnie uruchomione",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Nie udało się rozpocząć zadania, skontaktuj się z administratorem:",
-    "description": "Zadanie nie zostało utworzone"
+    "message": "Nie udało się uruchomić zadania, skontaktuj się z administratorem:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Twoje punkty zostały wyczerpane, proszę zakupić więcej punktów, aby kontynuować",
-    "description": "Komunikat o wyczerpaniu punktów"
+    "message": "Twoje punkty zostały wykorzystane. Kup więcej, aby kontynuować",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Możesz przesłać maksymalnie 5 obrazów",
-    "description": "Przekroczono limit liczby obrazów"
+    "message": "Można przesłać maksymalnie 5 obrazów",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
-    "description": "Błąd przesyłania obrazu"
+    "description": "上传失败"
   },
   "name.model": {
     "message": "Model",
-    "description": "Etykieta wyboru modelu OpenAI Image"
+    "description": "OpenAI 图像模型选择标签"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Opcja modelu gpt-image-1"
+    "description": "gpt-image-1 模型选项"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Opcja modelu gpt-image-1.5"
+    "description": "gpt-image-1.5 模型选项"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Opcja modelu gpt-image-2"
+    "description": "gpt-image-2 模型选项"
   }
 }

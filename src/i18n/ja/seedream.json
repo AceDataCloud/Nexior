@@ -8,8 +8,8 @@
     "description": "SeeDream 画像操作タイプ"
   },
   "name.generate": {
-    "message": "画像生成",
-    "description": "操作タイプ：画像生成"
+    "message": "画像作成",
+    "description": "操作タイプ：画像作成"
   },
   "name.edits": {
     "message": "画像編集",
@@ -56,35 +56,39 @@
     "description": "透かしを追加するかどうか"
   },
   "description.prompt": {
-    "message": "画像生成または編集のためのプロンプト",
+    "message": "画像を生成または編集するためのプロンプト",
     "description": "プロンプトの説明"
   },
   "description.model": {
-    "message": "画像生成または編集に使用するモデル。",
+    "message": "画像を生成または編集するためのモデル。",
     "description": "model パラメータの説明"
   },
   "description.size": {
-    "message": "画像サイズ。プリセット `1K`、`2K`、`4K` またはカスタム `<幅>x<高さ>` をサポート。",
-    "description": "size パラメータの説明"
+    "message": "画像サイズ。異なるモデルがサポートするプリセットは異なります：5.0 は 2K/3K/4K のみ、4.5/4.0 は 1K/2K/4K をサポート、3.0-t2i と seededit-3.0-i2i は `<幅>x<高さ>` ピクセル値（例：1024x1024、1280x720）のみをサポートします。プリセットモデルでは「自適応」を選択することもでき、参考画像と同じ比率を保つことができます。また、ドロップダウンボックスに任意の `<幅>x<高さ>` を直接入力することもできます。",
+    "description": "size パラメータの説明（モデル別）"
   },
   "description.watermark": {
     "message": "生成された画像に AI 透かしを追加するかどうか。デフォルトでオン。",
     "description": "watermark パラメータの説明"
   },
   "description.imageUrls": {
-    "message": "1-14 枚の参考画像をアップロードして画像編集を有効にします。",
+    "message": "画像編集を有効にするために 1-14 枚の参考画像をアップロードします。",
     "description": "image パラメータの説明"
   },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "placeholder.select": {
     "message": "選択",
     "description": "選択のプレースホルダー"
   },
+  "placeholder.size": {
+    "message": "プリセットを選択するか、<幅>x<高さ>を入力",
+    "description": "size 選択/入力のプレースホルダー（el-select allow-create）"
+  },
   "placeholder.prompt": {
-    "message": "プロンプトを入力してください。例：白いシャム猫",
+    "message": "プロンプトを入力、例：白いシャム猫",
     "description": "プロンプトのプレースホルダー"
   },
   "button.generate": {
@@ -92,8 +96,16 @@
     "description": "生成ボタン"
   },
   "button.uploadImageUrls": {
-    "message": "アップロード",
+    "message": "画像アップロード",
     "description": "参考画像をアップロードするボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
+  },
+  "button.confirmContinue": {
+    "message": "続行",
+    "description": "能力の衝突に関する確認ダイアログの確認ボタン"
+  },
+  "button.cancelSwitch": {
+    "message": "キャンセル",
+    "description": "能力の衝突に関する確認ダイアログのキャンセルボタン"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -108,16 +120,28 @@
     "description": "タスク作成に失敗しました"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切りました。追加のポイントを購入して続行してください",
+    "message": "ポイントが使い切りました。続行するには追加のポイントを購入してください",
     "description": "使い切ったことを示すメッセージ"
   },
   "message.uploadImageExceed": {
     "message": "最大 14 枚の画像をアップロードできます",
-    "description": "画像数が制限を超えた"
+    "description": "画像数が制限を超えました"
   },
   "message.uploadImageError": {
-    "message": "画像のアップロードに失敗しました。後で再試行してください",
+    "message": "画像のアップロードに失敗しました。後でもう一度お試しください",
     "description": "アップロード失敗"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "確認が必要",
+    "description": "能力の衝突に関する確認ダイアログのタイトル"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "現在の選択は以下の有効な設定をサポートしていません：{fields}。続行するとこれらの設定がクリアされます。",
+    "description": "能力の衝突に関する確認ダイアログの本文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "サポートされていない設定がクリアされました：{fields}",
+    "description": "能力の衝突後のクリア通知メッセージ"
   },
   "name.model": {
     "message": "モデル",
@@ -148,7 +172,47 @@
     "description": "グループ画像生成の画像枚数（max_images）"
   },
   "description.maxImages": {
-    "message": "1 回のリクエストで生成する画像の数（1-15）。1 に設定すると単一画像モード；1 より大きい場合は自動的にグループ画像を有効にします（sequential_image_generation=auto）、画像間でキャラクター、スタイル、詳細を一貫させます。doubao-seedream-5.0 / 4.5 / 4.0 のみサポート；参考画像を同時にアップロードする場合、(参考画像数 + 生成数) ≤ 15 を満たす必要があります。請求は実際に生成された画像の枚数に基づきます。",
+    "message": "リクエストで生成する画像の数（1-15）。1に設定すると単一画像モード；1より大きい場合は自動的にグループ画像が有効になります（sequential_image_generation=auto）、画像間でキャラクター、スタイル、詳細が一致します。doubao-seedream-5.0 / 4.5 / 4.0のみサポート；参考画像を同時にアップロードする場合、(参考画像数 + 生成数) ≤ 15を満たす必要があります。請求は実際に生成された画像の枚数に基づきます。",
     "description": "max_images パラメータの説明"
+  },
+  "name.seed": {
+    "message": "ランダムシード",
+    "description": "seed パラメータラベル"
+  },
+  "description.seed": {
+    "message": "再現のためのランダムシード、範囲 [-1, 2147483647]。-1 は毎回ランダムを意味します。doubao-seedream-3.0-t2i と doubao-seededit-3.0-i2i のみサポートされています。",
+    "description": "seed パラメータ説明"
+  },
+  "name.guidanceScale": {
+    "message": "ガイダンススケール",
+    "description": "guidance_scale パラメータラベル"
+  },
+  "description.guidanceScale": {
+    "message": "プロンプトの遵守強度、範囲 [1, 10]。値が大きいほどプロンプトに近づきます。doubao-seedream-3.0-t2i のデフォルトは 2.5、doubao-seededit-3.0-i2i のデフォルトは 5.5 です。",
+    "description": "guidance_scale パラメータ説明"
+  },
+  "name.outputFormat": {
+    "message": "出力形式",
+    "description": "output_format パラメータラベル"
+  },
+  "description.outputFormat": {
+    "message": "生成される画像のファイル形式、jpeg または png、デフォルトは jpeg です。doubao-seedream-5.0 のみサポートされています。",
+    "description": "output_format パラメータ説明"
+  },
+  "size.group.tier": {
+    "message": "解像度階層",
+    "description": "サイズドロップダウンの階層グループ（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "アダプティブ",
+    "description": "サイズドロップダウンのアダプティブグループ"
+  },
+  "size.group.pixel": {
+    "message": "具体的なピクセルサイズ",
+    "description": "サイズドロップダウンのピクセルサイズグループ"
+  },
+  "size.adaptive": {
+    "message": "アダプティブ（参照画像に一致）",
+    "description": "adaptive オプションラベル"
   }
 }

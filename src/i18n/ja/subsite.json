@@ -5,11 +5,11 @@
   },
   "title.create": {
     "message": "サブサイトを作成",
-    "description": "新しいサブサイトダイアログのタイトル"
+    "description": "新しいサブサイトのダイアログタイトル"
   },
   "title.openNow": {
     "message": "サブサイトに今すぐアクセス",
-    "description": "新規作成後に即座に移動するかどうかを尋ねるダイアログのタイトル"
+    "description": "新規作成後に即座に移動するかどうかを尋ねるダイアログタイトル"
   },
   "field.slug": {
     "message": "サブドメインプレフィックス",
@@ -36,7 +36,7 @@
     "description": "スラッグ入力フィールドのプレースホルダー"
   },
   "placeholder.title": {
-    "message": "サブサイトのブラウザタブとサイトヘッダーに表示されます",
+    "message": "サブサイトのブラウザタブやサイトヘッダーに表示されます",
     "description": "タイトル入力フィールドのプレースホルダー"
   },
   "button.create": {
@@ -60,7 +60,7 @@
     "description": "空のリストのヒント"
   },
   "message.slugTip": {
-    "message": "3-32文字の小文字、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めることはできません。",
+    "message": "3-32文字の小文字、数字、またはハイフン；ハイフンで始まったり終わったりせず、連続したハイフンを含めてはいけません。",
     "description": "スラッグフィールドの説明"
   },
   "message.slugInvalid": {
@@ -79,6 +79,10 @@
     "message": "サブサイトの作成に失敗しました。後でもう一度お試しください。",
     "description": "作成失敗"
   },
+  "message.slugTaken": {
+    "message": "サブドメイン {origin} はすでに使用されています。別のものをお試しください。",
+    "description": "サブサイト作成時にスラッグが占有されている（バックエンドからの返答 code=duplication）"
+  },
   "message.loadFailed": {
     "message": "サブサイトリストの読み込みに失敗しました。",
     "description": "リストの取得失敗"
@@ -88,8 +92,8 @@
     "description": "作成後に即座に開くかどうか"
   },
   "title.domains": {
-    "message": "{origin} のカスタムドメイン名",
-    "description": "カスタムドメイン名ダイアログのタイトル"
+    "message": "{origin} のカスタムドメイン",
+    "description": "カスタムドメインダイアログのタイトル"
   },
   "title.bindDomain": {
     "message": "新しいドメインをバインド",
@@ -105,7 +109,7 @@
   },
   "button.verify": {
     "message": "今すぐ検証",
-    "description": "私たちのリバースプロキシを通じて、そのドメインが正常に解決され、証明書が発行されているかを検証します"
+    "description": "当社のリバースプロキシを通じて、そのドメインが正常に解決され、証明書が発行されるかどうかを確認します"
   },
   "button.refresh": {
     "message": "更新",
@@ -152,24 +156,24 @@
     "description": "POST /site-domains/成功"
   },
   "message.domainCreateFailed": {
-    "message": "ドメインの作成に失敗しました。後でもう一度お試しください。",
-    "description": "作成失敗"
+    "message": "ドメインの作成に失敗しました。後で再試行してください。",
+    "description": "作成失敗のメッセージ"
   },
   "message.domainsLoadFailed": {
     "message": "ドメインリストの読み込みに失敗しました。",
-    "description": "ドメインリストの取得失敗"
+    "description": "ドメインリストの読み込みに失敗"
   },
   "message.domainActive": {
-    "message": "ドメインがアクティブになりました！あなたのカスタム HTTPS アドレスでサブサイトにアクセスできます。",
+    "message": "ドメインがオンラインになりました！あなたのカスタムHTTPSアドレスを通じてサブサイトにアクセスできます。",
     "description": "アクティブ状態に入る"
   },
   "message.domainFailed": {
-    "message": "ドメインの検証または公開に失敗しました。",
-    "description": "Failed 状態の文言"
+    "message": "ドメインの検証またはオンライン化に失敗しました。",
+    "description": "失敗状態の文言"
   },
   "message.domainVerifyFailed": {
-    "message": "検証に失敗しました。CNAME レコードが当社のリバースプロキシを指しているか、DNS の伝播が完了しているか確認してください。",
-    "description": "verify インターフェース 4xx"
+    "message": "検証に失敗しました。CNAMEレコードが当社のリバースプロキシを指しているか、DNSの伝播が完了しているか確認してください。",
+    "description": "verifyインターフェース4xx"
   },
   "message.domainDeleteConfirm": {
     "message": "{hostname} のバインド解除を本当に行いますか？バインド解除後、ユーザーはこのドメインからあなたのサブサイトにアクセスできなくなります。",
@@ -177,18 +181,18 @@
   },
   "message.domainDeleteFailed": {
     "message": "ドメインの削除に失敗しました。",
-    "description": "DELETE インターフェース 5xx"
+    "description": "DELETEインターフェース5xx"
   },
   "status.pending": {
     "message": "検証待ち",
-    "description": "Pending 状態ラベル：ユーザーが CNAME を追加し、「今すぐ検証」をクリックするのを待っています"
+    "description": "保留状態のラベル：ユーザーがCNAMEを追加し、「今すぐ検証」をクリックするのを待っています"
   },
   "status.active": {
-    "message": "公開中",
-    "description": "Active 状態ラベル"
+    "message": "オンライン",
+    "description": "アクティブ状態のラベル"
   },
   "status.failed": {
     "message": "失敗",
-    "description": "Failed 状態ラベル"
+    "description": "失敗状態のラベル"
   }
 }

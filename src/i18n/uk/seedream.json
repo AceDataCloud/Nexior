@@ -1,154 +1,218 @@
 {
   "name.taskId": {
     "message": "ID завдання",
-    "description": "ID завдання"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Тип завдання",
-    "description": "Тип операції з зображенням SeeDream"
+    "description": "SeeDream 图片操作类型"
   },
   "name.generate": {
-    "message": "Створити зображення",
-    "description": "Тип операції: створити зображення"
+    "message": "Створити",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Редагувати зображення",
-    "description": "Тип операції: редагувати зображення"
+    "message": "Редагувати",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Посилання на зображення",
-    "description": "Посилання на зображення для редагування"
+    "message": "Зображення для редагування",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Не вдалося",
-    "description": "Завдання не виконано"
+    "description": "任务失败"
   },
   "name.failureReason": {
-    "message": "Причина невдачі",
-    "description": "Причина невдачі завдання"
+    "message": "Причина помилки",
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Статус",
-    "description": "Статус завдання"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID відстеження",
-    "description": "ID відстеження"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
     "message": "Час виконання",
-    "description": "Час виконання завдання (секунди)"
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Підказка для зображення",
-    "description": "Підказка для генерації/редагування"
+    "message": "Підказка",
+    "description": "生成/编辑的提示词"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Назва генератора зображень SeeDream"
+    "description": "SeeDream 图片生成器名称"
   },
   "name.size": {
     "message": "Розмір",
-    "description": "Розмір вихідного зображення"
+    "description": "输出图片尺寸"
   },
   "name.watermark": {
     "message": "Водяний знак",
-    "description": "Додати водяний знак"
+    "description": "是否添加水印"
   },
   "description.prompt": {
-    "message": "Підказка для генерації або редагування зображення",
-    "description": "Опис підказки"
+    "message": "Підказка для створення або редагування зображення",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Модель для генерації або редагування зображень.",
-    "description": "Опис параметра model"
+    "message": "Модель для створення або редагування зображень.",
+    "description": "model 参数说明"
   },
   "description.size": {
-    "message": "Розмір зображення. Підтримуються попередньо визначені `1K`, `2K`, `4K` або користувацький `<ширина>x<висота>`.",
-    "description": "Опис параметра size"
+    "message": "Розмір зображення. Різні моделі підтримують різні пресети: 5.0 – лише 2K/3K/4K, 4.5/4.0 – 1K/2K/4K, 3.0-t2i та seededit-3.0-i2i – лише `<ширина>x<висота>` (наприклад, 1024x1024, 1280x720). Деякі моделі дозволяють «Адаптивний» режим або введення будь-яких `<ширина>x<висота>` вручну.",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
-    "message": "Додати AI водяний знак до згенерованого зображення. За замовчуванням увімкнено.",
-    "description": "Опис параметра watermark"
+    "message": "Додати AI водяний знак. За замовчуванням увімкнено.",
+    "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "Завантажте 1-14 посилань на зображення для активації редагування зображень.",
-    "description": "Опис параметра image"
+    "message": "Завантажте 1–14 зображень для редагування.",
+    "description": "image 参数说明"
   },
   "status.pending": {
     "message": "Очікування",
-    "description": "Статус очікування завдання"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
-    "message": "Вибрати",
-    "description": "Плейсхолдер для вибору"
+    "message": "Виберіть",
+    "description": "选择占位"
+  },
+  "placeholder.size": {
+    "message": "Виберіть пресет або введіть <ширина>x<висота>",
+    "description": "size 选择/输入占位（el-select allow-create）"
   },
   "placeholder.prompt": {
-    "message": "Введіть підказку, наприклад: білий сіамський кіт",
-    "description": "Плейсхолдер для підказки"
+    "message": "Введіть підказку, наприклад: біла сіамська кішка",
+    "description": "提示占位"
   },
   "button.generate": {
-    "message": "Генерувати",
-    "description": "Кнопка генерації"
+    "message": "Створити",
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Завантажити",
-    "description": "Кнопка для завантаження посилань на зображення (спростити до 'Завантажити')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "Продовжити зміну",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "Скасувати",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
     "message": "Запуск завдання...",
-    "description": "Повідомлення про початок завдання"
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Завдання на генерацію успішно ініційовано",
-    "description": "Завдання успішно створено"
+    "message": "Завдання успішно створено",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Не вдалося ініціювати завдання, будь ласка, зв'яжіться з адміністратором:",
-    "description": "Не вдалося створити завдання"
+    "message": "Не вдалося створити завдання, зверніться до адміністратора:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів для продовження використання",
-    "description": "Повідомлення про вичерпані бали"
+    "message": "Ваші бали вичерпані, придбайте додаткові для продовження",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Максимум можна завантажити 14 зображень",
-    "description": "Кількість зображень перевищує ліміт"
+    "message": "Максимум 14 зображень",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
-    "description": "Помилка завантаження"
+    "message": "Не вдалося завантажити зображення, спробуйте пізніше",
+    "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Підтвердження потрібне",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Вибране не підтримує активовані налаштування: {fields}. Продовження видалить ці налаштування.",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Видалено непідтримувані налаштування: {fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "Модель",
-    "description": "Мітка вибору моделі SeeDream"
+    "description": "SeeDream 模型选择标签"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Опція моделі SeeDream 4.5"
+    "description": "SeeDream 4.5 模型选项"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Опція моделі SeeDream 4.0"
+    "description": "SeeDream 4.0 模型选项"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Опція моделі SeeDream 3.0 t2i"
+    "description": "SeeDream 3.0 t2i 模型选项"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Опція моделі SeeEdit 3.0 i2i"
+    "description": "SeeEdit 3.0 i2i 模型选项"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Опція моделі SeeDream 5.0 (підтримує групові зображення та потоковий вихід)"
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
   },
   "name.maxImages": {
     "message": "Кількість зображень",
-    "description": "Кількість зображень для генерації групи (max_images)"
+    "description": "组图生成的图片张数（max_images）"
   },
   "description.maxImages": {
-    "message": "Кількість зображень, що генеруються за один запит (1-15). Якщо встановлено 1, то це режим одиночного зображення; більше 1 автоматично активує групу зображень (sequential_image_generation=auto), зберігаючи персонажа, стиль та деталі між зображеннями. Підтримуються лише doubao-seedream-5.0 / 4.5 / 4.0; якщо одночасно завантажуються посилання на зображення, потрібно дотримуватись (кількість посилань + кількість згенерованих) ≤ 15. Оплата за фактичну кількість згенерованих зображень.",
-    "description": "Опис параметра max_images"
+    "message": "Кількість зображень, що генеруються за один запит (1-15). Якщо встановлено 1, то режим одиночного зображення; більше 1 автоматично активує групове зображення (sequential_image_generation=auto), зберігаючи персонажів, стиль та деталі між зображеннями. Підтримуються лише doubao-seedream-5.0 / 4.5 / 4.0; якщо одночасно завантажуються референсні зображення, потрібно, щоб (кількість референсних зображень + кількість генерованих) ≤ 15. Оплата здійснюється за фактично згенерованими зображеннями.",
+    "description": "max_images параметр опис"
+  },
+  "name.seed": {
+    "message": "Випадкове насіння",
+    "description": "seed параметр мітка"
+  },
+  "description.seed": {
+    "message": "Випадкове насіння для відтворення, діапазон [-1, 2147483647]. -1 означає випадковість кожного разу. Підтримується лише doubao-seedream-3.0-t2i та doubao-seededit-3.0-i2i.",
+    "description": "seed параметр опис"
+  },
+  "name.guidanceScale": {
+    "message": "Вага підказки",
+    "description": "guidance_scale параметр мітка"
+  },
+  "description.guidanceScale": {
+    "message": "Сила дотримання підказки, діапазон [1, 10]. Чим більше значення, тим ближче до підказки. За замовчуванням doubao-seedream-3.0-t2i 2.5, doubao-seededit-3.0-i2i 5.5.",
+    "description": "guidance_scale параметр опис"
+  },
+  "name.outputFormat": {
+    "message": "Формат виходу",
+    "description": "output_format параметр мітка"
+  },
+  "description.outputFormat": {
+    "message": "Формат файлу для згенерованого зображення, jpeg або png, за замовчуванням jpeg. Підтримується лише doubao-seedream-5.0.",
+    "description": "output_format параметр опис"
+  },
+  "size.group.tier": {
+    "message": "Роздільна здатність",
+    "description": "Група рівнів для випадаючого списку розмірів (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Адаптивний",
+    "description": "Група адаптивних розмірів для випадаючого списку"
+  },
+  "size.group.pixel": {
+    "message": "Конкретний піксельний розмір",
+    "description": "Група піксельних розмірів для випадаючого списку"
+  },
+  "size.adaptive": {
+    "message": "Адаптивний (відповідає ескізу)",
+    "description": "adaptive опція мітка"
   }
 }

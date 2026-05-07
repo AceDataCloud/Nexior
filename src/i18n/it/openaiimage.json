@@ -37,7 +37,7 @@
   },
   "name.elapsed": {
     "message": "Tempo impiegato",
-    "description": "Tempo impiegato per l'attività (secondi)"
+    "description": "Tempo impiegato per l'attività (in secondi)"
   },
   "name.prompt": {
     "message": "Suggerimento immagine",
@@ -52,8 +52,56 @@
     "description": "Dimensione dell'immagine di output"
   },
   "description.size": {
-    "message": "Dimensione di output per generare l'immagine, valori comuni: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Descrizione della dimensione"
+    "message": "Dimensione dell'immagine di output. Le dimensioni supportate variano a seconda del modello: gpt-image-1 / gpt-image-1.5 supportano solo 1024x1024, 1536x1024, 1024x1536; gpt-image-2 supporta anche 1792x1024, 1024x1792 e preset 2K/4K; gpt-image-2 consente dimensioni personalizzate.",
+    "description": "Descrizione delle dimensioni"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (prezzo base)",
+    "description": "Titolo del gruppo di dimensioni 1K, tariffato al prezzo base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Preset 2K (1.5x prezzo)",
+    "description": "Titolo del gruppo di dimensioni 2K, tariffato a 1.5x prezzo"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Preset 4K (1.5x prezzo)",
+    "description": "Titolo del gruppo di dimensioni 4K, tariffato a 1.5x prezzo"
+  },
+  "name.customSize": {
+    "message": "Dimensione personalizzata",
+    "description": "Etichetta dell'interruttore per dimensioni personalizzate"
+  },
+  "description.customSize": {
+    "message": "Una volta attivato, puoi impostare liberamente larghezza e altezza (solo gpt-image-2 supporta). Devono essere multipli di 16, con il lato più lungo ≤ 3840 e il numero totale di pixel ≤ 8.294.400. Le dimensioni non standard 1K sono tariffate a 1.5x prezzo.",
+    "description": "Descrizione delle dimensioni personalizzate"
+  },
+  "name.width": {
+    "message": "Larghezza",
+    "description": "Etichetta della casella di input per la larghezza"
+  },
+  "name.height": {
+    "message": "Altezza",
+    "description": "Etichetta della casella di input per l'altezza"
+  },
+  "error.customSizePositive": {
+    "message": "Larghezza e altezza devono essere numeri interi positivi",
+    "description": "Le dimensioni personalizzate devono essere numeri interi positivi"
+  },
+  "error.customSizeMultiple": {
+    "message": "Larghezza e altezza devono essere multipli di {multiple}",
+    "description": "Le dimensioni personalizzate devono essere multipli di 16"
+  },
+  "error.customSizeMin": {
+    "message": "Larghezza e altezza non possono essere inferiori a {min}",
+    "description": "Limite inferiore delle dimensioni personalizzate"
+  },
+  "error.customSizeMax": {
+    "message": "Il lato più lungo non può superare {max}",
+    "description": "Limite superiore del lato più lungo per le dimensioni personalizzate"
+  },
+  "error.customSizePixels": {
+    "message": "Il numero totale di pixel non può superare {pixels}",
+    "description": "Limite superiore del numero totale di pixel per le dimensioni personalizzate"
   },
   "description.prompt": {
     "message": "Parole chiave per generare o modificare l'immagine",
@@ -85,7 +133,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Carica",
-    "description": "Pulsante per caricare immagini di riferimento (semplificare in 'Carica')"
+    "description": "Pulsante per caricare immagini di riferimento (semplificare in 'Carica', non usare 'Carica immagini')"
   },
   "message.startingTask": {
     "message": "Avvio dell'attività in corso...",
@@ -105,26 +153,26 @@
   },
   "message.uploadImageExceed": {
     "message": "Puoi caricare al massimo 5 immagini",
-    "description": "Numero di immagini oltre il limite"
+    "description": "Numero di immagini supera il limite"
   },
   "message.uploadImageError": {
     "message": "Caricamento immagine fallito, riprova più tardi",
-    "description": "Errore di caricamento"
+    "description": "Caricamento fallito"
   },
   "name.model": {
     "message": "Modello",
-    "description": "Etichetta di selezione del modello OpenAI"
+    "description": "Etichetta per la selezione del modello OpenAI"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Opzione modello gpt-image-1"
+    "description": "Opzione per il modello gpt-image-1"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Opzione modello gpt-image-1.5"
+    "description": "Opzione per il modello gpt-image-1.5"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Opzione modello gpt-image-2"
+    "description": "Opzione per il modello gpt-image-2"
   }
 }

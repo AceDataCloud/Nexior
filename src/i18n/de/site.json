@@ -200,255 +200,303 @@
     "description": "Anzeige im Bearbeitungsfeld"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Stamm Einladender bearbeiten",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "message": "Erzwungenen Einlader bearbeiten",
+    "description": "Angezeigter Titel im Bearbeitungsfeld"
   },
   "title.editQR": {
     "message": "QR-Code bearbeiten",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "title.editUrl": {
     "message": "Link bearbeiten",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.title": {
     "message": "Bitte Titel der Seite eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.origin": {
     "message": "Bitte Domain der Seite eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editUrl": {
     "message": "Bitte Link eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.description": {
     "message": "Bitte Beschreibung der Seite eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.keywords": {
     "message": "Bitte Schlüsselwörter der Seite eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Bitte Standard Einladender ID eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "message": "Bitte Standard-Einladenden-ID eingeben",
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Bitte zwingende Einladender ID eingeben",
-    "description": "Anzeige im Bearbeitungsfeld Titel"
+    "message": "Bitte zwingende Einladenden-ID eingeben",
+    "description": "展示在编辑框的标题"
   },
   "message.uploadImageExceed": {
     "message": "Bildüberschreitung des Upload-Limits",
-    "description": "Hinweis, wenn das hochgeladene Bild das Limit überschreitet"
+    "description": "上传图片超过限制的提示"
   },
   "message.uploadImageError": {
     "message": "Fehler beim Hochladen des Bildes",
-    "description": "Hinweis bei einem Fehler beim Hochladen des Bildes"
+    "description": "上传图片错误的提示"
+  },
+  "imageCropper.dropHere": {
+    "message": "Bild hierher ziehen oder klicken, um hochzuladen",
+    "description": "图片裁切器空状态提示"
+  },
+  "imageCropper.formatHint": {
+    "message": "Unterstützt JPG / PNG / WebP, max. 20 MB",
+    "description": "图片裁切器允许的文件格式"
+  },
+  "imageCropper.zoomIn": {
+    "message": "Vergrößern",
+    "description": "图片裁切器放大按钮"
+  },
+  "imageCropper.zoomOut": {
+    "message": "Verkleinern",
+    "description": "图片裁切器缩小按钮"
+  },
+  "imageCropper.rotateLeft": {
+    "message": "Nach links drehen",
+    "description": "图片裁切器逆时针旋转按钮"
+  },
+  "imageCropper.rotateRight": {
+    "message": "Nach rechts drehen",
+    "description": "图片裁切器顺时针旋转按钮"
+  },
+  "imageCropper.flipHorizontal": {
+    "message": "Horizontal spiegeln",
+    "description": "图片裁切器水平翻转按钮"
+  },
+  "imageCropper.replace": {
+    "message": "Bild erneut auswählen",
+    "description": "图片裁切器替换图片按钮"
+  },
+  "imageCropper.invalidType": {
+    "message": "Bitte wählen Sie eine Bilddatei.",
+    "description": "图片裁切器格式不支持错误"
+  },
+  "imageCropper.noImage": {
+    "message": "Bitte wählen Sie zuerst ein Bild aus.",
+    "description": "图片裁切器未选择图片错误"
+  },
+  "imageCropper.canvasError": {
+    "message": "Das zugeschnittene Bild kann nicht erstellt werden.",
+    "description": "图片裁切器canvas错误"
+  },
+  "imageCropper.uploadFailed": {
+    "message": "Bild-Upload fehlgeschlagen.",
+    "description": "图片裁切器上传失败错误"
   },
   "message.editLogoTip": {
     "message": "Empfohlene Größe: 200*60px",
-    "description": "Hinweis zur Bildgröße beim Hochladen"
+    "description": "上传图片的提示语言"
   },
   "message.editQRTip": {
     "message": "Empfohlene Größe: 200*200px",
-    "description": "Hinweis zur Bildgröße beim Hochladen"
+    "description": "上传图片的提示语言"
   },
   "message.editFaviconTip": {
     "message": "Empfohlene Größe: 32*32px",
-    "description": "Hinweis zur Bildgröße beim Hochladen"
+    "description": "上传图片的提示语言"
   },
   "message.editUrl": {
     "message": "Bitte Link eingeben",
-    "description": "Hinweis zur Eingabe des Links"
+    "description": "请输入链接的提示"
   },
   "message.atLeastOneAdmin": {
     "message": "Mindestens einen Administrator behalten",
-    "description": "Hinweis, dass mindestens ein Administrator erforderlich ist"
+    "description": "至少保留一个管理员的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "Benutzer-ID des Standard Einladenden. Wenn der Verteilungslink keinen inviter_id Parameter enthält, wird diese Benutzer-ID standardmäßig als Einladender verwendet.",
-    "description": "Hinweis zur Standard Einladender ID"
+    "message": "Benutzer-ID des Standard-Einladenden. Wenn der Verlinkungslink keinen inviter_id-Parameter enthält, wird standardmäßig diese Benutzer-ID als Einladender verwendet.",
+    "description": "默认邀请人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "Benutzer-ID des zwingenden Einladenden. Wenn diese ID festgelegt ist, wird unabhängig davon, ob der Verteilungslink den inviter_id Parameter enthält, diese Benutzer-ID als Einladender verwendet.",
-    "description": "Hinweis zur zwingenden Einladender ID"
+    "message": "Benutzer-ID des zwingenden Einladenden. Wenn diese ID festgelegt ist, wird unabhängig davon, ob der Verlinkungslink den inviter_id-Parameter enthält, diese Benutzer-ID als Einladender verwendet.",
+    "description": "强制邀请人ID的提示"
   },
   "message.originTip": {
     "message": "Domain der Seite, die Konfiguration der Seite ist an die Domain gebunden und kann nicht geändert werden.",
-    "description": "Hinweis zur Domain der Seite"
+    "description": "站点域名的提示"
   },
   "message.titleTip": {
     "message": "Titel der Seite, angezeigt im Browser-Tab.",
-    "description": "Hinweis zum Titel der Seite"
+    "description": "站点标题的提示"
   },
   "message.descriptionTip": {
-    "message": "Beschreibung der Seite, befindet sich in den Metadaten der Seite und dient der SEO-Optimierung.",
-    "description": "Hinweis zur Beschreibung der Seite"
+    "message": "Beschreibung der Seite, im Metainformationen der Seite, für SEO-Optimierung.",
+    "description": "站点描述的提示"
   },
   "message.logoTip": {
     "message": "Logo der Seite, angezeigt oben im Menü, wenn das Menü ausgeklappt ist.",
-    "description": "Hinweis zum Logo der Seite"
+    "description": "站点 Logo 的提示"
   },
   "message.faviconTip": {
     "message": "Favicon der Seite, angezeigt im Browser-Tab.",
-    "description": "Hinweis zum Favicon der Seite"
+    "description": "站点 Favicon 的提示"
   },
   "message.adminsTip": {
     "message": "Administrator-ID der Seite. Standardmäßig wird der Benutzer, der die Seite zuerst erstellt, Administrator. Nur Administratoren können die Seite verwalten.",
-    "description": "Hinweis zu den Administratoren der Seite"
+    "description": "站点管理员的提示"
   },
   "message.adminsTip2": {
     "message": "Hier können Administrator-IDs hinzugefügt oder entfernt werden. Benutzer-IDs können unter https://auth.acedata.cloud eingesehen werden.",
-    "description": "Hinweis zu den Administratoren der Seite"
+    "description": "站点管理员的提示"
   },
   "message.keywordsTip": {
-    "message": "Schlüsselwörter der Seite, befinden sich in den Metadaten der Seite und dienen der SEO-Optimierung.",
-    "description": "Hinweis zu den Schlüsselwörtern der Seite"
+    "message": "Website-Schlüsselwörter, die in den Metadaten der Website für die SEO-Optimierung verwendet werden.",
+    "description": "Hinweis zu den Schlüsselwörtern der Website"
   },
   "message.keywordsTip2": {
-    "message": "Hier können Schlüsselwörter der Website hinzugefügt oder entfernt werden. Je präziser die Schlüsselwörter, desto besser für die SEO-Optimierung.",
-    "description": "Hinweis zu den Schlüsselwörtern der Seite"
+    "message": "Hier können Sie Website-Schlüsselwörter hinzufügen oder entfernen. Je präziser die Schlüsselwörter, desto besser für SEO.",
+    "description": "站点关键词的提示"
   },
   "message.featuresChat": {
-    "message": "Chat-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Chat-Funktion"
+    "message": "Chat-Modul ein- oder ausschalten.",
+    "description": "Chat 功能的描述"
   },
   "message.featuresGrok": {
-    "message": "Grok-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Grok-Funktion"
+    "message": "Grok-Modul ein- oder ausschalten.",
+    "description": "Grok 功能的描述"
   },
   "message.featuresDeepseek": {
-    "message": "Deepseek-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Deepseek-Funktion"
+    "message": "Deepseek-Modul ein- oder ausschalten.",
+    "description": "Deepseek 功能的描述"
   },
   "message.featuresChatgpt": {
-    "message": "ChatGPT-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der ChatGPT-Funktion"
+    "message": "ChatGPT-Modul ein- oder ausschalten.",
+    "description": "ChatGPT 功能的描述"
   },
   "message.featuresMidjourney": {
-    "message": "Midjourney-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Midjourney-Funktion"
+    "message": "Midjourney-Modul ein- oder ausschalten.",
+    "description": "Midjourney 功能的描述"
   },
   "message.featuresChatdoc": {
-    "message": "Chatdoc-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Chatdoc-Funktion"
+    "message": "Chatdoc-Modul ein- oder ausschalten.",
+    "description": "Chatdoc 功能的描述"
   },
   "message.featuresQrart": {
-    "message": "Qrart-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Qrart-Funktion"
+    "message": "Qrart-Modul ein- oder ausschalten.",
+    "description": "Qrart 功能的描述"
   },
   "message.featuresVeo": {
-    "message": "Veo-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Veo-Funktion"
+    "message": "Veo-Modul ein- oder ausschalten.",
+    "description": "Veo 功能的描述"
   },
   "message.featuresSora": {
-    "message": "Sora-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Sora-Funktion"
+    "message": "Sora-Modul ein- oder ausschalten.",
+    "description": "Sora 功能的描述"
   },
   "message.featuresSuno": {
-    "message": "Suno-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Suno-Funktion"
+    "message": "Suno-Modul ein- oder ausschalten.",
+    "description": "Suno 功能的描述"
   },
   "message.featuresPixverse": {
-    "message": "Pixverse-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Pixverse-Funktion"
+    "message": "Pixverse-Modul ein- oder ausschalten.",
+    "description": "Pixverse 功能的描述"
   },
   "message.featuresFlux": {
-    "message": "FLux-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der FLux-Funktion"
+    "message": "FLux-Modul ein- oder ausschalten.",
+    "description": "FLux 功能的描述"
   },
   "message.featuresNanobanana": {
-    "message": "Nano Banana-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Nano Banana-Funktion"
+    "message": "Nano Banana-Modul ein- oder ausschalten.",
+    "description": "Nano Banana 功能的描述"
   },
   "message.featuresOpenaiimage": {
-    "message": "OpenAI-Bildfunktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der OpenAI-Bildfunktion"
+    "message": "OpenAI Bild-Modul ein- oder ausschalten.",
+    "description": "OpenAI 图像功能的描述"
   },
   "message.featuresSeedream": {
-    "message": "SeeDream-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der SeeDream-Funktion"
+    "message": "SeeDream-Modul ein- oder ausschalten.",
+    "description": "SeeDream 功能的描述"
   },
   "message.featuresSeedance": {
-    "message": "SeeDance-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der SeeDance-Funktion"
+    "message": "SeeDance-Modul aktivieren oder deaktivieren.",
+    "description": "SeeDance功能的描述"
   },
   "message.featuresWan": {
-    "message": "Wan-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Wan-Funktion"
+    "message": "Wan-Modul ein- oder ausschalten.",
+    "description": "Wan 功能的描述"
   },
   "message.featuresProducer": {
-    "message": "Producer-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Producer-Funktion"
+    "message": "Producer-Modul ein- oder ausschalten.",
+    "description": "Producer 功能的描述"
   },
   "message.featuresKimi": {
-    "message": "Kimi-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Kimi-Funktion"
+    "message": "Kimi-Modul ein- oder ausschalten.",
+    "description": "Kimi 功能的描述"
   },
   "message.featuresSerp": {
-    "message": "SERP-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der SERP-Funktion"
+    "message": "SERP-Modul ein- oder ausschalten.",
+    "description": "SERP 功能的描述"
   },
   "message.featuresLuma": {
-    "message": "Luma-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Luma-Funktion"
+    "message": "Luma-Modul ein- oder ausschalten.",
+    "description": "Luma 功能的描述"
   },
   "message.featuresPika": {
-    "message": "Pika-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Pika-Funktion"
+    "message": "Pika-Modul ein- oder ausschalten.",
+    "description": "Pika 功能的描述"
   },
   "message.featuresKling": {
-    "message": "Kling-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Kling-Funktion"
+    "message": "Kling-Modul ein- oder ausschalten.",
+    "description": "Kling 功能的描述"
   },
   "message.featuresHailuo": {
-    "message": "Hailuo-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Hailuo-Funktion"
+    "message": "Hailuo-Modul ein- oder ausschalten.",
+    "description": "Hailuo 功能的描述"
   },
   "message.featuresHeadshots": {
-    "message": "AI-Passfoto-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der AI-Passfoto-Funktion"
+    "message": "KI-Passfoto-Modul ein- oder ausschalten.",
+    "description": "AI证件照 功能的描述"
   },
   "message.featuresSupport": {
-    "message": "Kundensupport aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Support-Funktion"
+    "message": "Kundensupport ein- oder ausschalten.",
+    "description": "Support 功能的描述"
   },
   "message.featuresI18n": {
-    "message": "Mehrsprachige Unterstützung aktivieren oder deaktivieren. Bei Deaktivierung kann der Benutzer nur die Standardsprache verwenden.",
-    "description": "Beschreibung der mehrsprachigen Unterstützung"
+    "message": "Mehrsprachige Unterstützung ein- oder ausschalten. Wenn deaktiviert, kann der Nutzer nur die Standardsprache verwenden.",
+    "description": "多语言支持的描述"
   },
   "button.upload": {
     "message": "Hochladen",
-    "description": "Hochladen"
+    "description": "上传"
   },
   "button.enabled": {
     "message": "Aktiviert",
-    "description": "Schaltertext, der anzeigt, dass es aktiviert ist"
+    "description": "开关文字，表示已经启用"
   },
   "button.disabled": {
     "message": "Deaktiviert",
-    "description": "Schaltertext, der anzeigt, dass es deaktiviert ist"
+    "description": "开关文字，表示已经禁用"
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Als Titel im Bearbeitungsfeld angezeigt"
+    "description": "Displayed as the title in the editing box"
   },
   "message.featuresGemini": {
-    "message": "Gemini-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Gemini-Funktion"
+    "message": "Gemini-Modul ein- oder ausschalten.",
+    "description": "Description of the Gemini feature"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Als Titel im Bearbeitungsfeld angezeigt"
+    "description": "Displayed as the title in the editing box"
   },
   "message.featuresClaude": {
-    "message": "Claude-Funktion aktivieren oder deaktivieren.",
-    "description": "Beschreibung der Claude-Funktion"
+    "message": "Claude-Modul ein- oder ausschalten.",
+    "description": "Description of the Claude feature"
   },
   "placeholder.admins": {
-    "message": "Bitte geben Sie die Administrator-Benutzer-ID ein",
-    "description": "Platzhalter im Bearbeitungsfeld für Administratoren in den Seiteneinstellungen"
+    "message": "Bitte Administrator-ID eingeben",
+    "description": "站点设置中管理员编辑框的占位符"
   }
 }

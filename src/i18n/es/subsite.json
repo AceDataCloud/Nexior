@@ -21,7 +21,7 @@
   },
   "field.title": {
     "message": "Título del subdominio",
-    "description": "Campo para el título del subdominio"
+    "description": "Campo del título del subdominio"
   },
   "field.createdAt": {
     "message": "Fecha de creación",
@@ -61,7 +61,7 @@
   },
   "message.slugTip": {
     "message": "3-32 caracteres en minúsculas, números o guiones; no puede comenzar o terminar con un guion, ni contener guiones consecutivos.",
-    "description": "Descripción del campo slug"
+    "description": "Explicación del campo slug"
   },
   "message.slugInvalid": {
     "message": "El formato del prefijo del subdominio es incorrecto, por favor verifica las reglas y vuelve a intentarlo.",
@@ -78,6 +78,10 @@
   "message.createFailed": {
     "message": "Error al crear el subdominio, por favor intenta de nuevo más tarde.",
     "description": "Error en la creación"
+  },
+  "message.slugTaken": {
+    "message": "El subdominio {origin} ya está en uso, por favor prueba con otro.",
+    "description": "El slug ya está ocupado (código de duplicación devuelto por el backend)"
   },
   "message.loadFailed": {
     "message": "Error al cargar la lista de subdominios.",
@@ -121,11 +125,11 @@
   },
   "field.recordName": {
     "message": "Nombre del registro",
-    "description": "Columna de nombre del registro DNS"
+    "description": "Columna de nombre de registro DNS"
   },
   "field.recordValue": {
     "message": "Valor del registro",
-    "description": "Columna de valor del registro DNS"
+    "description": "Columna de valor de registro DNS"
   },
   "placeholder.hostname": {
     "message": "Por ejemplo, estudio.mimarca.com",
@@ -136,7 +140,7 @@
     "description": "Explicación en la parte superior del cuadro de diálogo"
   },
   "message.domainsEmpty": {
-    "message": "No has vinculado ningún dominio personalizado. Completa el dominio completo en el formulario a continuación y haz clic en 'Vincular' para comenzar.",
+    "message": "Aún no has vinculado ningún dominio personalizado. Completa el dominio completo en el formulario a continuación y haz clic en 'Vincular' para comenzar.",
     "description": "Mensaje de lista vacía"
   },
   "message.hostnameTip": {
@@ -144,39 +148,39 @@
     "description": "Sugerencia para el campo hostname"
   },
   "message.hostnameInvalid": {
-    "message": "El formato del dominio es incorrecto. Debe ser un dominio que se pueda resolver públicamente, no se permiten direcciones IP.",
+    "message": "El formato del dominio es incorrecto. Debe ser un dominio público que se pueda resolver, no se permiten direcciones IP.",
     "description": "Validación local fallida del hostname"
   },
   "message.domainCreated": {
-    "message": "Dominio enviado, por favor agrega el registro CNAME según las instrucciones.",
+    "message": "Dominio enviado, por favor sigue las instrucciones para agregar el registro CNAME.",
     "description": "Éxito en POST /site-domains/"
   },
   "message.domainCreateFailed": {
-    "message": "Error al crear el dominio, por favor intenta de nuevo más tarde.",
-    "description": "Error en la creación"
+    "message": "Error al crear el dominio, por favor inténtelo de nuevo más tarde.",
+    "description": "Mensaje de error cuando la creación del dominio falla"
   },
   "message.domainsLoadFailed": {
     "message": "Error al cargar la lista de dominios.",
     "description": "Error al cargar la lista de dominios"
   },
   "message.domainActive": {
-    "message": "¡Dominio activo! Ahora puedes acceder a la subpágina a través de tu dirección HTTPS personalizada.",
+    "message": "¡Dominio en línea! Ahora puedes acceder a la subestación a través de tu dirección HTTPS personalizada.",
     "description": "Entrar en estado activo"
   },
   "message.domainFailed": {
-    "message": "Fallo en la verificación o activación del dominio.",
-    "description": "Texto para el estado de fallo"
+    "message": "Error en la verificación o activación del dominio.",
+    "description": "Texto para estado fallido"
   },
   "message.domainVerifyFailed": {
     "message": "Verificación fallida, por favor verifica que el registro CNAME apunte a nuestro proxy inverso y que la propagación DNS esté completa.",
     "description": "Interfaz de verificación 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "¿Estás seguro de que deseas desvincular {hostname}? Después de desvincular, los usuarios no podrán acceder a tu sub-sitio desde este dominio.",
+    "message": "¿Estás seguro de que deseas desvincular {hostname}? Después de desvincular, los usuarios no podrán acceder a tu subestación desde este dominio.",
     "description": "Confirmación de eliminación"
   },
   "message.domainDeleteFailed": {
-    "message": "Fallo al eliminar el dominio.",
+    "message": "Error al eliminar el dominio.",
     "description": "Interfaz DELETE 5xx"
   },
   "status.pending": {
@@ -184,7 +188,7 @@
     "description": "Etiqueta de estado pendiente: esperando que el usuario agregue CNAME y haga clic en 'Verificar ahora'"
   },
   "status.active": {
-    "message": "Activo",
+    "message": "En línea",
     "description": "Etiqueta de estado activo"
   },
   "status.failed": {

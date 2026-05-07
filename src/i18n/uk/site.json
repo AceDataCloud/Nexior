@@ -192,7 +192,7 @@
     "description": "展示在编辑框的标题"
   },
   "title.distributionConfig": {
-    "message": "Налаштування розподілу",
+    "message": "Налаштування дистрибуції",
     "description": "展示在编辑框的标题"
   },
   "title.editDistributionDefaultInviterId": {
@@ -200,115 +200,163 @@
     "description": "展示在编辑框的标题"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Редагувати примусовий запрошувач",
-    "description": "Відображається в заголовку редактора"
+    "message": "Редагувати примусового запрошувача",
+    "description": "Відображається як заголовок у полі редагування"
   },
   "title.editQR": {
-    "message": "Редагувати QR-код",
-    "description": "Відображається в заголовку редактора"
+    "message": "Редагувати QR",
+    "description": "展示在编辑框的标题"
   },
   "title.editUrl": {
     "message": "Редагувати посилання",
-    "description": "Відображається в заголовку редактора"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.title": {
-    "message": "Введіть заголовок сайту",
-    "description": "Відображається в редакторі"
+    "message": "Введіть назву сайту",
+    "description": "展示在编辑框的标题"
   },
   "placeholder.origin": {
     "message": "Введіть домен сайту",
-    "description": "Відображається в редакторі"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editUrl": {
     "message": "Введіть посилання",
-    "description": "Відображається в редакторі"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.description": {
     "message": "Введіть опис сайту",
-    "description": "Відображається в редакторі"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.keywords": {
     "message": "Введіть ключові слова сайту",
-    "description": "Відображається в редакторі"
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Введіть ID за замовчуванням запрошувача",
-    "description": "Відображається в редакторі"
+    "message": "Введіть ID користувача за замовчуванням",
+    "description": "展示在编辑框的标题"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Введіть ID примусового запрошувача",
-    "description": "Відображається в редакторі"
+    "message": "Введіть примусовий ID користувача",
+    "description": "展示在编辑框的标题"
   },
   "message.uploadImageExceed": {
-    "message": "Перевищено ліміт завантаження зображення",
-    "description": "Повідомлення про перевищення ліміту завантаження зображення"
+    "message": "Завантажене зображення перевищує обмеження",
+    "description": "上传图片超过限制的提示"
   },
   "message.uploadImageError": {
     "message": "Помилка завантаження зображення",
-    "description": "Повідомлення про помилку завантаження зображення"
+    "description": "上传图片错误的提示"
+  },
+  "imageCropper.dropHere": {
+    "message": "Перетягніть сюди або натисніть для завантаження",
+    "description": "图片裁切器空状态提示"
+  },
+  "imageCropper.formatHint": {
+    "message": "Підтримуються JPG / PNG / WebP, максимум 20 МБ",
+    "description": "图片裁切器允许的文件格式"
+  },
+  "imageCropper.zoomIn": {
+    "message": "Збільшити",
+    "description": "图片裁切器放大按钮"
+  },
+  "imageCropper.zoomOut": {
+    "message": "Зменшити",
+    "description": "图片裁切器缩小按钮"
+  },
+  "imageCropper.rotateLeft": {
+    "message": "Повернути вліво",
+    "description": "图片裁切器逆时针旋转按钮"
+  },
+  "imageCropper.rotateRight": {
+    "message": "Повернути вправо",
+    "description": "图片裁切器顺时针旋转按钮"
+  },
+  "imageCropper.flipHorizontal": {
+    "message": "Горизонтально",
+    "description": "图片裁切器水平翻转按钮"
+  },
+  "imageCropper.replace": {
+    "message": "Вибрати інше",
+    "description": "图片裁切器替换图片按钮"
+  },
+  "imageCropper.invalidType": {
+    "message": "Виберіть файл зображення.",
+    "description": "图片裁切器格式不支持错误"
+  },
+  "imageCropper.noImage": {
+    "message": "Спочатку виберіть зображення.",
+    "description": "图片裁切器未选择图片错误"
+  },
+  "imageCropper.canvasError": {
+    "message": "Не вдалося створити обрізане зображення.",
+    "description": "图片裁切器canvas错误"
+  },
+  "imageCropper.uploadFailed": {
+    "message": "Завантаження зображення не вдалося.",
+    "description": "图片裁切器上传失败错误"
   },
   "message.editLogoTip": {
     "message": "Рекомендований розмір: 200*60px",
-    "description": "Підказка для завантаження зображення"
+    "description": "上传图片的提示语言"
   },
   "message.editQRTip": {
     "message": "Рекомендований розмір: 200*200px",
-    "description": "Підказка для завантаження зображення"
+    "description": "上传图片的提示语言"
   },
   "message.editFaviconTip": {
     "message": "Рекомендований розмір: 32*32px",
-    "description": "Підказка для завантаження зображення"
+    "description": "上传图片的提示语言"
   },
   "message.editUrl": {
     "message": "Введіть посилання",
-    "description": "Підказка для введення посилання"
+    "description": "请输入链接的提示"
   },
   "message.atLeastOneAdmin": {
-    "message": "Принаймні один адміністратор має залишитися",
-    "description": "Повідомлення про необхідність залишити одного адміністратора"
+    "message": "Залиште щонайменше одного адміністратора",
+    "description": "至少保留一个管理员的提示"
   },
   "message.distributionDefaultInviterIdTip": {
-    "message": "ID користувача за замовчуванням для запрошувача. Якщо посилання на розподіл не містить параметра inviter_id, буде використано цей ID.",
-    "description": "Підказка для ID запрошувача за замовчуванням"
+    "message": "ID користувача за замовчуванням, якщо посилання не містить параметру inviter_id, буде використаний цей ID.",
+    "description": "默认邀请人ID的提示"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID користувача примусового запрошувача. Якщо цей ID встановлено, незалежно від того, чи містить посилання на розподіл параметр inviter_id, буде використано цей ID.",
-    "description": "Підказка для ID примусового запрошувача"
+    "message": "Примусовий ID користувача, якщо встановлено, він буде використаний незалежно від наявності параметру inviter_id у посиланні.",
+    "description": "强制邀请人ID的提示"
   },
   "message.originTip": {
-    "message": "Домен сайту, конфігурація сайту прив'язана до домену, домен сайту не можна змінити.",
-    "description": "Підказка для домену сайту"
+    "message": "Домен сайту, прив’язаний до конфігурації сайту, змінити його не можна.",
+    "description": "站点域名的提示"
   },
   "message.titleTip": {
-    "message": "Заголовок сайту, відображається на вкладці браузера.",
-    "description": "Підказка для заголовка сайту"
+    "message": "Назва сайту, відображається на вкладці браузера.",
+    "description": "站点标题的提示"
   },
   "message.descriptionTip": {
-    "message": "Опис сайту, розташований у метаданих сайту, використовується для SEO-оптимізації.",
-    "description": "Підказка для опису сайту"
+    "message": "Опис сайту, міститься у метаданих для SEO.",
+    "description": "站点描述的提示"
   },
   "message.logoTip": {
-    "message": "Логотип сайту, відображається у верхній частині меню сайту, коли меню розгорнуте.",
-    "description": "Підказка для логотипу сайту"
+    "message": "Логотип сайту, відображається у верхній частині меню при розгортанні.",
+    "description": "站点 Logo 的提示"
   },
   "message.faviconTip": {
     "message": "Favicon сайту, відображається на вкладці браузера.",
-    "description": "Підказка для favicon сайту"
+    "description": "站点 Favicon 的提示"
   },
   "message.adminsTip": {
-    "message": "ID адміністраторів сайту, за замовчуванням перший користувач, який створює сайт, стає адміністратором, тільки адміністратори можуть керувати сайтом.",
-    "description": "Підказка для адміністраторів сайту"
+    "message": "ID адміністраторів сайту, перший користувач автоматично стає адміністратором. Лише адміністратори можуть керувати сайтом.",
+    "description": "站点管理员的提示"
   },
   "message.adminsTip2": {
-    "message": "Тут можна додавати або видаляти ID адміністраторів, можна переглянути ID користувачів на https://auth.acedata.cloud",
-    "description": "Підказка для адміністраторів сайту"
+    "message": "Тут можна додавати або видаляти ID адміністраторів. Переглянути ID користувачів: https://auth.acedata.cloud",
+    "description": "站点管理员的提示"
   },
   "message.keywordsTip": {
-    "message": "Ключові слова сайту, розташовані у метаданих сайту, використовуються для SEO-оптимізації.",
+    "message": "Ключові слова сайту, розташовані в метаінформації сайту, для SEO-оптимізації.",
     "description": "Підказка для ключових слів сайту"
   },
   "message.keywordsTip2": {
-    "message": "Тут можна додавати або видаляти ключові слова сайту, чим точніші ключові слова, тим краще для SEO-оптимізації.",
+    "message": "Тут можна додавати або видаляти ключові слова сайту. Чим точніші ключові слова, тим краще для SEO.",
     "description": "Підказка для ключових слів сайту"
   },
   "message.featuresChat": {
@@ -348,75 +396,75 @@
     "description": "Опис функції Sora"
   },
   "message.featuresSuno": {
-    "message": "Увімкнути або вимкнути модуль функцій Suno.",
+    "message": "Увімкнути або вимкнути модуль функції Suno.",
     "description": "Опис функції Suno"
   },
   "message.featuresPixverse": {
-    "message": "Увімкнути або вимкнути модуль функцій Pixverse.",
+    "message": "Увімкнути або вимкнути модуль функції Pixverse.",
     "description": "Опис функції Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Увімкнути або вимкнути модуль функцій FLux.",
+    "message": "Увімкнути або вимкнути модуль функції FLux.",
     "description": "Опис функції FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Увімкнути або вимкнути модуль функцій Nano Banana.",
+    "message": "Увімкнути або вимкнути модуль функції Nano Banana.",
     "description": "Опис функції Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Увімкнути або вимкнути модуль функцій OpenAI зображення.",
+    "message": "Увімкнути або вимкнути модуль функції OpenAI зображення.",
     "description": "Опис функції OpenAI зображення"
   },
   "message.featuresSeedream": {
-    "message": "Увімкнути або вимкнути модуль функцій SeeDream.",
+    "message": "Увімкнути або вимкнути модуль функції SeeDream.",
     "description": "Опис функції SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Увімкнути або вимкнути модуль функцій SeeDance.",
+    "message": "Увімкнути або вимкнути модуль функції SeeDance.",
     "description": "Опис функції SeeDance"
   },
   "message.featuresWan": {
-    "message": "Увімкнути або вимкнути модуль функцій Wan.",
+    "message": "Увімкнути або вимкнути модуль функції Wan.",
     "description": "Опис функції Wan"
   },
   "message.featuresProducer": {
-    "message": "Увімкнути або вимкнути модуль функцій Producer.",
+    "message": "Увімкнути або вимкнути модуль функції Producer.",
     "description": "Опис функції Producer"
   },
   "message.featuresKimi": {
-    "message": "Увімкнути або вимкнути модуль функцій Kimi.",
+    "message": "Увімкнути або вимкнути модуль функції Kimi.",
     "description": "Опис функції Kimi"
   },
   "message.featuresSerp": {
-    "message": "Увімкнути або вимкнути модуль функцій SERP.",
+    "message": "Увімкнути або вимкнути модуль функції SERP.",
     "description": "Опис функції SERP"
   },
   "message.featuresLuma": {
-    "message": "Увімкнути або вимкнути модуль функцій Luma.",
+    "message": "Увімкнути або вимкнути модуль функції Luma.",
     "description": "Опис функції Luma"
   },
   "message.featuresPika": {
-    "message": "Увімкнути або вимкнути модуль функцій Pika.",
+    "message": "Увімкнути або вимкнути модуль функції Pika.",
     "description": "Опис функції Pika"
   },
   "message.featuresKling": {
-    "message": "Увімкнути або вимкнути модуль функцій Kling.",
+    "message": "Увімкнути або вимкнути модуль функції Kling.",
     "description": "Опис функції Kling"
   },
   "message.featuresHailuo": {
-    "message": "Увімкнути або вимкнути модуль функцій Hailuo.",
+    "message": "Увімкнути або вимкнути модуль функції Hailuo.",
     "description": "Опис функції Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Увімкнути або вимкнути модуль функцій AI фото.",
+    "message": "Увімкнути або вимкнути модуль функції AI фото.",
     "description": "Опис функції AI фото"
   },
   "message.featuresSupport": {
-    "message": "Увімкнути або вимкнути підтримку клієнтів",
+    "message": "Увімкнути або вимкнути підтримку клієнтів.",
     "description": "Опис функції підтримки"
   },
   "message.featuresI18n": {
-    "message": "Увімкнути або вимкнути багатомовну підтримку, після вимкнення користувач зможе використовувати лише мову за замовчуванням.",
+    "message": "Увімкнути або вимкнути багатомовну підтримку. При вимкненні користувачі зможуть використовувати лише мову за замовчуванням.",
     "description": "Опис багатомовної підтримки"
   },
   "button.upload": {
@@ -436,7 +484,7 @@
     "description": "Відображається як заголовок у полі редагування"
   },
   "message.featuresGemini": {
-    "message": "Увімкнути або вимкнути модуль функцій Gemini.",
+    "message": "Увімкнути або вимкнути модуль функції Gemini.",
     "description": "Опис функції Gemini"
   },
   "field.featuresClaude": {
@@ -444,11 +492,11 @@
     "description": "Відображається як заголовок у полі редагування"
   },
   "message.featuresClaude": {
-    "message": "Увімкнути або вимкнути модуль функцій Claude.",
+    "message": "Увімкнути або вимкнути модуль функції Claude.",
     "description": "Опис функції Claude"
   },
   "placeholder.admins": {
-    "message": "Введіть ID адміністратора",
-    "description": "Плейсхолдер у полі редагування адміністратора в налаштуваннях сайту"
+    "message": "Введіть ID користувача адміністратора",
+    "description": "Плейсхолдер для поля редагування адміністратора в налаштуваннях сайту"
   }
 }

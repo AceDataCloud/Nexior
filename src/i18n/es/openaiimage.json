@@ -37,7 +37,7 @@
   },
   "name.elapsed": {
     "message": "Tiempo transcurrido",
-    "description": "Tiempo transcurrido de la tarea (segundos)"
+    "description": "Tiempo transcurrido de la tarea (en segundos)"
   },
   "name.prompt": {
     "message": "Sugerencia de imagen",
@@ -52,8 +52,56 @@
     "description": "Tamaño de la imagen de salida"
   },
   "description.size": {
-    "message": "Tamaño de salida para generar imágenes, valores comunes: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Tamaño de la imagen de salida. Diferentes modelos admiten diferentes tamaños: gpt-image-1 / gpt-image-1.5 solo admiten 1024x1024, 1536x1024, 1024x1536; gpt-image-2 también admite 1792x1024, 1024x1792, así como configuraciones de 2K/4K; gpt-image-2 permite tamaños personalizados.",
     "description": "Descripción del tamaño"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K estándar (precio base)",
+    "description": "Título del grupo de tamaño 1K, facturado al precio base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K preestablecido (1.5 veces el precio)",
+    "description": "Título del grupo de tamaño 2K, facturado a 1.5 veces el precio"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K preestablecido (1.5 veces el precio)",
+    "description": "Título del grupo de tamaño 4K, facturado a 1.5 veces el precio"
+  },
+  "name.customSize": {
+    "message": "Tamaño personalizado",
+    "description": "Etiqueta del interruptor de tamaño personalizado"
+  },
+  "description.customSize": {
+    "message": "Al habilitar, se puede establecer libremente el ancho y la altura (solo gpt-image-2 lo admite). Debe ser un múltiplo de 16, el lado más largo ≤ 3840, y el total de píxeles ≤ 8,294,400. Los tamaños que no son 1K estándar se facturan a 1.5 veces el precio.",
+    "description": "Descripción del tamaño personalizado"
+  },
+  "name.width": {
+    "message": "Ancho",
+    "description": "Etiqueta del cuadro de entrada de ancho"
+  },
+  "name.height": {
+    "message": "Alto",
+    "description": "Etiqueta del cuadro de entrada de alto"
+  },
+  "error.customSizePositive": {
+    "message": "El ancho y el alto deben ser enteros positivos",
+    "description": "El tamaño personalizado debe ser un entero positivo"
+  },
+  "error.customSizeMultiple": {
+    "message": "El ancho y el alto deben ser múltiplos de {multiple}",
+    "description": "El tamaño personalizado debe ser un múltiplo de 16"
+  },
+  "error.customSizeMin": {
+    "message": "El ancho y el alto no pueden ser menores que {min}",
+    "description": "Límite inferior del tamaño personalizado"
+  },
+  "error.customSizeMax": {
+    "message": "El lado más largo no puede exceder {max}",
+    "description": "Límite superior del lado más largo del tamaño personalizado"
+  },
+  "error.customSizePixels": {
+    "message": "El total de píxeles no puede exceder {pixels}",
+    "description": "Límite superior del total de píxeles del tamaño personalizado"
   },
   "description.prompt": {
     "message": "Palabras clave para generar o editar la imagen",
@@ -61,7 +109,7 @@
   },
   "description.model": {
     "message": "Modelo utilizado para la generación y edición de imágenes.",
-    "description": "Descripción del parámetro del modelo"
+    "description": "Descripción del parámetro model"
   },
   "description.imageUrls": {
     "message": "Sube de 1 a 5 imágenes de referencia para entrar en modo de edición.",
@@ -85,7 +133,7 @@
   },
   "button.uploadImageUrls": {
     "message": "Subir",
-    "description": "Botón para subir imágenes de referencia (simplificado a 'Subir')"
+    "description": "Botón para subir imágenes de referencia (simplificado a 'Subir', no usar 'Subir imágenes')"
   },
   "message.startingTask": {
     "message": "Iniciando tarea...",
@@ -97,7 +145,7 @@
   },
   "message.startTaskFailed": {
     "message": "Error al iniciar la tarea, por favor contacta al administrador:",
-    "description": "Error en la creación de la tarea"
+    "description": "Error al crear la tarea"
   },
   "message.usedUp": {
     "message": "Se han agotado tus créditos, por favor compra más créditos para continuar",
@@ -109,7 +157,7 @@
   },
   "message.uploadImageError": {
     "message": "Error al subir la imagen, por favor intenta de nuevo más tarde",
-    "description": "Error en la subida"
+    "description": "Error de subida"
   },
   "name.model": {
     "message": "Modelo",

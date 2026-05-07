@@ -64,8 +64,8 @@
     "description": "Beskrivning av model parameter"
   },
   "description.size": {
-    "message": "Bildstorlek. Stöder förinställningar `1K`, `2K`, `4K` eller anpassad `<bredd>x<höjd>`.",
-    "description": "Beskrivning av size parameter"
+    "message": "Bildstorlek. Olika modeller stöder olika förinställningar: 5.0 stöder endast 2K/3K/4K, 4.5/4.0 stöder 1K/2K/4K, 3.0-t2i och seededit-3.0-i2i stöder endast `<bredd>x<höjd>` pixelvärden (som 1024x1024, 1280x720). Förinställda modeller kan också välja 'Adaptiv' (behålla samma proportioner som referensbilden), eller ange valfri `<bredd>x<höjd>` direkt i rullgardinsmenyn.",
+    "description": "Beskrivning av size parameter (enligt modell)"
   },
   "description.watermark": {
     "message": "Om AI-vattenstämpel ska läggas till i den genererade bilden. Som standard aktiverad.",
@@ -83,9 +83,13 @@
     "message": "Välj",
     "description": "Välj platshållare"
   },
+  "placeholder.size": {
+    "message": "Välj förinställning eller ange <bredd>x<höjd>",
+    "description": "Platshållare för size val/ingång (el-select allow-create)"
+  },
   "placeholder.prompt": {
-    "message": "Ange prompt, t.ex.: en vit siamesisk katt",
-    "description": "Prompt platshållare"
+    "message": "Ange prompt, till exempel: en vit siamesisk katt",
+    "description": "Platshållare för prompt"
   },
   "button.generate": {
     "message": "Generera",
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Ladda upp",
     "description": "Ladda upp referensbilder knapp (engelska förenklas till 'Upload', använd inte 'Upload Images')"
+  },
+  "button.confirmContinue": {
+    "message": "Fortsätt",
+    "description": "Bekräfta knapp i meddelandefönstret för kapacitetskonflikt"
+  },
+  "button.cancelSwitch": {
+    "message": "Avbryt",
+    "description": "Avbryt knapp i meddelandefönstret för kapacitetskonflikt"
   },
   "message.startingTask": {
     "message": "Startar uppgift...",
@@ -119,36 +131,88 @@
     "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
     "description": "Misslyckades med uppladdning"
   },
+  "message.featureNotSupportedTitle": {
+    "message": "Behöver bekräftelse",
+    "description": "Rubrik för meddelandefönster om kapacitetskonflikt"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Den aktuella valet stöder inte följande aktiverade inställningar: {fields}. Att fortsätta kommer att rensa dessa inställningar.",
+    "description": "Text i meddelandefönstret för kapacitetskonflikt"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Rensade icke-stödda inställningar: {fields}",
+    "description": "Meddelande efter rensning av kapacitetskonflikt"
+  },
   "name.model": {
     "message": "Modell",
     "description": "Etikett för val av SeeDream-modell"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Val av SeeDream 4.5-modell"
+    "description": "Val för SeeDream 4.5-modell"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Val av SeeDream 4.0-modell"
+    "description": "Val för SeeDream 4.0-modell"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Val av SeeDream 3.0 t2i-modell"
+    "description": "Val för SeeDream 3.0 t2i-modell"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Val av SeeEdit 3.0 i2i-modell"
+    "description": "Val för SeeEdit 3.0 i2i-modell"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Val av SeeDream 5.0-modell (stöder bildserie och strömmande utdata)"
+    "description": "Val för SeeDream 5.0-modell (stöder bildserie och strömmande utdata)"
   },
   "name.maxImages": {
     "message": "Antal bilder",
-    "description": "Antal bilder som genereras i en bildserie (max_images)"
+    "description": "Antal bilder som genereras i bildserie (max_images)"
   },
   "description.maxImages": {
-    "message": "Antal bilder som genereras i en begäran (1-15). Sätt till 1 för enstaka bildläge; mer än 1 aktiverar automatiskt bildserie (sequential_image_generation=auto), och håller karaktär, stil och detaljer konsekventa över bilder. Endast doubao-seedream-5.0 / 4.5 / 4.0 stöds; om referensbilder laddas upp, måste (antal referensbilder + antal genererade) ≤ 15. Avgifter baseras på det faktiska antalet genererade bilder.",
-    "description": "Beskrivning av max_images parameter"
+    "message": "Antal bilder som genereras per begäran (1-15). Sätt till 1 för enstaka bildläge; mer än 1 aktiverar automatiskt bildserie (sequential_image_generation=auto), och håller karaktär, stil och detaljer konsekventa mellan bilder. Endast stöd för doubao-seedream-5.0 / 4.5 / 4.0; om referensbilder laddas upp, måste (antal referensbilder + antal genererade) ≤ 15. Avgifter baseras på det faktiska antalet genererade bilder.",
+    "description": "max_images parameterbeskrivning"
+  },
+  "name.seed": {
+    "message": "Slumptal",
+    "description": "seed parameter label"
+  },
+  "description.seed": {
+    "message": "Slumptal för reproduktion, intervall [-1, 2147483647]. -1 betyder varje gång slumpmässigt. Endast stöd för doubao-seedream-3.0-t2i och doubao-seededit-3.0-i2i.",
+    "description": "seed parameter description"
+  },
+  "name.guidanceScale": {
+    "message": "Vikt av ledord",
+    "description": "guidance_scale parameter label"
+  },
+  "description.guidanceScale": {
+    "message": "Styrka av ledordens efterlevnad, intervall [1, 10]. Ju högre värde, desto närmare följs ledorden. doubao-seedream-3.0-t2i standard 2.5, doubao-seededit-3.0-i2i standard 5.5.",
+    "description": "guidance_scale parameter description"
+  },
+  "name.outputFormat": {
+    "message": "Utdataformat",
+    "description": "output_format parameter label"
+  },
+  "description.outputFormat": {
+    "message": "Filformat för genererade bilder, jpeg eller png, standard jpeg. Endast doubao-seedream-5.0 stöds.",
+    "description": "output_format parameter description"
+  },
+  "size.group.tier": {
+    "message": "Upplösningsnivå",
+    "description": "Gruppering av storlekar i rullgardinsmenyn (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptiv",
+    "description": "Gruppering av adaptiva storlekar i rullgardinsmenyn"
+  },
+  "size.group.pixel": {
+    "message": "Specifika pixelstorlekar",
+    "description": "Gruppering av pixelstorlekar i rullgardinsmenyn"
+  },
+  "size.adaptive": {
+    "message": "Adaptiv (enligt referensbild)",
+    "description": "adaptive option label"
   }
 }

@@ -1,154 +1,218 @@
 {
   "name.taskId": {
     "message": "ID εργασίας",
-    "description": "Το ID της εργασίας"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Τύπος εργασίας",
-    "description": "Τύπος λειτουργίας εικόνας SeeDream"
+    "description": "SeeDream 图片操作类型"
   },
   "name.generate": {
-    "message": "Δημιουργία εικόνας",
-    "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
+    "message": "Δημιουργία",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Επεξεργασία εικόνας",
-    "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
+    "message": "Επεξεργασία",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Αναφορές εικόνας",
-    "description": "Αναφορές εικόνας για επεξεργασία"
+    "message": "Αναφορές",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Αποτυχία",
-    "description": "Η εργασία απέτυχε"
+    "description": "任务失败"
   },
   "name.failureReason": {
-    "message": "Λόγος αποτυχίας",
-    "description": "Λόγος αποτυχίας της εργασίας"
+    "message": "Αιτία αποτυχίας",
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Κατάσταση",
-    "description": "Κατάσταση της εργασίας"
+    "description": "任务状态"
   },
   "name.traceId": {
-    "message": "ID παρακολούθησης",
-    "description": "ID παρακολούθησης"
+    "message": "ID εντοπισμού",
+    "description": "追踪 ID"
   },
   "name.elapsed": {
-    "message": "Χρόνος εκτέλεσης",
-    "description": "Χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
+    "message": "Διάρκεια",
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Υπόδειξη εικόνας",
-    "description": "Λέξεις-κλειδιά για δημιουργία/επεξεργασία"
+    "message": "Προτροπή εικόνας",
+    "description": "生成/编辑的提示词"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Όνομα του δημιουργού εικόνας SeeDream"
+    "description": "SeeDream 图片生成器名称"
   },
   "name.size": {
-    "message": "Μέγεθος",
-    "description": "Μέγεθος της εξόδου εικόνας"
+    "message": "Διαστάσεις",
+    "description": "输出图片尺寸"
   },
   "name.watermark": {
     "message": "Υδατογράφημα",
-    "description": "Προσθήκη υδατογραφήματος"
+    "description": "是否添加水印"
   },
   "description.prompt": {
-    "message": "Λέξεις-κλειδιά για δημιουργία ή επεξεργασία εικόνας",
-    "description": "Περιγραφή λέξεων-κλειδιών"
+    "message": "Προτροπή για δημιουργία ή επεξεργασία εικόνας",
+    "description": "提示词描述"
   },
   "description.model": {
     "message": "Μοντέλο για δημιουργία ή επεξεργασία εικόνας.",
-    "description": "Περιγραφή παραμέτρου μοντέλου"
+    "description": "model 参数说明"
   },
   "description.size": {
-    "message": "Μέγεθος εικόνας. Υποστηρίζει προεπιλογές `1K`, `2K`, `4K` ή προσαρμοσμένο `<πλάτος>x<ύψος>`.",
-    "description": "Περιγραφή παραμέτρου μεγέθους"
+    "message": "Διαστάσεις εικόνας. Υποστηρίζονται διαφορετικές προεπιλογές ανά μοντέλο: 5.0 μόνο 2K/3K/4K, 4.5/4.0 1K/2K/4K, 3.0-t2i και seededit-3.0-i2i μόνο `<πλάτος>x<ύψος>` pixels (π.χ. 1024x1024, 1280x720). Οι προεπιλογές υποστηρίζουν επίσης «Προσαρμογή» για να διατηρείται η αναλογία με την αναφορά, ή μπορεί να εισαχθεί οποιαδήποτε τιμή `<πλάτος>x<ύψος>`.",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
-    "message": "Προσθήκη AI υδατογραφήματος στην παραγόμενη εικόνα. Προεπιλογή ενεργοποιημένη.",
-    "description": "Περιγραφή παραμέτρου υδατογραφήματος"
+    "message": "Προσθέτει υδατογράφημα AI στην εικόνα. Ενεργοποιείται από προεπιλογή.",
+    "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "Ανεβάστε 1-14 αναφορές εικόνας για να ενεργοποιήσετε την επεξεργασία εικόνας.",
-    "description": "Περιγραφή παραμέτρου εικόνας"
+    "message": "Μεταφορτώστε 1-14 εικόνες αναφοράς για επεξεργασία.",
+    "description": "image 参数说明"
   },
   "status.pending": {
     "message": "Σε αναμονή",
-    "description": "Κατάσταση αναμονής της εργασίας"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
-    "message": "Επιλέξτε",
-    "description": "Επιλογή placeholder"
+    "message": "Επιλογή",
+    "description": "选择占位"
+  },
+  "placeholder.size": {
+    "message": "Επιλέξτε προεπιλογή ή εισάγετε <πλάτος>x<ύψος>",
+    "description": "size 选择/输入占位（el-select allow-create）"
   },
   "placeholder.prompt": {
-    "message": "Εισάγετε λέξεις-κλειδιά, π.χ.: μια λευκή Σιαμέζα γάτα",
-    "description": "Placeholder λέξεων-κλειδιών"
+    "message": "Πληκτρολογήστε προτροπή, π.χ.: μια λευκή Σιαμέζα γάτα",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Δημιουργία",
-    "description": "Κουμπί δημιουργίας"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
-    "message": "Ανέβασμα",
-    "description": "Κουμπί ανέβασμα αναφορών εικόνας (απλοποιήστε στα Αγγλικά σε 'Upload', μην χρησιμοποιήσετε 'Upload Images')"
+    "message": "Μεταφόρτωση",
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "Συνέχεια αλλαγής",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "Ακύρωση",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας...",
-    "description": "Μήνυμα εκκίνησης εργασίας"
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Επιτυχής εκκίνηση εργασίας δημιουργίας",
-    "description": "Η εργασία δημιουργήθηκε με επιτυχία"
+    "message": "Η εργασία δημιουργίας ξεκίνησε επιτυχώς",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Αποτυχία εκκίνησης εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή:",
-    "description": "Αποτυχία δημιουργίας εργασίας"
+    "message": "Αποτυχία δημιουργίας εργασίας, επικοινωνήστε με τον διαχειριστή:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Τα σημεία σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα σημεία για να συνεχίσετε",
-    "description": "Μήνυμα εξάντλησης"
+    "message": "Τα credits σας έχουν εξαντληθεί, αγοράστε περισσότερα για να συνεχίσετε",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Μπορείτε να ανεβάσετε έως 14 εικόνες",
-    "description": "Περιορισμός αριθμού εικόνας"
+    "message": "Μπορείτε να μεταφορτώσετε έως 14 εικόνες",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Αποτυχία ανέβασματος εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
-    "description": "Αποτυχία ανέβασματος"
+    "message": "Αποτυχία μεταφόρτωσης, προσπαθήστε ξανά αργότερα",
+    "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Απαιτείται επιβεβαίωση",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Η τρέχουσα επιλογή δεν υποστηρίζει τις ακόλουθες ενεργές ρυθμίσεις: {fields}. Η συνέχιση θα τις διαγράψει.",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Διαγράφηκαν οι μη υποστηριζόμενες ρυθμίσεις: {fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "Μοντέλο",
-    "description": "Ετικέτα επιλογής μοντέλου SeeDream"
+    "description": "SeeDream 模型选择标签"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Επιλογή μοντέλου SeeDream 4.5"
+    "description": "SeeDream 4.5 模型选项"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Επιλογή μοντέλου SeeDream 4.0"
+    "description": "SeeDream 4.0 模型选项"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Επιλογή μοντέλου SeeDream 3.0 t2i"
+    "description": "SeeDream 3.0 t2i 模型选项"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Επιλογή μοντέλου SeeEdit 3.0 i2i"
+    "description": "SeeEdit 3.0 i2i 模型选项"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Επιλογή μοντέλου SeeDream 5.0 (υποστηρίζει ομαδική και ροή εξόδου)"
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
   },
   "name.maxImages": {
     "message": "Αριθμός εικόνων",
-    "description": "Αριθμός εικόνων για ομαδική δημιουργία (max_images)"
+    "description": "组图生成的图片张数（max_images）"
   },
   "description.maxImages": {
-    "message": "Αριθμός εικόνων που δημιουργούνται σε μία αίτηση (1-15). Αν οριστεί σε 1, είναι σε λειτουργία μεμονωμένης εικόνας; αν είναι μεγαλύτερο από 1, ενεργοποιείται αυτόματα η ομαδική δημιουργία (sequential_image_generation=auto), διατηρώντας τον χαρακτήρα, το στυλ και τις λεπτομέρειες σταυρωτά. Υποστηρίζεται μόνο από doubao-seedream-5.0 / 4.5 / 4.0; αν ανεβάσετε αναφορές εικόνας, πρέπει να πληρούν (αριθμός αναφορών + αριθμός δημιουργίας) ≤ 15. Η χρέωση γίνεται με βάση τον πραγματικό αριθμό εικόνων που δημιουργούνται.",
+    "message": "Αριθμός εικόνων που δημιουργούνται σε μία αίτηση (1-15). Όταν είναι 1, είναι σε λειτουργία μίας εικόνας; αν είναι μεγαλύτερο από 1, ενεργοποιείται αυτόματα η ομαδική δημιουργία εικόνων (sequential_image_generation=auto), διατηρώντας τους χαρακτήρες, το στυλ και τις λεπτομέρειες συνεπείς μεταξύ των εικόνων. Υποστηρίζονται μόνο οι εκδόσεις doubao-seedream-5.0 / 4.5 / 4.0; εάν ανεβάσετε αναφορές εικόνας, πρέπει να πληρούν την προϋπόθεση (αριθμός αναφορών + αριθμός δημιουργίας) ≤ 15. Η χρέωση γίνεται με βάση τον πραγματικό αριθμό εικόνων που δημιουργούνται.",
     "description": "Περιγραφή παραμέτρου max_images"
+  },
+  "name.seed": {
+    "message": "Τυχαίος σπόρος",
+    "description": "Ετικέτα παραμέτρου seed"
+  },
+  "description.seed": {
+    "message": "Τυχαίος σπόρος για αναπαραγωγή, εύρος [-1, 2147483647]. -1 σημαίνει τυχαία κάθε φορά. Υποστηρίζεται μόνο από doubao-seedream-3.0-t2i και doubao-seededit-3.0-i2i.",
+    "description": "Περιγραφή παραμέτρου seed"
+  },
+  "name.guidanceScale": {
+    "message": "Βάρος προτροπών",
+    "description": "Ετικέτα παραμέτρου guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Ένταση τήρησης προτροπών, εύρος [1, 10]. Όσο μεγαλύτερη η τιμή, τόσο πιο κοντά στις προτροπές. Η προεπιλογή για doubao-seedream-3.0-t2i είναι 2.5, για doubao-seededit-3.0-i2i είναι 5.5.",
+    "description": "Περιγραφή παραμέτρου guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Μορφή εξόδου",
+    "description": "Ετικέτα παραμέτρου output_format"
+  },
+  "description.outputFormat": {
+    "message": "Μορφή αρχείου της παραγόμενης εικόνας, jpeg ή png, προεπιλογή jpeg. Υποστηρίζεται μόνο από doubao-seedream-5.0.",
+    "description": "Περιγραφή παραμέτρου output_format"
+  },
+  "size.group.tier": {
+    "message": "Κατηγορία ανάλυσης",
+    "description": "Ομαδοποίηση κατηγοριών ανάλυσης (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Προσαρμοστική",
+    "description": "Ομαδοποίηση προσαρμοστικής κατηγορίας"
+  },
+  "size.group.pixel": {
+    "message": "Συγκεκριμένο μέγεθος σε pixels",
+    "description": "Ομαδοποίηση κατηγορίας μεγέθους σε pixels"
+  },
+  "size.adaptive": {
+    "message": "Προσαρμοστική (ίδια με την αναφορά)",
+    "description": "Ετικέτα επιλογής adaptive"
   }
 }

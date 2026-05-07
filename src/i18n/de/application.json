@@ -61,7 +61,7 @@
   },
   "field.usedAmount": {
     "message": "Verwendet",
-    "description": "Betrag, der im Antrag verwendet wurde."
+    "description": "Bereits verwendeter Betrag des Antrags."
   },
   "field.apiKey": {
     "message": "API-Schlüssel",
@@ -69,11 +69,11 @@
   },
   "field.service": {
     "message": "Dienst",
-    "description": "Dienst des Antrags."
+    "description": "Angeforderter Dienst."
   },
   "field.operation": {
     "message": "Operation",
-    "description": "Operation des Antrags."
+    "description": "Durchgeführte Operation des Antrags."
   },
   "field.allowConsumeGlobal": {
     "message": "Allgemeines Guthaben verwenden",
@@ -81,11 +81,11 @@
   },
   "field.amount": {
     "message": "Betrag",
-    "description": "Betrag des Antrags."
+    "description": "Angeforderter Betrag."
   },
   "field.scope": {
     "message": "Bereich",
-    "description": "Bereich des Antrags, kann global oder spezifisch sein."
+    "description": "Angeforderter Bereich, kann global oder spezifisch für einen Dienst sein."
   },
   "field.traceId": {
     "message": "Verfolgungs-ID",
@@ -105,7 +105,7 @@
   },
   "field.credential": {
     "message": "Anmeldeinformationen",
-    "description": "Anmeldeinformationen des Antrags."
+    "description": "Angeforderte Anmeldeinformationen."
   },
   "field.name": {
     "message": "Name",
@@ -121,7 +121,7 @@
   },
   "field.freeAmount": {
     "message": "Kostenloser Betrag",
-    "description": "Kostenloser Betrag des Antrags."
+    "description": "Angeforderter kostenloser Betrag."
   },
   "field.extraPrice": {
     "message": "Zusätzlicher Preis",
@@ -135,177 +135,189 @@
     "message": "Antrag erfolgreich",
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst erfolgreich beantragt hat."
   },
+  "message.applyFailed": {
+    "message": "Kostenloser Testantrag fehlgeschlagen, bitte aktualisieren Sie die Seite und versuchen Sie es erneut.",
+    "description": "Hinweis, der angezeigt wird, wenn die automatische Erstellung des globalen Antrags fehlschlägt."
+  },
+  "message.welcomeWithCredits": {
+    "message": "🎉 Willkommen bei Nexior! Wir haben Ihnen {credits} Credits geschenkt, die Sie für alle Dienste nutzen können.",
+    "description": "Willkommensnachricht, die nach erfolgreicher Erstellung des globalen Antrags oder beim ersten Betreten angezeigt wird."
+  },
+  "message.welcomeNoCredits": {
+    "message": "🎉 Willkommen bei Nexior! Ihr Konto ist bereit, um alle Dienste zu nutzen.",
+    "description": "Willkommensnachricht, die angezeigt wird, wenn im globalen Antrag kein kostenloses Guthaben verfügbar ist."
+  },
   "message.notApplied": {
-    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie ihn vor der Nutzung.",
+    "message": "Sie haben diesen Dienst noch nicht beantragt, bitte beantragen Sie den Dienst vor der Nutzung.",
     "description": "Nachricht, die angezeigt wird, wenn der Benutzer diesen Dienst noch nicht beantragt hat."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Sie können Guthaben auf das allgemeine Guthaben aufladen oder für jede Antraginstanz separat aufladen. Diese Aufladung wird in das allgemeine Guthaben eingehen und wird automatisch verwendet, wenn das Guthaben einer Antraginstanz nicht ausreicht.",
-    "description": "Hinweis, der erklärt, dass die Aufladung in das allgemeine Guthaben eingeht und bei unzureichendem Guthaben automatisch verwendet wird."
+    "message": "Sie können wählen, ob Sie auf das allgemeine Guthaben aufladen oder jedes Anwendungsinstanz separat aufladen möchten. Diese Aufladung geht auf das allgemeine Guthaben, das automatisch verwendet wird, wenn das Guthaben einer Instanz nicht ausreicht.",
+    "description": "Hinweistext, erklärt, dass Aufladungen ins allgemeine Guthaben gehen und bei unzureichendem Instanzguthaben automatisch aufgefüllt werden. Fachbegriff: allgemeines Guthaben=General Balance (nicht als Global Balance übersetzen)."
   },
   "message.yourApplication": {
-    "message": "Ihr Antrag",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer seinen Antrag sieht."
+    "message": "Ihre Bewerbung",
+    "description": "当用户的申请时向用户显示的消息。"
   },
   "message.unverified": {
-    "message": "Sie müssen die Identitätsprüfung abschließen, um diesen Dienst zu beantragen.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Identitätsprüfung noch nicht abgeschlossen hat."
+    "message": "Sie müssen Ihre Identität verifizieren, um diesen Service zu beantragen",
+    "description": "当用户尚未完成实名认证时向用户显示的消息。"
   },
   "message.goVerify": {
     "message": "Zur Identitätsprüfung",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Identitätsprüfung noch nicht abgeschlossen hat."
+    "description": "当用户尚未完成实名认证时向用户显示的消息。"
   },
   "message.requiredParameter": {
     "message": "Pflichtfeld",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Pflichtfeld nicht ausgefüllt hat."
+    "description": "当用户尚未输入必填参数时向用户显示的消息。"
   },
   "message.example": {
     "message": "Beispiel",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Pflichtfeld nicht ausgefüllt hat."
+    "description": "当用户尚未输入必填参数时向用户显示的消息。"
   },
   "message.applicationSelection": {
-    "message": "Hier sind die Pakete, die Sie derzeit beantragt oder gekauft haben. Sie können eines auswählen, um den Dienst fortzusetzen.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer ein Paket auswählen muss."
+    "message": "Hier sind Ihre aktuellen Pakete. Wählen Sie eines aus, um den Service weiter zu nutzen.",
+    "description": "当用户需要选择一个申请时向用户显示的消息。"
   },
   "message.createCredentialSuccessfully": {
-    "message": "Anmeldeinformationen erfolgreich erstellt",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer Anmeldeinformationen erfolgreich erstellt hat."
+    "message": "Zugangsdaten erfolgreich erstellt",
+    "description": "当用户成功创建凭据时向用户显示的消息。"
   },
   "message.readPolicy": {
-    "message": "Ich habe die Bedingungen gelesen und stimme zu",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
+    "message": "Ich habe gelesen und stimme zu",
+    "description": "当用户已阅读并同意政策时向用户显示的消息。"
   },
   "message.policy": {
-    "message": "Nutzungsbedingungen für Daten- und Technologiedienste",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Bedingungen gelesen und zugestimmt hat."
+    "message": "Nutzungsbedingungen für Datentechnologie",
+    "description": "当用户已阅读并同意政策时向用户显示的消息。"
   },
   "message.notAgreePolicy": {
-    "message": "Sie haben den Nutzungsbedingungen für Daten- und Technologiedienste nicht zugestimmt.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Bedingungen nicht zugestimmt hat."
+    "message": "Sie haben den Nutzungsbedingungen für Datentechnologie nicht zugestimmt",
+    "description": "当用户尚未同意政策时向用户显示的消息。"
   },
   "message.welcome": {
     "message": "Willkommen",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Dienstantrag bestätigt."
+    "description": "当用户确认服务申请时向用户显示的消息。"
   },
   "message.rotateCredential": {
     "message": "Schlüssel zurücksetzen",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzt."
+    "description": "当用户重置密钥时向用户显示的消息。"
   },
   "message.rotateCredentialConfirm": {
-    "message": "Sind Sie sicher, dass Sie den Schlüssel zurücksetzen möchten? Nach dem Zurücksetzen kann er nicht wiederhergestellt werden.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Schlüssel zurücksetzen möchte."
+    "message": "Möchten Sie den Schlüssel wirklich zurücksetzen? Dies kann nicht rückgängig gemacht werden.",
+    "description": "当用户确认重置密钥时向用户显示的消息。"
   },
   "message.idDoesNotExist": {
-    "message": "Antrag existiert nicht",
-    "description": "Nachricht, die angezeigt wird, wenn der Antrag nicht existiert."
+    "message": "Bewerbung existiert nicht",
+    "description": "当申请不存在时向用户显示的消息。"
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Schlüssel erfolgreich zurückgesetzt",
-    "description": "Nachricht, die angezeigt wird, wenn der Schlüssel erfolgreich zurückgesetzt wurde."
+    "description": "当密钥重置成功时向用户显示的消息。"
   },
   "message.rotateCredentialFailed": {
-    "message": "Schlüssel zurücksetzen fehlgeschlagen, bitte kontaktieren Sie den Support.",
-    "description": "Nachricht, die angezeigt wird, wenn das Zurücksetzen des Schlüssels fehlgeschlagen ist."
+    "message": "Schlüssel konnte nicht zurückgesetzt werden, bitte kontaktieren Sie den Support",
+    "description": "当密钥重置失败时向用户显示的消息。"
   },
   "message.fetchFailed": {
-    "message": "Abruf der Anwendung fehlgeschlagen, bitte später erneut versuchen.",
-    "description": "Hinweis, wenn der Abruf der Anwendungslisten fehlgeschlagen ist."
+    "message": "Anwendungen konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "description": "获取应用列表失败时的提示。"
   },
   "message.updateFailed": {
     "message": "Änderung fehlgeschlagen",
-    "description": "Nachricht, die angezeigt wird, wenn die Änderung fehlgeschlagen ist."
+    "description": "当修改失败时向用户显示的消息。"
   },
   "message.updateSuccessfully": {
     "message": "Änderung erfolgreich",
-    "description": "Nachricht, die angezeigt wird, wenn die Änderung erfolgreich war."
+    "description": "当修改成功时向用户显示的消息。"
   },
   "message.neverExpire": {
-    "message": "Nie ablaufen",
-    "description": "Nachricht, die angezeigt wird, wenn der Antrag nie abläuft."
+    "message": "Läuft nie ab",
+    "description": "当申请永不过期时向用户显示的消息。"
   },
   "title.buyService": {
-    "message": "Dienst kaufen",
-    "description": "Titel der Seite, wenn der Benutzer einen Dienst kaufen möchte."
+    "message": "Service kaufen",
+    "description": "当用户想要购买服务时页面的标题。"
   },
   "title.globalBuy": {
-    "message": "Ace Data Cloud Allgemeine Punkteaufladung",
-    "description": "Titel der Seite, wenn der Benutzer einen allgemeinen Dienst kaufen möchte."
+    "message": "Ace Data Cloud Allgemeine Punkte aufladen",
+    "description": "当用户想要购买通用服务时页面的标题。"
   },
   "title.applicationRemainingCount": {
-    "message": "Änderungsanzahl",
-    "description": "Titel der Seite, wenn der Benutzer die Antragsanzahl ändern möchte."
+    "message": "Anzahl ändern",
+    "description": "当用户想要修改申请计数时页面的标题。"
   },
   "title.manageApplication": {
-    "message": "Antragsverwaltung",
-    "description": "Titel der Seite, wenn der Benutzer den Antrag verwalten möchte."
+    "message": "Bewerbungsverwaltung",
+    "description": "当用户想要管理申请时页面的标题。"
   },
   "title.applicationBalance": {
     "message": "Exklusive Punkte - {service}",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer den Antragssaldo einsehen möchte."
+    "description": "当用户查看申请余额时向用户显示的消息。"
   },
   "title.count": {
-    "message": "Gesamtanzahl der Anträge",
-    "description": "Titel der Seite, wenn der Benutzer die Antragsanzahl einsehen möchte."
+    "message": "Gesamtanzahl der Bewerbungen",
+    "description": "当用户查看申请计数时页面的标题。"
   },
   "message.countDescription": {
-    "message": "Jeder Dienst entspricht einer Antragsinstanz, die Sie unten verwalten können, um Schlüssel, Nutzung usw. anzuzeigen.",
-    "description": "Nachricht, die angezeigt wird, wenn der Benutzer die Antragsanzahl einsehen möchte."
+    "message": "Jeder Service entspricht einer Bewerbung. Unten können Sie Schlüssel, Nutzung und weitere Details verwalten.",
+    "description": "当用户查看申请计数时向用户显示的消息。"
   },
   "title.globalBalance": {
-    "message": "Allgemeines Guthaben",
-    "description": "Titel der Seite, wenn der Benutzer das allgemeine Guthaben einsehen möchte."
+    "message": "Allgemeiner Kontostand",
+    "description": "当用户查看通用余额时页面的标题。英文必须翻译为“General Balance”，中文为“通用余额”。"
   },
   "message.globalBalanceDescription": {
-    "message": "Wenn 'Allgemeines Guthaben erlauben' aktiviert ist, wird bei unzureichendem Instanzguthaben automatisch das allgemeine Guthaben verwendet.",
-    "description": "Hinweis, dass bei unzureichendem Instanzguthaben automatisch das allgemeine Guthaben verbraucht wird."
+    "message": "Wenn „Allgemeiner Kontostand zulassen“ aktiviert ist, wird bei unzureichendem Instanzguthaben automatisch der allgemeine Kontostand verwendet.",
+    "description": "提示文案，说明实例余额不足时会自动消耗通用余额。术语：通用余额=General Balance（注意不要翻译成 Global Balance）。"
   },
   "button.service": {
-    "message": "Exklusiver Support",
-    "description": "Button-Text, der den Benutzer zur Seite für exklusiven Support weiterleitet."
+    "message": "Support",
+    "description": "按钮文本，点击此按钮将转到专属客服页面（英文建议：Support，保持简短）。"
   },
   "button.acquire": {
     "message": "Support hinzufügen",
-    "description": "Button-Text, der den Benutzer dazu auffordert, exklusiven Support hinzuzufügen."
+    "description": "按钮文本，点击此按钮将添加专属客服以获取（英文建议：Add Support，保持简短）。"
   },
   "button.delete": {
     "message": "Löschen",
-    "description": "Button-Text, der den Benutzer auffordert, den Eintrag zu löschen."
+    "description": "Text im Button, der beim Klicken dieses Elements löscht."
   },
   "field.dataset": {
     "message": "Datensatz",
-    "description": "Der Datensatz, der für den Antrag verwendet wird."
+    "description": "Der beantragte Datensatz."
   },
   "field.disabled": {
     "message": "Deaktiviert",
-    "description": "Ob die Anwendung deaktiviert ist."
+    "description": "Ob der Antrag deaktiviert ist."
   },
   "message.addServiceToAcquire": {
-    "message": "Bitte fügen Sie den Support hinzu, um zu erhalten",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er noch keinen Support hinzugefügt hat (englischer Vorschlag: Add support to acquire)."
+    "message": "Support hinzufügen, um zu erhalten",
+    "description": "Nachricht für den Benutzer, wenn noch kein Support hinzugefügt wurde (Englisch: Add support to acquire)."
   },
   "message.confirmApplying": {
-    "message": "Antrag auf Dienst bestätigen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er den Antrag auf Dienst bestätigt."
+    "message": "Antrag bestätigen",
+    "description": "Nachricht für den Benutzer zur Bestätigung des Serviceantrags."
   },
   "message.confirmDelete": {
-    "message": "Sind Sie sicher, dass Sie diesen Antrag löschen möchten? Nach der Löschung gehen alle Antragsdaten verloren.",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er die Löschung des Antrags bestätigt."
+    "message": "Möchten Sie diesen Antrag wirklich löschen? Alle Antragsdaten gehen verloren.",
+    "description": "Nachricht für den Benutzer zur Bestätigung der Antraglöschung."
   },
   "message.placeEnter": {
-    "message": "Bitte geben Sie '$0$' zur Bestätigung ein",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er Text zur Bestätigung eingeben muss, bitte übersetzen Sie `'$0$'` nicht."
+    "message": "Bitte '$0$' eingeben, um zu bestätigen",
+    "description": "Nachricht für den Benutzer, wenn Text zur Bestätigung eingegeben werden muss. `$0$` nicht übersetzen."
   },
   "message.invalidInput": {
     "message": "Ungültige Eingabe",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn er ungültige Daten eingibt."
+    "description": "Nachricht für den Benutzer bei ungültigen Eingaben."
   },
   "message.deleteFailed": {
-    "message": "Löschung fehlgeschlagen",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Löschung fehlschlägt."
+    "message": "Löschen fehlgeschlagen",
+    "description": "Nachricht für den Benutzer, wenn das Löschen fehlschlägt."
   },
   "message.deleteSuccessfully": {
-    "message": "Löschung erfolgreich",
-    "description": "Nachricht, die dem Benutzer angezeigt wird, wenn die Löschung erfolgreich war."
+    "message": "Erfolgreich gelöscht",
+    "description": "Nachricht für den Benutzer bei erfolgreichem Löschen."
   },
   "title.application": {
     "message": "Antrag",
@@ -313,6 +325,6 @@
   },
   "title.description": {
     "message": "Beschreibung",
-    "description": "Titel der Seite, wenn der Benutzer die Nutzungsbedingungen für technische Dienstleistungen einsehen möchte."
+    "description": "Titel der Seite beim Anzeigen der Nutzungsbedingungen für Daten- und Technikdienste."
   }
 }

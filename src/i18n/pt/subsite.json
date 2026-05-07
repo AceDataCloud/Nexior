@@ -60,7 +60,7 @@
     "description": "Mensagem de lista vazia"
   },
   "message.slugTip": {
-    "message": "3-32 caracteres em letras minúsculas, números ou hífens; não pode começar ou terminar com hífen e não pode conter hífens consecutivos.",
+    "message": "Letras minúsculas, números ou hífens de 3 a 32 caracteres; não pode começar ou terminar com um hífen e não pode conter hífens consecutivos.",
     "description": "Explicação do campo slug"
   },
   "message.slugInvalid": {
@@ -68,7 +68,7 @@
     "description": "Falha na validação do slug"
   },
   "message.zoneMissing": {
-    "message": "O domínio principal atual não está configurado com uma zona de subdomínio, entre em contato com o administrador do site.",
+    "message": "O domínio principal atual não está configurado para subdomínios, entre em contato com o administrador do site.",
     "description": "Zona de subdomínio ausente"
   },
   "message.created": {
@@ -79,12 +79,16 @@
     "message": "Falha ao criar o subdomínio, por favor, tente novamente mais tarde.",
     "description": "Falha na criação"
   },
+  "message.slugTaken": {
+    "message": "O subdomínio {origin} já está em uso, por favor, escolha outro e tente novamente.",
+    "description": "Slug já ocupado ao criar o subdomínio (código de duplicação retornado pelo backend)"
+  },
   "message.loadFailed": {
     "message": "Falha ao carregar a lista de subdomínios.",
     "description": "Falha ao carregar a lista"
   },
   "message.openNowConfirm": {
-    "message": "Subdomínio {origin} criado. Deseja abri-lo agora para continuar a configuração?",
+    "message": "Subdomínio {origin} foi criado. Deseja abri-lo agora para continuar a configuração?",
     "description": "Pergunta se deseja abrir imediatamente após a criação"
   },
   "title.domains": {
@@ -132,7 +136,7 @@
     "description": "Placeholder para o campo de entrada do hostname"
   },
   "message.domainsIntro": {
-    "message": "Vincule o domínio que você possui a este subdomínio. Você precisa ter a capacidade de modificar o DNS desse domínio. Siga as instruções abaixo para adicionar um registro CNAME e clique em 'Verificar Agora', nós automaticamente emitiremos e renovaremos o certificado HTTPS gratuitamente através do Let's Encrypt.",
+    "message": "Vincule o domínio que você possui a este subdomínio. Você precisa ter a capacidade de modificar o DNS desse domínio. Adicione um registro CNAME conforme indicado abaixo e clique em 'Verificar Agora', nós emitiremos e renovaremos gratuitamente o certificado HTTPS através do Let's Encrypt.",
     "description": "Explicação no topo da caixa de diálogo"
   },
   "message.domainsEmpty": {
@@ -148,24 +152,24 @@
     "description": "Falha na validação local do hostname"
   },
   "message.domainCreated": {
-    "message": "Domínio submetido, por favor, siga as instruções para adicionar o registro CNAME.",
-    "description": "Sucesso no POST /site-domains/"
+    "message": "Domínio enviado, siga as instruções para adicionar o registro CNAME.",
+    "description": "POST /site-domains/ bem-sucedido"
   },
   "message.domainCreateFailed": {
-    "message": "Falha ao criar o domínio, por favor, tente novamente mais tarde.",
-    "description": "Falha na criação"
+    "message": "Falha ao criar domínio, por favor tente novamente mais tarde.",
+    "description": "Mensagem de erro quando a criação do domínio falha"
   },
   "message.domainsLoadFailed": {
     "message": "Falha ao carregar a lista de domínios.",
     "description": "Falha ao carregar a lista de domínios"
   },
   "message.domainActive": {
-    "message": "Domínio ativo! Agora você pode acessar o subsite pelo seu endereço HTTPS personalizado.",
-    "description": "Indica que o domínio entrou no estado Ativo"
+    "message": "Domínio ativo! Agora você pode acessar a subpágina através do seu endereço HTTPS personalizado.",
+    "description": "Entrou no estado Ativo"
   },
   "message.domainFailed": {
     "message": "Falha na verificação ou ativação do domínio.",
-    "description": "Texto de estado de falha"
+    "description": "Texto para o estado Falhado"
   },
   "message.domainVerifyFailed": {
     "message": "Verificação falhou, verifique se o registro CNAME está apontando para nosso proxy reverso e se a propagação DNS foi concluída.",
@@ -180,15 +184,15 @@
     "description": "Interface DELETE 5xx"
   },
   "status.pending": {
-    "message": "Aguardando verificação",
-    "description": "Etiqueta de estado pendente: aguardando que o usuário adicione o CNAME e clique em 'Verificar agora'"
+    "message": "Pendente",
+    "description": "Etiqueta de estado Pendente: aguardando o usuário adicionar CNAME e clicar em 'Verificar agora'"
   },
   "status.active": {
     "message": "Ativo",
-    "description": "Etiqueta de estado ativo"
+    "description": "Etiqueta de estado Ativo"
   },
   "status.failed": {
     "message": "Falhou",
-    "description": "Etiqueta de estado de falha"
+    "description": "Etiqueta de estado Falhado"
   }
 }

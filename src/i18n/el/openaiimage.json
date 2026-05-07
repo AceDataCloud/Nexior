@@ -1,130 +1,178 @@
 {
   "name.taskId": {
-    "message": "ID Εργασίας",
-    "description": "Το ID της εργασίας"
+    "message": "ID εργασίας",
+    "description": "任务的 ID"
   },
   "name.task": {
-    "message": "Τύπος Εργασίας",
-    "description": "Τύπος λειτουργίας εικόνας OpenAI"
+    "message": "Τύπος εργασίας",
+    "description": "OpenAI Image 图片操作类型"
   },
   "name.generate": {
-    "message": "Δημιουργία Εικόνας",
-    "description": "Τύπος λειτουργίας: Δημιουργία εικόνας"
+    "message": "Δημιουργία",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Επεξεργασία Εικόνας",
-    "description": "Τύπος λειτουργίας: Επεξεργασία εικόνας"
+    "message": "Επεξεργασία",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Αναφορές Εικόνας",
-    "description": "Αναφορές εικόνας για επεξεργασία"
+    "message": "Αναφορά εικόνων",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Αποτυχία",
-    "description": "Η εργασία απέτυχε"
+    "description": "任务失败"
   },
   "name.failureReason": {
-    "message": "Λόγος Αποτυχίας",
-    "description": "Λόγος αποτυχίας της εργασίας"
+    "message": "Αιτία αποτυχίας",
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Κατάσταση",
-    "description": "Κατάσταση της εργασίας"
+    "description": "任务状态"
   },
   "name.traceId": {
-    "message": "ID Ιχνηλάτη",
-    "description": "ID ιχνηλάτη"
+    "message": "ID παρακολούθησης",
+    "description": "追踪 ID"
   },
   "name.elapsed": {
-    "message": "Χρόνος Εκτέλεσης",
-    "description": "Χρόνος εκτέλεσης της εργασίας (σε δευτερόλεπτα)"
+    "message": "Διάρκεια",
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Υπόδειξη Εικόνας",
-    "description": "Υπόδειξη για δημιουργία/επεξεργασία"
+    "message": "Οδηγίες εικόνας",
+    "description": "生成/编辑的提示词"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Όνομα ρομπότ OpenAI Image"
+    "description": "OpenAI Image 机器人名称"
   },
   "name.size": {
     "message": "Μέγεθος",
-    "description": "Μέγεθος εξόδου εικόνας"
+    "description": "输出图像尺寸"
   },
   "description.size": {
-    "message": "Μέγεθος εξόδου για τη δημιουργία εικόνας, συνηθισμένες τιμές: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Περιγραφή μεγέθους"
+    "message": "Μέγεθος εξόδου εικόνας. Διαφορετικά μοντέλα υποστηρίζουν διαφορετικά μεγέθη: gpt-image-1 / gpt-image-1.5 υποστηρίζουν μόνο 1024x1024, 1536x1024, 1024x1536· gpt-image-2 υποστηρίζει επίσης 1792x1024, 1024x1792, και προεπιλογές 2K/4K· στο gpt-image-2 μπορείτε να ορίσετε προσαρμοσμένο μέγεθος.",
+    "description": "尺寸说明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Πρότυπο (Βασική τιμή)",
+    "description": "1K 尺寸分组标题，按基础价计费"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Προεπιλογή (1.5x τιμή)",
+    "description": "2K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Προεπιλογή (1.5x τιμή)",
+    "description": "4K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "name.customSize": {
+    "message": "Προσαρμοσμένο μέγεθος",
+    "description": "自定义尺寸开关标签"
+  },
+  "description.customSize": {
+    "message": "Ενεργοποιώντας μπορείτε να ορίσετε ελεύθερα πλάτος και ύψος (μόνο gpt-image-2). Πρέπει να είναι πολλαπλάσια του 16, η μεγαλύτερη πλευρά ≤ 3840, συνολικά pixels ≤ 8.294.400. Μη πρότυπα μεγέθη 1K χρεώνονται 1.5x.",
+    "description": "自定义尺寸说明"
+  },
+  "name.width": {
+    "message": "Πλάτος",
+    "description": "宽度输入框标签"
+  },
+  "name.height": {
+    "message": "Ύψος",
+    "description": "高度输入框标签"
+  },
+  "error.customSizePositive": {
+    "message": "Το πλάτος και ύψος πρέπει να είναι θετικοί ακέραιοι",
+    "description": "自定义尺寸必须为正整数"
+  },
+  "error.customSizeMultiple": {
+    "message": "Το πλάτος και ύψος πρέπει να είναι πολλαπλάσια του {multiple}",
+    "description": "自定义尺寸必须为 16 的倍数"
+  },
+  "error.customSizeMin": {
+    "message": "Το πλάτος και ύψος δεν μπορεί να είναι μικρότερο από {min}",
+    "description": "自定义尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "Η μεγαλύτερη πλευρά δεν μπορεί να υπερβαίνει {max}",
+    "description": "自定义尺寸最长边上限"
+  },
+  "error.customSizePixels": {
+    "message": "Συνολικά pixels δεν μπορούν να υπερβαίνουν {pixels}",
+    "description": "自定义尺寸总像素上限"
   },
   "description.prompt": {
-    "message": "Υπόδειξη για τη δημιουργία ή επεξεργασία εικόνας",
-    "description": "Περιγραφή υπόδειξης"
+    "message": "Οδηγίες για δημιουργία ή επεξεργασία εικόνας",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Μοντέλο για τη δημιουργία και επεξεργασία εικόνας.",
-    "description": "Περιγραφή παραμέτρου μοντέλου"
+    "message": "Το μοντέλο που χρησιμοποιείται για δημιουργία και επεξεργασία εικόνας.",
+    "description": "model 参数说明"
   },
   "description.imageUrls": {
-    "message": "Ανεβάστε 1-5 αναφορές εικόνας για να μπείτε σε λειτουργία επεξεργασίας.",
-    "description": "Περιγραφή παραμέτρου image_urls"
+    "message": "Ανεβάστε 1-5 αναφορές εικόνων για να ενεργοποιηθεί η λειτουργία επεξεργασίας.",
+    "description": "image_urls 参数说明"
   },
   "status.pending": {
-    "message": "Σε Αναμονή",
-    "description": "Κατάσταση αναμονής της εργασίας"
+    "message": "Σε αναμονή",
+    "description": "任务等待状态"
   },
   "placeholder.select": {
-    "message": "Επιλέξτε",
-    "description": "Καταληκτική επιλογή"
+    "message": "Επιλογή",
+    "description": "选择占位"
   },
   "placeholder.prompt": {
-    "message": "Εισάγετε υπόδειξη, π.χ.: Γατάκι με νερομπογιές στο τραπέζι",
-    "description": "Καταληκτική υπόδειξη"
+    "message": "Πληκτρολογήστε οδηγίες, π.χ. γατάκι με υδατοχρώματα πάνω σε τραπέζι",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Δημιουργία",
-    "description": "Κουμπί δημιουργίας"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Ανέβασμα",
-    "description": "Κουμπί για ανέβασμα αναφορών εικόνας (απλοποιήστε στα Αγγλικά σε 'Upload', μην χρησιμοποιήσετε 'Upload Images')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
   },
   "message.startingTask": {
     "message": "Εκκίνηση εργασίας...",
-    "description": "Μήνυμα εκκίνησης εργασίας"
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Επιτυχής εκκίνηση εργασίας δημιουργίας",
-    "description": "Η εργασία δημιουργήθηκε επιτυχώς"
+    "message": "Η εργασία δημιουργήθηκε με επιτυχία",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Αποτυχία εκκίνησης εργασίας, παρακαλώ επικοινωνήστε με τον διαχειριστή:",
-    "description": "Αποτυχία δημιουργίας εργασίας"
+    "message": "Η δημιουργία της εργασίας απέτυχε, επικοινωνήστε με τον διαχειριστή:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Τα πιστωτικά σας έχουν εξαντληθεί, παρακαλώ αγοράστε περισσότερα για να συνεχίσετε",
-    "description": "Μήνυμα εξάντλησης"
+    "message": "Τα credits σας έχουν εξαντληθεί. Αγοράστε περισσότερα για να συνεχίσετε",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
     "message": "Μπορείτε να ανεβάσετε έως 5 εικόνες",
-    "description": "Περιορισμός αριθμού εικόνας"
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Αποτυχία ανέβασματος εικόνας, παρακαλώ δοκιμάστε ξανά αργότερα",
-    "description": "Αποτυχία ανέβασματος"
+    "message": "Το ανέβασμα απέτυχε, δοκιμάστε ξανά αργότερα",
+    "description": "上传失败"
   },
   "name.model": {
     "message": "Μοντέλο",
-    "description": "Ετικέτα επιλογής μοντέλου OpenAI"
+    "description": "OpenAI 图像模型选择标签"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Επιλογή μοντέλου gpt-image-1"
+    "description": "gpt-image-1 模型选项"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Επιλογή μοντέλου gpt-image-1.5"
+    "description": "gpt-image-1.5 模型选项"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Επιλογή μοντέλου gpt-image-2"
+    "description": "gpt-image-2 模型选项"
   }
 }

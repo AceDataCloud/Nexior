@@ -16,7 +16,7 @@
     "description": "Motion Control 中的参考视频输入"
   },
   "name.motionPrompt": {
-    "message": "Додатковий підказник (необов’язково)",
+    "message": "Додатковий підказка (необов’язково)",
     "description": "Motion Control 中的补充提示词"
   },
   "name.characterOrientation": {
@@ -36,11 +36,11 @@
     "description": "keep_original_sound 开关"
   },
   "description.motionImage": {
-    "message": "Завантажте зображення персонажа; всі елементи відео будуть на його основі",
+    "message": "Завантажте зображення персонажа для орієнтування всіх елементів у відео",
     "description": "motion image_url 说明"
   },
   "description.motionVideo": {
-    "message": "Завантажте відео руху; персонаж повторюватиме рухи з відео (MP4 / MOV, ≤1 хв, ≤1 ГБ)",
+    "message": "Завантажте відео руху, щоб персонаж повторював рухи з нього (MP4 / MOV, ≤1 хв, ≤1 ГБ)",
     "description": "motion video_url 说明"
   },
   "description.motionPrompt": {
@@ -48,7 +48,7 @@
     "description": "motion prompt 说明"
   },
   "description.characterOrientation": {
-    "message": "Вибір «За відео» підходить для складних рухів; «За зображенням» — для кращої орієнтації персонажа при русі камери",
+    "message": "Вибір «За відео» краще для складних рухів; «За зображенням» забезпечує орієнтацію персонажа за картинкою та кращу рухомість камери",
     "description": "character_orientation 说明"
   },
   "description.motionMode": {
@@ -56,7 +56,7 @@
     "description": "motion mode 说明"
   },
   "description.keepOriginalSound": {
-    "message": "Увімкнено — зберегти оригінальний звук відео; вимкнено — без звуку",
+    "message": "Увімкніть для збереження оригінального звуку; вимкніть, щоб вихідне відео було без звуку",
     "description": "keep_original_sound 说明"
   },
   "placeholder.motionPrompt": {
@@ -64,7 +64,7 @@
     "description": "motion prompt 占位符"
   },
   "button.generateMotion": {
-    "message": "Створити відео з рухом",
+    "message": "Створити відео руху",
     "description": "Motion Control 生成按钮"
   },
   "message.motionMissingInputs": {
@@ -72,7 +72,7 @@
     "description": "Motion Control 缺少输入时的提示"
   },
   "inspiration.title": {
-    "message": "Ідеї та шаблони",
+    "message": "Ідеї та пресети",
     "description": "Inspiration 抽屉的标题"
   },
   "inspiration.openButton": {
@@ -80,15 +80,15 @@
     "description": "打开 Inspiration 抽屉的按钮"
   },
   "inspiration.removeChip": {
-    "message": "Видалити шаблон",
+    "message": "Видалити пресет",
     "description": "移除提示词区中已选预设的按钮 aria-label"
   },
   "inspiration.hint": {
-    "message": "Натисніть на фразу для додавання до підказки; повторне натискання видаляє.",
+    "message": "Клікніть фразу для додавання до підказок; повторний клік — для видалення",
     "description": "Inspiration 抽屉顶部的使用说明"
   },
   "inspiration.empty": {
-    "message": "Немає доступних шаблонів",
+    "message": "Пресети відсутні",
     "description": "Inspiration 抽屉空状态"
   },
   "inspiration.selectedSummary": {
@@ -108,15 +108,15 @@
     "description": "Inspiration 分组：运动速度"
   },
   "inspiration.group.shotType": {
-    "message": "Тип кадру",
+    "message": "Кадр",
     "description": "Inspiration 分组：景别 / 视角"
   },
   "inspiration.group.light": {
-    "message": "Світло та тіні",
+    "message": "Освітлення",
     "description": "Inspiration 分组：光影"
   },
   "inspiration.group.frame": {
-    "message": "Кадрування",
+    "message": "Композиція",
     "description": "Inspiration 分组：画面 / 构图"
   },
   "inspiration.group.atmosphere": {
@@ -128,19 +128,19 @@
     "description": ""
   },
   "inspiration.chip.stationary": {
-    "message": "Камера нерухома",
+    "message": "Камера стоїть",
     "description": ""
   },
   "inspiration.chip.handheld": {
-    "message": "Рукам камера",
+    "message": "Зйомка з рук",
     "description": ""
   },
   "inspiration.chip.zoomOut": {
-    "message": "Камера віддаляється",
+    "message": "Віддалення камери",
     "description": ""
   },
   "inspiration.chip.zoomIn": {
-    "message": "Камера наближається",
+    "message": "Наближення камери",
     "description": ""
   },
   "inspiration.chip.follow": {
@@ -148,15 +148,15 @@
     "description": ""
   },
   "inspiration.chip.panRight": {
-    "message": "Камера рухається вправо",
+    "message": "Панорамування вправо",
     "description": ""
   },
   "inspiration.chip.tiltUp": {
-    "message": "Камера нахиляється вгору",
+    "message": "Нахил камери вгору",
     "description": ""
   },
   "inspiration.chip.tiltDown": {
-    "message": "Камера нахиляється вниз",
+    "message": "Нахил камери вниз",
     "description": ""
   },
   "inspiration.chip.orbit": {
@@ -168,7 +168,7 @@
     "description": ""
   },
   "inspiration.chip.speedMedium": {
-    "message": "Середня швидкість камери",
+    "message": "Середня швидкість руху камери",
     "description": ""
   },
   "inspiration.chip.speedFast": {
@@ -184,27 +184,27 @@
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Далекий план",
+    "message": "Дальний план",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
-    "message": "Зйомка знизу",
+    "message": "Зйомка з низького кута",
     "description": ""
   },
   "inspiration.chip.shotHighAngle": {
-    "message": "Зйомка зверху",
+    "message": "Зйомка з високого кута",
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
-    "message": "Мілка глибина різкості",
+    "message": "мілка глибина різкості",
     "description": ""
   },
   "inspiration.chip.shotFront": {
-    "message": "Фронтальний вигляд",
+    "message": "Фронтальний",
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "Профільний вигляд",
+    "message": "Профіль",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
@@ -212,35 +212,35 @@
     "description": ""
   },
   "inspiration.chip.shotDrone": {
-    "message": "Дроновий вигляд",
+    "message": "З дрона",
     "description": ""
   },
   "inspiration.chip.lightSunlight": {
-    "message": "Сонячне світло",
+    "message": "Сонячне",
     "description": ""
   },
   "inspiration.chip.lightSoft": {
-    "message": "М'яке світло",
+    "message": "М’яке",
     "description": ""
   },
   "inspiration.chip.lightNeon": {
-    "message": "Неонове світло",
+    "message": "Неон",
     "description": ""
   },
   "inspiration.chip.lightWarm": {
-    "message": "Тепле світло",
+    "message": "Тепле",
     "description": ""
   },
   "inspiration.chip.lightNature": {
-    "message": "Природне світло",
+    "message": "Природне",
     "description": ""
   },
   "inspiration.chip.lightCandle": {
-    "message": "Свічкове світло",
+    "message": "Свічка",
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
-    "message": "Міське нічне освітлення",
+    "message": "Міське нічне",
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
@@ -252,72 +252,72 @@
     "description": ""
   },
   "inspiration.chip.atmosphereMysterious": {
-    "message": "Таємнича атмосфера",
+    "message": "Таємнича",
     "description": ""
   },
   "inspiration.chip.atmospherePeaceful": {
-    "message": "Спокійна атмосфера",
+    "message": "Спокійна",
     "description": ""
   },
   "inspiration.chip.atmosphereHeartwarming": {
-    "message": "Тепла атмосфера",
+    "message": "Тепла",
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "Яскрава атмосфера",
+    "message": "Жива",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
-    "message": "Барвиста атмосфера",
+    "message": "Барвиста",
     "description": ""
   },
   "name.taskId": {
     "message": "ID завдання",
-    "description": "ID завдання"
+    "description": "任务的 ID"
   },
   "name.type": {
     "message": "Тип",
-    "description": "Тип контенту Kling відео, наприклад, 'посилання', 'текст' тощо"
+    "description": "要生成的 Kling视频的内容类型，如'链接'、'文本'等"
   },
   "name.modeStd": {
     "message": "Стандарт (720p)",
-    "description": "Стандартний режим Kling відео (вихід 720p)"
+    "description": "Kling视频的标准模式（输出 720p）"
   },
   "name.modePro": {
     "message": "Висока якість (1080p)",
-    "description": "Високоякісний режим Kling відео (вихід 1080p)"
+    "description": "Kling视频的高品质模式（输出 1080p）"
   },
   "name.mode4k": {
-    "message": "Нативний 4K",
-    "description": "Kling 4K режим (підтримується лише v3 / v3-Omni)"
+    "message": "Рідна 4K",
+    "description": "Kling 4K 模式（仅 v3 / v3-Omni 支持）"
   },
   "name.cameraControl": {
-    "message": "Керування камерою",
-    "description": "Типи та параметри керування камерою"
+    "message": "Контроль камери",
+    "description": "相机控制类型与参数"
   },
   "name.cameraTypeNone": {
-    "message": "Не використовувати",
-    "description": "Не використовувати керування камерою"
+    "message": "Немає",
+    "description": "不使用运镜控制"
   },
   "name.cameraTypeSimple": {
-    "message": "Користувацький (6 вимірів)",
-    "description": "Використовувати користувацькі параметри шести вимірів"
+    "message": "Користувацький (6 осей)",
+    "description": "使用自定义六维度参数"
   },
   "name.cameraTypeDownBack": {
-    "message": "Опустити та відступити",
-    "description": "Пресет керування: опустити та відступити"
+    "message": "Вниз і назад",
+    "description": "预设运镜：下移并后退"
   },
   "name.cameraTypeForwardUp": {
-    "message": "Вперед та вгору",
-    "description": "Пресет керування: вперед та вгору"
+    "message": "Вперед і вгору",
+    "description": "预设运镜：向前并上移"
   },
   "name.cameraTypeLeftTurnForward": {
-    "message": "Повернути вліво та вперед",
-    "description": "Пресет керування: повернути вліво та вперед"
+    "message": "Лівий поворот вперед",
+    "description": "预设运镜：左转并前进"
   },
   "name.cameraTypeRightTurnForward": {
-    "message": "Повернути вправо та вперед",
-    "description": "Пресет керування: повернути вправо та вперед"
+    "message": "Правий поворот вперед",
+    "description": "预设运镜：右转并前进"
   },
   "name.cc_horizontal": {
     "message": "Горизонтальний рух",
@@ -328,15 +328,15 @@
     "description": "camera_control.config.vertical"
   },
   "name.cc_pan": {
-    "message": "Горизонтальне панорамування",
+    "message": "Горизонтальний панорам",
     "description": "camera_control.config.pan"
   },
   "name.cc_tilt": {
-    "message": "Вертикальне нахилення",
+    "message": "Вертикальний нахил",
     "description": "camera_control.config.tilt"
   },
   "name.cc_roll": {
-    "message": "Крутіння",
+    "message": "Обертання",
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
@@ -344,64 +344,64 @@
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
-    "message": "Не вдалося",
-    "description": "Статус невдачі завдання"
+    "message": "Помилка",
+    "description": "任务的失败状态"
   },
   "name.failureReason": {
-    "message": "Причина невдачі",
-    "description": "Причина невдачі завдання"
+    "message": "Причина помилки",
+    "description": "任务失败的原因"
   },
   "name.status": {
     "message": "Статус",
-    "description": "Статус завдання"
+    "description": "任务的状态"
   },
   "name.traceId": {
     "message": "ID відстеження",
-    "description": "ID відстеження завдання"
+    "description": "任务的追踪 ID"
   },
   "name.elapsed": {
     "message": "Час виконання",
-    "description": "Час виконання завдання (секунди)"
+    "description": "任务的耗时（秒）"
   },
   "name.createdAt": {
-    "message": "Час створення",
-    "description": "Дата та час створення Kling відео"
+    "message": "Дата створення",
+    "description": "生成 Kling 视频的日期和时间"
   },
   "name.cfgScale": {
     "message": "Рівень свободи",
-    "description": "Параметр рівня свободи для створення відео (0-1), чим більше значення, тим ближче до референсу"
+    "description": "生成视频的自由度参数（0-1），值越大越贴近参考（英文建议：Freedom Level）"
   },
   "name.generateAudio": {
-    "message": "Синхронне створення звуку",
-    "description": "Чи потрібно синхронно створювати звукові ефекти, підтримується kling-v3, kling-v3-omni та kling-v2-6 (pro режим)"
+    "message": "Генерувати звук",
+    "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
   },
   "name.startImage": {
-    "message": "Перша кадрова зображення",
-    "description": "Мітка поля форми: перше кадрове зображення"
+    "message": "Перша кадр",
+    "description": "表单字段标签：首帧参考图（英文建议翻译为“First Frame”，保持简短避免遮挡按钮）"
   },
   "name.negativePrompt": {
-    "message": "Негативний підказка",
-    "description": "Негативний текстовий підказка для створення відео"
+    "message": "Негативний промт",
+    "description": "生成视频的负向文本提示"
   },
   "name.endImage": {
-    "message": "Остання кадрова зображення",
-    "description": "Мітка поля форми: останнє кадрове зображення"
+    "message": "Останній кадр",
+    "description": "表单字段标签：尾帧参考图（英文建议翻译为“Last Frame”，保持简短避免遮挡按钮）"
   },
   "name.videoUrl": {
     "message": "Користувацьке відео",
-    "description": "Користувацьке відео"
+    "description": "自定义视频"
   },
   "name.prompt": {
-    "message": "Підказка для відео",
-    "description": "Підказка для введення контенту"
+    "message": "Промт відео",
+    "description": "内容输入的提示"
   },
   "name.duration": {
-    "message": "Тривалість відео",
-    "description": "Тривалість відео"
+    "message": "Тривалість",
+    "description": "视频的时长"
   },
   "name.ingredients": {
-    "message": "Створення відео з кількох зображень",
-    "description": "Перемикач/мітка для створення відео з кількох зображень"
+    "message": "Багато зображень",
+    "description": "多图创建视频开关/标签（英文建议：Multi-Image，保持简短）"
   },
   "name.model": {
     "message": "Версія моделі",
@@ -409,290 +409,298 @@
   },
   "name.ratio": {
     "message": "Співвідношення відео",
-    "description": "Співвідношення відео, яке використовується для генерації відео"
+    "description": "要生成视频所采用的视频比例"
   },
   "name.mode": {
     "message": "Режим відео",
-    "description": "Режим, який використовується для генерації відео"
+    "description": "要生成视频所采用的模式"
   },
   "name.effect": {
     "message": "Ефект відео",
-    "description": "Назва параметра стилю, що використовується для перемикання між різними версіями або стилями моделі"
+    "description": "风格参数的名称，用于在不同版本或风格的模型之间切换"
   },
   "name.ingredientsModel": {
-    "message": "Модель інгредієнтів",
-    "description": "Версія моделі, яка використовується для генерації відео"
+    "message": "Модель компонентів",
+    "description": "要生成视频所采用的模型版本"
   },
   "name.klingBot": {
     "message": "Kling Bot",
-    "description": "Назва генератора відео Kling"
+    "description": "Kling 视频生成器的名称"
   },
   "description.ingredients": {
-    "message": "Якщо ви хочете завантажити кілька зображень для створення власного відео, натисніть цю кнопку.",
-    "description": "Опис параметра 'ingredients'"
+    "message": "Щоб створити відео з кількох зображень, увімкніть цю кнопку.",
+    "description": "参数'ingredients'的描述"
   },
   "description.imageUrl": {
-    "message": "У завданні створення відео з кількома зображеннями потрібно завантажити кілька зображень.",
-    "description": "Опис параметра 'imageUrl'"
+    "message": "Для створення відео з кількох зображень потрібно завантажити декілька файлів.",
+    "description": "参数'imageUrl'的描述"
   },
   "description.prompt": {
-    "message": "Підказка для генерації відео Kling",
-    "description": "Опис параметра 'prompt'"
+    "message": "Підказка для генерації Kling-відео",
+    "description": "参数'prompt'的描述"
   },
   "description.negativePrompt": {
-    "message": "Негативний текстовий підказка, необов'язковий, не більше 200 символів",
-    "description": "Опис параметра 'negativePrompt'"
+    "message": "Негативна підказка (опційно, не більше 200 символів)",
+    "description": "参数'prompt'的描述"
   },
   "description.uploadStartImage": {
-    "message": "Завантажте зображення першого кадру як посилання для генерації, останнє відео буде базуватися на першому кадрі",
-    "description": "Опис параметра завантаження посилання"
+    "message": "Завантажте перший кадр для орієнтиру при генерації відео",
+    "description": "上传参考参数的描述"
   },
   "description.uploadEndImage": {
-    "message": "Завантажте зображення останнього кадру як посилання для генерації, останнє відео буде базуватися на останньому кадрі",
-    "description": "Опис параметра завантаження посилання"
+    "message": "Завантажте останній кадр для орієнтиру при генерації відео",
+    "description": "上传参考参数的描述"
   },
   "description.cfgScale": {
-    "message": "Ступінь свободи генерації відео, необов'язковий [0,1]. Чим більше значення, тим сильніша кореляція.",
-    "description": "Опис параметра завантаження посилання"
+    "message": "Ступінь свободи генерації відео, опційно [0,1]. Більше значення – більша відповідність",
+    "description": "上传参考参数的描述"
   },
   "description.mode": {
-    "message": "std має вищу продуктивність, pro має кращу якість; 4K підтримується лише v3 / v3-Omni і не може використовуватися одночасно з контролем камери",
-    "description": "Загальний опис поля режиму"
+    "message": "std – краща продуктивність, pro – краща якість; 4K підтримується лише v3 / v3-Omni та не сумісне з керуванням камерою",
+    "description": "模式字段的整体说明"
   },
   "description.mode4kRequiresV3": {
     "message": "Підтримується лише kling-v3 / kling-v3-omni",
-    "description": "Причина, чому опція 4k вимкнена (несумісність моделі)"
+    "description": "4k 选项被禁用的原因（模型不匹配）"
   },
   "description.mode4kIncompatibleCamera": {
-    "message": "Увімкнено контроль камери, не можна використовувати з 4K одночасно",
-    "description": "Причина, чому опція 4k вимкнена (встановлено контроль камери)"
+    "message": "Включено керування камерою, 4K не можна використовувати одночасно",
+    "description": "4k 选项被禁用的原因（已设置运镜）"
   },
   "description.duration": {
-    "message": "Звичайна модель підтримує лише 5/10 секунд; v3 / v3-Omni підтримує 3/5/8/10/12/15 секунд",
-    "description": "Загальний опис поля тривалості"
+    "message": "Звичайні моделі підтримують лише 5/10 с; v3 / v3-Omni підтримують 3/5/8/10/12/15 с",
+    "description": "时长字段的整体说明"
   },
   "description.durationV3Only": {
     "message": "Підтримується лише v3 / v3-Omni",
-    "description": "Причина, чому опція тривалості вимкнена"
+    "description": "时长选项禁用原因"
   },
   "description.generateAudio": {
-    "message": "Синтезувати звукові ефекти під час генерації відео. Підтримується лише kling-v3 / kling-v3-omni / kling-v2-6 (pro режим)",
-    "description": "Опис перемикача звукових ефектів (підтримується)"
+    "message": "Генерувати аудіо разом з відео. Підтримується лише kling-v3 / kling-v3-omni / kling-v2-6 (pro)",
+    "description": "音效开关说明（已支持）"
   },
   "description.generateAudioUnsupported": {
-    "message": "Поточна модель не підтримує синхронізацію звукових ефектів, доступні лише kling-v3 / kling-v3-omni / kling-v2-6 (pro режим)",
-    "description": "Опис перемикача звукових ефектів (вимкнено)"
+    "message": "Поточна модель не підтримує аудіо; доступно лише kling-v3 / kling-v3-omni / kling-v2-6 (pro)",
+    "description": "音效开关说明（已禁用）"
   },
   "description.cameraControl": {
-    "message": "Контролюйте напрямок руху камери. Вибір 'Користувацький' дозволяє налаштувати в 6 вимірах, кожен з значенням [-1, 1]",
-    "description": "Опис контролю камери"
+    "message": "Керуйте напрямком руху камери. Виберіть «Користувацький» для налаштування 6 параметрів [-1,1]",
+    "description": "运镜控制说明"
   },
   "description.cameraControlDisabled4k": {
-    "message": "Вибрано режим 4K, контроль камери недоступний, будь ласка, перемкніться на std / pro, а потім увімкніть",
-    "description": "Причина, чому контроль камери вимкнено"
+    "message": "Вибрано 4K, керування камерою недоступне, перемкніть на std / pro для активації",
+    "description": "运镜控制被禁用原因"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "Після завантаження першого кадру керування камерою недоступне, видаліть кадр для активації",
+    "description": "运镜控制被禁用原因（image2video）"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Поточна модель/режим/тривалість не підтримує керування камерою, змініть конфігурацію",
+    "description": "运镜控制被禁用原因（模型不支持）"
   },
   "status.pending": {
     "message": "Очікування",
-    "description": "Стан очікування завдання"
+    "description": "任务的等待状态"
   },
   "status.processing": {
     "message": "Обробка",
-    "description": "Стан обробки завдання"
+    "description": "任务的等待状态"
   },
   "placeholder.paddingNoise": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення шуму заповнення"
+    "message": "Виберіть...",
+    "description": "填充噪音输入的占位符"
   },
   "placeholder.select": {
-    "message": "Вибрати",
-    "description": "Плейсхолдер для тексту вибору"
+    "message": "Виберіть",
+    "description": "下拉选择字段中的占位文本"
   },
   "placeholder.paddingLevel": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для рівня заповнення"
+    "message": "Виберіть...",
+    "description": "填充级别的占位符"
   },
   "placeholder.prompt": {
     "message": "Введіть підказку для стилю відео, наприклад: moving",
-    "description": "Плейсхолдер для поля підказки"
+    "description": "提示字段中的占位文本"
   },
   "placeholder.negativePrompt": {
     "message": "Введіть негативну підказку для стилю відео, не більше 200 символів",
-    "description": "Плейсхолдер для поля підказки"
+    "description": "提示字段中的占位文本"
   },
   "placeholder.position": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення позиції"
+    "message": "Виберіть...",
+    "description": "位置输入的占位符"
   },
   "placeholder.aspectRatio": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення співвідношення сторін"
+    "message": "Виберіть...",
+    "description": "宽高比输入的占位符"
   },
   "placeholder.cameraType": {
     "message": "Не використовувати",
-    "description": "Плейсхолдер для вибору типу камери"
+    "description": "运镜类型选择占位符"
   },
   "placeholder.preset": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення пресету"
+    "message": "Виберіть...",
+    "description": "预设输入的占位符"
   },
   "placeholder.markerShape": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення форми маркера"
+    "message": "Виберіть...",
+    "description": "标记形状输入的占位符"
   },
   "placeholder.rotate": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення обертання"
+    "message": "Оберіть...",
+    "description": "占位符 для вводу обертання"
   },
   "placeholder.subMarker": {
-    "message": "Будь ласка, виберіть...",
-    "description": "Плейсхолдер для введення підмаркера"
+    "message": "Виберіть...",
+    "description": "子标记输入的占位符"
   },
   "button.precise": {
     "message": "Точно",
-    "description": "Текст кнопки для генерації відео Kling"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.creative": {
-    "message": "Креативно",
-    "description": "Текст кнопки для генерації відео Kling"
+    "message": "Творчо",
+    "description": "生成Kling视频的按钮文本"
   },
   "button.generate": {
-    "message": "Генерувати",
-    "description": "Текст кнопки для генерації відео Kling"
+    "message": "Створити",
+    "description": "生成Kling视频的按钮文本"
   },
   "button.extend": {
-    "message": "Розширити відео",
-    "description": "Текст кнопки для розширення відео"
+    "message": "Продовжити відео",
+    "description": "扩展视频按钮文本"
   },
   "button.download": {
     "message": "Завантажити відео",
-    "description": "Текст кнопки для завантаження відео"
+    "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
     "message": "Завантажити",
-    "description": "Текст кнопки для завантаження зображення (спростити до 'Завантажити')"
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
-    "message": "Завантажити",
-    "description": "Текст кнопки для завантаження відео"
+    "message": "Завантажити відео",
+    "description": "上传视频的按钮文本"
   },
   "button.uploadReferences": {
     "message": "Завантажити",
-    "description": "Текст кнопки, що дозволяє користувачу завантажити посилання"
+    "description": "按钮文本，允许用户上传参考"
   },
   "message.uploadReferencesExceed": {
-    "message": "Максимум можна завантажити 1 зображення",
-    "description": "Повідомлення про помилку, коли кількість завантажених зображень перевищує ліміт"
+    "message": "Можна завантажити не більше 1 зображення",
+    "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
     "message": "Зображення успішно завантажено",
-    "description": "Повідомлення про успіх при успішному завантаженні зображення"
+    "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
-    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз",
-    "description": "Повідомлення про помилку при невдалому завантаженні зображення"
+    "message": "Не вдалося завантажити зображення, спробуйте пізніше",
+    "description": "图片上传失败时的错误消息"
   },
   "message.endImageRequiresStart": {
-    "message": "Спочатку завантажте зображення першого кадру перед використанням зображення останнього кадру",
-    "description": "Повідомлення про помилку, коли користувач завантажив лише зображення останнього кадру без першого"
+    "message": "Щоб використати кінцевий кадр, спершу завантажте початковий",
+    "description": "用户只上传了尾帧没有首帧时的错误提示"
   },
   "message.endImageNotSupported": {
-    "message": "Зображення останнього кадру не підтримується поточною моделлю/режимом/тривалістю, будь ласка, налаштуйте конфігурацію (поширені вимоги: режим pro, тривалість 5с).",
-    "description": "Повідомлення про те, що зображення останнього кадру не підтримується при завантаженні"
+    "message": "Кінцевий кадр не підтримується поточною моделлю/режимом/тривалістю, змініть налаштування (типово: режим pro, тривалість 5 с).",
+    "description": "上传尾帧时当前模型不支持的提示"
   },
   "message.featureNotSupportedTitle": {
-    "message": "Потрібно підтвердження",
-    "description": "Заголовок вікна підтвердження, що втрачає існуючі налаштування при зміні параметрів"
+    "message": "Підтвердження",
+    "description": "切换参数时会丢失现有设置的确认弹窗标题"
   },
   "message.featureNotSupportedBody": {
-    "message": "Поточний вибір не підтримує наступні активовані налаштування: {fields}. Продовження призведе до очищення цих налаштувань.",
-    "description": "Повідомлення про те, що після зміни моделі/режиму/тривалості будуть втрачені налаштування, {fields} буде замінено на фактичні назви полів"
+    "message": "Поточний вибір не підтримує наступні активні налаштування: {fields}. Продовження очистить ці налаштування.",
+    "description": "切换 model/mode/duration 后会丢失募集设置的提示文案，{fields} 会被占位符替换为实际字段名"
   },
   "message.featureRemovedNotice": {
-    "message": "Очищено непідтримувані налаштування: {fields}",
-    "description": "Повідомлення toast після підтвердження користувача про зміну"
+    "message": "Непідтримувані налаштування очищені: {fields}",
+    "description": "用户确认切换后的 toast 提醒"
   },
   "button.confirmContinue": {
-    "message": "Продовжити зміну",
-    "description": "Головна кнопка вікна підтвердження втрати функції"
+    "message": "Продовжити",
+    "description": "feature 丢失确认弹窗的主按钮"
   },
   "button.cancelSwitch": {
     "message": "Скасувати",
-    "description": "Кнопка скасування вікна підтвердження втрати функції"
+    "description": "feature 丢失确认弹窗的取消按钮"
   },
   "message.startingTask": {
     "message": "Запуск завдання...",
-    "description": "Повідомлення на початку малювання завдання"
+    "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Завдання на генерацію успішно запущено",
-    "description": "Повідомлення про успіх при успішному запуску завдання"
+    "message": "Завдання успішно запущено",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Не вдалося запустити завдання, будь ласка, зв'яжіться з адміністратором",
-    "description": "Повідомлення про помилку при невдалому запуску завдання малювання"
+    "message": "Не вдалося запустити завдання, зверніться до адміністратора",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.usedUp": {
-    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів для продовження використання",
-    "description": "Повідомлення, коли бали вичерпані"
+    "message": "Ваші бали закінчилися, придбайте більше для продовження",
+    "description": "已用完时的消息"
   },
   "message.generating": {
-    "message": "Генерація...",
-    "description": "Повідомлення під час генерації зображення"
+    "message": "Генерується...",
+    "description": "图像正在生成时的消息"
   },
   "message.downloadVideo": {
     "message": "Завантажити це відео",
-    "description": "Повідомлення під час генерації зображення"
+    "description": "图像正在生成时的消息"
   },
   "message.extendVideo": {
-    "message": "Продовжити генерацію цього відео",
-    "description": "Повідомлення під час генерації зображення"
+    "message": "Продовжити створення цього відео",
+    "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
     "message": "Не вдалося згенерувати зображення",
-    "description": "Повідомлення про невдалу генерацію зображення"
+    "description": "图像生成失败时的消息"
   },
   "message.uploadVideoExceed": {
-    "message": "Кількість завантажених зображень першого кадру перевищує ліміт",
-    "description": "Повідомлення про помилку, коли кількість завантажених зображень першого кадру перевищує ліміт"
+    "message": "Перевищено ліміт завантаження початкових кадрів",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Розмір завантажуваного файлу не може перевищувати 10 МБ!",
-    "description": "Повідомлення про помилку, коли розмір завантажуваного файлу перевищує 10 МБ!"
+    "message": "Розмір файлу не може перевищувати 10 МБ!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Завантажуваний файл повинен бути у форматі MP4!",
-    "description": "Повідомлення про помилку, коли завантажуваний файл не у форматі MP4!"
+    "message": "Файл має бути у форматі MP4!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartImageExceed": {
-    "message": "Кількість завантажених зображень першого кадру перевищує ліміт",
-    "description": "Повідомлення про помилку, коли кількість завантажених зображень першого кадру перевищує ліміт"
+    "message": "Перевищено ліміт завантаження початкових кадрів",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
-    "message": "Кількість завантажених зображень останнього кадру перевищує ліміт",
-    "description": "Повідомлення про помилку, коли кількість завантажених зображень останнього кадру перевищує ліміт"
+    "message": "Перевищено ліміт завантаження кінцевих кадрів",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
-    "message": "Не вдалося завантажити зображення першого кадру",
-    "description": "Повідомлення про помилку при невдалому завантаженні зображення першого кадру"
+    "message": "Не вдалося завантажити початковий кадр",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadVideoError": {
     "message": "Не вдалося завантажити відео",
-    "description": "Повідомлення про помилку при невдалому завантаженні зображення першого кадру"
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadEndImageError": {
-    "message": "Не вдалося завантажити зображення останнього кадру",
-    "description": "Повідомлення про помилку при невдалому завантаженні зображення останнього кадру"
+    "message": "Не вдалося завантажити кінцевий кадр",
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.uploadDocumentsError": {
     "message": "Не вдалося завантажити документ",
-    "description": "Повідомлення про помилку при невдалому завантаженні документа"
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
-    "message": "Немає доступних операцій",
-    "description": "Повідомлення, коли немає доступних операцій"
+    "message": "Немає доступних дій",
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Немає історичних завдань, будь ласка, натисніть ліворуч для генерації відео",
-    "description": "Повідомлення, коли немає завдань"
+    "message": "Немає історії завдань, натисніть ліворуч, щоб створити відео",
+    "description": "没有任务时的消息"
   }
 }

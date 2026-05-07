@@ -193,7 +193,7 @@
   },
   "button.get_stems": {
     "message": "聲音分離",
-    "description": "聲音分離按鈕文本"
+    "description": "聲曲分離按鈕文本"
   },
   "button.cover_music": {
     "message": "翻唱",
@@ -272,8 +272,8 @@
     "description": "任務的 ID"
   },
   "name.type": {
-    "message": "自訂模式",
-    "description": "自訂模式的名稱"
+    "message": "定制模式",
+    "description": "定制模式的名稱"
   },
   "name.prompt": {
     "message": "歌曲描述",
@@ -308,8 +308,8 @@
     "description": "選擇人聲性別"
   },
   "name.advancedParams": {
-    "message": "進階參數",
-    "description": "進階參數設定"
+    "message": "高級參數",
+    "description": "高級參數設置"
   },
   "name.weirdness": {
     "message": "創意度",
@@ -364,7 +364,7 @@
     "description": "參數'prompt'的描述"
   },
   "description.lyrics": {
-    "message": "輸入自訂歌詞，支持 [Verse]、[Chorus]、[Bridge] 等段落標記",
+    "message": "輸入自定義歌詞，支持 [Verse]、[Chorus]、[Bridge] 等段落標記",
     "description": "參數'lyrics'的描述"
   },
   "description.style": {
@@ -556,7 +556,7 @@
     "description": "獲取WAV檔案時的消息"
   },
   "message.fetchWavFailed": {
-    "message": "獲取 WAV 檔案失敗",
+    "message": "無法獲取 WAV 檔案",
     "description": "獲取WAV檔案失敗時的消息"
   },
   "message.fetchingMidi": {
@@ -767,6 +767,22 @@
     "message": "輸入修改指令，例如：讓歌詞更歡快...",
     "description": "歌詞增強輸入佔位符"
   },
+  "placeholder.lyricsTheme": {
+    "message": "例如：一首關於秋日思念的舒緩民謠",
+    "description": "AI 生成歌詞主題輸入佔位符"
+  },
+  "message.lyricsThemePromptTitle": {
+    "message": "AI 生成歌詞",
+    "description": "AI 生成歌詞輸入彈窗標題"
+  },
+  "message.lyricsThemePromptMessage": {
+    "message": "請描述這首歌想表達的主題或故事，AI 會據此生成歌詞",
+    "description": "AI 生成歌詞輸入彈窗的說明文本"
+  },
+  "message.lyricsThemeRequired": {
+    "message": "請先描述一下歌曲主題",
+    "description": "主題輸入為空時的校驗提示"
+  },
   "message.enhancingLyrics": {
     "message": "正在增強歌詞...",
     "description": "增強歌詞時的消息"
@@ -912,8 +928,8 @@
     "description": "復用提示詞成功後的提示信息"
   },
   "message.reusePromptEmpty": {
-    "message": "沒有可復用的提示詞數據",
-    "description": "當任務沒有提示詞可復用時的提示"
+    "message": "沒有可重用的提示詞資料",
+    "description": "當任務沒有提示詞可重用時的提示"
   },
   "name.lyricsMode": {
     "message": "歌詞模式",

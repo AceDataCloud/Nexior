@@ -1,178 +1,178 @@
 {
   "tab.videoGeneration": {
     "message": "Videogenerering",
-    "description": "Tab label: Video Generation"
+    "description": "Tab 标签：Video Generation"
   },
   "tab.motionControl": {
-    "message": "Rörelsekontroll",
-    "description": "Tab label: Motion Control"
+    "message": "Rörelsestyrning",
+    "description": "Tab 标签：Motion Control"
   },
   "name.motionImage": {
-    "message": "Referensbild",
-    "description": "Input för personbild i Rörelsekontroll"
+    "message": "Referensbild för person",
+    "description": "Motion Control 中的人物图输入"
   },
   "name.motionVideo": {
-    "message": "Referensvideo",
-    "description": "Input för referensvideo i Rörelsekontroll"
+    "message": "Referensvideo för rörelse",
+    "description": "Motion Control 中的参考视频输入"
   },
   "name.motionPrompt": {
-    "message": "Tilläggstips (valfritt)",
-    "description": "Tilläggstips i Rörelsekontroll"
+    "message": "Ytterligare prompt (valfritt)",
+    "description": "Motion Control 中的补充提示词"
   },
   "name.characterOrientation": {
-    "message": "Karaktärsorientering",
-    "description": "Fält för karaktärsorientering"
+    "message": "Personens riktning",
+    "description": "人物朝向字段"
   },
   "name.orientationImage": {
     "message": "Följ bild",
-    "description": "Alternativ för karaktärsorientering: Följ bild"
+    "description": "人物朝向选项：跟随图片"
   },
   "name.orientationVideo": {
     "message": "Följ video",
-    "description": "Alternativ för karaktärsorientering: Följ video"
+    "description": "人物朝向选项：跟随视频"
   },
   "name.keepOriginalSound": {
     "message": "Behåll originalljud",
-    "description": "Switch för keep_original_sound"
+    "description": "keep_original_sound 开关"
   },
   "description.motionImage": {
-    "message": "Ladda upp en referensbild för att generera karaktär, bakgrund och andra element i videon.",
-    "description": "motion image_url beskrivning"
+    "message": "Ladda upp en referensbild för personen, så baseras video på denna bild för person och bakgrund",
+    "description": "motion image_url 说明"
   },
   "description.motionVideo": {
-    "message": "Ladda upp en referensvideo för att generera karaktärens rörelser i videon (MP4 / MOV, ≤1 minut, ≤1 GB).",
-    "description": "motion video_url beskrivning"
+    "message": "Ladda upp en referensvideo för rörelse, så matchar personens rörelser videon (MP4 / MOV, ≤1 min, ≤1 GB)",
+    "description": "motion video_url 说明"
   },
   "description.motionPrompt": {
-    "message": "Valfritt. Kan innehålla positiva och negativa beskrivningar för att hjälpa till med resultatet.",
-    "description": "motion prompt beskrivning"
+    "message": "Valfritt. Kan innehålla positiva och negativa beskrivningar för att förbättra resultatet",
+    "description": "motion prompt 说明"
   },
   "description.characterOrientation": {
-    "message": "Välj 'Följ video' för bättre komplexa rörelser; välj 'Följ bild' för att matcha karaktärens orientering med referensbilden, vilket ger bättre kamerarörelse.",
-    "description": "character_orientation beskrivning"
+    "message": "Välj \"Följ video\" för bättre komplexa rörelser; välj \"Följ bild\" för att personens riktning matchar bilden, med bättre kamerarörelser",
+    "description": "character_orientation 说明"
   },
   "description.motionMode": {
-    "message": "std för prestanda, pro för bildkvalitet.",
-    "description": "motion mode beskrivning"
+    "message": "std prioriterar prestanda, pro prioriterar kvalitet",
+    "description": "motion mode 说明"
   },
   "description.keepOriginalSound": {
-    "message": "Aktivera för att behålla ljudet från referensvideon; inaktivera för att inte inkludera originalljud i den genererade videon.",
-    "description": "keep_original_sound beskrivning"
+    "message": "Om aktiverat behålls ljudet från referensvideon; annars genereras video utan originalljud",
+    "description": "keep_original_sound 说明"
   },
   "placeholder.motionPrompt": {
-    "message": "Till exempel: en person som hoppar. Valfritt.",
-    "description": "motion prompt platshållare"
+    "message": "Exempel: En person dansar. Valfritt.",
+    "description": "motion prompt 占位符"
   },
   "button.generateMotion": {
     "message": "Generera rörelsevideo",
-    "description": "Genereringsknapp för Rörelsekontroll"
+    "description": "Motion Control 生成按钮"
   },
   "message.motionMissingInputs": {
-    "message": "Vänligen ladda upp både personbild och referensvideo.",
-    "description": "Meddelande vid saknade indata i Rörelsekontroll"
+    "message": "Ladda upp både personbild och referensvideo",
+    "description": "Motion Control 缺少输入时的提示"
   },
   "inspiration.title": {
-    "message": "Inspiration och förinställningar",
-    "description": "Titel för Inspiration-dragning"
+    "message": "Inspiration & presets",
+    "description": "Inspiration 抽屉的标题"
   },
   "inspiration.openButton": {
     "message": "Inspiration",
-    "description": "Knapp för att öppna Inspiration-dragningen"
+    "description": "打开 Inspiration 抽屉的按钮"
   },
   "inspiration.removeChip": {
-    "message": "Ta bort denna förinställning",
-    "description": "Knapp för att ta bort vald förinställning i tipsområdet"
+    "message": "Ta bort preset",
+    "description": "移除提示词区中已选预设的按钮 aria-label"
   },
   "inspiration.hint": {
-    "message": "Klicka på frasen för att automatiskt lägga till den i tipsen; klicka igen för att ta bort.",
-    "description": "Användarinstruktioner högst upp i Inspiration-dragningen"
+    "message": "Klicka på frasen för att lägga till prompt; klicka igen för att ta bort.",
+    "description": "Inspiration 抽屉顶部的使用说明"
   },
   "inspiration.empty": {
-    "message": "Inga tillgängliga förinställningar",
-    "description": "Tomt tillstånd för Inspiration-dragningen"
+    "message": "Inga tillgängliga presets",
+    "description": "Inspiration 抽屉空状态"
   },
   "inspiration.selectedSummary": {
-    "message": "Valda {count} objekt",
-    "description": "Antal valda förinställningar"
+    "message": "{count} valda",
+    "description": "已选择的预设数量"
   },
   "inspiration.clearSelected": {
-    "message": "Rensa allt",
-    "description": "Knapp för att rensa alla valda förinställningar"
+    "message": "Rensa alla",
+    "description": "清除所有已选预设的按钮"
   },
   "inspiration.group.cameraMovements": {
     "message": "Kamerarörelser",
-    "description": "Inspiration-grupp: Kamerarörelser"
+    "description": "Inspiration 分组：镜头运动"
   },
   "inspiration.group.cameraSpeed": {
     "message": "Rörelsehastighet",
-    "description": "Inspiration-grupp: Rörelsehastighet"
+    "description": "Inspiration 分组：运动速度"
   },
   "inspiration.group.shotType": {
-    "message": "Kameravinkel",
-    "description": "Inspiration-grupp: Vinkel / Perspektiv"
+    "message": "Bildutsnitt",
+    "description": "Inspiration 分组：景别 / 视角"
   },
   "inspiration.group.light": {
-    "message": "Ljus och skugga",
-    "description": "Inspiration-grupp: Ljus och skugga"
+    "message": "Ljus",
+    "description": "Inspiration 分组：光影"
   },
   "inspiration.group.frame": {
     "message": "Bildkomposition",
-    "description": "Inspiration-grupp: Bild / Komposition"
+    "description": "Inspiration 分组：画面 / 构图"
   },
   "inspiration.group.atmosphere": {
     "message": "Atmosfär",
-    "description": "Inspiration-grupp: Atmosfär / Stil"
+    "description": "Inspiration 分组：氛围 / 风格"
   },
   "inspiration.chip.rotateAround": {
-    "message": "Kameran roterar runt motivet",
+    "message": "Kameran roterar runt motiv",
     "description": ""
   },
   "inspiration.chip.stationary": {
-    "message": "Kameran står stilla",
+    "message": "Stationär kamera",
     "description": ""
   },
   "inspiration.chip.handheld": {
-    "message": "Handhållen inspelning",
+    "message": "Handhållen kamera",
     "description": ""
   },
   "inspiration.chip.zoomOut": {
-    "message": "Kameran zoomar ut",
+    "message": "Zooma ut",
     "description": ""
   },
   "inspiration.chip.zoomIn": {
-    "message": "Kameran zoomar in",
+    "message": "Zooma in",
     "description": ""
   },
   "inspiration.chip.follow": {
-    "message": "Kameran följer motivet",
+    "message": "Kamera följer motivet",
     "description": ""
   },
   "inspiration.chip.panRight": {
-    "message": "Kameran panorera till höger",
+    "message": "Panorera höger",
     "description": ""
   },
   "inspiration.chip.tiltUp": {
-    "message": "Kameran lutar uppåt",
+    "message": "Tilt uppåt",
     "description": ""
   },
   "inspiration.chip.tiltDown": {
-    "message": "Kameran lutar nedåt",
+    "message": "Tilt nedåt",
     "description": ""
   },
   "inspiration.chip.orbit": {
-    "message": "Kameran rör sig i en omloppsbana",
+    "message": "Kamera kretsar inåt",
     "description": ""
   },
   "inspiration.chip.speedSlow": {
-    "message": "Kamerarörelse långsam",
+    "message": "Långsam rörelse",
     "description": ""
   },
   "inspiration.chip.speedMedium": {
-    "message": "Kamerarörelse medelhastig",
+    "message": "Mellanrörelse",
     "description": ""
   },
   "inspiration.chip.speedFast": {
-    "message": "Kamerarörelse snabb",
+    "message": "Snabb rörelse",
     "description": ""
   },
   "inspiration.chip.shotClose": {
@@ -180,11 +180,11 @@
     "description": ""
   },
   "inspiration.chip.shotMedium": {
-    "message": "Medium bild",
+    "message": "Halvnärbild",
     "description": ""
   },
   "inspiration.chip.shotLong": {
-    "message": "Lång bild",
+    "message": "Långt skott",
     "description": ""
   },
   "inspiration.chip.shotLowAngle": {
@@ -196,7 +196,7 @@
     "description": ""
   },
   "inspiration.chip.shotShallowDof": {
-    "message": "Grunt skärpedjup",
+    "message": "Skenbar skärpedjup",
     "description": ""
   },
   "inspiration.chip.shotFront": {
@@ -268,7 +268,7 @@
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
-    "message": "Färgglad",
+    "message": "Färgrik",
     "description": ""
   },
   "name.taskId": {
@@ -277,7 +277,7 @@
   },
   "name.type": {
     "message": "Typ",
-    "description": "Innehållstyp för den genererade Kling-videon, t.ex. 'länk', 'text' etc."
+    "description": "Innehållstyp för den genererade Kling-videon, som 'länk', 'text' etc."
   },
   "name.modeStd": {
     "message": "Standard (720p)",
@@ -304,20 +304,20 @@
     "description": "Använder anpassade sexdimensionella parametrar"
   },
   "name.cameraTypeDownBack": {
-    "message": "Nedåt och bakåt",
-    "description": "Förinställd kamerarörelse: nedåt och bakåt"
+    "message": "Ner och bakåt",
+    "description": "Förinställd kamerarörelse: ner och bakåt"
   },
   "name.cameraTypeForwardUp": {
     "message": "Framåt och uppåt",
     "description": "Förinställd kamerarörelse: framåt och uppåt"
   },
   "name.cameraTypeLeftTurnForward": {
-    "message": "Vänster sväng och framåt",
-    "description": "Förinställd kamerarörelse: vänster sväng och framåt"
+    "message": "Vänster och framåt",
+    "description": "Förinställd kamerarörelse: vänster och framåt"
   },
   "name.cameraTypeRightTurnForward": {
-    "message": "Höger sväng och framåt",
-    "description": "Förinställd kamerarörelse: höger sväng och framåt"
+    "message": "Höger och framåt",
+    "description": "Förinställd kamerarörelse: höger och framåt"
   },
   "name.cc_horizontal": {
     "message": "Horisontell rörelse",
@@ -380,8 +380,8 @@
     "description": "Formulärfältetikett: första bildreferens"
   },
   "name.negativePrompt": {
-    "message": "Negativt prompt",
-    "description": "Negativ textprompt för den genererade videon"
+    "message": "Negativ prompt",
+    "description": "Negativ textprompt för att generera video"
   },
   "name.endImage": {
     "message": "Sista bildreferens",
@@ -405,11 +405,11 @@
   },
   "name.model": {
     "message": "Modellversion",
-    "description": "Modellversionen som används för att generera videon"
+    "description": "Modellversion som används för att generera videon"
   },
   "name.ratio": {
-    "message": "Videoproportion",
-    "description": "Den videoproportion som används för att generera videon"
+    "message": "Videoförhållande",
+    "description": "Det videoförhållande som används för att generera videon"
   },
   "name.mode": {
     "message": "Videoläge",
@@ -417,7 +417,7 @@
   },
   "name.effect": {
     "message": "Videoeffekt",
-    "description": "Namn på stilparametern för att växla mellan olika versioner eller stilar av modellen"
+    "description": "Namn på stilparametern som används för att växla mellan olika versioner eller stilar av modellen"
   },
   "name.ingredientsModel": {
     "message": "Ingrediensmodell",
@@ -461,19 +461,19 @@
   },
   "description.mode4kRequiresV3": {
     "message": "Endast kling-v3 / kling-v3-omni stöds",
-    "description": "Anledning till att 4K-alternativet är inaktiverat (modellmatchning)"
+    "description": "Anledningen till att 4K-alternativet är inaktiverat (modellmatchning)"
   },
   "description.mode4kIncompatibleCamera": {
     "message": "Kamerakontroll är aktiverad och kan inte användas samtidigt med 4K.",
-    "description": "Anledning till att 4K-alternativet är inaktiverat (kamerakontroll inställd)"
+    "description": "Anledningen till att 4K-alternativet är inaktiverat (kamerakontroll inställd)"
   },
   "description.duration": {
-    "message": "Vanlig modell stöder endast 5/10 sekunder; v3 / v3-Omni stöder 3/5/8/10/12/15 sekunder",
+    "message": "Vanlig modell stöder endast 5/10 sekunder; v3 / v3-Omni stöder 3/5/8/10/12/15 sekunder.",
     "description": "Övergripande beskrivning av fältet för längd"
   },
   "description.durationV3Only": {
     "message": "Endast v3 / v3-Omni stöds",
-    "description": "Anledning till att längdalternativet är inaktiverat"
+    "description": "Anledningen till att längdalternativet är inaktiverat"
   },
   "description.generateAudio": {
     "message": "Syntetisera ljudeffekter samtidigt som videon genereras. Endast kling-v3 / kling-v3-omni / kling-v2-6 (pro-läge) stöds.",
@@ -484,12 +484,20 @@
     "description": "Beskrivning av ljudeffektens växlingsknapp (inaktiverad)"
   },
   "description.cameraControl": {
-    "message": "Kontrollera kamerans rörelseriktning. Välj 'Anpassad' för att finjustera i 6 dimensioner, varje värde [-1, 1]",
+    "message": "Kontrollera kamerans rörelseriktning. Välj 'Anpassad' för att finjustera i 6 dimensioner, varje värde [-1, 1].",
     "description": "Beskrivning av kamerakontroll"
   },
   "description.cameraControlDisabled4k": {
-    "message": "4K-läget är valt, kamerakontroll är inte tillgänglig, vänligen väx till std / pro och aktivera igen.",
-    "description": "Anledning till att kamerakontroll är inaktiverad"
+    "message": "4K-läget är valt, kamerakontroll är inte tillgänglig, vänligen växla till std / pro och aktivera igen.",
+    "description": "Anledningen till att kamerakontroll är inaktiverad"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "Kamerakontroll stöds inte efter att ha laddat upp en startreferensbild, vänligen ta bort startreferensbilden och försök igen.",
+    "description": "Anledningen till att kamerakontroll är inaktiverad (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Den aktuella modellen/läget/längden stöder inte kamerakontroll, vänligen justera inställningarna och aktivera igen.",
+    "description": "Anledningen till att kamerakontroll är inaktiverad (modell stöds inte)"
   },
   "status.pending": {
     "message": "Väntar",
@@ -504,20 +512,20 @@
     "description": "Platshållare för inmatning av fyllnadsbrus"
   },
   "placeholder.select": {
-    "message": "Välj",
-    "description": "Platshållartext i urvalsfältet"
+    "message": "Vänligen välj",
+    "description": "Platshållartext i rullgardinsvalfält"
   },
   "placeholder.paddingLevel": {
     "message": "Vänligen välj...",
     "description": "Platshållare för fyllnadsnivå"
   },
   "placeholder.prompt": {
-    "message": "Skriv in promptord för den stil av video som ska genereras, till exempel: moving",
-    "description": "Platshållartext i promptfältet"
+    "message": "Skriv in promptord för den stil av video du vill generera, till exempel: moving",
+    "description": "Platshållartext i promptfält"
   },
   "placeholder.negativePrompt": {
-    "message": "Skriv in negativ prompt för den stil av video som ska genereras, max 200 tecken",
-    "description": "Platshållartext i promptfältet"
+    "message": "Skriv in negativa promptord för den stil av video du vill generera, max 200 tecken",
+    "description": "Platshållartext i promptfält"
   },
   "placeholder.position": {
     "message": "Vänligen välj...",
@@ -528,7 +536,7 @@
     "description": "Platshållare för inmatning av bildförhållande"
   },
   "placeholder.cameraType": {
-    "message": "Ingen",
+    "message": "Ingen användning",
     "description": "Platshållare för val av kameratyp"
   },
   "placeholder.preset": {
@@ -541,158 +549,158 @@
   },
   "placeholder.rotate": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av rotation"
+    "description": "Platsinnehåll för rotation"
   },
   "placeholder.subMarker": {
     "message": "Vänligen välj...",
-    "description": "Platshållare för inmatning av undermarkör"
+    "description": "子标记输入的占位符"
   },
   "button.precise": {
-    "message": "Precise",
-    "description": "Knapptext för att generera Kling-video"
+    "message": "Exakt",
+    "description": "生成Kling视频的按钮文本"
   },
   "button.creative": {
     "message": "Kreativ",
-    "description": "Knapptext för att generera Kling-video"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.generate": {
     "message": "Generera",
-    "description": "Knapptext för att generera Kling-video"
+    "description": "生成Kling视频的按钮文本"
   },
   "button.extend": {
-    "message": "Utöka video",
-    "description": "Text på knappen för att utöka video"
+    "message": "Förläng video",
+    "description": "扩展视频按钮文本"
   },
   "button.download": {
     "message": "Ladda ner video",
-    "description": "Text på knappen för att ladda ner video"
+    "description": "下载视频按钮文本"
   },
   "button.uploadImageUrl": {
     "message": "Ladda upp",
-    "description": "Text på knappen för att ladda upp bild (förenkla till 'Ladda upp')"
+    "description": "上传图片按钮文本（英文请简化为“Upload”，不要用“Upload Image”）"
   },
   "button.uploadVideoUrl": {
     "message": "Ladda upp video",
-    "description": "Text på knappen för att ladda upp video"
+    "description": "上传视频的按钮文本"
   },
   "button.uploadReferences": {
     "message": "Ladda upp",
-    "description": "Text på knappen som tillåter användaren att ladda upp referenser"
+    "description": "按钮文本，允许用户上传参考"
   },
   "message.uploadReferencesExceed": {
     "message": "Max 1 bild kan laddas upp",
-    "description": "Felmeddelande när antalet uppladdade bilder överskrider gränsen"
+    "description": "上传的图片数量超过限制时的错误消息"
   },
   "message.uploadReferencesSuccess": {
-    "message": "Bild uppladdad framgångsrikt",
-    "description": "Framgångsmeddelande när bilden har laddats upp"
+    "message": "Bild uppladdad",
+    "description": "成功上传图片时的成功消息"
   },
   "message.uploadReferencesError": {
     "message": "Misslyckades med att ladda upp bilden, försök igen senare",
-    "description": "Felmeddelande när bilduppladdningen misslyckas"
+    "description": "图片上传失败时的错误消息"
   },
   "message.endImageRequiresStart": {
-    "message": "Ladda upp en startbild innan du använder en slutbild",
-    "description": "Felmeddelande när användaren bara har laddat upp en slutbild utan startbild"
+    "message": "Ladda upp startbilden först innan du använder slutbilden",
+    "description": "用户只上传了尾帧没有首帧时的错误提示"
   },
   "message.endImageNotSupported": {
-    "message": "Slutbilden stöds inte av den aktuella modellen/läget/tiden, justera inställningarna (vanliga krav: läge pro, tid 5s).",
-    "description": "Meddelande när den aktuella modellen inte stöder uppladdning av slutbild"
+    "message": "Slutbilden stöds inte av den nuvarande modellen/mode/tid, justera inställningarna först (vanligt: pro-läge, 5s).",
+    "description": "上传尾帧时当前模型不支持的提示"
   },
   "message.featureNotSupportedTitle": {
-    "message": "Bekräftelse krävs",
-    "description": "Titel på bekräftelsepopup när inställningar går förlorade vid parameterbyte"
+    "message": "Behöver bekräftelse",
+    "description": "切换参数时会丢失现有设置的确认弹窗标题"
   },
   "message.featureNotSupportedBody": {
-    "message": "Det aktuella valet stöder inte följande aktiverade inställningar: {fields}. Fortsättning kommer att rensa dessa inställningar.",
-    "description": "Meddelande som informerar om att inställningar går förlorade efter byte av modell/läge/tid, {fields} kommer att ersättas med faktiska fältnamn"
+    "message": "Det valda stöder inte följande aktiverade inställningar: {fields}. Fortsätter du tas dessa bort.",
+    "description": "切换 model/mode/duration 后会丢失募集设置的提示文案，{fields} 会被占位符替换为实际字段名"
   },
   "message.featureRemovedNotice": {
-    "message": "Rensade icke-stödda inställningar: {fields}",
-    "description": "Toast-meddelande som informerar användaren om rensade inställningar efter bekräftelse"
+    "message": "Inte stödda inställningar rensade: {fields}",
+    "description": "用户确认切换后的 toast 提醒"
   },
   "button.confirmContinue": {
-    "message": "Fortsätt byte",
-    "description": "Huvudknapp i bekräftelsepopup för förlorade funktioner"
+    "message": "Fortsätt",
+    "description": "feature 丢失确认弹窗的主按钮"
   },
   "button.cancelSwitch": {
     "message": "Avbryt",
-    "description": "Avbryt-knapp i bekräftelsepopup för förlorade funktioner"
+    "description": "feature 丢失确认弹窗的取消按钮"
   },
   "message.startingTask": {
-    "message": "Startar uppgiften...",
-    "description": "Meddelande när ritningsuppgiften startar"
+    "message": "Startar uppgift...",
+    "description": "绘图任务开始时的消息"
   },
   "message.startTaskSuccess": {
-    "message": "Genereringsuppgiften startad framgångsrikt",
-    "description": "Framgångsmeddelande när uppgiften har startats"
+    "message": "Uppgift startad",
+    "description": "成功启动任务时的成功消息"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgiften, kontakta administratören",
-    "description": "Felmeddelande när ritningsuppgiften misslyckas"
+    "message": "Misslyckades med att starta uppgift, kontakta administratören",
+    "description": "启动绘图任务失败时的错误消息"
   },
   "message.usedUp": {
-    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
-    "description": "Meddelande när poängen är slut"
+    "message": "Dina poäng är slut, köp fler för att fortsätta",
+    "description": "已用完时的消息"
   },
   "message.generating": {
     "message": "Genererar...",
-    "description": "Meddelande när bilden genereras"
+    "description": "图像正在生成时的消息"
   },
   "message.downloadVideo": {
     "message": "Ladda ner denna video",
-    "description": "Meddelande när bilden genereras"
+    "description": "图像正在生成时的消息"
   },
   "message.extendVideo": {
     "message": "Fortsätt generera denna video",
-    "description": "Meddelande när bilden genereras"
+    "description": "图像正在生成时的消息"
   },
   "message.generateFailed": {
-    "message": "Misslyckades med att generera bilden",
-    "description": "Meddelande när bildgenereringen misslyckas"
+    "message": "Misslyckades med att generera bild",
+    "description": "图像生成失败时的消息"
   },
   "message.uploadVideoExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antal startbilder överskrider gränsen",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadVideoSizeExceed": {
-    "message": "Uppladdad fil får inte överstiga 10 MB!",
-    "description": "Felmeddelande när filstorleken överskrider 10 MB"
+    "message": "Filen får inte överstiga 10 MB!",
+    "description": "上传文件大小不能超过 10MB!时的错误信息"
   },
   "message.uploadVideoTypeFailed": {
-    "message": "Uppladdad fil måste vara i MP4-format!",
-    "description": "Felmeddelande när filen inte är i MP4-format"
+    "message": "Filen måste vara i MP4-format!",
+    "description": "上传文件必须是 MP4 格式!的错误信息"
   },
   "message.uploadStartImageExceed": {
-    "message": "Antalet uppladdade startbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade startbilder överskrider gränsen"
+    "message": "Antal startbilder överskrider gränsen",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadEndImageExceed": {
-    "message": "Antalet uppladdade slutbilder överskrider gränsen",
-    "description": "Felmeddelande när antalet uppladdade slutbilder överskrider gränsen"
+    "message": "Antal slutbilder överskrider gränsen",
+    "description": "上传首帧图片数量超过限制时的错误信息"
   },
   "message.uploadStartImageError": {
     "message": "Misslyckades med att ladda upp startbilden",
-    "description": "Felmeddelande när uppladdningen av startbilden misslyckas"
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadVideoError": {
-    "message": "Misslyckades med att ladda upp videon",
-    "description": "Felmeddelande när uppladdningen av videon misslyckas"
+    "message": "Misslyckades med att ladda upp video",
+    "description": "上传首帧图片失败时的错误信息"
   },
   "message.uploadEndImageError": {
     "message": "Misslyckades med att ladda upp slutbilden",
-    "description": "Felmeddelande när uppladdningen av slutbilden misslyckas"
+    "description": "上传尾帧图片失败时的错误信息"
   },
   "message.uploadDocumentsError": {
-    "message": "Misslyckades med att ladda upp dokumentet",
-    "description": "Felmeddelande när dokumentuppladdningen misslyckas"
+    "message": "Misslyckades med att ladda upp dokument",
+    "description": "上传文档失败时的错误信息"
   },
   "message.noOperations": {
     "message": "Inga tillgängliga åtgärder",
-    "description": "Meddelande när inga åtgärder är tillgängliga"
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Inga historiska uppgifter, vänligen klicka på vänster sida för att generera video",
-    "description": "Meddelande när inga uppgifter finns"
+    "message": "Inga tidigare uppgifter, klicka på 'Generera video' till vänster",
+    "description": "没有任务时的消息"
   }
 }

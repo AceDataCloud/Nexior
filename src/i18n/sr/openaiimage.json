@@ -36,8 +36,8 @@
     "description": "ID praćenja"
   },
   "name.elapsed": {
-    "message": "Proteklo vreme",
-    "description": "Proteklo vreme zadatka (sekunde)"
+    "message": "Trajanje",
+    "description": "Trajanje zadatka (u sekundama)"
   },
   "name.prompt": {
     "message": "Uputstvo za sliku",
@@ -48,19 +48,67 @@
     "description": "Ime OpenAI Image robota"
   },
   "name.size": {
-    "message": "Dimenzije",
-    "description": "Dimenzije izlazne slike"
+    "message": "Dimenzija",
+    "description": "Dimenzija izlazne slike"
   },
   "description.size": {
-    "message": "Izlazne dimenzije za generisanje slika, uobičajene vrednosti: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Objašnjenje dimenzija"
+    "message": "Dimenzija izlazne slike. Različiti modeli podržavaju različite dimenzije: gpt-image-1 / gpt-image-1.5 podržavaju samo 1024x1024, 1536x1024, 1024x1536; gpt-image-2 takođe podržava 1792x1024, 1024x1792, kao i 2K/4K predloške; gpt-image-2 može omogućiti prilagođene dimenzije.",
+    "description": "Objašnjenje dimenzije"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K standard (osnovna cena)",
+    "description": "Naslov grupe dimenzija 1K, naplata po osnovnoj ceni"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K predložak (1.5 puta cena)",
+    "description": "Naslov grupe dimenzija 2K, naplata po 1.5 puta cene"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K predložak (1.5 puta cena)",
+    "description": "Naslov grupe dimenzija 4K, naplata po 1.5 puta cene"
+  },
+  "name.customSize": {
+    "message": "Prilagođena dimenzija",
+    "description": "Oznaka prekidača za prilagođene dimenzije"
+  },
+  "description.customSize": {
+    "message": "Omogućava slobodno podešavanje širine i visine (samo gpt-image-2 podržava). Mora biti višekratnik 16, najduža strana ≤ 3840, ukupno piksela ≤ 8,294,400. Dimenzije koje nisu 1K standard naplaćuju se po 1.5 puta cene.",
+    "description": "Objašnjenje prilagođene dimenzije"
+  },
+  "name.width": {
+    "message": "Širina",
+    "description": "Oznaka za unos širine"
+  },
+  "name.height": {
+    "message": "Visina",
+    "description": "Oznaka za unos visine"
+  },
+  "error.customSizePositive": {
+    "message": "Širina i visina moraju biti pozitivni celi brojevi",
+    "description": "Prilagođene dimenzije moraju biti pozitivni celi brojevi"
+  },
+  "error.customSizeMultiple": {
+    "message": "Širina i visina moraju biti višekratnici {multiple}",
+    "description": "Prilagođene dimenzije moraju biti višekratnici 16"
+  },
+  "error.customSizeMin": {
+    "message": "Širina i visina ne mogu biti manje od {min}",
+    "description": "Donja granica prilagođene dimenzije"
+  },
+  "error.customSizeMax": {
+    "message": "Najduža strana ne može biti veća od {max}",
+    "description": "Gornja granica najduže strane prilagođene dimenzije"
+  },
+  "error.customSizePixels": {
+    "message": "Ukupno piksela ne može biti veće od {pixels}",
+    "description": "Gornja granica ukupnog piksela za prilagođene dimenzije"
   },
   "description.prompt": {
     "message": "Uputstvo za generisanje ili uređivanje slike",
     "description": "Opis uputstva"
   },
   "description.model": {
-    "message": "Model za generisanje i uređivanje slika.",
+    "message": "Model koji se koristi za generisanje i uređivanje slika.",
     "description": "Objašnjenje parametra model"
   },
   "description.imageUrls": {
@@ -76,7 +124,7 @@
     "description": "Placeholder za izbor"
   },
   "placeholder.prompt": {
-    "message": "Unesite uputstvo, na primer: vodena mačka na stolu",
+    "message": "Unesite uputstvo, na primer: vodena boja mačka na stolu",
     "description": "Placeholder za uputstvo"
   },
   "button.generate": {
@@ -109,7 +157,7 @@
   },
   "message.uploadImageError": {
     "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo kasnije",
-    "description": "Neuspeh pri otpremanju"
+    "description": "Greška prilikom otpremanja"
   },
   "name.model": {
     "message": "Model",
@@ -117,14 +165,14 @@
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Opcija modela gpt-image-1"
+    "description": "Opcija za model gpt-image-1"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Opcija modela gpt-image-1.5"
+    "description": "Opcija za model gpt-image-1.5"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Opcija modela gpt-image-2"
+    "description": "Opcija za model gpt-image-2"
   }
 }

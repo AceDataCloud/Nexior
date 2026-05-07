@@ -63,45 +63,89 @@
     "message": "Trocar instrumentais",
     "description": "Texto do botão para trocar instrumentais"
   },
+  "button.clear_all": {
+    "message": "Limpar tudo",
+    "description": "Texto do botão para limpar todas as configurações"
+  },
+  "mode.simple": {
+    "message": "Modo simples",
+    "description": "Rótulo da aba do modo de geração simples"
+  },
+  "mode.custom": {
+    "message": "Modo personalizado",
+    "description": "Rótulo da aba do modo de geração personalizado"
+  },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
     "description": "Modelo para geração de música"
+  },
+  "model.fuzz20proDesc": {
+    "message": "Até 8 minutos · Melhor qualidade",
+    "description": "Descrição do FUZZ-2.0 Pro no menu suspenso de modelos"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
     "description": "Modelo para geração de música"
   },
+  "model.fuzz20desc": {
+    "message": "Até 8 minutos · Custo-benefício equilibrado",
+    "description": "Descrição do FUZZ-2.0 no menu suspenso de modelos"
+  },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
     "description": "Modelo para geração de música"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "Até 8 minutos · Vocais mais crus e naturais",
+    "description": "Descrição do FUZZ-2.0 Raw no menu suspenso de modelos"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
     "description": "Modelo para geração de música"
   },
+  "model.fuzz11proDesc": {
+    "message": "Até 4 minutos · Versão aprimorada",
+    "description": "Descrição do FUZZ-1.1 Pro no menu suspenso de modelos"
+  },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
     "description": "Modelo para geração de música"
+  },
+  "model.fuzz10proDesc": {
+    "message": "Até 4 minutos · Versão estável",
+    "description": "Descrição do FUZZ-1.0 Pro no menu suspenso de modelos"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
     "description": "Modelo para geração de música"
   },
+  "model.fuzz10desc": {
+    "message": "Até 2 minutos · Versão antiga",
+    "description": "Descrição do FUZZ-1.0 no menu suspenso de modelos"
+  },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
     "description": "Modelo para geração de música"
   },
+  "model.fuzz11desc": {
+    "message": "Até 4 minutos · Versão melhorada",
+    "description": "Descrição do FUZZ-1.1 no menu suspenso de modelos"
+  },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
     "description": "Modelo para geração de música"
+  },
+  "model.fuzz08desc": {
+    "message": "Até 2 minutos · Versão inicial",
+    "description": "Descrição do FUZZ-0.8 no menu suspenso de modelos"
   },
   "name.instrumental": {
     "message": "Música instrumental",
     "description": "Geração de música instrumental sem vocais"
   },
   "name.referenceAudios": {
-    "message": "Músicas de referência",
-    "description": "Nome das músicas de referência"
+    "message": "Música de referência",
+    "description": "Nome da música de referência"
   },
   "name.taskId": {
     "message": "ID da tarefa",
@@ -116,24 +160,24 @@
     "description": "Prompt para entrada de conteúdo"
   },
   "name.extend": {
-    "message": "Expandir música de",
+    "message": "Expandir a música de",
     "description": "Prompt para entrada de conteúdo"
   },
   "name.cover": {
-    "message": "Regravar música de",
+    "message": "Regravar a música de",
     "description": "Prompt para entrada de conteúdo"
   },
   "name.lyrics": {
-    "message": "Letras",
-    "description": "Prompt para entrada de conteúdo das letras"
+    "message": "Letra",
+    "description": "Prompt para entrada de conteúdo da letra"
   },
   "name.style": {
     "message": "Estilo",
     "description": "Prompt para entrada de conteúdo do estilo da música"
   },
   "name.styleNegative": {
-    "message": "Estilos a excluir",
-    "description": "Descrição dos estilos indesejados"
+    "message": "Estilo a excluir",
+    "description": "Descrição de estilos indesejados"
   },
   "name.title": {
     "message": "Título",
@@ -141,7 +185,7 @@
   },
   "name.vocalGender": {
     "message": "Gênero vocal",
-    "description": "Escolha do gênero vocal"
+    "description": "Seleção do gênero vocal"
   },
   "name.advancedParams": {
     "message": "Parâmetros avançados",
@@ -149,34 +193,34 @@
   },
   "name.weirdness": {
     "message": "Criatividade",
-    "description": "Controla o nível de criatividade na música gerada"
+    "description": "Controla o nível de criatividade da música gerada"
   },
   "name.soundStrength": {
-    "message": "Intensidade do som",
+    "message": "Intensidade do Som",
     "description": "Controla a intensidade do som gerado"
   },
   "name.lyricsStrength": {
-    "message": "Intensidade das letras",
-    "description": "Controla a influência das letras no resultado gerado"
+    "message": "Intensidade da Letra",
+    "description": "Controla o impacto da letra no resultado gerado"
   },
   "name.seed": {
     "message": "Semente",
-    "description": "Semente aleatória para geração reproduzível"
+    "description": "Semente aleatória para geração repetível"
   },
   "name.lyricPrompt": {
-    "message": "Prompt de letras",
+    "message": "Prompt de Letra",
     "description": "Prompt para geração automática de letras"
   },
   "name.failureReason": {
-    "message": "Razão da falha",
-    "description": "Razão pela qual a tarefa falhou"
+    "message": "Razão da Falha",
+    "description": "Motivo da falha da tarefa"
   },
   "name.status": {
     "message": "Status",
     "description": "Status da tarefa"
   },
   "name.traceId": {
-    "message": "ID de rastreamento",
+    "message": "ID de Rastreamento",
     "description": "ID de rastreamento da tarefa"
   },
   "name.producerBot": {
@@ -184,23 +228,23 @@
     "description": "Nome do gerador Producer"
   },
   "name.replaceSection": {
-    "message": "Substituir trecho",
-    "description": "Substituir um trecho da música"
+    "message": "Substituir Seção",
+    "description": "Substituir uma parte da música"
   },
   "name.model": {
     "message": "Modelo",
-    "description": "Escolha da versão do modelo"
+    "description": "Selecionar versão do modelo"
   },
   "name.songDescription": {
-    "message": "Descrição da música",
+    "message": "Descrição da Música",
     "description": "Modo de descrição da música"
   },
   "description.prompt": {
-    "message": "Descreva o estilo e tema da música que deseja",
+    "message": "Descreva o estilo e tema musical desejados",
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.lyrics": {
-    "message": "Insira letras personalizadas, suportando marcações de parágrafo como [Verso], [Refrão], [Ponte], etc.",
+    "message": "Insira letras personalizadas, suportando marcações como [Verso], [Refrão], [Ponte], etc.",
     "description": "Descrição do parâmetro 'lyrics'"
   },
   "description.style": {
@@ -209,18 +253,18 @@
   },
   "description.styleNegative": {
     "message": "Descreva estilos indesejados, como heavy metal, gritos",
-    "description": "Descrição do parâmetro de estilo a ser excluído"
+    "description": "Descrição do parâmetro de exclusão de estilo"
   },
   "description.title": {
-    "message": "Título da música",
+    "message": "Título da Música",
     "description": "Descrição do parâmetro 'title'"
   },
   "description.uploadAudios": {
-    "message": "Envie músicas como referência para a geração. O upload pode levar um tempo, e a geração será feita com base na música enviada.",
-    "description": "Descrição do parâmetro de referência de upload"
+    "message": "Envie músicas como referência para a geração, o upload pode levar um tempo, após o sucesso, a geração será baseada na música enviada",
+    "description": "Descrição do parâmetro de upload de referência"
   },
   "description.vocalGender": {
-    "message": "Escolha o gênero da voz a ser gerada",
+    "message": "Escolha o gênero da voz gerada",
     "description": "Descrição do seletor de gênero vocal"
   },
   "description.weirdness": {
@@ -228,40 +272,44 @@
     "description": "Descrição do parâmetro de criatividade"
   },
   "description.soundStrength": {
-    "message": "Controle a intensidade do som gerado (0-100)",
+    "message": "Controla a intensidade do som gerado (0-100)",
     "description": "Descrição do parâmetro de intensidade do som"
   },
   "description.lyricsStrength": {
-    "message": "Controle o impacto das letras no resultado gerado (0-100)",
-    "description": "Descrição do parâmetro de intensidade das letras"
+    "message": "Controla o impacto da letra no resultado gerado (0-100)",
+    "description": "Descrição do parâmetro de intensidade da letra"
   },
   "description.seed": {
     "message": "Insira um valor de semente para resultados repetíveis, deixe em branco para aleatório",
     "description": "Descrição do parâmetro de semente"
   },
   "description.lyricPrompt": {
-    "message": "Insira uma descrição das letras, a IA gerará automaticamente as letras",
-    "description": "Descrição do prompt de letras"
+    "message": "Insira uma descrição da letra, a IA gerará automaticamente a letra",
+    "description": "Descrição do prompt de letra"
   },
   "description.replaceSection": {
-    "message": "Substitua o conteúdo em um intervalo de tempo específico da música",
-    "description": "Descrição da função de substituição de trechos"
+    "message": "Substituir o conteúdo em um intervalo de tempo específico da música",
+    "description": "Descrição da funcionalidade de substituição de seção"
+  },
+  "description.instrumental": {
+    "message": "Gerar música instrumental sem vocal, a entrada de letra será ignorada",
+    "description": "Descrição do prompt para música instrumental"
   },
   "status.pending": {
     "message": "Aguardando",
-    "description": "Estado de espera da tarefa"
+    "description": "Status de espera da tarefa"
   },
   "placeholder.prompt": {
-    "message": "Descreva a música que você deseja, por exemplo: uma balada aconchegante sobre a saudade do outono...",
-    "description": "Placeholder para a entrada de descrição da música"
+    "message": "Descreva a música desejada, por exemplo: uma balada aconchegante sobre saudade do outono...",
+    "description": "Placeholder para entrada de descrição da música"
   },
   "placeholder.lyrics": {
     "message": "[Verso]\nNesta noite silenciosa\nAs estrelas brilham no céu\n\n[Refrão]\nVamos cantar juntos\nAté o amanhecer...",
-    "description": "Placeholder para a entrada de letras"
+    "description": "Placeholder para entrada de letras"
   },
   "placeholder.extend.lyrics": {
     "message": "Insira as letras que precisam ser expandidas...",
-    "description": "Placeholder para a entrada de letras a serem expandidas"
+    "description": "Placeholder para entrada de letras a serem expandidas"
   },
   "placeholder.extend.continue_at": {
     "message": "A partir de qual segundo expandir...",
@@ -269,50 +317,50 @@
   },
   "placeholder.style": {
     "message": "Por exemplo: pop acústico, jazz, R&B, eletrônico...",
-    "description": "Placeholder para a entrada de estilo"
+    "description": "Placeholder para entrada de estilo"
   },
   "placeholder.styleNegative": {
     "message": "Por exemplo: heavy metal, gritos...",
-    "description": "Placeholder para a entrada de estilo a ser excluído"
+    "description": "Placeholder para entrada de estilo a ser excluído"
   },
   "placeholder.title": {
     "message": "Insira o nome da música...",
-    "description": "Placeholder para a entrada de título"
+    "description": "Placeholder para entrada de título"
   },
   "placeholder.select": {
-    "message": "Selecione o modelo...",
-    "description": "Placeholder para a seleção de modelo"
+    "message": "Selecione um modelo...",
+    "description": "Placeholder para seleção de modelo"
   },
   "placeholder.position": {
     "message": "Selecione...",
-    "description": "Placeholder para a entrada de posição"
+    "description": "Placeholder para entrada de posição"
   },
   "placeholder.lyricPrompt": {
-    "message": "Descreva o tema das letras, a IA gerará automaticamente...",
-    "description": "Placeholder para a entrada de prompt de letras"
+    "message": "Descreva o tema da letra, a IA gerará automaticamente...",
+    "description": "Placeholder para entrada de prompt de letra"
   },
   "placeholder.replaceSectionStart": {
     "message": "Tempo de início (segundos)",
-    "description": "Placeholder para o tempo de início do trecho a ser substituído"
+    "description": "Placeholder para o tempo de início da seção a ser substituída"
   },
   "placeholder.replaceSectionEnd": {
     "message": "Tempo de término (segundos)",
-    "description": "Placeholder para o tempo de término do trecho a ser substituído"
+    "description": "Placeholder para o tempo de término da seção a ser substituída"
   },
   "placeholder.seed": {
     "message": "Insira um valor de semente (opcional)...",
-    "description": "Placeholder para a entrada de semente"
+    "description": "Placeholder para entrada de semente"
   },
   "button.generate": {
     "message": "Gerar",
     "description": "Texto do botão de geração"
   },
   "gender.male": {
-    "message": "Voz masculina",
+    "message": "Voz Masculina",
     "description": "Opção de voz masculina"
   },
   "gender.female": {
-    "message": "Voz feminina",
+    "message": "Voz Feminina",
     "description": "Opção de voz feminina"
   },
   "gender.auto": {
@@ -321,59 +369,59 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem ao iniciar a tarefa de geração de música"
+    "description": "Mensagem exibida quando a tarefa de geração de música começa"
   },
   "message.startingUploadAudio": {
-    "message": "Enviando música personalizada...",
-    "description": "Mensagem ao iniciar a tarefa de geração de música"
+    "message": "Carregando música personalizada...",
+    "description": "Mensagem quando a tarefa de geração de música começa"
   },
   "message.uploadReferencesExceed": {
-    "message": "O número de músicas enviadas excedeu o máximo permitido",
-    "description": "Mensagem de erro quando o número de músicas enviadas excede o máximo"
+    "message": "O número de músicas carregadas excede o máximo permitido",
+    "description": "Mensagem de erro quando o número de músicas carregadas excede o máximo permitido"
   },
   "message.uploadReferencesError": {
-    "message": "Falha ao enviar a música",
-    "description": "Mensagem de erro ao falhar no envio da música"
+    "message": "Falha ao carregar música",
+    "description": "Mensagem de erro quando falha ao carregar música"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração de música iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de sucesso quando a tarefa de geração de música é iniciada com sucesso"
   },
   "message.startUploadAudioSuccess": {
-    "message": "Música personalizada enviada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar a tarefa de geração de música"
+    "message": "Música personalizada carregada com sucesso",
+    "description": "Mensagem de sucesso quando a música personalizada é carregada com sucesso"
   },
   "message.startUploadAudioFailed": {
-    "message": "Falha ao enviar a música personalizada",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+    "message": "Falha ao carregar música personalizada",
+    "description": "Mensagem de erro quando falha ao iniciar a tarefa de geração de música"
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa de geração de música",
-    "description": "Mensagem de erro ao falhar ao iniciar a tarefa de geração de música"
+    "description": "Mensagem de erro quando falha ao iniciar a tarefa de geração de música"
   },
   "message.getVideoUrlFailed": {
     "message": "Falha ao obter o vídeo da música, por favor, tente novamente mais tarde",
-    "description": "Mensagem de erro ao falhar ao obter o vídeo"
+    "description": "Mensagem de erro quando falha ao obter o vídeo"
   },
   "message.generatingLyrics": {
     "message": "Gerando letras...",
-    "description": "Mensagem ao gerar letras"
+    "description": "Mensagem durante a geração de letras"
   },
   "message.generateLyricsSuccess": {
     "message": "Letras geradas com sucesso",
-    "description": "Mensagem ao gerar letras com sucesso"
+    "description": "Mensagem quando as letras são geradas com sucesso"
   },
   "message.generateLyricsFailed": {
     "message": "Falha ao gerar letras",
-    "description": "Mensagem ao falhar ao gerar letras"
+    "description": "Mensagem quando falha ao gerar letras"
   },
   "message.fetchingWav": {
-    "message": "Buscando arquivo WAV...",
-    "description": "Mensagem ao buscar o arquivo WAV"
+    "message": "Obtendo arquivo WAV...",
+    "description": "Mensagem durante a obtenção do arquivo WAV"
   },
   "message.fetchWavFailed": {
-    "message": "Falha ao buscar arquivo WAV",
-    "description": "Mensagem ao falhar na busca do arquivo WAV"
+    "message": "Falha ao obter o arquivo WAV",
+    "description": "Mensagem quando falha ao obter o arquivo WAV"
   },
   "message.generating": {
     "message": "Gerando...",
@@ -381,7 +429,7 @@
   },
   "message.generateFailed": {
     "message": "Falha ao gerar música",
-    "description": "Mensagem ao falhar na geração da música"
+    "description": "Mensagem quando falha ao gerar música"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

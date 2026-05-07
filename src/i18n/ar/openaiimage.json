@@ -1,23 +1,23 @@
 {
   "name.taskId": {
-    "message": "معرف المهمة",
-    "description": "معرف المهمة"
+    "message": "معرّف المهمة",
+    "description": "معرّف المهمة"
   },
   "name.task": {
     "message": "نوع المهمة",
-    "description": "نوع عملية صورة OpenAI"
+    "description": "نوع عملية OpenAI Image"
   },
   "name.generate": {
-    "message": "إنشاء صورة",
+    "message": "إنشاء",
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير صورة",
-    "description": "نوع العملية: تحرير صورة"
+    "message": "تعديل",
+    "description": "نوع العملية: تعديل صورة"
   },
   "name.imageUrls": {
     "message": "صور مرجعية",
-    "description": "صور مرجعية للتحرير"
+    "description": "الصور المرجعية للتحرير"
   },
   "name.failure": {
     "message": "فشل",
@@ -32,88 +32,136 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرف التتبع",
-    "description": "معرف التتبع"
+    "message": "معرّف التتبع",
+    "description": "معرّف التتبع"
   },
   "name.elapsed": {
-    "message": "الوقت المستغرق",
-    "description": "الوقت المستغرق للمهمة (بالثواني)"
+    "message": "المدة",
+    "description": "مدة المهمة (بالثواني)"
   },
   "name.prompt": {
-    "message": "نص الصورة",
-    "description": "نص التوليد/التحرير"
+    "message": "الوصف",
+    "description": "الوصف المستخدم للتوليد أو التحرير"
   },
   "name.openaiimageBot": {
-    "message": "روبوت صورة OpenAI",
-    "description": "اسم روبوت صورة OpenAI"
+    "message": "روبوت OpenAI Image",
+    "description": "اسم روبوت OpenAI Image"
   },
   "name.size": {
     "message": "الحجم",
     "description": "حجم الصورة الناتجة"
   },
   "description.size": {
-    "message": "حجم الإخراج المستخدم لإنشاء الصورة، القيم الشائعة: 1024x1024، 1536x1024، 1024x1536.",
-    "description": "وصف الحجم"
+    "message": "حجم الصورة الناتجة. الأحجام المدعومة تختلف حسب النموذج: gpt-image-1 / gpt-image-1.5 تدعم فقط 1024x1024، 1536x1024، 1024x1536؛ gpt-image-2 يدعم أيضًا 1792x1024، 1024x1792، وإعدادات مسبقة 2K/4K؛ gpt-image-2 يدعم الأحجام المخصصة.",
+    "description": "شرح حجم الصورة"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K قياسي (السعر الأساسي)",
+    "description": "عنوان مجموعة حجم 1K، حسب السعر الأساسي"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K مسبق (1.5× السعر)",
+    "description": "عنوان مجموعة حجم 2K، بسعر 1.5×"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K مسبق (1.5× السعر)",
+    "description": "عنوان مجموعة حجم 4K، بسعر 1.5×"
+  },
+  "name.customSize": {
+    "message": "حجم مخصص",
+    "description": "تبديل الحجم المخصص"
+  },
+  "description.customSize": {
+    "message": "بعد التفعيل يمكن تحديد العرض والارتفاع بحرية (مدعوم فقط في gpt-image-2). يجب أن يكون مضاعفًا لـ16، وأطول جانب ≤ 3840، وإجمالي البكسلات ≤ 8,294,400. الأحجام غير القياسية تُحسب بسعر 1.5×.",
+    "description": "شرح الحجم المخصص"
+  },
+  "name.width": {
+    "message": "العرض",
+    "description": "تسمية حقل إدخال العرض"
+  },
+  "name.height": {
+    "message": "الارتفاع",
+    "description": "تسمية حقل إدخال الارتفاع"
+  },
+  "error.customSizePositive": {
+    "message": "يجب أن يكون العرض والارتفاع أعدادًا صحيحة موجبة",
+    "description": "الحجم المخصص يجب أن يكون أعدادًا صحيحة موجبة"
+  },
+  "error.customSizeMultiple": {
+    "message": "يجب أن يكون العرض والارتفاع مضاعفات {multiple}",
+    "description": "الحجم المخصص يجب أن يكون مضاعفًا لـ16"
+  },
+  "error.customSizeMin": {
+    "message": "العرض والارتفاع لا يمكن أن يكون أقل من {min}",
+    "description": "الحد الأدنى للحجم المخصص"
+  },
+  "error.customSizeMax": {
+    "message": "أطول جانب لا يمكن أن يتجاوز {max}",
+    "description": "الحد الأقصى لأطول جانب"
+  },
+  "error.customSizePixels": {
+    "message": "إجمالي البكسلات لا يمكن أن يتجاوز {pixels}",
+    "description": "الحد الأقصى لإجمالي البكسلات"
   },
   "description.prompt": {
-    "message": "نص التوليد أو التحرير للصورة",
-    "description": "وصف نص التوليد"
+    "message": "الوصف المستخدم لإنشاء أو تعديل الصورة",
+    "description": "شرح الوصف"
   },
   "description.model": {
-    "message": "النموذج المستخدم في إنشاء وتحرير الصور.",
-    "description": "وصف معلمة النموذج"
+    "message": "النموذج المستخدم لإنشاء وتعديل الصور.",
+    "description": "شرح معلمة النموذج"
   },
   "description.imageUrls": {
-    "message": "قم بتحميل 1-5 صور مرجعية للدخول في وضع التحرير.",
-    "description": "وصف معلمة image_urls"
+    "message": "ارفع 1-5 صور مرجعية للدخول في وضع التحرير.",
+    "description": "شرح معلمة image_urls"
   },
   "status.pending": {
     "message": "قيد الانتظار",
-    "description": "حالة انتظار المهمة"
+    "description": "حالة المهمة قيد الانتظار"
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص العنصر المحدد"
+    "description": "نص العنصر النائب للاختيار"
   },
   "placeholder.prompt": {
-    "message": "أدخل نص التوليد، مثل: قطة مائية على الطاولة",
-    "description": "نص العنصر المحدد"
+    "message": "أدخل الوصف، مثل: قطة مائية على الطاولة",
+    "description": "نص العنصر النائب للوصف"
   },
   "button.generate": {
-    "message": "توليد",
-    "description": "زر التوليد"
+    "message": "إنشاء",
+    "description": "زر الإنشاء"
   },
   "button.uploadImageUrls": {
-    "message": "تحميل",
-    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل' بدلاً من 'تحميل الصور')"
+    "message": "رفع",
+    "description": "زر رفع الصور المرجعية، ترجمة مبسطة لـ 'Upload'"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
     "description": "رسالة بدء المهمة"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة التوليد بنجاح",
+    "message": "تم إنشاء المهمة بنجاح",
     "description": "تم إنشاء المهمة بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمدير:",
+    "message": "فشل في إنشاء المهمة، يرجى التواصل مع المسؤول:",
     "description": "فشل إنشاء المهمة"
   },
   "message.usedUp": {
-    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
+    "message": "لقد انتهت نقاطك، يرجى شراء المزيد للاستمرار",
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
-    "message": "يمكنك تحميل ما يصل إلى 5 صور",
-    "description": "تجاوز عدد الصور الحد المسموح به"
+    "message": "يمكن رفع 5 صور كحد أقصى",
+    "description": "تجاوز الحد الأقصى لعدد الصور"
   },
   "message.uploadImageError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
-    "description": "فشل التحميل"
+    "message": "فشل رفع الصورة، يرجى المحاولة لاحقًا",
+    "description": "فشل رفع الصورة"
   },
   "name.model": {
     "message": "النموذج",
-    "description": "علامة اختيار نموذج صورة OpenAI"
+    "description": "تسمية اختيار نموذج OpenAI Image"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",

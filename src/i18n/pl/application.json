@@ -1,7 +1,7 @@
 {
   "type.period": {
     "message": "Okres",
-    "description": "Czas trwania usługi."
+    "description": "Okres usługi."
   },
   "type.usage": {
     "message": "Limit",
@@ -17,11 +17,11 @@
   },
   "button.goCredentials": {
     "message": "Klucze",
-    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony z danymi uwierzytelniającymi."
+    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony poświadczeń."
   },
   "button.buyMore": {
     "message": "Doładuj",
-    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony zakupu dodatkowych środków."
+    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony zakupu więcej."
   },
   "button.createOrder": {
     "message": "Utwórz zamówienie",
@@ -57,7 +57,7 @@
   },
   "field.remainingAmount": {
     "message": "Saldo",
-    "description": "Pozostałe saldo wniosku."
+    "description": "Saldo wniosku."
   },
   "field.usedAmount": {
     "message": "Użyte",
@@ -89,7 +89,7 @@
   },
   "field.traceId": {
     "message": "ID śledzenia",
-    "description": "ID śledzenia wywołania API dla wniosku."
+    "description": "ID śledzenia wywołania API wniosku."
   },
   "field.shouldPayPrice": {
     "message": "Ostateczna cena",
@@ -104,8 +104,8 @@
     "description": "To jest usługa online, formularz dostarcza usługi użytkownikowi przez HTTP proxy."
   },
   "field.credential": {
-    "message": "Dane uwierzytelniające",
-    "description": "Dane uwierzytelniające wniosku."
+    "message": "Poświadczenia",
+    "description": "Poświadczenia wniosku."
   },
   "field.name": {
     "message": "Nazwa",
@@ -135,93 +135,105 @@
     "message": "Wniosek złożony pomyślnie",
     "description": "Wiadomość wyświetlana, gdy użytkownik pomyślnie złożył wniosek o tę usługę."
   },
+  "message.applyFailed": {
+    "message": "Nie udało się aktywować darmowego okresu próbnego, odśwież stronę i spróbuj ponownie.",
+    "description": "Wiadomość wyświetlana, gdy automatyczne tworzenie globalnego wniosku nie powiodło się."
+  },
+  "message.welcomeWithCredits": {
+    "message": "🎉 Witaj w Nexior! Przyznaliśmy Ci {credits} punktów, które możesz wykorzystać w dowolnej usłudze.",
+    "description": "Wiadomość powitalna wyświetlana po pomyślnym utworzeniu globalnego wniosku lub przy pierwszym wejściu. {credits} to pozostały limit globalnego wniosku."
+  },
+  "message.welcomeNoCredits": {
+    "message": "🎉 Witaj w Nexior! Twoje konto jest gotowe do korzystania z dowolnej usługi.",
+    "description": "Wiadomość powitalna wyświetlana, gdy nie ma dostępnych darmowych limitów w globalnym wniosku."
+  },
   "message.notApplied": {
-    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek przed użyciem",
+    "message": "Nie złożyłeś jeszcze wniosku o tę usługę, proszę złożyć wniosek przed użyciem.",
     "description": "Wiadomość wyświetlana, gdy użytkownik jeszcze nie złożył wniosku o tę usługę."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Możesz doładować ogólne saldo lub doładować każde zgłoszenie osobno. To doładowanie trafi do ogólnego salda, a gdy saldo konkretnego zgłoszenia będzie niewystarczające, ogólne saldo zostanie automatycznie użyte do uzupełnienia.",
-    "description": "Tekst informacyjny wyjaśniający, że doładowanie trafi do ogólnego salda i automatycznie uzupełni saldo zgłoszenia, gdy będzie niewystarczające."
+    "message": "Możesz doładować ogólny bilans lub doładować każdy wniosek osobno. To doładowanie trafi do ogólnego bilansu, a gdy saldo danego wniosku będzie niewystarczające, ogólny bilans zostanie automatycznie użyty do uzupełnienia.",
+    "description": "Tekst informacyjny, wyjaśniający, że doładowanie trafia do ogólnego bilansu i automatycznie uzupełnia saldo wniosku, gdy jest niewystarczające. Termin: ogólny bilans = General Balance (nie tłumaczyć jako Global Balance)."
   },
   "message.yourApplication": {
-    "message": "Twój wniosek",
-    "description": "Wiadomość wyświetlana, gdy użytkownik składa wniosek."
+    "message": "Twoja aplikacja",
+    "description": "Gdy użytkownik składa aplikację, wyświetlana jest ta wiadomość."
   },
   "message.unverified": {
     "message": "Musisz ukończyć weryfikację tożsamości, aby ubiegać się o tę usługę",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy nie ukończył weryfikacji tożsamości."
+    "description": "Gdy użytkownik nie ukończył weryfikacji tożsamości, wyświetlana jest ta wiadomość."
   },
   "message.goVerify": {
     "message": "Przejdź do weryfikacji tożsamości",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy nie ukończył weryfikacji tożsamości."
+    "description": "Gdy użytkownik nie ukończył weryfikacji tożsamości, wyświetlana jest ta wiadomość."
   },
   "message.requiredParameter": {
     "message": "Wymagany parametr",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy nie wprowadził wymaganego parametru."
+    "description": "Gdy użytkownik nie wprowadził wymaganych parametrów, wyświetlana jest ta wiadomość."
   },
   "message.example": {
     "message": "Przykład",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy nie wprowadził wymaganego parametru."
+    "description": "Gdy użytkownik nie wprowadził wymaganych parametrów, wyświetlana jest ta wiadomość."
   },
   "message.applicationSelection": {
-    "message": "Oto aktualnie wybrane lub zakupione pakiety, możesz wybrać jeden z nich, aby kontynuować korzystanie z usługi.",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy musi wybrać aplikację."
+    "message": "Oto Twoje aktualne pakiety, możesz wybrać jeden z nich, aby kontynuować korzystanie z usługi.",
+    "description": "Gdy użytkownik musi wybrać aplikację, wyświetlana jest ta wiadomość."
   },
   "message.createCredentialSuccessfully": {
     "message": "Pomyślnie utworzono poświadczenia",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy pomyślnie utworzył poświadczenia."
+    "description": "Gdy użytkownik pomyślnie utworzył poświadczenia, wyświetlana jest ta wiadomość."
   },
   "message.readPolicy": {
     "message": "Przeczytałem i zgadzam się",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy przeczytał i zgodził się na politykę."
+    "description": "Gdy użytkownik przeczytał i zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
   "message.policy": {
     "message": "Umowa o korzystanie z usług technologii danych",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy przeczytał i zgodził się na politykę."
+    "description": "Gdy użytkownik przeczytał i zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
   "message.notAgreePolicy": {
     "message": "Nie zgodziłeś się na umowę o korzystanie z usług technologii danych",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy nie zgodził się na politykę."
+    "description": "Gdy użytkownik nie zgodził się na politykę, wyświetlana jest ta wiadomość."
   },
   "message.welcome": {
     "message": "Witamy",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy potwierdza wniosek o usługę."
+    "description": "Gdy użytkownik potwierdza aplikację o usługę, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredential": {
     "message": "Zresetuj klucz",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy resetuje klucz."
+    "description": "Gdy użytkownik resetuje klucz, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialConfirm": {
-    "message": "Czy na pewno chcesz zresetować klucz? Po resecie nie będzie można go przywrócić",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy potwierdza reset klucza."
+    "message": "Czy na pewno chcesz zresetować klucz? Po resecie nie będzie można go odzyskać",
+    "description": "Gdy użytkownik potwierdza reset klucza, wyświetlana jest ta wiadomość."
   },
   "message.idDoesNotExist": {
-    "message": "Wniosek nie istnieje",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy wniosek nie istnieje."
+    "message": "Aplikacja nie istnieje",
+    "description": "Gdy aplikacja nie istnieje, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialSuccessfully": {
     "message": "Pomyślnie zresetowano klucz",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy klucz został pomyślnie zresetowany."
+    "description": "Gdy klucz został pomyślnie zresetowany, wyświetlana jest ta wiadomość."
   },
   "message.rotateCredentialFailed": {
     "message": "Reset klucza nie powiódł się, skontaktuj się z obsługą",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy reset klucza nie powiódł się."
+    "description": "Gdy reset klucza nie powiódł się, wyświetlana jest ta wiadomość."
   },
   "message.fetchFailed": {
     "message": "Nie udało się pobrać aplikacji, spróbuj ponownie później.",
-    "description": "Komunikat wyświetlany, gdy nie udało się pobrać listy aplikacji."
+    "description": "Wskazówka, gdy nie udało się pobrać listy aplikacji."
   },
   "message.updateFailed": {
     "message": "Aktualizacja nie powiodła się",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy aktualizacja nie powiodła się."
+    "description": "Gdy aktualizacja nie powiodła się, wyświetlana jest ta wiadomość."
   },
   "message.updateSuccessfully": {
     "message": "Aktualizacja zakończona sukcesem",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy aktualizacja zakończyła się sukcesem."
+    "description": "Gdy aktualizacja zakończyła się sukcesem, wyświetlana jest ta wiadomość."
   },
   "message.neverExpire": {
     "message": "Nigdy nie wygasa",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy wniosek nigdy nie wygasa."
+    "description": "Gdy aplikacja nigdy nie wygasa, wyświetlana jest ta wiadomość."
   },
   "title.buyService": {
     "message": "Zakup usługi",
@@ -232,87 +244,87 @@
     "description": "Tytuł strony, gdy użytkownik chce zakupić ogólną usługę."
   },
   "title.applicationRemainingCount": {
-    "message": "Liczba modyfikacji",
-    "description": "Tytuł strony, gdy użytkownik chce zmodyfikować liczbę aplikacji."
+    "message": "Liczba zmian",
+    "description": "Tytuł strony, gdy użytkownik chce zmienić liczbę aplikacji."
   },
   "title.manageApplication": {
-    "message": "Zarządzanie aplikacjami",
-    "description": "Tytuł strony, gdy użytkownik chce zarządzać aplikacjami."
+    "message": "Zarządzanie aplikacją",
+    "description": "Tytuł strony, gdy użytkownik chce zarządzać aplikacją."
   },
   "title.applicationBalance": {
     "message": "Punkty przypisane - {service}",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy przegląda saldo aplikacji."
+    "description": "Gdy użytkownik przegląda saldo aplikacji, wyświetlana jest ta wiadomość."
   },
   "title.count": {
     "message": "Łączna liczba aplikacji",
     "description": "Tytuł strony, gdy użytkownik przegląda liczbę aplikacji."
   },
   "message.countDescription": {
-    "message": "Każda usługa odpowiada jednemu przypadkowi aplikacji, informacje o kluczu, zużyciu itp. można zobaczyć w zarządzaniu poniżej.",
-    "description": "Komunikat wyświetlany użytkownikowi, gdy przegląda liczbę aplikacji."
+    "message": "Każda usługa odpowiada jednemu przypadkowi aplikacji, informacje o kluczu, zużyciu itp. można zobaczyć poniżej w zarządzaniu.",
+    "description": "Gdy użytkownik przegląda liczbę aplikacji, wyświetlana jest ta wiadomość."
   },
   "title.globalBalance": {
     "message": "Ogólne saldo",
-    "description": "Tytuł strony, gdy użytkownik przegląda ogólne saldo."
+    "description": "Tytuł strony, gdy użytkownik przegląda ogólne saldo. Angielski musi być przetłumaczony jako 'General Balance', a chiński jako 'Ogólne saldo'."
   },
   "message.globalBalanceDescription": {
-    "message": "Po włączeniu 'Zezwól na ogólne saldo', w przypadku niewystarczającego salda instancji automatycznie zostanie użyte ogólne saldo.",
-    "description": "Komunikat wyjaśniający, że w przypadku niewystarczającego salda instancji automatycznie zostanie wykorzystane ogólne saldo."
+    "message": "Po włączeniu 'Zezwól na ogólne saldo', w przypadku niewystarczającego salda instancji, automatycznie zostanie użyte ogólne saldo.",
+    "description": "Wskazówka, że w przypadku niewystarczającego salda instancji automatycznie zostanie wykorzystane ogólne saldo. Termin: ogólne saldo = General Balance (nie tłumaczyć jako Global Balance)."
   },
   "button.service": {
     "message": "Obsługa klienta",
-    "description": "Tekst przycisku, klikając ten przycisk przejdziesz do strony obsługi klienta."
+    "description": "Tekst przycisku, kliknięcie tego przycisku przeniesie do strony obsługi klienta (angielski sugeruje: Support, zachować krótko)."
   },
   "button.acquire": {
     "message": "Dodaj wsparcie",
-    "description": "Tekst przycisku, klikając ten przycisk dodasz wsparcie."
+    "description": "Tekst przycisku, kliknięcie tego przycisku doda wsparcie (angielski sugeruje: Add Support, zachować krótko)."
   },
   "button.delete": {
     "message": "Usuń",
-    "description": "Tekst przycisku, klikając ten przycisk usuniesz ten element."
+    "description": "Tekst przycisku, kliknięcie tego przycisku spowoduje usunięcie elementu."
   },
   "field.dataset": {
     "message": "Zbiór danych",
-    "description": "Zbiór danych aplikacji."
+    "description": "Aplikowany zbiór danych."
   },
   "field.disabled": {
-    "message": "Wyłączone",
-    "description": "Informacja, czy wniosek jest wyłączony."
+    "message": "Wyłączony",
+    "description": "Czy aplikacja jest wyłączona."
   },
   "message.addServiceToAcquire": {
     "message": "Dodaj wsparcie, aby uzyskać",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy nie dodał jeszcze wsparcia, aby uzyskać dostęp."
+    "description": "Komunikat wyświetlany, gdy użytkownik jeszcze nie dodał wsparcia, aby uzyskać."
   },
   "message.confirmApplying": {
-    "message": "Potwierdź wniosek o usługę",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy potwierdza wniosek o usługę."
+    "message": "Potwierdź aplikację",
+    "description": "Komunikat wyświetlany, gdy użytkownik potwierdza aplikację."
   },
   "message.confirmDelete": {
-    "message": "Czy na pewno chcesz usunąć ten wniosek? Po usunięciu wszystkie dane wniosku zostaną utracone.",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy potwierdza usunięcie wniosku."
+    "message": "Czy na pewno chcesz usunąć tę aplikację? Po usunięciu wszystkie dane aplikacji zostaną utracone.",
+    "description": "Komunikat wyświetlany, gdy użytkownik potwierdza usunięcie aplikacji."
   },
   "message.placeEnter": {
     "message": "Wprowadź '$0$' w celu potwierdzenia",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy musi wprowadzić tekst w celu potwierdzenia, nie tłumacz `'$0$'`."
+    "description": "Komunikat wyświetlany, gdy użytkownik musi wprowadzić tekst w celu potwierdzenia, nie tłumacz `'$0$'`."
   },
   "message.invalidInput": {
     "message": "Nieprawidłowe dane",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy wprowadza nieprawidłowe dane."
+    "description": "Komunikat wyświetlany, gdy użytkownik wprowadza nieprawidłowe dane."
   },
   "message.deleteFailed": {
     "message": "Usunięcie nie powiodło się",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy usunięcie nie powiodło się."
+    "description": "Komunikat wyświetlany, gdy usunięcie nie powiodło się."
   },
   "message.deleteSuccessfully": {
     "message": "Usunięcie powiodło się",
-    "description": "Wiadomość wyświetlana użytkownikowi, gdy usunięcie powiodło się."
+    "description": "Komunikat wyświetlany, gdy usunięcie powiodło się."
   },
   "title.application": {
-    "message": "Wniosek",
+    "message": "Aplikacja",
     "description": ""
   },
   "title.description": {
     "message": "Opis",
-    "description": "Tytuł strony wyświetlany użytkownikowi, gdy przegląda umowę o korzystanie z usług technologicznych."
+    "description": "Tytuł strony, gdy użytkownik przegląda umowę o korzystaniu z usług technologicznych danych."
   }
 }

@@ -200,7 +200,7 @@
     "description": "Exibido como o título na caixa de edição"
   },
   "title.editDistributionForceInviterId": {
-    "message": "Editar convidador forçado",
+    "message": "Editar Convite Forçado",
     "description": "Exibido como título na caixa de edição"
   },
   "title.editQR": {
@@ -208,7 +208,7 @@
     "description": "Exibido como título na caixa de edição"
   },
   "title.editUrl": {
-    "message": "Editar link",
+    "message": "Editar Link",
     "description": "Exibido como título na caixa de edição"
   },
   "placeholder.title": {
@@ -244,8 +244,56 @@
     "description": "Mensagem de aviso quando a imagem enviada excede o limite"
   },
   "message.uploadImageError": {
-    "message": "Erro ao enviar imagem",
-    "description": "Mensagem de erro ao enviar imagem"
+    "message": "Erro ao enviar a imagem",
+    "description": "Mensagem de erro ao enviar a imagem"
+  },
+  "imageCropper.dropHere": {
+    "message": "Arraste a imagem para cá ou clique para enviar",
+    "description": "Mensagem de estado vazio do cortador de imagem"
+  },
+  "imageCropper.formatHint": {
+    "message": "Suporta JPG / PNG / WebP, máximo 20 MB",
+    "description": "Formatos de arquivo permitidos no cortador de imagem"
+  },
+  "imageCropper.zoomIn": {
+    "message": "Aumentar",
+    "description": "Botão de aumentar no cortador de imagem"
+  },
+  "imageCropper.zoomOut": {
+    "message": "Reduzir",
+    "description": "Botão de reduzir no cortador de imagem"
+  },
+  "imageCropper.rotateLeft": {
+    "message": "Girar para a esquerda",
+    "description": "Botão de girar no sentido anti-horário no cortador de imagem"
+  },
+  "imageCropper.rotateRight": {
+    "message": "Girar para a direita",
+    "description": "Botão de girar no sentido horário no cortador de imagem"
+  },
+  "imageCropper.flipHorizontal": {
+    "message": "Virar horizontalmente",
+    "description": "Botão de virar horizontalmente no cortador de imagem"
+  },
+  "imageCropper.replace": {
+    "message": "Selecionar nova imagem",
+    "description": "Botão para substituir a imagem no cortador de imagem"
+  },
+  "imageCropper.invalidType": {
+    "message": "Por favor, selecione um arquivo de imagem.",
+    "description": "Erro de formato não suportado no cortador de imagem"
+  },
+  "imageCropper.noImage": {
+    "message": "Por favor, selecione uma imagem primeiro.",
+    "description": "Erro quando nenhuma imagem é selecionada no cortador de imagem"
+  },
+  "imageCropper.canvasError": {
+    "message": "Não foi possível gerar a imagem cortada.",
+    "description": "Erro de canvas no cortador de imagem"
+  },
+  "imageCropper.uploadFailed": {
+    "message": "Falha ao enviar a imagem.",
+    "description": "Erro de falha no envio no cortador de imagem"
   },
   "message.editLogoTip": {
     "message": "Tamanho recomendado: 200*60px",
@@ -261,7 +309,7 @@
   },
   "message.editUrl": {
     "message": "Digite o link",
-    "description": "Mensagem de aviso para digitar o link"
+    "description": "Mensagem de dica para inserir o link"
   },
   "message.atLeastOneAdmin": {
     "message": "Mantenha pelo menos um administrador",
@@ -276,7 +324,7 @@
     "description": "Mensagem de dica para o ID do convidador forçado"
   },
   "message.originTip": {
-    "message": "Domínio do site, a configuração do site está vinculada ao domínio e não pode ser alterada.",
+    "message": "Domínio do site. A configuração do site está vinculada ao domínio e não pode ser alterada.",
     "description": "Mensagem de dica para o domínio do site"
   },
   "message.titleTip": {
@@ -305,11 +353,11 @@
   },
   "message.keywordsTip": {
     "message": "Palavras-chave do site, localizadas nas metainformações do site, usadas para otimização de SEO.",
-    "description": "Mensagem de dica para as palavras-chave do site"
+    "description": "Dica sobre as palavras-chave do site"
   },
   "message.keywordsTip2": {
-    "message": "Você pode adicionar ou remover palavras-chave do site aqui. Quanto mais precisas forem as palavras-chave, melhor para a otimização de SEO.",
-    "description": "Mensagem de dica para as palavras-chave do site"
+    "message": "Você pode adicionar ou remover palavras-chave do site aqui. Quanto mais precisas, melhor para SEO.",
+    "description": "Dica sobre palavras-chave do site"
   },
   "message.featuresChat": {
     "message": "Ativar ou desativar o módulo de Chat.",
@@ -348,75 +396,75 @@
     "description": "Descrição da funcionalidade de Sora"
   },
   "message.featuresSuno": {
-    "message": "Ativar ou desativar o módulo de recursos do Suno.",
-    "description": "Descrição da funcionalidade do Suno"
+    "message": "Ativar ou desativar o módulo de Suno.",
+    "description": "Descrição da funcionalidade de Suno"
   },
   "message.featuresPixverse": {
-    "message": "Ativar ou desativar o módulo de recursos do Pixverse.",
-    "description": "Descrição da funcionalidade do Pixverse"
+    "message": "Ativar ou desativar o módulo de Pixverse.",
+    "description": "Descrição da funcionalidade de Pixverse"
   },
   "message.featuresFlux": {
-    "message": "Ativar ou desativar o módulo de recursos do FLux.",
-    "description": "Descrição da funcionalidade do FLux"
+    "message": "Ativar ou desativar o módulo de FLux.",
+    "description": "Descrição da funcionalidade de FLux"
   },
   "message.featuresNanobanana": {
-    "message": "Ativar ou desativar o módulo de recursos do Nano Banana.",
-    "description": "Descrição da funcionalidade do Nano Banana"
+    "message": "Ativar ou desativar o módulo de Nano Banana.",
+    "description": "Descrição da funcionalidade de Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Ativar ou desativar o módulo de recursos de imagem do OpenAI.",
-    "description": "Descrição da funcionalidade de imagem do OpenAI"
+    "message": "Ativar ou desativar o módulo de imagem OpenAI.",
+    "description": "Descrição da funcionalidade de imagem OpenAI"
   },
   "message.featuresSeedream": {
-    "message": "Ativar ou desativar o módulo de recursos do SeeDream.",
-    "description": "Descrição da funcionalidade do SeeDream"
+    "message": "Ativar ou desativar o módulo de SeeDream.",
+    "description": "Descrição da funcionalidade de SeeDream"
   },
   "message.featuresSeedance": {
-    "message": "Ativar ou desativar o módulo de recursos do SeeDance.",
-    "description": "Descrição da funcionalidade do SeeDance"
+    "message": "Ativar ou desativar o módulo de SeeDance.",
+    "description": "Descrição da funcionalidade de SeeDance"
   },
   "message.featuresWan": {
-    "message": "Ativar ou desativar o módulo de recursos do Wan.",
-    "description": "Descrição da funcionalidade do Wan"
+    "message": "Ativar ou desativar o módulo de Wan.",
+    "description": "Descrição da funcionalidade de Wan"
   },
   "message.featuresProducer": {
-    "message": "Ativar ou desativar o módulo de recursos do Producer.",
-    "description": "Descrição da funcionalidade do Producer"
+    "message": "Ativar ou desativar o módulo de Producer.",
+    "description": "Descrição da funcionalidade de Producer"
   },
   "message.featuresKimi": {
-    "message": "Ativar ou desativar o módulo de recursos do Kimi.",
-    "description": "Descrição da funcionalidade do Kimi"
+    "message": "Ativar ou desativar o módulo de Kimi.",
+    "description": "Descrição da funcionalidade de Kimi"
   },
   "message.featuresSerp": {
-    "message": "Ativar ou desativar o módulo de recursos do SERP.",
-    "description": "Descrição da funcionalidade do SERP"
+    "message": "Ativar ou desativar o módulo de SERP.",
+    "description": "Descrição da funcionalidade de SERP"
   },
   "message.featuresLuma": {
-    "message": "Ativar ou desativar o módulo de recursos do Luma.",
-    "description": "Descrição da funcionalidade do Luma"
+    "message": "Ativar ou desativar o módulo de Luma.",
+    "description": "Descrição da funcionalidade de Luma"
   },
   "message.featuresPika": {
-    "message": "Ativar ou desativar o módulo de recursos do Pika.",
-    "description": "Descrição da funcionalidade do Pika"
+    "message": "Ativar ou desativar o módulo de Pika.",
+    "description": "Descrição da funcionalidade de Pika"
   },
   "message.featuresKling": {
-    "message": "Ativar ou desativar o módulo de recursos do Kling.",
-    "description": "Descrição da funcionalidade do Kling"
+    "message": "Ativar ou desativar o módulo de Kling.",
+    "description": "Descrição da funcionalidade de Kling"
   },
   "message.featuresHailuo": {
-    "message": "Ativar ou desativar o módulo de recursos do Hailuo.",
-    "description": "Descrição da funcionalidade do Hailuo"
+    "message": "Ativar ou desativar o módulo de Hailuo.",
+    "description": "Descrição da funcionalidade de Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Ativar ou desativar o módulo de recursos de foto de identificação AI.",
-    "description": "Descrição da funcionalidade de foto de identificação AI"
+    "message": "Ativar ou desativar o módulo de fotos de identificação AI.",
+    "description": "Descrição da funcionalidade de fotos de identificação AI"
   },
   "message.featuresSupport": {
-    "message": "Ativar ou desativar o suporte ao cliente",
+    "message": "Ativar ou desativar o suporte ao cliente.",
     "description": "Descrição da funcionalidade de suporte"
   },
   "message.featuresI18n": {
-    "message": "Ativar ou desativar o suporte a múltiplos idiomas. Se desativado, o usuário só poderá usar o idioma padrão.",
+    "message": "Ativar ou desativar suporte a múltiplos idiomas. Se desativado, o usuário só poderá usar o idioma padrão.",
     "description": "Descrição do suporte a múltiplos idiomas"
   },
   "button.upload": {
@@ -433,19 +481,19 @@
   },
   "field.featuresGemini": {
     "message": "Gemini",
-    "description": "Exibido como o título na caixa de edição"
+    "description": "Exibido como título na caixa de edição"
   },
   "message.featuresGemini": {
-    "message": "Ativar ou desativar o módulo de recursos do Gemini.",
-    "description": "Descrição da funcionalidade do Gemini"
+    "message": "Ativar ou desativar o módulo de Gemini.",
+    "description": "Descrição da funcionalidade de Gemini"
   },
   "field.featuresClaude": {
     "message": "Claude",
-    "description": "Exibido como o título na caixa de edição"
+    "description": "Exibido como título na caixa de edição"
   },
   "message.featuresClaude": {
-    "message": "Ativar ou desativar o módulo de recursos do Claude.",
-    "description": "Descrição da funcionalidade do Claude"
+    "message": "Ativar ou desativar o módulo de Claude.",
+    "description": "Descrição da funcionalidade de Claude"
   },
   "placeholder.admins": {
     "message": "Digite o ID do usuário administrador",

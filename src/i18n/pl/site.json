@@ -204,7 +204,7 @@
     "description": "Wyświetlane w tytule edytora"
   },
   "title.editQR": {
-    "message": "Edytuj kod QR",
+    "message": "Edytuj QR",
     "description": "Wyświetlane w tytule edytora"
   },
   "title.editUrl": {
@@ -228,15 +228,15 @@
     "description": "Wyświetlane w edytorze"
   },
   "placeholder.keywords": {
-    "message": "Wprowadź słowa kluczowe strony",
+    "message": "Wprowadź słowa kluczowe",
     "description": "Wyświetlane w edytorze"
   },
   "placeholder.editDistributionDefaultInviterId": {
-    "message": "Wprowadź domyślny ID zapraszającego",
+    "message": "Wprowadź domyślne ID zapraszającego",
     "description": "Wyświetlane w edytorze"
   },
   "placeholder.editDistributionForceInviterId": {
-    "message": "Wprowadź ID wymuszonego zapraszającego",
+    "message": "Wprowadź wymuszone ID zapraszającego",
     "description": "Wyświetlane w edytorze"
   },
   "message.uploadImageExceed": {
@@ -246,6 +246,54 @@
   "message.uploadImageError": {
     "message": "Błąd przesyłania obrazu",
     "description": "Komunikat o błędzie przesyłania obrazu"
+  },
+  "imageCropper.dropHere": {
+    "message": "Przeciągnij obraz tutaj lub kliknij, aby przesłać",
+    "description": "Komunikat o pustym stanie narzędzia do przycinania obrazów"
+  },
+  "imageCropper.formatHint": {
+    "message": "Obsługiwane formaty: JPG / PNG / WebP, maks. 20 MB",
+    "description": "Dozwolone formaty plików w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.zoomIn": {
+    "message": "Powiększ",
+    "description": "Przycisk powiększania w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.zoomOut": {
+    "message": "Pomniejsz",
+    "description": "Przycisk pomniejszania w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.rotateLeft": {
+    "message": "Obróć w lewo",
+    "description": "Przycisk obrotu w lewo w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.rotateRight": {
+    "message": "Obróć w prawo",
+    "description": "Przycisk obrotu w prawo w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.flipHorizontal": {
+    "message": "Odbij poziomo",
+    "description": "Przycisk odbicia poziomego w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.replace": {
+    "message": "Wybierz obraz ponownie",
+    "description": "Przycisk zastępowania obrazu w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.invalidType": {
+    "message": "Proszę wybrać plik obrazu.",
+    "description": "Błąd formatu w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.noImage": {
+    "message": "Proszę najpierw wybrać obraz.",
+    "description": "Błąd braku wybranego obrazu w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.canvasError": {
+    "message": "Nie można wygenerować przyciętego obrazu.",
+    "description": "Błąd canvas w narzędziu do przycinania obrazów"
+  },
+  "imageCropper.uploadFailed": {
+    "message": "Przesyłanie obrazu nie powiodło się.",
+    "description": "Błąd przesyłania w narzędziu do przycinania obrazów"
   },
   "message.editLogoTip": {
     "message": "Zalecany rozmiar: 200*60px",
@@ -265,14 +313,14 @@
   },
   "message.atLeastOneAdmin": {
     "message": "Zachowaj przynajmniej jednego administratora",
-    "description": "Komunikat o konieczności posiadania przynajmniej jednego administratora"
+    "description": "Wskazówki dotyczące zachowania administratora"
   },
   "message.distributionDefaultInviterIdTip": {
     "message": "ID użytkownika domyślnego zapraszającego. Jeśli link dystrybucji nie zawiera parametru inviter_id, domyślnie użyje tego ID jako zapraszającego.",
     "description": "Wskazówki dotyczące domyślnego ID zapraszającego"
   },
   "message.distributionForceInviterIdTip": {
-    "message": "ID użytkownika wymuszonego zapraszającego. Jeśli to ID jest ustawione, niezależnie od tego, czy link dystrybucji zawiera parametr inviter_id, zawsze użyje tego ID jako zapraszającego.",
+    "message": "ID użytkownika wymuszonego zapraszającego. Jeśli to ID jest ustawione, niezależnie od tego, czy link dystrybucji zawiera parametr inviter_id, to ID będzie używane jako zapraszający.",
     "description": "Wskazówki dotyczące wymuszonego ID zapraszającego"
   },
   "message.originTip": {
@@ -284,11 +332,11 @@
     "description": "Wskazówki dotyczące tytułu strony"
   },
   "message.descriptionTip": {
-    "message": "Opis strony, znajdujący się w metadanych strony, używany do optymalizacji SEO.",
+    "message": "Opis strony, zawarty w metadanych strony, używany do optymalizacji SEO.",
     "description": "Wskazówki dotyczące opisu strony"
   },
   "message.logoTip": {
-    "message": "Logo strony, wyświetlane na górze menu strony, gdy menu jest rozwinięte.",
+    "message": "Logo strony, wyświetlane na górze menu, gdy menu jest rozwinięte.",
     "description": "Wskazówki dotyczące logo strony"
   },
   "message.faviconTip": {
@@ -296,7 +344,7 @@
     "description": "Wskazówki dotyczące faviconu strony"
   },
   "message.adminsTip": {
-    "message": "ID administratorów strony, domyślnie pierwszym użytkownikiem, który utworzy stronę, będzie administrator. Tylko administratorzy strony mogą zarządzać stroną.",
+    "message": "ID administratorów strony, domyślnie pierwszy użytkownik, który utworzy tę stronę, zostanie administratorem. Tylko administratorzy strony mogą zarządzać stroną.",
     "description": "Wskazówki dotyczące administratorów strony"
   },
   "message.adminsTip2": {
@@ -304,16 +352,16 @@
     "description": "Wskazówki dotyczące administratorów strony"
   },
   "message.keywordsTip": {
-    "message": "Słowa kluczowe strony, znajdujące się w metadanych strony, używane do optymalizacji SEO.",
-    "description": "Wskazówki dotyczące słów kluczowych strony"
+    "message": "Słowa kluczowe witryny, znajdujące się w metadanych witryny, używane do optymalizacji SEO.",
+    "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.keywordsTip2": {
-    "message": "Możesz dodać lub usunąć słowa kluczowe strony tutaj. Im bardziej precyzyjne słowa kluczowe, tym lepsza optymalizacja SEO.",
-    "description": "Wskazówki dotyczące słów kluczowych strony"
+    "message": "Dodaj lub usuń słowa kluczowe witryny; im dokładniejsze, tym lepsze SEO.",
+    "description": "Podpowiedź dotycząca słów kluczowych witryny"
   },
   "message.featuresChat": {
-    "message": "Włącz lub wyłącz moduł funkcji czatu.",
-    "description": "Opis funkcji czatu"
+    "message": "Włącz lub wyłącz moduł funkcji Chat.",
+    "description": "Opis funkcji Chat"
   },
   "message.featuresGrok": {
     "message": "Włącz lub wyłącz moduł funkcji Grok.",
@@ -364,8 +412,8 @@
     "description": "Opis funkcji Nano Banana"
   },
   "message.featuresOpenaiimage": {
-    "message": "Włącz lub wyłącz moduł funkcji OpenAI obraz.",
-    "description": "Opis funkcji OpenAI obraz"
+    "message": "Włącz lub wyłącz moduł funkcji obrazów OpenAI.",
+    "description": "Opis funkcji obrazów OpenAI"
   },
   "message.featuresSeedream": {
     "message": "Włącz lub wyłącz moduł funkcji SeeDream.",
@@ -408,28 +456,28 @@
     "description": "Opis funkcji Hailuo"
   },
   "message.featuresHeadshots": {
-    "message": "Włącz lub wyłącz moduł funkcji AI zdjęcia identyfikacyjne.",
-    "description": "Opis funkcji AI zdjęcia identyfikacyjne"
+    "message": "Włącz lub wyłącz moduł funkcji AI do zdjęć legitymacyjnych.",
+    "description": "Opis funkcji AI do zdjęć legitymacyjnych"
   },
   "message.featuresSupport": {
-    "message": "Włącz lub wyłącz wsparcie klienta",
+    "message": "Włącz lub wyłącz obsługę klienta",
     "description": "Opis funkcji wsparcia"
   },
   "message.featuresI18n": {
-    "message": "Włącz lub wyłącz wsparcie dla wielu języków, po wyłączeniu użytkownicy mogą korzystać tylko z domyślnego języka.",
+    "message": "Włącz lub wyłącz wsparcie dla wielu języków; wyłączenie spowoduje użycie tylko domyślnego języka.",
     "description": "Opis wsparcia dla wielu języków"
   },
   "button.upload": {
     "message": "Prześlij",
-    "description": "Prześlij"
+    "description": "Przycisk przesyłania"
   },
   "button.enabled": {
     "message": "Włączone",
-    "description": "Tekst przełącznika, oznaczający, że jest włączone"
+    "description": "Tekst przy włączonym przełączniku"
   },
   "button.disabled": {
     "message": "Wyłączone",
-    "description": "Tekst przełącznika, oznaczający, że jest wyłączone"
+    "description": "Tekst przy wyłączonym przełączniku"
   },
   "field.featuresGemini": {
     "message": "Gemini",
@@ -448,7 +496,7 @@
     "description": "Opis funkcji Claude"
   },
   "placeholder.admins": {
-    "message": "Wprowadź identyfikator użytkownika administratora",
+    "message": "Wprowadź ID użytkownika administratora",
     "description": "Placeholder w polu edycji administratora w ustawieniach witryny"
   }
 }

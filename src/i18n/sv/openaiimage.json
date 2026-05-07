@@ -1,130 +1,178 @@
 {
   "name.taskId": {
-    "message": "Uppgift ID",
-    "description": "Uppgiftens ID"
+    "message": "Uppgifts-ID",
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Uppgiftstyp",
-    "description": "OpenAI Image bildoperationstyp"
+    "description": "OpenAI Image 图片操作类型"
   },
   "name.generate": {
     "message": "Skapa bild",
-    "description": "Operationstyp: Skapa bild"
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
     "message": "Redigera bild",
-    "description": "Operationstyp: Redigera bild"
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
     "message": "Referensbilder",
-    "description": "Referensbilder för redigering"
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Misslyckades",
-    "description": "Uppgiften misslyckades"
+    "description": "任务失败"
   },
   "name.failureReason": {
     "message": "Orsak till misslyckande",
-    "description": "Orsak till att uppgiften misslyckades"
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Uppgiftens status"
+    "description": "任务状态"
   },
   "name.traceId": {
-    "message": "Spårnings ID",
-    "description": "Spårnings ID"
+    "message": "Spårnings-ID",
+    "description": "追踪 ID"
   },
   "name.elapsed": {
-    "message": "Tid förbrukad",
-    "description": "Tid som uppgiften tog (sekunder)"
+    "message": "Tid",
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
     "message": "Bildprompt",
-    "description": "Prompt för att generera/redigera"
+    "description": "生成/编辑的提示词"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Namn på OpenAI Image robot"
+    "description": "OpenAI Image 机器人名称"
   },
   "name.size": {
     "message": "Storlek",
-    "description": "Utdata bildstorlek"
+    "description": "输出图像尺寸"
   },
   "description.size": {
-    "message": "Utdata storlek för att generera bilder, vanliga värden: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Storleksbeskrivning"
+    "message": "Utdata-bildens storlek. Olika modeller stöder olika storlekar: gpt-image-1 / gpt-image-1.5 stöder endast 1024x1024, 1536x1024, 1024x1536; gpt-image-2 stöder även 1792x1024, 1024x1792 och 2K/4K förinställningar; gpt-image-2 kan använda anpassad storlek.",
+    "description": "尺寸说明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (baspris)",
+    "description": "1K 尺寸分组标题，按基础价计费"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Förinställning (1,5× pris)",
+    "description": "2K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Förinställning (1,5× pris)",
+    "description": "4K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "name.customSize": {
+    "message": "Anpassad storlek",
+    "description": "自定义尺寸开关标签"
+  },
+  "description.customSize": {
+    "message": "Aktivera för att fritt ange bredd och höjd (endast gpt-image-2). Måste vara multiplar av 16, längsta sidan ≤ 3840, totalt antal pixlar ≤ 8 294 400. Ej 1K standardstorlek debiteras 1,5× pris.",
+    "description": "自定义尺寸说明"
+  },
+  "name.width": {
+    "message": "Bredd",
+    "description": "宽度输入框标签"
+  },
+  "name.height": {
+    "message": "Höjd",
+    "description": "高度输入框标签"
+  },
+  "error.customSizePositive": {
+    "message": "Bredd och höjd måste vara positiva heltal",
+    "description": "自定义尺寸必须为正整数"
+  },
+  "error.customSizeMultiple": {
+    "message": "Bredd och höjd måste vara multiplar av {multiple}",
+    "description": "自定义尺寸必须为 16 的倍数"
+  },
+  "error.customSizeMin": {
+    "message": "Bredd och höjd får inte vara mindre än {min}",
+    "description": "自定义尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "Längsta sidan får inte överstiga {max}",
+    "description": "自定义尺寸最长边上限"
+  },
+  "error.customSizePixels": {
+    "message": "Totalt antal pixlar får inte överstiga {pixels}",
+    "description": "自定义尺寸总像素上限"
   },
   "description.prompt": {
-    "message": "Prompt för att generera eller redigera bilder",
-    "description": "Promptbeskrivning"
+    "message": "Prompt för att skapa eller redigera bild",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Modell för bildgenerering och redigering.",
-    "description": "Beskrivning av model parameter"
+    "message": "Modell som används för bildgenerering och redigering.",
+    "description": "model 参数说明"
   },
   "description.imageUrls": {
-    "message": "Ladda upp 1-5 referensbilder för att gå in i redigeringsläge.",
-    "description": "Beskrivning av image_urls parameter"
+    "message": "Ladda upp 1–5 referensbilder för att gå in i redigeringsläge.",
+    "description": "image_urls 参数说明"
   },
   "status.pending": {
     "message": "Väntar",
-    "description": "Uppgiftens väntande status"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
     "message": "Välj",
-    "description": "Välj platshållare"
+    "description": "选择占位"
   },
   "placeholder.prompt": {
-    "message": "Ange prompt, t.ex.: Vattenfärgskatt på bordet",
-    "description": "Promptplatshållare"
+    "message": "Skriv prompt, t.ex.: akvarellkatt på bordet",
+    "description": "提示占位"
   },
   "button.generate": {
-    "message": "Generera",
-    "description": "Generera knapp"
+    "message": "Skapa",
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Ladda upp",
-    "description": "Ladda upp referensbilder knapp (engelska förenklas till 'Upload', använd inte 'Upload Images')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
   },
   "message.startingTask": {
     "message": "Startar uppgiften...",
-    "description": "Meddelande om att starta uppgiften"
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Uppgift för generering har startats framgångsrikt",
-    "description": "Uppgiften skapades framgångsrikt"
+    "message": "Uppgiften startades",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Misslyckades med att starta uppgiften, vänligen kontakta administratören:",
-    "description": "Uppgiftens skapande misslyckades"
+    "message": "Misslyckades med att starta uppgiften, kontakta administratören:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Dina poäng är slut, vänligen köp fler poäng för att fortsätta använda",
-    "description": "Meddelande om att poängen är slut"
+    "message": "Du har slut på poäng, köp fler för att fortsätta",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Maximalt 5 bilder kan laddas upp",
-    "description": "Antalet bilder överskrider gränsen"
+    "message": "Max 5 bilder kan laddas upp",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Misslyckades med att ladda upp bilden, vänligen försök igen senare",
-    "description": "Misslyckande vid uppladdning"
+    "message": "Misslyckades med att ladda upp bilden, försök igen senare",
+    "description": "上传失败"
   },
   "name.model": {
     "message": "Modell",
-    "description": "Val av OpenAI bildmodell"
+    "description": "OpenAI 图像模型选择标签"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Alternativ för gpt-image-1 modellen"
+    "description": "gpt-image-1 模型选项"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Alternativ för gpt-image-1.5 modellen"
+    "description": "gpt-image-1.5 模型选项"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Alternativ för gpt-image-2 modellen"
+    "description": "gpt-image-2 模型选项"
   }
 }

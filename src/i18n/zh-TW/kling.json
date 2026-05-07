@@ -200,15 +200,15 @@
     "description": ""
   },
   "inspiration.chip.shotFront": {
-    "message": "正面視角",
+    "message": "正面",
     "description": ""
   },
   "inspiration.chip.shotProfile": {
-    "message": "側面視角",
+    "message": "側面",
     "description": ""
   },
   "inspiration.chip.shotCloseUp": {
-    "message": "面部特寫",
+    "message": "特寫",
     "description": ""
   },
   "inspiration.chip.shotDrone": {
@@ -224,7 +224,7 @@
     "description": ""
   },
   "inspiration.chip.lightNeon": {
-    "message": "霓虹光",
+    "message": "霓虹",
     "description": ""
   },
   "inspiration.chip.lightWarm": {
@@ -236,11 +236,11 @@
     "description": ""
   },
   "inspiration.chip.lightCandle": {
-    "message": "燭光",
+    "message": "蠟燭光",
     "description": ""
   },
   "inspiration.chip.lightCityNight": {
-    "message": "城市夜景燈光",
+    "message": "城市夜景",
     "description": ""
   },
   "inspiration.chip.frameRichDetails": {
@@ -248,7 +248,7 @@
     "description": ""
   },
   "inspiration.chip.frameSimpleBg": {
-    "message": "簡潔背景",
+    "message": "簡約背景",
     "description": ""
   },
   "inspiration.chip.atmosphereMysterious": {
@@ -264,11 +264,11 @@
     "description": ""
   },
   "inspiration.chip.atmosphereVivid": {
-    "message": "鮮活生動",
+    "message": "生動鮮明",
     "description": ""
   },
   "inspiration.chip.atmosphereColorful": {
-    "message": "色彩豐富",
+    "message": "色彩繽紛",
     "description": ""
   },
   "name.taskId": {
@@ -328,19 +328,19 @@
     "description": "camera_control.config.vertical"
   },
   "name.cc_pan": {
-    "message": "水平搖鏡（pan）",
+    "message": "水平搖鏡",
     "description": "camera_control.config.pan"
   },
   "name.cc_tilt": {
-    "message": "垂直搖鏡（tilt）",
+    "message": "垂直搖鏡",
     "description": "camera_control.config.tilt"
   },
   "name.cc_roll": {
-    "message": "翻滾（roll）",
+    "message": "翻滾",
     "description": "camera_control.config.roll"
   },
   "name.cc_zoom": {
-    "message": "推拉變焦（zoom）",
+    "message": "推拉變焦",
     "description": "camera_control.config.zoom"
   },
   "name.failure": {
@@ -369,23 +369,23 @@
   },
   "name.cfgScale": {
     "message": "自由度",
-    "description": "生成視頻的自由度參數（0-1），值越大越貼近參考（英文建議：Freedom Level）"
+    "description": "生成視頻的自由度參數（0-1），值越大越貼近參考"
   },
   "name.generateAudio": {
     "message": "同步生成音效",
     "description": "是否同步生成音效，支持 kling-v3、kling-v3-omni 和 kling-v2-6（pro 模式）"
   },
   "name.startImage": {
-    "message": "首幀參考圖片",
-    "description": "表單字段標籤：首幀參考圖（英文建議翻譯為“First Frame”，保持簡短避免遮擋按鈕）"
+    "message": "首幀參考圖",
+    "description": "表單字段標籤：首幀參考圖"
   },
   "name.negativePrompt": {
     "message": "負向提示詞",
     "description": "生成視頻的負向文本提示"
   },
   "name.endImage": {
-    "message": "尾幀參考圖片",
-    "description": "表單字段標籤：尾幀參考圖（英文建議翻譯為“Last Frame”，保持簡短避免遮擋按鈕）"
+    "message": "尾幀參考圖",
+    "description": "表單字段標籤：尾幀參考圖"
   },
   "name.videoUrl": {
     "message": "自定義視頻",
@@ -401,7 +401,7 @@
   },
   "name.ingredients": {
     "message": "多圖創建視頻",
-    "description": "多圖創建視頻開關/標籤（英文建議：Multi-Image，保持簡短）"
+    "description": "多圖創建視頻開關/標籤"
   },
   "name.model": {
     "message": "模型版本",
@@ -452,7 +452,7 @@
     "description": "上傳參考參數的描述"
   },
   "description.cfgScale": {
-    "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強，",
+    "message": "生成視頻的自由度，可選[0,1]。值越大，相關性越強。",
     "description": "上傳參考參數的描述"
   },
   "description.mode": {
@@ -491,6 +491,14 @@
     "message": "已選擇 4K 模式，運鏡控制不可用，請切換到 std / pro 後再啟用",
     "description": "運鏡控制被禁用原因"
   },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "上傳首幀參考圖後不支持運鏡控制，請移除首幀參考圖後再使用",
+    "description": "運鏡控制被禁用原因（image2video）"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "當前模型/模式/時長不支持運鏡控制，請先調整配置後再啟用",
+    "description": "運鏡控制被禁用原因（模型不支持）"
+  },
   "status.pending": {
     "message": "等待中",
     "description": "任務的等待狀態"
@@ -504,8 +512,8 @@
     "description": "填充噪音輸入的佔位符"
   },
   "placeholder.select": {
-    "message": "選擇",
-    "description": "選擇字段中的佔位文本"
+    "message": "請選擇",
+    "description": "下拉選擇字段中的佔位文本"
   },
   "placeholder.paddingLevel": {
     "message": "請選擇...",
@@ -560,8 +568,8 @@
     "description": "生成Kling視頻的按鈕文本"
   },
   "button.extend": {
-    "message": "擴展影片",
-    "description": "擴展影片按鈕文本"
+    "message": "擴展視頻",
+    "description": "擴展視頻按鈕文本"
   },
   "button.download": {
     "message": "下載視頻",

@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Document",
-    "description": "Button text that navigates to the document page."
+    "description": "Button text that navigates to the document page when clicked."
   },
   "button.goCredentials": {
     "message": "Keys",
-    "description": "Button text that navigates to the credentials page. Must translate to 'Keys'."
+    "description": "Button text that navigates to the credentials page when clicked. Must translate to 'Keys'."
   },
   "button.buyMore": {
     "message": "Top Up",
-    "description": "Button text that navigates to the purchase more page. Must translate to 'Top Up'."
+    "description": "Button text that navigates to the purchase more page when clicked. Must translate to 'Top Up'."
   },
   "button.createOrder": {
     "message": "Create Order",
-    "description": "Button text that navigates to the create order page."
+    "description": "Button text that navigates to the create order page when clicked."
   },
   "button.custom": {
     "message": "Custom",
-    "description": "Button text that navigates to the custom page."
+    "description": "Button text that navigates to the custom page when clicked."
   },
   "button.query": {
     "message": "Query",
-    "description": "Button text that navigates to the query page."
+    "description": "Button text that navigates to the query page when clicked."
   },
   "button.usage": {
     "message": "Usage",
-    "description": "Button text that navigates to the usage history page. Must translate to 'Usage'."
+    "description": "Button text that navigates to the usage history page when clicked. Must translate to 'Usage'."
   },
   "field.serviceName": {
     "message": "Service Name",
@@ -65,7 +65,7 @@
   },
   "field.apiKey": {
     "message": "API Key",
-    "description": "API key."
+    "description": "API key"
   },
   "field.service": {
     "message": "Service",
@@ -121,7 +121,7 @@
   },
   "field.freeAmount": {
     "message": "Free Amount",
-    "description": "The free amount of the application."
+    "description": "The free amount applied for."
   },
   "field.extraPrice": {
     "message": "Price",
@@ -129,38 +129,38 @@
   },
   "message.alreadyApplied": {
     "message": "You have already applied for this service, please check the console.",
-    "description": "Message displayed when the user has already applied for this service."
+    "description": "Message displayed to the user when they have already applied for this service."
   },
   "message.applySuccessfully": {
     "message": "Application Successful",
-    "description": "Message displayed when the user successfully applies for this service."
+    "description": "Message displayed to the user when they successfully apply for this service."
   },
   "message.applyFailed": {
-    "message": "Failed to activate your free trial. Please refresh and try again.",
-    "description": "Toast shown when the silent global application creation fails."
+    "message": "Failed to activate the free trial, please refresh the page and try again.",
+    "description": "Prompt displayed when the automatic creation of a global application fails."
   },
   "message.welcomeWithCredits": {
-    "message": "🎉 Welcome! We've credited your account with {credits} free credits — enjoy every service on Nexior.",
-    "description": "Welcome toast shown after the global application is created or on the first visit when one already exists. {credits} is the remaining balance of the global application."
+    "message": "🎉 Welcome to Nexior! We have credited you with {credits} points, which can be used across all services.",
+    "description": "Welcome prompt displayed after successful creation of a global application or upon first entry. {credits} is the remaining quota of the global application."
   },
   "message.welcomeNoCredits": {
-    "message": "🎉 Welcome to Nexior! Your account is ready — feel free to explore every service.",
-    "description": "Welcome toast shown when the global application has no remaining free credits to highlight."
+    "message": "🎉 Welcome to Nexior! Your account is ready to experience any service across the platform.",
+    "description": "Welcome prompt displayed when there are no available free credits for the global application."
   },
   "message.notApplied": {
-    "message": "You have not applied for this service, please apply before use.",
-    "description": "Message displayed when the user has not applied for this service."
+    "message": "You have not applied for this service yet, please apply for the service before use.",
+    "description": "Message displayed to the user when they have not applied for this service."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "You can choose to top up the general balance or top up each application instance separately. This top-up will go into the general balance, and when the balance of a specific application instance is insufficient, it will automatically use the general balance to supplement.",
-    "description": "Prompt text explaining that the top-up goes into the general balance and automatically supplements when the instance balance is insufficient."
+    "message": "You can choose to recharge to the General Balance or recharge each application instance separately. This recharge will go into the General Balance, and when the balance of a specific application instance is insufficient, it will automatically use the General Balance to supplement.",
+    "description": "Prompt text explaining that the recharge goes into the General Balance and automatically supplements when the instance balance is insufficient. Term: General Balance."
   },
   "message.yourApplication": {
     "message": "Your Application",
-    "description": "Message displayed when the user is viewing their application."
+    "description": "Message displayed to the user when their application is shown."
   },
   "message.unverified": {
-    "message": "You need to complete identity verification to apply for this service.",
+    "message": "You need to complete identity verification before applying for this service.",
     "description": "Message displayed to the user when they have not completed identity verification."
   },
   "message.goVerify": {
@@ -176,7 +176,7 @@
     "description": "Message displayed to the user when they have not entered a required parameter."
   },
   "message.applicationSelection": {
-    "message": "Here are the packages you are currently applying for or have purchased. You can choose one to continue using the service.",
+    "message": "Here are the packages you currently applied for or purchased. You can choose one to continue using the service.",
     "description": "Message displayed to the user when they need to select an application."
   },
   "message.createCredentialSuccessfully": {
@@ -253,7 +253,7 @@
   },
   "title.applicationBalance": {
     "message": "Exclusive Points - {service}",
-    "description": "Message displayed to the user when they view the application balance."
+    "description": "Message displayed to the user when viewing the application balance."
   },
   "title.count": {
     "message": "Total Applications",
@@ -261,7 +261,7 @@
   },
   "message.countDescription": {
     "message": "Each service corresponds to an application instance, and you can view keys, usage, and other information in the management section below.",
-    "description": "Message displayed to the user when they view the application count."
+    "description": "Message displayed to the user when viewing the application count."
   },
   "title.globalBalance": {
     "message": "General Balance",
@@ -281,43 +281,43 @@
   },
   "button.delete": {
     "message": "Delete",
-    "description": "Button text that deletes the item."
+    "description": "Button text, click this button to delete the item."
   },
   "field.dataset": {
     "message": "Dataset",
-    "description": "The dataset for the application."
+    "description": "The dataset being requested."
   },
   "field.disabled": {
     "message": "Disabled",
-    "description": "Indicates whether the application is disabled."
+    "description": "Whether the application is disabled."
   },
   "message.addServiceToAcquire": {
-    "message": "Please add support to acquire",
-    "description": "Message displayed to the user when they have not yet added support to acquire."
+    "message": "Add support to acquire",
+    "description": "Message shown to the user when support has not yet been added to acquire the service (English suggestion: Add support to acquire)."
   },
   "message.confirmApplying": {
-    "message": "Confirm service application",
-    "description": "Message displayed to the user when they confirm the service application."
+    "message": "Confirm Service Request",
+    "description": "Message shown to the user when confirming a service request."
   },
   "message.confirmDelete": {
-    "message": "Are you sure you want to delete this application? All application data will be lost after deletion.",
-    "description": "Message displayed to the user when they confirm the deletion of an application."
+    "message": "Are you sure you want to delete this request? All request data will be lost after deletion.",
+    "description": "Message shown to the user when confirming deletion of a request."
   },
   "message.placeEnter": {
     "message": "Please enter '$0$' to confirm",
-    "description": "Message displayed to the user when they need to input text to confirm; do not translate `$0$`."
+    "description": "Message shown when the user needs to enter text for confirmation. Do not translate `$0$`."
   },
   "message.invalidInput": {
     "message": "Invalid input",
-    "description": "Message displayed to the user when they input invalid data."
+    "description": "Message shown to the user when invalid data is entered."
   },
   "message.deleteFailed": {
-    "message": "Deletion failed",
-    "description": "Message displayed to the user when deletion fails."
+    "message": "Delete failed",
+    "description": "Message shown to the user when deletion fails."
   },
   "message.deleteSuccessfully": {
-    "message": "Deletion successful",
-    "description": "Message displayed to the user when deletion is successful."
+    "message": "Deleted successfully",
+    "description": "Message shown to the user when deletion succeeds."
   },
   "title.application": {
     "message": "Application",
@@ -325,6 +325,6 @@
   },
   "title.description": {
     "message": "Description",
-    "description": "Title of the page when the user views the data technology service usage agreement."
+    "description": "Page title shown when the user views the Data Technology Service Usage Agreement."
   }
 }

@@ -1,394 +1,442 @@
 {
   "button.extend": {
-    "message": "Настави генерисање",
-    "description": "Текст на dugmetu za nastavak generisanja"
+    "message": "Nastavi",
+    "description": "继续生成按钮文本"
   },
   "button.download": {
     "message": "Preuzmi",
-    "description": "Tekst na dugmetu za preuzimanje"
+    "description": "下载按钮文本"
   },
   "button.more": {
     "message": "Više opcija",
-    "description": "Tekst na dugmetu za više opcija"
+    "description": "更多操作按钮文本"
   },
   "button.uploadAudios": {
     "message": "Otpremi",
-    "description": "Dugme za otpremanje referentnih audio zapisa"
+    "description": "按钮文本，允许用户上传参考"
   },
   "button.video": {
     "message": "Video",
-    "description": "Tekst na dugmetu za video"
+    "description": "视频按钮文本"
   },
   "button.download_video": {
     "message": "Preuzmi video",
-    "description": "Tekst na dugmetu za preuzimanje videa"
+    "description": "下载视频按钮文本"
   },
   "button.download_wav": {
-    "message": "Preuzmi WAV bez gubitaka",
-    "description": "Tekst na dugmetu za preuzimanje WAV formata bez gubitaka"
+    "message": "Preuzmi WAV",
+    "description": "下载WAV无损格式按钮文本"
   },
   "button.get_stems": {
-    "message": "Separacija zvuka",
-    "description": "Tekst na dugmetu za separaciju zvuka"
+    "message": "Razdvoji",
+    "description": "声曲分离按钮文本"
   },
   "button.cover_music": {
     "message": "Obrada",
-    "description": "Tekst na dugmetu za obradu pesme"
+    "description": "翻唱按钮文本"
   },
   "button.download_audio": {
     "message": "Preuzmi muziku",
-    "description": "Tekst na dugmetu za preuzimanje muzike"
+    "description": "下载音乐按钮文本"
   },
   "button.replace_section": {
     "message": "Zameni deo",
-    "description": "Tekst na dugmetu za zamenu dela pesme"
+    "description": "替换歌曲中的某个片段按钮文本"
   },
   "button.generate_lyrics": {
-    "message": "AI generiši tekst",
-    "description": "Tekst na dugmetu za automatsko generisanje teksta pesme"
+    "message": "AI tekst",
+    "description": "使用AI自动生成歌词按钮文本"
   },
   "button.all_stems": {
-    "message": "Sve separacije",
-    "description": "Tekst na dugmetu za separaciju svih zvučnih tragova"
+    "message": "Sve staze",
+    "description": "分离所有音轨按钮文本"
   },
   "button.variation": {
-    "message": "Varijacija",
-    "description": "Tekst na dugmetu za varijaciju"
+    "message": "Varijanta",
+    "description": "变体按钮文本"
   },
   "button.swap_vocals": {
     "message": "Zameni vokale",
-    "description": "Tekst na dugmetu za zamenu vokala"
+    "description": "人声替换按钮文本"
   },
   "button.swap_instrumentals": {
-    "message": "Zameni instrumentale",
-    "description": "Tekst na dugmetu za zamenu instrumentalne muzike"
+    "message": "Zameni instrumente",
+    "description": "伴奏替换按钮文本"
+  },
+  "button.clear_all": {
+    "message": "Očisti sve",
+    "description": "清空全部配置项的按钮文本"
+  },
+  "mode.simple": {
+    "message": "Jednostavan režim",
+    "description": "简单生成模式 Tab 的标签"
+  },
+  "mode.custom": {
+    "message": "Prilagođeni režim",
+    "description": "定制生成模式 Tab 的标签"
   },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20proDesc": {
+    "message": "Do 8 min · Najbolji kvalitet",
+    "description": "FUZZ-2.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20desc": {
+    "message": "Do 8 min · Optimizovan odnos cene i kvaliteta",
+    "description": "FUZZ-2.0 在模型下拉中的描述"
   },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "Do 8 min · Sirovi vokali",
+    "description": "FUZZ-2.0 Raw 在模型下拉中的描述"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11proDesc": {
+    "message": "Do 4 min · Stara verzija, poboljšana",
+    "description": "FUZZ-1.1 Pro 在模型下拉中的描述"
   },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10proDesc": {
+    "message": "Do 4 min · Stabilna stara verzija",
+    "description": "FUZZ-1.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz10desc": {
+    "message": "Do 2 min · Stara verzija",
+    "description": "FUZZ-1.0 在模型下拉中的描述"
   },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz11desc": {
+    "message": "Do 4 min · Poboljšana stara verzija",
+    "description": "FUZZ-1.1 在模型下拉中的描述"
   },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
-    "description": "Model za generisanje muzike"
+    "description": "用于生成音乐的模型"
+  },
+  "model.fuzz08desc": {
+    "message": "Do 2 min · Rani model",
+    "description": "FUZZ-0.8 在模型下拉中的描述"
   },
   "name.instrumental": {
-    "message": "Instrumentalna muzika",
-    "description": "Generisanje instrumentalne muzike bez vokala"
+    "message": "Instrumental",
+    "description": "生成纯音乐无人声"
   },
   "name.referenceAudios": {
-    "message": "Referentna muzika",
-    "description": "Naziv referentne muzike"
+    "message": "Reference",
+    "description": "参考音乐的名称"
   },
   "name.taskId": {
     "message": "ID zadatka",
-    "description": "ID zadatka"
+    "description": "任务的 ID"
   },
   "name.type": {
     "message": "Prilagođeni režim",
-    "description": "Naziv prilagođenog režima"
+    "description": "定制模式的名称"
   },
   "name.prompt": {
     "message": "Opis pesme",
-    "description": "Uputstvo za unos sadržaja"
+    "description": "内容输入的提示"
   },
   "name.extend": {
-    "message": "Proširi pesmu iz",
-    "description": "Uputstvo za unos sadržaja"
+    "message": "Proširi iz",
+    "description": "内容输入的提示"
   },
   "name.cover": {
-    "message": "Obrada pesme iz",
-    "description": "Uputstvo za unos sadržaja"
+    "message": "Obrada iz",
+    "description": "内容输入的提示"
   },
   "name.lyrics": {
     "message": "Tekst",
-    "description": "Uputstvo za unos teksta"
+    "description": "歌词内容输入的提示"
   },
   "name.style": {
     "message": "Stil",
-    "description": "Uputstvo za unos stila pesme"
+    "description": "歌曲风格内容输入的提示"
   },
   "name.styleNegative": {
-    "message": "Isključi stil",
-    "description": "Opis stilova koje ne želite"
+    "message": "Izuzmi stil",
+    "description": "不想要的风格描述"
   },
   "name.title": {
     "message": "Naslov",
-    "description": "Uputstvo za unos naslova pesme"
+    "description": "歌曲标题内容输入的提示"
   },
   "name.vocalGender": {
     "message": "Pol vokala",
-    "description": "Izbor pola vokala"
+    "description": "选择人声性别"
   },
   "name.advancedParams": {
     "message": "Napredni parametri",
-    "description": "Podešavanje naprednih parametara"
+    "description": "高级参数设置"
   },
   "name.weirdness": {
     "message": "Kreativnost",
-    "description": "Kontrola nivoa kreativnosti u generisanoj muzici"
+    "description": "Kontroliše nivo kreativnosti prilikom generisanja muzike"
   },
   "name.soundStrength": {
     "message": "Jačina zvuka",
-    "description": "Kontrola jačine generisanog zvuka"
+    "description": "控制生成声音的强度"
   },
   "name.lyricsStrength": {
-    "message": "Jačina teksta",
-    "description": "Kontrola uticaja teksta na generisani rezultat"
+    "message": "Uticaj teksta",
+    "description": "控制歌词对生成结果的影响程度"
   },
   "name.seed": {
-    "message": "Seme",
-    "description": "Nasumično seme za ponovljivo generisanje"
+    "message": "Seed",
+    "description": "用于可重复生成的随机种子"
   },
   "name.lyricPrompt": {
-    "message": "Uputstvo za tekst",
-    "description": "Uputstvo za automatsko generisanje teksta"
+    "message": "Tekst pesme",
+    "description": "用于自动生成歌词的提示"
   },
   "name.failureReason": {
-    "message": "Razlog neuspeha",
-    "description": "Razlog neuspeha zadatka"
+    "message": "Razlog greške",
+    "description": "任务失败的原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status zadatka"
+    "description": "任务的状态"
   },
   "name.traceId": {
     "message": "ID praćenja",
-    "description": "ID praćenja zadatka"
+    "description": "任务的追踪 ID"
   },
   "name.producerBot": {
     "message": "Producer Bot",
-    "description": "Naziv generatora Producer"
+    "description": "Producer生成器的名称"
   },
   "name.replaceSection": {
     "message": "Zameni deo",
-    "description": "Zameni deo pesme"
+    "description": "替换歌曲中的某个片段"
   },
   "name.model": {
     "message": "Model",
-    "description": "Izbor verzije modela"
+    "description": "选择模型版本"
   },
   "name.songDescription": {
     "message": "Opis pesme",
-    "description": "Režim opisa pesme"
+    "description": "歌曲描述模式"
   },
   "description.prompt": {
-    "message": "Opisujte željeni muzički stil i temu",
-    "description": "Opis parametra 'prompt'"
+    "message": "Opisi stil i temu muzike koju želiš",
+    "description": "参数'prompt'的描述"
   },
   "description.lyrics": {
-    "message": "Unesite prilagođeni tekst, podržava [Strofa], [Refren], [Most] i druge oznake",
-    "description": "Opis parametra 'lyrics'"
+    "message": "Unesi prilagođeni tekst pesme, podržava [Verse], [Chorus], [Bridge]...",
+    "description": "参数'lyrics'的描述"
   },
   "description.style": {
-    "message": "Opisujte muzički stil, kao što su akustični pop, džez, elektronska muzika",
-    "description": "Opis parametra 'style'"
+    "message": "Opisi muzički stil, npr. acoustic pop, jazz, electronic",
+    "description": "参数'style'的描述"
   },
   "description.styleNegative": {
-    "message": "Opis stilova koje ne želite, kao što su heavy metal, vikanje",
-    "description": "Opis parametra za isključivanje stilova"
+    "message": "Opisi stilove koje ne želiš, npr. heavy metal, screaming",
+    "description": "排除风格参数的描述"
   },
   "description.title": {
     "message": "Naslov pesme",
-    "description": "Opis parametra 'title'"
+    "description": "参数'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "Otpremite muziku kao referencu za generisanje, proces otpremanja zahteva malo vremena, nakon uspešnog generisanja možete koristiti otpremnu muziku kao referencu",
-    "description": "Opis parametra za otpremu referenci"
+    "message": "Otpremi muziku kao referencu; sačekaj dok se učita, zatim AI može koristiti muziku za generisanje",
+    "description": "上传参考参数的描述"
   },
   "description.vocalGender": {
-    "message": "Izaberite pol za generisanje ljudskog glasa",
-    "description": "Opis selektora pola za ljudski glas"
+    "message": "Izaberi pol generisanog vokala",
+    "description": "人声性别选择器的描述"
   },
   "description.weirdness": {
-    "message": "Što je veća vrednost, muzika će biti kreativnija i eksperimentalnija (0-100)",
-    "description": "Opis parametra za kreativnost"
+    "message": "Što je veća vrednost, muzika je kreativnija i eksperimentalnija (0-100)",
+    "description": "创意度参数的描述"
   },
   "description.soundStrength": {
-    "message": "Kontroliše jačinu generisanog zvuka (0-100)",
-    "description": "Opis parametra za jačinu zvuka"
+    "message": "Kontroliše jačinu zvuka (0-100)",
+    "description": "声音强度参数的描述"
   },
   "description.lyricsStrength": {
     "message": "Kontroliše uticaj teksta na generisani rezultat (0-100)",
-    "description": "Opis parametra za jačinu teksta"
+    "description": "歌词强度参数的描述"
   },
   "description.seed": {
-    "message": "Unesite vrednost semena za ponovljive rezultate, ostavite prazno za nasumično",
-    "description": "Opis parametra za seme"
+    "message": "Unesi seed za ponovljive rezultate, ostavi prazno za slučajno",
+    "description": "种子参数的描述"
   },
   "description.lyricPrompt": {
-    "message": "Unesite opis teksta, AI će automatski generisati tekst",
-    "description": "Opis za prompt teksta"
+    "message": "Unesi opis teksta, AI će automatski generisati stihove",
+    "description": "歌词提示描述"
   },
   "description.replaceSection": {
-    "message": "Zameni sadržaj u određenom vremenskom intervalu pesme",
-    "description": "Opis funkcije za zamenu delova"
+    "message": "Zameni sadržaj u odabranom vremenskom periodu",
+    "description": "替换片段功能的描述"
+  },
+  "description.instrumental": {
+    "message": "Generiši muziku bez vokala; unos teksta će biti ignorisan",
+    "description": "纯音乐开关的提示描述"
   },
   "status.pending": {
     "message": "Na čekanju",
-    "description": "Status čekanja zadatka"
+    "description": "任务的等待状态"
   },
   "placeholder.prompt": {
-    "message": "Opisujte muziku koju želite, na primer: topla folk pesma o jesenjoj nostalgiji...",
-    "description": "Placeholder za unos opisa pesme"
+    "message": "Opisi željeni muzički stil, npr. topla folk pesma o jesenjoj nostalgiji...",
+    "description": "歌曲描述输入的占位符"
   },
   "placeholder.lyrics": {
-    "message": "[Strofa]\nU ovoj tišini noći\nZvezde sijaju na nebu\n\n[Refren]\nPevaćemo zajedno\nDok ne svane dan...",
-    "description": "Placeholder za unos teksta"
+    "message": "[Verse]\nU ovoj tihoj noći\nZvezde svetle na nebu\n\n[Chorus]\nPevajmo zajedno\nDok ne svane...",
+    "description": "歌词输入的占位符"
   },
   "placeholder.extend.lyrics": {
-    "message": "Unesite tekst koji treba proširiti...",
-    "description": "Placeholder za unos proširenog teksta"
+    "message": "Unesi stihove za proširenje...",
+    "description": "扩展歌词输入的占位符"
   },
   "placeholder.extend.continue_at": {
-    "message": "Od koje sekunde da se proširi...",
-    "description": "Placeholder za početno vreme proširenja"
+    "message": "Od koje sekunde nastaviti...",
+    "description": "扩展起始时间的占位符"
   },
   "placeholder.style": {
-    "message": "Na primer: akustični pop, džez, R&B, elektronska muzika...",
-    "description": "Placeholder za unos stila"
+    "message": "npr. acoustic pop, jazz, R&B, electronic...",
+    "description": "风格输入的占位符"
   },
   "placeholder.styleNegative": {
-    "message": "Na primer: heavy metal, vikanje...",
-    "description": "Placeholder za unos isključenih stilova"
+    "message": "npr. heavy metal, screaming...",
+    "description": "排除风格输入的占位符"
   },
   "placeholder.title": {
-    "message": "Unesite naziv pesme...",
-    "description": "Placeholder za unos naslova"
+    "message": "Unesi naslov pesme...",
+    "description": "标题输入的占位符"
   },
   "placeholder.select": {
-    "message": "Izaberite model...",
-    "description": "Placeholder za izbor modela"
+    "message": "Izaberi model...",
+    "description": "模型选择的占位符"
   },
   "placeholder.position": {
-    "message": "Izaberite...",
-    "description": "Placeholder za unos pozicije"
+    "message": "Izaberi...",
+    "description": "位置输入的占位符"
   },
   "placeholder.lyricPrompt": {
-    "message": "Opisujte temu teksta, AI će automatski generisati...",
-    "description": "Placeholder za unos prompta za tekst"
+    "message": "Opisi temu teksta, AI će automatski generisati...",
+    "description": "歌词提示输入的占位符"
   },
   "placeholder.replaceSectionStart": {
-    "message": "Početno vreme (sekunde)",
-    "description": "Placeholder za početno vreme zamene"
+    "message": "Početak (sekunde)",
+    "description": "替换片段开始时间的占位符"
   },
   "placeholder.replaceSectionEnd": {
-    "message": "Krajnje vreme (sekunde)",
-    "description": "Placeholder za krajnje vreme zamene"
+    "message": "Kraj (sekunde)",
+    "description": "替换片段结束时间的占位符"
   },
   "placeholder.seed": {
-    "message": "Unesite vrednost semena (opciono)...",
-    "description": "Placeholder za unos semena"
+    "message": "Unesi seed (opciono)...",
+    "description": "种子输入的占位符"
   },
   "button.generate": {
     "message": "Generiši",
-    "description": "Tekst dugmeta za generisanje"
+    "description": "生成按钮文本"
   },
   "gender.male": {
-    "message": "Muški glas",
-    "description": "Opcija za muški glas"
+    "message": "Muški",
+    "description": "男性人声选项"
   },
   "gender.female": {
-    "message": "Ženski glas",
-    "description": "Opcija za ženski glas"
+    "message": "Ženski",
+    "description": "女性人声选项"
   },
   "gender.auto": {
     "message": "Automatski",
-    "description": "Automatski izbor pola glasa"
+    "description": "自动选择人声性别"
   },
   "message.startingTask": {
-    "message": "Pokreće se zadatak...",
-    "description": "Poruka kada se započinje zadatak generisanja muzike"
+    "message": "Pokretanje zadatka...",
+    "description": "Poruka koja se prikazuje kada počinje zadatak generisanja muzike"
   },
   "message.startingUploadAudio": {
     "message": "Otpremanje prilagođene muzike...",
-    "description": "Poruka kada se započinje zadatak generisanja muzike"
+    "description": "音乐生成任务开始时的消息"
   },
   "message.uploadReferencesExceed": {
-    "message": "Otpremanje muzike premašuje maksimalni broj",
-    "description": "Poruka greške kada otpremanje muzike premašuje maksimalni broj"
+    "message": "Prekoračen maksimalan broj muzike za otpremanje",
+    "description": "上传的音乐超过了最大数量时的错误消息"
   },
   "message.uploadReferencesError": {
-    "message": "Otpremanje muzike nije uspelo",
-    "description": "Poruka greške kada otpremanje muzike ne uspe"
+    "message": "Greška pri otpremanju muzike",
+    "description": "上传音乐失败时的错误消息"
   },
   "message.startTaskSuccess": {
     "message": "Uspešno pokrenut zadatak generisanja muzike",
-    "description": "Poruka uspeha kada je zadatak generisanja muzike uspešno pokrenut"
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioSuccess": {
     "message": "Uspešno otpremljena prilagođena muzika",
-    "description": "Poruka uspeha kada je otpremanje muzike uspešno"
+    "description": "成功启动音乐生成任务时的成功消息"
   },
   "message.startUploadAudioFailed": {
-    "message": "Otpremanje prilagođene muzike nije uspelo",
-    "description": "Poruka greške kada otpremanje muzike ne uspe"
+    "message": "Neuspešno otpremanje prilagođene muzike",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.startTaskFailed": {
-    "message": "Pokretanje zadatka generisanja muzike nije uspelo",
-    "description": "Poruka greške kada pokretanje zadatka generisanja muzike ne uspe"
+    "message": "Neuspešno pokretanje zadatka generisanja muzike",
+    "description": "启动音乐生成任务失败时的错误消息"
   },
   "message.getVideoUrlFailed": {
-    "message": "Nije uspelo dobijanje video zapisa muzike, pokušajte ponovo kasnije",
-    "description": "Poruka greške kada dobijanje videa ne uspe"
+    "message": "Neuspešno preuzimanje video zapisa muzike, pokušajte kasnije",
+    "description": "获取视频失败时的错误消息"
   },
   "message.generatingLyrics": {
-    "message": "Generišem tekst...",
-    "description": "Poruka kada se generiše tekst"
+    "message": "Generišem tekst pesme...",
+    "description": "生成歌词时的消息"
   },
   "message.generateLyricsSuccess": {
-    "message": "Tekst je uspešno generisan",
-    "description": "Poruka kada je generisanje teksta uspešno"
+    "message": "Tekst pesme uspešno generisan",
+    "description": "歌词生成成功时的消息"
   },
   "message.generateLyricsFailed": {
-    "message": "Generisanje teksta nije uspelo",
-    "description": "Poruka kada generisanje teksta ne uspe"
+    "message": "Neuspešno generisanje teksta pesme",
+    "description": "歌词生成失败时的消息"
   },
   "message.fetchingWav": {
-    "message": "Učitavanje WAV datoteke...",
-    "description": "Poruka prilikom preuzimanja WAV datoteke"
+    "message": "Preuzimam WAV fajl...",
+    "description": "获取WAV文件时的消息"
   },
   "message.fetchWavFailed": {
-    "message": "Preuzimanje WAV datoteke nije uspelo",
-    "description": "Poruka kada preuzimanje WAV datoteke ne uspe"
+    "message": "Neuspešno preuzimanje WAV fajla",
+    "description": "获取WAV文件失败时的消息"
   },
   "message.generating": {
-    "message": "Generišem...",
-    "description": "Poruka dok se muzika generiše"
+    "message": "Generisanje u toku...",
+    "description": "音乐正在生成时的消息"
   },
   "message.generateFailed": {
-    "message": "Generisanje muzike nije uspelo",
-    "description": "Poruka kada generisanje muzike ne uspe"
+    "message": "Neuspešno generisanje muzike",
+    "description": "音乐生成失败时的消息"
   },
   "message.noOperations": {
     "message": "Nema dostupnih operacija",
-    "description": "Poruka kada nema dostupnih operacija"
+    "description": "没有可用操作时的消息"
   },
   "message.noTasks": {
-    "message": "Nema istorijskih zadataka, molimo generišite muziku u levom konfiguracionom panelu",
-    "description": "Poruka kada nema zadataka"
+    "message": "Nema istorijskih zadataka, generišite muziku u levom meniju",
+    "description": "没有任务时的消息"
   }
 }

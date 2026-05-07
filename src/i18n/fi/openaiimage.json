@@ -1,26 +1,26 @@
 {
   "name.taskId": {
-    "message": "Tehtävä ID",
+    "message": "Tehtävä-ID",
     "description": "Tehtävän ID"
   },
   "name.task": {
     "message": "Tehtävätyyppi",
-    "description": "OpenAI Image -kuvaoperaation tyyppi"
+    "description": "OpenAI Image -kuvaoperaatiotyyppi"
   },
   "name.generate": {
     "message": "Luo kuva",
-    "description": "Toimintatyyppi: Luo kuva"
+    "description": "Operaatiotyyppi: luo kuva"
   },
   "name.edits": {
     "message": "Muokkaa kuvaa",
-    "description": "Toimintatyyppi: Muokkaa kuvaa"
+    "description": "Operaatiotyyppi: muokkaa kuvaa"
   },
   "name.imageUrls": {
-    "message": "Viittauskuvat",
-    "description": "Muokkaukseen käytettävät viittauskuvat"
+    "message": "Viitekuvat",
+    "description": "Muokkaukseen käytettävät viitekuvat"
   },
   "name.failure": {
-    "message": "Epätosi",
+    "message": "Epäonnistui",
     "description": "Tehtävä epäonnistui"
   },
   "name.failureReason": {
@@ -32,52 +32,100 @@
     "description": "Tehtävän tila"
   },
   "name.traceId": {
-    "message": "Seuranta ID",
-    "description": "Seuranta ID"
+    "message": "Seuranta-ID",
+    "description": "Seuranta-ID"
   },
   "name.elapsed": {
-    "message": "Kulunut aika",
+    "message": "Kesto",
     "description": "Tehtävän kesto (sekunteina)"
   },
   "name.prompt": {
-    "message": "Kuvaprompt",
-    "description": "Luonnin/muokkauksen promptit"
+    "message": "Kuvaohje",
+    "description": "Generointi-/muokkausohje"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "OpenAI Image -robotin nimi"
+    "description": "OpenAI Image -botin nimi"
   },
   "name.size": {
     "message": "Koko",
     "description": "Lähtökuvan koko"
   },
   "description.size": {
-    "message": "Kuvan luomiseen käytettävä lähtökoko, yleiset arvot: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Koon kuvaus"
+    "message": "Lähtökuvan koko. Mallit tukevat eri kokoja: gpt-image-1 / gpt-image-1.5 tukee vain 1024x1024, 1536x1024 ja 1024x1536; gpt-image-2 tukee myös 1792x1024, 1024x1792 ja 2K/4K-esiasetuksia; gpt-image-2 sallii myös mukautetun koon.",
+    "description": "Kuvakoon selitys"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Vakio (perushinta)",
+    "description": "1K-kokoryhmän otsikko, perushinta"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Esiasetus (1,5x hinta)",
+    "description": "2K-kokoryhmän otsikko, 1,5x hinta"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Esiasetus (1,5x hinta)",
+    "description": "4K-kokoryhmän otsikko, 1,5x hinta"
+  },
+  "name.customSize": {
+    "message": "Mukautettu koko",
+    "description": "Mukautetun koon valintakytkin"
+  },
+  "description.customSize": {
+    "message": "Ota käyttöön vapaasti asetettavat leveys ja korkeus (vain gpt-image-2). Arvojen tulee olla 16:n kerrannaisia, suurin sivu ≤ 3840 ja kokonaispikselit ≤ 8 294 400. Ei-1K-standardikoko maksaa 1,5x perushinta.",
+    "description": "Mukautetun koon selitys"
+  },
+  "name.width": {
+    "message": "Leveys",
+    "description": "Leveyden syötekentän etiketti"
+  },
+  "name.height": {
+    "message": "Korkeus",
+    "description": "Korkeuden syötekentän etiketti"
+  },
+  "error.customSizePositive": {
+    "message": "Leveys ja korkeus on oltava positiivisia kokonaislukuja",
+    "description": "Mukautetun koon vaatimukset"
+  },
+  "error.customSizeMultiple": {
+    "message": "Leveys ja korkeus on oltava {multiple} kerrannaisia",
+    "description": "Mukautetun koon kerrannaisvaatimus"
+  },
+  "error.customSizeMin": {
+    "message": "Leveys ja korkeus eivät voi olla alle {min}",
+    "description": "Mukautetun koon alaraja"
+  },
+  "error.customSizeMax": {
+    "message": "Suurin sivu ei voi olla yli {max}",
+    "description": "Mukautetun koon yläraja"
+  },
+  "error.customSizePixels": {
+    "message": "Kokonaispikselit eivät voi ylittää {pixels}",
+    "description": "Mukautetun koon pikseliraja"
   },
   "description.prompt": {
-    "message": "Kuvien luomiseen tai muokkaamiseen käytettävät promptit",
-    "description": "Promptin kuvaus"
+    "message": "Kuvaa luovan tai muokkaavan ohjeen sisältö",
+    "description": "Ohjeen selitys"
   },
   "description.model": {
-    "message": "Kuvien luomiseen ja muokkaamiseen käytettävä malli.",
-    "description": "malli-parametrin kuvaus"
+    "message": "Malli, jota käytetään kuvan luontiin ja muokkaukseen.",
+    "description": "Malli-parametrin selitys"
   },
   "description.imageUrls": {
-    "message": "Lataa 1-5 viittauskuvaa päästäksesi muokkaustilaan.",
-    "description": "image_urls-parametrin kuvaus"
+    "message": "Lataa 1–5 viitekuvaa muokkaustilaan siirtymiseksi.",
+    "description": "image_urls-parametrin selitys"
   },
   "status.pending": {
     "message": "Odottaa",
-    "description": "Tehtävän odotustila"
+    "description": "Tehtävä odotustilassa"
   },
   "placeholder.select": {
     "message": "Valitse",
-    "description": "Valintapaikka"
+    "description": "Valinnan paikkamerkki"
   },
   "placeholder.prompt": {
-    "message": "Syötä prompt, esim: vesiväri kissa pöydällä",
-    "description": "Promptin paikka"
+    "message": "Syötä ohje, esim.: vesivärikissa pöydällä",
+    "description": "Ohjeen paikkamerkki"
   },
   "button.generate": {
     "message": "Luo",
@@ -85,35 +133,35 @@
   },
   "button.uploadImageUrls": {
     "message": "Lataa",
-    "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
+    "description": "Lataa viitekuva -painike (yksinkertaistettu 'Upload')"
   },
   "message.startingTask": {
-    "message": "Aloitetaan tehtävää...",
+    "message": "Käynnistetään tehtävää...",
     "description": "Tehtävän aloitusviesti"
   },
   "message.startTaskSuccess": {
-    "message": "Tehtävä luotiin onnistuneesti",
-    "description": "Tehtävä luotiin onnistuneesti"
+    "message": "Tehtävä onnistuneesti käynnistetty",
+    "description": "Tehtävä luotu onnistuneesti"
   },
   "message.startTaskFailed": {
-    "message": "Tehtävän aloittaminen epäonnistui, ota yhteyttä ylläpitäjään:",
-    "description": "Tehtävän luominen epäonnistui"
+    "message": "Tehtävän käynnistäminen epäonnistui, ota yhteyttä ylläpitäjään:",
+    "description": "Tehtävän luonti epäonnistui"
   },
   "message.usedUp": {
-    "message": "Oikeutesi on käytetty loppuun, osta lisää oikeuksia jatkaaksesi käyttöä",
-    "description": "Oikeudet käytetty loppuun -viesti"
+    "message": "Sinun pisteesi on käytetty, osta lisää jatkaaksesi",
+    "description": "Pisteiden loppumisesta ilmoitus"
   },
   "message.uploadImageExceed": {
     "message": "Voit ladata enintään 5 kuvaa",
-    "description": "Kuvien määrä ylittää rajan"
+    "description": "Liian monta kuvaa ladattu"
   },
   "message.uploadImageError": {
-    "message": "Kuvan lataaminen epäonnistui, yritä myöhemmin uudelleen",
+    "message": "Kuvan lataus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
   },
   "name.model": {
     "message": "Malli",
-    "description": "OpenAI-kuvamallin valintatunniste"
+    "description": "OpenAI-kuvamallin valintakenttä"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",

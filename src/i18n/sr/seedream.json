@@ -1,154 +1,218 @@
 {
   "name.taskId": {
     "message": "ID zadatka",
-    "description": "ID zadatka"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Tip zadatka",
-    "description": "Tip operacije za SeeDream slike"
+    "description": "SeeDream 图片操作类型"
   },
   "name.generate": {
-    "message": "Kreiraj sliku",
-    "description": "Tip operacije: kreiranje slike"
+    "message": "Kreiraj",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Uredi sliku",
-    "description": "Tip operacije: uređivanje slike"
+    "message": "Uredi",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Referentne slike",
-    "description": "Referentne slike za uređivanje"
+    "message": "Reference",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Neuspeh",
-    "description": "Zadatak nije uspeo"
+    "description": "任务失败"
   },
   "name.failureReason": {
     "message": "Razlog neuspeha",
-    "description": "Razlog neuspeha zadatka"
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Status",
-    "description": "Status zadatka"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID praćenja",
-    "description": "ID praćenja"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
     "message": "Trajanje",
-    "description": "Trajanje zadatka (u sekundama)"
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Uputstvo za sliku",
-    "description": "Uputstvo za generisanje/uređivanje"
+    "message": "Prompt",
+    "description": "生成/编辑的提示词"
   },
   "name.seedreamBot": {
     "message": "SeeDream Bot",
-    "description": "Ime SeeDream generatora slika"
+    "description": "SeeDream 图片生成器名称"
   },
   "name.size": {
-    "message": "Veličina",
-    "description": "Veličina izlazne slike"
+    "message": "Dimenzije",
+    "description": "输出图片尺寸"
   },
   "name.watermark": {
-    "message": "Vodni žig",
-    "description": "Da li dodati vodeni žig"
+    "message": "Votermark",
+    "description": "是否添加水印"
   },
   "description.prompt": {
-    "message": "Uputstvo za generisanje ili uređivanje slike",
-    "description": "Opis uputstva"
+    "message": "Prompt za generisanje ili uređivanje slike",
+    "description": "提示词描述"
   },
   "description.model": {
-    "message": "Model korišćen za generisanje ili uređivanje slika.",
-    "description": "Objašnjenje parametra model"
+    "message": "Model koji se koristi za generisanje ili uređivanje slike.",
+    "description": "model 参数说明"
   },
   "description.size": {
-    "message": "Veličina slike. Podržani su unapred definisani `1K`, `2K`, `4K` ili prilagođeni `<širina>x<visina>`.",
-    "description": "Objašnjenje parametra veličina"
+    "message": "Dimenzije slike. Različiti modeli podržavaju različite preseke: 5.0 podržava samo 2K/3K/4K, 4.5/4.0 podržavaju 1K/2K/4K, 3.0-t2i i seededit-3.0-i2i podržavaju samo `<širina>x<visina>` (npr. 1024x1024, 1280x720). Kod preseka modela možete izabrati i „Prilagodi“ da se zadrži proporcija referentne slike, ili uneti proizvoljne dimenzije direktno u polje.",
+    "description": "size 参数说明（按模型）"
   },
   "description.watermark": {
-    "message": "Da li dodati AI vodeni žig na generisanu sliku. Podrazumevano uključeno.",
-    "description": "Objašnjenje parametra vodeni žig"
+    "message": "Dodaj AI votermark na generisanu sliku. Podrazumevano uključeno.",
+    "description": "watermark 参数说明"
   },
   "description.imageUrls": {
-    "message": "Otpremite 1-14 referentnih slika za omogućavanje uređivanja slika.",
-    "description": "Objašnjenje parametra slike"
+    "message": "Otpremite 1-14 referentnih slika za uređivanje.",
+    "description": "image 参数说明"
   },
   "status.pending": {
     "message": "Na čekanju",
-    "description": "Status čekanja zadatka"
+    "description": "任务等待状态"
   },
   "placeholder.select": {
     "message": "Izaberi",
-    "description": "Placeholder za izbor"
+    "description": "选择占位"
+  },
+  "placeholder.size": {
+    "message": "Izaberi preset ili unesi <širina>x<visina>",
+    "description": "size 选择/输入占位（el-select allow-create）"
   },
   "placeholder.prompt": {
-    "message": "Unesite uputstvo, na primer: bela sijamska mačka",
-    "description": "Placeholder za uputstvo"
+    "message": "Unesite prompt, npr.: bela sijamska mačka",
+    "description": "提示占位"
   },
   "button.generate": {
     "message": "Generiši",
-    "description": "Dugme za generisanje"
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Otpremi",
-    "description": "Dugme za otpremanje referentnih slika (skratiti na 'Otpremi')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
+  },
+  "button.confirmContinue": {
+    "message": "Nastavi",
+    "description": "能力冲突提示框的确认按钮"
+  },
+  "button.cancelSwitch": {
+    "message": "Otkaži",
+    "description": "能力冲突提示框的取消按钮"
   },
   "message.startingTask": {
-    "message": "Pokreće se zadatak...",
-    "description": "Poruka za početak zadatka"
+    "message": "Pokrećem zadatak...",
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Zadatak za generisanje uspešno pokrenut",
-    "description": "Zadatak uspešno kreiran"
+    "message": "Zadatak uspešno pokrenut",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
     "message": "Pokretanje zadatka nije uspelo, kontaktirajte administratora:",
-    "description": "Neuspeh pri kreiranju zadatka"
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Vaši bodovi su potrošeni, kupite više bodova da biste nastavili sa korišćenjem",
-    "description": "Poruka o potrošenim bodovima"
+    "message": "Vaši krediti su potrošeni, kupite više da nastavite",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Maksimalno možete otpremiti 14 slika",
-    "description": "Prekoračenje broja slika"
+    "message": "Možete otpremiti najviše 14 slika",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
-    "description": "Neuspeh pri otpremanju"
+    "message": "Otpremanje slike nije uspelo, pokušajte kasnije",
+    "description": "上传失败"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Potvrda potrebna",
+    "description": "能力冲突提示框标题"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Trenutno odabrano ne podržava sledeće uključene opcije: {fields}. Nastavak će očistiti ove opcije.",
+    "description": "能力冲突提示框正文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Uklonjene nepodržane opcije: {fields}",
+    "description": "能力冲突清理后的提示消息"
   },
   "name.model": {
     "message": "Model",
-    "description": "Oznaka za izbor modela SeeDream"
+    "description": "SeeDream 模型选择标签"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
-    "description": "Opcija modela SeeDream 4.5"
+    "description": "SeeDream 4.5 模型选项"
   },
   "model.seedream40": {
     "message": "doubao-seedream-4.0",
-    "description": "Opcija modela SeeDream 4.0"
+    "description": "SeeDream 4.0 模型选项"
   },
   "model.seedream30t2i": {
     "message": "doubao-seedream-3.0-t2i",
-    "description": "Opcija modela SeeDream 3.0 t2i"
+    "description": "SeeDream 3.0 t2i 模型选项"
   },
   "model.seededit30i2i": {
     "message": "doubao-seededit-3.0-i2i",
-    "description": "Opcija modela SeeEdit 3.0 i2i"
+    "description": "SeeEdit 3.0 i2i 模型选项"
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Opcija modela SeeDream 5.0 (podržava grupne slike i kontinuirani izlaz)"
+    "description": "SeeDream 5.0 模型选项（支持组图与流式输出）"
   },
   "name.maxImages": {
     "message": "Broj slika",
-    "description": "Broj slika generisanih u grupi (max_images)"
+    "description": "组图生成的图片张数（max_images）"
   },
   "description.maxImages": {
-    "message": "Broj slika generisanih u jednom zahtevu (1-15). Postavite na 1 za pojedinačni način; veće od 1 automatski aktivira grupno generisanje (sequential_image_generation=auto), održavajući lik, stil i detalje doslednim između slika. Podržani su samo doubao-seedream-5.0 / 4.5 / 4.0; ako se istovremeno otpremaju referentne slike, mora se zadovoljiti (broj referentnih slika + broj generisanih) ≤ 15. Naplata se vrši prema stvarnom broju generisanih slika.",
+    "message": "Broj slika koje se generišu po zahtevu (1-15). Kada je postavljeno na 1, koristi se režim jedne slike; za više od 1 automatski se aktivira generisanje serije slika (sequential_image_generation=auto), pri čemu se održavaju dosledni likovi, stil i detalji. Podržano samo za doubao-seedream-5.0 / 4.5 / 4.0; ako se istovremeno šalju referentne slike, važi (broj referentnih + broj generisanih) ≤ 15. Naplata po stvarnom broju generisanih slika.",
     "description": "Objašnjenje parametra max_images"
+  },
+  "name.seed": {
+    "message": "Nasumični seme",
+    "description": "seed параметар етикета"
+  },
+  "description.seed": {
+    "message": "Nasumično seme za reprodukciju, opseg [-1, 2147483647]. -1 znači potpuno nasumično. Podržano samo za doubao-seedream-3.0-t2i i doubao-seededit-3.0-i2i.",
+    "description": "seed параметар објашњење"
+  },
+  "name.guidanceScale": {
+    "message": "Težina upita",
+    "description": "guidance_scale параметар етикета"
+  },
+  "description.guidanceScale": {
+    "message": "Intenzitet praćenja upita, opseg [1, 10]. Veća vrednost znači veće pridržavanje upita. doubao-seedream-3.0-t2i podrazumevano 2.5, doubao-seededit-3.0-i2i podrazumevano 5.5.",
+    "description": "guidance_scale параметар објашњење"
+  },
+  "name.outputFormat": {
+    "message": "Format izlaza",
+    "description": "output_format параметар етикета"
+  },
+  "description.outputFormat": {
+    "message": "Format fajla generisane slike, jpeg ili png, podrazumevano jpeg. Podržano samo u doubao-seedream-5.0.",
+    "description": "output_format параметар објашњење"
+  },
+  "size.group.tier": {
+    "message": "Nivo rezolucije",
+    "description": "Grupa opcija rezolucije (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Prilagodljivo",
+    "description": "Grupa opcija prilagodljive rezolucije"
+  },
+  "size.group.pixel": {
+    "message": "Tačna veličina piksela",
+    "description": "Grupa opcija tačne veličine piksela"
+  },
+  "size.adaptive": {
+    "message": "Prilagodljivo (isto kao referentna slika)",
+    "description": "etiketa opcije adaptive"
   }
 }

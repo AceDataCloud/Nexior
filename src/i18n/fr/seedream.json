@@ -5,27 +5,27 @@
   },
   "name.task": {
     "message": "Type de tâche",
-    "description": "Type d'opération d'image SeeDream"
+    "description": "Type d’opération SeeDream pour les images"
   },
   "name.generate": {
-    "message": "Créer une image",
-    "description": "Type d'opération : créer une image"
+    "message": "Créer",
+    "description": "Type d’opération : créer une image"
   },
   "name.edits": {
-    "message": "Éditer une image",
-    "description": "Type d'opération : éditer une image"
+    "message": "Éditer",
+    "description": "Type d’opération : éditer une image"
   },
   "name.imageUrls": {
-    "message": "Images de référence",
-    "description": "Images de référence utilisées pour l'édition"
+    "message": "Références",
+    "description": "Images de référence pour l’édition"
   },
   "name.failure": {
     "message": "Échec",
-    "description": "Échec de la tâche"
+    "description": "Tâche échouée"
   },
   "name.failureReason": {
-    "message": "Raison de l'échec",
-    "description": "Raison de l'échec de la tâche"
+    "message": "Raison de l’échec",
+    "description": "Raison pour laquelle la tâche a échoué"
   },
   "name.status": {
     "message": "Statut",
@@ -36,92 +36,116 @@
     "description": "ID de suivi"
   },
   "name.elapsed": {
-    "message": "Temps écoulé",
-    "description": "Temps écoulé pour la tâche (secondes)"
+    "message": "Durée",
+    "description": "Durée de la tâche (secondes)"
   },
   "name.prompt": {
-    "message": "Invite d'image",
-    "description": "Mots d'invite pour générer/éditer"
+    "message": "Prompt",
+    "description": "Prompt pour générer/éditer l’image"
   },
   "name.seedreamBot": {
     "message": "Bot SeeDream",
-    "description": "Nom du générateur d'images SeeDream"
+    "description": "Nom du générateur d’images SeeDream"
   },
   "name.size": {
     "message": "Taille",
-    "description": "Taille de l'image de sortie"
+    "description": "Taille de l’image générée"
   },
   "name.watermark": {
     "message": "Filigrane",
     "description": "Ajouter un filigrane ou non"
   },
   "description.prompt": {
-    "message": "Mots d'invite pour générer ou éditer une image",
-    "description": "Description des mots d'invite"
+    "message": "Prompt pour générer ou éditer l’image",
+    "description": "Description du prompt"
   },
   "description.model": {
-    "message": "Modèle utilisé pour générer ou éditer des images.",
-    "description": "Description du paramètre modèle"
+    "message": "Modèle utilisé pour générer ou éditer l’image.",
+    "description": "Description du paramètre model"
   },
   "description.size": {
-    "message": "Taille de l'image. Prend en charge les préréglages `1K`, `2K`, `4K` ou personnalisée `<largeur>x<hauteur>`.",
-    "description": "Description du paramètre taille"
+    "message": "Taille de l’image. Selon le modèle : 5.0 supporte uniquement 2K/3K/4K, 4.5/4.0 supporte 1K/2K/4K, 3.0-t2i et seededit-3.0-i2i supportent uniquement `<largeur>x<hauteur>` (ex : 1024x1024, 1280x720). Les modèles préconfigurés peuvent aussi choisir 'Adaptatif' pour garder le ratio de l’image de référence ou entrer directement une valeur `<largeur>x<hauteur>`.",
+    "description": "Description du paramètre size selon le modèle"
   },
   "description.watermark": {
-    "message": "Ajouter un filigrane AI à l'image générée. Activé par défaut.",
-    "description": "Description du paramètre filigrane"
+    "message": "Ajouter un filigrane AI sur l’image générée. Activé par défaut.",
+    "description": "Description du paramètre watermark"
   },
   "description.imageUrls": {
-    "message": "Téléchargez 1 à 14 images de référence pour activer l'édition d'images.",
-    "description": "Description du paramètre image"
+    "message": "Téléchargez 1 à 14 images de référence pour activer l’édition.",
+    "description": "Description du paramètre imageUrls"
   },
   "status.pending": {
     "message": "En attente",
-    "description": "État d'attente de la tâche"
+    "description": "Statut de tâche en attente"
   },
   "placeholder.select": {
     "message": "Sélectionner",
-    "description": "Espace réservé pour la sélection"
+    "description": "Texte d’espace réservé pour sélection"
+  },
+  "placeholder.size": {
+    "message": "Choisir ou entrer <largeur>x<hauteur>",
+    "description": "Texte d’espace réservé pour la taille (el-select allow-create)"
   },
   "placeholder.prompt": {
-    "message": "Entrez les mots d'invite, par exemple : un chat siamois blanc",
-    "description": "Espace réservé pour les mots d'invite"
+    "message": "Entrez un prompt, ex : un chat siamois blanc",
+    "description": "Texte d’espace réservé pour le prompt"
   },
   "button.generate": {
     "message": "Générer",
     "description": "Bouton de génération"
   },
   "button.uploadImageUrls": {
-    "message": "Télécharger",
-    "description": "Bouton pour télécharger des images de référence (simplifiez en anglais à 'Upload', ne pas utiliser 'Upload Images')"
+    "message": "Téléverser",
+    "description": "Bouton pour téléverser des images de référence (simplifié, ne pas utiliser 'Téléverser des images')"
+  },
+  "button.confirmContinue": {
+    "message": "Continuer",
+    "description": "Bouton de confirmation dans l’avertissement de conflit"
+  },
+  "button.cancelSwitch": {
+    "message": "Annuler",
+    "description": "Bouton d’annulation dans l’avertissement de conflit"
   },
   "message.startingTask": {
     "message": "Démarrage de la tâche...",
-    "description": "Message de début de tâche"
+    "description": "Message lors du démarrage de la tâche"
   },
   "message.startTaskSuccess": {
-    "message": "Tâche de génération lancée avec succès",
-    "description": "Tâche créée avec succès"
+    "message": "Tâche générée avec succès",
+    "description": "Message lorsque la tâche est créée avec succès"
   },
   "message.startTaskFailed": {
-    "message": "Échec du lancement de la tâche, veuillez contacter l'administrateur :",
-    "description": "Échec de la création de la tâche"
+    "message": "Échec de la création de la tâche, contactez l’administrateur :",
+    "description": "Message en cas d’échec de création de tâche"
   },
   "message.usedUp": {
-    "message": "Vos crédits sont épuisés, veuillez acheter plus de crédits pour continuer",
-    "description": "Message d'épuisement"
+    "message": "Vos crédits sont épuisés, achetez-en plus pour continuer",
+    "description": "Message d’avertissement de crédits épuisés"
   },
   "message.uploadImageExceed": {
-    "message": "Vous pouvez télécharger jusqu'à 14 images",
-    "description": "Nombre d'images dépassant la limite"
+    "message": "Maximum 14 images autorisées",
+    "description": "Message lorsque le nombre d’images dépasse la limite"
   },
   "message.uploadImageError": {
-    "message": "Échec du téléchargement de l'image, veuillez réessayer plus tard",
-    "description": "Échec du téléchargement"
+    "message": "Échec du téléversement, veuillez réessayer",
+    "description": "Message d’erreur de téléversement"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Confirmation requise",
+    "description": "Titre du message de conflit de fonctionnalité"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Les paramètres activés suivants ne sont pas supportés par la sélection actuelle : {fields}. Continuer supprimera ces paramètres.",
+    "description": "Corps du message de conflit de fonctionnalité"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Paramètres non supportés supprimés : {fields}",
+    "description": "Message après suppression des paramètres non supportés"
   },
   "name.model": {
     "message": "Modèle",
-    "description": "Étiquette de sélection du modèle SeeDream"
+    "description": "Étiquette pour le choix du modèle SeeDream"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
@@ -141,14 +165,54 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "Option de modèle SeeDream 5.0 (prend en charge la génération d'images en série et la sortie en continu)"
+    "description": "Option de modèle SeeDream 5.0 (supporte les séries et le streaming)"
   },
   "name.maxImages": {
-    "message": "Nombre d'images",
-    "description": "Nombre d'images générées pour la série d'images (max_images)"
+    "message": "Nb d’images",
+    "description": "Nombre d’images pour la génération en série (max_images)"
   },
   "description.maxImages": {
-    "message": "Nombre d'images générées par demande (1-15). Défini à 1 pour le mode image unique ; supérieur à 1 active automatiquement la génération d'images en série (sequential_image_generation=auto), en maintenant la cohérence des personnages, du style et des détails entre les images. Prend uniquement en charge doubao-seedream-5.0 / 4.5 / 4.0 ; si des images de référence sont téléchargées en même temps, il faut respecter (nombre d'images de référence + nombre généré) ≤ 15. La facturation est basée sur le nombre d'images réellement générées.",
+    "message": "Nombre d'images générées par demande (1-15). Si défini sur 1, mode image unique ; plus de 1 active automatiquement le mode groupe (sequential_image_generation=auto), en maintenant la cohérence des personnages, du style et des détails entre les images. Prend uniquement en charge doubao-seedream-5.0 / 4.5 / 4.0 ; si des images de référence sont téléchargées, il faut que (nombre d'images de référence + nombre d'images générées) ≤ 15. La facturation est basée sur le nombre d'images réellement générées.",
     "description": "Description du paramètre max_images"
+  },
+  "name.seed": {
+    "message": "Graine aléatoire",
+    "description": "seed 参数标签"
+  },
+  "description.seed": {
+    "message": "Graine aléatoire pour reproduire le résultat, plage [-1, 2147483647]. -1 signifie aléatoire à chaque fois. Supporté uniquement par doubao-seedream-3.0-t2i et doubao-seededit-3.0-i2i.",
+    "description": "seed 参数说明"
+  },
+  "name.guidanceScale": {
+    "message": "Poids du prompt",
+    "description": "guidance_scale 参数标签"
+  },
+  "description.guidanceScale": {
+    "message": "Intensité du respect du prompt, plage [1, 10]. Plus la valeur est élevée, plus le résultat suit le prompt. Par défaut : 2.5 pour doubao-seedream-3.0-t2i, 5.5 pour doubao-seededit-3.0-i2i.",
+    "description": "guidance_scale 参数说明"
+  },
+  "name.outputFormat": {
+    "message": "Format de sortie",
+    "description": "output_format 参数标签"
+  },
+  "description.outputFormat": {
+    "message": "Format du fichier généré, jpeg ou png, par défaut jpeg. Supporté uniquement par doubao-seedream-5.0.",
+    "description": "output_format 参数说明"
+  },
+  "size.group.tier": {
+    "message": "Niveau de résolution",
+    "description": "尺寸下拉的档位分组（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptatif",
+    "description": "尺寸下拉的自适应分组"
+  },
+  "size.group.pixel": {
+    "message": "Dimensions exactes",
+    "description": "尺寸下拉的像素尺寸分组"
+  },
+  "size.adaptive": {
+    "message": "Adaptatif (comme l’image de référence)",
+    "description": "adaptive 选项标签"
   }
 }

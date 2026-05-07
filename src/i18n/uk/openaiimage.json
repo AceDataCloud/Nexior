@@ -1,130 +1,178 @@
 {
   "name.taskId": {
     "message": "ID завдання",
-    "description": "ID завдання"
+    "description": "任务的 ID"
   },
   "name.task": {
     "message": "Тип завдання",
-    "description": "Тип операції з зображеннями OpenAI"
+    "description": "OpenAI Image 图片操作类型"
   },
   "name.generate": {
-    "message": "Створити зображення",
-    "description": "Тип операції: створити зображення"
+    "message": "Створити",
+    "description": "操作类型：创建图片"
   },
   "name.edits": {
-    "message": "Редагувати зображення",
-    "description": "Тип операції: редагувати зображення"
+    "message": "Редагувати",
+    "description": "操作类型：编辑图片"
   },
   "name.imageUrls": {
-    "message": "Посилання на зображення",
-    "description": "Посилання на зображення для редагування"
+    "message": "Зображення для довідки",
+    "description": "用于编辑的参考图片"
   },
   "name.failure": {
     "message": "Не вдалося",
-    "description": "Завдання не виконано"
+    "description": "任务失败"
   },
   "name.failureReason": {
-    "message": "Причина невдачі",
-    "description": "Причина невдачі завдання"
+    "message": "Причина помилки",
+    "description": "任务失败原因"
   },
   "name.status": {
     "message": "Статус",
-    "description": "Статус завдання"
+    "description": "任务状态"
   },
   "name.traceId": {
     "message": "ID відстеження",
-    "description": "ID відстеження"
+    "description": "追踪 ID"
   },
   "name.elapsed": {
     "message": "Час виконання",
-    "description": "Час виконання завдання (секунди)"
+    "description": "任务的耗时（秒）"
   },
   "name.prompt": {
-    "message": "Підказка для зображення",
-    "description": "Підказка для генерації/редагування"
+    "message": "Підказка",
+    "description": "生成/编辑的提示词"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Назва робота OpenAI Image"
+    "description": "OpenAI Image 机器人名称"
   },
   "name.size": {
     "message": "Розмір",
-    "description": "Розмір вихідного зображення"
+    "description": "输出图像尺寸"
   },
   "description.size": {
-    "message": "Вихідний розмір для генерації зображення, поширені значення: 1024x1024, 1536x1024, 1024x1536.",
-    "description": "Опис розміру"
+    "message": "Розмір вихідного зображення. Різні моделі підтримують різні розміри: gpt-image-1 / gpt-image-1.5 лише 1024x1024, 1536x1024, 1024x1536; gpt-image-2 також підтримує 1792x1024, 1024x1792 та пресети 2K/4K; у gpt-image-2 можна вказати власний розмір.",
+    "description": "尺寸说明"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K стандарт (базова ціна)",
+    "description": "1K 尺寸分组标题，按基础价计费"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K пресет (1.5× ціна)",
+    "description": "2K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K пресет (1.5× ціна)",
+    "description": "4K 尺寸分组标题，按 1.5 倍价计费"
+  },
+  "name.customSize": {
+    "message": "Власний розмір",
+    "description": "自定义尺寸开关标签"
+  },
+  "description.customSize": {
+    "message": "Після увімкнення можна встановлювати ширину та висоту довільно (підтримується лише gpt-image-2). Значення повинні бути кратні 16, найдовша сторона ≤ 3840, загальна кількість пікселів ≤ 8,294,400. Розміри, відмінні від 1K стандарту, коштують у 1.5 рази дорожче.",
+    "description": "自定义尺寸说明"
+  },
+  "name.width": {
+    "message": "Ширина",
+    "description": "宽度输入框标签"
+  },
+  "name.height": {
+    "message": "Висота",
+    "description": "高度输入框标签"
+  },
+  "error.customSizePositive": {
+    "message": "Ширина та висота повинні бути додатними числами",
+    "description": "自定义尺寸必须为正整数"
+  },
+  "error.customSizeMultiple": {
+    "message": "Ширина та висота повинні бути кратні {multiple}",
+    "description": "自定义尺寸必须为 16 的倍数"
+  },
+  "error.customSizeMin": {
+    "message": "Ширина та висота не можуть бути меншими за {min}",
+    "description": "自定义尺寸下限"
+  },
+  "error.customSizeMax": {
+    "message": "Найдовша сторона не може перевищувати {max}",
+    "description": "自定义尺寸最长边上限"
+  },
+  "error.customSizePixels": {
+    "message": "Загальна кількість пікселів не може перевищувати {pixels}",
+    "description": "自定义尺寸总像素上限"
   },
   "description.prompt": {
-    "message": "Підказка для генерації або редагування зображення",
-    "description": "Опис підказки"
+    "message": "Підказка для створення або редагування зображення",
+    "description": "提示词描述"
   },
   "description.model": {
     "message": "Модель для генерації та редагування зображень.",
-    "description": "Опис параметра model"
+    "description": "model 参数说明"
   },
   "description.imageUrls": {
-    "message": "Завантажте 1-5 зображень для переходу в режим редагування.",
-    "description": "Опис параметра image_urls"
+    "message": "Завантажте 1-5 зображень для редагування.",
+    "description": "image_urls 参数说明"
   },
   "status.pending": {
-    "message": "В очікуванні",
-    "description": "Статус очікування завдання"
+    "message": "Очікування",
+    "description": "任务等待状态"
   },
   "placeholder.select": {
-    "message": "Вибрати",
-    "description": "Плейсхолдер для вибору"
+    "message": "Оберіть",
+    "description": "选择占位"
   },
   "placeholder.prompt": {
-    "message": "Введіть підказку, наприклад: кіт з аквареллю на столі",
-    "description": "Плейсхолдер для підказки"
+    "message": "Введіть підказку, напр.: акварельний кіт на столі",
+    "description": "提示占位"
   },
   "button.generate": {
-    "message": "Генерувати",
-    "description": "Кнопка генерації"
+    "message": "Створити",
+    "description": "生成按钮"
   },
   "button.uploadImageUrls": {
     "message": "Завантажити",
-    "description": "Кнопка для завантаження посилань на зображення (спростити до 'Завантажити', не використовувати 'Завантажити зображення')"
+    "description": "上传参考图片按钮（英文请简化为“Upload”，不要用“Upload Images”）"
   },
   "message.startingTask": {
     "message": "Запуск завдання...",
-    "description": "Повідомлення про початок завдання"
+    "description": "开始任务消息"
   },
   "message.startTaskSuccess": {
-    "message": "Завдання на генерацію успішно розпочато",
-    "description": "Завдання успішно створено"
+    "message": "Завдання успішно створено",
+    "description": "任务成功创建"
   },
   "message.startTaskFailed": {
-    "message": "Не вдалося розпочати завдання, будь ласка, зв'яжіться з адміністратором:",
-    "description": "Не вдалося створити завдання"
+    "message": "Не вдалося створити завдання, зверніться до адміністратора:",
+    "description": "任务创建失败"
   },
   "message.usedUp": {
-    "message": "Ваші бали вичерпані, будь ласка, купіть більше балів для продовження використання",
-    "description": "Повідомлення про вичерпані бали"
+    "message": "Ваші бали закінчилися, придбайте додаткові, щоб продовжити",
+    "description": "已用完提示"
   },
   "message.uploadImageExceed": {
-    "message": "Максимум можна завантажити 5 зображень",
-    "description": "Кількість зображень перевищує ліміт"
+    "message": "Можна завантажити максимум 5 зображень",
+    "description": "图片数量超过限制"
   },
   "message.uploadImageError": {
-    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
-    "description": "Помилка завантаження"
+    "message": "Не вдалося завантажити зображення, спробуйте пізніше",
+    "description": "上传失败"
   },
   "name.model": {
     "message": "Модель",
-    "description": "Мітка вибору моделі OpenAI"
+    "description": "OpenAI 图像模型选择标签"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",
-    "description": "Опція моделі gpt-image-1"
+    "description": "gpt-image-1 模型选项"
   },
   "model.gptImage15": {
     "message": "gpt-image-1.5",
-    "description": "Опція моделі gpt-image-1.5"
+    "description": "gpt-image-1.5 模型选项"
   },
   "model.gptImage2": {
     "message": "gpt-image-2",
-    "description": "Опція моделі gpt-image-2"
+    "description": "gpt-image-2 模型选项"
   }
 }

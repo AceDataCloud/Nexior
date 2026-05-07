@@ -40,7 +40,7 @@
     "description": "Tempo decorrido da tarefa (em segundos)"
   },
   "name.prompt": {
-    "message": "Prompt da Imagem",
+    "message": "Prompt de Imagem",
     "description": "Palavras-chave para gerar/editar"
   },
   "name.openaiimageBot": {
@@ -52,19 +52,67 @@
     "description": "Tamanho da imagem de saída"
   },
   "description.size": {
-    "message": "Tamanho de saída para gerar a imagem, valores comuns: 1024x1024, 1536x1024, 1024x1536.",
+    "message": "Tamanho da imagem de saída. Diferentes modelos suportam tamanhos diferentes: gpt-image-1 / gpt-image-1.5 suportam apenas 1024x1024, 1536x1024, 1024x1536; gpt-image-2 também suporta 1792x1024, 1024x1792, e predefinições de 2K/4K; gpt-image-2 permite tamanhos personalizados.",
     "description": "Descrição do tamanho"
+  },
+  "sizeGroup.standard1k": {
+    "message": "1K Padrão (Preço Base)",
+    "description": "Título do grupo de tamanho 1K, cobrado pelo preço base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Predefinido (1.5x Preço)",
+    "description": "Título do grupo de tamanho 2K, cobrado a 1.5x do preço"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Predefinido (1.5x Preço)",
+    "description": "Título do grupo de tamanho 4K, cobrado a 1.5x do preço"
+  },
+  "name.customSize": {
+    "message": "Tamanho Personalizado",
+    "description": "Rótulo do botão de tamanho personalizado"
+  },
+  "description.customSize": {
+    "message": "Após ativar, você pode definir livremente a largura e a altura (apenas gpt-image-2 suporta). Deve ser múltiplo de 16, lado mais longo ≤ 3840, total de pixels ≤ 8.294.400. Tamanhos que não são 1K padrão são cobrados a 1.5x do preço.",
+    "description": "Descrição do tamanho personalizado"
+  },
+  "name.width": {
+    "message": "Largura",
+    "description": "Rótulo do campo de entrada de largura"
+  },
+  "name.height": {
+    "message": "Altura",
+    "description": "Rótulo do campo de entrada de altura"
+  },
+  "error.customSizePositive": {
+    "message": "Largura e altura devem ser inteiros positivos",
+    "description": "Tamanhos personalizados devem ser inteiros positivos"
+  },
+  "error.customSizeMultiple": {
+    "message": "Largura e altura devem ser múltiplos de {multiple}",
+    "description": "Tamanhos personalizados devem ser múltiplos de 16"
+  },
+  "error.customSizeMin": {
+    "message": "Largura e altura não podem ser menores que {min}",
+    "description": "Limite inferior do tamanho personalizado"
+  },
+  "error.customSizeMax": {
+    "message": "Lado mais longo não pode exceder {max}",
+    "description": "Limite superior do lado mais longo do tamanho personalizado"
+  },
+  "error.customSizePixels": {
+    "message": "Total de pixels não pode exceder {pixels}",
+    "description": "Limite superior de pixels do tamanho personalizado"
   },
   "description.prompt": {
     "message": "Palavras-chave para gerar ou editar a imagem",
     "description": "Descrição do prompt"
   },
   "description.model": {
-    "message": "Modelo utilizado para geração e edição de imagens.",
+    "message": "Modelo usado para geração e edição de imagens.",
     "description": "Descrição do parâmetro model"
   },
   "description.imageUrls": {
-    "message": "Envie de 1 a 5 imagens de referência para entrar no modo de edição.",
+    "message": "Carregue de 1 a 5 imagens de referência para entrar no modo de edição.",
     "description": "Descrição do parâmetro image_urls"
   },
   "status.pending": {
@@ -84,8 +132,8 @@
     "description": "Botão de gerar"
   },
   "button.uploadImageUrls": {
-    "message": "Enviar",
-    "description": "Botão para enviar imagens de referência (simplificar para 'Enviar', não usar 'Enviar Imagens')"
+    "message": "Carregar",
+    "description": "Botão para carregar imagens de referência (simplificado para 'Carregar')"
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
@@ -104,16 +152,16 @@
     "description": "Mensagem de créditos esgotados"
   },
   "message.uploadImageExceed": {
-    "message": "Máximo de 5 imagens permitidas",
-    "description": "Número de imagens excedeu o limite"
+    "message": "Você pode carregar no máximo 5 imagens",
+    "description": "Limite de número de imagens excedido"
   },
   "message.uploadImageError": {
-    "message": "Falha ao enviar a imagem, por favor, tente novamente mais tarde",
-    "description": "Falha no envio"
+    "message": "Falha ao carregar a imagem, por favor, tente novamente mais tarde",
+    "description": "Falha no upload"
   },
   "name.model": {
     "message": "Modelo",
-    "description": "Etiqueta de seleção do modelo de imagem OpenAI"
+    "description": "Rótulo de seleção do modelo de imagem OpenAI"
   },
   "model.gptImage1": {
     "message": "gpt-image-1",

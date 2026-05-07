@@ -1,19 +1,19 @@
 {
   "title.index": {
-    "message": "My Subsite",
-    "description": "Main title for the subsite management homepage"
+    "message": "My Subsites",
+    "description": "Main title on the subsites management homepage"
   },
   "title.create": {
     "message": "Create Subsite",
-    "description": "Title for the new subsite dialog"
+    "description": "Title of the dialog for creating a new subsite"
   },
   "title.openNow": {
-    "message": "Visit Subsite Now",
-    "description": "Title for the dialog asking if the user wants to redirect after successful creation"
+    "message": "Visit Now",
+    "description": "Dialog title asking if the user wants to open the subsite immediately after creation"
   },
   "field.slug": {
     "message": "Subdomain Prefix",
-    "description": "Title for the subsite slug input field"
+    "description": "Label for subsite slug input field"
   },
   "field.origin": {
     "message": "Subsite Domain",
@@ -24,100 +24,100 @@
     "description": "Field for the subsite title"
   },
   "field.createdAt": {
-    "message": "Creation Time",
-    "description": "Column for the subsite creation time"
+    "message": "Created At",
+    "description": "Column showing subsite creation time"
   },
   "field.actions": {
     "message": "Actions",
-    "description": "Column for actions in the subsite list"
+    "description": "Actions column in the subsite list"
   },
   "placeholder.slug": {
-    "message": "e.g. my-brand",
+    "message": "e.g., my-brand",
     "description": "Placeholder for the slug input field"
   },
   "placeholder.title": {
-    "message": "Displayed in the subsite browser tab and site header",
+    "message": "Displayed in browser tab and site header",
     "description": "Placeholder for the title input field"
   },
   "button.create": {
-    "message": "Create Subsite",
+    "message": "Create",
     "description": "Button to create a subsite"
   },
   "button.open": {
     "message": "Open",
-    "description": "Button to open the subsite"
+    "description": "Button to open a subsite"
   },
   "button.manage": {
     "message": "Manage",
     "description": "Button to enter subsite settings"
   },
   "message.indexTip": {
-    "message": "Create independent brand subsites under the main site, each subsite can have its own logo, title, and feature set without needing to build separate source code.",
-    "description": "Description text for the subsite management homepage"
+    "message": "Create independent brand subsites under the main site. Each subsite can have its own logo, title, and features without setting up separate source code.",
+    "description": "Explanation on the subsite management homepage"
   },
   "message.empty": {
-    "message": "You haven't created any subsites yet. Click 'Create Subsite' in the top right to get started.",
+    "message": "You haven't created any subsites yet. Click 'Create Subsite' at the top right to start.",
     "description": "Empty list prompt"
   },
   "message.slugTip": {
-    "message": "3-32 lowercase letters, numbers, or hyphens; cannot start or end with a hyphen, and cannot contain consecutive hyphens.",
-    "description": "Description for the slug field"
+    "message": "3–32 lowercase letters, numbers, or hyphens; cannot start or end with a hyphen or contain consecutive hyphens.",
+    "description": "Explanation for slug field"
   },
   "message.slugInvalid": {
-    "message": "Invalid subdomain prefix format, please check the rules and try again.",
-    "description": "Slug validation failure"
+    "message": "Invalid subdomain prefix. Please check the rules and try again.",
+    "description": "Slug validation failed"
   },
   "message.zoneMissing": {
-    "message": "The current main site is not configured with a subdomain zone, please contact the site administrator.",
-    "description": "Missing subdomain_zone"
+    "message": "The main site has not configured a subsite domain zone. Contact the site administrator.",
+    "description": "subdomain_zone missing"
   },
   "message.created": {
     "message": "Subsite created successfully!",
-    "description": "Success message for creation"
+    "description": "Creation success message"
   },
   "message.createFailed": {
-    "message": "Failed to create subsite, please try again later.",
-    "description": "Failure message for creation"
+    "message": "Failed to create subsite. Please try again later.",
+    "description": "Creation failure message"
   },
   "message.slugTaken": {
-    "message": "The subdomain {origin} is already taken. Please choose a different one.",
-    "description": "Shown when the chosen slug collides with an existing subsite (backend returns code=duplication)."
+    "message": "Subdomain {origin} is already in use. Please choose another.",
+    "description": "Slug already taken during creation (backend code=duplication)"
   },
   "message.loadFailed": {
-    "message": "Failed to load the subsite list.",
-    "description": "Failure message for loading the list"
+    "message": "Failed to load subsite list.",
+    "description": "Failed to fetch list"
   },
   "message.openNowConfirm": {
-    "message": "Subsite {origin} has been created. Would you like to open it now to continue configuration?",
-    "description": "Prompt to open immediately after creation"
+    "message": "Subsite {origin} has been created. Open it now to continue configuration?",
+    "description": "Prompt to open subsite immediately after creation"
   },
   "title.domains": {
-    "message": "Custom Domain for {origin}",
-    "description": "Title for the custom domain dialog"
+    "message": "{origin} Custom Domains",
+    "description": "Title of the custom domain dialog"
   },
   "title.bindDomain": {
     "message": "Bind New Domain",
-    "description": "Title for the binding form"
+    "description": "Title of the domain binding form"
   },
   "button.domains": {
     "message": "Domains",
     "description": "Button to open the domain management dialog"
   },
   "button.bindDomain": {
-    "message": "Bind Domain",
-    "description": "Button to submit binding a new domain"
+    "message": "Bind",
+    "description": "Submit new domain binding"
   },
   "button.verify": {
     "message": "Verify Now",
-    "description": "Check if the domain can be resolved and a certificate issued through our reverse proxy"
+    "description": "Check if the domain resolves and issue certificate via reverse proxy"
   },
   "button.refresh": {
     "message": "Refresh",
-    "description": "Re-fetch the status of the domain"
+    "description": "Reload the domain status"
   },
   "field.hostname": {
     "message": "Your Domain",
-    "description": "Input your owned domain or subdomain"
+    "description": "Input field for domain or subdomain you own"
   },
   "field.recordType": {
     "message": "Record Type",
@@ -132,56 +132,56 @@
     "description": "Column for DNS record value"
   },
   "placeholder.hostname": {
-    "message": "e.g. studio.mybrand.com",
-    "description": "Placeholder for the hostname input field"
+    "message": "e.g., studio.mybrand.com",
+    "description": "Placeholder for hostname input field"
   },
   "message.domainsIntro": {
-    "message": "Bind your owned domain to this subsite. You need to be able to modify the DNS of that domain. Follow the prompts below to add a CNAME record and then click 'Verify Now', we will automatically issue and renew an HTTPS certificate for you for free through Let's Encrypt.",
-    "description": "Top description for the dialog"
+    "message": "Bind domains you own to this subsite. You need to be able to modify the domain's DNS. Add a CNAME as instructed below and click 'Verify Now'. We will automatically issue and renew a free HTTPS certificate via Let's Encrypt.",
+    "description": "Top explanation in the dialog"
   },
   "message.domainsEmpty": {
-    "message": "No custom domains bound yet. Fill in the complete domain in the form below and click 'Bind' to get started.",
+    "message": "No custom domains bound yet. Enter a full domain in the form below and click 'Bind' to start.",
     "description": "Empty list prompt"
   },
   "message.hostnameTip": {
-    "message": "Must be a public domain name that you can control the DNS for.",
-    "description": "Input tip for hostname"
+    "message": "Must be a public domain you control via DNS.",
+    "description": "Hostname input hint"
   },
   "message.hostnameInvalid": {
-    "message": "Invalid domain format. Must be a publicly resolvable domain, IP addresses are not allowed.",
-    "description": "Local validation failure for hostname"
+    "message": "Invalid domain format. Must be a public resolvable domain; IP addresses are not allowed.",
+    "description": "Local validation failed for hostname"
   },
   "message.domainCreated": {
-    "message": "Domain has been submitted, please follow the prompts to add a CNAME record.",
-    "description": "Success message for POST /site-domains/"
+    "message": "Domain submitted. Please add the CNAME record as instructed.",
+    "description": "POST /site-domains/ success message"
   },
   "message.domainCreateFailed": {
-    "message": "Failed to create domain, please try again later.",
-    "description": "Failure message for domain creation"
+    "message": "Failed to create domain. Please try again later.",
+    "description": "Domain creation failed"
   },
   "message.domainsLoadFailed": {
-    "message": "Failed to load the domain list.",
-    "description": "Failure message for loading the domain list"
+    "message": "Failed to load domain list.",
+    "description": "Failed to fetch the domain list"
   },
   "message.domainActive": {
-    "message": "Domain is live! You can now access the substation via your custom HTTPS address.",
-    "description": "Indicates that the domain has entered the Active state"
+    "message": "Domain is live! Your subsite is now accessible via your custom HTTPS address.",
+    "description": "When domain enters Active state"
   },
   "message.domainFailed": {
-    "message": "Domain verification or launch failed.",
-    "description": "Failed status message"
+    "message": "Domain verification or activation failed.",
+    "description": "Text shown for Failed state"
   },
   "message.domainVerifyFailed": {
-    "message": "Verification failed, please check if the CNAME record points to our reverse proxy and DNS propagation is complete.",
-    "description": "Verify interface 4xx"
+    "message": "Verification failed. Please check if the CNAME record points to our reverse proxy and DNS propagation is complete.",
+    "description": "Response when verify API returns 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Are you sure you want to unbind {hostname}? After unbinding, users will not be able to access your substation from this domain.",
+    "message": "Are you sure you want to unbind {hostname}? Users will no longer access your subsite via this domain after unbinding.",
     "description": "Delete confirmation"
   },
   "message.domainDeleteFailed": {
-    "message": "Failed to delete the domain.",
-    "description": "DELETE interface 5xx"
+    "message": "Failed to delete domain.",
+    "description": "DELETE API returns 5xx"
   },
   "status.pending": {
     "message": "Pending",

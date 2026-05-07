@@ -1,194 +1,198 @@
 {
   "title.index": {
-    "message": "Meine Subdomain",
-    "description": "Haupttitel der Subdomain-Verwaltung"
+    "message": "Meine Subsites",
+    "description": "分站管理首页大标题"
   },
   "title.create": {
-    "message": "Subdomain erstellen",
-    "description": "Titel des Dialogs zum Erstellen einer neuen Subdomain"
+    "message": "Subsite erstellen",
+    "description": "新建分站对话框标题"
   },
   "title.openNow": {
-    "message": "Subdomain jetzt besuchen",
-    "description": "Titel des Dialogs, der nach erfolgreichem Erstellen fragt, ob sofort weitergeleitet werden soll"
+    "message": "Subsite jetzt öffnen",
+    "description": "新建成功后询问是否立即跳转的对话框标题"
   },
   "field.slug": {
     "message": "Subdomain-Präfix",
-    "description": "Titel des Eingabefelds für den Subdomain-Slug"
+    "description": "分站 slug 输入框标题"
   },
   "field.origin": {
-    "message": "Subdomain-Domain",
-    "description": "Domain-Spalte in der Subdomain-Liste"
+    "message": "Subsite-Domain",
+    "description": "分站列表的域名列"
   },
   "field.title": {
-    "message": "Subdomain-Titel",
-    "description": "Feld für den Titel der Subdomain"
+    "message": "Subsite-Titel",
+    "description": "分站标题字段"
   },
   "field.createdAt": {
-    "message": "Erstellungsdatum",
-    "description": "Spalte für das Erstellungsdatum der Subdomain"
+    "message": "Erstellt am",
+    "description": "分站创建时间列"
   },
   "field.actions": {
     "message": "Aktionen",
-    "description": "Spalte für Aktionen in der Subdomain-Liste"
+    "description": "分站列表操作列"
   },
   "placeholder.slug": {
-    "message": "z.B. meine-marke",
-    "description": "Platzhalter im Slug-Eingabefeld"
+    "message": "z. B. my-brand",
+    "description": "slug 输入框占位符"
   },
   "placeholder.title": {
-    "message": "Für die Anzeige im Tab des Browsers und im Kopf der Subdomain",
-    "description": "Platzhalter im Titel-Eingabefeld"
+    "message": "Wird in Tab und Kopfbereich angezeigt",
+    "description": "标题输入框占位符"
   },
   "button.create": {
-    "message": "Subdomain erstellen",
-    "description": "Button zum Erstellen einer Subdomain"
+    "message": "Erstellen",
+    "description": "创建分站按钮"
   },
   "button.open": {
     "message": "Öffnen",
-    "description": "Button zum Öffnen der Subdomain"
+    "description": "打开分站按钮"
   },
   "button.manage": {
     "message": "Verwalten",
-    "description": "Button zum Zugriff auf die Einstellungen der Subdomain"
+    "description": "进入分站设置按钮"
   },
   "message.indexTip": {
-    "message": "Erstellen Sie unabhängige Subdomains unter der Hauptdomain, jede Subdomain kann ihr eigenes Logo, ihren Titel und ihre Funktionalitäten haben, ohne dass der Quellcode separat aufgebaut werden muss.",
-    "description": "Erklärungstext auf der Hauptseite der Subdomain-Verwaltung"
+    "message": "Erstellen Sie eigenständige Marken-Subsites unter der Hauptseite. Jede Subsite kann eigenes Logo, Titel und Funktionen haben, ohne Quellcode separat aufzubauen.",
+    "description": "分站管理首页说明文字"
   },
   "message.empty": {
-    "message": "Sie haben noch keine Subdomain erstellt. Klicken Sie auf „Subdomain erstellen“ in der oberen rechten Ecke, um zu beginnen.",
-    "description": "Hinweis für leere Liste"
+    "message": "Sie haben noch keine Subsites erstellt. Klicken Sie oben rechts auf „Subsite erstellen“.",
+    "description": "空列表提示"
   },
   "message.slugTip": {
-    "message": "3-32 Kleinbuchstaben, Zahlen oder Bindestriche; darf nicht mit einem Bindestrich beginnen oder enden und keine aufeinanderfolgenden Bindestriche enthalten.",
-    "description": "Erklärung zum Slug-Feld"
+    "message": "3–32 Zeichen: Kleinbuchstaben, Zahlen oder Bindestriche; darf nicht mit Bindestrich beginnen/enden oder doppelte Bindestriche enthalten.",
+    "description": "slug 字段说明"
   },
   "message.slugInvalid": {
-    "message": "Das Format des Subdomain-Präfixes ist ungültig, bitte überprüfen Sie die Regeln und versuchen Sie es erneut.",
-    "description": "Slug-Validierung fehlgeschlagen"
+    "message": "Ungültiges Subdomain-Präfix. Bitte prüfen Sie die Regeln und versuchen Sie es erneut.",
+    "description": "slug 校验失败"
   },
   "message.zoneMissing": {
-    "message": "Die aktuelle Hauptdomain hat keine Subdomain-Domainzone konfiguriert, bitte kontaktieren Sie den Administrator der Seite.",
-    "description": "Fehlende subdomain_zone"
+    "message": "Die Hauptseite hat keine Subdomain-Zone konfiguriert. Bitte wenden Sie sich an den Administrator.",
+    "description": "subdomain_zone 缺失"
   },
   "message.created": {
-    "message": "Subdomain erfolgreich erstellt!",
-    "description": "Erstellung erfolgreich"
+    "message": "Subsite erfolgreich erstellt!",
+    "description": "创建成功"
   },
   "message.createFailed": {
-    "message": "Erstellung der Subdomain fehlgeschlagen, bitte versuchen Sie es später erneut.",
-    "description": "Erstellung fehlgeschlagen"
+    "message": "Subsite-Erstellung fehlgeschlagen. Bitte später erneut versuchen.",
+    "description": "创建失败"
+  },
+  "message.slugTaken": {
+    "message": "Subdomain {origin} ist bereits vergeben. Bitte wählen Sie eine andere.",
+    "description": "创建分站时，slug 已被占用（后端返回 code=duplication）"
   },
   "message.loadFailed": {
-    "message": "Laden der Subdomain-Liste fehlgeschlagen.",
-    "description": "Laden der Liste fehlgeschlagen"
+    "message": "Subsite-Liste konnte nicht geladen werden.",
+    "description": "拉列表失败"
   },
   "message.openNowConfirm": {
-    "message": "Subdomain {origin} wurde erstellt. Möchten Sie sie jetzt öffnen, um die Konfiguration fortzusetzen?",
-    "description": "Sofort nach der Erstellung öffnen"
+    "message": "Subsite {origin} wurde erstellt. Jetzt öffnen, um weiter zu konfigurieren?",
+    "description": "创建后是否立即打开"
   },
   "title.domains": {
-    "message": "Benutzerdefinierte Domain für {origin}",
-    "description": "Titel des Dialogs für benutzerdefinierte Domains"
+    "message": "Benutzerdefinierte Domains von {origin}",
+    "description": "自定义域名对话框标题"
   },
   "title.bindDomain": {
     "message": "Neue Domain binden",
-    "description": "Titel des Bindungsformulars"
+    "description": "绑定表单标题"
   },
   "button.domains": {
     "message": "Domains",
-    "description": "Button zum Öffnen des Dialogs zur Domainverwaltung"
+    "description": "打开域名管理对话框的按钮"
   },
   "button.bindDomain": {
-    "message": "Domain binden",
-    "description": "Button zum Einreichen der Bindung einer neuen Domain"
+    "message": "Binden",
+    "description": "提交绑定新域名"
   },
   "button.verify": {
-    "message": "Jetzt überprüfen",
-    "description": "Überprüfen, ob die Domain über unseren Reverse-Proxy normal aufgelöst werden kann und ein Zertifikat ausgestellt werden kann"
+    "message": "Jetzt prüfen",
+    "description": "通过我们的反向代理探测该域名是否已能正常解析并签发证书"
   },
   "button.refresh": {
     "message": "Aktualisieren",
-    "description": "Status der Domain erneut abrufen"
+    "description": "重新拉取该域名的状态"
   },
   "field.hostname": {
     "message": "Ihre Domain",
-    "description": "Geben Sie die Domain oder Subdomain ein, die Sie besitzen"
+    "description": "输入你拥有的域名或子域名"
   },
   "field.recordType": {
-    "message": "Datensatztyp",
-    "description": "Spalte für den DNS-Datensatztyp"
+    "message": "Record-Typ",
+    "description": "DNS 记录类型列"
   },
   "field.recordName": {
-    "message": "Datensatzname",
-    "description": "Spalte für den DNS-Datensatznamen"
+    "message": "Record-Name",
+    "description": "DNS 记录名称列"
   },
   "field.recordValue": {
-    "message": "Datensatzwert",
-    "description": "Spalte für den DNS-Datensatzwert"
+    "message": "Record-Wert",
+    "description": "DNS 记录值列"
   },
   "placeholder.hostname": {
-    "message": "z.B. studio.meine-marke.com",
-    "description": "Platzhalter im Hostname-Eingabefeld"
+    "message": "z. B. studio.mybrand.com",
+    "description": "hostname 输入框占位符"
   },
   "message.domainsIntro": {
-    "message": "Binden Sie Ihre Domain an diese Subdomain. Sie müssen in der Lage sein, den DNS dieser Domain zu ändern. Fügen Sie einen CNAME gemäß den untenstehenden Anweisungen hinzu und klicken Sie dann auf „Jetzt überprüfen“, wir werden automatisch ein kostenloses HTTPS-Zertifikat über Let's Encrypt für Sie ausstellen und verlängern.",
-    "description": "Erklärungstext oben im Dialog"
+    "message": "Binden Sie Ihre Domain an diese Subsite. Sie müssen DNS bearbeiten können. Fügen Sie einen CNAME hinzu und klicken Sie auf „Jetzt prüfen“. Wir stellen automatisch ein kostenloses HTTPS-Zertifikat über Let's Encrypt aus.",
+    "description": "对话框顶部说明"
   },
   "message.domainsEmpty": {
-    "message": "Es sind noch keine benutzerdefinierten Domains gebunden. Füllen Sie das vollständige Domainfeld im Formular unten aus und klicken Sie auf „Binden“, um zu beginnen.",
-    "description": "Hinweis für leere Liste"
+    "message": "Noch keine benutzerdefinierten Domains gebunden. Formular ausfüllen und auf „Binden“ klicken.",
+    "description": "空列表提示"
   },
   "message.hostnameTip": {
-    "message": "Muss eine öffentliche Domain sein, deren DNS Sie kontrollieren können.",
-    "description": "Eingabeaufforderung für den Hostnamen"
+    "message": "Muss eine öffentlich auflösbare Domain sein, die Sie kontrollieren.",
+    "description": "hostname 输入提示"
   },
   "message.hostnameInvalid": {
-    "message": "Das Domainformat ist ungültig. Es muss eine öffentlich auflösbare Domain sein, IP-Adressen sind nicht erlaubt.",
-    "description": "Lokale Validierung des Hostnamens fehlgeschlagen"
+    "message": "Ungültige Domain. Nur öffentlich auflösbare Domains erlaubt, keine IP-Adresse.",
+    "description": "hostname 本地校验失败"
   },
   "message.domainCreated": {
-    "message": "Domain wurde eingereicht, bitte fügen Sie den CNAME-Datensatz gemäß den Anweisungen hinzu.",
-    "description": "POST /site-domains/ erfolgreich"
+    "message": "Domain eingereicht. Bitte CNAME wie angegeben hinzufügen.",
+    "description": "POST /site-domains/ 成功"
   },
   "message.domainCreateFailed": {
-    "message": "Erstellung der Domain fehlgeschlagen, bitte versuchen Sie es später erneut.",
-    "description": "Erstellung fehlgeschlagen"
+    "message": "Domainerstellung fehlgeschlagen, bitte später erneut versuchen.",
+    "description": "Fehler bei der Erstellung"
   },
   "message.domainsLoadFailed": {
-    "message": "Laden der Domainliste fehlgeschlagen.",
-    "description": "Laden der Domainliste fehlgeschlagen"
+    "message": "Fehler beim Laden der Domainliste.",
+    "description": "Fehler beim Laden der Domainliste"
   },
   "message.domainActive": {
-    "message": "Domain ist aktiv! Du kannst jetzt über deine benutzerdefinierte HTTPS-Adresse auf die Subdomain zugreifen.",
-    "description": "In aktiven Status wechseln"
+    "message": "Domain ist online! Du kannst jetzt über deine benutzerdefinierte HTTPS-Adresse auf die Subdomain zugreifen.",
+    "description": "In den aktiven Status wechseln"
   },
   "message.domainFailed": {
-    "message": "Domainüberprüfung oder Bereitstellung fehlgeschlagen.",
-    "description": "Failed 状态兑底文案"
+    "message": "Domainverifizierung oder -aktivierung fehlgeschlagen.",
+    "description": "Text für den Status 'Fehlgeschlagen'"
   },
   "message.domainVerifyFailed": {
-    "message": "Überprüfung fehlgeschlagen, bitte überprüfen Sie, ob der CNAME-Eintrag auf unseren Reverse-Proxy zeigt und die DNS-Verbreitung abgeschlossen ist.",
-    "description": "verify 接口 4xx"
+    "message": "Verifizierung fehlgeschlagen, bitte überprüfe, ob der CNAME-Eintrag auf unseren Reverse-Proxy zeigt und die DNS-Verbreitung abgeschlossen ist.",
+    "description": "Verifizierungs-Interface 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Möchten Sie {hostname} wirklich trennen? Nach der Trennung können Benutzer nicht mehr über diese Domain auf Ihre Subsite zugreifen.",
-    "description": "删除确认"
+    "message": "Möchtest du {hostname} wirklich trennen? Nach der Trennung können Benutzer nicht mehr über diese Domain auf deine Subdomain zugreifen.",
+    "description": "Bestätigung zur Löschung"
   },
   "message.domainDeleteFailed": {
-    "message": "Löschen der Domain fehlgeschlagen.",
-    "description": "DELETE 接口 5xx"
+    "message": "Fehler beim Löschen der Domain.",
+    "description": "DELETE-Interface 5xx"
   },
   "status.pending": {
     "message": "Ausstehend",
-    "description": "Pending 状态标签：Warten auf Benutzer, um CNAME hinzuzufügen und auf 'Jetzt überprüfen' zu klicken"
+    "description": "Label für den Status 'Ausstehend': Warten auf Benutzer, um CNAME hinzuzufügen und auf 'Jetzt verifizieren' zu klicken"
   },
   "status.active": {
-    "message": "Aktiv",
-    "description": "Active 状态标签"
+    "message": "Online",
+    "description": "Label für den aktiven Status"
   },
   "status.failed": {
     "message": "Fehlgeschlagen",
-    "description": "Failed 状态标签"
+    "description": "Label für den Status 'Fehlgeschlagen'"
   }
 }

@@ -8,12 +8,12 @@
     "description": "Rubrik för dialogrutan för att skapa en ny underdomän"
   },
   "title.openNow": {
-    "message": "Öppna underdomän nu",
-    "description": "Rubrik för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
+    "message": "Besök underdomänen nu",
+    "description": "Rubrik för dialogrutan som frågar om man vill omdirigeras efter att ha skapat en ny underdomän"
   },
   "field.slug": {
     "message": "Underdomänprefix",
-    "description": "Rubrik för inmatningsfältet för slug"
+    "description": "Rubrik för inmatningsfältet för underdomän slug"
   },
   "field.origin": {
     "message": "Underdomänens domännamn",
@@ -33,11 +33,11 @@
   },
   "placeholder.slug": {
     "message": "t.ex. my-brand",
-    "description": "Platsinnehåll för slug-inmatningsfältet"
+    "description": "Platsinnehåll för slug inmatningsfält"
   },
   "placeholder.title": {
     "message": "Visas i webbläsartabben och sidhuvudet",
-    "description": "Platsinnehåll för titel-inmatningsfältet"
+    "description": "Platsinnehåll för titel inmatningsfält"
   },
   "button.create": {
     "message": "Skapa underdomän",
@@ -49,7 +49,7 @@
   },
   "button.manage": {
     "message": "Hantera",
-    "description": "Knapp för att gå till inställningarna för underdomänen"
+    "description": "Knapp för att gå till underdomänens inställningar"
   },
   "message.indexTip": {
     "message": "Skapa självständiga underdomäner under huvuddomänen, varje underdomän kan ha sin egen logotyp, titel och funktioner utan att behöva bygga källkoden separat.",
@@ -60,7 +60,7 @@
     "description": "Meddelande för tom lista"
   },
   "message.slugTip": {
-    "message": "3-32 små bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla på varandra följande bindestreck.",
+    "message": "3-32 tecken låga bokstäver, siffror eller bindestreck; får inte börja eller sluta med bindestreck och får inte innehålla på varandra följande bindestreck.",
     "description": "Förklaring för slug-fältet"
   },
   "message.slugInvalid": {
@@ -79,12 +79,16 @@
     "message": "Misslyckades med att skapa underdomän, vänligen försök igen senare.",
     "description": "Skapande misslyckades"
   },
+  "message.slugTaken": {
+    "message": "Underdomän {origin} är redan upptagen, vänligen välj en annan.",
+    "description": "Slug är upptagen vid skapande av underdomän (backend returnerar code=duplication)"
+  },
   "message.loadFailed": {
     "message": "Misslyckades med att ladda underdomänlistan.",
     "description": "Misslyckades med att hämta listan"
   },
   "message.openNowConfirm": {
-    "message": "Underdomänen {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
+    "message": "Underdomän {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
     "description": "Fråga om att öppna direkt efter skapande"
   },
   "title.domains": {
@@ -129,19 +133,19 @@
   },
   "placeholder.hostname": {
     "message": "t.ex. studio.mybrand.com",
-    "description": "Platsinnehåll för hostname-inmatningsfältet"
+    "description": "Platsinnehåll för hostname inmatningsfält"
   },
   "message.domainsIntro": {
-    "message": "Bind domänen du äger till denna underdomän. Du behöver kunna ändra DNS för den domänen. Följ instruktionerna nedan för att lägga till en CNAME-post och klicka sedan på 'Verifiera nu', så kommer vi automatiskt att utfärda och förnya HTTPS-certifikat gratis via Let's Encrypt.",
+    "message": "Bind domäner som du äger till denna underdomän. Du behöver kunna ändra DNS för den domänen. Följ instruktionerna nedan för att lägga till en CNAME-post och klicka sedan på 'Verifiera nu', så utfärdar vi automatiskt ett gratis HTTPS-certifikat via Let's Encrypt och förnyar det.",
     "description": "Förklarande text i dialogrutan"
   },
   "message.domainsEmpty": {
-    "message": "Inga anpassade domännamn har bundits än. Fyll i det fullständiga domännamnet i formuläret nedan och klicka på 'Bind' för att börja.",
+    "message": "Inga anpassade domäner har bundits ännu. Fyll i den fullständiga domänen i formuläret nedan och klicka på 'Bind' för att börja.",
     "description": "Meddelande för tom lista"
   },
   "message.hostnameTip": {
     "message": "Måste vara en offentlig domän som du kan kontrollera DNS för.",
-    "description": "Tips för hostname-inmatning"
+    "description": "Tips för hostname inmatning"
   },
   "message.hostnameInvalid": {
     "message": "Domänformatet är felaktigt. Måste vara en offentlig domän som kan lösas, IP-adresser är inte tillåtna.",
@@ -152,43 +156,43 @@
     "description": "POST /site-domains/ lyckades"
   },
   "message.domainCreateFailed": {
-    "message": "Misslyckades med att skapa domän, vänligen försök igen senare.",
-    "description": "Skapande misslyckades"
+    "message": "Misslyckades med att skapa domän, försök igen senare.",
+    "description": "Skapande misslyckades, generellt felmeddelande"
   },
   "message.domainsLoadFailed": {
     "message": "Misslyckades med att ladda domänlistan.",
     "description": "Misslyckades med att hämta domänlistan"
   },
   "message.domainActive": {
-    "message": "Domänen är aktiv! Du kan nu nå underdomänen via din anpassade HTTPS-adress.",
-    "description": "Går in i aktivt tillstånd"
+    "message": "Domänen är aktiv! Du kan nu nå din underdomän via din anpassade HTTPS-adress.",
+    "description": "Gå in i aktivt tillstånd"
   },
   "message.domainFailed": {
-    "message": "Domänverifiering eller lansering misslyckades.",
-    "description": "Failed 状态兑底文案"
+    "message": "Domänverifiering eller aktivering misslyckades.",
+    "description": "Text för misslyckat tillstånd"
   },
   "message.domainVerifyFailed": {
     "message": "Verifiering misslyckades, kontrollera att CNAME-posten pekar på vår omvända proxy och att DNS-spridningen är klar.",
-    "description": "verify 接口 4xx"
+    "description": "Verifieringsgränssnitt 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Är du säker på att du vill avbinda {hostname}? Efter avbindning kan användare inte nå din underdomän från denna domän.",
-    "description": "删除确认"
+    "message": "Är du säker på att du vill avbinda {hostname}? Efter avbindning kan användare inte nå din underdomän via denna domän.",
+    "description": "Bekräftelse för borttagning"
   },
   "message.domainDeleteFailed": {
-    "message": "Borttagning av domän misslyckades.",
-    "description": "DELETE 接口 5xx"
+    "message": "Misslyckades med att ta bort domänen.",
+    "description": "DELETE-gränssnitt 5xx"
   },
   "status.pending": {
     "message": "Väntar på verifiering",
-    "description": "Pending 状态标签：väntar på att användaren lägger till CNAME och klickar på 'Verifiera nu'"
+    "description": "Pending-statusetikett: Väntar på att användaren ska lägga till CNAME och klicka på 'Verifiera nu'"
   },
   "status.active": {
     "message": "Aktiv",
-    "description": "Active 状态标签"
+    "description": "Aktiv statusetikett"
   },
   "status.failed": {
     "message": "Misslyckades",
-    "description": "Failed 状态标签"
+    "description": "Misslyckad statusetikett"
   }
 }

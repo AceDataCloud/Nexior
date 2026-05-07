@@ -1,27 +1,27 @@
 {
   "name.taskId": {
-    "message": "معرف المهمة",
-    "description": "معرف المهمة"
+    "message": "معرّف المهمة",
+    "description": "معرّف المهمة"
   },
   "name.task": {
     "message": "نوع المهمة",
     "description": "نوع عملية SeeDream للصورة"
   },
   "name.generate": {
-    "message": "إنشاء صورة",
+    "message": "إنشاء",
     "description": "نوع العملية: إنشاء صورة"
   },
   "name.edits": {
-    "message": "تحرير صورة",
-    "description": "نوع العملية: تحرير صورة"
+    "message": "تعديل",
+    "description": "نوع العملية: تعديل صورة"
   },
   "name.imageUrls": {
-    "message": "صور مرجعية",
-    "description": "صور مرجعية للاستخدام في التحرير"
+    "message": "الصور المرجعية",
+    "description": "الصور المرجعية للتحرير"
   },
   "name.failure": {
     "message": "فشل",
-    "description": "فشل المهمة"
+    "description": "المهمة فشلت"
   },
   "name.failureReason": {
     "message": "سبب الفشل",
@@ -32,20 +32,20 @@
     "description": "حالة المهمة"
   },
   "name.traceId": {
-    "message": "معرف التتبع",
-    "description": "معرف التتبع"
+    "message": "معرّف التتبع",
+    "description": "معرّف التتبع"
   },
   "name.elapsed": {
-    "message": "الوقت المستغرق",
-    "description": "الوقت المستغرق للمهمة (بالثواني)"
+    "message": "المدة",
+    "description": "مدة المهمة (بالثواني)"
   },
   "name.prompt": {
-    "message": "نص الصورة",
-    "description": "نص التوليد/التحرير"
+    "message": "النص التوجيهي",
+    "description": "النص التوجيهي لإنشاء/تعديل الصورة"
   },
   "name.seedreamBot": {
-    "message": "روبوت SeeDream",
-    "description": "اسم مولد الصور SeeDream"
+    "message": "SeeDream Bot",
+    "description": "اسم منشئ الصور SeeDream"
   },
   "name.size": {
     "message": "الحجم",
@@ -53,75 +53,99 @@
   },
   "name.watermark": {
     "message": "علامة مائية",
-    "description": "هل يتم إضافة علامة مائية"
+    "description": "إضافة علامة مائية أم لا"
   },
   "description.prompt": {
-    "message": "نص التوليد أو التحرير للصورة",
-    "description": "وصف نص التوليد"
+    "message": "النص التوجيهي لإنشاء أو تعديل الصورة",
+    "description": "وصف النص التوجيهي"
   },
   "description.model": {
-    "message": "النموذج المستخدم لتوليد أو تحرير الصور.",
-    "description": "وصف معلمة النموذج"
+    "message": "النموذج المستخدم لإنشاء أو تعديل الصورة.",
+    "description": "شرح معلمة النموذج"
   },
   "description.size": {
-    "message": "حجم الصورة. يدعم الإعدادات المسبقة `1K`، `2K`، `4K` أو حجم مخصص `<عرض>x<ارتفاع>`.",
-    "description": "وصف معلمة الحجم"
+    "message": "حجم الصورة. النماذج المختلفة تدعم إعدادات مسبقة مختلفة: 5.0 يدعم فقط 2K/3K/4K، 4.5/4.0 يدعم 1K/2K/4K، 3.0-t2i و seededit-3.0-i2i يدعمان فقط `<عرض>x<ارتفاع>` بالبكسل (مثل 1024x1024، 1280x720). يمكن للنماذج المسبقة اختيار \"تلقائي\" لمطابقة نسبة الصور المرجعية، أو إدخال أي `<عرض>x<ارتفاع>` مباشرة.",
+    "description": "شرح معلمة الحجم حسب النموذج"
   },
   "description.watermark": {
-    "message": "هل يتم إضافة علامة مائية للذكاء الاصطناعي في الصورة الناتجة. مفعل بشكل افتراضي.",
-    "description": "وصف معلمة العلامة المائية"
+    "message": "إضافة علامة مائية AI تلقائيًا على الصورة الناتجة. مفعل افتراضيًا.",
+    "description": "شرح معلمة العلامة المائية"
   },
   "description.imageUrls": {
-    "message": "قم بتحميل من 1 إلى 14 صورة مرجعية لتمكين تحرير الصور.",
-    "description": "وصف معلمة الصور"
+    "message": "حمّل 1-14 صورة مرجعية لتفعيل تحرير الصور.",
+    "description": "شرح معلمة الصور"
   },
   "status.pending": {
-    "message": "في الانتظار",
+    "message": "قيد الانتظار",
     "description": "حالة انتظار المهمة"
   },
   "placeholder.select": {
     "message": "اختر",
-    "description": "نص العنصر المحدد"
+    "description": "نص العنصر النائب للاختيار"
+  },
+  "placeholder.size": {
+    "message": "اختر إعداد مسبق أو أدخل <عرض>x<ارتفاع>",
+    "description": "نص العنصر النائب لاختيار/إدخال الحجم"
   },
   "placeholder.prompt": {
-    "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
-    "description": "نص العنصر المحدد"
+    "message": "أدخل النص التوجيهي، مثال: قطة سياميه بيضاء",
+    "description": "نص العنصر النائب للتوجيه"
   },
   "button.generate": {
-    "message": "توليد",
-    "description": "زر التوليد"
+    "message": "إنشاء",
+    "description": "زر إنشاء"
   },
   "button.uploadImageUrls": {
-    "message": "تحميل",
-    "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصور')"
+    "message": "رفع",
+    "description": "زر رفع الصور المرجعية (بسيط، لا تكتب 'رفع صور')"
+  },
+  "button.confirmContinue": {
+    "message": "استمرار",
+    "description": "زر التأكيد في نافذة تعارض القدرات"
+  },
+  "button.cancelSwitch": {
+    "message": "إلغاء",
+    "description": "زر الإلغاء في نافذة تعارض القدرات"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
     "description": "رسالة بدء المهمة"
   },
   "message.startTaskSuccess": {
-    "message": "تم بدء مهمة التوليد بنجاح",
-    "description": "تم إنشاء المهمة بنجاح"
+    "message": "تم إنشاء المهمة بنجاح",
+    "description": "المهمة تم إنشاؤها بنجاح"
   },
   "message.startTaskFailed": {
-    "message": "فشل بدء المهمة، يرجى الاتصال بالمسؤول:",
-    "description": "فشل إنشاء المهمة"
+    "message": "فشل إنشاء المهمة، يرجى الاتصال بالمسؤول:",
+    "description": "المهمة فشلت في الإنشاء"
   },
   "message.usedUp": {
-    "message": "لقد نفدت نقاطك، يرجى شراء المزيد من النقاط للاستمرار في الاستخدام",
+    "message": "انتهت نقاطك، يرجى شراء المزيد للاستمرار",
     "description": "رسالة نفاد النقاط"
   },
   "message.uploadImageExceed": {
-    "message": "يمكنك تحميل ما يصل إلى 14 صورة",
-    "description": "تجاوز عدد الصور الحد المسموح به"
+    "message": "يمكنك رفع 14 صورة كحد أقصى",
+    "description": "تجاوز الحد الأقصى للصور"
   },
   "message.uploadImageError": {
-    "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
-    "description": "فشل التحميل"
+    "message": "فشل رفع الصورة، حاول لاحقًا",
+    "description": "فشل رفع الصورة"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "تأكيد مطلوب",
+    "description": "عنوان نافذة تعارض القدرات"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "الإعدادات التالية غير مدعومة مع الاختيار الحالي: {fields}. المتابعة ستؤدي إلى مسح هذه الإعدادات.",
+    "description": "نص نافذة تعارض القدرات"
+  },
+  "message.featureRemovedNotice": {
+    "message": "تم مسح الإعدادات غير المدعومة: {fields}",
+    "description": "رسالة بعد تنظيف إعدادات غير مدعومة"
   },
   "name.model": {
     "message": "النموذج",
-    "description": "علامة اختيار نموذج SeeDream"
+    "description": "تسمية اختيار نموذج SeeDream"
   },
   "model.seedream45": {
     "message": "doubao-seedream-4.5",
@@ -141,14 +165,54 @@
   },
   "model.seedream50": {
     "message": "doubao-seedream-5.0",
-    "description": "خيار نموذج SeeDream 5.0 (يدعم توليد الصور المتسلسلة والإخراج المتدفق)"
+    "description": "خيار نموذج SeeDream 5.0 (يدعم الصور المجمعة والإخراج التدريجي)"
   },
   "name.maxImages": {
     "message": "عدد الصور",
-    "description": "عدد الصور التي يتم توليدها في مجموعة الصور (max_images)"
+    "description": "عدد الصور الناتجة عند إنشاء مجموعة (max_images)"
   },
   "description.maxImages": {
-    "message": "عدد الصور التي يتم توليدها في طلب واحد (1-15). إذا تم تعيينها إلى 1، فهي وضع صورة واحدة؛ إذا كانت أكبر من 1، يتم تفعيل مجموعة الصور تلقائيًا (sequential_image_generation=auto)، مع الحفاظ على الشخصيات والأسلوب والتفاصيل متسقة عبر الصور. يدعم فقط doubao-seedream-5.0 / 4.5 / 4.0؛ إذا تم تحميل صور مرجعية، يجب أن تفي بالشرط (عدد الصور المرجعية + عدد الصور الناتجة) ≤ 15. يتم احتساب الرسوم بناءً على عدد الصور الناتجة الفعلي.",
+    "message": "عدد الصور التي يتم إنشاؤها في طلب واحد (1-15). إذا تم تعيينه إلى 1، يكون في وضع الصورة الفردية؛ إذا كان أكبر من 1، يتم تفعيل وضع المجموعة تلقائيًا (sequential_image_generation=auto)، مع الحفاظ على الشخصيات والأسلوب والتفاصيل متسقة عبر الصور. يدعم فقط doubao-seedream-5.0 / 4.5 / 4.0؛ إذا تم تحميل صور مرجعية، يجب أن يكون (عدد الصور المرجعية + عدد الصور المولدة) ≤ 15. يتم احتساب الرسوم بناءً على عدد الصور المولدة الفعلي.",
     "description": "وصف معلمة max_images"
+  },
+  "name.seed": {
+    "message": "البذرة العشوائية",
+    "description": "علامة لوسيط seed"
+  },
+  "description.seed": {
+    "message": "بذرة عشوائية لإعادة الإنتاج، النطاق [-1, 2147483647]. -1 يعني كل مرة عشوائية. مدعوم فقط في doubao-seedream-3.0-t2i و doubao-seededit-3.0-i2i.",
+    "description": "شرح وسيط seed"
+  },
+  "name.guidanceScale": {
+    "message": "وزن الإرشاد",
+    "description": "علامة لوسيط guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "قوة الالتزام بالكلمات الدليلية، النطاق [1, 10]. كلما زاد الرقم، كان الناتج أقرب للكلمات الدليلية. الافتراضي: doubao-seedream-3.0-t2i = 2.5، doubao-seededit-3.0-i2i = 5.5.",
+    "description": "شرح وسيط guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "تنسيق الإخراج",
+    "description": "علامة لوسيط output_format"
+  },
+  "description.outputFormat": {
+    "message": "صيغة ملف الصورة الناتجة، jpeg أو png، الافتراضي jpeg. مدعوم فقط في doubao-seedream-5.0.",
+    "description": "شرح وسيط output_format"
+  },
+  "size.group.tier": {
+    "message": "مستوى الدقة",
+    "description": "مجموعة مستويات الحجم المنسدلة (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "تلقائي",
+    "description": "مجموعة الحجم التكيفية في المنسدلة"
+  },
+  "size.group.pixel": {
+    "message": "أبعاد دقيقة",
+    "description": "مجموعة الحجم بوحدات البكسل في المنسدلة"
+  },
+  "size.adaptive": {
+    "message": "تلقائي (مطابق للصورة المرجعية)",
+    "description": "علامة خيار adaptive"
   }
 }

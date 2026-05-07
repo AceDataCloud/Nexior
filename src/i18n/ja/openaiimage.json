@@ -16,8 +16,8 @@
     "description": "操作タイプ：画像編集"
   },
   "name.imageUrls": {
-    "message": "参考画像",
-    "description": "編集用の参考画像"
+    "message": "参照画像",
+    "description": "編集用の参照画像"
   },
   "name.failure": {
     "message": "失敗",
@@ -52,24 +52,72 @@
     "description": "出力画像サイズ"
   },
   "description.size": {
-    "message": "画像生成のための出力サイズ。一般的な値：1024x1024、1536x1024、1024x1536。",
+    "message": "出力画像サイズ。異なるモデルがサポートするサイズは異なります：gpt-image-1 / gpt-image-1.5 は 1024x1024、1536x1024、1024x1536 のみサポート；gpt-image-2 は 1792x1024、1024x1792、及び 2K/4K プリセットもサポート；gpt-image-2 ではカスタムサイズを有効にできます。",
     "description": "サイズ説明"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K 標準（基本料金）",
+    "description": "1K サイズグループタイトル、基本料金で請求"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K プリセット（1.5 倍料金）",
+    "description": "2K サイズグループタイトル、1.5 倍料金で請求"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K プリセット（1.5 倍料金）",
+    "description": "4K サイズグループタイトル、1.5 倍料金で請求"
+  },
+  "name.customSize": {
+    "message": "カスタムサイズ",
+    "description": "カスタムサイズスイッチラベル"
+  },
+  "description.customSize": {
+    "message": "有効にすると幅と高さを自由に設定できます（gpt-image-2 のみサポート）。16 の倍数でなければならず、最長辺は ≤ 3840、総ピクセルは ≤ 8,294,400 でなければなりません。非 1K 標準サイズは 1.5 倍料金で請求されます。",
+    "description": "カスタムサイズ説明"
+  },
+  "name.width": {
+    "message": "幅",
+    "description": "幅入力ボックスラベル"
+  },
+  "name.height": {
+    "message": "高さ",
+    "description": "高さ入力ボックスラベル"
+  },
+  "error.customSizePositive": {
+    "message": "幅と高さは正の整数でなければなりません",
+    "description": "カスタムサイズは正の整数でなければなりません"
+  },
+  "error.customSizeMultiple": {
+    "message": "幅と高さは {multiple} の倍数でなければなりません",
+    "description": "カスタムサイズは 16 の倍数でなければなりません"
+  },
+  "error.customSizeMin": {
+    "message": "幅と高さは {min} 未満であってはなりません",
+    "description": "カスタムサイズの下限"
+  },
+  "error.customSizeMax": {
+    "message": "最長辺は {max} を超えてはなりません",
+    "description": "カスタムサイズの最長辺上限"
+  },
+  "error.customSizePixels": {
+    "message": "総ピクセルは {pixels} を超えてはなりません",
+    "description": "カスタムサイズの総ピクセル上限"
+  },
   "description.prompt": {
-    "message": "画像生成または編集のためのプロンプト",
-    "description": "プロンプト説明"
+    "message": "画像を生成または編集するためのプロンプト",
+    "description": "プロンプトの説明"
   },
   "description.model": {
-    "message": "画像生成と編集に使用するモデル。",
-    "description": "model パラメータ説明"
+    "message": "画像生成と編集に使用されるモデル。",
+    "description": "model パラメータの説明"
   },
   "description.imageUrls": {
-    "message": "1〜5枚の参考画像をアップロードして編集モードに入ります。",
-    "description": "image_urls パラメータ説明"
+    "message": "1-5 枚の参照画像をアップロードすることで編集モードに入ります。",
+    "description": "image_urls パラメータの説明"
   },
   "status.pending": {
-    "message": "保留中",
-    "description": "タスクの保留状態"
+    "message": "待機中",
+    "description": "タスクの待機状態"
   },
   "placeholder.select": {
     "message": "選択",
@@ -85,7 +133,7 @@
   },
   "button.uploadImageUrls": {
     "message": "アップロード",
-    "description": "参考画像アップロードボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
+    "description": "参照画像をアップロードするボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -100,12 +148,12 @@
     "description": "タスク作成失敗"
   },
   "message.usedUp": {
-    "message": "ポイントが使い切れました。追加のポイントを購入して続行してください",
-    "description": "使い切れたメッセージ"
+    "message": "ポイントが使い切りました。追加のポイントを購入して続行してください",
+    "description": "使い切りのメッセージ"
   },
   "message.uploadImageExceed": {
-    "message": "最大5枚の画像をアップロードできます",
-    "description": "画像数が制限を超えています"
+    "message": "最大で 5 枚の画像をアップロードできます",
+    "description": "画像数が制限を超えました"
   },
   "message.uploadImageError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",

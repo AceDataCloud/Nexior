@@ -1,11 +1,11 @@
 {
   "type.period": {
     "message": "Período",
-    "description": "Servicio del período."
+    "description": "Servicio de período."
   },
   "type.usage": {
-    "message": "Cuota",
-    "description": "Cuota del servicio."
+    "message": "Límite",
+    "description": "Servicio de límite."
   },
   "field.expiredAt": {
     "message": "Fecha de expiración",
@@ -13,31 +13,31 @@
   },
   "button.goDocument": {
     "message": "Documentos",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de documentos."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de documentos."
   },
   "button.goCredentials": {
     "message": "Claves",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de credenciales."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de credenciales."
   },
   "button.buyMore": {
     "message": "Recargar",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de compra de más."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de compra adicional."
   },
   "button.createOrder": {
     "message": "Crear pedido",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de creación de pedidos."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de creación de pedidos."
   },
   "button.custom": {
     "message": "Personalizar",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de personalización."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de personalización."
   },
   "button.query": {
     "message": "Consultar",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página de consulta."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de consultas."
   },
   "button.usage": {
     "message": "Uso",
-    "description": "Texto del botón, al hacer clic en este botón se irá a la página del historial de uso."
+    "description": "Texto del botón, al hacer clic se dirigirá a la página de historial de uso."
   },
   "field.serviceName": {
     "message": "Nombre del servicio",
@@ -52,16 +52,16 @@
     "description": "Estado de la solicitud."
   },
   "field.id": {
-    "message": "ID de solicitud",
+    "message": "ID de la solicitud",
     "description": "ID de la solicitud."
   },
   "field.remainingAmount": {
-    "message": "Saldo de instancia",
+    "message": "Saldo",
     "description": "Saldo de la solicitud."
   },
   "field.usedAmount": {
     "message": "Usado",
-    "description": "Monto utilizado de la solicitud."
+    "description": "Cantidad utilizada de la solicitud."
   },
   "field.apiKey": {
     "message": "Clave API",
@@ -72,16 +72,16 @@
     "description": "Servicio de la solicitud."
   },
   "field.operation": {
-    "message": "Operación",
-    "description": "Operación de la solicitud."
+    "message": "Acción",
+    "description": "Acción de la solicitud."
   },
   "field.allowConsumeGlobal": {
     "message": "Permitir usar saldo general",
-    "description": "Interruptor que permite consumir saldo general."
+    "description": "Interruptor para permitir consumir el saldo general."
   },
   "field.amount": {
-    "message": "Monto",
-    "description": "Monto de la solicitud."
+    "message": "Cantidad",
+    "description": "Cantidad de la solicitud."
   },
   "field.scope": {
     "message": "Alcance",
@@ -89,7 +89,7 @@
   },
   "field.traceId": {
     "message": "ID de seguimiento",
-    "description": "ID de seguimiento de la llamada API de la solicitud del servicio API."
+    "description": "ID de seguimiento de la llamada API de la solicitud."
   },
   "field.shouldPayPrice": {
     "message": "Precio final",
@@ -97,15 +97,15 @@
   },
   "field.api": {
     "message": "API",
-    "description": "Este es un servicio en línea, el formulario proporciona servicios al usuario a través de la API."
+    "description": "Servicio en línea proporcionado al usuario mediante API."
   },
   "field.proxy": {
     "message": "Proxy",
-    "description": "Este es un servicio en línea, el formulario proporciona servicios al usuario a través de un proxy HTTP."
+    "description": "Servicio en línea proporcionado al usuario mediante proxy HTTP."
   },
   "field.credential": {
-    "message": "Credenciales",
-    "description": "Credenciales de la solicitud."
+    "message": "Credencial",
+    "description": "Credencial de la solicitud."
   },
   "field.name": {
     "message": "Nombre",
@@ -113,11 +113,11 @@
   },
   "field.package": {
     "message": "Paquete",
-    "description": "El paquete representa diferentes tarifas, por ejemplo, 100 dólares pueden obtener 10,000 puntos."
+    "description": "Paquete que indica diferentes planes de precios."
   },
   "field.type": {
     "message": "Tipo",
-    "description": "Tipo de la solicitud."
+    "description": "Tipo de solicitud."
   },
   "field.freeAmount": {
     "message": "Monto gratuito",
@@ -125,27 +125,39 @@
   },
   "field.extraPrice": {
     "message": "Precio",
-    "description": "Precio adicional que el usuario debe pagar por la solicitud."
+    "description": "Precio adicional a pagar por la solicitud."
   },
   "message.alreadyApplied": {
-    "message": "Ya ha solicitado este servicio, por favor revise la consola.",
-    "description": "Mensaje mostrado al usuario cuando ya ha solicitado este servicio."
+    "message": "Ya ha solicitado este servicio, consulte la consola",
+    "description": "Mensaje mostrado cuando el usuario ya ha solicitado el servicio."
   },
   "message.applySuccessfully": {
     "message": "Solicitud exitosa",
-    "description": "Mensaje mostrado al usuario cuando ha solicitado este servicio con éxito."
+    "description": "Mensaje mostrado cuando el usuario ha solicitado el servicio correctamente."
+  },
+  "message.applyFailed": {
+    "message": "Error al activar la prueba gratuita, actualice la página e intente de nuevo.",
+    "description": "Mensaje mostrado cuando falla la creación automática de la solicitud global."
+  },
+  "message.welcomeWithCredits": {
+    "message": "🎉 ¡Bienvenido a Nexior! Le hemos otorgado {credits} créditos para probar cualquier servicio del sitio.",
+    "description": "Mensaje de bienvenida mostrado al crear la solicitud global o al entrar por primera vez. {credits} indica el saldo disponible."
+  },
+  "message.welcomeNoCredits": {
+    "message": "🎉 ¡Bienvenido a Nexior! Su cuenta está lista y puede probar cualquier servicio del sitio.",
+    "description": "Mensaje de bienvenida cuando no hay créditos gratuitos disponibles."
   },
   "message.notApplied": {
-    "message": "Aún no ha solicitado este servicio, por favor solicite el servicio antes de usarlo.",
-    "description": "Mensaje mostrado al usuario cuando aún no ha solicitado este servicio."
+    "message": "Aún no ha solicitado este servicio, hágalo antes de usarlo",
+    "description": "Mensaje mostrado cuando el usuario aún no ha solicitado el servicio."
   },
   "message.globalBalanceBuyDescription": {
-    "message": "Puede elegir recargar el saldo general o recargar por cada instancia de solicitud. Esta recarga irá al saldo general y, cuando el saldo de una instancia de solicitud sea insuficiente, se utilizará automáticamente el saldo general para complementar.",
-    "description": "Texto informativo que explica la recarga al saldo general y la complementación automática cuando el saldo de la instancia es insuficiente."
+    "message": "Puede elegir recargar el saldo general o recargar cada instancia de solicitud por separado. Esta recarga se añadirá al saldo general y se utilizará automáticamente para complementar cuando el saldo de una instancia de solicitud sea insuficiente.",
+    "description": "Texto informativo que explica que la recarga se añade al saldo general y se utiliza automáticamente cuando el saldo de la instancia es insuficiente. Término: saldo general = General Balance (no traducir como Global Balance)."
   },
   "message.yourApplication": {
     "message": "Su solicitud",
-    "description": "Mensaje mostrado al usuario durante su solicitud."
+    "description": "Mensaje mostrado al usuario cuando se trata de su solicitud."
   },
   "message.unverified": {
     "message": "Necesita completar la verificación de identidad para solicitar este servicio",
@@ -168,8 +180,8 @@
     "description": "Mensaje mostrado al usuario cuando necesita seleccionar una solicitud."
   },
   "message.createCredentialSuccessfully": {
-    "message": "Credenciales creadas con éxito",
-    "description": "Mensaje mostrado al usuario cuando ha creado credenciales con éxito."
+    "message": "Credencial creada con éxito",
+    "description": "Mensaje mostrado al usuario cuando ha creado una credencial con éxito."
   },
   "message.readPolicy": {
     "message": "He leído y acepto",
@@ -192,7 +204,7 @@
     "description": "Mensaje mostrado al usuario cuando restablece la clave."
   },
   "message.rotateCredentialConfirm": {
-    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar después de restablecer.",
+    "message": "¿Está seguro de que desea restablecer la clave? No se podrá recuperar después del restablecimiento.",
     "description": "Mensaje mostrado al usuario cuando confirma el restablecimiento de la clave."
   },
   "message.idDoesNotExist": {
@@ -208,7 +220,7 @@
     "description": "Mensaje mostrado al usuario cuando falla el restablecimiento de la clave."
   },
   "message.fetchFailed": {
-    "message": "Error al obtener la aplicación, por favor intente más tarde.",
+    "message": "Error al obtener la aplicación, por favor intente de nuevo más tarde.",
     "description": "Mensaje mostrado cuando falla la obtención de la lista de aplicaciones."
   },
   "message.updateFailed": {
@@ -248,7 +260,7 @@
     "description": "Título de la página cuando el usuario revisa el conteo de solicitudes."
   },
   "message.countDescription": {
-    "message": "Cada servicio corresponde a una instancia de solicitud, puede ver claves, uso y más información a continuación.",
+    "message": "Cada servicio corresponde a una instancia de solicitud, puede ver información sobre claves, uso, etc. a continuación.",
     "description": "Mensaje mostrado al usuario cuando revisa el conteo de solicitudes."
   },
   "title.globalBalance": {
@@ -256,32 +268,32 @@
     "description": "Título de la página cuando el usuario revisa el saldo general."
   },
   "message.globalBalanceDescription": {
-    "message": "Al habilitar 'Permitir saldo general', el saldo de la instancia se consumirá automáticamente si es insuficiente.",
-    "description": "Mensaje que indica que el saldo de la instancia se consumirá automáticamente si es insuficiente."
+    "message": "Al habilitar 'Permitir saldo general', el saldo de la instancia se utilizará automáticamente cuando sea insuficiente.",
+    "description": "Mensaje que explica que el saldo de la instancia se consumirá automáticamente cuando sea insuficiente."
   },
   "button.service": {
     "message": "Soporte exclusivo",
-    "description": "Texto del botón, al hacer clic se dirigirá a la página de soporte exclusivo."
+    "description": "Texto del botón, al hacer clic en este botón se dirigirá a la página de soporte exclusivo."
   },
   "button.acquire": {
     "message": "Agregar soporte",
-    "description": "Texto del botón, al hacer clic se agregará soporte exclusivo."
+    "description": "Texto del botón, al hacer clic en este botón se agregará soporte exclusivo."
   },
   "button.delete": {
     "message": "Eliminar",
-    "description": "Texto del botón, al hacer clic se eliminará el elemento."
+    "description": "Texto del botón; al hacer clic se eliminará este elemento."
   },
   "field.dataset": {
     "message": "Conjunto de datos",
-    "description": "Conjunto de datos de la solicitud."
+    "description": "El conjunto de datos solicitado."
   },
   "field.disabled": {
     "message": "Deshabilitado",
     "description": "Indica si la solicitud está deshabilitada."
   },
   "message.addServiceToAcquire": {
-    "message": "Por favor, añade soporte para adquirir",
-    "description": "Mensaje mostrado al usuario cuando aún no ha añadido soporte para adquirir."
+    "message": "Agregue soporte para adquirir",
+    "description": "Mensaje mostrado al usuario cuando aún no ha agregado soporte para adquirir."
   },
   "message.confirmApplying": {
     "message": "Confirmar solicitud de servicio",
@@ -292,7 +304,7 @@
     "description": "Mensaje mostrado al usuario cuando confirma la eliminación de la solicitud."
   },
   "message.placeEnter": {
-    "message": "Por favor, ingrese '$0$' para confirmar",
+    "message": "Por favor ingrese '$0$' para confirmar",
     "description": "Mensaje mostrado al usuario cuando necesita ingresar texto para confirmar, no traduzca `$0$`."
   },
   "message.invalidInput": {
@@ -300,7 +312,7 @@
     "description": "Mensaje mostrado al usuario cuando ingresa datos no válidos."
   },
   "message.deleteFailed": {
-    "message": "Error al eliminar",
+    "message": "Eliminación fallida",
     "description": "Mensaje mostrado al usuario cuando la eliminación falla."
   },
   "message.deleteSuccessfully": {

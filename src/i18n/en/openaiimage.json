@@ -8,23 +8,23 @@
     "description": "OpenAI Image operation type"
   },
   "name.generate": {
-    "message": "Create Image",
-    "description": "Operation type: Create Image"
+    "message": "Create",
+    "description": "Operation type: create image"
   },
   "name.edits": {
-    "message": "Edit Image",
-    "description": "Operation type: Edit Image"
+    "message": "Edit",
+    "description": "Operation type: edit image"
   },
   "name.imageUrls": {
-    "message": "Reference Images",
-    "description": "Reference images for editing"
+    "message": "Reference",
+    "description": "Reference image for editing"
   },
   "name.failure": {
-    "message": "Failure",
-    "description": "Task failure"
+    "message": "Failed",
+    "description": "Task failed"
   },
   "name.failureReason": {
-    "message": "Failure Reason",
+    "message": "Reason",
     "description": "Reason for task failure"
   },
   "name.status": {
@@ -36,44 +36,44 @@
     "description": "Trace ID"
   },
   "name.elapsed": {
-    "message": "Elapsed Time",
-    "description": "Time taken for the task (seconds)"
+    "message": "Elapsed",
+    "description": "Task duration (seconds)"
   },
   "name.prompt": {
-    "message": "Image Prompt",
-    "description": "Prompt for generating/editing"
+    "message": "Prompt",
+    "description": "Prompt for generation/editing"
   },
   "name.openaiimageBot": {
     "message": "OpenAI Image Bot",
-    "description": "Name of the OpenAI Image bot"
+    "description": "OpenAI Image bot name"
   },
   "name.size": {
     "message": "Size",
     "description": "Output image size"
   },
   "description.size": {
-    "message": "Output image size. Supported values vary by model: gpt-image-1 / gpt-image-1.5 only accept 1024x1024, 1536x1024, 1024x1536. gpt-image-2 additionally supports 1792x1024, 1024x1792 and 2K/4K presets, and allows custom dimensions.",
+    "message": "Output image size. Supported sizes vary by model: gpt-image-1 / gpt-image-1.5 only support 1024x1024, 1536x1024, 1024x1536; gpt-image-2 also supports 1792x1024, 1024x1792, and 2K/4K presets; custom sizes are available in gpt-image-2.",
     "description": "Size description"
   },
   "sizeGroup.standard1k": {
-    "message": "1K Standard (base rate)",
-    "description": "Heading for the 1K size group billed at the base rate"
+    "message": "1K Standard (Base Price)",
+    "description": "1K size group title, billed at base price"
   },
   "sizeGroup.preset2k": {
-    "message": "2K Presets (1.5× rate)",
-    "description": "Heading for the 2K size group billed at 1.5×"
+    "message": "2K Preset (1.5× Price)",
+    "description": "2K size group title, billed at 1.5× price"
   },
   "sizeGroup.preset4k": {
-    "message": "4K Presets (1.5× rate)",
-    "description": "Heading for the 4K size group billed at 1.5×"
+    "message": "4K Preset (1.5× Price)",
+    "description": "4K size group title, billed at 1.5× price"
   },
   "name.customSize": {
-    "message": "Custom Size",
-    "description": "Custom-size toggle label"
+    "message": "Custom",
+    "description": "Custom size toggle label"
   },
   "description.customSize": {
-    "message": "Enable to set width and height freely (gpt-image-2 only). Each side must be a multiple of 16, the longer side ≤ 3840, and total pixels ≤ 8,294,400. Non-1K standard sizes are billed at 1.5× the base rate.",
-    "description": "Custom-size toggle description"
+    "message": "Enable to set width and height freely (gpt-image-2 only). Must be multiple of 16, max side ≤ 3840, total pixels ≤ 8,294,400. Non-1K standard sizes billed at 1.5× price.",
+    "description": "Custom size description"
   },
   "name.width": {
     "message": "Width",
@@ -85,35 +85,35 @@
   },
   "error.customSizePositive": {
     "message": "Width and height must be positive integers",
-    "description": "Custom-size positive validation"
+    "description": "Custom size must be positive integers"
   },
   "error.customSizeMultiple": {
     "message": "Width and height must be multiples of {multiple}",
-    "description": "Custom-size multiple validation"
+    "description": "Custom size must be multiples of 16"
   },
   "error.customSizeMin": {
-    "message": "Width and height must be at least {min}",
-    "description": "Custom-size minimum validation"
+    "message": "Width and height cannot be less than {min}",
+    "description": "Custom size minimum"
   },
   "error.customSizeMax": {
-    "message": "Longer side cannot exceed {max}",
-    "description": "Custom-size maximum validation"
+    "message": "Longest side cannot exceed {max}",
+    "description": "Custom size maximum side"
   },
   "error.customSizePixels": {
     "message": "Total pixels cannot exceed {pixels}",
-    "description": "Custom-size pixel-budget validation"
+    "description": "Custom size maximum total pixels"
   },
   "description.prompt": {
-    "message": "Prompt for generating or editing images",
+    "message": "Prompt for generating or editing an image",
     "description": "Prompt description"
   },
   "description.model": {
-    "message": "Model used for image generation and editing.",
+    "message": "Model used for image generation and editing",
     "description": "Model parameter description"
   },
   "description.imageUrls": {
-    "message": "Upload 1-5 reference images to enter edit mode.",
-    "description": "Image URLs parameter description"
+    "message": "Upload 1–5 reference images to enter edit mode",
+    "description": "image_urls parameter description"
   },
   "status.pending": {
     "message": "Pending",
@@ -121,10 +121,10 @@
   },
   "placeholder.select": {
     "message": "Select",
-    "description": "Selection placeholder"
+    "description": "Select placeholder"
   },
   "placeholder.prompt": {
-    "message": "Enter prompt, e.g., watercolor kitten on the table",
+    "message": "Enter a prompt, e.g., watercolor kitten on a table",
     "description": "Prompt placeholder"
   },
   "button.generate": {
@@ -133,31 +133,31 @@
   },
   "button.uploadImageUrls": {
     "message": "Upload",
-    "description": "Upload reference images button (simplified to 'Upload')"
+    "description": "Upload reference image button, simplified"
   },
   "message.startingTask": {
     "message": "Starting task...",
-    "description": "Message indicating task is starting"
+    "description": "Task starting message"
   },
   "message.startTaskSuccess": {
-    "message": "Successfully initiated generation task",
+    "message": "Task created successfully",
     "description": "Task successfully created"
   },
   "message.startTaskFailed": {
-    "message": "Failed to initiate task, please contact the administrator:",
+    "message": "Failed to start task, contact admin:",
     "description": "Task creation failed"
   },
   "message.usedUp": {
-    "message": "Your credits are exhausted, please purchase more credits to continue",
-    "description": "Exhausted credits message"
+    "message": "Your credits are used up. Please purchase more to continue",
+    "description": "Used up message"
   },
   "message.uploadImageExceed": {
-    "message": "You can upload a maximum of 5 images",
-    "description": "Image count exceeds limit"
+    "message": "You can upload up to 5 images",
+    "description": "Exceeded image upload limit"
   },
   "message.uploadImageError": {
-    "message": "Failed to upload image, please try again later",
-    "description": "Upload failure"
+    "message": "Upload failed, please try again",
+    "description": "Image upload failed"
   },
   "name.model": {
     "message": "Model",

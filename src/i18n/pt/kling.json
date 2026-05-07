@@ -16,7 +16,7 @@
     "description": "Motion Control 中的参考视频输入"
   },
   "name.motionPrompt": {
-    "message": "Dica Adicional (opcional)",
+    "message": "Prompt Adicional (opcional)",
     "description": "Motion Control 中的补充提示词"
   },
   "name.characterOrientation": {
@@ -48,7 +48,7 @@
     "description": "motion prompt 说明"
   },
   "description.characterOrientation": {
-    "message": "Escolher 'Vídeo de Seguimento' resulta em melhor desempenho para movimentos complexos; escolher 'Imagem de Seguimento' alinha a orientação do personagem com a imagem de referência, melhorando o movimento da câmera.",
+    "message": "Escolher 'Vídeo de Seguimento' resulta em movimentos mais complexos; escolher 'Imagem de Seguimento' alinha a orientação do personagem com a imagem de referência, melhorando o movimento da câmera.",
     "description": "character_orientation 说明"
   },
   "description.motionMode": {
@@ -56,7 +56,7 @@
     "description": "motion mode 说明"
   },
   "description.keepOriginalSound": {
-    "message": "Se ativado, mantém o áudio original do vídeo de referência; se desativado, o vídeo gerado não incluirá áudio original.",
+    "message": "Se ativado, mantém o áudio original do vídeo de referência; se desativado, o vídeo gerado não incluirá o áudio original.",
     "description": "keep_original_sound 说明"
   },
   "placeholder.motionPrompt": {
@@ -84,7 +84,7 @@
     "description": "移除提示词区中已选预设的按钮 aria-label"
   },
   "inspiration.hint": {
-    "message": "Clique na frase para adicionar automaticamente à dica; clique novamente para remover.",
+    "message": "Clique na frase para adicioná-la automaticamente ao prompt; clique novamente para removê-la.",
     "description": "Inspiration 抽屉顶部的使用说明"
   },
   "inspiration.empty": {
@@ -368,8 +368,8 @@
     "description": "Data e hora em que o vídeo Kling foi gerado"
   },
   "name.cfgScale": {
-    "message": "Nível de Liberdade",
-    "description": "Parâmetro de liberdade para gerar o vídeo (0-1), quanto maior o valor, mais próximo do referencial"
+    "message": "Grau de Liberdade",
+    "description": "Parâmetro de grau de liberdade para gerar o vídeo (0-1), quanto maior o valor, mais próximo do referencial"
   },
   "name.generateAudio": {
     "message": "Gerar Áudio Sincronizado",
@@ -409,19 +409,19 @@
   },
   "name.ratio": {
     "message": "Proporção do vídeo",
-    "description": "Proporção do vídeo a ser utilizada para gerar o vídeo"
+    "description": "A proporção do vídeo a ser gerado"
   },
   "name.mode": {
     "message": "Modo de vídeo",
-    "description": "Modo a ser utilizado para gerar o vídeo"
+    "description": "O modo a ser utilizado para gerar o vídeo"
   },
   "name.effect": {
-    "message": "Efeito do vídeo",
-    "description": "Nome do parâmetro de estilo usado para alternar entre diferentes versões ou estilos do modelo"
+    "message": "Efeito de vídeo",
+    "description": "Nome do parâmetro de estilo para alternar entre diferentes versões ou estilos do modelo"
   },
   "name.ingredientsModel": {
     "message": "Modelo de ingredientes",
-    "description": "Versão do modelo a ser utilizada para gerar o vídeo"
+    "description": "A versão do modelo a ser utilizada para gerar o vídeo"
   },
   "name.klingBot": {
     "message": "Kling Bot",
@@ -440,15 +440,15 @@
     "description": "Descrição do parâmetro 'prompt'"
   },
   "description.negativePrompt": {
-    "message": "Texto de prompt negativo, opcional, não pode exceder 200 caracteres",
+    "message": "Texto negativo opcional, não pode exceder 200 caracteres",
     "description": "Descrição do parâmetro 'negativePrompt'"
   },
   "description.uploadStartImage": {
-    "message": "Envie a imagem do quadro inicial como referência para a geração; o vídeo final será gerado com base no quadro inicial",
+    "message": "Envie a imagem do quadro inicial como referência para a geração; o vídeo final será gerado com base no quadro inicial.",
     "description": "Descrição do parâmetro de referência de upload"
   },
   "description.uploadEndImage": {
-    "message": "Envie a imagem do quadro final como referência para a geração; o vídeo final será gerado com base no quadro final",
+    "message": "Envie a imagem do quadro final como referência para a geração; o vídeo final será gerado com base no quadro final.",
     "description": "Descrição do parâmetro de referência de upload"
   },
   "description.cfgScale": {
@@ -456,7 +456,7 @@
     "description": "Descrição do parâmetro de referência de upload"
   },
   "description.mode": {
-    "message": "std tem melhor desempenho, pro tem melhor qualidade; 4K é suportado apenas por v3 / v3-Omni e não pode ser usado com controle de câmera ao mesmo tempo",
+    "message": "std tem melhor desempenho, pro tem melhor qualidade; 4K é suportado apenas por v3 / v3-Omni e não pode ser usado com controle de câmera ao mesmo tempo.",
     "description": "Descrição geral do campo de modo"
   },
   "description.mode4kRequiresV3": {
@@ -464,11 +464,11 @@
     "description": "Razão pela qual a opção 4K está desativada (modelo incompatível)"
   },
   "description.mode4kIncompatibleCamera": {
-    "message": "O controle de câmera está ativado e não pode ser usado com 4K ao mesmo tempo",
-    "description": "Razão pela qual a opção 4K está desativada (controle de câmera configurado)"
+    "message": "O controle de câmera está ativado e não pode ser usado com 4K ao mesmo tempo.",
+    "description": "Razão pela qual a opção 4K está desativada (controle de câmera ativado)"
   },
   "description.duration": {
-    "message": "Modelos normais suportam apenas 5/10 segundos; v3 / v3-Omni suportam 3/5/8/10/12/15 segundos",
+    "message": "Modelos normais suportam apenas 5/10 segundos; v3 / v3-Omni suportam 3/5/8/10/12/15 segundos.",
     "description": "Descrição geral do campo de duração"
   },
   "description.durationV3Only": {
@@ -476,20 +476,28 @@
     "description": "Razão pela qual a opção de duração está desativada"
   },
   "description.generateAudio": {
-    "message": "Sintetiza efeitos sonoros enquanto gera o vídeo. Apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) suportam",
-    "description": "Descrição do botão de efeitos sonoros (ativado)"
+    "message": "Sintetiza efeitos sonoros enquanto gera o vídeo. Apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) suportam.",
+    "description": "Descrição do interruptor de efeitos sonoros (ativado)"
   },
   "description.generateAudioUnsupported": {
-    "message": "O modelo atual não suporta efeitos sonoros sincronizados, apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) estão disponíveis",
-    "description": "Descrição do botão de efeitos sonoros (desativado)"
+    "message": "O modelo atual não suporta efeitos sonoros sincronizados, apenas kling-v3 / kling-v3-omni / kling-v2-6 (modo pro) estão disponíveis.",
+    "description": "Descrição do interruptor de efeitos sonoros (desativado)"
   },
   "description.cameraControl": {
-    "message": "Controla a direção do movimento da câmera. Escolha 'Personalizado' para ajustar em 6 dimensões, cada valor entre [-1, 1]",
+    "message": "Controla a direção do movimento da câmera. Escolha 'Personalizado' para ajustar em 6 dimensões, cada valor entre [-1, 1].",
     "description": "Descrição do controle de câmera"
   },
   "description.cameraControlDisabled4k": {
-    "message": "Modo 4K selecionado, controle de câmera não disponível, mude para std / pro e ative novamente",
+    "message": "Modo 4K selecionado, controle de câmera não disponível, mude para std / pro e ative novamente.",
     "description": "Razão pela qual o controle de câmera está desativado"
+  },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "O controle de câmera não é suportado após o envio da imagem de referência do quadro inicial, remova a imagem de referência e tente novamente.",
+    "description": "Razão pela qual o controle de câmera está desativado (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Modelo/modo/duração atual não suportam controle de câmera, ajuste a configuração e tente novamente.",
+    "description": "Razão pela qual o controle de câmera está desativado (modelo não suportado)"
   },
   "status.pending": {
     "message": "Aguardando",
@@ -497,15 +505,15 @@
   },
   "status.processing": {
     "message": "Processando",
-    "description": "Estado de espera da tarefa"
+    "description": "Estado de processamento da tarefa"
   },
   "placeholder.paddingNoise": {
     "message": "Selecione...",
     "description": "Placeholder para entrada de ruído de preenchimento"
   },
   "placeholder.select": {
-    "message": "Selecionar",
-    "description": "Texto de placeholder no campo de seleção"
+    "message": "Selecione",
+    "description": "Texto de placeholder no campo de seleção suspensa"
   },
   "placeholder.paddingLevel": {
     "message": "Selecione...",
@@ -541,7 +549,7 @@
   },
   "placeholder.rotate": {
     "message": "Selecione...",
-    "description": "Placeholder para entrada de rotação"
+    "description": "Placeholder para a entrada de rotação"
   },
   "placeholder.subMarker": {
     "message": "Selecione...",
@@ -561,7 +569,7 @@
   },
   "button.extend": {
     "message": "Expandir vídeo",
-    "description": "Texto do botão para expandir o vídeo"
+    "description": "Texto do botão para expandir vídeo"
   },
   "button.download": {
     "message": "Baixar vídeo",
@@ -585,7 +593,7 @@
   },
   "message.uploadReferencesSuccess": {
     "message": "Imagem carregada com sucesso",
-    "description": "Mensagem de sucesso ao carregar uma imagem com sucesso"
+    "description": "Mensagem de sucesso ao carregar imagem com sucesso"
   },
   "message.uploadReferencesError": {
     "message": "Falha ao carregar imagem, por favor tente novamente",
@@ -593,7 +601,7 @@
   },
   "message.endImageRequiresStart": {
     "message": "Por favor, carregue a imagem do quadro inicial antes de usar a imagem do quadro final",
-    "description": "Mensagem de erro quando o usuário só carregou o quadro final sem o inicial"
+    "description": "Mensagem de erro quando o usuário só carregou a imagem do quadro final sem a do quadro inicial"
   },
   "message.endImageNotSupported": {
     "message": "A imagem do quadro final não é suportada pelo modelo/modo/duração atual, por favor ajuste as configurações (requisitos comuns: modo pro, duração 5s).",
@@ -601,11 +609,11 @@
   },
   "message.featureNotSupportedTitle": {
     "message": "Confirmação necessária",
-    "description": "Título da janela de confirmação ao mudar parâmetros que perderão as configurações existentes"
+    "description": "Título da janela de confirmação ao mudar parâmetros que resultam na perda de configurações existentes"
   },
   "message.featureNotSupportedBody": {
     "message": "A seleção atual não suporta as seguintes configurações habilitadas: {fields}. Continuar irá limpar essas configurações.",
-    "description": "Mensagem informativa ao mudar model/mode/duration que resultará na perda de configurações, {fields} será substituído pelo nome real dos campos"
+    "description": "Mensagem informativa ao mudar modelo/modo/duração que resulta na perda de configurações, {fields} será substituído pelo nome real do campo"
   },
   "message.featureRemovedNotice": {
     "message": "Configurações não suportadas limpas: {fields}",
@@ -621,11 +629,11 @@
   },
   "message.startingTask": {
     "message": "Iniciando tarefa...",
-    "description": "Mensagem ao iniciar uma tarefa de desenho"
+    "description": "Mensagem ao iniciar a tarefa de desenho"
   },
   "message.startTaskSuccess": {
     "message": "Tarefa de geração iniciada com sucesso",
-    "description": "Mensagem de sucesso ao iniciar uma tarefa"
+    "description": "Mensagem de sucesso ao iniciar a tarefa"
   },
   "message.startTaskFailed": {
     "message": "Falha ao iniciar a tarefa, por favor contate o administrador",
@@ -648,7 +656,7 @@
     "description": "Mensagem enquanto a imagem está sendo gerada"
   },
   "message.generateFailed": {
-    "message": "Falha ao gerar a imagem",
+    "message": "Falha ao gerar imagem",
     "description": "Mensagem quando a geração da imagem falha"
   },
   "message.uploadVideoExceed": {
@@ -673,19 +681,19 @@
   },
   "message.uploadStartImageError": {
     "message": "Falha ao carregar imagem do quadro inicial",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro inicial"
   },
   "message.uploadVideoError": {
     "message": "Falha ao carregar vídeo",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro inicial"
+    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro inicial"
   },
   "message.uploadEndImageError": {
     "message": "Falha ao carregar imagem do quadro final",
-    "description": "Mensagem de erro quando falha ao carregar a imagem do quadro final"
+    "description": "Mensagem de erro ao falhar ao carregar a imagem do quadro final"
   },
   "message.uploadDocumentsError": {
     "message": "Falha ao carregar documento",
-    "description": "Mensagem de erro quando falha ao carregar documento"
+    "description": "Mensagem de erro ao falhar ao carregar documento"
   },
   "message.noOperations": {
     "message": "Nenhuma operação disponível",

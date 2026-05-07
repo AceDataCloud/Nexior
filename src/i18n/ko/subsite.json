@@ -1,62 +1,62 @@
 {
   "title.index": {
-    "message": "내 분사이트",
-    "description": "분사이트 관리 홈 페이지 대제목"
+    "message": "내 서브사이트",
+    "description": "서브사이트 관리 홈 페이지 대제목"
   },
   "title.create": {
-    "message": "분사이트 생성",
-    "description": "새 분사이트 대화 상자 제목"
+    "message": "서브사이트 생성",
+    "description": "새 서브사이트 대화 상자 제목"
   },
   "title.openNow": {
-    "message": "즉시 분사이트 방문",
-    "description": "새로 생성된 후 즉시 이동할지 묻는 대화 상자 제목"
+    "message": "즉시 서브사이트 방문",
+    "description": "생성 성공 후 즉시 이동할지 묻는 대화 상자 제목"
   },
   "field.slug": {
-    "message": "서브 도메인 접두사",
-    "description": "분사이트 slug 입력란 제목"
+    "message": "서브도메인 접두사",
+    "description": "서브사이트 slug 입력란 제목"
   },
   "field.origin": {
-    "message": "분사이트 도메인",
-    "description": "분사이트 목록의 도메인 열"
+    "message": "서브사이트 도메인",
+    "description": "서브사이트 목록의 도메인 열"
   },
   "field.title": {
-    "message": "분사이트 제목",
-    "description": "분사이트 제목 필드"
+    "message": "서브사이트 제목",
+    "description": "서브사이트 제목 필드"
   },
   "field.createdAt": {
     "message": "생성 시간",
-    "description": "분사이트 생성 시간 열"
+    "description": "서브사이트 생성 시간 열"
   },
   "field.actions": {
     "message": "작업",
-    "description": "분사이트 목록 작업 열"
+    "description": "서브사이트 목록 작업 열"
   },
   "placeholder.slug": {
     "message": "예: my-brand",
     "description": "slug 입력란 자리 표시자"
   },
   "placeholder.title": {
-    "message": "분사이트 브라우저 탭 및 사이트 헤더에 표시됩니다.",
+    "message": "서브사이트 브라우저 탭 및 사이트 헤더에 표시됩니다.",
     "description": "제목 입력란 자리 표시자"
   },
   "button.create": {
-    "message": "분사이트 생성",
-    "description": "분사이트 생성 버튼"
+    "message": "서브사이트 생성",
+    "description": "서브사이트 생성 버튼"
   },
   "button.open": {
     "message": "열기",
-    "description": "분사이트 열기 버튼"
+    "description": "서브사이트 열기 버튼"
   },
   "button.manage": {
     "message": "관리",
-    "description": "분사이트 설정으로 이동하는 버튼"
+    "description": "서브사이트 설정으로 이동하는 버튼"
   },
   "message.indexTip": {
-    "message": "주 사이트 아래에 독립 브랜드의 분사이트를 생성합니다. 각 분사이트는 자체 로고, 제목 및 기능 세트를 가질 수 있으며, 별도로 소스 코드를 구축할 필요가 없습니다.",
-    "description": "분사이트 관리 홈 페이지 설명 텍스트"
+    "message": "주 사이트 아래에 독립 브랜드의 서브사이트를 생성합니다. 각 서브사이트는 자체 로고, 제목 및 기능 세트를 가질 수 있으며, 별도로 소스 코드를 구축할 필요가 없습니다.",
+    "description": "서브사이트 관리 홈 페이지 설명 텍스트"
   },
   "message.empty": {
-    "message": "아직 생성된 분사이트가 없습니다. 오른쪽 상단의 '분사이트 생성'을 클릭하여 시작하세요.",
+    "message": "아직 생성된 서브사이트가 없습니다. 오른쪽 상단의 '서브사이트 생성'을 클릭하여 시작하세요.",
     "description": "빈 목록提示"
   },
   "message.slugTip": {
@@ -64,27 +64,31 @@
     "description": "slug 필드 설명"
   },
   "message.slugInvalid": {
-    "message": "서브 도메인 접두사 형식이 올바르지 않습니다. 규칙을 확인한 후 다시 시도하세요.",
+    "message": "서브도메인 접두사 형식이 올바르지 않습니다. 규칙을 확인한 후 다시 시도하세요.",
     "description": "slug 검증 실패"
   },
   "message.zoneMissing": {
-    "message": "현재 주 사이트에 분사이트 도메인 구역이 구성되어 있지 않습니다. 사이트 관리자에게 문의하세요.",
+    "message": "현재 주 사이트에 서브사이트 도메인 구역이 구성되어 있지 않습니다. 사이트 관리자에게 문의하세요.",
     "description": "subdomain_zone 누락"
   },
   "message.created": {
-    "message": "분사이트가 성공적으로 생성되었습니다!",
+    "message": "서브사이트가 성공적으로 생성되었습니다!",
     "description": "생성 성공"
   },
   "message.createFailed": {
-    "message": "분사이트 생성에 실패했습니다. 나중에 다시 시도하세요.",
+    "message": "서브사이트 생성에 실패했습니다. 나중에 다시 시도하세요.",
     "description": "생성 실패"
   },
+  "message.slugTaken": {
+    "message": "서브도메인 {origin}이 이미 사용 중입니다. 다른 것을 시도하세요.",
+    "description": "서브사이트 생성 시 slug가 이미 사용 중임 (백엔드에서 code=duplication 반환)"
+  },
   "message.loadFailed": {
-    "message": "분사이트 목록 로드에 실패했습니다.",
+    "message": "서브사이트 목록 로드에 실패했습니다.",
     "description": "목록 로드 실패"
   },
   "message.openNowConfirm": {
-    "message": "분사이트 {origin}가 생성되었습니다. 지금 열어 계속 구성하시겠습니까?",
+    "message": "서브사이트 {origin}이 생성되었습니다. 지금 열어 계속 구성하시겠습니까?",
     "description": "생성 후 즉시 열지 여부"
   },
   "title.domains": {
@@ -105,7 +109,7 @@
   },
   "button.verify": {
     "message": "즉시 검증",
-    "description": "우리의 리버스 프록시를 통해 해당 도메인이 정상적으로 해석되고 인증서가 발급되었는지 확인"
+    "description": "우리의 역방향 프록시를 통해 해당 도메인이 정상적으로 해석되고 인증서를 발급받을 수 있는지 확인"
   },
   "button.refresh": {
     "message": "새로 고침",
@@ -113,7 +117,7 @@
   },
   "field.hostname": {
     "message": "당신의 도메인",
-    "description": "소유한 도메인 또는 서브 도메인을 입력하세요"
+    "description": "소유한 도메인 또는 서브도메인을 입력"
   },
   "field.recordType": {
     "message": "레코드 유형",
@@ -132,7 +136,7 @@
     "description": "hostname 입력란 자리 표시자"
   },
   "message.domainsIntro": {
-    "message": "소유한 도메인을 이 분사이트에 바인딩하세요. 해당 도메인의 DNS를 수정할 수 있어야 합니다. 아래의 지침에 따라 CNAME 레코드를 추가한 후 '즉시 검증'을 클릭하면, 우리는 자동으로 Let's Encrypt를 통해 무료로 HTTPS 인증서를 발급하고 갱신합니다.",
+    "message": "소유한 도메인을 이 서브사이트에 바인딩하세요. 해당 도메인의 DNS를 수정할 수 있어야 합니다. 아래의 지침에 따라 CNAME을 추가한 후 '즉시 검증'을 클릭하면, 우리는 자동으로 Let's Encrypt를 통해 무료로 HTTPS 인증서를 발급하고 갱신합니다.",
     "description": "대화 상자 상단 설명"
   },
   "message.domainsEmpty": {
@@ -152,43 +156,43 @@
     "description": "POST /site-domains/ 성공"
   },
   "message.domainCreateFailed": {
-    "message": "도메인 생성에 실패했습니다. 나중에 다시 시도하세요.",
-    "description": "생성 실패"
+    "message": "도메인 생성 실패, 나중에 다시 시도하세요.",
+    "description": "생성 실패에 대한 메시지"
   },
   "message.domainsLoadFailed": {
-    "message": "도메인 목록 로드에 실패했습니다.",
-    "description": "도메인 목록 로드 실패"
+    "message": "도메인 목록을 불러오는 데 실패했습니다.",
+    "description": "도메인 목록을 불러오는 데 실패"
   },
   "message.domainActive": {
     "message": "도메인이 활성화되었습니다! 이제 사용자 정의 HTTPS 주소를 통해 서브사이트에 접근할 수 있습니다.",
     "description": "활성 상태로 전환"
   },
   "message.domainFailed": {
-    "message": "도메인 검증 또는 배포 실패.",
-    "description": "Failed 상태 문구"
+    "message": "도메인 검증 또는 활성화에 실패했습니다.",
+    "description": "실패 상태에 대한 메시지"
   },
   "message.domainVerifyFailed": {
-    "message": "검증 실패, CNAME 레코드가 우리의 리버스 프록시를 가리키고 DNS 전파가 완료되었는지 확인하세요.",
-    "description": "verify 인터페이스 4xx"
+    "message": "검증에 실패했습니다. CNAME 레코드가 우리의 리버스 프록시를 가리키고 DNS 전파가 완료되었는지 확인하세요.",
+    "description": "검증 인터페이스 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "{hostname}의 연결을 해제하시겠습니까? 연결 해제 후 사용자는 해당 도메인에서 귀하의 서브사이트에 접근할 수 없습니다.",
+    "message": "{hostname}의 연결을 해제하시겠습니까? 연결 해제 후 사용자는 해당 도메인에서 서브사이트에 접근할 수 없습니다.",
     "description": "삭제 확인"
   },
   "message.domainDeleteFailed": {
-    "message": "도메인 삭제 실패.",
+    "message": "도메인 삭제에 실패했습니다.",
     "description": "DELETE 인터페이스 5xx"
   },
   "status.pending": {
     "message": "검증 대기 중",
-    "description": "Pending 상태 레이블: 사용자가 CNAME을 추가하고 '지금 검증'을 클릭할 때까지 대기"
+    "description": "대기 상태 레이블: 사용자가 CNAME을 추가하고 '즉시 검증'을 클릭할 때까지 대기"
   },
   "status.active": {
-    "message": "온라인",
-    "description": "Active 상태 레이블"
+    "message": "활성화됨",
+    "description": "활성 상태 레이블"
   },
   "status.failed": {
     "message": "실패",
-    "description": "Failed 상태 레이블"
+    "description": "실패 상태 레이블"
   }
 }

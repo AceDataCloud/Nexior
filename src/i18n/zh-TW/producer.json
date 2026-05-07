@@ -63,37 +63,81 @@
     "message": "伴奏替換",
     "description": "伴奏替換按鈕文本"
   },
+  "button.clear_all": {
+    "message": "清空",
+    "description": "清空全部配置項的按鈕文本"
+  },
+  "mode.simple": {
+    "message": "簡單模式",
+    "description": "簡單生成模式 Tab 的標籤"
+  },
+  "mode.custom": {
+    "message": "定制模式",
+    "description": "定制生成模式 Tab 的標籤"
+  },
   "model.fuzz20pro": {
     "message": "FUZZ-2.0 Pro",
     "description": "用於生成音樂的模型"
+  },
+  "model.fuzz20proDesc": {
+    "message": "最長 8 分鐘 · 最佳音質",
+    "description": "FUZZ-2.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz20": {
     "message": "FUZZ-2.0",
     "description": "用於生成音樂的模型"
   },
+  "model.fuzz20desc": {
+    "message": "最長 8 分鐘 · 性價比均衡",
+    "description": "FUZZ-2.0 在模型下拉中的描述"
+  },
   "model.fuzz20raw": {
     "message": "FUZZ-2.0 Raw",
     "description": "用於生成音樂的模型"
+  },
+  "model.fuzz20rawDesc": {
+    "message": "最長 8 分鐘 · 更原生粗糙的人聲",
+    "description": "FUZZ-2.0 Raw 在模型下拉中的描述"
   },
   "model.fuzz11pro": {
     "message": "FUZZ-1.1 Pro",
     "description": "用於生成音樂的模型"
   },
+  "model.fuzz11proDesc": {
+    "message": "最長 4 分鐘 · 舊版精修",
+    "description": "FUZZ-1.1 Pro 在模型下拉中的描述"
+  },
   "model.fuzz10pro": {
     "message": "FUZZ-1.0 Pro",
     "description": "用於生成音樂的模型"
+  },
+  "model.fuzz10proDesc": {
+    "message": "最長 4 分鐘 · 舊版穩定",
+    "description": "FUZZ-1.0 Pro 在模型下拉中的描述"
   },
   "model.fuzz10": {
     "message": "FUZZ-1.0",
     "description": "用於生成音樂的模型"
   },
+  "model.fuzz10desc": {
+    "message": "最長 2 分鐘 · 舊版",
+    "description": "FUZZ-1.0 在模型下拉中的描述"
+  },
   "model.fuzz11": {
     "message": "FUZZ-1.1",
     "description": "用於生成音樂的模型"
   },
+  "model.fuzz11desc": {
+    "message": "最長 4 分鐘 · 舊版改良",
+    "description": "FUZZ-1.1 在模型下拉中的描述"
+  },
   "model.fuzz08": {
     "message": "FUZZ-0.8",
     "description": "用於生成音樂的模型"
+  },
+  "model.fuzz08desc": {
+    "message": "最長 2 分鐘 · 早期版本",
+    "description": "FUZZ-0.8 在模型下拉中的描述"
   },
   "name.instrumental": {
     "message": "純音樂",
@@ -152,7 +196,7 @@
     "description": "控制生成音樂的創意程度"
   },
   "name.soundStrength": {
-    "message": "聲音強度",
+    "message": "音量強度",
     "description": "控制生成聲音的強度"
   },
   "name.lyricsStrength": {
@@ -180,7 +224,7 @@
     "description": "任務的追蹤 ID"
   },
   "name.producerBot": {
-    "message": "Producer Bot",
+    "message": "生成器機器人",
     "description": "Producer生成器的名稱"
   },
   "name.replaceSection": {
@@ -216,7 +260,7 @@
     "description": "參數'title'的描述"
   },
   "description.uploadAudios": {
-    "message": "上傳音樂作為生成的參考，過程需要等待，生成成功後可根據上傳的音樂進行生成",
+    "message": "上傳音樂作為生成的參考，過程需要等待一會，生成成功後可根據上傳的音樂進行生成",
     "description": "上傳參考參數的描述"
   },
   "description.vocalGender": {
@@ -246,6 +290,10 @@
   "description.replaceSection": {
     "message": "替換歌曲中指定時間段的內容",
     "description": "替換片段功能的描述"
+  },
+  "description.instrumental": {
+    "message": "生成不含人聲的純音樂，歌詞輸入將被忽略",
+    "description": "純音樂開關的提示描述"
   },
   "status.pending": {
     "message": "等待中",
@@ -324,7 +372,7 @@
     "description": "音樂生成任務開始時的消息"
   },
   "message.startingUploadAudio": {
-    "message": "正在上傳自定義音樂...",
+    "message": "正在上傳自訂音樂...",
     "description": "音樂生成任務開始時的消息"
   },
   "message.uploadReferencesExceed": {
@@ -340,11 +388,11 @@
     "description": "成功啟動音樂生成任務時的成功消息"
   },
   "message.startUploadAudioSuccess": {
-    "message": "成功上傳自定義音樂",
+    "message": "成功上傳自訂音樂",
     "description": "成功啟動音樂生成任務時的成功消息"
   },
   "message.startUploadAudioFailed": {
-    "message": "上傳自定義音樂失敗",
+    "message": "上傳自訂音樂失敗",
     "description": "啟動音樂生成任務失敗時的錯誤消息"
   },
   "message.startTaskFailed": {

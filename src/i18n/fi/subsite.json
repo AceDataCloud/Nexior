@@ -9,10 +9,10 @@
   },
   "title.openNow": {
     "message": "Siirry alisivustolle nyt",
-    "description": "Uuden alisivuston luomisen jälkeen kysytään, siirrytäänkö heti"
+    "description": "Uuden alisivuston luomisen jälkeen kysytään, halutaanko siirtyä heti"
   },
   "field.slug": {
-    "message": "Alidomainin etuliite",
+    "message": "Aliverkkotunnuksen etuliite",
     "description": "Alisivuston slug-syöttökentän otsikko"
   },
   "field.origin": {
@@ -52,7 +52,7 @@
     "description": "Siirry alisivuston asetuksiin -painike"
   },
   "message.indexTip": {
-    "message": "Luo itsenäisiä alisivustoja pääsivuston alle. Jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
+    "message": "Luo itsenäisiä alisivustoja pääsivuston alle, jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
     "description": "Alisivuston hallinnan etusivun selitysteksti"
   },
   "message.empty": {
@@ -60,11 +60,11 @@
     "description": "Tyhjän luettelon ilmoitus"
   },
   "message.slugTip": {
-    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivalla, eikä voi sisältää peräkkäisiä viivoja.",
+    "message": "3-32 pientä kirjainta, numeroa tai viivaa; ei voi alkaa tai päättyä viivalla, eikä sisältää peräkkäisiä viivoja.",
     "description": "slug-kentän selitys"
   },
   "message.slugInvalid": {
-    "message": "Alidomainin etuliitteen muoto on virheellinen, tarkista säännöt ja yritä uudelleen.",
+    "message": "Aliverkkotunnuksen etuliitteen muoto on virheellinen, tarkista säännöt ja yritä uudelleen.",
     "description": "slug-tarkistus epäonnistui"
   },
   "message.zoneMissing": {
@@ -79,13 +79,17 @@
     "message": "Alisivuston luominen epäonnistui, yritä myöhemmin uudelleen.",
     "description": "Luonti epäonnistui"
   },
+  "message.slugTaken": {
+    "message": "Aliverkkotunnus {origin} on jo käytössä, kokeile toista.",
+    "description": "Alisivustoa luotaessa, slug on varattu (takapää palautti koodin=duplication)"
+  },
   "message.loadFailed": {
     "message": "Alisivustoluettelon lataaminen epäonnistui.",
     "description": "Luettelon lataaminen epäonnistui"
   },
   "message.openNowConfirm": {
-    "message": "Alisivusto {origin} on luotu. Haluatko avata sen nyt jatkaaksesi asetusten määrittämistä?",
-    "description": "Luomisen jälkeen kysytään, avataanko heti"
+    "message": "Alisivusto {origin} on luotu. Haluatko avata sen nyt jatkaaksesi asetuksia?",
+    "description": "Luomisen jälkeen avataanko heti"
   },
   "title.domains": {
     "message": "{origin} mukautettu verkkotunnus",
@@ -105,7 +109,7 @@
   },
   "button.verify": {
     "message": "Vahvista nyt",
-    "description": "Tarkista, onko verkkotunnus jo käytettävissä ja onko sertifikaatti myönnetty"
+    "description": "Tarkista, onko verkkotunnus jo käytettävissä ja sertifikaatti voidaan myöntää"
   },
   "button.refresh": {
     "message": "Päivitä",
@@ -113,19 +117,19 @@
   },
   "field.hostname": {
     "message": "Verkkotunnuksesi",
-    "description": "Syötä omistamasi verkkotunnus tai alidomain"
+    "description": "Syötä omistamasi verkkotunnus tai aliverkkotunnus"
   },
   "field.recordType": {
     "message": "Tietueen tyyppi",
-    "description": "DNS-tietueen tyypin sarake"
+    "description": "DNS-tietueen tyyppisarake"
   },
   "field.recordName": {
     "message": "Tietueen nimi",
-    "description": "DNS-tietueen nimen sarake"
+    "description": "DNS-tietueen nimisarake"
   },
   "field.recordValue": {
     "message": "Tietueen arvo",
-    "description": "DNS-tietueen arvon sarake"
+    "description": "DNS-tietueen arvokenttä"
   },
   "placeholder.hostname": {
     "message": "esim. studio.mybrand.com",
@@ -140,51 +144,51 @@
     "description": "Tyhjän luettelon ilmoitus"
   },
   "message.hostnameTip": {
-    "message": "Verkkotunnuksen on oltava julkinen verkkotunnus, jonka DNS:ää voit hallita.",
+    "message": "Verkkotunnuksen on oltava julkinen, jonka DNS:ää voit hallita.",
     "description": "hostname-syöttöohje"
   },
   "message.hostnameInvalid": {
     "message": "Verkkotunnuksen muoto on virheellinen. Sen on oltava julkisesti ratkaistavissa oleva verkkotunnus, IP-osoitteet eivät ole sallittuja.",
-    "description": "hostname-lokaatio tarkistus epäonnistui"
+    "description": "hostname-lokalisointi epäonnistui"
   },
   "message.domainCreated": {
     "message": "Verkkotunnus on lähetetty, lisää CNAME-tietue ohjeiden mukaan.",
     "description": "POST /site-domains/ onnistui"
   },
   "message.domainCreateFailed": {
-    "message": "Verkkotunnuksen luominen epäonnistui, yritä myöhemmin uudelleen.",
-    "description": "Luonti epäonnistui"
+    "message": "Verkkotunnuksen luonti epäonnistui, yritä myöhemmin uudelleen.",
+    "description": "Verkkotunnuksen luominen epäonnistui"
   },
   "message.domainsLoadFailed": {
-    "message": "Verkkotunnusluettelon lataaminen epäonnistui.",
-    "description": "Verkkotunnusluettelon lataaminen epäonnistui"
+    "message": "Verkkotunnuslistan lataus epäonnistui.",
+    "description": "拉域名列表失败"
   },
   "message.domainActive": {
-    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää aliverkkosivustoa mukautetun HTTPS-osoitteesi kautta.",
-    "description": "Siirtyminen aktiiviseen tilaan"
+    "message": "Verkkotunnus on aktiivinen! Nyt voit käyttää alatunnustasi HTTPS-osoitteen kautta.",
+    "description": "进入 Active 状态"
   },
   "message.domainFailed": {
-    "message": "Verkkotunnuksen vahvistus tai julkaisu epäonnistui.",
+    "message": "Verkkotunnuksen vahvistus tai aktivointi epäonnistui.",
     "description": "Failed 状态兑底文案"
   },
   "message.domainVerifyFailed": {
-    "message": "Vahvistus epäonnistui, tarkista että CNAME-tietue osoittaa meidän käänteiseen välimuistiin ja että DNS-levitys on valmis.",
+    "message": "Vahvistus epäonnistui. Tarkista, että CNAME-tietue osoittaa käänteiseen välityspalvelimeemme ja että DNS on päivittynyt.",
     "description": "verify 接口 4xx"
   },
   "message.domainDeleteConfirm": {
-    "message": "Haluatko varmasti irrottaa {hostname}? Irrottamisen jälkeen käyttäjät eivät pääse käsiksi aliverkkotunnukseesi tämän verkkotunnuksen kautta.",
-    "description": "Poiston vahvistus"
+    "message": "Haluatko varmasti poistaa {hostname}? Poiston jälkeen käyttäjät eivät pääse aliverkkosivustollesi tämän verkkotunnuksen kautta.",
+    "description": "删除确认"
   },
   "message.domainDeleteFailed": {
     "message": "Verkkotunnuksen poistaminen epäonnistui.",
     "description": "DELETE 接口 5xx"
   },
   "status.pending": {
-    "message": "Vahvistusta odottamassa",
-    "description": "Pending 状态标签：odottaa käyttäjän lisäävän CNAME:n ja napsauttavan 'Vahvista nyt'"
+    "message": "Odottaa vahvistusta",
+    "description": "Pending 状态标签：等待用户加 CNAME 并点击“立即验证”"
   },
   "status.active": {
-    "message": "Julkaistu",
+    "message": "Aktiivinen",
     "description": "Active 状态标签"
   },
   "status.failed": {
