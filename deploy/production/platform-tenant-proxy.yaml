@@ -1,0 +1,240 @@
+# --------------------------------------------------------------------------
+# platform-tenant-proxy.yaml
+#
+# Caddy reverse proxy that fronts ALL platform-tenant custom domains
+# (mybrand.com -> platform-frontend) with on-demand Let's Encrypt TLS.
+#
+# Why this file exists separately from tenant-proxy.yaml:
+#   * tenant-proxy.acedata.cloud reverse-proxies to studio-frontend (Nexior
+#     in studio mode), which is the right destination for sub-sites whose
+#     parent Site is studio.acedata.cloud.
+#   * Sub-sites whose parent is platform.acedata.cloud must land on the
+#     platform-frontend app, NOT the studio app. Pointing them at the
+#     studio proxy would silently cross tenants. Hence a second Caddy
+#     deployment with its own ConfigMap, Service, public CLB, and PVC.
+#
+# Provides:
+#   * 80/443 LoadBalancer (separate public CLB; do NOT share with
+#     nginx-router or caddy-tenant-proxy)
+#   * Caddy 2 with `tls { on_demand }` and an `ask` callback that consults
+#     PlatformBackend (/api/v1/site-domains/check) before signing a cert.
+#   * cbs PVC at /data so ACME account, certs, and locks survive pod
+#     restarts.
+#
+# Tenant flow:
+#   1. Tenant adds CNAME mybrand.com -> platform-tenant-proxy.acedata.cloud
+#      at their DNS provider (the value PlatformBackend now hands them
+#      when their parent Site has metadata.proxy_cname set; see
+#      PlatformBackend PR #434).
+#   2. First HTTPS request hits this Caddy. Caddy GETs the ask URL, sees
+#      the domain is registered in SiteDomain, runs ACME HTTP-01, signs
+#      the cert, persists it to /data, and serves the request.
+#   3. Caddy renews automatically 30 days before expiry.
+#
+# DNS one-time setup AFTER first apply:
+#   kubectl get svc caddy-platform-tenant-proxy -n acedatacloud
+#   # take the EXTERNAL-IP, then in DNSPod:
+#   platform-tenant-proxy.acedata.cloud  A  <EIP>
+#
+# Cert coverage: AutoCert's `acedata` profile already includes
+# *.acedata.cloud, which covers platform-tenant-proxy.acedata.cloud
+# itself. Customer-owned hostnames (mybrand.com) get their certs from
+# Let's Encrypt via Caddy's on-demand-tls, NOT AutoCert.
+# --------------------------------------------------------------------------
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: caddy-platform-tenant-proxy-config
+  namespace: acedatacloud
+  labels:
+    app: caddy-platform-tenant-proxy
+data:
+  Caddyfile: |
+    {
+      # ACME registration email. Let's Encrypt sends renewal-failure notices here.
+      email ops@acedata.cloud
+
+      # Bind the admin API to localhost only (keep it off the public LB).
+      admin localhost:2019
+
+      # Global on-demand-tls policy: every cert request consults the ask URL.
+      # Same endpoint as the studio proxy uses -- the SiteDomain table is
+      # the authoritative list of tenant hostnames regardless of which
+      # proxy will end up serving them.
+      on_demand_tls {
+        ask https://platform.acedata.cloud/api/v1/site-domains/check
+      }
+    }
+
+    # Catch-all HTTPS site. tls { on_demand } makes Caddy issue a cert
+    # via Let's Encrypt the first time any unknown SNI hits the listener,
+    # gated by the `ask` callback above.
+    https:// {
+      tls {
+        on_demand
+      }
+
+      # Reverse-proxy to platform-frontend with the original Host header
+      # preserved so PlatformFrontend's per-origin Site lookup keeps
+      # working (it dispatches based on Host to render the right tenant
+      # branding / features).
+      reverse_proxy platform-frontend.acedatacloud.svc.cluster.local:8083 {
+        header_up Host {host}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto https
+      }
+
+      # JSON access log to stdout; CLS picks it up automatically.
+      log {
+        output stdout
+        format json
+      }
+    }
+
+    # Plain HTTP: serves /.well-known/acme-challenge/* for HTTP-01
+    # challenges (built-in), a /healthz endpoint for the kubelet
+    # readiness probe (so it doesn't follow the 80->443 redirect into
+    # on-demand-TLS land where Caddy would refuse to sign for an IP),
+    # and redirects everything else to HTTPS. `handle` blocks are
+    # mutually exclusive and override Caddy's default directive order
+    # (which would otherwise run `redir` before `respond`).
+    http:// {
+      handle /healthz {
+        respond "ok" 200
+      }
+      handle {
+        redir https://{host}{uri} permanent
+      }
+    }
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: caddy-platform
+  namespace: acedatacloud
+  labels:
+    app: caddy-platform-tenant-proxy
+spec:
+  # Dedicated PVC so ACME state (account key, cached certs, on_demand
+  # rate-limit locks) is isolated from caddy-tenant-proxy's PVC.
+  # Sharing /data between two Caddy deployments would mean one proxy's
+  # outage / rollback could corrupt the other's cert cache.
+  #
+  # cfs RWX matches the existing `caddy` PVC's profile so future HA
+  # scaling can attach the same volume to multiple replicas without
+  # ReadWriteOnce contention.
+  accessModes:
+    - ReadWriteMany
+  storageClassName: cfs
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: caddy-platform-tenant-proxy
+  namespace: acedatacloud
+  labels:
+    app: caddy-platform-tenant-proxy
+spec:
+  # Single replica today. The mounted PVC (`caddy-platform`, RWX cfs)
+  # supports multiple attachments, so future HA can scale this up if
+  # traffic ever justifies it -- Caddy will share `/data` (ACME
+  # account, certs, locks) across pods. RollingUpdate is fine because
+  # RWX volumes don't deadlock on pod transition.
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: caddy-platform-tenant-proxy
+  template:
+    metadata:
+      labels:
+        app: caddy-platform-tenant-proxy
+    spec:
+      containers:
+        - name: caddy
+          image: caddy:2.8-alpine
+          imagePullPolicy: IfNotPresent
+          args: ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+          ports:
+            - { name: http,  containerPort: 80,   protocol: TCP }
+            - { name: https, containerPort: 443,  protocol: TCP }
+            - { name: admin, containerPort: 2019, protocol: TCP }
+          env:
+            # Caddy stores everything (ACME account, certs, locks) under
+            # $XDG_DATA_HOME/caddy by default. Pin it to /data so the
+            # PVC mount actually catches it.
+            - { name: XDG_DATA_HOME,   value: /data }
+            - { name: XDG_CONFIG_HOME, value: /config }
+          volumeMounts:
+            - { name: caddyfile, mountPath: /etc/caddy }
+            - { name: data,      mountPath: /data }
+            - { name: config,    mountPath: /config }
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 1
+              memory: 1Gi
+          # Readiness hits the dedicated /healthz handler in the http://
+          # block above; we explicitly bypass Caddy's 80->443 redirect
+          # because the redirect target is the pod IP, which on-demand-tls
+          # rightly refuses to sign a cert for (`tls: internal error`).
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 443
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 3
+      volumes:
+        - name: caddyfile
+          configMap:
+            name: caddy-platform-tenant-proxy-config
+            items:
+              - key: Caddyfile
+                path: Caddyfile
+        - name: data
+          persistentVolumeClaim:
+            claimName: caddy-platform
+        - name: config
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caddy-platform-tenant-proxy
+  namespace: acedatacloud
+  labels:
+    app: caddy-platform-tenant-proxy
+  annotations:
+    # Ask TKE to create a NEW public CLB for this Service (do NOT share
+    # the nginx-router LB or caddy-tenant-proxy's LB; both already
+    # terminate 80/443 and would collide). Postpaid traffic + standard
+    # accounting.
+    service.kubernetes.io/qcloud-loadbalancer-internet-charge-type: TRAFFIC_POSTPAID_BY_HOUR
+    service.kubernetes.io/qcloud-loadbalancer-internet-max-bandwidth-out: "200"
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - { name: http,  port: 80,  targetPort: 80,  protocol: TCP }
+    - { name: https, port: 443, targetPort: 443, protocol: TCP }
+  selector:
+    app: caddy-platform-tenant-proxy
