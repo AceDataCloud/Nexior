@@ -88,6 +88,29 @@ data:
       }
     }
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: caddy-studio
+  namespace: acedatacloud
+  labels:
+    app: caddy-studio-proxy
+spec:
+  # Dedicated PVC so ACME state (account key, cached certs, on_demand
+  # rate-limit locks) is isolated from caddy-platform-proxy's PVC.
+  # Sharing /data between two Caddy deployments would mean one proxy's
+  # outage / rollback could corrupt the other's cert cache.
+  #
+  # cfs RWX matches caddy-platform's profile so future HA scaling can
+  # attach the same volume to multiple replicas without ReadWriteOnce
+  # contention.
+  accessModes:
+    - ReadWriteMany
+  storageClassName: cfs
+  resources:
+    requests:
+      storage: 10Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -96,11 +119,11 @@ metadata:
   labels:
     app: caddy-studio-proxy
 spec:
-  # Single replica today. The mounted PVC (`caddy`, RWX cfs) supports
-  # multiple attachments, so future HA can scale this up if traffic
-  # ever justifies it -- Caddy will share `/data` (ACME account, certs,
-  # locks) across pods. RollingUpdate is fine because RWX volumes
-  # don't deadlock on pod transition.
+  # Single replica today. The mounted PVC (`caddy-studio`, RWX cfs)
+  # supports multiple attachments, so future HA can scale this up if
+  # traffic ever justifies it -- Caddy will share `/data` (ACME
+  # account, certs, locks) across pods. RollingUpdate is fine because
+  # RWX volumes don't deadlock on pod transition.
   replicas: 1
   strategy:
     type: RollingUpdate
@@ -168,10 +191,7 @@ spec:
                 path: Caddyfile
         - name: data
           persistentVolumeClaim:
-            # Pre-existing `caddy` PVC (10Gi cfs RWX) provisioned out
-            # of band; lets us share /data across replicas if we ever
-            # scale this up.
-            claimName: caddy
+            claimName: caddy-studio
         - name: config
           emptyDir: {}
 ---
