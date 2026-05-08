@@ -7,7 +7,22 @@
             <p>
               <a href="/download">{{ $t('common.nav.mobileApp') }}</a>
               ·
-              <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
+              <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a>
+              ·
+              <!--
+                Privacy Policy and Terms of Service must be linked from the
+                public homepage to satisfy Google OAuth Verification (Limited
+                Use of user data). Both pages live on platform.acedata.cloud
+                and are shared across all AceDataCloud properties.
+              -->
+              <a href="https://platform.acedata.cloud/privacy" target="_blank" rel="noopener noreferrer">{{
+                $t('common.about.link9')
+              }}</a>
+              ·
+              <a href="https://platform.acedata.cloud/terms" target="_blank" rel="noopener noreferrer">{{
+                $t('common.about.link8')
+              }}</a>
+              · ©
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}
               ·

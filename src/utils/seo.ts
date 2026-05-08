@@ -20,7 +20,7 @@ const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Hub';
 const FALLBACK_BRAND_NAME = 'Ace Data Cloud';
 const FALLBACK_IMAGE = 'https://cdn.acedata.cloud/logo.png';
 const FALLBACK_DESCRIPTION =
-  'AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek.';
+  'AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude & Gemini.';
 
 // Read live brand fields from the current Site row. Each one falls back to
 // the AceDataCloud defaults so first-party origins keep working unchanged.

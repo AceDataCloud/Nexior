@@ -36,7 +36,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModelGroup } from '@/models';
 import {
   CHAT_MODEL_GROUP_CHATGPT,
-  CHAT_MODEL_GROUP_DEEPSEEK,
+  // CHAT_MODEL_GROUP_DEEPSEEK — hidden pending DeepSeek API restoration; see Google review #2026-05.
   CHAT_MODEL_GROUP_GROK,
   CHAT_MODEL_GROUP_GEMINI,
   CHAT_MODEL_GROUP_CLAUDE,
@@ -60,7 +60,7 @@ export default defineComponent({
     return {
       options: [
         CHAT_MODEL_GROUP_CHATGPT,
-        CHAT_MODEL_GROUP_DEEPSEEK,
+        // CHAT_MODEL_GROUP_DEEPSEEK — hidden pending DeepSeek API restoration.
         CHAT_MODEL_GROUP_GROK,
         CHAT_MODEL_GROUP_GEMINI,
         CHAT_MODEL_GROUP_CLAUDE,

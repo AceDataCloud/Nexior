@@ -153,7 +153,12 @@ export default defineComponent({
       if (!this.token) return;
       try {
         const { data } = await byokCredentialOperator.providers({ token: this.token });
-        this.providers = data?.providers ?? [];
+        const all = data?.providers ?? [];
+        // Hide the DeepSeek provider option pending DeepSeek API restoration
+        // (see Google OAuth review #2026-05). The backend still returns it
+        // for older sites; we filter it out client-side so re-enabling is a
+        // one-line revert.
+        this.providers = all.filter((p) => p.id !== 'deepseek');
       } catch (err) {
         console.error('Failed to load BYOK providers', err);
       }
