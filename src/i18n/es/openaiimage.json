@@ -55,6 +55,54 @@
     "message": "Tamaño de salida para generar imágenes, valores comunes: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Descripción del tamaño"
   },
+  "sizeGroup.standard1k": {
+    "message": "Estándar 1K (precio base)",
+    "description": "Título del grupo de tamaño 1K, cobrado al precio base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Preajuste 2K (1,5× precio)",
+    "description": "Título del grupo de tamaño 2K, cobrado a 1,5× el precio"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Preajuste 4K (1,5× precio)",
+    "description": "Título del grupo de tamaño 4K, cobrado a 1,5× el precio"
+  },
+  "name.customSize": {
+    "message": "Tamaño personalizado",
+    "description": "Etiqueta del interruptor de tamaño personalizado"
+  },
+  "description.customSize": {
+    "message": "Al activarlo, puedes establecer libremente el ancho y alto (solo compatible con gpt-image-2). Debe ser múltiplo de 16, el lado más largo ≤ 3840, y el total de píxeles ≤ 8.294.400. Los tamaños no estándar de 1K se cobran a 1,5× el precio.",
+    "description": "Explicación del tamaño personalizado"
+  },
+  "name.width": {
+    "message": "Ancho",
+    "description": "Etiqueta del campo de entrada de ancho"
+  },
+  "name.height": {
+    "message": "Alto",
+    "description": "Etiqueta del campo de entrada de altura"
+  },
+  "error.customSizePositive": {
+    "message": "El ancho y alto deben ser enteros positivos",
+    "description": "El tamaño personalizado debe ser un número entero positivo"
+  },
+  "error.customSizeMultiple": {
+    "message": "El ancho y alto deben ser múltiplos de {multiple}",
+    "description": "El tamaño personalizado debe ser múltiplo de 16"
+  },
+  "error.customSizeMin": {
+    "message": "El ancho y alto no pueden ser menores que {min}",
+    "description": "Límite mínimo para tamaño personalizado"
+  },
+  "error.customSizeMax": {
+    "message": "El lado más largo no puede superar {max}",
+    "description": "Límite máximo del lado más largo para tamaño personalizado"
+  },
+  "error.customSizePixels": {
+    "message": "El total de píxeles no puede superar {pixels}",
+    "description": "Límite máximo de píxeles para tamaño personalizado"
+  },
   "description.prompt": {
     "message": "Palabras clave para generar o editar la imagen",
     "description": "Descripción de las palabras clave"

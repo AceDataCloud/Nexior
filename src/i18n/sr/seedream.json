@@ -83,6 +83,10 @@
     "message": "Izaberi",
     "description": "Placeholder za izbor"
   },
+  "placeholder.size": {
+    "message": "Изаберите предлошк или унесите <ширина>x<висина>",
+    "description": "Placeholder за избор/унос величине (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Unesite uputstvo, na primer: bela sijamska mačka",
     "description": "Placeholder za uputstvo"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Otpremi",
     "description": "Dugme za otpremanje referentnih slika (skratiti na 'Otpremi')"
+  },
+  "button.confirmContinue": {
+    "message": "Настави пребацивање",
+    "description": "Дугме за потврду у дијалогу о сукобу способности"
+  },
+  "button.cancelSwitch": {
+    "message": "Откажи",
+    "description": "Дугме за отказ у дијалогу о сукобу способности"
   },
   "message.startingTask": {
     "message": "Pokreće se zadatak...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Neuspešno otpremanje slike, pokušajte ponovo kasnije",
     "description": "Neuspeh pri otpremanju"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Потребна потврда",
+    "description": "Наслов дијалога о сукобу способности"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Тренутни избор не подржава следећа омогућена подешавања: {fields}. Наставак ће их обрисати.",
+    "description": "Тело дијалога о сукобу способности"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Обрисана неподржана подешавања: {fields}",
+    "description": "Порука након чишћења неподржаних подешавања"
   },
   "name.model": {
     "message": "Model",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Broj slika generisanih u jednom zahtevu (1-15). Postavite na 1 za pojedinačni način; veće od 1 automatski aktivira grupno generisanje (sequential_image_generation=auto), održavajući lik, stil i detalje doslednim između slika. Podržani su samo doubao-seedream-5.0 / 4.5 / 4.0; ako se istovremeno otpremaju referentne slike, mora se zadovoljiti (broj referentnih slika + broj generisanih) ≤ 15. Naplata se vrši prema stvarnom broju generisanih slika.",
     "description": "Objašnjenje parametra max_images"
+  },
+  "name.seed": {
+    "message": "Рандом семе",
+    "description": "Ознака параметра seed"
+  },
+  "description.seed": {
+    "message": "Рандом семе за репродукцију, опсег [-1, 2147483647]. -1 значи сваки пут случајно. Подржава само doubao-seedream-3.0-t2i и doubao-seededit-3.0-i2i.",
+    "description": "Објашњење параметра seed"
+  },
+  "name.guidanceScale": {
+    "message": "Тежина упутства",
+    "description": "Ознака параметра guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Интензитет поштовања упутства, опсег [1, 10]. Што је већа вредност, то је ближе упутству. doubao-seedream-3.0-t2i подразумевано 2.5, doubao-seededit-3.0-i2i подразумевано 5.5.",
+    "description": "Објашњење параметра guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Формат излаза",
+    "description": "Ознака параметра output_format"
+  },
+  "description.outputFormat": {
+    "message": "Формат датотеке за генерисану слику, jpeg или png, подразумевано jpeg. Подржава само doubao-seedream-5.0.",
+    "description": "Објашњење параметра output_format"
+  },
+  "size.group.tier": {
+    "message": "Ниво резолуције",
+    "description": "Група резолуцијских нивоа у падајућем менију (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Адаптивно",
+    "description": "Група адаптивних величина у падајућем менију"
+  },
+  "size.group.pixel": {
+    "message": "Конкретна пиксел димензија",
+    "description": "Група пиксел димензија у падајућем менију"
+  },
+  "size.adaptive": {
+    "message": "Адаптивно (попут референтне слике)",
+    "description": "Ознака опције adaptive"
   }
 }

@@ -1543,6 +1543,22 @@
     "message": "추적 ID",
     "description": "생성된 이미지 요청을 추적하기 위한 추적 ID, '추적 ID'로 유지"
   },
+  "field.elapsed": {
+    "message": "소요 시간",
+    "description": "작업이 걸린 시간(초)"
+  },
+  "field.action": {
+    "message": "작업",
+    "description": "요청에서 수행되는 작업의 이름(예: generate / extend)"
+  },
+  "field.on": {
+    "message": "켜짐",
+    "description": "불리언 매개변수가 true일 때 표시되는 텍스트"
+  },
+  "field.off": {
+    "message": "꺼짐",
+    "description": "불리언 매개변수가 false일 때 표시되는 텍스트"
+  },
   "description.model": {
     "message": "이미지를 생성할 모델을 선택하세요. 일반 모델은 대부분의 상황에 적합하고, Niji는 애니메이션 스타일에 적합합니다.",
     "description": "모델 매개변수의 설명"

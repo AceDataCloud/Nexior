@@ -55,6 +55,54 @@
     "message": "이미지 생성을 위한 출력 크기, 일반적인 값: 1024x1024, 1536x1024, 1024x1536.",
     "description": "크기 설명"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K 표준 (기본 요금)",
+    "description": "1K 크기 그룹 제목, 기본 요금 적용"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K 프리셋 (1.5배 요금)",
+    "description": "2K 크기 그룹 제목, 1.5배 요금 적용"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K 프리셋 (1.5배 요금)",
+    "description": "4K 크기 그룹 제목, 1.5배 요금 적용"
+  },
+  "name.customSize": {
+    "message": "사용자 지정 크기",
+    "description": "사용자 지정 크기 토글 레이블"
+  },
+  "description.customSize": {
+    "message": "활성화하면 자유롭게 가로와 세로를 설정할 수 있습니다 (gpt-image-2만 지원). 16의 배수여야 하며, 가장 긴 변 ≤ 3840, 총 픽셀 ≤ 8,294,400. 1K 표준이 아닌 크기는 1.5배 요금 적용.",
+    "description": "사용자 지정 크기 설명"
+  },
+  "name.width": {
+    "message": "너비",
+    "description": "너비 입력 필드 레이블"
+  },
+  "name.height": {
+    "message": "높이",
+    "description": "높이 입력 필드 레이블"
+  },
+  "error.customSizePositive": {
+    "message": "가로와 세로는 양의 정수여야 합니다",
+    "description": "사용자 지정 크기는 양의 정수여야 함"
+  },
+  "error.customSizeMultiple": {
+    "message": "가로와 세로는 {multiple}의 배수여야 합니다",
+    "description": "사용자 지정 크기는 16의 배수여야 함"
+  },
+  "error.customSizeMin": {
+    "message": "가로와 세로는 {min}보다 작을 수 없습니다",
+    "description": "사용자 지정 크기 최소 길이 제한"
+  },
+  "error.customSizeMax": {
+    "message": "가장 긴 변은 {max}을 초과할 수 없습니다",
+    "description": "사용자 지정 크기 최대 길이 제한"
+  },
+  "error.customSizePixels": {
+    "message": "총 픽셀 수는 {pixels}을 초과할 수 없습니다",
+    "description": "사용자 지정 크기 총 픽셀 제한"
+  },
   "description.prompt": {
     "message": "이미지 생성 또는 편집을 위한 프롬프트",
     "description": "프롬프트 설명"

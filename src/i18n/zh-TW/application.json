@@ -135,6 +135,18 @@
     "message": "申請成功",
     "description": "當用戶成功申請了此服務時向用戶顯示的消息。"
   },
+  "message.applyFailed": {
+    "message": "開通免費試用失敗，請刷新頁面後重試。",
+    "description": "自動創建全局申請失敗時顯示的提示。"
+  },
+  "message.welcomeWithCredits": {
+    "message": "🎉 歡迎使用 Nexior！我們已為您贈送 {credits} 積分，可在全站任意服務中體驗。",
+    "description": "自動創建全局申請成功後或首次進入時顯示的歡迎提示。{credits} 為全局申請的剩餘額度。"
+  },
+  "message.welcomeNoCredits": {
+    "message": "🎉 歡迎使用 Nexior！您的帳戶已就緒，可以體驗全站任意服務。",
+    "description": "全局申請沒有可用免費額度時顯示的歡迎提示。"
+  },
   "message.notApplied": {
     "message": "您尚未申請此服務，請在使用之前申請該服務",
     "description": "當用戶尚未申請此服務時向用戶顯示的消息。"

@@ -83,6 +83,10 @@
     "message": "Auswählen",
     "description": "Platzhalter für Auswahl"
   },
+  "placeholder.size": {
+    "message": "Voreinstellung wählen oder <Breite>x<Höhe> eingeben",
+    "description": "Platzhalter für die Auswahl/Eingabe der Größe (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Geben Sie die Aufforderung ein, z.B.: eine weiße Siamkatze",
     "description": "Platzhalter für Aufforderung"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Hochladen",
     "description": "Button zum Hochladen von Referenzbildern (bitte auf 'Hochladen' vereinfachen, nicht 'Bilder hochladen')"
+  },
+  "button.confirmContinue": {
+    "message": "Weiter wechseln",
+    "description": "Bestätigungsbutton im Konfliktwarnungsdialog"
+  },
+  "button.cancelSwitch": {
+    "message": "Abbrechen",
+    "description": "Abbrechen-Button im Konfliktwarnungsdialog"
   },
   "message.startingTask": {
     "message": "Starte Aufgabe...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Bild hochladen fehlgeschlagen, bitte später erneut versuchen",
     "description": "Hochladen fehlgeschlagen"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Bestätigung erforderlich",
+    "description": "Titel im Konfliktwarnungsdialog"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Die aktuelle Auswahl unterstützt die folgenden aktivierten Einstellungen nicht: {fields}. Das Fortfahren entfernt diese Einstellungen.",
+    "description": "Textkörper im Konfliktwarnungsdialog"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Nicht unterstützte Einstellungen wurden entfernt: {fields}",
+    "description": "Hinweis nach der Bereinigung von Konflikten"
   },
   "name.model": {
     "message": "Modell",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Anzahl der Bilder, die in einer Anfrage generiert werden (1-15). Bei 1 ist es der Einzelbildmodus; bei mehr als 1 wird automatisch die Gruppenbildfunktion aktiviert (sequential_image_generation=auto), wobei Charakter, Stil und Details über die Bilder hinweg konsistent bleiben. Unterstützt nur doubao-seedream-5.0 / 4.5 / 4.0; wenn Referenzbilder hochgeladen werden, muss (Anzahl der Referenzbilder + Anzahl der generierten Bilder) ≤ 15 sein. Abrechnung erfolgt nach der tatsächlich generierten Anzahl der Bilder.",
     "description": "Beschreibung des max_images Parameters"
+  },
+  "name.seed": {
+    "message": "Zufallszahl",
+    "description": "Label für den seed Parameter"
+  },
+  "description.seed": {
+    "message": "Zufallszahl zur Reproduktion, Bereich [-1, 2147483647]. -1 bedeutet jedes Mal zufällig. Unterstützt nur doubao-seedream-3.0-t2i und doubao-seededit-3.0-i2i.",
+    "description": "Erläuterung des seed Parameters"
+  },
+  "name.guidanceScale": {
+    "message": "Gewichtung der Eingabeaufforderung",
+    "description": "Label für den guidance_scale Parameter"
+  },
+  "description.guidanceScale": {
+    "message": "Intensität der Eingabeaufforderung, Bereich [1, 10]. Höhere Werte nähern sich der Eingabeaufforderung an. doubao-seedream-3.0-t2i Standard 2.5, doubao-seededit-3.0-i2i Standard 5.5.",
+    "description": "Erläuterung des guidance_scale Parameters"
+  },
+  "name.outputFormat": {
+    "message": "Ausgabeformat",
+    "description": "Label für den output_format Parameter"
+  },
+  "description.outputFormat": {
+    "message": "Dateiformat des generierten Bildes, jpeg oder png, Standard ist jpeg. Nur doubao-seedream-5.0 unterstützt.",
+    "description": "Erläuterung des output_format Parameters"
+  },
+  "size.group.tier": {
+    "message": "Auflösungsstufen",
+    "description": "Gruppe für die Auflösungsstufen im Größen-Dropdown (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Anpassungsfähig",
+    "description": "Gruppe für die adaptive Auswahl im Größen-Dropdown"
+  },
+  "size.group.pixel": {
+    "message": "Spezifische Pixelgröße",
+    "description": "Gruppe für die Pixelgrößen im Größen-Dropdown"
+  },
+  "size.adaptive": {
+    "message": "Anpassungsfähig (entspricht Referenzbild)",
+    "description": "Label für die adaptive Option"
   }
 }

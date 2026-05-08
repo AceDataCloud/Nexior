@@ -491,6 +491,14 @@
     "message": "4Kモードが選択されているため、カメラ制御は使用できません。std / proに切り替えてから再度有効にしてください。",
     "description": "カメラ制御が無効な理由"
   },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "最初のフレーム参考画像をアップロードするとカメラ操作は使用できません。参考画像を削除してから再度お試しください",
+    "description": "カメラ操作が無効になっている理由（image2video）"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "現在のモデル/モード/長さではカメラ操作はサポートされていません。設定を調整してから有効にしてください",
+    "description": "カメラ操作が無効になっている理由（モデルがサポートしていない）"
+  },
   "status.pending": {
     "message": "待機中",
     "description": "タスクの待機状態"

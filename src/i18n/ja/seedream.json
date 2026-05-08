@@ -83,6 +83,10 @@
     "message": "選択",
     "description": "選択のプレースホルダー"
   },
+  "placeholder.size": {
+    "message": "プリセットを選択するか <幅>x<高さ> を入力",
+    "description": "size 選択/入力のプレースホルダー（el-select allow-create）"
+  },
   "placeholder.prompt": {
     "message": "プロンプトを入力してください。例：白いシャム猫",
     "description": "プロンプトのプレースホルダー"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "アップロード",
     "description": "参考画像をアップロードするボタン（英語は「Upload」に簡略化し、「Upload Images」は使用しない）"
+  },
+  "button.confirmContinue": {
+    "message": "切り替えを続ける",
+    "description": "能力の衝突を示すポップアップの確認ボタン"
+  },
+  "button.cancelSwitch": {
+    "message": "キャンセル",
+    "description": "能力の衝突を示すポップアップのキャンセルボタン"
   },
   "message.startingTask": {
     "message": "タスクを開始しています...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "画像のアップロードに失敗しました。後で再試行してください",
     "description": "アップロード失敗"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "確認が必要",
+    "description": "能力の衝突を示すポップアップのタイトル"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "現在の選択は以下の有効な設定をサポートしていません：{fields}。続行するとこれらの設定がクリアされます。",
+    "description": "能力の衝突を示すポップアップの本文"
+  },
+  "message.featureRemovedNotice": {
+    "message": "サポートされていない設定がクリアされました：{fields}",
+    "description": "能力の衝突をクリアした後の通知メッセージ"
   },
   "name.model": {
     "message": "モデル",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "1 回のリクエストで生成する画像の数（1-15）。1 に設定すると単一画像モード；1 より大きい場合は自動的にグループ画像を有効にします（sequential_image_generation=auto）、画像間でキャラクター、スタイル、詳細を一貫させます。doubao-seedream-5.0 / 4.5 / 4.0 のみサポート；参考画像を同時にアップロードする場合、(参考画像数 + 生成数) ≤ 15 を満たす必要があります。請求は実際に生成された画像の枚数に基づきます。",
     "description": "max_images パラメータの説明"
+  },
+  "name.seed": {
+    "message": "ランダムシード",
+    "description": "seed パラメータのラベル"
+  },
+  "description.seed": {
+    "message": "再現のためのランダムシード、範囲 [-1, 2147483647]。-1 は毎回ランダムを意味します。doubao-seedream-3.0-t2i と doubao-seededit-3.0-i2i のみサポート。",
+    "description": "seed パラメータの説明"
+  },
+  "name.guidanceScale": {
+    "message": "プロンプトの重み",
+    "description": "guidance_scale パラメータのラベル"
+  },
+  "description.guidanceScale": {
+    "message": "プロンプトの遵守強度、範囲 [1, 10]。値が大きいほどプロンプトに近づきます。doubao-seedream-3.0-t2i のデフォルトは 2.5、doubao-seededit-3.0-i2i のデフォルトは 5.5。",
+    "description": "guidance_scale パラメータの説明"
+  },
+  "name.outputFormat": {
+    "message": "出力形式",
+    "description": "output_format パラメータのラベル"
+  },
+  "description.outputFormat": {
+    "message": "生成される画像のファイル形式、jpeg または png、デフォルトは jpeg。doubao-seedream-5.0 のみサポート。",
+    "description": "output_format パラメータの説明"
+  },
+  "size.group.tier": {
+    "message": "解像度階層",
+    "description": "サイズドロップダウンの階層グループ（1K-4K）"
+  },
+  "size.group.adaptive": {
+    "message": "自適応",
+    "description": "サイズドロップダウンの自適応グループ"
+  },
+  "size.group.pixel": {
+    "message": "具体的なピクセルサイズ",
+    "description": "サイズドロップダウンのピクセルサイズグループ"
+  },
+  "size.adaptive": {
+    "message": "自適応（参照画像に一致）",
+    "description": "adaptive オプションのラベル"
   }
 }

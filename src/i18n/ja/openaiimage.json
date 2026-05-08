@@ -55,6 +55,54 @@
     "message": "画像生成のための出力サイズ。一般的な値：1024x1024、1536x1024、1024x1536。",
     "description": "サイズ説明"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K 標準（基本料金）",
+    "description": "1K サイズグループの見出し、基本料金"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K プリセット（1.5 倍料金）",
+    "description": "2K サイズグループの見出し、1.5 倍料金"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K プリセット（1.5 倍料金）",
+    "description": "4K サイズグループの見出し、1.5 倍料金"
+  },
+  "name.customSize": {
+    "message": "カスタムサイズ",
+    "description": "カスタムサイズ切り替えラベル"
+  },
+  "description.customSize": {
+    "message": "有効にすると幅と高さを自由に設定できます（gpt-image-2 のみ対応）。16 の倍数である必要があり、長辺は ≤ 3840、総ピクセル数は ≤ 8,294,400。1K 標準サイズ以外は 1.5 倍の料金がかかります。",
+    "description": "カスタムサイズの説明"
+  },
+  "name.width": {
+    "message": "幅",
+    "description": "幅入力欄ラベル"
+  },
+  "name.height": {
+    "message": "高さ",
+    "description": "高さ入力欄ラベル"
+  },
+  "error.customSizePositive": {
+    "message": "幅と高さは正の整数である必要があります",
+    "description": "カスタムサイズは正の整数である必要があります"
+  },
+  "error.customSizeMultiple": {
+    "message": "幅と高さは {multiple} の倍数である必要があります",
+    "description": "カスタムサイズは 16 の倍数である必要があります"
+  },
+  "error.customSizeMin": {
+    "message": "幅と高さは {min} 未満にできません",
+    "description": "カスタムサイズの下限"
+  },
+  "error.customSizeMax": {
+    "message": "長辺は {max} を超えることはできません",
+    "description": "カスタムサイズの長辺上限"
+  },
+  "error.customSizePixels": {
+    "message": "総ピクセル数は {pixels} を超えることはできません",
+    "description": "カスタムサイズの総ピクセル上限"
+  },
   "description.prompt": {
     "message": "画像生成または編集のためのプロンプト",
     "description": "プロンプト説明"

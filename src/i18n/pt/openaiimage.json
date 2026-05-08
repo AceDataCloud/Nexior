@@ -55,6 +55,54 @@
     "message": "Tamanho de saída para gerar a imagem, valores comuns: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Descrição do tamanho"
   },
+  "sizeGroup.standard1k": {
+    "message": "Padrão 1K (preço base)",
+    "description": "Título do grupo de tamanho 1K, cobrado ao preço base"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Pré-definido 2K (1,5× preço)",
+    "description": "Título do grupo de tamanho 2K, cobrado a 1,5× o preço"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Pré-definido 4K (1,5× preço)",
+    "description": "Título do grupo de tamanho 4K, cobrado a 1,5× o preço"
+  },
+  "name.customSize": {
+    "message": "Tamanho personalizado",
+    "description": "Etiqueta do botão de alternância para tamanho personalizado"
+  },
+  "description.customSize": {
+    "message": "Quando ativado, permite definir largura e altura livremente (apenas suportado pelo gpt-image-2). Deve ser múltiplo de 16, o lado mais longo ≤ 3840, total de pixels ≤ 8.294.400. Tamanhos não padrão de 1K são cobrados a 1,5× o preço.",
+    "description": "Descrição do recurso de tamanho personalizado"
+  },
+  "name.width": {
+    "message": "Largura",
+    "description": "Etiqueta do campo de entrada de largura"
+  },
+  "name.height": {
+    "message": "Altura",
+    "description": "Etiqueta do campo de entrada de altura"
+  },
+  "error.customSizePositive": {
+    "message": "Largura e altura devem ser números inteiros positivos",
+    "description": "O tamanho personalizado deve ser um inteiro positivo"
+  },
+  "error.customSizeMultiple": {
+    "message": "Largura e altura devem ser múltiplos de {multiple}",
+    "description": "O tamanho personalizado deve ser múltiplo de 16"
+  },
+  "error.customSizeMin": {
+    "message": "Largura e altura não podem ser menores que {min}",
+    "description": "Limite mínimo para tamanho personalizado"
+  },
+  "error.customSizeMax": {
+    "message": "O lado mais longo não pode exceder {max}",
+    "description": "Limite máximo do lado mais longo para tamanho personalizado"
+  },
+  "error.customSizePixels": {
+    "message": "O total de pixels não pode exceder {pixels}",
+    "description": "Limite máximo de pixels para tamanho personalizado"
+  },
   "description.prompt": {
     "message": "Palavras-chave para gerar ou editar a imagem",
     "description": "Descrição do prompt"
