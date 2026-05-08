@@ -12,9 +12,11 @@
 #   * cbs PVC at /data so ACME account, certs, and locks survive pod restarts.
 #
 # Tenant flow:
-#   1. Tenant adds CNAME mybrand.com -> tenant-proxy.acedata.cloud at their
-#      DNS provider (the public hostname stays `tenant-proxy.acedata.cloud`
-#      for backwards compatibility; only the internal K8s names changed).
+#   1. Tenant adds CNAME mybrand.com -> studio-proxy.acedata.cloud at their
+#      DNS provider. The legacy hostname `tenant-proxy.acedata.cloud`
+#      keeps resolving to the same CLB as a permanent alias, so any
+#      tenants provisioned before the rename keep working without
+#      touching their DNS.
 #   2. First HTTPS request hits Caddy. Caddy GETs the ask URL, sees the
 #      domain is registered in SiteDomain, runs ACME HTTP-01, signs the
 #      cert, persists it to /data, and serves the request.
@@ -23,7 +25,8 @@
 # DNS one-time setup AFTER first apply:
 #   kubectl get svc caddy-studio-proxy -n acedatacloud
 #   # take the EXTERNAL-IP, then in DNSPod:
-#   tenant-proxy.acedata.cloud  A  <EIP>
+#   studio-proxy.acedata.cloud  A  <EIP>
+#   # (and keep the legacy `tenant-proxy` A-record pointing at the same EIP)
 # --------------------------------------------------------------------------
 
 apiVersion: v1
