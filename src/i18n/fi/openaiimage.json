@@ -55,6 +55,54 @@
     "message": "Kuvan luomiseen käytettävä lähtökoko, yleiset arvot: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Koon kuvaus"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K standardi (perushinta)",
+    "description": "1K koon ryhmän otsikko, laskutetaan perushinnalla"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K esiasetus (1,5-kertainen hinta)",
+    "description": "2K koon ryhmän otsikko, laskutetaan 1,5-kertaisella hinnalla"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K esiasetus (1,5-kertainen hinta)",
+    "description": "4K koon ryhmän otsikko, laskutetaan 1,5-kertaisella hinnalla"
+  },
+  "name.customSize": {
+    "message": "Mukautettu koko",
+    "description": "Mukautetun koon kytkin"
+  },
+  "description.customSize": {
+    "message": "Kun otettu käyttöön, voit asettaa leveyden ja korkeuden vapaasti (vain gpt-image-2 tukee). Pitää olla 16:n kerroin, pisin sivu ≤ 3840, kokonaispikselit ≤ 8 294 400. Ei 1K standardikokoja laskutetaan 1,5-kertaisella hinnalla.",
+    "description": "Mukautetun koon selitys"
+  },
+  "name.width": {
+    "message": "Leveys",
+    "description": "Leveys syöttökentän etiketti"
+  },
+  "name.height": {
+    "message": "Korkeus",
+    "description": "Korkeus syöttökentän etiketti"
+  },
+  "error.customSizePositive": {
+    "message": "Leveyden ja korkeuden on oltava positiivisia kokonaislukuja",
+    "description": "Mukautetun koon on oltava positiivisia kokonaislukuja"
+  },
+  "error.customSizeMultiple": {
+    "message": "Leveyden ja korkeuden on oltava {multiple} kerrannaisia",
+    "description": "Mukautetun koon on oltava 16:n kerrannaisia"
+  },
+  "error.customSizeMin": {
+    "message": "Leveys ja korkeus eivät voi olla pienempiä kuin {min}",
+    "description": "Mukautetun koon alaraja"
+  },
+  "error.customSizeMax": {
+    "message": "Pisin sivu ei voi ylittää {max}",
+    "description": "Mukautetun koon pisimmän sivun yläraja"
+  },
+  "error.customSizePixels": {
+    "message": "Kokonaispikselit eivät voi ylittää {pixels}",
+    "description": "Mukautetun koon kokonaispikselien yläraja"
+  },
   "description.prompt": {
     "message": "Kuvien luomiseen tai muokkaamiseen käytettävät promptit",
     "description": "Promptin kuvaus"

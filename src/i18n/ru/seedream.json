@@ -83,6 +83,10 @@
     "message": "Выбрать",
     "description": "Заполнитель для выбора"
   },
+  "placeholder.size": {
+    "message": "Выберите пресет или введите <ширина>x<высота>",
+    "description": "Заполнитель для выбора/ввода размера (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Введите подсказку, например: белый сиамский кот",
     "description": "Заполнитель для подсказки"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Загрузить",
     "description": "Кнопка загрузки ссылок на изображения (упростите до 'Загрузить', не используйте 'Загрузить изображения')"
+  },
+  "button.confirmContinue": {
+    "message": "Продолжить переключение",
+    "description": "Кнопка подтверждения в окне конфликта возможностей"
+  },
+  "button.cancelSwitch": {
+    "message": "Отмена",
+    "description": "Кнопка отмены в окне конфликта возможностей"
   },
   "message.startingTask": {
     "message": "Запуск задачи...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Не удалось загрузить изображение, пожалуйста, попробуйте позже",
     "description": "Ошибка загрузки"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Требуется подтверждение",
+    "description": "Заголовок окна конфликта возможностей"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Выбранная конфигурация не поддерживает следующие активные настройки: {fields}. Продолжение приведет к их очистке.",
+    "description": "Основной текст окна конфликта возможностей"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Очищены неподдерживаемые настройки: {fields}",
+    "description": "Сообщение после очистки неподдерживаемых настроек"
   },
   "name.model": {
     "message": "Модель",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Количество изображений, генерируемых за один запрос (1-15). Установите 1 для одиночного режима; больше 1 автоматически включает групповую генерацию (sequential_image_generation=auto), сохраняя персонажа, стиль и детали между изображениями. Поддерживаются только doubao-seedream-5.0 / 4.5 / 4.0; если загружены ссылки на изображения, необходимо, чтобы (количество ссылок + количество генерируемых) ≤ 15. Оплата производится за фактическое количество сгенерированных изображений.",
     "description": "Описание параметра max_images"
+  },
+  "name.seed": {
+    "message": "Случайное семя",
+    "description": "Метка параметра seed"
+  },
+  "description.seed": {
+    "message": "Случайное семя для воспроизводимости, диапазон [-1, 2147483647]. -1 означает случайное значение при каждом запуске. Поддерживается только doubao-seedream-3.0-t2i и doubao-seededit-3.0-i2i.",
+    "description": "Описание параметра seed"
+  },
+  "name.guidanceScale": {
+    "message": "Вес подсказки",
+    "description": "Метка параметра guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Интенсивность следования подсказке, диапазон [1, 10]. Чем выше значение, тем точнее соответствие подсказке. doubao-seedream-3.0-t2i по умолчанию 2.5, doubao-seededit-3.0-i2i по умолчанию 5.5.",
+    "description": "Описание параметра guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Формат вывода",
+    "description": "Метка параметра output_format"
+  },
+  "description.outputFormat": {
+    "message": "Формат файла для создаваемого изображения, jpeg или png, по умолчанию jpeg. Поддерживается только doubao-seedream-5.0.",
+    "description": "Описание параметра output_format"
+  },
+  "size.group.tier": {
+    "message": "Уровни разрешения",
+    "description": "Группа уровней разрешения в выпадающем списке (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Адаптивно",
+    "description": "Группа адаптивных размеров в выпадающем списке"
+  },
+  "size.group.pixel": {
+    "message": "Конкретные пиксельные размеры",
+    "description": "Группа пиксельных размеров в выпадающем списке"
+  },
+  "size.adaptive": {
+    "message": "Адаптивно (соответствует образцу)",
+    "description": "Метка опции adaptive"
   }
 }

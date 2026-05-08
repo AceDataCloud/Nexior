@@ -83,6 +83,10 @@
     "message": "Valitse",
     "description": "Valintapaikka"
   },
+  "placeholder.size": {
+    "message": "Valitse esiasetus tai syötä <leveys>x<korkeus>",
+    "description": "size-kentän paikkamerkki (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Syötä prompt, esim: valkoinen siamilainen kissa",
     "description": "Promptin paikka"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Lataa kuvat",
     "description": "Viittauskuvien latauspainike (yksinkertaista englanniksi 'Upload', älä käytä 'Upload Images')"
+  },
+  "button.confirmContinue": {
+    "message": "Jatka vaihtoa",
+    "description": "Vahvista-painike kykyjen ristiriita -ilmoituksessa"
+  },
+  "button.cancelSwitch": {
+    "message": "Peruuta",
+    "description": "Peruuta-painike kykyjen ristiriita -ilmoituksessa"
   },
   "message.startingTask": {
     "message": "Aloitetaan tehtävää...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Kuvan lataus epäonnistui, yritä myöhemmin uudelleen",
     "description": "Lataus epäonnistui"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Vahvistus vaaditaan",
+    "description": "Kykyjen ristiriita -ilmoituksen otsikko"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Valittu vaihtoehto ei tue seuraavia käytössä olevia asetuksia: {fields}. Jatkaminen poistaa nämä asetukset.",
+    "description": "Kykyjen ristiriita -ilmoituksen pääteksti"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Ei-tuetut asetukset poistettu: {fields}",
+    "description": "Ilmoitus kykyjen ristiriidan jälkeen"
   },
   "name.model": {
     "message": "Malli",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Kuvien määrä, joka luodaan yhdellä pyynnöllä (1-15). Aseta 1 yksittäiseksi kuvaksi; yli 1 aktivoi automaattisesti sarjakuvatuotannon (sequential_image_generation=auto), säilyttäen hahmot, tyylit ja yksityiskohdat. Tuetaan vain doubao-seedream-5.0 / 4.5 / 4.0; jos lataat viittauskuvia, niiden määrä + luotujen kuvien määrä ≤ 15. Laskutus perustuu todellisiin luotuihin kuviin.",
     "description": "max_images-parametrin selitys"
+  },
+  "name.seed": {
+    "message": "Satunnaissiementä",
+    "description": "seed-parametrin etiketti"
+  },
+  "description.seed": {
+    "message": "Satunnaissiementä käytetään toistettavuuteen, alue [-1, 2147483647]. -1 tarkoittaa satunnaista joka kerta. Vain doubao-seedream-3.0-t2i ja doubao-seededit-3.0-i2i tukevat.",
+    "description": "seed-parametrin selitys"
+  },
+  "name.guidanceScale": {
+    "message": "Promptin painotus",
+    "description": "guidance_scale-parametrin etiketti"
+  },
+  "description.guidanceScale": {
+    "message": "Promptin noudattamisen voimakkuus, alue [1, 10]. Suurempi arvo vastaa tarkemmin promptia. doubao-seedream-3.0-t2i oletus 2.5, doubao-seededit-3.0-i2i oletus 5.5.",
+    "description": "guidance_scale-parametrin selitys"
+  },
+  "name.outputFormat": {
+    "message": "Tulostemuoto",
+    "description": "output_format-parametrin etiketti"
+  },
+  "description.outputFormat": {
+    "message": "Luotavan kuvan tiedostomuoto, jpeg tai png, oletus jpeg. Vain doubao-seedream-5.0 tukee.",
+    "description": "output_format-parametrin selitys"
+  },
+  "size.group.tier": {
+    "message": "Resoluutio-taso",
+    "description": "Koko-valikon tasoryhmä (1K–4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Sovita",
+    "description": "Koko-valikon sovita-ryhmä"
+  },
+  "size.group.pixel": {
+    "message": "Tarkka pikselikoko",
+    "description": "Koko-valikon pikselikoko-ryhmä"
+  },
+  "size.adaptive": {
+    "message": "Sovita (sama kuin referenssikuva)",
+    "description": "adaptive-vaihtoehdon etiketti"
   }
 }

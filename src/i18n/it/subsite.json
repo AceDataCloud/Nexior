@@ -79,6 +79,10 @@
     "message": "Creazione del sottodominio fallita, riprova più tardi.",
     "description": "Messaggio di errore nella creazione"
   },
+  "message.slugTaken": {
+    "message": "Il sottodominio {origin} è già in uso, prova con un altro.",
+    "description": "Quando si crea un sottodominio, il slug è già occupato (il backend restituisce code=duplication)"
+  },
   "message.loadFailed": {
     "message": "Caricamento della lista dei sottodomini fallito.",
     "description": "Errore nel caricamento della lista"

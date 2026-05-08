@@ -83,6 +83,10 @@
     "message": "Välj",
     "description": "Välj platshållare"
   },
+  "placeholder.size": {
+    "message": "Välj förinställning eller ange <bredd>x<höjd>",
+    "description": "Platshållare för size-val/ingång (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Ange prompt, t.ex.: en vit siamesisk katt",
     "description": "Prompt platshållare"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Ladda upp",
     "description": "Ladda upp referensbilder knapp (engelska förenklas till 'Upload', använd inte 'Upload Images')"
+  },
+  "button.confirmContinue": {
+    "message": "Fortsätt byta",
+    "description": "Bekräfta-knappen i varningsdialogen för funktionskonflikt"
+  },
+  "button.cancelSwitch": {
+    "message": "Avbryt",
+    "description": "Avbryt-knappen i varningsdialogen för funktionskonflikt"
   },
   "message.startingTask": {
     "message": "Startar uppgift...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Misslyckades med att ladda upp bild, vänligen försök igen senare",
     "description": "Misslyckades med uppladdning"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Bekräftelse krävs",
+    "description": "Titel i varningsdialog för funktionskonflikt"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Det aktuella valet stöder inte följande aktiverade inställningar: {fields}. Om du fortsätter kommer dessa inställningar att tas bort.",
+    "description": "Huvudtext i varningsdialog för funktionskonflikt"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Ej stödda inställningar har tagits bort: {fields}",
+    "description": "Meddelande efter att funktionskonflikt rensats"
   },
   "name.model": {
     "message": "Modell",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Antal bilder som genereras i en begäran (1-15). Sätt till 1 för enstaka bildläge; mer än 1 aktiverar automatiskt bildserie (sequential_image_generation=auto), och håller karaktär, stil och detaljer konsekventa över bilder. Endast doubao-seedream-5.0 / 4.5 / 4.0 stöds; om referensbilder laddas upp, måste (antal referensbilder + antal genererade) ≤ 15. Avgifter baseras på det faktiska antalet genererade bilder.",
     "description": "Beskrivning av max_images parameter"
+  },
+  "name.seed": {
+    "message": "Slumpfrö",
+    "description": "Etikett för parametern seed"
+  },
+  "description.seed": {
+    "message": "Slumpmässigt frö för reproducerbarhet, intervall [-1, 2147483647]. -1 innebär helt slumpmässigt. Endast doubao-seedream-3.0-t2i och doubao-seededit-3.0-i2i stöds.",
+    "description": "Förklaring av parametern seed"
+  },
+  "name.guidanceScale": {
+    "message": "Promptvikt",
+    "description": "Etikett för parametern guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Promptens efterlevnadsgrad, intervall [1, 10]. Ju högre värde, desto närmare prompten. doubao-seedream-3.0-t2i standard 2,5, doubao-seededit-3.0-i2i standard 5,5.",
+    "description": "Förklaring av parametern guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Utdataformat",
+    "description": "Etikett för parametern output_format"
+  },
+  "description.outputFormat": {
+    "message": "Filformat för genererade bilder, jpeg eller png, standard jpeg. Endast doubao-seedream-5.0 stöds.",
+    "description": "Förklaring av parametern output_format"
+  },
+  "size.group.tier": {
+    "message": "Upplösningsnivå",
+    "description": "Nivågrupp i storleksrullgardin (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Adaptiv",
+    "description": "Adaptiv grupp i storleksrullgardin"
+  },
+  "size.group.pixel": {
+    "message": "Specifik pixeldimension",
+    "description": "Pixelgrupp i storleksrullgardin"
+  },
+  "size.adaptive": {
+    "message": "Adaptiv (samma som referensbild)",
+    "description": "Etikett för adaptive-valet"
   }
 }

@@ -83,6 +83,10 @@
     "message": "선택",
     "description": "선택 자리 표시자"
   },
+  "placeholder.size": {
+    "message": "프리셋 선택 또는 <가로>x<세로> 입력",
+    "description": "size 선택/입력 플레이스홀더 (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "프롬프트 입력, 예: 흰색 샴 고양이",
     "description": "프롬프트 자리 표시자"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "업로드",
     "description": "참조 이미지 업로드 버튼 (영어는 'Upload'로 간단히 줄이세요, 'Upload Images' 사용 금지)"
+  },
+  "button.confirmContinue": {
+    "message": "계속 전환",
+    "description": "기능 충돌 알림창의 확인 버튼"
+  },
+  "button.cancelSwitch": {
+    "message": "취소",
+    "description": "기능 충돌 알림창의 취소 버튼"
   },
   "message.startingTask": {
     "message": "작업 시작 중...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "이미지 업로드 실패, 나중에 다시 시도하세요.",
     "description": "업로드 실패"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "확인 필요",
+    "description": "기능 충돌 알림창 제목"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "현재 선택은 다음 활성화된 설정을 지원하지 않습니다: {fields}. 계속하면 이 설정들이 초기화됩니다.",
+    "description": "기능 충돌 알림창 본문"
+  },
+  "message.featureRemovedNotice": {
+    "message": "지원되지 않는 설정이 초기화되었습니다: {fields}",
+    "description": "기능 충돌 후 초기화 안내 메시지"
   },
   "name.model": {
     "message": "모델",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "한 번의 요청으로 생성할 수 있는 이미지 수 (1-15). 1로 설정하면 단일 이미지 모드; 1보다 크면 자동으로 그룹 이미지 활성화 (sequential_image_generation=auto), 이미지 간 캐릭터, 스타일 및 세부 사항 일관성 유지. doubao-seedream-5.0 / 4.5 / 4.0만 지원; 참조 이미지를 동시에 업로드할 경우 (참조 이미지 수 + 생성 수) ≤ 15를 충족해야 합니다. 실제 생성된 이미지 수에 따라 요금이 부과됩니다.",
     "description": "max_images 매개변수 설명"
+  },
+  "name.seed": {
+    "message": "랜덤 시드",
+    "description": "seed 매개변수 라벨"
+  },
+  "description.seed": {
+    "message": "재현용 랜덤 시드, 범위 [-1, 2147483647]. -1은 매번 랜덤. doubao-seedream-3.0-t2i 및 doubao-seededit-3.0-i2i만 지원.",
+    "description": "seed 매개변수 설명"
+  },
+  "name.guidanceScale": {
+    "message": "프롬프트 가중치",
+    "description": "guidance_scale 매개변수 라벨"
+  },
+  "description.guidanceScale": {
+    "message": "프롬프트 준수 강도, 범위 [1, 10]. 값이 클수록 프롬프트에 더 가까움. doubao-seedream-3.0-t2i 기본값 2.5, doubao-seededit-3.0-i2i 기본값 5.5.",
+    "description": "guidance_scale 매개변수 설명"
+  },
+  "name.outputFormat": {
+    "message": "출력 형식",
+    "description": "output_format 매개변수 라벨"
+  },
+  "description.outputFormat": {
+    "message": "생성 이미지 파일 형식, jpeg 또는 png, 기본값 jpeg. doubao-seedream-5.0만 지원.",
+    "description": "output_format 매개변수 설명"
+  },
+  "size.group.tier": {
+    "message": "해상도 단계",
+    "description": "크기 드롭다운의 단계 그룹 (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "자동 맞춤",
+    "description": "크기 드롭다운의 자동 맞춤 그룹"
+  },
+  "size.group.pixel": {
+    "message": "정확한 픽셀 크기",
+    "description": "크기 드롭다운의 픽셀 크기 그룹"
+  },
+  "size.adaptive": {
+    "message": "자동 맞춤 (참조 이미지와 동일)",
+    "description": "adaptive 옵션 라벨"
   }
 }

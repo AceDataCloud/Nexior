@@ -83,6 +83,10 @@
     "message": "اختر",
     "description": "نص العنصر المحدد"
   },
+  "placeholder.size": {
+    "message": "اختر إعدادًا مسبقًا أو أدخل <العرض>x<الارتفاع>",
+    "description": "عنصر نائب لاختيار/إدخال الحجم (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "أدخل نص التوليد، مثل: قطة سيامية بيضاء",
     "description": "نص العنصر المحدد"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "تحميل",
     "description": "زر تحميل الصور المرجعية (يرجى تبسيط إلى 'تحميل'، لا تستخدم 'تحميل الصور')"
+  },
+  "button.confirmContinue": {
+    "message": "متابعة التبديل",
+    "description": "زر التأكيد في مربع حوار تعارض القدرات"
+  },
+  "button.cancelSwitch": {
+    "message": "إلغاء",
+    "description": "زر الإلغاء في مربع حوار تعارض القدرات"
   },
   "message.startingTask": {
     "message": "جارٍ بدء المهمة...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "فشل تحميل الصورة، يرجى المحاولة لاحقًا",
     "description": "فشل التحميل"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "تأكيد مطلوب",
+    "description": "عنوان مربع حوار تعارض القدرات"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "الإعدادات التالية المفعلة غير مدعومة في الاختيار الحالي: {fields}. الاستمرار سيؤدي إلى مسح هذه الإعدادات.",
+    "description": "محتوى مربع حوار تعارض القدرات"
+  },
+  "message.featureRemovedNotice": {
+    "message": "تم مسح الإعدادات غير المدعومة: {fields}",
+    "description": "رسالة بعد تنظيف إعدادات غير مدعومة"
   },
   "name.model": {
     "message": "النموذج",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "عدد الصور التي يتم توليدها في طلب واحد (1-15). إذا تم تعيينها إلى 1، فهي وضع صورة واحدة؛ إذا كانت أكبر من 1، يتم تفعيل مجموعة الصور تلقائيًا (sequential_image_generation=auto)، مع الحفاظ على الشخصيات والأسلوب والتفاصيل متسقة عبر الصور. يدعم فقط doubao-seedream-5.0 / 4.5 / 4.0؛ إذا تم تحميل صور مرجعية، يجب أن تفي بالشرط (عدد الصور المرجعية + عدد الصور الناتجة) ≤ 15. يتم احتساب الرسوم بناءً على عدد الصور الناتجة الفعلي.",
     "description": "وصف معلمة max_images"
+  },
+  "name.seed": {
+    "message": "البذرة العشوائية",
+    "description": "تسمية معلمة seed"
+  },
+  "description.seed": {
+    "message": "البذرة العشوائية لإعادة الإنتاج، النطاق [-1, 2147483647]. -1 يعني عشوائي في كل مرة. مدعوم فقط في doubao-seedream-3.0-t2i و doubao-seededit-3.0-i2i.",
+    "description": "شرح معلمة seed"
+  },
+  "name.guidanceScale": {
+    "message": "وزن التعليمات",
+    "description": "تسمية معلمة guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "قوة اتباع التعليمات، النطاق [1, 10]. كلما زاد الرقم، كان الناتج أقرب للتعليمات. doubao-seedream-3.0-t2i الافتراضي 2.5، doubao-seededit-3.0-i2i الافتراضي 5.5.",
+    "description": "شرح معلمة guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "صيغة الإخراج",
+    "description": "تسمية معلمة output_format"
+  },
+  "description.outputFormat": {
+    "message": "صيغة الملف للصورة المولدة، jpeg أو png، الافتراضي jpeg. مدعوم فقط في doubao-seedream-5.0.",
+    "description": "شرح معلمة output_format"
+  },
+  "size.group.tier": {
+    "message": "مستوى الدقة",
+    "description": "مجموعة مستويات الدقة في قائمة الأحجام المنسدلة (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "تلقائي",
+    "description": "مجموعة adaptive في قائمة الأحجام المنسدلة"
+  },
+  "size.group.pixel": {
+    "message": "أبعاد بكسل محددة",
+    "description": "مجموعة أبعاد البكسل في قائمة الأحجام المنسدلة"
+  },
+  "size.adaptive": {
+    "message": "تلقائي (مطابق للصورة المرجعية)",
+    "description": "تسمية خيار adaptive"
   }
 }

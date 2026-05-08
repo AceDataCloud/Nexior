@@ -55,6 +55,54 @@
     "message": "Utdata storlek för att generera bilder, vanliga värden: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Storleksbeskrivning"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (grundpris)",
+    "description": "1K-storleksgrupp, debiteras grundpris"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Förinställning (1,5× pris)",
+    "description": "2K-storleksgrupp, debiteras 1,5× pris"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Förinställning (1,5× pris)",
+    "description": "4K-storleksgrupp, debiteras 1,5× pris"
+  },
+  "name.customSize": {
+    "message": "Anpassad storlek",
+    "description": "Etikett för omkopplare för anpassad storlek"
+  },
+  "description.customSize": {
+    "message": "När aktiverad kan du ange bredd och höjd fritt (endast gpt-image-2 stöds). Måtten måste vara multipler av 16, längsta sidan ≤ 3840, totalt antal pixlar ≤ 8 294 400. Icke 1K-standardstorlekar debiteras 1,5× pris.",
+    "description": "Förklaring av anpassad storlek"
+  },
+  "name.width": {
+    "message": "Bredd",
+    "description": "Etikett för bredd-inmatningsfält"
+  },
+  "name.height": {
+    "message": "Höjd",
+    "description": "Etikett för höjd-inmatningsfält"
+  },
+  "error.customSizePositive": {
+    "message": "Bredd och höjd måste vara positiva heltal",
+    "description": "Anpassade mått måste vara positiva heltal"
+  },
+  "error.customSizeMultiple": {
+    "message": "Bredd och höjd måste vara multipler av {multiple}",
+    "description": "Anpassade mått måste vara multipler av 16"
+  },
+  "error.customSizeMin": {
+    "message": "Bredd och höjd får inte vara mindre än {min}",
+    "description": "Nedre gräns för anpassad storlek"
+  },
+  "error.customSizeMax": {
+    "message": "Längsta sidan får inte överstiga {max}",
+    "description": "Övre gräns för längsta sidan vid anpassad storlek"
+  },
+  "error.customSizePixels": {
+    "message": "Totala antalet pixlar får inte överstiga {pixels}",
+    "description": "Övre gräns för totalt antal pixlar vid anpassad storlek"
+  },
   "description.prompt": {
     "message": "Prompt för att generera eller redigera bilder",
     "description": "Promptbeskrivning"

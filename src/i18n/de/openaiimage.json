@@ -55,6 +55,54 @@
     "message": "Ausgabemaß für die Erstellung von Bildern, gängige Werte: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Größenbeschreibung"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K Standard (Basispreis)",
+    "description": "Titel der 1K Größenkategorie, berechnet zum Basispreis"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K Voreinstellung (1,5-facher Preis)",
+    "description": "Titel der 2K Größenkategorie, berechnet mit dem 1,5-fachen Preis"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K Voreinstellung (1,5-facher Preis)",
+    "description": "Titel der 4K Größenkategorie, berechnet mit dem 1,5-fachen Preis"
+  },
+  "name.customSize": {
+    "message": "Benutzerdefinierte Größe",
+    "description": "Label für den Schalter der benutzerdefinierten Größe"
+  },
+  "description.customSize": {
+    "message": "Nach Aktivierung können Breite und Höhe frei eingestellt werden (nur gpt-image-2 unterstützt). Muss ein Vielfaches von 16 sein, längste Seite ≤ 3840, Gesamtpixel ≤ 8.294.400. Nicht 1K Standardgrößen werden mit dem 1,5-fachen Preis berechnet.",
+    "description": "Beschreibung der benutzerdefinierten Größe"
+  },
+  "name.width": {
+    "message": "Breite",
+    "description": "Label für das Eingabefeld der Breite"
+  },
+  "name.height": {
+    "message": "Höhe",
+    "description": "Label für das Eingabefeld der Höhe"
+  },
+  "error.customSizePositive": {
+    "message": "Breite und Höhe müssen positive ganze Zahlen sein",
+    "description": "Die benutzerdefinierte Größe muss positive ganze Zahlen sein"
+  },
+  "error.customSizeMultiple": {
+    "message": "Breite und Höhe müssen Vielfache von {multiple} sein",
+    "description": "Die benutzerdefinierte Größe muss ein Vielfaches von 16 sein"
+  },
+  "error.customSizeMin": {
+    "message": "Breite und Höhe dürfen nicht kleiner als {min} sein",
+    "description": "Untergrenze für die benutzerdefinierte Größe"
+  },
+  "error.customSizeMax": {
+    "message": "Die längste Seite darf {max} nicht überschreiten",
+    "description": "Obergrenze für die längste Seite der benutzerdefinierten Größe"
+  },
+  "error.customSizePixels": {
+    "message": "Die Gesamtpixel dürfen {pixels} nicht überschreiten",
+    "description": "Obergrenze für die Gesamtpixel der benutzerdefinierten Größe"
+  },
   "description.prompt": {
     "message": "Aufforderung zum Erstellen oder Bearbeiten von Bildern",
     "description": "Beschreibung der Aufforderung"

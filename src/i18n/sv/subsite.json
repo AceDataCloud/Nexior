@@ -79,6 +79,10 @@
     "message": "Misslyckades med att skapa underdomän, vänligen försök igen senare.",
     "description": "Skapande misslyckades"
   },
+  "message.slugTaken": {
+    "message": "Underdomän {origin} är redan upptagen, vänligen försök med en annan.",
+    "description": "När du skapar en subdomän, är sluggen redan upptagen (backend returnerar kod=duplication)"
+  },
   "message.loadFailed": {
     "message": "Misslyckades med att ladda underdomänlistan.",
     "description": "Misslyckades med att hämta listan"
