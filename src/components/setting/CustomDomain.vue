@@ -1,14 +1,11 @@
 <template>
-  <el-dialog
-    :model-value="modelValue"
-    :title="$t('subsite.title.domains', { origin: site?.origin || '' })"
-    width="640px"
-    class="domains-dialog"
-    @update:model-value="$emit('update:modelValue', $event)"
-  >
-    <div v-loading="loading" class="domains-body">
-      <p class="tip">{{ $t('subsite.message.domainsIntro') }}</p>
+  <div class="custom-domain-settings">
+    <div class="header">
+      <p class="settings-title">{{ $t('common.settings.customDomain') }}</p>
+      <p class="settings-tip">{{ $t('subsite.message.domainsIntro') }}</p>
+    </div>
 
+    <div v-loading="loading" class="domains-body">
       <el-empty
         v-if="!loading && domains.length === 0"
         :description="$t('subsite.message.domainsEmpty')"
@@ -87,32 +84,22 @@
       <h4 class="bind-title">{{ $t('subsite.title.bindDomain') }}</h4>
       <el-form :model="bind" label-width="auto" class="form" @submit.prevent>
         <el-form-item :label="$t('subsite.field.hostname')" required>
-          <el-input
-            v-model="bind.hostname"
-            :placeholder="$t('subsite.placeholder.hostname')"
-            maxlength="253"
-            autofocus
-          />
-          <span class="tip">{{ $t('subsite.message.hostnameTip') }}</span>
+          <el-input v-model="bind.hostname" :placeholder="$t('subsite.placeholder.hostname')" maxlength="253" />
+          <span class="form-tip">{{ $t('subsite.message.hostnameTip') }}</span>
+        </el-form-item>
+        <el-form-item>
+          <el-button round type="primary" :loading="binding" :disabled="!bind.hostname.trim()" @click="onBind">
+            {{ $t('subsite.button.bindDomain') }}
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
-
-    <template #footer>
-      <span>
-        <el-button round @click="$emit('update:modelValue', false)">{{ $t('common.button.close') }}</el-button>
-        <el-button round type="primary" :loading="binding" :disabled="!bind.hostname.trim()" @click="onBind">
-          {{ $t('subsite.button.bindDomain') }}
-        </el-button>
-      </span>
-    </template>
-  </el-dialog>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
+import { defineComponent } from 'vue';
 import {
-  ElDialog,
   ElButton,
   ElEmpty,
   ElForm,
@@ -121,7 +108,8 @@ import {
   ElTag,
   ElDivider,
   ElMessage,
-  ElMessageBox
+  ElMessageBox,
+  vLoading
 } from 'element-plus';
 import { siteDomainOperator } from '@/operators';
 import type { ISite, ISiteDomain } from '@/models';
@@ -161,10 +149,21 @@ function clientValidateHostname(raw: string): { ok: true; value: string } | { ok
   return { ok: true, value: s };
 }
 
+/**
+ * Settings tab — manage custom domains (CNAME bindings + HTTPS issuance)
+ * for the **current** Site. Visibility is gated upstream by `Setting.vue`
+ * to non-main-official hosts only: the parent commercial host
+ * (studio.acedata.cloud) never owns custom domains itself, so this tab
+ * is hidden there. Each subsite (or white-label tenant) admin lands here
+ * via the new "Manage" entry from the parent's subsite list.
+ *
+ * The DOM and per-row interactions mirror the prior `SubsiteDomainsDialog`
+ * (which used to be opened per-row from the parent's subsite list); they
+ * have just been re-framed as a standalone tab targeting `state.site`.
+ */
 export default defineComponent({
-  name: 'DomainsDialog',
+  name: 'CustomDomainSetting',
   components: {
-    ElDialog,
     ElButton,
     ElEmpty,
     ElForm,
@@ -173,17 +172,9 @@ export default defineComponent({
     ElTag,
     ElDivider
   },
-  props: {
-    modelValue: {
-      type: Boolean,
-      required: true
-    },
-    site: {
-      type: Object as PropType<ISite | null>,
-      default: null
-    }
+  directives: {
+    loading: vLoading
   },
-  emits: ['update:modelValue'],
   data() {
     return {
       loading: false,
@@ -196,16 +187,13 @@ export default defineComponent({
       busy: { id: null as string | null, action: null as 'verify' | 'refresh' | 'delete' | null }
     };
   },
-  watch: {
-    modelValue(open: boolean) {
-      if (open && this.site?.id) {
-        this.fetchDomains();
-      } else if (!open) {
-        this.domains = [];
-        this.bind.hostname = '';
-        this.busy = { id: null, action: null };
-      }
+  computed: {
+    site(): ISite | undefined {
+      return this.$store.state.site;
     }
+  },
+  mounted() {
+    this.fetchDomains();
   },
   methods: {
     async fetchDomains() {
@@ -334,16 +322,29 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.domains-dialog {
+.custom-domain-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .header {
+    .settings-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin: 0 0 4px 0;
+    }
+    .settings-tip {
+      font-size: 12px;
+      color: var(--el-text-color-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
   .domains-body {
-    padding: 4px 4px 0;
+    padding: 4px 0 0;
   }
-  .tip {
-    color: var(--el-text-color-secondary);
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0 0 18px 0;
-  }
+
   :deep(.el-empty) {
     padding: 8px 0 16px;
     .el-empty__description {
@@ -352,6 +353,7 @@ export default defineComponent({
       color: var(--el-text-color-secondary);
     }
   }
+
   .domain-row {
     border: 1px solid var(--el-border-color-lighter);
     border-radius: 12px;
@@ -387,9 +389,6 @@ export default defineComponent({
       margin-top: 10px;
       font-size: 12px;
       color: var(--el-color-danger);
-      &.error {
-        color: var(--el-color-danger);
-      }
     }
     .dns-instructions {
       margin-top: 14px;
@@ -429,19 +428,22 @@ export default defineComponent({
       }
     }
   }
+
   .bind-title {
     font-size: 14px;
     margin: 4px 0 14px 0;
     color: var(--el-text-color-primary);
     font-weight: 600;
   }
-  .form .tip {
+
+  .form .form-tip {
     display: block;
     margin-top: 6px;
     font-size: 12px;
     color: var(--el-text-color-secondary);
     line-height: 1.5;
   }
+
   :deep(.el-divider) {
     margin: 20px 0;
   }

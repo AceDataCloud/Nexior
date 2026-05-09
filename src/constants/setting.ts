@@ -12,6 +12,7 @@ export const SETTING_TAB_SEO = 'seo';
 export const SETTING_TAB_DISTRIBUTION = 'distribution';
 export const SETTING_TAB_FUNCTION = 'function';
 export const SETTING_TAB_SUBSITES = 'subsites';
+export const SETTING_TAB_CUSTOM_DOMAIN = 'customDomain';
 export const SETTING_TAB_ABOUT = 'about';
 
 export type SettingTabKey =
@@ -22,4 +23,5 @@ export type SettingTabKey =
   | typeof SETTING_TAB_DISTRIBUTION
   | typeof SETTING_TAB_FUNCTION
   | typeof SETTING_TAB_SUBSITES
+  | typeof SETTING_TAB_CUSTOM_DOMAIN
   | typeof SETTING_TAB_ABOUT;
