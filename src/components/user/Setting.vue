@@ -50,6 +50,9 @@
         <div v-else-if="activeTab === SETTING_TAB_SUBSITES && isMainOfficialHost">
           <subsite-setting :auto-open-create="autoOpenCreateSubsite" />
         </div>
+        <div v-else-if="activeTab === SETTING_TAB_CUSTOM_DOMAIN && isCustomDomainVisible">
+          <custom-domain-setting />
+        </div>
         <div v-else-if="activeTab === SETTING_TAB_ABOUT">
           <about-setting @switch-tab="onSwitchTab" />
         </div>
@@ -70,7 +73,8 @@ import {
   faMagic,
   faMoneyBill,
   faInfoCircle,
-  faSitemap
+  faSitemap,
+  faGlobe
 } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
@@ -79,6 +83,7 @@ import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
 import SubsiteSetting from '@/components/setting/Subsite.vue';
+import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
 import AboutSetting from '@/components/setting/About.vue';
 import {
   SETTING_TAB_ABOUT,
@@ -89,6 +94,7 @@ import {
   SETTING_TAB_SEO,
   SETTING_TAB_SITE,
   SETTING_TAB_SUBSITES,
+  SETTING_TAB_CUSTOM_DOMAIN,
   type SettingTabKey
 } from '@/constants';
 import { isMainOfficial } from '@/utils';
@@ -107,6 +113,7 @@ export default defineComponent({
     DistributionSetting,
     FunctionSetting,
     SubsiteSetting,
+    CustomDomainSetting,
     AboutSetting
   },
   props: {
@@ -131,6 +138,7 @@ export default defineComponent({
       SETTING_TAB_DISTRIBUTION,
       SETTING_TAB_FUNCTION,
       SETTING_TAB_SUBSITES,
+      SETTING_TAB_CUSTOM_DOMAIN,
       SETTING_TAB_ABOUT,
       activeTab: SETTING_TAB_GENERAL as SettingTabKey,
       autoOpenCreateSubsite: false,
@@ -172,6 +180,19 @@ export default defineComponent({
           icon: faSitemap,
           visible: this.isMainOfficialHost
         },
+        {
+          // Custom-domain (CNAME + HTTPS) management for the *current*
+          // Site. Mirrors what used to live as a per-row "Domains" dialog
+          // on the parent's subsite list, but reframed as a tab so it
+          // surfaces only on the subsite itself (admin lands here via
+          // the parent's "Manage" entry). The main commercial host
+          // doesn't bind extra domains to itself, so it stays hidden
+          // there even for the site admin.
+          key: SETTING_TAB_CUSTOM_DOMAIN,
+          label: this.$t('common.settings.customDomain'),
+          icon: faGlobe,
+          visible: this.isCustomDomainVisible
+        },
         { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
       ];
     },
@@ -180,6 +201,12 @@ export default defineComponent({
     },
     isMainOfficialHost(): boolean {
       return isMainOfficial();
+    },
+    isCustomDomainVisible(): boolean {
+      // Custom-domain binding is only meaningful on a subsite (or any
+      // non-main-official tenant). The parent commercial host never
+      // points additional CNAMEs at itself.
+      return !this.isMainOfficialHost && this.isSiteAdmin;
     },
     dialogWidth(): string {
       // Phone-sized viewports: take almost full width so the 450px-min
