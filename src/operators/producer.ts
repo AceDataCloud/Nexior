@@ -168,7 +168,7 @@ class ProducerOperator {
     options: {
       token: string;
     }
-  ): Promise<AxiosResponse<{ data: { audio_url: string } }>> {
+  ): Promise<AxiosResponse<{ data: Array<{ file_url?: string }> | { file_url?: string; audio_url?: string } }>> {
     return await axios.post('/producer/wav', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
