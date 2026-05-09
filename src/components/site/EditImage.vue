@@ -1,35 +1,13 @@
 <template>
-  <el-dialog v-model="editing" :title="title" width="400px" class="edit-dialog">
-    <div class="edit-body">
-      <el-upload
-        v-model:file-list="fileList"
-        name="file"
-        :limit="5"
-        :multiple="true"
-        :action="uploadUrl"
-        list-type="picture"
-        :on-exceed="onExceed"
-        :on-error="onError"
-        :headers="headers"
-      >
-        <el-button round type="primary" class="btn btn-upload">
-          <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-2" />
-          {{ $t('site.button.upload') }}
-        </el-button>
-        <template #tip>
-          <div class="el-upload__tip">
-            {{ tip }}
-          </div>
-        </template>
-      </el-upload>
-    </div>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
-        <el-button round type="primary" @click="onConfirm">{{ $t('common.button.confirm') }}</el-button>
-      </span>
-    </template>
-  </el-dialog>
+  <image-cropper
+    v-model="editing"
+    :title="title"
+    :aspect-ratio="aspectRatio"
+    :output-width="outputWidth"
+    :format-hint="tip"
+    shape="rectangle"
+    @uploaded="onUploaded"
+  />
   <span class="edit" @click="editing = true">
     <el-icon class="icon">
       <edit />
@@ -39,20 +17,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElButton, ElIcon, ElMessage, ElUpload, UploadFile } from 'element-plus';
+import { ElIcon } from 'element-plus';
 import { Edit } from '@element-plus/icons-vue';
-import { getBaseUrlPlatform } from '@/utils';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import ImageCropper from '@/components/common/ImageCropper.vue';
 
 export default defineComponent({
   name: 'EditImage',
   components: {
-    ElDialog,
-    ElButton,
-    FontAwesomeIcon,
     ElIcon,
     Edit,
-    ElUpload
+    ImageCropper
   },
   props: {
     modelValue: {
@@ -66,47 +40,52 @@ export default defineComponent({
     tip: {
       type: String,
       required: true
+    },
+    /**
+     * Recommended display width of the field in px (e.g. 200 for the site
+     * logo, 32 for the favicon). Used together with `height` to derive the
+     * crop frame's aspect ratio so the user cannot save an image at a wrong
+     * shape (e.g. a wide banner into the favicon slot).
+     */
+    width: {
+      type: Number,
+      default: 200
+    },
+    height: {
+      type: Number,
+      default: 200
     }
   },
   emits: ['confirm', 'cancel'],
   data() {
     return {
-      editing: false,
-      value: this.modelValue,
-      fileList: [],
-      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
+      editing: false
     };
   },
   computed: {
-    headers() {
-      return {
-        Authorization: `Bearer ${this.$store.state.token.access}`
-      };
+    aspectRatio(): number {
+      return this.width / this.height;
     },
-    urls() {
-      // @ts-ignore
-      return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    /**
+     * Output JPEG width. We keep at least 512px on the longer edge so the
+     * uploaded asset remains crisp on hi-DPI screens, even when the on-page
+     * display size is small (e.g. a 32x32 favicon → 512x512 output).
+     */
+    outputWidth(): number {
+      const longest = Math.max(this.width, this.height);
+      const scale = Math.max(1, Math.ceil(512 / longest));
+      return this.width * scale;
     }
   },
   methods: {
-    onCancel() {
-      this.editing = false;
-    },
-    onConfirm() {
-      this.$emit('confirm', this.urls?.[0]);
-      this.editing = false;
-    },
-    onExceed() {
-      ElMessage.warning(this.$t('site.message.uploadImageExceed'));
-    },
-    onError() {
-      ElMessage.error(this.$t('site.message.uploadImageError'));
+    onUploaded(url: string) {
+      this.$emit('confirm', url);
     }
   }
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .edit {
   cursor: pointer;
   margin-left: 5px;
@@ -114,47 +93,6 @@ export default defineComponent({
   top: 2px;
   .icon {
     font-size: 14px;
-  }
-}
-
-.edit-dialog {
-  .el-dialog__header {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding-right: 48px;
-  }
-
-  .el-dialog__title {
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-  }
-
-  .el-dialog__headerbtn {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .el-dialog__body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-  }
-
-  .el-upload__tip {
-    text-align: center;
-  }
-
-  .dialog-footer {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
   }
 }
 </style>

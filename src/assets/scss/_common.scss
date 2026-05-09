@@ -314,6 +314,25 @@ html.dark .el-card {
   }
 }
 
+// Mobile clamp: most dialogs in the codebase pass a fixed pixel width
+// (e.g. PaypalPay/StripePay/AliPay/WechatPay use 500px, Status 450px,
+// chat ConfirmationDialog 480px). On a 360px phone these overflow the
+// viewport horizontally and clip their content. We let those values
+// stand on tablet/desktop and only constrain on small screens.
+//
+// `max-width` always wins over `width` per the CSS spec, so we don't
+// need `!important` and we don't need to touch every dialog.
+@media (max-width: 540px) {
+  .el-dialog {
+    max-width: calc(100vw - 24px);
+    // The default 15vh top margin combined with a tall mobile keyboard
+    // can push payment dialogs off-screen; tighten the inset so the
+    // close button stays reachable when the keyboard opens for input.
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+  }
+}
+
 html.dark .el-dialog {
   background: var(--app-glass-bg);
   backdrop-filter: blur(16px);

@@ -194,13 +194,13 @@ class SunoOperator {
     });
   }
 
-  // suno/wav - get WAV format
+  // suno/wav - get WAV format. Worker returns `data: [{ file_url }]`.
   async wav(
     data: { audio_id: string },
     options: {
       token: string;
     }
-  ): Promise<AxiosResponse<{ data: Array<{ file_url?: string }> | { file_url?: string; audio_url?: string } }>> {
+  ): Promise<AxiosResponse<{ data: Array<{ file_url: string }> }>> {
     return await axios.post('/suno/wav', data, {
       headers: {
         authorization: `Bearer ${options.token}`,
@@ -210,13 +210,25 @@ class SunoOperator {
     });
   }
 
-  // suno/midi - get MIDI data
+  // suno/midi - get structured MIDI note data. Worker returns
+  // `data: [{ state, instruments: [{ name, notes: [{pitch,start,end,velocity}] }] }]`.
+  // No URL — the caller is expected to assemble a .mid file client-side.
   async midi(
     data: { audio_id: string },
     options: {
       token: string;
     }
-  ): Promise<AxiosResponse<{ data: { midi_url: string } }>> {
+  ): Promise<
+    AxiosResponse<{
+      data: Array<{
+        state?: string;
+        instruments: Array<{
+          name?: string;
+          notes: Array<{ pitch: number; start: number; end: number; velocity: number }>;
+        }>;
+      }>;
+    }>
+  > {
     return await axios.post('/suno/midi', data, {
       headers: {
         authorization: `Bearer ${options.token}`,

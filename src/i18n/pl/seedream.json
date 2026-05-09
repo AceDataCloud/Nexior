@@ -83,6 +83,10 @@
     "message": "Wybierz",
     "description": "Placeholder wyboru"
   },
+  "placeholder.size": {
+    "message": "Wybierz preset lub wpisz <szerokość>x<wysokość>",
+    "description": "Pole zastępcze dla wyboru/wprowadzenia rozmiaru (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Wprowadź podpowiedź, np.: biały kot syjamski",
     "description": "Placeholder podpowiedzi"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Prześlij",
     "description": "Przycisk przesyłania obrazów referencyjnych (proszę uprościć do 'Prześlij')"
+  },
+  "button.confirmContinue": {
+    "message": "Kontynuuj przełączanie",
+    "description": "Przycisk potwierdzenia w oknie konfliktu funkcji"
+  },
+  "button.cancelSwitch": {
+    "message": "Anuluj",
+    "description": "Przycisk anulowania w oknie konfliktu funkcji"
   },
   "message.startingTask": {
     "message": "Rozpoczynam zadanie...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Nie udało się przesłać obrazu, spróbuj ponownie później",
     "description": "Błąd przesyłania"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Wymagana potwierdzenie",
+    "description": "Tytuł okna konfliktu funkcji"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Wybrane opcje nie obsługują następujących włączonych ustawień: {fields}. Kontynuacja spowoduje ich usunięcie.",
+    "description": "Treść okna konfliktu funkcji"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Usunięto nieobsługiwane ustawienia: {fields}",
+    "description": "Powiadomienie po oczyszczeniu ustawień nieobsługiwanych funkcji"
   },
   "name.model": {
     "message": "Model",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Liczba obrazów generowanych w jednym żądaniu (1-15). Ustawienie na 1 oznacza tryb pojedynczego obrazu; większe niż 1 automatycznie włącza generowanie serii (sequential_image_generation=auto), zachowując spójność postaci, stylu i szczegółów między obrazami. Obsługiwane tylko przez doubao-seedream-5.0 / 4.5 / 4.0; jeśli przesyłasz obrazy referencyjne, muszą spełniać warunek (liczba obrazów referencyjnych + liczba generowanych) ≤ 15. Opłaty są naliczane na podstawie rzeczywistej liczby wygenerowanych obrazów.",
     "description": "Opis parametru max_images"
+  },
+  "name.seed": {
+    "message": "Losowe ziarno",
+    "description": "Etykieta parametru seed"
+  },
+  "description.seed": {
+    "message": "Losowe ziarno do odtworzenia wyniku, zakres [-1, 2147483647]. -1 oznacza losowe za każdym razem. Obsługiwane tylko w doubao-seedream-3.0-t2i i doubao-seededit-3.0-i2i.",
+    "description": "Opis parametru seed"
+  },
+  "name.guidanceScale": {
+    "message": "Waga podpowiedzi",
+    "description": "Etykieta parametru guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Siła dopasowania do podpowiedzi, zakres [1, 10]. Im wyższa wartość, tym bardziej zgodne z podpowiedzią. doubao-seedream-3.0-t2i domyślnie 2,5, doubao-seededit-3.0-i2i domyślnie 5,5.",
+    "description": "Opis parametru guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Format wyjściowy",
+    "description": "Etykieta parametru output_format"
+  },
+  "description.outputFormat": {
+    "message": "Format pliku wygenerowanego obrazu, jpeg lub png, domyślnie jpeg. Obsługiwane tylko w doubao-seedream-5.0.",
+    "description": "Opis parametru output_format"
+  },
+  "size.group.tier": {
+    "message": "Poziomy rozdzielczości",
+    "description": "Grupa poziomów rozdzielczości w rozwijanym menu (1K-4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Dopasowanie",
+    "description": "Grupa dopasowania w rozwijanym menu rozmiarów"
+  },
+  "size.group.pixel": {
+    "message": "Konkretne wymiary w pikselach",
+    "description": "Grupa rozmiarów pikselowych w rozwijanym menu"
+  },
+  "size.adaptive": {
+    "message": "Dopasowanie (zgodne z obrazem referencyjnym)",
+    "description": "Etykieta opcji adaptive"
   }
 }

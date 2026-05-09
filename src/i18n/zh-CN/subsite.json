@@ -79,6 +79,10 @@
     "message": "创建分站失败，请稍后重试。",
     "description": "创建失败"
   },
+  "message.slugTaken": {
+    "message": "子域名 {origin} 已被使用，请换一个再试。",
+    "description": "创建分站时，slug 已被占用（后端返回 code=duplication）"
+  },
   "message.loadFailed": {
     "message": "加载分站列表失败。",
     "description": "拉列表失败"

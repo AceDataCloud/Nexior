@@ -4,7 +4,7 @@
     <navigator class="navigator" :direction="mobile ? 'row' : 'column'" />
     <application-status
       v-if="application"
-      class="fixed right-2 top-2 z-[200]"
+      class="status-floating fixed right-2 z-[200]"
       :application="application"
       :applications="applications"
       :show-price="false"
@@ -87,12 +87,19 @@ export default defineComponent({
   mounted() {
     // Fetch applications when the component is mounted
     this.initialize();
-    // Update mobile state on resize
-    window.addEventListener('resize', () => {
-      this.mobile = window.innerWidth < 768;
-    });
+    // Update mobile state on resize. Stored as a stable reference so that
+    // beforeUnmount can remove it — Main.vue is re-mounted on every
+    // service-page navigation, so the anonymous-arrow version was leaking
+    // one listener per visit, all of which kept the mounted instance alive.
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onResize);
   },
   methods: {
+    onResize() {
+      this.mobile = window.innerWidth < 768;
+    },
     async initialize() {
       const runId = ++this.initializeRunId;
       this.initialized = false;
@@ -105,10 +112,12 @@ export default defineComponent({
         return;
       }
       console.debug('Fetched all applications', this.applications);
-      // Check if we need to apply for a global application
+      // First-time users: silently create the global application. The welcome
+      // toast only fires inside onAutoApply(), so users who already had a
+      // global application (returning visitors, top-ups, multi-device logins)
+      // never see the credit-grant message.
       if (this.$store.state.applications?.length === 0) {
-        // If no global applications exist, we need to apply
-        this.applying = true;
+        await this.onAutoApply();
       }
       // set the application if it exists
       const currentApplication = this.$store.state[this.appName]?.application;
@@ -123,23 +132,40 @@ export default defineComponent({
       this.initialized = true;
     },
     onApply() {
-      // Only can apply for global application, not individual application
-      applicationOperator
-        .create({
+      // Legacy entry kept for the <application-confirm> dialog (no longer
+      // auto-opened, but still emits 'apply' if some other path triggers it).
+      this.onAutoApply();
+    },
+    async onAutoApply() {
+      try {
+        await applicationOperator.create({
           type: IApplicationType.USAGE,
           scope: IApplicationScope.GLOBAL,
           user_id: this.$store.getters.user.id
-        })
-        .then(() => {
-          ElMessage.success(this.$t('application.message.applySuccessfully'));
-          this.initialize();
-          this.applying = false;
-        })
-        .catch((error) => {
-          if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
-            ElMessage.error(this.$t('application.message.alreadyApplied'));
-          }
         });
+        this.applying = false;
+        await this.$store.dispatch('getApplications');
+        this.showWelcomeToast();
+      } catch (error: any) {
+        if (error?.response?.data?.code === ERROR_CODE_DUPLICATION) {
+          // Backend already had the global app — refresh and continue silently.
+          await this.$store.dispatch('getApplications');
+        } else {
+          ElMessage.error(this.$t('application.message.applyFailed'));
+        }
+      }
+    },
+    showWelcomeToast() {
+      // Called only after a successful applicationOperator.create() for a
+      // GLOBAL application — i.e. the user genuinely just got their first
+      // free-credit grant. No localStorage gate needed.
+      const globalApp = this.$store.state.applications?.[0];
+      const credits = Math.floor(globalApp?.remaining_amount ?? 0);
+      const message =
+        credits > 0
+          ? this.$t('application.message.welcomeWithCredits', { credits })
+          : this.$t('application.message.welcomeNoCredits');
+      ElMessage({ message: message as string, type: 'success', duration: 6000, showClose: true });
     }
   }
 });
@@ -166,6 +192,14 @@ export default defineComponent({
   }
 }
 
+// Wallet / balance pill in the top-right corner. On iOS with a notch /
+// Dynamic Island the default `top: 0.5rem` (Tailwind `top-2`) would draw
+// under the inset; nudge it down by `safe-area-inset-top` instead so it
+// stays clear on every device while keeping a sensible web fallback.
+.status-floating {
+  top: max(0.5rem, env(safe-area-inset-top));
+}
+
 @media (max-width: 767px) {
   .wrapper {
     width: 100%;
@@ -173,13 +207,16 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     .main {
-      height: calc(100% - 60px);
+      // Bottom navigator is 60px tall + iOS home-indicator inset.
+      height: calc(100% - 60px - env(safe-area-inset-bottom));
       width: 100%;
       flex: 1;
     }
     .navigator {
       width: 100%;
-      height: 60px;
+      height: calc(60px + env(safe-area-inset-bottom));
+      // Push the actual links above the home indicator on iPhone.
+      padding-bottom: env(safe-area-inset-bottom);
     }
   }
 }

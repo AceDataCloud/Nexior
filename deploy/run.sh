@@ -9,4 +9,4 @@ kubectl apply -f deploy/production/studio-ingress.yaml
 # with on-demand Let's Encrypt TLS). Idempotent; safe to re-apply on every
 # deploy. The Service provisions a separate public CLB the first time it
 # runs; subsequent applies are no-ops on the LB.
-kubectl apply -f deploy/production/tenant-proxy.yaml
+kubectl apply -f deploy/production/studio-proxy.yaml

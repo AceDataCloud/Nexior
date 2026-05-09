@@ -55,6 +55,54 @@
     "message": "Izlazne dimenzije za generisanje slika, uobičajene vrednosti: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Objašnjenje dimenzija"
   },
+  "sizeGroup.standard1k": {
+    "message": "1K standard (osnovna cena)",
+    "description": "Naslov grupe za 1K veličine, naplaćuje se po osnovnoj ceni"
+  },
+  "sizeGroup.preset2k": {
+    "message": "2K predložena (1,5× cena)",
+    "description": "Naslov grupe za 2K veličine, naplaćuje se 1,5 puta osnovne cene"
+  },
+  "sizeGroup.preset4k": {
+    "message": "4K predložena (1,5× cena)",
+    "description": "Naslov grupe za 4K veličine, naplaćuje se 1,5 puta osnovne cene"
+  },
+  "name.customSize": {
+    "message": "Prilagođena veličina",
+    "description": "Oznaka za prekidač prilagođene veličine"
+  },
+  "description.customSize": {
+    "message": "Omogućeno, možete slobodno postaviti širinu i visinu (samo podržano za gpt-image-2). Mora biti deljivo sa 16, najduža stranica ≤ 3840, ukupni pikseli ≤ 8.294.400. Veličine koje nisu standardne 1K naplaćuju se po 1,5 puta osnovne cene.",
+    "description": "Objašnjenje za prilagođenu veličinu"
+  },
+  "name.width": {
+    "message": "Širina",
+    "description": "Oznaka za polje unosa širine"
+  },
+  "name.height": {
+    "message": "Visina",
+    "description": "Oznaka za polje unosa visine"
+  },
+  "error.customSizePositive": {
+    "message": "Širina i visina moraju biti pozitivni celobrojni brojevi",
+    "description": "Prilagođena veličina mora biti pozitivan ceo broj"
+  },
+  "error.customSizeMultiple": {
+    "message": "Širina i visina moraju biti deljive sa {multiple}",
+    "description": "Prilagođena veličina mora biti deljiva sa 16"
+  },
+  "error.customSizeMin": {
+    "message": "Širina i visina ne smeju biti manje od {min}",
+    "description": "Donja granica za prilagođenu veličinu"
+  },
+  "error.customSizeMax": {
+    "message": "Najduža stranica ne sme biti veća od {max}",
+    "description": "Gornja granica najduže stranice za prilagođenu veličinu"
+  },
+  "error.customSizePixels": {
+    "message": "Ukupan broj piksela ne sme prelaziti {pixels}",
+    "description": "Gornja granica ukupnih piksela za prilagođenu veličinu"
+  },
   "description.prompt": {
     "message": "Uputstvo za generisanje ili uređivanje slike",
     "description": "Opis uputstva"

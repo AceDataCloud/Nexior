@@ -4,7 +4,7 @@ export const ROUTE_DOWNLOAD = 'download';
 export const ROUTE_AUTH_LOGIN = 'auth-login';
 export const ROUTE_AUTH_CALLBACK = 'auth-callback';
 
-export const ROUTE_SITE_INDEX = 'site-index';
+export const ROUTE_SETTINGS_INDEX = 'settings-index';
 
 export const ROUTE_CHATGPT_CONVERSATION = 'chatgpt-conversation';
 export const ROUTE_CHATGPT_CONVERSATION_NEW = 'chatgpt-conversation-new';

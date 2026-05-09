@@ -7,7 +7,7 @@
  * tenant CNAME their own apex/sub from a registrar they control.
  *
  * The actual TLS provisioning happens at the edge (Caddy +
- * Let's Encrypt on-demand-TLS, see Nexior `deploy/production/tenant-proxy.yaml`),
+ * Let's Encrypt on-demand-TLS, see Nexior `deploy/production/studio-proxy.yaml`),
  * so the row only carries `hostname`, `status`, `proxy_cname`, and
  * audit fields. `dns_instructions` is a UI-friendly hint the backend
  * appends to the GET / verify response so the page doesn't have to

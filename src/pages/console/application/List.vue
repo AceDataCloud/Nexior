@@ -90,7 +90,12 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('application.field.type')" width="90px">
+              <el-table-column
+                :label="$t('application.field.type')"
+                width="90px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <el-tag v-if="scope.row?.type === 'Period'" type="success" effect="dark" round>
                     {{ $t('application.type.period') }}
@@ -119,7 +124,8 @@
                 prop="used_amount"
                 :label="$t('application.field.usedAmount')"
                 width="150px"
-                class-name="text-center"
+                class-name="hidden sm:table-cell text-center"
+                label-class-name="hidden sm:table-cell"
               >
                 <template #default="scope">
                   <span>{{ getUsedAmount(scope.row) }}</span>
@@ -129,7 +135,8 @@
                 prop="allow_consume_global"
                 :label="$t('application.field.allowConsumeGlobal')"
                 width="120px"
-                class-name="text-center"
+                class-name="hidden sm:table-cell text-center"
+                label-class-name="hidden sm:table-cell"
               >
                 <template #default="scope">
                   <el-switch
@@ -141,7 +148,12 @@
                   />
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('application.field.expiredAt')" width="180px">
+              <el-table-column
+                :label="$t('application.field.expiredAt')"
+                width="180px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <span v-if="scope.row.expired_at" class="expired-at">{{ $dayjs.format(scope.row.expired_at) }}</span>
                 </template>

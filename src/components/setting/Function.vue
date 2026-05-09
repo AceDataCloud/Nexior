@@ -34,6 +34,8 @@
               :model-value="site.features?.[feature]?.wechat?.qr"
               :title="$t('site.title.editQR')"
               :tip="$t('site.message.editQRTip')"
+              :width="200"
+              :height="200"
               @confirm="
                 updateFeature(feature, {
                   wechat: {

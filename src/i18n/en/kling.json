@@ -491,6 +491,14 @@
     "message": "4K mode is selected, camera control is unavailable; please switch to std / pro and then enable.",
     "description": "Reason for camera control being disabled"
   },
+  "description.cameraControlDisabledImage2Video": {
+    "message": "Camera control is not supported when a start-frame image is uploaded (image-to-video). Remove the start-frame image to use camera control.",
+    "description": "Reason for camera control being disabled (image2video)"
+  },
+  "description.cameraControlNotSupported": {
+    "message": "Camera control is not supported by the current model / mode / duration combination. Adjust the configuration first to enable it.",
+    "description": "Reason for camera control being disabled (model does not support it)"
+  },
   "status.pending": {
     "message": "Pending",
     "description": "The waiting status of the task"

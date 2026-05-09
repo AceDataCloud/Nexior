@@ -43,6 +43,8 @@
           :model-value="site.logo"
           :title="$t('site.title.editLogo')"
           :tip="$t('site.message.editLogoTip')"
+          :width="240"
+          :height="72"
           @confirm="onSave({ logo: $event })"
         />
       </div>
@@ -61,6 +63,8 @@
           :model-value="site.favicon"
           :title="$t('site.title.editFavicon')"
           :tip="$t('site.message.editFaviconTip')"
+          :width="128"
+          :height="128"
           @confirm="onSave({ favicon: $event })"
         />
       </div>

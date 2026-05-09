@@ -25,9 +25,17 @@ export default defineComponent({
     };
   },
   mounted() {
-    window.addEventListener('resize', () => {
+    // Stable reference so beforeUnmount can remove it — see Main.vue for
+    // the same pattern; without removal each navigation leaked one listener.
+    window.addEventListener('resize', this.onResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  },
+  methods: {
+    onResize() {
       this.mobile = window.innerWidth < 768;
-    });
+    }
   }
 });
 </script>
@@ -79,22 +87,27 @@ export default defineComponent({
     flex-direction: column;
     .navigator {
       width: 100%;
-      height: 60px;
+      // Reserve room for the iOS home indicator below the navigator links.
+      height: calc(60px + env(safe-area-inset-bottom));
+      padding-bottom: env(safe-area-inset-bottom);
       position: fixed;
       bottom: 0;
       z-index: 10000;
     }
     .main {
-      height: calc(100% - 60px);
+      height: calc(100% - 60px - env(safe-area-inset-bottom));
       width: 100%;
       flex: 1;
       display: flex;
       flex-direction: column;
       .panel {
         width: 100%;
-        padding: 30px;
+        // 30px x 2 padding on a 360px phone leaves 300px for tables that
+        // hardcode ~1100px of column widths. Tighten to 12px on mobile so
+        // the el-table container has more room before horizontal scroll.
+        padding: 12px;
         background-color: var(--el-bg-color-page);
-        padding-bottom: 80px;
+        padding-bottom: calc(80px + env(safe-area-inset-bottom));
         box-sizing: border-box;
         overflow-x: hidden;
         overflow-y: auto;

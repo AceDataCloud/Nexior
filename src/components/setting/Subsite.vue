@@ -26,7 +26,7 @@
             <span>{{ formatDate(row.created_at) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('subsite.field.actions')" width="260" fixed="right" align="right">
+        <el-table-column :label="$t('subsite.field.actions')" width="200" fixed="right" align="right">
           <template #default="{ row }">
             <span class="row-actions">
               <el-button size="small" round @click="onOpenSite(row)">
@@ -34,9 +34,6 @@
               </el-button>
               <el-button size="small" round @click="onManageSite(row)">
                 {{ $t('subsite.button.manage') }}
-              </el-button>
-              <el-button size="small" round type="primary" plain @click="onOpenDomains(row)">
-                {{ $t('subsite.button.domains') }}
               </el-button>
             </span>
           </template>
@@ -77,8 +74,6 @@
         </span>
       </template>
     </el-dialog>
-
-    <domains-dialog v-model="domainsDialog.visible" :site="domainsDialog.site" />
   </div>
 </template>
 
@@ -101,7 +96,6 @@ import {
 import { Plus } from '@element-plus/icons-vue';
 import { siteOperator } from '@/operators';
 import type { ISite } from '@/models';
-import DomainsDialog from '@/components/setting/SubsiteDomainsDialog.vue';
 
 const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
 
@@ -126,8 +120,7 @@ export default defineComponent({
     ElDialog,
     ElForm,
     ElFormItem,
-    ElInput,
-    DomainsDialog
+    ElInput
   },
   directives: {
     loading: vLoading
@@ -153,10 +146,6 @@ export default defineComponent({
           slug: '',
           title: ''
         }
-      },
-      domainsDialog: {
-        visible: false,
-        site: null as ISite | null
       }
     };
   },
@@ -266,8 +255,21 @@ export default defineComponent({
             /* user dismissed */
           });
       } catch (e: any) {
-        const detail = e?.response?.data?.origin || e?.response?.data?.detail || e?.message;
-        ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.createFailed'));
+        const resp = e?.response?.data;
+        // Backend returns `{ detail: { origin: '...' }, code: 'duplication' }`
+        // for slug collisions — show a localized "already taken" message
+        // and keep the dialog open so the user can edit the slug instead
+        // of dumping raw JSON via ElMessage.
+        if (resp?.code === 'duplication') {
+          ElMessage.error(this.$t('subsite.message.slugTaken', { origin }));
+          return;
+        }
+        // Pull whatever readable string the server gave us (legacy paths
+        // may still respond with a top-level `origin` array, or a string
+        // `detail`). Anything non-string falls back to the generic copy.
+        const raw = resp?.detail?.origin ?? resp?.origin ?? resp?.detail ?? e?.message;
+        const message = Array.isArray(raw) ? raw[0] : raw;
+        ElMessage.error(typeof message === 'string' && message ? message : this.$t('subsite.message.createFailed'));
       } finally {
         this.creating.submitting = false;
       }
@@ -278,11 +280,7 @@ export default defineComponent({
     },
     onManageSite(row: ISite) {
       if (!row.origin) return;
-      window.open(`https://${row.origin}/site`, '_blank', 'noopener');
-    },
-    onOpenDomains(row: ISite) {
-      this.domainsDialog.site = row;
-      this.domainsDialog.visible = true;
+      window.open(`https://${row.origin}/settings`, '_blank', 'noopener');
     },
     rowUrl(row: ISite) {
       return row.origin ? `https://${row.origin}/` : '#';

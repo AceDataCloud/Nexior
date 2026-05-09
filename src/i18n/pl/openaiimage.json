@@ -55,6 +55,54 @@
     "message": "Rozmiar wyjściowy obrazu do generowania, popularne wartości: 1024x1024, 1536x1024, 1024x1536.",
     "description": "Opis rozmiaru"
   },
+  "sizeGroup.standard1k": {
+    "message": "Standard 1K (cena podstawowa)",
+    "description": "Tytuł grupy rozmiarów 1K, rozliczanej według ceny podstawowej"
+  },
+  "sizeGroup.preset2k": {
+    "message": "Preset 2K (cena 1,5×)",
+    "description": "Tytuł grupy rozmiarów 2K, rozliczanej w cenie 1,5×"
+  },
+  "sizeGroup.preset4k": {
+    "message": "Preset 4K (cena 1,5×)",
+    "description": "Tytuł grupy rozmiarów 4K, rozliczanej w cenie 1,5×"
+  },
+  "name.customSize": {
+    "message": "Niestandardowy rozmiar",
+    "description": "Etykieta przełącznika niestandardowego rozmiaru"
+  },
+  "description.customSize": {
+    "message": "Po włączeniu można swobodnie ustawić szerokość i wysokość (obsługiwane tylko przez gpt-image-2). Wymiary muszą być wielokrotnością 16, dłuższy bok ≤ 3840, łączna liczba pikseli ≤ 8 294 400. Niestandardowe rozmiary inne niż standard 1K są rozliczane w cenie 1,5×.",
+    "description": "Opis niestandardowego rozmiaru"
+  },
+  "name.width": {
+    "message": "Szerokość",
+    "description": "Etykieta pola szerokości"
+  },
+  "name.height": {
+    "message": "Wysokość",
+    "description": "Etykieta pola wysokości"
+  },
+  "error.customSizePositive": {
+    "message": "Szerokość i wysokość muszą być dodatnimi liczbami całkowitymi",
+    "description": "Niestandardowy rozmiar musi składać się z dodatnich liczb całkowitych"
+  },
+  "error.customSizeMultiple": {
+    "message": "Szerokość i wysokość muszą być wielokrotnością {multiple}",
+    "description": "Niestandardowy rozmiar musi być wielokrotnością 16"
+  },
+  "error.customSizeMin": {
+    "message": "Szerokość i wysokość nie mogą być mniejsze niż {min}",
+    "description": "Minimalny limit dla niestandardowego rozmiaru"
+  },
+  "error.customSizeMax": {
+    "message": "Dłuższy bok nie może przekraczać {max}",
+    "description": "Maksymalna długość dłuższego boku dla niestandardowego rozmiaru"
+  },
+  "error.customSizePixels": {
+    "message": "Łączna liczba pikseli nie może przekraczać {pixels}",
+    "description": "Maksymalna liczba pikseli dla niestandardowego rozmiaru"
+  },
   "description.prompt": {
     "message": "Podpowiedź do generowania lub edytowania obrazu",
     "description": "Opis podpowiedzi"

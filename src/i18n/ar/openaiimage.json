@@ -55,6 +55,54 @@
     "message": "حجم الإخراج المستخدم لإنشاء الصورة، القيم الشائعة: 1024x1024، 1536x1024، 1024x1536.",
     "description": "وصف الحجم"
   },
+  "sizeGroup.standard1k": {
+    "message": "معيار 1K (سعر أساسي)",
+    "description": "عنوان مجموعة حجم 1K، يتم احتساب السعر بالسعر الأساسي"
+  },
+  "sizeGroup.preset2k": {
+    "message": "إعداد مسبق 2K (سعر 1.5)",
+    "description": "عنوان مجموعة حجم 2K، يتم احتساب السعر بمعدل 1.5"
+  },
+  "sizeGroup.preset4k": {
+    "message": "إعداد مسبق 4K (سعر 1.5)",
+    "description": "عنوان مجموعة حجم 4K، يتم احتساب السعر بمعدل 1.5"
+  },
+  "name.customSize": {
+    "message": "حجم مخصص",
+    "description": "علامة تبديل الحجم المخصص"
+  },
+  "description.customSize": {
+    "message": "عند التفعيل، يمكنك ضبط العرض والارتفاع بحرية (يدعم فقط gpt-image-2). يجب أن تكون مضاعفات 16، وأقصى طول ≤ 3840، وإجمالي بكسل ≤ 8,294,400. سيتم احتساب الأسعار للمقاسات غير القياسية 1K بمعدل 1.5.",
+    "description": "وصف الحجم المخصص"
+  },
+  "name.width": {
+    "message": "عرض",
+    "description": "علامة حقل إدخال العرض"
+  },
+  "name.height": {
+    "message": "ارتفاع",
+    "description": "علامة حقل إدخال الارتفاع"
+  },
+  "error.customSizePositive": {
+    "message": "يجب أن تكون الأبعاد أعداد صحيحة موجبة",
+    "description": "يجب أن تكون الأبعاد المخصصة أعداد صحيحة موجبة"
+  },
+  "error.customSizeMultiple": {
+    "message": "يجب أن يكون العرض والارتفاع مضاعفات {multiple}",
+    "description": "يجب أن تكون الأبعاد المخصصة مضاعفات 16"
+  },
+  "error.customSizeMin": {
+    "message": "لا يمكن أن يكون العرض والارتفاع أقل من {min}",
+    "description": "حد أدنى للحجم المخصص"
+  },
+  "error.customSizeMax": {
+    "message": "لا يمكن أن يتجاوز أقصى طول {max}",
+    "description": "حد أقصى لطول الجانب في الحجم المخصص"
+  },
+  "error.customSizePixels": {
+    "message": "لا يمكن أن يتجاوز إجمالي البكسل {pixels}",
+    "description": "حد أقصى لإجمالي بكسل الحجم المخصص"
+  },
   "description.prompt": {
     "message": "نص التوليد أو التحرير للصورة",
     "description": "وصف نص التوليد"

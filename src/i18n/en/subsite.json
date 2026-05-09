@@ -79,6 +79,10 @@
     "message": "Failed to create subsite, please try again later.",
     "description": "Failure message for creation"
   },
+  "message.slugTaken": {
+    "message": "The subdomain {origin} is already taken. Please choose a different one.",
+    "description": "Shown when the chosen slug collides with an existing subsite (backend returns code=duplication)."
+  },
   "message.loadFailed": {
     "message": "Failed to load the subsite list.",
     "description": "Failure message for loading the list"

@@ -79,6 +79,10 @@
     "message": "サブサイトの作成に失敗しました。後でもう一度お試しください。",
     "description": "作成失敗"
   },
+  "message.slugTaken": {
+    "message": "サブドメイン {origin} はすでに使用されています。別のものを試してください。",
+    "description": "サブサイト作成時に、slug がすでに使用されている場合（バックエンドから code=duplication が返された場合）"
+  },
   "message.loadFailed": {
     "message": "サブサイトリストの読み込みに失敗しました。",
     "description": "リストの取得失敗"

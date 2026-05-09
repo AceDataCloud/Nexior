@@ -27,6 +27,17 @@ jobs:
       - name: Run lint
         run: npm run lint
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: i18n key coverage
+        # Block any PR (including auto-translate PRs) where any non-base
+        # locale is missing zh-CN keys. See translate_i18n.py for the
+        # diff-fill translator that prevents the gap in the first place.
+        run: python3 scripts/check_i18n_coverage.py
+
       - name: Run tests
         run: npm run test:run
 

@@ -99,7 +99,12 @@
                   <span>{{ scope.row?.api?.title }}</span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('usage.field.statusCode')" width="120px">
+              <el-table-column
+                :label="$t('usage.field.statusCode')"
+                width="120px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <span>{{ scope.row.status_code }}</span>
                 </template>
@@ -169,7 +174,8 @@
                 prop="trace_id"
                 :label="$t('application.field.traceId')"
                 width="200px"
-                class-name="text-center"
+                class-name="hidden sm:table-cell text-center"
+                label-class-name="hidden sm:table-cell"
               >
                 <template #default="scope">
                   <span class="key">{{ scope.row.trace_id }}</span>
@@ -178,7 +184,12 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('usage.field.createdAt')" width="200px">
+              <el-table-column
+                :label="$t('usage.field.createdAt')"
+                width="200px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
@@ -231,7 +242,12 @@
                   </el-tag>
                 </template>
               </el-table-column>
-              <el-table-column :label="$t('usage.field.createdAt')" width="200px">
+              <el-table-column
+                :label="$t('usage.field.createdAt')"
+                width="200px"
+                class-name="hidden sm:table-cell"
+                label-class-name="hidden sm:table-cell"
+              >
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>

@@ -83,6 +83,10 @@
     "message": "Вибрати",
     "description": "Плейсхолдер для вибору"
   },
+  "placeholder.size": {
+    "message": "Виберіть пресет або введіть <ширина>x<висота>",
+    "description": "Плейсхолдер для вибору/введення розміру (el-select allow-create)"
+  },
   "placeholder.prompt": {
     "message": "Введіть підказку, наприклад: білий сіамський кіт",
     "description": "Плейсхолдер для підказки"
@@ -94,6 +98,14 @@
   "button.uploadImageUrls": {
     "message": "Завантажити",
     "description": "Кнопка для завантаження посилань на зображення (спростити до 'Завантажити')"
+  },
+  "button.confirmContinue": {
+    "message": "Продовжити перемикання",
+    "description": "Кнопка підтвердження у вікні конфлікту можливостей"
+  },
+  "button.cancelSwitch": {
+    "message": "Скасувати",
+    "description": "Кнопка скасування у вікні конфлікту можливостей"
   },
   "message.startingTask": {
     "message": "Запуск завдання...",
@@ -118,6 +130,18 @@
   "message.uploadImageError": {
     "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз пізніше",
     "description": "Помилка завантаження"
+  },
+  "message.featureNotSupportedTitle": {
+    "message": "Потрібне підтвердження",
+    "description": "Заголовок вікна конфлікту можливостей"
+  },
+  "message.featureNotSupportedBody": {
+    "message": "Обрані налаштування не підтримують активовані параметри: {fields}. Продовження призведе до їх очищення.",
+    "description": "Основний текст у вікні конфлікту можливостей"
+  },
+  "message.featureRemovedNotice": {
+    "message": "Непідтримувані налаштування очищено: {fields}",
+    "description": "Повідомлення після очищення конфліктних налаштувань"
   },
   "name.model": {
     "message": "Модель",
@@ -150,5 +174,45 @@
   "description.maxImages": {
     "message": "Кількість зображень, що генеруються за один запит (1-15). Якщо встановлено 1, то це режим одиночного зображення; більше 1 автоматично активує групу зображень (sequential_image_generation=auto), зберігаючи персонажа, стиль та деталі між зображеннями. Підтримуються лише doubao-seedream-5.0 / 4.5 / 4.0; якщо одночасно завантажуються посилання на зображення, потрібно дотримуватись (кількість посилань + кількість згенерованих) ≤ 15. Оплата за фактичну кількість згенерованих зображень.",
     "description": "Опис параметра max_images"
+  },
+  "name.seed": {
+    "message": "Випадкове зерно",
+    "description": "Позначка параметра seed"
+  },
+  "description.seed": {
+    "message": "Випадкове зерно для відтворення, діапазон [-1, 2147483647]. -1 означає випадкове при кожному запуску. Підтримується тільки doubao-seedream-3.0-t2i та doubao-seededit-3.0-i2i.",
+    "description": "Опис параметра seed"
+  },
+  "name.guidanceScale": {
+    "message": "Вага підказки",
+    "description": "Позначка параметра guidance_scale"
+  },
+  "description.guidanceScale": {
+    "message": "Інтенсивність дотримання підказки, діапазон [1, 10]. Чим більше значення, тим точніше відповідність підказці. doubao-seedream-3.0-t2i за замовчуванням 2.5, doubao-seededit-3.0-i2i за замовчуванням 5.5.",
+    "description": "Опис параметра guidance_scale"
+  },
+  "name.outputFormat": {
+    "message": "Формат виводу",
+    "description": "Позначка параметра output_format"
+  },
+  "description.outputFormat": {
+    "message": "Формат файлу згенерованого зображення: jpeg або png, за замовчуванням jpeg. Підтримується тільки doubao-seedream-5.0.",
+    "description": "Опис параметра output_format"
+  },
+  "size.group.tier": {
+    "message": "Рівень роздільної здатності",
+    "description": "Група рівнів роздільної здатності у випадаючому списку (1K–4K)"
+  },
+  "size.group.adaptive": {
+    "message": "Адаптивний",
+    "description": "Група 'Адаптивний' у випадаючому списку розмірів"
+  },
+  "size.group.pixel": {
+    "message": "Конкретні піксельні розміри",
+    "description": "Група піксельних розмірів у випадаючому списку"
+  },
+  "size.adaptive": {
+    "message": "Адаптивний (як на зразку)",
+    "description": "Позначка опції adaptive"
   }
 }

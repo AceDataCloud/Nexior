@@ -132,7 +132,7 @@
     "description": "Naziv modela usluge, tj. DeepSeek V4 Flash"
   },
   "model.deepseekV4FlashDescription": {
-    "message": "Najnovija generacija laganog flagship modela, 1M konteksta",
+    "message": "Najnovija generacija laganog flagship modela, 1M kontekst",
     "description": "Opis DeepSeek V4 Flash modela"
   },
   "model.grok4": {
@@ -188,7 +188,7 @@
     "description": "Ime modela usluge, tj. Claude Sonnet 4.6"
   },
   "model.claudeSonnet46Description": {
-    "message": "Pogodno za većinu zadataka",
+    "message": "Pogodan za većinu zadataka",
     "description": "Opis Claude Sonnet 4.6 modela"
   },
   "model.claudeHaiku45": {
@@ -212,7 +212,7 @@
     "description": "Naziv modela usluge, tj. Kimi K2 razmišljanje"
   },
   "model.kimiK2ThinkingDescription": {
-    "message": "Pogodno za razmišljanje i duboko razumevanje",
+    "message": "Pogodan za razmišljanje i duboka pitanja",
     "description": "Opis Kimi K2 razmišljanje modela"
   },
   "model.kimiK2ThinkingTurbo": {
@@ -276,7 +276,7 @@
     "description": "Poruka na vebu koja obaveštava korisnika o besplatnom probanju"
   },
   "message.question1": {
-    "message": "Kreirajte plan obuke",
+    "message": "Kreiraj plan obuke",
     "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da napiše JavaScript kod koji ispisuje Hello World"
   },
   "message.question2": {
@@ -289,7 +289,7 @@
   },
   "message.question4": {
     "message": "Iskusite Seul kao lokalni",
-    "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da objasni uticaj virtuelne stvarnosti na umetničko stvaralaštvo"
+    "description": "Primer pitanja za započinjanje razgovora, traži od korisnika da objasni kakav uticaj ima virtuelna stvarnost na umetničko stvaralaštvo"
   },
   "message.question5": {
     "message": "Koji je veći, 9.8 ili 9.11?",
@@ -325,7 +325,7 @@
   },
   "message.errorTooManyRequests": {
     "message": "Previše zahteva, molimo pokušajte ponovo kasnije",
-    "description": "Poruka na vebu koja obaveštava korisnika da su njegovi zahtevi previše česti, molimo pokušajte ponovo kasnije"
+    "description": "Poruka na vebu koja obaveštava korisnika da su njegovi zahtevi prečesti, molimo pokušajte ponovo kasnije"
   },
   "message.errorBusy": {
     "message": "Server je zauzet, pokušajte ponovo kasnije.",
@@ -400,15 +400,15 @@
     "description": "Naziv grupe na vebu, tj. ranije."
   },
   "connector.authFailed": {
-    "message": "Autorizacija nije uspela, pokušajte ponovo.",
-    "description": "Poruka o neuspešnoj autorizaciji."
+    "message": "Autentifikacija nije uspela, pokušajte ponovo.",
+    "description": "Poruka o neuspešnoj autentifikaciji."
   },
   "connector.processing": {
-    "message": "Obrada autorizacije...",
+    "message": "Obrada autentifikacije...",
     "description": "Poruka o obradi OAuth povratnog poziva."
   },
   "connector.authSuccess": {
-    "message": "Autorizacija uspešna!",
+    "message": "Autentifikacija uspešna!",
     "description": "Poruka o uspešnoj OAuth povratnoj informaciji."
   },
   "connector.closeWindow": {
@@ -425,19 +425,19 @@
   },
   "composer.addAction": {
     "message": "Dodaj sadržaj",
-    "description": "Poruka koja se prikazuje ispod ulaznog okvira, dugme sa plusom koje omogućava otvaranje za upload fajlova, veština ili upravljanje vezama."
+    "description": "Poruka koja se prikazuje ispod ulaznog okvira kada se pritisne dugme plus, omogućava upload fajlova, otvaranje veština ili upravljanje vezama."
   },
   "composer.addFiles": {
     "message": "Dodaj fotografije ili fajlove",
-    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: upload slika ili fajlova."
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: upload slika ili fajlova."
   },
   "composer.skills": {
     "message": "Veštine",
-    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: otvori upravljanje veštinama."
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: otvori upravljanje veštinama."
   },
   "composer.connections": {
     "message": "Veze",
-    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme sa plusom: otvori upravljanje vezama."
+    "description": "Stavka u meniju koji se pojavljuje kada se pritisne dugme plus: otvori upravljanje vezama."
   },
   "agent.title": {
     "message": "Desktop agent",
@@ -445,15 +445,15 @@
   },
   "agent.tooltip": {
     "message": "Desktop agent",
-    "description": "Poruka koja se prikazuje kada se prelazi preko dugmeta agenta."
+    "description": "Poruka koja se prikazuje kada se pređe preko dugmeta agenta."
   },
   "agent.connected": {
     "message": "Povezano",
-    "description": "Status agenta koji je povezan."
+    "description": "Status agenta kada je povezan."
   },
   "agent.notConnected": {
     "message": "Nije povezano",
-    "description": "Status agenta koji nije povezan."
+    "description": "Status agenta kada nije povezan."
   },
   "agent.description": {
     "message": "Povežite desktop agenta da biste pristupili lokalnim fajlovima, izvršavali komande i koristili lokalni MCP server u AI razgovoru.",
@@ -485,19 +485,31 @@
   },
   "askUserQuestion.submit": {
     "message": "Pošalji",
-    "description": "Dugme za slanje na kartici ask-user-question"
+    "description": "Dugme za slanje poslednjeg pitanja u ask-user-question čarobnjaku"
   },
-  "askUserQuestion.skip": {
-    "message": "Preskoči",
-    "description": "Dugme za preskakanje na kartici ask-user-question"
+  "askUserQuestion.next": {
+    "message": "Sledeće pitanje",
+    "description": "Napredovanje na sledeće pitanje u ask-user-question čarobnjaku"
+  },
+  "askUserQuestion.back": {
+    "message": "Prethodno pitanje",
+    "description": "Povratak na prethodno pitanje u ask-user-question čarobnjaku"
+  },
+  "askUserQuestion.skipAll": {
+    "message": "Preskoči sve",
+    "description": "Preskoči ceo ask-user-question čarobnjak i nastavi bez odgovora"
   },
   "askUserQuestion.other": {
-    "message": "Ostalo",
-    "description": "Oznaka za unos prilagođenog odgovora na kartici ask-user-question"
+    "message": "Drugo",
+    "description": "Lažna opcija; kada je izabrana, otvara se prilagođeni tekstualni unos"
+  },
+  "askUserQuestion.otherDesc": {
+    "message": "Unesite svoj odgovor",
+    "description": "Pomoćni opis ispod druge opcije"
   },
   "askUserQuestion.placeholder": {
-    "message": "Unesite prilagođeni odgovor…",
-    "description": "Placeholder tekst za unos prilagođenog odgovora"
+    "message": "Unesite odgovor…",
+    "description": "Placeholder za prilagođeni unos odgovora za svako pitanje"
   },
   "askUserQuestion.multiSelectHint": {
     "message": "Možete izabrati jednu ili više opcija",
@@ -505,6 +517,6 @@
   },
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Vaš odgovor",
-    "description": "Završni tekst kada nije moguće izvući konkretan odgovor iz istorijskog izlaza"
+    "description": "Završna poruka kada se konkretan odgovor ne može izvući iz istorijskog izlaza"
   }
 }

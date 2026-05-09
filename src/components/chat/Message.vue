@@ -432,6 +432,27 @@ export default defineComponent({
     min-width: 0;
   }
 
+  // Below `sm` (640px) tighten the author gutter and bubble padding so
+  // assistant/user content has more horizontal room on narrow phones.
+  // `.author` width drops 44 -> 36 (12px gained back, including its
+  // 8px right padding -> 4px). `.content` horizontal padding drops
+  // 20 -> 14 (12px gained inside the bubble). Net ~24px of extra text
+  // width on a 360px viewport, which gets rid of the awkward 1-2 word
+  // last line that the audit flagged on iPhone SE.
+  @media (max-width: 640px) {
+    .author {
+      width: 36px;
+      padding-right: 4px;
+      .avatar {
+        width: 28px;
+        height: 28px;
+      }
+    }
+    .main {
+      width: calc(100% - 36px);
+    }
+  }
+
   &.assistant {
     align-items: start;
     .content {
@@ -482,6 +503,12 @@ export default defineComponent({
     max-width: 800px;
     margin-bottom: 4px;
     line-height: 1.6;
+    @media (max-width: 640px) {
+      // Pair the tighter author gutter above with a tighter bubble so
+      // the gain is visible — drops the user-bubble side padding from
+      // 20 to 14 (~12px more text width on a 360px screen).
+      padding: 10px 14px;
+    }
     .image {
       max-width: 100%;
       max-height: 300px;

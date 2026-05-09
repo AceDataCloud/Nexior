@@ -58,7 +58,7 @@ export default defineComponent({
       display: block;
       position: absolute;
       right: 8px;
-      top: 45px;
+      top: calc(45px + env(safe-area-inset-top));
       z-index: 1000;
     }
   }
