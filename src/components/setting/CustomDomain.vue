@@ -226,8 +226,17 @@ export default defineComponent({
         this.domains = [data, ...this.domains];
         this.bind.hostname = '';
       } catch (e: any) {
-        const detail =
-          e?.response?.data?.hostname || e?.response?.data?.detail || e?.response?.data?.site || e?.message;
+        const resp = e?.response?.data;
+        // Backend returns `{ detail: { hostname: '...' }, code: 'duplication' }`
+        // when the hostname is already bound to a (possibly other) site —
+        // surface a friendly "already added" message instead of dumping the
+        // raw backend string. Mirrors the slug-collision handling in
+        // `Subsite.vue`.
+        if (resp?.code === 'duplication') {
+          ElMessage.error(this.$t('subsite.message.domainTaken', { hostname: check.value }));
+          return;
+        }
+        const detail = resp?.hostname || resp?.detail || resp?.site || e?.message;
         ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.domainCreateFailed'));
       } finally {
         this.binding = false;

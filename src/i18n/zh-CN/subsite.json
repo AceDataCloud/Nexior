@@ -159,6 +159,10 @@
     "message": "创建域名失败，请稍后重试。",
     "description": "创建失败兑底"
   },
+  "message.domainTaken": {
+    "message": "域名 {hostname} 已经添加过了，请换一个域名再试。",
+    "description": "所选域名已被绑定到某个站点时显示（后端返回 code=duplication）。"
+  },
   "message.domainsLoadFailed": {
     "message": "加载域名列表失败。",
     "description": "拉域名列表失败"

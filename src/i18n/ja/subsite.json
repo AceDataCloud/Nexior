@@ -159,6 +159,10 @@
     "message": "ドメインの作成に失敗しました。後でもう一度お試しください。",
     "description": "作成失敗"
   },
+  "message.domainTaken": {
+    "message": "ドメイン {hostname} はすでに追加されています。別のドメインを使用してください。",
+    "description": "選択したホスト名がすでにサイトに紐付けられている場合に表示されます（バックエンドが code=duplication を返した場合）。"
+  },
   "message.domainsLoadFailed": {
     "message": "ドメインリストの読み込みに失敗しました。",
     "description": "ドメインリストの取得失敗"
