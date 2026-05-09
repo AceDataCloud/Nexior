@@ -291,7 +291,7 @@ export default defineComponent({
     },
     onManageSite(row: ISite) {
       if (!row.origin) return;
-      window.open(`https://${row.origin}/site`, '_blank', 'noopener');
+      window.open(`https://${row.origin}/settings`, '_blank', 'noopener');
     },
     onOpenDomains(row: ISite) {
       this.domainsDialog.site = row;

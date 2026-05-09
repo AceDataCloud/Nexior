@@ -37,7 +37,7 @@ import {
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
-  ROUTE_SITE_INDEX
+  ROUTE_SETTINGS_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserId } from '@/utils';
@@ -119,7 +119,7 @@ export default defineComponent({
               {
                 key: 'site-index',
                 text: this.$t('common.nav.site'),
-                name: ROUTE_SITE_INDEX,
+                name: ROUTE_SETTINGS_INDEX,
                 icon: 'fa-solid fa-gear'
               }
             ]

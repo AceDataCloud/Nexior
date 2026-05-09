@@ -35,7 +35,7 @@ import { ElDialog } from 'element-plus';
 import { getBaseUrlAuth } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
-import { ROUTE_SITE_INDEX } from '@/router';
+import { ROUTE_SETTINGS_INDEX } from '@/router';
 import { Browser } from '@capacitor/browser';
 import { isNative as isNativeSurface } from '@/utils/surface';
 
@@ -116,12 +116,12 @@ export default defineComponent({
         // if the site is not initialized, initialize it
         if (!this.$store.state.site?.origin) {
           await this.$store.dispatch('initializeSite');
-          // navigate to site config page for white-label site owners,
-          // but skip on native platforms (Android/iOS) where users are
-          // always on the official site
+          // navigate to settings page (the dialog auto-opens) for
+          // white-label site owners, but skip on native platforms
+          // (Android/iOS) where users are always on the official site
           if (!isNativeSurface()) {
             await this.$router.push({
-              name: ROUTE_SITE_INDEX
+              name: ROUTE_SETTINGS_INDEX
             });
           }
         }
