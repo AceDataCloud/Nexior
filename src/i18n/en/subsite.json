@@ -159,6 +159,10 @@
     "message": "Failed to create domain, please try again later.",
     "description": "Failure message for domain creation"
   },
+  "message.domainTaken": {
+    "message": "The domain {hostname} has already been added. Please use a different domain.",
+    "description": "Shown when the chosen hostname is already bound to a site (backend returns code=duplication)."
+  },
   "message.domainsLoadFailed": {
     "message": "Failed to load the domain list.",
     "description": "Failure message for loading the domain list"

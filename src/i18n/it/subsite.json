@@ -159,6 +159,10 @@
     "message": "Creazione del dominio fallita, riprova più tardi.",
     "description": "Errore nella creazione del dominio"
   },
+  "message.domainTaken": {
+    "message": "Il dominio {hostname} è già stato aggiunto. Utilizza un dominio diverso.",
+    "description": "Mostrato quando l'hostname scelto è già associato a un sito (il backend restituisce code=duplication)."
+  },
   "message.domainsLoadFailed": {
     "message": "Caricamento della lista dei domini fallito.",
     "description": "Errore nel caricamento della lista dei domini"
