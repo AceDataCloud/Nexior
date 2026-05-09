@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, type RouteLocationGeneric } from 'vue-router';
 import store from '@/store';
 import auth from './auth';
 import console from './console';
@@ -280,7 +280,7 @@ const getDefaultRoute = (): { name: string } => {
 const routes = [
   {
     path: '/',
-    redirect: () => getDefaultRoute()
+    redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
   },
   {
     path: '/chat/oauth/callback',

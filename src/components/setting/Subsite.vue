@@ -280,7 +280,15 @@ export default defineComponent({
     },
     onManageSite(row: ISite) {
       if (!row.origin) return;
-      window.open(`https://${row.origin}/settings`, '_blank', 'noopener');
+      // Open the subsite at its root and signal the user-settings dialog
+      // to auto-open via the `?dialog=settings` query flag. The root
+      // route still redirects to whatever the subsite's default landing
+      // page is (e.g. /chatgpt/conversations) — the query is preserved
+      // through the redirect, and `UserCenter` picks it up on mount and
+      // pops the settings dialog. This avoids the blank `/settings`
+      // page race where SettingsIndex dispatches `open-user-settings`
+      // before UserCenter's listener is registered.
+      window.open(`https://${row.origin}/?dialog=settings`, '_blank', 'noopener');
     },
     rowUrl(row: ISite) {
       return row.origin ? `https://${row.origin}/` : '#';
