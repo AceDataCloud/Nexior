@@ -137,7 +137,7 @@ export default defineComponent({
       const routeQuery = (this.$route?.query ?? {}) as Record<string, string | string[] | undefined>;
       let dialog = routeQuery.dialog;
       let tab = routeQuery.tab;
-      if (!dialog && typeof window !== 'undefined' && window.location?.search) {
+      if (!dialog && window.location?.search) {
         const params = new URLSearchParams(window.location.search);
         dialog = params.get('dialog') ?? undefined;
         if (!tab) tab = params.get('tab') ?? undefined;
