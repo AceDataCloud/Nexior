@@ -29,7 +29,7 @@ import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
 import wan from './wan';
-import site from './site';
+import settings from './settings';
 import profile from './profile';
 
 import {
@@ -317,7 +317,7 @@ const routes = [
   midjourney,
   distribution,
   download,
-  site,
+  settings,
   profile,
   {
     path: '/:pathMatch(.*)*',
