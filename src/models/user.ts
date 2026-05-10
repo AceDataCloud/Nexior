@@ -18,3 +18,14 @@ export interface IUserListResponse {
 }
 
 export interface IUserDetailResponse extends IUser {}
+
+export type IUserPublicRegistrationMethod = 'email' | 'phone' | 'github' | 'google' | 'wechat' | 'username' | 'unknown';
+
+export interface IUserPublic {
+  id: string;
+  display_name?: string;
+  nickname?: string;
+  avatar?: string;
+  registration_method?: IUserPublicRegistrationMethod;
+  contact?: string;
+}

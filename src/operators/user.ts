@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from './common';
-import { IUserDetailResponse, IUser, IUserListResponse } from '@/models';
+import { IUserDetailResponse, IUser, IUserListResponse, IUserPublic } from '@/models';
 
 export interface IInviteesQuery {
   offset?: number;
@@ -29,6 +29,13 @@ class UserOperator {
 
   async updateVerify(data: IUser): Promise<AxiosResponse<IUserDetailResponse>> {
     return httpClient.put('/users/verify', data);
+  }
+
+  async resolve(q: string): Promise<AxiosResponse<IUserPublic[]>> {
+    // NOTE: trailing slash is REQUIRED — `/users/<pk>` (the generic retrieve
+    // route) is registered before the router and would otherwise match
+    // `pk="resolve"` and return 404.
+    return httpClient.get('/users/resolve/', { params: { q } });
   }
 }
 

@@ -79,12 +79,12 @@
         </p>
       </div>
       <div class="settings-content">
-        <span class="settings-value">{{ site.admins?.join(', ') }}</span>
-        <edit-array
+        <div class="admins-list">
+          <user-chip v-for="adminId in site.admins || []" :key="adminId" :user-id="adminId" class="admins-chip" />
+        </div>
+        <edit-users
           :model-value="site?.admins || []"
           :title="$t('site.title.editAdmins')"
-          :placeholder="$t('site.placeholder.admins')"
-          :tip="$t('site.message.adminsTip2')"
           :min="1"
           :min-error-message="$t('site.message.atLeastOneAdmin')"
           @confirm="onSave({ admins: $event })"
@@ -99,7 +99,8 @@ import { defineComponent } from 'vue';
 import { ElImage } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
-import EditArray from '@/components/site/EditArray.vue';
+import EditUsers from '@/components/site/EditUsers.vue';
+import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 
@@ -108,7 +109,8 @@ export default defineComponent({
   components: {
     EditText,
     EditImage,
-    EditArray,
+    EditUsers,
+    UserChip,
     ElImage,
     SectionNotice
   },
@@ -141,5 +143,23 @@ export default defineComponent({
 
 .favicon {
   max-width: 64px;
+}
+
+.admins-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.admins-chip {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .admins-list {
+    align-items: flex-start;
+  }
 }
 </style>
