@@ -1,27 +1,30 @@
 <template>
-  <div class="field">
-    <div class="flex items-center mb-1">
-      <span class="text-sm font-bold">{{ $t('suno.name.songDescription') }}</span>
-      <info-icon :content="$t('suno.description.prompt')" />
-    </div>
-    <el-input v-model="prompt" :rows="4" type="textarea" :placeholder="$t('suno.placeholder.prompt')" />
-    <!-- Inspiration Tags -->
-    <div class="inspo-tags">
-      <button v-for="tag in visibleTags" :key="tag.key" class="inspo-tag" @click="onTagClick(tag)">
-        {{ tag.label }}
-      </button>
-      <button class="inspo-tag inspo-tag-refresh" @click="onRefreshTags">
-        <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
-      </button>
-    </div>
-  </div>
+  <prompt-textarea
+    v-model="prompt"
+    :title="$t('suno.name.songDescription')"
+    :info="$t('suno.description.prompt')"
+    :placeholder="$t('suno.placeholder.prompt')"
+    :min-rows="5"
+    :max-rows="14"
+  >
+    <template #after>
+      <!-- Inspiration Tags -->
+      <div class="inspo-tags">
+        <button v-for="tag in visibleTags" :key="tag.key" class="inspo-tag" @click="onTagClick(tag)">
+          {{ tag.label }}
+        </button>
+        <button class="inspo-tag inspo-tag-refresh" @click="onRefreshTags">
+          <font-awesome-icon icon="fa-solid fa-arrows-rotate" />
+        </button>
+      </div>
+    </template>
+  </prompt-textarea>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import InfoIcon from '@/components/common/InfoIcon.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 export const DEFAULT_PROMPT = '';
 
@@ -78,9 +81,8 @@ function shuffleArray<T>(arr: T[]): T[] {
 export default defineComponent({
   name: 'PromptInput',
   components: {
-    ElInput,
     FontAwesomeIcon,
-    InfoIcon
+    PromptTextarea
   },
   data() {
     return {

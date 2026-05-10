@@ -1,31 +1,22 @@
 <template>
-  <div class="field">
-    <div class="box">
-      <h2 class="title font-bold">{{ $t('hailuo.name.prompt') }}</h2>
-      <info-icon :content="$t('hailuo.description.prompt')" class="info" />
-    </div>
-    <el-input
-      v-model="prompt"
-      :rows="3"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('hailuo.placeholder.prompt')"
-    />
-  </div>
+  <prompt-textarea
+    v-model="prompt"
+    :title="$t('hailuo.name.prompt')"
+    :info="$t('hailuo.description.prompt')"
+    :placeholder="$t('hailuo.placeholder.prompt')"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput } from 'element-plus';
-import InfoIcon from '@/components/common/InfoIcon.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
   name: 'PromptInput',
   components: {
-    ElInput,
-    InfoIcon
+    PromptTextarea
   },
   computed: {
     prompt: {
@@ -33,7 +24,6 @@ export default defineComponent({
         return this.$store.state.hailuo?.config?.prompt;
       },
       set(val: string) {
-        console.debug('set prompt', val);
         this.$store.commit('hailuo/setConfig', {
           ...this.$store.state.hailuo?.config,
           prompt: val
@@ -48,22 +38,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  .box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between; // Add this line to move the icon to the right
-    position: relative;
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-  }
-  .info {
-    margin-left: auto; // Ensure the icon stays on the right
-  }
-}
-</style>

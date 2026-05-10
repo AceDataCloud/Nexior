@@ -1,25 +1,24 @@
 <template>
-  <div class="field">
-    <div class="flex items-center mb-1">
-      <span class="text-sm font-bold">{{ $t('producer.name.songDescription') }}</span>
-      <info-icon :content="$t('producer.description.prompt')" />
-    </div>
-    <el-input v-model="prompt" :rows="4" type="textarea" :placeholder="$t('producer.placeholder.prompt')" />
-  </div>
+  <prompt-textarea
+    v-model="prompt"
+    :title="$t('producer.name.songDescription')"
+    :info="$t('producer.description.prompt')"
+    :placeholder="$t('producer.placeholder.prompt')"
+    :min-rows="5"
+    :max-rows="14"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput } from 'element-plus';
-import InfoIcon from '@/components/common/InfoIcon.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
   name: 'PromptInput',
   components: {
-    ElInput,
-    InfoIcon
+    PromptTextarea
   },
   computed: {
     prompt: {

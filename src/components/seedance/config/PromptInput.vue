@@ -1,31 +1,23 @@
 <template>
-  <div class="field">
-    <div class="box">
-      <h2 class="title font-bold">{{ $t('seedance.name.prompt') }}</h2>
-      <info-icon :content="$t('seedance.description.prompt')" class="info" />
-    </div>
-    <el-input
-      v-model="prompt"
-      :rows="4"
-      type="textarea"
-      class="prompt"
-      :placeholder="$t('seedance.placeholder.prompt')"
-    />
-  </div>
+  <prompt-textarea
+    v-model="prompt"
+    :title="$t('seedance.name.prompt')"
+    :info="$t('seedance.description.prompt')"
+    :placeholder="$t('seedance.placeholder.prompt')"
+    :min-rows="5"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput } from 'element-plus';
-import InfoIcon from '@/components/common/InfoIcon.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 
 export const DEFAULT_PROMPT = '';
 
 export default defineComponent({
   name: 'SeedancePromptInput',
   components: {
-    ElInput,
-    InfoIcon
+    PromptTextarea
   },
   computed: {
     prompt: {
@@ -47,25 +39,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style lang="scss" scoped>
-.field {
-  .box {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    .title {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-  }
-  .info {
-    margin-left: auto;
-  }
-  .prompt {
-    resize: none;
-  }
-}
-</style>
