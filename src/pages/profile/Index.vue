@@ -40,7 +40,7 @@ import {
   ROUTE_SETTINGS_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserId } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserIdAndSite } from '@/utils';
 import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
@@ -184,8 +184,10 @@ export default defineComponent({
         });
       } else if (link.href) {
         // Append `?user_id=<currentUserId>` so the destination site can
-        // detect a cross-site identity mismatch and re-auth.
-        window.open(withCurrentUserId(link.href), '_blank');
+        // detect a cross-site identity mismatch and re-auth, plus `?site=`
+        // so AuthFrontend renders the calling subsite's white-label logo
+        // (no-op on the bare main official host).
+        window.open(withCurrentUserIdAndSite(link.href), '_blank');
       } else if (link.callback) {
         link.callback();
       }

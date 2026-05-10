@@ -6,7 +6,7 @@
  * via the `return_url` query parameter.
  */
 
-import { withCurrentUserId } from './crossSiteUser';
+import { withCurrentUserIdAndSite } from './crossSiteUser';
 
 const CONNECTIONS_MANAGER_URL = 'https://auth.acedata.cloud/user/connections';
 
@@ -18,7 +18,9 @@ const CONNECTIONS_MANAGER_URL = 'https://auth.acedata.cloud/user/connections';
  * their current Nexior context (chat draft, scroll position, etc.).
  *
  * Also annotates the URL with `?user_id=<currentUserId>` so AuthFrontend
- * can detect a cross-site identity mismatch and re-auth.
+ * can detect a cross-site identity mismatch and re-auth, and `?site=`
+ * so AuthFrontend renders the calling subsite's white-label logo (no-op
+ * on the bare main official host).
  */
 export function openConnectionsManager(provider?: string): void {
   const returnUrl = window.location.href;
@@ -27,5 +29,5 @@ export function openConnectionsManager(provider?: string): void {
   if (provider) {
     url.searchParams.set('provider', provider);
   }
-  window.open(withCurrentUserId(url.toString()), '_blank', 'noopener,noreferrer');
+  window.open(withCurrentUserIdAndSite(url.toString()), '_blank', 'noopener,noreferrer');
 }
