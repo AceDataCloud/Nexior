@@ -71,7 +71,8 @@ export default defineConfig((config: ConfigEnv) => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src')
+        '@': path.resolve(__dirname, './src'),
+        '@common': path.resolve(__dirname, './commonfrontend/src')
       }
     },
     build: {

@@ -4,7 +4,8 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@common/*": ["./commonfrontend/src/*"]
     },
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -15,5 +16,11 @@
     "noUncheckedSideEffectImports": true,
     "verbatimModuleSyntax": false
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/**/*.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
+    "commonfrontend/src/**/*.ts"
+  ]
 }
