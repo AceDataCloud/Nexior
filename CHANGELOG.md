@@ -1,8 +1,66 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 19 Apr 2026 03:30:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 10 May 2026 06:55:23 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.202.0
+
+Sun, 10 May 2026 06:55:23 GMT
+
+### Minor changes
+
+- feat(site): use vue-advanced-cropper for logo / favicon / WeChat QR uploads (port AuthFrontend ImageCropper) (dev@acedata.cloud)
+- feat(seedream): expand panel with watermark, seed, guidance scale, output format and richer size presets (dev@acedata.cloud)
+- feat(telemetry): integrate Tencent Cloud RUM (Aegis) for frontend errors, API speed, PV, and 6 business events (payment_initiated/failed/success, generation_submit/success/failed). No-op when VITE_RUM_PROJECT_ID is unset. (dev@acedata.cloud)
+- Conversation list now scoped per scenario; URL reflects active conversation; lazy-load message history (dev@acedata.cloud)
+- feat(chat): render aichat2 entity cards (audio/video/image/file) inline (cqc@cuiqingcai.com)
+- Inline source-citation chips with hover preview cards in chat answers (cqc@cuiqingcai.com)
+- Connectors polish: BUILT-IN badge, icons, GitLab brand, wider cards (cqc@cuiqingcai.com)
+- feat(studio): serve nexior independently at studio.acedata.cloud (separate K8s stack + host-aware SEO) (dev@acedata.cloud)
+- Move subsite management into the user-settings dialog (official main host only); add one-click 'Build same site' button on About; scope BYOK credentials per Site via x-site-origin header (dev@acedata.cloud)
+- feat(aichat2): render ask_user_question card and resume on submit (dev@acedata.cloud)
+- Add standalone /connectors page with custom MCP servers and built-in provider directory (cqc@cuiqingcai.com)
+
+### Patches
+
+- fix(ui): sidebar logo respects site.logo / site.favicon again (cqc@cuiqingcai.com)
+- fix(application): return fresh ref of preserved selection so balance reflects server truth (not a stale persisted snapshot) (dev@acedata.cloud)
+- Suno UI polish: shrink radio groups (Vocal Gender, Variation Type, Lyrics Mode) and Advanced Parameters inputs; restore visibility of Manage Voices button; align Artist Style select sizing; reduce lyrics textarea font size (dev@acedata.cloud)
+- fix(site): preserve transparency in favicon/logo cropper — encode PNG when source has alpha, swap dark preview for checkerboard (dev@acedata.cloud)
+- fix(chat): conversation id no longer dropped from URL on refresh — stop persisting derived `chat.modelGroup`, delete the redundant SidePanel watcher that hijacked `:id`, and stop ModelSelector from snapping `chat.model` back to first-of-group on every mount (dev@acedata.cloud)
+- fix(suno): clamp song style description to 2 lines in the recent panel so long descriptions no longer dominate the list (dev@acedata.cloud)
+- fix(user-center): hide "Mobile App" download entry in user dropdown when running on native iOS/Android (dev@acedata.cloud)
+- fix(midjourney): show frame thumbnails and request params on video tasks (dev@acedata.cloud)
+- refactor(settings): remove duplicate /site page; route subsite Manage and admin entry through /settings dialog (dev@acedata.cloud)
+- fix(telemetry): use Aegis 'report id' instead of numeric 应用ID — RUM /collect/* was returning 403 because the numeric ID is not a valid SDK identifier (dev@acedata.cloud)
+- fix(subsite): open subsite Manage in dialog via ?dialog=settings query instead of blank /settings page (dev@acedata.cloud)
+- fix(suno): remove Pro tag from model dropdown options since all our users are Pro (dev@acedata.cloud)
+- feat(midjourney): show elapsed time in task result alerts (dev@acedata.cloud)
+- fix(mobile): respect iOS safe-area insets across navigators, drawer buttons and the wallet pill (dev@acedata.cloud)
+- fix(mobile): hide secondary el-table columns and shrink Console scroll-panel padding so the order / usage / application list pages fit a 360px phone viewport (dev@acedata.cloud)
+- fix(mobile): allow pinch-zoom on web/Android by stripping the iOS-only viewport zoom-lock when not running inside Capacitor (dev@acedata.cloud)
+- fix(mobile): clean up window resize listeners in Main.vue and Console.vue so navigations stop leaking event handlers (dev@acedata.cloud)
+- fix(mobile): tighten chat Message author column and bubble padding on \<640px so phone messages stop wrapping single-word last lines (dev@acedata.cloud)
+- fix(chat): drive token-dependent init from credential watcher (root-cause refactor of #638) (dev@acedata.cloud)
+- feat(chat): enable image/file upload entry for Claude, Gemini, Grok-4 (cqc@cuiqingcai.com)
+- fix(application): respect user's wallet selection across page reloads (no longer auto-replace expired/exhausted current pick) (cqc@cuiqingcai.com)
+- feat(chat): update Claude model lineup to Opus 4.7, Sonnet 4.6, Haiku 4.5 (dev@acedata.cloud)
+- fix logo style and navigator padding (cqc@cuiqingcai.com)
+- fix(openaiimage): drop stale type filter so /openai-image task list renders (cqc@cuiqingcai.com)
+- Migrate all 14 task operators to BaseTaskOperator and all 14 task actions to createTaskActions factory (~2,700 LOC duplication eliminated) (dev@acedata.cloud)
+- Claim existing empty-admin sites during authenticated initialization. (cqc@cuiqingcai.com)
+- Centralize Capacitor surface checks behind isNative()/isIOS()/isAndroid() helpers (dev@acedata.cloud)
+- Drop unused react/psl deps and switch to per-adapter Solana wallet imports (-367 packages in node_modules) (dev@acedata.cloud)
+- feat(chat): use external-link icon for skills/connections toolbar buttons (dev@acedata.cloud)
+- Suno UI follow-up: drop redundant vocal-gender wrapper margin, switch persona heading to span (match other sections), bump lyrics textarea font 12.5px -> 13px (dev@acedata.cloud)
+- Centralize webhook callback URL behind getWebhookCallbackUrl(service) helper (dev@acedata.cloud)
+- Fix inviter_id binding through auth redirect on custom-domain (white-label) sites (cqc@cuiqingcai.com)
+- feat(settings): move custom-domain entry into a dedicated subsite settings tab; remove per-row Domains button on the main site's My Subsites list (dev@acedata.cloud)
+- fix(chat): consolidate composer actions into + popover; fix file preview overlap (cqc@cuiqingcai.com)
+- Inline Skills and Connectors entries below the chat composer input (cqc@cuiqingcai.com)
+- feat(application): show balance amount in the wallet pill in the top-right corner (dev@acedata.cloud)
+- fix(custom-domain): show friendly message when bound hostname is duplicated (code=duplication) (dev@acedata.cloud)
 
 ## 3.34.0
 
