@@ -192,12 +192,9 @@ export default defineComponent({
   }
 }
 
-// Wallet / balance pill in the top-right corner. On iOS with a notch /
-// Dynamic Island the default `top: 0.5rem` (Tailwind `top-2`) would draw
-// under the inset; nudge it down by `safe-area-inset-top` instead so it
-// stays clear on every device while keeping a sensible web fallback.
+// Keep the wallet / balance pill below native status bars.
 .status-floating {
-  top: max(0.5rem, env(safe-area-inset-top));
+  top: calc(0.5rem + var(--app-safe-area-top));
 }
 
 @media (max-width: 767px) {
@@ -207,16 +204,14 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     .main {
-      // Bottom navigator is 60px tall + iOS home-indicator inset.
-      height: calc(100% - 60px - env(safe-area-inset-bottom));
+      height: calc(100% - 60px - var(--app-safe-area-bottom));
       width: 100%;
       flex: 1;
     }
     .navigator {
       width: 100%;
-      height: calc(60px + env(safe-area-inset-bottom));
-      // Push the actual links above the home indicator on iPhone.
-      padding-bottom: env(safe-area-inset-bottom);
+      height: calc(60px + var(--app-safe-area-bottom));
+      padding-bottom: var(--app-safe-area-bottom);
     }
   }
 }

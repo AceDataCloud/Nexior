@@ -84,17 +84,14 @@ export default defineComponent({
 
   .chat {
     width: 100%;
-    // Account for the iOS home indicator at the bottom of the composer
-    // — without this padding-bottom, the composer's outer edge sits
-    // under the indicator and the keyboard-toolbar pinches against it.
-    padding: 52px 10px env(safe-area-inset-bottom);
+    padding: 52px 10px var(--app-safe-area-bottom);
   }
 
   .menu {
     display: block;
     position: fixed;
     left: 12px;
-    top: calc(48px + env(safe-area-inset-top));
+    top: calc(48px + var(--app-safe-area-top));
     z-index: 2000;
     box-shadow: var(--app-shadow-md);
   }
