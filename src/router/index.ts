@@ -282,12 +282,6 @@ const routes = [
     path: '/',
     redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
   },
-  {
-    path: '/chat/oauth/callback',
-    name: 'oauth-callback',
-    component: () => import('@/pages/chat/OAuthCallback.vue'),
-    meta: { auth: false }
-  },
   console,
   auth,
   chatgpt,
