@@ -73,6 +73,8 @@ import { getBaseUrlAuth, withCurrentUserIdAndSite } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
+import { Browser } from '@capacitor/browser';
+import { isNative } from '@/utils/surface';
 
 export default defineComponent({
   name: 'TopHeader',
@@ -111,7 +113,19 @@ export default defineComponent({
     }
   },
   methods: {
+    // Open an external URL. On Capacitor (iOS / Android) we want the
+    // Capacitor in-app Browser so the user stays inside the app shell;
+    // `window.open(url, '_blank')` on native ejects out to the OS default
+    // browser (Chrome / Safari) and breaks the experience. On web we
+    // keep the historical `_blank` behaviour.
     openTab(url: string) {
+      if (isNative()) {
+        Browser.open({ url }).catch((e) => {
+          console.warn('Browser.open failed, falling back to window.open', e);
+          window.open(url, '_blank');
+        });
+        return;
+      }
       window.open(url, '_blank');
     },
     onSelect(val: string | undefined) {
@@ -136,11 +150,11 @@ export default defineComponent({
     },
     onProfile() {
       const baseUrlAuth = getBaseUrlAuth();
-      window.open(withCurrentUserIdAndSite(`${baseUrlAuth}/user/profile`), '_blank');
+      this.openTab(withCurrentUserIdAndSite(`${baseUrlAuth}/user/profile`));
     },
     onVerify() {
       const baseUrlAuth = getBaseUrlAuth();
-      window.open(withCurrentUserIdAndSite(`${baseUrlAuth}/user/verify`), '_blank');
+      this.openTab(withCurrentUserIdAndSite(`${baseUrlAuth}/user/verify`));
     },
     onConsole() {
       this.$router.push({
