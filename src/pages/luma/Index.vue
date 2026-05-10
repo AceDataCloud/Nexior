@@ -157,6 +157,11 @@ export default defineComponent({
         ...this.config,
         callback_url: CALLBACK_URL
       } as ILumaGenerateRequest;
+      if (!this.hasText(request.prompt)) {
+        ElMessage.error(this.$t('luma.message.promptRequired'));
+        return;
+      }
+      request.prompt = request.prompt?.trim();
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -185,6 +190,9 @@ export default defineComponent({
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;
       return panel?.getScrollElement?.();
+    },
+    hasText(value: unknown): value is string {
+      return typeof value === 'string' && value.trim().length > 0;
     }
   }
 });
