@@ -31,14 +31,14 @@
     <no-tasks />
   </div>
   <div v-show="!!$store?.state?.producer?.audio?.object" class="h-20">
-    <player />
+    <player namespace="producer" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
-import Player from '@/components/producer/player/Player.vue';
+import Player from '@/components/common/player/Player.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
 import { ElSkeleton, ElSkeletonItem } from 'element-plus';
 import ScrollList from '@/components/common/ScrollList.vue';

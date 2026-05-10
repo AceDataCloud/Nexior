@@ -16,8 +16,14 @@
 </template>
 
 <script setup lang="ts">
+import { provide } from 'vue';
 import PlayerSlider from './PlayerSlider.vue';
 import PlayerSong from './PlayerSong.vue';
 import PlayerAction from './PlayerAction.vue';
 import PlayerController from './PlayerController.vue';
+import { AudioNamespaceKey, type AudioNamespace } from './useAudioState';
+
+const props = defineProps<{ namespace: AudioNamespace }>();
+
+provide(AudioNamespaceKey, props.namespace);
 </script>

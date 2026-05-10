@@ -21,14 +21,12 @@ import { Play, PauseOne, VolumeSmall } from '@icon-park/vue-next';
 import IconPark from '@/components/common/IconPark.vue';
 import PlayerVolumeSlider from './PlayerVolumeSlider.vue';
 import { ElPopover } from 'element-plus';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { useAudioState } from './useAudioState';
 
-const store = useStore();
+const { audio, dispatchAudio } = useAudioState();
+
 const togglePlay = () =>
-  store.dispatch('producer/setAudio', {
-    ...store.state.producer.audio,
-    state: store.state.producer.audio.state === 'playing' ? 'paused' : 'playing'
+  dispatchAudio({
+    state: audio.value?.state === 'playing' ? 'paused' : 'playing'
   });
-const audio = computed(() => store.state.producer.audio);
 </script>
