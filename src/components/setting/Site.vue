@@ -85,8 +85,6 @@
         <edit-users
           :model-value="site?.admins || []"
           :title="$t('site.title.editAdmins')"
-          :placeholder="$t('site.placeholder.admins')"
-          :tip="$t('site.message.adminsTip2')"
           :min="1"
           :min-error-message="$t('site.message.atLeastOneAdmin')"
           @confirm="onSave({ admins: $event })"

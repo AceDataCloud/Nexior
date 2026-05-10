@@ -8,13 +8,6 @@ export interface IInviteesQuery {
   ordering?: string;
 }
 
-export interface IUserResolveQuery {
-  id?: string;
-  email?: string;
-  phone?: string;
-  username?: string;
-}
-
 class UserOperator {
   async getMe(): Promise<AxiosResponse<IUserDetailResponse>> {
     return httpClient.get('/users/me');
@@ -38,15 +31,8 @@ class UserOperator {
     return httpClient.put('/users/verify', data);
   }
 
-  async resolve(query: IUserResolveQuery): Promise<AxiosResponse<IUserPublic>> {
-    const params: Record<string, string> = {};
-    (Object.keys(query) as Array<keyof IUserResolveQuery>).forEach((key) => {
-      const value = query[key];
-      if (value) {
-        params[key] = value;
-      }
-    });
-    return httpClient.get('/users/resolve', { params });
+  async resolve(q: string): Promise<AxiosResponse<IUserPublic[]>> {
+    return httpClient.get('/users/resolve', { params: { q } });
   }
 }
 

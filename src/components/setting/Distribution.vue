@@ -13,7 +13,6 @@
         <edit-user
           :model-value="site.distribution?.default_inviter_id || ''"
           :title="$t('site.title.editDistributionDefaultInviterId')"
-          :placeholder="$t('site.placeholder.editDistributionDefaultInviterId')"
           @confirm="
             onSave({
               distribution: {
@@ -38,7 +37,6 @@
         <edit-user
           :model-value="site.distribution?.force_inviter_id || ''"
           :title="$t('site.title.editDistributionForceInviterId')"
-          :placeholder="$t('site.placeholder.editDistributionForceInviterId')"
           @confirm="
             onSave({
               distribution: {

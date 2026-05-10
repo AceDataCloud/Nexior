@@ -49,16 +49,33 @@ const inflight = new Map<string, Promise<IUserPublic | null>>();
 // Negative cache: ids we already saw 404 for. Stops endless retries.
 const missing = new Set<string>();
 
+/**
+ * Seed the chip cache from outside (e.g. after the autocomplete picker
+ * fetches a user, we don't want UserChip to round-trip the API again
+ * when it renders that same id).
+ */
+export function seedUserChipCache(user: IUserPublic): void {
+  if (user?.id) {
+    cache.set(user.id, user);
+    missing.delete(user.id);
+  }
+}
+
 async function resolveUser(id: string): Promise<IUserPublic | null> {
   if (cache.has(id)) return cache.get(id) as IUserPublic;
   if (missing.has(id)) return null;
   let promise = inflight.get(id);
   if (!promise) {
     promise = userOperator
-      .resolve({ id })
+      .resolve(id)
       .then((res) => {
-        cache.set(id, res.data);
-        return res.data;
+        const hit = (res.data || []).find((u) => u.id === id) || null;
+        if (hit) {
+          cache.set(id, hit);
+        } else {
+          missing.add(id);
+        }
+        return hit;
       })
       .catch(() => {
         missing.add(id);
