@@ -1,7 +1,7 @@
 <template>
   <div>
     <vue-plyr :options="options" class="video">
-      <video controls crossorigin="" playsinline :data-poster="modelValue?.image_url">
+      <video controls playsinline preload="metadata" :data-poster="modelValue?.image_url">
         <source size="1080" :src="modelValue?.video_url" type="video/mp4" />
       </video>
     </vue-plyr>
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   data() {
     return {
-      options: { quality: { default: '1080p' } }
+      options: { quality: { default: 1080, options: [1080] } }
     };
   }
 });
