@@ -23,21 +23,9 @@
           ></el-menu-item>
         </el-sub-menu>
         <el-menu-item v-t="'common.nav.mobileApp'" @route="undefined" @click="onDownload"></el-menu-item>
-        <el-menu-item
-          v-t="'common.nav.apiPlatform'"
-          @route="undefined"
-          @click="openTab('https://platform.acedata.cloud')"
-        ></el-menu-item>
-        <el-menu-item
-          v-t="'common.nav.support'"
-          @route="undefined"
-          @click="openTab('https://platform.acedata.cloud/support')"
-        ></el-menu-item>
-        <el-menu-item
-          v-t="'common.nav.referral'"
-          @route="undefined"
-          @click="openTab('https://platform.acedata.cloud/earning')"
-        ></el-menu-item>
+        <el-menu-item v-t="'common.nav.apiPlatform'" @route="undefined" @click="onApiPlatform"></el-menu-item>
+        <el-menu-item v-t="'common.nav.support'" @route="undefined" @click="onSupport"></el-menu-item>
+        <el-menu-item v-t="'common.nav.referral'" @route="undefined" @click="onReferral"></el-menu-item>
       </el-menu>
     </el-col>
     <el-col :md="4" :xs="11">
@@ -57,6 +45,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="onProfile">{{ $t('common.button.profile') }}</el-dropdown-item>
+              <el-dropdown-item divided @click="onApiKeys">{{ $t('common.button.apiKeys') }}</el-dropdown-item>
               <el-dropdown-item @click="onLogout">{{ $t('common.button.logout') }}</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -155,6 +144,18 @@ export default defineComponent({
     onVerify() {
       const baseUrlAuth = getBaseUrlAuth();
       this.openTab(withCurrentUserIdAndSite(`${baseUrlAuth}/user/verify`));
+    },
+    onApiPlatform() {
+      this.openTab(withCurrentUserIdAndSite('https://platform.acedata.cloud'));
+    },
+    onApiKeys() {
+      this.openTab(withCurrentUserIdAndSite('https://platform.acedata.cloud/console/platform-tokens'));
+    },
+    onSupport() {
+      this.openTab(withCurrentUserIdAndSite('https://platform.acedata.cloud/support'));
+    },
+    onReferral() {
+      this.openTab(withCurrentUserIdAndSite('https://platform.acedata.cloud/earning'));
     },
     onConsole() {
       this.$router.push({
