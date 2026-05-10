@@ -126,7 +126,7 @@ import {
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel, IChatReference } from '@/models';
-import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserId } from '@/utils';
+import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserIdAndSite } from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -314,13 +314,14 @@ export default defineComponent({
     onOpenSkills() {
       // Skills are managed exclusively at auth.acedata.cloud/user/skills.
       // Nexior is a thin entry point - clicking opens the canonical
-      // management page in a new tab.
-      window.open(withCurrentUserId('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
+      // management page in a new tab. Pass `site` so AuthFrontend renders
+      // the calling subsite's white-label logo (no-op on the main host).
+      window.open(withCurrentUserIdAndSite('https://auth.acedata.cloud/user/skills'), '_blank', 'noopener');
     },
     onOpenConnections() {
       // Connections (MCP + OAuth connectors) are managed exclusively at
       // auth.acedata.cloud/user/connections.
-      window.open(withCurrentUserId('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
+      window.open(withCurrentUserIdAndSite('https://auth.acedata.cloud/user/connections'), '_blank', 'noopener');
     }
   }
 });
