@@ -506,5 +506,29 @@
   "placeholder.admins": {
     "message": "請輸入管理員用戶 ID",
     "description": "站點設置中管理員編輯框的佔位符"
+  },
+  "site.message.userNotFound": {
+    "message": "未找到此使用者",
+    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+  },
+  "site.message.editUserHint": {
+    "message": "貼上使用者 UUID，或輸入 Email、手機號碼或使用者名稱以尋找使用者。",
+    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+  },
+  "site.message.editUsersEmpty": {
+    "message": "尚未新增管理員",
+    "description": "Empty-state text shown when the admins list has no users."
+  },
+  "site.message.userAlreadyAdded": {
+    "message": "已新增",
+    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+  },
+  "site.title.addUser": {
+    "message": "新增使用者",
+    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+  },
+  "site.button.addUser": {
+    "message": "新增",
+    "description": "Button label to add the resolved user to the admins list."
   }
 }

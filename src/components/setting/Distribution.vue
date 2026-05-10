@@ -9,9 +9,9 @@
         </p>
       </div>
       <div class="settings-content">
-        <span class="settings-value">{{ site.distribution?.default_inviter_id }}</span>
-        <edit-text
-          :model-value="site.distribution?.default_inviter_id"
+        <user-chip :user-id="site.distribution?.default_inviter_id" />
+        <edit-user
+          :model-value="site.distribution?.default_inviter_id || ''"
           :title="$t('site.title.editDistributionDefaultInviterId')"
           :placeholder="$t('site.placeholder.editDistributionDefaultInviterId')"
           @confirm="
@@ -34,9 +34,9 @@
         </p>
       </div>
       <div class="settings-content">
-        <span class="settings-value">{{ site.distribution?.force_inviter_id }}</span>
-        <edit-text
-          :model-value="site.distribution?.force_inviter_id"
+        <user-chip :user-id="site.distribution?.force_inviter_id" />
+        <edit-user
+          :model-value="site.distribution?.force_inviter_id || ''"
           :title="$t('site.title.editDistributionForceInviterId')"
           :placeholder="$t('site.placeholder.editDistributionForceInviterId')"
           @confirm="
@@ -55,14 +55,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import EditText from '@/components/site/EditText.vue';
+import EditUser from '@/components/site/EditUser.vue';
+import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 
 export default defineComponent({
   name: 'DistributionSetting',
   components: {
-    EditText,
+    EditUser,
+    UserChip,
     SectionNotice
   },
   computed: {

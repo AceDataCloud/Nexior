@@ -506,5 +506,29 @@
   "placeholder.admins": {
     "message": "Ingrese el ID de usuario del administrador",
     "description": "Marcador de posición en el cuadro de edición de administrador en la configuración del sitio"
+  },
+  "site.message.userNotFound": {
+    "message": "Usuario no encontrado",
+    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+  },
+  "site.message.editUserHint": {
+    "message": "Pega un UUID de usuario, o escribe un correo, teléfono o nombre de usuario para buscarlo.",
+    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+  },
+  "site.message.editUsersEmpty": {
+    "message": "Aún no hay administradores.",
+    "description": "Empty-state text shown when the admins list has no users."
+  },
+  "site.message.userAlreadyAdded": {
+    "message": "Ya agregado",
+    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+  },
+  "site.title.addUser": {
+    "message": "Agregar usuario",
+    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+  },
+  "site.button.addUser": {
+    "message": "Agregar",
+    "description": "Button label to add the resolved user to the admins list."
   }
 }

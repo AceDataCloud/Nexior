@@ -506,5 +506,29 @@
   "placeholder.admins": {
     "message": "Ange administratörs användar-ID",
     "description": "Platshållare i redigeringsrutan för administratörer i webbplatsinställningar"
+  },
+  "site.message.userNotFound": {
+    "message": "Användaren hittades inte",
+    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+  },
+  "site.message.editUserHint": {
+    "message": "Klistra in en användar-UUID, eller skriv en e-post, telefon eller användarnamn för att hitta någon.",
+    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+  },
+  "site.message.editUsersEmpty": {
+    "message": "Inga administratörer än.",
+    "description": "Empty-state text shown when the admins list has no users."
+  },
+  "site.message.userAlreadyAdded": {
+    "message": "Redan tillagd",
+    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+  },
+  "site.title.addUser": {
+    "message": "Lägg till användare",
+    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+  },
+  "site.button.addUser": {
+    "message": "Lägg till",
+    "description": "Button label to add the resolved user to the admins list."
   }
 }

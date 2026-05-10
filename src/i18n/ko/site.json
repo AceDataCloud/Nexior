@@ -506,5 +506,29 @@
   "placeholder.admins": {
     "message": "관리자 사용자 ID를 입력하세요.",
     "description": "사이트 설정에서 관리자 편집 상자의 자리 표시자"
+  },
+  "site.message.userNotFound": {
+    "message": "사용자를 찾을 수 없습니다",
+    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+  },
+  "site.message.editUserHint": {
+    "message": "사용자 UUID를 붙여넣거나 이메일, 휴대전화 번호, 사용자 이름으로 검색하세요.",
+    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+  },
+  "site.message.editUsersEmpty": {
+    "message": "아직 관리자가 없습니다",
+    "description": "Empty-state text shown when the admins list has no users."
+  },
+  "site.message.userAlreadyAdded": {
+    "message": "이미 추가됨",
+    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+  },
+  "site.title.addUser": {
+    "message": "사용자 추가",
+    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+  },
+  "site.button.addUser": {
+    "message": "추가",
+    "description": "Button label to add the resolved user to the admins list."
   }
 }
