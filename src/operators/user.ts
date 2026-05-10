@@ -32,7 +32,10 @@ class UserOperator {
   }
 
   async resolve(q: string): Promise<AxiosResponse<IUserPublic[]>> {
-    return httpClient.get('/users/resolve', { params: { q } });
+    // NOTE: trailing slash is REQUIRED — `/users/<pk>` (the generic retrieve
+    // route) is registered before the router and would otherwise match
+    // `pk="resolve"` and return 404.
+    return httpClient.get('/users/resolve/', { params: { q } });
   }
 }
 
