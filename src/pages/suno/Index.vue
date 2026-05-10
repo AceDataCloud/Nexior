@@ -188,6 +188,13 @@ export default defineComponent({
         ...this.config,
         callback_url: CALLBACK_URL
       } as ISunoAudioRequest;
+      if (!this.hasSunoInput(request)) {
+        ElMessage.error(this.$t('suno.message.promptRequired'));
+        return;
+      }
+      if (this.hasText(request.prompt)) {
+        request.prompt = request.prompt.trim();
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -211,6 +218,17 @@ export default defineComponent({
     getTasksScrollElement(): HTMLElement | undefined {
       const panel = this.$refs.recentPanel as any;
       return panel?.getScrollElement?.();
+    },
+    hasText(value: unknown): value is string {
+      return typeof value === 'string' && value.trim().length > 0;
+    },
+    hasSunoInput(request: ISunoAudioRequest): boolean {
+      const textFields = [request.prompt, request.lyric, request.lyric_prompt, request.style, request.title];
+      return (
+        textFields.some((value) => this.hasText(value)) ||
+        this.hasText(request.audio_id) ||
+        (Array.isArray(request.mashup_audio_ids) && request.mashup_audio_ids.length > 0)
+      );
     }
   }
 });
