@@ -81,41 +81,45 @@ export default defineComponent({
 
 @media screen and (max-width: 767px) {
   .console {
+    --console-safe-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     .navigator {
       width: 100%;
-      // Reserve room for the iOS home indicator below the navigator links.
-      height: calc(60px + env(safe-area-inset-bottom));
-      padding-bottom: env(safe-area-inset-bottom);
+      height: calc(60px + var(--console-safe-bottom));
+      padding-bottom: var(--console-safe-bottom);
       position: fixed;
       bottom: 0;
       z-index: 10000;
     }
     .main {
-      height: calc(100% - 60px - env(safe-area-inset-bottom));
+      height: calc(100% - 60px - var(--console-safe-bottom));
       width: 100%;
       flex: 1;
       display: flex;
       flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
       .panel {
         width: 100%;
-        // 30px x 2 padding on a 360px phone leaves 300px for tables that
-        // hardcode ~1100px of column widths. Tighten to 12px on mobile so
-        // the el-table container has more room before horizontal scroll.
         padding: 12px;
         background-color: var(--el-bg-color-page);
-        padding-bottom: calc(80px + env(safe-area-inset-bottom));
+        padding-bottom: calc(80px + var(--console-safe-bottom));
         box-sizing: border-box;
-        overflow-x: hidden;
+        min-height: 0;
+        overflow-x: auto;
         overflow-y: auto;
       }
       .side {
         width: 100%;
-        height: fit-content;
-        padding: 20px 0 20px 10px;
+        height: auto;
+        flex: 0 0 auto;
+        padding: 8px 10px;
+        background: var(--app-sidebar-bg);
+        border-bottom: 1px solid var(--app-border-subtle);
       }
     }
   }
