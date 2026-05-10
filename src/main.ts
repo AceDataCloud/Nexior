@@ -13,6 +13,7 @@ import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
+import { getSurface, isNative } from '@/utils/surface';
 import {
   initializeCookies,
   initializeDescription,
@@ -31,6 +32,13 @@ import {
 } from './utils/initializer';
 
 initializeChunkLoadErrorHandler();
+
+const surface = getSurface();
+document.documentElement.dataset.surface = surface;
+document.documentElement.classList.add(`surface-${surface}`);
+if (isNative()) {
+  document.documentElement.classList.add('surface-native');
+}
 
 // `index.html` ships with `maximum-scale=1.0, user-scalable=0` so that
 // Capacitor's WKWebView doesn't auto-zoom when an input field gains focus

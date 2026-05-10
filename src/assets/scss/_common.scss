@@ -37,6 +37,9 @@ html.dark,
   --el-border-radius-small: 8px;
   --el-border-radius-round: 9999px;
 
+  --app-safe-area-top: env(safe-area-inset-top, 0px);
+  --app-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
   /* WalletConnect (Reown AppKit/Web3Modal) overlay stacking */
   --w3m-z-index: 1000000;
   --apkt-z-index: 1000000;
@@ -74,6 +77,11 @@ html.dark,
   /* Glow */
   --app-glow-primary: 0 0 20px rgba(39, 113, 134, 0.15);
   --app-glow-primary-lg: 0 0 40px rgba(39, 113, 134, 0.25);
+}
+
+html.surface-android {
+  --app-safe-area-top: max(env(safe-area-inset-top, 0px), 24px);
+  --app-safe-area-bottom: max(env(safe-area-inset-bottom, 0px), 12px);
 }
 
 html.dark {
