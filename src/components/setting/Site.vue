@@ -1,5 +1,6 @@
 <template>
   <div class="settings-list">
+    <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
     <section class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.origin') }}</p>
@@ -99,6 +100,7 @@ import { ElImage } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditArray from '@/components/site/EditArray.vue';
+import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 
 export default defineComponent({
@@ -107,7 +109,8 @@ export default defineComponent({
     EditText,
     EditImage,
     EditArray,
-    ElImage
+    ElImage,
+    SectionNotice
   },
   computed: {
     site() {

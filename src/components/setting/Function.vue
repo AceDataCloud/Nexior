@@ -1,5 +1,6 @@
 <template>
   <div class="settings-list">
+    <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
     <section v-for="feature in featureKeys" :key="feature" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ featureLabel(feature) }}</p>
@@ -85,6 +86,7 @@ import { defineComponent } from 'vue';
 import { ElImage, ElSwitch } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
+import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 
 const FEATURE_KEYS = [
@@ -122,7 +124,8 @@ export default defineComponent({
     EditText,
     EditImage,
     ElImage,
-    ElSwitch
+    ElSwitch,
+    SectionNotice
   },
   computed: {
     site() {
