@@ -151,9 +151,9 @@
         --boot-bg: #ffffff;
         --boot-fg: #0b0b0b;
         --boot-muted: rgba(0, 0, 0, 0.55);
-        --boot-spinner-1: #7c3aed;
-        --boot-spinner-2: #818cf8;
-        --boot-spinner-3: #a78bfa;
+        --boot-spinner-1: #07eea6;
+        --boot-spinner-2: #29bee4;
+        --boot-spinner-3: #23abff;
       }
 
       /*
@@ -238,20 +238,6 @@
         }
       }
 
-      .boot__title {
-        font-size: 14px;
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        opacity: 0.92;
-        user-select: none;
-      }
-
-      .boot__subtitle {
-        font-size: 12px;
-        color: var(--boot-muted);
-        user-select: none;
-      }
-
       @media (prefers-reduced-motion: reduce) {
         .boot__loader::before,
         .boot__loader::after {
@@ -265,8 +251,6 @@
       <div class="boot" aria-label="Loading" role="status">
         <div class="boot__content">
           <div class="boot__loader" aria-hidden="true"></div>
-          <div class="boot__title">Ace Data Cloud</div>
-          <div class="boot__subtitle">Loading…</div>
         </div>
       </div>
     </div>
