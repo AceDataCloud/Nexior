@@ -10,7 +10,7 @@
     <template #footer>
       <span class="dialog-footer">
         <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
-        <el-button v-if="modelValue" round type="warning" @click="onClearValue">
+        <el-button v-if="modelValue" round type="danger" @click="onClearValue">
           {{ $t('common.button.delete') }}
         </el-button>
         <el-button round type="primary" :disabled="!resolved" @click="onConfirm">
