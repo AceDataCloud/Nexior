@@ -36,6 +36,12 @@ const vendorChunkRules: Array<[chunkName: string, matches: (normalizedId: string
 
 export default defineConfig((config: ConfigEnv) => {
   process.env = { ...process.env, ...loadEnv(config.mode, process.cwd()) };
+  // Production builds strip `console.log` / `console.debug` / `console.info`
+  // / `debugger` to keep DevTools clean in shipped bundles. We deliberately
+  // keep `console.warn` and `console.error` so the in-app telemetry SDK
+  // (Aegis) — which hooks into them — still receives real warnings/errors.
+  // Dev builds keep everything so local debugging is unaffected.
+  const isProd = config.command === 'build';
   return {
     server: {
       host: 'localhost',
@@ -74,6 +80,15 @@ export default defineConfig((config: ConfigEnv) => {
         '@': path.resolve(__dirname, './src')
       }
     },
+    esbuild: isProd
+      ? {
+          // `pure` lets esbuild treat these calls as side-effect-free and
+          // tree-shake them; combined with `drop` below this removes both
+          // the call site AND any computed argument expressions.
+          pure: ['console.log', 'console.debug', 'console.info'],
+          drop: ['debugger']
+        }
+      : undefined,
     build: {
       // Computing gzip size for ~10 MB of chunks blows past the 2 GB V8
       // heap on Cloudflare Workers Builds. The report is stdout-only,
