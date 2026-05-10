@@ -46,7 +46,8 @@ import { ElDialog, ElInput, ElButton, ElIcon } from 'element-plus';
 import { Edit, WarningFilled } from '@element-plus/icons-vue';
 import UserChip from '@/components/site/UserChip.vue';
 import { userOperator } from '@/operators';
-import type { IUserPublic, IUserResolveQuery } from '@/operators/user';
+import type { IUserPublic } from '@/models';
+import type { IUserResolveQuery } from '@/operators/user';
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 const PHONE_RE = /^\+?[\d\s\-()]{6,}$/;
