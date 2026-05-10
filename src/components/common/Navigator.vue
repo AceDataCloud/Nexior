@@ -95,6 +95,8 @@ import {
   ROUTE_SEEDANCE_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
+  ROUTE_FISH_TTS_INDEX,
+  ROUTE_FISH_MODEL_INDEX,
   ROUTE_KIMI_CONVERSATION,
   ROUTE_KIMI_CONVERSATION_NEW
 } from '@/router/constants';
@@ -121,6 +123,7 @@ import {
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
+  FISH_LOGO,
   CHAT_MODEL_ICON_KIMI
 } from '@/constants';
 import Logo from './Logo.vue';
@@ -283,6 +286,15 @@ export default defineComponent({
           logo: PRODUCER_LOGO,
           routes: [ROUTE_PRODUCER_INDEX],
           category: 'music'
+        });
+      }
+      if (this.$store?.state?.site?.features?.fish?.enabled) {
+        result.push({
+          route: { name: ROUTE_FISH_TTS_INDEX },
+          displayName: this.$t('common.nav.fish'),
+          logo: FISH_LOGO,
+          routes: [ROUTE_FISH_TTS_INDEX, ROUTE_FISH_MODEL_INDEX],
+          category: 'audio'
         });
       }
       // Video category

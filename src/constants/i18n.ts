@@ -42,6 +42,7 @@ export const I18N_SCOPES = [
   'headshots',
   'suno',
   'producer',
+  'fish',
   'coin',
   'common',
   'console',

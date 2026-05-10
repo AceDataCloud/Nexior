@@ -29,6 +29,7 @@ import seedream from './seedream';
 import seedance from './seedance';
 import serp from './serp';
 import wan from './wan';
+import fish from './fish';
 import settings from './settings';
 import profile from './profile';
 
@@ -55,6 +56,7 @@ import {
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_SERP_INDEX,
+  ROUTE_FISH_TTS_INDEX,
   ROUTE_NOT_FOUND
 } from './constants';
 import { getCookie } from 'typescript-cookie';
@@ -212,6 +214,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Producer', 'AI Music', 'Music Generation', 'FUZZ', 'AI Song'],
     category: 'AI Music Generation'
   },
+  fish: {
+    title: 'Fish Audio',
+    description: 'Generate natural speech and clone voices with Fish Audio — text-to-speech and voice cloning.',
+    keywords: ['Fish Audio', 'TTS', 'Text to Speech', 'Voice Cloning', 'AI Voice'],
+    category: 'AI Audio Generation'
+  },
   distribution: {
     title: 'Affiliate',
     description: 'Join the Ace Data Cloud affiliate program — earn commissions by referring AI services.',
@@ -251,6 +259,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['openaiimage', ROUTE_OPENAIIMAGE_INDEX],
   ['suno', ROUTE_SUNO_INDEX],
   ['producer', ROUTE_PRODUCER_INDEX],
+  ['fish', ROUTE_FISH_TTS_INDEX],
   ['veo', ROUTE_VEO_INDEX],
   ['sora', ROUTE_SORA_INDEX],
   ['kling', ROUTE_KLING_INDEX],
@@ -308,6 +317,7 @@ const routes = [
   seedance,
   serp,
   wan,
+  fish,
   midjourney,
   distribution,
   download,

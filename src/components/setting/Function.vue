@@ -112,7 +112,8 @@ const FEATURE_KEYS = [
   'wan',
   'producer',
   'kimi',
-  'serp'
+  'serp',
+  'fish'
 ];
 
 export default defineComponent({

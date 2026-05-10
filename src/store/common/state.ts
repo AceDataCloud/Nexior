@@ -19,6 +19,7 @@ import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
 import serpState from '../serp/state';
 import wanState from '../wan/state';
+import fishState from '../fish/state';
 
 export default (): IRootState => {
   return {
@@ -63,6 +64,7 @@ export default (): IRootState => {
     seedream: seedreamState(),
     seedance: seedanceState(),
     serp: serpState(),
-    wan: wanState()
+    wan: wanState(),
+    fish: fishState()
   };
 };
