@@ -5,6 +5,8 @@ export const SEEDANCE_LOGO = 'https://cdn.acedata.cloud/9q90dl.png';
 export const SEEDANCE_MODEL_1_0_PRO = 'doubao-seedance-1-0-pro-250528';
 export const SEEDANCE_MODEL_1_0_PRO_FAST = 'doubao-seedance-1-0-pro-fast-251015';
 export const SEEDANCE_MODEL_1_5_PRO = 'doubao-seedance-1-5-pro-251215';
+export const SEEDANCE_MODEL_2_0 = 'doubao-seedance-2-0-260128';
+export const SEEDANCE_MODEL_2_0_FAST = 'doubao-seedance-2-0-fast-260128';
 export const SEEDANCE_MODEL_1_0_LITE_T2V = 'doubao-seedance-1-0-lite-t2v-250428';
 export const SEEDANCE_MODEL_1_0_LITE_I2V = 'doubao-seedance-1-0-lite-i2v-250428';
 
