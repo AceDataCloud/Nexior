@@ -67,9 +67,11 @@ export default defineComponent({
       return this.width / this.height;
     },
     /**
-     * Output JPEG width. We keep at least 512px on the longer edge so the
+     * Output canvas width. We keep at least 512px on the longer edge so the
      * uploaded asset remains crisp on hi-DPI screens, even when the on-page
-     * display size is small (e.g. a 32x32 favicon → 512x512 output).
+     * display size is small (e.g. a 32x32 favicon → 512x512 output). Encoding
+     * (PNG vs JPEG) is decided in ImageCropper based on the source mime so
+     * transparent favicons / logos round-trip without a black background.
      */
     outputWidth(): number {
       const longest = Math.max(this.width, this.height);

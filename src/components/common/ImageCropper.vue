@@ -124,6 +124,10 @@ export default defineComponent({
   data() {
     return {
       imageSrc: '' as string,
+      // Source mime captured at file pick time. PNG / WEBP / GIF carry an alpha
+      // channel — we must re-encode to PNG on confirm, otherwise JPEG flattens
+      // transparent pixels to black on upload (favicon bug).
+      sourceMime: '' as string,
       uploading: false,
       ZoomIn,
       ZoomOut,
@@ -195,11 +199,17 @@ export default defineComponent({
         ElMessage.error(this.$t('site.imageCropper.invalidType') as string);
         return;
       }
+      this.sourceMime = file.type;
       const reader = new FileReader();
       reader.onload = (e) => {
         this.imageSrc = (e.target?.result as string) || '';
       };
       reader.readAsDataURL(file);
+    },
+    /** Source has an alpha channel → keep PNG so transparency survives upload. */
+    hasAlpha(): boolean {
+      const m = this.sourceMime;
+      return m === 'image/png' || m === 'image/webp' || m === 'image/gif';
     },
     onZoom(factor: number) {
       const cropper = this.$refs.cropperRef as { zoom?: (f: number) => void } | undefined;
@@ -215,6 +225,7 @@ export default defineComponent({
     },
     onClosed() {
       this.imageSrc = '';
+      this.sourceMime = '';
       this.uploading = false;
     },
     async onConfirm() {
@@ -238,12 +249,17 @@ export default defineComponent({
       }
       ctx.drawImage(canvas, 0, 0, targetW, targetH);
 
+      const keepAlpha = this.hasAlpha();
+      const outMime = keepAlpha ? 'image/png' : 'image/jpeg';
+      const outExt = keepAlpha ? 'png' : 'jpg';
+
       this.uploading = true;
       try {
         const blob: Blob = await new Promise((resolve, reject) => {
-          out.toBlob((b) => (b ? resolve(b) : reject(new Error('toBlob failed'))), 'image/jpeg', 0.92);
+          // PNG ignores the quality arg; passing it is harmless.
+          out.toBlob((b) => (b ? resolve(b) : reject(new Error('toBlob failed'))), outMime, 0.92);
         });
-        const filename = `image-${Date.now()}.jpg`;
+        const filename = `image-${Date.now()}.${outExt}`;
         const formData = new FormData();
         formData.append('file', blob, filename);
         const { data } = await httpClient.post<{ file_url: string }>('/files/', formData, {
@@ -276,7 +292,18 @@ export default defineComponent({
   .cropper {
     width: 100%;
     height: 360px;
-    background: #1a1a1a;
+    // Checkerboard so transparent PNGs (e.g. favicons) read as transparent
+    // instead of looking like they have a black background.
+    background-color: #fafafa;
+    background-image:
+      linear-gradient(45deg, #d8d8d8 25%, transparent 25%), linear-gradient(-45deg, #d8d8d8 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d8d8d8 75%), linear-gradient(-45deg, transparent 75%, #d8d8d8 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      8px 0;
     border-radius: 8px;
     overflow: hidden;
   }
