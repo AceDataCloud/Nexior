@@ -213,7 +213,7 @@ export default defineComponent({
     right: -80px;
     width: 260px;
     height: 260px;
-    background: rgba(31, 90, 107, 0.15);
+    background: rgba(var(--app-brand-rgb), 0.15);
   }
 }
 
@@ -302,7 +302,7 @@ export default defineComponent({
 }
 
 .secondary-action {
-  border-color: rgba(39, 113, 134, 0.18);
+  border-color: rgba(var(--app-brand-rgb), 0.18);
   background: rgba(255, 255, 255, 0.72);
   color: #0e2a33;
 }
@@ -360,7 +360,7 @@ export default defineComponent({
   }
 
   &--android::before {
-    background: linear-gradient(145deg, rgba(39, 113, 134, 0.12), transparent 42%);
+    background: linear-gradient(145deg, rgba(var(--app-brand-rgb), 0.12), transparent 42%);
   }
 
   &--ios::before {
@@ -407,8 +407,8 @@ export default defineComponent({
 }
 
 .platform-badge {
-  background: rgba(39, 113, 134, 0.12);
-  color: #277186;
+  background: rgba(var(--app-brand-rgb), 0.12);
+  color: var(--el-color-primary);
 }
 
 .platform-badge--ios {
@@ -523,7 +523,7 @@ export default defineComponent({
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.12em;
-    color: #277186;
+    color: var(--el-color-primary);
   }
 
   h3 {
