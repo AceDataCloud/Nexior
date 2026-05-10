@@ -24,7 +24,8 @@ const { namespace, store, field } = useAudioState();
 const volume = field<number>('volume');
 const muted = field<boolean>('muted');
 
-const setVolume = (value: number) => store.dispatch(`${namespace}/setVolume`, value);
+const setVolume = (value: number | number[]) =>
+  store.dispatch(`${namespace}/setVolume`, Array.isArray(value) ? value[0] : value);
 </script>
 <style lang="scss">
 .el-popover.el-popper {
