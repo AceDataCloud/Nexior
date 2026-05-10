@@ -69,7 +69,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
-import { getBaseUrlAuth, withCurrentUserId } from '@/utils';
+import { getBaseUrlAuth, withCurrentUserIdAndSite } from '@/utils';
 import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
@@ -136,11 +136,11 @@ export default defineComponent({
     },
     onProfile() {
       const baseUrlAuth = getBaseUrlAuth();
-      window.open(withCurrentUserId(`${baseUrlAuth}/user/profile`), '_blank');
+      window.open(withCurrentUserIdAndSite(`${baseUrlAuth}/user/profile`), '_blank');
     },
     onVerify() {
       const baseUrlAuth = getBaseUrlAuth();
-      window.open(withCurrentUserId(`${baseUrlAuth}/user/verify`), '_blank');
+      window.open(withCurrentUserIdAndSite(`${baseUrlAuth}/user/verify`), '_blank');
     },
     onConsole() {
       this.$router.push({

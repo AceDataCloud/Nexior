@@ -32,7 +32,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElDialog } from 'element-plus';
-import { getBaseUrlAuth } from '@/utils';
+import { getBaseUrlAuth, withCurrentSite } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SETTINGS_INDEX } from '@/router';
@@ -61,7 +61,9 @@ export default defineComponent({
       if (this.isNative) {
         url += '&native_redirect=com.acedatacloud.nexior';
       }
-      return url;
+      // Pass `site` so the embedded AuthFrontend login form renders the
+      // calling subsite's white-label logo (no-op on the main official host).
+      return withCurrentSite(url);
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
@@ -100,7 +102,9 @@ export default defineComponent({
         // Open the auth page in an in-app browser with the provider pre-selected.
         const provider = event.data.data?.provider;
         this.useBrowser = true;
-        const authUrl = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`;
+        const authUrl = withCurrentSite(
+          `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`
+        );
         Browser.open({ url: authUrl });
         return;
       }
