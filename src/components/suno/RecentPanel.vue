@@ -121,14 +121,14 @@
     </div>
   </template>
   <div v-show="!!$store?.state?.suno?.audio?.object" class="h-20">
-    <player />
+    <player namespace="suno" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TaskPreview from './task/Preview.vue';
-import Player from '@/components/suno/player/Player.vue';
+import Player from '@/components/common/player/Player.vue';
 import NoTasks from '@/components/common/NoTasks.vue';
 import {
   ElSkeleton,

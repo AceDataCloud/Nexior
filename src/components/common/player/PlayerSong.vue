@@ -14,14 +14,10 @@
 
 <script setup lang="ts">
 import OpticalDisk from '@/assets/images/disk.png';
-import { computed, onBeforeUnmount, watch } from 'vue';
-import { useStore } from 'vuex';
+import { onBeforeUnmount, watch } from 'vue';
+import { useAudioState } from './useAudioState';
 
-const store = useStore();
-const audio = computed({
-  get: () => store.state.producer.audio,
-  set: (value) => store.commit('producer/setAudio', value)
-});
+const { audio, patchAudio } = useAudioState();
 
 // Track the live `<audio>` element + an AbortController scoping its event
 // listeners outside the watcher, so we can release them when the URL
@@ -80,18 +76,12 @@ watch(audio, (value, oldValue) => {
     object.addEventListener(
       'timeupdate',
       () => {
-        store.commit('producer/setAudio', {
-          ...store.state.producer.audio,
-          progress: object.currentTime
-        });
+        patchAudio({ progress: object.currentTime });
       },
       { signal }
     );
 
-    store.commit('producer/setAudio', {
-      ...store.state.producer.audio,
-      object: object
-    });
+    patchAudio({ object });
   } else if (
     value?.progress !== oldValue?.progress &&
     value?.object &&

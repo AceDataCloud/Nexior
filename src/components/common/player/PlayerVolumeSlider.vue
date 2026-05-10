@@ -17,21 +17,14 @@
 
 <script setup lang="ts">
 import { ElSlider } from 'element-plus';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-const store = useStore();
+import { useAudioState } from './useAudioState';
 
-const volume = computed({
-  get: () => store.state.suno.audio?.volume,
-  set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, volume: value })
-});
+const { namespace, store, field } = useAudioState();
 
-const muted = computed({
-  get: () => store.state.suno.audio?.muted,
-  set: (value) => store.commit('suno/setAudio', { ...store.state.suno.audio, muted: value })
-});
+const volume = field<number>('volume');
+const muted = field<boolean>('muted');
 
-const setVolume = (value: any) => store.dispatch('suno/setVolume', value);
+const setVolume = (value: number) => store.dispatch(`${namespace}/setVolume`, value);
 </script>
 <style lang="scss">
 .el-popover.el-popper {
