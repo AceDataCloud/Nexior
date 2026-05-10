@@ -1,5 +1,6 @@
 import store from '@/store';
 import { RouteLocationNormalized, RouteLocationRaw } from 'vue-router';
+import { isMainOfficial } from './is';
 import { loginRedirect } from './login';
 
 /**
@@ -24,6 +25,7 @@ import { loginRedirect } from './login';
  * infinite loop on the next round-trip.
  */
 export const USER_ID_QUERY_PARAM = 'user_id';
+export const SITE_QUERY_PARAM = 'site';
 
 /**
  * Append `?user_id=<currentUserId>` to a URL when there is a logged-in user.
@@ -47,6 +49,40 @@ export const withCurrentUserId = (url: string): string => {
     return `${url}${sep}${USER_ID_QUERY_PARAM}=${encodeURIComponent(String(userId))}`;
   }
 };
+
+/**
+ * Append `?site=<window.location.origin>` to a URL so the destination site
+ * (typically AuthFrontend) can render the calling Site's white-label
+ * branding (logo, name, theme) instead of the default Ace Data Cloud one.
+ *
+ * Skipped on the bare main official host (`studio.acedata.cloud`), where the
+ * default branding is already correct and the param would be redundant.
+ *
+ * Mirrors how `loginRedirect()` already passes `site` to the SSO login page.
+ */
+export const withCurrentSite = (url: string): string => {
+  if (isMainOfficial()) return url;
+  const origin = typeof window !== 'undefined' ? window.location?.origin : '';
+  if (!origin) return url;
+  try {
+    const u = new URL(url);
+    if (!u.searchParams.has(SITE_QUERY_PARAM)) {
+      u.searchParams.set(SITE_QUERY_PARAM, origin);
+    }
+    return u.toString();
+  } catch {
+    const sep = url.includes('?') ? '&' : '?';
+    return `${url}${sep}${SITE_QUERY_PARAM}=${encodeURIComponent(origin)}`;
+  }
+};
+
+/**
+ * Convenience: decorate a cross-site URL with both `user_id` (identity) and
+ * `site` (white-label branding context). Use this for outbound links that
+ * end up at AuthFrontend pages where the user expects to see the calling
+ * subsite's logo (e.g. /user/skills, /user/connections).
+ */
+export const withCurrentUserIdAndSite = (url: string): string => withCurrentSite(withCurrentUserId(url));
 
 /** Build a path+query string for `to`, omitting `user_id`. */
 const buildRedirectWithoutUserId = (to: RouteLocationNormalized): string => {
