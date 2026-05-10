@@ -1,5 +1,6 @@
 <template>
   <div class="subsite-settings">
+    <section-notice tone="official" :text="$t('common.settings.officialOnlyHint')" />
     <div class="header">
       <div>
         <p class="settings-title">{{ $t('subsite.title.index') }}</p>
@@ -95,6 +96,7 @@ import {
 } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 import { siteOperator } from '@/operators';
+import SectionNotice from '@/components/setting/SectionNotice.vue';
 import type { ISite } from '@/models';
 
 const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
@@ -120,7 +122,8 @@ export default defineComponent({
     ElDialog,
     ElForm,
     ElFormItem,
-    ElInput
+    ElInput,
+    SectionNotice
   },
   directives: {
     loading: vLoading
