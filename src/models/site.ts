@@ -24,6 +24,7 @@ export interface ISiteFeatures {
   producer?: any;
   kimi?: any;
   serp?: any;
+  fish?: any;
   support?: any;
   subsite?: ISiteSubsiteFeature;
 }
