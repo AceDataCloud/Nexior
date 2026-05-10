@@ -890,5 +890,29 @@
   "button.goBack": {
     "message": "返回上一页",
     "description": "按钮文本，用于返回浏览历史的上一页"
+  },
+  "title.apiCode": {
+    "message": "本次请求对应的 API 代码",
+    "description": "对话框标题：展示当前结果对应的 curl / Python / Node API 调用代码"
+  },
+  "message.viewCodeHint": {
+    "message": "查看本次请求对应的 API 代码",
+    "description": "结果卡片操作按钮（U1/U2/下载/扩展…）旁边的 View Code 按钮的悬浮提示。点击按钮会弹出对话框，展示 curl / Python / Node 三种语言下与当前结果等价的 API 调用代码。"
+  },
+  "button.viewCode": {
+    "message": "查看代码",
+    "description": "按钮文本：打开对话框，展示当前结果对应的 curl / Python / Node API 调用代码（类似 OpenAI Playground 的 View code）"
+  },
+  "button.getApiKey": {
+    "message": "获取 API Key",
+    "description": "API 代码对话框底部的链接文本：点击后跳转到平台控制台用于创建 API Key 的页面"
+  },
+  "button.apiPlatform": {
+    "message": "API 平台",
+    "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
+  },
+  "message.apiCodeIntro": {
+    "message": "在你自己的代码里运行下面任意一段即可复现当前结果。",
+    "description": "API code dialog: short hint shown above the language tabs. Explains that the snippet below reproduces the current result when run from the user's own code."
   }
 }

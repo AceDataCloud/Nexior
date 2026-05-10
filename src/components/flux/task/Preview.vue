@@ -27,6 +27,9 @@
             :model-value="image"
           />
         </div>
+        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
+          <api-code-button path="/flux/images" :body="modelValue?.request" />
+        </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
@@ -101,6 +104,7 @@ import { IFluxTask, IFluxImage } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -109,7 +113,8 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ImageWrapper
+    ImageWrapper,
+    ApiCodeButton
   },
   props: {
     modelValue: {

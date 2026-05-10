@@ -1,58 +1,75 @@
 <template>
-  <codemirror :model-value="code" :disabled="!editable" :extensions="extensions" />
+  <div v-highlight class="code-snippet rounded-md overflow-hidden">
+    <pre><code :class="languageClass">{{ code }}</code></pre>
+  </div>
 </template>
 
 <script lang="ts">
-import { Codemirror } from 'vue-codemirror';
-import { json } from '@codemirror/lang-json';
-import { python } from '@codemirror/lang-python';
-import { javascript } from '@codemirror/lang-javascript';
-import { php } from '@codemirror/lang-php';
-import { java } from '@codemirror/lang-java';
-import { oneDark } from '@codemirror/theme-one-dark';
 import { defineComponent } from 'vue';
+import { highlight } from '@/utils';
+import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
   name: 'CodeSnippet',
-  components: {
-    Codemirror
+  directives: {
+    highlight
   },
   props: {
     code: {
       type: String,
       required: true
     },
-    editable: {
-      type: Boolean,
-      required: false
-    },
     lang: {
       type: String,
       required: false,
-      default: 'JSON'
+      default: ''
     }
   },
   computed: {
-    extensions() {
-      let result = [];
-      result.push(oneDark);
-      if (this.lang === 'JSON') {
-        result.push(json());
-      }
-      if (this.lang === 'Python') {
-        result.push(python());
-      }
-      if (this.lang === 'Java') {
-        result.push(java());
-      }
-      if (this.lang === 'JavaScript') {
-        result.push(javascript());
-      }
-      if (this.lang === 'PHP') {
-        result.push(php());
-      }
-      return result;
+    languageClass(): string {
+      const lang = (this.lang || '').toLowerCase();
+      if (!lang) return '';
+      // Map our friendly tab labels to highlight.js language slugs so the
+      // grammar is auto-detected even when the snippet starts with shared
+      // tokens (e.g. axios JS vs OkHttp Java).
+      const map: Record<string, string> = {
+        shell: 'bash',
+        bash: 'bash',
+        javascript: 'javascript',
+        js: 'javascript',
+        python: 'python',
+        py: 'python',
+        java: 'java',
+        go: 'go',
+        php: 'php'
+      };
+      const slug = map[lang] || lang;
+      return `language-${slug}`;
     }
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.code-snippet {
+  background: #011627; // night-owl default background
+  position: relative;
+
+  :deep(pre) {
+    margin: 0;
+    padding: 12px 14px;
+    overflow-x: auto;
+    max-height: 420px;
+    background: transparent;
+  }
+
+  :deep(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    text-align: left;
+    white-space: pre;
+    background: transparent;
+  }
+}
+</style>

@@ -78,6 +78,7 @@
               {{ actionMapping[action] }}
             </el-button>
           </el-tooltip>
+          <api-code-button path="/midjourney/imagine" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -231,6 +232,7 @@
               {{ $t('midjourney.button.download') }}
             </el-button>
           </el-tooltip>
+          <api-code-button path="/midjourney/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -380,6 +382,9 @@
             class="image w-full rounded-lg"
           />
         </div>
+        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true, full }">
+          <api-code-button path="/midjourney/describe" :body="modelValue?.request" />
+        </div>
         <el-alert :closable="false" class="success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -423,6 +428,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import { getConsumption } from '@/utils';
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
@@ -442,7 +448,8 @@ export default defineComponent({
     ElAlert,
     ElTag,
     CopyToClipboard,
-    VideoPlayer
+    VideoPlayer,
+    ApiCodeButton
   },
   props: {
     modelValue: {

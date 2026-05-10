@@ -9,6 +9,18 @@ export const highlight = async (el: HTMLElement) => {
     const pre = code.parentElement as HTMLElement;
     if (!pre) return;
 
+    // highlight.js v11 refuses to re-highlight a node once `data-highlighted`
+    // is set, even if the inner text has changed (e.g. user switches a
+    // language tab in the API-code dialog). Reset the marker + previously
+    // applied hljs classes so each render is highlighted fresh.
+    if (code.dataset.highlighted) {
+      delete code.dataset.highlighted;
+      code.className = code.className
+        .split(/\s+/)
+        .filter((c) => c && c !== 'hljs' && !c.startsWith('language-'))
+        .join(' ');
+    }
+
     if (pre.dataset.hasCopy === '1') {
       if ('highlightElement' in hl) hl.highlightElement(code);
       else (hl as any).highlightBlock(code);

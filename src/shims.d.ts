@@ -18,6 +18,10 @@ declare module '*.css';
 declare module '*.scss';
 declare module '*.png';
 declare module '*.tpl';
+declare module '*.tpl?raw' {
+  const content: string;
+  export default content;
+}
 
 declare module '*.vue' {
   import { DefineComponent } from 'vue';

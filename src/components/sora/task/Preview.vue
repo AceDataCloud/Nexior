@@ -39,6 +39,7 @@
               {{ $t('sora.button.download') }}
             </el-button>
           </el-tooltip>
+          <api-code-button path="/sora/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -121,6 +122,7 @@ import { ISoraTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -131,7 +133,8 @@ export default defineComponent({
     ElAlert,
     VideoPlayer,
     ElTooltip,
-    ElButton
+    ElButton,
+    ApiCodeButton
   },
   props: {
     modelValue: {

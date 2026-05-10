@@ -63,6 +63,7 @@
               {{ $t('seedance.button.download') }}
             </el-button>
           </el-tooltip>
+          <api-code-button path="/seedance/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -167,6 +168,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import { SEEDANCE_LOGO } from '@/constants';
 
 export default defineComponent({
@@ -180,7 +182,8 @@ export default defineComponent({
     ElTooltip,
     ElButton,
     ImageWrapper,
-    ImagePreview
+    ImagePreview,
+    ApiCodeButton
   },
   props: {
     modelValue: {

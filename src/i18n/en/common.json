@@ -890,5 +890,29 @@
   "button.goBack": {
     "message": "Go Back",
     "description": "Button text for returning to the previous page in browsing history"
+  },
+  "title.apiCode": {
+    "message": "API code for this request",
+    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+  },
+  "message.viewCodeHint": {
+    "message": "Show API code for this request",
+    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+  },
+  "button.viewCode": {
+    "message": "View code",
+    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+  },
+  "button.getApiKey": {
+    "message": "Get an API key",
+    "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
+  },
+  "button.apiPlatform": {
+    "message": "API Platform",
+    "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
+  },
+  "message.apiCodeIntro": {
+    "message": "Run this from your own code to produce the same result.",
+    "description": "API code dialog: short hint shown above the language tabs. Explains that the snippet below reproduces the current result when run from the user's own code."
   }
 }

@@ -22,6 +22,9 @@
         <div class="image-wrapper">
           <image-gallery :model-value="modelValue" />
         </div>
+        <div :class="{ operations: true, 'mt-2': true, 'mb-2': true }">
+          <api-code-button path="/headshots/images" :body="modelValue?.request" />
+        </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -106,6 +109,7 @@ import { IHeadshotsTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageGallery from '../ImageGallery.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -113,7 +117,8 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ImageGallery
+    ImageGallery,
+    ApiCodeButton
   },
   props: {
     modelValue: {

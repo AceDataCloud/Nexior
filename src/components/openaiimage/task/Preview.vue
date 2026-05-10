@@ -48,6 +48,7 @@
               {{ $t('common.button.edit') }}
             </el-button>
           </el-tooltip>
+          <api-code-button :path="openaiimagePath" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -182,6 +183,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -193,7 +195,8 @@ export default defineComponent({
     ImageWrapper,
     ElButton,
     ElTooltip,
-    ImagePreview
+    ImagePreview,
+    ApiCodeButton
   },
   props: {
     modelValue: {
@@ -205,6 +208,9 @@ export default defineComponent({
     return { OPENAIIMAGE_LOGO };
   },
   computed: {
+    openaiimagePath(): string {
+      return this.modelValue?.request?.action === 'edit' ? '/openai/images/edits' : '/openai/images/generations';
+    },
     images(): IOpenAIImageImage[] {
       const result: IOpenAIImageImage[] = [];
       if (Array.isArray(this.modelValue?.response?.data)) {

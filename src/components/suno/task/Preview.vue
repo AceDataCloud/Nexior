@@ -205,6 +205,10 @@
                 <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
+              <el-dropdown-item @click.stop="onViewCode">
+                <font-awesome-icon icon="fa-solid fa-code" class="menu-icon" />
+                {{ $t('common.button.viewCode') }}
+              </el-dropdown-item>
 
               <!-- Delete group -->
               <div class="menu-divider" />
@@ -217,6 +221,13 @@
         </el-dropdown>
       </div>
     </div>
+    <api-code-dialog
+      v-model:visible="apiCodeVisible"
+      method="POST"
+      :path="apiCodePath"
+      :body="apiCodeBody"
+      :token="$store.state.suno?.credential?.token || ''"
+    />
   </div>
 </template>
 
@@ -244,6 +255,7 @@ import { ISunoMp4Request, ISunoAudioRequest, Status } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
+import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 
 const CALLBACK_URL = getWebhookCallbackUrl('suno');
 
@@ -262,7 +274,8 @@ export default defineComponent({
     ElInput,
     ElProgress,
     ElCheckbox,
-    Loading
+    Loading,
+    ApiCodeDialog
   },
   props: {
     modelValue: {
@@ -276,7 +289,10 @@ export default defineComponent({
       isFetchingWav: false,
       isFetchingMidi: false,
       editingAudioId: null as string | null,
-      editingTitle: ''
+      editingTitle: '',
+      apiCodeVisible: false,
+      apiCodePath: '/suno/audios',
+      apiCodeBody: {} as Record<string, unknown>
     };
   },
   computed: {
@@ -313,6 +329,20 @@ export default defineComponent({
   },
   methods: {
     useFormatDuring,
+    onViewCode() {
+      const request = (this.modelValue?.request || {}) as Record<string, unknown>;
+      const body: Record<string, unknown> = {};
+      Object.entries(request).forEach(([k, v]) => {
+        if (k === 'application_id' || k === 'callback_url') return;
+        if (v === undefined || v === null) return;
+        if (typeof v === 'string' && v === '') return;
+        if (Array.isArray(v) && v.length === 0) return;
+        body[k] = v;
+      });
+      this.apiCodeBody = body;
+      this.apiCodePath = '/suno/audios';
+      this.apiCodeVisible = true;
+    },
     onPlay(audio: ISunoAudio) {
       this.$store.dispatch('suno/setAudio', {
         ...this.$store.state.suno.audio,
