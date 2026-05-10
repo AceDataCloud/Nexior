@@ -28,7 +28,12 @@
             </div>
           </el-col>
           <el-col :md="12" :xs="24" class="right">
-            <el-image src="https://cdn.acedata.cloud/illustration1.png" class="brand" />
+            <el-image
+              src="https://cdn.acedata.cloud/illustration1.png"
+              class="brand"
+              :alt="site?.title"
+              fit="contain"
+            />
           </el-col>
         </el-row>
       </div>
@@ -68,8 +73,20 @@
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/axynds.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/vds4i3.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/axynds.png"
+              class="image desktop"
+              :alt="$t('index.title.chat')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/vds4i3.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.chat') }}</h2>
@@ -110,8 +127,20 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/uk86mz.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/rvelwm.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/uk86mz.png"
+              class="image desktop"
+              :alt="$t('index.title.midjourney')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/rvelwm.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
         </el-row>
       </div>
@@ -120,8 +149,20 @@
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/gyogar.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/5kunm0.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/gyogar.png"
+              class="image desktop"
+              :alt="$t('index.title.qrart')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/5kunm0.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.qrart') }}</h2>
@@ -162,8 +203,20 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/2m8fn.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/23knvs.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/2m8fn.png"
+              class="image desktop"
+              :alt="$t('index.title.suno')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/23knvs.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
         </el-row>
       </div>
@@ -172,8 +225,20 @@
       <div class="container">
         <el-row>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/6kop1g.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/3kcjny.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/6kop1g.png"
+              class="image desktop"
+              :alt="$t('index.title.luma')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/3kcjny.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
           <el-col :md="8" :xs="24" class="info">
             <h2 class="title">{{ $t('index.title.luma') }}</h2>
@@ -214,8 +279,20 @@
             </el-button>
           </el-col>
           <el-col :md="16" :xs="24" class="preview">
-            <img src="https://cdn.acedata.cloud/zlyshj.png" class="image desktop" />
-            <img src="https://cdn.acedata.cloud/8as0cx.png" class="image mobile" />
+            <img
+              src="https://cdn.acedata.cloud/zlyshj.png"
+              class="image desktop"
+              :alt="$t('index.title.headshots')"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.acedata.cloud/8as0cx.png"
+              class="image mobile"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </el-col>
         </el-row>
       </div>
