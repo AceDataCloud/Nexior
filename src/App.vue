@@ -14,7 +14,7 @@ import { ElConfigProvider, ElTag } from 'element-plus';
 import AuthPanel from './components/common/AuthPanel.vue';
 import { isTest } from '@/constants/endpoint';
 import { getLocale } from './i18n';
-import { App as CapApp } from '@capacitor/app';
+import { App as CapApp, type PluginListenerHandle } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { isNative } from '@/utils/surface';
 import { ssoOperator } from '@/operators';
@@ -50,7 +50,11 @@ export default defineComponent({
   data() {
     return {
       isTest,
-      epLocale: null as any
+      epLocale: null as any,
+      // Capacitor `addListener` returns a Promise<PluginListenerHandle>;
+      // we keep it so `beforeUnmount` (and dev-time HMR re-mounts) can
+      // detach the listener instead of stacking duplicates each time.
+      deepLinkHandle: null as Promise<PluginListenerHandle> | null
     };
   },
   computed: {
@@ -72,7 +76,7 @@ export default defineComponent({
   mounted() {
     // Listen for deep link callbacks from native OAuth flow
     if (isNative()) {
-      CapApp.addListener('appUrlOpen', async ({ url }) => {
+      this.deepLinkHandle = CapApp.addListener('appUrlOpen', async ({ url }) => {
         console.debug('deep link received:', url);
         // Expected format: com.acedatacloud.nexior://auth/callback?code=XXX
         if (url.includes('auth/callback')) {
@@ -126,6 +130,21 @@ export default defineComponent({
         this.$store.dispatch('resetAll');
         this.$store.dispatch('login');
       }
+    }
+  },
+  async beforeUnmount() {
+    // App.vue is a singleton root in production, but Vite HMR re-mounts
+    // it during dev — without this, every save would stack a new
+    // `appUrlOpen` listener whose closure points at a stale store /
+    // router instance. Detach the listener cleanly.
+    if (this.deepLinkHandle) {
+      try {
+        const handle = await this.deepLinkHandle;
+        await handle.remove();
+      } catch (e) {
+        console.debug('failed to detach appUrlOpen listener', e);
+      }
+      this.deepLinkHandle = null;
     }
   },
   methods: {
