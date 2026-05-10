@@ -1,5 +1,5 @@
 <template>
-  <el-row class="panel p-[30px]">
+  <el-row class="application-list">
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
@@ -73,12 +73,12 @@
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-card shadow="hover">
+          <el-card shadow="hover" class="applications-table-card">
             <el-table
               v-loading="loading"
               :data="individualApplications"
               stripe
-              class="!min-h-[calc(100vh-420px)]"
+              class="applications-table !min-h-[calc(100vh-420px)]"
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
             >
@@ -444,6 +444,35 @@ export default defineComponent({
     color: var(--el-text-color-secondary);
     font-size: 12px;
     margin: 4px 0 0 0;
+  }
+}
+
+.application-list {
+  width: 100%;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .application-list {
+    display: block;
+  }
+
+  .summary-card {
+    .value {
+      font-size: 24px;
+      line-height: 30px;
+    }
+  }
+
+  .applications-table-card {
+    :deep(.el-card__body) {
+      padding: 0;
+      overflow-x: auto;
+    }
+  }
+
+  .applications-table {
+    min-width: 620px;
   }
 }
 </style>

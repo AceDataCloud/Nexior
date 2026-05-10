@@ -168,4 +168,40 @@ $padding-left: 12px;
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .side {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .links {
+    width: 100%;
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+
+    .link {
+      flex: 1 0 max-content;
+      min-width: 96px;
+      height: 36px;
+      line-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      white-space: nowrap;
+
+      .icon {
+        margin-right: 6px;
+      }
+
+      .suffix {
+        display: none;
+      }
+    }
+  }
+}
 </style>
