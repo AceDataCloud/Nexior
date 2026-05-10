@@ -30,7 +30,7 @@
 import { defineComponent } from 'vue';
 import { ElDialog, ElButton, ElIcon } from 'element-plus';
 import { Edit } from '@element-plus/icons-vue';
-import UserChip from '@/components/site/UserChip.vue';
+import UserChip, { prefetchUserChip } from '@/components/site/UserChip.vue';
 import UserPicker from '@/components/site/UserPicker.vue';
 import type { IUserPublic } from '@/models';
 
@@ -62,9 +62,22 @@ export default defineComponent({
     };
   },
   methods: {
-    onOpen() {
+    async onOpen() {
       this.editing = true;
+      // Pre-fill the preview from the existing inviter UUID so opening Edit
+      // on an already-set value doesn't look empty. The chip rendered next
+      // to the Edit button has almost certainly populated the cache already,
+      // so this is a synchronous cache hit in the common case.
       this.resolved = null;
+      const currentId = this.modelValue;
+      if (currentId) {
+        const user = await prefetchUserChip(currentId);
+        // Guard: user may have cancelled and reopened with a different id by
+        // the time the network call returns.
+        if (this.editing && this.modelValue === currentId) {
+          this.resolved = user;
+        }
+      }
     },
     onSelect(user: IUserPublic) {
       this.resolved = user;

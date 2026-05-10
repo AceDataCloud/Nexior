@@ -24,12 +24,7 @@
           <el-icon><user-icon /></el-icon>
         </el-avatar>
         <div class="user-picker__option-text">
-          <div class="user-picker__option-name">
-            {{ item.display_name }}
-            <el-icon v-if="iconFor(item)" class="user-picker__option-method" :title="item.registration_method">
-              <component :is="iconFor(item)" />
-            </el-icon>
-          </div>
+          <div class="user-picker__option-name">{{ item.display_name }}</div>
           <div class="user-picker__option-contact">{{ item.contact || shortIdOf(item) }}</div>
         </div>
       </div>
@@ -40,30 +35,12 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import { ElAutocomplete, ElAvatar, ElIcon } from 'element-plus';
-import {
-  Search as SearchIcon,
-  User as UserIcon,
-  Message,
-  Iphone,
-  ChatDotRound,
-  Promotion,
-  Link as LinkIcon
-} from '@element-plus/icons-vue';
+import { Search as SearchIcon, User as UserIcon } from '@element-plus/icons-vue';
 import { userOperator } from '@/operators';
-import type { IUserPublic, IUserPublicRegistrationMethod } from '@/models';
+import type { IUserPublic } from '@/models';
 import { seedUserChipCache } from '@/components/site/UserChip.vue';
 
 type Suggestion = IUserPublic & { value: string };
-
-const METHOD_ICONS: Record<IUserPublicRegistrationMethod, unknown> = {
-  email: Message,
-  phone: Iphone,
-  github: LinkIcon,
-  google: Promotion,
-  wechat: ChatDotRound,
-  username: UserIcon,
-  unknown: UserIcon
-};
 
 export default defineComponent({
   name: 'UserPicker',
@@ -72,12 +49,7 @@ export default defineComponent({
     ElAvatar,
     ElIcon,
     SearchIcon,
-    UserIcon,
-    Message,
-    Iphone,
-    ChatDotRound,
-    Promotion,
-    LinkIcon
+    UserIcon
   },
   props: {
     placeholder: {
@@ -101,11 +73,6 @@ export default defineComponent({
     }
   },
   methods: {
-    iconFor(item: { registration_method?: IUserPublicRegistrationMethod }): unknown {
-      const method = item.registration_method;
-      if (!method) return null;
-      return METHOD_ICONS[method] || null;
-    },
     shortIdOf(item: { id?: string }): string {
       const id = item.id || '';
       return id.length > 8 ? id.slice(0, 8) : id;
@@ -177,12 +144,6 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.user-picker__option-method {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-  flex-shrink: 0;
 }
 
 .user-picker__option-contact {

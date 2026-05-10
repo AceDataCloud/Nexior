@@ -18,9 +18,6 @@
         <el-icon><user-icon /></el-icon>
       </el-avatar>
       <span class="user-chip__name" :title="userId">{{ user?.display_name || shortId }}</span>
-      <el-icon v-if="methodIcon" class="user-chip__icon" :title="methodLabel">
-        <component :is="methodIcon" />
-      </el-icon>
       <span v-if="user?.contact" class="user-chip__contact">{{ user.contact }}</span>
     </template>
   </span>
@@ -29,17 +26,9 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import { ElAvatar, ElIcon } from 'element-plus';
-import {
-  User as UserIcon,
-  Message,
-  Iphone,
-  ChatDotRound,
-  Promotion,
-  Link as LinkIcon,
-  WarningFilled
-} from '@element-plus/icons-vue';
+import { User as UserIcon, WarningFilled } from '@element-plus/icons-vue';
 import { userOperator } from '@/operators';
-import type { IUserPublic, IUserPublicRegistrationMethod } from '@/models';
+import type { IUserPublic } from '@/models';
 
 type ChipState = 'loading' | 'ready' | 'missing';
 
@@ -59,6 +48,19 @@ export function seedUserChipCache(user: IUserPublic): void {
     cache.set(user.id, user);
     missing.delete(user.id);
   }
+}
+
+/**
+ * Read-through accessor for the chip cache. Returns cached user immediately
+ * if present, otherwise fires the same network request UserChip would.
+ * Used by EditUser so the dialog can pre-fill the preview chip without
+ * waiting for the chip in the page to render.
+ */
+export async function prefetchUserChip(id: string): Promise<IUserPublic | null> {
+  if (!id) return null;
+  if (cache.has(id)) return cache.get(id) as IUserPublic;
+  if (missing.has(id)) return null;
+  return resolveUser(id);
 }
 
 async function resolveUser(id: string): Promise<IUserPublic | null> {
@@ -89,27 +91,12 @@ async function resolveUser(id: string): Promise<IUserPublic | null> {
   return promise;
 }
 
-const METHOD_ICONS: Record<IUserPublicRegistrationMethod, unknown> = {
-  email: Message,
-  phone: Iphone,
-  github: LinkIcon,
-  google: Promotion,
-  wechat: ChatDotRound,
-  username: UserIcon,
-  unknown: UserIcon
-};
-
 export default defineComponent({
   name: 'UserChip',
   components: {
     ElAvatar,
     ElIcon,
     UserIcon,
-    Message,
-    Iphone,
-    ChatDotRound,
-    Promotion,
-    LinkIcon,
     WarningFilled
   },
   props: {
@@ -128,19 +115,6 @@ export default defineComponent({
     shortId(): string {
       const id = this.userId || '';
       return id.length > 8 ? id.slice(0, 8) : id;
-    },
-    methodIcon(): unknown {
-      const method = this.user?.registration_method;
-      if (!method) return null;
-      return METHOD_ICONS[method] || null;
-    },
-    methodLabel(): string {
-      const method = this.user?.registration_method;
-      if (!method) return '';
-      const key = `site.label.method.${method}`;
-      const translated = this.$t(key);
-      // i18n returns the key itself if missing — fall back to the raw method.
-      return translated === key ? method : (translated as string);
     }
   },
   watch: {
@@ -210,9 +184,6 @@ export default defineComponent({
   .user-chip__name {
     font-weight: 500;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 160px;
   }
 
   .user-chip__icon {
