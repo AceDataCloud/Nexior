@@ -20,8 +20,8 @@
       :autosize="{ minRows, maxRows }"
       resize="vertical"
       :placeholder="placeholder"
-      :maxlength="maxlength"
-      :show-word-limit="!!maxlength"
+      :maxlength="effectiveMaxlength"
+      :show-word-limit="hasMaxlength"
     />
     <slot name="after" />
 
@@ -40,8 +40,8 @@
         type="textarea"
         :autosize="{ minRows: 14, maxRows: 28 }"
         :placeholder="placeholder"
-        :maxlength="maxlength"
-        :show-word-limit="!!maxlength"
+        :maxlength="effectiveMaxlength"
+        :show-word-limit="hasMaxlength"
         autofocus
       />
       <template #footer>
@@ -121,6 +121,12 @@ export default defineComponent({
       set(val: string) {
         this.$emit('update:modelValue', val);
       }
+    },
+    hasMaxlength(): boolean {
+      return typeof this.maxlength === 'number' && this.maxlength > 0;
+    },
+    effectiveMaxlength(): number | undefined {
+      return this.hasMaxlength ? this.maxlength : undefined;
     }
   },
   methods: {
