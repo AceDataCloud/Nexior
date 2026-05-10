@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import OpticalDisk from '@/assets/images/disk.png';
-import { computed, watch } from 'vue';
+import { computed, onBeforeUnmount, watch } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -23,50 +23,87 @@ const audio = computed({
   set: (value) => store.commit('suno/setAudio', value)
 });
 
+// Track the live `<audio>` element + an AbortController scoping its event
+// listeners outside the watcher, so we can release them when the URL
+// changes (or the component unmounts). Without this, every `audio_url`
+// swap leaked the previous Audio element AND its `loadedmetadata` /
+// `timeupdate` listeners — old tracks kept ticking timeupdate handlers
+// against a stale closure on every navigation.
+let currentAudio: HTMLAudioElement | null = null;
+let currentAbort: AbortController | null = null;
+
+const teardown = () => {
+  if (currentAudio) {
+    try {
+      currentAudio.pause();
+    } catch {
+      /* ignore — already detached */
+    }
+    // Detaching the source lets the browser GC the underlying decoder.
+    currentAudio.src = '';
+    currentAudio = null;
+  }
+  if (currentAbort) {
+    currentAbort.abort();
+    currentAbort = null;
+  }
+};
+
 // watch audio change and play
 watch(audio, (value, oldValue) => {
-  // url changed
+  // url changed — swap the underlying <audio> element
   if (value?.audio_url !== oldValue?.audio_url) {
-    console.log('audio changed', value);
-    if (value.object) {
-      console.log('111', value.object);
-      // delete old object
-      value.object.pause();
-      delete value.object;
+    teardown();
+    if (!value?.audio_url) {
+      return;
     }
     const object = new Audio(value.audio_url);
+    currentAudio = object;
+    currentAbort = new AbortController();
+    const { signal } = currentAbort;
+
     if (value.state === 'playing') {
-      object.play();
+      object.play().catch(() => {
+        /* autoplay may be blocked — ignore */
+      });
     } else {
       object.pause();
     }
 
-    // listen to the time change of audio
-    object.addEventListener('loadedmetadata', () => {
-      object.currentTime = 0;
-      object.addEventListener('timeupdate', () => {
+    object.addEventListener(
+      'loadedmetadata',
+      () => {
+        object.currentTime = 0;
+      },
+      { signal }
+    );
+    object.addEventListener(
+      'timeupdate',
+      () => {
         store.commit('suno/setAudio', {
           ...store.state.suno.audio,
           progress: object.currentTime
         });
-      });
-    });
+      },
+      { signal }
+    );
 
     store.commit('suno/setAudio', {
       ...store.state.suno.audio,
       object: object
     });
-  } else if (value?.progress !== oldValue?.progress && Math.abs(value.progress - value.object.currentTime) > 2) {
-    console.log('progress changed', value.progress);
-    const audio = store.state.suno.audio;
-    if (audio.object) {
-      audio.object.currentTime = audio.progress;
-    }
+  } else if (
+    value?.progress !== oldValue?.progress &&
+    value?.object &&
+    Math.abs(value.progress - value.object.currentTime) > 2
+  ) {
+    value.object.currentTime = value.progress;
   } else if (value?.state !== oldValue?.state) {
-    console.log('state changed', value.state);
-    if (value.object) {
+    if (value?.object) {
       if (value.state === 'playing') {
-        value.object.play();
+        value.object.play().catch(() => {
+          /* autoplay may be blocked — ignore */
+        });
       } else {
         value.object.pause();
       }
@@ -74,10 +111,11 @@ watch(audio, (value, oldValue) => {
   }
 
   if (value?.volume !== oldValue?.volume) {
-    console.log('volume changed', value.volume);
-    if (value.object) {
+    if (value?.object) {
       value.object.volume = value.volume / 100;
     }
   }
 });
+
+onBeforeUnmount(teardown);
 </script>
