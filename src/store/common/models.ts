@@ -21,7 +21,18 @@ import { ISerpState } from '../serp/models';
 import { IWanState } from '../wan/models';
 import { IFishState } from '../fish/models';
 
-export interface ISetting {}
+export interface ISetting {
+  // Optional user-selected wallpaper. When set, painted by `body::before`
+  // as a fixed full-viewport layer behind every page so the per-layout
+  // `var(--app-content-bg)` surfaces become semi-transparent on top.
+  // Persisted in localStorage so it sticks per-browser. Empty string /
+  // undefined disables the wallpaper.
+  backgroundImage?: string;
+  // 0..100 — how opaque the content surfaces stay above the wallpaper.
+  // 100 = no wallpaper visible (all opaque), 0 = wallpaper fully visible.
+  // Default 85 keeps text readable.
+  backgroundOpacity?: number;
+}
 
 export interface ICommonState {
   token: IToken;

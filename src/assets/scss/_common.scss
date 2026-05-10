@@ -28,6 +28,60 @@ html.dark body {
   color-scheme: dark;
 }
 
+// Optional user-selectable wallpaper. App.vue sets `--app-bg-image-url`
+// to `url(...)` when the user picks a wallpaper in Settings > General,
+// and clears it (sets it to `none`) when they hit Clear. The wallpaper is
+// painted by a single fixed pseudo-element below the app content, so it
+// works under every layout (Main / Chat / Console / per-service) without
+// any layout-specific change.
+//
+// `--app-surface-alpha` (0..1, default 1.0) controls how much the
+// per-layout `--app-content-bg` / `--app-sidebar-bg` surfaces stay
+// opaque on top, so the user can dial in readability vs. wallpaper
+// visibility. When no wallpaper is set we keep alpha at 1 so behaviour
+// is byte-identical to the pre-feature build.
+:root {
+  --app-bg-image-url: none;
+  --app-surface-alpha: 1;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--app-bg-image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+// When a wallpaper is active, dial down the per-layout content surfaces so
+// the wallpaper peeks through. Each colour is the same hex value the base
+// theme picks (defined just below in the combined `html, html.dark, :root`
+// block) — kept duplicated here intentionally so the override is the exact
+// pre-alpha value the user is replacing.
+html.has-wallpaper {
+  --app-sidebar-bg: color-mix(in srgb, #f8fafc calc(var(--app-surface-alpha) * 100%), transparent);
+  --app-content-bg: color-mix(in srgb, #ffffff calc(var(--app-surface-alpha) * 100%), transparent);
+  --app-nav-bg: color-mix(in srgb, #f1f5f9 calc(var(--app-surface-alpha) * 100%), transparent);
+}
+
+html.has-wallpaper.dark {
+  --app-sidebar-bg: color-mix(in srgb, #0d1117 calc(var(--app-surface-alpha) * 100%), transparent);
+  --app-content-bg: color-mix(in srgb, #0d1117 calc(var(--app-surface-alpha) * 100%), transparent);
+  --app-nav-bg: color-mix(in srgb, #08090c calc(var(--app-surface-alpha) * 100%), transparent);
+}
+
+// `html` and `body` paint `background-color: var(--el-bg-color)` solid,
+// which would cover the `body::before` wallpaper. When a wallpaper is
+// active we make both transparent so the pseudo-element is visible.
+html.has-wallpaper,
+html.has-wallpaper body {
+  background-color: transparent;
+}
+
 * {
   box-sizing: border-box;
 }
