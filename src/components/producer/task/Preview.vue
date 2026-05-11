@@ -104,11 +104,22 @@
               <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
                 {{ $t('producer.button.replace_section') }}
               </el-dropdown-item>
+              <el-dropdown-item @click.stop="onViewCode">
+                <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+                {{ $t('common.button.viewCode') }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
       </div>
     </div>
+    <api-code-dialog
+      v-model:visible="apiCodeVisible"
+      method="POST"
+      :path="apiCodePath"
+      :body="apiCodeBody"
+      :token="$store.state.producer?.credential?.token || ''"
+    />
   </div>
 </template>
 
@@ -124,6 +135,7 @@ import { IProducerVideoRequest, IProducerAudioRequest, Status } from '@/models';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
+import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
 
 const CALLBACK_URL = getWebhookCallbackUrl('producer');
 
@@ -139,7 +151,8 @@ export default defineComponent({
     ElDropdown,
     ElDropdownMenu,
     ElDropdownItem,
-    Loading
+    Loading,
+    ApiCodeDialog
   },
   props: {
     modelValue: {
@@ -150,7 +163,10 @@ export default defineComponent({
   data() {
     return {
       isFetchingVideoUrl: false,
-      isFetchingWav: false
+      isFetchingWav: false,
+      apiCodeVisible: false,
+      apiCodePath: '/producer/audios',
+      apiCodeBody: {} as Record<string, unknown>
     };
   },
   computed: {
@@ -181,6 +197,20 @@ export default defineComponent({
   },
   methods: {
     useFormatDuring,
+    onViewCode() {
+      const request = (this.modelValue?.request || {}) as Record<string, unknown>;
+      const body: Record<string, unknown> = {};
+      Object.entries(request).forEach(([k, v]) => {
+        if (k === 'application_id' || k === 'callback_url') return;
+        if (v === undefined || v === null) return;
+        if (typeof v === 'string' && v === '') return;
+        if (Array.isArray(v) && v.length === 0) return;
+        body[k] = v;
+      });
+      this.apiCodeBody = body;
+      this.apiCodePath = '/producer/audios';
+      this.apiCodeVisible = true;
+    },
     onPlay(audio: IProducerAudio) {
       this.$store.dispatch('producer/setAudio', {
         ...this.$store.state.producer.audio,

@@ -23,6 +23,7 @@
           <el-button type="info" size="small" class="mb-2" @click.stop="onDownload(audioUrl)">
             {{ $t('fish.button.download') }}
           </el-button>
+          <api-code-button path="/fish/tts" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -65,6 +66,7 @@ import { ElImage, ElAlert, ElButton } from 'element-plus';
 import { IFishTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'FishTaskPreview',
@@ -73,7 +75,8 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ElButton
+    ElButton,
+    ApiCodeButton
   },
   props: {
     modelValue: {

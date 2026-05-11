@@ -125,10 +125,12 @@ import {
   faBrain as faSolidBrain,
   faKey as faSolidKey,
   faPersonRunning as faSolidPersonRunning,
-  faUserTie as faSolidUserTie
+  faUserTie as faSolidUserTie,
+  faCode as faSolidCode
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
+library.add(faSolidCode);
 library.add(faSolidGlobe);
 library.add(faRegularLightbulb);
 library.add(faSolidIdCard);
