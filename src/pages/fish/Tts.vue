@@ -1,7 +1,12 @@
 <template>
   <layout>
     <template #config>
-      <config-panel @generate="onGenerate" />
+      <div class="flex flex-col h-full">
+        <tab-switcher />
+        <div class="flex-1 min-h-0">
+          <config-panel @generate="onGenerate" />
+        </div>
+      </div>
     </template>
     <template #result>
       <recent-panel ref="recentPanel" :loading="loadingMore" @reach-top="onReachTop" />
@@ -14,6 +19,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ConfigPanel from '@/components/fish/ConfigPanel.vue';
 import RecentPanel from '@/components/fish/RecentPanel.vue';
+import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IFishTask, IFishTtsRequest, Status } from '@/models';
@@ -35,7 +41,8 @@ export default defineComponent({
   components: {
     ConfigPanel,
     Layout,
-    RecentPanel
+    RecentPanel,
+    TabSwitcher
   },
   inject: ['initialized'],
   data(): IData {

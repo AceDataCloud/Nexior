@@ -1,7 +1,12 @@
 <template>
   <layout>
     <template #config>
-      <model-config-panel @create="onCreate" />
+      <div class="flex flex-col h-full">
+        <tab-switcher />
+        <div class="flex-1 min-h-0">
+          <model-config-panel @create="onCreate" />
+        </div>
+      </div>
     </template>
     <template #result>
       <model-list-panel :loading="loading" />
@@ -14,6 +19,7 @@ import { defineComponent } from 'vue';
 import Layout from '@/layouts/Hailuo.vue';
 import ModelConfigPanel from '@/components/fish/ModelConfigPanel.vue';
 import ModelListPanel from '@/components/fish/ModelListPanel.vue';
+import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
@@ -27,7 +33,8 @@ export default defineComponent({
   components: {
     ModelConfigPanel,
     Layout,
-    ModelListPanel
+    ModelListPanel,
+    TabSwitcher
   },
   inject: ['initialized'],
   data(): IData {
