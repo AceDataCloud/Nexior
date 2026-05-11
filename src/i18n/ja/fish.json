@@ -90,5 +90,85 @@
   "message.noVoices": {
     "message": "音声モデルはありません",
     "description": "Fish 音声セレクターが空であることを示すメッセージ"
+  },
+  "name.voiceTitle": {
+    "message": "名前",
+    "description": "Fish 音声モデル名称フィールドラベル"
+  },
+  "name.voiceDescription": {
+    "message": "説明",
+    "description": "Fish 音声モデル説明フィールドラベル"
+  },
+  "name.referenceAudio": {
+    "message": "参考音声",
+    "description": "Fish 音声クローン参考音声フィールドラベル"
+  },
+  "name.visibility": {
+    "message": "可視性",
+    "description": "Fish 音声モデル可視性フィールドラベル"
+  },
+  "name.untitledVoice": {
+    "message": "無名の音声",
+    "description": "Fish 音声モデルのデフォルト名"
+  },
+  "placeholder.voiceTitle": {
+    "message": "この音声に名前を付けてください",
+    "description": "Fish 音声名称入力プレースホルダー"
+  },
+  "placeholder.voiceDescription": {
+    "message": "任意、音声の特徴を説明してください",
+    "description": "Fish 音声説明入力プレースホルダー"
+  },
+  "button.uploadAudio": {
+    "message": "音声をアップロード",
+    "description": "Fish 参考音声アップロードボタン"
+  },
+  "button.createModel": {
+    "message": "音声を作成",
+    "description": "Fish 音声クローン作成ボタン"
+  },
+  "button.manageVoices": {
+    "message": "音声を管理",
+    "description": "Fish TTS 音声管理ページに移動するボタン"
+  },
+  "button.useVoice": {
+    "message": "この音声を使用",
+    "description": "Fish 音声クローンでこの音声を使用するボタン"
+  },
+  "description.uploadAudio": {
+    "message": "10〜60秒のクリアな人声のクリップをアップロードしてください。最大50MB。",
+    "description": "Fish 音声クローンアップロードの説明"
+  },
+  "message.creatingModel": {
+    "message": "作成中…",
+    "description": "Fish 音声クローン作成中の通知"
+  },
+  "message.createModelSuccess": {
+    "message": "作成成功",
+    "description": "Fish 音声クローン作成成功の通知"
+  },
+  "message.createModelFailed": {
+    "message": "作成に失敗しました。後でもう一度お試しください",
+    "description": "Fish 音声クローン作成失敗の通知"
+  },
+  "message.titleRequired": {
+    "message": "名前を入力してください",
+    "description": "Fish 音声クローン名必須の通知"
+  },
+  "message.audioRequired": {
+    "message": "まず音声をアップロードしてください",
+    "description": "Fish 音声クローン音声必須の通知"
+  },
+  "message.audioSizeExceed": {
+    "message": "ファイルが大きすぎます。最大50MB",
+    "description": "Fish 音声クローン音声がサイズ制限を超えた場合の通知"
+  },
+  "message.audioOnlyOne": {
+    "message": "一度に1つの音声のみアップロードできます",
+    "description": "Fish 音声クローン音声は1つだけアップロード可能という通知"
+  },
+  "message.uploadError": {
+    "message": "音声のアップロードに失敗しました",
+    "description": "Fish 音声クローン音声アップロード失敗の通知"
   }
 }

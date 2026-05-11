@@ -1,28 +1,34 @@
 <template>
   <div class="field">
     <h2 class="title font-bold">{{ $t('fish.name.voice') }}</h2>
-    <el-select
-      v-model="value"
-      class="value"
-      :placeholder="$t('fish.placeholder.voice')"
-      clearable
-      filterable
-      :loading="loading"
-      :no-data-text="$t('fish.message.noVoices')"
-    >
-      <el-option v-for="item in options" :key="item.id" :label="item.title || item.id" :value="item.id || ''" />
-    </el-select>
+    <div class="value">
+      <el-select
+        v-model="value"
+        :placeholder="$t('fish.placeholder.voice')"
+        clearable
+        filterable
+        :loading="loading"
+        :no-data-text="$t('fish.message.noVoices')"
+      >
+        <el-option v-for="item in options" :key="item.id" :label="item.title || item.id" :value="item.id || ''" />
+      </el-select>
+      <el-button link size="small" class="manage" @click="onManage">
+        {{ $t('fish.button.manageVoices') }}
+      </el-button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElButton, ElSelect, ElOption } from 'element-plus';
 import { IFishVoiceModel, Status } from '@/models';
+import { ROUTE_FISH_MODEL_INDEX } from '@/router/constants';
 
 export default defineComponent({
   name: 'FishVoicePicker',
   components: {
+    ElButton,
     ElSelect,
     ElOption
   },
@@ -60,6 +66,11 @@ export default defineComponent({
         }
       }
     }
+  },
+  methods: {
+    onManage() {
+      this.$router.push({ name: ROUTE_FISH_MODEL_INDEX });
+    }
   }
 });
 </script>
@@ -75,8 +86,22 @@ export default defineComponent({
     margin: 0;
     width: 30%;
   }
+
   .value {
     flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .el-select {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manage {
+      white-space: nowrap;
+      padding: 0 4px;
+    }
   }
 }
 </style>
