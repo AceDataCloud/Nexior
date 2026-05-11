@@ -42,7 +42,8 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   seedance: () => import('./seedance'),
   serp: () => import('./serp'),
   wan: () => import('./wan'),
-  fish: () => import('./fish')
+  fish: () => import('./fish'),
+  webextrator: () => import('./webextrator')
 };
 
 /** Names of every lazy-registerable per-app module (single source of truth). */

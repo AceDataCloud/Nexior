@@ -30,6 +30,7 @@ import seedance from './seedance';
 import serp from './serp';
 import wan from './wan';
 import fish from './fish';
+import webextrator from './webextrator';
 import settings from './settings';
 import profile from './profile';
 
@@ -57,6 +58,7 @@ import {
   ROUTE_WAN_INDEX,
   ROUTE_SERP_INDEX,
   ROUTE_FISH_TTS_INDEX,
+  ROUTE_WEBEXTRATOR_INDEX,
   ROUTE_NOT_FOUND
 } from './constants';
 import { getCookie } from 'typescript-cookie';
@@ -232,6 +234,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
       'Search the web with Google — powered by SERP API. Get organic results, knowledge graphs, images, and more.',
     keywords: ['Search', 'Google Search', 'SERP', 'Web Search'],
     category: 'Web Search'
+  },
+  webextrator: {
+    title: 'WebExtrator',
+    description:
+      'Render and extract any web page with WebExtrator — get HTML, markdown, plain text, structured data, links, and screenshots from any URL.',
+    keywords: ['WebExtrator', 'Web Scraping', 'Web Render', 'Content Extraction', 'Markdown', 'Headless Browser'],
+    category: 'Web Data'
   }
 };
 
@@ -268,7 +277,8 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['seedance', ROUTE_SEEDANCE_INDEX],
   ['pixverse', ROUTE_PIXVERSE_INDEX],
   ['wan', ROUTE_WAN_INDEX],
-  ['serp', ROUTE_SERP_INDEX]
+  ['serp', ROUTE_SERP_INDEX],
+  ['webextrator', ROUTE_WEBEXTRATOR_INDEX]
 ];
 
 const getDefaultRoute = (): { name: string } => {
@@ -318,6 +328,7 @@ const routes = [
   serp,
   wan,
   fish,
+  webextrator,
   midjourney,
   distribution,
   download,

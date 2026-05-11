@@ -1,0 +1,202 @@
+{
+  "name.mode": {
+    "message": "模式",
+    "description": "Label for render/extract mode toggle"
+  },
+  "name.url": {
+    "message": "网址",
+    "description": "Label for the URL input"
+  },
+  "name.expectedType": {
+    "message": "内容类型",
+    "description": "Label for expected content type"
+  },
+  "name.enableLlm": {
+    "message": "LLM 智能清洗",
+    "description": "Label for enable LLM toggle"
+  },
+  "name.advanced": {
+    "message": "高级选项",
+    "description": "Label for advanced options collapse"
+  },
+  "name.waitUntil": {
+    "message": "等待条件",
+    "description": "Label for the wait_until field"
+  },
+  "name.waitForSelector": {
+    "message": "等待选择器",
+    "description": "Label for the wait_for_selector field"
+  },
+  "name.timeout": {
+    "message": "超时(秒)",
+    "description": "Label for the timeout field"
+  },
+  "name.delay": {
+    "message": "加载后延迟(秒)",
+    "description": "Label for the delay_after_load field"
+  },
+  "name.blockResources": {
+    "message": "屏蔽资源",
+    "description": "Label for the block_resources multi-select"
+  },
+  "name.consumption": {
+    "message": "单次消耗",
+    "description": "Label for the per-call cost"
+  },
+  "mode.extract": {
+    "message": "抽取内容",
+    "description": "Extract mode option"
+  },
+  "mode.render": {
+    "message": "渲染页面",
+    "description": "Render mode option"
+  },
+  "expectedType.general": {
+    "message": "通用",
+    "description": "General expected type option"
+  },
+  "expectedType.article": {
+    "message": "文章",
+    "description": "Article expected type option"
+  },
+  "expectedType.product": {
+    "message": "商品",
+    "description": "Product expected type option"
+  },
+  "waitUntil.networkidle": {
+    "message": "网络空闲",
+    "description": "Wait until network idle option"
+  },
+  "waitUntil.load": {
+    "message": "页面加载完成",
+    "description": "Wait until load option"
+  },
+  "waitUntil.domcontentloaded": {
+    "message": "DOM 就绪",
+    "description": "Wait until DOM content loaded option"
+  },
+  "waitUntil.commit": {
+    "message": "导航开始",
+    "description": "Wait until commit option"
+  },
+  "blockResource.image": {
+    "message": "图片",
+    "description": "Block images option"
+  },
+  "blockResource.font": {
+    "message": "字体",
+    "description": "Block fonts option"
+  },
+  "blockResource.media": {
+    "message": "媒体",
+    "description": "Block media option"
+  },
+  "blockResource.stylesheet": {
+    "message": "样式表",
+    "description": "Block stylesheets option"
+  },
+  "blockResource.xhr": {
+    "message": "XHR",
+    "description": "Block XHR option"
+  },
+  "blockResource.fetch": {
+    "message": "Fetch",
+    "description": "Block fetch option"
+  },
+  "placeholder.url": {
+    "message": "https://example.com",
+    "description": "Placeholder for the URL input"
+  },
+  "placeholder.waitForSelector": {
+    "message": "CSS 选择器，例如 .article-body",
+    "description": "Placeholder for the wait_for_selector input"
+  },
+  "placeholder.blockResources": {
+    "message": "选择要屏蔽的资源类型",
+    "description": "Placeholder for the block_resources multi-select"
+  },
+  "button.extract": {
+    "message": "抽取",
+    "description": "Run extract button label"
+  },
+  "button.render": {
+    "message": "渲染",
+    "description": "Run render button label"
+  },
+  "description.intro": {
+    "message": "渲染并抽取任意网页",
+    "description": "Intro line shown in the empty result state"
+  },
+  "description.introHint": {
+    "message": "输入网址，选择「抽取」或「渲染」即可获取干净的正文、Markdown、链接、截图等。",
+    "description": "Hint shown below the intro line"
+  },
+  "description.enableLlm": {
+    "message": "使用 LLM 对抽取出的内容进行二次清洗与结构化整理，会额外消耗积分。",
+    "description": "Tooltip explaining the LLM cleanup toggle"
+  },
+  "message.running": {
+    "message": "正在处理…",
+    "description": "Status while a request is in flight"
+  },
+  "message.extracting": {
+    "message": "正在抽取…",
+    "description": "Status shown when extract is running"
+  },
+  "message.rendering": {
+    "message": "正在渲染…",
+    "description": "Status shown when render is running"
+  },
+  "message.success": {
+    "message": "完成",
+    "description": "Toast shown on success"
+  },
+  "message.failed": {
+    "message": "请求失败",
+    "description": "Generic error message"
+  },
+  "message.usedUp": {
+    "message": "额度已用完，请充值后再试。",
+    "description": "Error shown when balance is exhausted"
+  },
+  "message.busy": {
+    "message": "服务繁忙，请稍后再试。",
+    "description": "Error shown on rate limit"
+  },
+  "message.timeout": {
+    "message": "页面加载超时，请更换网址或调大超时时间。",
+    "description": "Error shown on timeout"
+  },
+  "message.untitled": {
+    "message": "未命名页面",
+    "description": "Fallback title when the page has no title"
+  },
+  "tab.markdown": {
+    "message": "Markdown",
+    "description": "Markdown tab label"
+  },
+  "tab.text": {
+    "message": "纯文本",
+    "description": "Plain text tab label"
+  },
+  "tab.structured": {
+    "message": "结构化",
+    "description": "Structured data tab label"
+  },
+  "tab.links": {
+    "message": "链接",
+    "description": "Links tab label"
+  },
+  "tab.images": {
+    "message": "图片",
+    "description": "Images tab label"
+  },
+  "tab.html": {
+    "message": "HTML",
+    "description": "HTML tab label"
+  },
+  "tab.raw": {
+    "message": "原始 JSON",
+    "description": "Raw response tab label"
+  }
+}
