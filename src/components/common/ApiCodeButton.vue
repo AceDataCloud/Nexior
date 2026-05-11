@@ -148,11 +148,14 @@ export default defineComponent({
   // text-only and have a clean text baseline. This button mixes a
   // `<font-awesome-icon>` SVG with text, which shifts the synthesized
   // baseline and makes the button visually float a few pixels lower than
-  // its peers (reported by reviewers as "high inconsistency").
+  // its peers.
   //
-  // Opt out of baseline alignment for just this button and center it on
-  // the cross axis instead, so its box top/bottom edges line up with the
-  // pure-text siblings on the same row.
-  align-self: center;
+  // `align-self: center` was tried first but still produced a visible
+  // vertical offset on production (the synthesized baseline of the
+  // siblings already sits below their box midpoint, so centering this
+  // button puts its midpoint above theirs). Pinning to `flex-start` makes
+  // the top edges line up, which is what reviewers expect when comparing a
+  // row of equal-height chips.
+  align-self: flex-start;
 }
 </style>
