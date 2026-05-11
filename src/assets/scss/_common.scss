@@ -28,32 +28,49 @@ html.dark body {
   color-scheme: dark;
 }
 
-// Optional user-selectable wallpaper. App.vue sets `--app-bg-image-url`
-// to `url(...)` when the user picks a wallpaper in Settings > General,
-// and clears it (sets it to `none`) when they hit Clear. The wallpaper is
-// painted by a single fixed pseudo-element below the app content, so it
-// works under every layout (Main / Chat / Console / per-service) without
-// any layout-specific change.
+// Optional per-site wallpaper. `src/utils/wallpaper.ts` sets
+// `--app-bg-image-url` to `url(...)` when the site admin configures
+// `Site.metadata.background_image`, and clears it (back to `none`) when
+// it's removed. The wallpaper is painted by a single fixed pseudo-
+// element below the app content, so it works under every layout (Main /
+// Chat / Console / per-service) without any layout-specific change.
 //
-// `--app-surface-alpha` (0..1, default 1.0) controls how much the
-// per-layout `--app-content-bg` / `--app-sidebar-bg` surfaces stay
-// opaque on top, so the user can dial in readability vs. wallpaper
-// visibility. When no wallpaper is set we keep alpha at 1 so behaviour
-// is byte-identical to the pre-feature build.
+// `--app-surface-alpha` (0..1, bounded 0.6..0.98 server-side, default
+// 0.92) controls how much the per-layout `--app-content-bg` /
+// `--app-sidebar-bg` surfaces stay opaque on top, so the admin can dial
+// in readability vs. wallpaper visibility. The lower bound (0.6) is
+// enforced in `src/utils/wallpaper.ts` to keep text legible.
+//
+// `--app-bg-blur` (default 12px, bounded 0..40) applies a Gaussian blur
+// to the wallpaper pseudo-element \u2014 the macOS-style "frosted glass"
+// effect that keeps surface text readable even over busy / high-contrast
+// imagery. We pair it with `transform: scale(1.05)` so the blur's edge
+// halo (which extends past the element's bounds) doesn't expose a hard
+// crop line at the viewport edges.
+//
+// When no wallpaper is set we leave `--app-surface-alpha` at 1 and skip
+// the filter entirely so behaviour is byte-identical to the
+// pre-wallpaper build.
 :root {
   --app-bg-image-url: none;
+  --app-bg-blur: 0px;
   --app-surface-alpha: 1;
 }
 
 body::before {
   content: '';
   position: fixed;
-  inset: 0;
+  // Inflate slightly so `filter: blur()` doesn't reveal a hard edge at
+  // the viewport boundary. The exact overscan (5%) is calibrated to the
+  // 40px blur ceiling on a 1080p viewport \u2014 see `BG_BLUR_MAX` in
+  // `src/utils/wallpaper.ts`.
+  inset: -5%;
   z-index: -1;
   background-image: var(--app-bg-image-url);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  filter: blur(var(--app-bg-blur));
   pointer-events: none;
 }
 

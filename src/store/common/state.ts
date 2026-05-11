@@ -43,7 +43,6 @@ export default (): IRootState => {
       getApplications: undefined,
       getTasks: undefined
     },
-    setting: {},
     site: {},
     chat: chatState(),
     midjourney: midjourneyState(),

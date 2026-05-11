@@ -127,6 +127,41 @@
       })();
     </script>
     <script>
+      // Pre-paint the per-site wallpaper BEFORE Vue mounts so users with a
+      // cloud-configured background don't see a "flash of no wallpaper,
+      // then wallpaper" on every page load while the bundle boots, fetches
+      // /api/v1/sites/, and the App.vue watcher fires. `App.vue` writes
+      // the resolved {image, blur, opacity} into sessionStorage on every
+      // store change (see `src/utils/wallpaper.ts`); we read it back here.
+      //
+      // This is "best effort": first-ever load on a new tab has no cache,
+      // so the original FOUC still happens for that one paint. Subsequent
+      // reloads / SPA navigations land instantly. sessionStorage (not
+      // localStorage) on purpose \u2014 prevents stale per-browser caches
+      // from outliving an admin's wallpaper change across browser sessions.
+      (() => {
+        try {
+          const raw = sessionStorage.getItem('nexior:wallpaper-cache');
+          if (!raw) return;
+          const cfg = JSON.parse(raw);
+          if (!cfg || typeof cfg.image !== 'string' || !cfg.image) return;
+          // Same escape rule as `src/utils/wallpaper.ts` \u2014 keep it
+          // duplicated here because this script must NOT import from the
+          // bundle (it runs before module loading).
+          const safe = cfg.image.replace(/["\\\n\r]/g, '');
+          const blur = typeof cfg.blur === 'number' ? Math.max(0, Math.min(40, cfg.blur)) : 12;
+          const opacity = typeof cfg.opacity === 'number' ? Math.max(60, Math.min(98, cfg.opacity)) : 92;
+          const root = document.documentElement;
+          root.style.setProperty('--app-bg-image-url', 'url("' + safe + '")');
+          root.style.setProperty('--app-bg-blur', blur + 'px');
+          root.style.setProperty('--app-surface-alpha', (opacity / 100).toString());
+          root.classList.add('has-wallpaper');
+        } catch (e) {
+          /* no-op \u2014 corrupt cache, private mode, etc. App.vue will repaint shortly. */
+        }
+      })();
+    </script>
+    <script>
       var _hmt = _hmt || [];
       // Defer Baidu analytics so it never blocks initial paint or competes for
       // bandwidth with the application bundle. `requestIdleCallback` lets the
@@ -167,6 +202,34 @@
         --boot-bg: #000000;
         --boot-fg: #ffffff;
         --boot-muted: rgba(255, 255, 255, 0.65);
+      }
+
+      /*
+       * Boot-time wallpaper rules. Duplicated (intentionally) from
+       * `src/assets/scss/_common.scss` so that when the pre-paint script
+       * above sets `html.has-wallpaper` + the `--app-bg-*` vars BEFORE
+       * the bundle stylesheet has loaded, we still actually PAINT the
+       * wallpaper instead of just storing CSS vars that nothing consumes
+       * yet. Once the bundle CSS loads it has the same rules at the same
+       * specificity, so the cascade is a no-op transition.
+       *
+       * Keep these in sync with `_common.scss` if either side changes.
+       */
+      html.has-wallpaper,
+      html.has-wallpaper body {
+        background-color: transparent;
+      }
+      html.has-wallpaper body::before {
+        content: '';
+        position: fixed;
+        inset: -5%;
+        z-index: -1;
+        background-image: var(--app-bg-image-url);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: blur(var(--app-bg-blur, 0px));
+        pointer-events: none;
       }
 
       html,

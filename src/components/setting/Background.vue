@@ -1,13 +1,12 @@
 <template>
   <div class="bg-setting">
     <!--
-      Preview: shows the currently selected wallpaper (or "no wallpaper"
-      placeholder) at the same checkerboard background convention the
-      `ImageCropper`/EditImage upload uses, so transparent PNGs are
-      visually obvious.
+      16:9 preview. The checkerboard makes transparent PNGs visually
+      obvious, matching the convention used elsewhere (EditImage uploads,
+      avatar cropper, etc.).
     -->
     <div class="preview">
-      <div v-if="backgroundImage" class="preview-image" :style="{ backgroundImage: `url(${backgroundImage})` }" />
+      <div v-if="image" class="preview-image" :style="{ backgroundImage: `url(${image})`, filter: previewFilter }" />
       <div v-else class="preview-empty">
         <font-awesome-icon icon="fa-solid fa-image" class="icon" />
         <span class="text">{{ $t('common.settings.backgroundEmpty') }}</span>
@@ -16,35 +15,50 @@
 
     <div class="controls">
       <edit-image
-        :model-value="backgroundImage || ''"
+        :model-value="image || ''"
         :title="$t('common.settings.backgroundUploadTitle')"
         :tip="$t('common.settings.backgroundTip')"
         @confirm="onUpload"
       />
-      <el-button v-if="backgroundImage" round size="small" type="danger" plain class="ml-2" @click="onClear">
+      <el-button v-if="image" round size="small" type="danger" plain class="ml-2" @click="onClear">
         {{ $t('common.button.clear') }}
       </el-button>
     </div>
 
     <!--
-      Opacity slider only meaningful when a wallpaper is set. Controls the
-      alpha of the content surfaces (sidebars / cards / main canvas) layered
-      ON TOP of the wallpaper. Stored as 0..100; consumed as
-      `0.85` by App.vue via the `--app-surface-alpha` CSS variable.
+      Blur + opacity sliders are only meaningful with a wallpaper set. The
+      hard min/max on each slider matches `src/utils/wallpaper.ts` BG_*_MIN
+      / BG_*_MAX constants; the backend doesn't validate `metadata.*` so we
+      enforce the readable range here at the UI boundary.
     -->
-    <div v-if="backgroundImage" class="opacity-row">
-      <span class="label">{{ $t('common.settings.backgroundOpacity') }}</span>
-      <el-slider
-        :model-value="opacity"
-        :min="20"
-        :max="100"
-        :step="1"
-        :show-tooltip="true"
-        class="slider"
-        @input="onOpacityChange"
-      />
-      <span class="value">{{ opacity }}%</span>
-    </div>
+    <template v-if="image">
+      <div class="slider-row">
+        <span class="label">{{ $t('common.settings.backgroundBlur') }}</span>
+        <el-slider
+          :model-value="blur"
+          :min="BG_BLUR_MIN"
+          :max="BG_BLUR_MAX"
+          :step="1"
+          :show-tooltip="true"
+          class="slider"
+          @change="onBlurChange"
+        />
+        <span class="value">{{ blur }}px</span>
+      </div>
+      <div class="slider-row">
+        <span class="label">{{ $t('common.settings.backgroundOpacity') }}</span>
+        <el-slider
+          :model-value="opacity"
+          :min="BG_OPACITY_MIN"
+          :max="BG_OPACITY_MAX"
+          :step="1"
+          :show-tooltip="true"
+          class="slider"
+          @change="onOpacityChange"
+        />
+        <span class="value">{{ opacity }}%</span>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -53,6 +67,16 @@ import { defineComponent } from 'vue';
 import { ElButton, ElSlider } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditImage from '@/components/site/EditImage.vue';
+import { siteOperator } from '@/operators';
+import {
+  BG_BLUR_DEFAULT,
+  BG_BLUR_MAX,
+  BG_BLUR_MIN,
+  BG_OPACITY_DEFAULT,
+  BG_OPACITY_MAX,
+  BG_OPACITY_MIN,
+  readWallpaperConfig
+} from '@/utils/wallpaper';
 
 export default defineComponent({
   name: 'BackgroundSetting',
@@ -62,26 +86,97 @@ export default defineComponent({
     FontAwesomeIcon,
     EditImage
   },
+  data() {
+    return {
+      BG_BLUR_MIN,
+      BG_BLUR_MAX,
+      BG_OPACITY_MIN,
+      BG_OPACITY_MAX
+    };
+  },
   computed: {
-    backgroundImage(): string {
-      return this.$store.getters.setting?.backgroundImage || '';
+    site(): any {
+      return this.$store.state.site || {};
+    },
+    config() {
+      return readWallpaperConfig(this.site.metadata);
+    },
+    image(): string {
+      return this.config.image;
+    },
+    blur(): number {
+      return this.config.blur;
     },
     opacity(): number {
-      const v = this.$store.getters.setting?.backgroundOpacity;
-      return typeof v === 'number' ? v : 85;
+      return this.config.opacity;
+    },
+    /**
+     * The same `filter: blur(N)` we render globally, but applied directly
+     * to the small `.preview-image` so admins see the live effect of the
+     * slider in the 16:9 frame BEFORE saving. `scale(1.05)` mirrors the
+     * `inset: -5%` overscan in `_common.scss` so the blur halo doesn't
+     * clip in the preview.
+     */
+    previewFilter(): string {
+      return `blur(${this.blur}px)`;
     }
   },
   methods: {
     onUpload(url: string) {
       if (!url) return;
-      this.$store.commit('setSetting', { backgroundImage: url });
+      // On first upload, seed sensible defaults for blur + opacity so the
+      // admin doesn't have to drag two sliders to get a readable result.
+      // Subsequent uploads preserve whatever they previously chose.
+      const hasExisting = !!this.site?.metadata?.background_image;
+      void this.saveMetadata({
+        background_image: url,
+        background_blur: hasExisting ? this.blur : BG_BLUR_DEFAULT,
+        background_opacity: hasExisting ? this.opacity : BG_OPACITY_DEFAULT
+      });
     },
     onClear() {
-      this.$store.commit('setSetting', { backgroundImage: '' });
+      // Remove all three keys so the next read falls cleanly back to
+      // "no wallpaper" without ghost blur/opacity values lingering in
+      // `metadata`.
+      void this.saveMetadata({
+        background_image: '',
+        background_blur: undefined,
+        background_opacity: undefined
+      });
+    },
+    onBlurChange(value: number | number[]) {
+      const v = Array.isArray(value) ? value[0] : value;
+      void this.saveMetadata({ background_blur: v });
     },
     onOpacityChange(value: number | number[]) {
       const v = Array.isArray(value) ? value[0] : value;
-      this.$store.commit('setSetting', { backgroundOpacity: v });
+      void this.saveMetadata({ background_opacity: v });
+    },
+    async saveMetadata(patch: Record<string, any>) {
+      // Spread the existing metadata so we don't clobber other admin-set
+      // keys (e.g. analytics, brand-specific flags). `undefined` keys are
+      // dropped \u2014 use that to "remove" a key on Clear.
+      const nextMetadata: Record<string, any> = {
+        ...(this.site.metadata || {})
+      };
+      for (const [k, v] of Object.entries(patch)) {
+        if (v === undefined) {
+          delete nextMetadata[k];
+        } else {
+          nextMetadata[k] = v;
+        }
+      }
+      const payload = {
+        ...this.site,
+        metadata: nextMetadata
+      };
+      try {
+        await siteOperator.update(this.site?.id, payload);
+        // Refresh the store so App.vue's `siteMetadata` watcher repaints.
+        await this.$store.dispatch('getSite');
+      } catch (e) {
+        console.error('failed to save site wallpaper metadata', e);
+      }
     }
   }
 });
@@ -117,6 +212,9 @@ export default defineComponent({
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      // Match the global `body::before` overscan so the blur halo doesn't
+      // clip in the preview frame.
+      transform: scale(1.08);
     }
 
     .preview-empty {
@@ -145,7 +243,7 @@ export default defineComponent({
     align-items: center;
   }
 
-  .opacity-row {
+  .slider-row {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -155,6 +253,7 @@ export default defineComponent({
       font-size: 13px;
       color: var(--el-text-color-regular);
       flex: none;
+      min-width: 56px;
     }
 
     .slider {
@@ -166,7 +265,7 @@ export default defineComponent({
       font-size: 12px;
       color: var(--el-text-color-secondary);
       flex: none;
-      width: 36px;
+      width: 44px;
       text-align: right;
     }
   }

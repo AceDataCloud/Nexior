@@ -18,6 +18,7 @@ import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { isNative } from '@/utils/surface';
 import { ssoOperator } from '@/operators';
+import { applyWallpaper, readWallpaperConfig } from '@/utils/wallpaper';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
   en: () => import('element-plus/es/locale/lang/en'),
@@ -60,13 +61,11 @@ export default defineComponent({
     currentLocale(): string {
       return getLocale(this.$i18n.locale as string);
     },
-    backgroundImage(): string {
-      return this.$store.getters.setting?.backgroundImage || '';
-    },
-    backgroundOpacity(): number {
-      const v = this.$store.getters.setting?.backgroundOpacity;
-      // Default 85% surface opacity gives a visible but unobtrusive wallpaper.
-      return typeof v === 'number' ? v : 85;
+    siteMetadata(): unknown {
+      // Wallpaper config lives on the site row (admin-managed). We watch
+      // the whole `metadata` object so any change to `background_image` /
+      // `background_blur` / `background_opacity` re-applies in one tick.
+      return this.$store.state.site?.metadata;
     }
   },
   watch: {
@@ -76,15 +75,11 @@ export default defineComponent({
         this.loadElementPlusLocale();
       }
     },
-    backgroundImage: {
+    siteMetadata: {
       immediate: true,
+      deep: true,
       handler() {
-        this.applyBackground();
-      }
-    },
-    backgroundOpacity: {
-      handler() {
-        this.applyBackground();
+        applyWallpaper(readWallpaperConfig(this.siteMetadata));
       }
     }
   },
@@ -148,38 +143,6 @@ export default defineComponent({
     }
   },
   methods: {
-    /**
-     * Apply (or clear) the user-selected wallpaper.
-     *
-     * Sets two CSS variables on `<html>`:
-     *   - `--app-bg-image-url`: `url(...)` or `none`
-     *   - `--app-surface-alpha`: 0..1 — how opaque the per-layout content /
-     *     sidebar surfaces stay above the wallpaper. We don't multiply
-     *     `--app-content-bg` itself (it's a hex color used in many places
-     *     where alpha would also dim borders and shadows). Instead, layout
-     *     CSS that wants to participate uses `color-mix(in srgb, var(
-     *     --app-content-bg) calc(var(--app-surface-alpha) * 100%),
-     *     transparent)`. When `--app-surface-alpha` is 1 (default), that
-     *     simplifies to the original opaque colour.
-     */
-    applyBackground() {
-      const url = this.backgroundImage;
-      const root = document.documentElement;
-      if (url) {
-        // Defensive: CSS `url(...)` chokes on raw `)` / `"` / newlines. Real
-        // uploaded URLs from `/files/` are clean COS links, but a user
-        // could in principle paste anything via DevTools, so escape.
-        const safe = url.replace(/["\\\n\r]/g, '');
-        root.style.setProperty('--app-bg-image-url', `url("${safe}")`);
-        const alpha = Math.max(0.2, Math.min(1, this.backgroundOpacity / 100));
-        root.style.setProperty('--app-surface-alpha', alpha.toString());
-        root.classList.add('has-wallpaper');
-      } else {
-        root.style.removeProperty('--app-bg-image-url');
-        root.style.removeProperty('--app-surface-alpha');
-        root.classList.remove('has-wallpaper');
-      }
-    },
     async loadElementPlusLocale() {
       const localeCode = this.currentLocale;
       console.debug(`[i18n] Loading Element Plus locale for: ${localeCode}`);

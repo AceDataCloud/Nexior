@@ -94,6 +94,18 @@
 
     <section class="settings-item">
       <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.background') }}</p>
+        <p class="settings-tip">
+          {{ $t('common.settings.backgroundTip') }}
+        </p>
+      </div>
+      <div class="settings-content settings-content-block">
+        <background-setting />
+      </div>
+    </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.admins') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.adminsTip') }}
@@ -123,6 +135,7 @@ import EditImage from '@/components/site/EditImage.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
 import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
+import BackgroundSetting from '@/components/setting/Background.vue';
 import { siteOperator } from '@/operators';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
 
@@ -151,7 +164,8 @@ export default defineComponent({
     ElButton,
     ElColorPicker,
     ElImage,
-    SectionNotice
+    SectionNotice,
+    BackgroundSetting
   },
   data() {
     return {
@@ -249,6 +263,16 @@ export default defineComponent({
     color: var(--el-text-color-regular);
     text-transform: uppercase;
   }
+}
+
+// The wallpaper row renders a 16:9 preview + two sliders that don't fit
+// the default right-aligned `.settings-content` layout shared with the
+// simple value+EditImage rows above. This modifier lets that one row take
+// full width.
+.settings-content-block {
+  display: block;
+  flex: 1;
+  min-width: 0;
 }
 
 @media (max-width: 640px) {

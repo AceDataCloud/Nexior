@@ -12,10 +12,6 @@ export const token = (state: IRootState): any => {
   return state.token;
 };
 
-export const setting = (state: IRootState): any => {
-  return state.setting;
-};
-
 export const site = (state: IRootState): any => {
   return state.site;
 };
@@ -34,6 +30,5 @@ export default {
   token,
   site,
   config,
-  fingerprint,
-  setting
+  fingerprint
 };
