@@ -204,11 +204,18 @@ w3m-modal {
   transition: all 0.2s ease;
 }
 
-// Drop the gradient: its 100% stop is `--el-color-primary-light-3` (#689caa
-// at default), which makes the white label look "disabled" on the bottom-right
-// corner. Use a solid `--el-color-primary` fill — both vars are runtime-driven
-// by `applyAccentColor()`, so the button still follows Settings → Site primary.
-.el-button--primary {
+// Drop the gradient (its 100% stop is `--el-color-primary-light-3`, which makes
+// the white label look "disabled" on the bottom-right corner) and use a solid
+// `--el-color-primary` fill — both vars are runtime-driven by `applyAccentColor()`,
+// so the button still follows Settings → Site primary.
+//
+// IMPORTANT: scope this only to the FILLED variant. Element Plus's `link`, `text`
+// and `plain` variants intentionally render the label in `--el-color-primary`
+// on a transparent / very-light background; painting a solid primary bg behind
+// them makes the label primary-on-primary → invisible (see `<el-button link>`
+// in `X402Pay.vue`). `is-disabled` is excluded so disabled buttons keep their
+// lighter "disabled" tint.
+.el-button--primary:not(.is-link, .is-text, .is-plain, .is-disabled) {
   background: var(--el-color-primary);
   border: none;
   &:hover,
