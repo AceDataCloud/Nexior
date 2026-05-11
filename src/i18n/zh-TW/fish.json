@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "暫無聲音模型",
     "description": "Fish 聲音選擇器為空提示"
+  },
+  "name.voiceTitle": {
+    "message": "名稱",
+    "description": "Fish 聲音模型名稱字段標籤"
+  },
+  "name.voiceDescription": {
+    "message": "描述",
+    "description": "Fish 聲音模型描述字段標籤"
+  },
+  "name.referenceAudio": {
+    "message": "參考音頻",
+    "description": "Fish 聲音克隆參考音頻字段標籤"
+  },
+  "name.visibility": {
+    "message": "可見性",
+    "description": "Fish 聲音模型可見性字段標籤"
+  },
+  "name.untitledVoice": {
+    "message": "未命名聲音",
+    "description": "Fish 聲音模型默認名稱"
+  },
+  "placeholder.voiceTitle": {
+    "message": "給這個聲音起個名字",
+    "description": "Fish 聲音名稱輸入佔位符"
+  },
+  "placeholder.voiceDescription": {
+    "message": "選填，描述這個聲音的特點",
+    "description": "Fish 聲音描述輸入佔位符"
+  },
+  "button.uploadAudio": {
+    "message": "上傳音頻",
+    "description": "Fish 參考音頻上傳按鈕"
+  },
+  "button.createModel": {
+    "message": "創建聲音",
+    "description": "Fish 聲音克隆創建按鈕"
+  },
+  "tab.tts": {
+    "message": "文本轉語音",
+    "description": "Fish 頂部選項卡：TTS"
+  },
+  "tab.model": {
+    "message": "聲音克隆",
+    "description": "Fish 頂部選項卡：聲音模型管理"
+  },
+  "button.useVoice": {
+    "message": "使用該聲音",
+    "description": "Fish 語音克隆使用該聲音按鈕"
+  },
+  "description.uploadAudio": {
+    "message": "上傳 10-60 秒的清晰人聲片段，最大 50MB。",
+    "description": "Fish 聲音克隆上傳說明"
+  },
+  "message.creatingModel": {
+    "message": "正在創建…",
+    "description": "Fish 聲音克隆創建中提示"
+  },
+  "message.createModelSuccess": {
+    "message": "創建成功",
+    "description": "Fish 聲音克隆創建成功提示"
+  },
+  "message.createModelFailed": {
+    "message": "創建失敗，請稍後再試",
+    "description": "Fish 聲音克隆創建失敗提示"
+  },
+  "message.titleRequired": {
+    "message": "請輸入名稱",
+    "description": "Fish 聲音克隆名稱必填提示"
+  },
+  "message.audioRequired": {
+    "message": "請先上傳音頻",
+    "description": "Fish 聲音克隆音頻必填提示"
+  },
+  "message.audioSizeExceed": {
+    "message": "文件過大，最大 50MB",
+    "description": "Fish 聲音克隆音頻超過大小限制提示"
+  },
+  "message.audioOnlyOne": {
+    "message": "一次只能上傳一個音頻",
+    "description": "Fish 聲音克隆音頻只能上傳一個提示"
+  },
+  "message.uploadError": {
+    "message": "音頻上傳失敗",
+    "description": "Fish 聲音克隆音頻上傳失敗提示"
+  },
+  "title.myVoices": {
+    "message": "我的聲音",
+    "description": "Fish 聲音克隆右側面板標題：用戶的聲音列表"
+  },
+  "title.noVoicesYet": {
+    "message": "還沒有聲音模型",
+    "description": "Fish 聲音克隆右側面板空狀態標題"
+  },
+  "description.noVoicesYet": {
+    "message": "上傳或錄製一段參考音頻，幾分鐘內即可獲得一個專屬聲音。",
+    "description": "Fish 声音克隆右侧面板空状态副标题"
+  },
+  "name.audioTexts": {
+    "message": "音頻文本",
+    "description": "Fish 声音克隆音频对应文本字段标签"
+  },
+  "name.trainMode": {
+    "message": "訓練模式",
+    "description": "Fish 声音克隆训练模式字段标签"
+  },
+  "name.enhanceAudio": {
+    "message": "增強音質",
+    "description": "Fish 声音克隆增强音质开关标签"
+  },
+  "name.generateSample": {
+    "message": "生成試聽",
+    "description": "Fish 声音克隆生成试听开关标签"
+  },
+  "value.private": {
+    "message": "僅自己可見",
+    "description": "Fish 聲音克隆可見性：私有"
+  },
+  "value.unlist": {
+    "message": "未公開",
+    "description": "Fish 聲音克隆可見性：未公開（憑 ID 可訪問）"
+  },
+  "value.public": {
+    "message": "公開",
+    "description": "Fish 聲音克隆可見性：公開"
+  },
+  "value.trainModeFast": {
+    "message": "快速",
+    "description": "Fish 聲音克隆訓練模式：快速"
+  },
+  "value.trainModePrecise": {
+    "message": "精準",
+    "description": "Fish 聲音克隆訓練模式：精準"
+  },
+  "button.recordAudio": {
+    "message": "录制音频",
+    "description": "Fish 声音克隆录制音频按钮"
+  },
+  "button.startRecord": {
+    "message": "开始录音",
+    "description": "Fish 录音组件开始按钮"
+  },
+  "button.stopRecord": {
+    "message": "停止录音",
+    "description": "Fish 录音组件停止按钮"
+  },
+  "button.useRecording": {
+    "message": "使用此录音",
+    "description": "Fish 录音组件确认使用按钮"
+  },
+  "button.reRecord": {
+    "message": "重新录制",
+    "description": "Fish 录音组件重录按钮"
+  },
+  "button.nextScript": {
+    "message": "换一段",
+    "description": "Fish 录音组件切换朗读文本按钮"
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": "Fish 录音组件取消按钮"
+  },
+  "button.replaceAudio": {
+    "message": "替换音频",
+    "description": "Fish 已就绪音频替换按钮"
+  },
+  "description.readScript": {
+    "message": "請清晰朗讀以下段落，時長 10-30 秒為宜：",
+    "description": "Fish 录音组件朗读脚本提示"
+  },
+  "description.audioTexts": {
+    "message": "選填，輸入音頻中所說的內容。錄音時會自動填充朗讀文本。",
+    "description": "Fish 声音克隆音频文本字段说明"
+  },
+  "description.audioRequired": {
+    "message": "必填",
+    "description": "Fish 声音克隆音频必填角标"
+  },
+  "description.enhanceAudio": {
+    "message": "對參考音頻做降噪處理，背景嘈雜時建議開啟。",
+    "description": "Fish 声音克隆增强音质开关说明"
+  },
+  "description.generateSample": {
+    "message": "創建完成後自動生成一段示例音頻用於試聽。",
+    "description": "Fish 声音克隆生成试听开关说明"
+  },
+  "description.recorderIdle": {
+    "message": "點擊紅色按鈕開始錄音",
+    "description": "Fish 录音组件空闲状态提示"
+  },
+  "description.recorderRecording": {
+    "message": "正在錄音…清晰朗讀上方文字",
+    "description": "Fish 录音组件录制中提示"
+  },
+  "description.recorderRecorded": {
+    "message": "已錄製，可試聽後保存或重錄",
+    "description": "Fish 录音组件录制完成提示"
+  },
+  "placeholder.audioTexts": {
+    "message": "如：今天天氣真好…",
+    "description": "Fish 聲音克隆音頻文本佔位符"
+  },
+  "message.micDenied": {
+    "message": "未獲得麥克風授權，請在瀏覽器中允許後重試",
+    "description": "Fish 录音麦克风被拒绝提示"
+  },
+  "message.micError": {
+    "message": "無法訪問麥克風，請檢查設備",
+    "description": "Fish 录音麦克风错误提示"
+  },
+  "message.recordingTooShort": {
+    "message": "錄音太短，請錄製至少 3 秒",
+    "description": "Fish 录音过短提示"
+  },
+  "message.recorderUnsupported": {
+    "message": "當前瀏覽器不支持錄音，請改用上傳音頻",
+    "description": "Fish 浏览器不支持 MediaRecorder 提示"
+  },
+  "script.passage1": {
+    "message": "今天的天氣真不錯，陽光明媚，萬物復甦，連風裡都帶著一絲春天的味道。我喜歡在這樣的日子裡走走停停，看遠處的山、看腳下的花，聽小鳥在枝頭唱歌。",
+    "description": "Fish 錄音示範段落 1（春天/寫景）"
+  },
+  "script.passage2": {
+    "message": "人工智慧正在悄悄改變我們的生活，從早晨的天氣預報到夜裡的智能音箱，它無處不在。我們要做的，是學會和它一起成長，讓科技真正為人服務。",
+    "description": "Fish 錄音示範段落 2（科技/AI）"
+  },
+  "script.passage3": {
+    "message": "如果有人問我，什麼是幸福？我會說，幸福就是一杯熱茶、一本好書，還有窗外慢慢飄下的雪。它不喧嘩，卻悄悄溫暖著我們的每一個夜晚。",
+    "description": "Fish 錄音示範段落 3（情感/抒情）"
+  },
+  "script.passage4": {
+    "message": "一二三四五六七八九十，零點一二三四五六七八九。今天是星期一，下週一是放假，再下週一就要開始新的項目了。請把這段話清晰地讀完，不要停頓太久。",
+    "description": "Fish 錄音示範段落 4（數字與發音覆蓋）"
   }
 }

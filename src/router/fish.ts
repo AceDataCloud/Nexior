@@ -1,4 +1,4 @@
-import { ROUTE_FISH_TTS_INDEX } from './constants';
+import { ROUTE_FISH_TTS_INDEX, ROUTE_FISH_MODEL_INDEX } from './constants';
 
 export default {
   path: '/fish',
@@ -9,7 +9,6 @@ export default {
   component: () => import('@/layouts/Main.vue'),
   children: [
     {
-      // Default to TTS — voice cloning page lands in PR #2.
       path: '',
       redirect: { name: ROUTE_FISH_TTS_INDEX }
     },
@@ -17,6 +16,11 @@ export default {
       path: 'tts',
       name: ROUTE_FISH_TTS_INDEX,
       component: () => import('@/pages/fish/Tts.vue')
+    },
+    {
+      path: 'model',
+      name: ROUTE_FISH_MODEL_INDEX,
+      component: () => import('@/pages/fish/Model.vue')
     }
   ]
 };

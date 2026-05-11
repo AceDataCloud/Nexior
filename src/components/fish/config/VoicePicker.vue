@@ -10,7 +10,7 @@
       :loading="loading"
       :no-data-text="$t('fish.message.noVoices')"
     >
-      <el-option v-for="item in options" :key="item.id" :label="item.title || item.id" :value="item.id || ''" />
+      <el-option v-for="item in displayOptions" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
 </template>
@@ -33,8 +33,21 @@ export default defineComponent({
     options(): IFishVoiceModel[] {
       return this.$store.state.fish?.voices ?? [];
     },
-    initialized(): boolean {
-      return this.$store.state.fish?.voices !== undefined;
+    displayOptions(): { value: string; label: string }[] {
+      // Fish-audio's `/fish/model` response surfaces the canonical reference id
+      // under one of three keys depending on which shape the platform proxy
+      // forwards: `id`, `_id` (Mongo), or `reference_id`. Resolve them in that
+      // order so each voice always has a non-empty `:value` — otherwise the
+      // <el-option> renders with `value=""` and el-select treats it as the
+      // "clear" sentinel, which surfaces as the dropdown showing
+      // 'No voice models yet' even when voices state has items.
+      return this.options
+        .map((item) => {
+          const m = item as IFishVoiceModel & { _id?: string };
+          const id = (m.id || m._id || m.reference_id || '').toString();
+          return { value: id, label: m.title || id };
+        })
+        .filter((o) => !!o.value);
     },
     credential() {
       return this.$store.state.fish?.credential;
@@ -55,7 +68,15 @@ export default defineComponent({
     credential: {
       immediate: true,
       handler(val) {
-        if (val?.token && !this.initialized) {
+        // Refetch when credential becomes available AND we either don't have a
+        // voices snapshot yet OR the snapshot is empty. The latter handles the
+        // case where the user created their first voice on /fish/model: by the
+        // time they hop back to /fish/tts the cached `voices` may have been an
+        // empty array, which used to lock the picker into "No voice models
+        // yet" indefinitely.
+        if (!val?.token) return;
+        const voices = this.$store.state.fish?.voices;
+        if (voices === undefined || voices.length === 0) {
           this.$store.dispatch('fish/getVoices');
         }
       }

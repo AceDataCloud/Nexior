@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "Inga ljudmodeller tillgängliga",
     "description": "Fish ljudväljare är tomt meddelande"
+  },
+  "name.voiceTitle": {
+    "message": "Namn",
+    "description": "Fish röstmodell namn fältetikett"
+  },
+  "name.voiceDescription": {
+    "message": "Beskrivning",
+    "description": "Fish röstmodell beskrivning fältetikett"
+  },
+  "name.referenceAudio": {
+    "message": "Referensljud",
+    "description": "Fish röstkloning referensljud fältetikett"
+  },
+  "name.visibility": {
+    "message": "Synlighet",
+    "description": "Fish röstmodell synlighet fältetikett"
+  },
+  "name.untitledVoice": {
+    "message": "Obenämnd röst",
+    "description": "Fish röstmodell standardnamn"
+  },
+  "placeholder.voiceTitle": {
+    "message": "Ge denna röst ett namn",
+    "description": "Fish röstnamn inmatningsplatshållare"
+  },
+  "placeholder.voiceDescription": {
+    "message": "Valfritt, beskriv egenskaperna för denna röst",
+    "description": "Fish röstbeskrivning inmatningsplatshållare"
+  },
+  "button.uploadAudio": {
+    "message": "Ladda upp ljud",
+    "description": "Fish referensljud uppladdningsknapp"
+  },
+  "button.createModel": {
+    "message": "Skapa röst",
+    "description": "Fish röstklonings skapande knapp"
+  },
+  "tab.tts": {
+    "message": "Text till tal",
+    "description": "Fish övre flik: TTS"
+  },
+  "tab.model": {
+    "message": "Ljudkloning",
+    "description": "Fish övre flik: Hantering av ljudmodeller"
+  },
+  "button.useVoice": {
+    "message": "Använd denna röst",
+    "description": "Fish röstkloning använd denna röst knapp"
+  },
+  "description.uploadAudio": {
+    "message": "Ladda upp 10-60 sekunder av klart tal, max 50MB.",
+    "description": "Fish röstkloning uppladdningsinstruktion"
+  },
+  "message.creatingModel": {
+    "message": "Skapar…",
+    "description": "Fish röstkloning skapande pågår meddelande"
+  },
+  "message.createModelSuccess": {
+    "message": "Skapandet lyckades",
+    "description": "Fish röstkloning skapande lyckades meddelande"
+  },
+  "message.createModelFailed": {
+    "message": "Skapandet misslyckades, försök igen senare",
+    "description": "Fish röstkloning skapande misslyckades meddelande"
+  },
+  "message.titleRequired": {
+    "message": "Vänligen ange namn",
+    "description": "Fish röstkloning namn är obligatoriskt meddelande"
+  },
+  "message.audioRequired": {
+    "message": "Vänligen ladda upp ljud först",
+    "description": "Fish röstkloning ljud är obligatoriskt meddelande"
+  },
+  "message.audioSizeExceed": {
+    "message": "Filen är för stor, max 50MB",
+    "description": "Fish röstkloning ljud överskrider storleksgräns meddelande"
+  },
+  "message.audioOnlyOne": {
+    "message": "Endast ett ljud kan laddas upp åt gången",
+    "description": "Fish röstkloning ljud kan endast laddas upp en i taget meddelande"
+  },
+  "message.uploadError": {
+    "message": "Ljuduppladdning misslyckades",
+    "description": "Fish röstkloning ljuduppladdning misslyckades meddelande"
+  },
+  "title.myVoices": {
+    "message": "Mina röster",
+    "description": "Fish ljudklon högra panelens titel: Användarens röstlista"
+  },
+  "title.noVoicesYet": {
+    "message": "Inga röstmodeller ännu",
+    "description": "Fish ljudklon högra panelens tomma tillståndstitel"
+  },
+  "description.noVoicesYet": {
+    "message": "Ladda upp eller spela in ett referensljud, så får du en personlig röst inom några minuter.",
+    "description": "Fish ljudkloningens tomma tillståndsunderrubrik på högra panelen"
+  },
+  "name.audioTexts": {
+    "message": "Ljudtext",
+    "description": "Fish ljudkloningens etikett för ljudtextfält"
+  },
+  "name.trainMode": {
+    "message": "Träningsläge",
+    "description": "Fish ljudkloningens etikett för träningslägesfält"
+  },
+  "name.enhanceAudio": {
+    "message": "Förbättra ljudkvalitet",
+    "description": "Fish ljudkloningens etikett för växeln för att förbättra ljudkvalitet"
+  },
+  "name.generateSample": {
+    "message": "Generera förhandslyssning",
+    "description": "Fish ljudkloningens etikett för växeln för att generera förhandslyssning"
+  },
+  "value.private": {
+    "message": "Endast synlig för mig",
+    "description": "Fish ljudklon synlighet: privat"
+  },
+  "value.unlist": {
+    "message": "Ej offentlig",
+    "description": "Fish ljudklon synlighet: ej offentlig (åtkomst via ID)"
+  },
+  "value.public": {
+    "message": "Offentlig",
+    "description": "Fish ljudklon synlighet: offentlig"
+  },
+  "value.trainModeFast": {
+    "message": "Snabb",
+    "description": "Fish ljudklon träningsläge: snabb"
+  },
+  "value.trainModePrecise": {
+    "message": "Precise",
+    "description": "Fish ljudklon träningsläge: precis"
+  },
+  "button.recordAudio": {
+    "message": "Spela in ljud",
+    "description": "Fish ljudkloningens knapp för att spela in ljud"
+  },
+  "button.startRecord": {
+    "message": "Börja spela in",
+    "description": "Fish inspelningskomponentens startknapp"
+  },
+  "button.stopRecord": {
+    "message": "Stoppa inspelning",
+    "description": "Fish inspelningskomponentens stoppknapp"
+  },
+  "button.useRecording": {
+    "message": "Använd denna inspelning",
+    "description": "Fish inspelningskomponentens bekräfta användning knapp"
+  },
+  "button.reRecord": {
+    "message": "Spela in igen",
+    "description": "Fish inspelningskomponentens knapp för att spela in på nytt"
+  },
+  "button.nextScript": {
+    "message": "Byt text",
+    "description": "Fish inspelningskomponentens knapp för att byta lästext"
+  },
+  "button.cancel": {
+    "message": "Avbryt",
+    "description": "Fish inspelningskomponentens avbryt knapp"
+  },
+  "button.replaceAudio": {
+    "message": "Ersätt ljud",
+    "description": "Fish knapp för att ersätta färdigt ljud"
+  },
+  "description.readScript": {
+    "message": "Vänligen läs följande stycke tydligt, en längd på 10-30 sekunder rekommenderas:",
+    "description": "Fish inspelningskomponentens läsmanusmeddelande"
+  },
+  "description.audioTexts": {
+    "message": "Valfritt, ange innehållet som sägs i ljudet. Texten kommer automatiskt att fyllas i under inspelningen.",
+    "description": "Fish ljudkloningens fältbeskrivning för ljudtext"
+  },
+  "description.audioRequired": {
+    "message": "Obligatoriskt",
+    "description": "Fish ljudkloningens obligatoriska ljudindikator"
+  },
+  "description.enhanceAudio": {
+    "message": "Behandla referensljudet för att minska bakgrundsbrus, rekommenderas att aktivera vid bullriga miljöer.",
+    "description": "Fish ljudkloningens växel för att förbättra ljudkvalitet"
+  },
+  "description.generateSample": {
+    "message": "En exempel ljudfil kommer automatiskt att genereras för förhandslyssning efter skapandet.",
+    "description": "Fish ljudkloningens växel för att generera förhandslyssning"
+  },
+  "description.recorderIdle": {
+    "message": "Klicka på den röda knappen för att börja spela in",
+    "description": "Fish inspelningskomponentens lediga tillståndsmeddelande"
+  },
+  "description.recorderRecording": {
+    "message": "Spelar in… Läs tydligt texten ovan",
+    "description": "Fish inspelningskomponentens meddelande under inspelning"
+  },
+  "description.recorderRecorded": {
+    "message": "Inspelad, kan förhandslyssnas innan du sparar eller spelar in på nytt",
+    "description": "Fish inspelningskomponentens meddelande när inspelningen är klar"
+  },
+  "placeholder.audioTexts": {
+    "message": "Exempel: Idag är vädret verkligen fint...",
+    "description": "Fish ljudklon ljudtext platsinnehåll"
+  },
+  "message.micDenied": {
+    "message": "Ingen mikrofonbehörighet, vänligen tillåt i webbläsaren och försök igen",
+    "description": "Fish mikrofonbehörighet nekad meddelande"
+  },
+  "message.micError": {
+    "message": "Kan inte komma åt mikrofonen, vänligen kontrollera enheten",
+    "description": "Fish mikrofonfel meddelande"
+  },
+  "message.recordingTooShort": {
+    "message": "Inspelningen är för kort, vänligen spela in minst 3 sekunder",
+    "description": "Fish meddelande om för kort inspelning"
+  },
+  "message.recorderUnsupported": {
+    "message": "Den nuvarande webbläsaren stöder inte inspelning, vänligen använd uppladdning av ljud",
+    "description": "Fish webbläsare stöder inte MediaRecorder meddelande"
+  },
+  "script.passage1": {
+    "message": "Dagens väder är verkligen bra, solen skiner, allt vaknar till liv, och även vinden har en aning av vår. Jag älskar att gå långsamt på sådana dagar, titta på bergen i fjärran, se blommorna under mina fötter, och höra fåglarna sjunga i träden.",
+    "description": "Fish inspelningsdemopassage 1 (vår/beskrivning av natur)"
+  },
+  "script.passage2": {
+    "message": "Artificiell intelligens förändrar tyst vårt liv, från morgonens väderprognos till kvällens smarta högtalare, den finns överallt. Det vi behöver göra är att lära oss växa tillsammans med den, så att teknologin verkligen tjänar människan.",
+    "description": "Fish inspelningsdemopassage 2 (teknik/AI)"
+  },
+  "script.passage3": {
+    "message": "Om någon frågar mig, vad är lycka? Jag skulle säga, lycka är en kopp varmt te, en bra bok, och snön som sakta faller utanför fönstret. Den är inte högljudd, men värmer tyst våra varje natt.",
+    "description": "Fish inspelningsdemopassage 3 (känslor/lyrisk)"
+  },
+  "script.passage4": {
+    "message": "Ett, två, tre, fyra, fem, sex, sju, åtta, nio, tio, noll, ett, två, tre, fyra, fem, sex, sju, åtta, nio. Idag är det måndag, nästa måndag är det ledigt, och måndagen därpå börjar vi med ett nytt projekt. Vänligen läs denna text tydligt utan att pausa för länge.",
+    "description": "Fish inspelningsdemopassage 4 (nummer och uttalstäckning)"
   }
 }

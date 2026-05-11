@@ -51,13 +51,19 @@ export interface IFishTasksResponse {
 
 export interface IFishVoiceModel {
   id?: string;
+  // Fish-audio's MongoDB document id is sometimes surfaced verbatim by the
+  // platform proxy; treat it as an alias for `id` in the UI.
+  _id?: string;
+  // Some responses include a separate `reference_id` (the one the /fish/tts
+  // endpoint actually consumes); we fall back to it when `id` is empty.
+  reference_id?: string;
   title?: string;
   description?: string;
   cover_image?: string;
   visibility?: string;
   type?: string;
   state?: string;
-  created_at?: number;
+  created_at?: number | string;
   samples?: Array<{
     title?: string;
     text?: string;

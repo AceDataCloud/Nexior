@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "音声モデルはありません",
     "description": "Fish 音声セレクターが空であることを示すメッセージ"
+  },
+  "name.voiceTitle": {
+    "message": "名前",
+    "description": "Fish 音声モデル名称フィールドラベル"
+  },
+  "name.voiceDescription": {
+    "message": "説明",
+    "description": "Fish 音声モデル説明フィールドラベル"
+  },
+  "name.referenceAudio": {
+    "message": "参考音声",
+    "description": "Fish 音声クローン参考音声フィールドラベル"
+  },
+  "name.visibility": {
+    "message": "可視性",
+    "description": "Fish 音声モデル可視性フィールドラベル"
+  },
+  "name.untitledVoice": {
+    "message": "無名の音声",
+    "description": "Fish 音声モデルのデフォルト名"
+  },
+  "placeholder.voiceTitle": {
+    "message": "この音声に名前を付けてください",
+    "description": "Fish 音声名称入力プレースホルダー"
+  },
+  "placeholder.voiceDescription": {
+    "message": "任意、音声の特徴を説明してください",
+    "description": "Fish 音声説明入力プレースホルダー"
+  },
+  "button.uploadAudio": {
+    "message": "音声をアップロード",
+    "description": "Fish 参考音声アップロードボタン"
+  },
+  "button.createModel": {
+    "message": "音声を作成",
+    "description": "Fish 音声クローン作成ボタン"
+  },
+  "tab.tts": {
+    "message": "テキスト読み上げ",
+    "description": "Fishの上部タブ：TTS"
+  },
+  "tab.model": {
+    "message": "音声クローン",
+    "description": "Fishの上部タブ：音声モデル管理"
+  },
+  "button.useVoice": {
+    "message": "この音声を使用",
+    "description": "Fish 音声クローンでこの音声を使用するボタン"
+  },
+  "description.uploadAudio": {
+    "message": "10〜60秒のクリアな人声のクリップをアップロードしてください。最大50MB。",
+    "description": "Fish 音声クローンアップロードの説明"
+  },
+  "message.creatingModel": {
+    "message": "作成中…",
+    "description": "Fish 音声クローン作成中の通知"
+  },
+  "message.createModelSuccess": {
+    "message": "作成成功",
+    "description": "Fish 音声クローン作成成功の通知"
+  },
+  "message.createModelFailed": {
+    "message": "作成に失敗しました。後でもう一度お試しください",
+    "description": "Fish 音声クローン作成失敗の通知"
+  },
+  "message.titleRequired": {
+    "message": "名前を入力してください",
+    "description": "Fish 音声クローン名必須の通知"
+  },
+  "message.audioRequired": {
+    "message": "まず音声をアップロードしてください",
+    "description": "Fish 音声クローン音声必須の通知"
+  },
+  "message.audioSizeExceed": {
+    "message": "ファイルが大きすぎます。最大50MB",
+    "description": "Fish 音声クローン音声がサイズ制限を超えた場合の通知"
+  },
+  "message.audioOnlyOne": {
+    "message": "一度に1つの音声のみアップロードできます",
+    "description": "Fish 音声クローン音声は1つだけアップロード可能という通知"
+  },
+  "message.uploadError": {
+    "message": "音声のアップロードに失敗しました",
+    "description": "Fish 音声クローン音声アップロード失敗の通知"
+  },
+  "title.myVoices": {
+    "message": "私の声",
+    "description": "Fish 音声クローン右側パネルのタイトル：ユーザーの声のリスト"
+  },
+  "title.noVoicesYet": {
+    "message": "まだ声のモデルがありません",
+    "description": "Fish 音声クローン右側パネルの空の状態のタイトル"
+  },
+  "description.noVoicesYet": {
+    "message": "参照音声をアップロードまたは録音してください。数分以内に専用の声を取得できます。",
+    "description": "Fish 音声クローンの右側パネルの空状態のサブタイトル"
+  },
+  "name.audioTexts": {
+    "message": "音声テキスト",
+    "description": "Fish 音声クローンの音声に対応するテキストフィールドのラベル"
+  },
+  "name.trainMode": {
+    "message": "トレーニングモード",
+    "description": "Fish 音声クローンのトレーニングモードフィールドのラベル"
+  },
+  "name.enhanceAudio": {
+    "message": "音質向上",
+    "description": "Fish 音声クローンの音質向上スイッチのラベル"
+  },
+  "name.generateSample": {
+    "message": "試聴生成",
+    "description": "Fish 音声クローンの試聴生成スイッチのラベル"
+  },
+  "value.private": {
+    "message": "自分だけが見える",
+    "description": "Fish 音声クローンの可視性：プライベート"
+  },
+  "value.unlist": {
+    "message": "未公開",
+    "description": "Fish 音声クローンの可視性：未公開（IDでアクセス可能）"
+  },
+  "value.public": {
+    "message": "公開",
+    "description": "Fish 音声クローンの可視性：パブリック"
+  },
+  "value.trainModeFast": {
+    "message": "速い",
+    "description": "Fish 音声クローンのトレーニングモード：速い"
+  },
+  "value.trainModePrecise": {
+    "message": "正確",
+    "description": "Fish 音声クローンのトレーニングモード：正確"
+  },
+  "button.recordAudio": {
+    "message": "音声を録音",
+    "description": "Fish 音声クローンの音声録音ボタン"
+  },
+  "button.startRecord": {
+    "message": "録音開始",
+    "description": "Fish 録音コンポーネントの開始ボタン"
+  },
+  "button.stopRecord": {
+    "message": "録音停止",
+    "description": "Fish 録音コンポーネントの停止ボタン"
+  },
+  "button.useRecording": {
+    "message": "この録音を使用",
+    "description": "Fish 録音コンポーネントの使用確認ボタン"
+  },
+  "button.reRecord": {
+    "message": "再録音",
+    "description": "Fish 録音コンポーネントの再録音ボタン"
+  },
+  "button.nextScript": {
+    "message": "別のスクリプトに切り替え",
+    "description": "Fish 録音コンポーネントの朗読テキスト切り替えボタン"
+  },
+  "button.cancel": {
+    "message": "キャンセル",
+    "description": "Fish 録音コンポーネントのキャンセルボタン"
+  },
+  "button.replaceAudio": {
+    "message": "音声を置き換え",
+    "description": "Fish 準備完了の音声置き換えボタン"
+  },
+  "description.readScript": {
+    "message": "以下の段落を明確に朗読してください。10〜30秒が適切です：",
+    "description": "Fish 録音コンポーネントの朗読スクリプトのヒント"
+  },
+  "description.audioTexts": {
+    "message": "任意、音声で話される内容を入力してください。録音中に自動的に朗読テキストが入力されます。",
+    "description": "Fish 音声クローンの音声テキストフィールドの説明"
+  },
+  "description.audioRequired": {
+    "message": "必須",
+    "description": "Fish 音声クローンの音声必須マーク"
+  },
+  "description.enhanceAudio": {
+    "message": "参照音声のノイズを減少させます。背景がうるさい場合はオンにすることをお勧めします。",
+    "description": "Fish 音声クローンの音質向上スイッチの説明"
+  },
+  "description.generateSample": {
+    "message": "作成後、自動的に試聴用のサンプル音声が生成されます。",
+    "description": "Fish 音声クローンの試聴生成スイッチの説明"
+  },
+  "description.recorderIdle": {
+    "message": "赤いボタンをクリックして録音を開始",
+    "description": "Fish 録音コンポーネントのアイドル状態のヒント"
+  },
+  "description.recorderRecording": {
+    "message": "録音中…上の文字を明確に朗読してください",
+    "description": "Fish 録音コンポーネントの録音中のヒント"
+  },
+  "description.recorderRecorded": {
+    "message": "録音済み、試聴後に保存または再録音できます",
+    "description": "Fish 録音コンポーネントの録音完了のヒント"
+  },
+  "placeholder.audioTexts": {
+    "message": "例：今日は天気がいいですね…",
+    "description": "Fish 音声クローン音声テキストのプレースホルダー"
+  },
+  "message.micDenied": {
+    "message": "マイクの権限が得られませんでした。ブラウザで許可した後、再試行してください",
+    "description": "Fish 録音のマイク拒否のヒント"
+  },
+  "message.micError": {
+    "message": "マイクにアクセスできません。デバイスを確認してください",
+    "description": "Fish 録音のマイクエラーのヒント"
+  },
+  "message.recordingTooShort": {
+    "message": "録音が短すぎます。最低でも3秒録音してください",
+    "description": "Fish 録音が短すぎるというヒント"
+  },
+  "message.recorderUnsupported": {
+    "message": "現在のブラウザは録音をサポートしていません。音声をアップロードしてください",
+    "description": "Fish ブラウザが MediaRecorder をサポートしていないというヒント"
+  },
+  "script.passage1": {
+    "message": "今日は天気がとても良く、日差しが明るく、すべてが目覚め、風には春の香りが漂っています。こんな日には、遠くの山を見たり、足元の花を見たり、小鳥の歌声を聞いたりしながら歩くのが好きです。",
+    "description": "Fish 録音デモ段落 1（春/風景描写）"
+  },
+  "script.passage2": {
+    "message": "人工知能は静かに私たちの生活を変えています。朝の天気予報から夜のスマートスピーカーまで、どこにでも存在しています。私たちがすべきことは、共に成長することを学び、テクノロジーが本当に人のために役立つようにすることです。",
+    "description": "Fish 録音デモ段落 2（テクノロジー/AI）"
+  },
+  "script.passage3": {
+    "message": "もし誰かに、幸せとは何かと尋ねられたら、私はこう答えます。幸せとは、一杯の温かいお茶と、一冊の良い本、そして窓の外に静かに舞い降りる雪です。それは騒がしくなく、私たちの毎晩を静かに温めてくれます。",
+    "description": "Fish 録音デモ段落 3（感情/抒情）"
+  },
+  "script.passage4": {
+    "message": "一二三四五六七八九十、零点一二三四五六七八九。今日は月曜日で、来週の月曜日は休暇、再来週の月曜日には新しいプロジェクトが始まります。この文をはっきりと読んで、あまり長く止まらないでください。",
+    "description": "Fish 録音デモ段落 4（数字と発音のカバー）"
   }
 }

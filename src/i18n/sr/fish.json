@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "Nema dostupnih zvučnih modela",
     "description": "Poruka kada je selektor zvukova Fish prazan"
+  },
+  "name.voiceTitle": {
+    "message": "Име",
+    "description": "Fish ознака за поље имена модела звука"
+  },
+  "name.voiceDescription": {
+    "message": "Опис",
+    "description": "Fish ознака за поље описа модела звука"
+  },
+  "name.referenceAudio": {
+    "message": "Референтни аудио",
+    "description": "Fish ознака за поље референтног аудија"
+  },
+  "name.visibility": {
+    "message": "Видљивост",
+    "description": "Fish ознака за поље видљивости модела звука"
+  },
+  "name.untitledVoice": {
+    "message": "Некатегорисани звук",
+    "description": "Fish подразумевано име за модел звука"
+  },
+  "placeholder.voiceTitle": {
+    "message": "Дайте овом звуку име",
+    "description": "Fish упутство за унос имена звука"
+  },
+  "placeholder.voiceDescription": {
+    "message": "Опционално, опишите карактеристике овог звука",
+    "description": "Fish упутство за унос описа звука"
+  },
+  "button.uploadAudio": {
+    "message": "Постави аудио",
+    "description": "Fish дугме за постављање референтног аудија"
+  },
+  "button.createModel": {
+    "message": "Креирај звук",
+    "description": "Fish дугме за креирање клонираног звука"
+  },
+  "tab.tts": {
+    "message": "Текст у говор",
+    "description": "Fish горња картица: TTS"
+  },
+  "tab.model": {
+    "message": "Клонирање гласа",
+    "description": "Fish горња картица: управљање моделима гласа"
+  },
+  "button.useVoice": {
+    "message": "Користи овај звук",
+    "description": "Fish дугме за коришћење овог клонираног звука"
+  },
+  "description.uploadAudio": {
+    "message": "Поставите јасне људске звучне фрагменте од 10-60 секунди, максимално 50MB.",
+    "description": "Fish упутство за постављање звука"
+  },
+  "message.creatingModel": {
+    "message": "Креира се…",
+    "description": "Fish обавештење о процесу креирања звука"
+  },
+  "message.createModelSuccess": {
+    "message": "Креирање успешно",
+    "description": "Fish обавештење о успешном креирању звука"
+  },
+  "message.createModelFailed": {
+    "message": "Креирање није успело, покушајте поново касније",
+    "description": "Fish обавештење о неуспеху креирања звука"
+  },
+  "message.titleRequired": {
+    "message": "Молимо унесите име",
+    "description": "Fish обавештење да је име обавезно"
+  },
+  "message.audioRequired": {
+    "message": "Молимо вас да прво поставите аудио",
+    "description": "Fish обавештење да је аудио обавезан"
+  },
+  "message.audioSizeExceed": {
+    "message": "Фајл је превелики, максимално 50MB",
+    "description": "Fish обавештење да аудио прелази ограничење величине"
+  },
+  "message.audioOnlyOne": {
+    "message": "Можете поставити само један аудио одједном",
+    "description": "Fish обавештење да се може поставити само један аудио"
+  },
+  "message.uploadError": {
+    "message": "Постављање аудија није успело",
+    "description": "Fish обавештење о неуспеху постављања аудија"
+  },
+  "title.myVoices": {
+    "message": "Moj glas",
+    "description": "Fish zvučni klon naslov desne strane panela: lista korisnikovih glasova"
+  },
+  "title.noVoicesYet": {
+    "message": "Još nema modela glasa",
+    "description": "Fish zvučni klon naslov praznog stanja desne strane panela"
+  },
+  "description.noVoicesYet": {
+    "message": "Otpremite ili snimite referentni zvuk, dobićete jedinstven glas za nekoliko minuta.",
+    "description": "Fish podnaslov za prazno stanje desne strane panela zvučnog kloniranja"
+  },
+  "name.audioTexts": {
+    "message": "Tekst zvuka",
+    "description": "Fish oznaka za polje teksta zvučnog kloniranja"
+  },
+  "name.trainMode": {
+    "message": "Mod treninga",
+    "description": "Fish oznaka za polje režima treninga zvučnog kloniranja"
+  },
+  "name.enhanceAudio": {
+    "message": "Poboljšaj kvalitet zvuka",
+    "description": "Fish oznaka za prekidač za poboljšanje kvaliteta zvuka"
+  },
+  "name.generateSample": {
+    "message": "Generiši uzorak",
+    "description": "Fish oznaka za prekidač za generisanje uzorka zvuka"
+  },
+  "value.private": {
+    "message": "Samo za mene",
+    "description": "Fish zvučni klon vidljivost: privatno"
+  },
+  "value.unlist": {
+    "message": "Nije javno",
+    "description": "Fish zvučni klon vidljivost: nije javno (može se pristupiti putem ID-a)"
+  },
+  "value.public": {
+    "message": "Javno",
+    "description": "Fish zvučni klon vidljivost: javno"
+  },
+  "value.trainModeFast": {
+    "message": "Brzo",
+    "description": "Fish zvučni klon režim obuke: brzo"
+  },
+  "value.trainModePrecise": {
+    "message": "Precizno",
+    "description": "Fish zvučni klon režim obuke: precizno"
+  },
+  "button.recordAudio": {
+    "message": "Snimi zvuk",
+    "description": "Fish komponent za kloniranje zvuka, dugme za snimanje zvuka"
+  },
+  "button.startRecord": {
+    "message": "Počni snimanje",
+    "description": "Fish компонент за снимање, dugme za početak snimanja"
+  },
+  "button.stopRecord": {
+    "message": "Zaustavi snimanje",
+    "description": "Fish компонент за снимање, dugme za zaustavljanje snimanja"
+  },
+  "button.useRecording": {
+    "message": "Koristi ovo snimanje",
+    "description": "Fish компонент за снимање, dugme za potvrdu korišćenja snimka"
+  },
+  "button.reRecord": {
+    "message": "Ponovo snimi",
+    "description": "Fish компонент за снимање, dugme za ponovni snimanje"
+  },
+  "button.nextScript": {
+    "message": "Следећи текст",
+    "description": "Fish компонент за снимање, dugme za promenu teksta za čitanje"
+  },
+  "button.cancel": {
+    "message": "Откажи",
+    "description": "Fish компонент за снимање, dugme za otkazivanje"
+  },
+  "button.replaceAudio": {
+    "message": "Zameni zvuk",
+    "description": "Fish dugme za zamenu već snimljenog zvuka"
+  },
+  "description.readScript": {
+    "message": "Molimo vas da jasno pročitate sledeći odlomak, trajanje 10-30 sekundi je preporučeno:",
+    "description": "Fish uputstvo za čitanje skripte u komponenti za snimanje"
+  },
+  "description.audioTexts": {
+    "message": "Opcionalno, unesite sadržaj koji se čuje u zvuku. Tekst za čitanje će se automatski popuniti tokom snimanja.",
+    "description": "Fish opis polja za tekst zvučnog kloniranja"
+  },
+  "description.audioRequired": {
+    "message": "Obavezno",
+    "description": "Fish oznaka za obavezno polje zvučnog kloniranja"
+  },
+  "description.enhanceAudio": {
+    "message": "Obradite referentni zvuk za smanjenje šuma, preporučuje se uključiti kada je pozadina bučna.",
+    "description": "Fish opis prekidača za poboljšanje kvaliteta zvuka"
+  },
+  "description.generateSample": {
+    "message": "Automatski generiše primer zvuka za slušanje nakon završetka kreiranja.",
+    "description": "Fish opis prekidača za generisanje uzorka zvuka"
+  },
+  "description.recorderIdle": {
+    "message": "Kliknite na crveno dugme da započnete snimanje",
+    "description": "Fish poruka za stanje mirovanja u komponenti za snimanje"
+  },
+  "description.recorderRecording": {
+    "message": "Snimanje… jasno pročitajte gornji tekst",
+    "description": "Fish poruka za snimanje u toku u komponenti za snimanje"
+  },
+  "description.recorderRecorded": {
+    "message": "Snimljeno, možete slušati pre nego što sačuvate ili ponovo snimite",
+    "description": "Fish poruka za završeno snimanje u komponenti za snimanje"
+  },
+  "placeholder.audioTexts": {
+    "message": "Na primer: Danas je vreme zaista lepo...",
+    "description": "Fish zvučni klon audio tekstualni placeholder"
+  },
+  "message.micDenied": {
+    "message": "Niste dobili dozvolu za mikrofon, molimo vas da dozvolite u pretraživaču i pokušate ponovo",
+    "description": "Fish poruka kada je dozvola za mikrofon odbijena"
+  },
+  "message.micError": {
+    "message": "Nije moguće pristupiti mikrofonu, molimo proverite uređaj",
+    "description": "Fish poruka o grešci sa mikrofonom tokom snimanja"
+  },
+  "message.recordingTooShort": {
+    "message": "Snimanje je prekratko, molimo snimite najmanje 3 sekunde",
+    "description": "Fish poruka kada je snimanje prekratko"
+  },
+  "message.recorderUnsupported": {
+    "message": "Trenutni pretraživač ne podržava snimanje, molimo koristite otpremanje zvuka",
+    "description": "Fish poruka kada pretraživač ne podržava MediaRecorder"
+  },
+  "script.passage1": {
+    "message": "Danas je vreme zaista lepo, sunce sija, sve se budi, čak i vetar nosi miris proleća. Volim da šetam ovakvim danima, da gledam planine u daljini, cveće pod nogama, i slušam ptice kako pevaju na granama.",
+    "description": "Fish snimak demonstracionog pasusa 1 (proleće/opis prirode)"
+  },
+  "script.passage2": {
+    "message": "Veštačka inteligencija tiho menja naše živote, od jutarnjih vremenskih prognoza do pametnih zvučnika noću, ona je svuda oko nas. Ono što treba da uradimo je da naučimo da rastemo zajedno s njom, kako bi tehnologija zaista služila ljudima.",
+    "description": "Fish snimak demonstracionog pasusa 2 (tehnologija/AI)"
+  },
+  "script.passage3": {
+    "message": "Ako me neko pita šta je sreća? Rekao bih, sreća je šoljica toplog čaja, dobra knjiga i polako padajući sneg napolju. Nije bučna, ali tiho greje svaku našu noć.",
+    "description": "Fish snimak demonstracionog pasusa 3 (emocije/poezija)"
+  },
+  "script.passage4": {
+    "message": "Jedan, dva, tri, četiri, pet, šest, sedam, osam, devet, deset, nula, jedan, dva, tri, četiri, pet, šest, sedam, osam, devet. Danas je ponedeljak, sledeći ponedeljak je praznik, a sledeći ponedeljak počinjemo novi projekat. Molim vas, pročitajte ovaj deo jasno, ne pravite preduge pauze.",
+    "description": "Fish snimak demonstracionog pasusa 4 (brojevi i izgovor)"
   }
 }

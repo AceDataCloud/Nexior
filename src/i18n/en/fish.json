@@ -89,6 +89,237 @@
   },
   "message.noVoices": {
     "message": "No voice models yet",
-    "description": "Fish voice picker empty state"
+    "description": "Fish voice picker empty state"  },
+  "name.voiceTitle": {
+    "message": "Name",
+    "description": "Fish voice model title label"
+  },
+  "name.voiceDescription": {
+    "message": "Description",
+    "description": "Fish voice model description label"
+  },
+  "name.referenceAudio": {
+    "message": "Reference audio",
+    "description": "Fish voice clone reference audio label"
+  },
+  "name.visibility": {
+    "message": "Visibility",
+    "description": "Fish voice model visibility label"
+  },
+  "name.untitledVoice": {
+    "message": "Untitled voice",
+    "description": "Fish voice model default name"
+  },
+  "placeholder.voiceTitle": {
+    "message": "Give this voice a name",
+    "description": "Fish voice title input placeholder"
+  },
+  "placeholder.voiceDescription": {
+    "message": "Optional, describe what this voice sounds like",
+    "description": "Fish voice description input placeholder"
+  },
+  "button.uploadAudio": {
+    "message": "Upload audio",
+    "description": "Fish reference audio upload button"
+  },
+  "button.createModel": {
+    "message": "Create voice",
+    "description": "Fish voice clone create button"
+  },
+  "tab.tts": {
+    "message": "Text to speech",
+    "description": "Fish top tab: TTS"
+  },
+  "tab.model": {
+    "message": "Voice cloning",
+    "description": "Fish top tab: voice model management"
+  },
+  "button.useVoice": {
+    "message": "Use this voice",
+    "description": "Fish voice clone select-and-jump-to-TTS button"
+  },
+  "description.uploadAudio": {
+    "message": "Upload a clean 10-60 s voice clip, up to 50MB.",
+    "description": "Fish voice clone upload hint"
+  },
+  "message.creatingModel": {
+    "message": "Creating voice…",
+    "description": "Fish voice clone in-flight hint"
+  },
+  "message.createModelSuccess": {
+    "message": "Voice created",
+    "description": "Fish voice clone success hint"
+  },
+  "message.createModelFailed": {
+    "message": "Failed to create voice, please try again later",
+    "description": "Fish voice clone failure hint"
+  },
+  "message.titleRequired": {
+    "message": "Please enter a name",
+    "description": "Fish voice clone missing-title hint"
+  },
+  "message.audioRequired": {
+    "message": "Please upload an audio sample first",
+    "description": "Fish voice clone missing-audio hint"
+  },
+  "message.audioSizeExceed": {
+    "message": "File too large, max 50MB",
+    "description": "Fish voice clone audio too large hint"
+  },
+  "message.audioOnlyOne": {
+    "message": "You can only upload one audio file at a time",
+    "description": "Fish voice clone audio limit hint"
+  },
+  "message.uploadError": {
+    "message": "Audio upload failed",
+    "description": "Fish voice clone audio upload error hint"
+  },
+  "title.myVoices": {
+    "message": "My voices",
+    "description": "Fish voice clone right panel header"
+  },
+  "title.noVoicesYet": {
+    "message": "No voice models yet",
+    "description": "Fish voice clone right panel empty title"
+  },
+  "description.noVoicesYet": {
+    "message": "Upload or record a reference clip — you'll get a personal voice in minutes.",
+    "description": "Fish voice clone right panel empty subtitle"
+  },
+  "name.audioTexts": {
+    "message": "Audio transcript",
+    "description": "Fish voice clone transcript field label"
+  },
+  "name.trainMode": {
+    "message": "Training mode",
+    "description": "Fish voice clone train mode label"
+  },
+  "name.enhanceAudio": {
+    "message": "Enhance audio quality",
+    "description": "Fish voice clone enhance audio switch label"
+  },
+  "name.generateSample": {
+    "message": "Generate sample",
+    "description": "Fish voice clone generate sample switch label"
+  },
+  "value.private": {
+    "message": "Private",
+    "description": "Fish voice clone visibility: private"
+  },
+  "value.unlist": {
+    "message": "Unlisted",
+    "description": "Fish voice clone visibility: unlisted"
+  },
+  "value.public": {
+    "message": "Public",
+    "description": "Fish voice clone visibility: public"
+  },
+  "value.trainModeFast": {
+    "message": "Fast",
+    "description": "Fish voice clone train mode: fast"
+  },
+  "value.trainModePrecise": {
+    "message": "Precise",
+    "description": "Fish voice clone train mode: precise"
+  },
+  "button.recordAudio": {
+    "message": "Record audio",
+    "description": "Fish voice clone record audio button"
+  },
+  "button.startRecord": {
+    "message": "Start recording",
+    "description": "Fish recorder start button"
+  },
+  "button.stopRecord": {
+    "message": "Stop recording",
+    "description": "Fish recorder stop button"
+  },
+  "button.useRecording": {
+    "message": "Use this recording",
+    "description": "Fish recorder confirm button"
+  },
+  "button.reRecord": {
+    "message": "Re-record",
+    "description": "Fish recorder re-record button"
+  },
+  "button.nextScript": {
+    "message": "Next passage",
+    "description": "Fish recorder cycle script button"
+  },
+  "button.cancel": {
+    "message": "Cancel",
+    "description": "Fish recorder cancel button"
+  },
+  "button.replaceAudio": {
+    "message": "Replace audio",
+    "description": "Fish ready audio replace button"
+  },
+  "description.readScript": {
+    "message": "Read the passage below clearly — aim for 10–30 seconds:",
+    "description": "Fish recorder script hint"
+  },
+  "description.audioTexts": {
+    "message": "Optional. The text the audio says. Auto-filled when you record.",
+    "description": "Fish voice clone transcript field hint"
+  },
+  "description.audioRequired": {
+    "message": "required",
+    "description": "Fish voice clone audio required badge"
+  },
+  "description.enhanceAudio": {
+    "message": "Denoise the reference clip. Recommended for noisy environments.",
+    "description": "Fish voice clone enhance audio switch hint"
+  },
+  "description.generateSample": {
+    "message": "Auto-generate a preview clip after training completes.",
+    "description": "Fish voice clone generate sample switch hint"
+  },
+  "description.recorderIdle": {
+    "message": "Tap the red button to start recording",
+    "description": "Fish recorder idle state hint"
+  },
+  "description.recorderRecording": {
+    "message": "Recording… read the passage clearly",
+    "description": "Fish recorder recording state hint"
+  },
+  "description.recorderRecorded": {
+    "message": "Recorded. Preview, then save or re-record.",
+    "description": "Fish recorder recorded state hint"
+  },
+  "placeholder.audioTexts": {
+    "message": "e.g. The weather is wonderful today…",
+    "description": "Fish voice clone transcript placeholder"
+  },
+  "message.micDenied": {
+    "message": "Microphone access denied. Please allow it in your browser and retry.",
+    "description": "Fish recorder mic denied hint"
+  },
+  "message.micError": {
+    "message": "Couldn't access the microphone. Check your device.",
+    "description": "Fish recorder mic error hint"
+  },
+  "message.recordingTooShort": {
+    "message": "Recording too short — please record at least 3 seconds.",
+    "description": "Fish recording too short hint"
+  },
+  "message.recorderUnsupported": {
+    "message": "Your browser doesn't support recording. Please upload an audio file instead.",
+    "description": "Fish recorder unsupported hint"
+  },
+  "script.passage1": {
+    "message": "The weather is wonderful today — sunshine pouring through the window, birds singing outside, and a gentle breeze carrying the scent of spring. I love walking on days like this, looking at the distant hills and the flowers at my feet.",
+    "description": "Fish recording sample passage 1"
+  },
+  "script.passage2": {
+    "message": "Artificial intelligence is quietly reshaping our daily lives, from the morning weather forecast to the smart speaker on the nightstand. The trick is to grow alongside it, so technology truly serves people.",
+    "description": "Fish recording sample passage 2"
+  },
+  "script.passage3": {
+    "message": "If someone asked me what happiness is, I'd say a cup of hot tea, a good book, and snow drifting past the window. Quiet things, but they warm every evening in their own way.",
+    "description": "Fish recording sample passage 3"
+  },
+  "script.passage4": {
+    "message": "One, two, three, four, five, six, seven, eight, nine, ten. Today is Monday, next Monday is a holiday, and the Monday after that we start a brand new project. Please read this passage without long pauses.",
+    "description": "Fish recording sample passage 4 (numbers & cadence)"
   }
 }

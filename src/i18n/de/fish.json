@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "Keine Sprachmodelle verfügbar",
     "description": "Fish Sprachwähler ist leer Hinweis"
+  },
+  "name.voiceTitle": {
+    "message": "Name",
+    "description": "Fish Geräuschmodell Name Feldbezeichnung"
+  },
+  "name.voiceDescription": {
+    "message": "Beschreibung",
+    "description": "Fish Geräuschmodell Beschreibung Feldbezeichnung"
+  },
+  "name.referenceAudio": {
+    "message": "Referenzaudio",
+    "description": "Fish Geräuschklon Referenzaudio Feldbezeichnung"
+  },
+  "name.visibility": {
+    "message": "Sichtbarkeit",
+    "description": "Fish Geräuschmodell Sichtbarkeit Feldbezeichnung"
+  },
+  "name.untitledVoice": {
+    "message": "Unbenannte Stimme",
+    "description": "Fish Geräuschmodell Standardname"
+  },
+  "placeholder.voiceTitle": {
+    "message": "Geben Sie dieser Stimme einen Namen",
+    "description": "Fish Geräuschname Eingabeplatzhalter"
+  },
+  "placeholder.voiceDescription": {
+    "message": "Optional, beschreiben Sie die Eigenschaften dieser Stimme",
+    "description": "Fish Geräuschbeschreibung Eingabeplatzhalter"
+  },
+  "button.uploadAudio": {
+    "message": "Audio hochladen",
+    "description": "Fish Referenzaudio hochladen Button"
+  },
+  "button.createModel": {
+    "message": "Geräusch erstellen",
+    "description": "Fish Geräuschklon erstellen Button"
+  },
+  "tab.tts": {
+    "message": "Text-zu-Sprache",
+    "description": "Fish obere Registerkarte: TTS"
+  },
+  "tab.model": {
+    "message": "Stimmenklon",
+    "description": "Fish obere Registerkarte: Verwaltung von Sprachmodellen"
+  },
+  "button.useVoice": {
+    "message": "Diese Stimme verwenden",
+    "description": "Fish Sprachklon diese Stimme verwenden Button"
+  },
+  "description.uploadAudio": {
+    "message": "Laden Sie einen klaren Sprachclip von 10-60 Sekunden hoch, maximal 50MB.",
+    "description": "Fish Geräuschklon Upload-Anleitung"
+  },
+  "message.creatingModel": {
+    "message": "Wird erstellt…",
+    "description": "Fish Geräuschklon wird erstellt Hinweis"
+  },
+  "message.createModelSuccess": {
+    "message": "Erstellung erfolgreich",
+    "description": "Fish Geräuschklon Erstellung erfolgreich Hinweis"
+  },
+  "message.createModelFailed": {
+    "message": "Erstellung fehlgeschlagen, bitte später erneut versuchen",
+    "description": "Fish Geräuschklon Erstellung fehlgeschlagen Hinweis"
+  },
+  "message.titleRequired": {
+    "message": "Bitte geben Sie einen Namen ein",
+    "description": "Fish Geräuschklon Name ist erforderlich Hinweis"
+  },
+  "message.audioRequired": {
+    "message": "Bitte laden Sie zuerst ein Audio hoch",
+    "description": "Fish Geräuschklon Audio ist erforderlich Hinweis"
+  },
+  "message.audioSizeExceed": {
+    "message": "Datei ist zu groß, maximal 50MB",
+    "description": "Fish Geräuschklon Audio überschreitet die Größenbeschränkung Hinweis"
+  },
+  "message.audioOnlyOne": {
+    "message": "Es kann nur ein Audio gleichzeitig hochgeladen werden",
+    "description": "Fish Geräuschklon Audio kann nur eine Datei hochgeladen werden Hinweis"
+  },
+  "message.uploadError": {
+    "message": "Audio-Upload fehlgeschlagen",
+    "description": "Fish Geräuschklon Audio-Upload fehlgeschlagen Hinweis"
+  },
+  "title.myVoices": {
+    "message": "Meine Stimmen",
+    "description": "Fish Titel des rechten Panels für Stimmklon: Liste der Stimmen des Benutzers"
+  },
+  "title.noVoicesYet": {
+    "message": "Noch keine Stimmmodelle",
+    "description": "Fish Titel des leeren Zustands im rechten Panel für Stimmklon"
+  },
+  "description.noVoicesYet": {
+    "message": "Laden Sie eine Referenzaufnahme hoch oder nehmen Sie eine auf, um innerhalb weniger Minuten eine persönliche Stimme zu erhalten.",
+    "description": "Fish Sprachklon rechte Seitenpanel leere Statusuntertitel"
+  },
+  "name.audioTexts": {
+    "message": "Audio-Text",
+    "description": "Fish Sprachklon Audio entsprechendes Textfeld-Label"
+  },
+  "name.trainMode": {
+    "message": "Trainingsmodus",
+    "description": "Fish Sprachklon Trainingsmodus Feld-Label"
+  },
+  "name.enhanceAudio": {
+    "message": "Audioqualität verbessern",
+    "description": "Fish Sprachklon Audioqualität verbessern Schalter-Label"
+  },
+  "name.generateSample": {
+    "message": "Vorschau generieren",
+    "description": "Fish Sprachklon Vorschau-Generierung Schalter-Label"
+  },
+  "value.private": {
+    "message": "Nur für mich sichtbar",
+    "description": "Fish Sichtbarkeit des Stimmklons: privat"
+  },
+  "value.unlist": {
+    "message": "Nicht öffentlich",
+    "description": "Fish Sichtbarkeit des Stimmklons: nicht öffentlich (Zugriff über ID möglich)"
+  },
+  "value.public": {
+    "message": "Öffentlich",
+    "description": "Fish Sichtbarkeit des Stimmklons: öffentlich"
+  },
+  "value.trainModeFast": {
+    "message": "Schnell",
+    "description": "Fish Trainingsmodus des Stimmklons: schnell"
+  },
+  "value.trainModePrecise": {
+    "message": "Präzise",
+    "description": "Fish Trainingsmodus des Stimmklons: präzise"
+  },
+  "button.recordAudio": {
+    "message": "Audio aufnehmen",
+    "description": "Fish Sprachklon Audio aufnehmen-Button"
+  },
+  "button.startRecord": {
+    "message": "Aufnahme starten",
+    "description": "Fish Aufnahmekomponente Start-Button"
+  },
+  "button.stopRecord": {
+    "message": "Aufnahme stoppen",
+    "description": "Fish Aufnahmekomponente Stop-Button"
+  },
+  "button.useRecording": {
+    "message": "Diese Aufnahme verwenden",
+    "description": "Fish Aufnahmekomponente Bestätigen-Button"
+  },
+  "button.reRecord": {
+    "message": "Erneut aufnehmen",
+    "description": "Fish Aufnahmekomponente Neuaufnahme-Button"
+  },
+  "button.nextScript": {
+    "message": "Nächsten Text",
+    "description": "Fish Aufnahmekomponente Wechseln des Lesetextes-Buttons"
+  },
+  "button.cancel": {
+    "message": "Abbrechen",
+    "description": "Fish Aufnahmekomponente Abbrechen-Button"
+  },
+  "button.replaceAudio": {
+    "message": "Audio ersetzen",
+    "description": "Fish Bereitstehendes Audio Ersetzen-Button"
+  },
+  "description.readScript": {
+    "message": "Bitte lesen Sie den folgenden Absatz deutlich vor, eine Dauer von 10-30 Sekunden ist ideal:",
+    "description": "Fish Aufnahmekomponente Leseskript-Hinweis"
+  },
+  "description.audioTexts": {
+    "message": "Optional, geben Sie den Inhalt ein, der im Audio gesagt wird. Der Lesetext wird während der Aufnahme automatisch ausgefüllt.",
+    "description": "Fish Sprachklon Audio Textfeld Beschreibung"
+  },
+  "description.audioRequired": {
+    "message": "Pflichtfeld",
+    "description": "Fish Sprachklon Audio Pflichtfeld-Indikator"
+  },
+  "description.enhanceAudio": {
+    "message": "Rauschunterdrückung für das Referenzaudio aktivieren, empfohlen bei lauter Hintergrundgeräusch.",
+    "description": "Fish Sprachklon Audioqualität verbessern Schalterbeschreibung"
+  },
+  "description.generateSample": {
+    "message": "Nach der Erstellung wird automatisch eine Beispielaufnahme zur Vorschau generiert.",
+    "description": "Fish Sprachklon Vorschau-Generierung Schalterbeschreibung"
+  },
+  "description.recorderIdle": {
+    "message": "Klicken Sie auf die rote Taste, um die Aufnahme zu starten",
+    "description": "Fish Aufnahmekomponente Leerlaufstatus-Hinweis"
+  },
+  "description.recorderRecording": {
+    "message": "Aufnahme läuft… Bitte lesen Sie den Text oben deutlich vor",
+    "description": "Fish Aufnahmekomponente Aufnahme läuft Hinweis"
+  },
+  "description.recorderRecorded": {
+    "message": "Aufgenommen, kann angehört und gespeichert oder erneut aufgenommen werden",
+    "description": "Fish Aufnahmekomponente Aufnahme abgeschlossen Hinweis"
+  },
+  "placeholder.audioTexts": {
+    "message": "z.B.: Das Wetter ist heute wirklich schön...",
+    "description": "Fish Platzhalter für Klon-Audio-Text"
+  },
+  "message.micDenied": {
+    "message": "Mikrofonzugriff nicht gewährt, bitte im Browser erlauben und erneut versuchen",
+    "description": "Fish Aufnahme Mikrofon verweigert Hinweis"
+  },
+  "message.micError": {
+    "message": "Zugriff auf das Mikrofon nicht möglich, bitte überprüfen Sie das Gerät",
+    "description": "Fish Aufnahme Mikrofonfehler Hinweis"
+  },
+  "message.recordingTooShort": {
+    "message": "Aufnahme zu kurz, bitte mindestens 3 Sekunden aufnehmen",
+    "description": "Fish Aufnahme zu kurz Hinweis"
+  },
+  "message.recorderUnsupported": {
+    "message": "Der aktuelle Browser unterstützt keine Aufnahme, bitte verwenden Sie die Audio-Upload-Option",
+    "description": "Fish Browser unterstützt MediaRecorder nicht Hinweis"
+  },
+  "script.passage1": {
+    "message": "Das Wetter heute ist wirklich schön, die Sonne scheint, alles erwacht, selbst der Wind trägt einen Hauch von Frühling. Ich liebe es, an solchen Tagen spazieren zu gehen, die Berge in der Ferne zu betrachten, die Blumen zu meinen Füßen zu sehen und den Vögeln zuzuhören, die auf den Ästen singen.",
+    "description": "Fish Aufnahmebeispielabschnitt 1 (Frühling/Beschreibung der Natur)"
+  },
+  "script.passage2": {
+    "message": "Künstliche Intelligenz verändert leise unser Leben, von den Wettervorhersagen am Morgen bis zu den intelligenten Lautsprechern in der Nacht, sie ist überall. Was wir tun müssen, ist zu lernen, mit ihr zu wachsen, damit Technologie wirklich den Menschen dient.",
+    "description": "Fish Aufnahmebeispielabschnitt 2 (Technologie/AI)"
+  },
+  "script.passage3": {
+    "message": "Wenn mich jemand fragt, was Glück ist, würde ich sagen, Glück ist eine Tasse heißen Tees, ein gutes Buch und der Schnee, der langsam draußen fällt. Es ist nicht laut, sondern wärmt sanft jede unserer Nächte.",
+    "description": "Fish Aufnahmebeispielabschnitt 3 (Emotionen/Lyrik)"
+  },
+  "script.passage4": {
+    "message": "Eins zwei drei vier fünf sechs sieben acht neun zehn, null Punkt eins zwei drei vier fünf sechs sieben acht neun. Heute ist Montag, nächste Woche Montag ist Feiertag, und übernächste Woche Montag beginnt das neue Projekt. Bitte lesen Sie diesen Text klar und deutlich vor, ohne zu lange Pausen zu machen.",
+    "description": "Fish Aufnahmebeispielabschnitt 4 (Zahlen und Aussprache)"
   }
 }

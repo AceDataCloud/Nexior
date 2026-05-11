@@ -90,5 +90,237 @@
   "message.noVoices": {
     "message": "Nenhum modelo de voz disponível",
     "description": "Mensagem de aviso quando o seletor de voz do Fish está vazio"
+  },
+  "name.voiceTitle": {
+    "message": "Nome",
+    "description": "Etiqueta do campo de nome do modelo de voz no Fish"
+  },
+  "name.voiceDescription": {
+    "message": "Descrição",
+    "description": "Etiqueta do campo de descrição do modelo de voz no Fish"
+  },
+  "name.referenceAudio": {
+    "message": "Áudio de referência",
+    "description": "Etiqueta do campo de áudio de referência na clonagem de voz no Fish"
+  },
+  "name.visibility": {
+    "message": "Visibilidade",
+    "description": "Etiqueta do campo de visibilidade do modelo de voz no Fish"
+  },
+  "name.untitledVoice": {
+    "message": "Voz sem título",
+    "description": "Nome padrão para o modelo de voz no Fish"
+  },
+  "placeholder.voiceTitle": {
+    "message": "Dê um nome a esta voz",
+    "description": "Placeholder para o campo de nome da voz na clonagem de voz no Fish"
+  },
+  "placeholder.voiceDescription": {
+    "message": "Opcional, descreva as características desta voz",
+    "description": "Placeholder para o campo de descrição da voz na clonagem de voz no Fish"
+  },
+  "button.uploadAudio": {
+    "message": "Enviar áudio",
+    "description": "Botão para enviar áudio de referência no Fish"
+  },
+  "button.createModel": {
+    "message": "Criar voz",
+    "description": "Botão para criar clonagem de voz no Fish"
+  },
+  "tab.tts": {
+    "message": "Texto para Fala",
+    "description": "Aba superior do Fish: TTS"
+  },
+  "tab.model": {
+    "message": "Clonagem de Voz",
+    "description": "Aba superior do Fish: gerenciamento de modelos de voz"
+  },
+  "button.useVoice": {
+    "message": "Usar esta voz",
+    "description": "Botão para usar a voz clonada no Fish"
+  },
+  "description.uploadAudio": {
+    "message": "Envie um trecho de voz clara de 10 a 60 segundos, máximo de 50MB.",
+    "description": "Instruções para upload de áudio na clonagem de voz no Fish"
+  },
+  "message.creatingModel": {
+    "message": "Criando…",
+    "description": "Mensagem informando que a clonagem de voz está em processo de criação no Fish"
+  },
+  "message.createModelSuccess": {
+    "message": "Criado com sucesso",
+    "description": "Mensagem de sucesso ao criar clonagem de voz no Fish"
+  },
+  "message.createModelFailed": {
+    "message": "Falha ao criar, por favor tente novamente mais tarde",
+    "description": "Mensagem de erro ao falhar na criação de clonagem de voz no Fish"
+  },
+  "message.titleRequired": {
+    "message": "Por favor, insira um nome",
+    "description": "Mensagem indicando que o nome é obrigatório na clonagem de voz no Fish"
+  },
+  "message.audioRequired": {
+    "message": "Por favor, envie um áudio primeiro",
+    "description": "Mensagem indicando que o áudio é obrigatório na clonagem de voz no Fish"
+  },
+  "message.audioSizeExceed": {
+    "message": "Arquivo muito grande, máximo de 50MB",
+    "description": "Mensagem informando que o áudio excede o limite de tamanho na clonagem de voz no Fish"
+  },
+  "message.audioOnlyOne": {
+    "message": "Você só pode enviar um áudio por vez",
+    "description": "Mensagem informando que apenas um áudio pode ser enviado na clonagem de voz no Fish"
+  },
+  "message.uploadError": {
+    "message": "Falha no envio do áudio",
+    "description": "Mensagem de erro ao falhar no envio de áudio na clonagem de voz no Fish"
+  },
+  "title.myVoices": {
+    "message": "Minhas Vozes",
+    "description": "Título do painel direito de clonagem de voz: lista de vozes do usuário."
+  },
+  "title.noVoicesYet": {
+    "message": "Ainda não há modelos de voz",
+    "description": "Título do estado vazio do painel direito de clonagem de voz."
+  },
+  "description.noVoicesYet": {
+    "message": "Faça o upload ou grave um áudio de referência, e em poucos minutos você terá uma voz exclusiva.",
+    "description": "Subtítulo do estado vazio do painel direito da clonagem de voz Fish"
+  },
+  "name.audioTexts": {
+    "message": "Texto do áudio",
+    "description": "Etiqueta do campo de texto correspondente ao áudio da clonagem de voz Fish"
+  },
+  "name.trainMode": {
+    "message": "Modo de treinamento",
+    "description": "Etiqueta do campo de modo de treinamento da clonagem de voz Fish"
+  },
+  "name.enhanceAudio": {
+    "message": "Melhorar qualidade do áudio",
+    "description": "Etiqueta do botão de melhoria de qualidade de áudio da clonagem de voz Fish"
+  },
+  "name.generateSample": {
+    "message": "Gerar amostra",
+    "description": "Etiqueta do botão de geração de amostra de áudio da clonagem de voz Fish"
+  },
+  "value.private": {
+    "message": "Visível apenas para mim",
+    "description": "Visibilidade da clonagem de voz: privado."
+  },
+  "value.unlist": {
+    "message": "Não listado",
+    "description": "Visibilidade da clonagem de voz: não listado (acessível por ID)."
+  },
+  "value.public": {
+    "message": "Público",
+    "description": "Visibilidade da clonagem de voz: público."
+  },
+  "value.trainModeFast": {
+    "message": "Rápido",
+    "description": "Modo de treinamento de clonagem de voz: rápido."
+  },
+  "value.trainModePrecise": {
+    "message": "Preciso",
+    "description": "Modo de treinamento de clonagem de voz: preciso."
+  },
+  "button.recordAudio": {
+    "message": "Gravar áudio",
+    "description": "Botão para gravar áudio da clonagem de voz Fish"
+  },
+  "button.startRecord": {
+    "message": "Iniciar gravação",
+    "description": "Botão de início do componente de gravação Fish"
+  },
+  "button.stopRecord": {
+    "message": "Parar gravação",
+    "description": "Botão de parada do componente de gravação Fish"
+  },
+  "button.useRecording": {
+    "message": "Usar esta gravação",
+    "description": "Botão de confirmação para usar a gravação do componente de gravação Fish"
+  },
+  "button.reRecord": {
+    "message": "Gravar novamente",
+    "description": "Botão de regravação do componente de gravação Fish"
+  },
+  "button.nextScript": {
+    "message": "Trocar trecho",
+    "description": "Botão para alternar o texto de leitura do componente de gravação Fish"
+  },
+  "button.cancel": {
+    "message": "Cancelar",
+    "description": "Botão de cancelar do componente de gravação Fish"
+  },
+  "button.replaceAudio": {
+    "message": "Substituir áudio",
+    "description": "Botão para substituir áudio já pronto do Fish"
+  },
+  "description.readScript": {
+    "message": "Por favor, leia claramente o seguinte parágrafo, com duração de 10 a 30 segundos:",
+    "description": "Dica do script de leitura do componente de gravação Fish"
+  },
+  "description.audioTexts": {
+    "message": "Opcional, insira o conteúdo falado no áudio. O texto de leitura será preenchido automaticamente durante a gravação.",
+    "description": "Descrição do campo de texto de áudio da clonagem de voz Fish"
+  },
+  "description.audioRequired": {
+    "message": "Campo obrigatório",
+    "description": "Indicador de campo obrigatório para áudio na clonagem de voz Fish"
+  },
+  "description.enhanceAudio": {
+    "message": "Realiza a redução de ruído no áudio de referência, recomendado ativar em ambientes barulhentos.",
+    "description": "Descrição do botão de melhoria de qualidade de áudio da clonagem de voz Fish"
+  },
+  "description.generateSample": {
+    "message": "Uma amostra de áudio será gerada automaticamente após a criação para audição.",
+    "description": "Descrição do botão de geração de amostra de áudio da clonagem de voz Fish"
+  },
+  "description.recorderIdle": {
+    "message": "Clique no botão vermelho para iniciar a gravação",
+    "description": "Dica de estado ocioso do componente de gravação Fish"
+  },
+  "description.recorderRecording": {
+    "message": "Gravando… leia claramente o texto acima",
+    "description": "Dica de gravação em andamento do componente de gravação Fish"
+  },
+  "description.recorderRecorded": {
+    "message": "Gravado, você pode ouvir e salvar ou regravar",
+    "description": "Dica de gravação concluída do componente de gravação Fish"
+  },
+  "placeholder.audioTexts": {
+    "message": "Ex: O tempo hoje está ótimo...",
+    "description": "Texto de espaço reservado para áudio de clonagem de voz."
+  },
+  "message.micDenied": {
+    "message": "Permissão de microfone não concedida, por favor, permita no navegador e tente novamente",
+    "description": "Dica de microfone negado da gravação Fish"
+  },
+  "message.micError": {
+    "message": "Não é possível acessar o microfone, verifique o dispositivo",
+    "description": "Dica de erro de microfone da gravação Fish"
+  },
+  "message.recordingTooShort": {
+    "message": "Gravação muito curta, grave pelo menos 3 segundos",
+    "description": "Dica de gravação muito curta da Fish"
+  },
+  "message.recorderUnsupported": {
+    "message": "O navegador atual não suporta gravação, por favor, use o upload de áudio",
+    "description": "Dica de navegador não suportar MediaRecorder da Fish"
+  },
+  "script.passage1": {
+    "message": "Hoje o tempo está muito bom, o sol brilha, tudo renasce, até o vento traz um pouco do sabor da primavera. Eu gosto de passear em dias assim, olhar as montanhas ao longe, ver as flores aos meus pés, ouvir os pássaros cantando nos galhos.",
+    "description": "Trecho de gravação de demonstração 1 (primavera/descritivo)."
+  },
+  "script.passage2": {
+    "message": "A inteligência artificial está mudando silenciosamente nossas vidas, desde a previsão do tempo pela manhã até a caixa de som inteligente à noite, ela está em toda parte. O que precisamos fazer é aprender a crescer com ela, permitindo que a tecnologia realmente sirva às pessoas.",
+    "description": "Trecho de gravação de demonstração 2 (tecnologia/IA)."
+  },
+  "script.passage3": {
+    "message": "Se alguém me perguntar, o que é a felicidade? Eu diria que a felicidade é uma xícara de chá quente, um bom livro e a neve caindo lentamente do lado de fora da janela. Ela não é barulhenta, mas aquece silenciosamente nossas noites.",
+    "description": "Trecho de gravação de demonstração 3 (emoção/lírico)."
+  },
+  "script.passage4": {
+    "message": "Um dois três quatro cinco seis sete oito nove dez, zero um dois três quatro cinco seis sete oito nove. Hoje é segunda-feira, na próxima segunda é feriado, na outra segunda começaremos um novo projeto. Por favor, leia este trecho claramente, sem pausas longas.",
+    "description": "Trecho de gravação de demonstração 4 (números e cobertura de pronúncia)."
   }
 }
