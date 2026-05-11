@@ -18,7 +18,9 @@
   width: 13.33333px;
   height: 13.33333px;
   border-radius: 50%;
-  background-color: #277186;
+  /* Follow runtime primary; falls back to the brand teal if the
+     CSS var hasn't been defined yet (e.g. before main.ts runs). */
+  background-color: var(--el-color-primary, #277186);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .loading div:nth-child(1) {

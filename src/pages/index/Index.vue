@@ -558,7 +558,7 @@ export default defineComponent({
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(39, 113, 134, 0.15) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.15) 1px, transparent 1px);
     background-size: 32px 32px;
     opacity: 0.5;
     pointer-events: none;
@@ -608,7 +608,7 @@ export default defineComponent({
 
           &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(39, 113, 134, 0.4);
+            box-shadow: 0 0 50px rgba(var(--app-brand-rgb), 0.4);
           }
         }
       }

@@ -264,7 +264,7 @@ function renderChip(id: string, c: IChatCitation): string {
       height: 22px;
       padding: 0 12px;
       border-radius: 999px;
-      background: rgba(39, 113, 134, 0.1);
+      background: rgba(var(--app-brand-rgb), 0.1);
       color: #1f5a6b;
       font-size: 0.82em;
       font-weight: 500;
@@ -275,7 +275,7 @@ function renderChip(id: string, c: IChatCitation): string {
         transform 0.15s ease;
 
       &:hover {
-        background: rgba(39, 113, 134, 0.18);
+        background: rgba(var(--app-brand-rgb), 0.18);
         color: #144859;
         text-decoration: none;
         transform: translateY(-0.5px);

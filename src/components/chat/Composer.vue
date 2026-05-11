@@ -60,7 +60,11 @@
         -->
         <span class="btn-plus-trigger">
           <el-tooltip class="box-item" effect="dark" :content="$t('chat.composer.addAction')" placement="top">
-            <span :class="{ btn: true, 'btn-plus': true, disabled: answering }" :aria-disabled="answering" role="button">
+            <span
+              :class="{ btn: true, 'btn-plus': true, disabled: answering }"
+              :aria-disabled="answering"
+              role="button"
+            >
               <font-awesome-icon icon="fa-solid fa-plus" class="icon icon-plus" />
             </span>
           </el-tooltip>
@@ -392,7 +396,9 @@ textarea.input:focus {
   box-shadow:
     0 2px 6px rgba(0, 0, 0, 0.04),
     0 1px 2px rgba(0, 0, 0, 0.04);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
   padding: 6px;
 
   &:focus-within {
@@ -501,7 +507,7 @@ textarea.input:focus {
     font-size: 16px;
     transition: box-shadow 0.2s ease;
     &:hover:not(:disabled) {
-      box-shadow: 0 0 16px rgba(39, 113, 134, 0.3);
+      box-shadow: 0 0 16px rgba(var(--app-brand-rgb), 0.3);
     }
   }
 }

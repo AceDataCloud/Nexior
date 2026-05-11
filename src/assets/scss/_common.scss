@@ -8,7 +8,16 @@ body {
   background-color: var(--el-bg-color);
   color: var(--el-text-color-primary);
   color-scheme: light;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    'Inter',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,6 +35,9 @@ html.dark body {
 html,
 html.dark,
 :root {
+  // Default brand colour (Ace Data Cloud teal). Sites can override these at
+  // runtime via `applyAccentColor()` (see `src/utils/theme.ts`), which writes
+  // the same CSS variables on `:root` from the site admin's chosen colour.
   --el-color-primary: #277186;
   --el-color-primary-light-3: #689caa;
   --el-color-primary-light-5: #93b8c3;
@@ -33,6 +45,14 @@ html.dark,
   --el-color-primary-light-8: #d4e3e7;
   --el-color-primary-light-9: #e9f1f3;
   --el-color-primary-dark-2: #1f5a6b;
+  // Channel + hex form of the brand colour. Use `rgba(var(--app-brand-rgb), …)`
+  // for translucent fills / glows so they automatically follow the picked
+  // accent; use `var(--app-brand-hex)` (or `--app-brand-hex-dark-2`,
+  // `--app-brand-hex-light-7`) when you need a solid value.
+  --app-brand-rgb: 39, 113, 134;
+  --app-brand-hex: #277186;
+  --app-brand-hex-dark-2: #1f5a6b;
+  --app-brand-hex-light-7: #bed4db;
   --el-border-radius-base: 12px;
   --el-border-radius-small: 8px;
   --el-border-radius-round: 9999px;
@@ -48,8 +68,8 @@ html.dark,
   --app-bg-surface: #ffffff;
   --app-bg-section: #f8fafc;
   --app-border-subtle: #e2e8f0;
-  --app-badge-bg: #d4e3e7;
-  --app-badge-border: #277186;
+  --app-badge-bg: var(--el-color-primary-light-8);
+  --app-badge-border: var(--app-brand-hex);
 
   /* Elevation / shadow system */
   --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -63,11 +83,21 @@ html.dark,
   --app-content-bg: #ffffff;
 
   /* Gradients */
-  --app-gradient-brand: linear-gradient(135deg, #277186 0%, #1f5a6b 50%, #689caa 100%);
-  --app-gradient-brand-hover: linear-gradient(135deg, #1f5a6b 0%, #15485a 50%, #1f5a6b 100%);
+  --app-gradient-brand: linear-gradient(
+    135deg,
+    var(--app-brand-hex) 0%,
+    var(--app-brand-hex-dark-2) 50%,
+    var(--el-color-primary-light-3) 100%
+  );
+  --app-gradient-brand-hover: linear-gradient(
+    135deg,
+    var(--app-brand-hex-dark-2) 0%,
+    #15485a 50%,
+    var(--app-brand-hex-dark-2) 100%
+  );
   --app-gradient-hero: linear-gradient(135deg, #0b0f17 0%, #0e2a33 50%, #0b0f17 100%);
-  --app-gradient-card: linear-gradient(135deg, rgba(39, 113, 134, 0.04), rgba(31, 90, 107, 0.02));
-  --app-gradient-subtle: linear-gradient(180deg, rgba(39, 113, 134, 0.03) 0%, transparent 100%);
+  --app-gradient-card: linear-gradient(135deg, rgba(var(--app-brand-rgb), 0.04), rgba(var(--app-brand-rgb), 0.02));
+  --app-gradient-subtle: linear-gradient(180deg, rgba(var(--app-brand-rgb), 0.03) 0%, transparent 100%);
 
   /* Glass effect */
   --app-glass-bg: rgba(255, 255, 255, 0.7);
@@ -75,8 +105,8 @@ html.dark,
   --app-glass-blur: 12px;
 
   /* Glow */
-  --app-glow-primary: 0 0 20px rgba(39, 113, 134, 0.15);
-  --app-glow-primary-lg: 0 0 40px rgba(39, 113, 134, 0.25);
+  --app-glow-primary: 0 0 20px rgba(var(--app-brand-rgb), 0.15);
+  --app-glow-primary-lg: 0 0 40px rgba(var(--app-brand-rgb), 0.25);
 }
 
 html.surface-android {
@@ -88,19 +118,24 @@ html.dark {
   // Neutral, GitHub-style dark palette. Previously the dark surfaces were
   // strongly blue/purple-tinted (e.g. #111427 = rgb(17,20,39), where blue is
   // ~20 points higher than red), which gave the whole app a "deep navy" cast.
-  // The brand colour is teal (#277186), so a slight cool undertone is fine,
-  // but we now use balanced cool-grays close to GitHub's dark canvas tokens
-  // (#0d1117 / #161b22) and keep the teal only as accent (`primary-light-9`,
+  // The brand colour (teal by default — see :root above) is allowed to give
+  // a slight cool undertone, but the canvas itself is GitHub-style cool-gray
+  // (#0d1117 / #161b22) and the brand stays as accent only (`primary-light-9`,
   // hero gradient, glows).
-  --el-color-primary-light-9: #0e2a33; // dark teal for code-block bg etc.
+  // NOTE: in dark mode we override `--el-color-primary-light-9` to a darker
+  // teal so it works as a code-block / inline-token background. This is
+  // intentionally NOT runtime-driven from the picked accent colour, because
+  // the dark-mode tinted background relies on the relative-luminance contrast
+  // with #0d1117 which an unconstrained user-picked hex would break.
+  --el-color-primary-light-9: #0e2a33;
   --el-bg-color: #0d1117;
   --el-bg-color-page: #08090c;
   --el-card-bg-color: #161b22;
   --app-bg-surface: #161b22;
   --app-bg-section: #0d1117;
   --app-border-subtle: rgba(255, 255, 255, 0.06);
-  --app-badge-bg: rgba(39, 113, 134, 0.15);
-  --app-badge-border: #277186;
+  --app-badge-bg: rgba(var(--app-brand-rgb), 0.15);
+  --app-badge-border: var(--app-brand-hex);
 
   /* Elevation / shadow system (dark) */
   --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
@@ -114,16 +149,16 @@ html.dark {
   --app-content-bg: #0d1117;
 
   /* Gradients (dark) */
-  --app-gradient-card: linear-gradient(135deg, rgba(39, 113, 134, 0.06), rgba(31, 90, 107, 0.03));
-  --app-gradient-subtle: linear-gradient(180deg, rgba(39, 113, 134, 0.05) 0%, transparent 100%);
+  --app-gradient-card: linear-gradient(135deg, rgba(var(--app-brand-rgb), 0.06), rgba(var(--app-brand-rgb), 0.03));
+  --app-gradient-subtle: linear-gradient(180deg, rgba(var(--app-brand-rgb), 0.05) 0%, transparent 100%);
 
   /* Glass effect (dark) — matches surface, no blue-purple cast */
   --app-glass-bg: rgba(22, 27, 34, 0.75);
   --app-glass-border: rgba(255, 255, 255, 0.06);
 
   /* Glow (dark - slightly stronger for visibility) */
-  --app-glow-primary: 0 0 20px rgba(39, 113, 134, 0.2);
-  --app-glow-primary-lg: 0 0 40px rgba(39, 113, 134, 0.3);
+  --app-glow-primary: 0 0 20px rgba(var(--app-brand-rgb), 0.2);
+  --app-glow-primary-lg: 0 0 40px rgba(var(--app-brand-rgb), 0.3);
 }
 
 w3m-modal {
@@ -250,7 +285,9 @@ w3m-modal {
   border: 1px solid var(--app-glass-border);
   --el-card-padding: 20px;
   box-shadow: var(--app-shadow-sm);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
   // Use the standard Element Plus card background (white in light mode) so
   // console panels (Applications / Orders / Top Up) read as clean white
   // surfaces instead of being tinted by the brand gradient. The dark-mode
@@ -291,10 +328,14 @@ html.dark .el-card {
   .el-textarea__inner {
     border-radius: 12px;
     resize: none;
-    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    box-shadow:
+      0 0 0 1px var(--el-border-color) inset,
+      var(--app-shadow-xs);
     transition: box-shadow 0.2s ease;
     &:focus {
-      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
+      box-shadow:
+        0 0 0 1px var(--el-color-primary) inset,
+        0 0 0 3px var(--el-color-primary-light-8);
     }
   }
 }
@@ -303,10 +344,14 @@ html.dark .el-card {
   .el-input__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    box-shadow:
+      0 0 0 1px var(--el-border-color) inset,
+      var(--app-shadow-xs);
     transition: box-shadow 0.2s ease;
     &.is-focus {
-      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
+      box-shadow:
+        0 0 0 1px var(--el-color-primary) inset,
+        0 0 0 3px var(--el-color-primary-light-8);
     }
     textarea:focus,
     input:focus {
@@ -368,10 +413,14 @@ html.dark .el-dialog {
   .el-select__wrapper {
     border-radius: var(--el-border-radius-base);
     width: 100%;
-    box-shadow: 0 0 0 1px var(--el-border-color) inset, var(--app-shadow-xs);
+    box-shadow:
+      0 0 0 1px var(--el-border-color) inset,
+      var(--app-shadow-xs);
     transition: box-shadow 0.2s ease;
     &.is-focused {
-      box-shadow: 0 0 0 1px var(--el-color-primary) inset, 0 0 0 3px var(--el-color-primary-light-8);
+      box-shadow:
+        0 0 0 1px var(--el-color-primary) inset,
+        0 0 0 3px var(--el-color-primary-light-8);
     }
   }
 }
@@ -388,7 +437,12 @@ html.dark .el-dialog {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   letter-spacing: -0.02em;
   font-weight: 700;
 }

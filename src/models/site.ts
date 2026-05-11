@@ -42,6 +42,15 @@ export interface ISiteDistribution {
 
 export interface ISiteAuth {}
 
+export interface ISiteTheme {
+  // Hex colour like ``#277186`` (or shorthand ``#abc``). Drives the
+  // Element Plus ``--el-color-primary`` CSS variable at runtime via
+  // ``src/utils/initializer.ts``. Backend validator lives in
+  // PlatformBackend ``app/utils/site_theme.py`` and rejects unknown
+  // keys, so the shape here intentionally stays narrow.
+  primary_color?: string;
+}
+
 export interface ISite {
   id?: string;
   origin?: string;
@@ -56,6 +65,7 @@ export interface ISite {
   created_at?: string;
   updated_at?: string;
   metadata?: any;
+  theme?: ISiteTheme | null;
   tags?: string[];
 }
 
