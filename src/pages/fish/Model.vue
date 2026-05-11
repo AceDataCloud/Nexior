@@ -72,6 +72,10 @@ export default defineComponent({
       voices: string;
       description?: string;
       visibility?: 'public' | 'unlist' | 'private';
+      train_mode?: 'fast' | 'precise';
+      texts?: string[];
+      enhance_audio_quality?: boolean;
+      generate_sample?: boolean;
     }) {
       const token = this.credential?.token;
       if (!token) {

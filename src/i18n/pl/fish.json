@@ -174,5 +174,153 @@
   "message.uploadError": {
     "message": "Przesyłanie audio nie powiodło się",
     "description": "Informacja o błędzie podczas przesyłania audio w klonie dźwięku Fish"
+  },
+  "title.myVoices": {
+    "message": "Mój głos",
+    "description": "Fish tytuł panelu po prawej stronie klonowania głosu: lista głosów użytkownika"
+  },
+  "title.noVoicesYet": {
+    "message": "Brak modeli głosów",
+    "description": "Fish tytuł stanu pustego panelu po prawej stronie klonowania głosu"
+  },
+  "description.noVoicesYet": {
+    "message": "Prześlij lub nagraj referencyjny dźwięk, a w ciągu kilku minut otrzymasz unikalny głos.",
+    "description": "Podtytuł stanu pustego panelu po prawej stronie w klonowaniu głosu Fish"
+  },
+  "name.audioTexts": {
+    "message": "Tekst dźwięku",
+    "description": "Etykieta pola tekstowego dźwięku w klonowaniu głosu Fish"
+  },
+  "name.trainMode": {
+    "message": "Tryb treningowy",
+    "description": "Etykieta pola trybu treningowego w klonowaniu głosu Fish"
+  },
+  "name.enhanceAudio": {
+    "message": "Poprawa jakości dźwięku",
+    "description": "Etykieta przełącznika poprawy jakości dźwięku w klonowaniu głosu Fish"
+  },
+  "name.generateSample": {
+    "message": "Generuj próbkę",
+    "description": "Etykieta przełącznika generowania próbki do odsłuchu w klonowaniu głosu Fish"
+  },
+  "value.private": {
+    "message": "Widoczne tylko dla mnie",
+    "description": "Fish widoczność klonowania głosu: prywatne"
+  },
+  "value.unlist": {
+    "message": "Niepubliczny",
+    "description": "Fish widoczność klonowania głosu: niepubliczny (dostępny za pomocą ID)"
+  },
+  "value.public": {
+    "message": "Publiczne",
+    "description": "Fish widoczność klonowania głosu: publiczne"
+  },
+  "value.trainModeFast": {
+    "message": "Szybki",
+    "description": "Fish tryb treningu klonowania głosu: szybki"
+  },
+  "value.trainModePrecise": {
+    "message": "Precyzyjny",
+    "description": "Fish tryb treningu klonowania głosu: precyzyjny"
+  },
+  "button.recordAudio": {
+    "message": "Nagraj dźwięk",
+    "description": "Przycisk do nagrywania dźwięku w klonowaniu głosu Fish"
+  },
+  "button.startRecord": {
+    "message": "Rozpocznij nagrywanie",
+    "description": "Przycisk do rozpoczęcia nagrywania w komponencie nagrywania Fish"
+  },
+  "button.stopRecord": {
+    "message": "Zatrzymaj nagrywanie",
+    "description": "Przycisk do zatrzymania nagrywania w komponencie nagrywania Fish"
+  },
+  "button.useRecording": {
+    "message": "Użyj tego nagrania",
+    "description": "Przycisk potwierdzający użycie nagrania w komponencie nagrywania Fish"
+  },
+  "button.reRecord": {
+    "message": "Nagraj ponownie",
+    "description": "Przycisk do ponownego nagrania w komponencie nagrywania Fish"
+  },
+  "button.nextScript": {
+    "message": "Zmień tekst",
+    "description": "Przycisk do zmiany tekstu do odczytu w komponencie nagrywania Fish"
+  },
+  "button.cancel": {
+    "message": "Anuluj",
+    "description": "Przycisk anulowania w komponencie nagrywania Fish"
+  },
+  "button.replaceAudio": {
+    "message": "Zastąp dźwięk",
+    "description": "Przycisk do zastąpienia gotowego dźwięku w Fish"
+  },
+  "description.readScript": {
+    "message": "Proszę wyraźnie odczytać poniższy fragment, czas trwania 10-30 sekund jest zalecany:",
+    "description": "Wskazówka dotycząca skryptu odczytu w komponencie nagrywania Fish"
+  },
+  "description.audioTexts": {
+    "message": "Opcjonalne, wprowadź treść mówioną w dźwięku. Tekst do odczytu zostanie automatycznie uzupełniony podczas nagrywania.",
+    "description": "Opis pola tekstowego dźwięku w klonowaniu głosu Fish"
+  },
+  "description.audioRequired": {
+    "message": "Wymagane",
+    "description": "Wskaźnik wymagania dźwięku w klonowaniu głosu Fish"
+  },
+  "description.enhanceAudio": {
+    "message": "Przeprowadź redukcję szumów w referencyjnym dźwięku, zaleca się włączenie w hałaśliwym otoczeniu.",
+    "description": "Opis przełącznika poprawy jakości dźwięku w klonowaniu głosu Fish"
+  },
+  "description.generateSample": {
+    "message": "Po zakończeniu tworzenia automatycznie wygeneruje przykładowy dźwięk do odsłuchu.",
+    "description": "Opis przełącznika generowania próbki do odsłuchu w klonowaniu głosu Fish"
+  },
+  "description.recorderIdle": {
+    "message": "Kliknij czerwony przycisk, aby rozpocząć nagrywanie",
+    "description": "Wskazówka stanu bezczynności w komponencie nagrywania Fish"
+  },
+  "description.recorderRecording": {
+    "message": "Nagrywanie… wyraźnie odczytaj powyższy tekst",
+    "description": "Wskazówka podczas nagrywania w komponencie nagrywania Fish"
+  },
+  "description.recorderRecorded": {
+    "message": "Nagrano, można odsłuchać przed zapisaniem lub nagraniem ponownie",
+    "description": "Wskazówka po zakończeniu nagrywania w komponencie nagrywania Fish"
+  },
+  "placeholder.audioTexts": {
+    "message": "Na przykład: dzisiaj pogoda jest naprawdę ładna...",
+    "description": "Fish zastępczy tekst audio do klonowania głosu"
+  },
+  "message.micDenied": {
+    "message": "Nie uzyskano zgody na mikrofon, proszę zezwolić w przeglądarce i spróbować ponownie",
+    "description": "Wskazówka, gdy dostęp do mikrofonu został odmówiony w nagrywaniu Fish"
+  },
+  "message.micError": {
+    "message": "Nie można uzyskać dostępu do mikrofonu, proszę sprawdzić urządzenie",
+    "description": "Wskazówka błędu mikrofonu w nagrywaniu Fish"
+  },
+  "message.recordingTooShort": {
+    "message": "Nagranie jest za krótkie, proszę nagrać co najmniej 3 sekundy",
+    "description": "Wskazówka, gdy nagranie jest zbyt krótkie w komponencie nagrywania Fish"
+  },
+  "message.recorderUnsupported": {
+    "message": "Bieżąca przeglądarka nie obsługuje nagrywania, proszę użyć przesyłania dźwięku",
+    "description": "Wskazówka, gdy przeglądarka nie obsługuje MediaRecorder w Fish"
+  },
+  "script.passage1": {
+    "message": "Dzisiaj pogoda jest naprawdę ładna, słońce świeci, wszystko budzi się do życia, nawet wiatr niesie ze sobą nutę wiosny. Lubię w takie dni spacerować, podziwiać góry w oddali, patrzeć na kwiaty u stóp, słuchać ptaków śpiewających na gałęziach.",
+    "description": "Fish fragment nagrania demonstracyjnego 1 (wiosna/opis przyrody)"
+  },
+  "script.passage2": {
+    "message": "Sztuczna inteligencja cicho zmienia nasze życie, od porannych prognoz pogody po wieczorne inteligentne głośniki, jest wszędzie. Musimy nauczyć się rozwijać razem z nią, aby technologia naprawdę służyła ludziom.",
+    "description": "Fish fragment nagrania demonstracyjnego 2 (technologia/AI)"
+  },
+  "script.passage3": {
+    "message": "Jeśli ktoś zapyta mnie, czym jest szczęście? Powiem, że szczęście to filiżanka gorącej herbaty, dobra książka i powoli opadający śnieg za oknem. Nie jest hałaśliwe, ale cicho ogrzewa każdą naszą noc.",
+    "description": "Fish fragment nagrania demonstracyjnego 3 (emocje/liryka)"
+  },
+  "script.passage4": {
+    "message": "Jeden, dwa, trzy, cztery, pięć, sześć, siedem, osiem, dziewięć, dziesięć, zero, jeden, dwa, trzy, cztery, pięć, sześć, siedem, osiem, dziewięć. Dzisiaj jest poniedziałek, w przyszły poniedziałek mamy wolne, a za dwa tygodnie zaczynamy nowy projekt. Proszę, przeczytaj ten tekst wyraźnie, nie zatrzymuj się zbyt długo.",
+    "description": "Fish fragment nagrania demonstracyjnego 4 (cyfry i wymowa)"
   }
 }

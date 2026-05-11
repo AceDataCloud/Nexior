@@ -174,5 +174,153 @@
   "message.uploadError": {
     "message": "Äänen lataaminen epäonnistui",
     "description": "Fish äänen kloonaamisen äänen lataaminen epäonnistui"
+  },
+  "title.myVoices": {
+    "message": "Ääneni",
+    "description": "Fish äänen kloonaus oikean paneelin otsikko: käyttäjän äänten lista"
+  },
+  "title.noVoicesYet": {
+    "message": "Ei äänen malleja vielä",
+    "description": "Fish äänen kloonaus oikean paneelin tyhjät tilat otsikko"
+  },
+  "description.noVoicesYet": {
+    "message": "Lataa tai äänitä viiteääni, niin saat oman äänen muutamassa minuutissa.",
+    "description": "Fish äänen kloonaus oikean paneelin tyhjät tilatiedot"
+  },
+  "name.audioTexts": {
+    "message": "Ääniteksti",
+    "description": "Fish äänen kloonaus äänen vastaavan tekstikentän etiketti"
+  },
+  "name.trainMode": {
+    "message": "Koulutusmoodi",
+    "description": "Fish äänen kloonaus koulutusmoodin kenttäetiketti"
+  },
+  "name.enhanceAudio": {
+    "message": "Paranna äänenlaatua",
+    "description": "Fish äänen kloonaus äänenlaadun parannusvaihteen etiketti"
+  },
+  "name.generateSample": {
+    "message": "Luo esikuuntelu",
+    "description": "Fish äänen kloonaus esikuuntelun luontivaihteen etiketti"
+  },
+  "value.private": {
+    "message": "Vain itselleni näkyvä",
+    "description": "Fish äänen kloonaus näkyvyys: yksityinen"
+  },
+  "value.unlist": {
+    "message": "Ei julkinen",
+    "description": "Fish äänen kloonaus näkyvyys: ei julkinen (pääsy ID:llä)"
+  },
+  "value.public": {
+    "message": "Julkinen",
+    "description": "Fish äänen kloonaus näkyvyys: julkinen"
+  },
+  "value.trainModeFast": {
+    "message": "Nopea",
+    "description": "Fish äänen kloonaus koulutusmoodi: nopea"
+  },
+  "value.trainModePrecise": {
+    "message": "Tarkka",
+    "description": "Fish äänen kloonaus koulutusmoodi: tarkka"
+  },
+  "button.recordAudio": {
+    "message": "Äänitä ääni",
+    "description": "Fish äänen kloonaus äänityspainike"
+  },
+  "button.startRecord": {
+    "message": "Aloita äänitys",
+    "description": "Fish äänityskomponentin aloituspainike"
+  },
+  "button.stopRecord": {
+    "message": "Lopeta äänitys",
+    "description": "Fish äänityskomponentin lopetuspainike"
+  },
+  "button.useRecording": {
+    "message": "Käytä tätä äänitystä",
+    "description": "Fish äänityskomponentin vahvistuspainike"
+  },
+  "button.reRecord": {
+    "message": "Äänitä uudelleen",
+    "description": "Fish äänityskomponentin uudelleenäänityspainike"
+  },
+  "button.nextScript": {
+    "message": "Vaihda tekstiä",
+    "description": "Fish äänityskomponentin tekstin vaihtopainike"
+  },
+  "button.cancel": {
+    "message": "Peruuta",
+    "description": "Fish äänityskomponentin peruutuspainike"
+  },
+  "button.replaceAudio": {
+    "message": "Korvaa ääni",
+    "description": "Fish valmiin äänen korvauspainike"
+  },
+  "description.readScript": {
+    "message": "Lue seuraava kappale selkeästi, kesto 10-30 sekuntia on suositeltavaa:",
+    "description": "Fish äänityskomponentin lukuskriptin ohje"
+  },
+  "description.audioTexts": {
+    "message": "Valinnainen, syötä äänityksessä sanottu sisältö. Äänityksen aikana täytetään automaattisesti lukuteksti.",
+    "description": "Fish äänen kloonaus ääni tekstikentän selitys"
+  },
+  "description.audioRequired": {
+    "message": "Pakollinen",
+    "description": "Fish äänen kloonaus ääni pakollinen merkintä"
+  },
+  "description.enhanceAudio": {
+    "message": "Vähentää taustamelua viiteäänestä, suositellaan käytettäväksi meluisassa ympäristössä.",
+    "description": "Fish äänen kloonaus äänenlaadun parannusvaihteen selitys"
+  },
+  "description.generateSample": {
+    "message": "Luodaan automaattisesti esimerkkiaani kuunneltavaksi valmistumisen jälkeen.",
+    "description": "Fish äänen kloonaus esikuunteluvaihteen selitys"
+  },
+  "description.recorderIdle": {
+    "message": "Napsauta punaista painiketta aloittaaksesi äänityksen",
+    "description": "Fish äänityskomponentin tyhjät tilatiedot"
+  },
+  "description.recorderRecording": {
+    "message": "Äänitetään… Lue yllä oleva teksti selkeästi",
+    "description": "Fish äänityskomponentin äänityksen aikana oleva ilmoitus"
+  },
+  "description.recorderRecorded": {
+    "message": "Äänitetty, voit kuunnella ja tallentaa tai äänittää uudelleen",
+    "description": "Fish äänityskomponentin äänityksen valmistumisen ilmoitus"
+  },
+  "placeholder.audioTexts": {
+    "message": "Esim: Tänään sää on todella hyvä...",
+    "description": "Fish äänen kloonaus ääni tekstin paikkamerkki"
+  },
+  "message.micDenied": {
+    "message": "Mikrofonin käyttöoikeutta ei ole saatu, salli se selaimessa ja yritä uudelleen",
+    "description": "Fish äänitysmikrofonin käyttöoikeuden kieltäminen ilmoitus"
+  },
+  "message.micError": {
+    "message": "Mikrofoniin ei pääse, tarkista laitteet",
+    "description": "Fish äänitysmikrofonin virheilmoitus"
+  },
+  "message.recordingTooShort": {
+    "message": "Äänitys on liian lyhyt, äänitä vähintään 3 sekuntia",
+    "description": "Fish äänitys liian lyhyt ilmoitus"
+  },
+  "message.recorderUnsupported": {
+    "message": "Nykyinen selain ei tue äänitystä, käytä sen sijaan äänitiedoston lataamista",
+    "description": "Fish selain ei tue MediaRecorderia ilmoitus"
+  },
+  "script.passage1": {
+    "message": "Tänään sää on todella mukava, aurinko paistaa, kaikki herää eloon, jopa tuulessa on kevään tuoksua. Nautin kävelystä tällaisina päivinä, katsoen kaukaisia vuoria, katsoen jalkojeni alla olevia kukkia, kuunnellen pikkulintuja laulaen oksilla.",
+    "description": "Fish äänitysdemonstraatio kappale 1 (kevät/luonto)"
+  },
+  "script.passage2": {
+    "message": "Tekoäly muuttaa hiljaisesti elämäämme, aamun sääennusteista yöaikaan älykaiuttimiin, se on kaikkialla. Meidän on opittava kasvamaan sen kanssa, jotta teknologia todella palvelee ihmisiä.",
+    "description": "Fish äänitysdemonstraatio kappale 2 (teknologia/AI)"
+  },
+  "script.passage3": {
+    "message": "Jos joku kysyy minulta, mikä on onni? Vastaisin, että onni on kuppi kuumaa teetä, hyvä kirja ja ikkunasta hiljalleen putoava lumi. Se ei ole äänekäs, mutta lämmittää hiljaa jokaista yötämme.",
+    "description": "Fish äänitysdemonstraatio kappale 3 (tunne/lyriikka)"
+  },
+  "script.passage4": {
+    "message": "Yksi, kaksi, kolme, neljä, viisi, kuusi, seitsemän, kahdeksan, yhdeksän, kymmenen, nolla, yksi, kaksi, kolme, neljä, viisi, kuusi, seitsemän, kahdeksan, yhdeksän. Tänään on maanantai, ensi maanantai on lomaa, ja seuraava maanantai alkaa uusi projekti. Ole hyvä ja lue tämä lause selkeästi loppuun, älä pidä liian pitkiä taukoja.",
+    "description": "Fish äänitysdemonstraatio kappale 4 (numerot ja ääntämisen kattavuus)"
   }
 }

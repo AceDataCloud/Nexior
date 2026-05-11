@@ -174,5 +174,153 @@
   "message.uploadError": {
     "message": "Échec du téléchargement de l'audio",
     "description": "Alerte indiquant que le téléchargement de l'audio pour le clonage de son Fish a échoué"
+  },
+  "title.myVoices": {
+    "message": "Mes voix",
+    "description": "Fish titre du panneau de droite de clonage de voix : liste des voix de l'utilisateur"
+  },
+  "title.noVoicesYet": {
+    "message": "Aucun modèle vocal pour le moment",
+    "description": "Fish titre de l'état vide du panneau de droite de clonage de voix"
+  },
+  "description.noVoicesYet": {
+    "message": "Téléversez ou enregistrez un audio de référence pour obtenir votre voix personnalisée en quelques minutes.",
+    "description": "Sous-titre de l'état vide du panneau droit dans la clonage vocale Fish"
+  },
+  "name.audioTexts": {
+    "message": "Texte audio",
+    "description": "Étiquette du champ texte correspondant à l'audio dans la clonage vocale Fish"
+  },
+  "name.trainMode": {
+    "message": "Mode entraînement",
+    "description": "Étiquette du champ pour le mode entraînement dans la clonage vocale Fish"
+  },
+  "name.enhanceAudio": {
+    "message": "Améliorer la qualité",
+    "description": "Étiquette du commutateur pour améliorer la qualité audio dans la clonage vocale Fish"
+  },
+  "name.generateSample": {
+    "message": "Générer un échantillon",
+    "description": "Étiquette du commutateur pour générer un exemple audio dans la clonage vocale Fish"
+  },
+  "value.private": {
+    "message": "Visible uniquement par moi",
+    "description": "Fish visibilité du clonage de voix : privé"
+  },
+  "value.unlist": {
+    "message": "Non répertorié",
+    "description": "Fish visibilité du clonage de voix : non répertorié (accessible par ID)"
+  },
+  "value.public": {
+    "message": "Public",
+    "description": "Fish visibilité du clonage de voix : public"
+  },
+  "value.trainModeFast": {
+    "message": "Rapide",
+    "description": "Fish mode d'entraînement de clonage de voix : rapide"
+  },
+  "value.trainModePrecise": {
+    "message": "Précis",
+    "description": "Fish mode d'entraînement de clonage de voix : précis"
+  },
+  "button.recordAudio": {
+    "message": "Enregistrer l'audio",
+    "description": "Bouton d'enregistrement audio pour la clonage vocale Fish"
+  },
+  "button.startRecord": {
+    "message": "Commencer l'enregistrement",
+    "description": "Bouton de démarrage du composant d'enregistrement Fish"
+  },
+  "button.stopRecord": {
+    "message": "Arrêter l'enregistrement",
+    "description": "Bouton d'arrêt du composant d'enregistrement Fish"
+  },
+  "button.useRecording": {
+    "message": "Utiliser cet enregistrement",
+    "description": "Bouton de confirmation pour utiliser l'enregistrement dans Fish"
+  },
+  "button.reRecord": {
+    "message": "Réenregistrer",
+    "description": "Bouton de réenregistrement du composant d'enregistrement Fish"
+  },
+  "button.nextScript": {
+    "message": "Changer de passage",
+    "description": "Bouton du composant d'enregistrement Fish pour changer le texte à lire"
+  },
+  "button.cancel": {
+    "message": "Annuler",
+    "description": "Bouton d'annulation du composant d'enregistrement Fish"
+  },
+  "button.replaceAudio": {
+    "message": "Remplacer l'audio",
+    "description": "Bouton pour remplacer un audio prêt dans Fish"
+  },
+  "description.readScript": {
+    "message": "Veuillez lire clairement le passage ci-dessous, durée recommandée : 10-30 secondes :",
+    "description": "Indication du script à lire pour le composant d'enregistrement Fish"
+  },
+  "description.audioTexts": {
+    "message": "Facultatif, saisissez le contenu prononcé dans l'audio. Le texte à lire sera rempli automatiquement lors de l'enregistrement.",
+    "description": "Description du champ texte de l'audio dans la clonage vocale Fish"
+  },
+  "description.audioRequired": {
+    "message": "Obligatoire",
+    "description": "Indicateur de champ obligatoire pour l'audio dans la clonage vocale Fish"
+  },
+  "description.enhanceAudio": {
+    "message": "Applique un filtrage du bruit de fond à l'audio de référence. Recommandé si l'environnement est bruyant.",
+    "description": "Description du commutateur pour améliorer la qualité audio dans la clonage vocale Fish"
+  },
+  "description.generateSample": {
+    "message": "Génère automatiquement un exemple audio à l'écoute après la création.",
+    "description": "Description du commutateur pour générer un échantillon audio dans la clonage vocale Fish"
+  },
+  "description.recorderIdle": {
+    "message": "Cliquez sur le bouton rouge pour commencer l'enregistrement",
+    "description": "Indication de l'état inactif du composant d'enregistrement Fish"
+  },
+  "description.recorderRecording": {
+    "message": "Enregistrement en cours… lisez clairement le texte ci-dessus",
+    "description": "Indication pendant l'enregistrement du composant Fish"
+  },
+  "description.recorderRecorded": {
+    "message": "Enregistré, vous pouvez écouter avant de sauvegarder ou réenregistrer",
+    "description": "Indication après l'enregistrement du composant Fish"
+  },
+  "placeholder.audioTexts": {
+    "message": "Ex : Aujourd'hui, le temps est vraiment agréable...",
+    "description": "Fish espace réservé pour le texte audio de clonage de voix"
+  },
+  "message.micDenied": {
+    "message": "Autorisation du microphone refusée, veuillez autoriser dans le navigateur et réessayer",
+    "description": "Message lorsque l'accès au microphone est refusé dans Fish"
+  },
+  "message.micError": {
+    "message": "Impossible d'accéder au microphone, vérifiez votre appareil",
+    "description": "Message d'erreur du microphone dans Fish"
+  },
+  "message.recordingTooShort": {
+    "message": "Enregistrement trop court, veuillez enregistrer au moins 3 secondes",
+    "description": "Message lorsque l'enregistrement est trop court dans Fish"
+  },
+  "message.recorderUnsupported": {
+    "message": "Votre navigateur ne prend pas en charge l'enregistrement, utilisez plutôt le téléversement audio",
+    "description": "Message indiquant que le navigateur ne supporte pas MediaRecorder dans Fish"
+  },
+  "script.passage1": {
+    "message": "Aujourd'hui, le temps est vraiment agréable, le soleil brille, tout renaît, même le vent a une touche de printemps. J'aime me promener et m'arrêter par un tel jour, regarder les montagnes au loin, les fleurs sous mes pieds, écouter les oiseaux chanter dans les branches.",
+    "description": "Fish extrait d'enregistrement exemple 1 (printemps / description de paysage)"
+  },
+  "script.passage2": {
+    "message": "L'intelligence artificielle change discrètement notre vie, des prévisions météorologiques du matin aux enceintes intelligentes de la nuit, elle est partout. Ce que nous devons faire, c'est apprendre à grandir avec elle, pour que la technologie serve vraiment l'humanité.",
+    "description": "Fish extrait d'enregistrement exemple 2 (technologie / IA)"
+  },
+  "script.passage3": {
+    "message": "Si quelqu'un me demandait, qu'est-ce que le bonheur ? Je dirais que le bonheur, c'est une tasse de thé chaud, un bon livre, et la neige qui tombe lentement dehors. Il ne fait pas de bruit, mais réchauffe doucement chacune de nos nuits.",
+    "description": "Fish extrait d'enregistrement exemple 3 (émotion / lyrique)"
+  },
+  "script.passage4": {
+    "message": "Un, deux, trois, quatre, cinq, six, sept, huit, neuf, dix, zéro, un, deux, trois, quatre, cinq, six, sept, huit, neuf. Aujourd'hui, c'est lundi, le lundi prochain est un jour de congé, et le lundi d'après, nous commencerons un nouveau projet. Veuillez lire ce passage clairement, sans trop de pauses.",
+    "description": "Fish extrait d'enregistrement exemple 4 (chiffres et couverture de prononciation)"
   }
 }

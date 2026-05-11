@@ -105,7 +105,7 @@ class FishOperator extends BaseTaskOperator<
       voices: string;
       description?: string;
       cover_image?: string;
-      train_mode?: 'fast';
+      train_mode?: 'fast' | 'precise';
       type?: 'tts';
       visibility?: 'public' | 'unlist' | 'private';
       tags?: string[];
@@ -118,7 +118,7 @@ class FishOperator extends BaseTaskOperator<
   ): Promise<AxiosResponse<IFishTask & { id?: string }>> {
     return axios.post(
       '/fish/model',
-      { train_mode: 'fast', type: 'tts', ...data },
+      { type: 'tts', ...data },
       {
         baseURL: BASE_URL_API,
         headers: {

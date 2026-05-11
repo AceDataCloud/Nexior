@@ -174,5 +174,153 @@
   "message.uploadError": {
     "message": "오디오 업로드 실패",
     "description": "Fish 소리 클론 오디오 업로드 실패 안내"
+  },
+  "title.myVoices": {
+    "message": "내 목소리",
+    "description": "Fish 음성 클론 오른쪽 패널 제목: 사용자의 목소리 목록"
+  },
+  "title.noVoicesYet": {
+    "message": "아직 음성 모델이 없습니다",
+    "description": "Fish 음성 클론 오른쪽 패널 빈 상태 제목"
+  },
+  "description.noVoicesYet": {
+    "message": "참조 오디오를 업로드하거나 녹음하면 몇 분 내에 전용 음성을 얻을 수 있습니다.",
+    "description": "Fish 음성 복제 오른쪽 패널 비어 있는 상태 부제목"
+  },
+  "name.audioTexts": {
+    "message": "오디오 텍스트",
+    "description": "Fish 음성 복제 오디오에 해당하는 텍스트 필드 레이블"
+  },
+  "name.trainMode": {
+    "message": "훈련 모드",
+    "description": "Fish 음성 복제 훈련 모드 필드 레이블"
+  },
+  "name.enhanceAudio": {
+    "message": "음질 향상",
+    "description": "Fish 음성 복제 음질 향상 스위치 레이블"
+  },
+  "name.generateSample": {
+    "message": "미리 듣기 생성",
+    "description": "Fish 음성 복제 미리 듣기 생성 스위치 레이블"
+  },
+  "value.private": {
+    "message": "본인만 볼 수 있음",
+    "description": "Fish 음성 클론 가시성: 개인"
+  },
+  "value.unlist": {
+    "message": "비공개",
+    "description": "Fish 음성 클론 가시성: 비공식 (ID로 접근 가능)"
+  },
+  "value.public": {
+    "message": "공개",
+    "description": "Fish 음성 클론 가시성: 공개"
+  },
+  "value.trainModeFast": {
+    "message": "빠름",
+    "description": "Fish 음성 클론 훈련 모드: 빠름"
+  },
+  "value.trainModePrecise": {
+    "message": "정확함",
+    "description": "Fish 음성 클론 훈련 모드: 정확함"
+  },
+  "button.recordAudio": {
+    "message": "오디오 녹음",
+    "description": "Fish 음성 복제 오디오 녹음 버튼"
+  },
+  "button.startRecord": {
+    "message": "녹음 시작",
+    "description": "Fish 녹음 컴포넌트 시작 버튼"
+  },
+  "button.stopRecord": {
+    "message": "녹음 중지",
+    "description": "Fish 녹음 컴포넌트 중지 버튼"
+  },
+  "button.useRecording": {
+    "message": "이 녹음 사용",
+    "description": "Fish 녹음 컴포넌트 사용 확인 버튼"
+  },
+  "button.reRecord": {
+    "message": "다시 녹음",
+    "description": "Fish 녹음 컴포넌트 다시 녹음 버튼"
+  },
+  "button.nextScript": {
+    "message": "다음 스크립트",
+    "description": "Fish 녹음 컴포넌트 텍스트 전환 버튼"
+  },
+  "button.cancel": {
+    "message": "취소",
+    "description": "Fish 녹음 컴포넌트 취소 버튼"
+  },
+  "button.replaceAudio": {
+    "message": "오디오 교체",
+    "description": "Fish 준비된 오디오 교체 버튼"
+  },
+  "description.readScript": {
+    "message": "다음 단락을 명확하게 읽어주세요. 10-30초가 적당합니다:",
+    "description": "Fish 녹음 컴포넌트 스크립트 읽기 안내"
+  },
+  "description.audioTexts": {
+    "message": "선택 사항, 오디오에서 말한 내용을 입력하세요. 녹음 시 자동으로 텍스트가 채워집니다.",
+    "description": "Fish 음성 복제 오디오 텍스트 필드 설명"
+  },
+  "description.audioRequired": {
+    "message": "필수",
+    "description": "Fish 음성 복제 오디오 필수 마크"
+  },
+  "description.enhanceAudio": {
+    "message": "참조 오디오의 노이즈를 줄입니다. 배경 소음이 많을 때 활성화하는 것이 좋습니다.",
+    "description": "Fish 음성 복제 음질 향상 스위치 설명"
+  },
+  "description.generateSample": {
+    "message": "생성 완료 후 자동으로 샘플 오디오가 생성되어 미리 들을 수 있습니다.",
+    "description": "Fish 음성 복제 미리 듣기 생성 스위치 설명"
+  },
+  "description.recorderIdle": {
+    "message": "빨간 버튼을 클릭하여 녹음을 시작하세요",
+    "description": "Fish 녹음 컴포넌트 대기 상태 안내"
+  },
+  "description.recorderRecording": {
+    "message": "녹음 중… 위의 텍스트를 명확하게 읽어주세요",
+    "description": "Fish 녹음 컴포넌트 녹음 중 안내"
+  },
+  "description.recorderRecorded": {
+    "message": "녹음 완료, 미리 듣고 저장하거나 다시 녹음할 수 있습니다",
+    "description": "Fish 녹음 컴포넌트 녹음 완료 안내"
+  },
+  "placeholder.audioTexts": {
+    "message": "예: 오늘 날씨가 정말 좋네요...",
+    "description": "Fish 음성 클론 오디오 텍스트 자리 표시자"
+  },
+  "message.micDenied": {
+    "message": "마이크 권한이 없습니다. 브라우저에서 허용한 후 다시 시도하세요",
+    "description": "Fish 녹음 마이크 거부 안내"
+  },
+  "message.micError": {
+    "message": "마이크에 접근할 수 없습니다. 장치를 확인하세요",
+    "description": "Fish 녹음 마이크 오류 안내"
+  },
+  "message.recordingTooShort": {
+    "message": "녹음이 너무 짧습니다. 최소 3초 이상 녹음하세요",
+    "description": "Fish 녹음이 너무 짧음 안내"
+  },
+  "message.recorderUnsupported": {
+    "message": "현재 브라우저는 녹음을 지원하지 않습니다. 오디오 업로드로 변경하세요",
+    "description": "Fish 브라우저가 MediaRecorder를 지원하지 않음 안내"
+  },
+  "script.passage1": {
+    "message": "오늘의 날씨는 정말 좋고, 햇살이 밝고, 모든 것이 다시 살아나고, 바람 속에는 봄의 향기가 느껴집니다. 저는 이런 날에 걸어다니며 멀리 있는 산과 발 아래의 꽃을 보고, 나뭇가지에서 노래하는 새의 소리를 듣는 것을 좋아합니다.",
+    "description": "Fish 녹음 시연 단락 1 (봄/경치)"
+  },
+  "script.passage2": {
+    "message": "인공지능은 우리의 삶을 조용히 변화시키고 있습니다. 아침의 일기예보부터 밤의 스마트 스피커까지, 그것은 어디에나 있습니다. 우리가 해야 할 일은 그것과 함께 성장하는 법을 배우는 것이며, 기술이 진정으로 사람을 위해 봉사하도록 하는 것입니다.",
+    "description": "Fish 녹음 시연 단락 2 (기술/AI)"
+  },
+  "script.passage3": {
+    "message": "누군가 저에게 행복이 무엇인지 묻는다면, 저는 행복이 한 잔의 뜨거운 차, 좋은 책, 그리고 창밖에서 천천히 내리는 눈이라고 말할 것입니다. 그것은 시끄럽지 않지만, 우리의 매일 밤을 조용히 따뜻하게 해줍니다.",
+    "description": "Fish 녹음 시연 단락 3 (감정/서정)"
+  },
+  "script.passage4": {
+    "message": "일이삼사오육칠팔구십, 영점일이삼사오육칠팔구. 오늘은 월요일이고, 다음 주 월요일은 휴일이며, 그 다음 주 월요일에는 새로운 프로젝트가 시작됩니다. 이 문장을 명확하게 읽어주세요, 너무 오랫동안 멈추지 마세요.",
+    "description": "Fish 녹음 시연 단락 4 (숫자 및 발음 커버)"
   }
 }

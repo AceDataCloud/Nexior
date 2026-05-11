@@ -174,5 +174,153 @@
   "message.uploadError": {
     "message": "音频上传失败",
     "description": "Fish 声音克隆音频上传失败提示"
+  },
+  "title.myVoices": {
+    "message": "我的声音",
+    "description": "Fish 声音克隆右侧面板标题：用户的声音列表"
+  },
+  "title.noVoicesYet": {
+    "message": "还没有声音模型",
+    "description": "Fish 声音克隆右侧面板空状态标题"
+  },
+  "description.noVoicesYet": {
+    "message": "上传或录制一段参考音频，几分钟内即可获得一个专属声音。",
+    "description": "Fish 声音克隆右侧面板空状态副标题"
+  },
+  "name.audioTexts": {
+    "message": "音频文本",
+    "description": "Fish 声音克隆音频对应文本字段标签"
+  },
+  "name.trainMode": {
+    "message": "训练模式",
+    "description": "Fish 声音克隆训练模式字段标签"
+  },
+  "name.enhanceAudio": {
+    "message": "增强音质",
+    "description": "Fish 声音克隆增强音质开关标签"
+  },
+  "name.generateSample": {
+    "message": "生成试听",
+    "description": "Fish 声音克隆生成试听开关标签"
+  },
+  "value.private": {
+    "message": "仅自己可见",
+    "description": "Fish 声音克隆可见性：私有"
+  },
+  "value.unlist": {
+    "message": "未公开",
+    "description": "Fish 声音克隆可见性：未公开（凭 ID 可访问）"
+  },
+  "value.public": {
+    "message": "公开",
+    "description": "Fish 声音克隆可见性：公开"
+  },
+  "value.trainModeFast": {
+    "message": "快速",
+    "description": "Fish 声音克隆训练模式：快速"
+  },
+  "value.trainModePrecise": {
+    "message": "精准",
+    "description": "Fish 声音克隆训练模式：精准"
+  },
+  "button.recordAudio": {
+    "message": "录制音频",
+    "description": "Fish 声音克隆录制音频按钮"
+  },
+  "button.startRecord": {
+    "message": "开始录音",
+    "description": "Fish 录音组件开始按钮"
+  },
+  "button.stopRecord": {
+    "message": "停止录音",
+    "description": "Fish 录音组件停止按钮"
+  },
+  "button.useRecording": {
+    "message": "使用此录音",
+    "description": "Fish 录音组件确认使用按钮"
+  },
+  "button.reRecord": {
+    "message": "重新录制",
+    "description": "Fish 录音组件重录按钮"
+  },
+  "button.nextScript": {
+    "message": "换一段",
+    "description": "Fish 录音组件切换朗读文本按钮"
+  },
+  "button.cancel": {
+    "message": "取消",
+    "description": "Fish 录音组件取消按钮"
+  },
+  "button.replaceAudio": {
+    "message": "替换音频",
+    "description": "Fish 已就绪音频替换按钮"
+  },
+  "description.readScript": {
+    "message": "请清晰朗读以下段落，时长 10-30 秒为宜：",
+    "description": "Fish 录音组件朗读脚本提示"
+  },
+  "description.audioTexts": {
+    "message": "选填，输入音频中所说的内容。录音时会自动填充朗读文本。",
+    "description": "Fish 声音克隆音频文本字段说明"
+  },
+  "description.audioRequired": {
+    "message": "必填",
+    "description": "Fish 声音克隆音频必填角标"
+  },
+  "description.enhanceAudio": {
+    "message": "对参考音频做降噪处理，背景嘈杂时建议开启。",
+    "description": "Fish 声音克隆增强音质开关说明"
+  },
+  "description.generateSample": {
+    "message": "创建完成后自动生成一段示例音频用于试听。",
+    "description": "Fish 声音克隆生成试听开关说明"
+  },
+  "description.recorderIdle": {
+    "message": "点击红色按钮开始录音",
+    "description": "Fish 录音组件空闲状态提示"
+  },
+  "description.recorderRecording": {
+    "message": "正在录音…清晰朗读上方文字",
+    "description": "Fish 录音组件录制中提示"
+  },
+  "description.recorderRecorded": {
+    "message": "已录制，可试听后保存或重录",
+    "description": "Fish 录音组件录制完成提示"
+  },
+  "placeholder.audioTexts": {
+    "message": "如：今天天气真好…",
+    "description": "Fish 声音克隆音频文本占位符"
+  },
+  "message.micDenied": {
+    "message": "未获得麦克风授权，请在浏览器中允许后重试",
+    "description": "Fish 录音麦克风被拒绝提示"
+  },
+  "message.micError": {
+    "message": "无法访问麦克风，请检查设备",
+    "description": "Fish 录音麦克风错误提示"
+  },
+  "message.recordingTooShort": {
+    "message": "录音太短，请录制至少 3 秒",
+    "description": "Fish 录音过短提示"
+  },
+  "message.recorderUnsupported": {
+    "message": "当前浏览器不支持录音，请改用上传音频",
+    "description": "Fish 浏览器不支持 MediaRecorder 提示"
+  },
+  "script.passage1": {
+    "message": "今天的天气真不错，阳光明媚，万物复苏，连风里都带着一丝春天的味道。我喜欢在这样的日子里走走停停，看远处的山、看脚下的花，听小鸟在枝头唱歌。",
+    "description": "Fish 录音示范段落 1（春天/写景）"
+  },
+  "script.passage2": {
+    "message": "人工智能正在悄悄改变我们的生活，从早晨的天气预报到夜里的智能音箱，它无处不在。我们要做的，是学会和它一起成长，让科技真正为人服务。",
+    "description": "Fish 录音示范段落 2（科技/AI）"
+  },
+  "script.passage3": {
+    "message": "如果有人问我，什么是幸福？我会说，幸福就是一杯热茶、一本好书，还有窗外慢慢飘下的雪。它不喧哗，却悄悄温暖着我们的每一个夜晚。",
+    "description": "Fish 录音示范段落 3（情感/抒情）"
+  },
+  "script.passage4": {
+    "message": "一二三四五六七八九十，零点一二三四五六七八九。今天是星期一，下周一是放假，再下周一就要开始新的项目了。请把这段话清晰地读完，不要停顿太久。",
+    "description": "Fish 录音示范段落 4（数字与发音覆盖）"
   }
 }
