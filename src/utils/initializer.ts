@@ -182,7 +182,7 @@ export const initializeToken = async () => {
  * Initialize theme — light/dark mode AND the runtime accent (primary) colour.
  *
  * Light/dark is per-user (cookie); accent colour is per-site (admin-picked,
- * stored at `Site.metadata.primary_color`). When the site has no custom
+ * stored at `Site.theme.primary_color`). When the site has no custom
  * colour set, `applyAccentColor(null)` no-ops and the compiled-in default
  * teal from `_element.scss` + `_common.scss :root` is used.
  *
@@ -192,7 +192,7 @@ export const initializeTheme = async () => {
   const theme = getCookie('THEME') || 'dark';
   console.debug('initialize theme', theme);
   applyTheme(theme);
-  const primaryColor = (store.state.site?.metadata as { primary_color?: string } | undefined)?.primary_color;
+  const primaryColor = store.state.site?.theme?.primary_color;
   console.debug('initialize primary color', primaryColor || '(default)');
   applyAccentColor(primaryColor || null);
 };

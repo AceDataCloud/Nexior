@@ -163,7 +163,7 @@ export default defineComponent({
       return this.$store.getters.site || {};
     },
     storedPrimaryColor(): string | undefined {
-      return (this.site?.metadata as { primary_color?: string } | undefined)?.primary_color;
+      return this.site?.theme?.primary_color;
     },
     currentPrimaryColor(): string {
       return this.storedPrimaryColor || DEFAULT_PRIMARY_COLOR;
@@ -187,7 +187,7 @@ export default defineComponent({
     onPrimaryColorPicked(value: string | null) {
       // `el-color-picker` emits `null` if the user clears the swatch and
       // a `#xxxxxx` hex otherwise. Either way we route through the same
-      // metadata merge as the explicit Reset button.
+      // theme merge as the explicit Reset button.
       const next = value || undefined;
       this.persistPrimaryColor(next);
     },
@@ -199,14 +199,16 @@ export default defineComponent({
       // through the same `siteOperator.update` path as every other field
       // on this page so any 4xx will be surfaced the same way.
       applyAccentColor(hex || null);
-      const nextMetadata = {
-        ...(this.site?.metadata || {}),
+      const nextTheme: { primary_color?: string } = {
+        ...(this.site?.theme || {}),
         primary_color: hex
       };
       // Drop the key entirely when reverting to default so we don't pile
-      // up `{ primary_color: undefined }` entries in `Site.metadata`.
-      if (!hex) delete nextMetadata.primary_color;
-      this.onSave({ metadata: nextMetadata });
+      // up `{ primary_color: undefined }` entries in `Site.theme` (the
+      // backend validator also rejects unknown keys, so keeping the
+      // shape clean is important).
+      if (!hex) delete nextTheme.primary_color;
+      this.onSave({ theme: nextTheme });
     }
   }
 });

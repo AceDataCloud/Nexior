@@ -10,7 +10,7 @@
  *     overrides it at runtime by writing a small set of CSS variables.
  *
  * Why CSS vars (not Sass / Tailwind regeneration)? Because the colour is
- * configured per-site at runtime from `Site.metadata.primary_color`, so we
+ * configured per-site at runtime from `Site.theme.primary_color`, so we
  * can't pre-compile it. The Sass `@forward` in _element.scss still ships the
  * teal as the default and is what unstyled / not-yet-initialised renders
  * pick up; once `initializeTheme` runs, the runtime vars override Element
