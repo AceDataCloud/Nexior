@@ -20,6 +20,7 @@ import seedanceState from '../seedance/state';
 import serpState from '../serp/state';
 import wanState from '../wan/state';
 import fishState from '../fish/state';
+import webextratorState from '../webextrator/state';
 
 export default (): IRootState => {
   return {
@@ -65,6 +66,7 @@ export default (): IRootState => {
     seedance: seedanceState(),
     serp: serpState(),
     wan: wanState(),
-    fish: fishState()
+    fish: fishState(),
+    webextrator: webextratorState()
   };
 };

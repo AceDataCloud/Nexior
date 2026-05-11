@@ -73,6 +73,8 @@ export const ROUTE_WAN_INDEX = 'wan-index';
 export const ROUTE_FISH_TTS_INDEX = 'fish-tts-index';
 export const ROUTE_FISH_MODEL_INDEX = 'fish-model-index';
 
+export const ROUTE_WEBEXTRATOR_INDEX = 'webextrator-index';
+
 export const ROUTE_PROFILE_INDEX = 'profile-index';
 
 export const ROUTE_CONSOLE_ROOT = 'console-root';

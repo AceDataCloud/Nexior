@@ -115,7 +115,8 @@ const FEATURE_KEYS = [
   'producer',
   'kimi',
   'serp',
-  'fish'
+  'fish',
+  'webextrator'
 ];
 
 export default defineComponent({

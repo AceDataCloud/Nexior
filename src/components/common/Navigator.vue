@@ -98,10 +98,12 @@ import {
   ROUTE_FISH_TTS_INDEX,
   ROUTE_FISH_MODEL_INDEX,
   ROUTE_KIMI_CONVERSATION,
-  ROUTE_KIMI_CONVERSATION_NEW
+  ROUTE_KIMI_CONVERSATION_NEW,
+  ROUTE_WEBEXTRATOR_INDEX
 } from '@/router/constants';
 import { SERP_LOGO } from '@/constants';
 import { ROUTE_SERP_INDEX } from '@/constants/serp';
+import { WEBEXTRATOR_LOGO } from '@/constants/webextrator';
 import {
   CHAT_MODEL_ICON_CHATGPT,
   CHAT_MODEL_ICON_DEEPSEEK,
@@ -378,6 +380,15 @@ export default defineComponent({
           logo: SERP_LOGO,
           routes: [ROUTE_SERP_INDEX],
           category: 'search'
+        });
+      }
+      if (this.$store?.state?.site?.features?.webextrator?.enabled) {
+        result.push({
+          route: { name: ROUTE_WEBEXTRATOR_INDEX },
+          displayName: this.$t('common.nav.webextrator'),
+          logo: WEBEXTRATOR_LOGO,
+          routes: [ROUTE_WEBEXTRATOR_INDEX],
+          category: 'data'
         });
       }
       if (this.direction === 'row') {

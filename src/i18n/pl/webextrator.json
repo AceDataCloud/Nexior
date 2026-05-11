@@ -1,0 +1,202 @@
+{
+  "name.mode": {
+    "message": "Mode",
+    "description": "Label for render/extract mode toggle"
+  },
+  "name.url": {
+    "message": "URL",
+    "description": "Label for the URL input"
+  },
+  "name.expectedType": {
+    "message": "Expected Type",
+    "description": "Label for expected content type"
+  },
+  "name.enableLlm": {
+    "message": "LLM Cleanup",
+    "description": "Label for enable LLM toggle"
+  },
+  "name.advanced": {
+    "message": "Advanced",
+    "description": "Label for advanced options collapse"
+  },
+  "name.waitUntil": {
+    "message": "Wait Until",
+    "description": "Label for the wait_until field"
+  },
+  "name.waitForSelector": {
+    "message": "Wait For Selector",
+    "description": "Label for the wait_for_selector field"
+  },
+  "name.timeout": {
+    "message": "Timeout (s)",
+    "description": "Label for the timeout field"
+  },
+  "name.delay": {
+    "message": "Delay (s)",
+    "description": "Label for the delay_after_load field"
+  },
+  "name.blockResources": {
+    "message": "Block Resources",
+    "description": "Label for the block_resources multi-select"
+  },
+  "name.consumption": {
+    "message": "Cost",
+    "description": "Label for the per-call cost"
+  },
+  "mode.extract": {
+    "message": "Extract",
+    "description": "Extract mode option"
+  },
+  "mode.render": {
+    "message": "Render",
+    "description": "Render mode option"
+  },
+  "expectedType.general": {
+    "message": "General",
+    "description": "General expected type option"
+  },
+  "expectedType.article": {
+    "message": "Article",
+    "description": "Article expected type option"
+  },
+  "expectedType.product": {
+    "message": "Product",
+    "description": "Product expected type option"
+  },
+  "waitUntil.networkidle": {
+    "message": "Network Idle",
+    "description": "Wait until network idle option"
+  },
+  "waitUntil.load": {
+    "message": "Load",
+    "description": "Wait until load option"
+  },
+  "waitUntil.domcontentloaded": {
+    "message": "DOM Ready",
+    "description": "Wait until DOM content loaded option"
+  },
+  "waitUntil.commit": {
+    "message": "Commit",
+    "description": "Wait until commit option"
+  },
+  "blockResource.image": {
+    "message": "Images",
+    "description": "Block images option"
+  },
+  "blockResource.font": {
+    "message": "Fonts",
+    "description": "Block fonts option"
+  },
+  "blockResource.media": {
+    "message": "Media",
+    "description": "Block media option"
+  },
+  "blockResource.stylesheet": {
+    "message": "Stylesheets",
+    "description": "Block stylesheets option"
+  },
+  "blockResource.xhr": {
+    "message": "XHR",
+    "description": "Block XHR option"
+  },
+  "blockResource.fetch": {
+    "message": "Fetch",
+    "description": "Block fetch option"
+  },
+  "placeholder.url": {
+    "message": "https://example.com",
+    "description": "Placeholder for the URL input"
+  },
+  "placeholder.waitForSelector": {
+    "message": "CSS selector, e.g. .article-body",
+    "description": "Placeholder for the wait_for_selector input"
+  },
+  "placeholder.blockResources": {
+    "message": "Resource types to block",
+    "description": "Placeholder for the block_resources multi-select"
+  },
+  "button.extract": {
+    "message": "Extract",
+    "description": "Run extract button label"
+  },
+  "button.render": {
+    "message": "Render",
+    "description": "Run render button label"
+  },
+  "description.intro": {
+    "message": "Render and extract any web page",
+    "description": "Intro line shown in the empty result state"
+  },
+  "description.introHint": {
+    "message": "Enter a URL and choose Extract or Render to get clean content, markdown, links, screenshots, and more.",
+    "description": "Hint shown below the intro line"
+  },
+  "description.enableLlm": {
+    "message": "Use an LLM to clean and structure the extracted content. Costs additional credits.",
+    "description": "Tooltip explaining the LLM cleanup toggle"
+  },
+  "message.running": {
+    "message": "Working on it…",
+    "description": "Status while a request is in flight"
+  },
+  "message.extracting": {
+    "message": "Extracting…",
+    "description": "Status shown when extract is running"
+  },
+  "message.rendering": {
+    "message": "Rendering…",
+    "description": "Status shown when render is running"
+  },
+  "message.success": {
+    "message": "Done",
+    "description": "Toast shown on success"
+  },
+  "message.failed": {
+    "message": "Request failed",
+    "description": "Generic error message"
+  },
+  "message.usedUp": {
+    "message": "Your quota has been used up. Please top up to continue.",
+    "description": "Error shown when balance is exhausted"
+  },
+  "message.busy": {
+    "message": "Service is busy. Please try again in a moment.",
+    "description": "Error shown on rate limit"
+  },
+  "message.timeout": {
+    "message": "The page took too long to load. Try a different URL or increase the timeout.",
+    "description": "Error shown on timeout"
+  },
+  "message.untitled": {
+    "message": "Untitled",
+    "description": "Fallback title when the page has no title"
+  },
+  "tab.markdown": {
+    "message": "Markdown",
+    "description": "Markdown tab label"
+  },
+  "tab.text": {
+    "message": "Text",
+    "description": "Plain text tab label"
+  },
+  "tab.structured": {
+    "message": "Structured",
+    "description": "Structured data tab label"
+  },
+  "tab.links": {
+    "message": "Links",
+    "description": "Links tab label"
+  },
+  "tab.images": {
+    "message": "Images",
+    "description": "Images tab label"
+  },
+  "tab.html": {
+    "message": "HTML",
+    "description": "HTML tab label"
+  },
+  "tab.raw": {
+    "message": "Raw JSON",
+    "description": "Raw response tab label"
+  }
+}
