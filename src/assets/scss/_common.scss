@@ -204,15 +204,20 @@ w3m-modal {
   transition: all 0.2s ease;
 }
 
+// Drop the gradient: its 100% stop is `--el-color-primary-light-3` (#689caa
+// at default), which makes the white label look "disabled" on the bottom-right
+// corner. Use a solid `--el-color-primary` fill — both vars are runtime-driven
+// by `applyAccentColor()`, so the button still follows Settings → Site primary.
 .el-button--primary {
-  background: var(--app-gradient-brand);
+  background: var(--el-color-primary);
   border: none;
   &:hover,
   &:focus {
-    background: var(--app-gradient-brand-hover);
+    background: var(--el-color-primary-dark-2);
     box-shadow: var(--app-glow-primary);
   }
   &:active {
+    background: var(--el-color-primary-dark-2);
     box-shadow: var(--app-glow-primary-lg);
   }
 }

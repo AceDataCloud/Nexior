@@ -89,6 +89,12 @@ export default defineComponent({
   },
   async mounted() {
     await this.onGetService();
+    // Pre-fetch the user's voice clones so the VoicePicker dropdown has
+    // entries on first paint — without this, users had to navigate to
+    // /fish/model first to populate state.fish.voices, and the dropdown
+    // would otherwise sit on 'No voice models yet' even when the user
+    // already had voices in the backend.
+    await this.$store.dispatch('fish/getVoices');
   },
   async unmounted() {
     window.clearInterval(this.job);
