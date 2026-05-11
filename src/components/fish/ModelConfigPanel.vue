@@ -37,12 +37,12 @@
             :before-upload="onBeforeUpload"
             :headers="uploadHeaders"
           >
-            <el-button round :loading="uploading">
+            <el-button type="primary" plain round :loading="uploading">
               <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
               {{ $t('fish.button.uploadAudio') }}
             </el-button>
           </el-upload>
-          <el-button round type="primary" plain :disabled="!supportsRecorder" @click="recording = true">
+          <el-button type="primary" round :disabled="!supportsRecorder" @click="onStartRecord">
             <font-awesome-icon icon="fa-solid fa-microphone" class="icon mr-1" />
             {{ $t('fish.button.recordAudio') }}
           </el-button>
@@ -52,7 +52,13 @@
         </p>
 
         <!-- Live recorder -->
-        <recorder v-if="recording" class="mt-2" @done="onRecorded" @cancel="recording = false" />
+        <recorder
+          v-if="recording"
+          class="mt-2"
+          @done="onRecorded"
+          @cancel="recording = false"
+          @update:script="onScriptChange"
+        />
 
         <!-- Audio ready for review -->
         <div v-if="form.voicesUrl && !recording" class="mt-2">
@@ -76,6 +82,7 @@
           :rows="2"
           :placeholder="$t('fish.placeholder.audioTexts')"
           maxlength="500"
+          @input="onTextsInput"
         />
       </div>
 
@@ -111,17 +118,21 @@
       </div>
 
       <!-- Toggles -->
-      <div class="field-row">
-        <h2 class="title font-bold">{{ $t('fish.name.enhanceAudio') }}</h2>
-        <el-switch v-model="form.enhanceAudio" />
+      <div class="field-block mb-3">
+        <div class="field-row">
+          <h2 class="title font-bold">{{ $t('fish.name.enhanceAudio') }}</h2>
+          <el-switch v-model="form.enhanceAudio" />
+        </div>
+        <p class="hint mt-0 mb-0">{{ $t('fish.description.enhanceAudio') }}</p>
       </div>
-      <p class="hint mt-0 mb-3">{{ $t('fish.description.enhanceAudio') }}</p>
 
-      <div class="field-row">
-        <h2 class="title font-bold">{{ $t('fish.name.generateSample') }}</h2>
-        <el-switch v-model="form.generateSample" />
+      <div class="field-block mb-2">
+        <div class="field-row">
+          <h2 class="title font-bold">{{ $t('fish.name.generateSample') }}</h2>
+          <el-switch v-model="form.generateSample" />
+        </div>
+        <p class="hint mt-0 mb-0">{{ $t('fish.description.generateSample') }}</p>
       </div>
-      <p class="hint mt-0 mb-2">{{ $t('fish.description.generateSample') }}</p>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
@@ -190,6 +201,7 @@ interface IData {
   uploading: boolean;
   creating: boolean;
   recording: boolean;
+  textsAuto: boolean;
 }
 
 const defaultForm = (): IForm => ({
@@ -222,7 +234,8 @@ export default defineComponent({
       fileList: [],
       uploading: false,
       creating: false,
-      recording: false
+      recording: false,
+      textsAuto: true
     };
   },
   computed: {
@@ -270,11 +283,31 @@ export default defineComponent({
     onRecorded(payload: { url: string; text?: string }) {
       this.form.voicesUrl = payload.url;
       this.recording = false;
-      // Auto-fill the transcript with the script the user just read — fish
-      // uses `texts` to align audio with text during training.
-      if (payload.text && !this.form.texts.trim()) {
+      // Keep the texts field aligned with the script the user just read —
+      // fish uses `texts` to align audio with text during training. Only
+      // overwrite if the user hasn't manually edited the field.
+      if (payload.text && this.textsAuto) {
         this.form.texts = payload.text;
       }
+    },
+    onStartRecord() {
+      this.recording = true;
+      // Reset auto-fill flag so the next script becomes the transcript
+      // unless the user starts typing.
+      this.textsAuto = !this.form.texts.trim();
+    },
+    onScriptChange(script: string) {
+      // Mirror the currently shown reading passage into the transcript
+      // field while the user is in recording mode and hasn't edited the
+      // field manually.
+      if (this.textsAuto && this.recording) {
+        this.form.texts = script;
+      }
+    },
+    onTextsInput() {
+      // Once the user types in the transcript, stop auto-syncing it with
+      // the recorder script.
+      this.textsAuto = false;
     },
     clearAudio() {
       this.form.voicesUrl = '';
@@ -316,35 +349,35 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+
+  .required {
+    color: var(--el-color-danger);
+    margin-left: 2px;
+  }
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+
+  &.warn {
+    color: var(--el-color-warning);
+  }
+}
+
+.muted {
+  font-size: 11px;
+  color: var(--el-text-color-secondary);
+}
+
 .field-block {
   display: flex;
   flex-direction: column;
-
-  .title {
-    font-size: 14px;
-    margin: 0 0 4px 0;
-
-    .required {
-      color: var(--el-color-danger);
-      margin-left: 2px;
-    }
-  }
-
-  .hint {
-    font-size: 12px;
-    color: var(--el-text-color-secondary);
-    margin: 0 0 8px 0;
-    line-height: 1.5;
-
-    &.warn {
-      color: var(--el-color-warning);
-    }
-  }
-
-  .muted {
-    font-size: 11px;
-    color: var(--el-text-color-secondary);
-  }
 }
 
 .field-row {
@@ -354,7 +387,6 @@ export default defineComponent({
   margin-bottom: 4px;
 
   .title {
-    font-size: 14px;
     margin: 0;
   }
 }

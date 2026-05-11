@@ -104,7 +104,7 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon
   },
-  emits: ['done', 'cancel'],
+  emits: ['done', 'cancel', 'update:script'],
   data(): IData {
     return {
       state: 'idle',
@@ -134,9 +134,15 @@ export default defineComponent({
   beforeUnmount() {
     this.cleanup();
   },
+  mounted() {
+    // Surface the initial script so the parent form can pre-fill the
+    // transcript field before the user even starts recording.
+    this.$emit('update:script', this.currentScript);
+  },
   methods: {
     nextScript() {
       this.scriptIndex = (this.scriptIndex + 1) % SCRIPT_COUNT;
+      this.$emit('update:script', this.currentScript);
     },
     async startRecord() {
       if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
