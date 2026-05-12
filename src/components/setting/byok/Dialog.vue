@@ -12,6 +12,7 @@
           v-model="form.provider"
           :placeholder="$t('byok.field.provider')"
           :disabled="!!credential"
+          popper-class="byok-provider-select-popper"
           class="w-full"
         >
           <el-option v-for="opt in providers" :key="opt.id" :label="opt.label" :value="opt.id">
@@ -370,7 +371,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   line-height: 1.3;
-  padding: 4px 0;
   gap: 2px;
 }
 
@@ -433,6 +433,22 @@ export default defineComponent({
     background: rgba(0, 0, 0, 0.04);
     padding: 1px 6px;
     border-radius: 4px;
+  }
+}
+</style>
+
+<style lang="scss">
+// Element Plus teleports the select popper to <body>, so scoped styles
+// can't reach it. The default .el-select-dropdown__item has a fixed
+// 34px height / line-height that clips our 2-line custom option slot
+// (provider name + description), causing the description to overlap
+// the next option. Unset both for this dialog's popper only.
+.byok-provider-select-popper {
+  .el-select-dropdown__item {
+    height: auto;
+    line-height: 1.4;
+    padding-top: 8px;
+    padding-bottom: 8px;
   }
 }
 </style>
