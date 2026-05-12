@@ -517,7 +517,12 @@ textarea.input:focus {
     border-radius: 18px;
     .input {
       margin-bottom: 46px;
-      font-size: 15px;
+      // iOS Safari auto-zooms focused form fields whose font-size is below
+      // 16px (and ignores `maximum-scale` / `user-scalable=0` in the viewport
+      // meta for accessibility reasons), so tapping the Send button — which
+      // keeps the textarea focused — would zoom the whole page in. Keep the
+      // mobile composer text at >=16px to suppress that behaviour.
+      font-size: 16px;
     }
 
     .tools {
