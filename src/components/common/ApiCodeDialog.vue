@@ -397,7 +397,7 @@ export default defineComponent({
   .platform-btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
     font-weight: 500;
 
     .platform-icon {
