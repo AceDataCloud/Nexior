@@ -25,7 +25,7 @@ export default defineComponent({
       return this.$store.state.midjourney.config.version || '';
     },
     isV8(): boolean {
-      return this.version === '8';
+      return this.version === '8' || this.version === '8.1';
     },
     options() {
       if (this.isV8) {
