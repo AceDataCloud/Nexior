@@ -117,7 +117,7 @@ export default defineComponent({
       return this.$store.state.midjourney.config;
     },
     isV8(): boolean {
-      return this.config?.version === '8';
+      return this.config?.version === '8' || this.config?.version === '8.1';
     },
     isNiji(): boolean {
       return !!this.config?.model?.includes('niji');

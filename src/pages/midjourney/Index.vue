@@ -338,7 +338,7 @@ export default defineComponent({
         };
         await this.onStartVideosTask(request);
       } else if (this.config?.type === 'imagine') {
-        const isV8 = this.config?.version === '8';
+        const isV8 = this.config?.version === '8' || this.config?.version === '8.1';
         const hasSref = !!(this.finalPrompt && this.finalPrompt.includes('--sref'));
         const hasMoodboard = !!(isV8 && this.config?.references && this.config.references.length > 0);
         const request = {
