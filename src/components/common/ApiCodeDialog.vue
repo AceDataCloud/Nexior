@@ -311,7 +311,7 @@ export default defineComponent({
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    width: fit-content;
+    justify-content: center;
   }
 
   .language {
@@ -358,6 +358,7 @@ export default defineComponent({
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    justify-content: center;
   }
 
   .variant {
