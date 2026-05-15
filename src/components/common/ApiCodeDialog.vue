@@ -397,13 +397,16 @@ export default defineComponent({
   .platform-btn {
     display: inline-flex;
     align-items: center;
-    gap: 14px;
     font-weight: 500;
 
+    // el-button wraps slot content in <span class="el-button__text">, so a
+    // `gap` on the button has no effect between siblings — use an explicit
+    // inline-end margin (RTL-safe) on the leading logo instead.
     .platform-icon {
       width: 16px;
       height: 16px;
       object-fit: contain;
+      margin-inline-end: 10px;
     }
 
     .ext-icon {
