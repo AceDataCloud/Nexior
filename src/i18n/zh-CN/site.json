@@ -47,6 +47,34 @@
     "message": "强制邀请人 ID",
     "description": "展示在编辑框的标题"
   },
+  "field.authEnabledProviders": {
+    "message": "启用的登录方式",
+    "description": "站点设置 / 登录方式 tab 的标题：勾选允许用户在登录页面使用的登录方式"
+  },
+  "field.authDefaultProvider": {
+    "message": "默认登录方式",
+    "description": "站点设置 / 登录方式 tab 的标题：登录页面打开时默认选中的登录方式"
+  },
+  "field.authProvider_email": {
+    "message": "邮箱",
+    "description": "登录方式名称：邮箱（邮箱 + 密码或验证码）"
+  },
+  "field.authProvider_phone": {
+    "message": "手机号",
+    "description": "登录方式名称：手机号（短信验证码）"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "登录方式名称：Google 第三方登录"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "登录方式名称：GitHub 第三方登录"
+  },
+  "field.authProvider_wechat": {
+    "message": "微信",
+    "description": "登录方式名称：微信第三方登录"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "展示在编辑框的标题"
@@ -251,6 +279,10 @@
     "message": "请输入强制邀请人 ID",
     "description": "展示在编辑框的标题"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "选择默认登录方式",
+    "description": "登录方式 tab 中默认登录方式下拉框的 placeholder"
+  },
   "message.uploadImageExceed": {
     "message": "上传图片超过限制",
     "description": "上传图片超过限制的提示"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "强制邀请人的用户 ID，如果设置了此 ID，无论分销链接是否携带 inviter_id 参数，则强制使用该用户 ID 作为邀请人。",
     "description": "强制邀请人ID的提示"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "勾选本站登录页面允许使用的登录方式。至少需要保留一种，否则用户将无法登录。",
+    "description": "登录方式 tab 中『启用的登录方式』的说明文本"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "用户进入登录页面时默认选中的登录方式，必须为已启用的登录方式之一。",
+    "description": "登录方式 tab 中『默认登录方式』的说明文本"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "至少需要保留一种登录方式",
+    "description": "用户尝试取消勾选所有登录方式时的警告提示"
   },
   "message.originTip": {
     "message": "站点域名，站点配置与域名绑定，站点域名不可更改。",
