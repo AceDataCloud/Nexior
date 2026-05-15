@@ -47,6 +47,34 @@
     "message": "強制招待者ID",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "field.authEnabledProviders": {
+    "message": "有効なログイン方式",
+    "description": "サイト設定 / ログイン方式タブのタイトル：ユーザーがログインページで使用できるログイン方式を選択する"
+  },
+  "field.authDefaultProvider": {
+    "message": "デフォルトのログイン方式",
+    "description": "サイト設定 / ログイン方式タブのタイトル：ログインページが開いたときにデフォルトで選択されるログイン方式"
+  },
+  "field.authProvider_email": {
+    "message": "メールアドレス",
+    "description": "ログイン方式名：メールアドレス（メール + パスワードまたは認証コード）"
+  },
+  "field.authProvider_phone": {
+    "message": "電話番号",
+    "description": "ログイン方式名：電話番号（SMS認証コード）"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "ログイン方式名：Googleのサードパーティログイン"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "ログイン方式名：GitHubのサードパーティログイン"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "ログイン方式名：WeChatのサードパーティログイン"
+  },
   "field.featuresChat": {
     "message": "チャット",
     "description": "編集ボックスに表示されるタイトル"
@@ -251,6 +279,10 @@
     "message": "強制招待者IDを入力してください",
     "description": "編集ボックスに表示されるタイトル"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "デフォルトのログイン方式を選択",
+    "description": "ログイン方式タブのデフォルトログイン方式のドロップダウンのプレースホルダー"
+  },
   "message.uploadImageExceed": {
     "message": "画像のアップロードが制限を超えました",
     "description": "画像のアップロードが制限を超えた場合のメッセージ"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "強制招待者のユーザーID。このIDが設定されている場合、分配リンクにinviter_idパラメータが含まれていても、このユーザーIDが招待者として強制的に使用されます。",
     "description": "強制招待者IDのヒント"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "このサイトのログインページで使用を許可するログイン方式を選択してください。少なくとも1つは残す必要があり、そうしないとユーザーはログインできません。",
+    "description": "ログイン方式タブの『有効なログイン方式』の説明文"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "ユーザーがログインページに入るときにデフォルトで選択されるログイン方式で、必ず有効なログイン方式の1つでなければなりません。",
+    "description": "ログイン方式タブの『デフォルトのログイン方式』の説明文"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "少なくとも1つのログイン方式を残す必要があります",
+    "description": "ユーザーがすべてのログイン方式のチェックを外そうとしたときの警告メッセージ"
   },
   "message.originTip": {
     "message": "サイトのドメイン。サイト設定はドメインにバインドされ、サイトのドメインは変更できません。",

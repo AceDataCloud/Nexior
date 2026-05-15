@@ -47,6 +47,34 @@
     "message": "강제 초대자 ID",
     "description": "편집 상자에 표시되는 제목"
   },
+  "field.authEnabledProviders": {
+    "message": "활성화된 로그인 방식",
+    "description": "사이트 설정 / 로그인 방식 탭의 제목: 로그인 페이지에서 사용자가 사용할 수 있는 로그인 방식을 선택할 수 있습니다."
+  },
+  "field.authDefaultProvider": {
+    "message": "기본 로그인 방식",
+    "description": "사이트 설정 / 로그인 방식 탭의 제목: 로그인 페이지가 열릴 때 기본적으로 선택되는 로그인 방식"
+  },
+  "field.authProvider_email": {
+    "message": "이메일",
+    "description": "로그인 방식 이름: 이메일(이메일 + 비밀번호 또는 인증 코드)"
+  },
+  "field.authProvider_phone": {
+    "message": "전화번호",
+    "description": "로그인 방식 이름: 전화번호(문자 인증 코드)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "로그인 방식 이름: Google 제3자 로그인"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "로그인 방식 이름: GitHub 제3자 로그인"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "로그인 방식 이름: WeChat 제3자 로그인"
+  },
   "field.featuresChat": {
     "message": "채팅",
     "description": "편집 상자에 표시되는 제목"
@@ -251,6 +279,10 @@
     "message": "강제 초대자 ID를 입력하세요",
     "description": "편집 상자에 표시되는 제목"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "기본 로그인 방식 선택",
+    "description": "로그인 방식 탭의 기본 로그인 방식 드롭다운의 placeholder"
+  },
   "message.uploadImageExceed": {
     "message": "업로드 이미지가 제한을 초과했습니다",
     "description": "업로드 이미지가 제한을 초과했을 때의 알림"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "강제 초대자의 사용자 ID, 이 ID가 설정되면 분배 링크에 inviter_id 매개변수가 있든 없든 이 사용자 ID가 초대자로 사용됩니다.",
     "description": "강제 초대자 ID에 대한 안내"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "이 사이트의 로그인 페이지에서 사용할 수 있는 로그인 방식을 선택하세요. 최소한 하나는 유지해야 하며, 그렇지 않으면 사용자가 로그인할 수 없습니다.",
+    "description": "로그인 방식 탭의 '활성화된 로그인 방식' 설명 텍스트"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "사용자가 로그인 페이지에 들어갈 때 기본적으로 선택되는 로그인 방식으로, 반드시 활성화된 로그인 방식 중 하나여야 합니다.",
+    "description": "로그인 방식 탭의 '기본 로그인 방식' 설명 텍스트"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "최소한 하나의 로그인 방식을 유지해야 합니다.",
+    "description": "사용자가 모든 로그인 방식을 선택 해제하려고 할 때의 경고 메시지"
   },
   "message.originTip": {
     "message": "사이트 도메인, 사이트 구성은 도메인에 바인딩되며, 사이트 도메인은 변경할 수 없습니다.",

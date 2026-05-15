@@ -47,6 +47,34 @@
     "message": "強制邀請人 ID",
     "description": "展示在編輯框的標題"
   },
+  "field.authEnabledProviders": {
+    "message": "啟用的登入方式",
+    "description": "站點設定 / 登入方式 tab 的標題：勾選允許用戶在登入頁面使用的登入方式"
+  },
+  "field.authDefaultProvider": {
+    "message": "預設登入方式",
+    "description": "站點設定 / 登入方式 tab 的標題：登入頁面打開時預設選中的登入方式"
+  },
+  "field.authProvider_email": {
+    "message": "電子郵件",
+    "description": "登入方式名稱：電子郵件（電子郵件 + 密碼或驗證碼）"
+  },
+  "field.authProvider_phone": {
+    "message": "手機號",
+    "description": "登入方式名稱：手機號（簡訊驗證碼）"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "登入方式名稱：Google 第三方登入"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "登入方式名稱：GitHub 第三方登入"
+  },
+  "field.authProvider_wechat": {
+    "message": "微信",
+    "description": "登入方式名稱：微信第三方登入"
+  },
   "field.featuresChat": {
     "message": "聊天",
     "description": "展示在編輯框的標題"
@@ -251,6 +279,10 @@
     "message": "請輸入強制邀請人 ID",
     "description": "展示在編輯框的標題"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "選擇預設登入方式",
+    "description": "登入方式 tab 中預設登入方式下拉框的 placeholder"
+  },
   "message.uploadImageExceed": {
     "message": "上傳圖片超過限制",
     "description": "上傳圖片超過限制的提示"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "強制邀請人的用戶 ID，如果設置了此 ID，無論分銷連結是否攜帶 inviter_id 參數，則強制使用該用戶 ID 作為邀請人。",
     "description": "強制邀請人ID的提示"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "勾選本站登入頁面允許使用的登入方式。至少需要保留一種，否則用戶將無法登入。",
+    "description": "登入方式 tab 中『啟用的登入方式』的說明文本"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "用戶進入登入頁面時預設選中的登入方式，必須為已啟用的登入方式之一。",
+    "description": "登入方式 tab 中『預設登入方式』的說明文本"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "至少需要保留一種登入方式",
+    "description": "用戶嘗試取消勾選所有登入方式時的警告提示"
   },
   "message.originTip": {
     "message": "站點域名，站點配置與域名綁定，站點域名不可更改。",

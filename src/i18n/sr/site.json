@@ -47,6 +47,34 @@
     "message": "ID obaveznog pozivaoca",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
+  "field.authEnabledProviders": {
+    "message": "Omogućeni načini prijave",
+    "description": "Naslov taba za podešavanje sajta / Način prijave: označite koje načine prijave korisnici mogu koristiti na stranici za prijavu"
+  },
+  "field.authDefaultProvider": {
+    "message": "Podrazumevani način prijave",
+    "description": "Naslov taba za podešavanje sajta / Način prijave: način prijave koji je podrazumevano izabran kada se otvori stranica za prijavu"
+  },
+  "field.authProvider_email": {
+    "message": "Email",
+    "description": "Naziv načina prijave: Email (email + lozinka ili kod)"
+  },
+  "field.authProvider_phone": {
+    "message": "Broj telefona",
+    "description": "Naziv načina prijave: Broj telefona (SMS kod)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Naziv načina prijave: Google treća strana"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Naziv načina prijave: GitHub treća strana"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Naziv načina prijave: WeChat treća strana"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
@@ -251,6 +279,10 @@
     "message": "Унесите ID обавезног позиватеља",
     "description": "Приказује се у уређивању"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Izaberite podrazumevani način prijave",
+    "description": "Placeholder za padajuću listu podrazumevanog načina prijave u tabu za načine prijave"
+  },
   "message.uploadImageExceed": {
     "message": "Превише слика за учитавање",
     "description": "Порука о превеликом учитавању слике"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID корисника обавезног позиватеља. Ако је овај ID подешен, без обзира на то да ли дистрибутивни линк садржи параметар inviter_id, користиће се овај ID као позиватељ.",
     "description": "Упутство о обавезном ID позиватеља"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Označite načine prijave koje korisnici mogu koristiti na ovoj stranici. Mora biti omogućena barem jedna opcija, inače korisnici neće moći da se prijave.",
+    "description": "Objašnjenje za 'Omogućeni načini prijave' u tabu za načine prijave"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Način prijave koji je podrazumevano izabran kada korisnik uđe na stranicu za prijavu, mora biti jedan od omogućених načina prijave.",
+    "description": "Objašnjenje za 'Podrazumevani način prijave' u tabu za načine prijave"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Mora biti omogućena barem jedna opcija za prijavu",
+    "description": "Upozorenje kada korisnik pokuša da poništi sve načine prijave"
   },
   "message.originTip": {
     "message": "Домен сајта, конфигурација сајта је повезана са доменом и не може се променити.",

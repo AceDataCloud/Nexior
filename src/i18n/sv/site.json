@@ -47,6 +47,34 @@
     "message": "Tvingad inbjudar-ID",
     "description": "Visas som titeln i redigeringsrutan"
   },
+  "field.authEnabledProviders": {
+    "message": "Aktiverade inloggningsmetoder",
+    "description": "Titel på fliken för webbplatsinställningar / inloggningsmetod: kryssa för de inloggningsmetoder som användare får använda på inloggningssidan"
+  },
+  "field.authDefaultProvider": {
+    "message": "Standard inloggningsmetod",
+    "description": "Titel på fliken för webbplatsinställningar / inloggningsmetod: den inloggningsmetod som är förvald när inloggningssidan öppnas"
+  },
+  "field.authProvider_email": {
+    "message": "E-post",
+    "description": "Namn på inloggningsmetod: E-post (E-post + lösenord eller verifieringskod)"
+  },
+  "field.authProvider_phone": {
+    "message": "Mobilnummer",
+    "description": "Namn på inloggningsmetod: Mobilnummer (SMS-verifieringskod)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Namn på inloggningsmetod: Google tredjepartsinloggning"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Namn på inloggningsmetod: GitHub tredjepartsinloggning"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Namn på inloggningsmetod: WeChat tredjepartsinloggning"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Visas som titeln i redigeringsrutan"
@@ -251,6 +279,10 @@
     "message": "Ange tvingad inbjudar-ID",
     "description": "Visas som titel i redigeringsrutan"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Välj standard inloggningsmetod",
+    "description": "Placeholder för rullgardinsmenyn för standard inloggningsmetod på fliken för inloggningsmetoder"
+  },
   "message.uploadImageExceed": {
     "message": "Uppladdad bild överskrider gränsen",
     "description": "Meddelande om att uppladdad bild överskrider gränsen"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "Tvingad inbjudarens användar-ID. Om detta ID är inställt används det alltid som inbjudare oavsett om distributionslänken innehåller inviter_id-parametern.",
     "description": "Tips om tvingad inbjudar-ID"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Kryssa för de inloggningsmetoder som får användas på inloggningssidan. Minst en måste vara kvar, annars kan användaren inte logga in.",
+    "description": "Förklarande text för 'Aktiverade inloggningsmetoder' på fliken för inloggningsmetoder"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Den inloggningsmetod som är förvald när användaren går in på inloggningssidan, måste vara en av de aktiverade inloggningsmetoderna.",
+    "description": "Förklarande text för 'Standard inloggningsmetod' på fliken för inloggningsmetoder"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Minst en inloggningsmetod måste vara kvar",
+    "description": "Varningsmeddelande när användaren försöker avmarkera alla inloggningsmetoder"
   },
   "message.originTip": {
     "message": "Webbplatsens domän. Webbplatskonfigurationen är kopplad till domänen och kan inte ändras.",

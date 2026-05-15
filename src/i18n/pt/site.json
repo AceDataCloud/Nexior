@@ -47,6 +47,34 @@
     "message": "ID do convidador forçado",
     "description": "Exibido como o título na caixa de edição"
   },
+  "field.authEnabledProviders": {
+    "message": "Métodos de login habilitados",
+    "description": "Título da aba de Configurações do site / Métodos de login: marque os métodos de login que os usuários podem usar na página de login."
+  },
+  "field.authDefaultProvider": {
+    "message": "Método de login padrão",
+    "description": "Título da aba de Configurações do site / Métodos de login: método de login que está selecionado por padrão quando a página de login é aberta."
+  },
+  "field.authProvider_email": {
+    "message": "Email",
+    "description": "Nome do método de login: Email (Email + Senha ou Código de Verificação)"
+  },
+  "field.authProvider_phone": {
+    "message": "Número de telefone",
+    "description": "Nome do método de login: Número de telefone (Código de verificação por SMS)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Nome do método de login: Login de terceiros com Google"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Nome do método de login: Login de terceiros com GitHub"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Nome do método de login: Login de terceiros com WeChat"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Exibido como o título na caixa de edição"
@@ -251,6 +279,10 @@
     "message": "Digite o ID do convidador forçado",
     "description": "Exibido como título na caixa de edição"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Escolher método de login padrão",
+    "description": "Placeholder do campo de seleção do método de login padrão na aba de métodos de login."
+  },
   "message.uploadImageExceed": {
     "message": "Imagem enviada excede o limite",
     "description": "Mensagem de aviso quando a imagem enviada excede o limite"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID do usuário do convidador forçado. Se este ID for definido, será usado como convidador, independentemente de o link de distribuição incluir o parâmetro inviter_id.",
     "description": "Mensagem de dica para o ID do convidador forçado"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Marque os métodos de login que são permitidos na página de login. É necessário manter pelo menos um, caso contrário, os usuários não poderão fazer login.",
+    "description": "Texto explicativo para 'Métodos de login habilitados' na aba de métodos de login."
+  },
+  "message.authDefaultProviderTip": {
+    "message": "O método de login que está selecionado por padrão quando o usuário entra na página de login deve ser um dos métodos de login habilitados.",
+    "description": "Texto explicativo para 'Método de login padrão' na aba de métodos de login."
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "É necessário manter pelo menos um método de login",
+    "description": "Aviso exibido quando o usuário tenta desmarcar todos os métodos de login."
   },
   "message.originTip": {
     "message": "Domínio do site, a configuração do site está vinculada ao domínio e não pode ser alterada.",

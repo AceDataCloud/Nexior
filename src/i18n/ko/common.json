@@ -719,6 +719,10 @@
     "message": "기능 설정",
     "description": "설정 페이지의 기능 설정 부분 제목"
   },
+  "settings.auth": {
+    "message": "로그인 방법",
+    "description": "설정 페이지 사이드바의 '로그인 방법' 탭 제목—사이트에서 허용하는 로그인 방법 및 기본 로그인 방법을 설정합니다. 오직 사이트 관리자만 볼 수 있습니다."
+  },
   "settings.apiKey": {
     "message": "API 키",
     "description": "설정 페이지 사이드바의 API 키 레이블 - 사용자가 제공하는 상위 서비스 제공업체 API 키 관리"
@@ -895,6 +899,18 @@
     "message": "이전 페이지로 돌아가기",
     "description": "브라우징 기록의 이전 페이지로 돌아가는 버튼 텍스트"
   },
+  "title.apiCode": {
+    "message": "API code for this request",
+    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+  },
+  "message.viewCodeHint": {
+    "message": "Show API code for this request",
+    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+  },
+  "button.viewCode": {
+    "message": "View code",
+    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+  },
   "button.getApiKey": {
     "message": "Get an API key",
     "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
@@ -903,20 +919,8 @@
     "message": "API Platform",
     "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
   },
-  "button.viewCode": {
-    "message": "View code",
-    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
-  },
   "message.apiCodeIntro": {
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
-  },
-  "message.viewCodeHint": {
-    "message": "Show API code for this request",
-    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
-  },
-  "title.apiCode": {
-    "message": "API code for this request",
-    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
   }
 }
