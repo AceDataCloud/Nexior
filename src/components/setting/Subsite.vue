@@ -198,17 +198,34 @@ export default defineComponent({
         this.items = [];
         return;
       }
+      const zone = this.subdomainZone;
+      if (!zone) {
+        // Parent site hasn't been seeded with a subdomain zone yet —
+        // surface the empty state rather than dumping every site the
+        // user happens to own elsewhere.
+        this.items = [];
+        return;
+      }
       this.loading = true;
       try {
-        const { data } = await siteOperator.getAll({ user_id: userId });
-        const all = (data?.items || []) as ISite[];
-        const parentId = this.parentSite?.id;
-        this.items = all.filter((s) => {
-          if (s.id === parentId) return false;
-          const meta = (s.metadata || {}) as Record<string, unknown>;
-          if (parentId && meta.parent_site_id) return meta.parent_site_id === parentId;
-          return Boolean(s.origin && this.subdomainZone && s.origin.endsWith(`.${this.subdomainZone}`));
+        // Scope by DNS suffix: the leading dot excludes the parent
+        // (`studio.acedata.cloud`) while matching every subsite
+        // (`<slug>.studio.acedata.cloud`). This is the canonical filter
+        // because it works regardless of how the row was provisioned —
+        // the regular subsite path stamps `metadata.parent_site_id` but
+        // the superuser fast path doesn't, so the previous metadata-based
+        // filter silently hid superuser-created subsites.
+        const { data } = await siteOperator.getAll({
+          user_id: userId,
+          origin__endswith: `.${zone}`,
+          ordering: '-created_at'
         });
+        const items = (data?.items || []) as ISite[];
+        const parentId = this.parentSite?.id;
+        // Defensive: even though `.${zone}` excludes the parent on the
+        // backend, drop anything matching the parent id client-side too,
+        // so a non-canonical origin row (e.g. legacy seed data) can't leak in.
+        this.items = parentId ? items.filter((s) => s.id !== parentId) : items;
       } catch (e) {
         console.error('failed to load subsites', e);
         ElMessage.error(this.$t('subsite.message.loadFailed'));

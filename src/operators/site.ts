@@ -4,7 +4,9 @@ import { ISite, ISiteDetailResponse, ISiteListResponse } from '@/models';
 
 export interface ISiteQuery {
   origin?: string;
+  origin__endswith?: string;
   user_id?: string;
+  ordering?: string;
   offset?: number;
   limit?: number;
 }
