@@ -208,24 +208,18 @@ export default defineComponent({
       }
       this.loading = true;
       try {
-        // Scope by DNS suffix: the leading dot excludes the parent
-        // (`studio.acedata.cloud`) while matching every subsite
-        // (`<slug>.studio.acedata.cloud`). This is the canonical filter
-        // because it works regardless of how the row was provisioned —
-        // the regular subsite path stamps `metadata.parent_site_id` but
-        // the superuser fast path doesn't, so the previous metadata-based
-        // filter silently hid superuser-created subsites.
+        // Listing is fully scoped by (user_id, origin__endswith=.{zone}).
+        // The leading dot excludes the parent (`studio.acedata.cloud`) by
+        // DNS-hierarchy semantics and matches every subsite
+        // (`<slug>.studio.acedata.cloud`). No `parent_site_id` needed —
+        // the superuser fast path doesn't stamp `metadata.parent_site_id`
+        // anyway, which is why the previous metadata filter hid rows.
         const { data } = await siteOperator.getAll({
           user_id: userId,
           origin__endswith: `.${zone}`,
           ordering: '-created_at'
         });
-        const items = (data?.items || []) as ISite[];
-        const parentId = this.parentSite?.id;
-        // Defensive: even though `.${zone}` excludes the parent on the
-        // backend, drop anything matching the parent id client-side too,
-        // so a non-canonical origin row (e.g. legacy seed data) can't leak in.
-        this.items = parentId ? items.filter((s) => s.id !== parentId) : items;
+        this.items = (data?.items || []) as ISite[];
       } catch (e) {
         console.error('failed to load subsites', e);
         ElMessage.error(this.$t('subsite.message.loadFailed'));
