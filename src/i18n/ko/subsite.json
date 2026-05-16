@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "실패",
     "description": "Failed 상태 레이블"
+  },
+  "message.recordNameHint": {
+    "message": "팁: 대부분의 DNS 제공자(DNSPod, Cloudflare, Aliyun, Tencent Cloud 등)의 \"호스트\" / \"이름\" 필드는 서브도메인 접두사만 받습니다. 예를 들어 studio.your-brand.com을 바인딩할 때는 studio만 입력하고, 루트 도메인 자체(예: your-brand.com)를 바인딩할 때는 호스트로 @를 입력하세요. 전체 FQDN을 요구하는 제공자(AWS Route 53, Bind 등)는 위 표에 표시된 값을 그대로 받아들입니다.",
+    "description": "DNS 레코드 표 아래의 팁으로, 일반적인 DNS 제공자에서 호스트/이름 필드에 무엇을 입력해야 하는지(서브도메인 접두사 / @ / 전체 FQDN)를 설명합니다."
   }
 }

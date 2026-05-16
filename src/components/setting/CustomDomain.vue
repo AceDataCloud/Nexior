@@ -77,6 +77,9 @@
               </td>
             </tr>
           </table>
+          <p class="record-name-hint">
+            {{ $t('subsite.message.recordNameHint') }}
+          </p>
         </div>
       </div>
 
@@ -437,6 +440,12 @@ export default defineComponent({
             word-break: break-all;
           }
         }
+      }
+      .record-name-hint {
+        margin: 10px 0 0;
+        font-size: 12px;
+        line-height: 1.55;
+        color: var(--el-text-color-secondary);
       }
     }
   }

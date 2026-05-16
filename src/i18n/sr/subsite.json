@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Neuspešno",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "Савет: код већине DNS провајдера (DNSPod, Cloudflare, Aliyun, Tencent Cloud итд.) поље „Host\" / „Name\" прихвата само префикс поддомена. На пример, при повезивању studio.your-brand.com уносите само studio; при повезивању саме корене домене (нпр. your-brand.com) користите @ као хост. Провајдери који очекују пуни FQDN (AWS Route 53, Bind итд.) прихватају вредност приказану у горњој табели какву јесте.",
+    "description": "Савет испод табеле DNS записа који објашњава шта се уноси у поље Host/Name код уобичајених DNS провајдера (префикс поддомена / @ / пуни FQDN)."
   }
 }

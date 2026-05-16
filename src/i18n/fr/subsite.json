@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Échoué",
     "description": "Étiquette d'état échoué"
+  },
+  "message.recordNameHint": {
+    "message": "Astuce : Chez la plupart des fournisseurs DNS (DNSPod, Cloudflare, Aliyun, Tencent Cloud, etc.) le champ « Hôte » / « Nom » n'accepte que le préfixe du sous-domaine. Exemple : pour lier studio.your-brand.com, saisissez simplement studio ; pour lier le domaine racine lui-même (par ex. your-brand.com), utilisez @ comme hôte. Les services attendant un FQDN complet (AWS Route 53, Bind, etc.) acceptent tel quel la valeur affichée dans le tableau ci-dessus.",
+    "description": "Astuce sous le tableau d'enregistrements DNS qui explique ce qu'il faut saisir dans le champ Hôte/Nom selon les fournisseurs DNS courants (préfixe de sous-domaine / @ / FQDN complet)"
   }
 }

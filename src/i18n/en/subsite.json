@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Failed",
     "description": "Failed status label"
+  },
+  "message.recordNameHint": {
+    "message": "Tip: On most DNS providers (DNSPod, Cloudflare, Aliyun, Tencent Cloud, etc.) the \"Host\" / \"Name\" field only takes the subdomain prefix. For example, when binding studio.your-brand.com you enter just studio; when binding the root domain itself (e.g. your-brand.com), enter @ as the host. Providers that expect a full FQDN (AWS Route 53, Bind, etc.) accept the value shown in the table above as-is.",
+    "description": "Hint below the DNS record table explaining what to enter for the host/name field across common DNS providers (subdomain prefix / @ / full FQDN)"
   }
 }

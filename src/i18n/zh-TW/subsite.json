@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "失敗",
     "description": "Failed 狀態標籤"
+  },
+  "message.recordNameHint": {
+    "message": "提示：大多數 DNS 控制台（DNSPod / Cloudflare / 阿里雲 / 騰訊雲 等）的「主機記錄 / 記錄名稱」只需填子網域前綴。例如綁定 studio.your-brand.com 時填 studio；若綁定的是根網域本身（如 your-brand.com），主機記錄請填 @。AWS Route 53 / Bind 等需要完整網域的服務，按上表顯示的完整網域填寫即可。",
+    "description": "DNS 記錄表下方的提示，向使用者說明「記錄名稱」在不同 DNS 服務商通常應填寫的形式（子網域前綴 / @ / 完整網域）"
   }
 }

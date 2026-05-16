@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Fehlgeschlagen",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "Hinweis: Bei den meisten DNS-Anbietern (DNSPod, Cloudflare, Aliyun, Tencent Cloud usw.) erwartet das Feld „Host\" / „Name\" nur das Subdomain-Präfix. Beispiel: Beim Binden von studio.your-brand.com gibst du nur studio ein; beim Binden der Root-Domain selbst (z. B. your-brand.com) verwende @ als Host. Anbieter, die einen vollständigen FQDN erwarten (AWS Route 53, Bind usw.), akzeptieren den oben in der Tabelle angezeigten Wert unverändert.",
+    "description": "Hinweis unter der DNS-Eintragstabelle, der erklärt, was für das Host-/Name-Feld bei gängigen DNS-Anbietern einzutragen ist (Subdomain-Präfix / @ / vollständiger FQDN)"
   }
 }
