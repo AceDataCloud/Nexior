@@ -198,17 +198,28 @@ export default defineComponent({
         this.items = [];
         return;
       }
+      const zone = this.subdomainZone;
+      if (!zone) {
+        // Parent site hasn't been seeded with a subdomain zone yet —
+        // surface the empty state rather than dumping every site the
+        // user happens to own elsewhere.
+        this.items = [];
+        return;
+      }
       this.loading = true;
       try {
-        const { data } = await siteOperator.getAll({ user_id: userId });
-        const all = (data?.items || []) as ISite[];
-        const parentId = this.parentSite?.id;
-        this.items = all.filter((s) => {
-          if (s.id === parentId) return false;
-          const meta = (s.metadata || {}) as Record<string, unknown>;
-          if (parentId && meta.parent_site_id) return meta.parent_site_id === parentId;
-          return Boolean(s.origin && this.subdomainZone && s.origin.endsWith(`.${this.subdomainZone}`));
+        // Listing is fully scoped by (user_id, origin__endswith=.{zone}).
+        // The leading dot excludes the parent (`studio.acedata.cloud`) by
+        // DNS-hierarchy semantics and matches every subsite
+        // (`<slug>.studio.acedata.cloud`). No `parent_site_id` needed —
+        // the superuser fast path doesn't stamp `metadata.parent_site_id`
+        // anyway, which is why the previous metadata filter hid rows.
+        const { data } = await siteOperator.getAll({
+          user_id: userId,
+          origin__endswith: `.${zone}`,
+          ordering: '-created_at'
         });
+        this.items = (data?.items || []) as ISite[];
       } catch (e) {
         console.error('failed to load subsites', e);
         ElMessage.error(this.$t('subsite.message.loadFailed'));
