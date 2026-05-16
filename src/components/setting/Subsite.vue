@@ -98,8 +98,15 @@ import { Plus } from '@element-plus/icons-vue';
 import { siteOperator } from '@/operators';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import type { ISite } from '@/models';
+import { isOfficial, isSubOfficial } from '@/utils/is';
+import { BASE_HOST_HUB } from '@/constants';
 
 const SLUG_RE = /^(?!.*--)[a-z0-9][a-z0-9-]{1,30}[a-z0-9]$/;
+
+/** Maximum number of subsites a single user can spin up.  Mirrors the
+ *  default the backend's subsite-create path enforces when the parent
+ *  Site row hasn't been seeded with an explicit per-user quota. */
+const MAX_SUBSITES_PER_USER = 5;
 
 /**
  * Settings tab — manage white-label subsites for the parent (official)
@@ -153,28 +160,41 @@ export default defineComponent({
     };
   },
   computed: {
-    parentSite(): ISite | undefined {
-      return this.$store.state.site;
-    },
     user() {
       return this.$store.getters.user;
     },
+    /**
+     * DNS suffix new subsites are spawned under — always the canonical
+     * Hub host (`BASE_HOST_HUB`, e.g. `studio.acedata.cloud`). The backend's
+     * subsite-create path pins ``origin = f"{slug}.{parent.origin}"`` against
+     * this same value, so we don't need to fetch the parent Site row just to
+     * read it back from ``parent.features.subsite.subdomain_zone``.
+     */
     subdomainZone(): string {
-      const zone = this.parentSite?.features?.subsite?.subdomain_zone;
-      if (zone) return zone;
-      // Fall back to the bare current host so the create dialog can render
-      // even if `state.site` hasn't been hydrated with the subsite block yet.
-      if (typeof window !== 'undefined' && window.location?.host) {
-        return window.location.host.split(':')[0];
-      }
-      return this.parentSite?.origin || '';
+      return BASE_HOST_HUB;
     },
-    maxSubsitesPerUser(): number {
-      const max = this.parentSite?.features?.subsite?.max_subsites_per_user;
-      return typeof max === 'number' && max > 0 ? max : 5;
-    },
+    /**
+     * Whether the current user can spin up another subsite right now.
+     *
+     *   * Must be on the canonical Hub host (`isOfficial()`),
+     *   * NOT on a subsite under it (`!isSubOfficial()`) — subsites can't
+     *     themselves spawn further subsites,
+     *   * Must be signed in (`user.id`),
+     *   * Must be under the per-user quota.
+     *
+     * Mirrors PlatformFrontend's Sites console gate; replaces the previous
+     * `parent.features.subsite.{enabled,subdomain_zone}` lookup which required
+     * fetching the parent Site row just to gate one button + read back a
+     * value (`BASE_HOST_HUB`) that's already a build-time constant on this
+     * side of the wire.
+     */
     canCreate(): boolean {
-      return Boolean(this.subdomainZone) && Boolean(this.user?.id) && this.items.length < this.maxSubsitesPerUser;
+      return (
+        isOfficial() &&
+        !isSubOfficial() &&
+        Boolean(this.user?.id) &&
+        this.items.length < MAX_SUBSITES_PER_USER
+      );
     }
   },
   watch: {
@@ -200,9 +220,10 @@ export default defineComponent({
       }
       const zone = this.subdomainZone;
       if (!zone) {
-        // Parent site hasn't been seeded with a subdomain zone yet —
-        // surface the empty state rather than dumping every site the
-        // user happens to own elsewhere.
+        // SSR / pre-mount path — BASE_HOST_HUB is a constant so this branch
+        // is effectively dead, but keep the guard cheap so we never POST
+        // a query with a blank suffix filter and end up listing every site
+        // the user owns under any host.
         this.items = [];
         return;
       }
