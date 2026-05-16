@@ -165,7 +165,7 @@ import {
   UploadFiles
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import Recorder from './model/Recorder.vue';
 
 const MAX_AUDIO_SIZE_BYTES = 50 * 1024 * 1024;
@@ -227,6 +227,7 @@ export default defineComponent({
     FontAwesomeIcon,
     Recorder
   },
+  mixins: [uploadTrackerMixin],
   emits: ['create'],
   data(): IData {
     return {

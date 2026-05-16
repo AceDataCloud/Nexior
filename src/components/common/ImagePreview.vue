@@ -3,15 +3,12 @@
     class="image w-[50px] h-[50px] relative rounded-[var(--el-border-radius-base)] overflow-hidden shadow-sm bg-[var(--el-fill-color-lighter)]"
   >
     <img class="w-full h-full object-cover" :src="url" :alt="name" />
-    <div
-      v-show="percentage && percentage < 100"
-      class="overlay absolute inset-0 bg-[var(--el-mask-color)] backdrop-blur-[1px]"
-    ></div>
+    <div v-show="isUploading" class="overlay absolute inset-0 bg-[var(--el-mask-color)] backdrop-blur-[1px]"></div>
     <el-progress
-      v-show="percentage && percentage < 100"
+      v-show="isUploading"
       type="circle"
       :stroke-width="4"
-      :percentage="percentage"
+      :percentage="displayPercentage"
       :width="34"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34px] h-[34px] z-[10] m-auto text-[12px]"
     />
@@ -55,6 +52,14 @@ export default defineComponent({
       default: true
     }
   },
-  emits: ['remove']
+  emits: ['remove'],
+  computed: {
+    isUploading(): boolean {
+      return typeof this.percentage === 'number' && this.percentage < 100;
+    },
+    displayPercentage(): number {
+      return typeof this.percentage === 'number' ? this.percentage : 0;
+    }
+  }
 });
 </script>

@@ -32,6 +32,7 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('qrart');
 
@@ -50,6 +51,7 @@ export default defineComponent({
     ApplicationStatus,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -191,6 +193,15 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const request = {
         type: this.config?.type,
         content: this.config?.content,

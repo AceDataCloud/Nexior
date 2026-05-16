@@ -17,10 +17,16 @@ import { nanobananaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { INanobananaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NANO_BANANA_PRO, getWebhookCallbackUrl } from '@/constants';
+import {
+  ERROR_CODE_USED_UP,
+  NANOBANANA_DEFAULT_RESOLUTION,
+  NANOBANANA_MODEL_NANO_BANANA_PRO,
+  getWebhookCallbackUrl
+} from '@/constants';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('nanobanana');
 
@@ -37,6 +43,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -139,6 +146,15 @@ export default defineComponent({
       });
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const cfg: any = { ...(this.config || {}) };
       const hasReferenceImages = Array.isArray(cfg?.image_urls) && cfg.image_urls.length > 0;
       delete cfg.action;

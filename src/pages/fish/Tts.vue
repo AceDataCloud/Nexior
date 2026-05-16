@@ -26,6 +26,7 @@ import { IFishTask, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL, getWebhookCallbackUrl } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('fish');
 
@@ -44,6 +45,7 @@ export default defineComponent({
     RecentPanel,
     TabSwitcher
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -141,6 +143,15 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const cfg = this.config ?? {};
       const text = cfg.text?.trim();
       if (!text) {

@@ -40,7 +40,7 @@
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElRadioGroup, ElRadioButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { IProducerUploadRequest } from '@/models';
 import { producerOperator } from '@/operators';
@@ -62,6 +62,7 @@ export default defineComponent({
     InfoIcon,
     FontAwesomeIcon
   },
+  mixins: [uploadTrackerMixin],
   emits: ['change'],
   data(): IData {
     return {
