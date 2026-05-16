@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "失败",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "提示：大多数 DNS 控制台（DNSPod / Cloudflare / 阿里云 / 腾讯云 等）的「主机记录 / 记录名称」只需填子域名前缀。例如绑定 studio.your-brand.com 时填 studio；如果绑定的是根域名本身（如 your-brand.com），主机记录请填 @。AWS Route 53 / Bind 等需要完整域名的服务，按上表显示的完整域名填写即可。",
+    "description": "DNS 记录表下方的提示，向用户解释「记录名称」在不同 DNS 服务商通常应填写的形式（子域前缀 / @ / 完整域名）"
   }
 }

@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Falhou",
     "description": "Etiqueta de estado de falha"
+  },
+  "message.recordNameHint": {
+    "message": "Dica: na maioria dos provedores de DNS (DNSPod, Cloudflare, Aliyun, Tencent Cloud, etc.) o campo \"Host\" / \"Nome\" aceita apenas o prefixo do subdomínio. Por exemplo, ao vincular studio.your-brand.com você insere apenas studio; ao vincular o domínio raiz (ex.: your-brand.com), use @ como host. Provedores que esperam um FQDN completo (AWS Route 53, Bind, etc.) aceitam o valor mostrado na tabela acima como está.",
+    "description": "Dica abaixo da tabela de registros DNS explicando o que digitar no campo Host/Nome para provedores DNS comuns (prefixo de subdomínio / @ / FQDN completo)"
   }
 }

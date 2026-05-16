@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Niepowodzenie",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "Wskazówka: u większości dostawców DNS (DNSPod, Cloudflare, Aliyun, Tencent Cloud itd.) pole „Host\" / „Nazwa\" przyjmuje tylko przedrostek subdomeny. Na przykład przy podpinaniu studio.your-brand.com wpisujesz tylko studio; przy podpinaniu samej domeny głównej (np. your-brand.com) użyj jako hosta znaku @. Dostawcy oczekujący pełnego FQDN (AWS Route 53, Bind itp.) przyjmują wartość pokazaną w powyższej tabeli bez zmian.",
+    "description": "Wskazówka pod tabelą rekordów DNS wyjaśniająca, co należy wpisać w polu Host/Nazwa u typowych dostawców DNS (przedrostek subdomeny / @ / pełny FQDN)."
   }
 }

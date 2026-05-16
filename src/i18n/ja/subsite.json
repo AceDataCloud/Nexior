@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "失敗",
     "description": "Failed 状態ラベル"
+  },
+  "message.recordNameHint": {
+    "message": "ヒント: 多くの DNS プロバイダー（DNSPod / Cloudflare / Aliyun / Tencent Cloud など）の「ホスト」「名前」欄にはサブドメイン部分のみを入力します。たとえば studio.your-brand.com をバインドするときは studio とだけ入力します。ルートドメインそのもの（例: your-brand.com）をバインドする場合は、ホストに @ を入力してください。FQDN 全体を要求するサービス（AWS Route 53、Bind など）では、上の表に表示された値をそのまま入力してください。",
+    "description": "DNS レコード表の下に表示されるヒント。一般的な DNS プロバイダーで「ホスト/名前」欄に入力すべき値（サブドメイン接頭辞 / @ / 完全な FQDN）を説明する。"
   }
 }

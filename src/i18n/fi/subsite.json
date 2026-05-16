@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Epäonnistui",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "Vinkki: Useimmissa DNS-palveluntarjoajissa (DNSPod, Cloudflare, Aliyun, Tencent Cloud jne.) \"Host\" / \"Name\" -kenttä hyväksyy vain alidomainin etuliitteen. Esimerkiksi sidottaessa studio.your-brand.com syötät vain studio; sidottaessa juuritoimialuetta itseään (esim. your-brand.com) käytä isäntänä @-merkkiä. Palvelut, jotka odottavat täydellistä FQDN:ää (AWS Route 53, Bind jne.) hyväksyvät yllä olevassa taulukossa näkyvän arvon sellaisenaan.",
+    "description": "DNS-tietuetaulukon alla oleva vinkki, joka selittää mitä Host/Name-kenttään syötetään yleisillä DNS-palveluntarjoajilla (aliverkkotunnuksen etuliite / @ / täysi FQDN)."
   }
 }

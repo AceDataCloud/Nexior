@@ -214,5 +214,9 @@
   "status.failed": {
     "message": "Misslyckades",
     "description": "Failed 状态标签"
+  },
+  "message.recordNameHint": {
+    "message": "Tips: Hos de flesta DNS-leverantörer (DNSPod, Cloudflare, Aliyun, Tencent Cloud m.fl.) tar fältet ”Host” / ”Name” bara emot subdomänprefixet. Om du t.ex. binder studio.your-brand.com anger du bara studio; vid bindning av själva rotdomänen (t.ex. your-brand.com) använder du @ som värd. Leverantörer som förväntar sig ett fullständigt FQDN (AWS Route 53, Bind m.fl.) accepterar värdet som visas i tabellen ovan som det är.",
+    "description": "Tips under DNS-posttabellen som förklarar vad du anger i fältet Host/Name hos vanliga DNS-leverantörer (subdomänprefix / @ / fullständig FQDN)."
   }
 }
