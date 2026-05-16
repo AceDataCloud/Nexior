@@ -4,6 +4,13 @@ on:
   pull_request:
     branches: [main]
 
+# Cancel any in-flight `check` run on the same PR branch when a new commit
+# lands. Without this, every PR push leaves the previous check still running
+# to completion — fine for safety, costly for the org Actions minute budget.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
