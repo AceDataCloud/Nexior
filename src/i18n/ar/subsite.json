@@ -11,6 +11,10 @@
     "message": "زيارة الموقع الفرعي الآن",
     "description": "عنوان نافذة الحوار للسؤال عما إذا كان يجب الانتقال بعد النجاح في الإنشاء"
   },
+  "title.openSite": {
+    "message": "فتح الموقع الفرعي",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "بادئة اسم النطاق الفرعي",
     "description": "عنوان حقل إدخال slug للموقع الفرعي"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "اسم نطاق الموقع الفرعي",
     "description": "عمود اسم النطاق في قائمة المواقع الفرعية"
+  },
+  "field.defaultLabel": {
+    "message": "افتراضي",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "مخصص",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "عنوان الموقع الفرعي",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "تم إنشاء الموقع الفرعي {origin}. هل ترغب في فتحه الآن لمتابعة الإعداد؟",
     "description": "هل تفتح الآن بعد الإنشاء"
+  },
+  "message.openSiteHint": {
+    "message": "اختر العنوان الذي تريد فتحه. سنفتحه لك في علامة تبويب جديدة.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "اسم النطاق المخصص لـ {origin}",

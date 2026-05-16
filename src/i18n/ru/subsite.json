@@ -11,6 +11,10 @@
     "message": "Перейти к поддомену",
     "description": "Заголовок диалогового окна с вопросом о переходе после успешного создания"
   },
+  "title.openSite": {
+    "message": "Открыть подсайт",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Префикс поддомена",
     "description": "Заголовок поля ввода slug для поддомена"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Домен поддомена",
     "description": "Столбец доменов в списке поддоменов"
+  },
+  "field.defaultLabel": {
+    "message": "По умолчанию",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Свой",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Заголовок поддомена",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Поддомен {origin} создан. Открыть его для дальнейшей настройки?",
     "description": "Вопрос о немедленном открытии после создания"
+  },
+  "message.openSiteHint": {
+    "message": "Выберите, какой адрес открыть. Мы откроем его для вас в новой вкладке.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "Пользовательские домены для {origin}",

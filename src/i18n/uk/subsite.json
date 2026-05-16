@@ -11,6 +11,10 @@
     "message": "Відкрити підрозділ зараз",
     "description": "Заголовок діалогового вікна, що запитує, чи потрібно перейти до нового підрозділу після успішного створення"
   },
+  "title.openSite": {
+    "message": "Відкрити підсайт",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Префікс піддомену",
     "description": "Заголовок поля вводу slug для підрозділу"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Домен підрозділу",
     "description": "Стовпець доменів у списку підрозділів"
+  },
+  "field.defaultLabel": {
+    "message": "За замовчуванням",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Власне",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Заголовок підрозділу",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Підрозділ {origin} було створено. Чи потрібно відкрити його зараз для продовження налаштування?",
     "description": "Чи потрібно відкрити відразу після створення"
+  },
+  "message.openSiteHint": {
+    "message": "Виберіть, яку адресу відкрити. Ми відкриємо її для вас у новій вкладці.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "Користувацький домен для {origin}",

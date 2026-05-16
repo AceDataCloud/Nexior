@@ -11,6 +11,10 @@
     "message": "즉시 분사이트 방문",
     "description": "새로 생성된 후 즉시 이동할지 묻는 대화 상자 제목"
   },
+  "title.openSite": {
+    "message": "서브사이트 열기",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "서브 도메인 접두사",
     "description": "분사이트 slug 입력란 제목"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "분사이트 도메인",
     "description": "분사이트 목록의 도메인 열"
+  },
+  "field.defaultLabel": {
+    "message": "기본",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "사용자 지정",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "분사이트 제목",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "분사이트 {origin}가 생성되었습니다. 지금 열어 계속 구성하시겠습니까?",
     "description": "생성 후 즉시 열지 여부"
+  },
+  "message.openSiteHint": {
+    "message": "열려는 URL을 선택하세요. 새 탭에서 열어 드립니다.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "{origin}의 사용자 정의 도메인",

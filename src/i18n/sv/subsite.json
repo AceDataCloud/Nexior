@@ -11,6 +11,10 @@
     "message": "Öppna underdomän nu",
     "description": "Rubrik för dialogrutan som frågar om man vill gå till den nya underdomänen efter skapande"
   },
+  "title.openSite": {
+    "message": "Öppna underwebbplats",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Underdomänprefix",
     "description": "Rubrik för inmatningsfältet för slug"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Underdomänens domännamn",
     "description": "Domännamns kolumn i underdomänlistan"
+  },
+  "field.defaultLabel": {
+    "message": "Standard",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Anpassad",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Underdomänens titel",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Underdomänen {origin} har skapats. Vill du öppna den nu för att fortsätta konfigurera?",
     "description": "Fråga om att öppna direkt efter skapande"
+  },
+  "message.openSiteHint": {
+    "message": "Välj vilken adress som ska öppnas. Vi öppnar den åt dig i en ny flik.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "Anpassade domännamn för {origin}",

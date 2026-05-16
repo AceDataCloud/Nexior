@@ -11,6 +11,10 @@
     "message": "Odwiedź subdomenę teraz",
     "description": "Tytuł okna dialogowego pytającego, czy przejść do nowo utworzonej subdomeny"
   },
+  "title.openSite": {
+    "message": "Otwórz podstronę",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Prefiks subdomeny",
     "description": "Tytuł pola wejściowego slug dla subdomeny"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Domena subdomeny",
     "description": "Kolumna domeny w liście subdomen"
+  },
+  "field.defaultLabel": {
+    "message": "Domyślny",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Niestandardowy",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Tytuł subdomeny",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Subdomena {origin} została utworzona. Czy chcesz teraz ją otworzyć, aby kontynuować konfigurację?",
     "description": "Czy otworzyć od razu po utworzeniu"
+  },
+  "message.openSiteHint": {
+    "message": "Wybierz, który adres otworzyć. Otworzymy go dla Ciebie w nowej karcie.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "Dostosowana domena dla {origin}",
