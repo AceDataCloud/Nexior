@@ -6,8 +6,12 @@ on:
     paths-ignore:
       - .gitignore
       - README.md
+      - SECURITY.md
+      - LICENSE
       - CHANGELOG.md
       - CHANGELOG.json
+      - 'docs/**'
+      - '.vscode/**'
       - '.github/ISSUE_TEMPLATE/**'
   workflow_dispatch:
 
