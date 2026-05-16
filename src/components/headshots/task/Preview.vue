@@ -242,6 +242,11 @@ $left-width: 70px;
         &.info {
           border-color: var(--el-color-info);
         }
+        // Drop the trailing `mb-2` on whichever `<p>` ends up rendered
+        // last (trace_id / elapsed are conditional — e.g. pending tasks).
+        :deep(p:last-child) {
+          margin-bottom: 0;
+        }
       }
     }
 

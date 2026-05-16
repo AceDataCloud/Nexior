@@ -155,6 +155,11 @@ $left-width: 70px;
     .content {
       word-break: break-word;
       overflow-wrap: anywhere;
+      // Drop the trailing `mb-2` on whichever `<p>` ends up rendered
+      // last (elapsed / reference_id are conditional).
+      .el-alert :deep(p:last-child) {
+        margin-bottom: 0;
+      }
     }
   }
 }
