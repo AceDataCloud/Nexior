@@ -47,6 +47,34 @@
     "message": "ID del invitador forzado",
     "description": "Texto que se muestra en el cuadro de edición"
   },
+  "field.authEnabledProviders": {
+    "message": "Métodos de inicio de sesión habilitados",
+    "description": "Título de la pestaña de configuración del sitio / Método de inicio de sesión: seleccione los métodos de inicio de sesión que se permiten a los usuarios en la página de inicio de sesión."
+  },
+  "field.authDefaultProvider": {
+    "message": "Método de inicio de sesión predeterminado",
+    "description": "Título de la pestaña de configuración del sitio / Método de inicio de sesión: método de inicio de sesión que está seleccionado por defecto cuando se abre la página de inicio de sesión."
+  },
+  "field.authProvider_email": {
+    "message": "Correo electrónico",
+    "description": "Nombre del método de inicio de sesión: correo electrónico (correo electrónico + contraseña o código de verificación)."
+  },
+  "field.authProvider_phone": {
+    "message": "Número de teléfono",
+    "description": "Nombre del método de inicio de sesión: número de teléfono (código de verificación por SMS)."
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Nombre del método de inicio de sesión: inicio de sesión de terceros con Google."
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Nombre del método de inicio de sesión: inicio de sesión de terceros con GitHub."
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Nombre del método de inicio de sesión: inicio de sesión de terceros con WeChat."
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Texto que se muestra en el cuadro de edición"
@@ -251,6 +279,10 @@
     "message": "Ingrese el ID del invitador forzado",
     "description": "Texto mostrado en el cuadro de edición"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Seleccione el método de inicio de sesión predeterminado",
+    "description": "Placeholder del cuadro desplegable del método de inicio de sesión predeterminado en la pestaña de métodos de inicio de sesión."
+  },
   "message.uploadImageExceed": {
     "message": "La imagen subida excede el límite",
     "description": "Mensaje de advertencia cuando la imagen subida excede el límite"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID de usuario del invitador forzado. Si se establece este ID, se usará como invitador sin importar si el enlace de distribución incluye el parámetro inviter_id.",
     "description": "Sugerencia para el ID del invitador forzado"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Seleccione los métodos de inicio de sesión que se permiten en la página de inicio de sesión. Debe haber al menos uno, de lo contrario, los usuarios no podrán iniciar sesión.",
+    "description": "Texto explicativo en la pestaña de métodos de inicio de sesión sobre 'Métodos de inicio de sesión habilitados'."
+  },
+  "message.authDefaultProviderTip": {
+    "message": "El método de inicio de sesión que está seleccionado por defecto cuando el usuario entra en la página de inicio de sesión, debe ser uno de los métodos de inicio de sesión habilitados.",
+    "description": "Texto explicativo en la pestaña de métodos de inicio de sesión sobre 'Método de inicio de sesión predeterminado'."
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Se debe mantener al menos un método de inicio de sesión",
+    "description": "Advertencia que aparece cuando el usuario intenta desmarcar todos los métodos de inicio de sesión."
   },
   "message.originTip": {
     "message": "Dominio del sitio. La configuración del sitio está vinculada al dominio y no se puede cambiar.",

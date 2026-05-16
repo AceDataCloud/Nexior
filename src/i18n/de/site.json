@@ -47,6 +47,34 @@
     "message": "Zwangseinladungs-ID",
     "description": "Anzeige im Bearbeitungsfeld"
   },
+  "field.authEnabledProviders": {
+    "message": "Aktivierte Anmeldemethoden",
+    "description": "Titel des Tabs 'Anmeldemethoden' in den Seiteneinstellungen: Auswahl der erlaubten Anmeldemethoden für Benutzer auf der Anmeldeseite."
+  },
+  "field.authDefaultProvider": {
+    "message": "Standard-Anmeldemethode",
+    "description": "Titel des Tabs 'Anmeldemethoden' in den Seiteneinstellungen: Die beim Öffnen der Anmeldeseite standardmäßig ausgewählte Anmeldemethode."
+  },
+  "field.authProvider_email": {
+    "message": "E-Mail",
+    "description": "Name der Anmeldemethode: E-Mail (E-Mail + Passwort oder Bestätigungscode)."
+  },
+  "field.authProvider_phone": {
+    "message": "Telefonnummer",
+    "description": "Name der Anmeldemethode: Telefonnummer (SMS-Bestätigungscode)."
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Name der Anmeldemethode: Google-Third-Party-Anmeldung."
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Name der Anmeldemethode: GitHub-Third-Party-Anmeldung."
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Name der Anmeldemethode: WeChat-Third-Party-Anmeldung."
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Anzeige im Bearbeitungsfeld"
@@ -251,6 +279,10 @@
     "message": "Bitte zwingende Einladender ID eingeben",
     "description": "Anzeige im Bearbeitungsfeld Titel"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Standard-Anmeldemethode auswählen",
+    "description": "Platzhalter im Dropdown für die Standard-Anmeldemethode im Tab Anmeldemethoden."
+  },
   "message.uploadImageExceed": {
     "message": "Bildüberschreitung des Upload-Limits",
     "description": "Hinweis, wenn das hochgeladene Bild das Limit überschreitet"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "Benutzer-ID des zwingenden Einladenden. Wenn diese ID festgelegt ist, wird unabhängig davon, ob der Verteilungslink den inviter_id Parameter enthält, diese Benutzer-ID als Einladender verwendet.",
     "description": "Hinweis zur zwingenden Einladender ID"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Wählen Sie die Anmeldemethoden aus, die auf der Anmeldeseite verwendet werden dürfen. Es muss mindestens eine Methode aktiviert sein, sonst können Benutzer sich nicht anmelden.",
+    "description": "Erklärungstext für 'Aktivierte Anmeldemethoden' im Tab Anmeldemethoden."
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Die beim Betreten der Anmeldeseite standardmäßig ausgewählte Anmeldemethode muss eine der aktivierten Anmeldemethoden sein.",
+    "description": "Erklärungstext für 'Standard-Anmeldemethode' im Tab Anmeldemethoden."
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Es muss mindestens eine Anmeldemethode aktiviert bleiben.",
+    "description": "Warnhinweis, wenn der Benutzer versucht, alle Anmeldemethoden abzuwählen."
   },
   "message.originTip": {
     "message": "Domain der Seite, die Konfiguration der Seite ist an die Domain gebunden und kann nicht geändert werden.",

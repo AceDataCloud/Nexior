@@ -719,6 +719,10 @@
     "message": "Configurações de Funcionalidade",
     "description": "Título da seção de configurações de funcionalidade na página de configurações"
   },
+  "settings.auth": {
+    "message": "Método de Login",
+    "description": "Título da aba 'Método de Login' na barra lateral da página de configurações — configura os métodos de login permitidos e o método de login padrão do site, visível apenas para administradores do site."
+  },
   "settings.apiKey": {
     "message": "Chave da API",
     "description": "Rótulo da Chave da API na barra lateral da página de configurações - gerenciamento da Chave da API do provedor de serviços upstream (BYOK)"
@@ -895,6 +899,18 @@
     "message": "Voltar à Página Anterior",
     "description": "Texto do botão para voltar à página anterior no histórico de navegação"
   },
+  "title.apiCode": {
+    "message": "API code for this request",
+    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+  },
+  "message.viewCodeHint": {
+    "message": "Show API code for this request",
+    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+  },
+  "button.viewCode": {
+    "message": "View code",
+    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+  },
   "button.getApiKey": {
     "message": "Get an API key",
     "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
@@ -903,20 +919,8 @@
     "message": "API Platform",
     "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
   },
-  "button.viewCode": {
-    "message": "View code",
-    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
-  },
   "message.apiCodeIntro": {
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
-  },
-  "message.viewCodeHint": {
-    "message": "Show API code for this request",
-    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
-  },
-  "title.apiCode": {
-    "message": "API code for this request",
-    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
   }
 }

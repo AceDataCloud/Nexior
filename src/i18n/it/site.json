@@ -47,6 +47,34 @@
     "message": "ID invitante obbligatorio",
     "description": "Mostrato nel campo di modifica del titolo"
   },
+  "field.authEnabledProviders": {
+    "message": "Metodi di accesso abilitati",
+    "description": "Titolo della scheda Impostazioni sito / Metodo di accesso: seleziona i metodi di accesso che gli utenti possono utilizzare nella pagina di accesso"
+  },
+  "field.authDefaultProvider": {
+    "message": "Metodo di accesso predefinito",
+    "description": "Titolo della scheda Impostazioni sito / Metodo di accesso: metodo di accesso predefinito selezionato quando si apre la pagina di accesso"
+  },
+  "field.authProvider_email": {
+    "message": "Email",
+    "description": "Nome del metodo di accesso: Email (Email + Password o Codice di verifica)"
+  },
+  "field.authProvider_phone": {
+    "message": "Numero di telefono",
+    "description": "Nome del metodo di accesso: Numero di telefono (Codice di verifica SMS)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Nome del metodo di accesso: accesso di terze parti tramite Google"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Nome del metodo di accesso: accesso di terze parti tramite GitHub"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Nome del metodo di accesso: accesso di terze parti tramite WeChat"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Mostrato nel campo di modifica del titolo"
@@ -251,6 +279,10 @@
     "message": "Inserisci l'ID dell'invitante obbligatorio",
     "description": "Mostrato come titolo nella casella di modifica"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Seleziona il metodo di accesso predefinito",
+    "description": "Placeholder per il menu a discesa del metodo di accesso predefinito nella scheda Metodo di accesso"
+  },
   "message.uploadImageExceed": {
     "message": "Immagine caricata oltre il limite",
     "description": "Messaggio di avviso quando l'immagine caricata supera il limite"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID utente dell'invitante obbligatorio. Se questo ID è impostato, verrà utilizzato come invitante indipendentemente dal fatto che il link di distribuzione includa o meno il parametro inviter_id.",
     "description": "Messaggio di avviso per l'ID dell'invitante obbligatorio"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Seleziona i metodi di accesso consentiti nella pagina di accesso del sito. È necessario mantenere almeno uno, altrimenti gli utenti non potranno accedere.",
+    "description": "Testo descrittivo per 'Metodi di accesso abilitati' nella scheda Metodo di accesso"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Il metodo di accesso predefinito selezionato quando l'utente entra nella pagina di accesso deve essere uno dei metodi di accesso abilitati.",
+    "description": "Testo descrittivo per 'Metodo di accesso predefinito' nella scheda Metodo di accesso"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "È necessario mantenere almeno un metodo di accesso",
+    "description": "Avviso quando l'utente tenta di deselezionare tutti i metodi di accesso"
   },
   "message.originTip": {
     "message": "Dominio del sito. La configurazione del sito è legata al dominio e non può essere modificata.",

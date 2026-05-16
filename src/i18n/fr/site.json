@@ -47,6 +47,34 @@
     "message": "ID de l'inviteur obligatoire",
     "description": "Affiché comme titre dans la zone d'édition"
   },
+  "field.authEnabledProviders": {
+    "message": "Méthodes de connexion activées",
+    "description": "Titre de l'onglet Paramètres du site / Méthode de connexion : cochez les méthodes de connexion autorisées pour les utilisateurs sur la page de connexion"
+  },
+  "field.authDefaultProvider": {
+    "message": "Méthode de connexion par défaut",
+    "description": "Titre de l'onglet Paramètres du site / Méthode de connexion : méthode de connexion par défaut sélectionnée lorsque la page de connexion s'ouvre"
+  },
+  "field.authProvider_email": {
+    "message": "Email",
+    "description": "Nom de la méthode de connexion : Email (Email + mot de passe ou code de vérification)"
+  },
+  "field.authProvider_phone": {
+    "message": "Numéro de téléphone",
+    "description": "Nom de la méthode de connexion : Numéro de téléphone (code de vérification par SMS)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Nom de la méthode de connexion : Connexion tierce Google"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Nom de la méthode de connexion : Connexion tierce GitHub"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Nom de la méthode de connexion : Connexion tierce WeChat"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Affiché comme titre dans la zone d'édition"
@@ -251,6 +279,10 @@
     "message": "Veuillez entrer l'ID de l'inviteur obligatoire",
     "description": "Affiché comme titre dans la boîte d'édition"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Choisir la méthode de connexion par défaut",
+    "description": "Placeholder pour le menu déroulant de la méthode de connexion par défaut dans l'onglet Méthode de connexion"
+  },
   "message.uploadImageExceed": {
     "message": "Téléchargement d'image dépassant la limite",
     "description": "Alerte lorsque le téléchargement d'image dépasse la limite"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID utilisateur de l'inviteur obligatoire. Si cet ID est défini, il sera utilisé comme invité, que le lien de distribution contienne ou non le paramètre inviter_id.",
     "description": "Alerte pour l'ID de l'inviteur obligatoire"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Cochez les méthodes de connexion autorisées sur la page de connexion. Au moins une doit rester activée, sinon les utilisateurs ne pourront pas se connecter.",
+    "description": "Texte explicatif pour 'Méthodes de connexion activées' dans l'onglet Méthode de connexion"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "La méthode de connexion par défaut sélectionnée lorsque l'utilisateur accède à la page de connexion doit être l'une des méthodes de connexion activées.",
+    "description": "Texte explicatif pour 'Méthode de connexion par défaut' dans l'onglet Méthode de connexion"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Au moins une méthode de connexion doit être conservée",
+    "description": "Alerte lorsque l'utilisateur essaie de décocher toutes les méthodes de connexion"
   },
   "message.originTip": {
     "message": "Domaine du site, la configuration du site est liée au domaine et ne peut pas être modifiée.",

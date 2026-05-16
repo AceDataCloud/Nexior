@@ -47,6 +47,34 @@
     "message": "Pakotettu kutsuja ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
+  "field.authEnabledProviders": {
+    "message": "Käytettävissä olevat kirjautumistavat",
+    "description": "Sivuston asetukset / Kirjautumistapa-välilehden otsikko: valitse sallitut kirjautumistavat, joita käyttäjät voivat käyttää kirjautumissivulla"
+  },
+  "field.authDefaultProvider": {
+    "message": "Oletusarvoinen kirjautumistapa",
+    "description": "Sivuston asetukset / Kirjautumistapa-välilehden otsikko: kirjautumissivun avautuessa oletuksena valittu kirjautumistapa"
+  },
+  "field.authProvider_email": {
+    "message": "Sähköposti",
+    "description": "Kirjautumistavan nimi: sähköposti (sähköposti + salasana tai vahvistuskoodi)"
+  },
+  "field.authProvider_phone": {
+    "message": "Puhelinnumero",
+    "description": "Kirjautumistavan nimi: puhelinnumero (tekstiviestivahvistus)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Kirjautumistavan nimi: Google kolmannen osapuolen kirjautuminen"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Kirjautumistavan nimi: GitHub kolmannen osapuolen kirjautuminen"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Kirjautumistavan nimi: WeChat kolmannen osapuolen kirjautuminen"
+  },
   "field.featuresChat": {
     "message": "Chat",
     "description": "Näytetään muokkausruudun otsikkona"
@@ -251,6 +279,10 @@
     "message": "Syötä pakollisen kutsujan ID",
     "description": "Näytetään muokkausruudun otsikkona"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Valitse oletusarvoinen kirjautumistapa",
+    "description": "Kirjautumistapa-välilehden oletusarvoisen kirjautumistavan alasvetovalikon placeholder"
+  },
   "message.uploadImageExceed": {
     "message": "Kuvan lataus ylittää rajan",
     "description": "Kuvan lataus ylittää rajan ilmoitus"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "Pakollisen kutsujan käyttäjä ID, jos tämä ID on asetettu, käytetään tätä käyttäjä ID:tä kutsujana riippumatta siitä, sisältääkö jakolinkki inviter_id-parametrin.",
     "description": "Pakollisen kutsujan ID:n ohje"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Valitse sallitut kirjautumistavat, joita voi käyttää tällä sivustolla. Yksi on pakollinen, muuten käyttäjä ei voi kirjautua sisään.",
+    "description": "Kirjautumistapa-välilehden 'Käytettävissä olevat kirjautumistavat' seliteteksti"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Oletusarvoinen kirjautumistapa, joka on valittuna, kun käyttäjä saapuu kirjautumissivulle. Sen on oltava yksi sallitusta kirjautumistavasta.",
+    "description": "Kirjautumistapa-välilehden 'Oletusarvoinen kirjautumistapa' seliteteksti"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Yksi kirjautumistapa on pakollinen",
+    "description": "Varoitusviesti, kun käyttäjä yrittää poistaa valinnan kaikista kirjautumistavoista"
   },
   "message.originTip": {
     "message": "Sivuston verkkotunnus, sivuston asetukset on sidottu verkkotunnukseen, verkkotunnusta ei voi muuttaa.",

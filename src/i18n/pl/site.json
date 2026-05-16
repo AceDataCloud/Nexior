@@ -47,6 +47,34 @@
     "message": "ID wymuszonego zapraszającego",
     "description": "Wyświetlane w tytule edytora"
   },
+  "field.authEnabledProviders": {
+    "message": "Włączone sposoby logowania",
+    "description": "Tytuł zakładki Ustawienia witryny / Sposób logowania: zaznacz, które sposoby logowania mogą być używane przez użytkowników na stronie logowania"
+  },
+  "field.authDefaultProvider": {
+    "message": "Domyślny sposób logowania",
+    "description": "Tytuł zakładki Ustawienia witryny / Sposób logowania: domyślnie wybrany sposób logowania, gdy otwiera się strona logowania"
+  },
+  "field.authProvider_email": {
+    "message": "E-mail",
+    "description": "Nazwa sposobu logowania: e-mail (e-mail + hasło lub kod weryfikacyjny)"
+  },
+  "field.authProvider_phone": {
+    "message": "Numer telefonu",
+    "description": "Nazwa sposobu logowania: numer telefonu (kod weryfikacyjny SMS)"
+  },
+  "field.authProvider_google": {
+    "message": "Google",
+    "description": "Nazwa sposobu logowania: logowanie przez Google"
+  },
+  "field.authProvider_github": {
+    "message": "GitHub",
+    "description": "Nazwa sposobu logowania: logowanie przez GitHub"
+  },
+  "field.authProvider_wechat": {
+    "message": "WeChat",
+    "description": "Nazwa sposobu logowania: logowanie przez WeChat"
+  },
   "field.featuresChat": {
     "message": "Czat",
     "description": "Wyświetlane w tytule edytora"
@@ -251,6 +279,10 @@
     "message": "Wprowadź ID wymuszonego zapraszającego",
     "description": "Wyświetlane w edytorze"
   },
+  "placeholder.authDefaultProvider": {
+    "message": "Wybierz domyślny sposób logowania",
+    "description": "Placeholder w rozwijanym menu domyślnego sposobu logowania w zakładce Sposób logowania"
+  },
   "message.uploadImageExceed": {
     "message": "Przekroczono limit rozmiaru obrazu",
     "description": "Komunikat o przekroczeniu limitu rozmiaru obrazu"
@@ -334,6 +366,18 @@
   "message.distributionForceInviterIdTip": {
     "message": "ID użytkownika wymuszonego zapraszającego. Jeśli to ID jest ustawione, niezależnie od tego, czy link dystrybucji zawiera parametr inviter_id, zawsze użyje tego ID jako zapraszającego.",
     "description": "Wskazówki dotyczące wymuszonego ID zapraszającego"
+  },
+  "message.authEnabledProvidersTip": {
+    "message": "Zaznacz sposoby logowania, które mogą być używane na stronie logowania. Musisz pozostawić przynajmniej jeden, w przeciwnym razie użytkownicy nie będą mogli się zalogować.",
+    "description": "Tekst wyjaśniający w zakładce Sposób logowania 'Włączone sposoby logowania'"
+  },
+  "message.authDefaultProviderTip": {
+    "message": "Domyślny sposób logowania, gdy użytkownik wchodzi na stronę logowania, musi być jednym z włączonych sposobów logowania.",
+    "description": "Tekst wyjaśniający w zakładce Sposób logowania 'Domyślny sposób logowania'"
+  },
+  "message.authProvidersAtLeastOne": {
+    "message": "Musisz pozostawić przynajmniej jeden sposób logowania",
+    "description": "Ostrzeżenie, gdy użytkownik próbuje odznaczyć wszystkie sposoby logowania"
   },
   "message.originTip": {
     "message": "Domena strony, konfiguracja strony jest powiązana z domeną, domena strony nie może być zmieniana.",

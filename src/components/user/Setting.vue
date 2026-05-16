@@ -47,6 +47,9 @@
         <div v-else-if="activeTab === SETTING_TAB_FUNCTION && isSiteAdmin">
           <function-setting />
         </div>
+        <div v-else-if="activeTab === SETTING_TAB_AUTH && isSiteAdmin">
+          <auth-setting />
+        </div>
         <div v-else-if="activeTab === SETTING_TAB_SUBSITES && isMainOfficialHost">
           <subsite-setting :auto-open-create="autoOpenCreateSubsite" />
         </div>
@@ -74,7 +77,8 @@ import {
   faMoneyBill,
   faInfoCircle,
   faSitemap,
-  faGlobe
+  faGlobe,
+  faRightToBracket
 } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
@@ -84,10 +88,12 @@ import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
 import SubsiteSetting from '@/components/setting/Subsite.vue';
 import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
+import AuthSetting from '@/components/setting/Auth.vue';
 import AboutSetting from '@/components/setting/About.vue';
 import {
   SETTING_TAB_ABOUT,
   SETTING_TAB_API_KEY,
+  SETTING_TAB_AUTH,
   SETTING_TAB_DISTRIBUTION,
   SETTING_TAB_FUNCTION,
   SETTING_TAB_GENERAL,
@@ -114,6 +120,7 @@ export default defineComponent({
     FunctionSetting,
     SubsiteSetting,
     CustomDomainSetting,
+    AuthSetting,
     AboutSetting
   },
   props: {
@@ -137,6 +144,7 @@ export default defineComponent({
       SETTING_TAB_SEO,
       SETTING_TAB_DISTRIBUTION,
       SETTING_TAB_FUNCTION,
+      SETTING_TAB_AUTH,
       SETTING_TAB_SUBSITES,
       SETTING_TAB_CUSTOM_DOMAIN,
       SETTING_TAB_ABOUT,
@@ -167,6 +175,17 @@ export default defineComponent({
           key: SETTING_TAB_FUNCTION,
           label: this.$t('common.settings.function'),
           icon: faMagic,
+          visible: this.isSiteAdmin
+        },
+        {
+          // Per-site login provider configuration (which providers are
+          // offered + the pre-selected default). Admin-only because it
+          // controls how end users authenticate into the site. The
+          // actual login UI consumer (auth.acedata.cloud) gates this
+          // off ``site.auth`` from the backend.
+          key: SETTING_TAB_AUTH,
+          label: this.$t('common.settings.auth'),
+          icon: faRightToBracket,
           visible: this.isSiteAdmin
         },
         {
