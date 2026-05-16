@@ -19,7 +19,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  # `contents: write` is required by einaregilsson/build-number@v2 — it
+  # creates a `build-number-NNN` git ref via the REST API to track the
+  # monotonic counter. Tightening to `read` here gives 403
+  # "Resource not accessible by integration" on the very first step.
+  contents: write
   packages: write # for ghcr.io push
 
 jobs:
