@@ -48,7 +48,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
-import { pasteUploadMixin } from '@/utils';
+import { pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 
 interface IData {
   fileList: UploadFiles;
@@ -65,7 +65,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
-  mixins: [pasteUploadMixin],
+  mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

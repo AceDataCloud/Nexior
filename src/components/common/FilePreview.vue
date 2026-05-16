@@ -8,10 +8,10 @@
       >
         <font-awesome-icon icon="fa-regular fa-file-alt" />
         <el-progress
-          v-show="percentage && percentage < 100"
+          v-show="isUploading"
           type="circle"
           :stroke-width="3"
-          :percentage="percentage"
+          :percentage="displayPercentage"
           :width="25"
           class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[25px] h-[25px] z-[10] m-auto"
         />
@@ -60,6 +60,14 @@ export default defineComponent({
     }
   },
   emits: ['remove'],
+  computed: {
+    isUploading(): boolean {
+      return typeof this.percentage === 'number' && this.percentage < 100;
+    },
+    displayPercentage(): number {
+      return typeof this.percentage === 'number' ? this.percentage : 0;
+    }
+  },
   methods: {
     isImageUrl
   }

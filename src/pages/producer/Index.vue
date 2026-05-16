@@ -25,6 +25,7 @@ import ConfigPanel from '@/components/producer/ConfigPanel.vue';
 import RecentPanel from '@/components/producer/RecentPanel.vue';
 import PreviewPanel from '@/components/producer/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('producer');
 
@@ -43,6 +44,7 @@ export default defineComponent({
     RecentPanel,
     PreviewPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -182,6 +184,15 @@ export default defineComponent({
       }
     },
     async onGenerateAudio() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const request = {
         ...this.config,
         callback_url: CALLBACK_URL

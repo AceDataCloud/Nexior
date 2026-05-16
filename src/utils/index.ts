@@ -13,4 +13,5 @@ export * from './application';
 export * from './theme';
 export * from './pasteUpload';
 export * from './pasteUploadMixin';
+export * from './uploadTrackerMixin';
 export * from './connections';

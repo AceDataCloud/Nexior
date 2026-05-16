@@ -20,6 +20,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 import { ISeedreamTask } from '@/models';
 
 const CALLBACK_URL = getWebhookCallbackUrl('seedream');
@@ -37,6 +38,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -139,6 +141,15 @@ export default defineComponent({
       });
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const cfg: any = { ...(this.config || {}) };
       const hasReferenceImages = Array.isArray(cfg?.image) && cfg.image.length > 0;
       if (!hasReferenceImages && 'image' in cfg) {

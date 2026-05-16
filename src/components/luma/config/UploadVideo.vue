@@ -41,7 +41,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
-import { getBaseUrlPlatform } from '@/utils';
+import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -62,6 +62,7 @@ export default defineComponent({
     FilePreview,
     FontAwesomeIcon
   },
+  mixins: [uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

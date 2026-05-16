@@ -29,6 +29,7 @@ import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('kling');
 
@@ -48,6 +49,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -163,6 +165,15 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const { camera_control, ...rest } = this.config || {};
       const request = {
         ...rest,
@@ -240,6 +251,15 @@ export default defineComponent({
       await this.onScrollDown();
     },
     async onGenerateMotion() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const cfg = this.motionConfig || {};
       if (!cfg.image_url || !cfg.video_url) {
         ElMessage.warning(this.$t('kling.message.motionMissingInputs'));

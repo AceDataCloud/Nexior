@@ -55,7 +55,7 @@ import { defineComponent } from 'vue';
 import { ElInput, ElRadioGroup, ElRadioButton, ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImagePreview from '@/components/common/ImagePreview.vue';
-import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 
 export const DEFAULT_CONTENT = '';
 
@@ -76,7 +76,7 @@ export default defineComponent({
     ImagePreview,
     FontAwesomeIcon
   },
-  mixins: [pasteUploadMixin],
+  mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       inputWay: 'input',

@@ -21,6 +21,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('seedance');
 
@@ -38,6 +39,7 @@ export default defineComponent({
     Layout,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -125,6 +127,15 @@ export default defineComponent({
       }
     },
     async onGenerate() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const cfg: any = { ...(this.config || {}) };
       if (typeof cfg?.prompt === 'string') {
         cfg.prompt = cfg.prompt.trim();

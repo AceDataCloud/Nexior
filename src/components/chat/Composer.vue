@@ -130,7 +130,13 @@ import {
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IChatModel, IChatReference } from '@/models';
-import { getBaseUrlPlatform, isImageUrl, pasteUploadMixin, withCurrentUserIdAndSite } from '@/utils';
+import {
+  getBaseUrlPlatform,
+  isImageUrl,
+  pasteUploadMixin,
+  uploadTrackerMixin,
+  withCurrentUserIdAndSite
+} from '@/utils';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -147,7 +153,7 @@ export default defineComponent({
     ElDropdownMenu,
     ElDropdownItem
   },
-  mixins: [pasteUploadMixin],
+  mixins: [pasteUploadMixin, uploadTrackerMixin],
   props: {
     answering: {
       type: Boolean,

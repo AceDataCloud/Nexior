@@ -40,7 +40,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
+import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 
@@ -59,7 +59,7 @@ export default defineComponent({
     InfoIcon,
     ImagePreview
   },
-  mixins: [pasteUploadMixin],
+  mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {
     return {
       fileList: [],

@@ -33,6 +33,7 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/headshots/RecentPanel.vue';
 import { IHeadshotsTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 
 const CALLBACK_URL = getWebhookCallbackUrl('headshots');
 
@@ -51,6 +52,7 @@ export default defineComponent({
     ApplicationStatus,
     RecentPanel
   },
+  mixins: [uploadTrackerProviderMixin],
   inject: ['initialized'],
   data(): IData {
     return {
@@ -192,6 +194,15 @@ export default defineComponent({
       }
     },
     async onGeneratePicture() {
+      if (
+        !ensureNoPendingUpload(
+          this.uploadTracker,
+          (k) => this.$t(k) as string,
+          (m) => ElMessage.warning(m)
+        )
+      ) {
+        return;
+      }
       const request = {
         ...this.config,
         callback_url: CALLBACK_URL
