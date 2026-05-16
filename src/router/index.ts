@@ -5,7 +5,10 @@ import console from './console';
 import grok from './grok';
 import gemini from './gemini';
 import claude from './claude';
-import deepseek from './deepseek';
+// DeepSeek route temporarily hidden from public navigation.
+// Source file (./deepseek.ts), constants (ROUTE_DEEPSEEK_*) and Vuex module
+// are kept intact so the page can be re-enabled by reversing this commit.
+// import deepseek from './deepseek';
 import kimi from './kimi';
 import chatgpt from './chatgpt';
 import midjourney from './midjourney';
@@ -36,7 +39,7 @@ import profile from './profile';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
-  ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  // ROUTE_DEEPSEEK_CONVERSATION_NEW, // hidden — see deepseek import note above
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GEMINI_CONVERSATION_NEW,
   ROUTE_CLAUDE_CONVERSATION_NEW,
@@ -95,12 +98,7 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Grok', 'xAI', 'AI Chat', 'Grok AI'],
     category: 'AI Chat'
   },
-  deepseek: {
-    title: 'DeepSeek',
-    description: 'Chat with DeepSeek AI — advanced reasoning and coding AI assistant.',
-    keywords: ['DeepSeek', 'AI Chat', 'AI Coding', 'DeepSeek AI'],
-    category: 'AI Chat'
-  },
+  // DeepSeek SEO metadata removed while the page is hidden from public nav.
   kimi: {
     title: 'Kimi',
     description: 'Chat with Kimi AI — advanced AI conversations powered by Moonshot AI.',
@@ -259,7 +257,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['claude', ROUTE_CLAUDE_CONVERSATION_NEW],
   ['gemini', ROUTE_GEMINI_CONVERSATION_NEW],
   ['grok', ROUTE_GROK_CONVERSATION_NEW],
-  ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW],
+  // ['deepseek', ROUTE_DEEPSEEK_CONVERSATION_NEW], // hidden
   ['kimi', ROUTE_KIMI_CONVERSATION_NEW],
   ['midjourney', ROUTE_MIDJOURNEY_INDEX],
   ['nanobanana', ROUTE_NANOBANANA_INDEX],
@@ -307,7 +305,7 @@ const routes = [
   grok,
   gemini,
   claude,
-  deepseek,
+  // deepseek, // hidden from public nav
   kimi,
   qrart,
   luma,

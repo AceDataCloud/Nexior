@@ -73,8 +73,10 @@ import {
   ROUTE_FLUX_INDEX,
   ROUTE_CHATGPT_CONVERSATION_NEW,
   ROUTE_CHATGPT_CONVERSATION,
-  ROUTE_DEEPSEEK_CONVERSATION_NEW,
-  ROUTE_DEEPSEEK_CONVERSATION,
+  // DeepSeek nav entry temporarily hidden from public sidebar.
+  // Route constants/module remain so we can re-enable by reverting this commit.
+  // ROUTE_DEEPSEEK_CONVERSATION_NEW,
+  // ROUTE_DEEPSEEK_CONVERSATION,
   ROUTE_GROK_CONVERSATION_NEW,
   ROUTE_GROK_CONVERSATION,
   ROUTE_GEMINI_CONVERSATION_NEW,
@@ -106,7 +108,7 @@ import { ROUTE_SERP_INDEX } from '@/constants/serp';
 import { WEBEXTRATOR_LOGO } from '@/constants/webextrator';
 import {
   CHAT_MODEL_ICON_CHATGPT,
-  CHAT_MODEL_ICON_DEEPSEEK,
+  // CHAT_MODEL_ICON_DEEPSEEK, // hidden along with the DeepSeek sidebar entry below
   CHAT_MODEL_ICON_GROK,
   CHAT_MODEL_ICON_GEMINI,
   CHAT_MODEL_ICON_CLAUDE,
@@ -180,15 +182,18 @@ export default defineComponent({
           category: 'chat'
         });
       }
-      if (this.$store?.state?.site?.features?.deepseek?.enabled) {
-        result.push({
-          route: { name: ROUTE_DEEPSEEK_CONVERSATION_NEW },
-          displayName: this.$t('common.nav.deepseek'),
-          logo: CHAT_MODEL_ICON_DEEPSEEK,
-          routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW],
-          category: 'chat'
-        });
-      }
+      // DeepSeek sidebar entry temporarily hidden from public navigation.
+      // Route constants, store module, icon and locale strings remain in
+      // place so the entry can be re-enabled by reverting this commit.
+      // if (this.$store?.state?.site?.features?.deepseek?.enabled) {
+      //   result.push({
+      //     route: { name: ROUTE_DEEPSEEK_CONVERSATION_NEW },
+      //     displayName: this.$t('common.nav.deepseek'),
+      //     logo: CHAT_MODEL_ICON_DEEPSEEK,
+      //     routes: [ROUTE_DEEPSEEK_CONVERSATION, ROUTE_DEEPSEEK_CONVERSATION_NEW],
+      //     category: 'chat'
+      //   });
+      // }
       if (this.$store?.state?.site?.features?.grok?.enabled) {
         result.push({
           route: { name: ROUTE_GROK_CONVERSATION_NEW },
