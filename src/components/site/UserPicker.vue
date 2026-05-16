@@ -18,15 +18,21 @@
       <el-icon><search-icon /></el-icon>
     </template>
     <template #default="{ item }">
-      <div class="user-picker__option">
-        <el-avatar v-if="item.avatar" :src="item.avatar" :size="32" class="user-picker__avatar" />
-        <el-avatar v-else :size="32" class="user-picker__avatar">
-          <el-icon><user-icon /></el-icon>
-        </el-avatar>
-        <div class="user-picker__option-text">
-          <div class="user-picker__option-name">{{ item.display_name }}</div>
-          <div class="user-picker__option-contact">{{ item.contact || shortIdOf(item) }}</div>
-        </div>
+      <div class="user-picker__option" :class="{ 'user-picker__option--empty': item.__empty }">
+        <template v-if="item.__empty">
+          <el-icon class="user-picker__empty-icon"><warning-filled /></el-icon>
+          <span class="user-picker__empty-text">{{ $t('site.message.userNotFound') }}</span>
+        </template>
+        <template v-else>
+          <el-avatar v-if="item.avatar" :src="item.avatar" :size="32" class="user-picker__avatar" />
+          <el-avatar v-else :size="32" class="user-picker__avatar">
+            <el-icon><user-icon /></el-icon>
+          </el-avatar>
+          <div class="user-picker__option-text">
+            <div class="user-picker__option-name">{{ item.display_name }}</div>
+            <div class="user-picker__option-contact">{{ item.contact || shortIdOf(item) }}</div>
+          </div>
+        </template>
       </div>
     </template>
   </el-autocomplete>
@@ -35,12 +41,16 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue';
 import { ElAutocomplete, ElAvatar, ElIcon } from 'element-plus';
-import { Search as SearchIcon, User as UserIcon } from '@element-plus/icons-vue';
+import { Search as SearchIcon, User as UserIcon, WarningFilled } from '@element-plus/icons-vue';
 import { userOperator } from '@/operators';
 import type { IUserPublic } from '@/models';
 import { seedUserChipCache } from '@/components/site/UserChip.vue';
 
-type Suggestion = IUserPublic & { value: string };
+type UserSuggestion = IUserPublic & { value: string; __empty?: false };
+type EmptySuggestion = { __empty: true; value: ''; id: '' };
+type Suggestion = UserSuggestion | EmptySuggestion;
+
+const EMPTY_SUGGESTION: EmptySuggestion = { __empty: true, value: '', id: '' };
 
 export default defineComponent({
   name: 'UserPicker',
@@ -49,7 +59,8 @@ export default defineComponent({
     ElAvatar,
     ElIcon,
     SearchIcon,
-    UserIcon
+    UserIcon,
+    WarningFilled
   },
   props: {
     placeholder: {
@@ -82,17 +93,35 @@ export default defineComponent({
       if (!q) return [];
       try {
         const res = await userOperator.resolve(q);
-        return (res.data || [])
+        const items: UserSuggestion[] = (res.data || [])
           .filter((u) => !this.excludeIds.includes(u.id))
           .map((u) => {
             seedUserChipCache(u);
-            return { ...u, value: u.display_name || u.nickname || this.shortIdOf(u) } as Suggestion;
+            return { ...u, value: u.display_name || u.nickname || this.shortIdOf(u) } as UserSuggestion;
           });
+        // The backend (`/users/resolve/`) does exact-match-only on
+        // username / email / phone / UUID for privacy. When the query
+        // doesn't hit, the API returns []. Without a sentinel the
+        // el-autocomplete dropdown stays hidden (it only shows when
+        // `suggestions.length > 0`), leaving the user with no feedback
+        // — which looked like "the dropdown is broken". Inject a
+        // non-selectable empty-state row so the dropdown surfaces
+        // `site.message.userNotFound` instead.
+        if (items.length === 0) return [EMPTY_SUGGESTION];
+        return items;
       } catch {
-        return [];
+        // Same UX treatment for network errors: better to show
+        // "未找到该用户" than to silently swallow the failure.
+        return [EMPTY_SUGGESTION];
       }
     },
     onSelect(item: Record<string, unknown>) {
+      // Ignore clicks on the "user not found" sentinel — it is not a
+      // real user and selecting it would emit a bogus id.
+      if (item && (item as { __empty?: boolean }).__empty) {
+        this.input = '';
+        return;
+      }
       const user = item as unknown as IUserPublic;
       seedUserChipCache(user);
       this.$emit('select', user);
@@ -120,6 +149,25 @@ export default defineComponent({
   align-items: center;
   gap: 10px;
   padding: 4px 0;
+}
+
+.user-picker__option--empty {
+  color: var(--el-text-color-secondary);
+  font-size: 13px;
+  cursor: default;
+}
+
+.user-picker__empty-icon {
+  font-size: 14px;
+  color: var(--el-color-warning);
+  flex-shrink: 0;
+}
+
+.user-picker__empty-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .user-picker__avatar {
