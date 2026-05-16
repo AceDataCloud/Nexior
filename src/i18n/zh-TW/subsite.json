@@ -11,6 +11,10 @@
     "message": "立即訪問分站",
     "description": "新建成功後詢問是否立即跳轉的對話框標題"
   },
+  "title.openSite": {
+    "message": "開啟分站",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "子域名前綴",
     "description": "分站 slug 輸入框標題"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "分站域名",
     "description": "分站列表的域名列"
+  },
+  "field.defaultLabel": {
+    "message": "預設",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "自訂",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "分站標題",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "分站 {origin} 已創建。是否現在打開它繼續配置？",
     "description": "創建後是否立即打開"
+  },
+  "message.openSiteHint": {
+    "message": "請選擇要開啟的分站網址，我們將在新分頁中為你開啟。",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "{origin} 的自定義域名",

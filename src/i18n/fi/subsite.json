@@ -11,6 +11,10 @@
     "message": "Siirry alisivustolle nyt",
     "description": "Uuden alisivuston luomisen jälkeen kysytään, siirrytäänkö heti"
   },
+  "title.openSite": {
+    "message": "Avaa alasivusto",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Alidomainin etuliite",
     "description": "Alisivuston slug-syöttökentän otsikko"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Alisivuston verkkotunnus",
     "description": "Alisivustoluettelon verkkotunnussarake"
+  },
+  "field.defaultLabel": {
+    "message": "Oletus",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Mukautettu",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Alisivuston otsikko",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Alisivusto {origin} on luotu. Haluatko avata sen nyt jatkaaksesi asetusten määrittämistä?",
     "description": "Luomisen jälkeen kysytään, avataanko heti"
+  },
+  "message.openSiteHint": {
+    "message": "Valitse avattava osoite. Avaamme sen puolestasi uudessa välilehdessä.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "{origin} mukautettu verkkotunnus",

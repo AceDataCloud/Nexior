@@ -11,6 +11,10 @@
     "message": "サブサイトに今すぐアクセス",
     "description": "新規作成後に即座に移動するかどうかを尋ねるダイアログのタイトル"
   },
+  "title.openSite": {
+    "message": "サブサイトを開く",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "サブドメインプレフィックス",
     "description": "サブサイトのスラッグ入力フィールドのタイトル"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "サブサイトのドメイン名",
     "description": "サブサイトリストのドメイン名列"
+  },
+  "field.defaultLabel": {
+    "message": "デフォルト",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "カスタム",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "サブサイトのタイトル",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "サブサイト {origin} が作成されました。今すぐ開いて設定を続けますか？",
     "description": "作成後に即座に開くかどうか"
+  },
+  "message.openSiteHint": {
+    "message": "開きたい URL を選択してください。新しいタブで開きます。",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "{origin} のカスタムドメイン名",

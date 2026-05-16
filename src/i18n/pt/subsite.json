@@ -11,6 +11,10 @@
     "message": "Acessar Subdomínio Agora",
     "description": "Título da caixa de diálogo perguntando se deseja redirecionar após a criação bem-sucedida"
   },
+  "title.openSite": {
+    "message": "Abrir subsite",
+    "description": "Title of the open-subsite confirmation dialog."
+  },
   "field.slug": {
     "message": "Prefixo do Subdomínio",
     "description": "Título do campo de entrada para o slug do subdomínio"
@@ -18,6 +22,14 @@
   "field.origin": {
     "message": "Domínio do Subdomínio",
     "description": "Coluna de domínio na lista de subdomínios"
+  },
+  "field.defaultLabel": {
+    "message": "Padrão",
+    "description": "Tag rendered next to the default subdomain in the open-subsite dialog."
+  },
+  "field.customLabel": {
+    "message": "Personalizado",
+    "description": "Tag rendered next to a custom (BYO) hostname in the open-subsite dialog."
   },
   "field.title": {
     "message": "Título do Subdomínio",
@@ -90,6 +102,10 @@
   "message.openNowConfirm": {
     "message": "Subdomínio {origin} criado. Deseja abri-lo agora para continuar a configuração?",
     "description": "Pergunta se deseja abrir imediatamente após a criação"
+  },
+  "message.openSiteHint": {
+    "message": "Escolha qual URL abrir. Abriremos em uma nova aba para você.",
+    "description": "Body hint inside the open-subsite dialog explaining the URL picker."
   },
   "title.domains": {
     "message": "Domínio Personalizado de {origin}",
