@@ -4,9 +4,9 @@
 
     <!--
       Section 1: which providers are offered on the login screen.
-      Multi-select checkbox group — at least one provider must stay
-      enabled, otherwise the user could lock themselves and every
-      other end-user out of this site.
+      One row per provider with an on/off switch — at least one
+      provider must stay enabled, otherwise the user could lock
+      themselves and every other end-user out of this site.
     -->
     <section class="settings-item">
       <div class="settings-label">
@@ -16,19 +16,16 @@
         </p>
       </div>
       <div class="settings-content auth-providers-content">
-        <el-checkbox-group
-          :model-value="enabledProviders"
-          class="auth-providers-checkboxes"
-          @change="onEnabledProvidersChange"
-        >
-          <el-checkbox
-            v-for="option in providerOptions"
-            :key="option.value"
-            :value="option.value"
-            :disabled="isOnlyEnabledProvider(option.value)"
-            :label="option.label"
-          />
-        </el-checkbox-group>
+        <ul class="auth-providers-list">
+          <li v-for="option in providerOptions" :key="option.value" class="auth-providers-row">
+            <span class="auth-providers-row__label">{{ option.label }}</span>
+            <el-switch
+              :model-value="isProviderEnabled(option.value)"
+              :disabled="isOnlyEnabledProvider(option.value)"
+              @change="(checked: boolean | string | number) => onProviderToggle(option.value, Boolean(checked))"
+            />
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -67,7 +64,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElCheckbox, ElCheckboxGroup, ElMessage, ElOption, ElSelect } from 'element-plus';
+import { ElMessage, ElOption, ElSelect, ElSwitch } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import type { ISiteAuth, ISiteAuthProvider } from '@/models';
@@ -90,10 +87,9 @@ interface ProviderOption {
 export default defineComponent({
   name: 'AuthSetting',
   components: {
-    ElCheckbox,
-    ElCheckboxGroup,
     ElOption,
     ElSelect,
+    ElSwitch,
     SectionNotice
   },
   computed: {
@@ -133,36 +129,37 @@ export default defineComponent({
     }
   },
   methods: {
+    isProviderEnabled(id: ProviderId): boolean {
+      return this.providers?.[id]?.enabled === true;
+    },
     isOnlyEnabledProvider(id: ProviderId): boolean {
-      // Lock the last remaining enabled checkbox so the user can't
+      // Lock the last remaining enabled switch so the user can't
       // disable every provider at once and leave the site unable to
       // accept any login.
       return this.enabledProviders.length === 1 && this.enabledProviders[0] === id;
     },
-    onEnabledProvidersChange(rawValue: unknown) {
-      // ``el-checkbox-group`` always emits an array, but ``unknown``
-      // here keeps TS happy without a cast at the binding site.
-      const value = Array.isArray(rawValue) ? (rawValue as ProviderId[]) : [];
-      if (value.length === 0) {
-        // Should never happen because the only-enabled checkbox is
-        // ``disabled``, but a power user could still mutate state via
-        // devtools. Bail out with a toast instead of silently bricking
-        // login for the whole site.
+    onProviderToggle(id: ProviderId, checked: boolean) {
+      // Re-derive the next enabled set from the current store state
+      // plus this single toggle. Doing the derivation here (instead of
+      // relying on v-model on every switch) keeps the logic symmetric
+      // with the previous group-checkbox flow and makes the "last
+      // enabled cannot be turned off" guard robust against a devtools
+      // poke.
+      const nextEnabled = new Set(this.enabledProviders);
+      if (checked) {
+        nextEnabled.add(id);
+      } else {
+        nextEnabled.delete(id);
+      }
+      if (nextEnabled.size === 0) {
         ElMessage.warning(this.$t('site.message.authProvidersAtLeastOne'));
         return;
       }
-      const nextEnabled = new Set(value);
-      // Build a merged providers map: keep every PROVIDER_IDS entry
-      // (so disabling looks like ``{ enabled: false }`` rather than a
-      // missing key, which AuthBackend can disambiguate from "site
-      // hasn't been initialised yet"), and preserve any unknown keys
-      // so a future provider this UI doesn't yet know about isn't
-      // silently dropped on every save.
       const nextProviders: Record<string, ISiteAuthProvider> = { ...(this.providers || {}) };
-      for (const id of PROVIDER_IDS) {
-        nextProviders[id] = {
-          ...(nextProviders[id] || {}),
-          enabled: nextEnabled.has(id)
+      for (const pid of PROVIDER_IDS) {
+        nextProviders[pid] = {
+          ...(nextProviders[pid] || {}),
+          enabled: nextEnabled.has(pid)
         };
       }
       // If the current default just got disabled, auto-promote the
@@ -170,7 +167,7 @@ export default defineComponent({
       // stays invariant.
       let nextDefault = this.defaultProvider;
       if (!nextDefault || !nextEnabled.has(nextDefault as ProviderId)) {
-        nextDefault = PROVIDER_IDS.find((id) => nextEnabled.has(id)) || value[0];
+        nextDefault = PROVIDER_IDS.find((pid) => nextEnabled.has(pid)) || id;
       }
       this.persistAuth({
         ...this.auth,
@@ -213,30 +210,37 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .auth-providers-content {
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  // Let the switch list stretch the full content column so each
+  // row aligns its label and toggle in a single visual gutter.
+  align-items: stretch;
 }
 
-.auth-providers-checkboxes {
+.auth-providers-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  row-gap: 8px;
-  column-gap: 16px;
+  flex-direction: column;
+  min-width: 240px;
+}
+
+.auth-providers-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+
+  & + & {
+    border-top: 1px solid var(--el-border-color-lighter);
+  }
+
+  &__label {
+    font-size: 14px;
+    color: var(--el-text-color-primary);
+  }
 }
 
 .auth-default-provider-select {
-  min-width: 200px;
-}
-
-@media (max-width: 640px) {
-  .auth-providers-checkboxes {
-    justify-content: flex-start;
-  }
-
-  .auth-providers-content {
-    align-items: flex-start;
-  }
+  min-width: 240px;
 }
 </style>
