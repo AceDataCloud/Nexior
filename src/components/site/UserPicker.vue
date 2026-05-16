@@ -18,7 +18,13 @@
       <el-icon><search-icon /></el-icon>
     </template>
     <template #default="{ item }">
-      <div class="user-picker__option" :class="{ 'user-picker__option--empty': item.__empty }">
+      <div
+        class="user-picker__option"
+        :class="{
+          'user-picker__option--empty': item.__empty,
+          'user-picker__option--excluded': item.__excluded
+        }"
+      >
         <template v-if="item.__empty">
           <el-icon class="user-picker__empty-icon"><warning-filled /></el-icon>
           <span class="user-picker__empty-text">{{ $t('site.message.userNotFound') }}</span>
@@ -32,6 +38,9 @@
             <div class="user-picker__option-name">{{ item.display_name }}</div>
             <div class="user-picker__option-contact">{{ item.contact || shortIdOf(item) }}</div>
           </div>
+          <span v-if="item.__excluded" class="user-picker__excluded-tag">{{
+            $t('site.message.userAlreadyAdded')
+          }}</span>
         </template>
       </div>
     </template>
@@ -46,7 +55,7 @@ import { userOperator } from '@/operators';
 import type { IUserPublic } from '@/models';
 import { seedUserChipCache } from '@/components/site/UserChip.vue';
 
-type UserSuggestion = IUserPublic & { value: string; __empty?: false };
+type UserSuggestion = IUserPublic & { value: string; __empty?: false; __excluded?: boolean };
 type EmptySuggestion = { __empty: true; value: ''; id: '' };
 type Suggestion = UserSuggestion | EmptySuggestion;
 
@@ -93,20 +102,26 @@ export default defineComponent({
       if (!q) return [];
       try {
         const res = await userOperator.resolve(q);
-        const items: UserSuggestion[] = (res.data || [])
-          .filter((u) => !this.excludeIds.includes(u.id))
-          .map((u) => {
-            seedUserChipCache(u);
-            return { ...u, value: u.display_name || u.nickname || this.shortIdOf(u) } as UserSuggestion;
-          });
+        // Don't filter out already-added users — instead surface them
+        // tagged as `__excluded` so the dropdown shows them with an
+        // "已添加" badge. The previous behaviour silently dropped them,
+        // which made it look like the picker couldn't even find the
+        // user — the actual report was "搜其他用户就行，搜已经在的就不行".
+        const items: UserSuggestion[] = (res.data || []).map((u) => {
+          seedUserChipCache(u);
+          const excluded = this.excludeIds.includes(u.id);
+          return {
+            ...u,
+            value: u.display_name || u.nickname || this.shortIdOf(u),
+            __excluded: excluded
+          } as UserSuggestion;
+        });
         // The backend (`/users/resolve/`) does exact-match-only on
         // username / email / phone / UUID for privacy. When the query
-        // doesn't hit, the API returns []. Without a sentinel the
-        // el-autocomplete dropdown stays hidden (it only shows when
-        // `suggestions.length > 0`), leaving the user with no feedback
-        // — which looked like "the dropdown is broken". Inject a
-        // non-selectable empty-state row so the dropdown surfaces
-        // `site.message.userNotFound` instead.
+        // doesn't hit, the API really returns [] and the autocomplete
+        // dropdown would stay hidden (Element Plus only opens it when
+        // `suggestions.length > 0`). Inject a non-selectable sentinel
+        // so the user gets feedback (`site.message.userNotFound`).
         if (items.length === 0) return [EMPTY_SUGGESTION];
         return items;
       } catch {
@@ -116,9 +131,9 @@ export default defineComponent({
       }
     },
     onSelect(item: Record<string, unknown>) {
-      // Ignore clicks on the "user not found" sentinel — it is not a
-      // real user and selecting it would emit a bogus id.
-      if (item && (item as { __empty?: boolean }).__empty) {
+      // Ignore clicks on the not-found sentinel and on already-added
+      // entries — neither should emit a selection.
+      if (item && ((item as { __empty?: boolean }).__empty || (item as { __excluded?: boolean }).__excluded)) {
         this.input = '';
         return;
       }
@@ -157,6 +172,11 @@ export default defineComponent({
   cursor: default;
 }
 
+.user-picker__option--excluded {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .user-picker__empty-icon {
   font-size: 14px;
   color: var(--el-color-warning);
@@ -168,6 +188,17 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.user-picker__excluded-tag {
+  flex-shrink: 0;
+  margin-inline-start: 6px;
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-secondary);
+  line-height: 1.4;
 }
 
 .user-picker__avatar {
