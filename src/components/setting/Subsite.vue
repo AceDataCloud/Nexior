@@ -73,30 +73,23 @@
     <el-dialog
       v-model="opening.visible"
       :title="$t('subsite.title.openSite')"
-      width="460px"
+      width="auto"
       class="open-dialog"
       append-to-body
     >
-      <p class="open-hint">{{ $t('subsite.message.openSiteHint') }}</p>
-      <div class="open-urls">
-        <button
-          v-for="url in opening.urls"
-          :key="url.href"
-          type="button"
-          class="open-url"
-          @click="onConfirmOpen(url.href)"
-        >
-          <span class="open-url-host">{{ url.hostname }}</span>
-          <el-tag v-if="!url.isCustom" size="small" type="info" effect="plain" round>
-            {{ $t('subsite.field.defaultLabel') }}
-          </el-tag>
-          <el-tag v-else size="small" type="success" effect="plain" round>
-            {{ $t('subsite.field.customLabel') }}
-          </el-tag>
-        </button>
-      </div>
       <template #footer>
-        <el-button round @click="opening.visible = false">{{ $t('common.button.cancel') }}</el-button>
+        <div class="open-actions">
+          <el-button round @click="opening.visible = false">{{ $t('common.button.cancel') }}</el-button>
+          <el-button
+            v-for="url in opening.urls"
+            :key="url.href"
+            round
+            :type="url.isCustom ? 'success' : 'primary'"
+            @click="onConfirmOpen(url.href)"
+          >
+            {{ url.hostname }}
+          </el-button>
+        </div>
       </template>
     </el-dialog>
 
@@ -405,6 +398,14 @@ export default defineComponent({
           urls.push({ href: `https://${d.hostname}/`, hostname: d.hostname, isCustom: true });
         }
       }
+      // Single URL → no point asking the user to "choose"; open it
+      // straight away. Only show the picker dialog when the tenant has
+      // bound at least one Active custom domain and the default
+      // subdomain coexists.
+      if (urls.length <= 1) {
+        window.open(urls[0].href, '_blank', 'noopener');
+        return;
+      }
       this.opening.urls = urls;
       this.opening.visible = true;
     },
@@ -545,48 +546,12 @@ export default defineComponent({
 // same <style scoped> block avoids leaking selectors globally while
 // still reaching the teleported nodes.
 .open-dialog {
-  :deep(.open-hint) {
-    margin: 0 0 12px 0;
-    color: var(--el-text-color-secondary);
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  :deep(.open-urls) {
+  :deep(.open-actions) {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  :deep(.open-url) {
-    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 8px;
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--el-border-color);
-    border-radius: 999px;
-    background: var(--el-fill-color-blank);
-    color: var(--el-color-primary);
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition:
-      border-color 0.15s,
-      background-color 0.15s,
-      box-shadow 0.15s;
-
-    &:hover {
-      border-color: var(--el-color-primary);
-      background: var(--el-color-primary-light-9);
-    }
-    &:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 2px var(--el-color-primary-light-7);
-    }
-    .open-url-host {
-      word-break: break-all;
-      text-align: left;
-    }
   }
 }
 </style>
