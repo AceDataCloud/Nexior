@@ -10,6 +10,7 @@ import {
   CHAT_MODEL_NAME_GPT_5_5,
   CHAT_MODEL_NAME_GPT_5_4,
   CHAT_MODEL_NAME_GPT_5_4_MINI,
+  CHAT_MODEL_NAME_GPT_5_4_NANO,
   CHAT_MODEL_NAME_GROK_4,
   CHAT_MODEL_NAME_GEMINI_2_5_FLASH,
   CHAT_MODEL_NAME_GEMINI_2_5_PRO,
@@ -28,6 +29,7 @@ export type IChatModelName =
   | typeof CHAT_MODEL_NAME_GPT_5_5
   | typeof CHAT_MODEL_NAME_GPT_5_4
   | typeof CHAT_MODEL_NAME_GPT_5_4_MINI
+  | typeof CHAT_MODEL_NAME_GPT_5_4_NANO
   | typeof CHAT_MODEL_NAME_DEEPSEEK_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK32_CHAT
   | typeof CHAT_MODEL_NAME_DEEPSEEK_V4_FLASH
@@ -58,6 +60,7 @@ export interface IChatModel {
   isFileSupported?: boolean;
   isReasoningSupported?: boolean;
   isDeepSearchSupported?: boolean;
+  isFree?: boolean;
 }
 
 export interface IChatModelGroup {

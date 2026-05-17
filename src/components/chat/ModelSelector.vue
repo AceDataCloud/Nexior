@@ -17,7 +17,10 @@
             <div class="item">
               <img v-if="option?.icon" :src="option.icon" class="item-icon" />
               <div class="item-info">
-                <p v-if="option?.getDisplayName" class="item-name">{{ option?.getDisplayName() }}</p>
+                <p v-if="option?.getDisplayName" class="item-name">
+                  {{ option?.getDisplayName() }}
+                  <span v-if="option?.isFree" class="item-free-tag">{{ $t('chat.model.freeTag') }}</span>
+                </p>
                 <p v-if="option?.getDescription" class="item-desc">{{ option?.getDescription() }}</p>
               </div>
               <font-awesome-icon v-if="model?.name === option?.name" icon="fa-solid fa-check" class="item-check" />
@@ -192,6 +195,22 @@ export default defineComponent({
     color: var(--el-text-color-primary);
     margin: 0;
     line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .item-free-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--el-color-success);
+    background-color: var(--el-color-success-light-9);
+    border: 1px solid var(--el-color-success-light-7);
   }
 
   .item-desc {

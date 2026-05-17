@@ -8,6 +8,7 @@ export const ROLE_USER = 'user';
 export const CHAT_MODEL_NAME_GPT_5_5 = 'gpt-5.5';
 export const CHAT_MODEL_NAME_GPT_5_4 = 'gpt-5.4';
 export const CHAT_MODEL_NAME_GPT_5_4_MINI = 'gpt-5.4-mini';
+export const CHAT_MODEL_NAME_GPT_5_4_NANO = 'gpt-5.4-nano';
 export const CHAT_MODEL_NAME_DEEPSEEK_CHAT = 'deepseek-v3';
 export const CHAT_MODEL_NAME_DEEPSEEK32_CHAT = 'deepseek-v3.2-exp';
 export const CHAT_MODEL_NAME_DEEPSEEK_V4_FLASH = 'deepseek-v4-flash';
@@ -69,6 +70,18 @@ export const CHAT_MODEL_GPT_5_4_MINI: IChatModel = {
   isImageSupported: true,
   getDisplayName: () => i18n.global.t('chat.model.54Mini'),
   getDescription: () => i18n.global.t('chat.model.54MiniDescription')
+};
+
+export const CHAT_MODEL_GPT_5_4_NANO: IChatModel = {
+  enabled: true,
+  name: CHAT_MODEL_NAME_GPT_5_4_NANO,
+  icon: CHAT_MODEL_ICON_CHATGPT,
+  modelGroup: 'chatgpt',
+  isFileSupported: true,
+  isImageSupported: true,
+  isFree: true,
+  getDisplayName: () => i18n.global.t('chat.model.54Nano'),
+  getDescription: () => i18n.global.t('chat.model.54NanoDescription')
 };
 
 export const CHAT_MODEL_DEEPSEEK_CHAT: IChatModel = {
@@ -251,7 +264,7 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [CHAT_MODEL_GPT_5_5, CHAT_MODEL_GPT_5_4, CHAT_MODEL_GPT_5_4_MINI]
+  models: [CHAT_MODEL_GPT_5_4_NANO, CHAT_MODEL_GPT_5_5, CHAT_MODEL_GPT_5_4, CHAT_MODEL_GPT_5_4_MINI]
 };
 
 export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
@@ -308,6 +321,7 @@ export const CHAT_MODEL_GROUP_GLM: IChatModelGroup = {
 };
 
 export const CHAT_MODELS: IChatModel[] = [
+  CHAT_MODEL_GPT_5_4_NANO,
   CHAT_MODEL_GPT_5_5,
   CHAT_MODEL_GPT_5_4,
   CHAT_MODEL_GPT_5_4_MINI,
