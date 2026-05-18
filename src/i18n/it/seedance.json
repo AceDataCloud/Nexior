@@ -155,6 +155,26 @@
     "message": "Puoi caricare solo 1 immagine",
     "description": "Messaggio di superamento del limite di caricamento"
   },
+  "name.required": {
+    "message": "Required",
+    "description": "Required indicator"
+  },
+  "message.modelUnsupported": {
+    "message": "Selected model is not supported. Please pick another.",
+    "description": "Warning when the model is not in the supported list"
+  },
+  "message.modelRequiresImage": {
+    "message": "This model requires a first-frame image to generate the video.",
+    "description": "Warning when an image-to-video model lacks an image"
+  },
+  "message.modelRejectsImage": {
+    "message": "This model is text-to-video only. Please remove the uploaded image.",
+    "description": "Warning when a text-only model is given an image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "This resolution is not supported by the selected model.",
+    "description": "Tooltip when a resolution chip is disabled for the current model"
+  },
   "message.uploadError": {
     "message": "Caricamento fallito",
     "description": "Messaggio di errore nel caricamento"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Stato",
     "description": "Etichetta per lo stato"
+  },
+  "name.ratio": {
+    "message": "Proporzioni",
+    "description": "Etichetta proporzioni"
+  },
+  "description.ratio": {
+    "message": "Scegli le proporzioni del video generato.",
+    "description": "Descrizione delle proporzioni"
+  },
+  "description.resolution": {
+    "message": "Scegli la risoluzione del video generato.",
+    "description": "Descrizione della risoluzione"
+  },
+  "ratio.adaptive": {
+    "message": "Adattivo",
+    "description": "Opzione proporzioni adattive"
+  },
+  "name.cameraFixed": {
+    "message": "Camera fissa",
+    "description": "Etichetta camera fissa"
+  },
+  "description.cameraFixed": {
+    "message": "Quando attivato, la telecamera resta ferma durante il video.",
+    "description": "Descrizione camera fissa"
+  },
+  "name.seed": {
+    "message": "Seme",
+    "description": "Etichetta seme casuale"
+  },
+  "description.seed": {
+    "message": "Seme casuale per risultati riproducibili. Lascia vuoto per casuale.",
+    "description": "Descrizione seme casuale"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Segnaposto seme"
   }
 }

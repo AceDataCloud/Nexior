@@ -1,8 +1,11 @@
 <template>
-  <div class="relative">
+  <div v-if="capability.acceptsImage" class="relative">
     <div class="flex justify-between">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('seedance.name.firstFrame') }}</span>
+        <span v-if="capability.requiresImage" class="required-badge">
+          {{ $t('seedance.name.required') }}
+        </span>
         <info-icon :content="$t('seedance.description.firstFrame')" />
       </div>
     </div>
@@ -47,6 +50,7 @@ import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/util
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ISeedanceImageInput } from '@/models';
+import { getSeedanceCapability } from '@/constants';
 
 interface IData {
   fileList: UploadFiles;
@@ -75,9 +79,23 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
+    model(): string | undefined {
+      return this.$store.state.seedance?.config?.model;
+    },
+    capability() {
+      return getSeedanceCapability(this.model);
+    },
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    }
+  },
+  watch: {
+    'capability.acceptsImage'(accepts: boolean) {
+      if (!accepts) {
+        this.fileList = [];
+        this.onSetFirstFrameUrl();
+      }
     }
   },
   methods: {
@@ -114,6 +132,16 @@ export default defineComponent({
   position: absolute;
   top: 5px;
   right: 0;
+}
+.required-badge {
+  margin-left: 6px;
+  padding: 0 6px;
+  font-size: 11px;
+  line-height: 16px;
+  border-radius: 8px;
+  color: var(--el-color-warning);
+  background-color: var(--el-color-warning-light-9);
+  border: 1px solid var(--el-color-warning-light-7);
 }
 </style>
 

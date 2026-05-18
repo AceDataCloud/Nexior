@@ -1,9 +1,9 @@
 <template>
-  <div v-if="isSupported" class="field">
+  <div class="field">
     <div class="label">
       <div class="box">
-        <h2 class="title font-bold">{{ $t('seedance.name.returnLastFrame') }}</h2>
-        <info-icon :content="$t('seedance.description.returnLastFrame')" class="info" />
+        <h2 class="title font-bold">{{ $t('seedance.name.cameraFixed') }}</h2>
+        <info-icon :content="$t('seedance.description.cameraFixed')" class="info" />
       </div>
     </div>
     <div class="value">
@@ -21,43 +21,30 @@
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDANCE_DEFAULT_RETURN_LAST_FRAME, getSeedanceCapability } from '@/constants';
+import { SEEDANCE_DEFAULT_CAMERA_FIXED } from '@/constants';
 
 export default defineComponent({
-  name: 'SeedanceReturnLastFrameSwitch',
+  name: 'SeedanceCameraFixedSwitch',
   components: {
     ElSwitch,
     InfoIcon
   },
   computed: {
-    model(): string | undefined {
-      return this.$store.state.seedance?.config?.model;
-    },
-    isSupported(): boolean {
-      return getSeedanceCapability(this.model).acceptsReturnLastFrame;
-    },
     value: {
-      get() {
-        return this.$store.state.seedance?.config?.return_last_frame;
+      get(): boolean {
+        return this.$store.state.seedance?.config?.camerafixed ?? false;
       },
       set(val: boolean) {
         this.$store.commit('seedance/setConfig', {
           ...this.$store.state.seedance?.config,
-          return_last_frame: val
+          camerafixed: val
         });
       }
     }
   },
-  watch: {
-    isSupported(supported: boolean) {
-      if (!supported && this.value) {
-        this.value = false;
-      }
-    }
-  },
   mounted() {
-    if (this.value === undefined) {
-      this.value = SEEDANCE_DEFAULT_RETURN_LAST_FRAME;
+    if (this.$store.state.seedance?.config?.camerafixed === undefined) {
+      this.value = SEEDANCE_DEFAULT_CAMERA_FIXED;
     }
   }
 });

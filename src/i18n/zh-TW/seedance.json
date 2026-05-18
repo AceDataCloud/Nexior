@@ -155,6 +155,26 @@
     "message": "最多只能上傳 1 張圖片",
     "description": "上傳超限提示"
   },
+  "name.required": {
+    "message": "必填",
+    "description": "必填標記"
+  },
+  "message.modelUnsupported": {
+    "message": "所選模型不被支援，請重新選擇。",
+    "description": "不在支援列表中的模型提示"
+  },
+  "message.modelRequiresImage": {
+    "message": "該模型需要上傳首幀圖片才能生成視頻。",
+    "description": "圖生視頻模型需要圖片輸入提示"
+  },
+  "message.modelRejectsImage": {
+    "message": "該模型僅支援文生視頻，請移除已上傳的圖片。",
+    "description": "文生視頻模型不接受圖片輸入提示"
+  },
+  "message.resolutionNotSupported": {
+    "message": "該解析度不被目前模型支援。",
+    "description": "解析度不被目前模型支援提示"
+  },
   "message.uploadError": {
     "message": "上傳失敗",
     "description": "上傳失敗提示"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "狀態",
     "description": "狀態標籤"
+  },
+  "name.ratio": {
+    "message": "畫面比例",
+    "description": "畫面比例標籤"
+  },
+  "description.ratio": {
+    "message": "選擇輸出影片的畫面比例。",
+    "description": "畫面比例說明"
+  },
+  "description.resolution": {
+    "message": "選擇輸出影片的解析度。",
+    "description": "影片解析度說明"
+  },
+  "ratio.adaptive": {
+    "message": "自適應",
+    "description": "自適應比例選項"
+  },
+  "name.cameraFixed": {
+    "message": "鎖定鏡頭",
+    "description": "鎖定鏡頭開關標籤"
+  },
+  "description.cameraFixed": {
+    "message": "開啟後，影片中的鏡頭將保持固定不動。",
+    "description": "鎖定鏡頭說明"
+  },
+  "name.seed": {
+    "message": "隨機種子",
+    "description": "隨機種子標籤"
+  },
+  "description.seed": {
+    "message": "用於重現結果的隨機種子，留空則隨機。",
+    "description": "隨機種子說明"
+  },
+  "placeholder.seed": {
+    "message": "自動",
+    "description": "隨機種子佔位符"
   }
 }

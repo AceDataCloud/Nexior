@@ -155,6 +155,26 @@
     "message": "Solo se puede subir 1 imagen como máximo",
     "description": "Mensaje de límite de subida excedido"
   },
+  "name.required": {
+    "message": "Obligatorio",
+    "description": "Indicador de obligatorio"
+  },
+  "message.modelUnsupported": {
+    "message": "El modelo seleccionado no es compatible. Elige otro.",
+    "description": "Advertencia cuando el modelo no es compatible"
+  },
+  "message.modelRequiresImage": {
+    "message": "Este modelo requiere una imagen de primer fotograma para generar el vídeo.",
+    "description": "Advertencia cuando falta una imagen para modelos image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "Este modelo solo admite texto a vídeo. Elimina la imagen subida.",
+    "description": "Advertencia cuando un modelo solo-texto recibe una imagen"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Esta resolución no es compatible con el modelo seleccionado.",
+    "description": "Tooltip cuando una resolución no es compatible"
+  },
   "message.uploadError": {
     "message": "Error al subir",
     "description": "Mensaje de error al subir"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Estado",
     "description": "Etiqueta de estado"
+  },
+  "name.ratio": {
+    "message": "Relación de aspecto",
+    "description": "Etiqueta de relación de aspecto"
+  },
+  "description.ratio": {
+    "message": "Elige la relación de aspecto del vídeo generado.",
+    "description": "Descripción de la relación de aspecto"
+  },
+  "description.resolution": {
+    "message": "Elige la resolución del vídeo generado.",
+    "description": "Descripción de la resolución"
+  },
+  "ratio.adaptive": {
+    "message": "Adaptativo",
+    "description": "Opción de relación adaptativa"
+  },
+  "name.cameraFixed": {
+    "message": "Bloquear cámara",
+    "description": "Etiqueta de bloquear cámara"
+  },
+  "description.cameraFixed": {
+    "message": "Cuando está activado, la cámara permanece inmóvil durante el vídeo.",
+    "description": "Descripción de bloquear cámara"
+  },
+  "name.seed": {
+    "message": "Semilla",
+    "description": "Etiqueta de semilla aleatoria"
+  },
+  "description.seed": {
+    "message": "Semilla aleatoria para resultados reproducibles. Dejar vacío para aleatorio.",
+    "description": "Descripción de semilla aleatoria"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Marcador de posición para semilla"
   }
 }

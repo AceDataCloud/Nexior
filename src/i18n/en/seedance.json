@@ -155,6 +155,26 @@
     "message": "You can upload a maximum of 1 image",
     "description": "Prompt for upload limit exceeded"
   },
+  "name.required": {
+    "message": "Required",
+    "description": "Required indicator"
+  },
+  "message.modelUnsupported": {
+    "message": "Selected model is not supported. Please pick another.",
+    "description": "Warning when the model is not in the supported list"
+  },
+  "message.modelRequiresImage": {
+    "message": "This model requires a first-frame image to generate the video.",
+    "description": "Warning when an image-to-video model lacks an image"
+  },
+  "message.modelRejectsImage": {
+    "message": "This model is text-to-video only. Please remove the uploaded image.",
+    "description": "Warning when a text-only model is given an image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "This resolution is not supported by the selected model.",
+    "description": "Tooltip when a resolution chip is disabled for the current model"
+  },
   "message.uploadError": {
     "message": "Upload failed",
     "description": "Prompt for upload failure"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Status",
     "description": "Label for status"
+  },
+  "name.ratio": {
+    "message": "Aspect Ratio",
+    "description": "Aspect ratio label"
+  },
+  "description.ratio": {
+    "message": "Choose the output video aspect ratio.",
+    "description": "Aspect ratio description"
+  },
+  "description.resolution": {
+    "message": "Choose the output video resolution.",
+    "description": "Video resolution description"
+  },
+  "ratio.adaptive": {
+    "message": "Adaptive",
+    "description": "Adaptive ratio option"
+  },
+  "name.cameraFixed": {
+    "message": "Lock Camera",
+    "description": "Lock camera switch label"
+  },
+  "description.cameraFixed": {
+    "message": "When on, the camera stays still during the video.",
+    "description": "Lock camera description"
+  },
+  "name.seed": {
+    "message": "Seed",
+    "description": "Random seed label"
+  },
+  "description.seed": {
+    "message": "Random seed for reproducible output. Leave blank to randomize.",
+    "description": "Random seed description"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Seed placeholder"
   }
 }

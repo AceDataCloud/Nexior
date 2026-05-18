@@ -155,6 +155,26 @@
     "message": "Можна завантажити не більше 1 зображення",
     "description": "Підказка про перевищення ліміту завантаження"
   },
+  "name.required": {
+    "message": "Required",
+    "description": "Required indicator"
+  },
+  "message.modelUnsupported": {
+    "message": "Selected model is not supported. Please pick another.",
+    "description": "Warning when the model is not in the supported list"
+  },
+  "message.modelRequiresImage": {
+    "message": "This model requires a first-frame image to generate the video.",
+    "description": "Warning when an image-to-video model lacks an image"
+  },
+  "message.modelRejectsImage": {
+    "message": "This model is text-to-video only. Please remove the uploaded image.",
+    "description": "Warning when a text-only model is given an image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "This resolution is not supported by the selected model.",
+    "description": "Tooltip when a resolution chip is disabled for the current model"
+  },
   "message.uploadError": {
     "message": "Не вдалося завантажити",
     "description": "Підказка про невдале завантаження"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Статус",
     "description": "Мітка статусу"
+  },
+  "name.ratio": {
+    "message": "Співвідношення сторін",
+    "description": "Мітка співвідношення сторін"
+  },
+  "description.ratio": {
+    "message": "Виберіть співвідношення сторін згенерованого відео.",
+    "description": "Опис співвідношення сторін"
+  },
+  "description.resolution": {
+    "message": "Виберіть роздільну здатність згенерованого відео.",
+    "description": "Опис роздільної здатності"
+  },
+  "ratio.adaptive": {
+    "message": "Адаптивно",
+    "description": "Адаптивний варіант співвідношення"
+  },
+  "name.cameraFixed": {
+    "message": "Фіксована камера",
+    "description": "Мітка фіксованої камери"
+  },
+  "description.cameraFixed": {
+    "message": "Якщо ввімкнено, камера залишається нерухомою у відео.",
+    "description": "Опис фіксованої камери"
+  },
+  "name.seed": {
+    "message": "Сід",
+    "description": "Мітка випадкового сіду"
+  },
+  "description.seed": {
+    "message": "Випадковий seed для відтворюваних результатів. Залиште порожнім для випадкового.",
+    "description": "Опис випадкового сіду"
+  },
+  "placeholder.seed": {
+    "message": "Авто",
+    "description": "Заповнювач сіду"
   }
 }

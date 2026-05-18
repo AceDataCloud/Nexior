@@ -155,6 +155,26 @@
     "message": "Somente 1 imagem pode ser enviada",
     "description": "Mensagem de limite de upload excedido"
   },
+  "name.required": {
+    "message": "Obrigatório",
+    "description": "Indicador de obrigatório"
+  },
+  "message.modelUnsupported": {
+    "message": "O modelo selecionado não é suportado. Por favor, escolha outro.",
+    "description": "Aviso quando o modelo não é suportado"
+  },
+  "message.modelRequiresImage": {
+    "message": "Este modelo requer uma imagem de primeiro quadro para gerar o vídeo.",
+    "description": "Aviso quando falta uma imagem em modelos image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "Este modelo é somente texto-para-vídeo. Por favor remova a imagem enviada.",
+    "description": "Aviso quando um modelo somente-texto recebe uma imagem"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Esta resolução não é suportada pelo modelo selecionado.",
+    "description": "Tooltip quando uma resolução não é suportada"
+  },
   "message.uploadError": {
     "message": "Falha no upload",
     "description": "Mensagem de falha no upload"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Status",
     "description": "Rótulo de status"
+  },
+  "name.ratio": {
+    "message": "Proporção",
+    "description": "Rótulo da proporção"
+  },
+  "description.ratio": {
+    "message": "Escolha a proporção do vídeo gerado.",
+    "description": "Descrição da proporção"
+  },
+  "description.resolution": {
+    "message": "Escolha a resolução do vídeo gerado.",
+    "description": "Descrição da resolução"
+  },
+  "ratio.adaptive": {
+    "message": "Adaptativo",
+    "description": "Opção adaptativa de proporção"
+  },
+  "name.cameraFixed": {
+    "message": "Travar câmera",
+    "description": "Rótulo travar câmera"
+  },
+  "description.cameraFixed": {
+    "message": "Quando ativado, a câmera permanece estática durante o vídeo.",
+    "description": "Descrição de travar câmera"
+  },
+  "name.seed": {
+    "message": "Semente",
+    "description": "Rótulo da semente aleatória"
+  },
+  "description.seed": {
+    "message": "Semente aleatória para resultados reproduzíveis. Deixe vazio para aleatório.",
+    "description": "Descrição da semente aleatória"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Marcador de posição da semente"
   }
 }

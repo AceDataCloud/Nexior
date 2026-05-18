@@ -155,6 +155,26 @@
     "message": "يمكنك تحميل صورة واحدة فقط",
     "description": "رسالة تجاوز التحميل"
   },
+  "name.required": {
+    "message": "مطلوب",
+    "description": "مؤشر الحقل المطلوب"
+  },
+  "message.modelUnsupported": {
+    "message": "النموذج المحدد غير مدعوم. يرجى اختيار نموذج آخر.",
+    "description": "تحذير عندما يكون النموذج غير مدعوم"
+  },
+  "message.modelRequiresImage": {
+    "message": "يتطلب هذا النموذج صورة الإطار الأول لإنشاء الفيديو.",
+    "description": "تحذير عند فقدان الصورة لنماذج image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "هذا النموذج يدعم النص إلى فيديو فقط. يرجى إزالة الصورة المرفوعة.",
+    "description": "تحذير عندما يتلقى نموذج نصي فقط صورة"
+  },
+  "message.resolutionNotSupported": {
+    "message": "هذه الدقة غير مدعومة من قبل النموذج المحدد.",
+    "description": "تلميح عند عدم دعم الدقة"
+  },
   "message.uploadError": {
     "message": "فشل التحميل",
     "description": "رسالة فشل التحميل"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "الحالة",
     "description": "علامة الحالة"
+  },
+  "name.ratio": {
+    "message": "نسبة العرض إلى الارتفاع",
+    "description": "تسمية نسبة العرض إلى الارتفاع"
+  },
+  "description.ratio": {
+    "message": "اختر نسبة العرض إلى الارتفاع للفيديو الناتج.",
+    "description": "وصف نسبة العرض إلى الارتفاع"
+  },
+  "description.resolution": {
+    "message": "اختر دقة الفيديو الناتج.",
+    "description": "وصف دقة الفيديو"
+  },
+  "ratio.adaptive": {
+    "message": "تكيفي",
+    "description": "خيار نسبة تكيفية"
+  },
+  "name.cameraFixed": {
+    "message": "تثبيت الكاميرا",
+    "description": "تسمية تثبيت الكاميرا"
+  },
+  "description.cameraFixed": {
+    "message": "عند التفعيل، تظل الكاميرا ثابتة أثناء الفيديو.",
+    "description": "وصف تثبيت الكاميرا"
+  },
+  "name.seed": {
+    "message": "البذرة",
+    "description": "تسمية البذرة العشوائية"
+  },
+  "description.seed": {
+    "message": "بذرة عشوائية لتكرار النتائج. اترك الحقل فارغًا للعشوائية.",
+    "description": "وصف البذرة العشوائية"
+  },
+  "placeholder.seed": {
+    "message": "تلقائي",
+    "description": "العنصر النائب للبذرة"
   }
 }

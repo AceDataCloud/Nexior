@@ -18,7 +18,12 @@ import { seedanceOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedanceGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import {
+  ERROR_CODE_USED_UP,
+  getSeedanceCapability,
+  getWebhookCallbackUrl,
+  SEEDANCE_MODEL_CAPABILITIES
+} from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
@@ -157,6 +162,36 @@ export default defineComponent({
       if (!hasImages && 'images' in cfg) {
         delete cfg.images;
       }
+
+      // Validate against the per-model capability matrix BEFORE submitting so users
+      // get an inline warning instead of an opaque "model X is not supported" error.
+      if (cfg?.model && !SEEDANCE_MODEL_CAPABILITIES[cfg.model]) {
+        ElMessage.warning(this.$t('seedance.message.modelUnsupported'));
+        return;
+      }
+      const cap = getSeedanceCapability(cfg?.model);
+      if (cap.requiresImage && !hasImages) {
+        ElMessage.warning(this.$t('seedance.message.modelRequiresImage'));
+        return;
+      }
+      if (!cap.acceptsImage && hasImages) {
+        ElMessage.warning(this.$t('seedance.message.modelRejectsImage'));
+        return;
+      }
+      if (!cap.acceptsText && !hasImages) {
+        ElMessage.warning(this.$t('seedance.message.modelRequiresImage'));
+        return;
+      }
+      if (!cap.acceptsAudio && cfg.generate_audio) {
+        cfg.generate_audio = false;
+      }
+      if (!cap.acceptsReturnLastFrame && cfg.return_last_frame) {
+        cfg.return_last_frame = false;
+      }
+      if (!cap.acceptsLastFrame && hasImages) {
+        cfg.images = cfg.images.filter((img: any) => img?.role !== 'last_frame');
+      }
+
       const request = {
         ...cfg,
         callback_url: CALLBACK_URL

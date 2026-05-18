@@ -155,6 +155,26 @@
     "message": "最大 1 枚の画像のみアップロードできます",
     "description": "アップロード超過の提示"
   },
+  "name.required": {
+    "message": "必須",
+    "description": "必須項目の表示"
+  },
+  "message.modelUnsupported": {
+    "message": "選択したモデルはサポートされていません。",
+    "description": "サポート対象外モデルの警告"
+  },
+  "message.modelRequiresImage": {
+    "message": "このモデルは画像入力が必須です。",
+    "description": "画像が必要なモデルの警告"
+  },
+  "message.modelRejectsImage": {
+    "message": "このモデルはテキストのみ対応です。画像を削除してください。",
+    "description": "テキストのみ対応モデルに画像が含まれる場合の警告"
+  },
+  "message.resolutionNotSupported": {
+    "message": "この解像度は現在のモデルではサポートされていません。",
+    "description": "サポート外解像度のツールチップ"
+  },
   "message.uploadError": {
     "message": "アップロードに失敗しました",
     "description": "アップロード失敗の提示"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "状態",
     "description": "状態ラベル"
+  },
+  "name.ratio": {
+    "message": "アスペクト比",
+    "description": "アスペクト比ラベル"
+  },
+  "description.ratio": {
+    "message": "出力動画のアスペクト比を選択します。",
+    "description": "アスペクト比の説明"
+  },
+  "description.resolution": {
+    "message": "出力動画の解像度を選択します。",
+    "description": "動画解像度の説明"
+  },
+  "ratio.adaptive": {
+    "message": "自動",
+    "description": "自動アスペクト比オプション"
+  },
+  "name.cameraFixed": {
+    "message": "カメラ固定",
+    "description": "カメラ固定スイッチラベル"
+  },
+  "description.cameraFixed": {
+    "message": "オンにすると、動画内でカメラが動きません。",
+    "description": "カメラ固定の説明"
+  },
+  "name.seed": {
+    "message": "シード値",
+    "description": "ランダムシードラベル"
+  },
+  "description.seed": {
+    "message": "結果を再現するための乱数シード。空欄でランダム。",
+    "description": "ランダムシードの説明"
+  },
+  "placeholder.seed": {
+    "message": "自動",
+    "description": "シードのプレースホルダー"
   }
 }

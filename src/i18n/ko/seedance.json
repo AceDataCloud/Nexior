@@ -155,6 +155,26 @@
     "message": "최대 1장의 이미지만 업로드할 수 있습니다",
     "description": "업로드 초과 알림"
   },
+  "name.required": {
+    "message": "필수",
+    "description": "필수 항목 표시"
+  },
+  "message.modelUnsupported": {
+    "message": "선택한 모델은 지원되지 않습니다.",
+    "description": "지원되지 않는 모델 경고"
+  },
+  "message.modelRequiresImage": {
+    "message": "이 모델은 첫 프레임 이미지가 필요합니다.",
+    "description": "이미지가 필요한 모델 경고"
+  },
+  "message.modelRejectsImage": {
+    "message": "이 모델은 텍스트 전용입니다. 업로드한 이미지를 제거하세요.",
+    "description": "텍스트 전용 모델 경고"
+  },
+  "message.resolutionNotSupported": {
+    "message": "이 해상도는 현재 모델에서 지원되지 않습니다.",
+    "description": "지원되지 않는 해상도 툴팁"
+  },
   "message.uploadError": {
     "message": "업로드 실패",
     "description": "업로드 실패 알림"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "상태",
     "description": "상태 레이블"
+  },
+  "name.ratio": {
+    "message": "화면 비율",
+    "description": "화면 비율 라벨"
+  },
+  "description.ratio": {
+    "message": "출력 영상의 화면 비율을 선택합니다.",
+    "description": "화면 비율 설명"
+  },
+  "description.resolution": {
+    "message": "출력 영상의 해상도를 선택합니다.",
+    "description": "영상 해상도 설명"
+  },
+  "ratio.adaptive": {
+    "message": "자동",
+    "description": "자동 비율 옵션"
+  },
+  "name.cameraFixed": {
+    "message": "카메라 고정",
+    "description": "카메라 고정 스위치 라벨"
+  },
+  "description.cameraFixed": {
+    "message": "켜면 영상에서 카메라가 움직이지 않습니다.",
+    "description": "카메라 고정 설명"
+  },
+  "name.seed": {
+    "message": "시드",
+    "description": "랜덤 시드 라벨"
+  },
+  "description.seed": {
+    "message": "결과 재현을 위한 시드 값. 비워두면 무작위로 생성됩니다.",
+    "description": "랜덤 시드 설명"
+  },
+  "placeholder.seed": {
+    "message": "자동",
+    "description": "시드 플레이스홀더"
   }
 }

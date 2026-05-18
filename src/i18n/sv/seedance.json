@@ -155,6 +155,26 @@
     "message": "Max 1 bild kan laddas upp",
     "description": "Upload limit exceeded prompt"
   },
+  "name.required": {
+    "message": "Required",
+    "description": "Required indicator"
+  },
+  "message.modelUnsupported": {
+    "message": "Selected model is not supported. Please pick another.",
+    "description": "Warning when the model is not in the supported list"
+  },
+  "message.modelRequiresImage": {
+    "message": "This model requires a first-frame image to generate the video.",
+    "description": "Warning when an image-to-video model lacks an image"
+  },
+  "message.modelRejectsImage": {
+    "message": "This model is text-to-video only. Please remove the uploaded image.",
+    "description": "Warning when a text-only model is given an image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "This resolution is not supported by the selected model.",
+    "description": "Tooltip when a resolution chip is disabled for the current model"
+  },
   "message.uploadError": {
     "message": "Uppladdning misslyckades",
     "description": "Upload failed prompt"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "Status",
     "description": "Status label"
+  },
+  "name.ratio": {
+    "message": "Bildförhållande",
+    "description": "Etikett för bildförhållande"
+  },
+  "description.ratio": {
+    "message": "Välj bildförhållandet för den genererade videon.",
+    "description": "Beskrivning av bildförhållande"
+  },
+  "description.resolution": {
+    "message": "Välj upplösning för den genererade videon.",
+    "description": "Beskrivning av upplösning"
+  },
+  "ratio.adaptive": {
+    "message": "Adaptiv",
+    "description": "Adaptivt bildförhållandealternativ"
+  },
+  "name.cameraFixed": {
+    "message": "Lås kamera",
+    "description": "Etikett för lås kamera"
+  },
+  "description.cameraFixed": {
+    "message": "När det är på förblir kameran stilla under videon.",
+    "description": "Beskrivning av lås kamera"
+  },
+  "name.seed": {
+    "message": "Seed",
+    "description": "Etikett för slumpfrö"
+  },
+  "description.seed": {
+    "message": "Slumpfrö för reproducerbara resultat. Lämna tomt för slumpmässigt.",
+    "description": "Beskrivning av slumpfrö"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Platshållare för seed"
   }
 }

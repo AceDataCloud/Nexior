@@ -155,6 +155,26 @@
     "message": "Vous ne pouvez télécharger qu'une seule image",
     "description": "Message de dépassement de limite de téléchargement"
   },
+  "name.required": {
+    "message": "Obligatoire",
+    "description": "Indicateur d'obligation"
+  },
+  "message.modelUnsupported": {
+    "message": "Le modèle sélectionné n'est pas pris en charge. Veuillez en choisir un autre.",
+    "description": "Avertissement lorsque le modèle n'est pas pris en charge"
+  },
+  "message.modelRequiresImage": {
+    "message": "Ce modèle nécessite une image de première trame pour générer la vidéo.",
+    "description": "Avertissement lorsqu'une image est manquante"
+  },
+  "message.modelRejectsImage": {
+    "message": "Ce modèle est uniquement texte-vers-vidéo. Veuillez retirer l'image.",
+    "description": "Avertissement lorsqu'un modèle texte-seul reçoit une image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Cette résolution n'est pas prise en charge par le modèle sélectionné.",
+    "description": "Info-bulle lorsqu'une résolution n'est pas prise en charge"
+  },
   "message.uploadError": {
     "message": "Échec du téléchargement",
     "description": "Message d'échec de téléchargement"
@@ -194,5 +214,41 @@
   "name.status": {
     "message": "État",
     "description": "Étiquette d'état"
+  },
+  "name.ratio": {
+    "message": "Format d'image",
+    "description": "Étiquette du format d'image"
+  },
+  "description.ratio": {
+    "message": "Choisissez le format d'image de la vidéo générée.",
+    "description": "Description du format d'image"
+  },
+  "description.resolution": {
+    "message": "Choisissez la résolution de la vidéo générée.",
+    "description": "Description de la résolution"
+  },
+  "ratio.adaptive": {
+    "message": "Adaptatif",
+    "description": "Option de format adaptatif"
+  },
+  "name.cameraFixed": {
+    "message": "Caméra fixe",
+    "description": "Étiquette de caméra fixe"
+  },
+  "description.cameraFixed": {
+    "message": "Lorsqu'activé, la caméra reste immobile pendant la vidéo.",
+    "description": "Description de caméra fixe"
+  },
+  "name.seed": {
+    "message": "Graine",
+    "description": "Étiquette de graine aléatoire"
+  },
+  "description.seed": {
+    "message": "Graine aléatoire pour des résultats reproductibles. Laisser vide pour aléatoire.",
+    "description": "Description de la graine aléatoire"
+  },
+  "placeholder.seed": {
+    "message": "Auto",
+    "description": "Espace réservé pour la graine"
   }
 }

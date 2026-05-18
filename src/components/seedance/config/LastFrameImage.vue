@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div v-if="capability.acceptsLastFrame" class="relative">
     <div class="flex justify-between">
       <div class="flex justify-start items-center">
         <span class="text-sm font-bold">{{ $t('seedance.name.lastFrame') }}</span>
@@ -47,6 +47,7 @@ import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/util
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ISeedanceImageInput } from '@/models';
+import { getSeedanceCapability } from '@/constants';
 
 interface IData {
   fileList: UploadFiles;
@@ -75,9 +76,23 @@ export default defineComponent({
         Authorization: `Bearer ${this.$store.state.token.access}`
       };
     },
+    model(): string | undefined {
+      return this.$store.state.seedance?.config?.model;
+    },
+    capability() {
+      return getSeedanceCapability(this.model);
+    },
     urls() {
       // @ts-ignore
       return this.fileList.map((file: UploadFile) => file?.response?.file_url);
+    }
+  },
+  watch: {
+    'capability.acceptsLastFrame'(accepts: boolean) {
+      if (!accepts) {
+        this.fileList = [];
+        this.onSetLastFrameUrl();
+      }
     }
   },
   methods: {
