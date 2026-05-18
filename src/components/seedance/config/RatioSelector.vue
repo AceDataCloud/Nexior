@@ -122,7 +122,7 @@ export default defineComponent({
         background-color 0.15s ease,
         border-color 0.15s ease,
         color 0.15s ease;
-      background-color: var(--el-bg-color);
+      background-color: var(--el-fill-color-lighter);
 
       &:hover {
         background-color: var(--el-fill-color);

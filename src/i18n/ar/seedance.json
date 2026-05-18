@@ -155,6 +155,26 @@
     "message": "يمكنك تحميل صورة واحدة فقط",
     "description": "رسالة تجاوز التحميل"
   },
+  "name.required": {
+    "message": "مطلوب",
+    "description": "مؤشر الحقل المطلوب"
+  },
+  "message.modelUnsupported": {
+    "message": "النموذج المحدد غير مدعوم. يرجى اختيار نموذج آخر.",
+    "description": "تحذير عندما يكون النموذج غير مدعوم"
+  },
+  "message.modelRequiresImage": {
+    "message": "يتطلب هذا النموذج صورة الإطار الأول لإنشاء الفيديو.",
+    "description": "تحذير عند فقدان الصورة لنماذج image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "هذا النموذج يدعم النص إلى فيديو فقط. يرجى إزالة الصورة المرفوعة.",
+    "description": "تحذير عندما يتلقى نموذج نصي فقط صورة"
+  },
+  "message.resolutionNotSupported": {
+    "message": "هذه الدقة غير مدعومة من قبل النموذج المحدد.",
+    "description": "تلميح عند عدم دعم الدقة"
+  },
   "message.uploadError": {
     "message": "فشل التحميل",
     "description": "رسالة فشل التحميل"

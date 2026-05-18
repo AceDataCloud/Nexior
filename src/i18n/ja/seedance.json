@@ -155,6 +155,26 @@
     "message": "最大 1 枚の画像のみアップロードできます",
     "description": "アップロード超過の提示"
   },
+  "name.required": {
+    "message": "必須",
+    "description": "必須項目の表示"
+  },
+  "message.modelUnsupported": {
+    "message": "選択したモデルはサポートされていません。",
+    "description": "サポート対象外モデルの警告"
+  },
+  "message.modelRequiresImage": {
+    "message": "このモデルは画像入力が必須です。",
+    "description": "画像が必要なモデルの警告"
+  },
+  "message.modelRejectsImage": {
+    "message": "このモデルはテキストのみ対応です。画像を削除してください。",
+    "description": "テキストのみ対応モデルに画像が含まれる場合の警告"
+  },
+  "message.resolutionNotSupported": {
+    "message": "この解像度は現在のモデルではサポートされていません。",
+    "description": "サポート外解像度のツールチップ"
+  },
   "message.uploadError": {
     "message": "アップロードに失敗しました",
     "description": "アップロード失敗の提示"

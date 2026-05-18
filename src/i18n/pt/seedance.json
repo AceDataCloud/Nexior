@@ -155,6 +155,26 @@
     "message": "Somente 1 imagem pode ser enviada",
     "description": "Mensagem de limite de upload excedido"
   },
+  "name.required": {
+    "message": "Obrigatório",
+    "description": "Indicador de obrigatório"
+  },
+  "message.modelUnsupported": {
+    "message": "O modelo selecionado não é suportado. Por favor, escolha outro.",
+    "description": "Aviso quando o modelo não é suportado"
+  },
+  "message.modelRequiresImage": {
+    "message": "Este modelo requer uma imagem de primeiro quadro para gerar o vídeo.",
+    "description": "Aviso quando falta uma imagem em modelos image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "Este modelo é somente texto-para-vídeo. Por favor remova a imagem enviada.",
+    "description": "Aviso quando um modelo somente-texto recebe uma imagem"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Esta resolução não é suportada pelo modelo selecionado.",
+    "description": "Tooltip quando uma resolução não é suportada"
+  },
   "message.uploadError": {
     "message": "Falha no upload",
     "description": "Mensagem de falha no upload"

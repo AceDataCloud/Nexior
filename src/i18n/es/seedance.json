@@ -155,6 +155,26 @@
     "message": "Solo se puede subir 1 imagen como máximo",
     "description": "Mensaje de límite de subida excedido"
   },
+  "name.required": {
+    "message": "Obligatorio",
+    "description": "Indicador de obligatorio"
+  },
+  "message.modelUnsupported": {
+    "message": "El modelo seleccionado no es compatible. Elige otro.",
+    "description": "Advertencia cuando el modelo no es compatible"
+  },
+  "message.modelRequiresImage": {
+    "message": "Este modelo requiere una imagen de primer fotograma para generar el vídeo.",
+    "description": "Advertencia cuando falta una imagen para modelos image-to-video"
+  },
+  "message.modelRejectsImage": {
+    "message": "Este modelo solo admite texto a vídeo. Elimina la imagen subida.",
+    "description": "Advertencia cuando un modelo solo-texto recibe una imagen"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Esta resolución no es compatible con el modelo seleccionado.",
+    "description": "Tooltip cuando una resolución no es compatible"
+  },
   "message.uploadError": {
     "message": "Error al subir",
     "description": "Mensaje de error al subir"

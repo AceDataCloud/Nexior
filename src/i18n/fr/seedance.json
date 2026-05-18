@@ -155,6 +155,26 @@
     "message": "Vous ne pouvez télécharger qu'une seule image",
     "description": "Message de dépassement de limite de téléchargement"
   },
+  "name.required": {
+    "message": "Obligatoire",
+    "description": "Indicateur d'obligation"
+  },
+  "message.modelUnsupported": {
+    "message": "Le modèle sélectionné n'est pas pris en charge. Veuillez en choisir un autre.",
+    "description": "Avertissement lorsque le modèle n'est pas pris en charge"
+  },
+  "message.modelRequiresImage": {
+    "message": "Ce modèle nécessite une image de première trame pour générer la vidéo.",
+    "description": "Avertissement lorsqu'une image est manquante"
+  },
+  "message.modelRejectsImage": {
+    "message": "Ce modèle est uniquement texte-vers-vidéo. Veuillez retirer l'image.",
+    "description": "Avertissement lorsqu'un modèle texte-seul reçoit une image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Cette résolution n'est pas prise en charge par le modèle sélectionné.",
+    "description": "Info-bulle lorsqu'une résolution n'est pas prise en charge"
+  },
   "message.uploadError": {
     "message": "Échec du téléchargement",
     "description": "Message d'échec de téléchargement"

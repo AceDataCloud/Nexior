@@ -155,6 +155,26 @@
     "message": "最多只能上传 1 张图片",
     "description": "上传超限提示"
   },
+  "name.required": {
+    "message": "必填",
+    "description": "必填标记"
+  },
+  "message.modelUnsupported": {
+    "message": "所选模型不被支持，请重新选择。",
+    "description": "不在支持列表中的模型提示"
+  },
+  "message.modelRequiresImage": {
+    "message": "该模型需要上传首帧图片才能生成视频。",
+    "description": "图生视频模型需要图片输入提示"
+  },
+  "message.modelRejectsImage": {
+    "message": "该模型仅支持文生视频，请移除已上传的图片。",
+    "description": "文生视频模型不接受图片输入提示"
+  },
+  "message.resolutionNotSupported": {
+    "message": "该分辨率不被当前模型支持。",
+    "description": "分辨率不被当前模型支持的提示"
+  },
   "message.uploadError": {
     "message": "上传失败",
     "description": "上传失败提示"

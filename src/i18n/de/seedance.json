@@ -155,6 +155,26 @@
     "message": "Es kann maximal 1 Bild hochgeladen werden",
     "description": "Hinweis bei Überschreitung des Upload-Limits"
   },
+  "name.required": {
+    "message": "Erforderlich",
+    "description": "Pflichtfeld-Anzeige"
+  },
+  "message.modelUnsupported": {
+    "message": "Das ausgewählte Modell wird nicht unterstützt. Bitte ein anderes auswählen.",
+    "description": "Warnung wenn das Modell nicht unterstützt wird"
+  },
+  "message.modelRequiresImage": {
+    "message": "Dieses Modell benötigt ein Erstbild zum Generieren des Videos.",
+    "description": "Warnung bei fehlendem Bild für Image-to-Video-Modelle"
+  },
+  "message.modelRejectsImage": {
+    "message": "Dieses Modell unterstützt nur Text-zu-Video. Bitte entferne das hochgeladene Bild.",
+    "description": "Warnung bei einem Text-only-Modell mit Bild"
+  },
+  "message.resolutionNotSupported": {
+    "message": "Diese Auflösung wird vom ausgewählten Modell nicht unterstützt.",
+    "description": "Tooltip bei nicht unterstützter Auflösung"
+  },
   "message.uploadError": {
     "message": "Hochladen fehlgeschlagen",
     "description": "Hinweis bei fehlgeschlagenem Upload"

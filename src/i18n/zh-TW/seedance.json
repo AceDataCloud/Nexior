@@ -155,6 +155,26 @@
     "message": "最多只能上傳 1 張圖片",
     "description": "上傳超限提示"
   },
+  "name.required": {
+    "message": "必填",
+    "description": "必填標記"
+  },
+  "message.modelUnsupported": {
+    "message": "所選模型不被支援，請重新選擇。",
+    "description": "不在支援列表中的模型提示"
+  },
+  "message.modelRequiresImage": {
+    "message": "該模型需要上傳首幀圖片才能生成視頻。",
+    "description": "圖生視頻模型需要圖片輸入提示"
+  },
+  "message.modelRejectsImage": {
+    "message": "該模型僅支援文生視頻，請移除已上傳的圖片。",
+    "description": "文生視頻模型不接受圖片輸入提示"
+  },
+  "message.resolutionNotSupported": {
+    "message": "該解析度不被目前模型支援。",
+    "description": "解析度不被目前模型支援提示"
+  },
   "message.uploadError": {
     "message": "上傳失敗",
     "description": "上傳失敗提示"

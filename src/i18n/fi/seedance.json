@@ -155,6 +155,26 @@
     "message": "Voit ladata enintään 1 kuvan",
     "description": "Latausrajan ylitysviesti"
   },
+  "name.required": {
+    "message": "Required",
+    "description": "Required indicator"
+  },
+  "message.modelUnsupported": {
+    "message": "Selected model is not supported. Please pick another.",
+    "description": "Warning when the model is not in the supported list"
+  },
+  "message.modelRequiresImage": {
+    "message": "This model requires a first-frame image to generate the video.",
+    "description": "Warning when an image-to-video model lacks an image"
+  },
+  "message.modelRejectsImage": {
+    "message": "This model is text-to-video only. Please remove the uploaded image.",
+    "description": "Warning when a text-only model is given an image"
+  },
+  "message.resolutionNotSupported": {
+    "message": "This resolution is not supported by the selected model.",
+    "description": "Tooltip when a resolution chip is disabled for the current model"
+  },
   "message.uploadError": {
     "message": "Lataus epäonnistui",
     "description": "Latauksen epäonnistumisviesti"

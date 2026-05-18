@@ -5,44 +5,76 @@
       <info-icon :content="$t('seedance.description.resolution')" class="info" />
     </div>
     <div class="items">
-      <div
+      <el-tooltip
         v-for="item in options"
         :key="item.value"
-        class="item"
-        :class="{ active: value === item.value }"
-        @click="value = item.value"
+        :content="$t('seedance.message.resolutionNotSupported')"
+        :disabled="!item.disabled"
+        placement="top"
       >
-        {{ item.label }}
-      </div>
+        <div class="item" :class="{ active: value === item.value, disabled: item.disabled }" @click="onSelect(item)">
+          {{ item.label }}
+        </div>
+      </el-tooltip>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { ElTooltip } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
+  getSeedanceCapability,
   SEEDANCE_DEFAULT_RESOLUTION,
   SEEDANCE_RESOLUTION_480P,
   SEEDANCE_RESOLUTION_720P,
   SEEDANCE_RESOLUTION_1080P
 } from '@/constants';
 
+interface ResolutionOption {
+  value: string;
+  label: string;
+  disabled: boolean;
+}
+
+// Lite models top out at 720p per upstream; 1080p quietly downgrades or errors.
+const LITE_MAX_RESOLUTION = SEEDANCE_RESOLUTION_720P;
+
+const RESOLUTION_RANK: Record<string, number> = {
+  [SEEDANCE_RESOLUTION_480P]: 0,
+  [SEEDANCE_RESOLUTION_720P]: 1,
+  [SEEDANCE_RESOLUTION_1080P]: 2
+};
+
 export default defineComponent({
   name: 'SeedanceResolutionSelector',
   components: {
-    InfoIcon
+    InfoIcon,
+    ElTooltip
   },
-  data() {
-    return {
-      options: [
+  computed: {
+    model(): string | undefined {
+      return this.$store.state.seedance?.config?.model;
+    },
+    capability() {
+      return getSeedanceCapability(this.model);
+    },
+    isLiteModel(): boolean {
+      return typeof this.model === 'string' && this.model.includes('-lite-');
+    },
+    options(): ResolutionOption[] {
+      const base = [
         { value: SEEDANCE_RESOLUTION_480P, label: '480p' },
         { value: SEEDANCE_RESOLUTION_720P, label: '720p' },
         { value: SEEDANCE_RESOLUTION_1080P, label: '1080p' }
-      ]
-    };
-  },
-  computed: {
+      ];
+      const isLite = this.isLiteModel;
+      return base.map((o) => ({
+        ...o,
+        disabled: isLite && RESOLUTION_RANK[o.value] > RESOLUTION_RANK[LITE_MAX_RESOLUTION]
+      }));
+    },
     value: {
       get(): string | undefined {
         return this.$store.state.seedance?.config?.resolution;
@@ -55,9 +87,29 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    model() {
+      this.clampValue();
+    }
+  },
   mounted() {
     if (!this.value) {
-      this.value = SEEDANCE_DEFAULT_RESOLUTION;
+      this.value = this.capability.defaultResolution || SEEDANCE_DEFAULT_RESOLUTION;
+    } else {
+      this.clampValue();
+    }
+  },
+  methods: {
+    onSelect(item: ResolutionOption) {
+      if (item.disabled) return;
+      this.value = item.value;
+    },
+    clampValue() {
+      const current = this.value;
+      const selected = this.options.find((o) => o.value === current);
+      if (!current || (selected && selected.disabled)) {
+        this.value = this.capability.defaultResolution || SEEDANCE_DEFAULT_RESOLUTION;
+      }
     }
   }
 });
@@ -99,11 +151,21 @@ export default defineComponent({
         background-color 0.15s ease,
         border-color 0.15s ease,
         color 0.15s ease;
-      background-color: var(--el-bg-color);
+      background-color: var(--el-fill-color-lighter);
 
       &:hover {
         background-color: var(--el-fill-color);
         border-color: var(--el-border-color-hover);
+      }
+
+      &.disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: var(--el-fill-color-lighter);
+          border-color: var(--el-border-color);
+        }
       }
 
       &.active {

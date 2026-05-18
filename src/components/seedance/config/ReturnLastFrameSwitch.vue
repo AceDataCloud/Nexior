@@ -1,5 +1,5 @@
 <template>
-  <div class="field">
+  <div v-if="isSupported" class="field">
     <div class="label">
       <div class="box">
         <h2 class="title font-bold">{{ $t('seedance.name.returnLastFrame') }}</h2>
@@ -21,7 +21,7 @@
 import { defineComponent } from 'vue';
 import { ElSwitch } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDANCE_DEFAULT_RETURN_LAST_FRAME } from '@/constants';
+import { SEEDANCE_DEFAULT_RETURN_LAST_FRAME, getSeedanceCapability } from '@/constants';
 
 export default defineComponent({
   name: 'SeedanceReturnLastFrameSwitch',
@@ -30,6 +30,12 @@ export default defineComponent({
     InfoIcon
   },
   computed: {
+    model(): string | undefined {
+      return this.$store.state.seedance?.config?.model;
+    },
+    isSupported(): boolean {
+      return getSeedanceCapability(this.model).acceptsReturnLastFrame;
+    },
     value: {
       get() {
         return this.$store.state.seedance?.config?.return_last_frame;
@@ -39,6 +45,13 @@ export default defineComponent({
           ...this.$store.state.seedance?.config,
           return_last_frame: val
         });
+      }
+    }
+  },
+  watch: {
+    isSupported(supported: boolean) {
+      if (!supported && this.value) {
+        this.value = false;
       }
     }
   },
