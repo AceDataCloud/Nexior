@@ -166,12 +166,19 @@ export default defineComponent({
           }, 2000);
         });
     },
-    onCopyLink() {
+    async onCopyLink() {
       const url = typeof window !== 'undefined' ? window.location.href : '';
       if (!url) {
         return;
       }
-      const ok = copy(url, { debug: false });
+      let ok = false;
+      try {
+        // copy-to-clipboard v4 returns Promise<boolean>; v3 returned boolean.
+        // `await` works for both so this stays robust across versions.
+        ok = await copy(url, { debug: false });
+      } catch {
+        ok = false;
+      }
       if (ok) {
         this.copied = true;
         if (this.copiedTimer) {
