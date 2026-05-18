@@ -17,7 +17,6 @@ export interface ISeedanceConfig {
   ratio?: SeedanceRatio;
   seed?: number;
   camerafixed?: boolean;
-  watermark?: boolean;
   generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
@@ -35,7 +34,6 @@ export interface ISeedanceGenerateRequest {
   ratio?: SeedanceRatio;
   seed?: number;
   camerafixed?: boolean;
-  watermark?: boolean;
   generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;

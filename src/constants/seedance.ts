@@ -36,4 +36,3 @@ export const SEEDANCE_RATIO_ADAPTIVE = 'adaptive';
 export const SEEDANCE_DEFAULT_RATIO = SEEDANCE_RATIO_16_9;
 
 export const SEEDANCE_DEFAULT_CAMERA_FIXED = false;
-export const SEEDANCE_DEFAULT_WATERMARK = false;

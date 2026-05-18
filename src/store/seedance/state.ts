@@ -9,8 +9,7 @@ import {
   SEEDANCE_DEFAULT_RATIO,
   SEEDANCE_DEFAULT_RESOLUTION,
   SEEDANCE_DEFAULT_RETURN_LAST_FRAME,
-  SEEDANCE_DEFAULT_SERVICE_TIER,
-  SEEDANCE_DEFAULT_WATERMARK
+  SEEDANCE_DEFAULT_SERVICE_TIER
 } from '@/constants';
 
 export default (): ISeedanceState => {
@@ -26,7 +25,6 @@ export default (): ISeedanceState => {
       resolution: SEEDANCE_DEFAULT_RESOLUTION,
       ratio: SEEDANCE_DEFAULT_RATIO,
       camerafixed: SEEDANCE_DEFAULT_CAMERA_FIXED,
-      watermark: SEEDANCE_DEFAULT_WATERMARK,
       generate_audio: SEEDANCE_DEFAULT_GENERATE_AUDIO,
       service_tier: SEEDANCE_DEFAULT_SERVICE_TIER as 'default' | 'flex',
       return_last_frame: SEEDANCE_DEFAULT_RETURN_LAST_FRAME,
