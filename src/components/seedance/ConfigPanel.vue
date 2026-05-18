@@ -3,10 +3,15 @@
     <div class="flex-1 overflow-y-auto p-5">
       <prompt-input class="mb-4" />
       <model-selector class="mb-4" />
+      <resolution-selector class="mb-4" />
+      <ratio-selector class="mb-4" />
       <duration-selector class="mb-4" />
       <generate-audio-switch class="mb-4" />
+      <camera-fixed-switch class="mb-4" />
+      <watermark-switch class="mb-4" />
       <service-tier-selector class="mb-4" />
       <return-last-frame-switch class="mb-4" />
+      <seed-input class="mb-4" />
       <first-frame-image class="mb-2" />
       <last-frame-image class="mb-2" />
     </div>
@@ -27,11 +32,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import PromptInput from './config/PromptInput.vue';
 import ModelSelector from './config/ModelSelector.vue';
 import DurationSelector from './config/DurationSelector.vue';
+import ResolutionSelector from './config/ResolutionSelector.vue';
+import RatioSelector from './config/RatioSelector.vue';
 import GenerateAudioSwitch from './config/GenerateAudioSwitch.vue';
+import CameraFixedSwitch from './config/CameraFixedSwitch.vue';
+import WatermarkSwitch from './config/WatermarkSwitch.vue';
 import FirstFrameImage from './config/FirstFrameImage.vue';
 import LastFrameImage from './config/LastFrameImage.vue';
 import ServiceTierSelector from './config/ServiceTierSelector.vue';
 import ReturnLastFrameSwitch from './config/ReturnLastFrameSwitch.vue';
+import SeedInput from './config/SeedInput.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
@@ -43,9 +53,14 @@ export default defineComponent({
     PromptInput,
     ModelSelector,
     DurationSelector,
+    ResolutionSelector,
+    RatioSelector,
     GenerateAudioSwitch,
+    CameraFixedSwitch,
+    WatermarkSwitch,
     ServiceTierSelector,
     ReturnLastFrameSwitch,
+    SeedInput,
     FirstFrameImage,
     LastFrameImage,
     Consumption

@@ -5,11 +5,19 @@ export interface ISeedanceImageInput {
   role?: SeedanceImageRole;
 }
 
+export type SeedanceResolution = '480p' | '720p' | '1080p';
+export type SeedanceRatio = '16:9' | '4:3' | '1:1' | '3:4' | '9:16' | '21:9' | 'adaptive';
+
 export interface ISeedanceConfig {
   model?: string;
   prompt?: string;
   images?: ISeedanceImageInput[];
   duration?: number;
+  resolution?: SeedanceResolution;
+  ratio?: SeedanceRatio;
+  seed?: number;
+  camerafixed?: boolean;
+  watermark?: boolean;
   generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
@@ -23,6 +31,11 @@ export interface ISeedanceGenerateRequest {
   prompt?: string;
   images?: ISeedanceImageInput[];
   duration?: number;
+  resolution?: SeedanceResolution;
+  ratio?: SeedanceRatio;
+  seed?: number;
+  camerafixed?: boolean;
+  watermark?: boolean;
   generate_audio?: boolean;
   service_tier?: 'default' | 'flex';
   return_last_frame?: boolean;
