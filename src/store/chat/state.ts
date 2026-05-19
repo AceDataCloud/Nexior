@@ -1,10 +1,10 @@
-import { CHAT_MODEL_GPT_5_4_NANO, CHAT_MODEL_GROUP_CHATGPT } from '@/constants';
+import { CHAT_MODEL_GPT_5_4_MINI, CHAT_MODEL_GROUP_CHATGPT } from '@/constants';
 import { IChatState } from './models';
 import { Status } from '@/models';
 
 export default (): IChatState => {
   return {
-    model: CHAT_MODEL_GPT_5_4_NANO,
+    model: CHAT_MODEL_GPT_5_4_MINI,
     modelGroup: CHAT_MODEL_GROUP_CHATGPT,
     applications: undefined,
     application: undefined,
