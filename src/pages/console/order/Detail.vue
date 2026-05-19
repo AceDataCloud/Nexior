@@ -245,6 +245,7 @@ import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
+import { getWechatPaySurface } from '@/utils/wechat';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -588,10 +589,15 @@ export default defineComponent({
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;
       }
+      // For WeChat Pay, tell the backend which surface to prepay against
+      // (pc = Native QR, jsapi = in-WeChat browser). openid wiring lands in a
+      // follow-up; PlatformBackend safely downgrades jsapi -> pc when omitted.
+      const payload: Record<string, unknown> = { pay_way: this.payWay };
+      if (this.payWay === PayWay.WechatPay) {
+        payload.surface = getWechatPaySurface();
+      }
       orderOperator
-        .pay(this.id, {
-          pay_way: this.payWay
-        })
+        .pay(this.id, payload as unknown as IOrder)
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.prepaying = false;
           if (data?.id) {

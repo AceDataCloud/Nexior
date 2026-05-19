@@ -79,6 +79,38 @@
     "message": "Veuillez ouvrir WeChat sur votre téléphone et scanner pour terminer le paiement",
     "description": "Message d'aide pour le paiement WeChat."
   },
+  "message.wechatPayInWechatTip": {
+    "message": "Tap the button below to pay with WeChat.",
+    "description": "Hint shown above the JSAPI 'Pay with WeChat' button when the page is opened inside the WeChat browser."
+  },
+  "button.wechatPayNow": {
+    "message": "Pay with WeChat",
+    "description": "Label for the in-WeChat JSAPI pay action button."
+  },
+  "message.wechatPayMobileGuide": {
+    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
+    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+  },
+  "button.copyPayLink": {
+    "message": "Copy payment link",
+    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+  },
+  "message.wechatPayMobileHint": {
+    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
+    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+  },
+  "message.wechatPayCancelled": {
+    "message": "Payment cancelled.",
+    "description": "Shown when the user dismisses the WeChat JSAPI pay sheet without paying."
+  },
+  "message.wechatPayFailed": {
+    "message": "Payment failed. Please try again.",
+    "description": "Shown when the WeChat JSAPI bridge reports a failure."
+  },
+  "message.wechatPayBridgeUnavailable": {
+    "message": "Please open this page inside WeChat to pay.",
+    "description": "Shown when the WeChat JSAPI bridge cannot be reached (page not running inside WeChat)."
+  },
   "message.free": {
     "message": "Gratuit",
     "description": "Message pour une commande gratuite."

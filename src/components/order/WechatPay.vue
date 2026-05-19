@@ -1,6 +1,31 @@
 <template>
-  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" width="500px" center>
-    <el-row class="paycodes py-[30px] w-[500px] mx-auto">
+  <el-dialog :model-value="visible" :title="$t('application.title.buyService')" :width="dialogWidth" center>
+    <!-- State A: in WeChat with a JSAPI payload from backend -->
+    <div v-if="jsapiPayload" class="wechat-pay-jsapi text-center py-[20px] px-[10px]">
+      <p class="text-[14px] mb-4 leading-relaxed">
+        {{ $t('order.message.wechatPayInWechatTip') }}
+      </p>
+      <el-button type="success" size="large" round class="w-[220px]" :loading="jsapiInvoking" @click="onInvokeJsapi">
+        {{ $t('order.button.wechatPayNow') }}
+      </el-button>
+      <p v-if="jsapiError" class="text-[12px] text-red-500 mt-3 break-words">{{ jsapiError }}</p>
+    </div>
+
+    <!-- State B: mobile browser outside WeChat (H5 unavailable on our merchant) -->
+    <div v-else-if="isMobileOutsideWechat" class="wechat-pay-guide text-center py-[20px] px-[10px]">
+      <p class="text-[14px] mb-4 leading-relaxed">
+        {{ $t('order.message.wechatPayMobileGuide') }}
+      </p>
+      <el-button type="success" size="large" round class="w-[220px]" @click="onCopyLink">
+        {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
+      </el-button>
+      <p class="text-[12px] text-gray-500 mt-3 leading-relaxed">
+        {{ $t('order.message.wechatPayMobileHint') }}
+      </p>
+    </div>
+
+    <!-- State C: PC / desktop — original QR code layout -->
+    <el-row v-else class="paycodes py-[30px] w-[500px] mx-auto">
       <el-col :span="12">
         <div class="paycode wechat">
           <qr-code
@@ -30,18 +55,25 @@
 <script lang="ts">
 import { orderOperator } from '@/operators';
 import { defineComponent } from 'vue';
-import { ElDialog, ElRow, ElCol } from 'element-plus';
+import { ElDialog, ElRow, ElCol, ElButton, ElMessage } from 'element-plus';
 import QrCode from 'vue-qrcode';
+import copy from 'copy-to-clipboard';
 import { IOrder, IOrderDetailResponse, OrderState } from '@/models';
+import { isInWeChat, isMobileBrowser, parseJsapiPayload, invokeWechatJsapi, IWechatJsapiPayload } from '@/utils/wechat';
 
 interface IData {
   refreshTimer: number | undefined;
+  copied: boolean;
+  copiedTimer: number | undefined;
+  jsapiInvoking: boolean;
+  jsapiError: string;
 }
 
 export default defineComponent({
   name: 'PayOrderDialog',
   components: {
     ElDialog,
+    ElButton,
     QrCode,
     ElRow,
     ElCol
@@ -60,15 +92,52 @@ export default defineComponent({
   emits: ['hide', 'update:modelValue'],
   data(): IData {
     return {
-      refreshTimer: undefined
+      refreshTimer: undefined,
+      copied: false,
+      copiedTimer: undefined,
+      jsapiInvoking: false,
+      jsapiError: ''
     };
+  },
+  computed: {
+    jsapiPayload(): IWechatJsapiPayload | null {
+      return parseJsapiPayload(this.modelValue?.pay_url);
+    },
+    isMobileOutsideWechat(): boolean {
+      return isMobileBrowser() && !isInWeChat();
+    },
+    dialogWidth(): string {
+      // Tighter dialog for the mobile guide / JSAPI button views.
+      if (this.jsapiPayload || this.isMobileOutsideWechat) {
+        return '90%';
+      }
+      return '500px';
+    }
+  },
+  watch: {
+    'modelValue.pay_url'() {
+      // Reset transient state when the pay payload changes.
+      this.jsapiError = '';
+    },
+    visible(value: boolean) {
+      if (value && this.jsapiPayload) {
+        // Auto-trigger the JSAPI bridge when the dialog opens with a payload.
+        this.onInvokeJsapi();
+      }
+    }
   },
   mounted() {
     this.onRefresh();
+    if (this.visible && this.jsapiPayload) {
+      this.onInvokeJsapi();
+    }
   },
   unmounted() {
     if (this.refreshTimer) {
       clearTimeout(this.refreshTimer);
+    }
+    if (this.copiedTimer) {
+      clearTimeout(this.copiedTimer);
     }
   },
   methods: {
@@ -82,7 +151,7 @@ export default defineComponent({
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           // if not paid, check for next loop
           if (data.state !== OrderState.PAID) {
-            setTimeout(() => {
+            this.refreshTimer = window.setTimeout(() => {
               this.onRefresh();
             }, 2000);
           } else {
@@ -92,10 +161,59 @@ export default defineComponent({
           this.$emit('update:modelValue', data);
         })
         .catch(() => {
-          setTimeout(() => {
+          this.refreshTimer = window.setTimeout(() => {
             this.onRefresh();
           }, 2000);
         });
+    },
+    async onCopyLink() {
+      const url = typeof window !== 'undefined' ? window.location.href : '';
+      if (!url) {
+        return;
+      }
+      let ok = false;
+      try {
+        // copy-to-clipboard v4 returns Promise<boolean>; v3 returned boolean.
+        // `await` works for both so this stays robust across versions.
+        ok = await copy(url, { debug: false });
+      } catch {
+        ok = false;
+      }
+      if (ok) {
+        this.copied = true;
+        if (this.copiedTimer) {
+          clearTimeout(this.copiedTimer);
+        }
+        this.copiedTimer = window.setTimeout(() => {
+          this.copied = false;
+        }, 2000);
+      } else {
+        ElMessage.error(String(this.$t('common.message.copyFailed') || 'Copy failed'));
+      }
+    },
+    async onInvokeJsapi() {
+      const payload = this.jsapiPayload;
+      if (!payload || this.jsapiInvoking) {
+        return;
+      }
+      this.jsapiInvoking = true;
+      this.jsapiError = '';
+      try {
+        const result = await invokeWechatJsapi(payload);
+        if (result === 'ok') {
+          // Backend webhook will flip the order to PAID; the refresh poller
+          // will detect it and close the dialog.
+          ElMessage.success(String(this.$t('order.message.paidSuccessfully')));
+        } else if (result === 'cancel') {
+          this.jsapiError = String(this.$t('order.message.wechatPayCancelled'));
+        } else {
+          this.jsapiError = String(this.$t('order.message.wechatPayFailed'));
+        }
+      } catch (err) {
+        this.jsapiError = String(this.$t('order.message.wechatPayBridgeUnavailable'));
+      } finally {
+        this.jsapiInvoking = false;
+      }
     }
   }
 });
