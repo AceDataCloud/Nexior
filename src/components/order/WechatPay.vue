@@ -24,7 +24,26 @@
       </p>
     </div>
 
-    <!-- State C: PC / desktop — original QR code layout -->
+    <!-- State C: mobile inside WeChat — long-press the Native QR to recognise and pay. -->
+    <!-- The same `weixin://wxpay/bizpayurl?pr=…` Native URL the desktop QR encodes also  -->
+    <!-- works in mobile WeChat: long-press the image and the WeChat client opens the pay -->
+    <!-- sheet directly. So we render the QR mobile-friendly (single column, no PC tutorial -->
+    <!-- image) and tell the user to long-press. No JSAPI / openid required.               -->
+    <div v-else-if="isMobileInsideWechat" class="wechat-pay-longpress text-center py-[20px] px-[10px]">
+      <p class="text-[14px] mb-4 leading-relaxed">
+        {{ $t('order.message.wechatPayLongPressTip') }}
+      </p>
+      <qr-code
+        v-if="modelValue?.pay_url"
+        :value="modelValue?.pay_url"
+        :size="240"
+        class="qrcode mx-auto"
+        type="image/png"
+        :color="{ dark: '#000000', light: '#ffffff' }"
+      />
+    </div>
+
+    <!-- State D: PC / desktop — original QR code layout -->
     <el-row v-else class="paycodes py-[30px] w-[500px] mx-auto">
       <el-col :span="12">
         <div class="paycode wechat">
@@ -106,9 +125,12 @@ export default defineComponent({
     isMobileOutsideWechat(): boolean {
       return isMobileBrowser() && !isInWeChat();
     },
+    isMobileInsideWechat(): boolean {
+      return isMobileBrowser() && isInWeChat();
+    },
     dialogWidth(): string {
-      // Tighter dialog for the mobile guide / JSAPI button views.
-      if (this.jsapiPayload || this.isMobileOutsideWechat) {
+      // Tighter dialog for any of the phone-sized views; keep 500px only for PC QR.
+      if (this.jsapiPayload || this.isMobileOutsideWechat || this.isMobileInsideWechat) {
         return '90%';
       }
       return '500px';
