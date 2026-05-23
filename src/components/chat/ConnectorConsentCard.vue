@@ -19,6 +19,7 @@
         v-for="entry in req.entries"
         :key="entry.connector"
         :entry="entry"
+        :catalog="catalogFor(entry)"
         :disabled="resolved"
         @authorize="onAuthorize"
       />
@@ -43,10 +44,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IConsentRequestEntry, IConsentRequestPayload, IConsentRequestRequirement } from '@/models';
 import ConnectorEntryRow from './ConnectorEntryRow.vue';
 import { buildConsentOutput, unsatisfiedConnectors } from './connectorConsent';
+import { getCatalogItem, type IConnectorCatalogSummary } from './connectorCatalogCache';
 
 interface IData {
   resolvedAuthorized: string[];
   resolvedSkipped: string[];
+  /** Catalog rows resolved from AuthBackend, keyed by `catalog_id`.
+   *  Empty entries stay absent so the row renders the slug fallback
+   *  until the fetch lands. */
+  catalogs: Record<string, IConnectorCatalogSummary>;
 }
 
 export default defineComponent({
@@ -80,7 +86,8 @@ export default defineComponent({
   data(): IData {
     return {
       resolvedAuthorized: [],
-      resolvedSkipped: []
+      resolvedSkipped: [],
+      catalogs: {}
     };
   },
   computed: {
@@ -111,6 +118,13 @@ export default defineComponent({
       handler() {
         if (this.resolved) this.parsePreviousOutput();
       }
+    },
+    payload: {
+      immediate: true,
+      deep: false,
+      handler() {
+        this.refreshCatalogs();
+      }
     }
   },
   methods: {
@@ -119,6 +133,31 @@ export default defineComponent({
       // hasn't been auto-satisfied (one connected entry hides the
       // "either of these" prompt).
       return req.entries.length > 1 && !req.satisfied;
+    },
+    /** Look up the catalog row a `ConnectorEntryRow` should render with.
+     *  Returns `null` until `refreshCatalogs` has populated the entry. */
+    catalogFor(entry: IConsentRequestEntry): IConnectorCatalogSummary | null {
+      return this.catalogs[entry.catalog_id] || null;
+    },
+    /** Fetch catalog rows for every unique `catalog_id` in the payload.
+     *  De-duped at the cache layer; safe to call repeatedly. */
+    async refreshCatalogs(): Promise<void> {
+      const ids = new Set<string>();
+      for (const req of this.requirements) {
+        for (const entry of req.entries) {
+          if (entry.catalog_id) ids.add(entry.catalog_id);
+        }
+      }
+      await Promise.all(
+        Array.from(ids).map(async (id) => {
+          if (this.catalogs[id]) return;
+          const item = await getCatalogItem(id);
+          if (item) {
+            // Re-assign so Vue 3 reactivity picks up the new key.
+            this.catalogs = { ...this.catalogs, [id]: item };
+          }
+        })
+      );
     },
     onAuthorize(entry: IConsentRequestEntry) {
       // PR-6 wires the OAuth return path. For now the parent decides what

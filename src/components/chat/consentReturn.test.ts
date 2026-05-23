@@ -11,8 +11,13 @@ const PAYLOAD: IConsentRequestPayload = {
       match: 'any',
       satisfied: false,
       entries: [
-        { connector: 'acedatacloud/gmail', status: 'unconnected', install_url: 'https://x/g' },
-        { connector: 'acedatacloud/outlook', status: 'unconnected', install_url: 'https://x/o' }
+        { connector: 'acedatacloud/gmail', catalog_id: 'cat_gmail', status: 'unconnected', install_url: 'https://x/g' },
+        {
+          connector: 'acedatacloud/outlook',
+          catalog_id: 'cat_outlook',
+          status: 'unconnected',
+          install_url: 'https://x/o'
+        }
       ]
     }
   ]

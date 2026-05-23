@@ -157,6 +157,14 @@ export interface IAskUserQuestionPayload {
 export interface IConsentRequestEntry {
   /** Catalog identifier, e.g. `acedatacloud/suno`. */
   connector: string;
+  /** Stable UUID of the matching `ConnectorCatalogItem` row in AuthBackend
+   *  (`/api/v1/connections/catalog/<id>/`). Required: the consent card uses
+   *  this to fetch logo / localized name / permission list so each row can
+   *  show the upstream brand instead of the opaque slug. Emitted by the
+   *  worker's `get_connector_status` tool — there is no fallback because
+   *  Layer-2 validation guarantees every entry's `connector` resolves to
+   *  a catalog row. */
+  catalog_id: string;
   /** Short, user-facing phrase explaining why this connector is needed.
    *  May be empty/undefined if the model omitted it. */
   context?: string;
