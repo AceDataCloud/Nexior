@@ -1,5 +1,22 @@
 apply plugin: 'com.android.application'
 
+def signingProps = new Properties()
+def signingPropsFile = rootProject.file('key.properties')
+if (signingPropsFile.exists()) {
+    signingProps.load(new FileInputStream(signingPropsFile))
+}
+
+// Resolution order: android/key.properties (local dev) → -P project property (CI) → env var.
+def resolveSigning = { String key ->
+    signingProps.getProperty(key) ?: (project.findProperty(key) ?: System.getenv(key))
+}
+
+def releaseStoreFile = resolveSigning('RELEASE_STORE_FILE')
+def releaseStorePassword = resolveSigning('RELEASE_STORE_PASSWORD')
+def releaseKeyAlias = resolveSigning('RELEASE_KEY_ALIAS')
+def releaseKeyPassword = resolveSigning('RELEASE_KEY_PASSWORD')
+def hasReleaseSigning = releaseStoreFile && releaseStorePassword && releaseKeyAlias && releaseKeyPassword
+
 android {
     namespace "com.acedatacloud.nexior"
     compileSdk rootProject.ext.compileSdkVersion
@@ -18,11 +35,11 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('RELEASE_STORE_FILE')) {
-                storeFile file(RELEASE_STORE_FILE)
-                storePassword RELEASE_STORE_PASSWORD
-                keyAlias RELEASE_KEY_ALIAS
-                keyPassword RELEASE_KEY_PASSWORD
+            if (hasReleaseSigning) {
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
             }
         }
     }
@@ -31,7 +48,7 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            if (project.hasProperty('RELEASE_STORE_FILE')) {
+            if (hasReleaseSigning) {
                 signingConfig signingConfigs.release
             }
         }
