@@ -76,7 +76,7 @@ import type { ISiteAuth, ISiteAuthProvider } from '@/models';
 // honour this config. The ``username`` provider is intentionally
 // omitted — it's an internal/admin-only mechanism and not something
 // site owners should expose to end users.
-const PROVIDER_IDS = ['email', 'google', 'github', 'phone', 'wechat'] as const;
+const PROVIDER_IDS = ['email', 'google', 'github', 'apple', 'phone', 'wechat'] as const;
 type ProviderId = (typeof PROVIDER_IDS)[number];
 
 interface ProviderOption {
