@@ -65,6 +65,7 @@
                   </el-form-item>
                   <el-form-item>
                     <el-button
+                      v-if="showPayment"
                       type="primary"
                       size="large"
                       class="btn-create"
@@ -112,6 +113,7 @@ import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from 
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString } from '@/utils';
+import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import ServiceEstimation from '@/components/service/Estimation.vue';
 
@@ -162,6 +164,12 @@ export default defineComponent({
     },
     id() {
       return this.$route.params?.id?.toString();
+    },
+    // App Store Review Guideline 3.1.1: hide non-IAP purchase actions on
+    // the iOS surface. The form still renders for deep-linked users but
+    // the "Create Order" submit button is removed.
+    showPayment(): boolean {
+      return !isIOS();
     },
     price() {
       if (this.application?.service?.price && this.form.amount) {

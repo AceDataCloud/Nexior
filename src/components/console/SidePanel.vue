@@ -33,7 +33,7 @@ import {
   ROUTE_INDEX
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { isOfficial } from '@/utils';
+import { isOfficial, isIOS } from '@/utils';
 
 interface ILink {
   key: string;
@@ -80,6 +80,14 @@ export default defineComponent({
           icon: 'fa-solid fa-rotate-left'
         }
       ];
+
+      // App Store Review Guideline 3.1.1: hide all order/payment entry
+      // points when running inside the iOS native bundle. Users can still
+      // reach order routes via deep link, but they will see no actionable
+      // payment UI (see the v-if guards in order/Detail.vue etc.).
+      if (isIOS()) {
+        links = links.filter((link) => link.key !== 'order-list');
+      }
 
       return links;
     }

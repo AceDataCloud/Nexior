@@ -101,7 +101,7 @@
             <el-row v-if="order?.state === OrderState.PENDING">
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
-                <div v-if="showPayWays && order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
+                <div v-if="showPayment && showPayWays && order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
                   <div
                     :class="{
                       payway: true,
@@ -169,12 +169,12 @@
                     <span class="payname">{{ $t('order.title.paypal') }}</span>
                   </div>
                 </div>
-                <div v-if="!order?.pay_way">
+                <div v-if="showPayment && !order?.pay_way">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
                     $t('common.button.pay')
                   }}</el-button>
                 </div>
-                <div v-else>
+                <div v-else-if="showPayment">
                   <el-button type="primary" round size="large" class="btn-repay" @click="onRepay">{{
                     $t('common.button.repay')
                   }}</el-button>
@@ -245,6 +245,7 @@ import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
+import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -316,6 +317,12 @@ export default defineComponent({
     },
     redirect() {
       return this.$route.query?.redirect;
+    },
+    // App Store Review Guideline 3.1.1: do not expose any non-IAP payment
+    // UI inside the iOS bundle. We keep the order details visible (read
+    // only) but hide every pay-way selector and the Pay / Repay buttons.
+    showPayment(): boolean {
+      return !isIOS();
     },
     pricingInfo(): {
       original: number;

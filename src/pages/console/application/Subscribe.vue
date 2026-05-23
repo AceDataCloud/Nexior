@@ -44,6 +44,7 @@
                       </div>
                       <div class="operations">
                         <el-button
+                          v-if="showPayment"
                           class="btn btn-subscribe"
                           :type="subscription?.name === item?.name ? 'primary' : ''"
                           round
@@ -54,7 +55,7 @@
                     </el-card>
                   </el-col>
                 </el-row>
-                <div v-if="!loading" class="extra">
+                <div v-if="!loading && showPayment" class="extra">
                   <span>{{ $t('console.message.doNotWantSubscribe') }}</span>
                   <el-button type="primary" class="btn btn-extra" round size="small" @click="onBuyExtra">
                     {{ $t('console.message.buyExtra') }}
@@ -75,6 +76,7 @@ import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackag
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString } from '@/utils';
+import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
@@ -128,6 +130,12 @@ export default defineComponent({
     },
     applicationId() {
       return this.$route.params?.id?.toString();
+    },
+    // App Store Review Guideline 3.1.1: hide non-IAP purchase actions
+    // inside the iOS bundle. The cards still render so deep-linked users
+    // can see the package info, but the buy buttons are removed.
+    showPayment(): boolean {
+      return !isIOS();
     },
     subscriptions(): ISubscription[] {
       const items: ISubscription[] = [
