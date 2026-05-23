@@ -24,7 +24,7 @@
             </div>
           </el-card>
         </el-col>
-        <el-col v-if="globalApplications?.length > 0" :md="12" :xs="24">
+        <el-col v-if="showPayment && globalApplications?.length > 0" :md="12" :xs="24">
           <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="flex flex-row justify-between align-center">
@@ -57,6 +57,7 @@
                   {{ $t('application.button.usage') }}
                 </el-button>
                 <el-button
+                  v-if="showPayment"
                   class="!m-0 !px-2"
                   type="primary"
                   round
@@ -165,7 +166,7 @@
                       <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                       {{ $t('application.button.usage') }}
                     </el-button>
-                    <el-button class="!m-0 !px-2" type="primary" round size="small" @click="onBuyMore(scope?.row)">
+                    <el-button v-if="showPayment" class="!m-0 !px-2" type="primary" round size="small" @click="onBuyMore(scope?.row)">
                       <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[12px]" />
                       {{ $t('application.button.buyMore') }}
                     </el-button>
@@ -211,6 +212,7 @@ import {
   ElMessage
 } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
+import { isIOS } from '@/utils';
 import {
   IApplication,
   IApplicationListResponse,
@@ -283,6 +285,14 @@ export default defineComponent({
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
+    },
+    // App Store Review Guideline 3.1.1 forbids exposing non-IAP purchase
+    // flows inside the iOS bundle. Hide every "Buy More" / order entry
+    // on the iOS surface; the page remains reachable via deep link but
+    // shows no payment UI (see also order/Detail.vue, Subscribe.vue,
+    // Extra.vue, components/console/SidePanel.vue).
+    showPayment(): boolean {
+      return !isIOS();
     }
   },
   watch: {
