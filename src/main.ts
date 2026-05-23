@@ -14,6 +14,7 @@ import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
 import { getSurface, isNative } from '@/utils/surface';
+import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import {
   initializeCookies,
   initializeDescription,
@@ -30,6 +31,11 @@ import {
   initializeRedirect,
   initializeFingerprint
 } from './utils/initializer';
+
+// Pick up `?features=...` overrides and persist them to the FEATURES
+// cookie before anything else runs — router guards / store hydration /
+// component setup all consult `isFeatureEnabled()` synchronously.
+syncFeaturesFromUrl();
 
 initializeChunkLoadErrorHandler();
 
