@@ -73,24 +73,23 @@
     <el-dialog
       v-model="opening.visible"
       :title="$t('subsite.title.openSite')"
-      width="auto"
+      width="420px"
       class="open-dialog"
       append-to-body
     >
-      <template #footer>
-        <div class="open-actions">
-          <el-button round @click="opening.visible = false">{{ $t('common.button.cancel') }}</el-button>
-          <el-button
-            v-for="url in opening.urls"
-            :key="url.href"
-            round
-            :type="url.isCustom ? 'success' : 'primary'"
-            @click="onConfirmOpen(url.href)"
-          >
-            {{ url.hostname }}
-          </el-button>
-        </div>
-      </template>
+      <p class="open-hint">{{ $t('subsite.message.openSiteHint') }}</p>
+      <div class="open-actions">
+        <el-button
+          v-for="url in opening.urls"
+          :key="url.href"
+          round
+          type="primary"
+          size="large"
+          @click="onConfirmOpen(url.href)"
+        >
+          {{ $t('subsite.button.open') }} {{ url.hostname }}
+        </el-button>
+      </div>
     </el-dialog>
 
     <el-dialog v-model="creating.visible" :title="$t('subsite.title.create')" width="480px" class="create-dialog">
@@ -546,12 +545,27 @@ export default defineComponent({
 // same <style scoped> block avoids leaking selectors globally while
 // still reaching the teleported nodes.
 .open-dialog {
+  :deep(.el-dialog) {
+    max-width: calc(100vw - 32px);
+  }
+  :deep(.open-hint) {
+    margin: 0 0 16px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--el-text-color-regular);
+  }
   :deep(.open-actions) {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
+    flex-direction: column;
+    gap: 10px;
+
+    .el-button {
+      width: 100%;
+      margin-left: 0;
+    }
+    .el-button + .el-button {
+      margin-left: 0;
+    }
   }
 }
 </style>
