@@ -38,6 +38,8 @@
             @restart="onRestart"
             @answer-ask-user-question="onAnswerAskUserQuestion"
             @skip-ask-user-question="onSkipAskUserQuestion"
+            @respond-connector-consent="onRespondConnectorConsent"
+            @authorize-connector="onAuthorizeConnector"
           />
         </div>
         <div class="starter">
@@ -79,7 +81,7 @@ import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { IChatMessageContentItem } from '@/models';
+import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -689,6 +691,66 @@ export default defineComponent({
       delete block.pending_question;
     },
     /**
+     * Resume a paused conversation by submitting a tool result for the
+     * `get_connector_status` block. Mirrors `onAnswerAskUserQuestion`:
+     * folds the pending block locally so the card flips to the resolved
+     * banner immediately, pushes a fresh pending assistant message, and
+     * runs the next streaming turn against `tool_results`.
+     */
+    async onRespondConnectorConsent(payload: { tool_use_id: string; output: string }) {
+      const token = this.credential?.token;
+      if (!token || !this.conversationId) {
+        console.error('cannot resume: no token or no conversation id');
+        return;
+      }
+      const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
+      if (lastAssistant && Array.isArray(lastAssistant.content)) {
+        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
+          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
+        );
+        if (block) {
+          block.status = 'done';
+          block.output = payload.output;
+          // Keep `pending_consent_request` so the resolved card can still
+          // render the requirements list. (`pending_question` resume strips
+          // its sentinel; `pending_consent_request` is the only handle the
+          // collapsed view has to the original requirements list.)
+        }
+      }
+      this.messages.push({
+        content: '',
+        role: ROLE_ASSISTANT,
+        state: IChatMessageState.PENDING
+      });
+      this.onScrollDown();
+      this.answering = true;
+      this.canceler = new AbortController();
+      this._streamAssistantTurn(
+        {
+          id: this.conversationId,
+          model: this.model.name,
+          stateful: true,
+          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }]
+        },
+        token,
+        this.conversationId
+      );
+    },
+    /**
+     * Open the connector's OAuth install URL. Desktop default: pop a new
+     * window; PR-6 will wire `postMessage` from the popup back to here so
+     * the card can auto-resume with `authorized=[<connector>]` once the
+     * connection is active.
+     */
+    onAuthorizeConnector(payload: { tool_use_id: string; entry: { connector: string; install_url?: string } }) {
+      const url = payload.entry?.install_url;
+      if (!url) {
+        console.warn('authorize click with no install_url', payload);
+        return;
+      }
+      window.open(url, '_blank', 'noopener,noreferrer');
+    },
+    /**
      * Shared SSE-driven assistant-turn streamer. Handles deltas, tool_use,
      * cards, citations, ask_user_question, and final state transitions.
      * Caller is responsible for pushing the pending assistant message,
@@ -765,7 +827,18 @@ export default defineComponent({
               const toolItem = toolMap.get(response.tool_id);
               if (toolItem) {
                 toolItem.status = 'awaiting_input';
-                toolItem.pending_question = response.payload;
+                toolItem.pending_question = response.payload as IAskUserQuestionPayload;
+              }
+            } else if (response.type === 'consent_request' && response.tool_id && response.payload) {
+              // Worker pauses the turn on `get_connector_status` with unmet
+              // requirements. Flip the matching tool_use block to
+              // `awaiting_input`; the renderer swaps in
+              // <ConnectorConsentCard>. SSE then ends with terminal_reason
+              // 'awaiting_user_input'.
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.status = 'awaiting_input';
+                toolItem.pending_consent_request = response.payload as IConsentRequestPayload;
               }
             } else if (response.type === 'artifact' && response.artifact) {
               if (response.artifact.type === 'image' || response.artifact.mimeType?.startsWith('image/')) {

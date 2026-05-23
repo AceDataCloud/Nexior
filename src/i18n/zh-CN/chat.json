@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "你的回答",
     "description": "无法从历史输出中提取具体答案时的兜底文案"
+  },
+  "consent.title": {
+    "message": "需要连接器授权",
+    "description": "连接器授权卡片标题"
+  },
+  "consent.matchAny": {
+    "message": "选择其一即可",
+    "description": "标签：本组连接器任选其一即可满足需求"
+  },
+  "consent.matchAll": {
+    "message": "全部需要授权",
+    "description": "标签：本组连接器全部都需要授权"
+  },
+  "consent.authorize": {
+    "message": "去授权",
+    "description": "授权按钮，点击后会打开第三方授权页面"
+  },
+  "consent.skip": {
+    "message": "暂不授权",
+    "description": "跳过授权按钮，跳过后模型将在没有该连接器的情况下继续"
+  },
+  "consent.statusConnected": {
+    "message": "已连接",
+    "description": "已连接连接器的状态徽标"
+  },
+  "consent.statusUnconnected": {
+    "message": "未连接",
+    "description": "未连接连接器的状态徽标（无授权链接时显示）"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "已授权：{list}",
+    "description": "用户授权完成后的卡片底部说明，{list} 为已授权连接器列表"
+  },
+  "consent.resolvedSkipped": {
+    "message": "已跳过连接器授权",
+    "description": "用户跳过授权后的卡片底部说明"
   }
 }

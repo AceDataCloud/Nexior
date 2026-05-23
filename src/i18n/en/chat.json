@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Your Answer",
     "description": "Fallback text when a specific answer cannot be extracted from historical output"
+  },
+  "consent.title": {
+    "message": "Connector authorization needed",
+    "description": "Title of the connector consent card"
+  },
+  "consent.matchAny": {
+    "message": "Authorize any of these",
+    "description": "Label: any one of the listed connectors satisfies this requirement"
+  },
+  "consent.matchAll": {
+    "message": "Authorize all of these",
+    "description": "Label: every listed connector must be authorized"
+  },
+  "consent.authorize": {
+    "message": "Authorize",
+    "description": "Authorize button; opens the third-party OAuth flow"
+  },
+  "consent.skip": {
+    "message": "Skip",
+    "description": "Skip button; continue without authorizing any connector"
+  },
+  "consent.statusConnected": {
+    "message": "Connected",
+    "description": "Pill badge for already-connected connectors"
+  },
+  "consent.statusUnconnected": {
+    "message": "Unavailable",
+    "description": "Pill badge for unconnected connectors with no install URL"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Authorized: {list}",
+    "description": "Resolved banner after authorization; {list} = comma-separated connector ids"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Connector authorization skipped",
+    "description": "Resolved banner when the user clicked Skip"
   }
 }
