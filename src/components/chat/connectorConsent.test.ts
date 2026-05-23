@@ -13,11 +13,13 @@ const REQUIRE_GMAIL: IConsentRequestPayload = {
       entries: [
         {
           connector: 'acedatacloud/gmail',
+          catalog_id: 'cat_gmail',
           status: 'unconnected',
           install_url: 'https://example.com/oauth/gmail'
         },
         {
           connector: 'acedatacloud/outlook',
+          catalog_id: 'cat_outlook',
           status: 'unconnected',
           install_url: 'https://example.com/oauth/outlook'
         }
@@ -34,15 +36,20 @@ const REQUIRE_GMAIL_AND_DRIVE: IConsentRequestPayload = {
       match: 'all',
       satisfied: false,
       entries: [
-        { connector: 'acedatacloud/gmail', status: 'connected' },
-        { connector: 'acedatacloud/drive', status: 'unconnected', install_url: 'https://x/drive' }
+        { connector: 'acedatacloud/gmail', catalog_id: 'cat_gmail', status: 'connected' },
+        {
+          connector: 'acedatacloud/drive',
+          catalog_id: 'cat_drive',
+          status: 'unconnected',
+          install_url: 'https://x/drive'
+        }
       ]
     },
     {
       requirement_index: 1,
       match: 'any',
       satisfied: true,
-      entries: [{ connector: 'acedatacloud/calendar', status: 'connected' }]
+      entries: [{ connector: 'acedatacloud/calendar', catalog_id: 'cat_calendar', status: 'connected' }]
     }
   ]
 };
@@ -67,13 +74,13 @@ describe('unsatisfiedConnectors', () => {
           requirement_index: 0,
           match: 'any',
           satisfied: false,
-          entries: [{ connector: 'acedatacloud/gmail', status: 'unconnected' }]
+          entries: [{ connector: 'acedatacloud/gmail', catalog_id: 'cat_gmail', status: 'unconnected' }]
         },
         {
           requirement_index: 1,
           match: 'any',
           satisfied: false,
-          entries: [{ connector: 'acedatacloud/gmail', status: 'unconnected' }]
+          entries: [{ connector: 'acedatacloud/gmail', catalog_id: 'cat_gmail', status: 'unconnected' }]
         }
       ]
     };
@@ -119,7 +126,7 @@ describe('isAllSatisfied', () => {
           requirement_index: 0,
           match: 'any',
           satisfied: true,
-          entries: [{ connector: 'acedatacloud/x', status: 'connected' }]
+          entries: [{ connector: 'acedatacloud/x', catalog_id: 'cat_x', status: 'connected' }]
         }
       ]
     };

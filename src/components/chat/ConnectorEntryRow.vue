@@ -1,12 +1,17 @@
 <template>
   <div class="connector-entry-row" :class="{ 'is-connected': entry.status === 'connected' }">
     <div class="entry-icon" aria-hidden="true">
-      <font-awesome-icon v-if="entry.status === 'connected'" icon="fa-solid fa-circle-check" class="icon-connected" />
+      <img v-if="iconUrl" :src="iconUrl" class="icon-logo" :alt="displayName" @error="onLogoError" />
+      <font-awesome-icon
+        v-else-if="entry.status === 'connected'"
+        icon="fa-solid fa-circle-check"
+        class="icon-connected"
+      />
       <font-awesome-icon v-else icon="fa-solid fa-plug" class="icon-unconnected" />
     </div>
     <div class="entry-text">
       <div class="entry-name">{{ displayName }}</div>
-      <div v-if="entry.context" class="entry-context">{{ entry.context }}</div>
+      <div v-if="secondaryText" class="entry-context">{{ secondaryText }}</div>
     </div>
     <div class="entry-action">
       <span v-if="entry.status === 'connected'" class="status-pill connected">
@@ -27,6 +32,7 @@ import { defineComponent, PropType } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IConsentRequestEntry } from '@/models';
+import type { IConnectorCatalogSummary } from './connectorCatalogCache';
 
 export default defineComponent({
   name: 'ConnectorEntryRow',
@@ -36,6 +42,14 @@ export default defineComponent({
       type: Object as PropType<IConsentRequestEntry>,
       required: true
     },
+    /** Catalog row resolved by the parent via `connectorCatalogCache`.
+     *  When `null` the row falls back to the plug-icon + slug display
+     *  used before PR-3b (e.g. while the fetch is in flight or after a
+     *  cache miss). */
+    catalog: {
+      type: Object as PropType<IConnectorCatalogSummary | null>,
+      default: null
+    },
     /** When true, hide the action button (resolved card / no-op state). */
     disabled: {
       type: Boolean,
@@ -43,23 +57,55 @@ export default defineComponent({
     }
   },
   emits: ['authorize'],
+  data() {
+    return {
+      // Flips to `true` if `<img>` errors so the template falls back to
+      // the FA icon — common case is a stale `icon_url` (404 / CORS).
+      logoError: false
+    };
+  },
   computed: {
-    /**
-     * Catalog ids look like `acedatacloud/suno` or `notion`. Strip the
-     * `acedatacloud/` namespace so the bare service name (`suno`) is the
-     * primary label; fall back to the raw slug for third-party rows.
-     */
-    displayName(): string {
+    /** Slug-derived label used when the catalog row hasn't arrived yet.
+     *  Strips the `acedatacloud/` namespace so first-party connectors
+     *  read as `suno` / `producer` instead of the full identifier. */
+    fallbackName(): string {
       const slug = this.entry.connector ?? '';
       if (slug.startsWith('acedatacloud/')) {
         return slug.slice('acedatacloud/'.length);
       }
       return slug;
+    },
+    displayName(): string {
+      return this.catalog?.name?.trim() || this.fallbackName;
+    },
+    iconUrl(): string {
+      if (this.logoError) return '';
+      return this.catalog?.icon_url || '';
+    },
+    /** Two-line layout: the model-supplied `context` wins because it's
+     *  hand-written for THIS conversation. When absent, fall back to
+     *  the catalog's `short_description` so the row still has a useful
+     *  subtitle. */
+    secondaryText(): string {
+      if (this.entry.context && this.entry.context.trim()) {
+        return this.entry.context;
+      }
+      return this.catalog?.short_description || '';
+    }
+  },
+  watch: {
+    'catalog.icon_url'() {
+      // Catalog refresh — re-allow the image to render in case the
+      // previous load errored on a stale URL.
+      this.logoError = false;
     }
   },
   methods: {
     onAuthorize() {
       this.$emit('authorize', this.entry);
+    },
+    onLogoError() {
+      this.logoError = true;
     }
   }
 });
@@ -92,6 +138,14 @@ export default defineComponent({
   border-radius: 50%;
   background: var(--el-bg-color);
   font-size: 14px;
+  overflow: hidden;
+}
+
+.icon-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .icon-connected {
