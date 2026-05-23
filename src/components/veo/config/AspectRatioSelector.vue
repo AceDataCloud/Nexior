@@ -27,25 +27,8 @@ export default defineComponent({
   name: 'AspectRatioSelector',
   data() {
     return {
+      // Upstream Veo only supports 16:9 and 9:16; other ratios get rejected.
       options: [
-        {
-          value: '1:1',
-          label: '1:1',
-          width: 20,
-          height: 20
-        },
-        {
-          value: '4:3',
-          label: '4:3',
-          width: 20,
-          height: 15
-        },
-        {
-          value: '3:4',
-          label: '3:4',
-          width: 15,
-          height: 20
-        },
         {
           value: '16:9',
           label: '16:9',
