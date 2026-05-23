@@ -82,6 +82,12 @@ import Disclaimer from '@/components/chat/Disclaimer.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
+import {
+  buildAuthorizedConsentOutput,
+  findPendingConsentBlock,
+  parseConsentReturnFromQuery,
+  type IConsentReturn
+} from '@/components/chat/consentReturn';
 import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -111,6 +117,15 @@ export interface IData {
    * locally” and skip the otherwise-redundant `retrieve` call.
    */
   skipNextRestoreId: string | undefined;
+  /**
+   * Stashed on mount from the `?consent=&connector=` deep-link the
+   * AuthFrontend install page redirects back to after a successful
+   * OAuth round-trip. The `messages` watcher consumes it as soon as
+   * the matching awaiting `get_connector_status` block is in the
+   * conversation, then clears it. Set to ``null`` when there's no
+   * pending return (the common case).
+   */
+  pendingConsentReturn: IConsentReturn | null;
 }
 
 export default defineComponent({
@@ -141,7 +156,8 @@ export default defineComponent({
       agentToolCount: 0,
       agentConnectedAt: '',
       skipNextRestoreId: undefined,
-      messages: []
+      messages: [],
+      pendingConsentReturn: null
     };
   },
   computed: {
@@ -232,9 +248,33 @@ export default defineComponent({
         return;
       }
       await this.onRestoreCurrentConversation();
+    },
+    /**
+     * Consent-return auto-resume: after the AuthFrontend install page
+     * completes a successful OAuth round-trip it redirects back to
+     * ``/chat/c/<conv>?consent=<rid>&connector=<id>``. ``mounted``
+     * stashes that pair on ``pendingConsentReturn`` and this watcher
+     * fires every time ``messages`` mutates (e.g. once
+     * ``onRestoreCurrentConversation`` finishes populating the
+     * restored history). The body is a cheap no-op while the pending
+     * return is null, so leaving it on a deep-less `messages` watcher
+     * during a streaming turn costs nothing.
+     */
+    messages: {
+      handler() {
+        if (!this.pendingConsentReturn) return;
+        this.onConsumePendingConsentReturn();
+      },
+      deep: false
     }
   },
   async mounted() {
+    // Stash the deep-link return params BEFORE anything else touches the
+    // route — `onApplyQueryFromUrl` (further down) strips `connector` from
+    // the URL as part of Studio's Try-It chip cleanup, so we have to grab
+    // our copy first. Strip happens later in `onConsumePendingConsentReturn`
+    // once we've successfully resumed the paused tool_use block.
+    this.onCaptureConsentReturnFromUrl();
     await this.onGetService();
     await this.onGetApplication();
     this.onConsumePendingDraft();
@@ -737,10 +777,19 @@ export default defineComponent({
       );
     },
     /**
-     * Open the connector's OAuth install URL. Desktop default: pop a new
-     * window; PR-6 will wire `postMessage` from the popup back to here so
-     * the card can auto-resume with `authorized=[<connector>]` once the
-     * connection is active.
+     * Open the connector's OAuth install URL. PR-6: navigate the
+     * current tab to the AuthFrontend deep-link install page rather
+     * than popping a new window. AuthFrontend completes the OAuth
+     * dance and redirects back here with
+     * ``?consent=<rid>&connector=<id>``; the `messages` watcher then
+     * spots the matching awaiting `get_connector_status` block and
+     * resumes the paused turn automatically (see
+     * ``onConsumePendingConsentReturn``).
+     *
+     * Same-tab nav loses any unsaved composer draft, which is
+     * acceptable for the consent flow: the user clicked Authorize
+     * deliberately and the rest of the conversation is persisted
+     * server-side and restored on return.
      */
     onAuthorizeConnector(payload: { tool_use_id: string; entry: { connector: string; install_url?: string } }) {
       const url = payload.entry?.install_url;
@@ -748,7 +797,68 @@ export default defineComponent({
         console.warn('authorize click with no install_url', payload);
         return;
       }
-      window.open(url, '_blank', 'noopener,noreferrer');
+      window.location.href = url;
+    },
+    /**
+     * Stash any ``?consent=<rid>&connector=<id>`` pair on
+     * ``pendingConsentReturn`` so the `messages` watcher can match
+     * them against the restored history. Called from ``mounted``
+     * BEFORE ``onApplyQueryFromUrl`` strips ``connector`` as part of
+     * Studio's Try-It chip cleanup. Safe to call on every mount —
+     * URLs without both params are simply ignored.
+     */
+    onCaptureConsentReturnFromUrl() {
+      const parsed = parseConsentReturnFromQuery(
+        (this.$route.query || {}) as Record<string, string | string[] | undefined | null>
+      );
+      if (!parsed) return;
+      this.pendingConsentReturn = parsed;
+    },
+    /**
+     * Try to consume ``pendingConsentReturn`` by locating the matching
+     * awaiting ``get_connector_status`` block in ``messages`` and
+     * dispatching ``onRespondConnectorConsent`` with the just-authorized
+     * connector. Called by the `messages` watcher on every mutation so
+     * we run as soon as ``onRestoreCurrentConversation`` populates the
+     * restored history.
+     *
+     * The block search is bounded to the latest assistant message — by
+     * the worker contract only the tail can carry an awaiting block —
+     * so the watcher hot-path stays O(1) for a typical assistant
+     * content array. ``pendingConsentReturn`` is cleared BEFORE
+     * dispatching the resume so that the new messages mutations from
+     * ``onRespondConnectorConsent`` (which folds the block and pushes
+     * a fresh pending assistant) re-enter this watcher as cheap no-ops
+     * instead of double-dispatching.
+     */
+    onConsumePendingConsentReturn() {
+      const pending = this.pendingConsentReturn;
+      if (!pending) return;
+      if (this.messages.length === 0) return;
+      const found = findPendingConsentBlock(this.messages, pending.consentRequestId);
+      if (!found) return;
+      this.pendingConsentReturn = null;
+      const output = buildAuthorizedConsentOutput(found.payload, pending.connector);
+      this.stripConsentReturnFromUrl();
+      this.onRespondConnectorConsent({
+        tool_use_id: found.toolUseId,
+        output
+      });
+    },
+    /**
+     * Drop the ``consent`` + ``connector`` deep-link params from the
+     * URL via ``router.replace`` so a manual refresh after the resume
+     * doesn't replay the request. Keeps any unrelated query keys the
+     * route may pick up in the future.
+     */
+    stripConsentReturnFromUrl() {
+      const query: Record<string, string | string[]> = {};
+      for (const [k, v] of Object.entries(this.$route.query || {})) {
+        if (k === 'consent' || k === 'connector') continue;
+        if (v == null) continue;
+        query[k] = v as string | string[];
+      }
+      this.$router.replace({ path: this.$route.path, query });
     },
     /**
      * Shared SSE-driven assistant-turn streamer. Handles deltas, tool_use,
