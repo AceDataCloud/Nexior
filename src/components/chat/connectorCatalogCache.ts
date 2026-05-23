@@ -72,6 +72,41 @@ export interface IConnectorCatalogInstallResponse {
   schema?: unknown;
 }
 
+/** Subset of AuthBackend's `IConnection` fields the consent card needs
+ *  to detect which entries are now actively connected for the calling
+ *  user. The full schema (profile, scopes, expires_at, …) is ignored —
+ *  this is purely a presence + status check keyed on
+ *  `catalog_identifier`. */
+export interface IUserConnectionSummary {
+  id: string;
+  /** Catalog item identifier (e.g. `acedatacloud/google-drive`).
+   *  Empty string for legacy / non-catalog installs — those rows can't
+   *  match a consent entry's `connector` field so they're effectively
+   *  ignored. */
+  catalog_identifier: string;
+  /** Backend ships both lowercase and uppercase variants — see
+   *  AuthFrontend `ConnectionStatus`. Callers should compare
+   *  case-insensitively. */
+  status: string;
+}
+
+/** Fetch the calling user's connections from AuthBackend. Used by the
+ *  consent card to refresh entry statuses after an OAuth round-trip —
+ *  the worker-supplied `entry.status` is frozen at the moment the
+ *  pending tool_use was emitted, so a successful install needs a live
+ *  re-read to flip the card from "Authorize" to "Connected" + show
+ *  the "Continue" CTA.
+ *
+ *  Throws on network / HTTP errors so the caller can decide whether
+ *  to fall back to the stale status or surface a toast. */
+export async function listMyConnections(): Promise<IUserConnectionSummary[]> {
+  const response: AxiosResponse<IUserConnectionSummary[]> = await httpClient.get(
+    `/connections/`,
+    { baseURL: `${getBaseUrlAuth()}/api/v1` }
+  );
+  return Array.isArray(response.data) ? response.data : [];
+}
+
 const cache = new Map<string, IConnectorCatalogSummary>();
 const inFlight = new Map<string, Promise<IConnectorCatalogSummary | undefined>>();
 

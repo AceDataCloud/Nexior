@@ -10,13 +10,13 @@
       v-for="req in requirements"
       :key="req.requirement_index"
       class="ccc-requirement"
-      :class="{ 'is-satisfied': req.satisfied }"
+      :class="{ 'is-satisfied': effectiveSatisfiedFor(req) }"
     >
       <div v-if="showMatchLabel(req)" class="ccc-req-match">
         {{ req.match === 'any' ? $t('chat.consent.matchAny') : $t('chat.consent.matchAll') }}
       </div>
       <ConnectorEntryRow
-        v-for="entry in req.entries"
+        v-for="entry in effectiveEntriesFor(req)"
         :key="entry.connector"
         :entry="entry"
         :catalog="catalogFor(entry)"
@@ -25,9 +25,18 @@
       />
     </div>
 
-    <div v-if="!resolved && hasUnsatisfied" class="ccc-actions">
-      <el-button text :disabled="authorizingConnector !== ''" @click="onSkip">
+    <div v-if="!resolved && (hasUnsatisfied || showContinueButton)" class="ccc-actions">
+      <el-button v-if="hasUnsatisfied" text :disabled="authorizingConnector !== ''" @click="onSkip">
         {{ $t('chat.consent.skip') }}
+      </el-button>
+      <el-button
+        v-if="showContinueButton"
+        type="primary"
+        :loading="refreshingStatus"
+        :disabled="authorizingConnector !== ''"
+        @click="onContinue"
+      >
+        {{ $t('chat.consent.continue') }}
       </el-button>
     </div>
 
@@ -77,7 +86,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IConsentRequestEntry, IConsentRequestPayload, IConsentRequestRequirement } from '@/models';
 import ConnectorEntryRow from './ConnectorEntryRow.vue';
 import { buildConsentOutput, unsatisfiedConnectors } from './connectorConsent';
-import { getCatalogItem, installFromCatalog, type IConnectorCatalogSummary } from './connectorCatalogCache';
+import {
+  getCatalogItem,
+  installFromCatalog,
+  listMyConnections,
+  type IConnectorCatalogSummary
+} from './connectorCatalogCache';
 
 interface IData {
   resolvedAuthorized: string[];
@@ -98,6 +112,22 @@ interface IData {
   /** Tracks the entry currently being installed so its row button (and
    *  the dialog Confirm button) can show a loading spinner. */
   authorizingConnector: string;
+  /** Live entry statuses fetched from AuthBackend after the OAuth
+   *  round-trip — keyed by `IConsentRequestEntry.connector` (the
+   *  catalog identifier). The worker-supplied `entry.status` is frozen
+   *  at the moment the pending tool_use was emitted, so a successful
+   *  install needs this overlay to flip the row from "Authorize" to
+   *  "Connected". Empty until `refreshConnectionStatuses` runs. */
+  liveStatuses: Record<string, 'connected' | 'unconnected'>;
+  /** Becomes `true` after the first successful `listMyConnections`
+   *  call. Gates the "Continue" CTA so we don't surface it before
+   *  we've actually verified the install — a worker payload that
+   *  arrives already-satisfied (no live re-check) still renders the
+   *  no-action layout. */
+  hasCheckedStatuses: boolean;
+  /** Loading flag for the in-flight `listMyConnections` call; drives
+   *  the spinner on the "Continue" button. */
+  refreshingStatus: boolean;
 }
 
 export default defineComponent({
@@ -137,15 +167,66 @@ export default defineComponent({
       scopeDialogEntry: null,
       scopeDialogCatalog: null,
       selectedScopes: [],
-      authorizingConnector: ''
+      authorizingConnector: '',
+      liveStatuses: {},
+      hasCheckedStatuses: false,
+      refreshingStatus: false
     };
   },
   computed: {
     requirements(): IConsentRequestRequirement[] {
       return this.payload?.requirements ?? [];
     },
+    /** Per-entry overlay: if a live status came back from AuthBackend
+     *  after the OAuth round-trip, use it; otherwise fall back to the
+     *  worker-supplied `entry.status`. Centralized here so template +
+     *  `onContinue` agree on the same effective status without each
+     *  spreading the override inline. */
+    effectiveStatus() {
+      return (entry: IConsentRequestEntry): 'connected' | 'unconnected' => {
+        return this.liveStatuses[entry.connector] ?? entry.status;
+      };
+    },
+    /** Entries with `status` rebound to the live-overlaid value, so
+     *  `<ConnectorEntryRow>` (which keys its display off `entry.status`)
+     *  flips from Authorize → Connected without us mutating the prop. */
+    effectiveEntriesFor() {
+      return (req: IConsentRequestRequirement): IConsentRequestEntry[] => {
+        return req.entries.map((entry) => {
+          const live = this.liveStatuses[entry.connector];
+          if (!live || live === entry.status) return entry;
+          return { ...entry, status: live };
+        });
+      };
+    },
+    /** A requirement is effectively satisfied when:
+     *  - `match === 'any'` and ≥1 effective entry is connected, OR
+     *  - `match === 'all'` and every effective entry is connected.
+     *  This mirrors the worker-side ``satisfied`` rule so the live
+     *  overlay can flip a not-yet-resolved requirement to satisfied
+     *  after a successful install. */
+    effectiveSatisfiedFor() {
+      return (req: IConsentRequestRequirement): boolean => {
+        const statuses = req.entries.map((e) => this.effectiveStatus(e));
+        if (statuses.length === 0) return req.satisfied;
+        if (req.match === 'all') return statuses.every((s) => s === 'connected');
+        return statuses.some((s) => s === 'connected');
+      };
+    },
     hasUnsatisfied(): boolean {
-      return this.requirements.some((r) => !r.satisfied);
+      return this.requirements.some((r) => !this.effectiveSatisfiedFor(r));
+    },
+    /** Continue CTA visibility. We only show Continue after the live
+     *  refresh has lifted at least one entry from unconnected → connected
+     *  (`hasCheckedStatuses === true`) AND every requirement is now
+     *  effectively satisfied. Without `hasCheckedStatuses` an already-
+     *  satisfied worker payload (e.g. the model proactively asked
+     *  consent for an already-connected provider) would surface a
+     *  Continue button the user never asked for. */
+    showContinueButton(): boolean {
+      if (this.resolved) return false;
+      if (!this.hasCheckedStatuses) return false;
+      return !this.hasUnsatisfied;
     },
     resolvedSummary(): string {
       if (this.resolvedAuthorized.length > 0) {
@@ -177,12 +258,23 @@ export default defineComponent({
       }
     }
   },
+  mounted() {
+    // After the OAuth full-page redirect, the user lands back on the
+    // chat URL we stamped in `performInstall` — `?consent=<rid>` where
+    // `<rid>` is THIS card's `consent_request_id`. The frozen
+    // worker-supplied `entry.status` won't reflect the just-created
+    // connection, so we re-read the calling user's connections from
+    // AuthBackend and overlay statuses. No URL match → no refresh.
+    if (this.shouldRefreshFromReturn()) {
+      this.refreshConnectionStatuses();
+    }
+  },
   methods: {
     showMatchLabel(req: IConsentRequestRequirement): boolean {
       // Only meaningful when there are 2+ candidates AND the requirement
-      // hasn't been auto-satisfied (one connected entry hides the
-      // "either of these" prompt).
-      return req.entries.length > 1 && !req.satisfied;
+      // hasn't been satisfied yet — once the live overlay flips an
+      // entry to connected the "either of these" prompt is stale.
+      return req.entries.length > 1 && !this.effectiveSatisfiedFor(req);
     },
     /** Look up the catalog row a `ConnectorEntryRow` should render with.
      *  Returns `null` until `refreshCatalogs` has populated the entry. */
@@ -296,6 +388,68 @@ export default defineComponent({
     onSkip() {
       const skipped = unsatisfiedConnectors(this.payload);
       const output = buildConsentOutput(this.payload, [], skipped);
+      this.$emit('submit', { tool_use_id: this.toolUseId, output });
+    },
+    /** True when the current URL carries `?consent=<my_consent_id>` —
+     *  the beacon `performInstall` stamps on its `return_url` before
+     *  the OAuth redirect. Read directly from `window.location` rather
+     *  than the Vue Router query bag so the card doesn't have to be
+     *  rendered inside a router context to work (the unit tests don't
+     *  install vue-router, and the prod tree never renders the card
+     *  outside one). */
+    shouldRefreshFromReturn(): boolean {
+      if (typeof window === 'undefined') return false;
+      try {
+        const params = new URL(window.location.href).searchParams;
+        return params.get('consent') === this.payload?.consent_request_id;
+      } catch {
+        return false;
+      }
+    },
+    /** Fetch the user's connections from AuthBackend and overlay any
+     *  `status === 'active'` entries onto `liveStatuses`. Failures are
+     *  logged but never surfaced — the user can still click Authorize
+     *  again to retry. */
+    async refreshConnectionStatuses(): Promise<void> {
+      this.refreshingStatus = true;
+      try {
+        const connections = await listMyConnections();
+        const connectedIds = new Set<string>();
+        for (const c of connections) {
+          if (!c.catalog_identifier) continue;
+          if (String(c.status).toLowerCase() === 'active') {
+            connectedIds.add(c.catalog_identifier);
+          }
+        }
+        const next: Record<string, 'connected' | 'unconnected'> = {};
+        for (const req of this.requirements) {
+          for (const entry of req.entries) {
+            next[entry.connector] = connectedIds.has(entry.connector) ? 'connected' : 'unconnected';
+          }
+        }
+        this.liveStatuses = next;
+        this.hasCheckedStatuses = true;
+      } catch (error) {
+        console.warn('listMyConnections failed', error);
+      } finally {
+        this.refreshingStatus = false;
+      }
+    },
+    /** Continue submits the resolved consent with every effectively
+     *  connected entry marked `authorized`. Only reachable when the
+     *  live overlay has lifted every requirement into the satisfied
+     *  state — see `showContinueButton`. Mirrors `onSkip`'s output
+     *  shape so the worker resume contract stays uniform. */
+    onContinue() {
+      const authorized: string[] = [];
+      for (const req of this.requirements) {
+        for (const entry of req.entries) {
+          if (this.effectiveStatus(entry) === 'connected') {
+            authorized.push(entry.connector);
+          }
+        }
+      }
+      const output = buildConsentOutput(this.payload, authorized, []);
       this.$emit('submit', { tool_use_id: this.toolUseId, output });
     },
     parsePreviousOutput() {

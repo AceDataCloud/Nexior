@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat(consent): show connector logo + localized name in consent card, and pop a scope picker that calls AuthBackend's catalog install endpoint on Authorize",
+  "comment": "feat(consent): show connector logo + localized name in consent card, pop a scope picker that calls AuthBackend's catalog install endpoint on Authorize, and refresh connection status after the OAuth round-trip so the card surfaces a Continue button once the connector is connected",
   "packageName": "@acedatacloud/nexior",
   "email": "dev@acedata.cloud",
   "dependentChangeType": "patch"
