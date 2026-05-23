@@ -21,6 +21,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Select Xcode 26+
+        # App Store Connect requires the iOS 26 SDK (Xcode 26+) for uploads
+        # starting April 2026. The macos-15 runner default is Xcode 16.4 which
+        # ships with the iOS 18.5 SDK and altool will reject the build with a
+        # 409 "SDK version issue" validation error.
+        run: |
+          LATEST_XCODE=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          if [ -z "$LATEST_XCODE" ]; then
+            echo "::error::No Xcode 26+ found on runner. Available Xcodes:"
+            ls -d /Applications/Xcode_*.app
+            exit 1
+          fi
+          echo "Selecting $LATEST_XCODE"
+          sudo xcode-select -s "$LATEST_XCODE"
+          xcodebuild -version
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
