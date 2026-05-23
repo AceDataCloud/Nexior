@@ -123,5 +123,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.acedatacloud.nexior
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
-          track: ${{ steps.track.outputs.track }}
+          tracks: ${{ steps.track.outputs.track }}
           status: completed
