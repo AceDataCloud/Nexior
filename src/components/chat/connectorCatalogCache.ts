@@ -48,6 +48,28 @@ export interface IConnectorCatalogSummary {
   publisher_logo_url: string;
   permissions: IConnectorPermission[];
   auth_mode: string;
+  /** `true` when the catalog row is in a state where the install endpoint
+   *  will provision a connection (currently always `true` for visible
+   *  rows, but the field is honored so a feature-flagged row doesn't
+   *  break the flow). When `false` the card falls back to emitting the
+   *  legacy `authorize` event so the AuthFrontend deep-link install page
+   *  can render whatever non-self-serve copy it wants. */
+  installable: boolean;
+}
+
+/** Response shape of AuthBackend's
+ *  `POST /api/v1/connections/catalog/<id>/install/`. See
+ *  `app.services.connector_catalog.install_for_user`. */
+export interface IConnectorCatalogInstallResponse {
+  type: 'redirect' | 'form' | 'active';
+  /** Present iff `type === 'redirect'` — the upstream provider's OAuth
+   *  authorize URL the browser should navigate to. */
+  authorization_url?: string;
+  /** Present iff `type === 'form'` — credential schema the AuthFrontend
+   *  BYOC dialog renders. The consent card does NOT handle this case
+   *  inline; the parent emits the legacy `authorize` event and the user
+   *  finishes BYOC on the AuthFrontend install page. */
+  schema?: unknown;
 }
 
 const cache = new Map<string, IConnectorCatalogSummary>();
@@ -90,4 +112,25 @@ export async function getCatalogItem(catalogId: string): Promise<IConnectorCatal
 export function clearConnectorCatalogCache(): void {
   cache.clear();
   inFlight.clear();
+}
+
+/**
+ * Provision (or kick off OAuth for) a connection for the calling user.
+ * Mirrors AuthFrontend's `connectionOperator.installFromCatalog` — same
+ * AuthBackend endpoint, same response shape.
+ *
+ * Throws on network / HTTP errors so the caller can fall back to the
+ * worker-supplied `entry.install_url` deep-link (which AuthFrontend then
+ * handles, including BYOC credential forms).
+ */
+export async function installFromCatalog(
+  catalogId: string,
+  payload: { scopes?: string[]; return_url: string }
+): Promise<IConnectorCatalogInstallResponse> {
+  const response: AxiosResponse<IConnectorCatalogInstallResponse> = await httpClient.post(
+    `/connections/catalog/${catalogId}/install/`,
+    payload,
+    { baseURL: `${getBaseUrlAuth()}/api/v1` }
+  );
+  return response.data;
 }

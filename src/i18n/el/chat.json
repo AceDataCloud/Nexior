@@ -527,6 +527,18 @@
     "message": "Παράλειψη εξουσιοδότησης",
     "description": "Κουμπί παράλειψης εξουσιοδότησης, μετά την παράλειψη το μοντέλο συνεχίζει χωρίς αυτόν τον σύνδεσμο"
   },
+  "consent.selectScopes": {
+    "message": "Επιλέξτε εξουσιοδοτήσεις {provider}",
+    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+  },
+  "consent.selectScopesHint": {
+    "message": "Επιλέξτε τις εξουσιοδοτήσεις που θέλετε να δώσετε. Μπορείτε να επιλέξετε πολλές, αν δεν επιλέξετε, θα δοθούν μόνο οι βασικές πληροφορίες σύνδεσης.",
+    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+  },
+  "consent.installFailed": {
+    "message": "Η εξουσιοδότηση απέτυχε. Παρακαλώ προσπαθήστε ξανά.",
+    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+  },
   "consent.statusConnected": {
     "message": "Συνδεδεμένο",
     "description": "Εικονίδιο κατάστασης για συνδέσεις που έχουν συνδεθεί"

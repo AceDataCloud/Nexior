@@ -527,6 +527,18 @@
     "message": "Ignorer pour l'instant",
     "description": "Bouton pour passer l'autorisation, le modèle continuera sans ce connecteur"
   },
+  "consent.selectScopes": {
+    "message": "Sélectionnez les portées d'autorisation {provider}",
+    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+  },
+  "consent.selectScopesHint": {
+    "message": "Sélectionnez les permissions que vous souhaitez autoriser. Plusieurs choix possibles, par défaut, seules les informations de connexion de base sont accordées.",
+    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+  },
+  "consent.installFailed": {
+    "message": "L'autorisation a échoué. Veuillez réessayer.",
+    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+  },
   "consent.statusConnected": {
     "message": "Connecté",
     "description": "Badge indiquant qu'un connecteur est connecté"

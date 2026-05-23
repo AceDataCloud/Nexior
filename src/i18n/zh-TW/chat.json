@@ -527,6 +527,18 @@
     "message": "暫不授權",
     "description": "跳過授權按鈕，跳過後模型將在沒有該連接器的情況下繼續"
   },
+  "consent.selectScopes": {
+    "message": "選擇 {provider} 授權範圍",
+    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+  },
+  "consent.selectScopesHint": {
+    "message": "選擇您希望授權的權限範圍。可多選，未選中默認僅授予基礎登錄信息。",
+    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+  },
+  "consent.installFailed": {
+    "message": "授權失敗，請稍後重試。",
+    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+  },
   "consent.statusConnected": {
     "message": "已連接",
     "description": "已連接連接器的狀態徽章"

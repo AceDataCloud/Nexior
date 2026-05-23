@@ -527,6 +527,18 @@
     "message": "Omitir autorización",
     "description": "Botón para saltarse la autorización; tras hacerlo, el modelo continuará sin este conector"
   },
+  "consent.selectScopes": {
+    "message": "Selecciona los ámbitos de autorización de {provider}",
+    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+  },
+  "consent.selectScopesHint": {
+    "message": "Selecciona los permisos que deseas autorizar. Puedes seleccionar múltiples, si no seleccionas, solo se otorgarán los datos básicos de inicio de sesión.",
+    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+  },
+  "consent.installFailed": {
+    "message": "La autorización falló. Por favor, inténtalo de nuevo.",
+    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+  },
   "consent.statusConnected": {
     "message": "Conectado",
     "description": "Etiqueta de estado para un conector ya conectado"

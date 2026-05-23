@@ -527,6 +527,18 @@
     "message": "권한 부여 건너뛰기",
     "description": "권한 부여를 건너뛰는 버튼으로, 건너뛴 후 모델은 해당 커넥터 없이 계속 진행됩니다."
   },
+  "consent.selectScopes": {
+    "message": "{provider} 권한 범위 선택",
+    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+  },
+  "consent.selectScopesHint": {
+    "message": "부여할 권한 범위를 선택하세요. 여러 개 선택할 수 있으며, 선택하지 않으면 기본 로그인 정보만 부여됩니다.",
+    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+  },
+  "consent.installFailed": {
+    "message": "권한 부여에 실패했습니다. 다시 시도해 주세요.",
+    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+  },
   "consent.statusConnected": {
     "message": "연결됨",
     "description": "연결된 커넥터의 상태 아이콘입니다."
