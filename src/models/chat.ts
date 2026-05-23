@@ -103,6 +103,11 @@ export interface IChatMessageContentItem {
   // Present iff `status === 'awaiting_input'` and `tool_name === 'ask_user_question'`.
   // The card UI renders this; on submit, it's stripped and `output` is set.
   pending_question?: IAskUserQuestionPayload;
+  // Present iff `status === 'awaiting_input'` and the pause was driven by
+  // `get_connector_status`. Carries the consent payload so the frontend can
+  // render `<ConnectorConsentCard>`; on resume the resume detector strips it
+  // and folds `output` (the user's authorize/skip JSON) into the block.
+  pending_consent_request?: IConsentRequestPayload;
   // Rich-output entity card (type='card') — payload mirrors the
   // worker's `CardData` SSE event. `type` inside `card` is open-ended:
   // 'audio' | 'video' | 'image' | 'file' today, with room for future
@@ -138,6 +143,52 @@ export interface IAskUserQuestion {
 export interface IAskUserQuestionPayload {
   /** 1–4 questions. */
   questions: IAskUserQuestion[];
+}
+
+// ===== get_connector_status tool payload =====
+// Mirrors aichat2 worker contract (frozen). When the model calls the
+// `get_connector_status` tool with unsatisfied requirements, the worker
+// pauses the turn and emits a single SSE event of type `consent_request`
+// carrying this payload, followed by a terminal `done` with
+// `terminal_reason: 'awaiting_user_input'`. The card UI renders this and,
+// on submit, the resume request carries a `tool_results` entry whose
+// `output` is `JSON.stringify({ consent_request_id, authorized, skipped })`.
+
+export interface IConsentRequestEntry {
+  /** Catalog identifier, e.g. `acedatacloud/suno`. */
+  connector: string;
+  /** Short, user-facing phrase explaining why this connector is needed.
+   *  May be empty/undefined if the model omitted it. */
+  context?: string;
+  /** Connection state computed at tool-call time. */
+  status: 'connected' | 'unconnected';
+  /** AuthFrontend deep-link the consent card uses for the "Authorize"
+   *  button. Present only when `status === 'unconnected'`. */
+  install_url?: string;
+}
+
+export interface IConsentRequestRequirement {
+  /** Position in the original `requirements` array — stable handle the
+   *  frontend uses to group entries. */
+  requirement_index: number;
+  /** `any` = ONE connected entry suffices; `all` = every entry must be
+   *  connected. */
+  match: 'any' | 'all';
+  /** Each candidate connector for this requirement. */
+  entries: IConsentRequestEntry[];
+  /** Pre-computed by the tool: `true` iff the `match` rule is already met. */
+  satisfied: boolean;
+}
+
+export interface IConsentRequestPayload {
+  /** Stable id of the form `consent_<uuid>`. Echoed back in the
+   *  `tool_results[0].output.consent_request_id` field on resume. */
+  consent_request_id: string;
+  /** Optional one-sentence rationale (< 200 chars) shown above the card. */
+  rationale?: string;
+  /** All requirements, satisfied and unsatisfied, so the card can show
+   *  "✓ already connected" rows alongside the action rows. */
+  requirements: IConsentRequestRequirement[];
 }
 
 /**
@@ -262,7 +313,9 @@ export interface IChatConversationResponse {
   // ask_user_question SSE event (`type === 'ask_user_question'`). The worker
   // pauses the turn and asks the user one or more multi-choice questions; the
   // payload is rendered as a card (see AskUserQuestionCard.vue).
-  payload?: IAskUserQuestionPayload;
+  // Also used for `type === 'consent_request'` SSE events, which carry a
+  // `IConsentRequestPayload` rendered by ConnectorConsentCard.vue.
+  payload?: IAskUserQuestionPayload | IConsentRequestPayload;
 }
 
 export interface IChatConversationsResponse {

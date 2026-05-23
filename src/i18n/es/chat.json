@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Tu respuesta",
     "description": "Texto de respaldo cuando no se puede extraer una respuesta específica de la salida histórica"
+  },
+  "consent.title": {
+    "message": "Autorización de conectores requerida",
+    "description": "Título de la tarjeta de autorización del conector"
+  },
+  "consent.matchAny": {
+    "message": "Basta con uno",
+    "description": "Etiqueta: solo se necesita autorizar uno de los conectores de este grupo para cumplir el requisito"
+  },
+  "consent.matchAll": {
+    "message": "Se requiere toda la autorización",
+    "description": "Etiqueta: todos los conectores de este grupo requieren autorización"
+  },
+  "consent.authorize": {
+    "message": "Autorizar",
+    "description": "Botón de autorización; al hacer clic se abrirá la página de autorización de un tercero"
+  },
+  "consent.skip": {
+    "message": "Omitir autorización",
+    "description": "Botón para saltarse la autorización; tras hacerlo, el modelo continuará sin este conector"
+  },
+  "consent.statusConnected": {
+    "message": "Conectado",
+    "description": "Etiqueta de estado para un conector ya conectado"
+  },
+  "consent.statusUnconnected": {
+    "message": "No conectado",
+    "description": "Etiqueta de estado para un conector no conectado (se muestra cuando no hay enlace de autorización)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autorizado: {list}",
+    "description": "Indicador al pie de la tarjeta tras completar la autorización; {list} es la lista de conectores autorizados"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Autorización de conectores omitida",
+    "description": "Indicador al pie de la tarjeta tras que el usuario omite la autorización"
   }
 }

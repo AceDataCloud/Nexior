@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Twoja odpowiedź",
     "description": "Tekst zastępczy, gdy nie można wyodrębnić konkretnej odpowiedzi z historii"
+  },
+  "consent.title": {
+    "message": "Wymagana autoryzacja konektora",
+    "description": "Tytuł karty autoryzacji konektora"
+  },
+  "consent.matchAny": {
+    "message": "Wystarczy wybrać jeden",
+    "description": "Etykieta: wystarczy autoryzacja dowolnego konektora w tej grupie"
+  },
+  "consent.matchAll": {
+    "message": "Wymagana autoryzacja wszystkich",
+    "description": "Etykieta: wszystkie konektory w tej grupie wymagają autoryzacji"
+  },
+  "consent.authorize": {
+    "message": "Autoryzuj",
+    "description": "Przycisk autoryzacji, po kliknięciu otwiera stronę autoryzacji osoby trzeciej"
+  },
+  "consent.skip": {
+    "message": "Pomiń autoryzację",
+    "description": "Przycisk pominięcia autoryzacji; po pominięciu model kontynuuje bez tego konektora"
+  },
+  "consent.statusConnected": {
+    "message": "Połączono",
+    "description": "Znacznik statusu dla konektora, który jest połączony"
+  },
+  "consent.statusUnconnected": {
+    "message": "Niepołączono",
+    "description": "Znacznik statusu dla konektora, który nie jest połączony (wyświetlany, gdy brak linku autoryzacyjnego)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autoryzowano: {list}",
+    "description": "Informacja na dole karty po zakończeniu autoryzacji, {list} to lista autoryzowanych konektorów"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Autoryzacja konektorów pominięta",
+    "description": "Informacja na dole karty po pominięciu autoryzacji przez użytkownika"
   }
 }

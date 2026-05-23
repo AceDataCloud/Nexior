@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Ihre Antwort",
     "description": "Fallback-Text, wenn keine spezifische Antwort aus der Historie extrahiert werden kann"
+  },
+  "consent.title": {
+    "message": "Connector-Autorisierung erforderlich",
+    "description": "Titel der Autorisierungskarte für Connectoren"
+  },
+  "consent.matchAny": {
+    "message": "Wählen Sie einen aus",
+    "description": "Label: Jeder beliebige Connector in dieser Gruppe kann die Anforderungen erfüllen"
+  },
+  "consent.matchAll": {
+    "message": "Alle benötigen eine Autorisierung",
+    "description": "Label: Alle Connectoren in dieser Gruppe benötigen eine Autorisierung"
+  },
+  "consent.authorize": {
+    "message": "Autorisieren",
+    "description": "Autorisierungsbutton, der nach dem Klicken die Drittanbieter-Autorisierungsseite öffnet"
+  },
+  "consent.skip": {
+    "message": "Vorübergehend nicht autorisieren",
+    "description": "Button zum Überspringen der Autorisierung, nach dem Überspringen wird das Modell ohne diesen Connector fortgesetzt"
+  },
+  "consent.statusConnected": {
+    "message": "Verbunden",
+    "description": "Statussymbol für verbundene Connectoren"
+  },
+  "consent.statusUnconnected": {
+    "message": "Nicht verbunden",
+    "description": "Statussymbol für nicht verbundene Connectoren (wird angezeigt, wenn kein Autorisierungslink vorhanden ist)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autorisierte: {list}",
+    "description": "Hinweis am unteren Rand der Karte nach der Autorisierung des Benutzers, {list} ist die Liste der autorisierten Connectoren"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Connector-Autorisierung übersprungen",
+    "description": "Hinweis am unteren Rand der Karte, nachdem der Benutzer die Autorisierung übersprungen hat"
   }
 }

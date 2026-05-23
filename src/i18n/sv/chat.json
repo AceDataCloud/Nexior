@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Ditt svar",
     "description": "Fallback-text när ett specifikt svar inte kan extraheras från historisk utdata"
+  },
+  "consent.title": {
+    "message": "Kopplingsbehörighet krävs",
+    "description": "Titel på kortet för kopplingsbehörighet"
+  },
+  "consent.matchAny": {
+    "message": "Välj någon",
+    "description": "Etikett: Det räcker med att välja någon av kopplingarna i denna grupp"
+  },
+  "consent.matchAll": {
+    "message": "Alla kräver behörighet",
+    "description": "Etikett: Alla kopplingar i denna grupp kräver behörighet"
+  },
+  "consent.authorize": {
+    "message": "Ge behörighet",
+    "description": "Behörighetsknapp, klicka för att öppna en tredjepartsauktoriseringssida"
+  },
+  "consent.skip": {
+    "message": "Hoppa över",
+    "description": "Knapp för att hoppa över behörighet, modellen fortsätter utan denna koppling"
+  },
+  "consent.statusConnected": {
+    "message": "Ansluten",
+    "description": "Statusmärke för en ansluten koppling"
+  },
+  "consent.statusUnconnected": {
+    "message": "Inte ansluten",
+    "description": "Statusmärke för en koppling som inte är ansluten (visas när ingen behörighet finns)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Behörighet given: {list}",
+    "description": "Kortets nederdel som visar att användaren har beviljat behörighet, {list} är listan över godkända kopplingar"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Kopplingsbehörighet hoppad över",
+    "description": "Kortets nederdel som visas efter att användaren har hoppat över behörighet"
   }
 }

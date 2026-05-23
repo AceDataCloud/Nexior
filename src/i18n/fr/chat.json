@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Votre réponse",
     "description": "Texte de secours lorsque la réponse spécifique ne peut pas être extraite de l'historique"
+  },
+  "consent.title": {
+    "message": "Autorisation de connecteur requise",
+    "description": "Titre de la carte d'autorisation du connecteur"
+  },
+  "consent.matchAny": {
+    "message": "Autoriser au moins un",
+    "description": "Étiquette : n'importe quel connecteur de ce groupe suffit"
+  },
+  "consent.matchAll": {
+    "message": "Tous doivent être autorisés",
+    "description": "Étiquette : tous les connecteurs de ce groupe doivent être autorisés"
+  },
+  "consent.authorize": {
+    "message": "Autoriser",
+    "description": "Bouton d'autorisation, clique pour ouvrir la page d'autorisation d'un tiers"
+  },
+  "consent.skip": {
+    "message": "Ignorer pour l'instant",
+    "description": "Bouton pour passer l'autorisation, le modèle continuera sans ce connecteur"
+  },
+  "consent.statusConnected": {
+    "message": "Connecté",
+    "description": "Badge indiquant qu'un connecteur est connecté"
+  },
+  "consent.statusUnconnected": {
+    "message": "Non connecté",
+    "description": "Badge indiquant qu'un connecteur n'est pas connecté (affiché lorsque aucun lien d'autorisation n'existe)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autorisé : {list}",
+    "description": "Texte au bas de la carte après l'autorisation de l'utilisateur, {list} représente la liste des connecteurs autorisés"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Autorisation du connecteur ignorée",
+    "description": "Texte au bas de la carte après que l'utilisateur ait sauté l'autorisation"
   }
 }

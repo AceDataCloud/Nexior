@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "La tua risposta",
     "description": "Testo di fallback quando non è possibile estrarre una risposta specifica dall'output storico"
+  },
+  "consent.title": {
+    "message": "Autorizzazione del connettore richiesta",
+    "description": "Titolo della scheda di autorizzazione del connettore"
+  },
+  "consent.matchAny": {
+    "message": "Autorizza uno qualsiasi",
+    "description": "Etichetta: è sufficiente autorizzare uno qualsiasi dei connettori di questo gruppo"
+  },
+  "consent.matchAll": {
+    "message": "Richiede tutte le autorizzazioni",
+    "description": "Etichetta: tutti i connettori di questo gruppo richiedono l'autorizzazione"
+  },
+  "consent.authorize": {
+    "message": "Autorizza",
+    "description": "Pulsante di autorizzazione, cliccando si aprirà la pagina di autorizzazione di terze parti"
+  },
+  "consent.skip": {
+    "message": "Non autorizzare per ora",
+    "description": "Pulsante per saltare l'autorizzazione; il modello continuerà senza il connettore"
+  },
+  "consent.statusConnected": {
+    "message": "Connesso",
+    "description": "Indicatore di stato per connettore già connesso"
+  },
+  "consent.statusUnconnected": {
+    "message": "Non connesso",
+    "description": "Indicatore di stato per connettore non connesso (mostrato quando non c'è un link di autorizzazione)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autorizzato: {list}",
+    "description": "Nota in fondo alla scheda dopo che l'utente ha completato l'autorizzazione, {list} è la lista dei connettori autorizzati"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Autorizzazione dei connettori saltata",
+    "description": "Nota in fondo alla scheda dopo che l'utente ha saltato l'autorizzazione"
   }
 }

@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "あなたの回答",
     "description": "履歴出力から具体的な回答を抽出できない場合のフォールバック文"
+  },
+  "consent.title": {
+    "message": "コネクタ認可が必要",
+    "description": "コネクタ認可カードのタイトル"
+  },
+  "consent.matchAny": {
+    "message": "いずれかを選択",
+    "description": "ラベル：このグループのコネクタのいずれかを選択すれば要件を満たします"
+  },
+  "consent.matchAll": {
+    "message": "すべて認可が必要",
+    "description": "ラベル：このグループのコネクタすべてに認可が必要です"
+  },
+  "consent.authorize": {
+    "message": "認可する",
+    "description": "認可ボタン。クリックするとサードパーティの認可ページが開きます"
+  },
+  "consent.skip": {
+    "message": "あとで認可",
+    "description": "認可をスキップするボタン。スキップ後、モデルはそのコネクタなしで進行します"
+  },
+  "consent.statusConnected": {
+    "message": "接続済み",
+    "description": "接続済みコネクタのステータスバッジ"
+  },
+  "consent.statusUnconnected": {
+    "message": "未接続",
+    "description": "未接続コネクタのステータスバッジ（認可リンクがない場合に表示）"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "認可済み：{list}",
+    "description": "ユーザーが認可を完了した後のカード下部の説明。{list} は認可済みのコネクタ一覧です"
+  },
+  "consent.resolvedSkipped": {
+    "message": "コネクタ認可をスキップしました",
+    "description": "ユーザーが認可をスキップした後のカード下部の説明"
   }
 }
