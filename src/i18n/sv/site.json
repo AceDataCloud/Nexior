@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Lägg till",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Automatisk översättning PÅ — innehållet visas på besökarens språk",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Sparas ordagrant — klicka för att aktivera automatisk översättning",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Spara raden innan du aktiverar automatisk översättning",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "Detta innehåll översätts till 17 språk inom ~1 timme. Fortsätt?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Inaktivering tar bort alla 18 översättningarna och behåller endast det aktuella värdet. Fortsätt?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Ange innehåll innan du aktiverar automatisk översättning",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Det gick inte att växla automatisk översättning, försök igen",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

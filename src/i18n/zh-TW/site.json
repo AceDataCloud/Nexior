@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "新增",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "已啟用 — 內容將自動翻譯為 17 種語言顯示",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "字面量儲存 — 點擊啟用自動翻譯為 17 種語言",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "請先儲存後再啟用自動翻譯",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "目前內容將被翻譯為 17 種語言，約 1 小時生效。繼續嗎？",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "關閉後將刪除所有 18 種語言的翻譯，僅保留目前編輯框內容。繼續嗎？",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "請先輸入內容，再啟用自動翻譯",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "切換自動翻譯失敗，請稍後重試",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

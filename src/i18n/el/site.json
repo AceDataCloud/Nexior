@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Προσθήκη",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Αυτόματη μετάφραση ΕΝΕΡΓΗ — το περιεχόμενο εμφανίζεται στη γλώσσα του επισκέπτη",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Αποθήκευση κειμένου ως έχει — κάντε κλικ για ενεργοποίηση αυτόματης μετάφρασης",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Αποθηκεύστε τη γραμμή πριν ενεργοποιήσετε την αυτόματη μετάφραση",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "Αυτό το περιεχόμενο θα μεταφραστεί σε 17 γλώσσες εντός ~1 ώρας. Συνέχεια;",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Η απενεργοποίηση διαγράφει και τις 18 μεταφράσεις και διατηρεί μόνο την τρέχουσα τιμή. Συνέχεια;",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Εισάγετε κάποιο περιεχόμενο πριν ενεργοποιήσετε την αυτόματη μετάφραση",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Η εναλλαγή αυτόματης μετάφρασης απέτυχε, δοκιμάστε ξανά",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

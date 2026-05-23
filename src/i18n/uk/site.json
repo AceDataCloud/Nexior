@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Додати",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Автопереклад УВІМКНЕНО — вміст відображається мовою відвідувача",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Зберігання дослівне — натисніть, щоб увімкнути автопереклад",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Збережіть рядок, перш ніж вмикати автопереклад",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "Цей вміст буде перекладено на 17 мов протягом ~1 години. Продовжити?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Вимкнення видалить усі 18 перекладів і збереже лише поточне значення. Продовжити?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Введіть якийсь вміст, перш ніж вмикати автопереклад",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Не вдалося перемкнути автопереклад, спробуйте знову",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

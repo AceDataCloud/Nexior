@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "추가",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "자동 번역 켜짐 — 콘텐츠가 방문자의 언어로 표시됩니다",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "리터럴 저장 — 자동 번역을 켜려면 클릭하세요",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "자동 번역을 켜기 전에 행을 저장하세요",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "이 콘텐츠는 약 1시간 이내에 17개 언어로 번역됩니다. 계속하시겠습니까?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "비활성화하면 18개 언어의 모든 번역이 제거되고 현재 값만 유지됩니다. 계속하시겠습니까?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "자동 번역을 켜기 전에 콘텐츠를 입력하세요",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "자동 번역을 전환하지 못했습니다. 다시 시도해 주세요",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

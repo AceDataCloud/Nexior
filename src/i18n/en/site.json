@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Add",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Auto-translation ON — content shows in visitor's language",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Literal storage — click to enable auto-translation",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Save the row before enabling auto-translation",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "This content will be translated into 17 languages within ~1 hour. Continue?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Disabling removes all 18 languages of translation, keeping only the current value. Continue?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Enter some content before enabling auto-translation",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Failed to toggle auto-translation, please retry",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

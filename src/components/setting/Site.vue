@@ -21,13 +21,24 @@
         </p>
       </div>
       <div class="settings-content">
-        <span class="settings-value">{{ site.title }}</span>
-        <edit-text
-          :model-value="site.title"
-          :title="$t('site.title.editTitle')"
-          :placeholder="$t('site.placeholder.title')"
-          @confirm="onSave({ title: $event })"
-        />
+        <span class="settings-value">{{ titleSource }}</span>
+        <div class="settings-actions">
+          <edit-text
+            :model-value="titleSource"
+            :title="$t('site.title.editTitle')"
+            :placeholder="$t('site.placeholder.title')"
+            @confirm="onSave({ title: $event })"
+          />
+          <auto-translate-toggle
+            model="site"
+            field="title"
+            :object-id="site.id"
+            :enabled="autoTranslatedFields.includes('title')"
+            :current-value="titleSource"
+            @enabled-success="onTranslationChanged"
+            @disabled-success="onTranslationChanged"
+          />
+        </div>
       </div>
     </section>
 
@@ -122,6 +133,7 @@ import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
 import UserChip from '@/components/site/UserChip.vue';
+import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
@@ -148,6 +160,7 @@ export default defineComponent({
     EditImage,
     EditUsers,
     UserChip,
+    AutoTranslateToggle,
     ElButton,
     ElColorPicker,
     ElImage,
@@ -161,6 +174,17 @@ export default defineComponent({
   computed: {
     site() {
       return this.$store.getters.site || {};
+    },
+    // Raw zh-cn source for ``title``. When auto-translate is OFF the
+    // server echoes the literal back in ``title_source``; when ON the
+    // ``title`` column is a ``$t(...)`` ref evaluated to the viewer's
+    // locale, so we always edit the source value to avoid clobbering
+    // the zh-cn original with a rendered English/etc. string.
+    titleSource(): string {
+      return this.site?.title_source ?? this.site?.title ?? '';
+    },
+    autoTranslatedFields(): string[] {
+      return this.site?.auto_translated_fields ?? [];
     },
     storedPrimaryColor(): string | undefined {
       return this.site?.theme?.primary_color;
@@ -183,6 +207,12 @@ export default defineComponent({
         console.debug('getSite for id', this.site?.id);
         this.$store.dispatch('getSite');
       });
+    },
+    onTranslationChanged() {
+      // Toggle endpoints mutate the row server-side; refresh so the
+      // ``title`` / ``title_source`` / ``auto_translated_fields`` we
+      // bind to come back in sync.
+      this.$store.dispatch('getSite');
     },
     onPrimaryColorPicked(value: string | null) {
       // `el-color-picker` emits `null` if the user clears the swatch and
@@ -219,6 +249,12 @@ export default defineComponent({
   max-width: 120px;
   border-radius: 8px;
   background-color: var(--el-fill-color-light);
+}
+
+.settings-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .favicon {

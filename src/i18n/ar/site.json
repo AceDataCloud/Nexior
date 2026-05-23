@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "إضافة",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "الترجمة التلقائية مفعلة — يتم عرض المحتوى بلغة الزائر",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "تخزين حرفي — انقر لتفعيل الترجمة التلقائية",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "احفظ الصف قبل تفعيل الترجمة التلقائية",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "ستتم ترجمة هذا المحتوى إلى 17 لغة خلال ساعة واحدة تقريبًا. متابعة؟",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "سيؤدي التعطيل إلى إزالة جميع ترجمات الـ 18 لغة، مع الاحتفاظ بالقيمة الحالية فقط. متابعة؟",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "أدخل بعض المحتوى قبل تفعيل الترجمة التلقائية",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "فشل تبديل الترجمة التلقائية، يُرجى المحاولة مرة أخرى",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "追加",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "自動翻訳オン — コンテンツは訪問者の言語で表示されます",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "リテラル保存 — クリックして自動翻訳を有効化",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "自動翻訳を有効にする前に行を保存してください",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "このコンテンツは約 1 時間以内に 17 言語に翻訳されます。続行しますか？",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "無効にすると 18 言語のすべての翻訳が削除され、現在の値のみが保持されます。続行しますか？",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "自動翻訳を有効にする前にコンテンツを入力してください",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "自動翻訳の切り替えに失敗しました。再試行してください",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }
