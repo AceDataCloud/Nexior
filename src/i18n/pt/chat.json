@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "Sua resposta",
     "description": "Texto padrão quando não é possível extrair uma resposta específica da saída histórica"
+  },
+  "consent.title": {
+    "message": "Autorização de conectores necessária",
+    "description": "Título do cartão de autorização do conector"
+  },
+  "consent.matchAny": {
+    "message": "Basta escolher um",
+    "description": "Etiqueta: basta autorizar qualquer um dos conectores deste grupo para atender ao requisito"
+  },
+  "consent.matchAll": {
+    "message": "Todos precisam ser autorizados",
+    "description": "Etiqueta: todos os conectores deste grupo precisam ser autorizados"
+  },
+  "consent.authorize": {
+    "message": "Autorizar",
+    "description": "Botão de autorização, ao clicar abrirá a página de autorização de terceiros"
+  },
+  "consent.skip": {
+    "message": "Ignorar por enquanto",
+    "description": "Botão para pular a autorização; ao pular, o modelo continuará sem este conector"
+  },
+  "consent.statusConnected": {
+    "message": "Conectado",
+    "description": "Indicador de status para conectores já conectados"
+  },
+  "consent.statusUnconnected": {
+    "message": "Não conectado",
+    "description": "Indicador de status para conectores não conectados (mostrado quando não há link de autorização)"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "Autorizado: {list}",
+    "description": "Texto no rodapé do cartão após o usuário concluir a autorização, {list} é a lista de conectores autorizados"
+  },
+  "consent.resolvedSkipped": {
+    "message": "Autorização de conectores ignorada",
+    "description": "Texto no rodapé do cartão após o usuário pular a autorização"
   }
 }

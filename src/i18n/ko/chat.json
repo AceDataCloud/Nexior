@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "당신의 답변",
     "description": "이력 출력에서 구체적인 답변을 추출할 수 없을 때의 기본 문구"
+  },
+  "consent.title": {
+    "message": "커넥터 권한 부여 필요",
+    "description": "커넥터 권한 부여 카드의 제목입니다."
+  },
+  "consent.matchAny": {
+    "message": "하나만 선택하면 됩니다",
+    "description": "태그: 이 그룹의 커넥터 중 하나만 선택하면 요구 사항을 충족합니다."
+  },
+  "consent.matchAll": {
+    "message": "모두 권한 부여 필요",
+    "description": "태그: 이 그룹의 모든 커넥터가 권한 부여를 필요로 합니다."
+  },
+  "consent.authorize": {
+    "message": "권한 부여",
+    "description": "권한 부여 버튼으로, 클릭하면 제3자 권한 부여 페이지가 열립니다."
+  },
+  "consent.skip": {
+    "message": "권한 부여 건너뛰기",
+    "description": "권한 부여를 건너뛰는 버튼으로, 건너뛴 후 모델은 해당 커넥터 없이 계속 진행됩니다."
+  },
+  "consent.statusConnected": {
+    "message": "연결됨",
+    "description": "연결된 커넥터의 상태 아이콘입니다."
+  },
+  "consent.statusUnconnected": {
+    "message": "연결되지 않음",
+    "description": "연결되지 않은 커넥터의 상태 아이콘입니다 (권한 부여 링크가 없을 때 표시됩니다)."
+  },
+  "consent.resolvedAuthorized": {
+    "message": "권한 부여 완료: {list}",
+    "description": "사용자가 권한 부여를 완료한 후 카드 하단의 설명으로, {list}는 권한이 부여된 커넥터 목록입니다."
+  },
+  "consent.resolvedSkipped": {
+    "message": "커넥터 권한 부여를 건너뜀",
+    "description": "사용자가 권한 부여를 건너뛴 후 카드 하단의 설명입니다."
   }
 }

@@ -506,5 +506,41 @@
   "askUserQuestion.collapsedAnswerLabel": {
     "message": "你的回答",
     "description": "無法從歷史輸出中提取具體答案時的兜底文案"
+  },
+  "consent.title": {
+    "message": "需要連接器授權",
+    "description": "連接器授權卡片標題"
+  },
+  "consent.matchAny": {
+    "message": "選擇其一即可",
+    "description": "標籤：本組連接器任選其一即可滿足需求"
+  },
+  "consent.matchAll": {
+    "message": "全部需要授權",
+    "description": "標籤：本組連接器全部都需要授權"
+  },
+  "consent.authorize": {
+    "message": "去授權",
+    "description": "授權按鈕，點擊後會打開第三方授權頁面"
+  },
+  "consent.skip": {
+    "message": "暫不授權",
+    "description": "跳過授權按鈕，跳過後模型將在沒有該連接器的情況下繼續"
+  },
+  "consent.statusConnected": {
+    "message": "已連接",
+    "description": "已連接連接器的狀態徽章"
+  },
+  "consent.statusUnconnected": {
+    "message": "未連接",
+    "description": "未連接連接器的狀態徽章（無授權連結時顯示）"
+  },
+  "consent.resolvedAuthorized": {
+    "message": "已授權：{list}",
+    "description": "使用者授權完成後的卡片底部說明，{list} 為已授權連接器列表"
+  },
+  "consent.resolvedSkipped": {
+    "message": "已跳過連接器授權",
+    "description": "使用者跳過授權後的卡片底部說明"
   }
 }
