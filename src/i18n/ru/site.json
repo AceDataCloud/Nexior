@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Добавить",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Автоперевод ВКЛЮЧЁН — контент отображается на языке посетителя",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Литеральное хранение — нажмите, чтобы включить автоперевод",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Сохраните строку перед включением автоперевода",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "Этот контент будет переведён на 17 языков примерно за 1 час. Продолжить?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Отключение удалит все 18 языковых переводов, оставив только текущее значение. Продолжить?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Введите содержимое перед включением автоперевода",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Не удалось переключить автоперевод, попробуйте ещё раз",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }

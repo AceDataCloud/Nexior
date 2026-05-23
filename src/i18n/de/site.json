@@ -594,5 +594,33 @@
   "button.addUser": {
     "message": "Hinzufügen",
     "description": "Button label to add the resolved user to the admins list."
+  },
+  "autoTranslate.tooltipOn": {
+    "message": "Automatische Übersetzung AKTIVIERT — Inhalt wird in der Sprache des Besuchers angezeigt",
+    "description": "Tooltip on the auto-translate toggle when it is ON"
+  },
+  "autoTranslate.tooltipOff": {
+    "message": "Wörtliche Speicherung — klicken zum Aktivieren der automatischen Übersetzung",
+    "description": "Tooltip on the auto-translate toggle when it is OFF"
+  },
+  "autoTranslate.tooltipDisabledNotSaved": {
+    "message": "Bitte zuerst speichern, bevor die automatische Übersetzung aktiviert wird",
+    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+  },
+  "autoTranslate.confirmEnable": {
+    "message": "Dieser Inhalt wird innerhalb von ca. 1 Stunde in 17 Sprachen übersetzt. Fortfahren?",
+    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+  },
+  "autoTranslate.confirmDisable": {
+    "message": "Beim Deaktivieren werden alle 18 Sprachversionen entfernt, nur der aktuelle Wert bleibt erhalten. Fortfahren?",
+    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+  },
+  "autoTranslate.empty": {
+    "message": "Bitte zuerst Inhalt eingeben, bevor die automatische Übersetzung aktiviert wird",
+    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+  },
+  "autoTranslate.error": {
+    "message": "Umschalten der automatischen Übersetzung fehlgeschlagen, bitte erneut versuchen",
+    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   }
 }
