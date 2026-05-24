@@ -82,11 +82,14 @@ export default defineComponent({
 @media screen and (max-width: 767px) {
   .console {
     --console-safe-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+    --console-safe-top: var(--app-safe-area-top);
 
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    // Push content below iOS Dynamic Island / Android status bar.
+    padding-top: var(--console-safe-top);
     .navigator {
       width: 100%;
       height: calc(60px + var(--console-safe-bottom));
@@ -96,7 +99,7 @@ export default defineComponent({
       z-index: 10000;
     }
     .main {
-      height: calc(100% - 60px - var(--console-safe-bottom));
+      height: calc(100% - 60px - var(--console-safe-bottom) - var(--console-safe-top));
       width: 100%;
       flex: 1;
       display: flex;

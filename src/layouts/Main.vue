@@ -203,8 +203,13 @@ export default defineComponent({
     height: 100%;
     display: flex;
     flex-direction: column;
+    // Keep page content below the iOS Dynamic Island / notch and Android
+    // status bar (battery / time / icons). The bottom navigator already
+    // consumes `--app-safe-area-bottom`; the top inset has to be added at
+    // the layout wrapper so every routed service page inherits it.
+    padding-top: var(--app-safe-area-top);
     .main {
-      height: calc(100% - 60px - var(--app-safe-area-bottom));
+      height: calc(100% - 60px - var(--app-safe-area-bottom) - var(--app-safe-area-top));
       width: 100%;
       flex: 1;
     }
