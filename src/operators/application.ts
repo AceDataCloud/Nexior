@@ -16,6 +16,11 @@ export interface IApplicationQuery {
   service_id?: string | string[];
   ordering?: string;
   scope?: IApplicationScope | IApplicationScope[];
+  // Credential-as-Authorization (PR #540): when true the backend also
+  // includes applications where the caller is a grantee. Each item carries
+  // ``role: 'owner' | 'grantee'``.
+  include_granted?: boolean;
+  role?: 'owner' | 'granted';
 }
 
 class ApplicationOperator {
