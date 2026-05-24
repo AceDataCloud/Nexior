@@ -1,8 +1,9 @@
 /**
  * In-process cache for AuthBackend's connector catalog (
- * `GET /api/v1/connections/catalog/<id>/`). The consent card renders the
- * upstream brand (logo, localized name, permission descriptions) instead
- * of the opaque catalog identifier the worker emits — see
+ * `GET /api/v1/connectors/<id>/`, legacy alias
+ * `GET /api/v1/connections/catalog/<id>/`). The consent card renders
+ * the upstream brand (logo, localized name, permission descriptions)
+ * instead of the opaque catalog identifier the worker emits — see
  * `IConsentRequestEntry.catalog_id`.
  *
  * Why module-level instead of a Vuex module:
@@ -58,7 +59,8 @@ export interface IConnectorCatalogSummary {
 }
 
 /** Response shape of AuthBackend's
- *  `POST /api/v1/connections/catalog/<id>/install/`. See
+ *  `POST /api/v1/connectors/<id>/install/` (legacy alias
+ *  `POST /api/v1/connections/catalog/<id>/install/`). See
  *  `app.services.connector_catalog.install_for_user`. */
 export interface IConnectorCatalogInstallResponse {
   type: 'redirect' | 'form' | 'active';
@@ -75,15 +77,19 @@ export interface IConnectorCatalogInstallResponse {
 /** Subset of AuthBackend's `IConnection` fields the consent card needs
  *  to detect which entries are now actively connected for the calling
  *  user. The full schema (profile, scopes, expires_at, …) is ignored —
- *  this is purely a presence + status check keyed on
- *  `catalog_identifier`. */
+ *  this is purely a presence + status check keyed on the connector
+ *  identifier. AuthBackend Stage 1 emits both `connector_identifier`
+ *  (canonical) and `catalog_identifier` (legacy alias); we accept either. */
 export interface IUserConnectionSummary {
   id: string;
-  /** Catalog item identifier (e.g. `acedatacloud/google-drive`).
-   *  Empty string for legacy / non-catalog installs — those rows can't
+  /** Connector identifier (e.g. `acedatacloud/google-drive`).
+   *  Empty string for legacy / non-connector installs — those rows can't
    *  match a consent entry's `connector` field so they're effectively
-   *  ignored. */
-  catalog_identifier: string;
+   *  ignored. Canonical field. */
+  connector_identifier?: string;
+  /** Deprecated alias for {@link connector_identifier}; emitted by
+   *  AuthBackend during the catalog→connector rename rollout. */
+  catalog_identifier?: string;
   /** Backend ships both lowercase and uppercase variants — see
    *  AuthFrontend `ConnectionStatus`. Callers should compare
    *  case-insensitively. */
@@ -125,7 +131,7 @@ export async function getCatalogItem(catalogId: string): Promise<IConnectorCatal
   const task = (async () => {
     try {
       const response: AxiosResponse<IConnectorCatalogSummary> = await httpClient.get(
-        `/connections/catalog/${catalogId}/`,
+        `/connectors/${catalogId}/`,
         { baseURL: `${getBaseUrlAuth()}/api/v1` }
       );
       const item = response.data;
@@ -163,7 +169,7 @@ export async function installFromCatalog(
   payload: { scopes?: string[]; return_url: string }
 ): Promise<IConnectorCatalogInstallResponse> {
   const response: AxiosResponse<IConnectorCatalogInstallResponse> = await httpClient.post(
-    `/connections/catalog/${catalogId}/install/`,
+    `/connectors/${catalogId}/install/`,
     payload,
     { baseURL: `${getBaseUrlAuth()}/api/v1` }
   );

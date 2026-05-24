@@ -416,9 +416,10 @@ export default defineComponent({
         const connections = await listMyConnections();
         const connectedIds = new Set<string>();
         for (const c of connections) {
-          if (!c.catalog_identifier) continue;
+          const id = c.connector_identifier || c.catalog_identifier;
+          if (!id) continue;
           if (String(c.status).toLowerCase() === 'active') {
-            connectedIds.add(c.catalog_identifier);
+            connectedIds.add(id);
           }
         }
         const next: Record<string, 'connected' | 'unconnected'> = {};

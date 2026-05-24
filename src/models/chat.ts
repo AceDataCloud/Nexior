@@ -157,8 +157,9 @@ export interface IAskUserQuestionPayload {
 export interface IConsentRequestEntry {
   /** Catalog identifier, e.g. `acedatacloud/suno`. */
   connector: string;
-  /** Stable UUID of the matching `ConnectorCatalogItem` row in AuthBackend
-   *  (`/api/v1/connections/catalog/<id>/`). Required: the consent card uses
+  /** Stable UUID of the matching `Connector` (à la `ConnectorCatalogItem`)
+   *  row in AuthBackend (`/api/v1/connectors/<id>/`, legacy alias
+   *  `/api/v1/connections/catalog/<id>/`). Required: the consent card uses
    *  this to fetch logo / localized name / permission list so each row can
    *  show the upstream brand instead of the opaque slug. Emitted by the
    *  worker's `get_connector_status` tool — there is no fallback because
