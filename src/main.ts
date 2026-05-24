@@ -15,6 +15,7 @@ import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
 import { getSurface, isNative } from '@/utils/surface';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
+import { runVersionGate } from '@/utils/versionGate';
 import {
   initializeCookies,
   initializeDescription,
@@ -71,6 +72,15 @@ const main = async () => {
   await initializeToken();
   // user/site/config are independent after token is set — run in parallel
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
+
+  // Native-only version gate: block the app behind an upgrade modal when
+  // the shipped build is below `min_supported`. Web is always served the
+  // latest dist/, so this is a no-op there. Fails open on any error so an
+  // outage on /api/v1/app-version/ can never strand mobile users.
+  if (isNative()) {
+    const blocked = await runVersionGate();
+    if (blocked) return;
+  }
 
   // Telemetry: initialize after token+user so we already know who the visitor
   // is. Safe no-op when VITE_RUM_PROJECT_ID is unset (local dev / preview).
