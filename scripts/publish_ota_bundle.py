@@ -53,7 +53,18 @@ def get_client(region: str):
     if not secret_id or not secret_key:
         print("ERROR: TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY must be set", file=sys.stderr)
         sys.exit(2)
-    return CosS3Client(CosConfig(Region=region, SecretId=secret_id, SecretKey=secret_key, Scheme="https"))
+    # Global Accelerate endpoint — uploads from GH Actions runners (US/EU)
+    # to ap-beijing time out without this. The bucket has Accelerate
+    # enabled bucket-side; see .claude/memories repo/cos-accelerate-rollout.md.
+    return CosS3Client(
+        CosConfig(
+            Region=region,
+            SecretId=secret_id,
+            SecretKey=secret_key,
+            Scheme="https",
+            Endpoint="cos.accelerate.myqcloud.com",
+        )
+    )
 
 
 def upload(client, bucket: str, key: str, body: bytes, content_type: str, *, dry_run: bool) -> None:
