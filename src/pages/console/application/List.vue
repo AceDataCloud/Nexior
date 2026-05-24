@@ -109,6 +109,9 @@
               <el-table-column :label="$t('application.field.name')" width="180px">
                 <template #default="scope">
                   <span>{{ scope.row?.service?.title }}</span>
+                  <el-tag v-if="scope.row?.role === 'grantee'" type="info" size="small" round class="ml-2">
+                    {{ $t('application.badge.shared') }}
+                  </el-tag>
                 </template>
               </el-table-column>
               <el-table-column
@@ -166,7 +169,14 @@
                       <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                       {{ $t('application.button.usage') }}
                     </el-button>
-                    <el-button v-if="showPayment" class="!m-0 !px-2" type="primary" round size="small" @click="onBuyMore(scope?.row)">
+                    <el-button
+                      v-if="showPayment"
+                      class="!m-0 !px-2"
+                      type="primary"
+                      round
+                      size="small"
+                      @click="onBuyMore(scope?.row)"
+                    >
                       <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[12px]" />
                       {{ $t('application.button.buyMore') }}
                     </el-button>

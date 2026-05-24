@@ -9,7 +9,7 @@ import {
   applicationOperator,
   credentialOperator
 } from '@/operators';
-import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
+import { IApplication, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
 import { isNative } from '@/utils/surface';
@@ -181,7 +181,11 @@ export const getApplications = async ({
       user_id: rootState?.user?.id,
       ordering: '-created_at',
       type: IApplicationType.USAGE,
-      scope: IApplicationScope.GLOBAL
+      // Credential-as-Authorization: also include apps shared TO me. Each
+      // item carries ``role: 'owner' | 'grantee'``. Dropping the previous
+      // ``scope: GLOBAL`` filter so granted INDIVIDUAL apps come back too
+      // (selection A in the design doc).
+      include_granted: true
     });
     console.debug('global applications from online', applications);
     state.status.getApplications = Status.Success;

@@ -27,6 +27,10 @@ export interface IApplication {
   created_at?: string;
   updated_at?: string;
   expired_at?: string;
+  // Set by the backend (PR #540) when the current user is a grantee on this
+  // application rather than its owner. Used to skip auto-createCredential and
+  // to surface a "Shared" badge in the UI.
+  role?: 'owner' | 'grantee';
 }
 
 export interface IApplicationListResponse {
