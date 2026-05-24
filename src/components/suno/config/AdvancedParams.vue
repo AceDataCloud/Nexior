@@ -23,16 +23,16 @@
           <span class="text-xs font-bold">{{ $t('suno.name.weirdness') }}</span>
           <span class="text-xs text-[var(--el-text-color-secondary)]">{{ weirdness ?? 0 }}</span>
         </div>
-        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" />
+        <el-slider v-model="weirdness" :min="0" :max="1" :step="0.01" />
       </div>
 
       <!-- Style Influence -->
       <div v-if="config?.custom" class="mb-3">
         <div class="flex items-center justify-between mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.styleInfluence') }}</span>
-          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ styleInfluence ?? 50 }}</span>
+          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ styleInfluence ?? 0.5 }}</span>
         </div>
-        <el-slider v-model="styleInfluence" :min="0" :max="100" :step="1" />
+        <el-slider v-model="styleInfluence" :min="0" :max="1" :step="0.01" />
       </div>
 
       <!-- Variation Category (v5+ only) -->
@@ -51,9 +51,9 @@
       <div v-if="config?.action === 'cover'" class="mb-3">
         <div class="flex items-center justify-between mb-1">
           <span class="text-xs font-bold">{{ $t('suno.name.audioWeight') }}</span>
-          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ audioWeight ?? 50 }}</span>
+          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ audioWeight ?? 0.5 }}</span>
         </div>
-        <el-slider v-model="audioWeight" :min="0" :max="100" :step="1" />
+        <el-slider v-model="audioWeight" :min="0" :max="1" :step="0.01" />
       </div>
       <!-- Lyrics Mode (Manual/Auto) -->
       <div v-if="config?.custom && !config?.instrumental" class="mb-3">
@@ -131,7 +131,7 @@ export default defineComponent({
     },
     styleInfluence: {
       get() {
-        return this.$store.state.suno?.config?.style_influence ?? 50;
+        return this.$store.state.suno?.config?.style_influence ?? 0.5;
       },
       set(val: number) {
         this.$store.commit('suno/setConfig', {
@@ -153,7 +153,7 @@ export default defineComponent({
     },
     audioWeight: {
       get() {
-        return this.$store.state.suno?.config?.audio_weight ?? 50;
+        return this.$store.state.suno?.config?.audio_weight ?? 0.5;
       },
       set(val: number) {
         this.$store.commit('suno/setConfig', {
@@ -172,6 +172,26 @@ export default defineComponent({
           lyrics_mode: val
         });
       }
+    }
+  },
+  mounted() {
+    // Migrate legacy persisted values from the old 0-100 slider scale to the
+    // 0-1 scale required by the upstream Suno API. Anything > 1 was stored
+    // when the sliders ran on 0-100; divide by 100 to preserve semantics.
+    const cfg = this.$store.state.suno?.config;
+    if (!cfg) return;
+    const updates: Record<string, number> = {};
+    if (typeof cfg.weirdness === 'number' && cfg.weirdness > 1) {
+      updates.weirdness = cfg.weirdness / 100;
+    }
+    if (typeof cfg.style_influence === 'number' && cfg.style_influence > 1) {
+      updates.style_influence = cfg.style_influence / 100;
+    }
+    if (typeof cfg.audio_weight === 'number' && cfg.audio_weight > 1) {
+      updates.audio_weight = cfg.audio_weight / 100;
+    }
+    if (Object.keys(updates).length > 0) {
+      this.$store.commit('suno/setConfig', { ...cfg, ...updates });
     }
   }
 });

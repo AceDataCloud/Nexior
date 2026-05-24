@@ -26,9 +26,9 @@
             <span class="text-xs font-bold">{{ $t('producer.name.weirdness') }}</span>
             <info-icon :content="$t('producer.description.weirdness')" />
           </div>
-          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ weirdness ?? 50 }}</span>
+          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ weirdness ?? 0.5 }}</span>
         </div>
-        <el-slider v-model="weirdness" :min="0" :max="100" :step="1" />
+        <el-slider v-model="weirdness" :min="0" :max="1" :step="0.01" />
       </div>
 
       <!-- Sound Strength (always available — drives audio prompt intensity) -->
@@ -38,9 +38,9 @@
             <span class="text-xs font-bold">{{ $t('producer.name.soundStrength') }}</span>
             <info-icon :content="$t('producer.description.soundStrength')" />
           </div>
-          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ soundStrength ?? 50 }}</span>
+          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ soundStrength ?? 0.7 }}</span>
         </div>
-        <el-slider v-model="soundStrength" :min="0" :max="100" :step="1" />
+        <el-slider v-model="soundStrength" :min="0.2" :max="1" :step="0.01" />
       </div>
 
       <!-- Lyrics Strength (custom + vocal only) -->
@@ -50,9 +50,9 @@
             <span class="text-xs font-bold">{{ $t('producer.name.lyricsStrength') }}</span>
             <info-icon :content="$t('producer.description.lyricsStrength')" />
           </div>
-          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ lyricsStrength ?? 50 }}</span>
+          <span class="text-xs text-[var(--el-text-color-secondary)]">{{ lyricsStrength ?? 0.7 }}</span>
         </div>
-        <el-slider v-model="lyricsStrength" :min="0" :max="100" :step="1" />
+        <el-slider v-model="lyricsStrength" :min="0" :max="1" :step="0.01" />
       </div>
 
       <!-- Seed (always available) -->
@@ -122,7 +122,7 @@ export default defineComponent({
     },
     weirdness: {
       get() {
-        return this.$store.state.producer?.config?.weirdness ?? 50;
+        return this.$store.state.producer?.config?.weirdness ?? 0.5;
       },
       set(val: number) {
         this.$store.commit('producer/setConfig', {
@@ -133,7 +133,7 @@ export default defineComponent({
     },
     soundStrength: {
       get() {
-        return this.$store.state.producer?.config?.sound_strength ?? 50;
+        return this.$store.state.producer?.config?.sound_strength ?? 0.7;
       },
       set(val: number) {
         this.$store.commit('producer/setConfig', {
@@ -144,7 +144,7 @@ export default defineComponent({
     },
     lyricsStrength: {
       get() {
-        return this.$store.state.producer?.config?.lyrics_strength ?? 50;
+        return this.$store.state.producer?.config?.lyrics_strength ?? 0.7;
       },
       set(val: number) {
         this.$store.commit('producer/setConfig', {
@@ -163,6 +163,27 @@ export default defineComponent({
           seed: val
         });
       }
+    }
+  },
+  mounted() {
+    // Migrate legacy persisted values from the old 0-100 slider scale to the
+    // 0-1 scale required by the upstream Producer API. Anything > 1 was
+    // stored when the sliders ran on 0-100; divide by 100 to preserve
+    // semantics.
+    const cfg = this.$store.state.producer?.config;
+    if (!cfg) return;
+    const updates: Record<string, number> = {};
+    if (typeof cfg.weirdness === 'number' && cfg.weirdness > 1) {
+      updates.weirdness = cfg.weirdness / 100;
+    }
+    if (typeof cfg.sound_strength === 'number' && cfg.sound_strength > 1) {
+      updates.sound_strength = cfg.sound_strength / 100;
+    }
+    if (typeof cfg.lyrics_strength === 'number' && cfg.lyrics_strength > 1) {
+      updates.lyrics_strength = cfg.lyrics_strength / 100;
+    }
+    if (Object.keys(updates).length > 0) {
+      this.$store.commit('producer/setConfig', { ...cfg, ...updates });
     }
   }
 });
