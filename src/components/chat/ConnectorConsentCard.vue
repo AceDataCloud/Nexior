@@ -416,7 +416,7 @@ export default defineComponent({
         const connections = await listMyConnections();
         const connectedIds = new Set<string>();
         for (const c of connections) {
-          const id = c.connector_identifier || c.catalog_identifier;
+          const id = c.connector_identifier;
           if (!id) continue;
           if (String(c.status).toLowerCase() === 'active') {
             connectedIds.add(id);
