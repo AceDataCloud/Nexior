@@ -68,7 +68,7 @@
                     (item.status === 'awaiting_input' || item.status === 'done')
                   ) &&
                   !(
-                    item.tool_name === 'get_connector_status' &&
+                    item.tool_name === 'request_user_consent' &&
                     (item.status === 'awaiting_input' || item.status === 'done')
                   )
                 "
@@ -97,7 +97,7 @@
               <connector-consent-card
                 v-if="
                   item.type === 'tool_use' &&
-                  item.tool_name === 'get_connector_status' &&
+                  item.tool_name === 'request_user_consent' &&
                   item.status === 'awaiting_input' &&
                   item.pending_consent_request
                 "
@@ -110,7 +110,7 @@
               <connector-consent-card
                 v-if="
                   item.type === 'tool_use' &&
-                  item.tool_name === 'get_connector_status' &&
+                  item.tool_name === 'request_user_consent' &&
                   item.status === 'done' &&
                   consentPayloadFromBlock(item)
                 "

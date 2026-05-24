@@ -27,7 +27,7 @@ function awaitingBlock(toolUseId: string, payload: IConsentRequestPayload) {
   return {
     type: 'tool_use' as const,
     tool_id: toolUseId,
-    tool_name: 'get_connector_status',
+    tool_name: 'request_user_consent',
     status: 'awaiting_input' as const,
     pending_consent_request: payload
   };
@@ -101,7 +101,7 @@ describe('findPendingConsentBlock', () => {
           {
             type: 'tool_use',
             tool_id: 'tool_xyz',
-            tool_name: 'get_connector_status',
+            tool_name: 'request_user_consent',
             status: 'done',
             pending_consent_request: PAYLOAD,
             output: '{}'
