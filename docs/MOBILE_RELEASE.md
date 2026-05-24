@@ -206,3 +206,99 @@ Android 可通过 GitHub Actions 手动选择 track 逐步放量：`internal →
 | `APP_STORE_CONNECT_KEY_ID` | API Key ID | iOS |
 | `APP_STORE_CONNECT_ISSUER_ID` | Issuer ID | iOS |
 | `APP_STORE_CONNECT_KEY_BASE64` | API Key 文件 | iOS |
+
+---
+
+## 五、Live Update（OTA 热更新 / `@capgo/capacitor-updater`）
+
+App 通过 `@capgo/capacitor-updater` 从 COS 自托管的 manifest 拉新 `dist/` bundle，实现免商店审核的前端代码热更新（仅 JS/HTML/CSS，符合 Apple/Google 政策）。
+
+> **当前 PR**（feat/ota-client）只接入了客户端 SDK，发布流水线还未自动化。手动发布 OTA 流程见下文；CI 集成在后续 PR 中完成。
+
+### 启用
+
+构建时设置环境变量（默认关闭，合并后不会立即生效）：
+
+```bash
+# .env.production / GitHub Actions 环境变量
+VITE_LIVE_UPDATE_ENABLED=true
+VITE_LIVE_UPDATE_BASE_URL=https://cdn.acedata.cloud/nexior/updates   # 可选，默认值
+VITE_LIVE_UPDATE_CHANNEL=stable                                       # 可选，默认 stable
+```
+
+App 启动时会异步检查 manifest，发现新版本则后台下载并切换到下次冷启动生效。任何环节失败都安静跳过，不影响启动。
+
+### COS 目录布局
+
+```
+acedatacloud2-1256437459/      # COS bucket
+└── nexior/updates/
+    ├── stable/
+    │   ├── ios.json           # 当前 stable iOS manifest
+    │   ├── android.json       # 当前 stable Android manifest
+    │   └── bundles/
+    │       ├── 3.35.3.zip     # zipped dist/
+    │       └── 3.35.4.zip
+    └── beta/                  # 预留：灰度通道
+        ├── ios.json
+        └── android.json
+```
+
+公开 CDN URL：`https://cdn.acedata.cloud/nexior/updates/...`
+
+### Manifest 格式
+
+`stable/ios.json` 示例：
+
+```json
+{
+  "version": "3.35.3",
+  "url": "https://cdn.acedata.cloud/nexior/updates/stable/bundles/3.35.3.zip",
+  "checksum": "ZGVhZGJlZWY...",
+  "min_native_version": "3.35.2"
+}
+```
+
+字段说明：
+
+| 字段 | 必填 | 含义 |
+|---|---|---|
+| `version` | 是 | bundle 版本号。客户端只在 `version > 当前运行的 bundle.version` 时下载。 |
+| `url` | 是 | bundle zip 的绝对 https URL。 |
+| `checksum` | 是 | bundle zip 的 sha256 (base64 编码)。客户端激活前校验，不匹配则丢弃。 |
+| `min_native_version` | 否 | 兼容的最低原生壳版本。低于此版本的安装会跳过此 bundle（由 `app-version` 闸门处理强升）。 |
+
+### 手动发布一个 OTA（CI 自动化前的临时流程）
+
+1. 本地构建：
+   ```bash
+   VITE_SURFACE=ios VITE_LIVE_UPDATE_ENABLED=true npm run build
+   ```
+2. 打包并算校验和：
+   ```bash
+   cd dist && zip -r ../3.35.3.zip . && cd -
+   shasum -a 256 3.35.3.zip | awk '{print $1}' | xxd -r -p | base64
+   ```
+3. 上传 zip 到 COS（用 `coscmd` / Tencent COSBrowser / `.claude/scripts/upload.py`）：
+   ```
+   nexior/updates/stable/bundles/3.35.3.zip
+   ```
+4. 写一个 `ios.json` / `android.json`（结构如上）并上传到：
+   ```
+   nexior/updates/stable/ios.json
+   nexior/updates/stable/android.json
+   ```
+5. 让 EdgeOne 刷新 manifest 路径（zip 不需要刷，URL 带版本号天然防缓存）：
+   ```bash
+   # 见 .claude/commands/manage-edgeone.md
+   ```
+
+### 回滚
+
+把 `*.json` 改回上一版本的 manifest 即可。下次冷启动 App 会发现 `manifest.version <= current` 自动跳过下载，但 **不会自动回滚已激活的更新**——这需要发一个 `version` 比当前高的 manifest，指向旧 zip。如需立即回滚已激活的坏 bundle，需要在新 manifest 里 `version` 写一个比坏 bundle 更高的值，`url` 指向上一个好 zip。
+
+### Apple / Google 合规要点
+
+- 只热更新 web 资源（`dist/` 内容），**绝不**改 native 代码、不下载可执行二进制、不绕过 App Review 添加新功能（已审核功能的 bugfix / 文案 / UI 调整 OK）。
+- `@capgo/capacitor-updater` 在 iOS 上使用 WKWebView 加载本地文件，符合 [App Store Guideline 3.3.2](https://developer.apple.com/app-store/review/guidelines/#3.3.2) 关于解释性代码的例外条款（与 React Native CodePush、Expo Updates 同类机制）。
+- 引入大版本特性时仍需走商店审核 + 提升 `app-version` 接口里的 `min_supported`。
