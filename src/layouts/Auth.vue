@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-main class="h-[100vh]"> <router-view /> </el-main>
+    <el-main class="auth-main"> <router-view /> </el-main>
   </el-container>
 </template>
 
@@ -16,3 +16,14 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.auth-main {
+  // Respect iOS Dynamic Island / notch and Android status bar so the login
+  // form doesn't slide under the system overlays.
+  height: 100vh;
+  padding-top: var(--app-safe-area-top);
+  padding-bottom: var(--app-safe-area-bottom);
+  box-sizing: border-box;
+}
+</style>
