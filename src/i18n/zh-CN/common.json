@@ -926,5 +926,25 @@
   "message.uploadInProgress": {
     "message": "参考文件正在上传，请稍候再生成",
     "description": "用户在参考图/视频/音频还未上传完成时点击生成按钮，会弹出的轻量提示，要求用户等待上传完成后再次点击生成。"
+  },
+  "appUpgrade.title": {
+    "message": "需要升级",
+    "description": "原生 App 启动时的版本闸门弹窗标题。当客户端版本低于服务端要求时显示，告知用户需要升级 App。"
+  },
+  "appUpgrade.blockMessage": {
+    "message": "当前版本过低，请前往应用商店更新到最新版本后再使用。",
+    "description": "强制升级弹窗正文。当客户端版本低于 min_supported 时显示，无法关闭，唯一按钮跳转到应用商店。"
+  },
+  "appUpgrade.softMessage": {
+    "message": "有新版本可用，建议前往应用商店更新以获得最佳体验。",
+    "description": "可选升级提示正文。当客户端版本低于 latest 但高于 min_supported 时显示，用户可以选择稍后再说继续使用。"
+  },
+  "appUpgrade.openStore": {
+    "message": "前往更新",
+    "description": "升级弹窗主按钮：在系统浏览器中打开 App Store / Play Store 链接。"
+  },
+  "appUpgrade.later": {
+    "message": "稍后再说",
+    "description": "软提示升级弹窗的次按钮：忽略本次提示继续使用，仅在非强制升级场景出现。"
   }
 }
