@@ -1,0 +1,117 @@
+name: publish-ota
+
+# Build, zip, and publish a Nexior OTA bundle to Tencent Cloud COS so that
+# installed iOS + Android apps wired up in PR #800 can pick it up on next
+# cold start.
+#
+# One bundle, two manifests: the dist/ build is platform-agnostic (same JS
+# runs in iOS WKWebView and Android WebView), so we upload the zip once and
+# point both `ios.json` and `android.json` at it. Keeping the manifests
+# separate leaves room to diverge later (e.g. holding iOS back on a build
+# that fails Apple review) without touching this workflow.
+#
+# Required repo secrets:
+#   - TENCENT_CLOUD_SECRET_ID
+#   - TENCENT_CLOUD_SECRET_KEY
+#
+# The bundle is only consumed by clients with `VITE_LIVE_UPDATE_ENABLED=true`,
+# which is currently off by default. Publishing a bundle therefore won't
+# affect any installed user until that flag is flipped in a subsequent
+# native build.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Bundle version (e.g. 3.35.3). Must be strictly greater than the version currently active on the client to take effect.'
+        required: true
+        type: string
+      channel:
+        description: 'Release channel.'
+        required: true
+        default: 'stable'
+        type: choice
+        options:
+          - stable
+          - beta
+      min_native_version:
+        description: 'Optional: minimum native shell version compatible with this bundle. Clients below this skip the OTA — the version gate forces a store upgrade instead.'
+        required: false
+        type: string
+        default: ''
+      platforms:
+        description: 'Comma-separated list of manifests to write. Default ships both iOS and Android.'
+        required: false
+        type: string
+        default: 'ios,android'
+      dry_run:
+        description: 'Build + show what would be uploaded, but skip the actual COS PUTs.'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.x
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build dist with OTA flag enabled
+        env:
+          # Live update must be on in the bundled JS so the client's
+          # liveUpdate.ts actually fetches the manifest after picking up
+          # this bundle. (For the very first bundle the *currently installed*
+          # native already has to be built with the flag on — see
+          # docs/MOBILE_RELEASE.md §5.)
+          VITE_LIVE_UPDATE_ENABLED: 'true'
+        run: npm run build
+
+      - name: Zip dist/
+        id: zip
+        run: |
+          set -euo pipefail
+          test -d dist
+          (cd dist && zip -qr "../${{ inputs.version }}.zip" .)
+          ls -lh "${{ inputs.version }}.zip"
+          echo "zip_path=${{ inputs.version }}.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install cos-python-sdk-v5
+        run: pip install cos-python-sdk-v5
+
+      - name: Publish bundle + manifests to COS
+        env:
+          TENCENT_CLOUD_SECRET_ID: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+        run: |
+          python3 scripts/publish_ota_bundle.py \
+            --zip "${{ steps.zip.outputs.zip_path }}" \
+            --version "${{ inputs.version }}" \
+            --channel "${{ inputs.channel }}" \
+            --platforms "${{ inputs.platforms }}" \
+            --min-native-version "${{ inputs.min_native_version }}" \
+            ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Upload zip as workflow artifact
+        # Keep a copy in the run for debugging / re-upload if needed.
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexior-ota-${{ inputs.channel }}-${{ inputs.version }}
+          path: ${{ steps.zip.outputs.zip_path }}
+          retention-days: 30

@@ -268,30 +268,35 @@ acedatacloud2-1256437459/      # COS bucket
 | `checksum` | 是 | bundle zip 的 sha256 (base64 编码)。客户端激活前校验，不匹配则丢弃。 |
 | `min_native_version` | 否 | 兼容的最低原生壳版本。低于此版本的安装会跳过此 bundle（由 `app-version` 闸门处理强升）。 |
 
-### 手动发布一个 OTA（CI 自动化前的临时流程）
+### 发布一个 OTA（`publish-ota` 工作流）
 
-1. 本地构建：
-   ```bash
-   VITE_SURFACE=ios VITE_LIVE_UPDATE_ENABLED=true npm run build
-   ```
-2. 打包并算校验和：
-   ```bash
-   cd dist && zip -r ../3.35.3.zip . && cd -
-   shasum -a 256 3.35.3.zip | awk '{print $1}' | xxd -r -p | base64
-   ```
-3. 上传 zip 到 COS（用 `coscmd` / Tencent COSBrowser / `.claude/scripts/upload.py`）：
-   ```
-   nexior/updates/stable/bundles/3.35.3.zip
-   ```
-4. 写一个 `ios.json` / `android.json`（结构如上）并上传到：
-   ```
-   nexior/updates/stable/ios.json
-   nexior/updates/stable/android.json
-   ```
-5. 让 EdgeOne 刷新 manifest 路径（zip 不需要刷，URL 带版本号天然防缓存）：
-   ```bash
-   # 见 .claude/commands/manage-edgeone.md
-   ```
+通过 `.github/workflows/publish-ota.yaml` 一键发布，iOS 和 Android 同步生效。
+
+**触发方式：** GitHub Actions → `publish-ota` → Run workflow。
+
+**参数：**
+
+| 参数 | 默认 | 说明 |
+|---|---|---|
+| `version` | — | bundle 版本号，必须严格大于客户端当前运行版本才会生效。 |
+| `channel` | `stable` | `stable` 或 `beta`。 |
+| `min_native_version` | 空 | 可选。原生壳低于此版本的安装跳过本 bundle，由 `app-version` 闸门接管强升。 |
+| `platforms` | `ios,android` | 同时写入哪些 manifest。dist 是平台无关的同一份 zip，默认两端一起更新。 |
+| `dry_run` | false | 只打印计划上传的 key + manifest 内容，不实际 PUT。 |
+
+**工作流做的事：**
+
+1. `npm ci && VITE_LIVE_UPDATE_ENABLED=true npm run build` 生成 `dist/`。
+2. zip 整个 `dist/` 为 `<version>.zip`。
+3. `pip install cos-python-sdk-v5`，然后跑 `scripts/publish_ota_bundle.py`，由它：
+   - 计算 zip 的 sha256（base64）作为 `checksum`；
+   - 上传 zip 到 `cos://<bucket>/nexior/updates/<channel>/bundles/<version>.zip`（`Cache-Control: public, max-age=31536000, immutable`）；
+   - 上传 `ios.json` 和 `android.json`（同一份 manifest 内容）到 `cos://.../<channel>/<platform>.json`（`Cache-Control: public, max-age=60`，让回滚秒级生效）。
+4. 同时把 zip 作为 workflow artifact 保留 30 天，便于排查。
+
+**需要的 repo secrets：** `TENCENT_CLOUD_SECRET_ID`、`TENCENT_CLOUD_SECRET_KEY`。
+
+> dist 是同一份 web bundle，iOS WKWebView 和 Android WebView 直接复用，所以两端共享同一个 zip URL，只是 manifest 文件名不同。需要让 iOS 单独停留在某个旧版本时，把 `platforms` 改成 `android` 单跑即可。
 
 ### 回滚
 
