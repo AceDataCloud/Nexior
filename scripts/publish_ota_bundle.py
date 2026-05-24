@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 from typing import Iterable
 
-DEFAULT_REGION = "ap-hongkong"
+DEFAULT_REGION = "ap-beijing"
 DEFAULT_BUCKET = "acedatacloud2-1256437459"
 DEFAULT_PREFIX = "nexior/updates"
 DEFAULT_CDN_BASE = "https://cdn.acedata.cloud/nexior/updates"
