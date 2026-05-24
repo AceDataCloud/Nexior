@@ -104,7 +104,7 @@ export interface IChatMessageContentItem {
   // The card UI renders this; on submit, it's stripped and `output` is set.
   pending_question?: IAskUserQuestionPayload;
   // Present iff `status === 'awaiting_input'` and the pause was driven by
-  // `get_connector_status`. Carries the consent payload so the frontend can
+  // `request_user_consent`. Carries the consent payload so the frontend can
   // render `<ConnectorConsentCard>`; on resume the resume detector strips it
   // and folds `output` (the user's authorize/skip JSON) into the block.
   pending_consent_request?: IConsentRequestPayload;
@@ -145,9 +145,9 @@ export interface IAskUserQuestionPayload {
   questions: IAskUserQuestion[];
 }
 
-// ===== get_connector_status tool payload =====
+// ===== request_user_consent tool payload =====
 // Mirrors aichat2 worker contract (frozen). When the model calls the
-// `get_connector_status` tool with unsatisfied requirements, the worker
+// `request_user_consent` tool with unsatisfied requirements, the worker
 // pauses the turn and emits a single SSE event of type `consent_request`
 // carrying this payload, followed by a terminal `done` with
 // `terminal_reason: 'awaiting_user_input'`. The card UI renders this and,
@@ -162,7 +162,7 @@ export interface IConsentRequestEntry {
    *  `/api/v1/connections/catalog/<id>/`). Required: the consent card uses
    *  this to fetch logo / localized name / permission list so each row can
    *  show the upstream brand instead of the opaque slug. Emitted by the
-   *  worker's `get_connector_status` tool — there is no fallback because
+   *  worker's `request_user_consent` tool — there is no fallback because
    *  Layer-2 validation guarantees every entry's `connector` resolves to
    *  a catalog row. */
   catalog_id: string;

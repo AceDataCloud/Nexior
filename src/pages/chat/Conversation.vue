@@ -121,7 +121,7 @@ export interface IData {
    * Stashed on mount from the `?consent=&connector=` deep-link the
    * AuthFrontend install page redirects back to after a successful
    * OAuth round-trip. The `messages` watcher consumes it as soon as
-   * the matching awaiting `get_connector_status` block is in the
+   * the matching awaiting `request_user_consent` block is in the
    * conversation, then clears it. Set to ``null`` when there's no
    * pending return (the common case).
    */
@@ -732,7 +732,7 @@ export default defineComponent({
     },
     /**
      * Resume a paused conversation by submitting a tool result for the
-     * `get_connector_status` block. Mirrors `onAnswerAskUserQuestion`:
+     * `request_user_consent` block. Mirrors `onAnswerAskUserQuestion`:
      * folds the pending block locally so the card flips to the resolved
      * banner immediately, pushes a fresh pending assistant message, and
      * runs the next streaming turn against `tool_results`.
@@ -782,7 +782,7 @@ export default defineComponent({
      * than popping a new window. AuthFrontend completes the OAuth
      * dance and redirects back here with
      * ``?consent=<rid>&connector=<id>``; the `messages` watcher then
-     * spots the matching awaiting `get_connector_status` block and
+     * spots the matching awaiting `request_user_consent` block and
      * resumes the paused turn automatically (see
      * ``onConsumePendingConsentReturn``).
      *
@@ -816,7 +816,7 @@ export default defineComponent({
     },
     /**
      * Try to consume ``pendingConsentReturn`` by locating the matching
-     * awaiting ``get_connector_status`` block in ``messages`` and
+     * awaiting ``request_user_consent`` block in ``messages`` and
      * dispatching ``onRespondConnectorConsent`` with the just-authorized
      * connector. Called by the `messages` watcher on every mutation so
      * we run as soon as ``onRestoreCurrentConversation`` populates the
@@ -940,7 +940,7 @@ export default defineComponent({
                 toolItem.pending_question = response.payload as IAskUserQuestionPayload;
               }
             } else if (response.type === 'consent_request' && response.tool_id && response.payload) {
-              // Worker pauses the turn on `get_connector_status` with unmet
+              // Worker pauses the turn on `request_user_consent` with unmet
               // requirements. Flip the matching tool_use block to
               // `awaiting_input`; the renderer swaps in
               // <ConnectorConsentCard>. SSE then ends with terminal_reason

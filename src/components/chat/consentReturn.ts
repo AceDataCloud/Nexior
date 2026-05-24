@@ -14,7 +14,7 @@ import { buildConsentOutput } from './connectorConsent';
  *   /chat/c/<conversation>?consent=<request-id>&connector=<identifier>
  *
  * `consent` is the original `consent_request_id` emitted by PR-3's
- * `get_connector_status` tool; `connector` is the canonical catalog
+ * `request_user_consent` tool; `connector` is the canonical catalog
  * identifier of the connector the user just authorized — stamped onto
  * `return_to` by AuthFrontend's `/connections/install/:id` page (the
  * worker omits it because the OAuth state machine doesn't round-trip
@@ -51,7 +51,7 @@ export function parseConsentReturnFromQuery(
 /**
  * Walk backwards through `messages` looking for the assistant message
  * whose last tool_use block:
- *   - was called via `get_connector_status`,
+ *   - was called via `request_user_consent`,
  *   - is still `awaiting_input` (i.e. not yet folded by a prior
  *     resume),
  *   - and whose `pending_consent_request.consent_request_id` matches
@@ -74,7 +74,7 @@ export function findPendingConsentBlock(
     for (let j = m.content.length - 1; j >= 0; j--) {
       const block = m.content[j] as IChatMessageContentItem;
       if (block.type !== 'tool_use') continue;
-      if (block.tool_name !== 'get_connector_status') continue;
+      if (block.tool_name !== 'request_user_consent') continue;
       if (block.status !== 'awaiting_input') continue;
       const payload = block.pending_consent_request;
       if (!payload || payload.consent_request_id !== consentRequestId) continue;
@@ -88,7 +88,7 @@ export function findPendingConsentBlock(
 
 /**
  * Build the `tool_results[0].output` JSON that resumes the paused
- * `get_connector_status` block after a successful OAuth round-trip.
+ * `request_user_consent` block after a successful OAuth round-trip.
  * Marks the just-authorized `connector` as ``authorized`` and leaves
  * ``skipped`` empty — if other unsatisfied requirements remain, the
  * worker will re-pause with a fresh consent card so the user can
