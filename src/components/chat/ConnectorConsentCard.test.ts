@@ -269,9 +269,7 @@ describe('ConnectorConsentCard — post-OAuth status refresh', () => {
     setLocation('http://localhost/chat?consent=req-1');
     mockedListMyConnections.mockResolvedValue([
       // expired / revoked rows are ignored by the case-insensitive `active` check.
-      // Also exercises the legacy `catalog_identifier` alias path (BC during the
-      // catalog→connector rename rollout) — the entry should still resolve.
-      { id: 'conn-1', catalog_identifier: 'acedatacloud/gmail', status: 'expired' }
+      { id: 'conn-1', connector_identifier: 'acedatacloud/gmail', status: 'expired' }
     ]);
     const wrapper = mount(ConnectorConsentCard, {
       props: { toolUseId: 'tu-1', payload: PAYLOAD_TWO_OPTIONS },

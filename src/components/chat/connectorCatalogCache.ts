@@ -78,18 +78,14 @@ export interface IConnectorCatalogInstallResponse {
  *  to detect which entries are now actively connected for the calling
  *  user. The full schema (profile, scopes, expires_at, …) is ignored —
  *  this is purely a presence + status check keyed on the connector
- *  identifier. AuthBackend Stage 1 emits both `connector_identifier`
- *  (canonical) and `catalog_identifier` (legacy alias); we accept either. */
+ *  identifier. */
 export interface IUserConnectionSummary {
   id: string;
   /** Connector identifier (e.g. `acedatacloud/google-drive`).
    *  Empty string for legacy / non-connector installs — those rows can't
    *  match a consent entry's `connector` field so they're effectively
-   *  ignored. Canonical field. */
+   *  ignored. */
   connector_identifier?: string;
-  /** Deprecated alias for {@link connector_identifier}; emitted by
-   *  AuthBackend during the catalog→connector rename rollout. */
-  catalog_identifier?: string;
   /** Backend ships both lowercase and uppercase variants — see
    *  AuthFrontend `ConnectionStatus`. Callers should compare
    *  case-insensitively. */
