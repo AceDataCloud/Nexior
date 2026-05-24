@@ -16,6 +16,7 @@ import { vLoading } from 'element-plus';
 import { getSurface, isNative } from '@/utils/surface';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
+import { runLiveUpdate } from '@/utils/liveUpdate';
 import {
   initializeCookies,
   initializeDescription,
@@ -81,6 +82,13 @@ const main = async () => {
     const blocked = await runVersionGate();
     if (blocked) return;
   }
+
+  // Native OTA: check the COS-hosted manifest for a newer JS bundle and
+  // queue it for next launch. Fire-and-forget so a slow CDN can't delay
+  // mount; also a no-op on web and when VITE_LIVE_UPDATE_ENABLED isn't
+  // set. Internally still calls `notifyAppReady()` on every cold start so
+  // previously-installed bundles don't get rolled back.
+  void runLiveUpdate();
 
   // Telemetry: initialize after token+user so we already know who the visitor
   // is. Safe no-op when VITE_RUM_PROJECT_ID is unset (local dev / preview).
