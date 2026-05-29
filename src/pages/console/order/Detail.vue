@@ -245,7 +245,7 @@ import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
-import { isIOS } from '@/utils';
+import { isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -598,6 +598,11 @@ export default defineComponent({
       // PayBackend always issues a Native QR for WeChat Pay (our merchant
       // has no JSAPI/H5 enabled), so the surface field is omitted here.
       const payload: Record<string, unknown> = { pay_way: this.payWay };
+      // Android Stripe uses the native PaymentSheet, which needs a
+      // PaymentIntent (not a PaymentLink). The backend routes on this hint.
+      if (this.payWay === PayWay.Stripe && isAndroid()) {
+        payload.surface = 'android';
+      }
       orderOperator
         .pay(this.id, payload as unknown as IOrder)
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
