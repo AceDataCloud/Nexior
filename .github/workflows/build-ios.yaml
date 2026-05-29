@@ -5,6 +5,12 @@ on:
     tags:
       - 'ios-v*'
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Build even if this version already exists in TestFlight (default: skip duplicates).'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -13,8 +19,103 @@ env:
   NODE_VERSION: '22'
 
 jobs:
+  preflight:
+    name: Preflight (skip if TestFlight already has this build)
+    runs-on: ubuntu-latest
+    outputs:
+      should-build: ${{ steps.check.outputs.should-build }}
+      version-name: ${{ steps.version.outputs.name }}
+      version-code: ${{ steps.version.outputs.code }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          IFS='.' read -r major minor patch <<< "$VERSION"
+          CODE=$((major * 10000 + minor * 100 + patch))
+          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "code=$CODE"   >> "$GITHUB_OUTPUT"
+          echo "Version: $VERSION  Code: $CODE"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check TestFlight for existing build
+        id: check
+        env:
+          FORCE: ${{ inputs.force }}
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          ASC_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_KEY_BASE64 }}
+          BUNDLE_ID: com.acedatacloud.nexior
+          BUILD_NUMBER: ${{ steps.version.outputs.code }}
+        # Queries App Store Connect for a build with CFBundleVersion == BUILD_NUMBER
+        # under our app and sets should-build=false if one already exists. On any
+        # API failure we fail-open (should-build=true) so a flaky preflight never
+        # blocks a release; the actual altool upload will surface the real error.
+        run: |
+          if [ "$FORCE" = "true" ]; then
+            echo "::notice::force=true → skipping TestFlight duplicate check."
+            echo "should-build=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python3 -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
+          python3 <<'PY'
+          import base64, os, time, requests, jwt
+          try:
+              now = int(time.time())
+              key_pem = base64.b64decode(os.environ['ASC_KEY_BASE64']).decode()
+              token = jwt.encode(
+                  {'iss': os.environ['ASC_ISSUER_ID'], 'iat': now, 'exp': now + 1200, 'aud': 'appstoreconnect-v1'},
+                  key_pem,
+                  algorithm='ES256',
+                  headers={'kid': os.environ['ASC_KEY_ID'], 'typ': 'JWT'},
+              )
+              h = {'Authorization': f'Bearer {token}'}
+              bundle = os.environ['BUNDLE_ID']
+              build_num = os.environ['BUILD_NUMBER']
+              r = requests.get(
+                  'https://api.appstoreconnect.apple.com/v1/apps',
+                  headers=h, params={'filter[bundleId]': bundle}, timeout=30,
+              )
+              r.raise_for_status()
+              apps = r.json().get('data', [])
+              if not apps:
+                  print(f"::warning::No App Store Connect app for bundleId={bundle} — letting build proceed.")
+                  should = 'true'
+              else:
+                  app_id = apps[0]['id']
+                  r = requests.get(
+                      'https://api.appstoreconnect.apple.com/v1/builds',
+                      headers=h,
+                      params={'filter[app]': app_id, 'filter[version]': build_num, 'limit': 1},
+                      timeout=30,
+                  )
+                  r.raise_for_status()
+                  builds = r.json().get('data', [])
+                  if builds:
+                      print(f"::notice::TestFlight already has build {build_num} for {bundle} — skipping.")
+                      should = 'false'
+                  else:
+                      print(f"Build {build_num} not yet uploaded — proceeding.")
+                      should = 'true'
+          except Exception as e:
+              print(f"::warning::TestFlight preflight check failed ({e!r}) — letting build proceed.")
+              should = 'true'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f'should-build={should}\n')
+          print(f'should-build={should}')
+          PY
+
   build:
     name: Build & Upload to TestFlight
+    needs: preflight
+    if: needs.preflight.outputs.should-build == 'true'
     runs-on: macos-15
 
     steps:
@@ -56,21 +157,14 @@ jobs:
         working-directory: ios/App
         run: pod install
 
-      - name: Determine version
-        id: version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          IFS='.' read -r major minor patch <<< "$VERSION"
-          CODE=$((major * 10000 + minor * 100 + patch))
-          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "code=$CODE" >> "$GITHUB_OUTPUT"
-          echo "Version: $VERSION  Code: $CODE"
-
       - name: Set version in Xcode project
+        env:
+          VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
+          VERSION_CODE: ${{ needs.preflight.outputs.version-code }}
         run: |
           cd ios/App
-          agvtool new-marketing-version "${{ steps.version.outputs.name }}"
-          agvtool new-version -all "${{ steps.version.outputs.code }}"
+          agvtool new-marketing-version "$VERSION_NAME"
+          agvtool new-version -all "$VERSION_CODE"
 
       - name: Install Apple certificate and provisioning profile
         env:
@@ -154,7 +248,7 @@ jobs:
       - name: Upload IPA artifact
         uses: actions/upload-artifact@v4
         with:
-          name: nexior-${{ steps.version.outputs.name }}.ipa
+          name: nexior-${{ needs.preflight.outputs.version-name }}.ipa
           path: ${{ runner.temp }}/export/*.ipa
 
       - name: Upload to TestFlight

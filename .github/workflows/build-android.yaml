@@ -16,6 +16,11 @@ on:
           - alpha
           - beta
           - production
+      force:
+        description: 'Build even if this versionCode is already uploaded to Play (default: skip duplicates).'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -25,8 +30,121 @@ env:
   JAVA_VERSION: '21'
 
 jobs:
+  preflight:
+    name: Preflight (skip if Play already has this versionCode)
+    runs-on: ubuntu-latest
+    outputs:
+      should-build: ${{ steps.check.outputs.should-build }}
+      version-name: ${{ steps.version.outputs.name }}
+      version-code: ${{ steps.version.outputs.code }}
+      track: ${{ steps.track.outputs.track }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Determine version from package.json
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          IFS='.' read -r major minor patch <<< "$VERSION"
+          CODE=$((major * 10000 + minor * 100 + patch))
+          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "code=$CODE"   >> "$GITHUB_OUTPUT"
+          echo "Version: $VERSION  Code: $CODE"
+
+      - name: Determine Play Store track
+        id: track
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "track=${{ inputs.track }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "track=internal" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check Play Console for existing AAB/APK
+        id: check
+        env:
+          FORCE: ${{ inputs.force }}
+          SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          PACKAGE_NAME: com.acedatacloud.nexior
+          VERSION_CODE: ${{ steps.version.outputs.code }}
+        # Opens a Play Console edit, lists all previously uploaded bundles/apks,
+        # and aborts the edit. If the target versionCode already appears, we set
+        # should-build=false so the heavy build job is skipped. Fail-open on any
+        # API failure so a flaky preflight never blocks a release.
+        run: |
+          if [ "$FORCE" = "true" ]; then
+            echo "::notice::force=true → skipping Play duplicate check."
+            echo "should-build=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python3 -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
+          python3 <<'PY'
+          import json, os, time, requests, jwt
+          try:
+              sa = json.loads(os.environ['SA_JSON'])
+              package = os.environ['PACKAGE_NAME']
+              wanted = int(os.environ['VERSION_CODE'])
+
+              # Exchange the service-account JWT for an access token.
+              now = int(time.time())
+              assertion = jwt.encode(
+                  {
+                      'iss': sa['client_email'],
+                      'scope': 'https://www.googleapis.com/auth/androidpublisher',
+                      'aud': 'https://oauth2.googleapis.com/token',
+                      'iat': now, 'exp': now + 3600,
+                  },
+                  sa['private_key'], algorithm='RS256',
+              )
+              tok = requests.post(
+                  'https://oauth2.googleapis.com/token',
+                  data={
+                      'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+                      'assertion': assertion,
+                  }, timeout=30,
+              )
+              tok.raise_for_status()
+              access = tok.json()['access_token']
+              h = {'Authorization': f'Bearer {access}'}
+              base = f'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}'
+
+              edit = requests.post(f'{base}/edits', headers=h, json={}, timeout=30)
+              edit.raise_for_status()
+              edit_id = edit.json()['id']
+              try:
+                  codes = set()
+                  for kind in ('bundles', 'apks'):
+                      r = requests.get(f'{base}/edits/{edit_id}/{kind}', headers=h, timeout=30)
+                      if r.status_code == 200:
+                          for item in r.json().get(kind, []):
+                              codes.add(int(item['versionCode']))
+              finally:
+                  requests.delete(f'{base}/edits/{edit_id}', headers=h, timeout=30)
+
+              if wanted in codes:
+                  print(f"::notice::Play already has versionCode {wanted} for {package} (uploaded: {sorted(codes)[-10:]}) — skipping.")
+                  should = 'false'
+              else:
+                  print(f"versionCode {wanted} not yet uploaded (last 10 uploaded: {sorted(codes)[-10:]}) — proceeding.")
+                  should = 'true'
+          except Exception as e:
+              print(f"::warning::Play preflight check failed ({e!r}) — letting build proceed.")
+              should = 'true'
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f'should-build={should}\n')
+          print(f'should-build={should}')
+          PY
+
   build:
     name: Build & Upload to Play Store
+    needs: preflight
+    if: needs.preflight.outputs.should-build == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -60,21 +178,13 @@ jobs:
           echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/release.keystore
         shell: bash
 
-      - name: Determine version
-        id: version
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          # versionCode: major*10000 + minor*100 + patch
-          IFS='.' read -r major minor patch <<< "$VERSION"
-          CODE=$((major * 10000 + minor * 100 + patch))
-          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "code=$CODE" >> "$GITHUB_OUTPUT"
-          echo "Version: $VERSION  Code: $CODE"
-
       - name: Set version in build.gradle
+        env:
+          VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
+          VERSION_CODE: ${{ needs.preflight.outputs.version-code }}
         run: |
-          sed -i "s/versionCode [0-9]*/versionCode ${{ steps.version.outputs.code }}/" android/app/build.gradle
-          sed -i "s/versionName \"[^\"]*\"/versionName \"${{ steps.version.outputs.name }}\"/" android/app/build.gradle
+          sed -i "s/versionCode [0-9]*/versionCode $VERSION_CODE/" android/app/build.gradle
+          sed -i "s/versionName \"[^\"]*\"/versionName \"$VERSION_NAME\"/" android/app/build.gradle
         shell: bash
 
       - name: Build release AAB
@@ -99,23 +209,14 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: nexior-${{ steps.version.outputs.name }}.apk
+          name: nexior-${{ needs.preflight.outputs.version-name }}.apk
           path: android/app/build/outputs/apk/release/app-release.apk
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: nexior-${{ steps.version.outputs.name }}.aab
+          name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/release/app-release.aab
-
-      - name: Determine Play Store track
-        id: track
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "track=${{ inputs.track }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "track=internal" >> "$GITHUB_OUTPUT"
-          fi
 
       - name: Upload to Play Store
         uses: r0adkll/upload-google-play@v1
@@ -123,5 +224,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.acedatacloud.nexior
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
-          tracks: ${{ steps.track.outputs.track }}
+          tracks: ${{ needs.preflight.outputs.track }}
           status: completed
