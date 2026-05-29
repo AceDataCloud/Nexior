@@ -31,13 +31,20 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import axios from 'axios';
 import { ElDialog } from 'element-plus';
 import { getBaseUrlAuth, withCurrentSite } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SETTINGS_INDEX } from '@/router';
 import { Browser } from '@capacitor/browser';
-import { isNative as isNativeSurface } from '@/utils/surface';
+import { SignInWithApple } from '@capacitor-community/apple-sign-in';
+import { isNative as isNativeSurface, isIOS } from '@/utils/surface';
+
+// Native Sign In with Apple is keyed by the iOS bundle identifier, NOT
+// the web Services ID. The same Apple `sub` is returned for both, so
+// accounts stay linked across native and web.
+const APPLE_NATIVE_CLIENT_ID = 'com.acedatacloud.nexior';
 
 export default defineComponent({
   name: 'AuthPanel',
@@ -98,9 +105,57 @@ export default defineComponent({
       }
       console.debug('received from child page', event);
       if (event.data.name === 'nativeOAuth' && this.isNative) {
+        const provider = event.data.data?.provider;
+        // On iOS, Apple Sign In must use the native ASAuthorization sheet —
+        // SFSafariViewController lacks the system bridge that Apple's JS SDK
+        // needs, so it falls back to a webpage that asks for the iCloud
+        // password instead of using Face ID.
+        if (provider === 'apple' && isIOS()) {
+          try {
+            const { response } = await SignInWithApple.authorize({
+              clientId: APPLE_NATIVE_CLIENT_ID,
+              redirectURI: '',
+              scopes: 'email name'
+            });
+            if (!response?.identityToken) {
+              throw new Error('apple identity_token missing');
+            }
+            // POST the identity_token directly to AuthBackend. Same endpoint
+            // as the web Apple JS flow — apple_get_user_data verifies the JWT
+            // against Apple's JWKS, no client_secret needed.
+            const loginResp = await axios.post(`${getBaseUrlAuth()}/api/v1/auth/login/`, {
+              platform: 'apple',
+              identity_token: response.identityToken,
+              inviter_id: this.inviterId,
+              user: {
+                name: {
+                  firstName: response.givenName ?? '',
+                  lastName: response.familyName ?? ''
+                }
+              }
+            });
+            const data = loginResp.data;
+            const token = {
+              access: data.access_token,
+              refresh: data.refresh_token,
+              expiration: data.expires_in
+            };
+            await this.$store.dispatch('setToken', token);
+            await this.$store.dispatch('getUser');
+            if (!this.$store.state.site?.origin) {
+              await this.$store.dispatch('initializeSite');
+            }
+            this.$store.commit('setAuth', { visible: false });
+            await this.$router.push('/');
+          } catch (error: unknown) {
+            // User-cancelled sheets are an expected outcome — silently keep
+            // the iframe login UI so the user can pick another method.
+            console.warn('native apple sign in failed', error);
+          }
+          return;
+        }
         // AuthFrontend in iframe can't do OAuth popups/redirects (X-Frame-Options).
         // Open the auth page in an in-app browser with the provider pre-selected.
-        const provider = event.data.data?.provider;
         this.useBrowser = true;
         const authUrl = withCurrentSite(
           `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`
