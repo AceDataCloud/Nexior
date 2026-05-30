@@ -18,7 +18,7 @@ function getCurrentOrigin(): string {
 // so subsites can fully white-label their <title>, og:*, JSON-LD, etc.
 const FALLBACK_SITE_NAME = 'Ace Data Cloud - AI Hub';
 const FALLBACK_BRAND_NAME = 'Ace Data Cloud';
-const FALLBACK_IMAGE = 'https://cdn.acedata.cloud/1903555eb6.png';
+const FALLBACK_IMAGE = 'https://cdn.acedata.cloud/fdc04a4248.png';
 const FALLBACK_DESCRIPTION =
   'AI-powered creative hub — generate images with Midjourney & Flux, create music with Suno, produce videos with Luma & Sora, chat with GPT, Claude, Gemini & DeepSeek.';
 

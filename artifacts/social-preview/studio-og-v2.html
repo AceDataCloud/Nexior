@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AceData Studio OG Preview</title>
+    <style>
+      :root {
+        --bg-0: #050812;
+        --bg-1: #0a1430;
+        --bg-2: #0b2330;
+        --text: #f4f8ff;
+        --muted: #a8b7d0;
+        --brand: #277186;
+        --brand-soft: #58bfd8;
+        --line: rgba(152, 197, 255, 0.18);
+        --card: rgba(10, 18, 36, 0.78);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Inter', 'SF Pro Display', 'Segoe UI', sans-serif;
+        color: var(--text);
+      }
+
+      body {
+        position: relative;
+        background:
+          radial-gradient(900px 420px at 76% 10%, rgba(88, 191, 216, 0.2), transparent 65%),
+          radial-gradient(740px 340px at 8% 100%, rgba(39, 113, 134, 0.34), transparent 70%),
+          linear-gradient(135deg, var(--bg-0), var(--bg-1) 54%, var(--bg-2));
+      }
+
+      .noise {
+        position: absolute;
+        inset: 0;
+        opacity: 0.22;
+        background-image: radial-gradient(rgba(115, 173, 255, 0.22) 0.6px, transparent 0.6px);
+        background-size: 12px 12px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2));
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        padding: 46px 52px;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 38px;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .brand .logo {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.26);
+        box-shadow: 0 0 0 6px rgba(88, 191, 216, 0.06);
+      }
+
+      .brand .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1;
+        letter-spacing: 0.2px;
+      }
+
+      .brand p {
+        margin: 6px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .badge {
+        margin-top: 28px;
+        width: fit-content;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 16px;
+        color: #d8ebff;
+        background: rgba(39, 113, 134, 0.16);
+      }
+
+      .title {
+        margin: 20px 0 0;
+        font-size: 58px;
+        line-height: 1;
+        letter-spacing: -1.4px;
+        font-weight: 800;
+      }
+
+      .title b {
+        color: #6bdef5;
+      }
+
+      .desc {
+        margin: 22px 0 0;
+        max-width: 520px;
+        font-size: 22px;
+        line-height: 1.35;
+        color: #d8e5f8;
+      }
+
+      .foot {
+        margin-top: auto;
+        font-size: 20px;
+        color: #b8cae3;
+        letter-spacing: 0.06em;
+      }
+
+      .right {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        align-content: center;
+      }
+
+      .card {
+        min-height: 132px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--card);
+        backdrop-filter: blur(6px);
+        padding: 16px 18px;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 4px;
+      }
+
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .head img {
+        width: 34px;
+        height: 34px;
+        border-radius: 9px;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .name {
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .type {
+        margin-top: 6px;
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8ea4c4;
+      }
+
+      .meta {
+        font-size: 14px;
+        color: #cfdef4;
+        align-self: end;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <main class="wrap">
+      <section class="left">
+        <div class="brand">
+          <div class="logo">
+            <img src="https://cdn.acedata.cloud/acedata.jpg" alt="AceData logo" />
+          </div>
+          <div>
+            <h1>AceData Studio</h1>
+            <p>Unified AI Workspace</p>
+          </div>
+        </div>
+
+        <div class="badge">One balance · 30+ production models</div>
+        <div class="title">Build faster with <b>real AI tools</b></div>
+        <div class="desc">Chat, image, video and music in one studio with trusted providers and shared credits.</div>
+        <div class="foot">studio.acedata.cloud</div>
+      </section>
+
+      <section class="right">
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/7dljuv.png" alt="GPT" />
+            <div class="name">GPT</div>
+          </div>
+          <div class="type">Chat</div>
+          <div class="meta">reasoning · multimodal</div>
+        </article>
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/8fnw4v.jpg" alt="Claude" />
+            <div class="name">Claude</div>
+          </div>
+          <div class="type">Chat</div>
+          <div class="meta">analysis · long context</div>
+        </article>
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/psfx0g.jpg" alt="Gemini" />
+            <div class="name">Gemini</div>
+          </div>
+          <div class="type">Chat + Vision</div>
+          <div class="meta">text · image · structured</div>
+        </article>
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/wto43b.png" alt="Midjourney" />
+            <div class="name">Midjourney</div>
+          </div>
+          <div class="type">Image</div>
+          <div class="meta">style presets · upscale</div>
+        </article>
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/ahjfwi.png" alt="Luma" />
+            <div class="name">Luma</div>
+          </div>
+          <div class="type">Video</div>
+          <div class="meta">cinematic clips · ray traced</div>
+        </article>
+        <article class="card">
+          <div class="head">
+            <img src="https://cdn.acedata.cloud/l3ffw7.jpg" alt="Suno" />
+            <div class="name">Suno</div>
+          </div>
+          <div class="type">Music</div>
+          <div class="meta">lyrics · vocals · stems</div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
