@@ -63,6 +63,10 @@
     "message": "管理",
     "description": "进入分站设置按钮"
   },
+  "button.delete": {
+    "message": "删除",
+    "description": "删除分站按钮"
+  },
   "message.indexTip": {
     "message": "在主站之下创建独立品牌的分站，每个分站可以拥有自己的 Logo、标题和功能集，不需要单独搭建源代码。",
     "description": "分站管理首页说明文字"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "该分站绑定了多个域名，请选择要打开的地址，我们会在新标签页中为你打开。",
     "description": "Body hint inside the open-subsite dialog explaining the URL picker."
+  },
+  "message.deleteConfirm": {
+    "message": "确定要删除分站 {origin} 吗？删除后所有用户都将无法再通过该域名访问该分站，且操作不可恢复。",
+    "description": "删除分站二次确认"
+  },
+  "message.deleted": {
+    "message": "分站 {origin} 已删除。",
+    "description": "删除分站成功"
+  },
+  "message.deleteFailed": {
+    "message": "删除分站失败，请稍后重试。",
+    "description": "DELETE 接口失败兜底"
   },
   "title.domains": {
     "message": "{origin} 的自定义域名",
