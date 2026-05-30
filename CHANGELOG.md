@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 30 May 2026 15:33:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 30 May 2026 15:51:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.255.0
+
+Sat, 30 May 2026 15:51:25 GMT
+
+### Minor changes
+
+- Align Console usage list with PlatformFrontend (status code filter, CSV export, elapsed + balanceAfter columns, request/response detail dialog). (dev@acedata.cloud)
 
 ## 3.254.0
 
