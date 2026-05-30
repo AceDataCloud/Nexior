@@ -37,20 +37,24 @@ export default defineComponent({
           label: 'flux-pro'
         },
         {
-          value: 'flux-pro-1.1',
-          label: 'flux-pro-1.1'
-        },
-        {
-          value: 'flux-pro-1.1-ultra',
-          label: 'flux-pro-1.1-ultra'
-        },
-        {
           value: 'flux-kontext-pro',
           label: 'flux-kontext-pro'
         },
         {
           value: 'flux-kontext-max',
           label: 'flux-kontext-max'
+        },
+        {
+          value: 'flux-2-flex',
+          label: 'flux-2-flex'
+        },
+        {
+          value: 'flux-2-pro',
+          label: 'flux-2-pro'
+        },
+        {
+          value: 'flux-2-max',
+          label: 'flux-2-max'
         }
       ]
     };
