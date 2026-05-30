@@ -168,6 +168,8 @@ jobs:
         run: npm ci
 
       - name: Build web assets (Android surface)
+        env:
+          VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
         run: npm run build:android
 
       - name: Sync Android project
