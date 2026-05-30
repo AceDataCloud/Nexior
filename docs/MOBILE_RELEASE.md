@@ -307,3 +307,56 @@ acedatacloud2-1256437459/      # COS bucket
 - 只热更新 web 资源（`dist/` 内容），**绝不**改 native 代码、不下载可执行二进制、不绕过 App Review 添加新功能（已审核功能的 bugfix / 文案 / UI 调整 OK）。
 - `@capgo/capacitor-updater` 在 iOS 上使用 WKWebView 加载本地文件，符合 [App Store Guideline 3.3.2](https://developer.apple.com/app-store/review/guidelines/#3.3.2) 关于解释性代码的例外条款（与 React Native CodePush、Expo Updates 同类机制）。
 - 引入大版本特性时仍需走商店审核 + 提升 `app-version` 接口里的 `min_supported`。
+
+## 六、Stripe（Android 原生 PaymentSheet）
+
+Android 客户端通过 `@capacitor-community/stripe` 调起 Stripe 原生 PaymentSheet，
+而不是再用 `window.open(pay_url)` 跳浏览器。后端为 Android 下单时返回的是
+`PaymentIntent client_secret`（写在 `order.metadata.stripe_client_secret` 里），
+而不是 PaymentLink 的 URL。
+
+> **iOS 不启用此通道**：iOS bundle 仍按 App Store Review Guideline 3.1.1 完全隐
+> 藏 Stripe / 微信 / 支付宝入口（`showPayment(): !isIOS()`）。Stripe Android 与
+> iOS IAP 是两条独立的轨道。
+
+### 构建环境变量
+
+| 变量 | 必填 | 说明 |
+|---|---|---|
+| `VITE_STRIPE_PUBLISHABLE_KEY` | 是（Android build） | Stripe Dashboard → 开
+发者 → API 密钥里取的 `pk_live_*` / `pk_test_*` 可发布密钥。**只用 publishable
+key**，绝不在前端嵌入 secret key。未设置时下单流程仍会成功，但 PaymentSheet 不会
+弹出（仅在控制台打 `VITE_STRIPE_PUBLISHABLE_KEY is not configured` 错误）。 |
+
+`pk_live_*` 与生产 PayBackend 的 `STRIPE_LIVE_SECRET_KEY` 必须属于**同一个**
+Stripe 账户，否则 client_secret 会被 SDK 拒绝（`No such payment_intent`）。
+
+### 链路
+
+```
+Nexior (Android)                PlatformBackend           PayBackend           Stripe
+  └─ onPay(payWay=Stripe,
+          surface=android)
+        ──► POST /orders/:id/pay
+              └─ create_stripe_payment_intent
+                    ──► POST /payment/stripe/intent
+                          └─ stripe.PaymentIntent.create
+                                ◄── { id: pi_xxx, client_secret }
+                    ◄── 同上
+              └─ order.pay_id = pi_xxx
+                 order.metadata.stripe_client_secret = ...
+              ◄── Order with metadata
+        ◄── 同上
+  └─ StripePay.vue watches visible:
+        └─ Stripe.initialize(publishableKey)
+        └─ Stripe.createPaymentSheet({ paymentIntentClientSecret })
+        └─ Stripe.presentPaymentSheet()
+              └─ user 完成 ──► Stripe 直接结算 ──► PaymentIntent.status = succeeded
+        └─ onRefresh() 立即拉一次 GET /orders/:id
+              └─ PlatformBackend → PayBackend GET /payment/stripe/pi_xxx
+                    └─ stripe.PaymentIntent.retrieve → succeeded → state=SUCCESS
+              └─ Order.state = PAID
+```
+
+PC / WAP 浏览器走的仍是旧的 PaymentLink 路径（`pay_url = https://buy.stripe.com/
+...`），后端通过 `surface == "android"` 区分。
