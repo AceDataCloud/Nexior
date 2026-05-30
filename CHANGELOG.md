@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 30 May 2026 15:04:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 30 May 2026 15:33:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.254.0
+
+Sat, 30 May 2026 15:33:05 GMT
+
+### Minor changes
+
+- Add anonymous (no-login) order pay page at /orders/:id — parity with PlatformFrontend. (dev@acedata.cloud)
 
 ## 3.253.1
 
