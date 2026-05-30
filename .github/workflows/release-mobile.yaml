@@ -1,0 +1,96 @@
+name: Release Mobile
+
+# One-click orchestrator: fans out to build-android.yaml and/or build-ios.yaml.
+# Defaults are tuned for "near-fully automatic": Android Open testing → auto-promote
+# to production at 100% rollout, iOS TestFlight → external distribution → App Store
+# review submission. Use the inputs below to opt out of any step.
+
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Which platforms to release'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - android
+          - ios
+      android_track:
+        description: 'Initial Android Play Store track'
+        required: false
+        default: 'beta'
+        type: choice
+        options:
+          - internal
+          - alpha
+          - beta
+          - production
+      android_promote_to_production:
+        description: 'Auto-promote Android release from initial track to Production'
+        required: false
+        default: true
+        type: boolean
+      android_rollout_percent:
+        description: 'Android production rollout fraction (0.0–1.0). 1.0 = full release.'
+        required: false
+        default: '1.0'
+        type: string
+      ios_auto_distribute_external:
+        description: 'Distribute new iOS build to every external TestFlight group'
+        required: false
+        default: true
+        type: boolean
+      ios_auto_submit_review:
+        description: 'Submit new iOS build for App Store review'
+        required: false
+        default: true
+        type: boolean
+      force:
+        description: 'Rebuild even if this version already exists on the store'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  fanout:
+    name: Trigger platform pipelines
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: ver
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "::notice::Releasing Nexior v$VERSION (platforms=${{ inputs.platforms }})"
+
+      - name: Trigger Android workflow
+        if: inputs.platforms == 'both' || inputs.platforms == 'android'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run build-android.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f track="${{ inputs.android_track }}" \
+            -f promote_to_production="${{ inputs.android_promote_to_production }}" \
+            -f rollout_percent="${{ inputs.android_rollout_percent }}" \
+            -f force="${{ inputs.force }}"
+
+      - name: Trigger iOS workflow
+        if: inputs.platforms == 'both' || inputs.platforms == 'ios'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run build-ios.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f auto_distribute_external="${{ inputs.ios_auto_distribute_external }}" \
+            -f auto_submit_review="${{ inputs.ios_auto_submit_review }}" \
+            -f force="${{ inputs.force }}"

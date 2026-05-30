@@ -7,15 +7,25 @@ on:
   workflow_dispatch:
     inputs:
       track:
-        description: 'Play Store track (internal / alpha / beta / production)'
+        description: 'Initial Play Store track to upload to (default: beta = Open testing)'
         required: true
-        default: 'internal'
+        default: 'beta'
         type: choice
         options:
           - internal
           - alpha
           - beta
           - production
+      promote_to_production:
+        description: 'Auto-promote the same versionCode to Production after the initial upload succeeds.'
+        required: false
+        default: true
+        type: boolean
+      rollout_percent:
+        description: 'Production staged rollout fraction (0.0–1.0). 1.0 = full release.'
+        required: false
+        default: '1.0'
+        type: string
       force:
         description: 'Build even if this versionCode is already uploaded to Play (default: skip duplicates).'
         required: false
@@ -58,7 +68,8 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "track=${{ inputs.track }}" >> "$GITHUB_OUTPUT"
           else
-            echo "track=internal" >> "$GITHUB_OUTPUT"
+            # Tag push (android-v*) defaults to Open testing (beta) and then promotes to production.
+            echo "track=beta" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up Python
@@ -228,3 +239,115 @@ jobs:
           releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
+
+  promote:
+    name: Promote to Production
+    needs: [preflight, build]
+    # Only auto-promote when the initial upload landed on a non-production track AND the
+    # caller asked for it (workflow_dispatch default = true; tag-push defaults to promote).
+    if: |
+      needs.preflight.outputs.should-build == 'true'
+      && needs.preflight.outputs.track != 'production'
+      && (github.event_name != 'workflow_dispatch' || inputs.promote_to_production)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Promote release to Production track
+        env:
+          SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          PACKAGE_NAME: com.acedatacloud.nexior
+          VERSION_CODE: ${{ needs.preflight.outputs.version-code }}
+          VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
+          ROLLOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.rollout_percent || '1.0' }}
+        # Creates a Play Console edit, points the production track at the same versionCode
+        # uploaded in the previous job, and commits. Uses staged rollout when ROLLOUT < 1.
+        run: |
+          python3 -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
+          python3 <<'PY'
+          import json, os, time, requests, jwt
+
+          sa = json.loads(os.environ['SA_JSON'])
+          package = os.environ['PACKAGE_NAME']
+          wanted = int(os.environ['VERSION_CODE'])
+          version_name = os.environ.get('VERSION_NAME') or str(wanted)
+          try:
+              rollout = float(os.environ.get('ROLLOUT', '1.0'))
+          except ValueError:
+              rollout = 1.0
+          rollout = max(0.0, min(1.0, rollout))
+
+          now = int(time.time())
+          assertion = jwt.encode(
+              {
+                  'iss': sa['client_email'],
+                  'scope': 'https://www.googleapis.com/auth/androidpublisher',
+                  'aud': 'https://oauth2.googleapis.com/token',
+                  'iat': now, 'exp': now + 3600,
+              },
+              sa['private_key'], algorithm='RS256',
+          )
+          tok = requests.post(
+              'https://oauth2.googleapis.com/token',
+              data={
+                  'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+                  'assertion': assertion,
+              }, timeout=30,
+          )
+          tok.raise_for_status()
+          access = tok.json()['access_token']
+          h = {'Authorization': f'Bearer {access}', 'Content-Type': 'application/json'}
+          base = f'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}'
+
+          edit = requests.post(f'{base}/edits', headers=h, json={}, timeout=30)
+          edit.raise_for_status()
+          edit_id = edit.json()['id']
+          try:
+              bundles = requests.get(f'{base}/edits/{edit_id}/bundles', headers=h, timeout=30)
+              bundles.raise_for_status()
+              codes = {int(b['versionCode']) for b in bundles.json().get('bundles', [])}
+              if wanted not in codes:
+                  raise SystemExit(
+                      f'::error::versionCode {wanted} not found in uploaded bundles '
+                      f'(last 10: {sorted(codes)[-10:]})'
+                  )
+
+              release = {
+                  'name': version_name,
+                  'versionCodes': [str(wanted)],
+              }
+              if rollout >= 1.0:
+                  release['status'] = 'completed'
+              elif rollout > 0:
+                  release['status'] = 'inProgress'
+                  release['userFraction'] = rollout
+              else:
+                  release['status'] = 'draft'
+
+              r = requests.put(
+                  f'{base}/edits/{edit_id}/tracks/production',
+                  headers=h,
+                  json={'track': 'production', 'releases': [release]},
+                  timeout=30,
+              )
+              if r.status_code >= 400:
+                  print(f'::error::production track update failed: {r.status_code} {r.text}')
+                  r.raise_for_status()
+
+              c = requests.post(f'{base}/edits/{edit_id}:commit', headers=h, timeout=60)
+              if c.status_code >= 400:
+                  print(f'::error::commit failed: {c.status_code} {c.text}')
+                  c.raise_for_status()
+
+              print(f'::notice::Promoted versionCode {wanted} ({version_name}) to '
+                    f'production (rollout={rollout}).')
+          except Exception:
+              try:
+                  requests.delete(f'{base}/edits/{edit_id}', headers=h, timeout=30)
+              except Exception:
+                  pass
+              raise
+          PY
