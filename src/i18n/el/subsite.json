@@ -63,6 +63,10 @@
     "message": "Διαχείριση",
     "description": "Κουμπί για είσοδο στις ρυθμίσεις της υποτοποθεσίας"
   },
+  "button.delete": {
+    "message": "Διαγραφή",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Δημιουργήστε ανεξάρτητες υποτοποθεσίες κάτω από τον κύριο ιστότοπο, κάθε υποτοποθεσία μπορεί να έχει το δικό της λογότυπο, τίτλο και σύνολο λειτουργιών, χωρίς να χρειάζεται να κατασκευάσετε ξεχωριστό κώδικα.",
     "description": "Επεξήγηση στην αρχική σελίδα διαχείρισης υποτοποθεσιών"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Αυτή η υποσελίδα έχει συνδεδεμένα πολλά ονόματα τομέα. Παρακαλώ επιλέξτε τη διεύθυνση που θέλετε να ανοίξετε. Θα την ανοίξουμε σε νέα καρτέλα.",
     "description": "Σημείωση στο σώμα του διαλόγου υποσελίδας που εξηγεί τον επιλογέα διευθύνσεων URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Διαγραφή του υποτόπου {origin}; Οι χρήστες δεν θα μπορούν πλέον να αποκτήσουν πρόσβαση μέσω αυτού του τομέα και η ενέργεια αυτή δεν μπορεί να αναιρεθεί.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Ο υποτόπος {origin} διαγράφηκε.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Αποτυχία διαγραφής του υποτόπου, παρακαλώ προσπαθήστε ξανά αργότερα.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Προσαρμοσμένο Domain για το {origin}",

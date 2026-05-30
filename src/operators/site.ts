@@ -35,6 +35,10 @@ class SiteService {
   async update(id: string, data: ISite): Promise<AxiosResponse<ISiteDetailResponse>> {
     return await httpClient.put(`/${this.key}/${id}`, data);
   }
+
+  async delete(id: string): Promise<AxiosResponse<void>> {
+    return await httpClient.delete(`/${this.key}/${id}`);
+  }
 }
 
 export const siteOperator = new SiteService();

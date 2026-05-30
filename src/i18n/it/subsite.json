@@ -63,6 +63,10 @@
     "message": "Gestisci",
     "description": "Pulsante per accedere alle impostazioni del sottodominio"
   },
+  "button.delete": {
+    "message": "Elimina",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Crea sottodomini di marchi indipendenti sotto il sito principale, ogni sottodominio può avere il proprio logo, titolo e funzionalità, senza necessità di costruire codice sorgente separato.",
     "description": "Testo esplicativo della pagina di gestione dei sottodomini"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Questo sottosito è collegato a più domini, seleziona l'indirizzo da aprire, lo apriremo in una nuova scheda.",
     "description": "Suggerimento nel corpo della finestra di dialogo del sottosito che spiega il selettore di URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Eliminare il sottosito {origin}? Gli utenti non potranno più accedervi tramite questo dominio e l'azione non è reversibile.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Il sottosito {origin} è stato eliminato.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Impossibile eliminare il sottosito, riprovare più tardi.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Dominio personalizzato per {origin}",

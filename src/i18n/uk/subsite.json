@@ -63,6 +63,10 @@
     "message": "Управління",
     "description": "Кнопка для переходу до налаштувань підрозділу"
   },
+  "button.delete": {
+    "message": "Видалити",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Створюйте незалежні брендові підрозділи під основним сайтом, кожен підрозділ може мати своє логотип, заголовок та набір функцій, без необхідності окремої побудови вихідного коду.",
     "description": "Опис на головній сторінці управління підрозділами"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Цей підсайт прив'язаний до кількох доменів, будь ласка, виберіть адресу, яку потрібно відкрити, ми відкриємо її у новій вкладці.",
     "description": "Текст підказки в діалоговому вікні відкриття підсайту, що пояснює вибір URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Видалити субсайт {origin}? Користувачі більше не зможуть отримати доступ через цей домен, і цю дію не можна скасувати.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Субсайт {origin} видалено.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Не вдалося видалити субсайт, спробуйте пізніше.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Користувацький домен для {origin}",

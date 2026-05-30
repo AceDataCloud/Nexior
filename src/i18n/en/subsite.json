@@ -63,6 +63,10 @@
     "message": "Manage",
     "description": "Button to enter subsite settings"
   },
+  "button.delete": {
+    "message": "Delete",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Create independent brand subsites under the main site, each subsite can have its own logo, title, and feature set without needing to build separate source code.",
     "description": "Description text for the subsite management homepage"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "This subsite is bound to multiple domains. Pick the address you want to open and we'll launch it in a new tab.",
     "description": "Body hint inside the open-subsite dialog explaining the URL picker."
+  },
+  "message.deleteConfirm": {
+    "message": "Delete subsite {origin}? Users will no longer be able to reach it through this domain, and this action cannot be undone.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Subsite {origin} has been deleted.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Failed to delete the subsite, please try again later.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Custom Domain for {origin}",

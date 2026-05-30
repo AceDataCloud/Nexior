@@ -63,6 +63,10 @@
     "message": "إدارة",
     "description": "زر الدخول إلى إعدادات الموقع الفرعي"
   },
+  "button.delete": {
+    "message": "حذف",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "قم بإنشاء مواقع فرعية مستقلة تحت الموقع الرئيسي، يمكن لكل موقع فرعي أن يمتلك شعاره وعنوانه ومجموعة من الميزات، دون الحاجة لبناء كود مصدر منفصل.",
     "description": "نص توضيحي لصفحة إدارة المواقع الفرعية"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "هذا الموقع مرتبط بعدة نطاقات، يرجى اختيار العنوان الذي تريد فتحه، وسنقوم بفتحه في علامة تبويب جديدة.",
     "description": "تلميح في جسم حوار فتح الموقع الفرعي يشرح اختيار عنوان URL."
+  },
+  "message.deleteConfirm": {
+    "message": "هل أنت متأكد من حذف الموقع الفرعي {origin}؟ بعد الحذف، لن يتمكن المستخدمون من الوصول إلى الموقع الفرعي عبر هذا النطاق، ولا يمكن التراجع عن هذا الإجراء.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "تم حذف الموقع الفرعي {origin}.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "فشل حذف الموقع الفرعي، يرجى المحاولة مرة أخرى لاحقاً.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "اسم النطاق المخصص لـ {origin}",

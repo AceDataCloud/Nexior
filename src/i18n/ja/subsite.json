@@ -63,6 +63,10 @@
     "message": "管理",
     "description": "サブサイト設定に入るボタン"
   },
+  "button.delete": {
+    "message": "削除",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "メインサイトの下に独立したブランドのサブサイトを作成できます。各サブサイトは独自のロゴ、タイトル、機能セットを持ち、ソースコードを個別に構築する必要はありません。",
     "description": "サブサイト管理ホームページの説明文"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "このサブサイトは複数のドメインにバインドされています。開くアドレスを選択してください。新しいタブで開きます。",
     "description": "URLピッカーを説明するオープンサブサイトダイアログ内の本文ヒント。"
+  },
+  "message.deleteConfirm": {
+    "message": "サブサイト {origin} を削除しますか？このドメインからはアクセスできなくなり、この操作は元に戻せません。",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "サブサイト {origin} を削除しました。",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "サブサイトの削除に失敗しました。しばらくしてから再度お試しください。",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "{origin} のカスタムドメイン名",

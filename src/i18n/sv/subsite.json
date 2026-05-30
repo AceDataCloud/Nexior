@@ -63,6 +63,10 @@
     "message": "Hantera",
     "description": "Knapp för att gå till inställningarna för underdomänen"
   },
+  "button.delete": {
+    "message": "Radera",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Skapa självständiga underdomäner under huvuddomänen, varje underdomän kan ha sin egen logotyp, titel och funktioner utan att behöva bygga källkoden separat.",
     "description": "Förklarande text på startsidan för underdomänshantering"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Denna underwebbplats är kopplad till flera domäner, vänligen välj den adress du vill öppna, vi kommer att öppna den i en ny flik.",
     "description": "Kroppstext i dialogrutan för att öppna underwebbplats som förklarar URL-väljaren."
+  },
+  "message.deleteConfirm": {
+    "message": "Radera underwebbplatsen {origin}? Användare kommer inte längre att kunna nå den via denna domän, och åtgärden kan inte ångras.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Underwebbplatsen {origin} har raderats.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Det gick inte att radera underwebbplatsen, försök igen senare.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Anpassade domännamn för {origin}",

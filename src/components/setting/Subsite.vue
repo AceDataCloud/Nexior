@@ -55,7 +55,7 @@
             <span>{{ formatDate(row.created_at) }}</span>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('subsite.field.actions')" width="200" fixed="right" align="right">
+        <el-table-column :label="$t('subsite.field.actions')" width="260" fixed="right" align="right">
           <template #default="{ row }">
             <span class="row-actions">
               <el-button size="small" round @click="onOpenSite(row)">
@@ -63,6 +63,16 @@
               </el-button>
               <el-button size="small" round @click="onManageSite(row)">
                 {{ $t('subsite.button.manage') }}
+              </el-button>
+              <el-button
+                size="small"
+                round
+                type="danger"
+                plain
+                :loading="deletingId === row.id"
+                @click="onDeleteSite(row)"
+              >
+                {{ $t('common.button.delete') }}
               </el-button>
             </span>
           </template>
@@ -209,7 +219,10 @@ export default defineComponent({
           slug: '',
           title: ''
         }
-      }
+      },
+      // Row id whose DELETE call is currently in flight (drives the
+      // per-row spinner on the destructive action button).
+      deletingId: null as string | null
     };
   },
   computed: {
@@ -431,6 +444,39 @@ export default defineComponent({
       // page race where SettingsIndex dispatches `open-user-settings`
       // before UserCenter's listener is registered.
       window.open(`https://${row.origin}/?dialog=settings`, '_blank', 'noopener');
+    },
+    async onDeleteSite(row: ISite) {
+      if (!row.id || !row.origin) return;
+      try {
+        await ElMessageBox.confirm(
+          this.$t('subsite.message.deleteConfirm', { origin: row.origin }) as string,
+          this.$t('common.button.delete') as string,
+          {
+            type: 'warning',
+            confirmButtonText: this.$t('common.button.delete') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string,
+            confirmButtonClass: 'el-button--danger'
+          }
+        );
+      } catch {
+        return;
+      }
+      this.deletingId = row.id;
+      try {
+        await siteOperator.delete(row.id);
+        this.items = this.items.filter((s) => s.id !== row.id);
+        if (row.id && this.domainsBySite[row.id]) {
+          const next = { ...this.domainsBySite };
+          delete next[row.id];
+          this.domainsBySite = next;
+        }
+        ElMessage.success(this.$t('subsite.message.deleted', { origin: row.origin }));
+      } catch (e: any) {
+        const detail = e?.response?.data?.detail || e?.message;
+        ElMessage.error(typeof detail === 'string' ? detail : this.$t('subsite.message.deleteFailed'));
+      } finally {
+        this.deletingId = null;
+      }
     },
     rowUrl(row: ISite) {
       return row.origin ? `https://${row.origin}/` : '#';

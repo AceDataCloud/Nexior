@@ -63,6 +63,10 @@
     "message": "Upravljaj",
     "description": "Dugme za ulazak u podešavanja poddomene"
   },
+  "button.delete": {
+    "message": "Obriši",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Kreirajte nezavisne brend poddomene ispod glavnog sajta, svaka poddomena može imati svoj logo, naslov i skup funkcija, bez potrebe za zasebnim postavljanjem izvornog koda.",
     "description": "Objašnjenje na početnoj stranici upravljanja poddomenama"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Ova podstranica je povezana sa više domena, molimo vas da izaberete adresu koju želite da otvorite, otvorićemo je u novom prozoru.",
     "description": "Tekst u telu dijaloga za otvaranje podstranice koji objašnjava izbor URL-a."
+  },
+  "message.deleteConfirm": {
+    "message": "Obrisati podsajt {origin}? Korisnici više neće moći da mu pristupe putem ovog domena, i ova radnja se ne može poništiti.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Podsajt {origin} je obrisan.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Brisanje podsajta nije uspelo, pokušajte ponovo kasnije.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Prilagođeni domen {origin}",

@@ -63,6 +63,10 @@
     "message": "Zarządzaj",
     "description": "Przycisk do przejścia do ustawień subdomeny"
   },
+  "button.delete": {
+    "message": "Usuń",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Twórz niezależne subdomeny dla swojej marki pod główną stroną. Każda subdomena może mieć swoje logo, tytuł i zestaw funkcji, bez potrzeby osobnego budowania kodu źródłowego.",
     "description": "Opis na stronie zarządzania subdomenami"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Ten podstrona jest powiązana z wieloma domenami, wybierz adres, który chcesz otworzyć, a my otworzymy go w nowej karcie.",
     "description": "Wskazówka w oknie dialogowym otwierania podstrony wyjaśniająca wybór adresu URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Usunąć podstronę {origin}? Użytkownicy nie będą już mogli uzyskać dostępu przez tę domenę, a tej operacji nie można cofnąć.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Podstrona {origin} została usunięta.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Nie udało się usunąć podstrony, spróbuj ponownie później.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Dostosowana domena dla {origin}",
