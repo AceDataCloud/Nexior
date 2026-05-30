@@ -128,7 +128,10 @@ import {
   faUserTie as faSolidUserTie,
   faCode as faSolidCode,
   faMicrophoneLines as faSolidMicrophoneLines,
-  faBookOpen as faSolidBookOpen
+  faBookOpen as faSolidBookOpen,
+  faReceipt as faSolidReceipt,
+  faDollarSign as faSolidDollarSign,
+  faFileExport as faSolidFileExport
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -256,3 +259,6 @@ library.add(faSolidPersonRunning);
 library.add(faSolidUserTie);
 library.add(faSolidMicrophoneLines);
 library.add(faSolidBookOpen);
+library.add(faSolidReceipt);
+library.add(faSolidDollarSign);
+library.add(faSolidFileExport);
