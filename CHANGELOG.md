@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 30 May 2026 01:53:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 30 May 2026 14:34:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.253.0
+
+Sat, 30 May 2026 14:34:01 GMT
+
+### Minor changes
+
+- feat(order-list): add summary cards and CSV export (parity with PlatformFrontend) (dev@acedata.cloud)
 
 ## 3.252.0
 
