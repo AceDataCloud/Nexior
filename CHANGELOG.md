@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 29 May 2026 16:10:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 30 May 2026 01:53:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.252.0
+
+Sat, 30 May 2026 01:53:13 GMT
+
+### Minor changes
+
+- feat(android): native Stripe PaymentSheet via @capacitor-community/stripe (dev@acedata.cloud)
 
 ## 3.251.0
 
