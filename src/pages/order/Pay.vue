@@ -135,7 +135,7 @@ import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
 import PublicAlipayPay from '@/components/order/public/AliPay.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { getPriceString } from '@/utils';
+import { getPaymentSurface, getPriceString } from '@/utils';
 
 // Polls the AllowAny GET /orders/<id> endpoint — POST /orders/<id>/refresh/
 // is IsAuthenticated and would 401 here.
@@ -274,10 +274,16 @@ export default defineComponent({
     onPay() {
       if (!this.id) return;
       this.prepaying = true;
+      // AliPay's backend serves Page (PC) and Wap (mobile) URLs based on
+      // the `surface` hint. WeChat Pay is pinned to Native QR on our
+      // merchant so we omit surface there. Stripe doesn't have a native
+      // app variant on the anonymous page so 'pc' / 'wap' is moot.
+      const payload: Record<string, unknown> = { pay_way: this.payWay };
+      if (this.payWay === PayWay.AliPay) {
+        payload.surface = getPaymentSurface();
+      }
       orderOperator
-        .pay(this.id, {
-          pay_way: this.payWay
-        } as any)
+        .pay(this.id, payload as any)
         .then(({ data }: { data: IOrderDetailResponse }) => {
           this.prepaying = false;
           if (data?.id) {
