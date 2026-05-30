@@ -496,13 +496,17 @@ jobs:
               print(f'::warning::{msg}')
               sys.exit(0)
 
-          # 1) Look up existing iOS App Store versions on this app.
+          # 1) Look up existing iOS App Store versions matching our versionString.
+          # /v1/apps/{id}/appStoreVersions only allows sort on a small set
+          # (appStoreState, platform, versionString) — not createdDate — so we
+          # filter by versionString directly instead.
           r = requests.get(
               f'https://api.appstoreconnect.apple.com/v1/apps/{app_id}/appStoreVersions',
-              params={'filter[platform]': 'IOS', 'limit': 20, 'sort': '-createdDate'},
+              params={'filter[platform]': 'IOS', 'filter[versionString]': version_name, 'limit': 50},
               headers=H(), timeout=30,
           )
-          r.raise_for_status()
+          if r.status_code != 200:
+              die_soft(f'Failed to list App Store versions: {r.status_code} {r.text[:400]}')
           versions = r.json().get('data') or []
 
           editable_states = {
@@ -512,7 +516,7 @@ jobs:
           version_id, version_state = None, None
           for v in versions:
               attrs = v['attributes']
-              if attrs.get('versionString') == version_name and attrs.get('appStoreState') in editable_states:
+              if attrs.get('appStoreState') in editable_states:
                   version_id = v['id']
                   version_state = attrs.get('appStoreState')
                   print(f'Reusing existing App Store version {version_id} (state={version_state}).')
@@ -562,10 +566,19 @@ jobs:
               json=sub_payload, headers=H(), timeout=30,
           )
           if sr.status_code == 409:
-              # An open submission already exists; find it.
+              # An open submission already exists; find it. Apple's API expects
+              # repeated filter[state] params, not a single comma-joined value.
               ex = requests.get(
                   'https://api.appstoreconnect.apple.com/v1/reviewSubmissions',
-                  params={'filter[app]': app_id, 'filter[platform]': 'IOS', 'filter[state]': 'READY_FOR_REVIEW,IN_REVIEW,UNRESOLVED_ISSUES,WAITING_FOR_REVIEW,COMPLETING'},
+                  params=[
+                      ('filter[app]', app_id),
+                      ('filter[platform]', 'IOS'),
+                      ('filter[state]', 'READY_FOR_REVIEW'),
+                      ('filter[state]', 'WAITING_FOR_REVIEW'),
+                      ('filter[state]', 'IN_REVIEW'),
+                      ('filter[state]', 'UNRESOLVED_ISSUES'),
+                      ('filter[state]', 'COMPLETING'),
+                  ],
                   headers=H(), timeout=30,
               )
               if ex.status_code != 200 or not (ex.json().get('data') or []):
