@@ -75,18 +75,12 @@
       :title="$t('subsite.title.openSite')"
       width="420px"
       class="open-dialog"
+      align-center
       append-to-body
     >
       <p class="open-hint">{{ $t('subsite.message.openSiteHint') }}</p>
       <div class="open-actions">
-        <el-button
-          v-for="url in opening.urls"
-          :key="url.href"
-          round
-          type="primary"
-          size="large"
-          @click="onConfirmOpen(url.href)"
-        >
+        <el-button v-for="url in opening.urls" :key="url.href" round type="primary" @click="onConfirmOpen(url.href)">
           {{ $t('subsite.button.open') }} {{ url.hostname }}
         </el-button>
       </div>
@@ -557,10 +551,12 @@ export default defineComponent({
   :deep(.open-actions) {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 14px;
 
     .el-button {
-      width: 100%;
+      min-width: 220px;
+      max-width: 100%;
       margin-left: 0;
     }
     .el-button + .el-button {
