@@ -102,7 +102,10 @@
             <el-row v-if="order?.state === OrderState.PENDING">
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
-                <div v-if="showPayment && showPayWays && order.price && order.price > 0 && !order.pay_way" class="payways mb-6">
+                <div
+                  v-if="showPayment && showPayWays && order.price && order.price > 0 && !order.pay_way"
+                  class="payways mb-6"
+                >
                   <div
                     :class="{
                       payway: true,
@@ -246,7 +249,7 @@ import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
-import { isAndroid, isIOS } from '@/utils';
+import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 
@@ -620,11 +623,15 @@ export default defineComponent({
         this.x402Session = undefined;
       }
       // PayBackend always issues a Native QR for WeChat Pay (our merchant
-      // has no JSAPI/H5 enabled), so the surface field is omitted here.
-      const payload: Record<string, unknown> = { pay_way: this.payWay };
+      // has no JSAPI/H5 enabled), so the surface field is omitted there.
+      // AliPay's backend serves Page (PC) vs Wap (mobile) based on `surface`,
+      // so the field is required to keep mobile users out of the desktop form.
       // Android Stripe uses the native PaymentSheet, which needs a
       // PaymentIntent (not a PaymentLink). The backend routes on this hint.
-      if (this.payWay === PayWay.Stripe && isAndroid()) {
+      const payload: Record<string, unknown> = { pay_way: this.payWay };
+      if (this.payWay === PayWay.AliPay) {
+        payload.surface = getPaymentSurface();
+      } else if (this.payWay === PayWay.Stripe && isAndroid()) {
         payload.surface = 'android';
       }
       orderOperator

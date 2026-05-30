@@ -28,3 +28,13 @@ export function isMobile(): boolean {
   const ua = navigator.userAgent.toLowerCase();
   return /iphone|ipad|ipod|android|windows phone/i.test(ua);
 }
+
+// AliPay's backend issues different URLs for Page (PC) vs Wap (mobile web).
+// Native apps still want their own "ios" / "android" surface so the backend
+// can pick the right SDK path. Otherwise mobile-web users receive a PC Page
+// URL and have to deal with a desktop-sized form.
+export function getPaymentSurface(): 'pc' | 'wap' | 'ios' | 'android' {
+  if (isIOS()) return 'ios';
+  if (isAndroid()) return 'android';
+  return isMobile() ? 'wap' : 'pc';
+}

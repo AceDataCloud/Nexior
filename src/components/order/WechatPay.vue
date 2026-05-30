@@ -1,16 +1,26 @@
 <template>
   <el-dialog :model-value="visible" :title="$t('application.title.buyService')" :width="dialogWidth" center>
-    <!-- Mobile browser outside WeChat (H5 unavailable on our merchant) -->
-    <div v-if="isMobileOutsideWechat" class="wechat-pay-guide text-center py-[20px] px-[10px]">
-      <p class="text-[14px] mb-4 leading-relaxed">
-        {{ $t('order.message.wechatPayMobileGuide') }}
+    <!-- Mobile browser outside WeChat: render the Native QR plus a guide telling the -->
+    <!-- user to save / screenshot it, then open WeChat -> Scan -> Album to pay. Still -->
+    <!-- expose Copy Link as a fallback for users who prefer URL-based hand-off.       -->
+    <div v-if="isMobileOutsideWechat" class="wechat-pay-mobile text-center py-[20px] px-[10px]">
+      <p class="text-[14px] mb-3 leading-relaxed">
+        {{ $t('order.message.wechatPayMobileScanTip') }}
       </p>
-      <el-button type="success" size="large" round class="w-[220px]" @click="onCopyLink">
-        {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
-      </el-button>
-      <p class="text-[12px] text-gray-500 mt-3 leading-relaxed">
+      <qr-code
+        v-if="modelValue?.pay_url"
+        :value="modelValue?.pay_url"
+        :size="220"
+        class="qrcode m-auto mb-3"
+        type="image/png"
+        :color="{ dark: '#000000', light: '#ffffff' }"
+      />
+      <p class="text-[12px] text-gray-500 mb-4 leading-relaxed">
         {{ $t('order.message.wechatPayMobileHint') }}
       </p>
+      <el-button v-if="payPageUrl" size="default" round class="w-[220px]" @click="onCopyLink">
+        {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
+      </el-button>
     </div>
 
     <!-- Mobile inside WeChat — long-press the Native QR to recognise and pay. -->
@@ -110,6 +120,15 @@ export default defineComponent({
     isMobileInsideWechat(): boolean {
       return isMobileBrowser() && isInWeChat();
     },
+    payPageUrl(): string {
+      // Always copy the public anonymous /orders/:id link (not the current console
+      // URL) so the recipient can complete payment without logging in.
+      const id = this.modelValue?.id;
+      if (!id || typeof window === 'undefined') {
+        return '';
+      }
+      return `${window.location.origin}/orders/${id}`;
+    },
     dialogWidth(): string {
       // Tighter dialog for any of the phone-sized views; keep 500px only for PC QR.
       if (this.isMobileOutsideWechat || this.isMobileInsideWechat) {
@@ -156,7 +175,7 @@ export default defineComponent({
         });
     },
     async onCopyLink() {
-      const url = typeof window !== 'undefined' ? window.location.href : '';
+      const url = this.payPageUrl;
       if (!url) {
         return;
       }

@@ -6,16 +6,24 @@
     center
     @close="$emit('hide')"
   >
-    <div v-if="isMobileOutsideWechat" class="wechat-pay-guide text-center py-[20px] px-[10px]">
-      <p class="text-[14px] mb-4 leading-relaxed">
-        {{ $t('order.message.wechatPayMobileGuide') }}
+    <div v-if="isMobileOutsideWechat" class="wechat-pay-mobile text-center py-[20px] px-[10px]">
+      <p class="text-[14px] mb-3 leading-relaxed">
+        {{ $t('order.message.wechatPayMobileScanTip') }}
       </p>
-      <el-button type="success" size="large" round class="w-[220px]" @click="onCopyLink">
-        {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
-      </el-button>
-      <p class="text-[12px] text-gray-500 mt-3 leading-relaxed">
+      <qr-code
+        v-if="order?.pay_url"
+        :value="order?.pay_url"
+        :size="220"
+        class="qrcode m-auto mb-3"
+        type="image/png"
+        :color="{ dark: '#000000', light: '#ffffff' }"
+      />
+      <p class="text-[12px] text-gray-500 mb-4 leading-relaxed">
         {{ $t('order.message.wechatPayMobileHint') }}
       </p>
+      <el-button size="default" round class="w-[220px]" @click="onCopyLink">
+        {{ copied ? $t('common.message.copied') : $t('order.button.copyPayLink') }}
+      </el-button>
     </div>
 
     <div v-else-if="isMobileInsideWechat" class="wechat-pay-longpress text-center py-[20px] px-[10px]">
