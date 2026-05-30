@@ -63,6 +63,10 @@
     "message": "Gérer",
     "description": "Bouton pour accéder aux paramètres du sous-site"
   },
+  "button.delete": {
+    "message": "Supprimer",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Créez des sous-sites de marque indépendants sous le site principal, chaque sous-site peut avoir son propre logo, titre et ensemble de fonctionnalités, sans avoir besoin de construire le code source séparément.",
     "description": "Texte explicatif sur la page de gestion des sous-sites"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Ce sous-site est lié à plusieurs domaines, veuillez choisir l'adresse à ouvrir, nous l'ouvrirons dans un nouvel onglet.",
     "description": "Indice dans la boîte de dialogue du sous-site ouvert expliquant le sélecteur d'URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Supprimer le sous-site {origin} ? Les utilisateurs ne pourront plus y accéder via ce domaine, et cette action est irréversible.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Le sous-site {origin} a été supprimé.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Échec de la suppression du sous-site, veuillez réessayer plus tard.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Nom de domaine personnalisé pour {origin}",

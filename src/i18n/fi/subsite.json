@@ -63,6 +63,10 @@
     "message": "Hallitse",
     "description": "Siirry alisivuston asetuksiin -painike"
   },
+  "button.delete": {
+    "message": "Poista",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Luo itsenäisiä alisivustoja pääsivuston alle. Jokaisella alisivustolla voi olla oma logo, otsikko ja toiminnallisuudet ilman erillistä koodin rakentamista.",
     "description": "Alisivuston hallinnan etusivun selitysteksti"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Tälle alisivustolle on liitetty useita verkkotunnuksia, valitse avattava osoite, avataan se uudessa välilehdessä.",
     "description": "Teksti alisivuston avausdialogissa, joka selittää URL-valitsimen."
+  },
+  "message.deleteConfirm": {
+    "message": "Poistetaanko aliosa {origin}? Käyttäjät eivät enää pääse siihen tämän verkkotunnuksen kautta, eikä toimintoa voi peruuttaa.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Aliosa {origin} on poistettu.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Aliosan poistaminen epäonnistui, yritä myöhemmin uudelleen.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "{origin} mukautettu verkkotunnus",

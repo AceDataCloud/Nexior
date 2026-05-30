@@ -63,6 +63,10 @@
     "message": "Verwalten",
     "description": "Button zum Zugriff auf die Einstellungen der Subdomain"
   },
+  "button.delete": {
+    "message": "Löschen",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Erstellen Sie unabhängige Subdomains unter der Hauptdomain, jede Subdomain kann ihr eigenes Logo, ihren Titel und ihre Funktionalitäten haben, ohne dass der Quellcode separat aufgebaut werden muss.",
     "description": "Erklärungstext auf der Hauptseite der Subdomain-Verwaltung"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Diese Subsite ist mit mehreren Domains verknüpft. Bitte wählen Sie die Adresse, die Sie öffnen möchten. Wir öffnen sie in einem neuen Tab.",
     "description": "Hinweistext im Dialog zum Öffnen der Subsite, der den URL-Auswähler erklärt."
+  },
+  "message.deleteConfirm": {
+    "message": "Subsite {origin} löschen? Benutzer können sie über diese Domain nicht mehr erreichen, und diese Aktion kann nicht rückgängig gemacht werden.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Subsite {origin} wurde gelöscht.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Subsite konnte nicht gelöscht werden, bitte versuchen Sie es später erneut.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Benutzerdefinierte Domain für {origin}",

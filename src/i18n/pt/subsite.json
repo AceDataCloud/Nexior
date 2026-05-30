@@ -63,6 +63,10 @@
     "message": "Gerenciar",
     "description": "Botão para acessar as configurações do subdomínio"
   },
+  "button.delete": {
+    "message": "Excluir",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Crie subdomínios independentes sob o domínio principal, cada subdomínio pode ter seu próprio logo, título e conjunto de funcionalidades, sem necessidade de construir o código-fonte separadamente.",
     "description": "Texto explicativo na página de gerenciamento de subdomínios"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Este subsite está vinculado a vários domínios, por favor escolha o endereço que deseja abrir, nós o abriremos em uma nova aba.",
     "description": "Dica no corpo do diálogo do subsite aberto explicando o seletor de URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Excluir o subsite {origin}? Os usuários não poderão mais acessá-lo por este domínio, e esta ação não pode ser desfeita.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "O subsite {origin} foi excluído.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Falha ao excluir o subsite, tente novamente mais tarde.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Domínio Personalizado de {origin}",

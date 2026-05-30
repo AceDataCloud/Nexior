@@ -63,6 +63,10 @@
     "message": "Управлять",
     "description": "Кнопка для перехода к настройкам поддомена"
   },
+  "button.delete": {
+    "message": "Удалить",
+    "description": "Button to delete a subsite"
+  },
   "message.indexTip": {
     "message": "Создавайте независимые поддомены для брендов под основным сайтом. Каждый поддомен может иметь свой логотип, заголовок и набор функций, без необходимости отдельной настройки исходного кода.",
     "description": "Описание на главной странице управления поддоменами"
@@ -106,6 +110,18 @@
   "message.openSiteHint": {
     "message": "Этот поддомен связан с несколькими доменами, пожалуйста, выберите адрес для открытия, мы откроем его в новой вкладке.",
     "description": "Текст подсказки в диалоговом окне открытия поддомена, объясняющий выбор URL."
+  },
+  "message.deleteConfirm": {
+    "message": "Удалить субсайт {origin}? Пользователи больше не смогут получить доступ к нему через этот домен, и это действие нельзя отменить.",
+    "description": "Confirmation prompt before deleting a subsite"
+  },
+  "message.deleted": {
+    "message": "Субсайт {origin} удалён.",
+    "description": "Success message after deleting a subsite"
+  },
+  "message.deleteFailed": {
+    "message": "Не удалось удалить субсайт, попробуйте позже.",
+    "description": "Fallback error message when DELETE fails"
   },
   "title.domains": {
     "message": "Пользовательские домены для {origin}",
