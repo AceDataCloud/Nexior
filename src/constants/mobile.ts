@@ -1,4 +1,4 @@
-export const MOBILE_APP_VERSION = '3.251.0';
+export const MOBILE_APP_VERSION = '3.252.1';
 
 export const MOBILE_ANDROID_DOWNLOAD_URL = 'https://cdn.acedata.cloud/2f29543715.apk';
 
