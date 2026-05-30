@@ -11,6 +11,7 @@ export interface IApiUsageQuery {
   ordering?: string;
   created_at_from?: string | Date;
   created_at_to?: string | Date;
+  status_code?: number | string | (number | string)[];
 }
 
 class ApiUsageOperator {
@@ -40,6 +41,23 @@ class ApiUsageOperator {
 
   async get(id: string): Promise<AxiosResponse<IApiUsageDetailResponse>> {
     return await httpClient.get(`/${this.key}/${id}`);
+  }
+
+  async getStatusCodes(query: {
+    user_id?: string;
+    application_id?: string | string[];
+    api_id?: string | string[];
+    created_at_from?: string | Date;
+    created_at_to?: string | Date;
+  }): Promise<AxiosResponse<{ items: number[] }>> {
+    return await httpClient.get(`/${this.key}/status-codes/`, { params: query });
+  }
+
+  async exportCsv(query: Partial<IApiUsageQuery>): Promise<AxiosResponse<Blob>> {
+    return await httpClient.get(`/${this.key}/export/`, {
+      params: query,
+      responseType: 'blob'
+    });
   }
 }
 
