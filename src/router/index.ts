@@ -11,6 +11,7 @@ import chatgpt from './chatgpt';
 import midjourney from './midjourney';
 import distribution from './distribution';
 import download from './download';
+import order from './order';
 import qrart from './qrart';
 import luma from './luma';
 import pika from './pika';
@@ -301,6 +302,7 @@ const routes = [
     path: '/',
     redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
   },
+  order,
   console,
   auth,
   chatgpt,
