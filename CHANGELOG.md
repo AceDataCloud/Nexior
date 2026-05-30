@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 30 May 2026 14:34:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 30 May 2026 15:04:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.253.1
+
+Sat, 30 May 2026 15:04:27 GMT
+
+### Patches
+
+- Align Console order detail with PlatformFrontend: tag-styled pay_way display and credits amount row. (dev@acedata.cloud)
 
 ## 3.253.0
 
