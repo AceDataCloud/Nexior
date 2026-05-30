@@ -27,11 +27,12 @@
                       {{ order?.application?.service?.title }}
                     </el-descriptions-item>
                     <el-descriptions-item v-if="order?.pay_way" :label="$t('order.field.payWay')">
-                      <span v-if="order?.pay_way === PayWay.WechatPay">{{ $t('order.title.wechatPay') }}</span>
-                      <span v-else-if="order?.pay_way === PayWay.Stripe">{{ $t('order.title.stripe') }}</span>
-                      <span v-else-if="order?.pay_way === PayWay.AliPay">{{ $t('order.title.aliPay') }}</span>
-                      <span v-else-if="order?.pay_way === PayWay.X402">{{ $t('order.title.x402') }}</span>
-                      <span v-else-if="order?.pay_way === PayWay.PayPal">{{ $t('order.title.paypal') }}</span>
+                      <el-tag :type="payWayTagType(order.pay_way)" effect="dark" round size="small">
+                        {{ payWayLabel(order.pay_way) }}
+                      </el-tag>
+                    </el-descriptions-item>
+                    <el-descriptions-item v-if="order?.amount && order.amount > 0" :label="$t('order.field.amount')">
+                      {{ $t('order.message.creditsValue', { value: formatCredits(order.amount) }) }}
                     </el-descriptions-item>
                     <el-descriptions-item :label="$t('order.field.createdAt')">
                       {{ $dayjs.format(order?.created_at) }}
@@ -539,6 +540,29 @@ export default defineComponent({
   },
   methods: {
     getPriceString,
+    formatCredits(value: number): string {
+      if (!Number.isFinite(value)) return '0';
+      return Number.isInteger(value) ? String(value) : value.toFixed(2);
+    },
+    payWayLabel(payWay: string): string {
+      switch (payWay) {
+        case PayWay.WechatPay:
+          return this.$t('order.title.wechatPay') as string;
+        case PayWay.Stripe:
+          return this.$t('order.title.stripe') as string;
+        case PayWay.AliPay:
+          return this.$t('order.title.aliPay') as string;
+        case PayWay.X402:
+          return this.$t('order.title.x402') as string;
+        case PayWay.PayPal:
+          return this.$t('order.title.paypal') as string;
+        default:
+          return payWay;
+      }
+    },
+    payWayTagType(_payWay: string): 'success' | 'info' {
+      return 'info';
+    },
     startOrderPolling(delay = 0) {
       this.stopOrderPolling();
       const poll = async () => {
