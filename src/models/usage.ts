@@ -4,6 +4,7 @@ export interface IApiUsage {
   id?: string;
   api_id?: string;
   status_code?: number;
+  elapsed?: number;
   trace_id?: string;
   created_at?: string;
   remaining_amount?: number;
@@ -24,6 +25,7 @@ export type IApiUsageDetailResponse = IApiUsage;
 export interface IProxyUsage {
   id?: string;
   proxy_id?: string;
+  elapsed?: number;
   trace_id?: string;
   created_at?: string;
   remaining_amount?: number;

@@ -1,21 +1,22 @@
 <template>
-  <el-row class="panel">
-    <help-entry class="help" />
+  <el-row>
     <el-col :span="24">
       <el-row>
         <el-col :span="24">
-          <h2 class="title">{{ $t('common.title.allUsages') }}</h2>
+          <h2 class="text-[26px] font-bold mb-5 text-[var(--el-text-color-primary)]">
+            {{ $t('common.title.allUsages') }}
+          </h2>
         </el-col>
       </el-row>
       <el-row>
-        <el-col :md="4" :xs="24" class="mb-4 flex px-2 gap-2 items-center">
+        <el-col :md="4" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <span> {{ $t('application.field.type') }} </span>
           <el-radio-group v-model="type">
             <el-radio-button :value="serviceType.API" :label="$t('application.field.api')" />
             <el-radio-button :value="serviceType.Proxy" :label="$t('application.field.proxy')" />
           </el-radio-group>
         </el-col>
-        <el-col v-show="false" :md="6" :xs="24" class="mb-4 flex px-2 gap-2 items-center">
+        <el-col v-show="false" :md="6" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <span class="inline-block w-9"> {{ $t('usage.field.application') }} </span>
           <el-select
             v-model="applicationIds"
@@ -30,12 +31,19 @@
             <el-option v-for="item in applications" :key="item.id" :label="item.service?.title" :value="item?.id!" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :md="6" :xs="24" class="mb-4 flex px-2 gap-2 items-center">
+        <el-col v-if="type === serviceType.API" :md="6" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <span class="inline-block"> {{ $t('usage.field.api') }} </span>
+          <el-skeleton v-if="apisLoading" animated class="w-full">
+            <template #template>
+              <el-skeleton-item variant="rect" style="height: 32px; border-radius: 4px" />
+            </template>
+          </el-skeleton>
           <el-select
+            v-else
             v-model="apiIds"
             :placeholder="$t('usage.field.api')"
             clearable
+            filterable
             multiple
             collapse-tags
             collapse-tags-tooltip
@@ -45,7 +53,7 @@
             <el-option v-for="item in apis" :key="item?.id" :label="item?.title" :value="item?.id!" />
           </el-select>
         </el-col>
-        <el-col v-if="type === serviceType.API" :md="8" :xs="24" class="mb-4 flex px-2 gap-2 items-center">
+        <el-col v-if="type === serviceType.API" :md="8" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
           <el-date-picker
             v-model="createdAtRange"
             type="datetimerange"
@@ -57,10 +65,34 @@
             @change="onTimeRangeChanged"
           />
         </el-col>
+        <!-- Status-code filter — narrow because values are 3-digit codes.
+             `filterable` + `allow-create` lets the user pick from discovered
+             codes or type an unseen one (e.g. a future 503). -->
+        <el-col v-if="type === serviceType.API" :md="3" :xs="24" class="mb-5 flex px-2 gap-2 items-center">
+          <el-select
+            v-model="statusCodeFilter"
+            :placeholder="$t('usage.option.statusCodeAll')"
+            class="w-full"
+            clearable
+            filterable
+            allow-create
+            default-first-option
+            :loading="statusCodeOptionsLoading"
+            @change="onStatusCodeChange"
+          >
+            <el-option v-for="code in statusCodeOptions" :key="code" :label="String(code)" :value="String(code)" />
+          </el-select>
+        </el-col>
+        <el-col v-if="type === serviceType.API" :md="3" :xs="24" class="mb-5 flex px-2 gap-2 items-center justify-end">
+          <el-button type="primary" plain :loading="exporting" class="w-full whitespace-nowrap" @click="onExport">
+            <font-awesome-icon icon="fa-solid fa-file-export" class="mr-1" />
+            {{ $t('usage.button.export') }}
+          </el-button>
+        </el-col>
       </el-row>
       <el-row>
         <el-col :span="24">
-          <el-row v-if="type === serviceType.API" :gutter="15" class="mb-4">
+          <el-row v-if="type === serviceType.API" :gutter="24" class="mb-5">
             <el-col :md="6" :xs="24">
               <el-card shadow="hover" class="h-full">
                 <el-skeleton v-if="aggLoading" />
@@ -92,21 +124,21 @@
               stripe
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
-              class="min-h-[calc(100vh-350px)] mb-[50px]"
+              class="min-h-[calc(100vh-350px)] mb-5"
             >
               <el-table-column :label="$t('application.field.name')" width="160px">
                 <template #default="scope">
                   <span>{{ scope.row?.api?.title }}</span>
                 </template>
               </el-table-column>
-              <el-table-column
-                :label="$t('usage.field.statusCode')"
-                width="120px"
-                class-name="hidden sm:table-cell"
-                label-class-name="hidden sm:table-cell"
-              >
+              <el-table-column :label="$t('usage.field.statusCode')" width="120px">
                 <template #default="scope">
                   <span>{{ scope.row.status_code }}</span>
+                </template>
+              </el-table-column>
+              <el-table-column :label="$t('usage.field.elapsed')" width="120px">
+                <template #default="scope">
+                  <span>{{ formatElapsed(scope.row.elapsed) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -128,6 +160,16 @@
                       <del>{{ getOriginalAmount(scope.row) }}</del>
                     </p>
                   </div>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="remaining_amount"
+                :label="$t('usage.field.balanceAfter')"
+                width="160px"
+                class-name="text-center"
+              >
+                <template #default="scope">
+                  <span>{{ getRemainingAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
               <el-table-column
@@ -156,7 +198,7 @@
                       }}
                     </el-tag>
                     <el-tag
-                      v-for="(name, key) in scope.row.metadata"
+                      v-for="(name, key) in getSimpleMetadata(scope.row.metadata)"
                       :key="key"
                       :style="{
                         textWrap: 'wrap',
@@ -170,12 +212,25 @@
                   </div>
                 </template>
               </el-table-column>
+              <el-table-column :label="$t('usage.button.viewDetail')" width="120px" class-name="text-center">
+                <template #default="scope">
+                  <el-button
+                    v-if="scope.row.id"
+                    type="primary"
+                    plain
+                    size="small"
+                    class="!px-2 !py-1 !text-xs !h-auto !min-h-0"
+                    @click="onShowDetail(scope.row)"
+                  >
+                    {{ $t('usage.button.viewDetail') }}
+                  </el-button>
+                </template>
+              </el-table-column>
               <el-table-column
                 prop="trace_id"
                 :label="$t('application.field.traceId')"
                 width="200px"
-                class-name="hidden sm:table-cell text-center"
-                label-class-name="hidden sm:table-cell"
+                class-name="text-center"
               >
                 <template #default="scope">
                   <span class="key">{{ scope.row.trace_id }}</span>
@@ -184,12 +239,7 @@
                   </span>
                 </template>
               </el-table-column>
-              <el-table-column
-                :label="$t('usage.field.createdAt')"
-                width="200px"
-                class-name="hidden sm:table-cell"
-                label-class-name="hidden sm:table-cell"
-              >
+              <el-table-column :label="$t('usage.field.createdAt')" width="200px">
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
@@ -202,7 +252,7 @@
               stripe
               table-layout="fixed"
               :empty-text="$t('common.message.noData')"
-              class="min-h-[calc(100vh-350px)] mb-[50px]"
+              class="min-h-[calc(100vh-350px)] mb-5"
             >
               <el-table-column :label="$t('application.field.name')" width="160px">
                 <template #default="scope">
@@ -230,6 +280,11 @@
                   <span>{{ getDeductedAmount(scope.row) }}</span>
                 </template>
               </el-table-column>
+              <el-table-column :label="$t('usage.field.balanceAfter')" width="160px" class-name="text-center">
+                <template #default="scope">
+                  <span>{{ getRemainingAmount(scope.row) }}</span>
+                </template>
+              </el-table-column>
               <el-table-column
                 prop="metadata"
                 :label="$t('usage.field.metadata')"
@@ -242,12 +297,7 @@
                   </el-tag>
                 </template>
               </el-table-column>
-              <el-table-column
-                :label="$t('usage.field.createdAt')"
-                width="200px"
-                class-name="hidden sm:table-cell"
-                label-class-name="hidden sm:table-cell"
-              >
+              <el-table-column :label="$t('usage.field.createdAt')" width="200px">
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
                 </template>
@@ -256,6 +306,30 @@
           </el-card>
         </el-col>
       </el-row>
+      <el-dialog
+        v-model="detailDialogVisible"
+        :title="$t('usage.dialog.detailTitle')"
+        width="70%"
+        top="5vh"
+        destroy-on-close
+      >
+        <el-tabs v-model="detailActiveTab">
+          <el-tab-pane :label="$t('usage.dialog.request')" name="request">
+            <el-skeleton v-if="detailLoading" :rows="6" animated />
+            <pre v-else-if="detailRow?.metadata?.request" class="detail-json">{{
+              formatJson(detailRow.metadata.request)
+            }}</pre>
+            <p v-else class="text-gray-400">{{ $t('usage.dialog.noData') }}</p>
+          </el-tab-pane>
+          <el-tab-pane :label="$t('usage.dialog.response')" name="response">
+            <el-skeleton v-if="detailLoading" :rows="6" animated />
+            <pre v-else-if="detailRow?.metadata?.response" class="detail-json">{{
+              formatJson(detailRow.metadata.response)
+            }}</pre>
+            <p v-else class="text-gray-400">{{ $t('usage.dialog.noData') }}</p>
+          </el-tab-pane>
+        </el-tabs>
+      </el-dialog>
       <el-row>
         <el-col :span="10" :offset="14">
           <div class="float-right">
@@ -270,6 +344,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {
+  IApi,
+  IApiListResponse,
   IApplication,
   IApplicationListResponse,
   IApplicationType,
@@ -280,6 +356,7 @@ import {
   IProxyUsage,
   IProxyUsageListResponse
 } from '@/models';
+import { apiUsageOperator, applicationOperator, apiOperator, proxyUsageOperator } from '@/operators';
 import Pagination from '@/components/common/Pagination.vue';
 import {
   ElTable,
@@ -293,9 +370,13 @@ import {
   ElOption,
   ElRadioGroup,
   ElRadioButton,
-  ElSkeleton
+  ElSkeleton,
+  ElSkeletonItem,
+  ElDialog,
+  ElTabs,
+  ElTabPane,
+  ElButton
 } from 'element-plus';
-import { apiUsageOperator, applicationOperator, proxyUsageOperator } from '@/operators';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Bar as BarChart } from 'vue-chartjs';
@@ -310,17 +391,32 @@ interface IData {
   total: number | undefined;
   shortcuts: { text: string; value: () => [Date, Date] }[];
   applications: IApplication[];
+  apis: IApi[];
+  apisLoading: boolean;
   limit: number;
   createdAtRange: [Date | string, Date | string];
   credentialType: typeof ICredentialType;
-  applicationIds: string[];
-  apiIds: string[];
+  applicationIds: string[] | undefined;
+  apiIds: string[] | undefined;
   type: string | IServiceType;
   serviceType: typeof IServiceType;
+  // aggregate
   totalUsed: number;
   barChartLabels: string[];
   barChartSeries: { key: string; label: string; data: number[]; color: string }[];
   aggLoading: boolean;
+  // detail dialog
+  detailDialogVisible: boolean;
+  detailRow: IApiUsage | null;
+  detailActiveTab: string;
+  detailLoading: boolean;
+  // export
+  exporting: boolean;
+  // status-code filter (free-form string — user can pick from discovered
+  // codes or type any number)
+  statusCodeFilter: string;
+  statusCodeOptions: number[];
+  statusCodeOptionsLoading: boolean;
 }
 
 export default defineComponent({
@@ -340,6 +436,11 @@ export default defineComponent({
     ElRadioButton,
     ElRadioGroup,
     ElSkeleton,
+    ElSkeletonItem,
+    ElDialog,
+    ElTabs,
+    ElTabPane,
+    ElButton,
     FontAwesomeIcon,
     BarChart
   },
@@ -350,6 +451,8 @@ export default defineComponent({
         : [],
       apiIds: this.$route.query.api_id?.toString() ? this.$route.query.api_id?.toString().split(',') : [],
       applications: [],
+      apis: [],
+      apisLoading: false,
       credentialType: ICredentialType,
       serviceType: IServiceType,
       apiUsages: [],
@@ -362,10 +465,21 @@ export default defineComponent({
         }
         const end = new Date();
         const start = new Date();
-        start.setDate(start.getDate() - 30);
+        start.setDate(1);
+        start.setHours(0, 0, 0, 0);
         return [start, end];
       })(),
       shortcuts: [
+        {
+          text: this.$t('usage.shortcuts.thisMonth'),
+          value: () => {
+            const end = new Date();
+            const start = new Date();
+            start.setDate(1);
+            start.setHours(0, 0, 0, 0);
+            return [start, end];
+          }
+        },
         {
           text: this.$t('usage.shortcuts.today'),
           value: () => {
@@ -416,10 +530,22 @@ export default defineComponent({
       loading: false,
       total: undefined,
       limit: 15,
+      // aggregate
       totalUsed: 0,
       barChartLabels: [],
       barChartSeries: [],
-      aggLoading: false
+      aggLoading: false,
+      // detail dialog
+      detailDialogVisible: false,
+      detailRow: null,
+      detailActiveTab: 'request',
+      detailLoading: false,
+      // export
+      exporting: false,
+      // status-code filter — read from URL so back/forward + share work
+      statusCodeFilter: this.$route.query.status_code?.toString() || '',
+      statusCodeOptions: [],
+      statusCodeOptionsLoading: false
     };
   },
   computed: {
@@ -428,16 +554,6 @@ export default defineComponent({
     },
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
-    },
-    apis() {
-      return this.applications
-        .filter((application) =>
-          this.applicationIds && this.applicationIds.length
-            ? this.applicationIds.includes(application.id as string)
-            : true
-        )
-        .map((application) => application.service?.apis)
-        .flat();
     },
     totalUsedString() {
       return `${(this.totalUsed || 0).toFixed(2)}`;
@@ -454,15 +570,19 @@ export default defineComponent({
         plugins: {
           legend: {
             position: 'top' as const,
+            // Clicking a legend item isolates that API; clicking again restores all
             onClick: (_event: unknown, legendItem: any, legend: any) => {
               const chart = legend?.chart;
               if (!chart || legendItem?.datasetIndex === undefined) return;
               const index: number = legendItem.datasetIndex;
               const datasets = chart.data?.datasets || [];
+              // Check if any other dataset is currently visible
               const othersVisible = datasets.some((_: any, i: number) => i !== index && chart.isDatasetVisible(i));
               if (othersVisible) {
+                // Show only the clicked dataset
                 datasets.forEach((_: any, i: number) => chart.setDatasetVisibility(i, i === index));
               } else {
+                // If only this dataset is visible, restore all
                 datasets.forEach((_: any, i: number) => chart.setDatasetVisibility(i, true));
               }
               chart.update();
@@ -482,19 +602,24 @@ export default defineComponent({
     },
     type: {
       handler() {
+        // reset multi-selects when switching type
         this.applicationIds = [];
         this.apiIds = [];
         this.onApplicationsChange(this.applicationIds);
         this.onFetchApplications();
+        this.onFetchApis();
         this.onFetchUsages();
         this.onFetchAggregate();
+        this.onFetchStatusCodeOptions();
       }
     }
   },
   mounted() {
     this.onFetchApplications();
+    this.onFetchApis();
     this.onFetchUsages();
     this.onFetchAggregate();
+    this.onFetchStatusCodeOptions();
   },
   methods: {
     async onFetchUsages() {
@@ -527,10 +652,12 @@ export default defineComponent({
       this.onFetchAggregate();
     },
     async onTimeRangeChanged() {
+      console.log('onTimeRangeChanged', this.createdAtRange);
       await this.$router.push({
         name: this.$route.name?.toString(),
         query: {
           ...this.$route.query,
+          // append timezone like 2025-05-10T13:01:36.566800Z
           created_at_from: this.createdAtRange
             ? this.$dayjs.format(this.createdAtRange[0].toString(), 'YYYY-MM-DDTHH:mm:ss.SSSSSSZ')
             : '',
@@ -541,6 +668,7 @@ export default defineComponent({
       });
       this.onFetchUsages();
       this.onFetchAggregate();
+      this.onFetchStatusCodeOptions();
     },
     async onApplicationChange(applicationId: string | undefined) {
       await this.$router.push({
@@ -573,12 +701,12 @@ export default defineComponent({
         }
       });
     },
-    getRemainingAmount(usage: IApiUsage | IProxyUsage) {
-      if (usage.remaining_amount === undefined || usage.remaining_amount === null) {
+    getRemainingAmount(apiUsage: IApiUsage) {
+      if (apiUsage.remaining_amount === undefined || apiUsage.remaining_amount === null) {
         return '';
       }
-      const unit = this.$t(`service.unit.${usage?.service?.unit || 'credit'}s`);
-      return `${usage.remaining_amount?.toFixed(6)} ${unit}`;
+      const unit = this.$t(`service.unit.${apiUsage?.service?.unit || 'credit'}s`);
+      return `${apiUsage.remaining_amount?.toFixed(6)} ${unit}`;
     },
     getUsedAmount(usage: IApiUsage | IProxyUsage) {
       if (usage.used_amount === undefined || usage.used_amount === null) {
@@ -601,6 +729,88 @@ export default defineComponent({
       const unit = this.$t(`service.unit.${usage?.service?.unit || 'credit'}s`);
       return `${usage.original_amount?.toFixed(6)} ${unit}`;
     },
+    /**
+     * Sync the active status-code filter to the URL and re-fetch with the
+     * new server-side `?status_code=` param. Empty string clears the filter.
+     */
+    onStatusCodeChange(val: string) {
+      const next = { ...this.$route.query };
+      const trimmed = (val || '').trim();
+      if (trimmed) next.status_code = trimmed;
+      else delete next.status_code;
+      // Drop the legacy client-side query key if it lingers in the URL.
+      delete next.status_code_filter;
+      this.$router.push({ name: this.$route.name?.toString(), query: next });
+      this.onFetchUsages();
+      this.onFetchAggregate();
+    },
+    /**
+     * Populate the filter dropdown with the *exact* set of distinct status
+     * codes the user actually saw within the active filters. Backed by the
+     * `/usage/apis/status-codes/` endpoint added in PlatformBackend so the
+     * client doesn't have to sample records and dedupe itself.
+     */
+    async onFetchStatusCodeOptions() {
+      this.statusCodeOptionsLoading = true;
+      try {
+        const { data } = await apiUsageOperator.getStatusCodes({
+          user_id: this.$store.getters.user.id,
+          ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
+          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+          ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
+          ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {})
+        });
+        this.statusCodeOptions = (data?.items || []).slice().sort((a, b) => a - b);
+      } catch {
+        // Silent fallback — `allow-create` means the user can still type
+        // a code by hand even if discovery failed.
+        this.statusCodeOptions = [];
+      } finally {
+        this.statusCodeOptionsLoading = false;
+      }
+    },
+    formatElapsed(elapsed?: number) {
+      if (elapsed === undefined || elapsed === null || Number.isNaN(elapsed)) {
+        return '-';
+      }
+      if (elapsed < 1) {
+        return `${Math.round(elapsed * 1000)} ms`;
+      }
+      return `${elapsed.toFixed(2)} s`;
+    },
+    getSimpleMetadata(metadata: Record<string, any> | undefined) {
+      if (!metadata) return {};
+      const result: Record<string, any> = {};
+      for (const [key, value] of Object.entries(metadata)) {
+        if (key === 'request' || key === 'response') continue;
+        if (typeof value === 'object' && value !== null) continue;
+        result[key] = value;
+      }
+      return result;
+    },
+    onShowDetail(row: IApiUsage) {
+      this.detailRow = { ...row, metadata: undefined };
+      this.detailActiveTab = 'request';
+      this.detailDialogVisible = true;
+      this.detailLoading = true;
+      if (row.id) {
+        apiUsageOperator
+          .get(row.id)
+          .then((response) => {
+            this.detailRow = response.data;
+          })
+          .finally(() => {
+            this.detailLoading = false;
+          });
+      }
+    },
+    formatJson(data: any): string {
+      try {
+        return JSON.stringify(data, null, 2);
+      } catch {
+        return String(data);
+      }
+    },
     onFetchApplications() {
       applicationOperator
         .getAll({
@@ -611,14 +821,30 @@ export default defineComponent({
           type: IApplicationType.USAGE
         })
         .then(({ data: data }: { data: IApplicationListResponse }) => {
-          this.applications = data.items.filter((application: IApplication) => {
-            if (!application?.service?.type) return true;
-            return application.service.type === this.type;
-          });
+          this.applications = data.items.filter(
+            (application: IApplication) => application?.service?.type === this.type
+          );
         })
         .catch(() => {});
     },
+    onFetchApis() {
+      this.apisLoading = true;
+      apiOperator
+        .getAll({
+          limit: 100,
+          offset: 0,
+          ordering: '-created_at'
+        })
+        .then(({ data: data }: { data: IApiListResponse }) => {
+          this.apis = data.items;
+        })
+        .catch(() => {})
+        .finally(() => {
+          this.apisLoading = false;
+        });
+    },
     onFetchApiUsages() {
+      console.log('onFetchApiUsages', this.createdAtRange);
       this.loading = true;
       apiUsageOperator
         .getAll({
@@ -629,7 +855,8 @@ export default defineComponent({
           ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
           ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {}),
           ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
-          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {})
+          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+          ...(this.statusCodeFilter ? { status_code: this.statusCodeFilter } : {})
         })
         .then(({ data: data }: { data: IApiUsageListResponse }) => {
           this.apiUsages = data.items;
@@ -659,12 +886,33 @@ export default defineComponent({
           this.loading = false;
         });
     },
+    onExport() {
+      this.exporting = true;
+      apiUsageOperator
+        .exportCsv({
+          user_id: this.$store.getters.user.id,
+          ...(this.createdAtRange?.[0] ? { created_at_from: this.createdAtRange[0] } : {}),
+          ...(this.createdAtRange?.[1] ? { created_at_to: this.createdAtRange[1] } : {}),
+          ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
+          ...(this.apiIds && this.apiIds.length ? { api_id: this.apiIds } : {}),
+          ...(this.statusCodeFilter ? { status_code: this.statusCodeFilter } : {})
+        })
+        .then(({ data }: { data: Blob }) => {
+          const url = window.URL.createObjectURL(data);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'usages.csv';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => {})
+        .finally(() => {
+          this.exporting = false;
+        });
+    },
     async onFetchAggregate() {
       this.aggLoading = true;
-      if (this.type !== this.serviceType.API) {
-        this.aggLoading = false;
-        return;
-      }
+      if (this.type !== this.serviceType.API) return;
       const params: any = {
         user_id: this.$store.getters.user.id,
         ...(this.applicationIds && this.applicationIds.length ? { application_id: this.applicationIds } : {}),
@@ -738,5 +986,17 @@ export default defineComponent({
 .chart {
   width: 100%;
   max-height: 260px;
+}
+.detail-json {
+  background: var(--el-bg-color-page);
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 6px;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-height: 60vh;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 </style>
