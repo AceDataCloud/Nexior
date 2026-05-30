@@ -243,10 +243,13 @@ jobs:
   promote:
     name: Promote to Production
     needs: [preflight, build]
-    # Only auto-promote when the initial upload landed on a non-production track AND the
-    # caller asked for it (workflow_dispatch default = true; tag-push defaults to promote).
+    # Run when preflight finished AND either the build job uploaded a fresh AAB
+    # or it was skipped because Play already had this versionCode (so the
+    # promote step can still push it from beta → production).
     if: |
-      needs.preflight.outputs.should-build == 'true'
+      always()
+      && needs.preflight.result == 'success'
+      && (needs.build.result == 'success' || needs.build.result == 'skipped')
       && needs.preflight.outputs.track != 'production'
       && (github.event_name != 'workflow_dispatch' || inputs.promote_to_production)
     runs-on: ubuntu-latest
