@@ -41,7 +41,7 @@ import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_CONSOLE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { isNative as isNativeSurface } from '@/utils/surface';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
@@ -111,7 +111,7 @@ export default defineComponent({
     },
     onDistribution() {
       this.$router.push({
-        name: ROUTE_DISTRIBUTION_INDEX
+        name: ROUTE_CONSOLE_DISTRIBUTION_INDEX
       });
     },
     onSettings() {

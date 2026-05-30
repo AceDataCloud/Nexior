@@ -39,7 +39,7 @@
 import { defineComponent } from 'vue';
 import { ElPopover, ElMenu, ElMenuItem, ElImage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_DISTRIBUTION_INDEX } from '@/router';
+import { ROUTE_CONSOLE_DISTRIBUTION_INDEX } from '@/router';
 
 export default defineComponent({
   name: 'HelpEntry',
@@ -61,7 +61,7 @@ export default defineComponent({
     },
     onProfit() {
       this.$router.push({
-        name: ROUTE_DISTRIBUTION_INDEX
+        name: ROUTE_CONSOLE_DISTRIBUTION_INDEX
       });
     }
   }

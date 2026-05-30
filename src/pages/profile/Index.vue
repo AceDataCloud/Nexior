@@ -35,7 +35,7 @@ import {
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_USAGE_LIST,
-  ROUTE_DISTRIBUTION_INDEX,
+  ROUTE_CONSOLE_DISTRIBUTION_INDEX,
   ROUTE_INDEX,
   ROUTE_SETTINGS_INDEX
 } from '@/router';
@@ -111,7 +111,7 @@ export default defineComponent({
         {
           key: 'distribution-index',
           text: this.$t('console.menu.distributionIndex'),
-          name: ROUTE_DISTRIBUTION_INDEX,
+          name: ROUTE_CONSOLE_DISTRIBUTION_INDEX,
           icon: 'fa-solid fa-coins'
         },
         ...(this.showSite

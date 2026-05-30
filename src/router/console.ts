@@ -2,6 +2,10 @@ import {
   ROUTE_CONSOLE_APPLICATION_EXTRA,
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+  ROUTE_CONSOLE_DISTRIBUTION_HISTORY,
+  ROUTE_CONSOLE_DISTRIBUTION_INDEX,
+  ROUTE_CONSOLE_DISTRIBUTION_INVITEES,
+  ROUTE_CONSOLE_DISTRIBUTION_RANK,
   ROUTE_CONSOLE_ORDER_DETAIL,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_ROOT,
@@ -51,6 +55,26 @@ export default {
       path: 'usages',
       name: ROUTE_CONSOLE_USAGE_LIST,
       component: () => import('@/pages/console/usage/List.vue')
+    },
+    {
+      path: 'distributions',
+      name: ROUTE_CONSOLE_DISTRIBUTION_INDEX,
+      component: () => import('@/pages/console/distribution/Index.vue')
+    },
+    {
+      path: 'distribution-histories',
+      name: ROUTE_CONSOLE_DISTRIBUTION_HISTORY,
+      component: () => import('@/pages/console/distribution/History.vue')
+    },
+    {
+      path: 'distribution-rank',
+      name: ROUTE_CONSOLE_DISTRIBUTION_RANK,
+      component: () => import('@/pages/console/distribution/Rank.vue')
+    },
+    {
+      path: 'distribution-invitees',
+      name: ROUTE_CONSOLE_DISTRIBUTION_INVITEES,
+      component: () => import('@/pages/console/distribution/Invitees.vue')
     }
   ]
 };

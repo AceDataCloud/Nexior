@@ -3,49 +3,21 @@
     "message": "Details anzeigen",
     "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
-  "button.withdrawal": {
-    "message": "Abheben",
-    "description": "按钮文本，用于提现网站的推荐收益。"
-  },
   "button.query": {
     "message": "Abfrage",
     "description": "按钮文本，用于查询网站的推荐收益。"
   },
-  "field.id": {
-    "message": "Empfehlungs-ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
-  },
-  "field.percentage": {
-    "message": "Empfehlungsprozent",
-    "description": "推荐收益的百分比，根据订单金额计算。"
-  },
-  "field.price": {
-    "message": "Bestellbetrag",
-    "description": "订单金额，用于计算推荐收益。"
-  },
-  "field.reward": {
-    "message": "Empfehlungsbelohnung",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
-  },
-  "field.userId": {
-    "message": "Benutzer-ID",
-    "description": "用户的唯一标识符，用户指 API 服务网站的用户。"
-  },
-  "field.userEmail": {
-    "message": "Benutzer-E-Mail",
-    "description": "用户的邮箱"
+  "button.withdrawal": {
+    "message": "Abheben",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "field.createdAt": {
     "message": "Empfehlungszeit",
     "description": "推荐创建的时间。"
   },
-  "field.level": {
-    "message": "Ebene",
-    "description": "推荐的级别，用于计算推荐收益。"
-  },
-  "field.threshold": {
-    "message": "Empfehlungsgrenze",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+  "field.id": {
+    "message": "Empfehlungs-ID",
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.inviteeId": {
     "message": "Einladende ID",
@@ -55,6 +27,46 @@
     "message": "Verifiziert",
     "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
+  "field.lastPaidAt": {
+    "message": "Zuletzt bezahlt am",
+    "description": ""
+  },
+  "field.level": {
+    "message": "Ebene",
+    "description": "推荐的级别，用于计算推荐收益。"
+  },
+  "field.percentage": {
+    "message": "Empfehlungsprozent",
+    "description": "推荐收益的百分比，根据订单金额计算。"
+  },
+  "field.price": {
+    "message": "Bestellbetrag",
+    "description": "订单金额，用于计算推荐收益。"
+  },
+  "field.priceSum": {
+    "message": "Gesamtbestellbetrag",
+    "description": ""
+  },
+  "field.reward": {
+    "message": "Empfehlungsbelohnung",
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+  },
+  "field.rewardSum": {
+    "message": "Gesamtprämie",
+    "description": ""
+  },
+  "field.threshold": {
+    "message": "Empfehlungsgrenze",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
+  },
+  "field.userEmail": {
+    "message": "Benutzer-E-Mail",
+    "description": "用户的邮箱"
+  },
+  "field.userId": {
+    "message": "Benutzer-ID",
+    "description": "用户的唯一标识符，用户指 API 服务网站的用户。"
+  },
   "message.deltaPriceForNextLevel": {
     "message": "Differenz zum nächsten Niveau",
     "description": "当前订单金额与下一级别门槛之间的差额。"
@@ -63,21 +75,9 @@
     "message": "Bitte fügen Sie den Kundenservice hinzu, um die Abhebungen zu bearbeiten. Es werden entsprechende Einkommenssteuern abgezogen.",
     "description": "指示提现功能正在开发中的消息。"
   },
-  "message.technicalDetail": {
-    "message": "Technische Details",
-    "description": "推荐系统的技术细节实现。"
-  },
-  "message.distributionQrDescription": {
-    "message": "Empfehlungs-QR-Code (Inhalt entspricht dem Link)",
-    "description": "推荐二维码的描述。"
-  },
   "message.distributionLink": {
     "message": "Empfehlungslink",
     "description": "推荐链接，用于将客户绑定为下级客户。"
-  },
-  "message.updateSuccessfully": {
-    "message": "Aktualisierung erfolgreich",
-    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
     "message": "Wenn Kunden sich über diesen Link oder QR-Code auf dieser Plattform registrieren, werden sie dauerhaft als Ihre Nachfolger gebunden und alle Verbrauchsbestellungen auf dieser Plattform werden gemäß dem aktuellen Verteilungsverhältnis auf Ihr Konto zurückgegeben.",
@@ -87,41 +87,25 @@
     "message": "Dieser Link enthält Ihre Benutzer-ID. Wenn der Kunde den Link öffnet, wird Ihre Benutzer-ID in Form von Cookies im Browser des Kunden gespeichert, gültig für sieben Tage. Innerhalb von sieben Tagen wird, wenn der Kunde den Code scannt und sich auf dieser Plattform registriert, Ihre Benutzer-ID zusammen mit den Cookies auf dem Registrierungsserver hochgeladen, und der Kunde kann als Ihr Nachfolger gebunden werden.",
     "description": "推荐链接的描述。"
   },
-  "title.price": {
-    "message": "Gesamter Empfehlungsbestellbetrag",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+  "message.distributionQrDescription": {
+    "message": "Empfehlungs-QR-Code (Inhalt entspricht dem Link)",
+    "description": "推荐二维码的描述。"
   },
-  "title.reward": {
-    "message": "Gesamte Empfehlungsbelohnung",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+  "message.technicalDetail": {
+    "message": "Technische Details",
+    "description": "推荐系统的技术细节实现。"
   },
-  "title.level": {
-    "message": "Empfehlungsebene",
-    "description": "推荐级别，用于计算推荐收益。"
-  },
-  "title.percentage": {
-    "message": "Empfehlungsprozent",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+  "message.updateSuccessfully": {
+    "message": "Aktualisierung erfolgreich",
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "title.currentLevel": {
     "message": "Aktuelle Ebene",
     "description": "当前推荐级别，用于计算推荐收益。"
   },
-  "title.nextLevel": {
-    "message": "Nächste Ebene",
-    "description": "下一个推荐级别，用于计算推荐收益。"
-  },
   "title.currentPercentage": {
     "message": "Aktueller Empfehlungsprozent",
     "description": "当前推荐收益百分比，用于计算推荐收益。"
-  },
-  "title.nextPercentage": {
-    "message": "Empfehlungsprozent der nächsten Ebene",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
-  },
-  "title.levelInfo": {
-    "message": "Ebeneninformationen",
-    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
     "message": "Empfehlungslink",
@@ -131,8 +115,36 @@
     "message": "Gesamtzahl der Einladenden",
     "description": "Die Gesamtzahl der Einladenden, die zur Berechnung der Empfehlungsgewinne verwendet wird."
   },
+  "title.level": {
+    "message": "Empfehlungsebene",
+    "description": "推荐级别，用于计算推荐收益。"
+  },
+  "title.levelInfo": {
+    "message": "Ebeneninformationen",
+    "description": "推荐级别的信息，用于计算推荐收益。"
+  },
   "title.manageDistributionStatus": {
     "message": "Vertrieb verwalten",
     "description": "Die Verwaltung des Empfehlungsstatus."
+  },
+  "title.nextLevel": {
+    "message": "Nächste Ebene",
+    "description": "下一个推荐级别，用于计算推荐收益。"
+  },
+  "title.nextPercentage": {
+    "message": "Empfehlungsprozent der nächsten Ebene",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+  },
+  "title.percentage": {
+    "message": "Empfehlungsprozent",
+    "description": "推荐收益百分比，用于计算推荐收益。"
+  },
+  "title.price": {
+    "message": "Gesamter Empfehlungsbestellbetrag",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
+  },
+  "title.reward": {
+    "message": "Gesamte Empfehlungsbelohnung",
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   }
 }

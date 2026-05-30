@@ -3,49 +3,21 @@
     "message": "View Details",
     "description": "Button text used to view the details of the site's referral history."
   },
-  "button.withdrawal": {
-    "message": "Withdrawal",
-    "description": "Button text used to withdraw the earnings from the site's referrals."
-  },
   "button.query": {
     "message": "Query",
     "description": "Button text used to query the earnings from the site's referrals."
   },
-  "field.id": {
-    "message": "Referral ID",
-    "description": "A unique identifier for the referral, which refers to the referrals of the API service website."
-  },
-  "field.percentage": {
-    "message": "Referral Earnings Percentage",
-    "description": "The percentage of referral earnings calculated based on the order amount."
-  },
-  "field.price": {
-    "message": "Order Amount",
-    "description": "The order amount used to calculate referral earnings."
-  },
-  "field.reward": {
-    "message": "Referral Reward",
-    "description": "The referral earnings calculated based on the order amount and referral earnings percentage."
-  },
-  "field.userId": {
-    "message": "User ID",
-    "description": "The unique identifier for the user, which refers to the users of the API service website."
-  },
-  "field.userEmail": {
-    "message": "User Email",
-    "description": "The email address of the user."
+  "button.withdrawal": {
+    "message": "Withdrawal",
+    "description": "Button text used to withdraw the earnings from the site's referrals."
   },
   "field.createdAt": {
     "message": "Referral Time",
     "description": "The time when the referral was created."
   },
-  "field.level": {
-    "message": "Level",
-    "description": "The level of the referral used to calculate referral earnings."
-  },
-  "field.threshold": {
-    "message": "Referral Earnings Threshold",
-    "description": "The threshold for referral earnings used for withdrawing referral earnings."
+  "field.id": {
+    "message": "Referral ID",
+    "description": "A unique identifier for the referral, which refers to the referrals of the API service website."
   },
   "field.inviteeId": {
     "message": "Inviter ID",
@@ -55,6 +27,46 @@
     "message": "Verified",
     "description": "A flag indicating whether the referral user has passed the verification of real information."
   },
+  "field.lastPaidAt": {
+    "message": "Last paid at",
+    "description": ""
+  },
+  "field.level": {
+    "message": "Level",
+    "description": "The level of the referral used to calculate referral earnings."
+  },
+  "field.percentage": {
+    "message": "Referral Earnings Percentage",
+    "description": "The percentage of referral earnings calculated based on the order amount."
+  },
+  "field.price": {
+    "message": "Order Amount",
+    "description": "The order amount used to calculate referral earnings."
+  },
+  "field.priceSum": {
+    "message": "Total order amount",
+    "description": ""
+  },
+  "field.reward": {
+    "message": "Referral Reward",
+    "description": "The referral earnings calculated based on the order amount and referral earnings percentage."
+  },
+  "field.rewardSum": {
+    "message": "Total reward",
+    "description": ""
+  },
+  "field.threshold": {
+    "message": "Referral Earnings Threshold",
+    "description": "The threshold for referral earnings used for withdrawing referral earnings."
+  },
+  "field.userEmail": {
+    "message": "User Email",
+    "description": "The email address of the user."
+  },
+  "field.userId": {
+    "message": "User ID",
+    "description": "The unique identifier for the user, which refers to the users of the API service website."
+  },
   "message.deltaPriceForNextLevel": {
     "message": "Difference from Next Level",
     "description": "The difference between the current order amount and the threshold for the next level."
@@ -63,21 +75,9 @@
     "message": "Please join to add customer service for processing withdrawals; withdrawals will incur relevant income tax.",
     "description": "A message indicating that the withdrawal feature is under development."
   },
-  "message.technicalDetail": {
-    "message": "Technical Details",
-    "description": "Implementation details of the referral system."
-  },
-  "message.distributionQrDescription": {
-    "message": "Referral QR Code (same as link content)",
-    "description": "Description of the referral QR code."
-  },
   "message.distributionLink": {
     "message": "Referral Link",
     "description": "A referral link used to bind customers as downline customers."
-  },
-  "message.updateSuccessfully": {
-    "message": "Update Successful",
-    "description": "A message indicating that the referral information has been successfully updated."
   },
   "message.distributionLinkDescription": {
     "message": "If a customer registers on this platform through this link or QR code, they will be permanently bound as your downline customer, and all purchases made by the customer on this platform will be returned to your account based on the current distribution ratio.",
@@ -87,41 +87,25 @@
     "message": "This link contains your user ID. When the customer opens the link, your user ID will be recorded in the customer's browser as Cookies, valid for seven days. Within seven days, if the customer registers on this platform by scanning the code, your user ID will be uploaded to the registration server along with the Cookies, and the customer can be bound as your downline customer.",
     "description": "Description of the referral link."
   },
-  "title.price": {
-    "message": "Total Amount of Referral Orders",
-    "description": "The total amount of referral orders used to calculate referral earnings."
+  "message.distributionQrDescription": {
+    "message": "Referral QR Code (same as link content)",
+    "description": "Description of the referral QR code."
   },
-  "title.reward": {
-    "message": "Total Referral Reward",
-    "description": "The total referral reward calculated based on the order amount and referral earnings percentage."
+  "message.technicalDetail": {
+    "message": "Technical Details",
+    "description": "Implementation details of the referral system."
   },
-  "title.level": {
-    "message": "Referral Level",
-    "description": "The referral level used to calculate referral earnings."
-  },
-  "title.percentage": {
-    "message": "Referral Earnings Percentage",
-    "description": "The referral earnings percentage used to calculate referral earnings."
+  "message.updateSuccessfully": {
+    "message": "Update Successful",
+    "description": "A message indicating that the referral information has been successfully updated."
   },
   "title.currentLevel": {
     "message": "Current Level",
     "description": "The current referral level used to calculate referral earnings."
   },
-  "title.nextLevel": {
-    "message": "Next Level",
-    "description": "The next referral level used to calculate referral earnings."
-  },
   "title.currentPercentage": {
     "message": "Current Referral Earnings Percentage",
     "description": "The current referral earnings percentage used to calculate referral earnings."
-  },
-  "title.nextPercentage": {
-    "message": "Next Level Referral Earnings Percentage",
-    "description": "The referral earnings percentage for the next level, used to calculate referral earnings."
-  },
-  "title.levelInfo": {
-    "message": "Level Information",
-    "description": "Information about the referral level used to calculate referral earnings."
   },
   "title.distributionLink": {
     "message": "Referral Link",
@@ -131,8 +115,36 @@
     "message": "Total Number of Invitors",
     "description": "The total number of invitors used for calculating referral earnings."
   },
+  "title.level": {
+    "message": "Referral Level",
+    "description": "The referral level used to calculate referral earnings."
+  },
+  "title.levelInfo": {
+    "message": "Level Information",
+    "description": "Information about the referral level used to calculate referral earnings."
+  },
   "title.manageDistributionStatus": {
     "message": "Distribution Management",
     "description": "Management of referral statuses."
+  },
+  "title.nextLevel": {
+    "message": "Next Level",
+    "description": "The next referral level used to calculate referral earnings."
+  },
+  "title.nextPercentage": {
+    "message": "Next Level Referral Earnings Percentage",
+    "description": "The referral earnings percentage for the next level, used to calculate referral earnings."
+  },
+  "title.percentage": {
+    "message": "Referral Earnings Percentage",
+    "description": "The referral earnings percentage used to calculate referral earnings."
+  },
+  "title.price": {
+    "message": "Total Amount of Referral Orders",
+    "description": "The total amount of referral orders used to calculate referral earnings."
+  },
+  "title.reward": {
+    "message": "Total Referral Reward",
+    "description": "The total referral reward calculated based on the order amount and referral earnings percentage."
   }
 }

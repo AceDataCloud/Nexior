@@ -22,6 +22,12 @@ class DistributionHistoryService {
       params: query
     });
   }
+
+  async getRank(query: IDistributionHistoryQuery): Promise<AxiosResponse<IDistributionHistoryListResponse>> {
+    return await httpClient.get(`/${this.key}/rank/`, {
+      params: query
+    });
+  }
 }
 
 export const distributionHistoryOperator = new DistributionHistoryService();

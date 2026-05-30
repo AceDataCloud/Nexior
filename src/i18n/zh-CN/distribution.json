@@ -3,49 +3,21 @@
     "message": "查看详情",
     "description": "按钮文本，用于查看网站的推荐历史详情。"
   },
-  "button.withdrawal": {
-    "message": "提现",
-    "description": "按钮文本，用于提现网站的推荐收益。"
-  },
   "button.query": {
     "message": "查询",
     "description": "按钮文本，用于查询网站的推荐收益。"
   },
-  "field.id": {
-    "message": "推荐 ID",
-    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
-  },
-  "field.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益的百分比，根据订单金额计算。"
-  },
-  "field.price": {
-    "message": "订单金额",
-    "description": "订单金额，用于计算推荐收益。"
-  },
-  "field.reward": {
-    "message": "推荐奖励",
-    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
-  },
-  "field.userId": {
-    "message": "用户 ID",
-    "description": "用户的唯一标识符，用户指 API 服务网站的用户。"
-  },
-  "field.userEmail": {
-    "message": "用户邮箱",
-    "description": "用户的邮箱"
+  "button.withdrawal": {
+    "message": "提现",
+    "description": "按钮文本，用于提现网站的推荐收益。"
   },
   "field.createdAt": {
     "message": "推荐时间",
     "description": "推荐创建的时间。"
   },
-  "field.level": {
-    "message": "级别",
-    "description": "推荐的级别，用于计算推荐收益。"
-  },
-  "field.threshold": {
-    "message": "推荐收益门槛",
-    "description": "推荐收益的门槛，用于提现推荐收益。"
+  "field.id": {
+    "message": "推荐 ID",
+    "description": "分销的唯一标识符，分销指 API 服务网站的推荐。"
   },
   "field.inviteeId": {
     "message": "邀请者 ID",
@@ -55,6 +27,46 @@
     "message": "已验证",
     "description": "标志，指示推荐用户是否通过真实信息验证。"
   },
+  "field.lastPaidAt": {
+    "message": "最近一次结算时间",
+    "description": ""
+  },
+  "field.level": {
+    "message": "级别",
+    "description": "推荐的级别，用于计算推荐收益。"
+  },
+  "field.percentage": {
+    "message": "推荐收益百分比",
+    "description": "推荐收益的百分比，根据订单金额计算。"
+  },
+  "field.price": {
+    "message": "订单金额",
+    "description": "订单金额，用于计算推荐收益。"
+  },
+  "field.priceSum": {
+    "message": "订单金额累计",
+    "description": ""
+  },
+  "field.reward": {
+    "message": "推荐奖励",
+    "description": "推荐收益，根据订单金额和推荐收益百分比计算。"
+  },
+  "field.rewardSum": {
+    "message": "推荐奖励累计",
+    "description": ""
+  },
+  "field.threshold": {
+    "message": "推荐收益门槛",
+    "description": "推荐收益的门槛，用于提现推荐收益。"
+  },
+  "field.userEmail": {
+    "message": "用户邮箱",
+    "description": "用户的邮箱"
+  },
+  "field.userId": {
+    "message": "用户 ID",
+    "description": "用户的唯一标识符，用户指 API 服务网站的用户。"
+  },
   "message.deltaPriceForNextLevel": {
     "message": "与下一级别的差额",
     "description": "当前订单金额与下一级别门槛之间的差额。"
@@ -63,21 +75,9 @@
     "message": "请加入添加客服处理提现，提现将扣除相关所得税。",
     "description": "指示提现功能正在开发中的消息。"
   },
-  "message.technicalDetail": {
-    "message": "技术细节",
-    "description": "推荐系统的技术细节实现。"
-  },
-  "message.distributionQrDescription": {
-    "message": "推荐二维码（与链接内容相同）",
-    "description": "推荐二维码的描述。"
-  },
   "message.distributionLink": {
     "message": "推荐链接",
     "description": "推荐链接，用于将客户绑定为下级客户。"
-  },
-  "message.updateSuccessfully": {
-    "message": "更新成功",
-    "description": "指示推荐信息已成功更新的消息。"
   },
   "message.distributionLinkDescription": {
     "message": "如果客户通过此链接或二维码在本平台注册，客户将永久绑定为您的下级客户，并且客户在本平台的所有消费订单将根据当前分销比例返还到您的账户。",
@@ -87,41 +87,25 @@
     "message": "此链接包含您的用户 ID。客户打开链接后，您的用户 ID 将以 Cookies 的形式记录在客户的浏览器中，有效期为七天。在七天内，如果客户通过扫描该代码注册本平台，您的用户 ID 将与 Cookies 一起上传到注册服务器，并且客户可以作为您的下游客户绑定。",
     "description": "推荐链接的描述。"
   },
-  "title.price": {
-    "message": "推荐订单总金额",
-    "description": "推荐订单的总金额，用于计算推荐收益。"
+  "message.distributionQrDescription": {
+    "message": "推荐二维码（与链接内容相同）",
+    "description": "推荐二维码的描述。"
   },
-  "title.reward": {
-    "message": "总推荐奖励",
-    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
+  "message.technicalDetail": {
+    "message": "技术细节",
+    "description": "推荐系统的技术细节实现。"
   },
-  "title.level": {
-    "message": "推荐级别",
-    "description": "推荐级别，用于计算推荐收益。"
-  },
-  "title.percentage": {
-    "message": "推荐收益百分比",
-    "description": "推荐收益百分比，用于计算推荐收益。"
+  "message.updateSuccessfully": {
+    "message": "更新成功",
+    "description": "指示推荐信息已成功更新的消息。"
   },
   "title.currentLevel": {
     "message": "当前级别",
     "description": "当前推荐级别，用于计算推荐收益。"
   },
-  "title.nextLevel": {
-    "message": "下一级别",
-    "description": "下一个推荐级别，用于计算推荐收益。"
-  },
   "title.currentPercentage": {
     "message": "当前推荐收益百分比",
     "description": "当前推荐收益百分比，用于计算推荐收益。"
-  },
-  "title.nextPercentage": {
-    "message": "下一级别推荐收益百分比",
-    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
-  },
-  "title.levelInfo": {
-    "message": "级别信息",
-    "description": "推荐级别的信息，用于计算推荐收益。"
   },
   "title.distributionLink": {
     "message": "推荐链接",
@@ -131,8 +115,36 @@
     "message": "邀请者总数",
     "description": "邀请者的总数，用于计算推荐收益。"
   },
+  "title.level": {
+    "message": "推荐级别",
+    "description": "推荐级别，用于计算推荐收益。"
+  },
+  "title.levelInfo": {
+    "message": "级别信息",
+    "description": "推荐级别的信息，用于计算推荐收益。"
+  },
   "title.manageDistributionStatus": {
     "message": "分销管理",
     "description": "推荐状态的管理。"
+  },
+  "title.nextLevel": {
+    "message": "下一级别",
+    "description": "下一个推荐级别，用于计算推荐收益。"
+  },
+  "title.nextPercentage": {
+    "message": "下一级别推荐收益百分比",
+    "description": "下一个级别的推荐收益百分比，用于计算推荐收益。"
+  },
+  "title.percentage": {
+    "message": "推荐收益百分比",
+    "description": "推荐收益百分比，用于计算推荐收益。"
+  },
+  "title.price": {
+    "message": "推荐订单总金额",
+    "description": "推荐订单的总金额，用于计算推荐收益。"
+  },
+  "title.reward": {
+    "message": "总推荐奖励",
+    "description": "总推荐奖励，根据订单金额和推荐收益百分比计算。"
   }
 }

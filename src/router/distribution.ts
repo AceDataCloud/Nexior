@@ -1,26 +1,26 @@
-import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INDEX, ROUTE_DISTRIBUTION_INVITEES } from './constants';
+import {
+  ROUTE_CONSOLE_DISTRIBUTION_HISTORY,
+  ROUTE_CONSOLE_DISTRIBUTION_INDEX,
+  ROUTE_CONSOLE_DISTRIBUTION_INVITEES
+} from './constants';
 
+// Backward-compat: distribution pages were moved under /console/. Preserve
+// the legacy /distribution[/...] URLs by redirecting to the new names so
+// existing share links / bookmarks keep working.
 export default {
   path: '/distribution',
-  meta: {
-    auth: true
-  },
-  component: () => import('@/layouts/Main.vue'),
   children: [
     {
       path: '',
-      name: ROUTE_DISTRIBUTION_INDEX,
-      component: () => import('@/pages/distribution/Index.vue')
+      redirect: { name: ROUTE_CONSOLE_DISTRIBUTION_INDEX }
     },
     {
       path: 'history',
-      name: ROUTE_DISTRIBUTION_HISTORY,
-      component: () => import('@/pages/distribution/History.vue')
+      redirect: { name: ROUTE_CONSOLE_DISTRIBUTION_HISTORY }
     },
     {
       path: 'invitees',
-      name: ROUTE_DISTRIBUTION_INVITEES,
-      component: () => import('@/pages/distribution/Invitees.vue')
+      redirect: { name: ROUTE_CONSOLE_DISTRIBUTION_INVITEES }
     }
   ]
 };

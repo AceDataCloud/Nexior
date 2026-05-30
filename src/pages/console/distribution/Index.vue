@@ -198,7 +198,7 @@ import { distributionLevelOperator, distributionStatusOperator, shortUrlOperator
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
-import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
+import { ROUTE_CONSOLE_DISTRIBUTION_HISTORY, ROUTE_CONSOLE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
 import { getPriceString } from '@/utils';
 
@@ -274,12 +274,12 @@ export default defineComponent({
     getPriceString,
     goHistory() {
       this.$router.push({
-        name: ROUTE_DISTRIBUTION_HISTORY
+        name: ROUTE_CONSOLE_DISTRIBUTION_HISTORY
       });
     },
     goInvitees() {
       this.$router.push({
-        name: ROUTE_DISTRIBUTION_INVITEES
+        name: ROUTE_CONSOLE_DISTRIBUTION_INVITEES
       });
     },
     onPageChange(page: number) {
