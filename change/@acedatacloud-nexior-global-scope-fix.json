@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix application picker on every Nexior service page: (a) restore scope=GLOBAL on the cross-service getApplications call so other-service INDIVIDUAL apps (Wisdom, GLM, Kimi, ...) no longer leak into the picker; (b) migrate to the new PlatformBackend two-axis filter (PR #561): pass user_id='me' + affiliation=['owner','granted'] so apps granted to me actually surface alongside my owned ones, replacing the deprecated role / include_granted / roles= params. Regression originally introduced in #810.",
-  "packageName": "@acedatacloud/nexior",
-  "email": "dev@acedata.cloud",
-  "dependentChangeType": "patch"
-}
-
