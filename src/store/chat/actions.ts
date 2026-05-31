@@ -88,16 +88,15 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       service_id: CHAT_SERVICE_ID,
-      include_granted: true
+      affiliation: ['owner', 'granted']
     });
     console.debug('get applications success for chat', applications);
     state.status.getApplications = Status.Success;

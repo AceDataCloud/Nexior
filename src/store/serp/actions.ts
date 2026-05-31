@@ -88,16 +88,15 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<ISerpState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for serp');
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       service_id: SERP_SERVICE_ID,
-      include_granted: true
+      affiliation: ['owner', 'granted']
     });
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);

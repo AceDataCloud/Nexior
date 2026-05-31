@@ -77,15 +77,14 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<IWebextratorState, IRootState>): Promise<IApplication[] | undefined> => {
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       service_id: WEBEXTRATOR_SERVICE_ID,
-      include_granted: true
+      affiliation: ['owner', 'granted']
     });
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);

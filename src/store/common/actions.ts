@@ -169,8 +169,7 @@ export const setApplications = async ({ commit }: any, payload: IApplication[]):
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<IRootState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for global');
   state.status.getApplications = Status.Request;
@@ -178,7 +177,7 @@ export const getApplications = async ({
     const { data: applications } = await applicationOperator.getAll({
       limit: 100,
       offset: 0,
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       ordering: '-created_at',
       type: IApplicationType.USAGE,
       // Cross-service picker: only apps usable on every service page.
@@ -186,9 +185,8 @@ export const getApplications = async ({
       // (owned or granted) come from each page's own per-service module,
       // so they MUST NOT leak in here.
       scope: IApplicationScope.GLOBAL,
-      // Still honour Credential-as-Authorization for GLOBAL apps another
-      // user shared with us — those remain cross-service usable.
-      include_granted: true
+      // Apps I own + GLOBAL apps another user granted me access to.
+      affiliation: ['owner', 'granted']
     });
     console.debug('global applications from online', applications);
     state.status.getApplications = Status.Success;
