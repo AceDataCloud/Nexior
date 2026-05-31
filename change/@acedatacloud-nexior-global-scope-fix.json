@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Restore scope=GLOBAL filter on cross-service application picker so the chat/midjourney/etc. pages no longer leak unrelated INDIVIDUAL apps (Wisdom, GLM, Kimi, …). Granted INDIVIDUAL apps continue to surface via each per-service module's own request; granted GLOBAL apps still come through include_granted=true. Regression introduced in #810.",
+  "packageName": "@acedatacloud/nexior",
+  "email": "dev@acedata.cloud",
+  "dependentChangeType": "patch"
+}
