@@ -9,7 +9,7 @@ import {
   applicationOperator,
   credentialOperator
 } from '@/operators';
-import { IApplication, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
+import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
 import { isNative } from '@/utils/surface';
@@ -169,8 +169,7 @@ export const setApplications = async ({ commit }: any, payload: IApplication[]):
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<IRootState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for global');
   state.status.getApplications = Status.Request;
@@ -178,14 +177,16 @@ export const getApplications = async ({
     const { data: applications } = await applicationOperator.getAll({
       limit: 100,
       offset: 0,
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       ordering: '-created_at',
       type: IApplicationType.USAGE,
-      // Credential-as-Authorization: also include apps shared TO me. Each
-      // item carries ``role: 'owner' | 'grantee'``. Dropping the previous
-      // ``scope: GLOBAL`` filter so granted INDIVIDUAL apps come back too
-      // (selection A in the design doc).
-      include_granted: true
+      // Cross-service picker: only apps usable on every service page.
+      // GLOBAL-scope apps fit that bill; service-specific INDIVIDUAL apps
+      // (owned or granted) come from each page's own per-service module,
+      // so they MUST NOT leak in here.
+      scope: IApplicationScope.GLOBAL,
+      // Apps I own + GLOBAL apps another user granted me access to.
+      affiliation: ['owner', 'granted']
     });
     console.debug('global applications from online', applications);
     state.status.getApplications = Status.Success;

@@ -9,18 +9,23 @@ import {
 } from '@/models';
 
 export interface IApplicationQuery {
-  user_id?: string;
+  // ``user_id=me`` is sugar for the caller's id; pass an explicit UUID
+  // to look up someone else (superuser only). Repeatable.
+  user_id?: string | string[];
   offset?: number;
   limit?: number;
   type?: IApplicationType | IApplicationType[];
   service_id?: string | string[];
   ordering?: string;
   scope?: IApplicationScope | IApplicationScope[];
-  // Credential-as-Authorization (PR #540): when true the backend also
-  // includes applications where the caller is a grantee. Each item carries
-  // ``role: 'owner' | 'grantee'``.
-  include_granted?: boolean;
-  role?: 'owner' | 'granted';
+  // Credential-as-Authorization (PR #561): only meaningful when
+  // ``user_id`` is set. Repeat ``affiliation=owner`` and/or
+  // ``affiliation=granted`` to scope to apps the subject owns, apps
+  // someone granted the subject (they hold a credential but are not the
+  // owner), or the union of both. Defaults to ``owner`` when ``user_id``
+  // is set. Serialized as repeated query params via axios paramsSerializer
+  // (qs.stringify with arrayFormat: 'repeat').
+  affiliation?: Array<'owner' | 'granted'> | 'owner' | 'granted';
 }
 
 class ApplicationOperator {

@@ -89,8 +89,7 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  state,
-  rootState
+  state
 }: ActionContext<IMidjourneyState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
   state.status.getApplications = Status.Request;
@@ -98,9 +97,9 @@ export const getApplications = async ({
   console.debug('current application', currentApplication);
   try {
     const { data: applications } = await applicationOperator.getAll({
-      user_id: rootState?.user?.id,
+      user_id: 'me',
       service_id: MIDJOURNEY_SERVICE_ID,
-      include_granted: true
+      affiliation: ['owner', 'granted']
     });
     state.status.getApplications = Status.Success;
     commit('setApplications', applications.items);
