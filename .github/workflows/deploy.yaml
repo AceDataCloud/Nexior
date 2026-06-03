@@ -85,7 +85,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Set Kubectl
-        uses: Azure/k8s-set-context@v1
+        uses: Azure/k8s-set-context@v5
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
