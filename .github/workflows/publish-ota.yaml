@@ -110,7 +110,7 @@ jobs:
 
       - name: Upload zip as workflow artifact
         # Keep a copy in the run for debugging / re-upload if needed.
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nexior-ota-${{ inputs.channel }}-${{ inputs.version }}
           path: ${{ steps.zip.outputs.zip_path }}

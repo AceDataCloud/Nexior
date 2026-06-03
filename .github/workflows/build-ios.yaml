@@ -256,7 +256,7 @@ jobs:
             -exportPath $RUNNER_TEMP/export
 
       - name: Upload IPA artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.ipa
           path: ${{ runner.temp }}/export/*.ipa
