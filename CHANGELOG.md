@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 31 May 2026 02:33:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 05 Jun 2026 18:05:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.255.2
+
+Fri, 05 Jun 2026 18:05:44 GMT
+
+### Patches
+
+- Fix OpenAI Image API code snippets to use the edits endpoint when reference images are present. (dev@acedata.cloud)
 
 ## 3.255.1
 
