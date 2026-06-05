@@ -27,6 +27,7 @@ class OpenAIImageOperator extends BaseTaskOperator<
     const formData = new FormData();
     if (data.model) formData.append('model', data.model);
     if (data.prompt) formData.append('prompt', data.prompt);
+    if (data.size) formData.append('size', data.size);
     if (data.callback_url) formData.append('callback_url', data.callback_url);
     (data.image_urls || []).forEach((url) => {
       formData.append('image', url);

@@ -48,7 +48,7 @@
               {{ $t('common.button.edit') }}
             </el-button>
           </el-tooltip>
-          <api-code-button :path="openaiimagePath" :body="modelValue?.request" />
+          <api-code-button :path="openaiimagePath" :body="openaiimageCodeBody" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -61,14 +61,10 @@
             {{ $t('openaiimage.name.size') }}:
             {{ (modelValue?.request as any)?.size }}
           </p>
-          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
             {{ $t('openaiimage.name.task') }}:
-            {{
-              modelValue?.request?.action === 'generate'
-                ? $t('openaiimage.name.generate')
-                : $t('openaiimage.name.edits')
-            }}
+            {{ taskTypeLabel }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -104,14 +100,10 @@
             {{ $t('openaiimage.name.size') }}:
             {{ (modelValue?.request as any)?.size }}
           </p>
-          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
             {{ $t('openaiimage.name.task') }}:
-            {{
-              modelValue?.request?.action === 'generate'
-                ? $t('openaiimage.name.generate')
-                : $t('openaiimage.name.edits')
-            }}
+            {{ taskTypeLabel }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -153,14 +145,10 @@
             {{ $t('openaiimage.name.size') }}:
             {{ (modelValue?.request as any)?.size }}
           </p>
-          <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+          <p v-if="showTaskType" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
             {{ $t('openaiimage.name.task') }}:
-            {{
-              modelValue?.request?.action === 'generate'
-                ? $t('openaiimage.name.generate')
-                : $t('openaiimage.name.edits')
-            }}
+            {{ taskTypeLabel }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -208,8 +196,39 @@ export default defineComponent({
     return { OPENAIIMAGE_LOGO };
   },
   computed: {
+    isEditRequest(): boolean {
+      const req: any = this.modelValue?.request;
+      return this.modelValue?.type === 'images_edits' || req?.action === 'edit' || this.referenceImages.length > 0;
+    },
+    showTaskType(): boolean {
+      return Boolean(this.modelValue?.request?.action || this.modelValue?.type || this.referenceImages.length > 0);
+    },
+    taskTypeLabel() {
+      return this.isEditRequest ? this.$t('openaiimage.name.edits') : this.$t('openaiimage.name.generate');
+    },
     openaiimagePath(): string {
-      return this.modelValue?.request?.action === 'edit' ? '/openai/images/edits' : '/openai/images/generations';
+      return this.isEditRequest ? '/openai/images/edits' : '/openai/images/generations';
+    },
+    openaiimageCodeBody(): Record<string, unknown> | undefined {
+      const req = this.modelValue?.request as Record<string, unknown> | undefined;
+      if (!req) return undefined;
+      const body: Record<string, unknown> = { ...req };
+      delete body.action;
+      delete body.callback_url;
+      if (this.isEditRequest) {
+        delete body.image_urls;
+        delete body.image;
+        const images = this.referenceImages;
+        if (images.length === 1) {
+          body.image = images[0];
+        } else if (images.length > 1) {
+          body.image = images;
+        }
+      } else {
+        delete body.image_urls;
+        delete body.image;
+      }
+      return body;
     },
     images(): IOpenAIImageImage[] {
       const result: IOpenAIImageImage[] = [];
@@ -245,6 +264,15 @@ export default defineComponent({
       const raw = req.image;
       if (Array.isArray(raw)) return raw.filter((u: unknown): u is string => typeof u === 'string' && u.length > 0);
       if (typeof raw === 'string' && raw.length > 0) return [raw];
+      if (Array.isArray(req.images)) {
+        return req.images
+          .map((item: unknown) => {
+            if (typeof item === 'string') return item;
+            if (item && typeof item === 'object') return (item as { image_url?: unknown }).image_url;
+            return undefined;
+          })
+          .filter((u: unknown): u is string => typeof u === 'string' && u.length > 0);
+      }
       return [];
     }
   },
