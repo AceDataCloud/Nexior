@@ -39,7 +39,7 @@
         <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[11px]" />
         {{ $t('application.button.usage') }}
       </el-button>
-      <el-button type="primary" round size="small" @click.stop="$emit('buy', application)">
+      <el-button v-if="showPayment" type="primary" round size="small" @click.stop="$emit('buy', application)">
         <font-awesome-icon icon="fa-solid fa-coins" class="mr-1 text-[11px]" />
         {{ $t('application.button.buyMore') }}
       </el-button>
@@ -54,6 +54,7 @@ import { ElButton, ElIcon } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Check } from '@element-plus/icons-vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
+import { isIOS } from '@/utils';
 
 export default defineComponent({
   name: 'ApplicationInfo',
@@ -78,7 +79,13 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['buy', 'usage']
+  emits: ['buy', 'usage'],
+  computed: {
+    // Hide the "Top Up" action inside the iOS bundle (payments are web-only).
+    showPayment(): boolean {
+      return !isIOS();
+    }
+  }
 });
 </script>
 

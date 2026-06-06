@@ -33,6 +33,7 @@
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElDialog } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import { getBaseUrlAuth, withCurrentSite } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
@@ -148,9 +149,20 @@ export default defineComponent({
             this.$store.commit('setAuth', { visible: false });
             await this.$router.push('/');
           } catch (error: unknown) {
-            // User-cancelled sheets are an expected outcome — silently keep
-            // the iframe login UI so the user can pick another method.
-            console.warn('native apple sign in failed', error);
+            // ASAuthorizationError code 1001 = the user dismissed the sheet.
+            // That's an expected outcome, so stay silent and keep the iframe
+            // login UI available for another method. Any OTHER failure
+            // (network down, token rejected by AuthBackend, missing "Sign in
+            // with Apple" capability) used to be swallowed too, leaving the
+            // button looking dead — surface those to the user instead.
+            const detail = error instanceof Error ? error.message : String(error);
+            const canceled = /\b100[01]\b/.test(detail) || /cancel/i.test(detail);
+            if (canceled) {
+              console.debug('native apple sign in canceled by user', error);
+            } else {
+              console.warn('native apple sign in failed', error);
+              ElMessage.error(this.$t('common.error.appleSignInFailed').toString());
+            }
           }
           return;
         }

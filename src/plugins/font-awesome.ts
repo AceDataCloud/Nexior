@@ -131,7 +131,8 @@ import {
   faBookOpen as faSolidBookOpen,
   faReceipt as faSolidReceipt,
   faDollarSign as faSolidDollarSign,
-  faFileExport as faSolidFileExport
+  faFileExport as faSolidFileExport,
+  faUserXmark as faSolidUserXmark
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -200,6 +201,7 @@ library.add(faSolidWind);
 library.add(faSolidQrcode);
 library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
+library.add(faSolidUserXmark);
 library.add(faSolidTrash);
 library.add(faSolidChevronDown);
 library.add(faSolidPalette);

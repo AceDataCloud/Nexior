@@ -215,6 +215,10 @@
     "message": "جارٍ التحميل...",
     "description": "النص الذي يظهر أثناء تحميل المحتوى"
   },
+  "error.appleSignInFailed": {
+    "message": "فشل تسجيل الدخول باستخدام Apple. يرجى المحاولة مرة أخرى أو استخدام طريقة تسجيل دخول أخرى.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "عملية",
     "description": "عملية الكيان"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "تحذير",
     "description": "警告用户的消息"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "سيؤدي هذا إلى حذف حسابك وجميع البيانات المرتبطة به نهائيًا. لا يمكن التراجع عن هذا الإجراء. هل أنت متأكد من أنك تريد المتابعة؟",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "تم حذف حسابك.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "فشل حذف حسابك. يرجى المحاولة مرة أخرى لاحقًا.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "معلومات",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "تسجيل الخروج",
     "description": "النص في شريط التنقل للموقع، لتسجيل الخروج"
+  },
+  "nav.deleteAccount": {
+    "message": "حذف الحساب",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "إعدادات الموقع",

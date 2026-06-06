@@ -215,6 +215,10 @@
     "message": "Wird geladen...",
     "description": "Statusnachricht, die beim Laden von Inhalten angezeigt wird"
   },
+  "error.appleSignInFailed": {
+    "message": "Anmeldung mit Apple fehlgeschlagen. Bitte versuchen Sie es erneut oder verwenden Sie eine andere Anmeldemethode.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Operation",
     "description": "Operation der Entität"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Warnung",
     "description": "警告用户的消息"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Dadurch werden Ihr Konto und alle zugehörigen Daten dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Möchten Sie wirklich fortfahren?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ihr Konto wurde gelöscht.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Ihr Konto konnte nicht gelöscht werden. Bitte versuchen Sie es später erneut.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Hinweis",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Abmelden",
     "description": "Website-Navigationsleiste, um sich abzumelden"
+  },
+  "nav.deleteAccount": {
+    "message": "Konto löschen",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Site-Konfiguration",

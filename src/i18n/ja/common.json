@@ -215,6 +215,10 @@
     "message": "読み込み中...",
     "description": "コンテンツが読み込まれているときに表示されるステータステキスト"
   },
+  "error.appleSignInFailed": {
+    "message": "Apple でのサインインに失敗しました。もう一度お試しいただくか、別のサインイン方法をご利用ください。",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "操作",
     "description": "エンティティの操作"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "警告",
     "description": "ユーザーに警告するメッセージ"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "これにより、アカウントと関連するすべてのデータが完全に削除されます。この操作は元に戻せません。本当に続行しますか？",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "アカウントが削除されました。",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "アカウントの削除に失敗しました。後でもう一度お試しください。",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "情報",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "ログアウト",
     "description": "ウェブサイトのナビゲーションバーのテキストで、ログアウトするためのものです。"
+  },
+  "nav.deleteAccount": {
+    "message": "アカウントを削除",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "サイト設定",

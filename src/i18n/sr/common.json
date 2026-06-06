@@ -215,6 +215,10 @@
     "message": "Učitavanje...",
     "description": "Statusni tekst koji se prikazuje dok se sadržaj učitava"
   },
+  "error.appleSignInFailed": {
+    "message": "Пријава помоћу Apple-а није успела. Покушајте поново или користите други начин пријаве.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Operacija",
     "description": "Operacija entiteta"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Upozorenje",
     "description": "Poruka koja upozorava korisnika"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Ово ће трајно обрисати ваш налог и све повезане податке. Ова радња се не може опозвати. Да ли сте сигурни да желите да наставите?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ваш налог је обрисан.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Брисање налога није успело. Покушајте поново касније.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Informacija",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Odjavi se",
     "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.deleteAccount": {
+    "message": "Обриши налог",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Podešavanje sajta",

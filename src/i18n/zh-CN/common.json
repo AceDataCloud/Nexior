@@ -215,6 +215,10 @@
     "message": "加载中...",
     "description": "内容加载时显示的状态文案"
   },
+  "error.appleSignInFailed": {
+    "message": "通过 Apple 登录失败，请重试或使用其他登录方式。",
+    "description": "当原生“通过 Apple 登录”因用户取消以外的原因失败时显示的错误提示。"
+  },
   "entity.operation": {
     "message": "操作",
     "description": "实体的操作"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "警告",
     "description": "警告用户的消息"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "此操作将永久删除您的账号及所有相关数据，且无法恢复。确定要继续吗？",
+    "description": "永久删除用户账号前显示的确认消息"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "您的账号已删除。",
+    "description": "成功删除用户账号后显示的消息"
+  },
+  "message.deleteAccountFailed": {
+    "message": "删除账号失败，请稍后重试。",
+    "description": "删除账号失败时显示的消息"
   },
   "message.info": {
     "message": "提示",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "退出登录",
     "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.deleteAccount": {
+    "message": "删除账号",
+    "description": "用于永久删除当前用户账号的菜单项"
   },
   "nav.site": {
     "message": "站点配置",

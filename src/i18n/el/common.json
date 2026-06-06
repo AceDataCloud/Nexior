@@ -215,6 +215,10 @@
     "message": "Φόρτωση...",
     "description": "Κείμενο κατάστασης που εμφανίζεται κατά τη φόρτωση περιεχομένου"
   },
+  "error.appleSignInFailed": {
+    "message": "Η σύνδεση με Apple απέτυχε. Δοκιμάστε ξανά ή χρησιμοποιήστε άλλη μέθοδο σύνδεσης.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Ενέργεια",
     "description": "Η ενέργεια της οντότητας"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Προειδοποίηση",
     "description": "Μήνυμα που προειδοποιεί τον χρήστη"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Αυτό θα διαγράψει οριστικά τον λογαριασμό σας και όλα τα σχετικά δεδομένα. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Είστε βέβαιοι ότι θέλετε να συνεχίσετε;",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ο λογαριασμός σας διαγράφηκε.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Η διαγραφή του λογαριασμού σας απέτυχε. Δοκιμάστε ξανά αργότερα.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Πληροφορία",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Αποσύνδεση",
     "description": "Website navigation text for logging out"
+  },
+  "nav.deleteAccount": {
+    "message": "Διαγραφή λογαριασμού",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Ρυθμίσεις Ιστοσελίδας",
