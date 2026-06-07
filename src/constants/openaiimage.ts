@@ -32,7 +32,7 @@ export const OPENAIIMAGE_SIZE_2448_3264 = '2448x3264';
 export const OPENAIIMAGE_SIZE_3840_2160 = '3840x2160';
 export const OPENAIIMAGE_SIZE_2160_3840 = '2160x3840';
 
-export const OPENAIIMAGE_DEFAULT_SIZE = OPENAIIMAGE_SIZE_1024;
+export const OPENAIIMAGE_DEFAULT_SIZE = '';
 
 // Per-model preset lists. Mirrors the OpenAPI `size` description on
 // `/openai/images/generations` and `/openai/images/edits`.

@@ -162,6 +162,9 @@ export default defineComponent({
       if (!hasReferenceImages && 'image_urls' in cfg) {
         delete cfg.image_urls;
       }
+      if (!cfg.size) {
+        delete cfg.size;
+      }
 
       const generateRequest = {
         ...cfg,
