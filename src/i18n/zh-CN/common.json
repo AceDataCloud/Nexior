@@ -51,6 +51,10 @@
     "message": "删除",
     "description": "按钮中的文本，用于删除内容"
   },
+  "button.deletePermanently": {
+    "message": "永久删除账号",
+    "description": "删除账号确认对话框底部的红色最终删除按钮文本，translate to 'Permanently delete account'"
+  },
   "button.confirm": {
     "message": "确认",
     "description": "按钮中的文本，用于确认某项操作"
@@ -358,6 +362,22 @@
   "message.deleteAccountFailed": {
     "message": "删除账号失败，请稍后重试。",
     "description": "删除账号失败时显示的消息"
+  },
+  "message.deleteAccountWarning": {
+    "message": "此操作不可逆！您的账号及其所有数据将被永久删除，无法找回。",
+    "description": "删除账号确认对话框顶部的红色警示横幅文本，必须强烈警告操作不可撤销"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "将永久删除：个人资料、余额与积分、应用与订阅、API 密钥及第三方登录绑定。",
+    "description": "删除账号确认对话框中列出将被删除内容的说明文本"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "请输入您的用户名以确认删除：",
+    "description": "提示用户必须逐字输入自己的用户名才能确认删除；紧随其后会单独显示该用户名"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "在此输入您的用户名",
+    "description": "用户名确认输入框的占位符"
   },
   "message.info": {
     "message": "提示",
