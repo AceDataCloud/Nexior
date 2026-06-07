@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 07 Jun 2026 01:55:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 07 Jun 2026 17:32:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.256.1
+
+Sun, 07 Jun 2026 17:32:33 GMT
+
+### Patches
+
+- Let OpenAI Image requests omit size by default so edits can follow the reference image aspect ratio. (dev@acedata.cloud)
 
 ## 3.256.0
 
