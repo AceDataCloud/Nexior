@@ -215,6 +215,10 @@
     "message": "Caricamento in corso...",
     "description": "Testo di stato visualizzato durante il caricamento dei contenuti"
   },
+  "error.appleSignInFailed": {
+    "message": "Accesso con Apple non riuscito. Riprova o usa un altro metodo di accesso.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Operazione",
     "description": "Operazione dell'entità"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Avviso",
     "description": "Messaggio per avvisare l'utente"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Questa operazione eliminerà definitivamente il tuo account e tutti i dati associati. Questa azione non può essere annullata. Vuoi davvero continuare?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Il tuo account è stato eliminato.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Impossibile eliminare il tuo account. Riprova più tardi.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Informazioni",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Esci",
     "description": "Testo nella barra di navigazione del sito per uscire"
+  },
+  "nav.deleteAccount": {
+    "message": "Elimina account",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Configurazione sito",

@@ -215,6 +215,10 @@
     "message": "Laddar...",
     "description": "Statusmeddelande som visas när innehållet laddas"
   },
+  "error.appleSignInFailed": {
+    "message": "Det gick inte att logga in med Apple. Försök igen eller använd en annan inloggningsmetod.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Åtgärd",
     "description": "Åtgärden för enheten"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Varning",
     "description": "Meddelande för att varna användaren"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Detta raderar permanent ditt konto och all tillhörande data. Åtgärden kan inte ångras. Är du säker på att du vill fortsätta?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ditt konto har raderats.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Det gick inte att radera ditt konto. Försök igen senare.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Information",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Logga ut",
     "description": "Text in the website navigation bar for logging out"
+  },
+  "nav.deleteAccount": {
+    "message": "Radera konto",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Webbplatsinställningar",

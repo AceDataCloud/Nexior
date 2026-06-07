@@ -215,6 +215,10 @@
     "message": "로딩 중...",
     "description": "내용이 로딩될 때 표시되는 상태 문구"
   },
+  "error.appleSignInFailed": {
+    "message": "Apple로 로그인하지 못했습니다. 다시 시도하거나 다른 로그인 방법을 사용해 주세요.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "작업",
     "description": "엔티티의 작업"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "경고",
     "description": "사용자에게 경고하는 메시지"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "계정과 관련된 모든 데이터가 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없습니다. 계속하시겠습니까?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "계정이 삭제되었습니다.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "계정 삭제에 실패했습니다. 나중에 다시 시도해 주세요.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "정보",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "로그아웃",
     "description": "사이트 내비게이션 바의 텍스트로 로그아웃을 표시합니다."
+  },
+  "nav.deleteAccount": {
+    "message": "계정 삭제",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "사이트 설정",

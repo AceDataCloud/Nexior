@@ -215,6 +215,10 @@
     "message": "載入中...",
     "description": "内容加载时显示的状态文案"
   },
+  "error.appleSignInFailed": {
+    "message": "透過 Apple 登入失敗，請重試或使用其他登入方式。",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "操作",
     "description": "实体的操作"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "警告",
     "description": "警告用戶的消息"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "此操作將永久刪除您的帳號及所有相關資料，且無法復原。確定要繼續嗎？",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "您的帳號已刪除。",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "刪除帳號失敗，請稍後再試。",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "提示",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "登出",
     "description": "網站導航欄中的文本，用於登出"
+  },
+  "nav.deleteAccount": {
+    "message": "刪除帳號",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "站點配置",

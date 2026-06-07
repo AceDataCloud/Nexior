@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage } from 'element-plus';
+import { ElImage, ElMessage, ElMessageBox } from 'element-plus';
 import {
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_ORDER_LIST,
@@ -41,6 +41,7 @@ import {
 } from '@/router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlAuth, getBaseUrlPlatform, withCurrentUserIdAndSite } from '@/utils';
+import { userOperator } from '@/operators';
 import HelpDialog from '@/components/common/HelpDialog.vue';
 
 interface ILink {
@@ -159,6 +160,14 @@ export default defineComponent({
             ]
           : []),
         {
+          key: 'delete-account',
+          text: this.$t('common.nav.deleteAccount'),
+          icon: 'fa-solid fa-user-xmark',
+          callback: () => {
+            this.onDeleteAccount();
+          }
+        },
+        {
           key: 'logout',
           text: this.$t('common.nav.logOut'),
           icon: 'fa-solid fa-arrow-right-from-bracket',
@@ -176,6 +185,29 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_INDEX
       });
+    },
+    async onDeleteAccount() {
+      try {
+        await ElMessageBox.confirm(
+          this.$t('common.message.deleteAccountConfirm').toString(),
+          this.$t('common.nav.deleteAccount').toString(),
+          {
+            type: 'warning',
+            confirmButtonText: this.$t('common.button.delete').toString(),
+            cancelButtonText: this.$t('common.button.cancel').toString()
+          }
+        );
+      } catch {
+        return;
+      }
+      try {
+        await userOperator.deleteMe();
+        ElMessage.success(this.$t('common.message.deleteAccountSuccess').toString());
+        await this.$store.dispatch('logout');
+        this.$router.push({ name: ROUTE_INDEX });
+      } catch {
+        ElMessage.error(this.$t('common.message.deleteAccountFailed').toString());
+      }
     },
     onNavigate(link: ILink) {
       if (link.name) {

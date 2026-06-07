@@ -215,6 +215,10 @@
     "message": "Завантаження...",
     "description": "Текст статусу, що відображається під час завантаження контенту"
   },
+  "error.appleSignInFailed": {
+    "message": "Не вдалося ввійти через Apple. Спробуйте ще раз або скористайтеся іншим способом входу.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Операція",
     "description": "Операція сутності"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Увага",
     "description": "Повідомлення для попередження користувача"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Це назавжди видалить ваш обліковий запис і всі пов’язані дані. Цю дію не можна скасувати. Ви впевнені, що хочете продовжити?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ваш обліковий запис видалено.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Не вдалося видалити обліковий запис. Спробуйте пізніше.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Інформація",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Вийти",
     "description": "Текст у навігаційній панелі сайту для виходу з облікового запису"
+  },
+  "nav.deleteAccount": {
+    "message": "Видалити обліковий запис",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Налаштування сайту",

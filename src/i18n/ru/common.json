@@ -215,6 +215,10 @@
     "message": "Загрузка...",
     "description": "Текст статуса, отображаемый во время загрузки контента"
   },
+  "error.appleSignInFailed": {
+    "message": "Не удалось войти через Apple. Повторите попытку или используйте другой способ входа.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Операция",
     "description": "Операция сущности"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Предупреждение",
     "description": "Сообщение для предупреждения пользователя"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Это навсегда удалит вашу учётную запись и все связанные данные. Это действие нельзя отменить. Вы уверены, что хотите продолжить?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Ваша учётная запись удалена.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Не удалось удалить учётную запись. Повторите попытку позже.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Информация",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Выйти",
     "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.deleteAccount": {
+    "message": "Удалить аккаунт",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Настройки сайта",

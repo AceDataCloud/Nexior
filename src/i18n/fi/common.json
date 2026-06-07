@@ -215,6 +215,10 @@
     "message": "Ladataan...",
     "description": "Sisällön lataamisen aikana näytettävä tilateksti"
   },
+  "error.appleSignInFailed": {
+    "message": "Apple-kirjautuminen epäonnistui. Yritä uudelleen tai käytä toista kirjautumistapaa.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Toiminto",
     "description": "Entiteetin toiminto"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Varoitus",
     "description": "Viesti, joka varoittaa käyttäjää"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Tämä poistaa tilisi ja kaikki siihen liittyvät tiedot pysyvästi. Tätä toimintoa ei voi peruuttaa. Haluatko varmasti jatkaa?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Tilisi on poistettu.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Tilisi poistaminen epäonnistui. Yritä myöhemmin uudelleen.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Tietoa",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Kirjaudu ulos",
     "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.deleteAccount": {
+    "message": "Poista tili",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Sivuston asetukset",

@@ -23,6 +23,10 @@ class UserOperator {
     return httpClient.put('/users/me', data);
   }
 
+  async deleteMe(): Promise<AxiosResponse<void>> {
+    return httpClient.delete('/users/me');
+  }
+
   async getVerify(): Promise<AxiosResponse<IUserDetailResponse>> {
     return httpClient.get('/users/verify');
   }

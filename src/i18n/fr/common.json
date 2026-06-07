@@ -215,6 +215,10 @@
     "message": "Chargement...",
     "description": "Texte d'état affiché lors du chargement du contenu"
   },
+  "error.appleSignInFailed": {
+    "message": "La connexion avec Apple a échoué. Veuillez réessayer ou utiliser une autre méthode de connexion.",
+    "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
+  },
   "entity.operation": {
     "message": "Opération",
     "description": "Opération de l'entité"
@@ -342,6 +346,18 @@
   "message.alert": {
     "message": "Alerte",
     "description": "Message d'alerte pour l'utilisateur"
+  },
+  "message.deleteAccountConfirm": {
+    "message": "Cela supprimera définitivement votre compte et toutes les données associées. Cette action est irréversible. Voulez-vous vraiment continuer ?",
+    "description": "Confirmation message shown before permanently deleting the user account"
+  },
+  "message.deleteAccountSuccess": {
+    "message": "Votre compte a été supprimé.",
+    "description": "Message shown after the user account is successfully deleted"
+  },
+  "message.deleteAccountFailed": {
+    "message": "Échec de la suppression de votre compte. Veuillez réessayer plus tard.",
+    "description": "Message shown when account deletion fails"
   },
   "message.info": {
     "message": "Information",
@@ -538,6 +554,10 @@
   "nav.logOut": {
     "message": "Déconnexion",
     "description": "网站导航栏中的文本，用于退出登录"
+  },
+  "nav.deleteAccount": {
+    "message": "Supprimer le compte",
+    "description": "Menu item to permanently delete the current user account"
   },
   "nav.site": {
     "message": "Configuration du site",
