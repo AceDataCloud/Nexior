@@ -13,6 +13,7 @@
         :placeholder="$t('openaiimage.placeholder.select')"
         :disabled="useCustom"
       >
+        <el-option :label="$t('suno.gender.auto')" :value="emptySizeValue" />
         <el-option-group v-for="group in presetGroups" :key="group.label" :label="group.label">
           <el-option v-for="item in group.options" :key="item" :label="item" :value="item" />
         </el-option-group>
@@ -70,9 +71,9 @@ import {
   OPENAIIMAGE_CUSTOM_SIZE_MODELS,
   OPENAIIMAGE_CUSTOM_SIZE_MULTIPLE,
   OPENAIIMAGE_DEFAULT_MODEL,
+  OPENAIIMAGE_DEFAULT_SIZE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
   OPENAIIMAGE_MODEL_SIZES,
-  OPENAIIMAGE_SIZE_1024,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_4K
@@ -120,6 +121,9 @@ export default defineComponent({
     storedSize(): string | undefined {
       return this.$store.state.openaiimage?.config?.size;
     },
+    emptySizeValue(): string {
+      return OPENAIIMAGE_DEFAULT_SIZE;
+    },
     customSupported(): boolean {
       return OPENAIIMAGE_CUSTOM_SIZE_MODELS.includes(this.model);
     },
@@ -147,8 +151,7 @@ export default defineComponent({
           if (this.customError) return;
           this.commitSize(`${this.customWidth}x${this.customHeight}`);
         } else {
-          const fallback = this.presets[0] ?? OPENAIIMAGE_SIZE_1024;
-          this.commitSize(fallback);
+          this.commitSize();
         }
       }
     },
@@ -156,11 +159,11 @@ export default defineComponent({
       get(): string {
         const size = this.storedSize;
         if (size && this.presets.includes(size)) return size;
-        return this.presets[0] ?? OPENAIIMAGE_SIZE_1024;
+        return this.emptySizeValue;
       },
       set(val: string) {
         this.customMode = false;
-        this.commitSize(val);
+        this.commitSize(val || undefined);
       }
     },
     multiple(): number {
@@ -199,25 +202,38 @@ export default defineComponent({
     model: {
       immediate: false,
       handler() {
-        // Reset custom mode when switching to a model that doesn't support
-        // custom sizes; snap stored size to a valid preset if needed.
         if (!this.customSupported) {
           this.customMode = false;
-          const size = this.storedSize;
-          if (!size || !this.presets.includes(size)) {
-            this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
-          }
-          return;
         }
-        // Custom-supported model: keep customMode if active and current
-        // dims are valid; otherwise fall back to first preset.
         const size = this.storedSize;
-        if (this.customMode && !this.customError) {
-          this.commitSize(`${this.customWidth}x${this.customHeight}`);
-          return;
+        if (!size || this.presets.includes(size)) return;
+        const parsed = parseSize(size);
+        if (parsed && this.customSupported) {
+          this.customMode = true;
+          this.customWidth = parsed.w;
+          this.customHeight = parsed.h;
+          if (!this.customError) return;
         }
-        if (!size || !this.presets.includes(size)) {
-          this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
+        this.commitSize();
+      }
+    },
+    storedSize(size: string | undefined) {
+      if (!size) {
+        this.customMode = false;
+        return;
+      }
+      if (this.presets.includes(size)) {
+        this.customMode = false;
+        return;
+      }
+      const parsed = parseSize(size);
+      if (parsed && this.customSupported) {
+        this.customMode = true;
+        if (this.customWidth !== parsed.w) {
+          this.customWidth = parsed.w;
+        }
+        if (this.customHeight !== parsed.h) {
+          this.customHeight = parsed.h;
         }
       }
     },
@@ -229,24 +245,25 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (!this.storedSize) {
-      this.commitSize(this.presets[0] ?? OPENAIIMAGE_SIZE_1024);
-      return;
-    }
-    // Re-hydrate custom mode if the stored size came from a previous custom entry.
-    const parsed = parseSize(this.storedSize);
-    if (parsed && this.customSupported && !this.presets.includes(this.storedSize)) {
+    const size = this.storedSize;
+    const parsed = parseSize(size);
+    if (size && parsed && this.customSupported && !this.presets.includes(size)) {
       this.customMode = true;
       this.customWidth = parsed.w;
       this.customHeight = parsed.h;
     }
   },
   methods: {
-    commitSize(size: string) {
-      this.$store.commit('openaiimage/setConfig', {
-        ...this.$store.state.openaiimage?.config,
-        size
-      });
+    commitSize(size?: string) {
+      const config = {
+        ...this.$store.state.openaiimage?.config
+      };
+      if (size) {
+        config.size = size;
+      } else {
+        delete config.size;
+      }
+      this.$store.commit('openaiimage/setConfig', config);
     },
     syncCustomToStore() {
       if (!this.useCustom) return;
