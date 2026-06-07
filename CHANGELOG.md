@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 07 Jun 2026 00:37:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 07 Jun 2026 01:55:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.256.0
+
+Sun, 07 Jun 2026 01:55:20 GMT
+
+### Minor changes
+
+- Restrict the in-app Delete account entry to iOS and require typed-username confirmation before deletion (dev@acedata.cloud)
 
 ## 3.255.3
 
