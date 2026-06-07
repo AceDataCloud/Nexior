@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "iOS App Store rejection fixes: (a) gate the chat and floating-balance 'Top Up' buttons behind !isIOS() so they no longer appear unresponsive on iOS where IAP-less payment UI is hidden; (b) surface a real error toast when native Apple Sign In fails for a non-cancellation reason; (c) add an in-app 'Delete Account' menu item (Guideline 5.1.1(v)) that calls DELETE /users/me and logs the user out.",
-  "packageName": "@acedatacloud/nexior",
-  "email": "dev@acedata.cloud",
-  "dependentChangeType": "patch"
-}

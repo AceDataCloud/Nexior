@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 07 Jun 2026 00:37:40 GMT",
+      "version": "3.255.3",
+      "tag": "@acedatacloud/nexior_v3.255.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "09bacac4a0c49a2507b3f880d9fefe2fc4a42232",
+            "comment": "iOS App Store rejection fixes: (a) gate the chat and floating-balance 'Top Up' buttons behind !isIOS() so they no longer appear unresponsive on iOS where IAP-less payment UI is hidden; (b) surface a real error toast when native Apple Sign In fails for a non-cancellation reason; (c) add an in-app 'Delete Account' menu item (Guideline 5.1.1(v)) that calls DELETE /users/me and logs the user out."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Jun 2026 18:05:44 GMT",
       "version": "3.255.2",
       "tag": "@acedatacloud/nexior_v3.255.2",
