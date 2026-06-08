@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 17:52:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 18:06:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.261.1
+
+Mon, 08 Jun 2026 18:06:54 GMT
+
+### Patches
+
+- remove the top navigation header from the mobile download page (use a header-less layout) (dev@acedata.cloud)
 
 ## 3.261.0
 
