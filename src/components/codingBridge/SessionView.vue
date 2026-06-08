@@ -110,6 +110,24 @@
               </template>
             </el-input>
           </div>
+          <!-- Attached image thumbnails -->
+          <div v-if="images.length" class="flex flex-wrap gap-2 mb-2">
+            <div
+              v-for="(image, index) in images"
+              :key="index"
+              class="relative w-14 h-14 rounded-md overflow-hidden border border-[var(--app-border-subtle)]"
+            >
+              <img :src="image" class="w-full h-full object-cover" :alt="$t('codingBridge.session.imageAlt')" />
+              <button
+                type="button"
+                class="absolute top-0 right-0 w-4 h-4 flex items-center justify-center bg-black/55 text-white text-[10px]"
+                :title="$t('codingBridge.session.removeImage')"
+                @click="removeImage(index)"
+              >
+                <font-awesome-icon icon="fa-solid fa-xmark" />
+              </button>
+            </div>
+          </div>
           <div class="flex items-end gap-2">
             <el-input
               v-model="prompt"
@@ -119,7 +137,11 @@
               class="flex-1"
               :placeholder="$t('codingBridge.session.promptPlaceholder')"
               @keydown.enter="onComposerEnter"
+              @paste="onPaste"
             />
+            <el-button round :title="$t('codingBridge.session.attachImage')" @click="onPickImages">
+              <font-awesome-icon icon="fa-solid fa-image" />
+            </el-button>
             <el-button v-if="running" round @click="onInterrupt">
               <font-awesome-icon icon="fa-solid fa-stop" />
             </el-button>
@@ -127,6 +149,7 @@
               {{ $t('codingBridge.session.send') }}
             </el-button>
           </div>
+          <input ref="imageInput" type="file" accept="image/*" multiple class="hidden" @change="onImageInputChange" />
           <p class="text-[11px] text-[var(--app-text-subtle)] mt-1 px-1">
             {{ resumeHint ? $t('codingBridge.history.resumeHint') : $t('codingBridge.session.enterHint') }}
           </p>
@@ -140,11 +163,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElSelect, ElOption } from 'element-plus';
+import { ElInput, ElButton, ElSelect, ElOption, ElMessage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
 import { ICodingBridgeEvent, ICodingBridgeNode, ICodingBridgeSession } from '@/models';
+
+// Mirror the agent's per-image cap (12 MB) and bound how many attach per turn.
+const MAX_IMAGE_BYTES = 12 * 1024 * 1024;
+const MAX_IMAGES = 8;
 
 export default defineComponent({
   name: 'CodingBridgeSessionView',
@@ -166,7 +193,8 @@ export default defineComponent({
       permissionMode: 'default',
       provider: 'claude',
       effort: '',
-      directoryVisible: false
+      directoryVisible: false,
+      images: [] as string[]
     };
   },
   computed: {
@@ -216,7 +244,7 @@ export default defineComponent({
       return this.$store.state.codingBridge?.connection === 'connected';
     },
     canSend(): boolean {
-      return !!this.prompt.trim() && this.connected && this.nodeOnline;
+      return (!!this.prompt.trim() || this.images.length > 0) && this.connected && this.nodeOnline;
     },
     providerOptions(): { label: string; value: string }[] {
       return [
@@ -320,9 +348,72 @@ export default defineComponent({
         model: this.model,
         permissionMode: this.permissionMode,
         provider: this.provider,
-        effort: this.effort
+        effort: this.effort,
+        images: this.images.length ? [...this.images] : undefined
       });
       this.prompt = '';
+      this.images = [];
+    },
+    onPaste(event: ClipboardEvent) {
+      const items = event.clipboardData?.items;
+      if (!items) {
+        return;
+      }
+      const files: File[] = [];
+      for (const item of Array.from(items)) {
+        if (item.kind === 'file' && item.type.startsWith('image/')) {
+          const file = item.getAsFile();
+          if (file) {
+            files.push(file);
+          }
+        }
+      }
+      if (files.length) {
+        event.preventDefault();
+        this.addFiles(files);
+      }
+    },
+    onPickImages() {
+      (this.$refs.imageInput as HTMLInputElement | undefined)?.click();
+    },
+    onImageInputChange(event: Event) {
+      const input = event.target as HTMLInputElement;
+      if (input.files?.length) {
+        this.addFiles(Array.from(input.files));
+      }
+      input.value = '';
+    },
+    async addFiles(files: File[]) {
+      for (const file of files) {
+        if (this.images.length >= MAX_IMAGES) {
+          ElMessage.warning(this.$t('codingBridge.session.imageLimit', { count: MAX_IMAGES }) as string);
+          break;
+        }
+        if (!file.type.startsWith('image/')) {
+          continue;
+        }
+        if (file.size > MAX_IMAGE_BYTES) {
+          ElMessage.warning(this.$t('codingBridge.session.imageTooLarge') as string);
+          continue;
+        }
+        try {
+          const dataUrl = await this.readFileAsDataUrl(file);
+          this.images.push(dataUrl);
+        } catch {
+          // Ignore unreadable files rather than failing the whole paste.
+        }
+      }
+    },
+    removeImage(index: number) {
+      this.images.splice(index, 1);
+    },
+    readFileAsDataUrl(file: File): Promise<string> {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(file);
+      });
     },
     onInterrupt() {
       this.$store.dispatch('codingBridge/interruptSession');
@@ -341,6 +432,7 @@ export default defineComponent({
       this.provider = 'claude';
       this.effort = '';
       this.prompt = '';
+      this.images = [];
     },
     scrollToBottom() {
       this.$nextTick(() => {

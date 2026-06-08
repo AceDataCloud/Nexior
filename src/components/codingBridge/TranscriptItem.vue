@@ -5,7 +5,20 @@
       <div
         class="max-w-[85%] rounded-lg px-3 py-2 bg-[var(--el-color-primary)] text-white whitespace-pre-wrap break-words"
       >
-        {{ event.text }}
+        <div
+          v-if="event.images && event.images.length"
+          class="flex flex-wrap gap-1.5"
+          :class="{ 'mb-1.5': event.text }"
+        >
+          <img
+            v-for="(image, index) in event.images"
+            :key="index"
+            :src="image"
+            class="w-16 h-16 rounded object-cover"
+            alt=""
+          />
+        </div>
+        <span v-if="event.text">{{ event.text }}</span>
       </div>
     </div>
 
