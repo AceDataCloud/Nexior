@@ -38,3 +38,4 @@ export * from './config';
 export * from './agent';
 export * from './byokCredential';
 export * from './appVersion';
+export * from './codingBridge';

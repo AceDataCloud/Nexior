@@ -43,7 +43,8 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   serp: () => import('./serp'),
   wan: () => import('./wan'),
   fish: () => import('./fish'),
-  webextrator: () => import('./webextrator')
+  webextrator: () => import('./webextrator'),
+  codingBridge: () => import('./codingBridge')
 };
 
 /** Names of every lazy-registerable per-app module (single source of truth). */

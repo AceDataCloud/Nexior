@@ -1,0 +1,166 @@
+{
+  "nodeList.title": {
+    "message": "Devices",
+    "description": "Coding Bridge device list title"
+  },
+  "nodeList.refresh": {
+    "message": "Refresh",
+    "description": "Refresh the device list"
+  },
+  "nodeList.pair": {
+    "message": "Pair device",
+    "description": "Open the pairing dialog"
+  },
+  "nodeList.empty": {
+    "message": "No devices paired yet.",
+    "description": "Empty device list message"
+  },
+  "nodeList.pairFirst": {
+    "message": "Pair your first device",
+    "description": "Empty-state pairing button"
+  },
+  "nodeList.remove": {
+    "message": "Remove",
+    "description": "Remove a device"
+  },
+  "nodeList.removeConfirm": {
+    "message": "Remove device \"{name}\"? It will need to be paired again.",
+    "description": "Device removal confirmation"
+  },
+  "nodeList.removeSuccess": {
+    "message": "Device removed.",
+    "description": "Device removed toast"
+  },
+  "nodeList.removeFailed": {
+    "message": "Failed to remove device.",
+    "description": "Device removal error toast"
+  },
+  "status.online": {
+    "message": "Online",
+    "description": "Device online status"
+  },
+  "status.offline": {
+    "message": "Offline",
+    "description": "Device offline status"
+  },
+  "connection.disconnected": {
+    "message": "Disconnected",
+    "description": "Relay connection disconnected"
+  },
+  "connection.connecting": {
+    "message": "Connecting…",
+    "description": "Relay connection connecting"
+  },
+  "connection.connected": {
+    "message": "Connected",
+    "description": "Relay connection connected"
+  },
+  "connection.error": {
+    "message": "Connection error",
+    "description": "Relay connection error"
+  },
+  "pair.title": {
+    "message": "Pair a device",
+    "description": "Pairing dialog title"
+  },
+  "pair.intro": {
+    "message": "Run the Coding Bridge agent on your computer, then enter its pairing code here to control it from the web.",
+    "description": "Pairing dialog intro"
+  },
+  "pair.step1": {
+    "message": "Install the agent (requires Python 3.10+):",
+    "description": "Pairing step 1"
+  },
+  "pair.step2": {
+    "message": "Start it and follow the prompt:",
+    "description": "Pairing step 2"
+  },
+  "pair.step3": {
+    "message": "Enter the pairing code it shows below.",
+    "description": "Pairing step 3"
+  },
+  "pair.codePlaceholder": {
+    "message": "Pairing code",
+    "description": "Pairing code input placeholder"
+  },
+  "pair.claim": {
+    "message": "Pair device",
+    "description": "Pairing confirm button"
+  },
+  "pair.success": {
+    "message": "Device \"{name}\" paired.",
+    "description": "Pairing success toast"
+  },
+  "pair.invalidCode": {
+    "message": "Invalid or expired pairing code.",
+    "description": "Pairing invalid code error"
+  },
+  "pair.usedCode": {
+    "message": "This pairing code has already been used.",
+    "description": "Pairing used code error"
+  },
+  "pair.failed": {
+    "message": "Failed to pair device.",
+    "description": "Pairing generic error"
+  },
+  "permission.title": {
+    "message": "Permission required",
+    "description": "Permission dialog title"
+  },
+  "permission.subtitle": {
+    "message": "The agent wants to use a tool. Approve to continue.",
+    "description": "Permission dialog subtitle"
+  },
+  "permission.deny": {
+    "message": "Deny",
+    "description": "Deny a tool permission"
+  },
+  "permission.allow": {
+    "message": "Allow",
+    "description": "Allow a tool permission"
+  },
+  "session.noDevice": {
+    "message": "Select a device to start coding.",
+    "description": "No device selected placeholder"
+  },
+  "session.newSession": {
+    "message": "New session",
+    "description": "Start a new session"
+  },
+  "session.deviceOffline": {
+    "message": "This device is offline. Start the Coding Bridge agent on it to continue.",
+    "description": "Device offline warning"
+  },
+  "session.startHint": {
+    "message": "Send a message to start a session on this device.",
+    "description": "Empty transcript hint"
+  },
+  "session.cwdPlaceholder": {
+    "message": "Working directory (optional)",
+    "description": "Working directory input placeholder"
+  },
+  "session.modelPlaceholder": {
+    "message": "Model (optional)",
+    "description": "Model input placeholder"
+  },
+  "session.promptPlaceholder": {
+    "message": "Send a message to the agent…",
+    "description": "Prompt input placeholder"
+  },
+  "session.send": {
+    "message": "Send",
+    "description": "Send prompt button"
+  },
+  "session.enterHint": {
+    "message": "Enter to send, Shift+Enter for a new line.",
+    "description": "Composer keyboard hint"
+  },
+  "transcript.turnFailed": {
+    "message": "Turn failed",
+    "description": "Turn result failed label"
+  },
+  "transcript.turnDone": {
+    "message": "Done",
+    "description": "Turn result done label"
+  }
+}

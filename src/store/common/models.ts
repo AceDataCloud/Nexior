@@ -21,6 +21,7 @@ import { ISerpState } from '../serp/models';
 import { IWanState } from '../wan/models';
 import { IFishState } from '../fish/models';
 import { IWebextratorState } from '../webextrator/models';
+import { ICodingBridgeState } from '../codingBridge/models';
 
 export interface ISetting {}
 
@@ -72,6 +73,7 @@ export interface IAppState {
   wan: IWanState;
   fish: IFishState;
   webextrator: IWebextratorState;
+  codingBridge: ICodingBridgeState;
 }
 
 export interface IRootState extends ICommonState, IAppState {}

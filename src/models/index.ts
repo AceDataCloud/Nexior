@@ -36,3 +36,4 @@ export * from './exchange';
 export * from './error';
 export * from './config';
 export * from './byok';
+export * from './codingBridge';

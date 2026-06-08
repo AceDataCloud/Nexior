@@ -32,6 +32,7 @@ import serp from './serp';
 import wan from './wan';
 import fish from './fish';
 import webextrator from './webextrator';
+import codingBridge from './codingBridge';
 import settings from './settings';
 import profile from './profile';
 
@@ -242,6 +243,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
       'Render and extract any web page with WebExtrator — get HTML, markdown, plain text, structured data, links, and screenshots from any URL.',
     keywords: ['WebExtrator', 'Web Scraping', 'Web Render', 'Content Extraction', 'Markdown', 'Headless Browser'],
     category: 'Web Data'
+  },
+  'coding-bridge': {
+    title: 'Coding Bridge',
+    description:
+      'Drive Claude Code and Codex on your own machine from the web — pair a local node and run coding agents remotely with per-tool approval.',
+    keywords: ['Coding Bridge', 'Claude Code', 'Codex', 'Remote Agent', 'AI Coding'],
+    category: 'AI Coding'
   }
 };
 
@@ -331,6 +339,7 @@ const routes = [
   wan,
   fish,
   webextrator,
+  codingBridge,
   midjourney,
   distribution,
   download,
