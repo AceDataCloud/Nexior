@@ -134,7 +134,8 @@ import {
   faFileExport as faSolidFileExport,
   faUserXmark as faSolidUserXmark,
   faClockRotateLeft as faSolidClockRotateLeft,
-  faEye as faSolidEye
+  faEye as faSolidEye,
+  faTerminal as faSolidTerminal
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -143,6 +144,7 @@ library.add(faSolidGlobe);
 library.add(faRegularLightbulb);
 library.add(faSolidClockRotateLeft);
 library.add(faSolidEye);
+library.add(faSolidTerminal);
 library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);
