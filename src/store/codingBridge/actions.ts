@@ -368,11 +368,13 @@ export const sendPrompt = (
     permissionMode?: string;
     provider?: string;
     effort?: string;
+    images?: string[];
   }
 ): void => {
   const nodeId = state.currentNodeId;
   const prompt = payload.prompt?.trim();
-  if (!nodeId || !prompt || !socket) {
+  const images = payload.images?.length ? payload.images : undefined;
+  if (!nodeId || !socket || (!prompt && !images)) {
     return;
   }
   let sessionId = state.currentSessionId;
@@ -399,7 +401,7 @@ export const sendPrompt = (
       sessionId = existing.session_id;
       commit('updateSession', { session_id: sessionId, status: 'starting' });
     }
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt }));
+    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images }));
     commit('updateSession', { session_id: sessionId as string, started: true });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_START,
@@ -410,15 +412,17 @@ export const sendPrompt = (
       permission_mode: payload.permissionMode || 'default',
       provider,
       effort: payload.effort || undefined,
+      images,
       resume_session_id: existing?.resume_session_id || undefined
     });
   } else {
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt }));
+    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images }));
     commit('updateSession', { session_id: sessionId as string, status: 'running' });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_SEND,
       session_id: sessionId,
-      prompt
+      prompt,
+      images
     });
   }
 };
@@ -492,10 +496,7 @@ export const getHistoryDetail = (
 };
 
 // Ask the current node to list a directory for the working-directory picker.
-export const browseDir = (
-  { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
-  path?: string
-): void => {
+export const browseDir = ({ commit, state }: ActionContext<ICodingBridgeState, IRootState>, path?: string): void => {
   const nodeId = state.currentNodeId;
   if (!nodeId || !socket) {
     return;

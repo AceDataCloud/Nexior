@@ -78,6 +78,8 @@ export interface ICodingBridgeEvent {
   is_error?: boolean;
   subtype?: string;
   cost_usd?: number;
+  // Data-URL previews of images the user attached to a prompt turn.
+  images?: string[];
 }
 
 /** One entry returned by a node's `fs.list` directory listing. */
