@@ -98,11 +98,13 @@ import {
   ROUTE_FISH_MODEL_INDEX,
   ROUTE_KIMI_CONVERSATION,
   ROUTE_KIMI_CONVERSATION_NEW,
-  ROUTE_WEBEXTRATOR_INDEX
+  ROUTE_WEBEXTRATOR_INDEX,
+  ROUTE_CODING_BRIDGE_INDEX
 } from '@/router/constants';
 import { SERP_LOGO } from '@/constants';
 import { ROUTE_SERP_INDEX } from '@/constants/serp';
 import { WEBEXTRATOR_LOGO } from '@/constants/webextrator';
+import { CODING_BRIDGE_LOGO } from '@/constants/codingBridge';
 import {
   CHAT_MODEL_ICON_CHATGPT,
   CHAT_MODEL_ICON_DEEPSEEK,
@@ -387,6 +389,15 @@ export default defineComponent({
           displayName: this.$t('common.nav.webextrator'),
           logo: WEBEXTRATOR_LOGO,
           routes: [ROUTE_WEBEXTRATOR_INDEX],
+          category: 'data'
+        });
+      }
+      if (this.$store?.state?.site?.features?.codingBridge?.enabled) {
+        result.push({
+          route: { name: ROUTE_CODING_BRIDGE_INDEX },
+          displayName: this.$t('common.nav.codingBridge'),
+          logo: CODING_BRIDGE_LOGO,
+          routes: [ROUTE_CODING_BRIDGE_INDEX],
           category: 'data'
         });
       }

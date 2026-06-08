@@ -116,7 +116,8 @@ const FEATURE_KEYS = [
   'kimi',
   'serp',
   'fish',
-  'webextrator'
+  'webextrator',
+  'codingBridge'
 ];
 
 export default defineComponent({

@@ -45,3 +45,6 @@ export const CB_EVENT_PONG = 'pong';
 // Reconnect backoff for the browser WebSocket (milliseconds).
 export const CB_RECONNECT_MIN_MS = 1000;
 export const CB_RECONNECT_MAX_MS = 15000;
+
+// Sidebar navigation logo for the Coding Bridge feature.
+export const CODING_BRIDGE_LOGO = 'https://cdn.acedata.cloud/0b28123f35.png';

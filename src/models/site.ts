@@ -26,6 +26,7 @@ export interface ISiteFeatures {
   serp?: any;
   fish?: any;
   webextrator?: any;
+  codingBridge?: any;
   support?: any;
   subsite?: ISiteSubsiteFeature;
 }
