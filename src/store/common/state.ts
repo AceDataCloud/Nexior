@@ -21,6 +21,7 @@ import serpState from '../serp/state';
 import wanState from '../wan/state';
 import fishState from '../fish/state';
 import webextratorState from '../webextrator/state';
+import codingBridgeState from '../codingBridge/state';
 
 export default (): IRootState => {
   return {
@@ -67,6 +68,7 @@ export default (): IRootState => {
     serp: serpState(),
     wan: wanState(),
     fish: fishState(),
-    webextrator: webextratorState()
+    webextrator: webextratorState(),
+    codingBridge: codingBridgeState()
   };
 };

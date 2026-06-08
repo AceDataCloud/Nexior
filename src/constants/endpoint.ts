@@ -5,6 +5,15 @@ export const BASE_URL_HUB = isTest ? 'https://hub-test.acedata.cloud' : 'https:/
 export const BASE_URL_AUTH = isTest ? 'https://auth-test.acedata.cloud' : 'https://auth.acedata.cloud';
 export const BASE_URL_API = isTest ? 'https://api-test.acedata.cloud' : 'https://api.acedata.cloud';
 
+// Coding Bridge relay (stateful WebSocket hub). REST for pairing / node
+// management, plus a single browser WebSocket derived from the same origin.
+export const BASE_URL_CODING_BRIDGE = isTest
+  ? 'https://coding-bridge-test.acedata.cloud'
+  : 'https://coding-bridge.acedata.cloud';
+
+// Browser WebSocket endpoint: same host, https -> wss / http -> ws, path `/ws`.
+export const WS_URL_CODING_BRIDGE = `${BASE_URL_CODING_BRIDGE.replace(/^http/, 'ws')}/ws`;
+
 export const BASE_HOST_PLATFORM = new URL(BASE_URL_PLATFORM).host;
 export const BASE_HOST_HUB = new URL(BASE_URL_HUB).host;
 export const BASE_HOST_AUTH = new URL(BASE_URL_AUTH).host;
