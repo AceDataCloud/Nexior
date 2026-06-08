@@ -62,7 +62,6 @@ import { defineComponent } from 'vue';
 import { ElTooltip, ElImage, ElPopover } from 'element-plus';
 import {
   ROUTE_INDEX,
-  ROUTE_PROFILE_INDEX,
   ROUTE_MIDJOURNEY_INDEX,
   ROUTE_LUMA_INDEX,
   ROUTE_LUMA_HISTORY,
@@ -389,15 +388,6 @@ export default defineComponent({
           logo: WEBEXTRATOR_LOGO,
           routes: [ROUTE_WEBEXTRATOR_INDEX],
           category: 'data'
-        });
-      }
-      if (this.direction === 'row') {
-        result.push({
-          route: { name: ROUTE_PROFILE_INDEX },
-          displayName: this.$t('common.nav.profile'),
-          icon: 'fa-solid fa-user',
-          routes: [ROUTE_PROFILE_INDEX],
-          category: 'other'
         });
       }
       return result;
