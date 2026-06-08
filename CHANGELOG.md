@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 16:51:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 17:10:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.258.3
+
+Mon, 08 Jun 2026 17:10:22 GMT
+
+### Patches
+
+- Polish Coding Bridge transcript: terminal-style tool commands, bounded scroll for tool output (dev@acedata.cloud)
 
 ## 3.258.2
 
