@@ -65,24 +65,44 @@
           </el-button>
         </div>
         <template v-else>
-          <div v-if="isNewSession" class="flex gap-2 mb-2">
-            <el-input v-model="cwd" size="small" :placeholder="$t('codingBridge.session.cwdPlaceholder')" clearable />
+          <div v-if="isNewSession" class="flex flex-wrap gap-2 mb-2">
             <el-input
-              v-model="model"
+              v-model="cwd"
               size="small"
-              :placeholder="$t('codingBridge.session.modelPlaceholder')"
+              class="flex-1 min-w-[160px]"
+              :placeholder="$t('codingBridge.session.cwdPlaceholder')"
               clearable
             />
+            <el-select
+              v-model="model"
+              size="small"
+              filterable
+              allow-create
+              default-first-option
+              clearable
+              class="w-40"
+              :placeholder="$t('codingBridge.session.modelPlaceholder')"
+            >
+              <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+            </el-select>
+            <el-select
+              v-model="permissionMode"
+              size="small"
+              class="w-44"
+              :placeholder="$t('codingBridge.session.permissionModeLabel')"
+            >
+              <el-option v-for="opt in permissionModeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+            </el-select>
           </div>
           <div class="flex items-end gap-2">
             <el-input
               v-model="prompt"
               type="textarea"
-              :autosize="{ minRows: 1, maxRows: 6 }"
+              :autosize="{ minRows: 3, maxRows: 12 }"
               resize="none"
               class="flex-1"
               :placeholder="$t('codingBridge.session.promptPlaceholder')"
-              @keydown.enter.exact.prevent="onSend"
+              @keydown.enter="onComposerEnter"
             />
             <el-button v-if="running" round @click="onInterrupt">
               <font-awesome-icon icon="fa-solid fa-stop" />
@@ -102,7 +122,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton } from 'element-plus';
+import { ElInput, ElButton, ElSelect, ElOption } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import { ICodingBridgeEvent, ICodingBridgeNode, ICodingBridgeSession } from '@/models';
@@ -112,6 +132,8 @@ export default defineComponent({
   components: {
     ElInput,
     ElButton,
+    ElSelect,
+    ElOption,
     FontAwesomeIcon,
     TranscriptItem
   },
@@ -120,7 +142,8 @@ export default defineComponent({
     return {
       prompt: '',
       cwd: '',
-      model: ''
+      model: '',
+      permissionMode: 'default'
     };
   },
   computed: {
@@ -171,6 +194,21 @@ export default defineComponent({
     },
     canSend(): boolean {
       return !!this.prompt.trim() && this.connected && this.nodeOnline;
+    },
+    modelOptions(): { label: string; value: string }[] {
+      return [
+        { label: 'Claude Sonnet', value: 'sonnet' },
+        { label: 'Claude Opus', value: 'opus' },
+        { label: 'Claude Haiku', value: 'haiku' }
+      ];
+    },
+    permissionModeOptions(): { label: string; value: string }[] {
+      return [
+        { label: this.$t('codingBridge.session.permissionModeDefault') as string, value: 'default' },
+        { label: this.$t('codingBridge.session.permissionModeAcceptEdits') as string, value: 'acceptEdits' },
+        { label: this.$t('codingBridge.session.permissionModePlan') as string, value: 'plan' },
+        { label: this.$t('codingBridge.session.permissionModeBypass') as string, value: 'bypassPermissions' }
+      ];
     }
   },
   watch: {
@@ -182,6 +220,20 @@ export default defineComponent({
     }
   },
   methods: {
+    onComposerEnter(event: KeyboardEvent | Event) {
+      // Ignore Enter while an IME (e.g. pinyin) composition is active so that
+      // confirming candidates never sends the message. Modifier+Enter inserts
+      // a newline instead of sending.
+      const e = event as KeyboardEvent;
+      if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      if (e.shiftKey || e.ctrlKey || e.metaKey || e.altKey) {
+        return;
+      }
+      e.preventDefault();
+      this.onSend();
+    },
     onSend() {
       if (!this.canSend) {
         return;
@@ -189,7 +241,8 @@ export default defineComponent({
       this.$store.dispatch('codingBridge/sendPrompt', {
         prompt: this.prompt,
         cwd: this.cwd,
-        model: this.model
+        model: this.model,
+        permissionMode: this.permissionMode
       });
       this.prompt = '';
     },
@@ -200,6 +253,7 @@ export default defineComponent({
       this.$store.dispatch('codingBridge/newSession');
       this.cwd = '';
       this.model = '';
+      this.permissionMode = 'default';
       this.prompt = '';
     },
     scrollToBottom() {
