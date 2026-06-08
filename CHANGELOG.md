@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 18:18:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 18:26:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.263.1
+
+Mon, 08 Jun 2026 18:26:15 GMT
+
+### Patches
+
+- Coding Bridge: render composer provider/model/effort/permission-mode options from the node's capabilities.get instead of hard-coding them (dev@acedata.cloud)
 
 ## 3.263.0
 
