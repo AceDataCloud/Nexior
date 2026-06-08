@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 17:23:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 17:35:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.259.0
+
+Mon, 08 Jun 2026 17:35:57 GMT
+
+### Minor changes
+
+- Coding Bridge: larger IME-safe composer, model dropdown, and permission-mode selector (dev@acedata.cloud)
 
 ## 3.258.6
 
