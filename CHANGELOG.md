@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 15:41:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 16:17:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.258.1
+
+Mon, 08 Jun 2026 16:17:55 GMT
+
+### Patches
+
+- Show effective balance and a Shared badge for granted (shared) applications (dev@acedata.cloud)
 
 ## 3.258.0
 
