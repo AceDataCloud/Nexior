@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 09:56:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 15:41:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.258.0
+
+Mon, 08 Jun 2026 15:41:05 GMT
+
+### Minor changes
+
+- Sync and replay local Claude Code & Codex history in Coding Bridge (dev@acedata.cloud)
 
 ## 3.257.0
 
