@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 18:14:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 18:18:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.263.0
+
+Mon, 08 Jun 2026 18:18:16 GMT
+
+### Minor changes
+
+- feat(coding-bridge): paste and attach images to coding sessions (dev@acedata.cloud)
 
 ## 3.262.0
 
