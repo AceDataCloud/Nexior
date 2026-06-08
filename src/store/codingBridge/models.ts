@@ -1,5 +1,6 @@
 import { Status } from '@/models';
 import {
+  ICodingBridgeCapabilities,
   ICodingBridgeConnectionStatus,
   ICodingBridgeDirListing,
   ICodingBridgeEvent,
@@ -24,6 +25,8 @@ export interface ICodingBridgeState {
   events: Record<string, ICodingBridgeEvent[]>;
   // Past on-device sessions per node, sourced live from `history.list`.
   history: Record<string, ICodingBridgeHistorySummary[]>;
+  // What each node can do (providers/models/efforts), from `capabilities.get`.
+  capabilities: Record<string, ICodingBridgeCapabilities>;
   historyRef: ICodingBridgeHistoryRef | undefined;
   permissions: ICodingBridgePermissionRequest[];
   connection: ICodingBridgeConnectionStatus;

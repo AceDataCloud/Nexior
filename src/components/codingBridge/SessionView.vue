@@ -77,7 +77,7 @@
               v-model="model"
               size="small"
               filterable
-              allow-create
+              :allow-create="allowCustomModel"
               default-first-option
               clearable
               class="w-40"
@@ -144,7 +144,13 @@ import { ElInput, ElButton, ElSelect, ElOption } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
-import { ICodingBridgeEvent, ICodingBridgeNode, ICodingBridgeSession } from '@/models';
+import {
+  ICodingBridgeCapabilities,
+  ICodingBridgeEvent,
+  ICodingBridgeNode,
+  ICodingBridgeProviderCapability,
+  ICodingBridgeSession
+} from '@/models';
 
 export default defineComponent({
   name: 'CodingBridgeSessionView',
@@ -218,46 +224,44 @@ export default defineComponent({
     canSend(): boolean {
       return !!this.prompt.trim() && this.connected && this.nodeOnline;
     },
+    // Everything below is sourced from the node's `capabilities.get` so the UI
+    // never hard-codes providers / models / efforts. The fallbacks only apply
+    // before capabilities have loaded (or for an offline node).
+    nodeCapabilities(): ICodingBridgeCapabilities | undefined {
+      const id = this.currentNodeId;
+      return id ? this.$store.state.codingBridge?.capabilities?.[id] : undefined;
+    },
+    providerCaps(): ICodingBridgeProviderCapability[] {
+      return this.nodeCapabilities?.providers ?? [];
+    },
+    currentProviderCap(): ICodingBridgeProviderCapability | undefined {
+      return this.providerCaps.find((cap) => cap.name === this.provider);
+    },
     providerOptions(): { label: string; value: string }[] {
+      if (this.providerCaps.length) {
+        return this.providerCaps.map((cap) => ({ value: cap.name, label: cap.label }));
+      }
       return [
         { label: this.$t('codingBridge.session.providerClaude') as string, value: 'claude' },
         { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex' }
       ];
     },
     modelOptions(): { label: string; value: string }[] {
-      if (this.provider === 'codex') {
-        return [
-          { label: 'GPT-5 Codex', value: 'gpt-5-codex' },
-          { label: 'GPT-5', value: 'gpt-5' },
-          { label: 'o3', value: 'o3' }
-        ];
-      }
-      return [
-        { label: 'Claude Sonnet', value: 'sonnet' },
-        { label: 'Claude Opus', value: 'opus' },
-        { label: 'Claude Haiku', value: 'haiku' }
-      ];
+      return this.currentProviderCap?.models ?? [];
+    },
+    // Free-typed models stay allowed by default so a brand-new model always works.
+    allowCustomModel(): boolean {
+      return this.currentProviderCap?.allow_custom_model ?? true;
     },
     effortOptions(): { label: string; value: string }[] {
-      const options = [
-        { label: this.$t('codingBridge.session.effortDefault') as string, value: '' },
-        { label: this.$t('codingBridge.session.effortLow') as string, value: 'low' },
-        { label: this.$t('codingBridge.session.effortMedium') as string, value: 'medium' },
-        { label: this.$t('codingBridge.session.effortHigh') as string, value: 'high' }
-      ];
-      // Claude exposes an extra "max" tier; Codex reasoning tops out at "high".
-      if (this.provider !== 'codex') {
-        options.push({ label: this.$t('codingBridge.session.effortMax') as string, value: 'max' });
-      }
-      return options;
+      const efforts = this.currentProviderCap?.efforts;
+      const tokens = efforts && efforts.length ? efforts : [''];
+      return tokens.map((token) => ({ value: token, label: this.effortLabel(token) }));
     },
     permissionModeOptions(): { label: string; value: string }[] {
-      return [
-        { label: this.$t('codingBridge.session.permissionModeDefault') as string, value: 'default' },
-        { label: this.$t('codingBridge.session.permissionModeAcceptEdits') as string, value: 'acceptEdits' },
-        { label: this.$t('codingBridge.session.permissionModePlan') as string, value: 'plan' },
-        { label: this.$t('codingBridge.session.permissionModeBypass') as string, value: 'bypassPermissions' }
-      ];
+      const modes = this.currentProviderCap?.permission_modes;
+      const tokens = modes && modes.length ? modes : ['default', 'acceptEdits', 'plan', 'bypassPermissions'];
+      return tokens.map((token) => ({ value: token, label: this.permissionModeLabel(token) }));
     },
     sessionMeta(): string {
       const session = this.currentSession;
@@ -284,14 +288,60 @@ export default defineComponent({
     currentSessionId() {
       this.scrollToBottom();
     },
+    currentNodeId() {
+      // Refresh capabilities when switching devices.
+      this.requestCapabilities();
+    },
+    providerCaps() {
+      // If the picked backend isn't offered by this node, fall back to the
+      // first one it reports so the model list always matches.
+      if (this.providerCaps.length && !this.providerCaps.some((cap) => cap.name === this.provider)) {
+        this.provider = this.providerCaps[0].name;
+      }
+    },
     provider() {
       // Model lists and effort tiers differ per backend, so reset both.
       this.model = '';
       this.effort = '';
     }
   },
+  mounted() {
+    this.requestCapabilities();
+  },
   methods: {
+    requestCapabilities() {
+      if (this.currentNodeId) {
+        this.$store.dispatch('codingBridge/getCapabilities', this.currentNodeId);
+      }
+    },
+    // Localize a known effort token; show the raw token for anything new so a
+    // node can introduce a tier without a web release.
+    effortLabel(token: string): string {
+      const keys: Record<string, string> = {
+        '': 'codingBridge.session.effortDefault',
+        low: 'codingBridge.session.effortLow',
+        medium: 'codingBridge.session.effortMedium',
+        high: 'codingBridge.session.effortHigh',
+        max: 'codingBridge.session.effortMax'
+      };
+      const key = keys[token];
+      return key ? (this.$t(key) as string) : token;
+    },
+    permissionModeLabel(token: string): string {
+      const keys: Record<string, string> = {
+        default: 'codingBridge.session.permissionModeDefault',
+        acceptEdits: 'codingBridge.session.permissionModeAcceptEdits',
+        plan: 'codingBridge.session.permissionModePlan',
+        bypassPermissions: 'codingBridge.session.permissionModeBypass'
+      };
+      const key = keys[token];
+      return key ? (this.$t(key) as string) : token;
+    },
     providerName(provider: string): string {
+      const cap = this.providerCaps.find((item) => item.name === provider);
+      if (cap) {
+        return cap.label;
+      }
       return provider === 'codex'
         ? (this.$t('codingBridge.session.providerCodex') as string)
         : (this.$t('codingBridge.session.providerClaude') as string);
