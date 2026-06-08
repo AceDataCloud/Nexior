@@ -19,9 +19,12 @@
         <p class="description">
           <span v-if="!application.service">{{ $t('application.title.globalBalance') }}</span>
           <span v-else>{{ $t('application.title.applicationBalance', { service: application.service?.title }) }}</span>
+          <el-tag v-if="application.role === 'grantee'" class="shared-badge" size="small" type="info" effect="plain">
+            {{ $t('application.badge.shared') }}
+          </el-tag>
         </p>
         <p class="value">
-          {{ application?.remaining_amount?.toFixed(2) }}
+          {{ remainingAmountText }}
           {{ $t(`service.unit.` + (application?.service?.unit || 'credit') + 's') }}
         </p>
         <p class="description2">
@@ -84,6 +87,13 @@ export default defineComponent({
     // Hide the "Top Up" action inside the iOS bundle (payments are web-only).
     showPayment(): boolean {
       return !isIOS();
+    },
+    remainingAmountText(): string {
+      const amount = Number(this.application?.remaining_amount ?? 0);
+      if (!Number.isFinite(amount) || amount < 0) {
+        return '0.00';
+      }
+      return amount.toFixed(2);
     }
   }
 });
@@ -203,6 +213,13 @@ export default defineComponent({
 .description {
   color: var(--el-text-color-regular);
   font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shared-badge {
+  margin-left: 2px;
 }
 .description2 {
   color: var(--el-text-color-secondary);
