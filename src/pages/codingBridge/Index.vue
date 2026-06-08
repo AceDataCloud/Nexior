@@ -1,7 +1,7 @@
 <template>
   <div class="coding-bridge flex flex-row h-full relative">
     <node-list class="sidebar w-[300px] flex-none" @pair="openPair" />
-    <session-view class="flex-1 min-w-0" />
+    <session-view class="flex-1 min-w-0" @history="historyVisible = true" />
 
     <el-button circle class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-laptop-code" />
@@ -12,6 +12,7 @@
 
     <pair-dialog v-model:visible="pairVisible" :initial-code="initialCode" />
     <permission-dialog />
+    <history-drawer v-model:visible="historyVisible" />
   </div>
 </template>
 
@@ -23,6 +24,7 @@ import NodeList from '@/components/codingBridge/NodeList.vue';
 import SessionView from '@/components/codingBridge/SessionView.vue';
 import PairDialog from '@/components/codingBridge/PairDialog.vue';
 import PermissionDialog from '@/components/codingBridge/PermissionDialog.vue';
+import HistoryDrawer from '@/components/codingBridge/HistoryDrawer.vue';
 
 export default defineComponent({
   name: 'CodingBridgeIndex',
@@ -33,12 +35,14 @@ export default defineComponent({
     NodeList,
     SessionView,
     PairDialog,
-    PermissionDialog
+    PermissionDialog,
+    HistoryDrawer
   },
   data() {
     return {
       drawer: false,
       pairVisible: false,
+      historyVisible: false,
       initialCode: ''
     };
   },

@@ -1,8 +1,9 @@
 import initialState from './state';
-import { ICodingBridgeState } from './models';
+import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import {
   ICodingBridgeConnectionStatus,
   ICodingBridgeEvent,
+  ICodingBridgeHistorySummary,
   ICodingBridgeNode,
   ICodingBridgePermissionRequest,
   ICodingBridgeSession,
@@ -82,6 +83,25 @@ export const appendEvent = (state: ICodingBridgeState, payload: ICodingBridgeEve
   state.events[payload.session_id].push(payload);
 };
 
+// Replace a session's transcript wholesale (used when replaying history).
+export const setEvents = (
+  state: ICodingBridgeState,
+  payload: { session_id: string; events: ICodingBridgeEvent[] }
+): void => {
+  state.events[payload.session_id] = payload.events;
+};
+
+export const setHistory = (
+  state: ICodingBridgeState,
+  payload: { node_id: string; sessions: ICodingBridgeHistorySummary[] }
+): void => {
+  state.history[payload.node_id] = payload.sessions;
+};
+
+export const setHistoryRef = (state: ICodingBridgeState, payload: ICodingBridgeHistoryRef | undefined): void => {
+  state.historyRef = payload;
+};
+
 export const addPermission = (state: ICodingBridgeState, payload: ICodingBridgePermissionRequest): void => {
   if (state.permissions.some((item) => item.request_id === payload.request_id)) {
     return;
@@ -94,6 +114,10 @@ export const removePermission = (state: ICodingBridgeState, requestId: string): 
 };
 
 export const removeNodeData = (state: ICodingBridgeState, nodeId: string): void => {
+  delete state.history[nodeId];
+  if (state.historyRef?.node_id === nodeId) {
+    state.historyRef = undefined;
+  }
   for (const session of Object.values(state.sessions)) {
     if (session.node_id === nodeId) {
       delete state.sessions[session.session_id];
@@ -117,6 +141,9 @@ export default {
   upsertSession,
   updateSession,
   appendEvent,
+  setEvents,
+  setHistory,
+  setHistoryRef,
   addPermission,
   removePermission,
   removeNodeData
