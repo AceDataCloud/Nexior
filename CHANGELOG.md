@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 16:17:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 16:51:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.258.2
+
+Mon, 08 Jun 2026 16:51:45 GMT
+
+### Patches
+
+- fix(coding-bridge): register history actions so the Conversation History panel and Refresh work (dev@acedata.cloud)
 
 ## 3.258.1
 
