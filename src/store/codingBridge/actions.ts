@@ -347,7 +347,14 @@ export const newSession = ({ commit }: ActionContext<ICodingBridgeState, IRootSt
 
 export const sendPrompt = (
   { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
-  payload: { prompt: string; cwd?: string; model?: string; permissionMode?: string }
+  payload: {
+    prompt: string;
+    cwd?: string;
+    model?: string;
+    permissionMode?: string;
+    provider?: string;
+    effort?: string;
+  }
 ): void => {
   const nodeId = state.currentNodeId;
   const prompt = payload.prompt?.trim();
@@ -360,6 +367,9 @@ export const sendPrompt = (
   // session is a replayed history conversation that has not been resumed.
   const needsStart = !existing || !existing.started;
   if (needsStart) {
+    // Resuming a past conversation keeps its original backend; a brand-new
+    // session uses the one picked in the composer (defaulting to Claude).
+    const provider = existing?.provider || payload.provider || 'claude';
     if (!existing) {
       sessionId = uid();
       commit('upsertSession', {
@@ -367,7 +377,8 @@ export const sendPrompt = (
         node_id: nodeId,
         status: 'starting',
         cwd: payload.cwd,
-        model: payload.model
+        model: payload.model,
+        provider
       });
       commit('setCurrentSession', sessionId);
     } else {
@@ -383,7 +394,8 @@ export const sendPrompt = (
       cwd: payload.cwd || existing?.cwd || undefined,
       model: payload.model || existing?.model || undefined,
       permission_mode: payload.permissionMode || 'default',
-      provider: existing?.provider || undefined,
+      provider,
+      effort: payload.effort || undefined,
       resume_session_id: existing?.resume_session_id || undefined
     });
   } else {
