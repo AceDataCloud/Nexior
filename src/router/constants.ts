@@ -77,8 +77,6 @@ export const ROUTE_WEBEXTRATOR_INDEX = 'webextrator-index';
 
 export const ROUTE_CODING_BRIDGE_INDEX = 'coding-bridge-index';
 
-export const ROUTE_PROFILE_INDEX = 'profile-index';
-
 export const ROUTE_ORDER_PUBLIC_PAY = 'order-public-pay';
 
 export const ROUTE_CONSOLE_ROOT = 'console-root';

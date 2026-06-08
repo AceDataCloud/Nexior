@@ -34,7 +34,6 @@ import fish from './fish';
 import webextrator from './webextrator';
 import codingBridge from './codingBridge';
 import settings from './settings';
-import profile from './profile';
 
 import {
   ROUTE_CHATGPT_CONVERSATION_NEW,
@@ -344,7 +343,6 @@ const routes = [
   distribution,
   download,
   settings,
-  profile,
   {
     path: '/:pathMatch(.*)*',
     name: ROUTE_NOT_FOUND,
