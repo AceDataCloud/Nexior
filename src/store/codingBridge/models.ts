@@ -1,6 +1,7 @@
 import { Status } from '@/models';
 import {
   ICodingBridgeConnectionStatus,
+  ICodingBridgeDirListing,
   ICodingBridgeEvent,
   ICodingBridgeHistorySummary,
   ICodingBridgeNode,
@@ -26,6 +27,10 @@ export interface ICodingBridgeState {
   historyRef: ICodingBridgeHistoryRef | undefined;
   permissions: ICodingBridgePermissionRequest[];
   connection: ICodingBridgeConnectionStatus;
+  // Latest directory snapshot for the working-directory picker (node-scoped,
+  // transient: replaced on each `fs.list` and never persisted).
+  directory: ICodingBridgeDirListing | undefined;
+  directoryLoading: boolean;
   // Coding Bridge is not a billed API service, so it owns no application /
   // service / credential. These fields exist only so the shared `Main.vue`
   // layout (which is generic over per-app modules) reads `undefined` and

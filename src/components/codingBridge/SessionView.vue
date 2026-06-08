@@ -102,7 +102,13 @@
               class="flex-1 min-w-[160px]"
               :placeholder="$t('codingBridge.session.cwdPlaceholder')"
               clearable
-            />
+            >
+              <template #append>
+                <el-button :title="$t('codingBridge.directory.title')" @click="openDirectory">
+                  <font-awesome-icon icon="fa-solid fa-folder-open" />
+                </el-button>
+              </template>
+            </el-input>
           </div>
           <div class="flex items-end gap-2">
             <el-input
@@ -127,6 +133,8 @@
         </template>
       </div>
     </template>
+
+    <directory-dialog v-model:visible="directoryVisible" :initial-path="cwd" @select="onDirectorySelect" />
   </div>
 </template>
 
@@ -135,6 +143,7 @@ import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElSelect, ElOption } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
+import DirectoryDialog from './DirectoryDialog.vue';
 import { ICodingBridgeEvent, ICodingBridgeNode, ICodingBridgeSession } from '@/models';
 
 export default defineComponent({
@@ -145,7 +154,8 @@ export default defineComponent({
     ElSelect,
     ElOption,
     FontAwesomeIcon,
-    TranscriptItem
+    TranscriptItem,
+    DirectoryDialog
   },
   emits: ['history'],
   data() {
@@ -155,7 +165,8 @@ export default defineComponent({
       model: '',
       permissionMode: 'default',
       provider: 'claude',
-      effort: ''
+      effort: '',
+      directoryVisible: false
     };
   },
   computed: {
@@ -315,6 +326,12 @@ export default defineComponent({
     },
     onInterrupt() {
       this.$store.dispatch('codingBridge/interruptSession');
+    },
+    openDirectory() {
+      this.directoryVisible = true;
+    },
+    onDirectorySelect(path: string) {
+      this.cwd = path;
     },
     onNewSession() {
       this.$store.dispatch('codingBridge/newSession');

@@ -80,6 +80,23 @@ export interface ICodingBridgeEvent {
   cost_usd?: number;
 }
 
+/** One entry returned by a node's `fs.list` directory listing. */
+export interface ICodingBridgeDirEntry {
+  name: string;
+  path: string;
+  type: 'dir' | 'file';
+}
+
+/** A directory snapshot from a node, used by the working-directory picker. */
+export interface ICodingBridgeDirListing {
+  path: string;
+  parent: string | null;
+  sep: string;
+  entries: ICodingBridgeDirEntry[];
+  truncated?: boolean;
+  error?: string;
+}
+
 /** A pending tool-permission request awaiting the user's approval. */
 export interface ICodingBridgePermissionRequest {
   request_id: string;

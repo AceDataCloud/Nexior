@@ -135,7 +135,10 @@ import {
   faUserXmark as faSolidUserXmark,
   faClockRotateLeft as faSolidClockRotateLeft,
   faEye as faSolidEye,
-  faTerminal as faSolidTerminal
+  faTerminal as faSolidTerminal,
+  faFolder as faSolidFolder,
+  faFolderOpen as faSolidFolderOpen,
+  faFile as faSolidFile
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -270,3 +273,6 @@ library.add(faSolidBookOpen);
 library.add(faSolidReceipt);
 library.add(faSolidDollarSign);
 library.add(faSolidFileExport);
+library.add(faSolidFolder);
+library.add(faSolidFolderOpen);
+library.add(faSolidFile);
