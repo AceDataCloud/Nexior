@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 07 Jun 2026 17:32:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 09:56:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.257.0
+
+Mon, 08 Jun 2026 09:56:28 GMT
+
+### Minor changes
+
+- feat: add Coding Bridge remote agent control (device pairing + live agent session UI) (dev@acedata.cloud)
 
 ## 3.256.1
 
