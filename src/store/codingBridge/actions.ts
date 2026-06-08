@@ -347,7 +347,7 @@ export const newSession = ({ commit }: ActionContext<ICodingBridgeState, IRootSt
 
 export const sendPrompt = (
   { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
-  payload: { prompt: string; cwd?: string; model?: string }
+  payload: { prompt: string; cwd?: string; model?: string; permissionMode?: string }
 ): void => {
   const nodeId = state.currentNodeId;
   const prompt = payload.prompt?.trim();
@@ -382,7 +382,7 @@ export const sendPrompt = (
       prompt,
       cwd: payload.cwd || existing?.cwd || undefined,
       model: payload.model || existing?.model || undefined,
-      permission_mode: 'default',
+      permission_mode: payload.permissionMode || 'default',
       provider: existing?.provider || undefined,
       resume_session_id: existing?.resume_session_id || undefined
     });
