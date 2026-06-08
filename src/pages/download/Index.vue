@@ -1,21 +1,71 @@
 <template>
   <div class="download-page">
-    <div class="ambient ambient--cyan"></div>
-    <div class="ambient ambient--gold"></div>
-    <div class="container">
-      <section class="hero-shell">
-        <div class="hero-copy">
-          <p class="eyebrow">AceData App</p>
-          <h1>{{ $t('common.title.mobileApp') }}</h1>
-          <p class="subtitle">{{ $t('common.message.mobileAppDescription') }}</p>
+    <div class="download-page__glow" aria-hidden="true"></div>
+    <div class="download-page__inner">
+      <!-- Hero -->
+      <header class="hero">
+        <span class="hero__brand">
+          <img :src="brandLogo" :alt="brandTitle" class="hero__logo" />
+        </span>
+        <p class="hero__eyebrow">{{ brandTitle }} · {{ $t('common.nav.mobileApp') }}</p>
+        <h1 class="hero__title">{{ $t('common.title.mobileApp') }}</h1>
+        <p class="hero__subtitle">{{ $t('common.message.mobileAppDescription') }}</p>
 
-          <div class="hero-tags">
-            <span class="tag">{{ $t('common.message.mobileAvailableNow') }}</span>
-            <span class="tag">v{{ version }}</span>
-            <span class="tag tag--soft">{{ $t('common.message.mobileSecureDelivery') }}</span>
+        <div class="hero__badges">
+          <span class="badge badge--live">
+            <span class="badge__dot"></span>{{ $t('common.message.mobileAvailableNow') }}
+          </span>
+          <span class="badge">v{{ version }}</span>
+          <span class="badge">{{ $t('common.message.mobileSharedAccount') }}</span>
+        </div>
+
+        <div class="hero__actions">
+          <el-button
+            v-if="hasAndroidDownload"
+            type="primary"
+            round
+            size="large"
+            tag="a"
+            :href="androidDownloadUrl"
+            target="_blank"
+          >
+            <font-awesome-icon :icon="faAndroid" class="btn-icon" />
+            {{ $t('common.button.downloadAndroid') }}
+          </el-button>
+          <el-button round size="large" class="btn-ghost" @click="openSupport">
+            {{ $t('common.nav.support') }}
+          </el-button>
+        </div>
+      </header>
+
+      <!-- Platform download cards -->
+      <section class="platforms">
+        <article class="platform platform--android">
+          <div class="platform__head">
+            <span class="platform__os">
+              <font-awesome-icon :icon="faAndroid" class="platform__os-icon" />
+              Android
+            </span>
+            <span class="chip chip--live">
+              <span class="chip__dot"></span>{{ $t('common.message.mobileAvailableNow') }}
+            </span>
+          </div>
+          <h2 class="platform__title">{{ $t('common.button.downloadAndroid') }}</h2>
+          <p class="platform__text">{{ $t('common.message.mobileAndroidHint') }}</p>
+
+          <div v-if="hasAndroidDownload" class="qr">
+            <qr-code
+              :value="androidDownloadUrl"
+              :width="184"
+              :height="184"
+              class="qr__img"
+              type="image/png"
+              :color="{ dark: '#0e2a33ff', light: '#ffffffff' }"
+            />
+            <p class="qr__hint">{{ $t('common.message.mobileSecureDelivery') }}</p>
           </div>
 
-          <div class="hero-actions">
+          <div class="platform__foot">
             <el-button
               v-if="hasAndroidDownload"
               type="primary"
@@ -25,117 +75,81 @@
               :href="androidDownloadUrl"
               target="_blank"
             >
+              <font-awesome-icon :icon="faDownload" class="btn-icon" />
               {{ $t('common.button.downloadAndroid') }}
             </el-button>
-            <el-button round size="large" class="secondary-action" @click="openSupport">
-              {{ $t('common.nav.support') }}
-            </el-button>
+            <span class="platform__meta">{{ $t('common.message.mobileDirectInstall') }} · v{{ version }}</span>
           </div>
+        </article>
 
-          <div class="metrics">
-            <article class="metric">
-              <strong>Android</strong>
-              <span>{{ $t('common.message.mobileDirectInstall') }}</span>
-            </article>
-            <article class="metric">
-              <strong>v{{ version }}</strong>
-              <span>{{ $t('common.message.mobileLatestRelease') }}</span>
-            </article>
-            <article class="metric">
-              <strong>AceData</strong>
-              <span>{{ $t('common.message.mobileSharedAccount') }}</span>
-            </article>
+        <article class="platform platform--ios">
+          <div class="platform__head">
+            <span class="platform__os">
+              <font-awesome-icon :icon="faApple" class="platform__os-icon" />
+              iOS
+            </span>
+            <span class="chip chip--pending">
+              <span class="chip__dot"></span>{{ $t('common.message.mobileComingSoon') }}
+            </span>
           </div>
-        </div>
+          <h2 class="platform__title">{{ $t('common.button.downloadIos') }}</h2>
+          <p class="platform__text">
+            {{ hasIosDownload ? $t('common.message.mobileIosHint') : $t('common.message.mobileIosPending') }}
+          </p>
 
-        <div class="hero-panels">
-          <article class="panel panel--android">
-            <div class="panel__head">
-              <span class="platform-badge">Android</span>
-              <span class="status status--live">{{ $t('common.message.mobileAvailableNow') }}</span>
-            </div>
-            <h2>{{ $t('common.button.downloadAndroid') }}</h2>
-            <p class="panel__text">{{ $t('common.message.mobileAndroidHint') }}</p>
-            <div v-if="hasAndroidDownload" class="qr-frame">
-              <qr-code
-                :value="androidDownloadUrl"
-                :width="176"
-                :height="176"
-                class="qr"
-                type="image/png"
-                :color="{ dark: '#07253dff', light: '#ffffffff' }"
-              />
-            </div>
-            <div class="panel__footer">
-              <el-button
-                v-if="hasAndroidDownload"
-                type="primary"
-                round
-                size="large"
-                tag="a"
-                :href="androidDownloadUrl"
-                target="_blank"
-              >
-                {{ $t('common.button.downloadAndroid') }}
-              </el-button>
-              <span class="panel__meta">{{ $t('common.message.mobileSecureDelivery') }}</span>
-            </div>
-          </article>
-
-          <article class="panel panel--ios">
-            <div class="panel__head">
-              <span class="platform-badge platform-badge--ios">iOS</span>
-              <span class="status status--pending">{{ $t('common.message.mobileIosPending') }}</span>
-            </div>
-            <h2>{{ $t('common.button.downloadIos') }}</h2>
-            <p class="panel__text">
-              {{ hasIosDownload ? $t('common.message.mobileIosHint') : $t('common.message.mobileIosPending') }}
-            </p>
-            <div class="device-ghost">
-              <div class="device-ghost__screen">
-                <span>iOS</span>
-                <small>Signing in progress</small>
-              </div>
-            </div>
-            <div class="panel__footer panel__footer--stacked">
-              <div v-if="hasIosDownload" class="button-group">
+          <template v-if="hasIosDownload">
+            <div class="platform__foot platform__foot--stack">
+              <div class="btn-row">
                 <el-button type="primary" round size="large" tag="a" :href="iosDownloadUrl" target="_blank">
+                  <font-awesome-icon :icon="faApple" class="btn-icon" />
                   {{ $t('common.button.installIos') }}
                 </el-button>
-                <el-button round size="large" tag="a" :href="iosFallbackUrl" target="_blank">
+                <el-button round size="large" class="btn-ghost" tag="a" :href="iosFallbackUrl" target="_blank">
                   {{ $t('common.button.downloadIos') }}
                 </el-button>
               </div>
-              <el-button v-else round size="large" class="secondary-action" @click="openSupport">
+              <span class="platform__meta">{{ $t('common.message.mobileInstallNote') }}</span>
+            </div>
+          </template>
+
+          <template v-else>
+            <div class="ios-soon">
+              <font-awesome-icon :icon="faApple" class="ios-soon__icon" />
+              <p class="ios-soon__text">{{ $t('common.message.mobileComingSoon') }}</p>
+            </div>
+            <div class="platform__foot platform__foot--stack">
+              <el-button round size="large" class="btn-ghost" @click="openSupport">
                 {{ $t('common.nav.support') }}
               </el-button>
-              <span class="panel__meta">{{ $t('common.message.mobileInstallNote') }}</span>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="advantage-grid">
-        <article class="advantage-card">
-          <p class="advantage-card__eyebrow">01</p>
-          <h3>{{ $t('common.title.mobileFastAccess') }}</h3>
-          <p>{{ $t('common.message.mobileFastAccess') }}</p>
-        </article>
-        <article class="advantage-card">
-          <p class="advantage-card__eyebrow">02</p>
-          <h3>{{ $t('common.title.mobileTrustedRelease') }}</h3>
-          <p>{{ $t('common.message.mobileTrustedRelease') }}</p>
-        </article>
-        <article class="advantage-card">
-          <p class="advantage-card__eyebrow">03</p>
-          <h3>{{ $t('common.title.mobileUnifiedExperience') }}</h3>
-          <p>{{ $t('common.message.mobileUnifiedExperience') }}</p>
+          </template>
         </article>
       </section>
 
-      <section class="note">
-        <p>{{ $t('common.message.mobileInstallNote') }}</p>
+      <!-- Advantages -->
+      <section class="advantages">
+        <article class="advantage">
+          <span class="advantage__num">01</span>
+          <h3 class="advantage__title">{{ $t('common.title.mobileFastAccess') }}</h3>
+          <p class="advantage__text">{{ $t('common.message.mobileFastAccess') }}</p>
+        </article>
+        <article class="advantage">
+          <span class="advantage__num">02</span>
+          <h3 class="advantage__title">{{ $t('common.title.mobileTrustedRelease') }}</h3>
+          <p class="advantage__text">{{ $t('common.message.mobileTrustedRelease') }}</p>
+        </article>
+        <article class="advantage">
+          <span class="advantage__num">03</span>
+          <h3 class="advantage__title">{{ $t('common.title.mobileUnifiedExperience') }}</h3>
+          <p class="advantage__text">{{ $t('common.message.mobileUnifiedExperience') }}</p>
+        </article>
       </section>
+
+      <!-- Install note -->
+      <aside class="note">
+        <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
+        <p class="note__text">{{ $t('common.message.mobileInstallNote') }}</p>
+      </aside>
     </div>
   </div>
 </template>
@@ -144,6 +158,10 @@
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faAndroid, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faDownload, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import defaultLogo from '@/assets/images/logo.png';
 import {
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_APP_VERSION,
@@ -155,11 +173,26 @@ export default defineComponent({
   name: 'DownloadIndex',
   components: {
     ElButton,
-    QrCode
+    QrCode,
+    FontAwesomeIcon
+  },
+  data() {
+    return {
+      faAndroid,
+      faApple,
+      faDownload,
+      faCircleInfo
+    };
   },
   computed: {
     version() {
       return MOBILE_APP_VERSION;
+    },
+    brandTitle(): string {
+      return this.$store.state.site?.title || 'AceData';
+    },
+    brandLogo(): string {
+      return this.$store.state.site?.logo || defaultLogo;
     },
     androidDownloadUrl() {
       return MOBILE_ANDROID_DOWNLOAD_URL;
@@ -190,403 +223,408 @@ export default defineComponent({
   position: relative;
   overflow: hidden;
   min-height: calc(100vh - 140px);
-  background: linear-gradient(180deg, #e9f1f3 0%, #d4e3e7 48%, #f1f7f8 100%);
+  background: var(--el-bg-color);
+  color: var(--el-text-color-primary);
 }
 
-.ambient {
+.download-page__glow {
   position: absolute;
-  border-radius: 999px;
-  filter: blur(60px);
-  opacity: 0.55;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 760px;
+  max-width: 120vw;
+  height: 460px;
+  background: radial-gradient(circle at center, rgba(var(--app-brand-rgb), 0.18), transparent 68%);
   pointer-events: none;
-
-  &--cyan {
-    top: 72px;
-    left: -120px;
-    width: 320px;
-    height: 320px;
-    background: rgba(139, 92, 246, 0.2);
-  }
-
-  &--gold {
-    top: 220px;
-    right: -80px;
-    width: 260px;
-    height: 260px;
-    background: rgba(var(--app-brand-rgb), 0.15);
-  }
+  z-index: 0;
 }
 
-.container {
+.download-page__inner {
   position: relative;
   z-index: 1;
-  max-width: 1180px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 72px 24px 96px;
 }
 
-.hero-shell {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: 28px;
-  align-items: stretch;
-  margin-bottom: 28px;
+/* Hero */
+.hero {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  text-align: center;
 }
 
-.hero-copy {
-  padding: 48px;
-  border-radius: 36px;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 13, 23, 0.98) 0%,
-    rgba(26, 16, 58, 0.96) 56%,
-    rgba(109, 40, 217, 0.92) 100%
-  );
-  color: #f8fbff;
-  box-shadow: 0 30px 80px rgba(11, 13, 23, 0.3);
-
-  .eyebrow {
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(196, 181, 253, 0.94);
-  }
-
-  h1 {
-    margin: 0 0 16px;
-    max-width: 560px;
-    font-size: 56px;
-    line-height: 1.1;
-    color: #f8fbff;
-  }
-
-  .subtitle {
-    max-width: 560px;
-    margin: 0;
-    font-size: 18px;
-    line-height: 1.7;
-    color: rgba(230, 239, 248, 0.82);
-  }
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 28px 0 24px;
-}
-
-.tag {
+.hero__brand {
   display: inline-flex;
   align-items: center;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #f8fbff;
-  font-size: 13px;
-  font-weight: 600;
-
-  &--soft {
-    color: rgba(230, 239, 248, 0.82);
-  }
+  justify-content: center;
+  margin-bottom: 26px;
 }
 
-.hero-actions {
+.hero__logo {
+  display: block;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
+}
+
+.hero__eyebrow {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--app-brand-hex);
+}
+
+.hero__title {
+  margin: 0 0 18px;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--el-text-color-primary);
+}
+
+.hero__subtitle {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--el-text-color-regular);
+}
+
+.hero__badges {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--app-bg-section);
+  border: 1px solid var(--app-border-subtle);
+  color: var(--el-text-color-regular);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badge--live {
+  background: rgba(var(--app-brand-rgb), 0.1);
+  border-color: rgba(var(--app-brand-rgb), 0.22);
+  color: var(--app-brand-hex);
+}
+
+.badge__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
-  margin-bottom: 28px;
 }
 
-.secondary-action {
-  border-color: rgba(var(--app-brand-rgb), 0.18);
-  background: rgba(255, 255, 255, 0.72);
-  color: #0e2a33;
+.btn-icon {
+  margin-right: 8px;
 }
 
-.metrics {
+.btn-ghost {
+  background: var(--app-bg-surface);
+  border-color: var(--app-border-subtle);
+  color: var(--el-text-color-primary);
+}
+
+/* Platform download cards */
+.platforms {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
 }
 
-.metric {
+.platform {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 18px 20px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(17, 24, 39, 0.08);
-  backdrop-filter: blur(10px);
-
-  strong {
-    font-size: 20px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  span {
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(230, 239, 248, 0.72);
-  }
+  padding: 32px;
+  border-radius: 20px;
+  background: var(--app-bg-surface);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-md);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.hero-panels {
-  display: grid;
-  gap: 20px;
+.platform:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--app-shadow-lg);
 }
 
-.panel {
-  position: relative;
-  padding: 28px;
-  border-radius: 32px;
-  background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(18px);
-
-  &--android::before,
-  &--ios::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-
-  &--android::before {
-    background: linear-gradient(145deg, rgba(var(--app-brand-rgb), 0.12), transparent 42%);
-  }
-
-  &--ios::before {
-    background: linear-gradient(145deg, rgba(15, 23, 42, 0.06), transparent 48%);
-  }
-
-  h2 {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 10px;
-    font-size: 32px;
-    line-height: 1.15;
-    color: #0f172a;
-  }
-}
-
-.panel__head {
-  position: relative;
-  z-index: 1;
+.platform__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.panel__text {
-  position: relative;
-  z-index: 1;
-  margin: 0 0 20px;
-  font-size: 15px;
-  line-height: 1.75;
-  color: #475569;
-}
-
-.platform-badge,
-.status {
+.platform__os {
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  gap: 9px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--el-text-color-primary);
+}
+
+.platform__os-icon {
+  font-size: 20px;
+  color: var(--app-brand-hex);
+}
+
+.platform--ios .platform__os-icon {
+  color: var(--el-text-color-primary);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
-.platform-badge {
-  background: rgba(var(--app-brand-rgb), 0.12);
-  color: var(--el-color-primary);
+.chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
 }
 
-.platform-badge--ios {
-  background: rgba(15, 23, 42, 0.08);
-  color: #334155;
-}
-
-.status--live {
+.chip--live {
   background: rgba(16, 185, 129, 0.14);
   color: #047857;
 }
 
-.status--pending {
-  max-width: 220px;
-  background: rgba(245, 158, 11, 0.14);
-  color: #b45309;
-  text-align: right;
-  justify-content: flex-end;
+.chip--live .chip__dot {
+  background: #10b981;
 }
 
-.qr-frame {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  padding: 18px;
-  border-radius: 28px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+.chip--pending {
+  background: rgba(245, 158, 11, 0.16);
+  color: #b45309;
+}
+
+.chip--pending .chip__dot {
+  background: #f59e0b;
+}
+
+.platform__title {
+  margin: 0 0 10px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--el-text-color-primary);
+}
+
+.platform__text {
+  margin: 0 0 22px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--el-text-color-regular);
 }
 
 .qr {
-  display: block;
-}
-
-.device-ghost {
-  position: relative;
-  z-index: 1;
   display: flex;
-  justify-content: center;
-  margin: 10px 0 18px;
-
-  &__screen {
-    width: 180px;
-    height: 220px;
-    border-radius: 34px;
-    padding: 24px;
-    background: linear-gradient(180deg, #0f172a 0%, #22314b 100%);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.22);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #f8fafc;
-
-    span {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    small {
-      margin-top: 10px;
-      font-size: 13px;
-      color: rgba(226, 232, 240, 0.72);
-    }
-  }
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
-.panel__footer {
-  position: relative;
-  z-index: 1;
+.qr__img {
+  display: block;
+  padding: 16px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
+.qr__hint {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--el-text-color-secondary);
+}
+
+.ios-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 36px 24px;
+  border-radius: 18px;
+  background: var(--app-bg-section);
+  border: 1px dashed var(--app-border-subtle);
+}
+
+.ios-soon__icon {
+  font-size: 42px;
+  color: var(--el-text-color-secondary);
+}
+
+.ios-soon__text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--el-text-color-regular);
+}
+
+.platform__foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: 22px;
+  margin-top: auto;
 }
 
-.panel__footer--stacked {
-  align-items: flex-start;
+.platform__foot--stack {
   flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
 }
 
-.button-group {
+.btn-row {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.panel__meta {
-  font-size: 13px;
-  line-height: 1.7;
-  color: #64748b;
+.platform__meta {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--el-text-color-secondary);
 }
 
-.advantage-grid {
+/* Advantages */
+.advantages {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
-.advantage-card {
-  padding: 26px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.06);
-
-  &__eyebrow {
-    margin: 0 0 14px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--el-color-primary);
-  }
-
-  h3 {
-    margin: 0 0 12px;
-    font-size: 24px;
-    line-height: 1.2;
-    color: #0f172a;
-  }
-
-  p {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.75;
-    color: #475569;
-  }
+.advantage {
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--app-bg-section);
+  border: 1px solid var(--app-border-subtle);
 }
 
-.note {
-  padding: 22px 24px;
-  border-radius: 24px;
-  background: rgba(9, 21, 38, 0.9);
-  color: rgba(226, 232, 240, 0.82);
-  text-align: center;
+.advantage__num {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--app-brand-hex);
+}
+
+.advantage__title {
+  margin: 0 0 10px;
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--el-text-color-primary);
+}
+
+.advantage__text {
+  margin: 0;
   font-size: 14px;
   line-height: 1.7;
+  color: var(--el-text-color-regular);
 }
 
-@media (max-width: 767px) {
-  .container {
-    padding: 44px 16px 72px;
-  }
+/* Install note */
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: rgba(var(--app-brand-rgb), 0.07);
+  border: 1px solid rgba(var(--app-brand-rgb), 0.16);
+}
 
-  .hero-shell {
+.note__icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 18px;
+  color: var(--app-brand-hex);
+}
+
+.note__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--el-text-color-regular);
+}
+
+/* Dark mode — keep the wordmark legible on a light chip */
+html.dark .hero__brand {
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: var(--app-shadow-md);
+}
+
+html.dark .qr__img {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .platforms,
+  .advantages {
     grid-template-columns: 1fr;
   }
+}
 
-  .hero-copy {
-    padding: 32px 24px;
-
-    h1 {
-      font-size: 42px;
-    }
+@media (max-width: 600px) {
+  .download-page__inner {
+    padding: 48px 16px 72px;
   }
 
-  .metrics,
-  .advantage-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .panel {
+  .platform {
     padding: 24px;
   }
 
-  .panel__head,
-  .panel__footer {
-    flex-direction: column;
-    align-items: flex-start;
+  .platform__head {
+    flex-wrap: wrap;
   }
 
-  .status--pending {
-    max-width: none;
-    text-align: left;
-    justify-content: flex-start;
+  .hero__actions :deep(.el-button) {
+    width: 100%;
+    margin-left: 0;
   }
 }
 </style>
