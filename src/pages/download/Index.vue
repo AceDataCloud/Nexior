@@ -20,8 +20,12 @@
         </div>
 
         <div class="hero__actions">
+          <el-button v-if="hasPlayStore" type="primary" round size="large" tag="a" :href="playStoreUrl" target="_blank">
+            <font-awesome-icon :icon="faGooglePlay" class="btn-icon" />
+            {{ $t('common.button.getOnGooglePlay') }}
+          </el-button>
           <el-button
-            v-if="hasAndroidDownload"
+            v-else-if="hasAndroidDownload"
             type="primary"
             round
             size="large"
@@ -53,32 +57,50 @@
           <h2 class="platform__title">{{ $t('common.button.downloadAndroid') }}</h2>
           <p class="platform__text">{{ $t('common.message.mobileAndroidHint') }}</p>
 
-          <div v-if="hasAndroidDownload" class="qr">
+          <div v-if="hasPlayStore || hasAndroidDownload" class="qr">
             <qr-code
-              :value="androidDownloadUrl"
+              :value="hasPlayStore ? playStoreUrl : androidDownloadUrl"
               :width="184"
               :height="184"
               class="qr__img"
               type="image/png"
               :color="{ dark: '#0e2a33ff', light: '#ffffffff' }"
             />
-            <p class="qr__hint">{{ $t('common.message.mobileSecureDelivery') }}</p>
+            <p class="qr__hint">
+              {{ hasPlayStore ? $t('common.message.mobilePlayStoreHint') : $t('common.message.mobileSecureDelivery') }}
+            </p>
           </div>
 
-          <div class="platform__foot">
+          <div class="platform__foot platform__foot--stack">
             <el-button
-              v-if="hasAndroidDownload"
+              v-if="hasPlayStore"
               type="primary"
               round
               size="large"
               tag="a"
-              :href="androidDownloadUrl"
+              :href="playStoreUrl"
               target="_blank"
             >
-              <font-awesome-icon :icon="faDownload" class="btn-icon" />
-              {{ $t('common.button.downloadAndroid') }}
+              <font-awesome-icon :icon="faGooglePlay" class="btn-icon" />
+              {{ $t('common.button.getOnGooglePlay') }}
             </el-button>
-            <span class="platform__meta">{{ $t('common.message.mobileDirectInstall') }} · v{{ version }}</span>
+
+            <template v-if="hasAndroidDownload">
+              <div v-if="hasPlayStore" class="platform__fallback">
+                <el-button round tag="a" :href="androidDownloadUrl" target="_blank" class="btn-ghost">
+                  <font-awesome-icon :icon="faDownload" class="btn-icon" />
+                  {{ $t('common.button.downloadAndroid') }}
+                </el-button>
+                <span class="platform__meta">{{ $t('common.message.mobileApkFallback') }} · v{{ version }}</span>
+              </div>
+              <template v-else>
+                <el-button type="primary" round size="large" tag="a" :href="androidDownloadUrl" target="_blank">
+                  <font-awesome-icon :icon="faDownload" class="btn-icon" />
+                  {{ $t('common.button.downloadAndroid') }}
+                </el-button>
+                <span class="platform__meta">{{ $t('common.message.mobileDirectInstall') }} · v{{ version }}</span>
+              </template>
+            </template>
           </div>
         </article>
 
@@ -159,11 +181,12 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faAndroid, faApple } from '@fortawesome/free-brands-svg-icons';
+import { faAndroid, faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
 import { faDownload, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import defaultLogo from '@/assets/images/logo.png';
 import {
   MOBILE_ANDROID_DOWNLOAD_URL,
+  MOBILE_ANDROID_PLAY_STORE_URL,
   MOBILE_APP_VERSION,
   MOBILE_IOS_DOWNLOAD_URL,
   MOBILE_IOS_FALLBACK_URL
@@ -180,6 +203,7 @@ export default defineComponent({
     return {
       faAndroid,
       faApple,
+      faGooglePlay,
       faDownload,
       faCircleInfo
     };
@@ -199,6 +223,12 @@ export default defineComponent({
     },
     hasAndroidDownload() {
       return !!MOBILE_ANDROID_DOWNLOAD_URL;
+    },
+    playStoreUrl() {
+      return MOBILE_ANDROID_PLAY_STORE_URL;
+    },
+    hasPlayStore() {
+      return !!MOBILE_ANDROID_PLAY_STORE_URL;
     },
     iosDownloadUrl() {
       return MOBILE_IOS_DOWNLOAD_URL;
@@ -517,6 +547,13 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.platform__fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .platform__meta {
