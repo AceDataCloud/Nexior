@@ -25,6 +25,10 @@
             <font-awesome-icon icon="fa-solid fa-compass" class="mr-2" />
             {{ $t('common.nav.console') }}
           </el-dropdown-item>
+          <el-dropdown-item v-if="isIOS" class="py-2" @click="onDeleteAccount">
+            <font-awesome-icon icon="fa-solid fa-user-xmark" class="mr-2" />
+            {{ $t('common.nav.deleteAccount') }}
+          </el-dropdown-item>
           <el-dropdown-item class="py-2" @click="onLogout">
             <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
             {{ $t('common.nav.logOut') }}
@@ -34,15 +38,17 @@
     </el-dropdown>
   </div>
   <user-setting v-model:visible="showSetting" :initial-tab="settingTab" />
+  <delete-account-dialog v-model:visible="showDeleteAccount" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import UserAvatar from '@/components/user/Avatar.vue';
 import UserSetting from '@/components/user/Setting.vue';
+import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
-import { isNative as isNativeSurface } from '@/utils/surface';
+import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -51,6 +57,7 @@ export default defineComponent({
   components: {
     UserAvatar,
     UserSetting,
+    DeleteAccountDialog,
     FontAwesomeIcon,
     ElDivider,
     ElDropdownMenu,
@@ -61,6 +68,7 @@ export default defineComponent({
     return {
       showMenu: false,
       showSetting: false,
+      showDeleteAccount: false,
       settingTab: ''
     };
   },
@@ -70,6 +78,9 @@ export default defineComponent({
     },
     isNative() {
       return isNativeSurface();
+    },
+    isIOS() {
+      return isIOSSurface();
     }
   },
   mounted() {
@@ -113,6 +124,9 @@ export default defineComponent({
       this.$router.push({
         name: ROUTE_DISTRIBUTION_INDEX
       });
+    },
+    onDeleteAccount() {
+      this.showDeleteAccount = true;
     },
     onSettings() {
       this.settingTab = '';
