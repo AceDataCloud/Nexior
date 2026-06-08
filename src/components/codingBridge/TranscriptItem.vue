@@ -9,10 +9,13 @@
       </div>
     </div>
 
-    <!-- Assistant text -->
-    <div v-else-if="event.kind === 'text'" class="whitespace-pre-wrap break-words text-[var(--app-text)]">
-      {{ event.text }}
-    </div>
+    <!-- Assistant text (markdown) -->
+    <vue-markdown
+      v-else-if="event.kind === 'text'"
+      v-highlight
+      :source="event.text || ''"
+      class="markdown-body bg-transparent text-[var(--app-text)]"
+    />
 
     <!-- Thinking -->
     <div
@@ -87,12 +90,19 @@
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import VueMarkdown from '@/components/common/VueMarkdown.vue';
+import { highlight } from '@/utils';
 import { ICodingBridgeEvent } from '@/models';
+import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
   name: 'CodingBridgeTranscriptItem',
+  directives: {
+    highlight
+  },
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    VueMarkdown
   },
   props: {
     event: {
@@ -187,3 +197,39 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+/* Unscoped: VueMarkdown emits raw HTML, so the base github-markdown
+   styles must reach those elements. Bundler dedupes the shared import. */
+@import 'github-markdown-css/github-markdown.css';
+</style>
+
+<style lang="scss" scoped>
+.transcript-item :deep(.markdown-body) {
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+  ul {
+    list-style: disc;
+  }
+
+  pre {
+    border-radius: 6px;
+  }
+  pre code {
+    color: #fff;
+  }
+}
+</style>
