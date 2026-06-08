@@ -252,7 +252,7 @@ export default defineComponent({
 .download-page {
   position: relative;
   overflow: hidden;
-  min-height: calc(100vh - 140px);
+  min-height: calc(100vh - 80px);
   background: var(--el-bg-color);
   color: var(--el-text-color-primary);
 }

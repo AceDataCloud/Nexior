@@ -2,7 +2,7 @@ import { ROUTE_DOWNLOAD } from './constants';
 
 export default {
   path: '/download',
-  component: () => import('@/layouts/Index.vue'),
+  component: () => import('@/layouts/Bare.vue'),
   children: [
     {
       path: '',
