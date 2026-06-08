@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 17:35:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 17:39:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.259.1
+
+Mon, 08 Jun 2026 17:39:57 GMT
+
+### Patches
+
+- redesign the mobile download page to match the AceData brand and design system (teal accents, logo, dark mode) (dev@acedata.cloud)
 
 ## 3.259.0
 
