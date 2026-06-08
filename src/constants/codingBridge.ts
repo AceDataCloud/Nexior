@@ -22,6 +22,8 @@ export const CB_ACTION_SESSION_INTERRUPT = 'session.interrupt';
 export const CB_ACTION_SESSION_CLOSE = 'session.close';
 export const CB_ACTION_PERMISSION_RESOLVE = 'permission.resolve';
 export const CB_ACTION_SESSIONS_LIST = 'sessions.list';
+export const CB_ACTION_HISTORY_LIST = 'history.list';
+export const CB_ACTION_HISTORY_GET = 'history.get';
 export const CB_ACTION_PING = 'ping';
 
 // --- Inner events: node -> browser -----------------------------------------
@@ -36,6 +38,8 @@ export const CB_EVENT_SESSION_RESULT = 'session.result';
 export const CB_EVENT_SESSION_ERROR = 'session.error';
 export const CB_EVENT_SESSION_CLOSED = 'session.closed';
 export const CB_EVENT_SESSIONS_SNAPSHOT = 'sessions.snapshot';
+export const CB_EVENT_HISTORY_SNAPSHOT = 'history.snapshot';
+export const CB_EVENT_HISTORY_DETAIL = 'history.detail';
 export const CB_EVENT_PONG = 'pong';
 
 // Reconnect backoff for the browser WebSocket (milliseconds).

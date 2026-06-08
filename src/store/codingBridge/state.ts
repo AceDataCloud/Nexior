@@ -8,6 +8,8 @@ export default (): ICodingBridgeState => {
     currentSessionId: undefined,
     sessions: {},
     events: {},
+    history: {},
+    historyRef: undefined,
     permissions: [],
     connection: 'disconnected',
     application: undefined,
@@ -17,7 +19,8 @@ export default (): ICodingBridgeState => {
       getNodes: Status.None,
       claimPair: Status.None,
       deleteNode: Status.None,
-      getApplications: Status.None
+      getApplications: Status.None,
+      getHistory: Status.None
     }
   };
 };

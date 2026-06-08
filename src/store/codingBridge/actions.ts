@@ -1,6 +1,6 @@
 import { ActionContext } from 'vuex';
 import { codingBridgeOperator } from '@/operators';
-import { ICodingBridgeState } from './models';
+import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import { IRootState } from '../common/models';
 import { Status, ICodingBridgeEvent, ICodingBridgeEventKind, ICodingBridgeNode } from '@/models';
 import { CodingBridgeSocket } from '@/utils/codingBridgeSocket';
@@ -10,6 +10,8 @@ import {
   CB_ACTION_SESSION_INTERRUPT,
   CB_ACTION_SESSION_CLOSE,
   CB_ACTION_PERMISSION_RESOLVE,
+  CB_ACTION_HISTORY_LIST,
+  CB_ACTION_HISTORY_GET,
   CB_EVENT_SESSION_STARTED,
   CB_EVENT_SESSION_TEXT,
   CB_EVENT_SESSION_THINKING,
@@ -20,7 +22,9 @@ import {
   CB_EVENT_SESSION_RESULT,
   CB_EVENT_SESSION_ERROR,
   CB_EVENT_SESSION_CLOSED,
-  CB_EVENT_SESSIONS_SNAPSHOT
+  CB_EVENT_SESSIONS_SNAPSHOT,
+  CB_EVENT_HISTORY_SNAPSHOT,
+  CB_EVENT_HISTORY_DETAIL
 } from '@/constants';
 
 // The live WebSocket is intentionally kept OUT of Vuex state (it is not
@@ -50,6 +54,8 @@ const makeEvent = (
 // Translate one inner node event into the matching mutation(s).
 const applyNodeEvent = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
+  dispatch: ActionContext<ICodingBridgeState, IRootState>['dispatch'],
+  state: ICodingBridgeState,
   payload: Record<string, any>,
   fromNode: string | undefined
 ): void => {
@@ -136,9 +142,66 @@ const applyNodeEvent = (
         });
       }
       break;
+    case CB_EVENT_HISTORY_SNAPSHOT:
+      if (fromNode) {
+        commit('setHistory', { node_id: fromNode, sessions: payload.sessions ?? [] });
+        commit('updateStatus', { key: 'getHistory', value: Status.Success });
+        // Restore the conversation that was open before a reload.
+        const ref = state.historyRef;
+        if (ref && ref.node_id === fromNode && !state.currentSessionId) {
+          dispatch('getHistoryDetail', ref);
+        }
+      }
+      break;
+    case CB_EVENT_HISTORY_DETAIL:
+      applyHistoryDetail(commit, payload, fromNode);
+      break;
     default:
       break;
   }
+};
+
+// Materialise a replayed transcript as a (resumable) session.
+const applyHistoryDetail = (
+  commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
+  payload: Record<string, any>,
+  fromNode: string | undefined
+): void => {
+  const sessionId = payload?.session_id;
+  const provider = payload?.provider === 'codex' ? 'codex' : 'claude';
+  if (!sessionId || !fromNode) {
+    return;
+  }
+  const resumable = provider === 'claude';
+  commit('upsertSession', {
+    session_id: sessionId,
+    node_id: fromNode,
+    status: 'idle',
+    cwd: payload.cwd,
+    model: payload.model,
+    provider,
+    started: false,
+    readonly: !resumable,
+    resume_session_id: resumable ? sessionId : undefined
+  });
+  const events: ICodingBridgeEvent[] = (payload.events ?? []).map((item: any, index: number) => ({
+    id: uid(),
+    session_id: sessionId,
+    kind: item.kind as ICodingBridgeEventKind,
+    ts: typeof item.ts === 'number' ? item.ts : Date.now() + index,
+    text: item.text,
+    tool: item.tool,
+    tool_use_id: item.tool_use_id,
+    input: item.input,
+    content: item.content,
+    is_error: item.is_error,
+    subtype: item.subtype,
+    cost_usd: item.cost_usd
+  }));
+  commit('setEvents', { session_id: sessionId, events });
+  commit('setCurrentNode', fromNode);
+  commit('setCurrentSession', sessionId);
+  commit('setHistoryRef', { node_id: fromNode, provider, session_id: sessionId });
 };
 
 export const resetAll = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
@@ -215,7 +278,12 @@ export const deleteNode = async (
   }
 };
 
-export const connect = ({ commit, rootState }: ActionContext<ICodingBridgeState, IRootState>): void => {
+export const connect = ({
+  commit,
+  dispatch,
+  state,
+  rootState
+}: ActionContext<ICodingBridgeState, IRootState>): void => {
   const token = rootState.token?.access;
   if (!token) {
     return;
@@ -226,15 +294,25 @@ export const connect = ({ commit, rootState }: ActionContext<ICodingBridgeState,
   socket?.close();
   commit('setConnection', 'connecting');
   socket = new CodingBridgeSocket(token, {
-    onOpen: () => commit('setConnection', 'connected'),
+    onOpen: () => {
+      commit('setConnection', 'connected');
+      if (state.currentNodeId) {
+        dispatch('getHistory', state.currentNodeId);
+      }
+    },
     onClose: () => commit('setConnection', 'disconnected'),
-    onEvent: (payload, fromNode) => applyNodeEvent(commit, payload, fromNode),
+    onEvent: (payload, fromNode) => applyNodeEvent(commit, dispatch, state, payload, fromNode),
     onNodesSnapshot: (nodes) => {
       // Merge live online flags onto the REST-sourced list without dropping
       // offline nodes the snapshot omits.
       commit('mergeNodeSnapshot', nodes);
     },
-    onNodeStatus: (nodeId, status) => commit('setNodeStatus', { node_id: nodeId, status }),
+    onNodeStatus: (nodeId, status) => {
+      commit('setNodeStatus', { node_id: nodeId, status });
+      if (status === 'online' && nodeId === state.currentNodeId) {
+        dispatch('getHistory', nodeId);
+      }
+    },
     onRelayError: (code, message) => console.warn('[codingBridge] relay error', code, message)
   });
   socket.connect();
@@ -247,7 +325,7 @@ export const disconnect = ({ commit }: ActionContext<ICodingBridgeState, IRootSt
 };
 
 export const selectNode = (
-  { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
+  { commit, dispatch, state }: ActionContext<ICodingBridgeState, IRootState>,
   nodeId: string | undefined
 ): void => {
   commit('setCurrentNode', nodeId);
@@ -259,10 +337,12 @@ export const selectNode = (
     .filter((session) => session.node_id === nodeId)
     .map((session) => session.session_id);
   commit('setCurrentSession', ids.length ? ids[ids.length - 1] : undefined);
+  dispatch('getHistory', nodeId);
 };
 
 export const newSession = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
   commit('setCurrentSession', undefined);
+  commit('setHistoryRef', undefined);
 };
 
 export const sendPrompt = (
@@ -275,25 +355,36 @@ export const sendPrompt = (
     return;
   }
   let sessionId = state.currentSessionId;
-  const isNew = !sessionId || !state.sessions[sessionId];
-  if (isNew) {
-    sessionId = uid();
-    commit('upsertSession', {
-      session_id: sessionId,
-      node_id: nodeId,
-      status: 'starting',
-      cwd: payload.cwd,
-      model: payload.model
-    });
-    commit('setCurrentSession', sessionId);
-    commit('appendEvent', makeEvent(sessionId, 'prompt', { text: prompt }));
+  const existing = sessionId ? state.sessions[sessionId] : undefined;
+  // A turn must be started when there is no session yet, or when the current
+  // session is a replayed history conversation that has not been resumed.
+  const needsStart = !existing || !existing.started;
+  if (needsStart) {
+    if (!existing) {
+      sessionId = uid();
+      commit('upsertSession', {
+        session_id: sessionId,
+        node_id: nodeId,
+        status: 'starting',
+        cwd: payload.cwd,
+        model: payload.model
+      });
+      commit('setCurrentSession', sessionId);
+    } else {
+      sessionId = existing.session_id;
+      commit('updateSession', { session_id: sessionId, status: 'starting' });
+    }
+    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt }));
+    commit('updateSession', { session_id: sessionId as string, started: true });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_START,
       session_id: sessionId,
       prompt,
-      cwd: payload.cwd || undefined,
-      model: payload.model || undefined,
-      permission_mode: 'default'
+      cwd: payload.cwd || existing?.cwd || undefined,
+      model: payload.model || existing?.model || undefined,
+      permission_mode: 'default',
+      provider: existing?.provider || undefined,
+      resume_session_id: existing?.resume_session_id || undefined
     });
   } else {
     commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt }));
@@ -347,6 +438,31 @@ export const resolvePermission = (
     decision: payload.decision
   });
   commit('removePermission', payload.request_id);
+};
+
+// Ask a node to list its local Claude Code / Codex transcripts.
+export const getHistory = ({ commit, state }: ActionContext<ICodingBridgeState, IRootState>, nodeId?: string): void => {
+  const target = nodeId ?? state.currentNodeId;
+  if (!target || !socket) {
+    return;
+  }
+  commit('updateStatus', { key: 'getHistory', value: Status.Request });
+  socket.sendToNode(target, { action: CB_ACTION_HISTORY_LIST, limit: 200 });
+};
+
+// Ask a node to replay one past transcript so it can be viewed / resumed.
+export const getHistoryDetail = (
+  _context: ActionContext<ICodingBridgeState, IRootState>,
+  payload: ICodingBridgeHistoryRef
+): void => {
+  if (!payload?.node_id || !payload?.session_id || !socket) {
+    return;
+  }
+  socket.sendToNode(payload.node_id, {
+    action: CB_ACTION_HISTORY_GET,
+    provider: payload.provider,
+    session_id: payload.session_id
+  });
 };
 
 export default {

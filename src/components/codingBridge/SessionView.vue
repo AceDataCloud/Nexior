@@ -23,12 +23,19 @@
           <div v-if="currentSession" class="text-xs text-[var(--app-text-subtle)] truncate">
             <span v-if="currentSession.cwd">{{ currentSession.cwd }}</span>
             <span v-if="currentSession.model"> · {{ currentSession.model }}</span>
+            <span v-if="replayLabel" class="text-[var(--el-color-primary)]"> · {{ replayLabel }}</span>
           </div>
         </div>
-        <el-button v-if="currentSessionId" size="small" round @click="onNewSession">
-          <font-awesome-icon icon="fa-solid fa-plus" class="mr-1" />
-          {{ $t('codingBridge.session.newSession') }}
-        </el-button>
+        <div class="flex items-center gap-2 flex-none">
+          <el-button size="small" round @click="$emit('history')">
+            <font-awesome-icon icon="fa-solid fa-clock-rotate-left" class="mr-1" />
+            {{ $t('codingBridge.history.button') }}
+          </el-button>
+          <el-button v-if="currentSessionId" size="small" round @click="onNewSession">
+            <font-awesome-icon icon="fa-solid fa-plus" class="mr-1" />
+            {{ $t('codingBridge.session.newSession') }}
+          </el-button>
+        </div>
       </div>
 
       <!-- Offline warning -->
@@ -49,30 +56,45 @@
 
       <!-- Composer -->
       <div class="border-t border-[var(--app-border-subtle)] p-3">
-        <div v-if="isNewSession" class="flex gap-2 mb-2">
-          <el-input v-model="cwd" size="small" :placeholder="$t('codingBridge.session.cwdPlaceholder')" clearable />
-          <el-input v-model="model" size="small" :placeholder="$t('codingBridge.session.modelPlaceholder')" clearable />
-        </div>
-        <div class="flex items-end gap-2">
-          <el-input
-            v-model="prompt"
-            type="textarea"
-            :autosize="{ minRows: 1, maxRows: 6 }"
-            resize="none"
-            class="flex-1"
-            :placeholder="$t('codingBridge.session.promptPlaceholder')"
-            @keydown.enter.exact.prevent="onSend"
-          />
-          <el-button v-if="running" round @click="onInterrupt">
-            <font-awesome-icon icon="fa-solid fa-stop" />
-          </el-button>
-          <el-button type="primary" round :disabled="!canSend" @click="onSend">
-            {{ $t('codingBridge.session.send') }}
+        <!-- Read-only replay (e.g. Codex history cannot be resumed). -->
+        <div v-if="readonly" class="flex items-center gap-2 text-xs text-[var(--app-text-subtle)] px-1 py-2">
+          <font-awesome-icon icon="fa-solid fa-eye" />
+          <span>{{ $t('codingBridge.history.readonly') }}</span>
+          <el-button class="ml-auto" size="small" round @click="onNewSession">
+            {{ $t('codingBridge.session.newSession') }}
           </el-button>
         </div>
-        <p class="text-[11px] text-[var(--app-text-subtle)] mt-1 px-1">
-          {{ $t('codingBridge.session.enterHint') }}
-        </p>
+        <template v-else>
+          <div v-if="isNewSession" class="flex gap-2 mb-2">
+            <el-input v-model="cwd" size="small" :placeholder="$t('codingBridge.session.cwdPlaceholder')" clearable />
+            <el-input
+              v-model="model"
+              size="small"
+              :placeholder="$t('codingBridge.session.modelPlaceholder')"
+              clearable
+            />
+          </div>
+          <div class="flex items-end gap-2">
+            <el-input
+              v-model="prompt"
+              type="textarea"
+              :autosize="{ minRows: 1, maxRows: 6 }"
+              resize="none"
+              class="flex-1"
+              :placeholder="$t('codingBridge.session.promptPlaceholder')"
+              @keydown.enter.exact.prevent="onSend"
+            />
+            <el-button v-if="running" round @click="onInterrupt">
+              <font-awesome-icon icon="fa-solid fa-stop" />
+            </el-button>
+            <el-button type="primary" round :disabled="!canSend" @click="onSend">
+              {{ $t('codingBridge.session.send') }}
+            </el-button>
+          </div>
+          <p class="text-[11px] text-[var(--app-text-subtle)] mt-1 px-1">
+            {{ resumeHint ? $t('codingBridge.history.resumeHint') : $t('codingBridge.session.enterHint') }}
+          </p>
+        </template>
       </div>
     </template>
   </div>
@@ -93,6 +115,7 @@ export default defineComponent({
     FontAwesomeIcon,
     TranscriptItem
   },
+  emits: ['history'],
   data() {
     return {
       prompt: '',
@@ -123,6 +146,21 @@ export default defineComponent({
     },
     isNewSession(): boolean {
       return !this.currentSessionId;
+    },
+    readonly(): boolean {
+      return this.currentSession?.readonly === true;
+    },
+    // A history conversation that has been opened but not yet resumed.
+    resumeHint(): boolean {
+      return !!this.currentSession?.provider && !this.currentSession?.started && !this.readonly;
+    },
+    replayLabel(): string {
+      if (!this.currentSession?.provider || this.currentSession?.started) {
+        return '';
+      }
+      return this.currentSession.provider === 'codex'
+        ? (this.$t('codingBridge.history.codexLabel') as string)
+        : (this.$t('codingBridge.history.claudeLabel') as string);
     },
     running(): boolean {
       const status = this.currentSession?.status;

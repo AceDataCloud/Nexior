@@ -16,6 +16,8 @@ export interface ICodingBridgeNode {
 
 export type ICodingBridgeSessionStatus = 'starting' | 'running' | 'idle' | 'closed' | 'error';
 
+export type ICodingBridgeHistoryProvider = 'claude' | 'codex';
+
 /** A live agent session running inside one node. */
 export interface ICodingBridgeSession {
   session_id: string;
@@ -24,6 +26,36 @@ export interface ICodingBridgeSession {
   cwd?: string;
   model?: string;
   cost_usd?: number;
+  // Which backend this session targets; defaults to Claude Code.
+  provider?: ICodingBridgeHistoryProvider;
+  // Provider session id to resume when the first prompt is sent (Claude only).
+  resume_session_id?: string;
+  // A live turn has been started on the node for this session.
+  started?: boolean;
+  // Replay of past history that cannot be continued (e.g. Codex).
+  readonly?: boolean;
+}
+
+/** One past on-device session as listed by `history.list`. */
+export interface ICodingBridgeHistorySummary {
+  provider: ICodingBridgeHistoryProvider;
+  session_id: string;
+  title: string;
+  cwd?: string;
+  git_branch?: string;
+  updated_at?: number;
+  message_count?: number;
+}
+
+/** A normalised transcript returned by `history.get`. */
+export interface ICodingBridgeHistoryDetail {
+  provider: ICodingBridgeHistoryProvider;
+  session_id: string;
+  title?: string;
+  cwd?: string;
+  git_branch?: string;
+  model?: string;
+  events: Array<Partial<ICodingBridgeEvent> & { kind: ICodingBridgeEventKind }>;
 }
 
 /**
