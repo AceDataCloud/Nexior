@@ -21,8 +21,7 @@
             />
           </div>
           <div v-if="currentSession" class="text-xs text-[var(--app-text-subtle)] truncate">
-            <span v-if="currentSession.cwd">{{ currentSession.cwd }}</span>
-            <span v-if="currentSession.model"> · {{ currentSession.model }}</span>
+            <span>{{ sessionMeta }}</span>
             <span v-if="replayLabel" class="text-[var(--el-color-primary)]"> · {{ replayLabel }}</span>
           </div>
         </div>
@@ -66,13 +65,14 @@
         </div>
         <template v-else>
           <div v-if="isNewSession" class="flex flex-wrap gap-2 mb-2">
-            <el-input
-              v-model="cwd"
+            <el-select
+              v-model="provider"
               size="small"
-              class="flex-1 min-w-[160px]"
-              :placeholder="$t('codingBridge.session.cwdPlaceholder')"
-              clearable
-            />
+              class="w-32"
+              :placeholder="$t('codingBridge.session.providerLabel')"
+            >
+              <el-option v-for="opt in providerOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+            </el-select>
             <el-select
               v-model="model"
               size="small"
@@ -85,6 +85,9 @@
             >
               <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
             </el-select>
+            <el-select v-model="effort" size="small" class="w-32" :placeholder="$t('codingBridge.session.effortLabel')">
+              <el-option v-for="opt in effortOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+            </el-select>
             <el-select
               v-model="permissionMode"
               size="small"
@@ -93,6 +96,13 @@
             >
               <el-option v-for="opt in permissionModeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
             </el-select>
+            <el-input
+              v-model="cwd"
+              size="small"
+              class="flex-1 min-w-[160px]"
+              :placeholder="$t('codingBridge.session.cwdPlaceholder')"
+              clearable
+            />
           </div>
           <div class="flex items-end gap-2">
             <el-input
@@ -143,7 +153,9 @@ export default defineComponent({
       prompt: '',
       cwd: '',
       model: '',
-      permissionMode: 'default'
+      permissionMode: 'default',
+      provider: 'claude',
+      effort: ''
     };
   },
   computed: {
@@ -195,12 +207,38 @@ export default defineComponent({
     canSend(): boolean {
       return !!this.prompt.trim() && this.connected && this.nodeOnline;
     },
+    providerOptions(): { label: string; value: string }[] {
+      return [
+        { label: this.$t('codingBridge.session.providerClaude') as string, value: 'claude' },
+        { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex' }
+      ];
+    },
     modelOptions(): { label: string; value: string }[] {
+      if (this.provider === 'codex') {
+        return [
+          { label: 'GPT-5 Codex', value: 'gpt-5-codex' },
+          { label: 'GPT-5', value: 'gpt-5' },
+          { label: 'o3', value: 'o3' }
+        ];
+      }
       return [
         { label: 'Claude Sonnet', value: 'sonnet' },
         { label: 'Claude Opus', value: 'opus' },
         { label: 'Claude Haiku', value: 'haiku' }
       ];
+    },
+    effortOptions(): { label: string; value: string }[] {
+      const options = [
+        { label: this.$t('codingBridge.session.effortDefault') as string, value: '' },
+        { label: this.$t('codingBridge.session.effortLow') as string, value: 'low' },
+        { label: this.$t('codingBridge.session.effortMedium') as string, value: 'medium' },
+        { label: this.$t('codingBridge.session.effortHigh') as string, value: 'high' }
+      ];
+      // Claude exposes an extra "max" tier; Codex reasoning tops out at "high".
+      if (this.provider !== 'codex') {
+        options.push({ label: this.$t('codingBridge.session.effortMax') as string, value: 'max' });
+      }
+      return options;
     },
     permissionModeOptions(): { label: string; value: string }[] {
       return [
@@ -209,6 +247,23 @@ export default defineComponent({
         { label: this.$t('codingBridge.session.permissionModePlan') as string, value: 'plan' },
         { label: this.$t('codingBridge.session.permissionModeBypass') as string, value: 'bypassPermissions' }
       ];
+    },
+    sessionMeta(): string {
+      const session = this.currentSession;
+      if (!session) {
+        return '';
+      }
+      const parts: string[] = [];
+      if (session.provider) {
+        parts.push(this.providerName(session.provider));
+      }
+      if (session.cwd) {
+        parts.push(session.cwd);
+      }
+      if (session.model) {
+        parts.push(session.model);
+      }
+      return parts.join(' · ');
     }
   },
   watch: {
@@ -217,9 +272,19 @@ export default defineComponent({
     },
     currentSessionId() {
       this.scrollToBottom();
+    },
+    provider() {
+      // Model lists and effort tiers differ per backend, so reset both.
+      this.model = '';
+      this.effort = '';
     }
   },
   methods: {
+    providerName(provider: string): string {
+      return provider === 'codex'
+        ? (this.$t('codingBridge.session.providerCodex') as string)
+        : (this.$t('codingBridge.session.providerClaude') as string);
+    },
     onComposerEnter(event: KeyboardEvent | Event) {
       // Ignore Enter while an IME (e.g. pinyin) composition is active so that
       // confirming candidates never sends the message. Modifier+Enter inserts
@@ -242,7 +307,9 @@ export default defineComponent({
         prompt: this.prompt,
         cwd: this.cwd,
         model: this.model,
-        permissionMode: this.permissionMode
+        permissionMode: this.permissionMode,
+        provider: this.provider,
+        effort: this.effort
       });
       this.prompt = '';
     },
@@ -254,6 +321,8 @@ export default defineComponent({
       this.cwd = '';
       this.model = '';
       this.permissionMode = 'default';
+      this.provider = 'claude';
+      this.effort = '';
       this.prompt = '';
     },
     scrollToBottom() {
