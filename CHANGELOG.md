@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 17:39:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 08 Jun 2026 17:43:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.259.2
+
+Mon, 08 Jun 2026 17:43:50 GMT
+
+### Patches
+
+- Fix shared (granted) application selection for task-based services: stop POSTing /credentials (404) and load tasks using the grantee's own credential (dev@acedata.cloud)
 
 ## 3.259.1
 
