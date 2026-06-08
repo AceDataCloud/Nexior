@@ -9,6 +9,7 @@ export default (): ICodingBridgeState => {
     sessions: {},
     events: {},
     history: {},
+    capabilities: {},
     historyRef: undefined,
     permissions: [],
     connection: 'disconnected',

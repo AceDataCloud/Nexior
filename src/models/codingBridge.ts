@@ -18,6 +18,33 @@ export type ICodingBridgeSessionStatus = 'starting' | 'running' | 'idle' | 'clos
 
 export type ICodingBridgeHistoryProvider = 'claude' | 'codex';
 
+/** One selectable model offered by a provider, as reported by the node. */
+export interface ICodingBridgeModelOption {
+  value: string;
+  label: string;
+}
+
+/**
+ * What one backend on a node can do, reported by the node's `capabilities.get`.
+ * The UI renders dropdowns from this instead of hard-coding models / efforts,
+ * so a new model only needs a node update (or a typed-in custom value).
+ */
+export interface ICodingBridgeProviderCapability {
+  name: string;
+  label: string;
+  available: boolean;
+  models: ICodingBridgeModelOption[];
+  // Effort tokens ('' = backend default); the UI localizes known ones.
+  efforts: string[];
+  permission_modes: string[];
+  allow_custom_model: boolean;
+}
+
+/** The full capabilities descriptor a node advertises. */
+export interface ICodingBridgeCapabilities {
+  providers: ICodingBridgeProviderCapability[];
+}
+
 /** A live agent session running inside one node. */
 export interface ICodingBridgeSession {
   session_id: string;

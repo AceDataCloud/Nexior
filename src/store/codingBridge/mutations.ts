@@ -1,6 +1,7 @@
 import initialState from './state';
 import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import {
+  ICodingBridgeCapabilities,
   ICodingBridgeConnectionStatus,
   ICodingBridgeDirListing,
   ICodingBridgeEvent,
@@ -112,6 +113,13 @@ export const setDirectoryLoading = (state: ICodingBridgeState, payload: boolean)
   state.directoryLoading = payload;
 };
 
+export const setCapabilities = (
+  state: ICodingBridgeState,
+  payload: { node_id: string; capabilities: ICodingBridgeCapabilities }
+): void => {
+  state.capabilities[payload.node_id] = payload.capabilities;
+};
+
 export const addPermission = (state: ICodingBridgeState, payload: ICodingBridgePermissionRequest): void => {
   if (state.permissions.some((item) => item.request_id === payload.request_id)) {
     return;
@@ -125,6 +133,7 @@ export const removePermission = (state: ICodingBridgeState, requestId: string): 
 
 export const removeNodeData = (state: ICodingBridgeState, nodeId: string): void => {
   delete state.history[nodeId];
+  delete state.capabilities[nodeId];
   if (state.historyRef?.node_id === nodeId) {
     state.historyRef = undefined;
   }
@@ -156,6 +165,7 @@ export default {
   setHistoryRef,
   setDirectory,
   setDirectoryLoading,
+  setCapabilities,
   addPermission,
   removePermission,
   removeNodeData

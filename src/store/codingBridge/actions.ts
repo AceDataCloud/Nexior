@@ -13,6 +13,7 @@ import {
   CB_ACTION_HISTORY_LIST,
   CB_ACTION_HISTORY_GET,
   CB_ACTION_FS_LIST,
+  CB_ACTION_CAPABILITIES_GET,
   CB_EVENT_SESSION_STARTED,
   CB_EVENT_SESSION_TEXT,
   CB_EVENT_SESSION_THINKING,
@@ -26,7 +27,8 @@ import {
   CB_EVENT_SESSIONS_SNAPSHOT,
   CB_EVENT_HISTORY_SNAPSHOT,
   CB_EVENT_HISTORY_DETAIL,
-  CB_EVENT_FS_LIST
+  CB_EVENT_FS_LIST,
+  CB_EVENT_CAPABILITIES
 } from '@/constants';
 
 // The live WebSocket is intentionally kept OUT of Vuex state (it is not
@@ -170,6 +172,14 @@ const applyNodeEvent = (
         error: payload.error
       });
       break;
+    case CB_EVENT_CAPABILITIES:
+      if (fromNode) {
+        commit('setCapabilities', {
+          node_id: fromNode,
+          capabilities: { providers: payload.providers ?? [] }
+        });
+      }
+      break;
     default:
       break;
   }
@@ -312,6 +322,7 @@ export const connect = ({
       commit('setConnection', 'connected');
       if (state.currentNodeId) {
         dispatch('getHistory', state.currentNodeId);
+        dispatch('getCapabilities', state.currentNodeId);
       }
     },
     onClose: () => commit('setConnection', 'disconnected'),
@@ -325,6 +336,7 @@ export const connect = ({
       commit('setNodeStatus', { node_id: nodeId, status });
       if (status === 'online' && nodeId === state.currentNodeId) {
         dispatch('getHistory', nodeId);
+        dispatch('getCapabilities', nodeId);
       }
     },
     onRelayError: (code, message) => console.warn('[codingBridge] relay error', code, message)
@@ -352,6 +364,7 @@ export const selectNode = (
     .map((session) => session.session_id);
   commit('setCurrentSession', ids.length ? ids[ids.length - 1] : undefined);
   dispatch('getHistory', nodeId);
+  dispatch('getCapabilities', nodeId);
 };
 
 export const newSession = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
@@ -509,6 +522,16 @@ export const clearDirectory = ({ commit }: ActionContext<ICodingBridgeState, IRo
   commit('setDirectory', undefined);
 };
 
+// Ask a node what providers / models / efforts it offers so the UI can render
+// the composer dropdowns without hard-coding any of them.
+export const getCapabilities = ({ state }: ActionContext<ICodingBridgeState, IRootState>, nodeId?: string): void => {
+  const target = nodeId ?? state.currentNodeId;
+  if (!target || !socket) {
+    return;
+  }
+  socket.sendToNode(target, { action: CB_ACTION_CAPABILITIES_GET });
+};
+
 export default {
   resetAll,
   getApplications,
@@ -527,5 +550,6 @@ export default {
   getHistory,
   getHistoryDetail,
   browseDir,
-  clearDirectory
+  clearDirectory,
+  getCapabilities
 };
