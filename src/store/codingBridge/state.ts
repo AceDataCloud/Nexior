@@ -12,6 +12,8 @@ export default (): ICodingBridgeState => {
     historyRef: undefined,
     permissions: [],
     connection: 'disconnected',
+    directory: undefined,
+    directoryLoading: false,
     application: undefined,
     applications: undefined,
     service: undefined,

@@ -12,6 +12,7 @@ import {
   CB_ACTION_PERMISSION_RESOLVE,
   CB_ACTION_HISTORY_LIST,
   CB_ACTION_HISTORY_GET,
+  CB_ACTION_FS_LIST,
   CB_EVENT_SESSION_STARTED,
   CB_EVENT_SESSION_TEXT,
   CB_EVENT_SESSION_THINKING,
@@ -24,7 +25,8 @@ import {
   CB_EVENT_SESSION_CLOSED,
   CB_EVENT_SESSIONS_SNAPSHOT,
   CB_EVENT_HISTORY_SNAPSHOT,
-  CB_EVENT_HISTORY_DETAIL
+  CB_EVENT_HISTORY_DETAIL,
+  CB_EVENT_FS_LIST
 } from '@/constants';
 
 // The live WebSocket is intentionally kept OUT of Vuex state (it is not
@@ -155,6 +157,18 @@ const applyNodeEvent = (
       break;
     case CB_EVENT_HISTORY_DETAIL:
       applyHistoryDetail(commit, payload, fromNode);
+      break;
+    case CB_EVENT_FS_LIST:
+      // Directory listings are node-scoped (no session_id) and feed the
+      // working-directory picker directly.
+      commit('setDirectory', {
+        path: payload.path,
+        parent: payload.parent ?? null,
+        sep: payload.sep ?? '/',
+        entries: payload.entries ?? [],
+        truncated: payload.truncated,
+        error: payload.error
+      });
       break;
     default:
       break;
@@ -477,6 +491,23 @@ export const getHistoryDetail = (
   });
 };
 
+// Ask the current node to list a directory for the working-directory picker.
+export const browseDir = (
+  { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
+  path?: string
+): void => {
+  const nodeId = state.currentNodeId;
+  if (!nodeId || !socket) {
+    return;
+  }
+  commit('setDirectoryLoading', true);
+  socket.sendToNode(nodeId, { action: CB_ACTION_FS_LIST, path: path || undefined });
+};
+
+export const clearDirectory = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
+  commit('setDirectory', undefined);
+};
+
 export default {
   resetAll,
   getApplications,
@@ -493,5 +524,7 @@ export default {
   closeSession,
   resolvePermission,
   getHistory,
-  getHistoryDetail
+  getHistoryDetail,
+  browseDir,
+  clearDirectory
 };

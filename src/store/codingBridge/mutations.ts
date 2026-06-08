@@ -2,6 +2,7 @@ import initialState from './state';
 import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import {
   ICodingBridgeConnectionStatus,
+  ICodingBridgeDirListing,
   ICodingBridgeEvent,
   ICodingBridgeHistorySummary,
   ICodingBridgeNode,
@@ -102,6 +103,15 @@ export const setHistoryRef = (state: ICodingBridgeState, payload: ICodingBridgeH
   state.historyRef = payload;
 };
 
+export const setDirectory = (state: ICodingBridgeState, payload: ICodingBridgeDirListing | undefined): void => {
+  state.directory = payload;
+  state.directoryLoading = false;
+};
+
+export const setDirectoryLoading = (state: ICodingBridgeState, payload: boolean): void => {
+  state.directoryLoading = payload;
+};
+
 export const addPermission = (state: ICodingBridgeState, payload: ICodingBridgePermissionRequest): void => {
   if (state.permissions.some((item) => item.request_id === payload.request_id)) {
     return;
@@ -144,6 +154,8 @@ export default {
   setEvents,
   setHistory,
   setHistoryRef,
+  setDirectory,
+  setDirectoryLoading,
   addPermission,
   removePermission,
   removeNodeData
