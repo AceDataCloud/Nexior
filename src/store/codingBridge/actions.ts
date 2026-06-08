@@ -479,5 +479,7 @@ export default {
   sendPrompt,
   interruptSession,
   closeSession,
-  resolvePermission
+  resolvePermission,
+  getHistory,
+  getHistoryDetail
 };
