@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 16:24:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 16:30:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.271.0
+
+Tue, 09 Jun 2026 16:30:52 GMT
+
+### Minor changes
+
+- Coding Bridge: show the model list on the first click and allow switching the model mid-session (dev@acedata.cloud)
 
 ## 3.270.0
 
