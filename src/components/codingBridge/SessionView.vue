@@ -64,21 +64,9 @@
           </el-button>
         </div>
         <template v-else>
-          <div class="rounded-lg border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-3 py-2">
-            <div class="flex flex-wrap items-center gap-1.5 pb-2">
-              <button
-                v-for="chip in configChips"
-                :key="chip.key"
-                type="button"
-                class="max-w-[220px] truncate rounded-full border border-[var(--app-border-subtle)] px-2.5 py-1 text-[11px] text-[var(--app-text-subtle)] hover:border-[var(--el-color-primary-light-5)] hover:text-[var(--el-color-primary)]"
-                :disabled="!isNewSession"
-                @click="settingsVisible = isNewSession"
-              >
-                <font-awesome-icon :icon="chip.icon" class="mr-1" />
-                {{ chip.label }}
-              </button>
-            </div>
-
+          <div
+            class="cb-composer rounded-2xl border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-3 py-2.5 transition-colors focus-within:border-[var(--el-color-primary-light-5)]"
+          >
             <div v-if="attachmentFileList.length" class="flex flex-wrap gap-2 pb-2">
               <div
                 v-for="(file, index) in attachmentFileList"
@@ -109,118 +97,170 @@
               </div>
             </div>
 
-            <div class="flex items-end gap-2">
-              <el-popover
-                v-if="isNewSession"
-                v-model:visible="settingsVisible"
-                trigger="click"
-                placement="top-start"
-                width="460"
-                popper-class="coding-bridge-settings-popover"
+            <el-input
+              v-model="prompt"
+              type="textarea"
+              :autosize="{ minRows: 2, maxRows: 12 }"
+              resize="none"
+              class="cb-composer__input"
+              :placeholder="$t('codingBridge.session.promptPlaceholder')"
+              @keydown.enter="onComposerEnter"
+            />
+
+            <el-upload
+              ref="uploader"
+              v-model:file-list="attachmentFileList"
+              class="h-0 w-0 overflow-hidden opacity-0"
+              name="file"
+              :action="uploadUrl"
+              :headers="headers"
+              :multiple="true"
+              :limit="maxAttachments"
+              :show-file-list="false"
+              :before-upload="beforeAttachmentUpload"
+              :on-change="onAttachmentChange"
+              :on-success="onAttachmentSuccess"
+              :on-error="onAttachmentError"
+              :on-exceed="onAttachmentExceed"
+            >
+              <span ref="attachmentUploadTrigger" class="block h-0 w-0" aria-hidden="true"></span>
+            </el-upload>
+
+            <div class="mt-1.5 flex items-center gap-1.5">
+              <button
+                type="button"
+                class="cb-icon-btn"
+                :title="$t('codingBridge.session.attachFile')"
+                @click="onTriggerAttachmentUpload"
               >
-                <template #reference>
-                  <el-button circle :title="$t('codingBridge.session.settings')">
-                    <font-awesome-icon icon="fa-solid fa-gear" />
-                  </el-button>
-                </template>
-                <div class="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
-                  <label class="flex flex-col gap-1">
-                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
-                      {{ $t('codingBridge.session.providerLabel') }}
-                    </span>
-                    <el-select v-model="provider" size="small">
-                      <el-option
-                        v-for="opt in providerOptions"
-                        :key="opt.value"
-                        :label="opt.label"
-                        :value="opt.value"
-                      />
-                    </el-select>
-                  </label>
-                  <label class="flex flex-col gap-1">
-                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
-                      {{ $t('codingBridge.session.modelPlaceholder') }}
-                    </span>
+                <font-awesome-icon icon="fa-solid fa-paperclip" />
+              </button>
+
+              <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+                <template v-if="isNewSession">
+                  <el-dropdown trigger="click" @command="provider = $event">
+                    <button type="button" class="cb-pill">
+                      <font-awesome-icon icon="fa-solid fa-code" class="cb-pill__icon" />
+                      <span class="truncate">{{ providerName(provider) }}</span>
+                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    </button>
+                    <template #dropdown>
+                      <el-dropdown-menu>
+                        <el-dropdown-item v-for="opt in providerOptions" :key="opt.value" :command="opt.value">
+                          <font-awesome-icon
+                            icon="fa-solid fa-check"
+                            class="mr-2"
+                            :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
+                          />
+                          {{ opt.label }}
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+
+                  <el-popover trigger="click" placement="top-start" :width="260">
+                    <template #reference>
+                      <button type="button" class="cb-pill">
+                        <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
+                        <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
+                        <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                      </button>
+                    </template>
                     <el-select
                       v-model="model"
+                      class="w-full"
                       size="small"
                       filterable
                       :allow-create="allowCustomModel"
                       default-first-option
                       clearable
+                      :teleported="false"
+                      :placeholder="$t('codingBridge.session.modelPlaceholder')"
                     >
                       <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
                     </el-select>
-                  </label>
-                  <label class="flex flex-col gap-1">
-                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
-                      {{ $t('codingBridge.session.effortLabel') }}
-                    </span>
-                    <el-select v-model="effort" size="small">
-                      <el-option v-for="opt in effortOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-                    </el-select>
-                  </label>
-                  <label class="flex flex-col gap-1">
-                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
-                      {{ $t('codingBridge.session.permissionModeLabel') }}
-                    </span>
-                    <el-select v-model="permissionMode" size="small">
-                      <el-option
-                        v-for="opt in permissionModeOptions"
-                        :key="opt.value"
-                        :label="opt.label"
-                        :value="opt.value"
-                      />
-                    </el-select>
-                  </label>
-                  <label class="col-span-1 flex flex-col gap-1 sm:col-span-2">
-                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
-                      {{ $t('codingBridge.session.cwdPlaceholder') }}
-                    </span>
-                    <el-input v-model="cwd" size="small" clearable>
+                  </el-popover>
+
+                  <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
+                    <button type="button" class="cb-pill">
+                      <font-awesome-icon icon="fa-solid fa-gauge-high" class="cb-pill__icon" />
+                      <span class="truncate">{{ effortLabel(effort) }}</span>
+                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    </button>
+                    <template #dropdown>
+                      <el-dropdown-menu>
+                        <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
+                          <font-awesome-icon
+                            icon="fa-solid fa-check"
+                            class="mr-2"
+                            :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
+                          />
+                          {{ opt.label }}
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+
+                  <el-dropdown trigger="click" @command="permissionMode = $event">
+                    <button type="button" class="cb-pill">
+                      <font-awesome-icon icon="fa-solid fa-shield-halved" class="cb-pill__icon" />
+                      <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
+                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                    </button>
+                    <template #dropdown>
+                      <el-dropdown-menu>
+                        <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
+                          <font-awesome-icon
+                            icon="fa-solid fa-check"
+                            class="mr-2"
+                            :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
+                          />
+                          {{ opt.label }}
+                        </el-dropdown-item>
+                      </el-dropdown-menu>
+                    </template>
+                  </el-dropdown>
+
+                  <el-popover trigger="click" placement="top-start" :width="320">
+                    <template #reference>
+                      <button type="button" class="cb-pill">
+                        <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                        <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
+                        <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                      </button>
+                    </template>
+                    <el-input
+                      v-model="cwd"
+                      size="small"
+                      clearable
+                      :placeholder="$t('codingBridge.session.cwdPlaceholder')"
+                    >
                       <template #append>
                         <el-button :title="$t('codingBridge.directory.title')" @click="openDirectory">
                           <font-awesome-icon icon="fa-solid fa-folder-open" />
                         </el-button>
                       </template>
                     </el-input>
-                  </label>
-                </div>
-              </el-popover>
-              <el-button v-else circle :disabled="true" :title="$t('codingBridge.session.settingsLocked')">
-                <font-awesome-icon icon="fa-solid fa-gear" />
-              </el-button>
-              <el-upload
-                ref="uploader"
-                v-model:file-list="attachmentFileList"
-                class="h-0 w-0 overflow-hidden opacity-0"
-                name="file"
-                :action="uploadUrl"
-                :headers="headers"
-                :multiple="true"
-                :limit="maxAttachments"
-                :show-file-list="false"
-                :before-upload="beforeAttachmentUpload"
-                :on-change="onAttachmentChange"
-                :on-success="onAttachmentSuccess"
-                :on-error="onAttachmentError"
-                :on-exceed="onAttachmentExceed"
-              >
-                <span ref="attachmentUploadTrigger" class="block h-0 w-0" aria-hidden="true"></span>
-              </el-upload>
-              <el-button circle :title="$t('codingBridge.session.attachFile')" @click="onTriggerAttachmentUpload">
-                <font-awesome-icon icon="fa-solid fa-paperclip" />
-              </el-button>
-              <el-input
-                v-model="prompt"
-                type="textarea"
-                :autosize="{ minRows: 3, maxRows: 12 }"
-                resize="none"
-                class="flex-1"
-                :placeholder="$t('codingBridge.session.promptPlaceholder')"
-                @keydown.enter="onComposerEnter"
-              />
-              <el-button v-if="running" round @click="onInterrupt">
+                  </el-popover>
+                </template>
+
+                <template v-else>
+                  <span class="cb-pill cb-pill--static">
+                    <font-awesome-icon icon="fa-solid fa-code" class="cb-pill__icon" />
+                    <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
+                  </span>
+                  <span v-if="currentSession?.model" class="cb-pill cb-pill--static">
+                    <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
+                    <span class="truncate">{{ currentSession?.model }}</span>
+                  </span>
+                  <span v-if="currentSession?.cwd" class="cb-pill cb-pill--static">
+                    <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                    <span class="truncate">{{ currentSession?.cwd }}</span>
+                  </span>
+                </template>
+              </div>
+
+              <el-button v-if="running" circle @click="onInterrupt">
                 <font-awesome-icon icon="fa-solid fa-stop" />
               </el-button>
               <el-button type="primary" round :disabled="!canSend" @click="onSend">
@@ -248,6 +288,9 @@ import {
   ElOption,
   ElMessage,
   ElPopover,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
   ElUpload,
   UploadFile,
   UploadFiles
@@ -268,8 +311,6 @@ import {
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
 const MAX_ATTACHMENTS = 10;
 
-type ConfigChip = { key: string; label: string; icon: string };
-
 export default defineComponent({
   name: 'CodingBridgeSessionView',
   components: {
@@ -278,6 +319,9 @@ export default defineComponent({
     ElSelect,
     ElOption,
     ElPopover,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem,
     ElUpload,
     FontAwesomeIcon,
     TranscriptItem,
@@ -294,7 +338,6 @@ export default defineComponent({
       provider: 'claude',
       effort: '',
       directoryVisible: false,
-      settingsVisible: false,
       attachmentFileList: [] as UploadFiles,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
       maxAttachments: MAX_ATTACHMENTS
@@ -390,43 +433,6 @@ export default defineComponent({
       return this.resumeHint
         ? (this.$t('codingBridge.history.resumeHint') as string)
         : (this.$t('codingBridge.session.enterHint') as string);
-    },
-    configChips(): ConfigChip[] {
-      if (!this.isNewSession && this.currentSession) {
-        const chips: ConfigChip[] = [
-          {
-            key: 'session-provider',
-            label: this.providerName(this.currentSession.provider || 'claude'),
-            icon: 'fa-solid fa-code'
-          }
-        ];
-        if (this.currentSession.model) {
-          chips.push({ key: 'session-model', label: this.currentSession.model, icon: 'fa-solid fa-brain' });
-        }
-        if (this.currentSession.cwd) {
-          chips.push({ key: 'session-cwd', label: this.currentSession.cwd, icon: 'fa-solid fa-folder-open' });
-        }
-        return chips;
-      }
-      return [
-        { key: 'provider', label: this.providerName(this.provider), icon: 'fa-solid fa-code' },
-        {
-          key: 'model',
-          label: this.model || (this.$t('codingBridge.session.modelDefault') as string),
-          icon: 'fa-solid fa-brain'
-        },
-        { key: 'effort', label: this.effortLabel(this.effort), icon: 'fa-solid fa-gauge-high' },
-        {
-          key: 'permission',
-          label: this.permissionModeLabel(this.permissionMode),
-          icon: 'fa-solid fa-shield-halved'
-        },
-        {
-          key: 'cwd',
-          label: this.cwd || (this.$t('codingBridge.session.cwdDefault') as string),
-          icon: 'fa-solid fa-folder-open'
-        }
-      ];
     },
     // Everything below is sourced from the node's `capabilities.get` so the UI
     // never hard-codes providers / models / efforts. The fallbacks only apply
@@ -676,7 +682,6 @@ export default defineComponent({
       this.provider = 'claude';
       this.effort = '';
       this.prompt = '';
-      this.settingsVisible = false;
       this.clearAttachments();
     },
     scrollToBottom() {
@@ -690,3 +695,87 @@ export default defineComponent({
   }
 });
 </script>
+
+<style scoped lang="scss">
+.cb-composer {
+  &__input {
+    :deep(.el-textarea__inner) {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+      padding: 6px 4px;
+      min-height: unset;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
+
+.cb-icon-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  border: 1px solid var(--app-border-subtle);
+  background: transparent;
+  color: var(--app-text-subtle);
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: var(--el-color-primary);
+    border-color: var(--el-color-primary-light-5);
+  }
+}
+
+.cb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 240px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--app-border-subtle);
+  background: transparent;
+  color: var(--app-text-subtle);
+  font-size: 12px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: var(--el-color-primary);
+    border-color: var(--el-color-primary-light-5);
+  }
+
+  &__icon {
+    flex: none;
+    font-size: 12px;
+  }
+
+  &__caret {
+    flex: none;
+    margin-left: 2px;
+    font-size: 9px;
+    opacity: 0.55;
+  }
+
+  &--static {
+    cursor: default;
+
+    &:hover {
+      color: var(--app-text-subtle);
+      border-color: var(--app-border-subtle);
+    }
+  }
+}
+</style>
