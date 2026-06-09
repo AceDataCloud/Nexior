@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 10:10:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 15:32:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.267.0
+
+Tue, 09 Jun 2026 15:32:27 GMT
+
+### Minor changes
+
+- Render an interactive question card for Coding Bridge AskUserQuestion tool calls instead of raw JSON + deny-only (dev@acedata.cloud)
 
 ## 3.266.0
 
