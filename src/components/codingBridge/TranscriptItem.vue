@@ -38,13 +38,14 @@
       </div>
     </div>
 
-    <!-- Assistant text (markdown) -->
-    <vue-markdown
-      v-else-if="event.kind === 'text'"
-      v-highlight
-      :source="event.text || ''"
-      class="markdown-body bg-transparent text-[var(--app-text)]"
-    />
+    <!-- Assistant text (markdown); a blinking caret trails while streaming. -->
+    <div v-else-if="event.kind === 'text'" class="cb-stream-text" :class="{ 'is-streaming': event.streaming }">
+      <vue-markdown
+        v-highlight
+        :source="event.text || ''"
+        class="markdown-body bg-transparent text-[var(--app-text)]"
+      />
+    </div>
 
     <!-- Thinking -->
     <div
@@ -314,6 +315,30 @@ export default defineComponent({
   }
   pre code {
     color: #fff;
+  }
+}
+
+// Blinking typewriter caret trailing the last line while text streams in.
+.cb-stream-text.is-streaming :deep(.markdown-body > :last-child)::after {
+  content: '';
+  display: inline-block;
+  width: 0.45em;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--el-color-primary);
+  border-radius: 1px;
+  animation: cb-caret-blink 1s steps(1, end) infinite;
+}
+
+@keyframes cb-caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.01%,
+  100% {
+    opacity: 0;
   }
 }
 </style>
