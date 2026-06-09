@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 16:44:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 17:39:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.272.1
+
+Tue, 09 Jun 2026 17:39:55 GMT
+
+### Patches
+
+- Allow AskUserQuestion cards to accept freeform input when tool payload omits options (dev@acedata.cloud)
 
 ## 3.272.0
 
