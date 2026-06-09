@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 09:16:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 10:10:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.266.0
+
+Tue, 09 Jun 2026 10:10:27 GMT
+
+### Minor changes
+
+- feat(coding-bridge): disable a backend whose CLI is not installed on the node (dev@acedata.cloud)
 
 ## 3.265.0
 
