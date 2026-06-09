@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 17:39:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 17:55:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.273.0
+
+Tue, 09 Jun 2026 17:55:30 GMT
+
+### Minor changes
+
+- Stream Coding Bridge assistant text token-by-token (Claude native deltas + Codex typewriter) with a live caret (dev@acedata.cloud)
 
 ## 3.272.1
 
