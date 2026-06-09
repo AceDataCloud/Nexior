@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 16:01:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 16:24:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.270.0
+
+Tue, 09 Jun 2026 16:24:34 GMT
+
+### Minor changes
+
+- Integrate the Coding Bridge working-directory browse button into the input as a suffix icon so it no longer looks detached (dev@acedata.cloud)
 
 ## 3.269.0
 
