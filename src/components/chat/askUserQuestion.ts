@@ -32,6 +32,10 @@ export function buildAskUserQuestionOutput(
   const answers: Record<string, string | string[]> = {};
   questions.forEach((q, idx) => {
     const otherText = (otherTexts[idx] || '').trim();
+    if (!Array.isArray(q.options) || q.options.length === 0) {
+      if (otherText) answers[q.question] = otherText;
+      return;
+    }
     if (q.multiSelect) {
       const picked = multiAnswers[idx] || [];
       const result: string[] = [];
@@ -75,6 +79,9 @@ export function canAdvanceQuestion(
   otherTexts: Record<number, string>
 ): boolean {
   const otherText = (otherTexts[idx] || '').trim();
+  if (!Array.isArray(question.options) || question.options.length === 0) {
+    return !!otherText;
+  }
   if (question.multiSelect) {
     const picked = multiAnswers[idx] || [];
     if (picked.length === 0) return false;

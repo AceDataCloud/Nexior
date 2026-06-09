@@ -35,8 +35,24 @@
             <span class="dot">●</span> {{ $t('chat.askUserQuestion.multiSelectHint') }}
           </div>
 
+          <!-- Freeform question: no options provided by tool payload. -->
+          <div v-if="isFreeformQuestion" class="other-wrap">
+            <el-input
+              v-model="otherTexts[currentIndex]"
+              type="textarea"
+              :rows="3"
+              :placeholder="$t('chat.askUserQuestion.placeholder')"
+              resize="none"
+              @keydown.enter.exact.prevent="onNext"
+            />
+          </div>
+
           <!-- Single-select -->
-          <el-radio-group v-if="!currentQuestion.multiSelect" v-model="singleAnswers[currentIndex]" class="options">
+          <el-radio-group
+            v-else-if="!currentQuestion.multiSelect"
+            v-model="singleAnswers[currentIndex]"
+            class="options"
+          >
             <el-radio
               v-for="(opt, oIdx) in currentQuestion.options"
               :key="oIdx"
@@ -189,7 +205,13 @@ export default defineComponent({
       if (this.questions.length === 0) return 0;
       return ((this.currentIndex + 1) / this.questions.length) * 100;
     },
+    isFreeformQuestion(): boolean {
+      return !Array.isArray(this.currentQuestion.options) || this.currentQuestion.options.length === 0;
+    },
     needsOtherInput(): boolean {
+      if (this.isFreeformQuestion) {
+        return false;
+      }
       const q = this.currentQuestion;
       const idx = this.currentIndex;
       if (q.multiSelect) {
