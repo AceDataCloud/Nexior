@@ -145,72 +145,113 @@
               </button>
 
               <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
-                <template v-if="isNewSession">
-                  <el-dropdown trigger="click" @command="provider = $event">
+                <!-- Provider is chosen at start and locked once a session is running. -->
+                <el-dropdown v-if="isNewSession" trigger="click" @command="provider = $event">
+                  <button type="button" class="cb-pill">
+                    <img
+                      v-if="providerIcon(provider)"
+                      :src="providerIcon(provider)!.src"
+                      class="cb-pill__brand"
+                      :class="{ 'cb-pill__brand--invert': providerIcon(provider)!.invertOnDark }"
+                      alt=""
+                    />
+                    <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
+                    <span class="truncate">{{ providerName(provider) }}</span>
+                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                  </button>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item
+                        v-for="opt in providerOptions"
+                        :key="opt.value"
+                        :command="opt.value"
+                        :disabled="!opt.available"
+                      >
+                        <font-awesome-icon
+                          icon="fa-solid fa-check"
+                          class="mr-2"
+                          :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
+                        />
+                        <img
+                          v-if="providerIcon(opt.value)"
+                          :src="providerIcon(opt.value)!.src"
+                          class="cb-pill__brand mr-1.5"
+                          :class="{ 'cb-pill__brand--invert': providerIcon(opt.value)!.invertOnDark }"
+                          alt=""
+                        />
+                        {{ opt.label }}
+                        <span v-if="!opt.available" class="ml-1 text-xs opacity-60">
+                          {{ $t('codingBridge.session.providerUnavailable') }}
+                        </span>
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+                <span v-else class="cb-pill cb-pill--static">
+                  <img
+                    v-if="providerIcon(currentSession?.provider || 'claude')"
+                    :src="providerIcon(currentSession?.provider || 'claude')!.src"
+                    class="cb-pill__brand"
+                    :class="{
+                      'cb-pill__brand--invert': providerIcon(currentSession?.provider || 'claude')!.invertOnDark
+                    }"
+                    alt=""
+                  />
+                  <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
+                  <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
+                </span>
+
+                <!-- Model can be switched any time, including mid-session. -->
+                <el-popover ref="modelPopover" trigger="click" placement="top-start" :width="260">
+                  <template #reference>
                     <button type="button" class="cb-pill">
-                      <img
-                        v-if="providerIcon(provider)"
-                        :src="providerIcon(provider)!.src"
-                        class="cb-pill__brand"
-                        :class="{ 'cb-pill__brand--invert': providerIcon(provider)!.invertOnDark }"
-                        alt=""
-                      />
-                      <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
-                      <span class="truncate">{{ providerName(provider) }}</span>
+                      <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
+                      <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
                       <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
                     </button>
-                    <template #dropdown>
-                      <el-dropdown-menu>
-                        <el-dropdown-item
-                          v-for="opt in providerOptions"
-                          :key="opt.value"
-                          :command="opt.value"
-                          :disabled="!opt.available"
-                        >
-                          <font-awesome-icon
-                            icon="fa-solid fa-check"
-                            class="mr-2"
-                            :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
-                          />
-                          <img
-                            v-if="providerIcon(opt.value)"
-                            :src="providerIcon(opt.value)!.src"
-                            class="cb-pill__brand mr-1.5"
-                            :class="{ 'cb-pill__brand--invert': providerIcon(opt.value)!.invertOnDark }"
-                            alt=""
-                          />
-                          {{ opt.label }}
-                          <span v-if="!opt.available" class="ml-1 text-xs opacity-60">
-                            {{ $t('codingBridge.session.providerUnavailable') }}
-                          </span>
-                        </el-dropdown-item>
-                      </el-dropdown-menu>
-                    </template>
-                  </el-dropdown>
-
-                  <el-popover trigger="click" placement="top-start" :width="260">
-                    <template #reference>
-                      <button type="button" class="cb-pill">
-                        <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
-                        <span class="truncate">{{ model || $t('codingBridge.session.modelDefault') }}</span>
-                        <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
-                      </button>
-                    </template>
-                    <el-select
-                      v-model="model"
-                      class="w-full"
-                      size="small"
-                      filterable
-                      :allow-create="allowCustomModel"
-                      default-first-option
-                      clearable
-                      :teleported="false"
-                      :placeholder="$t('codingBridge.session.modelPlaceholder')"
+                  </template>
+                  <div class="cb-model-menu">
+                    <button type="button" class="cb-model-option" @click="selectModel('')">
+                      <font-awesome-icon
+                        icon="fa-solid fa-check"
+                        class="cb-model-option__check"
+                        :class="!model ? 'opacity-100' : 'opacity-0'"
+                      />
+                      <span class="truncate">{{ $t('codingBridge.session.modelDefault') }}</span>
+                    </button>
+                    <button
+                      v-for="opt in modelOptions"
+                      :key="opt.value"
+                      type="button"
+                      class="cb-model-option"
+                      @click="selectModel(opt.value)"
                     >
-                      <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-                    </el-select>
-                  </el-popover>
+                      <font-awesome-icon
+                        icon="fa-solid fa-check"
+                        class="cb-model-option__check"
+                        :class="opt.value === model ? 'opacity-100' : 'opacity-0'"
+                      />
+                      <span class="truncate">{{ opt.label }}</span>
+                    </button>
+                    <div v-if="allowCustomModel" class="cb-model-custom">
+                      <el-input
+                        v-model="customModelDraft"
+                        size="small"
+                        :placeholder="$t('codingBridge.session.modelPlaceholder')"
+                        @keyup.enter="applyCustomModel"
+                      >
+                        <template #append>
+                          <el-button :disabled="!customModelDraft.trim()" @click="applyCustomModel">
+                            <font-awesome-icon icon="fa-solid fa-check" />
+                          </el-button>
+                        </template>
+                      </el-input>
+                    </div>
+                  </div>
+                </el-popover>
 
+                <!-- Effort, permission and working directory are chosen at start. -->
+                <template v-if="isNewSession">
                   <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
                     <button type="button" class="cb-pill">
                       <font-awesome-icon icon="fa-solid fa-gauge-high" class="cb-pill__icon" />
@@ -274,29 +315,11 @@
                   </el-popover>
                 </template>
 
-                <template v-else>
-                  <span class="cb-pill cb-pill--static">
-                    <img
-                      v-if="providerIcon(currentSession?.provider || 'claude')"
-                      :src="providerIcon(currentSession?.provider || 'claude')!.src"
-                      class="cb-pill__brand"
-                      :class="{
-                        'cb-pill__brand--invert': providerIcon(currentSession?.provider || 'claude')!.invertOnDark
-                      }"
-                      alt=""
-                    />
-                    <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
-                    <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
-                  </span>
-                  <span v-if="currentSession?.model" class="cb-pill cb-pill--static">
-                    <font-awesome-icon icon="fa-solid fa-brain" class="cb-pill__icon" />
-                    <span class="truncate">{{ currentSession?.model }}</span>
-                  </span>
-                  <span v-if="currentSession?.cwd" class="cb-pill cb-pill--static">
-                    <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
-                    <span class="truncate">{{ currentSession?.cwd }}</span>
-                  </span>
-                </template>
+                <!-- Working directory is fixed once a session is running. -->
+                <span v-if="!isNewSession && currentSession?.cwd" class="cb-pill cb-pill--static">
+                  <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                  <span class="truncate">{{ currentSession?.cwd }}</span>
+                </span>
               </div>
 
               <el-button v-if="running" circle @click="onInterrupt">
@@ -323,8 +346,6 @@ import { defineComponent } from 'vue';
 import {
   ElInput,
   ElButton,
-  ElSelect,
-  ElOption,
   ElMessage,
   ElPopover,
   ElDropdown,
@@ -367,8 +388,6 @@ export default defineComponent({
   components: {
     ElInput,
     ElButton,
-    ElSelect,
-    ElOption,
     ElPopover,
     ElDropdown,
     ElDropdownMenu,
@@ -386,6 +405,7 @@ export default defineComponent({
       prompt: '',
       cwd: '',
       model: '',
+      customModelDraft: '',
       permissionMode: 'default',
       provider: 'claude',
       effort: '',
@@ -581,6 +601,8 @@ export default defineComponent({
     },
     currentSessionId() {
       this.scrollToBottom();
+      // Seed the composer (provider/model/cwd) from the session we switched to.
+      this.syncSessionSettings();
     },
     currentNodeId() {
       // Refresh capabilities when switching devices.
@@ -590,7 +612,8 @@ export default defineComponent({
       // Prefer a backend the node actually has installed. Fall back to the
       // first available provider when the current pick is missing or its CLI
       // isn't installed, so the model list and send button always match.
-      if (!this.providerCaps.length) {
+      // Only do this for a new session — a running session's provider is fixed.
+      if (!this.isNewSession || !this.providerCaps.length) {
         return;
       }
       const current = this.providerCaps.find((cap) => cap.name === this.provider);
@@ -602,13 +625,18 @@ export default defineComponent({
       }
     },
     provider() {
-      // Model lists and effort tiers differ per backend, so reset both.
+      // Model lists and effort tiers differ per backend, so reset both — but
+      // never while a session is running (its provider can't change anyway).
+      if (!this.isNewSession) {
+        return;
+      }
       this.model = '';
       this.effort = '';
     }
   },
   mounted() {
     this.requestCapabilities();
+    this.syncSessionSettings();
   },
   methods: {
     requestCapabilities() {
@@ -651,6 +679,41 @@ export default defineComponent({
     // Brand mark for a backend, or null to fall back to a generic icon.
     providerIcon(provider: string): { src: string; invertOnDark: boolean } | null {
       return PROVIDER_BRANDS[provider] ?? null;
+    },
+    // Seed the composer from the active session so the pills (provider, model,
+    // cwd) reflect what's actually running — e.g. after resuming from history.
+    syncSessionSettings() {
+      const session = this.currentSession;
+      if (!session) {
+        return;
+      }
+      if (session.provider) {
+        this.provider = session.provider;
+      }
+      this.model = session.model ?? '';
+      this.customModelDraft = '';
+      if (session.cwd) {
+        this.cwd = session.cwd;
+      }
+    },
+    // Pick a listed model (or the empty default) and close the popover.
+    selectModel(value: string) {
+      this.model = value;
+      this.customModelDraft = '';
+      this.closeModelPopover();
+    },
+    // Apply a free-typed model name from the custom input.
+    applyCustomModel() {
+      const value = this.customModelDraft.trim();
+      if (!value) {
+        return;
+      }
+      this.model = value;
+      this.customModelDraft = '';
+      this.closeModelPopover();
+    },
+    closeModelPopover() {
+      (this.$refs.modelPopover as { hide?: () => void } | undefined)?.hide?.();
     },
     onComposerEnter(event: KeyboardEvent | Event) {
       // Ignore Enter while an IME (e.g. pinyin) composition is active so that
@@ -786,6 +849,7 @@ export default defineComponent({
       this.$store.dispatch('codingBridge/newSession');
       this.cwd = '';
       this.model = '';
+      this.customModelDraft = '';
       this.permissionMode = 'default';
       this.provider = 'claude';
       this.effort = '';
@@ -899,5 +963,43 @@ export default defineComponent({
 // dark composer background.
 html.dark .cb-pill__brand--invert {
   filter: invert(1);
+}
+
+.cb-model-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.cb-model-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+
+  &__check {
+    flex: none;
+    margin-right: 6px;
+    font-size: 11px;
+  }
+
+  &:hover {
+    background: var(--app-content-hover-bg);
+  }
+}
+
+.cb-model-custom {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.08));
 }
 </style>
