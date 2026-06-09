@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 08 Jun 2026 18:26:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 02:42:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.264.0
+
+Tue, 09 Jun 2026 02:42:41 GMT
+
+### Minor changes
+
+- feat(coding-bridge): polish composer settings and upload file attachments (dev@acedata.cloud)
 
 ## 3.263.1
 
