@@ -8,7 +8,7 @@
         <div
           v-if="event.images && event.images.length"
           class="flex flex-wrap gap-1.5"
-          :class="{ 'mb-1.5': event.text }"
+          :class="{ 'mb-1.5': event.text || hasAttachments }"
         >
           <img
             v-for="(image, index) in event.images"
@@ -17,6 +17,22 @@
             class="w-16 h-16 rounded object-cover"
             alt=""
           />
+        </div>
+        <div v-if="hasAttachments" class="flex flex-wrap gap-1.5" :class="{ 'mb-1.5': event.text }">
+          <a
+            v-for="(attachment, index) in event.attachments"
+            :key="`${attachment.url}-${index}`"
+            :href="attachment.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex max-w-[220px] items-center gap-2 rounded-md bg-white/15 px-2 py-1.5 text-xs text-white hover:bg-white/20"
+          >
+            <img v-if="attachment.type === 'image'" :src="attachment.url" class="h-9 w-9 rounded object-cover" alt="" />
+            <span v-else class="flex h-9 w-9 items-center justify-center rounded bg-white/15">
+              <font-awesome-icon icon="fa-solid fa-file" />
+            </span>
+            <span class="min-w-0 truncate">{{ attachment.name || attachment.url }}</span>
+          </a>
         </div>
         <span v-if="event.text">{{ event.text }}</span>
       </div>
@@ -206,6 +222,9 @@ export default defineComponent({
         parts.push(`$${this.event.cost_usd.toFixed(4)}`);
       }
       return parts.join(' · ');
+    },
+    hasAttachments(): boolean {
+      return !!this.event.attachments?.length;
     }
   }
 });
