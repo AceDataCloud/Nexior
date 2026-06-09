@@ -105,6 +105,21 @@
               </div>
             </div>
 
+            <ul v-if="slashMenuVisible" class="cb-slash-menu">
+              <li
+                v-for="(command, index) in slashMatches"
+                :key="command.name"
+                class="cb-slash-menu__item"
+                :class="{ 'cb-slash-menu__item--active': index === slashActiveIndex }"
+                @mousedown.prevent="applySlash(command)"
+                @mouseenter="slashActiveIndex = index"
+              >
+                <span class="cb-slash-menu__name">/{{ command.name }}</span>
+                <span v-if="command.argument_hint" class="cb-slash-menu__hint">{{ command.argument_hint }}</span>
+                <span v-if="command.description" class="cb-slash-menu__desc">{{ command.description }}</span>
+              </li>
+            </ul>
+
             <el-input
               v-model="prompt"
               type="textarea"
@@ -112,7 +127,7 @@
               resize="none"
               class="cb-composer__input"
               :placeholder="$t('codingBridge.session.promptPlaceholder')"
-              @keydown.enter="onComposerEnter"
+              @keydown="onComposerKeydown"
             />
 
             <el-upload
@@ -357,7 +372,8 @@ import {
   ICodingBridgeEvent,
   ICodingBridgeNode,
   ICodingBridgeProviderCapability,
-  ICodingBridgeSession
+  ICodingBridgeSession,
+  ICodingBridgeSlashCommand
 } from '@/models';
 import claudeIcon from '@/assets/images/logos/claude.svg';
 import openaiIcon from '@/assets/images/logos/openai.svg';
@@ -400,6 +416,8 @@ export default defineComponent({
       provider: 'claude',
       effort: '',
       directoryVisible: false,
+      slashMenuOpen: false,
+      slashActiveIndex: 0,
       attachmentFileList: [] as UploadFiles,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
       maxAttachments: MAX_ATTACHMENTS
@@ -580,6 +598,33 @@ export default defineComponent({
         parts.push(session.model);
       }
       return parts.join(' · ');
+    },
+    // The backend whose slash commands the composer should suggest: a running
+    // session keeps its own backend; a new session uses the picked provider.
+    activeProviderName(): string {
+      return this.currentSession?.provider || this.provider;
+    },
+    slashCommands(): ICodingBridgeSlashCommand[] {
+      const name = this.activeProviderName;
+      const cap = this.providerCaps.find((item) => item.name === name);
+      return cap?.commands ?? [];
+    },
+    // Matches while the user is still typing the command token (no space yet).
+    slashMatches(): ICodingBridgeSlashCommand[] {
+      const match = this.prompt.match(/^\/(\S*)$/);
+      if (!match) {
+        return [];
+      }
+      const query = match[1].toLowerCase();
+      return this.slashCommands
+        .filter((command) => {
+          const names = [command.name, ...(command.aliases ?? [])];
+          return names.some((name) => name.toLowerCase().startsWith(query));
+        })
+        .slice(0, 8);
+    },
+    slashMenuVisible(): boolean {
+      return this.slashMenuOpen && this.slashMatches.length > 0;
     }
   },
   watch: {
@@ -615,6 +660,13 @@ export default defineComponent({
       // Model lists and effort tiers differ per backend, so reset both.
       this.model = '';
       this.effort = '';
+    },
+    prompt(value: string) {
+      // Open the slash menu only while a leading command token is being typed.
+      this.slashMenuOpen = /^\/\S*$/.test(value);
+      if (this.slashActiveIndex >= this.slashMatches.length) {
+        this.slashActiveIndex = 0;
+      }
     }
   },
   mounted() {
@@ -676,6 +728,52 @@ export default defineComponent({
       e.preventDefault();
       this.onSend();
     },
+    // Route keys to the slash-command menu when it is open; otherwise fall back
+    // to the normal Enter-to-send behaviour.
+    onComposerKeydown(event: KeyboardEvent | Event) {
+      const e = event as KeyboardEvent;
+      if (this.slashMenuVisible && !e.isComposing && e.keyCode !== 229) {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          this.moveSlash(1);
+          return;
+        }
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          this.moveSlash(-1);
+          return;
+        }
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          this.slashMenuOpen = false;
+          return;
+        }
+        const accept = e.key === 'Tab' || (e.key === 'Enter' && !e.shiftKey);
+        if (accept) {
+          e.preventDefault();
+          this.applySlash(this.slashMatches[this.slashActiveIndex]);
+          return;
+        }
+      }
+      if (e.key === 'Enter') {
+        this.onComposerEnter(e);
+      }
+    },
+    moveSlash(delta: number) {
+      const count = this.slashMatches.length;
+      if (!count) {
+        return;
+      }
+      this.slashActiveIndex = (this.slashActiveIndex + delta + count) % count;
+    },
+    applySlash(command?: ICodingBridgeSlashCommand) {
+      if (!command) {
+        return;
+      }
+      this.prompt = `/${command.name} `;
+      this.slashMenuOpen = false;
+      this.slashActiveIndex = 0;
+    },
     onSend() {
       if (!this.canSend) {
         return;
@@ -691,6 +789,8 @@ export default defineComponent({
         attachments: attachments.length ? attachments : undefined
       });
       this.prompt = '';
+      this.slashMenuOpen = false;
+      this.slashActiveIndex = 0;
       this.clearAttachments();
     },
     onAnswerQuestion(payload: { tool_use_id: string; output: string }) {
@@ -800,6 +900,8 @@ export default defineComponent({
       this.provider = 'claude';
       this.effort = '';
       this.prompt = '';
+      this.slashMenuOpen = false;
+      this.slashActiveIndex = 0;
       this.clearAttachments();
     },
     scrollToBottom() {
@@ -816,6 +918,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .cb-composer {
+  position: relative;
+
   &__input {
     :deep(.el-textarea__inner) {
       border: none;
@@ -849,6 +953,60 @@ export default defineComponent({
   &:focus-visible {
     color: var(--el-color-primary);
     outline: none;
+  }
+}
+
+.cb-slash-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 6px);
+  z-index: 20;
+  max-height: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border-radius: 12px;
+  border: 1px solid var(--app-border-subtle);
+  background: var(--app-content-bg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+
+  &__item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--app-text);
+
+    &--active {
+      background: var(--app-content-hover-bg);
+    }
+  }
+
+  &__name {
+    flex: none;
+    font-family: var(--el-font-family-mono, monospace);
+    color: var(--el-color-primary);
+  }
+
+  &__hint {
+    flex: none;
+    font-size: 11px;
+    color: var(--app-text-subtle);
+  }
+
+  &__desc {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    color: var(--app-text-subtle);
   }
 }
 

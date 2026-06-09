@@ -28,6 +28,7 @@ import {
   CB_EVENT_PERMISSION_REQUEST,
   CB_EVENT_PERMISSION_RESOLVED,
   CB_EVENT_SESSION_RESULT,
+  CB_EVENT_SESSION_NOTICE,
   CB_EVENT_SESSION_ERROR,
   CB_EVENT_SESSION_CLOSED,
   CB_EVENT_SESSIONS_SNAPSHOT,
@@ -155,6 +156,19 @@ const applyNodeEvent = (
         })
       );
       commit('updateSession', { session_id: sessionId, status: 'idle', cost_usd: payload.cost_usd });
+      break;
+    case CB_EVENT_SESSION_NOTICE:
+      // A friendly heads-up (e.g. a slash command that can't run remotely).
+      // The node already closes the turn with its own session.result.
+      commit(
+        'appendEvent',
+        makeEvent(sessionId, 'notice', {
+          text: payload.text,
+          subtype: payload.code,
+          command: payload.command,
+          level: payload.level
+        })
+      );
       break;
     case CB_EVENT_SESSION_ERROR:
       commit('appendEvent', makeEvent(sessionId, 'error', { text: payload.message }));

@@ -362,5 +362,13 @@
   "session.attachmentUploadError": {
     "message": "Failed to upload attachment.",
     "description": "Failed to upload attachment."
+  },
+  "notice.slashUnavailable": {
+    "message": "/{command} は対話型コマンドのため、リモートセッションでは実行できません。",
+    "description": "Notice shown when a slash command can't run in a remote session"
+  },
+  "notice.slashCodexUnsupported": {
+    "message": "/{command} はリモートセッションの Codex では利用できません。",
+    "description": "Notice shown when a Codex slash command isn't supported remotely"
   }
 }

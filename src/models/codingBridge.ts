@@ -38,6 +38,17 @@ export interface ICodingBridgeProviderCapability {
   efforts: string[];
   permission_modes: string[];
   allow_custom_model: boolean;
+  // Slash commands this backend can actually run in a remote session, used to
+  // drive the composer autocomplete. Absent on older nodes.
+  commands?: ICodingBridgeSlashCommand[];
+}
+
+/** One slash command a backend advertises as runnable in a remote session. */
+export interface ICodingBridgeSlashCommand {
+  name: string;
+  description?: string;
+  argument_hint?: string;
+  aliases?: string[];
 }
 
 /** The full capabilities descriptor a node advertises. */
@@ -90,7 +101,15 @@ export interface ICodingBridgeHistoryDetail {
  * (and the locally-echoed user prompt) into this one shape so the transcript
  * view can render a uniform, append-only list.
  */
-export type ICodingBridgeEventKind = 'prompt' | 'text' | 'thinking' | 'tool_use' | 'tool_result' | 'result' | 'error';
+export type ICodingBridgeEventKind =
+  | 'prompt'
+  | 'text'
+  | 'thinking'
+  | 'tool_use'
+  | 'tool_result'
+  | 'result'
+  | 'notice'
+  | 'error';
 
 export interface ICodingBridgeEvent {
   id: string;
@@ -105,6 +124,10 @@ export interface ICodingBridgeEvent {
   is_error?: boolean;
   subtype?: string;
   cost_usd?: number;
+  // Notice events: a machine code (e.g. 'slash_unavailable') and the command
+  // the user typed, so the UI can render a localized message.
+  command?: string;
+  level?: string;
   // Legacy data-URL previews of images the user attached to a prompt turn.
   images?: string[];
   attachments?: ICodingBridgeAttachment[];
