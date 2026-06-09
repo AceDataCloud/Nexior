@@ -85,6 +85,54 @@ export const appendEvent = (state: ICodingBridgeState, payload: ICodingBridgeEve
   state.events[payload.session_id].push(payload);
 };
 
+// Streaming: append an incremental text chunk onto the open bubble matching
+// `stream_id`. No-op if the bubble was already finalized or never created.
+export const appendDelta = (
+  state: ICodingBridgeState,
+  payload: { session_id: string; stream_id: string; text: string }
+): void => {
+  const events = state.events[payload.session_id];
+  if (!events) {
+    return;
+  }
+  const target = events.find((item) => item.kind === 'text' && item.stream_id === payload.stream_id);
+  if (target) {
+    target.text = (target.text ?? '') + (payload.text ?? '');
+  }
+};
+
+// Streaming: close the bubble matching `stream_id`, optionally replacing its
+// text with the authoritative final value from the node.
+export const finalizeStream = (
+  state: ICodingBridgeState,
+  payload: { session_id: string; stream_id: string; text?: string }
+): void => {
+  const events = state.events[payload.session_id];
+  if (!events) {
+    return;
+  }
+  const target = events.find((item) => item.kind === 'text' && item.stream_id === payload.stream_id);
+  if (target) {
+    if (typeof payload.text === 'string') {
+      target.text = payload.text;
+    }
+    target.streaming = false;
+  }
+};
+
+// Streaming: close every still-open bubble in a session (turn ended / errored).
+export const finalizeAllStreams = (state: ICodingBridgeState, payload: { session_id: string }): void => {
+  const events = state.events[payload.session_id];
+  if (!events) {
+    return;
+  }
+  for (const item of events) {
+    if (item.streaming) {
+      item.streaming = false;
+    }
+  }
+};
+
 // Replace a session's transcript wholesale (used when replaying history).
 export const setEvents = (
   state: ICodingBridgeState,
@@ -160,6 +208,9 @@ export default {
   upsertSession,
   updateSession,
   appendEvent,
+  appendDelta,
+  finalizeStream,
+  finalizeAllStreams,
   setEvents,
   setHistory,
   setHistoryRef,

@@ -31,6 +31,7 @@ export const CB_ACTION_PING = 'ping';
 // --- Inner events: node -> browser -----------------------------------------
 export const CB_EVENT_SESSION_STARTED = 'session.started';
 export const CB_EVENT_SESSION_TEXT = 'session.text';
+export const CB_EVENT_SESSION_TEXT_DELTA = 'session.text_delta';
 export const CB_EVENT_SESSION_THINKING = 'session.thinking';
 export const CB_EVENT_SESSION_TOOL_USE = 'session.tool_use';
 export const CB_EVENT_SESSION_TOOL_RESULT = 'session.tool_result';
