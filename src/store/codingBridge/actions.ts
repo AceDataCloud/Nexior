@@ -461,11 +461,19 @@ export const sendPrompt = (
     });
   } else {
     commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments }));
-    commit('updateSession', { session_id: sessionId as string, status: 'running' });
+    commit('updateSession', {
+      session_id: sessionId as string,
+      status: 'running',
+      // Keep the stored model in sync with a mid-session switch.
+      model: payload.model || undefined
+    });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_SEND,
       session_id: sessionId,
       prompt,
+      // Allow switching the model mid-session; sent verbatim so an empty value
+      // resets the node to its default model.
+      model: payload.model ?? '',
       images,
       attachments
     });
