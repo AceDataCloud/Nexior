@@ -61,6 +61,28 @@ const makeEvent = (
   ...fields
 });
 
+// Parse the AskUserQuestion wizard's JSON output (`{"answers": {...}}`).
+const parseAnswers = (output: string): Record<string, unknown> => {
+  try {
+    const parsed = JSON.parse(output);
+    if (parsed && typeof parsed === 'object') {
+      return parsed as Record<string, unknown>;
+    }
+  } catch {
+    // Malformed output: fall back to an empty answer set below.
+  }
+  return { answers: {} };
+};
+
+// Render answers as `question → choice` lines for nodes that surface the
+// reply as plain text rather than reading the structured `answer`.
+const formatAnswerText = (output: string): string => {
+  const answers = (parseAnswers(output).answers ?? {}) as Record<string, string | string[]>;
+  return Object.entries(answers)
+    .map(([question, value]) => `${question} → ${Array.isArray(value) ? value.join(', ') : value}`)
+    .join('\n');
+};
+
 // Translate one inner node event into the matching mutation(s).
 const applyNodeEvent = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
@@ -493,6 +515,30 @@ export const resolvePermission = (
   commit('removePermission', payload.request_id);
 };
 
+// Resolve an `AskUserQuestion` permission with the user's actual selection
+// rather than a bare allow/deny. The node maps `decision: 'allow'` onto the
+// agent's permission callback and feeds the answer back as the tool result, so
+// the turn continues with the user's choice. `answer` is the structured
+// `{ answers: { <question>: <label | label[]> } }` produced by the wizard;
+// `answer_text` is a readable rendering for nodes that prefer plain text.
+export const answerQuestion = (
+  { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
+  payload: { request_id: string; output: string }
+): void => {
+  const request = state.permissions.find((item) => item.request_id === payload.request_id);
+  if (!request) {
+    return;
+  }
+  socket?.sendToNode(request.node_id, {
+    action: CB_ACTION_PERMISSION_RESOLVE,
+    request_id: payload.request_id,
+    decision: 'allow',
+    answer: parseAnswers(payload.output),
+    answer_text: formatAnswerText(payload.output)
+  });
+  commit('removePermission', payload.request_id);
+};
+
 // Ask a node to list its local Claude Code / Codex transcripts.
 export const getHistory = ({ commit, state }: ActionContext<ICodingBridgeState, IRootState>, nodeId?: string): void => {
   const target = nodeId ?? state.currentNodeId;
@@ -557,6 +603,7 @@ export default {
   interruptSession,
   closeSession,
   resolvePermission,
+  answerQuestion,
   getHistory,
   getHistoryDetail,
   browseDir,

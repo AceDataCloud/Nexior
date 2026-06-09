@@ -51,6 +51,14 @@
           {{ $t('codingBridge.session.startHint') }}
         </div>
         <transcript-item v-for="event in events" :key="event.id" :event="event" />
+        <ask-user-question-card
+          v-if="pendingQuestion"
+          :key="pendingQuestion.request_id"
+          :tool-use-id="pendingQuestion.request_id"
+          :payload="pendingQuestion.payload"
+          @submit="onAnswerQuestion"
+          @skip="onSkipQuestion"
+        />
       </div>
 
       <!-- Composer -->
@@ -298,8 +306,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
+import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
+import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import {
+  IAskUserQuestionPayload,
   ICodingBridgeAttachment,
   ICodingBridgeCapabilities,
   ICodingBridgeEvent,
@@ -325,7 +336,8 @@ export default defineComponent({
     ElUpload,
     FontAwesomeIcon,
     TranscriptItem,
-    DirectoryDialog
+    DirectoryDialog,
+    AskUserQuestionCard
   },
   mixins: [pasteUploadMixin],
   emits: ['history'],
@@ -368,6 +380,17 @@ export default defineComponent({
     events(): ICodingBridgeEvent[] {
       const id = this.currentSessionId;
       return id ? (this.$store.state.codingBridge?.events?.[id] ?? []) : [];
+    },
+    // The agent's pending AskUserQuestion for this session, if any. Rendered as
+    // an inline question card instead of the generic allow/deny modal.
+    pendingQuestion(): { request_id: string; payload: IAskUserQuestionPayload } | undefined {
+      const sessionId = this.currentSessionId;
+      if (!sessionId) {
+        return undefined;
+      }
+      const permissions = this.$store.state.codingBridge?.permissions ?? [];
+      const request = permissions.find((item) => item.session_id === sessionId && isAskUserQuestionRequest(item));
+      return request ? { request_id: request.request_id, payload: questionPayload(request) } : undefined;
     },
     isNewSession(): boolean {
       return !this.currentSessionId;
@@ -495,6 +518,9 @@ export default defineComponent({
     events() {
       this.scrollToBottom();
     },
+    pendingQuestion() {
+      this.scrollToBottom();
+    },
     currentSessionId() {
       this.scrollToBottom();
     },
@@ -586,6 +612,18 @@ export default defineComponent({
       });
       this.prompt = '';
       this.clearAttachments();
+    },
+    onAnswerQuestion(payload: { tool_use_id: string; output: string }) {
+      this.$store.dispatch('codingBridge/answerQuestion', {
+        request_id: payload.tool_use_id,
+        output: payload.output
+      });
+    },
+    onSkipQuestion(payload: { tool_use_id: string }) {
+      this.$store.dispatch('codingBridge/resolvePermission', {
+        request_id: payload.tool_use_id,
+        decision: 'deny'
+      });
     },
     beforeAttachmentUpload(file: File): boolean {
       if (this.attachmentFileList.length >= MAX_ATTACHMENTS) {

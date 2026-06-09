@@ -46,6 +46,7 @@ import { defineComponent } from 'vue';
 import { ElDialog, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgePermissionRequest } from '@/models';
+import { isAskUserQuestionRequest } from './askUserQuestion';
 
 export default defineComponent({
   name: 'CodingBridgePermissionDialog',
@@ -56,7 +57,11 @@ export default defineComponent({
   },
   computed: {
     request(): ICodingBridgePermissionRequest | undefined {
-      return this.$store.state.codingBridge?.permissions?.[0];
+      // AskUserQuestion requests render as an inline question card in the
+      // session view, so the generic allow/deny modal skips them.
+      return (this.$store.state.codingBridge?.permissions ?? []).find(
+        (item: ICodingBridgePermissionRequest) => !isAskUserQuestionRequest(item)
+      );
     },
     hasInput(): boolean {
       return !!this.request?.input && Object.keys(this.request.input).length > 0;

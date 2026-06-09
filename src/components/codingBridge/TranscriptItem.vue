@@ -66,8 +66,19 @@
           toolDescription
         }}</span>
       </div>
+      <!-- AskUserQuestion: list the question(s) instead of raw JSON. -->
+      <div v-if="questionLines.length" class="flex flex-col gap-1.5 px-2.5 pb-2">
+        <div
+          v-for="(line, index) in questionLines"
+          :key="index"
+          class="rounded border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-2.5 py-1.5 text-xs"
+        >
+          <div v-if="line.header" class="font-medium text-[var(--app-text)]">{{ line.header }}</div>
+          <div class="whitespace-pre-wrap break-words text-[var(--app-text-subtle)]">{{ line.question }}</div>
+        </div>
+      </div>
       <!-- Shell-style tools render as a terminal command line. -->
-      <div v-if="commandText" class="px-2.5 pb-2">
+      <div v-else-if="commandText" class="px-2.5 pb-2">
         <div
           class="flex gap-2 overflow-x-auto rounded border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-2.5 py-1.5 font-mono text-xs"
         >
@@ -122,6 +133,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
 import { highlight } from '@/utils';
 import { ICodingBridgeEvent } from '@/models';
+import { ASK_USER_QUESTION_TOOL } from './askUserQuestion';
 import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
@@ -185,6 +197,22 @@ export default defineComponent({
         return 'fa-solid fa-magnifying-glass';
       }
       return 'fa-solid fa-code';
+    },
+    // AskUserQuestion is relayed as a tool_use; surface the question text
+    // instead of the raw `{questions:[...]}` JSON.
+    questionLines(): { header: string; question: string }[] {
+      const tool = (this.event.tool ?? '').toLowerCase();
+      const questions = this.event.input?.questions;
+      const looksLikeAsk = tool === ASK_USER_QUESTION_TOOL.toLowerCase() || Array.isArray(questions);
+      if (!looksLikeAsk || !Array.isArray(questions)) {
+        return [];
+      }
+      return questions
+        .filter((q) => q && typeof q.question === 'string')
+        .map((q) => ({
+          header: typeof q.header === 'string' ? q.header : '',
+          question: q.question as string
+        }));
     },
     inputText(): string {
       const input = this.event.input;
