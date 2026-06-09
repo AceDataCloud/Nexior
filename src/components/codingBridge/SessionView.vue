@@ -148,7 +148,14 @@
                 <template v-if="isNewSession">
                   <el-dropdown trigger="click" @command="provider = $event">
                     <button type="button" class="cb-pill">
-                      <font-awesome-icon icon="fa-solid fa-code" class="cb-pill__icon" />
+                      <img
+                        v-if="providerIcon(provider)"
+                        :src="providerIcon(provider)!.src"
+                        class="cb-pill__brand"
+                        :class="{ 'cb-pill__brand--invert': providerIcon(provider)!.invertOnDark }"
+                        alt=""
+                      />
+                      <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
                       <span class="truncate">{{ providerName(provider) }}</span>
                       <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
                     </button>
@@ -164,6 +171,13 @@
                             icon="fa-solid fa-check"
                             class="mr-2"
                             :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
+                          />
+                          <img
+                            v-if="providerIcon(opt.value)"
+                            :src="providerIcon(opt.value)!.src"
+                            class="cb-pill__brand mr-1.5"
+                            :class="{ 'cb-pill__brand--invert': providerIcon(opt.value)!.invertOnDark }"
+                            alt=""
                           />
                           {{ opt.label }}
                           <span v-if="!opt.available" class="ml-1 text-xs opacity-60">
@@ -262,7 +276,16 @@
 
                 <template v-else>
                   <span class="cb-pill cb-pill--static">
-                    <font-awesome-icon icon="fa-solid fa-code" class="cb-pill__icon" />
+                    <img
+                      v-if="providerIcon(currentSession?.provider || 'claude')"
+                      :src="providerIcon(currentSession?.provider || 'claude')!.src"
+                      class="cb-pill__brand"
+                      :class="{
+                        'cb-pill__brand--invert': providerIcon(currentSession?.provider || 'claude')!.invertOnDark
+                      }"
+                      alt=""
+                    />
+                    <font-awesome-icon v-else icon="fa-solid fa-code" class="cb-pill__icon" />
                     <span class="truncate">{{ providerName(currentSession?.provider || 'claude') }}</span>
                   </span>
                   <span v-if="currentSession?.model" class="cb-pill cb-pill--static">
@@ -326,9 +349,18 @@ import {
   ICodingBridgeProviderCapability,
   ICodingBridgeSession
 } from '@/models';
+import claudeIcon from '@/assets/images/logos/claude.svg';
+import openaiIcon from '@/assets/images/logos/openai.svg';
 
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
 const MAX_ATTACHMENTS = 10;
+
+// Brand marks for each coding backend. `invertOnDark` flips the black OpenAI
+// glyph to white in dark mode; Claude's orange already reads on both themes.
+const PROVIDER_BRANDS: Record<string, { src: string; invertOnDark: boolean }> = {
+  claude: { src: claudeIcon, invertOnDark: false },
+  codex: { src: openaiIcon, invertOnDark: true }
+};
 
 export default defineComponent({
   name: 'CodingBridgeSessionView',
@@ -616,6 +648,10 @@ export default defineComponent({
         ? (this.$t('codingBridge.session.providerCodex') as string)
         : (this.$t('codingBridge.session.providerClaude') as string);
     },
+    // Brand mark for a backend, or null to fall back to a generic icon.
+    providerIcon(provider: string): { src: string; invertOnDark: boolean } | null {
+      return PROVIDER_BRANDS[provider] ?? null;
+    },
     onComposerEnter(event: KeyboardEvent | Event) {
       // Ignore Enter while an IME (e.g. pinyin) composition is active so that
       // confirming candidates never sends the message. Modifier+Enter inserts
@@ -834,6 +870,14 @@ export default defineComponent({
     font-size: 12px;
   }
 
+  &__brand {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    vertical-align: middle;
+  }
+
   &__caret {
     flex: none;
     margin-left: 2px;
@@ -849,5 +893,11 @@ export default defineComponent({
       border-color: var(--app-border-subtle);
     }
   }
+}
+
+// The OpenAI glyph ships black; flip it to white so it stays visible on the
+// dark composer background.
+html.dark .cb-pill__brand--invert {
+  filter: invert(1);
 }
 </style>
