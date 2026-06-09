@@ -193,6 +193,7 @@
               <el-upload
                 ref="uploader"
                 v-model:file-list="attachmentFileList"
+                class="h-0 w-0 overflow-hidden opacity-0"
                 name="file"
                 :action="uploadUrl"
                 :headers="headers"
@@ -205,10 +206,11 @@
                 :on-error="onAttachmentError"
                 :on-exceed="onAttachmentExceed"
               >
-                <el-button circle :title="$t('codingBridge.session.attachFile')">
-                  <font-awesome-icon icon="fa-solid fa-paperclip" />
-                </el-button>
+                <span ref="attachmentUploadTrigger" class="block h-0 w-0" aria-hidden="true"></span>
               </el-upload>
+              <el-button circle :title="$t('codingBridge.session.attachFile')" @click="onTriggerAttachmentUpload">
+                <font-awesome-icon icon="fa-solid fa-paperclip" />
+              </el-button>
               <el-input
                 v-model="prompt"
                 type="textarea"
@@ -611,6 +613,16 @@ export default defineComponent({
     },
     onAttachmentExceed() {
       ElMessage.warning(this.$t('codingBridge.session.attachmentLimit', { count: MAX_ATTACHMENTS }) as string);
+    },
+    onTriggerAttachmentUpload() {
+      // Open the native picker owned by el-upload to avoid trigger-slot edge cases.
+      this.$nextTick(() => {
+        const root = (this.$refs.uploader as any)?.$el as HTMLElement | undefined;
+        const input =
+          (root?.querySelector('input.el-upload__input') as HTMLInputElement | null) ||
+          (root?.querySelector('input[type="file"]') as HTMLInputElement | null);
+        input?.click();
+      });
     },
     isAttachmentUploading(file: UploadFile): boolean {
       return file.status === 'ready' || file.status === 'uploading';
