@@ -64,94 +64,170 @@
           </el-button>
         </div>
         <template v-else>
-          <div v-if="isNewSession" class="flex flex-wrap gap-2 mb-2">
-            <el-select
-              v-model="provider"
-              size="small"
-              class="w-32"
-              :placeholder="$t('codingBridge.session.providerLabel')"
-            >
-              <el-option v-for="opt in providerOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-            </el-select>
-            <el-select
-              v-model="model"
-              size="small"
-              filterable
-              :allow-create="allowCustomModel"
-              default-first-option
-              clearable
-              class="w-40"
-              :placeholder="$t('codingBridge.session.modelPlaceholder')"
-            >
-              <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-            </el-select>
-            <el-select v-model="effort" size="small" class="w-32" :placeholder="$t('codingBridge.session.effortLabel')">
-              <el-option v-for="opt in effortOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-            </el-select>
-            <el-select
-              v-model="permissionMode"
-              size="small"
-              class="w-44"
-              :placeholder="$t('codingBridge.session.permissionModeLabel')"
-            >
-              <el-option v-for="opt in permissionModeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
-            </el-select>
-            <el-input
-              v-model="cwd"
-              size="small"
-              class="flex-1 min-w-[160px]"
-              :placeholder="$t('codingBridge.session.cwdPlaceholder')"
-              clearable
-            >
-              <template #append>
-                <el-button :title="$t('codingBridge.directory.title')" @click="openDirectory">
-                  <font-awesome-icon icon="fa-solid fa-folder-open" />
-                </el-button>
-              </template>
-            </el-input>
-          </div>
-          <!-- Attached image thumbnails -->
-          <div v-if="images.length" class="flex flex-wrap gap-2 mb-2">
-            <div
-              v-for="(image, index) in images"
-              :key="index"
-              class="relative w-14 h-14 rounded-md overflow-hidden border border-[var(--app-border-subtle)]"
-            >
-              <img :src="image" class="w-full h-full object-cover" :alt="$t('codingBridge.session.imageAlt')" />
+          <div class="rounded-lg border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-3 py-2">
+            <div class="flex flex-wrap items-center gap-1.5 pb-2">
               <button
+                v-for="chip in configChips"
+                :key="chip.key"
                 type="button"
-                class="absolute top-0 right-0 w-4 h-4 flex items-center justify-center bg-black/55 text-white text-[10px]"
-                :title="$t('codingBridge.session.removeImage')"
-                @click="removeImage(index)"
+                class="max-w-[220px] truncate rounded-full border border-[var(--app-border-subtle)] px-2.5 py-1 text-[11px] text-[var(--app-text-subtle)] hover:border-[var(--el-color-primary-light-5)] hover:text-[var(--el-color-primary)]"
+                :disabled="!isNewSession"
+                @click="settingsVisible = isNewSession"
               >
-                <font-awesome-icon icon="fa-solid fa-xmark" />
+                <font-awesome-icon :icon="chip.icon" class="mr-1" />
+                {{ chip.label }}
               </button>
             </div>
+
+            <div v-if="attachmentFileList.length" class="flex flex-wrap gap-2 pb-2">
+              <div
+                v-for="(file, index) in attachmentFileList"
+                :key="(file as any).uid || file.name || index"
+                class="group relative flex max-w-[220px] items-center gap-2 rounded-md border border-[var(--app-border-subtle)] bg-[var(--app-sidebar-bg)] px-2 py-1.5 text-xs"
+              >
+                <img
+                  v-if="attachmentPreviewUrl(file)"
+                  :src="attachmentPreviewUrl(file)"
+                  class="h-8 w-8 rounded object-cover"
+                  :alt="$t('codingBridge.session.attachmentImageAlt')"
+                />
+                <span v-else class="flex h-8 w-8 items-center justify-center rounded bg-[var(--app-content-bg)]">
+                  <font-awesome-icon icon="fa-solid fa-file" />
+                </span>
+                <span class="min-w-0 flex-1 truncate" :title="file.name">{{ file.name }}</span>
+                <span v-if="isAttachmentUploading(file)" class="text-[10px] text-[var(--app-text-subtle)]">
+                  {{ Math.round(file.percentage || 0) }}%
+                </span>
+                <button
+                  type="button"
+                  class="flex h-5 w-5 items-center justify-center rounded-full text-[var(--app-text-subtle)] hover:bg-[var(--app-content-hover-bg)] hover:text-[var(--el-color-danger)]"
+                  :title="$t('codingBridge.session.removeAttachment')"
+                  @click="removeAttachment(index, file)"
+                >
+                  <font-awesome-icon icon="fa-solid fa-xmark" />
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-end gap-2">
+              <el-popover
+                v-if="isNewSession"
+                v-model:visible="settingsVisible"
+                trigger="click"
+                placement="top-start"
+                width="460"
+                popper-class="coding-bridge-settings-popover"
+              >
+                <template #reference>
+                  <el-button circle :title="$t('codingBridge.session.settings')">
+                    <font-awesome-icon icon="fa-solid fa-gear" />
+                  </el-button>
+                </template>
+                <div class="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+                  <label class="flex flex-col gap-1">
+                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
+                      {{ $t('codingBridge.session.providerLabel') }}
+                    </span>
+                    <el-select v-model="provider" size="small">
+                      <el-option
+                        v-for="opt in providerOptions"
+                        :key="opt.value"
+                        :label="opt.label"
+                        :value="opt.value"
+                      />
+                    </el-select>
+                  </label>
+                  <label class="flex flex-col gap-1">
+                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
+                      {{ $t('codingBridge.session.modelPlaceholder') }}
+                    </span>
+                    <el-select
+                      v-model="model"
+                      size="small"
+                      filterable
+                      :allow-create="allowCustomModel"
+                      default-first-option
+                      clearable
+                    >
+                      <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+                    </el-select>
+                  </label>
+                  <label class="flex flex-col gap-1">
+                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
+                      {{ $t('codingBridge.session.effortLabel') }}
+                    </span>
+                    <el-select v-model="effort" size="small">
+                      <el-option v-for="opt in effortOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+                    </el-select>
+                  </label>
+                  <label class="flex flex-col gap-1">
+                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
+                      {{ $t('codingBridge.session.permissionModeLabel') }}
+                    </span>
+                    <el-select v-model="permissionMode" size="small">
+                      <el-option
+                        v-for="opt in permissionModeOptions"
+                        :key="opt.value"
+                        :label="opt.label"
+                        :value="opt.value"
+                      />
+                    </el-select>
+                  </label>
+                  <label class="col-span-1 flex flex-col gap-1 sm:col-span-2">
+                    <span class="text-xs font-medium text-[var(--app-text-subtle)]">
+                      {{ $t('codingBridge.session.cwdPlaceholder') }}
+                    </span>
+                    <el-input v-model="cwd" size="small" clearable>
+                      <template #append>
+                        <el-button :title="$t('codingBridge.directory.title')" @click="openDirectory">
+                          <font-awesome-icon icon="fa-solid fa-folder-open" />
+                        </el-button>
+                      </template>
+                    </el-input>
+                  </label>
+                </div>
+              </el-popover>
+              <el-button v-else circle :disabled="true" :title="$t('codingBridge.session.settingsLocked')">
+                <font-awesome-icon icon="fa-solid fa-gear" />
+              </el-button>
+              <el-upload
+                ref="uploader"
+                v-model:file-list="attachmentFileList"
+                name="file"
+                :action="uploadUrl"
+                :headers="headers"
+                :multiple="true"
+                :limit="maxAttachments"
+                :show-file-list="false"
+                :before-upload="beforeAttachmentUpload"
+                :on-change="onAttachmentChange"
+                :on-success="onAttachmentSuccess"
+                :on-error="onAttachmentError"
+                :on-exceed="onAttachmentExceed"
+              >
+                <el-button circle :title="$t('codingBridge.session.attachFile')">
+                  <font-awesome-icon icon="fa-solid fa-paperclip" />
+                </el-button>
+              </el-upload>
+              <el-input
+                v-model="prompt"
+                type="textarea"
+                :autosize="{ minRows: 3, maxRows: 12 }"
+                resize="none"
+                class="flex-1"
+                :placeholder="$t('codingBridge.session.promptPlaceholder')"
+                @keydown.enter="onComposerEnter"
+              />
+              <el-button v-if="running" round @click="onInterrupt">
+                <font-awesome-icon icon="fa-solid fa-stop" />
+              </el-button>
+              <el-button type="primary" round :disabled="!canSend" @click="onSend">
+                {{ $t('codingBridge.session.send') }}
+              </el-button>
+            </div>
           </div>
-          <div class="flex items-end gap-2">
-            <el-input
-              v-model="prompt"
-              type="textarea"
-              :autosize="{ minRows: 3, maxRows: 12 }"
-              resize="none"
-              class="flex-1"
-              :placeholder="$t('codingBridge.session.promptPlaceholder')"
-              @keydown.enter="onComposerEnter"
-              @paste="onPaste"
-            />
-            <el-button round :title="$t('codingBridge.session.attachImage')" @click="onPickImages">
-              <font-awesome-icon icon="fa-solid fa-image" />
-            </el-button>
-            <el-button v-if="running" round @click="onInterrupt">
-              <font-awesome-icon icon="fa-solid fa-stop" />
-            </el-button>
-            <el-button type="primary" round :disabled="!canSend" @click="onSend">
-              {{ $t('codingBridge.session.send') }}
-            </el-button>
-          </div>
-          <input ref="imageInput" type="file" accept="image/*" multiple class="hidden" @change="onImageInputChange" />
           <p class="text-[11px] text-[var(--app-text-subtle)] mt-1 px-1">
-            {{ resumeHint ? $t('codingBridge.history.resumeHint') : $t('codingBridge.session.enterHint') }}
+            {{ composerHint }}
           </p>
         </template>
       </div>
@@ -163,11 +239,23 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElInput, ElButton, ElSelect, ElOption, ElMessage } from 'element-plus';
+import {
+  ElInput,
+  ElButton,
+  ElSelect,
+  ElOption,
+  ElMessage,
+  ElPopover,
+  ElUpload,
+  UploadFile,
+  UploadFiles
+} from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
+import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import {
+  ICodingBridgeAttachment,
   ICodingBridgeCapabilities,
   ICodingBridgeEvent,
   ICodingBridgeNode,
@@ -175,9 +263,10 @@ import {
   ICodingBridgeSession
 } from '@/models';
 
-// Mirror the agent's per-image cap (12 MB) and bound how many attach per turn.
-const MAX_IMAGE_BYTES = 12 * 1024 * 1024;
-const MAX_IMAGES = 8;
+const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
+const MAX_ATTACHMENTS = 10;
+
+type ConfigChip = { key: string; label: string; icon: string };
 
 export default defineComponent({
   name: 'CodingBridgeSessionView',
@@ -186,10 +275,13 @@ export default defineComponent({
     ElButton,
     ElSelect,
     ElOption,
+    ElPopover,
+    ElUpload,
     FontAwesomeIcon,
     TranscriptItem,
     DirectoryDialog
   },
+  mixins: [pasteUploadMixin],
   emits: ['history'],
   data() {
     return {
@@ -200,10 +292,18 @@ export default defineComponent({
       provider: 'claude',
       effort: '',
       directoryVisible: false,
-      images: [] as string[]
+      settingsVisible: false,
+      attachmentFileList: [] as UploadFiles,
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
+      maxAttachments: MAX_ATTACHMENTS
     };
   },
   computed: {
+    headers(): Record<string, string> {
+      return {
+        Authorization: `Bearer ${this.$store.state.token.access}`
+      };
+    },
     currentNodeId(): string | undefined {
       return this.$store.state.codingBridge?.currentNodeId;
     },
@@ -249,8 +349,82 @@ export default defineComponent({
     connected(): boolean {
       return this.$store.state.codingBridge?.connection === 'connected';
     },
+    attachments(): ICodingBridgeAttachment[] {
+      return (this.attachmentFileList || [])
+        .map((file: UploadFile) => {
+          const response = file.response as { file_url?: string } | undefined;
+          const url =
+            response?.file_url || (typeof file.url === 'string' && !file.url.startsWith('blob:') ? file.url : '');
+          if (!url) {
+            return undefined;
+          }
+          const raw = file.raw as File | undefined;
+          const mime = raw?.type || (file as any).mime_type || '';
+          return {
+            type: this.isImageAttachment(file) ? 'image' : 'file',
+            url,
+            name: file.name,
+            mime_type: mime,
+            size: raw?.size
+          } as ICodingBridgeAttachment;
+        })
+        .filter((item: ICodingBridgeAttachment | undefined): item is ICodingBridgeAttachment => !!item);
+    },
+    uploadingAttachments(): boolean {
+      return (this.attachmentFileList || []).some((file: UploadFile) => this.isAttachmentUploading(file));
+    },
     canSend(): boolean {
-      return (!!this.prompt.trim() || this.images.length > 0) && this.connected && this.nodeOnline;
+      return (
+        (!!this.prompt.trim() || this.attachments.length > 0) &&
+        !this.uploadingAttachments &&
+        this.connected &&
+        this.nodeOnline
+      );
+    },
+    composerHint(): string {
+      if (this.uploadingAttachments) {
+        return this.$t('codingBridge.session.uploadingAttachment') as string;
+      }
+      return this.resumeHint
+        ? (this.$t('codingBridge.history.resumeHint') as string)
+        : (this.$t('codingBridge.session.enterHint') as string);
+    },
+    configChips(): ConfigChip[] {
+      if (!this.isNewSession && this.currentSession) {
+        const chips: ConfigChip[] = [
+          {
+            key: 'session-provider',
+            label: this.providerName(this.currentSession.provider || 'claude'),
+            icon: 'fa-solid fa-code'
+          }
+        ];
+        if (this.currentSession.model) {
+          chips.push({ key: 'session-model', label: this.currentSession.model, icon: 'fa-solid fa-brain' });
+        }
+        if (this.currentSession.cwd) {
+          chips.push({ key: 'session-cwd', label: this.currentSession.cwd, icon: 'fa-solid fa-folder-open' });
+        }
+        return chips;
+      }
+      return [
+        { key: 'provider', label: this.providerName(this.provider), icon: 'fa-solid fa-code' },
+        {
+          key: 'model',
+          label: this.model || (this.$t('codingBridge.session.modelDefault') as string),
+          icon: 'fa-solid fa-brain'
+        },
+        { key: 'effort', label: this.effortLabel(this.effort), icon: 'fa-solid fa-gauge-high' },
+        {
+          key: 'permission',
+          label: this.permissionModeLabel(this.permissionMode),
+          icon: 'fa-solid fa-shield-halved'
+        },
+        {
+          key: 'cwd',
+          label: this.cwd || (this.$t('codingBridge.session.cwdDefault') as string),
+          icon: 'fa-solid fa-folder-open'
+        }
+      ];
     },
     // Everything below is sourced from the node's `capabilities.get` so the UI
     // never hard-codes providers / models / efforts. The fallbacks only apply
@@ -392,6 +566,7 @@ export default defineComponent({
       if (!this.canSend) {
         return;
       }
+      const attachments = this.attachments;
       this.$store.dispatch('codingBridge/sendPrompt', {
         prompt: this.prompt,
         cwd: this.cwd,
@@ -399,71 +574,78 @@ export default defineComponent({
         permissionMode: this.permissionMode,
         provider: this.provider,
         effort: this.effort,
-        images: this.images.length ? [...this.images] : undefined
+        attachments: attachments.length ? attachments : undefined
       });
       this.prompt = '';
-      this.images = [];
+      this.clearAttachments();
     },
-    onPaste(event: ClipboardEvent) {
-      const items = event.clipboardData?.items;
-      if (!items) {
-        return;
+    beforeAttachmentUpload(file: File): boolean {
+      if (this.attachmentFileList.length >= MAX_ATTACHMENTS) {
+        ElMessage.warning(this.$t('codingBridge.session.attachmentLimit', { count: MAX_ATTACHMENTS }) as string);
+        return false;
       }
-      const files: File[] = [];
-      for (const item of Array.from(items)) {
-        if (item.kind === 'file' && item.type.startsWith('image/')) {
-          const file = item.getAsFile();
-          if (file) {
-            files.push(file);
-          }
-        }
+      if (file.size > MAX_ATTACHMENT_BYTES) {
+        ElMessage.warning(this.$t('codingBridge.session.attachmentTooLarge') as string);
+        return false;
       }
-      if (files.length) {
-        event.preventDefault();
-        this.addFiles(files);
-      }
+      return true;
     },
-    onPickImages() {
-      (this.$refs.imageInput as HTMLInputElement | undefined)?.click();
-    },
-    onImageInputChange(event: Event) {
-      const input = event.target as HTMLInputElement;
-      if (input.files?.length) {
-        this.addFiles(Array.from(input.files));
-      }
-      input.value = '';
-    },
-    async addFiles(files: File[]) {
-      for (const file of files) {
-        if (this.images.length >= MAX_IMAGES) {
-          ElMessage.warning(this.$t('codingBridge.session.imageLimit', { count: MAX_IMAGES }) as string);
-          break;
-        }
-        if (!file.type.startsWith('image/')) {
-          continue;
-        }
-        if (file.size > MAX_IMAGE_BYTES) {
-          ElMessage.warning(this.$t('codingBridge.session.imageTooLarge') as string);
-          continue;
-        }
+    onAttachmentChange(file: UploadFile) {
+      if (!file.url && file.raw && this.isImageAttachment(file)) {
         try {
-          const dataUrl = await this.readFileAsDataUrl(file);
-          this.images.push(dataUrl);
+          file.url = URL.createObjectURL(file.raw);
         } catch {
-          // Ignore unreadable files rather than failing the whole paste.
+          // ignore preview failures
         }
       }
     },
-    removeImage(index: number) {
-      this.images.splice(index, 1);
+    onAttachmentSuccess(response: { file_url?: string } | undefined, file: UploadFile) {
+      if (response?.file_url) {
+        this.revokeBlobUrl(file);
+        file.url = response.file_url;
+        file.response = response;
+      }
     },
-    readFileAsDataUrl(file: File): Promise<string> {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = () => reject(reader.error);
-        reader.readAsDataURL(file);
-      });
+    onAttachmentError() {
+      ElMessage.error(this.$t('codingBridge.session.attachmentUploadError') as string);
+    },
+    onAttachmentExceed() {
+      ElMessage.warning(this.$t('codingBridge.session.attachmentLimit', { count: MAX_ATTACHMENTS }) as string);
+    },
+    isAttachmentUploading(file: UploadFile): boolean {
+      return file.status === 'ready' || file.status === 'uploading';
+    },
+    isImageAttachment(file: UploadFile): boolean {
+      const raw = file.raw as File | undefined;
+      const mime = raw?.type || '';
+      if (mime.startsWith('image/')) {
+        return true;
+      }
+      return /\.(png|jpe?g|gif|webp|bmp|svg)$/i.test(file.name || file.url || '');
+    },
+    attachmentPreviewUrl(file: UploadFile): string {
+      return this.isImageAttachment(file)
+        ? file.url || (file.response as { file_url?: string } | undefined)?.file_url || ''
+        : '';
+    },
+    removeAttachment(index: number, file: UploadFile) {
+      this.revokeBlobUrl(file);
+      this.attachmentFileList.splice(index, 1);
+    },
+    clearAttachments() {
+      for (const file of this.attachmentFileList) {
+        this.revokeBlobUrl(file);
+      }
+      this.attachmentFileList = [];
+    },
+    revokeBlobUrl(file: UploadFile) {
+      if (file.url?.startsWith('blob:')) {
+        try {
+          URL.revokeObjectURL(file.url);
+        } catch {
+          // ignore revoke failures
+        }
+      }
     },
     onInterrupt() {
       this.$store.dispatch('codingBridge/interruptSession');
@@ -482,7 +664,8 @@ export default defineComponent({
       this.provider = 'claude';
       this.effort = '';
       this.prompt = '';
-      this.images = [];
+      this.settingsVisible = false;
+      this.clearAttachments();
     },
     scrollToBottom() {
       this.$nextTick(() => {

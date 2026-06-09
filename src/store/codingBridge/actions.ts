@@ -2,7 +2,13 @@ import { ActionContext } from 'vuex';
 import { codingBridgeOperator } from '@/operators';
 import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import { IRootState } from '../common/models';
-import { Status, ICodingBridgeEvent, ICodingBridgeEventKind, ICodingBridgeNode } from '@/models';
+import {
+  Status,
+  ICodingBridgeAttachment,
+  ICodingBridgeEvent,
+  ICodingBridgeEventKind,
+  ICodingBridgeNode
+} from '@/models';
 import { CodingBridgeSocket } from '@/utils/codingBridgeSocket';
 import {
   CB_ACTION_SESSION_START,
@@ -382,12 +388,14 @@ export const sendPrompt = (
     provider?: string;
     effort?: string;
     images?: string[];
+    attachments?: ICodingBridgeAttachment[];
   }
 ): void => {
   const nodeId = state.currentNodeId;
   const prompt = payload.prompt?.trim();
   const images = payload.images?.length ? payload.images : undefined;
-  if (!nodeId || !socket || (!prompt && !images)) {
+  const attachments = payload.attachments?.length ? payload.attachments : undefined;
+  if (!nodeId || !socket || (!prompt && !images && !attachments)) {
     return;
   }
   let sessionId = state.currentSessionId;
@@ -414,7 +422,7 @@ export const sendPrompt = (
       sessionId = existing.session_id;
       commit('updateSession', { session_id: sessionId, status: 'starting' });
     }
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images }));
+    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments }));
     commit('updateSession', { session_id: sessionId as string, started: true });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_START,
@@ -426,16 +434,18 @@ export const sendPrompt = (
       provider,
       effort: payload.effort || undefined,
       images,
+      attachments,
       resume_session_id: existing?.resume_session_id || undefined
     });
   } else {
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images }));
+    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments }));
     commit('updateSession', { session_id: sessionId as string, status: 'running' });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_SEND,
       session_id: sessionId,
       prompt,
-      images
+      images,
+      attachments
     });
   }
 };
