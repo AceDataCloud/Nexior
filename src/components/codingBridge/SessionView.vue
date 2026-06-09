@@ -146,13 +146,21 @@
                     </button>
                     <template #dropdown>
                       <el-dropdown-menu>
-                        <el-dropdown-item v-for="opt in providerOptions" :key="opt.value" :command="opt.value">
+                        <el-dropdown-item
+                          v-for="opt in providerOptions"
+                          :key="opt.value"
+                          :command="opt.value"
+                          :disabled="!opt.available"
+                        >
                           <font-awesome-icon
                             icon="fa-solid fa-check"
                             class="mr-2"
                             :class="opt.value === provider ? 'opacity-100' : 'opacity-0'"
                           />
                           {{ opt.label }}
+                          <span v-if="!opt.available" class="ml-1 text-xs opacity-60">
+                            {{ $t('codingBridge.session.providerUnavailable') }}
+                          </span>
                         </el-dropdown-item>
                       </el-dropdown-menu>
                     </template>
@@ -423,12 +431,18 @@ export default defineComponent({
         (!!this.prompt.trim() || this.attachments.length > 0) &&
         !this.uploadingAttachments &&
         this.connected &&
-        this.nodeOnline
+        this.nodeOnline &&
+        this.currentProviderAvailable
       );
     },
     composerHint(): string {
       if (this.uploadingAttachments) {
         return this.$t('codingBridge.session.uploadingAttachment') as string;
+      }
+      if (this.providerCaps.length && !this.currentProviderAvailable) {
+        return this.$t('codingBridge.session.providerUnavailableHint', {
+          name: this.providerName(this.provider)
+        }) as string;
       }
       return this.resumeHint
         ? (this.$t('codingBridge.history.resumeHint') as string)
@@ -447,13 +461,25 @@ export default defineComponent({
     currentProviderCap(): ICodingBridgeProviderCapability | undefined {
       return this.providerCaps.find((cap) => cap.name === this.provider);
     },
-    providerOptions(): { label: string; value: string }[] {
+    // Unknown until capabilities load → treat as available so the composer is
+    // never blocked before the node has reported anything.
+    currentProviderAvailable(): boolean {
+      if (!this.providerCaps.length) {
+        return true;
+      }
+      return this.currentProviderCap?.available !== false;
+    },
+    providerOptions(): { label: string; value: string; available: boolean }[] {
       if (this.providerCaps.length) {
-        return this.providerCaps.map((cap) => ({ value: cap.name, label: cap.label }));
+        return this.providerCaps.map((cap) => ({
+          value: cap.name,
+          label: cap.label,
+          available: cap.available !== false
+        }));
       }
       return [
-        { label: this.$t('codingBridge.session.providerClaude') as string, value: 'claude' },
-        { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex' }
+        { label: this.$t('codingBridge.session.providerClaude') as string, value: 'claude', available: true },
+        { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex', available: true }
       ];
     },
     modelOptions(): { label: string; value: string }[] {
@@ -503,10 +529,18 @@ export default defineComponent({
       this.requestCapabilities();
     },
     providerCaps() {
-      // If the picked backend isn't offered by this node, fall back to the
-      // first one it reports so the model list always matches.
-      if (this.providerCaps.length && !this.providerCaps.some((cap) => cap.name === this.provider)) {
-        this.provider = this.providerCaps[0].name;
+      // Prefer a backend the node actually has installed. Fall back to the
+      // first available provider when the current pick is missing or its CLI
+      // isn't installed, so the model list and send button always match.
+      if (!this.providerCaps.length) {
+        return;
+      }
+      const current = this.providerCaps.find((cap) => cap.name === this.provider);
+      if (!current || current.available === false) {
+        const firstAvailable = this.providerCaps.find((cap) => cap.available !== false);
+        if (firstAvailable) {
+          this.provider = firstAvailable.name;
+        }
       }
     },
     provider() {
