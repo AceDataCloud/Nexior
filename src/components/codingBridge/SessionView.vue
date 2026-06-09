@@ -263,12 +263,22 @@
                       v-model="cwd"
                       size="small"
                       clearable
+                      class="cb-cwd-input"
                       :placeholder="$t('codingBridge.session.cwdPlaceholder')"
                     >
-                      <template #append>
-                        <el-button :title="$t('codingBridge.directory.title')" @click="openDirectory">
+                      <template #suffix>
+                        <span
+                          class="cb-cwd-browse"
+                          role="button"
+                          tabindex="0"
+                          :title="$t('codingBridge.directory.title')"
+                          :aria-label="$t('codingBridge.directory.title')"
+                          @click="openDirectory"
+                          @keydown.enter.prevent="openDirectory"
+                          @keydown.space.prevent="openDirectory"
+                        >
                           <font-awesome-icon icon="fa-solid fa-folder-open" />
-                        </el-button>
+                        </span>
                       </template>
                     </el-input>
                   </el-popover>
@@ -816,6 +826,29 @@ export default defineComponent({
       font-size: 14px;
       line-height: 1.5;
     }
+  }
+}
+
+// Working-directory picker: the folder-browse trigger lives inside the input
+// as a suffix icon so it reads as one control instead of a detached button.
+.cb-cwd-input {
+  :deep(.el-input__wrapper) {
+    border-radius: 9999px;
+  }
+}
+
+.cb-cwd-browse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--app-text-subtle);
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--el-color-primary);
+    outline: none;
   }
 }
 
