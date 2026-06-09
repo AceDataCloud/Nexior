@@ -37,6 +37,7 @@ export const CB_EVENT_SESSION_TOOL_RESULT = 'session.tool_result';
 export const CB_EVENT_PERMISSION_REQUEST = 'permission.request';
 export const CB_EVENT_PERMISSION_RESOLVED = 'permission.resolved';
 export const CB_EVENT_SESSION_RESULT = 'session.result';
+export const CB_EVENT_SESSION_NOTICE = 'session.notice';
 export const CB_EVENT_SESSION_ERROR = 'session.error';
 export const CB_EVENT_SESSION_CLOSED = 'session.closed';
 export const CB_EVENT_SESSIONS_SNAPSHOT = 'sessions.snapshot';

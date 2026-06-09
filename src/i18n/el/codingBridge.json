@@ -362,5 +362,13 @@
   "session.attachmentUploadError": {
     "message": "Failed to upload attachment.",
     "description": "Failed to upload attachment."
+  },
+  "notice.slashUnavailable": {
+    "message": "Η /{command} είναι διαδραστική εντολή και δεν μπορεί να εκτελεστεί σε απομακρυσμένη συνεδρία.",
+    "description": "Notice shown when a slash command can't run in a remote session"
+  },
+  "notice.slashCodexUnsupported": {
+    "message": "Η /{command} δεν είναι διαθέσιμη για το Codex σε απομακρυσμένη συνεδρία.",
+    "description": "Notice shown when a Codex slash command isn't supported remotely"
   }
 }

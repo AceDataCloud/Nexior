@@ -117,6 +117,15 @@
       <span>{{ resultLabel }}</span>
     </div>
 
+    <!-- Notice: a friendly heads-up such as a slash command that can't run remotely. -->
+    <div
+      v-else-if="event.kind === 'notice'"
+      class="flex items-start gap-2 rounded-md bg-[var(--app-sidebar-bg)] border border-[var(--app-border-subtle)] text-[var(--app-text-subtle)] px-3 py-2 text-xs"
+    >
+      <font-awesome-icon icon="fa-solid fa-circle-info" class="mt-0.5 flex-none text-[var(--el-color-primary)]" />
+      <span class="whitespace-pre-wrap break-words">{{ noticeText }}</span>
+    </div>
+
     <!-- Error -->
     <div
       v-else-if="event.kind === 'error'"
@@ -253,6 +262,21 @@ export default defineComponent({
     },
     hasAttachments(): boolean {
       return !!this.event.attachments?.length;
+    },
+    // Localize a notice from its machine code + command, falling back to the
+    // node-provided English text for codes the web app doesn't know yet.
+    noticeText(): string {
+      const code = this.event.subtype;
+      const command = this.event.command;
+      if (command) {
+        if (code === 'slash_unavailable') {
+          return this.$t('codingBridge.notice.slashUnavailable', { command }) as string;
+        }
+        if (code === 'slash_codex_unsupported') {
+          return this.$t('codingBridge.notice.slashCodexUnsupported', { command }) as string;
+        }
+      }
+      return this.event.text || '';
     }
   }
 });

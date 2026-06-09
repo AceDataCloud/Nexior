@@ -362,5 +362,13 @@
   "session.attachmentUploadError": {
     "message": "Failed to upload attachment.",
     "description": "Failed to upload attachment."
+  },
+  "notice.slashUnavailable": {
+    "message": "/{command} 是互動式指令，無法在遠端工作階段中執行。",
+    "description": "Notice shown when a slash command can't run in a remote session"
+  },
+  "notice.slashCodexUnsupported": {
+    "message": "/{command} 在遠端工作階段中暫不支援 Codex。",
+    "description": "Notice shown when a Codex slash command isn't supported remotely"
   }
 }
