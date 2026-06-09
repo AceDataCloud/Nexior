@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 16:01:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 09 Jun 2026 16:01:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.269.0
+
+Tue, 09 Jun 2026 16:01:44 GMT
+
+### Minor changes
+
+- Show Claude and OpenAI brand marks for each Coding Bridge backend in the session composer (dev@acedata.cloud)
 
 ## 3.268.0
 
