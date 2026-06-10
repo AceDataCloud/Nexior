@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 10 Jun 2026 01:24:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 10 Jun 2026 02:46:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.274.2
+
+Wed, 10 Jun 2026 02:46:04 GMT
+
+### Patches
+
+- Cleanup: remove accidentally committed node_modules symlink and harden ignore rule (dev@acedata.cloud)
+- Coding Bridge: slash command menu lists all available commands (scrollable) instead of only the first 8 (dev@acedata.cloud)
 
 ## 3.274.0
 
