@@ -72,6 +72,9 @@ export interface ICodingBridgeSession {
   started?: boolean;
   // Replay of past history that cannot be continued (e.g. Codex).
   readonly?: boolean;
+  // Trace id of the most recent turn, threaded browser → relay → node and back
+  // for end-to-end correlation in logs.
+  trace_id?: string;
 }
 
 /** One past on-device session as listed by `history.list`. */
@@ -131,6 +134,8 @@ export interface ICodingBridgeEvent {
   // Legacy data-URL previews of images the user attached to a prompt turn.
   images?: string[];
   attachments?: ICodingBridgeAttachment[];
+  // Trace id correlating this event with the turn that produced it.
+  trace_id?: string;
 }
 
 /** One browser-uploaded file/image attached to a prompt turn. */

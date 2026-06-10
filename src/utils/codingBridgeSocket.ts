@@ -28,6 +28,33 @@ const makeId = (): string => {
   return `${Date.now().toString(16)}${Math.random().toString(16).slice(2)}`;
 };
 
+// Verbose envelope tracing is opt-in (set `localStorage.cbDebug = '1'`) so the
+// console stays quiet for normal users but a single flag surfaces the full
+// browser → relay → node trace when diagnosing an issue.
+const debugEnabled = (): boolean => {
+  try {
+    return typeof localStorage !== 'undefined' && localStorage.getItem('cbDebug') === '1';
+  } catch {
+    return false;
+  }
+};
+
+const logEnvelope = (direction: 'send' | 'recv', message: Record<string, any>): void => {
+  if (!debugEnabled()) {
+    return;
+  }
+  const payload = message?.payload ?? {};
+  console.debug('[codingBridge]', direction, {
+    type: message?.type,
+    id: message?.id,
+    node_id: message?.node_id ?? message?.from_node,
+    action: payload?.action,
+    event: payload?.event,
+    session_id: payload?.session_id,
+    trace_id: payload?.trace_id
+  });
+};
+
 /**
  * Single browser WebSocket toward the `coding-bridge` relay.
  *
@@ -97,6 +124,7 @@ export class CodingBridgeSocket {
       return;
     }
     const payload = message?.payload ?? {};
+    logEnvelope('recv', message);
     switch (message?.type) {
       case CB_NODE_TO_BROWSER:
         this.handlers.onEvent?.(payload, message?.from_node);
@@ -132,6 +160,7 @@ export class CodingBridgeSocket {
       return;
     }
     const envelope = { v: 1, id: makeId(), ts: Date.now(), type, ...extra };
+    logEnvelope('send', envelope);
     this.ws?.send(JSON.stringify(envelope));
   }
 
