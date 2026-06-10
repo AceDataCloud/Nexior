@@ -650,12 +650,10 @@ export default defineComponent({
         return [];
       }
       const query = match[1].toLowerCase();
-      return this.slashCommands
-        .filter((command) => {
-          const names = [command.name, ...(command.aliases ?? [])];
-          return names.some((name) => name.toLowerCase().startsWith(query));
-        })
-        .slice(0, 8);
+      return this.slashCommands.filter((command) => {
+        const names = [command.name, ...(command.aliases ?? [])];
+        return names.some((name) => name.toLowerCase().startsWith(query));
+      });
     },
     slashMenuVisible(): boolean {
       return this.slashMenuOpen && this.slashMatches.length > 0;
@@ -859,6 +857,11 @@ export default defineComponent({
         return;
       }
       this.slashActiveIndex = (this.slashActiveIndex + delta + count) % count;
+      // Keep the highlighted command visible as the list scrolls.
+      this.$nextTick(() => {
+        const active = this.$el?.querySelector?.('.cb-slash-menu__item--active');
+        (active as HTMLElement | null)?.scrollIntoView({ block: 'nearest' });
+      });
     },
     applySlash(command?: ICodingBridgeSlashCommand) {
       if (!command) {
