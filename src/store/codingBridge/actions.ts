@@ -95,6 +95,11 @@ const applyNodeEvent = (
 ): void => {
   const event = payload?.event;
   const sessionId = payload?.session_id;
+  const traceId = payload?.trace_id;
+  // Keep the session's trace id current with whatever turn the node is on.
+  if (sessionId && traceId) {
+    commit('updateSession', { session_id: sessionId, trace_id: traceId });
+  }
   switch (event) {
     case CB_EVENT_SESSION_STARTED:
       commit('upsertSession', {
@@ -102,7 +107,8 @@ const applyNodeEvent = (
         node_id: fromNode,
         status: 'idle',
         cwd: payload.cwd,
-        model: payload.model
+        model: payload.model,
+        trace_id: traceId
       });
       break;
     case CB_EVENT_SESSION_TEXT_DELTA: {
@@ -116,7 +122,12 @@ const applyNodeEvent = (
       } else {
         commit(
           'appendEvent',
-          makeEvent(sessionId, 'text', { text: payload.text ?? '', stream_id: streamId, streaming: true })
+          makeEvent(sessionId, 'text', {
+            text: payload.text ?? '',
+            stream_id: streamId,
+            streaming: true,
+            trace_id: traceId
+          })
         );
       }
       break;
@@ -130,12 +141,12 @@ const applyNodeEvent = (
       if (open) {
         commit('finalizeStream', { session_id: sessionId, stream_id: streamId, text: payload.text });
       } else {
-        commit('appendEvent', makeEvent(sessionId, 'text', { text: payload.text }));
+        commit('appendEvent', makeEvent(sessionId, 'text', { text: payload.text, trace_id: traceId }));
       }
       break;
     }
     case CB_EVENT_SESSION_THINKING:
-      commit('appendEvent', makeEvent(sessionId, 'thinking', { text: payload.text }));
+      commit('appendEvent', makeEvent(sessionId, 'thinking', { text: payload.text, trace_id: traceId }));
       break;
     case CB_EVENT_SESSION_TOOL_USE:
       commit(
@@ -143,7 +154,8 @@ const applyNodeEvent = (
         makeEvent(sessionId, 'tool_use', {
           tool: payload.tool,
           tool_use_id: payload.tool_use_id,
-          input: payload.input
+          input: payload.input,
+          trace_id: traceId
         })
       );
       break;
@@ -153,7 +165,8 @@ const applyNodeEvent = (
         makeEvent(sessionId, 'tool_result', {
           tool_use_id: payload.tool_use_id,
           content: payload.content,
-          is_error: payload.is_error
+          is_error: payload.is_error,
+          trace_id: traceId
         })
       );
       break;
@@ -181,7 +194,8 @@ const applyNodeEvent = (
           subtype: payload.subtype,
           is_error: payload.is_error,
           text: payload.result,
-          cost_usd: payload.cost_usd
+          cost_usd: payload.cost_usd,
+          trace_id: traceId
         })
       );
       commit('updateSession', { session_id: sessionId, status: 'idle', cost_usd: payload.cost_usd });
@@ -201,7 +215,7 @@ const applyNodeEvent = (
       break;
     case CB_EVENT_SESSION_ERROR:
       commit('finalizeAllStreams', { session_id: sessionId });
-      commit('appendEvent', makeEvent(sessionId, 'error', { text: payload.message }));
+      commit('appendEvent', makeEvent(sessionId, 'error', { text: payload.message, trace_id: traceId }));
       commit('updateSession', { session_id: sessionId, status: 'error' });
       break;
     case CB_EVENT_SESSION_CLOSED:
@@ -465,6 +479,9 @@ export const sendPrompt = (
   if (!nodeId || !socket || (!prompt && !images && !attachments)) {
     return;
   }
+  // One trace id per turn, threaded browser → relay → node and echoed back on
+  // every resulting event so a single id correlates the whole round-trip.
+  const traceId = uid();
   let sessionId = state.currentSessionId;
   const existing = sessionId ? state.sessions[sessionId] : undefined;
   // A turn must be started when there is no session yet, or when the current
@@ -482,18 +499,23 @@ export const sendPrompt = (
         status: 'starting',
         cwd: payload.cwd,
         model: payload.model,
-        provider
+        provider,
+        trace_id: traceId
       });
       commit('setCurrentSession', sessionId);
     } else {
       sessionId = existing.session_id;
-      commit('updateSession', { session_id: sessionId, status: 'starting' });
+      commit('updateSession', { session_id: sessionId, status: 'starting', trace_id: traceId });
     }
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments }));
+    commit(
+      'appendEvent',
+      makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments, trace_id: traceId })
+    );
     commit('updateSession', { session_id: sessionId as string, started: true });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_START,
       session_id: sessionId,
+      trace_id: traceId,
       prompt,
       cwd: payload.cwd || existing?.cwd || undefined,
       model: payload.model || existing?.model || undefined,
@@ -505,7 +527,11 @@ export const sendPrompt = (
       resume_session_id: existing?.resume_session_id || undefined
     });
   } else {
-    commit('appendEvent', makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments }));
+    commit('updateSession', { session_id: sessionId as string, trace_id: traceId });
+    commit(
+      'appendEvent',
+      makeEvent(sessionId as string, 'prompt', { text: prompt, images, attachments, trace_id: traceId })
+    );
     commit('updateSession', {
       session_id: sessionId as string,
       status: 'running',
@@ -515,6 +541,7 @@ export const sendPrompt = (
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_SEND,
       session_id: sessionId,
+      trace_id: traceId,
       prompt,
       // Allow switching the model mid-session; sent verbatim so an empty value
       // resets the node to its default model.

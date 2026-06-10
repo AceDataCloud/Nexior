@@ -45,6 +45,18 @@
         {{ $t('codingBridge.session.deviceOffline') }}
       </div>
 
+      <!-- Diagnostic ids: copyable identifiers for issue reports / log lookups. -->
+      <div
+        v-if="diagnostics.length"
+        class="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-1.5 text-[11px] text-[var(--app-text-subtle)] border-b border-[var(--app-border-subtle)]"
+      >
+        <span v-for="item in diagnostics" :key="item.label" class="inline-flex items-center gap-1 min-w-0">
+          <span class="opacity-70">{{ item.label }}:</span>
+          <span class="font-mono truncate max-w-[160px]" :title="item.value">{{ item.value }}</span>
+          <copy-to-clipboard :content="item.value" class="inline-block" />
+        </span>
+      </div>
+
       <!-- Transcript -->
       <div ref="transcript" class="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
         <div v-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
@@ -386,6 +398,7 @@ import DirectoryDialog from './DirectoryDialog.vue';
 import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
 import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
   IAskUserQuestionPayload,
   ICodingBridgeAttachment,
@@ -422,7 +435,8 @@ export default defineComponent({
     FontAwesomeIcon,
     TranscriptItem,
     DirectoryDialog,
-    AskUserQuestionCard
+    AskUserQuestionCard,
+    CopyToClipboard
   },
   mixins: [pasteUploadMixin],
   emits: ['history'],
@@ -645,6 +659,23 @@ export default defineComponent({
     },
     slashMenuVisible(): boolean {
       return this.slashMenuOpen && this.slashMatches.length > 0;
+    },
+    // Copyable identifiers for issue reports and CLS log lookups.
+    diagnostics(): { label: string; value: string }[] {
+      const items: { label: string; value: string }[] = [];
+      if (this.currentNodeId) {
+        items.push({ label: this.$t('codingBridge.session.nodeId') as string, value: this.currentNodeId });
+      }
+      if (this.currentSessionId) {
+        items.push({ label: this.$t('codingBridge.session.sessionId') as string, value: this.currentSessionId });
+      }
+      if (this.currentSession?.trace_id) {
+        items.push({
+          label: this.$t('codingBridge.session.traceId') as string,
+          value: this.currentSession.trace_id
+        });
+      }
+      return items;
     }
   },
   watch: {
