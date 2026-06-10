@@ -131,6 +131,10 @@ export interface ICodingBridgeEvent {
   // the user typed, so the UI can render a localized message.
   command?: string;
   level?: string;
+  // Streaming assistant text: `stream_id` ties text_delta chunks to their
+  // final `session.text` commit; `streaming` stays true while deltas arrive.
+  stream_id?: string;
+  streaming?: boolean;
   // Legacy data-URL previews of images the user attached to a prompt turn.
   images?: string[];
   attachments?: ICodingBridgeAttachment[];

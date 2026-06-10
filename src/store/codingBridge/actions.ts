@@ -22,6 +22,7 @@ import {
   CB_ACTION_CAPABILITIES_GET,
   CB_EVENT_SESSION_STARTED,
   CB_EVENT_SESSION_TEXT,
+  CB_EVENT_SESSION_TEXT_DELTA,
   CB_EVENT_SESSION_THINKING,
   CB_EVENT_SESSION_TOOL_USE,
   CB_EVENT_SESSION_TOOL_RESULT,
@@ -110,9 +111,40 @@ const applyNodeEvent = (
         trace_id: traceId
       });
       break;
-    case CB_EVENT_SESSION_TEXT:
-      commit('appendEvent', makeEvent(sessionId, 'text', { text: payload.text, trace_id: traceId }));
+    case CB_EVENT_SESSION_TEXT_DELTA: {
+      // Streaming chunk: grow the open bubble for this stream id, or open a
+      // new streaming bubble if this is the first delta seen for it.
+      const streamId = payload.id;
+      const open =
+        streamId && state.events[sessionId]?.find((item) => item.kind === 'text' && item.stream_id === streamId);
+      if (open) {
+        commit('appendDelta', { session_id: sessionId, stream_id: streamId, text: payload.text ?? '' });
+      } else {
+        commit(
+          'appendEvent',
+          makeEvent(sessionId, 'text', {
+            text: payload.text ?? '',
+            stream_id: streamId,
+            streaming: true,
+            trace_id: traceId
+          })
+        );
+      }
       break;
+    }
+    case CB_EVENT_SESSION_TEXT: {
+      // Final commit: close the matching streaming bubble with the
+      // authoritative text, or render a standalone (non-streamed) message.
+      const streamId = payload.id;
+      const open =
+        streamId && state.events[sessionId]?.find((item) => item.kind === 'text' && item.stream_id === streamId);
+      if (open) {
+        commit('finalizeStream', { session_id: sessionId, stream_id: streamId, text: payload.text });
+      } else {
+        commit('appendEvent', makeEvent(sessionId, 'text', { text: payload.text, trace_id: traceId }));
+      }
+      break;
+    }
     case CB_EVENT_SESSION_THINKING:
       commit('appendEvent', makeEvent(sessionId, 'thinking', { text: payload.text, trace_id: traceId }));
       break;
@@ -154,6 +186,8 @@ const applyNodeEvent = (
       commit('removePermission', payload.request_id);
       break;
     case CB_EVENT_SESSION_RESULT:
+      // A turn ended: close any still-open streaming bubble before the result.
+      commit('finalizeAllStreams', { session_id: sessionId });
       commit(
         'appendEvent',
         makeEvent(sessionId, 'result', {
@@ -180,10 +214,12 @@ const applyNodeEvent = (
       );
       break;
     case CB_EVENT_SESSION_ERROR:
+      commit('finalizeAllStreams', { session_id: sessionId });
       commit('appendEvent', makeEvent(sessionId, 'error', { text: payload.message, trace_id: traceId }));
       commit('updateSession', { session_id: sessionId, status: 'error' });
       break;
     case CB_EVENT_SESSION_CLOSED:
+      commit('finalizeAllStreams', { session_id: sessionId });
       commit('updateSession', { session_id: sessionId, status: 'closed' });
       break;
     case CB_EVENT_SESSIONS_SNAPSHOT:
