@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 09 Jun 2026 17:55:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 10 Jun 2026 01:24:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.274.0
+
+Wed, 10 Jun 2026 01:24:39 GMT
+
+### Minor changes
+
+- Add end-to-end trace ids and a copyable diagnostic id strip to Coding Bridge (dev@acedata.cloud)
 
 ## 3.273.0
 
