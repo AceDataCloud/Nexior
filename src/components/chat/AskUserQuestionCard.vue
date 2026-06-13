@@ -314,6 +314,16 @@ export default defineComponent({
   overflow: hidden;
 }
 
+// Bound the interactive card so it never grows past the viewport. The option
+// list scrolls internally (see `.options`) while the progress header and the
+// action row (Back / Next / Submit) stay pinned and always reachable — on a
+// phone they previously fell below the fold, leaving no clickable button.
+.ask-user-question-card:not(.is-collapsed) {
+  display: flex;
+  flex-direction: column;
+  max-height: min(80vh, 620px);
+}
+
 .ask-user-question-card.is-collapsed {
   background: var(--el-fill-color-light);
   border: 1px solid var(--el-border-color-lighter);
@@ -340,6 +350,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 14px;
+  // Take the card's bounded height and let the pane/options shrink + scroll.
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 // ----- Progress -----
@@ -410,6 +423,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   gap: 10px;
+  // Fill the wizard's free space; `min-height: 0` lets `.options` scroll
+  // instead of forcing the card taller than its `max-height`.
+  flex: 1 1 auto;
   min-height: 0;
 }
 
@@ -446,6 +462,26 @@ export default defineComponent({
   flex-direction: column;
   gap: 8px;
   align-items: stretch;
+
+  // On short viewports (mobile webview) a long option list would push the
+  // action row — and the Submit button with it — below the fold. Let the list
+  // take the card's free space and scroll internally so the progress header
+  // and actions stay pinned; short lists keep their natural height.
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  // Leave room for the scrollbar so it doesn't overlap the option borders.
+  padding-right: 2px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--el-border-color);
+  }
 
   // Element Plus radios/checkboxes default to inline; stack and theme.
   :deep(.el-radio),
