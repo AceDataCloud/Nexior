@@ -45,6 +45,12 @@ export const CB_EVENT_SESSION_RESULT = 'session.result';
 export const CB_EVENT_SESSION_NOTICE = 'session.notice';
 export const CB_EVENT_SESSION_ERROR = 'session.error';
 export const CB_EVENT_SESSION_CLOSED = 'session.closed';
+// A past prompt was edited: the conversation forked at `cut_uuid`. The browser
+// folds this into a transcript truncation (rewind), live and on replay.
+export const CB_EVENT_SESSION_REWOUND = 'session.rewound';
+// The live stream lost events that could not be replayed (cursor too old /
+// outbox overflow); resync the session from history.
+export const CB_EVENT_SESSION_STREAM_TRUNCATED = 'session.stream_truncated';
 export const CB_EVENT_SESSIONS_SNAPSHOT = 'sessions.snapshot';
 export const CB_EVENT_HISTORY_SNAPSHOT = 'history.snapshot';
 export const CB_EVENT_HISTORY_DETAIL = 'history.detail';
