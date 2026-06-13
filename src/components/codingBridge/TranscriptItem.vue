@@ -1,7 +1,18 @@
 <template>
   <div class="transcript-item text-sm leading-relaxed" :class="`kind-${event.kind}`">
     <!-- User prompt -->
-    <div v-if="event.kind === 'prompt'" class="flex justify-end">
+    <div v-if="event.kind === 'prompt'" class="group flex items-end justify-end gap-1.5">
+      <!-- Edit: reload this prompt (text + attachments) into the composer to
+           tweak and resend as a new turn; model can be switched there too. -->
+      <button
+        type="button"
+        class="cb-edit-btn opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+        :title="$t('codingBridge.session.editPrompt')"
+        :aria-label="$t('codingBridge.session.editPrompt')"
+        @click="$emit('edit', event)"
+      >
+        <font-awesome-icon icon="fa-solid fa-pen" />
+      </button>
       <div
         class="max-w-[85%] rounded-lg px-3 py-2 bg-[var(--el-color-primary)] text-white whitespace-pre-wrap break-words"
       >
@@ -161,6 +172,7 @@ export default defineComponent({
       required: true
     }
   },
+  emits: ['edit'],
   computed: {
     commandText(): string {
       const input = this.event.input;
@@ -290,6 +302,30 @@ export default defineComponent({
 </style>
 
 <style lang="scss" scoped>
+.cb-edit-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  border: 1px solid var(--app-border-subtle);
+  background: var(--app-content-bg);
+  color: var(--app-text-subtle);
+  font-size: 11px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+
+  &:hover {
+    color: var(--el-color-primary);
+    border-color: var(--el-color-primary-light-5);
+  }
+}
+
 .transcript-item :deep(.markdown-body) {
   background: transparent;
   color: inherit;
