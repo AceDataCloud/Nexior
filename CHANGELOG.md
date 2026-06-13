@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 14:14:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 15:03:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.275.1
+
+Sat, 13 Jun 2026 15:03:17 GMT
+
+### Patches
+
+- fix(settings): stop leaking admin-only tabs to non-admins on mobile (dev@acedata.cloud)
 
 ## 3.275.0
 
