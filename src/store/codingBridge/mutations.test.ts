@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
 import createState from './state';
-import { appendDelta, appendEvent, finalizeAllStreams, finalizeStream } from './mutations';
+import { appendDelta, appendEvent, finalizeAllStreams, finalizeStream, truncateEventsBefore } from './mutations';
 import type { ICodingBridgeEvent } from '@/models';
 
 const textEvent = (overrides: Partial<ICodingBridgeEvent> = {}): ICodingBridgeEvent => ({
@@ -57,5 +57,21 @@ describe('coding bridge streaming mutations', () => {
     appendEvent(state, textEvent({ id: 'c', text: 'plain' }));
     finalizeAllStreams(state, { session_id: 's1' });
     expect(state.events['s1'].map((item) => item.streaming)).toEqual([false, false, undefined]);
+  });
+
+  it('truncateEventsBefore drops the event and everything after it', () => {
+    const state = createState();
+    appendEvent(state, textEvent({ id: 'a' }));
+    appendEvent(state, textEvent({ id: 'b', kind: 'prompt' }));
+    appendEvent(state, textEvent({ id: 'c' }));
+    truncateEventsBefore(state, { session_id: 's1', event_id: 'b' });
+    expect(state.events['s1'].map((item) => item.id)).toEqual(['a']);
+  });
+
+  it('truncateEventsBefore is a no-op for an unknown event id', () => {
+    const state = createState();
+    appendEvent(state, textEvent({ id: 'a' }));
+    truncateEventsBefore(state, { session_id: 's1', event_id: 'missing' });
+    expect(state.events['s1'].map((item) => item.id)).toEqual(['a']);
   });
 });

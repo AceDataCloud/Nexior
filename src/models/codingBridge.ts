@@ -51,6 +51,12 @@ export interface ICodingBridgeProviderCapability {
   efforts: string[];
   permission_modes: string[];
   allow_custom_model: boolean;
+  // Whether a past prompt can be edited (the conversation forked at that turn).
+  // Claude supports it; Codex does not. Absent on older nodes → treat as false.
+  supports_edit?: boolean;
+  // Whether editing can also roll back on-disk file changes, so the UI can
+  // offer a "restore code" choice. Absent on older nodes → treat as false.
+  supports_code_restore?: boolean;
   // Slash commands this backend can actually run in a remote session, used to
   // drive the composer autocomplete. Absent on older nodes.
   commands?: ICodingBridgeSlashCommand[];
@@ -81,6 +87,9 @@ export interface ICodingBridgeSession {
   provider?: ICodingBridgeHistoryProvider;
   // Provider session id to resume when the first prompt is sent (Claude only).
   resume_session_id?: string;
+  // The SDK/CLI's own session id for a live session, reported by the node on
+  // each turn's result. The fork target when editing a past prompt.
+  sdk_session_id?: string;
   // A live turn has been started on the node for this session.
   started?: boolean;
   // Replay of past history that cannot be continued (e.g. Codex).
@@ -140,6 +149,10 @@ export interface ICodingBridgeEvent {
   is_error?: boolean;
   subtype?: string;
   cost_usd?: number;
+  // Result events only: the fork point for editing the NEXT prompt — the uuid
+  // of the last kept transcript message — and the session to resume from.
+  cut_uuid?: string;
+  sdk_session_id?: string;
   // Notice events: a machine code (e.g. 'slash_unavailable') and the command
   // the user typed, so the UI can render a localized message.
   command?: string;

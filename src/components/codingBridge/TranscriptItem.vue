@@ -2,9 +2,10 @@
   <div class="transcript-item text-sm leading-relaxed" :class="`kind-${event.kind}`">
     <!-- User prompt -->
     <div v-if="event.kind === 'prompt'" class="group flex items-end justify-end gap-1.5">
-      <!-- Edit: reload this prompt (text + attachments) into the composer to
-           tweak and resend as a new turn; model can be switched there too. -->
+      <!-- Edit: reload this prompt into the composer; on send the conversation
+           is rewound to this turn. Only shown when the backend supports it. -->
       <button
+        v-if="editable"
         type="button"
         class="cb-edit-btn opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
         :title="$t('codingBridge.session.editPrompt')"
@@ -170,6 +171,11 @@ export default defineComponent({
     event: {
       type: Object as PropType<ICodingBridgeEvent>,
       required: true
+    },
+    // Whether this prompt can be edited (backend supports conversation rewind).
+    editable: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['edit'],

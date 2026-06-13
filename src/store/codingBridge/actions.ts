@@ -13,6 +13,7 @@ import { CodingBridgeSocket } from '@/utils/codingBridgeSocket';
 import {
   CB_ACTION_SESSION_START,
   CB_ACTION_SESSION_SEND,
+  CB_ACTION_SESSION_EDIT,
   CB_ACTION_SESSION_INTERRUPT,
   CB_ACTION_SESSION_CLOSE,
   CB_ACTION_PERMISSION_RESOLVE,
@@ -195,10 +196,19 @@ const applyNodeEvent = (
           is_error: payload.is_error,
           text: payload.result,
           cost_usd: payload.cost_usd,
+          // Fork point for editing the next prompt (Claude reports these).
+          cut_uuid: payload.cut_uuid,
+          sdk_session_id: payload.sdk_session_id,
           trace_id: traceId
         })
       );
-      commit('updateSession', { session_id: sessionId, status: 'idle', cost_usd: payload.cost_usd });
+      commit('updateSession', {
+        session_id: sessionId,
+        status: 'idle',
+        cost_usd: payload.cost_usd,
+        // Keep the live SDK session id current so an edit can fork from it.
+        ...(payload.sdk_session_id ? { sdk_session_id: payload.sdk_session_id } : {})
+      });
       break;
     case CB_EVENT_SESSION_NOTICE:
       // A friendly heads-up (e.g. a slash command that can't run remotely).
@@ -552,6 +562,73 @@ export const sendPrompt = (
   }
 };
 
+// Edit a past prompt: fork the conversation at that turn instead of appending.
+// The visible transcript is rewound to before the edited prompt and the node is
+// asked to truncate the agent's context to the same point, so the original
+// (wrong) prompt and everything after it leave the model's context entirely.
+export const editPrompt = (
+  { commit, state }: ActionContext<ICodingBridgeState, IRootState>,
+  payload: {
+    eventId: string;
+    prompt: string;
+    model?: string;
+    permissionMode?: string;
+    effort?: string;
+    images?: string[];
+    attachments?: ICodingBridgeAttachment[];
+    restoreCode?: boolean;
+  }
+): void => {
+  const nodeId = state.currentNodeId;
+  const sessionId = state.currentSessionId;
+  const prompt = payload.prompt?.trim();
+  if (!nodeId || !sessionId || !socket || !prompt) {
+    return;
+  }
+  const session = state.sessions[sessionId];
+  const events = state.events[sessionId] ?? [];
+  const index = events.findIndex((event) => event.id === payload.eventId);
+  if (!session || index < 0) {
+    return;
+  }
+  // Fork point: the cut_uuid of the last result before the edited prompt (the
+  // end of the previous turn). None → editing the first prompt, so the node
+  // starts a fresh session rather than forking.
+  let cutUuid: string | undefined;
+  for (let i = index - 1; i >= 0; i--) {
+    if (events[i].kind === 'result' && events[i].cut_uuid) {
+      cutUuid = events[i].cut_uuid;
+      break;
+    }
+  }
+  const images = payload.images?.length ? payload.images : undefined;
+  const attachments = payload.attachments?.length ? payload.attachments : undefined;
+  const traceId = uid();
+  // Rewind the visible transcript, then echo the edited prompt as the new turn.
+  commit('truncateEventsBefore', { session_id: sessionId, event_id: payload.eventId });
+  commit('updateSession', {
+    session_id: sessionId,
+    status: 'running',
+    trace_id: traceId,
+    model: payload.model || session.model || undefined
+  });
+  commit('appendEvent', makeEvent(sessionId, 'prompt', { text: prompt, images, attachments, trace_id: traceId }));
+  socket.sendToNode(nodeId, {
+    action: CB_ACTION_SESSION_EDIT,
+    session_id: sessionId,
+    trace_id: traceId,
+    cut_uuid: cutUuid,
+    prompt,
+    // Sent verbatim so an empty value keeps the node's default model.
+    model: payload.model || session.model || undefined,
+    permission_mode: payload.permissionMode || undefined,
+    effort: payload.effort || undefined,
+    images,
+    attachments,
+    restore_code: !!payload.restoreCode
+  });
+};
+
 // Re-run the most recent user prompt after a turn failed. We force a fresh
 // start (clear `started`) so the node re-spawns the agent — the common failure
 // is the agent process crashing before the session is really alive on the node.
@@ -704,6 +781,7 @@ export default {
   selectNode,
   newSession,
   sendPrompt,
+  editPrompt,
   retryLastPrompt,
   interruptSession,
   closeSession,
