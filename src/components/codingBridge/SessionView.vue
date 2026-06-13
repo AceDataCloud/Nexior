@@ -51,9 +51,9 @@
         class="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-1.5 text-[11px] text-[var(--app-text-subtle)] border-b border-[var(--app-border-subtle)]"
       >
         <span v-for="item in diagnostics" :key="item.label" class="inline-flex items-center gap-1 min-w-0">
-          <span class="opacity-70">{{ item.label }}:</span>
-          <span class="font-mono truncate max-w-[160px]" :title="item.value">{{ item.value }}</span>
-          <copy-to-clipboard :content="item.value" class="inline-block" />
+          <span class="opacity-70 flex-none">{{ item.label }}:</span>
+          <span class="font-mono break-all" :title="item.value">{{ item.value }}</span>
+          <copy-to-clipboard :content="item.value" class="inline-block flex-none" />
         </span>
       </div>
 
