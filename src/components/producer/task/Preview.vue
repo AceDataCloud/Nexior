@@ -236,7 +236,7 @@ export default defineComponent({
       }
     },
     onExtend(event: MouseEvent, audio: IProducerAudio) {
-      event.stopPropagation();
+      event?.stopPropagation();
       console.debug('set config', audio);
       this.$store.commit('producer/setConfig', {
         ...this.$store.state.producer?.config,
@@ -252,7 +252,7 @@ export default defineComponent({
     },
     onDownload(event: MouseEvent | null, audioUrl: string) {
       if (event) {
-        event.stopPropagation();
+        event?.stopPropagation();
       }
       const parsedUrl = new URL(audioUrl);
       const pathname = parsedUrl.pathname;
@@ -312,7 +312,7 @@ export default defineComponent({
       });
     },
     onPreview(event: MouseEvent, videoUrl: string) {
-      event.stopPropagation();
+      event?.stopPropagation();
       window.open(videoUrl, '_blank');
     },
     async onGetStems(audioId: string) {
