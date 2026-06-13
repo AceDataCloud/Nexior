@@ -63,6 +63,13 @@
           {{ $t('codingBridge.session.startHint') }}
         </div>
         <transcript-item v-for="event in events" :key="event.id" :event="event" />
+        <!-- Retry: re-run the last prompt after a turn ends in error. -->
+        <div v-if="canRetry" class="flex justify-center pt-1">
+          <el-button size="small" round @click="onRetry">
+            <font-awesome-icon icon="fa-solid fa-rotate-right" class="mr-1" />
+            {{ $t('codingBridge.session.retry') }}
+          </el-button>
+        </div>
         <ask-user-question-card
           v-if="pendingQuestion"
           :key="pendingQuestion.request_id"
@@ -518,6 +525,17 @@ export default defineComponent({
     },
     connected(): boolean {
       return this.$store.state.codingBridge?.connection === 'connected';
+    },
+    // Offer a retry once a turn has failed, provided we can actually reach the
+    // device and there is a prior prompt to re-run.
+    canRetry(): boolean {
+      return (
+        this.currentSession?.status === 'error' &&
+        !this.readonly &&
+        this.connected &&
+        this.nodeOnline &&
+        this.events.some((event) => event.kind === 'prompt')
+      );
     },
     attachments(): ICodingBridgeAttachment[] {
       return (this.attachmentFileList || [])
@@ -982,6 +1000,9 @@ export default defineComponent({
     },
     onInterrupt() {
       this.$store.dispatch('codingBridge/interruptSession');
+    },
+    onRetry() {
+      this.$store.dispatch('codingBridge/retryLastPrompt');
     },
     openDirectory() {
       this.directoryVisible = true;
