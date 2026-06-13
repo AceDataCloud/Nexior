@@ -8,7 +8,7 @@
     <div class="result h-full p-6 flex-1 flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
       <slot name="result" />
     </div>
-    <el-button circle class="menu" @click="drawer = true">
+    <el-button v-show="!tasksEmpty" circle class="menu" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-magic" />
     </el-button>
     <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="340px">
@@ -21,6 +21,7 @@
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import taskDrawerMixin from '@/utils/taskDrawerMixin';
 
 export default defineComponent({
   name: 'LayoutHailuo',
@@ -29,11 +30,7 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon
   },
-  data() {
-    return {
-      drawer: false
-    };
-  }
+  mixins: [taskDrawerMixin]
 });
 </script>
 
