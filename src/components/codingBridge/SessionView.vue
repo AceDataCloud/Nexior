@@ -1217,6 +1217,17 @@ export default defineComponent({
       font-size: 14px;
       line-height: 1.5;
     }
+
+    // iOS Safari auto-zooms a focused field whose font-size is below 16px and
+    // ignores `maximum-scale` / `user-scalable=0`, so tapping into the composer
+    // (or hitting Send, which keeps it focused) would zoom the whole page in.
+    // Keep the mobile text at >=16px to suppress that — same fix as the chat
+    // composer (#732).
+    @media (max-width: 767px) {
+      :deep(.el-textarea__inner) {
+        font-size: 16px;
+      }
+    }
   }
 }
 
