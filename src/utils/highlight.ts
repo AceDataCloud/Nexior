@@ -9,11 +9,17 @@ export const highlight = async (el: HTMLElement) => {
     const pre = code.parentElement as HTMLElement;
     if (!pre) return;
 
+    // VueMarkdown already bakes highlighting into the HTML (`hljs` class +
+    // token spans). Re-running highlight.js on that would nest spans, so here
+    // we only need to add the copy button. CodeSnippet renders plain code
+    // without the `hljs` class — those we still highlight ourselves below.
+    const prehighlighted = code.classList.contains('hljs');
+
     // highlight.js v11 refuses to re-highlight a node once `data-highlighted`
     // is set, even if the inner text has changed (e.g. user switches a
     // language tab in the API-code dialog). Reset the marker + previously
     // applied hljs classes so each render is highlighted fresh.
-    if (code.dataset.highlighted) {
+    if (!prehighlighted && code.dataset.highlighted) {
       delete code.dataset.highlighted;
       code.className = code.className
         .split(/\s+/)
@@ -21,9 +27,14 @@ export const highlight = async (el: HTMLElement) => {
         .join(' ');
     }
 
-    if (pre.dataset.hasCopy === '1') {
+    const applyHighlight = () => {
+      if (prehighlighted) return;
       if ('highlightElement' in hl) hl.highlightElement(code);
       else (hl as any).highlightBlock(code);
+    };
+
+    if (pre.dataset.hasCopy === '1') {
+      applyHighlight();
       return;
     }
 
@@ -53,7 +64,6 @@ export const highlight = async (el: HTMLElement) => {
 
     pre.dataset.hasCopy = '1';
 
-    if ('highlightElement' in hl) hl.highlightElement(code);
-    else (hl as any).highlightBlock(code);
+    applyHighlight();
   });
 };
