@@ -2,6 +2,7 @@ import {
   WS_URL_CODING_BRIDGE,
   CB_BROWSER_TO_NODE,
   CB_BROWSER_LIST_NODES,
+  CB_BROWSER_RESUME,
   CB_NODE_TO_BROWSER,
   CB_NODES_SNAPSHOT,
   CB_NODE_STATUS,
@@ -159,7 +160,7 @@ export class CodingBridgeSocket {
     if (!this.isOpen) {
       return;
     }
-    const envelope = { v: 1, id: makeId(), ts: Date.now(), type, ...extra };
+    const envelope = { v: 2, id: makeId(), ts: Date.now(), type, ...extra };
     logEnvelope('send', envelope);
     this.ws?.send(JSON.stringify(envelope));
   }
@@ -172,6 +173,15 @@ export class CodingBridgeSocket {
   /** Ask the relay to re-send the live node snapshot. */
   listNodes(): void {
     this.sendEnvelope(CB_BROWSER_LIST_NODES, {});
+  }
+
+  /**
+   * Reconnect: ask the relay to replay each session's events past the cursor we
+   * last applied, so the live stream resumes seamlessly instead of relying on a
+   * history refresh. The relay dedups; the browser also dedups by `seq`.
+   */
+  resume(cursors: Record<string, number>): void {
+    this.sendEnvelope(CB_BROWSER_RESUME, { payload: { resume_from: cursors } });
   }
 
   close(): void {
