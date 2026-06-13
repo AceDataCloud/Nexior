@@ -12,6 +12,7 @@
             <el-row>
               <el-col :span="16" :offset="4">
                 <el-skeleton v-if="loading" />
+                <el-empty v-else-if="!showPayment" :description="$t('common.message.noData')" />
                 <el-form v-else-if="application" label-width="100px">
                   <div v-if="!application?.service">
                     <p class="text-[var(--el-text-color-secondary)] text-[12px] mb-3">
@@ -106,6 +107,7 @@ import {
   ElFormItem,
   ElButton,
   ElDivider,
+  ElEmpty,
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
@@ -140,6 +142,7 @@ export default defineComponent({
     ElFormItem,
     ElButton,
     ElDivider,
+    ElEmpty,
     ElRadioGroup,
     ElRadioButton,
     Price,

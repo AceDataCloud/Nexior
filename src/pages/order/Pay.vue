@@ -62,7 +62,7 @@
                 <el-alert :title="$t('order.state.failed')" type="error" show-icon :closable="false" />
               </el-col>
             </el-row>
-            <el-row v-if="order?.state === OrderState.PENDING">
+            <el-row v-if="order?.state === OrderState.PENDING && showPayment">
               <el-col :xs="{ span: 22, offset: 1 }" :sm="{ span: 16, offset: 4 }">
                 <el-divider border-style="dashed" />
                 <div v-if="!order.pay_way && order.price && order.price > 0" class="payways mb-6">
@@ -135,7 +135,7 @@ import PublicWechatPay from '@/components/order/public/WechatPay.vue';
 import PublicStripePay from '@/components/order/public/StripePay.vue';
 import PublicAlipayPay from '@/components/order/public/AliPay.vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { getPaymentSurface, getPriceString } from '@/utils';
+import { getPaymentSurface, getPriceString, isIOS } from '@/utils';
 
 // Polls the AllowAny GET /orders/<id> endpoint — POST /orders/<id>/refresh/
 // is IsAuthenticated and would 401 here.
@@ -192,6 +192,10 @@ export default defineComponent({
   computed: {
     id(): string {
       return this.$route.params?.id?.toString() ?? '';
+    },
+    // App Store Review Guideline 3.1.1: no non-IAP payment UI on iOS.
+    showPayment(): boolean {
+      return !isIOS();
     }
   },
   watch: {
