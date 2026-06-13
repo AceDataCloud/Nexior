@@ -1,5 +1,5 @@
 <template>
-  <div class="ask-user-question-card" :class="{ 'is-collapsed': collapsed, 'is-bounded': bounded && !collapsed }">
+  <div class="ask-user-question-card" :class="{ 'is-collapsed': collapsed }">
     <!-- Collapsed view: one-line summary per question after submit / restore -->
     <div v-if="collapsed" class="collapsed">
       <div v-for="(q, idx) in questions" :key="idx" class="collapsed-row">
@@ -10,8 +10,9 @@
       </div>
     </div>
 
-    <!-- Wizard view: one question at a time -->
-    <div v-else class="wizard">
+    <!-- Wizard view: one question at a time. Enter advances / submits (a
+         radio or the freeform textarea bubbles its keydown up to here). -->
+    <div v-else class="wizard" @keydown.enter="onEnter">
       <!-- Progress header -->
       <div class="progress">
         <div class="progress-meta">
@@ -43,7 +44,6 @@
               :rows="3"
               :placeholder="$t('chat.askUserQuestion.placeholder')"
               resize="none"
-              @keydown.enter.exact.prevent="onNext"
             />
           </div>
 
@@ -104,7 +104,6 @@
                 :rows="2"
                 :placeholder="$t('chat.askUserQuestion.placeholder')"
                 resize="none"
-                @keydown.enter.exact.prevent="onNext"
               />
             </div>
           </Transition>
@@ -173,18 +172,6 @@ export default defineComponent({
     collapsed: {
       type: Boolean,
       default: false
-    },
-    /**
-     * Bound the card to the viewport and scroll the option list internally so
-     * the action row stays pinned. Right for a host that does NOT auto-scroll
-     * the card into view (chat). Set `false` when the card lives inside a host
-     * scroll container that already scrolls it into view (coding bridge): the
-     * card then flows at natural height and the host handles overflow, avoiding
-     * a nested-scroll conflict that clips the buttons on mobile.
-     */
-    bounded: {
-      type: Boolean,
-      default: true
     },
     previousOutput: {
       type: String,
@@ -268,6 +255,16 @@ export default defineComponent({
       this.transitionName = 'slide-next';
       this.currentIndex += 1;
     },
+    // Enter (without modifiers) advances or submits. Shift/Ctrl/Cmd+Enter keeps
+    // the default so the freeform textarea can still insert a newline, and IME
+    // composition Enter (confirming candidates) never triggers navigation.
+    onEnter(event: KeyboardEvent) {
+      if (event.isComposing || event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) {
+        return;
+      }
+      event.preventDefault();
+      this.onNext();
+    },
     onBack() {
       if (this.currentIndex === 0) return;
       this.transitionName = 'slide-back';
@@ -330,13 +327,12 @@ export default defineComponent({
 // list scrolls internally (see `.options`) while the progress header and the
 // action row (Back / Next / Submit) stay pinned and always reachable — on a
 // phone they previously fell below the fold, leaving no clickable button.
-// Only applied in `bounded` mode; an unbounded card (e.g. inside the coding
-// bridge transcript, which already scrolls the card into view) flows at its
-// natural height so the host's own scroll reaches every option and button.
-.ask-user-question-card.is-bounded {
+// A host can shrink the bound via `--auq-max-height` (the coding bridge docks
+// the card above its composer and caps it so the action bar is always on screen).
+.ask-user-question-card:not(.is-collapsed) {
   display: flex;
   flex-direction: column;
-  max-height: min(80vh, 620px);
+  max-height: var(--auq-max-height, min(80vh, 620px));
 }
 
 .ask-user-question-card.is-collapsed {
@@ -472,12 +468,16 @@ export default defineComponent({
 
 // ----- Options -----
 
-// On short viewports (mobile webview) a long option list would push the action
-// row — and the Submit button with it — below the fold. In `bounded` mode the
-// list takes the card's free space and scrolls internally so the progress
-// header and actions stay pinned; short lists keep their natural height. An
-// unbounded card skips this and flows naturally (the host container scrolls).
-.is-bounded .options {
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+
+  // On short viewports (mobile webview) a long option list would push the
+  // action row — and the Submit button with it — below the fold. Let the list
+  // take the card's free space and scroll internally so the progress header
+  // and actions stay pinned; short lists keep their natural height.
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -493,13 +493,6 @@ export default defineComponent({
     border-radius: 999px;
     background: var(--el-border-color);
   }
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: stretch;
 
   // Element Plus radios/checkboxes default to inline; stack and theme.
   :deep(.el-radio),
