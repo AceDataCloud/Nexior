@@ -2,6 +2,7 @@ import initialState from './state';
 import { ICodingBridgeHistoryRef, ICodingBridgeState } from './models';
 import {
   ICodingBridgeCapabilities,
+  ICodingBridgeComposerPrefs,
   ICodingBridgeConnectionStatus,
   ICodingBridgeDirListing,
   ICodingBridgeEvent,
@@ -161,6 +162,16 @@ export const setDirectoryLoading = (state: ICodingBridgeState, payload: boolean)
   state.directoryLoading = payload;
 };
 
+export const setLastComposer = (
+  state: ICodingBridgeState,
+  payload: { node_id: string; prefs: ICodingBridgeComposerPrefs }
+): void => {
+  state.lastComposer = {
+    ...state.lastComposer,
+    [payload.node_id]: { ...state.lastComposer[payload.node_id], ...payload.prefs }
+  };
+};
+
 export const setCapabilities = (
   state: ICodingBridgeState,
   payload: { node_id: string; capabilities: ICodingBridgeCapabilities }
@@ -216,6 +227,7 @@ export default {
   setHistoryRef,
   setDirectory,
   setDirectoryLoading,
+  setLastComposer,
   setCapabilities,
   addPermission,
   removePermission,

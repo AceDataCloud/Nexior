@@ -15,6 +15,7 @@ export default (): ICodingBridgeState => {
     connection: 'disconnected',
     directory: undefined,
     directoryLoading: false,
+    lastComposer: {},
     application: undefined,
     applications: undefined,
     service: undefined,

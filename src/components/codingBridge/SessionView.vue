@@ -410,6 +410,7 @@ import {
   IAskUserQuestionPayload,
   ICodingBridgeAttachment,
   ICodingBridgeCapabilities,
+  ICodingBridgeComposerPrefs,
   ICodingBridgeEvent,
   ICodingBridgeNode,
   ICodingBridgeProviderCapability,
@@ -472,6 +473,11 @@ export default defineComponent({
     },
     currentNodeId(): string | undefined {
       return this.$store.state.codingBridge?.currentNodeId;
+    },
+    // Last composer setup used on this device, restored from localStorage.
+    lastComposer(): ICodingBridgeComposerPrefs {
+      const id = this.currentNodeId;
+      return (id ? this.$store.state.codingBridge?.lastComposer?.[id] : undefined) ?? {};
     },
     currentNode(): ICodingBridgeNode | undefined {
       return this.$store.state.codingBridge?.nodes?.find((node) => node.node_id === this.currentNodeId);
@@ -709,6 +715,11 @@ export default defineComponent({
     currentNodeId() {
       // Refresh capabilities when switching devices.
       this.requestCapabilities();
+      // On a new session, swap the composer to the new device's last setup —
+      // a folder / model from the previous device is meaningless here.
+      if (this.isNewSession) {
+        this.restoreComposerPrefs();
+      }
     },
     providerCaps() {
       // Prefer a backend the node actually has installed. Fall back to the
@@ -794,6 +805,9 @@ export default defineComponent({
     syncSessionSettings() {
       const session = this.currentSession;
       if (!session) {
+        // New session: restore the last setup used on this device so the user
+        // doesn't have to re-pick folder / model / mode every time.
+        this.restoreComposerPrefs();
         return;
       }
       if (session.provider) {
@@ -894,6 +908,19 @@ export default defineComponent({
         return;
       }
       const attachments = this.attachments;
+      // Remember this device's setup so the next new session pre-fills it.
+      if (this.currentNodeId) {
+        this.$store.commit('codingBridge/setLastComposer', {
+          node_id: this.currentNodeId,
+          prefs: {
+            cwd: this.cwd,
+            provider: this.provider,
+            model: this.model,
+            permissionMode: this.permissionMode,
+            effort: this.effort
+          }
+        });
+      }
       this.$store.dispatch('codingBridge/sendPrompt', {
         prompt: this.prompt,
         cwd: this.cwd,
@@ -1012,16 +1039,27 @@ export default defineComponent({
     },
     onNewSession() {
       this.$store.dispatch('codingBridge/newSession');
-      this.cwd = '';
-      this.model = '';
-      this.customModelDraft = '';
-      this.permissionMode = 'default';
-      this.provider = 'claude';
-      this.effort = '';
+      // Restore the last setup used on this device instead of resetting it all.
+      this.restoreComposerPrefs();
       this.prompt = '';
       this.slashMenuOpen = false;
       this.slashActiveIndex = 0;
       this.clearAttachments();
+    },
+    // Pre-fill the composer from the last setup used on the current device.
+    // Falls back to defaults for anything not recorded yet. Model and effort
+    // are applied after the `provider` watcher's reset runs, so a restored
+    // provider doesn't wipe them.
+    restoreComposerPrefs() {
+      const prefs = this.lastComposer;
+      this.cwd = prefs.cwd ?? '';
+      this.provider = prefs.provider ?? 'claude';
+      this.permissionMode = prefs.permissionMode ?? 'default';
+      this.customModelDraft = '';
+      this.$nextTick(() => {
+        this.model = prefs.model ?? '';
+        this.effort = prefs.effort ?? '';
+      });
     },
     scrollToBottom() {
       this.$nextTick(() => {
