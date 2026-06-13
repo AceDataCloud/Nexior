@@ -480,6 +480,10 @@ export default defineComponent({
   // and actions stay pinned; short lists keep their natural height.
   flex: 1 1 auto;
   min-height: 0;
+  // Vertical scroll only. `overflow-y: auto` alone would promote `overflow-x`
+  // to `auto` too (per spec), and the `padding-right` gutter then triggers a
+  // spurious horizontal scrollbar that renders as a stray gray bar.
+  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   // Leave room for the scrollbar so it doesn't overlap the option borders.
