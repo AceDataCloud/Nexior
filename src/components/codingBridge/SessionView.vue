@@ -1043,7 +1043,6 @@ export default defineComponent({
       this.slashActiveIndex = 0;
       this.clearAttachments();
       this.attachmentFileList = (event.attachments ?? []).map((attachment, index) => {
-        const isImage = attachment.type === 'image';
         return {
           name: attachment.name || attachment.url,
           url: attachment.url,
