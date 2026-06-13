@@ -20,7 +20,11 @@ jobs:
         node-version: [22.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          # beachball check diffs the PR against the base branch, so it needs
+          # full history (not the default shallow fetch).
+          fetch-depth: 0
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
@@ -30,6 +34,20 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Verify change file present (beachball)
+        # Fail any PR that touches publishable files but carries no change file.
+        # Without a change file beachball never bumps the version on merge to
+        # main, so publish.yaml prints "Nothing to bump", no
+        # @acedatacloud/nexior_v* tag is pushed, and the mobile auto-release
+        # (auto-release-mobile.yaml) never fires. Run `npm run change` to add
+        # one — use type "none" for changes that should not ship a new version
+        # (e.g. CI-only or tooling edits). This is the same `beachball check`
+        # the local .husky/pre-push hook runs, enforced in CI so it can't be
+        # bypassed with --no-verify or a web/squash merge.
+        run: |
+          git fetch origin "${{ github.base_ref }}"
+          npx beachball check --branch "origin/${{ github.base_ref }}"
 
       - name: Run lint
         run: npm run lint
