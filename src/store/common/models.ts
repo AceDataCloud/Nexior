@@ -17,6 +17,7 @@ import { INanobananaState } from '../nanobanana/models';
 import { IOpenAIImageState } from '../openaiimage/models';
 import { ISeedreamState } from '../seedream/models';
 import { ISeedanceState } from '../seedance/models';
+import { IGrokVideoState } from '../grokvideo/models';
 import { ISerpState } from '../serp/models';
 import { IWanState } from '../wan/models';
 import { IFishState } from '../fish/models';
@@ -69,6 +70,7 @@ export interface IAppState {
   openaiimage: IOpenAIImageState;
   seedream: ISeedreamState;
   seedance: ISeedanceState;
+  grokvideo: IGrokVideoState;
   serp: ISerpState;
   wan: IWanState;
   fish: IFishState;

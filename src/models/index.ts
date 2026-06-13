@@ -26,6 +26,7 @@ export * from './nanobanana';
 export * from './openaiimage';
 export * from './seedream';
 export * from './seedance';
+export * from './grokvideo';
 export * from './serp';
 export * from './wan';
 export * from './webextrator';

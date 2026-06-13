@@ -1,0 +1,61 @@
+{
+  "name.bot": { "message": "Grok 视频机器人", "description": "Name of the Grok video generator" },
+  "name.prompt": { "message": "提示词", "description": "Prompt for generating the video" },
+  "name.model": { "message": "模型", "description": "Label for model selection" },
+  "name.ratio": { "message": "画面比例", "description": "Label for aspect ratio" },
+  "name.resolution": { "message": "分辨率", "description": "Label for resolution" },
+  "name.duration": { "message": "时长", "description": "Label for duration" },
+  "name.image": { "message": "图片", "description": "Label for input image" },
+  "name.required": { "message": "必填", "description": "Required badge" },
+  "name.taskId": { "message": "任务 ID", "description": "Task id label" },
+  "name.elapsed": { "message": "耗时", "description": "Elapsed time label" },
+  "name.traceId": { "message": "追踪 ID", "description": "Trace id label" },
+  "name.failure": { "message": "生成失败", "description": "Failure title" },
+  "name.failureReason": { "message": "失败原因", "description": "Failure reason label" },
+  "name.status": { "message": "状态", "description": "Status title" },
+  "description.prompt": {
+    "message": "描述你想生成的视频（场景、主体、动作、镜头、光线、风格）。",
+    "description": "Instructions for prompt input"
+  },
+  "description.model": {
+    "message": "选择 Grok Imagine 模型。grok-imagine-video 支持文生与图生视频；1.5-preview 仅支持图生视频。",
+    "description": "Instructions for model selection"
+  },
+  "description.ratio": { "message": "选择输出画面比例。", "description": "Instructions for aspect ratio" },
+  "description.resolution": {
+    "message": "选择输出分辨率。分辨率越高，每秒消耗的额度越多。",
+    "description": "Instructions for resolution"
+  },
+  "description.duration": {
+    "message": "视频时长（秒），按输出秒数计费。",
+    "description": "Instructions for duration"
+  },
+  "description.image": {
+    "message": "可选的输入图片，用于图生视频。grok-imagine-video-1.5-preview 为必填。",
+    "description": "Instructions for image input"
+  },
+  "placeholder.prompt": { "message": "描述你的视频…", "description": "Placeholder for prompt" },
+  "placeholder.select": { "message": "请选择", "description": "Placeholder for selects" },
+  "model.default": { "message": "Grok Imagine 视频", "description": "Default model label" },
+  "model.preview15": { "message": "Grok Imagine 视频 1.5（预览，图生视频）", "description": "1.5 preview model label" },
+  "button.upload": { "message": "上传", "description": "Upload button" },
+  "button.generate": { "message": "生成", "description": "Generate button" },
+  "button.download": { "message": "下载", "description": "Download button" },
+  "status.pending": { "message": "排队中", "description": "Pending status" },
+  "status.processing": { "message": "生成中", "description": "Processing status" },
+  "message.uploadExceed": { "message": "只能上传一张图片。", "description": "Upload exceed warning" },
+  "message.uploadError": { "message": "图片上传失败，请重试。", "description": "Upload error" },
+  "message.downloadVideo": { "message": "下载视频", "description": "Download tooltip" },
+  "message.modelRequiresImage": {
+    "message": "该模型需要输入图片（图生视频）。",
+    "description": "Model requires image warning"
+  },
+  "message.promptOrImageRequired": {
+    "message": "请输入提示词或上传图片。",
+    "description": "Prompt or image required warning"
+  },
+  "message.startingTask": { "message": "正在提交视频生成任务…", "description": "Starting task" },
+  "message.startTaskSuccess": { "message": "任务提交成功。", "description": "Task success" },
+  "message.startTaskFailed": { "message": "任务提交失败：", "description": "Task failed" },
+  "message.usedUp": { "message": "额度已用尽，请购买后继续使用。", "description": "Used up" }
+}

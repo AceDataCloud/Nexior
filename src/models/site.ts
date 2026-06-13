@@ -20,6 +20,7 @@ export interface ISiteFeatures {
   openaiimage?: any;
   seedream?: any;
   seedance?: any;
+  grokvideo?: any;
   wan?: any;
   producer?: any;
   kimi?: any;

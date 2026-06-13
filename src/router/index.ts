@@ -28,6 +28,7 @@ import nanobanana from './nanobanana';
 import openaiimage from './openaiimage';
 import seedream from './seedream';
 import seedance from './seedance';
+import grokvideo from './grokvideo';
 import serp from './serp';
 import wan from './wan';
 import fish from './fish';
@@ -50,6 +51,7 @@ import {
   ROUTE_SUNO_INDEX,
   ROUTE_PRODUCER_INDEX,
   ROUTE_SEEDANCE_INDEX,
+  ROUTE_GROKVIDEO_INDEX,
   ROUTE_LUMA_INDEX,
   ROUTE_HAILUO_INDEX,
   ROUTE_KLING_INDEX,
@@ -199,6 +201,12 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Seedance', 'AI Video', 'Dance Video', 'ByteDance'],
     category: 'AI Video Generation'
   },
+  grokvideo: {
+    title: 'Grok Imagine Video',
+    description: 'Generate AI videos with Grok Imagine — text-to-video and image-to-video by xAI.',
+    keywords: ['Grok', 'Grok Imagine', 'AI Video', 'Text to Video', 'Image to Video', 'xAI'],
+    category: 'AI Video Generation'
+  },
   wan: {
     title: 'Wan',
     description: 'Generate AI videos with Wan — high-quality video generation by Tongyi Wanxiang.',
@@ -283,6 +291,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['luma', ROUTE_LUMA_INDEX],
   ['hailuo', ROUTE_HAILUO_INDEX],
   ['seedance', ROUTE_SEEDANCE_INDEX],
+  ['grokvideo', ROUTE_GROKVIDEO_INDEX],
   ['pixverse', ROUTE_PIXVERSE_INDEX],
   ['wan', ROUTE_WAN_INDEX],
   ['serp', ROUTE_SERP_INDEX],
@@ -334,6 +343,7 @@ const routes = [
   openaiimage,
   seedream,
   seedance,
+  grokvideo,
   serp,
   wan,
   fish,

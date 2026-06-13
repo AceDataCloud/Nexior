@@ -37,6 +37,7 @@ export const I18N_SCOPES = [
   'openaiimage',
   'seedream',
   'seedance',
+  'grokvideo',
   'hailuo',
   'wan',
   'headshots',

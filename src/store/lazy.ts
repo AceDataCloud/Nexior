@@ -40,6 +40,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   openaiimage: () => import('./openaiimage'),
   seedream: () => import('./seedream'),
   seedance: () => import('./seedance'),
+  grokvideo: () => import('./grokvideo'),
   serp: () => import('./serp'),
   wan: () => import('./wan'),
   fish: () => import('./fish'),

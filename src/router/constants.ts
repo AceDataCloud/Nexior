@@ -65,6 +65,7 @@ export const ROUTE_OPENAIIMAGE_INDEX = 'openaiimage-index';
 export const ROUTE_SEEDREAM_INDEX = 'seedream-index';
 
 export const ROUTE_SEEDANCE_INDEX = 'seedance-index';
+export const ROUTE_GROKVIDEO_INDEX = 'grokvideo-index';
 
 export const ROUTE_SERP_INDEX = 'serp-index';
 
