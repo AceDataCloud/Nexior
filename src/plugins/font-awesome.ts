@@ -36,6 +36,7 @@ import {
   faDiamond as faSolidDiamond,
   faLaptopCode as faSolidLaptopCode,
   faBell as faSolidBell,
+  faSpinner as faSolidSpinner,
   faOutdent as faSolidOutdent,
   faImage as faSolidImage,
   faChevronRight as faSolidChevronRight,
@@ -184,6 +185,7 @@ library.add(faSolidFire);
 library.add(faSolidLaptopCode);
 library.add(faSolidBell);
 library.add(faRegularBell);
+library.add(faSolidSpinner);
 library.add(faSolidRotateRight);
 library.add(faSolidSeedling);
 library.add(faSolidPenToSquare);
