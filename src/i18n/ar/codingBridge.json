@@ -406,5 +406,33 @@
   "notice.slashCodexUnsupported": {
     "message": "‏/{command} غير متاح لـ Codex في جلسة عن بُعد.",
     "description": "Notice shown when a Codex slash command isn't supported remotely"
+  },
+  "notify.enable": {
+    "message": "تفعيل الإشعارات",
+    "description": "Tooltip on the notification bell when notifications are off"
+  },
+  "notify.disable": {
+    "message": "إيقاف الإشعارات",
+    "description": "Tooltip on the notification bell when notifications are on"
+  },
+  "notify.enabled": {
+    "message": "تم تفعيل الإشعارات. سننبّهك عندما تحتاج الجلسة إلى موافقة.",
+    "description": "Toast after enabling notifications"
+  },
+  "notify.disabled": {
+    "message": "تم إيقاف الإشعارات.",
+    "description": "Toast after disabling notifications"
+  },
+  "notify.denied": {
+    "message": "الإشعارات محظورة. اسمح بها في إعدادات المتصفح لتلقّي تنبيهات الموافقة.",
+    "description": "Toast when notification permission is denied"
+  },
+  "notify.unsupported": {
+    "message": "الإشعارات غير مدعومة على هذا الجهاز.",
+    "description": "Toast when notifications are unsupported"
+  },
+  "notify.failed": {
+    "message": "تعذّر تحديث إعدادات الإشعارات.",
+    "description": "Toast when enabling or disabling notifications errors"
   }
 }

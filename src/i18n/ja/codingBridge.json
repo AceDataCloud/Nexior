@@ -406,5 +406,33 @@
   "notice.slashCodexUnsupported": {
     "message": "/{command} はリモートセッションの Codex では利用できません。",
     "description": "Notice shown when a Codex slash command isn't supported remotely"
+  },
+  "notify.enable": {
+    "message": "通知を有効にする",
+    "description": "Tooltip on the notification bell when notifications are off"
+  },
+  "notify.disable": {
+    "message": "通知を無効にする",
+    "description": "Tooltip on the notification bell when notifications are on"
+  },
+  "notify.enabled": {
+    "message": "通知を有効にしました。セッションで承認が必要なときにお知らせします。",
+    "description": "Toast after enabling notifications"
+  },
+  "notify.disabled": {
+    "message": "通知を無効にしました。",
+    "description": "Toast after disabling notifications"
+  },
+  "notify.denied": {
+    "message": "通知がブロックされています。承認通知を受け取るにはブラウザの設定で許可してください。",
+    "description": "Toast when notification permission is denied"
+  },
+  "notify.unsupported": {
+    "message": "このデバイスでは通知がサポートされていません。",
+    "description": "Toast when notifications are unsupported"
+  },
+  "notify.failed": {
+    "message": "通知設定を更新できませんでした。",
+    "description": "Toast when enabling or disabling notifications errors"
   }
 }

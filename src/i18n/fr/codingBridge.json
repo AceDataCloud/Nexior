@@ -406,5 +406,33 @@
   "notice.slashCodexUnsupported": {
     "message": "/{command} n'est pas disponible pour Codex dans une session distante.",
     "description": "Notice shown when a Codex slash command isn't supported remotely"
+  },
+  "notify.enable": {
+    "message": "Activer les notifications",
+    "description": "Tooltip on the notification bell when notifications are off"
+  },
+  "notify.disable": {
+    "message": "Désactiver les notifications",
+    "description": "Tooltip on the notification bell when notifications are on"
+  },
+  "notify.enabled": {
+    "message": "Notifications activées. Nous vous préviendrons lorsqu'une session nécessite une approbation.",
+    "description": "Toast after enabling notifications"
+  },
+  "notify.disabled": {
+    "message": "Notifications désactivées.",
+    "description": "Toast after disabling notifications"
+  },
+  "notify.denied": {
+    "message": "Les notifications sont bloquées. Autorisez-les dans les paramètres de votre navigateur pour recevoir les alertes d'approbation.",
+    "description": "Toast when notification permission is denied"
+  },
+  "notify.unsupported": {
+    "message": "Les notifications ne sont pas prises en charge sur cet appareil.",
+    "description": "Toast when notifications are unsupported"
+  },
+  "notify.failed": {
+    "message": "Impossible de mettre à jour les paramètres de notification.",
+    "description": "Toast when enabling or disabling notifications errors"
   }
 }

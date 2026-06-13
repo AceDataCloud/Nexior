@@ -406,5 +406,33 @@
   "notice.slashCodexUnsupported": {
     "message": "/{command} 은(는) 원격 세션의 Codex에서 사용할 수 없습니다.",
     "description": "Notice shown when a Codex slash command isn't supported remotely"
+  },
+  "notify.enable": {
+    "message": "알림 켜기",
+    "description": "Tooltip on the notification bell when notifications are off"
+  },
+  "notify.disable": {
+    "message": "알림 끄기",
+    "description": "Tooltip on the notification bell when notifications are on"
+  },
+  "notify.enabled": {
+    "message": "알림이 켜졌습니다. 세션에 승인이 필요하면 알려드립니다.",
+    "description": "Toast after enabling notifications"
+  },
+  "notify.disabled": {
+    "message": "알림이 꺼졌습니다.",
+    "description": "Toast after disabling notifications"
+  },
+  "notify.denied": {
+    "message": "알림이 차단되어 있습니다. 승인 알림을 받으려면 브라우저 설정에서 허용하세요.",
+    "description": "Toast when notification permission is denied"
+  },
+  "notify.unsupported": {
+    "message": "이 기기에서는 알림이 지원되지 않습니다.",
+    "description": "Toast when notifications are unsupported"
+  },
+  "notify.failed": {
+    "message": "알림 설정을 업데이트하지 못했습니다.",
+    "description": "Toast when enabling or disabling notifications errors"
   }
 }
