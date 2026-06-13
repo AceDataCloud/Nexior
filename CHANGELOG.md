@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 09:38:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 14:14:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.275.0
+
+Sat, 13 Jun 2026 14:14:54 GMT
+
+### Minor changes
+
+- feat(coding-bridge): notify the user when a session needs approval (in-page, Web Push, mobile push) (dev@acedata.cloud)
 
 ## 3.274.3
 
