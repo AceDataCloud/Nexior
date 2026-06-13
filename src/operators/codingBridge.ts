@@ -47,11 +47,11 @@ class CodingBridgeOperator {
     return await axios.get('/api/push/config', { baseURL: BASE_URL_CODING_BRIDGE });
   }
 
-  /** Register a web-push subscription or an FCM device token for the user. */
+  /** Register a web-push subscription, an FCM (Android) or APNs (iOS) device token. */
   async savePushSubscription(
     body:
       | { kind: 'webpush'; subscription: PushSubscriptionJSON; ua?: string }
-      | { kind: 'fcm'; token: string; ua?: string },
+      | { kind: 'fcm' | 'apns'; token: string; ua?: string },
     options: { token: string }
   ): Promise<AxiosResponse<{ ok: boolean }>> {
     return await axios.post('/api/push/subscriptions', body, {

@@ -10,8 +10,11 @@
  *     VAPID needed. A focused tab shows the inline dialog instead — no notice.
  *  2. **Tab closed** (Web Push): the relay pushes to a VAPID subscription and
  *     `public/sw.js` shows it. Subscription is managed here.
- *  3. **Native app backgrounded/killed** (FCM): the relay pushes to the device
- *     token registered here via `@capacitor/push-notifications`.
+ *  3. **Native app backgrounded/killed**: the relay pushes to the device token
+ *     registered here via `@capacitor/push-notifications` — an FCM token on
+ *     Android (delivered via FCM) or a raw APNs token on iOS (delivered via
+ *     APNs). The store tags the subscription `kind` by platform so the relay
+ *     picks the right transport.
  *
  * Everything degrades quietly: missing API, denied permission or an unconfigured
  * relay simply means no notification, never a thrown error to the caller.

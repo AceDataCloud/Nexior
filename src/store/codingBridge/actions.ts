@@ -18,7 +18,7 @@ import {
   requestWebPermission,
   type ICodingBridgeNotifyData
 } from '@/utils/codingBridgeNotify';
-import { isNative } from '@/utils/surface';
+import { isNative, isIOS } from '@/utils/surface';
 import {
   CB_ACTION_SESSION_START,
   CB_ACTION_SESSION_SEND,
@@ -931,8 +931,10 @@ export const enableNotifications = async ({
     if (!deviceToken) {
       return 'denied';
     }
+    // iOS hands back a raw APNs token (the relay delivers it via APNs); Android
+    // hands back an FCM token (delivered via FCM). The relay routes by `kind`.
     await codingBridgeOperator.savePushSubscription(
-      { kind: 'fcm', token: deviceToken, ua: navigator.userAgent },
+      { kind: isIOS() ? 'apns' : 'fcm', token: deviceToken, ua: navigator.userAgent },
       { token }
     );
     return 'enabled';
