@@ -10,13 +10,7 @@
         {{ $t('suno.voice.manage') }}
       </el-button>
     </div>
-    <el-select
-      v-model="personaId"
-      :placeholder="$t('suno.placeholder.personaId')"
-      clearable
-      filterable
-      class="w-full"
-    >
+    <el-select v-model="personaId" :placeholder="$t('suno.placeholder.personaId')" clearable filterable class="w-full">
       <el-option
         v-for="persona in personas"
         :key="persona.persona_id || ''"

@@ -49,18 +49,16 @@
          opt-out checklist regardless of entry surface. -->
     <el-dialog
       v-model="scopeDialogVisible"
-      :title="scopeDialogCatalog ? ($t('chat.consent.selectScopes', { provider: scopeDialogCatalog.name }) as string) : ''"
+      :title="
+        scopeDialogCatalog ? ($t('chat.consent.selectScopes', { provider: scopeDialogCatalog.name }) as string) : ''
+      "
       width="480px"
       :close-on-click-modal="false"
       append-to-body
     >
       <p class="ccc-scope-hint">{{ $t('chat.consent.selectScopesHint') }}</p>
       <el-checkbox-group v-model="selectedScopes">
-        <div
-          v-for="perm in (scopeDialogCatalog?.permissions || [])"
-          :key="perm.id"
-          class="ccc-scope-row"
-        >
+        <div v-for="perm in scopeDialogCatalog?.permissions || []" :key="perm.id" class="ccc-scope-row">
           <el-checkbox :value="perm.id" :label="perm.id">
             <span class="ccc-scope-label">{{ perm.label || perm.id }}</span>
           </el-checkbox>
