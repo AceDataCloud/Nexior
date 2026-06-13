@@ -25,6 +25,8 @@ export const CB_ACTION_SESSION_EDIT = 'session.edit';
 export const CB_ACTION_SESSION_INTERRUPT = 'session.interrupt';
 export const CB_ACTION_SESSION_CLOSE = 'session.close';
 export const CB_ACTION_PERMISSION_RESOLVE = 'permission.resolve';
+// Reconnect / followed a notification: re-fetch every pending permission prompt.
+export const CB_ACTION_PERMISSIONS_LIST = 'permissions.list';
 export const CB_ACTION_SESSIONS_LIST = 'sessions.list';
 export const CB_ACTION_HISTORY_LIST = 'history.list';
 export const CB_ACTION_HISTORY_GET = 'history.get';
@@ -41,6 +43,8 @@ export const CB_EVENT_SESSION_TOOL_USE = 'session.tool_use';
 export const CB_EVENT_SESSION_TOOL_RESULT = 'session.tool_result';
 export const CB_EVENT_PERMISSION_REQUEST = 'permission.request';
 export const CB_EVENT_PERMISSION_RESOLVED = 'permission.resolved';
+// Reply to permissions.list: every still-pending request across all sessions.
+export const CB_EVENT_PERMISSIONS_SNAPSHOT = 'permissions.snapshot';
 export const CB_EVENT_SESSION_RESULT = 'session.result';
 export const CB_EVENT_SESSION_NOTICE = 'session.notice';
 export const CB_EVENT_SESSION_ERROR = 'session.error';

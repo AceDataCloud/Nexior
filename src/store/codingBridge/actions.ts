@@ -11,12 +11,22 @@ import {
 } from '@/models';
 import { CodingBridgeSocket } from '@/utils/codingBridgeSocket';
 import {
+  notifyPermissionLocally,
+  subscribeWebPush,
+  unsubscribeWebPush,
+  registerNativePush,
+  requestWebPermission,
+  type ICodingBridgeNotifyData
+} from '@/utils/codingBridgeNotify';
+import { isNative } from '@/utils/surface';
+import {
   CB_ACTION_SESSION_START,
   CB_ACTION_SESSION_SEND,
   CB_ACTION_SESSION_EDIT,
   CB_ACTION_SESSION_INTERRUPT,
   CB_ACTION_SESSION_CLOSE,
   CB_ACTION_PERMISSION_RESOLVE,
+  CB_ACTION_PERMISSIONS_LIST,
   CB_ACTION_HISTORY_LIST,
   CB_ACTION_HISTORY_GET,
   CB_ACTION_FS_LIST,
@@ -29,6 +39,7 @@ import {
   CB_EVENT_SESSION_TOOL_RESULT,
   CB_EVENT_PERMISSION_REQUEST,
   CB_EVENT_PERMISSION_RESOLVED,
+  CB_EVENT_PERMISSIONS_SNAPSHOT,
   CB_EVENT_SESSION_RESULT,
   CB_EVENT_SESSION_NOTICE,
   CB_EVENT_SESSION_ERROR,
@@ -86,6 +97,28 @@ const formatAnswerText = (output: string): string => {
   return Object.entries(answers)
     .map(([question, value]) => `${question} → ${Array.isArray(value) ? value.join(', ') : value}`)
     .join('\n');
+};
+
+// Raise a Tier-1 local notification for a consent prompt (no-op when the tab is
+// visible). Tapping it focuses the page and opens the originating node so the
+// pending dialog is shown.
+const notifyForPermission = (
+  dispatch: ActionContext<ICodingBridgeState, IRootState>['dispatch'],
+  data: ICodingBridgeNotifyData
+): void => {
+  const tool = data.tool || 'a tool';
+  notifyPermissionLocally(
+    {
+      title: 'Approval needed',
+      body: `Claude wants to use ${tool}. Tap to review.`,
+      data
+    },
+    (clicked) => {
+      if (clicked.node_id) {
+        dispatch('selectNode', clicked.node_id);
+      }
+    }
+  );
 };
 
 // Translate one inner node event into the matching mutation(s).
@@ -200,6 +233,31 @@ const applyNodeEvent = (
         display_name: payload.display_name,
         description: payload.description
       });
+      // Tier 1: if the tab is hidden, surface the prompt as an OS notification.
+      // A visible tab shows the inline dialog instead, so this stays silent.
+      notifyForPermission(dispatch, {
+        node_id: fromNode,
+        session_id: sessionId,
+        request_id: payload.request_id,
+        tool: payload.display_name || payload.title || payload.tool
+      });
+      break;
+    case CB_EVENT_PERMISSIONS_SNAPSHOT:
+      // Reply to permissions.list after a (re)connect or a followed notification:
+      // re-add every prompt that was raised while we were away. addPermission
+      // dedups, so this is safe to apply alongside live events.
+      for (const item of payload.requests ?? []) {
+        commit('addPermission', {
+          request_id: item.request_id,
+          session_id: item.session_id,
+          node_id: fromNode,
+          tool: item.tool,
+          input: item.input,
+          title: item.title,
+          display_name: item.display_name,
+          description: item.description
+        });
+      }
       break;
     case CB_EVENT_PERMISSION_RESOLVED:
       commit('removePermission', payload.request_id);
@@ -464,6 +522,8 @@ export const connect = ({
       if (state.currentNodeId) {
         dispatch('getHistory', state.currentNodeId);
         dispatch('getCapabilities', state.currentNodeId);
+        // Re-fetch any consent prompt raised while we were disconnected.
+        dispatch('requestPendingPermissions', state.currentNodeId);
       }
     },
     onClose: () => commit('setConnection', 'disconnected'),
@@ -478,6 +538,7 @@ export const connect = ({
       if (status === 'online' && nodeId === state.currentNodeId) {
         dispatch('getHistory', nodeId);
         dispatch('getCapabilities', nodeId);
+        dispatch('requestPendingPermissions', nodeId);
       }
     },
     onRelayError: (code, message) => console.warn('[codingBridge] relay error', code, message)
@@ -506,6 +567,21 @@ export const selectNode = (
   commit('setCurrentSession', ids.length ? ids[ids.length - 1] : undefined);
   dispatch('getHistory', nodeId);
   dispatch('getCapabilities', nodeId);
+  dispatch('requestPendingPermissions', nodeId);
+};
+
+// Ask a node to re-emit every outstanding permission prompt (permissions.list).
+// Used after a (re)connect, a node coming online, or following a notification —
+// so a prompt raised while we were away still surfaces instead of blocking.
+export const requestPendingPermissions = (
+  { state }: ActionContext<ICodingBridgeState, IRootState>,
+  nodeId?: string
+): void => {
+  const target = nodeId ?? state.currentNodeId;
+  if (!target || !socket) {
+    return;
+  }
+  socket.sendToNode(target, { action: CB_ACTION_PERMISSIONS_LIST });
 };
 
 export const newSession = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
@@ -832,6 +908,80 @@ export const getCapabilities = ({ state }: ActionContext<ICodingBridgeState, IRo
   socket.sendToNode(target, { action: CB_ACTION_CAPABILITIES_GET });
 };
 
+// Turn on out-of-band notifications for the signed-in user:
+//  - web: subscribe to Web Push (so a closed tab still gets the prompt),
+//  - native: register for FCM and route taps back to the originating node.
+// Returns the granted/ungranted outcome so the UI can reflect it. Local (Tier 1)
+// notifications need only the browser permission, requested here too.
+export const enableNotifications = async ({
+  dispatch,
+  rootState
+}: ActionContext<ICodingBridgeState, IRootState>): Promise<'enabled' | 'denied' | 'unsupported'> => {
+  const token = rootState.token?.access;
+  if (!token) {
+    return 'unsupported';
+  }
+  if (isNative()) {
+    const deviceToken = await registerNativePush((data) => {
+      if (data?.node_id) {
+        dispatch('selectNode', data.node_id);
+        dispatch('requestPendingPermissions', data.node_id);
+      }
+    });
+    if (!deviceToken) {
+      return 'denied';
+    }
+    await codingBridgeOperator.savePushSubscription(
+      { kind: 'fcm', token: deviceToken, ua: navigator.userAgent },
+      { token }
+    );
+    return 'enabled';
+  }
+  // Web: a local-only grant (no relay VAPID) still powers Tier-1 notifications.
+  const permission = await requestWebPermission();
+  if (permission === 'unsupported') {
+    return 'unsupported';
+  }
+  if (permission !== 'granted') {
+    return 'denied';
+  }
+  try {
+    const { data: config } = await codingBridgeOperator.getPushConfig();
+    if (config.web_push_enabled && config.vapid_public_key) {
+      const subscription = await subscribeWebPush(config.vapid_public_key);
+      if (subscription) {
+        await codingBridgeOperator.savePushSubscription(
+          { kind: 'webpush', subscription, ua: navigator.userAgent },
+          { token }
+        );
+      }
+    }
+  } catch (error) {
+    // Web Push setup failed (relay not configured / network) — Tier-1 still works.
+    console.warn('[codingBridge] web push setup skipped', error);
+  }
+  return 'enabled';
+};
+
+// Tear down Web Push for this browser (Tier-1 needs no teardown; native tokens
+// expire on uninstall). Best-effort: unsubscribe locally, deregister on relay.
+export const disableNotifications = async ({
+  rootState
+}: ActionContext<ICodingBridgeState, IRootState>): Promise<void> => {
+  const token = rootState.token?.access;
+  if (isNative() || !token) {
+    return;
+  }
+  const endpoint = await unsubscribeWebPush();
+  if (endpoint) {
+    try {
+      await codingBridgeOperator.deletePushSubscription({ endpoint }, { token });
+    } catch (error) {
+      console.warn('[codingBridge] failed to deregister web push', error);
+    }
+  }
+};
+
 export default {
   resetAll,
   getApplications,
@@ -842,6 +992,9 @@ export default {
   connect,
   disconnect,
   selectNode,
+  requestPendingPermissions,
+  enableNotifications,
+  disableNotifications,
   newSession,
   sendPrompt,
   editPrompt,

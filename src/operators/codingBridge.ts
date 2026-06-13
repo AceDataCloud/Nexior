@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { ICodingBridgeClaimResponse, ICodingBridgeNode } from '@/models';
+import { ICodingBridgeClaimResponse, ICodingBridgeNode, ICodingBridgePushConfig } from '@/models';
 import { BASE_URL_CODING_BRIDGE } from '@/constants';
 
 /**
@@ -37,6 +37,36 @@ class CodingBridgeOperator {
   /** Revoke a node and drop any live connection it holds. */
   async deleteNode(nodeId: string, options: { token: string }): Promise<AxiosResponse<{ ok: boolean }>> {
     return await axios.delete(`/api/nodes/${encodeURIComponent(nodeId)}`, {
+      headers: this.headers(options.token),
+      baseURL: BASE_URL_CODING_BRIDGE
+    });
+  }
+
+  /** Push capability + VAPID public key (no auth needed). */
+  async getPushConfig(): Promise<AxiosResponse<ICodingBridgePushConfig>> {
+    return await axios.get('/api/push/config', { baseURL: BASE_URL_CODING_BRIDGE });
+  }
+
+  /** Register a web-push subscription or an FCM device token for the user. */
+  async savePushSubscription(
+    body:
+      | { kind: 'webpush'; subscription: PushSubscriptionJSON; ua?: string }
+      | { kind: 'fcm'; token: string; ua?: string },
+    options: { token: string }
+  ): Promise<AxiosResponse<{ ok: boolean }>> {
+    return await axios.post('/api/push/subscriptions', body, {
+      headers: this.headers(options.token),
+      baseURL: BASE_URL_CODING_BRIDGE
+    });
+  }
+
+  /** Unregister a subscription by its web-push endpoint or FCM token. */
+  async deletePushSubscription(
+    body: { endpoint?: string; token?: string },
+    options: { token: string }
+  ): Promise<AxiosResponse<{ ok: boolean }>> {
+    return await axios.delete('/api/push/subscriptions', {
+      data: body,
       headers: this.headers(options.token),
       baseURL: BASE_URL_CODING_BRIDGE
     });
