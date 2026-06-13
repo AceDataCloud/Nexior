@@ -8,5 +8,11 @@
 	<array>
 		<string>Default</string>
 	</array>
+	<!-- Universal Links: open invite links in the app when installed.
+	     Verified against https://studio.acedata.cloud/.well-known/apple-app-site-association. -->
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:studio.acedata.cloud</string>
+	</array>
 </dict>
 </plist>

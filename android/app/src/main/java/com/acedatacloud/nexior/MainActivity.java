@@ -11,6 +11,9 @@ import com.getcapacitor.BridgeActivity;
 public class MainActivity extends BridgeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Register the custom Play Install Referrer plugin before the bridge
+        // initializes so it's available to the WebView on first launch.
+        registerPlugin(InstallReferrerPlugin.class);
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
     }

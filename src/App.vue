@@ -17,6 +17,7 @@ import { getLocale } from './i18n';
 import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { isNative } from '@/utils/surface';
+import { parseInviterFromDeepLink, writeInviterCookie } from '@/utils/attribution';
 import { ssoOperator } from '@/operators';
 import { track } from '@/plugins/telemetry';
 
@@ -79,6 +80,15 @@ export default defineComponent({
     if (isNative()) {
       CapApp.addListener('appUrlOpen', async ({ url }) => {
         console.debug('deep link received:', url);
+        // Universal Link / App Link invite (installed-app case): an
+        // https://studio.acedata.cloud/i/<inviter_id> tap opens the app here
+        // instead of hitting the server. Capture the inviter so the login
+        // panel binds the referral. (Deferred/new-install attribution is
+        // handled separately in resolveDeferredInviterId at first launch.)
+        const deepLinkInviter = parseInviterFromDeepLink(url);
+        if (deepLinkInviter) {
+          writeInviterCookie(deepLinkInviter);
+        }
         // Expected format: com.acedatacloud.nexior://auth/callback?code=XXX
         if (url.includes('auth/callback')) {
           const params = new URL(url).searchParams;
