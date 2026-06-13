@@ -8,6 +8,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 const httpClient: AxiosInstance = axios.create({
   baseURL: `${getBaseUrlPlatform()}/api/v1`,
+  // Without a timeout a stalled mobile connection leaves the promise pending
+  // forever — e.g. the SSO code exchange / getUser after Apple login would
+  // hang with no error, leaving the UI dead. Fail after 20s so the caller's
+  // catch runs (and RUM captures it).
+  timeout: 20000,
   headers: {
     'Content-type': 'application/json',
     Accept: 'application/json'

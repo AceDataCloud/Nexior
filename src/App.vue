@@ -18,6 +18,7 @@ import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { isNative } from '@/utils/surface';
 import { ssoOperator } from '@/operators';
+import { track } from '@/plugins/telemetry';
 
 const elementPlusLocaleMap: Record<string, () => Promise<any>> = {
   en: () => import('element-plus/es/locale/lang/en'),
@@ -50,7 +51,11 @@ export default defineComponent({
   data() {
     return {
       isTest,
-      epLocale: null as any
+      epLocale: null as any,
+      // Guards against Capacitor delivering the same `appUrlOpen` deep link
+      // more than once — a second exchange of an already-consumed SSO code
+      // fails and would bounce the user back to login.
+      lastHandledCode: ''
     };
   },
   computed: {
@@ -79,6 +84,15 @@ export default defineComponent({
           const params = new URL(url).searchParams;
           const code = params.get('code');
           if (code) {
+            // Dedup: the same code can arrive twice (Capacitor re-delivers the
+            // deep link), and an SSO code is single-use — exchanging it again
+            // 4xxs and would kick the user back to login.
+            if (code === this.lastHandledCode) {
+              console.debug('deep link code already handled, ignoring');
+              return;
+            }
+            this.lastHandledCode = code;
+            track('apple_login_deeplink', { action: 'sso_exchange' });
             try {
               await Browser.close();
             } catch (e) {
@@ -93,9 +107,11 @@ export default defineComponent({
               };
               await this.$store.dispatch('setToken', token);
               await this.$store.dispatch('getUser');
+              track('apple_login_success', { action: 'sso_exchange' });
               this.$store.commit('setAuth', { visible: false });
               await this.$router.push('/');
             } catch (e) {
+              track('apple_login_failed', { action: 'sso_exchange', error: String(e) });
               console.error('token exchange failed after deep link', e);
               this.$store.commit('setAuth', { visible: false });
               await this.$store.dispatch('login');
