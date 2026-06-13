@@ -352,11 +352,23 @@ export default defineComponent({
     list-style: disc;
   }
 
+  /* Let the night-owl `.hljs` dark background fill the block cleanly instead
+     of framing it with github-markdown's light `pre` padding/background. */
   pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
     border-radius: 6px;
+    overflow: hidden;
   }
   pre code {
     color: #fff;
+  }
+
+  /* Inline code keeps a subtle chip; block code is themed by night-owl. */
+  a {
+    color: var(--el-color-primary);
+    text-decoration: underline;
   }
 }
 
