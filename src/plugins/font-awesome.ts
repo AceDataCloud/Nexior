@@ -10,7 +10,8 @@ import {
   faFileAlt as faRegularFileAlt,
   faClock as faRegularClock,
   faFile as faRegularFile,
-  faStar as faRegularStar
+  faStar as faRegularStar,
+  faBell as faRegularBell
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faDiscord as faBrandsDiscord,
@@ -34,6 +35,7 @@ import {
   faSeedling as faSolidSeedling,
   faDiamond as faSolidDiamond,
   faLaptopCode as faSolidLaptopCode,
+  faBell as faSolidBell,
   faOutdent as faSolidOutdent,
   faImage as faSolidImage,
   faChevronRight as faSolidChevronRight,
@@ -180,6 +182,8 @@ library.add(faSolidImage);
 library.add(faSolidXmark);
 library.add(faSolidFire);
 library.add(faSolidLaptopCode);
+library.add(faSolidBell);
+library.add(faRegularBell);
 library.add(faSolidRotateRight);
 library.add(faSolidSeedling);
 library.add(faSolidPenToSquare);

@@ -54,6 +54,7 @@ export default defineComponent({
       this.initialCode = code;
       this.pairVisible = true;
     }
+    this.handleNotificationDeepLink();
   },
   beforeUnmount() {
     this.$store.dispatch('codingBridge/disconnect');
@@ -66,6 +67,17 @@ export default defineComponent({
     openPairFromDrawer() {
       this.drawer = false;
       this.openPair();
+    },
+    // A tapped notification opens `/coding-bridge?node=&session=&request=`.
+    // Select that node and re-fetch its pending prompts so the consent dialog
+    // surfaces immediately. The relay/socket may still be connecting, so we
+    // select eagerly — selectNode + the socket onOpen both request the prompts.
+    handleNotificationDeepLink() {
+      const nodeId = this.$route.query.node;
+      if (typeof nodeId === 'string' && nodeId) {
+        this.$store.dispatch('codingBridge/selectNode', nodeId);
+        this.$store.dispatch('codingBridge/requestPendingPermissions', nodeId);
+      }
     }
   }
 });

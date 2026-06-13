@@ -6,6 +6,7 @@
         <span>{{ $t('codingBridge.nodeList.title') }}</span>
       </div>
       <div class="flex items-center gap-1">
+        <notification-toggle />
         <el-button circle size="small" :title="$t('codingBridge.nodeList.refresh')" @click="onRefresh">
           <font-awesome-icon icon="fa-solid fa-rotate-right" />
         </el-button>
@@ -71,12 +72,14 @@ import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElMessageBox } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgeConnectionStatus, ICodingBridgeNode } from '@/models';
+import NotificationToggle from './NotificationToggle.vue';
 
 export default defineComponent({
   name: 'CodingBridgeNodeList',
   components: {
     ElButton,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    NotificationToggle
   },
   emits: ['pair'],
   computed: {

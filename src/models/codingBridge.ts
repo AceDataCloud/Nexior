@@ -213,3 +213,11 @@ export interface ICodingBridgeClaimResponse {
   ok: boolean;
   node_name: string;
 }
+
+/** Push capability advertised by the relay (`GET /api/push/config`). */
+export interface ICodingBridgePushConfig {
+  enabled: boolean;
+  web_push_enabled: boolean;
+  fcm_enabled: boolean;
+  vapid_public_key: string;
+}
