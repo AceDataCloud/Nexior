@@ -62,7 +62,7 @@
         <div v-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
           {{ $t('codingBridge.session.startHint') }}
         </div>
-        <transcript-item v-for="event in events" :key="event.id" :event="event" />
+        <transcript-item v-for="event in events" :key="event.id" :event="event" @edit="onEditPrompt" />
         <!-- Retry: re-run the last prompt after a turn ends in error. -->
         <div v-if="canRetry" class="flex justify-center pt-1">
           <el-button size="small" round @click="onRetry">
@@ -1030,6 +1030,34 @@ export default defineComponent({
     },
     onRetry() {
       this.$store.dispatch('codingBridge/retryLastPrompt');
+    },
+    // Reload a previously sent prompt into the composer so the user can tweak
+    // the text/attachments (and switch the model) and resend it as a new turn.
+    // The agent transcript is append-only, so the original prompt stays put.
+    onEditPrompt(event: ICodingBridgeEvent) {
+      if (this.readonly) {
+        return;
+      }
+      this.prompt = event.text ?? '';
+      this.slashMenuOpen = false;
+      this.slashActiveIndex = 0;
+      this.clearAttachments();
+      this.attachmentFileList = (event.attachments ?? []).map((attachment, index) => {
+        const isImage = attachment.type === 'image';
+        return {
+          name: attachment.name || attachment.url,
+          url: attachment.url,
+          status: 'success',
+          percentage: 100,
+          uid: Date.now() + index,
+          response: { file_url: attachment.url },
+          mime_type: attachment.mime_type
+        } as unknown as UploadFile;
+      });
+      this.$nextTick(() => {
+        const textarea = this.$el?.querySelector?.('.cb-composer__input textarea') as HTMLTextAreaElement | null;
+        textarea?.focus();
+      });
     },
     openDirectory() {
       this.directoryVisible = true;
