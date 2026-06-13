@@ -11,15 +11,17 @@
           :class="['border-r-0 settings-menu', mobile ? 'is-mobile flex flex-row overflow-x-auto' : '']"
           :mode="mobile ? 'horizontal' : 'vertical'"
         >
+          <!-- Render only the visible tabs. CSS-hiding (display:none) leaks
+               admin-only items into the horizontal el-menu ellipsis overflow
+               on mobile, exposing them to non-admins. -->
           <el-menu-item
-            v-for="(item, index) in navItems"
+            v-for="(item, index) in visibleNavItems"
             :key="index"
             :index="item.key"
             :class="[
               'items-center cursor-pointer',
               mobile ? 'flex-shrink-0 px-3 py-2 text-sm' : 'flex w-[180px] px-2 py-2',
-              activeTab === item.key ? 'active' : '',
-              item.visible ? '' : 'hidden'
+              activeTab === item.key ? 'active' : ''
             ]"
             @click="activeTab = item.key"
           >
@@ -35,7 +37,7 @@
         <div v-else-if="activeTab === SETTING_TAB_API_KEY">
           <byok-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_SITE">
+        <div v-else-if="activeTab === SETTING_TAB_SITE && isSiteAdmin">
           <site-setting />
         </div>
         <div v-else-if="activeTab === SETTING_TAB_SEO && isSiteAdmin">
@@ -214,6 +216,9 @@ export default defineComponent({
         },
         { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
       ];
+    },
+    visibleNavItems(): Array<{ key: SettingTabKey; label: string; icon: typeof faCog; visible: boolean }> {
+      return this.navItems.filter((item) => item.visible);
     },
     isSiteAdmin(): boolean {
       return !!this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
