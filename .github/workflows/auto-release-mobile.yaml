@@ -1,0 +1,67 @@
+name: Auto Release Mobile (Testing)
+
+# Fires automatically after a merge to main bumps the version. Beachball
+# (publish.yaml) commits the bump and pushes the @acedatacloud/nexior_v* tag
+# using BOT_GITHUB_TOKEN (a PAT), which is what lets this tag push trigger
+# further workflows. We trigger on that tag — not raw `push: main` — so the
+# mobile build uses the final, released version and never races the bump.
+#
+# This orchestrator dispatches the existing build-android.yaml / build-ios.yaml
+# with PRODUCTION EXPLICITLY DISABLED:
+#   - Android  -> uploads to the test track below, promote_to_production=false
+#   - iOS      -> uploads to TestFlight (+ external groups), auto_submit_review=false
+# Promotion to the Play Production track and submission for App Store review
+# remain a manual, opt-in action (run build-android.yaml / build-ios.yaml or
+# release-mobile.yaml by hand with the production toggles on).
+#
+# To change the Android test track (alpha = Closed testing, beta = Open
+# testing, internal = Internal testing), edit ANDROID_TRACK below.
+
+on:
+  push:
+    tags:
+      - '@acedatacloud/nexior_v*'
+  # Allow re-running the auto test-publish by hand for the current ref.
+  workflow_dispatch: {}
+
+permissions:
+  actions: write
+  contents: read
+
+env:
+  ANDROID_TRACK: beta
+
+jobs:
+  fanout:
+    name: Auto-publish to test tracks (no Production)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve version
+        id: ver
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "::notice::Auto test-publish Nexior v$VERSION (ref=${{ github.ref_name }}, android track=$ANDROID_TRACK)"
+
+      - name: Trigger Android build → ${{ env.ANDROID_TRACK }} (no production)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run build-android.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f track="$ANDROID_TRACK" \
+            -f promote_to_production=false \
+            -f force=false
+
+      - name: Trigger iOS build → TestFlight (no App Store review)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run build-ios.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f auto_distribute_external=true \
+            -f auto_submit_review=false \
+            -f force=false
