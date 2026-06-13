@@ -14,6 +14,7 @@ import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
 import { getSurface, isNative } from '@/utils/surface';
+import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
@@ -70,6 +71,10 @@ const main = async () => {
     return;
   }
   await initializeCookies();
+  // Deferred-deep-link referral: on native first launch, resolve the inviter
+  // (Play Install Referrer / iOS clipboard|fingerprint) into the INVITER_ID
+  // cookie BEFORE the auth panel mounts and reads it. No-op on web.
+  await resolveDeferredInviterId();
   await initializeToken();
   // user/site/config are independent after token is set — run in parallel
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);

@@ -28,6 +28,15 @@
                 <data android:scheme="com.acedatacloud.nexior" />
             </intent-filter>
 
+            <!-- App Links: open invite links in the app when installed.
+                 Verified against https://studio.acedata.cloud/.well-known/assetlinks.json. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="studio.acedata.cloud" android:pathPrefix="/i/" />
+            </intent-filter>
+
         </activity>
 
         <provider
