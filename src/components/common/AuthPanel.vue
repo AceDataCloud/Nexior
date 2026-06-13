@@ -41,6 +41,7 @@ import { ROUTE_SETTINGS_INDEX } from '@/router';
 import { Browser } from '@capacitor/browser';
 import { SignInWithApple } from '@capacitor-community/apple-sign-in';
 import { isNative as isNativeSurface, isIOS } from '@/utils/surface';
+import { track } from '@/plugins/telemetry';
 
 // Native Sign In with Apple is keyed by the iOS bundle identifier, NOT
 // the web Services ID. The same Apple `sub` is returned for both, so
@@ -112,6 +113,7 @@ export default defineComponent({
         // needs, so it falls back to a webpage that asks for the iCloud
         // password instead of using Face ID.
         if (provider === 'apple' && isIOS()) {
+          track('apple_login_submit', { action: 'native_ios' });
           try {
             const { response } = await SignInWithApple.authorize({
               clientId: APPLE_NATIVE_CLIENT_ID,
@@ -123,18 +125,24 @@ export default defineComponent({
             }
             // POST the identity_token directly to AuthBackend. Same endpoint
             // as the web Apple JS flow — apple_get_user_data verifies the JWT
-            // against Apple's JWKS, no client_secret needed.
-            const loginResp = await axios.post(`${getBaseUrlAuth()}/api/v1/auth/login/`, {
-              platform: 'apple',
-              identity_token: response.identityToken,
-              inviter_id: this.inviterId,
-              user: {
-                name: {
-                  firstName: response.givenName ?? '',
-                  lastName: response.familyName ?? ''
+            // against Apple's JWKS, no client_secret needed. Raw axios here
+            // bypasses the platform httpClient, so set an explicit timeout —
+            // otherwise a stalled connection hangs the sheet with no error.
+            const loginResp = await axios.post(
+              `${getBaseUrlAuth()}/api/v1/auth/login/`,
+              {
+                platform: 'apple',
+                identity_token: response.identityToken,
+                inviter_id: this.inviterId,
+                user: {
+                  name: {
+                    firstName: response.givenName ?? '',
+                    lastName: response.familyName ?? ''
+                  }
                 }
-              }
-            });
+              },
+              { timeout: 20000 }
+            );
             const data = loginResp.data;
             const token = {
               access: data.access_token,
@@ -146,6 +154,7 @@ export default defineComponent({
             if (!this.$store.state.site?.origin) {
               await this.$store.dispatch('initializeSite');
             }
+            track('apple_login_success', { action: 'native_ios' });
             this.$store.commit('setAuth', { visible: false });
             await this.$router.push('/');
           } catch (error: unknown) {
@@ -158,8 +167,10 @@ export default defineComponent({
             const detail = error instanceof Error ? error.message : String(error);
             const canceled = /\b100[01]\b/.test(detail) || /cancel/i.test(detail);
             if (canceled) {
+              track('apple_login_canceled', { action: 'native_ios' });
               console.debug('native apple sign in canceled by user', error);
             } else {
+              track('apple_login_failed', { action: 'native_ios', error: detail });
               console.warn('native apple sign in failed', error);
               ElMessage.error(this.$t('common.error.appleSignInFailed').toString());
             }
