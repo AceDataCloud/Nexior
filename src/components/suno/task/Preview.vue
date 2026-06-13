@@ -368,7 +368,7 @@ export default defineComponent({
       }
     },
     onExtend(event: MouseEvent, audio: ISunoAudio) {
-      event.stopPropagation();
+      event?.stopPropagation();
       console.log('on extend');
       // download url here
       console.debug('set config', audio);
@@ -386,7 +386,7 @@ export default defineComponent({
     },
     onDownload(event: MouseEvent | null, audioUrl: string) {
       if (event) {
-        event.stopPropagation();
+        event?.stopPropagation();
       }
       console.log('on download', audioUrl);
       const parsedUrl = new URL(audioUrl);
@@ -450,7 +450,7 @@ export default defineComponent({
       });
     },
     onPreview(event: MouseEvent, videoUrl: string) {
-      event.stopPropagation();
+      event?.stopPropagation();
       console.log('on preview', videoUrl);
       // preview url here
       window.open(videoUrl, '_blank');

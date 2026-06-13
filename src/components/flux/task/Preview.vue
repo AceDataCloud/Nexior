@@ -151,7 +151,7 @@ export default defineComponent({
   },
   methods: {
     onDownload(event: MouseEvent, image_url: string) {
-      event.stopPropagation();
+      event?.stopPropagation();
       console.log('on download');
       // download url here
       window.open(image_url, '_blank');

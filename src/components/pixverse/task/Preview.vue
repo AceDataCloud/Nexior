@@ -145,7 +145,7 @@ export default defineComponent({
   },
   methods: {
     onDownload(event: MouseEvent, video_url: string) {
-      event.stopPropagation();
+      event?.stopPropagation();
       console.log('on download');
       // download url here
       window.open(video_url, '_blank');
