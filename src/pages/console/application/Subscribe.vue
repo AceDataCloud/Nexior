@@ -10,7 +10,10 @@
         <el-col :span="24">
           <el-card shadow="hover" class="card">
             <el-row>
-              <el-col class="max-w-4xl mx-auto">
+              <el-col v-if="!showPayment" class="max-w-4xl mx-auto">
+                <el-empty :description="$t('common.message.noData')" />
+              </el-col>
+              <el-col v-else class="max-w-4xl mx-auto">
                 <p class="introduction">
                   {{ $t('console.subscription.title') }}
                 </p>
@@ -73,7 +76,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
-import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag } from 'element-plus';
+import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString } from '@/utils';
 import { isIOS } from '@/utils';
@@ -109,6 +112,7 @@ export default defineComponent({
     ElTag,
     ElCol,
     ElCard,
+    ElEmpty,
     FontAwesomeIcon,
     ElButton
   },
@@ -131,9 +135,9 @@ export default defineComponent({
     applicationId() {
       return this.$route.params?.id?.toString();
     },
-    // App Store Review Guideline 3.1.1: hide non-IAP purchase actions
-    // inside the iOS bundle. The cards still render so deep-linked users
-    // can see the package info, but the buy buttons are removed.
+    // App Store Review Guideline 3.1.1: on iOS the whole paid catalog
+    // (packages, prices and buy buttons) is hidden — Apple flags merely
+    // displaying non-IAP paid content, not just the purchase action.
     showPayment(): boolean {
       return !isIOS();
     },
