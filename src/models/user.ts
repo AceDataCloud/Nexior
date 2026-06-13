@@ -19,7 +19,15 @@ export interface IUserListResponse {
 
 export interface IUserDetailResponse extends IUser {}
 
-export type IUserPublicRegistrationMethod = 'email' | 'phone' | 'github' | 'google' | 'apple' | 'wechat' | 'username' | 'unknown';
+export type IUserPublicRegistrationMethod =
+  | 'email'
+  | 'phone'
+  | 'github'
+  | 'google'
+  | 'apple'
+  | 'wechat'
+  | 'username'
+  | 'unknown';
 
 export interface IUserPublic {
   id: string;

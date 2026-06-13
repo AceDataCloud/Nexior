@@ -21,8 +21,7 @@ const progress = field<number>('progress');
 const duration = field<number>('duration');
 
 const onSliderInput = () => {};
-const onSliderChange = (val: number | number[]) =>
-  dispatchAudio({ progress: Array.isArray(val) ? val[0] : val });
+const onSliderChange = (val: number | number[]) => dispatchAudio({ progress: Array.isArray(val) ? val[0] : val });
 </script>
 
 <style lang="scss">

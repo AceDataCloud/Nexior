@@ -102,10 +102,9 @@ export interface IUserConnectionSummary {
  *  Throws on network / HTTP errors so the caller can decide whether
  *  to fall back to the stale status or surface a toast. */
 export async function listMyConnections(): Promise<IUserConnectionSummary[]> {
-  const response: AxiosResponse<IUserConnectionSummary[]> = await httpClient.get(
-    `/connections/`,
-    { baseURL: `${getBaseUrlAuth()}/api/v1` }
-  );
+  const response: AxiosResponse<IUserConnectionSummary[]> = await httpClient.get(`/connections/`, {
+    baseURL: `${getBaseUrlAuth()}/api/v1`
+  });
   return Array.isArray(response.data) ? response.data : [];
 }
 
@@ -126,10 +125,9 @@ export async function getCatalogItem(catalogId: string): Promise<IConnectorCatal
   if (existing) return existing;
   const task = (async () => {
     try {
-      const response: AxiosResponse<IConnectorCatalogSummary> = await httpClient.get(
-        `/connectors/${catalogId}/`,
-        { baseURL: `${getBaseUrlAuth()}/api/v1` }
-      );
+      const response: AxiosResponse<IConnectorCatalogSummary> = await httpClient.get(`/connectors/${catalogId}/`, {
+        baseURL: `${getBaseUrlAuth()}/api/v1`
+      });
       const item = response.data;
       cache.set(catalogId, item);
       return item;

@@ -317,7 +317,11 @@ export default defineComponent({
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family:
+        'Inter',
+        system-ui,
+        -apple-system,
+        sans-serif;
       font-size: clamp(96px, 18vw, 200px);
       font-weight: 800;
       letter-spacing: -0.04em;
