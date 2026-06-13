@@ -5,10 +5,14 @@
     size="small"
     :type="enabled ? 'primary' : 'default'"
     :title="enabled ? $t('codingBridge.notify.disable') : $t('codingBridge.notify.enable')"
-    :loading="busy"
+    :disabled="busy"
     @click="onToggle"
   >
-    <font-awesome-icon :icon="enabled ? 'fa-solid fa-bell' : 'fa-regular fa-bell'" />
+    <!-- Swap the bell for a spinner while busy: Element Plus's built-in loading
+         spinner renders cramped inside a small circle icon-button. A same-size
+         font-awesome icon keeps the button visually consistent with its siblings. -->
+    <font-awesome-icon v-if="busy" icon="fa-solid fa-spinner" spin />
+    <font-awesome-icon v-else :icon="enabled ? 'fa-solid fa-bell' : 'fa-regular fa-bell'" />
   </el-button>
 </template>
 
