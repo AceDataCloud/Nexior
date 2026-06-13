@@ -33,6 +33,8 @@ import {
   CB_EVENT_SESSION_NOTICE,
   CB_EVENT_SESSION_ERROR,
   CB_EVENT_SESSION_CLOSED,
+  CB_EVENT_SESSION_REWOUND,
+  CB_EVENT_SESSION_STREAM_TRUNCATED,
   CB_EVENT_SESSIONS_SNAPSHOT,
   CB_EVENT_HISTORY_SNAPSHOT,
   CB_EVENT_HISTORY_DETAIL,
@@ -97,6 +99,17 @@ const applyNodeEvent = (
   const event = payload?.event;
   const sessionId = payload?.session_id;
   const traceId = payload?.trace_id;
+  // Reliable delivery: durable events carry a monotonic relay-assigned `seq`.
+  // Drop any we have already applied (replay/live overlap on reconnect) and
+  // advance the cursor used to resume after the next disconnect.
+  const seq = payload?.seq;
+  if (typeof seq === 'number' && sessionId) {
+    const last = state.lastSeq[sessionId];
+    if (last !== undefined && seq <= last) {
+      return;
+    }
+    commit('setLastSeq', { session_id: sessionId, seq });
+  }
   // Keep the session's trace id current with whatever turn the node is on.
   if (sessionId && traceId) {
     commit('updateSession', { session_id: sessionId, trace_id: traceId });
@@ -231,6 +244,24 @@ const applyNodeEvent = (
     case CB_EVENT_SESSION_CLOSED:
       commit('finalizeAllStreams', { session_id: sessionId });
       commit('updateSession', { session_id: sessionId, status: 'closed' });
+      break;
+    case CB_EVENT_SESSION_REWOUND:
+      // A past prompt was edited: fold the fork into the transcript by rewinding
+      // to the cut point, then re-echo the edited prompt. Authoritative and
+      // deterministic, so a reconnect replay rebuilds the right branch (the live
+      // path already did this optimistically in editPrompt; re-applying is a
+      // no-op that yields the same state).
+      commit('rewindToCut', { session_id: sessionId, cut_uuid: payload.cut_uuid });
+      if (payload.prompt) {
+        commit('appendEvent', makeEvent(sessionId, 'prompt', { text: payload.prompt, trace_id: traceId }));
+      }
+      commit('updateSession', { session_id: sessionId, status: 'running' });
+      break;
+    case CB_EVENT_SESSION_STREAM_TRUNCATED:
+      // The live stream lost events neither relay nor node could retain (cursor
+      // too old / outbox overflow). Resync the session from the device transcript
+      // rather than trust the cursor — never a silent gap.
+      dispatch('resyncSession', sessionId);
       break;
     case CB_EVENT_SESSIONS_SNAPSHOT:
       for (const item of payload.sessions ?? []) {
@@ -417,6 +448,14 @@ export const connect = ({
   socket = new CodingBridgeSocket(token, {
     onOpen: () => {
       commit('setConnection', 'connected');
+      // Reconnect: resume each session's live stream from the seq we last saw,
+      // so in-flight output is replayed instead of lost. Empty after a full page
+      // reload (lastSeq is in-memory) — there the history restore below rebuilds
+      // the transcript instead.
+      const cursors = { ...state.lastSeq };
+      if (Object.keys(cursors).length) {
+        socket?.resume(cursors);
+      }
       if (state.currentNodeId) {
         dispatch('getHistory', state.currentNodeId);
         dispatch('getCapabilities', state.currentNodeId);
@@ -745,6 +784,25 @@ export const getHistoryDetail = (
   });
 };
 
+// Resync a live session from the device transcript after the live stream lost
+// events it could not replay (stream_truncated). Pulls the full history detail,
+// which replaces the session's events; later live events (higher seq) still
+// apply, so the stream picks back up cleanly.
+export const resyncSession = (
+  { state, dispatch }: ActionContext<ICodingBridgeState, IRootState>,
+  sessionId: string
+): void => {
+  const session = state.sessions[sessionId];
+  if (!session?.node_id) {
+    return;
+  }
+  dispatch('getHistoryDetail', {
+    node_id: session.node_id,
+    session_id: sessionId,
+    provider: session.provider ?? 'claude'
+  });
+};
+
 // Ask the current node to list a directory for the working-directory picker.
 export const browseDir = ({ commit, state }: ActionContext<ICodingBridgeState, IRootState>, path?: string): void => {
   const nodeId = state.currentNodeId;
@@ -789,6 +847,7 @@ export default {
   answerQuestion,
   getHistory,
   getHistoryDetail,
+  resyncSession,
   browseDir,
   clearDirectory,
   getCapabilities

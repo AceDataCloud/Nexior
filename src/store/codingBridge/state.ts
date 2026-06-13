@@ -8,6 +8,7 @@ export default (): ICodingBridgeState => {
     currentSessionId: undefined,
     sessions: {},
     events: {},
+    lastSeq: {},
     history: {},
     capabilities: {},
     historyRef: undefined,

@@ -103,6 +103,34 @@ export const truncateEventsBefore = (
   }
 };
 
+// Apply a node-authoritative rewind (the `session.rewound` event): keep the
+// transcript up to and including the result whose `cut_uuid` matches, dropping
+// the abandoned turns after it. `cut_uuid` empty → editing the first prompt, so
+// the whole transcript is cleared. This is what makes a reconnect-after-edit
+// rebuild the correct branch from the log instead of replaying the old turns.
+export const rewindToCut = (state: ICodingBridgeState, payload: { session_id: string; cut_uuid?: string }): void => {
+  const events = state.events[payload.session_id];
+  if (!events) {
+    return;
+  }
+  if (!payload.cut_uuid) {
+    state.events[payload.session_id] = [];
+    return;
+  }
+  const index = events.findIndex((event) => event.kind === 'result' && event.cut_uuid === payload.cut_uuid);
+  if (index >= 0) {
+    state.events[payload.session_id] = events.slice(0, index + 1);
+  }
+};
+
+// Remember the highest event seq applied for a session (reconnect cursor).
+export const setLastSeq = (state: ICodingBridgeState, payload: { session_id: string; seq: number }): void => {
+  const current = state.lastSeq[payload.session_id] ?? 0;
+  if (payload.seq > current) {
+    state.lastSeq[payload.session_id] = payload.seq;
+  }
+};
+
 // Streaming: append an incremental text chunk onto the open bubble matching
 // `stream_id`. No-op if the bubble was already finalized or never created.
 export const appendDelta = (
@@ -217,6 +245,7 @@ export const removeNodeData = (state: ICodingBridgeState, nodeId: string): void 
     if (session.node_id === nodeId) {
       delete state.sessions[session.session_id];
       delete state.events[session.session_id];
+      delete state.lastSeq[session.session_id];
       if (state.currentSessionId === session.session_id) {
         state.currentSessionId = undefined;
       }
@@ -237,6 +266,8 @@ export default {
   updateSession,
   appendEvent,
   truncateEventsBefore,
+  rewindToCut,
+  setLastSeq,
   appendDelta,
   finalizeStream,
   finalizeAllStreams,

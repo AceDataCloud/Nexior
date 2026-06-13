@@ -10,6 +10,8 @@
 // --- Outer envelope types (relay) ------------------------------------------
 export const CB_BROWSER_TO_NODE = 'browser.to_node';
 export const CB_BROWSER_LIST_NODES = 'browser.list_nodes';
+// Reconnect: ask the relay to replay each session's events past a cursor.
+export const CB_BROWSER_RESUME = 'browser.resume';
 export const CB_NODE_TO_BROWSER = 'node.to_browser';
 export const CB_NODES_SNAPSHOT = 'nodes.snapshot';
 export const CB_NODE_STATUS = 'node.status';
