@@ -552,6 +552,30 @@ export const sendPrompt = (
   }
 };
 
+// Re-run the most recent user prompt after a turn failed. We force a fresh
+// start (clear `started`) so the node re-spawns the agent — the common failure
+// is the agent process crashing before the session is really alive on the node.
+export const retryLastPrompt = ({ commit, dispatch, state }: ActionContext<ICodingBridgeState, IRootState>): void => {
+  const sessionId = state.currentSessionId;
+  if (!sessionId) {
+    return;
+  }
+  const session = state.sessions[sessionId];
+  const lastPrompt = [...(state.events[sessionId] ?? [])].reverse().find((event) => event.kind === 'prompt');
+  if (!session || !lastPrompt) {
+    return;
+  }
+  commit('updateSession', { session_id: sessionId, started: false });
+  dispatch('sendPrompt', {
+    prompt: lastPrompt.text ?? '',
+    cwd: session.cwd,
+    model: session.model,
+    provider: session.provider,
+    images: lastPrompt.images,
+    attachments: lastPrompt.attachments
+  });
+};
+
 export const interruptSession = ({ state }: ActionContext<ICodingBridgeState, IRootState>): void => {
   const sessionId = state.currentSessionId;
   const nodeId = state.currentNodeId;
@@ -680,6 +704,7 @@ export default {
   selectNode,
   newSession,
   sendPrompt,
+  retryLastPrompt,
   interruptSession,
   closeSession,
   resolvePermission,
