@@ -58,7 +58,7 @@
       </div>
 
       <!-- Transcript -->
-      <div ref="transcript" class="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
+      <div ref="transcript" class="flex-1 min-h-0 overflow-y-auto px-5 py-4 flex flex-col gap-3">
         <div v-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
           {{ $t('codingBridge.session.startHint') }}
         </div>
@@ -78,15 +78,18 @@
             {{ $t('codingBridge.session.retry') }}
           </el-button>
         </div>
-        <!-- Unbounded: the transcript already scrolls the card into view, so it
-             flows at natural height instead of nesting its own scroll (which
-             clipped the options/buttons on mobile). -->
+      </div>
+
+      <!-- Pending question: docked between the transcript and the composer
+           (NOT inside the scrolling transcript) so its options scroll inside
+           the card and the Back / Next / Submit bar is always on screen and
+           tappable on mobile. Capped via `--auq-max-height` so the dock +
+           composer + header always fit the viewport. -->
+      <div v-if="pendingQuestion" class="cb-question-dock flex-none px-5">
         <ask-user-question-card
-          v-if="pendingQuestion"
           :key="pendingQuestion.request_id"
           :tool-use-id="pendingQuestion.request_id"
           :payload="pendingQuestion.payload"
-          :bounded="false"
           @submit="onAnswerQuestion"
           @skip="onSkipQuestion"
         />
@@ -1189,6 +1192,18 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+// Docked pending-question panel. It shares the column with the transcript
+// (which is `flex-1` and shrinks first); the card caps its own height via
+// `--auq-max-height` and scrolls its options internally, so the action bar
+// stays visible above the composer even on a short phone screen. `dvh` tracks
+// the mobile browser's dynamic chrome.
+.cb-question-dock {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  --auq-max-height: min(52dvh, 560px);
+}
+
 .cb-composer {
   position: relative;
 
