@@ -15,6 +15,12 @@ on:
       - '.github/ISSUE_TEMPLATE/**'
 jobs:
   run:
+    # Skip the redundant no-op re-run. beachball's successful publish pushes an
+    # "applying package updates" bump commit back to main, which re-enters this
+    # workflow only to print "Nothing to bump - skipping publish!" after a full
+    # checkout + npm ci + build. The real publish already happened on the
+    # triggering PR-merge run, so short-circuit the self-triggered re-run.
+    if: ${{ !startsWith(github.event.head_commit.message, 'applying package updates') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
