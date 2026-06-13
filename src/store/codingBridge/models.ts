@@ -1,6 +1,7 @@
 import { Status } from '@/models';
 import {
   ICodingBridgeCapabilities,
+  ICodingBridgeComposerPrefs,
   ICodingBridgeConnectionStatus,
   ICodingBridgeDirListing,
   ICodingBridgeEvent,
@@ -34,6 +35,9 @@ export interface ICodingBridgeState {
   // transient: replaced on each `fs.list` and never persisted).
   directory: ICodingBridgeDirListing | undefined;
   directoryLoading: boolean;
+  // Last composer setup (cwd/provider/model/effort/mode) used per node, so a
+  // new session on a known device pre-fills it instead of resetting. Persisted.
+  lastComposer: Record<string, ICodingBridgeComposerPrefs>;
   // Coding Bridge is not a billed API service, so it owns no application /
   // service / credential. These fields exist only so the shared `Main.vue`
   // layout (which is generic over per-app modules) reads `undefined` and

@@ -25,6 +25,19 @@ export interface ICodingBridgeModelOption {
 }
 
 /**
+ * Last composer setup used on a node, so a new session pre-fills it instead of
+ * resetting to defaults every time. Node-scoped because cwd / provider / model
+ * are all device-specific. Persisted to localStorage.
+ */
+export interface ICodingBridgeComposerPrefs {
+  cwd?: string;
+  provider?: string;
+  model?: string;
+  permissionMode?: string;
+  effort?: string;
+}
+
+/**
  * What one backend on a node can do, reported by the node's `capabilities.get`.
  * The UI renders dropdowns from this instead of hard-coding models / efforts,
  * so a new model only needs a node update (or a typed-in custom value).
