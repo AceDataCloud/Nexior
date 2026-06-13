@@ -116,10 +116,15 @@ const applyNodeEvent = (
   }
   switch (event) {
     case CB_EVENT_SESSION_STARTED:
+      // The session was created and its first turn is now running — keep it
+      // 'running' (so the thinking indicator stays and the turn stays
+      // interruptible) until session.result/error flips it to idle. Marking it
+      // 'idle' here hid the indicator the instant the turn began, before any
+      // output had streamed back.
       commit('upsertSession', {
         session_id: sessionId,
         node_id: fromNode,
-        status: 'idle',
+        status: 'running',
         cwd: payload.cwd,
         model: payload.model,
         trace_id: traceId
