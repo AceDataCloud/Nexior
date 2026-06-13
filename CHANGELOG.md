@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 16:00:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 16:11:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.5
+
+Sat, 13 Jun 2026 16:11:19 GMT
+
+### Patches
+
+- fix(android): raise Gradle heap to fix lint OOM on release builds (dev@acedata.cloud)
 
 ## 3.276.4
 
