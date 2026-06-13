@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 16:46:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 16:52:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.7
+
+Sat, 13 Jun 2026 16:52:40 GMT
+
+### Patches
+
+- fix(ios): add camera/photo usage strings to stop Take Photo crash, and hide non-IAP paid catalog on iOS (App Store 2.1(a) + 3.1.1) (dev@acedata.cloud)
 
 ## 3.276.6
 
