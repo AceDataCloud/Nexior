@@ -63,6 +63,8 @@
           {{ $t('codingBridge.session.startHint') }}
         </div>
         <transcript-item v-for="event in events" :key="event.id" :event="event" @edit="onEditPrompt" />
+        <!-- Live "thinking" status while the agent works between/before outputs. -->
+        <thinking-indicator v-if="thinking" />
         <!-- Retry: re-run the last prompt after a turn ends in error. -->
         <div v-if="canRetry" class="flex justify-center pt-1">
           <el-button size="small" round @click="onRetry">
@@ -401,6 +403,7 @@ import {
 } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import TranscriptItem from './TranscriptItem.vue';
+import ThinkingIndicator from './ThinkingIndicator.vue';
 import DirectoryDialog from './DirectoryDialog.vue';
 import AskUserQuestionCard from '@/components/chat/AskUserQuestionCard.vue';
 import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
@@ -442,6 +445,7 @@ export default defineComponent({
     ElUpload,
     FontAwesomeIcon,
     TranscriptItem,
+    ThinkingIndicator,
     DirectoryDialog,
     AskUserQuestionCard,
     CopyToClipboard
@@ -528,6 +532,11 @@ export default defineComponent({
     running(): boolean {
       const status = this.currentSession?.status;
       return status === 'running' || status === 'starting';
+    },
+    // Show the animated "thinking" status whenever the agent is working — but
+    // not while it's blocked on a user question (then we're waiting on them).
+    thinking(): boolean {
+      return this.running && !this.pendingQuestion;
     },
     connected(): boolean {
       return this.$store.state.codingBridge?.connection === 'connected';
@@ -705,6 +714,9 @@ export default defineComponent({
       this.scrollToBottom();
     },
     pendingQuestion() {
+      this.scrollToBottom();
+    },
+    thinking() {
       this.scrollToBottom();
     },
     currentSessionId() {
