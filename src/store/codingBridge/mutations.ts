@@ -86,6 +86,23 @@ export const appendEvent = (state: ICodingBridgeState, payload: ICodingBridgeEve
   state.events[payload.session_id].push(payload);
 };
 
+// Drop the event with `event_id` and everything after it. Used when editing a
+// past prompt: the transcript is rewound to before that prompt so the UI
+// mirrors the conversation fork the node performs.
+export const truncateEventsBefore = (
+  state: ICodingBridgeState,
+  payload: { session_id: string; event_id: string }
+): void => {
+  const events = state.events[payload.session_id];
+  if (!events) {
+    return;
+  }
+  const index = events.findIndex((event) => event.id === payload.event_id);
+  if (index >= 0) {
+    state.events[payload.session_id] = events.slice(0, index);
+  }
+};
+
 // Streaming: append an incremental text chunk onto the open bubble matching
 // `stream_id`. No-op if the bubble was already finalized or never created.
 export const appendDelta = (
@@ -219,6 +236,7 @@ export default {
   upsertSession,
   updateSession,
   appendEvent,
+  truncateEventsBefore,
   appendDelta,
   finalizeStream,
   finalizeAllStreams,

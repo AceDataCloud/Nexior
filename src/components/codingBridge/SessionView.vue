@@ -62,7 +62,13 @@
         <div v-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
           {{ $t('codingBridge.session.startHint') }}
         </div>
-        <transcript-item v-for="event in events" :key="event.id" :event="event" @edit="onEditPrompt" />
+        <transcript-item
+          v-for="event in events"
+          :key="event.id"
+          :event="event"
+          :editable="canEdit"
+          @edit="onEditPrompt"
+        />
         <!-- Live "thinking" status while the agent works between/before outputs. -->
         <thinking-indicator v-if="thinking" />
         <!-- Retry: re-run the last prompt after a turn ends in error. -->
@@ -93,6 +99,22 @@
           </el-button>
         </div>
         <template v-else>
+          <!-- Editing a past prompt: sending rewinds the conversation to here. -->
+          <div
+            v-if="editingActive"
+            class="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-lg bg-[var(--el-color-primary-light-9)] px-3 py-2 text-xs text-[var(--app-text)]"
+          >
+            <span class="inline-flex items-center gap-1.5">
+              <font-awesome-icon icon="fa-solid fa-pen" class="text-[var(--el-color-primary)]" />
+              {{ $t('codingBridge.session.editingBanner') }}
+            </span>
+            <el-checkbox v-if="canRestoreCode" v-model="restoreCode" size="small" class="cb-restore-code">
+              {{ $t('codingBridge.session.editRestoreCode') }}
+            </el-checkbox>
+            <button type="button" class="ml-auto cb-edit-cancel" @click="cancelEdit">
+              {{ $t('codingBridge.session.editCancel') }}
+            </button>
+          </div>
           <div
             class="cb-composer rounded-2xl border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-3 py-2.5 transition-colors focus-within:border-[var(--el-color-primary-light-5)]"
           >
@@ -372,7 +394,7 @@
                 <font-awesome-icon icon="fa-solid fa-stop" />
               </el-button>
               <el-button type="primary" round :disabled="!canSend" @click="onSend">
-                {{ $t('codingBridge.session.send') }}
+                {{ editingActive ? $t('codingBridge.session.editSubmit') : $t('codingBridge.session.send') }}
               </el-button>
             </div>
           </div>
@@ -398,6 +420,7 @@ import {
   ElDropdownMenu,
   ElDropdownItem,
   ElUpload,
+  ElCheckbox,
   UploadFile,
   UploadFiles
 } from 'element-plus';
@@ -443,6 +466,7 @@ export default defineComponent({
     ElDropdownMenu,
     ElDropdownItem,
     ElUpload,
+    ElCheckbox,
     FontAwesomeIcon,
     TranscriptItem,
     ThinkingIndicator,
@@ -464,6 +488,10 @@ export default defineComponent({
       directoryVisible: false,
       slashMenuOpen: false,
       slashActiveIndex: 0,
+      // Id of the prompt event being edited; when set, sending rewinds the
+      // conversation to that turn instead of appending a new one.
+      editingEventId: '' as string,
+      restoreCode: false,
       attachmentFileList: [] as UploadFiles,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
       maxAttachments: MAX_ATTACHMENTS
@@ -611,6 +639,23 @@ export default defineComponent({
     currentProviderCap(): ICodingBridgeProviderCapability | undefined {
       return this.providerCaps.find((cap) => cap.name === this.provider);
     },
+    // Editing rewinds the conversation, so it's gated on the running session's
+    // backend (Claude supports it; Codex doesn't) and disabled for read-only
+    // replays. Unknown until capabilities load → don't offer it yet.
+    canEdit(): boolean {
+      if (this.readonly) {
+        return false;
+      }
+      const cap = this.providerCaps.find((item) => item.name === this.activeProviderName);
+      return !!cap?.supports_edit;
+    },
+    canRestoreCode(): boolean {
+      const cap = this.providerCaps.find((item) => item.name === this.activeProviderName);
+      return !!cap?.supports_code_restore;
+    },
+    editingActive(): boolean {
+      return !!this.editingEventId;
+    },
     // Unknown until capabilities load → treat as available so the composer is
     // never blocked before the node has reported anything.
     currentProviderAvailable(): boolean {
@@ -721,6 +766,9 @@ export default defineComponent({
     },
     currentSessionId() {
       this.scrollToBottom();
+      // Switching conversations cancels any in-progress edit.
+      this.editingEventId = '';
+      this.restoreCode = false;
       // Seed the composer (provider/model/cwd) from the session we switched to.
       this.syncSessionSettings();
     },
@@ -920,6 +968,21 @@ export default defineComponent({
         return;
       }
       const attachments = this.attachments;
+      // Editing a past prompt rewinds the conversation to that turn instead of
+      // appending — so the original prompt and everything after leave context.
+      if (this.editingEventId) {
+        this.$store.dispatch('codingBridge/editPrompt', {
+          eventId: this.editingEventId,
+          prompt: this.prompt,
+          model: this.model,
+          permissionMode: this.permissionMode,
+          effort: this.effort,
+          attachments: attachments.length ? attachments : undefined,
+          restoreCode: this.restoreCode
+        });
+        this.resetComposer();
+        return;
+      }
       // Remember this device's setup so the next new session pre-fills it.
       if (this.currentNodeId) {
         this.$store.commit('codingBridge/setLastComposer', {
@@ -942,10 +1005,19 @@ export default defineComponent({
         effort: this.effort,
         attachments: attachments.length ? attachments : undefined
       });
+      this.resetComposer();
+    },
+    // Clear the input, slash menu, attachments and any active edit state.
+    resetComposer() {
       this.prompt = '';
       this.slashMenuOpen = false;
       this.slashActiveIndex = 0;
+      this.editingEventId = '';
+      this.restoreCode = false;
       this.clearAttachments();
+    },
+    cancelEdit() {
+      this.resetComposer();
     },
     onAnswerQuestion(payload: { tool_use_id: string; output: string }) {
       this.$store.dispatch('codingBridge/answerQuestion', {
@@ -1043,13 +1115,16 @@ export default defineComponent({
     onRetry() {
       this.$store.dispatch('codingBridge/retryLastPrompt');
     },
-    // Reload a previously sent prompt into the composer so the user can tweak
-    // the text/attachments (and switch the model) and resend it as a new turn.
-    // The agent transcript is append-only, so the original prompt stays put.
+    // Enter edit mode for a past prompt: reload its text/attachments into the
+    // composer so the user can tweak it (and switch the model). On send the
+    // conversation is rewound to this turn — the original prompt and everything
+    // after it are dropped from the agent's context (see editPrompt).
     onEditPrompt(event: ICodingBridgeEvent) {
-      if (this.readonly) {
+      if (!this.canEdit) {
         return;
       }
+      this.editingEventId = event.id;
+      this.restoreCode = false;
       this.prompt = event.text ?? '';
       this.slashMenuOpen = false;
       this.slashActiveIndex = 0;
@@ -1080,10 +1155,7 @@ export default defineComponent({
       this.$store.dispatch('codingBridge/newSession');
       // Restore the last setup used on this device instead of resetting it all.
       this.restoreComposerPrefs();
-      this.prompt = '';
-      this.slashMenuOpen = false;
-      this.slashActiveIndex = 0;
-      this.clearAttachments();
+      this.resetComposer();
     },
     // Pre-fill the composer from the last setup used on the current device.
     // Falls back to defaults for anything not recorded yet. Model and effort
@@ -1203,6 +1275,25 @@ export default defineComponent({
     white-space: nowrap;
     font-size: 12px;
     color: var(--app-text-subtle);
+  }
+}
+
+.cb-edit-cancel {
+  flex: none;
+  color: var(--app-text-subtle);
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--el-color-primary);
+  }
+}
+
+.cb-restore-code {
+  height: auto;
+
+  :deep(.el-checkbox__label) {
+    font-size: 12px;
   }
 }
 

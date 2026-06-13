@@ -18,6 +18,8 @@ export const CB_ERROR = 'error';
 // --- Inner actions: browser -> node ----------------------------------------
 export const CB_ACTION_SESSION_START = 'session.start';
 export const CB_ACTION_SESSION_SEND = 'session.send';
+// Edit a past prompt: fork the conversation at `cut_uuid` and re-run it.
+export const CB_ACTION_SESSION_EDIT = 'session.edit';
 export const CB_ACTION_SESSION_INTERRUPT = 'session.interrupt';
 export const CB_ACTION_SESSION_CLOSE = 'session.close';
 export const CB_ACTION_PERMISSION_RESOLVE = 'permission.resolve';
