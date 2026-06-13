@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 16:11:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 16:46:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.6
+
+Sat, 13 Jun 2026 16:46:42 GMT
+
+### Patches
+
+- fix(auth): timeout + telemetry for Apple login to surface silent hangs (dev@acedata.cloud)
 
 ## 3.276.5
 
