@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 15:41:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 16:00:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.4
+
+Sat, 13 Jun 2026 16:00:25 GMT
+
+### Patches
+
+- feat(ios): push notifications entitlement (dev@acedata.cloud)
 
 ## 3.276.3
 
