@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 15:08:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 15:10:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.0
+
+Sat, 13 Jun 2026 15:10:51 GMT
+
+### Minor changes
+
+- feat(nexior): make the empty-state magic wand a clickable new-task button and hide the floating magic button while empty (dev@acedata.cloud)
 
 ## 3.275.2
 
