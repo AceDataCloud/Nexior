@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 15:03:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 13 Jun 2026 15:08:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.275.2
+
+Sat, 13 Jun 2026 15:08:26 GMT
+
+### Patches
+
+- fix(coding-bridge): use 16px font-size for the mobile composer textarea so iOS Safari no longer auto-zooms the page in on focus/send (dev@acedata.cloud)
 
 ## 3.275.1
 
