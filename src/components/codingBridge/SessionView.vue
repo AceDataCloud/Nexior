@@ -78,11 +78,15 @@
             {{ $t('codingBridge.session.retry') }}
           </el-button>
         </div>
+        <!-- Unbounded: the transcript already scrolls the card into view, so it
+             flows at natural height instead of nesting its own scroll (which
+             clipped the options/buttons on mobile). -->
         <ask-user-question-card
           v-if="pendingQuestion"
           :key="pendingQuestion.request_id"
           :tool-use-id="pendingQuestion.request_id"
           :payload="pendingQuestion.payload"
+          :bounded="false"
           @submit="onAnswerQuestion"
           @skip="onSkipQuestion"
         />
