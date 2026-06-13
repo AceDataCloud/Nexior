@@ -111,6 +111,7 @@ const FEATURE_KEYS = [
   'openaiimage',
   'seedream',
   'seedance',
+  'grokvideo',
   'wan',
   'producer',
   'kimi',

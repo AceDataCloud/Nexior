@@ -17,6 +17,7 @@ import nanobananaState from '../nanobanana/state';
 import openaiimageState from '../openaiimage/state';
 import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
+import grokvideoState from '../grokvideo/state';
 import serpState from '../serp/state';
 import wanState from '../wan/state';
 import fishState from '../fish/state';
@@ -65,6 +66,7 @@ export default (): IRootState => {
     openaiimage: openaiimageState(),
     seedream: seedreamState(),
     seedance: seedanceState(),
+    grokvideo: grokvideoState(),
     serp: serpState(),
     wan: wanState(),
     fish: fishState(),
