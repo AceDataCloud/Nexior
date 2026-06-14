@@ -19,7 +19,7 @@ on:
       promote_to_production:
         description: 'Auto-promote the same versionCode to Production after the initial upload succeeds.'
         required: false
-        default: true
+        default: false
         type: boolean
       rollout_percent:
         description: 'Production staged rollout fraction (0.0–1.0). 1.0 = full release.'
