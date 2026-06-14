@@ -123,8 +123,9 @@ const notifyForPermission = (
   );
 };
 
-// Translate one inner node event into the matching mutation(s).
-const applyNodeEvent = (
+// Translate one inner node event into the matching mutation(s). Exported for
+// integration tests that drive the real reducer with node-shaped event streams.
+export const applyNodeEvent = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
   dispatch: ActionContext<ICodingBridgeState, IRootState>['dispatch'],
   state: ICodingBridgeState,
