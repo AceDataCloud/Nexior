@@ -32,7 +32,11 @@
           @blur="syncPathInput"
         >
           <template #append>
-            <el-button :title="$t('codingBridge.directory.go')" :disabled="loading || !pathInput.trim()" @click="goPath">
+            <el-button
+              :title="$t('codingBridge.directory.go')"
+              :disabled="loading || !pathInput.trim()"
+              @click="goPath"
+            >
               <font-awesome-icon icon="fa-solid fa-arrow-right" />
             </el-button>
           </template>
@@ -140,12 +144,6 @@ export default defineComponent({
       pathInput: ''
     };
   },
-  watch: {
-    // Keep the input in step with wherever the node actually navigated to.
-    'listing.path'(value: string | undefined) {
-      this.pathInput = value ?? '';
-    }
-  },
   computed: {
     listing(): ICodingBridgeDirListing | undefined {
       return this.$store.state.codingBridge?.directory;
@@ -161,6 +159,12 @@ export default defineComponent({
     },
     isEmpty(): boolean {
       return !!this.listing && !this.listing.error && (this.listing.entries ?? []).length === 0;
+    }
+  },
+  watch: {
+    // Keep the input in step with wherever the node actually navigated to.
+    'listing.path'(value: string | undefined) {
+      this.pathInput = value ?? '';
     }
   },
   methods: {
