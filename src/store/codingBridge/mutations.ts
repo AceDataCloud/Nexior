@@ -79,6 +79,41 @@ export const updateSession = (
   }
 };
 
+// Re-key a session from its provisional id to the provider's real (SDK) id once
+// the node reports it (`session.identified`). Migrates everything indexed by
+// session id so the live session and its history entry share one identity. The
+// live session's fields win when merging into a pre-existing entry under `to`
+// (e.g. a snapshot stub); its transcript is only carried over when non-empty so
+// a reattach never blows away events already loaded under the real id.
+export const renameSession = (state: ICodingBridgeState, payload: { from: string; to: string }): void => {
+  const { from, to } = payload;
+  if (from === to || !state.sessions[from]) {
+    return;
+  }
+  state.sessions[to] = { ...state.sessions[to], ...state.sessions[from], session_id: to };
+  delete state.sessions[from];
+  const moving = state.events[from];
+  if (moving && (moving.length || !state.events[to]?.length)) {
+    state.events[to] = moving;
+  }
+  delete state.events[from];
+  if (state.lastSeq[from] !== undefined) {
+    state.lastSeq[to] = Math.max(state.lastSeq[to] ?? 0, state.lastSeq[from]);
+    delete state.lastSeq[from];
+  }
+  for (const request of state.permissions) {
+    if (request.session_id === from) {
+      request.session_id = to;
+    }
+  }
+  if (state.currentSessionId === from) {
+    state.currentSessionId = to;
+  }
+  if (state.historyRef?.session_id === from) {
+    state.historyRef = { ...state.historyRef, session_id: to };
+  }
+};
+
 export const appendEvent = (state: ICodingBridgeState, payload: ICodingBridgeEvent): void => {
   if (!state.events[payload.session_id]) {
     state.events[payload.session_id] = [];
@@ -264,6 +299,7 @@ export default {
   setCurrentSession,
   upsertSession,
   updateSession,
+  renameSession,
   appendEvent,
   truncateEventsBefore,
   rewindToCut,

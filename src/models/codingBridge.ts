@@ -91,11 +91,9 @@ export interface ICodingBridgeSession {
   cost_usd?: number;
   // Which backend this session targets; defaults to Claude Code.
   provider?: ICodingBridgeHistoryProvider;
-  // Provider session id to resume when the first prompt is sent (Claude only).
-  resume_session_id?: string;
-  // The SDK/CLI's own session id for a live session, reported by the node on
-  // each turn's result. The fork target when editing a past prompt.
-  sdk_session_id?: string;
+  // `session_id` IS the canonical identity. A new session opens under a
+  // provisional id and is re-keyed to the provider's real (SDK/transcript) id on
+  // `session.identified`, so the same id resumes it and matches its history entry.
   // A live turn has been started on the node for this session.
   started?: boolean;
   // Replay of past history that cannot be continued (e.g. Codex).
@@ -114,6 +112,9 @@ export interface ICodingBridgeHistorySummary {
   git_branch?: string;
   updated_at?: number;
   message_count?: number;
+  // True when this transcript is a session live on the node right now, so the
+  // drawer can flag it and opening it reattaches instead of replaying a copy.
+  running?: boolean;
 }
 
 /** A normalised transcript returned by `history.get`. */
