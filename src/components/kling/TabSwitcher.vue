@@ -48,6 +48,10 @@ export default defineComponent({
         {
           value: 'motion',
           label: this.$t('kling.tab.motionControl')
+        },
+        {
+          value: 'talking-photo',
+          label: this.$t('kling.tab.talkingPhoto')
         }
       ];
     }

@@ -3,6 +3,7 @@ import {
   IKlingGenerateRequest,
   IKlingGenerateResponse,
   IKlingMotionRequest,
+  IKlingTalkingPhotoRequest,
   IKlingTaskResponse,
   IKlingTasksResponse
 } from '@/models';
@@ -22,6 +23,20 @@ class KlingOperator extends BaseTaskOperator<
 
   async motion(data: IKlingMotionRequest, options: { token: string }): Promise<AxiosResponse<IKlingGenerateResponse>> {
     return axios.post('/kling/motion', data, {
+      baseURL: BASE_URL_API,
+      headers: {
+        authorization: `Bearer ${options.token}`,
+        'content-type': 'application/json',
+        accept: 'application/x-ndjson'
+      }
+    });
+  }
+
+  async talkingPhoto(
+    data: IKlingTalkingPhotoRequest,
+    options: { token: string }
+  ): Promise<AxiosResponse<IKlingGenerateResponse>> {
+    return axios.post('/kling/talking-photo', data, {
       baseURL: BASE_URL_API,
       headers: {
         authorization: `Bearer ${options.token}`,

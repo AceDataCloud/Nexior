@@ -512,8 +512,8 @@
     "description": "填充噪音输入的占位符"
   },
   "placeholder.select": {
-    "message": "选择",
-    "description": "选择字段中的占位文本"
+    "message": "请选择",
+    "description": "下拉选择字段中的占位文本"
   },
   "placeholder.paddingLevel": {
     "message": "请选择...",
@@ -703,8 +703,17 @@
     "message": "没有历史任务，请点击左方生成视频",
     "description": "没有任务时的消息"
   },
-  "placeholder.select": {
-    "message": "请选择",
-    "description": "下拉选择字段中的占位文本"
-  }
+  "tab.talkingPhoto": "会说话的照片",
+  "name.talkingPhotoImage": "人物照片",
+  "name.talkingPhotoAudio": "驱动音频",
+  "name.talkingPhotoPrompt": "动作提示词（可选）",
+  "description.talkingPhotoImage": "上传一张清晰正脸照片，将自动让它动起来并开口说话。",
+  "description.talkingPhotoAudio": "上传一段音频（mp3/wav，≤5MB），人物会按音频对口型说话。",
+  "description.talkingPhotoPrompt": "可选：描述希望的表情/动作，如「温柔地看向镜头」。",
+  "placeholder.talkingPhotoPrompt": "例如：温柔、平静、自然，轻微头部动作",
+  "button.generateTalkingPhoto": "生成会说话的照片",
+  "button.uploadAudio": "上传音频",
+  "message.talkingPhotoMissingInputs": "请先上传人物照片和驱动音频。",
+  "message.uploadAudioExceed": "只能上传一个音频文件。",
+  "message.uploadAudioError": "音频上传失败，请重试。"
 }
