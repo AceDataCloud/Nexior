@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 18:28:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 19:11:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.6
+
+Sun, 14 Jun 2026 19:11:19 GMT
+
+### Patches
+
+- fix(grokvideo): correct logo icon and regenerate locale translations (cqc@cuiqingcai.com)
 
 ## 3.277.5
 
