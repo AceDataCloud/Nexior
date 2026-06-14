@@ -160,8 +160,10 @@ jobs:
       - name: Build web assets (iOS surface)
         run: npm run build:ios
 
-      - name: Copy web assets to iOS project
-        run: npx cap copy ios
+      - name: Sync web assets and native plugins to iOS project
+        # `cap sync` (not `cap copy`) regenerates the Podfile from the installed
+        # Capacitor plugins so native pods like CapacitorPushNotifications are present.
+        run: npx cap sync ios
 
       - name: Install CocoaPods
         working-directory: ios/App
