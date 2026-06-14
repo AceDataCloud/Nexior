@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok Video -robotti",
+    "description": "Grok-video generoijan nimi"
+  },
+  "name.prompt": {
+    "message": "Kehotus",
+    "description": "Videoiden luontikehotus"
+  },
+  "name.model": {
+    "message": "Malli",
+    "description": "Mallin valinnan etiketti"
+  },
+  "name.ratio": {
+    "message": "Kuvasuhde",
+    "description": "Kuvasuhteen etiketti"
+  },
+  "name.resolution": {
+    "message": "Resoluutio",
+    "description": "Resoluutio-etiketti"
+  },
+  "name.duration": {
+    "message": "Kesto",
+    "description": "Keston etiketti"
+  },
+  "name.image": {
+    "message": "Kuva",
+    "description": "Syöttokuvan etiketti"
+  },
+  "name.required": {
+    "message": "Pakollinen",
+    "description": "Pakollinen merkki"
+  },
+  "name.taskId": {
+    "message": "Tehtävän ID",
+    "description": "Tehtävän ID-etiketti"
+  },
+  "name.elapsed": {
+    "message": "Kulunut aika",
+    "description": "Kuluneen ajan etiketti"
+  },
+  "name.traceId": {
+    "message": "Seuranta ID",
+    "description": "Seuranta ID-etiketti"
+  },
+  "name.failure": {
+    "message": "Tuotanto epäonnistui",
+    "description": "Epäonnistumisen otsikko"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Epäonnistumisen syyn etiketti"
+  },
+  "name.status": {
+    "message": "Tila",
+    "description": "Tilamerkintä"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "Kuvaile haluamaasi videota (kohtaus, aihe, toiminta, kuvakulma, valaistus, tyyli).",
+    "description": "Ohjeet kehotteen syöttämiseen"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Valitse Grok Imagine -malli. grok-imagine-video tukee tekstistä kuvaan -videoita; 1.5-preview tukee vain kuvaan perustuvia videoita.",
+    "description": "Ohjeet mallin valintaan"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Valitse ulostulojen kuvasuhde.",
+    "description": "Ohjeet kuvasuhteen valintaan"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "Valitse ulostulojen resoluutio. Korkeampi resoluutio kuluttaa enemmän varoja sekunnissa.",
+    "description": "Ohjeet resoluution valintaan"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Videon kesto (sekunteina), laskutetaan ulostulojen sekuntien mukaan.",
+    "description": "Ohjeet keston syöttämiseen"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "Valinnainen syötekuva videon tuottamiseen. grok-imagine-video-1.5-preview on pakollinen.",
+    "description": "Ohjeet kuva syötteelle"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Kuvaile videota…",
+    "description": "Kehotteen paikkamerkki"
+  },
+  "placeholder.select": {
+    "message": "Valitse",
+    "description": "Valintojen paikkamerkki"
+  },
+  "model.default": {
+    "message": "Grok Imagine -video",
+    "description": "Oletusmallin etiketti"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine -video 1.5 (esikatselu, kuvaan perustuva video)",
+    "description": "1.5 esikatselumallin etiketti"
+  },
+  "button.upload": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "button.generate": {
+    "message": "Tuota",
+    "description": "Tuotantopainike"
+  },
+  "button.download": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "status.pending": {
+    "message": "Jonossa",
+    "description": "Odotustila"
+  },
+  "status.processing": {
+    "message": "Luodaan",
+    "description": "Käsittelytila"
+  },
+  "message.uploadExceed": {
+    "message": "Vain yksi kuva voidaan ladata.",
+    "description": "Latausylitysvaroitus"
+  },
+  "message.uploadError": {
+    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen.",
+    "description": "Latausvirhe"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa video",
+    "description": "Lataustyökalu"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "Tämä malli vaatii syötekuvan (kuvaan perustuva video).",
+    "description": "Malli vaatii kuvan varoitus"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "Syötä kehotteet tai lataa kuva.",
+    "description": "Kehote tai kuva vaaditaan varoitus"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Videon tuotantotehtävää lähetetään…",
+    "description": "Tehtävän aloitus"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävän lähettäminen onnistui.",
+    "description": "Tehtävä onnistui"
+  },
+  "message.startTaskFailed": {
+    "message": "Tehtävän lähettäminen epäonnistui:",
+    "description": "Tehtävä epäonnistui"
+  },
+  "message.usedUp": {
+    "message": "Varat on käytetty loppuun, osta lisää jatkaaksesi käyttöä.",
+    "description": "Loppu"
+  }
 }

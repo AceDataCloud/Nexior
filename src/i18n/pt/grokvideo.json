@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Robô de Vídeo Grok",
+    "description": "Nome do gerador de vídeo Grok"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt para gerar o vídeo"
+  },
+  "name.model": {
+    "message": "Modelo",
+    "description": "Rótulo para seleção de modelo"
+  },
+  "name.ratio": {
+    "message": "Proporção",
+    "description": "Rótulo para proporção de aspecto"
+  },
+  "name.resolution": {
+    "message": "Resolução",
+    "description": "Rótulo para resolução"
+  },
+  "name.duration": {
+    "message": "Duração",
+    "description": "Rótulo para duração"
+  },
+  "name.image": {
+    "message": "Imagem",
+    "description": "Rótulo para entrada de imagem"
+  },
+  "name.required": {
+    "message": "Obrigatório",
+    "description": "Sinalizador de campo obrigatório"
+  },
+  "name.taskId": {
+    "message": "ID da Tarefa",
+    "description": "Rótulo para ID da tarefa"
+  },
+  "name.elapsed": {
+    "message": "Tempo decorrido",
+    "description": "Rótulo de tempo decorrido"
+  },
+  "name.traceId": {
+    "message": "ID de Rastreamento",
+    "description": "Rótulo para ID de rastreamento"
+  },
+  "name.failure": {
+    "message": "Falha na geração",
+    "description": "Título de falha"
+  },
+  "name.failureReason": {
+    "message": "Razão da falha",
+    "description": "Rótulo da razão da falha"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Título do status"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "Descreva o vídeo que você deseja gerar (cena, sujeito, ação, ângulo, iluminação, estilo).",
+    "description": "Instruções para entrada de prompt"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Escolha o modelo Grok Imagine. grok-imagine-video suporta vídeos gerados por texto e imagem; 1.5-preview suporta apenas vídeos gerados por imagem.",
+    "description": "Instruções para seleção de modelo"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Escolha a proporção da saída.",
+    "description": "Instruções para a proporção da imagem"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "Escolha a resolução de saída. Quanto maior a resolução, mais crédito será consumido por segundo.",
+    "description": "Instruções para resolução"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Duração do vídeo (segundos), cobrado por segundo de saída.",
+    "description": "Instruções para a duração"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "Imagem de entrada opcional, usada para gerar vídeo. grok-imagine-video-1.5-preview é obrigatório.",
+    "description": "Instruções para a entrada de imagem"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Descreva seu vídeo…",
+    "description": "Texto de espaço reservado para prompt"
+  },
+  "placeholder.select": {
+    "message": "Selecione",
+    "description": "Texto de espaço reservado para seleções"
+  },
+  "model.default": {
+    "message": "Grok Imagine Vídeo",
+    "description": "Rótulo do modelo padrão"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine Vídeo 1.5 (prévia, vídeo gerado por imagem)",
+    "description": "Rótulo do modelo prévia 1.5"
+  },
+  "button.upload": {
+    "message": "Enviar",
+    "description": "Botão de upload"
+  },
+  "button.generate": {
+    "message": "Gerar",
+    "description": "Botão de gerar"
+  },
+  "button.download": {
+    "message": "Baixar",
+    "description": "Botão de download"
+  },
+  "status.pending": {
+    "message": "Pendente",
+    "description": "Status pendente"
+  },
+  "status.processing": {
+    "message": "Processando",
+    "description": "Status de processamento"
+  },
+  "message.uploadExceed": {
+    "message": "Somente uma imagem pode ser enviada.",
+    "description": "Aviso de excesso de upload"
+  },
+  "message.uploadError": {
+    "message": "Falha ao enviar a imagem, por favor tente novamente.",
+    "description": "Erro de upload"
+  },
+  "message.downloadVideo": {
+    "message": "Baixar vídeo",
+    "description": "Dica de download"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "Este modelo requer uma imagem de entrada (vídeo gerado por imagem).",
+    "description": "Aviso de que o modelo requer imagem"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "Por favor, insira um prompt ou envie uma imagem.",
+    "description": "Aviso de que prompt ou imagem são necessários"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Enviando tarefa de geração de vídeo…",
+    "description": "Iniciando tarefa"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tarefa enviada com sucesso.",
+    "description": "Sucesso na tarefa"
+  },
+  "message.startTaskFailed": {
+    "message": "Falha ao enviar a tarefa:",
+    "description": "Falha na tarefa"
+  },
+  "message.usedUp": {
+    "message": "Créditos esgotados, por favor compre mais para continuar usando.",
+    "description": "Esgotado"
+  }
 }

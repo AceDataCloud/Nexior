@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok 動画ロボット",
+    "description": "Grok動画生成器の名前"
+  },
+  "name.prompt": {
+    "message": "プロンプト",
+    "description": "ビデオ生成のためのプロンプト"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "モデル選択のラベル"
+  },
+  "name.ratio": {
+    "message": "アスペクト比",
+    "description": "アスペクト比のラベル"
+  },
+  "name.resolution": {
+    "message": "解像度",
+    "description": "解像度のラベル"
+  },
+  "name.duration": {
+    "message": "長さ",
+    "description": "長さのラベル"
+  },
+  "name.image": {
+    "message": "画像",
+    "description": "画像入力のラベル"
+  },
+  "name.required": {
+    "message": "必須",
+    "description": "必須バッジ"
+  },
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスク ID のラベル"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "経過時間のラベル"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "トレース ID のラベル"
+  },
+  "name.failure": {
+    "message": "生成失敗",
+    "description": "失敗タイトル"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "失敗理由のラベル"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "ステータスタイトル"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "生成したい動画を説明してください（シーン、主体、アクション、ショット、光、スタイル）。",
+    "description": "プロンプト入力に関する指示"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Grok Imagineモデルを選択します。grok-imagine-videoはテキストから画像生成と画像から動画生成をサポートします；1.5-previewは画像から動画生成のみサポートします。",
+    "description": "モデル選択に関する指示"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "出力画面のアスペクト比を選択します。",
+    "description": "アスペクト比に関する指示"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "出力解像度を選択します。解像度が高いほど、毎秒消費する額が増えます。",
+    "description": "解像度に関する指示"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "動画の長さ（秒）、出力秒数に基づいて課金されます。",
+    "description": "長さに関する指示"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "オプションの入力画像、動画生成に使用します。grok-imagine-video-1.5-previewは必須です。",
+    "description": "画像入力に関する指示"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "あなたのビデオを説明してください…",
+    "description": "プロンプトのプレースホルダー"
+  },
+  "placeholder.select": {
+    "message": "選択してください",
+    "description": "選択のプレースホルダー"
+  },
+  "model.default": {
+    "message": "Grok Imagine 動画",
+    "description": "デフォルトモデルラベル"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine 動画 1.5（プレビュー、画像から動画生成）",
+    "description": "1.5プレビューモデルラベル"
+  },
+  "button.upload": {
+    "message": "アップロード",
+    "description": "アップロードボタン"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタン"
+  },
+  "button.download": {
+    "message": "ダウンロード",
+    "description": "ダウンロードボタン"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "保留中のステータス"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "処理中のステータス"
+  },
+  "message.uploadExceed": {
+    "message": "画像は1枚のみアップロードできます。",
+    "description": "アップロード超過警告"
+  },
+  "message.uploadError": {
+    "message": "画像のアップロードに失敗しました。再試行してください。",
+    "description": "アップロードエラー"
+  },
+  "message.downloadVideo": {
+    "message": "動画をダウンロード",
+    "description": "ダウンロードツールチップ"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "このモデルは画像入力が必要です（画像から動画生成）。",
+    "description": "モデルが画像を必要とする警告"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "プロンプトまたは画像をアップロードしてください。",
+    "description": "プロンプトまたは画像が必要な警告"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "動画生成タスクを提出中…",
+    "description": "タスク開始"
+  },
+  "message.startTaskSuccess": {
+    "message": "タスクが正常に提出されました。",
+    "description": "タスク成功"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの提出に失敗しました：",
+    "description": "タスク失敗"
+  },
+  "message.usedUp": {
+    "message": "利用可能な額が使い切られました。購入後に続行してください。",
+    "description": "使い切り"
+  }
 }

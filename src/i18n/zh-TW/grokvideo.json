@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok 視頻機器人",
+    "description": "Grok 視頻生成器的名稱"
+  },
+  "name.prompt": {
+    "message": "提示詞",
+    "description": "用於生成視頻的提示"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "模型選擇的標籤"
+  },
+  "name.ratio": {
+    "message": "畫面比例",
+    "description": "畫面比例的標籤"
+  },
+  "name.resolution": {
+    "message": "分辨率",
+    "description": "分辨率的標籤"
+  },
+  "name.duration": {
+    "message": "時長",
+    "description": "時長標籤"
+  },
+  "name.image": {
+    "message": "圖片",
+    "description": "輸入圖片的標籤"
+  },
+  "name.required": {
+    "message": "必填",
+    "description": "必填標籤"
+  },
+  "name.taskId": {
+    "message": "任務 ID",
+    "description": "任務 ID 的標籤"
+  },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "耗時標籤"
+  },
+  "name.traceId": {
+    "message": "追蹤 ID",
+    "description": "追蹤 ID 的標籤"
+  },
+  "name.failure": {
+    "message": "生成失敗",
+    "description": "失敗標題"
+  },
+  "name.failureReason": {
+    "message": "失敗原因",
+    "description": "失敗原因標籤"
+  },
+  "name.status": {
+    "message": "狀態",
+    "description": "狀態標題"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "描述你想生成的視頻（場景、主體、動作、鏡頭、光線、風格）。",
+    "description": "有關提示輸入的說明"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "選擇 Grok Imagine 模型。grok-imagine-video 支持文生與圖生視頻；1.5-preview 僅支持圖生視頻。",
+    "description": "有關模型選擇的說明"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "選擇輸出畫面比例。",
+    "description": "有關畫面比例的說明"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "選擇輸出分辨率。分辨率越高，每秒消耗的額度越多。",
+    "description": "有關分辨率的說明"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "視頻時長（秒），按輸出秒數計費。",
+    "description": "有關時長的說明"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "可選的輸入圖片，用於圖生視頻。grok-imagine-video-1.5-preview 為必填。",
+    "description": "有關圖片輸入的說明"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "描述你的视频…",
+    "description": "提示的佔位符"
+  },
+  "placeholder.select": {
+    "message": "請選擇",
+    "description": "選擇的佔位符"
+  },
+  "model.default": {
+    "message": "Grok Imagine 視頻",
+    "description": "默認模型標籤"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine 視頻 1.5（預覽，圖生視頻）",
+    "description": "1.5 預覽模型標籤"
+  },
+  "button.upload": {
+    "message": "上傳",
+    "description": "上傳按鈕"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按鈕"
+  },
+  "button.download": {
+    "message": "下載",
+    "description": "下載按鈕"
+  },
+  "status.pending": {
+    "message": "排隊中",
+    "description": "待處理狀態"
+  },
+  "status.processing": {
+    "message": "生成中",
+    "description": "處理中狀態"
+  },
+  "message.uploadExceed": {
+    "message": "只能上傳一張圖片。",
+    "description": "上傳超過限制的警告"
+  },
+  "message.uploadError": {
+    "message": "圖片上傳失敗，請重試。",
+    "description": "上傳錯誤"
+  },
+  "message.downloadVideo": {
+    "message": "下載視頻",
+    "description": "下載提示"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "該模型需要輸入圖片（圖生視頻）。",
+    "description": "模型需要圖片的警告"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "請輸入提示詞或上傳圖片。",
+    "description": "提示詞或圖片必需的警告"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "正在提交視頻生成任務…",
+    "description": "開始任務"
+  },
+  "message.startTaskSuccess": {
+    "message": "任務提交成功。",
+    "description": "任務成功"
+  },
+  "message.startTaskFailed": {
+    "message": "任務提交失敗：",
+    "description": "任務失敗"
+  },
+  "message.usedUp": {
+    "message": "額度已用盡，請購買後繼續使用。",
+    "description": "已用盡"
+  }
 }

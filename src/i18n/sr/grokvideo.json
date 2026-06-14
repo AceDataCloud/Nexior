@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok video robot",
+    "description": "Ime Grok generatora videa"
+  },
+  "name.prompt": {
+    "message": "Упитник",
+    "description": "Упит за генерисање видеа"
+  },
+  "name.model": {
+    "message": "Модел",
+    "description": "Ознака за избор модела"
+  },
+  "name.ratio": {
+    "message": "Однос страна",
+    "description": "Ознака за однос страна"
+  },
+  "name.resolution": {
+    "message": "Решење",
+    "description": "Ознака за резолуцију"
+  },
+  "name.duration": {
+    "message": "Trajanje",
+    "description": "Oznaka za trajanje"
+  },
+  "name.image": {
+    "message": "Слика",
+    "description": "Ознака за унос слике"
+  },
+  "name.required": {
+    "message": "Обавезно",
+    "description": "Ознака за обавезна поља"
+  },
+  "name.taskId": {
+    "message": "ID задатка",
+    "description": "Ознака за ID задатка"
+  },
+  "name.elapsed": {
+    "message": "Proteklo vreme",
+    "description": "Oznaka za proteklo vreme"
+  },
+  "name.traceId": {
+    "message": "ID трага",
+    "description": "Ознака за ID трага"
+  },
+  "name.failure": {
+    "message": "Generisanje nije uspelo",
+    "description": "Naslov za neuspeh"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Oznaka za razlog neuspeha"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Наслов статуса"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "Opisujte video koji želite da generišete (scena, subjekat, akcija, kadar, svetlost, stil).",
+    "description": "Uputstvo za unos prompta"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Izaberite Grok Imagine model. grok-imagine-video podržava generisanje videa iz teksta i slike; 1.5-preview podržava samo generisanje videa iz slike.",
+    "description": "Uputstvo za izbor modela"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Izaberite odnos stranica izlaznog videa.",
+    "description": "Uputstvo za odnos stranica"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "Izaberite izlaznu rezoluciju. Što je rezolucija viša, to je veća potrošnja po sekundi.",
+    "description": "Uputstvo za rezoluciju"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Trajanje videa (sekunde), naplaćuje se po broju sekundi.",
+    "description": "Uputstvo za trajanje"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "Opcionalna ulazna slika, koristi se za generisanje videa. grok-imagine-video-1.5-preview je obavezno.",
+    "description": "Uputstvo za ulaznu sliku"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Опишите ваш видео…",
+    "description": "Плацехолдер за упитник"
+  },
+  "placeholder.select": {
+    "message": "Изаберите",
+    "description": "Плацехолдер за избор"
+  },
+  "model.default": {
+    "message": "Grok Imagine video",
+    "description": "Oznaka za podrazumevani model"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine video 1.5 (preview, generisanje videa iz slike)",
+    "description": "Oznaka za 1.5 preview model"
+  },
+  "button.upload": {
+    "message": "Otpremi",
+    "description": "Dugme za otpremanje"
+  },
+  "button.generate": {
+    "message": "Generiši",
+    "description": "Dugme za generisanje"
+  },
+  "button.download": {
+    "message": "Preuzmi",
+    "description": "Dugme za preuzimanje"
+  },
+  "status.pending": {
+    "message": "На чекању",
+    "description": "Статус на чекању"
+  },
+  "status.processing": {
+    "message": "Генерише се",
+    "description": "Статус обраде"
+  },
+  "message.uploadExceed": {
+    "message": "Možete otpremiti samo jednu sliku.",
+    "description": "Upozorenje o prekoračenju otpremanja"
+  },
+  "message.uploadError": {
+    "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo.",
+    "description": "Greška prilikom otpremanja"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmi video",
+    "description": "Tooltip za preuzimanje"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "Ovaj model zahteva ulaznu sliku (generisanje videa iz slike).",
+    "description": "Upozorenje da model zahteva sliku"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "Unesite prompt ili otpremite sliku.",
+    "description": "Upozorenje da je potreban prompt ili slika"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Podnošenje zadatka za generisanje videa…",
+    "description": "Pokretanje zadatka"
+  },
+  "message.startTaskSuccess": {
+    "message": "Podnošenje zadatka je uspešno.",
+    "description": "Uspeh zadatka"
+  },
+  "message.startTaskFailed": {
+    "message": "Podnošenje zadatka nije uspelo:",
+    "description": "Zadatak nije uspeo"
+  },
+  "message.usedUp": {
+    "message": "Kredit je iskorišćen, molimo kupite više da biste nastavili sa korišćenjem.",
+    "description": "Iskorišćeno"
+  }
 }

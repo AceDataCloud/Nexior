@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok Video Bot",
+    "description": "Namn på Grok video-generatorn"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt för att generera videon"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Etikett för modellval"
+  },
+  "name.ratio": {
+    "message": "Bildförhållande",
+    "description": "Etikett för bildförhållande"
+  },
+  "name.resolution": {
+    "message": "Upplösning",
+    "description": "Etikett för upplösning"
+  },
+  "name.duration": {
+    "message": "Längd",
+    "description": "Etikett för längd"
+  },
+  "name.image": {
+    "message": "Bild",
+    "description": "Etikett för inmatningsbild"
+  },
+  "name.required": {
+    "message": "Obligatorisk",
+    "description": "Obligatorisk märkning"
+  },
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Etikett för uppgifts-ID"
+  },
+  "name.elapsed": {
+    "message": "Tid som förflutit",
+    "description": "Etikett för förfluten tid"
+  },
+  "name.traceId": {
+    "message": "Spårnings ID",
+    "description": "Etikett för spårnings-ID"
+  },
+  "name.failure": {
+    "message": "Generering misslyckades",
+    "description": "Titel för misslyckande"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Etikett för orsak till misslyckande"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Statusrubrik"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "Beskriv videon du vill generera (scen, ämne, handling, kameravinkel, ljus, stil).",
+    "description": "Instruktioner för promptinmatning"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Välj Grok Imagine-modell. grok-imagine-video stöder text-till-video och bild-till-video; 1.5-preview stöder endast bild-till-video.",
+    "description": "Instruktioner för modellval"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Välj utgångsbildförhållande.",
+    "description": "Instruktioner för bildförhållande"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "Välj utgångsupplösning. Ju högre upplösning, desto mer förbrukas per sekund.",
+    "description": "Instruktioner för upplösning"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Videons längd (sekunder), debiteras baserat på utgångssekunder.",
+    "description": "Instruktioner för längd"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "Valfri inmatningsbild för att generera video. grok-imagine-video-1.5-preview är obligatorisk.",
+    "description": "Instruktioner för bildinmatning"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Beskriv din video…",
+    "description": "Platsinnehåll för prompt"
+  },
+  "placeholder.select": {
+    "message": "Vänligen välj",
+    "description": "Platsinnehåll för val"
+  },
+  "model.default": {
+    "message": "Grok Imagine Video",
+    "description": "Standardmodellens etikett"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine Video 1.5 (förhandsvisning, bild-till-video)",
+    "description": "1.5 förhandsvisningsmodellens etikett"
+  },
+  "button.upload": {
+    "message": "Ladda upp",
+    "description": "Ladda upp-knapp"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Generera-knapp"
+  },
+  "button.download": {
+    "message": "Ladda ner",
+    "description": "Ladda ner-knapp"
+  },
+  "status.pending": {
+    "message": "I kö",
+    "description": "Väntande status"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Bearbetningsstatus"
+  },
+  "message.uploadExceed": {
+    "message": "Endast en bild kan laddas upp.",
+    "description": "Varning för överskridning av uppladdning"
+  },
+  "message.uploadError": {
+    "message": "Bilduppladdning misslyckades, försök igen.",
+    "description": "Uppladdningsfel"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner video",
+    "description": "Ladda ner-tooltip"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "Denna modell kräver en inmatningsbild (bild-till-video).",
+    "description": "Varning för att modellen kräver bild"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "Ange en prompt eller ladda upp en bild.",
+    "description": "Varning för att prompt eller bild krävs"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Skickar video-genereringsuppgift…",
+    "description": "Startar uppgift"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgiften har skickats.",
+    "description": "Uppgift lyckades"
+  },
+  "message.startTaskFailed": {
+    "message": "Uppgiften kunde inte skickas:",
+    "description": "Uppgift misslyckades"
+  },
+  "message.usedUp": {
+    "message": "Krediten är slut, vänligen köp mer för att fortsätta använda.",
+    "description": "Användning slut"
+  }
 }
