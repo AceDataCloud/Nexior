@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 05:49:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 06:15:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.2
+
+Sun, 14 Jun 2026 06:15:04 GMT
+
+### Patches
+
+- feat(coding-bridge): adopt the provider's real session id as one identity so resuming a conversation reattaches to its live session (Stop button, typewriter, no cross-talk) instead of forking a parallel one (dev@acedata.cloud)
 
 ## 3.277.1
 
