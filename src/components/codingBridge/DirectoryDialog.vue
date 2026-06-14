@@ -8,7 +8,9 @@
     @open="onOpen"
   >
     <div class="flex flex-col gap-2">
-      <!-- Current path + parent navigation -->
+      <!-- Editable path + parent navigation. The input lets the user jump to
+           any absolute path (e.g. another drive like D:\), which is otherwise
+           unreachable because a drive root has no parent to navigate up to. -->
       <div class="flex items-center gap-2 min-w-0">
         <el-button
           size="small"
@@ -19,9 +21,26 @@
         >
           <font-awesome-icon icon="fa-solid fa-arrow-up" />
         </el-button>
-        <span class="text-xs text-[var(--app-text-subtle)] truncate flex-1" dir="ltr">
-          {{ listing ? listing.path : '…' }}
-        </span>
+        <el-input
+          v-model="pathInput"
+          size="small"
+          class="flex-1 min-w-0"
+          dir="ltr"
+          :placeholder="$t('codingBridge.directory.pathPlaceholder')"
+          :disabled="loading"
+          @keyup.enter="goPath"
+          @blur="syncPathInput"
+        >
+          <template #append>
+            <el-button
+              :title="$t('codingBridge.directory.go')"
+              :disabled="loading || !pathInput.trim()"
+              @click="goPath"
+            >
+              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+            </el-button>
+          </template>
+        </el-input>
         <el-button
           size="small"
           circle
@@ -94,7 +113,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElDialog, ElButton } from 'element-plus';
+import { ElDialog, ElButton, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgeDirEntry, ICodingBridgeDirListing } from '@/models';
 
@@ -103,6 +122,7 @@ export default defineComponent({
   components: {
     ElDialog,
     ElButton,
+    ElInput,
     FontAwesomeIcon
   },
   props: {
@@ -117,6 +137,13 @@ export default defineComponent({
     }
   },
   emits: ['update:visible', 'select'],
+  data() {
+    return {
+      // Mirror of the current listing path, kept editable so the user can type
+      // or paste an absolute path (including a different drive) and jump there.
+      pathInput: ''
+    };
+  },
   computed: {
     listing(): ICodingBridgeDirListing | undefined {
       return this.$store.state.codingBridge?.directory;
@@ -134,9 +161,28 @@ export default defineComponent({
       return !!this.listing && !this.listing.error && (this.listing.entries ?? []).length === 0;
     }
   },
+  watch: {
+    // Keep the input in step with wherever the node actually navigated to.
+    'listing.path'(value: string | undefined) {
+      this.pathInput = value ?? '';
+    }
+  },
   methods: {
     onOpen() {
+      this.pathInput = this.initialPath || '';
       this.$store.dispatch('codingBridge/browseDir', this.initialPath || undefined);
+    },
+    // Navigate to whatever absolute path the user typed (e.g. `D:\`), letting
+    // them cross to a drive/root that the parent-directory button can't reach.
+    goPath() {
+      const target = this.pathInput.trim();
+      if (target) {
+        this.$store.dispatch('codingBridge/browseDir', target);
+      }
+    },
+    // Reset a half-edited path back to where we actually are when focus leaves.
+    syncPathInput() {
+      this.pathInput = this.listing?.path ?? '';
     },
     onVisibleChange(value: boolean) {
       this.$emit('update:visible', value);
