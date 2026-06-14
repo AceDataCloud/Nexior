@@ -19,7 +19,7 @@ on:
       auto_submit_review:
         description: 'After upload, attach the build to an App Store version and submit it for App Review.'
         required: false
-        default: true
+        default: false
         type: boolean
 
 permissions:
