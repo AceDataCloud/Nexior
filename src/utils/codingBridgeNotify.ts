@@ -235,16 +235,23 @@ export const registerNativePush = async (onOpen?: (data: ICodingBridgeNotifyData
     const { PushNotifications } = await import('@capacitor/push-notifications');
     const perm = await PushNotifications.requestPermissions();
     if (perm.receive !== 'granted') {
+      console.warn(`[codingBridge] push permission not granted (receive=${perm.receive})`);
       return null;
     }
     const token = await new Promise<string | null>((resolve) => {
-      const timer = setTimeout(() => resolve(null), 10000);
+      const timer = setTimeout(() => {
+        // No `registration` event within the window. On iOS this usually means the
+        // native APNs callbacks aren't being forwarded from AppDelegate to Capacitor.
+        console.warn('[codingBridge] push registration timed out — no device token');
+        resolve(null);
+      }, 10000);
       void PushNotifications.addListener('registration', (t: { value: string }) => {
         clearTimeout(timer);
         resolve(t.value);
       });
-      void PushNotifications.addListener('registrationError', () => {
+      void PushNotifications.addListener('registrationError', (err: unknown) => {
         clearTimeout(timer);
+        console.warn('[codingBridge] push registrationError', err);
         resolve(null);
       });
       void PushNotifications.register();
@@ -259,7 +266,14 @@ export const registerNativePush = async (onOpen?: (data: ICodingBridgeNotifyData
     }
     return token;
   } catch (error) {
-    console.warn('[codingBridge] native push registration failed', error);
+    // `UNIMPLEMENTED` here means the native PushNotifications plugin isn't compiled
+    // into the build (e.g. the Pod was never synced into the iOS project).
+    const code = (error as { code?: string })?.code;
+    if (code === 'UNIMPLEMENTED') {
+      console.warn('[codingBridge] PushNotifications plugin not available in this build', error);
+    } else {
+      console.warn('[codingBridge] native push registration failed', error);
+    }
     return null;
   }
 };
