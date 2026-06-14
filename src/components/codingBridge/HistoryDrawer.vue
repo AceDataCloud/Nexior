@@ -35,9 +35,12 @@
           @click="open(item)"
         >
           <div class="flex items-center gap-2 mb-1">
-            <span class="provider-tag" :class="item.provider">
-              {{ item.provider === 'codex' ? 'Codex' : 'Claude' }}
-            </span>
+            <img
+              :src="providerIcon(item.provider).src"
+              class="provider-icon"
+              :class="{ 'provider-icon--invert': providerIcon(item.provider).invertOnDark }"
+              :alt="item.provider === 'codex' ? 'Codex' : 'Claude'"
+            />
             <span class="text-sm font-medium truncate flex-1">{{ item.title }}</span>
           </div>
           <div class="text-[11px] text-[var(--app-text-subtle)] truncate">
@@ -61,6 +64,13 @@ import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgeHistorySummary, Status } from '@/models';
+import claudeIcon from '@/assets/images/logos/claude.svg';
+import openaiIcon from '@/assets/images/logos/openai.svg';
+
+const PROVIDER_ICONS: Record<string, { src: string; invertOnDark: boolean }> = {
+  claude: { src: claudeIcon, invertOnDark: false },
+  codex: { src: openaiIcon, invertOnDark: true }
+};
 
 export default defineComponent({
   name: 'CodingBridgeHistoryDrawer',
@@ -97,6 +107,9 @@ export default defineComponent({
     }
   },
   methods: {
+    providerIcon(provider: string): { src: string; invertOnDark: boolean } {
+      return PROVIDER_ICONS[provider] ?? PROVIDER_ICONS.claude;
+    },
     refresh() {
       if (this.currentNodeId) {
         this.$store.dispatch('codingBridge/getHistory', this.currentNodeId);
@@ -132,16 +145,15 @@ export default defineComponent({
   }
 }
 
-.provider-tag {
+.provider-icon {
   flex: none;
-  font-size: 11px;
-  line-height: 1;
-  padding: 3px 6px;
-  border-radius: 4px;
-  color: #fff;
-  background: var(--el-color-primary);
-  &.codex {
-    background: var(--el-color-info, #909399);
-  }
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+// The OpenAI glyph ships black; flip it to white on dark backgrounds.
+html.dark .provider-icon--invert {
+  filter: invert(1);
 }
 </style>
