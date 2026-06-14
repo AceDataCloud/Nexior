@@ -513,7 +513,7 @@
   },
   "placeholder.select": {
     "message": "Select",
-    "description": "Placeholder text in the selection field"
+    "description": "Placeholder text for select fields"
   },
   "placeholder.paddingLevel": {
     "message": "Please select...",
@@ -703,8 +703,17 @@
     "message": "No historical tasks, please click on the left to generate a video",
     "description": "Message when there are no tasks"
   },
-  "placeholder.select": {
-    "message": "Select",
-    "description": "Placeholder text for select fields"
-  }
+  "tab.talkingPhoto": "Talking Photo",
+  "name.talkingPhotoImage": "Portrait Photo",
+  "name.talkingPhotoAudio": "Driving Audio",
+  "name.talkingPhotoPrompt": "Motion Prompt (optional)",
+  "description.talkingPhotoImage": "Upload a clear frontal portrait; it will be animated and made to speak.",
+  "description.talkingPhotoAudio": "Upload an audio clip (mp3/wav, <=5MB); the character lip-syncs to it.",
+  "description.talkingPhotoPrompt": "Optional: describe the desired expression/motion, e.g. \"look gently at the camera\".",
+  "placeholder.talkingPhotoPrompt": "e.g. gentle, calm, natural, subtle head movement",
+  "button.generateTalkingPhoto": "Generate Talking Photo",
+  "button.uploadAudio": "Upload Audio",
+  "message.talkingPhotoMissingInputs": "Please upload a portrait photo and a driving audio first.",
+  "message.uploadAudioExceed": "Only one audio file is allowed.",
+  "message.uploadAudioError": "Audio upload failed, please retry."
 }

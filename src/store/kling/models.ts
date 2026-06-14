@@ -1,5 +1,5 @@
 import { IApplication, ICredential, IService, Status } from '@/models';
-import { IKlingConfig, IKlingMotionConfig, IKlingTask, IKlingTaskType } from '@/models';
+import { IKlingConfig, IKlingMotionConfig, IKlingTalkingPhotoConfig, IKlingTask, IKlingTaskType } from '@/models';
 
 export interface IKlingState {
   application: IApplication | undefined;
@@ -8,6 +8,7 @@ export interface IKlingState {
   credential: ICredential | undefined;
   config: IKlingConfig | undefined;
   motionConfig: IKlingMotionConfig | undefined;
+  talkingPhotoConfig: IKlingTalkingPhotoConfig | undefined;
   taskType: IKlingTaskType;
   tasks:
     | {

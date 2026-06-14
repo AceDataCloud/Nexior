@@ -3,6 +3,7 @@ import {
   ICredential,
   IKlingConfig,
   IKlingMotionConfig,
+  IKlingTalkingPhotoConfig,
   IKlingTask,
   IKlingTaskType,
   IService
@@ -36,6 +37,10 @@ export const setConfig = (state: IKlingState, payload: IKlingConfig): void => {
 
 export const setMotionConfig = (state: IKlingState, payload: IKlingMotionConfig): void => {
   state.motionConfig = payload;
+};
+
+export const setTalkingPhotoConfig = (state: IKlingState, payload: IKlingTalkingPhotoConfig): void => {
+  state.talkingPhotoConfig = payload;
 };
 
 export const setTaskType = (state: IKlingState, payload: IKlingTaskType): void => {
@@ -78,6 +83,7 @@ export default {
   setApplications,
   setConfig,
   setMotionConfig,
+  setTalkingPhotoConfig,
   setTaskType,
   setCredential,
   setService,

@@ -24,7 +24,7 @@ export interface IKlingElementRef {
   element_id?: string;
 }
 
-export type IKlingTaskType = 'videos' | 'motion';
+export type IKlingTaskType = 'videos' | 'motion' | 'talking-photo';
 
 export interface IKlingMotionConfig {
   prompt?: string;
@@ -43,6 +43,26 @@ export interface IKlingMotionRequest {
   character_orientation?: 'image' | 'video';
   mode?: 'std' | 'pro';
   keep_original_sound?: 'yes' | 'no';
+  callback_url?: string;
+}
+
+export interface IKlingTalkingPhotoConfig {
+  image_url?: string;
+  audio_url?: string;
+  prompt?: string;
+  model?: string;
+  duration?: number;
+  mode?: 'std' | 'pro';
+  callback_url?: string;
+}
+
+export interface IKlingTalkingPhotoRequest {
+  image_url: string;
+  audio_url: string;
+  prompt?: string;
+  model?: string;
+  duration?: number;
+  mode?: 'std' | 'pro';
   callback_url?: string;
 }
 
