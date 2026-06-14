@@ -1,6 +1,6 @@
 export const GROKVIDEO_SERVICE_ID = 'a270a291-7cbc-44a6-88b9-80334e3e95a0';
 
-export const GROKVIDEO_LOGO = 'https://cdn.acedata.cloud/8nxyy9.jpg';
+export const GROKVIDEO_LOGO = 'https://cdn.acedata.cloud/p1ge98.png';
 
 export const GROKVIDEO_MODEL_DEFAULT = 'grok-imagine-video';
 export const GROKVIDEO_MODEL_1_5_PREVIEW = 'grok-imagine-video-1.5-preview';

@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok відео робот",
+    "description": "Назва генератора відео Grok"
+  },
+  "name.prompt": {
+    "message": "Запит",
+    "description": "Запит для генерації відео"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Мітка для вибору моделі"
+  },
+  "name.ratio": {
+    "message": "Співвідношення сторін",
+    "description": "Мітка для співвідношення сторін"
+  },
+  "name.resolution": {
+    "message": "Роздільна здатність",
+    "description": "Мітка для роздільної здатності"
+  },
+  "name.duration": {
+    "message": "Тривалість",
+    "description": "Мітка для тривалості"
+  },
+  "name.image": {
+    "message": "Зображення",
+    "description": "Мітка для введення зображення"
+  },
+  "name.required": {
+    "message": "Обов'язково",
+    "description": "Знак обов'язковості"
+  },
+  "name.taskId": {
+    "message": "ID завдання",
+    "description": "Мітка для ID завдання"
+  },
+  "name.elapsed": {
+    "message": "Час виконання",
+    "description": "Мітка для витраченого часу"
+  },
+  "name.traceId": {
+    "message": "ID відстеження",
+    "description": "Мітка для ID відстеження"
+  },
+  "name.failure": {
+    "message": "Генерація не вдалася",
+    "description": "Заголовок для невдачі"
+  },
+  "name.failureReason": {
+    "message": "Причина невдачі",
+    "description": "Мітка для причини невдачі"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Заголовок статусу"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "Опишіть відео, яке ви хочете згенерувати (сцена, об'єкт, дія, кадри, світло, стиль).",
+    "description": "Інструкції щодо введення підказки"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Виберіть модель Grok Imagine. grok-imagine-video підтримує текстове та зображення відео; 1.5-preview підтримує лише зображення відео.",
+    "description": "Інструкції щодо вибору моделі"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "Виберіть співвідношення сторін виходу.",
+    "description": "Інструкції щодо співвідношення сторін"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "Виберіть роздільну здатність виходу. Чим вища роздільна здатність, тим більше витрат на секунду.",
+    "description": "Інструкції щодо роздільної здатності"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "Тривалість відео (секунди), оплата за вихідну кількість секунд.",
+    "description": "Інструкції щодо тривалості"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "Додаткове зображення для генерації відео. grok-imagine-video-1.5-preview є обов'язковим.",
+    "description": "Інструкції щодо введення зображення"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "Опишіть ваше відео…",
+    "description": "Заповнювач для запиту"
+  },
+  "placeholder.select": {
+    "message": "Будь ласка, виберіть",
+    "description": "Заповнювач для вибору"
+  },
+  "model.default": {
+    "message": "Grok Imagine відео",
+    "description": "Мітка за замовчуванням для моделі"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine відео 1.5 (попередній перегляд, зображення відео)",
+    "description": "Мітка для моделі попереднього перегляду 1.5"
+  },
+  "button.upload": {
+    "message": "Завантажити",
+    "description": "Кнопка для завантаження"
+  },
+  "button.generate": {
+    "message": "Генерувати",
+    "description": "Кнопка для генерації"
+  },
+  "button.download": {
+    "message": "Завантажити",
+    "description": "Кнопка для завантаження"
+  },
+  "status.pending": {
+    "message": "В черзі",
+    "description": "Статус очікування"
+  },
+  "status.processing": {
+    "message": "В обробці",
+    "description": "Статус обробки"
+  },
+  "message.uploadExceed": {
+    "message": "Можна завантажити лише одне зображення.",
+    "description": "Попередження про перевищення завантаження"
+  },
+  "message.uploadError": {
+    "message": "Не вдалося завантажити зображення, будь ласка, спробуйте ще раз.",
+    "description": "Помилка завантаження"
+  },
+  "message.downloadVideo": {
+    "message": "Завантажити відео",
+    "description": "Підказка для завантаження"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "Ця модель потребує введення зображення (зображення відео).",
+    "description": "Попередження про необхідність зображення для моделі"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "Будь ласка, введіть підказку або завантажте зображення.",
+    "description": "Попередження про необхідність підказки або зображення"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "Надсилається завдання на генерацію відео…",
+    "description": "Початок завдання"
+  },
+  "message.startTaskSuccess": {
+    "message": "Завдання надіслано успішно.",
+    "description": "Успішне виконання завдання"
+  },
+  "message.startTaskFailed": {
+    "message": "Не вдалося надіслати завдання:",
+    "description": "Не вдалося виконати завдання"
+  },
+  "message.usedUp": {
+    "message": "Ліміт вичерпано, будь ласка, купіть, щоб продовжити використання.",
+    "description": "Вичерпано"
+  }
 }

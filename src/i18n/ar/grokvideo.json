@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "روبوت فيديو Grok",
+    "description": "اسم مولد فيديو Grok"
+  },
+  "name.prompt": {
+    "message": "نص التوجيه",
+    "description": "نص لتوليد الفيديو"
+  },
+  "name.model": {
+    "message": "نموذج",
+    "description": "تسمية لاختيار النموذج"
+  },
+  "name.ratio": {
+    "message": "نسبة العرض إلى الارتفاع",
+    "description": "تسمية لنسبة العرض إلى الارتفاع"
+  },
+  "name.resolution": {
+    "message": "الدقة",
+    "description": "تسمية للدقة"
+  },
+  "name.duration": {
+    "message": "المدة",
+    "description": "تسمية للمدة"
+  },
+  "name.image": {
+    "message": "صورة",
+    "description": "تسمية لإدخال الصورة"
+  },
+  "name.required": {
+    "message": "مطلوب",
+    "description": "شارة مطلوبة"
+  },
+  "name.taskId": {
+    "message": "معرف المهمة",
+    "description": "تسمية معرف المهمة"
+  },
+  "name.elapsed": {
+    "message": "الوقت المستغرق",
+    "description": "تسمية الوقت المستغرق"
+  },
+  "name.traceId": {
+    "message": "معرف التتبع",
+    "description": "تسمية معرف التتبع"
+  },
+  "name.failure": {
+    "message": "فشل الإنشاء",
+    "description": "عنوان الفشل"
+  },
+  "name.failureReason": {
+    "message": "سبب الفشل",
+    "description": "تسمية سبب الفشل"
+  },
+  "name.status": {
+    "message": "الحالة",
+    "description": "عنوان الحالة"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "صف الفيديو الذي ترغب في إنشائه (المشهد، الموضوع، الحركة، اللقطة، الإضاءة، الأسلوب).",
+    "description": "تعليمات حول إدخال النص"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "اختر نموذج Grok Imagine. يدعم grok-imagine-video الفيديو الناتج عن النص والصورة؛ بينما 1.5-preview يدعم فقط الفيديو الناتج عن الصورة.",
+    "description": "تعليمات حول اختيار النموذج"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "اختر نسبة عرض إلى ارتفاع الإخراج.",
+    "description": "تعليمات حول نسبة العرض إلى الارتفاع"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "اختر دقة الإخراج. كلما كانت الدقة أعلى، زادت التكلفة لكل ثانية.",
+    "description": "تعليمات حول الدقة"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "مدة الفيديو (بالثواني)، يتم احتساب الرسوم حسب عدد الثواني.",
+    "description": "تعليمات حول المدة"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "صورة إدخال اختيارية، تستخدم لإنشاء الفيديو. grok-imagine-video-1.5-preview إلزامية.",
+    "description": "تعليمات حول إدخال الصورة"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "وصف الفيديو الخاص بك…",
+    "description": "نص بديل لنص التوجيه"
+  },
+  "placeholder.select": {
+    "message": "يرجى الاختيار",
+    "description": "نص بديل للاختيارات"
+  },
+  "model.default": {
+    "message": "فيديو Grok Imagine",
+    "description": "تسمية النموذج الافتراضي"
+  },
+  "model.preview15": {
+    "message": "فيديو Grok Imagine 1.5 (معاينة، فيديو ناتج عن الصورة)",
+    "description": "تسمية نموذج المعاينة 1.5"
+  },
+  "button.upload": {
+    "message": "رفع",
+    "description": "زر الرفع"
+  },
+  "button.generate": {
+    "message": "إنشاء",
+    "description": "زر الإنشاء"
+  },
+  "button.download": {
+    "message": "تنزيل",
+    "description": "زر التنزيل"
+  },
+  "status.pending": {
+    "message": "قيد الانتظار",
+    "description": "حالة الانتظار"
+  },
+  "status.processing": {
+    "message": "جاري المعالجة",
+    "description": "حالة المعالجة"
+  },
+  "message.uploadExceed": {
+    "message": "يمكنك رفع صورة واحدة فقط.",
+    "description": "تحذير تجاوز الرفع"
+  },
+  "message.uploadError": {
+    "message": "فشل رفع الصورة، يرجى المحاولة مرة أخرى.",
+    "description": "خطأ في الرفع"
+  },
+  "message.downloadVideo": {
+    "message": "تنزيل الفيديو",
+    "description": "تلميح التنزيل"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "هذا النموذج يتطلب صورة إدخال (فيديو ناتج عن الصورة).",
+    "description": "تحذير يتطلب صورة للنموذج"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "يرجى إدخال نص أو رفع صورة.",
+    "description": "تحذير يتطلب نص أو صورة"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "جارٍ تقديم مهمة إنشاء الفيديو...",
+    "description": "بدء المهمة"
+  },
+  "message.startTaskSuccess": {
+    "message": "تم تقديم المهمة بنجاح.",
+    "description": "نجاح المهمة"
+  },
+  "message.startTaskFailed": {
+    "message": "فشل تقديم المهمة:",
+    "description": "فشل المهمة"
+  },
+  "message.usedUp": {
+    "message": "تم استهلاك الرصيد، يرجى الشراء للاستمرار في الاستخدام.",
+    "description": "استهلاك الرصيد"
+  }
 }

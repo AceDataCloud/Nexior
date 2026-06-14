@@ -1,61 +1,154 @@
 {
-  "name.bot": { "message": "Grok Video Bot", "description": "Name of the Grok video generator" },
-  "name.prompt": { "message": "Prompt", "description": "Prompt for generating the video" },
-  "name.model": { "message": "Model", "description": "Label for model selection" },
-  "name.ratio": { "message": "Aspect Ratio", "description": "Label for aspect ratio" },
-  "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
-  "name.duration": { "message": "Duration", "description": "Label for duration" },
-  "name.image": { "message": "Image", "description": "Label for input image" },
-  "name.required": { "message": "Required", "description": "Required badge" },
-  "name.taskId": { "message": "Task ID", "description": "Task id label" },
-  "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
-  "name.traceId": { "message": "Trace ID", "description": "Trace id label" },
-  "name.failure": { "message": "Generation Failed", "description": "Failure title" },
-  "name.failureReason": { "message": "Reason", "description": "Failure reason label" },
-  "name.status": { "message": "Status", "description": "Status title" },
+  "name.bot": {
+    "message": "Grok 비디오 봇",
+    "description": "Grok 비디오 생성기의 이름"
+  },
+  "name.prompt": {
+    "message": "프롬프트",
+    "description": "비디오 생성을 위한 프롬프트"
+  },
+  "name.model": {
+    "message": "모델",
+    "description": "모델 선택을 위한 레이블"
+  },
+  "name.ratio": {
+    "message": "화면 비율",
+    "description": "종횡비를 위한 레이블"
+  },
+  "name.resolution": {
+    "message": "해상도",
+    "description": "해상도를 위한 레이블"
+  },
+  "name.duration": {
+    "message": "길이",
+    "description": "길이에 대한 레이블"
+  },
+  "name.image": {
+    "message": "이미지",
+    "description": "입력 이미지의 레이블"
+  },
+  "name.required": {
+    "message": "필수",
+    "description": "필수 배지"
+  },
+  "name.taskId": {
+    "message": "작업 ID",
+    "description": "작업 ID 레이블"
+  },
+  "name.elapsed": {
+    "message": "소요 시간",
+    "description": "소요 시간 레이블"
+  },
+  "name.traceId": {
+    "message": "추적 ID",
+    "description": "추적 ID 레이블"
+  },
+  "name.failure": {
+    "message": "생성 실패",
+    "description": "실패 제목"
+  },
+  "name.failureReason": {
+    "message": "실패 원인",
+    "description": "실패 원인 레이블"
+  },
+  "name.status": {
+    "message": "상태",
+    "description": "상태 제목"
+  },
   "description.prompt": {
-    "message": "Describe the video you want to generate (scene, subject, motion, camera, lighting, style).",
-    "description": "Instructions for prompt input"
+    "message": "생성하고 싶은 비디오를 설명하세요(장면, 주제, 동작, 샷, 조명, 스타일).",
+    "description": "프롬프트 입력에 대한 설명"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
-    "description": "Instructions for model selection"
+    "message": "Grok Imagine 모델을 선택하세요. grok-imagine-video는 텍스트와 이미지 기반 비디오를 지원하며; 1.5-preview는 이미지 기반 비디오만 지원합니다.",
+    "description": "모델 선택에 대한 설명"
   },
-  "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
+  "description.ratio": {
+    "message": "출력 화면 비율을 선택하세요.",
+    "description": "화면 비율에 대한 설명"
+  },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
-    "description": "Instructions for resolution"
+    "message": "출력 해상도를 선택하세요. 해상도가 높을수록 초당 소모되는 크레딧이 많아집니다.",
+    "description": "해상도에 대한 설명"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
-    "description": "Instructions for duration"
+    "message": "비디오 길이(초), 출력 초 수에 따라 요금이 청구됩니다.",
+    "description": "길이에 대한 설명"
   },
   "description.image": {
-    "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
-    "description": "Instructions for image input"
+    "message": "비디오 생성을 위한 선택적 입력 이미지. grok-imagine-video-1.5-preview는 필수입니다.",
+    "description": "이미지 입력에 대한 설명"
   },
-  "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
-  "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
-  "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
-  "model.preview15": { "message": "Grok Imagine Video 1.5 (Preview, image-to-video)", "description": "1.5 preview model label" },
-  "button.upload": { "message": "Upload", "description": "Upload button" },
-  "button.generate": { "message": "Generate", "description": "Generate button" },
-  "button.download": { "message": "Download", "description": "Download button" },
-  "status.pending": { "message": "Pending", "description": "Pending status" },
-  "status.processing": { "message": "Processing", "description": "Processing status" },
-  "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
-  "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
-  "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
+  "placeholder.prompt": {
+    "message": "비디오를 설명하세요…",
+    "description": "프롬프트를 위한 플레이스홀더"
+  },
+  "placeholder.select": {
+    "message": "선택하세요",
+    "description": "선택을 위한 플레이스홀더"
+  },
+  "model.default": {
+    "message": "Grok Imagine 비디오",
+    "description": "기본 모델 레이블"
+  },
+  "model.preview15": {
+    "message": "Grok Imagine 비디오 1.5(미리보기, 이미지 기반 비디오)",
+    "description": "1.5 미리보기 모델 레이블"
+  },
+  "button.upload": {
+    "message": "업로드",
+    "description": "업로드 버튼"
+  },
+  "button.generate": {
+    "message": "생성",
+    "description": "생성 버튼"
+  },
+  "button.download": {
+    "message": "다운로드",
+    "description": "다운로드 버튼"
+  },
+  "status.pending": {
+    "message": "대기 중",
+    "description": "대기 상태"
+  },
+  "status.processing": {
+    "message": "생성 중",
+    "description": "처리 상태"
+  },
+  "message.uploadExceed": {
+    "message": "이미지는 한 장만 업로드할 수 있습니다.",
+    "description": "업로드 초과 경고"
+  },
+  "message.uploadError": {
+    "message": "이미지 업로드 실패, 다시 시도하세요.",
+    "description": "업로드 오류"
+  },
+  "message.downloadVideo": {
+    "message": "비디오 다운로드",
+    "description": "다운로드 툴팁"
+  },
   "message.modelRequiresImage": {
-    "message": "This model requires an input image (image-to-video).",
-    "description": "Model requires image warning"
+    "message": "이 모델은 입력 이미지가 필요합니다(이미지 기반 비디오).",
+    "description": "모델에 이미지가 필요하다는 경고"
   },
   "message.promptOrImageRequired": {
-    "message": "Please enter a prompt or upload an image.",
-    "description": "Prompt or image required warning"
+    "message": "프롬프트를 입력하거나 이미지를 업로드하세요.",
+    "description": "프롬프트 또는 이미지가 필요하다는 경고"
   },
-  "message.startingTask": { "message": "Submitting your video generation task…", "description": "Starting task" },
-  "message.startTaskSuccess": { "message": "Task submitted successfully.", "description": "Task success" },
-  "message.startTaskFailed": { "message": "Failed to submit task: ", "description": "Task failed" },
-  "message.usedUp": { "message": "Your quota has been used up. Please purchase more to continue.", "description": "Used up" }
+  "message.startingTask": {
+    "message": "비디오 생성 작업을 제출하는 중…",
+    "description": "작업 시작"
+  },
+  "message.startTaskSuccess": {
+    "message": "작업 제출 성공.",
+    "description": "작업 성공"
+  },
+  "message.startTaskFailed": {
+    "message": "작업 제출 실패:",
+    "description": "작업 실패"
+  },
+  "message.usedUp": {
+    "message": "크레딧이 소진되었습니다. 구매 후 계속 사용하세요.",
+    "description": "소진됨"
+  }
 }
