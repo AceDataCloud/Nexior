@@ -36,6 +36,9 @@ export const CB_ACTION_PING = 'ping';
 
 // --- Inner events: node -> browser -----------------------------------------
 export const CB_EVENT_SESSION_STARTED = 'session.started';
+// The provider's real (SDK) session id is known: re-key the session from the
+// provisional id (`session_id`) to the canonical one (`sdk_session_id`).
+export const CB_EVENT_SESSION_IDENTIFIED = 'session.identified';
 export const CB_EVENT_SESSION_TEXT = 'session.text';
 export const CB_EVENT_SESSION_TEXT_DELTA = 'session.text_delta';
 export const CB_EVENT_SESSION_THINKING = 'session.thinking';

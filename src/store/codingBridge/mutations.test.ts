@@ -6,11 +6,20 @@ import {
   appendEvent,
   finalizeAllStreams,
   finalizeStream,
+  renameSession,
   rewindToCut,
   setLastSeq,
-  truncateEventsBefore
+  truncateEventsBefore,
+  upsertSession
 } from './mutations';
-import type { ICodingBridgeEvent } from '@/models';
+import type { ICodingBridgeEvent, ICodingBridgeSession } from '@/models';
+
+const session = (overrides: Partial<ICodingBridgeSession> = {}): ICodingBridgeSession => ({
+  session_id: 's1',
+  node_id: 'n1',
+  status: 'running',
+  ...overrides
+});
 
 const textEvent = (overrides: Partial<ICodingBridgeEvent> = {}): ICodingBridgeEvent => ({
   id: 'e1',
@@ -118,5 +127,50 @@ describe('coding bridge reliable-delivery mutations', () => {
     expect(state.lastSeq['s1']).toBe(5);
     setLastSeq(state, { session_id: 's1', seq: 9 });
     expect(state.lastSeq['s1']).toBe(9);
+  });
+});
+
+describe('coding bridge session identity (renameSession)', () => {
+  it('migrates session, transcript, cursor, selection and history pointer', () => {
+    const state = createState();
+    upsertSession(state, session({ session_id: 'prov', status: 'running', started: true }));
+    appendEvent(state, textEvent({ id: 'a', session_id: 'prov', text: 'hi' }));
+    setLastSeq(state, { session_id: 'prov', seq: 7 });
+    state.currentSessionId = 'prov';
+    state.historyRef = { node_id: 'n1', provider: 'claude', session_id: 'prov' };
+
+    renameSession(state, { from: 'prov', to: 'real' });
+
+    expect(state.sessions['prov']).toBeUndefined();
+    expect(state.sessions['real'].session_id).toBe('real');
+    expect(state.sessions['real'].status).toBe('running');
+    expect(state.events['prov']).toBeUndefined();
+    expect(state.events['real'].map((e) => e.id)).toEqual(['a']);
+    expect(state.lastSeq['real']).toBe(7);
+    expect(state.lastSeq['prov']).toBeUndefined();
+    expect(state.currentSessionId).toBe('real');
+    expect(state.historyRef?.session_id).toBe('real');
+  });
+
+  it('keeps the live transcript when merging into a pre-existing snapshot stub', () => {
+    const state = createState();
+    // A snapshot stub already exists under the real id (no events yet)...
+    upsertSession(state, session({ session_id: 'real', status: 'running', started: true }));
+    // ...and the live, provisionally-keyed session holds the streamed transcript.
+    upsertSession(state, session({ session_id: 'prov', model: 'opus' }));
+    appendEvent(state, textEvent({ id: 'live', session_id: 'prov', text: 'streamed' }));
+
+    renameSession(state, { from: 'prov', to: 'real' });
+
+    expect(state.sessions['real'].model).toBe('opus');
+    expect(state.events['real'].map((e) => e.id)).toEqual(['live']);
+  });
+
+  it('is a no-op when ids match or the source is missing', () => {
+    const state = createState();
+    upsertSession(state, session({ session_id: 's1' }));
+    renameSession(state, { from: 's1', to: 's1' });
+    renameSession(state, { from: 'ghost', to: 'x' });
+    expect(Object.keys(state.sessions)).toEqual(['s1']);
   });
 });

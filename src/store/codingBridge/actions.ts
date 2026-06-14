@@ -27,11 +27,13 @@ import {
   CB_ACTION_SESSION_CLOSE,
   CB_ACTION_PERMISSION_RESOLVE,
   CB_ACTION_PERMISSIONS_LIST,
+  CB_ACTION_SESSIONS_LIST,
   CB_ACTION_HISTORY_LIST,
   CB_ACTION_HISTORY_GET,
   CB_ACTION_FS_LIST,
   CB_ACTION_CAPABILITIES_GET,
   CB_EVENT_SESSION_STARTED,
+  CB_EVENT_SESSION_IDENTIFIED,
   CB_EVENT_SESSION_TEXT,
   CB_EVENT_SESSION_TEXT_DELTA,
   CB_EVENT_SESSION_THINKING,
@@ -121,8 +123,9 @@ const notifyForPermission = (
   );
 };
 
-// Translate one inner node event into the matching mutation(s).
-const applyNodeEvent = (
+// Translate one inner node event into the matching mutation(s). Exported for
+// integration tests that drive the real reducer with node-shaped event streams.
+export const applyNodeEvent = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
   dispatch: ActionContext<ICodingBridgeState, IRootState>['dispatch'],
   state: ICodingBridgeState,
@@ -167,6 +170,17 @@ const applyNodeEvent = (
         trace_id: traceId
       });
       break;
+    case CB_EVENT_SESSION_IDENTIFIED: {
+      // The node learned the provider's real session id: re-key this session
+      // from the provisional id it opened with to the canonical one, so the live
+      // session and its history entry share one identity (and a later resume
+      // reattaches instead of forking a parallel session).
+      const realId = payload.sdk_session_id;
+      if (sessionId && realId && realId !== sessionId) {
+        commit('renameSession', { from: sessionId, to: realId });
+      }
+      break;
+    }
     case CB_EVENT_SESSION_TEXT_DELTA: {
       // Streaming chunk: grow the open bubble for this stream id, or open a
       // new streaming bubble if this is the first delta seen for it.
@@ -285,9 +299,7 @@ const applyNodeEvent = (
       commit('updateSession', {
         session_id: sessionId,
         status: 'idle',
-        cost_usd: payload.cost_usd,
-        // Keep the live SDK session id current so an edit can fork from it.
-        ...(payload.sdk_session_id ? { sdk_session_id: payload.sdk_session_id } : {})
+        cost_usd: payload.cost_usd
       });
       break;
     case CB_EVENT_SESSION_NOTICE:
@@ -331,13 +343,20 @@ const applyNodeEvent = (
       dispatch('resyncSession', sessionId);
       break;
     case CB_EVENT_SESSIONS_SNAPSHOT:
+      // Live sessions the node is running right now (keyed by their real id).
+      // Mark them started so a follow-up sends rather than re-starts, and so
+      // opening their history entry reattaches with the running state intact —
+      // this is how a reload recovers the Stop button and the typewriter.
       for (const item of payload.sessions ?? []) {
         commit('upsertSession', {
           session_id: item.session_id,
           node_id: fromNode,
-          status: item.status ?? 'idle',
+          status: item.status ?? 'running',
+          started: true,
           cwd: item.cwd,
-          model: item.model
+          model: item.model,
+          ...(item.effort !== undefined ? { effort: item.effort } : {}),
+          ...(item.permission_mode !== undefined ? { permission_mode: item.permission_mode } : {})
         });
       }
       break;
@@ -380,7 +399,12 @@ const applyNodeEvent = (
   }
 };
 
-// Materialise a replayed transcript as a (resumable) session.
+// Open a history transcript, reconciling it against any live session of the
+// same id. The node now keys live sessions by their real (SDK) id — exactly the
+// id history lists them under — so a transcript that is still running on the
+// node is reattached (its running status, seq cursor and in-flight stream kept
+// intact) instead of being overwritten by a static, idle copy. A dead transcript
+// materialises as a resumable idle session as before.
 const applyHistoryDetail = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
   state: ICodingBridgeState,
@@ -393,41 +417,49 @@ const applyHistoryDetail = (
     return;
   }
   const resumable = provider === 'claude';
-  // Reasoning effort and permission/edit mode are NOT in the on-disk transcript,
-  // so the node restores them from the per-session sidecar it saved while the
-  // session ran (authoritative, works across devices) and sends them back on the
-  // history detail. Fall back to this device's last composer setup only when the
-  // sidecar is absent (e.g. a session that predates it) so we never reset to
-  // defaults. cwd/model come from the transcript, sidecar-backfilled by the node.
+  const live = state.sessions[sessionId];
+  // "Live" = a session the node is currently running (surfaced via the sessions
+  // snapshot) or one already mid-turn in this tab. Such a session keeps the Stop
+  // button and the typewriter; clobbering it to idle is the restore bug.
+  const isLive = !!live && (live.started === true || live.status === 'running' || live.status === 'starting');
+  // Effort/permission-mode aren't in the transcript; the node backfills them from
+  // its per-session sidecar. Fall back to a live value, then this device's last
+  // composer setup, so a restore never silently resets to defaults.
   const prefs = state.lastComposer?.[fromNode] ?? {};
   commit('upsertSession', {
     session_id: sessionId,
     node_id: fromNode,
-    status: 'idle',
-    cwd: payload.cwd ?? prefs.cwd,
-    model: payload.model ?? prefs.model,
-    effort: payload.effort ?? prefs.effort,
-    permission_mode: payload.permission_mode ?? prefs.permissionMode,
+    status: isLive ? live!.status : 'idle',
+    cwd: payload.cwd ?? live?.cwd ?? prefs.cwd,
+    model: payload.model ?? live?.model ?? prefs.model,
+    effort: payload.effort ?? live?.effort ?? prefs.effort,
+    permission_mode: payload.permission_mode ?? live?.permission_mode ?? prefs.permissionMode,
     provider,
-    started: false,
-    readonly: !resumable,
-    resume_session_id: resumable ? sessionId : undefined
+    started: isLive ? true : false,
+    readonly: !resumable && !isLive
   });
-  const events: ICodingBridgeEvent[] = (payload.events ?? []).map((item: any, index: number) => ({
-    id: uid(),
-    session_id: sessionId,
-    kind: item.kind as ICodingBridgeEventKind,
-    ts: typeof item.ts === 'number' ? item.ts : Date.now() + index,
-    text: item.text,
-    tool: item.tool,
-    tool_use_id: item.tool_use_id,
-    input: item.input,
-    content: item.content,
-    is_error: item.is_error,
-    subtype: item.subtype,
-    cost_usd: item.cost_usd
-  }));
-  commit('setEvents', { session_id: sessionId, events });
+  // Only lay down the static transcript when we don't already hold a richer live
+  // one: a session we're actively watching keeps its streamed events; a live
+  // session we only just learned about (e.g. after a reload) gets the transcript
+  // as its base, with later live deltas (higher seq) appending on top.
+  const haveLiveEvents = isLive && (state.events[sessionId]?.length ?? 0) > 0;
+  if (!haveLiveEvents) {
+    const events: ICodingBridgeEvent[] = (payload.events ?? []).map((item: any, index: number) => ({
+      id: uid(),
+      session_id: sessionId,
+      kind: item.kind as ICodingBridgeEventKind,
+      ts: typeof item.ts === 'number' ? item.ts : Date.now() + index,
+      text: item.text,
+      tool: item.tool,
+      tool_use_id: item.tool_use_id,
+      input: item.input,
+      content: item.content,
+      is_error: item.is_error,
+      subtype: item.subtype,
+      cost_usd: item.cost_usd
+    }));
+    commit('setEvents', { session_id: sessionId, events });
+  }
   commit('setCurrentNode', fromNode);
   commit('setCurrentSession', sessionId);
   commit('setHistoryRef', { node_id: fromNode, provider, session_id: sessionId });
@@ -536,6 +568,10 @@ export const connect = ({
       if (state.currentNodeId) {
         dispatch('getHistory', state.currentNodeId);
         dispatch('getCapabilities', state.currentNodeId);
+        // Re-learn which sessions are running right now, so a reload recovers a
+        // live session's status (Stop button, typewriter) instead of treating
+        // every conversation as idle history.
+        dispatch('requestSessions', state.currentNodeId);
         // Re-fetch any consent prompt raised while we were disconnected.
         dispatch('requestPendingPermissions', state.currentNodeId);
       }
@@ -552,6 +588,7 @@ export const connect = ({
       if (status === 'online' && nodeId === state.currentNodeId) {
         dispatch('getHistory', nodeId);
         dispatch('getCapabilities', nodeId);
+        dispatch('requestSessions', nodeId);
         dispatch('requestPendingPermissions', nodeId);
       }
     },
@@ -581,7 +618,19 @@ export const selectNode = (
   commit('setCurrentSession', ids.length ? ids[ids.length - 1] : undefined);
   dispatch('getHistory', nodeId);
   dispatch('getCapabilities', nodeId);
+  dispatch('requestSessions', nodeId);
   dispatch('requestPendingPermissions', nodeId);
+};
+
+// Ask a node which sessions it is running right now (sessions.list). The reply
+// (sessions.snapshot) re-establishes live sessions — with their running status —
+// after a reload or reconnect, so the UI reattaches rather than showing history.
+export const requestSessions = ({ state }: ActionContext<ICodingBridgeState, IRootState>, nodeId?: string): void => {
+  const target = nodeId ?? state.currentNodeId;
+  if (!target || !socket) {
+    return;
+  }
+  socket.sendToNode(target, { action: CB_ACTION_SESSIONS_LIST });
 };
 
 // Ask a node to re-emit every outstanding permission prompt (permissions.list).
@@ -680,7 +729,10 @@ export const sendPrompt = (
       effort: payload.effort || undefined,
       images,
       attachments,
-      resume_session_id: existing?.resume_session_id || undefined
+      // Resuming a restored conversation: its id IS the provider's real session
+      // id, so the node resumes that transcript (or reattaches if it's still
+      // live). A brand-new session has no existing entry and so no resume target.
+      resume_session_id: existing?.session_id || undefined
     });
   } else {
     commit('updateSession', { session_id: sessionId as string, trace_id: traceId });
@@ -1030,6 +1082,7 @@ export default {
   connect,
   disconnect,
   selectNode,
+  requestSessions,
   requestPendingPermissions,
   enableNotifications,
   disableNotifications,

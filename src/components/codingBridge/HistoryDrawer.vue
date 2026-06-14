@@ -42,6 +42,9 @@
               :alt="item.provider === 'codex' ? 'Codex' : 'Claude'"
             />
             <span class="text-sm font-medium truncate flex-1">{{ item.title }}</span>
+            <!-- Live on the node right now: opening it reattaches to the running
+                 session (Stop button + streaming) rather than replaying a copy. -->
+            <span v-if="item.running" class="running-dot" :title="$t('codingBridge.history.running')"></span>
           </div>
           <div class="text-[11px] text-[var(--app-text-subtle)] truncate">
             <span v-if="item.cwd">{{ item.cwd }}</span>
@@ -150,6 +153,15 @@ export default defineComponent({
   width: 16px;
   height: 16px;
   object-fit: contain;
+}
+
+.running-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--el-color-success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--el-color-success) 25%, transparent);
 }
 
 // The OpenAI glyph ships black; flip it to white on dark backgrounds.
