@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 06:15:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 07:05:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.3
+
+Sun, 14 Jun 2026 07:05:14 GMT
+
+### Patches
+
+- style(nexior): make the empty-state magic-wand button a bit smaller (48px -> 40px) (dev@acedata.cloud)
 
 ## 3.277.2
 
