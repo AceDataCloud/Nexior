@@ -160,6 +160,10 @@ const applyNodeEvent = (
         status: 'running',
         cwd: payload.cwd,
         model: payload.model,
+        // The node now echoes effort/permission_mode too; only apply when present
+        // so an older node that omits them doesn't wipe the session's values.
+        ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
+        ...(payload.permission_mode !== undefined ? { permission_mode: payload.permission_mode } : {}),
         trace_id: traceId
       });
       break;
@@ -349,7 +353,7 @@ const applyNodeEvent = (
       }
       break;
     case CB_EVENT_HISTORY_DETAIL:
-      applyHistoryDetail(commit, payload, fromNode);
+      applyHistoryDetail(commit, state, payload, fromNode);
       break;
     case CB_EVENT_FS_LIST:
       // Directory listings are node-scoped (no session_id) and feed the
@@ -379,6 +383,7 @@ const applyNodeEvent = (
 // Materialise a replayed transcript as a (resumable) session.
 const applyHistoryDetail = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
+  state: ICodingBridgeState,
   payload: Record<string, any>,
   fromNode: string | undefined
 ): void => {
@@ -388,12 +393,21 @@ const applyHistoryDetail = (
     return;
   }
   const resumable = provider === 'claude';
+  // Reasoning effort and permission/edit mode are NOT in the on-disk transcript,
+  // so the node restores them from the per-session sidecar it saved while the
+  // session ran (authoritative, works across devices) and sends them back on the
+  // history detail. Fall back to this device's last composer setup only when the
+  // sidecar is absent (e.g. a session that predates it) so we never reset to
+  // defaults. cwd/model come from the transcript, sidecar-backfilled by the node.
+  const prefs = state.lastComposer?.[fromNode] ?? {};
   commit('upsertSession', {
     session_id: sessionId,
     node_id: fromNode,
     status: 'idle',
-    cwd: payload.cwd,
-    model: payload.model,
+    cwd: payload.cwd ?? prefs.cwd,
+    model: payload.model ?? prefs.model,
+    effort: payload.effort ?? prefs.effort,
+    permission_mode: payload.permission_mode ?? prefs.permissionMode,
     provider,
     started: false,
     readonly: !resumable,
@@ -629,13 +643,25 @@ export const sendPrompt = (
         status: 'starting',
         cwd: payload.cwd,
         model: payload.model,
+        effort: payload.effort,
+        permission_mode: payload.permissionMode,
         provider,
         trace_id: traceId
       });
       commit('setCurrentSession', sessionId);
     } else {
       sessionId = existing.session_id;
-      commit('updateSession', { session_id: sessionId, status: 'starting', trace_id: traceId });
+      // Resuming a replayed conversation: carry the composer's current settings
+      // onto the session so the started turn (and the pills) reflect them.
+      commit('updateSession', {
+        session_id: sessionId,
+        status: 'starting',
+        trace_id: traceId,
+        ...(payload.cwd ? { cwd: payload.cwd } : {}),
+        ...(payload.model !== undefined ? { model: payload.model } : {}),
+        ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
+        ...(payload.permissionMode !== undefined ? { permission_mode: payload.permissionMode } : {})
+      });
     }
     commit(
       'appendEvent',
@@ -665,8 +691,11 @@ export const sendPrompt = (
     commit('updateSession', {
       session_id: sessionId as string,
       status: 'running',
-      // Keep the stored model in sync with a mid-session switch.
-      model: payload.model || undefined
+      // Keep the stored settings in sync with a mid-session switch so the pills
+      // and the next turn reflect the latest choice.
+      model: payload.model || undefined,
+      ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
+      ...(payload.permissionMode !== undefined ? { permission_mode: payload.permissionMode } : {})
     });
     socket.sendToNode(nodeId, {
       action: CB_ACTION_SESSION_SEND,
@@ -676,6 +705,11 @@ export const sendPrompt = (
       // Allow switching the model mid-session; sent verbatim so an empty value
       // resets the node to its default model.
       model: payload.model ?? '',
+      // Reasoning effort and permission/edit mode are also live-changeable per
+      // turn — the node applies them on each `session.send`. Sent only when the
+      // composer offers them so an omitted value keeps the session's current one.
+      ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
+      ...(payload.permissionMode !== undefined ? { permission_mode: payload.permissionMode } : {}),
       images,
       attachments
     });
@@ -730,7 +764,9 @@ export const editPrompt = (
     session_id: sessionId,
     status: 'running',
     trace_id: traceId,
-    model: payload.model || session.model || undefined
+    model: payload.model || session.model || undefined,
+    ...(payload.effort !== undefined ? { effort: payload.effort } : {}),
+    ...(payload.permissionMode !== undefined ? { permission_mode: payload.permissionMode } : {})
   });
   commit('appendEvent', makeEvent(sessionId, 'prompt', { text: prompt, images, attachments, trace_id: traceId }));
   socket.sendToNode(nodeId, {
