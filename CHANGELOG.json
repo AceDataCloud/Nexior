@@ -2,6 +2,39 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 14 Jun 2026 01:38:15 GMT",
+      "version": "3.276.14",
+      "tag": "@acedatacloud/nexior_v3.276.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "95e6c48cc7638212df73352f96d436a37faac04d",
+            "comment": "fix(preview): guard event.stopPropagation() against undefined in task previews"
+          },
+          {
+            "author": "cqcreer@gmail.com",
+            "package": "@acedatacloud/nexior",
+            "commit": "95e6c48cc7638212df73352f96d436a37faac04d",
+            "comment": "fix: 缩小空状态(NoTasks)中央圆形按钮及图标尺寸，统一全部服务面板"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "95e6c48cc7638212df73352f96d436a37faac04d",
+            "comment": "fix(attribution): serve App/Universal Link verification files statically and route /i/ landing via /api/v1 (fixes EdgeOne 423 loop + path allowlist)"
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "95e6c48cc7638212df73352f96d436a37faac04d",
+            "comment": "feat(attribution): deferred-deep-link referral attribution for new iOS/Android installs (Play Install Referrer, iOS clipboard/fingerprint, Universal/App Links)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 13 Jun 2026 16:52:40 GMT",
       "version": "3.276.7",
       "tag": "@acedatacloud/nexior_v3.276.7",

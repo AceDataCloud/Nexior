@@ -1,8 +1,19 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 13 Jun 2026 16:52:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 01:38:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.276.14
+
+Sun, 14 Jun 2026 01:38:15 GMT
+
+### Patches
+
+- fix(preview): guard event.stopPropagation() against undefined in task previews (dev@acedata.cloud)
+- fix: 缩小空状态(NoTasks)中央圆形按钮及图标尺寸，统一全部服务面板 (cqcreer@gmail.com)
+- fix(attribution): serve App/Universal Link verification files statically and route /i/ landing via /api/v1 (fixes EdgeOne 423 loop + path allowlist) (dev@acedata.cloud)
+- feat(attribution): deferred-deep-link referral attribution for new iOS/Android installs (Play Install Referrer, iOS clipboard/fingerprint, Universal/App Links) (dev@acedata.cloud)
 
 ## 3.276.7
 
