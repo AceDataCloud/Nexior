@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 02:52:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 05:49:20 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.1
+
+Sun, 14 Jun 2026 05:49:20 GMT
+
+### Patches
+
+- feat(coding-bridge): show Claude/Codex brand icons in history drawer instead of colored text tag (dev@acedata.cloud)
 
 ## 3.277.0
 
