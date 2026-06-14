@@ -82,6 +82,12 @@ export interface ICodingBridgeSession {
   status: ICodingBridgeSessionStatus;
   cwd?: string;
   model?: string;
+  // Reasoning-effort tier and permission/edit mode the session is running with.
+  // Transcripts don't record these, so a history replay seeds them from the
+  // node's last composer prefs; a sent turn keeps them current. Both stay
+  // editable per query (the node applies them on each turn).
+  effort?: string;
+  permission_mode?: string;
   cost_usd?: number;
   // Which backend this session targets; defaults to Claude Code.
   provider?: ICodingBridgeHistoryProvider;

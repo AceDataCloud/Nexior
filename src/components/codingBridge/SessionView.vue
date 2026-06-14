@@ -315,83 +315,84 @@
                   </div>
                 </el-popover>
 
-                <!-- Effort, permission and working directory are chosen at start. -->
-                <template v-if="isNewSession">
-                  <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
+                <!-- Effort and permission/edit mode stay editable every turn: the
+                     node applies whatever the composer carries on each send, so a
+                     resumed conversation can change them per query. -->
+                <el-dropdown v-if="effortOptions.length > 1" trigger="click" @command="effort = $event">
+                  <button type="button" class="cb-pill">
+                    <font-awesome-icon icon="fa-solid fa-gauge-high" class="cb-pill__icon" />
+                    <span class="truncate">{{ effortLabel(effort) }}</span>
+                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                  </button>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
+                        <font-awesome-icon
+                          icon="fa-solid fa-check"
+                          class="mr-2"
+                          :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
+                        />
+                        {{ opt.label }}
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+
+                <el-dropdown trigger="click" @command="permissionMode = $event">
+                  <button type="button" class="cb-pill">
+                    <font-awesome-icon icon="fa-solid fa-shield-halved" class="cb-pill__icon" />
+                    <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
+                    <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
+                  </button>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
+                        <font-awesome-icon
+                          icon="fa-solid fa-check"
+                          class="mr-2"
+                          :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
+                        />
+                        {{ opt.label }}
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+
+                <!-- Working directory: editable for a new or resumed-but-not-yet
+                     -continued session (its first send is a fresh start that
+                     applies the cwd); read-only once a live turn pins it. -->
+                <el-popover v-if="canPickCwd" trigger="click" placement="top-start" :width="320">
+                  <template #reference>
                     <button type="button" class="cb-pill">
-                      <font-awesome-icon icon="fa-solid fa-gauge-high" class="cb-pill__icon" />
-                      <span class="truncate">{{ effortLabel(effort) }}</span>
+                      <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
+                      <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
                       <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
                     </button>
-                    <template #dropdown>
-                      <el-dropdown-menu>
-                        <el-dropdown-item v-for="opt in effortOptions" :key="opt.value" :command="opt.value">
-                          <font-awesome-icon
-                            icon="fa-solid fa-check"
-                            class="mr-2"
-                            :class="opt.value === effort ? 'opacity-100' : 'opacity-0'"
-                          />
-                          {{ opt.label }}
-                        </el-dropdown-item>
-                      </el-dropdown-menu>
+                  </template>
+                  <el-input
+                    v-model="cwd"
+                    size="small"
+                    clearable
+                    class="cb-cwd-input"
+                    :placeholder="$t('codingBridge.session.cwdPlaceholder')"
+                  >
+                    <template #suffix>
+                      <span
+                        class="cb-cwd-browse"
+                        role="button"
+                        tabindex="0"
+                        :title="$t('codingBridge.directory.title')"
+                        :aria-label="$t('codingBridge.directory.title')"
+                        @click="openDirectory"
+                        @keydown.enter.prevent="openDirectory"
+                        @keydown.space.prevent="openDirectory"
+                      >
+                        <font-awesome-icon icon="fa-solid fa-folder-open" />
+                      </span>
                     </template>
-                  </el-dropdown>
-
-                  <el-dropdown trigger="click" @command="permissionMode = $event">
-                    <button type="button" class="cb-pill">
-                      <font-awesome-icon icon="fa-solid fa-shield-halved" class="cb-pill__icon" />
-                      <span class="truncate">{{ permissionModeLabel(permissionMode) }}</span>
-                      <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
-                    </button>
-                    <template #dropdown>
-                      <el-dropdown-menu>
-                        <el-dropdown-item v-for="opt in permissionModeOptions" :key="opt.value" :command="opt.value">
-                          <font-awesome-icon
-                            icon="fa-solid fa-check"
-                            class="mr-2"
-                            :class="opt.value === permissionMode ? 'opacity-100' : 'opacity-0'"
-                          />
-                          {{ opt.label }}
-                        </el-dropdown-item>
-                      </el-dropdown-menu>
-                    </template>
-                  </el-dropdown>
-
-                  <el-popover trigger="click" placement="top-start" :width="320">
-                    <template #reference>
-                      <button type="button" class="cb-pill">
-                        <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
-                        <span class="truncate">{{ cwd || $t('codingBridge.session.cwdDefault') }}</span>
-                        <font-awesome-icon icon="fa-solid fa-chevron-down" class="cb-pill__caret" />
-                      </button>
-                    </template>
-                    <el-input
-                      v-model="cwd"
-                      size="small"
-                      clearable
-                      class="cb-cwd-input"
-                      :placeholder="$t('codingBridge.session.cwdPlaceholder')"
-                    >
-                      <template #suffix>
-                        <span
-                          class="cb-cwd-browse"
-                          role="button"
-                          tabindex="0"
-                          :title="$t('codingBridge.directory.title')"
-                          :aria-label="$t('codingBridge.directory.title')"
-                          @click="openDirectory"
-                          @keydown.enter.prevent="openDirectory"
-                          @keydown.space.prevent="openDirectory"
-                        >
-                          <font-awesome-icon icon="fa-solid fa-folder-open" />
-                        </span>
-                      </template>
-                    </el-input>
-                  </el-popover>
-                </template>
-
-                <!-- Working directory is fixed once a session is running. -->
-                <span v-if="!isNewSession && currentSession?.cwd" class="cb-pill cb-pill--static">
+                  </el-input>
+                </el-popover>
+                <span v-else-if="currentSession?.cwd" class="cb-pill cb-pill--static">
                   <font-awesome-icon icon="fa-solid fa-folder-open" class="cb-pill__icon" />
                   <span class="truncate">{{ currentSession?.cwd }}</span>
                 </span>
@@ -548,6 +549,14 @@ export default defineComponent({
     },
     isNewSession(): boolean {
       return !this.currentSessionId;
+    },
+    // The working directory can be picked for a brand-new session and for a
+    // resumed conversation that hasn't continued yet (its first send is a fresh
+    // `session.start` that applies the cwd). Once a live turn is running the
+    // agent's directory is fixed, so it's shown read-only — model / effort /
+    // permission stay editable because the node applies those on every turn.
+    canPickCwd(): boolean {
+      return this.isNewSession || !this.currentSession?.started;
     },
     readonly(): boolean {
       return this.currentSession?.readonly === true;
@@ -877,14 +886,21 @@ export default defineComponent({
         this.restoreComposerPrefs();
         return;
       }
+      // Resuming a session (e.g. reopened from history after a reload): seed the
+      // composer from the session, falling back to this device's last setup for
+      // anything the replayed transcript can't carry (effort / permission mode
+      // aren't recorded on disk; cwd may be absent). Without the fallback these
+      // reset to defaults on every reload. Provider already exists → the
+      // `provider` watcher won't wipe model/effort here.
+      const prefs = this.lastComposer;
       if (session.provider) {
         this.provider = session.provider;
       }
       this.model = session.model ?? '';
       this.customModelDraft = '';
-      if (session.cwd) {
-        this.cwd = session.cwd;
-      }
+      this.cwd = session.cwd ?? prefs.cwd ?? '';
+      this.effort = session.effort ?? prefs.effort ?? '';
+      this.permissionMode = session.permission_mode ?? prefs.permissionMode ?? 'default';
     },
     // Pick a listed model (or the empty default) and close the popover.
     selectModel(value: string) {
