@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 07:05:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 16:04:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.4
+
+Sun, 14 Jun 2026 16:04:58 GMT
+
+### Patches
+
+- feat(kling): Talking Photo tab (one-click image+audio to talking video) (dev@acedata.cloud)
 
 ## 3.277.3
 
