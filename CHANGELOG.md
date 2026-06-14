@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 01:38:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 14 Jun 2026 02:52:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.0
+
+Sun, 14 Jun 2026 02:52:28 GMT
+
+### Minor changes
+
+- feat(coding-bridge): restore model/cwd/effort/edit-mode on reload from history and keep them editable per turn (cqcreer@gmail.com)
 
 ## 3.276.14
 
