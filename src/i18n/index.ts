@@ -1,8 +1,8 @@
 import { createI18n } from 'vue-i18n';
 import { makeGetLocale } from '@acedatacloud/core';
+import { makeFlatLoader, createSetI18nLanguage } from '@acedatacloud/core/i18n';
 import { I18N_DEFAULT_LOCALE, I18N_SCOPES, I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import axios from 'axios';
-import { nextTick } from 'vue';
 
 export const i18n = createI18n({
   legacy: true
@@ -35,53 +35,21 @@ export const loadLocaleResource = async (name: string, locale: string) => {
   return module.default;
 };
 
-export const loadLocaleMessages = async (locale: string) => {
-  const promises = I18N_SCOPES.map((name) => loadLocaleResource(name, locale));
-  const resources = await Promise.all(promises);
+// Flat dotted-key loader + setI18nLanguage now come from @acedatacloud/core/i18n;
+// the glob loader above + the scope list stay owned here.
+const loadLocaleMessagesInternal = makeFlatLoader({ scopes: I18N_SCOPES, loadResource: loadLocaleResource });
 
-  const messages: any = {};
-  I18N_SCOPES.forEach((name, index) => {
-    const resource = resources[index];
-    for (const key in resource) {
-      if (resource.hasOwnProperty(key)) {
-        const element = resource[key];
-        // Tolerate both the `{ message, description }` wrapper and a plain string value.
-        messages[`${name}.${key}`] = typeof element === 'string' ? element : element?.message;
-      }
+export const loadLocaleMessages = (locale: string) => loadLocaleMessagesInternal(i18n, locale);
+
+export const setI18nLanguage = createSetI18nLanguage({
+  i18n,
+  loadLocaleMessages: loadLocaleMessagesInternal,
+  setAxiosLanguageHeader: (locale) => {
+    if (axios.defaults.headers) {
+      axios.defaults.headers['Accept-Language'] = locale;
     }
-  });
-
-  // set locale and locale message
-  i18n.global.setLocaleMessage(locale, messages);
-
-  return nextTick();
-};
-
-export const setI18nLanguage = async (locale: string) => {
-  // load locale messages
-  if (!i18n.global.availableLocales.includes(locale)) {
-    await loadLocaleMessages(locale);
   }
-
-  // set global locale
-  if (i18n.mode === 'legacy') {
-    i18n.global.locale = locale;
-  } else {
-    // @ts-ignore
-    i18n.global.locale.value = locale;
-  }
-
-  // set global axios headers
-  if (axios.defaults.headers) {
-    axios.defaults.headers['Accept-Language'] = locale;
-  }
-
-  // set global dom html lang attribute (client only — no document during SSG)
-  const htmlDom = typeof document !== 'undefined' ? document.querySelector('html') : null;
-  if (htmlDom) {
-    htmlDom.setAttribute('lang', locale);
-  }
-};
+});
 
 export const t = i18n.global.t;
 
