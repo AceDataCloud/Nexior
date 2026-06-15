@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 15 Jun 2026 05:10:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 15 Jun 2026 05:21:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.9
+
+Mon, 15 Jun 2026 05:21:53 GMT
+
+### Patches
+
+- consume @acedatacloud/core for the http client (interceptor contract) (dev@acedata.cloud)
 
 ## 3.277.8
 
