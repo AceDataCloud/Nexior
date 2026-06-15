@@ -702,5 +702,57 @@
   "message.noTasks": {
     "message": "Nessun compito storico, fai clic a sinistra per generare un video",
     "description": "Messaggio quando non ci sono compiti"
+  },
+  "tab.talkingPhoto": {
+    "message": "Foto parlante",
+    "description": "Tab label: Talking Photo"
+  },
+  "name.talkingPhotoImage": {
+    "message": "Foto ritratto",
+    "description": "Talking Photo portrait image input"
+  },
+  "name.talkingPhotoAudio": {
+    "message": "Audio guida",
+    "description": "Talking Photo driving audio input"
+  },
+  "name.talkingPhotoPrompt": {
+    "message": "Prompt di movimento (opzionale)",
+    "description": "Talking Photo optional motion prompt"
+  },
+  "description.talkingPhotoImage": {
+    "message": "Carica un ritratto frontale nitido; verrà animato e fatto parlare.",
+    "description": "Talking Photo portrait image help text"
+  },
+  "description.talkingPhotoAudio": {
+    "message": "Carica un clip audio (mp3/wav, ≤5 MB); il personaggio sincronizza le labbra.",
+    "description": "Talking Photo driving audio help text"
+  },
+  "description.talkingPhotoPrompt": {
+    "message": "Opzionale: descrivi l’espressione/il movimento desiderato, es. «guarda dolcemente la telecamera».",
+    "description": "Talking Photo motion prompt help text"
+  },
+  "placeholder.talkingPhotoPrompt": {
+    "message": "es. delicato, calmo, naturale, leggero movimento della testa",
+    "description": "Talking Photo prompt input placeholder"
+  },
+  "button.generateTalkingPhoto": {
+    "message": "Genera foto parlante",
+    "description": "Talking Photo generate button"
+  },
+  "button.uploadAudio": {
+    "message": "Carica audio",
+    "description": "Talking Photo upload audio button"
+  },
+  "message.talkingPhotoMissingInputs": {
+    "message": "Carica prima una foto ritratto e un audio guida.",
+    "description": "Talking Photo missing inputs warning"
+  },
+  "message.uploadAudioExceed": {
+    "message": "È consentito un solo file audio.",
+    "description": "Talking Photo audio count limit warning"
+  },
+  "message.uploadAudioError": {
+    "message": "Caricamento audio non riuscito, riprova.",
+    "description": "Talking Photo audio upload error"
   }
 }

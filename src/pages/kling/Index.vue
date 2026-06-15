@@ -25,9 +25,20 @@ import TabSwitcher from '@/components/kling/TabSwitcher.vue';
 import TalkingPhotoPanel from '@/components/kling/TalkingPhotoPanel.vue';
 import { klingOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IKlingGenerateRequest, IKlingMotionRequest, IKlingTalkingPhotoRequest, IKlingTaskType, Status } from '@/models';
+import {
+  IKlingGenerateRequest,
+  IKlingMotionRequest,
+  IKlingTalkingPhotoRequest,
+  IKlingTaskType,
+  Status
+} from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import {
+  ERROR_CODE_USED_UP,
+  getWebhookCallbackUrl,
+  KLING_TALKING_PHOTO_DEFAULT_MODEL,
+  KLING_TALKING_PHOTO_DEFAULT_MODE
+} from '@/constants';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -323,10 +334,11 @@ export default defineComponent({
       const request: IKlingTalkingPhotoRequest = {
         image_url: cfg.image_url,
         audio_url: cfg.audio_url,
+        // Upstream requires `model`; always send a supported default if unset.
+        model: cfg.model || KLING_TALKING_PHOTO_DEFAULT_MODEL,
+        mode: cfg.mode || KLING_TALKING_PHOTO_DEFAULT_MODE,
         ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
-        ...(cfg.model ? { model: cfg.model } : {}),
         ...(cfg.duration ? { duration: cfg.duration } : {}),
-        ...(cfg.mode ? { mode: cfg.mode } : {}),
         callback_url: CALLBACK_URL
       };
       const token = this.credential?.token;

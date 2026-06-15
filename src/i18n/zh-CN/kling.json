@@ -703,17 +703,56 @@
     "message": "没有历史任务，请点击左方生成视频",
     "description": "没有任务时的消息"
   },
-  "tab.talkingPhoto": "会说话的照片",
-  "name.talkingPhotoImage": "人物照片",
-  "name.talkingPhotoAudio": "驱动音频",
-  "name.talkingPhotoPrompt": "动作提示词（可选）",
-  "description.talkingPhotoImage": "上传一张清晰正脸照片，将自动让它动起来并开口说话。",
-  "description.talkingPhotoAudio": "上传一段音频（mp3/wav，≤5MB），人物会按音频对口型说话。",
-  "description.talkingPhotoPrompt": "可选：描述希望的表情/动作，如「温柔地看向镜头」。",
-  "placeholder.talkingPhotoPrompt": "例如：温柔、平静、自然，轻微头部动作",
-  "button.generateTalkingPhoto": "生成会说话的照片",
-  "button.uploadAudio": "上传音频",
-  "message.talkingPhotoMissingInputs": "请先上传人物照片和驱动音频。",
-  "message.uploadAudioExceed": "只能上传一个音频文件。",
-  "message.uploadAudioError": "音频上传失败，请重试。"
+  "tab.talkingPhoto": {
+    "message": "会说话的照片",
+    "description": "Tab 标签：Talking Photo"
+  },
+  "name.talkingPhotoImage": {
+    "message": "人物照片",
+    "description": "Talking Photo 的人物照片输入"
+  },
+  "name.talkingPhotoAudio": {
+    "message": "驱动音频",
+    "description": "Talking Photo 的驱动音频输入"
+  },
+  "name.talkingPhotoPrompt": {
+    "message": "动作提示词（可选）",
+    "description": "Talking Photo 的可选动作提示词"
+  },
+  "description.talkingPhotoImage": {
+    "message": "上传一张清晰正脸照片，将自动让它动起来并开口说话。",
+    "description": "Talking Photo 人物照片说明"
+  },
+  "description.talkingPhotoAudio": {
+    "message": "上传一段音频（mp3/wav，≤5MB），人物会按音频对口型说话。",
+    "description": "Talking Photo 驱动音频说明"
+  },
+  "description.talkingPhotoPrompt": {
+    "message": "可选：描述希望的表情/动作，如「温柔地看向镜头」。",
+    "description": "Talking Photo 动作提示词说明"
+  },
+  "placeholder.talkingPhotoPrompt": {
+    "message": "例如：温柔、平静、自然，轻微头部动作",
+    "description": "Talking Photo 提示词输入占位符"
+  },
+  "button.generateTalkingPhoto": {
+    "message": "生成会说话的照片",
+    "description": "Talking Photo 生成按钮"
+  },
+  "button.uploadAudio": {
+    "message": "上传音频",
+    "description": "Talking Photo 上传音频按钮"
+  },
+  "message.talkingPhotoMissingInputs": {
+    "message": "请先上传人物照片和驱动音频。",
+    "description": "Talking Photo 缺少输入时的提示"
+  },
+  "message.uploadAudioExceed": {
+    "message": "只能上传一个音频文件。",
+    "description": "Talking Photo 音频超出数量限制提示"
+  },
+  "message.uploadAudioError": {
+    "message": "音频上传失败，请重试。",
+    "description": "Talking Photo 音频上传失败提示"
+  }
 }

@@ -11,3 +11,15 @@ export const KLING_DEFAULT_CFG_SCALE = 0;
 export const KLING_DEFAULT_GENERATE_AUDIO = false;
 
 export const KLING_V3_MODELS = ['kling-v3', 'kling-v3-omni'];
+
+// Talking Photo supports a narrower model set than video (no v3/omni/o1).
+export const KLING_TALKING_PHOTO_MODELS = [
+  'kling-v2-6',
+  'kling-v2-5-turbo',
+  'kling-v2-1-master',
+  'kling-v2-master',
+  'kling-v1-6',
+  'kling-v1'
+];
+export const KLING_TALKING_PHOTO_DEFAULT_MODEL = 'kling-v2-1-master';
+export const KLING_TALKING_PHOTO_DEFAULT_MODE: 'std' | 'pro' = 'pro';
