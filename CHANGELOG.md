@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 14 Jun 2026 19:11:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 15 Jun 2026 01:37:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.7
+
+Mon, 15 Jun 2026 01:37:31 GMT
+
+### Patches
+
+- fix(kling): repair Talking Photo i18n and require model so generation works (dev@acedata.cloud)
 
 ## 3.277.6
 
