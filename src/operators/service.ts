@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios';
+import { BaseOperator } from '@acedatacloud/core/operators';
 import { httpClient } from './common';
 import { IService, IServiceDetailResponse, IServiceListResponse } from '@/models';
 
@@ -9,29 +9,9 @@ export interface IServiceQuery {
   id?: string | string[];
 }
 
-class ServiceOperator {
-  key = 'services';
-
-  async getAll(query: IServiceQuery): Promise<AxiosResponse<IServiceListResponse>> {
-    return await httpClient.get(`/${this.key}/`, {
-      params: query
-    });
-  }
-
-  async get(id: string): Promise<AxiosResponse<IServiceDetailResponse>> {
-    return await httpClient.get(`/${this.key}/${id}`);
-  }
-
-  async create(data: IService): Promise<AxiosResponse<IServiceDetailResponse>> {
-    return await httpClient.post(`/${this.key}/`, data);
-  }
-
-  async update(id: string, data: IService): Promise<AxiosResponse<IServiceDetailResponse>> {
-    return await httpClient.put(`/${this.key}/${id}`, data);
-  }
-
-  async delete(id: string): Promise<AxiosResponse<null>> {
-    return await httpClient.delete(`/${this.key}/${id}`);
+class ServiceOperator extends BaseOperator<IService, IServiceListResponse, IServiceDetailResponse> {
+  constructor() {
+    super(httpClient, 'services');
   }
 }
 

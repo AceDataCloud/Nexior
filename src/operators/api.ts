@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+import { BaseOperator } from '@acedatacloud/core/operators';
 import { httpClient } from './common';
 import { IApi, IApiDetailResponse, IApiListResponse } from '@/models';
 
@@ -8,29 +9,9 @@ export interface IApiQuery {
   ordering?: string;
 }
 
-class ApiOperator {
-  key = 'apis';
-
-  async getAll(query: IApiQuery): Promise<AxiosResponse<IApiListResponse>> {
-    return await httpClient.get(`/${this.key}/`, {
-      params: query
-    });
-  }
-
-  async get(id: string): Promise<AxiosResponse<IApiDetailResponse>> {
-    return await httpClient.get(`/${this.key}/${id}`);
-  }
-
-  async create(data: IApi): Promise<AxiosResponse<IApiDetailResponse>> {
-    return await httpClient.post(`/${this.key}/`, data);
-  }
-
-  async update(id: string, data: IApi): Promise<AxiosResponse<IApiDetailResponse>> {
-    return await httpClient.put(`/${this.key}/${id}`, data);
-  }
-
-  async delete(id: string): Promise<AxiosResponse<null>> {
-    return await httpClient.delete(`/${this.key}/${id}`);
+class ApiOperator extends BaseOperator<IApi, IApiListResponse, IApiDetailResponse> {
+  constructor() {
+    super(httpClient, 'apis');
   }
 
   async getAllForService(serviceId: string, query?: IApiQuery): Promise<AxiosResponse<IApiListResponse>> {
