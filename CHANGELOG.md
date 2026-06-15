@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 15 Jun 2026 10:50:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 15 Jun 2026 14:55:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.1
+
+Mon, 15 Jun 2026 14:55:08 GMT
+
+### Patches
+
+- consume @acedatacloud/core/i18n for locale loaders + setI18nLanguage (dev@acedata.cloud)
 
 ## 3.278.0
 
