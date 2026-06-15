@@ -1,65 +1,17 @@
+// Pricing helpers now live in @acedatacloud/core/pricing. getConsumption is the
+// pure JsonLogic evaluator; the currency-aware formatters are built from the
+// store's exchange/currency here. Exported names/signatures unchanged.
+import { getConsumption as coreGetConsumption, createPriceFormatter } from '@acedatacloud/core/pricing';
 import { CURRENCY_LABEL_MAPPING } from '@/constants/mapping';
 import store from '@/store';
-import jsonLogic from 'json-logic-js';
 
-/**
- * Input a value and target currency (e.g. cny), return the price which the current locale
- */
-export const getPrice = (payload: { value: number; currency?: string }) => {
-  const exchange = store.state.exchange;
-  let { value, currency = store.state.currency || 'usd' } = payload;
-  const label = CURRENCY_LABEL_MAPPING[currency];
-  if (!exchange) {
-    return {
-      value: value,
-      currency: currency,
-      label: label
-    };
-  }
-  const key = `usd-${currency}`;
-  const rate = exchange[key];
-  if (rate) {
-    value = value * rate;
-  }
-  console.log('new price', { value, currency });
-  return {
-    value,
-    currency,
-    label
-  };
-};
+const formatter = createPriceFormatter({
+  getExchange: () => store.state.exchange,
+  getCurrency: () => store.state.currency,
+  currencyLabels: CURRENCY_LABEL_MAPPING
+});
 
-export const getPriceString = (payload: {
-  value: number | undefined;
-  defaultValue?: number | undefined;
-  fractionDigits?: number | undefined;
-}) => {
-  let { value, defaultValue, fractionDigits = 2 } = payload;
-  if (value === undefined) {
-    value = defaultValue;
-  }
-  if (value === undefined) {
-    return '';
-  }
-  const price = getPrice({
-    value
-  });
-  return `${price.label}${price.value?.toFixed(fractionDigits)}`;
-};
-
-export const getConsumption = (payload: any, rules: any): number | undefined => {
-  console.debug('getConsumption payload', payload, rules);
-  if (!rules || !Array.isArray(rules)) {
-    return undefined;
-  }
-  console.debug('payload', payload);
-  console.debug('rules', rules);
-  for (const rule of rules) {
-    const conditions = rule.conditions;
-    if (jsonLogic.apply(conditions, payload)) {
-      // Evaluate the consumption rule with payload so dynamic expressions can use request fields.
-      return jsonLogic.apply(rule.consumption, payload) as number;
-    }
-  }
-  return 0;
-};
+export const getPrice = formatter.getPrice;
+export const getPriceString = formatter.getPriceString;
+// Keep the historically-loose signature (call sites pass `config | undefined`).
+export const getConsumption = (payload: any, rules: any): number | undefined => coreGetConsumption(payload, rules);
