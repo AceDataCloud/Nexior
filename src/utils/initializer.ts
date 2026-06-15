@@ -9,8 +9,11 @@ import { getLocale } from '@/i18n';
 
 import { getDomain } from './domain';
 
-// @ts-ignore
-window.getDomain = getDomain;
+// Debug helper — client only (no window during the SSG build).
+if (typeof window !== 'undefined') {
+  // @ts-ignore
+  window.getDomain = getDomain;
+}
 
 export const initializeCookies = async () => {
   // parse the query string and set to cookies

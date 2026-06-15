@@ -69,6 +69,21 @@ export default defineConfig((config: ConfigEnv) => {
         preventAssignment: true
       })
     ],
+    // vite-ssg: only used by `npm run build:ssg`. Plain `npm run build` ignores
+    // this and produces today's SPA. Pre-renders are served behind features=ssr.
+    ssgOptions: {
+      script: 'async',
+      formatting: 'minify',
+      dirStyle: 'nested',
+      // Nexior is a client-only app (no SEO landing); SSG the login page as the
+      // SSR-safe entry. Broad app-page SSG needs per-component window guards.
+      includedRoutes: () => ['/auth/login']
+    },
+    ssr: {
+      // Bundle (don't externalize) deps Node can't load during the SSG render:
+      // raw .css imports + Capacitor plugins that ship extensionless ESM imports.
+      noExternal: ['vue-dark-switch', /^@capacitor\//, /^@capacitor-community\//]
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src')

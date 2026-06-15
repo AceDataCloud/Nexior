@@ -76,8 +76,8 @@ export const setI18nLanguage = async (locale: string) => {
     axios.defaults.headers['Accept-Language'] = locale;
   }
 
-  // set global dom html lang attribute
-  const htmlDom = document.querySelector('html');
+  // set global dom html lang attribute (client only — no document during SSG)
+  const htmlDom = typeof document !== 'undefined' ? document.querySelector('html') : null;
   if (htmlDom) {
     htmlDom.setAttribute('lang', locale);
   }

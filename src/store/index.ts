@@ -62,12 +62,16 @@ const safeStorage: Storage = {
 
 const store = createStore({
   ...root,
-  plugins: [
-    createPersistedState({
-      paths: [...persistRoot, ...lazyPersistPaths],
-      storage: safeStorage
-    })
-  ]
+  // SSG build has no localStorage — persistedstate reads it at store creation,
+  // so skip the plugin there. Client behaviour is unchanged.
+  plugins: import.meta.env.SSR
+    ? []
+    : [
+        createPersistedState({
+          paths: [...persistRoot, ...lazyPersistPaths],
+          storage: safeStorage
+        })
+      ]
 });
 
 export default store;

@@ -44,7 +44,7 @@ export default defineComponent({
     return {
       initialized: false,
       applying: false,
-      mobile: window.innerWidth < 768,
+      mobile: typeof window !== 'undefined' && window.innerWidth < 768,
       initializeRunId: 0
     };
   },

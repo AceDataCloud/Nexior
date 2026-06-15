@@ -1,9 +1,10 @@
-import { createApp } from 'vue';
+import { ViteSSG } from 'vite-ssg';
 import { Capacitor } from '@capacitor/core';
 import App from './App.vue';
-import router from './router';
+import { routes, setupRouterGuards, setActiveRouter } from './router';
 import store from './store';
-import i18n from './i18n';
+import i18n, { setI18nLanguage } from './i18n';
+import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/chunkLoadError';
 import { initTelemetry, setUser, captureError } from './plugins/telemetry';
 import './assets/scss/style.scss';
@@ -35,75 +36,68 @@ import {
   initializeFingerprint
 } from './utils/initializer';
 
-// Pick up `?features=...` overrides and persist them to the FEATURES
-// cookie before anything else runs — router guards / store hydration /
-// component setup all consult `isFeatureEnabled()` synchronously.
-syncFeaturesFromUrl();
+// vite-ssg entry. At build it pre-renders the flag-allowlisted routes with
+// memory history; in the browser the same createApp hydrates/mounts the SPA.
+// Everything that used to run at module top-level / in main() now runs behind
+// isClient so the Node build render never touches window/document/Capacitor.
+export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }, async ({ app, router, isClient }) => {
+  app.use(store);
+  app.use(i18n);
+  app.use(MotionPlugin);
+  app.use(dayjs, { formatString: 'YYYY-MM-DD HH:mm:ss' });
+  app.directive('loading', vLoading);
+  setupRouterGuards(router);
+  setActiveRouter(router);
 
-initializeChunkLoadErrorHandler();
+  app.config.errorHandler = (err, _instance, info) => {
+    captureError(err, { source: 'vue', route: info });
+    console.error('[vue:errorHandler]', err, info);
+  };
 
-const surface = getSurface();
-document.documentElement.dataset.surface = surface;
-document.documentElement.classList.add(`surface-${surface}`);
-if (isNative()) {
-  document.documentElement.classList.add('surface-native');
-}
-
-// `index.html` ships with `maximum-scale=1.0, user-scalable=0` so that
-// Capacitor's WKWebView doesn't auto-zoom when an input field gains focus
-// on iOS — a long-standing native-shell quirk. On the web (and Android
-// Chrome) that flag has the unfortunate side-effect of disabling
-// pinch-zoom, which fails WCAG 1.4.4 (Resize Text) and is the one piece
-// of accessibility regression the audit flagged. Drop the zoom-lock at
-// runtime when we're NOT running inside Capacitor; native shells keep it.
-if (!Capacitor.isNativePlatform()) {
-  const meta = document.querySelector('meta[name="viewport"]');
-  if (meta) {
-    meta.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+  // Build-time render: load default-locale messages so $t resolves, then stop.
+  if (!isClient) {
+    await setI18nLanguage(I18N_DEFAULT_LOCALE);
+    return;
   }
-}
 
-const main = async () => {
-  // async and need to await
+  // ---- client-only bootstrap (formerly module top-level + main()) ----
+  syncFeaturesFromUrl();
+  initializeChunkLoadErrorHandler();
+
+  const surface = getSurface();
+  document.documentElement.dataset.surface = surface;
+  document.documentElement.classList.add(`surface-${surface}`);
+  if (isNative()) {
+    document.documentElement.classList.add('surface-native');
+  }
+  // Drop the iOS zoom-lock on web/Android (WCAG 1.4.4); native shells keep it.
+  if (!Capacitor.isNativePlatform()) {
+    const meta = document.querySelector('meta[name="viewport"]');
+    if (meta) {
+      meta.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
+    }
+  }
+
   const isRedirected = await initializeRedirect();
   if (isRedirected) {
-    // if redirected, stop initialization
     return;
   }
   await initializeCookies();
-  // Deferred-deep-link referral: on native first launch, resolve the inviter
-  // (Play Install Referrer / iOS clipboard|fingerprint) into the INVITER_ID
-  // cookie BEFORE the auth panel mounts and reads it. No-op on web.
   await resolveDeferredInviterId();
   await initializeToken();
-  // user/site/config are independent after token is set — run in parallel
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
 
-  // Native-only version gate: block the app behind an upgrade modal when
-  // the shipped build is below `min_supported`. Web is always served the
-  // latest dist/, so this is a no-op there. Fails open on any error so an
-  // outage on /api/v1/app-version/ can never strand mobile users.
   if (isNative()) {
     const blocked = await runVersionGate();
     if (blocked) return;
   }
-
-  // Native OTA: check the COS-hosted manifest for a newer JS bundle and
-  // queue it for next launch. Fire-and-forget so a slow CDN can't delay
-  // mount; also a no-op on web and when VITE_LIVE_UPDATE_ENABLED isn't
-  // set. Internally still calls `notifyAppReady()` on every cold start so
-  // previously-installed bundles don't get rolled back.
   void runLiveUpdate();
 
-  // Telemetry: initialize after token+user so we already know who the visitor
-  // is. Safe no-op when VITE_RUM_PROJECT_ID is unset (local dev / preview).
-  // We don't `await` so a slow CDN can't block first paint.
   void initTelemetry({
     uin: store.getters.user?.id,
     release: import.meta.env.VITE_APP_VERSION as string | undefined
   });
 
-  // non-async and no need to await
   initializeCurrency();
   initializeTheme();
   initializeExchangeRate();
@@ -112,41 +106,12 @@ const main = async () => {
   initializeKeywords();
   initializeFavicon();
 
-  const app = createApp(App);
-
-  // Vue render errors → RUM. Keep the existing console behavior so devs
-  // still see the trace locally.
-  app.config.errorHandler = (err, _instance, info) => {
-    captureError(err, { source: 'vue', route: info });
-    console.error('[vue:errorHandler]', err, info);
-  };
-
-  // Unhandled promise rejections → RUM. The browser already logs these,
-  // we just attach them to the same dashboard.
   window.addEventListener('unhandledrejection', (event) => {
     captureError(event.reason, { source: 'unhandledrejection' });
   });
 
-  app.use(router);
-  app.use(store);
-  app.use(i18n);
-  app.use(MotionPlugin);
-  app.use(dayjs, {
-    formatString: 'YYYY-MM-DD HH:mm:ss'
-  });
-  app.directive('loading', vLoading);
-  app.mount('#app');
-  console.debug('app mounted');
-
-  // Compute the visitor fingerprint after mount: `@fingerprintjs/fingerprintjs`
-  // is ~30 KB and its `get()` call is synchronously expensive (canvas/audio/
-  // font probes). Deferring keeps it out of the critical-path execution and
-  // lets the browser pick an idle moment when available.
   const scheduleFingerprint = () => {
     initializeFingerprint();
-    // Once the fingerprint resolves, attach it to the RUM session as the
-    // anonymous id (`aid`). This lets pre-login activity for the same device
-    // be threaded together in the dashboard.
     setUser(store.getters.user?.id, store.getters.fingerprint);
   };
   if ('requestIdleCallback' in window) {
@@ -155,18 +120,19 @@ const main = async () => {
     setTimeout(scheduleFingerprint, 1500);
   }
 
-  // Lazy-load Solana wallets after mount to keep initial bundle small
   import('./plugins/solana-wallets').then(({ installSolanaWallets }) => {
     installSolanaWallets(app);
   });
 
-  // make app available globally
   // @ts-ignore
   window.app = app;
-};
-
-main().catch((error) => {
-  if (!handleChunkLoadError(error)) {
-    console.error(error);
-  }
 });
+
+// Preserve the previous chunk-load-error fallback on the entry promise.
+if (typeof window !== 'undefined') {
+  Promise.resolve().catch((error) => {
+    if (!handleChunkLoadError(error)) {
+      console.error(error);
+    }
+  });
+}
