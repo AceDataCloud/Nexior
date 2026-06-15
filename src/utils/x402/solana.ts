@@ -23,6 +23,15 @@ import type {
   TransactionInstruction as TransactionInstructionType
 } from '@solana/web3.js';
 
+import {
+  TOKEN_PROGRAM_ID_ADDRESS,
+  ASSOCIATED_TOKEN_PROGRAM_ID_ADDRESS,
+  uint8ArrayToBase64,
+  resolveRpcUrl,
+  createTransferCheckedData,
+  formatTokenAmount
+} from '@acedatacloud/core/x402';
+
 type SolanaWeb3 = typeof import('@solana/web3.js');
 
 let solanaWeb3Promise: Promise<SolanaWeb3> | null = null;
@@ -33,65 +42,17 @@ const loadSolanaWeb3 = (): Promise<SolanaWeb3> => {
   return solanaWeb3Promise;
 };
 
-// RPC endpoints
-const SOLANA_MAINNET_RPC = 'https://api.mainnet-beta.solana.com';
-const SOLANA_DEVNET_RPC = 'https://api.devnet.solana.com';
-
-// Solana program IDs (raw strings; `PublicKey` instances are constructed lazily
-// after the module is loaded).
-const TOKEN_PROGRAM_ID_STR = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
-const ASSOCIATED_TOKEN_PROGRAM_ID_STR = 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
-
-/**
- * Convert Uint8Array to base64 string (browser-compatible, no Node.js Buffer)
- */
-function uint8ArrayToBase64(bytes: Uint8Array): string {
-  let binary = '';
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
-  }
-  return btoa(binary);
-}
-
-/**
- * Resolve RPC URL based on network
- */
-function resolveRpcUrl(network: string, customRpcUrl?: string): string {
-  if (customRpcUrl) return customRpcUrl;
-  if (network.includes('devnet')) return SOLANA_DEVNET_RPC;
-  return SOLANA_MAINNET_RPC;
-}
-
 /**
  * Find Associated Token Account address
  */
 function findAta(web3: SolanaWeb3, owner: PublicKeyType, mint: PublicKeyType): PublicKeyType {
-  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_STR);
-  const associatedTokenProgramId = new web3.PublicKey(ASSOCIATED_TOKEN_PROGRAM_ID_STR);
+  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_ADDRESS);
+  const associatedTokenProgramId = new web3.PublicKey(ASSOCIATED_TOKEN_PROGRAM_ID_ADDRESS);
   const [ata] = web3.PublicKey.findProgramAddressSync(
     [owner.toBuffer(), tokenProgramId.toBuffer(), mint.toBuffer()],
     associatedTokenProgramId
   );
   return ata;
-}
-
-/**
- * Create TransferChecked instruction data
- */
-function createTransferCheckedData(amount: bigint, decimals: number): Uint8Array {
-  const data = new Uint8Array(10);
-  data[0] = 12; // TransferChecked instruction discriminator
-  new DataView(data.buffer).setBigUint64(1, amount, true);
-  data[9] = decimals;
-  return data;
-}
-
-/**
- * Format a raw token amount with the given decimals into a human string.
- */
-function formatTokenAmount(raw: bigint, decimals: number): string {
-  const dp = Math.min(decimals, 6);
-  return (Number(raw) / 10 ** decimals).toFixed(dp);
 }
 
 /**
@@ -191,7 +152,7 @@ function buildTransferCheckedInstruction(
   decimals: number
 ): TransactionInstructionType {
   const instructionData = createTransferCheckedData(amount, decimals);
-  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_STR);
+  const tokenProgramId = new web3.PublicKey(TOKEN_PROGRAM_ID_ADDRESS);
   return new web3.TransactionInstruction({
     programId: tokenProgramId,
     keys: [
