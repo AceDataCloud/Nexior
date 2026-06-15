@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 15 Jun 2026 17:16:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 15 Jun 2026 17:17:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.6
+
+Mon, 15 Jun 2026 17:17:03 GMT
+
+### Patches
+
+- refactor(x402): consume @acedatacloud/core/x402 pure primitives (dev@acedata.cloud)
 
 ## 3.278.5
 
