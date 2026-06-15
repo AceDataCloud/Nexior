@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 15 Jun 2026 01:37:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 15 Jun 2026 05:10:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.277.8
+
+Mon, 15 Jun 2026 05:10:16 GMT
+
+### Patches
+
+- consume @acedatacloud/core for chunk-load recovery (dev@acedata.cloud)
 
 ## 3.277.7
 
