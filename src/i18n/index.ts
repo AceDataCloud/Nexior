@@ -56,7 +56,8 @@ export const loadLocaleMessages = async (locale: string) => {
     for (const key in resource) {
       if (resource.hasOwnProperty(key)) {
         const element = resource[key];
-        messages[`${name}.${key}`] = element.message;
+        // Tolerate both the `{ message, description }` wrapper and a plain string value.
+        messages[`${name}.${key}`] = typeof element === 'string' ? element : element?.message;
       }
     }
   });

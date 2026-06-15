@@ -703,17 +703,56 @@
     "message": "No historical tasks, please click on the left to generate a video",
     "description": "Message when there are no tasks"
   },
-  "tab.talkingPhoto": "Talking Photo",
-  "name.talkingPhotoImage": "Portrait Photo",
-  "name.talkingPhotoAudio": "Driving Audio",
-  "name.talkingPhotoPrompt": "Motion Prompt (optional)",
-  "description.talkingPhotoImage": "Upload a clear frontal portrait; it will be animated and made to speak.",
-  "description.talkingPhotoAudio": "Upload an audio clip (mp3/wav, <=5MB); the character lip-syncs to it.",
-  "description.talkingPhotoPrompt": "Optional: describe the desired expression/motion, e.g. \"look gently at the camera\".",
-  "placeholder.talkingPhotoPrompt": "e.g. gentle, calm, natural, subtle head movement",
-  "button.generateTalkingPhoto": "Generate Talking Photo",
-  "button.uploadAudio": "Upload Audio",
-  "message.talkingPhotoMissingInputs": "Please upload a portrait photo and a driving audio first.",
-  "message.uploadAudioExceed": "Only one audio file is allowed.",
-  "message.uploadAudioError": "Audio upload failed, please retry."
+  "tab.talkingPhoto": {
+    "message": "Talking Photo",
+    "description": "Tab label: Talking Photo"
+  },
+  "name.talkingPhotoImage": {
+    "message": "Portrait Photo",
+    "description": "Talking Photo portrait image input"
+  },
+  "name.talkingPhotoAudio": {
+    "message": "Driving Audio",
+    "description": "Talking Photo driving audio input"
+  },
+  "name.talkingPhotoPrompt": {
+    "message": "Motion Prompt (optional)",
+    "description": "Talking Photo optional motion prompt"
+  },
+  "description.talkingPhotoImage": {
+    "message": "Upload a clear frontal portrait; it will be animated and made to speak.",
+    "description": "Talking Photo portrait image help text"
+  },
+  "description.talkingPhotoAudio": {
+    "message": "Upload an audio clip (mp3/wav, <=5MB); the character lip-syncs to it.",
+    "description": "Talking Photo driving audio help text"
+  },
+  "description.talkingPhotoPrompt": {
+    "message": "Optional: describe the desired expression/motion, e.g. \"look gently at the camera\".",
+    "description": "Talking Photo motion prompt help text"
+  },
+  "placeholder.talkingPhotoPrompt": {
+    "message": "e.g. gentle, calm, natural, subtle head movement",
+    "description": "Talking Photo prompt input placeholder"
+  },
+  "button.generateTalkingPhoto": {
+    "message": "Generate Talking Photo",
+    "description": "Talking Photo generate button"
+  },
+  "button.uploadAudio": {
+    "message": "Upload Audio",
+    "description": "Talking Photo upload audio button"
+  },
+  "message.talkingPhotoMissingInputs": {
+    "message": "Please upload a portrait photo and a driving audio first.",
+    "description": "Talking Photo missing inputs warning"
+  },
+  "message.uploadAudioExceed": {
+    "message": "Only one audio file is allowed.",
+    "description": "Talking Photo audio count limit warning"
+  },
+  "message.uploadAudioError": {
+    "message": "Audio upload failed, please retry.",
+    "description": "Talking Photo audio upload error"
+  }
 }

@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
+      <model-selector class="mb-4" />
+      <mode-selector class="mb-4" />
+
       <!-- Portrait image -->
       <div class="relative mb-4">
         <div class="flex justify-start items-center">
@@ -101,6 +104,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import ModelSelector from './talking-photo/ModelSelector.vue';
+import ModeSelector from './talking-photo/ModeSelector.vue';
 import { getBaseUrlPlatform, getConsumption, uploadTrackerMixin } from '@/utils';
 import { IKlingTalkingPhotoConfig } from '@/models';
 
@@ -119,7 +124,9 @@ export default defineComponent({
     FontAwesomeIcon,
     Consumption,
     InfoIcon,
-    ImagePreview
+    ImagePreview,
+    ModelSelector,
+    ModeSelector
   },
   mixins: [uploadTrackerMixin],
   emits: ['generate'],
