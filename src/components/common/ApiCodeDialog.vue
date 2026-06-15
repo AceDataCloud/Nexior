@@ -54,7 +54,7 @@
 import { defineComponent, type PropType } from 'vue';
 import { ElDialog, ElButton, ElImage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import Mustache from 'mustache';
+import { VARIANTS, renderApiCode, type Lang, type CodeVariant } from '@acedatacloud/core/code-snippet';
 import CodeSnippet from '@/components/common/CodeSnippet.vue';
 import { BASE_URL_API } from '@/constants/endpoint';
 import shellLogo from '@/assets/images/logos/shell.png';
@@ -63,78 +63,16 @@ import javascriptLogo from 'programming-languages-logos/src/javascript/javascrip
 import javaLogo from 'programming-languages-logos/src/java/java.svg';
 import goLogo from 'programming-languages-logos/src/go/go.svg';
 import phpLogo from 'programming-languages-logos/src/php/php.svg';
-import shellTpl from '@/assets/templates/shell.tpl?raw';
-import shellHttpieTpl from '@/assets/templates/shell-httpie.tpl?raw';
-import shellWgetTpl from '@/assets/templates/shell-wget.tpl?raw';
-import pythonTpl from '@/assets/templates/python.tpl?raw';
-import pythonHttpxTpl from '@/assets/templates/python-httpx.tpl?raw';
-import pythonAiohttpTpl from '@/assets/templates/python-aiohttp.tpl?raw';
-import pythonUrllibTpl from '@/assets/templates/python-urllib.tpl?raw';
-import javascriptTpl from '@/assets/templates/javascript.tpl?raw';
-import javascriptAxiosTpl from '@/assets/templates/javascript-axios.tpl?raw';
-import javascriptXhrTpl from '@/assets/templates/javascript-xhr.tpl?raw';
-import javaTpl from '@/assets/templates/java.tpl?raw';
-import javaHttpClientTpl from '@/assets/templates/java-httpclient.tpl?raw';
-import goTpl from '@/assets/templates/go.tpl?raw';
-import phpTpl from '@/assets/templates/php.tpl?raw';
-import phpCurlTpl from '@/assets/templates/php-curl.tpl?raw';
 
-const LANG_SHELL = 'Shell';
-const LANG_PYTHON = 'Python';
-const LANG_JAVASCRIPT = 'JavaScript';
-const LANG_JAVA = 'Java';
-const LANG_GO = 'Go';
-const LANG_PHP = 'PHP';
-
-type Lang =
-  | typeof LANG_SHELL
-  | typeof LANG_PYTHON
-  | typeof LANG_JAVASCRIPT
-  | typeof LANG_JAVA
-  | typeof LANG_GO
-  | typeof LANG_PHP;
-
-interface IVariant {
-  key: string;
-  label: string;
-  template: string;
-}
-
-const VARIANTS: Record<Lang, IVariant[]> = {
-  Shell: [
-    { key: 'curl', label: 'cURL', template: shellTpl },
-    { key: 'httpie', label: 'HTTPie', template: shellHttpieTpl },
-    { key: 'wget', label: 'wget', template: shellWgetTpl }
-  ],
-  Python: [
-    { key: 'requests', label: 'requests', template: pythonTpl },
-    { key: 'httpx', label: 'httpx', template: pythonHttpxTpl },
-    { key: 'aiohttp', label: 'aiohttp', template: pythonAiohttpTpl },
-    { key: 'urllib', label: 'urllib', template: pythonUrllibTpl }
-  ],
-  JavaScript: [
-    { key: 'fetch', label: 'fetch', template: javascriptTpl },
-    { key: 'axios', label: 'axios', template: javascriptAxiosTpl },
-    { key: 'xhr', label: 'XHR', template: javascriptXhrTpl }
-  ],
-  Java: [
-    { key: 'okhttp', label: 'OkHttp', template: javaTpl },
-    { key: 'httpclient', label: 'HttpClient', template: javaHttpClientTpl }
-  ],
-  Go: [{ key: 'nethttp', label: 'net/http', template: goTpl }],
-  PHP: [
-    { key: 'guzzle', label: 'Guzzle', template: phpTpl },
-    { key: 'curl', label: 'cURL', template: phpCurlTpl }
-  ]
-};
-
+// Language list keeps the app-specific icons; the variant matrix + render logic
+// (templates, per-language coercion) come from @acedatacloud/core/code-snippet.
 const LANGUAGES: { name: Lang; icon: string }[] = [
-  { name: LANG_SHELL, icon: shellLogo },
-  { name: LANG_PYTHON, icon: pythonLogo },
-  { name: LANG_JAVASCRIPT, icon: javascriptLogo },
-  { name: LANG_JAVA, icon: javaLogo },
-  { name: LANG_GO, icon: goLogo },
-  { name: LANG_PHP, icon: phpLogo }
+  { name: 'Shell', icon: shellLogo },
+  { name: 'Python', icon: pythonLogo },
+  { name: 'JavaScript', icon: javascriptLogo },
+  { name: 'Java', icon: javaLogo },
+  { name: 'Go', icon: goLogo },
+  { name: 'PHP', icon: phpLogo }
 ];
 
 const PLATFORM_URL = 'https://platform.acedata.cloud/';
@@ -186,7 +124,7 @@ export default defineComponent({
   emits: ['update:visible'],
   data() {
     return {
-      lang: LANG_SHELL as Lang,
+      lang: 'Shell' as Lang,
       variant: 'curl',
       platformIcon: PLATFORM_FAVICON
     };
@@ -195,7 +133,7 @@ export default defineComponent({
     languages(): { name: Lang; icon: string }[] {
       return LANGUAGES;
     },
-    currentVariants(): IVariant[] {
+    currentVariants(): CodeVariant[] {
       return VARIANTS[this.lang] || [];
     },
     url(): string {
@@ -228,62 +166,13 @@ export default defineComponent({
     code(): string {
       const selected = this.currentVariants.find((v) => v.key === this.variant) || this.currentVariants[0];
       if (!selected) return '';
-      const template = selected.template;
-
-      // Deep clone so per-language value coercion does not leak across tabs.
-      const headers: IRenderHeader[] = this.rawHeaders.map((h) => ({ ...h }));
-      const body: IRenderBody[] = this.rawBody.map((b) => ({ ...b }));
-      let methodLower = String(this.method || 'POST').toLowerCase();
-      let methodUpper = String(this.method || 'POST').toUpperCase();
-      let renderMethod: string = methodUpper;
-
-      const jsonStringifyValue = (v: unknown) => JSON.stringify(v);
-
-      if (this.lang === LANG_PYTHON) {
-        for (const h of headers) {
-          h.value = jsonStringifyValue(h.value) as unknown as string;
-        }
-        for (const item of body) {
-          const v = item.value;
-          if (v === true || v === false) {
-            item.value = v ? 'True' : 'False';
-          } else if (v === null) {
-            item.value = 'None';
-          } else {
-            item.value = jsonStringifyValue(v);
-          }
-        }
-        renderMethod = methodLower;
-      } else if (this.lang === LANG_JAVASCRIPT) {
-        for (const h of headers) {
-          h.value = jsonStringifyValue(h.value) as unknown as string;
-        }
-        for (const item of body) {
-          item.value = jsonStringifyValue(item.value);
-        }
-        renderMethod = methodUpper;
-      } else if (this.lang === LANG_PHP || this.lang === LANG_JAVA || this.lang === LANG_GO) {
-        for (const h of headers) {
-          h.value = jsonStringifyValue(h.value) as unknown as string;
-        }
-        for (const item of body) {
-          item.value = jsonStringifyValue(item.value);
-        }
-        renderMethod = methodUpper;
-      } else if (this.lang === LANG_SHELL) {
-        // Shell: keep header values raw (single-quoted by template), body values JSON.
-        for (const item of body) {
-          item.value = jsonStringifyValue(item.value);
-        }
-        renderMethod = methodUpper;
-      }
-
-      return Mustache.render(template, {
+      return renderApiCode({
+        lang: this.lang,
+        templateKey: selected.templateKey,
+        method: this.method,
         url: this.url,
-        method: renderMethod,
-        methodUpper,
-        headers,
-        body
+        headers: this.rawHeaders,
+        body: this.rawBody
       });
     }
   },
