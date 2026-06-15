@@ -702,5 +702,57 @@
   "message.noTasks": {
     "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
     "description": "タスクがないときのメッセージ"
+  },
+  "tab.talkingPhoto": {
+    "message": "トーキングフォト",
+    "description": "Tab label: Talking Photo"
+  },
+  "name.talkingPhotoImage": {
+    "message": "人物写真",
+    "description": "Talking Photo portrait image input"
+  },
+  "name.talkingPhotoAudio": {
+    "message": "駆動オーディオ",
+    "description": "Talking Photo driving audio input"
+  },
+  "name.talkingPhotoPrompt": {
+    "message": "モーションプロンプト（任意）",
+    "description": "Talking Photo optional motion prompt"
+  },
+  "description.talkingPhotoImage": {
+    "message": "鮮明な正面の人物写真をアップロードしてください。自動で動き出し、話し始めます。",
+    "description": "Talking Photo portrait image help text"
+  },
+  "description.talkingPhotoAudio": {
+    "message": "音声クリップ（mp3/wav、5MB以下）をアップロードしてください。人物が音声に合わせて口を動かします。",
+    "description": "Talking Photo driving audio help text"
+  },
+  "description.talkingPhotoPrompt": {
+    "message": "任意：希望する表情・動作を記述します。例「カメラを優しく見つめる」。",
+    "description": "Talking Photo motion prompt help text"
+  },
+  "placeholder.talkingPhotoPrompt": {
+    "message": "例：穏やか、落ち着いた、自然、わずかな頭の動き",
+    "description": "Talking Photo prompt input placeholder"
+  },
+  "button.generateTalkingPhoto": {
+    "message": "トーキングフォトを生成",
+    "description": "Talking Photo generate button"
+  },
+  "button.uploadAudio": {
+    "message": "音声をアップロード",
+    "description": "Talking Photo upload audio button"
+  },
+  "message.talkingPhotoMissingInputs": {
+    "message": "先に人物写真と駆動オーディオをアップロードしてください。",
+    "description": "Talking Photo missing inputs warning"
+  },
+  "message.uploadAudioExceed": {
+    "message": "音声ファイルは1つだけアップロードできます。",
+    "description": "Talking Photo audio count limit warning"
+  },
+  "message.uploadAudioError": {
+    "message": "音声のアップロードに失敗しました。もう一度お試しください。",
+    "description": "Talking Photo audio upload error"
   }
 }
