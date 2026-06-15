@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, type RouteLocationGeneric } from 'vue-router';
+import { type RouteLocationGeneric, type Router } from 'vue-router';
 import store from '@/store';
 import auth from './auth';
 import console from './console';
@@ -313,7 +313,7 @@ const getDefaultRoute = (): { name: string } => {
   return { name: ROUTE_CHATGPT_CONVERSATION_NEW };
 };
 
-const routes = [
+export const routes = [
   {
     path: '/',
     redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
@@ -367,74 +367,85 @@ const routes = [
   }
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes
-});
+// vite-ssg owns router creation (memory history at build, web history on the
+// client). Guards attach to the per-app router inside the ViteSSG setup.
+let activeRouter: Router | null = null;
+export const setActiveRouter = (r: Router) => {
+  activeRouter = r;
+};
+export const getActiveRouter = (): Router | null => activeRouter;
 
-router.onError((error) => {
-  handleChunkLoadError(error);
-});
+export function setupRouterGuards(router: Router) {
+  router.onError((error) => {
+    handleChunkLoadError(error);
+  });
 
-router.beforeEach(async (to, _from, next) => {
-  const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
-  await setI18nLanguage(locale);
-
-  // Cross-site identity guard: handle `?user_id=<id>` query param attached by
-  // outbound links from sibling sub-sites (auth / platform). See
-  // `src/utils/crossSiteUser.ts` for the full contract.
-  const decision = evaluateUserIdGuard(to);
-  if (decision.kind === 'strip') {
-    return next(decision.redirect);
-  }
-  if (decision.kind === 'mismatch') {
-    // Helper has already triggered a full-page SSO redirect; abort.
-    return next(false);
-  }
-
-  // Lazily register the per-app Vuex store module owned by this route. The
-  // mapping is `meta.appName` → store module name (set in each
-  // `src/router/<app>.ts`); routes without a per-app module (auth, console,
-  // profile, distribution, download, site) skip this branch entirely.
-  // Resolving the dynamic import here means the module's actions/mutations,
-  // its operator(s) and its model bindings are only fetched the first time
-  // the user navigates into that section of the app.
-  for (const matched of to.matched) {
-    const appName = matched.meta?.appName;
-    if (typeof appName === 'string' && appName) {
-      await ensureStoreModule(appName);
+  router.beforeEach(async (to, _from, next) => {
+    // SSG build navigates the router to render each route; no cookies/i18n DOM
+    // then, so skip the client-only guard body and just proceed.
+    if (import.meta.env.SSR) {
+      return next();
     }
-  }
+    const locale = getLocale(getCookie('LOCALE') || I18N_DEFAULT_LOCALE);
+    await setI18nLanguage(locale);
 
-  return next();
-});
+    // Cross-site identity guard: handle `?user_id=<id>` query param attached by
+    // outbound links from sibling sub-sites (auth / platform). See
+    // `src/utils/crossSiteUser.ts` for the full contract.
+    const decision = evaluateUserIdGuard(to);
+    if (decision.kind === 'strip') {
+      return next(decision.redirect);
+    }
+    if (decision.kind === 'mismatch') {
+      // Helper has already triggered a full-page SSO redirect; abort.
+      return next(false);
+    }
 
-router.afterEach((to) => {
-  // Determine the route prefix (e.g., /chatgpt/conversations/123 → chatgpt)
-  const prefix = to.path.split('/').filter(Boolean)[0] || '';
-  const seoData = ROUTE_SEO[prefix];
+    // Lazily register the per-app Vuex store module owned by this route. The
+    // mapping is `meta.appName` → store module name (set in each
+    // `src/router/<app>.ts`); routes without a per-app module (auth, console,
+    // profile, distribution, download, site) skip this branch entirely.
+    // Resolving the dynamic import here means the module's actions/mutations,
+    // its operator(s) and its model bindings are only fetched the first time
+    // the user navigates into that section of the app.
+    for (const matched of to.matched) {
+      const appName = matched.meta?.appName;
+      if (typeof appName === 'string' && appName) {
+        await ensureStoreModule(appName);
+      }
+    }
 
-  if (seoData) {
-    updateSeo({
-      title: seoData.title,
-      description: seoData.description,
-      keywords: seoData.keywords
-    });
-    // Use the current origin so the WebApplication schema URL reflects the
-    // hostname the visitor is actually on (studio.acedata.cloud, hub.acedata.cloud, etc.).
-    const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://studio.acedata.cloud';
-    setWebApplicationSchema({
-      name: seoData.title,
-      description: seoData.description,
-      url: `${origin}/${prefix}`,
-      category: seoData.category
-    });
-  } else {
-    resetSeo();
-    setOrganization();
-  }
-});
+    return next();
+  });
 
-export default router;
+  router.afterEach((to) => {
+    if (import.meta.env.SSR) {
+      return;
+    }
+    // Determine the route prefix (e.g., /chatgpt/conversations/123 → chatgpt)
+    const prefix = to.path.split('/').filter(Boolean)[0] || '';
+    const seoData = ROUTE_SEO[prefix];
+
+    if (seoData) {
+      updateSeo({
+        title: seoData.title,
+        description: seoData.description,
+        keywords: seoData.keywords
+      });
+      // Use the current origin so the WebApplication schema URL reflects the
+      // hostname the visitor is actually on (studio.acedata.cloud, hub.acedata.cloud, etc.).
+      const origin = (typeof window !== 'undefined' && window.location?.origin) || 'https://studio.acedata.cloud';
+      setWebApplicationSchema({
+        name: seoData.title,
+        description: seoData.description,
+        url: `${origin}/${prefix}`,
+        category: seoData.category
+      });
+    } else {
+      resetSeo();
+      setOrganization();
+    }
+  });
+}
 
 export * from './constants';
