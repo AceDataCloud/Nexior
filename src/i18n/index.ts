@@ -1,4 +1,5 @@
 import { createI18n } from 'vue-i18n';
+import { makeGetLocale } from '@acedatacloud/core';
 import { I18N_DEFAULT_LOCALE, I18N_SCOPES, I18N_SUPPORTED_LOCALES } from '@/constants/i18n';
 import axios from 'axios';
 import { nextTick } from 'vue';
@@ -7,24 +8,12 @@ export const i18n = createI18n({
   legacy: true
 });
 
-export const getLocale = (lang?: string): string => {
-  const canonicalLang = Intl.getCanonicalLocales(lang || navigator.language)?.[0];
-  console.debug('canonicalLang', canonicalLang);
-  const supportedLocales = I18N_SUPPORTED_LOCALES.map((locale) => locale.value);
-  // if the canonical language is supported, use it
-  if (canonicalLang && supportedLocales.includes(canonicalLang)) {
-    console.debug('canonicalLang', canonicalLang);
-    return canonicalLang;
-  } else {
-    // if the canonical language prefix is supported, use it
-    const canonicalLangPrefix = canonicalLang?.split('-')?.[0];
-    if (canonicalLangPrefix && supportedLocales.includes(canonicalLangPrefix)) {
-      console.debug('canonicalLangPrefix', canonicalLangPrefix);
-      return canonicalLangPrefix;
-    }
-  }
-  return I18N_DEFAULT_LOCALE;
-};
+// Locale resolution now lives in @acedatacloud/core; the supported-locale list
+// and default stay owned here so Nexior keeps control of its locale matrix.
+export const getLocale = makeGetLocale({
+  supportedLocales: I18N_SUPPORTED_LOCALES,
+  defaultLocale: I18N_DEFAULT_LOCALE
+});
 
 const messageLoaders = import.meta.glob('./**/*.json');
 

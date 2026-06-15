@@ -1,4 +1,5 @@
 import { ActionContext } from 'vuex';
+import { createFingerprintResolver } from '@acedatacloud/core/fingerprint';
 import { IRootState } from './models';
 import {
   userOperator,
@@ -65,15 +66,15 @@ export const getUser = async ({ commit }: ActionContext<IRootState, IRootState>)
   }
 };
 
+// `@fingerprintjs/fingerprintjs` is ~30 KB minified and only needed once,
+// typically well after first paint. Load it lazily (inside the injected loader)
+// so it stays out of the entry chunk and off the critical path.
+const resolveFingerprint = createFingerprintResolver({
+  load: () => import('@fingerprintjs/fingerprintjs').then((m) => m.default.load())
+});
+
 export const getFingerprint = async ({ commit }: ActionContext<IRootState, IRootState>) => {
-  // `@fingerprintjs/fingerprintjs` is ~30 KB minified and only needed once,
-  // typically well after first paint. Load it lazily so it stays out of the
-  // entry chunk and out of the critical-path execution time.
-  const { default: FingerprintJS } = await import('@fingerprintjs/fingerprintjs');
-  const fp = await FingerprintJS.load();
-  const result = await fp.get();
-  const visitorId = result.visitorId;
-  console.debug('visitorId', visitorId);
+  const visitorId = await resolveFingerprint();
   commit('setFingerprint', visitorId);
   return visitorId;
 };
