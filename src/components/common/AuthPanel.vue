@@ -66,7 +66,9 @@ export default defineComponent({
       return isNativeSurface();
     },
     iframeUrl() {
-      let url = `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}`;
+      // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
+      // URL that iOS ATS blocks, leaving this iframe blank (white screen).
+      let url = `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}`;
       if (this.isNative) {
         url += '&native_redirect=com.acedatacloud.nexior';
       }
@@ -181,7 +183,7 @@ export default defineComponent({
         // Open the auth page in an in-app browser with the provider pre-selected.
         this.useBrowser = true;
         const authUrl = withCurrentSite(
-          `${getBaseUrlAuth()}/auth/login?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`
+          `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`
         );
         Browser.open({ url: authUrl });
         return;

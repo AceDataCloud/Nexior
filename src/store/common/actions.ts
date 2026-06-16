@@ -277,7 +277,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
       ...(inviterId ? { inviter_id: inviterId } : {}),
       redirect: callbackUrl
     };
-    const loginUrl = `${baseUrlAuth}/auth/login?${new URLSearchParams(loginQuery).toString()}`;
+    const loginUrl = `${baseUrlAuth}/auth/login/?${new URLSearchParams(loginQuery).toString()}`;
     const redirectUrl = `${baseUrlAuth}/auth/logout?${new URLSearchParams({ redirect: loginUrl }).toString()}`;
     window.location.href = redirectUrl;
   }
