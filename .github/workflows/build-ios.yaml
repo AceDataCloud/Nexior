@@ -397,6 +397,130 @@ jobs:
           print(f'::notice::Build {build_id} (v{version_name} build {build_number}) ready for distribution.')
           PY
 
+      - name: Submit build for Beta App Review (external testing)
+        if: ${{ steps.tf_wait.outputs.build-id != '' && (github.event_name != 'workflow_dispatch' || inputs.auto_distribute_external) }}
+        continue-on-error: true
+        env:
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          ASC_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_KEY_BASE64 }}
+          BUILD_ID: ${{ steps.tf_wait.outputs.build-id }}
+          VERSION_NAME: ${{ needs.preflight.outputs.version-name }}
+          BUILD_NUMBER: ${{ needs.preflight.outputs.version-code }}
+        # External TestFlight testers only receive a build after it passes Beta
+        # App Review — and a build is NOT submitted for that review just by adding
+        # it to an external group. Without this step every build sits forever in
+        # the "Ready to Submit" state and newly-invited external testers keep
+        # getting the last *approved* build instead of the latest upload.
+        #
+        # Beta review rejects a submission unless two prerequisites are met, so we
+        # set them first (idempotently):
+        #   1) Export-compliance answer (usesNonExemptEncryption) on the build.
+        #   2) A "What to Test" localization (betaBuildLocalizations.whatsNew).
+        # App-level Beta App Review details (contact info / demo account) are a
+        # one-time manual setup in App Store Connect; if they're missing the
+        # submission call below surfaces Apple's error (continue-on-error keeps
+        # the run green so a later same-version build can still auto-distribute).
+        #
+        # NOTE: Apple only reviews the FIRST build of each marketing version.
+        # Subsequent builds of the same version auto-approve, so the POST below
+        # returning 409 ("already submitted/approved") is the normal happy path.
+        run: |
+          python <<'PY'
+          import base64, os, time, requests, jwt
+
+          key_id = os.environ['ASC_KEY_ID']
+          issuer = os.environ['ASC_ISSUER_ID']
+          private_key = base64.b64decode(os.environ['ASC_KEY_BASE64']).decode('utf-8')
+          build_id = os.environ['BUILD_ID']
+          version_name = os.environ['VERSION_NAME']
+          build_number = os.environ['BUILD_NUMBER']
+
+          def H():
+              now = int(time.time())
+              t = jwt.encode(
+                  {'iss': issuer, 'iat': now, 'exp': now + 1200, 'aud': 'appstoreconnect-v1'},
+                  private_key, algorithm='ES256',
+                  headers={'kid': key_id, 'typ': 'JWT'},
+              )
+              return {'Authorization': f'Bearer {t}', 'Content-Type': 'application/json'}
+
+          # 1) Export compliance. A null usesNonExemptEncryption blocks beta
+          # review with MISSING_EXPORT_COMPLIANCE. We declare "no non-exempt
+          # encryption" (standard HTTPS-only is exempt). If the app ever adds
+          # non-exempt crypto, set ITSAppUsesNonExemptEncryption in Info.plist
+          # and this step becomes a no-op.
+          r = requests.get(
+              f'https://api.appstoreconnect.apple.com/v1/builds/{build_id}',
+              headers=H(), timeout=30,
+          )
+          uses_enc = None
+          if r.status_code == 200:
+              uses_enc = (r.json().get('data') or {}).get('attributes', {}).get('usesNonExemptEncryption')
+          if uses_enc is None:
+              p = requests.patch(
+                  f'https://api.appstoreconnect.apple.com/v1/builds/{build_id}',
+                  json={'data': {'type': 'builds', 'id': build_id,
+                                 'attributes': {'usesNonExemptEncryption': False}}},
+                  headers=H(), timeout=30,
+              )
+              if p.status_code in (200, 201):
+                  print('::notice::Set export compliance (usesNonExemptEncryption=false).')
+              else:
+                  print(f'::warning::Could not set export compliance: {p.status_code} {p.text[:200]}')
+          else:
+              print(f'Export compliance already set (usesNonExemptEncryption={uses_enc}).')
+
+          # 2) "What to Test" — Apple requires a non-empty whatsNew for external
+          # review. Reuse the en-US localization if present, else create it.
+          whats_new = f'v{version_name} ({build_number}) — bug fixes and improvements.'
+          loc = requests.get(
+              f'https://api.appstoreconnect.apple.com/v1/builds/{build_id}/betaBuildLocalizations',
+              params={'limit': 50}, headers=H(), timeout=30,
+          )
+          existing = loc.json().get('data') or [] if loc.status_code == 200 else []
+          en = next((l for l in existing if l['attributes'].get('locale', '').lower().startswith('en')), None)
+          if en is None:
+              c = requests.post(
+                  'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations',
+                  json={'data': {'type': 'betaBuildLocalizations',
+                                 'attributes': {'locale': 'en-US', 'whatsNew': whats_new},
+                                 'relationships': {'build': {'data': {'type': 'builds', 'id': build_id}}}}},
+                  headers=H(), timeout=30,
+              )
+              print(f'::notice::Created en-US What-to-Test ({c.status_code}).'
+                    if c.status_code in (200, 201)
+                    else f'::warning::Could not create What-to-Test: {c.status_code} {c.text[:200]}')
+          elif not (en['attributes'].get('whatsNew') or '').strip():
+              requests.patch(
+                  f'https://api.appstoreconnect.apple.com/v1/betaBuildLocalizations/{en["id"]}',
+                  json={'data': {'type': 'betaBuildLocalizations', 'id': en['id'],
+                                 'attributes': {'whatsNew': whats_new}}},
+                  headers=H(), timeout=30,
+              )
+              print('::notice::Filled empty en-US What-to-Test.')
+          else:
+              print('What-to-Test already present.')
+
+          # 3) Submit for Beta App Review. This is the step that was missing —
+          # it moves the build out of "Ready to Submit" into beta review and is
+          # what actually delivers it to external testers once approved.
+          s = requests.post(
+              'https://api.appstoreconnect.apple.com/v1/betaAppReviewSubmissions',
+              json={'data': {'type': 'betaAppReviewSubmissions',
+                             'relationships': {'build': {'data': {'type': 'builds', 'id': build_id}}}}},
+              headers=H(), timeout=30,
+          )
+          if s.status_code in (200, 201):
+              print(f'::notice::Submitted build {build_id} for Beta App Review.')
+          elif s.status_code == 409:
+              # Already submitted, already in review, or auto-approved as a
+              # follow-up build of an already-reviewed version. All fine.
+              print(f'Build already submitted/approved for beta review (409). {s.text[:200]}')
+          else:
+              print(f'::warning::Beta App Review submission failed: {s.status_code} {s.text[:300]}')
+          PY
+
       - name: Distribute to external TestFlight groups
         if: ${{ steps.tf_wait.outputs.build-id != '' && (github.event_name != 'workflow_dispatch' || inputs.auto_distribute_external) }}
         env:
