@@ -28,7 +28,10 @@ export const loginRedirect = ({
   // callback url used to init access token and then redirect back of `redirect`
   const callbackUrl = `${hubBaseUrl}/auth/callback?redirect=${redirect}`;
   // redirect to auth service to get access token then redirect back
-  const targetBaseUrl = `${authBaseUrl}/auth/login`;
+  // Trailing slash is required: `/auth/login` 301-redirects to a cleartext
+  // `http://.../auth/login/`, which iOS ATS blocks (white screen in the native
+  // login iframe). The canonical `/auth/login/` returns 200 directly.
+  const targetBaseUrl = `${authBaseUrl}/auth/login/`;
   const targetQuery = {
     site,
     ...(inviterId ? { inviter_id: inviterId } : {}),
