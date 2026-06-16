@@ -53,7 +53,7 @@ export default defineComponent({
     display: block;
     position: absolute;
     right: 8px;
-    top: 45px;
+    top: calc(45px + var(--app-safe-area-top));
     z-index: 1000;
   }
 }

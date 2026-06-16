@@ -404,6 +404,37 @@ html.dark .el-dialog {
   border: 1px solid var(--app-glass-border);
 }
 
+// Mobile: drawers (service config panels, the chat side panel, inspiration /
+// history sheets, voice manager …) are teleported to <body>, so unlike routed
+// pages they do NOT inherit the layout's `padding-top: var(--app-safe-area-top)`
+// (see Main.vue / Console.vue). Their content therefore drew under the iOS
+// Dynamic Island / Android status bar — e.g. the Kling "Video Generation /
+// Motion Control / Talking Photo" tabs hugging the clock & battery — and under
+// the home indicator at the bottom.
+//
+// Inset the drawer panel itself (covers both headerless config drawers and
+// drawers that render an `.el-drawer__header`) by the safe area on small
+// screens. `--app-safe-area-*` resolves to 0px on non-notched devices, so this
+// is a no-op there. The `+ 8px` top gives the same comfortable gap the floating
+// balance pill already uses (`0.5rem + safe-area`, see Main.vue .status-floating).
+@media (max-width: 767px) {
+  // Full-height side drawers (direction ltr / rtl) span the whole viewport
+  // height, so they must clear both the top status bar and the bottom home bar.
+  .el-drawer.ltr,
+  .el-drawer.rtl {
+    padding-top: calc(var(--app-safe-area-top) + 8px);
+    padding-bottom: var(--app-safe-area-bottom);
+  }
+
+  // Top / bottom sheets only touch one edge.
+  .el-drawer.ttb {
+    padding-top: calc(var(--app-safe-area-top) + 8px);
+  }
+  .el-drawer.btt {
+    padding-bottom: var(--app-safe-area-bottom);
+  }
+}
+
 .el-message-box {
   --el-messagebox-border-radius: 1.25rem;
 }
