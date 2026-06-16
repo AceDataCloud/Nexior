@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 16 Jun 2026 01:25:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 16 Jun 2026 18:09:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.8
+
+Tue, 16 Jun 2026 18:09:10 GMT
+
+### Patches
+
+- fix(codingBridge): let the directory picker jump to any drive via an editable path input (cqc@cuiqingcai.com)
 
 ## 3.278.7
 
