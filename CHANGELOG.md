@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 18:53:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 18:56:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.14
+
+Thu, 18 Jun 2026 18:56:03 GMT
+
+### Patches
+
+- fix(console): vertically center sidebar tab icons (dev@acedata.cloud)
 
 ## 3.278.13
 
