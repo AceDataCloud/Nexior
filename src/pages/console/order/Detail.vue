@@ -103,7 +103,7 @@
               <el-col :span="16" :offset="4">
                 <el-divider border-style="dashed" />
                 <div
-                  v-if="showPayment && showPayWays && order.price && order.price > 0 && !order.pay_way"
+                  v-if="!isIos && showPayment && showPayWays && order.price && order.price > 0 && !order.pay_way"
                   class="payways mb-6"
                 >
                   <div
@@ -221,6 +221,12 @@
             :visible="paying"
             @hide="paying = false"
           />
+          <apple-pay-order
+            v-if="order && payWay === PayWay.Apple"
+            v-model="order"
+            :visible="paying"
+            @hide="paying = false"
+          />
         </el-col>
       </el-row>
     </el-col>
@@ -247,6 +253,7 @@ import StripePayOrder from '@/components/order/StripePay.vue';
 import AlipayPayOrder from '@/components/order/AliPay.vue';
 import X402PayOrder from '@/components/order/X402Pay.vue';
 import PaypalPayOrder from '@/components/order/PaypalPay.vue';
+import ApplePayOrder from '@/components/order/ApplePay.vue';
 import { IConfigResponse, IOrder, IOrderDetailResponse, OrderState } from '@/models';
 import { getPriceString } from '@/utils';
 import { getPaymentSurface, isAndroid, isIOS } from '@/utils';
@@ -261,7 +268,8 @@ enum PayWay {
   Stripe = 'Stripe',
   AliPay = 'AliPay',
   X402 = 'X402',
-  PayPal = 'PayPal'
+  PayPal = 'PayPal',
+  Apple = 'AppleIAP'
 }
 
 interface IData {
@@ -294,12 +302,14 @@ export default defineComponent({
     StripePayOrder,
     AlipayPayOrder,
     X402PayOrder,
-    PaypalPayOrder
+    PaypalPayOrder,
+    ApplePayOrder
   },
   data(): IData {
     return {
       PayWay: PayWay,
-      payWay: PayWay.WechatPay,
+      // iOS must use Apple IAP (Guideline 3.1.1); everyone else defaults to WeChat.
+      payWay: isIOS() ? PayWay.Apple : PayWay.WechatPay,
       OrderState: OrderState,
       order: undefined,
       x402Session: undefined,
@@ -316,17 +326,20 @@ export default defineComponent({
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
     },
+    isIos(): boolean {
+      return isIOS();
+    },
     id() {
       return this.$route.params?.id?.toString();
     },
     redirect() {
       return this.$route.query?.redirect;
     },
-    // App Store Review Guideline 3.1.1: do not expose any non-IAP payment
-    // UI inside the iOS bundle. We keep the order details visible (read
-    // only) but hide every pay-way selector and the Pay / Repay buttons.
+    // Payment is available on all surfaces. On iOS the only method is Apple
+    // IAP (Guideline 3.1.1) — the non-IAP selector grid is hidden separately
+    // (see the grid v-if), so iOS users get the single Apple Pay button.
     showPayment(): boolean {
-      return !isIOS();
+      return true;
     },
     pricingInfo(): {
       original: number;
@@ -619,6 +632,14 @@ export default defineComponent({
     },
     onPay() {
       this.prepaying = true;
+      // Apple IAP: no PSP session / pay_url. The ApplePay dialog drives the
+      // StoreKit purchase and calls apple-verify; just open it and poll.
+      if (this.payWay === PayWay.Apple) {
+        this.prepaying = false;
+        this.paying = true;
+        this.startOrderPolling(POLL_INITIAL_DELAY_MS);
+        return;
+      }
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;
       }

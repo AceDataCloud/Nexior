@@ -57,6 +57,7 @@ export interface IPackage {
   duration?: number;
   type?: IPackageType;
   service?: IService;
+  metadata?: Record<string, any>;
 }
 
 export enum IApiUnit {
