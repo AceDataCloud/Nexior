@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 17:46:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 18:12:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.11
+
+Thu, 18 Jun 2026 18:12:19 GMT
+
+### Patches
+
+- fix: show global credits top-up entry on iOS (dev@acedata.cloud)
 
 ## 3.278.10
 
