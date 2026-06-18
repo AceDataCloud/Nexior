@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 18:12:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 18:36:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.12
+
+Thu, 18 Jun 2026 18:36:11 GMT
+
+### Patches
+
+- fix: iOS top-up entry visibility + wallet-widget in-app navigation (dev@acedata.cloud)
 
 ## 3.278.11
 
