@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 18:36:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 18:53:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.13
+
+Thu, 18 Jun 2026 18:53:49 GMT
+
+### Patches
+
+- fix(console): card-based application list on mobile (dev@acedata.cloud)
 
 ## 3.278.12
 
