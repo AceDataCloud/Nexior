@@ -88,7 +88,10 @@ export default defineComponent({
         return;
       }
       if (!result.ok) {
-        ElMessage.error(this.$t('order.message.applePayFailed'));
+        // Surface the specific reason (product_not_found / iap_unavailable /
+        // verify_failed …) to aid diagnosis during rollout.
+        const reason = result.error ? ` (${result.error})` : '';
+        ElMessage.error(this.$t('order.message.applePayFailed') + reason);
         this.$emit('hide');
         return;
       }
