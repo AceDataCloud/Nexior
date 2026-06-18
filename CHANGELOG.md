@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 16 Jun 2026 18:09:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 17:06:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.9
+
+Thu, 18 Jun 2026 17:06:29 GMT
+
+### Patches
+
+- feat: Apple In-App Purchase for credits on iOS (dev@acedata.cloud)
 
 ## 3.278.8
 
