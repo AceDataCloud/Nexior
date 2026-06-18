@@ -301,14 +301,11 @@ export default defineComponent({
     showPayment(): boolean {
       return !isIOS();
     },
-    // The global 积分 wallet IS buyable on iOS via Apple IAP. Show its
-    // top-up entry when its packages have an apple_product_id mapped.
+    // The global 积分 wallet IS buyable on iOS via Apple IAP (it always has
+    // the mapped consumable packages), so its top-up entry is shown on every
+    // surface. The card itself is still gated on having a global application.
     showGlobalPayment(): boolean {
-      if (!isIOS()) {
-        return true;
-      }
-      const pkgs = (this.globalApplications?.[0] as any)?.packages || [];
-      return pkgs.some((p: any) => p?.metadata?.apple_product_id);
+      return true;
     }
   },
   watch: {
