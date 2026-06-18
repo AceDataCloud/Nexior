@@ -91,9 +91,14 @@ export default defineComponent({
   },
   emits: ['buy', 'usage'],
   computed: {
-    // Hide the "Top Up" action inside the iOS bundle (payments are web-only).
+    // On iOS, only show "Top Up" when this application has Apple-buyable
+    // packages (apple_product_id mapped) — i.e. the global 积分 wallet.
+    // Per-service apps have no Apple products, so the action stays hidden.
     showPayment(): boolean {
-      return !isIOS();
+      if (!isIOS()) {
+        return true;
+      }
+      return (this.application?.packages || []).some((p) => p?.metadata?.apple_product_id);
     },
     remainingAmountText(): string {
       const amount = Number(this.application?.remaining_amount ?? 0);
