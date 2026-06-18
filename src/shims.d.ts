@@ -29,6 +29,12 @@ declare module '*.vue' {
   export default component;
 }
 
+// Native-only IAP plugin: dynamically imported on iOS, attaches a global
+// `CdvPurchase`. Declared loosely so the web/Android type-check passes
+// without the native package installed.
+declare module 'cordova-plugin-purchase';
+declare const CdvPurchase: any;
+
 // declare namespace Intl {
 //   function getCanonicalLocales(locales: string | string[] | undefined): string[];
 // }

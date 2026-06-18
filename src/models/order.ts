@@ -1,4 +1,5 @@
 import { IApplication } from './application';
+import { IPackage } from './api';
 
 export enum OrderState {
   PENDING = 'Pending',
@@ -30,6 +31,8 @@ export interface IOrder {
   application_ids?: string[];
   package_id?: string;
   package_ids?: string[];
+  package?: IPackage;
+  packages?: IPackage[];
   wechatpay_url?: string;
   pay_id?: string;
   pay_url?: string;

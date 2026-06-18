@@ -168,11 +168,11 @@ export default defineComponent({
     id() {
       return this.$route.params?.id?.toString();
     },
-    // App Store Review Guideline 3.1.1: hide non-IAP purchase actions on
-    // the iOS surface. The form still renders for deep-linked users but
-    // the "Create Order" submit button is removed.
+    // Credits are buyable on every surface now. On iOS the order is paid via
+    // Apple IAP on the order-detail page; we only offer packages that have an
+    // Apple product id mapped (see `packages`).
     showPayment(): boolean {
-      return !isIOS();
+      return true;
     },
     price() {
       if (this.application?.service?.price && this.form.amount) {
@@ -181,11 +181,15 @@ export default defineComponent({
       return 0;
     },
     packages() {
-      return (
+      const all =
         this.application?.packages
           ?.filter((pkg) => pkg.type === IPackageType.USAGE)
-          .sort((a, b) => a.amount - b.amount) || []
-      );
+          .sort((a, b) => a.amount - b.amount) || [];
+      // On iOS only packages with an Apple product id can be purchased via IAP.
+      if (isIOS()) {
+        return all.filter((pkg) => !!pkg?.metadata?.apple_product_id);
+      }
+      return all;
     },
     package() {
       if (this.packages && this.form.packageId) {

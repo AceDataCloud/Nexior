@@ -63,6 +63,10 @@ class OrderService {
     });
   }
 
+  async appleVerify(id: string, transactionId: string): Promise<AxiosResponse<IOrderDetailResponse>> {
+    return await httpClient.post(`/${this.key}/${id}/apple-verify/`, { transaction_id: transactionId });
+  }
+
   async updatePrice(id: string, data: IOrder): Promise<AxiosResponse<IOrderDetailResponse>> {
     return await httpClient.post(`/${this.key}/${id}/update-price/`, data);
   }
