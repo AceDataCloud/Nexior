@@ -27,18 +27,18 @@
         <el-col v-if="showGlobalPayment && globalApplications?.length > 0" :md="12" :xs="24">
           <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
-            <div v-else class="flex flex-row justify-between align-center">
-              <div class="summary-card">
-                <div class="flex justify-start items-center gap-2 mb-2 w-full">
+            <div v-else class="flex flex-col sm:flex-row sm:justify-between gap-3">
+              <div class="summary-card min-w-0">
+                <div class="flex justify-start items-center gap-2 mb-2 w-full min-w-0">
                   <div class="icon-wrapper !mb-0">
                     <font-awesome-icon icon="fa-solid fa-wallet" />
                   </div>
-                  <span class="text-[var(--el-text-color-regular)] text-[14px] truncate">
-                    {{ $t('application.field.id') }}: {{ globalApplications?.[0]?.id }}
+                  <span class="flex items-center gap-1 min-w-0 text-[var(--el-text-color-regular)] text-[14px]">
+                    <span class="truncate">{{ $t('application.field.id') }}: {{ globalApplications?.[0]?.id }}</span>
                     <copy-to-clipboard
                       v-if="globalApplications?.[0]?.id"
                       :content="globalApplications?.[0]?.id"
-                      class="inline-block"
+                      class="inline-block shrink-0"
                     />
                   </span>
                 </div>
@@ -51,7 +51,7 @@
                   {{ $t('application.message.globalBalanceDescription') }}
                 </p>
               </div>
-              <div class="flex flex-col items-end gap-2">
+              <div class="flex flex-row sm:flex-col justify-end items-center sm:items-end gap-2 shrink-0">
                 <el-button class="!m-0 !px-2" size="small" round @click="onGoUsage(globalApplications?.[0])">
                   <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                   {{ $t('application.button.usage') }}

@@ -150,10 +150,15 @@ $padding-left: 12px;
     .icon {
       width: 16px;
       height: 16px;
-      display: inline-block;
-      position: relative;
+      // Center the SVG in its own box and drop the inherited 40px line-height,
+      // otherwise the icon renders against the link's tall line box and sits
+      // visibly above/below the label.
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      vertical-align: middle;
       margin-right: 10px;
-      transform: translateY(-2%);
     }
     .text {
       font-size: 14px;
