@@ -24,7 +24,7 @@
             </div>
           </el-card>
         </el-col>
-        <el-col v-if="showPayment && globalApplications?.length > 0" :md="12" :xs="24">
+        <el-col v-if="showGlobalPayment && globalApplications?.length > 0" :md="12" :xs="24">
           <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
             <div v-else class="flex flex-row justify-between align-center">
@@ -57,7 +57,7 @@
                   {{ $t('application.button.usage') }}
                 </el-button>
                 <el-button
-                  v-if="showPayment"
+                  v-if="showGlobalPayment"
                   class="!m-0 !px-2"
                   type="primary"
                   round
@@ -296,13 +296,19 @@ export default defineComponent({
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
     },
-    // App Store Review Guideline 3.1.1 forbids exposing non-IAP purchase
-    // flows inside the iOS bundle. Hide every "Buy More" / order entry
-    // on the iOS surface; the page remains reachable via deep link but
-    // shows no payment UI (see also order/Detail.vue, Subscribe.vue,
-    // Extra.vue, components/console/SidePanel.vue).
+    // Per-service apps have no Apple products, so their "Buy More" stays
+    // hidden on iOS (web-only). Non-iOS shows everything.
     showPayment(): boolean {
       return !isIOS();
+    },
+    // The global 积分 wallet IS buyable on iOS via Apple IAP. Show its
+    // top-up entry when its packages have an apple_product_id mapped.
+    showGlobalPayment(): boolean {
+      if (!isIOS()) {
+        return true;
+      }
+      const pkgs = (this.globalApplications?.[0] as any)?.packages || [];
+      return pkgs.some((p: any) => p?.metadata?.apple_product_id);
     }
   },
   watch: {
