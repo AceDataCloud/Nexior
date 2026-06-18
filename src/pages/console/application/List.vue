@@ -170,7 +170,7 @@
                       {{ $t('application.button.usage') }}
                     </el-button>
                     <el-button
-                      v-if="showPayment"
+                      v-if="rowCanPay(scope?.row)"
                       class="!m-0 !px-2"
                       type="primary"
                       round
@@ -363,11 +363,6 @@ export default defineComponent({
     page() {
       return parseInt(this.$route.query.page?.toString() || '1');
     },
-    // Per-service apps have no Apple products, so their "Buy More" stays
-    // hidden on iOS (web-only). Non-iOS shows everything.
-    showPayment(): boolean {
-      return !isIOS();
-    },
     // The global 积分 wallet IS buyable on iOS via Apple IAP (it always has
     // the mapped consumable packages), so its top-up entry is shown on every
     // surface. The card itself is still gated on having a global application.
@@ -387,6 +382,14 @@ export default defineComponent({
     this.onFetchData();
   },
   methods: {
+    // A per-service app row shows "Buy More" on every surface, but on iOS
+    // only when it has an Apple-buyable package (apple_product_id mapped).
+    rowCanPay(application: IApplication): boolean {
+      if (!isIOS()) {
+        return true;
+      }
+      return ((application as any)?.packages || []).some((p: any) => p?.metadata?.apple_product_id);
+    },
     updateAllowConsumeGlobal(application: IApplication, value: any) {
       if (!application || !application.id) {
         return;
