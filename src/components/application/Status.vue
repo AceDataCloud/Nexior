@@ -36,6 +36,7 @@ import { ElDialog } from 'element-plus';
 import { IApplicationType, IApplication, IService } from '@/models';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router';
 import ApplicationInfo from './Info.vue';
+import { isNative } from '@/utils';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 export interface IData {
   visible: boolean;
@@ -98,23 +99,24 @@ export default defineComponent({
   },
   methods: {
     onGoUsage(application: IApplication) {
-      const url = this.$router.resolve({
-        name: ROUTE_CONSOLE_USAGE_LIST,
-        query: {
-          application_id: application.id
-        }
-      });
-      window.open(url.href, '_blank');
+      const target = { name: ROUTE_CONSOLE_USAGE_LIST, query: { application_id: application.id } };
+      // window.open('_blank') is a no-op inside the iOS/Android webview; navigate in-app.
+      if (isNative()) {
+        this.visible = false;
+        this.$router.push(target);
+        return;
+      }
+      window.open(this.$router.resolve(target).href, '_blank');
     },
     onBuyMore(application: IApplication) {
-      // open in new tab for this url
-      const url = this.$router.resolve({
-        name: ROUTE_CONSOLE_APPLICATION_EXTRA,
-        params: {
-          id: application.id
-        }
-      }).href;
-      window.open(url, '_blank');
+      const target = { name: ROUTE_CONSOLE_APPLICATION_EXTRA, params: { id: application.id } };
+      // window.open('_blank') is a no-op inside the iOS/Android webview; navigate in-app.
+      if (isNative()) {
+        this.visible = false;
+        this.$router.push(target);
+        return;
+      }
+      window.open(this.$router.resolve(target).href, '_blank');
     },
     onSelectApplication(application: IApplication) {
       this.$emit('select', application);
