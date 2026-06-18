@@ -126,4 +126,34 @@ describe('coding bridge session identity (integration)', () => {
     h.feed({ event: 'history.detail', session_id: 'cx', provider: 'codex', events: [] });
     expect(h.state.sessions['cx'].readonly).toBe(true);
   });
+
+  it('reattaches (not just views) the open conversation when history snapshot lands after a reload', () => {
+    const h = harness();
+    // historyRef survives a reload (it is persisted); currentSessionId does not.
+    h.state.historyRef = { node_id: NODE, provider: 'claude', session_id: 'real-1' };
+    h.feed({
+      event: 'history.snapshot',
+      sessions: [{ session_id: 'real-1', provider: 'claude', running: true }]
+    });
+    // Must fully reattach the open conversation, not just fetch its transcript —
+    // this is what re-pulls a running session's live stream + pending prompt.
+    const reattach = h.dispatched.find((d) => d.type === 'reattachSession');
+    expect(reattach).toBeDefined();
+    expect(reattach?.payload).toMatchObject({ node_id: NODE, session_id: 'real-1' });
+    expect(h.dispatched.some((d) => d.type === 'getHistoryDetail')).toBe(false);
+  });
+
+  it('advances and dedupes the per-session seq cursor (the persisted resume point)', () => {
+    const h = harness();
+    h.feed({ event: 'session.started', session_id: 'real-1' });
+    h.feed({ event: 'session.text_delta', session_id: 'real-1', id: 's', text: 'a', seq: 5 });
+    expect(h.state.lastSeq['real-1']).toBe(5);
+    // A replayed/overlapping event at or below the cursor is dropped (no dup text).
+    h.feed({ event: 'session.text_delta', session_id: 'real-1', id: 's', text: 'DUP', seq: 5 });
+    expect(h.state.events['real-1'][0].text).toBe('a');
+    // A higher seq advances the cursor and is applied.
+    h.feed({ event: 'session.text_delta', session_id: 'real-1', id: 's', text: 'b', seq: 6 });
+    expect(h.state.lastSeq['real-1']).toBe(6);
+    expect(h.state.events['real-1'][0].text).toBe('ab');
+  });
 });

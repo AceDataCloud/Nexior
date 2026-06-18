@@ -364,10 +364,12 @@ export const applyNodeEvent = (
       if (fromNode) {
         commit('setHistory', { node_id: fromNode, sessions: payload.sessions ?? [] });
         commit('updateStatus', { key: 'getHistory', value: Status.Success });
-        // Restore the conversation that was open before a reload.
+        // Restore the conversation that was open before a reload — and fully
+        // reattach it (transcript + running state + pending permission + live
+        // stream replay), not just lay down a static transcript.
         const ref = state.historyRef;
         if (ref && ref.node_id === fromNode && !state.currentSessionId) {
-          dispatch('getHistoryDetail', ref);
+          dispatch('reattachSession', ref);
         }
       }
       break;
@@ -698,6 +700,10 @@ export const sendPrompt = (
         trace_id: traceId
       });
       commit('setCurrentSession', sessionId);
+      // Point historyRef at this fresh session so a reload can restore AND focus
+      // it (so its live stream / pending prompt re-surface). renameSession
+      // migrates this to the provider's real id once `session.identified` lands.
+      commit('setHistoryRef', { node_id: nodeId, provider, session_id: sessionId });
     } else {
       sessionId = existing.session_id;
       // Resuming a replayed conversation: carry the composer's current settings
@@ -953,6 +959,31 @@ export const getHistoryDetail = (
   });
 };
 
+// Re-establish a conversation as fully LIVE — used when restoring after a reload
+// or opening a session from the history drawer. A static `getHistoryDetail`
+// alone left three gaps: a still-running session showed no live output until the
+// user sent something; a blocked AskUserQuestion / permission prompt never
+// re-surfaced; and the running status could be lost. This pulls all four pieces:
+//  1. the transcript (getHistoryDetail),
+//  2. which sessions are running right now (requestSessions → reattach + Stop),
+//  3. any outstanding permission/question prompt (requestPendingPermissions),
+//  4. the in-flight event stream replayed from our last cursor (socket.resume),
+//     so live deltas (higher seq) append onto the restored transcript.
+export const reattachSession = (
+  { state, dispatch }: ActionContext<ICodingBridgeState, IRootState>,
+  ref: ICodingBridgeHistoryRef
+): void => {
+  if (!ref?.node_id || !ref?.session_id) {
+    return;
+  }
+  dispatch('getHistoryDetail', ref);
+  dispatch('requestSessions', ref.node_id);
+  dispatch('requestPendingPermissions', ref.node_id);
+  // Replay the live stream from the last event we applied (0 = from the start of
+  // the relay's buffer). The relay and the browser both dedupe by seq.
+  socket?.resume({ [ref.session_id]: state.lastSeq[ref.session_id] ?? 0 });
+};
+
 // Resync a live session from the device transcript after the live stream lost
 // events it could not replay (stream_truncated). Pulls the full history detail,
 // which replaces the session's events; later live events (higher seq) still
@@ -1096,6 +1127,7 @@ export default {
   answerQuestion,
   getHistory,
   getHistoryDetail,
+  reattachSession,
   resyncSession,
   browseDir,
   clearDirectory,

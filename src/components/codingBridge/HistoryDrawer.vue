@@ -122,7 +122,10 @@ export default defineComponent({
       if (!this.currentNodeId) {
         return;
       }
-      this.$store.dispatch('codingBridge/getHistoryDetail', {
+      // Reattach (not just fetch the transcript): if this conversation is still
+      // running on the node, this re-pulls its live stream, running state and any
+      // blocked permission/AskUserQuestion prompt instead of showing it idle.
+      this.$store.dispatch('codingBridge/reattachSession', {
         node_id: this.currentNodeId,
         provider: item.provider,
         session_id: item.session_id

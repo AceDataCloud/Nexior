@@ -621,12 +621,16 @@ export default defineComponent({
       return (this.attachmentFileList || []).some((file: UploadFile) => this.isAttachmentUploading(file));
     },
     canSend(): boolean {
+      // Intentionally NOT gated on `currentProviderAvailable`: that flag comes
+      // from the node's CLI probe, which false-negatives when the daemon's PATH
+      // can't see an installed CLI (nvm/launchd). Blocking send there locked the
+      // user out of a working node. We surface a warning in `composerHint`
+      // instead and let the node return a clear error if the CLI is truly absent.
       return (
         (!!this.prompt.trim() || this.attachments.length > 0) &&
         !this.uploadingAttachments &&
         this.connected &&
-        this.nodeOnline &&
-        this.currentProviderAvailable
+        this.nodeOnline
       );
     },
     composerHint(): string {
