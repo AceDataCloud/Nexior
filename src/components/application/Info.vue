@@ -91,11 +91,15 @@ export default defineComponent({
   },
   emits: ['buy', 'usage'],
   computed: {
-    // On iOS, only show "Top Up" when this application has Apple-buyable
-    // packages (apple_product_id mapped) — i.e. the global 积分 wallet.
-    // Per-service apps have no Apple products, so the action stays hidden.
+    // On iOS the only Apple-buyable entity is the global 积分 wallet, so show
+    // "Top Up" for the global application (per-service apps have no Apple
+    // products). Keyed on scope (always present) rather than packages, which
+    // isn't serialized in every view.
     showPayment(): boolean {
       if (!isIOS()) {
+        return true;
+      }
+      if (this.application?.scope === 'Global') {
         return true;
       }
       return (this.application?.packages || []).some((p) => p?.metadata?.apple_product_id);
