@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 17:06:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 18 Jun 2026 17:46:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.10
+
+Thu, 18 Jun 2026 17:46:31 GMT
+
+### Patches
+
+- fix(coding-bridge): restore live streaming, pending AskUserQuestion prompts and provider availability after a reload/session restore (dev@acedata.cloud)
 
 ## 3.278.9
 
