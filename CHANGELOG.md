@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 19 Jun 2026 05:18:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 19 Jun 2026 05:19:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.18
+
+Fri, 19 Jun 2026 05:19:48 GMT
+
+### Patches
+
+- fix: poll for StoreKit product before failing (dev@acedata.cloud)
+- fix: mobile app-list Top Up entry + global card overflow (dev@acedata.cloud)
 
 ## 3.278.17
 
