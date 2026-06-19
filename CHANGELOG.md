@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 19 Jun 2026 05:25:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 19 Jun 2026 06:15:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.20
+
+Fri, 19 Jun 2026 06:15:53 GMT
+
+### Patches
+
+- fix(grokvideo): point service id at the merged grok service (PlatformBackend#702) (dev@acedata.cloud)
 
 ## 3.278.19
 
