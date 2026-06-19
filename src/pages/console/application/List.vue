@@ -236,7 +236,7 @@
                     {{ $t('application.button.usage') }}
                   </el-button>
                   <el-button
-                    v-if="showPayment"
+                    v-if="rowCanPay(app)"
                     class="!m-0 !px-3"
                     type="primary"
                     round
