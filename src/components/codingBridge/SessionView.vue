@@ -7,22 +7,40 @@
     >
       <font-awesome-icon icon="fa-solid fa-laptop-code" class="text-4xl mb-3" />
       <p class="text-sm">{{ $t('codingBridge.session.noDevice') }}</p>
+      <!-- Mobile: the device list is in a drawer, so offer a way to open it. -->
+      <el-button class="md:hidden mt-4" round @click="$emit('devices')">
+        <font-awesome-icon icon="fa-solid fa-laptop-code" class="mr-1" />
+        {{ $t('codingBridge.session.devices') }}
+      </el-button>
     </div>
 
     <template v-else>
       <!-- Header -->
       <div class="flex items-center justify-between gap-3 px-5 py-3 border-b border-[var(--app-border-subtle)]">
-        <div class="min-w-0">
-          <div class="flex items-center gap-2 font-medium">
-            <span class="truncate">{{ currentNode.name }}</span>
-            <span
-              class="inline-block w-2 h-2 rounded-full flex-none"
-              :class="nodeOnline ? 'bg-[var(--el-color-success)]' : 'bg-[var(--app-text-subtle)]'"
-            />
-          </div>
-          <div v-if="currentSession" class="text-xs text-[var(--app-text-subtle)] truncate">
-            <span>{{ sessionMeta }}</span>
-            <span v-if="replayLabel" class="text-[var(--el-color-primary)]"> · {{ replayLabel }}</span>
+        <div class="flex items-center gap-2 min-w-0">
+          <!-- Devices entry (mobile only): opens the device drawer. Lives in the
+               header instead of floating over the content. -->
+          <button
+            type="button"
+            class="cb-devices-btn md:hidden"
+            :title="$t('codingBridge.session.devices')"
+            :aria-label="$t('codingBridge.session.devices')"
+            @click="$emit('devices')"
+          >
+            <font-awesome-icon icon="fa-solid fa-laptop-code" />
+          </button>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 font-medium">
+              <span class="truncate">{{ currentNode.name }}</span>
+              <span
+                class="inline-block w-2 h-2 rounded-full flex-none"
+                :class="nodeOnline ? 'bg-[var(--el-color-success)]' : 'bg-[var(--app-text-subtle)]'"
+              />
+            </div>
+            <div v-if="currentSession" class="text-xs text-[var(--app-text-subtle)] truncate">
+              <span>{{ sessionMeta }}</span>
+              <span v-if="replayLabel" class="text-[var(--el-color-primary)]"> · {{ replayLabel }}</span>
+            </div>
           </div>
         </div>
         <div class="flex items-center gap-2 flex-none">
@@ -59,7 +77,33 @@
 
       <!-- Transcript -->
       <div ref="transcript" class="flex-1 min-h-0 overflow-y-auto px-5 py-4 flex flex-col gap-3">
-        <div v-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
+        <!-- Restoring a conversation: show a skeleton until its transcript lands,
+             but only when we don't already hold (live) events to render. -->
+        <div v-if="historyLoading && !events.length" class="cb-skeleton">
+          <el-skeleton animated>
+            <template #template>
+              <div class="flex flex-col gap-4">
+                <div class="flex justify-end">
+                  <el-skeleton-item variant="rect" class="cb-sk cb-sk--user" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <el-skeleton-item variant="text" style="width: 55%" />
+                  <el-skeleton-item variant="text" style="width: 88%" />
+                  <el-skeleton-item variant="text" style="width: 70%" />
+                </div>
+                <el-skeleton-item variant="rect" class="cb-sk cb-sk--tool" />
+                <div class="flex justify-end">
+                  <el-skeleton-item variant="rect" class="cb-sk cb-sk--user-sm" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <el-skeleton-item variant="text" style="width: 80%" />
+                  <el-skeleton-item variant="text" style="width: 45%" />
+                </div>
+              </div>
+            </template>
+          </el-skeleton>
+        </div>
+        <div v-else-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
           {{ $t('codingBridge.session.startHint') }}
         </div>
         <transcript-item
@@ -429,6 +473,8 @@ import {
   ElDropdownItem,
   ElUpload,
   ElCheckbox,
+  ElSkeleton,
+  ElSkeletonItem,
   UploadFile,
   UploadFiles
 } from 'element-plus';
@@ -441,6 +487,7 @@ import { isAskUserQuestionRequest, questionPayload } from './askUserQuestion';
 import { getBaseUrlPlatform, pasteUploadMixin } from '@/utils';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
+  Status,
   IAskUserQuestionPayload,
   ICodingBridgeAttachment,
   ICodingBridgeCapabilities,
@@ -475,6 +522,8 @@ export default defineComponent({
     ElDropdownItem,
     ElUpload,
     ElCheckbox,
+    ElSkeleton,
+    ElSkeletonItem,
     FontAwesomeIcon,
     TranscriptItem,
     ThinkingIndicator,
@@ -483,7 +532,7 @@ export default defineComponent({
     CopyToClipboard
   },
   mixins: [pasteUploadMixin],
-  emits: ['history'],
+  emits: ['history', 'devices'],
   data() {
     return {
       prompt: '',
@@ -535,6 +584,11 @@ export default defineComponent({
     events(): ICodingBridgeEvent[] {
       const id = this.currentSessionId;
       return id ? (this.$store.state.codingBridge?.events?.[id] ?? []) : [];
+    },
+    // A history transcript is being fetched (restore / drawer open). Drives the
+    // transcript skeleton; the `!events.length` guard keeps a live resync silent.
+    historyLoading(): boolean {
+      return this.$store.state.codingBridge?.status?.getHistoryDetail === Status.Request;
     },
     // The agent's pending AskUserQuestion for this session, if any. Rendered as
     // an inline question card instead of the generic allow/deny modal.
@@ -1212,6 +1266,53 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+// Mobile-only devices entry in the header (replaces the old floating button).
+.cb-devices-btn {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--app-border-subtle);
+  background: var(--app-content-bg);
+  color: var(--app-text-subtle);
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: var(--el-color-primary);
+    border-color: var(--el-color-primary-light-5);
+  }
+}
+
+// Restore skeleton: bubble/tool placeholders shaped like the real transcript.
+.cb-skeleton {
+  .cb-sk {
+    border-radius: 8px;
+  }
+  .cb-sk--user {
+    width: 55%;
+    height: 38px;
+  }
+  .cb-sk--user-sm {
+    width: 35%;
+    height: 30px;
+  }
+  .cb-sk--tool {
+    width: 100%;
+    height: 64px;
+  }
+  // el-skeleton-item is inline-block by default; let the rect variants size.
+  :deep(.el-skeleton__item) {
+    display: block;
+  }
+}
+
 // Docked pending-question panel. It shares the column with the transcript
 // (which is `flex-1` and shrinks first); the card caps its own height via
 // `--auq-max-height` and scrolls its options internally, so the action bar

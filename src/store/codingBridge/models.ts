@@ -55,5 +55,6 @@ export interface ICodingBridgeState {
     deleteNode: Status;
     getApplications: Status;
     getHistory: Status;
+    getHistoryDetail: Status;
   };
 }

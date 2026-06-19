@@ -1,5 +1,9 @@
 <template>
-  <div v-highlight class="code-snippet rounded-md overflow-hidden">
+  <div v-highlight class="code-snippet rounded-md overflow-hidden" :class="{ 'is-copyable': copyable }">
+    <!-- Hover-revealed copy affordance (opt-in via `copyable`). -->
+    <div v-if="copyable" class="cb-code-copy">
+      <copy-to-clipboard :content="code" />
+    </div>
     <pre><code :class="languageClass">{{ code }}</code></pre>
   </div>
 </template>
@@ -7,10 +11,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { highlight } from '@/utils';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import 'highlight.js/styles/night-owl.css';
 
 export default defineComponent({
   name: 'CodeSnippet',
+  components: {
+    CopyToClipboard
+  },
   directives: {
     highlight
   },
@@ -23,6 +31,12 @@ export default defineComponent({
       type: String,
       required: false,
       default: ''
+    },
+    // Show a hover-revealed copy button in the top-right corner.
+    copyable: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {
@@ -54,6 +68,27 @@ export default defineComponent({
 .code-snippet {
   background: #011627; // night-owl default background
   position: relative;
+
+  // Copy button: top-right, revealed on hover (kept visible while focused so a
+  // keyboard user can reach it). Sits above the scrolling <pre>.
+  .cb-code-copy {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(1, 22, 39, 0.6);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  &.is-copyable:hover .cb-code-copy,
+  .cb-code-copy:focus-within {
+    opacity: 1;
+  }
 
   :deep(pre) {
     margin: 0;
