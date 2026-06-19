@@ -319,6 +319,8 @@ export const applyNodeEvent = (
       commit('finalizeAllStreams', { session_id: sessionId });
       commit('appendEvent', makeEvent(sessionId, 'error', { text: payload.message, trace_id: traceId }));
       commit('updateSession', { session_id: sessionId, status: 'error' });
+      // A failed history.get also arrives here; stop any restore skeleton.
+      commit('updateStatus', { key: 'getHistoryDetail', value: Status.Success });
       break;
     case CB_EVENT_SESSION_CLOSED:
       commit('finalizeAllStreams', { session_id: sessionId });
@@ -375,6 +377,7 @@ export const applyNodeEvent = (
       break;
     case CB_EVENT_HISTORY_DETAIL:
       applyHistoryDetail(commit, state, payload, fromNode);
+      commit('updateStatus', { key: 'getHistoryDetail', value: Status.Success });
       break;
     case CB_EVENT_FS_LIST:
       // Directory listings are node-scoped (no session_id) and feed the
@@ -945,18 +948,24 @@ export const getHistory = ({ commit, state }: ActionContext<ICodingBridgeState, 
 };
 
 // Ask a node to replay one past transcript so it can be viewed / resumed.
+// Flips a loading flag so the transcript can show a skeleton until the
+// `history.detail` reply lands (cleared there, or by a safety timeout / error).
 export const getHistoryDetail = (
-  _context: ActionContext<ICodingBridgeState, IRootState>,
+  { commit }: ActionContext<ICodingBridgeState, IRootState>,
   payload: ICodingBridgeHistoryRef
 ): void => {
   if (!payload?.node_id || !payload?.session_id || !socket) {
     return;
   }
+  commit('updateStatus', { key: 'getHistoryDetail', value: Status.Request });
   socket.sendToNode(payload.node_id, {
     action: CB_ACTION_HISTORY_GET,
     provider: payload.provider,
     session_id: payload.session_id
   });
+  // Safety net: never leave the skeleton spinning if the reply is lost (node
+  // went offline mid-request). The transcript falls back to its empty hint.
+  setTimeout(() => commit('updateStatus', { key: 'getHistoryDetail', value: Status.Success }), 12000);
 };
 
 // Re-establish a conversation as fully LIVE — used when restoring after a reload

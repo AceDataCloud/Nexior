@@ -90,33 +90,33 @@
           <div class="whitespace-pre-wrap break-words text-[var(--app-text-subtle)]">{{ line.question }}</div>
         </div>
       </div>
-      <!-- Shell-style tools render as a terminal command line. -->
+      <!-- Shell-style tools render as a highlighted, copyable command block. -->
       <div v-else-if="commandText" class="px-2.5 pb-2">
-        <div
-          class="flex gap-2 overflow-x-auto rounded border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-2.5 py-1.5 font-mono text-xs"
-        >
-          <span class="select-none text-[var(--el-color-success)]">$</span>
-          <span class="whitespace-pre-wrap break-words">{{ commandText }}</span>
-        </div>
+        <code-snippet :code="commandText" lang="bash" copyable />
       </div>
       <!-- File tools show just the target path. -->
       <div v-else-if="filePath" class="px-2.5 pb-2 font-mono text-xs break-all text-[var(--app-text-subtle)]">
         {{ filePath }}
       </div>
       <!-- Fallback: compact JSON without noisy keys. -->
-      <pre
-        v-else-if="inputText"
-        class="m-0 overflow-x-auto whitespace-pre-wrap break-words px-2.5 pb-2 text-xs text-[var(--app-text-subtle)]"
-        >{{ inputText }}</pre
-      >
+      <div v-else-if="inputText" class="px-2.5 pb-2">
+        <code-snippet :code="inputText" lang="json" copyable />
+      </div>
     </div>
 
     <!-- Tool result -->
     <div
       v-else-if="event.kind === 'tool_result'"
-      class="overflow-hidden rounded-md"
+      class="group relative overflow-hidden rounded-md"
       :class="event.is_error ? 'bg-[var(--el-color-danger-light-9)]' : 'bg-[var(--app-sidebar-bg)]'"
     >
+      <!-- Copy the raw output (revealed on hover); skip when there's nothing real. -->
+      <div
+        v-if="event.content"
+        class="absolute right-1.5 top-1.5 z-10 rounded bg-[var(--app-content-bg)] px-1 opacity-0 transition-opacity group-hover:opacity-100 focus-within:opacity-100"
+      >
+        <copy-to-clipboard :content="resultText" />
+      </div>
       <pre
         class="m-0 max-h-72 overflow-auto whitespace-pre-wrap break-words px-2.5 py-2 font-mono text-xs"
         :class="event.is_error ? 'text-[var(--el-color-danger)]' : 'text-[var(--app-text-subtle)]'"
@@ -153,6 +153,8 @@
 import { defineComponent, PropType } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VueMarkdown from '@/components/common/VueMarkdown.vue';
+import CodeSnippet from '@/components/common/CodeSnippet.vue';
+import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { highlight } from '@/utils';
 import { ICodingBridgeEvent } from '@/models';
 import { ASK_USER_QUESTION_TOOL } from './askUserQuestion';
@@ -165,7 +167,9 @@ export default defineComponent({
   },
   components: {
     FontAwesomeIcon,
-    VueMarkdown
+    VueMarkdown,
+    CodeSnippet,
+    CopyToClipboard
   },
   props: {
     event: {
