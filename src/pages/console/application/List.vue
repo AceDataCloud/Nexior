@@ -27,8 +27,8 @@
         <el-col v-if="showGlobalPayment && globalApplications?.length > 0" :md="12" :xs="24">
           <el-card shadow="hover" class="relative min-h-[180px] mb-2" :body-style="{ padding: '18px 20px' }">
             <el-skeleton v-if="loading" />
-            <div v-else class="flex flex-row justify-between align-center">
-              <div class="summary-card">
+            <div v-else class="flex flex-row justify-between items-center gap-3">
+              <div class="summary-card min-w-0 flex-1">
                 <div class="flex justify-start items-center gap-2 mb-2 w-full">
                   <div class="icon-wrapper !mb-0">
                     <font-awesome-icon icon="fa-solid fa-wallet" />
@@ -51,7 +51,7 @@
                   {{ $t('application.message.globalBalanceDescription') }}
                 </p>
               </div>
-              <div class="flex flex-col items-end gap-2">
+              <div class="flex flex-col items-end gap-2 shrink-0">
                 <el-button class="!m-0 !px-2" size="small" round @click="onGoUsage(globalApplications?.[0])">
                   <font-awesome-icon icon="fa-solid fa-chart-line" class="mr-1 text-[12px]" />
                   {{ $t('application.button.usage') }}
