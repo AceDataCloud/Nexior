@@ -10,7 +10,7 @@
       <!-- Mobile: the device list is in a drawer, so offer a way to open it. -->
       <el-button class="md:hidden mt-4" round @click="$emit('devices')">
         <font-awesome-icon icon="fa-solid fa-laptop-code" class="mr-1" />
-        {{ $t('codingBridge.session.devices') }}
+        {{ $t('codingBridge.nodeList.title') }}
       </el-button>
     </div>
 
@@ -23,8 +23,8 @@
           <button
             type="button"
             class="cb-devices-btn md:hidden"
-            :title="$t('codingBridge.session.devices')"
-            :aria-label="$t('codingBridge.session.devices')"
+            :title="$t('codingBridge.nodeList.title')"
+            :aria-label="$t('codingBridge.nodeList.title')"
             @click="$emit('devices')"
           >
             <font-awesome-icon icon="fa-solid fa-laptop-code" />
