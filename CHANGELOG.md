@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 19 Jun 2026 05:19:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 19 Jun 2026 05:25:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.19
+
+Fri, 19 Jun 2026 05:25:16 GMT
+
+### Patches
+
+- fix(coding-bridge): syntax-highlight + copy on tool command/output blocks, header-integrated mobile devices entry, and a restore loading skeleton (dev@acedata.cloud)
 
 ## 3.278.18
 
