@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 19 Jun 2026 04:43:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 19 Jun 2026 05:18:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.16
+
+Fri, 19 Jun 2026 05:18:19 GMT
+
+### Patches
+
+- i18n: add missing Count unit translations (dev@acedata.cloud)
 
 ## 3.278.15
 
