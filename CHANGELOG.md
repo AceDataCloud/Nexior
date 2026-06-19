@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 18 Jun 2026 18:56:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 19 Jun 2026 04:43:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.278.15
+
+Fri, 19 Jun 2026 04:43:21 GMT
+
+### Patches
+
+- fix: iOS IAP uses global CdvPurchase + per-service top-up visibility (dev@acedata.cloud)
+- chore: update company address to Newark, DE (dev@acedata.cloud)
 
 ## 3.278.14
 
