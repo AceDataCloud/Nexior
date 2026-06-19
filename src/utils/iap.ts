@@ -90,9 +90,17 @@ export async function purchaseAndVerify(orderId: string, productId: string): Pro
           await store.initialize([Platform.APPLE_APPSTORE]);
           initialized = true;
         }
-        await store.update();
-        const product = store.get(productId, Platform.APPLE_APPSTORE);
-        const offer = product?.getOffer();
+        // Products load asynchronously from Apple after initialize/update —
+        // poll until the offer is available (race + sandbox propagation),
+        // up to ~15s, before giving up.
+        let offer = store.get(productId, Platform.APPLE_APPSTORE)?.getOffer();
+        let waited = 0;
+        while (!offer && waited < 15000) {
+          await store.update().catch(() => {});
+          await new Promise((r) => setTimeout(r, 1500));
+          waited += 1500;
+          offer = store.get(productId, Platform.APPLE_APPSTORE)?.getOffer();
+        }
         if (!offer) {
           finish({ ok: false, error: 'product_not_found' });
           return;
