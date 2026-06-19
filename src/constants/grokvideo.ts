@@ -1,4 +1,5 @@
-export const GROKVIDEO_SERVICE_ID = 'a270a291-7cbc-44a6-88b9-80334e3e95a0';
+// Video lives under the merged `grok` service (PlatformBackend migration 0176).
+export const GROKVIDEO_SERVICE_ID = 'cbfe0ade-0b4e-4c42-83f4-3e2d5b429545';
 
 export const GROKVIDEO_LOGO = 'https://cdn.acedata.cloud/p1ge98.png';
 
