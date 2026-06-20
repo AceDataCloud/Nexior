@@ -12,7 +12,7 @@
   <a href="https://hub.acedata.cloud">🚀 Live Demo</a> ·
   <a href="#-quick-start">⚡ Deploy in minutes</a> ·
   <a href="https://platform.acedata.cloud">🔑 Free API key</a> ·
-  <a href="https://platform.acedata.cloud/support">💬 Support</a> ·
+  <a href="https://discord.gg/f9GRuKCmRc">💬 Discord</a> ·
   <a href="#-star-us">⭐ Star us</a>
 </p>
 
@@ -137,9 +137,10 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 ## 🤝 Community & support
 
 - 🔑 Free API key & docs: <https://platform.acedata.cloud>
-- 💬 Support: <https://platform.acedata.cloud/support>
+- 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
-- 📧 Email: support@acedata.cloud
+- 📧 Email: office@acedata.cloud
+- 🆘 Support: <https://platform.acedata.cloud/support>
 - 🐛 Issues & PRs welcome.
 
 ## 📄 License
