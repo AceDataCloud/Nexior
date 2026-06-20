@@ -365,16 +365,11 @@ export const routes = [
   download,
   settings,
   {
+    // Standalone full-screen 404 — no header/footer chrome.
     path: '/:pathMatch(.*)*',
     name: ROUTE_NOT_FOUND,
-    component: () => import('@/layouts/Index.vue'),
-    children: [
-      {
-        path: '',
-        component: () => import('@/pages/error/NotFound.vue'),
-        meta: { auth: false }
-      }
-    ]
+    component: () => import('@/pages/error/NotFound.vue'),
+    meta: { auth: false }
   }
 ];
 
