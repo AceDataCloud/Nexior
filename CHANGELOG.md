@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 17:09:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 17:18:12 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.282.2
+
+Sat, 20 Jun 2026 17:18:12 GMT
+
+### Patches
+
+- fix(maestro/grokvideo): site feature toggle + missing i18n keys (dev@acedata.cloud)
 
 ## 3.282.1
 
