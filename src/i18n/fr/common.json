@@ -51,6 +51,10 @@
     "message": "Supprimer",
     "description": "Texte dans le bouton, utilisé pour supprimer un contenu"
   },
+  "button.deletePermanently": {
+    "message": "Supprimer définitivement le compte",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "Confirmer",
     "description": "Texte dans le bouton, utilisé pour confirmer une action"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "Échec de la suppression de votre compte. Veuillez réessayer plus tard.",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "Cette action est irréversible ! Votre compte et toutes ses données seront définitivement supprimés et ne pourront pas être récupérés.",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "Supprimés définitivement : profil, solde et crédits, applications et abonnements, clés API et liaisons de connexion tierces.",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "Saisissez votre nom d'utilisateur pour confirmer la suppression :",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "Saisissez votre nom d'utilisateur ici",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "Information",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "Requête",
+    "description": "Étiquette de l'onglet du dialogue de code API pour le fragment de requête (le code qui reproduit le résultat actuel)."
+  },
+  "tab.apiResponse": {
+    "message": "Réponse",
+    "description": "Étiquette de l'onglet du dialogue de code API pour la réponse en direct renvoyée après avoir cliqué sur Exécuter."
+  },
+  "button.apiRun": {
+    "message": "Exécuter",
+    "description": "Bouton du dialogue de code API qui exécute la requête en direct contre l'API en utilisant la clé de l'utilisateur. Relance la génération et est facturable."
+  },
+  "button.apiRunning": {
+    "message": "Exécution en cours…",
+    "description": "Étiquette du bouton Exécuter du dialogue de code API pendant que la requête en direct est en cours."
+  },
+  "message.apiClickRun": {
+    "message": "Cliquez sur « Exécuter » pour utiliser votre clé API et exécuter cette requête en temps réel.",
+    "description": "État vide de l'onglet Réponse du dialogue de code API, affiché avant que l'utilisateur n'ait exécuté la requête."
+  },
   "message.uploadInProgress": {
     "message": "Les téléversements de référence sont toujours en cours — veuillez patienter un instant.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "Supprimer définitivement le compte",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "Cette action est irréversible ! Votre compte et toutes ses données seront définitivement supprimés et ne pourront pas être récupérés.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "Supprimés définitivement : profil, solde et crédits, applications et abonnements, clés API et liaisons de connexion tierces.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "Saisissez votre nom d'utilisateur pour confirmer la suppression :",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "Saisissez votre nom d'utilisateur ici",
-    "description": "Placeholder for the username confirmation input"
   }
 }
