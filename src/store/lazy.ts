@@ -30,6 +30,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   kling: () => import('./kling'),
   veo: () => import('./veo'),
   sora: () => import('./sora'),
+  maestro: () => import('./maestro'),
   pixverse: () => import('./pixverse'),
   flux: () => import('./flux'),
   hailuo: () => import('./hailuo'),

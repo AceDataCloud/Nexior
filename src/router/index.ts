@@ -18,6 +18,7 @@ import pika from './pika';
 import kling from './kling';
 import veo from './veo';
 import sora from './sora';
+import maestro from './maestro';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -57,6 +58,7 @@ import {
   ROUTE_KLING_INDEX,
   ROUTE_VEO_INDEX,
   ROUTE_SORA_INDEX,
+  ROUTE_MAESTRO_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_SERP_INDEX,
@@ -163,6 +165,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'Sora',
     description: 'Generate AI videos with OpenAI Sora — create realistic videos from text descriptions.',
     keywords: ['Sora', 'OpenAI', 'AI Video', 'Video Generation', 'Text to Video'],
+    category: 'AI Video Generation'
+  },
+  maestro: {
+    title: 'Maestro',
+    description:
+      'Turn any article or topic into a captioned short video — script, visuals, voiceover and music, fully automated.',
+    keywords: ['Maestro', 'AI Video', 'Article to Video', 'Faceless Video', 'Short Video Generator'],
     category: 'AI Video Generation'
   },
   veo: {
@@ -287,6 +296,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['fish', ROUTE_FISH_TTS_INDEX],
   ['veo', ROUTE_VEO_INDEX],
   ['sora', ROUTE_SORA_INDEX],
+  ['maestro', ROUTE_MAESTRO_INDEX],
   ['kling', ROUTE_KLING_INDEX],
   ['luma', ROUTE_LUMA_INDEX],
   ['hailuo', ROUTE_HAILUO_INDEX],
@@ -333,6 +343,7 @@ export const routes = [
   kling,
   veo,
   sora,
+  maestro,
   pixverse,
   flux,
   hailuo,
