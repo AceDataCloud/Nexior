@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 19 Jun 2026 06:15:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 02:40:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.279.0
+
+Sat, 20 Jun 2026 02:40:13 GMT
+
+### Minor changes
+
+- Add Run + Request/Response tabs to the API code dialog (dev@acedata.cloud)
 
 ## 3.278.20
 
