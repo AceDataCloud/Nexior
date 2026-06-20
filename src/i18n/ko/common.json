@@ -51,6 +51,10 @@
     "message": "삭제",
     "description": "버튼의 텍스트, 내용을 삭제하는 데 사용"
   },
+  "button.deletePermanently": {
+    "message": "계정 영구 삭제",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "확인",
     "description": "버튼의 텍스트, 특정 작업을 확인하는 데 사용"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "계정 삭제에 실패했습니다. 나중에 다시 시도해 주세요.",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "이 작업은 되돌릴 수 없습니다! 계정과 모든 데이터가 영구적으로 삭제되며 복구할 수 없습니다.",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "영구 삭제: 프로필, 잔액 및 크레딧, 애플리케이션 및 구독, API 키, 타사 로그인 연결.",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "삭제를 확인하려면 사용자 이름을 입력하세요:",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "여기에 사용자 이름을 입력하세요",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "정보",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "요청",
+    "description": "현재 결과를 재현하는 코드 조각에 대한 API 코드 대화 상자의 탭 레이블입니다."
+  },
+  "tab.apiResponse": {
+    "message": "응답",
+    "description": "실행 버튼을 클릭한 후 반환된 실시간 응답에 대한 API 코드 대화 상자의 탭 레이블입니다."
+  },
+  "button.apiRun": {
+    "message": "실행",
+    "description": "사용자의 키를 사용하여 API에 대해 요청을 실시간으로 실행하는 API 코드 대화 상자 버튼입니다. 생성 작업을 다시 실행하며 요금이 부과됩니다."
+  },
+  "button.apiRunning": {
+    "message": "실행 중…",
+    "description": "실시간 요청이 진행 중일 때 API 코드 대화 상자의 실행 버튼 레이블입니다."
+  },
+  "message.apiClickRun": {
+    "message": "「실행」을 클릭하여 당신의 API 키로 이번 요청을 실시간으로 실행하세요.",
+    "description": "사용자가 요청을 실행하기 전 API 코드 대화 상자의 응답 탭 빈 상태입니다."
+  },
   "message.uploadInProgress": {
     "message": "참조 파일을 아직 업로드하는 중입니다. 잠시만 기다려 주세요.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "계정 영구 삭제",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "이 작업은 되돌릴 수 없습니다! 계정과 모든 데이터가 영구적으로 삭제되며 복구할 수 없습니다.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "영구 삭제: 프로필, 잔액 및 크레딧, 애플리케이션 및 구독, API 키, 타사 로그인 연결.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "삭제를 확인하려면 사용자 이름을 입력하세요:",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "여기에 사용자 이름을 입력하세요",
-    "description": "Placeholder for the username confirmation input"
   }
 }

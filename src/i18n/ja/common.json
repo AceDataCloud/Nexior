@@ -51,6 +51,10 @@
     "message": "削除",
     "description": "ボタンのテキスト、内容を削除するため"
   },
+  "button.deletePermanently": {
+    "message": "アカウントを完全に削除",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "確認",
     "description": "ボタンのテキスト、特定の操作を確認するため"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "アカウントの削除に失敗しました。後でもう一度お試しください。",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "この操作は取り消せません！アカウントとそのすべてのデータは完全に削除され、復元できません。",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "完全に削除されるもの：プロフィール、残高とクレジット、アプリケーションとサブスクリプション、API キー、サードパーティのログイン連携。",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "削除を確認するには、ユーザー名を入力してください：",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "ここにユーザー名を入力",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "情報",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "リクエスト",
+    "description": "APIコードダイアログのタブラベルで、現在の結果を再現するコードスニペットを示します。"
+  },
+  "tab.apiResponse": {
+    "message": "レスポンス",
+    "description": "実行をクリックした後に返されるライブレスポンスのためのAPIコードダイアログのタブラベルです。"
+  },
+  "button.apiRun": {
+    "message": "実行",
+    "description": "APIコードダイアログのボタンで、ユーザーのキーを使用してAPIに対してリクエストをリアルタイムで実行します。生成を再実行し、課金対象となります。"
+  },
+  "button.apiRunning": {
+    "message": "実行中…",
+    "description": "APIコードダイアログの実行ボタンラベルで、リアルタイムリクエストが進行中の間表示されます。"
+  },
+  "message.apiClickRun": {
+    "message": "「実行」をクリックして、あなたのAPIキーを使ってこのリクエストをリアルタイムで実行できます。",
+    "description": "APIコードダイアログのレスポンスタブの空の状態で、ユーザーがリクエストを実行する前に表示されます。"
+  },
   "message.uploadInProgress": {
     "message": "参照ファイルのアップロードがまだ進行中です。少々お待ちください。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "アカウントを完全に削除",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "この操作は取り消せません！アカウントとそのすべてのデータは完全に削除され、復元できません。",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "完全に削除されるもの：プロフィール、残高とクレジット、アプリケーションとサブスクリプション、API キー、サードパーティのログイン連携。",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "削除を確認するには、ユーザー名を入力してください：",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "ここにユーザー名を入力",
-    "description": "Placeholder for the username confirmation input"
   }
 }

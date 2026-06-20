@@ -51,6 +51,10 @@
     "message": "Usuń",
     "description": "Tekst w przycisku, używany do usuwania treści"
   },
+  "button.deletePermanently": {
+    "message": "Trwale usuń konto",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "Potwierdź",
     "description": "Tekst w przycisku, używany do potwierdzania pewnych działań"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "Nie udało się usunąć konta. Spróbuj ponownie później.",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "Tej czynności nie można cofnąć! Twoje konto i wszystkie jego dane zostaną trwale usunięte i nie będzie można ich odzyskać.",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "Trwale usunięte: profil, saldo i kredyty, aplikacje i subskrypcje, klucze API oraz powiązania logowania zewnętrznego.",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "Wpisz swoją nazwę użytkownika, aby potwierdzić usunięcie:",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "Wpisz tutaj swoją nazwę użytkownika",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "Informacja",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "Żądanie",
+    "description": "Etykieta zakładki dialogu kodu API dla fragmentu żądania (kod, który reprodukuje aktualny wynik)."
+  },
+  "tab.apiResponse": {
+    "message": "Odpowiedź",
+    "description": "Etykieta zakładki dialogu kodu API dla odpowiedzi na żywo zwróconej po kliknięciu Uruchom."
+  },
+  "button.apiRun": {
+    "message": "Uruchom",
+    "description": "Przycisk w dialogu kodu API, który wykonuje żądanie na żywo za pomocą klucza użytkownika. Powtarza generację i jest płatny."
+  },
+  "button.apiRunning": {
+    "message": "Uruchamianie…",
+    "description": "Etykieta przycisku Uruchom w dialogu kodu API, gdy żądanie na żywo jest w trakcie realizacji."
+  },
+  "message.apiClickRun": {
+    "message": "Kliknij „Uruchom”, aby użyć swojego klucza API do wykonania tego żądania na żywo.",
+    "description": "Stan pusty zakładki Odpowiedzi w dialogu kodu API, wyświetlany przed uruchomieniem żądania przez użytkownika."
+  },
   "message.uploadInProgress": {
     "message": "Przesyłanie plików referencyjnych nadal trwa — proszę chwilę poczekać.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "Trwale usuń konto",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "Tej czynności nie można cofnąć! Twoje konto i wszystkie jego dane zostaną trwale usunięte i nie będzie można ich odzyskać.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "Trwale usunięte: profil, saldo i kredyty, aplikacje i subskrypcje, klucze API oraz powiązania logowania zewnętrznego.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "Wpisz swoją nazwę użytkownika, aby potwierdzić usunięcie:",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "Wpisz tutaj swoją nazwę użytkownika",
-    "description": "Placeholder for the username confirmation input"
   }
 }

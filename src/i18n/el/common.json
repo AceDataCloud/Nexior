@@ -51,6 +51,10 @@
     "message": "Διαγραφή",
     "description": "Κείμενο στο κουμπί για να διαγράψετε περιεχόμενο"
   },
+  "button.deletePermanently": {
+    "message": "Οριστική διαγραφή λογαριασμού",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "Επιβεβαίωση",
     "description": "Κείμενο στο κουμπί για να επιβεβαιώσετε κάποια ενέργεια"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "Η διαγραφή του λογαριασμού σας απέτυχε. Δοκιμάστε ξανά αργότερα.",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "Αυτή η ενέργεια είναι μη αναστρέψιμη! Ο λογαριασμός σας και όλα τα δεδομένα του θα διαγραφούν οριστικά και δεν μπορούν να ανακτηθούν.",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "Διαγράφονται οριστικά: προφίλ, υπόλοιπο και μονάδες, εφαρμογές και συνδρομές, κλειδιά API και συνδέσεις σύνδεσης τρίτων.",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "Πληκτρολογήστε το όνομα χρήστη σας για να επιβεβαιώσετε τη διαγραφή:",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "Εισαγάγετε εδώ το όνομα χρήστη σας",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "Πληροφορία",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "Αίτημα",
+    "description": "Ετικέτα καρτέλας διαλόγου API για το απόσπασμα αιτήματος (ο κώδικας που αναπαράγει το τρέχον αποτέλεσμα)."
+  },
+  "tab.apiResponse": {
+    "message": "Απόκριση",
+    "description": "Ετικέτα καρτέλας διαλόγου API για τη ζωντανή απόκριση που επιστρέφεται μετά την κλικ στο Εκτέλεση."
+  },
+  "button.apiRun": {
+    "message": "Εκτέλεση",
+    "description": "Κουμπί διαλόγου API που εκτελεί το αίτημα ζωντανά κατά της API χρησιμοποιώντας το κλειδί του χρήστη. Επαναλαμβάνει τη δημιουργία και είναι χρεώσιμο."
+  },
+  "button.apiRunning": {
+    "message": "Εκτελείται…",
+    "description": "Ετικέτα κουμπιού Εκτέλεσης διαλόγου API ενώ το ζωντανό αίτημα είναι σε εκκίνηση."
+  },
+  "message.apiClickRun": {
+    "message": "Κάντε κλικ στο «Εκτέλεση» για να χρησιμοποιήσετε το API Key σας για να εκτελέσετε αυτό το αίτημα σε πραγματικό χρόνο.",
+    "description": "Κατάσταση κενής καρτέλας απόκρισης διαλόγου API, εμφανίζεται πριν ο χρήστης εκτελέσει το αίτημα."
+  },
   "message.uploadInProgress": {
     "message": "Οι μεταφορτώσεις αναφορών βρίσκονται ακόμη σε εξέλιξη — περιμένετε λίγο.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "Οριστική διαγραφή λογαριασμού",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "Αυτή η ενέργεια είναι μη αναστρέψιμη! Ο λογαριασμός σας και όλα τα δεδομένα του θα διαγραφούν οριστικά και δεν μπορούν να ανακτηθούν.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "Διαγράφονται οριστικά: προφίλ, υπόλοιπο και μονάδες, εφαρμογές και συνδρομές, κλειδιά API και συνδέσεις σύνδεσης τρίτων.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "Πληκτρολογήστε το όνομα χρήστη σας για να επιβεβαιώσετε τη διαγραφή:",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "Εισαγάγετε εδώ το όνομα χρήστη σας",
-    "description": "Placeholder for the username confirmation input"
   }
 }

@@ -987,6 +987,26 @@
     "message": "在你自己的代码里运行下面任意一段即可复现当前结果。",
     "description": "API code dialog: short hint shown above the language tabs. Explains that the snippet below reproduces the current result when run from the user's own code."
   },
+  "tab.apiRequest": {
+    "message": "请求",
+    "description": "API code dialog tab label for the request snippet (the code that reproduces the current result)."
+  },
+  "tab.apiResponse": {
+    "message": "响应",
+    "description": "API code dialog tab label for the live response returned after clicking Run."
+  },
+  "button.apiRun": {
+    "message": "运行",
+    "description": "API code dialog button that executes the request live against the API using the user's key. Re-runs the generation and is billable."
+  },
+  "button.apiRunning": {
+    "message": "运行中…",
+    "description": "API code dialog Run button label while the live request is in flight."
+  },
+  "message.apiClickRun": {
+    "message": "点击「运行」即可使用你的 API Key 实时执行本次请求。",
+    "description": "API code dialog Response tab empty state, shown before the user has run the request."
+  },
   "message.uploadInProgress": {
     "message": "参考文件正在上传，请稍候再生成",
     "description": "用户在参考图/视频/音频还未上传完成时点击生成按钮，会弹出的轻量提示，要求用户等待上传完成后再次点击生成。"

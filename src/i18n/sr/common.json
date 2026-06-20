@@ -51,6 +51,10 @@
     "message": "Obriši",
     "description": "Tekst u dugmetu, koji se koristi za brisanje sadržaja"
   },
+  "button.deletePermanently": {
+    "message": "Трајно обриши налог",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "Potvrdi",
     "description": "Tekst u dugmetu, koji se koristi za potvrdu neke operacije"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "Брисање налога није успело. Покушајте поново касније.",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "Ова радња је неповратна! Ваш налог и сви његови подаци биће трајно обрисани и не могу се повратити.",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "Трајно се бришу: профил, стање и кредити, апликације и претплате, API кључеви и везе за пријаву трећих страна.",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "Унесите своје корисничко име да бисте потврдили брисање:",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "Овде унесите своје корисничко име",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "Informacija",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "Захтев",
+    "description": "Oznaka taba dijaloga za API kod za isječak zahteva (kod koji reprodukuje trenutni rezultat)."
+  },
+  "tab.apiResponse": {
+    "message": "Одговор",
+    "description": "Oznaka taba dijaloga za API kod za uživo odgovor koji se vraća nakon klika na Izvrši."
+  },
+  "button.apiRun": {
+    "message": "Изврши",
+    "description": " dugme dijaloga za API kod koje izvršava zahtev uživo koristeći korisnikov ključ. Ponovo pokreće generaciju i naplaćuje se."
+  },
+  "button.apiRunning": {
+    "message": "Извршава се…",
+    "description": "Oznaka dugmeta 'Izvrši' dijaloga za API kod dok je uživo zahtev u toku."
+  },
+  "message.apiClickRun": {
+    "message": "Кликните на „Изврши“ да бисте користили ваш API ključ за реализацију овог захтева.",
+    "description": "Prazno stanje taba odgovora dijaloga za API kod, prikazuje se pre nego što korisnik izvrši zahtev."
+  },
   "message.uploadInProgress": {
     "message": "Otpremanje referentnih datoteka je još u toku — sačekajte trenutak.",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "Трајно обриши налог",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "Ова радња је неповратна! Ваш налог и сви његови подаци биће трајно обрисани и не могу се повратити.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "Трајно се бришу: профил, стање и кредити, апликације и претплате, API кључеви и везе за пријаву трећих страна.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "Унесите своје корисничко име да бисте потврдили брисање:",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "Овде унесите своје корисничко име",
-    "description": "Placeholder for the username confirmation input"
   }
 }

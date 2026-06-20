@@ -51,6 +51,10 @@
     "message": "刪除",
     "description": "按鈕中的文本，用於刪除內容"
   },
+  "button.deletePermanently": {
+    "message": "永久刪除帳號",
+    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+  },
   "button.confirm": {
     "message": "確認",
     "description": "按鈕中的文本，用於確認某項操作"
@@ -374,6 +378,22 @@
   "message.deleteAccountFailed": {
     "message": "刪除帳號失敗，請稍後再試。",
     "description": "Message shown when account deletion fails"
+  },
+  "message.deleteAccountWarning": {
+    "message": "此操作不可逆！您的帳號及其所有資料將被永久刪除，無法找回。",
+    "description": "Red warning banner at the top of the delete confirmation dialog"
+  },
+  "message.deleteAccountConsequences": {
+    "message": "將永久刪除：個人資料、餘額與點數、應用與訂閱、API 金鑰及第三方登入綁定。",
+    "description": "Explains what data will be removed in the delete confirmation dialog"
+  },
+  "message.deleteAccountTypePrompt": {
+    "message": "請輸入您的使用者名稱以確認刪除：",
+    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+  },
+  "message.deleteAccountPlaceholder": {
+    "message": "在此輸入您的使用者名稱",
+    "description": "Placeholder for the username confirmation input"
   },
   "message.info": {
     "message": "提示",
@@ -967,6 +987,26 @@
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
     "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
   },
+  "tab.apiRequest": {
+    "message": "請求",
+    "description": "API 代碼對話框中請求片段的標籤（重現當前結果的代碼）。"
+  },
+  "tab.apiResponse": {
+    "message": "響應",
+    "description": "API 代碼對話框中在點擊運行後返回的實時響應的標籤。"
+  },
+  "button.apiRun": {
+    "message": "運行",
+    "description": "API 代碼對話框中的按鈕，使用用戶的金鑰實時執行請求。重新運行生成並計費。"
+  },
+  "button.apiRunning": {
+    "message": "運行中…",
+    "description": "當實時請求正在進行時，API 代碼對話框中的運行按鈕標籤。"
+  },
+  "message.apiClickRun": {
+    "message": "點擊「運行」即可使用你的 API Key 實時執行本次請求。",
+    "description": "API 代碼對話框中響應標籤的空狀態，在用戶運行請求之前顯示。"
+  },
   "message.uploadInProgress": {
     "message": "參考檔案仍在上傳，請稍候再生成。",
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
@@ -990,25 +1030,5 @@
   "appUpgrade.later": {
     "message": "Later",
     "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
-  },
-  "button.deletePermanently": {
-    "message": "永久刪除帳號",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
-  },
-  "message.deleteAccountWarning": {
-    "message": "此操作不可逆！您的帳號及其所有資料將被永久刪除，無法找回。",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
-  },
-  "message.deleteAccountConsequences": {
-    "message": "將永久刪除：個人資料、餘額與點數、應用與訂閱、API 金鑰及第三方登入綁定。",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
-  },
-  "message.deleteAccountTypePrompt": {
-    "message": "請輸入您的使用者名稱以確認刪除：",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
-  },
-  "message.deleteAccountPlaceholder": {
-    "message": "在此輸入您的使用者名稱",
-    "description": "Placeholder for the username confirmation input"
   }
 }
