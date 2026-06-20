@@ -64,6 +64,22 @@ describe('coding bridge session identity (integration)', () => {
     expect(h.state.events['real-1'][0].streaming).toBe(true);
   });
 
+  it("keeps the real id's first events after re-key (relay seq is per-session)", () => {
+    // The relay numbers `seq` PER session_id. The provisional id accrues some seq
+    // before the real id is known; the real id then starts its OWN seq at 1. The
+    // dedup must not drop those low-seq events as "already seen" — that silently
+    // dropped a codex turn's first reply (only later turns showed).
+    const h = harness();
+    h.feed({ event: 'session.started', session_id: 'prov', seq: 1 });
+    h.feed({ event: 'session.identified', session_id: 'prov', sdk_session_id: 'real-x', seq: 2 });
+    // Node re-tags subsequent events to real-x; relay numbers real-x from 1.
+    h.feed({ event: 'session.text', session_id: 'real-x', id: 'r1', text: 'first reply', seq: 1 });
+    h.feed({ event: 'session.result', session_id: 'real-x', subtype: 'turn_complete', seq: 2 });
+    const ev = h.state.events['real-x'] || [];
+    expect(ev.some((e) => e.kind === 'text' && e.text === 'first reply')).toBe(true);
+    expect(ev.some((e) => e.kind === 'result')).toBe(true);
+  });
+
   it('reattaches to a live session on restore after a reload (Stop + typewriter kept)', () => {
     const h = harness();
     // After a reload the store is empty; requestSessions → sessions.snapshot tells
