@@ -112,6 +112,7 @@ const FEATURE_KEYS = [
   'seedream',
   'seedance',
   'grokvideo',
+  'maestro',
   'wan',
   'producer',
   'kimi',
