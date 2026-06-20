@@ -56,7 +56,9 @@ export interface ICommonState {
 export interface IAppState {
   midjourney: IMidjourneyState;
   chat: IChatState;
-  realtime: IRealtimeState;
+  // Lazily registered only when the user opens the voice-call screen, so it's
+  // absent from the initial root state — optional, accessed with `?.`.
+  realtime?: IRealtimeState;
   qrart: IQrartState;
   luma: ILumaState;
   pika: IPikaState;
