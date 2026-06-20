@@ -4,7 +4,13 @@
       <config-panel @generate="onGenerateAudio" />
     </template>
     <template #result>
-      <recent-panel ref="recentPanel" class="panel recent" :loading="loadingMore" @reach-top="onReachTop" />
+      <recent-panel
+        ref="recentPanel"
+        class="panel recent"
+        :loading="loadingMore || loadingAll"
+        @reach-top="onReachTop"
+        @load-all="onLoadAll"
+      />
     </template>
     <template #preview>
       <preview-panel />
@@ -31,6 +37,7 @@ interface IData {
   task: ISunoTask | undefined;
   job: number;
   loadingMore: boolean;
+  loadingAll: boolean;
   fetchingTasks: boolean;
 }
 
@@ -49,6 +56,7 @@ export default defineComponent({
       task: undefined,
       job: 0,
       loadingMore: false,
+      loadingAll: false,
       fetchingTasks: false
     };
   },
@@ -127,6 +135,43 @@ export default defineComponent({
           }),
         getScrollElement: () => this.getTasksScrollElement()
       });
+    },
+    // Pull the user's full task history (older pages) so client-side
+    // search/filter cover everything, not just the loaded pages. Triggered
+    // once when the user first searches/filters.
+    async onLoadAll() {
+      if (this.loadingAll) {
+        return;
+      }
+      this.loadingAll = true;
+      try {
+        // Bounded loop — each pass fetches the page older than the current
+        // oldest item; stop at total, when no progress is made, or at the cap.
+        for (let guard = 0; guard < 100; guard++) {
+          // Wait for any in-flight fetch (the 5s poll or pagination) to settle,
+          // otherwise onGetTasks early-returns on its fetchingTasks guard and we
+          // would mistake the no-op for end-of-history.
+          for (let waits = 0; (this.fetchingTasks || this.applicationsLoading) && waits < 50; waits++) {
+            await new Promise((resolve) => setTimeout(resolve, 100));
+          }
+          const items = this.tasks?.items ?? [];
+          const total = this.tasks?.total;
+          if (total !== undefined && items.length >= total) {
+            break;
+          }
+          const oldest = items[0];
+          if (!oldest?.created_at) {
+            break;
+          }
+          const before = items.length;
+          await this.onGetTasks({ createdAtMax: oldest.created_at });
+          if ((this.tasks?.items?.length ?? 0) <= before) {
+            break;
+          }
+        }
+      } finally {
+        this.loadingAll = false;
+      }
     },
     async onGetService() {
       await this.$store.dispatch('suno/getService');
