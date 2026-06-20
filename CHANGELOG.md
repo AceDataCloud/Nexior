@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 13:03:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 13:05:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.2
+
+Sat, 20 Jun 2026 13:05:29 GMT
+
+### Patches
+
+- feat(suno): P0 library & visual coherence — coherent search pill, always-visible play, variation badges, model chip, 1-line style, responsive preview, cleanup (dev@acedata.cloud)
 
 ## 3.281.1
 
