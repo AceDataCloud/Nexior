@@ -15,9 +15,12 @@ export const BASE_URL_CODING_BRIDGE = isTest
 // Browser WebSocket endpoint: same host, https -> wss / http -> ws, path `/ws`.
 export const WS_URL_CODING_BRIDGE = `${BASE_URL_CODING_BRIDGE.replace(/^http/, 'ws')}/ws`;
 
-// OpenAI-compatible Realtime voice endpoint (WebSocket), drop-in with the
-// official API. Token is passed via the Sec-WebSocket-Protocol subprotocol.
-export const WS_URL_REALTIME = `${BASE_URL_API.replace(/^http/, 'ws')}/v1/realtime`;
+// Realtime voice (WebSocket). Browsers can't set Authorization on a WS and Kong's
+// custom-auth only reads that header, so we use a DIRECT host that bypasses Kong
+// (like coding-bridge); the relay self-auths from the Sec-WebSocket-Protocol token.
+// Path /aichat2/realtime bills the aichat service (same balance as ChatGPT).
+// (Developers use api.acedata.cloud/v1/realtime with an Authorization header.)
+export const WS_URL_REALTIME = 'wss://realtime.acedata.cloud/aichat2/realtime';
 
 export const BASE_HOST_PLATFORM = new URL(BASE_URL_PLATFORM).host;
 export const BASE_HOST_HUB = new URL(BASE_URL_HUB).host;
