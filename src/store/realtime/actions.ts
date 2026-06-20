@@ -82,3 +82,11 @@ export const init = async ({ dispatch, state }: any): Promise<ICredential | unde
   }
   return state.credential;
 };
+
+export default {
+  getService,
+  getApplications,
+  createCredential,
+  setApplication,
+  init
+};
