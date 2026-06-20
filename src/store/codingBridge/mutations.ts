@@ -97,10 +97,15 @@ export const renameSession = (state: ICodingBridgeState, payload: { from: string
     state.events[to] = moving;
   }
   delete state.events[from];
-  if (state.lastSeq[from] !== undefined) {
-    state.lastSeq[to] = Math.max(state.lastSeq[to] ?? 0, state.lastSeq[from]);
-    delete state.lastSeq[from];
-  }
+  // Do NOT carry the provisional id's seq cursor onto the real id. The relay
+  // numbers `seq` PER session_id, so once the node re-tags events to the real id
+  // that id begins a FRESH seq space (1, 2, 3…). Inheriting the provisional
+  // cursor made the dedup in `applyNodeEvent` drop the real id's first events as
+  // "already seen" — e.g. a codex turn's first reply (low seq) silently vanished
+  // while a later turn (higher seq) showed. The real id is brand-new to this tab
+  // at re-key time, so reset its cursor to accept its whole stream.
+  delete state.lastSeq[from];
+  state.lastSeq[to] = 0;
   for (const request of state.permissions) {
     if (request.session_id === from) {
       request.session_id = to;

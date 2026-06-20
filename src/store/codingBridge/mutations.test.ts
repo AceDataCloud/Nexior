@@ -146,7 +146,9 @@ describe('coding bridge session identity (renameSession)', () => {
     expect(state.sessions['real'].status).toBe('running');
     expect(state.events['prov']).toBeUndefined();
     expect(state.events['real'].map((e) => e.id)).toEqual(['a']);
-    expect(state.lastSeq['real']).toBe(7);
+    // The real id starts a FRESH relay seq space, so its cursor resets to 0 (not
+    // the provisional id's 7) — otherwise the real id's first events get dropped.
+    expect(state.lastSeq['real']).toBe(0);
     expect(state.lastSeq['prov']).toBeUndefined();
     expect(state.currentSessionId).toBe('real');
     expect(state.historyRef?.session_id).toBe('real');
