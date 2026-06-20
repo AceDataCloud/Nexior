@@ -77,6 +77,7 @@ export interface IMidjourneyImagineRequest {
   image_id?: string;
   translation?: boolean;
   callback_url?: string;
+  async?: boolean;
   application_id?: string;
   version?: string;
   hd?: boolean;
@@ -95,6 +96,7 @@ export interface IMidjourneyVideosRequest {
   loop?: boolean;
   resolution?: string;
   callback_url?: string;
+  async?: boolean;
   application_id?: string;
 }
 

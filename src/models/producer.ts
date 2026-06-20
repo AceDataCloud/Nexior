@@ -36,6 +36,7 @@ export interface IProducerAudioRequest {
   weirdness?: number;
   seed?: number;
   callback_url?: string;
+  async?: boolean;
   instrumental?: boolean;
   vocal_gender?: string;
   replace_section_start?: number;

@@ -996,16 +996,36 @@
     "description": "Etykieta zakładki dialogu kodu API dla odpowiedzi na żywo zwróconej po kliknięciu Uruchom."
   },
   "button.apiRun": {
-    "message": "Uruchom",
-    "description": "Przycisk w dialogu kodu API, który wykonuje żądanie na żywo za pomocą klucza użytkownika. Powtarza generację i jest płatny."
+    "message": "Uruchom ponownie",
+    "description": "Przycisk w dialogu kodu API, który ponownie uruchamia żądanie na żywo za pomocą klucza użytkownika. Wynik już istnieje, więc kliknięcie uruchamia go ponownie i jest płatne."
   },
   "button.apiRunning": {
     "message": "Uruchamianie…",
     "description": "Etykieta przycisku Uruchom w dialogu kodu API, gdy żądanie na żywo jest w trakcie realizacji."
   },
+  "button.apiRunConfirm": {
+    "message": "Potwierdź uruchomienie",
+    "description": "Etykieta przycisku potwierdzenia w dialogu, który ostrzega, że uruchomienie tutaj zużywa dodatkowe kredyty."
+  },
+  "button.viewDocs": {
+    "message": "Zobacz dokumentację",
+    "description": "Przycisk w stopce dialogu kodu API, który otwiera odpowiednią stronę dokumentacji API na platformie."
+  },
   "message.apiClickRun": {
-    "message": "Kliknij „Uruchom”, aby użyć swojego klucza API do wykonania tego żądania na żywo.",
-    "description": "Stan pusty zakładki Odpowiedzi w dialogu kodu API, wyświetlany przed uruchomieniem żądania przez użytkownika."
+    "message": "Kliknij „Uruchom ponownie”, aby użyć swojego klucza API do wykonania tego żądania na żywo.",
+    "description": "Stan pusty zakładki Odpowiedź w dialogu kodu API, wyświetlany przed uruchomieniem żądania przez użytkownika."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Potwierdź uruchomienie",
+    "description": "Tytuł dialogu potwierdzenia wyświetlanego przed ponownym uruchomieniem żądania z dialogu kodu API."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "To uruchomienie użyje twojego klucza API do rzeczywistego wywołania interfejsu i dodatkowo zużyje punkty, czy chcesz kontynuować?",
+    "description": "Treść dialogu potwierdzenia ostrzegającego, że ponowne uruchomienie żądania to rzeczywiste, płatne wywołanie API."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Nie pokazuj ponownie",
+    "description": "Pole wyboru w dialogu potwierdzenia uruchomienia, które, gdy jest zaznaczone, tłumi ostrzeżenie przy kolejnych uruchomieniach."
   },
   "message.uploadInProgress": {
     "message": "Przesyłanie plików referencyjnych nadal trwa — proszę chwilę poczekać.",

@@ -11,6 +11,7 @@ export interface IPixverseConfig {
   seed?: number;
   aspect_ratio?: string;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IPixverseGenerateRequest {
@@ -25,6 +26,7 @@ export interface IPixverseGenerateRequest {
   duration?: number;
   seed?: number;
   callback_url?: string;
+  async?: boolean;
 }
 export interface IPixverseVideo {
   id?: string;

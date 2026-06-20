@@ -233,7 +233,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getWebhookCallbackUrl } from '@/constants';
 import { useFormatDuring } from '@/utils/number';
 import { ISunoAudio, ISunoTask } from '@/models';
 import {
@@ -256,8 +255,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-
-const CALLBACK_URL = getWebhookCallbackUrl('suno');
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -619,7 +616,7 @@ export default defineComponent({
       if (!token) return;
       ElMessage.info(this.$t('suno.message.extractingVocals'));
       sunoOperator
-        .vox({ audio_id: audioId, callback_url: CALLBACK_URL }, { token })
+        .vox({ audio_id: audioId, async: true }, { token })
         .then(() => {
           ElMessage.success(this.$t('suno.message.extractVocalsSuccess'));
         })
@@ -697,7 +694,7 @@ export default defineComponent({
       const request = {
         action,
         audio_id: audioId,
-        callback_url: CALLBACK_URL
+        async: true
       } as ISunoAudioRequest;
       const token = this.credential?.token;
       if (!token) {

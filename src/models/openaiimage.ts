@@ -3,6 +3,7 @@ export interface IOpenAIImageConfig {
   image_urls?: string[];
   size?: string;
   callback_url?: string;
+  async?: boolean;
   model?: string;
 }
 
@@ -13,6 +14,7 @@ export interface IOpenAIImageGenerateRequest {
   size?: string;
   image_urls?: string[];
   callback_url?: string;
+  async?: boolean;
   background?: 'transparent' | 'opaque' | 'auto';
   quality?: 'auto' | 'high' | 'medium' | 'low' | 'standard';
 }
@@ -24,6 +26,7 @@ export interface IOpenAIImageEditRequest {
   size?: string;
   image_urls?: string[];
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IOpenAIImageImage {

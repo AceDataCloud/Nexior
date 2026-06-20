@@ -17,13 +17,11 @@ import { seedreamOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedreamGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 import { ISeedreamTask } from '@/models';
-
-const CALLBACK_URL = getWebhookCallbackUrl('seedream');
 
 interface IData {
   task: ISeedreamTask | undefined;
@@ -160,7 +158,7 @@ export default defineComponent({
       }
       const request = {
         ...cfg,
-        callback_url: CALLBACK_URL
+        async: true
       } as ISeedreamGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

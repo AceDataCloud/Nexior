@@ -8,6 +8,7 @@ export interface IPikaConfig {
   ingredients?: boolean;
   ingredients_mode?: string;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IPikaGenerateRequest {
@@ -20,6 +21,7 @@ export interface IPikaGenerateRequest {
   ingredients?: boolean;
   ingredients_mode?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 export interface IPikaVideo {

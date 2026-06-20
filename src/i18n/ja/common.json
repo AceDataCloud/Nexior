@@ -996,16 +996,36 @@
     "description": "実行をクリックした後に返されるライブレスポンスのためのAPIコードダイアログのタブラベルです。"
   },
   "button.apiRun": {
-    "message": "実行",
-    "description": "APIコードダイアログのボタンで、ユーザーのキーを使用してAPIに対してリクエストをリアルタイムで実行します。生成を再実行し、課金対象となります。"
+    "message": "再実行",
+    "description": "ユーザーのキーを使用してAPIに対してリクエストをライブで再実行するAPIコードダイアログボタン。結果はすでに存在するため、クリックすると再実行され、請求対象となります。"
   },
   "button.apiRunning": {
     "message": "実行中…",
     "description": "APIコードダイアログの実行ボタンラベルで、リアルタイムリクエストが進行中の間表示されます。"
   },
+  "button.apiRunConfirm": {
+    "message": "実行を確認",
+    "description": "ここで実行すると追加のクレジットを消費することを警告するダイアログの確認ボタンラベル。"
+  },
+  "button.viewDocs": {
+    "message": "ドキュメントを見る",
+    "description": "プラットフォーム上の対応するAPIドキュメントページを開くAPIコードダイアログのフッターボタン。"
+  },
   "message.apiClickRun": {
-    "message": "「実行」をクリックして、あなたのAPIキーを使ってこのリクエストをリアルタイムで実行できます。",
+    "message": "「再実行」をクリックして、あなたのAPIキーを使ってこのリクエストをリアルタイムで実行できます。",
     "description": "APIコードダイアログのレスポンスタブの空の状態で、ユーザーがリクエストを実行する前に表示されます。"
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "実行を確認",
+    "description": "APIコードダイアログからリクエストを再実行する前に表示される確認ダイアログのタイトル。"
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "この実行はあなたのAPIキーを使用して実際にAPIを呼び出し、追加のポイントを消費します。続行してもよろしいですか？",
+    "description": "リクエストを再実行することが実際の請求対象となるAPI呼び出しであることを警告する確認ダイアログの本文。"
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "今後は表示しない",
+    "description": "実行確認ダイアログのチェックボックスで、チェックを入れると次回以降の実行時に警告が抑制されます。"
   },
   "message.uploadInProgress": {
     "message": "参照ファイルのアップロードがまだ進行中です。少々お待ちください。",

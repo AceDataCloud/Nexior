@@ -5,6 +5,7 @@ export interface INanobananaConfig {
   aspect_ratio?: string;
   resolution?: string;
   callback_url?: string;
+  async?: boolean;
   model?: string;
 }
 
@@ -16,6 +17,7 @@ export interface INanobananaGenerateRequest {
   aspect_ratio?: string;
   resolution?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 

@@ -24,11 +24,9 @@ import { fishOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IFishTask, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('fish');
 
 interface IData {
   task: IFishTask | undefined;
@@ -166,7 +164,7 @@ export default defineComponent({
       const headerModel = (cfg.model || FISH_DEFAULT_TTS_MODEL) as string;
       const request: IFishTtsRequest = {
         text,
-        callback_url: CALLBACK_URL
+        async: true
       };
       if (cfg.reference_id) {
         request.reference_id = cfg.reference_id;

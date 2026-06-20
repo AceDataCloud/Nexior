@@ -22,6 +22,7 @@ export interface ISeedanceConfig {
   return_last_frame?: boolean;
   execution_expires_after?: number;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 
@@ -39,6 +40,7 @@ export interface ISeedanceGenerateRequest {
   return_last_frame?: boolean;
   execution_expires_after?: number;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 

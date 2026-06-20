@@ -8,6 +8,7 @@ export interface IWanConfig {
   audio?: boolean;
   prompt_extend?: boolean;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IWanGenerateRequest {
@@ -21,6 +22,7 @@ export interface IWanGenerateRequest {
   prompt_extend?: boolean;
   negative_prompt?: string;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IWanVideo {

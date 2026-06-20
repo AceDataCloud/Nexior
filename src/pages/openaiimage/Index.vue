@@ -17,13 +17,11 @@ import { openaiimageOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IOpenAIImageEditRequest, IOpenAIImageGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
-
-const CALLBACK_URL = getWebhookCallbackUrl('openaiimage');
 
 interface IData {
   task: IOpenAIImageTask | undefined;
@@ -169,7 +167,7 @@ export default defineComponent({
       const generateRequest = {
         ...cfg,
         action: 'generate',
-        callback_url: CALLBACK_URL
+        async: true
       } as IOpenAIImageGenerateRequest;
 
       const editRequest = {
@@ -178,7 +176,7 @@ export default defineComponent({
         prompt: cfg?.prompt,
         size: cfg?.size,
         image_urls: cfg?.image_urls || [],
-        callback_url: CALLBACK_URL
+        async: true
       } as IOpenAIImageEditRequest;
 
       const token = this.credential?.token;

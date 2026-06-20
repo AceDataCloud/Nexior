@@ -83,14 +83,19 @@
           {{ $t('common.button.apiPlatform') }}
           <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="ml-2 ext-icon" />
         </el-button>
+        <el-button v-if="docHref" class="docs-btn" type="primary" plain @click="onOpenDocs">
+          <font-awesome-icon icon="fa-solid fa-book" class="mr-2" />
+          {{ $t('common.button.viewDocs') }}
+          <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="ml-2 ext-icon" />
+        </el-button>
       </div>
     </template>
   </el-dialog>
 </template>
 
 <script lang="ts">
-import { defineComponent, type PropType } from 'vue';
-import { ElDialog, ElButton, ElImage } from 'element-plus';
+import { defineComponent, h, type PropType } from 'vue';
+import { ElDialog, ElButton, ElImage, ElCheckbox, ElMessageBox } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { VARIANTS, renderApiCode, type Lang, type CodeVariant } from '@acedatacloud/core/code-snippet';
 import CodeSnippet from '@/components/common/CodeSnippet.vue';
@@ -116,6 +121,9 @@ const LANGUAGES: { name: Lang; icon: string }[] = [
 const PLATFORM_URL = 'https://platform.acedata.cloud/';
 
 const PLATFORM_FAVICON = 'https://platform.acedata.cloud/favicon.ico';
+
+// Persisted opt-out for the "running here consumes extra credits" warning.
+const RUN_CONFIRM_SKIP_KEY = 'nexior:api-run:skip-confirm';
 interface IRenderHeader {
   key: string;
   value: string;
@@ -155,6 +163,12 @@ export default defineComponent({
       default: () => ({})
     },
     token: {
+      type: String,
+      default: ''
+    },
+    // Per-service platform documentation URL. When set, the footer shows a
+    // "查看文档" button that deep-links to the matching API doc.
+    docHref: {
       type: String,
       default: ''
     }
@@ -242,9 +256,11 @@ export default defineComponent({
       this.variant = VARIANTS[name][0]?.key || '';
     },
     // Re-fires the same request live against the API. This is a real, billable
-    // generation — same as the user calling the endpoint themselves.
+    // generation — same as the user calling the endpoint themselves, so it is
+    // gated behind a confirmation (unless the user opted out).
     async onRun() {
       if (!this.canRun || this.running) return;
+      if (!(await this.confirmRun())) return;
       this.running = true;
       this.response = '';
       this.activeTab = 'response';
@@ -267,6 +283,46 @@ export default defineComponent({
     },
     onOpenPlatform() {
       window.open(PLATFORM_URL, '_blank', 'noopener');
+    },
+    onOpenDocs() {
+      if (this.docHref) {
+        window.open(this.docHref, '_blank', 'noopener');
+      }
+    },
+    // Warns that running here is a real, billable call. Returns true to proceed.
+    // The checkbox persists an opt-out so power users aren't nagged every time.
+    async confirmRun(): Promise<boolean> {
+      if (localStorage.getItem(RUN_CONFIRM_SKIP_KEY) === '1') {
+        return true;
+      }
+      let dontAsk = false;
+      try {
+        await ElMessageBox({
+          title: this.$t('common.message.apiRunConfirmTitle') as string,
+          showCancelButton: true,
+          confirmButtonText: this.$t('common.button.apiRunConfirm') as string,
+          cancelButtonText: this.$t('common.button.cancel') as string,
+          type: 'warning',
+          message: () =>
+            h('div', { class: 'api-run-confirm' }, [
+              h('p', { class: 'api-run-confirm__desc' }, this.$t('common.message.apiRunConfirmDesc') as string),
+              h(
+                ElCheckbox,
+                {
+                  modelValue: dontAsk,
+                  'onUpdate:modelValue': (val: string | number | boolean) => (dontAsk = Boolean(val))
+                },
+                () => this.$t('common.message.apiRunConfirmSkip')
+              )
+            ])
+        });
+      } catch {
+        return false;
+      }
+      if (dontAsk) {
+        localStorage.setItem(RUN_CONFIRM_SKIP_KEY, '1');
+      }
+      return true;
     }
   }
 });
@@ -454,6 +510,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .platform-btn {
@@ -475,6 +532,24 @@ export default defineComponent({
       font-size: 11px;
       opacity: 0.7;
     }
+  }
+
+  .docs-btn {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+
+    .ext-icon {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+  }
+}
+
+.api-run-confirm {
+  .api-run-confirm__desc {
+    margin: 0 0 12px;
+    line-height: 1.6;
   }
 }
 </style>

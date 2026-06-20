@@ -20,14 +20,12 @@ import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IProducerAudioRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { IProducerTask } from '@/models';
-import { ERROR_CODE_DUPLICATION, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ConfigPanel from '@/components/producer/ConfigPanel.vue';
 import RecentPanel from '@/components/producer/RecentPanel.vue';
 import PreviewPanel from '@/components/producer/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('producer');
 
 interface IData {
   task: IProducerTask | undefined;
@@ -195,7 +193,7 @@ export default defineComponent({
       }
       const request = {
         ...this.config,
-        callback_url: CALLBACK_URL
+        async: true
       } as IProducerAudioRequest;
       const token = this.credential?.token;
       if (!token) {

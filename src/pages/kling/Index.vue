@@ -33,18 +33,11 @@ import {
   Status
 } from '@/models';
 import { ElMessage } from 'element-plus';
-import {
-  ERROR_CODE_USED_UP,
-  getWebhookCallbackUrl,
-  KLING_TALKING_PHOTO_DEFAULT_MODEL,
-  KLING_TALKING_PHOTO_DEFAULT_MODE
-} from '@/constants';
+import { ERROR_CODE_USED_UP, KLING_TALKING_PHOTO_DEFAULT_MODEL, KLING_TALKING_PHOTO_DEFAULT_MODE } from '@/constants';
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('kling');
 
 interface IData {
   task: IKlingTask | undefined;
@@ -194,7 +187,7 @@ export default defineComponent({
       const { camera_control, ...rest } = this.config || {};
       const request = {
         ...rest,
-        callback_url: CALLBACK_URL
+        async: true
       } as IKlingGenerateRequest;
       // Reject "only end frame, no start frame" — Kling can't anchor an
       // end-frame without a starting reference.
@@ -289,7 +282,7 @@ export default defineComponent({
         mode: cfg.mode || 'std',
         keep_original_sound: cfg.keep_original_sound ?? 'yes',
         ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
-        callback_url: CALLBACK_URL
+        async: true
       };
       const token = this.credential?.token;
       if (!token) {
@@ -339,7 +332,7 @@ export default defineComponent({
         mode: cfg.mode || KLING_TALKING_PHOTO_DEFAULT_MODE,
         ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
         ...(cfg.duration ? { duration: cfg.duration } : {}),
-        callback_url: CALLBACK_URL
+        async: true
       };
       const token = this.credential?.token;
       if (!token) {

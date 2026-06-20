@@ -16,6 +16,7 @@
     :path="path"
     :body="cleanedBody"
     :token="resolvedToken"
+    :doc-href="docHref"
   />
 </template>
 
@@ -55,6 +56,33 @@ const PATH_TO_STORE: Record<string, string> = {
   suno: 'suno',
   producer: 'producer',
   serp: 'serp'
+};
+
+const PLATFORM_DOCS_BASE = 'https://platform.acedata.cloud/documents';
+
+// First path segment -> platform documentation alias for that service's
+// representative API. Powers the "查看文档" deep-link in the code dialog.
+const SERVICE_DOC_ALIAS: Record<string, string> = {
+  midjourney: 'midjourney-imagine',
+  luma: 'luma-videos',
+  sora: 'sora-videos',
+  veo: 'veo-videos',
+  kling: 'kling-videos',
+  hailuo: 'hailuo-videos-integration',
+  'nano-banana': 'nano-banana-images',
+  flux: 'flux-images',
+  qrart: 'qrart-generate',
+  headshots: 'headshots-generate',
+  pika: 'pika-videos',
+  pixverse: 'pixverse',
+  seedance: 'seedance-videos',
+  seedream: 'seedream-images',
+  wan: 'wan-videos',
+  fish: 'fish-tts',
+  openai: 'openai-images-generations',
+  suno: 'suno-audios',
+  producer: 'producer-audios',
+  grok: 'grok-videos'
 };
 
 export default defineComponent({
@@ -111,7 +139,18 @@ export default defineComponent({
         if (Array.isArray(v) && v.length === 0) continue;
         out[k] = v;
       }
+      // Advertise + run the request in async mode so the snippet shows
+      // `async: true` and 再次运行 returns a fast task_id instead of blocking
+      // on a synchronous generation.
+      if (!('async' in out)) {
+        out.async = true;
+      }
       return out;
+    },
+    docHref(): string {
+      const seg = (this.path || '').split('/').filter(Boolean)[0] || '';
+      const alias = SERVICE_DOC_ALIAS[seg];
+      return alias ? `${PLATFORM_DOCS_BASE}/${alias}` : PLATFORM_DOCS_BASE;
     },
     resolvedTokenKey(): string {
       if (this.tokenKey) return this.tokenKey;

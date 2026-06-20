@@ -996,16 +996,36 @@
     "description": "API code dialog tab label for the live response returned after clicking Run."
   },
   "button.apiRun": {
-    "message": "运行",
-    "description": "API code dialog button that executes the request live against the API using the user's key. Re-runs the generation and is billable."
+    "message": "再次运行",
+    "description": "API code dialog button that re-runs the request live against the API using the user's key. The result already exists, so clicking runs it again, and it is billable."
   },
   "button.apiRunning": {
     "message": "运行中…",
     "description": "API code dialog Run button label while the live request is in flight."
   },
+  "button.apiRunConfirm": {
+    "message": "确认运行",
+    "description": "Confirm-button label in the dialog that warns running here consumes extra credits."
+  },
+  "button.viewDocs": {
+    "message": "查看文档",
+    "description": "API code dialog footer button that opens the matching API documentation page on the platform."
+  },
   "message.apiClickRun": {
-    "message": "点击「运行」即可使用你的 API Key 实时执行本次请求。",
+    "message": "点击「再次运行」即可使用你的 API Key 实时执行本次请求。",
     "description": "API code dialog Response tab empty state, shown before the user has run the request."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "确认运行",
+    "description": "Title of the confirmation dialog shown before re-running a request from the API code dialog."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "本次运行会用你的 API Key 真实调用接口并额外消耗积分，确认继续吗？",
+    "description": "Body of the confirmation dialog warning that re-running the request is a real, billable API call."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "不再提示",
+    "description": "Checkbox in the run-confirmation dialog that, when ticked, suppresses the warning on subsequent runs."
   },
   "message.uploadInProgress": {
     "message": "参考文件正在上传，请稍候再生成",

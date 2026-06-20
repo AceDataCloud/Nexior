@@ -996,16 +996,36 @@
     "description": "API-koddialogens fliketikett för det live-svar som returneras efter att ha klickat på 'Kör'."
   },
   "button.apiRun": {
-    "message": "Kör",
-    "description": "API-koddialogens knapp som utför begäran live mot API:et med användarens nyckel. Kör om generationen och är avgiftsbelagd."
+    "message": "Kör igen",
+    "description": "API-kod dialogknapp som kör begäran live mot API:et med användarens nyckel. Resultatet finns redan, så att klicka kör det igen, och det är debiterbart."
   },
   "button.apiRunning": {
     "message": "Körs…",
     "description": "API-koddialogens 'Kör'-knappens etikett medan den live begäran är på väg."
   },
+  "button.apiRunConfirm": {
+    "message": "Bekräfta körning",
+    "description": "Bekräfta-knappens etikett i dialogrutan som varnar för att körning här förbrukar extra krediter."
+  },
+  "button.viewDocs": {
+    "message": "Visa dokumentation",
+    "description": "API-kod dialogfotknapp som öppnar den matchande API-dokumentationssidan på plattformen."
+  },
   "message.apiClickRun": {
-    "message": "Klicka på 'Kör' för att använda din API-nyckel för att utföra denna begäran i realtid.",
-    "description": "API-koddialogens svarstabellens tomma tillstånd, som visas innan användaren har kört begäran."
+    "message": "Klicka på \"Kör igen\" för att använda din API-nyckel för att köra denna begäran i realtid.",
+    "description": "API-kod dialogens svarstabells tomma tillstånd, som visas innan användaren har kört begäran."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Bekräfta körning",
+    "description": "Titeln på bekräftelsedialogen som visas innan en begäran körs igen från API-kod dialogen."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Denna körning kommer att använda din API-nyckel för att göra ett verkligt anrop till gränssnittet och förbruka extra poäng, bekräftar du att du vill fortsätta?",
+    "description": "Innehållet i bekräftelsedialogen som varnar för att omkörning av begäran är ett verkligt, debiterbart API-anrop."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Visa inte igen",
+    "description": "Checkbox i bekräftelsedialogen som, när den är ikryssad, döljer varningen vid efterföljande körningar."
   },
   "message.uploadInProgress": {
     "message": "Referensuppladdningarna pågår fortfarande – vänta ett ögonblick.",

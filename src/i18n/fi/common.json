@@ -996,16 +996,36 @@
     "description": "API-koodin dialogin välilehden etiketti reaaliaikaiselle vastaukselle, joka palautuu Suorita-painiketta napsautettaessa."
   },
   "button.apiRun": {
-    "message": "Suorita",
-    "description": "API-koodin dialogin painike, joka suorittaa pyynnön reaaliaikaisesti API:ta vastaan käyttäjän avaimella. Suorittaa generoinnin uudelleen ja on laskutettavaa."
+    "message": "Suorita uudelleen",
+    "description": "API-koodin dialogin painike, joka suorittaa pyynnön uudelleen reaaliaikaisesti API:ta käyttäen käyttäjän avainta. Tulos on jo olemassa, joten napsauttaminen suorittaa sen uudelleen, ja se on laskutettavaa."
   },
   "button.apiRunning": {
     "message": "Suoritetaan…",
     "description": "API-koodin dialogin Suorita-painikkeen etiketti, kun reaaliaikainen pyyntö on käynnissä."
   },
+  "button.apiRunConfirm": {
+    "message": "Vahvista suoritus",
+    "description": "Vahvistuspainikkeen etiketti dialogissa, joka varoittaa, että suorittaminen kuluttaa ylimääräisiä krediittejä."
+  },
+  "button.viewDocs": {
+    "message": "Näytä asiakirjat",
+    "description": "API-koodin dialogin alatunnisteen painike, joka avaa vastaavan API-dokumentaatiosivun alustalla."
+  },
   "message.apiClickRun": {
-    "message": "Napsauta 'Suorita' käyttääksesi API-avaintasi tämän pyynnön suorittamiseen reaaliaikaisesti.",
-    "description": "API-koodin dialogin Vastaus-välilehden tyhjät tilat, jotka näytetään ennen kuin käyttäjä on suorittanut pyynnön."
+    "message": "Napsauta 'Suorita uudelleen' käyttääksesi API-avaintasi tämän pyynnön suorittamiseen reaaliaikaisesti.",
+    "description": "API-koodin dialogin vastaustabin tyhjät tilat, jotka näytetään ennen kuin käyttäjä on suorittanut pyynnön."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Vahvista suoritus",
+    "description": "Vahvistusdialogin otsikko, joka näytetään ennen pyynnön uudelleen suorittamista API-koodin dialogista."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Tämä suoritus käyttää API-avaintasi ja tekee todellisen kutsun rajapintaan, mikä kuluttaa ylimääräisiä pisteitä. Vahvistatko jatkamisen?",
+    "description": "Vahvistusdialogin runko, joka varoittaa, että pyynnön uudelleen suorittaminen on todellinen, laskutettava API-kutsu."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Älä enää muistuta",
+    "description": "Valintaruutu suoritusvahvistusdialogissa, joka, kun se on valittuna, estää varoituksen seuraavilla suorituksilla."
   },
   "message.uploadInProgress": {
     "message": "Viiteaineistojen lataus on yhä käynnissä – odota hetki.",

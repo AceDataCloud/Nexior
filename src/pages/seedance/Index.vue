@@ -18,17 +18,10 @@ import { seedanceOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISeedanceGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import {
-  ERROR_CODE_USED_UP,
-  getSeedanceCapability,
-  getWebhookCallbackUrl,
-  SEEDANCE_MODEL_CAPABILITIES
-} from '@/constants';
+import { ERROR_CODE_USED_UP, getSeedanceCapability, SEEDANCE_MODEL_CAPABILITIES } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('seedance');
 
 interface IData {
   task: ISeedanceTask | undefined;
@@ -194,7 +187,7 @@ export default defineComponent({
 
       const request = {
         ...cfg,
-        callback_url: CALLBACK_URL
+        async: true
       } as ISeedanceGenerateRequest;
 
       const token = this.credential?.token;
