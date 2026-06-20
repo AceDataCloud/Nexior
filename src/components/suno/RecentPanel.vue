@@ -121,7 +121,7 @@
     </div>
   </template>
   <div v-show="!!$store?.state?.suno?.audio?.object" class="h-20">
-    <player namespace="suno" />
+    <player namespace="suno" :tracks="visibleTracks" />
   </div>
 </template>
 
@@ -269,6 +269,18 @@ export default defineComponent({
         items = [...items].reverse();
       }
       return items;
+    },
+    // Flat, ordered playable tracks in the *visible* order — feeds the player's
+    // prev/next so it follows the list the user sees (search/filter/sort), not
+    // the raw store order.
+    visibleTracks(): ISunoAudio[] {
+      const out: ISunoAudio[] = [];
+      for (const task of this.filteredTasks) {
+        for (const a of (task?.response?.data ?? []) as ISunoAudio[]) {
+          if (a?.audio_url) out.push(a);
+        }
+      }
+      return out;
     }
   },
   methods: {
