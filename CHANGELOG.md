@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 13:09:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 13:15:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.4
+
+Sat, 20 Jun 2026 13:15:01 GMT
+
+### Patches
+
+- feat(suno): P2 full-history search — load all pages on first search/filter so older songs are not silently missed (dev@acedata.cloud)
 
 ## 3.281.3
 
