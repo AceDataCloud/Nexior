@@ -89,7 +89,6 @@ export default defineComponent({
       handler(value, oldValue) {
         // scroll down if new tasks are added
         if (value?.items?.length > oldValue?.items?.length) {
-          console.debug('new tasks detected');
           // this.onScrollDown();
         }
       },
@@ -98,7 +97,6 @@ export default defineComponent({
     initialized: {
       async handler(newValue) {
         if (newValue) {
-          console.debug('layout initialized');
           await this.onGetTasks();
           await this.onScrollDown();
           this.job = window.setInterval(() => {
@@ -131,14 +129,10 @@ export default defineComponent({
       });
     },
     async onGetService() {
-      console.debug('start onGetService');
       await this.$store.dispatch('suno/getService');
-      console.debug('end onGetService');
     },
     async onGetApplication() {
-      console.debug('start onGetApplications');
       await this.$store.dispatch('suno/getApplications');
-      console.debug('end onGetApplications');
       await this.onGetTasks();
     },
     onApply() {
@@ -166,12 +160,9 @@ export default defineComponent({
     },
     async onGetTasks(payload?: { limit?: number; createdAtMin?: number; createdAtMax?: number }) {
       if (this.applicationsLoading || this.fetchingTasks) {
-        console.debug('loading');
         return;
       }
-      console.debug('start onGetTasks', payload);
       const { limit = 5, createdAtMin, createdAtMax } = payload || {};
-      console.debug('limit', limit, 'createdAtMin', createdAtMin, 'createdAtMax', createdAtMax);
       this.fetchingTasks = true;
       try {
         await this.$store.dispatch('suno/getTasks', {

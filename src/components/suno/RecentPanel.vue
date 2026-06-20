@@ -33,7 +33,7 @@
         </template>
       </el-input>
       <el-dropdown trigger="click" @command="onSortChange">
-        <el-button size="small" class="sort-btn">
+        <el-button size="small" round class="sort-btn">
           <font-awesome-icon icon="fa-solid fa-arrow-down-wide-short" class="mr-1" />
           {{ sortLabel }}
         </el-button>
@@ -50,7 +50,7 @@
       </el-dropdown>
       <el-popover trigger="click" placement="bottom-end" :width="260">
         <template #reference>
-          <el-button size="small" class="filter-btn" :class="{ 'has-active-filter': activeFilterCount > 0 }">
+          <el-button size="small" round class="filter-btn" :class="{ 'has-active-filter': activeFilterCount > 0 }">
             <font-awesome-icon icon="fa-solid fa-filter" class="mr-1" />
             {{ $t('suno.filter.title') }}
             <span v-if="activeFilterCount > 0" class="filter-badge">{{ activeFilterCount }}</span>
@@ -293,18 +293,31 @@ export default defineComponent({
 .task-toolbar {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 8px;
+  gap: 8px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--el-border-color-lighter);
   flex-shrink: 0;
 
   .task-search {
     flex: 1;
+    // Keep the search from dominating the bar; sort/filter sit to its right
+    max-width: 280px;
+
+    :deep(.el-input__wrapper) {
+      border-radius: 999px;
+      background-color: var(--el-fill-color-light);
+      box-shadow: none;
+
+      &.is-focus {
+        box-shadow: 0 0 0 1px var(--el-color-primary) inset;
+      }
+    }
   }
 
   .sort-btn {
     flex-shrink: 0;
     white-space: nowrap;
+    margin-left: auto;
   }
 
   .filter-btn {
