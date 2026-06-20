@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 11:25:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 13:03:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.1
+
+Sat, 20 Jun 2026 13:03:16 GMT
+
+### Patches
+
+- fix(coding-bridge): resumable codex history, switch loading, full transcript, session URL (dev@acedata.cloud)
 
 ## 3.281.0
 
