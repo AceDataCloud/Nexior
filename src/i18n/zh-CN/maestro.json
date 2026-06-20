@@ -27,21 +27,17 @@
     "message": "失败原因",
     "description": "Failure reason"
   },
-  "name.sourceType": {
-    "message": "来源类型",
-    "description": "Source type field"
+  "name.prompt": {
+    "message": "提示词",
+    "description": "Prompt field"
   },
-  "name.sourceRef": {
-    "message": "内容",
-    "description": "Source content field"
+  "name.files": {
+    "message": "参考素材",
+    "description": "Reference media field"
   },
-  "name.lang": {
-    "message": "主语言",
-    "description": "Primary language field"
-  },
-  "name.extraLangs": {
-    "message": "额外语言",
-    "description": "Extra language versions field"
+  "name.langs": {
+    "message": "语言",
+    "description": "Output languages field"
   },
   "name.aspect": {
     "message": "画面比例",
@@ -51,49 +47,41 @@
     "message": "时长",
     "description": "Target duration field"
   },
-  "name.music": {
-    "message": "背景音乐",
-    "description": "Music toggle field"
+  "name.remixing": {
+    "message": "二次创作",
+    "description": "Remix banner label"
   },
-  "option.topic": {
-    "message": "话题",
-    "description": "Source type: a topic/headline"
-  },
-  "option.article": {
-    "message": "文章",
-    "description": "Source type: full article text"
-  },
-  "placeholder.sourceRef": {
-    "message": "输入一个话题(如“什么是向量数据库”)或粘贴整篇文章…",
-    "description": "Source textarea placeholder"
+  "placeholder.prompt": {
+    "message": "描述你想要的视频——主题、要展示什么、风格、受众……",
+    "description": "Prompt textarea placeholder"
   },
   "placeholder.select": {
     "message": "请选择",
     "description": "Generic select placeholder"
   },
-  "description.sourceRef": {
-    "message": "一个话题/标题,或要做成视频的整篇文章正文。",
-    "description": "Source field help"
+  "description.prompt": {
+    "message": "用大白话说清楚你想要什么,脚本、画面、配音、剪辑都交给 Maestro。",
+    "description": "Prompt field help"
   },
-  "description.extraLangs": {
-    "message": "复用画面,额外产出这些语言版本(每种 +6 积分)。",
-    "description": "Extra langs help"
+  "description.langs": {
+    "message": "可输出一种或多种语言,每多一种语言复用画面、只多配音(每多一种 +6 积分)。",
+    "description": "Languages help"
+  },
+  "description.files": {
+    "message": "可选。上传图片、视频或音频供 Maestro 使用(如产品图、logo)。",
+    "description": "Files help"
   },
   "status.pending": {
     "message": "排队中",
     "description": "Pending"
   },
-  "status.scripting": {
-    "message": "脚本生成中",
-    "description": "Scripting"
+  "status.planning": {
+    "message": "策划中",
+    "description": "Planning"
   },
-  "status.generating": {
-    "message": "画面生成中",
-    "description": "Generating"
-  },
-  "status.rendering": {
-    "message": "渲染中",
-    "description": "Rendering"
+  "status.producing": {
+    "message": "制作中",
+    "description": "Producing"
   },
   "status.processing": {
     "message": "处理中",
@@ -107,9 +95,17 @@
     "message": "下载视频",
     "description": "Download video button"
   },
-  "button.downloadCaptions": {
-    "message": "下载字幕",
-    "description": "Download srt button"
+  "button.uploadFiles": {
+    "message": "上传文件",
+    "description": "Upload reference files button"
+  },
+  "button.remix": {
+    "message": "二次创作",
+    "description": "Remix this video button"
+  },
+  "button.cancelRemix": {
+    "message": "取消二次创作",
+    "description": "Cancel remix button"
   },
   "message.startingTask": {
     "message": "正在提交视频任务…",
@@ -127,9 +123,17 @@
     "message": "额度已用完,请充值后继续。",
     "description": "Used up"
   },
-  "message.downloadVideo": {
-    "message": "下载生成的视频",
-    "description": "Download tooltip"
+  "message.remixLoaded": {
+    "message": "已载入二次创作——在左侧描述想要的修改,然后生成。",
+    "description": "Remix loaded toast"
+  },
+  "message.uploadExceed": {
+    "message": "文件过多,请删除一些后重试。",
+    "description": "Upload exceed"
+  },
+  "message.uploadError": {
+    "message": "上传失败,请重试。",
+    "description": "Upload error"
   },
   "message.noTasks": {
     "message": "还没有视频 — 在左侧创建你的第一个吧。",

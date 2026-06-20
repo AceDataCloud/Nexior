@@ -27,21 +27,17 @@
     "message": "Fehlerursache",
     "description": "Grund für den Fehler"
   },
-  "name.sourceType": {
-    "message": "Quelltyp",
-    "description": "Feld für den Quelltyp"
+  "name.prompt": {
+    "message": "Eingabeaufforderung",
+    "description": "Eingabefeld"
   },
-  "name.sourceRef": {
-    "message": "Inhalt",
-    "description": "Feld für den Quellinhalt"
+  "name.files": {
+    "message": "Referenzmaterial",
+    "description": "Feld für Referenzmedien"
   },
-  "name.lang": {
-    "message": "Hauptsprache",
-    "description": "Feld für die primäre Sprache"
-  },
-  "name.extraLangs": {
-    "message": "Zusätzliche Sprachen",
-    "description": "Feld für zusätzliche Sprachversionen"
+  "name.langs": {
+    "message": "Sprachen",
+    "description": "Feld für Ausgabesprachen"
   },
   "name.aspect": {
     "message": "Seitenverhältnis",
@@ -51,49 +47,41 @@
     "message": "Dauer",
     "description": "Ziel-Dauerfeld"
   },
-  "name.music": {
-    "message": "Hintergrundmusik",
-    "description": "Feld für den Musikumschalter"
+  "name.remixing": {
+    "message": "Remix",
+    "description": "Label für das Remix-Banner"
   },
-  "option.topic": {
-    "message": "Thema",
-    "description": "Quelltyp: ein Thema/Überschrift"
-  },
-  "option.article": {
-    "message": "Artikel",
-    "description": "Quelltyp: vollständiger Artikeltext"
-  },
-  "placeholder.sourceRef": {
-    "message": "Geben Sie ein Thema ein (z.B. „Was ist eine Vektordatenbank“) oder fügen Sie einen gesamten Artikel ein…",
-    "description": "Platzhalter für den Quelltextbereich"
+  "placeholder.prompt": {
+    "message": "Beschreiben Sie das Video, das Sie möchten – Thema, was gezeigt werden soll, Stil, Zielgruppe…",
+    "description": "Platzhalter für das Eingabefeld"
   },
   "placeholder.select": {
     "message": "Bitte auswählen",
     "description": "Allgemeiner Platzhalter für Auswahl"
   },
-  "description.sourceRef": {
-    "message": "Ein Thema/Titel oder der gesamte Text eines Artikels, der in ein Video umgewandelt werden soll.",
-    "description": "Hilfestellung für das Quellfeld"
+  "description.prompt": {
+    "message": "Formulieren Sie klar, was Sie möchten. Skript, Bilder, Sprachübertragung und Schnitt übernimmt Maestro.",
+    "description": "Hilfe zum Eingabefeld"
   },
-  "description.extraLangs": {
-    "message": "Wiederverwendung des Bildes, zusätzliche Ausgaben in diesen Sprachversionen (jeweils +6 Punkte).",
-    "description": "Hilfestellung für zusätzliche Sprachen"
+  "description.langs": {
+    "message": "Kann in einer oder mehreren Sprachen ausgegeben werden, jede zusätzliche Sprache verwendet dasselbe Bild, nur zusätzliche Sprachübertragung (jede zusätzliche +6 Punkte).",
+    "description": "Hilfe zu Sprachen"
+  },
+  "description.files": {
+    "message": "Optional. Laden Sie Bilder, Videos oder Audios für Maestro hoch (z. B. Produktbilder, Logos).",
+    "description": "Hilfe zu Dateien"
   },
   "status.pending": {
     "message": "In der Warteschlange",
     "description": "Ausstehend"
   },
-  "status.scripting": {
-    "message": "Skripterstellung läuft",
-    "description": "Skripting"
+  "status.planning": {
+    "message": "In Planung",
+    "description": "Planung"
   },
-  "status.generating": {
-    "message": "Generierung läuft",
-    "description": "Wird generiert"
-  },
-  "status.rendering": {
-    "message": "Wird gerendert",
-    "description": "Wird gerendert"
+  "status.producing": {
+    "message": "In Produktion",
+    "description": "Produktion"
   },
   "status.processing": {
     "message": "Wird verarbeitet",
@@ -107,9 +95,17 @@
     "message": "Video herunterladen",
     "description": "Download-Button für Videos"
   },
-  "button.downloadCaptions": {
-    "message": "Untertitel herunterladen",
-    "description": "Download-Button für srt-Dateien"
+  "button.uploadFiles": {
+    "message": "Dateien hochladen",
+    "description": "Schaltfläche zum Hochladen von Referenzdateien"
+  },
+  "button.remix": {
+    "message": "Remix",
+    "description": "Schaltfläche zum Remixen dieses Videos"
+  },
+  "button.cancelRemix": {
+    "message": "Remix abbrechen",
+    "description": "Schaltfläche zum Abbrechen des Remixes"
   },
   "message.startingTask": {
     "message": "Videoaufgabe wird eingereicht…",
@@ -127,12 +123,80 @@
     "message": "Kontingent erschöpft, bitte aufladen, um fortzufahren.",
     "description": "Kontingent aufgebraucht"
   },
-  "message.downloadVideo": {
-    "message": "Herunterladen des generierten Videos",
-    "description": "Tooltip für den Download"
+  "message.remixLoaded": {
+    "message": "Remix geladen – beschreiben Sie links die gewünschten Änderungen und generieren Sie dann.",
+    "description": "Toast-Nachricht für geladenen Remix"
+  },
+  "message.uploadExceed": {
+    "message": "Zu viele Dateien, bitte löschen Sie einige und versuchen Sie es erneut.",
+    "description": "Überschreitung der Upload-Grenze"
+  },
+  "message.uploadError": {
+    "message": "Hochladen fehlgeschlagen, bitte erneut versuchen.",
+    "description": "Fehler beim Hochladen"
   },
   "message.noTasks": {
     "message": "Noch keine Videos — erstelle dein erstes auf der linken Seite.",
     "description": "Keine Aufgaben vorhanden"
+  },
+  "name.sourceType": {
+    "message": "Quelltyp",
+    "description": "Feld für den Quelltyp"
+  },
+  "name.sourceRef": {
+    "message": "Inhalt",
+    "description": "Feld für den Quellinhalt"
+  },
+  "name.lang": {
+    "message": "Hauptsprache",
+    "description": "Feld für die primäre Sprache"
+  },
+  "name.extraLangs": {
+    "message": "Zusätzliche Sprachen",
+    "description": "Feld für zusätzliche Sprachversionen"
+  },
+  "name.music": {
+    "message": "Hintergrundmusik",
+    "description": "Feld für den Musikumschalter"
+  },
+  "option.topic": {
+    "message": "Thema",
+    "description": "Quelltyp: ein Thema/Überschrift"
+  },
+  "option.article": {
+    "message": "Artikel",
+    "description": "Quelltyp: vollständiger Artikeltext"
+  },
+  "placeholder.sourceRef": {
+    "message": "Geben Sie ein Thema ein (z.B. „Was ist eine Vektordatenbank“) oder fügen Sie einen gesamten Artikel ein…",
+    "description": "Platzhalter für den Quelltextbereich"
+  },
+  "description.sourceRef": {
+    "message": "Ein Thema/Titel oder der gesamte Text eines Artikels, der in ein Video umgewandelt werden soll.",
+    "description": "Hilfestellung für das Quellfeld"
+  },
+  "description.extraLangs": {
+    "message": "Wiederverwendung des Bildes, zusätzliche Ausgaben in diesen Sprachversionen (jeweils +6 Punkte).",
+    "description": "Hilfestellung für zusätzliche Sprachen"
+  },
+  "status.scripting": {
+    "message": "Skripterstellung läuft",
+    "description": "Skripting"
+  },
+  "status.generating": {
+    "message": "Generierung läuft",
+    "description": "Wird generiert"
+  },
+  "status.rendering": {
+    "message": "Wird gerendert",
+    "description": "Wird gerendert"
+  },
+  "button.downloadCaptions": {
+    "message": "Untertitel herunterladen",
+    "description": "Download-Button für srt-Dateien"
+  },
+  "message.downloadVideo": {
+    "message": "Herunterladen des generierten Videos",
+    "description": "Tooltip für den Download"
   }
 }

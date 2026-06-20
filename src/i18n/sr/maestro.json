@@ -27,21 +27,17 @@
     "message": "Razlog neuspeha",
     "description": "Razlog neuspeha"
   },
-  "name.sourceType": {
-    "message": "Tip izvora",
-    "description": "Polje za tip izvora"
+  "name.prompt": {
+    "message": "Упит",
+    "description": "Поље за упит"
   },
-  "name.sourceRef": {
-    "message": "Sadržaj",
-    "description": "Polje za izvorni sadržaj"
+  "name.files": {
+    "message": "Референцијални материјал",
+    "description": "Поље за референтне медије"
   },
-  "name.lang": {
-    "message": "Glavni jezik",
-    "description": "Polje za primarni jezik"
-  },
-  "name.extraLangs": {
-    "message": "Dodatni jezici",
-    "description": "Polje za dodatne jezičke verzije"
+  "name.langs": {
+    "message": "Језици",
+    "description": "Поље за излазне језике"
   },
   "name.aspect": {
     "message": "Odnos stranica",
@@ -51,49 +47,41 @@
     "message": "Trajanje",
     "description": "Polje za ciljano trajanje"
   },
-  "name.music": {
-    "message": "Pozadinska muzika",
-    "description": "Polje za prebacivanje muzike"
+  "name.remixing": {
+    "message": "Ремиксовање",
+    "description": "Ознака банера за ремиксовање"
   },
-  "option.topic": {
-    "message": "Tema",
-    "description": "Tip izvora: tema/naslov"
-  },
-  "option.article": {
-    "message": "Članak",
-    "description": "Tip izvora: puni tekst članka"
-  },
-  "placeholder.sourceRef": {
-    "message": "Unesite temu (npr. \"Šta je vektorska baza podataka\") ili nalepite ceo članak…",
-    "description": "Placeholder za tekstualno polje izvora"
+  "placeholder.prompt": {
+    "message": "Описујте видео који желите — тему, шта да се прикаже, стил, публику…",
+    "description": "Плацехолдер за текстуално поље упита"
   },
   "placeholder.select": {
     "message": "Izaberite",
     "description": "Generički placeholder za izbor"
   },
-  "description.sourceRef": {
-    "message": "Tema/titula ili ceo tekst članka koji treba pretvoriti u video.",
-    "description": "Pomoć za polje izvora"
+  "description.prompt": {
+    "message": "Јасно изразите шта желите, сценарио, слике, глас, монтажу оставите Maestro-у.",
+    "description": "Помоћ о пољу за упит"
   },
-  "description.extraLangs": {
-    "message": "Ponovno koristi slike, dodatno proizvedi ove jezičke verzije (svaka +6 poena).",
-    "description": "Pomoć za dodatne jezike"
+  "description.langs": {
+    "message": "Можете изабрати један или више језика, за сваки додатни језик користите исту сцену, само додајте глас (за сваки додатни +6 поена).",
+    "description": "Помоћ о језицима"
+  },
+  "description.files": {
+    "message": "Опционално. Отпремите слике, видео или аудио за Maestro (као што су слике производа, логотипи).",
+    "description": "Помоћ о фајловима"
   },
   "status.pending": {
     "message": "Na čekanju",
     "description": "Na čekanju"
   },
-  "status.scripting": {
-    "message": "Generiše se skripta",
-    "description": "Generisanje skripte"
+  "status.planning": {
+    "message": "У планирању",
+    "description": "Планирање"
   },
-  "status.generating": {
-    "message": "Generiše se",
-    "description": "Generisanje"
-  },
-  "status.rendering": {
-    "message": "Renderuje se",
-    "description": "Renderovanje"
+  "status.producing": {
+    "message": "У производњи",
+    "description": "Производња"
   },
   "status.processing": {
     "message": "Obrada",
@@ -107,9 +95,17 @@
     "message": "Preuzmi video",
     "description": "Dugme za preuzimanje videa"
   },
-  "button.downloadCaptions": {
-    "message": "Preuzmi titlove",
-    "description": "Dugme za preuzimanje srt"
+  "button.uploadFiles": {
+    "message": "Отпреми фајлове",
+    "description": " dugme za otpremu referentnih fajlova"
+  },
+  "button.remix": {
+    "message": "Ремикс",
+    "description": " dugme za remiksovanje ovog videa"
+  },
+  "button.cancelRemix": {
+    "message": "Откажи ремикс",
+    "description": " dugme za otkazivanje remiksa"
   },
   "message.startingTask": {
     "message": "Podnošenje video zadatka…",
@@ -127,12 +123,80 @@
     "message": "Kredit je iskorišćen, molimo dopunite da biste nastavili.",
     "description": "Iskorišćeno"
   },
-  "message.downloadVideo": {
-    "message": "Preuzmi generisani video",
-    "description": "Tooltip za preuzimanje"
+  "message.remixLoaded": {
+    "message": "Ремикс је учитан — опишите жељене измене с леве стране, а затим генеришите.",
+    "description": "Обавештење о учитаном ремиксу"
+  },
+  "message.uploadExceed": {
+    "message": "Превише фајлова, молимо вас да избришете неке и покушате поново.",
+    "description": "Превазилажење лимита отпремања"
+  },
+  "message.uploadError": {
+    "message": "Отпремање није успело, покушајте поново.",
+    "description": "Грешка при отпремању"
   },
   "message.noTasks": {
     "message": "Još nema videa — kreiraj svoj prvi sa leve strane.",
     "description": "Nema zadataka"
+  },
+  "name.sourceType": {
+    "message": "Tip izvora",
+    "description": "Polje za tip izvora"
+  },
+  "name.sourceRef": {
+    "message": "Sadržaj",
+    "description": "Polje za izvorni sadržaj"
+  },
+  "name.lang": {
+    "message": "Glavni jezik",
+    "description": "Polje za primarni jezik"
+  },
+  "name.extraLangs": {
+    "message": "Dodatni jezici",
+    "description": "Polje za dodatne jezičke verzije"
+  },
+  "name.music": {
+    "message": "Pozadinska muzika",
+    "description": "Polje za prebacivanje muzike"
+  },
+  "option.topic": {
+    "message": "Tema",
+    "description": "Tip izvora: tema/naslov"
+  },
+  "option.article": {
+    "message": "Članak",
+    "description": "Tip izvora: puni tekst članka"
+  },
+  "placeholder.sourceRef": {
+    "message": "Unesite temu (npr. \"Šta je vektorska baza podataka\") ili nalepite ceo članak…",
+    "description": "Placeholder za tekstualno polje izvora"
+  },
+  "description.sourceRef": {
+    "message": "Tema/titula ili ceo tekst članka koji treba pretvoriti u video.",
+    "description": "Pomoć za polje izvora"
+  },
+  "description.extraLangs": {
+    "message": "Ponovno koristi slike, dodatno proizvedi ove jezičke verzije (svaka +6 poena).",
+    "description": "Pomoć za dodatne jezike"
+  },
+  "status.scripting": {
+    "message": "Generiše se skripta",
+    "description": "Generisanje skripte"
+  },
+  "status.generating": {
+    "message": "Generiše se",
+    "description": "Generisanje"
+  },
+  "status.rendering": {
+    "message": "Renderuje se",
+    "description": "Renderovanje"
+  },
+  "button.downloadCaptions": {
+    "message": "Preuzmi titlove",
+    "description": "Dugme za preuzimanje srt"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmi generisani video",
+    "description": "Tooltip za preuzimanje"
   }
 }

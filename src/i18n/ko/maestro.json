@@ -27,21 +27,17 @@
     "message": "실패 원인",
     "description": "실패 이유"
   },
-  "name.sourceType": {
-    "message": "출처 유형",
-    "description": "출처 유형 필드"
+  "name.prompt": {
+    "message": "프롬프트",
+    "description": "프롬프트 필드"
   },
-  "name.sourceRef": {
-    "message": "내용",
-    "description": "소스 콘텐츠 필드"
+  "name.files": {
+    "message": "참조 자료",
+    "description": "참조 미디어 필드"
   },
-  "name.lang": {
-    "message": "주 언어",
-    "description": "주 언어 필드"
-  },
-  "name.extraLangs": {
-    "message": "추가 언어",
-    "description": "추가 언어 버전 필드"
+  "name.langs": {
+    "message": "언어",
+    "description": "출력 언어 필드"
   },
   "name.aspect": {
     "message": "화면 비율",
@@ -51,49 +47,41 @@
     "message": "지속 시간",
     "description": "목표 지속 시간 필드"
   },
-  "name.music": {
-    "message": "배경 음악",
-    "description": "음악 토글 필드"
+  "name.remixing": {
+    "message": "리믹스",
+    "description": "리믹스 배너 레이블"
   },
-  "option.topic": {
-    "message": "주제",
-    "description": "소스 유형: 주제/헤드라인"
-  },
-  "option.article": {
-    "message": "기사",
-    "description": "소스 유형: 전체 기사 텍스트"
-  },
-  "placeholder.sourceRef": {
-    "message": "주제 입력(예: “벡터 데이터베이스란?”) 또는 전체 기사 붙여넣기…",
-    "description": "소스 텍스트 영역 자리 표시자"
+  "placeholder.prompt": {
+    "message": "원하는 비디오를 설명하세요 — 주제, 보여줄 내용, 스타일, 대상……",
+    "description": "프롬프트 텍스트 영역 플레이스홀더"
   },
   "placeholder.select": {
     "message": "선택하세요",
     "description": "일반적인 선택 자리 표시자"
   },
-  "description.sourceRef": {
-    "message": "주제/제목 또는 비디오로 만들고자 하는 전체 기사 본문.",
-    "description": "소스 필드 도움"
+  "description.prompt": {
+    "message": "원하는 내용을 간단히 설명하세요. 스크립트, 화면, 더빙, 편집은 Maestro에게 맡기세요.",
+    "description": "프롬프트 필드 도움말"
   },
-  "description.extraLangs": {
-    "message": "화면을 재사용하고, 이러한 언어 버전을 추가로 생성합니다(각 언어당 +6 포인트).",
-    "description": "추가 언어 도움"
+  "description.langs": {
+    "message": "하나 이상의 언어로 출력할 수 있으며, 언어를 추가할 때마다 화면을 재사용하고 더 많은 더빙이 필요합니다(언어당 +6 포인트).",
+    "description": "언어 도움말"
+  },
+  "description.files": {
+    "message": "선택 사항입니다. Maestro에서 사용할 이미지, 비디오 또는 오디오를 업로드하세요(예: 제품 이미지, 로고).",
+    "description": "파일 도움말"
   },
   "status.pending": {
     "message": "대기 중",
     "description": "대기 중"
   },
-  "status.scripting": {
-    "message": "스크립트 생성 중",
-    "description": "스크립트 생성 중"
+  "status.planning": {
+    "message": "계획 중",
+    "description": "계획 중 상태"
   },
-  "status.generating": {
-    "message": "생성 중",
-    "description": "생성 중"
-  },
-  "status.rendering": {
-    "message": "렌더링 중",
-    "description": "렌더링 중"
+  "status.producing": {
+    "message": "제작 중",
+    "description": "제작 중 상태"
   },
   "status.processing": {
     "message": "처리 중",
@@ -107,9 +95,17 @@
     "message": "비디오 다운로드",
     "description": "비디오 다운로드 버튼"
   },
-  "button.downloadCaptions": {
-    "message": "자막 다운로드",
-    "description": "srt 다운로드 버튼"
+  "button.uploadFiles": {
+    "message": "파일 업로드",
+    "description": "참조 파일을 업로드하는 버튼"
+  },
+  "button.remix": {
+    "message": "리믹스",
+    "description": "이 비디오를 리믹스하는 버튼"
+  },
+  "button.cancelRemix": {
+    "message": "리믹스 취소",
+    "description": "리믹스를 취소하는 버튼"
   },
   "message.startingTask": {
     "message": "비디오 작업을 제출하는 중…",
@@ -127,12 +123,80 @@
     "message": "할당량이 소진되었습니다, 충전 후 계속 진행하세요.",
     "description": "소진됨"
   },
-  "message.downloadVideo": {
-    "message": "생성된 비디오 다운로드",
-    "description": "다운로드 툴팁"
+  "message.remixLoaded": {
+    "message": "리믹스가 로드되었습니다 — 왼쪽에서 원하는 수정 사항을 설명한 후 생성하세요.",
+    "description": "리믹스 로드 완료 토스트"
+  },
+  "message.uploadExceed": {
+    "message": "파일이 너무 많습니다. 일부를 삭제한 후 다시 시도하세요.",
+    "description": "업로드 초과"
+  },
+  "message.uploadError": {
+    "message": "업로드 실패, 다시 시도하세요.",
+    "description": "업로드 오류"
   },
   "message.noTasks": {
     "message": "아직 비디오가 없습니다 — 왼쪽에서 첫 번째 비디오를 생성하세요.",
     "description": "작업 없음"
+  },
+  "name.sourceType": {
+    "message": "출처 유형",
+    "description": "출처 유형 필드"
+  },
+  "name.sourceRef": {
+    "message": "내용",
+    "description": "소스 콘텐츠 필드"
+  },
+  "name.lang": {
+    "message": "주 언어",
+    "description": "주 언어 필드"
+  },
+  "name.extraLangs": {
+    "message": "추가 언어",
+    "description": "추가 언어 버전 필드"
+  },
+  "name.music": {
+    "message": "배경 음악",
+    "description": "음악 토글 필드"
+  },
+  "option.topic": {
+    "message": "주제",
+    "description": "소스 유형: 주제/헤드라인"
+  },
+  "option.article": {
+    "message": "기사",
+    "description": "소스 유형: 전체 기사 텍스트"
+  },
+  "placeholder.sourceRef": {
+    "message": "주제 입력(예: “벡터 데이터베이스란?”) 또는 전체 기사 붙여넣기…",
+    "description": "소스 텍스트 영역 자리 표시자"
+  },
+  "description.sourceRef": {
+    "message": "주제/제목 또는 비디오로 만들고자 하는 전체 기사 본문.",
+    "description": "소스 필드 도움"
+  },
+  "description.extraLangs": {
+    "message": "화면을 재사용하고, 이러한 언어 버전을 추가로 생성합니다(각 언어당 +6 포인트).",
+    "description": "추가 언어 도움"
+  },
+  "status.scripting": {
+    "message": "스크립트 생성 중",
+    "description": "스크립트 생성 중"
+  },
+  "status.generating": {
+    "message": "생성 중",
+    "description": "생성 중"
+  },
+  "status.rendering": {
+    "message": "렌더링 중",
+    "description": "렌더링 중"
+  },
+  "button.downloadCaptions": {
+    "message": "자막 다운로드",
+    "description": "srt 다운로드 버튼"
+  },
+  "message.downloadVideo": {
+    "message": "생성된 비디오 다운로드",
+    "description": "다운로드 툴팁"
   }
 }

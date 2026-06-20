@@ -27,21 +27,17 @@
     "message": "Failure Reason",
     "description": "Failure reason"
   },
-  "name.sourceType": {
-    "message": "Source",
-    "description": "Source type field"
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt field"
   },
-  "name.sourceRef": {
-    "message": "Content",
-    "description": "Source content field"
+  "name.files": {
+    "message": "Reference Files",
+    "description": "Reference media field"
   },
-  "name.lang": {
-    "message": "Main Language",
-    "description": "Primary language field"
-  },
-  "name.extraLangs": {
-    "message": "Extra Languages",
-    "description": "Extra language versions field"
+  "name.langs": {
+    "message": "Languages",
+    "description": "Output languages field"
   },
   "name.aspect": {
     "message": "Aspect Ratio",
@@ -51,49 +47,41 @@
     "message": "Duration",
     "description": "Target duration field"
   },
-  "name.music": {
-    "message": "Background Music",
-    "description": "Music toggle field"
+  "name.remixing": {
+    "message": "Remixing",
+    "description": "Remix banner label"
   },
-  "option.topic": {
-    "message": "Topic",
-    "description": "Source type: a topic/headline"
-  },
-  "option.article": {
-    "message": "Article",
-    "description": "Source type: full article text"
-  },
-  "placeholder.sourceRef": {
-    "message": "Paste a topic (e.g. “What is a vector database”) or a full article…",
-    "description": "Source textarea placeholder"
+  "placeholder.prompt": {
+    "message": "Describe the video you want — topic, what to show, tone, audience…",
+    "description": "Prompt textarea placeholder"
   },
   "placeholder.select": {
     "message": "Please select",
     "description": "Generic select placeholder"
   },
-  "description.sourceRef": {
-    "message": "A topic/headline, or the full article text to turn into a video.",
-    "description": "Source field help"
+  "description.prompt": {
+    "message": "Say what you want in plain language — Maestro plans the script, visuals, voiceover and edit.",
+    "description": "Prompt field help"
   },
-  "description.extraLangs": {
-    "message": "Reuse the visuals to also produce these languages (+6 credits each).",
-    "description": "Extra langs help"
+  "description.langs": {
+    "message": "Output one or more languages. Each extra language reuses the visuals with a localized voiceover (+6 credits each).",
+    "description": "Languages help"
+  },
+  "description.files": {
+    "message": "Optional. Attach images, video or audio for Maestro to use (e.g. a product shot or logo).",
+    "description": "Files help"
   },
   "status.pending": {
     "message": "Pending",
     "description": "Pending"
   },
-  "status.scripting": {
-    "message": "Scripting",
-    "description": "Scripting"
+  "status.planning": {
+    "message": "Planning",
+    "description": "Planning"
   },
-  "status.generating": {
-    "message": "Generating",
-    "description": "Generating"
-  },
-  "status.rendering": {
-    "message": "Rendering",
-    "description": "Rendering"
+  "status.producing": {
+    "message": "Producing",
+    "description": "Producing"
   },
   "status.processing": {
     "message": "Processing",
@@ -107,9 +95,17 @@
     "message": "Download Video",
     "description": "Download video button"
   },
-  "button.downloadCaptions": {
-    "message": "Download Captions",
-    "description": "Download srt button"
+  "button.uploadFiles": {
+    "message": "Upload Files",
+    "description": "Upload reference files button"
+  },
+  "button.remix": {
+    "message": "Remix",
+    "description": "Remix this video button"
+  },
+  "button.cancelRemix": {
+    "message": "Cancel remix",
+    "description": "Cancel remix button"
   },
   "message.startingTask": {
     "message": "Submitting your video task…",
@@ -127,9 +123,17 @@
     "message": "Your quota is used up. Please top up to continue.",
     "description": "Used up"
   },
-  "message.downloadVideo": {
-    "message": "Download the generated video",
-    "description": "Download tooltip"
+  "message.remixLoaded": {
+    "message": "Loaded for remix — describe your change on the left, then generate.",
+    "description": "Remix loaded toast"
+  },
+  "message.uploadExceed": {
+    "message": "Too many files. Please remove some and try again.",
+    "description": "Upload exceed"
+  },
+  "message.uploadError": {
+    "message": "Upload failed. Please try again.",
+    "description": "Upload error"
   },
   "message.noTasks": {
     "message": "No videos yet — create your first one on the left.",

@@ -115,8 +115,7 @@ export default defineComponent({
     },
     async onGenerate() {
       const request = {
-        ...this.config,
-        async: true
+        ...this.config
       } as IMaestroGenerateRequest;
       const token = this.credential?.token;
       if (!token) {
