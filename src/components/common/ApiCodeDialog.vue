@@ -35,7 +35,45 @@
     </div>
 
     <div v-if="code" class="code">
-      <code-snippet :key="`${lang}-${variant}-${code.length}`" :code="code" :lang="lang" />
+      <div class="code-toolbar">
+        <div class="code-tabs">
+          <button
+            type="button"
+            :class="{ 'code-tab': true, active: activeTab === 'request' }"
+            @click="activeTab = 'request'"
+          >
+            <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+            {{ $t('common.tab.apiRequest') }}
+          </button>
+          <button
+            type="button"
+            :class="{ 'code-tab': true, active: activeTab === 'response' }"
+            @click="activeTab = 'response'"
+          >
+            <font-awesome-icon icon="fa-solid fa-terminal" class="mr-1" />
+            {{ $t('common.tab.apiResponse') }}
+          </button>
+        </div>
+        <button v-if="!running" type="button" class="code-run" :disabled="!canRun" @click="onRun">
+          <font-awesome-icon icon="fa-solid fa-play" />
+          <span>{{ $t('common.button.apiRun') }}</span>
+        </button>
+        <button v-else type="button" class="code-run code-run--running" disabled>
+          <font-awesome-icon icon="fa-solid fa-spinner" spin />
+          <span>{{ $t('common.button.apiRunning') }}</span>
+        </button>
+      </div>
+
+      <div v-show="activeTab === 'request'">
+        <code-snippet :key="`${lang}-${variant}-${code.length}`" :code="code" :lang="lang" />
+      </div>
+      <div v-show="activeTab === 'response'">
+        <div v-if="!response && !running" class="code-empty">
+          <font-awesome-icon icon="fa-solid fa-play" class="code-empty__icon" />
+          <p>{{ $t('common.message.apiClickRun') }}</p>
+        </div>
+        <code-snippet v-else :key="`resp-${response.length}`" :code="response || '...'" lang="json" />
+      </div>
     </div>
 
     <template #footer>
@@ -126,7 +164,10 @@ export default defineComponent({
     return {
       lang: 'Shell' as Lang,
       variant: 'curl',
-      platformIcon: PLATFORM_FAVICON
+      platformIcon: PLATFORM_FAVICON,
+      activeTab: 'request' as 'request' | 'response',
+      running: false,
+      response: ''
     };
   },
   computed: {
@@ -174,12 +215,55 @@ export default defineComponent({
         headers: this.rawHeaders,
         body: this.rawBody
       });
+    },
+    // Run is only possible with a real key — without it the snippet shows the
+    // <YOUR_API_KEY> placeholder and the call would 401.
+    canRun(): boolean {
+      return !!this.token;
+    }
+  },
+  watch: {
+    // Reset the live response when the dialog reopens or targets a different
+    // request, so the Response tab never shows stale data from a prior result.
+    visible(val: boolean) {
+      if (val) {
+        this.response = '';
+        this.activeTab = 'request';
+      }
+    },
+    url() {
+      this.response = '';
+      this.activeTab = 'request';
     }
   },
   methods: {
     onSelectLang(name: Lang) {
       this.lang = name;
       this.variant = VARIANTS[name][0]?.key || '';
+    },
+    // Re-fires the same request live against the API. This is a real, billable
+    // generation — same as the user calling the endpoint themselves.
+    async onRun() {
+      if (!this.canRun || this.running) return;
+      this.running = true;
+      this.response = '';
+      this.activeTab = 'response';
+      try {
+        const res = await fetch(this.url, {
+          method: (this.method || 'POST').toUpperCase(),
+          headers: {
+            authorization: `Bearer ${this.token}`,
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(this.body || {})
+        });
+        const json = await res.json();
+        this.response = JSON.stringify(json, null, 2);
+      } catch (err: unknown) {
+        this.response = `Error: ${err instanceof Error ? err.message : 'Request failed'}`;
+      } finally {
+        this.running = false;
+      }
     },
     onOpenPlatform() {
       window.open(PLATFORM_URL, '_blank', 'noopener');
@@ -275,6 +359,95 @@ export default defineComponent({
 
   .code {
     margin-top: 4px;
+  }
+
+  .code-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .code-tabs {
+    display: flex;
+    gap: 2px;
+  }
+
+  .code-tab {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--el-text-color-secondary);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      color: var(--el-text-color-primary);
+      background: var(--el-fill-color);
+    }
+
+    &.active {
+      color: var(--el-color-primary);
+      background: var(--el-color-primary-light-9);
+    }
+  }
+
+  .code-run {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    appearance: none;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 16px;
+    background: var(--el-color-primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--running {
+      opacity: 0.8;
+    }
+  }
+
+  .code-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    border-radius: 6px;
+    background: #011627;
+    color: rgba(255, 255, 255, 0.45);
+
+    &__icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+      opacity: 0.4;
+    }
+
+    p {
+      font-size: 13px;
+      margin: 0;
+      padding: 0 16px;
+      text-align: center;
+    }
   }
 
   .footer {

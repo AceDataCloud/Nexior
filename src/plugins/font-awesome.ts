@@ -25,6 +25,7 @@ import {
   faEllipsis as faSolidEllipsis,
   faIdCard as faSolidIdCard,
   faStopCircle as faSolidStopCircle,
+  faPlay as faSolidPlay,
   faPlayCircle as faSolidPlayCircle,
   faDownload as faSolidDownload,
   faFilm as faSolidFilm,
@@ -155,6 +156,7 @@ library.add(faSolidIdCard);
 library.add(faSolidStopCircle);
 library.add(faRegularFile);
 library.add(faSolidPlayCircle);
+library.add(faSolidPlay);
 library.add(faSolidArrowUp);
 library.add(faRegularFileAlt);
 library.add(faSolidFilm);
