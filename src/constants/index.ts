@@ -3,6 +3,7 @@ export * from './errorStatus';
 export * from './endpoint';
 export * from './action';
 export * from './chat';
+export * from './realtime';
 export * from './midjourney';
 export * from './qrart';
 export * from './luma';

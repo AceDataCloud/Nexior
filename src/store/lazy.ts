@@ -23,6 +23,7 @@ type AnyVuexModule = Module<any, any>;
  */
 const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> = {
   chat: () => import('./chat'),
+  realtime: () => import('./realtime'),
   midjourney: () => import('./midjourney'),
   qrart: () => import('./qrart'),
   luma: () => import('./luma'),

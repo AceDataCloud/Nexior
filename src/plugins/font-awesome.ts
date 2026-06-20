@@ -54,6 +54,8 @@ import {
   faHashtag as faSolidHashtag,
   faCircleInfo as faSolidCircleInfo,
   faMicrophone as faSolidMicrophone,
+  faPhone as faSolidPhone,
+  faPhoneSlash as faSolidPhoneSlash,
   faArrowLeft as faSolidArrowLeft,
   faArrowUp as faSolidArrowUp,
   faUpload as faSolidUpload,
@@ -203,6 +205,8 @@ library.add(faSolidBook);
 library.add(faSolidGear);
 library.add(faSolidSitemap);
 library.add(faSolidMicrophone);
+library.add(faSolidPhone);
+library.add(faSolidPhoneSlash);
 library.add(faSolidBars);
 library.add(faSolidPlus);
 library.add(faSolidUpload);
