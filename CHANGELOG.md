@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 16:47:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 17:09:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.282.1
+
+Sat, 20 Jun 2026 17:09:24 GMT
+
+### Patches
+
+- fix(realtime): register FontAwesomeIcon in RealtimeCall so voice-call control icons render (dev@acedata.cloud)
 
 ## 3.282.0
 
