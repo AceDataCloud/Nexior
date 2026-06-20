@@ -996,16 +996,44 @@
     "description": "Oznaka taba dijaloga za API kod za uživo odgovor koji se vraća nakon klika na Izvrši."
   },
   "button.apiRun": {
-    "message": "Изврши",
-    "description": " dugme dijaloga za API kod koje izvršava zahtev uživo koristeći korisnikov ključ. Ponovo pokreće generaciju i naplaćuje se."
+    "message": "Ponovo pokreni",
+    "description": "Dugme u API kod dijalogu koje ponovo pokreće zahtev uživo protiv API-ja koristeći korisnički ključ. Rezultat već postoji, pa klikom ponovo pokreće, i to se naplaćuje."
   },
   "button.apiRunning": {
     "message": "Извршава се…",
     "description": "Oznaka dugmeta 'Izvrši' dijaloga za API kod dok je uživo zahtev u toku."
   },
+  "button.apiRunConfirm": {
+    "message": "Potvrdi pokretanje",
+    "description": "Oznaka dugmeta za potvrdu u dijalogu koji upozorava da pokretanje ovde troši dodatne kredite."
+  },
+  "button.viewDocs": {
+    "message": "Pogledaj dokumentaciju",
+    "description": "Dugme u donjem delu API kod dijaloga koje otvara odgovarajuću stranicu dokumentacije API-ja na platformi."
+  },
   "message.apiClickRun": {
-    "message": "Кликните на „Изврши“ да бисте користили ваш API ključ за реализацију овог захтева.",
-    "description": "Prazno stanje taba odgovora dijaloga za API kod, prikazuje se pre nego što korisnik izvrši zahtev."
+    "message": "Kliknite na „Ponovo pokreni“ da biste koristili svoj API ključ za izvršenje ovog zahteva uživo.",
+    "description": "Prazno stanje kartice odgovora u API kod dijalogu, prikazuje se pre nego što korisnik pokrene zahtev."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Potvrdi pokretanje",
+    "description": "Naslov dijaloga za potvrdu koji se prikazuje pre ponovnog pokretanja zahteva iz API kod dijaloga."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Ovo pokretanje će koristiti vaš API ključ za stvarno pozivanje interfejsa i dodatno trošiti kredite, da li ste sigurni da želite da nastavite?",
+    "description": "Tekst u dijalogu za potvrdu koji upozorava da ponovno pokretanje zahteva predstavlja stvarno, naplaćeno API pozivanje."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Ne prikazuj ponovo",
+    "description": "Potvrdna kutija u dijalogu za potvrdu pokretanja koja, kada je označena, potiskuje upozorenje na narednim pokretanjima."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Задатак је креиран, затворите овај прозор да бисте видели најновије резултате испод.",
+    "description": "Banner uspeha koji se prikazuje u API kod dijalogu након што izvrшавање врати ID zadatka, sugerишући да нови задатак већ појавljuје у списку иза дијалога."
+  },
+  "button.apiViewLatest": {
+    "message": "Затвори и погледај",
+    "description": " dugme u API kod dijalogu koje zatvara dijalog kako bi korisnik mogao da vidi novo kreirani zadatak u listi ispod."
   },
   "message.uploadInProgress": {
     "message": "Otpremanje referentnih datoteka je još u toku — sačekajte trenutak.",

@@ -38,7 +38,7 @@ class VeoOperator extends BaseTaskOperator<
         {
           video_id: data.video_id,
           action: data.upsample_action || '1080p',
-          ...(data.callback_url ? { callback_url: data.callback_url } : {})
+          ...(data.async ? { async: true } : {})
         },
         config
       );
@@ -50,7 +50,7 @@ class VeoOperator extends BaseTaskOperator<
           video_id: data.video_id,
           model: data.model,
           ...(data.prompt ? { prompt: data.prompt } : {}),
-          ...(data.callback_url ? { callback_url: data.callback_url } : {})
+          ...(data.async ? { async: true } : {})
         },
         config
       );
@@ -61,7 +61,7 @@ class VeoOperator extends BaseTaskOperator<
         {
           video_id: data.video_id,
           motion_type: data.motion_type,
-          ...(data.callback_url ? { callback_url: data.callback_url } : {})
+          ...(data.async ? { async: true } : {})
         },
         config
       );

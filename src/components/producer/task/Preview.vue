@@ -125,7 +125,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getWebhookCallbackUrl } from '@/constants';
 import { useFormatDuring } from '@/utils/number';
 import { IProducerAudio, IProducerTask } from '@/models';
 import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
@@ -136,8 +135,6 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-
-const CALLBACK_URL = getWebhookCallbackUrl('producer');
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -390,7 +387,7 @@ export default defineComponent({
       const request = {
         action,
         audio_id: audioId,
-        callback_url: CALLBACK_URL
+        async: true
       } as IProducerAudioRequest;
       const token = this.credential?.token;
       if (!token) {

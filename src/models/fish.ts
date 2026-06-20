@@ -16,6 +16,7 @@ export interface IFishTtsRequest {
   format?: IFishTtsFormat;
   latency?: IFishTtsLatency;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IFishTtsResponse {

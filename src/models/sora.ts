@@ -7,6 +7,7 @@ export interface ISoraConfig {
   image_urls?: string[];
   prompt?: string;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface ISoraGenerateRequest {
@@ -22,6 +23,7 @@ export interface ISoraGenerateRequest {
   translation?: boolean;
   aspect_ratio?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 export interface ISoraVideo {

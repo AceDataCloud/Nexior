@@ -34,6 +34,7 @@ export interface IKlingMotionConfig {
   mode?: 'std' | 'pro';
   keep_original_sound?: 'yes' | 'no';
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IKlingMotionRequest {
@@ -44,6 +45,7 @@ export interface IKlingMotionRequest {
   mode?: 'std' | 'pro';
   keep_original_sound?: 'yes' | 'no';
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IKlingTalkingPhotoConfig {
@@ -54,6 +56,7 @@ export interface IKlingTalkingPhotoConfig {
   duration?: number;
   mode?: 'std' | 'pro';
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IKlingTalkingPhotoRequest {
@@ -64,6 +67,7 @@ export interface IKlingTalkingPhotoRequest {
   duration?: number;
   mode?: 'std' | 'pro';
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IKlingConfig {
@@ -82,6 +86,7 @@ export interface IKlingConfig {
   camera_control?: IKlingCameraControl;
   cfg_scale?: number;
   callback_url?: string;
+  async?: boolean;
   generate_audio?: boolean;
   element_list?: IKlingElementRef[];
   video_list?: IKlingReferenceVideo[];
@@ -101,6 +106,7 @@ export interface IKlingGenerateRequest {
   camera_control?: IKlingCameraControl;
   cfg_scale?: number;
   callback_url?: string;
+  async?: boolean;
   generate_audio?: boolean;
   element_list?: IKlingElementRef[];
   video_list?: IKlingReferenceVideo[];

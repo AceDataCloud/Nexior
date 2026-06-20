@@ -28,14 +28,12 @@ import { applicationOperator, headshotsOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IApplicationDetailResponse, IHeadshotsGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/headshots/RecentPanel.vue';
 import { IHeadshotsTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('headshots');
 
 interface IData {
   task: IHeadshotsTask | undefined;
@@ -205,7 +203,7 @@ export default defineComponent({
       }
       const request = {
         ...this.config,
-        callback_url: CALLBACK_URL
+        async: true
       } as IHeadshotsGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

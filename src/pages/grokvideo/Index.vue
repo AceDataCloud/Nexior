@@ -18,11 +18,9 @@ import { grokvideoOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IGrokVideoGenerateRequest, IGrokVideoTask, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl, isGrokVideoImageOnlyModel } from '@/constants';
+import { ERROR_CODE_USED_UP, isGrokVideoImageOnlyModel } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('grok');
 
 interface IData {
   task: IGrokVideoTask | undefined;
@@ -158,7 +156,7 @@ export default defineComponent({
 
       const request = {
         ...cfg,
-        callback_url: CALLBACK_URL
+        async: true
       } as IGrokVideoGenerateRequest;
 
       const token = this.credential?.token;

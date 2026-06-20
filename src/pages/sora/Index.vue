@@ -17,13 +17,11 @@ import { soraOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { ISoraGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/sora/RecentPanel.vue';
 import { ISoraTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('sora');
 
 interface IData {
   task: ISoraTask | undefined;
@@ -161,7 +159,7 @@ export default defineComponent({
       }
       const request = {
         ...this.config,
-        callback_url: CALLBACK_URL
+        async: true
       } as ISoraGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

@@ -996,16 +996,44 @@
     "description": "API 代碼對話框中在點擊運行後返回的實時響應的標籤。"
   },
   "button.apiRun": {
-    "message": "運行",
-    "description": "API 代碼對話框中的按鈕，使用用戶的金鑰實時執行請求。重新運行生成並計費。"
+    "message": "再次運行",
+    "description": "API 代碼對話框中的按鈕，使用用戶的 API 金鑰實時重新運行請求。結果已存在，因此點擊後會再次運行，並且會計費。"
   },
   "button.apiRunning": {
     "message": "運行中…",
     "description": "當實時請求正在進行時，API 代碼對話框中的運行按鈕標籤。"
   },
+  "button.apiRunConfirm": {
+    "message": "確認運行",
+    "description": "對話框中的確認按鈕標籤，警告運行此操作會消耗額外的積分。"
+  },
+  "button.viewDocs": {
+    "message": "查看文檔",
+    "description": "API 代碼對話框底部的按鈕，打開平台上相應的 API 文檔頁面。"
+  },
   "message.apiClickRun": {
-    "message": "點擊「運行」即可使用你的 API Key 實時執行本次請求。",
-    "description": "API 代碼對話框中響應標籤的空狀態，在用戶運行請求之前顯示。"
+    "message": "點擊「再次運行」即可使用你的 API Key 實時執行本次請求。",
+    "description": "API 代碼對話框響應標籤的空狀態，在用戶運行請求之前顯示。"
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "確認運行",
+    "description": "在從 API 代碼對話框重新運行請求之前顯示的確認對話框標題。"
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "本次運行會用你的 API Key 真實調用接口並額外消耗積分，確認繼續嗎？",
+    "description": "確認對話框的主體，警告重新運行請求是一個真實的、可計費的 API 調用。"
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "不再提示",
+    "description": "在運行確認對話框中的復選框，勾選後將在後續運行中抑制警告。"
+  },
+  "message.apiRunTaskCreated": {
+    "message": "任務已創建，關閉此窗口即可在下方查看最新結果。",
+    "description": "在 API 代碼對話框中，當運行返回任務 ID 後顯示的成功橫幅，提示新任務已經出現在對話框後面的列表中。"
+  },
+  "button.apiViewLatest": {
+    "message": "關閉並查看",
+    "description": "在 API 代碼對話框成功橫幅中的按鈕，關閉對話框以便用戶可以查看下方新創建的任務列表。"
   },
   "message.uploadInProgress": {
     "message": "參考檔案仍在上傳，請稍候再生成。",

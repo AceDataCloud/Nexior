@@ -6,6 +6,7 @@ export interface IHailuoConfig {
   video_url?: string;
   first_image_url?: string;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IHailuoGenerateRequest {
@@ -14,6 +15,7 @@ export interface IHailuoGenerateRequest {
   model?: string;
   first_image_url?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 export interface IHailuoVideo {

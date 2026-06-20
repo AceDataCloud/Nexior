@@ -17,13 +17,11 @@ import { pixverseOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IPixverseGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, getWebhookCallbackUrl } from '@/constants';
+import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/pixverse/RecentPanel.vue';
 import { IPixverseTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
-
-const CALLBACK_URL = getWebhookCallbackUrl('pixverse');
 
 interface IData {
   task: IPixverseTask | undefined;
@@ -161,7 +159,7 @@ export default defineComponent({
       }
       const request = {
         ...this.config,
-        callback_url: CALLBACK_URL
+        async: true
       } as IPixverseGenerateRequest;
       const token = this.credential?.token;
       if (!token) {

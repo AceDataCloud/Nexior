@@ -996,16 +996,44 @@
     "description": "API-Code-Dialog Tab-Beschriftung für die Live-Antwort, die nach dem Klicken auf Ausführen zurückgegeben wird."
   },
   "button.apiRun": {
-    "message": "Ausführen",
-    "description": "API-Code-Dialog-Button, der die Anfrage live gegen die API mit dem Schlüssel des Benutzers ausführt. Führt die Generierung erneut aus und ist kostenpflichtig."
+    "message": "Erneut ausführen",
+    "description": "API-Code-Dialogschaltfläche, die die Anfrage live gegen die API mit dem Schlüssel des Benutzers erneut ausführt. Das Ergebnis existiert bereits, daher wird es durch Klicken erneut ausgeführt und ist kostenpflichtig."
   },
   "button.apiRunning": {
     "message": "Wird ausgeführt…",
     "description": "API-Code-Dialog Ausführen-Button-Beschriftung, während die Live-Anfrage verarbeitet wird."
   },
+  "button.apiRunConfirm": {
+    "message": "Ausführung bestätigen",
+    "description": "Bestätigungs-Schaltflächenbeschriftung im Dialog, der warnt, dass die Ausführung hier zusätzliche Credits verbraucht."
+  },
+  "button.viewDocs": {
+    "message": "Dokumentation anzeigen",
+    "description": "Fußzeilen-Schaltfläche im API-Code-Dialog, die die entsprechende API-Dokumentationsseite auf der Plattform öffnet."
+  },
   "message.apiClickRun": {
-    "message": "Klicke auf „Ausführen“, um deine API-Key für diese Anfrage live zu verwenden.",
-    "description": "API-Code-Dialog Antwort-Tab leere Zustandsanzeige, die angezeigt wird, bevor der Benutzer die Anfrage ausgeführt hat."
+    "message": "Klicken Sie auf „Erneut ausführen“, um Ihre API-Schlüssel in Echtzeit für diese Anfrage zu verwenden.",
+    "description": "Leerer Zustand des Antwort-Tabs im API-Code-Dialog, der angezeigt wird, bevor der Benutzer die Anfrage ausgeführt hat."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Ausführung bestätigen",
+    "description": "Titel des Bestätigungsdialogs, der angezeigt wird, bevor eine Anfrage aus dem API-Code-Dialog erneut ausgeführt wird."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Diese Ausführung wird Ihre API-Schlüssel verwenden, um die Schnittstelle tatsächlich aufzurufen und zusätzliche Punkte zu verbrauchen. Möchten Sie fortfahren?",
+    "description": "Inhalt des Bestätigungsdialogs, der warnt, dass das erneute Ausführen der Anfrage einen echten, kostenpflichtigen API-Aufruf darstellt."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Nicht erneut anzeigen",
+    "description": "Kontrollkästchen im Bestätigungsdialog, das, wenn es aktiviert ist, die Warnung bei nachfolgenden Ausführungen unterdrückt."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Aufgabe erstellt, schließen Sie dieses Fenster, um die neuesten Ergebnisse unten zu sehen.",
+    "description": "Erfolgsbanner, das im API-Code-Dialog angezeigt wird, nachdem ein Lauf eine Aufgaben-ID zurückgibt und darauf hinweist, dass die neue Aufgabe bereits in der Liste hinter dem Dialog erscheint."
+  },
+  "button.apiViewLatest": {
+    "message": "Schließen und ansehen",
+    "description": "Schaltfläche im Erfolgsbanner des API-Code-Dialogs, die den Dialog schließt, damit der Benutzer die neu erstellte Aufgabe in der Liste unten sehen kann."
   },
   "message.uploadInProgress": {
     "message": "Referenz-Uploads sind noch in Bearbeitung – bitte warten Sie einen Moment.",

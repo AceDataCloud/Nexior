@@ -31,8 +31,7 @@ import {
   MIDJOURNEY_DEFAULT_STYLIZE,
   MIDJOURNEY_DEFAULT_WIRED,
   MIDJOURNEY_DEFAULT_MODE,
-  MIDJOURNEY_DEFAULT_QUALITY,
-  getWebhookCallbackUrl
+  MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
@@ -43,8 +42,6 @@ interface IData {
   loadingMore: boolean;
   fetchingTasks: boolean;
 }
-
-const CALLBACK_URL = getWebhookCallbackUrl('midjourney');
 
 export default defineComponent({
   name: 'MidjourneyIndex',
@@ -317,7 +314,7 @@ export default defineComponent({
         image_id: payload.image_id,
         action: payload.action,
         mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-        callback_url: CALLBACK_URL,
+        async: true,
         version: this.config?.version,
         hd: this.config?.hd || false,
         quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY
@@ -345,7 +342,7 @@ export default defineComponent({
           resolution: this.config?.resolution,
           loop: this.config?.loop,
           mode: this.config?.mode || MIDJOURNEY_DEFAULT_MODE,
-          callback_url: CALLBACK_URL
+          async: true
         };
         await this.onStartVideosTask(request);
       } else if (this.config?.type === 'imagine') {
@@ -357,7 +354,7 @@ export default defineComponent({
           prompt: this.finalPrompt,
           action: MidjourneyImagineAction.GENERATE,
           translation: this.config?.translation,
-          callback_url: CALLBACK_URL,
+          async: true,
           version: this.config?.version,
           hd: this.config?.hd || false,
           quality: this.config?.quality || MIDJOURNEY_DEFAULT_QUALITY,
@@ -372,7 +369,7 @@ export default defineComponent({
         }
         const request = {
           image_url: this.config?.image_url,
-          callback_url: CALLBACK_URL
+          async: true
         };
         await this.onStartDescribeTask(request);
       }

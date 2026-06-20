@@ -996,16 +996,44 @@
     "description": "Étiquette de l'onglet du dialogue de code API pour la réponse en direct renvoyée après avoir cliqué sur Exécuter."
   },
   "button.apiRun": {
-    "message": "Exécuter",
-    "description": "Bouton du dialogue de code API qui exécute la requête en direct contre l'API en utilisant la clé de l'utilisateur. Relance la génération et est facturable."
+    "message": "Relancer",
+    "description": "Bouton du dialogue du code API qui relance la requête en direct contre l'API en utilisant la clé de l'utilisateur. Le résultat existe déjà, donc cliquer le relance, et c'est facturable."
   },
   "button.apiRunning": {
     "message": "Exécution en cours…",
     "description": "Étiquette du bouton Exécuter du dialogue de code API pendant que la requête en direct est en cours."
   },
+  "button.apiRunConfirm": {
+    "message": "Confirmer l'exécution",
+    "description": "Étiquette du bouton de confirmation dans le dialogue qui avertit que l'exécution ici consomme des crédits supplémentaires."
+  },
+  "button.viewDocs": {
+    "message": "Voir la documentation",
+    "description": "Bouton de pied de page du dialogue du code API qui ouvre la page de documentation API correspondante sur la plateforme."
+  },
   "message.apiClickRun": {
-    "message": "Cliquez sur « Exécuter » pour utiliser votre clé API et exécuter cette requête en temps réel.",
-    "description": "État vide de l'onglet Réponse du dialogue de code API, affiché avant que l'utilisateur n'ait exécuté la requête."
+    "message": "Cliquez sur « Relancer » pour exécuter cette requête en temps réel avec votre clé API.",
+    "description": "État vide de l'onglet Réponse du dialogue du code API, affiché avant que l'utilisateur n'ait exécuté la requête."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Confirmer l'exécution",
+    "description": "Titre du dialogue de confirmation affiché avant de relancer une requête depuis le dialogue du code API."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Cette exécution utilisera votre clé API pour appeler réellement l'interface et consommera des points supplémentaires, confirmez-vous pour continuer ?",
+    "description": "Corps du dialogue de confirmation avertissant que relancer la requête est un appel API réel et facturable."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Ne plus afficher cet avertissement",
+    "description": "Case à cocher dans le dialogue de confirmation d'exécution qui, une fois cochée, supprime l'avertissement lors des exécutions suivantes."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Tâche créée, fermez cette fenêtre pour voir les derniers résultats ci-dessous.",
+    "description": "Bannière de succès affichée dans le dialogue de code API après qu'une exécution renvoie un identifiant de tâche, indiquant que la nouvelle tâche apparaît déjà dans la liste derrière le dialogue."
+  },
+  "button.apiViewLatest": {
+    "message": "Fermer et voir",
+    "description": "Bouton dans la bannière de succès du dialogue de code API qui ferme le dialogue afin que l'utilisateur puisse voir la tâche nouvellement créée dans la liste ci-dessous."
   },
   "message.uploadInProgress": {
     "message": "Les téléversements de référence sont toujours en cours — veuillez patienter un instant.",

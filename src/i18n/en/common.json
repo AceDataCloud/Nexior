@@ -976,16 +976,44 @@
     "description": "API code dialog tab label for the live response returned after clicking Run."
   },
   "button.apiRun": {
-    "message": "Run",
-    "description": "API code dialog button that executes the request live against the API using the user's key. Re-runs the generation and is billable."
+    "message": "Run again",
+    "description": "API code dialog button that re-runs the request live against the API using the user's key. The result already exists, so clicking runs it again, and it is billable."
   },
   "button.apiRunning": {
     "message": "Running…",
     "description": "API code dialog Run button label while the live request is in flight."
   },
+  "button.apiRunConfirm": {
+    "message": "Run",
+    "description": "Confirm-button label in the dialog that warns running here consumes extra credits."
+  },
+  "button.viewDocs": {
+    "message": "View docs",
+    "description": "API code dialog footer button that opens the matching API documentation page on the platform."
+  },
   "message.apiClickRun": {
-    "message": "Click Run to execute this request live with your API key.",
+    "message": "Click Run again to execute this request live with your API key.",
     "description": "API code dialog Response tab empty state, shown before the user has run the request."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Confirm run",
+    "description": "Title of the confirmation dialog shown before re-running a request from the API code dialog."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Running here makes a real API call with your API key and consumes extra credits. Continue?",
+    "description": "Body of the confirmation dialog warning that re-running the request is a real, billable API call."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Don't show again",
+    "description": "Checkbox in the run-confirmation dialog that, when ticked, suppresses the warning on subsequent runs."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Task created — close this window to see the latest result below.",
+    "description": "Success banner shown in the API code dialog after a run returns a task id, hinting that the new task already appears in the list behind the dialog."
+  },
+  "button.apiViewLatest": {
+    "message": "Close & view",
+    "description": "Button in the API code dialog success banner that closes the dialog so the user can see the newly created task in the list below."
   },
   "message.uploadInProgress": {
     "message": "Reference uploads are still in progress — please wait a moment.",

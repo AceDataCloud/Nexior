@@ -7,6 +7,7 @@ export interface IFluxConfig {
   image_url?: string;
   quality?: number;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface IFluxGenerateRequest {
@@ -15,6 +16,7 @@ export interface IFluxGenerateRequest {
   model?: string;
   image_url?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 export interface IFluxImage {

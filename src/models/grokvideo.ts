@@ -10,6 +10,7 @@ export interface IGrokVideoConfig {
   resolution?: GrokVideoResolution;
   duration?: number;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 
@@ -22,6 +23,7 @@ export interface IGrokVideoGenerateRequest {
   resolution?: GrokVideoResolution;
   duration?: number;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
 }
 

@@ -21,6 +21,7 @@ export interface ILumaGenerateRequest {
   enhancement?: boolean;
   loop?: boolean;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface ILumaGenerateResponse {

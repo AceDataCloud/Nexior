@@ -996,16 +996,44 @@
     "description": "Etiqueta de la pestaña del diálogo de código API para la respuesta en vivo devuelta después de hacer clic en Ejecutar."
   },
   "button.apiRun": {
-    "message": "Ejecutar",
-    "description": "Botón del diálogo de código API que ejecuta la solicitud en vivo contra la API utilizando la clave del usuario. Vuelve a ejecutar la generación y es facturable."
+    "message": "Ejecutar de nuevo",
+    "description": "Botón del diálogo de código API que vuelve a ejecutar la solicitud en vivo contra la API usando la clave del usuario. El resultado ya existe, por lo que al hacer clic se ejecuta de nuevo y es facturable."
   },
   "button.apiRunning": {
     "message": "Ejecutando…",
     "description": "Etiqueta del botón Ejecutar en el diálogo de código API mientras la solicitud en vivo está en proceso."
   },
+  "button.apiRunConfirm": {
+    "message": "Confirmar ejecución",
+    "description": "Etiqueta del botón de confirmación en el diálogo que advierte que ejecutar aquí consume créditos adicionales."
+  },
+  "button.viewDocs": {
+    "message": "Ver documentación",
+    "description": "Botón en el pie del diálogo de código API que abre la página de documentación API correspondiente en la plataforma."
+  },
   "message.apiClickRun": {
-    "message": "Haz clic en «Ejecutar» para usar tu API Key y ejecutar esta solicitud en tiempo real.",
+    "message": "Haz clic en 'Ejecutar de nuevo' para usar tu API Key y ejecutar esta solicitud en tiempo real.",
     "description": "Estado vacío de la pestaña de respuesta del diálogo de código API, mostrado antes de que el usuario ejecute la solicitud."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Confirmar ejecución",
+    "description": "Título del diálogo de confirmación mostrado antes de volver a ejecutar una solicitud desde el diálogo de código API."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Esta ejecución utilizará tu API Key para realizar una llamada real a la API y consumirá créditos adicionales, ¿confirmas continuar?",
+    "description": "Cuerpo del diálogo de confirmación que advierte que volver a ejecutar la solicitud es una llamada API real y facturable."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "No volver a mostrar",
+    "description": "Casilla de verificación en el diálogo de confirmación de ejecución que, al marcarse, suprime la advertencia en ejecuciones posteriores."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Tarea creada, cierra esta ventana para ver los resultados más recientes a continuación.",
+    "description": "Banner de éxito mostrado en el diálogo de código API después de que una ejecución devuelve un id de tarea, sugiriendo que la nueva tarea ya aparece en la lista detrás del diálogo."
+  },
+  "button.apiViewLatest": {
+    "message": "Cerrar y ver",
+    "description": "Botón en el banner de éxito del diálogo de código API que cierra el diálogo para que el usuario pueda ver la tarea recién creada en la lista a continuación."
   },
   "message.uploadInProgress": {
     "message": "Las cargas de referencia aún están en curso; espera un momento.",

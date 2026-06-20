@@ -116,11 +116,13 @@ export interface ISunoAudioRequest {
   samples_end?: number;
   speed?: number;
   callback_url?: string;
+  async?: boolean;
   instrumental?: boolean;
 }
 
 export interface ISunoMp4Request {
   callback_url?: string;
+  async?: boolean;
   audio_id?: string;
 }
 
@@ -202,6 +204,7 @@ export interface ISunoVoxRequest {
   vocal_start?: number;
   vocal_end?: number;
   callback_url?: string;
+  async?: boolean;
 }
 
 export interface ISunoVoxResponse {

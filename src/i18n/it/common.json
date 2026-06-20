@@ -996,16 +996,44 @@
     "description": "Etichetta della scheda del dialogo del codice API per la risposta in tempo reale restituita dopo aver cliccato Esegui."
   },
   "button.apiRun": {
-    "message": "Esegui",
-    "description": "Pulsante del dialogo del codice API che esegue la richiesta in tempo reale utilizzando la chiave dell'utente. Ri-esegue la generazione ed è a pagamento."
+    "message": "Esegui di nuovo",
+    "description": "Pulsante del dialogo API che riesegue la richiesta in tempo reale contro l'API utilizzando la chiave dell'utente. Il risultato esiste già, quindi cliccando si esegue di nuovo e sarà addebitabile."
   },
   "button.apiRunning": {
     "message": "Esecuzione in corso…",
     "description": "Etichetta del pulsante Esegui del dialogo del codice API mentre la richiesta è in fase di elaborazione."
   },
+  "button.apiRunConfirm": {
+    "message": "Conferma esecuzione",
+    "description": "Etichetta del pulsante di conferma nel dialogo che avverte che l'esecuzione qui consuma crediti extra."
+  },
+  "button.viewDocs": {
+    "message": "Visualizza documentazione",
+    "description": "Pulsante nel piè di pagina del dialogo API che apre la pagina di documentazione API corrispondente sulla piattaforma."
+  },
   "message.apiClickRun": {
-    "message": "Clicca su «Esegui» per utilizzare la tua API Key e eseguire questa richiesta in tempo reale.",
-    "description": "Stato vuoto della scheda Risposta del dialogo del codice API, mostrato prima che l'utente esegua la richiesta."
+    "message": "Clicca su «Esegui di nuovo» per utilizzare la tua API Key e eseguire questa richiesta in tempo reale.",
+    "description": "Stato vuoto della scheda Risposta del dialogo API, mostrato prima che l'utente esegua la richiesta."
+  },
+  "message.apiRunConfirmTitle": {
+    "message": "Conferma esecuzione",
+    "description": "Titolo del dialogo di conferma mostrato prima di rieseguire una richiesta dal dialogo del codice API."
+  },
+  "message.apiRunConfirmDesc": {
+    "message": "Questa esecuzione utilizzerà la tua API Key per effettuare una chiamata reale all'interfaccia e consumerà crediti aggiuntivi. Vuoi confermare di continuare?",
+    "description": "Corpo del dialogo di conferma che avverte che rieseguire la richiesta è una chiamata API reale e addebitabile."
+  },
+  "message.apiRunConfirmSkip": {
+    "message": "Non mostrare più",
+    "description": "Checkbox nel dialogo di conferma dell'esecuzione che, se selezionata, sopprime l'avviso nelle esecuzioni successive."
+  },
+  "message.apiRunTaskCreated": {
+    "message": "Compito creato, chiudi questa finestra per vedere i risultati più recenti qui sotto.",
+    "description": "Banner di successo mostrato nella finestra di dialogo del codice API dopo che un'esecuzione restituisce un ID compito, suggerendo che il nuovo compito appare già nell'elenco dietro la finestra di dialogo."
+  },
+  "button.apiViewLatest": {
+    "message": "Chiudi e visualizza",
+    "description": "Pulsante nel banner di successo della finestra di dialogo del codice API che chiude la finestra di dialogo in modo che l'utente possa vedere il nuovo compito nell'elenco sottostante."
   },
   "message.uploadInProgress": {
     "message": "I caricamenti di riferimento sono ancora in corso, attendi un momento.",

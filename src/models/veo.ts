@@ -8,6 +8,7 @@ export interface IVeoConfig {
   image_urls?: string[];
   prompt?: string;
   callback_url?: string;
+  async?: boolean;
   // /veo/upsample — sub-action: 1080p / 4k / gif
   upsample_action?: string;
   // /veo/reshoot — short uppercase motion-type alias
@@ -26,6 +27,7 @@ export interface IVeoGenerateRequest {
   translation?: boolean;
   aspect_ratio?: string;
   callback_url?: string;
+  async?: boolean;
   mirror?: boolean;
   // /veo/upsample
   upsample_action?: string;
