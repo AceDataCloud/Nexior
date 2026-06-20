@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 13:05:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 13:09:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.3
+
+Sat, 20 Jun 2026 13:09:59 GMT
+
+### Patches
+
+- feat(suno): P1 create-loop & player — prev/next (visible-order queue) + grabbable seek bar, quick Extend, generating pulse (dev@acedata.cloud)
 
 ## 3.281.2
 
