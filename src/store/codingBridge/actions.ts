@@ -409,7 +409,9 @@ export const applyNodeEvent = (
 // id history lists them under — so a transcript that is still running on the
 // node is reattached (its running status, seq cursor and in-flight stream kept
 // intact) instead of being overwritten by a static, idle copy. A dead transcript
-// materialises as a resumable idle session as before.
+// materialises as a resumable idle session — for BOTH providers: Claude
+// (`claude --resume`) and Codex (`codex exec resume`) can each continue an
+// on-disk transcript, so neither is forced read-only.
 const applyHistoryDetail = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
   state: ICodingBridgeState,
@@ -421,7 +423,9 @@ const applyHistoryDetail = (
   if (!sessionId || !fromNode) {
     return;
   }
-  const resumable = provider === 'claude';
+  // Codex resume now works end-to-end (node sends `codex exec resume` with the
+  // sandbox as a -c override), so codex history is resumable too — not read-only.
+  const resumable = provider === 'claude' || provider === 'codex';
   const live = state.sessions[sessionId];
   // "Live" = a session the node is currently running (surfaced via the sessions
   // snapshot) or one already mid-turn in this tab. Such a session keeps the Stop
@@ -443,11 +447,18 @@ const applyHistoryDetail = (
     started: isLive ? true : false,
     readonly: !resumable && !isLive
   });
-  // Only lay down the static transcript when we don't already hold a richer live
-  // one: a session we're actively watching keeps its streamed events; a live
-  // session we only just learned about (e.g. after a reload) gets the transcript
-  // as its base, with later live deltas (higher seq) appending on top.
-  const haveLiveEvents = isLive && (state.events[sessionId]?.length ?? 0) > 0;
+  // Decide whether to keep our in-memory events or lay down the on-disk
+  // transcript. Keep them while a turn is ACTIVELY streaming (replacing would
+  // drop the in-flight bubble, and the seq-deduped replay would duplicate the
+  // transcript's tail), or when we already hold at least as many events as the
+  // transcript. Otherwise — an idle session opened with only a partial relay
+  // replay — the transcript is the source of truth and must win, or the user
+  // sees a truncated conversation that can't be scrolled back. Later live deltas
+  // (higher seq) still append on top.
+  const currentCount = state.events[sessionId]?.length ?? 0;
+  const transcriptCount = (payload.events ?? []).length;
+  const streaming = live?.status === 'running' || live?.status === 'starting';
+  const haveLiveEvents = isLive && currentCount > 0 && (streaming || currentCount >= transcriptCount);
   if (!haveLiveEvents) {
     const events: ICodingBridgeEvent[] = (payload.events ?? []).map((item: any, index: number) => ({
       id: uid(),
@@ -979,12 +990,19 @@ export const getHistoryDetail = (
 //  4. the in-flight event stream replayed from our last cursor (socket.resume),
 //     so live deltas (higher seq) append onto the restored transcript.
 export const reattachSession = (
-  { state, dispatch }: ActionContext<ICodingBridgeState, IRootState>,
+  { state, commit, dispatch }: ActionContext<ICodingBridgeState, IRootState>,
   ref: ICodingBridgeHistoryRef
 ): void => {
   if (!ref?.node_id || !ref?.session_id) {
     return;
   }
+  // Switch the view to the target session NOW, before the transcript lands.
+  // Otherwise currentSessionId stays on the previous conversation (whose events
+  // are non-empty), so the loading skeleton — gated on `!events.length` — never
+  // shows when switching between history sessions; only the very first open
+  // (from an empty view) ever animated. The detail reply re-affirms the same id.
+  commit('setCurrentNode', ref.node_id);
+  commit('setCurrentSession', ref.session_id);
   dispatch('getHistoryDetail', ref);
   dispatch('requestSessions', ref.node_id);
   dispatch('requestPendingPermissions', ref.node_id);
