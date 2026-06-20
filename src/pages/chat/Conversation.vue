@@ -7,6 +7,11 @@
           <byok-badge class="byok-badge" />
         </div>
         <div class="toolbar-actions">
+          <el-tooltip :content="$t('realtime.callTooltip')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="onStartCall">
+              <font-awesome-icon icon="fa-solid fa-microphone" />
+            </el-button>
+          </el-tooltip>
           <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
               <font-awesome-icon icon="fa-solid fa-desktop" />
@@ -64,6 +69,7 @@ import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS, ROLE_ASSISTANT, ROLE_USER } from '@/constants';
+import { ROUTE_CHATGPT_CALL } from '@/router/constants';
 import {
   IChatMessageState,
   IChatConversationResponse,
@@ -281,6 +287,9 @@ export default defineComponent({
     this.onApplyQueryFromUrl();
   },
   methods: {
+    onStartCall() {
+      this.$router.push({ name: ROUTE_CHATGPT_CALL });
+    },
     resetConversation() {
       this.messages = [];
       this.question = '';

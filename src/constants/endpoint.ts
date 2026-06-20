@@ -15,6 +15,10 @@ export const BASE_URL_CODING_BRIDGE = isTest
 // Browser WebSocket endpoint: same host, https -> wss / http -> ws, path `/ws`.
 export const WS_URL_CODING_BRIDGE = `${BASE_URL_CODING_BRIDGE.replace(/^http/, 'ws')}/ws`;
 
+// OpenAI-compatible Realtime voice endpoint (WebSocket), drop-in with the
+// official API. Token is passed via the Sec-WebSocket-Protocol subprotocol.
+export const WS_URL_REALTIME = `${BASE_URL_API.replace(/^http/, 'ws')}/v1/realtime`;
+
 export const BASE_HOST_PLATFORM = new URL(BASE_URL_PLATFORM).host;
 export const BASE_HOST_HUB = new URL(BASE_URL_HUB).host;
 export const BASE_HOST_AUTH = new URL(BASE_URL_AUTH).host;

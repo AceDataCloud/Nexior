@@ -1,6 +1,7 @@
 import { IApplication, IConfigResponse, ISite, IToken, IUser, Status } from '@/models';
 import { IMidjourneyState } from '../midjourney/models';
 import { IChatState } from '../chat/models';
+import { IRealtimeState } from '../realtime/models';
 import { IQrartState } from '../qrart/models';
 import { ILumaState } from '../luma/models';
 import { IPikaState } from '../pika/models';
@@ -55,6 +56,9 @@ export interface ICommonState {
 export interface IAppState {
   midjourney: IMidjourneyState;
   chat: IChatState;
+  // Lazily registered only when the user opens the voice-call screen, so it's
+  // absent from the initial root state — optional, accessed with `?.`.
+  realtime?: IRealtimeState;
   qrart: IQrartState;
   luma: ILumaState;
   pika: IPikaState;

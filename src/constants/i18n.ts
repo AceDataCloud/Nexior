@@ -63,5 +63,6 @@ export const I18N_SCOPES = [
   'byok',
   'subsite',
   'webextrator',
-  'codingBridge'
+  'codingBridge',
+  'realtime'
 ];

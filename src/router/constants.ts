@@ -8,6 +8,7 @@ export const ROUTE_SETTINGS_INDEX = 'settings-index';
 
 export const ROUTE_CHATGPT_CONVERSATION = 'chatgpt-conversation';
 export const ROUTE_CHATGPT_CONVERSATION_NEW = 'chatgpt-conversation-new';
+export const ROUTE_CHATGPT_CALL = 'chatgpt-call';
 
 export const ROUTE_DEEPSEEK_CONVERSATION = 'deepseek-conversation';
 export const ROUTE_DEEPSEEK_CONVERSATION_NEW = 'deepseek-conversation-new';
