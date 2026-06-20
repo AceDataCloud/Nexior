@@ -744,7 +744,7 @@ export const sendPrompt = (
       prompt,
       cwd: payload.cwd || existing?.cwd || undefined,
       model: payload.model || existing?.model || undefined,
-      permission_mode: payload.permissionMode || 'default',
+      permission_mode: payload.permissionMode || 'bypassPermissions',
       provider,
       effort: payload.effort || undefined,
       images,

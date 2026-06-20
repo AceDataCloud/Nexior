@@ -539,7 +539,10 @@ export default defineComponent({
       cwd: '',
       model: '',
       customModelDraft: '',
-      permissionMode: 'default',
+      // Default to bypass: this is the user's own paired machine, so the agent
+      // runs without per-tool approval prompts unless a stricter mode is picked
+      // (which then persists per device via lastComposer).
+      permissionMode: 'bypassPermissions',
       provider: 'claude',
       effort: '',
       directoryVisible: false,
@@ -958,7 +961,7 @@ export default defineComponent({
       this.customModelDraft = '';
       this.cwd = session.cwd ?? prefs.cwd ?? '';
       this.effort = session.effort ?? prefs.effort ?? '';
-      this.permissionMode = session.permission_mode ?? prefs.permissionMode ?? 'default';
+      this.permissionMode = session.permission_mode ?? prefs.permissionMode ?? 'bypassPermissions';
     },
     // Pick a listed model (or the empty default) and close the popover.
     selectModel(value: string) {
@@ -1246,7 +1249,7 @@ export default defineComponent({
       const prefs = this.lastComposer;
       this.cwd = prefs.cwd ?? '';
       this.provider = prefs.provider ?? 'claude';
-      this.permissionMode = prefs.permissionMode ?? 'default';
+      this.permissionMode = prefs.permissionMode ?? 'bypassPermissions';
       this.customModelDraft = '';
       this.$nextTick(() => {
         this.model = prefs.model ?? '';
