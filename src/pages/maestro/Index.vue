@@ -16,7 +16,7 @@ import ConfigPanel from '@/components/maestro/ConfigPanel.vue';
 import RecentPanel from '@/components/maestro/RecentPanel.vue';
 import { maestroOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
-import { IMaestroGenerateRequest, IMaestroTask, Status } from '@/models';
+import { IMaestroGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';

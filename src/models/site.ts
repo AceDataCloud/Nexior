@@ -12,6 +12,7 @@ export interface ISiteFeatures {
   kling?: any;
   veo?: any;
   sora?: any;
+  maestro?: any;
   pixverse?: any;
   hailuo?: any;
   headshots?: any;
