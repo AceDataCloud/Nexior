@@ -1,137 +1,147 @@
 <div align="center">
 
-<h1 align="center">Nexior</h1>
+# Nexior
 
-Deploy your own AI System in minutes, including applications such as AI Chat (ChatGPT, DeepSeek, Grok, Gemini, Claude), AI Image (Midjourney, Flux, QRArt, Headshots, NanoBanana, OpenAI Image, Seedream), AI Music (Suno), AI Video (Luma, Pika, Hailuo, Sora, Veo, Pixverse, Kling, Seedance), etc. No development experience required, no need to purchase AI accounts, no need to worry about API support, and no need to configure payment systems. Zero startup costs, zero risk, earn revenue through AI.
+### The open-source, self-hostable **all-in-one AI app**
 
-一键部署属于你的 AI 应用，包括 AI 聊天 (ChatGPT, DeepSeek, Grok, Gemini, Claude), AI 图片 (Midjourney, Flux, QRArt, Headshots, NanoBanana, OpenAI Image, Seedream), AI 音乐 (Suno), AI 视频 (Luma, Pika, Hailuo, Sora, Veo, Pixverse, Kling, Seedance) 等，无需任何开发经验、无需采购 AI 账号、无需关心 API 支持、无需配置支付系统。零启动成本，零风险通过 AI 赚取收益。
+**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Midjourney · Flux · Suno · Sora · Veo · Kling · Seedance — deploy your own in minutes. BYOK or one-key. MIT licensed.**
 
----
+一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,BYOK 或一键直用,MIT 协议。
 
-Try Online: [https://hub.acedata.cloud](https://hub.acedata.cloud)
+<p>
+  <a href="https://hub.acedata.cloud">🚀 Live Demo</a> ·
+  <a href="#-quick-start">⚡ Deploy in minutes</a> ·
+  <a href="https://platform.acedata.cloud">🔑 Free API key</a> ·
+  <a href="https://platform.acedata.cloud/support">💬 Support</a> ·
+  <a href="#-star-us">⭐ Star us</a>
+</p>
 
-One click to deploy to Vercel：
-
-[![Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069)
+<p>
+  <img alt="stars" src="https://img.shields.io/github/stars/AceDataCloud/Nexior?style=flat&color=blueviolet" />
+  <img alt="license" src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat" />
+  <img alt="vue" src="https://img.shields.io/badge/Vue-3.5-42b883?style=flat&logo=vuedotjs&logoColor=white" />
+  <img alt="capacitor" src="https://img.shields.io/badge/iOS%20%2B%20Android-Capacitor-119EFF?style=flat&logo=capacitor&logoColor=white" />
+  <img alt="deploy" src="https://img.shields.io/badge/deploy-Vercel%20%7C%20Docker-black?style=flat&logo=vercel" />
+</p>
 
 </div>
 
-## Features
+---
 
-- An integrated system offering all-in-one services including AI Chat (ChatGPT, DeepSeek, Grok, Gemini, Claude), AI Image (Midjourney, Flux, QRArt, Headshots, NanoBanana, OpenAI Image, Seedream), AI Music (Suno), AI Video (Luma, Pika, Hailuo, Sora, Veo, Pixverse, Kling, Seedance), etc.
-- No need to set up API service by yourself, ready to use out of the box.
-- Supports all capabilities with free trials.
-- Out-of-the-box support for payment and referral systems, enabling profit generation without any additional configuration.
-- Out-of-the-box user system support, allowing for email login and registration without extra configuration.
-- Completely open source and free, under the MIT license, with simple configuration and the ability to deploy directly as your own system.
+## 🎯 What is Nexior
 
-**Supported Apps**
+**Nexior is the open-source app that puts every major AI model behind one clean UI — and lets you self-host it or ship it as your own product.** Web, iOS, and Android from a single codebase (Vue 3.5 + Capacitor). No AI accounts to buy, no backend to build, no payment system to wire — point it at your own keys (BYOK) or use a single [AceData](https://platform.acedata.cloud) key for all of them, and you're live.
 
-- AI Chat: ChatGPT, DeepSeek, Grok, Gemini, Claude
-- AI Image: Midjourney, Flux, QRArt, Headshots, NanoBanana, OpenAI Image, Seedream
-- AI Music: Suno
-- AI Video: Luma, Pika, Hailuo, Sora, Veo, Pixverse, Kling, Seedance
+- 🧠 **40+ models, 4 modalities, one app** — chat, image, music, video.
+- 🖥️ **Self-host anywhere** — one-click Vercel, or `docker compose up`. Your data, your domain.
+- 🔑 **BYOK or one-key** — bring your own provider keys, or use a single AceData key for all of them.
+- 💸 **Turn it into a business (optional)** — built-in user accounts, payments, and a referral/distribution system. Zero extra config.
+- 📦 **MIT licensed** — fork it, brand it, ship it.
+
+> Built and maintained by [AceDataCloud](https://platform.acedata.cloud). Powers the live consumer app at [hub.acedata.cloud](https://hub.acedata.cloud).
+
+**Nexior 是把所有主流 AI 模型收进一个干净界面的开源应用 —— 可自托管,也可直接做成你自己的产品。** Web / iOS / Android 同一套代码(Vue 3.5 + Capacitor)。无需采购 AI 账号、无需搭后端、无需配支付:用你自己的 key(BYOK),或用一个 AceData key 直接全用,几分钟上线。
 
 ---
 
-- 集成 AI 聊天 (ChatGPT, DeepSeek, Grok, Gemini, Claude), AI 图片 (Midjourney, Flux, QRArt, Headshots, NanoBanana, OpenAI Image, Seedream), AI 音乐 (Suno), AI 视频 (Luma, Pika, Hailuo, Sora, Veo, Pixverse, Kling, Seedance) 的系统。
-- 无需自行搭建 API 服务，开箱即用。
-- 支持所有功能免费注册体验。
-- 开箱支持支付和分销系统，无需任何额外配置即可赚取收益。
-- 开箱支持用户系统，支持邮箱登录和注册，无需额外配置。
-- 完全开源免费，采用 MIT 协议，配置简单，可直接部署为您自己的系统。
+## ✨ Models in the box
 
-**支持的应用**
+| Modality | Models |
+|---|---|
+| 💬 **AI Chat** | ChatGPT · Claude · Gemini · Grok · DeepSeek |
+| 🖼️ **AI Image** | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art · Headshots |
+| 🎵 **AI Music** | Suno |
+| 🎬 **AI Video** | Sora · Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika |
 
-- AI 聊天：ChatGPT、DeepSeek、Grok、Gemini、Claude
-- AI 图片：Midjourney、Flux、QRArt、Headshots、NanoBanana、OpenAI Image、Seedream
-- AI 音乐：Suno
-- AI 视频：Luma、Pika、Hailuo、Sora、Veo、Pixverse、Kling、Seedance
+All capabilities ship with a **free trial** — no credit card to try.
 
-Demo URL: [https://hub.acedata.cloud/](https://hub.acedata.cloud/), Powered by [AceDataCloud](https://platform.acedata.cloud/).
+---
 
-## Principle of Making Money
+## ⚡ Quick start
 
-This system supports a customer binding mechanism, where registered users of each website can be permanently bound as sub-customers of the website owner or sharer. The customer's consumption orders on this platform will be refunded to the superior account according to the distributor's distribution ratio, and can contact customer service to withdraw funds at any time.
+### Option A — One-click deploy to Vercel
+[![Deploy with Vercel](https://vercel.com/button)](https://platform.acedata.cloud/documents/5b942c64-5612-4aab-ab3c-9e58b64cb069)
 
-本系统支持客源绑定机制，每个网站的注册用户可永久绑定为站长或分享者的下级客户，客户在本平台的所有消费订单将根据站长的分销比例返还到上级账户，并可联系客服随时提现。
+### Option B — Docker (self-host)
+```bash
+git clone https://github.com/AceDataCloud/Nexior.git
+cd Nexior
+cp .env.example .env        # set your AceData key (or BYOK provider keys)
+docker compose up -d
+# → http://localhost:8084
+```
 
-## Preview
+### Option C — Local dev
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-Midjourney:
+Get a key (free quota) at **[platform.acedata.cloud](https://platform.acedata.cloud)**. Full guides → [`docs/deploy/`](docs/deploy/).
 
-![](https://cdn.acedata.cloud/0oqva0.png)
+---
 
-<img src="https://cdn.acedata.cloud/5u5tin.png" style="width: 300px">
+## 🚀 Launch your own AI product (optional)
 
-GPT Chat：
+Nexior isn't just a client — it's a complete **AI-SaaS starter**. Every deployment ships with:
 
-![](https://cdn.acedata.cloud/wqzm9r.png)
+- 👤 **User system** — email login/registration, out of the box.
+- 💳 **Payments** — accept payments with zero extra config.
+- 🤝 **Referral / distribution** — registered users bind permanently to the site owner; their spend pays you a commission. Withdraw anytime.
 
-<img src="https://cdn.acedata.cloud/kj42da.png" style="width: 300px">
+Deploy once, and `your-domain.com` is a revenue-ready AI product. Zero startup cost, zero AI accounts to manage.
 
-DeepSeek Chat：
+> 本系统支持客源绑定机制:每个网站的注册用户可永久绑定为站长的下级客户,其在平台的所有消费按分销比例返还到你的账户,可随时提现。
 
-![](https://cdn.acedata.cloud/sqe72j.png)
+---
 
-<img src="https://cdn.acedata.cloud/k7nda7.png" style="width: 300px">
+## 🖼️ Preview
 
-Grok Chat：
+| Chat (ChatGPT) | Image (Midjourney) | Music (Suno) | Video (Sora) |
+|---|---|---|---|
+| ![chat](https://cdn.acedata.cloud/wqzm9r.png) | ![mj](https://cdn.acedata.cloud/0oqva0.png) | ![suno](https://cdn.acedata.cloud/999o20.png) | ![sora](https://cdn.acedata.cloud/r1cmvk.png) |
 
-![](https://cdn.acedata.cloud/5cl1ea.png)
+<details>
+<summary>More previews (DeepSeek · Grok · Gemini · NanoBanana · Flux · Veo · Kling · Hailuo · Luma · Midjourney)</summary>
 
-<img src="https://cdn.acedata.cloud/fioyfh.png" style="width: 300px">
+| | |
+|---|---|
+| DeepSeek Chat ![](https://cdn.acedata.cloud/sqe72j.png) | Grok Chat ![](https://cdn.acedata.cloud/5cl1ea.png) |
+| Gemini Chat ![](https://cdn.acedata.cloud/6l28bw.png) | Nano Banana ![](https://cdn.acedata.cloud/j0h3l3.png) |
+| Flux ![](https://cdn.acedata.cloud/b18s04.png) | Veo ![](https://cdn.acedata.cloud/rkzqx1.png) |
+| Kling ![](https://cdn.acedata.cloud/gt5hv9.png) | Hailuo ![](https://cdn.acedata.cloud/c2jh0d.png) |
+| Luma ![](https://cdn.acedata.cloud/q93b6q.png) | Midjourney ![](https://cdn.acedata.cloud/5u5tin.png) |
 
-Gemini Chat：
+</details>
 
-![](https://cdn.acedata.cloud/6l28bw.png)
+---
 
-<img src="https://cdn.acedata.cloud/z2ti1f.png" style="width: 300px">
+## 🧩 Tech stack
 
-Nano Banana Image:
+Vue 3.5 · Vite 7 · TypeScript · Vuex 4 (per-service namespaced modules) · Element Plus · Capacitor 6 (iOS + Android) · OAuth SSO.
 
-![](https://cdn.acedata.cloud/j0h3l3.png)
+---
 
-<img src="https://cdn.acedata.cloud/dlcazx.png" style="width: 300px">
+## 💛 Star us
 
-Flux Image:
+If Nexior saved you a weekend of wiring AI providers together, give it a ⭐.
+Stars don't pay rent — but they tell the next builder, the next agent, and the next contributor that this is worth their attention. One click, three seconds, a real signal.
 
-![](https://cdn.acedata.cloud/b18s04.png)
+<a href="https://star-history.com/#AceDataCloud/Nexior&Date">
+  <img alt="Nexior star history" src="https://api.star-history.com/svg?repos=AceDataCloud/Nexior&type=Date" width="70%" />
+</a>
 
-<img src="https://cdn.acedata.cloud/cqr4ci.png" style="width: 300px">
+---
 
-Suno Music:
+## 🤝 Community & support
 
-![](https://cdn.acedata.cloud/999o20.png)
+- 🔑 Free API key & docs: <https://platform.acedata.cloud>
+- 💬 Support: <https://platform.acedata.cloud/support>
+- 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
+- 📧 Email: support@acedata.cloud
+- 🐛 Issues & PRs welcome.
 
-<img src="https://cdn.acedata.cloud/lsnf0x.png" style="width: 300px">
+## 📄 License
 
-Veo Videos:
-
-![](https://cdn.acedata.cloud/rkzqx1.png)
-
-<img src="https://cdn.acedata.cloud/ceprm2.png" style="width: 300px">
-
-Sora Videos:
-
-![](https://cdn.acedata.cloud/r1cmvk.png)
-
-<img src="https://cdn.acedata.cloud/skdbas.png" style="width: 300px">
-
-Kling Videos:
-
-![](https://cdn.acedata.cloud/gt5hv9.png)
-
-<img src="https://cdn.acedata.cloud/8c5utd.png" style="width: 300px">
-
-Hailuo Videos:
-
-![](https://cdn.acedata.cloud/c2jh0d.png)
-
-<img src="https://cdn.acedata.cloud/o5okz3.png" style="width: 300px">
-
-Luma Videos:
-
-![](https://cdn.acedata.cloud/q93b6q.png)
-
-<img src="https://cdn.acedata.cloud/1a7xwx.png" style="width: 300px">
+MIT © [AceDataCloud](https://platform.acedata.cloud)
