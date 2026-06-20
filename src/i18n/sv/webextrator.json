@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "Målwebbplatsen har aktiverat skydd mot botar, kan inte nås för tillfället (denna gång debiteras inte).",
+    "description": "Felmeddelande som visas när målsidan har en oavklarad anti-bot-utmaning (HTTP 422, debiteras inte)"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"

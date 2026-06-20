@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "Ο στόχος ιστοσελίδας έχει ενεργοποιήσει προστασία κατά των ρομπότ, δεν είναι δυνατή η λήψη (δεν χρεώνεται αυτή τη φορά).",
+    "description": "Σφάλμα που εμφανίζεται όταν η στοχευμένη σελίδα έχει μια μη καθαρή πρόκληση κατά των ρομπότ (HTTP 422, δεν χρεώνεται)"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"

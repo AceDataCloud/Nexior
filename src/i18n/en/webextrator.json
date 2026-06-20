@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "This site is protected by anti-bot and couldn't be extracted — you were not charged.",
+    "description": "Error shown when the target page is an uncleared anti-bot challenge (HTTP 422, not billed)"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"

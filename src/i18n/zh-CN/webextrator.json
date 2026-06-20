@@ -167,6 +167,10 @@
     "message": "页面加载超时，请更换网址或调大超时时间。",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "目标网站启用了反爬保护，暂时无法抓取（本次不计费）。",
+    "description": "Error shown when the target page is an uncleared anti-bot challenge (HTTP 422, not billed)"
+  },
   "message.untitled": {
     "message": "未命名页面",
     "description": "Fallback title when the page has no title"

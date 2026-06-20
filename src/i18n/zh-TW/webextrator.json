@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "目標網站啟用了反爬保護，暫時無法抓取（本次不計費）。",
+    "description": "當目標頁面啟用未清除的反爬挑戰時顯示的錯誤（HTTP 422，不計費）"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"

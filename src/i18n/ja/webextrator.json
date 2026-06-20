@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "対象のウェブサイトはボット対策を有効にしており、一時的に取得できません（今回の料金は発生しません）。",
+    "description": "対象ページが未クリアのボット対策チャレンジの場合に表示されるエラー（HTTP 422、料金は発生しません）"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"
