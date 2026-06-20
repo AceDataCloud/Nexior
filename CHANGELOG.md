@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 14:50:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 15:47:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.9
+
+Sat, 20 Jun 2026 15:47:26 GMT
+
+### Patches
+
+- Redesign realtime voice call UI to match ChatGPT Voice (reactive orb, captions mode, mute, minimal controls) (dev@acedata.cloud)
 
 ## 3.281.8
 
