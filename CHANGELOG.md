@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 05:32:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 06:51:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.280.1
+
+Sat, 20 Jun 2026 06:51:04 GMT
+
+### Patches
+
+- Studio API code dialog: credit-confirm Run, per-service docs link, and async:true rollout (dev@acedata.cloud)
 
 ## 3.280.0
 
