@@ -125,7 +125,7 @@ Stars don't pay rent — but they tell the next builder, the next agent, and the
 
 ## 🤝 Community & support
 
-- 🔑 Free API key & docs: <https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior>
+- 🔑 Free API key & docs: [platform.acedata.cloud](https://platform.acedata.cloud/?inviter_id=4c37bac7-d460-4d5e-8a72-8d5312050f2c&utm_source=github&utm_campaign=nexior)
 - 💬 Discord: <https://discord.gg/f9GRuKCmRc>
 - 🐦 Follow on X: [@acedatacloud](https://x.com/acedatacloud)
 - 📧 Email: office@acedata.cloud
