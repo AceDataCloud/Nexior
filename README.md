@@ -98,9 +98,9 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product. Zero startup c
 
 ## 🖼️ Preview
 
-| 💬 Chat (ChatGPT) | 🖼️ Image (Midjourney) | 🎬 Video (Kling) | 🎵 Music (Suno) |
+| 💬 Chat (ChatGPT) | 🖼️ Image (NanoBanana) | 🎬 Video (Seedance) | 🎵 Music (Suno) |
 |---|---|---|---|
-| ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![midjourney](https://cdn.acedata.cloud/5fbabf5c24.png) | ![kling](https://cdn.acedata.cloud/c1ccb5775f.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
+| ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![nanobanana](https://cdn.acedata.cloud/930d011b58.png) | ![seedance](https://cdn.acedata.cloud/f0bf58571a.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
 
 > Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud)**
 
