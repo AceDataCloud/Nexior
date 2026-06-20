@@ -106,15 +106,21 @@
     >
       <task-preview v-for="(task, taskId) in filteredTasks" :key="taskId" :model-value="task" class="preview" />
     </scroll-list>
-    <div v-else-if="searchQuery && tasks?.items?.length > 0" class="w-full flex-1 flex items-center justify-center">
+    <div
+      v-else-if="!loading && searchQuery && tasks?.items?.length > 0"
+      class="w-full flex-1 flex items-center justify-center"
+    >
       <p class="text-sm text-gray-400">{{ $t('suno.message.noSearchResults') }}</p>
     </div>
     <div
-      v-else-if="activeFilterCount > 0 && tasks?.items?.length > 0"
+      v-else-if="!loading && activeFilterCount > 0 && tasks?.items?.length > 0"
       class="w-full flex-1 flex flex-col items-center justify-center gap-2"
     >
       <p class="text-sm text-gray-400">{{ $t('suno.message.noFilterResults') }}</p>
       <el-button size="small" text @click="onResetFilters">{{ $t('suno.filter.reset') }}</el-button>
+    </div>
+    <div v-else-if="loading" class="w-full flex-1 flex items-center justify-center">
+      <el-icon class="is-loading text-xl text-gray-400"><loading /></el-icon>
     </div>
     <div v-else-if="tasks?.items?.length === 0" class="w-full flex-1 flex items-center justify-center">
       <no-tasks />
@@ -142,8 +148,10 @@ import {
   ElRadioGroup,
   ElRadioButton,
   ElSelect,
-  ElOption
+  ElOption,
+  ElIcon
 } from 'element-plus';
+import { Loading } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ScrollList from '@/components/common/ScrollList.vue';
 import { ISunoTask, ISunoAudio } from '@/models';
@@ -163,6 +171,8 @@ export default defineComponent({
     ElRadioButton,
     ElSelect,
     ElOption,
+    ElIcon,
+    Loading,
     FontAwesomeIcon,
     TaskPreview,
     Player,
@@ -175,11 +185,12 @@ export default defineComponent({
       default: false
     }
   },
-  emits: ['reach-top'],
+  emits: ['reach-top', 'load-all'],
   data() {
     return {
       job: 0,
       searchQuery: '',
+      historyRequested: false,
       sortBy: 'newest' as 'newest' | 'oldest',
       filterType: 'all' as 'all' | 'vocal' | 'instrumental',
       filterDuration: 'all' as 'all' | 'short' | 'medium' | 'long',
@@ -283,7 +294,23 @@ export default defineComponent({
       return out;
     }
   },
+  watch: {
+    // Search/filter run client-side over loaded pages only. The first time the
+    // user actually searches or filters, pull the full history so they don't
+    // silently miss older songs.
+    searchQuery(val: string) {
+      if (val) this.requestFullHistory();
+    },
+    activeFilterCount(count: number) {
+      if (count > 0) this.requestFullHistory();
+    }
+  },
   methods: {
+    requestFullHistory() {
+      if (this.historyRequested) return;
+      this.historyRequested = true;
+      this.$emit('load-all');
+    },
     onSortChange(command: 'newest' | 'oldest') {
       this.sortBy = command;
     },
