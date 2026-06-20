@@ -33,19 +33,21 @@ export default defineComponent({
     ElButton,
     FontAwesomeIcon
   },
-  mixins: [taskDrawerMixin],
-  data() {
-    return {
-      preview: false
-    };
-  },
-  computed: {}
+  mixins: [taskDrawerMixin]
 });
 </script>
 
 <style lang="scss" scoped>
 .menu {
   display: none;
+}
+
+// On laptops (≤1180px) the 320 + flex + 300 layout crushes the song list —
+// drop the detail preview here so the list keeps a usable width.
+@media (max-width: 1180px) {
+  .main .preview {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {

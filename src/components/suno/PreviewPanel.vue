@@ -26,18 +26,21 @@
       </div>
     </div>
   </div>
-  <div v-else class="w-full h-full"></div>
+  <div v-else class="flex flex-col items-center justify-center w-full h-full text-[var(--el-text-color-placeholder)]">
+    <el-icon class="text-5xl opacity-40"><headset /></el-icon>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElAvatar, ElIcon } from 'element-plus';
-import { Picture as IconPicture } from '@element-plus/icons-vue';
+import { Picture as IconPicture, Headset } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
     IconPicture,
+    Headset,
     ElImage,
     ElAvatar,
     ElIcon
