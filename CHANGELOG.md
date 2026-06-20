@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 14:09:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 14:12:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.6
+
+Sat, 20 Jun 2026 14:12:22 GMT
+
+### Patches
+
+- chore(coding-bridge): rename CLI to `coding-bridge` (`pip install coding-bridge`, `coding-bridge up`) in pairing dialog (dev@acedata.cloud)
 
 ## 3.281.5
 
