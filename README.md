@@ -4,7 +4,7 @@
 
 ### The open-source, self-hostable **all-in-one AI app**
 
-**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Midjourney · Flux · Suno · Sora · Veo · Kling · Seedance — deploy your own in minutes. BYOK or one-key. MIT licensed.**
+**Every model in one app — ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi · Midjourney · Flux · Suno · Veo · Kling · Hailuo · Wan — deploy your own in minutes. BYOK or one-key. MIT licensed.**
 
 一个开源、可自托管的**全能 AI 应用** —— 聊天 / 图片 / 音乐 / 视频 的所有模型,一处搞定。几分钟部署你自己的,BYOK 或一键直用,MIT 协议。
 
@@ -48,10 +48,10 @@
 
 | Modality | Models |
 |---|---|
-| 💬 **AI Chat** | ChatGPT · Claude · Gemini · Grok · DeepSeek |
+| 💬 **AI Chat** | ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi |
 | 🖼️ **AI Image** | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art · Headshots |
-| 🎵 **AI Music** | Suno |
-| 🎬 **AI Video** | Sora · Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika |
+| 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS) |
+| 🎬 **AI Video** | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 
 All capabilities ship with a **free trial** — no credit card to try.
 
@@ -98,22 +98,11 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product. Zero startup c
 
 ## 🖼️ Preview
 
-| Chat (ChatGPT) | Image (Midjourney) | Music (Suno) | Video (Sora) |
+| 💬 Chat (ChatGPT) | 🖼️ Image (Midjourney) | 🎬 Video (Kling) | 🎵 Music (Suno) |
 |---|---|---|---|
-| ![chat](https://cdn.acedata.cloud/wqzm9r.png) | ![mj](https://cdn.acedata.cloud/0oqva0.png) | ![suno](https://cdn.acedata.cloud/999o20.png) | ![sora](https://cdn.acedata.cloud/r1cmvk.png) |
+| ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![midjourney](https://cdn.acedata.cloud/5fbabf5c24.png) | ![kling](https://cdn.acedata.cloud/c1ccb5775f.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
 
-<details>
-<summary>More previews (DeepSeek · Grok · Gemini · NanoBanana · Flux · Veo · Kling · Hailuo · Luma · Midjourney)</summary>
-
-| | |
-|---|---|
-| DeepSeek Chat ![](https://cdn.acedata.cloud/sqe72j.png) | Grok Chat ![](https://cdn.acedata.cloud/5cl1ea.png) |
-| Gemini Chat ![](https://cdn.acedata.cloud/6l28bw.png) | Nano Banana ![](https://cdn.acedata.cloud/j0h3l3.png) |
-| Flux ![](https://cdn.acedata.cloud/b18s04.png) | Veo ![](https://cdn.acedata.cloud/rkzqx1.png) |
-| Kling ![](https://cdn.acedata.cloud/gt5hv9.png) | Hailuo ![](https://cdn.acedata.cloud/c2jh0d.png) |
-| Luma ![](https://cdn.acedata.cloud/q93b6q.png) | Midjourney ![](https://cdn.acedata.cloud/5u5tin.png) |
-
-</details>
+> Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud)**
 
 ---
 
