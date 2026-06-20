@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 15:55:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 16:47:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.282.0
+
+Sat, 20 Jun 2026 16:47:11 GMT
+
+### Minor changes
+
+- feat(maestro): migrate consumer module to v4 agent-native contract (prompt/file_urls/action/langs/remix) (dev@acedata.cloud)
 
 ## 3.281.10
 
