@@ -16,14 +16,20 @@
 </template>
 
 <script setup lang="ts">
-import { provide } from 'vue';
+import { computed, provide } from 'vue';
 import PlayerSlider from './PlayerSlider.vue';
 import PlayerSong from './PlayerSong.vue';
 import PlayerAction from './PlayerAction.vue';
 import PlayerController from './PlayerController.vue';
-import { AudioNamespaceKey, type AudioNamespace } from './useAudioState';
+import { AudioNamespaceKey, AudioQueueKey, type AudioNamespace } from './useAudioState';
 
-const props = defineProps<{ namespace: AudioNamespace }>();
+// `tracks` is the visible, ordered playback queue from the host list (optional;
+// when omitted, prev/next falls back to the namespace's task history).
+const props = defineProps<{ namespace: AudioNamespace; tracks?: Record<string, any>[] }>();
 
 provide(AudioNamespaceKey, props.namespace);
+provide(
+  AudioQueueKey,
+  computed(() => props.tracks ?? [])
+);
 </script>
