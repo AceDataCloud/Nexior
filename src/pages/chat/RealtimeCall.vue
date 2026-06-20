@@ -63,12 +63,16 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
 import { REALTIME_DEFAULT_MODEL } from '@/constants';
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from '@/router/constants';
 
 export default defineComponent({
   name: 'RealtimeCall',
+  components: {
+    FontAwesomeIcon
+  },
   data() {
     return {
       client: undefined as RealtimeClient | undefined,
