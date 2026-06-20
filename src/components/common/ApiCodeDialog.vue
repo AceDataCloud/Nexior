@@ -68,6 +68,15 @@
         <code-snippet :key="`${lang}-${variant}-${code.length}`" :code="code" :lang="lang" />
       </div>
       <div v-show="activeTab === 'response'">
+        <div v-if="runTaskId" class="run-created">
+          <div class="run-created__text">
+            <font-awesome-icon icon="fa-solid fa-circle-check" class="run-created__icon" />
+            <span>{{ $t('common.message.apiRunTaskCreated') }}</span>
+          </div>
+          <el-button class="run-created__btn" type="primary" size="small" @click="onCloseAndView">
+            {{ $t('common.button.apiViewLatest') }}
+          </el-button>
+        </div>
         <div v-if="!response && !running" class="code-empty">
           <font-awesome-icon icon="fa-solid fa-play" class="code-empty__icon" />
           <p>{{ $t('common.message.apiClickRun') }}</p>
@@ -94,7 +103,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, h, type PropType } from 'vue';
+import { defineComponent, h, ref, type PropType } from 'vue';
 import { ElDialog, ElButton, ElImage, ElCheckbox, ElMessageBox } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { VARIANTS, renderApiCode, type Lang, type CodeVariant } from '@acedatacloud/core/code-snippet';
@@ -234,6 +243,21 @@ export default defineComponent({
     // <YOUR_API_KEY> placeholder and the call would 401.
     canRun(): boolean {
       return !!this.token;
+    },
+    // A successful async run returns a task_id (and no top-level error). When
+    // present we surface the "task created — close to view it below" hint,
+    // since the new task already shows up in the recent list via polling.
+    runTaskId(): string {
+      if (!this.response) return '';
+      try {
+        const json = JSON.parse(this.response);
+        if (json && !json.error && typeof json.task_id === 'string') {
+          return json.task_id;
+        }
+      } catch {
+        return '';
+      }
+      return '';
     }
   },
   watch: {
@@ -289,13 +313,19 @@ export default defineComponent({
         window.open(this.docHref, '_blank', 'noopener');
       }
     },
+    onCloseAndView() {
+      this.$emit('update:visible', false);
+    },
     // Warns that running here is a real, billable call. Returns true to proceed.
     // The checkbox persists an opt-out so power users aren't nagged every time.
     async confirmRun(): Promise<boolean> {
       if (localStorage.getItem(RUN_CONFIRM_SKIP_KEY) === '1') {
         return true;
       }
-      let dontAsk = false;
+      // `dontAsk` must be reactive: the ElMessageBox message is a render fn, so
+      // a plain variable would never re-render the checkbox and it would look
+      // stuck unchecked.
+      const dontAsk = ref(false);
       try {
         await ElMessageBox({
           title: this.$t('common.message.apiRunConfirmTitle') as string,
@@ -309,8 +339,8 @@ export default defineComponent({
               h(
                 ElCheckbox,
                 {
-                  modelValue: dontAsk,
-                  'onUpdate:modelValue': (val: string | number | boolean) => (dontAsk = Boolean(val))
+                  modelValue: dontAsk.value,
+                  'onUpdate:modelValue': (val: string | number | boolean) => (dontAsk.value = Boolean(val))
                 },
                 () => this.$t('common.message.apiRunConfirmSkip')
               )
@@ -319,7 +349,7 @@ export default defineComponent({
       } catch {
         return false;
       }
-      if (dontAsk) {
+      if (dontAsk.value) {
         localStorage.setItem(RUN_CONFIRM_SKIP_KEY, '1');
       }
       return true;
@@ -479,6 +509,32 @@ export default defineComponent({
 
     &--running {
       opacity: 0.8;
+    }
+  }
+
+  .run-created {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--el-color-success-light-9);
+    border: 1px solid var(--el-color-success-light-7);
+
+    &__text {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--el-color-success);
+    }
+
+    &__icon {
+      font-size: 15px;
+      flex-shrink: 0;
     }
   }
 
