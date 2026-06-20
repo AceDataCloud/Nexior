@@ -31,6 +31,7 @@ export const I18N_SCOPES = [
   'kling',
   'veo',
   'sora',
+  'maestro',
   'pixverse',
   'flux',
   'nanobanana',

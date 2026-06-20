@@ -7,6 +7,7 @@ import pikaState from '../pika/state';
 import klingState from '../kling/state';
 import veoState from '../veo/state';
 import soraState from '../sora/state';
+import maestroState from '../maestro/state';
 import pixverseState from '../pixverse/state';
 import fluxState from '../flux/state';
 import hailuoState from '../hailuo/state';
@@ -55,6 +56,7 @@ export default (): IRootState => {
     pika: pikaState(),
     kling: klingState(),
     sora: soraState(),
+    maestro: maestroState(),
     veo: veoState(),
     pixverse: pixverseState(),
     flux: fluxState(),
