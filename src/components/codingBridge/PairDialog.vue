@@ -16,14 +16,14 @@
           <span class="step-index">1</span>
           <div class="flex-1 min-w-0">
             <p class="text-sm mb-1">{{ $t('codingBridge.pair.step1') }}</p>
-            <code class="cmd">pip install coding-bridge-agent</code>
+            <code class="cmd">pip install coding-bridge</code>
           </div>
         </li>
         <li class="flex gap-3 mb-3">
           <span class="step-index">2</span>
           <div class="flex-1 min-w-0">
             <p class="text-sm mb-1">{{ $t('codingBridge.pair.step2') }}</p>
-            <code class="cmd">coding-bridge-agent up</code>
+            <code class="cmd">coding-bridge up</code>
           </div>
         </li>
         <li class="flex gap-3">
