@@ -45,6 +45,10 @@ export default defineComponent({
           ElMessage.error(this.$t('webextrator.message.busy'));
         } else if (code === 'timeout') {
           ElMessage.error(this.$t('webextrator.message.timeout'));
+        } else if (code === 'antibot_blocked') {
+          // The target served an anti-bot challenge we couldn't clear. The API
+          // returns 422 for these, so the request is NOT billed — say so.
+          ElMessage.error(this.$t('webextrator.message.antibotBlocked'));
         } else {
           ElMessage.error(this.$t('webextrator.message.failed'));
         }

@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "대상 웹사이트가 반봇 보호를 활성화하여 일시적으로 크롤링할 수 없습니다(이번에는 요금이 청구되지 않습니다).",
+    "description": "대상 페이지가 해결되지 않은 반봇 챌린지를 표시할 때 나타나는 오류입니다 (HTTP 422, 요금 청구되지 않음)"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"

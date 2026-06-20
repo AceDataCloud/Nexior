@@ -167,6 +167,10 @@
     "message": "The page took too long to load. Try a different URL or increase the timeout.",
     "description": "Error shown on timeout"
   },
+  "message.antibotBlocked": {
+    "message": "Ciljna stranica je aktivirala zaštitu od botova, trenutno nije moguće pristupiti (ovaj put se ne naplaćuje).",
+    "description": "Greška koja se prikazuje kada je ciljana stranica nepročišćena anti-bot izazov (HTTP 422, nije naplaćeno)"
+  },
   "message.untitled": {
     "message": "Untitled",
     "description": "Fallback title when the page has no title"
