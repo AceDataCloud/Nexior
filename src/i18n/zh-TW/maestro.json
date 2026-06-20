@@ -27,21 +27,17 @@
     "message": "失敗原因",
     "description": "失敗原因"
   },
-  "name.sourceType": {
-    "message": "來源類型",
-    "description": "來源類型字段"
+  "name.prompt": {
+    "message": "提示詞",
+    "description": "提示詞欄位"
   },
-  "name.sourceRef": {
-    "message": "內容",
-    "description": "來源內容字段"
+  "name.files": {
+    "message": "參考素材",
+    "description": "參考媒體欄位"
   },
-  "name.lang": {
-    "message": "主語言",
-    "description": "主要語言字段"
-  },
-  "name.extraLangs": {
-    "message": "額外語言",
-    "description": "額外語言版本字段"
+  "name.langs": {
+    "message": "語言",
+    "description": "輸出語言欄位"
   },
   "name.aspect": {
     "message": "畫面比例",
@@ -51,49 +47,41 @@
     "message": "時長",
     "description": "目標時長字段"
   },
-  "name.music": {
-    "message": "背景音樂",
-    "description": "音樂切換字段"
+  "name.remixing": {
+    "message": "二次創作",
+    "description": "二次創作橫幅標籤"
   },
-  "option.topic": {
-    "message": "話題",
-    "description": "來源類型：一個話題/標題"
-  },
-  "option.article": {
-    "message": "文章",
-    "description": "來源類型：完整文章文本"
-  },
-  "placeholder.sourceRef": {
-    "message": "輸入一個話題(如“什麼是向量資料庫”)或粘貼整篇文章…",
-    "description": "來源文本區域佔位符"
+  "placeholder.prompt": {
+    "message": "描述你想要的視頻——主題、要展示什麼、風格、受眾……",
+    "description": "提示詞文本區佔位符"
   },
   "placeholder.select": {
     "message": "請選擇",
     "description": "通用選擇佔位符"
   },
-  "description.sourceRef": {
-    "message": "一個話題/標題，或要做成視頻的整篇文章正文。",
-    "description": "來源字段幫助"
+  "description.prompt": {
+    "message": "用大白話說清楚你想要什麼,腳本、畫面、配音、剪輯都交給 Maestro。",
+    "description": "提示詞欄位幫助"
   },
-  "description.extraLangs": {
-    "message": "重用畫面，額外產出這些語言版本（每種 +6 積分）。",
-    "description": "額外語言幫助"
+  "description.langs": {
+    "message": "可輸出一種或多種語言,每多一種語言復用畫面、只多配音(每多一種 +6 積分)。",
+    "description": "語言幫助"
+  },
+  "description.files": {
+    "message": "可選。上傳圖片、視頻或音頻供 Maestro 使用(如產品圖、logo)。",
+    "description": "文件幫助"
   },
   "status.pending": {
     "message": "排隊中",
     "description": "等待中"
   },
-  "status.scripting": {
-    "message": "腳本生成中",
-    "description": "正在生成腳本"
+  "status.planning": {
+    "message": "策劃中",
+    "description": "策劃階段"
   },
-  "status.generating": {
-    "message": "畫面生成中",
-    "description": "正在生成"
-  },
-  "status.rendering": {
-    "message": "渲染中",
-    "description": "正在渲染"
+  "status.producing": {
+    "message": "製作中",
+    "description": "製作階段"
   },
   "status.processing": {
     "message": "處理中",
@@ -107,9 +95,17 @@
     "message": "下載視頻",
     "description": "下載視頻按鈕"
   },
-  "button.downloadCaptions": {
-    "message": "下載字幕",
-    "description": "下載 srt 按鈕"
+  "button.uploadFiles": {
+    "message": "上傳文件",
+    "description": "上傳參考文件的按鈕"
+  },
+  "button.remix": {
+    "message": "二次創作",
+    "description": "對此視頻進行二次創作的按鈕"
+  },
+  "button.cancelRemix": {
+    "message": "取消二次創作",
+    "description": "取消二次創作的按鈕"
   },
   "message.startingTask": {
     "message": "正在提交視頻任務…",
@@ -127,12 +123,80 @@
     "message": "額度已用完，請充值後繼續。",
     "description": "已用完"
   },
-  "message.downloadVideo": {
-    "message": "下載生成的視頻",
-    "description": "下載提示"
+  "message.remixLoaded": {
+    "message": "已載入二次創作——在左側描述想要的修改,然後生成。",
+    "description": "二次創作載入的提示"
+  },
+  "message.uploadExceed": {
+    "message": "文件過多,請刪除一些後重試。",
+    "description": "上傳超過限制"
+  },
+  "message.uploadError": {
+    "message": "上傳失敗,請重試。",
+    "description": "上傳錯誤"
   },
   "message.noTasks": {
     "message": "還沒有視頻 — 在左側創建你的第一個吧。",
     "description": "沒有任務"
+  },
+  "name.sourceType": {
+    "message": "來源類型",
+    "description": "來源類型字段"
+  },
+  "name.sourceRef": {
+    "message": "內容",
+    "description": "來源內容字段"
+  },
+  "name.lang": {
+    "message": "主語言",
+    "description": "主要語言字段"
+  },
+  "name.extraLangs": {
+    "message": "額外語言",
+    "description": "額外語言版本字段"
+  },
+  "name.music": {
+    "message": "背景音樂",
+    "description": "音樂切換字段"
+  },
+  "option.topic": {
+    "message": "話題",
+    "description": "來源類型：一個話題/標題"
+  },
+  "option.article": {
+    "message": "文章",
+    "description": "來源類型：完整文章文本"
+  },
+  "placeholder.sourceRef": {
+    "message": "輸入一個話題(如“什麼是向量資料庫”)或粘貼整篇文章…",
+    "description": "來源文本區域佔位符"
+  },
+  "description.sourceRef": {
+    "message": "一個話題/標題，或要做成視頻的整篇文章正文。",
+    "description": "來源字段幫助"
+  },
+  "description.extraLangs": {
+    "message": "重用畫面，額外產出這些語言版本（每種 +6 積分）。",
+    "description": "額外語言幫助"
+  },
+  "status.scripting": {
+    "message": "腳本生成中",
+    "description": "正在生成腳本"
+  },
+  "status.generating": {
+    "message": "畫面生成中",
+    "description": "正在生成"
+  },
+  "status.rendering": {
+    "message": "渲染中",
+    "description": "正在渲染"
+  },
+  "button.downloadCaptions": {
+    "message": "下載字幕",
+    "description": "下載 srt 按鈕"
+  },
+  "message.downloadVideo": {
+    "message": "下載生成的視頻",
+    "description": "下載提示"
   }
 }

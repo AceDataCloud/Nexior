@@ -27,21 +27,17 @@
     "message": "Причина ошибки",
     "description": "Причина ошибки"
   },
-  "name.sourceType": {
-    "message": "Тип источника",
-    "description": "Поле типа источника"
+  "name.prompt": {
+    "message": "Подсказка",
+    "description": "Поле подсказки"
   },
-  "name.sourceRef": {
-    "message": "Содержимое",
-    "description": "Поле исходного контента"
+  "name.files": {
+    "message": "Референсные материалы",
+    "description": "Поле для медиа-материалов"
   },
-  "name.lang": {
-    "message": "Основной язык",
-    "description": "Поле основного языка"
-  },
-  "name.extraLangs": {
-    "message": "Дополнительные языки",
-    "description": "Поле для дополнительных языковых версий"
+  "name.langs": {
+    "message": "Языки",
+    "description": "Поле для языков вывода"
   },
   "name.aspect": {
     "message": "Соотношение сторон",
@@ -51,49 +47,41 @@
     "message": "Длительность",
     "description": "Поле целевой длительности"
   },
-  "name.music": {
-    "message": "Фоновая музыка",
-    "description": "Поле переключения музыки"
+  "name.remixing": {
+    "message": "Ремикс",
+    "description": "Метка баннера ремикса"
   },
-  "option.topic": {
-    "message": "Тема",
-    "description": "Тип источника: тема/заголовок"
-  },
-  "option.article": {
-    "message": "Статья",
-    "description": "Тип источника: полный текст статьи"
-  },
-  "placeholder.sourceRef": {
-    "message": "Введите тему (например, “Что такое векторная база данных”) или вставьте полную статью…",
-    "description": "Плейсхолдер для текстовой области источника"
+  "placeholder.prompt": {
+    "message": "Опишите, какое видео вы хотите — тему, что показать, стиль, аудиторию…",
+    "description": "Заполнитель текстовой области подсказки"
   },
   "placeholder.select": {
     "message": "Пожалуйста, выберите",
     "description": "Общий плейсхолдер для выбора"
   },
-  "description.sourceRef": {
-    "message": "Тема/заголовок или полный текст статьи, которую нужно сделать видео.",
-    "description": "Помощь по полю источника"
+  "description.prompt": {
+    "message": "Четко сформулируйте, что вы хотите, сценарий, изображения, озвучка и монтаж — все это сделает Maestro.",
+    "description": "Помощь по полю подсказки"
   },
-  "description.extraLangs": {
-    "message": "Повторное использование изображения, дополнительный выпуск этих языковых версий (каждая +6 баллов).",
-    "description": "Помощь по дополнительным языкам"
+  "description.langs": {
+    "message": "Можно вывести на одном или нескольких языках, каждый дополнительный язык использует те же изображения и добавляет только озвучку (каждый дополнительный +6 баллов).",
+    "description": "Помощь по языкам"
+  },
+  "description.files": {
+    "message": "Необязательно. Загрузите изображения, видео или аудио для использования Maestro (например, изображения продукта, логотипы).",
+    "description": "Помощь по файлам"
   },
   "status.pending": {
     "message": "В очереди",
     "description": "Ожидание"
   },
-  "status.scripting": {
-    "message": "Генерация скрипта",
-    "description": "Генерация скрипта"
+  "status.planning": {
+    "message": "В планировании",
+    "description": "Планирование"
   },
-  "status.generating": {
-    "message": "Генерация изображения",
-    "description": "Генерация"
-  },
-  "status.rendering": {
-    "message": "Рендеринг",
-    "description": "Рендеринг"
+  "status.producing": {
+    "message": "В производстве",
+    "description": "Производство"
   },
   "status.processing": {
     "message": "Обработка",
@@ -107,9 +95,17 @@
     "message": "Скачать видео",
     "description": "Кнопка для скачивания видео"
   },
-  "button.downloadCaptions": {
-    "message": "Скачать субтитры",
-    "description": "Кнопка для скачивания srt"
+  "button.uploadFiles": {
+    "message": "Загрузить файлы",
+    "description": "Кнопка загрузки файлов-образцов"
+  },
+  "button.remix": {
+    "message": "Создать ремикс",
+    "description": "Кнопка создания ремикса этого видео"
+  },
+  "button.cancelRemix": {
+    "message": "Отменить ремикс",
+    "description": "Кнопка отмены ремикса"
   },
   "message.startingTask": {
     "message": "Отправка видео задачи…",
@@ -127,12 +123,80 @@
     "message": "Лимит исчерпан, пожалуйста, пополните счет для продолжения.",
     "description": "Лимит исчерпан"
   },
-  "message.downloadVideo": {
-    "message": "Скачать сгенерированное видео",
-    "description": "Подсказка для скачивания"
+  "message.remixLoaded": {
+    "message": "Ремикс загружен — опишите слева желаемые изменения, затем создайте.",
+    "description": "Уведомление о загруженном ремиксе"
+  },
+  "message.uploadExceed": {
+    "message": "Слишком много файлов, пожалуйста, удалите некоторые и попробуйте снова.",
+    "description": "Превышение лимита загрузки"
+  },
+  "message.uploadError": {
+    "message": "Ошибка загрузки, пожалуйста, попробуйте снова.",
+    "description": "Ошибка загрузки"
   },
   "message.noTasks": {
     "message": "Пока нет видео — создайте ваше первое слева.",
     "description": "Нет задач"
+  },
+  "name.sourceType": {
+    "message": "Тип источника",
+    "description": "Поле типа источника"
+  },
+  "name.sourceRef": {
+    "message": "Содержимое",
+    "description": "Поле исходного контента"
+  },
+  "name.lang": {
+    "message": "Основной язык",
+    "description": "Поле основного языка"
+  },
+  "name.extraLangs": {
+    "message": "Дополнительные языки",
+    "description": "Поле для дополнительных языковых версий"
+  },
+  "name.music": {
+    "message": "Фоновая музыка",
+    "description": "Поле переключения музыки"
+  },
+  "option.topic": {
+    "message": "Тема",
+    "description": "Тип источника: тема/заголовок"
+  },
+  "option.article": {
+    "message": "Статья",
+    "description": "Тип источника: полный текст статьи"
+  },
+  "placeholder.sourceRef": {
+    "message": "Введите тему (например, “Что такое векторная база данных”) или вставьте полную статью…",
+    "description": "Плейсхолдер для текстовой области источника"
+  },
+  "description.sourceRef": {
+    "message": "Тема/заголовок или полный текст статьи, которую нужно сделать видео.",
+    "description": "Помощь по полю источника"
+  },
+  "description.extraLangs": {
+    "message": "Повторное использование изображения, дополнительный выпуск этих языковых версий (каждая +6 баллов).",
+    "description": "Помощь по дополнительным языкам"
+  },
+  "status.scripting": {
+    "message": "Генерация скрипта",
+    "description": "Генерация скрипта"
+  },
+  "status.generating": {
+    "message": "Генерация изображения",
+    "description": "Генерация"
+  },
+  "status.rendering": {
+    "message": "Рендеринг",
+    "description": "Рендеринг"
+  },
+  "button.downloadCaptions": {
+    "message": "Скачать субтитры",
+    "description": "Кнопка для скачивания srt"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать сгенерированное видео",
+    "description": "Подсказка для скачивания"
   }
 }

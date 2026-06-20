@@ -27,21 +27,17 @@
     "message": "سبب الفشل",
     "description": "سبب الفشل"
   },
-  "name.sourceType": {
-    "message": "نوع المصدر",
-    "description": "حقل نوع المصدر"
+  "name.prompt": {
+    "message": "كلمة الطلب",
+    "description": "حقل الطلب"
   },
-  "name.sourceRef": {
-    "message": "المحتوى",
-    "description": "حقل محتوى المصدر"
+  "name.files": {
+    "message": "المواد المرجعية",
+    "description": "حقل الوسائط المرجعية"
   },
-  "name.lang": {
-    "message": "اللغة الرئيسية",
-    "description": "حقل اللغة الأساسية"
-  },
-  "name.extraLangs": {
-    "message": "لغات إضافية",
-    "description": "حقل النسخ اللغوية الإضافية"
+  "name.langs": {
+    "message": "اللغات",
+    "description": "حقل لغات الإخراج"
   },
   "name.aspect": {
     "message": "نسبة العرض إلى الارتفاع",
@@ -51,49 +47,41 @@
     "message": "المدة",
     "description": "حقل المدة المستهدفة"
   },
-  "name.music": {
-    "message": "الموسيقى الخلفية",
-    "description": "حقل تبديل الموسيقى"
+  "name.remixing": {
+    "message": "إعادة التعديل",
+    "description": "علامة شريط إعادة التعديل"
   },
-  "option.topic": {
-    "message": "موضوع",
-    "description": "نوع المصدر: موضوع/عنوان"
-  },
-  "option.article": {
-    "message": "مقالة",
-    "description": "نوع المصدر: نص المقال الكامل"
-  },
-  "placeholder.sourceRef": {
-    "message": "أدخل موضوعًا (مثل “ما هو قاعدة بيانات المتجهات”) أو الصق المقالة الكاملة...",
-    "description": "مكان حجز نص المصدر"
+  "placeholder.prompt": {
+    "message": "صف الفيديو الذي تريده - الموضوع، ما الذي تريد عرضه، الأسلوب، الجمهور...",
+    "description": "نص توضيحي لحقل الطلب"
   },
   "placeholder.select": {
     "message": "يرجى الاختيار",
     "description": "نموذج عام لمكان حجز الاختيار"
   },
-  "description.sourceRef": {
-    "message": "موضوع/عنوان، أو نص المقالة بالكامل الذي سيتم تحويله إلى فيديو.",
-    "description": "مساعدة حقل المصدر"
+  "description.prompt": {
+    "message": "استخدم لغة بسيطة لشرح ما تريده، النص، المشاهد، الصوت، والتحرير كلها تعود إلى Maestro.",
+    "description": "مساعدة حقل الطلب"
   },
-  "description.extraLangs": {
-    "message": "إعادة استخدام المشهد، وإنتاج هذه النسخ اللغوية الإضافية (+6 نقاط لكل لغة).",
-    "description": "مساعدة اللغات الإضافية"
+  "description.langs": {
+    "message": "يمكن إخراج لغة واحدة أو أكثر، مع إعادة استخدام المشاهد، فقط إضافة صوت (كل لغة إضافية +6 نقاط).",
+    "description": "مساعدة اللغات"
+  },
+  "description.files": {
+    "message": "اختياري. قم بتحميل الصور أو الفيديوهات أو الصوتيات لاستخدامها في Maestro (مثل صور المنتج، الشعار).",
+    "description": "مساعدة الملفات"
   },
   "status.pending": {
     "message": "قيد الانتظار",
     "description": "قيد الانتظار"
   },
-  "status.scripting": {
-    "message": "يتم إنشاء السكربت",
-    "description": "يتم إنشاء السكربت"
+  "status.planning": {
+    "message": "قيد التخطيط",
+    "description": "التخطيط"
   },
-  "status.generating": {
-    "message": "يتم إنشاء الشاشة",
-    "description": "يتم إنشاء المحتوى"
-  },
-  "status.rendering": {
-    "message": "يتم العرض",
-    "description": "يتم عرض المحتوى"
+  "status.producing": {
+    "message": "قيد الإنتاج",
+    "description": "الإنتاج"
   },
   "status.processing": {
     "message": "يتم المعالجة",
@@ -107,9 +95,17 @@
     "message": "تحميل الفيديو",
     "description": "زر تحميل الفيديو"
   },
-  "button.downloadCaptions": {
-    "message": "تحميل الترجمة",
-    "description": "زر تحميل ملف srt"
+  "button.uploadFiles": {
+    "message": "رفع الملفات",
+    "description": "زر رفع الملفات المرجعية"
+  },
+  "button.remix": {
+    "message": "إعادة التعديل",
+    "description": "زر إعادة تعديل هذا الفيديو"
+  },
+  "button.cancelRemix": {
+    "message": "إلغاء إعادة التعديل",
+    "description": "زر إلغاء إعادة التعديل"
   },
   "message.startingTask": {
     "message": "جارٍ تقديم مهمة الفيديو…",
@@ -127,12 +123,80 @@
     "message": "تم استنفاد الرصيد، يرجى إعادة الشحن للمتابعة.",
     "description": "تم الاستنفاد"
   },
-  "message.downloadVideo": {
-    "message": "تحميل الفيديو الذي تم إنشاؤه",
-    "description": "تلميح التحميل"
+  "message.remixLoaded": {
+    "message": "تم تحميل إعادة التعديل - في الجهة اليسرى، صف التعديلات التي تريدها، ثم قم بالتوليد.",
+    "description": "إشعار تحميل إعادة التعديل"
+  },
+  "message.uploadExceed": {
+    "message": "عدد الملفات كبير جدًا، يرجى حذف بعضها ثم المحاولة مرة أخرى.",
+    "description": "تجاوز حد الرفع"
+  },
+  "message.uploadError": {
+    "message": "فشل الرفع، يرجى المحاولة مرة أخرى.",
+    "description": "خطأ في الرفع"
   },
   "message.noTasks": {
     "message": "لا توجد فيديوهات بعد — قم بإنشاء أول فيديو لك على اليسار.",
     "description": "لا توجد مهام"
+  },
+  "name.sourceType": {
+    "message": "نوع المصدر",
+    "description": "حقل نوع المصدر"
+  },
+  "name.sourceRef": {
+    "message": "المحتوى",
+    "description": "حقل محتوى المصدر"
+  },
+  "name.lang": {
+    "message": "اللغة الرئيسية",
+    "description": "حقل اللغة الأساسية"
+  },
+  "name.extraLangs": {
+    "message": "لغات إضافية",
+    "description": "حقل النسخ اللغوية الإضافية"
+  },
+  "name.music": {
+    "message": "الموسيقى الخلفية",
+    "description": "حقل تبديل الموسيقى"
+  },
+  "option.topic": {
+    "message": "موضوع",
+    "description": "نوع المصدر: موضوع/عنوان"
+  },
+  "option.article": {
+    "message": "مقالة",
+    "description": "نوع المصدر: نص المقال الكامل"
+  },
+  "placeholder.sourceRef": {
+    "message": "أدخل موضوعًا (مثل “ما هو قاعدة بيانات المتجهات”) أو الصق المقالة الكاملة...",
+    "description": "مكان حجز نص المصدر"
+  },
+  "description.sourceRef": {
+    "message": "موضوع/عنوان، أو نص المقالة بالكامل الذي سيتم تحويله إلى فيديو.",
+    "description": "مساعدة حقل المصدر"
+  },
+  "description.extraLangs": {
+    "message": "إعادة استخدام المشهد، وإنتاج هذه النسخ اللغوية الإضافية (+6 نقاط لكل لغة).",
+    "description": "مساعدة اللغات الإضافية"
+  },
+  "status.scripting": {
+    "message": "يتم إنشاء السكربت",
+    "description": "يتم إنشاء السكربت"
+  },
+  "status.generating": {
+    "message": "يتم إنشاء الشاشة",
+    "description": "يتم إنشاء المحتوى"
+  },
+  "status.rendering": {
+    "message": "يتم العرض",
+    "description": "يتم عرض المحتوى"
+  },
+  "button.downloadCaptions": {
+    "message": "تحميل الترجمة",
+    "description": "زر تحميل ملف srt"
+  },
+  "message.downloadVideo": {
+    "message": "تحميل الفيديو الذي تم إنشاؤه",
+    "description": "تلميح التحميل"
   }
 }

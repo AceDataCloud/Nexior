@@ -1,38 +1,44 @@
+export type IMaestroAction = 'generate' | 'remix' | 'edit' | 'extend';
+
 export interface IMaestroConfig {
-  source_type?: string; // 'Topic' | 'Article'
-  source_ref?: string;
-  lang?: string;
-  extra_langs?: string[];
+  prompt?: string;
+  action?: IMaestroAction;
+  ref_task_id?: string;
+  file_urls?: string[];
+  langs?: string[];
   aspect?: string; // '9:16' | '16:9' | '1:1'
   duration?: number;
-  music?: boolean;
   callback_url?: string;
 }
 
-export interface IMaestroGenerateRequest extends IMaestroConfig {
-  async?: boolean;
-}
+export type IMaestroGenerateRequest = IMaestroConfig;
 
 export interface IMaestroVariant {
-  variant?: string;
   lang?: string;
   aspect?: string;
+  kind?: string; // 'video'
+  title?: string;
   output_url?: string;
-  captions_url?: string;
-  duration?: number;
-  qc_score?: number | null;
-  state?: string;
 }
 
-export interface IMaestroStoryboard {
-  title?: string;
-  hook?: string;
-  scenes?: unknown[];
+export interface IMaestroProgress {
+  stage?: string;
+  message?: string;
+  pct?: number | null;
+  t?: number;
+}
+
+export interface IMaestroProject {
+  cos_prefix?: string;
+  tarball_url?: string;
+  outputs?: string[];
 }
 
 export interface IMaestroData {
   variants?: IMaestroVariant[];
-  storyboard?: IMaestroStoryboard;
+  project?: IMaestroProject;
+  progress?: IMaestroProgress[];
+  stage?: string;
 }
 
 export interface IMaestroGenerateResponse {
@@ -40,10 +46,15 @@ export interface IMaestroGenerateResponse {
   task_id: string;
   trace_id?: string;
   data?: IMaestroData;
-  error?: {
-    code?: string;
-    message?: string;
-  };
+  // The worker sets a plain string on failure; objects are also tolerated.
+  error?: string | { code?: string; message?: string };
+}
+
+export interface IMaestroAgentStats {
+  model?: string;
+  cost_usd?: number;
+  turns?: number;
+  tool_calls?: number;
 }
 
 export interface IMaestroTask {
@@ -53,6 +64,7 @@ export interface IMaestroTask {
   elapsed?: number;
   request?: IMaestroGenerateRequest;
   response?: IMaestroGenerateResponse;
+  agent?: IMaestroAgentStats;
 }
 
 export type IMaestroTaskResponse = IMaestroTask;

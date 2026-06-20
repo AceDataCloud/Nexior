@@ -27,21 +27,17 @@
     "message": "Epäonnistumisen syy",
     "description": "Epäonnistumisen syy"
   },
-  "name.sourceType": {
-    "message": "Lähteen tyyppi",
-    "description": "Lähteen tyyppi kenttä"
+  "name.prompt": {
+    "message": "Vihje",
+    "description": "Prompt-kenttä"
   },
-  "name.sourceRef": {
-    "message": "Sisältö",
-    "description": "Lähdesisältö kenttä"
+  "name.files": {
+    "message": "Viitemateriaali",
+    "description": "Viitemedia-kenttä"
   },
-  "name.lang": {
-    "message": "Pääkieli",
-    "description": "Pääkieli kenttä"
-  },
-  "name.extraLangs": {
-    "message": "Lisäkielet",
-    "description": "Lisäkieliversiot kenttä"
+  "name.langs": {
+    "message": "Kielet",
+    "description": "Tuotettavat kielet -kenttä"
   },
   "name.aspect": {
     "message": "Kuvan suhde",
@@ -51,49 +47,41 @@
     "message": "Kesto",
     "description": "Tavoitekesto kenttä"
   },
-  "name.music": {
-    "message": "Taustamusiikki",
-    "description": "Musiikin kytkentäkenttä"
+  "name.remixing": {
+    "message": "Remix",
+    "description": "Remix-bannerin etiketti"
   },
-  "option.topic": {
-    "message": "Aihe",
-    "description": "Lähdetyyppi: aihe/otsikko"
-  },
-  "option.article": {
-    "message": "Artikkeli",
-    "description": "Lähdetyyppi: koko artikkelin teksti"
-  },
-  "placeholder.sourceRef": {
-    "message": "Syötä aihe (esim. “Mikä on vektoritietokanta”) tai liitä koko artikkeli…",
-    "description": "Lähdetekstin tekstikentän paikkamerkki"
+  "placeholder.prompt": {
+    "message": "Kuvaile haluamaasi videota - teema, mitä esitellään, tyyli, kohdeyleisö...",
+    "description": "Prompt-tekstialueen paikkamerkki"
   },
   "placeholder.select": {
     "message": "Valitse",
     "description": "Yleinen valintapaikka"
   },
-  "description.sourceRef": {
-    "message": "Yksi aihe/otsikko tai koko artikkelin sisältö, joka tehdään videoksi.",
-    "description": "Lähde kenttä apu"
+  "description.prompt": {
+    "message": "Kerro selkeästi, mitä haluat, käsikirjoitus, kuvat, äänitys ja leikkaus ovat Maestroa varten.",
+    "description": "Prompt-kenttä help"
   },
-  "description.extraLangs": {
-    "message": "Uudelleenkäytä kuvaa, tuota nämä kieliversiot (jokaisesta +6 pistettä).",
-    "description": "Lisäkieliversiot apu"
+  "description.langs": {
+    "message": "Voit tuottaa yhden tai useamman kielen, jokaisesta lisäkielestä käytetään samaa kuvaa, vain lisää äänitys (jokaisesta lisäkielestä +6 pistettä).",
+    "description": "Kielet help"
+  },
+  "description.files": {
+    "message": "Valinnainen. Lataa kuvia, videoita tai ääntä Maestroa varten (esim. tuotekuvat, logo).",
+    "description": "Tiedostot help"
   },
   "status.pending": {
     "message": "Jonossa",
     "description": "Odottaa"
   },
-  "status.scripting": {
-    "message": "Skriptiä luodaan",
-    "description": "Skriptiä luodaan"
+  "status.planning": {
+    "message": "Suunnittelussa",
+    "description": "Suunnittelu"
   },
-  "status.generating": {
-    "message": "Kuvaa luodaan",
-    "description": "Luodaan"
-  },
-  "status.rendering": {
-    "message": "Renderöidään",
-    "description": "Renderöidään"
+  "status.producing": {
+    "message": "Tuotannossa",
+    "description": "Tuotanto"
   },
   "status.processing": {
     "message": "Käsitellään",
@@ -107,9 +95,17 @@
     "message": "Lataa video",
     "description": "Lataa video -painike"
   },
-  "button.downloadCaptions": {
-    "message": "Lataa tekstitykset",
-    "description": "Lataa srt -painike"
+  "button.uploadFiles": {
+    "message": "Lataa tiedostot",
+    "description": "Lataa viitetiedostot -painike"
+  },
+  "button.remix": {
+    "message": "Remix",
+    "description": "Remixaa tämä video -painike"
+  },
+  "button.cancelRemix": {
+    "message": "Peru remix",
+    "description": "Peru remix -painike"
   },
   "message.startingTask": {
     "message": "Videotehtävää lähetetään…",
@@ -127,12 +123,80 @@
     "message": "Käyttöoikeus on käytetty loppuun, lataa lisää jatkaaksesi.",
     "description": "Käyttö loppu"
   },
-  "message.downloadVideo": {
-    "message": "Lataa tuotettu video",
-    "description": "Lataus työkaluvihje"
+  "message.remixLoaded": {
+    "message": "Remix ladattu - kuvaile vasemmalla haluamasi muutokset ja luo.",
+    "description": "Remix ladattu toast"
+  },
+  "message.uploadExceed": {
+    "message": "Liian monta tiedostoa, poista joitakin ja yritä uudelleen.",
+    "description": "Lataus ylittää rajan"
+  },
+  "message.uploadError": {
+    "message": "Lataus epäonnistui, yritä uudelleen.",
+    "description": "Latausvirhe"
   },
   "message.noTasks": {
     "message": "Ei vielä videoita — luo ensimmäinen vasemmalla.",
     "description": "Ei tehtäviä"
+  },
+  "name.sourceType": {
+    "message": "Lähteen tyyppi",
+    "description": "Lähteen tyyppi kenttä"
+  },
+  "name.sourceRef": {
+    "message": "Sisältö",
+    "description": "Lähdesisältö kenttä"
+  },
+  "name.lang": {
+    "message": "Pääkieli",
+    "description": "Pääkieli kenttä"
+  },
+  "name.extraLangs": {
+    "message": "Lisäkielet",
+    "description": "Lisäkieliversiot kenttä"
+  },
+  "name.music": {
+    "message": "Taustamusiikki",
+    "description": "Musiikin kytkentäkenttä"
+  },
+  "option.topic": {
+    "message": "Aihe",
+    "description": "Lähdetyyppi: aihe/otsikko"
+  },
+  "option.article": {
+    "message": "Artikkeli",
+    "description": "Lähdetyyppi: koko artikkelin teksti"
+  },
+  "placeholder.sourceRef": {
+    "message": "Syötä aihe (esim. “Mikä on vektoritietokanta”) tai liitä koko artikkeli…",
+    "description": "Lähdetekstin tekstikentän paikkamerkki"
+  },
+  "description.sourceRef": {
+    "message": "Yksi aihe/otsikko tai koko artikkelin sisältö, joka tehdään videoksi.",
+    "description": "Lähde kenttä apu"
+  },
+  "description.extraLangs": {
+    "message": "Uudelleenkäytä kuvaa, tuota nämä kieliversiot (jokaisesta +6 pistettä).",
+    "description": "Lisäkieliversiot apu"
+  },
+  "status.scripting": {
+    "message": "Skriptiä luodaan",
+    "description": "Skriptiä luodaan"
+  },
+  "status.generating": {
+    "message": "Kuvaa luodaan",
+    "description": "Luodaan"
+  },
+  "status.rendering": {
+    "message": "Renderöidään",
+    "description": "Renderöidään"
+  },
+  "button.downloadCaptions": {
+    "message": "Lataa tekstitykset",
+    "description": "Lataa srt -painike"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa tuotettu video",
+    "description": "Lataus työkaluvihje"
   }
 }

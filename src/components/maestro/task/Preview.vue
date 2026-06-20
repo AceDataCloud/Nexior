@@ -11,17 +11,27 @@
         </span>
       </div>
       <div class="info">
-        <p v-if="modelValue?.request?.source_ref" class="prompt mt-2">
-          {{ modelValue?.request?.source_ref }}
+        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
+          {{ modelValue?.request?.prompt }}
           <span v-if="!isTerminal"> - ({{ statusLabel }}) </span>
         </p>
+        <p v-if="fileCount" class="text-xs text-[var(--el-text-color-secondary)] mb-1">
+          <font-awesome-icon icon="fa-solid fa-paperclip" class="mr-1" />{{ fileCount }}
+        </p>
+      </div>
+
+      <!-- in-progress: live stage + percentage -->
+      <div v-if="!isTerminal && progressMessage" class="content">
+        <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">{{ progressMessage }}</p>
+        <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" />
       </div>
 
       <!-- success: one player per language variant -->
       <div v-if="modelValue?.response?.success === true && variants.length" class="content">
         <div v-for="(variant, vi) in variants" :key="vi" class="mb-4">
           <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">
-            <font-awesome-icon icon="fa-solid fa-language" class="mr-1" />{{ variant.lang }}
+            <font-awesome-icon icon="fa-solid fa-language" class="mr-1" />{{ variant.lang
+            }}<span v-if="variant.title"> · {{ variant.title }}</span>
           </p>
           <video-player v-if="variant.output_url" :src="variant.output_url" />
           <div class="operations mt-2">
@@ -34,17 +44,13 @@
             >
               {{ $t('maestro.button.download') }}
             </el-button>
-            <el-button
-              v-if="variant.captions_url"
-              size="small"
-              class="btn-action"
-              @click="onDownload($event, variant.captions_url)"
-            >
-              {{ $t('maestro.button.downloadCaptions') }}
-            </el-button>
           </div>
         </div>
         <div class="operations">
+          <el-button size="small" type="primary" class="btn-action" @click="onRemix">
+            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+            {{ $t('maestro.button.remix') }}
+          </el-button>
           <api-code-button path="/maestro/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
@@ -84,9 +90,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton } from 'element-plus';
-import { IMaestroTask, IMaestroVariant } from '@/models';
-import { MAESTRO_LOGO } from '@/constants';
+import { ElImage, ElAlert, ElButton, ElProgress, ElMessage } from 'element-plus';
+import { IMaestroTask, IMaestroVariant, IMaestroConfig } from '@/models';
+import { MAESTRO_LOGO, MAESTRO_ACTION_REMIX } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -101,6 +107,7 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
+    ElProgress,
     VideoPlayer,
     ElButton,
     ApiCodeButton
@@ -120,8 +127,21 @@ export default defineComponent({
     variants(): IMaestroVariant[] {
       return this.modelValue?.response?.data?.variants || [];
     },
+    fileCount(): number {
+      return this.modelValue?.request?.file_urls?.length || 0;
+    },
     isTerminal(): boolean {
       return TERMINAL.includes(this.modelValue?.status || '');
+    },
+    progressMessage(): string | undefined {
+      const progress = this.modelValue?.response?.data?.progress;
+      const last = progress?.length ? progress[progress.length - 1] : undefined;
+      return last?.message || last?.stage || this.modelValue?.response?.data?.stage;
+    },
+    progressPct(): number | undefined {
+      const progress = this.modelValue?.response?.data?.progress;
+      const last = progress?.length ? progress[progress.length - 1] : undefined;
+      return typeof last?.pct === 'number' ? last.pct : undefined;
     },
     statusLabel(): string {
       const s = this.modelValue?.status || 'pending';
@@ -139,6 +159,21 @@ export default defineComponent({
     onDownload(event: MouseEvent, url: string) {
       event?.stopPropagation();
       window.open(url, '_blank');
+    },
+    onRemix() {
+      const req = this.modelValue?.request;
+      const patch: IMaestroConfig = {
+        ...(this.$store.state.maestro?.config || {}),
+        action: MAESTRO_ACTION_REMIX,
+        ref_task_id: this.modelValue?.id,
+        prompt: '',
+        langs: req?.langs?.length ? req.langs : this.$store.state.maestro?.config?.langs,
+        aspect: req?.aspect ?? this.$store.state.maestro?.config?.aspect,
+        duration: req?.duration ?? this.$store.state.maestro?.config?.duration,
+        file_urls: []
+      };
+      this.$store.commit('maestro/setConfig', patch);
+      ElMessage.info(this.$t('maestro.message.remixLoaded'));
     }
   }
 });

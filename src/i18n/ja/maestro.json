@@ -27,21 +27,17 @@
     "message": "失敗理由",
     "description": "失敗の理由"
   },
-  "name.sourceType": {
-    "message": "ソースタイプ",
-    "description": "ソースタイプフィールド"
+  "name.prompt": {
+    "message": "プロンプト",
+    "description": "プロンプトフィールド"
   },
-  "name.sourceRef": {
-    "message": "コンテンツ",
-    "description": "ソースコンテンツフィールド"
+  "name.files": {
+    "message": "参考素材",
+    "description": "参照メディアフィールド"
   },
-  "name.lang": {
-    "message": "主言語",
-    "description": "主要言語フィールド"
-  },
-  "name.extraLangs": {
-    "message": "追加言語",
-    "description": "追加言語バージョンフィールド"
+  "name.langs": {
+    "message": "言語",
+    "description": "出力言語フィールド"
   },
   "name.aspect": {
     "message": "アスペクト比",
@@ -51,49 +47,41 @@
     "message": "長さ",
     "description": "ターゲットの長さフィールド"
   },
-  "name.music": {
-    "message": "バックグラウンドミュージック",
-    "description": "音楽トグルフィールド"
+  "name.remixing": {
+    "message": "リミックス",
+    "description": "リミックスバナーラベル"
   },
-  "option.topic": {
-    "message": "トピック",
-    "description": "ソースタイプ：トピック/見出し"
-  },
-  "option.article": {
-    "message": "記事",
-    "description": "ソースタイプ：全文記事テキスト"
-  },
-  "placeholder.sourceRef": {
-    "message": "トピックを入力してください（例：「ベクトルデータベースとは」）または全文を貼り付けてください…",
-    "description": "ソーステキストエリアのプレースホルダー"
+  "placeholder.prompt": {
+    "message": "あなたが望むビデオを説明してください——テーマ、表示したい内容、スタイル、対象……",
+    "description": "プロンプトテキストエリアのプレースホルダー"
   },
   "placeholder.select": {
     "message": "選択してください",
     "description": "一般的な選択プレースホルダー"
   },
-  "description.sourceRef": {
-    "message": "トピック/タイトル、または動画にする全体の記事本文。",
-    "description": "ソースフィールドのヘルプ"
+  "description.prompt": {
+    "message": "あなたが望むことを明確に説明してください。スクリプト、映像、音声、編集はすべてMaestroにお任せください。",
+    "description": "プロンプトフィールドのヘルプ"
   },
-  "description.extraLangs": {
-    "message": "画面を再利用し、これらの言語バージョンを追加出力します（各言語 +6 ポイント）。",
-    "description": "追加言語のヘルプ"
+  "description.langs": {
+    "message": "1つ以上の言語を出力可能で、言語ごとに映像を再利用し、音声のみを追加します（言語ごとに+6ポイント）。",
+    "description": "言語のヘルプ"
+  },
+  "description.files": {
+    "message": "任意。Maestroで使用する画像、動画、音声をアップロードします（製品画像、ロゴなど）。",
+    "description": "ファイルのヘルプ"
   },
   "status.pending": {
     "message": "待機中",
     "description": "保留中"
   },
-  "status.scripting": {
-    "message": "スクリプト生成中",
-    "description": "スクリプト生成中"
+  "status.planning": {
+    "message": "計画中",
+    "description": "計画中"
   },
-  "status.generating": {
-    "message": "生成中",
-    "description": "生成中"
-  },
-  "status.rendering": {
-    "message": "レンダリング中",
-    "description": "レンダリング中"
+  "status.producing": {
+    "message": "制作中",
+    "description": "制作中"
   },
   "status.processing": {
     "message": "処理中",
@@ -107,9 +95,17 @@
     "message": "動画をダウンロード",
     "description": "動画をダウンロードするボタン"
   },
-  "button.downloadCaptions": {
-    "message": "字幕をダウンロード",
-    "description": "srtをダウンロードするボタン"
+  "button.uploadFiles": {
+    "message": "ファイルをアップロード",
+    "description": "参照ファイルをアップロードするボタン"
+  },
+  "button.remix": {
+    "message": "リミックス",
+    "description": "このビデオをリミックスするボタン"
+  },
+  "button.cancelRemix": {
+    "message": "リミックスをキャンセル",
+    "description": "リミックスをキャンセルするボタン"
   },
   "message.startingTask": {
     "message": "動画タスクを提出中…",
@@ -127,12 +123,80 @@
     "message": "クレジットが使い切れました。続行するにはチャージしてください。",
     "description": "使い切ったことを示すメッセージ"
   },
-  "message.downloadVideo": {
-    "message": "生成された動画をダウンロード",
-    "description": "ダウンロードツールチップ"
+  "message.remixLoaded": {
+    "message": "リミックスが読み込まれました——左側に希望する変更を記述し、生成してください。",
+    "description": "リミックス読み込みトースト"
+  },
+  "message.uploadExceed": {
+    "message": "ファイルが多すぎます。いくつか削除して再試行してください。",
+    "description": "アップロード超過"
+  },
+  "message.uploadError": {
+    "message": "アップロードに失敗しました。再試行してください。",
+    "description": "アップロードエラー"
   },
   "message.noTasks": {
     "message": "まだ動画がありません — 左側で最初の動画を作成しましょう。",
     "description": "タスクがないことを示すメッセージ"
+  },
+  "name.sourceType": {
+    "message": "ソースタイプ",
+    "description": "ソースタイプフィールド"
+  },
+  "name.sourceRef": {
+    "message": "コンテンツ",
+    "description": "ソースコンテンツフィールド"
+  },
+  "name.lang": {
+    "message": "主言語",
+    "description": "主要言語フィールド"
+  },
+  "name.extraLangs": {
+    "message": "追加言語",
+    "description": "追加言語バージョンフィールド"
+  },
+  "name.music": {
+    "message": "バックグラウンドミュージック",
+    "description": "音楽トグルフィールド"
+  },
+  "option.topic": {
+    "message": "トピック",
+    "description": "ソースタイプ：トピック/見出し"
+  },
+  "option.article": {
+    "message": "記事",
+    "description": "ソースタイプ：全文記事テキスト"
+  },
+  "placeholder.sourceRef": {
+    "message": "トピックを入力してください（例：「ベクトルデータベースとは」）または全文を貼り付けてください…",
+    "description": "ソーステキストエリアのプレースホルダー"
+  },
+  "description.sourceRef": {
+    "message": "トピック/タイトル、または動画にする全体の記事本文。",
+    "description": "ソースフィールドのヘルプ"
+  },
+  "description.extraLangs": {
+    "message": "画面を再利用し、これらの言語バージョンを追加出力します（各言語 +6 ポイント）。",
+    "description": "追加言語のヘルプ"
+  },
+  "status.scripting": {
+    "message": "スクリプト生成中",
+    "description": "スクリプト生成中"
+  },
+  "status.generating": {
+    "message": "生成中",
+    "description": "生成中"
+  },
+  "status.rendering": {
+    "message": "レンダリング中",
+    "description": "レンダリング中"
+  },
+  "button.downloadCaptions": {
+    "message": "字幕をダウンロード",
+    "description": "srtをダウンロードするボタン"
+  },
+  "message.downloadVideo": {
+    "message": "生成された動画をダウンロード",
+    "description": "ダウンロードツールチップ"
   }
 }

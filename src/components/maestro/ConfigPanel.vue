@@ -1,43 +1,41 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
-      <!-- Source type -->
+      <!-- Remix banner: iterating on a previous video -->
+      <el-alert v-if="isRemixing" :closable="false" type="info" class="mb-4">
+        <p class="text-xs mb-1">
+          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+          {{ $t('maestro.name.remixing') }}: {{ refTaskId }}
+        </p>
+        <el-button size="small" text @click="onClearRemix">{{ $t('maestro.button.cancelRemix') }}</el-button>
+      </el-alert>
+
+      <!-- Prompt -->
       <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.sourceType') }}</span>
-        <el-radio-group v-model="sourceType" class="w-full">
-          <el-radio-button :value="MAESTRO_SOURCE_TYPE_TOPIC">{{ $t('maestro.option.topic') }}</el-radio-button>
-          <el-radio-button :value="MAESTRO_SOURCE_TYPE_ARTICLE">{{ $t('maestro.option.article') }}</el-radio-button>
-        </el-radio-group>
+        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.prompt') }}</span>
+        <el-input v-model="prompt" type="textarea" :rows="6" :placeholder="$t('maestro.placeholder.prompt')" />
+        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.prompt') }}</p>
       </div>
 
-      <!-- Source content -->
+      <!-- Reference files -->
       <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.sourceRef') }}</span>
-        <el-input v-model="sourceRef" type="textarea" :rows="5" :placeholder="$t('maestro.placeholder.sourceRef')" />
-        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.sourceRef') }}</p>
+        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.files') }}</span>
+        <file-urls-input />
       </div>
 
-      <!-- Main language -->
+      <!-- Languages -->
       <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.lang') }}</span>
-        <el-select v-model="lang" :placeholder="$t('maestro.placeholder.select')" class="w-full">
-          <el-option v-for="l in MAESTRO_ALLOWED_LANGS" :key="l" :label="l" :value="l" />
-        </el-select>
-      </div>
-
-      <!-- Extra languages -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.extraLangs') }}</span>
+        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.langs') }}</span>
         <el-select
-          v-model="extraLangs"
+          v-model="langs"
           multiple
           collapse-tags
           :placeholder="$t('maestro.placeholder.select')"
           class="w-full"
         >
-          <el-option v-for="l in extraLangOptions" :key="l" :label="l" :value="l" />
+          <el-option v-for="l in MAESTRO_ALLOWED_LANGS" :key="l" :label="l" :value="l" />
         </el-select>
-        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.extraLangs') }}</p>
+        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.langs') }}</p>
       </div>
 
       <!-- Aspect ratio -->
@@ -55,17 +53,11 @@
           <el-option v-for="d in MAESTRO_ALLOWED_DURATIONS" :key="d" :label="`${d}s`" :value="d" />
         </el-select>
       </div>
-
-      <!-- Music -->
-      <div class="mb-2 flex items-center justify-between">
-        <span class="text-sm font-bold">{{ $t('maestro.name.music') }}</span>
-        <el-switch v-model="music" />
-      </div>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
-      <el-button type="primary" class="btn w-full" round :disabled="!sourceRef" @click="onGenerate">
+      <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
         {{ $t('maestro.button.generate') }}
       </el-button>
@@ -75,21 +67,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElSelect, ElOption, ElRadioGroup, ElRadioButton, ElSwitch } from 'element-plus';
+import { ElButton, ElInput, ElSelect, ElOption, ElRadioGroup, ElRadioButton, ElAlert } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
+import FileUrlsInput from './config/FileUrlsInput.vue';
 import { getConsumption } from '@/utils';
 import {
-  MAESTRO_SOURCE_TYPE_TOPIC,
-  MAESTRO_SOURCE_TYPE_ARTICLE,
   MAESTRO_ALLOWED_LANGS,
   MAESTRO_ALLOWED_ASPECTS,
   MAESTRO_ALLOWED_DURATIONS,
-  MAESTRO_DEFAULT_SOURCE_TYPE,
-  MAESTRO_DEFAULT_LANG,
+  MAESTRO_DEFAULT_ACTION,
+  MAESTRO_DEFAULT_LANGS,
   MAESTRO_DEFAULT_ASPECT,
-  MAESTRO_DEFAULT_DURATION,
-  MAESTRO_DEFAULT_MUSIC
+  MAESTRO_DEFAULT_DURATION
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 
@@ -102,15 +92,14 @@ export default defineComponent({
     ElOption,
     ElRadioGroup,
     ElRadioButton,
-    ElSwitch,
+    ElAlert,
     Consumption,
+    FileUrlsInput,
     FontAwesomeIcon
   },
   emits: ['generate'],
   data() {
     return {
-      MAESTRO_SOURCE_TYPE_TOPIC,
-      MAESTRO_SOURCE_TYPE_ARTICLE,
       MAESTRO_ALLOWED_LANGS,
       MAESTRO_ALLOWED_ASPECTS,
       MAESTRO_ALLOWED_DURATIONS
@@ -126,41 +115,31 @@ export default defineComponent({
     consumption() {
       return getConsumption(this.config, this.service?.cost);
     },
-    extraLangOptions(): string[] {
-      return MAESTRO_ALLOWED_LANGS.filter((l) => l !== this.lang);
+    isRemixing(): boolean {
+      const action = this.config?.action;
+      return !!action && action !== MAESTRO_DEFAULT_ACTION && !!this.config?.ref_task_id;
     },
-    sourceType: {
+    refTaskId(): string | undefined {
+      return this.config?.ref_task_id;
+    },
+    canGenerate(): boolean {
+      return !!this.prompt?.trim();
+    },
+    prompt: {
       get(): string | undefined {
-        return this.config?.source_type;
+        return this.config?.prompt;
       },
       set(val: string) {
-        this.update({ source_type: val });
+        this.update({ prompt: val });
       }
     },
-    sourceRef: {
-      get(): string | undefined {
-        return this.config?.source_ref;
-      },
-      set(val: string) {
-        this.update({ source_ref: val });
-      }
-    },
-    lang: {
-      get(): string | undefined {
-        return this.config?.lang;
-      },
-      set(val: string) {
-        // drop the new main language from extra_langs to avoid duplicate renders
-        const extra = (this.config?.extra_langs || []).filter((l) => l !== val);
-        this.update({ lang: val, extra_langs: extra });
-      }
-    },
-    extraLangs: {
+    langs: {
       get(): string[] {
-        return this.config?.extra_langs || [];
+        return this.config?.langs || [];
       },
       set(val: string[]) {
-        this.update({ extra_langs: val });
+        // keep at least the primary language so billing/render always has one
+        this.update({ langs: val.length ? val : MAESTRO_DEFAULT_LANGS });
       }
     },
     aspect: {
@@ -178,23 +157,14 @@ export default defineComponent({
       set(val: number) {
         this.update({ duration: val });
       }
-    },
-    music: {
-      get(): boolean {
-        return this.config?.music ?? true;
-      },
-      set(val: boolean) {
-        this.update({ music: val });
-      }
     }
   },
   mounted() {
     this.update({
-      source_type: this.config?.source_type ?? MAESTRO_DEFAULT_SOURCE_TYPE,
-      lang: this.config?.lang ?? MAESTRO_DEFAULT_LANG,
+      action: this.config?.action ?? MAESTRO_DEFAULT_ACTION,
+      langs: this.config?.langs?.length ? this.config.langs : MAESTRO_DEFAULT_LANGS,
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
-      duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
-      music: this.config?.music ?? MAESTRO_DEFAULT_MUSIC
+      duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION
     });
   },
   methods: {
@@ -203,6 +173,9 @@ export default defineComponent({
         ...this.config,
         ...patch
       });
+    },
+    onClearRemix() {
+      this.update({ action: MAESTRO_DEFAULT_ACTION, ref_task_id: undefined });
     },
     onGenerate() {
       this.$emit('generate');

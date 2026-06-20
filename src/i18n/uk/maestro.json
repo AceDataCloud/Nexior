@@ -27,21 +27,17 @@
     "message": "Причина невдачі",
     "description": "Причина невдачі"
   },
-  "name.sourceType": {
-    "message": "Тип джерела",
-    "description": "Поле типу джерела"
+  "name.prompt": {
+    "message": "Підказка",
+    "description": "Поле підказки"
   },
-  "name.sourceRef": {
-    "message": "Контент",
-    "description": "Поле джерела контенту"
+  "name.files": {
+    "message": "Матеріали для посилання",
+    "description": "Поле для медіа посилань"
   },
-  "name.lang": {
-    "message": "Основна мова",
-    "description": "Поле основної мови"
-  },
-  "name.extraLangs": {
-    "message": "Додаткові мови",
-    "description": "Поле для додаткових мовних версій"
+  "name.langs": {
+    "message": "Мови",
+    "description": "Поле для мов виводу"
   },
   "name.aspect": {
     "message": "Співвідношення сторін",
@@ -51,49 +47,41 @@
     "message": "Тривалість",
     "description": "Поле цільової тривалості"
   },
-  "name.music": {
-    "message": "Фоновий музика",
-    "description": "Поле перемикання музики"
+  "name.remixing": {
+    "message": "Ремікс",
+    "description": "Мітка банера реміксу"
   },
-  "option.topic": {
-    "message": "Тема",
-    "description": "Тип джерела: тема/заголовок"
-  },
-  "option.article": {
-    "message": "Стаття",
-    "description": "Тип джерела: повний текст статті"
-  },
-  "placeholder.sourceRef": {
-    "message": "Введіть тему (наприклад, “Що таке векторна база даних”) або вставте повну статтю…",
-    "description": "Заповнювач текстової області джерела"
+  "placeholder.prompt": {
+    "message": "Опишіть, яке відео ви хочете — тему, що показати, стиль, аудиторію…",
+    "description": "Плейсхолдер текстового поля підказки"
   },
   "placeholder.select": {
     "message": "Будь ласка, виберіть",
     "description": "Загальний заповнювач для вибору"
   },
-  "description.sourceRef": {
-    "message": "Тема/заголовок або повний текст статті, яку потрібно перетворити на відео.",
-    "description": "Допомога для поля джерела"
+  "description.prompt": {
+    "message": "Чітко сформулюйте, що ви хочете, сценарій, кадри, озвучення, монтаж - все це Maestro.",
+    "description": "Допомога для поля підказки"
   },
-  "description.extraLangs": {
-    "message": "Використовуйте зображення, додатково створіть ці мовні версії (кожна +6 балів).",
-    "description": "Допомога з додатковими мовами"
+  "description.langs": {
+    "message": "Можна вивести одну або кілька мов, кожна додаткова мова використовує той же кадр, лише додається озвучення (кожна додаткова +6 балів).",
+    "description": "Допомога щодо мов"
+  },
+  "description.files": {
+    "message": "Необов'язково. Завантажте зображення, відео або аудіо для використання Maestro (наприклад, зображення продукту, логотип).",
+    "description": "Допомога щодо файлів"
   },
   "status.pending": {
     "message": "В черзі",
     "description": "Очікування"
   },
-  "status.scripting": {
-    "message": "Генерація скрипту",
-    "description": "Генерація скрипту"
+  "status.planning": {
+    "message": "В процесі планування",
+    "description": "Планування"
   },
-  "status.generating": {
-    "message": "Генерація",
-    "description": "Генерація"
-  },
-  "status.rendering": {
-    "message": "Рендеринг",
-    "description": "Рендеринг"
+  "status.producing": {
+    "message": "В процесі виробництва",
+    "description": "Виробництво"
   },
   "status.processing": {
     "message": "Обробка",
@@ -107,9 +95,17 @@
     "message": "Завантажити відео",
     "description": "Кнопка для завантаження відео"
   },
-  "button.downloadCaptions": {
-    "message": "Завантажити субтитри",
-    "description": "Кнопка для завантаження srt"
+  "button.uploadFiles": {
+    "message": "Завантажити файли",
+    "description": "Кнопка для завантаження файлів посилань"
+  },
+  "button.remix": {
+    "message": "Ремікс",
+    "description": "Кнопка для реміксу цього відео"
+  },
+  "button.cancelRemix": {
+    "message": "Скасувати ремікс",
+    "description": "Кнопка скасування реміксу"
   },
   "message.startingTask": {
     "message": "Надсилаємо відеозавдання…",
@@ -127,12 +123,80 @@
     "message": "Ліміт вичерпано, будь ласка, поповніть рахунок для продовження.",
     "description": "Вичерпано"
   },
-  "message.downloadVideo": {
-    "message": "Завантажити згенероване відео",
-    "description": "Підказка для завантаження"
+  "message.remixLoaded": {
+    "message": "Завантажено ремікс — опишіть бажані зміни зліва, а потім згенеруйте.",
+    "description": "Тост про завантажений ремікс"
+  },
+  "message.uploadExceed": {
+    "message": "Занадто багато файлів, будь ласка, видаліть деякі та спробуйте ще раз.",
+    "description": "Перевищення кількості завантажень"
+  },
+  "message.uploadError": {
+    "message": "Завантаження не вдалося, будь ласка, спробуйте ще раз.",
+    "description": "Помилка завантаження"
   },
   "message.noTasks": {
     "message": "Ще немає відео — створіть своє перше зліва.",
     "description": "Відсутність завдань"
+  },
+  "name.sourceType": {
+    "message": "Тип джерела",
+    "description": "Поле типу джерела"
+  },
+  "name.sourceRef": {
+    "message": "Контент",
+    "description": "Поле джерела контенту"
+  },
+  "name.lang": {
+    "message": "Основна мова",
+    "description": "Поле основної мови"
+  },
+  "name.extraLangs": {
+    "message": "Додаткові мови",
+    "description": "Поле для додаткових мовних версій"
+  },
+  "name.music": {
+    "message": "Фоновий музика",
+    "description": "Поле перемикання музики"
+  },
+  "option.topic": {
+    "message": "Тема",
+    "description": "Тип джерела: тема/заголовок"
+  },
+  "option.article": {
+    "message": "Стаття",
+    "description": "Тип джерела: повний текст статті"
+  },
+  "placeholder.sourceRef": {
+    "message": "Введіть тему (наприклад, “Що таке векторна база даних”) або вставте повну статтю…",
+    "description": "Заповнювач текстової області джерела"
+  },
+  "description.sourceRef": {
+    "message": "Тема/заголовок або повний текст статті, яку потрібно перетворити на відео.",
+    "description": "Допомога для поля джерела"
+  },
+  "description.extraLangs": {
+    "message": "Використовуйте зображення, додатково створіть ці мовні версії (кожна +6 балів).",
+    "description": "Допомога з додатковими мовами"
+  },
+  "status.scripting": {
+    "message": "Генерація скрипту",
+    "description": "Генерація скрипту"
+  },
+  "status.generating": {
+    "message": "Генерація",
+    "description": "Генерація"
+  },
+  "status.rendering": {
+    "message": "Рендеринг",
+    "description": "Рендеринг"
+  },
+  "button.downloadCaptions": {
+    "message": "Завантажити субтитри",
+    "description": "Кнопка для завантаження srt"
+  },
+  "message.downloadVideo": {
+    "message": "Завантажити згенероване відео",
+    "description": "Підказка для завантаження"
   }
 }

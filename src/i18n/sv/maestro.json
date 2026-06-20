@@ -27,21 +27,17 @@
     "message": "Orsak till misslyckande",
     "description": "Orsak till misslyckande"
   },
-  "name.sourceType": {
-    "message": "Källtyp",
-    "description": "Fält för källtyp"
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt fält"
   },
-  "name.sourceRef": {
-    "message": "Innehåll",
-    "description": "Fält för källinnehåll"
+  "name.files": {
+    "message": "Referensmaterial",
+    "description": "Referensmedia fält"
   },
-  "name.lang": {
-    "message": "Huvudspråk",
-    "description": "Fält för primärt språk"
-  },
-  "name.extraLangs": {
-    "message": "Extra språk",
-    "description": "Fält för extra språkversioner"
+  "name.langs": {
+    "message": "Språk",
+    "description": "Utgångsspråk fält"
   },
   "name.aspect": {
     "message": "Bildförhållande",
@@ -51,49 +47,41 @@
     "message": "Längd",
     "description": "Mållängdsfält"
   },
-  "name.music": {
-    "message": "Bakgrundsmusik",
-    "description": "Fält för musikväxling"
+  "name.remixing": {
+    "message": "Remix",
+    "description": "Remix banner etikett"
   },
-  "option.topic": {
-    "message": "Ämne",
-    "description": "Källtyp: ett ämne/rubrik"
-  },
-  "option.article": {
-    "message": "Artikel",
-    "description": "Källtyp: fullständig artikeltext"
-  },
-  "placeholder.sourceRef": {
-    "message": "Skriv ett ämne (t.ex. \"Vad är en vektordatabas?\") eller klistra in hela artikeln…",
-    "description": "Platshållare för källtextområde"
+  "placeholder.prompt": {
+    "message": "Beskriv videon du vill ha - tema, vad som ska visas, stil, publik…",
+    "description": "Prompt textarea platshållare"
   },
   "placeholder.select": {
     "message": "Vänligen välj",
     "description": "Allmänt val av platshållare"
   },
-  "description.sourceRef": {
-    "message": "Ett ämne/titel, eller hela texten av artikeln som ska göras till video.",
-    "description": "Hjälp för källfält"
+  "description.prompt": {
+    "message": "Säg tydligt vad du vill ha, manus, bilder, röstöverlagring, klippning lämnar du till Maestro.",
+    "description": "Prompt fält hjälp"
   },
-  "description.extraLangs": {
-    "message": "Återanvända bild, extra utgåvor av dessa språkversioner (varje +6 poäng).",
-    "description": "Extra språk hjälper"
+  "description.langs": {
+    "message": "Kan exportera ett eller flera språk, varje extra språk återanvänder bilden, bara mer röstöverlagring (varje extra +6 poäng).",
+    "description": "Språk hjälp"
+  },
+  "description.files": {
+    "message": "Valfritt. Ladda upp bilder, videor eller ljud för Maestro att använda (som produktbilder, logotyper).",
+    "description": "Filer hjälp"
   },
   "status.pending": {
     "message": "I kö",
     "description": "Väntar"
   },
-  "status.scripting": {
-    "message": "Skripterar",
-    "description": "Skripterar"
+  "status.planning": {
+    "message": "Planering",
+    "description": "Planering"
   },
-  "status.generating": {
-    "message": "Genererar",
-    "description": "Genererar"
-  },
-  "status.rendering": {
-    "message": "Renderar",
-    "description": "Renderar"
+  "status.producing": {
+    "message": "Produktion",
+    "description": "Produktion"
   },
   "status.processing": {
     "message": "Bearbetar",
@@ -107,9 +95,17 @@
     "message": "Ladda ner video",
     "description": "Ladda ner video-knapp"
   },
-  "button.downloadCaptions": {
-    "message": "Ladda ner undertexter",
-    "description": "Ladda ner srt-knapp"
+  "button.uploadFiles": {
+    "message": "Ladda upp filer",
+    "description": "Ladda upp referensfiler-knappen"
+  },
+  "button.remix": {
+    "message": "Remixa",
+    "description": "Remixa denna video-knappen"
+  },
+  "button.cancelRemix": {
+    "message": "Avbryt remix",
+    "description": "Avbryt remix-knappen"
   },
   "message.startingTask": {
     "message": "Skickar videouppgift…",
@@ -127,12 +123,80 @@
     "message": "Krediten är slut, vänligen ladda på för att fortsätta.",
     "description": "Användd upp"
   },
-  "message.downloadVideo": {
-    "message": "Ladda ner den genererade videon",
-    "description": "Nedladdningstips"
+  "message.remixLoaded": {
+    "message": "Remix inläst - beskriv ändringarna du vill ha till vänster och generera.",
+    "description": "Remix inläst toast"
+  },
+  "message.uploadExceed": {
+    "message": "För många filer, vänligen ta bort några och försök igen.",
+    "description": "Överskridande av uppladdning"
+  },
+  "message.uploadError": {
+    "message": "Uppladdning misslyckades, försök igen.",
+    "description": "Uppladdningsfel"
   },
   "message.noTasks": {
     "message": "Inga videor än — skapa din första till vänster.",
     "description": "Inga uppgifter"
+  },
+  "name.sourceType": {
+    "message": "Källtyp",
+    "description": "Fält för källtyp"
+  },
+  "name.sourceRef": {
+    "message": "Innehåll",
+    "description": "Fält för källinnehåll"
+  },
+  "name.lang": {
+    "message": "Huvudspråk",
+    "description": "Fält för primärt språk"
+  },
+  "name.extraLangs": {
+    "message": "Extra språk",
+    "description": "Fält för extra språkversioner"
+  },
+  "name.music": {
+    "message": "Bakgrundsmusik",
+    "description": "Fält för musikväxling"
+  },
+  "option.topic": {
+    "message": "Ämne",
+    "description": "Källtyp: ett ämne/rubrik"
+  },
+  "option.article": {
+    "message": "Artikel",
+    "description": "Källtyp: fullständig artikeltext"
+  },
+  "placeholder.sourceRef": {
+    "message": "Skriv ett ämne (t.ex. \"Vad är en vektordatabas?\") eller klistra in hela artikeln…",
+    "description": "Platshållare för källtextområde"
+  },
+  "description.sourceRef": {
+    "message": "Ett ämne/titel, eller hela texten av artikeln som ska göras till video.",
+    "description": "Hjälp för källfält"
+  },
+  "description.extraLangs": {
+    "message": "Återanvända bild, extra utgåvor av dessa språkversioner (varje +6 poäng).",
+    "description": "Extra språk hjälper"
+  },
+  "status.scripting": {
+    "message": "Skripterar",
+    "description": "Skripterar"
+  },
+  "status.generating": {
+    "message": "Genererar",
+    "description": "Genererar"
+  },
+  "status.rendering": {
+    "message": "Renderar",
+    "description": "Renderar"
+  },
+  "button.downloadCaptions": {
+    "message": "Ladda ner undertexter",
+    "description": "Ladda ner srt-knapp"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner den genererade videon",
+    "description": "Nedladdningstips"
   }
 }
