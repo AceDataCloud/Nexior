@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 13:15:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 14:09:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.5
+
+Sat, 20 Jun 2026 14:09:07 GMT
+
+### Patches
+
+- feat(webextrator): friendly message for anti-bot-blocked (422) pages, noting the request was not billed (dev@acedata.cloud)
 
 ## 3.281.4
 
