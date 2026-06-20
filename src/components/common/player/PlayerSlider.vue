@@ -27,23 +27,32 @@ const onSliderChange = (val: number | number[]) => dispatchAudio({ progress: Arr
 <style lang="scss">
 .player-slider {
   .el-slider {
-    height: 10px;
+    height: 12px;
 
     .el-slider__runway,
     .el-slider__bar {
-      height: 2px;
-      border-radius: 0;
+      height: 4px;
+      border-radius: 2px;
     }
 
     .el-slider__button-wrapper {
-      width: 10px;
-      height: 10px;
-      top: -10.5px;
+      width: 16px;
+      height: 16px;
+      top: -12px;
     }
 
+    // Handle stays small until hover/drag, so the bar reads clean but is grabbable
     .el-slider__button {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
+      border-width: 2px;
+      transition:
+        transform 0.15s,
+        box-shadow 0.15s;
+    }
+
+    &:hover .el-slider__button {
+      transform: scale(1.3);
     }
   }
 }

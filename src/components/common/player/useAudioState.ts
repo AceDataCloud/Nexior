@@ -1,9 +1,17 @@
-import { computed, inject, type InjectionKey, type WritableComputedRef } from 'vue';
+import { computed, inject, type ComputedRef, type InjectionKey, type WritableComputedRef } from 'vue';
 import { useStore } from 'vuex';
 
 export type AudioNamespace = 'suno' | 'producer';
 
 export const AudioNamespaceKey: InjectionKey<AudioNamespace> = Symbol('AudioNamespace');
+
+/**
+ * Optional ordered playback queue, provided by the host list so prev/next
+ * follow the *visible* order (respecting the list's search/filter/sort)
+ * rather than the raw store order. When absent, the queue is derived from
+ * the namespace's task history.
+ */
+export const AudioQueueKey: InjectionKey<ComputedRef<Record<string, any>[]>> = Symbol('AudioQueue');
 
 export const useAudioNamespace = (): AudioNamespace => {
   const ns = inject(AudioNamespaceKey);
@@ -50,12 +58,56 @@ export const useAudioState = (namespace?: AudioNamespace) => {
       set: (value: T) => patchAudio({ [name]: value })
     });
 
+  // Ordered, visible queue provided by the host list (RecentPanel), if any.
+  const injectedQueue = inject(AudioQueueKey, undefined);
+
+  /**
+   * Flat, ordered list of playable tracks for prev/next navigation. Prefers
+   * the host-provided visible queue (so it respects search/filter/sort);
+   * falls back to the namespace's raw task history. Both `suno` and
+   * `producer` stores share the `tasks.items[].response.data[]` shape; if a
+   * namespace lacks it the list is simply empty (prev/next hide).
+   */
+  const tracks = computed<Record<string, any>[]>(() => {
+    const external = injectedQueue?.value;
+    if (external && external.length) return external;
+    const items = (store.state[ns]?.tasks?.items ?? []) as Record<string, any>[];
+    const list: Record<string, any>[] = [];
+    for (const t of items) {
+      for (const a of (t?.response?.data ?? []) as Record<string, any>[]) {
+        if (a?.audio_url) list.push(a);
+      }
+    }
+    return list;
+  });
+
+  const currentIndex = computed(() => {
+    const id = store.state[ns].audio?.id;
+    return tracks.value.findIndex((a) => a.id === id);
+  });
+
+  const playAdjacent = (dir: 1 | -1) => {
+    const idx = currentIndex.value;
+    if (idx === -1) return;
+    const next = tracks.value[idx + dir];
+    if (!next) return;
+    store.dispatch(`${ns}/setAudio`, {
+      ...store.state[ns].audio,
+      ...next,
+      progress: 0,
+      state: 'playing'
+    });
+  };
+
   return {
     namespace: ns,
     store,
     audio,
     field,
     patchAudio,
-    dispatchAudio
+    dispatchAudio,
+    tracks,
+    currentIndex,
+    playAdjacent
   };
 };

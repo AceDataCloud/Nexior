@@ -4,7 +4,11 @@
       v-for="(audio, index) in audios"
       :key="audio.id"
       class="audio"
-      :class="{ 'mashup-selected': isMashupSelected(audio), active: $store.state?.suno?.audio?.id === audio.id }"
+      :class="{
+        'mashup-selected': isMashupSelected(audio),
+        active: $store.state?.suno?.audio?.id === audio.id,
+        generating: !audio?.audio_url
+      }"
       @click.stop="onClick(audio)"
     >
       <!-- Mashup selection checkbox -->
@@ -70,6 +74,14 @@
         </div>
       </div>
       <div class="right">
+        <!-- Quick Extend — the most common re-use action, surfaced out of the "…" menu -->
+        <el-tooltip v-if="audio?.audio_url" effect="dark" :content="$t('suno.button.extend')" placement="top">
+          <font-awesome-icon
+            icon="fa-solid fa-forward"
+            class="icon icon-extend"
+            @click.stop="onExtend($event, audio)"
+          />
+        </el-tooltip>
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('suno.button.download')" placement="top">
@@ -994,7 +1006,7 @@ export default defineComponent({
       border-radius: 8px;
     }
     .right {
-      width: 120px;
+      width: 140px;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -1004,11 +1016,31 @@ export default defineComponent({
         z-index: 100;
         cursor: pointer;
         margin-right: 15px;
+        color: var(--el-text-color-secondary);
+        transition: color 0.2s;
+        &:hover {
+          color: var(--el-color-primary);
+        }
       }
       .el-button {
         margin-right: 15px; /* Add margin to the right of the button */
       }
     }
+
+    // Pulse the cover while a generation is still in flight (~2 min wait)
+    &.generating .left .cover {
+      animation: suno-pulse 1.4s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes suno-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
   }
 }
 
