@@ -121,10 +121,59 @@ describe('coding bridge session identity (integration)', () => {
     expect(h.state.events['old-session']).toHaveLength(1);
   });
 
-  it('marks a Codex history replay read-only', () => {
+  it('restores a Codex history session as resumable (not read-only)', () => {
+    // Codex resume works end-to-end now (`codex exec resume` with the sandbox as a
+    // -c override), so a Codex transcript opens as a continuable idle session.
     const h = harness();
     h.feed({ event: 'history.detail', session_id: 'cx', provider: 'codex', events: [] });
-    expect(h.state.sessions['cx'].readonly).toBe(true);
+    expect(h.state.sessions['cx'].readonly).toBe(false);
+    expect(h.state.sessions['cx'].status).toBe('idle');
+  });
+
+  it('replaces a partial relay buffer with the full transcript on idle reattach (bug 3)', () => {
+    const h = harness();
+    // A session the node still tracks (started) but NOT currently streaming, with
+    // only a short partial replay held in memory.
+    h.state.sessions['s1'] = {
+      session_id: 's1',
+      node_id: NODE,
+      provider: 'claude',
+      started: true,
+      status: 'idle'
+    } as never;
+    h.state.events['s1'] = [{ id: 'a', session_id: 's1', kind: 'text', ts: 1, text: 'partial tail' }] as never;
+    h.feed({
+      event: 'history.detail',
+      session_id: 's1',
+      provider: 'claude',
+      events: [
+        { kind: 'prompt', text: 'q1' },
+        { kind: 'text', text: 'a1' },
+        { kind: 'prompt', text: 'q2' }
+      ]
+    });
+    // The full on-disk transcript wins over the shorter partial buffer.
+    expect(h.state.events['s1'].map((e) => e.kind)).toEqual(['prompt', 'text', 'prompt']);
+  });
+
+  it('does NOT clobber an actively streaming turn with a longer history detail', () => {
+    const h = harness();
+    h.feed({ event: 'session.started', session_id: 's2' }); // status: running
+    h.feed({ event: 'session.text_delta', session_id: 's2', id: 'd', text: 'streaming…' });
+    // A late, longer history.detail must keep the in-flight stream (replacing it
+    // would drop the open bubble and the replay would duplicate the tail).
+    h.feed({
+      event: 'history.detail',
+      session_id: 's2',
+      provider: 'claude',
+      events: [
+        { kind: 'prompt', text: 'old1' },
+        { kind: 'text', text: 'old2' },
+        { kind: 'text', text: 'old3' }
+      ]
+    });
+    expect(h.state.events['s2'].length).toBe(1);
+    expect(h.state.events['s2'][0].text).toBe('streaming…');
   });
 
   it('reattaches (not just views) the open conversation when history snapshot lands after a reload', () => {
