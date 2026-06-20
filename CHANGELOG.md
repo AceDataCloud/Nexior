@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 14:12:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 20 Jun 2026 14:27:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.281.7
+
+Sat, 20 Jun 2026 14:27:21 GMT
+
+### Patches
+
+- fix(coding-bridge): don't drop the real id's first events after session re-key (dev@acedata.cloud)
 
 ## 3.281.6
 
