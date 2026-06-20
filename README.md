@@ -98,21 +98,11 @@ Deploy once, and `your-domain.com` is a revenue-ready AI product. Zero startup c
 
 ## 🖼️ Preview
 
-| Chat (ChatGPT) | Image (Midjourney) | Music (Suno) | Video (Veo) |
+| 💬 Chat (ChatGPT) | 🖼️ Image (Midjourney) | 🎬 Video (Kling) | 🎵 Music (Suno) |
 |---|---|---|---|
-| ![chat](https://cdn.acedata.cloud/wqzm9r.png) | ![mj](https://cdn.acedata.cloud/0oqva0.png) | ![suno](https://cdn.acedata.cloud/999o20.png) | ![veo](https://cdn.acedata.cloud/rkzqx1.png) |
+| ![chat](https://cdn.acedata.cloud/52dff32e47.png) | ![midjourney](https://cdn.acedata.cloud/5fbabf5c24.png) | ![kling](https://cdn.acedata.cloud/c1ccb5775f.png) | ![suno](https://cdn.acedata.cloud/b64fe23e7c.png) |
 
-<details>
-<summary>More previews (DeepSeek · Grok · Gemini · NanoBanana · Flux · Kling · Hailuo · Luma)</summary>
-
-| | |
-|---|---|
-| DeepSeek ![](https://cdn.acedata.cloud/sqe72j.png) | Grok ![](https://cdn.acedata.cloud/5cl1ea.png) |
-| Gemini ![](https://cdn.acedata.cloud/6l28bw.png) | Nano Banana ![](https://cdn.acedata.cloud/j0h3l3.png) |
-| Flux ![](https://cdn.acedata.cloud/b18s04.png) | Kling ![](https://cdn.acedata.cloud/gt5hv9.png) |
-| Hailuo ![](https://cdn.acedata.cloud/c2jh0d.png) | Luma ![](https://cdn.acedata.cloud/q93b6q.png) |
-
-</details>
+> Try them all live → **[studio.acedata.cloud](https://studio.acedata.cloud)**
 
 ---
 
