@@ -9,6 +9,8 @@ export interface IRealtimeHandlers {
   onAiResponseStart?: () => void;
   onUserSpeechStarted?: () => void;
   onError?: (message: string) => void;
+  /** Smoothed combined mic+assistant loudness (0–1) for UI animation. */
+  onAudioLevel?: (level: number) => void;
 }
 
 /**
@@ -28,6 +30,8 @@ export class RealtimeClient {
   private micStream: MediaStream | undefined;
   private micNode: MediaStreamAudioSourceNode | undefined;
   private workletNode: AudioWorkletNode | undefined;
+  private analyser: AnalyserNode | undefined; // taps mic + assistant audio for the level meter
+  private levelRaf = 0;
   private running = false;
 
   private playHead = 0;
@@ -60,6 +64,13 @@ export class RealtimeClient {
     this.micNode = this.audioCtx.createMediaStreamSource(this.micStream);
     this.workletNode = new AudioWorkletNode(this.audioCtx, 'recorder-processor');
     this.micNode.connect(this.workletNode);
+    // Level meter: an analyser sees the mic and (later) the assistant playback so
+    // the UI orb pulses for whoever is talking. It's a sink — never wired onward
+    // to the destination, so it adds no audible echo.
+    this.analyser = this.audioCtx.createAnalyser();
+    this.analyser.fftSize = 256;
+    this.micNode.connect(this.analyser);
+    this.startLevelLoop();
     // The worklet must be in the graph to pull; route it to a muted gain so the
     // mic isn't echoed to the speaker.
     const sink = this.audioCtx.createGain();
@@ -89,6 +100,31 @@ export class RealtimeClient {
       if (!this.ws || this.ws.readyState !== WebSocket.OPEN) return;
       this.ws.send(JSON.stringify({ type: 'input_audio_buffer.append', audio: b64FromArrayBuffer(e.data) }));
     };
+  }
+
+  /** Mute/unmute the microphone without tearing down the call. */
+  setMuted(muted: boolean): void {
+    this.micStream?.getAudioTracks().forEach((t) => (t.enabled = !muted));
+  }
+
+  private startLevelLoop(): void {
+    const data = new Uint8Array(this.analyser ? this.analyser.fftSize : 0);
+    let smooth = 0;
+    const tick = () => {
+      if (this.disposed || !this.analyser) return;
+      this.analyser.getByteTimeDomainData(data);
+      let sum = 0;
+      for (let i = 0; i < data.length; i++) {
+        const v = (data[i] - 128) / 128;
+        sum += v * v;
+      }
+      const rms = Math.sqrt(sum / data.length);
+      const level = Math.min(1, rms * 3.4); // amplify quiet speech into a visible range
+      smooth = smooth * 0.82 + level * 0.18; // ease for a fluid orb, no jitter
+      this.handlers.onAudioLevel?.(smooth);
+      this.levelRaf = requestAnimationFrame(tick);
+    };
+    this.levelRaf = requestAnimationFrame(tick);
   }
 
   stop(): void {
@@ -169,6 +205,7 @@ export class RealtimeClient {
     const src = this.audioCtx.createBufferSource();
     src.buffer = audioBuffer;
     src.connect(this.audioCtx.destination);
+    if (this.analyser) src.connect(this.analyser); // feed the level meter so the orb reacts while the assistant speaks
 
     const now = this.audioCtx.currentTime;
     if (this.playHead < now) this.playHead = now + 0.02;
@@ -195,6 +232,7 @@ export class RealtimeClient {
 
   private teardownAudio(): void {
     try {
+      if (this.levelRaf) cancelAnimationFrame(this.levelRaf);
       if (this.workletNode) this.workletNode.port.onmessage = null;
       if (this.micStream) this.micStream.getTracks().forEach((t) => t.stop());
       this.stopPlayback();
@@ -202,7 +240,9 @@ export class RealtimeClient {
     } catch {
       // ignore
     }
-    this.micStream = this.micNode = this.workletNode = this.audioCtx = undefined;
+    this.levelRaf = 0;
+    this.handlers.onAudioLevel?.(0);
+    this.micStream = this.micNode = this.workletNode = this.audioCtx = this.analyser = undefined;
   }
 }
 
