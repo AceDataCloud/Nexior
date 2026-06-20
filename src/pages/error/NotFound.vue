@@ -93,7 +93,8 @@ export default defineComponent({
   max-width: 120vw;
   aspect-ratio: 1 / 1;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, rgba(6, 182, 212, 0.08) 42%, transparent 68%);
+  // Echoes the boot-loader spinner palette (spring-green → cyan → blue).
+  background: radial-gradient(circle, rgba(7, 238, 166, 0.16) 0%, rgba(35, 171, 255, 0.08) 42%, transparent 68%);
   pointer-events: none;
   z-index: 0;
 }
@@ -115,7 +116,7 @@ export default defineComponent({
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #7c3aed;
+  color: #0a9c84;
 }
 
 .code {
@@ -123,7 +124,7 @@ export default defineComponent({
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #1e293b 0%, #7c3aed 55%, #06b6d4 100%);
+  background: linear-gradient(135deg, #07eea6 0%, #29bee4 50%, #23abff 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -177,11 +178,11 @@ export default defineComponent({
 
   &--primary {
     color: #ffffff;
-    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-    box-shadow: 0 10px 24px -10px rgba(124, 58, 237, 0.7);
+    background: linear-gradient(135deg, #06c79f 0%, #1fa6d8 100%);
+    box-shadow: 0 10px 24px -10px rgba(11, 180, 160, 0.65);
 
     &:hover {
-      box-shadow: 0 14px 30px -10px rgba(124, 58, 237, 0.85);
+      box-shadow: 0 14px 30px -10px rgba(11, 180, 160, 0.85);
     }
   }
 
@@ -231,11 +232,11 @@ export default defineComponent({
   }
 
   .glow {
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.28) 0%, rgba(6, 182, 212, 0.12) 42%, transparent 68%);
+    background: radial-gradient(circle, rgba(7, 238, 166, 0.26) 0%, rgba(35, 171, 255, 0.14) 42%, transparent 68%);
   }
 
   .code {
-    background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 55%, #67e8f9 100%);
+    background: linear-gradient(135deg, #2bf3bf 0%, #5fd4f2 50%, #6fc0ff 100%);
     -webkit-background-clip: text;
     background-clip: text;
   }
