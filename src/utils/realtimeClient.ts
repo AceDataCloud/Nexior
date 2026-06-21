@@ -1,4 +1,4 @@
-import { REALTIME_SAMPLE_RATE, WS_URL_REALTIME } from '@/constants';
+import { REALTIME_DEFAULT_VOICE, REALTIME_SAMPLE_RATE, WS_URL_REALTIME } from '@/constants';
 
 export type RealtimeStatus = 'connecting' | 'connected' | 'disconnected' | 'error';
 
@@ -24,6 +24,7 @@ export class RealtimeClient {
   private readonly token: string;
   private readonly model: string;
   private readonly handlers: IRealtimeHandlers;
+  private voice: string;
 
   private ws: WebSocket | undefined;
   private audioCtx: AudioContext | undefined;
@@ -39,11 +40,13 @@ export class RealtimeClient {
   private disposed = false; // set by stop(); aborts an in-flight start()
   private suppressAudio = false; // drop in-flight deltas after a barge-in
   private aiResponding = false; // a response is streaming (so barge-in can cancel it)
+  private audioEmitted = false; // upstream has played audio this session — voice can no longer change
 
-  constructor(token: string, model: string, handlers: IRealtimeHandlers) {
+  constructor(token: string, model: string, handlers: IRealtimeHandlers, voice: string = REALTIME_DEFAULT_VOICE) {
     this.token = token;
     this.model = model;
     this.handlers = handlers;
+    this.voice = voice;
   }
 
   get isRunning(): boolean {
@@ -86,6 +89,9 @@ export class RealtimeClient {
         return;
       }
       this.running = true;
+      // Apply the chosen voice before the first response. The relay forwards a
+      // whitelisted `voice` from a client session.update straight to upstream.
+      this.send({ type: 'session.update', session: { voice: this.voice } });
       this.handlers.onStatus?.('connected');
     };
     this.ws.onclose = () => {
@@ -105,6 +111,16 @@ export class RealtimeClient {
   /** Mute/unmute the microphone without tearing down the call. */
   setMuted(muted: boolean): void {
     this.micStream?.getAudioTracks().forEach((t) => (t.enabled = !muted));
+  }
+
+  /**
+   * Switch the assistant voice. Takes effect on the next response; upstream
+   * rejects a change once it has already emitted audio this session — that
+   * error is swallowed (the next fresh call still uses the new voice).
+   */
+  setVoice(voice: string): void {
+    this.voice = voice;
+    this.send({ type: 'session.update', session: { voice } });
   }
 
   private startLevelLoop(): void {
@@ -184,7 +200,26 @@ export class RealtimeClient {
         break;
       case 'error': {
         const err = evt.error || {};
-        this.handlers.onError?.(err.message || 'realtime error');
+        // Barge-in race: we fire `response.cancel` on speech-start, but the
+        // response may have just finished — upstream then replies "Cancellation
+        // failed: no active response found". It's harmless; never surface it.
+        const code = String(err.code || '');
+        const message = String(err.message || '');
+        // Don't touch `aiResponding` here: `response.done` owns that flag, and a
+        // late cancel-error can arrive after the NEXT response.created — clearing
+        // it then would silently disable barge-in for that new turn. Match the
+        // specific benign message, not any "cancellation failed", so genuine
+        // cancel/protocol failures still surface.
+        if (code === 'response_cancel_not_active' || /no active response/i.test(message)) {
+          break;
+        }
+        // Mid-call voice switch: upstream rejects a voice change ONLY after it
+        // has already emitted audio this session — swallow that. Before any
+        // audio (e.g. an invalid initial voice) the error must still surface.
+        if (this.audioEmitted && /voice/i.test(message)) {
+          break;
+        }
+        this.handlers.onError?.(message || 'realtime error');
         break;
       }
       default:
@@ -197,6 +232,7 @@ export class RealtimeClient {
     const buf = arrayBufferFromB64(b64);
     const i16 = new Int16Array(buf);
     if (i16.length === 0) return;
+    this.audioEmitted = true;
     const f32 = new Float32Array(i16.length);
     for (let i = 0; i < i16.length; i++) f32[i] = i16[i] / 0x8000;
 

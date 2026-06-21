@@ -5,6 +5,7 @@ import { IRealtimeState } from './models';
 import { IApplication, ICredential } from '@/models';
 import { Status } from '@/models';
 import { REALTIME_SERVICE_ID } from '@/constants';
+import { getFinalApplication } from '@/utils';
 
 export const getService = async ({ commit, state }: ActionContext<IRealtimeState, IRootState>) => {
   state.status.getService = Status.Request;
@@ -72,11 +73,20 @@ export const setApplication = async ({ commit, dispatch, rootState }: any, paylo
   }
 };
 
-// Orchestrate provisioning: service -> applications -> first usable app -> credential.
-export const init = async ({ dispatch, state }: any): Promise<ICredential | undefined> => {
+// Orchestrate provisioning: service -> applications -> selected app -> credential.
+export const init = async ({ dispatch, state, rootState }: any): Promise<ICredential | undefined> => {
   await dispatch('getService');
-  const applications = await dispatch('getApplications');
-  const application = (applications || [])[0];
+  // Load this service's individual apps AND the universal (global / 通用余额)
+  // balance, then pick the SAME way the wallet does: respect the current
+  // selection, else prefer a usable global app over an exhausted individual one.
+  // Blind-picking `applications[0]` used to yank the wallet onto a 0-balance
+  // individual app and fight the layout's global-preferred selection on mount.
+  const [individual] = await Promise.all([
+    dispatch('getApplications'),
+    dispatch('getApplications', null, { root: true })
+  ]);
+  const combined = [...(rootState?.applications ?? []), ...((individual as IApplication[]) ?? [])];
+  const application = getFinalApplication(combined, state.application);
   if (application) {
     await dispatch('setApplication', application);
   }
