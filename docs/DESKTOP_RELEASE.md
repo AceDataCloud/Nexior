@@ -27,22 +27,33 @@ manifest** (artifacts are immutable, never deleted).
    job references this environment, so every publish pauses for a human
    approval before any signed artifact reaches the live feed.
 2. **Secrets** (repo or environment):
-   - `TENCENT_CLOUD_SECRET_ID` / `TENCENT_CLOUD_SECRET_KEY` — COS upload
-   - `VITE_STRIPE_PUBLISHABLE_KEY` — renderer build
-   - `WIN_CSC_LINK` / `WIN_CSC_KEY_PASSWORD` — Windows OV/EV `.pfx` (base64) + password
-   - `MAC_CSC_LINK` / `MAC_CSC_KEY_PASSWORD` — macOS Developer ID `.p12` (base64) + password
-   - `APPLE_ID` / `APPLE_APP_SPECIFIC_PASSWORD` / `APPLE_TEAM_ID` — notarization
+   - `TENCENT_CLOUD_SECRET_ID` / `TENCENT_CLOUD_SECRET_KEY` — COS upload (already set org-wide for the OTA pipeline)
+   - `VITE_STRIPE_PUBLISHABLE_KEY` — renderer build (already set) ✅
+   - **Notarization (macOS)** reuses the iOS pipeline's existing App Store Connect
+     API-key secrets — **nothing new to add**: `APP_STORE_CONNECT_KEY_BASE64`,
+     `APP_STORE_CONNECT_KEY_ID`, `APP_STORE_CONNECT_ISSUER_ID`, `IOS_TEAM_ID`. ✅
+   - **Code-signing certs — the only NEW secrets you must add** (and the only
+     blocker for a *stable* release):
+     - `WIN_CSC_LINK` / `WIN_CSC_KEY_PASSWORD` — Windows OV/EV `.pfx` (base64) + password
+     - `MAC_CSC_LINK` / `MAC_CSC_KEY_PASSWORD` — macOS **Developer ID Application** `.p12` (base64) + password
+       (the existing `IOS_P12` is an iOS *distribution* cert and will **not** work for a Developer ID DMG)
+
+   > **Beta runs without any signing cert.** When `WIN_CSC_LINK` / `MAC_CSC_LINK`
+   > are absent the `beta` channel builds **unsigned** so you can exercise the
+   > whole build → COS-publish path today. The `latest` (stable) channel
+   > **refuses** to build unsigned. Auto-update *apply* can only be validated on
+   > a signed build.
 
 ## Cutting a release
 
-- **Beta:** Actions → **Desktop** → _Run workflow_ → channel `beta`.
-- **Stable:** push a `desktop-v*` tag (e.g. `desktop-v3.282.4`) **or** run the
-  workflow with channel `latest`.
+- **Beta (works today, signed or not):** Actions → **Desktop** → _Run workflow_ → channel `beta`.
+- **Stable (requires the signing certs above):** push a `desktop-v*` tag
+  (e.g. `desktop-v3.282.4`) **or** run the workflow with channel `latest`.
 
 Flow: `e2e` smoke (Linux/xvfb) → wait for **admin approval** → `build` matrix
 (Windows + macOS): `build:electron` → `compile:electron` → `copy-renderer` →
-`electron-builder` (signs; macOS also notarizes + staples, verified by
-`stapler validate`) → upload artifacts → publish to COS.
+`electron-builder` (signs when a cert is present; macOS notarizes via the API
+key + staples, verified by `stapler validate`) → upload artifacts → publish to COS.
 
 `workflow_dispatch` has a `dry_run` toggle (build + sign, skip the COS upload).
 

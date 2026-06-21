@@ -124,39 +124,64 @@ jobs:
         env:
           ELECTRON_BUILDER_CHANNEL: ${{ needs.setup.outputs.channel }}
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
-          # Windows signing
+          # Windows signing (optional — unsigned build if absent)
           WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
           WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-          # macOS signing + notarization
+          # macOS signing (Developer ID Application .p12 — optional)
           MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
           MAC_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
-          APPLE_ID: ${{ secrets.APPLE_ID }}
-          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          # macOS notarization via the App Store Connect API key (reuses the
+          # secrets the iOS pipeline already has — no Apple-ID password needed).
+          APP_STORE_CONNECT_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_KEY_BASE64 }}
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APPLE_TEAM_ID: ${{ secrets.IOS_TEAM_ID }}
         run: |
           set -euo pipefail
-          # Map per-OS signing secrets onto the env vars electron-builder reads.
+          EXTRA=()
+          SIGN=false
+
           if [ "${{ runner.os }}" = "Windows" ]; then
-            export CSC_LINK="$WIN_CSC_LINK"
-            export CSC_KEY_PASSWORD="$WIN_CSC_KEY_PASSWORD"
+            if [ -n "$WIN_CSC_LINK" ]; then
+              export CSC_LINK="$WIN_CSC_LINK" CSC_KEY_PASSWORD="$WIN_CSC_KEY_PASSWORD"
+              SIGN=true
+            fi
           else
-            export CSC_LINK="$MAC_CSC_LINK"
-            export CSC_KEY_PASSWORD="$MAC_CSC_KEY_PASSWORD"
-            # Fail loudly if notarization creds are incomplete — otherwise
-            # electron-builder signs but SILENTLY skips notarization and
-            # Gatekeeper blocks the app on user machines.
-            if [ -z "$APPLE_ID" ] || [ -z "$APPLE_APP_SPECIFIC_PASSWORD" ] || [ -z "$APPLE_TEAM_ID" ]; then
-              echo "::error::macOS notarization secrets incomplete (APPLE_ID / APPLE_APP_SPECIFIC_PASSWORD / APPLE_TEAM_ID)"
-              exit 1
+            if [ -n "$MAC_CSC_LINK" ]; then
+              export CSC_LINK="$MAC_CSC_LINK" CSC_KEY_PASSWORD="$MAC_CSC_KEY_PASSWORD"
+              SIGN=true
+              # Notarization needs a signed app. Wire notarytool to the API key.
+              echo "$APP_STORE_CONNECT_KEY_BASE64" | base64 -d > "$RUNNER_TEMP/AuthKey.p8"
+              export APPLE_API_KEY="$RUNNER_TEMP/AuthKey.p8"
+              export APPLE_API_KEY_ID="$APP_STORE_CONNECT_KEY_ID"
+              export APPLE_API_ISSUER="$APP_STORE_CONNECT_ISSUER_ID"
             fi
           fi
+
+          if [ "$SIGN" = false ]; then
+            # No cert: a stable release must NEVER ship unsigned (Windows
+            # SmartScreen / macOS Gatekeeper would block it, and electron-updater
+            # can't apply an unsigned update). Beta builds unsigned so the whole
+            # build → publish → COS path can be exercised before certs land.
+            if [ "$ELECTRON_BUILDER_CHANNEL" = "latest" ]; then
+              echo "::error::refusing to build the 'latest' (stable) channel unsigned — provide signing secrets"
+              exit 1
+            fi
+            echo "::warning::no signing cert for ${{ runner.os }} — building UNSIGNED (beta only; auto-update apply will not be testable)"
+            export CSC_IDENTITY_AUTO_DISCOVERY=false
+            EXTRA+=(--config.mac.notarize=false)
+          fi
+
           npm run build:electron
           npm run compile:electron
           node scripts/copy-renderer.js
-          npx electron-builder --config.channel="$ELECTRON_BUILDER_CHANNEL" --publish never
+          # ${EXTRA[@]+...} guards against "unbound variable" on an empty array
+          # under `set -u` in bash 3.2 (the macOS runner's default bash).
+          npx electron-builder --config.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
       - name: Verify macOS notarization (stapled)
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' && env.DESKTOP_SIGNED == 'true'
         run: |
           set -euo pipefail
           APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1 || true)
