@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 14:53:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 15:59:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.12
+
+Sun, 21 Jun 2026 15:59:30 GMT
+
+### Patches
+
+- show enabled connector icons above the chat composer input (dev@acedata.cloud)
 
 ## 3.283.11
 
