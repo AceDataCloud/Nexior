@@ -147,6 +147,112 @@ export async function getCatalogItem(catalogId: string): Promise<IConnectorCatal
 export function clearConnectorCatalogCache(): void {
   cache.clear();
   inFlight.clear();
+  clearEnabledConnectorsCache();
+}
+
+/** Minimal connector shape the composer strip renders — just enough to
+ *  draw a small icon with a name tooltip. Sourced from the directory list
+ *  (`GET /connectors/`), which carries `icon_url` / `name` inline so the
+ *  strip needs no per-connector join. */
+export interface IEnabledConnector {
+  id: string;
+  identifier: string;
+  name: string;
+  icon_url: string;
+}
+
+// User-scoped: caching the icon list module-level would otherwise leak one
+// account's connectors into the next on a logout / account switch where the
+// SPA stays alive (native/desktop auth popup). The cache is keyed on the
+// user id and dropped the moment it changes.
+let enabledCache: IEnabledConnector[] | null = null;
+let enabledCacheUserId: string | null = null;
+let enabledInFlight: Promise<IEnabledConnector[]> | null = null;
+// Monotonic fetch id — only the most recently started fetch may write the
+// cache / clear the in-flight marker, so a slow earlier request can't clobber
+// a newer `force` refresh (or a post-account-switch reload).
+let enabledGeneration = 0;
+
+/** Drop any cached enabled-connector state. */
+export function clearEnabledConnectorsCache(): void {
+  enabledCache = null;
+  enabledCacheUserId = null;
+  enabledInFlight = null;
+  enabledGeneration++;
+}
+
+/**
+ * List the connectors the given user currently has an ACTIVE connection to
+ * ("enabled" connectors), for the composer's icon strip.
+ *
+ * AuthBackend's directory list flags each row with `installed` (true iff
+ * the user has an ACTIVE `Connection` whose `connector_identifier` matches
+ * — see `_installed_identifiers`), and the same payload already carries
+ * `icon_url` / `name`, so one round-trip yields everything the strip needs.
+ * `sort=popular` gives a stable order (featured → curated rank → installs).
+ *
+ * Caching is keyed on `userId`; a different (or absent) user invalidates it
+ * so one account's icons never surface for another. Logged-out callers get
+ * an empty list with no network round-trip. Pass `force` to bypass the
+ * cache (e.g. after the user returns from the connections manager). Never
+ * throws — on error it returns the last good value (or an empty list) so
+ * the strip simply stays hidden rather than breaking the composer.
+ */
+export async function listEnabledConnectors(
+  userId: string | null | undefined,
+  force = false
+): Promise<IEnabledConnector[]> {
+  const uid = userId ?? null;
+  if (uid !== enabledCacheUserId) {
+    // Login / logout / account switch — discard the previous user's data and
+    // invalidate any in-flight fetch so it can't write the new user's cache.
+    enabledCacheUserId = uid;
+    enabledCache = null;
+    enabledInFlight = null;
+    enabledGeneration++;
+  }
+  if (!uid) return [];
+  if (!force && enabledCache) return enabledCache;
+  // Coalesce concurrent callers — but only when NOT forcing. A `force` caller
+  // (e.g. returning from the connections manager) must start a fresh request
+  // rather than reuse an in-flight fetch that began before the change.
+  if (!force && enabledInFlight) return enabledInFlight;
+  const generation = ++enabledGeneration;
+  const task = (async () => {
+    try {
+      const response = await httpClient.get(`/connectors/`, {
+        baseURL: `${getBaseUrlAuth()}/api/v1`,
+        params: { sort: 'popular', limit: 200 }
+      });
+      const items = response?.data?.items;
+      const list: IEnabledConnector[] = Array.isArray(items)
+        ? items
+            .filter((it: { installed?: boolean; icon_url?: string }) => it?.installed && it?.icon_url)
+            .map((it: IEnabledConnector) => ({
+              id: it.id,
+              identifier: it.identifier,
+              name: it.name,
+              icon_url: it.icon_url
+            }))
+        : [];
+      // Cache only if this is still the most recent fetch for the same user —
+      // so a slower earlier request can't clobber a newer `force` refresh.
+      if (enabledCacheUserId === uid && enabledGeneration === generation) {
+        enabledCache = list;
+      }
+      return list;
+    } catch (error) {
+      console.warn('enabled connectors fetch failed', error);
+      return enabledCache ?? [];
+    }
+  })();
+  enabledInFlight = task;
+  void task.finally(() => {
+    if (enabledGeneration === generation) {
+      enabledInFlight = null;
+    }
+  });
+  return task;
 }
 
 /**

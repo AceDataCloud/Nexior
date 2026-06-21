@@ -52,7 +52,11 @@
             @submit="onSubmit"
             @stop="onStop"
           />
-          <disclaimer class="disclaimer" />
+          <div class="composer-footer">
+            <div class="footer-connectors"><connector-strip /></div>
+            <disclaimer class="disclaimer" />
+            <span class="footer-spacer" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
     </template>
@@ -79,6 +83,7 @@ import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
+import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
@@ -133,6 +138,7 @@ export default defineComponent({
   components: {
     Composer,
     Disclaimer,
+    ConnectorStrip,
     ModelSelector,
     DesktopAgentManager,
     'byok-badge': BYOKBadge,
@@ -1165,12 +1171,33 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   position: relative;
-  .disclaimer {
+  // Footer row below the composer: enabled-connector icons hug the left while
+  // the disclaimer stays centered in the column. Equal flex:1 side columns
+  // (icons left + an empty mirror spacer right) keep the disclaimer balanced
+  // regardless of how many icons render (or none).
+  .composer-footer {
     width: 100%;
-    text-align: center;
-    font-size: 12px;
-    margin: 10px 0 8px;
-    color: var(--el-text-color-secondary);
+    max-width: 800px;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .footer-connectors,
+    .footer-spacer {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .footer-connectors {
+      display: flex;
+      justify-content: flex-start;
+    }
+    .disclaimer {
+      flex: 0 1 auto;
+      text-align: center;
+      font-size: 12px;
+      margin: 0;
+      color: var(--el-text-color-secondary);
+    }
   }
   &.empty {
     position: relative;
