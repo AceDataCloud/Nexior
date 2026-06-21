@@ -194,9 +194,10 @@ jobs:
           npm run build:electron
           npm run compile:electron
           node scripts/copy-renderer.js
-          # ${EXTRA[@]+...} guards against unbound-variable on an empty array
-          # under `set -u` in bash 3.2 (the macOS runner's default bash).
-          npx electron-builder --config.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
+          # `channel` lives under `publish`, not at the config root — override
+          # the nested key. ${EXTRA[@]+...} guards against unbound-variable on an
+          # empty array under `set -u` in bash 3.2 (the macOS runner's bash).
+          npx electron-builder --config.publish.channel="$ELECTRON_BUILDER_CHANNEL" ${EXTRA[@]+"${EXTRA[@]}"} --publish never
           echo "DESKTOP_SIGNED=$SIGN" >> "$GITHUB_ENV"
 
       - name: Verify macOS notarization (stapled)
