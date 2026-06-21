@@ -168,12 +168,17 @@ export interface IEnabledConnector {
 let enabledCache: IEnabledConnector[] | null = null;
 let enabledCacheUserId: string | null = null;
 let enabledInFlight: Promise<IEnabledConnector[]> | null = null;
+// Monotonic fetch id — only the most recently started fetch may write the
+// cache / clear the in-flight marker, so a slow earlier request can't clobber
+// a newer `force` refresh (or a post-account-switch reload).
+let enabledGeneration = 0;
 
 /** Drop any cached enabled-connector state. */
 export function clearEnabledConnectorsCache(): void {
   enabledCache = null;
   enabledCacheUserId = null;
   enabledInFlight = null;
+  enabledGeneration++;
 }
 
 /**
@@ -199,14 +204,20 @@ export async function listEnabledConnectors(
 ): Promise<IEnabledConnector[]> {
   const uid = userId ?? null;
   if (uid !== enabledCacheUserId) {
-    // Login / logout / account switch — discard the previous user's data.
+    // Login / logout / account switch — discard the previous user's data and
+    // invalidate any in-flight fetch so it can't write the new user's cache.
     enabledCacheUserId = uid;
     enabledCache = null;
     enabledInFlight = null;
+    enabledGeneration++;
   }
   if (!uid) return [];
   if (!force && enabledCache) return enabledCache;
-  if (enabledInFlight) return enabledInFlight;
+  // Coalesce concurrent callers — but only when NOT forcing. A `force` caller
+  // (e.g. returning from the connections manager) must start a fresh request
+  // rather than reuse an in-flight fetch that began before the change.
+  if (!force && enabledInFlight) return enabledInFlight;
+  const generation = ++enabledGeneration;
   const task = (async () => {
     try {
       const response = await httpClient.get(`/connectors/`, {
@@ -224,8 +235,9 @@ export async function listEnabledConnectors(
               icon_url: it.icon_url
             }))
         : [];
-      // Only cache if the user hasn't switched while the request was in flight.
-      if (enabledCacheUserId === uid) {
+      // Cache only if this is still the most recent fetch for the same user —
+      // so a slower earlier request can't clobber a newer `force` refresh.
+      if (enabledCacheUserId === uid && enabledGeneration === generation) {
         enabledCache = list;
       }
       return list;
@@ -236,7 +248,7 @@ export async function listEnabledConnectors(
   })();
   enabledInFlight = task;
   void task.finally(() => {
-    if (enabledInFlight === task) {
+    if (enabledGeneration === generation) {
       enabledInFlight = null;
     }
   });

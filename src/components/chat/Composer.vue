@@ -1,18 +1,4 @@
 <template>
-  <!-- Enabled connectors: a compact icon strip ABOVE the composer card
-       (a sibling root, aligned to the same centered column). Display-first —
-       clicking any chip (or the +N overflow) opens the connections manager.
-       Hidden when the user has no active connections. -->
-  <div v-if="visibleConnectors.length > 0" class="connector-strip">
-    <el-tooltip v-for="c in visibleConnectors" :key="c.id" effect="dark" :content="c.name" placement="top">
-      <span class="connector-chip" role="button" @click="onOpenConnections">
-        <img class="connector-icon" :src="c.icon_url" :alt="c.name" loading="lazy" />
-      </span>
-    </el-tooltip>
-    <el-tooltip v-if="overflowCount > 0" effect="dark" :content="$t('chat.composer.connections')" placement="top">
-      <span class="connector-chip connector-more" role="button" @click="onOpenConnections"> +{{ overflowCount }} </span>
-    </el-tooltip>
-  </div>
   <div class="composer">
     <!-- Hidden el-upload: only used for its file-picker + upload pipeline.
          The file list is rendered separately above the textarea (see
@@ -159,11 +145,6 @@ import {
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ROUTE_CHATGPT_CALL } from '@/router/constants';
-import { listEnabledConnectors, type IEnabledConnector } from './connectorCatalogCache';
-
-// Max connector chips shown in the strip. Beyond this, the last slot
-// becomes a "+N" overflow chip so the row never exceeds MAX_CONNECTORS items.
-const MAX_CONNECTORS = 8;
 
 export default defineComponent({
   name: 'Composer',
@@ -206,28 +187,10 @@ export default defineComponent({
       inputHeight: '35px',
       questionValue: this.question || '',
       fileList: [] as UploadFile[],
-      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
-      enabledConnectors: [] as IEnabledConnector[]
+      uploadUrl: getBaseUrlPlatform() + '/api/v1/files/'
     };
   },
   computed: {
-    // Connectors actually drawn as icons. When the user has more than
-    // MAX_CONNECTORS, reserve the final slot for the "+N" overflow chip.
-    visibleConnectors(): IEnabledConnector[] {
-      if (this.enabledConnectors.length <= MAX_CONNECTORS) {
-        return this.enabledConnectors;
-      }
-      return this.enabledConnectors.slice(0, MAX_CONNECTORS - 1);
-    },
-    overflowCount(): number {
-      if (this.enabledConnectors.length <= MAX_CONNECTORS) {
-        return 0;
-      }
-      return this.enabledConnectors.length - (MAX_CONNECTORS - 1);
-    },
-    userId(): string | null {
-      return this.$store.getters.user?.id ?? null;
-    },
     model(): IChatModel {
       return this.$store.state.chat.model;
     },
@@ -303,43 +266,10 @@ export default defineComponent({
       if (oldVal && !val) {
         this.fileList = [];
       }
-    },
-    // Login / logout / account switch — clear the previous account's icons
-    // immediately (so they never linger during the new fetch), then reload.
-    userId() {
-      this.enabledConnectors = [];
-      void this.loadConnectors(true);
     }
-  },
-  mounted() {
-    void this.loadConnectors();
-    // The user manages connections in another tab (auth.acedata.cloud);
-    // refetch when they return so connects/disconnects reflect without a
-    // full reload.
-    document.addEventListener('visibilitychange', this.onVisibilityChange);
-  },
-  beforeUnmount() {
-    document.removeEventListener('visibilitychange', this.onVisibilityChange);
   },
   methods: {
     isImageUrl,
-    async loadConnectors(force = false) {
-      // listEnabledConnectors() never throws (returns [] on error / when
-      // logged out) so the strip just stays hidden rather than breaking.
-      const requestedUserId = this.userId;
-      const list = await listEnabledConnectors(requestedUserId, force);
-      // Drop a stale resolution: if the user switched (or logged out) while
-      // this fetch was in flight, its result belongs to the previous account
-      // and must not be written into component state.
-      if (this.userId === requestedUserId) {
-        this.enabledConnectors = list;
-      }
-    },
-    onVisibilityChange() {
-      if (document.visibilityState === 'visible') {
-        void this.loadConnectors(true);
-      }
-    },
     onStartCall() {
       this.$router.push({ name: ROUTE_CHATGPT_CALL });
     },
@@ -465,50 +395,6 @@ textarea.input:focus {
 </style>
 
 <style lang="scss" scoped>
-// Sits ABOVE the composer card, aligned to the same centered column.
-// Small, refined app-style icons — a quiet "what's connected" affordance.
-.connector-strip {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 8px;
-  padding-left: 6px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  .connector-chip {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: var(--el-fill-color-light);
-    border: 1px solid var(--el-border-color-lighter);
-    transition:
-      transform 0.12s ease,
-      box-shadow 0.12s ease;
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
-    }
-    .connector-icon {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    &.connector-more {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: -0.3px;
-      color: var(--el-text-color-secondary);
-      background-color: var(--el-fill-color);
-    }
-  }
-}
 .composer {
   width: 100%;
   max-width: 800px;
