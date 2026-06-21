@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 11:58:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 12:52:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.5
+
+Sun, 21 Jun 2026 12:52:16 GMT
+
+### Patches
+
+- ci(desktop): graceful unsigned beta + notarize via App Store Connect API key (cqc@cuiqingcai.com)
 
 ## 3.283.4
 
