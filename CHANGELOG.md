@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 13:45:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 14:40:02 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.10
+
+Sun, 21 Jun 2026 14:40:02 GMT
+
+### Patches
+
+- feat(desktop): universal macOS DMG (Intel + Apple Silicon) (cqc@cuiqingcai.com)
 
 ## 3.283.9
 
