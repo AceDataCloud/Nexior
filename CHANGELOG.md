@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 20 Jun 2026 17:18:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 07:04:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.282.3
+
+Sun, 21 Jun 2026 07:04:03 GMT
+
+### Patches
+
+- feat(desktop): add desktop surface foundation (constants, surface utils, vite __APP_VERSION__) (cqc@cuiqingcai.com)
+- feat(desktop): surface-aware auth flow (deep-link, login/logout, version gate) (cqc@cuiqingcai.com)
 
 ## 3.282.2
 
