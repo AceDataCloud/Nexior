@@ -1,0 +1,63 @@
+# electron-builder config for the Nexior desktop client.
+# Packaging/signing/notarization run in CI (see .github/workflows/desktop.yml);
+# secrets come from CI env, never the repo.
+appId: com.acedatacloud.nexior.desktop
+productName: AceData
+copyright: Copyright © Ace Data Cloud
+
+directories:
+  output: release
+  buildResources: build
+
+# Inject the Electron entry into the PACKAGED app's package.json only, so the
+# source package.json `main` (the @acedatacloud/nexior npm library entry) stays
+# untouched and beachball publish is unaffected.
+extraMetadata:
+  main: electron/dist/main.js
+
+files:
+  - electron/dist/** # compiled main/preload/protocol/updater/auth-state
+  - electron/renderer/** # copied dist-electron (the Vite build)
+
+# macOS registers these into Info.plist (CFBundleURLTypes). The desktop scheme
+# is distinct from the mobile com.acedatacloud.nexior:// so they can't collide
+# on one machine.
+protocols:
+  - name: AceData Desktop
+    schemes:
+      - acedata-desktop
+
+win:
+  target:
+    - nsis
+  # OV cert via thumbprint uses the documented `certificateSha1` key. For EV /
+  # Azure Trusted Signing, certificateSha1 does NOT work — supply a custom
+  # `sign` hook instead (see CI).
+  certificateSha1: ${env.WIN_CERT_SHA1}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+
+mac:
+  target:
+    - dmg
+  category: public.app-category.productivity
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  # Object form requires APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID
+  # ALL present in env at sign time (CI asserts this), else electron-builder
+  # signs but SILENTLY skips notarization → Gatekeeper blocks user machines.
+  notarize:
+    teamId: ${env.APPLE_TEAM_ID}
+
+publish:
+  provider: generic
+  # electron-builder does NOT interpolate ${channel} in `url`. Use a FIXED base
+  # url; channel selection is via the `channel` field + file naming
+  # (latest.yml vs beta.yml), resolved under this base.
+  url: https://cdn.acedata.cloud/nexior/desktop
+  channel: latest # CI overrides to `beta` for pre-release builds
