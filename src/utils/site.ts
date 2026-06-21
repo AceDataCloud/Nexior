@@ -1,6 +1,6 @@
 import { ISite } from '@/models';
 import { v4 as uuid } from 'uuid';
-import { BASE_HOST_HUB } from '@/constants';
+import { BASE_HOST_HUB } from '@/constants/endpoint';
 import { isNative, isDesktop } from './surface';
 
 /**

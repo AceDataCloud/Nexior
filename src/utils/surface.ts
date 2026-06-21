@@ -1,10 +1,6 @@
 import { SURFACE_ANDROID, SURFACE_IOS, SURFACE_WEB, SURFACE_DESKTOP } from '@/constants/surface';
 
-type Surface =
-  | typeof SURFACE_WEB
-  | typeof SURFACE_ANDROID
-  | typeof SURFACE_IOS
-  | typeof SURFACE_DESKTOP;
+type Surface = typeof SURFACE_WEB | typeof SURFACE_ANDROID | typeof SURFACE_IOS | typeof SURFACE_DESKTOP;
 
 export function getSurface(): Surface {
   const value = (import.meta.env.VITE_SURFACE as string | undefined) ?? SURFACE_WEB;

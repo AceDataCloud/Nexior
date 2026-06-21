@@ -1,14 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import {
-  getSurface,
-  isWeb,
-  isIOS,
-  isAndroid,
-  isDesktop,
-  isNative,
-  getPaymentSurface
-} from './surface';
+import { getSurface, isWeb, isIOS, isAndroid, isDesktop, isNative, getPaymentSurface } from './surface';
 
 /**
  * Surface resolution must keep `isNative()` meaning "Capacitor mobile" while
