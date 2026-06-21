@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 12:52:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 12:59:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.6
+
+Sun, 21 Jun 2026 12:59:43 GMT
+
+### Patches
+
+- fix(desktop): build:electron applies VITE_SURFACE=desktop to vite build (cqc@cuiqingcai.com)
 
 ## 3.283.5
 
