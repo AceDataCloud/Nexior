@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isNative" class="auth-native">
+  <div v-if="isInAppLogin" class="auth-native">
     <div v-if="useBrowser" class="auth-native__loading">
       <p>{{ $t('common.status.loading') }}</p>
     </div>
@@ -40,7 +40,8 @@ import QrCode from 'vue-qrcode';
 import { ROUTE_SETTINGS_INDEX } from '@/router';
 import { Browser } from '@capacitor/browser';
 import { SignInWithApple } from '@capacitor-community/apple-sign-in';
-import { isNative as isNativeSurface, isIOS } from '@/utils/surface';
+import { isNative as isNativeSurface, isIOS, isDesktop } from '@/utils/surface';
+import { desktopBridge } from '@/utils/desktop';
 import { track } from '@/plugins/telemetry';
 
 // Native Sign In with Apple is keyed by the iOS bundle identifier, NOT
@@ -65,12 +66,22 @@ export default defineComponent({
     isNative() {
       return isNativeSurface();
     },
+    // Both native AND desktop use the in-app iframe login UI (never the web
+    // redirect, which can't return to an app://bundle / Capacitor window).
+    isInAppLogin() {
+      return isNativeSurface() || isDesktop();
+    },
+    // Per-surface OAuth redirect scheme. Mobile keeps its existing scheme;
+    // desktop uses a distinct one so the two can't collide on one machine.
+    nativeRedirect() {
+      return isDesktop() ? 'acedata-desktop' : 'com.acedatacloud.nexior';
+    },
     iframeUrl() {
       // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
       // URL that iOS ATS blocks, leaving this iframe blank (white screen).
       let url = `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}`;
-      if (this.isNative) {
-        url += '&native_redirect=com.acedatacloud.nexior';
+      if (this.isInAppLogin) {
+        url += `&native_redirect=${this.nativeRedirect}`;
       }
       // Pass `site` so the embedded AuthFrontend login form renders the
       // calling subsite's white-label logo (no-op on the main official host).
@@ -94,7 +105,10 @@ export default defineComponent({
   },
   mounted() {
     if (this.isNative) {
-      // If user closes the in-app browser manually, fall back to iframe login UI.
+      // Capacitor-only: if the user closes the in-app browser manually, fall
+      // back to the iframe login UI. Desktop OAuth opens the SYSTEM browser
+      // (no browserFinished event), so this listener must stay isNative-only —
+      // never isInAppLogin — or desktop would get stuck on the loading screen.
       Browser.addListener('browserFinished', () => {
         console.debug('browser closed by user');
         this.useBrowser = false;
@@ -108,7 +122,7 @@ export default defineComponent({
         return;
       }
       console.debug('received from child page', event);
-      if (event.data.name === 'nativeOAuth' && this.isNative) {
+      if (event.data.name === 'nativeOAuth' && this.isInAppLogin) {
         const provider = event.data.data?.provider;
         // On iOS, Apple Sign In must use the native ASAuthorization sheet —
         // SFSafariViewController lacks the system bridge that Apple's JS SDK
@@ -180,12 +194,22 @@ export default defineComponent({
           return;
         }
         // AuthFrontend in iframe can't do OAuth popups/redirects (X-Frame-Options).
-        // Open the auth page in an in-app browser with the provider pre-selected.
-        this.useBrowser = true;
+        // Open the auth page with the provider pre-selected, using the
+        // per-surface redirect scheme.
         const authUrl = withCurrentSite(
-          `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}&native_redirect=com.acedatacloud.nexior&provider=${provider}`
+          `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}&native_redirect=${this.nativeRedirect}&provider=${provider}`
         );
-        Browser.open({ url: authUrl });
+        if (isDesktop()) {
+          // Desktop has no Capacitor in-app browser. Hand off to the Electron
+          // main process, which appends + stores a `state` nonce and opens the
+          // SYSTEM browser. The result returns via the custom-scheme deep link
+          // → window.desktop.onAuthCallback → exchangeSsoCode (in App.vue).
+          // Do NOT set useBrowser here — there's no browserFinished to clear it.
+          await desktopBridge()?.openOAuth(authUrl);
+        } else {
+          this.useBrowser = true;
+          Browser.open({ url: authUrl });
+        }
         return;
       }
       if (event.data.name === 'login') {
@@ -201,18 +225,19 @@ export default defineComponent({
         if (!this.$store.state.site?.origin) {
           await this.$store.dispatch('initializeSite');
           // navigate to settings page (the dialog auto-opens) for
-          // white-label site owners, but skip on native platforms
-          // (Android/iOS) where users are always on the official site
-          if (!isNativeSurface()) {
+          // white-label site owners, but skip on native/desktop where users
+          // are always on the official site
+          if (!isNativeSurface() && !isDesktop()) {
             await this.$router.push({
               name: ROUTE_SETTINGS_INDEX
             });
           }
         }
-        if (isNativeSurface()) {
-          // On native platforms, hide the auth panel and navigate home instead
-          // of reloading — window.location.reload() in Capacitor WKWebView can
-          // fail to re-trigger the auth check, leaving users on a blank screen.
+        if (isNativeSurface() || isDesktop()) {
+          // On native AND desktop, hide the auth panel and navigate home
+          // instead of reloading — window.location.reload() in Capacitor
+          // WKWebView can fail to re-trigger the auth check, and on desktop it
+          // would reload the app://bundle (the navigation we avoid everywhere).
           this.$store.commit('setAuth', { visible: false });
           await this.$router.push('/');
         } else {

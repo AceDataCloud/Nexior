@@ -223,6 +223,10 @@
     "message": "Apple로 로그인하지 못했습니다. 다시 시도하거나 다른 로그인 방법을 사용해 주세요.",
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
+  "error.loginLinkExpired": {
+    "message": "Login link expired. Please sign in again.",
+    "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
+  },
   "entity.operation": {
     "message": "작업",
     "description": "엔티티의 작업"

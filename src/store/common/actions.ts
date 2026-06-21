@@ -13,7 +13,7 @@ import {
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
-import { isNative } from '@/utils/surface';
+import { isNative, isDesktop } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
   commit('resetToken');
@@ -220,7 +220,9 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
 
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  if (isNative()) {
+  if (isNative() || isDesktop()) {
+    // In-app popup (iframe) login. NEVER window.location.href on desktop — an
+    // app://bundle window navigated to the external auth host cannot return.
     commit('setAuth', {
       flow: 'popup',
       visible: true
@@ -250,9 +252,10 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
   for (const name of getRegisteredLazyModules()) {
     await dispatch(`${name}/resetAll`);
   }
-  if (isNative()) {
-    // On native platforms, show in-app login popup instead of navigating to
-    // external auth URL (which would open Chrome and redirect to localhost)
+  if (isNative() || isDesktop()) {
+    // On native AND desktop, show the in-app login popup instead of navigating
+    // to an external auth URL (which on native opens Chrome → localhost, and on
+    // desktop navigates the app://bundle window somewhere it can't return from).
     commit('setAuth', {
       flow: 'popup',
       visible: true

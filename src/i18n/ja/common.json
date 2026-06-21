@@ -223,6 +223,10 @@
     "message": "Apple でのサインインに失敗しました。もう一度お試しいただくか、別のサインイン方法をご利用ください。",
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
+  "error.loginLinkExpired": {
+    "message": "Login link expired. Please sign in again.",
+    "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
+  },
   "entity.operation": {
     "message": "操作",
     "description": "エンティティの操作"
