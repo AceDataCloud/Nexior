@@ -42,8 +42,12 @@ nsis:
   allowToChangeInstallationDirectory: true
 
 mac:
+  # `universal` = one DMG with both x64 and arm64 slices, so a single download
+  # runs on Intel AND Apple Silicon Macs. electron-builder fetches both Electron
+  # archs and lipo-merges them.
   target:
-    - dmg
+    - target: dmg
+      arch: universal
   category: public.app-category.productivity
   hardenedRuntime: true
   gatekeeperAssess: false
