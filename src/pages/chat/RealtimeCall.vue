@@ -162,6 +162,8 @@ export default defineComponent({
     } catch {
       // localStorage may be unavailable; fall back to the default voice
     }
+    // Guarantee a valid voice so the picker chip is never blank.
+    if (!this.voices.includes(this.voice)) this.voice = REALTIME_DEFAULT_VOICE;
     this.provisioning = true;
     try {
       await this.$store.dispatch('realtime/init');
@@ -246,7 +248,9 @@ export default defineComponent({
       this.captionsOn = !this.captionsOn;
     },
     labelOf(v: string): string {
-      return v.charAt(0).toUpperCase() + v.slice(1);
+      // Never render an empty chip — fall back to the default voice.
+      const name = v || REALTIME_DEFAULT_VOICE;
+      return name.charAt(0).toUpperCase() + name.slice(1);
     },
     selectVoice(v: string) {
       this.voiceMenuOpen = false;
@@ -313,14 +317,11 @@ export default defineComponent({
     background 0.45s ease,
     color 0.45s ease;
 }
-// CC mode flips to the dark “captions” look from ChatGPT voice.
-.rtc.is-captions {
-  --bg: #0a0a0b;
-  --fg: #ffffff;
-  --muted: #8e8e93;
-  --chip: rgba(255, 255, 255, 0.12);
-  --chip-fg: #ffffff;
-}
+// The realtime background follows the app's day/night theme (the routed `.main`
+// class paints this root with `--app-content-bg`). So must the caption text:
+// in LIGHT theme keep the default dark text (readable on the light page); the
+// DARK-theme white palette lives in the NON-scoped block below, keyed off the
+// app's `html.dark` (scoped `:global(html.dark) .rtc.is-captions` mis-compiles).
 
 /* ---------- top bar ---------- */
 .rtc-top {
@@ -659,9 +660,6 @@ export default defineComponent({
     color: #fff;
   }
 }
-.rtc.is-captions .ctl.end {
-  background: rgba(255, 255, 255, 0.16);
-}
 
 /* ---------- transitions ---------- */
 .fade-enter-active,
@@ -681,5 +679,24 @@ export default defineComponent({
   .rtc-captions .cap.ai {
     font-size: 26px;
   }
+}
+</style>
+
+<!--
+  Non-scoped: the realtime screen's background follows the app's day/night theme,
+  so its text/chip palette must too. `.rtc` is unique to this component, so these
+  global rules don't leak. (A scoped `:global(html.dark) .rtc.is-captions`
+  mis-compiles to a bare `html.dark{…}`, leaking the vars app-wide.)
+-->
+<style lang="scss">
+html.dark .rtc.is-captions {
+  --bg: #0a0a0b;
+  --fg: #ffffff;
+  --muted: #8e8e93;
+  --chip: rgba(255, 255, 255, 0.12);
+  --chip-fg: #ffffff;
+}
+html.dark .rtc.is-captions .ctl.end {
+  background: rgba(255, 255, 255, 0.16);
 }
 </style>
