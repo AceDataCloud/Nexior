@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 13:38:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 13:45:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.9
+
+Sun, 21 Jun 2026 13:45:34 GMT
+
+### Patches
+
+- fix(ci): override publish.channel for electron-builder (cqc@cuiqingcai.com)
 
 ## 3.283.8
 
