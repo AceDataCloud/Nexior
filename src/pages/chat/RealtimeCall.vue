@@ -2,10 +2,12 @@
   <div class="rtc" :class="{ 'is-captions': captionsOn, 'is-live': running }">
     <!-- top bar: minimal utility icons (mirrors the ChatGPT voice screen) -->
     <header class="rtc-top">
-      <button class="ic" :title="$t('realtime.title')" @click="goBack">
-        <font-awesome-icon icon="fa-solid fa-chevron-down" />
-      </button>
-      <div class="rtc-top-right">
+      <!-- left group: back + voice picker (kept LEFT so it never sits under the
+           right-pinned floating wallet pill, which would otherwise block taps) -->
+      <div class="rtc-top-left">
+        <button class="ic" :title="$t('realtime.title')" @click="goBack">
+          <font-awesome-icon icon="fa-solid fa-chevron-down" />
+        </button>
         <div class="voice-pick">
           <button class="voice-chip" :class="{ on: voiceMenuOpen }" @click.stop="voiceMenuOpen = !voiceMenuOpen">
             <span class="voice-name">{{ voiceLabel }}</span>
@@ -17,6 +19,8 @@
             </li>
           </ul>
         </div>
+      </div>
+      <div class="rtc-top-right">
         <button class="ic" :class="{ on: showInfo }" :title="$t('realtime.title')" @click="showInfo = !showInfo">
           <font-awesome-icon icon="fa-solid fa-circle-info" />
         </button>
@@ -106,7 +110,10 @@ export default defineComponent({
       showInfo: false,
       voice: REALTIME_DEFAULT_VOICE as string,
       voices: [...REALTIME_VOICES] as string[],
-      voiceMenuOpen: false
+      voiceMenuOpen: false,
+      // Bumped on every (re)connect; handlers of a superseded client compare
+      // against it and no-op, so a stale teardown can't clobber the new call.
+      callSeq: 0
     };
   },
   computed: {
@@ -170,54 +177,65 @@ export default defineComponent({
   methods: {
     async startCall() {
       if (!this.token || this.connecting || this.running) return;
+      const seq = ++this.callSeq;
+      const live = () => seq === this.callSeq; // false once superseded by a reconnect
       this.errorMsg = '';
       this.userText = '';
       this.aiText = '';
       this.connecting = true;
-      this.client = new RealtimeClient(
+      // Hold a LOCAL ref: after the `await` below, `this.client` may already be a
+      // newer client (reconnect during async startup), so the continuation must
+      // act on `client`, never `this.client`.
+      const client = new RealtimeClient(
         this.token,
         REALTIME_DEFAULT_MODEL,
         {
           onStatus: (s: RealtimeStatus) => {
+            if (!live()) return;
             this.status = s;
             this.running = s === 'connecting' || s === 'connected';
             if (s === 'connected' || s === 'disconnected' || s === 'error') this.connecting = false;
             if (!this.running) this.level = 0;
           },
           onUserSpeechStarted: () => {
+            if (!live()) return;
             this.aiSpeaking = false;
             // Any prior transient error is stale once a new turn begins.
             this.errorMsg = '';
           },
           onUserTranscript: (t: string) => {
-            this.userText = t;
+            if (live()) this.userText = t;
           },
           onAiResponseStart: () => {
+            if (!live()) return;
             this.aiText = '';
             this.aiSpeaking = true;
             this.errorMsg = '';
           },
           onAiTranscriptDelta: (d: string) => {
-            this.aiText += d;
+            if (live()) this.aiText += d;
           },
           onAudioLevel: (lvl: number) => {
-            this.level = lvl;
+            if (live()) this.level = lvl;
           },
           onError: (m: string) => {
-            this.errorMsg = m;
+            if (live()) this.errorMsg = m;
           }
         },
         this.voice
       );
+      this.client = client;
       // a fresh call should honour the current mute state
       try {
-        await this.client.start();
-        this.client.setMuted(this.muted);
+        await client.start();
+        if (!live() || this.client !== client) return; // superseded mid-startup
+        client.setMuted(this.muted);
       } catch (e: any) {
+        client.stop();
+        if (!live() || this.client !== client) return; // don't clobber a newer call
         this.connecting = false;
         this.running = false;
         this.errorMsg = e?.message || this.$t('realtime.startFailed');
-        this.client?.stop();
       }
     },
     toggleMute() {
@@ -239,8 +257,24 @@ export default defineComponent({
       } catch {
         // ignore persistence failure
       }
-      // Apply live if a call is running; otherwise it's used on the next start.
-      this.client?.setVoice(v);
+      // Voice is fixed at connect (relay injects it). Reconnect to switch it live;
+      // otherwise it just applies the next time a call starts.
+      if (this.running || this.connecting) this.reconnect();
+    },
+    reconnect() {
+      const old = this.client;
+      this.client = undefined;
+      // Invalidate the old client's handlers before its teardown fires.
+      this.callSeq++;
+      this.running = false;
+      this.connecting = false;
+      this.aiSpeaking = false;
+      this.level = 0;
+      this.userText = '';
+      this.aiText = '';
+      this.errorMsg = '';
+      old?.stop();
+      this.$nextTick(() => this.startCall());
     },
     onOrbTap() {
       if (!this.running && !this.connecting) this.startCall();
@@ -295,6 +329,11 @@ export default defineComponent({
   justify-content: space-between;
   padding: 14px 16px;
   z-index: 2;
+}
+.rtc-top-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .rtc-top-right {
   display: flex;
@@ -358,7 +397,7 @@ export default defineComponent({
 .voice-menu {
   position: absolute;
   top: calc(100% + 6px);
-  right: 0;
+  left: 0;
   z-index: 10;
   min-width: 132px;
   max-height: 240px;

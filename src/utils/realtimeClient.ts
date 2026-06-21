@@ -40,7 +40,6 @@ export class RealtimeClient {
   private disposed = false; // set by stop(); aborts an in-flight start()
   private suppressAudio = false; // drop in-flight deltas after a barge-in
   private aiResponding = false; // a response is streaming (so barge-in can cancel it)
-  private audioEmitted = false; // upstream has played audio this session — voice can no longer change
 
   constructor(token: string, model: string, handlers: IRealtimeHandlers, voice: string = REALTIME_DEFAULT_VOICE) {
     this.token = token;
@@ -80,7 +79,11 @@ export class RealtimeClient {
     sink.gain.value = 0;
     this.workletNode.connect(sink).connect(this.audioCtx.destination);
 
-    const url = `${WS_URL_REALTIME}?model=${encodeURIComponent(this.model)}`;
+    // Voice is a connect-time param: the relay injects it into its initial
+    // (GA-valid) session.update. A client session.update can't set it — the relay
+    // sanitizer drops the required session.type and GA nests voice under audio.output.
+    const url =
+      `${WS_URL_REALTIME}?model=${encodeURIComponent(this.model)}` + `&voice=${encodeURIComponent(this.voice)}`;
     this.ws = new WebSocket(url, ['realtime', `acedata-token.${this.token}`]);
 
     this.ws.onopen = () => {
@@ -89,9 +92,6 @@ export class RealtimeClient {
         return;
       }
       this.running = true;
-      // Apply the chosen voice before the first response. The relay forwards a
-      // whitelisted `voice` from a client session.update straight to upstream.
-      this.send({ type: 'session.update', session: { voice: this.voice } });
       this.handlers.onStatus?.('connected');
     };
     this.ws.onclose = () => {
@@ -111,16 +111,6 @@ export class RealtimeClient {
   /** Mute/unmute the microphone without tearing down the call. */
   setMuted(muted: boolean): void {
     this.micStream?.getAudioTracks().forEach((t) => (t.enabled = !muted));
-  }
-
-  /**
-   * Switch the assistant voice. Takes effect on the next response; upstream
-   * rejects a change once it has already emitted audio this session — that
-   * error is swallowed (the next fresh call still uses the new voice).
-   */
-  setVoice(voice: string): void {
-    this.voice = voice;
-    this.send({ type: 'session.update', session: { voice } });
   }
 
   private startLevelLoop(): void {
@@ -213,12 +203,6 @@ export class RealtimeClient {
         if (code === 'response_cancel_not_active' || /no active response/i.test(message)) {
           break;
         }
-        // Mid-call voice switch: upstream rejects a voice change ONLY after it
-        // has already emitted audio this session — swallow that. Before any
-        // audio (e.g. an invalid initial voice) the error must still surface.
-        if (this.audioEmitted && /voice/i.test(message)) {
-          break;
-        }
         this.handlers.onError?.(message || 'realtime error');
         break;
       }
@@ -232,7 +216,6 @@ export class RealtimeClient {
     const buf = arrayBufferFromB64(b64);
     const i16 = new Int16Array(buf);
     if (i16.length === 0) return;
-    this.audioEmitted = true;
     const f32 = new Float32Array(i16.length);
     for (let i = 0; i < i16.length; i++) f32[i] = i16[i] / 0x8000;
 
