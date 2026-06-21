@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 07:25:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 08:19:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.2
+
+Sun, 21 Jun 2026 08:19:09 GMT
+
+### Patches
+
+- fix(realtime): orb clipping, stale cancel error, voice picker, wallet app selection (dev@acedata.cloud)
 
 ## 3.283.1
 
