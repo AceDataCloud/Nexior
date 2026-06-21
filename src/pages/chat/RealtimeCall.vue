@@ -6,6 +6,17 @@
         <font-awesome-icon icon="fa-solid fa-chevron-down" />
       </button>
       <div class="rtc-top-right">
+        <div class="voice-pick">
+          <button class="voice-chip" :class="{ on: voiceMenuOpen }" @click.stop="voiceMenuOpen = !voiceMenuOpen">
+            <span class="voice-name">{{ voiceLabel }}</span>
+            <font-awesome-icon icon="fa-solid fa-chevron-down" class="voice-caret" />
+          </button>
+          <ul v-if="voiceMenuOpen" class="voice-menu">
+            <li v-for="v in voices" :key="v" :class="{ sel: v === voice }" @click="selectVoice(v)">
+              {{ labelOf(v) }}
+            </li>
+          </ul>
+        </div>
         <button class="ic" :class="{ on: showInfo }" :title="$t('realtime.title')" @click="showInfo = !showInfo">
           <font-awesome-icon icon="fa-solid fa-circle-info" />
         </button>
@@ -14,6 +25,9 @@
         </button>
       </div>
     </header>
+
+    <!-- tap-away closer for the voice menu -->
+    <div v-if="voiceMenuOpen" class="voice-backdrop" @click="voiceMenuOpen = false"></div>
 
     <!-- stage: the audio-reactive orb -->
     <main class="rtc-stage">
@@ -65,8 +79,10 @@
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
-import { REALTIME_DEFAULT_MODEL } from '@/constants';
+import { REALTIME_DEFAULT_MODEL, REALTIME_DEFAULT_VOICE, REALTIME_VOICES } from '@/constants';
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from '@/router/constants';
+
+const VOICE_STORAGE_KEY = 'nexior.realtime.voice';
 
 export default defineComponent({
   name: 'RealtimeCall',
@@ -87,7 +103,10 @@ export default defineComponent({
       level: 0,
       muted: false,
       captionsOn: false,
-      showInfo: false
+      showInfo: false,
+      voice: REALTIME_DEFAULT_VOICE as string,
+      voices: [...REALTIME_VOICES] as string[],
+      voiceMenuOpen: false
     };
   },
   computed: {
@@ -124,9 +143,18 @@ export default defineComponent({
       if (this.provisioning || this.connecting) return this.$t('realtime.status.connecting');
       if (this.running) return this.aiSpeaking ? this.$t('realtime.speaking') : this.$t('realtime.listening');
       return this.$t('realtime.start');
+    },
+    voiceLabel(): string {
+      return this.labelOf(this.voice);
     }
   },
   async mounted() {
+    try {
+      const saved = localStorage.getItem(VOICE_STORAGE_KEY);
+      if (saved && this.voices.includes(saved)) this.voice = saved;
+    } catch {
+      // localStorage may be unavailable; fall back to the default voice
+    }
     this.provisioning = true;
     try {
       await this.$store.dispatch('realtime/init');
@@ -146,33 +174,41 @@ export default defineComponent({
       this.userText = '';
       this.aiText = '';
       this.connecting = true;
-      this.client = new RealtimeClient(this.token, REALTIME_DEFAULT_MODEL, {
-        onStatus: (s: RealtimeStatus) => {
-          this.status = s;
-          this.running = s === 'connecting' || s === 'connected';
-          if (s === 'connected' || s === 'disconnected' || s === 'error') this.connecting = false;
-          if (!this.running) this.level = 0;
+      this.client = new RealtimeClient(
+        this.token,
+        REALTIME_DEFAULT_MODEL,
+        {
+          onStatus: (s: RealtimeStatus) => {
+            this.status = s;
+            this.running = s === 'connecting' || s === 'connected';
+            if (s === 'connected' || s === 'disconnected' || s === 'error') this.connecting = false;
+            if (!this.running) this.level = 0;
+          },
+          onUserSpeechStarted: () => {
+            this.aiSpeaking = false;
+            // Any prior transient error is stale once a new turn begins.
+            this.errorMsg = '';
+          },
+          onUserTranscript: (t: string) => {
+            this.userText = t;
+          },
+          onAiResponseStart: () => {
+            this.aiText = '';
+            this.aiSpeaking = true;
+            this.errorMsg = '';
+          },
+          onAiTranscriptDelta: (d: string) => {
+            this.aiText += d;
+          },
+          onAudioLevel: (lvl: number) => {
+            this.level = lvl;
+          },
+          onError: (m: string) => {
+            this.errorMsg = m;
+          }
         },
-        onUserSpeechStarted: () => {
-          this.aiSpeaking = false;
-        },
-        onUserTranscript: (t: string) => {
-          this.userText = t;
-        },
-        onAiResponseStart: () => {
-          this.aiText = '';
-          this.aiSpeaking = true;
-        },
-        onAiTranscriptDelta: (d: string) => {
-          this.aiText += d;
-        },
-        onAudioLevel: (lvl: number) => {
-          this.level = lvl;
-        },
-        onError: (m: string) => {
-          this.errorMsg = m;
-        }
-      });
+        this.voice
+      );
       // a fresh call should honour the current mute state
       try {
         await this.client.start();
@@ -190,6 +226,21 @@ export default defineComponent({
     },
     toggleCaptions() {
       this.captionsOn = !this.captionsOn;
+    },
+    labelOf(v: string): string {
+      return v.charAt(0).toUpperCase() + v.slice(1);
+    },
+    selectVoice(v: string) {
+      this.voiceMenuOpen = false;
+      if (v === this.voice) return;
+      this.voice = v;
+      try {
+        localStorage.setItem(VOICE_STORAGE_KEY, v);
+      } catch {
+        // ignore persistence failure
+      }
+      // Apply live if a call is running; otherwise it's used on the next start.
+      this.client?.setVoice(v);
     },
     onOrbTap() {
       if (!this.running && !this.connecting) this.startCall();
@@ -273,6 +324,74 @@ export default defineComponent({
   }
 }
 
+/* ---------- voice picker ---------- */
+.voice-pick {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.voice-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 18px;
+  background: var(--chip);
+  color: var(--chip-fg);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+  .voice-caret {
+    font-size: 11px;
+    opacity: 0.7;
+  }
+  &.on,
+  &:hover {
+    color: #2f86f6;
+  }
+}
+.voice-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10;
+  min-width: 132px;
+  max-height: 240px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--chip);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  li {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--fg);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    &:hover {
+      background: var(--chip);
+    }
+    &.sel {
+      color: #2f86f6;
+      font-weight: 600;
+    }
+  }
+}
+.voice-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
 /* ---------- stage / orb ---------- */
 .rtc-stage {
   flex: 1;
@@ -317,6 +436,9 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   animation: breathe 6.5s ease-in-out infinite;
+  // The orb's circular clip below drops its own outer glow; re-add it here on
+  // the (unclipped) wrapper as a drop-shadow that follows the round shape.
+  filter: drop-shadow(0 18px 34px rgba(47, 134, 246, 0.4));
   &.paused {
     animation-duration: 9s;
   }
@@ -336,6 +458,12 @@ export default defineComponent({
   height: 100%;
   border-radius: 50%;
   overflow: hidden;
+  // Safari/WebKit drops `overflow:hidden`+`border-radius` clipping for
+  // `mix-blend-mode` children on a composited (transform/will-change) layer —
+  // the corner clouds (c1/c2) then leak past the circle as square corners.
+  // `clip-path` clips every descendant reliably; `isolation` keeps the blend.
+  clip-path: circle(50%);
+  isolation: isolate;
   background: radial-gradient(120% 120% at 34% 24%, #ffffff 0%, #eaf4ff 16%, #c2deff 40%, #79b3ff 70%, #2f86f6 100%);
   box-shadow:
     0 20px 55px rgba(47, 134, 246, 0.4),
