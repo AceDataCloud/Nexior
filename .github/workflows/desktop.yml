@@ -1,0 +1,189 @@
+name: Desktop
+
+# Build, E2E-smoke, sign/notarize, and publish the Nexior desktop client
+# (Windows + macOS) to Tencent Cloud COS so electron-updater can pick it up.
+#
+# Publishing is gated behind the `desktop-release` GitHub Environment — add
+# required reviewers (admins) to it in repo Settings → Environments so a human
+# must approve before any signed artifact is pushed to the live update feed.
+#
+# Triggers:
+#   - pull_request touching desktop code → E2E smoke only (no publish)
+#   - workflow_dispatch → choose channel (latest/beta), runs full publish
+#   - push tag `desktop-v*` → publish to `latest`
+#
+# Required repo secrets:
+#   TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY   COS upload
+#   VITE_STRIPE_PUBLISHABLE_KEY                          renderer build
+#   WIN_CSC_LINK / WIN_CSC_KEY_PASSWORD                  Windows code signing (.pfx base64)
+#   MAC_CSC_LINK / MAC_CSC_KEY_PASSWORD                  macOS Developer ID (.p12 base64)
+#   APPLE_ID / APPLE_APP_SPECIFIC_PASSWORD / APPLE_TEAM_ID   macOS notarization
+
+on:
+  pull_request:
+    paths:
+      - 'electron/**'
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'electron-builder.yml'
+      - 'playwright.config.ts'
+      - 'e2e/**'
+      - '.github/workflows/desktop.yml'
+  push:
+    tags:
+      - 'desktop-v*'
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: 'Release channel (latest = stable, beta = pre-release).'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - latest
+          - beta
+      dry_run:
+        description: 'Build + sign but skip the COS upload.'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+  # --------------------------------------------------------------------------
+  # E2E smoke — runs on every PR and before any publish. Boots the real Electron
+  # app over app://bundle and asserts the SPA is served (no white screen).
+  # --------------------------------------------------------------------------
+  e2e:
+    name: E2E smoke (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Build renderer (desktop surface)
+        env:
+          VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
+        run: npm run build:electron
+      - name: Compile main process + stage renderer
+        run: |
+          npm run compile:electron
+          node scripts/copy-renderer.js
+      - name: Run Electron E2E smoke (xvfb)
+        run: xvfb-run --auto-servernum npm run test:e2e:desktop
+
+  # --------------------------------------------------------------------------
+  # Resolve the channel once: tag/dispatch → input or 'latest'; PR → no publish.
+  # --------------------------------------------------------------------------
+  setup:
+    name: Resolve channel
+    runs-on: ubuntu-latest
+    if: github.event_name != 'pull_request'
+    outputs:
+      channel: ${{ steps.c.outputs.channel }}
+    steps:
+      - id: c
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "channel=${{ inputs.channel }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "channel=latest" >> "$GITHUB_OUTPUT"   # tag push → stable
+          fi
+
+  build:
+    name: Build & publish (${{ matrix.os }})
+    needs: [e2e, setup]
+    # The admin-approval gate. Configure required reviewers on this Environment.
+    environment: desktop-release
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+          - os: macos-14
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+
+      - name: Package, sign & notarize
+        shell: bash
+        env:
+          ELECTRON_BUILDER_CHANNEL: ${{ needs.setup.outputs.channel }}
+          VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
+          # Windows signing
+          WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+          WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+          # macOS signing + notarization
+          MAC_CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
+          MAC_CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          set -euo pipefail
+          # Map per-OS signing secrets onto the env vars electron-builder reads.
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            export CSC_LINK="$WIN_CSC_LINK"
+            export CSC_KEY_PASSWORD="$WIN_CSC_KEY_PASSWORD"
+          else
+            export CSC_LINK="$MAC_CSC_LINK"
+            export CSC_KEY_PASSWORD="$MAC_CSC_KEY_PASSWORD"
+            # Fail loudly if notarization creds are incomplete — otherwise
+            # electron-builder signs but SILENTLY skips notarization and
+            # Gatekeeper blocks the app on user machines.
+            if [ -z "$APPLE_ID" ] || [ -z "$APPLE_APP_SPECIFIC_PASSWORD" ] || [ -z "$APPLE_TEAM_ID" ]; then
+              echo "::error::macOS notarization secrets incomplete (APPLE_ID / APPLE_APP_SPECIFIC_PASSWORD / APPLE_TEAM_ID)"
+              exit 1
+            fi
+          fi
+          npm run build:electron
+          npm run compile:electron
+          node scripts/copy-renderer.js
+          npx electron-builder --config.channel="$ELECTRON_BUILDER_CHANNEL" --publish never
+
+      - name: Verify macOS notarization (stapled)
+        if: runner.os == 'macOS'
+        run: |
+          set -euo pipefail
+          APP=$(find release/mac* -maxdepth 1 -name '*.app' | head -n1 || true)
+          if [ -n "$APP" ]; then
+            echo "Validating $APP"
+            xcrun stapler validate "$APP" || { echo "::error::stapler validate failed — app is not notarized"; exit 1; }
+          fi
+
+      - name: Upload installers as workflow artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: nexior-desktop-${{ matrix.os }}
+          path: |
+            release/*.exe
+            release/*.dmg
+            release/*.zip
+            release/*.blockmap
+            release/*.yml
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Publish to COS
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.dry_run }}
+        shell: bash
+        env:
+          TENCENT_CLOUD_SECRET_ID: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+        run: |
+          python3 -m pip install --quiet cos-python-sdk-v5
+          python3 scripts/publish_desktop_release.py --dist release

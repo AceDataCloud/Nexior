@@ -30,10 +30,11 @@ protocols:
 win:
   target:
     - nsis
-  # OV cert via thumbprint uses the documented `certificateSha1` key. For EV /
-  # Azure Trusted Signing, certificateSha1 does NOT work — supply a custom
-  # `sign` hook instead (see CI).
-  certificateSha1: ${env.WIN_CERT_SHA1}
+  # Signing is driven by the standard electron-builder env vars in CI:
+  #   CSC_LINK            base64 of the OV/EV code-signing .pfx
+  #   CSC_KEY_PASSWORD    its password
+  # (No cert config here — electron-builder picks up CSC_* automatically. For
+  # Azure Trusted Signing instead, add a custom `sign` hook.)
 
 nsis:
   oneClick: false

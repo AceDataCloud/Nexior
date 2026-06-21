@@ -1,8 +1,10 @@
+/// <reference types="vitest/config" />
 import { type ConfigEnv, defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
 import * as path from 'path';
 import { createRequire } from 'module';
+import { configDefaults } from 'vitest/config';
 
 const pkg = createRequire(import.meta.url)('./package.json') as { version: string };
 
@@ -78,6 +80,11 @@ export default defineConfig((config: ConfigEnv) => {
     // can be clobbered.
     define: {
       __APP_VERSION__: JSON.stringify(pkg.version)
+    },
+    // Keep the Playwright Electron E2E specs (e2e/) out of the vitest run —
+    // they use @playwright/test, not vitest, and are driven by `playwright test`.
+    test: {
+      exclude: [...configDefaults.exclude, 'e2e/**']
     },
     // vite-ssg: only used by `npm run build:ssg`. Plain `npm run build` ignores
     // this and produces today's SPA. Pre-renders are served behind features=ssr.
