@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 08:19:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 08:55:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.3
+
+Sun, 21 Jun 2026 08:55:00 GMT
+
+### Patches
+
+- fix(realtime): voice via WS connect param; move picker off wallet; safe reconnect (dev@acedata.cloud)
 
 ## 3.283.2
 
