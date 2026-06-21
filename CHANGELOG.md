@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 07:04:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 07:12:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.0
+
+Sun, 21 Jun 2026 07:12:47 GMT
+
+### Minor changes
+
+- feat(desktop): Electron shell (main process, custom-scheme SPA, auto-updater, packaging) (cqc@cuiqingcai.com)
 
 ## 3.282.3
 
