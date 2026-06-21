@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 07:12:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 07:25:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.1
+
+Sun, 21 Jun 2026 07:25:42 GMT
+
+### Patches
+
+- ci(desktop): build/sign/notarize/publish pipeline + Electron E2E smoke (cqc@cuiqingcai.com)
 
 ## 3.283.0
 
