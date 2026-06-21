@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 14:40:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 14:53:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.11
+
+Sun, 21 Jun 2026 14:53:48 GMT
+
+### Patches
+
+- fix(desktop): separate x64 + arm64 macOS DMGs (cqc@cuiqingcai.com)
 
 ## 3.283.10
 
