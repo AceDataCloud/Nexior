@@ -35,6 +35,11 @@ declare module '*.vue' {
 declare module 'cordova-plugin-purchase';
 declare const CdvPurchase: any;
 
+// Injected by vite.config `define` for all surfaces (web/android/ios/desktop).
+// Holds the package.json version; used for the telemetry release tag and the
+// desktop version gate.
+declare const __APP_VERSION__: string;
+
 // declare namespace Intl {
 //   function getCanonicalLocales(locales: string | string[] | undefined): string[];
 // }

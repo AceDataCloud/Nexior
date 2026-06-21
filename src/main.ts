@@ -95,7 +95,10 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
 
   void initTelemetry({
     uin: store.getters.user?.id,
-    release: import.meta.env.VITE_APP_VERSION as string | undefined
+    // __APP_VERSION__ is injected by vite.config `define` for all surfaces.
+    // (Previously this read import.meta.env.VITE_APP_VERSION, which was never
+    // defined anywhere → the telemetry release tag was always undefined.)
+    release: typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : undefined
   });
 
   initializeCurrency();

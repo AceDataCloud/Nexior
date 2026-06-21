@@ -1,7 +1,7 @@
 import { ISite } from '@/models';
 import { v4 as uuid } from 'uuid';
-import { BASE_HOST_HUB } from '@/constants';
-import { isNative } from './surface';
+import { BASE_HOST_HUB } from '@/constants/endpoint';
+import { isNative, isDesktop } from './surface';
 
 /**
  * Resolve the origin we send to PlatformBackend's
@@ -34,9 +34,11 @@ export const getSiteOrigin = (site?: ISite) => {
     return site.origin;
   }
   // On native shells (Capacitor on Android / iOS) window.location.host
-  // is "localhost" and useless; fall back to studio's bare host so the
-  // app boots against the canonical first-party Site row.
-  if (isNative()) {
+  // is "localhost" and useless; on desktop (Electron) it is the custom
+  // scheme authority "bundle" (app://bundle) which is equally useless.
+  // Both fall back to studio's bare host so the app boots against the
+  // canonical first-party Site row.
+  if (isNative() || isDesktop()) {
     return STUDIO_HOST;
   }
   if (typeof window === 'undefined' || !window.location?.host) {

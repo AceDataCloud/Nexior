@@ -1,10 +1,15 @@
-import { SURFACE_ANDROID, SURFACE_IOS, SURFACE_WEB } from '@/constants/surface';
+import { SURFACE_ANDROID, SURFACE_IOS, SURFACE_WEB, SURFACE_DESKTOP } from '@/constants/surface';
 
-type Surface = typeof SURFACE_WEB | typeof SURFACE_ANDROID | typeof SURFACE_IOS;
+type Surface = typeof SURFACE_WEB | typeof SURFACE_ANDROID | typeof SURFACE_IOS | typeof SURFACE_DESKTOP;
 
 export function getSurface(): Surface {
   const value = (import.meta.env.VITE_SURFACE as string | undefined) ?? SURFACE_WEB;
-  return value === SURFACE_IOS || value === SURFACE_ANDROID ? value : SURFACE_WEB;
+  // NOTE: previously any unknown value silently coerced to 'web'. We now
+  // recognize 'desktop' explicitly; everything else still falls back to web.
+  if (value === SURFACE_IOS || value === SURFACE_ANDROID || value === SURFACE_DESKTOP) {
+    return value;
+  }
+  return SURFACE_WEB;
 }
 
 export function isIOS(): boolean {
@@ -15,6 +20,12 @@ export function isAndroid(): boolean {
   return getSurface() === SURFACE_ANDROID;
 }
 
+export function isDesktop(): boolean {
+  return getSurface() === SURFACE_DESKTOP;
+}
+
+// UNCHANGED MEANING: native === "Capacitor mobile shell" (iOS or Android).
+// Desktop is deliberately NOT native — it must not hit IAP/push/Capacitor-OTA.
 export function isNative(): boolean {
   const surface = getSurface();
   return surface === SURFACE_IOS || surface === SURFACE_ANDROID;
@@ -36,5 +47,11 @@ export function isMobile(): boolean {
 export function getPaymentSurface(): 'pc' | 'wap' | 'ios' | 'android' {
   if (isIOS()) return 'ios';
   if (isAndroid()) return 'android';
+  // Desktop: explicit. Electron's UA is desktop-Chromium so without this it
+  // would fall through to 'pc' anyway, but pin it so the intent is clear and
+  // a future UA-sniff change can't accidentally hand desktop a 'wap' Page.
+  // 'pc' is the right backend surface (AliPay Page / Stripe web); the redirect
+  // itself must be opened in the system browser (handled in the Electron shell).
+  if (isDesktop()) return 'pc';
   return isMobile() ? 'wap' : 'pc';
 }
