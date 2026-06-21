@@ -17,7 +17,7 @@
     "build:ios": "cross-env VITE_SURFACE=ios vite build",
     "pack:android": "npm run build:android && npx cap copy android",
     "pack:ios": "npm run build:ios && npx cap copy ios",
-    "build:electron": "cross-env VITE_SURFACE=desktop vue-tsc -b && vite build",
+    "build:electron": "cross-env VITE_SURFACE=desktop vue-tsc -b && cross-env VITE_SURFACE=desktop vite build",
     "compile:electron": "tsc -p electron/tsconfig.json",
     "pack:electron": "npm run build:electron && npm run compile:electron && node scripts/copy-renderer.js && electron-builder",
     "start:electron": "npm run compile:electron && node scripts/copy-renderer.js && electron electron/dist/main.js",
