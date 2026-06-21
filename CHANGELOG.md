@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 12:59:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 13:34:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.7
+
+Sun, 21 Jun 2026 13:34:30 GMT
+
+### Patches
+
+- feat(desktop): distinguish Windows vs macOS at runtime (isWindows/isMacOS, per-OS version gate) (cqc@cuiqingcai.com)
 
 ## 3.283.6
 
