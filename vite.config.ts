@@ -2,6 +2,9 @@ import { type ConfigEnv, defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import replace from '@rollup/plugin-replace';
 import * as path from 'path';
+import { createRequire } from 'module';
+
+const pkg = createRequire(import.meta.url)('./package.json') as { version: string };
 
 const normalizeModuleId = (id: string) => id.replace(/\\/g, '/');
 
@@ -69,6 +72,13 @@ export default defineConfig((config: ConfigEnv) => {
         preventAssignment: true
       })
     ],
+    // Inject the package version as a plain global for ALL surfaces. Read via
+    // `__APP_VERSION__` (telemetry release tag + desktop version gate). Do NOT
+    // define onto import.meta.env.* — Vite manages that namespace and the key
+    // can be clobbered.
+    define: {
+      __APP_VERSION__: JSON.stringify(pkg.version)
+    },
     // vite-ssg: only used by `npm run build:ssg`. Plain `npm run build` ignores
     // this and produces today's SPA. Pre-renders are served behind features=ssr.
     ssgOptions: {
@@ -90,6 +100,9 @@ export default defineConfig((config: ConfigEnv) => {
       }
     },
     build: {
+      // Desktop (Electron) builds go to a dedicated outDir so they never share
+      // or overwrite the web `dist/` (each surface owns its own output).
+      outDir: process.env.VITE_SURFACE === 'desktop' ? 'dist-electron' : 'dist',
       // Computing gzip size for ~10 MB of chunks blows past the 2 GB V8
       // heap on Cloudflare Workers Builds. The report is stdout-only,
       // so disabling it costs nothing functional and shaves ~15 s off
