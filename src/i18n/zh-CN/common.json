@@ -223,6 +223,10 @@
     "message": "通过 Apple 登录失败，请重试或使用其他登录方式。",
     "description": "当原生“通过 Apple 登录”因用户取消以外的原因失败时显示的错误提示。"
   },
+  "error.loginLinkExpired": {
+    "message": "登录链接已失效，请重新登录。",
+    "description": "桌面客户端 OAuth 回调因 state 校验失败/过期被丢弃时显示的错误提示。"
+  },
   "entity.operation": {
     "message": "操作",
     "description": "实体的操作"

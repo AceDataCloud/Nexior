@@ -14,7 +14,7 @@ import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
-import { getSurface, isNative } from '@/utils/surface';
+import { getSurface, isNative, isDesktop } from '@/utils/surface';
 import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
@@ -87,7 +87,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   await initializeToken();
   await Promise.all([initializeUser(), initializeSite(), initializeConfig()]);
 
-  if (isNative()) {
+  if (isNative() || isDesktop()) {
     const blocked = await runVersionGate();
     if (blocked) return;
   }
