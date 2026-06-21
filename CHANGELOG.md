@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 08:55:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 11:58:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.4
+
+Sun, 21 Jun 2026 11:58:26 GMT
+
+### Patches
+
+- fix(realtime): captions readable in light theme; voice chip never blank (dev@acedata.cloud)
 
 ## 3.283.3
 
