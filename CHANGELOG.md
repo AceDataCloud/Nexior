@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 21 Jun 2026 13:34:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 21 Jun 2026 13:38:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.8
+
+Sun, 21 Jun 2026 13:38:17 GMT
+
+### Patches
+
+- ci(desktop): auto-build installers on every merge; gate only publish (cqc@cuiqingcai.com)
 
 ## 3.283.7
 
