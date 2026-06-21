@@ -24,6 +24,29 @@ export function isDesktop(): boolean {
   return getSurface() === SURFACE_DESKTOP;
 }
 
+/**
+ * The desktop OS, distinguished at RUNTIME via the Electron preload bridge
+ * (`window.desktop.platform` = process.platform). The renderer bundle is
+ * identical for Windows and macOS — they share one `VITE_SURFACE=desktop`
+ * build — so the OS is a runtime property, not a build surface. Used for the
+ * per-OS version gate, download links, and update feed selection.
+ * Returns undefined off-desktop (web/native).
+ */
+export function getDesktopOS(): 'windows' | 'mac' | undefined {
+  const platform = typeof window !== 'undefined' ? window.desktop?.platform : undefined;
+  if (platform === 'win32') return 'windows';
+  if (platform === 'darwin') return 'mac';
+  return undefined;
+}
+
+export function isWindows(): boolean {
+  return getDesktopOS() === 'windows';
+}
+
+export function isMacOS(): boolean {
+  return getDesktopOS() === 'mac';
+}
+
 // UNCHANGED MEANING: native === "Capacitor mobile shell" (iOS or Android).
 // Desktop is deliberately NOT native — it must not hit IAP/push/Capacitor-OTA.
 export function isNative(): boolean {

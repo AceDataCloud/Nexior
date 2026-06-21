@@ -1,6 +1,17 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getSurface, isWeb, isIOS, isAndroid, isDesktop, isNative, getPaymentSurface } from './surface';
+import {
+  getSurface,
+  isWeb,
+  isIOS,
+  isAndroid,
+  isDesktop,
+  isNative,
+  getPaymentSurface,
+  getDesktopOS,
+  isWindows,
+  isMacOS
+} from './surface';
 
 /**
  * Surface resolution must keep `isNative()` meaning "Capacitor mobile" while
@@ -65,6 +76,33 @@ describe('surface', () => {
       expect(isWeb()).toBe(true);
       expect(isNative()).toBe(false);
       expect(isDesktop()).toBe(false);
+    });
+  });
+
+  describe('getDesktopOS (runtime, via window.desktop bridge)', () => {
+    afterEach(() => {
+      delete (window as unknown as { desktop?: unknown }).desktop;
+    });
+    const setPlatform = (platform?: string) => {
+      (window as unknown as { desktop?: { platform?: string } }).desktop = platform ? { platform } : undefined;
+    };
+
+    it('maps win32 → windows and darwin → mac', () => {
+      setPlatform('win32');
+      expect(getDesktopOS()).toBe('windows');
+      expect(isWindows()).toBe(true);
+      expect(isMacOS()).toBe(false);
+      setPlatform('darwin');
+      expect(getDesktopOS()).toBe('mac');
+      expect(isMacOS()).toBe(true);
+      expect(isWindows()).toBe(false);
+    });
+
+    it('is undefined off-desktop (no bridge)', () => {
+      setPlatform(undefined);
+      expect(getDesktopOS()).toBeUndefined();
+      expect(isWindows()).toBe(false);
+      expect(isMacOS()).toBe(false);
     });
   });
 

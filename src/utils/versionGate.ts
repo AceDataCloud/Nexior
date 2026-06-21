@@ -2,7 +2,7 @@ import { App as CapApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { ElMessageBox } from 'element-plus';
 import { appVersionOperator } from '@/operators/appVersion';
-import { isAndroid, isIOS, isNative, isDesktop } from '@/utils/surface';
+import { isAndroid, isIOS, isNative, isDesktop, getDesktopOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
 import { t, setI18nLanguage, getLocale } from '@/i18n';
 // `__APP_VERSION__` is declared globally in shims.d.ts (vite `define`).
@@ -148,9 +148,13 @@ async function runDesktopVersionGate(): Promise<boolean> {
     return false;
   }
 
+  // Gate per OS so Windows and macOS can be force-upgraded independently
+  // (their installers + update feeds are separate). Falls back to 'desktop'
+  // if the OS can't be resolved (bridge missing).
+  const platform = getDesktopOS() ?? 'desktop';
   let meta;
   try {
-    const { data } = await appVersionOperator.get('nexior', 'desktop');
+    const { data } = await appVersionOperator.get('nexior', platform);
     meta = data;
   } catch (err) {
     console.warn('[versionGate] desktop fetch failed, skipping', err);
