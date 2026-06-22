@@ -24,7 +24,7 @@
             <el-switch
               :model-value="task.state === 'enabled'"
               size="small"
-              @change="(v: boolean) => toggleState(task, v)"
+              @change="(v: string | number | boolean) => toggleState(task, v === true)"
             />
             <el-button size="small" text @click="openEdit(task)">
               <font-awesome-icon icon="fa-solid fa-pen" />
