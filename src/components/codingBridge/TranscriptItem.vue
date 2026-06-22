@@ -60,7 +60,7 @@
       v-else-if="event.kind === 'thinking'"
       class="whitespace-pre-wrap break-words italic text-[var(--app-text-subtle)] border-l-2 border-[var(--app-border-subtle)] pl-3"
     >
-      {{ event.text }}
+      {{ thinkingText }}
     </div>
 
     <!-- Tool use -->
@@ -217,7 +217,9 @@ export default defineComponent({
       for (const key of ['command', 'cmd', 'script']) {
         const value = input[key];
         if (typeof value === 'string' && value.trim()) {
-          return value;
+          // Shell commands / heredocs can be huge; cap like other tool content so
+          // a big script can't recreate the OOM the window+caps are guarding.
+          return capForRender(value, MAX_INPUT_CHARS);
         }
       }
       return '';
@@ -291,6 +293,11 @@ export default defineComponent({
       } catch {
         return capForRender(String(input), MAX_INPUT_CHARS);
       }
+    },
+    // Extended-thinking blocks are agent-generated and can be very long; cap them
+    // too (plain text, but unbounded otherwise).
+    thinkingText(): string {
+      return capForRender(this.event.text || '', MAX_TEXT_CHARS);
     },
     resultText(): string {
       const content = this.event.content;
