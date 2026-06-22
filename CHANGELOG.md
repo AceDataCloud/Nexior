@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 22 Jun 2026 08:36:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 22 Jun 2026 15:01:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.14
+
+Mon, 22 Jun 2026 15:01:51 GMT
+
+### Patches
+
+- fix(coding-bridge): window transcript + cap per-item content to stop mobile Safari OOM on large conversations (dev@acedata.cloud)
 
 ## 3.283.13
 
