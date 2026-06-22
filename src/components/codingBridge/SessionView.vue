@@ -106,8 +106,18 @@
         <div v-else-if="!events.length" class="m-auto text-center text-sm text-[var(--app-text-subtle)]">
           {{ $t('codingBridge.session.startHint') }}
         </div>
+        <button
+          v-if="hiddenEventCount > 0"
+          type="button"
+          class="cb-load-earlier mx-auto mb-1 flex items-center gap-1.5 rounded-full border border-[var(--app-border-subtle)] bg-[var(--app-content-bg)] px-3 py-1 text-xs text-[var(--app-text-subtle)] hover:text-[var(--el-color-primary)]"
+          :title="`+${hiddenEventCount}`"
+          @click="loadEarlier"
+        >
+          <font-awesome-icon icon="fa-solid fa-arrow-up" />
+          {{ hiddenEventCount }}
+        </button>
         <transcript-item
-          v-for="event in events"
+          v-for="event in visibleEvents"
           :key="event.id"
           :event="event"
           :editable="canEdit"
@@ -504,6 +514,14 @@ import openaiIcon from '@/assets/images/logos/openai.svg';
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
 const MAX_ATTACHMENTS = 10;
 
+// Render only a window of the most recent events so a long coding-agent
+// transcript can't put thousands of markdown/highlight DOM subtrees on the page
+// at once (mobile Safari OOM-kills the tab past its ~2GB limit). Older turns
+// load in pages via the "earlier" control. Paired with per-item content caps in
+// TranscriptItem, this bounds rendered memory regardless of conversation size.
+const RENDER_WINDOW = 60;
+const RENDER_PAGE = 60;
+
 // Brand marks for each coding backend. `invertOnDark` flips the black OpenAI
 // glyph to white in dark mode; Claude's orange already reads on both themes.
 const PROVIDER_BRANDS: Record<string, { src: string; invertOnDark: boolean }> = {
@@ -554,7 +572,10 @@ export default defineComponent({
       restoreCode: false,
       attachmentFileList: [] as UploadFiles,
       uploadUrl: getBaseUrlPlatform() + '/api/v1/files/',
-      maxAttachments: MAX_ATTACHMENTS
+      maxAttachments: MAX_ATTACHMENTS,
+      // How many of the most recent events to render; grows by RENDER_PAGE when
+      // the user loads earlier turns. Reset on session switch.
+      visibleCount: RENDER_WINDOW
     };
   },
   computed: {
@@ -587,6 +608,15 @@ export default defineComponent({
     events(): ICodingBridgeEvent[] {
       const id = this.currentSessionId;
       return id ? (this.$store.state.codingBridge?.events?.[id] ?? []) : [];
+    },
+    // Only the most recent `visibleCount` events are rendered; the rest stay
+    // behind the "load earlier" control so a huge transcript never mounts at once.
+    visibleEvents(): ICodingBridgeEvent[] {
+      const all = this.events;
+      return all.length > this.visibleCount ? all.slice(-this.visibleCount) : all;
+    },
+    hiddenEventCount(): number {
+      return Math.max(0, this.events.length - this.visibleCount);
     },
     // A history transcript is being fetched (restore / drawer open). Drives the
     // transcript skeleton; the `!events.length` guard keeps a live resync silent.
@@ -843,6 +873,8 @@ export default defineComponent({
     },
     currentSessionId() {
       this.scrollToBottom();
+      // A different conversation starts capped to the most recent window again.
+      this.visibleCount = RENDER_WINDOW;
       // Switching conversations cancels any in-progress edit.
       this.editingEventId = '';
       this.restoreCode = false;
@@ -1261,6 +1293,17 @@ export default defineComponent({
         const el = this.$refs.transcript as HTMLElement | undefined;
         if (el) {
           el.scrollTop = el.scrollHeight;
+        }
+      });
+    },
+    // Reveal an older page of the transcript, keeping the current scroll anchor.
+    loadEarlier() {
+      const el = this.$refs.transcript as HTMLElement | undefined;
+      const prevHeight = el?.scrollHeight ?? 0;
+      this.visibleCount += RENDER_PAGE;
+      this.$nextTick(() => {
+        if (el) {
+          el.scrollTop = el.scrollHeight - prevHeight + el.scrollTop;
         }
       });
     }
