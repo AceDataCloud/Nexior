@@ -1177,6 +1177,10 @@ export default defineComponent({
     width: 100%;
     max-width: 800px;
     margin: 0 auto 8px;
+    // A little vertical breathing room so the icons aren't squished between
+    // the message above and the composer below; 12px inset lines them up with
+    // the composer's + button (left:12px) rather than the card's outer edge.
+    padding: 4px 12px;
     display: flex;
     justify-content: flex-start;
     &:empty {
@@ -1241,6 +1245,11 @@ export default defineComponent({
 
   .dialogue.empty .starter {
     top: 55%;
+  }
+
+  // Match the composer's mobile left control inset (.tools left:10px).
+  .dialogue .composer-connectors {
+    padding: 4px 10px;
   }
 }
 </style>
