@@ -43,6 +43,7 @@
           />
         </div>
         <div class="starter">
+          <div class="composer-connectors"><connector-strip /></div>
           <composer
             v-model:question="question"
             :answering="answering"
@@ -52,11 +53,7 @@
             @submit="onSubmit"
             @stop="onStop"
           />
-          <div class="composer-footer">
-            <div class="footer-connectors"><connector-strip /></div>
-            <disclaimer class="disclaimer" />
-            <span class="footer-spacer" aria-hidden="true"></span>
-          </div>
+          <disclaimer class="composer-disclaimer" />
         </div>
       </div>
     </template>
@@ -1171,33 +1168,28 @@ export default defineComponent({
   height: 100%;
   overflow-y: auto;
   position: relative;
-  // Footer row below the composer: enabled-connector icons hug the left while
-  // the disclaimer stays centered in the column. Equal flex:1 side columns
-  // (icons left + an empty mirror spacer right) keep the disclaimer balanced
-  // regardless of how many icons render (or none).
-  .composer-footer {
+  // Enabled-connector icons sit left-aligned directly above the composer input;
+  // :empty drops the row when there are no connectors. The disclaimer is a
+  // single centered line below. Both share the composer's own box
+  // (max-width:800px; margin:auto) so they line up with the input edges rather
+  // than the wider .starter content box.
+  .composer-connectors {
     width: 100%;
     max-width: 800px;
-    margin: 8px auto;
+    margin: 0 auto 8px;
     display: flex;
-    align-items: center;
-    gap: 8px;
-    .footer-connectors,
-    .footer-spacer {
-      flex: 1 1 0;
-      min-width: 0;
+    justify-content: flex-start;
+    &:empty {
+      display: none;
     }
-    .footer-connectors {
-      display: flex;
-      justify-content: flex-start;
-    }
-    .disclaimer {
-      flex: 0 1 auto;
-      text-align: center;
-      font-size: 12px;
-      margin: 0;
-      color: var(--el-text-color-secondary);
-    }
+  }
+  .composer-disclaimer {
+    width: 100%;
+    max-width: 800px;
+    margin: 8px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--el-text-color-secondary);
   }
   &.empty {
     position: relative;

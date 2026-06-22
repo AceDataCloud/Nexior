@@ -91,7 +91,9 @@ export default defineComponent({
     display: block;
     position: fixed;
     left: 12px;
-    top: calc(48px + var(--app-safe-area-top));
+    // Vertically center the button within the 45px toolbar band so it lines up
+    // with the model selector (left) and the credits pill (right) on one row.
+    top: calc(var(--app-safe-area-top) + 6px);
     z-index: 2000;
     box-shadow: var(--app-shadow-md);
   }
