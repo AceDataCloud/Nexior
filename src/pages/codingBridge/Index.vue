@@ -39,33 +39,8 @@ export default defineComponent({
       drawer: false,
       pairVisible: false,
       historyVisible: false,
-      initialCode: '',
-      // A `?session=` is in the URL but its transcript hasn't been reattached
-      // yet; while true the URL writer must not strip the param it's restoring.
-      restorePending: false
+      initialCode: ''
     };
-  },
-  computed: {
-    currentSessionId(): string | undefined {
-      return this.$store.state.codingBridge?.currentSessionId;
-    },
-    currentNodeId(): string | undefined {
-      return this.$store.state.codingBridge?.currentNodeId;
-    },
-    currentProvider(): string | undefined {
-      const id = this.currentSessionId;
-      const fromSession = id ? this.$store.state.codingBridge?.sessions?.[id]?.provider : undefined;
-      return fromSession || this.$store.state.codingBridge?.historyRef?.provider;
-    },
-    // One key so a single watcher reacts to any part of the open conversation.
-    sessionUrlKey(): string {
-      return `${this.currentNodeId || ''}|${this.currentSessionId || ''}|${this.currentProvider || ''}`;
-    }
-  },
-  watch: {
-    sessionUrlKey() {
-      this.syncUrl();
-    }
   },
   mounted() {
     this.$store.dispatch('codingBridge/connect');
@@ -77,6 +52,7 @@ export default defineComponent({
     }
     this.restoreFromUrl();
     this.handleNotificationDeepLink();
+    this.cleanUrl();
   },
   beforeUnmount() {
     this.$store.dispatch('codingBridge/disconnect');
@@ -90,10 +66,12 @@ export default defineComponent({
       this.drawer = false;
       this.openPair();
     },
-    // Open the exact conversation named in `/coding-bridge?session=&node=&provider=`.
-    // We set the node + history pointer (not currentSession) and let the socket's
-    // onOpen → getHistory → history.snapshot handler reattach it (its guard needs
-    // currentSessionId empty). reattach then sets currentSession → syncUrl runs.
+    // Entry deep link (shared link / tapped notification) may name a conversation
+    // in `/coding-bridge?session=&node=&provider=`. Seed the node + history pointer
+    // from it; the socket's onOpen → getHistory → history.snapshot handler then
+    // reattaches it. The open conversation is NOT pinned back into the URL — it
+    // lives in the (persisted) store, so a plain refresh restores it without the
+    // param (see `cleanUrl`).
     restoreFromUrl() {
       const q = this.$route.query;
       const sessionId = typeof q.session === 'string' ? q.session : '';
@@ -102,41 +80,22 @@ export default defineComponent({
         return;
       }
       const provider = q.provider === 'codex' ? 'codex' : 'claude';
-      this.restorePending = true;
       this.$store.commit('codingBridge/setCurrentNode', nodeId);
       this.$store.commit('codingBridge/setHistoryRef', { node_id: nodeId, provider, session_id: sessionId });
       this.$store.dispatch('codingBridge/getHistory', nodeId);
       this.$store.dispatch('codingBridge/requestSessions', nodeId);
-      // Don't pin the param forever if the session can't be restored (deleted/offline).
-      setTimeout(() => (this.restorePending = false), 15000);
     },
-    // Mirror the open conversation into the URL so it's shareable and survives a
-    // reload / back button. `replace` (not push) avoids cluttering history.
-    syncUrl() {
-      const sessionId = this.currentSessionId;
-      const nodeId = this.currentNodeId;
-      if (sessionId) {
-        this.restorePending = false;
-      }
-      const query: Record<string, any> = { ...this.$route.query };
-      if (sessionId) {
-        query.session = sessionId;
-        if (nodeId) {
-          query.node = nodeId;
-        }
-        if (this.currentProvider) {
-          query.provider = this.currentProvider;
-        }
-      } else if (this.restorePending) {
-        return; // a cold restore is still resolving; keep the URL it's restoring
-      } else {
-        delete query.session;
-        delete query.provider;
-      }
-      const r = this.$route.query;
-      if (query.session === r.session && query.node === r.node && query.provider === r.provider) {
+    // Keep the address bar a clean `/coding-bridge`: once any entry deep-link
+    // params have been consumed above, strip them so the open conversation is
+    // never pinned to the URL. `replace` (not push) avoids a history entry.
+    cleanUrl() {
+      const q = this.$route.query;
+      const keys = ['session', 'node', 'provider', 'request', 'code'];
+      if (!keys.some((k) => k in q)) {
         return;
       }
+      const query: Record<string, any> = { ...q };
+      keys.forEach((k) => delete query[k]);
       this.$router.replace({ query }).catch(() => {});
     },
     // A tapped notification opens `/coding-bridge?node=&session=&request=`. When a

@@ -52,11 +52,7 @@
 
     <!-- Assistant text (markdown); a blinking caret trails while streaming. -->
     <div v-else-if="event.kind === 'text'" class="cb-stream-text" :class="{ 'is-streaming': event.streaming }">
-      <vue-markdown
-        v-highlight
-        :source="event.text || ''"
-        class="markdown-body bg-transparent text-[var(--app-text)]"
-      />
+      <vue-markdown v-highlight :source="renderedText" class="markdown-body bg-transparent text-[var(--app-text)]" />
     </div>
 
     <!-- Thinking -->
@@ -160,6 +156,13 @@ import { ICodingBridgeEvent } from '@/models';
 import { ASK_USER_QUESTION_TOOL } from './askUserQuestion';
 import 'highlight.js/styles/night-owl.css';
 
+// A streaming assistant message grows by many chunks per second. Re-rendering
+// the full markdown (parse + highlight.js over every code block) on each chunk
+// is O(n²) in message length and can peg mobile Safari's renderer until iOS
+// CPU-resource-kills the tab. Coalesce streaming updates to ~10fps; finalized
+// (non-streaming) text renders immediately so it never looks behind.
+const STREAM_RENDER_MS = 100;
+
 export default defineComponent({
   name: 'CodingBridgeTranscriptItem',
   directives: {
@@ -183,6 +186,13 @@ export default defineComponent({
     }
   },
   emits: ['edit'],
+  data() {
+    return {
+      // Throttled mirror of `event.text` actually fed to the markdown renderer.
+      renderedText: this.event.text || '',
+      streamTimer: 0
+    };
+  },
   computed: {
     commandText(): string {
       const input = this.event.input;
@@ -300,6 +310,46 @@ export default defineComponent({
         }
       }
       return this.event.text || '';
+    }
+  },
+  watch: {
+    'event.text'() {
+      this.scheduleRender();
+    },
+    'event.streaming'(streaming: boolean) {
+      // Stream ended — make sure the final, complete text is rendered.
+      if (!streaming) {
+        this.flushRender();
+      }
+    }
+  },
+  beforeUnmount() {
+    if (this.streamTimer) {
+      window.clearTimeout(this.streamTimer);
+    }
+  },
+  methods: {
+    // Coalesce rapid streaming chunks into ~10fps markdown renders; finalized
+    // (non-streaming) text renders immediately.
+    scheduleRender() {
+      if (!this.event.streaming) {
+        this.flushRender();
+        return;
+      }
+      if (this.streamTimer) {
+        return;
+      }
+      this.streamTimer = window.setTimeout(() => {
+        this.streamTimer = 0;
+        this.renderedText = this.event.text || '';
+      }, STREAM_RENDER_MS);
+    },
+    flushRender() {
+      if (this.streamTimer) {
+        window.clearTimeout(this.streamTimer);
+        this.streamTimer = 0;
+      }
+      this.renderedText = this.event.text || '';
     }
   }
 });
