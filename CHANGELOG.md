@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 22 Jun 2026 16:38:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 22 Jun 2026 18:14:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.284.0
+
+Mon, 22 Jun 2026 18:14:48 GMT
+
+### Minor changes
+
+- feat(chat): scheduled tasks management UI — create, monitor, and manage AI-powered scheduled tasks from the chat side panel (dev@acedata.cloud)
 
 ## 3.283.16
 
