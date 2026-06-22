@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 22 Jun 2026 15:01:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 22 Jun 2026 15:46:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.15
+
+Mon, 22 Jun 2026 15:46:38 GMT
+
+### Patches
+
+- fix(chat): align mobile menu button + move connector icons above the input (left-aligned) with a centered disclaimer below (dev@acedata.cloud)
 
 ## 3.283.14
 
