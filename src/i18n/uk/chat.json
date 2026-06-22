@@ -582,5 +582,107 @@
   "model.claudeOpus47Description": {
     "message": "Найсучасніша модель на сьогодні",
     "description": "Опис моделі Claude Opus 4.7"
+  },
+  "scheduledTasks.navTitle": {
+    "message": "Scheduled Tasks"
+  },
+  "scheduledTasks.title": {
+    "message": "Scheduled Tasks"
+  },
+  "scheduledTasks.create": {
+    "message": "New"
+  },
+  "scheduledTasks.edit": {
+    "message": "Edit Task"
+  },
+  "scheduledTasks.empty": {
+    "message": "No scheduled tasks yet. Click \"New\" to create one."
+  },
+  "scheduledTasks.noRuns": {
+    "message": "No runs yet"
+  },
+  "scheduledTasks.loadError": {
+    "message": "Failed to load"
+  },
+  "scheduledTasks.deleteConfirm": {
+    "message": "Delete \"{name}\"? The task will stop running."
+  },
+  "scheduledTasks.viewResult": {
+    "message": "View Result"
+  },
+  "scheduledTasks.jitterHint": {
+    "message": "±60s jitter"
+  },
+  "scheduledTasks.runCount": {
+    "message": "Ran {count} time(s)"
+  },
+  "scheduledTasks.state.enabled": {
+    "message": "Active"
+  },
+  "scheduledTasks.state.disabled": {
+    "message": "Paused"
+  },
+  "scheduledTasks.state.error": {
+    "message": "Error"
+  },
+  "scheduledTasks.run.queued": {
+    "message": "Queued"
+  },
+  "scheduledTasks.run.running": {
+    "message": "Running"
+  },
+  "scheduledTasks.run.success": {
+    "message": "Success"
+  },
+  "scheduledTasks.run.failed": {
+    "message": "Failed"
+  },
+  "scheduledTasks.run.needs_user_input": {
+    "message": "Needs action"
+  },
+  "scheduledTasks.scheduleType.daily": {
+    "message": "Daily"
+  },
+  "scheduledTasks.scheduleType.hourly": {
+    "message": "Hourly"
+  },
+  "scheduledTasks.scheduleType.weekly": {
+    "message": "Weekly"
+  },
+  "scheduledTasks.scheduleType.cron": {
+    "message": "Cron expression"
+  },
+  "scheduledTasks.form.name": {
+    "message": "Task name"
+  },
+  "scheduledTasks.form.namePlaceholder": {
+    "message": "e.g. Daily news summary"
+  },
+  "scheduledTasks.form.model": {
+    "message": "Model"
+  },
+  "scheduledTasks.form.prompt": {
+    "message": "Prompt"
+  },
+  "scheduledTasks.form.promptPlaceholder": {
+    "message": "Enter your scheduled question or instruction. Supports {{date}}, {{run_count}}, {{last_output}} variables."
+  },
+  "scheduledTasks.form.promptHint": {
+    "message": "Variables: {{date}} today, {{run_count}} run number, {{last_output}} last output snippet"
+  },
+  "scheduledTasks.form.schedule": {
+    "message": "Frequency"
+  },
+  "scheduledTasks.form.time": {
+    "message": "Time"
+  },
+  "scheduledTasks.form.weekday": {
+    "message": "Weekday"
+  },
+  "scheduledTasks.form.cron": {
+    "message": "Cron expression"
+  },
+  "scheduledTasks.form.required": {
+    "message": "Please fill in task name and prompt"
   }
 }
