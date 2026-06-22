@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 22 Jun 2026 15:46:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 22 Jun 2026 16:38:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.283.16
+
+Mon, 22 Jun 2026 16:38:27 GMT
+
+### Patches
+
+- fix(chat): inset connector icon strip so it aligns with the composer's + button instead of hugging the card edge (dev@acedata.cloud)
 
 ## 3.283.15
 
