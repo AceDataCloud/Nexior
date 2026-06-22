@@ -60,7 +60,7 @@
       v-else-if="event.kind === 'thinking'"
       class="whitespace-pre-wrap break-words italic text-[var(--app-text-subtle)] border-l-2 border-[var(--app-border-subtle)] pl-3"
     >
-      {{ event.text }}
+      {{ thinkingText }}
     </div>
 
     <!-- Tool use -->
@@ -116,7 +116,7 @@
       <pre
         class="m-0 max-h-72 overflow-auto whitespace-pre-wrap break-words px-2.5 py-2 font-mono text-xs"
         :class="event.is_error ? 'text-[var(--el-color-danger)]' : 'text-[var(--app-text-subtle)]'"
-        >{{ resultText }}</pre
+        >{{ resultDisplay }}</pre
       >
     </div>
 
@@ -163,6 +163,21 @@ import 'highlight.js/styles/night-owl.css';
 // (non-streaming) text renders immediately so it never looks behind.
 const STREAM_RENDER_MS = 100;
 
+// A coding-agent transcript can carry multi-MB tool output, file writes, or
+// messages. Rendering them in full (markdown + highlight + DOM) blows past
+// mobile Safari's ~2GB per-tab memory limit and the renderer is OOM-killed.
+// Cap what we render; the copy buttons still expose the full value.
+const MAX_TEXT_CHARS = 40000;
+const MAX_RESULT_CHARS = 12000;
+const MAX_INPUT_CHARS = 6000;
+const capForRender = (value: string, max: number): string => {
+  if (value.length <= max) {
+    return value;
+  }
+  const droppedKb = ((value.length - max) / 1024).toFixed(1);
+  return `${value.slice(0, max)}\n\n··· +${droppedKb} KB ···`;
+};
+
 export default defineComponent({
   name: 'CodingBridgeTranscriptItem',
   directives: {
@@ -188,8 +203,8 @@ export default defineComponent({
   emits: ['edit'],
   data() {
     return {
-      // Throttled mirror of `event.text` actually fed to the markdown renderer.
-      renderedText: this.event.text || '',
+      // Throttled, size-capped mirror of `event.text` fed to the markdown renderer.
+      renderedText: capForRender(this.event.text || '', MAX_TEXT_CHARS),
       streamTimer: 0
     };
   },
@@ -202,7 +217,9 @@ export default defineComponent({
       for (const key of ['command', 'cmd', 'script']) {
         const value = input[key];
         if (typeof value === 'string' && value.trim()) {
-          return value;
+          // Shell commands / heredocs can be huge; cap like other tool content so
+          // a big script can't recreate the OOM the window+caps are guarding.
+          return capForRender(value, MAX_INPUT_CHARS);
         }
       }
       return '';
@@ -272,14 +289,23 @@ export default defineComponent({
         return '';
       }
       try {
-        return JSON.stringify(filtered, null, 2);
+        return capForRender(JSON.stringify(filtered, null, 2), MAX_INPUT_CHARS);
       } catch {
-        return String(input);
+        return capForRender(String(input), MAX_INPUT_CHARS);
       }
+    },
+    // Extended-thinking blocks are agent-generated and can be very long; cap them
+    // too (plain text, but unbounded otherwise).
+    thinkingText(): string {
+      return capForRender(this.event.text || '', MAX_TEXT_CHARS);
     },
     resultText(): string {
       const content = this.event.content;
       return typeof content === 'string' && content.length > 0 ? content : '—';
+    },
+    // Capped for display; the copy button copies the full `resultText`.
+    resultDisplay(): string {
+      return capForRender(this.resultText, MAX_RESULT_CHARS);
     },
     resultLabel(): string {
       const parts: string[] = [];
@@ -341,7 +367,7 @@ export default defineComponent({
       }
       this.streamTimer = window.setTimeout(() => {
         this.streamTimer = 0;
-        this.renderedText = this.event.text || '';
+        this.renderedText = capForRender(this.event.text || '', MAX_TEXT_CHARS);
       }, STREAM_RENDER_MS);
     },
     flushRender() {
@@ -349,7 +375,7 @@ export default defineComponent({
         window.clearTimeout(this.streamTimer);
         this.streamTimer = 0;
       }
-      this.renderedText = this.event.text || '';
+      this.renderedText = capForRender(this.event.text || '', MAX_TEXT_CHARS);
     }
   }
 });
