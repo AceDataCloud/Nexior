@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 23 Jun 2026 19:41:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 23 Jun 2026 19:46:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.285.0
+
+Tue, 23 Jun 2026 19:46:32 GMT
+
+### Minor changes
+
+- Add Digital Human talking-head scenario (face + voice -> lip-synced video) (dev@acedata.cloud)
 
 ## 3.284.2
 
