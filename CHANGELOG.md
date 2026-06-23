@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 23 Jun 2026 19:46:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 23 Jun 2026 20:14:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.285.1
+
+Tue, 23 Jun 2026 20:14:36 GMT
+
+### Patches
+
+- fix(chat): scheduled-tasks form usability — prompt-first large textarea, normal input size, and model dropdown that lists every enabled chat service (grok, glm, kimi, …) (dev@acedata.cloud)
 
 ## 3.285.0
 
