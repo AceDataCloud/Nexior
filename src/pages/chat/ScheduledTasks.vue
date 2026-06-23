@@ -86,25 +86,23 @@
       width="540px"
       :close-on-click-modal="false"
     >
-      <el-form :model="form" label-width="100px" size="small">
-        <el-form-item :label="$t('chat.scheduledTasks.form.name')" required>
-          <el-input v-model="form.name" :placeholder="$t('chat.scheduledTasks.form.namePlaceholder')" />
-        </el-form-item>
-
-        <el-form-item :label="$t('chat.scheduledTasks.form.model')">
-          <el-select v-model="form.model" style="width: 100%">
-            <el-option v-for="m in availableModels" :key="m" :label="m" :value="m" />
-          </el-select>
-        </el-form-item>
-
+      <el-form :model="form" label-width="92px">
         <el-form-item :label="$t('chat.scheduledTasks.form.prompt')" required>
           <el-input
             v-model="form.question"
             type="textarea"
-            :rows="4"
+            :rows="6"
             :placeholder="$t('chat.scheduledTasks.form.promptPlaceholder')"
           />
           <div class="hint">{{ $t('chat.scheduledTasks.form.promptHint') }}</div>
+        </el-form-item>
+
+        <el-form-item :label="$t('chat.scheduledTasks.form.model')">
+          <el-select v-model="form.model" style="width: 100%" filterable>
+            <el-option-group v-for="g in modelGroups" :key="g.name" :label="g.getDisplayName()">
+              <el-option v-for="m in g.models" :key="m.name" :label="m.getDisplayName()" :value="m.name" />
+            </el-option-group>
+          </el-select>
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.schedule')">
@@ -159,6 +157,7 @@ import {
   ElInput,
   ElSelect,
   ElOption,
+  ElOptionGroup,
   ElRadioGroup,
   ElRadio,
   ElTimePicker,
@@ -166,18 +165,12 @@ import {
   ElMessageBox
 } from 'element-plus';
 import { scheduledTasksOperator, IScheduledTask, IScheduledRun, IScheduleSpec } from '@/operators/scheduledTasks';
-
-const COMMON_CHAT_MODELS = [
-  'gpt-4o', 'gpt-4o-mini', 'gpt-4.1', 'gpt-4.1-mini',
-  'claude-opus-4-8', 'claude-sonnet-4-6', 'claude-haiku-4-5-20251001',
-  'gemini-2.5-flash', 'gemini-2.5-pro',
-  'deepseek-v3', 'deepseek-r1',
-];
+import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
+import { IChatModelGroup } from '@/models';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
 
 interface TaskForm {
-  name: string;
   question: string;
   model: string;
   scheduleType: 'daily' | 'hourly' | 'weekly' | 'cron';
@@ -202,6 +195,7 @@ export default defineComponent({
     ElInput,
     ElSelect,
     ElOption,
+    ElOptionGroup,
     ElRadioGroup,
     ElRadio,
     ElTimePicker
@@ -217,7 +211,6 @@ export default defineComponent({
       showRunHistory: false,
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
-      availableModels: COMMON_CHAT_MODELS,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       form: this.emptyForm() as TaskForm
     };
@@ -225,6 +218,13 @@ export default defineComponent({
   computed: {
     token(): string | undefined {
       return this.$store.state.chat?.credential?.token;
+    },
+    // Models from site-enabled chat services, grouped by provider (mirrors nav gating).
+    modelGroups(): IChatModelGroup[] {
+      const features = (this.$store.state.site?.features ?? {}) as Record<string, { enabled?: boolean }>;
+      return CHAT_MODEL_GROUPS.filter((g) => features[g.name]?.enabled !== false)
+        .map((g) => ({ ...g, models: g.models.filter((m) => m.enabled !== false) }))
+        .filter((g) => g.models.length > 0);
     }
   },
   async mounted() {
@@ -233,14 +233,18 @@ export default defineComponent({
   methods: {
     emptyForm(): TaskForm {
       return {
-        name: '',
         question: '',
-        model: 'gpt-4o-mini',
+        model: CHAT_MODEL_NAME_GPT_5_4_MINI,
         scheduleType: 'daily',
         dailyTime: '09:00',
         weekday: 1,
         cronExpr: '0 9 * * *'
       };
+    },
+    // The task name is no longer a separate field — derive a short label from the prompt.
+    deriveName(question: string): string {
+      const firstLine = (question || '').trim().split('\n')[0].trim();
+      return firstLine.length > 40 ? `${firstLine.slice(0, 40)}…` : firstLine || 'Scheduled Task';
     },
     async loadTasks() {
       if (!this.token) return;
@@ -288,7 +292,6 @@ export default defineComponent({
         scheduleType = s.interval_seconds === 3600 ? 'hourly' : 'cron';
       }
       this.form = {
-        name: task.name,
         question: task.template.question,
         model: task.template.model,
         scheduleType,
@@ -314,14 +317,14 @@ export default defineComponent({
       return { type: 'cron', cron: cronExpr, tz: USER_TZ };
     },
     async saveTask() {
-      if (!this.form.name.trim() || !this.form.question.trim()) {
+      if (!this.form.question.trim()) {
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
         return;
       }
       this.saving = true;
       try {
         const payload = {
-          name: this.form.name,
+          name: this.deriveName(this.form.question),
           schedule: this.buildSchedule(),
           template: { model: this.form.model, question: this.form.question }
         };
