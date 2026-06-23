@@ -18,6 +18,7 @@ export * from './kling';
 export * from './veo';
 export * from './sora';
 export * from './maestro';
+export * from './digitalhuman';
 export * from './pixverse';
 export * from './flux';
 export * from './hailuo';

@@ -1,0 +1,57 @@
+<template>
+  <div class="main flex flex-row flex-1">
+    <div
+      class="config w-[320px] flex-none h-full overflow-y-auto bg-[var(--app-sidebar-bg)] border-r border-[var(--app-border-subtle)]"
+    >
+      <slot name="config" />
+    </div>
+    <div class="result h-full p-6 flex-1 flex flex-col min-w-0 overflow-x-hidden bg-[var(--app-content-bg)]">
+      <slot name="result" />
+    </div>
+    <el-button v-show="!tasksEmpty" circle class="menu" @click="drawer = true">
+      <font-awesome-icon icon="fa-solid fa-user" />
+    </el-button>
+    <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="350px">
+      <slot name="config" />
+    </el-drawer>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { ElDrawer, ElButton } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import taskDrawerMixin from '@/utils/taskDrawerMixin';
+
+export default defineComponent({
+  name: 'LayoutDigitalHuman',
+  components: {
+    ElDrawer,
+    ElButton,
+    FontAwesomeIcon
+  },
+  mixins: [taskDrawerMixin]
+});
+</script>
+
+<style lang="scss" scoped>
+.menu {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .config {
+    display: none;
+  }
+  .result {
+    width: 100%;
+  }
+  .menu {
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: calc(45px + var(--app-safe-area-top));
+    z-index: 1000;
+  }
+}
+</style>

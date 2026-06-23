@@ -113,6 +113,7 @@ const FEATURE_KEYS = [
   'seedance',
   'grokvideo',
   'maestro',
+  'digitalhuman',
   'wan',
   'producer',
   'kimi',

@@ -9,6 +9,7 @@ import { IKlingState } from '../kling/models';
 import { IVeoState } from '../veo/models';
 import { ISoraState } from '../sora/models';
 import { IMaestroState } from '../maestro/models';
+import { IDigitalHumanState } from '../digitalhuman/models';
 import { IPixverseState } from '../pixverse/models';
 import { IFluxState } from '../flux/models';
 import { IHailuoState } from '../hailuo/models';
@@ -66,6 +67,7 @@ export interface IAppState {
   veo: IVeoState;
   sora: ISoraState;
   maestro: IMaestroState;
+  digitalhuman: IDigitalHumanState;
   pixverse: IPixverseState;
   flux: IFluxState;
   hailuo: IHailuoState;

@@ -32,6 +32,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   veo: () => import('./veo'),
   sora: () => import('./sora'),
   maestro: () => import('./maestro'),
+  digitalhuman: () => import('./digitalhuman'),
   pixverse: () => import('./pixverse'),
   flux: () => import('./flux'),
   hailuo: () => import('./hailuo'),
