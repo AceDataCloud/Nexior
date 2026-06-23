@@ -19,6 +19,7 @@ import kling from './kling';
 import veo from './veo';
 import sora from './sora';
 import maestro from './maestro';
+import digitalhuman from './digitalhuman';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
@@ -59,6 +60,7 @@ import {
   ROUTE_VEO_INDEX,
   ROUTE_SORA_INDEX,
   ROUTE_MAESTRO_INDEX,
+  ROUTE_DIGITALHUMAN_INDEX,
   ROUTE_PIXVERSE_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_SERP_INDEX,
@@ -172,6 +174,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     description:
       'Turn any article or topic into a captioned short video — script, visuals, voiceover and music, fully automated.',
     keywords: ['Maestro', 'AI Video', 'Article to Video', 'Faceless Video', 'Short Video Generator'],
+    category: 'AI Video Generation'
+  },
+  'digital-human': {
+    title: 'Digital Human',
+    description:
+      'Generate a talking-head video from a face video or photo and a voice — clone a voice, drive it with text or audio, and lip-sync it.',
+    keywords: ['Digital Human', 'Talking Head', 'Lip Sync', 'AI Avatar', 'Voice Clone', 'Text to Video'],
     category: 'AI Video Generation'
   },
   veo: {
@@ -297,6 +306,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['veo', ROUTE_VEO_INDEX],
   ['sora', ROUTE_SORA_INDEX],
   ['maestro', ROUTE_MAESTRO_INDEX],
+  ['digitalhuman', ROUTE_DIGITALHUMAN_INDEX],
   ['kling', ROUTE_KLING_INDEX],
   ['luma', ROUTE_LUMA_INDEX],
   ['hailuo', ROUTE_HAILUO_INDEX],
@@ -344,6 +354,7 @@ export const routes = [
   veo,
   sora,
   maestro,
+  digitalhuman,
   pixverse,
   flux,
   hailuo,

@@ -88,6 +88,7 @@ import {
   ROUTE_VEO_HISTORY,
   ROUTE_SORA_INDEX,
   ROUTE_MAESTRO_INDEX,
+  ROUTE_DIGITALHUMAN_INDEX,
   ROUTE_SORA_HISTORY,
   ROUTE_NANOBANANA_INDEX,
   ROUTE_OPENAIIMAGE_INDEX,
@@ -127,6 +128,7 @@ import {
   VEO_LOGO,
   SORA_LOGO,
   MAESTRO_LOGO,
+  DIGITALHUMAN_LOGO,
   PIXVERSE_LOGO,
   WAN_LOGO,
   PRODUCER_LOGO,
@@ -365,6 +367,15 @@ export default defineComponent({
           displayName: this.$t('common.nav.maestro'),
           logo: MAESTRO_LOGO,
           routes: [ROUTE_MAESTRO_INDEX],
+          category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.digitalhuman?.enabled) {
+        result.push({
+          route: { name: ROUTE_DIGITALHUMAN_INDEX },
+          displayName: this.$t('common.nav.digitalhuman'),
+          logo: DIGITALHUMAN_LOGO,
+          routes: [ROUTE_DIGITALHUMAN_INDEX],
           category: 'video'
         });
       }
