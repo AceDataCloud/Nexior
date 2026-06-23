@@ -145,7 +145,26 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElMessage, ElMessageBox } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  ElButton,
+  ElSkeleton,
+  ElEmpty,
+  ElSwitch,
+  ElTag,
+  ElDrawer,
+  ElDialog,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElSelect,
+  ElOption,
+  ElRadioGroup,
+  ElRadio,
+  ElTimePicker,
+  ElMessage,
+  ElMessageBox
+} from 'element-plus';
 import { scheduledTasksOperator, IScheduledTask, IScheduledRun, IScheduleSpec } from '@/operators/scheduledTasks';
 
 const COMMON_CHAT_MODELS = [
@@ -169,6 +188,24 @@ interface TaskForm {
 
 export default defineComponent({
   name: 'ScheduledTasks',
+  components: {
+    FontAwesomeIcon,
+    ElButton,
+    ElSkeleton,
+    ElEmpty,
+    ElSwitch,
+    ElTag,
+    ElDrawer,
+    ElDialog,
+    ElForm,
+    ElFormItem,
+    ElInput,
+    ElSelect,
+    ElOption,
+    ElRadioGroup,
+    ElRadio,
+    ElTimePicker
+  },
   data() {
     return {
       tasks: [] as IScheduledTask[],
