@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 22 Jun 2026 18:14:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 23 Jun 2026 18:59:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.284.1
+
+Tue, 23 Jun 2026 18:59:17 GMT
+
+### Patches
+
+- fix(chat): register Element Plus + FontAwesome components in ScheduledTasks so /chatgpt/scheduled renders instead of a blank page (dev@acedata.cloud)
 
 ## 3.284.0
 
