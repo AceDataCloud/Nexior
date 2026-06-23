@@ -1,6 +1,6 @@
 export const MAESTRO_SERVICE_ID = '0d7031bf-610a-419e-a5a0-db8f240286d5';
 
-export const MAESTRO_LOGO = 'https://cdn.acedata.cloud/ae064d6b6c.svg';
+export const MAESTRO_LOGO = 'https://cdn.acedata.cloud/ee49012887.svg';
 
 export const MAESTRO_ACTION_GENERATE = 'generate';
 export const MAESTRO_ACTION_REMIX = 'remix';
