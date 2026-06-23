@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 23 Jun 2026 18:59:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 23 Jun 2026 19:41:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.284.2
+
+Tue, 23 Jun 2026 19:41:21 GMT
+
+### Patches
+
+- redesign Maestro logo — professional conducting-waves icon (play triangle + radiating arcs) replacing the old flat SVG (dev@acedata.cloud)
 
 ## 3.284.1
 
