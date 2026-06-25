@@ -250,5 +250,37 @@
   "placeholder.seed": {
     "message": "自动",
     "description": "随机种子占位符"
+  },
+  "model.seedance20Mini": {
+    "message": "doubao-seedance-2.0-mini",
+    "description": "SeeDance 2.0 Mini 模型"
+  },
+  "name.referenceImage": {
+    "message": "参考图片",
+    "description": "参考主体图片上传标签（Seedance 2.0）"
+  },
+  "description.referenceImage": {
+    "message": "可选。上传参考主体图片，例如用于口播视频的人脸。仅 Seedance 2.0 支持。",
+    "description": "参考图片说明"
+  },
+  "name.referenceAudio": {
+    "message": "参考音频",
+    "description": "参考音频上传标签（Seedance 2.0）"
+  },
+  "description.referenceAudio": {
+    "message": "可选。上传一段语音/音频用于生成口播（数字人）视频，需配合参考图片使用。仅 Seedance 2.0 支持。",
+    "description": "参考音频说明"
+  },
+  "name.referenceVideo": {
+    "message": "参考视频",
+    "description": "参考视频上传标签（Seedance 2.0）"
+  },
+  "description.referenceVideo": {
+    "message": "可选。上传一段参考视频。仅 Seedance 2.0 支持。",
+    "description": "参考视频说明"
+  },
+  "message.audioRequiresReferenceImage": {
+    "message": "参考音频需要配合参考图片（口播主体）使用，请同时上传参考图片。",
+    "description": "提供音频但缺少参考图片时的提示"
   }
 }

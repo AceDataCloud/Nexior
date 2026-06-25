@@ -7,6 +7,7 @@ export const SEEDANCE_MODEL_1_0_PRO_FAST = 'doubao-seedance-1-0-pro-fast-251015'
 export const SEEDANCE_MODEL_1_5_PRO = 'doubao-seedance-1-5-pro-251215';
 export const SEEDANCE_MODEL_2_0 = 'doubao-seedance-2-0-260128';
 export const SEEDANCE_MODEL_2_0_FAST = 'doubao-seedance-2-0-fast-260128';
+export const SEEDANCE_MODEL_2_0_MINI = 'doubao-seedance-2-0-mini-260615';
 export const SEEDANCE_MODEL_1_0_LITE_T2V = 'doubao-seedance-1-0-lite-t2v-250428';
 export const SEEDANCE_MODEL_1_0_LITE_I2V = 'doubao-seedance-1-0-lite-i2v-250428';
 
@@ -24,7 +25,11 @@ export const SEEDANCE_DEFAULT_EXECUTION_EXPIRES_AFTER = 172800;
 export const SEEDANCE_RESOLUTION_480P = '480p';
 export const SEEDANCE_RESOLUTION_720P = '720p';
 export const SEEDANCE_RESOLUTION_1080P = '1080p';
+export const SEEDANCE_RESOLUTION_4K = '4k';
 export const SEEDANCE_DEFAULT_RESOLUTION = SEEDANCE_RESOLUTION_720P;
+
+export const SEEDANCE_DEFAULT_MAX_DURATION = 12;
+export const SEEDANCE_2_0_MAX_DURATION = 15;
 
 export const SEEDANCE_RATIO_16_9 = '16:9';
 export const SEEDANCE_RATIO_4_3 = '4:3';
@@ -59,6 +64,18 @@ export interface ISeedanceModelCapability {
   acceptsReturnLastFrame: boolean;
   /** Default resolution this model is calibrated for. */
   defaultResolution: string;
+  /** Highest resolution the model accepts upstream (480p < 720p < 1080p < 4k). */
+  maxResolution: string;
+  /** Shortest clip duration (seconds) shown for this model. */
+  minDuration: number;
+  /** Longest clip duration (seconds) the model accepts. */
+  maxDuration: number;
+  /** Accepts reference image(s) as subject input (Seedance 2.0 multimodal). */
+  acceptsReferenceImage: boolean;
+  /** Accepts a reference audio input (Seedance 2.0 multimodal talking-head). */
+  acceptsReferenceAudio: boolean;
+  /** Accepts a reference video input (Seedance 2.0 multimodal). */
+  acceptsReferenceVideo: boolean;
 }
 
 export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapability> = {
@@ -69,7 +86,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: true,
     acceptsAudio: false,
     acceptsReturnLastFrame: true,
-    defaultResolution: SEEDANCE_RESOLUTION_1080P
+    defaultResolution: SEEDANCE_RESOLUTION_1080P,
+    maxResolution: SEEDANCE_RESOLUTION_1080P,
+    minDuration: 2,
+    maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    acceptsReferenceImage: false,
+    acceptsReferenceAudio: false,
+    acceptsReferenceVideo: false
   },
   [SEEDANCE_MODEL_1_0_PRO_FAST]: {
     acceptsText: true,
@@ -78,7 +101,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: true,
     acceptsAudio: false,
     acceptsReturnLastFrame: true,
-    defaultResolution: SEEDANCE_RESOLUTION_1080P
+    defaultResolution: SEEDANCE_RESOLUTION_1080P,
+    maxResolution: SEEDANCE_RESOLUTION_1080P,
+    minDuration: 2,
+    maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    acceptsReferenceImage: false,
+    acceptsReferenceAudio: false,
+    acceptsReferenceVideo: false
   },
   [SEEDANCE_MODEL_1_5_PRO]: {
     acceptsText: true,
@@ -87,7 +116,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: true,
     acceptsAudio: true,
     acceptsReturnLastFrame: true,
-    defaultResolution: SEEDANCE_RESOLUTION_720P
+    defaultResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_1080P,
+    minDuration: 2,
+    maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    acceptsReferenceImage: false,
+    acceptsReferenceAudio: false,
+    acceptsReferenceVideo: false
   },
   [SEEDANCE_MODEL_2_0]: {
     acceptsText: true,
@@ -96,7 +131,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: true,
     acceptsAudio: true,
     acceptsReturnLastFrame: false,
-    defaultResolution: SEEDANCE_RESOLUTION_1080P
+    defaultResolution: SEEDANCE_RESOLUTION_1080P,
+    maxResolution: SEEDANCE_RESOLUTION_4K,
+    minDuration: 4,
+    maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    acceptsReferenceImage: true,
+    acceptsReferenceAudio: true,
+    acceptsReferenceVideo: true
   },
   [SEEDANCE_MODEL_2_0_FAST]: {
     acceptsText: true,
@@ -105,7 +146,28 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: true,
     acceptsAudio: true,
     acceptsReturnLastFrame: false,
-    defaultResolution: SEEDANCE_RESOLUTION_1080P
+    defaultResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_720P,
+    minDuration: 4,
+    maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    acceptsReferenceImage: true,
+    acceptsReferenceAudio: true,
+    acceptsReferenceVideo: true
+  },
+  [SEEDANCE_MODEL_2_0_MINI]: {
+    acceptsText: true,
+    acceptsImage: true,
+    requiresImage: false,
+    acceptsLastFrame: true,
+    acceptsAudio: true,
+    acceptsReturnLastFrame: false,
+    defaultResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_720P,
+    minDuration: 4,
+    maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    acceptsReferenceImage: true,
+    acceptsReferenceAudio: true,
+    acceptsReferenceVideo: true
   },
   [SEEDANCE_MODEL_1_0_LITE_T2V]: {
     acceptsText: true,
@@ -114,7 +176,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: false,
     acceptsAudio: false,
     acceptsReturnLastFrame: false,
-    defaultResolution: SEEDANCE_RESOLUTION_720P
+    defaultResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_720P,
+    minDuration: 2,
+    maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    acceptsReferenceImage: false,
+    acceptsReferenceAudio: false,
+    acceptsReferenceVideo: false
   },
   [SEEDANCE_MODEL_1_0_LITE_I2V]: {
     acceptsText: false,
@@ -123,7 +191,13 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsLastFrame: false,
     acceptsAudio: false,
     acceptsReturnLastFrame: false,
-    defaultResolution: SEEDANCE_RESOLUTION_720P
+    defaultResolution: SEEDANCE_RESOLUTION_720P,
+    maxResolution: SEEDANCE_RESOLUTION_720P,
+    minDuration: 2,
+    maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    acceptsReferenceImage: false,
+    acceptsReferenceAudio: false,
+    acceptsReferenceVideo: false
   }
 };
 

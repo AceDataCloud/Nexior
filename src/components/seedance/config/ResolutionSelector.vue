@@ -29,7 +29,8 @@ import {
   SEEDANCE_DEFAULT_RESOLUTION,
   SEEDANCE_RESOLUTION_480P,
   SEEDANCE_RESOLUTION_720P,
-  SEEDANCE_RESOLUTION_1080P
+  SEEDANCE_RESOLUTION_1080P,
+  SEEDANCE_RESOLUTION_4K
 } from '@/constants';
 
 interface ResolutionOption {
@@ -38,13 +39,13 @@ interface ResolutionOption {
   disabled: boolean;
 }
 
-// Lite models top out at 720p per upstream; 1080p quietly downgrades or errors.
-const LITE_MAX_RESOLUTION = SEEDANCE_RESOLUTION_720P;
-
+// Each model exposes a max resolution via its capability entry: lite / 2.0-fast
+// / 2.0-mini top out at 720p, std models at 1080p, only the full 2.0 reaches 4k.
 const RESOLUTION_RANK: Record<string, number> = {
   [SEEDANCE_RESOLUTION_480P]: 0,
   [SEEDANCE_RESOLUTION_720P]: 1,
-  [SEEDANCE_RESOLUTION_1080P]: 2
+  [SEEDANCE_RESOLUTION_1080P]: 2,
+  [SEEDANCE_RESOLUTION_4K]: 3
 };
 
 export default defineComponent({
@@ -60,19 +61,17 @@ export default defineComponent({
     capability() {
       return getSeedanceCapability(this.model);
     },
-    isLiteModel(): boolean {
-      return typeof this.model === 'string' && this.model.includes('-lite-');
-    },
     options(): ResolutionOption[] {
       const base = [
         { value: SEEDANCE_RESOLUTION_480P, label: '480p' },
         { value: SEEDANCE_RESOLUTION_720P, label: '720p' },
-        { value: SEEDANCE_RESOLUTION_1080P, label: '1080p' }
+        { value: SEEDANCE_RESOLUTION_1080P, label: '1080p' },
+        { value: SEEDANCE_RESOLUTION_4K, label: '4k' }
       ];
-      const isLite = this.isLiteModel;
+      const maxRank = RESOLUTION_RANK[this.capability.maxResolution] ?? RESOLUTION_RANK[SEEDANCE_RESOLUTION_1080P];
       return base.map((o) => ({
         ...o,
-        disabled: isLite && RESOLUTION_RANK[o.value] > RESOLUTION_RANK[LITE_MAX_RESOLUTION]
+        disabled: RESOLUTION_RANK[o.value] > maxRank
       }));
     },
     value: {
