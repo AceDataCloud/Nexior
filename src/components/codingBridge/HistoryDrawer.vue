@@ -36,10 +36,17 @@
         >
           <div class="flex items-center gap-2 mb-1">
             <img
-              :src="providerIcon(item.provider).src"
+              v-if="providerIcon(item.provider)"
+              :src="providerIcon(item.provider)!.src"
               class="provider-icon"
-              :class="{ 'provider-icon--invert': providerIcon(item.provider).invertOnDark }"
-              :alt="item.provider === 'codex' ? 'Codex' : 'Claude'"
+              :class="{ 'provider-icon--invert': providerIcon(item.provider)!.invertOnDark }"
+              :alt="providerLabel(item.provider)"
+            />
+            <font-awesome-icon
+              v-else
+              icon="fa-solid fa-code"
+              class="provider-icon"
+              :title="providerLabel(item.provider)"
             />
             <span class="text-sm font-medium truncate flex-1">{{ item.title }}</span>
             <!-- Live on the node right now: opening it reattaches to the running
@@ -110,8 +117,16 @@ export default defineComponent({
     }
   },
   methods: {
-    providerIcon(provider: string): { src: string; invertOnDark: boolean } {
-      return PROVIDER_ICONS[provider] ?? PROVIDER_ICONS.claude;
+    providerLabel(provider: string): string {
+      const labels: Record<string, string> = {
+        claude: 'Claude Code',
+        codex: 'Codex',
+        copilot: 'GitHub Copilot'
+      };
+      return labels[provider] ?? provider;
+    },
+    providerIcon(provider: string): { src: string; invertOnDark: boolean } | null {
+      return PROVIDER_ICONS[provider] ?? null;
     },
     refresh() {
       if (this.currentNodeId) {

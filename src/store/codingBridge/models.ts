@@ -6,6 +6,7 @@ import {
   ICodingBridgeDirListing,
   ICodingBridgeEvent,
   ICodingBridgeHistorySummary,
+  ICodingBridgeHistoryProvider,
   ICodingBridgeNode,
   ICodingBridgePermissionRequest,
   ICodingBridgeSession
@@ -14,7 +15,7 @@ import {
 /** Pointer to the last-opened history conversation, restored after a reload. */
 export interface ICodingBridgeHistoryRef {
   node_id: string;
-  provider: 'claude' | 'codex';
+  provider: ICodingBridgeHistoryProvider;
   session_id: string;
 }
 

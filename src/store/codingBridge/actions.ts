@@ -7,6 +7,7 @@ import {
   ICodingBridgeAttachment,
   ICodingBridgeEvent,
   ICodingBridgeEventKind,
+  ICodingBridgeHistoryProvider,
   ICodingBridgeNode
 } from '@/models';
 import { CodingBridgeSocket } from '@/utils/codingBridgeSocket';
@@ -408,10 +409,7 @@ export const applyNodeEvent = (
 // same id. The node now keys live sessions by their real (SDK) id — exactly the
 // id history lists them under — so a transcript that is still running on the
 // node is reattached (its running status, seq cursor and in-flight stream kept
-// intact) instead of being overwritten by a static, idle copy. A dead transcript
-// materialises as a resumable idle session — for BOTH providers: Claude
-// (`claude --resume`) and Codex (`codex exec resume`) can each continue an
-// on-disk transcript, so neither is forced read-only.
+// intact) instead of being overwritten by a static, idle copy.
 const applyHistoryDetail = (
   commit: ActionContext<ICodingBridgeState, IRootState>['commit'],
   state: ICodingBridgeState,
@@ -419,13 +417,11 @@ const applyHistoryDetail = (
   fromNode: string | undefined
 ): void => {
   const sessionId = payload?.session_id;
-  const provider = payload?.provider === 'codex' ? 'codex' : 'claude';
+  const provider = normalizeHistoryProvider(payload?.provider);
   if (!sessionId || !fromNode) {
     return;
   }
-  // Codex resume now works end-to-end (node sends `codex exec resume` with the
-  // sandbox as a -c override), so codex history is resumable too — not read-only.
-  const resumable = provider === 'claude' || provider === 'codex';
+  const resumable = provider === 'claude' || provider === 'codex' || provider === 'copilot';
   const live = state.sessions[sessionId];
   // "Live" = a session the node is currently running (surfaced via the sessions
   // snapshot) or one already mid-turn in this tab. Such a session keeps the Stop
@@ -479,6 +475,10 @@ const applyHistoryDetail = (
   commit('setCurrentNode', fromNode);
   commit('setCurrentSession', sessionId);
   commit('setHistoryRef', { node_id: fromNode, provider, session_id: sessionId });
+};
+
+const normalizeHistoryProvider = (provider: unknown): ICodingBridgeHistoryProvider => {
+  return provider === 'codex' || provider === 'copilot' ? provider : 'claude';
 };
 
 export const resetAll = ({ commit }: ActionContext<ICodingBridgeState, IRootState>): void => {
