@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 25 Jun 2026 19:26:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 25 Jun 2026 19:33:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.286.0
+
+Thu, 25 Jun 2026 19:33:21 GMT
+
+### Minor changes
+
+- feat(seedance): add Seedance 2.0 multimodal reference controls (dev@acedata.cloud)
 
 ## 3.285.2
 
