@@ -272,8 +272,8 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
   'coding-bridge': {
     title: 'Coding Bridge',
     description:
-      'Drive Claude Code and Codex on your own machine from the web — pair a local node and run coding agents remotely with per-tool approval.',
-    keywords: ['Coding Bridge', 'Claude Code', 'Codex', 'Remote Agent', 'AI Coding'],
+      'Drive Claude Code, Codex, and GitHub Copilot on your own machine from the web — pair a local node and run coding agents remotely with per-tool approval.',
+    keywords: ['Coding Bridge', 'Claude Code', 'Codex', 'GitHub Copilot', 'Remote Agent', 'AI Coding'],
     category: 'AI Coding'
   }
 };

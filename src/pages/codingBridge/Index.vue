@@ -79,7 +79,7 @@ export default defineComponent({
       if (!sessionId || !nodeId) {
         return;
       }
-      const provider = q.provider === 'codex' ? 'codex' : 'claude';
+      const provider = q.provider === 'codex' || q.provider === 'copilot' ? q.provider : 'claude';
       this.$store.commit('codingBridge/setCurrentNode', nodeId);
       this.$store.commit('codingBridge/setHistoryRef', { node_id: nodeId, provider, session_id: sessionId });
       this.$store.dispatch('codingBridge/getHistory', nodeId);

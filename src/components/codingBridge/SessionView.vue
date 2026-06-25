@@ -656,9 +656,13 @@ export default defineComponent({
       if (!this.currentSession?.provider || this.currentSession?.started) {
         return '';
       }
-      return this.currentSession.provider === 'codex'
-        ? (this.$t('codingBridge.history.codexLabel') as string)
-        : (this.$t('codingBridge.history.claudeLabel') as string);
+      if (this.currentSession.provider === 'codex') {
+        return this.$t('codingBridge.history.codexLabel') as string;
+      }
+      if (this.currentSession.provider === 'claude') {
+        return this.$t('codingBridge.history.claudeLabel') as string;
+      }
+      return this.providerName(this.currentSession.provider);
     },
     running(): boolean {
       const status = this.currentSession?.status;
@@ -781,7 +785,8 @@ export default defineComponent({
       }
       return [
         { label: this.$t('codingBridge.session.providerClaude') as string, value: 'claude', available: true },
-        { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex', available: true }
+        { label: this.$t('codingBridge.session.providerCodex') as string, value: 'codex', available: true },
+        { label: 'GitHub Copilot', value: 'copilot', available: true }
       ];
     },
     modelOptions(): { label: string; value: string }[] {
@@ -961,9 +966,12 @@ export default defineComponent({
       if (cap) {
         return cap.label;
       }
-      return provider === 'codex'
-        ? (this.$t('codingBridge.session.providerCodex') as string)
-        : (this.$t('codingBridge.session.providerClaude') as string);
+      const fallback: Record<string, string> = {
+        claude: this.$t('codingBridge.session.providerClaude') as string,
+        codex: this.$t('codingBridge.session.providerCodex') as string,
+        copilot: 'GitHub Copilot'
+      };
+      return fallback[provider] ?? provider;
     },
     // Brand mark for a backend, or null to fall back to a generic icon.
     providerIcon(provider: string): { src: string; invertOnDark: boolean } | null {

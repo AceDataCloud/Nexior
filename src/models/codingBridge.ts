@@ -1,6 +1,6 @@
 /**
- * Coding Bridge lets a signed-in user drive a Claude Code / Codex agent that
- * runs on their own machine (a "node" daemon) from the web UI. The browser
+ * Coding Bridge lets a signed-in user drive a Claude Code / Codex / Copilot
+ * agent that runs on their own machine (a "node" daemon) from the web UI. The browser
  * never executes anything: it only relays JSON envelopes to the node through
  * the stateful `coding-bridge` relay over a single authenticated WebSocket.
  */
@@ -16,7 +16,7 @@ export interface ICodingBridgeNode {
 
 export type ICodingBridgeSessionStatus = 'starting' | 'running' | 'idle' | 'closed' | 'error';
 
-export type ICodingBridgeHistoryProvider = 'claude' | 'codex';
+export type ICodingBridgeHistoryProvider = 'claude' | 'codex' | 'copilot';
 
 /** One selectable model offered by a provider, as reported by the node. */
 export interface ICodingBridgeModelOption {
