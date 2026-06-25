@@ -16,7 +16,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { SEEDANCE_DEFAULT_DURATION } from '@/constants';
+import { getSeedanceCapability, SEEDANCE_DEFAULT_DURATION } from '@/constants';
 
 export default defineComponent({
   name: 'SeedanceDurationSelector',
@@ -25,24 +25,20 @@ export default defineComponent({
     ElOption,
     InfoIcon
   },
-  data() {
-    return {
-      options: [
-        { value: 2, label: '2s' },
-        { value: 3, label: '3s' },
-        { value: 4, label: '4s' },
-        { value: 5, label: '5s' },
-        { value: 6, label: '6s' },
-        { value: 7, label: '7s' },
-        { value: 8, label: '8s' },
-        { value: 9, label: '9s' },
-        { value: 10, label: '10s' },
-        { value: 11, label: '11s' },
-        { value: 12, label: '12s' }
-      ]
-    };
-  },
   computed: {
+    model(): string | undefined {
+      return this.$store.state.seedance?.config?.model;
+    },
+    capability() {
+      return getSeedanceCapability(this.model);
+    },
+    options(): { value: number; label: string }[] {
+      const items: { value: number; label: string }[] = [];
+      for (let s = this.capability.minDuration; s <= this.capability.maxDuration; s++) {
+        items.push({ value: s, label: `${s}s` });
+      }
+      return items;
+    },
     value: {
       get(): number | undefined {
         return this.$store.state.seedance?.config?.duration;
@@ -55,9 +51,24 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    model() {
+      this.clampValue();
+    }
+  },
   mounted() {
     if (!this.value) {
       this.value = SEEDANCE_DEFAULT_DURATION;
+    } else {
+      this.clampValue();
+    }
+  },
+  methods: {
+    clampValue() {
+      const current = this.value;
+      if (current !== undefined && (current < this.capability.minDuration || current > this.capability.maxDuration)) {
+        this.value = SEEDANCE_DEFAULT_DURATION;
+      }
     }
   }
 });

@@ -24,7 +24,8 @@ import {
   SEEDANCE_MODEL_1_0_PRO_FAST,
   SEEDANCE_MODEL_1_5_PRO,
   SEEDANCE_MODEL_2_0,
-  SEEDANCE_MODEL_2_0_FAST
+  SEEDANCE_MODEL_2_0_FAST,
+  SEEDANCE_MODEL_2_0_MINI
 } from '@/constants';
 
 export default defineComponent({
@@ -39,6 +40,7 @@ export default defineComponent({
       options: [
         { value: SEEDANCE_MODEL_2_0, label: this.$t('seedance.model.seedance20') },
         { value: SEEDANCE_MODEL_2_0_FAST, label: this.$t('seedance.model.seedance20Fast') },
+        { value: SEEDANCE_MODEL_2_0_MINI, label: this.$t('seedance.model.seedance20Mini') },
         { value: SEEDANCE_MODEL_1_5_PRO, label: this.$t('seedance.model.seedance15pro') },
         { value: SEEDANCE_MODEL_1_0_PRO, label: this.$t('seedance.model.seedance10pro') },
         { value: SEEDANCE_MODEL_1_0_PRO_FAST, label: this.$t('seedance.model.seedance10proFast') },

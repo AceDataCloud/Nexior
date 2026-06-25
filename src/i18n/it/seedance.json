@@ -250,5 +250,37 @@
   "placeholder.seed": {
     "message": "Auto",
     "description": "Segnaposto seme"
+  },
+  "model.seedance20Mini": {
+    "message": "doubao-seedance-2.0-mini",
+    "description": "Modello SeeDance 2.0 Mini"
+  },
+  "name.referenceImage": {
+    "message": "Immagine di riferimento",
+    "description": "Etichetta di caricamento dell'immagine di riferimento (Seedance 2.0)"
+  },
+  "description.referenceImage": {
+    "message": "Facoltativo. Carica un'immagine di riferimento del soggetto, ad esempio il volto per il video di sintesi vocale. Supportato solo da Seedance 2.0.",
+    "description": "Descrizione dell'immagine di riferimento"
+  },
+  "name.referenceAudio": {
+    "message": "Audio di riferimento",
+    "description": "Etichetta di caricamento dell'audio di riferimento (Seedance 2.0)"
+  },
+  "description.referenceAudio": {
+    "message": "Facoltativo. Carica un audio/voce per generare un video di sintesi vocale (persona digitale), da utilizzare insieme all'immagine di riferimento. Supportato solo da Seedance 2.0.",
+    "description": "Descrizione dell'audio di riferimento"
+  },
+  "name.referenceVideo": {
+    "message": "Video di riferimento",
+    "description": "Etichetta di caricamento del video di riferimento (Seedance 2.0)"
+  },
+  "description.referenceVideo": {
+    "message": "Facoltativo. Carica un video di riferimento. Supportato solo da Seedance 2.0.",
+    "description": "Descrizione del video di riferimento"
+  },
+  "message.audioRequiresReferenceImage": {
+    "message": "L'audio di riferimento deve essere utilizzato con l'immagine di riferimento (soggetto della sintesi vocale), si prega di caricare anche l'immagine di riferimento.",
+    "description": "Messaggio di avviso quando si fornisce audio ma manca l'immagine di riferimento"
   }
 }

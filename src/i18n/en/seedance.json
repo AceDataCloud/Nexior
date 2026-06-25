@@ -250,5 +250,37 @@
   "placeholder.seed": {
     "message": "Auto",
     "description": "Seed placeholder"
+  },
+  "model.seedance20Mini": {
+    "message": "doubao-seedance-2.0-mini",
+    "description": "SeeDance 2.0 Mini model"
+  },
+  "name.referenceImage": {
+    "message": "Reference Image",
+    "description": "Label for reference subject image upload (Seedance 2.0)"
+  },
+  "description.referenceImage": {
+    "message": "Optional. Upload reference subject image(s), e.g. a face for talking-head videos. Seedance 2.0 only.",
+    "description": "Instructions for reference image"
+  },
+  "name.referenceAudio": {
+    "message": "Reference Audio",
+    "description": "Label for reference audio upload (Seedance 2.0)"
+  },
+  "description.referenceAudio": {
+    "message": "Optional. Upload a voice/audio clip to drive a talking-head video. Requires a reference image. Seedance 2.0 only.",
+    "description": "Instructions for reference audio"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Label for reference video upload (Seedance 2.0)"
+  },
+  "description.referenceVideo": {
+    "message": "Optional. Upload a reference video. Seedance 2.0 only.",
+    "description": "Instructions for reference video"
+  },
+  "message.audioRequiresReferenceImage": {
+    "message": "Reference audio needs a reference image (the talking-head subject). Please upload a reference image too.",
+    "description": "Warning when audio is provided without a reference image"
   }
 }

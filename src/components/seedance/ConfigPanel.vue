@@ -13,6 +13,9 @@
       <seed-input class="mb-4" />
       <first-frame-image class="mb-2" />
       <last-frame-image class="mb-2" />
+      <reference-image class="mb-2" />
+      <reference-audio class="mb-2" />
+      <reference-video class="mb-2" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
@@ -37,6 +40,9 @@ import GenerateAudioSwitch from './config/GenerateAudioSwitch.vue';
 import CameraFixedSwitch from './config/CameraFixedSwitch.vue';
 import FirstFrameImage from './config/FirstFrameImage.vue';
 import LastFrameImage from './config/LastFrameImage.vue';
+import ReferenceImage from './config/ReferenceImage.vue';
+import ReferenceAudio from './config/ReferenceAudio.vue';
+import ReferenceVideo from './config/ReferenceVideo.vue';
 import ServiceTierSelector from './config/ServiceTierSelector.vue';
 import ReturnLastFrameSwitch from './config/ReturnLastFrameSwitch.vue';
 import SeedInput from './config/SeedInput.vue';
@@ -60,6 +66,9 @@ export default defineComponent({
     SeedInput,
     FirstFrameImage,
     LastFrameImage,
+    ReferenceImage,
+    ReferenceAudio,
+    ReferenceVideo,
     Consumption
   },
   emits: ['generate'],

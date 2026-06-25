@@ -250,5 +250,37 @@
   "placeholder.seed": {
     "message": "Auto",
     "description": "Marcador de posición para semilla"
+  },
+  "model.seedance20Mini": {
+    "message": "doubao-seedance-2.0-mini",
+    "description": "Modelo SeeDance 2.0 Mini"
+  },
+  "name.referenceImage": {
+    "message": "Imagen de referencia",
+    "description": "Etiqueta de subida de imagen de referencia (Seedance 2.0)"
+  },
+  "description.referenceImage": {
+    "message": "Opcional. Sube una imagen de referencia del sujeto, por ejemplo, la cara de la persona para el video de locución. Solo soportado por Seedance 2.0.",
+    "description": "Descripción de la imagen de referencia"
+  },
+  "name.referenceAudio": {
+    "message": "Audio de referencia",
+    "description": "Etiqueta de subida de audio de referencia (Seedance 2.0)"
+  },
+  "description.referenceAudio": {
+    "message": "Opcional. Sube un audio/voz para generar un video de locución (persona digital), debe usarse junto con una imagen de referencia. Solo soportado por Seedance 2.0.",
+    "description": "Descripción del audio de referencia"
+  },
+  "name.referenceVideo": {
+    "message": "Video de referencia",
+    "description": "Etiqueta de subida de video de referencia (Seedance 2.0)"
+  },
+  "description.referenceVideo": {
+    "message": "Opcional. Sube un video de referencia. Solo soportado por Seedance 2.0.",
+    "description": "Descripción del video de referencia"
+  },
+  "message.audioRequiresReferenceImage": {
+    "message": "El audio de referencia necesita usarse junto con una imagen de referencia (sujeto de locución), por favor sube la imagen de referencia también.",
+    "description": "Mensaje cuando se proporciona audio pero falta la imagen de referencia"
   }
 }
