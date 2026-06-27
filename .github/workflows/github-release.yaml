@@ -66,17 +66,17 @@ jobs:
           # the auto-generated changelog above this table.
           append_body: true
           body: |
-            ## 📦 下载 / Downloads
+            ## 📦 Downloads
 
-            | 平台 | 获取方式 |
-            |------|----------|
-            | 🍎 **macOS** | 下方 Assets 的 `.dmg`（Intel 选 `x64`，Apple Silicon 选 `arm64`）|
-            | 🪟 **Windows** | 下方 Assets 的 `.exe` 安装包 |
-            | 🤖 **Android** | 下方 Assets 的 `.apk`（侧载），或 [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
-            | 📱 **iOS** | ${{ vars.IOS_APP_STORE_URL != '' && format('[App Store / TestFlight]({0})', vars.IOS_APP_STORE_URL) || 'TestFlight 内测（公开链接待配置仓库变量 `IOS_APP_STORE_URL`）' }} |
-            | 🌐 **Web** | 下方 `nexior-dist-*.tar.gz`（自托管）|
+            | Platform | How to get it |
+            |----------|---------------|
+            | 🍎 **macOS** | The `.dmg` in Assets below (`x64` for Intel, `arm64` for Apple Silicon) |
+            | 🪟 **Windows** | The `.exe` installer in Assets below |
+            | 🤖 **Android** | The `.apk` in Assets below (sideload), or [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
+            | 📱 **iOS** | ${{ vars.IOS_APP_STORE_URL != '' && format('[App Store / TestFlight]({0})', vars.IOS_APP_STORE_URL) || 'TestFlight beta (public link pending — set repo variable `IOS_APP_STORE_URL`)' }} |
+            | 🌐 **Web** | The `nexior-dist-*.tar.gz` below (self-host) |
 
-            > ⚠️ 桌面端当前为 **未签名 beta**：macOS 首次打开需「右键 → 打开」绕过 Gatekeeper；Windows 会弹 SmartScreen 提示点「仍要运行」。签名证书配置完成后将自动转为已签名版本。
+            > ⚠️ The desktop apps are currently an **unsigned beta**: on macOS, right-click → Open to bypass Gatekeeper; on Windows, click "Run anyway" on the SmartScreen prompt. They switch to signed builds automatically once the signing certificates are configured.
           files: |
             nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz
             nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz.sha256
