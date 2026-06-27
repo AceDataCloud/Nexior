@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 25 Jun 2026 19:33:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 07:39:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.287.0
+
+Sat, 27 Jun 2026 07:39:35 GMT
+
+### Minor changes
+
+- feat(grokvideo): expose 1080p and model-aware duration caps (dev@acedata.cloud)
 
 ## 3.286.0
 
