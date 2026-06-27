@@ -28,6 +28,11 @@ import { ERROR_CODE_DUPLICATION } from '@/constants';
 import ApplicationConfirm from '@/components/application/Confirm.vue';
 import { getFinalApplication } from '@/utils';
 
+// How often the floating Credits pill re-syncs the selected application's
+// balance. Generations spend credits server-side at task-creation time, so
+// without this the pill stayed stale until a full page reload.
+const BALANCE_REFRESH_INTERVAL_MS = 15000;
+
 export default defineComponent({
   name: 'LayoutMain',
   components: {
@@ -45,7 +50,8 @@ export default defineComponent({
       initialized: false,
       applying: false,
       mobile: typeof window !== 'undefined' && window.innerWidth < 768,
-      initializeRunId: 0
+      initializeRunId: 0,
+      balanceTimer: 0
     };
   },
   computed: {
@@ -92,13 +98,45 @@ export default defineComponent({
     // service-page navigation, so the anonymous-arrow version was leaking
     // one listener per visit, all of which kept the mounted instance alive.
     window.addEventListener('resize', this.onResize);
+    // Keep the floating Credits pill live after generations spend balance:
+    // refresh on an interval and whenever the tab regains focus.
+    this.balanceTimer = window.setInterval(this.refreshBalances, BALANCE_REFRESH_INTERVAL_MS);
+    document.addEventListener('visibilitychange', this.onVisibility);
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.onResize);
+    window.clearInterval(this.balanceTimer);
+    document.removeEventListener('visibilitychange', this.onVisibility);
   },
   methods: {
     onResize() {
       this.mobile = window.innerWidth < 768;
+    },
+    onVisibility() {
+      if (typeof document !== 'undefined' && !document.hidden) {
+        this.refreshBalances();
+      }
+    },
+    // Re-sync the selected application's balance so the floating Credits pill
+    // reflects spend right after a generation, without a full page reload.
+    async refreshBalances() {
+      if (!this.appName) return;
+      if (!this.$store.state.token?.access) return;
+      if (typeof document !== 'undefined' && document.hidden) return;
+      if (this.loading) return;
+      await Promise.allSettled([
+        this.$store.dispatch('getApplications'),
+        this.$store.dispatch(`${this.appName}/getApplications`)
+      ]);
+      // Update via the plain mutation with a fresh copy from the just-fetched
+      // list — NOT the setApplication action, which would re-run credential
+      // creation on every tick.
+      const current = this.$store.state[this.appName]?.application;
+      if (!current) return;
+      const fresh = this.applications?.find((a) => a.id === current.id);
+      if (fresh && fresh !== current) {
+        this.$store.commit(`${this.appName}/setApplication`, fresh);
+      }
     },
     async initialize() {
       const runId = ++this.initializeRunId;
