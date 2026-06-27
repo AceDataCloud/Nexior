@@ -36,6 +36,10 @@
             <font-awesome-icon :icon="faAndroid" class="btn-icon" />
             {{ $t('common.button.downloadAndroid') }}
           </el-button>
+          <el-button v-if="hasAppStore" round size="large" tag="a" :href="appStoreUrl" target="_blank">
+            <font-awesome-icon :icon="faApple" class="btn-icon" />
+            {{ $t('common.button.getOnAppStore') }}
+          </el-button>
           <el-button round size="large" class="btn-ghost" @click="openSupport">
             {{ $t('common.nav.support') }}
           </el-button>
@@ -110,27 +114,63 @@
               <font-awesome-icon :icon="faApple" class="platform__os-icon" />
               iOS
             </span>
-            <span class="chip chip--pending">
-              <span class="chip__dot"></span>{{ $t('common.message.mobileComingSoon') }}
+            <span :class="['chip', hasIos ? 'chip--live' : 'chip--pending']">
+              <span class="chip__dot"></span>
+              {{ hasIos ? $t('common.message.mobileNowOnAppStore') : $t('common.message.mobileComingSoon') }}
             </span>
           </div>
           <h2 class="platform__title">{{ $t('common.button.downloadIos') }}</h2>
           <p class="platform__text">
-            {{ hasIosDownload ? $t('common.message.mobileIosHint') : $t('common.message.mobileIosPending') }}
+            {{ hasIos ? $t('common.message.mobileIosHint') : $t('common.message.mobileIosPending') }}
           </p>
 
-          <template v-if="hasIosDownload">
+          <div v-if="hasAppStore" class="qr">
+            <qr-code
+              :value="appStoreUrl"
+              :width="184"
+              :height="184"
+              class="qr__img"
+              type="image/png"
+              :color="{ dark: '#0e2a33ff', light: '#ffffffff' }"
+            />
+            <p class="qr__hint">{{ $t('common.message.mobileAppStoreHint') }}</p>
+          </div>
+
+          <template v-if="hasIos">
             <div class="platform__foot platform__foot--stack">
-              <div class="btn-row">
-                <el-button type="primary" round size="large" tag="a" :href="iosDownloadUrl" target="_blank">
-                  <font-awesome-icon :icon="faApple" class="btn-icon" />
-                  {{ $t('common.button.installIos') }}
-                </el-button>
-                <el-button round size="large" class="btn-ghost" tag="a" :href="iosFallbackUrl" target="_blank">
-                  {{ $t('common.button.downloadIos') }}
-                </el-button>
-              </div>
-              <span class="platform__meta">{{ $t('common.message.mobileInstallNote') }}</span>
+              <el-button
+                v-if="hasAppStore"
+                type="primary"
+                round
+                size="large"
+                tag="a"
+                :href="appStoreUrl"
+                target="_blank"
+              >
+                <font-awesome-icon :icon="faApple" class="btn-icon" />
+                {{ $t('common.button.getOnAppStore') }}
+              </el-button>
+
+              <template v-if="hasIosDownload">
+                <div class="btn-row">
+                  <el-button
+                    :type="hasAppStore ? 'default' : 'primary'"
+                    round
+                    :size="hasAppStore ? 'default' : 'large'"
+                    :class="{ 'btn-ghost': hasAppStore }"
+                    tag="a"
+                    :href="iosDownloadUrl"
+                    target="_blank"
+                  >
+                    <font-awesome-icon :icon="faApple" class="btn-icon" />
+                    {{ $t('common.button.installIos') }}
+                  </el-button>
+                  <el-button round size="large" class="btn-ghost" tag="a" :href="iosFallbackUrl" target="_blank">
+                    {{ $t('common.button.downloadIos') }}
+                  </el-button>
+                </div>
+                <span class="platform__meta">{{ $t('common.message.mobileInstallNote') }}</span>
+              </template>
             </div>
           </template>
 
@@ -168,7 +208,7 @@
       </section>
 
       <!-- Install note -->
-      <aside class="note">
+      <aside v-if="hasIosDownload" class="note">
         <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
         <p class="note__text">{{ $t('common.message.mobileInstallNote') }}</p>
       </aside>
@@ -188,6 +228,7 @@ import {
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_ANDROID_PLAY_STORE_URL,
   MOBILE_APP_VERSION,
+  MOBILE_IOS_APP_STORE_URL,
   MOBILE_IOS_DOWNLOAD_URL,
   MOBILE_IOS_FALLBACK_URL
 } from '@/constants';
@@ -230,6 +271,12 @@ export default defineComponent({
     hasPlayStore() {
       return !!MOBILE_ANDROID_PLAY_STORE_URL;
     },
+    appStoreUrl() {
+      return MOBILE_IOS_APP_STORE_URL;
+    },
+    hasAppStore() {
+      return !!MOBILE_IOS_APP_STORE_URL;
+    },
     iosDownloadUrl() {
       return MOBILE_IOS_DOWNLOAD_URL;
     },
@@ -238,6 +285,9 @@ export default defineComponent({
     },
     hasIosDownload() {
       return !!MOBILE_IOS_DOWNLOAD_URL && !!MOBILE_IOS_FALLBACK_URL;
+    },
+    hasIos() {
+      return this.hasAppStore || this.hasIosDownload;
     }
   },
   methods: {
