@@ -53,6 +53,19 @@
           <el-option v-for="d in MAESTRO_ALLOWED_DURATIONS" :key="d" :label="`${d}s`" :value="d" />
         </el-select>
       </div>
+
+      <!-- Quality (production tier) -->
+      <div class="mb-4">
+        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.quality') }}</span>
+        <el-select v-model="quality" class="w-full">
+          <el-option
+            v-for="q in MAESTRO_ALLOWED_QUALITIES"
+            :key="q"
+            :label="$t(`maestro.option.quality.${q}`)"
+            :value="q"
+          />
+        </el-select>
+      </div>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
@@ -79,7 +92,9 @@ import {
   MAESTRO_DEFAULT_ACTION,
   MAESTRO_DEFAULT_LANGS,
   MAESTRO_DEFAULT_ASPECT,
-  MAESTRO_DEFAULT_DURATION
+  MAESTRO_DEFAULT_DURATION,
+  MAESTRO_ALLOWED_QUALITIES,
+  MAESTRO_DEFAULT_QUALITY
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 
@@ -102,7 +117,8 @@ export default defineComponent({
     return {
       MAESTRO_ALLOWED_LANGS,
       MAESTRO_ALLOWED_ASPECTS,
-      MAESTRO_ALLOWED_DURATIONS
+      MAESTRO_ALLOWED_DURATIONS,
+      MAESTRO_ALLOWED_QUALITIES
     };
   },
   computed: {
@@ -157,6 +173,14 @@ export default defineComponent({
       set(val: number) {
         this.update({ duration: val });
       }
+    },
+    quality: {
+      get(): string | undefined {
+        return this.config?.quality;
+      },
+      set(val: string) {
+        this.update({ quality: val });
+      }
     }
   },
   mounted() {
@@ -164,7 +188,8 @@ export default defineComponent({
       action: this.config?.action ?? MAESTRO_DEFAULT_ACTION,
       langs: this.config?.langs?.length ? this.config.langs : MAESTRO_DEFAULT_LANGS,
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
-      duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION
+      duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
+      quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY
     });
   },
   methods: {
