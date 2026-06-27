@@ -157,6 +157,10 @@ jobs:
     needs: preflight
     if: needs.preflight.outputs.should-build == 'true'
     runs-on: ubuntu-latest
+    # Only this job attaches the APK to the GitHub Release; preflight/promote
+    # stay read-only so the write token never reaches other jobs.
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout
@@ -230,6 +234,38 @@ jobs:
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
           path: android/app/build/outputs/bundle/release/app-release.aab
+
+      # Attach the sideloadable APK to the matching GitHub Release
+      # (@acedatacloud/nexior_v<version>, created by github-release.yaml). Only
+      # attach when that release ALREADY EXISTS, so a manual `android-v*` /
+      # workflow_dispatch run can never create a spurious release. action-gh-
+      # release is idempotent: it updates the existing release and adds the asset.
+      - name: Check release exists
+        id: rel
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          REL_TAG: '@acedatacloud/nexior_v${{ needs.preflight.outputs.version-name }}'
+        run: |
+          if gh release view "$REL_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::release $REL_TAG not found — skipping APK attach."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Stage versioned APK
+        if: steps.rel.outputs.exists == 'true'
+        run: cp android/app/build/outputs/apk/release/app-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
+
+      - name: Attach APK to GitHub Release
+        if: steps.rel.outputs.exists == 'true'
+        uses: softprops/action-gh-release@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+        with:
+          tag_name: '@acedatacloud/nexior_v${{ needs.preflight.outputs.version-name }}'
+          files: nexior-${{ needs.preflight.outputs.version-name }}.apk
+          fail_on_unmatched_files: true
 
       - name: Upload to Play Store
         uses: r0adkll/upload-google-play@v1

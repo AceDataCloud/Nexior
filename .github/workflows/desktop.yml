@@ -5,13 +5,17 @@ name: Desktop
 #
 # Triggers:
 #   - pull_request (desktop paths)        → E2E smoke only
-#   - push to main (desktop paths)        → E2E + build .exe/.dmg as ARTIFACTS
-#                                           (unsigned beta; NO publish, NO gate)
+#   - push tag `@acedatacloud/nexior_v*`  → E2E + build .exe/.dmg (unsigned beta)
+#                                           + ATTACH to that GitHub Release
+#                                           (NO COS publish, NO gate)
 #   - push tag `desktop-v*`               → E2E + build + PUBLISH to `latest`
 #   - workflow_dispatch (channel/dry_run) → E2E + build + (optional) PUBLISH
 #
-# Every merge to main therefore produces downloadable .exe + .dmg in the run's
-# Artifacts. Publishing to the live update feed is a separate, admin-gated job.
+# Nexior releases on (almost) every merge via beachball, so the version tag
+# fires per release — that one build both produces downloadable artifacts AND
+# attaches the installers to the Release page. (Replaces the old per-main-push
+# build, which double-built on every release.) Publishing to the live update
+# feed is a separate, admin-gated job on desktop-v*.
 #
 # Required repo secrets:
 #   TENCENT_CLOUD_SECRET_ID / TENCENT_CLOUD_SECRET_KEY        COS upload
@@ -34,13 +38,13 @@ on:
       - 'scripts/publish_desktop_release.py'
       - '.github/workflows/desktop.yml'
   push:
-    # Every merge to main auto-builds installers (artifacts). A desktop-v* tag
-    # additionally publishes to the live feed. (No path filter: you asked for an
-    # installer on every merge, and tag pushes must always run.)
-    branches:
-      - main
     tags:
       - 'desktop-v*'
+      # The beachball release tag (pushed by publish.yaml on every version bump).
+      # On this tag we build the unsigned beta installers and ATTACH them to the
+      # matching GitHub Release — we do NOT publish to the COS feed (resolve sets
+      # publish=false for it), so the auto-update channel is untouched.
+      - '@acedatacloud/nexior_v*'
   workflow_dispatch:
     inputs:
       channel:
@@ -129,6 +133,10 @@ jobs:
   build:
     name: Build (${{ matrix.os }})
     needs: [e2e, resolve]
+    # Only the build job needs write (to attach installers on the version tag);
+    # e2e (which runs PR-controlled npm scripts) and resolve stay read-only.
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -222,6 +230,39 @@ jobs:
             release/*.yml
           retention-days: 30
           if-no-files-found: error
+
+      # On a beachball release tag, attach this OS's installer to the matching
+      # GitHub Release. github-release.yaml creates that release concurrently;
+      # the desktop build is far slower, so it's normally ready — but we still
+      # WAIT for it and SKIP (never create a bare release) if it never appears,
+      # mirroring the Android guard. Each matrix leg attaches ONLY its own
+      # installer with fail_on_unmatched_files: true, so a missing .exe/.dmg
+      # fails loudly. No COS publish happens for this tag (feed untouched).
+      - name: Wait for GitHub Release
+        id: rel
+        if: startsWith(github.ref, 'refs/tags/@acedatacloud/nexior_v')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+        run: |
+          for i in $(seq 1 18); do
+            if gh release view "$GITHUB_REF_NAME" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              echo "exists=true" >> "$GITHUB_OUTPUT"; exit 0
+            fi
+            echo "release $GITHUB_REF_NAME not ready (attempt $i) — waiting 10s"; sleep 10
+          done
+          echo "::warning::release $GITHUB_REF_NAME not found after wait — skipping installer attach."
+          echo "exists=false" >> "$GITHUB_OUTPUT"
+
+      - name: Attach installer to GitHub Release
+        if: steps.rel.outputs.exists == 'true'
+        uses: softprops/action-gh-release@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: ${{ runner.os == 'Windows' && 'release/*.exe' || 'release/*.dmg' }}
+          fail_on_unmatched_files: true
 
   # --------------------------------------------------------------------------
   # Publish to the live COS update feed — RELEASES ONLY, behind the admin

@@ -60,6 +60,23 @@ jobs:
           tag_name: ${{ steps.meta.outputs.tag }}
           name: v${{ steps.meta.outputs.version }}
           generate_release_notes: true
+          # The platform installers themselves are attached by the per-platform
+          # workflows (build-android.yaml / desktop.yml) which finish on their own
+          # runners; this block just documents where each lives. append_body keeps
+          # the auto-generated changelog above this table.
+          append_body: true
+          body: |
+            ## 📦 Downloads
+
+            | Platform | How to get it |
+            |----------|---------------|
+            | 🍎 **macOS** | The `.dmg` in Assets below (`x64` for Intel, `arm64` for Apple Silicon) |
+            | 🪟 **Windows** | The `.exe` installer in Assets below |
+            | 🤖 **Android** | The `.apk` in Assets below (sideload), or [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
+            | 📱 **iOS** | ${{ vars.IOS_APP_STORE_URL != '' && format('[App Store / TestFlight]({0})', vars.IOS_APP_STORE_URL) || 'TestFlight beta (public link pending — set repo variable `IOS_APP_STORE_URL`)' }} |
+            | 🌐 **Web** | The `nexior-dist-*.tar.gz` below (self-host) |
+
+            > ⚠️ The desktop apps are currently an **unsigned beta**: on macOS, right-click → Open to bypass Gatekeeper; on Windows, click "Run anyway" on the SmartScreen prompt. They switch to signed builds automatically once the signing certificates are configured.
           files: |
             nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz
             nexior-dist-${{ steps.meta.outputs.safe_tag }}.tar.gz.sha256
