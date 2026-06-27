@@ -8,6 +8,7 @@ export interface IMaestroConfig {
   langs?: string[];
   aspect?: string; // '9:16' | '16:9' | '1:1'
   duration?: number;
+  quality?: string; // 'draft' | 'standard' | 'premium'
   callback_url?: string;
 }
 
