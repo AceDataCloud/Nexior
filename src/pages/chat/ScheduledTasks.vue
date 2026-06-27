@@ -61,7 +61,6 @@
       class="run-history-drawer"
     >
       <div v-if="selectedTask" class="run-context">
-        <div class="run-context-title">{{ selectedTask.name }}</div>
         <div class="run-context-meta">
           <span>{{ scheduleLabel(selectedTask.schedule) }}</span>
           <span>{{ selectedTask.template.model }}</span>
@@ -83,7 +82,6 @@
           @keydown.enter="openRun(run)"
           @keydown.space.prevent="openRun(run)"
         >
-          <div class="run-marker" :class="`status-${run.status}`" />
           <div class="run-body">
             <div class="run-line">
               <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
@@ -94,7 +92,9 @@
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
             <div class="run-sub">
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
-              <span v-if="run.error_code" class="run-error">{{ run.error_code }}</span>
+              <span v-if="run.error_code || run.error_message" class="run-error" :title="runErrorText(run)">
+                {{ runErrorText(run) }}
+              </span>
             </div>
           </div>
           <div class="run-action">
@@ -406,6 +406,9 @@ export default defineComponent({
     runTagType(status: string) {
       return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
     },
+    runErrorText(run: IScheduledRun) {
+      return run.error_message || run.error_code?.replace(/_/g, ' ') || '';
+    },
     scheduleLabel(s: IScheduleSpec) {
       if (s.type === 'interval') return `每 ${s.interval_seconds / 60} 分钟`;
       if (s.type === 'cron') return `Cron: ${s.cron}`;
@@ -438,12 +441,10 @@ export default defineComponent({
   border-radius: 8px;
   padding: 14px 16px;
   cursor: pointer;
-  box-shadow: var(--app-shadow-sm, 0 1px 2px rgba(15, 23, 42, 0.04));
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition: background 0.16s, border-color 0.16s;
   &:hover {
-    border-color: rgba(var(--app-brand-rgb, 39, 113, 134), 0.28);
-    box-shadow: var(--app-shadow-md, 0 8px 20px rgba(15, 23, 42, 0.08));
-    transform: translateY(-1px);
+    background: var(--el-fill-color-lighter);
+    border-color: var(--el-border-color);
   }
 }
 .task-header {
@@ -456,33 +457,28 @@ export default defineComponent({
 .task-actions { display: flex; gap: 6px; align-items: center; }
 .task-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; font-size: 12px; color: var(--el-text-color-secondary); }
 .task-prompt { font-size: 13px; color: var(--el-text-color-regular); white-space: pre-line; max-height: 48px; overflow: hidden; }
-.task-last-output { font-size: 12px; color: var(--el-text-color-secondary); margin-top: 8px; padding: 8px 10px; border-radius: 6px; background: var(--app-bg-section, var(--el-fill-color-light)); font-style: italic; }
+.task-last-output { font-size: 12px; color: var(--el-text-color-secondary); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--app-border-subtle, var(--el-border-color-lighter)); }
 .task-footer { display: flex; justify-content: space-between; font-size: 11px; color: var(--el-text-color-secondary); margin-top: 8px; }
 .error-hint { color: var(--el-color-danger); }
 .empty { padding: 60px 0; }
-.run-context { margin-bottom: 16px; padding: 14px 16px; border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter)); border-radius: 8px; background: linear-gradient(135deg, rgba(var(--app-brand-rgb, 39, 113, 134), 0.08), var(--app-bg-surface, var(--el-bg-color))); }
-.run-context-title { font-size: 15px; font-weight: 650; color: var(--el-text-color-primary); }
-.run-context-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--el-text-color-secondary); }
-.run-context-meta span { padding: 2px 8px; border-radius: 999px; background: rgba(var(--app-brand-rgb, 39, 113, 134), 0.08); }
-.run-context-prompt { margin-top: 10px; font-size: 12px; line-height: 1.55; color: var(--el-text-color-regular); white-space: pre-line; max-height: 64px; overflow: hidden; }
+.run-context { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--app-border-subtle, var(--el-border-color-lighter)); }
+.run-context-meta { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; color: var(--el-text-color-secondary); }
+.run-context-meta span + span::before { content: '·'; margin-right: 8px; color: var(--el-text-color-placeholder); }
+.run-context-prompt { margin-top: 8px; font-size: 12px; line-height: 1.55; color: var(--el-text-color-secondary); white-space: pre-line; max-height: 48px; overflow: hidden; }
 .run-list { display: flex; flex-direction: column; gap: 10px; }
-.run-item { display: flex; gap: 12px; align-items: stretch; padding: 12px 12px 12px 10px; border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter)); border-radius: 8px; background: var(--app-bg-surface, var(--el-bg-color-overlay)); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04); transition: border-color 0.16s, background 0.16s, box-shadow 0.16s, transform 0.16s; }
+.run-item { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter)); border-radius: 8px; background: var(--app-bg-surface, var(--el-bg-color-overlay)); transition: background 0.16s, border-color 0.16s; }
 .run-item.clickable { cursor: pointer; }
-.run-item.clickable:hover, .run-item.clickable:focus-visible { border-color: rgba(var(--app-brand-rgb, 39, 113, 134), 0.34); background: linear-gradient(135deg, rgba(var(--app-brand-rgb, 39, 113, 134), 0.06), var(--app-bg-surface, var(--el-bg-color-overlay))); box-shadow: var(--app-shadow-md, 0 8px 20px rgba(15, 23, 42, 0.08)); transform: translateY(-1px); outline: none; }
-.run-marker { width: 4px; border-radius: 999px; background: var(--el-color-info-light-5); flex-shrink: 0; }
-.run-marker.status-success { background: var(--el-color-success); }
-.run-marker.status-failed { background: var(--el-color-danger); }
-.run-marker.status-running, .run-marker.status-queued, .run-marker.status-needs_user_input { background: var(--el-color-warning); }
+.run-item.clickable:hover, .run-item.clickable:focus-visible { background: var(--el-fill-color-lighter); border-color: var(--el-border-color); outline: none; }
 .run-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .run-line { display: flex; gap: 8px; align-items: center; }
-.run-title { min-width: 0; flex: 1; font-size: 14px; font-weight: 650; color: var(--el-text-color-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.run-title { min-width: 0; flex: 1; font-size: 14px; font-weight: 600; color: var(--el-text-color-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .run-tag { flex-shrink: 0; }
 .run-preview { font-size: 12px; line-height: 1.5; color: var(--el-text-color-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.run-sub { display: flex; gap: 10px; align-items: center; }
+.run-sub { display: flex; gap: 10px; align-items: center; min-width: 0; }
 .run-time { font-size: 12px; color: var(--el-text-color-secondary); }
-.run-error { font-size: 11px; color: var(--el-color-danger); }
+.run-error { min-width: 0; font-size: 11px; color: var(--el-text-color-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .run-action { display: flex; align-items: center; align-self: center; flex-shrink: 0; }
-.run-arrow { color: rgba(var(--app-brand-rgb, 39, 113, 134), 0.76); font-size: 12px; flex-shrink: 0; }
+.run-arrow { color: var(--el-text-color-secondary); font-size: 12px; flex-shrink: 0; }
 .run-noconv { font-size: 11px; color: var(--el-text-color-secondary); flex-shrink: 0; }
 .hint { font-size: 11px; color: var(--el-text-color-secondary); margin-top: 4px; }
 .jitter-hint { font-size: 11px; color: var(--el-text-color-secondary); margin-left: 8px; }
