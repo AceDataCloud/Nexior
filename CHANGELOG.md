@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 08:40:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 09:47:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.288.1
+
+Sat, 27 Jun 2026 09:47:34 GMT
+
+### Patches
+
+- fix(balance): live-refresh the Credits pill after generations across all service modules (dev@acedata.cloud)
 
 ## 3.288.0
 
