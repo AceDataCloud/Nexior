@@ -71,6 +71,8 @@ export interface IChatModelGroup {
   getDisplayName: () => string;
   getDescription: () => string;
   models: IChatModel[];
+  // Realtime voice call is only wired up for the OpenAI (ChatGPT) service.
+  isVoiceCallSupported?: boolean;
 }
 
 interface IError {

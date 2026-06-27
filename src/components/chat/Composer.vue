@@ -88,7 +88,13 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-tooltip class="box-item" effect="dark" :content="$t('realtime.callTooltip')" placement="top">
+      <el-tooltip
+        v-if="isVoiceCallSupported"
+        class="box-item"
+        effect="dark"
+        :content="$t('realtime.callTooltip')"
+        placement="top"
+      >
         <span :class="{ btn: true, 'btn-voice': true }" role="button" @click="onStartCall">
           <font-awesome-icon icon="fa-solid fa-microphone" class="icon icon-voice" />
         </span>
@@ -196,6 +202,11 @@ export default defineComponent({
     },
     modelGroup() {
       return this.$store.state.chat.modelGroup;
+    },
+    isVoiceCallSupported(): boolean {
+      // The realtime voice call route + store only exist for ChatGPT, so the
+      // mic button stays hidden for other model groups (Grok, Gemini, …).
+      return this.modelGroup?.isVoiceCallSupported ?? false;
     },
     isFileSupported() {
       return this.model?.isFileSupported;

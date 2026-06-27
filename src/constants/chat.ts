@@ -278,7 +278,8 @@ export const CHAT_MODEL_GROUP_CHATGPT: IChatModelGroup = {
   name: 'chatgpt',
   getDisplayName: () => i18n.global.t('chat.modelGroup.chatgpt'),
   getDescription: () => i18n.global.t('chat.modelGroup.chatgptDescription'),
-  models: [CHAT_MODEL_GPT_5_4_MINI, CHAT_MODEL_GPT_5_5, CHAT_MODEL_GPT_5_4]
+  models: [CHAT_MODEL_GPT_5_4_MINI, CHAT_MODEL_GPT_5_5, CHAT_MODEL_GPT_5_4],
+  isVoiceCallSupported: true
 };
 
 export const CHAT_MODEL_GROUP_DEEPSEEK: IChatModelGroup = {
