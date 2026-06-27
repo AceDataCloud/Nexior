@@ -85,7 +85,10 @@ export default defineComponent({
       };
     },
     urls(): string[] {
-      return (this.fileList.map((file: UploadFile) => file?.response?.file_url).filter((u) => !!u) as string[]) || [];
+      return (
+        (this.fileList.map((file: UploadFile) => (file?.response as any)?.file_url).filter((u) => !!u) as string[]) ||
+        []
+      );
     },
     value(): string[] | undefined {
       return this.$store.state.grokvideo?.config?.reference_image_urls;
