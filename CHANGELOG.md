@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 07:39:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 08:40:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.288.0
+
+Sat, 27 Jun 2026 08:40:40 GMT
+
+### Minor changes
+
+- feat(grokvideo): dedicated layout, multi reference images, pending elapsed timer (dev@acedata.cloud)
 
 ## 3.287.0
 
