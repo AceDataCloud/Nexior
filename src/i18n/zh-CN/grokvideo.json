@@ -6,6 +6,7 @@
   "name.resolution": { "message": "分辨率", "description": "Label for resolution" },
   "name.duration": { "message": "时长", "description": "Label for duration" },
   "name.image": { "message": "图片", "description": "Label for input image" },
+  "name.referenceImages": { "message": "参考图", "description": "Label for reference images" },
   "name.required": { "message": "必填", "description": "Required badge" },
   "name.taskId": { "message": "任务 ID", "description": "Task id label" },
   "name.elapsed": { "message": "耗时", "description": "Elapsed time label" },
@@ -34,6 +35,10 @@
     "message": "可选的输入图片，用于图生视频。grok-imagine-video-1.5-preview 为必填。",
     "description": "Instructions for image input"
   },
+  "description.referenceImages": {
+    "message": "可选的参考图，用于引导生成视频的风格或内容（仅 grok-imagine-video 支持）。",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": { "message": "描述你的视频…", "description": "Placeholder for prompt" },
   "placeholder.select": { "message": "请选择", "description": "Placeholder for selects" },
   "model.default": { "message": "Grok Imagine 视频", "description": "Default model label" },
@@ -44,6 +49,7 @@
   "status.pending": { "message": "排队中", "description": "Pending status" },
   "status.processing": { "message": "生成中", "description": "Processing status" },
   "message.uploadExceed": { "message": "只能上传一张图片。", "description": "Upload exceed warning" },
+  "message.uploadReferenceExceed": { "message": "最多可上传 4 张参考图。", "description": "Reference images upload exceed warning" },
   "message.uploadError": { "message": "图片上传失败，请重试。", "description": "Upload error" },
   "message.downloadVideo": { "message": "下载视频", "description": "Download tooltip" },
   "message.modelRequiresImage": {

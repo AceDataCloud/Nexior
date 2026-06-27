@@ -27,6 +27,10 @@
     "message": "Bild",
     "description": "Label für das Eingabebild"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Pflichtfeld",
     "description": "Pflichtfeld-Label"
@@ -79,6 +83,10 @@
     "message": "Optionales Eingabebild für die Videoerstellung. grok-imagine-video-1.5-preview ist erforderlich.",
     "description": "Anweisungen für die Bild-Eingabe"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Beschreibe dein Video…",
     "description": "Platzhalter für die Eingabeaufforderung"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Es kann nur ein Bild hochgeladen werden.",
     "description": "Warnung, dass das Upload-Limit überschritten wurde"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Bild-Upload fehlgeschlagen, bitte erneut versuchen.",

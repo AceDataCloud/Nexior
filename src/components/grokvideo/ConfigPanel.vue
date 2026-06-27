@@ -7,6 +7,7 @@
       <resolution-selector class="mb-4" />
       <duration-selector class="mb-4" />
       <image-input class="mb-2" />
+      <reference-images-input v-if="supportsReferenceImages" class="mb-2" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
@@ -28,8 +29,10 @@ import DurationSelector from './config/DurationSelector.vue';
 import ResolutionSelector from './config/ResolutionSelector.vue';
 import RatioSelector from './config/RatioSelector.vue';
 import ImageInput from './config/ImageInput.vue';
+import ReferenceImagesInput from './config/ReferenceImagesInput.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
+import { isGrokVideoImageOnlyModel } from '@/constants';
 
 export default defineComponent({
   name: 'GrokVideoConfigPanel',
@@ -42,12 +45,18 @@ export default defineComponent({
     ResolutionSelector,
     RatioSelector,
     ImageInput,
+    ReferenceImagesInput,
     Consumption
   },
   emits: ['generate'],
   computed: {
     config() {
       return this.$store.state.grokvideo?.config;
+    },
+    // grok-imagine-video (1.0) accepts multiple reference images;
+    // grok-imagine-video-1.5-preview is single-image only.
+    supportsReferenceImages(): boolean {
+      return !isGrokVideoImageOnlyModel(this.$store.state.grokvideo?.config?.model);
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);

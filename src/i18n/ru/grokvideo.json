@@ -27,6 +27,10 @@
     "message": "Изображение",
     "description": "Метка для ввода изображения"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Обязательно",
     "description": "Значок обязательного поля"
@@ -79,6 +83,10 @@
     "message": "Необязательное входное изображение для генерации видео. grok-imagine-video-1.5-preview обязательно.",
     "description": "Инструкции по входному изображению"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Опишите ваше видео…",
     "description": "Заполнитель для подсказки"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Можно загрузить только одно изображение.",
     "description": "Предупреждение о превышении загрузки"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Ошибка загрузки изображения, пожалуйста, попробуйте снова.",
