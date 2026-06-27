@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 09:47:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 10:07:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.288.2
+
+Sat, 27 Jun 2026 10:07:08 GMT
+
+### Patches
+
+- feat(maestro): quality tier selector (draft/standard/premium) (dev@acedata.cloud)
 
 ## 3.288.1
 
