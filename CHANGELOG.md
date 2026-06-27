@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 17:01:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 18:05:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.289.4
+
+Sat, 27 Jun 2026 18:05:32 GMT
+
+### Patches
+
+- enable the iOS App Store download entry on the studio download page (dev@acedata.cloud)
 
 ## 3.289.3
 
