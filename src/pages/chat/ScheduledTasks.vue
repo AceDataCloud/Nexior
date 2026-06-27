@@ -137,6 +137,7 @@
 
         <el-form-item :label="$t('chat.scheduledTasks.form.schedule')">
           <el-radio-group v-model="form.scheduleType">
+            <el-radio value="minutely">{{ $t('chat.scheduledTasks.scheduleType.minutely') }}</el-radio>
             <el-radio value="daily">{{ $t('chat.scheduledTasks.scheduleType.daily') }}</el-radio>
             <el-radio value="hourly">{{ $t('chat.scheduledTasks.scheduleType.hourly') }}</el-radio>
             <el-radio value="weekly">{{ $t('chat.scheduledTasks.scheduleType.weekly') }}</el-radio>
@@ -203,7 +204,7 @@ const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shangh
 interface TaskForm {
   question: string;
   model: string;
-  scheduleType: 'daily' | 'hourly' | 'weekly' | 'cron';
+  scheduleType: 'minutely' | 'daily' | 'hourly' | 'weekly' | 'cron';
   dailyTime: string;
   weekday: number;
   cronExpr: string;
@@ -319,7 +320,9 @@ export default defineComponent({
           }
         }
       } else if (s.type === 'interval') {
-        scheduleType = s.interval_seconds === 3600 ? 'hourly' : 'cron';
+        if (s.interval_seconds === 60) scheduleType = 'minutely';
+        else if (s.interval_seconds === 3600) scheduleType = 'hourly';
+        else scheduleType = 'cron';
       }
       this.form = {
         question: task.template.question,
@@ -333,6 +336,9 @@ export default defineComponent({
     },
     buildSchedule(): IScheduleSpec {
       const { scheduleType, dailyTime, weekday, cronExpr } = this.form;
+      if (scheduleType === 'minutely') {
+        return { type: 'interval', interval_seconds: 60, tz: USER_TZ };
+      }
       if (scheduleType === 'hourly') {
         return { type: 'interval', interval_seconds: 3600, tz: USER_TZ };
       }
