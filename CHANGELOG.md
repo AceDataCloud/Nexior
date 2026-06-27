@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 18:05:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 18:08:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.290.0
+
+Sat, 27 Jun 2026 18:08:39 GMT
+
+### Minor changes
+
+- Add a 每分钟 (every-minute) frequency option to scheduled tasks (dev@acedata.cloud)
 
 ## 3.289.4
 
