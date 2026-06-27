@@ -27,6 +27,10 @@
     "message": "Imagem",
     "description": "Rótulo para entrada de imagem"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Obrigatório",
     "description": "Sinalizador de campo obrigatório"
@@ -79,6 +83,10 @@
     "message": "Imagem de entrada opcional, usada para gerar vídeo. grok-imagine-video-1.5-preview é obrigatório.",
     "description": "Instruções para a entrada de imagem"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Descreva seu vídeo…",
     "description": "Texto de espaço reservado para prompt"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Somente uma imagem pode ser enviada.",
     "description": "Aviso de excesso de upload"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Falha ao enviar a imagem, por favor tente novamente.",

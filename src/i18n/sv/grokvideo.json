@@ -27,6 +27,10 @@
     "message": "Bild",
     "description": "Etikett för inmatningsbild"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Obligatorisk",
     "description": "Obligatorisk märkning"
@@ -79,6 +83,10 @@
     "message": "Valfri inmatningsbild för att generera video. grok-imagine-video-1.5-preview är obligatorisk.",
     "description": "Instruktioner för bildinmatning"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Beskriv din video…",
     "description": "Platsinnehåll för prompt"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Endast en bild kan laddas upp.",
     "description": "Varning för överskridning av uppladdning"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Bilduppladdning misslyckades, försök igen.",

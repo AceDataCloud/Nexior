@@ -6,6 +6,7 @@
   "name.resolution": { "message": "Resolution", "description": "Label for resolution" },
   "name.duration": { "message": "Duration", "description": "Label for duration" },
   "name.image": { "message": "Image", "description": "Label for input image" },
+  "name.referenceImages": { "message": "Reference Images", "description": "Label for reference images" },
   "name.required": { "message": "Required", "description": "Required badge" },
   "name.taskId": { "message": "Task ID", "description": "Task id label" },
   "name.elapsed": { "message": "Elapsed", "description": "Elapsed time label" },
@@ -34,6 +35,10 @@
     "message": "Optional input image to animate (image-to-video). Required for grok-imagine-video-1.5-preview.",
     "description": "Instructions for image input"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": { "message": "Describe your video…", "description": "Placeholder for prompt" },
   "placeholder.select": { "message": "Please select", "description": "Placeholder for selects" },
   "model.default": { "message": "Grok Imagine Video", "description": "Default model label" },
@@ -44,6 +49,7 @@
   "status.pending": { "message": "Pending", "description": "Pending status" },
   "status.processing": { "message": "Processing", "description": "Processing status" },
   "message.uploadExceed": { "message": "You can upload only one image.", "description": "Upload exceed warning" },
+  "message.uploadReferenceExceed": { "message": "You can upload up to 4 reference images.", "description": "Reference images upload exceed warning" },
   "message.uploadError": { "message": "Image upload failed, please try again.", "description": "Upload error" },
   "message.downloadVideo": { "message": "Download video", "description": "Download tooltip" },
   "message.modelRequiresImage": {

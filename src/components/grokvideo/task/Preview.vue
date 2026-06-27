@@ -28,11 +28,15 @@
             <font-awesome-icon icon="fa-regular fa-clock" class="mr-1" />
             {{ $t('grokvideo.status.pending') }}
           </template>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('grokvideo.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
+          </p>
+          <p v-if="pendingElapsed !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('grokvideo.name.elapsed') }}: {{ pendingElapsed }}s
           </p>
         </el-alert>
       </div>
@@ -163,7 +167,9 @@ export default defineComponent({
   },
   data() {
     return {
-      grokVideoLogo: GROKVIDEO_LOGO
+      grokVideoLogo: GROKVIDEO_LOGO,
+      nowTs: Date.now(),
+      timer: 0
     };
   },
   computed: {
@@ -172,9 +178,43 @@ export default defineComponent({
     },
     inputImage(): string | undefined {
       return this.modelValue?.request?.image_url;
+    },
+    // Live elapsed seconds shown while a task is still pending (no upstream
+    // progress %, so elapsed time is the honest signal during the 1-2 min wait).
+    pendingElapsed(): number | undefined {
+      const created = parseFloat((this.modelValue?.created_at || '').toString());
+      if (!created) {
+        return undefined;
+      }
+      return Math.max(0, Math.floor(this.nowTs / 1000 - created));
     }
   },
+  watch: {
+    'modelValue.response': {
+      handler(response) {
+        if (response) {
+          this.stopTimer();
+        }
+      }
+    }
+  },
+  mounted() {
+    if (!this.modelValue?.response) {
+      this.timer = window.setInterval(() => {
+        this.nowTs = Date.now();
+      }, 1000);
+    }
+  },
+  beforeUnmount() {
+    this.stopTimer();
+  },
   methods: {
+    stopTimer() {
+      if (this.timer) {
+        window.clearInterval(this.timer);
+        this.timer = 0;
+      }
+    },
     onDownload(videoUrl: string) {
       window.open(videoUrl, '_blank');
     }

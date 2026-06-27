@@ -27,6 +27,10 @@
     "message": "Kuva",
     "description": "Syöttokuvan etiketti"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Pakollinen",
     "description": "Pakollinen merkki"
@@ -79,6 +83,10 @@
     "message": "Valinnainen syötekuva videon tuottamiseen. grok-imagine-video-1.5-preview on pakollinen.",
     "description": "Ohjeet kuva syötteelle"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Kuvaile videota…",
     "description": "Kehotteen paikkamerkki"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Vain yksi kuva voidaan ladata.",
     "description": "Latausylitysvaroitus"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Kuvan lataaminen epäonnistui, yritä uudelleen.",

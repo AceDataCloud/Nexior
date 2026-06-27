@@ -27,6 +27,10 @@
     "message": "Image",
     "description": "Étiquette pour l'image d'entrée"
   },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
   "name.required": {
     "message": "Champ requis",
     "description": "Badge indiquant que le champ est obligatoire"
@@ -79,6 +83,10 @@
     "message": "Image d'entrée optionnelle pour générer une vidéo. grok-imagine-video-1.5-preview est requis.",
     "description": "Instructions pour l'entrée d'image"
   },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (grok-imagine-video only).",
+    "description": "Instructions for reference images"
+  },
   "placeholder.prompt": {
     "message": "Décrivez votre vidéo…",
     "description": "Espace réservé pour l'invite"
@@ -118,6 +126,10 @@
   "message.uploadExceed": {
     "message": "Vous ne pouvez téléverser qu'une seule image.",
     "description": "Avertissement sur le dépassement de téléversement"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
   },
   "message.uploadError": {
     "message": "Échec du téléversement de l'image, veuillez réessayer.",

@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Layout from '@/layouts/Seedance.vue';
+import Layout from '@/layouts/GrokVideo.vue';
 import ConfigPanel from '@/components/grokvideo/ConfigPanel.vue';
 import RecentPanel from '@/components/grokvideo/RecentPanel.vue';
 import { grokvideoOperator } from '@/operators';
@@ -140,6 +140,14 @@ export default defineComponent({
       }
       if (typeof cfg?.image_url === 'string' && !cfg.image_url.trim()) {
         delete cfg.image_url;
+      }
+      // Reference images are only supported by grok-imagine-video (1.0). Drop
+      // stale refs (e.g. uploaded on 1.0 then switched to 1.5-preview) and empties.
+      if (
+        isGrokVideoImageOnlyModel(cfg?.model) ||
+        !(Array.isArray(cfg?.reference_image_urls) && cfg.reference_image_urls.length)
+      ) {
+        delete cfg.reference_image_urls;
       }
 
       const hasImage = !!cfg?.image_url;
