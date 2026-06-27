@@ -288,7 +288,7 @@
     "description": "用于说明移动端与网页端共用账号"
   },
   "message.mobileIosHint": {
-    "message": "适用于 iPhone 和 iPad，可直接在线安装；如果系统拦截，也可以先下载 IPA 再分发。",
+    "message": "适用于 iPhone 和 iPad，可直接从 App Store 安装，与网页端共用账号和额度。",
     "description": "iOS 下载卡片说明"
   },
   "message.mobileIosPending": {
@@ -299,9 +299,17 @@
     "message": "即将推出",
     "description": "用于标记某个平台（如 iOS）即将开放下载的短状态标签"
   },
+  "message.mobileNowOnAppStore": {
+    "message": "已上架 App Store",
+    "description": "Status label shown on the iOS card when the app is live on the App Store"
+  },
   "button.getOnGooglePlay": {
     "message": "在 Google Play 上获取",
     "description": "Button label that opens the app's Google Play Store listing"
+  },
+  "button.getOnAppStore": {
+    "message": "在 App Store 下载",
+    "description": "Button label that opens the app's Apple App Store listing"
   },
   "message.mobileApkFallback": {
     "message": "无法访问 Google Play？可直接下载 APK 安装包。",
@@ -310,6 +318,10 @@
   "message.mobilePlayStoreHint": {
     "message": "扫码前往 Google Play",
     "description": "Hint under the QR code explaining that scanning it opens the Google Play listing"
+  },
+  "message.mobileAppStoreHint": {
+    "message": "扫码前往 App Store",
+    "description": "Hint under the QR code explaining that scanning it opens the App Store listing"
   },
   "message.mobileInstallNote": {
     "message": "iOS 首次安装企业或 Ad Hoc 包时，系统可能要求先在“设置 > 通用 > VPN 与设备管理”中信任证书。",
