@@ -1,4 +1,4 @@
-export type GrokVideoResolution = '480p' | '720p';
+export type GrokVideoResolution = '480p' | '720p' | '1080p';
 export type GrokVideoRatio = '1:1' | '16:9' | '9:16' | '4:3' | '3:4' | '3:2' | '2:3';
 
 export interface IGrokVideoConfig {

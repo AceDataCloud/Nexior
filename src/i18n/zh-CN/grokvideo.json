@@ -18,16 +18,16 @@
     "description": "Instructions for prompt input"
   },
   "description.model": {
-    "message": "选择 Grok Imagine 模型。grok-imagine-video 支持文生与图生视频；1.5-preview 仅支持图生视频。",
+    "message": "选择 Grok Imagine 模型。grok-imagine-video 支持文生与图生视频，时长最长 30 秒；1.5-preview 仅支持图生视频，时长最长 15 秒。",
     "description": "Instructions for model selection"
   },
   "description.ratio": { "message": "选择输出画面比例。", "description": "Instructions for aspect ratio" },
   "description.resolution": {
-    "message": "选择输出分辨率。分辨率越高，每秒消耗的额度越多。",
+    "message": "选择输出分辨率，支持 480p / 720p / 1080p。分辨率越高，消耗的额度越多。",
     "description": "Instructions for resolution"
   },
   "description.duration": {
-    "message": "视频时长（秒），按输出秒数计费。",
+    "message": "视频时长（秒）。grok-imagine-video 支持 1-30 秒，按时长分档计费；1.5-preview 支持 1-15 秒，按输出秒数计费。",
     "description": "Instructions for duration"
   },
   "description.image": {
