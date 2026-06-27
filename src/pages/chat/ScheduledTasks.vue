@@ -62,19 +62,32 @@
       <el-skeleton v-if="runsLoading" :rows="3" animated />
       <el-empty v-else-if="!runs.length" :description="$t('chat.scheduledTasks.noRuns')" />
       <div v-else class="run-list">
-        <div v-for="run in runs" :key="run.id" class="run-item">
-          <div class="run-status">
-            <el-tag size="small" :type="runTagType(run.status)">
-              {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
-            </el-tag>
+        <div
+          v-for="run in runs"
+          :key="run.id"
+          class="run-item"
+          :class="{ clickable: !!run.conversation_id }"
+          @click="openRun(run)"
+        >
+          <div class="run-body">
+            <div class="run-line">
+              <el-tag size="small" :type="runTagType(run.status)">
+                {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
+              </el-tag>
+              <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
+            </div>
+            <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
+            <div class="run-sub">
+              <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
+              <span v-if="run.error_code" class="run-error">{{ run.error_code }}</span>
+            </div>
           </div>
-          <div class="run-time">{{ formatTime(run.scheduled_at) }}</div>
-          <div v-if="run.conversation_id" class="run-link">
-            <el-button text size="small" @click="goToConversation(run.conversation_id)">
-              {{ $t('chat.scheduledTasks.viewResult') }}
-            </el-button>
-          </div>
-          <div v-if="run.error_code" class="run-error">{{ run.error_code }}</div>
+          <font-awesome-icon
+            v-if="run.conversation_id"
+            icon="fa-solid fa-chevron-right"
+            class="run-arrow"
+          />
+          <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
         </div>
       </div>
     </el-drawer>
@@ -358,9 +371,17 @@ export default defineComponent({
       await scheduledTasksOperator.deleteTask(this.token!, task.id);
       await this.loadTasks();
     },
-    goToConversation(id: string) {
-      const modelGroup = this.$store.state.chat?.modelGroup ?? 'chatgpt';
-      this.$router.push(`/${modelGroup}/conversations/${id}`);
+    openRun(run: IScheduledRun) {
+      if (!run.conversation_id) return;
+      // The route prefix must be a chat group that actually owns a
+      // /<group>/conversations/:id route. Prefer the run's own conversation
+      // group when it is one we can open; otherwise fall back to the current
+      // chat group (a modelGroup object — use its `.name`), then to chatgpt.
+      const known: string[] = this.modelGroups.map((g) => g.name);
+      const runGroup = run.conversation_model_group;
+      const fallback = this.$store.state.chat?.modelGroup?.name || 'chatgpt';
+      const modelGroup = runGroup && (known.length === 0 || known.includes(runGroup)) ? runGroup : fallback;
+      this.$router.push(`/${modelGroup}/conversations/${run.conversation_id}`);
     },
     stateTagType(state: string) {
       return state === 'enabled' ? 'success' : state === 'error' ? 'danger' : 'info';
@@ -417,10 +438,19 @@ export default defineComponent({
 .task-footer { display: flex; justify-content: space-between; font-size: 11px; color: var(--el-text-color-secondary); margin-top: 8px; }
 .error-hint { color: var(--el-color-danger); }
 .empty { padding: 60px 0; }
-.run-list { display: flex; flex-direction: column; gap: 10px; }
-.run-item { display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--el-border-color-lighter); }
+.run-list { display: flex; flex-direction: column; gap: 4px; }
+.run-item { display: flex; gap: 12px; align-items: center; padding: 10px 8px; border-bottom: 1px solid var(--el-border-color-lighter); border-radius: 6px; transition: background 0.15s; }
+.run-item.clickable { cursor: pointer; }
+.run-item.clickable:hover { background: var(--el-fill-color-light); }
+.run-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.run-line { display: flex; gap: 8px; align-items: center; }
+.run-title { font-size: 13px; font-weight: 500; color: var(--el-text-color-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.run-preview { font-size: 12px; color: var(--el-text-color-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.run-sub { display: flex; gap: 10px; align-items: center; }
 .run-time { font-size: 12px; color: var(--el-text-color-secondary); }
 .run-error { font-size: 11px; color: var(--el-color-danger); }
+.run-arrow { color: var(--el-text-color-secondary); font-size: 12px; flex-shrink: 0; }
+.run-noconv { font-size: 11px; color: var(--el-text-color-secondary); flex-shrink: 0; }
 .hint { font-size: 11px; color: var(--el-text-color-secondary); margin-top: 4px; }
 .jitter-hint { font-size: 11px; color: var(--el-text-color-secondary); margin-left: 8px; }
 </style>
