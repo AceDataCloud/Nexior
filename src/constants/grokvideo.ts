@@ -18,12 +18,24 @@ export const GROKVIDEO_DEFAULT_RATIO = GROKVIDEO_RATIO_16_9;
 
 export const GROKVIDEO_RESOLUTION_480P = '480p';
 export const GROKVIDEO_RESOLUTION_720P = '720p';
+export const GROKVIDEO_RESOLUTION_1080P = '1080p';
 export const GROKVIDEO_DEFAULT_RESOLUTION = GROKVIDEO_RESOLUTION_480P;
 
 export const GROKVIDEO_DEFAULT_DURATION = 8;
+
+// grok-imagine-video (1.0) supports up to 30s; grok-imagine-video-1.5-preview up to 15s.
+export const GROKVIDEO_MAX_DURATION_DEFAULT = 30;
+export const GROKVIDEO_MAX_DURATION_1_5_PREVIEW = 15;
+
+/** All selectable clip durations (seconds); filtered per-model by max duration. */
+export const GROKVIDEO_DURATION_OPTIONS = [3, 5, 6, 8, 10, 12, 15, 20, 25, 30];
 
 /** Models that only support image-to-video (require an input image). */
 export const GROKVIDEO_IMAGE_ONLY_MODELS = [GROKVIDEO_MODEL_1_5_PREVIEW];
 
 export const isGrokVideoImageOnlyModel = (model?: string): boolean =>
   !!model && GROKVIDEO_IMAGE_ONLY_MODELS.includes(model);
+
+/** Max clip duration (seconds) for the given model. */
+export const getGrokVideoMaxDuration = (model?: string): number =>
+  model === GROKVIDEO_MODEL_1_5_PREVIEW ? GROKVIDEO_MAX_DURATION_1_5_PREVIEW : GROKVIDEO_MAX_DURATION_DEFAULT;

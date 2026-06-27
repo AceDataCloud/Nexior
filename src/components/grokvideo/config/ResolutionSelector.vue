@@ -21,7 +21,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { GROKVIDEO_DEFAULT_RESOLUTION, GROKVIDEO_RESOLUTION_480P, GROKVIDEO_RESOLUTION_720P } from '@/constants';
+import {
+  GROKVIDEO_DEFAULT_RESOLUTION,
+  GROKVIDEO_RESOLUTION_480P,
+  GROKVIDEO_RESOLUTION_720P,
+  GROKVIDEO_RESOLUTION_1080P
+} from '@/constants';
 
 export default defineComponent({
   name: 'GrokVideoResolutionSelector',
@@ -32,7 +37,8 @@ export default defineComponent({
     return {
       options: [
         { value: GROKVIDEO_RESOLUTION_480P, label: '480p' },
-        { value: GROKVIDEO_RESOLUTION_720P, label: '720p' }
+        { value: GROKVIDEO_RESOLUTION_720P, label: '720p' },
+        { value: GROKVIDEO_RESOLUTION_1080P, label: '1080p' }
       ]
     };
   },

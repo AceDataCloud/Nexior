@@ -18,16 +18,16 @@
     "description": "Instructions for prompt input"
   },
   "description.model": {
-    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image; 1.5-preview is image-to-video only.",
+    "message": "Choose the Grok Imagine model. grok-imagine-video supports text and image up to 30s; 1.5-preview is image-to-video only up to 15s.",
     "description": "Instructions for model selection"
   },
   "description.ratio": { "message": "Select the output aspect ratio.", "description": "Instructions for aspect ratio" },
   "description.resolution": {
-    "message": "Select the output resolution. Higher resolution costs more credits per second.",
+    "message": "Select the output resolution. 480p / 720p / 1080p are supported; higher resolution costs more.",
     "description": "Instructions for resolution"
   },
   "description.duration": {
-    "message": "Video duration in seconds. Billed per output second.",
+    "message": "Video duration in seconds. grok-imagine-video supports 1-30s with banded pricing; 1.5-preview supports 1-15s and is billed per output second.",
     "description": "Instructions for duration"
   },
   "description.image": {

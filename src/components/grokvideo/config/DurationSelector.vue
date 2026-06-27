@@ -16,7 +16,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { GROKVIDEO_DEFAULT_DURATION } from '@/constants';
+import { GROKVIDEO_DEFAULT_DURATION, GROKVIDEO_DURATION_OPTIONS, getGrokVideoMaxDuration } from '@/constants';
 
 export default defineComponent({
   name: 'GrokVideoDurationSelector',
@@ -25,20 +25,17 @@ export default defineComponent({
     ElOption,
     InfoIcon
   },
-  data() {
-    return {
-      options: [
-        { value: 3, label: '3s' },
-        { value: 5, label: '5s' },
-        { value: 6, label: '6s' },
-        { value: 8, label: '8s' },
-        { value: 10, label: '10s' },
-        { value: 12, label: '12s' },
-        { value: 15, label: '15s' }
-      ]
-    };
-  },
   computed: {
+    model(): string | undefined {
+      return this.$store.state.grokvideo?.config?.model;
+    },
+    // grok-imagine-video supports up to 30s; grok-imagine-video-1.5-preview up to 15s.
+    maxDuration(): number {
+      return getGrokVideoMaxDuration(this.model);
+    },
+    options(): { value: number; label: string }[] {
+      return GROKVIDEO_DURATION_OPTIONS.filter((d) => d <= this.maxDuration).map((d) => ({ value: d, label: `${d}s` }));
+    },
     value: {
       get(): number | undefined {
         return this.$store.state.grokvideo?.config?.duration;
@@ -48,6 +45,14 @@ export default defineComponent({
           ...this.$store.state.grokvideo?.config,
           duration: val
         });
+      }
+    }
+  },
+  watch: {
+    // Switching to a model with a lower cap (e.g. 1.5-preview) clamps the value.
+    maxDuration(max: number) {
+      if (this.value && this.value > max) {
+        this.value = max;
       }
     }
   },
