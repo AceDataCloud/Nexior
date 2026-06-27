@@ -41,6 +41,9 @@ export interface IScheduledRun {
   llm_started_at?: number;
   llm_finished_at?: number;
   conversation_id?: string;
+  conversation_title?: string;
+  conversation_preview?: string;
+  conversation_model_group?: string;
   error_code?: string;
   error_message?: string;
 }
