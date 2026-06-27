@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 15:13:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 27 Jun 2026 16:24:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.289.2
+
+Sat, 27 Jun 2026 16:24:17 GMT
+
+### Patches
+
+- align scheduled run history drawer with Nexior design patterns (dev@acedata.cloud)
 
 ## 3.289.1
 
