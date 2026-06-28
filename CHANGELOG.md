@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 14:18:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 17:59:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.6
+
+Sun, 28 Jun 2026 17:59:26 GMT
+
+### Patches
+
+- fix(desktop): move electron-updater to dependencies so electron-builder bundles it into app.asar (the macOS/Windows app was crashing on launch with "Cannot find module 'electron-updater'") (dev@acedata.cloud)
 
 ## 3.291.5
 

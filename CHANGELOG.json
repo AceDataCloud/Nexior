@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 28 Jun 2026 17:59:26 GMT",
+      "version": "3.291.6",
+      "tag": "@acedatacloud/nexior_v3.291.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "b55c4ad8d451f5fe8b4b80d80e5a752fe5f61db1",
+            "comment": "fix(desktop): move electron-updater to dependencies so electron-builder bundles it into app.asar (the macOS/Windows app was crashing on launch with \"Cannot find module 'electron-updater'\")"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 28 Jun 2026 14:18:53 GMT",
       "version": "3.291.5",
       "tag": "@acedatacloud/nexior_v3.291.5",
