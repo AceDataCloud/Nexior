@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 07:19:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 07:30:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.1
+
+Sun, 28 Jun 2026 07:30:13 GMT
+
+### Patches
+
+- polish digitalhuman config panel to match maestro/Kling scenarios (dev@acedata.cloud)
 
 ## 3.291.0
 
