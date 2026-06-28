@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 07:30:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 07:50:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.2
+
+Sun, 28 Jun 2026 07:50:32 GMT
+
+### Patches
+
+- visual aspect-ratio chips for nanobanana to match other scenarios (dev@acedata.cloud)
 
 ## 3.291.1
 
