@@ -2,8 +2,11 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
       <!-- Face source -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('digitalhuman.name.face') }}</span>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.face') }}</h2>
+          <info-icon :content="$t('digitalhuman.description.face')" class="ml-1" />
+        </div>
         <el-radio-group v-model="faceMode" class="w-full mb-2" @change="onFaceModeChange">
           <el-radio-button value="video">{{ $t('digitalhuman.name.faceVideo') }}</el-radio-button>
           <el-radio-button value="photo">{{ $t('digitalhuman.name.facePhoto') }}</el-radio-button>
@@ -22,12 +25,13 @@
           icon="fa-solid fa-image"
           @change="onFacePhotoChange"
         />
-        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('digitalhuman.description.face') }}</p>
       </div>
 
       <!-- Voice source -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('digitalhuman.name.voice') }}</span>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.voice') }}</h2>
+        </div>
         <el-radio-group v-model="voiceMode" class="w-full mb-2" @change="onVoiceModeChange">
           <el-radio-button value="audio">{{ $t('digitalhuman.name.voiceAudio') }}</el-radio-button>
           <el-radio-button value="text">{{ $t('digitalhuman.name.voiceText') }}</el-radio-button>
@@ -53,16 +57,20 @@
       </div>
 
       <!-- Engine -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('digitalhuman.name.engine') }}</span>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.engine') }}</h2>
+        </div>
         <el-radio-group v-model="engine" class="w-full">
           <el-radio-button v-for="e in DIGITALHUMAN_ALLOWED_ENGINES" :key="e" :value="e">{{ e }}</el-radio-button>
         </el-radio-group>
       </div>
 
       <!-- Resolution -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('digitalhuman.name.resolution') }}</span>
+      <div class="field-block">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('digitalhuman.name.resolution') }}</h2>
+        </div>
         <el-radio-group v-model="resolution" class="w-full">
           <el-radio-button v-for="r in DIGITALHUMAN_ALLOWED_RESOLUTIONS" :key="r" :value="r">{{ r }}</el-radio-button>
         </el-radio-group>
@@ -84,6 +92,7 @@ import { defineComponent } from 'vue';
 import { ElButton, ElInput, ElRadioGroup, ElRadioButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
+import InfoIcon from '@/components/common/InfoIcon.vue';
 import FileInput from './config/FileInput.vue';
 import VoiceClone from './config/VoiceClone.vue';
 import { getConsumption } from '@/utils';
@@ -116,6 +125,7 @@ export default defineComponent({
     ElRadioGroup,
     ElRadioButton,
     Consumption,
+    InfoIcon,
     FileInput,
     VoiceClone,
     FontAwesomeIcon
@@ -233,3 +243,16 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.field-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.field-title {
+  font-size: 14px;
+  margin: 0;
+}
+</style>
