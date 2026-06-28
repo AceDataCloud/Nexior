@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "Autoryzuj umiejętności",
+    "description": "Wielokrotny wybór umiejętności do zadań zaplanowanych w trybie bezobsługowym"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "Wybierz umiejętności, które mogą być automatycznie wykonywane w tym zadaniu",
+    "description": "Placeholder dla autoryzacji umiejętności"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "Wybrane umiejętności mogą być wykonywane w tle bez potwierdzenia ręcznego; nie wybrane umiejętności mogą być jedynie podglądane lub czekać na potwierdzenie.",
+    "description": "Opis autoryzacji umiejętności"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "Niepołączone",
+    "description": "Brak połączenia z umiejętnością"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "Potwierdzenie autoryzacji bezobsługowej",
+    "description": "Tytuł potwierdzenia autoryzacji"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "To zadanie pozwoli na pominięcie potwierdzenia ręcznego dla {count} umiejętności w tle: {skills}. Te umiejętności mogą wysyłać wiadomości, publikować treści lub zapisywać w zewnętrznych usługach, proszę potwierdzić.",
+    "description": "Treść potwierdzenia autoryzacji"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },

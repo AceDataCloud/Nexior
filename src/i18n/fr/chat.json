@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "Autoriser les Skills",
+    "description": "Sélection multiple pour l'autorisation des skills dans les tâches planifiées sans supervision"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "Sélectionnez les Skills autorisés à s'exécuter automatiquement pour cette tâche",
+    "description": "Espace réservé pour l'autorisation des skills"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "Les Skills sélectionnés peuvent s'exécuter en arrière-plan lors des tâches planifiées sans confirmation manuelle ; les Skills non sélectionnés ne peuvent que prévisualiser ou attendre une confirmation.",
+    "description": "Explication de l'autorisation des skills"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "Non connecté",
+    "description": "skill manque de connexion"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "Confirmer l'autorisation sans supervision",
+    "description": "Titre de la confirmation d'autorisation"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "Cette tâche permettra à {count} Skills de s'exécuter en arrière-plan sans confirmation manuelle : {skills}. Ces Skills peuvent envoyer des messages, publier du contenu ou écrire dans des services externes, veuillez confirmer.",
+    "description": "Texte de confirmation d'autorisation"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },

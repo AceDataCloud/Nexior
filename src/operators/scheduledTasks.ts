@@ -26,6 +26,7 @@ export interface IScheduledTask {
     mcp_servers?: string[];
     max_turns?: number;
   };
+  unattended_policy?: IScheduledTaskUnattendedPolicy;
   run_count: number;
   last_output_snippet?: string;
   last_error?: string;
@@ -53,6 +54,32 @@ export type IScheduleSpec =
   | { type: 'interval'; interval_seconds: number; tz: string; ends_at?: number }
   | { type: 'once'; at: number; tz: string };
 
+export interface IScheduledTaskUnattendedPolicy {
+  mode: 'deny_all' | 'allow_selected_skills';
+  allowed_skills: string[];
+  expires_at?: number;
+}
+
+export interface IAuthorizableSkill {
+  slug: string;
+  name: string;
+  description: string;
+  when_to_use?: string;
+  required_connections: string[];
+  allowed_tools: string[];
+  source: string;
+  connected: boolean;
+  missing_connections: string[];
+}
+
+type ScheduledTaskPayload = {
+  name: string;
+  description?: string;
+  schedule: IScheduleSpec;
+  template: IScheduledTask['template'];
+  unattended_policy?: IScheduledTaskUnattendedPolicy;
+};
+
 class ScheduledTasksOperator {
   async listTasks(token: string): Promise<IScheduledTask[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_batch' }, { headers: headers(token) });
@@ -61,7 +88,7 @@ class ScheduledTasksOperator {
 
   async createTask(
     token: string,
-    payload: { name: string; description?: string; schedule: IScheduleSpec; template: IScheduledTask['template'] }
+    payload: ScheduledTaskPayload
   ): Promise<IScheduledTask> {
     const { data } = await axios.post(BASE, { action: 'create', ...payload }, { headers: headers(token) });
     return data;
@@ -70,7 +97,7 @@ class ScheduledTasksOperator {
   async updateTask(
     token: string,
     id: string,
-    patch: Partial<Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule'>>
+    patch: Partial<Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule' | 'unattended_policy'>>
   ): Promise<IScheduledTask> {
     const { data } = await axios.post(BASE, { action: 'update', id, ...patch }, { headers: headers(token) });
     return data;
@@ -82,6 +109,11 @@ class ScheduledTasksOperator {
 
   async listRuns(token: string, id: string): Promise<IScheduledRun[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_runs', id }, { headers: headers(token) });
+    return data?.items ?? [];
+  }
+
+  async listAuthorizableSkills(token: string): Promise<IAuthorizableSkill[]> {
+    const { data } = await axios.post(BASE, { action: 'retrieve_authorizable_skills' }, { headers: headers(token) });
     return data?.items ?? [];
   }
 }

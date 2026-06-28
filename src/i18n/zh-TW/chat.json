@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "授權 Skills",
+    "description": "定時任務無人值守授權 skill 多選"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "選擇允許此任務自動執行的 Skills",
+    "description": "授權 skill 占位符"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "選中的 Skills 可在定時任務後台執行時跳過人工確認；未選中的 Skills 仍只能預覽或等待確認。",
+    "description": "授權 skill 說明"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "未連接",
+    "description": "skill 缺少連接"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "確認無人值守授權",
+    "description": "授權確認標題"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "此任務將允許 {count} 個 Skill 在後台執行時跳過人工確認：{skills}。這些 Skill 可能會發送消息、發布內容或寫入外部服務，請確認。",
+    "description": "授權確認正文"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },
