@@ -34,7 +34,10 @@
             }}<span v-if="variant.title"> · {{ variant.title }}</span>
           </p>
           <video-player v-if="variant.output_url" :src="variant.output_url" />
-          <div class="operations mt-2">
+        </div>
+        <!-- all actions in one row: download (per variant) · remix · view code -->
+        <div class="operations">
+          <template v-for="(variant, vi) in variants" :key="vi">
             <el-button
               v-if="variant.output_url"
               type="info"
@@ -42,11 +45,10 @@
               class="btn-action"
               @click="onDownload($event, variant.output_url)"
             >
-              {{ $t('maestro.button.download') }}
+              <font-awesome-icon icon="fa-solid fa-download" class="mr-1" />
+              {{ $t('maestro.button.download') }}<span v-if="variants.length > 1"> · {{ variant.lang }}</span>
             </el-button>
-          </div>
-        </div>
-        <div class="operations">
+          </template>
           <el-button size="small" type="primary" class="btn-action" @click="onRemix">
             <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
             {{ $t('maestro.button.remix') }}
