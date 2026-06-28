@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 06:53:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 07:19:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.0
+
+Sun, 28 Jun 2026 07:19:45 GMT
+
+### Minor changes
+
+- Pre-authorize selected Skills for scheduled tasks (dev@acedata.cloud)
 
 ## 3.290.2
 
