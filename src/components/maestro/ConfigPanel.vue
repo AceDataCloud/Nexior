@@ -2,7 +2,7 @@
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
       <!-- Remix banner: iterating on a previous video -->
-      <el-alert v-if="isRemixing" :closable="false" type="info" class="mb-4">
+      <el-alert v-if="isRemixing" :closable="false" type="info" class="mb-5">
         <p class="text-xs mb-1">
           <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
           {{ $t('maestro.name.remixing') }}: {{ refTaskId }}
@@ -11,21 +11,30 @@
       </el-alert>
 
       <!-- Prompt -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.prompt') }}</span>
-        <el-input v-model="prompt" type="textarea" :rows="6" :placeholder="$t('maestro.placeholder.prompt')" />
-        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.prompt') }}</p>
-      </div>
+      <prompt-textarea
+        v-model="prompt"
+        class="mb-5"
+        :title="$t('maestro.name.prompt')"
+        :info="$t('maestro.description.prompt')"
+        :placeholder="$t('maestro.placeholder.prompt')"
+        :min-rows="6"
+      />
 
       <!-- Reference files -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.files') }}</span>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.files') }}</h2>
+          <info-icon :content="$t('maestro.description.files')" class="ml-1" />
+        </div>
         <file-urls-input />
       </div>
 
       <!-- Languages -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.langs') }}</span>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.langs') }}</h2>
+          <info-icon :content="$t('maestro.description.langs')" class="ml-1" />
+        </div>
         <el-select
           v-model="langs"
           multiple
@@ -35,29 +44,53 @@
         >
           <el-option v-for="l in MAESTRO_ALLOWED_LANGS" :key="l" :label="l" :value="l" />
         </el-select>
-        <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.langs') }}</p>
       </div>
 
       <!-- Aspect ratio -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.aspect') }}</span>
-        <el-radio-group v-model="aspect" class="w-full">
-          <el-radio-button v-for="a in MAESTRO_ALLOWED_ASPECTS" :key="a" :value="a">{{ a }}</el-radio-button>
-        </el-radio-group>
+      <div class="field-block mb-5">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.aspect') }}</h2>
+        </div>
+        <div class="ratio-items" role="radiogroup" :aria-label="$t('maestro.name.aspect')">
+          <div
+            v-for="opt in ratioOptions"
+            :key="opt.value"
+            class="ratio-item"
+            :class="{ active: aspect === opt.value }"
+            role="radio"
+            :aria-checked="aspect === opt.value"
+            :aria-label="opt.value"
+            tabindex="0"
+            @click="aspect = opt.value"
+            @keydown.enter.prevent="aspect = opt.value"
+            @keydown.space.prevent="aspect = opt.value"
+          >
+            <div class="ratio-preview">
+              <div class="ratio-rect" :style="{ width: opt.width + 'px', height: opt.height + 'px' }"></div>
+            </div>
+            <p class="ratio-name">{{ opt.value }}</p>
+          </div>
+        </div>
       </div>
 
       <!-- Duration -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.duration') }}</span>
-        <el-select v-model="duration" class="w-full">
+      <div class="field-row mb-4">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.duration') }}</h2>
+          <info-icon :content="$t('maestro.description.duration')" class="ml-1" />
+        </div>
+        <el-select v-model="duration" class="field-control">
           <el-option v-for="d in MAESTRO_ALLOWED_DURATIONS" :key="d" :label="`${d}s`" :value="d" />
         </el-select>
       </div>
 
       <!-- Quality (production tier) -->
-      <div class="mb-4">
-        <span class="text-sm font-bold mb-2 block">{{ $t('maestro.name.quality') }}</span>
-        <el-select v-model="quality" class="w-full">
+      <div class="field-row">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.quality') }}</h2>
+          <info-icon :content="$t('maestro.description.quality')" class="ml-1" />
+        </div>
+        <el-select v-model="quality" class="field-control">
           <el-option
             v-for="q in MAESTRO_ALLOWED_QUALITIES"
             :key="q"
@@ -80,9 +113,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElInput, ElSelect, ElOption, ElRadioGroup, ElRadioButton, ElAlert } from 'element-plus';
+import { ElButton, ElSelect, ElOption, ElAlert } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
+import InfoIcon from '@/components/common/InfoIcon.vue';
+import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FileUrlsInput from './config/FileUrlsInput.vue';
 import { getConsumption } from '@/utils';
 import {
@@ -98,17 +133,23 @@ import {
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 
+// Preview rectangle dimensions (px) for each aspect-ratio chip.
+const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
+  '9:16': { width: 15, height: 26 },
+  '16:9': { width: 26, height: 15 },
+  '1:1': { width: 20, height: 20 }
+};
+
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
     ElButton,
-    ElInput,
     ElSelect,
     ElOption,
-    ElRadioGroup,
-    ElRadioButton,
     ElAlert,
     Consumption,
+    InfoIcon,
+    PromptTextarea,
     FileUrlsInput,
     FontAwesomeIcon
   },
@@ -116,7 +157,6 @@ export default defineComponent({
   data() {
     return {
       MAESTRO_ALLOWED_LANGS,
-      MAESTRO_ALLOWED_ASPECTS,
       MAESTRO_ALLOWED_DURATIONS,
       MAESTRO_ALLOWED_QUALITIES
     };
@@ -127,6 +167,12 @@ export default defineComponent({
     },
     service() {
       return this.$store.state.maestro?.service;
+    },
+    ratioOptions(): { value: string; width: number; height: number }[] {
+      return MAESTRO_ALLOWED_ASPECTS.map((value) => ({
+        value,
+        ...(RATIO_PREVIEW[value] ?? { width: 20, height: 20 })
+      }));
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);
@@ -208,3 +254,87 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss" scoped>
+.field-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.field-title {
+  font-size: 14px;
+  margin: 0;
+}
+.field-block > .field-head {
+  margin-bottom: 8px;
+}
+.field-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.field-control {
+  width: 168px;
+}
+.ratio-items {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.ratio-item {
+  width: 52px;
+  height: 64px;
+  border: 1px solid var(--el-border-color);
+  background-color: var(--el-fill-color-lighter);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 10px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  .ratio-preview {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ratio-rect {
+      border: 1px solid var(--el-text-color-placeholder);
+      border-radius: 2px;
+    }
+  }
+
+  .ratio-name {
+    font-size: 12px;
+    margin: 0;
+    color: var(--el-text-color-primary);
+  }
+
+  &:hover {
+    background-color: var(--el-fill-color);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--el-color-primary);
+    box-shadow: 0 0 0 2px var(--el-color-primary-light-7);
+  }
+
+  &.active {
+    border-color: var(--el-color-primary);
+    background-color: var(--el-color-primary-light-9);
+
+    .ratio-rect {
+      border-color: var(--el-color-primary);
+    }
+  }
+}
+</style>

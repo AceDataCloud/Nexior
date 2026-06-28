@@ -20,7 +20,6 @@
         {{ $t('maestro.button.uploadFiles') }}
       </el-button>
     </el-upload>
-    <p class="text-xs text-[var(--el-text-color-secondary)] mt-1">{{ $t('maestro.description.files') }}</p>
   </div>
 </template>
 
