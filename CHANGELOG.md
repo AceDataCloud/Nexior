@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 08:02:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 08:24:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.4
+
+Sun, 28 Jun 2026 08:24:24 GMT
+
+### Patches
+
+- Allow scheduled tasks to pre-authorize selected MCP servers alongside Skills for unattended runs (dev@acedata.cloud)
 
 ## 3.291.3
 
