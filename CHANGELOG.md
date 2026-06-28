@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 08:24:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 14:18:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.5
+
+Sun, 28 Jun 2026 14:18:53 GMT
+
+### Patches
+
+- fix(desktop): ship the AceData brand icon for the macOS & Windows apps (was the default Electron icon) (dev@acedata.cloud)
 
 ## 3.291.4
 
