@@ -33,6 +33,9 @@ jobs:
       - name: Prepare metadata
         id: meta
         shell: bash
+        env:
+          # Optional override; falls back to the canonical URL shipped in the app.
+          IOS_APP_STORE_URL_OVERRIDE: ${{ vars.IOS_APP_STORE_URL }}
         run: |
           TAG="${GITHUB_REF_NAME}"
           SAFE_TAG="${TAG//\//-}"
@@ -41,9 +44,16 @@ jobs:
           else
             VERSION="${TAG#v}"
           fi
+          # iOS store link: prefer the repo-variable override, else the canonical
+          # URL the app already ships with (single source of truth in mobile.ts).
+          IOS_URL="${IOS_APP_STORE_URL_OVERRIDE:-}"
+          if [ -z "$IOS_URL" ]; then
+            IOS_URL=$(sed -nE "s/.*MOBILE_IOS_APP_STORE_URL *= *'([^']+)'.*/\1/p" src/constants/mobile.ts | head -n1)
+          fi
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
           echo "safe_tag=${SAFE_TAG}" >> "$GITHUB_OUTPUT"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "ios_url=${IOS_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Package dist
         shell: bash
@@ -73,7 +83,7 @@ jobs:
             | 🍎 **macOS** | The `.dmg` in Assets below (`x64` for Intel, `arm64` for Apple Silicon) |
             | 🪟 **Windows** | The `.exe` installer in Assets below |
             | 🤖 **Android** | The `.apk` in Assets below (sideload), or [Google Play](https://play.google.com/store/apps/details?id=com.acedatacloud.nexior) |
-            | 📱 **iOS** | ${{ vars.IOS_APP_STORE_URL != '' && format('[App Store / TestFlight]({0})', vars.IOS_APP_STORE_URL) || 'TestFlight beta (public link pending — set repo variable `IOS_APP_STORE_URL`)' }} |
+            | 📱 **iOS** | ${{ steps.meta.outputs.ios_url != '' && format('[App Store]({0})', steps.meta.outputs.ios_url) || 'TestFlight beta (coming soon)' }} |
             | 🌐 **Web** | The `nexior-dist-*.tar.gz` below (self-host) |
 
             > ⚠️ The desktop apps are currently an **unsigned beta**: on macOS, right-click → Open to bypass Gatekeeper; on Windows, click "Run anyway" on the SmartScreen prompt. They switch to signed builds automatically once the signing certificates are configured.
