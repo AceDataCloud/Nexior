@@ -610,5 +610,11 @@
   "scheduledTasks.form.time": { "message": "执行时间", "description": "时间字段" },
   "scheduledTasks.form.weekday": { "message": "星期", "description": "星期字段" },
   "scheduledTasks.form.cron": { "message": "Cron 表达式", "description": "cron 表达式字段" },
+  "scheduledTasks.form.skills": { "message": "授权 Skills", "description": "定时任务无人值守授权 skill 多选" },
+  "scheduledTasks.form.skillsPlaceholder": { "message": "选择允许此任务自动执行的 Skills", "description": "授权 skill 占位符" },
+  "scheduledTasks.form.skillsHint": { "message": "选中的 Skills 可在定时任务后台执行时跳过人工确认；未选中的 Skills 仍只能预览或等待确认。", "description": "授权 skill 说明" },
+  "scheduledTasks.form.skillMissing": { "message": "未连接", "description": "skill 缺少连接" },
+  "scheduledTasks.form.skillsConfirmTitle": { "message": "确认无人值守授权", "description": "授权确认标题" },
+  "scheduledTasks.form.skillsConfirm": { "message": "此任务将允许 {count} 个 Skill 在后台执行时跳过人工确认：{skills}。这些 Skill 可能会发送消息、发布内容或写入外部服务，请确认。", "description": "授权确认正文" },
   "scheduledTasks.form.required": { "message": "请填写任务名称和提示词", "description": "必填项验证" }
 }

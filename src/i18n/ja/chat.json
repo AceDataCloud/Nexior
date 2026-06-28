@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "権限を付与する Skills",
+    "description": "定期タスクの無人権限付与のための Skills の複数選択"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "このタスクの自動実行を許可する Skills を選択",
+    "description": "権限付与の skill プレースホルダー"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "選択した Skills は定期タスクのバックグラウンド実行時に人工確認をスキップできます；未選択の Skills はプレビューまたは確認待ちのままとなります。",
+    "description": "権限付与の skill 説明"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "未接続",
+    "description": "skill が接続されていません"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "無人権限付与の確認",
+    "description": "権限付与確認のタイトル"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "このタスクは {count} 個の Skill がバックグラウンドで実行される際に人工確認をスキップすることを許可します：{skills}。これらの Skill はメッセージを送信したり、コンテンツを公開したり、外部サービスに書き込んだりする可能性がありますので、ご確認ください。",
+    "description": "権限付与確認の本文"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },

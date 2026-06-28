@@ -160,6 +160,36 @@
         <el-form-item v-if="form.scheduleType === 'cron'" :label="$t('chat.scheduledTasks.form.cron')">
           <el-input v-model="form.cronExpr" placeholder="0 9 * * *" />
         </el-form-item>
+
+        <el-form-item :label="$t('chat.scheduledTasks.form.skills')">
+          <el-select
+            v-model="form.authorizedSkills"
+            style="width: 100%"
+            multiple
+            filterable
+            collapse-tags
+            collapse-tags-tooltip
+            :loading="skillsLoading"
+            :placeholder="$t('chat.scheduledTasks.form.skillsPlaceholder')"
+            @visible-change="onSkillSelectVisible"
+          >
+            <el-option
+              v-for="skill in authorizableSkills"
+              :key="skill.slug"
+              :label="skillLabel(skill)"
+              :value="skill.slug"
+              :disabled="!skill.connected"
+            >
+              <div class="skill-option">
+                <span class="skill-option-name">{{ skillLabel(skill) }}</span>
+                <span v-if="!skill.connected" class="skill-option-missing">
+                  {{ $t('chat.scheduledTasks.form.skillMissing') }}
+                </span>
+              </div>
+            </el-option>
+          </el-select>
+          <div class="hint">{{ $t('chat.scheduledTasks.form.skillsHint') }}</div>
+        </el-form-item>
       </el-form>
 
       <template #footer>
@@ -195,7 +225,7 @@ import {
   ElMessage,
   ElMessageBox
 } from 'element-plus';
-import { scheduledTasksOperator, IScheduledTask, IScheduledRun, IScheduleSpec } from '@/operators/scheduledTasks';
+import { scheduledTasksOperator, IScheduledTask, IScheduledRun, IScheduleSpec, IAuthorizableSkill } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
 import { IChatModelGroup } from '@/models';
 
@@ -208,6 +238,7 @@ interface TaskForm {
   dailyTime: string;
   weekday: number;
   cronExpr: string;
+  authorizedSkills: string[];
 }
 
 export default defineComponent({
@@ -237,11 +268,13 @@ export default defineComponent({
       runs: [] as IScheduledRun[],
       loading: false,
       runsLoading: false,
+      skillsLoading: false,
       saving: false,
       showCreateDialog: false,
       showRunHistory: false,
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
+      authorizableSkills: [] as IAuthorizableSkill[],
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       form: this.emptyForm() as TaskForm
     };
@@ -269,7 +302,8 @@ export default defineComponent({
         scheduleType: 'daily',
         dailyTime: '09:00',
         weekday: 1,
-        cronExpr: '0 9 * * *'
+        cronExpr: '0 9 * * *',
+        authorizedSkills: []
       };
     },
     // The task name is no longer a separate field — derive a short label from the prompt.
@@ -330,9 +364,11 @@ export default defineComponent({
         scheduleType,
         dailyTime,
         weekday,
-        cronExpr
+        cronExpr,
+        authorizedSkills: task.unattended_policy?.mode === 'allow_selected_skills' ? task.unattended_policy.allowed_skills || [] : []
       };
       this.showCreateDialog = true;
+      void this.loadAuthorizableSkills();
     },
     buildSchedule(): IScheduleSpec {
       const { scheduleType, dailyTime, weekday, cronExpr } = this.form;
@@ -359,10 +395,21 @@ export default defineComponent({
       }
       this.saving = true;
       try {
+        if (this.form.authorizedSkills.length > 0) {
+          await ElMessageBox.confirm(this.authorizationConfirmText(), this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string, {
+            type: 'warning',
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          });
+        }
+        const authorizedSkills = [...this.form.authorizedSkills];
         const payload = {
           name: this.deriveName(this.form.question),
           schedule: this.buildSchedule(),
-          template: { model: this.form.model, question: this.form.question }
+          template: { model: this.form.model, question: this.form.question, skills: authorizedSkills },
+          unattended_policy: authorizedSkills.length
+            ? { mode: 'allow_selected_skills' as const, allowed_skills: authorizedSkills }
+            : { mode: 'deny_all' as const, allowed_skills: [] }
         };
         if (this.editingTask) {
           await scheduledTasksOperator.updateTask(this.token!, this.editingTask.id, payload);
@@ -379,6 +426,33 @@ export default defineComponent({
       } finally {
         this.saving = false;
       }
+    },
+    async loadAuthorizableSkills(force = false) {
+      if (!this.token || this.skillsLoading || (!force && this.authorizableSkills.length)) return;
+      this.skillsLoading = true;
+      try {
+        this.authorizableSkills = await scheduledTasksOperator.listAuthorizableSkills(this.token);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      } finally {
+        this.skillsLoading = false;
+      }
+    },
+    onSkillSelectVisible(visible: boolean) {
+      if (visible) void this.loadAuthorizableSkills(true);
+    },
+    skillLabel(skill: IAuthorizableSkill) {
+      return skill.name || skill.slug;
+    },
+    authorizationConfirmText() {
+      const selected = new Set(this.form.authorizedSkills);
+      const names = this.authorizableSkills
+        .filter((skill) => selected.has(skill.slug))
+        .map((skill) => this.skillLabel(skill));
+      return this.$t('chat.scheduledTasks.form.skillsConfirm', {
+        count: selected.size,
+        skills: names.length ? names.join(', ') : Array.from(selected).join(', ')
+      }) as string;
     },
     async toggleState(task: IScheduledTask, enabled: boolean) {
       await scheduledTasksOperator.updateTask(this.token!, task.id, {
@@ -488,4 +562,7 @@ export default defineComponent({
 .run-noconv { font-size: 11px; color: var(--el-text-color-secondary); flex-shrink: 0; }
 .hint { font-size: 11px; color: var(--el-text-color-secondary); margin-top: 4px; }
 .jitter-hint { font-size: 11px; color: var(--el-text-color-secondary); margin-left: 8px; }
+.skill-option { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; }
+.skill-option-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.skill-option-missing { flex-shrink: 0; font-size: 11px; color: var(--el-text-color-secondary); }
 </style>

@@ -680,6 +680,24 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "Authorized Skills"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "Select Skills this task may run automatically"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "Selected Skills may skip interactive confirmation during scheduled background runs. Unselected Skills can still preview or wait for confirmation."
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "Not connected"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "Confirm unattended authorization"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "This task will allow {count} Skill(s) to skip interactive confirmation in background runs: {skills}. These Skills may send messages, publish content, or write to external services. Please confirm."
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   }

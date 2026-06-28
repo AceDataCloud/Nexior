@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "Auktorisera Skills",
+    "description": "Schemalagda uppgifter för obevakad auktorisering av flera skills"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "Välj Skills som får denna uppgift att köras automatiskt",
+    "description": "Platshållare för auktorisering av skills"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "Valda Skills kan köras i bakgrunden utan manuell bekräftelse; icke-valda Skills kan fortfarande endast förhandsgranskas eller vänta på bekräftelse.",
+    "description": "Beskrivning av auktorisering av skills"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "Ej ansluten",
+    "description": "skill saknar anslutning"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "Bekräfta obevakad auktorisering",
+    "description": "Titel för auktoriseringsbekräftelse"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "Denna uppgift kommer att tillåta {count} Skills att köras i bakgrunden utan manuell bekräftelse: {skills}. Dessa Skills kan skicka meddelanden, publicera innehåll eller skriva till externa tjänster, vänligen bekräfta.",
+    "description": "Text för auktoriseringsbekräftelse"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },

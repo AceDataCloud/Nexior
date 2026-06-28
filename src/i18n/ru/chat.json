@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "Разрешить Skills",
+    "description": "Множественный выбор skill для автоматического выполнения запланированных задач"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "Выберите Skills, разрешенные для автоматического выполнения этой задачи",
+    "description": "Заполнитель для разрешения skill"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "Выбранные Skills могут выполнять действия в фоновом режиме без подтверждения; невыбранные Skills все еще требуют предварительного просмотра или ожидания подтверждения.",
+    "description": "Описание разрешения skill"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "Не подключено",
+    "description": "Отсутствует подключение к skill"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "Подтверждение автоматического разрешения",
+    "description": "Заголовок подтверждения разрешения"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "Эта задача позволит {count} Skill выполнять действия в фоновом режиме без подтверждения: {skills}. Эти Skill могут отправлять сообщения, публиковать контент или записывать в внешние сервисы, пожалуйста, подтвердите.",
+    "description": "Текст подтверждения разрешения"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },

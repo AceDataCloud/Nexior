@@ -681,6 +681,30 @@
   "scheduledTasks.form.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.form.skills": {
+    "message": "تفويض المهارات",
+    "description": "اختيار متعدد لتفويض المهارات في المهام المجدولة بدون تدخل بشري"
+  },
+  "scheduledTasks.form.skillsPlaceholder": {
+    "message": "اختر المهارات التي تسمح بتنفيذ هذه المهمة تلقائيًا",
+    "description": "نص العنصر النائب لتفويض المهارات"
+  },
+  "scheduledTasks.form.skillsHint": {
+    "message": "يمكن للمهارات المحددة تخطي التأكيد البشري عند تنفيذ المهام المجدولة في الخلفية؛ بينما المهارات غير المحددة لا تزال قادرة على المعاينة أو الانتظار للتأكيد.",
+    "description": "وصف تفويض المهارات"
+  },
+  "scheduledTasks.form.skillMissing": {
+    "message": "غير متصل",
+    "description": "تفتقر المهارة إلى الاتصال"
+  },
+  "scheduledTasks.form.skillsConfirmTitle": {
+    "message": "تأكيد التفويض بدون تدخل بشري",
+    "description": "عنوان تأكيد التفويض"
+  },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "ستسمح هذه المهمة لـ {count} مهارة بالتنفيذ في الخلفية دون تأكيد بشري: {skills}. قد ترسل هذه المهارات رسائل، أو تنشر محتوى، أو تكتب إلى خدمات خارجية، يرجى التأكيد.",
+    "description": "نص تأكيد التفويض"
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },
