@@ -206,6 +206,28 @@
           </el-select>
           <div class="hint">{{ $t('chat.scheduledTasks.form.skillsHint') }}</div>
         </el-form-item>
+
+        <el-form-item :label="$t('chat.scheduledTasks.form.mcpServers')">
+          <el-select
+            v-model="form.authorizedMcpServers"
+            style="width: 100%"
+            multiple
+            filterable
+            collapse-tags
+            collapse-tags-tooltip
+            :loading="skillsLoading"
+            :placeholder="$t('chat.scheduledTasks.form.mcpServersPlaceholder')"
+            @visible-change="onSkillSelectVisible"
+          >
+            <el-option
+              v-for="server in authorizableMcpServers"
+              :key="server.slug"
+              :label="mcpServerLabel(server)"
+              :value="server.slug"
+            />
+          </el-select>
+          <div class="hint">{{ $t('chat.scheduledTasks.form.mcpServersHint') }}</div>
+        </el-form-item>
       </el-form>
 
       <template #footer>
@@ -248,7 +270,8 @@ import {
   IScheduledTask,
   IScheduledRun,
   IScheduleSpec,
-  IAuthorizableSkill
+  IAuthorizableSkill,
+  IAuthorizableMcpServer
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
 import { IChatModelGroup } from '@/models';
@@ -263,6 +286,7 @@ interface TaskForm {
   weekday: number;
   cronExpr: string;
   authorizedSkills: string[];
+  authorizedMcpServers: string[];
 }
 
 export default defineComponent({
@@ -301,6 +325,7 @@ export default defineComponent({
       selectedTask: null as IScheduledTask | null,
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
+      authorizableMcpServers: [] as IAuthorizableMcpServer[],
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
       pageSize: 6,
@@ -341,7 +366,8 @@ export default defineComponent({
         dailyTime: '09:00',
         weekday: 1,
         cronExpr: '0 9 * * *',
-        authorizedSkills: []
+        authorizedSkills: [],
+        authorizedMcpServers: []
       };
     },
     // The task name is no longer a separate field — derive a short label from the prompt.
@@ -413,7 +439,14 @@ export default defineComponent({
         dailyTime,
         weekday,
         cronExpr,
-        authorizedSkills: task.unattended_policy?.mode === 'allow_selected_skills' ? task.unattended_policy.allowed_skills || [] : []
+        authorizedSkills:
+          task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
+            ? task.unattended_policy.allowed_skills || []
+            : [],
+        authorizedMcpServers:
+          task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
+            ? task.unattended_policy.allowed_mcp_servers || []
+            : []
       };
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
@@ -443,7 +476,7 @@ export default defineComponent({
       }
       this.saving = true;
       try {
-        if (this.form.authorizedSkills.length > 0) {
+        if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
           await ElMessageBox.confirm(this.authorizationConfirmText(), this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string, {
             type: 'warning',
             confirmButtonText: this.$t('common.button.confirm') as string,
@@ -451,13 +484,23 @@ export default defineComponent({
           });
         }
         const authorizedSkills = [...this.form.authorizedSkills];
+        const authorizedMcpServers = [...this.form.authorizedMcpServers];
         const payload = {
           name: this.deriveName(this.form.question),
           schedule: this.buildSchedule(),
-          template: { model: this.form.model, question: this.form.question, skills: authorizedSkills },
-          unattended_policy: authorizedSkills.length
-            ? { mode: 'allow_selected_skills' as const, allowed_skills: authorizedSkills }
-            : { mode: 'deny_all' as const, allowed_skills: [] }
+          template: {
+            model: this.form.model,
+            question: this.form.question,
+            skills: authorizedSkills,
+            mcp_servers: authorizedMcpServers
+          },
+          unattended_policy: authorizedSkills.length || authorizedMcpServers.length
+            ? {
+                mode: 'allow_selected' as const,
+                allowed_skills: authorizedSkills,
+                allowed_mcp_servers: authorizedMcpServers
+              }
+            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
         };
         if (this.editingTask) {
           await scheduledTasksOperator.updateTask(this.token!, this.editingTask.id, payload);
@@ -476,10 +519,12 @@ export default defineComponent({
       }
     },
     async loadAuthorizableSkills(force = false) {
-      if (!this.token || this.skillsLoading || (!force && this.authorizableSkills.length)) return;
+      if (!this.token || this.skillsLoading || (!force && (this.authorizableSkills.length || this.authorizableMcpServers.length))) return;
       this.skillsLoading = true;
       try {
-        this.authorizableSkills = await scheduledTasksOperator.listAuthorizableSkills(this.token);
+        const capabilities = await scheduledTasksOperator.listAuthorizableCapabilities(this.token);
+        this.authorizableSkills = capabilities.skills;
+        this.authorizableMcpServers = capabilities.mcp_servers;
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       } finally {
@@ -492,14 +537,23 @@ export default defineComponent({
     skillLabel(skill: IAuthorizableSkill) {
       return skill.name || skill.slug;
     },
+    mcpServerLabel(server: IAuthorizableMcpServer) {
+      return server.name || server.slug;
+    },
     authorizationConfirmText() {
       const selected = new Set(this.form.authorizedSkills);
+      const selectedMcp = new Set(this.form.authorizedMcpServers);
       const names = this.authorizableSkills
         .filter((skill) => selected.has(skill.slug))
         .map((skill) => this.skillLabel(skill));
+      const mcpNames = this.authorizableMcpServers
+        .filter((server) => selectedMcp.has(server.slug))
+        .map((server) => this.mcpServerLabel(server));
       return this.$t('chat.scheduledTasks.form.skillsConfirm', {
-        count: selected.size,
-        skills: names.length ? names.join(', ') : Array.from(selected).join(', ')
+        count: selected.size + selectedMcp.size,
+        skills: [...names, ...mcpNames].length
+          ? [...names, ...mcpNames].join(', ')
+          : [...Array.from(selected), ...Array.from(selectedMcp)].join(', ')
       }) as string;
     },
     async toggleState(task: IScheduledTask, enabled: boolean) {

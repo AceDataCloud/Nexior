@@ -615,7 +615,13 @@
   "scheduledTasks.form.skillsPlaceholder": { "message": "选择允许此任务自动执行的 Skills", "description": "授权 skill 占位符" },
   "scheduledTasks.form.skillsHint": { "message": "选中的 Skills 可在定时任务后台执行时跳过人工确认；未选中的 Skills 仍只能预览或等待确认。", "description": "授权 skill 说明" },
   "scheduledTasks.form.skillMissing": { "message": "未连接", "description": "skill 缺少连接" },
+  "scheduledTasks.form.mcpServers": { "message": "授权 MCP", "description": "定时任务无人值守授权 MCP server 多选" },
+  "scheduledTasks.form.mcpServersPlaceholder": { "message": "选择允许此任务自动加载的 MCP Servers", "description": "授权 MCP server 占位符" },
+  "scheduledTasks.form.mcpServersHint": { "message": "选中的 MCP Servers 可在定时任务后台加载并执行；未选中的 MCP Servers 不会在无人值守模式下加载。", "description": "授权 MCP server 说明" },
   "scheduledTasks.form.skillsConfirmTitle": { "message": "确认无人值守授权", "description": "授权确认标题" },
-  "scheduledTasks.form.skillsConfirm": { "message": "此任务将允许 {count} 个 Skill 在后台执行时跳过人工确认：{skills}。这些 Skill 可能会发送消息、发布内容或写入外部服务，请确认。", "description": "授权确认正文" },
+  "scheduledTasks.form.skillsConfirm": {
+    "message": "此任务将允许 {count} 个 Skill/MCP 在后台执行时跳过人工确认或加载限制：{skills}。它们可能会发送消息、发布内容或写入外部服务，请确认。",
+    "description": "授权确认正文"
+  },
   "scheduledTasks.form.required": { "message": "请填写任务名称和提示词", "description": "必填项验证" }
 }

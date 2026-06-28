@@ -695,11 +695,20 @@
   "scheduledTasks.form.skillMissing": {
     "message": "Not connected"
   },
+  "scheduledTasks.form.mcpServers": {
+    "message": "Authorized MCP"
+  },
+  "scheduledTasks.form.mcpServersPlaceholder": {
+    "message": "Select MCP servers this task may load automatically"
+  },
+  "scheduledTasks.form.mcpServersHint": {
+    "message": "Selected MCP servers may be loaded and used during scheduled background runs. Unselected MCP servers will not load in unattended mode."
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Confirm unattended authorization"
   },
   "scheduledTasks.form.skillsConfirm": {
-    "message": "This task will allow {count} Skill(s) to skip interactive confirmation in background runs: {skills}. These Skills may send messages, publish content, or write to external services. Please confirm."
+    "message": "This task will allow {count} Skill/MCP item(s) to skip interactive confirmation or load restrictions in background runs: {skills}. They may send messages, publish content, or write to external services. Please confirm."
   },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
