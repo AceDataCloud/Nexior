@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 07:50:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 08:02:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.3
+
+Sun, 28 Jun 2026 08:02:43 GMT
+
+### Patches
+
+- Redesign scheduled tasks page: el-card layout, page-tone background, filled status tags, larger radii, and client-side pagination for tasks and run history (dev@acedata.cloud)
 
 ## 3.291.2
 
