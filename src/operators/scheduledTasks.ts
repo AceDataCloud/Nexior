@@ -55,8 +55,9 @@ export type IScheduleSpec =
   | { type: 'once'; at: number; tz: string };
 
 export interface IScheduledTaskUnattendedPolicy {
-  mode: 'deny_all' | 'allow_selected_skills';
+  mode: 'deny_all' | 'allow_selected' | 'allow_selected_skills';
   allowed_skills: string[];
+  allowed_mcp_servers?: string[];
   expires_at?: number;
 }
 
@@ -70,6 +71,17 @@ export interface IAuthorizableSkill {
   source: string;
   connected: boolean;
   missing_connections: string[];
+}
+
+export interface IAuthorizableMcpServer {
+  slug: string;
+  name: string;
+  server_url: string;
+}
+
+export interface IAuthorizableCapabilities {
+  skills: IAuthorizableSkill[];
+  mcp_servers: IAuthorizableMcpServer[];
 }
 
 type ScheduledTaskPayload = {
@@ -86,10 +98,7 @@ class ScheduledTasksOperator {
     return data?.items ?? [];
   }
 
-  async createTask(
-    token: string,
-    payload: ScheduledTaskPayload
-  ): Promise<IScheduledTask> {
+  async createTask(token: string, payload: ScheduledTaskPayload): Promise<IScheduledTask> {
     const { data } = await axios.post(BASE, { action: 'create', ...payload }, { headers: headers(token) });
     return data;
   }
@@ -97,7 +106,9 @@ class ScheduledTasksOperator {
   async updateTask(
     token: string,
     id: string,
-    patch: Partial<Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule' | 'unattended_policy'>>
+    patch: Partial<
+      Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule' | 'unattended_policy'>
+    >
   ): Promise<IScheduledTask> {
     const { data } = await axios.post(BASE, { action: 'update', id, ...patch }, { headers: headers(token) });
     return data;
@@ -115,6 +126,14 @@ class ScheduledTasksOperator {
   async listAuthorizableSkills(token: string): Promise<IAuthorizableSkill[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_authorizable_skills' }, { headers: headers(token) });
     return data?.items ?? [];
+  }
+
+  async listAuthorizableCapabilities(token: string): Promise<IAuthorizableCapabilities> {
+    const { data } = await axios.post(BASE, { action: 'retrieve_authorizable_skills' }, { headers: headers(token) });
+    return {
+      skills: data?.skills ?? data?.items ?? [],
+      mcp_servers: data?.mcp_servers ?? []
+    };
   }
 }
 
