@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 06:21:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 06:53:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.290.2
+
+Sun, 28 Jun 2026 06:53:05 GMT
+
+### Patches
+
+- polish Maestro config panel to match Kling/Midjourney scenarios (dev@acedata.cloud)
 
 ## 3.290.1
 
