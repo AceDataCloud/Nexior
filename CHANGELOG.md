@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 27 Jun 2026 18:08:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 28 Jun 2026 06:21:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.290.1
+
+Sun, 28 Jun 2026 06:21:09 GMT
+
+### Patches
+
+- maestro: put download/remix/view-code in one row + add download icon (dev@acedata.cloud)
 
 ## 3.290.0
 
