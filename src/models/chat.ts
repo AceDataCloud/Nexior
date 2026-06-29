@@ -306,6 +306,8 @@ export interface IChatConversationResponse {
   tool_id?: string;
   tool_name?: string;
   tool_display_name?: string;
+  // 'client' ⇒ desktop runs this tool locally; worker pauses awaiting tool_results.
+  execution?: 'client' | 'server';
   input?: Record<string, unknown>;
   output?: string;
   is_error?: boolean;

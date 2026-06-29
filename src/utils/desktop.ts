@@ -54,6 +54,9 @@ export interface LocalExecBridge {
   available: true;
   listTools(): Promise<LocalToolSpec[]>;
   invoke(inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }>;
+  getConfig(): Promise<{ roots: string[]; mcp: { id: string; command: string; args: string[] }[] }>;
+  saveConfig(cfg: { roots: string[]; mcp: { id: string; command: string; args: string[] }[] }): Promise<boolean>;
+  pickFolder(): Promise<string | null>;
 }
 
 export function localExec(): LocalExecBridge | undefined {
