@@ -3,6 +3,10 @@ import path from 'node:path';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
 import { initUpdater } from './updater';
+import { registerLocalExec } from './local/ipc';
+import { registry } from './local/registry';
+import { setRoots } from './local/fs';
+import { load as loadLocalConfig } from './local/config';
 
 const DESKTOP_SCHEME = 'acedata-desktop';
 
@@ -79,6 +83,11 @@ if (!gotLock) {
     registerAppProtocol.serve();
     createWindow();
     initUpdater(() => mainWindow);
+    // Local tool execution: load authorized roots, boot MCP servers, wire IPC.
+    const localCfg = loadLocalConfig();
+    setRoots(localCfg.roots);
+    void registry.boot(localCfg.mcp);
+    registerLocalExec(() => mainWindow);
     // Windows cold-start protocol activation: URL is in this instance's argv.
     const coldUrl = process.argv.find((a) => a.startsWith(`${DESKTOP_SCHEME}://`));
     if (coldUrl) handleDeepLink(coldUrl);
