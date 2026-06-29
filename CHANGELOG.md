@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 03:26:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 03:56:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.11
+
+Mon, 29 Jun 2026 03:56:33 GMT
+
+### Patches
+
+- feat(desktop): renderer client-tool routing + local config IPC — inject local tools into aichat2 chat, run execution:'client' tools locally and resume via tool_results (desktop only) (dev@acedata.cloud)
 
 ## 3.291.10
 
