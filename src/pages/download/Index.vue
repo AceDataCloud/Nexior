@@ -524,6 +524,7 @@ export default defineComponent({
 
 .platform__text {
   margin: 0 0 22px;
+  min-height: 51px;
   font-size: 15px;
   line-height: 1.7;
   color: var(--el-text-color-regular);
@@ -584,7 +585,6 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-top: auto;
 }
 
 .platform__foot--stack {
