@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 03:24:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 03:25:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.9
+
+Mon, 29 Jun 2026 03:25:24 GMT
+
+### Patches
+
+- feat(desktop): frameless window chrome — macOS traffic lights / Windows WCO, draggable header (desktop-gated, P2) (dev@acedata.cloud)
+- feat(desktop): local tool execution foundation (electron/local) — fs/shell/MCP host + consent + registry + IPC, gated to desktop, inert until aichat2 client tools land (dev@acedata.cloud)
 
 ## 3.291.8
 
