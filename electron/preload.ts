@@ -47,3 +47,12 @@ contextBridge.exposeInMainWorld('desktop', {
   // hidden/minimized, unlike Web Notification). Resolves after dispatch.
   notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body })
 });
+
+// Local tool execution (desktop only): list authorized local tools and invoke
+// one. Each invoke is gated by main (sender-origin check + per-tool consent).
+contextBridge.exposeInMainWorld('localExec', {
+  available: true,
+  listTools: (): Promise<unknown[]> => ipcRenderer.invoke('local.tools.list'),
+  invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }> =>
+    ipcRenderer.invoke('local.tool.invoke', inv)
+});

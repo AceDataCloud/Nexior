@@ -29,9 +29,34 @@ export interface DesktopBridge {
 declare global {
   interface Window {
     desktop?: DesktopBridge;
+    localExec?: LocalExecBridge;
   }
 }
 
 export function desktopBridge(): DesktopBridge | undefined {
   return typeof window !== 'undefined' ? window.desktop : undefined;
 }
+
+/**
+ * Local tool execution bridge (desktop only). Lets aichat2 client-side tools
+ * run on the user's machine: list authorized local tools and invoke one. Each
+ * invoke is gated in the main process (sender-origin check + per-tool consent).
+ * `undefined` on web/native — callers must null-check.
+ */
+export interface LocalToolSpec {
+  name: string;
+  description: string;
+  input_schema: Record<string, unknown>;
+  source: 'builtin' | 'mcp';
+  mutates: boolean;
+}
+export interface LocalExecBridge {
+  available: true;
+  listTools(): Promise<LocalToolSpec[]>;
+  invoke(inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }>;
+}
+
+export function localExec(): LocalExecBridge | undefined {
+  return typeof window !== 'undefined' ? window.localExec : undefined;
+}
+
