@@ -132,8 +132,10 @@ function createWindow(): void {
   });
 
   // Serve the SPA over the privileged custom scheme (NOT file://) so the origin
-  // is real + whitelistable by AuthFrontend's frame-ancestors.
-  void mainWindow.loadURL(`${APP_ORIGIN}/index.html`);
+  // is real + whitelistable by AuthFrontend's frame-ancestors. Load the origin
+  // root, not /index.html — Vue Router would match the literal /index.html path
+  // to the catch-all and flash NotFound before redirecting.
+  void mainWindow.loadURL(`${APP_ORIGIN}/`);
 
   // Re-arm the readiness handshake on every (re)navigation: the old renderer's
   // listeners detached; the new one hasn't subscribed yet. Without this,
