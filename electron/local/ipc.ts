@@ -4,6 +4,7 @@ import { consentOk } from './consent';
 import { registry } from './registry';
 import { load, save } from './config';
 import { setRoots } from './fs';
+import { status, openPane, askMedia, promptAccessibility, type PaneKey } from './permissions';
 import type { LocalConfig, ToolInvoke } from './types';
 
 // Only the top-frame app://bundle renderer may drive local execution. Compare
@@ -50,5 +51,22 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     const win = getWin();
     const r = win ? await dialog.showOpenDialog(win, { properties: ['openDirectory'] }) : await dialog.showOpenDialog({ properties: ['openDirectory'] });
     return r.canceled ? null : r.filePaths[0];
+  });
+
+  // macOS TCC permission status + System Settings deep-links, surfaced in the
+  // shared LocalTools panel. No-ops off macOS (renderer hides the section).
+  ipcMain.handle('local.perm.status', (e) => {
+    gate(e);
+    return status();
+  });
+  ipcMain.handle('local.perm.openPane', (e, k: PaneKey) => {
+    gate(e);
+    if (k === 'accessibility') promptAccessibility();
+    openPane(k);
+    return true;
+  });
+  ipcMain.handle('local.perm.askMedia', (e, t: 'camera' | 'microphone') => {
+    gate(e);
+    return askMedia(t);
   });
 }
