@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 08:02:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 10:17:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.17
+
+Mon, 29 Jun 2026 10:17:46 GMT
+
+### Patches
+
+- fix(nanobanana): honor resolution for nano-banana-2 (dev@acedata.cloud)
 
 ## 3.291.16
 
