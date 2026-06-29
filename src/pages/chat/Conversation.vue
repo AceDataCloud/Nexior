@@ -138,7 +138,7 @@ export interface IData {
   // stream finalizes (so the conversation id + route are settled and the
   // `answering` flag isn't cleared mid-resume). At most one per turn — the
   // worker pauses after the first client tool. Null when none pending.
-  pendingClientTool: { toolId: string; name: string; input: Record<string, unknown> } | null;
+  pendingClientTools: { toolId: string; name: string; input: Record<string, unknown> }[];
   // Monotonic token for the in-flight deferred client-tool run. onStop() bumps
   // it to invalidate a run whose `localExec.invoke()` is still pending, so Stop
   // cancels the auto-resume even after the finalizer captured the pending tool.
@@ -166,7 +166,7 @@ export default defineComponent({
       question: '',
       references: [],
       localTools: [],
-      pendingClientTool: null,
+      pendingClientTools: [],
       clientToolRunId: 0,
       upload: false,
       answering: false,
@@ -311,7 +311,7 @@ export default defineComponent({
       this.references = [];
       // Drop any deferred desktop client tool from a prior turn so a new chat
       // never auto-runs a stale tool against the wrong conversation.
-      this.pendingClientTool = null;
+      this.pendingClientTools = [];
     },
     // Idempotent restore for the URL-pinned conversation. Bails on
     // missing token (credential.token watcher will retry), missing :id
@@ -436,7 +436,7 @@ export default defineComponent({
       // about-to-run local tool / auto-resume, not just the live stream. Bump
       // the run token too, so a deferred run already past the pending check
       // (localExec.invoke() in flight) skips its resume.
-      this.pendingClientTool = null;
+      this.pendingClientTools = [];
       this.clientToolRunId++;
       if (this.canceler) {
         this.canceler.abort();
@@ -700,39 +700,44 @@ export default defineComponent({
       );
     },
     /**
-     * Resume a paused conversation by submitting a tool result for the
-     * `ask_user_question` block on the last assistant message. Marks the
-     * pending block as `done` locally (so the card collapses immediately
-     * to the readonly summary), pushes a fresh pending assistant message,
-     * and runs the next streaming turn against `tool_results`.
+     * Resume a paused conversation by folding one-or-more tool results into
+     * the matching awaiting `tool_use` block(s) and running the next
+     * streaming turn against `tool_results`. Shared by ask_user_question,
+     * connector-consent, and desktop client-tool resumes.
+     *
+     * The resume body re-sends `client_tools` (via {@link _localToolInjection})
+     * so the model can keep calling local tools AFTER the first round — the
+     * worker registers client tools only from the request body, so omitting
+     * them here would strand the desktop's local tools on every turn past the
+     * first.
      */
-    async onAnswerAskUserQuestion(payload: {
-      tool_use_id: string;
-      output: string;
-      is_error?: boolean;
-      conversationId?: string;
-    }) {
+    _resumeWithToolResults(
+      toolResults: { tool_use_id: string; output: string; is_error?: boolean }[],
+      conversationId?: string
+    ) {
       const token = this.credential?.token;
       // Prefer an explicitly-passed id (deferred client-tool resume on a
       // brand-new chat, where this.conversationId isn't route-derived yet).
-      const convId = payload.conversationId ?? this.conversationId;
-      if (!token || !convId) {
-        console.error('cannot resume: no token or no conversation id');
+      const convId = conversationId ?? this.conversationId;
+      if (!token || !convId || !toolResults.length) {
+        console.error('cannot resume: no token / conversation id / results');
         return;
       }
-      // Locally fold the pending block so the card flips to the collapsed
-      // summary instantly (the worker will fold its own copy on the resume
-      // request — both stay in sync).
+      // Locally fold each pending block so its card flips to the collapsed
+      // summary instantly (the worker folds its own copy on the resume — both
+      // stay in sync). `pending_consent_request` is intentionally left intact
+      // so a resolved consent card can still render its requirements list.
       const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
       if (lastAssistant && Array.isArray(lastAssistant.content)) {
-        const block = (lastAssistant.content as IChatMessageContentItem[]).find(
-          (b) => b.type === 'tool_use' && b.tool_id === payload.tool_use_id
-        );
-        if (block) {
-          block.status = 'done';
-          block.output = payload.output;
-          if (payload.is_error) block.is_error = true;
-          delete block.pending_question;
+        const content = lastAssistant.content as IChatMessageContentItem[];
+        for (const tr of toolResults) {
+          const block = content.find((b) => b.type === 'tool_use' && b.tool_id === tr.tool_use_id);
+          if (block) {
+            block.status = 'done';
+            block.output = tr.output;
+            if (tr.is_error) block.is_error = true;
+            delete block.pending_question;
+          }
         }
       }
       // Push fresh pending assistant message for the resumed turn.
@@ -749,29 +754,47 @@ export default defineComponent({
           id: convId,
           model: this.model.name,
           stateful: true,
-          tool_results: [
-            {
-              tool_use_id: payload.tool_use_id,
-              output: payload.output,
-              ...(payload.is_error ? { is_error: true } : {})
-            }
-          ]
+          tool_results: toolResults,
+          // Re-send local tools so post-resume turns can still call them.
+          ...this._localToolInjection()
         },
         token,
         convId
       );
     },
     /**
+     * Resume a paused conversation by submitting a single tool result for the
+     * `ask_user_question` block on the last assistant message. Thin wrapper
+     * over {@link _resumeWithToolResults}.
+     */
+    async onAnswerAskUserQuestion(payload: {
+      tool_use_id: string;
+      output: string;
+      is_error?: boolean;
+      conversationId?: string;
+    }) {
+      this._resumeWithToolResults(
+        [
+          {
+            tool_use_id: payload.tool_use_id,
+            output: payload.output,
+            ...(payload.is_error ? { is_error: true } : {})
+          }
+        ],
+        payload.conversationId
+      );
+    },
+    /**
      * Inject desktop local tools into the chat request (no-op on web). The
      * worker registers each as a client-executed tool (see
      * `tools/builtin/clientTool.ts`): the model can call it, the worker pauses
-     * with execution:'client', and {@link _runClientTool} runs it via
+     * with execution:'client', and {@link _runClientTools} runs it via
      * `localExec().invoke` then resumes with `tool_results`.
      *
      * Local tool names are dotted (`fs.list_dir`, `mcp.srv.tool`), but OpenAI
      * function names must match `^[a-zA-Z0-9_-]+$` (no dots) or the upstream
      * 400s. So we send a sanitized wire name to the model and map it back to
-     * the real dotted name in {@link _runClientTool} via {@link _wiredTools}.
+     * the real dotted name in {@link _runClientTools} via {@link _wiredTools}.
      */
     _localToolInjection(): {
       client_tools?: {
@@ -796,7 +819,7 @@ export default defineComponent({
      * other invalid chars become `_`; collisions (possible for arbitrary MCP
      * tool names) get a numeric suffix so the wire→spec mapping stays
      * injective. Deterministic: `localTools` order is stable after mount, so
-     * the injection and the {@link _runClientTool} lookup agree.
+     * the injection and the {@link _runClientTools} lookup agree.
      */
     _wiredTools(): { spec: LocalToolSpec; wire: string }[] {
       const used = new Set<string>();
@@ -811,37 +834,49 @@ export default defineComponent({
         return { spec, wire };
       });
     },
-    /** Run a client-executed tool locally, then resume the turn via tool_results. */
-    async _runClientTool(
-      toolId: string,
-      name: string,
-      input: Record<string, unknown>,
+    /**
+     * Run one-or-more client-executed tools locally (the model can fan out
+     * several in a single paused turn), then resume the turn with ALL the
+     * results in ONE request. Running every pending tool and submitting them
+     * together matches the worker's resume contract, which requires the
+     * `tool_results` to cover every awaiting client block (a partial resume
+     * is rejected to avoid a half-paused conversation).
+     */
+    async _runClientTools(
+      pending: { toolId: string; name: string; input: Record<string, unknown> }[],
       conversationId?: string,
       runId?: number
     ) {
-      // The worker echoes the sanitized wire name; map it back to the real
-      // dotted tool name localExec expects (else `unknown tool`).
-      const realName = this._wiredTools().find((w) => w.wire === name)?.spec.name ?? name;
       const sessionId = (conversationId ?? this.conversationId) || '';
-      let r: { output: string; is_error?: boolean };
-      try {
-        r = (await localExec()?.invoke({ name: realName, input, sessionId })) ?? {
-          output: 'local execution unavailable',
-          is_error: true
-        };
-      } catch (e) {
-        // A rejected invoke (e.g. fs.ts throws 'path outside allowed roots')
-        // must resume the turn as a tool ERROR, not bubble up and fail the
-        // whole turn — the model should see the failure and react.
-        r = { output: e instanceof Error ? e.message : String(e), is_error: true };
+      const results: { tool_use_id: string; output: string; is_error?: boolean }[] = [];
+      for (const p of pending) {
+        // Stop pressed mid-batch → onStop() bumped the token; abort BEFORE
+        // running any further local tool (each invoke may be a shell command,
+        // so checking only after the loop would let Stop be ignored).
+        if (runId !== undefined && runId !== this.clientToolRunId) return;
+        // The worker echoes the sanitized wire name; map it back to the real
+        // dotted tool name localExec expects (else `unknown tool`).
+        const realName = this._wiredTools().find((w) => w.wire === p.name)?.spec.name ?? p.name;
+        let r: { output: string; is_error?: boolean };
+        try {
+          r = (await localExec()?.invoke({ name: realName, input: p.input, sessionId })) ?? {
+            output: 'local execution unavailable',
+            is_error: true
+          };
+        } catch (e) {
+          // A rejected invoke (e.g. fs.ts throws 'path outside allowed roots')
+          // must resume the turn as a tool ERROR, not bubble up and fail the
+          // whole turn — the model should see the failure and react.
+          r = { output: e instanceof Error ? e.message : String(e), is_error: true };
+        }
+        // Propagate is_error so denied/failed local executions (e.g. consent
+        // denied, path outside allowed roots) resume as a tool ERROR, not a
+        // successful output the model would trust.
+        results.push({ tool_use_id: p.toolId, output: r.output, ...(r.is_error ? { is_error: true } : {}) });
       }
-      // Stop pressed while the tool was running → onStop() bumped the token;
-      // don't resume the turn.
+      // Stop pressed while the last tool was running → don't resume the turn.
       if (runId !== undefined && runId !== this.clientToolRunId) return;
-      // Propagate is_error so denied/failed local executions (e.g. consent
-      // denied, path outside allowed roots) resume as a tool ERROR, not a
-      // successful output the model would trust.
-      this.onAnswerAskUserQuestion({ tool_use_id: toolId, output: r.output, is_error: r.is_error, conversationId });
+      this._resumeWithToolResults(results, conversationId);
     },
     /**
      * Visual-only "skip" of an ask_user_question card. Marks the pending
@@ -901,7 +936,9 @@ export default defineComponent({
           id: this.conversationId,
           model: this.model.name,
           stateful: true,
-          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }]
+          tool_results: [{ tool_use_id: payload.tool_use_id, output: payload.output }],
+          // Re-send local tools so post-resume turns can still call them.
+          ...this._localToolInjection()
         },
         token,
         this.conversationId
@@ -1004,7 +1041,7 @@ export default defineComponent({
     ) {
       let conversationId = initialConversationId;
       // Capture the target assistant message slot NOW. A client-tool auto-resume
-      // ({@link _runClientTool} -> {@link onAnswerAskUserQuestion}) can push a
+      // ({@link _runClientTools} -> {@link _resumeWithToolResults}) can push a
       // NEW pending message mid-stream, so `messages.length - 1` would point at
       // the wrong message by the time this stream's callback/finalizer writes.
       // Messages are only appended during a turn, so this index stays valid for
@@ -1057,14 +1094,16 @@ export default defineComponent({
               // Desktop: defer the local run until this paused stream fully
               // finalizes (so this.conversationId + route are settled for a
               // brand-new chat and the `answering` flag isn't cleared
-              // mid-resume). The worker pauses after one client tool.
+              // mid-resume). The model can fan out several client tools in one
+              // turn, so we QUEUE them and run all on finalize, resuming with
+              // every result in one request.
               if (isDesktop() && response.execution === 'client') {
                 toolItem.status = 'awaiting_input';
-                this.pendingClientTool = {
+                this.pendingClientTools.push({
                   toolId: response.tool_id,
                   name: response.tool_name || '',
                   input: response.input || {}
-                };
+                });
               }
             } else if (response.type === 'tool_result' && response.tool_id) {
               const toolItem = toolMap.get(response.tool_id);
@@ -1182,10 +1221,10 @@ export default defineComponent({
             id: conversationId,
             messages: this.messages
           });
-          // Keep `answering` true if we're about to auto-resume a deferred
-          // desktop client tool, so the composer/stop button stay in the
+          // Keep `answering` true if we're about to auto-resume deferred
+          // desktop client tools, so the composer/stop button stay in the
           // streaming state across the resume instead of flickering enabled.
-          if (!this.pendingClientTool) this.answering = false;
+          if (!this.pendingClientTools.length) this.answering = false;
           if (conversationId) {
             this.skipNextRestoreId = conversationId;
             await this.$router.push(this.conversationsPath(conversationId));
@@ -1194,12 +1233,12 @@ export default defineComponent({
           await this.$store.dispatch('chat/getConversations');
           await this.$store.dispatch('chat/getApplications');
           // Turn is finalized and the conversation id/route are settled — now
-          // run any deferred desktop client tool and resume the turn.
-          if (this.pendingClientTool) {
-            const pct = this.pendingClientTool;
-            this.pendingClientTool = null;
+          // run any deferred desktop client tools and resume the turn.
+          if (this.pendingClientTools.length) {
+            const pending = this.pendingClientTools;
+            this.pendingClientTools = [];
             const runId = ++this.clientToolRunId;
-            await this._runClientTool(pct.toolId, pct.name, pct.input, conversationId, runId);
+            await this._runClientTools(pending, conversationId, runId);
           }
         })
         .catch((error) => {
@@ -1209,9 +1248,9 @@ export default defineComponent({
     async handleRequestError(error: any, targetIndex?: number) {
       console.error('error happened', error);
       // A turn that errored/aborted after emitting a client tool_use must NOT
-      // auto-resume — drop the deferred tool so the next stream doesn't pick up
+      // auto-resume — drop the deferred tools so the next stream doesn't pick up
       // a stale invocation against a different conversation.
-      this.pendingClientTool = null;
+      this.pendingClientTools = [];
       // `i` is the captured slot for this turn; after reset/navigation the
       // array may be shorter, so resolve the message defensively.
       const i = targetIndex ?? this.messages.length - 1;
