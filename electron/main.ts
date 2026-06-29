@@ -94,12 +94,17 @@ if (!gotLock) {
 }
 
 function createWindow(): void {
+  const isMac = process.platform === 'darwin';
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
-    minWidth: 940,
+    minWidth: 992,
     minHeight: 600,
     backgroundColor: '#0b0b0f', // avoid white flash before the SPA paints
+    // Frameless: macOS keeps inset traffic lights; Win/Linux use Window Controls
+    // Overlay so min/max/close stay native. The web header draws into the bar.
+    titleBarStyle: isMac ? 'hiddenInset' : 'hidden',
+    ...(isMac ? { trafficLightPosition: { x: 16, y: 20 } } : { titleBarOverlay: { color: '#00000000', symbolColor: '#888888', height: 64 } }),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,

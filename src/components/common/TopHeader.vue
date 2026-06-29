@@ -1,5 +1,5 @@
 <template>
-  <el-row class="header">
+  <el-row class="header" :class="{ 'desktop-chrome': isDesktopChrome, 'is-mac': isMacChrome }">
     <el-col :md="4" :xs="24" class="brand-col">
       <logo @click="onHome" />
     </el-col>
@@ -74,7 +74,7 @@ import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } fro
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
 import { Browser } from '@capacitor/browser';
-import { isNative } from '@/utils/surface';
+import { isNative, isDesktop, isMacOS } from '@/utils/surface';
 
 export default defineComponent({
   name: 'TopHeader',
@@ -110,6 +110,14 @@ export default defineComponent({
     },
     authenticated() {
       return this.$store.getters?.authenticated;
+    },
+    // Frameless desktop: make the header a drag handle; macOS needs left inset
+    // so the logo clears the traffic lights.
+    isDesktopChrome() {
+      return isDesktop();
+    },
+    isMacChrome() {
+      return isDesktop() && isMacOS();
     }
   },
   methods: {
@@ -187,6 +195,19 @@ $height: 64px;
     justify-content: flex-end;
     min-height: $height;
     padding-right: 20px;
+  }
+
+  // Frameless desktop: the bar is the window drag handle; interactive children
+  // opt out. macOS insets the brand col past the traffic lights.
+  &.desktop-chrome {
+    -webkit-app-region: drag;
+    a, button, .el-menu, .el-dropdown, .avatar, .console,
+    .locale, language-selector, dark-selector, .el-switch, [role='button'] {
+      -webkit-app-region: no-drag;
+    }
+  }
+  &.is-mac .brand-col {
+    padding-left: 78px;
   }
 
   .el-menu.menu {
