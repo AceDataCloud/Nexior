@@ -287,6 +287,12 @@ export interface IChatConversationRequest {
   tools_enabled?: boolean;
   tools_filter?: string[];
   mcp_servers?: string[];
+  // Desktop local tools (run on the user's machine). The worker registers each
+  // as a client-executed tool; the model can call it, the worker pauses with
+  // execution:'client', and the desktop runs it then resumes via tool_results.
+  // Names must be OpenAI-valid (^[a-zA-Z0-9_-]+$) — the desktop sends sanitized
+  // wire names and maps them back locally.
+  client_tools?: { name: string; displayName?: string; description: string; inputSchema: Record<string, unknown> }[];
   connectors?: string[];
   skills?: string[];
   // Resume payload for a paused conversation. When present, the conversation
