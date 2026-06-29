@@ -1,4 +1,4 @@
-import { ROUTE_SETTINGS_INDEX } from './constants';
+import { ROUTE_SETTINGS_INDEX, ROUTE_SETTINGS_LOCAL_TOOLS } from './constants';
 
 export default {
   path: '/settings',
@@ -8,6 +8,11 @@ export default {
       path: '',
       name: ROUTE_SETTINGS_INDEX,
       component: () => import('@/pages/settings/Index.vue')
+    },
+    {
+      path: 'local-tools',
+      name: ROUTE_SETTINGS_LOCAL_TOOLS,
+      component: () => import('@/pages/settings/LocalTools.vue')
     }
   ]
 };
