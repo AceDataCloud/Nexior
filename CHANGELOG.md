@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 13:52:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 15:12:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.19
+
+Mon, 29 Jun 2026 15:12:53 GMT
+
+### Patches
+
+- fix(desktop): make aichat2 local tool execution actually run on the user's machine (send client_tools, sanitize tool names, defer client-tool resume) (dev@acedata.cloud)
 
 ## 3.291.18
 
