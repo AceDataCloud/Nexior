@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 10:17:46 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 13:52:43 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.18
+
+Mon, 29 Jun 2026 13:52:43 GMT
+
+### Patches
+
+- fix(nexior): inset chat rail logo below macOS traffic lights (dev@acedata.cloud)
 
 ## 3.291.17
 
