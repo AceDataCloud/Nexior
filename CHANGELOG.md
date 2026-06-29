@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 05:04:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 05:33:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.15
+
+Mon, 29 Jun 2026 05:33:16 GMT
+
+### Patches
+
+- feat(desktop): macOS system-permission status rows in LocalTools panel (dev@acedata.cloud)
 
 ## 3.291.14
 
