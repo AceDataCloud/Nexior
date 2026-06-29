@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 03:56:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 04:33:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.12
+
+Mon, 29 Jun 2026 04:33:40 GMT
+
+### Patches
+
+- fix(desktop): set AceData dock icon for dev runs (packaged DMG already branded; `electron .` showed default Electron icon) (dev@acedata.cloud)
 
 ## 3.291.11
 
