@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 28 Jun 2026 17:59:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 03:03:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.7
+
+Mon, 29 Jun 2026 03:03:50 GMT
+
+### Patches
+
+- feat(desktop): add app menu (clipboard accelerators), min window size, PayPal external-open allowlist, and main-process OS notifications (dev@acedata.cloud)
 
 ## 3.291.6
 
