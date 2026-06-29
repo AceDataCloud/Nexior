@@ -18,6 +18,9 @@ export interface DesktopBridge {
   onAuthExpired(cb: () => void): () => void;
   /** Open an external https link (payment Page, docs) in the system browser. */
   openExternal(url: string): Promise<void>;
+  /** Subscribe to native window fullscreen changes (macOS). Fires immediately
+   * with the current state, then on every enter/leave. Returns an unsubscribe. */
+  onFullscreenChange(cb: (isFullscreen: boolean) => void): () => void;
   /** Handshake: call AFTER auth listeners are attached so main flushes queued deep links. */
   signalReady(): void;
   /** Inform main of the signed-in site origin for the external-open allowlist. */

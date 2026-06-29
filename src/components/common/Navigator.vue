@@ -1,5 +1,5 @@
 <template>
-  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() }]">
+  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() && !isFullscreen }]">
     <div v-if="direction === 'column'" class="brand">
       <logo collapsed @click.stop="onHome" />
     </div>
@@ -138,6 +138,7 @@ import {
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 import { isMacOS } from '@/utils/surface';
+import { desktopBridge } from '@/utils/desktop';
 
 interface NavLink {
   route: { name: string };
@@ -172,7 +173,11 @@ export default defineComponent({
       activeIndex: this.$route.name as string,
       containerHeight: 0,
       showOverflow: false,
-      resizeObserver: null as ResizeObserver | null
+      resizeObserver: null as ResizeObserver | null,
+      // macOS native fullscreen hides the traffic lights, so the brand inset
+      // must be dropped there. Fed by the Electron main fullscreen events.
+      isFullscreen: false,
+      offFullscreen: null as (() => void) | null
     };
   },
   computed: {
@@ -478,11 +483,20 @@ export default defineComponent({
       });
       this.resizeObserver.observe(el);
     }
+    // Native fullscreen state from the Electron main process (canonical signal
+    // for the macOS green button / setFullScreen; undefined off desktop).
+    this.offFullscreen = desktopBridge()?.onFullscreenChange((v) => {
+      this.isFullscreen = v;
+    }) ?? null;
   },
   beforeUnmount() {
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
       this.resizeObserver = null;
+    }
+    if (this.offFullscreen) {
+      this.offFullscreen();
+      this.offFullscreen = null;
     }
   },
   methods: {
