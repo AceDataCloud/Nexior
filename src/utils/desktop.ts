@@ -63,6 +63,13 @@ export interface LocalExecBridge {
     openPane(k: 'fullDisk' | 'screen' | 'accessibility'): Promise<boolean>;
     askMedia(t: 'camera' | 'microphone'): Promise<boolean>;
   };
+  /** Persistent "always allow" consent grants (undefined off desktop). Each key
+   * is `<tool.name>:<json input>`; revoking re-arms the per-call prompt. */
+  grants?: {
+    list(): Promise<string[]>;
+    revoke(key: string): Promise<boolean>;
+    clear(): Promise<boolean>;
+  };
 }
 
 export function localExec(): LocalExecBridge | undefined {

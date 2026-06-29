@@ -14,6 +14,7 @@ export const SETTING_TAB_FUNCTION = 'function';
 export const SETTING_TAB_AUTH = 'auth';
 export const SETTING_TAB_SUBSITES = 'subsites';
 export const SETTING_TAB_CUSTOM_DOMAIN = 'customDomain';
+export const SETTING_TAB_LOCAL_TOOLS = 'localTools';
 export const SETTING_TAB_ABOUT = 'about';
 
 export type SettingTabKey =
@@ -26,4 +27,5 @@ export type SettingTabKey =
   | typeof SETTING_TAB_AUTH
   | typeof SETTING_TAB_SUBSITES
   | typeof SETTING_TAB_CUSTOM_DOMAIN
+  | typeof SETTING_TAB_LOCAL_TOOLS
   | typeof SETTING_TAB_ABOUT;
