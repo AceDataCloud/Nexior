@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 05:33:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 08:02:02 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.16
+
+Mon, 29 Jun 2026 08:02:02 GMT
+
+### Patches
+
+- fix download card CTA alignment (dev@acedata.cloud)
 
 ## 3.291.15
 
