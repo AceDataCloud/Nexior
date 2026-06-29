@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 03:03:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 03:24:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.8
+
+Mon, 29 Jun 2026 03:24:54 GMT
+
+### Patches
+
+- feat(desktop): frameless window chrome — macOS traffic lights / Windows WCO, draggable header (desktop-gated, P2) (dev@acedata.cloud)
 
 ## 3.291.7
 
