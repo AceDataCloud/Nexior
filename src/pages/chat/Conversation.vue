@@ -83,6 +83,8 @@ import Disclaimer from '@/components/chat/Disclaimer.vue';
 import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
+import { isDesktop } from '@/utils/surface';
+import { localExec } from '@/utils/desktop';
 import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import {
   buildAuthorizedConsentOutput,
@@ -128,6 +130,8 @@ export interface IData {
    * pending return (the common case).
    */
   pendingConsentReturn: IConsentReturn | null;
+  localToolSpecs: string[];
+  localMcpServers: string[];
 }
 
 export default defineComponent({
@@ -150,6 +154,8 @@ export default defineComponent({
       drawer: false,
       question: '',
       references: [],
+      localToolSpecs: [],
+      localMcpServers: [],
       upload: false,
       answering: false,
       canceler: undefined,
@@ -282,6 +288,11 @@ export default defineComponent({
     await this.onGetApplication();
     this.onConsumePendingDraft();
     this.onApplyQueryFromUrl();
+    if (isDesktop()) {
+      const specs = (await localExec()?.listTools()) ?? [];
+      this.localToolSpecs = specs.map((s) => s.name);
+      this.localMcpServers = specs.filter((s) => s.source === 'mcp').map((s) => s.name);
+    }
   },
   methods: {
     resetConversation() {
@@ -662,7 +673,8 @@ export default defineComponent({
           model: this.model.name,
           references,
           id: this.conversationId,
-          stateful: true
+          stateful: true,
+          ...this._localToolInjection()
         },
         token,
         conversationId
@@ -714,6 +726,19 @@ export default defineComponent({
         token,
         this.conversationId
       );
+    },
+    /** Inject desktop local tools into the chat request (no-op on web). */
+    _localToolInjection(): { mcp_servers?: string[]; tools_filter?: string[] } {
+      if (!isDesktop() || !this.localToolSpecs.length) return {};
+      return { mcp_servers: this.localMcpServers, tools_filter: this.localToolSpecs };
+    },
+    /** Run a client-executed tool locally, then resume the turn via tool_results. */
+    async _runClientTool(toolId: string, name: string, input: Record<string, unknown>) {
+      const r = (await localExec()?.invoke({ name, input, sessionId: this.conversationId || '' })) ?? {
+        output: 'local execution unavailable',
+        is_error: true
+      };
+      this.onAnswerAskUserQuestion({ tool_use_id: toolId, output: r.output });
     },
     /**
      * Visual-only "skip" of an ask_user_question card. Marks the pending
@@ -919,6 +944,11 @@ export default defineComponent({
               };
               contentParts.push(toolItem);
               toolMap.set(response.tool_id, toolItem);
+              // Desktop: run client-executed tools locally, then resume the turn.
+              if (isDesktop() && response.execution === 'client') {
+                toolItem.status = 'awaiting_input';
+                void this._runClientTool(response.tool_id, response.tool_name || '', response.input || {});
+              }
             } else if (response.type === 'tool_result' && response.tool_id) {
               const toolItem = toolMap.get(response.tool_id);
               if (toolItem) {
