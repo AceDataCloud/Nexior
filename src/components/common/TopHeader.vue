@@ -207,7 +207,8 @@ $height: 64px;
     }
   }
   &.is-mac .brand-col {
-    padding-left: 78px;
+    justify-content: flex-start;
+    padding-left: 84px; // clear the macOS traffic lights (x:16 + 3 dots)
   }
 
   .el-menu.menu {
