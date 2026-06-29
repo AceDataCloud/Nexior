@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 04:49:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 29 Jun 2026 05:04:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.14
+
+Mon, 29 Jun 2026 05:04:03 GMT
+
+### Patches
+
+- feat(desktop): settings/local-tools page — authorize root folders for local tools (dev@acedata.cloud)
 
 ## 3.291.13
 
