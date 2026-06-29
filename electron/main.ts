@@ -81,6 +81,15 @@ if (!gotLock) {
 
   app.whenReady().then(() => {
     registerAppProtocol.serve();
+    // Dev runs (`electron .`) show the default Electron icon in the Dock; the
+    // packaged DMG uses build/icon.icns. Set the brand icon for dev too.
+    if (!app.isPackaged && process.platform === 'darwin') {
+      try {
+        app.dock?.setIcon(path.join(__dirname, '..', '..', 'build', 'icon.png'));
+      } catch {
+        /* dev-only cosmetic; ignore if asset missing */
+      }
+    }
     createWindow();
     setupAppMenu();
     initUpdater(() => mainWindow);
