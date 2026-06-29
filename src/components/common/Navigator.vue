@@ -1,5 +1,5 @@
 <template>
-  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column' }]">
+  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() }]">
     <div v-if="direction === 'column'" class="brand">
       <logo collapsed @click.stop="onHome" />
     </div>
@@ -137,6 +137,7 @@ import {
 } from '@/constants';
 import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
+import { isMacOS } from '@/utils/surface';
 
 interface NavLink {
   route: { name: string };
@@ -485,6 +486,10 @@ export default defineComponent({
     }
   },
   methods: {
+    // Frameless macOS desktop: the traffic lights sit over the top-left, so the
+    // column rail insets its brand logo to clear them. isMacOS() reads the
+    // Electron preload bridge, which only exists in the desktop shell.
+    isMacOS,
     onHome() {
       this.$router.push({ name: ROUTE_INDEX });
     },
@@ -570,6 +575,12 @@ export default defineComponent({
       align-items: center;
       padding: 10px 0 10px;
       width: 100%;
+    }
+
+    // Frameless macOS desktop: inset the brand below the window traffic lights
+    // so the logo no longer overlaps the red/yellow/green dots.
+    &.is-mac .brand {
+      padding-top: 38px;
     }
 
     .top {
