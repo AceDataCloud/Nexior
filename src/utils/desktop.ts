@@ -57,9 +57,14 @@ export interface LocalExecBridge {
   getConfig(): Promise<{ roots: string[]; mcp: { id: string; command: string; args: string[] }[] }>;
   saveConfig(cfg: { roots: string[]; mcp: { id: string; command: string; args: string[] }[] }): Promise<boolean>;
   pickFolder(): Promise<string | null>;
+  /** macOS TCC permission status + jump-to-System-Settings (undefined off macOS desktop). */
+  perm?: {
+    status(): Promise<{ mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean }>;
+    openPane(k: 'fullDisk' | 'screen' | 'accessibility'): Promise<boolean>;
+    askMedia(t: 'camera' | 'microphone'): Promise<boolean>;
+  };
 }
 
 export function localExec(): LocalExecBridge | undefined {
   return typeof window !== 'undefined' ? window.localExec : undefined;
 }
-

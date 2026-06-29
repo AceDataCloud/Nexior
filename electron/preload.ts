@@ -57,5 +57,11 @@ contextBridge.exposeInMainWorld('localExec', {
     ipcRenderer.invoke('local.tool.invoke', inv),
   getConfig: (): Promise<{ roots: string[]; mcp: object[] }> => ipcRenderer.invoke('local.config.get'),
   saveConfig: (cfg: { roots: string[]; mcp: object[] }): Promise<boolean> => ipcRenderer.invoke('local.config.save', cfg),
-  pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder')
+  pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder'),
+  // macOS system-permission status + jump-to-pane, shown in the LocalTools panel.
+  perm: {
+    status: (): Promise<{ mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean }> => ipcRenderer.invoke('local.perm.status'),
+    openPane: (k: 'fullDisk' | 'screen' | 'accessibility'): Promise<boolean> => ipcRenderer.invoke('local.perm.openPane', k),
+    askMedia: (t: 'camera' | 'microphone'): Promise<boolean> => ipcRenderer.invoke('local.perm.askMedia', t)
+  }
 });

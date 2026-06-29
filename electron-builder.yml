@@ -62,6 +62,14 @@ mac:
   gatekeeperAssess: false
   entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
+  # TCC usage strings for the opt-in local-tool tiers (screen/mic/camera/
+  # automation). Without these macOS hard-crashes the app on first access.
+  extendInfo:
+    NSScreenCaptureUsageDescription: AceData lets the AI capture your screen only when you run a screen tool.
+    NSAudioCaptureUsageDescription: AceData records system audio only when you run an audio-capture tool.
+    NSMicrophoneUsageDescription: AceData uses the microphone only for voice tools you start.
+    NSCameraUsageDescription: AceData uses the camera only for vision tools you start.
+    NSAppleEventsUsageDescription: AceData controls other apps only when you run an automation tool.
   # Object form requires APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID
   # ALL present in env at sign time (CI asserts this), else electron-builder
   # signs but SILENTLY skips notarization → Gatekeeper blocks user machines.
