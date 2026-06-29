@@ -41,5 +41,9 @@ contextBridge.exposeInMainWorld('desktop', {
 
   // Tell main the signed-in site origin so white-label custom domains are
   // allowed by the external-open / navigation guard (not just acedata.cloud).
-  setSiteOrigin: (origin: string): void => ipcRenderer.send('site:setOrigin', origin)
+  setSiteOrigin: (origin: string): void => ipcRenderer.send('site:setOrigin', origin),
+
+  // Show an OS notification via the main process (reliable when the window is
+  // hidden/minimized, unlike Web Notification). Resolves after dispatch.
+  notify: (title: string, body: string): Promise<void> => ipcRenderer.invoke('notify:show', { title, body })
 });

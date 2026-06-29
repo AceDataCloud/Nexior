@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell, Menu, Notification } from 'electron';
 import path from 'node:path';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
@@ -13,7 +13,7 @@ const AUTH_HOSTS = new Set(['auth.acedata.cloud']);
 // Payment redirects through third-party PSP hosts (NOT our domain) — they must
 // be allow-listed or the user can never reach checkout. Verify against the real
 // pay flow before shipping.
-const PSP_HOSTS = ['alipay.com', 'stripe.com', 'wx.tenpay.com'];
+const PSP_HOSTS = ['alipay.com', 'stripe.com', 'wx.tenpay.com', 'paypal.com'];
 const EXTERNAL_HOSTS = new Set(['acedata.cloud', ...PSP_HOSTS]);
 
 // The signed-in site origin, added at runtime via `site:setOrigin` so
@@ -78,6 +78,7 @@ if (!gotLock) {
   app.whenReady().then(() => {
     registerAppProtocol.serve();
     createWindow();
+    setupAppMenu();
     initUpdater(() => mainWindow);
     // Windows cold-start protocol activation: URL is in this instance's argv.
     const coldUrl = process.argv.find((a) => a.startsWith(`${DESKTOP_SCHEME}://`));
@@ -96,6 +97,9 @@ function createWindow(): void {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    minWidth: 940,
+    minHeight: 600,
+    backgroundColor: '#0b0b0f', // avoid white flash before the SPA paints
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -196,3 +200,26 @@ ipcMain.handle('auth:openOAuth', (_e, authUrl: string) => {
 ipcMain.handle('shell:openExternal', (_e, url: string) => {
   if (allowedExternal(url)) return shell.openExternal(url);
 });
+
+// Main-process desktop notification (Web Notification is unreliable when the
+// window is hidden/minimized). Clicking it refocuses the app.
+ipcMain.handle('notify:show', (_e, { title, body }: { title: string; body: string }) => {
+  if (!Notification.isSupported()) return;
+  const n = new Notification({ title: String(title || ''), body: String(body || '') });
+  n.on('click', () => focusWindow());
+  n.show();
+});
+
+// Cross-platform menu. The Edit role is REQUIRED for clipboard accelerators
+// (Cmd/Ctrl+C/V/X/A, undo/redo) to work in inputs; without it they are dead.
+function setupAppMenu(): void {
+  const isMac = process.platform === 'darwin';
+  Menu.setApplicationMenu(
+    Menu.buildFromTemplate([
+      ...(isMac ? [{ role: 'appMenu' as const }] : []),
+      { role: 'editMenu' },
+      { role: 'viewMenu' },
+      { role: 'windowMenu' }
+    ])
+  );
+}

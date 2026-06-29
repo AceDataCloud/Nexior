@@ -22,6 +22,8 @@ export interface DesktopBridge {
   signalReady(): void;
   /** Inform main of the signed-in site origin for the external-open allowlist. */
   setSiteOrigin(origin: string): void;
+  /** Show an OS notification via the main process (reliable when window hidden). */
+  notify(title: string, body: string): Promise<void>;
 }
 
 declare global {
