@@ -137,7 +137,8 @@ export default defineComponent({
       computerUse: false,
       savingCU: false,
       saving: false,
-      savedTip: false
+      savedTip: false,
+      cuOff: null as null | (() => void)
     };
   },
   computed: {
@@ -155,6 +156,15 @@ export default defineComponent({
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
     await this.loadGrants();
+    // Reflect the global panic hotkey: keep the toggle in sync so a later Save
+    // can't silently re-enable Computer Use after it was force-disabled.
+    this.cuOff =
+      ex.onComputerUseDisabled?.(() => {
+        this.computerUse = false;
+      }) ?? null;
+  },
+  beforeUnmount() {
+    this.cuOff?.();
   },
   methods: {
     async loadGrants() {
