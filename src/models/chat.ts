@@ -299,7 +299,7 @@ export interface IChatConversationRequest {
   // MUST be in `awaiting_user_input` state and `tool_results` MUST contain
   // exactly one entry whose `tool_use_id` matches the pending `tool_use`
   // block. `question` / `message` / `references` are ignored when this is set.
-  tool_results?: { tool_use_id: string; output: string; is_error?: boolean }[];
+  tool_results?: { tool_use_id: string; output: string; is_error?: boolean; image?: string }[];
 }
 
 export interface IChatConversationResponse {
