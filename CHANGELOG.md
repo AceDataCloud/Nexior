@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 16:40:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 17:12:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.298.0
+
+Tue, 30 Jun 2026 17:12:31 GMT
+
+### Minor changes
+
+- desktop: 'Pre-approve all computer actions' one-click — enable Computer Use, grant always-allow for every computer.* tool (native confirm), and trigger macOS Screen Recording + Accessibility prompts (dev@acedata.cloud)
 
 ## 3.297.0
 
