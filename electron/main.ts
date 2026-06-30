@@ -160,6 +160,12 @@ function createWindow(): void {
   };
   mainWindow.webContents.on('will-navigate', (event, url) => guard(event, url));
   mainWindow.webContents.on('will-frame-navigate', (event) => guard(event, event.url));
+
+  // Tell the renderer about native fullscreen (macOS green button / setFullScreen):
+  // in fullscreen the traffic lights are hidden, so the web header/rail drop
+  // their inset. macOS-only events, but harmless to wire everywhere.
+  mainWindow.on('enter-full-screen', () => mainWindow?.webContents.send('window:fullscreen', true));
+  mainWindow.on('leave-full-screen', () => mainWindow?.webContents.send('window:fullscreen', false));
 }
 
 function handleDeepLink(rawUrl: string): void {
@@ -226,6 +232,10 @@ ipcMain.handle('auth:openOAuth', (_e, authUrl: string) => {
 ipcMain.handle('shell:openExternal', (_e, url: string) => {
   if (allowedExternal(url)) return shell.openExternal(url);
 });
+
+// Current native fullscreen state, so a renderer that subscribes after the
+// window already entered fullscreen still gets the right initial value.
+ipcMain.handle('window:isFullscreen', () => mainWindow?.isFullScreen() ?? false);
 
 // Main-process desktop notification (Web Notification is unreliable when the
 // window is hidden/minimized). Clicking it refocuses the app.
