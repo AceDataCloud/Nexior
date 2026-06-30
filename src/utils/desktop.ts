@@ -54,8 +54,16 @@ export interface LocalExecBridge {
   available: true;
   listTools(): Promise<LocalToolSpec[]>;
   invoke(inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }>;
-  getConfig(): Promise<{ roots: string[]; mcp: { id: string; command: string; args: string[] }[] }>;
-  saveConfig(cfg: { roots: string[]; mcp: { id: string; command: string; args: string[] }[] }): Promise<boolean>;
+  getConfig(): Promise<{
+    roots: string[];
+    mcp: { id: string; command: string; args: string[] }[];
+    computerUse?: boolean;
+  }>;
+  saveConfig(cfg: {
+    roots: string[];
+    mcp: { id: string; command: string; args: string[] }[];
+    computerUse?: boolean;
+  }): Promise<boolean>;
   pickFolder(): Promise<string | null>;
   /** macOS TCC permission status + jump-to-System-Settings (undefined off macOS desktop). */
   perm?: {

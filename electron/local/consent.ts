@@ -49,26 +49,37 @@ export function grantKey(inv: ToolInvoke): string {
 }
 
 export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, mutates: boolean): Promise<boolean> {
+  // Computer-use tools (screen capture + mouse/keyboard injection) are too
+  // sensitive to ever auto-run silently: their grant key is often constant
+  // (e.g. `computer.screenshot:{}`), so a single persistent "Always allow"
+  // would hand the AI permanent promptless control of the screen. Until a
+  // dedicated session-scoped computer-use consent lands (see plan Phase 3),
+  // they are NOT persistable — no permanent grant, no "Always allow" button.
+  const persistable = !inv.name.startsWith('computer.');
   const gk = grantKey(inv);
-  if ((load().grants ?? []).includes(gk)) return true; // persistent always-allow
+  if (persistable && (load().grants ?? []).includes(gk)) return true; // persistent always-allow
   if (sessionGranted.has(sessionKey(inv)) && !mutates) return true;
+  const buttons = persistable
+    ? ['Allow once', 'Allow for session', 'Always allow', 'Deny']
+    : ['Allow once', 'Allow for session', 'Deny'];
+  const denyId = buttons.length - 1;
   const opts = {
     type: 'warning' as const,
-    buttons: ['Allow once', 'Allow for session', 'Always allow', 'Deny'],
+    buttons,
     defaultId: 0,
-    cancelId: 3,
+    cancelId: denyId,
     message: `Run local tool: ${inv.name}?`,
     detail: JSON.stringify(inv.input)
   };
   const { response } = win ? await dialog.showMessageBox(win, opts) : await dialog.showMessageBox(opts);
   if (response === 1) sessionGranted.add(sessionKey(inv));
-  if (response === 2) {
+  if (persistable && response === 2) {
     const cfg = load();
     const grants = new Set(cfg.grants ?? []);
     grants.add(gk);
     save({ ...cfg, grants: [...grants] });
   }
-  return response !== 3;
+  return response !== denyId;
 }
 
 export function resetConsent(): void {

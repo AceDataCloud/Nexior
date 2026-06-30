@@ -96,6 +96,7 @@ if (!gotLock) {
     // Local tool execution: load authorized roots, boot MCP servers, wire IPC.
     const localCfg = loadLocalConfig();
     setRoots(localCfg.roots);
+    registry.setComputerUse(localCfg.computerUse === true); // opt-in, default off
     void registry.boot(localCfg.mcp);
     registerLocalExec(() => mainWindow);
     // Windows cold-start protocol activation: URL is in this instance's argv.

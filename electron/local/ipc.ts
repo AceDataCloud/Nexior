@@ -43,10 +43,14 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   ipcMain.handle('local.config.save', (e, cfg: LocalConfig) => {
     gate(e);
     // Preserve persistent consent grants — the renderer's save payload only
-    // carries roots + mcp, so merge to avoid wiping the "always allow" list.
+    // carries roots + mcp (+ optional computerUse), so merge to avoid wiping
+    // the "always allow" list. `computerUse` falls back to the current value
+    // when the renderer omits it.
     const cur = load();
-    save({ ...cur, roots: cfg.roots, mcp: cfg.mcp });
+    const computerUse = cfg.computerUse ?? cur.computerUse ?? false;
+    save({ ...cur, roots: cfg.roots, mcp: cfg.mcp, computerUse });
     setRoots(cfg.roots); // hot-apply roots; MCP server changes apply next launch
+    registry.setComputerUse(computerUse); // hot-apply the Computer Use toggle
     return true;
   });
   ipcMain.handle('local.pickFolder', async (e) => {

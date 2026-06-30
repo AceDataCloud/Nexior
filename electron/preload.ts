@@ -55,8 +55,8 @@ contextBridge.exposeInMainWorld('localExec', {
   listTools: (): Promise<unknown[]> => ipcRenderer.invoke('local.tools.list'),
   invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }> =>
     ipcRenderer.invoke('local.tool.invoke', inv),
-  getConfig: (): Promise<{ roots: string[]; mcp: object[] }> => ipcRenderer.invoke('local.config.get'),
-  saveConfig: (cfg: { roots: string[]; mcp: object[] }): Promise<boolean> =>
+  getConfig: (): Promise<{ roots: string[]; mcp: object[]; computerUse?: boolean }> => ipcRenderer.invoke('local.config.get'),
+  saveConfig: (cfg: { roots: string[]; mcp: object[]; computerUse?: boolean }): Promise<boolean> =>
     ipcRenderer.invoke('local.config.save', cfg),
   pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder'),
   // macOS system-permission status + jump-to-pane, shown in the LocalTools panel.

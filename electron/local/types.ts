@@ -36,4 +36,7 @@ export interface LocalConfig {
   // session-independent key `<tool.name>:<stable json input>` the user
   // explicitly chose to always allow; matching invocations skip the prompt.
   grants?: string[];
+  // Opt-in Computer Use (screen capture + mouse/keyboard control). Default
+  // false; while false the `computer.*` tools are not advertised or invokable.
+  computerUse?: boolean;
 }
