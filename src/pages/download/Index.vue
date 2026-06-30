@@ -186,6 +186,52 @@
             </div>
           </template>
         </article>
+
+        <article class="platform platform--windows">
+          <div class="platform__head">
+            <span class="platform__os">
+              <font-awesome-icon :icon="faWindows" class="platform__os-icon" />
+              Windows
+            </span>
+            <span class="chip chip--beta"> <span class="chip__dot"></span>Beta </span>
+          </div>
+          <h2 class="platform__title">{{ $t('common.button.downloadWindows') }}</h2>
+          <p class="platform__text">{{ $t('common.message.desktopWindowsHint') }}</p>
+
+          <div class="platform__foot platform__foot--stack">
+            <el-button type="primary" round size="large" tag="a" :href="windowsDownloadUrl" target="_blank">
+              <font-awesome-icon :icon="faWindows" class="btn-icon" />
+              {{ $t('common.button.downloadWindows') }}
+            </el-button>
+            <span class="platform__meta">Beta · v{{ desktopVersion }}</span>
+          </div>
+        </article>
+
+        <article class="platform platform--mac">
+          <div class="platform__head">
+            <span class="platform__os">
+              <font-awesome-icon :icon="faApple" class="platform__os-icon" />
+              macOS
+            </span>
+            <span class="chip chip--beta"> <span class="chip__dot"></span>Beta </span>
+          </div>
+          <h2 class="platform__title">{{ $t('common.button.downloadMac') }}</h2>
+          <p class="platform__text">{{ $t('common.message.desktopMacHint') }}</p>
+
+          <div class="platform__foot platform__foot--stack">
+            <div class="btn-row">
+              <el-button type="primary" round size="large" tag="a" :href="macArmDownloadUrl" target="_blank">
+                <font-awesome-icon :icon="faApple" class="btn-icon" />
+                Apple Silicon
+              </el-button>
+              <el-button round size="large" class="btn-ghost" tag="a" :href="macIntelDownloadUrl" target="_blank">
+                <font-awesome-icon :icon="faApple" class="btn-icon" />
+                Intel
+              </el-button>
+            </div>
+            <span class="platform__meta">Beta · v{{ desktopVersion }}</span>
+          </div>
+        </article>
       </section>
 
       <!-- Advantages -->
@@ -212,6 +258,12 @@
         <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
         <p class="note__text">{{ $t('common.message.mobileInstallNote') }}</p>
       </aside>
+
+      <!-- Desktop unsigned-beta note -->
+      <aside class="note">
+        <font-awesome-icon :icon="faCircleInfo" class="note__icon" />
+        <p class="note__text">{{ $t('common.message.desktopUnsignedNote') }}</p>
+      </aside>
     </div>
   </div>
 </template>
@@ -221,10 +273,14 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faAndroid, faApple, faGooglePlay } from '@fortawesome/free-brands-svg-icons';
+import { faAndroid, faApple, faGooglePlay, faWindows } from '@fortawesome/free-brands-svg-icons';
 import { faDownload, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import defaultLogo from '@/assets/images/logo.png';
 import {
+  DESKTOP_APP_VERSION,
+  DESKTOP_MAC_ARM_DOWNLOAD_URL,
+  DESKTOP_MAC_INTEL_DOWNLOAD_URL,
+  DESKTOP_WINDOWS_DOWNLOAD_URL,
   MOBILE_ANDROID_DOWNLOAD_URL,
   MOBILE_ANDROID_PLAY_STORE_URL,
   MOBILE_APP_VERSION,
@@ -245,6 +301,7 @@ export default defineComponent({
       faAndroid,
       faApple,
       faGooglePlay,
+      faWindows,
       faDownload,
       faCircleInfo
     };
@@ -288,6 +345,18 @@ export default defineComponent({
     },
     hasIos() {
       return this.hasAppStore || this.hasIosDownload;
+    },
+    desktopVersion() {
+      return DESKTOP_APP_VERSION;
+    },
+    windowsDownloadUrl() {
+      return DESKTOP_WINDOWS_DOWNLOAD_URL;
+    },
+    macArmDownloadUrl() {
+      return DESKTOP_MAC_ARM_DOWNLOAD_URL;
+    },
+    macIntelDownloadUrl() {
+      return DESKTOP_MAC_INTEL_DOWNLOAD_URL;
     }
   },
   methods: {
@@ -475,7 +544,8 @@ export default defineComponent({
   color: var(--app-brand-hex);
 }
 
-.platform--ios .platform__os-icon {
+.platform--ios .platform__os-icon,
+.platform--mac .platform__os-icon {
   color: var(--el-text-color-primary);
 }
 
@@ -512,6 +582,15 @@ export default defineComponent({
 
 .chip--pending .chip__dot {
   background: #f59e0b;
+}
+
+.chip--beta {
+  background: rgba(var(--app-brand-rgb), 0.14);
+  color: var(--app-brand-hex);
+}
+
+.chip--beta .chip__dot {
+  background: var(--app-brand-hex);
 }
 
 .platform__title {
