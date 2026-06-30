@@ -510,6 +510,7 @@ import {
 } from '@/models';
 import claudeIcon from '@/assets/images/logos/claude.svg';
 import openaiIcon from '@/assets/images/logos/openai.svg';
+import copilotIcon from '@/assets/images/logos/github-copilot.svg';
 
 const MAX_ATTACHMENT_BYTES = 50 * 1024 * 1024;
 const MAX_ATTACHMENTS = 10;
@@ -522,11 +523,12 @@ const MAX_ATTACHMENTS = 10;
 const RENDER_WINDOW = 60;
 const RENDER_PAGE = 60;
 
-// Brand marks for each coding backend. `invertOnDark` flips the black OpenAI
-// glyph to white in dark mode; Claude's orange already reads on both themes.
+// Brand marks for each coding backend. `invertOnDark` flips the black OpenAI /
+// Copilot glyphs to white in dark mode; Claude's orange already reads on both.
 const PROVIDER_BRANDS: Record<string, { src: string; invertOnDark: boolean }> = {
   claude: { src: claudeIcon, invertOnDark: false },
-  codex: { src: openaiIcon, invertOnDark: true }
+  codex: { src: openaiIcon, invertOnDark: true },
+  copilot: { src: copilotIcon, invertOnDark: true }
 };
 
 export default defineComponent({
