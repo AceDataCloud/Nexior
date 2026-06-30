@@ -17,7 +17,7 @@
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { getDomain } from '@/utils';
-import { getCookie, setCookie } from 'typescript-cookie';
+import { setCookie } from 'typescript-cookie';
 import { ArrowDown } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -42,8 +42,11 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.theme = this.loadFromCookie();
-    this.applyTheme();
+    // Mirror the theme already applied at startup by `initializeTheme`
+    // (cookie-or-dark) via the live <html> class. Re-deriving from the
+    // cookie here used a different default ('light') and stricter parse,
+    // so a missing/non-canonical cookie flipped the theme on Settings open.
+    this.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
   },
   methods: {
     onSelect(command: 'light' | 'dark') {
@@ -60,10 +63,6 @@ export default defineComponent({
       } else {
         document.documentElement.classList.remove('dark');
       }
-    },
-    loadFromCookie(): 'light' | 'dark' {
-      const saved = getCookie('THEME');
-      return saved === 'dark' ? 'dark' : 'light';
     }
   }
 });
