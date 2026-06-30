@@ -50,7 +50,7 @@
               <code class="grant-name">{{ g.name }}</code>
               <span class="grant-input">{{ g.input }}</span>
             </span>
-            <el-button size="small" text type="danger" @click="revoke(g.key)">
+            <el-button size="small" type="danger" @click="revoke(g.key)">
               {{ $t('common.settings.localToolsRevoke') }}
             </el-button>
           </li>
@@ -78,14 +78,22 @@
           <el-tag size="small" :type="perm.fullDisk ? 'success' : 'info'" effect="plain">
             {{ perm.fullDisk ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted') }}
           </el-tag>
-          <el-button size="small" text @click="open('fullDisk')">{{ $t('common.settings.localToolsOpen') }}</el-button>
+          <el-button size="small" type="primary" @click="open('fullDisk')">{{
+            $t('common.settings.localToolsOpen')
+          }}</el-button>
         </div>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermScreen') }}</span>
-          <el-tag size="small" :type="perm.screen === 'granted' ? 'success' : 'info'" effect="plain">{{
-            perm.screen
-          }}</el-tag>
-          <el-button size="small" text @click="open('screen')">{{ $t('common.settings.localToolsOpen') }}</el-button>
+          <el-tag size="small" :type="perm.screen === 'granted' ? 'success' : 'info'" effect="plain">
+            {{
+              perm.screen === 'granted'
+                ? $t('common.settings.localToolsGranted')
+                : $t('common.settings.localToolsNotGranted')
+            }}
+          </el-tag>
+          <el-button size="small" type="primary" @click="open('screen')">{{
+            $t('common.settings.localToolsOpen')
+          }}</el-button>
         </div>
         <div class="perm-row">
           <span class="perm-name">{{ $t('common.settings.localToolsPermAccessibility') }}</span>
@@ -94,7 +102,7 @@
               perm.accessibility ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted')
             }}
           </el-tag>
-          <el-button size="small" text @click="open('accessibility')">{{
+          <el-button size="small" type="primary" @click="open('accessibility')">{{
             $t('common.settings.localToolsOpen')
           }}</el-button>
         </div>
