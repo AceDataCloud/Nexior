@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 08:41:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 09:01:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.293.0
+
+Tue, 30 Jun 2026 09:01:42 GMT
+
+### Minor changes
+
+- feat(desktop): computer-use POC — opt-in screenshot + mouse/keyboard local tools (dev@acedata.cloud)
 
 ## 3.292.4
 
