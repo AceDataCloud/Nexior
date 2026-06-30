@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 03:35:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 03:42:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.292.0
+
+Tue, 30 Jun 2026 03:42:37 GMT
+
+### Minor changes
+
+- feat(desktop): Local Tools settings tab + persistent Always-allow consent (dev@acedata.cloud)
 
 ## 3.291.21
 
