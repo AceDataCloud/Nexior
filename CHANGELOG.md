@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 09:54:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 09:59:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.294.0
+
+Tue, 30 Jun 2026 09:59:53 GMT
+
+### Minor changes
+
+- feat(desktop): computer.screenshot returns the screen image so the model can see it (computer-use Phase 1) (dev@acedata.cloud)
 
 ## 3.293.4
 
