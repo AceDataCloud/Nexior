@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 09:01:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 09:05:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.293.1
+
+Tue, 30 Jun 2026 09:05:51 GMT
+
+### Patches
+
+- fix(nexior): drop macOS chat-rail logo inset in fullscreen (traffic lights hidden) (dev@acedata.cloud)
 
 ## 3.293.0
 
