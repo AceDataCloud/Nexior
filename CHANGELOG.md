@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 03:42:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 08:38:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.292.1
+
+Tue, 30 Jun 2026 08:38:07 GMT
+
+### Patches
+
+- Restrict operator/white-label settings tabs (Site, SEO, Distribution, Function, Auth, Subsites, Custom Domain) to the web surface; hide them in the native iOS/Android and desktop apps (dev@acedata.cloud)
 
 ## 3.292.0
 
