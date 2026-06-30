@@ -18,7 +18,11 @@ const AUTH_HOSTS = new Set(['auth.acedata.cloud']);
 // be allow-listed or the user can never reach checkout. Verify against the real
 // pay flow before shipping.
 const PSP_HOSTS = ['alipay.com', 'stripe.com', 'wx.tenpay.com', 'paypal.com'];
-const EXTERNAL_HOSTS = new Set(['acedata.cloud', ...PSP_HOSTS]);
+// Public app-store / desktop-build download destinations linked from the
+// /download page. Without these the store buttons are dead on desktop —
+// setWindowOpenHandler denies any host not on the allowlist.
+const STORE_HOSTS = ['play.google.com', 'apps.apple.com', 'github.com'];
+const EXTERNAL_HOSTS = new Set(['acedata.cloud', ...PSP_HOSTS, ...STORE_HOSTS]);
 
 // The signed-in site origin, added at runtime via `site:setOrigin` so
 // white-label custom-domain tenants aren't denied. Auth host stays fixed.
@@ -166,6 +170,15 @@ function createWindow(): void {
   // their inset. macOS-only events, but harmless to wire everywhere.
   mainWindow.on('enter-full-screen', () => mainWindow?.webContents.send('window:fullscreen', true));
   mainWindow.on('leave-full-screen', () => mainWindow?.webContents.send('window:fullscreen', false));
+
+  // macOS trackpad two-finger swipe ↔ history (matches Safari/browser muscle
+  // memory). Cmd+[ / Cmd+] and the Go menu cover keyboard users.
+  mainWindow.on('swipe', (_e, direction) => {
+    const h = mainWindow?.webContents.navigationHistory;
+    if (!h) return;
+    if (direction === 'left' && h.canGoBack()) h.goBack();
+    else if (direction === 'right' && h.canGoForward()) h.goForward();
+  });
 }
 
 function handleDeepLink(rawUrl: string): void {
@@ -250,11 +263,26 @@ ipcMain.handle('notify:show', (_e, { title, body }: { title: string; body: strin
 // (Cmd/Ctrl+C/V/X/A, undo/redo) to work in inputs; without it they are dead.
 function setupAppMenu(): void {
   const isMac = process.platform === 'darwin';
+  const nav = (dir: 'back' | 'forward') => {
+    const h = BrowserWindow.getFocusedWindow()?.webContents.navigationHistory;
+    if (!h) return;
+    if (dir === 'back' && h.canGoBack()) h.goBack();
+    else if (dir === 'forward' && h.canGoForward()) h.goForward();
+  };
   Menu.setApplicationMenu(
     Menu.buildFromTemplate([
       ...(isMac ? [{ role: 'appMenu' as const }] : []),
       { role: 'editMenu' },
       { role: 'viewMenu' },
+      // Escape hatch from chrome-less pages (e.g. /download): without this the
+      // user can land on a Bare-layout route with no in-app way back.
+      {
+        label: 'Go',
+        submenu: [
+          { label: 'Back', accelerator: isMac ? 'Cmd+[' : 'Alt+Left', click: () => nav('back') },
+          { label: 'Forward', accelerator: isMac ? 'Cmd+]' : 'Alt+Right', click: () => nav('forward') }
+        ]
+      },
       { role: 'windowMenu' }
     ])
   );
