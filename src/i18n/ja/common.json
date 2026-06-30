@@ -127,6 +127,14 @@
     "message": "iOSインストーラをダウンロード",
     "description": "ボタンのテキスト、iOSインストーラファイルをダウンロードするため"
   },
+  "button.downloadWindows": {
+    "message": "Windows 版をダウンロード",
+    "description": "Text in button for downloading the Windows desktop installer"
+  },
+  "button.downloadMac": {
+    "message": "macOS 版をダウンロード",
+    "description": "Text in button for downloading the macOS desktop installer"
+  },
   "button.installIos": {
     "message": "iOSをインストール",
     "description": "ボタンのテキスト、iOSアプリをインストールするため"
@@ -302,6 +310,18 @@
   "message.mobileNowOnAppStore": {
     "message": "Now on the App Store",
     "description": "Status label shown on the iOS card when the app is live on the App Store"
+  },
+  "message.desktopWindowsHint": {
+    "message": "Windows 10 以降（64 ビット）向け。インストーラーをダウンロードし、ダブルクリックしてセットアップします。",
+    "description": "Windows desktop download card description"
+  },
+  "message.desktopMacHint": {
+    "message": "macOS 11 以降向け。お使いの Mac に合うビルドを選択してください —— Apple Silicon（M シリーズ）または Intel。",
+    "description": "macOS desktop download card description"
+  },
+  "message.desktopUnsignedNote": {
+    "message": "デスクトップ版は未署名のベータビルドです。Windows では SmartScreen の警告で「詳細情報 → 実行」を選択してください。macOS ではアプリを右クリックして「開く」を選ぶと Gatekeeper を回避できます。",
+    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
   },
   "button.getOnGooglePlay": {
     "message": "Google Play で手に入れよう",
