@@ -1,4 +1,4 @@
-import { systemPreferences, shell } from 'electron';
+import { systemPreferences, shell, desktopCapturer } from 'electron';
 import fs from 'node:fs';
 
 // macOS TCC permission status + System Settings deep-links. Desktop is non-MAS
@@ -52,4 +52,17 @@ export async function askMedia(t: 'camera' | 'microphone'): Promise<boolean> {
 // Prompt accessibility once (true triggers the system dialog); ignore on non-mac.
 export function promptAccessibility(): boolean {
   return MAC ? systemPreferences.isTrustedAccessibilityClient(true) : true;
+}
+
+// macOS has no askForMediaAccess('screen'); the Screen Recording TCC prompt only
+// appears the first time the app actually enumerates a screen source. Touch
+// desktopCapturer (1×1 thumbnail) to trigger it naturally, then report status.
+export async function ensureScreenPermission(): Promise<string> {
+  if (!MAC) return 'granted';
+  try {
+    await desktopCapturer.getSources({ types: ['screen'], thumbnailSize: { width: 1, height: 1 } });
+  } catch {
+    /* the call's side effect (showing the prompt) is what matters; ignore errors */
+  }
+  return systemPreferences.getMediaAccessStatus('screen');
 }

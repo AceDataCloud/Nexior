@@ -143,6 +143,18 @@ export function listGrants(): string[] {
   return load().grants ?? [];
 }
 
+// Pre-approve the given tools as persistent "Always allow" grants in one shot
+// (used by "pre-approve all computer actions"). Only computer.* names are
+// accepted — their grant key IS the bare tool name (see grantKey) — so this can
+// never widen an fs/shell grant beyond its exact input. Idempotent.
+export function grantComputerTools(names: string[]): string[] {
+  const cfg = load();
+  const grants = new Set(cfg.grants ?? []);
+  for (const n of names) if (n.startsWith('computer.')) grants.add(n);
+  save({ ...cfg, grants: [...grants] });
+  return [...grants];
+}
+
 export function revokeGrant(key: string): void {
   const cfg = load();
   save({ ...cfg, grants: (cfg.grants ?? []).filter((g) => g !== key) });
