@@ -82,5 +82,12 @@ contextBridge.exposeInMainWorld('localExec', {
     list: (): Promise<string[]> => ipcRenderer.invoke('local.grants.list'),
     revoke: (key: string): Promise<boolean> => ipcRenderer.invoke('local.grants.revoke', key),
     clear: (): Promise<boolean> => ipcRenderer.invoke('local.grants.clear')
+  },
+  // Fired when the global panic hotkey forces Computer Use off, so the Settings
+  // toggle reflects reality and a later Save can't silently re-enable it.
+  onComputerUseDisabled: (cb: () => void): (() => void) => {
+    const handler = (): void => cb();
+    ipcRenderer.on('local.computerUse.disabled', handler);
+    return () => ipcRenderer.removeListener('local.computerUse.disabled', handler);
   }
 });

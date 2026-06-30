@@ -1,9 +1,9 @@
-import { app, BrowserWindow, ipcMain, shell, Menu, Notification } from 'electron';
+import { app, BrowserWindow, ipcMain, shell, Menu, Notification, globalShortcut } from 'electron';
 import path from 'node:path';
 import { registerAppProtocol, APP_ORIGIN } from './protocol';
 import { issueState, consumeState } from './auth-state';
 import { initUpdater } from './updater';
-import { registerLocalExec } from './local/ipc';
+import { registerLocalExec, disableComputerUse } from './local/ipc';
 import { registry } from './local/registry';
 import { setRoots } from './local/fs';
 import { load as loadLocalConfig } from './local/config';
@@ -103,6 +103,7 @@ if (!gotLock) {
     registry.setComputerUse(localCfg.computerUse === true); // opt-in, default off
     void registry.boot(localCfg.mcp);
     registerLocalExec(() => mainWindow);
+    registerPanicStop();
     // Windows cold-start protocol activation: URL is in this instance's argv.
     const coldUrl = process.argv.find((a) => a.startsWith(`${DESKTOP_SCHEME}://`));
     if (coldUrl) handleDeepLink(coldUrl);
@@ -111,9 +112,38 @@ if (!gotLock) {
   app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
   });
+  app.on('will-quit', () => globalShortcut.unregisterAll());
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+}
+
+// Global "panic stop" hotkey: instantly disables Computer Use (screen capture +
+// mouse/keyboard input) from anywhere, even when the app is unfocused — the
+// escape hatch for a runaway screen-control loop. Per-action consent is the
+// primary gate; this is the always-available kill switch.
+const PANIC_ACCELERATOR = 'CommandOrControl+Alt+Shift+P';
+
+function registerPanicStop(): void {
+  try {
+    const ok = globalShortcut.register(PANIC_ACCELERATOR, () => {
+      const wasOn = disableComputerUse();
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.webContents.send('local.computerUse.disabled');
+      }
+      if (Notification.isSupported()) {
+        new Notification({
+          title: 'Computer Use stopped',
+          body: wasOn
+            ? 'Screen control was disabled. Re-enable it in Settings → Local Tools.'
+            : 'Computer Use was already off.'
+        }).show();
+      }
+    });
+    if (!ok) console.warn(`panic-stop: failed to register ${PANIC_ACCELERATOR}`);
+  } catch (err) {
+    console.warn('panic-stop: globalShortcut registration error', err);
+  }
 }
 
 function createWindow(): void {

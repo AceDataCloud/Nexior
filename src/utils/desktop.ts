@@ -85,6 +85,9 @@ export interface LocalExecBridge {
     revoke(key: string): Promise<boolean>;
     clear(): Promise<boolean>;
   };
+  /** Subscribe to the global panic hotkey forcing Computer Use off. Returns an
+   * unsubscribe fn. Undefined on older preloads. */
+  onComputerUseDisabled?(cb: () => void): () => void;
 }
 
 export function localExec(): LocalExecBridge | undefined {

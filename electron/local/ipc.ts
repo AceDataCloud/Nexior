@@ -18,6 +18,19 @@ function sameOrigin(url: string | undefined): boolean {
   }
 }
 
+// Panic kill-switch: force Computer Use OFF (persisted + hot-applied at once) so
+// a global hotkey can halt all screen capture + input even when the app is
+// unfocused. Returns whether it was actually on (for the caller's feedback).
+export function disableComputerUse(): boolean {
+  const cur = load();
+  const wasOn = cur.computerUse === true;
+  // Flip the in-memory gate first — that is what actually blocks execution — so
+  // a slow/throwing save() can never leave Computer Use live after a panic.
+  registry.setComputerUse(false);
+  if (wasOn) save({ ...cur, computerUse: false });
+  return wasOn;
+}
+
 export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   const gate = (e: Electron.IpcMainInvokeEvent) => {
     if (!sameOrigin(e.senderFrame?.url)) throw new Error('local-exec: bad sender origin');
