@@ -1,0 +1,339 @@
+name: Auto Production Mobile (daily)
+
+# Daily, fully-automatic production release for iOS and Android — but ONLY when
+# it is safe to do so. A "review-state gate" inspects each store BEFORE we touch
+# it and skips a platform when any of these is true (the run becomes a no-op for
+# that platform and retries tomorrow):
+#
+#   iOS  (App Store Connect appStoreVersions.appStoreState):
+#     - a version is IN REVIEW / pending release   -> don't submit a new one
+#     - a version is REJECTED / needs manual fixup  -> don't submit a new one
+#     - package.json is not newer than the live ver -> nothing to ship
+#   Android (Play production track release status):
+#     - a release is inProgress / halted / draft    -> rollout in flight, don't stack
+#     - package.json versionCode is not newer        -> nothing to ship
+#
+# When the gate is clean it dispatches the proven build-ios.yaml /
+# build-android.yaml with production toggles ON:
+#     - iOS      -> TestFlight + auto-submit for App Store review
+#     - Android  -> upload straight to the Production track at 100% rollout
+#
+# Those build workflows ALSO run their own duplicate-version preflight, so even
+# if the gate is bypassed the same binary is never uploaded twice. The gate
+# fails CLOSED: if a store-state query errors we skip that platform rather than
+# risk submitting on top of a pending/rejected review.
+#
+# NOTE: Google Play does not expose policy-rejection state via the Publisher v3
+# API, so the Android gate can only detect an in-flight/halted/draft rollout on
+# the production track. The downstream duplicate-versionCode preflight still
+# prevents re-uploading a versionCode that already exists.
+
+on:
+  schedule:
+    # 01:00 UTC daily = 09:00 Asia/Shanghai. Adjust to taste.
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: 'Which platforms to auto-release'
+        required: false
+        default: 'both'
+        type: choice
+        options:
+          - both
+          - android
+          - ios
+      bypass_gate:
+        description: 'Skip the review-state gate (still respects the per-build duplicate check)'
+        required: false
+        default: false
+        type: boolean
+      android_rollout_percent:
+        description: 'Android production rollout fraction (0.0–1.0). 1.0 = full release.'
+        required: false
+        default: '1.0'
+        type: string
+
+permissions:
+  actions: write
+  contents: read
+
+env:
+  BUNDLE_ID: com.acedatacloud.nexior
+  PACKAGE_NAME: com.acedatacloud.nexior
+
+jobs:
+  gate:
+    name: Review-state gate
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.ver.outputs.name }}
+      target-code: ${{ steps.ver.outputs.code }}
+      ios-ok: ${{ steps.ios.outputs.ios_ok }}
+      ios-reason: ${{ steps.ios.outputs.ios_reason }}
+      android-ok: ${{ steps.android.outputs.android_ok }}
+      android-reason: ${{ steps.android.outputs.android_reason }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install deps
+        run: python -m pip install --quiet 'pyjwt[crypto]==2.10.1' requests
+
+      - name: Resolve target version from package.json
+        id: ver
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          IFS='.' read -r major minor patch <<< "$VERSION"
+          CODE=$((major * 10000 + minor * 100 + patch))
+          echo "name=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "code=$CODE"   >> "$GITHUB_OUTPUT"
+          echo "::notice::Target version $VERSION (code $CODE)"
+
+      - name: iOS review-state gate
+        id: ios
+        env:
+          ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          ASC_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_KEY_BASE64 }}
+          BUNDLE_ID: ${{ env.BUNDLE_ID }}
+          TARGET_CODE: ${{ steps.ver.outputs.code }}
+          BYPASS: ${{ github.event_name == 'workflow_dispatch' && inputs.bypass_gate }}
+        run: |
+          python <<'PY'
+          import base64, os, sys, time, requests, jwt
+
+          def write(ok, reason):
+              # Single line, no shell metacharacters: this value is later
+              # interpolated into echo steps, so keep it injection-safe.
+              reason = ' '.join(str(reason).split())
+              reason = ''.join(c for c in reason if c not in '`$"\'\\')[:200]
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f"ios_ok={'true' if ok else 'false'}\n")
+                  f.write(f"ios_reason={reason}\n")
+              print(f"::notice::iOS gate -> ok={ok}: {reason}")
+              sys.exit(0)
+
+          if os.environ.get('BYPASS') == 'true':
+              write(True, 'bypass_gate=true')
+
+          def vcode(vs):
+              try:
+                  a, b, c = (vs.split('.') + ['0', '0', '0'])[:3]
+                  return int(a) * 10000 + int(b) * 100 + int(c)
+              except Exception:
+                  return 0
+
+          # Versions that mean "do not submit a new build now".
+          IN_FLIGHT = {
+              'WAITING_FOR_REVIEW', 'IN_REVIEW', 'PENDING_DEVELOPER_RELEASE',
+              'PENDING_APPLE_RELEASE', 'PROCESSING_FOR_APP_STORE',
+          }
+          REJECTED = {
+              'REJECTED', 'DEVELOPER_REJECTED', 'METADATA_REJECTED', 'INVALID_BINARY',
+          }
+          LIVE = {'READY_FOR_SALE', 'REPLACED_WITH_NEW_VERSION', 'DEVELOPER_REMOVED_FROM_SALE'}
+
+          try:
+              target = int(os.environ['TARGET_CODE'])
+              now = int(time.time())
+              token = jwt.encode(
+                  {'iss': os.environ['ASC_ISSUER_ID'], 'iat': now, 'exp': now + 1200,
+                   'aud': 'appstoreconnect-v1'},
+                  base64.b64decode(os.environ['ASC_KEY_BASE64']).decode(),
+                  algorithm='ES256',
+                  headers={'kid': os.environ['ASC_KEY_ID'], 'typ': 'JWT'},
+              )
+              h = {'Authorization': f'Bearer {token}'}
+              apps = requests.get(
+                  'https://api.appstoreconnect.apple.com/v1/apps',
+                  headers=h, params={'filter[bundleId]': os.environ['BUNDLE_ID'], 'limit': 1},
+                  timeout=30,
+              )
+              apps.raise_for_status()
+              data = apps.json().get('data') or []
+              if not data:
+                  write(False, f"no App Store Connect app for {os.environ['BUNDLE_ID']}")
+              app_id = data[0]['id']
+
+              r = requests.get(
+                  f'https://api.appstoreconnect.apple.com/v1/apps/{app_id}/appStoreVersions',
+                  headers=h, params={'filter[platform]': 'IOS', 'limit': 50}, timeout=30,
+              )
+              r.raise_for_status()
+              versions = r.json().get('data') or []
+
+              live_code = 0
+              for v in versions:
+                  a = v['attributes']
+                  state = a.get('appStoreState') or a.get('state')
+                  vs = a.get('versionString', '')
+                  if state in IN_FLIGHT:
+                      write(False, f'version {vs} is {state} (in review) — not submitting a new build')
+                  if state in REJECTED:
+                      write(False, f'version {vs} is {state} (needs manual fixup) — not submitting a new build')
+                  if state in LIVE:
+                      live_code = max(live_code, vcode(vs))
+
+              if target <= live_code:
+                  write(False, f'package.json code {target} not newer than live {live_code} — nothing to ship')
+              write(True, f'clean (live={live_code}, target={target})')
+          except Exception as e:
+              write(False, f'gate check failed ({e!r}) — failing closed')
+          PY
+
+      - name: Android review-state gate
+        id: android
+        env:
+          SA_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          PACKAGE_NAME: ${{ env.PACKAGE_NAME }}
+          TARGET_CODE: ${{ steps.ver.outputs.code }}
+          BYPASS: ${{ github.event_name == 'workflow_dispatch' && inputs.bypass_gate }}
+        run: |
+          python <<'PY'
+          import json, os, sys, time, requests, jwt
+
+          def write(ok, reason):
+              # Single line, no shell metacharacters: this value is later
+              # interpolated into echo steps, so keep it injection-safe.
+              reason = ' '.join(str(reason).split())
+              reason = ''.join(c for c in reason if c not in '`$"\'\\')[:200]
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write(f"android_ok={'true' if ok else 'false'}\n")
+                  f.write(f"android_reason={reason}\n")
+              print(f"::notice::Android gate -> ok={ok}: {reason}")
+              sys.exit(0)
+
+          if os.environ.get('BYPASS') == 'true':
+              write(True, 'bypass_gate=true')
+
+          # Release statuses that mean a rollout is mid-flight — don't stack a new one.
+          BLOCK = {'inProgress', 'halted', 'draft'}
+
+          try:
+              target = int(os.environ['TARGET_CODE'])
+              sa = json.loads(os.environ['SA_JSON'])
+              package = os.environ['PACKAGE_NAME']
+              now = int(time.time())
+              assertion = jwt.encode(
+                  {'iss': sa['client_email'],
+                   'scope': 'https://www.googleapis.com/auth/androidpublisher',
+                   'aud': 'https://oauth2.googleapis.com/token',
+                   'iat': now, 'exp': now + 3600},
+                  sa['private_key'], algorithm='RS256',
+              )
+              tok = requests.post(
+                  'https://oauth2.googleapis.com/token',
+                  data={'grant_type': 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+                        'assertion': assertion}, timeout=30,
+              )
+              tok.raise_for_status()
+              h = {'Authorization': f"Bearer {tok.json()['access_token']}"}
+              base = f'https://androidpublisher.googleapis.com/androidpublisher/v3/applications/{package}'
+
+              edit = requests.post(f'{base}/edits', headers=h, json={}, timeout=30)
+              edit.raise_for_status()
+              edit_id = edit.json()['id']
+              try:
+                  tr = requests.get(f'{base}/edits/{edit_id}/tracks/production', headers=h, timeout=30)
+                  releases = tr.json().get('releases', []) if tr.status_code == 200 else []
+              finally:
+                  requests.delete(f'{base}/edits/{edit_id}', headers=h, timeout=30)
+
+              live_code = 0
+              for rel in releases:
+                  st = rel.get('status')
+                  codes = [int(c) for c in rel.get('versionCodes', []) if str(c).isdigit()]
+                  if st in BLOCK:
+                      write(False, f'production release {codes} status={st} — rollout in flight, not stacking')
+                  if st == 'completed' and codes:
+                      live_code = max(live_code, max(codes))
+
+              if target <= live_code:
+                  write(False, f'versionCode {target} not newer than live {live_code} — nothing to ship')
+              write(True, f'clean (live={live_code}, target={target})')
+          except Exception as e:
+              write(False, f'gate check failed ({e!r}) — failing closed')
+          PY
+
+  ios:
+    name: Dispatch iOS production
+    needs: gate
+    if: >-
+      needs.gate.outputs.ios-ok == 'true'
+      && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'ios')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Trigger build-ios.yaml (TestFlight + App Store review)
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          GATE_REASON: ${{ needs.gate.outputs.ios-reason }}
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          echo "::notice::iOS gate clean ($GATE_REASON) — submitting v$VERSION."
+          gh workflow run build-ios.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f auto_distribute_external=true \
+            -f auto_submit_review=true \
+            -f force=false
+
+  android:
+    name: Dispatch Android production
+    needs: gate
+    if: >-
+      needs.gate.outputs.android-ok == 'true'
+      && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'android')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Trigger build-android.yaml (Production track, full rollout)
+        env:
+          GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
+          ROLLOUT: ${{ github.event_name == 'workflow_dispatch' && inputs.android_rollout_percent || '1.0' }}
+          GATE_REASON: ${{ needs.gate.outputs.android-reason }}
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          # ROLLOUT is a free-form workflow_dispatch input; force it to a bare
+          # decimal in [0,1] before it reaches gh / the Play API.
+          if ! printf '%s' "$ROLLOUT" | grep -Eq '^(0(\.[0-9]+)?|1(\.0+)?)$'; then
+            echo "::warning::Invalid rollout '$ROLLOUT' — defaulting to 1.0."
+            ROLLOUT='1.0'
+          fi
+          printf '%s\n' "::notice::Android gate clean ($GATE_REASON) — releasing v$VERSION at rollout=$ROLLOUT."
+          gh workflow run build-android.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f track=production \
+            -f promote_to_production=false \
+            -f rollout_percent="$ROLLOUT" \
+            -f force=false
+
+  summary:
+    name: Gate summary
+    needs: [gate, ios, android]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+          IOS_REASON: ${{ needs.gate.outputs.ios-reason }}
+          ANDROID_REASON: ${{ needs.gate.outputs.android-reason }}
+          IOS_BADGE: ${{ needs.gate.outputs.ios-ok == 'true' && '✅ dispatched' || '⏭️ skipped' }}
+          ANDROID_BADGE: ${{ needs.gate.outputs.android-ok == 'true' && '✅ dispatched' || '⏭️ skipped' }}
+        run: |
+          {
+            echo "### Auto Production Mobile — v$VERSION"
+            echo ""
+            echo "| Platform | Gate | Reason |"
+            echo "|----------|------|--------|"
+            echo "| iOS      | $IOS_BADGE | $IOS_REASON |"
+            echo "| Android  | $ANDROID_BADGE | $ANDROID_REASON |"
+          } >> "$GITHUB_STEP_SUMMARY"
