@@ -89,5 +89,9 @@ contextBridge.exposeInMainWorld('localExec', {
     const handler = (): void => cb();
     ipcRenderer.on('local.computerUse.disabled', handler);
     return () => ipcRenderer.removeListener('local.computerUse.disabled', handler);
-  }
+  },
+  // Pre-approve every computer.* action (persistent always-allow) + enable
+  // Computer Use + trigger the macOS Screen Recording / Accessibility prompts.
+  preauthorizeComputerUse: (): Promise<{ grants: string[]; perm: unknown; computerUse: boolean }> =>
+    ipcRenderer.invoke('local.computerUse.preauthorize')
 });
