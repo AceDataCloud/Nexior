@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 16:00:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 16:02:10 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.296.1
+
+Tue, 30 Jun 2026 16:02:10 GMT
+
+### Patches
+
+- desktop: add global panic-stop hotkey (Cmd/Ctrl+Alt+Shift+P) to instantly disable Computer Use (dev@acedata.cloud)
 
 ## 3.296.0
 
