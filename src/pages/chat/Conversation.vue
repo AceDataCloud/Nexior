@@ -857,9 +857,19 @@ export default defineComponent({
         // The worker echoes the sanitized wire name; map it back to the real
         // dotted tool name localExec expects (else `unknown tool`).
         const realName = this._wiredTools().find((w) => w.wire === p.name)?.spec.name ?? p.name;
+        // `p.input` came from reactive component state (pendingClientTools /
+        // message content), so it's a Vue reactive Proxy. Electron's IPC
+        // structured-clone can't clone a Proxy → "An object could not be
+        // cloned". Pass a plain deep copy (tool inputs are JSON-serializable).
+        let safeInput: Record<string, unknown>;
+        try {
+          safeInput = JSON.parse(JSON.stringify(p.input ?? {}));
+        } catch {
+          safeInput = {};
+        }
         let r: { output: string; is_error?: boolean };
         try {
-          r = (await localExec()?.invoke({ name: realName, input: p.input, sessionId })) ?? {
+          r = (await localExec()?.invoke({ name: realName, input: safeInput, sessionId })) ?? {
             output: 'local execution unavailable',
             is_error: true
           };

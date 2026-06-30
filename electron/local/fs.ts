@@ -1,5 +1,6 @@
 import fsp from 'node:fs/promises';
 import { realpathSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import type { ToolResult } from './types';
 
@@ -23,22 +24,32 @@ function inRootDir(full: string): boolean {
   return ROOTS.some((r) => full === r || full.startsWith(r + path.sep));
 }
 
+// Models commonly pass `~/Desktop`; Node never expands `~`, so realpathSync
+// would walk a literal `/~` and ENOENT. Expand a leading `~`/`~/` to the home
+// dir (which is typically what an authorized root sits under).
+function expandHome(p: string): string {
+  if (p === '~') return os.homedir();
+  if (p.startsWith('~/') || p.startsWith('~\\')) return path.join(os.homedir(), p.slice(2));
+  return p;
+}
+
 // For reads/lists: resolve the real file and assert it stays in a root (blocks
 // an in-root symlink pointing outside). For writes: parent must realpath into a
 // root; the new file inherits that boundary.
 function resolveExisting(p: string): string {
-  const real = realpathSync(p);
+  const real = realpathSync(expandHome(p));
   if (!inRootDir(real)) throw new Error('path outside allowed roots');
   return real;
 }
 function resolveForWrite(p: string): string {
+  const expanded = expandHome(p);
   let dir: string;
   try {
-    dir = realpathSync(path.dirname(p));
+    dir = realpathSync(path.dirname(expanded));
   } catch {
     throw new Error('parent dir missing');
   }
-  const full = path.join(dir, path.basename(p));
+  const full = path.join(dir, path.basename(expanded));
   if (!inRootDir(full)) throw new Error('path outside allowed roots');
   return full;
 }
