@@ -84,6 +84,7 @@ import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
 import { isDesktop } from '@/utils/surface';
+import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import {
@@ -218,6 +219,11 @@ export default defineComponent({
       return this.$store.state.chat.status.getApplications === Status.Request;
     },
     ready(): boolean {
+      // Guests may compose & "send" — the submit handler triggers login
+      // (deferred auth), so the composer must not be disabled for them.
+      if (!this.$store.getters.authenticated) {
+        return true;
+      }
       // Disable sending until token/application/credential are all initialized,
       // otherwise the first submit races init and hits `You have not applied for this service...`.
       return !this.initializing && !!this.credential?.token && !!this.application;
@@ -622,6 +628,11 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
+      // Deferred auth: a guest hitting send is sent to login here, before we
+      // mutate `messages`, so they return to a clean composer post-login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       if (this.references.length > 0) {
         const content: IChatMessageContentItem[] = [
           {
@@ -654,6 +665,11 @@ export default defineComponent({
     },
     // Get answers to questions
     async onRequest() {
+      // Safety net for every send path (onSubmit / onEdit / onRestart funnel
+      // here): a guest is sent to login before any request is attempted.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       // Refresh the desktop local-tool list at the start of each user turn so a
       // Settings change (e.g. toggling Computer Use on/off) takes effect on the
       // very next message. Without this, `localTools` is cached from mount and a

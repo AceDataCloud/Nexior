@@ -21,7 +21,7 @@ import { ERROR_CODE_DUPLICATION, ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/pika/RecentPanel.vue';
 import { IPikaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IPikaTask | undefined;
@@ -192,6 +192,9 @@ export default defineComponent({
         ...this.config,
         async: true
       } as IPikaGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

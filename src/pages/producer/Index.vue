@@ -25,7 +25,7 @@ import ConfigPanel from '@/components/producer/ConfigPanel.vue';
 import RecentPanel from '@/components/producer/RecentPanel.vue';
 import PreviewPanel from '@/components/producer/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IProducerTask | undefined;
@@ -195,6 +195,9 @@ export default defineComponent({
         ...this.config,
         async: true
       } as IProducerAudioRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

@@ -32,7 +32,7 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/qrart/RecentPanel.vue';
 import { IQrartTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IQrartTask | undefined;
@@ -224,6 +224,9 @@ export default defineComponent({
             }
           : {})
       } as IQrartGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

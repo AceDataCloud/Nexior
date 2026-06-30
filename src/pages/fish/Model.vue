@@ -21,6 +21,7 @@ import ModelConfigPanel from '@/components/fish/ModelConfigPanel.vue';
 import ModelListPanel from '@/components/fish/ModelListPanel.vue';
 import TabSwitcher from '@/components/fish/TabSwitcher.vue';
 import { fishOperator } from '@/operators';
+import { ensureLoggedIn } from '@/utils';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 
@@ -77,6 +78,9 @@ export default defineComponent({
       enhance_audio_quality?: boolean;
       generate_sample?: boolean;
     }) {
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

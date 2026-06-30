@@ -15,6 +15,7 @@ import Layout from '@/layouts/DigitalHuman.vue';
 import ConfigPanel from '@/components/digitalhuman/ConfigPanel.vue';
 import RecentPanel from '@/components/digitalhuman/RecentPanel.vue';
 import { digitalHumanOperator } from '@/operators';
+import { ensureLoggedIn } from '@/utils';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IDigitalHumanGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -115,6 +116,9 @@ export default defineComponent({
       }
     },
     async onGenerate(request: IDigitalHumanGenerateRequest) {
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

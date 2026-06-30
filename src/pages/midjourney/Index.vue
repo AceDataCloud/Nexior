@@ -34,7 +34,7 @@ import {
   MIDJOURNEY_DEFAULT_QUALITY
 } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   operating: boolean;
@@ -216,6 +216,10 @@ export default defineComponent({
       await this.onGetTasks();
     },
     async onStartImagineTask(request: IMidjourneyImagineRequest) {
+      // Deferred auth: guests compose freely; hitting generate sends them to login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -246,6 +250,10 @@ export default defineComponent({
         });
     },
     async onStartVideosTask(request: IMidjourneyVideosRequest) {
+      // Deferred auth: guests compose freely; hitting generate sends them to login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -282,6 +290,10 @@ export default defineComponent({
         });
     },
     async onStartDescribeTask(request: IMidjourneyDescribeRequest) {
+      // Deferred auth: guests compose freely; hitting describe sends them to login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

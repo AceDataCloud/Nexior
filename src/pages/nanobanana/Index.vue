@@ -21,7 +21,7 @@ import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NAN
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: INanobananaTask | undefined;
@@ -170,6 +170,9 @@ export default defineComponent({
         action: hasReferenceImages ? 'edit' : 'generate',
         async: true
       } as INanobananaGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

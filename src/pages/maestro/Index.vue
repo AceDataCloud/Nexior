@@ -15,6 +15,7 @@ import Layout from '@/layouts/Maestro.vue';
 import ConfigPanel from '@/components/maestro/ConfigPanel.vue';
 import RecentPanel from '@/components/maestro/RecentPanel.vue';
 import { maestroOperator } from '@/operators';
+import { ensureLoggedIn } from '@/utils';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { IMaestroGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
@@ -117,6 +118,9 @@ export default defineComponent({
       const request = {
         ...this.config
       } as IMaestroGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

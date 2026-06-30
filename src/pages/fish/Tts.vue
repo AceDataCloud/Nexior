@@ -26,7 +26,7 @@ import { IFishTask, IFishTtsRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, FISH_DEFAULT_TTS_MODEL } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IFishTask | undefined;
@@ -154,6 +154,9 @@ export default defineComponent({
       const text = cfg.text?.trim();
       if (!text) {
         ElMessage.warning(this.$t('fish.message.textRequired'));
+        return;
+      }
+      if (!ensureLoggedIn()) {
         return;
       }
       const token = this.credential?.token;

@@ -31,7 +31,7 @@ import ConfigPanel from '@/components/suno/ConfigPanel.vue';
 import RecentPanel from '@/components/suno/RecentPanel.vue';
 import PreviewPanel from '@/components/suno/PreviewPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: ISunoTask | undefined;
@@ -239,6 +239,9 @@ export default defineComponent({
       }
       if (this.hasText(request.prompt)) {
         request.prompt = request.prompt.trim();
+      }
+      if (!ensureLoggedIn()) {
+        return;
       }
       const token = this.credential?.token;
       if (!token) {

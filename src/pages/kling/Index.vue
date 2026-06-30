@@ -37,7 +37,7 @@ import { ERROR_CODE_USED_UP, KLING_TALKING_PHOTO_DEFAULT_MODEL, KLING_TALKING_PH
 import RecentPanel from '@/components/kling/RecentPanel.vue';
 import { IKlingTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IKlingTask | undefined;
@@ -224,6 +224,9 @@ export default defineComponent({
             : {})
         };
       }
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -284,6 +287,9 @@ export default defineComponent({
         ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
         async: true
       };
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');
@@ -334,6 +340,9 @@ export default defineComponent({
         ...(cfg.duration ? { duration: cfg.duration } : {}),
         async: true
       };
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

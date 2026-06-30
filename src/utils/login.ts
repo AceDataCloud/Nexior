@@ -40,3 +40,20 @@ export const loginRedirect = ({
   const targetUrl = `${targetBaseUrl}?${new URLSearchParams(targetQuery).toString()}`;
   window.location.href = targetUrl;
 };
+
+/**
+ * Gate a user-initiated operation behind login. Returns `true` when the user is
+ * already authenticated; otherwise kicks off the login flow (in-app popup on
+ * native/desktop, redirect on web — preserving the current URL) and returns
+ * `false` so the caller can abort the just-attempted operation.
+ *
+ * This is the "deferred auth" primitive: guests can browse and compose, and are
+ * only sent to login the moment they actually try to run something.
+ */
+export const ensureLoggedIn = (): boolean => {
+  if (store.getters.authenticated) {
+    return true;
+  }
+  store.dispatch('login');
+  return false;
+};
