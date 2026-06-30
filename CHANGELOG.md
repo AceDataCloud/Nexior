@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 09:30:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 09:54:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.293.4
+
+Tue, 30 Jun 2026 09:54:38 GMT
+
+### Patches
+
+- fix(desktop): open store links externally + Back/Forward nav so /download isn't a dead end (dev@acedata.cloud)
 
 ## 3.293.3
 
