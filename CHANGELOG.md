@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 09:59:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 16:00:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.295.0
+
+Tue, 30 Jun 2026 16:00:32 GMT
+
+### Minor changes
+
+- feat(desktop): enable the nut.js input backend so computer.click/type/key/scroll work (computer-use Phase 2) (dev@acedata.cloud)
 
 ## 3.294.0
 
