@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 08:38:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 08:38:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.292.2
+
+Tue, 30 Jun 2026 08:38:51 GMT
+
+### Patches
+
+- feat(download): add Windows (.exe) and macOS (Intel + Apple Silicon .dmg) desktop installer cards, linking the public GitHub Release assets (dev@acedata.cloud)
+- Restrict operator/white-label settings tabs (Site, SEO, Distribution, Function, Auth, Subsites, Custom Domain) to the web surface; hide them in the native iOS/Android and desktop apps (dev@acedata.cloud)
 
 ## 3.292.1
 
