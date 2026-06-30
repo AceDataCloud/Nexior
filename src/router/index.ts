@@ -75,6 +75,18 @@ import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@
 import { ensureStoreModule } from '@/store/lazy';
 import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
 import { handleChunkLoadError } from '@/utils/chunkLoadError';
+import { loginRedirect } from '@/utils/login';
+import { isNative, isDesktop } from '@/utils/surface';
+
+// Sections that require a logged-in user — guests hitting these are sent to the
+// login flow (web: redirect preserving the target; native/desktop: in-app
+// popup). Everything else (AI service pages, home) is browsable as a guest;
+// login is deferred until they actually start an operation. Keep this list in
+// sync when adding account/billing-style routes.
+const AUTH_REQUIRED_PREFIXES = ['/console', '/distribution', '/settings', '/coding-bridge'];
+
+const requiresLogin = (path: string): boolean =>
+  AUTH_REQUIRED_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 
 // SEO metadata per route path prefix
 const ROUTE_SEO: Record<string, { title: string; description: string; keywords: string[]; category: string }> = {
@@ -415,6 +427,19 @@ export function setupRouterGuards(router: Router) {
     }
     if (decision.kind === 'mismatch') {
       // Helper has already triggered a full-page SSO redirect; abort.
+      return next(false);
+    }
+
+    // Auth-required sections (console / distribution / settings / coding-bridge)
+    // need a logged-in user. Guests are sent to login instead of landing on a
+    // page whose data calls 401 and spins forever. The login flow preserves the
+    // intended destination so they return here after authenticating.
+    if (!store.getters.authenticated && requiresLogin(to.path)) {
+      if (isNative() || isDesktop()) {
+        store.dispatch('login');
+      } else {
+        loginRedirect({ redirect: to.fullPath });
+      }
       return next(false);
     }
 
