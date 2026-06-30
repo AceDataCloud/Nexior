@@ -1,10 +1,10 @@
 import { ipcMain, BrowserWindow, dialog } from 'electron';
 import { APP_ORIGIN } from '../protocol';
-import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent } from './consent';
+import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent, grantComputerTools } from './consent';
 import { registry } from './registry';
 import { load, save } from './config';
 import { setRoots } from './fs';
-import { status, openPane, askMedia, promptAccessibility, type PaneKey } from './permissions';
+import { status, openPane, askMedia, promptAccessibility, ensureScreenPermission, type PaneKey } from './permissions';
 import type { LocalConfig, ToolInvoke } from './types';
 
 // Only the top-frame app://bundle renderer may drive local execution. Compare
@@ -109,5 +109,37 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     gate(e);
     clearGrants();
     return true;
+  });
+
+  // "Pre-approve all computer actions": turn Computer Use on, persist an
+  // always-allow grant for every computer.* tool at once, and trigger the macOS
+  // Screen Recording + Accessibility prompts up front so the first real action
+  // doesn't stall. Returns the new grant list + permission status to refresh UI.
+  ipcMain.handle('local.computerUse.preauthorize', async (e) => {
+    gate(e);
+    const win = getWin();
+    // Native (main-process) confirmation. The renderer can request this, but a
+    // compromised/XSS'd page must NOT be able to silently grant itself permanent
+    // screen + input control — only the user clicking this native dialog can.
+    const confirm = {
+      type: 'warning' as const,
+      buttons: ['Enable & allow all', 'Cancel'],
+      defaultId: 1,
+      cancelId: 1,
+      message: 'Pre-approve all computer actions?',
+      detail:
+        'This lets the AI take screenshots and control your mouse & keyboard WITHOUT asking each time — until you revoke it in Settings → Local Tools or press the panic hotkey (Cmd/Ctrl+Alt+Shift+P).'
+    };
+    const { response } = win ? await dialog.showMessageBox(win, confirm) : await dialog.showMessageBox(confirm);
+    if (response !== 0) return { grants: listGrants(), perm: status(), computerUse: load().computerUse === true };
+    const cur = load();
+    if (cur.computerUse !== true) save({ ...cur, computerUse: true });
+    registry.setComputerUse(true);
+    const grants = grantComputerTools(registry.computerToolNames());
+    await ensureScreenPermission(); // capture permission (no-op off macOS)
+    promptAccessibility(); // input permission
+    // Re-read computerUse: a panic hotkey fired DURING the awaits above would
+    // have disabled it, so don't report a stale `true` the UI could re-persist.
+    return { grants, perm: status(), computerUse: load().computerUse === true };
   });
 }

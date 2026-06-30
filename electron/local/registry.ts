@@ -44,6 +44,13 @@ class Registry {
     this.computerUse = on === true;
   }
 
+  // Names of the computer-use tools, regardless of whether the feature is
+  // currently enabled — used by the "pre-approve all computer actions" flow to
+  // persist a grant per tool up front.
+  computerToolNames(): string[] {
+    return COMPUTER_TOOLS.map((s) => s.name);
+  }
+
   async boot(servers: McpServerConf[]): Promise<void> {
     for (const s of servers) {
       try {

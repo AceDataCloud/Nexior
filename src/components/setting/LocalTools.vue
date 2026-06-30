@@ -65,6 +65,12 @@
           <el-switch v-model="computerUse" :loading="savingCU" @change="onToggleComputerUse" />
         </div>
         <p class="muted">{{ $t('common.settings.localToolsComputerUseHint') }}</p>
+        <div class="actions">
+          <el-button size="small" type="primary" :loading="preauthorizing" @click="preauthorizeAll">
+            {{ $t('common.settings.localToolsPreauthorizeAll') }}
+          </el-button>
+          <span class="muted">{{ $t('common.settings.localToolsPreauthorizeHint') }}</span>
+        </div>
       </section>
 
       <!-- macOS system permissions -->
@@ -136,6 +142,7 @@ export default defineComponent({
       perm: null as null | { mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean },
       computerUse: false,
       savingCU: false,
+      preauthorizing: false,
       saving: false,
       savedTip: false,
       cuOff: null as null | (() => void)
@@ -214,6 +221,22 @@ export default defineComponent({
         computerUse: val === true
       });
       this.savingCU = false;
+    },
+    // Pre-approve every computer.* action (persistent always-allow), enable
+    // Computer Use, and trigger the macOS Screen Recording / Accessibility
+    // prompts up front so the first real action doesn't stall on a dialog.
+    async preauthorizeAll() {
+      const ex = localExec();
+      if (!ex?.preauthorizeComputerUse) return;
+      this.preauthorizing = true;
+      try {
+        const r = await ex.preauthorizeComputerUse();
+        this.computerUse = r.computerUse === true;
+        if (r.perm?.mac) this.perm = r.perm;
+        await this.loadGrants();
+      } finally {
+        this.preauthorizing = false;
+      }
     },
     async revoke(key: string) {
       await localExec()?.grants?.revoke(key);
