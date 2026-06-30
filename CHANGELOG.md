@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 17:12:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 17:34:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.298.1
+
+Tue, 30 Jun 2026 17:34:58 GMT
+
+### Patches
+
+- ci: daily auto production mobile release gated by store review-state (iOS App Store review + Android Production rollout, skips when a review is in-flight/rejected or version not newer) (dev@acedata.cloud)
 
 ## 3.298.0
 
