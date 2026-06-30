@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 29 Jun 2026 19:17:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 03:35:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.291.21
+
+Tue, 30 Jun 2026 03:35:03 GMT
+
+### Patches
+
+- fix(desktop): deep-copy local tool input before IPC (Proxy clone) + expand ~ in fs paths (dev@acedata.cloud)
 
 ## 3.291.20
 
