@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 16:02:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 16:40:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.297.0
+
+Tue, 30 Jun 2026 16:40:57 GMT
+
+### Minor changes
+
+- desktop: persistent 'Always allow' + working 'Allow for session' consent for computer-use tools (name-scoped); cleared when Computer Use is turned off (dev@acedata.cloud)
 
 ## 3.296.1
 
