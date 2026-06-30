@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 18:35:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 19:21:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.301.0
+
+Tue, 30 Jun 2026 19:21:06 GMT
+
+### Minor changes
+
+- Guest browsing polish: redirect guests away from auth-only routes (console/distribution/settings/coding-bridge) to login, and show a friendly 'log in to start & view tasks' prompt instead of an indefinite skeleton on service task pages. (dev@acedata.cloud)
 
 ## 3.300.0
 
