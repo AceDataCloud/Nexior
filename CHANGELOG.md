@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 18:22:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 18:30:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.299.1
+
+Tue, 30 Jun 2026 18:30:57 GMT
+
+### Patches
+
+- ci(mobile): auto-production workflow gains dry-run mode, concurrency guard, and correct staged Android rollout routing (dev@acedata.cloud)
 
 ## 3.299.0
 
