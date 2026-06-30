@@ -21,7 +21,7 @@ import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/flux/RecentPanel.vue';
 import { IFluxTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IFluxTask | undefined;
@@ -164,6 +164,9 @@ export default defineComponent({
         ...this.config,
         async: true
       } as IFluxGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

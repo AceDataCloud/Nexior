@@ -25,7 +25,12 @@ const httpClient = createHttpClient({
   // Fire-and-forget (not awaited) to preserve the original timing: the caller's
   // rejection runs without waiting for logout to complete.
   onUnauthorized: () => {
-    store.dispatch('logout');
+    // Guests (no token) may browse freely — a 401 on a guest request is
+    // expected (passive catalog/bootstrap calls) and must NOT bounce them to
+    // the login page. Only a logged-in user whose token expired gets logged out.
+    if (store.getters.authenticated) {
+      store.dispatch('logout');
+    }
   },
   onApiFailure: trackApiFailure
 });

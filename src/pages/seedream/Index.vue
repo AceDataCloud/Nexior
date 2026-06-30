@@ -20,7 +20,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/seedream/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { ISeedreamTask } from '@/models';
 
 interface IData {
@@ -160,6 +160,9 @@ export default defineComponent({
         ...cfg,
         async: true
       } as ISeedreamGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

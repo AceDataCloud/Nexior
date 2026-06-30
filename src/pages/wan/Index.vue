@@ -21,7 +21,7 @@ import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/wan/RecentPanel.vue';
 import { IWanTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IWanTask | undefined;
@@ -165,6 +165,9 @@ export default defineComponent({
         ...this.config,
         async: true
       } as IWanGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

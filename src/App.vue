@@ -141,16 +141,13 @@ export default defineComponent({
         this.$store.dispatch('resetAll');
         this.$store.dispatch('login');
       } else {
-        // Don't dispatch 'logout' here — there's nothing to log out from when
-        // the user isn't authenticated, and 'logout' races with 'login' for
-        // window.location.href. Because 'logout' has many awaits, it would win
-        // the race and overwrite 'login's properly-encoded URL with a raw
-        // string-concatenated one, causing inviter_id to end up nested inside
-        // the redirect= value where AuthFrontend can't find it. This silently
-        // breaks the referral binding for users who arrive via share links on
-        // custom-domain (white-label) deployments.
+        // Web: deferred auth. Guests may browse service pages, models and
+        // pricing without logging in — the login flow is triggered lazily the
+        // moment they start a real operation (see `ensureLoggedIn`). So we
+        // only clear any stale (logged-out) state here and DON'T bounce to
+        // login. `resetAll` also drops any leftover credential so a guest can
+        // never reuse a previous session's token.
         this.$store.dispatch('resetAll');
-        this.$store.dispatch('login');
       }
     }
   },

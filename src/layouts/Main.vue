@@ -141,6 +141,14 @@ export default defineComponent({
     async initialize() {
       const runId = ++this.initializeRunId;
       this.initialized = false;
+      // Guests browse without an application/credential — defer all of that
+      // (and login itself) until they actually start an operation. Skip the
+      // whole bootstrap so we neither fire doomed authenticated requests nor
+      // pop the auto-apply error toast. `initialized` stays false, so the
+      // per-page `initialized` watchers that fetch tasks never run for guests.
+      if (!this.$store.state.token?.access) {
+        return;
+      }
       console.debug('Fetching all individual and global applications for', this.appName);
       await Promise.allSettled([
         this.$store.dispatch('getApplications'),

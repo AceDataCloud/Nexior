@@ -16,6 +16,7 @@ import ConfigPanel from '@/components/webextrator/ConfigPanel.vue';
 import ResultPanel from '@/components/webextrator/ResultPanel.vue';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
+import { ensureLoggedIn } from '@/utils';
 
 export default defineComponent({
   name: 'WebextratorIndex',
@@ -30,6 +31,10 @@ export default defineComponent({
   },
   methods: {
     async onRun() {
+      // Deferred auth: guests compose freely; running the extraction triggers login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const config = this.$store.state.webextrator?.config;
       if (!config?.url) return;
       const isExtract = (config.mode || 'extract') === 'extract';

@@ -33,7 +33,7 @@ import ApplicationStatus from '@/components/application/Status.vue';
 import RecentPanel from '@/components/headshots/RecentPanel.vue';
 import { IHeadshotsTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IHeadshotsTask | undefined;
@@ -205,6 +205,9 @@ export default defineComponent({
         ...this.config,
         async: true
       } as IHeadshotsGenerateRequest;
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

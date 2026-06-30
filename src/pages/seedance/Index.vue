@@ -21,7 +21,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, getSeedanceCapability, SEEDANCE_MODEL_CAPABILITIES } from '@/constants';
 import { ISeedanceTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: ISeedanceTask | undefined;
@@ -218,6 +218,9 @@ export default defineComponent({
         async: true
       } as ISeedanceGenerateRequest;
 
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

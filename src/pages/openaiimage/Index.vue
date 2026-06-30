@@ -20,7 +20,7 @@ import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import RecentPanel from '@/components/openaiimage/RecentPanel.vue';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 import { IOpenAIImageTask } from '@/models';
 
 interface IData {
@@ -179,6 +179,9 @@ export default defineComponent({
         async: true
       } as IOpenAIImageEditRequest;
 
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

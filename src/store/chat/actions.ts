@@ -88,9 +88,21 @@ export const getService = async ({
 
 export const getApplications = async ({
   commit,
-  state
+  state,
+  rootState
 }: ActionContext<IChatState, IRootState>): Promise<IApplication[] | undefined> => {
   console.debug('start to get applications for chat');
+  // Guests browse the chat composer without an application — login is deferred
+  // to send-time (see `onSubmit`/`onRequest`). Skip the authed fetch so it
+  // neither 401s nor leaves the page stuck in a "Request" state, and drop any
+  // stale credential so a guest can never reuse a previous session's token.
+  if (!rootState?.token?.access) {
+    state.status.getApplications = Status.Success;
+    commit('setApplications', []);
+    commit('setApplication', undefined);
+    commit('setCredential', undefined);
+    return [];
+  }
   state.status.getApplications = Status.Request;
   try {
     const { data: applications } = await applicationOperator.getAll({

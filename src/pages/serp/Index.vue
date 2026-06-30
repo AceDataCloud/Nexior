@@ -16,6 +16,7 @@ import SearchPanel from '@/components/serp/SearchPanel.vue';
 import ResultPanel from '@/components/serp/ResultPanel.vue';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
+import { ensureLoggedIn } from '@/utils';
 
 export default defineComponent({
   name: 'SerpIndex',
@@ -35,6 +36,10 @@ export default defineComponent({
       console.debug('end onGetService');
     },
     async onSearch() {
+      // Deferred auth: guests compose a query freely; running it triggers login.
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const config = this.$store.state.serp?.config;
       if (!config?.query) {
         return;

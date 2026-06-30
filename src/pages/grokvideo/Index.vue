@@ -20,7 +20,7 @@ import { IGrokVideoGenerateRequest, IGrokVideoTask, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP, isGrokVideoImageOnlyModel } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
-import { uploadTrackerProviderMixin, ensureNoPendingUpload } from '@/utils';
+import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
 
 interface IData {
   task: IGrokVideoTask | undefined;
@@ -167,6 +167,9 @@ export default defineComponent({
         async: true
       } as IGrokVideoGenerateRequest;
 
+      if (!ensureLoggedIn()) {
+        return;
+      }
       const token = this.credential?.token;
       if (!token) {
         console.error('no token specified');

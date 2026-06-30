@@ -147,6 +147,17 @@ export function createTaskActions<TConfig, TTask, TFilter>(opts: {
     state,
     rootState
   }: ActionContext<S, IRootState>): Promise<IApplication[] | undefined> => {
+    // Guests browse the config panel without an application — login is deferred
+    // to the operation handlers on each page. Skip the authed fetch so it
+    // neither 401s nor leaves the page pinned in a "Request" state, and drop any
+    // stale credential so a guest can never reuse a previous session's token.
+    if (!rootState?.token?.access) {
+      state.status.getApplications = Status.Success;
+      commit('setApplications', []);
+      commit('setApplication', undefined);
+      commit('setCredential', undefined);
+      return [];
+    }
     state.status.getApplications = Status.Request;
     try {
       const { data: applications } = await applicationOperator.getAll({
