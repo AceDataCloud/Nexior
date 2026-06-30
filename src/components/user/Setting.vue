@@ -58,6 +58,9 @@
         <div v-else-if="activeTab === SETTING_TAB_CUSTOM_DOMAIN && isCustomDomainVisible">
           <custom-domain-setting />
         </div>
+        <div v-else-if="activeTab === SETTING_TAB_LOCAL_TOOLS && isDesktopApp">
+          <local-tools-setting />
+        </div>
         <div v-else-if="activeTab === SETTING_TAB_ABOUT">
           <about-setting @switch-tab="onSwitchTab" />
         </div>
@@ -80,7 +83,8 @@ import {
   faInfoCircle,
   faSitemap,
   faGlobe,
-  faRightToBracket
+  faRightToBracket,
+  faLaptopCode
 } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
@@ -92,6 +96,7 @@ import SubsiteSetting from '@/components/setting/Subsite.vue';
 import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
 import AuthSetting from '@/components/setting/Auth.vue';
 import AboutSetting from '@/components/setting/About.vue';
+import LocalToolsSetting from '@/components/setting/LocalTools.vue';
 import {
   SETTING_TAB_ABOUT,
   SETTING_TAB_API_KEY,
@@ -103,9 +108,11 @@ import {
   SETTING_TAB_SITE,
   SETTING_TAB_SUBSITES,
   SETTING_TAB_CUSTOM_DOMAIN,
+  SETTING_TAB_LOCAL_TOOLS,
   type SettingTabKey
 } from '@/constants';
 import { isMainOfficial } from '@/utils';
+import { localExec } from '@/utils/desktop';
 
 export default defineComponent({
   name: 'UserSetting',
@@ -123,7 +130,8 @@ export default defineComponent({
     SubsiteSetting,
     CustomDomainSetting,
     AuthSetting,
-    AboutSetting
+    AboutSetting,
+    LocalToolsSetting
   },
   props: {
     visible: {
@@ -150,6 +158,7 @@ export default defineComponent({
       SETTING_TAB_SUBSITES,
       SETTING_TAB_CUSTOM_DOMAIN,
       SETTING_TAB_ABOUT,
+      SETTING_TAB_LOCAL_TOOLS,
       activeTab: SETTING_TAB_GENERAL as SettingTabKey,
       autoOpenCreateSubsite: false,
       mobile: typeof window !== 'undefined' && window.innerWidth < 768
@@ -214,6 +223,15 @@ export default defineComponent({
           icon: faGlobe,
           visible: this.isCustomDomainVisible
         },
+        {
+          // Desktop-only: manage the folders / system permissions / persistent
+          // "always allow" grants for local tools that run on the user's
+          // machine. Hidden on web & mobile (no localExec bridge there).
+          key: SETTING_TAB_LOCAL_TOOLS,
+          label: this.$t('common.settings.localTools'),
+          icon: faLaptopCode,
+          visible: this.isDesktopApp
+        },
         { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
       ];
     },
@@ -231,6 +249,10 @@ export default defineComponent({
       // non-main-official tenant). The parent commercial host never
       // points additional CNAMEs at itself.
       return !this.isMainOfficialHost && this.isSiteAdmin;
+    },
+    isDesktopApp(): boolean {
+      // Only the Electron desktop app exposes the localExec bridge.
+      return !!localExec();
     },
     dialogWidth(): string {
       // Phone-sized viewports: take almost full width so the 450px-min

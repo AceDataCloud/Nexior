@@ -10,9 +10,9 @@ const file = (): string => path.join(app.getPath('userData'), 'local-tools.json'
 export function load(): LocalConfig {
   try {
     const c = JSON.parse(fs.readFileSync(file(), 'utf8')) as Partial<LocalConfig>;
-    return { roots: c.roots ?? [], mcp: c.mcp ?? [] };
+    return { roots: c.roots ?? [], mcp: c.mcp ?? [], grants: c.grants ?? [] };
   } catch {
-    return { roots: [], mcp: [] };
+    return { roots: [], mcp: [], grants: [] };
   }
 }
 

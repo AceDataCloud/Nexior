@@ -1,6 +1,6 @@
 import { ipcMain, BrowserWindow, dialog } from 'electron';
 import { APP_ORIGIN } from '../protocol';
-import { consentOk } from './consent';
+import { consentOk, listGrants, revokeGrant, clearGrants } from './consent';
 import { registry } from './registry';
 import { load, save } from './config';
 import { setRoots } from './fs';
@@ -42,14 +42,19 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   });
   ipcMain.handle('local.config.save', (e, cfg: LocalConfig) => {
     gate(e);
-    save(cfg);
+    // Preserve persistent consent grants — the renderer's save payload only
+    // carries roots + mcp, so merge to avoid wiping the "always allow" list.
+    const cur = load();
+    save({ ...cur, roots: cfg.roots, mcp: cfg.mcp });
     setRoots(cfg.roots); // hot-apply roots; MCP server changes apply next launch
     return true;
   });
   ipcMain.handle('local.pickFolder', async (e) => {
     gate(e);
     const win = getWin();
-    const r = win ? await dialog.showOpenDialog(win, { properties: ['openDirectory'] }) : await dialog.showOpenDialog({ properties: ['openDirectory'] });
+    const r = win
+      ? await dialog.showOpenDialog(win, { properties: ['openDirectory'] })
+      : await dialog.showOpenDialog({ properties: ['openDirectory'] });
     return r.canceled ? null : r.filePaths[0];
   });
 
@@ -68,5 +73,22 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   ipcMain.handle('local.perm.askMedia', (e, t: 'camera' | 'microphone') => {
     gate(e);
     return askMedia(t);
+  });
+
+  // Persistent "always allow" consent grants — list / revoke / clear from
+  // Settings → Local Tools. Revoking re-arms the per-call confirmation.
+  ipcMain.handle('local.grants.list', (e) => {
+    gate(e);
+    return listGrants();
+  });
+  ipcMain.handle('local.grants.revoke', (e, key: string) => {
+    gate(e);
+    revokeGrant(key);
+    return true;
+  });
+  ipcMain.handle('local.grants.clear', (e) => {
+    gate(e);
+    clearGrants();
+    return true;
   });
 }

@@ -56,12 +56,21 @@ contextBridge.exposeInMainWorld('localExec', {
   invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }> =>
     ipcRenderer.invoke('local.tool.invoke', inv),
   getConfig: (): Promise<{ roots: string[]; mcp: object[] }> => ipcRenderer.invoke('local.config.get'),
-  saveConfig: (cfg: { roots: string[]; mcp: object[] }): Promise<boolean> => ipcRenderer.invoke('local.config.save', cfg),
+  saveConfig: (cfg: { roots: string[]; mcp: object[] }): Promise<boolean> =>
+    ipcRenderer.invoke('local.config.save', cfg),
   pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder'),
   // macOS system-permission status + jump-to-pane, shown in the LocalTools panel.
   perm: {
-    status: (): Promise<{ mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean }> => ipcRenderer.invoke('local.perm.status'),
-    openPane: (k: 'fullDisk' | 'screen' | 'accessibility'): Promise<boolean> => ipcRenderer.invoke('local.perm.openPane', k),
+    status: (): Promise<{ mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean }> =>
+      ipcRenderer.invoke('local.perm.status'),
+    openPane: (k: 'fullDisk' | 'screen' | 'accessibility'): Promise<boolean> =>
+      ipcRenderer.invoke('local.perm.openPane', k),
     askMedia: (t: 'camera' | 'microphone'): Promise<boolean> => ipcRenderer.invoke('local.perm.askMedia', t)
+  },
+  // Persistent "always allow" consent grants, managed from the LocalTools panel.
+  grants: {
+    list: (): Promise<string[]> => ipcRenderer.invoke('local.grants.list'),
+    revoke: (key: string): Promise<boolean> => ipcRenderer.invoke('local.grants.revoke', key),
+    clear: (): Promise<boolean> => ipcRenderer.invoke('local.grants.clear')
   }
 });

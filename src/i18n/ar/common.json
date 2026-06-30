@@ -903,6 +903,98 @@
     "message": "حول",
     "description": "عنوان قسم حول في صفحة الإعدادات"
   },
+  "settings.localTools": {
+    "message": "الأدوات المحلية",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "متاح في تطبيق سطح المكتب فقط.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "المجلدات المصرّح بها",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "المجلدات التي يُسمح للذكاء الاصطناعي بالقراءة والكتابة فيها على هذا الجهاز. تعمل الأدوات محليًا؛ ولا يغادر أي شيء جهازك دون موافقتك.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "إضافة مجلد",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "إزالة",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "لا توجد مجلدات مصرّح بها بعد.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "حفظ",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "تم الحفظ",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "الأدوات النشطة",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "الإجراءات المسموح بها دائمًا",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "استدعاءات الأدوات التي اخترت السماح بها دائمًا. تُنفَّذ دون السؤال مجددًا. ألغِ أيًّا منها لإعادة تفعيل مطالبة التأكيد.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "إلغاء",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "إلغاء الكل",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "لا توجد إجراءات مسموح بها دائمًا. ستُطلب موافقتك قبل تشغيل كل أداة محلية.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "أذونات النظام",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "اختياري. الوصول إلى المجلدات أعلاه لا يحتاج إلى أيٍّ منها — امنح فقط ما تتطلبه مهمة محددة.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "الوصول الكامل إلى القرص",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "تسجيل الشاشة",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "إمكانية الوصول",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "مَمنوح",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "غير ممنوح",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "فتح…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "مواقعي الفرعية",
     "description": "عنوان علامة تبويب إدارة المواقع الفرعية في نافذة الإعدادات. يظهر فقط في الموقع الرسمي، المواقع الفرعية لا تظهر."

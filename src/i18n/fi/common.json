@@ -903,6 +903,98 @@
     "message": "Tietoja",
     "description": "Asetussivun tietoja-osan otsikko"
   },
+  "settings.localTools": {
+    "message": "Paikalliset työkalut",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Käytettävissä vain työpöytäsovelluksessa.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Valtuutetut kansiot",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Kansiot, joita tekoäly saa lukea ja kirjoittaa tällä laitteella. Työkalut suoritetaan paikallisesti; mikään ei poistu laitteeltasi ilman suostumustasi.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Lisää kansio",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Poista",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Ei vielä valtuutettuja kansioita.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Tallenna",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Tallennettu",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Aktiiviset työkalut",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Aina sallitut toiminnot",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Työkalukutsut, jotka valitsit sallittavaksi aina. Ne suoritetaan kysymättä uudelleen. Peru mikä tahansa ottaaksesi vahvistuksen taas käyttöön.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Peru",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Peru kaikki",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Ei aina sallittuja toimintoja. Sinulta kysytään ennen jokaista paikallista työkalua.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Järjestelmän käyttöoikeudet",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Valinnainen. Yllä oleva kansiokäyttö ei tarvitse näitä – myönnä vain se, mitä tietty tehtävä vaatii.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Täysi levyn käyttöoikeus",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Näytön tallennus",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Käyttöapu",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Myönnetty",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Ei myönnetty",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Avaa…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "Omat alisivustot",
     "description": "Asetusikkunassa alisivustojen hallinta-välilehden otsikko. Näkyy vain virallisella pääsivustolla, alisivustot eivät näy."

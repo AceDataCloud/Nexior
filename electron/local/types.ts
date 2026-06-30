@@ -32,4 +32,8 @@ export interface McpServerConf {
 export interface LocalConfig {
   roots: string[];
   mcp: McpServerConf[];
+  // Persistent "always allow" consent grants. Each entry is a
+  // session-independent key `<tool.name>:<stable json input>` the user
+  // explicitly chose to always allow; matching invocations skip the prompt.
+  grants?: string[];
 }
