@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 08:38:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 08:39:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.292.3
+
+Tue, 30 Jun 2026 08:39:42 GMT
+
+### Patches
+
+- feat(download): add Windows (.exe) and macOS (Intel + Apple Silicon .dmg) desktop installer cards, linking the public GitHub Release assets (dev@acedata.cloud)
 
 ## 3.292.2
 
