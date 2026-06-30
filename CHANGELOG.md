@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 09:28:20 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 09:30:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.293.3
+
+Tue, 30 Jun 2026 09:30:49 GMT
+
+### Patches
+
+- fix(desktop): approving the tool popup now authorizes that path, so reads/lists/writes stop failing with 'path outside allowed roots' (dev@acedata.cloud)
 
 ## 3.293.2
 
