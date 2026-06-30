@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 08:39:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 08:41:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.292.4
+
+Tue, 30 Jun 2026 08:41:33 GMT
+
+### Patches
+
+- fix(theme): stop Settings theme switcher from flipping the theme on open (dev@acedata.cloud)
 
 ## 3.292.3
 
