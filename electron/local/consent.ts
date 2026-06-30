@@ -5,12 +5,19 @@ import { authorizeConsentedPath } from './fs';
 
 // No OS sandbox by design — consent is the control. Three tiers:
 //   • Allow once     — run this one time.
-//   • Allow for session — cache in-memory for this app run (reads only;
-//                      mutating tools still re-confirm).
-//   • Always allow   — persist a session-independent grant to disk so the
-//                      exact (tool, input) never prompts again — even for
-//                      mutating tools, because the user explicitly opted in
-//                      for that precise call. Revocable from Settings.
+//   • Allow for session — cache in-memory for this app run; cleared on restart.
+//                      Non-computer mutating tools still re-confirm; computer.*
+//                      honors it (mutation is the point) so a screenshot→act
+//                      loop isn't a per-step prompt storm.
+//   • Always allow   — persist a session-independent grant to disk so the call
+//                      never prompts again — even for mutating tools, because
+//                      the user explicitly opted in. Revocable from Settings.
+// fs/shell grants are bound to the EXACT input; computer.* grants are name-
+// scoped (their inputs — mouse coords, typed text — vary every call, so an
+// input-scoped grant would never match twice). A computer.* "Always allow" is
+// thus an explicit opt-in to prompt-less screen control; the panic hotkey still
+// hard-disables Computer Use regardless (the registry gate blocks every
+// computer.* call before consent runs).
 // The full argv/path is shown untruncated so the dangerous part can't hide.
 const sessionGranted = new Set<string>();
 
@@ -38,14 +45,18 @@ function stable(input: Record<string, unknown>): string {
   return stableStringify(input ?? {});
 }
 
-// Per-run key (includes sessionId) for the "Allow for session" cache.
+// Per-run key (includes sessionId) for the "Allow for session" cache. Computer
+// tools are name-scoped (inputs vary every call); everything else is input-bound.
 function sessionKey(inv: ToolInvoke): string {
+  if (inv.name.startsWith('computer.')) return `${inv.sessionId}:${inv.name}`;
   return `${inv.sessionId}:${inv.name}:${stable(inv.input)}`;
 }
 
-// Session-independent key for persistent "Always allow" grants. Scoped to the
-// EXACT tool + input, so always-allowing `ls /Desktop` never auto-runs `rm`.
+// Session-independent key for persistent "Always allow" grants. fs/shell grants
+// are scoped to the EXACT tool + input, so always-allowing `ls /Desktop` never
+// auto-runs `rm`. computer.* grants are name-scoped (see file header).
 export function grantKey(inv: ToolInvoke): string {
+  if (inv.name.startsWith('computer.')) return inv.name;
   return `${inv.name}:${stable(inv.input)}`;
 }
 
@@ -69,13 +80,7 @@ function grantPathAccess(inv: ToolInvoke, persist: boolean): void {
 }
 
 export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, mutates: boolean): Promise<boolean> {
-  // Computer-use tools (screen capture + mouse/keyboard injection) are too
-  // sensitive to ever auto-run silently: their grant key is often constant
-  // (e.g. `computer.screenshot:{}`), so a single persistent "Always allow"
-  // would hand the AI permanent promptless control of the screen. Until a
-  // dedicated session-scoped computer-use consent lands (see plan Phase 3),
-  // they are NOT persistable — no permanent grant, no "Always allow" button.
-  const persistable = !inv.name.startsWith('computer.');
+  const isComputer = inv.name.startsWith('computer.');
   const gk = grantKey(inv);
   // Cached grants must NOT re-authorize the path here. Re-running
   // authorizeConsentedPath() would realpath the CURRENT target, so a symlink
@@ -85,11 +90,12 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
   // config.roots (loaded into ROOTS on launch); "Allow for session" keeps its
   // SESSION_ROOTS entry for the run. (Grants created before this change have no
   // persisted root, so they re-prompt once — which then persists it.)
-  if (persistable && (load().grants ?? []).includes(gk)) return true; // persistent always-allow
-  if (sessionGranted.has(sessionKey(inv)) && !mutates) return true;
-  const buttons = persistable
-    ? ['Allow once', 'Allow for session', 'Always allow', 'Deny']
-    : ['Allow once', 'Allow for session', 'Deny'];
+  if ((load().grants ?? []).includes(gk)) return true; // persistent always-allow
+  // Non-computer mutating tools still re-confirm; computer.* honors its (name-
+  // scoped) session grant even though it mutates — that is the whole point of
+  // "Allow for session" for a screen-control loop.
+  if (sessionGranted.has(sessionKey(inv)) && (isComputer || !mutates)) return true;
+  const buttons = ['Allow once', 'Allow for session', 'Always allow', 'Deny'];
   const denyId = buttons.length - 1;
   const opts = {
     type: 'warning' as const,
@@ -101,7 +107,7 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
   };
   const { response } = win ? await dialog.showMessageBox(win, opts) : await dialog.showMessageBox(opts);
   if (response === 1) sessionGranted.add(sessionKey(inv));
-  if (persistable && response === 2) {
+  if (response === 2) {
     const cfg = load();
     const grants = new Set(cfg.grants ?? []);
     grants.add(gk);
@@ -110,13 +116,26 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
   // Authorize the approved path (fs.* tools), bound to its realpath AT APPROVAL
   // TIME — the subsequent read/list/write re-realpaths and re-checks inRootDir,
   // so a symlink swapped between here and the call is still caught. Only
-  // "Always allow" (response 2, persistable) persists the canonical dir as a root.
-  if (response !== denyId) grantPathAccess(inv, persistable && response === 2);
+  // "Always allow" (response 2) persists the canonical dir as a root.
+  if (response !== denyId) grantPathAccess(inv, response === 2);
   return response !== denyId;
 }
 
 export function resetConsent(): void {
   sessionGranted.clear();
+}
+
+// Drop only the computer-use "Allow for session" grants — called when Computer
+// Use is turned off (panic hotkey or the Settings toggle) so re-enabling
+// requires fresh session consent. Persistent "Always allow" grants survive by
+// design; revoke those in Settings.
+export function resetComputerSessionConsent(): void {
+  // Match the NAME segment only (sessionKey is `<sessionId>:computer.<tool>`,
+  // sessionId is a colon-free uuid) so an fs/shell grant whose serialized input
+  // happens to contain ":computer." is never collaterally cleared.
+  for (const k of [...sessionGranted]) {
+    if (/^[^:]+:computer\./.test(k)) sessionGranted.delete(k);
+  }
 }
 
 // Persistent-grant management, surfaced in Settings → Local Tools.

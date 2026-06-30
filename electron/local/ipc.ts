@@ -1,6 +1,6 @@
 import { ipcMain, BrowserWindow, dialog } from 'electron';
 import { APP_ORIGIN } from '../protocol';
-import { consentOk, listGrants, revokeGrant, clearGrants } from './consent';
+import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent } from './consent';
 import { registry } from './registry';
 import { load, save } from './config';
 import { setRoots } from './fs';
@@ -27,6 +27,7 @@ export function disableComputerUse(): boolean {
   // Flip the in-memory gate first — that is what actually blocks execution — so
   // a slow/throwing save() can never leave Computer Use live after a panic.
   registry.setComputerUse(false);
+  resetComputerSessionConsent(); // re-enabling needs fresh session consent
   if (wasOn) save({ ...cur, computerUse: false });
   return wasOn;
 }
@@ -64,6 +65,7 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     save({ ...cur, roots: cfg.roots, mcp: cfg.mcp, computerUse });
     setRoots(cfg.roots); // hot-apply roots; MCP server changes apply next launch
     registry.setComputerUse(computerUse); // hot-apply the Computer Use toggle
+    if (!computerUse) resetComputerSessionConsent(); // turning it off clears session grants
     return true;
   });
   ipcMain.handle('local.pickFolder', async (e) => {
