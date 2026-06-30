@@ -48,6 +48,11 @@ on:
         required: false
         default: false
         type: boolean
+      dry_run:
+        description: 'Run the review-state gate only and report its decision — do NOT dispatch any real build/release.'
+        required: false
+        default: false
+        type: boolean
       android_rollout_percent:
         description: 'Android production rollout fraction (0.0–1.0). 1.0 = full release.'
         required: false
@@ -57,6 +62,12 @@ on:
 permissions:
   actions: write
   contents: read
+
+# Never let two store-release runs overlap (a manual dispatch racing the daily
+# cron, etc.). Queue rather than cancel so an in-flight release is never killed.
+concurrency:
+  group: mobile-production-release
+  cancel-in-progress: false
 
 env:
   BUNDLE_ID: com.acedatacloud.nexior
@@ -266,6 +277,7 @@ jobs:
     needs: gate
     if: >-
       needs.gate.outputs.ios-ok == 'true'
+      && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
       && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'ios')
     runs-on: ubuntu-latest
     steps:
@@ -289,6 +301,7 @@ jobs:
     needs: gate
     if: >-
       needs.gate.outputs.android-ok == 'true'
+      && (github.event_name != 'workflow_dispatch' || !inputs.dry_run)
       && (github.event_name == 'schedule' || inputs.platforms == 'both' || inputs.platforms == 'android')
     runs-on: ubuntu-latest
     steps:
@@ -308,12 +321,24 @@ jobs:
             ROLLOUT='1.0'
           fi
           printf '%s\n' "::notice::Android gate clean ($GATE_REASON) — releasing v$VERSION at rollout=$ROLLOUT."
-          gh workflow run build-android.yaml \
-            --ref "${{ github.ref_name }}" \
-            -f track=production \
-            -f promote_to_production=false \
-            -f rollout_percent="$ROLLOUT" \
-            -f force=false
+          # 100% → upload straight to the Production track (status=completed).
+          # Partial → upload to beta then promote to Production at the requested
+          # fraction; build-android only honors rollout_percent on the promote
+          # path, so a <1.0 fraction MUST go through beta+promote to be staged.
+          if [ "$ROLLOUT" = "1.0" ] || [ "$ROLLOUT" = "1" ]; then
+            gh workflow run build-android.yaml \
+              --ref "${{ github.ref_name }}" \
+              -f track=production \
+              -f promote_to_production=false \
+              -f force=false
+          else
+            gh workflow run build-android.yaml \
+              --ref "${{ github.ref_name }}" \
+              -f track=beta \
+              -f promote_to_production=true \
+              -f rollout_percent="$ROLLOUT" \
+              -f force=false
+          fi
 
   summary:
     name: Gate summary
@@ -326,14 +351,23 @@ jobs:
           VERSION: ${{ needs.gate.outputs.version }}
           IOS_REASON: ${{ needs.gate.outputs.ios-reason }}
           ANDROID_REASON: ${{ needs.gate.outputs.android-reason }}
-          IOS_BADGE: ${{ needs.gate.outputs.ios-ok == 'true' && '✅ dispatched' || '⏭️ skipped' }}
-          ANDROID_BADGE: ${{ needs.gate.outputs.android-ok == 'true' && '✅ dispatched' || '⏭️ skipped' }}
+          IOS_OK: ${{ needs.gate.outputs.ios-ok }}
+          ANDROID_OK: ${{ needs.gate.outputs.android-ok }}
+          IOS_RESULT: ${{ needs.ios.result }}
+          ANDROID_RESULT: ${{ needs.android.result }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
         run: |
+          badge() {  # $1=gate-ok  $2=job-result
+            if [ "$1" = "true" ] && [ "$2" = "success" ]; then echo "✅ dispatched";
+            elif [ "$1" = "true" ]; then echo "🧪 gate-ok (not dispatched)";
+            else echo "⏭️ skipped"; fi
+          }
           {
             echo "### Auto Production Mobile — v$VERSION"
+            [ "$DRY_RUN" = "true" ] && echo "_dry-run: gate evaluated, nothing dispatched._"
             echo ""
             echo "| Platform | Gate | Reason |"
             echo "|----------|------|--------|"
-            echo "| iOS      | $IOS_BADGE | $IOS_REASON |"
-            echo "| Android  | $ANDROID_BADGE | $ANDROID_REASON |"
+            echo "| iOS      | $(badge "$IOS_OK" "$IOS_RESULT") | $IOS_REASON |"
+            echo "| Android  | $(badge "$ANDROID_OK" "$ANDROID_RESULT") | $ANDROID_REASON |"
           } >> "$GITHUB_STEP_SUMMARY"
