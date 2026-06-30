@@ -23,6 +23,20 @@
             :closable="false"
           />
         </div>
+        <div v-for="(url, idx) in referenceAudios" :key="`audio-${idx}`" class="reference-audio mt-2">
+          <div class="reference-label">
+            <font-awesome-icon icon="fa-solid fa-music" class="mr-1" />
+            {{ $t('seedance.name.referenceAudio') }}
+          </div>
+          <audio :src="url" controls preload="metadata" class="audio-player" />
+        </div>
+        <div v-for="(url, idx) in referenceVideos" :key="`video-${idx}`" class="reference-video mt-2">
+          <div class="reference-label">
+            <font-awesome-icon icon="fa-solid fa-film" class="mr-1" />
+            {{ $t('seedance.name.referenceVideo') }}
+          </div>
+          <video-player :src="url" />
+        </div>
         <p v-if="promptText" class="prompt mt-2">
           {{ promptText }}
           <span v-if="!modelValue?.response"> - ({{ $t('seedance.status.pending') }}) </span>
@@ -162,7 +176,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElAlert, ElButton, ElTooltip } from 'element-plus';
-import { ISeedanceTask, ISeedanceVideo } from '@/models';
+import { ISeedanceTask, ISeedanceVideo, SeedanceImageRole } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -215,8 +229,8 @@ export default defineComponent({
       return this.video?.prompt;
     },
     referenceImages(): { url: string; name: string }[] {
-      const images = this.modelValue?.request?.images;
-      if (!Array.isArray(images)) {
+      const images = this.collectImages();
+      if (images.length === 0) {
         return [];
       }
       const ordered: { url: string; name: string }[] = [];
@@ -234,9 +248,44 @@ export default defineComponent({
         }
       });
       return ordered;
+    },
+    // Reference media is folded into content[] for audio/video requests, so
+    // gather urls from both the flat fields and the content items.
+    referenceAudios(): string[] {
+      const request = this.modelValue?.request;
+      const urls = (request?.audios ?? []).map((a) => a?.url).filter(Boolean) as string[];
+      (request?.content ?? []).forEach((item) => {
+        if (item?.type === 'audio_url' && item?.audio_url?.url) {
+          urls.push(item.audio_url.url);
+        }
+      });
+      return urls;
+    },
+    referenceVideos(): string[] {
+      const request = this.modelValue?.request;
+      const urls = (request?.videos ?? []).map((v) => v?.url).filter(Boolean) as string[];
+      (request?.content ?? []).forEach((item) => {
+        if (item?.type === 'video_url' && item?.video_url?.url) {
+          urls.push(item.video_url.url);
+        }
+      });
+      return urls;
     }
   },
   methods: {
+    // Merge flat request.images with content[] image_url items (folded requests).
+    collectImages(): { url?: string; role?: SeedanceImageRole }[] {
+      const request = this.modelValue?.request;
+      const images: { url?: string; role?: SeedanceImageRole }[] = Array.isArray(request?.images)
+        ? [...request!.images]
+        : [];
+      (request?.content ?? []).forEach((item) => {
+        if (item?.type === 'image_url' && item?.image_url?.url) {
+          images.push({ url: item.image_url.url, role: item.role });
+        }
+      });
+      return images;
+    },
     onDownload(videoUrl: string) {
       window.open(videoUrl, '_blank');
     }
@@ -289,6 +338,20 @@ $left-width: 70px;
 
     .info {
       overflow: hidden;
+      .reference-audio,
+      .reference-video {
+        max-width: 360px;
+        .reference-label {
+          font-size: 12px;
+          font-weight: bold;
+          color: var(--el-text-color-secondary);
+          margin-bottom: 4px;
+        }
+      }
+      .reference-audio .audio-player {
+        width: 100%;
+        height: 38px;
+      }
       .prompt {
         font-size: 14px;
         font-weight: bold;
