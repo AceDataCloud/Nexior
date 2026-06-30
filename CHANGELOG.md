@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 17:34:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 18:22:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.299.0
+
+Tue, 30 Jun 2026 18:22:05 GMT
+
+### Minor changes
+
+- Maestro: duration is now a numeric input (1-600s, up to 10 min) for per-second billing (dev@acedata.cloud)
 
 ## 3.298.1
 
