@@ -903,6 +903,98 @@
     "message": "Σχετικά",
     "description": "Τίτλος της ενότητας σχετικά στην σελίδα ρυθμίσεων"
   },
+  "settings.localTools": {
+    "message": "Τοπικά εργαλεία",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Διαθέσιμο μόνο στην εφαρμογή υπολογιστή.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Εξουσιοδοτημένοι φάκελοι",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Φάκελοι που το AI μπορεί να διαβάζει και να γράφει σε αυτό το μηχάνημα. Τα εργαλεία εκτελούνται τοπικά· τίποτα δεν φεύγει από τη συσκευή σας χωρίς τη συγκατάθεσή σας.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Προσθήκη φακέλου",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Αφαίρεση",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Δεν υπάρχουν ακόμη εξουσιοδοτημένοι φάκελοι.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Αποθήκευση",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Αποθηκεύτηκε",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Ενεργά εργαλεία",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Πάντα επιτρεπόμενες ενέργειες",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Κλήσεις εργαλείων που επιλέξατε να επιτρέπετε πάντα. Εκτελούνται χωρίς νέα ερώτηση. Ανακαλέστε οποιαδήποτε για να ενεργοποιήσετε ξανά την επιβεβαίωση.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Ανάκληση",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Ανάκληση όλων",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Καμία πάντα επιτρεπόμενη ενέργεια. Θα ερωτάστε πριν από κάθε τοπικό εργαλείο.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Δικαιώματα συστήματος",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Προαιρετικό. Η πρόσβαση στους φακέλους παραπάνω δεν χρειάζεται κανένα — παραχωρήστε μόνο ό,τι απαιτεί μια συγκεκριμένη εργασία.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Πλήρης πρόσβαση στον δίσκο",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Εγγραφή οθόνης",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Προσβασιμότητα",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Παραχωρήθηκε",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Δεν παραχωρήθηκε",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Άνοιγμα…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "Οι υποσελίδες μου",
     "description": "Τίτλος της καρτέλας διαχείρισης υποσελίδων στο παράθυρο ρυθμίσεων. Ορατό μόνο στην επίσημη κύρια σελίδα, οι υποσελίδες δεν εμφανίζονται."

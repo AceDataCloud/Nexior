@@ -903,6 +903,98 @@
     "message": "Über",
     "description": "Titel des Abschnitts 'Über' auf der Einstellungsseite"
   },
+  "settings.localTools": {
+    "message": "Lokale Tools",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Nur in der Desktop-App verfügbar.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Autorisierte Ordner",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Ordner, die die KI auf diesem Gerät lesen und schreiben darf. Tools laufen lokal; ohne deine Zustimmung verlässt nichts dein Gerät.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Ordner hinzufügen",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Entfernen",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Noch keine Ordner autorisiert.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Speichern",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Gespeichert",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Aktive Tools",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Immer erlaubte Aktionen",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Tool-Aufrufe, die du immer erlauben möchtest. Sie laufen ohne erneute Nachfrage. Widerrufe einen, um die Bestätigung wieder zu aktivieren.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Widerrufen",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Alle widerrufen",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Keine immer erlaubten Aktionen. Vor jeder Ausführung eines lokalen Tools wirst du gefragt.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Systemberechtigungen",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Optional. Der Ordnerzugriff oben benötigt keine davon – gewähre nur, was eine bestimmte Aufgabe erfordert.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Vollständiger Festplattenzugriff",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Bildschirmaufnahme",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Bedienungshilfen",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Gewährt",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Nicht gewährt",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Öffnen…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "Meine Subsites",
     "description": "Titel des Tabs zur Verwaltung von Subsites im Einstellungs-Popup. Nur auf der offiziellen Hauptseite sichtbar, Subsites werden nicht angezeigt."

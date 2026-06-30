@@ -903,6 +903,98 @@
     "message": "O aplikaciji",
     "description": "Naslov sekcije o aplikaciji na stranici sa podešavanjima"
   },
+  "settings.localTools": {
+    "message": "Локални алати",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Доступно само у десктоп апликацији.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Овлашћене фасцикле",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Фасцикле које вештачка интелигенција сме да чита и уписује на овом уређају. Алати се извршавају локално; ништа не напушта ваш уређај без ваше сагласности.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Додај фасциклу",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Уклони",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Још нема овлашћених фасцикли.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Сачувај",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Сачувано",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Активни алати",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Увек дозвољене радње",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Позиви алата које сте изабрали да увек дозволите. Извршавају се без поновног питања. Опозовите било који да поново укључите потврду.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Опозови",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Опозови све",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Нема увек дозвољених радњи. Бићете упитани пре сваког локалног алата.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Системске дозволе",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Опционо. Приступ фасциклама изнад не захтева ниједну — доделите само оно што одређени задатак захтева.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Пун приступ диску",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Снимање екрана",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Приступачност",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Додељено",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Није додељено",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Отвори…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "Moje podstranice",
     "description": "Naslov taba za upravljanje podstranicama u prozoru sa podešavanjima. Vidljivo samo na zvaničnoj glavnoj stranici, podstranice se ne prikazuju."

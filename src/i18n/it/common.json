@@ -903,6 +903,98 @@
     "message": "Informazioni",
     "description": "Titolo della sezione 'Informazioni' nella pagina delle impostazioni"
   },
+  "settings.localTools": {
+    "message": "Strumenti locali",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Disponibile solo nell’app desktop.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Cartelle autorizzate",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Cartelle che l’IA può leggere e scrivere su questo dispositivo. Gli strumenti vengono eseguiti localmente; nulla lascia il tuo dispositivo senza il tuo consenso.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Aggiungi cartella",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Rimuovi",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Nessuna cartella autorizzata.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Salva",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Salvato",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Strumenti attivi",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Azioni sempre consentite",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Chiamate di strumenti che hai scelto di consentire sempre. Vengono eseguite senza chiedere di nuovo. Revocane una per riattivare la conferma.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Revoca",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Revoca tutto",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Nessuna azione sempre consentita. Ti verrà chiesto prima di ogni strumento locale.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Autorizzazioni di sistema",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Facoltativo. L’accesso alle cartelle qui sopra non ne richiede nessuna: concedi solo ciò che una specifica attività richiede.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Accesso completo al disco",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Registrazione schermo",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Accessibilità",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Concesso",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Non concesso",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Apri…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "I miei sottositi",
     "description": "Titolo della scheda di gestione dei sottositi nella finestra delle impostazioni. Visibile solo nel sito principale ufficiale, i sottositi non vengono visualizzati."

@@ -903,6 +903,98 @@
     "message": "О нас",
     "description": "Заголовок раздела 'О нас' на странице настроек"
   },
+  "settings.localTools": {
+    "message": "Локальные инструменты",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "Доступно только в настольном приложении.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "Разрешённые папки",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "Папки, которые ИИ может читать и записывать на этом устройстве. Инструменты выполняются локально; ничто не покидает ваше устройство без вашего согласия.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "Добавить папку",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "Удалить",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "Пока нет разрешённых папок.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "Сохранить",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "Сохранено",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "Активные инструменты",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "Всегда разрешённые действия",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "Вызовы инструментов, которые вы решили всегда разрешать. Они выполняются без повторного запроса. Отзовите любой, чтобы снова включить подтверждение.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "Отозвать",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "Отозвать все",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "Нет всегда разрешённых действий. Перед каждым локальным инструментом будет запрашиваться подтверждение.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "Системные разрешения",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "Необязательно. Для доступа к папкам выше они не нужны — предоставляйте только то, что требует конкретная задача.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "Полный доступ к диску",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "Запись экрана",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "Универсальный доступ",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "Предоставлено",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "Не предоставлено",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "Открыть…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "Мои подсайты",
     "description": "Заголовок вкладки управления подсайтами в окне настроек. Видно только на официальном основном сайте, подсайты не отображаются."

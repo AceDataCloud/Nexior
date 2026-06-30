@@ -903,6 +903,98 @@
     "message": "정보",
     "description": "설정 페이지의 정보 섹션 제목"
   },
+  "settings.localTools": {
+    "message": "로컬 도구",
+    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+  },
+  "settings.localToolsDesktopOnly": {
+    "message": "데스크톱 앱에서만 사용할 수 있습니다.",
+    "description": "Shown when the Local Tools tab is opened on web/mobile."
+  },
+  "settings.localToolsFoldersTitle": {
+    "message": "허용된 폴더",
+    "description": "Heading for the list of folders the AI may read/write locally."
+  },
+  "settings.localToolsFoldersHint": {
+    "message": "AI가 이 기기에서 읽고 쓸 수 있는 폴더입니다. 도구는 로컬에서 실행되며, 동의 없이는 아무것도 기기를 벗어나지 않습니다.",
+    "description": "Help text under the authorized-folders heading."
+  },
+  "settings.localToolsAddFolder": {
+    "message": "폴더 추가",
+    "description": "Button to pick a folder to authorize."
+  },
+  "settings.localToolsRemove": {
+    "message": "제거",
+    "description": "Button to remove an authorized folder."
+  },
+  "settings.localToolsNoFolders": {
+    "message": "아직 허용된 폴더가 없습니다.",
+    "description": "Empty state for the authorized-folders list."
+  },
+  "settings.localToolsSave": {
+    "message": "저장",
+    "description": "Save the authorized folders."
+  },
+  "settings.localToolsSaved": {
+    "message": "저장됨",
+    "description": "Transient confirmation after saving local-tool folders."
+  },
+  "settings.localToolsActiveTools": {
+    "message": "사용 가능한 도구",
+    "description": "Label before the list of currently available local tools."
+  },
+  "settings.localToolsGrantsTitle": {
+    "message": "항상 허용된 작업",
+    "description": "Heading for the persistent consent grants list."
+  },
+  "settings.localToolsGrantsHint": {
+    "message": "항상 허용하기로 선택한 도구 호출입니다. 다시 묻지 않고 실행됩니다. 항목을 취소하면 확인 창이 다시 표시됩니다.",
+    "description": "Help text under the always-allowed actions heading."
+  },
+  "settings.localToolsRevoke": {
+    "message": "취소",
+    "description": "Button to revoke a single always-allow grant."
+  },
+  "settings.localToolsRevokeAll": {
+    "message": "모두 취소",
+    "description": "Button to revoke every always-allow grant."
+  },
+  "settings.localToolsNoGrants": {
+    "message": "항상 허용된 작업이 없습니다. 각 로컬 도구 실행 전에 확인을 요청합니다.",
+    "description": "Empty state for the always-allowed actions list."
+  },
+  "settings.localToolsPermsTitle": {
+    "message": "시스템 권한",
+    "description": "Heading for the macOS system-permission section."
+  },
+  "settings.localToolsPermsHint": {
+    "message": "선택 사항입니다. 위의 폴더 접근에는 이 권한들이 필요하지 않습니다. 특정 작업에 필요한 것만 허용하세요.",
+    "description": "Help text under the system-permissions heading."
+  },
+  "settings.localToolsPermFullDisk": {
+    "message": "전체 디스크 접근 권한",
+    "description": "macOS Full Disk Access permission row."
+  },
+  "settings.localToolsPermScreen": {
+    "message": "화면 기록",
+    "description": "macOS Screen Recording permission row."
+  },
+  "settings.localToolsPermAccessibility": {
+    "message": "손쉬운 사용",
+    "description": "macOS Accessibility permission row."
+  },
+  "settings.localToolsGranted": {
+    "message": "허용됨",
+    "description": "Status tag when a system permission is granted."
+  },
+  "settings.localToolsNotGranted": {
+    "message": "허용 안 됨",
+    "description": "Status tag when a system permission is not granted."
+  },
+  "settings.localToolsOpen": {
+    "message": "열기…",
+    "description": "Button to open the relevant macOS System Settings pane."
+  },
   "settings.subsites": {
     "message": "내 서브사이트",
     "description": "설정 팝업의 서브사이트 관리 탭 제목. 공식 메인 사이트에서만 표시되며, 서브사이트는 표시되지 않음."
