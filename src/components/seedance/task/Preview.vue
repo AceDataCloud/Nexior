@@ -23,8 +23,8 @@
             :closable="false"
           />
         </div>
-        <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
-          {{ modelValue?.request?.prompt }}
+        <p v-if="promptText" class="prompt mt-2">
+          {{ promptText }}
           <span v-if="!modelValue?.response"> - ({{ $t('seedance.status.pending') }}) </span>
           <span v-else-if="video?.status === 'processing' || video?.status === 'pending'">
             - ({{ $t('seedance.status.processing') }})
@@ -199,6 +199,20 @@ export default defineComponent({
   computed: {
     video(): ISeedanceVideo | undefined {
       return this.modelValue?.response?.data;
+    },
+    // Audio/video requests fold the prompt into `content[]` and drop the flat
+    // `prompt` field (see seedanceOperator.buildRequest), so fall back to the
+    // content text item, then to the prompt echoed back on the response.
+    promptText(): string | undefined {
+      const request = this.modelValue?.request;
+      if (request?.prompt) {
+        return request.prompt;
+      }
+      const textItem = request?.content?.find((item) => item?.type === 'text' && item?.text);
+      if (textItem?.text) {
+        return textItem.text;
+      }
+      return this.video?.prompt;
     },
     referenceImages(): { url: string; name: string }[] {
       const images = this.modelValue?.request?.images;
