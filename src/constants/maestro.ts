@@ -9,7 +9,9 @@ export const MAESTRO_ACTION_EXTEND = 'extend';
 
 export const MAESTRO_ALLOWED_ASPECTS = ['9:16', '16:9', '1:1'];
 export const MAESTRO_ALLOWED_LANGS = ['zh-cn', 'en', 'ja', 'ko', 'es', 'fr', 'de'];
-export const MAESTRO_ALLOWED_DURATIONS = [20, 30, 45, 60];
+// Duration is billed per second (up to 10 min); the user types any value in this range.
+export const MAESTRO_MIN_DURATION = 1;
+export const MAESTRO_MAX_DURATION = 600;
 // Production tier (effort/price): draft = fast preview, standard = balanced, premium = richer.
 export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
 

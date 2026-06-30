@@ -79,9 +79,14 @@
           <h2 class="field-title font-bold">{{ $t('maestro.name.duration') }}</h2>
           <info-icon :content="$t('maestro.description.duration')" class="ml-1" />
         </div>
-        <el-select v-model="duration" class="field-control">
-          <el-option v-for="d in MAESTRO_ALLOWED_DURATIONS" :key="d" :label="`${d}s`" :value="d" />
-        </el-select>
+        <el-input-number
+          v-model="duration"
+          class="field-control"
+          :min="MAESTRO_MIN_DURATION"
+          :max="MAESTRO_MAX_DURATION"
+          :step="5"
+          controls-position="right"
+        />
       </div>
 
       <!-- Quality (production tier) -->
@@ -113,7 +118,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElSelect, ElOption, ElAlert } from 'element-plus';
+import { ElButton, ElSelect, ElOption, ElInputNumber, ElAlert } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -123,7 +128,8 @@ import { getConsumption } from '@/utils';
 import {
   MAESTRO_ALLOWED_LANGS,
   MAESTRO_ALLOWED_ASPECTS,
-  MAESTRO_ALLOWED_DURATIONS,
+  MAESTRO_MIN_DURATION,
+  MAESTRO_MAX_DURATION,
   MAESTRO_DEFAULT_ACTION,
   MAESTRO_DEFAULT_LANGS,
   MAESTRO_DEFAULT_ASPECT,
@@ -146,6 +152,7 @@ export default defineComponent({
     ElButton,
     ElSelect,
     ElOption,
+    ElInputNumber,
     ElAlert,
     Consumption,
     InfoIcon,
@@ -157,7 +164,8 @@ export default defineComponent({
   data() {
     return {
       MAESTRO_ALLOWED_LANGS,
-      MAESTRO_ALLOWED_DURATIONS,
+      MAESTRO_MIN_DURATION,
+      MAESTRO_MAX_DURATION,
       MAESTRO_ALLOWED_QUALITIES
     };
   },
@@ -217,7 +225,10 @@ export default defineComponent({
         return this.config?.duration;
       },
       set(val: number) {
-        this.update({ duration: val });
+        // el-input-number can emit null when cleared; clamp into [min, max] with the default as fallback.
+        const n = typeof val === 'number' && !Number.isNaN(val) ? val : MAESTRO_DEFAULT_DURATION;
+        const clamped = Math.min(MAESTRO_MAX_DURATION, Math.max(MAESTRO_MIN_DURATION, Math.round(n)));
+        this.update({ duration: clamped });
       }
     },
     quality: {
