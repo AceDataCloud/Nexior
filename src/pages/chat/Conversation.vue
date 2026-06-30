@@ -654,6 +654,14 @@ export default defineComponent({
     },
     // Get answers to questions
     async onRequest() {
+      // Refresh the desktop local-tool list at the start of each user turn so a
+      // Settings change (e.g. toggling Computer Use on/off) takes effect on the
+      // very next message. Without this, `localTools` is cached from mount and a
+      // disabled tool would keep being advertised as `client_tools` — wasting
+      // prompt tokens — until the chat remounts.
+      if (isDesktop()) {
+        this.localTools = (await localExec()?.listTools()) ?? [];
+      }
       console.debug('start to get answer', this.messages);
       const token = this.credential?.token;
       const question = this.question.trim();

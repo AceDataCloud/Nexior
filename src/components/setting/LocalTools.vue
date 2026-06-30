@@ -58,6 +58,15 @@
         </ul>
       </section>
 
+      <!-- Computer Use (opt-in: screen capture + mouse/keyboard control) -->
+      <section>
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsComputerUseTitle') }}</h3>
+          <el-switch v-model="computerUse" :loading="savingCU" @change="onToggleComputerUse" />
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsComputerUseHint') }}</p>
+      </section>
+
       <!-- macOS system permissions -->
       <section v-if="perm">
         <div class="section-head">
@@ -96,7 +105,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElTag } from 'element-plus';
+import { ElButton, ElTag, ElSwitch } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { localExec } from '@/utils/desktop';
@@ -109,7 +118,7 @@ interface GrantRow {
 
 export default defineComponent({
   name: 'LocalToolsSetting',
-  components: { ElButton, ElTag, FontAwesomeIcon },
+  components: { ElButton, ElTag, ElSwitch, FontAwesomeIcon },
   data() {
     return {
       Plus,
@@ -117,6 +126,8 @@ export default defineComponent({
       tools: [] as string[],
       grants: null as null | GrantRow[],
       perm: null as null | { mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean },
+      computerUse: false,
+      savingCU: false,
       saving: false,
       savedTip: false
     };
@@ -129,7 +140,9 @@ export default defineComponent({
   async mounted() {
     const ex = localExec();
     if (!ex) return;
-    this.roots = (await ex.getConfig()).roots;
+    const cfg = await ex.getConfig();
+    this.roots = cfg.roots;
+    this.computerUse = cfg.computerUse === true;
     this.tools = (await ex.listTools()).map((t) => t.name);
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
@@ -166,10 +179,23 @@ export default defineComponent({
       this.saving = true;
       // Preserve mcp; the worker registers MCP servers from this same config.
       const cur = await localExec()?.getConfig();
-      await localExec()?.saveConfig({ roots: this.roots, mcp: cur?.mcp ?? [] });
+      await localExec()?.saveConfig({ roots: this.roots, mcp: cur?.mcp ?? [], computerUse: this.computerUse });
       this.saving = false;
       this.savedTip = true;
       setTimeout(() => (this.savedTip = false), 2000);
+    },
+    // Toggle persists ONLY the Computer Use flag (preserving last-saved roots +
+    // mcp), and hot-applies it in the main process so the tools appear/disappear
+    // from the next `client_tools` payload without a restart.
+    async onToggleComputerUse(val: string | number | boolean) {
+      this.savingCU = true;
+      const cur = await localExec()?.getConfig();
+      await localExec()?.saveConfig({
+        roots: cur?.roots ?? this.roots,
+        mcp: cur?.mcp ?? [],
+        computerUse: val === true
+      });
+      this.savingCU = false;
     },
     async revoke(key: string) {
       await localExec()?.grants?.revoke(key);
