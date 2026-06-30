@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 19:21:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 19:24:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.301.1
+
+Tue, 30 Jun 2026 19:24:07 GMT
+
+### Patches
+
+- coding-bridge: show GitHub Copilot brand icon in the backend picker, locked pill, and history list (was a generic fallback glyph) (dev@acedata.cloud)
 
 ## 3.301.0
 
