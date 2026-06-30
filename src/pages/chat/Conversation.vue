@@ -720,7 +720,7 @@ export default defineComponent({
      * first.
      */
     _resumeWithToolResults(
-      toolResults: { tool_use_id: string; output: string; is_error?: boolean }[],
+      toolResults: { tool_use_id: string; output: string; is_error?: boolean; image?: string }[],
       conversationId?: string
     ) {
       const token = this.credential?.token;
@@ -856,7 +856,7 @@ export default defineComponent({
       runId?: number
     ) {
       const sessionId = (conversationId ?? this.conversationId) || '';
-      const results: { tool_use_id: string; output: string; is_error?: boolean }[] = [];
+      const results: { tool_use_id: string; output: string; is_error?: boolean; image?: string }[] = [];
       for (const p of pending) {
         // Stop pressed mid-batch → onStop() bumped the token; abort BEFORE
         // running any further local tool (each invoke may be a shell command,
@@ -875,7 +875,7 @@ export default defineComponent({
         } catch {
           safeInput = {};
         }
-        let r: { output: string; is_error?: boolean };
+        let r: { output: string; is_error?: boolean; image?: string };
         try {
           r = (await localExec()?.invoke({ name: realName, input: safeInput, sessionId })) ?? {
             output: 'local execution unavailable',
@@ -889,8 +889,15 @@ export default defineComponent({
         }
         // Propagate is_error so denied/failed local executions (e.g. consent
         // denied, path outside allowed roots) resume as a tool ERROR, not a
-        // successful output the model would trust.
-        results.push({ tool_use_id: p.toolId, output: r.output, ...(r.is_error ? { is_error: true } : {}) });
+        // successful output the model would trust. `image` (e.g. a
+        // computer.screenshot) is forwarded so the worker can show the model
+        // the screen as a vision input.
+        results.push({
+          tool_use_id: p.toolId,
+          output: r.output,
+          ...(r.is_error ? { is_error: true } : {}),
+          ...(r.image ? { image: r.image } : {})
+        });
       }
       // Stop pressed while the last tool was running → don't resume the turn.
       if (runId !== undefined && runId !== this.clientToolRunId) return;

@@ -19,6 +19,9 @@ export interface ToolInvoke {
 export interface ToolResult {
   output: string;
   is_error?: boolean;
+  // Optional image result (e.g. computer.screenshot): a `data:image/...` URL the
+  // worker surfaces to the vision model so it can SEE the screen.
+  image?: string;
 }
 
 export interface McpServerConf {

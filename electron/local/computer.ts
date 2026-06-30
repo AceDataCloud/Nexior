@@ -75,6 +75,10 @@ function err(message: string): ToolResult {
 // stale screen captures (sensitive) don't linger. shot-<ms>.png names sort
 // chronologically, so keep the newest MAX_SHOTS and unlink the rest.
 const MAX_SHOTS = 10;
+
+// Stay safely under the aichat2 worker's tool-result image budget (~6 MB of
+// base64); JPEG quality is stepped down until the encoded screenshot fits.
+const MAX_IMAGE_B64_CHARS = 5_400_000;
 async function pruneShots(dir: string): Promise<void> {
   try {
     const files = (await fsp.readdir(dir)).filter((f) => f.startsWith('shot-') && f.endsWith('.png')).sort();
@@ -116,7 +120,10 @@ export async function screenshot(): Promise<ToolResult> {
     types: ['screen'],
     thumbnailSize: { width: Math.round(width * scaleFactor), height: Math.round(height * scaleFactor) }
   });
-  const source = sources[0];
+  // Pick the source for the PRIMARY display — on multi-monitor setups the array
+  // order isn't guaranteed, and the dimensions/coordinate space below are the
+  // primary's, so capturing a different screen would mis-map the model's clicks.
+  const source = sources.find((s) => s.display_id && s.display_id === String(display.id)) ?? sources[0];
   if (!source || source.thumbnail.isEmpty()) return err('no screen source available (capture returned empty)');
 
   const png = source.thumbnail.toPNG();
@@ -126,11 +133,21 @@ export async function screenshot(): Promise<ToolResult> {
   await fsp.writeFile(file, png, { mode: 0o600 });
   await pruneShots(dir);
 
-  // The PNG is saved to disk (not inlined) to keep the tool result small —
-  // a full-screen base64 would blow the client-tool result cap and the model
-  // context. Returning the image to the model as an image content block is a
-  // follow-up (see plan: "image tool-results"). Only the basename is returned
-  // so the absolute userData/home path isn't leaked to the model.
+  // The model SEES the screen via `image` (a JPEG data URL resized to LOGICAL
+  // resolution): logical-pixel image ⇒ the model's click coordinates map 1:1 to
+  // what `computer.click` expects (so quality drops, not dimensions, when we
+  // need to shrink). JPEG keeps the base64 small; we step quality down until it
+  // fits the worker's data-URL budget. The full-res PNG is still saved to disk
+  // for debugging. Only the basename is returned in `output` (no absolute path).
+  const resized = source.thumbnail.resize({ width, height });
+  let image: string | undefined;
+  for (const quality of [80, 60, 45]) {
+    const b64 = resized.toJPEG(quality).toString('base64');
+    if (b64.length <= MAX_IMAGE_B64_CHARS) {
+      image = `data:image/jpeg;base64,${b64}`;
+      break;
+    }
+  }
   return {
     output: JSON.stringify({
       saved: path.basename(file),
@@ -138,8 +155,11 @@ export async function screenshot(): Promise<ToolResult> {
       height,
       scaleFactor,
       bytes: png.length,
-      note: 'screenshot saved; coordinates below are in logical pixels (the click tool expects the same)'
-    })
+      note: image
+        ? 'screenshot attached as an image; coordinates are in logical pixels (the click tool expects the same)'
+        : 'screenshot captured but too large to attach as an image this turn; coordinates are in logical pixels'
+    }),
+    ...(image ? { image } : {})
   };
 }
 

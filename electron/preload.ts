@@ -63,7 +63,7 @@ contextBridge.exposeInMainWorld('desktop', {
 contextBridge.exposeInMainWorld('localExec', {
   available: true,
   listTools: (): Promise<unknown[]> => ipcRenderer.invoke('local.tools.list'),
-  invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }> =>
+  invoke: (inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean; image?: string }> =>
     ipcRenderer.invoke('local.tool.invoke', inv),
   getConfig: (): Promise<{ roots: string[]; mcp: object[]; computerUse?: boolean }> => ipcRenderer.invoke('local.config.get'),
   saveConfig: (cfg: { roots: string[]; mcp: object[]; computerUse?: boolean }): Promise<boolean> =>

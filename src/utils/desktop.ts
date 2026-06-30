@@ -56,7 +56,11 @@ export interface LocalToolSpec {
 export interface LocalExecBridge {
   available: true;
   listTools(): Promise<LocalToolSpec[]>;
-  invoke(inv: { name: string; input: object; sessionId: string }): Promise<{ output: string; is_error?: boolean }>;
+  invoke(inv: {
+    name: string;
+    input: object;
+    sessionId: string;
+  }): Promise<{ output: string; is_error?: boolean; image?: string }>;
   getConfig(): Promise<{
     roots: string[];
     mcp: { id: string; command: string; args: string[] }[];
