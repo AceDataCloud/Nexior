@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 18:30:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 30 Jun 2026 18:35:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.300.0
+
+Tue, 30 Jun 2026 18:35:15 GMT
+
+### Minor changes
+
+- Support guest browsing with deferred login: unauthenticated visitors can view service pages, models and pricing, and are only prompted to log in when they start an operation (chat send, generate, search). (dev@acedata.cloud)
 
 ## 3.299.1
 
