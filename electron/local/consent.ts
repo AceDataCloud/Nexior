@@ -1,6 +1,7 @@
 import { dialog, BrowserWindow } from 'electron';
 import type { ToolInvoke } from './types';
 import { load, save } from './config';
+import { authorizeConsentedPath } from './fs';
 
 // No OS sandbox by design — consent is the control. Three tiers:
 //   • Allow once     — run this one time.
@@ -48,6 +49,25 @@ export function grantKey(inv: ToolInvoke): string {
   return `${inv.name}:${stable(inv.input)}`;
 }
 
+// Bridge consent → the fs allowlist. Approving the popup for a file tool used to
+// grant only the *right to run the call*; fs.ts then independently rejected any
+// path not separately added in Settings ("path outside allowed roots"). Here we
+// authorize the exact path the user approved so the call can actually proceed.
+// `persist` (Always allow) additionally writes the granted dir to config.roots
+// so it survives a restart; once/session authorize in-memory only.
+function grantPathAccess(inv: ToolInvoke, persist: boolean): void {
+  if (!inv.name.startsWith('fs.')) return;
+  const p = (inv.input as Record<string, unknown> | undefined)?.path;
+  if (typeof p !== 'string' || !p) return;
+  const dir = authorizeConsentedPath(inv.name, p);
+  if (dir && persist) {
+    const cfg = load();
+    const roots = new Set(cfg.roots ?? []);
+    roots.add(dir);
+    save({ ...cfg, roots: [...roots] });
+  }
+}
+
 export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, mutates: boolean): Promise<boolean> {
   // Computer-use tools (screen capture + mouse/keyboard injection) are too
   // sensitive to ever auto-run silently: their grant key is often constant
@@ -57,6 +77,14 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
   // they are NOT persistable — no permanent grant, no "Always allow" button.
   const persistable = !inv.name.startsWith('computer.');
   const gk = grantKey(inv);
+  // Cached grants must NOT re-authorize the path here. Re-running
+  // authorizeConsentedPath() would realpath the CURRENT target, so a symlink
+  // approved once could be retargeted afterwards to slip a no-prompt grant onto
+  // a new location — defeating the realpath boundary. Authorization is bound at
+  // approval time only: "Always allow" already persisted its canonical dir to
+  // config.roots (loaded into ROOTS on launch); "Allow for session" keeps its
+  // SESSION_ROOTS entry for the run. (Grants created before this change have no
+  // persisted root, so they re-prompt once — which then persists it.)
   if (persistable && (load().grants ?? []).includes(gk)) return true; // persistent always-allow
   if (sessionGranted.has(sessionKey(inv)) && !mutates) return true;
   const buttons = persistable
@@ -79,6 +107,11 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
     grants.add(gk);
     save({ ...cfg, grants: [...grants] });
   }
+  // Authorize the approved path (fs.* tools), bound to its realpath AT APPROVAL
+  // TIME — the subsequent read/list/write re-realpaths and re-checks inRootDir,
+  // so a symlink swapped between here and the call is still caught. Only
+  // "Always allow" (response 2, persistable) persists the canonical dir as a root.
+  if (response !== denyId) grantPathAccess(inv, persistable && response === 2);
   return response !== denyId;
 }
 
