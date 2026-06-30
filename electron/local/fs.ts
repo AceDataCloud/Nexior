@@ -8,6 +8,13 @@ import type { ToolResult } from './types';
 // separator boundary + realpath defeats symlink / sibling-prefix escape.
 let ROOTS: string[] = [];
 
+// Roots authorized at runtime by an explicit consent grant (the popup the user
+// approves for a specific path). In-memory only; "Always allow" additionally
+// persists the granted dir to config.roots (see consent.ts) so it survives a
+// restart via setRoots(). Kept separate from ROOTS so a one-shot/session grant
+// never silently becomes a permanent root.
+const SESSION_ROOTS = new Set<string>();
+
 export function setRoots(roots: string[]): void {
   ROOTS = roots
     .map((p) => {
@@ -21,7 +28,8 @@ export function setRoots(roots: string[]): void {
 }
 
 function inRootDir(full: string): boolean {
-  return ROOTS.some((r) => full === r || full.startsWith(r + path.sep));
+  const ok = (r: string) => full === r || full.startsWith(r + path.sep);
+  return ROOTS.some(ok) || [...SESSION_ROOTS].some(ok);
 }
 
 // Models commonly pass `~/Desktop`; Node never expands `~`, so realpathSync
@@ -52,6 +60,30 @@ function resolveForWrite(p: string): string {
   const full = path.join(dir, path.basename(expanded));
   if (!inRootDir(full)) throw new Error('path outside allowed roots');
   return full;
+}
+
+// Authorize a path the user just consented to via the tool popup, so the
+// matching read/list/write actually passes inRootDir. Without this, approving
+// the consent dialog would still fail with "path outside allowed roots" unless
+// the folder was separately added in Settings. Returns the canonical (realpath)
+// dir/file that was granted, or null if it can't be resolved. For writes the
+// target file may not exist yet, so authorize its parent directory.
+export function authorizeConsentedPath(name: string, p: string): string | null {
+  try {
+    const expanded = expandHome(p);
+    const target =
+      name === 'fs.write_file' ? realpathSync(path.dirname(expanded)) : realpathSync(expanded);
+    SESSION_ROOTS.add(target);
+    return target;
+  } catch {
+    return null;
+  }
+}
+
+// Test hook: clear all roots (persistent + session) between cases.
+export function _resetRootsForTesting(): void {
+  ROOTS = [];
+  SESSION_ROOTS.clear();
 }
 
 export async function read_file(i: { path: string }): Promise<ToolResult> {
