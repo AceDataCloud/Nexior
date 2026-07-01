@@ -86,6 +86,7 @@ import { isImageUrl } from '@/utils/is';
 import { isDesktop } from '@/utils/surface';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
+import { getBaseUrlPlatform } from '@/utils';
 import { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import {
   buildAuthorizedConsentOutput,
@@ -907,17 +908,53 @@ export default defineComponent({
         // denied, path outside allowed roots) resume as a tool ERROR, not a
         // successful output the model would trust. `image` (e.g. a
         // computer.screenshot) is forwarded so the worker can show the model
-        // the screen as a vision input.
+        // the screen as a vision input — hosted as a short URL (like a normal
+        // user-attached image) rather than an inline multi-MB base64 data-uri.
+        const image = r.image ? (await this._hostToolResultImage(r.image)) || r.image : undefined;
         results.push({
           tool_use_id: p.toolId,
           output: r.output,
           ...(r.is_error ? { is_error: true } : {}),
-          ...(r.image ? { image: r.image } : {})
+          ...(image ? { image } : {})
         });
       }
       // Stop pressed while the last tool was running → don't resume the turn.
       if (runId !== undefined && runId !== this.clientToolRunId) return;
       this._resumeWithToolResults(results, conversationId);
+    },
+    /**
+     * Host a tool-result image (e.g. a computer.screenshot) on the platform
+     * file store and return its short public URL — exactly how a normal
+     * user-attached image is sent. A screenshot returned inline as a multi-MB
+     * base64 `data:` URI otherwise bloats every stored message + upstream
+     * request (and a single one can dwarf the model's context budget). No-op
+     * for a value that is already an https URL. Returns null on any failure so
+     * the caller keeps the inline image as a fallback.
+     */
+    async _hostToolResultImage(image: string): Promise<string | null> {
+      if (!image || !image.startsWith('data:')) return image || null;
+      const accessToken = this.$store.getters.token?.access;
+      if (!accessToken) return null;
+      try {
+        const blob = await (await fetch(image)).blob();
+        const ext = (blob.type.split('/')[1] || 'png').split(';')[0];
+        const fd = new FormData();
+        fd.append('file', blob, `screenshot.${ext}`);
+        // Raw fetch (not the shared axios client, which forces a JSON
+        // content-type): the browser sets the multipart boundary itself.
+        const resp = await fetch(`${getBaseUrlPlatform()}/api/v1/files/`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${accessToken}` },
+          body: fd
+        });
+        if (!resp.ok) return null;
+        const data = await resp.json();
+        const url = data?.file_url || data?.data?.file_url;
+        return typeof url === 'string' && url ? url : null;
+      } catch (e) {
+        console.warn('[computer-use] screenshot upload failed; sending inline', e);
+        return null;
+      }
     },
     /**
      * Visual-only "skip" of an ask_user_question card. Marks the pending
