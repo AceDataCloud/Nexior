@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 30 Jun 2026 19:24:07 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 01 Jul 2026 00:19:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.301.2
+
+Wed, 01 Jul 2026 00:19:44 GMT
+
+### Patches
+
+- seedance: show prompt on task cards for audio/video requests (prompt was folded into content[] and dropped from request.prompt) (dev@acedata.cloud)
 
 ## 3.301.1
 
