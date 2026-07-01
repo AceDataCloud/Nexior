@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 01 Jul 2026 00:19:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 01 Jul 2026 07:29:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.302.0
+
+Wed, 01 Jul 2026 07:29:17 GMT
+
+### Minor changes
+
+- Computer Use: per-action always-allow toggles (screenshot/click/move/type/key/scroll) instead of only a single all-at-once button (dev@acedata.cloud)
 
 ## 3.301.2
 
