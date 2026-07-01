@@ -277,7 +277,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download built installers
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           path: release
           pattern: nexior-desktop-*
