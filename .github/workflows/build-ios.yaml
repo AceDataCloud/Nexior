@@ -38,7 +38,7 @@ jobs:
       version-code: ${{ steps.version.outputs.code }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Determine version from package.json
         id: version
@@ -130,7 +130,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Select Xcode 26+
         # App Store Connect requires the iOS 26 SDK (Xcode 26+) for uploads

@@ -86,7 +86,7 @@ jobs:
       android-reason: ${{ steps.android.outputs.android_reason }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -282,7 +282,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Trigger build-ios.yaml (TestFlight + App Store review)
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}
@@ -306,7 +306,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Trigger build-android.yaml (Production track, full rollout)
         env:
           GH_TOKEN: ${{ secrets.BOT_GITHUB_TOKEN || github.token }}

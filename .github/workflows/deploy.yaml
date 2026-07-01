@@ -48,7 +48,7 @@ jobs:
           echo "version=$(date +'%Y.%-m.%-d')-$(echo ${GITHUB_SHA} | cut -c1-7)" >> "$GITHUB_OUTPUT"
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
