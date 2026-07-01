@@ -129,7 +129,9 @@ function readGrants(): string[] {
     const raw = localStorage.getItem(GRANTS_KEY);
     const arr = raw ? (JSON.parse(raw) as unknown) : [];
     return Array.isArray(arr) ? arr.filter((x): x is string => typeof x === 'string') : [];
-  } catch {
+  } catch (e) {
+    // Corrupt/again-fail-closed: lose the grants and re-prompt next time.
+    console.warn('[ComputerUse] failed to parse grants from localStorage', e);
     return [];
   }
 }
@@ -310,4 +312,5 @@ export function installMobileLocalExec(): void {
   if (Capacitor.getPlatform() !== 'android') return;
   if (window.localExec) return; // already installed (or a desktop preload)
   window.localExec = bridge;
+  console.debug('[ComputerUse] Android local-exec bridge installed');
 }
