@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 01 Jul 2026 08:28:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 01 Jul 2026 15:17:38 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.304.0
+
+Wed, 01 Jul 2026 15:17:38 GMT
+
+### Minor changes
+
+- Computer Use: upload screenshot tool-result images to the file store and send a short hosted URL (like normal image attachments) instead of an inline multi-MB base64 data-uri (dev@acedata.cloud)
 
 ## 3.303.0
 
