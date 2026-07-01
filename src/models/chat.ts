@@ -102,6 +102,10 @@ export interface IChatMessageContentItem {
   output?: string;
   is_error?: boolean;
   duration_ms?: number;
+  // Raw tool-call arguments text streamed by the worker (`tool_progress`
+  // events) while the model is still writing the call. Shown live on the
+  // running block until the full parsed `input` arrives at finalize.
+  input_stream?: string;
   // `awaiting_input` is set on a `tool_use` block when the worker pauses the
   // turn for a user reply (see `ask_user_question` tool). `output` is absent
   // until the user submits an answer, which folds the block back to `done`.
@@ -318,6 +322,10 @@ export interface IChatConversationResponse {
   output?: string;
   is_error?: boolean;
   duration_ms?: number;
+  // Incremental tool-call arguments text (`type === 'tool_progress'`),
+  // streamed as the model writes a (possibly large) tool call so the UI
+  // isn't frozen while it's composed.
+  progress?: string;
   content?: string;
   artifact?: {
     type: string;
