@@ -88,10 +88,14 @@ export interface LocalExecBridge {
   /** Subscribe to the global panic hotkey forcing Computer Use off. Returns an
    * unsubscribe fn. Undefined on older preloads. */
   onComputerUseDisabled?(cb: () => void): () => void;
-  /** Pre-approve every computer.* action (persistent always-allow), enable
-   * Computer Use, and trigger the macOS Screen Recording / Accessibility
-   * prompts. Returns the new grant list + permission status. */
-  preauthorizeComputerUse?(): Promise<{
+  /** Names + descriptions of the computer.* tools, for the per-action toggle
+   * list. Undefined on older preloads. */
+  computerTools?(): Promise<{ name: string; description: string }[]>;
+  /** Pre-approve computer.* actions (persistent always-allow), enable Computer
+   * Use, and trigger the macOS Screen Recording / Accessibility prompts. Pass a
+   * subset of tool names to allow only those; omit for every action. Returns the
+   * new grant list + permission status. */
+  preauthorizeComputerUse?(names?: string[]): Promise<{
     grants: string[];
     perm: { mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean };
     computerUse: boolean;

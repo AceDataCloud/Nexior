@@ -111,31 +111,47 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     return true;
   });
 
-  // "Pre-approve all computer actions": turn Computer Use on, persist an
-  // always-allow grant for every computer.* tool at once, and trigger the macOS
-  // Screen Recording + Accessibility prompts up front so the first real action
-  // doesn't stall. Returns the new grant list + permission status to refresh UI.
-  ipcMain.handle('local.computerUse.preauthorize', async (e) => {
+  // Names + descriptions of the computer-use tools, so the renderer can render a
+  // per-action always-allow toggle without hardcoding the list.
+  ipcMain.handle('local.computerUse.tools', (e) => {
+    gate(e);
+    return registry.computerToolSpecs();
+  });
+
+  // Pre-approve computer actions: turn Computer Use on, persist an always-allow
+  // grant for the requested computer.* tools (or ALL when `names` is empty), and
+  // trigger the macOS Screen Recording + Accessibility prompts up front so the
+  // first real action doesn't stall. Returns the new grant list + permission
+  // status to refresh UI.
+  ipcMain.handle('local.computerUse.preauthorize', async (e, names?: string[]) => {
     gate(e);
     const win = getWin();
+    // Only ever grant real computer.* tools — never widen an fs/shell grant.
+    const all = registry.computerToolNames();
+    const targets = Array.isArray(names) && names.length ? names.filter((n) => all.includes(n)) : all;
+    if (!targets.length) return { grants: listGrants(), perm: status(), computerUse: load().computerUse === true };
+    const grantingAll = targets.length === all.length;
     // Native (main-process) confirmation. The renderer can request this, but a
     // compromised/XSS'd page must NOT be able to silently grant itself permanent
     // screen + input control — only the user clicking this native dialog can.
     const confirm = {
       type: 'warning' as const,
-      buttons: ['Enable & allow all', 'Cancel'],
+      buttons: [grantingAll ? 'Enable & allow all' : 'Enable & allow', 'Cancel'],
       defaultId: 1,
       cancelId: 1,
-      message: 'Pre-approve all computer actions?',
+      message: grantingAll ? 'Pre-approve all computer actions?' : `Always allow ${targets.join(', ')}?`,
       detail:
-        'This lets the AI take screenshots and control your mouse & keyboard WITHOUT asking each time — until you revoke it in Settings → Local Tools or press the panic hotkey (Cmd/Ctrl+Alt+Shift+P).'
+        (grantingAll
+          ? 'This lets the AI take screenshots and control your mouse & keyboard'
+          : `This lets the AI run ${targets.join(', ')}`) +
+        ' WITHOUT asking each time — until you revoke it in Settings → Local Tools or press the panic hotkey (Cmd/Ctrl+Alt+Shift+P).'
     };
     const { response } = win ? await dialog.showMessageBox(win, confirm) : await dialog.showMessageBox(confirm);
     if (response !== 0) return { grants: listGrants(), perm: status(), computerUse: load().computerUse === true };
     const cur = load();
     if (cur.computerUse !== true) save({ ...cur, computerUse: true });
     registry.setComputerUse(true);
-    const grants = grantComputerTools(registry.computerToolNames());
+    const grants = grantComputerTools(targets);
     await ensureScreenPermission(); // capture permission (no-op off macOS)
     promptAccessibility(); // input permission
     // Re-read computerUse: a panic hotkey fired DURING the awaits above would

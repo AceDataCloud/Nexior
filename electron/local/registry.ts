@@ -51,6 +51,12 @@ class Registry {
     return COMPUTER_TOOLS.map((s) => s.name);
   }
 
+  // Full specs (name + description) of the computer-use tools, for the Settings
+  // per-action always-allow toggle list. Independent of whether the feature is on.
+  computerToolSpecs(): { name: string; description: string }[] {
+    return COMPUTER_TOOLS.map((s) => ({ name: s.name, description: s.description }));
+  }
+
   async boot(servers: McpServerConf[]): Promise<void> {
     for (const s of servers) {
       try {
