@@ -1,6 +1,6 @@
 import { ipcMain, BrowserWindow, dialog } from 'electron';
 import { APP_ORIGIN } from '../protocol';
-import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent, grantComputerTools } from './consent';
+import { consentOk, listGrants, revokeGrant, clearGrants, resetComputerSessionConsent, grantComputerTools, grantToolsWide } from './consent';
 import { registry } from './registry';
 import { load, save } from './config';
 import { setRoots } from './fs';
@@ -116,6 +116,41 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   ipcMain.handle('local.computerUse.tools', (e) => {
     gate(e);
     return registry.computerToolSpecs();
+  });
+
+  // Builtin (fs/shell) tool specs, for the per-tool always-allow toggles.
+  ipcMain.handle('local.tools.builtin', (e) => {
+    gate(e);
+    return registry.builtinToolSpecs();
+  });
+
+  // Tool-wide "Always allow" for a builtin tool (shell.run_command, fs.*): persist
+  // a bare-name grant so the tool runs for ANY input without a per-call prompt.
+  // Native (main-process) confirm — a compromised/XSS'd renderer must NOT be able
+  // to silently give itself prompt-less shell/file access; only the user clicking
+  // this dialog can. Rejects non-builtin names (no computer/MCP/unknown widening).
+  ipcMain.handle('local.grants.grantToolWide', async (e, name: string) => {
+    gate(e);
+    if (typeof name !== 'string' || !registry.isBuiltinTool(name)) return { grants: listGrants(), ok: false };
+    const win = getWin();
+    const dangerous = name === 'shell.run_command' || name === 'fs.write_file';
+    const detail =
+      name === 'shell.run_command'
+        ? 'This lets the AI run ANY shell command on this machine WITHOUT asking each time — full access to your files and system. Only enable if you fully trust this. Revoke anytime in Settings → Local Tools.'
+        : name === 'fs.write_file'
+          ? 'This lets the AI write files WITHOUT asking each time (still limited to your authorized folders). Revoke anytime in Settings → Local Tools.'
+          : `This lets the AI run ${name} WITHOUT asking each time (still limited to your authorized folders). Revoke anytime in Settings → Local Tools.`;
+    const confirm = {
+      type: 'warning' as const,
+      buttons: [dangerous ? 'Allow every time (risky)' : 'Allow every time', 'Cancel'],
+      defaultId: 1,
+      cancelId: 1,
+      message: `Always allow ${name} for any input?`,
+      detail
+    };
+    const { response } = win ? await dialog.showMessageBox(win, confirm) : await dialog.showMessageBox(confirm);
+    if (response !== 0) return { grants: listGrants(), ok: false };
+    return { grants: grantToolsWide([name]), ok: true };
   });
 
   // Pre-approve computer actions: turn Computer Use on, persist an always-allow

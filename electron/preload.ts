@@ -81,8 +81,14 @@ contextBridge.exposeInMainWorld('localExec', {
   grants: {
     list: (): Promise<string[]> => ipcRenderer.invoke('local.grants.list'),
     revoke: (key: string): Promise<boolean> => ipcRenderer.invoke('local.grants.revoke', key),
-    clear: (): Promise<boolean> => ipcRenderer.invoke('local.grants.clear')
+    clear: (): Promise<boolean> => ipcRenderer.invoke('local.grants.clear'),
+    // Tool-wide always-allow for a builtin tool (native confirm in main).
+    grantToolWide: (name: string): Promise<{ grants: string[]; ok: boolean }> =>
+      ipcRenderer.invoke('local.grants.grantToolWide', name)
   },
+  // Builtin (fs/shell) tool specs for the per-tool always-allow toggles.
+  builtinTools: (): Promise<{ name: string; description: string; mutates: boolean }[]> =>
+    ipcRenderer.invoke('local.tools.builtin'),
   // Fired when the global panic hotkey forces Computer Use off, so the Settings
   // toggle reflects reality and a later Save can't silently re-enable it.
   onComputerUseDisabled: (cb: () => void): (() => void) => {
