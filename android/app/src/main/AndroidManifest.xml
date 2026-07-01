@@ -48,6 +48,22 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+
+        <!-- Computer Use accessibility service (sideload/full flavor only).
+             Lets the in-app AI agent see the screen + tap/type on the user's
+             explicit opt-in. See plans/nexior-desktop/COMPUTER-USE-ANDROID.md. -->
+        <service
+            android:name=".ComputerUseAccessibilityService"
+            android:exported="false"
+            android:label="@string/computer_use_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/computer_use_accessibility" />
+        </service>
     </application>
 
     <!-- Permissions -->

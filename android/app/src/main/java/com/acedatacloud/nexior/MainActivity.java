@@ -14,6 +14,9 @@ public class MainActivity extends BridgeActivity {
         // Register the custom Play Install Referrer plugin before the bridge
         // initializes so it's available to the WebView on first launch.
         registerPlugin(InstallReferrerPlugin.class);
+        // Computer Use (screen capture + gesture control via AccessibilityService).
+        // Inert until the user enables the accessibility service in Settings.
+        registerPlugin(ComputerUsePlugin.class);
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
     }
