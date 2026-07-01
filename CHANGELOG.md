@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 01 Jul 2026 07:29:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 01 Jul 2026 08:28:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.303.0
+
+Wed, 01 Jul 2026 08:28:06 GMT
+
+### Minor changes
+
+- Local Tools: per-tool 'always allow (any input)' toggles for builtin tools (shell.run_command, fs.*) with native confirm + risk warning (dev@acedata.cloud)
 
 ## 3.302.0
 
