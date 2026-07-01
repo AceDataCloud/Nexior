@@ -65,12 +65,30 @@
           <el-switch v-model="computerUse" :loading="savingCU" @change="onToggleComputerUse" />
         </div>
         <p class="muted">{{ $t('common.settings.localToolsComputerUseHint') }}</p>
-        <div class="actions">
-          <el-button size="small" type="primary" :loading="preauthorizing" @click="preauthorizeAll">
-            {{ $t('common.settings.localToolsPreauthorizeAll') }}
-          </el-button>
-          <span class="muted">{{ $t('common.settings.localToolsPreauthorizeHint') }}</span>
-        </div>
+        <template v-if="computerTools.length">
+          <div class="section-head sub">
+            <h4>{{ $t('common.settings.localToolsCuActionsTitle') }}</h4>
+            <el-button size="small" text type="primary" :loading="preauthorizing" @click="preauthorizeAll">
+              {{ $t('common.settings.localToolsPreauthorizeAll') }}
+            </el-button>
+          </div>
+          <p class="muted">{{ $t('common.settings.localToolsCuActionsHint') }}</p>
+          <ul class="rows">
+            <li v-for="t in computerTools" :key="t.name" class="row">
+              <font-awesome-icon :icon="cuIcon(t.name)" class="row-icon" />
+              <span class="cu-action">
+                <span class="cu-action-name">{{ cuLabel(t.name) }}</span>
+                <span class="cu-action-desc">{{ t.description }}</span>
+              </span>
+              <el-switch
+                :model-value="computerGrants[t.name] === true"
+                :loading="cuBusy === t.name"
+                :disabled="!!cuBusy || preauthorizing"
+                @change="(v: string | number | boolean) => onToggleComputerTool(t.name, v)"
+              />
+            </li>
+          </ul>
+        </template>
       </section>
 
       <!-- macOS system permissions -->
@@ -141,6 +159,11 @@ export default defineComponent({
       grants: null as null | GrantRow[],
       perm: null as null | { mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean },
       computerUse: false,
+      // Computer-use tool catalog + per-action always-allow state (`computer.<x>`
+      // → granted?). `cuBusy` holds the tool name whose toggle is in flight.
+      computerTools: [] as { name: string; description: string }[],
+      computerGrants: {} as Record<string, boolean>,
+      cuBusy: null as null | string,
       savingCU: false,
       preauthorizing: false,
       saving: false,
@@ -160,6 +183,7 @@ export default defineComponent({
     this.roots = cfg.roots;
     this.computerUse = cfg.computerUse === true;
     this.tools = (await ex.listTools()).map((t) => t.name);
+    this.computerTools = (await ex.computerTools?.()) ?? [];
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
     await this.loadGrants();
@@ -181,14 +205,25 @@ export default defineComponent({
         return;
       }
       const keys = await ex.grants.list();
-      this.grants = keys.map((k) => {
+      // computer.* grants are name-scoped (bare tool name, no `:input`) and get
+      // their own per-action toggles, so split them out of the generic
+      // "always-allowed" list to avoid showing each one twice.
+      const cuGrants: Record<string, boolean> = {};
+      const rows: GrantRow[] = [];
+      for (const k of keys) {
+        if (k.startsWith('computer.') && !k.includes(':')) {
+          cuGrants[k] = true;
+          continue;
+        }
         // key shape: `<tool.name>:<json input>`. The input is always JSON, so
         // split at the first `:{` (object) — robust even if a tool name ever
         // contained a colon. Fall back to the first `:` for non-object inputs.
         const sep = k.indexOf(':{');
         const idx = sep >= 0 ? sep : k.indexOf(':');
-        return { key: k, name: idx >= 0 ? k.slice(0, idx) : k, input: idx >= 0 ? k.slice(idx + 1) : '' };
-      });
+        rows.push({ key: k, name: idx >= 0 ? k.slice(0, idx) : k, input: idx >= 0 ? k.slice(idx + 1) : '' });
+      }
+      this.computerGrants = cuGrants;
+      this.grants = rows;
     },
     async addFolder() {
       const p = await localExec()?.pickFolder();
@@ -238,6 +273,50 @@ export default defineComponent({
         this.preauthorizing = false;
       }
     },
+    // Per-action always-allow. ON pre-approves just this one computer.* tool
+    // (native confirm in main), enables Computer Use, and triggers the system
+    // prompts. OFF revokes the single grant, re-arming its per-call confirmation.
+    async onToggleComputerTool(name: string, val: string | number | boolean) {
+      const ex = localExec();
+      if (!ex) return;
+      this.cuBusy = name;
+      try {
+        if (val === true) {
+          const r = await ex.preauthorizeComputerUse?.([name]);
+          if (r) {
+            this.computerUse = r.computerUse === true;
+            if (r.perm?.mac) this.perm = r.perm;
+          }
+        } else {
+          await ex.grants?.revoke(name);
+        }
+        await this.loadGrants();
+      } finally {
+        this.cuBusy = null;
+      }
+    },
+    // Short i18n label + icon per computer.* action. Falls back to the bare
+    // suffix / a generic icon for any tool the UI doesn't have copy for yet.
+    cuLabel(name: string): string {
+      const key = `common.settings.localToolsCu${this.cuSuffix(name)}`;
+      const label = this.$t(key);
+      return label === key ? name.replace(/^computer\./, '') : label;
+    },
+    cuIcon(name: string): string {
+      const map: Record<string, string> = {
+        screenshot: 'fa-solid fa-camera',
+        click: 'fa-solid fa-arrow-pointer',
+        move: 'fa-solid fa-up-down-left-right',
+        type: 'fa-solid fa-keyboard',
+        key: 'fa-solid fa-keyboard',
+        scroll: 'fa-solid fa-arrows-up-down'
+      };
+      return map[name.replace(/^computer\./, '')] ?? 'fa-solid fa-shield-halved';
+    },
+    cuSuffix(name: string): string {
+      const s = name.replace(/^computer\./, '');
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    },
     async revoke(key: string) {
       await localExec()?.grants?.revoke(key);
       await this.loadGrants();
@@ -266,6 +345,28 @@ export default defineComponent({
   margin: 0;
   font-size: 15px;
   font-weight: 600;
+}
+.section-head.sub {
+  margin-top: 6px;
+}
+.section-head.sub h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+.cu-action {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cu-action-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+.cu-action-desc {
+  color: var(--el-text-color-secondary, #909399);
+  font-size: 12px;
 }
 .muted {
   color: var(--el-text-color-secondary, #909399);

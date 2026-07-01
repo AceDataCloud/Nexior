@@ -90,8 +90,12 @@ contextBridge.exposeInMainWorld('localExec', {
     ipcRenderer.on('local.computerUse.disabled', handler);
     return () => ipcRenderer.removeListener('local.computerUse.disabled', handler);
   },
-  // Pre-approve every computer.* action (persistent always-allow) + enable
-  // Computer Use + trigger the macOS Screen Recording / Accessibility prompts.
-  preauthorizeComputerUse: (): Promise<{ grants: string[]; perm: unknown; computerUse: boolean }> =>
-    ipcRenderer.invoke('local.computerUse.preauthorize')
+  // Names + descriptions of the computer.* tools, for the per-action always-allow
+  // toggle list in Settings → Local Tools.
+  computerTools: (): Promise<{ name: string; description: string }[]> => ipcRenderer.invoke('local.computerUse.tools'),
+  // Pre-approve computer.* actions (persistent always-allow) + enable Computer
+  // Use + trigger the macOS Screen Recording / Accessibility prompts. Pass a
+  // subset of tool names to allow only those; omit for every action.
+  preauthorizeComputerUse: (names?: string[]): Promise<{ grants: string[]; perm: unknown; computerUse: boolean }> =>
+    ipcRenderer.invoke('local.computerUse.preauthorize', names)
 });

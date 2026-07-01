@@ -147,7 +147,12 @@ import {
   faTerminal as faSolidTerminal,
   faFolder as faSolidFolder,
   faFolderOpen as faSolidFolderOpen,
-  faFile as faSolidFile
+  faFile as faSolidFile,
+  faCamera as faSolidCamera,
+  faArrowPointer as faSolidArrowPointer,
+  faUpDownLeftRight as faSolidUpDownLeftRight,
+  faKeyboard as faSolidKeyboard,
+  faArrowsUpDown as faSolidArrowsUpDown
 } from '@fortawesome/free-solid-svg-icons';
 // add icons
 library.add(faSolidEllipsis);
@@ -294,3 +299,8 @@ library.add(faSolidFileExport);
 library.add(faSolidFolder);
 library.add(faSolidFolderOpen);
 library.add(faSolidFile);
+library.add(faSolidCamera);
+library.add(faSolidArrowPointer);
+library.add(faSolidUpDownLeftRight);
+library.add(faSolidKeyboard);
+library.add(faSolidArrowsUpDown);
