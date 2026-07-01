@@ -83,7 +83,7 @@ import Disclaimer from '@/components/chat/Disclaimer.vue';
 import ConnectorStrip from '@/components/chat/ConnectorStrip.vue';
 import Layout from '@/layouts/Chat.vue';
 import { isImageUrl } from '@/utils/is';
-import { isDesktop } from '@/utils/surface';
+import { supportsClientTools } from '@/utils/surface';
 import { ensureLoggedIn } from '@/utils/login';
 import { localExec, type LocalToolSpec } from '@/utils/desktop';
 import { getBaseUrlPlatform } from '@/utils';
@@ -307,7 +307,7 @@ export default defineComponent({
     await this.onGetApplication();
     this.onConsumePendingDraft();
     this.onApplyQueryFromUrl();
-    if (isDesktop()) {
+    if (supportsClientTools()) {
       this.localTools = (await localExec()?.listTools()) ?? [];
     }
   },
@@ -676,7 +676,7 @@ export default defineComponent({
       // very next message. Without this, `localTools` is cached from mount and a
       // disabled tool would keep being advertised as `client_tools` — wasting
       // prompt tokens — until the chat remounts.
-      if (isDesktop()) {
+      if (supportsClientTools()) {
         this.localTools = (await localExec()?.listTools()) ?? [];
       }
       console.debug('start to get answer', this.messages);
@@ -829,7 +829,7 @@ export default defineComponent({
         inputSchema: Record<string, unknown>;
       }[];
     } {
-      if (!isDesktop() || !this.localTools.length) return {};
+      if (!supportsClientTools() || !this.localTools.length) return {};
       return {
         client_tools: this._wiredTools().map(({ spec, wire }) => ({
           name: wire,
@@ -1175,7 +1175,7 @@ export default defineComponent({
               // mid-resume). The model can fan out several client tools in one
               // turn, so we QUEUE them and run all on finalize, resuming with
               // every result in one request.
-              if (isDesktop() && response.execution === 'client') {
+              if (supportsClientTools() && response.execution === 'client') {
                 toolItem.status = 'awaiting_input';
                 this.pendingClientTools.push({
                   toolId: response.tool_id,

@@ -25,6 +25,18 @@ export function isDesktop(): boolean {
 }
 
 /**
+ * Surfaces that can run aichat2 client-side tools locally: the desktop Electron
+ * bridge (`window.localExec` from preload, full fs/shell/computer) and Android
+ * (`window.localExec` adapter backed by the AccessibilityService Computer Use
+ * plugin, computer.* only). Web + iOS return false → chat behaves exactly as
+ * before. The actual bridge is still null-checked at every call site, so an
+ * Android build without the capability (adapter not installed) is a no-op.
+ */
+export function supportsClientTools(): boolean {
+  return isDesktop() || isAndroid();
+}
+
+/**
  * The desktop OS, distinguished at RUNTIME via the Electron preload bridge
  * (`window.desktop.platform` = process.platform). The renderer bundle is
  * identical for Windows and macOS — they share one `VITE_SURFACE=desktop`

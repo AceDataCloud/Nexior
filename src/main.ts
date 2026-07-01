@@ -19,6 +19,7 @@ import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
+import { installMobileLocalExec } from '@/utils/mobileLocalExec';
 import {
   initializeCookies,
   initializeDescription,
@@ -82,6 +83,10 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   if (isRedirected) {
     return;
   }
+  // Android-only: install the `window.localExec` bridge (Computer Use) so the
+  // shared aichat2 chat loop can drive phone-side `computer.*` tools, exactly
+  // like the desktop Electron bridge. No-op on web/iOS/desktop.
+  installMobileLocalExec();
   await initializeCookies();
   await resolveDeferredInviterId();
   await initializeToken();

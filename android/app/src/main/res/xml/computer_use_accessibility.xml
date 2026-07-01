@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Config for the AceData Computer Use accessibility service. Only advertised by
+  the sideload (`full`) build flavor — see plans/nexior-desktop/COMPUTER-USE-ANDROID.md.
+  canPerformGestures = tap/swipe; canTakeScreenshot = capture the screen;
+  canRetrieveWindowContent = (future) semantic node tree for smarter targeting.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/computer_use_accessibility_description"
+    android:accessibilityEventTypes="typeAllMask"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagRetrieveInteractiveWindows"
+    android:canPerformGestures="true"
+    android:canRetrieveWindowContent="true"
+    android:canTakeScreenshot="true"
+    android:notificationTimeout="100" />
