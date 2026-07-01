@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 01 Jul 2026 15:17:38 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 01 Jul 2026 16:43:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.305.0
+
+Wed, 01 Jul 2026 16:43:31 GMT
+
+### Minor changes
+
+- Android Computer Use — Phase 1: native AccessibilityService plugin (screenshot + tap/swipe/type/global-actions) + typed JS bridge (not yet wired into the tool loop) (dev@acedata.cloud)
 
 ## 3.304.0
 
