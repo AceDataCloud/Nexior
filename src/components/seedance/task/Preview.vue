@@ -12,30 +12,28 @@
       </div>
       <div class="info">
         <div
-          v-if="referenceImages.length > 0"
+          v-if="referenceImages.length > 0 || referenceAudios.length > 0 || referenceVideos.length > 0"
           class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
         >
           <image-preview
             v-for="(image, idx) in referenceImages"
-            :key="idx"
+            :key="`image-${idx}`"
             :url="image.url"
             :name="image.name"
             :closable="false"
           />
-        </div>
-        <div v-for="(url, idx) in referenceAudios" :key="`audio-${idx}`" class="reference-audio mt-2">
-          <div class="reference-label">
-            <font-awesome-icon icon="fa-solid fa-music" class="mr-1" />
-            {{ $t('seedance.name.referenceAudio') }}
-          </div>
-          <audio :src="url" controls preload="metadata" class="audio-player" />
-        </div>
-        <div v-for="(url, idx) in referenceVideos" :key="`video-${idx}`" class="reference-video mt-2">
-          <div class="reference-label">
-            <font-awesome-icon icon="fa-solid fa-film" class="mr-1" />
-            {{ $t('seedance.name.referenceVideo') }}
-          </div>
-          <video-player :src="url" />
+          <audio-preview
+            v-for="(url, idx) in referenceAudios"
+            :key="`audio-${idx}`"
+            :url="url"
+            :name="`audio-${idx + 1}`"
+          />
+          <video-preview
+            v-for="(url, idx) in referenceVideos"
+            :key="`video-${idx}`"
+            :url="url"
+            :name="`video-${idx + 1}`"
+          />
         </div>
         <p v-if="promptText" class="prompt mt-2">
           {{ promptText }}
@@ -182,6 +180,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import AudioPreview from '@/components/common/AudioPreview.vue';
+import VideoPreview from '@/components/common/VideoPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 import { SEEDANCE_LOGO } from '@/constants';
 
@@ -197,6 +197,8 @@ export default defineComponent({
     ElButton,
     ImageWrapper,
     ImagePreview,
+    AudioPreview,
+    VideoPreview,
     ApiCodeButton
   },
   props: {
@@ -338,20 +340,6 @@ $left-width: 70px;
 
     .info {
       overflow: hidden;
-      .reference-audio,
-      .reference-video {
-        max-width: 360px;
-        .reference-label {
-          font-size: 12px;
-          font-weight: bold;
-          color: var(--el-text-color-secondary);
-          margin-bottom: 4px;
-        }
-      }
-      .reference-audio .audio-player {
-        width: 100%;
-        height: 38px;
-      }
       .prompt {
         font-size: 14px;
         font-weight: bold;
