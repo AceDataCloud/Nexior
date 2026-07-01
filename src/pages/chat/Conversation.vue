@@ -1153,35 +1153,64 @@ export default defineComponent({
               const target = this.messages[targetIndex];
               target.thinking = (target.thinking ?? '') + response.content;
             } else if (response.type === 'tool_use_start' && response.tool_id) {
-              // Flush any accumulated text before tool
-              if (currentText) {
-                contentParts.push({ type: 'text', text: currentText });
-                currentText = '';
-                answerOffset = response.answer?.length ?? 0;
+              // The worker announces a tool call the instant its name is known
+              // (arguments may still be streaming) and then re-emits
+              // tool_use_start once with the full parsed input / execution.
+              // UPSERT by tool_id so the two starts merge into ONE block
+              // instead of rendering a duplicate.
+              let toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                if (response.tool_name) toolItem.tool_name = response.tool_name;
+                if (response.tool_display_name) toolItem.tool_display_name = response.tool_display_name;
+                if (response.input && Object.keys(response.input).length > 0) {
+                  toolItem.input = response.input;
+                }
+              } else {
+                // Flush any accumulated text before the new tool block.
+                if (currentText) {
+                  contentParts.push({ type: 'text', text: currentText });
+                  currentText = '';
+                  answerOffset = response.answer?.length ?? 0;
+                }
+                toolItem = {
+                  type: 'tool_use',
+                  tool_id: response.tool_id,
+                  tool_name: response.tool_name,
+                  tool_display_name: response.tool_display_name,
+                  input: response.input,
+                  status: 'running'
+                };
+                contentParts.push(toolItem);
+                toolMap.set(response.tool_id, toolItem);
               }
-              const toolItem: IChatMessageContentItem = {
-                type: 'tool_use',
-                tool_id: response.tool_id,
-                tool_name: response.tool_name,
-                tool_display_name: response.tool_display_name,
-                input: response.input,
-                status: 'running'
-              };
-              contentParts.push(toolItem);
-              toolMap.set(response.tool_id, toolItem);
               // Desktop: defer the local run until this paused stream fully
               // finalizes (so this.conversationId + route are settled for a
               // brand-new chat and the `answering` flag isn't cleared
               // mid-resume). The model can fan out several client tools in one
               // turn, so we QUEUE them and run all on finalize, resuming with
-              // every result in one request.
-              if (supportsClientTools() && response.execution === 'client') {
+              // every result in one request. The `execution:'client'` class
+              // arrives on the re-affirm start (not the early announce), so
+              // guard against double-enqueue across the two starts.
+              if (
+                supportsClientTools() &&
+                response.execution === 'client' &&
+                !this.pendingClientTools.some((t) => t.toolId === response.tool_id)
+              ) {
                 toolItem.status = 'awaiting_input';
                 this.pendingClientTools.push({
                   toolId: response.tool_id,
                   name: response.tool_name || '',
                   input: response.input || {}
                 });
+              }
+            } else if (response.type === 'tool_progress' && response.tool_id) {
+              // The worker streams the tool-call arguments text as the model
+              // writes it. Surface it live on the running block so the user
+              // sees the command/script being composed instead of a frozen
+              // screen while a large tool call is generated.
+              const toolItem = toolMap.get(response.tool_id);
+              if (toolItem) {
+                toolItem.input_stream = (toolItem.input_stream ?? '') + (response.progress ?? '');
               }
             } else if (response.type === 'tool_result' && response.tool_id) {
               const toolItem = toolMap.get(response.tool_id);
@@ -1190,6 +1219,9 @@ export default defineComponent({
                 toolItem.is_error = response.is_error;
                 toolItem.duration_ms = response.duration_ms;
                 toolItem.status = 'done';
+                // The full parsed `input` is set by now; drop the raw
+                // streaming args so the block renders structured input.
+                delete toolItem.input_stream;
                 // Strip stale pending_question after fold (defensive — the
                 // worker shouldn't emit tool_result for an awaiting block,
                 // but if it does, the card must collapse cleanly).

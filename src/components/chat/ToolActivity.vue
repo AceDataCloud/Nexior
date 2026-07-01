@@ -57,14 +57,20 @@ export default defineComponent({
       return TOOL_LABELS[name] || name.replace(/_/g, ' ');
     },
     inputText(): string {
-      if (!this.item.input) return '';
+      const input = this.item.input;
+      const hasInput = input && Object.keys(input).length > 0;
+      if (!hasInput) {
+        // Still being written: show the raw arguments text streaming in
+        // (input_stream) so a running tool isn't an empty block.
+        return this.item.input_stream || '';
+      }
       if (this.item.tool_name === 'code_execute') {
-        return (this.item.input.code as string) || '';
+        return (input.code as string) || '';
       }
       if (this.item.tool_name === 'web_search') {
-        return (this.item.input.query as string) || '';
+        return (input.query as string) || '';
       }
-      return JSON.stringify(this.item.input, null, 2);
+      return JSON.stringify(input, null, 2);
     }
   }
 });
