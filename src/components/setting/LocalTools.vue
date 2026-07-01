@@ -58,6 +58,34 @@
         </ul>
       </section>
 
+      <!-- Built-in tools: per-tool "always allow (any input)" toggles -->
+      <section v-if="builtinTools.length">
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsBuiltinTitle') }}</h3>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsBuiltinHint') }}</p>
+        <ul class="rows">
+          <li v-for="t in builtinTools" :key="t.name" class="row">
+            <font-awesome-icon :icon="builtinIcon(t.name)" class="row-icon" />
+            <span class="cu-action">
+              <span class="cu-action-name">
+                <code class="grant-name">{{ t.name }}</code>
+                <el-tag v-if="t.name === 'shell.run_command'" size="small" type="danger" effect="plain">{{
+                  $t('common.settings.localToolsBuiltinRisky')
+                }}</el-tag>
+              </span>
+              <span class="cu-action-desc">{{ t.description }}</span>
+            </span>
+            <el-switch
+              :model-value="toolGrants[t.name] === true"
+              :loading="builtinBusy === t.name"
+              :disabled="!!builtinBusy"
+              @change="(v: string | number | boolean) => onToggleBuiltinTool(t.name, v)"
+            />
+          </li>
+        </ul>
+      </section>
+
       <!-- Computer Use (opt-in: screen capture + mouse/keyboard control) -->
       <section>
         <div class="section-head">
@@ -164,6 +192,10 @@ export default defineComponent({
       computerTools: [] as { name: string; description: string }[],
       computerGrants: {} as Record<string, boolean>,
       cuBusy: null as null | string,
+      // Builtin (fs/shell) tool catalog + per-tool tool-wide always-allow state.
+      builtinTools: [] as { name: string; description: string; mutates: boolean }[],
+      toolGrants: {} as Record<string, boolean>,
+      builtinBusy: null as null | string,
       savingCU: false,
       preauthorizing: false,
       saving: false,
@@ -184,6 +216,7 @@ export default defineComponent({
     this.computerUse = cfg.computerUse === true;
     this.tools = (await ex.listTools()).map((t) => t.name);
     this.computerTools = (await ex.computerTools?.()) ?? [];
+    this.builtinTools = (await ex.builtinTools?.()) ?? [];
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
     await this.loadGrants();
@@ -209,10 +242,18 @@ export default defineComponent({
       // their own per-action toggles, so split them out of the generic
       // "always-allowed" list to avoid showing each one twice.
       const cuGrants: Record<string, boolean> = {};
+      const toolWide: Record<string, boolean> = {};
+      const builtinNames = new Set(this.builtinTools.map((t) => t.name));
       const rows: GrantRow[] = [];
       for (const k of keys) {
         if (k.startsWith('computer.') && !k.includes(':')) {
           cuGrants[k] = true;
+          continue;
+        }
+        // Bare-name (no `:input`) grant for a builtin tool = tool-wide always-allow,
+        // surfaced as its own toggle → hide from the generic list too.
+        if (!k.includes(':') && builtinNames.has(k)) {
+          toolWide[k] = true;
           continue;
         }
         // key shape: `<tool.name>:<json input>`. The input is always JSON, so
@@ -223,6 +264,7 @@ export default defineComponent({
         rows.push({ key: k, name: idx >= 0 ? k.slice(0, idx) : k, input: idx >= 0 ? k.slice(idx + 1) : '' });
       }
       this.computerGrants = cuGrants;
+      this.toolGrants = toolWide;
       this.grants = rows;
     },
     async addFolder() {
@@ -316,6 +358,35 @@ export default defineComponent({
     cuSuffix(name: string): string {
       const s = name.replace(/^computer\./, '');
       return s.charAt(0).toUpperCase() + s.slice(1);
+    },
+    // Per-tool tool-wide always-allow for a builtin tool. ON pre-approves the
+    // tool for ANY input (native confirm in main; the switch reverts if the user
+    // cancels). OFF revokes the bare-name grant, re-arming the per-call prompt.
+    async onToggleBuiltinTool(name: string, val: string | number | boolean) {
+      const ex = localExec();
+      if (!ex?.grants) return;
+      this.builtinBusy = name;
+      try {
+        if (val === true) {
+          const r = await ex.grants.grantToolWide?.(name);
+          // Cancelled native dialog → ok:false → leave the toggle off.
+          if (!r?.ok) {
+            this.toolGrants = { ...this.toolGrants, [name]: false };
+          }
+        } else {
+          await ex.grants.revoke(name);
+        }
+        await this.loadGrants();
+      } finally {
+        this.builtinBusy = null;
+      }
+    },
+    builtinIcon(name: string): string {
+      if (name === 'shell.run_command') return 'fa-solid fa-terminal';
+      if (name === 'fs.write_file') return 'fa-solid fa-pen';
+      if (name === 'fs.read_file') return 'fa-solid fa-file';
+      if (name === 'fs.list_dir') return 'fa-solid fa-folder';
+      return 'fa-solid fa-shield-halved';
     },
     async revoke(key: string) {
       await localExec()?.grants?.revoke(key);

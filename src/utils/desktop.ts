@@ -84,7 +84,12 @@ export interface LocalExecBridge {
     list(): Promise<string[]>;
     revoke(key: string): Promise<boolean>;
     clear(): Promise<boolean>;
+    /** Tool-wide always-allow for a builtin tool (native confirm in main). */
+    grantToolWide?(name: string): Promise<{ grants: string[]; ok: boolean }>;
   };
+  /** Builtin (fs/shell) tool specs for the per-tool always-allow toggles.
+   * Undefined on older preloads. */
+  builtinTools?(): Promise<{ name: string; description: string; mutates: boolean }[]>;
   /** Subscribe to the global panic hotkey forcing Computer Use off. Returns an
    * unsubscribe fn. Undefined on older preloads. */
   onComputerUseDisabled?(cb: () => void): () => void;

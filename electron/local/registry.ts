@@ -57,6 +57,18 @@ class Registry {
     return COMPUTER_TOOLS.map((s) => ({ name: s.name, description: s.description }));
   }
 
+  // Builtin (fs/shell) tool specs for the Settings per-tool always-allow toggles.
+  // `mutates` lets the UI flag the dangerous ones (shell/write) distinctly.
+  builtinToolSpecs(): { name: string; description: string; mutates: boolean }[] {
+    return BUILTIN.map((s) => ({ name: s.name, description: s.description, mutates: s.mutates }));
+  }
+
+  // Whether a name is a registered builtin tool — used to validate a tool-wide
+  // grant request so it can never persist an unknown/MCP/computer name.
+  isBuiltinTool(name: string): boolean {
+    return BUILTIN.some((s) => s.name === name);
+  }
+
   async boot(servers: McpServerConf[]): Promise<void> {
     for (const s of servers) {
       try {

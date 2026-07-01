@@ -91,6 +91,14 @@ export async function consentOk(inv: ToolInvoke, win: BrowserWindow | null, muta
   // SESSION_ROOTS entry for the run. (Grants created before this change have no
   // persisted root, so they re-prompt once — which then persists it.)
   if ((load().grants ?? []).includes(gk)) return true; // persistent always-allow
+  // Tool-wide always-allow: a grant stored as the BARE tool name (no `:input`)
+  // means "run this tool for ANY input without asking" — opted in per-tool from
+  // Settings → Local Tools. For computer.* the grant key already IS the bare
+  // name (handled above); this line extends the same name-scoping to builtin
+  // tools (shell.run_command, fs.*). fs.* still enforces its ROOTS boundary in
+  // fs.ts, so a tool-wide fs grant can't escape the authorized folders; a
+  // tool-wide shell grant is unrestricted by design (the Settings toggle warns).
+  if (inv.name !== gk && (load().grants ?? []).includes(inv.name)) return true;
   // Non-computer mutating tools still re-confirm; computer.* honors its (name-
   // scoped) session grant even though it mutates — that is the whole point of
   // "Allow for session" for a screen-control loop.
@@ -151,6 +159,18 @@ export function grantComputerTools(names: string[]): string[] {
   const cfg = load();
   const grants = new Set(cfg.grants ?? []);
   for (const n of names) if (n.startsWith('computer.')) grants.add(n);
+  save({ ...cfg, grants: [...grants] });
+  return [...grants];
+}
+
+// Persist a tool-wide "Always allow" grant as the BARE tool name (any input) for
+// the given builtin tools — used by the per-tool always-allow toggles in
+// Settings. The caller (ipc) MUST validate each name is a real registered
+// builtin tool so this can never grant an unknown name by accident.
+export function grantToolsWide(names: string[]): string[] {
+  const cfg = load();
+  const grants = new Set(cfg.grants ?? []);
+  for (const n of names) grants.add(n);
   save({ ...cfg, grants: [...grants] });
   return [...grants];
 }
