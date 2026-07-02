@@ -1,13 +1,16 @@
 package com.acedatacloud.nexior;
 
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -29,6 +32,47 @@ import com.getcapacitor.annotation.CapacitorPlugin;
  */
 @CapacitorPlugin(name = "ComputerUse")
 public class ComputerUsePlugin extends Plugin {
+
+    /** Relays the foreground-service Stop button to JS as `computerUseDisabled`. */
+    private BroadcastReceiver stopReceiver;
+
+    @Override
+    public void load() {
+        super.load();
+        // Guard against a double-registration if load() runs again after a
+        // handleOnDestroy (plugin/bridge reload) without cleanup.
+        if (stopReceiver != null) {
+            try {
+                getContext().unregisterReceiver(stopReceiver);
+            } catch (IllegalArgumentException ignored) {
+                // wasn't registered
+            }
+        }
+        stopReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                notifyListeners("computerUseDisabled", new JSObject());
+            }
+        };
+        ContextCompat.registerReceiver(
+                getContext(),
+                stopReceiver,
+                new IntentFilter(ComputerUseSessionService.ACTION_CU_STOP),
+                ContextCompat.RECEIVER_NOT_EXPORTED);
+    }
+
+    @Override
+    protected void handleOnDestroy() {
+        if (stopReceiver != null) {
+            try {
+                getContext().unregisterReceiver(stopReceiver);
+            } catch (IllegalArgumentException ignored) {
+                // already unregistered
+            }
+            stopReceiver = null;
+        }
+        super.handleOnDestroy();
+    }
 
     /** Whether our accessibility service is enabled in system settings. */
     private boolean isAccessibilityEnabled() {
@@ -67,6 +111,12 @@ public class ComputerUsePlugin extends Plugin {
     }
 
     private ComputerUseAccessibilityService requireService(PluginCall call) {
+        if (ComputerUseAccessibilityService.isSessionStopped()) {
+            // User pressed Stop on the session notification — refuse every action
+            // until Computer Use is explicitly re-armed (resetStop).
+            call.reject("Computer Use was stopped by the user");
+            return null;
+        }
         ComputerUseAccessibilityService svc = ComputerUseAccessibilityService.getInstance();
         if (svc == null) {
             call.reject("accessibility service not enabled");
@@ -161,6 +211,48 @@ public class ComputerUsePlugin extends Plugin {
         }
         boolean ok = svc.key(name);
         resolveOk(call, ok, ok ? null : "unsupported key: " + name);
+    }
+
+    @PluginMethod
+    public void dumpUi(PluginCall call) {
+        ComputerUseAccessibilityService svc = requireService(call);
+        if (svc == null) return;
+        JSObject ret = new JSObject();
+        // A JSON-array string of actionable elements; the JS adapter forwards it
+        // to the model verbatim as the tool output.
+        ret.put("tree", svc.dumpUi());
+        call.resolve(ret);
+    }
+
+    @PluginMethod
+    public void tapText(PluginCall call) {
+        ComputerUseAccessibilityService svc = requireService(call);
+        if (svc == null) return;
+        String text = call.getString("text");
+        if (text == null || text.trim().isEmpty()) {
+            call.reject("tapText requires a non-empty text");
+            return;
+        }
+        svc.tapText(text, (ok, err) -> resolveOk(call, ok, err));
+    }
+
+    @PluginMethod
+    public void startSession(PluginCall call) {
+        ComputerUseSessionService.start(getContext());
+        call.resolve();
+    }
+
+    @PluginMethod
+    public void stopSession(PluginCall call) {
+        ComputerUseSessionService.stop(getContext());
+        call.resolve();
+    }
+
+    /** Re-arm Computer Use after a Stop (called when the user re-enables it). */
+    @PluginMethod
+    public void resetStop(PluginCall call) {
+        ComputerUseAccessibilityService.setSessionStopped(false);
+        call.resolve();
     }
 
     private void resolveOk(@NonNull PluginCall call, boolean ok, String err) {

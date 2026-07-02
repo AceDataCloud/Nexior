@@ -9,10 +9,16 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
+    implementation project(':capacitor-community-apple-sign-in')
     implementation project(':capacitor-community-stripe')
     implementation project(':capacitor-app')
     implementation project(':capacitor-browser')
-
+    implementation project(':capacitor-clipboard')
+    implementation project(':capacitor-local-notifications')
+    implementation project(':capacitor-push-notifications')
+    implementation project(':capgo-capacitor-updater')
+    implementation "com.android.billingclient:billing:9.0.0"
+    implementation "androidx.core:core:1.9.0"
 }
 
 

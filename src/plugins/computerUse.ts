@@ -1,4 +1,5 @@
 import { registerPlugin } from '@capacitor/core';
+import type { PluginListenerHandle } from '@capacitor/core';
 
 /**
  * Android Computer Use — the mobile analogue of the desktop `window.localExec`
@@ -30,6 +31,11 @@ export interface ComputerUseActionResult {
   note?: string;
 }
 
+/** JSON-array string of on-screen actionable elements (see native `dumpUi`). */
+export interface ComputerUseTreeResult {
+  tree: string;
+}
+
 export interface ComputerUsePlugin {
   status(): Promise<ComputerUseStatus>;
   /** Deep-link to Settings → Accessibility so the user can enable the service. */
@@ -40,6 +46,20 @@ export interface ComputerUsePlugin {
   scroll(options: { x?: number; y?: number; scrollX?: number; scrollY?: number }): Promise<ComputerUseActionResult>;
   type(options: { text: string }): Promise<ComputerUseActionResult>;
   key(options: { keys: string[] }): Promise<ComputerUseActionResult>;
+  /** Snapshot the current window's accessibility tree (precise tap targets). */
+  dumpUi(): Promise<ComputerUseTreeResult>;
+  /** Tap an element by its visible text / content-description (semantic tap). */
+  tapText(options: { text: string }): Promise<ComputerUseActionResult>;
+  /** Start/stop the foreground session that keeps the agent loop alive. */
+  startSession(): Promise<void>;
+  stopSession(): Promise<void>;
+  /** Re-arm Computer Use after a user Stop (clears the native kill flag). */
+  resetStop(): Promise<void>;
+  /** Fires when the user taps Stop on the session notification (kill switch). */
+  addListener(
+    eventName: 'computerUseDisabled',
+    listenerFunc: () => void
+  ): Promise<PluginListenerHandle> & PluginListenerHandle;
 }
 
 export const ComputerUse = registerPlugin<ComputerUsePlugin>('ComputerUse');

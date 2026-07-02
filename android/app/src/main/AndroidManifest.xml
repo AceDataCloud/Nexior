@@ -64,6 +64,20 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/computer_use_accessibility" />
         </service>
+
+        <!-- Foreground service that keeps the Computer Use agent loop alive
+             (and un-throttled) while Nexior is backgrounded operating another
+             app. Its notification carries the Stop kill-switch. specialUse type
+             because there is no better-fitting FGS category for user-initiated
+             assistive screen automation. Sideload/full flavor only. -->
+        <service
+            android:name=".ComputerUseSessionService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-initiated assistive screen automation (Computer Use); keeps the agent loop alive while operating other apps." />
+        </service>
     </application>
 
     <!-- Permissions -->
@@ -73,4 +87,8 @@
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <!-- Computer Use foreground session + its ongoing notification. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 </manifest>
