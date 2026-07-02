@@ -107,6 +107,10 @@ class ChatOperator {
                     tool_display_name: json.tool_display_name,
                     execution: json.execution,
                     input: json.input,
+                    // Streamed tool-call arguments text (`tool_progress`); without
+                    // this the running tool block renders empty while the model
+                    // writes a large tool call.
+                    progress: json.progress,
                     output: json.output,
                     is_error: json.is_error,
                     duration_ms: json.duration_ms,
