@@ -33,9 +33,11 @@ export default defineComponent({
   },
   mounted() {
     if (!isDesktop()) return;
+    // `desktopBridge` is a factory: () => DesktopBridge | undefined.
     // Preload emits current fullscreen state immediately, then on every change.
+    const bridge = desktopBridge();
     this.offFullscreen =
-      desktopBridge?.onFullscreenChange?.((isFullscreen: boolean) => {
+      bridge?.onFullscreenChange?.((isFullscreen: boolean) => {
         this.fullscreen = !!isFullscreen;
       }) ?? null;
   },
