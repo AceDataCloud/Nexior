@@ -23,7 +23,6 @@
  * tool error the model can react to.
  */
 import { Capacitor } from '@capacitor/core';
-import { ElMessageBox } from 'element-plus';
 import { ComputerUse } from '@/plugins/computerUse';
 import i18n from '@/i18n';
 import type { LocalExecBridge, LocalToolSpec } from '@/utils/desktop';
@@ -186,36 +185,40 @@ function writeGrants(names: string[]): void {
   }
 }
 
-/** Per-call consent: honor a persisted always-allow grant, else show an
- *  ON-DEMAND consent dialog (Allow once / Deny). Users who want an action to
- *  run without prompting can pre-authorize it in Settings → Local Tools. Falls
- *  back to a native confirm if the dialog service can't render (SSR/no DOM).
- *  Returns false → denied (never silent). */
+/** Per-call consent: honor a persisted always-allow grant, else show a NATIVE
+ *  3-tier on-demand confirm — Allow once / Always allow / Deny — mirroring the
+ *  desktop native confirm (Electron main-process dialog). "Always allow"
+ *  persists a grant (same store the Settings → Local Tools toggles read/write),
+ *  so the action never prompts again and shows ON in Settings. Returns false →
+ *  denied (never silent). */
 async function ensureConsent(name: string): Promise<boolean> {
   if (readGrants().includes(name)) return true;
-  // On-demand consent needs a VISIBLE dialog. If Nexior is backgrounded (the
+  // On-demand consent needs a VISIBLE prompt. If Nexior is backgrounded (the
   // model is mid-task operating another app), we can't prompt — deny
-  // (fail-closed) rather than hang on an invisible modal. Autonomous background
-  // tasks must pre-authorize the action in Settings → Local Tools.
+  // (fail-closed) rather than surface a dialog the user can't see. Autonomous
+  // background tasks must pre-authorize the action in Settings → Local Tools.
   if (typeof document !== 'undefined' && document.visibilityState === 'hidden') {
     return false;
   }
   const t = i18n.global.t;
   const action = name.replace(/^computer\./, '');
-  const message = t('common.settings.cuConsentMessage', { action });
   try {
-    await ElMessageBox.confirm(message, t('common.settings.cuConsentTitle'), {
-      confirmButtonText: t('common.settings.cuConsentAllow'),
-      cancelButtonText: t('common.settings.cuConsentDeny'),
-      type: 'warning',
-      distinguishCancelAndClose: true
+    const { choice } = await ComputerUse.confirmConsent({
+      title: t('common.settings.cuConsentTitle'),
+      message: t('common.settings.cuConsentMessage', { action }),
+      onceLabel: t('common.settings.cuConsentAllow'),
+      alwaysLabel: t('common.settings.cuConsentAlways'),
+      denyLabel: t('common.settings.cuConsentDeny')
     });
-    return true;
-  } catch (e) {
-    // Element Plus (v2) rejects with the string 'cancel'/'close' on user denial.
-    if (typeof e === 'string') return false;
-    // Anything else = the dialog couldn't render → fall back to a native confirm.
-    return typeof window !== 'undefined' && typeof window.confirm === 'function' ? window.confirm(message) : false;
+    if (choice === 'always') {
+      // Persist so this action never prompts again (and lights up its Settings
+      // → Local Tools toggle). Revocable there or by turning Computer Use off.
+      writeGrants([...readGrants(), name]);
+      return true;
+    }
+    return choice === 'once';
+  } catch {
+    return false;
   }
 }
 

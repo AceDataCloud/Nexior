@@ -50,6 +50,15 @@ export interface ComputerUsePlugin {
   status(): Promise<ComputerUseStatus>;
   /** Deep-link to Settings → Accessibility so the user can enable the service. */
   openAccessibilitySettings(): Promise<void>;
+  /** Native 3-tier on-demand consent (Allow once / Always allow / Deny),
+   *  mirroring the desktop native confirm. Back / tap-outside = deny. */
+  confirmConsent(options: {
+    title: string;
+    message: string;
+    onceLabel: string;
+    alwaysLabel: string;
+    denyLabel: string;
+  }): Promise<{ choice: 'once' | 'always' | 'deny' }>;
   screenshot(): Promise<ComputerUseScreenshotResult>;
   click(options: { x: number; y: number; button?: string }): Promise<ComputerUseActionResult>;
   move(options: { x: number; y: number }): Promise<ComputerUseActionResult>;
