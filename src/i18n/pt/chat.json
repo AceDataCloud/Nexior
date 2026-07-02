@@ -712,6 +712,14 @@
     "message": "Os MCP Servers selecionados podem ser carregados e executados nas tarefas agendadas; os MCP Servers não selecionados não serão carregados no modo sem supervisão.",
     "description": "Explicação sobre a autorização do servidor MCP."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Máximo de turnos",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Máximo de turnos do agente por execução (1–50). Um limite muito baixo interrompe tarefas de várias etapas (por exemplo, skills que executam vários passos de Bash/consulta de documentos) antes de terminarem, sem resultado final. Padrão 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Confirmar Autorização Sem Supervisão",
     "description": "Título da confirmação de autorização"

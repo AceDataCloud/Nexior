@@ -712,6 +712,14 @@
     "message": "Valda MCP-servrar kan laddas och utföras i den schemalagda uppgiften; icke-valda MCP-servrar kommer inte att laddas i obevakad läge.",
     "description": "Förklaring av auktorisering av MCP-servrar"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Max antal turer",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Högsta antal agentturer per körning (1–50). En för låg gräns stoppar flerstegsuppgifter (t.ex. färdigheter som kör flera Bash-/dokumentsöksteg) innan de är klara, utan slutresultat. Standard 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Bekräfta obevakad auktorisering",
     "description": "Titel för auktoriseringsbekräftelse"

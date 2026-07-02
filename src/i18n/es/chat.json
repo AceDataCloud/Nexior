@@ -712,6 +712,14 @@
     "message": "Los servidores MCP seleccionados se cargarán y ejecutarán en la tarea programada; los servidores MCP no seleccionados no se cargarán en modo desatendido.",
     "description": "Explicación sobre la autorización de servidores MCP."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Turnos máximos",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Máximo de turnos del agente por ejecución (1–50). Un límite demasiado bajo detiene las tareas de varios pasos (p. ej., skills que ejecutan varios pasos de Bash/búsqueda de documentos) antes de terminar, sin resultado final. Predeterminado 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Confirmar autorización sin supervisión",
     "description": "Título de la confirmación de autorización"

@@ -228,6 +228,11 @@
           </el-select>
           <div class="hint">{{ $t('chat.scheduledTasks.form.mcpServersHint') }}</div>
         </el-form-item>
+
+        <el-form-item :label="$t('chat.scheduledTasks.form.maxTurns')">
+          <el-input-number v-model="form.maxTurns" :min="1" :max="50" :step="1" controls-position="right" />
+          <div class="hint">{{ $t('chat.scheduledTasks.form.maxTurnsHint') }}</div>
+        </el-form-item>
       </el-form>
 
       <template #footer>
@@ -261,6 +266,7 @@ import {
   ElRadioGroup,
   ElRadio,
   ElTimePicker,
+  ElInputNumber,
   ElMessage,
   ElMessageBox
 } from 'element-plus';
@@ -278,6 +284,10 @@ import { IChatModelGroup } from '@/models';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
 
+// Default agent turn budget for a scheduled task run. Mirrors the worker's
+// DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
+const DEFAULT_SCHEDULED_MAX_TURNS = 30;
+
 interface TaskForm {
   question: string;
   model: string;
@@ -287,6 +297,7 @@ interface TaskForm {
   cronExpr: string;
   authorizedSkills: string[];
   authorizedMcpServers: string[];
+  maxTurns: number;
 }
 
 export default defineComponent({
@@ -310,6 +321,7 @@ export default defineComponent({
     ElRadioGroup,
     ElRadio,
     ElTimePicker,
+    ElInputNumber,
     Pagination
   },
   data() {
@@ -367,7 +379,8 @@ export default defineComponent({
         weekday: 1,
         cronExpr: '0 9 * * *',
         authorizedSkills: [],
-        authorizedMcpServers: []
+        authorizedMcpServers: [],
+        maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
       };
     },
     // The task name is no longer a separate field — derive a short label from the prompt.
@@ -446,7 +459,8 @@ export default defineComponent({
         authorizedMcpServers:
           task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
             ? task.unattended_policy.allowed_mcp_servers || []
-            : []
+            : [],
+        maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
       };
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
@@ -492,7 +506,8 @@ export default defineComponent({
             model: this.form.model,
             question: this.form.question,
             skills: authorizedSkills,
-            mcp_servers: authorizedMcpServers
+            mcp_servers: authorizedMcpServers,
+            max_turns: this.form.maxTurns
           },
           unattended_policy: authorizedSkills.length || authorizedMcpServers.length
             ? {

@@ -712,6 +712,14 @@
     "message": "Wybrane serwery MCP mogą być ładowane i wykonywane w tle zadań zaplanowanych; nie wybrane serwery MCP nie będą ładowane w trybie bezobsługowym.",
     "description": "Opis autoryzacji serwera MCP"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Maksymalna liczba tur",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Maksymalna liczba tur agenta na uruchomienie (1–50). Zbyt niski limit zatrzymuje wieloetapowe zadania (np. umiejętności wykonujące kilka kroków Bash/wyszukiwania w dokumentach) przed ukończeniem, bez końcowego wyniku. Domyślnie 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Potwierdzenie autoryzacji bezobsługowej",
     "description": "Tytuł potwierdzenia autoryzacji"

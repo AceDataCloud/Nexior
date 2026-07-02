@@ -712,6 +712,14 @@
     "message": "Οι επιλεγμένοι MCP Servers μπορούν να φορτωθούν και να εκτελούνται στο παρασκήνιο του προγραμματισμένου καθήκοντος. Οι μη επιλεγμένοι MCP Servers δεν θα φορτωθούν σε λειτουργία χωρίς επίβλεψη.",
     "description": "Επεξήγηση για την εξουσιοδότηση MCP server"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Μέγιστος αριθμός γύρων",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Μέγιστοι γύροι πράκτορα ανά εκτέλεση (1–50). Πολύ χαμηλό όριο διακόπτει βίαια πολυβηματικές εργασίες (π.χ. skills με πολλά βήματα Bash/αναζήτησης) πριν ολοκληρωθούν, χωρίς τελικό αποτέλεσμα. Προεπιλογή 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Επιβεβαίωση Αυτόματης Εξουσιοδότησης",
     "description": "Τίτλος επιβεβαίωσης εξουσιοδότησης"

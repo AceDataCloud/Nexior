@@ -712,6 +712,14 @@
     "message": "선택한 MCP 서버는 정기 작업 백그라운드에서 로드 및 실행됩니다; 선택하지 않은 MCP 서버는 무인 모드에서 로드되지 않습니다.",
     "description": "MCP 서버 권한 부여 설명"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "최대 턴 수",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "실행당 허용되는 최대 에이전트 턴 수(1–50). 한도가 너무 낮으면 여러 단계 작업(예: Bash/문서 조회를 여러 번 실행하는 스킬)이 완료되기 전에 강제 중지되어 최종 결과가 남지 않습니다. 기본값 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "무인 권한 부여 확인",
     "description": "권한 부여 확인 제목"

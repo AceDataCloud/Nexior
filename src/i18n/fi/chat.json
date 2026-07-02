@@ -712,6 +712,14 @@
     "message": "Valitut MCP-palvelimet voidaan ladata ja suorittaa aikataulutettujen tehtävien taustalla; valitsemattomia MCP-palvelimia ei ladata valvonnasta vapaassa tilassa.",
     "description": "Valtuutuksen MCP-palvelimista selitys"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Kierrosten enimmäismäärä",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Agentin kierrosten enimmäismäärä per ajo (1–50). Liian pieni raja pysäyttää monivaiheiset tehtävät (esim. taidot, jotka suorittavat useita Bash-/dokumenttihakuvaiheita) ennen valmistumista ilman lopputulosta. Oletus 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Vahvista automaattinen valtuutus",
     "description": "Valtuutuksen vahvistuksen otsikko"

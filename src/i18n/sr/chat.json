@@ -712,6 +712,14 @@
     "message": "Izabrani MCP serveri će se učitati i izvršiti u pozadini zadatka; neizabrani MCP serveri neće se učitati u režimu bez nadzora.",
     "description": "Objašnjenje ovlašćenja za MCP servere."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Максималан број корака",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Максималан број корака агента по покретању (1–50). Превише низак лимит принудно зауставља вишекорачне задатке (нпр. вештине које изврше неколико Bash/претрага корака) пре завршетка, без коначног резултата. Подразумевано 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Потврда овлашћења без надзора",
     "description": "Наслов за потврду овлашћења"
