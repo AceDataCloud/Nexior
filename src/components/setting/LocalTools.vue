@@ -4,8 +4,27 @@
       {{ $t('common.settings.localToolsDesktopOnly') }}
     </p>
     <template v-else>
+      <!-- Android: Computer Use system permission entry (Accessibility). This
+           is where the user pre-authorizes the service that lets the assistant
+           see + control the screen. -->
+      <section v-if="android">
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsPermsTitle') }}</h3>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsAndroidPermHint') }}</p>
+        <div class="perm-row">
+          <span class="perm-name">{{ $t('common.settings.localToolsPermAccessibility') }}</span>
+          <el-tag size="small" :type="a11yEnabled ? 'success' : 'info'" effect="plain">
+            {{ a11yEnabled ? $t('common.settings.localToolsGranted') : $t('common.settings.localToolsNotGranted') }}
+          </el-tag>
+          <el-button size="small" type="primary" @click="openAndroidAccessibility">{{
+            $t('common.settings.localToolsOpen')
+          }}</el-button>
+        </div>
+      </section>
+
       <!-- Authorized folders -->
-      <section>
+      <section v-if="!android">
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsFoldersTitle') }}</h3>
           <el-button size="small" type="primary" :icon="Plus" @click="addFolder">
@@ -35,7 +54,7 @@
       </section>
 
       <!-- Always-allowed (persistent consent grants) -->
-      <section v-if="grants !== null">
+      <section v-if="grants !== null && !android">
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsGrantsTitle') }}</h3>
           <el-button v-if="grants.length" size="small" text type="danger" @click="revokeAll">
@@ -59,7 +78,7 @@
       </section>
 
       <!-- Built-in tools: per-tool "always allow (any input)" toggles -->
-      <section v-if="builtinTools.length">
+      <section v-if="builtinTools.length && !android">
         <div class="section-head">
           <h3>{{ $t('common.settings.localToolsBuiltinTitle') }}</h3>
         </div>
@@ -169,6 +188,7 @@ import { ElButton, ElTag, ElSwitch } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { localExec } from '@/utils/desktop';
+import { isAndroid } from '@/utils/surface';
 
 interface GrantRow {
   key: string;
@@ -200,12 +220,18 @@ export default defineComponent({
       preauthorizing: false,
       saving: false,
       savedTip: false,
+      // Android: whether the Computer Use accessibility service is enabled.
+      a11yEnabled: false,
+      onFocus: null as null | (() => void),
       cuOff: null as null | (() => void)
     };
   },
   computed: {
     desktop(): boolean {
       return !!localExec();
+    },
+    android(): boolean {
+      return isAndroid();
     }
   },
   async mounted() {
@@ -220,6 +246,15 @@ export default defineComponent({
     const s = await ex.perm?.status();
     if (s?.mac) this.perm = s;
     await this.loadGrants();
+    if (this.android) {
+      await this.refreshA11y();
+      // Re-check the accessibility status when the user returns from system
+      // settings so the badge/toggles reflect it without a manual reload.
+      this.onFocus = () => {
+        if (document.visibilityState === 'visible') void this.refreshA11y();
+      };
+      document.addEventListener('visibilitychange', this.onFocus);
+    }
     // Reflect the global panic hotkey: keep the toggle in sync so a later Save
     // can't silently re-enable Computer Use after it was force-disabled.
     this.cuOff =
@@ -229,8 +264,16 @@ export default defineComponent({
   },
   beforeUnmount() {
     this.cuOff?.();
+    if (this.onFocus) document.removeEventListener('visibilitychange', this.onFocus);
   },
   methods: {
+    async refreshA11y() {
+      const s = await localExec()?.perm?.status();
+      this.a11yEnabled = s?.accessibility === true;
+    },
+    async openAndroidAccessibility() {
+      await localExec()?.perm?.openPane('accessibility');
+    },
     async loadGrants() {
       const ex = localExec();
       if (!ex?.grants) {
