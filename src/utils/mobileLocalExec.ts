@@ -105,6 +105,26 @@ const COMPUTER_TOOLS: LocalToolSpec[] = [
     },
     source: 'builtin',
     mutates: true
+  },
+  {
+    name: 'computer.dump_ui',
+    description:
+      'List the tappable/editable UI elements currently on screen using the accessibility tree — each with its visible label and a precise center coordinate. Call this after a screenshot to get EXACT tap targets instead of guessing pixel coordinates from the image. Then prefer computer.tap_text to act on a listed label.',
+    input_schema: { type: 'object', properties: {} },
+    source: 'builtin',
+    mutates: false
+  },
+  {
+    name: 'computer.tap_text',
+    description:
+      "Tap a UI element by its visible text or content-description (uses the accessibility tree for a precise, reliable tap). STRONGLY PREFER this over computer.click for buttons, tabs, icons, list items and app-drawer icons — it hits the real element instead of a guessed pixel. Give the exact or partial label, e.g. 'Clock' or 'Add alarm'.",
+    input_schema: {
+      type: 'object',
+      properties: { text: { type: 'string' } },
+      required: ['text']
+    },
+    source: 'builtin',
+    mutates: true
   }
 ];
 
@@ -195,7 +215,20 @@ const bridge: LocalExecBridge = {
   },
 
   async saveConfig(cfg) {
-    setComputerUseEnabled(!!cfg.computerUse);
+    const on = !!cfg.computerUse;
+    setComputerUseEnabled(on);
+    try {
+      if (on) {
+        // Re-enabling clears any prior user Stop so actions are allowed again.
+        await ComputerUse.resetStop();
+      } else {
+        // Turning Computer Use off ends any live session + revokes grants.
+        writeGrants([]);
+        await ComputerUse.stopSession();
+      }
+    } catch {
+      /* ignore */
+    }
     return true;
   },
 
@@ -237,12 +270,39 @@ const bridge: LocalExecBridge = {
     const toGrant = names && names.length ? names : COMPUTER_TOOLS.map((s) => s.name);
     writeGrants([...readGrants(), ...toGrant]);
     try {
+      // Re-arm after any prior user Stop, then jump to Accessibility settings.
+      await ComputerUse.resetStop();
       await ComputerUse.openAccessibilitySettings();
     } catch {
       /* best-effort deep link */
     }
     const a11y = await accessibilityGranted();
     return { grants: readGrants(), perm: permShape(a11y), computerUse: true };
+  },
+
+  onComputerUseDisabled(cb: () => void) {
+    // Kill switch: the foreground-session notification's Stop button fires the
+    // native `computerUseDisabled` event → turn Computer Use off, revoke all
+    // grants, and notify the app. The model cannot bypass this.
+    let handle: { remove: () => void } | undefined;
+    let disposed = false;
+    void ComputerUse.addListener('computerUseDisabled', () => {
+      setComputerUseEnabled(false);
+      writeGrants([]);
+      cb();
+    })
+      .then((h) => {
+        handle = h as unknown as { remove: () => void };
+        // If unsubscribed before the listener finished registering, remove now.
+        if (disposed) handle.remove?.();
+      })
+      .catch(() => {
+        /* listener registration failed — nothing to remove */
+      });
+    return () => {
+      disposed = true;
+      handle?.remove?.();
+    };
   }
 };
 
@@ -256,6 +316,17 @@ async function invokeImpl(
   if (!ensureConsent(name)) {
     return { output: `denied: user declined "${name}"`, is_error: true };
   }
+  // Keep the process foreground-priority for the whole task so the agent loop
+  // isn't throttled/killed while Nexior is backgrounded operating another app.
+  // Idempotent + fire-and-forget; the first action of a task runs while Nexior
+  // is still foreground, so the FGS start is allowed.
+  try {
+    await ComputerUse.startSession();
+  } catch (e) {
+    // Non-fatal: the action can still run (the accessibility service is
+    // independent), just without the extra background-liveness guarantee.
+    console.warn('[ComputerUse] startSession failed; loop may be throttled if backgrounded', e);
+  }
   try {
     switch (name) {
       case 'computer.screenshot': {
@@ -264,6 +335,16 @@ async function invokeImpl(
           output: JSON.stringify({ width: res.width, height: res.height }),
           image: res.image
         };
+      }
+      case 'computer.dump_ui': {
+        const res = await ComputerUse.dumpUi();
+        return { output: res.tree || '[]' };
+      }
+      case 'computer.tap_text': {
+        const text = String(input.text ?? '').trim();
+        if (!text) return { output: 'tap_text requires non-empty text', is_error: true };
+        const r = await ComputerUse.tapText({ text });
+        return { output: r.note ?? 'ok' };
       }
       case 'computer.click': {
         const r = await ComputerUse.click({
