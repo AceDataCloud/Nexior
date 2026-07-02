@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 06:52:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 11:54:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.312.3
+
+Thu, 02 Jul 2026 11:54:22 GMT
+
+### Patches
+
+- fix(desktop): restore white badge for macOS Dock icon (dev@acedata.cloud)
 
 ## 3.312.2
 
