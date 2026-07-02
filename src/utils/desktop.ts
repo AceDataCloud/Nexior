@@ -63,12 +63,12 @@ export interface LocalExecBridge {
   }): Promise<{ output: string; is_error?: boolean; image?: string }>;
   getConfig(): Promise<{
     roots: string[];
-    mcp: { id: string; command: string; args: string[] }[];
+    mcp: { id: string; command: string; args: string[]; cwd?: string; env?: Record<string, string> }[];
     computerUse?: boolean;
   }>;
   saveConfig(cfg: {
     roots: string[];
-    mcp: { id: string; command: string; args: string[] }[];
+    mcp: { id: string; command: string; args: string[]; cwd?: string; env?: Record<string, string> }[];
     computerUse?: boolean;
   }): Promise<boolean>;
   pickFolder(): Promise<string | null>;

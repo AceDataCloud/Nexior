@@ -82,6 +82,17 @@ class Registry {
     }
   }
 
+  // Hot-reapply the MCP server set: stop the running servers, drop their tool
+  // specs + names (keeping builtin + computer), then re-boot from the new
+  // config. Called by `local.config.save` so editing MCP servers in Settings
+  // takes effect immediately, without restarting the app.
+  async reboot(servers: McpServerConf[]): Promise<void> {
+    this.host.stopAll();
+    this.mcpSpecs = [];
+    this.names = new Set([...BUILTIN, ...COMPUTER_TOOLS].map((s) => s.name));
+    await this.boot(servers);
+  }
+
   specs(): ToolSpec[] {
     return [...BUILTIN, ...(this.computerUse ? COMPUTER_TOOLS : []), ...this.mcpSpecs];
   }
@@ -97,8 +108,13 @@ class Registry {
     // the feature is disabled, refuse it here too.
     if (isComputerTool(inv.name) && !this.computerUse) return { output: 'computer use is disabled', is_error: true };
     if (inv.name.startsWith('mcp.')) {
-      const [, server, tool] = inv.name.split('.');
-      return this.host.call(server, tool, inv.input);
+      // Split at the FIRST dot after the `mcp.` prefix: the server id is
+      // constrained to [A-Za-z0-9_-] (no dots) by the config UI, so everything
+      // after it is the tool name — which MAY itself contain dots.
+      const rest = inv.name.slice('mcp.'.length);
+      const dot = rest.indexOf('.');
+      if (dot < 0) return { output: `bad mcp tool name ${inv.name}`, is_error: true };
+      return this.host.call(rest.slice(0, dot), rest.slice(dot + 1), inv.input);
     }
     if (inv.name === 'fs.read_file') return fsTool.read_file(inv.input as { path: string });
     if (inv.name === 'fs.list_dir') return fsTool.list_dir(inv.input as { path: string });
