@@ -704,6 +704,12 @@
   "scheduledTasks.form.mcpServersHint": {
     "message": "Selected MCP servers may be loaded and used during scheduled background runs. Unselected MCP servers will not load in unattended mode."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Max turns"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Maximum agent turns allowed per run (1–50). Too low a limit force-stops multi-step tasks (e.g. skills that run several Bash/doc-lookup steps) before they finish, leaving no final result. Default 30."
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Confirm unattended authorization"
   },
