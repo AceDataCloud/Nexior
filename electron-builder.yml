@@ -70,11 +70,16 @@ mac:
     NSMicrophoneUsageDescription: AceData uses the microphone only for voice tools you start.
     NSCameraUsageDescription: AceData uses the camera only for vision tools you start.
     NSAppleEventsUsageDescription: AceData controls other apps only when you run an automation tool.
-  # Object form requires APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID
-  # ALL present in env at sign time (CI asserts this), else electron-builder
-  # signs but SILENTLY skips notarization → Gatekeeper blocks user machines.
-  notarize:
-    teamId: ${env.APPLE_TEAM_ID}
+  # electron-builder 26.x requires `notarize` to be a boolean. Credentials come
+  # from env at sign time (any ONE of these sets):
+  #   1) APPLE_API_KEY + APPLE_API_KEY_ID + APPLE_API_ISSUER   (App Store Connect API key — CI's choice)
+  #   2) APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID
+  #   3) APPLE_KEYCHAIN + APPLE_KEYCHAIN_PROFILE
+  # If none are set electron-builder signs but SILENTLY skips notarization →
+  # Gatekeeper blocks user machines, so CI must provide them (see
+  # .github/workflows/desktop.yml). The unsigned path overrides this to `false`
+  # via `--config.mac.notarize=false`.
+  notarize: true
 
 publish:
   provider: generic
