@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate the brand app icons for desktop (build/icon.png / icon.ico / icon.icns).
 
-Source of truth: src/assets/images/logo.png (horizontal "A + ceData" logo with
-a fully transparent background). We crop out just the "A" glyph, upscale it,
-and centre it in a 1024x1024 transparent canvas — no white square underneath.
+Source of truth: ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png
+(the full 1024² AceData brand icon used by iOS).
+
+- macOS .icns: padded squircle with white badge background.
+- Windows .ico: transparent background (icon only, no badge).
+- build/icon.png: intermediate used by .ico generation (transparent).
 
 Cross-platform: pure Python + Pillow. Run from anywhere:
     python3 scripts/gen-brand-icons.py
@@ -18,35 +21,31 @@ import os
 import subprocess
 import sys
 
-from PIL import Image
+from PIL import Image, ImageDraw
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOGO_SRC = os.path.join(ROOT, "src", "assets", "images", "logo.png")
+IOS_ICON_SRC = os.path.join(
+    ROOT, "ios", "App", "App", "Assets.xcassets",
+    "AppIcon.appiconset", "AppIcon-512@2x.png",
+)
 BUILD_DIR = os.path.join(ROOT, "build")
 
-# Empirically-determined bbox of the "A" glyph within the horizontal logo.
-# The gap between "A" and "ceData" starts at x=128 (fully-transparent column
-# runs 128..133), so we crop x=0..128 and then tighten to opaque bbox.
-A_CROP = (0, 0, 128, 143)
-
-# Content size in the 1024×1024 icon canvas. Leaving ~10% padding on all sides
-# matches modern desktop-icon convention (Windows 11 / macOS Big Sur+).
 CANVAS = 1024
-CONTENT_MAX = 820
+CONTENT = 824  # ~10% margin on each side
+RADIUS = 185
 
 
 def build_icon_png() -> str:
-    logo = Image.open(LOGO_SRC).convert("RGBA")
-    a_region = logo.crop(A_CROP)
-    tight = a_region.crop(a_region.getbbox())
-    tw, th = tight.size
-
-    ratio = min(CONTENT_MAX / tw, CONTENT_MAX / th)
-    nw, nh = int(round(tw * ratio)), int(round(th * ratio))
-    resized = tight.resize((nw, nh), Image.LANCZOS)
+    """Build transparent icon.png for Windows .ico (no badge, transparent bg)."""
+    src = Image.open(IOS_ICON_SRC).convert("RGBA").resize((CONTENT, CONTENT), Image.LANCZOS)
+    # Apply rounded-corner mask so the icon shape matches macOS squircle style
+    mask = Image.new("L", (CONTENT, CONTENT), 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, CONTENT, CONTENT], radius=RADIUS, fill=255)
+    src.putalpha(mask)
 
     canvas = Image.new("RGBA", (CANVAS, CANVAS), (0, 0, 0, 0))
-    canvas.paste(resized, ((CANVAS - nw) // 2, (CANVAS - nh) // 2), resized)
+    offset = (CANVAS - CONTENT) // 2
+    canvas.paste(src, (offset, offset), src)
 
     out = os.path.join(BUILD_DIR, "icon.png")
     canvas.save(out, format="PNG")
@@ -55,20 +54,15 @@ def build_icon_png() -> str:
 
 
 def build_icns(icon_png_path: str) -> None:
-    """Pillow ICNS write. macOS Dock icons need a white rounded-rect badge
-    behind the glyph (Big Sur+ convention). Windows .ico stays transparent
-    (built separately from the raw build/icon.png by gen-windows-icon.py)."""
-    from PIL import ImageDraw
-
+    """macOS .icns with white badge behind the brand icon (Big Sur+ convention)."""
     try:
         img = Image.open(icon_png_path).convert("RGBA")
-        # White rounded squircle badge sized to the content area
         badge = Image.new("RGBA", (CANVAS, CANVAS), (0, 0, 0, 0))
         draw = ImageDraw.Draw(badge)
-        margin = (CANVAS - CONTENT_MAX) // 2
+        margin = (CANVAS - CONTENT) // 2
         draw.rounded_rectangle(
             [margin, margin, CANVAS - margin, CANVAS - margin],
-            radius=185,
+            radius=RADIUS,
             fill=(255, 255, 255, 255),
         )
         badge.alpha_composite(img)
@@ -86,8 +80,8 @@ def build_ico() -> None:
 
 
 def main() -> None:
-    if not os.path.isfile(LOGO_SRC):
-        raise SystemExit(f"missing brand source: {LOGO_SRC}")
+    if not os.path.isfile(IOS_ICON_SRC):
+        raise SystemExit(f"missing brand source: {IOS_ICON_SRC}")
     os.makedirs(BUILD_DIR, exist_ok=True)
     icon_png = build_icon_png()
     build_icns(icon_png)
