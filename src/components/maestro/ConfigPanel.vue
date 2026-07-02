@@ -104,6 +104,22 @@
           />
         </el-select>
       </div>
+
+      <!-- Scenario (video type) -->
+      <div class="field-row">
+        <div class="field-head">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.scenario') }}</h2>
+          <info-icon :content="$t('maestro.description.scenario')" class="ml-1" />
+        </div>
+        <el-select v-model="scenario" class="field-control">
+          <el-option
+            v-for="s in MAESTRO_ALLOWED_SCENARIOS"
+            :key="s"
+            :label="$t(`maestro.option.scenario.${s}`)"
+            :value="s"
+          />
+        </el-select>
+      </div>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
@@ -135,7 +151,9 @@ import {
   MAESTRO_DEFAULT_ASPECT,
   MAESTRO_DEFAULT_DURATION,
   MAESTRO_ALLOWED_QUALITIES,
-  MAESTRO_DEFAULT_QUALITY
+  MAESTRO_DEFAULT_QUALITY,
+  MAESTRO_ALLOWED_SCENARIOS,
+  MAESTRO_DEFAULT_SCENARIO
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 
@@ -166,7 +184,8 @@ export default defineComponent({
       MAESTRO_ALLOWED_LANGS,
       MAESTRO_MIN_DURATION,
       MAESTRO_MAX_DURATION,
-      MAESTRO_ALLOWED_QUALITIES
+      MAESTRO_ALLOWED_QUALITIES,
+      MAESTRO_ALLOWED_SCENARIOS
     };
   },
   computed: {
@@ -238,6 +257,14 @@ export default defineComponent({
       set(val: string) {
         this.update({ quality: val });
       }
+    },
+    scenario: {
+      get(): string | undefined {
+        return this.config?.scenario;
+      },
+      set(val: string) {
+        this.update({ scenario: val });
+      }
     }
   },
   mounted() {
@@ -246,7 +273,8 @@ export default defineComponent({
       langs: this.config?.langs?.length ? this.config.langs : MAESTRO_DEFAULT_LANGS,
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
       duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
-      quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY
+      quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY,
+      scenario: this.config?.scenario ?? MAESTRO_DEFAULT_SCENARIO
     });
   },
   methods: {
