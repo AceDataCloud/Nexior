@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 11:54:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 12:52:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.312.4
+
+Thu, 02 Jul 2026 12:52:17 GMT
+
+### Patches
+
+- fix(desktop): restore iOS brand icon as source (revert logo.png crop) (dev@acedata.cloud)
 
 ## 3.312.3
 
