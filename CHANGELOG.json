@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Thu, 02 Jul 2026 00:53:25 GMT",
+      "version": "3.306.1",
+      "tag": "@acedatacloud/nexior_v3.306.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "a6c18acedced90eac3726a4b332a4ec8adafb005",
+            "comment": "chat: forward tool_progress `progress` in the SSE operator whitelist so streamed tool-call arguments render on the running block (were silently dropped, leaving the block empty during long tool calls)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Jul 2026 00:50:59 GMT",
       "version": "3.306.0",
       "tag": "@acedatacloud/nexior_v3.306.0",

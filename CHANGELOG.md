@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 00:50:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 00:53:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.306.1
+
+Thu, 02 Jul 2026 00:53:25 GMT
+
+### Patches
+
+- chat: forward tool_progress `progress` in the SSE operator whitelist so streamed tool-call arguments render on the running block (were silently dropped, leaving the block empty during long tool calls) (dev@acedata.cloud)
 
 ## 3.306.0
 
