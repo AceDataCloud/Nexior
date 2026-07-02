@@ -243,22 +243,12 @@ export default defineComponent({
   top: calc(0.5rem + var(--app-safe-area-top));
 }
 
-// Desktop: the pill sits inside the frameless title bar area. Push it below
-// the 32px drag-bar + 40px titleBarOverlay so it doesn't overlap the drag
-// region visually. On Windows shift left of the native min/max/close buttons
-// (~138px wide, top-right). On macOS traffic-lights are top-left, so pull the
-// pill a little further from the right edge for breathing room. Ancestor
-// selectors compile cleanly under Vue <style scoped>: only the last simple
-// selector receives the [data-v-*] attribute, and `.status-floating` is in
-// this component.
+// Desktop: push the pill below the 40px titleBarOverlay so it doesn't overlap
+// the window drag region visually. Keep the right offset at the base value
+// (`right-2` = 0.5rem) — the min/max/close buttons occupy top 0..40px, so a
+// pill starting at top: 44px sits *below* them, not next to them.
 html.surface-desktop .status-floating {
   top: 44px;
-}
-html.surface-desktop.is-win .status-floating {
-  right: 148px;
-}
-html.surface-desktop.is-mac .status-floating {
-  right: 12px;
 }
 
 @media (max-width: 767px) {
