@@ -199,6 +199,17 @@ jobs:
             EXTRA+=(--config.mac.notarize=false)
           fi
 
+          # Rebuild @nut-tree-fork's native libnut prebuild against this
+          # runner's Electron ABI. Without this, `require('@nut-tree-fork/nut-js')`
+          # throws inside the packaged app and Computer Use silently falls back
+          # to INPUT_BACKEND_HINT. `-o` (--only) is a STRICT filter — unrelated
+          # native deps (bufferutil, utf-8-validate, …) keep their own prebuilds.
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            npx electron-rebuild -f -o @nut-tree-fork/libnut-win32
+          else
+            npx electron-rebuild -f -o @nut-tree-fork/libnut-darwin
+          fi
+
           npm run build:electron
           npm run compile:electron
           node scripts/copy-renderer.js

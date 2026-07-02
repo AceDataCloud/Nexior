@@ -63,9 +63,11 @@ function loadNut(): NutModule | null {
 }
 
 const INPUT_BACKEND_HINT =
-  'input backend unavailable: install the optional dependency ' +
-  '`@nut-tree-fork/nut-js` and run `electron-rebuild` to enable mouse/keyboard ' +
-  'control (see plans/desktop-computer-use). Screenshot still works without it.';
+  'input backend unavailable: the @nut-tree-fork/nut-js native module could ' +
+  'not be loaded. This usually means the packaged app is missing an ' +
+  '`electron-rebuild` step for the current Electron ABI, or the platform ' +
+  'prebuild is absent. Screenshot still works without it — reinstall the ' +
+  'AceData desktop client or file a bug (see plans/nexior-desktop/DESKTOP-POLISH-WINDOWS.md).';
 
 function err(message: string): ToolResult {
   return { output: message, is_error: true };
