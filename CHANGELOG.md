@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 02:10:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 04:23:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.1
+
+Thu, 02 Jul 2026 04:23:44 GMT
+
+### Patches
+
+- fix(desktop): use boolean form for mac.notarize (electron-builder 26.x) (dev@acedata.cloud)
 
 ## 3.310.0
 
