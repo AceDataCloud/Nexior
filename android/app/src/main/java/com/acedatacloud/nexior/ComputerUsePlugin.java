@@ -1,5 +1,6 @@
 package com.acedatacloud.nexior;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
 import com.getcapacitor.JSObject;
@@ -108,6 +110,46 @@ public class ComputerUsePlugin extends Plugin {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(intent);
         call.resolve();
+    }
+
+    /**
+     * Native 3-tier on-demand consent, mirroring the desktop native confirm
+     * (Allow once / Always allow / Deny). Android AlertDialog supports exactly
+     * three buttons (positive/neutral/negative). Back button / tap-outside =
+     * deny (fail-closed), matching desktop's cancelId. Labels are passed from
+     * JS so i18n stays in one place. Resolves { choice: once|always|deny }.
+     */
+    @PluginMethod
+    public void confirmConsent(PluginCall call) {
+        final String title = call.getString("title", "Allow action?");
+        final String message = call.getString("message", "");
+        final String onceLabel = call.getString("onceLabel", "Allow once");
+        final String alwaysLabel = call.getString("alwaysLabel", "Always allow");
+        final String denyLabel = call.getString("denyLabel", "Deny");
+        final Activity activity = getActivity();
+        if (activity == null) {
+            call.reject("no activity to host consent dialog");
+            return;
+        }
+        final boolean[] done = { false };
+        activity.runOnUiThread(() ->
+                new AlertDialog.Builder(activity)
+                        .setTitle(title)
+                        .setMessage(message)
+                        .setCancelable(true)
+                        .setPositiveButton(onceLabel, (d, w) -> resolveChoice(call, done, "once"))
+                        .setNeutralButton(alwaysLabel, (d, w) -> resolveChoice(call, done, "always"))
+                        .setNegativeButton(denyLabel, (d, w) -> resolveChoice(call, done, "deny"))
+                        .setOnCancelListener(d -> resolveChoice(call, done, "deny"))
+                        .show());
+    }
+
+    private void resolveChoice(PluginCall call, boolean[] done, String choice) {
+        if (done[0]) return;
+        done[0] = true;
+        JSObject ret = new JSObject();
+        ret.put("choice", choice);
+        call.resolve(ret);
     }
 
     private ComputerUseAccessibilityService requireService(PluginCall call) {
