@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 06:52:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 06:52:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.312.2
+
+Thu, 02 Jul 2026 06:52:55 GMT
+
+### Patches
+
+- fix(android): native 3-tier on-demand Computer Use consent (Allow once / Always allow / Deny), matching desktop (dev@acedata.cloud)
 
 ## 3.312.1
 
