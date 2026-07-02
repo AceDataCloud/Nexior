@@ -1,8 +1,18 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 05:11:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 05:12:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.4
+
+Thu, 02 Jul 2026 05:12:06 GMT
+
+### Patches
+
+- feat(desktop): draggable top chrome + reposition credits pill below title bar (dev@acedata.cloud)
+- feat(desktop): transparent Windows icon + Computer Use native module runtime (electron-rebuild + asarUnpack) (dev@acedata.cloud)
+- feat(desktop): NSIS installer branding (header/sidebar/license/icon) + auto-append AceData to install dir (dev@acedata.cloud)
 
 ## 3.310.3
 
