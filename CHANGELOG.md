@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 01:55:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 01:57:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.309.1
+
+Thu, 02 Jul 2026 01:57:52 GMT
+
+### Patches
+
+- mention GitHub Copilot in the coding bridge history drawer intro (dev@acedata.cloud)
 
 ## 3.309.0
 
