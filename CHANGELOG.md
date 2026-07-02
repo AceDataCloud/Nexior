@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 05:13:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 06:10:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.6
+
+Thu, 02 Jul 2026 06:10:08 GMT
+
+### Patches
+
+- fix(desktop): actually-transparent taskbar/dock icon (extract A from logo.png) + keep credits pill at right edge (only shift down, not left) (dev@acedata.cloud)
 
 ## 3.310.5
 
