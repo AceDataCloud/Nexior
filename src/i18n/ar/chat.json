@@ -712,6 +712,14 @@
     "message": "يمكن تحميل وتنفيذ خوادم MCP المختارة في خلفية المهام المجدولة؛ لن يتم تحميل خوادم MCP غير المختارة في وضع بدون تدخل بشري.",
     "description": "شرح تفويض خادم MCP."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "الحد الأقصى للجولات",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "الحد الأقصى لجولات الوكيل المسموح بها لكل تشغيل (1–50). الحد المنخفض جدًا يوقف المهام متعددة الخطوات (مثل المهارات التي تنفّذ عدة خطوات Bash/بحث في المستندات) قبل اكتمالها، دون نتيجة نهائية. الافتراضي 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "تأكيد التفويض بدون تدخل بشري",
     "description": "عنوان تأكيد التفويض"

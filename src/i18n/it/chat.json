@@ -712,6 +712,14 @@
     "message": "I server MCP selezionati possono essere caricati ed eseguiti in background per l'attività pianificata; i server MCP non selezionati non verranno caricati in modalità senza supervisione.",
     "description": "Spiegazione sull'autorizzazione dei server MCP."
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Turni massimi",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Numero massimo di turni dell'agente per esecuzione (1–50). Un limite troppo basso interrompe le attività in più passaggi (es. skill che eseguono più passaggi Bash/ricerca documenti) prima del completamento, senza risultato finale. Predefinito 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Conferma autorizzazione senza supervisione",
     "description": "Titolo di conferma autorizzazione"

@@ -712,6 +712,14 @@
     "message": "Вибрані сервери MCP можуть бути завантажені та виконані в фоновому режимі завдання; невибрані сервери MCP не будуть завантажені в безлюдному режимі.",
     "description": "Пояснення авторизації серверів MCP"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "Максимум ходів",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "Максимальна кількість ходів агента за запуск (1–50). Надто низький ліміт примусово зупиняє багатокрокові завдання (наприклад, навички, що виконують кілька кроків Bash/пошуку в документах) до завершення, без кінцевого результату. За замовчуванням 30.",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Підтвердження авторизації без нагляду",
     "description": "Заголовок підтвердження авторизації"

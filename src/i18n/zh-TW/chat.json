@@ -712,6 +712,14 @@
     "message": "選中的 MCP Servers 可在定時任務後台加載並執行；未選中的 MCP Servers 不會在無人值守模式下加載。",
     "description": "授權 MCP server 說明"
   },
+  "scheduledTasks.form.maxTurns": {
+    "message": "最大輪次",
+    "description": "Scheduled task per-run agent turn cap"
+  },
+  "scheduledTasks.form.maxTurnsHint": {
+    "message": "任務單次執行允許的最大對話輪次（1–50）。上限太低會讓多步驟任務（如需多次執行 Bash、查文件的技能）在完成前被強制停止、沒有最終結果。預設 30。",
+    "description": "Scheduled task per-run agent turn cap"
+  },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "確認無人值守授權",
     "description": "授權確認標題"
