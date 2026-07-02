@@ -134,21 +134,14 @@ export default defineComponent({
     const authenticated = !!this.$store.state.token.access && !!this.$store.state.user?.id;
     console.debug('App mounted, authenticated:', authenticated);
     if (!authenticated) {
-      if (isNative() || isDesktop()) {
-        // On native AND desktop, just reset state and show the in-app login
-        // popup. Don't dispatch 'logout' which would navigate the window to an
-        // external auth URL — on desktop the app://bundle window can't return.
-        this.$store.dispatch('resetAll');
-        this.$store.dispatch('login');
-      } else {
-        // Web: deferred auth. Guests may browse service pages, models and
-        // pricing without logging in — the login flow is triggered lazily the
-        // moment they start a real operation (see `ensureLoggedIn`). So we
-        // only clear any stale (logged-out) state here and DON'T bounce to
-        // login. `resetAll` also drops any leftover credential so a guest can
-        // never reuse a previous session's token.
-        this.$store.dispatch('resetAll');
-      }
+      // Deferred auth on ALL surfaces (web, native, desktop). Guests may browse
+      // service pages, models and pricing without logging in — login is
+      // triggered lazily the moment they start a real operation (see
+      // `ensureLoggedIn`, which shows the in-app popup on native/desktop and a
+      // redirect on web). So we only clear any stale (logged-out) state here
+      // and DON'T bounce to login. `resetAll` also drops any leftover
+      // credential so a guest can never reuse a previous session's token.
+      this.$store.dispatch('resetAll');
     }
   },
   beforeUnmount() {
