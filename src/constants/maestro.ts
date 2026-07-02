@@ -14,6 +14,19 @@ export const MAESTRO_MIN_DURATION = 1;
 export const MAESTRO_MAX_DURATION = 600;
 // Production tier (effort/price): draft = fast preview, standard = balanced, premium = richer.
 export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
+// Video type: auto lets the director pick; the rest pin a production style.
+export const MAESTRO_ALLOWED_SCENARIOS = [
+  'auto',
+  'drama',
+  'general',
+  'explainer',
+  'product',
+  'website',
+  'slides',
+  'motion',
+  'changelog',
+  'captions'
+];
 
 // Accepted reference media for file_urls (images / video / audio).
 export const MAESTRO_FILE_ACCEPT = '.png,.jpg,.jpeg,.gif,.bmp,.webp,.mp4,.mov,.webm,.mp3,.wav,.m4a';
@@ -24,3 +37,4 @@ export const MAESTRO_DEFAULT_LANGS = ['zh-cn'];
 export const MAESTRO_DEFAULT_ASPECT = '9:16';
 export const MAESTRO_DEFAULT_DURATION = 30;
 export const MAESTRO_DEFAULT_QUALITY = 'standard';
+export const MAESTRO_DEFAULT_SCENARIO = 'auto';
