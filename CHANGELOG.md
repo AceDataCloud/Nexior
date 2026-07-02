@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 06:10:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 06:49:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.7
+
+Thu, 02 Jul 2026 06:49:29 GMT
+
+### Patches
+
+- fix(auth): defer login to operation on native + desktop startup (dev@acedata.cloud)
 
 ## 3.310.6
 
