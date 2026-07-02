@@ -14,7 +14,7 @@ import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
 import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
-import { getSurface, isNative, isDesktop } from '@/utils/surface';
+import { getSurface, isNative, isDesktop, isMacOS, isWindows } from '@/utils/surface';
 import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
@@ -70,6 +70,13 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   document.documentElement.classList.add(`surface-${surface}`);
   if (isNative()) {
     document.documentElement.classList.add('surface-native');
+  }
+  // Desktop OS marker for CSS. Traffic-light vs Windows-controls layout differs
+  // enough (left-side inset vs right-side overlay) that per-OS rules are simpler
+  // than a runtime CSS var. Safe: isMacOS/isWindows return false off-desktop.
+  if (isDesktop()) {
+    if (isMacOS()) document.documentElement.classList.add('is-mac');
+    if (isWindows()) document.documentElement.classList.add('is-win');
   }
   // Drop the iOS zoom-lock on web/Android (WCAG 1.4.4); native shells keep it.
   if (!Capacitor.isNativePlatform()) {

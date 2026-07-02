@@ -139,6 +139,8 @@ export default defineComponent({
   font-size: 13px;
   line-height: 1;
   cursor: pointer;
+  // Ensure clicks work when this pill sits inside the desktop drag region.
+  -webkit-app-region: no-drag;
   transition:
     border-color 0.18s ease,
     box-shadow 0.18s ease,
