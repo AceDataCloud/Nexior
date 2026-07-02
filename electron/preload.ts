@@ -68,6 +68,13 @@ contextBridge.exposeInMainWorld('localExec', {
   getConfig: (): Promise<{ roots: string[]; mcp: object[]; computerUse?: boolean }> => ipcRenderer.invoke('local.config.get'),
   saveConfig: (cfg: { roots: string[]; mcp: object[]; computerUse?: boolean }): Promise<boolean> =>
     ipcRenderer.invoke('local.config.save', cfg),
+  // Per-server MCP connection status + targeted reconnect, for Settings.
+  mcp: {
+    status: (): Promise<{ id: string; status: string; toolCount: number; tools: string[]; error?: string }[]> =>
+      ipcRenderer.invoke('local.mcp.status'),
+    reconnect: (id: string): Promise<{ id: string; status: string; toolCount: number; tools: string[]; error?: string } | null> =>
+      ipcRenderer.invoke('local.mcp.reconnect', id)
+  },
   pickFolder: (): Promise<string | null> => ipcRenderer.invoke('local.pickFolder'),
   // macOS system-permission status + jump-to-pane, shown in the LocalTools panel.
   perm: {
