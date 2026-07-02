@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 06:50:23 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 06:51:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.312.0
+
+Thu, 02 Jul 2026 06:51:08 GMT
+
+### Minor changes
+
+- Desktop MCP: per-server connection status (connected/failed-with-reason/disabled) + enable toggle + Test/Reconnect in Settings, and a cross-platform spawn fix (rebuild PATH from the login shell on macOS/Linux, shell:true on Windows) so GUI-launched apps can actually find npx/node/uvx. (dev@acedata.cloud)
 
 ## 3.311.0
 
