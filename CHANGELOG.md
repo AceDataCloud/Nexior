@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 01:53:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 01:55:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.309.0
+
+Thu, 02 Jul 2026 01:55:14 GMT
+
+### Minor changes
+
+- Android Computer Use: Settings accessibility permission entry (pre-authorize) + on-demand consent dialog (replaces window.confirm) (dev@acedata.cloud)
 
 ## 3.308.0
 
