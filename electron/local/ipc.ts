@@ -90,6 +90,25 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
     );
     return configSaveChain;
   });
+
+  // Per-server MCP connection status, so Settings can show connected / failed
+  // (with reason) / disabled per server instead of a silent merged tool list.
+  ipcMain.handle('local.mcp.status', (e) => {
+    gate(e);
+    return registry.mcpStatus();
+  });
+
+  // "Test / Reconnect" one MCP server: re-spawn it from the persisted config
+  // and return its fresh status. Chained behind saves so it can't race one; the
+  // chain is kept always-resolving so a failed reconnect can't poison later saves.
+  ipcMain.handle('local.mcp.reconnect', (e, id: string) => {
+    gate(e);
+    const run = (): Promise<unknown> => registry.reconnect(id, load().mcp);
+    const p = configSaveChain.then(run, run);
+    configSaveChain = p.then(() => true, () => true);
+    return p.then(() => registry.mcpStatus().find((s) => s.id === id) ?? null);
+  });
+
   ipcMain.handle('local.pickFolder', async (e) => {
     gate(e);
     const win = getWin();

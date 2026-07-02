@@ -30,6 +30,19 @@ export interface McpServerConf {
   args: string[];
   cwd?: string;
   env?: Record<string, string>;
+  // Opt-out toggle (default true = enabled). Disabled servers are not spawned
+  // and their tools are hidden from the AI.
+  enabled?: boolean;
+}
+
+// Live connection status of one configured MCP server, surfaced in Settings so
+// the user can tell whether a server actually connected (and why not).
+export interface McpServerStatus {
+  id: string;
+  status: 'connected' | 'failed' | 'disabled';
+  toolCount: number;
+  tools: string[];
+  error?: string;
 }
 
 export interface LocalConfig {

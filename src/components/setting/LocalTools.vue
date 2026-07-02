@@ -65,6 +65,29 @@
         <ul v-if="mcpServers.length" class="rows">
           <li v-for="(m, i) in mcpServers" :key="m._uid" class="row mcp-row">
             <div class="mcp-fields">
+              <div class="mcp-head">
+                <el-tag size="small" effect="plain" :type="mcpBadgeType(m.id)">{{ mcpBadgeText(m.id) }}</el-tag>
+                <span class="mcp-spacer" />
+                <el-switch
+                  v-model="m.enabled"
+                  size="small"
+                  :active-text="$t('common.settings.localToolsMcpEnabled')"
+                  inline-prompt
+                  @change="onToggleMcpEnabled(m)"
+                />
+                <el-button
+                  size="small"
+                  text
+                  :loading="mcpBusy === m.id"
+                  :disabled="!m.id || !m.command"
+                  @click="reconnectMcp(m)"
+                >
+                  {{ $t('common.settings.localToolsMcpReconnect') }}
+                </el-button>
+                <el-button size="small" text type="danger" @click="removeMcp(i)">
+                  {{ $t('common.settings.localToolsRemove') }}
+                </el-button>
+              </div>
               <el-input v-model="m.id" size="small" :placeholder="$t('common.settings.localToolsMcpNamePlaceholder')">
                 <template #prepend>{{ $t('common.settings.localToolsMcpName') }}</template>
               </el-input>
@@ -89,13 +112,12 @@
                 :rows="2"
                 :placeholder="$t('common.settings.localToolsMcpEnvHint')"
               />
+              <p v-if="mcpErrorFor(m.id)" class="mcp-row-error">{{ mcpErrorFor(m.id) }}</p>
             </div>
-            <el-button size="small" text type="danger" @click="removeMcp(i)">
-              {{ $t('common.settings.localToolsRemove') }}
-            </el-button>
           </li>
         </ul>
         <p v-else class="muted">{{ $t('common.settings.localToolsMcpNoServers') }}</p>
+        <p class="muted mcp-platform-hint">{{ $t('common.settings.localToolsMcpPlatformHint') }}</p>
         <div class="actions">
           <el-button size="small" type="primary" :loading="savingMcp" @click="saveMcp">
             {{ $t('common.settings.localToolsSave') }}
@@ -239,7 +261,7 @@ import { defineComponent } from 'vue';
 import { ElButton, ElTag, ElSwitch, ElInput } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { localExec } from '@/utils/desktop';
+import { localExec, type IMcpServerStatus } from '@/utils/desktop';
 import { isAndroid } from '@/utils/surface';
 
 interface GrantRow {
@@ -257,6 +279,7 @@ interface McpDraft {
   command: string;
   argsText: string;
   envText: string;
+  enabled: boolean;
 }
 
 export default defineComponent({
@@ -270,6 +293,9 @@ export default defineComponent({
       // Editable MCP server drafts (loaded from config, parsed back on save).
       mcpServers: [] as McpDraft[],
       mcpUid: 0,
+      // Live per-server connection status (id -> status), refreshed after save.
+      mcpStatuses: [] as IMcpServerStatus[],
+      mcpBusy: null as null | string,
       savingMcp: false,
       mcpSavedTip: false,
       mcpError: '',
@@ -316,8 +342,10 @@ export default defineComponent({
       argsText: (m.args ?? []).join('\n'),
       envText: Object.entries(m.env ?? {})
         .map(([k, v]) => `${k}=${v}`)
-        .join('\n')
+        .join('\n'),
+      enabled: m.enabled !== false
     }));
+    this.mcpStatuses = (await ex.mcp?.status()) ?? [];
     this.tools = (await ex.listTools()).map((t) => t.name);
     this.computerTools = (await ex.computerTools?.()) ?? [];
     this.builtinTools = (await ex.builtinTools?.()) ?? [];
@@ -396,33 +424,58 @@ export default defineComponent({
       this.roots.splice(i, 1);
     },
     addMcp() {
-      this.mcpServers.push({ _uid: this.mcpUid++, id: '', command: '', argsText: '', envText: '' });
+      this.mcpServers.push({ _uid: this.mcpUid++, id: '', command: '', argsText: '', envText: '', enabled: true });
     },
     removeMcp(i: number) {
       this.mcpServers.splice(i, 1);
     },
-    // Validate + parse the drafts into `McpServerConf[]` and persist. The main
-    // process hot-reboots the MCP host, so the new tools appear without a
-    // restart. `id` is constrained to `[A-Za-z0-9_-]` because it becomes the
-    // `mcp.<id>.<tool>` route key (a dot would break the split at invoke time).
-    async saveMcp() {
+    // Look up the live status of a draft by its (trimmed) id.
+    mcpStatusFor(id: string): IMcpServerStatus | undefined {
+      const key = id.trim();
+      return this.mcpStatuses.find((s) => s.id === key);
+    },
+    mcpBadgeType(id: string): 'success' | 'danger' | 'info' {
+      const s = this.mcpStatusFor(id)?.status;
+      if (s === 'connected') return 'success';
+      if (s === 'failed') return 'danger';
+      return 'info'; // disabled / unknown (not yet saved)
+    },
+    mcpBadgeText(id: string): string {
+      const st = this.mcpStatusFor(id);
+      if (this.mcpBusy === id.trim()) return this.$t('common.settings.localToolsMcpConnecting');
+      if (!st) return this.$t('common.settings.localToolsMcpNotSaved');
+      if (st.status === 'connected') return this.$t('common.settings.localToolsMcpConnected', { n: st.toolCount });
+      if (st.status === 'disabled') return this.$t('common.settings.localToolsMcpDisabled');
+      return this.$t('common.settings.localToolsMcpFailed');
+    },
+    mcpErrorFor(id: string): string {
+      const st = this.mcpStatusFor(id);
+      return st?.status === 'failed' && st.error ? st.error : '';
+    },
+    // Build + validate the McpServerConf[] payload from the drafts. Sets
+    // `mcpError` and returns null on the first invalid row.
+    buildMcpPayload():
+      | { id: string; command: string; args: string[]; env?: Record<string, string>; enabled?: boolean }[]
+      | null {
       this.mcpError = '';
-      const mcp: { id: string; command: string; args: string[]; env?: Record<string, string> }[] = [];
+      const mcp: { id: string; command: string; args: string[]; env?: Record<string, string>; enabled?: boolean }[] =
+        [];
       const seen = new Set<string>();
       for (const m of this.mcpServers) {
         const id = m.id.trim();
         const command = m.command.trim();
         if (!id || !command) {
           this.mcpError = this.$t('common.settings.localToolsMcpNameRequired');
-          return;
+          return null;
         }
+        // `id` becomes the `mcp.<id>.<tool>` route key — a dot would break the split.
         if (!/^[A-Za-z0-9_-]+$/.test(id)) {
           this.mcpError = this.$t('common.settings.localToolsMcpNameInvalid');
-          return;
+          return null;
         }
         if (seen.has(id)) {
           this.mcpError = this.$t('common.settings.localToolsMcpDuplicateName');
-          return;
+          return null;
         }
         seen.add(id);
         const args = m.argsText
@@ -437,24 +490,64 @@ export default defineComponent({
           if (eq <= 0) continue;
           env[t.slice(0, eq).trim()] = t.slice(eq + 1).trim();
         }
-        const row: { id: string; command: string; args: string[]; env?: Record<string, string> } = {
+        const row: { id: string; command: string; args: string[]; env?: Record<string, string>; enabled?: boolean } = {
           id,
           command,
-          args
+          args,
+          enabled: m.enabled !== false
         };
         if (Object.keys(env).length) row.env = env;
         mcp.push(row);
       }
+      return mcp;
+    },
+    // Persist the MCP servers. The main process hot-reboots the MCP host, so the
+    // tools + per-server status update without a restart. Returns false when a
+    // row failed validation (nothing was saved) so callers can react.
+    async saveMcp(): Promise<boolean> {
+      const mcp = this.buildMcpPayload();
+      if (!mcp) return false;
       this.savingMcp = true;
       try {
         const cur = await localExec()?.getConfig();
         await localExec()?.saveConfig({ roots: cur?.roots ?? this.roots, mcp, computerUse: this.computerUse });
-        // Re-fetch the active tools so newly-connected MCP tools show up.
-        this.tools = (await localExec()?.listTools())?.map((t) => t.name) ?? this.tools;
+        await this.refreshMcpStatus();
         this.mcpSavedTip = true;
         setTimeout(() => (this.mcpSavedTip = false), 2000);
+        return true;
       } finally {
         this.savingMcp = false;
+      }
+    },
+    // Re-fetch per-server status + the merged active-tools line.
+    async refreshMcpStatus() {
+      const ex = localExec();
+      if (!ex) return;
+      this.mcpStatuses = (await ex.mcp?.status()) ?? [];
+      this.tools = (await ex.listTools())?.map((t) => t.name) ?? this.tools;
+    },
+    // Toggling enable/disable persists immediately (needs a save+reboot to take
+    // effect). If another row is invalid the save is blocked, so revert the
+    // optimistic switch flip to keep the UI in sync with what's persisted.
+    async onToggleMcpEnabled(m: McpDraft) {
+      const ok = await this.saveMcp();
+      if (!ok) m.enabled = !m.enabled;
+    },
+    // "Test / Reconnect" one server: save first (so its latest edits apply),
+    // then re-spawn just it and show the fresh status/error.
+    async reconnectMcp(m: McpDraft) {
+      const id = m.id.trim();
+      if (!id || !m.command.trim()) return;
+      const mcp = this.buildMcpPayload();
+      if (!mcp) return;
+      this.mcpBusy = id;
+      try {
+        const cur = await localExec()?.getConfig();
+        await localExec()?.saveConfig({ roots: cur?.roots ?? this.roots, mcp, computerUse: this.computerUse });
+        await localExec()?.mcp?.reconnect(id);
+        await this.refreshMcpStatus();
+      } finally {
+        this.mcpBusy = null;
       }
     },
     async open(k: 'fullDisk' | 'screen' | 'accessibility') {
@@ -631,6 +724,23 @@ export default defineComponent({
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+}
+.mcp-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mcp-spacer {
+  flex: 1;
+}
+.mcp-row-error {
+  margin: 0;
+  color: var(--el-color-danger, #f56c6c);
+  font-size: 12px;
+  word-break: break-word;
+}
+.mcp-platform-hint {
+  margin-top: 8px;
 }
 .mcp-label {
   font-size: 12px;

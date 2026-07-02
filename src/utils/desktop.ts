@@ -53,6 +53,14 @@ export interface LocalToolSpec {
   source: 'builtin' | 'mcp';
   mutates: boolean;
 }
+/** Live connection status of one configured local MCP server. */
+export interface IMcpServerStatus {
+  id: string;
+  status: 'connected' | 'failed' | 'disabled' | string;
+  toolCount: number;
+  tools: string[];
+  error?: string;
+}
 export interface LocalExecBridge {
   available: true;
   listTools(): Promise<LocalToolSpec[]>;
@@ -63,14 +71,33 @@ export interface LocalExecBridge {
   }): Promise<{ output: string; is_error?: boolean; image?: string }>;
   getConfig(): Promise<{
     roots: string[];
-    mcp: { id: string; command: string; args: string[]; cwd?: string; env?: Record<string, string> }[];
+    mcp: {
+      id: string;
+      command: string;
+      args: string[];
+      cwd?: string;
+      env?: Record<string, string>;
+      enabled?: boolean;
+    }[];
     computerUse?: boolean;
   }>;
   saveConfig(cfg: {
     roots: string[];
-    mcp: { id: string; command: string; args: string[]; cwd?: string; env?: Record<string, string> }[];
+    mcp: {
+      id: string;
+      command: string;
+      args: string[];
+      cwd?: string;
+      env?: Record<string, string>;
+      enabled?: boolean;
+    }[];
     computerUse?: boolean;
   }): Promise<boolean>;
+  /** Per-server MCP connection status + targeted reconnect (desktop only). */
+  mcp?: {
+    status(): Promise<IMcpServerStatus[]>;
+    reconnect(id: string): Promise<IMcpServerStatus | null>;
+  };
   pickFolder(): Promise<string | null>;
   /** macOS TCC permission status + jump-to-System-Settings (undefined off macOS desktop). */
   perm?: {

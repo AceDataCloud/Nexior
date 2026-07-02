@@ -2,7 +2,7 @@ import { McpHost } from './mcp';
 import * as fsTool from './fs';
 import { run_command } from './shell';
 import * as computer from './computer';
-import type { McpServerConf, ToolInvoke, ToolResult, ToolSpec } from './types';
+import type { McpServerConf, McpServerStatus, ToolInvoke, ToolResult, ToolSpec } from './types';
 
 const BUILTIN: ToolSpec[] = [
   { name: 'fs.read_file', description: 'Read a UTF-8 file inside an authorized root', input_schema: { type: 'object', properties: { path: { type: 'string' } }, required: ['path'] }, source: 'builtin', mutates: false },
@@ -35,6 +35,8 @@ class Registry {
   private host = new McpHost();
   private mcpSpecs: ToolSpec[] = [];
   private names = new Set([...BUILTIN, ...COMPUTER_TOOLS].map((s) => s.name));
+  // Per-server connection status (id -> status), surfaced in Settings.
+  private mcpStatuses = new Map<string, McpServerStatus>();
   // Opt-in Computer Use (screen capture + mouse/keyboard). Default OFF; toggled
   // from Settings → Local Tools. While off, the tools are neither advertised nor
   // invokable.
@@ -71,13 +73,20 @@ class Registry {
 
   async boot(servers: McpServerConf[]): Promise<void> {
     for (const s of servers) {
+      if (s.enabled === false) {
+        this.mcpStatuses.set(s.id, { id: s.id, status: 'disabled', toolCount: 0, tools: [] });
+        continue;
+      }
       try {
         await this.host.start(s);
         const tools = await this.host.listTools(s.id);
         this.mcpSpecs.push(...tools);
         tools.forEach((t) => this.names.add(t.name));
-      } catch {
-        /* server failed to start — skip; UI surfaces config errors separately */
+        this.mcpStatuses.set(s.id, { id: s.id, status: 'connected', toolCount: tools.length, tools: tools.map((t) => t.name) });
+      } catch (e) {
+        // Record the reason so Settings can show it instead of failing silently.
+        this.host.stop(s.id);
+        this.mcpStatuses.set(s.id, { id: s.id, status: 'failed', toolCount: 0, tools: [], error: e instanceof Error ? e.message : String(e) });
       }
     }
   }
@@ -90,7 +99,27 @@ class Registry {
     this.host.stopAll();
     this.mcpSpecs = [];
     this.names = new Set([...BUILTIN, ...COMPUTER_TOOLS].map((s) => s.name));
+    this.mcpStatuses.clear();
     await this.boot(servers);
+  }
+
+  // Current connection status of every configured MCP server.
+  mcpStatus(): McpServerStatus[] {
+    return [...this.mcpStatuses.values()];
+  }
+
+  // Re-spawn just ONE server ("Test / Reconnect" in Settings): kill its proc,
+  // drop its specs/names, then boot only it from the persisted list. Returns
+  // its fresh status. Other servers are left untouched.
+  async reconnect(id: string, servers: McpServerConf[]): Promise<McpServerStatus | undefined> {
+    this.host.stop(id);
+    const prefix = `mcp.${id}.`;
+    this.mcpSpecs = this.mcpSpecs.filter((s) => !s.name.startsWith(prefix));
+    this.names = new Set([...BUILTIN, ...COMPUTER_TOOLS].map((s) => s.name).concat(this.mcpSpecs.map((s) => s.name)));
+    this.mcpStatuses.delete(id);
+    const conf = servers.find((s) => s.id === id);
+    if (conf) await this.boot([conf]);
+    return this.mcpStatuses.get(id);
   }
 
   specs(): ToolSpec[] {

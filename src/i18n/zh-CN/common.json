@@ -1040,6 +1040,38 @@
     "message": "名称只能包含字母、数字、连字符和下划线。",
     "description": "服务器名称含非法字符时的校验错误。"
   },
+  "settings.localToolsMcpEnabled": {
+    "message": "启用",
+    "description": "启用/停用某个本地 MCP 服务器的开关标签。"
+  },
+  "settings.localToolsMcpReconnect": {
+    "message": "测试 / 重连",
+    "description": "重新启动某个 MCP 服务器并刷新其状态的按钮。"
+  },
+  "settings.localToolsMcpConnecting": {
+    "message": "连接中…",
+    "description": "MCP 服务器正在（重新）连接时的状态标签。"
+  },
+  "settings.localToolsMcpNotSaved": {
+    "message": "尚未保存",
+    "description": "尚未保存/连接的 MCP 服务器行的状态标签。"
+  },
+  "settings.localToolsMcpConnected": {
+    "message": "已连接 · {n} 个工具",
+    "description": "MCP 服务器连接成功时的标签；{n} 为工具数量。"
+  },
+  "settings.localToolsMcpDisabled": {
+    "message": "已停用",
+    "description": "MCP 服务器被关闭时的标签。"
+  },
+  "settings.localToolsMcpFailed": {
+    "message": "连接失败",
+    "description": "MCP 服务器启动失败时的标签；原因显示在下方。"
+  },
+  "settings.localToolsMcpPlatformHint": {
+    "message": "提示：使用 PATH 中的命令，如 npx 或 uvx（例如 npx -y @modelcontextprotocol/server-filesystem ~/Documents）。Windows 上 npx/node 会自动解析。若某服务器显示 “spawn … ENOENT”，请把命令改为完整路径。",
+    "description": "配置 MCP 启动命令的跨平台提示。"
+  },
   "settings.localToolsSaved": {
     "message": "已保存",
     "description": "保存本地工具文件夹后的短暂确认。"
