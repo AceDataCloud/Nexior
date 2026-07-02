@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 04:23:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 05:10:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.2
+
+Thu, 02 Jul 2026 05:10:37 GMT
+
+### Patches
+
+- feat(desktop): draggable top chrome + reposition credits pill below title bar (dev@acedata.cloud)
 
 ## 3.310.1
 
