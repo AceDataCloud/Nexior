@@ -619,7 +619,7 @@
   "scheduledTasks.form.mcpServersPlaceholder": { "message": "选择允许此任务自动加载的 MCP Servers", "description": "授权 MCP server 占位符" },
   "scheduledTasks.form.mcpServersHint": { "message": "选中的 MCP Servers 可在定时任务后台加载并执行；未选中的 MCP Servers 不会在无人值守模式下加载。", "description": "授权 MCP server 说明" },
   "scheduledTasks.form.maxTurns": { "message": "最大轮次", "description": "定时任务单次运行的最大 agent 轮次上限" },
-  "scheduledTasks.form.maxTurnsHint": { "message": "任务单次运行允许的最大对话轮次（1–50）。上限太低会让多步骤任务（如需多次执行 Bash、查文档的技能）在完成前被强制停止、没有最终结果。默认 30。", "description": "最大轮次说明" },
+  "scheduledTasks.form.maxTurnsHint": { "message": "任务单次运行允许的最大对话轮次（1–50）。上限太低会让多步骤任务（如需多次执行 Bash、查文档的技能）在完成前被强制停止、没有最终结果。默认 50。", "description": "最大轮次说明" },
   "scheduledTasks.form.skillsConfirmTitle": { "message": "确认无人值守授权", "description": "授权确认标题" },
   "scheduledTasks.form.skillsConfirm": {
     "message": "此任务将允许 {count} 个 Skill/MCP 在后台执行时跳过人工确认或加载限制：{skills}。它们可能会发送消息、发布内容或写入外部服务，请确认。",
