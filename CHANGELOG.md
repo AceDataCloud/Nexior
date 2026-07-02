@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 05:12:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 05:13:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.5
+
+Thu, 02 Jul 2026 05:13:01 GMT
+
+### Patches
+
+- feat(desktop): NSIS installer branding (header/sidebar/license/icon) + auto-append AceData to install dir (dev@acedata.cloud)
 
 ## 3.310.4
 
