@@ -286,7 +286,7 @@ const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shangh
 
 // Default agent turn budget for a scheduled task run. Mirrors the worker's
 // DEFAULT_SCHEDULED_MAX_TURNS; the worker clamps to [1, 50] regardless.
-const DEFAULT_SCHEDULED_MAX_TURNS = 30;
+const DEFAULT_SCHEDULED_MAX_TURNS = 50;
 
 interface TaskForm {
   question: string;
