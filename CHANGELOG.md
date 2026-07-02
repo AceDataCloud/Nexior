@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 01:57:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 02:10:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.310.0
+
+Thu, 02 Jul 2026 02:10:49 GMT
+
+### Minor changes
+
+- Desktop: add MCP server config UI in Settings → Local Tools (name/command/args/env) and hot-apply MCP changes without an app restart. (dev@acedata.cloud)
 
 ## 3.309.1
 
