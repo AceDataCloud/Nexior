@@ -156,8 +156,12 @@ function createWindow(): void {
     backgroundColor: '#0b0b0f', // avoid white flash before the SPA paints
     // Frameless: macOS keeps inset traffic lights; Win/Linux use Window Controls
     // Overlay so min/max/close stay native. The web header draws into the bar.
+    // titleBarOverlay height 40 (was 64): the app now renders a dedicated 32px
+    // drag bar via <DesktopDragBar>, so we no longer need to reserve the full
+    // 64px TopHeader height for chrome — 40px is just enough to display the
+    // native min/max/close buttons at their default size.
     titleBarStyle: isMac ? 'hiddenInset' : 'hidden',
-    ...(isMac ? { trafficLightPosition: { x: 16, y: 20 } } : { titleBarOverlay: { color: '#00000000', symbolColor: '#888888', height: 64 } }),
+    ...(isMac ? { trafficLightPosition: { x: 16, y: 20 } } : { titleBarOverlay: { color: '#00000000', symbolColor: '#888888', height: 40 } }),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
