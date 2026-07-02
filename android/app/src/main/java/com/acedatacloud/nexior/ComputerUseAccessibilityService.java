@@ -3,6 +3,9 @@ package com.acedatacloud.nexior;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.hardware.HardwareBuffer;
@@ -23,6 +26,7 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 
 /**
  * The accessibility service that actually performs Computer-Use actions on the
@@ -57,8 +61,19 @@ public class ComputerUseAccessibilityService extends AccessibilityService {
      */
     private static volatile boolean sessionStopped = false;
 
+    /** Center coords of the marks from the last {@link #observe} call, indexed
+     *  by mark number (1-based). Lets tapMark() hit a mark by its number without
+     *  the JS side round-tripping coordinates. Single active session, so a plain
+     *  volatile reference is enough. */
+    private static volatile int[][] lastMarks = new int[0][];
+
     public static void setSessionStopped(boolean stopped) {
         sessionStopped = stopped;
+        if (stopped) {
+            // Drop cached Set-of-Mark centers so a post-Stop tapMark can't reuse
+            // stale coordinates from before the kill switch.
+            lastMarks = new int[0][];
+        }
     }
 
     public static boolean isSessionStopped() {
@@ -427,5 +442,177 @@ public class ComputerUseAccessibilityService extends AccessibilityService {
             return;
         }
         click(cx, cy, cb);
+    }
+
+    // ---- Set-of-Mark visual grounding --------------------------------------
+
+    public interface ObserveCallback {
+        void onResult(@Nullable String base64Jpeg, @Nullable String marksJson, int width, int height, @Nullable String error);
+    }
+
+    /**
+     * "Set-of-Mark" observe: capture the screen AND overlay a numbered box on
+     * every actionable element (from the accessibility tree), returning the
+     * annotated JPEG plus a legend `[{n,label,x,y}]`. The model can then act by
+     * NUMBER (computer.tap_mark) instead of guessing pixels or labels — the
+     * grounding technique used by state-of-the-art GUI agents. Each mark's
+     * center is cached in {@link #lastMarks} so tapMark() needs only the index.
+     */
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    public void observe(@NonNull ObserveCallback cb) {
+        takeScreenshot(Display.DEFAULT_DISPLAY, getMainExecutor(), new TakeScreenshotCallback() {
+            @Override
+            public void onSuccess(@NonNull ScreenshotResult result) {
+                if (isSessionStopped()) {
+                    cb.onResult(null, null, 0, 0, "Computer Use was stopped by the user");
+                    return;
+                }
+                HardwareBuffer buffer = null;
+                Bitmap hw = null;
+                Bitmap mutable = null;
+                try {
+                    buffer = result.getHardwareBuffer();
+                    hw = Bitmap.wrapHardwareBuffer(buffer, result.getColorSpace());
+                    if (hw == null) {
+                        cb.onResult(null, null, 0, 0, "failed to wrap screenshot buffer");
+                        return;
+                    }
+                    mutable = hw.copy(Bitmap.Config.ARGB_8888, true);
+                    JSONArray marks = new JSONArray();
+                    ArrayList<int[]> centers = new ArrayList<>();
+                    centers.add(new int[] {0, 0}); // index 0 unused (marks are 1-based)
+                    drawMarks(mutable, marks, centers);
+                    lastMarks = centers.toArray(new int[0][]);
+
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    mutable.compress(Bitmap.CompressFormat.JPEG, 70, out);
+                    String b64 = Base64.encodeToString(out.toByteArray(), Base64.NO_WRAP);
+                    cb.onResult("data:image/jpeg;base64," + b64, marks.toString(),
+                            mutable.getWidth(), mutable.getHeight(), null);
+                } catch (Throwable e) {
+                    // Throwable (not just Exception) so an OutOfMemoryError from the
+                    // full-res bitmap copy/encode fails the call instead of killing
+                    // the service. Drop stale marks on failure.
+                    lastMarks = new int[0][];
+                    cb.onResult(null, null, 0, 0, "observe failed: " + e.getMessage());
+                } finally {
+                    if (mutable != null) mutable.recycle();
+                    if (hw != null) hw.recycle();
+                    if (buffer != null) buffer.close();
+                }
+            }
+
+            @Override
+            public void onFailure(int errorCode) {
+                cb.onResult(null, null, 0, 0, "takeScreenshot failed: code " + errorCode);
+            }
+        });
+    }
+
+    /** Walk the active window, draw a numbered box on each actionable node, and
+     *  fill {@code marks}/{@code centers}. Nodes recycled as we go. */
+    private void drawMarks(@NonNull Bitmap bitmap, @NonNull JSONArray marks, @NonNull ArrayList<int[]> centers) {
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        if (root == null) {
+            return;
+        }
+        Canvas canvas = new Canvas(bitmap);
+        Paint box = new Paint();
+        box.setColor(Color.rgb(255, 0, 90));
+        box.setStyle(Paint.Style.STROKE);
+        box.setStrokeWidth(4f);
+        box.setAntiAlias(true);
+        Paint tagBg = new Paint();
+        tagBg.setColor(Color.rgb(255, 0, 90));
+        tagBg.setStyle(Paint.Style.FILL);
+        Paint tagTxt = new Paint();
+        tagTxt.setColor(Color.WHITE);
+        tagTxt.setTextSize(34f);
+        tagTxt.setFakeBoldText(true);
+        tagTxt.setAntiAlias(true);
+
+        ArrayDeque<AccessibilityNodeInfo> stack = new ArrayDeque<>();
+        stack.push(root);
+        int n = 1;
+        try {
+            while (!stack.isEmpty() && n <= 40) {
+                AccessibilityNodeInfo node = stack.pop();
+                if (node == null) {
+                    continue;
+                }
+                try {
+                    for (int i = node.getChildCount() - 1; i >= 0; i--) {
+                        AccessibilityNodeInfo c = node.getChild(i);
+                        if (c != null) {
+                            stack.push(c);
+                        }
+                    }
+                    boolean actionable = node.isClickable() || node.isEditable()
+                            || node.isCheckable() || node.isLongClickable();
+                    if (!actionable || !node.isVisibleToUser()) {
+                        continue;
+                    }
+                    Rect r = new Rect();
+                    node.getBoundsInScreen(r);
+                    // Clip to the screenshot bounds so a mark's center is always
+                    // on-screen (and skip fully-offscreen nodes).
+                    if (!r.intersect(0, 0, bitmap.getWidth(), bitmap.getHeight())) {
+                        continue;
+                    }
+                    if (r.width() <= 0 || r.height() <= 0) {
+                        continue;
+                    }
+                    CharSequence t = node.getText();
+                    CharSequence d = node.getContentDescription();
+                    String label = t != null ? t.toString() : (d != null ? d.toString() : "");
+                    if (label.length() > 60) {
+                        label = label.substring(0, 60);
+                    }
+                    // Box + a numbered tag at the top-left corner.
+                    canvas.drawRect(r, box);
+                    String tag = String.valueOf(n);
+                    float tagW = tagTxt.measureText(tag) + 16f;
+                    float tagH = 44f;
+                    float left = r.left;
+                    float top = Math.max(0f, r.top);
+                    canvas.drawRect(left, top, left + tagW, top + tagH, tagBg);
+                    canvas.drawText(tag, left + 8f, top + 34f, tagTxt);
+
+                    JSONObject o = new JSONObject();
+                    o.put("n", n);
+                    o.put("label", label);
+                    o.put("x", r.centerX());
+                    o.put("y", r.centerY());
+                    marks.put(o);
+                    centers.add(new int[] {r.centerX(), r.centerY()});
+                    n++;
+                } catch (JSONException ignored) {
+                    // skip unserializable node
+                } finally {
+                    node.recycle();
+                }
+            }
+        } finally {
+            for (AccessibilityNodeInfo rem : stack) {
+                if (rem != null) {
+                    rem.recycle();
+                }
+            }
+        }
+    }
+
+    /** Tap the center of the numbered mark from the last observe(). */
+    public void tapMark(int mark, @NonNull ActionCallback cb) {
+        int[][] marks = lastMarks;
+        if (mark < 1 || mark >= marks.length) {
+            cb.onResult(false, "mark " + mark + " is out of range; call observe first");
+            return;
+        }
+        int[] c = marks[mark];
+        if (c == null) {
+            cb.onResult(false, "mark " + mark + " is unavailable; call observe again");
+            return;
+        }
+        click(c[0], c[1], cb);
     }
 }

@@ -125,6 +125,26 @@ const COMPUTER_TOOLS: LocalToolSpec[] = [
     },
     source: 'builtin',
     mutates: true
+  },
+  {
+    name: 'computer.observe',
+    description:
+      'BEST way to see and act: returns a screenshot with a numbered box drawn on every tappable element, plus a legend mapping each number to its label. Prefer this over computer.screenshot when you intend to tap something — then call computer.tap_mark with the number of the element you want. Removes all coordinate guessing.',
+    input_schema: { type: 'object', properties: {} },
+    source: 'builtin',
+    mutates: true
+  },
+  {
+    name: 'computer.tap_mark',
+    description:
+      'Tap the numbered element from the most recent computer.observe (Set-of-Mark). Pass the mark number shown on the annotated screenshot. This is the most reliable way to tap.',
+    input_schema: {
+      type: 'object',
+      properties: { mark: { type: 'integer' } },
+      required: ['mark']
+    },
+    source: 'builtin',
+    mutates: true
   }
 ];
 
@@ -339,6 +359,29 @@ async function invokeImpl(
       case 'computer.dump_ui': {
         const res = await ComputerUse.dumpUi();
         return { output: res.tree || '[]' };
+      }
+      case 'computer.observe': {
+        const res = await ComputerUse.observe();
+        // The legend goes in `output` (text the model reads), the annotated
+        // screenshot in `image` (uploaded to a URL by #1107 for the vision model).
+        let marks: unknown = [];
+        try {
+          marks = JSON.parse(res.marks || '[]');
+        } catch {
+          marks = [];
+        }
+        return {
+          output: JSON.stringify({ width: res.width, height: res.height, marks }),
+          image: res.image
+        };
+      }
+      case 'computer.tap_mark': {
+        const mark = Number(input.mark);
+        if (!Number.isInteger(mark) || mark < 1) {
+          return { output: 'tap_mark requires a positive integer mark from the last observe', is_error: true };
+        }
+        const r = await ComputerUse.tapMark({ mark });
+        return { output: r.note ?? 'ok' };
       }
       case 'computer.tap_text': {
         const text = String(input.text ?? '').trim();

@@ -36,6 +36,16 @@ export interface ComputerUseTreeResult {
   tree: string;
 }
 
+/** Set-of-Mark observe result: an annotated screenshot + numbered legend. */
+export interface ComputerUseObserveResult {
+  /** `data:image/jpeg;base64,…` with numbered boxes drawn on each element. */
+  image: string;
+  /** JSON-array string: `[{n, label, x, y}]`. */
+  marks: string;
+  width: number;
+  height: number;
+}
+
 export interface ComputerUsePlugin {
   status(): Promise<ComputerUseStatus>;
   /** Deep-link to Settings → Accessibility so the user can enable the service. */
@@ -50,6 +60,10 @@ export interface ComputerUsePlugin {
   dumpUi(): Promise<ComputerUseTreeResult>;
   /** Tap an element by its visible text / content-description (semantic tap). */
   tapText(options: { text: string }): Promise<ComputerUseActionResult>;
+  /** Set-of-Mark: annotated screenshot + numbered legend of actionable elements. */
+  observe(): Promise<ComputerUseObserveResult>;
+  /** Tap the numbered mark from the last observe(). */
+  tapMark(options: { mark: number }): Promise<ComputerUseActionResult>;
   /** Start/stop the foreground session that keeps the agent loop alive. */
   startSession(): Promise<void>;
   stopSession(): Promise<void>;

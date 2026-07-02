@@ -237,6 +237,40 @@ public class ComputerUsePlugin extends Plugin {
     }
 
     @PluginMethod
+    public void observe(PluginCall call) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            call.reject("observe requires Android 11+");
+            return;
+        }
+        ComputerUseAccessibilityService svc = requireService(call);
+        if (svc == null) return;
+        svc.observe((base64Jpeg, marksJson, width, height, error) -> {
+            if (error != null || base64Jpeg == null) {
+                call.reject(error != null ? error : "observe failed");
+                return;
+            }
+            JSObject ret = new JSObject();
+            ret.put("image", base64Jpeg);
+            ret.put("marks", marksJson);
+            ret.put("width", width);
+            ret.put("height", height);
+            call.resolve(ret);
+        });
+    }
+
+    @PluginMethod
+    public void tapMark(PluginCall call) {
+        ComputerUseAccessibilityService svc = requireService(call);
+        if (svc == null) return;
+        Integer mark = call.getInt("mark");
+        if (mark == null) {
+            call.reject("tapMark requires a mark number");
+            return;
+        }
+        svc.tapMark(mark, (ok, err) -> resolveOk(call, ok, err));
+    }
+
+    @PluginMethod
     public void startSession(PluginCall call) {
         ComputerUseSessionService.start(getContext());
         call.resolve();
