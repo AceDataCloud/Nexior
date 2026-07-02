@@ -2,8 +2,8 @@
 # Regenerate the desktop app icons (build/icon.png / icon.ico / icon.icns).
 #
 # Source of truth: src/assets/images/logo.png (transparent horizontal brand
-# logo). We extract the "A" glyph and centre it on a 1024×1024 transparent
-# canvas — no white square underneath. Runs cross-platform via Python + Pillow.
+# logo). We extract the "A" glyph and centre it on a 1024×1024 canvas.
+# macOS .icns gets a white rounded badge; Windows .ico stays transparent.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 

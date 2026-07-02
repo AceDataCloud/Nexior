@@ -55,16 +55,26 @@ def build_icon_png() -> str:
 
 
 def build_icns(icon_png_path: str) -> None:
-    """Pillow ICNS write. Skips silently on Pillow builds without ICNS
-    write support (rare); mac icons then need to be rebuilt via
-    scripts/gen-desktop-icons.sh on a macOS host."""
+    """Pillow ICNS write. macOS Dock icons need a white rounded-rect badge
+    behind the glyph (Big Sur+ convention). Windows .ico stays transparent
+    (built separately from the raw build/icon.png by gen-windows-icon.py)."""
+    from PIL import ImageDraw
+
     try:
-        img = Image.open(icon_png_path)
+        img = Image.open(icon_png_path).convert("RGBA")
+        # White rounded squircle badge sized to the content area
+        badge = Image.new("RGBA", (CANVAS, CANVAS), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(badge)
+        margin = (CANVAS - CONTENT_MAX) // 2
+        draw.rounded_rectangle(
+            [margin, margin, CANVAS - margin, CANVAS - margin],
+            radius=185,
+            fill=(255, 255, 255, 255),
+        )
+        badge.alpha_composite(img)
         out = os.path.join(BUILD_DIR, "icon.icns")
-        # Pillow picks the sizes required by the ICNS spec automatically
-        # from the source when saved with format="ICNS".
-        img.save(out, format="ICNS")
-        print(f"wrote {out} ({os.path.getsize(out)} bytes)")
+        badge.save(out, format="ICNS")
+        print(f"wrote {out} ({os.path.getsize(out)} bytes, white badge for macOS)")
     except (OSError, ValueError) as exc:
         print(f"WARN: could not write icon.icns via Pillow: {exc}", file=sys.stderr)
         print("      rebuild it on macOS via scripts/gen-desktop-icons.sh.", file=sys.stderr)
