@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 01 Jul 2026 23:27:43 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 00:50:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.306.0
+
+Thu, 02 Jul 2026 00:50:59 GMT
+
+### Minor changes
+
+- Android Computer Use: semantic node-tree targeting (dump_ui/tap_text) + foreground session service with Stop kill-switch (dev@acedata.cloud)
 
 ## 3.305.1
 
