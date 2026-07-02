@@ -27,14 +27,12 @@ for s in 16 32 128 256 512; do
 done
 iconutil -c icns "$ICONSET" -o build/icon.icns
 
-# --- Windows .ico (multi-resolution) ---
-ICOTMP=$(mktemp -d)
-ARGS=()
-for s in 16 24 32 48 64 128 256; do
-  sips -z "$s" "$s" "$SRC" --out "$ICOTMP/$s.png" >/dev/null
-  ARGS+=("$ICOTMP/$s.png")
-done
-npx --yes png-to-ico "${ARGS[@]}" >build/icon.ico
+# --- Windows .ico (multi-resolution, transparent background) ---
+# Derive the .ico from build/icon.png (already padded + alpha-masked above) so
+# Windows renders a transparent squircle instead of a solid-color square. The
+# previous pipeline fed the raw iOS full-bleed source to png-to-ico, which made
+# the taskbar/title-bar icon look like a white postage stamp.
+python3 scripts/gen-windows-icon.py
 
 echo "=== results ==="
 ls -la build/icon.icns build/icon.ico build/icon.png

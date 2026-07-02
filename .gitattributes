@@ -1,0 +1,10 @@
+# Explicitly mark packaged / brand binaries as binary so Git never applies
+# line-ending conversion, diff-as-text, or merge drivers to them. Git detects
+# most of these via content sniffing already, but being explicit prevents
+# accidents when contributors set core.autocrlf=true on Windows.
+build/icon.ico binary
+build/icon.icns binary
+build/icon.png binary
+build/*.bmp binary
+build/*.jpg binary
+build/*.jpeg binary

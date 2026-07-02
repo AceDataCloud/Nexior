@@ -19,6 +19,14 @@ files:
   - electron/dist/** # compiled main/preload/protocol/updater/auth-state
   - electron/renderer/** # copied dist-electron (the Vite build)
 
+# @nut-tree-fork/libnut-{win32,darwin,linux} ships a .node native addon that
+# electron loads via `require`. Node's dynamic loader cannot resolve modules
+# inside app.asar, so the .node file MUST be unpacked to app.asar.unpacked/.
+# Without this the Computer Use tool falls back to INPUT_BACKEND_HINT even
+# after electron-rebuild produced the right ABI binary.
+asarUnpack:
+  - node_modules/@nut-tree-fork/**/*
+
 # macOS registers these into Info.plist (CFBundleURLTypes). The desktop scheme
 # is distinct from the mobile com.acedatacloud.nexior:// so they can't collide
 # on one machine.
