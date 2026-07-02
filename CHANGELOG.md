@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 01:53:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 01:53:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.308.0
+
+Thu, 02 Jul 2026 01:53:55 GMT
+
+### Minor changes
+
+- Android Computer Use: Settings accessibility permission entry (pre-authorize) + on-demand consent dialog (replaces window.confirm) (dev@acedata.cloud)
+- Android Computer Use: Set-of-Mark visual grounding (computer.observe draws numbered boxes on tappable elements + computer.tap_mark taps by number) (dev@acedata.cloud)
 
 ## 3.307.0
 
