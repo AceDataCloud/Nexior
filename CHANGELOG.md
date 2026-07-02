@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 01:19:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 01:29:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.306.3
+
+Thu, 02 Jul 2026 01:29:25 GMT
+
+### Patches
+
+- chat: scheduled-task max_turns default 30 to 50 (align with interactive chat budget) (dev@acedata.cloud)
 
 ## 3.306.2
 
