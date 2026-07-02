@@ -23,7 +23,9 @@
  * tool error the model can react to.
  */
 import { Capacitor } from '@capacitor/core';
+import { ElMessageBox } from 'element-plus';
 import { ComputerUse } from '@/plugins/computerUse';
+import i18n from '@/i18n';
 import type { LocalExecBridge, LocalToolSpec } from '@/utils/desktop';
 
 const ENABLED_KEY = 'nexior.android.cu.enabled';
@@ -184,16 +186,37 @@ function writeGrants(names: string[]): void {
   }
 }
 
-/** Per-call consent: honor a persisted always-allow grant, else fall back to a
- *  native confirm. Returns false → the action is denied and reported as a tool
- *  error (never silently). */
-function ensureConsent(name: string): boolean {
+/** Per-call consent: honor a persisted always-allow grant, else show an
+ *  ON-DEMAND consent dialog (Allow once / Deny). Users who want an action to
+ *  run without prompting can pre-authorize it in Settings → Local Tools. Falls
+ *  back to a native confirm if the dialog service can't render (SSR/no DOM).
+ *  Returns false → denied (never silent). */
+async function ensureConsent(name: string): Promise<boolean> {
   if (readGrants().includes(name)) return true;
-  const ok =
-    typeof window !== 'undefined' && typeof window.confirm === 'function'
-      ? window.confirm(`Allow this chat to run "${name}" on your phone?`)
-      : false;
-  return ok;
+  // On-demand consent needs a VISIBLE dialog. If Nexior is backgrounded (the
+  // model is mid-task operating another app), we can't prompt — deny
+  // (fail-closed) rather than hang on an invisible modal. Autonomous background
+  // tasks must pre-authorize the action in Settings → Local Tools.
+  if (typeof document !== 'undefined' && document.visibilityState === 'hidden') {
+    return false;
+  }
+  const t = i18n.global.t;
+  const action = name.replace(/^computer\./, '');
+  const message = t('common.settings.cuConsentMessage', { action });
+  try {
+    await ElMessageBox.confirm(message, t('common.settings.cuConsentTitle'), {
+      confirmButtonText: t('common.settings.cuConsentAllow'),
+      cancelButtonText: t('common.settings.cuConsentDeny'),
+      type: 'warning',
+      distinguishCancelAndClose: true
+    });
+    return true;
+  } catch (e) {
+    // Element Plus (v2) rejects with the string 'cancel'/'close' on user denial.
+    if (typeof e === 'string') return false;
+    // Anything else = the dialog couldn't render → fall back to a native confirm.
+    return typeof window !== 'undefined' && typeof window.confirm === 'function' ? window.confirm(message) : false;
+  }
 }
 
 async function accessibilityGranted(): Promise<boolean> {
@@ -202,6 +225,22 @@ async function accessibilityGranted(): Promise<boolean> {
     return !!s.accessibility;
   } catch {
     return false;
+  }
+}
+
+/** Best-effort request for POST_NOTIFICATIONS (Android 13+) so the foreground
+ *  Computer-Use session's Stop notification is actually visible. Reuses the
+ *  local-notifications plugin the app already ships. Requested at most once per
+ *  app session. Never throws. */
+let notifPermRequested = false;
+async function requestNotificationPermission(): Promise<void> {
+  if (notifPermRequested) return;
+  notifPermRequested = true;
+  try {
+    const { LocalNotifications } = await import('@capacitor/local-notifications');
+    await LocalNotifications.requestPermissions();
+  } catch {
+    /* best-effort */
   }
 }
 
@@ -256,6 +295,29 @@ const bridge: LocalExecBridge = {
     return null; // no authorized-roots concept on a phone
   },
 
+  perm: {
+    // Android's one relevant "permission" for Computer Use is the accessibility
+    // service. Map it onto the desktop-shaped struct (only `accessibility` is
+    // meaningful) so Settings can show status + a jump-to-settings button.
+    async status() {
+      return permShape(await accessibilityGranted());
+    },
+    async openPane(k: 'fullDisk' | 'screen' | 'accessibility') {
+      if (k === 'accessibility') {
+        try {
+          await ComputerUse.openAccessibilitySettings();
+        } catch {
+          /* ignore */
+        }
+        return true;
+      }
+      return false;
+    },
+    async askMedia() {
+      return false;
+    }
+  },
+
   grants: {
     async list() {
       return readGrants();
@@ -290,8 +352,11 @@ const bridge: LocalExecBridge = {
     const toGrant = names && names.length ? names : COMPUTER_TOOLS.map((s) => s.name);
     writeGrants([...readGrants(), ...toGrant]);
     try {
-      // Re-arm after any prior user Stop, then jump to Accessibility settings.
+      // Re-arm after any prior user Stop, request the notification permission so
+      // the foreground-session Stop notification is visible (Android 13+ gates
+      // it), then jump to Accessibility settings.
       await ComputerUse.resetStop();
+      await requestNotificationPermission();
       await ComputerUse.openAccessibilitySettings();
     } catch {
       /* best-effort deep link */
@@ -333,8 +398,11 @@ async function invokeImpl(
   if (!name.startsWith('computer.')) {
     return { output: `unknown tool: ${name}`, is_error: true };
   }
-  if (!ensureConsent(name)) {
-    return { output: `denied: user declined "${name}"`, is_error: true };
+  if (!(await ensureConsent(name))) {
+    return {
+      output: `denied: "${name}" is not pre-authorized. Ask the user to allow it when prompted (foreground), or pre-authorize it in Settings → Local Tools.`,
+      is_error: true
+    };
   }
   // Keep the process foreground-priority for the whole task so the agent loop
   // isn't throttled/killed while Nexior is backgrounded operating another app.
