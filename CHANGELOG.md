@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 00:53:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 01:19:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.306.2
+
+Thu, 02 Jul 2026 01:19:24 GMT
+
+### Patches
+
+- chat: expose max_turns in the scheduled-task form (1–50, default 30) so agent tasks aren't silently capped at 10 turns and truncated with no result (dev@acedata.cloud)
 
 ## 3.306.1
 
