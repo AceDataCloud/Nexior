@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 12:52:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 02 Jul 2026 15:34:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.0
+
+Thu, 02 Jul 2026 15:34:36 GMT
+
+### Minor changes
+
+- Add Maestro scenario selector to choose video production type. (dev@acedata.cloud)
 
 ## 3.312.4
 
