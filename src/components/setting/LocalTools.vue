@@ -53,6 +53,58 @@
         </p>
       </section>
 
+      <!-- MCP servers (local stdio, Claude-Desktop style) -->
+      <section>
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsMcpTitle') }}</h3>
+          <el-button size="small" type="primary" :icon="Plus" @click="addMcp">
+            {{ $t('common.settings.localToolsMcpAdd') }}
+          </el-button>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsMcpHint') }}</p>
+        <ul v-if="mcpServers.length" class="rows">
+          <li v-for="(m, i) in mcpServers" :key="m._uid" class="row mcp-row">
+            <div class="mcp-fields">
+              <el-input v-model="m.id" size="small" :placeholder="$t('common.settings.localToolsMcpNamePlaceholder')">
+                <template #prepend>{{ $t('common.settings.localToolsMcpName') }}</template>
+              </el-input>
+              <el-input
+                v-model="m.command"
+                size="small"
+                :placeholder="$t('common.settings.localToolsMcpCommandPlaceholder')"
+              >
+                <template #prepend>{{ $t('common.settings.localToolsMcpCommand') }}</template>
+              </el-input>
+              <label class="mcp-label">{{ $t('common.settings.localToolsMcpArgs') }}</label>
+              <el-input
+                v-model="m.argsText"
+                type="textarea"
+                :rows="2"
+                :placeholder="$t('common.settings.localToolsMcpArgsHint')"
+              />
+              <label class="mcp-label">{{ $t('common.settings.localToolsMcpEnv') }}</label>
+              <el-input
+                v-model="m.envText"
+                type="textarea"
+                :rows="2"
+                :placeholder="$t('common.settings.localToolsMcpEnvHint')"
+              />
+            </div>
+            <el-button size="small" text type="danger" @click="removeMcp(i)">
+              {{ $t('common.settings.localToolsRemove') }}
+            </el-button>
+          </li>
+        </ul>
+        <p v-else class="muted">{{ $t('common.settings.localToolsMcpNoServers') }}</p>
+        <div class="actions">
+          <el-button size="small" type="primary" :loading="savingMcp" @click="saveMcp">
+            {{ $t('common.settings.localToolsSave') }}
+          </el-button>
+          <span v-if="mcpSavedTip" class="muted saved-tip">{{ $t('common.settings.localToolsSaved') }}</span>
+          <span v-if="mcpError" class="mcp-error">{{ mcpError }}</span>
+        </div>
+      </section>
+
       <!-- Always-allowed (persistent consent grants) -->
       <section v-if="grants !== null && !android">
         <div class="section-head">
@@ -184,7 +236,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElTag, ElSwitch } from 'element-plus';
+import { ElButton, ElTag, ElSwitch, ElInput } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { localExec } from '@/utils/desktop';
@@ -196,14 +248,31 @@ interface GrantRow {
   input: string;
 }
 
+// Editable draft of one MCP server row. `args` / `env` are edited as free text
+// (one-per-line) and parsed into the array / record shape on save. `_uid` is a
+// stable render key so removing a middle row doesn't rebind inputs by index.
+interface McpDraft {
+  _uid: number;
+  id: string;
+  command: string;
+  argsText: string;
+  envText: string;
+}
+
 export default defineComponent({
   name: 'LocalToolsSetting',
-  components: { ElButton, ElTag, ElSwitch, FontAwesomeIcon },
+  components: { ElButton, ElTag, ElSwitch, ElInput, FontAwesomeIcon },
   data() {
     return {
       Plus,
       roots: [] as string[],
       tools: [] as string[],
+      // Editable MCP server drafts (loaded from config, parsed back on save).
+      mcpServers: [] as McpDraft[],
+      mcpUid: 0,
+      savingMcp: false,
+      mcpSavedTip: false,
+      mcpError: '',
       grants: null as null | GrantRow[],
       perm: null as null | { mac: boolean; fullDisk: boolean; screen: string; mic: string; accessibility: boolean },
       computerUse: false,
@@ -240,6 +309,15 @@ export default defineComponent({
     const cfg = await ex.getConfig();
     this.roots = cfg.roots;
     this.computerUse = cfg.computerUse === true;
+    this.mcpServers = (cfg.mcp ?? []).map((m) => ({
+      _uid: this.mcpUid++,
+      id: m.id,
+      command: m.command,
+      argsText: (m.args ?? []).join('\n'),
+      envText: Object.entries(m.env ?? {})
+        .map(([k, v]) => `${k}=${v}`)
+        .join('\n')
+    }));
     this.tools = (await ex.listTools()).map((t) => t.name);
     this.computerTools = (await ex.computerTools?.()) ?? [];
     this.builtinTools = (await ex.builtinTools?.()) ?? [];
@@ -316,6 +394,68 @@ export default defineComponent({
     },
     removeRoot(i: number) {
       this.roots.splice(i, 1);
+    },
+    addMcp() {
+      this.mcpServers.push({ _uid: this.mcpUid++, id: '', command: '', argsText: '', envText: '' });
+    },
+    removeMcp(i: number) {
+      this.mcpServers.splice(i, 1);
+    },
+    // Validate + parse the drafts into `McpServerConf[]` and persist. The main
+    // process hot-reboots the MCP host, so the new tools appear without a
+    // restart. `id` is constrained to `[A-Za-z0-9_-]` because it becomes the
+    // `mcp.<id>.<tool>` route key (a dot would break the split at invoke time).
+    async saveMcp() {
+      this.mcpError = '';
+      const mcp: { id: string; command: string; args: string[]; env?: Record<string, string> }[] = [];
+      const seen = new Set<string>();
+      for (const m of this.mcpServers) {
+        const id = m.id.trim();
+        const command = m.command.trim();
+        if (!id || !command) {
+          this.mcpError = this.$t('common.settings.localToolsMcpNameRequired');
+          return;
+        }
+        if (!/^[A-Za-z0-9_-]+$/.test(id)) {
+          this.mcpError = this.$t('common.settings.localToolsMcpNameInvalid');
+          return;
+        }
+        if (seen.has(id)) {
+          this.mcpError = this.$t('common.settings.localToolsMcpDuplicateName');
+          return;
+        }
+        seen.add(id);
+        const args = m.argsText
+          .split('\n')
+          .map((s) => s.trim())
+          .filter(Boolean);
+        const env: Record<string, string> = {};
+        for (const line of m.envText.split('\n')) {
+          const t = line.trim();
+          if (!t) continue;
+          const eq = t.indexOf('=');
+          if (eq <= 0) continue;
+          env[t.slice(0, eq).trim()] = t.slice(eq + 1).trim();
+        }
+        const row: { id: string; command: string; args: string[]; env?: Record<string, string> } = {
+          id,
+          command,
+          args
+        };
+        if (Object.keys(env).length) row.env = env;
+        mcp.push(row);
+      }
+      this.savingMcp = true;
+      try {
+        const cur = await localExec()?.getConfig();
+        await localExec()?.saveConfig({ roots: cur?.roots ?? this.roots, mcp, computerUse: this.computerUse });
+        // Re-fetch the active tools so newly-connected MCP tools show up.
+        this.tools = (await localExec()?.listTools())?.map((t) => t.name) ?? this.tools;
+        this.mcpSavedTip = true;
+        setTimeout(() => (this.mcpSavedTip = false), 2000);
+      } finally {
+        this.savingMcp = false;
+      }
     },
     async open(k: 'fullDisk' | 'screen' | 'accessibility') {
       await localExec()?.perm?.openPane(k);
@@ -481,6 +621,25 @@ export default defineComponent({
 .cu-action-desc {
   color: var(--el-text-color-secondary, #909399);
   font-size: 12px;
+}
+.mcp-row {
+  align-items: flex-start;
+}
+.mcp-fields {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+.mcp-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--el-text-color-secondary, #909399);
+}
+.mcp-error {
+  color: var(--el-color-danger, #f56c6c);
+  font-size: 13px;
 }
 .muted {
   color: var(--el-text-color-secondary, #909399);

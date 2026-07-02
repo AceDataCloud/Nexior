@@ -980,6 +980,66 @@
     "message": "保存",
     "description": "保存已授权文件夹。"
   },
+  "settings.localToolsMcpTitle": {
+    "message": "MCP 服务器",
+    "description": "本地工具设置中本地 MCP 服务器配置的分区标题。"
+  },
+  "settings.localToolsMcpHint": {
+    "message": "通过 stdio 连接本地 MCP 服务器。它们的工具会提供给 AI 使用，并受同样的逐次调用确认保护。修改后立即生效。",
+    "description": "说明本地 MCP 服务器的作用，以及修改无需重启即可生效。"
+  },
+  "settings.localToolsMcpAdd": {
+    "message": "添加服务器",
+    "description": "添加一个新的本地 MCP 服务器行的按钮。"
+  },
+  "settings.localToolsMcpName": {
+    "message": "名称",
+    "description": "MCP 服务器名称/标识字段的标签。"
+  },
+  "settings.localToolsMcpCommand": {
+    "message": "命令",
+    "description": "MCP 服务器启动命令字段的标签。"
+  },
+  "settings.localToolsMcpArgs": {
+    "message": "参数",
+    "description": "MCP 服务器命令参数字段的标签。"
+  },
+  "settings.localToolsMcpArgsHint": {
+    "message": "每行一个参数。",
+    "description": "MCP 参数文本框的占位提示。"
+  },
+  "settings.localToolsMcpEnv": {
+    "message": "环境变量",
+    "description": "MCP 服务器环境变量字段的标签。"
+  },
+  "settings.localToolsMcpEnvHint": {
+    "message": "每行一个 KEY=VALUE。",
+    "description": "MCP 环境变量文本框的占位提示。"
+  },
+  "settings.localToolsMcpNoServers": {
+    "message": "尚未配置 MCP 服务器。",
+    "description": "未配置任何 MCP 服务器时显示的空状态。"
+  },
+  "settings.localToolsMcpNamePlaceholder": {
+    "message": "例如 filesystem",
+    "description": "MCP 服务器名称输入框的占位符。"
+  },
+  "settings.localToolsMcpCommandPlaceholder": {
+    "message": "例如 npx",
+    "description": "MCP 服务器命令输入框的占位符。"
+  },
+  "settings.localToolsMcpNameRequired": {
+    "message": "每个服务器都需要名称和命令。",
+    "description": "服务器行缺少名称或命令时的校验错误。"
+  },
+  "settings.localToolsMcpDuplicateName": {
+    "message": "服务器名称必须唯一。",
+    "description": "两个服务器名称重复时的校验错误。"
+  },
+  "settings.localToolsMcpNameInvalid": {
+    "message": "名称只能包含字母、数字、连字符和下划线。",
+    "description": "服务器名称含非法字符时的校验错误。"
+  },
   "settings.localToolsSaved": {
     "message": "已保存",
     "description": "保存本地工具文件夹后的短暂确认。"

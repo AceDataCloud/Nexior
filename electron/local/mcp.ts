@@ -40,7 +40,12 @@ export class McpHost {
         }
       }
     });
-    p.on('exit', () => this.procs.delete(c.id));
+    p.on('exit', () => {
+      // Only forget this proc if it's still the one we tracked. On reboot()
+      // stopAll() kills the old proc, then boot() spawns a new one under the
+      // same id; the old proc's async exit must NOT delete the new entry.
+      if (this.procs.get(c.id) === p) this.procs.delete(c.id);
+    });
     this.procs.set(c.id, p);
     await this.rpc(c.id, 'initialize', { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'nexior', version: '1' } });
   }

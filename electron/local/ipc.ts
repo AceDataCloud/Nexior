@@ -32,6 +32,33 @@ export function disableComputerUse(): boolean {
   return wasOn;
 }
 
+// Serialize config writes. `local.config.save` is called from three UI paths
+// (folders, MCP servers, Computer Use), each doing a read-modify-write on the
+// single local-tools.json. Chaining guarantees each handler's `load()` sees the
+// previous write, so a rapid folder+MCP save can't drop one field's changes.
+let configSaveChain: Promise<boolean> = Promise.resolve(true);
+
+async function applyConfigSave(cfg: LocalConfig): Promise<boolean> {
+  // Preserve persistent consent grants — the renderer's save payload only
+  // carries roots + mcp (+ optional computerUse), so merge to avoid wiping
+  // the "always allow" list. `computerUse` falls back to the current value
+  // when the renderer omits it.
+  const cur = load();
+  const computerUse = cfg.computerUse ?? cur.computerUse ?? false;
+  // Only re-spawn MCP servers when their config actually changed — a folder /
+  // Computer-Use save shouldn't tear down healthy MCP connections.
+  const mcpChanged = JSON.stringify(cur.mcp ?? []) !== JSON.stringify(cfg.mcp ?? []);
+  save({ ...cur, roots: cfg.roots, mcp: cfg.mcp, computerUse });
+  setRoots(cfg.roots); // hot-apply roots
+  registry.setComputerUse(computerUse); // hot-apply the Computer Use toggle
+  if (!computerUse) resetComputerSessionConsent(); // turning it off clears session grants
+  // Hot-apply MCP servers: stop the old ones and boot the new set so their
+  // tools appear/disappear from the next `client_tools` payload without a
+  // restart. `reboot` swallows per-server failures, so save never rejects.
+  if (mcpChanged) await registry.reboot(cfg.mcp ?? []);
+  return true;
+}
+
 export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   const gate = (e: Electron.IpcMainInvokeEvent) => {
     if (!sameOrigin(e.senderFrame?.url)) throw new Error('local-exec: bad sender origin');
@@ -56,17 +83,12 @@ export function registerLocalExec(getWin: () => BrowserWindow | null): void {
   });
   ipcMain.handle('local.config.save', (e, cfg: LocalConfig) => {
     gate(e);
-    // Preserve persistent consent grants — the renderer's save payload only
-    // carries roots + mcp (+ optional computerUse), so merge to avoid wiping
-    // the "always allow" list. `computerUse` falls back to the current value
-    // when the renderer omits it.
-    const cur = load();
-    const computerUse = cfg.computerUse ?? cur.computerUse ?? false;
-    save({ ...cur, roots: cfg.roots, mcp: cfg.mcp, computerUse });
-    setRoots(cfg.roots); // hot-apply roots; MCP server changes apply next launch
-    registry.setComputerUse(computerUse); // hot-apply the Computer Use toggle
-    if (!computerUse) resetComputerSessionConsent(); // turning it off clears session grants
-    return true;
+    // Run behind the shared chain so overlapping saves apply sequentially.
+    configSaveChain = configSaveChain.then(
+      () => applyConfigSave(cfg),
+      () => applyConfigSave(cfg)
+    );
+    return configSaveChain;
   });
   ipcMain.handle('local.pickFolder', async (e) => {
     gate(e);
