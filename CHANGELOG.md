@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 02 Jul 2026 15:34:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 04:42:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.1
+
+Fri, 03 Jul 2026 04:42:17 GMT
+
+### Patches
+
+- Fix settings dialog: keep the left-nav highlight in sync with the shown tab and never render a blank content pane. (dev@acedata.cloud)
 
 ## 3.313.0
 
