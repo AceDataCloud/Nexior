@@ -88,30 +88,26 @@
                   {{ $t('common.settings.localToolsRemove') }}
                 </el-button>
               </div>
-              <el-input v-model="m.id" size="small" :placeholder="$t('common.settings.localToolsMcpNamePlaceholder')">
-                <template #prepend>{{ $t('common.settings.localToolsMcpName') }}</template>
-              </el-input>
-              <el-input
-                v-model="m.command"
-                size="small"
-                :placeholder="$t('common.settings.localToolsMcpCommandPlaceholder')"
-              >
-                <template #prepend>{{ $t('common.settings.localToolsMcpCommand') }}</template>
-              </el-input>
-              <label class="mcp-label">{{ $t('common.settings.localToolsMcpArgs') }}</label>
-              <el-input
-                v-model="m.argsText"
-                type="textarea"
-                :rows="2"
-                :placeholder="$t('common.settings.localToolsMcpArgsHint')"
-              />
-              <label class="mcp-label">{{ $t('common.settings.localToolsMcpEnv') }}</label>
-              <el-input
-                v-model="m.envText"
-                type="textarea"
-                :rows="2"
-                :placeholder="$t('common.settings.localToolsMcpEnvHint')"
-              />
+              <div class="mcp-grid">
+                <label class="mcp-flabel">{{ $t('common.settings.localToolsMcpName') }}</label>
+                <el-input v-model="m.id" :placeholder="$t('common.settings.localToolsMcpNamePlaceholder')" />
+                <label class="mcp-flabel">{{ $t('common.settings.localToolsMcpCommand') }}</label>
+                <el-input v-model="m.command" :placeholder="$t('common.settings.localToolsMcpCommandPlaceholder')" />
+                <label class="mcp-flabel top">{{ $t('common.settings.localToolsMcpArgs') }}</label>
+                <el-input
+                  v-model="m.argsText"
+                  type="textarea"
+                  :rows="2"
+                  :placeholder="$t('common.settings.localToolsMcpArgsHint')"
+                />
+                <label class="mcp-flabel top">{{ $t('common.settings.localToolsMcpEnv') }}</label>
+                <el-input
+                  v-model="m.envText"
+                  type="textarea"
+                  :rows="2"
+                  :placeholder="$t('common.settings.localToolsMcpEnvHint')"
+                />
+              </div>
               <p v-if="mcpErrorFor(m.id)" class="mcp-row-error">{{ mcpErrorFor(m.id) }}</p>
             </div>
           </li>
@@ -717,13 +713,32 @@ export default defineComponent({
 }
 .mcp-row {
   align-items: flex-start;
+  padding: 16px;
+  background: var(--el-fill-color-lighter, #fafafa);
 }
 .mcp-fields {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 14px;
   min-width: 0;
+}
+.mcp-grid {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 10px 12px;
+  align-items: center;
+}
+.mcp-flabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--el-text-color-secondary, #909399);
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.mcp-flabel.top {
+  align-self: start;
+  padding-top: 8px;
 }
 .mcp-head {
   display: flex;
@@ -740,12 +755,8 @@ export default defineComponent({
   word-break: break-word;
 }
 .mcp-platform-hint {
-  margin-top: 8px;
-}
-.mcp-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--el-text-color-secondary, #909399);
+  margin-top: 4px;
+  line-height: 1.5;
 }
 .mcp-error {
   color: var(--el-color-danger, #f56c6c);
