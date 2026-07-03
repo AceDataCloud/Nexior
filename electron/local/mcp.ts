@@ -18,6 +18,17 @@ interface Pending { resolve: (v: unknown) => void; reject: (e: Error) => void; t
 // and every MCP server silently fails to connect. Rebuild a usable PATH once,
 // cached (as a Promise) for the process lifetime. ASYNC so the login-shell
 // probe never blocks the main thread / UI.
+// Standard Node + global-npm install dirs on Windows, derived from STABLE env
+// vars (never the possibly-stale inherited PATH). Exported for tests.
+export function windowsNodeDirs(env: NodeJS.ProcessEnv = process.env): string[] {
+  return [
+    env.ProgramFiles && `${env.ProgramFiles}\\nodejs`,
+    env['ProgramFiles(x86)'] && `${env['ProgramFiles(x86)']}\\nodejs`,
+    env.APPDATA && `${env.APPDATA}\\npm`,
+    env.LOCALAPPDATA && `${env.LOCALAPPDATA}\\Programs\\nodejs`
+  ].filter((d): d is string => !!d);
+}
+
 let cachedPath: Promise<string> | null = null;
 function resolveEnhancedPath(): Promise<string> {
   if (cachedPath) return cachedPath;
@@ -38,6 +49,15 @@ function resolveEnhancedPath(): Promise<string> {
       }
       const home = process.env.HOME || '';
       parts = parts.concat(['/opt/homebrew/bin', '/usr/local/bin', '/usr/bin', '/bin', `${home}/.local/bin`, `${home}/.bun/bin`]);
+    } else {
+      // A GUI-launched Windows app can inherit a STALE PATH — e.g. an
+      // explorer.exe started before Node was installed (or before its installer
+      // updated the registry PATH) — so a bare `node` / `npx` resolves to
+      // `spawn ENOENT` even though Node IS installed and on the machine PATH.
+      // Append the standard Node + global-npm install dirs so the common install
+      // still resolves. Bare-command resolution tolerates the space in
+      // "Program Files".
+      parts = parts.concat(windowsNodeDirs());
     }
     const seen = new Set<string>();
     return parts.filter((d) => d && !seen.has(d) && seen.add(d)).join(sep);
