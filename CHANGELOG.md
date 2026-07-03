@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 06:28:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 09:53:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.3
+
+Fri, 03 Jul 2026 09:53:48 GMT
+
+### Patches
+
+- polish(desktop): align Local Tools MCP server fields into a form grid (dev@acedata.cloud)
 
 ## 3.313.2
 
