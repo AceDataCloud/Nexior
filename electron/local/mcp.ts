@@ -4,6 +4,11 @@ import type { McpServerConf, ToolSpec, ToolResult } from './types';
 
 const execFileAsync = promisify(execFile);
 const RPC_TIMEOUT_MS = 30_000;
+// The initial `initialize` handshake gets a longer budget than a mid-turn call:
+// a cold MCP server (e.g. `node …/@playwright/mcp` loading playwright-core) on a
+// slow machine can take far longer than RPC_TIMEOUT_MS just to boot Node + its
+// deps before it answers — a first-boot timeout would strand it as `failed`.
+const STARTUP_TIMEOUT_MS = 60_000;
 
 interface Pending { resolve: (v: unknown) => void; reject: (e: Error) => void; timer: NodeJS.Timeout; }
 
@@ -103,7 +108,7 @@ export class McpHost {
     });
     try {
       await Promise.race([
-        this.rpc(c.id, 'initialize', { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'nexior', version: '1' } }),
+        this.rpc(c.id, 'initialize', { protocolVersion: '2024-11-05', capabilities: {}, clientInfo: { name: 'nexior', version: '1' } }, STARTUP_TIMEOUT_MS),
         spawnError
       ]);
     } catch (e) {
@@ -114,13 +119,13 @@ export class McpHost {
     }
   }
 
-  private rpc(server: string, method: string, params: unknown): Promise<unknown> {
+  private rpc(server: string, method: string, params: unknown, timeoutMs: number = RPC_TIMEOUT_MS): Promise<unknown> {
     const proc = this.procs.get(server);
     if (!proc?.stdin) return Promise.reject(new Error(`mcp ${server} not running`));
     const id = ++this.seq;
     proc.stdin.write(JSON.stringify({ jsonrpc: '2.0', id, method, params }) + '\n');
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => { this.pending.delete(id); reject(new Error('mcp rpc timeout')); }, RPC_TIMEOUT_MS);
+      const timer = setTimeout(() => { this.pending.delete(id); reject(new Error('mcp rpc timeout')); }, timeoutMs);
       this.pending.set(id, { resolve, reject, timer });
     });
   }
