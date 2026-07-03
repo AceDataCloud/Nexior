@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 14:43:26 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 16:48:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.7
+
+Fri, 03 Jul 2026 16:48:58 GMT
+
+### Patches
+
+- fix(desktop): resolve node/npx for local MCP servers on Windows even when a GUI-launched app inherited a stale PATH (augment PATH with the standard Node install dirs) (dev@acedata.cloud)
 
 ## 3.313.6
 
