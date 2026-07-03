@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2026 11:42:51 GMT",
+      "version": "3.313.4",
+      "tag": "@acedatacloud/nexior_v3.313.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "d8ed149005fb26657fe5eb951ca47508fed44112",
+            "comment": "fix(desktop): strip UTF-8 BOM when loading local-tools.json so an externally-edited config no longer silently wipes roots/MCP servers/grants"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jul 2026 09:53:48 GMT",
       "version": "3.313.3",
       "tag": "@acedatacloud/nexior_v3.313.3",

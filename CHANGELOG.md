@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 09:53:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 11:42:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.4
+
+Fri, 03 Jul 2026 11:42:51 GMT
+
+### Patches
+
+- fix(desktop): strip UTF-8 BOM when loading local-tools.json so an externally-edited config no longer silently wipes roots/MCP servers/grants (dev@acedata.cloud)
 
 ## 3.313.3
 
