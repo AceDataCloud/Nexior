@@ -38,7 +38,6 @@
             :min="minSide"
             :max="maxSide"
             :step="multiple"
-            :step-strictly="true"
             controls-position="right"
           />
         </div>
@@ -50,7 +49,6 @@
             :min="minSide"
             :max="maxSide"
             :step="multiple"
-            :step-strictly="true"
             controls-position="right"
           />
         </div>
