@@ -10,18 +10,19 @@
         <el-menu
           :class="['border-r-0 settings-menu', mobile ? 'is-mobile flex flex-row overflow-x-auto' : '']"
           :mode="mobile ? 'horizontal' : 'vertical'"
+          :default-active="currentTab"
         >
-          <!-- Render only the visible tabs. CSS-hiding (display:none) leaks
-               admin-only items into the horizontal el-menu ellipsis overflow
-               on mobile, exposing them to non-admins. -->
+          <!-- Render only the visible tabs; CSS-hiding leaks admin-only items
+               into the mobile el-menu overflow. Key by stable tab key (not the
+               array index) so el-menu can't reuse a stale item on set change. -->
           <el-menu-item
-            v-for="(item, index) in visibleNavItems"
-            :key="index"
+            v-for="item in visibleNavItems"
+            :key="item.key"
             :index="item.key"
             :class="[
               'items-center cursor-pointer',
               mobile ? 'flex-shrink-0 px-3 py-2 text-sm' : 'flex w-[180px] px-2 py-2',
-              activeTab === item.key ? 'active' : ''
+              currentTab === item.key ? 'active' : ''
             ]"
             @click="activeTab = item.key"
           >
@@ -31,37 +32,37 @@
         </el-menu>
       </aside>
       <main :class="['flex-1 overflow-y-auto', mobile ? 'p-4' : 'p-6']">
-        <div v-if="activeTab === SETTING_TAB_GENERAL">
+        <div v-if="currentTab === SETTING_TAB_GENERAL">
           <general-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_API_KEY">
+        <div v-else-if="currentTab === SETTING_TAB_API_KEY">
           <byok-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_SITE && isSiteConfigVisible">
+        <div v-else-if="currentTab === SETTING_TAB_SITE && isSiteConfigVisible">
           <site-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_SEO && isSiteConfigVisible">
+        <div v-else-if="currentTab === SETTING_TAB_SEO && isSiteConfigVisible">
           <seo-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_DISTRIBUTION && isSiteConfigVisible">
+        <div v-else-if="currentTab === SETTING_TAB_DISTRIBUTION && isSiteConfigVisible">
           <distribution-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_FUNCTION && isSiteConfigVisible">
+        <div v-else-if="currentTab === SETTING_TAB_FUNCTION && isSiteConfigVisible">
           <function-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_AUTH && isSiteConfigVisible">
+        <div v-else-if="currentTab === SETTING_TAB_AUTH && isSiteConfigVisible">
           <auth-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_SUBSITES && isSubsitesVisible">
+        <div v-else-if="currentTab === SETTING_TAB_SUBSITES && isSubsitesVisible">
           <subsite-setting :auto-open-create="autoOpenCreateSubsite" />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_CUSTOM_DOMAIN && isCustomDomainVisible">
+        <div v-else-if="currentTab === SETTING_TAB_CUSTOM_DOMAIN && isCustomDomainVisible">
           <custom-domain-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_LOCAL_TOOLS && isDesktopApp">
+        <div v-else-if="currentTab === SETTING_TAB_LOCAL_TOOLS && isDesktopApp">
           <local-tools-setting />
         </div>
-        <div v-else-if="activeTab === SETTING_TAB_ABOUT">
+        <div v-else-if="currentTab === SETTING_TAB_ABOUT">
           <about-setting @switch-tab="onSwitchTab" />
         </div>
       </main>
@@ -244,6 +245,12 @@ export default defineComponent({
     visibleNavItems(): Array<{ key: SettingTabKey; label: string; icon: typeof faCog; visible: boolean }> {
       return this.navItems.filter((item) => item.visible);
     },
+    // The tab actually rendered. Falls back to General when `activeTab` points
+    // at a tab that isn't currently visible (stale `initialTab`, or hidden by
+    // surface/permission) — otherwise the content pane would render BLANK.
+    currentTab(): SettingTabKey {
+      return this.visibleNavItems.some((item) => item.key === this.activeTab) ? this.activeTab : SETTING_TAB_GENERAL;
+    },
     isSiteAdmin(): boolean {
       return !!this.$store?.state?.site?.admins?.includes(this.$store.getters.user?.id);
     },
@@ -281,7 +288,7 @@ export default defineComponent({
       if (this.mobile) return '94vw';
       // BYOK and Subsites both render multi-column tables that don't fit
       // the default 50% dialog width on most laptops.
-      return this.activeTab === SETTING_TAB_API_KEY || this.activeTab === SETTING_TAB_SUBSITES ? '900px' : '50%';
+      return this.currentTab === SETTING_TAB_API_KEY || this.currentTab === SETTING_TAB_SUBSITES ? '900px' : '50%';
     }
   },
   watch: {
