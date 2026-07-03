@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 11:42:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 14:16:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.5
+
+Fri, 03 Jul 2026 14:16:36 GMT
+
+### Patches
+
+- feat(maestro): show Task ID (+ Trace ID) while a video is still producing (dev@acedata.cloud)
 
 ## 3.313.4
 
