@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 04:42:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 06:28:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.2
+
+Fri, 03 Jul 2026 06:28:25 GMT
+
+### Patches
+
+- fix(desktop): escape @ in Local Tools MCP hint so vue-i18n stops blanking the panel (dev@acedata.cloud)
 
 ## 3.313.1
 
