@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Fri, 03 Jul 2026 14:43:26 GMT",
+      "version": "3.313.6",
+      "tag": "@acedatacloud/nexior_v3.313.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "07d7512ba763ea03608adb309c5cfeaa8a9b5962",
+            "comment": "fix(desktop): make local MCP boot resilient on slow machines — longer initialize timeout + background retry so a cold-start server (e.g. playwright) self-heals instead of stranding as failed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Jul 2026 14:16:36 GMT",
       "version": "3.313.5",
       "tag": "@acedatacloud/nexior_v3.313.5",

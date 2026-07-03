@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 14:16:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 03 Jul 2026 14:43:26 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.6
+
+Fri, 03 Jul 2026 14:43:26 GMT
+
+### Patches
+
+- fix(desktop): make local MCP boot resilient on slow machines — longer initialize timeout + background retry so a cold-start server (e.g. playwright) self-heals instead of stranding as failed (dev@acedata.cloud)
 
 ## 3.313.5
 
