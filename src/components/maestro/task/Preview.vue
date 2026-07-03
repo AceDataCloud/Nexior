@@ -20,10 +20,20 @@
         </p>
       </div>
 
-      <!-- in-progress: live stage + percentage -->
-      <div v-if="!isTerminal && progressMessage" class="content">
-        <p class="text-xs text-[var(--el-text-color-secondary)] mb-1">{{ progressMessage }}</p>
+      <!-- in-progress: task id (+ trace id) + live stage + percentage -->
+      <div v-if="!isTerminal" class="content">
+        <p v-if="progressMessage" class="text-xs text-[var(--el-text-color-secondary)] mb-1">{{ progressMessage }}</p>
         <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" />
+        <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-2">
+          <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+          {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
+          <copy-to-clipboard :content="modelValue?.id!" />
+        </p>
+        <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+          {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+          <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+        </p>
       </div>
 
       <!-- success: one player per language variant -->
