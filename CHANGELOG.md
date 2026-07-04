@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 07:32:47 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 09:16:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.314.0
+
+Sat, 04 Jul 2026 09:16:33 GMT
+
+### Minor changes
+
+- feat(chat): 支持匿名分享对话，生成 /share/:id 只读链接 (dev@acedata.cloud)
 
 ## 3.313.19
 
