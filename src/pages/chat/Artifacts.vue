@@ -3,6 +3,12 @@
     <div class="inner">
       <div class="header">
         <h2 class="title">{{ $t('chat.artifacts.title') }}</h2>
+        <el-switch
+          v-model="showHidden"
+          class="show-hidden"
+          :active-text="$t('chat.artifacts.showHidden')"
+          @change="reload"
+        />
       </div>
 
       <!-- Summary card -->
@@ -52,6 +58,9 @@
                   <el-tag v-if="item.source === 'auto'" size="small" type="info" round class="source-tag">
                     {{ $t('chat.artifacts.sourceAuto') }}
                   </el-tag>
+                  <el-tag v-if="item.hidden" size="small" type="warning" round class="hidden-tag">
+                    {{ $t('chat.artifacts.hiddenBadge') }}
+                  </el-tag>
                   <span v-if="item.channel" class="channel">{{ item.channel }}</span>
                   <span class="time">{{ formatTime(item.created_at) }}</span>
                 </div>
@@ -71,9 +80,9 @@
                     <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="icon" />
                     {{ $t('chat.artifacts.open') }}
                   </el-button>
-                  <el-button size="small" text @click="onHide(item)">
-                    <font-awesome-icon icon="fa-solid fa-eye-slash" class="icon" />
-                    {{ $t('chat.artifacts.hide') }}
+                  <el-button size="small" text @click="onToggleHide(item)">
+                    <font-awesome-icon :icon="item.hidden ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'" class="icon" />
+                    {{ item.hidden ? $t('chat.artifacts.unhide') : $t('chat.artifacts.hide') }}
                   </el-button>
                   <el-button size="small" text type="danger" @click="onDelete(item)">
                     <font-awesome-icon icon="fa-solid fa-trash" class="icon" />
@@ -95,7 +104,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElMessage, ElMessageBox } from 'element-plus';
+import { ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch, ElMessage, ElMessageBox } from 'element-plus';
 import { artifactsOperator, IArtifact, IArtifactKind } from '@/operators/artifacts';
 
 const PAGE_SIZE = 30;
@@ -103,7 +112,7 @@ const KIND_FILTERS: (IArtifactKind | 'all')[] = ['all', 'article', 'image', 'vid
 
 export default defineComponent({
   name: 'Artifacts',
-  components: { FontAwesomeIcon, ElButton, ElCard, ElSkeleton, ElEmpty, ElTag },
+  components: { FontAwesomeIcon, ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch },
   data() {
     return {
       loading: true,
@@ -112,8 +121,10 @@ export default defineComponent({
       count: 0,
       offset: 0,
       activeKind: 'all' as IArtifactKind | 'all',
+      showHidden: false,
       summary: null as { total: number; by_kind: Record<string, number> } | null,
-      kindFilters: KIND_FILTERS
+      kindFilters: KIND_FILTERS,
+      reloadToken: 0
     };
   },
   computed: {
@@ -146,31 +157,40 @@ export default defineComponent({
       }
       this.loading = true;
       this.offset = 0;
+      const token = ++this.reloadToken;
       try {
         const { items, count } = await artifactsOperator.list(this.token, {
           ...(this.activeKind !== 'all' ? { kind: this.activeKind } : {}),
+          ...(this.showHidden ? { include_hidden: true } : {}),
           offset: 0,
           limit: PAGE_SIZE
         });
+        // Drop stale responses when the user toggled filters/switch mid-flight.
+        if (token !== this.reloadToken) return;
         this.items = items;
         this.count = count;
         this.offset = items.length;
       } catch (e) {
+        if (token !== this.reloadToken) return;
         console.error('load artifacts failed', e);
         ElMessage.error(this.$t('chat.artifacts.loadError'));
       } finally {
-        this.loading = false;
+        if (token === this.reloadToken) this.loading = false;
       }
     },
     async loadMore() {
       if (!this.token || this.loadingMore) return;
       this.loadingMore = true;
+      const token = this.reloadToken;
       try {
         const { items } = await artifactsOperator.list(this.token, {
           ...(this.activeKind !== 'all' ? { kind: this.activeKind } : {}),
+          ...(this.showHidden ? { include_hidden: true } : {}),
           offset: this.offset,
           limit: PAGE_SIZE
         });
+        // Drop the page if the user changed filters (or hit reload) mid-flight.
+        if (token !== this.reloadToken) return;
         this.items.push(...items);
         this.offset += items.length;
       } catch (e) {
@@ -184,16 +204,22 @@ export default defineComponent({
       this.activeKind = kind;
       this.reload();
     },
-    async onHide(item: IArtifact) {
+    async onToggleHide(item: IArtifact) {
       if (!this.token) return;
+      const nextHidden = !item.hidden;
       try {
-        await artifactsOperator.hide(this.token, item.id, true);
-        this.items = this.items.filter((i) => i.id !== item.id);
-        this.count = Math.max(0, this.count - 1);
-        this.offset = Math.max(0, this.offset - 1);
+        await artifactsOperator.hide(this.token, item.id, nextHidden);
+        if (this.showHidden) {
+          // Keep the item in place so the user can toggle it again.
+          item.hidden = nextHidden;
+        } else {
+          this.items = this.items.filter((i) => i.id !== item.id);
+          this.count = Math.max(0, this.count - 1);
+          this.offset = Math.max(0, this.offset - 1);
+        }
         this.loadSummary();
       } catch (e) {
-        console.error('hide artifact failed', e);
+        console.error('toggle hide artifact failed', e);
         ElMessage.error(this.$t('chat.artifacts.actionError'));
       }
     },
