@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 02:15:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 04:23:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.9
+
+Sat, 04 Jul 2026 04:23:54 GMT
+
+### Patches
+
+- fix(download): add a back button to the chrome-less /download page (dev@acedata.cloud)
 
 ## 3.313.8
 
