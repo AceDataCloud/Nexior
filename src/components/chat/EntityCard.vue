@@ -8,7 +8,7 @@
       <div class="meta">
         <div v-if="card.title" class="title" :title="card.title">{{ card.title }}</div>
         <div v-if="card.duration" class="sub">{{ formattedDuration }}</div>
-        <audio class="player" controls preload="metadata" :src="card.url" />
+        <audio class="player" controls preload="metadata" :src="card.url" @error="onMediaError" />
         <div class="actions">
           <a class="download" :href="card.url" target="_blank" rel="noopener noreferrer">
             <font-awesome-icon icon="fa-solid fa-arrow-down" />
@@ -18,13 +18,11 @@
       </div>
     </div>
 
-    <!-- Video — rendered as an iframe by default. The aichat2 worker
-         normalizes YouTube watch URLs to the canonical embed form, and
-         iframes also play direct media URLs (browser shows its native
-         video viewer) so a single renderer covers both. -->
+    <!-- Video -->
     <div v-else-if="cardType === 'video'" class="video-card">
       <div class="frame">
         <iframe
+          v-if="videoUsesIframe"
           class="player"
           :src="card.url"
           :title="card.title || ''"
@@ -33,7 +31,9 @@
           referrerpolicy="strict-origin-when-cross-origin"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
+          @error="onMediaError"
         />
+        <video v-else class="player" controls preload="metadata" :src="card.url" @error="onMediaError" />
       </div>
       <div v-if="card.title || card.duration" class="meta">
         <span v-if="card.title" class="title" :title="card.title">{{ card.title }}</span>
@@ -52,6 +52,7 @@
         :initial-index="0"
         :hide-on-click-modal="true"
         :preview-teleported="true"
+        @error="onMediaError"
       >
         <template #placeholder>
           <div class="image-placeholder" />
@@ -88,6 +89,10 @@ import { ElImage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IChatCard } from '@/models';
 
+interface IData {
+  mediaFailed: boolean;
+}
+
 export default defineComponent({
   name: 'EntityCard',
   components: { ElImage, FontAwesomeIcon },
@@ -97,12 +102,18 @@ export default defineComponent({
       required: true
     }
   },
+  data(): IData {
+    return {
+      mediaFailed: false
+    };
+  },
   computed: {
     /** Normalize the card type into one of the primary renderers. The
      * legacy `embed` type (briefly emitted by PlatformService #826) is
      * folded back into `video` so historical cards still render — the
      * worker no longer flips type, see PlatformService #827. */
     cardType(): 'audio' | 'video' | 'image' | 'file' {
+      if (this.mediaFailed) return 'file';
       const t = (this.card.type || '').toLowerCase();
       if (t === 'audio' || t === 'image') return t;
       if (t === 'video' || t === 'embed') return 'video';
@@ -110,6 +121,18 @@ export default defineComponent({
       if (this.card.mimeType?.startsWith('video/')) return 'video';
       if (this.card.mimeType?.startsWith('image/')) return 'image';
       return 'file';
+    },
+    mediaKey(): string {
+      return [this.card.url, this.card.type, this.card.mimeType || ''].join('\u0000');
+    },
+    videoUsesIframe(): boolean {
+      if ((this.card.type || '').toLowerCase() === 'embed') return true;
+      try {
+        const url = new URL(this.card.url);
+        return url.pathname.split('/').includes('embed');
+      } catch {
+        return false;
+      }
     },
     formattedDuration(): string {
       const total = this.card.duration ?? 0;
@@ -144,6 +167,16 @@ export default defineComponent({
       if (mime.includes('zip') || mime.includes('compressed')) return 'fa-solid fa-file-zipper';
       if (mime.startsWith('text/')) return 'fa-solid fa-file-lines';
       return 'fa-solid fa-file';
+    }
+  },
+  watch: {
+    mediaKey(): void {
+      this.mediaFailed = false;
+    }
+  },
+  methods: {
+    onMediaError(): void {
+      this.mediaFailed = true;
     }
   }
 });
