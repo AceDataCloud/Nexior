@@ -57,9 +57,41 @@ export default defineComponent({
   width: 260px;
   height: 100%;
   overflow-y: auto;
+  overscroll-behavior: contain;
   flex-shrink: 0;
   background-color: var(--app-sidebar-bg);
   border-right: 1px solid var(--app-border-subtle);
+
+  // Elegant, thin, hover-revealed scrollbar (ChatGPT/Linear-style).
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.25s ease;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    // Transparent border + padding-box clip slims the thumb to ~4px and
+    // floats it away from the panel edge.
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-radius: 999px;
+    background-color: transparent;
+    transition: background-color 0.25s ease;
+  }
+
+  &:hover {
+    scrollbar-color: var(--el-border-color) transparent;
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--el-border-color);
+    }
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--el-border-color-darker);
+  }
 }
 
 .chat {

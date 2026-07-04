@@ -309,7 +309,7 @@ export default defineComponent({
   flex-direction: column;
   align-items: flex-end;
   padding: 12px;
-  width: 260px;
+  width: 100%;
   height: 100%;
   border-right: none;
 
@@ -374,6 +374,7 @@ export default defineComponent({
       }
       .title {
         flex: 1;
+        min-width: 0;
         font-size: 14px;
         line-height: 40px;
         overflow: hidden;
