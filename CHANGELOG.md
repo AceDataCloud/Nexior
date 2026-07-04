@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 06:30:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 06:39:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.14
+
+Sat, 04 Jul 2026 06:39:50 GMT
+
+### Patches
+
+- fix(chat): 让用户发送与历史消息也显示复制按钮 (dev@acedata.cloud)
 
 ## 3.313.13
 
