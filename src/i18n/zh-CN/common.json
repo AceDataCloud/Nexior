@@ -831,6 +831,42 @@
     "message": "API Key",
     "description": "设置页面侧边栏的 API Key 标签——用户自带（BYOK）的上游服务商 API Key 管理"
   },
+  "settings.memory": {
+    "message": "记忆",
+    "description": "设置弹窗侧边栏的「记忆」标签，用户在此查看和管理助手记住的关于自己的信息"
+  },
+  "settings.memoryIntro": {
+    "message": "助手会记住你在对话中提到的有用信息，从而在不同对话里给出更贴合你的个性化回复。你拥有完全的控制权——可以查看已保存的内容，并删除不希望它记住的部分。",
+    "description": "记忆设置标签页顶部的介绍文字"
+  },
+  "settings.memoryNeedsChat": {
+    "message": "请先开始一次对话以启用记忆功能。",
+    "description": "当聊天应用/令牌尚未加载时，在记忆设置标签页显示"
+  },
+  "settings.memoryStored": {
+    "message": "已保存的记忆",
+    "description": "已存储记忆条目列表上方的分区标题"
+  },
+  "settings.memoryEmpty": {
+    "message": "暂无保存的记忆。随着你的使用，助手会在这里记住持久的偏好和信息。",
+    "description": "用户没有任何已存储记忆时显示的空状态"
+  },
+  "settings.memoryForget": {
+    "message": "忘记",
+    "description": "记忆条目行上删除该单条记忆的按钮"
+  },
+  "settings.memoryClearAll": {
+    "message": "清空全部",
+    "description": "一次性删除所有已存储记忆的按钮"
+  },
+  "settings.memoryClearConfirm": {
+    "message": "这将永久删除助手记住的关于你的所有信息，且无法撤销。",
+    "description": "清空全部记忆前的确认弹窗内容"
+  },
+  "settings.memoryError": {
+    "message": "操作失败，请重试。",
+    "description": "记忆删除/清空操作失败时显示的错误提示"
+  },
   "field.operations": {
     "message": "操作",
     "description": "通用列标题：表格行的操作按钮列（编辑、删除等）"

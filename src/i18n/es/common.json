@@ -831,6 +831,42 @@
     "message": "Clave API",
     "description": "Etiqueta de la clave API en la barra lateral de la página de configuración: gestión de claves API de proveedores de servicios upstream (BYOK)"
   },
+  "settings.memory": {
+    "message": "Memoria",
+    "description": "Etiqueta 'Memoria' en la barra lateral del cuadro de configuración, donde los usuarios pueden ver y gestionar la información que el asistente ha recordado sobre ellos."
+  },
+  "settings.memoryIntro": {
+    "message": "El asistente recordará la información útil que mencionas en las conversaciones para ofrecer respuestas más personalizadas en diferentes diálogos. Tienes control total: puedes ver el contenido guardado y eliminar lo que no deseas que recuerde.",
+    "description": "Texto introductorio en la parte superior de la pestaña de configuración de memoria."
+  },
+  "settings.memoryNeedsChat": {
+    "message": "Por favor, inicia una conversación para habilitar la función de memoria.",
+    "description": "Se muestra en la pestaña de configuración de memoria cuando la aplicación de chat/token aún no se ha cargado."
+  },
+  "settings.memoryStored": {
+    "message": "Recuerdos guardados",
+    "description": "Título de la sección sobre la lista de entradas de recuerdos almacenados."
+  },
+  "settings.memoryEmpty": {
+    "message": "No hay recuerdos guardados.",
+    "description": "Estado vacío que se muestra cuando el usuario no tiene recuerdos almacenados."
+  },
+  "settings.memoryForget": {
+    "message": "Olvidar",
+    "description": "Botón para eliminar un recuerdo específico en la fila de entrada de memoria."
+  },
+  "settings.memoryClearAll": {
+    "message": "Borrar todo",
+    "description": "Botón para eliminar de una vez todos los recuerdos almacenados."
+  },
+  "settings.memoryClearConfirm": {
+    "message": "Esto eliminará permanentemente toda la información que el asistente ha recordado sobre ti y no se podrá deshacer.",
+    "description": "Contenido del cuadro de confirmación antes de borrar toda la memoria."
+  },
+  "settings.memoryError": {
+    "message": "Operación fallida, por favor intenta de nuevo.",
+    "description": "Mensaje de error que se muestra cuando falla la operación de eliminación/borrado de memoria."
+  },
   "field.operations": {
     "message": "Operaciones",
     "description": "Título de columna genérico: columna de botones de operación en las filas de la tabla (editar, eliminar, etc.)"

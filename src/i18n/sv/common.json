@@ -831,6 +831,42 @@
     "message": "API-nyckel",
     "description": "API-nyckel etikett i sidofältet på inställningssidan - hantering av API-nycklar från uppströmsleverantörer (BYOK)"
   },
+  "settings.memory": {
+    "message": "Minne",
+    "description": "Inställning för sidofältet i popup-fönstret med etiketten 'Minne', där användaren kan se och hantera information som assistenten har kommit ihåg om sig själv."
+  },
+  "settings.memoryIntro": {
+    "message": "Assistenten kommer att komma ihåg användbar information som du nämner i konversationer för att ge mer personliga svar i olika samtal. Du har full kontroll - du kan se det sparade innehållet och ta bort det du inte vill att den ska komma ihåg.",
+    "description": "Introduktionstexten högst upp på minnesinställningssidan."
+  },
+  "settings.memoryNeedsChat": {
+    "message": "Vänligen starta en konversation för att aktivera minnesfunktionen.",
+    "description": "Visas på minnesinställningssidan när chattapplikationen/token ännu inte har laddats."
+  },
+  "settings.memoryStored": {
+    "message": "Sparade minnen",
+    "description": "Rubriken ovanför listan med sparade minnesposter."
+  },
+  "settings.memoryEmpty": {
+    "message": "Inga sparade minnen än. Med tiden kommer assistenten att komma ihåg dina bestående preferenser och information här.",
+    "description": "Visas när användaren inte har några sparade minnen."
+  },
+  "settings.memoryForget": {
+    "message": "Glöm",
+    "description": "Knappen för att ta bort en specifik minnespost på raden för minnesposten."
+  },
+  "settings.memoryClearAll": {
+    "message": "Rensa allt",
+    "description": "En knapp för att permanent ta bort all sparad information på en gång."
+  },
+  "settings.memoryClearConfirm": {
+    "message": "Detta kommer permanent att ta bort all information som assistenten har kommit ihåg om dig och kan inte ångras.",
+    "description": "Bekräftelseinnehållet innan all minnesinformation rensas."
+  },
+  "settings.memoryError": {
+    "message": "Åtgärden misslyckades, försök igen.",
+    "description": "Felmeddelande som visas när radering/rensning av minne misslyckas."
+  },
   "field.operations": {
     "message": "Åtgärder",
     "description": "Allmän kolumnrubrik: kolumn för åtgärdsknappar i tabellrader (redigera, ta bort etc.)"

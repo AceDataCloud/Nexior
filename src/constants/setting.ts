@@ -7,6 +7,7 @@
  */
 export const SETTING_TAB_GENERAL = 'general';
 export const SETTING_TAB_API_KEY = 'apiKey';
+export const SETTING_TAB_MEMORY = 'memory';
 export const SETTING_TAB_SITE = 'site';
 export const SETTING_TAB_SEO = 'seo';
 export const SETTING_TAB_DISTRIBUTION = 'distribution';
@@ -20,6 +21,7 @@ export const SETTING_TAB_ABOUT = 'about';
 export type SettingTabKey =
   | typeof SETTING_TAB_GENERAL
   | typeof SETTING_TAB_API_KEY
+  | typeof SETTING_TAB_MEMORY
   | typeof SETTING_TAB_SITE
   | typeof SETTING_TAB_SEO
   | typeof SETTING_TAB_DISTRIBUTION

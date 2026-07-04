@@ -38,6 +38,9 @@
         <div v-else-if="currentTab === SETTING_TAB_API_KEY">
           <byok-setting />
         </div>
+        <div v-else-if="currentTab === SETTING_TAB_MEMORY">
+          <memory-setting />
+        </div>
         <div v-else-if="currentTab === SETTING_TAB_SITE && isSiteConfigVisible">
           <site-setting />
         </div>
@@ -78,6 +81,7 @@ import {
   faCog,
   faBell,
   faKey,
+  faBrain,
   faUserShield,
   faMagic,
   faMoneyBill,
@@ -89,6 +93,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
+import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
@@ -101,6 +106,7 @@ import LocalToolsSetting from '@/components/setting/LocalTools.vue';
 import {
   SETTING_TAB_ABOUT,
   SETTING_TAB_API_KEY,
+  SETTING_TAB_MEMORY,
   SETTING_TAB_AUTH,
   SETTING_TAB_DISTRIBUTION,
   SETTING_TAB_FUNCTION,
@@ -125,6 +131,7 @@ export default defineComponent({
     FontAwesomeIcon,
     GeneralSetting,
     ByokSetting,
+    MemorySetting,
     SiteSetting,
     SeoSetting,
     DistributionSetting,
@@ -152,6 +159,7 @@ export default defineComponent({
       // and the navItems list refer to one source of truth.
       SETTING_TAB_GENERAL,
       SETTING_TAB_API_KEY,
+      SETTING_TAB_MEMORY,
       SETTING_TAB_SITE,
       SETTING_TAB_SEO,
       SETTING_TAB_DISTRIBUTION,
@@ -171,6 +179,7 @@ export default defineComponent({
       return [
         { key: SETTING_TAB_GENERAL, label: this.$t('common.settings.general'), icon: faCog, visible: true },
         { key: SETTING_TAB_API_KEY, label: this.$t('common.settings.apiKey'), icon: faKey, visible: true },
+        { key: SETTING_TAB_MEMORY, label: this.$t('common.settings.memory'), icon: faBrain, visible: true },
         {
           key: SETTING_TAB_SITE,
           label: this.$t('common.settings.site'),
