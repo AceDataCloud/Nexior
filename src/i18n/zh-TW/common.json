@@ -831,6 +831,42 @@
     "message": "API金鑰",
     "description": "設置頁面側邊欄的 API 金鑰標籤——用戶自帶（BYOK）的上游服務商 API 金鑰管理"
   },
+  "settings.memory": {
+    "message": "記憶",
+    "description": "設定彈窗側邊欄的「記憶」標籤，使用者在此查看和管理助手記住的關於自己的資訊"
+  },
+  "settings.memoryIntro": {
+    "message": "助手會記住你在對話中提到的有用資訊，從而在不同對話裡給出更貼合你的個性化回覆。你擁有完全的控制權——可以查看已保存的內容，並刪除不希望它記住的部分。",
+    "description": "記憶設定標籤頁頂部的介紹文字"
+  },
+  "settings.memoryNeedsChat": {
+    "message": "請先開始一次對話以啟用記憶功能。",
+    "description": "當聊天應用/令牌尚未加載時，在記憶設定標籤頁顯示"
+  },
+  "settings.memoryStored": {
+    "message": "已保存的記憶",
+    "description": "已儲存記憶條目列表上方的分區標題"
+  },
+  "settings.memoryEmpty": {
+    "message": "暫無保存的記憶。隨著你的使用，助手會在這裡記住持久的偏好和資訊。",
+    "description": "使用者沒有任何已儲存記憶時顯示的空狀態"
+  },
+  "settings.memoryForget": {
+    "message": "忘記",
+    "description": "記憶條目行上刪除該單條記憶的按鈕"
+  },
+  "settings.memoryClearAll": {
+    "message": "清空全部",
+    "description": "一次性刪除所有已儲存記憶的按鈕"
+  },
+  "settings.memoryClearConfirm": {
+    "message": "這將永久刪除助手記住的關於你的所有資訊，且無法撤銷。",
+    "description": "清空全部記憶前的確認彈窗內容"
+  },
+  "settings.memoryError": {
+    "message": "操作失敗，請重試。",
+    "description": "記憶刪除/清空操作失敗時顯示的錯誤提示"
+  },
   "field.operations": {
     "message": "操作",
     "description": "通用列標題：表格行的操作按鈕列（編輯、刪除等）"

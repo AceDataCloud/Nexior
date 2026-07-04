@@ -831,6 +831,42 @@
     "message": "APIキー",
     "description": "設定ページのサイドバーのAPIキーラベル - ユーザー持参（BYOK）の上流サービスプロバイダーAPIキー管理"
   },
+  "settings.memory": {
+    "message": "記憶",
+    "description": "設定ポップアップサイドバーの「記憶」タブ。ユーザーはここでアシスタントが覚えている自分に関する情報を確認・管理します。"
+  },
+  "settings.memoryIntro": {
+    "message": "アシスタントは、あなたが対話中に言及した有用な情報を記憶し、異なる対話でよりあなたに合ったパーソナライズされた返信を提供します。あなたは完全なコントロールを持っており、保存された内容を確認し、覚えてほしくない部分を削除できます。",
+    "description": "記憶設定タブの上部にある紹介文です。"
+  },
+  "settings.memoryNeedsChat": {
+    "message": "記憶機能を有効にするには、まず対話を開始してください。",
+    "description": "チャットアプリ/トークンがまだ読み込まれていない場合、記憶設定タブに表示されます。"
+  },
+  "settings.memoryStored": {
+    "message": "保存された記憶",
+    "description": "保存された記憶エントリーリストの上部にあるセクションタイトルです。"
+  },
+  "settings.memoryEmpty": {
+    "message": "保存された記憶はありません。使用するにつれて、アシスタントはここに持続的な好みや情報を記憶します。",
+    "description": "ユーザーに保存された記憶がない場合に表示される空の状態です。"
+  },
+  "settings.memoryForget": {
+    "message": "忘れる",
+    "description": "記憶エントリー行上でその単一の記憶を削除するボタンです。"
+  },
+  "settings.memoryClearAll": {
+    "message": "すべてクリア",
+    "description": "保存されたすべての記憶を一度に削除するボタンです。"
+  },
+  "settings.memoryClearConfirm": {
+    "message": "これにより、アシスタントがあなたについて覚えているすべての情報が永久に削除され、元に戻すことはできません。",
+    "description": "すべての記憶をクリアする前の確認ポップアップの内容です。"
+  },
+  "settings.memoryError": {
+    "message": "操作に失敗しました。再試行してください。",
+    "description": "記憶の削除/クリア操作が失敗したときに表示されるエラーメッセージです。"
+  },
   "field.operations": {
     "message": "操作",
     "description": "一般的な列タイトル：表の行の操作ボタン列（編集、削除など）"

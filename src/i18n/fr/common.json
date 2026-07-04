@@ -831,6 +831,42 @@
     "message": "Clé API",
     "description": "Étiquette de la clé API dans la barre latérale de la page des paramètres - gestion de la clé API des fournisseurs de services en amont (BYOK)"
   },
+  "settings.memory": {
+    "message": "Mémoire",
+    "description": "Étiquette « Mémoire » dans la barre latérale des paramètres, où l'utilisateur peut consulter et gérer les informations que l'assistant a retenues à son sujet."
+  },
+  "settings.memoryIntro": {
+    "message": "L'assistant retiendra les informations utiles que vous mentionnez dans les conversations, afin de fournir des réponses plus personnalisées dans différentes discussions. Vous avez un contrôle total - vous pouvez consulter le contenu enregistré et supprimer ce que vous ne souhaitez pas qu'il retienne.",
+    "description": "Texte d'introduction en haut de l'onglet des paramètres de mémoire."
+  },
+  "settings.memoryNeedsChat": {
+    "message": "Veuillez d'abord commencer une conversation pour activer la fonction de mémoire.",
+    "description": "Affiché dans l'onglet des paramètres de mémoire lorsque l'application de chat/token n'est pas encore chargée."
+  },
+  "settings.memoryStored": {
+    "message": "Mémoires enregistrées",
+    "description": "Titre de la section au-dessus de la liste des entrées de mémoire enregistrées."
+  },
+  "settings.memoryEmpty": {
+    "message": "Aucune mémoire enregistrée pour le moment. Au fur et à mesure de votre utilisation, l'assistant retiendra ici vos préférences et informations durables.",
+    "description": "État vide affiché lorsque l'utilisateur n'a aucune mémoire enregistrée."
+  },
+  "settings.memoryForget": {
+    "message": "Oublier",
+    "description": "Bouton pour supprimer une entrée de mémoire spécifique sur la ligne de l'élément de mémoire."
+  },
+  "settings.memoryClearAll": {
+    "message": "Tout effacer",
+    "description": "Bouton pour supprimer toutes les mémoires enregistrées en une seule fois."
+  },
+  "settings.memoryClearConfirm": {
+    "message": "Cela supprimera définitivement toutes les informations que l'assistant a retenues à votre sujet et ne peut pas être annulé.",
+    "description": "Contenu de la fenêtre de confirmation avant de tout effacer."
+  },
+  "settings.memoryError": {
+    "message": "Échec de l'opération, veuillez réessayer.",
+    "description": "Message d'erreur affiché lorsque la suppression ou l'effacement de la mémoire échoue."
+  },
   "field.operations": {
     "message": "Opérations",
     "description": "Titre de colonne générique : colonne des boutons d'opération des lignes de tableau (modifier, supprimer, etc.)"
