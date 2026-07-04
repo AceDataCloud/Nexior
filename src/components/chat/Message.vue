@@ -153,7 +153,7 @@
         class="operations"
       >
         <edit-message
-          v-if="message.role === 'user' && !isEditing && !Array.isArray(message.content)"
+          v-if="!readonly && message.role === 'user' && !isEditing && !Array.isArray(message.content)"
           class="btn-edit"
           @click="startEditing"
         />
@@ -164,6 +164,7 @@
         />
         <restart-to-generate
           v-if="
+            !readonly &&
             (message.state === messageState.FINISHED || message.state === messageState.FAILED) &&
             message.role === 'assistant' &&
             message === messages[messages.length - 1]
@@ -179,7 +180,7 @@
         <font-awesome-icon icon="fa-solid fa-circle-exclamation" class="error-icon" />
         <span class="error-text">{{ errorText }}</span>
       </div>
-      <el-button v-if="showBuyMore" round type="primary" class="btn-topup" size="small" @click="onBuyMore">
+      <el-button v-if="showBuyMore && !readonly" round type="primary" class="btn-topup" size="small" @click="onBuyMore">
         {{ $t('common.button.buyMore') }}
       </el-button>
     </div>
@@ -193,7 +194,7 @@ import copy from 'copy-to-clipboard';
 import { ElButton, ElImage, ElInput } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
-import { IApplication, IChatMessage, IChatMessageState } from '@/models';
+import { IApplication, IChatMessage, IChatMessageState, IChatModelGroup } from '@/models';
 import type { IAskUserQuestionPayload, IChatMessageContentItem, IConsentRequestPayload } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import RestartToGenerate from './RestartToGenerate.vue';
@@ -259,6 +260,25 @@ export default defineComponent({
     application: {
       type: Object as () => IApplication | undefined,
       required: true
+    },
+    /**
+     * Read-only rendering for the public /share/:id page: hides the
+     * owner-only actions (edit, regenerate, top-up) so an anonymous viewer
+     * sees the transcript but cannot act on it.
+     */
+    readonly: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * Assistant-avatar model group for contexts where the chat store isn't
+     * the source of truth (the shared page has no active chat session).
+     * Falls back to the store when absent.
+     */
+    modelGroupOverride: {
+      type: Object as () => IChatModelGroup | undefined,
+      required: false,
+      default: undefined
     }
   },
   emits: [
@@ -280,7 +300,10 @@ export default defineComponent({
   },
   computed: {
     modelGroup() {
-      return this.$store.state.chat.modelGroup;
+      // Prefer an explicit override (shared page); otherwise read the active
+      // chat session. Optional chaining guards the case where the chat store
+      // module isn't registered (anonymous /share/:id route).
+      return this.modelGroupOverride || this.$store.state.chat?.modelGroup;
     },
     // Plain-text view of `message.content` for the copy button. Assistant
     // messages are now stored as IChatMessageContentItem[] (text + tool_use

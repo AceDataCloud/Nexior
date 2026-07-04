@@ -810,5 +810,77 @@
   "artifacts.kind.other": {
     "message": "Other",
     "description": "Artifact kind - Other"
+  },
+  "share.menu": {
+    "message": "Share",
+    "description": "Sidebar/toolbar menu item that opens the share-conversation dialog"
+  },
+  "share.dialogTitle": {
+    "message": "Share conversation",
+    "description": "Title of the share-conversation dialog"
+  },
+  "share.description": {
+    "message": "Anyone with the link can view this conversation. They cannot continue the chat.",
+    "description": "Explains what happens when a conversation is shared"
+  },
+  "share.createLink": {
+    "message": "Create share link",
+    "description": "Button that creates a public share link for the conversation"
+  },
+  "share.copy": {
+    "message": "Copy link",
+    "description": "Button that copies the share link to the clipboard"
+  },
+  "share.copied": {
+    "message": "Copied",
+    "description": "Label shown briefly on the copy button after the link is copied"
+  },
+  "share.disable": {
+    "message": "Disable link",
+    "description": "Button that revokes the share link so the URL stops working"
+  },
+  "share.disabled": {
+    "message": "Share link disabled.",
+    "description": "Message shown after the share link is disabled"
+  },
+  "share.needLogin": {
+    "message": "Please sign in first to share this conversation.",
+    "description": "Error shown when a guest tries to share a conversation without signing in"
+  },
+  "share.noConversation": {
+    "message": "Open a conversation first, then share it.",
+    "description": "Error shown when the share button is used with no active conversation"
+  },
+  "share.createFailed": {
+    "message": "Failed to create share link, please try again later.",
+    "description": "Error toast when creating a share link fails"
+  },
+  "share.disableFailed": {
+    "message": "Failed to disable share link, please try again later.",
+    "description": "Error toast when revoking a share link fails"
+  },
+  "share.startYourOwn": {
+    "message": "Start your own chat",
+    "description": "Call-to-action shown on the public share page linking anonymous viewers to the app home"
+  },
+  "share.unavailableTitle": {
+    "message": "This shared conversation is unavailable.",
+    "description": "Heading shown on the public share page when the share link is invalid or revoked"
+  },
+  "share.unavailableHint": {
+    "message": "The owner may have disabled the link or the URL is incorrect.",
+    "description": "Hint shown on the public share page when the share link is invalid or revoked"
+  },
+  "share.viewOnly": {
+    "message": "View-only shared conversation",
+    "description": "Badge shown on the public share page indicating the conversation is read-only"
+  },
+  "share.untitled": {
+    "message": "Untitled conversation",
+    "description": "Placeholder title used when a shared conversation has no title"
+  },
+  "share.footerNote": {
+    "message": "You are viewing a shared conversation. To chat with AI yourself, click above.",
+    "description": "Footer note shown on the public share page under the conversation"
   }
 }

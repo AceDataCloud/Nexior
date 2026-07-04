@@ -7,6 +7,11 @@
           <byok-badge class="byok-badge" />
         </div>
         <div class="toolbar-actions">
+          <el-tooltip v-if="conversationId" :content="$t('chat.share.menu')" placement="bottom">
+            <el-button class="toolbar-btn" text @click="shareDialogVisible = true">
+              <font-awesome-icon icon="fa-solid fa-share-nodes" />
+            </el-button>
+          </el-tooltip>
           <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
             <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
               <font-awesome-icon icon="fa-solid fa-desktop" />
@@ -22,6 +27,12 @@
         :agent-name="agentName"
         :tool-count="agentToolCount"
         :connected-at="agentConnectedAt"
+      />
+      <share-conversation-dialog
+        v-model="shareDialogVisible"
+        :conversation-id="conversationId"
+        :share-id="conversation?.share_id"
+        @update:share-id="onShareIdUpdated"
       />
       <div :class="{ dialogue: true, empty: messages.length === 0 }">
         <div v-if="messages.length > 0" class="messages">
@@ -77,6 +88,7 @@ import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import BYOKBadge from '@/components/chat/BYOKBadge.vue';
+import ShareConversationDialog from '@/components/chat/ShareConversationDialog.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -119,6 +131,7 @@ export interface IData {
   agentName: string;
   agentToolCount: number;
   agentConnectedAt: string;
+  shareDialogVisible: boolean;
   /**
    * Set right before pushing the URL for a freshly-completed chat so the
    * `conversationId` watcher can recognise the change as “already loaded
@@ -158,6 +171,7 @@ export default defineComponent({
     ModelSelector,
     DesktopAgentManager,
     'byok-badge': BYOKBadge,
+    ShareConversationDialog,
     Message,
     Layout,
     ElTooltip,
@@ -180,6 +194,7 @@ export default defineComponent({
       agentName: '',
       agentToolCount: 0,
       agentConnectedAt: '',
+      shareDialogVisible: false,
       skipNextRestoreId: undefined,
       messages: [],
       pendingConsentReturn: null
@@ -321,6 +336,12 @@ export default defineComponent({
       // Drop any deferred desktop client tool from a prior turn so a new chat
       // never auto-runs a stale tool against the wrong conversation.
       this.pendingClientTools = [];
+    },
+    onShareIdUpdated(shareId?: string) {
+      // Keep the store conversation in sync so the dialog reopens with the
+      // current link (or the "create" state after revoking).
+      if (!this.conversation) return;
+      this.$store.dispatch('chat/setConversation', { ...this.conversation, share_id: shareId });
     },
     // Idempotent restore for the URL-pinned conversation. Bails on
     // missing token (credential.token watcher will retry), missing :id
