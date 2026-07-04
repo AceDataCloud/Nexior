@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 07:21:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 07:30:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.18
+
+Sat, 04 Jul 2026 07:30:25 GMT
+
+### Patches
+
+- style: apply the elegant thin scrollbar globally (desktop/mouse only) (dev@acedata.cloud)
 
 ## 3.313.17
 
