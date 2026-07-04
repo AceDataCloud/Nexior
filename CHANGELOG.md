@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 06:23:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 06:30:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.13
+
+Sat, 04 Jul 2026 06:30:27 GMT
+
+### Patches
+
+- Fix chat conversation restore when cached summaries contain empty messages. (dev@acedata.cloud)
 
 ## 3.313.12
 
