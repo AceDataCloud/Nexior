@@ -136,16 +136,16 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: var(--el-bg-color);
+  background: #fff;
+  border: 1px solid rgba(17, 24, 39, 0.08);
   font-size: 14px;
   overflow: hidden;
 }
 
 .icon-logo {
-  width: 100%;
-  height: 100%;
+  width: 72%;
+  height: 72%;
   object-fit: contain;
-  border-radius: 50%;
 }
 
 .icon-connected {

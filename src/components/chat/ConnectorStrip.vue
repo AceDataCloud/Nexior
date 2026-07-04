@@ -115,8 +115,8 @@ export default defineComponent({
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-    background-color: var(--el-fill-color-light);
-    border: 1px solid var(--el-border-color-lighter);
+    background-color: #fff;
+    border: 1px solid rgba(17, 24, 39, 0.08);
     transition:
       transform 0.12s ease,
       box-shadow 0.12s ease;
@@ -125,9 +125,9 @@ export default defineComponent({
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
     }
     .connector-icon {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 72%;
+      height: 72%;
+      object-fit: contain;
       display: block;
     }
     &.connector-more {
