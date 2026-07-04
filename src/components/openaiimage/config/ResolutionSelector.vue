@@ -73,6 +73,7 @@ import {
   OPENAIIMAGE_DEFAULT_MODEL,
   OPENAIIMAGE_DEFAULT_SIZE,
   OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
   OPENAIIMAGE_MODEL_SIZES,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K,
   OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K,
@@ -131,7 +132,7 @@ export default defineComponent({
       return OPENAIIMAGE_MODEL_SIZES[this.model] ?? OPENAIIMAGE_MODEL_SIZES[OPENAIIMAGE_DEFAULT_MODEL] ?? [];
     },
     presetGroups(): IGroup[] {
-      if (this.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2) {
+      if (this.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2 || this.model === OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL) {
         return [
           { label: this.$t('openaiimage.sizeGroup.standard1k'), options: OPENAIIMAGE_SIZES_GPT_IMAGE_2_1K },
           { label: this.$t('openaiimage.sizeGroup.preset2k'), options: OPENAIIMAGE_SIZES_GPT_IMAGE_2_2K },
