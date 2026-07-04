@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 04:48:46 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 05:32:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.11
+
+Sat, 04 Jul 2026 05:32:52 GMT
+
+### Patches
+
+- fix(download): drop hardcoded version labels; Windows/macOS link to the GitHub Releases page (cqc@cuiqingcai.com)
 
 ## 3.313.10
 
