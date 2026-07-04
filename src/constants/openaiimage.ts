@@ -6,6 +6,9 @@ export const OPENAIIMAGE_LOGO = CHAT_MODEL_ICON_CHATGPT;
 export const OPENAIIMAGE_MODEL_GPT_IMAGE_1 = 'gpt-image-1';
 export const OPENAIIMAGE_MODEL_GPT_IMAGE_15 = 'gpt-image-1.5';
 export const OPENAIIMAGE_MODEL_GPT_IMAGE_2 = 'gpt-image-2';
+// Official-relay variant (openai-hk gpt-image-2-vip upstream). Same feature set
+// as gpt-image-2, billed at a higher tier.
+export const OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL = 'gpt-image-2:official';
 
 export const OPENAIIMAGE_DEFAULT_MODEL = OPENAIIMAGE_MODEL_GPT_IMAGE_2;
 
@@ -84,11 +87,15 @@ export const OPENAIIMAGE_SIZES_GPT_IMAGE_2: string[] = [
 export const OPENAIIMAGE_MODEL_SIZES: Record<string, string[]> = {
   [OPENAIIMAGE_MODEL_GPT_IMAGE_1]: OPENAIIMAGE_SIZES_GPT_IMAGE_1,
   [OPENAIIMAGE_MODEL_GPT_IMAGE_15]: OPENAIIMAGE_SIZES_GPT_IMAGE_15,
-  [OPENAIIMAGE_MODEL_GPT_IMAGE_2]: OPENAIIMAGE_SIZES_GPT_IMAGE_2
+  [OPENAIIMAGE_MODEL_GPT_IMAGE_2]: OPENAIIMAGE_SIZES_GPT_IMAGE_2,
+  [OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL]: OPENAIIMAGE_SIZES_GPT_IMAGE_2
 };
 
 // Models that allow arbitrary WIDTHxHEIGHT (subject to validation).
-export const OPENAIIMAGE_CUSTOM_SIZE_MODELS: string[] = [OPENAIIMAGE_MODEL_GPT_IMAGE_2];
+export const OPENAIIMAGE_CUSTOM_SIZE_MODELS: string[] = [
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
+];
 
 // Custom-size validation constants for gpt-image-2. Mirrors upstream constraints
 // documented in the OpenAPI `size` description: multiples of 16, longer side

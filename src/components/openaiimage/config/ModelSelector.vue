@@ -19,7 +19,8 @@ import {
   OPENAIIMAGE_DEFAULT_MODEL,
   OPENAIIMAGE_MODEL_GPT_IMAGE_1,
   OPENAIIMAGE_MODEL_GPT_IMAGE_15,
-  OPENAIIMAGE_MODEL_GPT_IMAGE_2
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2,
+  OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL
 } from '@/constants';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
@@ -44,6 +45,10 @@ export default defineComponent({
         {
           value: OPENAIIMAGE_MODEL_GPT_IMAGE_2,
           label: this.$t('openaiimage.model.gptImage2')
+        },
+        {
+          value: OPENAIIMAGE_MODEL_GPT_IMAGE_2_OFFICIAL,
+          label: this.$t('openaiimage.model.gptImage2Official')
         }
       ]
     };
