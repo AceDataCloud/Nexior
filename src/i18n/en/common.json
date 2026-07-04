@@ -811,6 +811,42 @@
     "message": "API Key",
     "description": "API Key label in the settings page sidebar - management of user-provided (BYOK) upstream service provider API Keys"
   },
+  "settings.memory": {
+    "message": "Memory",
+    "description": "Sidebar label for the Memory tab in the settings dialog, where users view and manage what the assistant remembers about them"
+  },
+  "settings.memoryIntro": {
+    "message": "The assistant remembers useful details from your chats to give you better, more personalized responses across conversations. You're in control — review anything it has saved and remove what you don't want it to keep.",
+    "description": "Intro paragraph at the top of the Memory settings tab"
+  },
+  "settings.memoryNeedsChat": {
+    "message": "Start a chat first to enable memory.",
+    "description": "Shown in the Memory settings tab when the chat application/token has not loaded yet"
+  },
+  "settings.memoryStored": {
+    "message": "Saved memories",
+    "description": "Section heading above the list of stored memory entries"
+  },
+  "settings.memoryEmpty": {
+    "message": "Nothing saved yet. As you chat, the assistant will remember durable preferences and facts here.",
+    "description": "Empty state shown when the user has no stored memories"
+  },
+  "settings.memoryForget": {
+    "message": "Forget",
+    "description": "Button on a memory row to delete that single memory entry"
+  },
+  "settings.memoryClearAll": {
+    "message": "Clear all",
+    "description": "Button to delete all stored memories at once"
+  },
+  "settings.memoryClearConfirm": {
+    "message": "This permanently deletes everything the assistant has remembered about you. This cannot be undone.",
+    "description": "Confirmation dialog message shown before clearing all memories"
+  },
+  "settings.memoryError": {
+    "message": "Something went wrong. Please try again.",
+    "description": "Error toast shown when a memory delete/clear operation fails"
+  },
   "field.operations": {
     "message": "Actions",
     "description": "Generic column title: column for action buttons in table rows (edit, delete, etc.)"
