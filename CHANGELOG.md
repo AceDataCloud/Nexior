@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 06:39:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 06:51:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.15
+
+Sat, 04 Jul 2026 06:51:18 GMT
+
+### Patches
+
+- style(chat): remove conversation-list horizontal scroll and add elegant thin scrollbar (dev@acedata.cloud)
 
 ## 3.313.14
 
