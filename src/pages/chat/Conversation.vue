@@ -95,6 +95,7 @@ import {
   repairInstallReturnToUrl,
   type IConsentReturn
 } from '@/components/chat/consentReturn';
+import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -599,7 +600,7 @@ export default defineComponent({
       //    Side-panel summaries do NOT include `messages`, so we always
       //    need a `retrieve` call the first time a conversation is opened.
       let conversation: IChatConversation | undefined = this.conversations?.find((c: IChatConversation) => c.id === id);
-      if (!conversation || !conversation.messages) {
+      if (!hasLoadedConversationMessages(conversation)) {
         const fetched = await this.$store.dispatch('chat/getConversation', id);
         if (fetched) conversation = fetched;
       }
