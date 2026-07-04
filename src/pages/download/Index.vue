@@ -2,6 +2,12 @@
   <div class="download-page">
     <div class="download-page__glow" aria-hidden="true"></div>
     <div class="download-page__inner">
+      <!-- Bare layout has no app chrome (native/desktop have no browser back) — always offer a way back. -->
+      <button type="button" class="download-back" @click="goBack">
+        <font-awesome-icon :icon="faArrowLeft" class="download-back__icon" />
+        <span>{{ $t('common.button.goBack') }}</span>
+      </button>
+
       <!-- Hero -->
       <header class="hero">
         <span class="hero__brand">
@@ -274,7 +280,7 @@ import { ElButton } from 'element-plus';
 import QrCode from 'vue-qrcode';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faAndroid, faApple, faGooglePlay, faWindows } from '@fortawesome/free-brands-svg-icons';
-import { faDownload, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faCircleInfo, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import defaultLogo from '@/assets/images/logo.png';
 import {
   DESKTOP_APP_VERSION,
@@ -303,7 +309,8 @@ export default defineComponent({
       faGooglePlay,
       faWindows,
       faDownload,
-      faCircleInfo
+      faCircleInfo,
+      faArrowLeft
     };
   },
   computed: {
@@ -360,6 +367,13 @@ export default defineComponent({
     }
   },
   methods: {
+    goBack() {
+      if (window.history.length > 1) {
+        this.$router.back();
+      } else {
+        this.$router.push('/');
+      }
+    },
     openSupport() {
       window.open('https://platform.acedata.cloud/support', '_blank');
     }
@@ -395,6 +409,35 @@ export default defineComponent({
   max-width: 1080px;
   margin: 0 auto;
   padding: 72px 24px 96px;
+}
+
+.download-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 9px 16px 9px 13px;
+  border-radius: 999px;
+  background: var(--app-bg-section);
+  border: 1px solid var(--app-border-subtle);
+  color: var(--el-text-color-regular);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    color: var(--app-brand-hex);
+    border-color: rgba(var(--app-brand-rgb), 0.4);
+    transform: translateX(-2px);
+  }
+}
+
+.download-back__icon {
+  font-size: 13px;
 }
 
 /* Hero */
