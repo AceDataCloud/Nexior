@@ -133,6 +133,10 @@
       class="scheduled-task-dialog"
     >
       <el-form :model="form" label-width="92px">
+        <el-form-item :label="$t('chat.scheduledTasks.form.name')">
+          <el-input v-model="form.name" :placeholder="$t('chat.scheduledTasks.form.namePlaceholder')" maxlength="80" />
+        </el-form-item>
+
         <el-form-item :label="$t('chat.scheduledTasks.form.prompt')" required>
           <el-input
             v-model="form.question"
@@ -289,6 +293,7 @@ const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shangh
 const DEFAULT_SCHEDULED_MAX_TURNS = 50;
 
 interface TaskForm {
+  name: string;
   question: string;
   model: string;
   scheduleType: 'minutely' | 'daily' | 'hourly' | 'weekly' | 'cron';
@@ -372,6 +377,7 @@ export default defineComponent({
   methods: {
     emptyForm(): TaskForm {
       return {
+        name: '',
         question: '',
         model: CHAT_MODEL_NAME_GPT_5_4_MINI,
         scheduleType: 'daily',
@@ -383,7 +389,7 @@ export default defineComponent({
         maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
       };
     },
-    // The task name is no longer a separate field — derive a short label from the prompt.
+    // Fallback label when the user leaves the name field blank — derive from the prompt.
     deriveName(question: string): string {
       const firstLine = (question || '').trim().split('\n')[0].trim();
       return firstLine.length > 40 ? `${firstLine.slice(0, 40)}…` : firstLine || 'Scheduled Task';
@@ -446,6 +452,7 @@ export default defineComponent({
         else scheduleType = 'cron';
       }
       this.form = {
+        name: task.name,
         question: task.template.question,
         model: task.template.model,
         scheduleType,
@@ -500,7 +507,7 @@ export default defineComponent({
         const authorizedSkills = [...this.form.authorizedSkills];
         const authorizedMcpServers = [...this.form.authorizedMcpServers];
         const payload = {
-          name: this.deriveName(this.form.question),
+          name: this.form.name.trim() || this.deriveName(this.form.question),
           schedule: this.buildSchedule(),
           template: {
             model: this.form.model,
