@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 04:23:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 04:48:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.10
+
+Sat, 04 Jul 2026 04:48:46 GMT
+
+### Patches
+
+- fix(chat): repair connector install return_to so cookie/BYOC auth returns to a real conversation route instead of 404 (dev@acedata.cloud)
 
 ## 3.313.9
 
