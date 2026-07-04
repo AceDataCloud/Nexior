@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 05:32:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 06:23:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.12
+
+Sat, 04 Jul 2026 06:23:45 GMT
+
+### Patches
+
+- feat(chat): artifacts 产出物汇总页 + operator (dev@acedata.cloud)
 
 ## 3.313.11
 
