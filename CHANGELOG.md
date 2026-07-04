@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 10:26:14 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 10:46:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.314.2
+
+Sat, 04 Jul 2026 10:46:36 GMT
+
+### Patches
+
+- feat(openaiimage): 在 studio 图像模型下拉中新增 gpt-image-2 官方直连（gpt-image-2:official）选项，复用 gpt-image-2 的尺寸预设与自定义尺寸支持，并补全 17 种语言的 i18n 文案。 (dev@acedata.cloud)
 
 ## 3.314.1
 
