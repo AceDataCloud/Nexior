@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 07:30:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 07:32:47 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.19
+
+Sat, 04 Jul 2026 07:32:47 GMT
+
+### Patches
+
+- fix(scheduled-tasks): update task list in place instead of full reload (no page-refresh flash) (dev@acedata.cloud)
 
 ## 3.313.18
 
