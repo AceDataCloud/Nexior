@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 09:16:33 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 10:26:14 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.314.1
+
+Sat, 04 Jul 2026 10:26:14 GMT
+
+### Patches
+
+- feat(artifacts): 将 Output/产出 统一改名为 Artifacts；新增 Show hidden 开关与 Unhide 按钮，让被隐藏的 Artifact 可再次找到；reload/loadMore 增加请求 token 防止并发竞态。 (dev@acedata.cloud)
 
 ## 3.314.0
 
