@@ -1,10 +1,14 @@
 <script lang="ts">
 import type { PropType } from 'vue';
-import { defineComponent, computed, h } from 'vue';
+import { defineComponent, computed, h, inject } from 'vue';
 import MarkdownIt, { Options as MarkdownItOptions } from 'markdown-it';
 import hljs from 'highlight.js/lib/common';
 import 'katex/dist/katex.min.css';
 import { katex } from '@mdit/plugin-katex';
+
+// Inject key to force safe (no raw HTML) rendering. Set by anonymous / shared
+// surfaces via `provide('markdownSanitize', true)` — see pages/share/Conversation.vue.
+export const MARKDOWN_SANITIZE_KEY = 'markdownSanitize';
 
 export default defineComponent({
   name: 'VueMarkdown',
@@ -17,12 +21,24 @@ export default defineComponent({
       type: Object as PropType<MarkdownItOptions>,
       default: () => ({}),
       required: false
+    },
+    // Explicit prop overrides inject; useful when a specific instance needs
+    // to force safe rendering regardless of ancestor provide.
+    sanitize: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { attrs }) {
+    const sanitizeInjected = inject<boolean>(MARKDOWN_SANITIZE_KEY, false);
+    const safe = props.sanitize || sanitizeInjected;
     const md = new MarkdownIt({
       ...props.options,
-      html: true,
+      // Anonymous / shared surfaces disable inline HTML so attacker-controlled
+      // message content cannot inject <script>/<img onerror> when rendered to
+      // unauthenticated visitors. markdown-it's default validateLink also
+      // blocks javascript:/data: URLs in [text](href) links.
+      html: safe ? false : true,
       // Auto-link bare URLs (agent output is full of raw PR/doc links).
       linkify: true,
       // Bake syntax highlighting into the rendered HTML so it survives the

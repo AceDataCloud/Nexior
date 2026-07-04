@@ -271,6 +271,15 @@ export interface IChatConversation {
   editing?: boolean;
   new?: boolean;
   updated_at?: number;
+  /**
+   * Public share token when the owner has shared this conversation (via the
+   * `share` action), else absent. Present on side-panel summaries so the UI
+   * can show a "shared" affordance and build the /share/<id> link without a
+   * second round-trip. Cleared by `unshare`.
+   */
+  share_id?: string;
+  /** Unix seconds when the share snapshot was last (re)generated. */
+  shared_at?: number;
 }
 
 export interface IChatConversationOptions {
@@ -359,7 +368,15 @@ export enum IChatConversationAction {
   RETRIEVE = 'retrieve',
   UPDATE = 'update',
   DELETE = 'delete',
-  RETRIEVE_BATCH = 'retrieve_batch'
+  RETRIEVE_BATCH = 'retrieve_batch',
+  SHARE = 'share',
+  UNSHARE = 'unshare'
+}
+
+export interface IChatShareResponse {
+  id?: string;
+  share_id?: string;
+  shared_at?: number;
 }
 
 // ===== Tool Calling Types (aichat2 orchestrator) =====

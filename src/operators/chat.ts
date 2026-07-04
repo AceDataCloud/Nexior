@@ -7,7 +7,8 @@ import {
   IChatConversationOptions,
   IChatConversationRequest,
   IChatConversationResponse,
-  IChatConversationsResponse
+  IChatConversationsResponse,
+  IChatShareResponse
 } from '@/models';
 import { BASE_URL_API, ERROR_CODE_API_ERROR } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
@@ -238,6 +239,83 @@ class ChatOperator {
         signal: options.signal
       }
     );
+  }
+
+  /**
+   * Create or refresh a public, read-only share of a conversation. The
+   * worker freezes a snapshot and returns a stable `share_id` (reused on
+   * subsequent calls so previously-copied links keep working). Build the
+   * public URL as `${origin}/share/${share_id}`.
+   */
+  async shareConversation(id: string, options: IChatConversationOptions): Promise<AxiosResponse<IChatShareResponse>> {
+    return await axios.post(
+      `/aichat2/conversations`,
+      {
+        action: IChatConversationAction.SHARE,
+        id
+      },
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
+        },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  /** Revoke a conversation's public share (deletes the snapshot). */
+  async unshareConversation(
+    id: string,
+    options: IChatConversationOptions
+  ): Promise<AxiosResponse<{ id?: string; success?: boolean }>> {
+    return await axios.post(
+      `/aichat2/conversations`,
+      {
+        action: IChatConversationAction.UNSHARE,
+        id
+      },
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: `Bearer ${options.token}`,
+          'x-record-exempt': 'true'
+        },
+        baseURL: BASE_URL_API
+      }
+    );
+  }
+
+  /**
+   * ANONYMOUS read of a shared conversation snapshot. Deliberately uses
+   * `fetch` with NO Authorization header so it works for logged-out
+   * viewers — the `/aichat2/shared` path is public in PlatformGateway. The
+   * response carries only the redacted snapshot (no owner identity).
+   */
+  async getSharedConversation(shareId: string): Promise<IChatConversation> {
+    const response = await fetch(`${BASE_URL_API}/aichat2/shared`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...siteHeaders()
+      },
+      body: JSON.stringify({ share_id: shareId })
+    });
+    if (!response.ok) {
+      const status = response.status;
+      let code = ERROR_CODE_API_ERROR;
+      let message = 'An error occurred';
+      try {
+        const json = await response.json();
+        message = json?.message || json?.error?.message || message;
+        code = json?.error || json?.error?.code || code;
+      } catch {
+        // Non-JSON error body — keep the defaults.
+      }
+      throw new BaseError(status, code, message);
+    }
+    return (await response.json()) as IChatConversation;
   }
 }
 
