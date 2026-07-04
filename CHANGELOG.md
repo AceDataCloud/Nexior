@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 06:51:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 07:17:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.16
+
+Sat, 04 Jul 2026 07:17:54 GMT
+
+### Patches
+
+- Fallback failed chat media previews to file links. (dev@acedata.cloud)
 
 ## 3.313.15
 
