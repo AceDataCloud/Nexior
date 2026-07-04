@@ -498,11 +498,21 @@ export default defineComponent({
       this.saving = true;
       try {
         if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
-          await ElMessageBox.confirm(this.authorizationConfirmText(), this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string, {
-            type: 'warning',
-            confirmButtonText: this.$t('common.button.confirm') as string,
-            cancelButtonText: this.$t('common.button.cancel') as string
-          });
+          try {
+            await ElMessageBox.confirm(
+              this.authorizationConfirmText(),
+              this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string,
+              {
+                type: 'warning',
+                confirmButtonText: this.$t('common.button.confirm') as string,
+                cancelButtonText: this.$t('common.button.cancel') as string
+              }
+            );
+          } catch {
+            // User declined the skill/MCP authorization warning — abort quietly,
+            // it is a cancellation, not an error.
+            return;
+          }
         }
         const authorizedSkills = [...this.form.authorizedSkills];
         const authorizedMcpServers = [...this.form.authorizedMcpServers];
@@ -516,24 +526,31 @@ export default defineComponent({
             mcp_servers: authorizedMcpServers,
             max_turns: this.form.maxTurns
           },
-          unattended_policy: authorizedSkills.length || authorizedMcpServers.length
-            ? {
-                mode: 'allow_selected' as const,
-                allowed_skills: authorizedSkills,
-                allowed_mcp_servers: authorizedMcpServers
-              }
-            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
+          unattended_policy:
+            authorizedSkills.length || authorizedMcpServers.length
+              ? {
+                  mode: 'allow_selected' as const,
+                  allowed_skills: authorizedSkills,
+                  allowed_mcp_servers: authorizedMcpServers
+                }
+              : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
         };
         if (this.editingTask) {
-          await scheduledTasksOperator.updateTask(this.token!, this.editingTask.id, payload);
+          const editId = this.editingTask.id;
+          const updated = await scheduledTasksOperator.updateTask(this.token!, editId, payload);
+          // Patch the edited row in place — no full reload / skeleton flash.
+          const idx = this.tasks.findIndex((t) => t.id === editId);
+          if (idx !== -1) this.tasks[idx] = updated;
         } else {
-          await scheduledTasksOperator.createTask(this.token!, payload);
+          const created = await scheduledTasksOperator.createTask(this.token!, payload);
+          // Prepend the newcomer (backend lists newest-first) and jump to page 1.
+          this.tasks = [created, ...this.tasks];
+          this.page = 1;
         }
-        ElMessage.success(this.$t('chat.scheduledTasks.create') as string + ' OK');
+        ElMessage.success((this.$t('chat.scheduledTasks.create') as string) + ' OK');
         this.showCreateDialog = false;
         this.editingTask = null;
         this.form = this.emptyForm();
-        await this.loadTasks();
       } catch {
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       } finally {
@@ -541,7 +558,12 @@ export default defineComponent({
       }
     },
     async loadAuthorizableSkills(force = false) {
-      if (!this.token || this.skillsLoading || (!force && (this.authorizableSkills.length || this.authorizableMcpServers.length))) return;
+      if (
+        !this.token ||
+        this.skillsLoading ||
+        (!force && (this.authorizableSkills.length || this.authorizableMcpServers.length))
+      )
+        return;
       this.skillsLoading = true;
       try {
         const capabilities = await scheduledTasksOperator.listAuthorizableCapabilities(this.token);
@@ -579,18 +601,32 @@ export default defineComponent({
       }) as string;
     },
     async toggleState(task: IScheduledTask, enabled: boolean) {
-      await scheduledTasksOperator.updateTask(this.token!, task.id, {
-        state: enabled ? 'enabled' : 'disabled'
-      });
-      await this.loadTasks();
+      const idx = this.tasks.findIndex((t) => t.id === task.id);
+      const nextState = enabled ? 'enabled' : 'disabled';
+      // Reflect the switch immediately and patch just this row in place — no
+      // full-list reload / skeleton flash. Revert if the backend rejects it.
+      if (idx !== -1) this.tasks[idx] = { ...task, state: nextState };
+      try {
+        const updated = await scheduledTasksOperator.updateTask(this.token!, task.id, { state: nextState });
+        if (idx !== -1) this.tasks[idx] = updated;
+      } catch {
+        if (idx !== -1) this.tasks[idx] = { ...task, state: task.state };
+        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      }
     },
     async confirmDelete(task: IScheduledTask) {
-      await ElMessageBox.confirm(
-        this.$t('chat.scheduledTasks.deleteConfirm', { name: task.name }) as string,
-        { type: 'warning' }
-      );
-      await scheduledTasksOperator.deleteTask(this.token!, task.id);
-      await this.loadTasks();
+      await ElMessageBox.confirm(this.$t('chat.scheduledTasks.deleteConfirm', { name: task.name }) as string, {
+        type: 'warning'
+      });
+      try {
+        await scheduledTasksOperator.deleteTask(this.token!, task.id);
+        // Drop the row locally — no full reload / skeleton flash.
+        this.tasks = this.tasks.filter((t) => t.id !== task.id);
+        const maxPage = Math.max(1, Math.ceil(this.tasks.length / this.pageSize));
+        if (this.page > maxPage) this.page = maxPage;
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      }
     },
     openRun(run: IScheduledRun) {
       if (!run.conversation_id) return;
@@ -915,9 +951,24 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
   margin-left: 8px;
 }
-.skill-option { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-width: 0; }
-.skill-option-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.skill-option-missing { flex-shrink: 0; font-size: 11px; color: var(--el-text-color-secondary); }
+.skill-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+.skill-option-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.skill-option-missing {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--el-text-color-secondary);
+}
 </style>
 
 <style lang="scss">
