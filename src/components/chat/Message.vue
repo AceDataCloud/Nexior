@@ -158,7 +158,7 @@
           @click="startEditing"
         />
         <copy-to-clipboard
-          v-if="copyableText && (message.state === messageState.FINISHED || message.state === messageState.FAILED)"
+          v-if="copyableText && message.state !== messageState.PENDING && message.state !== messageState.ANSWERING"
           :content="copyableText"
           class="btn-copy"
         />
