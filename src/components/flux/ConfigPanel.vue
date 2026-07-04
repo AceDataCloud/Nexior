@@ -5,6 +5,7 @@
       <prompt-input class="mb-4" />
       <image-url-input v-if="config?.action === 'edits'" class="mb-4" />
       <model-selector class="mb-4" />
+      <size-selector class="mb-4" />
       <count-selector class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
@@ -26,6 +27,7 @@ import CountSelector from './config/CountSelector.vue';
 import ActionSelector from './config/ActionSelector.vue';
 import ImageUrlInput from './config/ImageUrlInput.vue';
 import PromptInput from './config/PromptInput.vue';
+import SizeSelector from './config/SizeSelector.vue';
 import Consumption from '../common/Consumption.vue';
 import { getConsumption } from '@/utils';
 
@@ -39,7 +41,8 @@ export default defineComponent({
     CountSelector,
     Consumption,
     ActionSelector,
-    ImageUrlInput
+    ImageUrlInput,
+    SizeSelector
   },
   emits: ['generate'],
   computed: {

@@ -3,6 +3,7 @@ export interface IFluxConfig {
   count?: number;
   prompt?: string;
   aspect_ratio?: string;
+  size?: string;
   model?: string;
   image_url?: string;
   quality?: number;
@@ -13,6 +14,7 @@ export interface IFluxConfig {
 export interface IFluxGenerateRequest {
   action?: string;
   prompt?: string;
+  size?: string;
   model?: string;
   image_url?: string;
   callback_url?: string;
