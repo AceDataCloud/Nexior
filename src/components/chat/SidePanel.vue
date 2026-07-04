@@ -18,6 +18,14 @@
           {{ $t('chat.scheduledTasks.navTitle') }}
         </div>
       </div>
+      <div class="conversation" @click="onArtifacts">
+        <div class="icons">
+          <font-awesome-icon icon="fa-solid fa-box-archive" class="icon" />
+        </div>
+        <div class="title">
+          {{ $t('chat.artifacts.navTitle') }}
+        </div>
+      </div>
       <div v-for="(group, groupKey) in conversationGroups" :key="groupKey" class="group">
         <div class="key">
           {{ $t(`chat.group.${groupKey}`) }}
@@ -102,7 +110,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { chatOperator } from '@/operators';
 import { IChatConversation } from '@/models';
 import { Status } from '@/models';
-import { ROUTE_CHAT_SCHEDULED_TASKS } from '@/router/constants';
+import { ROUTE_CHAT_SCHEDULED_TASKS, ROUTE_CHAT_ARTIFACTS } from '@/router/constants';
 
 type ConversationCommand = 'rename' | 'delete';
 
@@ -198,6 +206,9 @@ export default defineComponent({
     },
     onScheduledTasks() {
       this.$router.push({ name: ROUTE_CHAT_SCHEDULED_TASKS });
+    },
+    onArtifacts() {
+      this.$router.push({ name: ROUTE_CHAT_ARTIFACTS });
     },
     onClickConversation(id?: string) {
       console.debug('onClickConversation in side panel', id);

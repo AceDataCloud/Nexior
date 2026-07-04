@@ -1,5 +1,11 @@
 import { CHAT_MODEL_GROUP_CHATGPT } from '@/constants';
-import { ROUTE_CHATGPT_CALL, ROUTE_CHATGPT_CONVERSATION, ROUTE_CHATGPT_CONVERSATION_NEW, ROUTE_CHAT_SCHEDULED_TASKS } from './constants';
+import {
+  ROUTE_CHATGPT_CALL,
+  ROUTE_CHATGPT_CONVERSATION,
+  ROUTE_CHATGPT_CONVERSATION_NEW,
+  ROUTE_CHAT_SCHEDULED_TASKS,
+  ROUTE_CHAT_ARTIFACTS
+} from './constants';
 
 export default {
   path: '/chatgpt',
@@ -36,6 +42,11 @@ export default {
       path: 'scheduled',
       name: ROUTE_CHAT_SCHEDULED_TASKS,
       component: () => import('@/pages/chat/ScheduledTasks.vue')
+    },
+    {
+      path: 'artifacts',
+      name: ROUTE_CHAT_ARTIFACTS,
+      component: () => import('@/pages/chat/Artifacts.vue')
     }
   ]
 };
