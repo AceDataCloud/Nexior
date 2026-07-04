@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 07:17:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 07:21:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.17
+
+Sat, 04 Jul 2026 07:21:57 GMT
+
+### Patches
+
+- feat(settings): add Memory tab to manage assistant long-term memory (list/forget/clear) (dev@acedata.cloud)
 
 ## 3.313.16
 
