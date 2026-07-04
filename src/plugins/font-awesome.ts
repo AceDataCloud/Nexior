@@ -85,6 +85,8 @@ import {
   faChevronDown as faSolidChevronDown,
   faArrowsRotate as faSolidArrowsRotate,
   faUpRightFromSquare as faSolidUpRightFromSquare,
+  faBoxArchive as faSolidBoxArchive,
+  faEyeSlash as faSolidEyeSlash,
   faArrowRightFromBracket as faSolidArrowRightFromBracket,
   faTriangleExclamation as faSolidTriangleExclamation,
   faPenToSquare as faSolidPenToSquare,
@@ -225,6 +227,8 @@ library.add(faSolidQuestion);
 library.add(faSolidStop);
 library.add(faSolidTriangleExclamation);
 library.add(faSolidUpRightFromSquare);
+library.add(faSolidBoxArchive);
+library.add(faSolidEyeSlash);
 library.add(faRegularClock);
 library.add(faSolidArrowsRotate);
 library.add(faSolidPenNib);
