@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { buildAuthorizedConsentOutput, findPendingConsentBlock, parseConsentReturnFromQuery } from './consentReturn';
+import {
+  buildAuthorizedConsentOutput,
+  findPendingConsentBlock,
+  parseConsentReturnFromQuery,
+  repairInstallReturnToUrl
+} from './consentReturn';
 import { ROLE_ASSISTANT, ROLE_USER } from '@/constants/chat';
 import type { IChatMessage, IConsentRequestPayload } from '@/models';
 
@@ -171,5 +176,46 @@ describe('buildAuthorizedConsentOutput', () => {
       authorized: ['acedatacloud/slack'],
       skipped: []
     });
+  });
+});
+
+describe('repairInstallReturnToUrl', () => {
+  const worker = (returnTo: string) =>
+    `https://auth.acedata.cloud/connections/install/cat_1?return_to=${encodeURIComponent(returnTo)}`;
+
+  it('rewrites the broken /chat/c/<id> path to the current group conversation route', () => {
+    const url = worker('https://studio.acedata.cloud/chat/c/conv-123?consent=consent_abc');
+    const fixed = new URL(repairInstallReturnToUrl(url, '/chatgpt'));
+    const ret = new URL(fixed.searchParams.get('return_to') as string);
+    expect(ret.origin + ret.pathname).toBe('https://studio.acedata.cloud/chatgpt/conversations/conv-123');
+    // The consent beacon (the only carrier of the consent id) is preserved.
+    expect(ret.searchParams.get('consent')).toBe('consent_abc');
+  });
+
+  it('preserves every query param on the worker return_to (e.g. connector)', () => {
+    const url = worker('https://studio.acedata.cloud/chat/c/conv-9?consent=consent_x&connector=medium%2Fmedium');
+    const ret = new URL(new URL(repairInstallReturnToUrl(url, '/claude')).searchParams.get('return_to') as string);
+    expect(ret.pathname).toBe('/claude/conversations/conv-9');
+    expect(ret.searchParams.get('consent')).toBe('consent_x');
+    expect(ret.searchParams.get('connector')).toBe('medium/medium');
+  });
+
+  it('returns the URL unchanged when there is no return_to param', () => {
+    const url = 'https://auth.acedata.cloud/connections/install/cat_1';
+    expect(repairInstallReturnToUrl(url, '/chatgpt')).toBe(url);
+  });
+
+  it('leaves an already-valid (non /chat/c/) return_to untouched', () => {
+    const url = worker('https://studio.acedata.cloud/chatgpt/conversations/conv-1?consent=consent_abc');
+    expect(repairInstallReturnToUrl(url, '/chatgpt')).toBe(url);
+  });
+
+  it('returns the URL unchanged when groupPrefix is empty', () => {
+    const url = worker('https://studio.acedata.cloud/chat/c/conv-123?consent=consent_abc');
+    expect(repairInstallReturnToUrl(url, '')).toBe(url);
+  });
+
+  it('returns the input unchanged when it is not a parseable URL', () => {
+    expect(repairInstallReturnToUrl('not a url', '/chatgpt')).toBe('not a url');
   });
 });

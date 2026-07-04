@@ -98,3 +98,37 @@ export function findPendingConsentBlock(
 export function buildAuthorizedConsentOutput(payload: IConsentRequestPayload, authorizedConnector: string): string {
   return buildConsentOutput(payload, [authorizedConnector], []);
 }
+
+/**
+ * Repair the `return_to` of the worker-built AuthFrontend install URL so
+ * the post-install redirect lands on a real Nexior route. The aichat2
+ * worker hardcodes `return_to=<origin>/chat/c/<conv>?consent=<rid>`, but
+ * Nexior has no `/chat/c/` route (real routes are
+ * `/<group>/conversations/:id`), so the redirect 404s after a cookie/BYOC
+ * bind. We only rewrite the known-broken `/chat/c/<id>` path shape —
+ * swapping it for `<groupPrefix>/conversations/<id>` — and preserve the
+ * worker's query verbatim (the `consent=<rid>` beacon that drives
+ * auto-resume lives only there). The conversation id is taken from the
+ * worker's own path (authoritative even before the route `:id` is pushed
+ * for a brand-new chat); `groupPrefix` is the prefix of the route the
+ * user is currently viewing (e.g. `/chatgpt`). Any URL that is missing a
+ * `return_to`, is not the broken shape, or fails to parse is returned
+ * unchanged so we never make a working URL worse.
+ */
+export function repairInstallReturnToUrl(installUrl: string, groupPrefix: string): string {
+  try {
+    const url = new URL(installUrl);
+    const rawReturn = url.searchParams.get('return_to');
+    if (!rawReturn || !groupPrefix) return installUrl;
+    const ret = new URL(rawReturn);
+    const match = ret.pathname.match(/^\/chat\/c\/([^/]+)/);
+    if (!match) return installUrl;
+    const convId = match[1];
+    const fixed = new URL(`${ret.origin}${groupPrefix}/conversations/${convId}`);
+    ret.searchParams.forEach((value, key) => fixed.searchParams.set(key, value));
+    url.searchParams.set('return_to', fixed.toString());
+    return url.toString();
+  } catch {
+    return installUrl;
+  }
+}
