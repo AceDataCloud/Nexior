@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 03 Jul 2026 16:48:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 02:15:33 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.313.8
+
+Sat, 04 Jul 2026 02:15:33 GMT
+
+### Patches
+
+- feat(scheduled-tasks): add editable task title field (dev@acedata.cloud)
 
 ## 3.313.7
 
