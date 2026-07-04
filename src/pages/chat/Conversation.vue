@@ -92,6 +92,7 @@ import {
   buildAuthorizedConsentOutput,
   findPendingConsentBlock,
   parseConsentReturnFromQuery,
+  repairInstallReturnToUrl,
   type IConsentReturn
 } from '@/components/chat/consentReturn';
 import { chatOperator, agentOperator } from '@/operators';
@@ -1043,7 +1044,12 @@ export default defineComponent({
         console.warn('authorize click with no install_url', payload);
         return;
       }
-      window.location.href = url;
+      // The worker builds the install `return_to` as `/chat/c/<conv>` —
+      // a path Nexior does not serve — so a cookie/BYOC bind that returns
+      // there 404s. Rewrite it to the current group's real conversation
+      // route before handing off to AuthFrontend.
+      const prefix = this.$route.matched[0]?.path ?? '';
+      window.location.href = repairInstallReturnToUrl(url, prefix);
     },
     /**
      * Stash any ``?consent=<rid>&connector=<id>`` pair on
