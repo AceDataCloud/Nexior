@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 10:46:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 04 Jul 2026 15:27:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.314.3
+
+Sat, 04 Jul 2026 15:27:29 GMT
+
+### Patches
+
+- fix(flux): send required size (aspect ratio) param from studio config so generation no longer fails with 'size is required' (dev@acedata.cloud)
 
 ## 3.314.2
 
