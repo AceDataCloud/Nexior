@@ -13,7 +13,7 @@
       <div class="info">
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
-          <span v-if="!isTerminal"> - ({{ statusLabel }}) </span>
+          <span v-if="!isTerminal" class="progress-pct"> · {{ progressText }}</span>
         </p>
         <p v-if="fileCount" class="text-xs text-[var(--el-text-color-secondary)] mb-1">
           <font-awesome-icon icon="fa-solid fa-paperclip" class="mr-1" />{{ fileCount }}
@@ -24,7 +24,6 @@
       <div v-if="!isTerminal" class="content">
         <el-alert :closable="false" class="mt-2 processing">
           <progress-steps :model-value="modelValue" />
-          <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" class="mt-1" />
           <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-3">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -104,7 +103,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElAlert, ElButton, ElProgress, ElMessage } from 'element-plus';
+import { ElImage, ElAlert, ElButton, ElMessage } from 'element-plus';
 import { IMaestroTask, IMaestroVariant, IMaestroConfig } from '@/models';
 import { MAESTRO_LOGO, MAESTRO_ACTION_REMIX } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
@@ -122,7 +121,6 @@ export default defineComponent({
     CopyToClipboard,
     FontAwesomeIcon,
     ElAlert,
-    ElProgress,
     VideoPlayer,
     ElButton,
     ApiCodeButton,
@@ -153,6 +151,9 @@ export default defineComponent({
       const progress = this.modelValue?.response?.data?.progress;
       const last = progress?.length ? progress[progress.length - 1] : undefined;
       return typeof last?.pct === 'number' ? last.pct : undefined;
+    },
+    progressText(): string {
+      return this.progressPct !== undefined ? `${this.progressPct}%` : this.statusLabel;
     },
     statusLabel(): string {
       const s = this.modelValue?.status || 'pending';
@@ -240,6 +241,11 @@ $left-width: 70px;
         white-space: normal;
         word-break: break-word;
         overflow-wrap: anywhere;
+        .progress-pct {
+          font-weight: 600;
+          color: var(--el-color-primary);
+          white-space: nowrap;
+        }
       }
     }
 
