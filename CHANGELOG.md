@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 09:36:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 09:43:02 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.316.1
+
+Sun, 05 Jul 2026 09:43:02 GMT
+
+### Patches
+
+- fix(chat): register fa-share-nodes so the share menu item shows its icon (dev@acedata.cloud)
 
 ## 3.316.0
 
