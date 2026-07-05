@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 09:43:02 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 13:24:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.316.2
+
+Sun, 05 Jul 2026 13:24:06 GMT
+
+### Patches
+
+- fix(nexior-android): Local Tools reflects real Computer Use usability + guides accessibility enable on toggle (cqc@cuiqingcai.com)
 
 ## 3.316.1
 
