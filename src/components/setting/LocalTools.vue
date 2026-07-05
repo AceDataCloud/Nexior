@@ -182,6 +182,17 @@
           <el-switch v-model="computerUse" :loading="savingCU" @change="onToggleComputerUse" />
         </div>
         <p class="muted">{{ $t('common.settings.localToolsComputerUseHint') }}</p>
+        <!-- Android: the switch means nothing unless the accessibility service
+             is actually running. Reflect the TRUE, live state + a fix button. -->
+        <div v-if="android && computerUse" class="perm-row cu-ready-row">
+          <span class="perm-name">{{ $t('common.settings.localToolsCuA11yLabel') }}</span>
+          <el-tag size="small" :type="a11yEnabled ? 'success' : 'danger'" effect="plain">
+            {{ a11yEnabled ? $t('common.settings.localToolsCuReady') : $t('common.settings.localToolsCuA11yMissing') }}
+          </el-tag>
+          <el-button v-if="!a11yEnabled" size="small" type="primary" @click="openAndroidAccessibility">
+            {{ $t('common.settings.localToolsOpen') }}
+          </el-button>
+        </div>
         <template v-if="computerTools.length">
           <div class="section-head sub">
             <h4>{{ $t('common.settings.localToolsCuActionsTitle') }}</h4>
@@ -374,7 +385,14 @@ export default defineComponent({
       xhsInstalling: false,
       xhsError: '',
       onFocus: null as null | (() => void),
-      cuOff: null as null | (() => void)
+      cuOff: null as null | (() => void),
+      // Android: interval that re-checks the REAL accessibility state while the
+      // page is visible, so the "usable" status stays honest even if the OS
+      // revokes the grant with this page open.
+      a11yPoll: null as null | number,
+      // Guards refreshA11y so overlapping poll / focus calls can't resolve out
+      // of order and write a stale a11yEnabled.
+      refreshingA11y: false
     };
   },
   computed: {
@@ -422,6 +440,12 @@ export default defineComponent({
         if (document.visibilityState === 'visible') void this.refreshA11y();
       };
       document.addEventListener('visibilitychange', this.onFocus);
+      // Some OEM ROMs (e.g. Huawei) silently revoke an accessibility grant.
+      // Poll while visible so the "usable" status reflects reality, not just
+      // the last focus event.
+      this.a11yPoll = window.setInterval(() => {
+        if (document.visibilityState === 'visible') void this.refreshA11y();
+      }, 3000);
     }
     // Reflect the global panic hotkey: keep the toggle in sync so a later Save
     // can't silently re-enable Computer Use after it was force-disabled.
@@ -433,11 +457,21 @@ export default defineComponent({
   beforeUnmount() {
     this.cuOff?.();
     if (this.onFocus) document.removeEventListener('visibilitychange', this.onFocus);
+    if (this.a11yPoll) clearInterval(this.a11yPoll);
   },
   methods: {
     async refreshA11y() {
-      const s = await localExec()?.perm?.status();
-      this.a11yEnabled = s?.accessibility === true;
+      // Serialize: a 3s poll and the visibilitychange handler can both call
+      // this; overlapping bridge reads could resolve out of order and write a
+      // stale a11yEnabled. One in-flight read at a time is enough.
+      if (this.refreshingA11y) return;
+      this.refreshingA11y = true;
+      try {
+        const s = await localExec()?.perm?.status();
+        this.a11yEnabled = s?.accessibility === true;
+      } finally {
+        this.refreshingA11y = false;
+      }
     },
     async openAndroidAccessibility() {
       await localExec()?.perm?.openPane('accessibility');
@@ -679,6 +713,16 @@ export default defineComponent({
         computerUse: val === true
       });
       this.savingCU = false;
+      // Turning the switch on is meaningless until the accessibility service is
+      // actually running. Read the REAL state directly (not the polled cache,
+      // which a concurrent refresh could overwrite) and — if it isn't running —
+      // jump straight to the system Accessibility settings so "on" is usable.
+      if (val === true && this.android) {
+        const s = await localExec()?.perm?.status();
+        const granted = s?.accessibility === true;
+        this.a11yEnabled = granted;
+        if (!granted) await this.openAndroidAccessibility();
+      }
     },
     // Pre-approve every computer.* action (persistent always-allow), enable
     // Computer Use, and trigger the macOS Screen Recording / Accessibility
@@ -942,5 +986,8 @@ export default defineComponent({
 .perm-name {
   flex: 1;
   font-size: 14px;
+}
+.cu-ready-row {
+  margin-top: 4px;
 }
 </style>
