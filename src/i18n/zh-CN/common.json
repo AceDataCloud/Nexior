@@ -987,6 +987,54 @@
     "message": "让 AI 看到你的屏幕并控制本机的鼠标和键盘。默认关闭，按需开启。macOS 上需在下方授予「屏幕录制」和「辅助功能」权限。每个操作仍会请求你的确认。",
     "description": "Help text under the Computer Use toggle."
   },
+  "settings.localToolsAndroidSkillsTitle": {
+    "message": "手机自动化技能",
+    "description": "Heading for the Android-only section that installs skills which drive apps on the phone via Computer Use."
+  },
+  "settings.localToolsAndroidSkillsHint": {
+    "message": "安装能让助手操作本机 App 的技能。它们通过「电脑操作」运行，请先在上方授予无障碍权限并开启电脑操作。每步动作仍遵循你的电脑操作确认设置。",
+    "description": "Help text under the phone-automation skills heading."
+  },
+  "settings.localToolsAndroidSkillsXhsName": {
+    "message": "小红书私信自动回复",
+    "description": "Display name of the Xiaohongshu (RED) direct-message auto-reply skill."
+  },
+  "settings.localToolsAndroidSkillsXhsDesc": {
+    "message": "读取小红书 App 里的新私信并起草回复，发送前会先请你确认。",
+    "description": "One-line description of the Xiaohongshu DM skill."
+  },
+  "settings.localToolsAndroidSkillsInstall": {
+    "message": "安装",
+    "description": "Button that installs the skill into the user's account."
+  },
+  "settings.localToolsAndroidSkillsInstalled": {
+    "message": "已安装",
+    "description": "Tag shown when the skill is already installed."
+  },
+  "settings.localToolsAndroidSkillsLoading": {
+    "message": "正在加载可用技能……",
+    "description": "Placeholder while the skill directory is being fetched."
+  },
+  "settings.localToolsAndroidSkillsUnavailable": {
+    "message": "暂无可安装的手机技能。",
+    "description": "Empty state when no installable phone skill is found."
+  },
+  "settings.localToolsAndroidSkillsNeedComputerUse": {
+    "message": "安装前请先授予无障碍权限并在上方开启电脑操作。",
+    "description": "Hint shown when the install button is disabled because prerequisites are missing."
+  },
+  "settings.localToolsAndroidSkillsNextTurn": {
+    "message": "已安装，将在你下次对话时生效。",
+    "description": "Confirmation shown after a successful install."
+  },
+  "settings.localToolsAndroidSkillsInstallFailed": {
+    "message": "安装失败，请重试。",
+    "description": "Error shown when the install request fails."
+  },
+  "settings.localToolsAndroidSkillsLoadFailed": {
+    "message": "加载可用技能失败，请重试。",
+    "description": "Error shown when fetching the skill directory fails."
+  },
   "settings.localToolsPreauthorizeAll": "预先允许所有电脑操作",
   "settings.localToolsPreauthorizeHint": "一次性允许截图、点击、输入、按键等所有电脑操作，并触发所需的系统权限。",
   "settings.localToolsCuActionsTitle": "逐项允许操作",
