@@ -187,6 +187,70 @@
     "message": "Пока нет видео — создайте ваше первое слева.",
     "description": "Нет задач"
   },
+  "name.scenario": {
+    "message": "Тип видео",
+    "description": "Video type field"
+  },
+  "description.scenario": {
+    "message": "Выберите тип создаваемого видео. «Авто» — Maestro решит сам; либо задайте стиль: короткая драма, реальные кадры, объяснение или промо продукта.",
+    "description": "Scenario field help"
+  },
+  "option.scenario.auto": {
+    "message": "Авто · пусть решает Maestro",
+    "description": "Auto scenario option"
+  },
+  "option.scenario.narrated": {
+    "message": "Озвученный многосценный видео",
+    "description": "Опция озвученного видео с несколькими сценами"
+  },
+  "option.scenario.drama": {
+    "message": "Короткая драма",
+    "description": "Short drama scenario option"
+  },
+  "option.scenario.avatar": {
+    "message": "Цифровой человек · Озвучка",
+    "description": "Опция сценария с аватаром / говорящей головой"
+  },
+  "option.scenario.motion": {
+    "message": "Моушн-графика",
+    "description": "Motion graphics scenario option"
+  },
+  "option.scenario.slideshow": {
+    "message": "Слайд-шоу",
+    "description": "Опция сценария слайд-шоу"
+  },
+  "name.style": {
+    "message": "Визуальный стиль",
+    "description": "Поле визуального стиля"
+  },
+  "description.style": {
+    "message": "Дополнительные визуальные стили (для типографики, цветовой схемы, анимации, ритма), независимые от типа видео. Можно выбрать предустановленный вариант или ввести свой.",
+    "description": "Помощь по полю стиля"
+  },
+  "option.style.auto": {
+    "message": "Авто · Без дополнительных указаний",
+    "description": "Опция автоматического стиля"
+  },
+  "option.style.cinematic": {
+    "message": "Кинематографический",
+    "description": "Опция кинематографического стиля"
+  },
+  "option.style.minimal": {
+    "message": "Минимализм",
+    "description": "Опция минималистского стиля"
+  },
+  "option.style.neon": {
+    "message": "Неон",
+    "description": "Опция неонового стиля"
+  },
+  "option.style.corporate": {
+    "message": "Корпоративный",
+    "description": "Опция корпоративного стиля"
+  },
+  "option.style.hand-drawn": {
+    "message": "Ручная работа",
+    "description": "Опция стиля ручной работы"
+  },
   "name.sourceType": {
     "message": "Тип источника",
     "description": "Поле типа источника"
@@ -247,22 +311,6 @@
     "message": "Скачать сгенерированное видео",
     "description": "Подсказка для скачивания"
   },
-  "name.scenario": {
-    "message": "Тип видео",
-    "description": "Video type field"
-  },
-  "description.scenario": {
-    "message": "Выберите тип создаваемого видео. «Авто» — Maestro решит сам; либо задайте стиль: короткая драма, реальные кадры, объяснение или промо продукта.",
-    "description": "Scenario field help"
-  },
-  "option.scenario.auto": {
-    "message": "Авто · пусть решает Maestro",
-    "description": "Auto scenario option"
-  },
-  "option.scenario.drama": {
-    "message": "Короткая драма",
-    "description": "Short drama scenario option"
-  },
   "option.scenario.general": {
     "message": "Реальные кадры",
     "description": "Footage piece scenario option"
@@ -282,10 +330,6 @@
   "option.scenario.slides": {
     "message": "Слайд-шоу",
     "description": "Slideshow scenario option"
-  },
-  "option.scenario.motion": {
-    "message": "Моушн-графика",
-    "description": "Motion graphics scenario option"
   },
   "option.scenario.changelog": {
     "message": "Список изменений (PR)",

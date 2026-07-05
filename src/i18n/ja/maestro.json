@@ -187,6 +187,70 @@
     "message": "まだ動画がありません — 左側で最初の動画を作成しましょう。",
     "description": "タスクがないことを示すメッセージ"
   },
+  "name.scenario": {
+    "message": "動画タイプ",
+    "description": "Video type field"
+  },
+  "description.scenario": {
+    "message": "作成する動画の種類を選びます。自動では Maestro が判断します。ショートドラマ・実写映像・解説・商品PRなどのスタイルを指定することもできます。",
+    "description": "Scenario field help"
+  },
+  "option.scenario.auto": {
+    "message": "自動 · Maestro に任せる",
+    "description": "Auto scenario option"
+  },
+  "option.scenario.narrated": {
+    "message": "図文ナレーションの完成品",
+    "description": "ナレーション付きマルチシーンビデオオプション"
+  },
+  "option.scenario.drama": {
+    "message": "ショートドラマ",
+    "description": "Short drama scenario option"
+  },
+  "option.scenario.avatar": {
+    "message": "デジタル人 · ナレーション",
+    "description": "アバター / トーキングヘッドシナリオオプション"
+  },
+  "option.scenario.motion": {
+    "message": "モーショングラフィックス",
+    "description": "Motion graphics scenario option"
+  },
+  "option.scenario.slideshow": {
+    "message": "スライドショー",
+    "description": "スライドショーシナリオオプション"
+  },
+  "name.style": {
+    "message": "ビジュアルスタイル",
+    "description": "ビジュアルスタイルフィールド"
+  },
+  "description.style": {
+    "message": "選択可能なビジュアルスタイルのヒント（タイポグラフィ、カラースキーム、アニメーション、リズムに影響し、ビデオタイプとは独立しています）。プリセットを選択するか、自分で入力します。",
+    "description": "スタイルフィールドのヘルプ"
+  },
+  "option.style.auto": {
+    "message": "自動 · 追加指定なし",
+    "description": "自動スタイルオプション"
+  },
+  "option.style.cinematic": {
+    "message": "映画的",
+    "description": "シネマティックスタイルオプション"
+  },
+  "option.style.minimal": {
+    "message": "ミニマル",
+    "description": "ミニマルスタイルオプション"
+  },
+  "option.style.neon": {
+    "message": "ネオン",
+    "description": "ネオンスタイルオプション"
+  },
+  "option.style.corporate": {
+    "message": "ビジネス",
+    "description": "コーポレートスタイルオプション"
+  },
+  "option.style.hand-drawn": {
+    "message": "手描き",
+    "description": "手描きスタイルオプション"
+  },
   "name.sourceType": {
     "message": "ソースタイプ",
     "description": "ソースタイプフィールド"
@@ -247,22 +311,6 @@
     "message": "生成された動画をダウンロード",
     "description": "ダウンロードツールチップ"
   },
-  "name.scenario": {
-    "message": "動画タイプ",
-    "description": "Video type field"
-  },
-  "description.scenario": {
-    "message": "作成する動画の種類を選びます。自動では Maestro が判断します。ショートドラマ・実写映像・解説・商品PRなどのスタイルを指定することもできます。",
-    "description": "Scenario field help"
-  },
-  "option.scenario.auto": {
-    "message": "自動 · Maestro に任せる",
-    "description": "Auto scenario option"
-  },
-  "option.scenario.drama": {
-    "message": "ショートドラマ",
-    "description": "Short drama scenario option"
-  },
   "option.scenario.general": {
     "message": "実写映像",
     "description": "Footage piece scenario option"
@@ -282,10 +330,6 @@
   "option.scenario.slides": {
     "message": "スライドショー",
     "description": "Slideshow scenario option"
-  },
-  "option.scenario.motion": {
-    "message": "モーショングラフィックス",
-    "description": "Motion graphics scenario option"
   },
   "option.scenario.changelog": {
     "message": "変更履歴 (PR)",
