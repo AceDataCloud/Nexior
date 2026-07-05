@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 15:29:10 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 16:00:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.317.1
+
+Sun, 05 Jul 2026 16:00:59 GMT
+
+### Patches
+
+- fix(aichat2): render desktop client-tool screenshots live during streaming instead of only after a page reload (dev@acedata.cloud)
 
 ## 3.317.0
 
