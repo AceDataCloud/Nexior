@@ -208,6 +208,49 @@
         </template>
       </section>
 
+      <!-- Android: install curated phone-automation skills (computer.* based) -->
+      <section v-if="android">
+        <div class="section-head">
+          <h3>{{ $t('common.settings.localToolsAndroidSkillsTitle') }}</h3>
+        </div>
+        <p class="muted">{{ $t('common.settings.localToolsAndroidSkillsHint') }}</p>
+        <ul class="rows">
+          <li v-if="xhsSkill" class="row">
+            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="row-icon" />
+            <span class="cu-action">
+              <span class="cu-action-name">{{ $t('common.settings.localToolsAndroidSkillsXhsName') }}</span>
+              <span class="cu-action-desc">{{ $t('common.settings.localToolsAndroidSkillsXhsDesc') }}</span>
+            </span>
+            <el-tag v-if="xhsSkill.installed" size="small" type="success" effect="plain">
+              {{ $t('common.settings.localToolsAndroidSkillsInstalled') }}
+            </el-tag>
+            <el-button
+              v-else
+              size="small"
+              type="primary"
+              :loading="xhsInstalling"
+              :disabled="!canInstallXhs"
+              @click="installXhs"
+            >
+              {{ $t('common.settings.localToolsAndroidSkillsInstall') }}
+            </el-button>
+          </li>
+          <li v-else-if="xhsLoading" class="row muted empty">
+            {{ $t('common.settings.localToolsAndroidSkillsLoading') }}
+          </li>
+          <li v-else-if="!xhsError" class="row muted empty">
+            {{ $t('common.settings.localToolsAndroidSkillsUnavailable') }}
+          </li>
+        </ul>
+        <p v-if="xhsSkill && !xhsSkill.installed && !canInstallXhs" class="muted">
+          {{ $t('common.settings.localToolsAndroidSkillsNeedComputerUse') }}
+        </p>
+        <p v-if="xhsSkill && xhsSkill.installed" class="muted saved-tip">
+          {{ $t('common.settings.localToolsAndroidSkillsNextTurn') }}
+        </p>
+        <p v-if="xhsError" class="mcp-error">{{ xhsError }}</p>
+      </section>
+
       <!-- macOS system permissions -->
       <section v-if="perm">
         <div class="section-head">
@@ -259,11 +302,23 @@ import { Plus } from '@element-plus/icons-vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { localExec, type IMcpServerStatus } from '@/utils/desktop';
 import { isAndroid } from '@/utils/surface';
+import { httpClient } from '@/operators/common';
+import { getBaseUrlAuth } from '@/utils';
+import type { AxiosResponse } from 'axios';
 
 interface GrantRow {
   key: string;
   name: string;
   input: string;
+}
+
+// One row from AuthBackend's public skill directory (subset of SkillSerializer).
+interface AndroidSkillRow {
+  id: string;
+  identifier: string;
+  name: string;
+  installed: boolean;
+  installable: boolean;
 }
 
 // Editable draft of one MCP server row. `args` / `env` are edited as free text
@@ -313,6 +368,11 @@ export default defineComponent({
       savedTip: false,
       // Android: whether the Computer Use accessibility service is enabled.
       a11yEnabled: false,
+      // Android: curated phone-automation skill (Xiaohongshu DM) + install state.
+      xhsSkill: null as null | AndroidSkillRow,
+      xhsLoading: false,
+      xhsInstalling: false,
+      xhsError: '',
       onFocus: null as null | (() => void),
       cuOff: null as null | (() => void)
     };
@@ -323,6 +383,11 @@ export default defineComponent({
     },
     android(): boolean {
       return isAndroid();
+    },
+    // Install only makes sense once the skill can run: accessibility granted AND
+    // Computer Use on. Gate the button on both.
+    canInstallXhs(): boolean {
+      return this.a11yEnabled && this.computerUse;
     }
   },
   async mounted() {
@@ -350,6 +415,7 @@ export default defineComponent({
     await this.loadGrants();
     if (this.android) {
       await this.refreshA11y();
+      void this.fetchXhsSkill();
       // Re-check the accessibility status when the user returns from system
       // settings so the badge/toggles reflect it without a manual reload.
       this.onFocus = () => {
@@ -375,6 +441,49 @@ export default defineComponent({
     },
     async openAndroidAccessibility() {
       await localExec()?.perm?.openPane('accessibility');
+    },
+    // Fetch the curated Android skill (Xiaohongshu DM auto-reply) from
+    // AuthBackend's public skill directory to show its install state. Same auth +
+    // baseURL override the connector catalog cache uses.
+    async fetchXhsSkill() {
+      this.xhsLoading = true;
+      this.xhsError = '';
+      try {
+        const resp: AxiosResponse<{ items?: AndroidSkillRow[] }> = await httpClient.get('/skills/', {
+          baseURL: `${getBaseUrlAuth()}/api/v1`,
+          params: { q: 'xhs-dm', limit: 10 }
+        });
+        const items = Array.isArray(resp.data?.items) ? resp.data.items : [];
+        this.xhsSkill = items.find((s) => s.identifier?.endsWith('/xhs-dm')) ?? null;
+      } catch (e) {
+        console.warn('[LocalTools] fetch xhs skill failed', e);
+        this.xhsSkill = null;
+        this.xhsError = this.$t('common.settings.localToolsAndroidSkillsLoadFailed');
+      } finally {
+        this.xhsLoading = false;
+      }
+    },
+    // Install the curated skill into the user's account. Takes effect next chat
+    // turn (the worker reads /internal/v1/skills/active per turn). 409 = already
+    // installed, treated as success.
+    async installXhs() {
+      const skill = this.xhsSkill;
+      if (!skill || skill.installed) return;
+      this.xhsInstalling = true;
+      this.xhsError = '';
+      try {
+        await httpClient.post(`/skills/${skill.id}/install/`, {}, { baseURL: `${getBaseUrlAuth()}/api/v1` });
+        skill.installed = true;
+      } catch (e) {
+        const httpStatus = (e as { response?: { status?: number } })?.response?.status;
+        if (httpStatus === 409) {
+          skill.installed = true;
+        } else {
+          this.xhsError = this.$t('common.settings.localToolsAndroidSkillsInstallFailed');
+        }
+      } finally {
+        this.xhsInstalling = false;
+      }
     },
     async loadGrants() {
       const ex = localExec();

@@ -987,6 +987,54 @@
     "message": "讓 AI 看到你的螢幕並控制本機的滑鼠和鍵盤。預設關閉，按需開啟。macOS 上需在下方授予「螢幕錄製」和「輔助使用」權限。每個操作仍會請求你的確認。",
     "description": "Help text under the Computer Use toggle."
   },
+  "settings.localToolsAndroidSkillsTitle": {
+    "message": "手機自動化技能",
+    "description": "安裝通過電腦操作驅動手機應用的技能的 Android 專用部分的標題。"
+  },
+  "settings.localToolsAndroidSkillsHint": {
+    "message": "安裝能讓助手操作本機 App 的技能。它們透過「電腦操作」運行，請先在上方授予無障礙權限並開啟電腦操作。每步動作仍遵循你的電腦操作確認設定。",
+    "description": "在手機自動化技能標題下的幫助文字。"
+  },
+  "settings.localToolsAndroidSkillsXhsName": {
+    "message": "小紅書私信自動回覆",
+    "description": "小紅書（RED）私信自動回覆技能的顯示名稱。"
+  },
+  "settings.localToolsAndroidSkillsXhsDesc": {
+    "message": "讀取小紅書 App 裡的新私信並起草回覆，發送前會先請你確認。",
+    "description": "小紅書私信技能的一行描述。"
+  },
+  "settings.localToolsAndroidSkillsInstall": {
+    "message": "安裝",
+    "description": "安裝技能到用戶帳戶的按鈕。"
+  },
+  "settings.localToolsAndroidSkillsInstalled": {
+    "message": "已安裝",
+    "description": "當技能已經安裝時顯示的標籤。"
+  },
+  "settings.localToolsAndroidSkillsLoading": {
+    "message": "正在加載可用技能……",
+    "description": "在獲取技能目錄時的佔位符。"
+  },
+  "settings.localToolsAndroidSkillsUnavailable": {
+    "message": "暫無可安裝的手機技能。",
+    "description": "當未找到可安裝的手機技能時的空狀態。"
+  },
+  "settings.localToolsAndroidSkillsNeedComputerUse": {
+    "message": "安裝前請先授予無障礙權限並在上方開啟電腦操作。",
+    "description": "當安裝按鈕因缺少前置條件而被禁用時顯示的提示。"
+  },
+  "settings.localToolsAndroidSkillsNextTurn": {
+    "message": "已安裝，將在你下次對話時生效。",
+    "description": "成功安裝後顯示的確認信息。"
+  },
+  "settings.localToolsAndroidSkillsInstallFailed": {
+    "message": "安裝失敗，請重試。",
+    "description": "當安裝請求失敗時顯示的錯誤信息。"
+  },
+  "settings.localToolsAndroidSkillsLoadFailed": {
+    "message": "加載可用技能失敗，請重試。",
+    "description": "當獲取技能目錄失敗時顯示的錯誤信息。"
+  },
   "settings.localToolsPreauthorizeAll": "預先允許所有電腦操作",
   "settings.localToolsPreauthorizeHint": "一次性允許截圖、點擊、輸入、按鍵等所有電腦操作，並觸發所需的系統權限。",
   "settings.localToolsCuActionsTitle": "逐項允許操作",

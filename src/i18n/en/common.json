@@ -967,6 +967,54 @@
     "message": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
     "description": "Help text under the Computer Use toggle."
   },
+  "settings.localToolsAndroidSkillsTitle": {
+    "message": "Phone automation skills",
+    "description": "Heading for the Android-only section that installs skills which drive apps on the phone via Computer Use."
+  },
+  "settings.localToolsAndroidSkillsHint": {
+    "message": "Install skills that let the assistant operate apps on this phone. They run through Computer Use, so enable the accessibility permission and Computer Use above first. Each action still follows your Computer Use confirmations.",
+    "description": "Help text under the phone-automation skills heading."
+  },
+  "settings.localToolsAndroidSkillsXhsName": {
+    "message": "Xiaohongshu DM auto-reply",
+    "description": "Display name of the Xiaohongshu (RED) direct-message auto-reply skill."
+  },
+  "settings.localToolsAndroidSkillsXhsDesc": {
+    "message": "Reads new private messages in the Xiaohongshu app and drafts replies. Asks you to confirm before sending.",
+    "description": "One-line description of the Xiaohongshu DM skill."
+  },
+  "settings.localToolsAndroidSkillsInstall": {
+    "message": "Install",
+    "description": "Button that installs the skill into the user's account."
+  },
+  "settings.localToolsAndroidSkillsInstalled": {
+    "message": "Installed",
+    "description": "Tag shown when the skill is already installed."
+  },
+  "settings.localToolsAndroidSkillsLoading": {
+    "message": "Loading available skills…",
+    "description": "Placeholder while the skill directory is being fetched."
+  },
+  "settings.localToolsAndroidSkillsUnavailable": {
+    "message": "No phone skills available yet.",
+    "description": "Empty state when no installable phone skill is found."
+  },
+  "settings.localToolsAndroidSkillsNeedComputerUse": {
+    "message": "Enable the accessibility permission and turn on Computer Use above before installing.",
+    "description": "Hint shown when the install button is disabled because prerequisites are missing."
+  },
+  "settings.localToolsAndroidSkillsNextTurn": {
+    "message": "Installed. It takes effect on your next chat.",
+    "description": "Confirmation shown after a successful install."
+  },
+  "settings.localToolsAndroidSkillsInstallFailed": {
+    "message": "Install failed. Please try again.",
+    "description": "Error shown when the install request fails."
+  },
+  "settings.localToolsAndroidSkillsLoadFailed": {
+    "message": "Couldn't load available skills. Please try again.",
+    "description": "Error shown when fetching the skill directory fails."
+  },
   "settings.localToolsPreauthorizeAll": "Pre-approve all computer actions",
   "settings.localToolsPreauthorizeHint": "Allow screenshot, click, type, key and every computer action at once, and trigger the required system permissions.",
   "settings.localToolsCuActionsTitle": "Allow individual actions",
