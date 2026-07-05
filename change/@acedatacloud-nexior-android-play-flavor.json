@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Android: the Google Play build now excludes Computer Use / Local Tools entirely — a compile-time Gradle flavor (play vs full) drops the AccessibilityService + native code, and VITE_COMPUTER_USE=false tree-shakes the Local Tools UI entry + adapter out of the Play web bundle. This unblocks Play submission (Google was rejecting it with an accessibility-declaration policy error). The full/sideload GitHub Release APK keeps the complete Computer Use feature.",
-  "packageName": "@acedatacloud/nexior",
-  "email": "dev@acedata.cloud",
-  "dependentChangeType": "patch"
-}

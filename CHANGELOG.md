@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 13:24:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 15:05:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.316.3
+
+Sun, 05 Jul 2026 15:05:07 GMT
+
+### Patches
+
+- Android: the Google Play build now excludes Computer Use / Local Tools entirely — a compile-time Gradle flavor (play vs full) drops the AccessibilityService + native code, and VITE_COMPUTER_USE=false tree-shakes the Local Tools UI entry + adapter out of the Play web bundle. This unblocks Play submission (Google was rejecting it with an accessibility-declaration policy error). The full/sideload GitHub Release APK keeps the complete Computer Use feature. (dev@acedata.cloud)
 
 ## 3.316.2
 
