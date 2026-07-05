@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 06:41:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 07:29:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.315.2
+
+Sun, 05 Jul 2026 07:29:18 GMT
+
+### Patches
+
+- Refine the maestro step-checklist: drop the connector line, smaller consistent icons, round native loading (dev@acedata.cloud)
 
 ## 3.315.1
 
