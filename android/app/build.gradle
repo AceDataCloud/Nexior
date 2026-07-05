@@ -53,6 +53,20 @@ android {
             }
         }
     }
+
+    // Distribution flavors. `play` ships to Google Play WITHOUT the Computer Use
+    // AccessibilityService (Play policy forbids autonomous accessibility agents).
+    // `full` is the sideload / GitHub Release APK with the complete feature set.
+    // Computer Use native code + manifest entries live in src/full only.
+    flavorDimensions "distribution"
+    productFlavors {
+        play {
+            dimension "distribution"
+        }
+        full {
+            dimension "distribution"
+        }
+    }
 }
 
 repositories {

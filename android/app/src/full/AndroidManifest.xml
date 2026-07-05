@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  `full` (sideload / GitHub Release) flavor overlay. It adds the Computer Use
+  AccessibilityService + specialUse foreground session that are intentionally
+  ABSENT from the Google Play (`play`) build, because Google Play policy
+  prohibits AccessibilityService use by autonomous agents. The matching Java
+  classes live in src/full/java. See plans/nexior-desktop/COMPUTER-USE-ANDROID.md.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <application>
+        <!-- Computer Use accessibility service: lets the in-app AI agent see the
+             screen + tap/type on the user's explicit opt-in. -->
+        <service
+            android:name=".ComputerUseAccessibilityService"
+            android:exported="false"
+            android:label="@string/computer_use_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/computer_use_accessibility" />
+        </service>
+
+        <!-- Foreground service that keeps the Computer Use agent loop alive
+             (and un-throttled) while Nexior is backgrounded operating another
+             app. Its notification carries the Stop kill-switch. specialUse type
+             because there is no better-fitting FGS category for user-initiated
+             assistive screen automation. -->
+        <service
+            android:name=".ComputerUseSessionService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-initiated assistive screen automation (Computer Use); keeps the agent loop alive while operating other apps." />
+        </service>
+    </application>
+</manifest>

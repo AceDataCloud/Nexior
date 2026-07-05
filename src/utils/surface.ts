@@ -33,6 +33,11 @@ export function isDesktop(): boolean {
  * Android build without the capability (adapter not installed) is a no-op.
  */
 export function supportsClientTools(): boolean {
+  // Compile-time kill switch: the Google Play build ships without Computer Use
+  // (VITE_COMPUTER_USE=false), so every client-tools entry point short-circuits
+  // and the related UI/adapters get tree-shaken out. Other builds keep it and
+  // still gate at runtime to desktop + Android only.
+  if (import.meta.env.VITE_COMPUTER_USE === 'false') return false;
   return isDesktop() || isAndroid();
 }
 
