@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 16:04:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 16:34:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.1
+
+Sun, 05 Jul 2026 16:34:48 GMT
+
+### Patches
+
+- Show input reference files (images/video/audio/documents) in the Maestro task history (dev@acedata.cloud)
 
 ## 3.318.0
 
