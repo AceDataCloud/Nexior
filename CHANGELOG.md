@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 16:00:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 16:04:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.0
+
+Sun, 05 Jul 2026 16:04:36 GMT
+
+### Minor changes
+
+- feat(maestro): scenario picker as preview-image cards instead of a dropdown (dev@acedata.cloud)
 
 ## 3.317.1
 
