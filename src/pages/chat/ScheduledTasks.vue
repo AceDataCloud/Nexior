@@ -281,7 +281,10 @@ import {
   IScheduledRun,
   IScheduleSpec,
   IAuthorizableSkill,
-  IAuthorizableMcpServer
+  IAuthorizableMcpServer,
+  ScheduledTaskPayload,
+  IScheduledTaskCapabilityDetail,
+  extractSkillNotActive
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
 import { IChatModelGroup } from '@/models';
@@ -495,54 +498,60 @@ export default defineComponent({
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
         return;
       }
-      this.saving = true;
-      try {
-        if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
-          try {
-            await ElMessageBox.confirm(
-              this.authorizationConfirmText(),
-              this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string,
-              {
-                type: 'warning',
-                confirmButtonText: this.$t('common.button.confirm') as string,
-                cancelButtonText: this.$t('common.button.cancel') as string
-              }
-            );
-          } catch {
-            // User declined the skill/MCP authorization warning — abort quietly,
-            // it is a cancellation, not an error.
-            return;
-          }
+      if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
+        try {
+          await ElMessageBox.confirm(
+            this.authorizationConfirmText(),
+            this.$t('chat.scheduledTasks.form.skillsConfirmTitle') as string,
+            {
+              type: 'warning',
+              confirmButtonText: this.$t('common.button.confirm') as string,
+              cancelButtonText: this.$t('common.button.cancel') as string
+            }
+          );
+        } catch {
+          // User declined the skill/MCP authorization warning — abort quietly,
+          // it is a cancellation, not an error.
+          return;
         }
-        const authorizedSkills = [...this.form.authorizedSkills];
-        const authorizedMcpServers = [...this.form.authorizedMcpServers];
-        const payload = {
-          name: this.form.name.trim() || this.deriveName(this.form.question),
-          schedule: this.buildSchedule(),
-          template: {
-            model: this.form.model,
-            question: this.form.question,
-            skills: authorizedSkills,
-            mcp_servers: authorizedMcpServers,
-            max_turns: this.form.maxTurns
-          },
-          unattended_policy:
-            authorizedSkills.length || authorizedMcpServers.length
-              ? {
-                  mode: 'allow_selected' as const,
-                  allowed_skills: authorizedSkills,
-                  allowed_mcp_servers: authorizedMcpServers
-                }
-              : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
-        };
+      }
+      const authorizedSkills = [...this.form.authorizedSkills];
+      const authorizedMcpServers = [...this.form.authorizedMcpServers];
+      const payload: ScheduledTaskPayload = {
+        name: this.form.name.trim() || this.deriveName(this.form.question),
+        schedule: this.buildSchedule(),
+        template: {
+          model: this.form.model,
+          question: this.form.question,
+          skills: authorizedSkills,
+          mcp_servers: authorizedMcpServers,
+          max_turns: this.form.maxTurns
+        },
+        unattended_policy:
+          authorizedSkills.length || authorizedMcpServers.length
+            ? {
+                mode: 'allow_selected' as const,
+                allowed_skills: authorizedSkills,
+                allowed_mcp_servers: authorizedMcpServers
+              }
+            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
+      };
+      await this.submitTask(payload, false);
+    },
+    async submitTask(payload: ScheduledTaskPayload, force: boolean) {
+      this.saving = true;
+      // A pending "skill not bound" prompt to raise AFTER `saving` is reset,
+      // so the confirm dialog is interactive rather than stuck behind a spinner.
+      let notActive: IScheduledTaskCapabilityDetail | null = null;
+      try {
         if (this.editingTask) {
           const editId = this.editingTask.id;
-          const updated = await scheduledTasksOperator.updateTask(this.token!, editId, payload);
+          const updated = await scheduledTasksOperator.updateTask(this.token!, editId, payload, force);
           // Patch the edited row in place — no full reload / skeleton flash.
           const idx = this.tasks.findIndex((t) => t.id === editId);
           if (idx !== -1) this.tasks[idx] = updated;
         } else {
-          const created = await scheduledTasksOperator.createTask(this.token!, payload);
+          const created = await scheduledTasksOperator.createTask(this.token!, payload, force);
           // Prepend the newcomer (backend lists newest-first) and jump to page 1.
           this.tasks = [created, ...this.tasks];
           this.page = 1;
@@ -551,11 +560,45 @@ export default defineComponent({
         this.showCreateDialog = false;
         this.editingTask = null;
         this.form = this.emptyForm();
-      } catch {
-        ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      } catch (error) {
+        // On an already-forced retry, don't loop on the same gate — surface it.
+        notActive = force ? null : extractSkillNotActive(error);
+        if (!notActive) {
+          ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+        }
       } finally {
         this.saving = false;
       }
+      if (notActive) {
+        const proceed = await this.confirmForceSkill(notActive);
+        if (proceed) await this.submitTask(payload, true);
+      }
+    },
+    async confirmForceSkill(detail: IScheduledTaskCapabilityDetail): Promise<boolean> {
+      const name = this.capabilityLabel(detail.slug);
+      try {
+        await ElMessageBox.confirm(
+          this.$t('chat.scheduledTasks.form.skillNotActiveMessage', { name }) as string,
+          this.$t('chat.scheduledTasks.form.skillNotActiveTitle') as string,
+          {
+            type: 'warning',
+            confirmButtonText: this.$t('chat.scheduledTasks.form.skillNotActiveForce') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          }
+        );
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    // Resolve a capability slug to a human label, falling back to the raw slug
+    // (a not-bound skill won't be in the authorizable lists).
+    capabilityLabel(slug: string): string {
+      const skill = this.authorizableSkills.find((s) => s.slug === slug);
+      if (skill) return skill.name || skill.slug;
+      const mcp = this.authorizableMcpServers.find((s) => s.slug === slug);
+      if (mcp) return mcp.name || mcp.slug;
+      return slug;
     },
     async loadAuthorizableSkills(force = false) {
       if (

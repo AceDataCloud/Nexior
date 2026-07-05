@@ -84,7 +84,28 @@ export interface IAuthorizableCapabilities {
   mcp_servers: IAuthorizableMcpServer[];
 }
 
-type ScheduledTaskPayload = {
+// Error code returned when an unattended-policy skill / MCP server is not bound
+// (not active or missing a required connection) for the user.
+export const SCHEDULED_TASK_ERROR_SKILL_NOT_ACTIVE = 'skill_not_active';
+
+export interface IScheduledTaskCapabilityDetail {
+  kind: 'skill' | 'mcp_server';
+  slug: string;
+  reason: 'not_active' | 'missing_connections';
+  missing_connections?: string[];
+}
+
+// Detect the backend `skill_not_active` rejection and return its structured
+// detail, so the UI can prompt the user to bind the capability — or retry the
+// save with `force` to store the policy anyway.
+export function extractSkillNotActive(error: unknown): IScheduledTaskCapabilityDetail | null {
+  const data = (error as { response?: { data?: { error?: string; detail?: IScheduledTaskCapabilityDetail } } })
+    ?.response?.data;
+  if (data?.error !== SCHEDULED_TASK_ERROR_SKILL_NOT_ACTIVE) return null;
+  return data.detail ?? { kind: 'skill', slug: '', reason: 'not_active' };
+}
+
+export type ScheduledTaskPayload = {
   name: string;
   description?: string;
   schedule: IScheduleSpec;
@@ -98,8 +119,12 @@ class ScheduledTasksOperator {
     return data?.items ?? [];
   }
 
-  async createTask(token: string, payload: ScheduledTaskPayload): Promise<IScheduledTask> {
-    const { data } = await axios.post(BASE, { action: 'create', ...payload }, { headers: headers(token) });
+  async createTask(token: string, payload: ScheduledTaskPayload, force = false): Promise<IScheduledTask> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'create', ...payload, ...(force ? { force: true } : {}) },
+      { headers: headers(token) }
+    );
     return data;
   }
 
@@ -108,9 +133,14 @@ class ScheduledTasksOperator {
     id: string,
     patch: Partial<
       Pick<IScheduledTask, 'name' | 'description' | 'state' | 'template' | 'schedule' | 'unattended_policy'>
-    >
+    >,
+    force = false
   ): Promise<IScheduledTask> {
-    const { data } = await axios.post(BASE, { action: 'update', id, ...patch }, { headers: headers(token) });
+    const { data } = await axios.post(
+      BASE,
+      { action: 'update', id, ...patch, ...(force ? { force: true } : {}) },
+      { headers: headers(token) }
+    );
     return data;
   }
 

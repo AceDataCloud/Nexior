@@ -763,6 +763,18 @@
     "message": "此任务将允许 {count} 个 Skill/MCP 在后台执行时跳过人工确认或加载限制：{skills}。它们可能会发送消息、发布内容或写入外部服务，请确认。",
     "description": "授权确认正文"
   },
+  "scheduledTasks.form.skillNotActiveTitle": {
+    "message": "需要先绑定技能",
+    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+  },
+  "scheduledTasks.form.skillNotActiveMessage": {
+    "message": "技能「{name}」尚未在你的账户中绑定或激活。若不先绑定，定时任务在后台自动运行时可能无法使用它。建议先前往绑定后再保存，或点击下方按钮仍要继续保存。",
+    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+  },
+  "scheduledTasks.form.skillNotActiveForce": {
+    "message": "仍要继续保存",
+    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+  },
   "scheduledTasks.form.required": {
     "message": "请填写任务名称和提示词",
     "description": "必填项验证"
