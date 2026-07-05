@@ -20,20 +20,22 @@
         </p>
       </div>
 
-      <!-- in-progress: step checklist + task id (+ trace id) + overall percentage -->
+      <!-- in-progress: step checklist + overall percentage + task id, in the same bordered card as success/failure -->
       <div v-if="!isTerminal" class="content">
-        <progress-steps :model-value="modelValue" />
-        <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" />
-        <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-2">
-          <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-          {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
-          <copy-to-clipboard :content="modelValue?.id!" />
-        </p>
-        <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-          <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-          {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
-          <copy-to-clipboard :content="modelValue?.response?.trace_id" />
-        </p>
+        <el-alert :closable="false" class="mt-2 processing">
+          <progress-steps :model-value="modelValue" />
+          <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" class="mt-1" />
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-3">
+            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
+            <copy-to-clipboard :content="modelValue?.id!" />
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+          </p>
+        </el-alert>
       </div>
 
       <!-- success: one player per language variant -->
@@ -248,6 +250,9 @@ $left-width: 70px;
       .el-alert {
         border-left-width: 2px;
         border-left-style: solid;
+        &.processing {
+          border-color: var(--el-color-primary);
+        }
         &.failure {
           border-color: var(--el-color-danger);
         }
