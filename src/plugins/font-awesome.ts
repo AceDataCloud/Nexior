@@ -82,6 +82,7 @@ import {
   faWind as faSolidWind,
   faStore as faSolidStore,
   faTrash as faSolidTrash,
+  faShareNodes as faSolidShareNodes,
   faChevronDown as faSolidChevronDown,
   faArrowsRotate as faSolidArrowsRotate,
   faUpRightFromSquare as faSolidUpRightFromSquare,
@@ -239,6 +240,7 @@ library.add(faRegularComment);
 library.add(faSolidArrowRightFromBracket);
 library.add(faSolidUserXmark);
 library.add(faSolidTrash);
+library.add(faSolidShareNodes);
 library.add(faSolidChevronDown);
 library.add(faSolidPalette);
 library.add(faSolidWandMagicSparkles);
