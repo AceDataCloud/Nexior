@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 07:32:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 09:36:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.316.0
+
+Sun, 05 Jul 2026 09:36:22 GMT
+
+### Minor changes
+
+- feat(settings): install Xiaohongshu DM skill from Android Local Tools (cqc@cuiqingcai.com)
 
 ## 3.315.3
 
