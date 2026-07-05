@@ -728,6 +728,18 @@
     "message": "이 작업은 {count}개의 Skill이 백그라운드에서 실행될 때 인적 확인을 건너뛰도록 허용합니다: {skills}입니다. 이 Skill은 메시지를 보내거나 콘텐츠를 게시하거나 외부 서비스에 기록할 수 있으니 확인해 주세요.",
     "description": "권한 부여 확인 본문"
   },
+  "scheduledTasks.form.skillNotActiveTitle": {
+    "message": "Bind the skill first",
+    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+  },
+  "scheduledTasks.form.skillNotActiveMessage": {
+    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
+    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+  },
+  "scheduledTasks.form.skillNotActiveForce": {
+    "message": "Save anyway",
+    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+  },
   "scheduledTasks.form.required": {
     "message": "Please fill in task name and prompt"
   },
