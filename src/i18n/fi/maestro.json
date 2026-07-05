@@ -187,6 +187,70 @@
     "message": "Ei vielä videoita — luo ensimmäinen vasemmalla.",
     "description": "Ei tehtäviä"
   },
+  "name.scenario": {
+    "message": "Videon tyyppi",
+    "description": "Video type field"
+  },
+  "description.scenario": {
+    "message": "Valitse luotavan videon tyyppi. Automaattinen antaa Maestron päättää; tai pakota tyyli, kuten lyhytdraama, aito kuvamateriaali, selittävä tai tuote-esittely.",
+    "description": "Scenario field help"
+  },
+  "option.scenario.auto": {
+    "message": "Automaattinen · anna Maestron päättää",
+    "description": "Auto scenario option"
+  },
+  "option.scenario.narrated": {
+    "message": "Kuvateksteillä varustettu video",
+    "description": "Kuvateksteillä varustettu monikohtainen videovaihtoehto"
+  },
+  "option.scenario.drama": {
+    "message": "Lyhytdraama",
+    "description": "Short drama scenario option"
+  },
+  "option.scenario.avatar": {
+    "message": "Digitaalinen henkilö · Puhe",
+    "description": "Avatar / puhuva pää -skenaario vaihtoehto"
+  },
+  "option.scenario.motion": {
+    "message": "Liikegrafiikka",
+    "description": "Motion graphics scenario option"
+  },
+  "option.scenario.slideshow": {
+    "message": "Esitysdia",
+    "description": "Diaesityksen skenaario vaihtoehto"
+  },
+  "name.style": {
+    "message": "Visuaalinen tyyli",
+    "description": "Visuaalisen tyylin kenttä"
+  },
+  "description.style": {
+    "message": "Valinnainen visuaalinen tyyli (vaikuttaa typografiaan, väreihin, animaatioihin, rytmiin), riippumaton videotyypistä. Valinnaiset esiasetukset tai oma syöttö.",
+    "description": "Tyylikentän ohje"
+  },
+  "option.style.auto": {
+    "message": "Automaattinen · Ei lisäyksityiskohtia",
+    "description": "Automaattinen tyylivaihtoehto"
+  },
+  "option.style.cinematic": {
+    "message": "Elokuvamainen",
+    "description": "Elokuvamainen tyylivaihtoehto"
+  },
+  "option.style.minimal": {
+    "message": "Minimalistinen",
+    "description": "Minimalistinen tyylivaihtoehto"
+  },
+  "option.style.neon": {
+    "message": "Neon",
+    "description": "Neon-tyylivaihtoehto"
+  },
+  "option.style.corporate": {
+    "message": "Liiketoiminta",
+    "description": "Liiketoimintatyylivaihtoehto"
+  },
+  "option.style.hand-drawn": {
+    "message": "Käsin piirretty",
+    "description": "Käsin piirretty tyylivaihtoehto"
+  },
   "name.sourceType": {
     "message": "Lähteen tyyppi",
     "description": "Lähteen tyyppi kenttä"
@@ -247,22 +311,6 @@
     "message": "Lataa tuotettu video",
     "description": "Lataus työkaluvihje"
   },
-  "name.scenario": {
-    "message": "Videon tyyppi",
-    "description": "Video type field"
-  },
-  "description.scenario": {
-    "message": "Valitse luotavan videon tyyppi. Automaattinen antaa Maestron päättää; tai pakota tyyli, kuten lyhytdraama, aito kuvamateriaali, selittävä tai tuote-esittely.",
-    "description": "Scenario field help"
-  },
-  "option.scenario.auto": {
-    "message": "Automaattinen · anna Maestron päättää",
-    "description": "Auto scenario option"
-  },
-  "option.scenario.drama": {
-    "message": "Lyhytdraama",
-    "description": "Short drama scenario option"
-  },
   "option.scenario.general": {
     "message": "Aito kuvamateriaali",
     "description": "Footage piece scenario option"
@@ -282,10 +330,6 @@
   "option.scenario.slides": {
     "message": "Diaesitys",
     "description": "Slideshow scenario option"
-  },
-  "option.scenario.motion": {
-    "message": "Liikegrafiikka",
-    "description": "Motion graphics scenario option"
   },
   "option.scenario.changelog": {
     "message": "Muutosloki (PR)",

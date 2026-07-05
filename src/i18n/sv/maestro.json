@@ -187,6 +187,70 @@
     "message": "Inga videor än — skapa din första till vänster.",
     "description": "Inga uppgifter"
   },
+  "name.scenario": {
+    "message": "Videotyp",
+    "description": "Video type field"
+  },
+  "description.scenario": {
+    "message": "Välj typ av video att skapa. Auto låter Maestro bestämma; eller tvinga en stil som kortdrama, verkligt filmmaterial, förklarande eller produktreklam.",
+    "description": "Scenario field help"
+  },
+  "option.scenario.auto": {
+    "message": "Auto · låt Maestro bestämma",
+    "description": "Auto scenario option"
+  },
+  "option.scenario.narrated": {
+    "message": "Berättad bild- och textvideo",
+    "description": "Alternativ för berättad video med flera scener"
+  },
+  "option.scenario.drama": {
+    "message": "Kortdrama",
+    "description": "Short drama scenario option"
+  },
+  "option.scenario.avatar": {
+    "message": "Digital person · Talande huvud",
+    "description": "Alternativ för avatar / talande huvudscenario"
+  },
+  "option.scenario.motion": {
+    "message": "Rörlig grafik",
+    "description": "Motion graphics scenario option"
+  },
+  "option.scenario.slideshow": {
+    "message": "Bildspel",
+    "description": "Alternativ för bildspelscenario"
+  },
+  "name.style": {
+    "message": "Visuell stil",
+    "description": "Fält för visuell stil"
+  },
+  "description.style": {
+    "message": "Valfri visuell stilindikation (påverkar typografi, färgsättning, animationer, rytm), oberoende av videotyp. Välj förinställning eller ange själv.",
+    "description": "Hjälp för stilfält"
+  },
+  "option.style.auto": {
+    "message": "Automatisk · Ingen extra specifikation",
+    "description": "Alternativ för automatisk stil"
+  },
+  "option.style.cinematic": {
+    "message": "Filmisk känsla",
+    "description": "Alternativ för filmisk stil"
+  },
+  "option.style.minimal": {
+    "message": "Minimalistisk",
+    "description": "Alternativ för minimalistisk stil"
+  },
+  "option.style.neon": {
+    "message": "Neon",
+    "description": "Alternativ för neonstil"
+  },
+  "option.style.corporate": {
+    "message": "Företagsstil",
+    "description": "Alternativ för företagsstil"
+  },
+  "option.style.hand-drawn": {
+    "message": "Handritad",
+    "description": "Alternativ för handritad stil"
+  },
   "name.sourceType": {
     "message": "Källtyp",
     "description": "Fält för källtyp"
@@ -247,22 +311,6 @@
     "message": "Ladda ner den genererade videon",
     "description": "Nedladdningstips"
   },
-  "name.scenario": {
-    "message": "Videotyp",
-    "description": "Video type field"
-  },
-  "description.scenario": {
-    "message": "Välj typ av video att skapa. Auto låter Maestro bestämma; eller tvinga en stil som kortdrama, verkligt filmmaterial, förklarande eller produktreklam.",
-    "description": "Scenario field help"
-  },
-  "option.scenario.auto": {
-    "message": "Auto · låt Maestro bestämma",
-    "description": "Auto scenario option"
-  },
-  "option.scenario.drama": {
-    "message": "Kortdrama",
-    "description": "Short drama scenario option"
-  },
   "option.scenario.general": {
     "message": "Verkligt filmmaterial",
     "description": "Footage piece scenario option"
@@ -282,10 +330,6 @@
   "option.scenario.slides": {
     "message": "Bildspel",
     "description": "Slideshow scenario option"
-  },
-  "option.scenario.motion": {
-    "message": "Rörlig grafik",
-    "description": "Motion graphics scenario option"
   },
   "option.scenario.changelog": {
     "message": "Ändringslogg (PR)",
