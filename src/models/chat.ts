@@ -94,6 +94,10 @@ export interface IChatMessageContentItem {
   file_url?: { url: string } | string;
   name?: string;
   mimeType?: string;
+  // Alt text for an `image_url` block. The aichat2 worker sets this on a
+  // tool-result screenshot (`<tool_id> screenshot`); the frontend reuses it as
+  // a dedupe key when folding the same block locally on client-tool resume.
+  alt?: string;
   // Tool-calling fields (type='tool_use')
   tool_id?: string;
   tool_name?: string;

@@ -778,6 +778,13 @@ export default defineComponent({
       const lastAssistant = [...this.messages].reverse().find((m) => m.role === ROLE_ASSISTANT);
       if (lastAssistant && Array.isArray(lastAssistant.content)) {
         const content = lastAssistant.content as IChatMessageContentItem[];
+        // Collect tool-result screenshots here and append them AFTER folding
+        // every block, so they trail the tool_use blocks in the exact order
+        // the worker persists them (the worker buffers image blocks and pushes
+        // them once, post-loop — see conversations.ts). Interleaving per result
+        // would reorder images vs a reload when several parallel client tools
+        // return screenshots.
+        const imageBlocks: IChatMessageContentItem[] = [];
         for (const tr of toolResults) {
           const block = content.find((b) => b.type === 'tool_use' && b.tool_id === tr.tool_use_id);
           if (block) {
@@ -786,7 +793,26 @@ export default defineComponent({
             if (tr.is_error) block.is_error = true;
             delete block.pending_question;
           }
+          // Mirror the worker: a tool-result image (e.g. a computer.screenshot)
+          // is persisted as a trailing `image_url` block on the pause message,
+          // so a reload shows it. Buffer the same block locally so the live
+          // stream matches the reloaded view instead of only appearing after
+          // refresh. Idempotent by tool_use_id (a re-resume must not duplicate).
+          // Gate on the SAME validation the worker applies before persisting
+          // (`isValidResultImage`): if the worker would reject the value it
+          // won't persist it, so appending it locally would show live but
+          // vanish on reload — an inverse mismatch. Validating here keeps the
+          // two views identical and blocks any non-image URL from the <img>.
+          if (tr.image && this._isValidResultImage(tr.image)) {
+            const alt = `${tr.tool_use_id} screenshot`;
+            const already = content.some((b) => b.type === 'image_url' && b.alt === alt);
+            const buffered = imageBlocks.some((b) => b.alt === alt);
+            if (!already && !buffered) {
+              imageBlocks.push({ type: 'image_url', image_url: { url: tr.image }, alt });
+            }
+          }
         }
+        if (imageBlocks.length) content.push(...imageBlocks);
       }
       // Push fresh pending assistant message for the resumed turn.
       this.messages.push({
@@ -944,6 +970,21 @@ export default defineComponent({
       // Stop pressed while the last tool was running → don't resume the turn.
       if (runId !== undefined && runId !== this.clientToolRunId) return;
       this._resumeWithToolResults(results, conversationId);
+    },
+    /**
+     * Mirror of the aichat2 worker's `isValidResultImage` guard. The worker
+     * persists a tool-result screenshot as an `image_url` block ONLY when the
+     * value is a whitespace-free `https://` URL or a base64 raster
+     * `data:image/(png|jpeg|webp)` URI within the size cap; anything else it
+     * silently drops. The local fold gates on the same rule so the live view
+     * shows exactly what a reload would (no inverse mismatch) and no non-image
+     * URL ever reaches the `<img>` sink. Keep in sync with the worker.
+     */
+    _isValidResultImage(s: string): boolean {
+      const MAX_RESULT_IMAGE_CHARS = 6_000_000;
+      if (!s || s.length > MAX_RESULT_IMAGE_CHARS) return false;
+      if (s.startsWith('https://')) return !/\s/.test(s);
+      return /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(s);
     },
     /**
      * Host a tool-result image (e.g. a computer.screenshot) on the platform
