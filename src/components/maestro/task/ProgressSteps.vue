@@ -1,20 +1,28 @@
 <template>
   <div class="progress-steps" aria-live="polite">
-    <el-steps direction="vertical" :active="currentIndex" finish-status="finish" :space="34">
-      <el-step v-for="(step, i) in steps" :key="step.key" :title="$t(`maestro.step.${step.key}`)">
-        <template v-if="i === currentIndex" #icon>
-          <el-icon class="is-loading" :aria-label="$t(`maestro.step.${step.key}`)"><loading /></el-icon>
-        </template>
-      </el-step>
-    </el-steps>
+    <div
+      v-for="(step, i) in steps"
+      :key="step.key"
+      class="step"
+      :class="stateOf(i)"
+      :aria-current="i === currentIndex ? 'step' : undefined"
+    >
+      <span class="ico">
+        <el-icon v-if="i === currentIndex" class="is-loading" :aria-label="$t(`maestro.step.${step.key}`)">
+          <loading />
+        </el-icon>
+        <el-icon v-else-if="i < currentIndex"><check /></el-icon>
+      </span>
+      <span class="txt">{{ $t(`maestro.step.${step.key}`) }}</span>
+    </div>
     <p v-if="detail" class="detail">{{ detail }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSteps, ElStep, ElIcon } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
+import { ElIcon } from 'element-plus';
+import { Loading, Check } from '@element-plus/icons-vue';
 import { IMaestroTask } from '@/models';
 
 // Canonical, ordered pipeline stages the backend emits (runner.py). The checklist mirrors them.
@@ -37,7 +45,7 @@ function canonIndex(stage?: string): number {
 
 export default defineComponent({
   name: 'ProgressSteps',
-  components: { ElSteps, ElStep, ElIcon, Loading },
+  components: { ElIcon, Loading, Check },
   props: {
     modelValue: {
       type: Object as () => IMaestroTask | undefined,
@@ -66,48 +74,66 @@ export default defineComponent({
     steps(): { key: string }[] {
       return CANON.map((key) => ({ key }));
     }
+  },
+  methods: {
+    stateOf(i: number): 'done' | 'active' | 'pending' {
+      const cur = this.currentIndex;
+      return i < cur ? 'done' : i === cur ? 'active' : 'pending';
+    }
   }
 });
 </script>
 
 <style lang="scss" scoped>
 .progress-steps {
-  margin: 4px 0 10px;
+  margin: 4px 0 8px;
 
-  // compact, on-brand overrides for the native vertical stepper
-  :deep(.el-step__icon) {
-    width: 22px;
-    height: 22px;
-    font-size: 12px;
-  }
-  // thinner ring on the numbered / check circles
-  :deep(.el-step__icon.is-text) {
-    border-width: 1px;
-  }
-  // the active step is a clean spinning ring (no boxy border), brand-colored
-  :deep(.el-step__icon.is-icon) {
-    border: none;
-    color: var(--el-color-primary);
-    font-size: 16px;
-  }
-  :deep(.el-step__title) {
+  // refined, connector-line-free checklist with small consistent indicators
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 13px;
-    line-height: 22px;
-    padding-bottom: 4px;
-    &.is-finish {
-      color: var(--el-color-primary);
+    line-height: 1.75;
+
+    .ico {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
     }
-    &.is-process {
+
+    &.done {
+      color: var(--el-color-primary);
+      .ico {
+        color: var(--el-color-primary);
+      }
+    }
+    &.active {
+      color: var(--el-color-primary);
       font-weight: 600;
-      color: var(--el-color-primary);
+      .ico {
+        color: var(--el-color-primary);
+      }
     }
-    &.is-wait {
+    &.pending {
       color: var(--el-text-color-disabled);
+      .ico::before {
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        border: 1px solid var(--el-text-color-disabled);
+      }
     }
   }
 
   .detail {
-    margin: 2px 0 0 30px;
+    margin: 3px 0 0 22px;
     font-size: 12px;
     line-height: 1.5;
     color: var(--el-text-color-placeholder);
