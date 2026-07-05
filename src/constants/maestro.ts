@@ -18,6 +18,15 @@ export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
 // Legacy values (general/explainer/product/website/changelog/captions -> auto, slides -> slideshow)
 // are still accepted by the API but no longer offered here.
 export const MAESTRO_ALLOWED_SCENARIOS = ['auto', 'narrated', 'drama', 'avatar', 'motion', 'slideshow'];
+// Preview thumbnail per scenario (cohesive illustrations hosted on the CDN, like MAESTRO_LOGO).
+export const MAESTRO_SCENARIO_THUMBNAILS: Record<string, string> = {
+  auto: 'https://cdn.acedata.cloud/f61b85476e.png',
+  narrated: 'https://cdn.acedata.cloud/2e94e507eb.png',
+  drama: 'https://cdn.acedata.cloud/279a8a0189.png',
+  avatar: 'https://cdn.acedata.cloud/c633f9e39c.png',
+  motion: 'https://cdn.acedata.cloud/ab9dc386b6.png',
+  slideshow: 'https://cdn.acedata.cloud/581b2148f5.png'
+};
 // Visual style hint (freeform on the API; these are quick presets). Orthogonal to scenario routing.
 export const MAESTRO_ALLOWED_STYLES = ['auto', 'cinematic', 'minimal', 'neon', 'corporate', 'hand-drawn'];
 

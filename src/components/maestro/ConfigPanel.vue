@@ -106,19 +106,31 @@
       </div>
 
       <!-- Scenario (video type) -->
-      <div class="field-row">
-        <div class="field-head">
+      <div class="field-block mb-5">
+        <div class="field-head mb-2">
           <h2 class="field-title font-bold">{{ $t('maestro.name.scenario') }}</h2>
           <info-icon :content="$t('maestro.description.scenario')" class="ml-1" />
         </div>
-        <el-select v-model="scenario" class="field-control">
-          <el-option
+        <div class="scenario-cards" role="radiogroup" :aria-label="$t('maestro.name.scenario')">
+          <div
             v-for="s in MAESTRO_ALLOWED_SCENARIOS"
             :key="s"
-            :label="$t(`maestro.option.scenario.${s}`)"
-            :value="s"
-          />
-        </el-select>
+            class="scenario-card"
+            :class="{ active: scenario === s }"
+            role="radio"
+            :aria-checked="scenario === s"
+            :aria-label="$t(`maestro.option.scenario.${s}`)"
+            tabindex="0"
+            @click="scenario = s"
+            @keydown.enter.prevent="scenario = s"
+            @keydown.space.prevent="scenario = s"
+          >
+            <div class="scenario-thumb">
+              <img :src="MAESTRO_SCENARIO_THUMBNAILS[s]" :alt="$t(`maestro.option.scenario.${s}`)" loading="lazy" />
+            </div>
+            <p class="scenario-name">{{ $t(`maestro.option.scenario.${s}`) }}</p>
+          </div>
+        </div>
       </div>
 
       <!-- Style (visual direction) -->
@@ -171,6 +183,7 @@ import {
   MAESTRO_ALLOWED_QUALITIES,
   MAESTRO_DEFAULT_QUALITY,
   MAESTRO_ALLOWED_SCENARIOS,
+  MAESTRO_SCENARIO_THUMBNAILS,
   MAESTRO_DEFAULT_SCENARIO,
   MAESTRO_ALLOWED_STYLES,
   MAESTRO_DEFAULT_STYLE
@@ -206,6 +219,7 @@ export default defineComponent({
       MAESTRO_MAX_DURATION,
       MAESTRO_ALLOWED_QUALITIES,
       MAESTRO_ALLOWED_SCENARIOS,
+      MAESTRO_SCENARIO_THUMBNAILS,
       MAESTRO_ALLOWED_STYLES
     };
   },
@@ -403,6 +417,63 @@ export default defineComponent({
 
     .ratio-rect {
       border-color: var(--el-color-primary);
+    }
+  }
+}
+.scenario-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.scenario-card {
+  border: 1px solid var(--el-border-color);
+  background-color: var(--el-fill-color-lighter);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  .scenario-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: var(--el-fill-color);
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .scenario-name {
+    font-size: 12px;
+    margin: 0;
+    padding: 6px 8px;
+    text-align: center;
+    color: var(--el-text-color-primary);
+  }
+
+  &:hover {
+    border-color: var(--el-color-primary-light-5);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--el-color-primary);
+    box-shadow: 0 0 0 2px var(--el-color-primary-light-7);
+  }
+
+  &.active {
+    border-color: var(--el-color-primary);
+    box-shadow: 0 0 0 1px var(--el-color-primary);
+
+    .scenario-name {
+      color: var(--el-color-primary);
+      font-weight: 600;
     }
   }
 }
