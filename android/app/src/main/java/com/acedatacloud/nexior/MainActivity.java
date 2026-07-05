@@ -3,6 +3,7 @@ package com.acedatacloud.nexior;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import com.getcapacitor.BridgeActivity;
+import com.getcapacitor.Plugin;
 
 /**
  * MainActivity is the main entry point for the Nexior Android application.
@@ -14,9 +15,12 @@ public class MainActivity extends BridgeActivity {
         // Register the custom Play Install Referrer plugin before the bridge
         // initializes so it's available to the WebView on first launch.
         registerPlugin(InstallReferrerPlugin.class);
-        // Computer Use (screen capture + gesture control via AccessibilityService).
-        // Inert until the user enables the accessibility service in Settings.
-        registerPlugin(ComputerUsePlugin.class);
+        // Computer Use (screen capture + gesture control via AccessibilityService)
+        // ships only in the `full`/sideload flavor; pluginClass() is null on Play.
+        Class<? extends Plugin> computerUse = ComputerUseRegistrar.pluginClass();
+        if (computerUse != null) {
+            registerPlugin(computerUse);
+        }
         EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
     }

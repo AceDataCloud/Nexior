@@ -19,7 +19,6 @@ import { resolveDeferredInviterId } from '@/utils/attribution';
 import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
-import { installMobileLocalExec } from '@/utils/mobileLocalExec';
 import {
   initializeCookies,
   initializeDescription,
@@ -90,10 +89,15 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   if (isRedirected) {
     return;
   }
-  // Android-only: install the `window.localExec` bridge (Computer Use) so the
-  // shared aichat2 chat loop can drive phone-side `computer.*` tools, exactly
-  // like the desktop Electron bridge. No-op on web/iOS/desktop.
-  installMobileLocalExec();
+  // Android-only (full/sideload flavor): install the `window.localExec` bridge
+  // (Computer Use) so the shared aichat2 chat loop can drive phone-side
+  // `computer.*` tools, like the desktop Electron bridge. No-op on web/iOS/
+  // desktop. Compiled out of the Google Play build (VITE_COMPUTER_USE=false),
+  // which drops mobileLocalExec + the AccessibilityService plugin entirely.
+  if (import.meta.env.VITE_COMPUTER_USE !== 'false') {
+    const { installMobileLocalExec } = await import('@/utils/mobileLocalExec');
+    installMobileLocalExec();
+  }
   await initializeCookies();
   await resolveDeferredInviterId();
   await initializeToken();

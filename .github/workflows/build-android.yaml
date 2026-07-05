@@ -182,13 +182,39 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Build web assets (Android surface)
+      - name: Build web assets (full flavor, Computer Use ON)
         env:
           VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
         run: npm run build:android
 
       - name: Sync Android project
         run: npx cap sync android
+
+      - name: Stage full-flavor web assets
+        # cap sync copied the full (Computer Use ON) web build into the shared
+        # main source set. Move it into the `full` flavor so only the sideload
+        # APK carries Computer Use. capacitor.config.json etc. stay in main.
+        run: |
+          mkdir -p android/app/src/full/assets
+          rm -rf android/app/src/full/assets/public
+          mv android/app/src/main/assets/public android/app/src/full/assets/public
+
+      - name: Build web assets (play flavor, Computer Use OFF, tree-shaken)
+        env:
+          VITE_STRIPE_PUBLISHABLE_KEY: ${{ secrets.VITE_STRIPE_PUBLISHABLE_KEY }}
+          VITE_COMPUTER_USE: 'false'
+        run: npm run build:android
+
+      - name: Stage play-flavor web assets
+        # The Play web bundle is compiled with no Local Tools entry and no
+        # Computer Use / AccessibilityService adapter code; it lives only in the
+        # `play` flavor. cap copy re-processes dist into the main source set the
+        # same way as the full build, then we move it into `play`.
+        run: |
+          npx cap copy android
+          mkdir -p android/app/src/play/assets
+          rm -rf android/app/src/play/assets/public
+          mv android/app/src/main/assets/public android/app/src/play/assets/public
 
       - name: Decode keystore
         run: |
@@ -204,20 +230,20 @@ jobs:
           sed -i "s/versionName \"[^\"]*\"/versionName \"$VERSION_NAME\"/" android/app/build.gradle
         shell: bash
 
-      - name: Build release AAB
+      - name: Build Play AAB (play flavor, no Computer Use)
         working-directory: android
         run: |
           chmod +x gradlew
-          ./gradlew bundleRelease \
+          ./gradlew bundlePlayRelease \
             -PRELEASE_STORE_FILE=release.keystore \
             -PRELEASE_STORE_PASSWORD='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
             -PRELEASE_KEY_ALIAS='${{ secrets.ANDROID_KEY_ALIAS }}' \
             -PRELEASE_KEY_PASSWORD='${{ secrets.ANDROID_KEY_PASSWORD }}'
 
-      - name: Build release APK (for GitHub artifacts)
+      - name: Build full APK (full flavor, sideload + Computer Use)
         working-directory: android
         run: |
-          ./gradlew assembleRelease \
+          ./gradlew assembleFullRelease \
             -PRELEASE_STORE_FILE=release.keystore \
             -PRELEASE_STORE_PASSWORD='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
             -PRELEASE_KEY_ALIAS='${{ secrets.ANDROID_KEY_ALIAS }}' \
@@ -227,13 +253,13 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.apk
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: android/app/build/outputs/apk/full/release/app-full-release.apk
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v7
         with:
           name: nexior-${{ needs.preflight.outputs.version-name }}.aab
-          path: android/app/build/outputs/bundle/release/app-release.aab
+          path: android/app/build/outputs/bundle/playRelease/app-play-release.aab
 
       # Attach the sideloadable APK to the matching GitHub Release
       # (@acedatacloud/nexior_v<version>, created by github-release.yaml). Only
@@ -255,7 +281,7 @@ jobs:
 
       - name: Stage versioned APK
         if: steps.rel.outputs.exists == 'true'
-        run: cp android/app/build/outputs/apk/release/app-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
+        run: cp android/app/build/outputs/apk/full/release/app-full-release.apk "nexior-${{ needs.preflight.outputs.version-name }}.apk"
 
       - name: Attach APK to GitHub Release
         if: steps.rel.outputs.exists == 'true'
@@ -272,7 +298,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: com.acedatacloud.nexior
-          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          releaseFiles: android/app/build/outputs/bundle/playRelease/app-play-release.aab
           tracks: ${{ needs.preflight.outputs.track }}
           status: completed
 

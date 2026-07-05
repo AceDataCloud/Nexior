@@ -74,7 +74,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, defineAsyncComponent } from 'vue';
 import { ElDialog, ElMenu, ElMenuItem } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -102,7 +102,6 @@ import SubsiteSetting from '@/components/setting/Subsite.vue';
 import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
 import AuthSetting from '@/components/setting/Auth.vue';
 import AboutSetting from '@/components/setting/About.vue';
-import LocalToolsSetting from '@/components/setting/LocalTools.vue';
 import {
   SETTING_TAB_ABOUT,
   SETTING_TAB_API_KEY,
@@ -140,7 +139,11 @@ export default defineComponent({
     CustomDomainSetting,
     AuthSetting,
     AboutSetting,
-    LocalToolsSetting
+    // Local Tools (Computer Use) is compiled out of the Google Play build
+    // (VITE_COMPUTER_USE=false); the async import is then dropped by the bundler.
+    ...(import.meta.env.VITE_COMPUTER_USE !== 'false'
+      ? { LocalToolsSetting: defineAsyncComponent(() => import('@/components/setting/LocalTools.vue')) }
+      : {})
   },
   props: {
     visible: {
@@ -246,7 +249,7 @@ export default defineComponent({
           key: SETTING_TAB_LOCAL_TOOLS,
           label: this.$t('common.settings.localTools'),
           icon: faLaptopCode,
-          visible: this.isDesktopApp
+          visible: import.meta.env.VITE_COMPUTER_USE !== 'false' && this.isDesktopApp
         },
         { key: SETTING_TAB_ABOUT, label: this.$t('common.settings.about'), icon: faInfoCircle, visible: true }
       ];
