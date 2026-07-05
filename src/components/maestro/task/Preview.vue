@@ -20,9 +20,9 @@
         </p>
       </div>
 
-      <!-- in-progress: task id (+ trace id) + live stage + percentage -->
+      <!-- in-progress: step checklist + task id (+ trace id) + overall percentage -->
       <div v-if="!isTerminal" class="content">
-        <p v-if="progressMessage" class="text-xs text-[var(--el-text-color-secondary)] mb-1">{{ progressMessage }}</p>
+        <progress-steps :model-value="modelValue" />
         <el-progress v-if="progressPct !== undefined" :percentage="progressPct" :stroke-width="6" />
         <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-2">
           <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
@@ -109,6 +109,7 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
+import ProgressSteps from './ProgressSteps.vue';
 
 const TERMINAL = ['succeeded', 'failed'];
 
@@ -122,7 +123,8 @@ export default defineComponent({
     ElProgress,
     VideoPlayer,
     ElButton,
-    ApiCodeButton
+    ApiCodeButton,
+    ProgressSteps
   },
   props: {
     modelValue: {
@@ -144,11 +146,6 @@ export default defineComponent({
     },
     isTerminal(): boolean {
       return TERMINAL.includes(this.modelValue?.status || '');
-    },
-    progressMessage(): string | undefined {
-      const progress = this.modelValue?.response?.data?.progress;
-      const last = progress?.length ? progress[progress.length - 1] : undefined;
-      return last?.message || last?.stage || this.modelValue?.response?.data?.stage;
     },
     progressPct(): number | undefined {
       const progress = this.modelValue?.response?.data?.progress;
