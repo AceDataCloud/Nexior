@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 04 Jul 2026 15:27:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 05:11:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.315.0
+
+Sun, 05 Jul 2026 05:11:32 GMT
+
+### Minor changes
+
+- Add a friendly step-checklist for in-progress maestro video tasks (dev@acedata.cloud)
 
 ## 3.314.3
 
