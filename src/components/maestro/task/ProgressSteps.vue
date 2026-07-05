@@ -1,27 +1,20 @@
 <template>
   <div class="progress-steps" aria-live="polite">
-    <div
-      v-for="step in steps"
-      :key="step.key"
-      class="step"
-      :class="step.state"
-      :role="step.state === 'active' ? 'status' : undefined"
-      :aria-current="step.state === 'active' ? 'step' : undefined"
-    >
-      <span class="marker">
-        <font-awesome-icon v-if="step.state === 'done'" icon="fa-solid fa-circle-check" />
-        <font-awesome-icon v-else-if="step.state === 'active'" icon="fa-solid fa-spinner" spin />
-        <span v-else class="dot" />
-      </span>
-      <span class="label">{{ $t(`maestro.step.${step.key}`) }}</span>
-      <span v-if="step.state === 'active' && detail" class="detail">{{ detail }}</span>
-    </div>
+    <el-steps direction="vertical" :active="currentIndex" finish-status="finish" :space="34">
+      <el-step v-for="(step, i) in steps" :key="step.key" :title="$t(`maestro.step.${step.key}`)">
+        <template v-if="i === currentIndex" #icon>
+          <el-icon class="is-loading" :aria-label="$t(`maestro.step.${step.key}`)"><loading /></el-icon>
+        </template>
+      </el-step>
+    </el-steps>
+    <p v-if="detail" class="detail">{{ detail }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { ElSteps, ElStep, ElIcon } from 'element-plus';
+import { Loading } from '@element-plus/icons-vue';
 import { IMaestroTask } from '@/models';
 
 // Canonical, ordered pipeline stages the backend emits (runner.py). The checklist mirrors them.
@@ -42,11 +35,9 @@ function canonIndex(stage?: string): number {
   return -1;
 }
 
-type StepState = 'done' | 'active' | 'pending';
-
 export default defineComponent({
   name: 'ProgressSteps',
-  components: { FontAwesomeIcon },
+  components: { ElSteps, ElStep, ElIcon, Loading },
   props: {
     modelValue: {
       type: Object as () => IMaestroTask | undefined,
@@ -72,12 +63,8 @@ export default defineComponent({
       }
       return undefined;
     },
-    steps(): { key: string; state: StepState }[] {
-      const cur = this.currentIndex;
-      return CANON.map((key, i) => ({
-        key,
-        state: (i < cur ? 'done' : i === cur ? 'active' : 'pending') as StepState
-      }));
+    steps(): { key: string }[] {
+      return CANON.map((key) => ({ key }));
     }
   }
 });
@@ -85,48 +72,47 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .progress-steps {
-  margin: 6px 0 10px;
-  .step {
-    display: flex;
-    align-items: center;
+  margin: 4px 0 10px;
+
+  // compact, on-brand overrides for the native vertical stepper
+  :deep(.el-step__icon) {
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
+  }
+  // thinner ring on the numbered / check circles
+  :deep(.el-step__icon.is-text) {
+    border-width: 1px;
+  }
+  // the active step is a clean spinning ring (no boxy border), brand-colored
+  :deep(.el-step__icon.is-icon) {
+    border: none;
+    color: var(--el-color-primary);
+    font-size: 16px;
+  }
+  :deep(.el-step__title) {
     font-size: 13px;
-    line-height: 1.9;
-    color: var(--el-text-color-secondary);
-    min-width: 0;
-    .marker {
-      width: 18px;
-      flex-shrink: 0;
-      display: inline-flex;
-      justify-content: center;
-      margin-right: 8px;
-      .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        border: 1.5px solid var(--el-text-color-disabled);
-      }
-    }
-    .label {
-      flex-shrink: 0;
-    }
-    .detail {
-      margin-left: 8px;
-      font-size: 12px;
-      color: var(--el-text-color-placeholder);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    &.done {
-      color: var(--el-color-success);
-    }
-    &.active {
+    line-height: 22px;
+    padding-bottom: 4px;
+    &.is-finish {
       color: var(--el-color-primary);
-      font-weight: 600;
     }
-    &.pending {
+    &.is-process {
+      font-weight: 600;
+      color: var(--el-color-primary);
+    }
+    &.is-wait {
       color: var(--el-text-color-disabled);
     }
+  }
+
+  .detail {
+    margin: 2px 0 0 30px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--el-text-color-placeholder);
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 }
 </style>
