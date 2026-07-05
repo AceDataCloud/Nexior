@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 07:29:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 07:32:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.315.3
+
+Sun, 05 Jul 2026 07:32:09 GMT
+
+### Patches
+
+- feat(scheduled-tasks): surface skill_not_active binding error with Save-anyway (force) retry (cqc@cuiqingcai.com)
 
 ## 3.315.2
 
