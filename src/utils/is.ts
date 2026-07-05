@@ -84,3 +84,23 @@ export function isImageUrl(url: string | undefined): boolean {
   }
   return /\.(jpg|jpeg|png|gif|bmp|webp|svg|tiff|ico|heic?)$/i.test(url.toLowerCase());
 }
+
+/**
+ * is video url
+ */
+export function isVideoUrl(url: string | undefined): boolean {
+  if (!url) {
+    return false;
+  }
+  return /\.(mp4|mov|webm|mkv|avi|m4v|flv)$/i.test(url.toLowerCase());
+}
+
+/**
+ * is audio url
+ */
+export function isAudioUrl(url: string | undefined): boolean {
+  if (!url) {
+    return false;
+  }
+  return /\.(mp3|wav|m4a|aac|ogg|flac|weba)$/i.test(url.toLowerCase());
+}
