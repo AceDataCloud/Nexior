@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 05:11:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 05 Jul 2026 06:41:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.315.1
+
+Sun, 05 Jul 2026 06:41:16 GMT
+
+### Patches
+
+- Polish the maestro in-progress step-checklist: native vertical stepper + bordered card matching success/failure (dev@acedata.cloud)
 
 ## 3.315.0
 
