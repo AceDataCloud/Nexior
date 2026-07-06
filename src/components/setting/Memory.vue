@@ -123,18 +123,71 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .memory-setting {
-  .memory-row {
+  .hint {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .muted {
+    color: var(--el-text-color-secondary, #909399);
+  }
+
+  .section-head {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
+    gap: 12px;
 
-    .memory-content {
-      flex: 1;
-      word-break: break-word;
+    h3 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+  }
+
+  // Bordered card so the list reads as one contained group instead of text
+  // running flush against the dialog; rows are separated by hairline dividers.
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--el-border-color-lighter, #ebeef5);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .memory-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--el-border-color-lighter, #ebeef5);
+    transition: background-color 0.15s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: var(--el-fill-color-light, #f5f7fa);
     }
 
     .row-icon {
-      opacity: 0.6;
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--el-text-color-secondary, #909399);
+    }
+
+    .memory-content {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+    }
+
+    :deep(.el-button) {
+      flex-shrink: 0;
     }
   }
 }
