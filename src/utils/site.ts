@@ -60,3 +60,39 @@ export const getSiteOrigin = (site?: ISite) => {
   // port; PlatformBackend never stores ports either.
   return host.split(':')[0];
 };
+
+// Site-wide markup ceiling, mirroring PlatformBackend
+// `app/utils/site_pricing.py` (MARKUP_RATIO_MIN/MAX). 0 = sell at platform
+// price; 5 = +500% (6x).
+export const MARKUP_RATIO_MIN = 0;
+export const MARKUP_RATIO_MAX = 5;
+
+/**
+ * Read the site-wide markup ratio from `site.metadata.pricing.markup_ratio`
+ * defensively. Mirrors the backend `extract_markup_ratio`: any missing /
+ * malformed / out-of-range value collapses to 0, values above the ceiling are
+ * clamped, and only `applies_to === 'all'` (the v1 default) is honored.
+ */
+export const getSiteMarkupRatio = (site?: ISite | null): number => {
+  const pricing = site?.metadata?.pricing;
+  if (!pricing) return 0;
+  if (pricing.applies_to !== undefined && pricing.applies_to !== 'all') return 0;
+  const raw = pricing.markup_ratio;
+  if (typeof raw !== 'number' || !Number.isFinite(raw)) return 0;
+  if (raw < MARKUP_RATIO_MIN) return 0;
+  if (raw > MARKUP_RATIO_MAX) return MARKUP_RATIO_MAX;
+  return raw;
+};
+
+/**
+ * Apply a markup ratio to a price: `price * (1 + ratio)`. Mirrors the backend
+ * `apply_markup` so the displayed price matches what the gateway charges at
+ * order time. Non-finite / negative inputs are treated as 0 so callers can
+ * pass raw package prices without pre-guarding.
+ */
+export const applyMarkup = (price?: number | null, ratio?: number | null): number => {
+  const base = typeof price === 'number' && Number.isFinite(price) ? price : 0;
+  let r = typeof ratio === 'number' && Number.isFinite(ratio) ? ratio : 0;
+  if (r < 0) r = 0;
+  return base * (1 + r);
+};

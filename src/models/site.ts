@@ -76,6 +76,30 @@ export interface ISiteTheme {
   primary_color?: string;
 }
 
+/**
+ * `metadata.pricing` — the site-wide markup a 站长/affiliate applies to the
+ * platform's official price. Backend validates it in
+ * `SiteDetailSerializer.validate_metadata` (`app/utils/site_pricing.py`):
+ *   markup_ratio  number in [0, 5] (= +0..+500%)   default 0
+ *   currency      ISO-4217 3-letter code           default 'USD'
+ *   applies_to    'all' (v1 only)                  default 'all'
+ * Markup only resizes what end users see/pay; the affiliate commission ratio
+ * is unchanged (earnings still flow through DistributionLevel.percentage).
+ */
+export interface ISitePricing {
+  markup_ratio?: number;
+  currency?: string;
+  applies_to?: 'all';
+}
+
+export interface ISiteMetadata {
+  pricing?: ISitePricing;
+  support_url?: string;
+  icp?: string;
+  proxy_cname?: string;
+  [key: string]: unknown;
+}
+
 export interface ISite {
   id?: string;
   origin?: string;
@@ -90,7 +114,7 @@ export interface ISite {
   auth?: ISiteAuth;
   created_at?: string;
   updated_at?: string;
-  metadata?: any;
+  metadata?: ISiteMetadata;
   theme?: ISiteTheme | null;
   tags?: string[];
   // Server-derived metadata for the per-field auto-translate toggle
