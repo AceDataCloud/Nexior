@@ -78,7 +78,7 @@ import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
-import { getPriceString } from '@/utils';
+import { getPriceString, applyMarkup, getSiteMarkupRatio } from '@/utils';
 import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -168,7 +168,10 @@ export default defineComponent({
         const pkgs = this.getPackages(item.duration);
         console.log('pkgs', pkgs);
         if (pkgs) {
-          item.price = pkgs.reduce((acc, pkg) => acc + pkg.price, 0);
+          const subtotal = pkgs.reduce((acc, pkg) => acc + pkg.price, 0);
+          // Display the marked-up price so the sub-site card matches what the
+          // gateway charges at order time (backend re-applies the same markup).
+          item.price = applyMarkup(subtotal, getSiteMarkupRatio(this.site));
         }
         for (const pkg of pkgs) {
           if (!item.benefits) {

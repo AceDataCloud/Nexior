@@ -45,10 +45,10 @@
                     <service-estimation v-if="application?.service" :service="application.service" :package="package" />
                   </el-form-item>
                   <el-form-item :label="$t('service.field.price')">
-                    <price :price="package?.price" />
+                    <price :price="displayPackagePrice" />
                     <span v-if="package" class="ml-2"
                       >({{
-                        getPriceString({ value: package?.price / package?.amount }) +
+                        getPriceString({ value: displayUnitPrice }) +
                         ' / ' +
                         $t(`service.unit.${application?.service?.unit || 'credits'}`)
                       }})
@@ -60,7 +60,7 @@
                       v-if="package"
                       :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }"
                     >
-                      {{ getPriceString({ value: package?.price }) }}
+                      {{ getPriceString({ value: displayPackagePrice }) }}
                     </span>
                     <span v-else :class="{ price: true, free: true }"> $ 0 </span>
                   </el-form-item>
@@ -114,7 +114,7 @@ import {
 import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
-import { getPriceString } from '@/utils';
+import { getPriceString, applyMarkup, getSiteMarkupRatio } from '@/utils';
 import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import ServiceEstimation from '@/components/service/Estimation.vue';
@@ -199,6 +199,21 @@ export default defineComponent({
         }
       }
       return undefined;
+    },
+    site() {
+      return this.$store.getters.site;
+    },
+    markupRatio(): number {
+      return getSiteMarkupRatio(this.site);
+    },
+    // Displayed prices carry the site-wide markup so the sub-site figure equals
+    // what the gateway charges at order time; undefined until a package is
+    // selected (mirrors the original `package?.price` binding).
+    displayPackagePrice(): number | undefined {
+      return this.package ? applyMarkup(this.package.price, this.markupRatio) : undefined;
+    },
+    displayUnitPrice(): number | undefined {
+      return this.package ? applyMarkup(this.package.price, this.markupRatio) / this.package.amount : undefined;
     }
   },
   mounted() {
