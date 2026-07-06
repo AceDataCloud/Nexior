@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 05 Jul 2026 16:34:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 06 Jul 2026 12:53:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.2
+
+Mon, 06 Jul 2026 12:53:06 GMT
+
+### Patches
+
+- Restyle the Memory settings list with a bordered card and dividers for readability (dev@acedata.cloud)
 
 ## 3.318.1
 
