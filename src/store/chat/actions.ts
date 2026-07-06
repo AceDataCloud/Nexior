@@ -116,10 +116,12 @@ export const getApplications = async ({
     console.debug('set applications for chat', applications.items);
     return applications.items;
   } catch (error) {
+    // Keep the last-known application on a transient refresh failure — this runs
+    // on a balance timer / tab focus / after every turn, and wiping it flips the
+    // composer's `ready` to false, permanently greying the send button (Main.vue
+    // refreshBalances can't recover it) until a full remount.
     console.error('get applications failed for chat', error);
     state.status.getApplications = Status.Error;
-    commit('setApplications', undefined);
-    commit('setApplication', undefined);
   }
 };
 
