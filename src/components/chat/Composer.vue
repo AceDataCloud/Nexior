@@ -234,10 +234,12 @@ export default defineComponent({
       return out;
     },
     uploading() {
-      // if at least file is uploading, return true
-      return !!this.fileList.find(
-        (file) => file.percentage !== undefined && file.percentage >= 0 && file.percentage < 100
-      );
+      // Gate on the reliable `status` field, NOT `percentage`. A tiny file (e.g. a
+      // .txt) can finish so fast the browser fires no final progress event, so
+      // element-plus leaves `percentage` < 100 on a fully-uploaded file — which
+      // used to pin `uploading` true and grey the send button forever. Failed
+      // uploads are auto-removed by element-plus, so only in-flight files count.
+      return this.fileList.some((file) => file.status === 'ready' || file.status === 'uploading');
     },
     extensions() {
       if (this.isFileSupported === false && this.isImageSupported === true) {
