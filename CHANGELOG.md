@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 06 Jul 2026 15:42:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 06 Jul 2026 16:32:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.5
+
+Mon, 06 Jul 2026 16:32:13 GMT
+
+### Patches
+
+- Fix custom domain DNS guidance (dev@acedata.cloud)
 
 ## 3.318.4
 
