@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 06 Jul 2026 12:53:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 06 Jul 2026 14:21:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.3
+
+Mon, 06 Jul 2026 14:21:19 GMT
+
+### Patches
+
+- feat: site-wide markup pricing for white-label sub-sites (display consistency + site-owner-only config) (dev@acedata.cloud)
 
 ## 3.318.2
 
