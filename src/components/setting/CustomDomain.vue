@@ -8,12 +8,12 @@
 
     <div v-loading="loading" class="domains-body">
       <el-empty
-        v-if="!loading && domains.length === 0"
+        v-if="!loading && displayDomains.length === 0"
         :description="$t('subsite.message.domainsEmpty')"
         :image-size="80"
       />
 
-      <div v-for="d in domains" :key="d.id" class="domain-row">
+      <div v-for="d in displayDomains" :key="d.id" class="domain-row">
         <div class="domain-row-head">
           <strong class="hostname">{{ d.hostname }}</strong>
           <el-tag :type="statusTagType(d.status)" size="small" class="status-tag" round>
@@ -58,24 +58,26 @@
         <div v-if="d.dns_instructions" class="dns-instructions">
           <p class="instructions">{{ d.dns_instructions.instructions }}</p>
           <table class="dns-record">
-            <tr>
-              <th>{{ $t('subsite.field.recordType') }}</th>
-              <td>
-                <code>{{ d.dns_instructions.record_type }}</code>
-              </td>
-            </tr>
-            <tr>
-              <th>{{ $t('subsite.field.recordName') }}</th>
-              <td>
-                <code>{{ d.dns_instructions.record_name }}</code>
-              </td>
-            </tr>
-            <tr>
-              <th>{{ $t('subsite.field.recordValue') }}</th>
-              <td>
-                <code class="break">{{ d.dns_instructions.record_value }}</code>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th>{{ $t('subsite.field.recordType') }}</th>
+                <td>
+                  <code>{{ d.dns_instructions.record_type }}</code>
+                </td>
+              </tr>
+              <tr>
+                <th>{{ $t('subsite.field.recordName') }}</th>
+                <td>
+                  <code>{{ d.dns_instructions.record_name }}</code>
+                </td>
+              </tr>
+              <tr>
+                <th>{{ $t('subsite.field.recordValue') }}</th>
+                <td>
+                  <code class="break">{{ d.dns_instructions.record_value }}</code>
+                </td>
+              </tr>
+            </tbody>
           </table>
           <p class="record-name-hint">
             {{ $t('subsite.message.recordNameHint') }}
@@ -117,7 +119,7 @@ import {
 } from 'element-plus';
 import { siteDomainOperator } from '@/operators';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
-import type { ISite, ISiteDomain } from '@/models';
+import type { ISite, ISiteDomain, ISiteDomainDnsInstructions } from '@/models';
 
 // Mirror of the backend hostname validator. Keep in sync with
 // PlatformBackend's app/utils/custom_domain.py validate_custom_domain.
@@ -196,6 +198,15 @@ export default defineComponent({
   computed: {
     site(): ISite | undefined {
       return this.$store.state.site;
+    },
+    displayDomains(): ISiteDomain[] {
+      return this.domains
+        .map((domain) => this.normalizeDomain(domain))
+        .filter((domain): domain is ISiteDomain => !!domain)
+        .map((domain) => ({
+          ...domain,
+          dns_instructions: domain.dns_instructions || this.buildDnsInstructions(domain)
+        }));
     }
   },
   mounted() {
@@ -207,7 +218,9 @@ export default defineComponent({
       this.loading = true;
       try {
         const { data } = await siteDomainOperator.getAll({ site: this.site.id });
-        this.domains = (data?.items || []) as ISiteDomain[];
+        this.domains = Array.isArray(data?.items)
+          ? data.items.map((domain) => this.normalizeDomain(domain)).filter((domain): domain is ISiteDomain => !!domain)
+          : [];
       } catch (e) {
         console.error('failed to load domains', e);
         ElMessage.error(this.$t('subsite.message.domainsLoadFailed'));
@@ -229,7 +242,9 @@ export default defineComponent({
           hostname: check.value
         });
         ElMessage.success(this.$t('subsite.message.domainCreated'));
-        this.domains = [data, ...this.domains];
+        const created = this.normalizeDomain(data);
+        if (created) this.replaceRow(created);
+        else await this.fetchDomains();
         this.bind.hostname = '';
       } catch (e: any) {
         const resp = e?.response?.data;
@@ -310,9 +325,30 @@ export default defineComponent({
       }
     },
     replaceRow(updated: ISiteDomain) {
+      const normalized = this.normalizeDomain(updated);
+      if (!normalized) return;
       const idx = this.domains.findIndex((x) => x.id === updated.id);
-      if (idx >= 0) this.domains.splice(idx, 1, updated);
-      else this.domains = [updated, ...this.domains];
+      if (idx >= 0) this.domains.splice(idx, 1, normalized);
+      else this.domains = [normalized, ...this.domains];
+    },
+    normalizeDomain(domain: unknown): ISiteDomain | null {
+      if (!domain || typeof domain !== 'object') return null;
+      const candidate = domain as ISiteDomain;
+      if (!candidate.id || !candidate.hostname) return null;
+      return candidate;
+    },
+    buildDnsInstructions(domain: ISiteDomain): ISiteDomainDnsInstructions | null {
+      if (domain.status === 'Active') return null;
+      const hostname = (domain.hostname || '').trim();
+      const recordValue = (domain.proxy_cname || this.site?.metadata?.proxy_cname || '').trim();
+      if (!hostname || !recordValue) return null;
+      return {
+        step: 'cname',
+        record_type: 'CNAME',
+        record_name: hostname,
+        record_value: recordValue,
+        instructions: this.$t('subsite.message.domainsIntro') as string
+      };
     },
     /** True when this row has any in-flight action (no `action` arg),
      *  or specifically when the named action is in flight. */
