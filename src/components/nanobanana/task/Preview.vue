@@ -28,7 +28,7 @@
           <span v-if="!modelValue?.response"> - ({{ $t('nanobanana.status.pending') }}) </span>
         </p>
       </div>
-      <div v-if="modelValue?.response?.success === true" :class="{ content: true, failed: true }">
+      <div v-if="showResult" :class="{ content: true, failed: true }">
         <div class="flex justify-start items-center gap-4 w-full overflow-x-auto">
           <image-wrapper
             v-for="(image, imageIndex) in images"
@@ -138,7 +138,7 @@
           </p>
         </el-alert>
       </div>
-      <div v-else :class="{ content: true }">
+      <div v-else-if="modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
@@ -217,6 +217,20 @@ export default defineComponent({
         });
       }
       return result;
+    },
+    // Show the result view when the task explicitly succeeded, OR when image
+    // data is present and it is not an explicit failure. A router failover write
+    // can drop the `success` flag while still storing a valid image, so keying
+    // render off the actual data (not only the boolean) stops a valid result
+    // from being hidden as a "failure". Explicit `success === false` always wins.
+    hasImages(): boolean {
+      return this.images.some((image) => !!image?.image_url);
+    },
+    showResult(): boolean {
+      const response = this.modelValue?.response;
+      if (!response) return false;
+      if (response.success === true) return true;
+      return this.hasImages && response.success !== false;
     }
   },
   methods: {
