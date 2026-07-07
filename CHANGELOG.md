@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 07 Jul 2026 16:50:50 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 07 Jul 2026 16:59:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.319.0
+
+Tue, 07 Jul 2026 16:59:21 GMT
+
+### Minor changes
+
+- align Console usage analytics with PlatformFrontend: three-view card (trend bar / share doughnut / breakdown table) with dynamic Top-N, auto-refresh toggle, streamed CSV export, processing tag (dev@acedata.cloud)
 
 ## 3.318.9
 
