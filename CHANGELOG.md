@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 07 Jul 2026 09:48:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 07 Jul 2026 13:24:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.7
+
+Tue, 07 Jul 2026 13:24:40 GMT
+
+### Patches
+
+- sync maestro scenarios to backend taxonomy (drop slideshow, add captions) + real-frame preview thumbnails (dev@acedata.cloud)
 
 ## 3.318.6
 
