@@ -3,6 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <!--
+      Google Analytics (GA4). The gtag stub + config are defined inline (cheap,
+      no network) so events queue immediately; the remote googletagmanager.com
+      library is loaded lazily after the page is idle. This way a blocked/slow
+      request (e.g. behind the GFW in CN) never blocks render or the load event
+      and never competes for the initial connection budget — it just fails
+      silently in the background.
+    -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-Y6N02K05B8');
+      (function () {
+        function loadGtag() {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y6N02K05B8';
+          document.head.appendChild(s);
+        }
+        function schedule() {
+          if ('requestIdleCallback' in window) requestIdleCallback(loadGtag, { timeout: 3000 });
+          else setTimeout(loadGtag, 1200);
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule);
+      })();
+    </script>
+    <!--
       `viewport-fit=cover` is required so iOS Safari / Capacitor expose
       `env(safe-area-inset-*)` (notch + home indicator) — without it those
       env vars all resolve to 0px and our mobile layout draws under the
