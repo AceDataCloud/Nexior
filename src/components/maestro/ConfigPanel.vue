@@ -150,6 +150,32 @@
           <el-option v-for="s in MAESTRO_ALLOWED_STYLES" :key="s" :label="$t(`maestro.option.style.${s}`)" :value="s" />
         </el-select>
       </div>
+
+      <!-- Voice (narration timbre) + preview -->
+      <div class="field-block mt-5">
+        <div class="field-head mb-2">
+          <h2 class="field-title font-bold">{{ $t('maestro.name.voice') }}</h2>
+          <info-icon :content="$t('maestro.description.voice')" class="ml-1" />
+        </div>
+        <div class="voice-row">
+          <el-select v-model="voice" class="voice-select" :placeholder="$t('maestro.placeholder.select')">
+            <el-option
+              v-for="v in MAESTRO_ALLOWED_VOICES"
+              :key="v.key"
+              :label="$t(`maestro.option.voice.${v.key}`)"
+              :value="v.key"
+            />
+          </el-select>
+          <el-button
+            class="voice-play"
+            :disabled="!currentSample"
+            :title="$t('maestro.button.preview')"
+            @click="onToggleSample"
+          >
+            <font-awesome-icon :icon="playing ? 'fa-solid fa-pause' : 'fa-solid fa-play'" />
+          </el-button>
+        </div>
+      </div>
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
@@ -163,7 +189,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, markRaw } from 'vue';
 import { ElButton, ElSelect, ElOption, ElInputNumber, ElAlert } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
@@ -186,7 +212,9 @@ import {
   MAESTRO_SCENARIO_THUMBNAILS,
   MAESTRO_DEFAULT_SCENARIO,
   MAESTRO_ALLOWED_STYLES,
-  MAESTRO_DEFAULT_STYLE
+  MAESTRO_DEFAULT_STYLE,
+  MAESTRO_ALLOWED_VOICES,
+  MAESTRO_DEFAULT_VOICE
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 
@@ -220,7 +248,10 @@ export default defineComponent({
       MAESTRO_ALLOWED_QUALITIES,
       MAESTRO_ALLOWED_SCENARIOS,
       MAESTRO_SCENARIO_THUMBNAILS,
-      MAESTRO_ALLOWED_STYLES
+      MAESTRO_ALLOWED_STYLES,
+      MAESTRO_ALLOWED_VOICES,
+      playing: false,
+      audioEl: null as HTMLAudioElement | null
     };
   },
   computed: {
@@ -308,6 +339,18 @@ export default defineComponent({
       set(val: string) {
         this.update({ style: val || MAESTRO_DEFAULT_STYLE });
       }
+    },
+    voice: {
+      get(): string {
+        return this.config?.voice || MAESTRO_DEFAULT_VOICE;
+      },
+      set(val: string) {
+        this.stopSample();
+        this.update({ voice: val || MAESTRO_DEFAULT_VOICE });
+      }
+    },
+    currentSample(): string | undefined {
+      return MAESTRO_ALLOWED_VOICES.find((v) => v.key === this.voice)?.sample;
     }
   },
   mounted() {
@@ -322,8 +365,16 @@ export default defineComponent({
         this.config?.scenario && MAESTRO_ALLOWED_SCENARIOS.includes(this.config.scenario)
           ? this.config.scenario
           : MAESTRO_DEFAULT_SCENARIO,
-      style: this.config?.style ?? MAESTRO_DEFAULT_STYLE
+      style: this.config?.style ?? MAESTRO_DEFAULT_STYLE,
+      // Drop a stale persisted voice not in the current catalog back to auto.
+      voice:
+        this.config?.voice && MAESTRO_ALLOWED_VOICES.some((v) => v.key === this.config!.voice)
+          ? this.config.voice
+          : MAESTRO_DEFAULT_VOICE
     });
+  },
+  beforeUnmount() {
+    this.stopSample();
   },
   methods: {
     update(patch: Partial<IMaestroConfig>) {
@@ -334,6 +385,38 @@ export default defineComponent({
     },
     onClearRemix() {
       this.update({ action: MAESTRO_DEFAULT_ACTION, ref_task_id: undefined });
+    },
+    onToggleSample() {
+      const src = this.currentSample;
+      if (!src) return;
+      if (!this.audioEl) {
+        this.audioEl = markRaw(new Audio());
+        this.audioEl.addEventListener('ended', () => {
+          this.playing = false;
+        });
+      }
+      if (this.playing) {
+        this.audioEl.pause();
+        this.playing = false;
+        return;
+      }
+      if (this.audioEl.src !== src) this.audioEl.src = src;
+      this.audioEl.currentTime = 0;
+      this.audioEl
+        .play()
+        .then(() => {
+          this.playing = true;
+        })
+        .catch(() => {
+          this.playing = false;
+        });
+    },
+    stopSample() {
+      if (this.audioEl) {
+        this.audioEl.pause();
+        this.audioEl.currentTime = 0;
+      }
+      this.playing = false;
     },
     onGenerate() {
       this.$emit('generate');
@@ -363,6 +446,18 @@ export default defineComponent({
 }
 .field-control {
   width: 168px;
+}
+.voice-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.voice-select {
+  flex: 1;
+}
+.voice-play {
+  flex: 0 0 auto;
 }
 .ratio-items {
   display: flex;

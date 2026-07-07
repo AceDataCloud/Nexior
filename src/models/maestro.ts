@@ -11,6 +11,7 @@ export interface IMaestroConfig {
   quality?: string; // 'draft' | 'standard' | 'premium'
   scenario?: string; // 'auto' | 'narrated' | 'drama' | 'avatar' | 'motion' | 'captions'
   style?: string; // freeform visual hint (e.g. 'auto' | 'cinematic' | 'minimal' | 'neon' | 'corporate'); orthogonal to scenario
+  voice?: string; // narration timbre: 'auto' (director picks) | a preset key (constants) | a 32-hex Fish reference_id
   callback_url?: string;
 }
 
