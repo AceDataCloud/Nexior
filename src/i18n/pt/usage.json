@@ -118,5 +118,45 @@
   "dialog.noData": {
     "message": "Sem dados disponíveis",
     "description": "Exibido quando não há dados de solicitação ou resposta."
+  },
+  "field.consumed": {
+    "message": "Consumido",
+    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+  },
+  "field.share": {
+    "message": "Proporção",
+    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+  },
+  "field.autoRefresh": {
+    "message": "Atualização automática",
+    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+  },
+  "value.processing": {
+    "message": "Processando",
+    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+  },
+  "value.others": {
+    "message": "Outros",
+    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+  },
+  "title.usageAnalytics": {
+    "message": "Análise de uso",
+    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+  },
+  "view.trend": {
+    "message": "Tendência",
+    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+  },
+  "view.distribution": {
+    "message": "Proporção",
+    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+  },
+  "view.breakdown": {
+    "message": "Detalhamento",
+    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+  },
+  "message.exportFailed": {
+    "message": "Falha na exportação. Reduza o intervalo de datas e tente novamente.",
+    "description": "Error toast shown when the CSV export request fails (network or server error)."
   }
 }

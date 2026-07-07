@@ -118,5 +118,45 @@
   "dialog.noData": {
     "message": "Δεν υπάρχουν διαθέσιμα δεδομένα",
     "description": "Εμφανίζεται όταν δεν υπάρχουν δεδομένα αιτήματος ή απόκρισης."
+  },
+  "field.consumed": {
+    "message": "Καταναλώθηκε",
+    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+  },
+  "field.share": {
+    "message": "Ποσοστό",
+    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+  },
+  "field.autoRefresh": {
+    "message": "Αυτόματη ανανέωση",
+    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+  },
+  "value.processing": {
+    "message": "Επεξεργασία",
+    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+  },
+  "value.others": {
+    "message": "Άλλα",
+    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+  },
+  "title.usageAnalytics": {
+    "message": "Αναλυτικά χρήσης",
+    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+  },
+  "view.trend": {
+    "message": "Τάση",
+    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+  },
+  "view.distribution": {
+    "message": "Ποσοστό",
+    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+  },
+  "view.breakdown": {
+    "message": "Ανάλυση",
+    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+  },
+  "message.exportFailed": {
+    "message": "Η εξαγωγή απέτυχε. Περιορίστε το εύρος ημερομηνιών και δοκιμάστε ξανά.",
+    "description": "Error toast shown when the CSV export request fails (network or server error)."
   }
 }

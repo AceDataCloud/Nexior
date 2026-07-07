@@ -12,6 +12,7 @@ export interface IApiUsageQuery {
   created_at_from?: string | Date;
   created_at_to?: string | Date;
   status_code?: number | string | (number | string)[];
+  trace_id?: string;
 }
 
 class ApiUsageOperator {
@@ -29,6 +30,7 @@ class ApiUsageOperator {
     api_id?: string | string[];
     created_at_from?: string | Date;
     created_at_to?: string | Date;
+    timezone?: string;
   }): Promise<
     AxiosResponse<{
       total: number;
