@@ -9,7 +9,7 @@ export interface IMaestroConfig {
   aspect?: string; // '9:16' | '16:9' | '1:1'
   duration?: number;
   quality?: string; // 'draft' | 'standard' | 'premium'
-  scenario?: string; // 'auto' | 'narrated' | 'drama' | 'avatar' | 'motion' | 'slideshow'
+  scenario?: string; // 'auto' | 'narrated' | 'drama' | 'avatar' | 'motion' | 'captions'
   style?: string; // freeform visual hint (e.g. 'auto' | 'cinematic' | 'minimal' | 'neon' | 'corporate'); orthogonal to scenario
   callback_url?: string;
 }
