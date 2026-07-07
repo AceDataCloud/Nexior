@@ -28,8 +28,26 @@ export const MAESTRO_SCENARIO_THUMBNAILS: Record<string, string> = {
   motion: 'https://cdn.acedata.cloud/ab9dc386b6.png',
   captions: 'https://cdn.acedata.cloud/9a6d16d9f3.jpg'
 };
-// Visual style hint (freeform on the API; these are quick presets). Orthogonal to scenario routing.
-export const MAESTRO_ALLOWED_STYLES = ['auto', 'cinematic', 'minimal', 'neon', 'corporate', 'hand-drawn'];
+// Visual style presets — each maps to a real named capability on the backend (a visual-styles
+// identity, a palette, or a recipe like glass/retro). Freeform text still works. Orthogonal to scenario.
+export const MAESTRO_ALLOWED_STYLES = [
+  'auto',
+  'cinematic',
+  'glass',
+  'luxury',
+  'swiss',
+  'modern',
+  'editorial',
+  'warm',
+  'vibrant',
+  'neon',
+  'mono',
+  'pastel',
+  'bold',
+  'industrial',
+  'futuristic',
+  'retro'
+];
 
 // Accepted reference media for file_urls (images / video / audio).
 export const MAESTRO_FILE_ACCEPT = '.png,.jpg,.jpeg,.gif,.bmp,.webp,.mp4,.mov,.webm,.mp3,.wav,.m4a';
