@@ -118,5 +118,45 @@
   "dialog.noData": {
     "message": "Nessun dato disponibile",
     "description": "Mostrato quando non sono presenti dati di richiesta o risposta."
+  },
+  "field.consumed": {
+    "message": "Consumato",
+    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+  },
+  "field.share": {
+    "message": "Quota",
+    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+  },
+  "field.autoRefresh": {
+    "message": "Aggiornamento automatico",
+    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+  },
+  "value.processing": {
+    "message": "In elaborazione",
+    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+  },
+  "value.others": {
+    "message": "Altri",
+    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+  },
+  "title.usageAnalytics": {
+    "message": "Analisi dell'utilizzo",
+    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+  },
+  "view.trend": {
+    "message": "Tendenza",
+    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+  },
+  "view.distribution": {
+    "message": "Quota",
+    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+  },
+  "view.breakdown": {
+    "message": "Dettaglio",
+    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+  },
+  "message.exportFailed": {
+    "message": "Esportazione non riuscita. Riduci l'intervallo di date e riprova.",
+    "description": "Error toast shown when the CSV export request fails (network or server error)."
   }
 }

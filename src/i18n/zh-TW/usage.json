@@ -118,5 +118,45 @@
   "dialog.noData": {
     "message": "暫無數據",
     "description": "沒有請求或回應資料時的提示"
+  },
+  "field.consumed": {
+    "message": "消耗積分",
+    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+  },
+  "field.share": {
+    "message": "佔比",
+    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+  },
+  "field.autoRefresh": {
+    "message": "自動重新整理",
+    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+  },
+  "value.processing": {
+    "message": "處理中",
+    "description": "Placeholder shown in the status code column while an async task has not yet returned a final status code."
+  },
+  "value.others": {
+    "message": "其他",
+    "description": "Series name in the usage-trend chart that aggregates all APIs outside the top spenders."
+  },
+  "title.usageAnalytics": {
+    "message": "使用分析",
+    "description": "Title of the usage analytics card, which contains trend, share, and breakdown view tabs."
+  },
+  "view.trend": {
+    "message": "趨勢",
+    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+  },
+  "view.distribution": {
+    "message": "佔比",
+    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+  },
+  "view.breakdown": {
+    "message": "明細",
+    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+  },
+  "message.exportFailed": {
+    "message": "匯出失敗，請縮小時間範圍後重試。",
+    "description": "Error toast shown when the CSV export request fails (network or server error)."
   }
 }

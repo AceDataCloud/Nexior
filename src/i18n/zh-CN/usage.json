@@ -118,5 +118,45 @@
   "dialog.noData": {
     "message": "暂无数据",
     "description": "没有请求或响应数据时的提示"
+  },
+  "field.consumed": {
+    "message": "消耗积分",
+    "description": "使用明细表格中，单个 API 在所选时间范围内消耗的积分总量列标题。"
+  },
+  "field.share": {
+    "message": "占比",
+    "description": "使用明细表格中，单个 API 消耗占总消耗百分比的列标题。"
+  },
+  "field.autoRefresh": {
+    "message": "自动刷新",
+    "description": "使用记录表格右上角的开关标签，开启后定时自动刷新最新记录。"
+  },
+  "value.processing": {
+    "message": "处理中",
+    "description": "异步任务尚未返回最终状态码时，状态码列显示的占位文案。"
+  },
+  "value.others": {
+    "message": "其他",
+    "description": "使用趋势图中，除消耗最高的若干 API 外，其余 API 合并显示的系列名称。"
+  },
+  "title.usageAnalytics": {
+    "message": "使用分析",
+    "description": "使用分析卡片的标题，卡片内含趋势、占比、明细三个视图切换。"
+  },
+  "view.trend": {
+    "message": "趋势",
+    "description": "使用分析卡片的视图切换按钮：按时间展示各 API 消耗的堆叠柱状图。"
+  },
+  "view.distribution": {
+    "message": "占比",
+    "description": "使用分析卡片的视图切换按钮：展示各 API 消耗占比的环形图。"
+  },
+  "view.breakdown": {
+    "message": "明细",
+    "description": "使用分析卡片的视图切换按钮：以表格列出全部 API 的精确消耗与占比。"
+  },
+  "message.exportFailed": {
+    "message": "导出失败，请缩小时间范围后重试。",
+    "description": "CSV 导出请求失败（网络或服务端错误）时的错误提示"
   }
 }
