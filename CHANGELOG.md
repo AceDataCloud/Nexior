@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 07 Jul 2026 13:24:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 07 Jul 2026 16:12:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.8
+
+Tue, 07 Jul 2026 16:12:32 GMT
+
+### Patches
+
+- sync maestro style dropdown to backend style enum (add glass/luxury/swiss/etc., drop stale minimal/corporate/hand-drawn) (dev@acedata.cloud)
 
 ## 3.318.7
 
