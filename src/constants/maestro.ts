@@ -15,17 +15,18 @@ export const MAESTRO_MAX_DURATION = 600;
 // Production tier (effort/price): draft = fast preview, standard = balanced, premium = richer.
 export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
 // Video type: a routing hint. `auto` lets the director pick; the rest bias the route.
-// Legacy values (general/explainer/product/website/changelog/captions -> auto, slides -> slideshow)
+// Legacy values (general/explainer/product/website/changelog -> auto; slides/slideshow -> auto)
 // are still accepted by the API but no longer offered here.
-export const MAESTRO_ALLOWED_SCENARIOS = ['auto', 'narrated', 'drama', 'avatar', 'motion', 'slideshow'];
-// Preview thumbnail per scenario (cohesive illustrations hosted on the CDN, like MAESTRO_LOGO).
+export const MAESTRO_ALLOWED_SCENARIOS = ['auto', 'narrated', 'drama', 'avatar', 'motion', 'captions'];
+// Preview thumbnail per scenario — real frames from generated videos (narrated/drama/avatar/captions);
+// auto/motion stay as illustrations. Hosted on the CDN like MAESTRO_LOGO.
 export const MAESTRO_SCENARIO_THUMBNAILS: Record<string, string> = {
   auto: 'https://cdn.acedata.cloud/f61b85476e.png',
-  narrated: 'https://cdn.acedata.cloud/2e94e507eb.png',
-  drama: 'https://cdn.acedata.cloud/279a8a0189.png',
-  avatar: 'https://cdn.acedata.cloud/c633f9e39c.png',
+  narrated: 'https://cdn.acedata.cloud/db6ef158be.jpg',
+  drama: 'https://cdn.acedata.cloud/af85b29164.jpg',
+  avatar: 'https://cdn.acedata.cloud/7ae3e94d5a.jpg',
   motion: 'https://cdn.acedata.cloud/ab9dc386b6.png',
-  slideshow: 'https://cdn.acedata.cloud/581b2148f5.png'
+  captions: 'https://cdn.acedata.cloud/9a6d16d9f3.jpg'
 };
 // Visual style hint (freeform on the API; these are quick presets). Orthogonal to scenario routing.
 export const MAESTRO_ALLOWED_STYLES = ['auto', 'cinematic', 'minimal', 'neon', 'corporate', 'hand-drawn'];

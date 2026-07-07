@@ -317,7 +317,11 @@ export default defineComponent({
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
       duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
       quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY,
-      scenario: this.config?.scenario ?? MAESTRO_DEFAULT_SCENARIO,
+      // Drop stale persisted scenarios (e.g. the removed `slideshow`) back to the default.
+      scenario:
+        this.config?.scenario && MAESTRO_ALLOWED_SCENARIOS.includes(this.config.scenario)
+          ? this.config.scenario
+          : MAESTRO_DEFAULT_SCENARIO,
       style: this.config?.style ?? MAESTRO_DEFAULT_STYLE
     });
   },
