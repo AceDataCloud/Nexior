@@ -2,6 +2,21 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Tue, 07 Jul 2026 09:48:13 GMT",
+      "version": "3.318.6",
+      "tag": "@acedatacloud/nexior_v3.318.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "cc90e3ca955c8ec3d25f874c3d653fe20045ff28",
+            "comment": "fix(nanobanana): render result whenever image data exists, not only when response.success===true, so a failover-dropped success flag no longer hides a valid image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Jul 2026 16:32:13 GMT",
       "version": "3.318.5",
       "tag": "@acedatacloud/nexior_v3.318.5",
