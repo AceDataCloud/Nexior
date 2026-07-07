@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 07 Jul 2026 16:12:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 07 Jul 2026 16:50:50 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.318.9
+
+Tue, 07 Jul 2026 16:50:50 GMT
+
+### Patches
+
+- add GA4 gtag.js (lazy, CN-safe) tracking tag (dev@acedata.cloud)
 
 ## 3.318.8
 
