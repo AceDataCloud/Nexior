@@ -123,7 +123,7 @@
                       alipay: true,
                       active: payWay === PayWay.AliPay
                     }"
-                    @click="payWay = PayWay.AliPay"
+                    @click="onSelectPayWay(PayWay.AliPay)"
                   >
                     <span class="payicon alipay"></span>
                     <span class="payname">{{ $t('order.title.aliPay') }}</span>
@@ -132,9 +132,10 @@
                     :class="{
                       payway: true,
                       stripe: true,
-                      active: payWay === PayWay.Stripe
+                      disabled: isStripeTemporarilyUnavailable,
+                      active: payWay === PayWay.Stripe && !isStripeTemporarilyUnavailable
                     }"
-                    @click="payWay = PayWay.Stripe"
+                    @click="onSelectPayWay(PayWay.Stripe)"
                   >
                     <span class="payicon stripe"></span>
                     <span class="payname">{{ $t('order.title.stripe') }}</span>
@@ -146,7 +147,7 @@
                       relative: true,
                       active: payWay === PayWay.X402
                     }"
-                    @click="payWay = PayWay.X402"
+                    @click="onSelectPayWay(PayWay.X402)"
                   >
                     <span class="payicon x402"></span>
                     <span class="payname">{{ $t('order.title.x402') }}</span>
@@ -167,12 +168,20 @@
                       paypal: true,
                       active: payWay === PayWay.PayPal
                     }"
-                    @click="payWay = PayWay.PayPal"
+                    @click="onSelectPayWay(PayWay.PayPal)"
                   >
                     <span class="payicon paypal"></span>
                     <span class="payname">{{ $t('order.title.paypal') }}</span>
                   </div>
                 </div>
+                <el-alert
+                  v-if="showStripeUnavailableAlert"
+                  class="stripe-unavailable-alert mb-4"
+                  :title="stripeUnavailableNotice"
+                  type="warning"
+                  show-icon
+                  :closable="false"
+                />
                 <div v-if="showPayment && !order?.pay_way">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">{{
                     $t('common.button.pay')
@@ -325,6 +334,20 @@ export default defineComponent({
     },
     enablePaypal(): boolean {
       return !!this.config?.features?.ENABLE_PAYPAL;
+    },
+    isStripeTemporarilyUnavailable(): boolean {
+      return true;
+    },
+    stripeUnavailableNotice(): string {
+      return this.$t('order.message.stripeTemporarilyUnavailable').toString();
+    },
+    showStripeUnavailableAlert(): boolean {
+      return !!(
+        !this.isIos &&
+        this.order &&
+        this.order.state === OrderState.PENDING &&
+        ((!this.order.pay_way && (this.order.price || 0) > 0) || this.order.pay_way === PayWay.Stripe)
+      );
     },
     isIos(): boolean {
       return isIOS();
@@ -556,6 +579,12 @@ export default defineComponent({
   },
   methods: {
     getPriceString,
+    onSelectPayWay(nextPayWay: PayWay) {
+      if (this.isStripeTemporarilyUnavailable && nextPayWay === PayWay.Stripe) {
+        return;
+      }
+      this.payWay = nextPayWay;
+    },
     formatCredits(value: number): string {
       if (!Number.isFinite(value)) return '0';
       return Number.isInteger(value) ? String(value) : value.toFixed(2);
@@ -624,6 +653,12 @@ export default defineComponent({
         });
     },
     onRepay() {
+      if (
+        this.isStripeTemporarilyUnavailable &&
+        (this.payWay === PayWay.Stripe || this.order?.pay_way === PayWay.Stripe)
+      ) {
+        return;
+      }
       if (this.payWay === PayWay.X402) {
         this.x402Session = undefined;
       }
@@ -631,6 +666,12 @@ export default defineComponent({
       this.startOrderPolling();
     },
     onPay() {
+      if (
+        this.isStripeTemporarilyUnavailable &&
+        (this.payWay === PayWay.Stripe || this.order?.pay_way === PayWay.Stripe)
+      ) {
+        return;
+      }
       this.prepaying = true;
       // Apple IAP: no PSP session / pay_url. The ApplePay dialog drives the
       // StoreKit purchase and calls apple-verify; just open it and poll.
@@ -781,6 +822,12 @@ export default defineComponent({
         }
       }
     }
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+      border-color: var(--el-border-color-light);
+      background: var(--el-fill-color-lighter);
+    }
   }
   .payname {
     display: inline-block;
@@ -827,6 +874,10 @@ export default defineComponent({
       background-size: contain;
     }
   }
+}
+
+.stripe-unavailable-alert {
+  max-width: 680px;
 }
 
 .btn-pay {

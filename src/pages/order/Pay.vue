@@ -68,26 +68,39 @@
                 <div v-if="!order.pay_way && order.price && order.price > 0" class="payways mb-6">
                   <div
                     :class="{ payway: true, wechatpay: true, active: payWay === PayWay.WechatPay }"
-                    @click="payWay = PayWay.WechatPay"
+                    @click="onSelectPayWay(PayWay.WechatPay)"
                   >
                     <span class="payicon wechatpay"></span>
                     <span class="payname">{{ $t('order.title.wechatPay') }}</span>
                   </div>
                   <div
                     :class="{ payway: true, alipay: true, active: payWay === PayWay.AliPay }"
-                    @click="payWay = PayWay.AliPay"
+                    @click="onSelectPayWay(PayWay.AliPay)"
                   >
                     <span class="payicon alipay"></span>
                     <span class="payname">{{ $t('order.title.aliPay') }}</span>
                   </div>
                   <div
-                    :class="{ payway: true, stripe: true, active: payWay === PayWay.Stripe }"
-                    @click="payWay = PayWay.Stripe"
+                    :class="{
+                      payway: true,
+                      stripe: true,
+                      disabled: isStripeTemporarilyUnavailable,
+                      active: payWay === PayWay.Stripe && !isStripeTemporarilyUnavailable
+                    }"
+                    @click="onSelectPayWay(PayWay.Stripe)"
                   >
                     <span class="payicon stripe"></span>
                     <span class="payname">{{ $t('order.title.stripe') }}</span>
                   </div>
                 </div>
+                <el-alert
+                  v-if="showStripeUnavailableAlert"
+                  class="stripe-unavailable-alert mb-4"
+                  :title="stripeUnavailableNotice"
+                  type="warning"
+                  show-icon
+                  :closable="false"
+                />
                 <div v-if="!order.pay_way">
                   <el-button :loading="prepaying" round type="primary" size="large" class="btn-pay" @click="onPay">
                     {{ $t('common.button.pay') }}
@@ -196,6 +209,20 @@ export default defineComponent({
     // App Store Review Guideline 3.1.1: no non-IAP payment UI on iOS.
     showPayment(): boolean {
       return !isIOS();
+    },
+    isStripeTemporarilyUnavailable(): boolean {
+      return true;
+    },
+    stripeUnavailableNotice(): string {
+      return this.$t('order.message.stripeTemporarilyUnavailable').toString();
+    },
+    showStripeUnavailableAlert(): boolean {
+      return !!(
+        this.showPayment &&
+        this.order &&
+        this.order.state === OrderState.PENDING &&
+        ((!this.order.pay_way && (this.order.price || 0) > 0) || this.order.pay_way === PayWay.Stripe)
+      );
     }
   },
   watch: {
@@ -215,6 +242,12 @@ export default defineComponent({
   },
   methods: {
     getPriceString,
+    onSelectPayWay(nextPayWay: PayWay) {
+      if (this.isStripeTemporarilyUnavailable && nextPayWay === PayWay.Stripe) {
+        return;
+      }
+      this.payWay = nextPayWay;
+    },
     payWayLabel(payWay: string): string {
       const map: Record<string, string> = {
         WechatPay: this.$t('order.title.wechatPay') as string,
@@ -273,10 +306,22 @@ export default defineComponent({
       }
     },
     onRepay() {
+      if (
+        this.isStripeTemporarilyUnavailable &&
+        (this.payWay === PayWay.Stripe || this.order?.pay_way === PayWay.Stripe)
+      ) {
+        return;
+      }
       this.paying = true;
     },
     onPay() {
       if (!this.id) return;
+      if (
+        this.isStripeTemporarilyUnavailable &&
+        (this.payWay === PayWay.Stripe || this.order?.pay_way === PayWay.Stripe)
+      ) {
+        return;
+      }
       this.prepaying = true;
       // AliPay's backend serves Page (PC) and Wap (mobile) URLs based on
       // the `surface` hint. WeChat Pay is pinned to Native QR on our
@@ -357,6 +402,12 @@ export default defineComponent({
         &.active {
           border: 2px solid var(--el-color-primary);
         }
+        &.disabled {
+          cursor: not-allowed;
+          opacity: 0.45;
+          border-color: var(--el-border-color-light);
+          background: var(--el-fill-color-lighter);
+        }
       }
       .payname {
         display: inline-block;
@@ -383,6 +434,9 @@ export default defineComponent({
           background-size: contain;
         }
       }
+    }
+    .stripe-unavailable-alert {
+      max-width: 680px;
     }
     .btn-pay,
     .btn-repay {
