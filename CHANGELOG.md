@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 05:06:27 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 05:22:44 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.321.1
+
+Wed, 08 Jul 2026 05:22:44 GMT
+
+### Patches
+
+- feat(kling): add model version selector (Kling 2.6/3.0) to Motion Control (dev@acedata.cloud)
 
 ## 3.321.0
 
