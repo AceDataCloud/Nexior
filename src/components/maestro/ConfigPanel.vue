@@ -179,7 +179,6 @@
     </div>
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
         {{ $t('maestro.button.generate') }}
@@ -192,11 +191,9 @@
 import { defineComponent, markRaw } from 'vue';
 import { ElButton, ElSelect, ElOption, ElInputNumber, ElAlert } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import Consumption from '../common/Consumption.vue';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FileUrlsInput from './config/FileUrlsInput.vue';
-import { getConsumption } from '@/utils';
 import {
   MAESTRO_ALLOWED_LANGS,
   MAESTRO_ALLOWED_ASPECTS,
@@ -233,7 +230,6 @@ export default defineComponent({
     ElOption,
     ElInputNumber,
     ElAlert,
-    Consumption,
     InfoIcon,
     PromptTextarea,
     FileUrlsInput,
@@ -266,9 +262,6 @@ export default defineComponent({
         value,
         ...(RATIO_PREVIEW[value] ?? { width: 20, height: 20 })
       }));
-    },
-    consumption() {
-      return getConsumption(this.config, this.service?.cost);
     },
     isRemixing(): boolean {
       const action = this.config?.action;
