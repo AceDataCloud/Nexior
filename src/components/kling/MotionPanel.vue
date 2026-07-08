@@ -9,7 +9,12 @@
       <keep-original-sound-selector class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
-      <consumption :value="consumption" :service="service" />
+      <consumption
+        :value="consumption"
+        :service="service"
+        :rate-unit="$t('kling.name.perSecond')"
+        :note="$t('kling.message.motionPricingNote')"
+      />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
         <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
         {{ $t('kling.button.generateMotion') }}
@@ -50,7 +55,11 @@ export default defineComponent({
       return this.$store.state.kling?.motionConfig;
     },
     consumption() {
-      return getConsumption(this.motionConfig, this.service?.cost);
+      // Motion Control is billed per second of the generated video, and the
+      // output length is not known before generation, so show the per-second
+      // rate (duration=1) instead of a fixed estimate that would understate the
+      // real charge.
+      return getConsumption({ ...this.motionConfig, duration: 1 }, this.service?.cost);
     },
     service() {
       return this.$store.state.kling?.service;

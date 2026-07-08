@@ -71,6 +71,10 @@
     "message": "Please upload both the character image and motion reference video.",
     "description": "Prompt when inputs are missing in Motion Control"
   },
+  "message.motionPricingNote": {
+    "message": "Billed per second of the generated video; the final amount scales with the reference video length.",
+    "description": "Explains that Motion Control is billed per second"
+  },
   "inspiration.title": {
     "message": "Inspiration and Presets",
     "description": "Title of the Inspiration drawer"
@@ -414,6 +418,10 @@
   "name.mode": {
     "message": "Video Mode",
     "description": "The mode used to generate the video"
+  },
+  "name.perSecond": {
+    "message": "second",
+    "description": "Unit suffix for per-second pricing, e.g. \"1.20 Credit/second\""
   },
   "name.effect": {
     "message": "Video Effect",
