@@ -622,33 +622,76 @@ jobs:
               print(f'::warning::{msg}')
               sys.exit(0)
 
-          # 1) Look up existing iOS App Store versions matching our versionString.
-          # /v1/apps/{id}/appStoreVersions only allows sort on a small set
-          # (appStoreState, platform, versionString) — not createdDate — so we
-          # filter by versionString directly instead.
+          # 1) Find the single in-progress (editable) iOS App Store version.
+          # Apple allows only ONE editable version at a time, so we must NOT
+          # filter by versionString: a stale editable version left at an older
+          # number (e.g. a previous day's 3.301.2 stuck in PREPARE_FOR_SUBMISSION)
+          # would be missed, we'd try to create today's number, and Apple would
+          # 409 "You cannot create a new version of the App in the current state"
+          # — silently freezing every future submission. Instead we adopt the
+          # existing editable version and rename it to today's versionString.
           r = requests.get(
               f'https://api.appstoreconnect.apple.com/v1/apps/{app_id}/appStoreVersions',
-              params={'filter[platform]': 'IOS', 'filter[versionString]': version_name, 'limit': 50},
+              params={'filter[platform]': 'IOS', 'limit': 50},
               headers=H(), timeout=30,
           )
           if r.status_code != 200:
               die_soft(f'Failed to list App Store versions: {r.status_code} {r.text[:400]}')
           versions = r.json().get('data') or []
 
-          editable_states = {
+          # States we can safely adopt + edit (rename / re-attach a build).
+          adopt_states = {
               'PREPARE_FOR_SUBMISSION', 'DEVELOPER_REJECTED', 'METADATA_REJECTED',
-              'REJECTED', 'INVALID_BINARY', 'WAITING_FOR_REVIEW',
+              'REJECTED', 'INVALID_BINARY',
           }
-          version_id, version_state = None, None
-          for v in versions:
-              attrs = v['attributes']
-              if attrs.get('appStoreState') in editable_states:
-                  version_id = v['id']
-                  version_state = attrs.get('appStoreState')
-                  print(f'Reusing existing App Store version {version_id} (state={version_state}).')
-                  break
+          # States meaning a submission is already pending — must NOT be touched:
+          # renaming/re-attaching an in-review version is rejected by Apple and
+          # would disrupt the pending release. Bail (the gated cron already skips
+          # these; this also protects the ungated manual path).
+          inflight_states = {
+              'WAITING_FOR_REVIEW', 'IN_REVIEW', 'PENDING_DEVELOPER_RELEASE',
+              'PENDING_APPLE_RELEASE', 'PROCESSING_FOR_APP_STORE',
+          }
+          live_states = {
+              'READY_FOR_SALE', 'REPLACED_WITH_NEW_VERSION',
+              'DEVELOPER_REMOVED_FROM_SALE',
+          }
+          # Apple allows only ONE non-live (editable/in-flight) version. Collect
+          # them and pick deterministically (prefer PREPARE_FOR_SUBMISSION, then
+          # highest versionString) so multiple leftovers can't make us adopt the
+          # wrong one.
+          def vkey(vs):
+              try:
+                  return tuple(int(x) for x in (str(vs).split('.') + ['0', '0', '0'])[:3])
+              except Exception:
+                  return (0, 0, 0)
 
-          # 2) If no editable matching version exists, create one.
+          non_live = [v for v in versions
+                      if v['attributes'].get('appStoreState') not in live_states]
+          for v in non_live:
+              st = v['attributes'].get('appStoreState')
+              if st in inflight_states:
+                  die_soft(f"version {v['attributes'].get('versionString')} is {st} "
+                           f"(submission already pending) — not submitting a new build")
+
+          candidates = [v for v in non_live
+                        if v['attributes'].get('appStoreState') in adopt_states]
+          candidates.sort(
+              key=lambda v: (
+                  0 if v['attributes'].get('appStoreState') == 'PREPARE_FOR_SUBMISSION' else 1,
+                  tuple(-x for x in vkey(v['attributes'].get('versionString'))),
+              )
+          )
+          version_id, version_state, version_string = None, None, None
+          if candidates:
+              v = candidates[0]
+              version_id = v['id']
+              version_state = v['attributes'].get('appStoreState')
+              version_string = v['attributes'].get('versionString')
+              print(f'Reusing editable App Store version {version_id} '
+                    f'(v{version_string}, state={version_state}).')
+
+          # 2) No editable version yet → create one at today's versionString.
           if not version_id:
               create_payload = {
                   'data': {
@@ -669,7 +712,20 @@ jobs:
               version_id = c.json()['data']['id']
               print(f'::notice::Created App Store version {version_id} (v{version_name}).')
           else:
-              # Attach our build to the existing editable version.
+              # Adopt the existing editable version: bump its number to today's
+              # release if it lags, then attach our build.
+              if version_string != version_name:
+                  u = requests.patch(
+                      f'https://api.appstoreconnect.apple.com/v1/appStoreVersions/{version_id}',
+                      json={'data': {'type': 'appStoreVersions', 'id': version_id,
+                                     'attributes': {'versionString': version_name}}},
+                      headers=H(), timeout=30,
+                  )
+                  if u.status_code >= 400:
+                      die_soft(f'Failed to rename version {version_string}->{version_name}: '
+                               f'{u.status_code} {u.text[:400]}')
+                  print(f'::notice::Renamed App Store version {version_id} '
+                        f'{version_string} -> {version_name}.')
               a = requests.patch(
                   f'https://api.appstoreconnect.apple.com/v1/appStoreVersions/{version_id}/relationships/build',
                   json={'data': {'type': 'builds', 'id': build_id}},
@@ -746,5 +802,35 @@ jobs:
           )
           if fin.status_code >= 400:
               die_soft(f'Failed to submit for review: {fin.status_code} {fin.text[:400]}')
-          print(f'::notice::Submitted review {submission_id} for App Store review.')
+
+          # 6) Verify the submission actually left READY_FOR_REVIEW. The submit
+          # PATCH above (2xx) is the authority; this is a best-effort confirm.
+          # State transition is eventually consistent, so poll a few times and
+          # treat a transient/unknown read as neutral — only warn if it is still
+          # DEFINITIVELY READY_FOR_REVIEW (missing metadata/screenshots froze
+          # past releases silently).
+          submitted_states = {
+              'WAITING_FOR_REVIEW', 'IN_REVIEW', 'UNRESOLVED_ISSUES', 'COMPLETING',
+          }
+          final_state = None
+          for attempt in range(3):
+              chk = requests.get(
+                  f'https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{submission_id}',
+                  headers=H(), timeout=30,
+              )
+              if chk.status_code == 200:
+                  final_state = (chk.json().get('data', {}).get('attributes', {}) or {}).get('state')
+                  if final_state in submitted_states:
+                      break
+              if attempt < 2:
+                  time.sleep(5)
+          if final_state == 'READY_FOR_REVIEW':
+              die_soft(f'Review submission {submission_id} did NOT enter review '
+                       f'(still READY_FOR_REVIEW) — likely missing metadata/screenshots; '
+                       f'needs manual fixup in App Store Connect.')
+          elif final_state in submitted_states:
+              print(f'::notice::Submitted review {submission_id} — state now {final_state}.')
+          else:
+              print(f'::notice::Submitted review {submission_id} '
+                    f'(post-submit state unconfirmed: {final_state}).')
           PY

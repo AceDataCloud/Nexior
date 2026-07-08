@@ -16,7 +16,8 @@ name: Auto Production Mobile (daily)
 # When the gate is clean it dispatches the proven build-ios.yaml /
 # build-android.yaml with production toggles ON:
 #     - iOS      -> TestFlight + auto-submit for App Store review
-#     - Android  -> upload straight to the Production track at 100% rollout
+#     - Android  -> beta upload (dedup-skipped if already there) then promote
+#                   the same versionCode from beta -> Production at the rollout
 #
 # Those build workflows ALSO run their own duplicate-version preflight, so even
 # if the gate is bypassed the same binary is never uploaded twice. The gate
@@ -321,24 +322,18 @@ jobs:
             ROLLOUT='1.0'
           fi
           printf '%s\n' "::notice::Android gate clean ($GATE_REASON) — releasing v$VERSION at rollout=$ROLLOUT."
-          # 100% → upload straight to the Production track (status=completed).
-          # Partial → upload to beta then promote to Production at the requested
-          # fraction; build-android only honors rollout_percent on the promote
-          # path, so a <1.0 fraction MUST go through beta+promote to be staged.
-          if [ "$ROLLOUT" = "1.0" ] || [ "$ROLLOUT" = "1" ]; then
-            gh workflow run build-android.yaml \
-              --ref "${{ github.ref_name }}" \
-              -f track=production \
-              -f promote_to_production=false \
-              -f force=false
-          else
-            gh workflow run build-android.yaml \
-              --ref "${{ github.ref_name }}" \
-              -f track=beta \
-              -f promote_to_production=true \
-              -f rollout_percent="$ROLLOUT" \
-              -f force=false
-          fi
+          # Always beta → promote (even at 100%): build-android's dedup preflight
+          # is track-agnostic, so a direct track=production dispatch skips the
+          # build (the test pipeline already put this versionCode on beta) and
+          # promote never runs → nothing reaches production. The promote job runs
+          # on a skipped build and pushes the existing beta bundle to production
+          # (rollout >= 1.0 commits it as a completed 100% release).
+          gh workflow run build-android.yaml \
+            --ref "${{ github.ref_name }}" \
+            -f track=beta \
+            -f promote_to_production=true \
+            -f rollout_percent="$ROLLOUT" \
+            -f force=false
 
   summary:
     name: Gate summary
