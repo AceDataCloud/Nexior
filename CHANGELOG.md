@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 10:37:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 15:22:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.321.3
+
+Wed, 08 Jul 2026 15:22:11 GMT
+
+### Patches
+
+- Show a friendly message when AI chat uploads are too large. (dev@acedata.cloud)
 
 ## 3.321.2
 
