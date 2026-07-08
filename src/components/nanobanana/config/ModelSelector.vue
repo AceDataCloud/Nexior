@@ -18,6 +18,7 @@ import { ElSelect, ElOption } from 'element-plus';
 import {
   NANOBANANA_DEFAULT_MODEL,
   NANOBANANA_MODEL_NANO_BANANA,
+  NANOBANANA_MODEL_NANO_BANANA_2_LITE,
   NANOBANANA_MODEL_NANO_BANANA_PRO,
   NANOBANANA_MODEL_NANO_BANANA_2
 } from '@/constants';
@@ -36,6 +37,10 @@ export default defineComponent({
         {
           value: NANOBANANA_MODEL_NANO_BANANA,
           label: this.$t('nanobanana.model.nanoBanana')
+        },
+        {
+          value: NANOBANANA_MODEL_NANO_BANANA_2_LITE,
+          label: NANOBANANA_MODEL_NANO_BANANA_2_LITE
         },
         {
           value: NANOBANANA_MODEL_NANO_BANANA_PRO,
