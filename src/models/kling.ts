@@ -30,6 +30,7 @@ export interface IKlingMotionConfig {
   prompt?: string;
   image_url?: string;
   video_url?: string;
+  model_name?: 'kling-v2-6' | 'kling-v3';
   character_orientation?: 'image' | 'video';
   mode?: 'std' | 'pro';
   keep_original_sound?: 'yes' | 'no';
@@ -41,6 +42,7 @@ export interface IKlingMotionRequest {
   prompt?: string;
   image_url?: string;
   video_url?: string;
+  model_name?: 'kling-v2-6' | 'kling-v3';
   character_orientation?: 'image' | 'video';
   mode?: 'std' | 'pro';
   keep_original_sound?: 'yes' | 'no';

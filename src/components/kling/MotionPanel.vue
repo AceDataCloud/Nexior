@@ -5,6 +5,7 @@
       <motion-video class="mb-3" />
       <motion-prompt-input class="mb-4" />
       <character-orientation-selector class="mb-4" />
+      <motion-model-selector class="mb-4" />
       <motion-mode-selector class="mb-4" />
       <keep-original-sound-selector class="mb-4" />
     </div>
@@ -32,6 +33,7 @@ import MotionImage from './motion/MotionImage.vue';
 import MotionVideo from './motion/MotionVideo.vue';
 import MotionPromptInput from './motion/MotionPromptInput.vue';
 import CharacterOrientationSelector from './motion/CharacterOrientationSelector.vue';
+import MotionModelSelector from './motion/MotionModelSelector.vue';
 import MotionModeSelector from './motion/MotionModeSelector.vue';
 import KeepOriginalSoundSelector from './motion/KeepOriginalSoundSelector.vue';
 import { getConsumption } from '@/utils';
@@ -46,6 +48,7 @@ export default defineComponent({
     MotionVideo,
     MotionPromptInput,
     CharacterOrientationSelector,
+    MotionModelSelector,
     MotionModeSelector,
     KeepOriginalSoundSelector
   },
