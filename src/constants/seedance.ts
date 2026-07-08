@@ -70,6 +70,8 @@ export interface ISeedanceModelCapability {
   minDuration: number;
   /** Longest clip duration (seconds) the model accepts. */
   maxDuration: number;
+  /** Whether duration -1 (auto duration) is supported by this model. */
+  supportsAutoDuration: boolean;
   /** Accepts reference image(s) as subject input (Seedance 2.0 multimodal). */
   acceptsReferenceImage: boolean;
   /** Accepts a reference audio input (Seedance 2.0 multimodal talking-head). */
@@ -90,6 +92,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_1080P,
     minDuration: 2,
     maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    supportsAutoDuration: false,
     acceptsReferenceImage: false,
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false
@@ -105,6 +108,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_1080P,
     minDuration: 2,
     maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    supportsAutoDuration: false,
     acceptsReferenceImage: false,
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false
@@ -118,8 +122,9 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     acceptsReturnLastFrame: true,
     defaultResolution: SEEDANCE_RESOLUTION_720P,
     maxResolution: SEEDANCE_RESOLUTION_1080P,
-    minDuration: 2,
+    minDuration: 4,
     maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    supportsAutoDuration: true,
     acceptsReferenceImage: false,
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false
@@ -135,6 +140,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_4K,
     minDuration: 4,
     maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    supportsAutoDuration: true,
     acceptsReferenceImage: true,
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true
@@ -150,6 +156,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_720P,
     minDuration: 4,
     maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    supportsAutoDuration: true,
     acceptsReferenceImage: true,
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true
@@ -165,6 +172,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_720P,
     minDuration: 4,
     maxDuration: SEEDANCE_2_0_MAX_DURATION,
+    supportsAutoDuration: true,
     acceptsReferenceImage: true,
     acceptsReferenceAudio: true,
     acceptsReferenceVideo: true
@@ -180,6 +188,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_720P,
     minDuration: 2,
     maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    supportsAutoDuration: false,
     acceptsReferenceImage: false,
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false
@@ -195,6 +204,7 @@ export const SEEDANCE_MODEL_CAPABILITIES: Record<string, ISeedanceModelCapabilit
     maxResolution: SEEDANCE_RESOLUTION_720P,
     minDuration: 2,
     maxDuration: SEEDANCE_DEFAULT_MAX_DURATION,
+    supportsAutoDuration: false,
     acceptsReferenceImage: false,
     acceptsReferenceAudio: false,
     acceptsReferenceVideo: false
