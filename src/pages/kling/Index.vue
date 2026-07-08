@@ -284,6 +284,7 @@ export default defineComponent({
         character_orientation: cfg.character_orientation || 'video',
         mode: cfg.mode || 'std',
         keep_original_sound: cfg.keep_original_sound ?? 'yes',
+        ...(cfg.model_name ? { model_name: cfg.model_name } : {}),
         ...(cfg.prompt ? { prompt: cfg.prompt } : {}),
         async: true
       };
