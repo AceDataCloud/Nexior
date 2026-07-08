@@ -10,7 +10,7 @@ import {
   IChatConversationsResponse,
   IChatShareResponse
 } from '@/models';
-import { BASE_URL_API, ERROR_CODE_API_ERROR } from '@/constants';
+import { BASE_URL_API, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
 
 /**
@@ -21,6 +21,13 @@ import { currentSiteOrigin } from '@/utils';
 function siteHeaders(): Record<string, string> {
   const origin = currentSiteOrigin();
   return origin ? { 'x-site-origin': origin } : {};
+}
+
+function normalizeChatError(status: number, code?: string, message?: string): BaseError {
+  if (status === 413 || code === 'request_entity_too_large') {
+    return new BaseError(status || 413, ERROR_CODE_CONTENT_TOO_LARGE, '');
+  }
+  return new BaseError(status || 500, code || ERROR_CODE_API_ERROR, message || 'An error occurred');
 }
 
 class ChatOperator {
@@ -50,7 +57,7 @@ class ChatOperator {
           const errorMessage = errorJson?.error?.message || 'An error occurred';
           const errorCode = errorJson?.error?.code || ERROR_CODE_API_ERROR;
           console.error('Error message:', errorMessage, 'Error code:', errorCode);
-          reject(new BaseError(status, errorCode, errorMessage));
+          reject(normalizeChatError(status, errorCode, errorMessage));
           return;
         }
 
@@ -91,8 +98,10 @@ class ChatOperator {
                 if (json.type === 'error') {
                   const errorMessage =
                     typeof json.message === 'string' && json.message.trim() ? json.message.trim() : 'An error occurred';
+                  const errorStatus = typeof json.status === 'number' ? json.status : 500;
+                  const errorCode = typeof json.code === 'string' ? json.code : ERROR_CODE_API_ERROR;
                   await reader.cancel().catch(() => undefined);
-                  reject(new BaseError(500, ERROR_CODE_API_ERROR, errorMessage));
+                  reject(normalizeChatError(errorStatus, errorCode, errorMessage));
                   return;
                 }
                 if (options?.stream) {

@@ -1,6 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { chatOperator } from './chat';
 import type { IChatConversationResponse } from '@/models';
+import { BaseError } from '@/models';
+import { ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 
 // currentSiteOrigin reads window/location; stub it so the operator can run
 // under the plain test environment without touching the DOM.
@@ -53,5 +55,26 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     expect(progressEvents.every((e) => e.tool_id === 'call_1')).toBe(true);
     const argText = progressEvents.map((e) => e.progress ?? '').join('');
     expect(argText).toBe('{"command":"echo hi"}');
+  });
+
+  it('normalizes streaming 413 request_entity_too_large errors for localized UI copy', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          sseResponse([
+            'data: {"type":"error","status":413,"code":"request_entity_too_large","message":"Request payload is too large."}\n'
+          ])
+        )
+    );
+
+    await expect(
+      chatOperator.chatConversation({ model: 'gemini-3.1-pro', message: 'describe images' } as never, { token: 't' })
+    ).rejects.toMatchObject({
+      status: 413,
+      code: ERROR_CODE_CONTENT_TOO_LARGE,
+      detail: ''
+    } satisfies Partial<BaseError>);
   });
 });
