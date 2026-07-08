@@ -17,7 +17,12 @@ import { nanobananaOperator } from '@/operators';
 import { instrumentGeneration } from '@/plugins/telemetry';
 import { INanobananaGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
-import { ERROR_CODE_USED_UP, NANOBANANA_DEFAULT_RESOLUTION, NANOBANANA_MODEL_NANO_BANANA } from '@/constants';
+import {
+  ERROR_CODE_USED_UP,
+  NANOBANANA_DEFAULT_RESOLUTION,
+  NANOBANANA_MODEL_NANO_BANANA_2,
+  NANOBANANA_MODEL_NANO_BANANA_PRO
+} from '@/constants';
 import RecentPanel from '@/components/nanobanana/RecentPanel.vue';
 import { INanobananaTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
@@ -158,11 +163,12 @@ export default defineComponent({
       if (!cfg?.aspect_ratio) {
         delete cfg.aspect_ratio;
       }
-      // Resolution (1K/2K/4K) is supported by nano-banana-2 and nano-banana-pro; base nano-banana is 1K only.
-      if (cfg?.model === NANOBANANA_MODEL_NANO_BANANA && 'resolution' in cfg) {
+      const supportsResolution =
+        cfg?.model === NANOBANANA_MODEL_NANO_BANANA_2 || cfg?.model === NANOBANANA_MODEL_NANO_BANANA_PRO;
+      if (!supportsResolution && 'resolution' in cfg) {
         delete cfg.resolution;
       }
-      if (cfg?.model !== NANOBANANA_MODEL_NANO_BANANA && !cfg?.resolution) {
+      if (supportsResolution && !cfg?.resolution) {
         cfg.resolution = NANOBANANA_DEFAULT_RESOLUTION;
       }
       const request = {

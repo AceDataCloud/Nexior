@@ -6,7 +6,12 @@
         <info-icon :content="$t('nanobanana.description.resolutionProOnly')" class="info" />
       </div>
     </div>
-    <el-select v-model="value" class="value" :placeholder="$t('nanobanana.placeholder.select')" :disabled="!isProModel">
+    <el-select
+      v-model="value"
+      class="value"
+      :placeholder="$t('nanobanana.placeholder.select')"
+      :disabled="!supportsResolution"
+    >
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -18,7 +23,8 @@ import { ElSelect, ElOption } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import {
   NANOBANANA_DEFAULT_RESOLUTION,
-  NANOBANANA_MODEL_NANO_BANANA,
+  NANOBANANA_MODEL_NANO_BANANA_2,
+  NANOBANANA_MODEL_NANO_BANANA_PRO,
   NANOBANANA_RESOLUTION_1K,
   NANOBANANA_RESOLUTION_2K,
   NANOBANANA_RESOLUTION_4K
@@ -62,17 +68,18 @@ export default defineComponent({
         });
       }
     },
-    isProModel(): boolean {
-      return this.$store.state.nanobanana?.config?.model !== NANOBANANA_MODEL_NANO_BANANA;
+    supportsResolution(): boolean {
+      const model = this.$store.state.nanobanana?.config?.model;
+      return model === NANOBANANA_MODEL_NANO_BANANA_2 || model === NANOBANANA_MODEL_NANO_BANANA_PRO;
     }
   },
   watch: {
     value(newVal: string) {
-      if (this.isProModel && newVal) {
+      if (this.supportsResolution && newVal) {
         this.cachedResolution = newVal;
       }
     },
-    isProModel(newVal: boolean) {
+    supportsResolution(newVal: boolean) {
       if (newVal) {
         if (!this.value) {
           this.value = this.cachedResolution || NANOBANANA_DEFAULT_RESOLUTION;
@@ -89,10 +96,10 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (this.isProModel && !this.value) {
+    if (this.supportsResolution && !this.value) {
       this.value = NANOBANANA_DEFAULT_RESOLUTION;
     }
-    if (!this.isProModel && this.value) {
+    if (!this.supportsResolution && this.value) {
       this.cachedResolution = this.value;
       this.$store.commit('nanobanana/setConfig', {
         ...this.$store.state.nanobanana?.config,
