@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 02:29:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 04:09:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.320.1
+
+Wed, 08 Jul 2026 04:09:52 GMT
+
+### Patches
+
+- fix(mobile-release): unblock Android prod promote (beta->production) + iOS review submit (adopt single editable version, self-heal, verify) (dev@acedata.cloud)
 
 ## 3.320.0
 
