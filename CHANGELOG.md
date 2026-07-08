@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 04:14:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 05:06:27 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.321.0
+
+Wed, 08 Jul 2026 05:06:27 GMT
+
+### Minor changes
+
+- feat(maestro): estimate/start API layer + remove old static cost display (dev@acedata.cloud)
 
 ## 3.320.2
 
