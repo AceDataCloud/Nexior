@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 07 Jul 2026 16:59:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 02:29:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.320.0
+
+Wed, 08 Jul 2026 02:29:09 GMT
+
+### Minor changes
+
+- feat(maestro): narration voice selector with inline audio preview (9 curated voices + auto) (dev@acedata.cloud)
 
 ## 3.319.0
 
