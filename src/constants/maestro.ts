@@ -60,3 +60,25 @@ export const MAESTRO_DEFAULT_DURATION = 30;
 export const MAESTRO_DEFAULT_QUALITY = 'standard';
 export const MAESTRO_DEFAULT_SCENARIO = 'auto';
 export const MAESTRO_DEFAULT_STYLE = 'auto';
+
+// Curated narration voices → a Fish reference_id on the backend. Voice is a **timbre** and is
+// language-agnostic: the same voice speaks whatever language `langs` sets (verified live zh/en/ja),
+// so there is no per-voice language and the list is never filtered. `auto` = Maestro picks per tone.
+// `sample` is a short bilingual preview clip on the CDN (▶︎ 试听).
+export interface IMaestroVoiceOption {
+  key: string;
+  sample?: string;
+}
+export const MAESTRO_ALLOWED_VOICES: IMaestroVoiceOption[] = [
+  { key: 'auto' },
+  { key: 'warm-female', sample: 'https://cdn.acedata.cloud/7b7cec364c.mp3' },
+  { key: 'bright-female', sample: 'https://cdn.acedata.cloud/32ee903837.mp3' },
+  { key: 'anchor-female', sample: 'https://cdn.acedata.cloud/04374b7885.mp3' },
+  { key: 'clean-female', sample: 'https://cdn.acedata.cloud/cc0776b86f.mp3' },
+  { key: 'calm-male', sample: 'https://cdn.acedata.cloud/2ea4b5eb49.mp3' },
+  { key: 'deep-male', sample: 'https://cdn.acedata.cloud/7ba529ae25.mp3' },
+  { key: 'documentary-male', sample: 'https://cdn.acedata.cloud/5617e445dd.mp3' },
+  { key: 'energetic-male', sample: 'https://cdn.acedata.cloud/d516b56517.mp3' },
+  { key: 'storyteller-male', sample: 'https://cdn.acedata.cloud/9dfbd0ed00.mp3' }
+];
+export const MAESTRO_DEFAULT_VOICE = 'auto';
