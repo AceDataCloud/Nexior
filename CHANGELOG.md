@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 05:22:44 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 10:37:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.321.2
+
+Wed, 08 Jul 2026 10:37:08 GMT
+
+### Patches
+
+- Add nano-banana-2-lite model option. (dev@acedata.cloud)
 
 ## 3.321.1
 
