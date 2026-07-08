@@ -34,6 +34,9 @@ export default defineComponent({
     },
     options(): { value: number; label: string }[] {
       const items: { value: number; label: string }[] = [];
+      if (this.capability.supportsAutoDuration) {
+        items.push({ value: -1, label: `${this.$t('seedance.placeholder.seed')} (-1)` });
+      }
       for (let s = this.capability.minDuration; s <= this.capability.maxDuration; s++) {
         items.push({ value: s, label: `${s}s` });
       }
@@ -66,7 +69,11 @@ export default defineComponent({
   methods: {
     clampValue() {
       const current = this.value;
-      if (current !== undefined && (current < this.capability.minDuration || current > this.capability.maxDuration)) {
+      if (
+        current !== undefined &&
+        !(current === -1 && this.capability.supportsAutoDuration) &&
+        (current < this.capability.minDuration || current > this.capability.maxDuration)
+      ) {
         this.value = SEEDANCE_DEFAULT_DURATION;
       }
     }
