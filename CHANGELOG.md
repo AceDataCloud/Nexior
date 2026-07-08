@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 04:09:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 08 Jul 2026 04:14:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.320.2
+
+Wed, 08 Jul 2026 04:14:28 GMT
+
+### Patches
+
+- fix(kling): show per-second price for Motion Control instead of a fixed estimate (dev@acedata.cloud)
 
 ## 3.320.1
 
