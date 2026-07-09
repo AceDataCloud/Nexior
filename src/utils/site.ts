@@ -61,6 +61,30 @@ export const getSiteOrigin = (site?: ISite) => {
   return host.split(':')[0];
 };
 
+/**
+ * White-label brand-hide switches. Reads `site.branding.hide_*`
+ * (PlatformBackend `Site.branding`, PR #919). Default — column unset or the
+ * flag not exactly `true` — is `false`, i.e. we keep showing our brand,
+ * matching the "unset = use our default" principle. Only an explicit `true`
+ * hides the surface.
+ */
+export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_by' | 'api_code'): boolean => {
+  const branding = site?.branding;
+  if (!branding) return false;
+  if (key === 'powered_by') return branding.hide_powered_by === true;
+  if (key === 'api_code') return branding.hide_api_code === true;
+  return false;
+};
+
+/**
+ * Resolve the reseller's support URL: `branding.links.support` first, then
+ * the legacy `metadata.support_url`. Returns '' when neither is set so
+ * callers can hide the entry instead of leaking our own domain.
+ */
+export const getBrandSupportUrl = (site?: ISite | null): string => {
+  return site?.branding?.links?.support || site?.metadata?.support_url || '';
+};
+
 // Site-wide markup ceiling, mirroring PlatformBackend
 // `app/utils/site_pricing.py` (MARKUP_RATIO_MIN/MAX). 0 = sell at platform
 // price; 5 = +500% (6x).

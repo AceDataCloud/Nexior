@@ -1,23 +1,25 @@
 <template>
-  <el-tooltip class="box-item" effect="dark" :content="$t('common.message.viewCodeHint')" placement="top-start">
-    <el-button
-      :type="buttonType"
-      :size="buttonSize"
-      :class="['btn-action', 'btn-api-code', buttonClass]"
-      @click.stop="onOpen"
-    >
-      <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
-      {{ $t('common.button.viewCode') }}
-    </el-button>
-  </el-tooltip>
-  <api-code-dialog
-    v-model:visible="dialogVisible"
-    method="POST"
-    :path="path"
-    :body="cleanedBody"
-    :token="resolvedToken"
-    :doc-href="docHref"
-  />
+  <template v-if="showViewCode">
+    <el-tooltip class="box-item" effect="dark" :content="$t('common.message.viewCodeHint')" placement="top-start">
+      <el-button
+        :type="buttonType"
+        :size="buttonSize"
+        :class="['btn-action', 'btn-api-code', buttonClass]"
+        @click.stop="onOpen"
+      >
+        <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+        {{ $t('common.button.viewCode') }}
+      </el-button>
+    </el-tooltip>
+    <api-code-dialog
+      v-model:visible="dialogVisible"
+      method="POST"
+      :path="path"
+      :body="cleanedBody"
+      :token="resolvedToken"
+      :doc-href="docHref"
+    />
+  </template>
 </template>
 
 <script lang="ts">
@@ -25,6 +27,7 @@ import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import { isBrandingHidden } from '@/utils';
 
 type ButtonType = '' | 'default' | 'text' | 'primary' | 'success' | 'warning' | 'info' | 'danger';
 type ButtonSize = '' | 'small' | 'default' | 'large';
@@ -129,6 +132,12 @@ export default defineComponent({
     };
   },
   computed: {
+    showViewCode(): boolean {
+      // Default: show (behavior unchanged). A reseller opts out per-site by
+      // setting Site.branding.hide_api_code === true (white-label item 14),
+      // so end users of a white-label site don't see our API host/code.
+      return !isBrandingHidden(this.$store?.state?.site, 'api_code');
+    },
     cleanedBody(): Record<string, unknown> {
       const src = (this.body || {}) as Record<string, unknown>;
       const out: Record<string, unknown> = {};
