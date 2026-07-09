@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 09 Jul 2026 02:50:48 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 09 Jul 2026 09:29:12 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.322.2
+
+Thu, 09 Jul 2026 09:29:12 GMT
+
+### Patches
+
+- feat(white-label): let a site hide our brand traces (View Code + About) via Site.branding (dev@acedata.cloud)
 
 ## 3.322.1
 
