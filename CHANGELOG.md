@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 09 Jul 2026 09:29:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 09 Jul 2026 09:55:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.322.3
+
+Thu, 09 Jul 2026 09:55:46 GMT
+
+### Patches
+
+- feat(white-label): keep the neutral short-URL domain on white-label distribution links (no share.acedata.cloud rebrand) (dev@acedata.cloud)
 
 ## 3.322.2
 
