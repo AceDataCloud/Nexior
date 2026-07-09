@@ -12,7 +12,7 @@ import {
 } from '@/operators';
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
-import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlHub, getBaseUrlPlatform, getInviterId, loginRedirect } from '@/utils';
 import { isNative, isDesktop } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -218,6 +218,27 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
   return credential;
 };
 
+const canUseEmbeddedLogin = async (state: IRootState): Promise<boolean> => {
+  const providers = state.site?.auth?.providers;
+  if (providers && providers.email?.enabled !== true && providers.phone?.enabled !== true) {
+    return false;
+  }
+  try {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 5000);
+    const url = `${getBaseUrlPlatform()}/api/v1/site-domains/frame-ancestors?${new URLSearchParams({
+      origin: window.location.origin
+    }).toString()}`;
+    const response = await fetch(url, { headers: { accept: 'application/json' }, signal: controller.signal });
+    window.clearTimeout(timer);
+    if (!response.ok) return false;
+    const data = await response.json();
+    return data?.allowed === true && data?.origin === window.location.origin;
+  } catch {
+    return false;
+  }
+};
+
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
   if (isNative() || isDesktop()) {
@@ -229,15 +250,18 @@ export const login = async ({ state, commit }: ActionContext<IRootState, IRootSt
     });
     console.debug('login popup');
   } else {
+    if (!(await canUseEmbeddedLogin(state))) {
+      commit('setAuth', {
+        flow: 'redirect'
+      });
+      loginRedirect({ redirect: window.location.pathname + window.location.search, site });
+      return;
+    }
     commit('setAuth', {
-      flow: 'redirect'
+      flow: 'popup',
+      visible: true
     });
-    console.debug('login redirect');
-    // Preserve the original query string (e.g. ?inviter_id, ?utm_source) so
-    // it survives the auth round-trip and is still present when the user
-    // lands back on Nexior. inviter_id is also forwarded as a top-level
-    // query param by loginRedirect itself.
-    loginRedirect({ redirect: window.location.pathname + window.location.search, site });
+    console.debug('login embedded iframe', site);
   }
 };
 
