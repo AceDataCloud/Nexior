@@ -302,6 +302,22 @@
                   </span>
                 </template>
               </el-table-column>
+              <el-table-column
+                prop="credential_id"
+                :label="$t('usage.field.credential')"
+                width="200px"
+                class-name="text-center"
+              >
+                <template #default="scope">
+                  <span class="key">{{ getCredentialLabel(scope.row) }}</span>
+                  <span v-if="scope.row.credential?.id || scope.row.credential_id" class="cursor-pointer">
+                    <copy-to-clipboard
+                      :content="scope.row.credential?.id || scope.row.credential_id"
+                      class="inline-block"
+                    />
+                  </span>
+                </template>
+              </el-table-column>
               <el-table-column :label="$t('usage.field.createdAt')" width="200px">
                 <template #default="scope">
                   <span class="created-at">{{ $dayjs.format(scope.row.created_at) }}</span>
@@ -358,6 +374,22 @@
                   <el-tag v-for="(name, key) in scope.row.metadata" :key="key" class="mb-2">
                     {{ key }}: {{ name }}
                   </el-tag>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="credential_id"
+                :label="$t('usage.field.credential')"
+                width="200px"
+                class-name="text-center"
+              >
+                <template #default="scope">
+                  <span class="key">{{ getCredentialLabel(scope.row) }}</span>
+                  <span v-if="scope.row.credential?.id || scope.row.credential_id" class="cursor-pointer">
+                    <copy-to-clipboard
+                      :content="scope.row.credential?.id || scope.row.credential_id"
+                      class="inline-block"
+                    />
+                  </span>
                 </template>
               </el-table-column>
               <el-table-column :label="$t('usage.field.createdAt')" width="200px">
@@ -1014,6 +1046,12 @@ export default defineComponent({
         result[key] = value;
       }
       return result;
+    },
+    getCredentialLabel(usage: IApiUsage | IProxyUsage) {
+      const name = usage.credential?.name?.trim();
+      if (name) return name;
+      // Fall back to the full credential id (shown like the trace id column).
+      return usage.credential?.id || usage.credential_id || '-';
     },
     onShowDetail(row: IApiUsage) {
       this.detailRow = { ...row, metadata: undefined };
