@@ -13,6 +13,7 @@ import {
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
+import { isFeatureEnabled } from '@/utils/featureFlag';
 import { isNative, isDesktop } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -220,7 +221,7 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
 
 export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
   const site = state?.site?.origin;
-  if (isNative() || isDesktop()) {
+  if (isNative() || isDesktop() || isFeatureEnabled('auth-iframe')) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
     // app://bundle window navigated to the external auth host cannot return.
     commit('setAuth', {

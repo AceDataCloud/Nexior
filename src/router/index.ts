@@ -72,6 +72,7 @@ import {
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
+import { isFeatureEnabled } from '@/utils/featureFlag';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
 import { ensureStoreModule } from '@/store/lazy';
 import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
@@ -437,7 +438,7 @@ export function setupRouterGuards(router: Router) {
     // page whose data calls 401 and spins forever. The login flow preserves the
     // intended destination so they return here after authenticating.
     if (!store.getters.authenticated && requiresLogin(to.path)) {
-      if (isNative() || isDesktop()) {
+      if (isNative() || isDesktop() || isFeatureEnabled('auth-iframe')) {
         store.dispatch('login');
       } else {
         loginRedirect({ redirect: to.fullPath });
