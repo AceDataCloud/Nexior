@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 09 Jul 2026 01:11:55 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 09 Jul 2026 02:50:48 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.322.1
+
+Thu, 09 Jul 2026 02:50:48 GMT
+
+### Patches
+
+- show credential name for each usage record (dev@acedata.cloud)
 
 ## 3.322.0
 
