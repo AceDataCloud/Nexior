@@ -3,7 +3,7 @@
     <div v-if="useBrowser" class="auth-native__loading">
       <p>{{ $t('common.status.loading') }}</p>
     </div>
-    <iframe v-else ref="iframe" class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
+    <iframe v-else class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
   </div>
   <el-dialog
     v-else
@@ -14,7 +14,7 @@
     :close-on-press-escape="false"
     :close-on-click-modal="false"
   >
-    <iframe ref="iframe" width="360" height="560" :src="iframeUrl" frameborder="0" />
+    <iframe width="360" height="560" :src="iframeUrl" frameborder="0" />
   </el-dialog>
   <el-dialog v-model="showQR" width="400px" :show-close="true">
     <qr-code
@@ -76,24 +76,16 @@ export default defineComponent({
     nativeRedirect() {
       return isDesktop() ? 'acedata-desktop' : 'com.acedatacloud.nexior';
     },
-    authOrigin() {
-      return new URL(getBaseUrlAuth()).origin;
-    },
     iframeUrl() {
-      const path = this.isInAppLogin ? '/auth/login/' : '/auth/embed-login/';
-      const url = new URL(path, getBaseUrlAuth());
-      if (this.inviterId) {
-        url.searchParams.set('inviter_id', this.inviterId);
-      }
+      // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
+      // URL that iOS ATS blocks, leaving this iframe blank (white screen).
+      let url = `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}`;
       if (this.isInAppLogin) {
-        url.searchParams.set('native_redirect', this.nativeRedirect);
-      } else {
-        url.searchParams.set('embed_origin', window.location.origin);
-        url.searchParams.set('provider', 'email');
+        url += `&native_redirect=${this.nativeRedirect}`;
       }
       // Pass `site` so the embedded AuthFrontend login form renders the
       // calling subsite's white-label logo (no-op on the main official host).
-      return withCurrentSite(url.toString());
+      return withCurrentSite(url);
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
@@ -126,8 +118,7 @@ export default defineComponent({
     // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
     // postMessage asking us to open the OAuth flow in the in-app browser.
     window.addEventListener('message', async (event: MessageEvent) => {
-      const iframe = this.$refs.iframe as HTMLIFrameElement | undefined;
-      if (event.origin !== this.authOrigin || event.source !== iframe?.contentWindow) {
+      if (event.origin !== getBaseUrlAuth()) {
         return;
       }
       console.debug('received from child page', event);
