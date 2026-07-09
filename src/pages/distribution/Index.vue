@@ -200,7 +200,7 @@ import { userOperator } from '@/operators';
 import QrCode from 'vue-qrcode';
 import { ROUTE_DISTRIBUTION_HISTORY, ROUTE_DISTRIBUTION_INVITEES } from '@/router';
 import { IDistributionLevel, IDistributionStatus, IUser } from '@/models';
-import { getPriceString } from '@/utils';
+import { getPriceString, isOfficial } from '@/utils';
 
 interface IData {
   invitees: IUser[];
@@ -315,7 +315,12 @@ export default defineComponent({
       const link = `${origin}?inviter_id=${this.$store.getters.user.id}`;
       try {
         const url = (await shortUrlOperator.create(link))?.data?.data?.url;
-        this.distributionLink = (url || link).replace('surl.id', 'share.acedata.cloud');
+        const short = url || link;
+        // Only rebrand the shortener domain to our `share.acedata.cloud` on
+        // first-party sites. On a white-label site keep the neutral short URL
+        // the shortener returned (surl.id) so the shared link doesn't carry
+        // our brand. `link` (the long fallback) is already same-origin.
+        this.distributionLink = isOfficial() ? short.replace('surl.id', 'share.acedata.cloud') : short;
       } catch (error) {
         this.distributionLink = link;
       }
