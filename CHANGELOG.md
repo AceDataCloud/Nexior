@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 08 Jul 2026 15:57:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 09 Jul 2026 01:11:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.322.0
+
+Thu, 09 Jul 2026 01:11:55 GMT
+
+### Minor changes
+
+- Add Seedream 5.0 Pro (doubao-seedream-5-0-pro-260628) model option (dev@acedata.cloud)
 
 ## 3.321.4
 
