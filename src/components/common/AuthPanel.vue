@@ -3,7 +3,7 @@
     <div v-if="useBrowser" class="auth-native__loading">
       <p>{{ $t('common.status.loading') }}</p>
     </div>
-    <iframe v-else class="auth-native__iframe" :src="iframeUrl" frameborder="0" />
+    <iframe v-else ref="iframe" class="auth-native__iframe" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
   </div>
   <el-dialog
     v-else
@@ -14,7 +14,7 @@
     :close-on-press-escape="false"
     :close-on-click-modal="false"
   >
-    <iframe width="360" height="560" :src="iframeUrl" frameborder="0" />
+    <iframe ref="iframe" width="360" height="560" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
   </el-dialog>
   <el-dialog v-model="showQR" width="400px" :show-close="true">
     <qr-code
@@ -34,7 +34,7 @@ import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElDialog } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { getBaseUrlAuth, withCurrentSite } from '@/utils';
+import { getBaseUrlAuth, getBaseUrlHub, withCurrentSite } from '@/utils';
 import { getCookie } from 'typescript-cookie';
 import QrCode from 'vue-qrcode';
 import { ROUTE_SETTINGS_INDEX } from '@/router';
@@ -76,16 +76,30 @@ export default defineComponent({
     nativeRedirect() {
       return isDesktop() ? 'acedata-desktop' : 'com.acedatacloud.nexior';
     },
+    authOrigin() {
+      return new URL(getBaseUrlAuth()).origin;
+    },
     iframeUrl() {
       // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
       // URL that iOS ATS blocks, leaving this iframe blank (white screen).
-      let url = `${getBaseUrlAuth()}/auth/login/?inviter_id=${this.inviterId}`;
+      const url = new URL('/auth/login/', getBaseUrlAuth());
+      if (this.inviterId) {
+        url.searchParams.set('inviter_id', this.inviterId);
+      }
       if (this.isInAppLogin) {
-        url += `&native_redirect=${this.nativeRedirect}`;
+        url.searchParams.set('native_redirect', this.nativeRedirect);
+      } else {
+        url.searchParams.set('embed_origin', window.location.origin);
+        url.searchParams.set(
+          'redirect',
+          `${getBaseUrlHub()}/auth/callback?${new URLSearchParams({
+            redirect: window.location.pathname + window.location.search
+          }).toString()}`
+        );
       }
       // Pass `site` so the embedded AuthFrontend login form renders the
       // calling subsite's white-label logo (no-op on the main official host).
-      return withCurrentSite(url);
+      return withCurrentSite(url.toString());
     },
     inviterId() {
       // if forceInviterId is set, then use forceInviterId
@@ -118,7 +132,8 @@ export default defineComponent({
     // When the user clicks Google/GitHub, the iframe (AuthFrontend) sends a
     // postMessage asking us to open the OAuth flow in the in-app browser.
     window.addEventListener('message', async (event: MessageEvent) => {
-      if (event.origin !== getBaseUrlAuth()) {
+      const iframe = this.$refs.iframe as HTMLIFrameElement | undefined;
+      if (event.origin !== this.authOrigin || event.source !== iframe?.contentWindow) {
         return;
       }
       console.debug('received from child page', event);
