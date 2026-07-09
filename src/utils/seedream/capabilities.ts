@@ -16,6 +16,7 @@ import {
   SEEDREAM_MODEL_4_0,
   SEEDREAM_MODEL_4_5,
   SEEDREAM_MODEL_5_0,
+  SEEDREAM_MODEL_5_0_PRO,
   SEEDREAM_MODEL_SEEDEDIT_3_0_I2I,
   SEEDREAM_SIZE_1K,
   SEEDREAM_SIZE_2K,
@@ -69,6 +70,21 @@ const FALLBACK: ISeedreamCapability = {
 /** Return the support matrix for a given model. */
 export function getSeedreamCapabilities(model?: string): ISeedreamCapability {
   switch (model) {
+    case SEEDREAM_MODEL_5_0_PRO:
+      // 5.0 Pro: flagship single-image. Size presets 1K/2K only. No group
+      // generation / stream / web_search tools. Supports output_format.
+      return {
+        image: true,
+        imageRequired: false,
+        sizeTiers: [SEEDREAM_SIZE_1K, SEEDREAM_SIZE_2K],
+        sizeAdaptive: true,
+        sizePixel: true,
+        groupGeneration: false,
+        seed: false,
+        guidanceScale: false,
+        outputFormat: true,
+        tools: false
+      };
     case SEEDREAM_MODEL_5_0:
       // 5.0-lite: tier presets 2K/3K/4K (no 1K — min ~3.7M pixels).
       return {
