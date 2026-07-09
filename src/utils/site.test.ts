@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getSiteOrigin, getSiteMarkupRatio, applyMarkup } from './site';
+import { getSiteOrigin, getSiteMarkupRatio, applyMarkup, isBrandingHidden, getBrandSupportUrl } from './site';
 
 /**
  * getSiteOrigin must treat desktop (Electron, app://bundle authority "bundle")
@@ -67,5 +67,41 @@ describe('applyMarkup', () => {
     expect(applyMarkup(10, -1)).toBe(10);
     expect(applyMarkup(undefined, 0.3)).toBe(0);
     expect(applyMarkup(NaN, 0.3)).toBe(0);
+  });
+});
+
+describe('isBrandingHidden', () => {
+  it('returns false when site / branding / flag is unset (default = show ours)', () => {
+    expect(isBrandingHidden(null, 'powered_by')).toBe(false);
+    expect(isBrandingHidden(undefined, 'api_code')).toBe(false);
+    expect(isBrandingHidden({} as never, 'powered_by')).toBe(false);
+    expect(isBrandingHidden({ branding: {} } as never, 'api_code')).toBe(false);
+  });
+
+  it('hides only on an explicit boolean true (not truthy coercions)', () => {
+    expect(isBrandingHidden({ branding: { hide_powered_by: true } } as never, 'powered_by')).toBe(true);
+    expect(isBrandingHidden({ branding: { hide_api_code: true } } as never, 'api_code')).toBe(true);
+    expect(isBrandingHidden({ branding: { hide_powered_by: false } } as never, 'powered_by')).toBe(false);
+    expect(isBrandingHidden({ branding: { hide_powered_by: 1 } } as never, 'powered_by')).toBe(false);
+  });
+
+  it('keys are independent', () => {
+    const site = { branding: { hide_api_code: true } } as never;
+    expect(isBrandingHidden(site, 'api_code')).toBe(true);
+    expect(isBrandingHidden(site, 'powered_by')).toBe(false);
+  });
+});
+
+describe('getBrandSupportUrl', () => {
+  it('prefers branding.links.support, then metadata.support_url, else empty', () => {
+    expect(
+      getBrandSupportUrl({
+        branding: { links: { support: 'https://a.com' } },
+        metadata: { support_url: 'https://b.com' }
+      } as never)
+    ).toBe('https://a.com');
+    expect(getBrandSupportUrl({ metadata: { support_url: 'https://b.com' } } as never)).toBe('https://b.com');
+    expect(getBrandSupportUrl({} as never)).toBe('');
+    expect(getBrandSupportUrl(null)).toBe('');
   });
 });

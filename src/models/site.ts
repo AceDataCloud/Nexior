@@ -100,6 +100,27 @@ export interface ISiteMetadata {
   [key: string]: unknown;
 }
 
+// White-label brand chrome (PlatformBackend ``Site.branding`` column,
+// PR #919). All keys optional; an unset column means "use our default
+// brand" — default behavior is intentionally unchanged. Only an explicit
+// ``hide_* === true`` hides a surface. Backend validator lives in
+// ``app/utils/site_branding.py`` (rejects unknown keys). Consumed via
+// ``isBrandingHidden`` / ``getBrandSupportUrl`` in ``src/utils/site.ts``.
+export interface ISiteBrandingLinks {
+  support?: string;
+  docs?: string;
+  tos?: string;
+  privacy?: string;
+}
+
+export interface ISiteBranding {
+  company?: string;
+  copyright?: string;
+  hide_powered_by?: boolean;
+  hide_api_code?: boolean;
+  links?: ISiteBrandingLinks;
+}
+
 export interface ISite {
   id?: string;
   origin?: string;
@@ -116,6 +137,7 @@ export interface ISite {
   updated_at?: string;
   metadata?: ISiteMetadata;
   theme?: ISiteTheme | null;
+  branding?: ISiteBranding;
   tags?: string[];
   // Server-derived metadata for the per-field auto-translate toggle
   // (PlatformBackend PR #511/#513). When a field is in

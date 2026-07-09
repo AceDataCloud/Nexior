@@ -1,6 +1,6 @@
 <template>
   <div class="settings-list">
-    <section class="settings-item">
+    <section v-if="!brandingHidden" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.poweredBy') }}</p>
         <p class="settings-tip">{{ $t('common.settings.poweredByTip') }}</p>
@@ -12,7 +12,7 @@
         </a>
       </div>
     </section>
-    <section class="settings-item">
+    <section v-if="!brandingHidden" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.apiService') }}</p>
         <p class="settings-tip">{{ $t('common.settings.apiServiceTip') }}</p>
@@ -24,7 +24,7 @@
         </a>
       </div>
     </section>
-    <section class="settings-item">
+    <section v-if="showBuildSection" class="settings-item">
       <div class="settings-label">
         <p class="settings-title">{{ $t('common.settings.buildYourOwn') }}</p>
         <p class="settings-tip">{{ $t('common.settings.buildYourOwnTip') }}</p>
@@ -57,7 +57,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faCloud, faComments, faRocket } from '@fortawesome/free-solid-svg-icons';
 import { SETTING_TAB_SUBSITES } from '@/constants';
-import { isMainOfficial } from '@/utils';
+import { isMainOfficial, isBrandingHidden, getBrandSupportUrl } from '@/utils';
+import { ISite } from '@/models';
 
 export default defineComponent({
   name: 'AboutSetting',
@@ -75,11 +76,28 @@ export default defineComponent({
     };
   },
   computed: {
+    site(): ISite | undefined {
+      return this.$store?.state?.site;
+    },
+    brandingHidden(): boolean {
+      // White-label master switch (Site.branding.hide_powered_by). Hides the
+      // "Powered by" + "API Service" attribution. Default (unset) = show ours.
+      return isBrandingHidden(this.site, 'powered_by');
+    },
     supportUrl(): string {
-      return this.$store?.state?.site?.metadata?.support_url || 'https://platform.acedata.cloud';
+      // Reseller support link first (branding.links.support -> support_url).
+      // Only fall back to our platform when branding is NOT hidden, so a
+      // white-label site never leaks our domain.
+      return getBrandSupportUrl(this.site) || (this.brandingHidden ? '' : 'https://platform.acedata.cloud');
     },
     isMainOfficialHost(): boolean {
       return isMainOfficial();
+    },
+    showBuildSection(): boolean {
+      // Official main host shows one-click subsite build; other hosts show a
+      // "contact us" CTA. On a white-label site with no support URL there's
+      // nothing useful to show (and a "contact us" would leak us), so hide it.
+      return this.isMainOfficialHost || !this.brandingHidden || !!this.supportUrl;
     }
   },
   methods: {
