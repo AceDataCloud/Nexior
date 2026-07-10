@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 10 Jul 2026 07:47:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 10 Jul 2026 12:18:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.1
+
+Fri, 10 Jul 2026 12:18:37 GMT
+
+### Patches
+
+- Route iframe feature logins through the global auth modal. (dev@acedata.cloud)
 
 ## 3.323.0
 
