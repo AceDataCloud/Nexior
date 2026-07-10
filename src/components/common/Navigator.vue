@@ -1,5 +1,8 @@
 <template>
-  <div :direction="direction" :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() && !isFullscreen }]">
+  <div
+    :direction="direction"
+    :class="['navigator', { collapsed: direction === 'column', 'is-mac': isMacOS() && !isFullscreen }]"
+  >
     <div v-if="direction === 'column'" class="brand">
       <logo collapsed @click.stop="onHome" />
     </div>
@@ -52,7 +55,17 @@
       </div>
     </div>
     <div class="bottom">
-      <user-center />
+      <el-tooltip
+        v-if="!authenticated"
+        effect="dark"
+        :content="$t('common.button.login')"
+        :placement="direction === 'row' ? 'top' : 'right'"
+      >
+        <button class="login-button" type="button" :aria-label="$t('common.button.login').toString()" @click="onLogin">
+          <font-awesome-icon icon="fa-solid fa-user" />
+        </button>
+      </el-tooltip>
+      <user-center v-show="authenticated" />
     </div>
   </div>
 </template>
@@ -139,6 +152,7 @@ import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 import { isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface NavLink {
   route: { name: string };
@@ -156,7 +170,8 @@ export default defineComponent({
     ElPopover,
     Logo,
     ElTooltip,
-    UserCenter
+    UserCenter,
+    FontAwesomeIcon
   },
   props: {
     direction: {
@@ -485,9 +500,10 @@ export default defineComponent({
     }
     // Native fullscreen state from the Electron main process (canonical signal
     // for the macOS green button / setFullScreen; undefined off desktop).
-    this.offFullscreen = desktopBridge()?.onFullscreenChange((v) => {
-      this.isFullscreen = v;
-    }) ?? null;
+    this.offFullscreen =
+      desktopBridge()?.onFullscreenChange((v) => {
+        this.isFullscreen = v;
+      }) ?? null;
   },
   beforeUnmount() {
     if (this.resizeObserver) {
@@ -506,6 +522,9 @@ export default defineComponent({
     isMacOS,
     onHome() {
       this.$router.push({ name: ROUTE_INDEX });
+    },
+    onLogin() {
+      this.$store.dispatch('login', { redirect: this.$route.fullPath });
     },
     onOverflowItemClick(link: { route: { name: string } }) {
       this.showOverflow = false;
@@ -576,6 +595,11 @@ export default defineComponent({
       display: flex;
       flex: 1;
       justify-content: flex-end;
+    }
+
+    .login-button {
+      width: 36px;
+      height: 36px;
     }
   }
 
@@ -709,6 +733,30 @@ export default defineComponent({
       justify-content: flex-end;
       align-items: center;
       padding-bottom: 10px;
+    }
+  }
+
+  .login-button {
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--el-color-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--app-shadow-xs);
+    transition:
+      transform 0.15s,
+      box-shadow 0.15s,
+      background-color 0.15s;
+
+    &:hover {
+      transform: translateY(-1px);
+      background: var(--el-color-primary-light-3);
+      box-shadow: var(--app-shadow-sm);
     }
   }
 }

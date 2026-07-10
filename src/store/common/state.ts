@@ -35,7 +35,8 @@ export default (): IRootState => {
     user: {},
     auth: {
       flow: 'redirect',
-      visible: false
+      visible: false,
+      action: 'login'
     },
     config: undefined,
     token: {

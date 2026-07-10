@@ -5,17 +5,12 @@
     </div>
     <iframe v-else ref="iframe" class="auth-native__iframe" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
   </div>
-  <el-dialog
-    v-else
-    :model-value="!authenticated"
-    modal-class="dialog"
-    width="400px"
-    :show-close="false"
-    :close-on-press-escape="false"
-    :close-on-click-modal="false"
-  >
-    <iframe ref="iframe" width="360" height="560" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
-  </el-dialog>
+  <div v-else class="auth-frame-modal" role="dialog" aria-modal="true">
+    <div class="auth-frame-modal__panel">
+      <button class="auth-frame-modal__close" type="button" aria-label="Close" @click="closeWebLogin">×</button>
+      <iframe ref="iframe" class="auth-frame-modal__iframe" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
+    </div>
+  </div>
   <el-dialog v-model="showQR" width="400px" :show-close="true">
     <qr-code
       v-if="qrLink"
@@ -79,7 +74,16 @@ export default defineComponent({
     authOrigin() {
       return new URL(getBaseUrlAuth()).origin;
     },
+    redirect() {
+      return this.$store.state.auth?.redirect || window.location.pathname + window.location.search;
+    },
+    authAction() {
+      return this.$store.state.auth?.action || 'login';
+    },
     iframeUrl() {
+      if (this.authAction === 'logout') {
+        return new URL('/auth/logout', getBaseUrlAuth()).toString();
+      }
       // Trailing slash matters: `/auth/login` 301s to a cleartext `http://`
       // URL that iOS ATS blocks, leaving this iframe blank (white screen).
       const url = new URL('/auth/login/', getBaseUrlAuth());
@@ -93,7 +97,7 @@ export default defineComponent({
         url.searchParams.set(
           'redirect',
           `${getBaseUrlHub()}/auth/callback?${new URLSearchParams({
-            redirect: window.location.pathname + window.location.search
+            redirect: this.redirect
           }).toString()}`
         );
       }
@@ -237,6 +241,7 @@ export default defineComponent({
         await this.$store.dispatch('setToken', token);
         await this.$store.dispatch('getUser');
         // if the site is not initialized, initialize it
+        let openedSettings = false;
         if (!this.$store.state.site?.origin) {
           await this.$store.dispatch('initializeSite');
           // navigate to settings page (the dialog auto-opens) for
@@ -246,6 +251,7 @@ export default defineComponent({
             await this.$router.push({
               name: ROUTE_SETTINGS_INDEX
             });
+            openedSettings = true;
           }
         }
         if (isNativeSurface() || isDesktop()) {
@@ -256,8 +262,14 @@ export default defineComponent({
           this.$store.commit('setAuth', { visible: false });
           await this.$router.push('/');
         } else {
-          window.location.reload();
+          this.$store.commit('setAuth', { visible: false });
+          if (!openedSettings) {
+            await this.$router.push(this.redirect || '/');
+          }
         }
+      }
+      if (event.data.name === 'logout') {
+        this.$store.commit('setAuth', { action: 'login', visible: true });
       }
       if (event.data.name === 'show_qr') {
         const data = event.data.data;
@@ -265,14 +277,55 @@ export default defineComponent({
         this.showQR = true;
       }
     });
+  },
+  methods: {
+    closeWebLogin() {
+      this.$store.commit('setAuth', { visible: false });
+    }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.dialog {
-  width: 400px;
-  height: 600px;
+.auth-frame-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(8px);
+
+  &__panel {
+    position: relative;
+    width: min(400px, calc(100vw - 24px));
+    height: min(720px, calc(100vh - 24px));
+  }
+
+  &__iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 18px;
+    background: transparent;
+    box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.68);
+    color: #fff;
+    font-size: 24px;
+    line-height: 32px;
+    cursor: pointer;
+  }
 }
 
 .auth-native {

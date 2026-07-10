@@ -13,7 +13,7 @@ import {
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
-import { isFeatureEnabled } from '@/utils/featureFlag';
+import { isAuthIframeFeatureEnabled } from '@/utils/featureFlag';
 import { isNative, isDesktop } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -219,26 +219,34 @@ export const createCredential = async ({ commit, state }: any): Promise<ICredent
   return credential;
 };
 
-export const login = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
+export const login = async (
+  { state, commit }: ActionContext<IRootState, IRootState>,
+  payload: { redirect?: string } = {}
+) => {
   const site = state?.site?.origin;
-  if (isNative() || isDesktop() || isFeatureEnabled('auth-iframe')) {
+  const redirect = payload.redirect || window.location.pathname + window.location.search;
+  if (isNative() || isDesktop() || isAuthIframeFeatureEnabled()) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
     // app://bundle window navigated to the external auth host cannot return.
     commit('setAuth', {
       flow: 'popup',
-      visible: true
+      visible: true,
+      redirect,
+      action: 'login'
     });
     console.debug('login popup');
   } else {
     commit('setAuth', {
-      flow: 'redirect'
+      flow: 'redirect',
+      redirect,
+      action: 'login'
     });
     console.debug('login redirect');
     // Preserve the original query string (e.g. ?inviter_id, ?utm_source) so
     // it survives the auth round-trip and is still present when the user
     // lands back on Nexior. inviter_id is also forwarded as a top-level
     // query param by loginRedirect itself.
-    loginRedirect({ redirect: window.location.pathname + window.location.search, site });
+    loginRedirect({ redirect, site });
   }
 };
 
@@ -253,13 +261,15 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
   for (const name of getRegisteredLazyModules()) {
     await dispatch(`${name}/resetAll`);
   }
-  if (isNative() || isDesktop()) {
+  if (isNative() || isDesktop() || isAuthIframeFeatureEnabled()) {
     // On native AND desktop, show the in-app login popup instead of navigating
     // to an external auth URL (which on native opens Chrome → localhost, and on
     // desktop navigates the app://bundle window somewhere it can't return from).
     commit('setAuth', {
       flow: 'popup',
-      visible: true
+      visible: true,
+      redirect: window.location.pathname + window.location.search,
+      action: isNative() || isDesktop() ? 'login' : 'logout'
     });
   } else {
     // Build the post-logout login URL via URLSearchParams so the inviter_id

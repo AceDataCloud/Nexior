@@ -70,7 +70,7 @@
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
 import { getBaseUrlAuth, withCurrentUserIdAndSite } from '@/utils';
-import { ROUTE_AUTH_LOGIN, ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
+import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
 import { Browser } from '@capacitor/browser';
@@ -147,9 +147,7 @@ export default defineComponent({
       });
     },
     onLogin() {
-      this.$router.push({
-        name: ROUTE_AUTH_LOGIN
-      });
+      this.$store.dispatch('login', { redirect: this.$route.fullPath });
     },
     onDownload() {
       this.$router.push({
@@ -201,8 +199,17 @@ $height: 64px;
   // opt out. macOS insets the brand col past the traffic lights.
   &.desktop-chrome {
     -webkit-app-region: drag;
-    a, button, .el-menu, .el-dropdown, .avatar, .console,
-    .locale, language-selector, dark-selector, .el-switch, [role='button'] {
+    a,
+    button,
+    .el-menu,
+    .el-dropdown,
+    .avatar,
+    .console,
+    .locale,
+    language-selector,
+    dark-selector,
+    .el-switch,
+    [role='button'] {
       -webkit-app-region: no-drag;
     }
   }

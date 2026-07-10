@@ -99,6 +99,10 @@ export function isFeatureEnabled(name: string): boolean {
   return set.has(name.toLowerCase());
 }
 
+export function isAuthIframeFeatureEnabled(): boolean {
+  return isFeatureEnabled('auth-iframe') || isFeatureEnabled('iframe');
+}
+
 export function syncFeaturesFromUrl(): Set<string> {
   if (typeof window === 'undefined') {
     cachedFeatures = new Set();

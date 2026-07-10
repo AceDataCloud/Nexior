@@ -72,7 +72,7 @@ import {
 import { getCookie } from 'typescript-cookie';
 import { I18N_DEFAULT_LOCALE } from '@/constants/i18n';
 import { getLocale, setI18nLanguage } from '@/i18n';
-import { isFeatureEnabled } from '@/utils/featureFlag';
+import { isAuthIframeFeatureEnabled } from '@/utils/featureFlag';
 import { updateSeo, setWebApplicationSchema, setOrganization, resetSeo } from '@/utils/seo';
 import { ensureStoreModule } from '@/store/lazy';
 import { evaluateUserIdGuard } from '@/utils/crossSiteUser';
@@ -412,7 +412,7 @@ export function setupRouterGuards(router: Router) {
     handleChunkLoadError(error);
   });
 
-  router.beforeEach(async (to, _from, next) => {
+  router.beforeEach(async (to, from, next) => {
     // SSG build navigates the router to render each route; no cookies/i18n DOM
     // then, so skip the client-only guard body and just proceed.
     if (import.meta.env.SSR) {
@@ -430,6 +430,10 @@ export function setupRouterGuards(router: Router) {
     }
     if (decision.kind === 'mismatch') {
       // Helper has already triggered a full-page SSO redirect; abort.
+      if (isAuthIframeFeatureEnabled() && !from.name) {
+        const { user_id: _userId, ...query } = to.query;
+        return next({ ...getDefaultRoute(), query, replace: true });
+      }
       return next(false);
     }
 
@@ -438,8 +442,11 @@ export function setupRouterGuards(router: Router) {
     // page whose data calls 401 and spins forever. The login flow preserves the
     // intended destination so they return here after authenticating.
     if (!store.getters.authenticated && requiresLogin(to.path)) {
-      if (isNative() || isDesktop() || isFeatureEnabled('auth-iframe')) {
-        store.dispatch('login');
+      if (isNative() || isDesktop() || isAuthIframeFeatureEnabled()) {
+        store.dispatch('login', { redirect: to.fullPath });
+        if (!from.name) {
+          return next({ ...getDefaultRoute(), query: to.query, replace: true });
+        }
       } else {
         loginRedirect({ redirect: to.fullPath });
       }
