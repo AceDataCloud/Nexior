@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 10 Jul 2026 12:18:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 10 Jul 2026 13:06:18 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.2
+
+Fri, 10 Jul 2026 13:06:18 GMT
+
+### Patches
+
+- Move iframe login entry into the bottom user menu. (dev@acedata.cloud)
 
 ## 3.323.1
 
