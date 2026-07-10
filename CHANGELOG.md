@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 09 Jul 2026 16:39:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 10 Jul 2026 07:47:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.0
+
+Fri, 10 Jul 2026 07:47:16 GMT
+
+### Minor changes
+
+- feat(maestro): show request params (mode/scenario/style/quality/aspect/duration/langs) and trace_id/elapsed on task detail cards (dev@acedata.cloud)
 
 ## 3.322.5
 
