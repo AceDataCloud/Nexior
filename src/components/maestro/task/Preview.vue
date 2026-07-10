@@ -38,6 +38,15 @@
       <div v-if="!isTerminal" class="content">
         <el-alert :closable="false" class="mt-2 processing">
           <progress-steps :model-value="modelValue" />
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-1"
+            :class="{ 'mt-3': pIdx === 0 }"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-3">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -81,6 +90,14 @@
           <api-code-button path="/maestro/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -89,6 +106,11 @@
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -100,6 +122,14 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('maestro.name.failure') }}
           </template>
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -108,6 +138,15 @@
           <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('maestro.name.failureReason') }}: {{ failureReason }}
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -208,9 +247,69 @@ export default defineComponent({
       const err = this.modelValue?.response?.error;
       if (!err) return undefined;
       return typeof err === 'string' ? err : err?.message;
+    },
+    requestParams(): { icon: string; label: string; value: string }[] {
+      const req = this.modelValue?.request;
+      if (!req) return [];
+      const out: { icon: string; label: string; value: string }[] = [];
+      if (req.action) {
+        out.push({
+          icon: 'fa-solid fa-wand-magic-sparkles',
+          label: this.$t('maestro.name.mode') as string,
+          value: this.optionLabel('maestro.option.action', req.action)
+        });
+      }
+      if (req.scenario) {
+        out.push({
+          icon: 'fa-solid fa-clapperboard',
+          label: this.$t('maestro.name.scenario') as string,
+          value: this.optionLabel('maestro.option.scenario', req.scenario)
+        });
+      }
+      if (req.style) {
+        out.push({
+          icon: 'fa-solid fa-palette',
+          label: this.$t('maestro.name.style') as string,
+          value: this.optionLabel('maestro.option.style', req.style)
+        });
+      }
+      if (req.quality) {
+        out.push({
+          icon: 'fa-solid fa-gauge-high',
+          label: this.$t('maestro.name.quality') as string,
+          value: this.optionLabel('maestro.option.quality', req.quality)
+        });
+      }
+      if (req.aspect) {
+        out.push({
+          icon: 'fa-solid fa-expand',
+          label: this.$t('maestro.name.aspect') as string,
+          value: req.aspect
+        });
+      }
+      if (req.duration) {
+        out.push({
+          icon: 'fa-solid fa-clock',
+          label: this.$t('maestro.name.duration') as string,
+          value: `${req.duration}s`
+        });
+      }
+      if (req.langs?.length) {
+        out.push({
+          icon: 'fa-solid fa-language',
+          label: this.$t('maestro.name.langs') as string,
+          value: req.langs.join(' · ')
+        });
+      }
+      return out;
     }
   },
   methods: {
+    optionLabel(prefix: string, value: string): string {
+      const key = `${prefix}.${value}`;
+      const label = this.$t(key) as string;
+      return label === key ? value : label;
+    },
     fileName(url: string): string {
       const base = url.substring(url.lastIndexOf('/') + 1);
       try {
