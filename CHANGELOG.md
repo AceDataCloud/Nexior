@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 10 Jul 2026 13:06:18 GMT and should not be manually modified. -->
+<!-- This log was last generated on Fri, 10 Jul 2026 14:00:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.3
+
+Fri, 10 Jul 2026 14:00:39 GMT
+
+### Patches
+
+- Reload after iframe login completes. (dev@acedata.cloud)
 
 ## 3.323.2
 
