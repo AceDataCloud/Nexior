@@ -248,9 +248,6 @@ export default defineComponent({
           // white-label site owners, but skip on native/desktop where users
           // are always on the official site
           if (!isNativeSurface() && !isDesktop()) {
-            await this.$router.push({
-              name: ROUTE_SETTINGS_INDEX
-            });
             openedSettings = true;
           }
         }
@@ -263,8 +260,14 @@ export default defineComponent({
           await this.$router.push('/');
         } else {
           this.$store.commit('setAuth', { visible: false });
-          if (!openedSettings) {
-            await this.$router.push(this.redirect || '/');
+          const target = openedSettings
+            ? this.$router.resolve({ name: ROUTE_SETTINGS_INDEX }).href
+            : this.redirect || '/';
+          const targetUrl = new URL(this.resolveLocalRedirect(target), window.location.origin).toString();
+          if (targetUrl === window.location.href) {
+            window.location.reload();
+          } else {
+            window.location.href = targetUrl;
           }
         }
       }
@@ -281,6 +284,15 @@ export default defineComponent({
   methods: {
     closeWebLogin() {
       this.$store.commit('setAuth', { visible: false });
+    },
+    resolveLocalRedirect(target: string | undefined, fallback = '/') {
+      try {
+        const url = new URL(target || fallback, window.location.origin);
+        if (url.origin !== window.location.origin) return fallback;
+        return `${url.pathname}${url.search}${url.hash}`;
+      } catch {
+        return fallback;
+      }
     }
   }
 });
