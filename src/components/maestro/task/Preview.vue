@@ -32,6 +32,13 @@
           {{ modelValue?.request?.prompt }}
           <span v-if="!isTerminal" class="progress-pct"> · {{ progressText }}</span>
         </p>
+        <div v-if="requestParams.length" class="params mt-2">
+          <span v-for="(param, idx) in requestParams" :key="idx" class="param-chip">
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            <span class="param-label">{{ param.label }}:</span>
+            <span class="param-value">{{ param.value }}</span>
+          </span>
+        </div>
       </div>
 
       <!-- in-progress: step checklist + overall percentage + task id, in the same bordered card as success/failure -->
@@ -90,6 +97,11 @@
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+          </p>
         </el-alert>
       </div>
 
@@ -108,6 +120,15 @@
           <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('maestro.name.failureReason') }}: {{ failureReason }}
+          </p>
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
+            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
           </p>
         </el-alert>
       </div>
@@ -208,9 +229,69 @@ export default defineComponent({
       const err = this.modelValue?.response?.error;
       if (!err) return undefined;
       return typeof err === 'string' ? err : err?.message;
+    },
+    requestParams(): { icon: string; label: string; value: string }[] {
+      const req = this.modelValue?.request;
+      if (!req) return [];
+      const out: { icon: string; label: string; value: string }[] = [];
+      if (req.action) {
+        out.push({
+          icon: 'fa-solid fa-wand-magic-sparkles',
+          label: this.$t('maestro.name.mode') as string,
+          value: this.optionLabel('maestro.option.action', req.action)
+        });
+      }
+      if (req.scenario) {
+        out.push({
+          icon: 'fa-solid fa-clapperboard',
+          label: this.$t('maestro.name.scenario') as string,
+          value: this.optionLabel('maestro.option.scenario', req.scenario)
+        });
+      }
+      if (req.style) {
+        out.push({
+          icon: 'fa-solid fa-palette',
+          label: this.$t('maestro.name.style') as string,
+          value: this.optionLabel('maestro.option.style', req.style)
+        });
+      }
+      if (req.quality) {
+        out.push({
+          icon: 'fa-solid fa-gauge-high',
+          label: this.$t('maestro.name.quality') as string,
+          value: this.optionLabel('maestro.option.quality', req.quality)
+        });
+      }
+      if (req.aspect) {
+        out.push({
+          icon: 'fa-solid fa-expand',
+          label: this.$t('maestro.name.aspect') as string,
+          value: req.aspect
+        });
+      }
+      if (req.duration) {
+        out.push({
+          icon: 'fa-solid fa-clock',
+          label: this.$t('maestro.name.duration') as string,
+          value: `${req.duration}s`
+        });
+      }
+      if (req.langs?.length) {
+        out.push({
+          icon: 'fa-solid fa-language',
+          label: this.$t('maestro.name.langs') as string,
+          value: req.langs.join(' · ')
+        });
+      }
+      return out;
     }
   },
   methods: {
+    optionLabel(prefix: string, value: string): string {
+      const key = `${prefix}.${value}`;
+      const label = this.$t(key) as string;
+      return label === key ? value : label;
+    },
     fileName(url: string): string {
       const base = url.substring(url.lastIndexOf('/') + 1);
       try {
@@ -296,6 +377,29 @@ $left-width: 70px;
           font-weight: 600;
           color: var(--el-color-primary);
           white-space: nowrap;
+        }
+      }
+      .params {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        .param-chip {
+          display: inline-flex;
+          align-items: center;
+          font-size: 12px;
+          line-height: 1.4;
+          color: var(--el-text-color-regular);
+          background: var(--el-fill-color-light);
+          border-radius: 4px;
+          padding: 2px 8px;
+          .param-label {
+            color: var(--el-text-color-secondary);
+            margin-right: 4px;
+          }
+          .param-value {
+            font-weight: 600;
+            word-break: break-word;
+          }
         }
       }
     }
