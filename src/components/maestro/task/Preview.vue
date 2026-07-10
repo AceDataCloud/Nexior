@@ -32,19 +32,21 @@
           {{ modelValue?.request?.prompt }}
           <span v-if="!isTerminal" class="progress-pct"> · {{ progressText }}</span>
         </p>
-        <div v-if="requestParams.length" class="params mt-2">
-          <span v-for="(param, idx) in requestParams" :key="idx" class="param-chip">
-            <font-awesome-icon :icon="param.icon" class="mr-1" />
-            <span class="param-label">{{ param.label }}:</span>
-            <span class="param-value">{{ param.value }}</span>
-          </span>
-        </div>
       </div>
 
       <!-- in-progress: step checklist + overall percentage + task id, in the same bordered card as success/failure -->
       <div v-if="!isTerminal" class="content">
         <el-alert :closable="false" class="mt-2 processing">
           <progress-steps :model-value="modelValue" />
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-1"
+            :class="{ 'mt-3': pIdx === 0 }"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-3">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -88,6 +90,14 @@
           <api-code-button path="/maestro/videos" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -112,6 +122,14 @@
             <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
             {{ $t('maestro.name.failure') }}
           </template>
+          <p
+            v-for="(param, pIdx) in requestParams"
+            :key="`param-${pIdx}`"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
+          >
+            <font-awesome-icon :icon="param.icon" class="mr-1" />
+            {{ param.label }}: {{ param.value }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
@@ -377,29 +395,6 @@ $left-width: 70px;
           font-weight: 600;
           color: var(--el-color-primary);
           white-space: nowrap;
-        }
-      }
-      .params {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 10px;
-        .param-chip {
-          display: inline-flex;
-          align-items: center;
-          font-size: 12px;
-          line-height: 1.4;
-          color: var(--el-text-color-regular);
-          background: var(--el-fill-color-light);
-          border-radius: 4px;
-          padding: 2px 8px;
-          .param-label {
-            color: var(--el-text-color-secondary);
-            margin-right: 4px;
-          }
-          .param-value {
-            font-weight: 600;
-            word-break: break-word;
-          }
         }
       }
     }
