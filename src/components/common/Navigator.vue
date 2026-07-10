@@ -55,17 +55,7 @@
       </div>
     </div>
     <div class="bottom">
-      <el-tooltip
-        v-if="!authenticated"
-        effect="dark"
-        :content="$t('common.button.login')"
-        :placement="direction === 'row' ? 'top' : 'right'"
-      >
-        <button class="login-button" type="button" :aria-label="$t('common.button.login').toString()" @click="onLogin">
-          <font-awesome-icon icon="fa-solid fa-user" />
-        </button>
-      </el-tooltip>
-      <user-center v-show="authenticated" />
+      <user-center />
     </div>
   </div>
 </template>
@@ -152,7 +142,6 @@ import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 import { isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface NavLink {
   route: { name: string };
@@ -170,8 +159,7 @@ export default defineComponent({
     ElPopover,
     Logo,
     ElTooltip,
-    UserCenter,
-    FontAwesomeIcon
+    UserCenter
   },
   props: {
     direction: {
@@ -523,9 +511,6 @@ export default defineComponent({
     onHome() {
       this.$router.push({ name: ROUTE_INDEX });
     },
-    onLogin() {
-      this.$store.dispatch('login', { redirect: this.$route.fullPath });
-    },
     onOverflowItemClick(link: { route: { name: string } }) {
       this.showOverflow = false;
       this.$router.push(link.route);
@@ -595,11 +580,6 @@ export default defineComponent({
       display: flex;
       flex: 1;
       justify-content: flex-end;
-    }
-
-    .login-button {
-      width: 36px;
-      height: 36px;
     }
   }
 
@@ -733,30 +713,6 @@ export default defineComponent({
       justify-content: flex-end;
       align-items: center;
       padding-bottom: 10px;
-    }
-  }
-
-  .login-button {
-    width: 38px;
-    height: 38px;
-    border: 0;
-    border-radius: 50%;
-    background: var(--el-color-primary);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: var(--app-shadow-xs);
-    transition:
-      transform 0.15s,
-      box-shadow 0.15s,
-      background-color 0.15s;
-
-    &:hover {
-      transform: translateY(-1px);
-      background: var(--el-color-primary-light-3);
-      box-shadow: var(--app-shadow-sm);
     }
   }
 }
