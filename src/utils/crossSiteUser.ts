@@ -2,6 +2,7 @@ import store from '@/store';
 import { RouteLocationNormalized, RouteLocationRaw } from 'vue-router';
 import { isMainOfficial } from './is';
 import { loginRedirect } from './login';
+import { isAuthIframeFeatureEnabled } from './featureFlag';
 
 /**
  * Cross-site user-identity guard.
@@ -139,6 +140,11 @@ export const evaluateUserIdGuard = (to: RouteLocationNormalized): UserIdGuardDec
   // not flash the wrong identity, then bounce through the normal SSO flow.
   store.dispatch('resetToken');
   store.dispatch('resetUser');
-  loginRedirect({ redirect: buildRedirectWithoutUserId(to) });
+  const redirect = buildRedirectWithoutUserId(to);
+  if (isAuthIframeFeatureEnabled()) {
+    store.dispatch('login', { redirect });
+  } else {
+    loginRedirect({ redirect });
+  }
   return { kind: 'mismatch' };
 };

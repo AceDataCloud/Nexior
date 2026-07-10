@@ -40,6 +40,8 @@ export interface ICommonState {
   auth: {
     flow: 'popup' | 'redirect';
     visible: boolean;
+    redirect?: string;
+    action?: 'login' | 'logout';
   };
   exchange:
     | {
