@@ -8,6 +8,10 @@
         </div>
         <el-divider v-if="user.email" class="mb-1 mt-1" />
         <el-dropdown-menu>
+          <el-dropdown-item v-if="!authenticated" class="py-2" @click="onLogin">
+            <font-awesome-icon icon="fa-solid fa-user" class="mr-2" />
+            {{ $t('common.button.login') }}
+          </el-dropdown-item>
           <el-dropdown-item v-if="!isNative" class="py-2" @click="onDownload">
             <font-awesome-icon icon="fa-solid fa-mobile-screen-button" class="mr-2" />
             {{ $t('common.nav.mobileApp') }}
@@ -29,7 +33,7 @@
             <font-awesome-icon icon="fa-solid fa-user-xmark" class="mr-2" />
             {{ $t('common.nav.deleteAccount') }}
           </el-dropdown-item>
-          <el-dropdown-item class="py-2" @click="onLogout">
+          <el-dropdown-item v-if="authenticated" class="py-2" @click="onLogout">
             <font-awesome-icon icon="fa-solid fa-arrow-right-from-bracket" class="mr-2" />
             {{ $t('common.nav.logOut') }}
           </el-dropdown-item>
@@ -76,6 +80,9 @@ export default defineComponent({
     user() {
       return this.$store.getters?.user;
     },
+    authenticated() {
+      return this.$store.getters?.authenticated;
+    },
     isNative() {
       return isNativeSurface();
     },
@@ -113,6 +120,9 @@ export default defineComponent({
     },
     async onLogout() {
       await this.$store.dispatch('logout');
+    },
+    onLogin() {
+      this.$store.dispatch('login', { redirect: this.$route.fullPath });
     },
     onDownload() {
       this.$router.push({ name: ROUTE_DOWNLOAD });
