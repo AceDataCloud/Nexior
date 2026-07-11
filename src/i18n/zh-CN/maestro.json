@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "选择要制作的视频类型。自动让 Maestro 决定；也可指定图文旁白、短剧、数字人口播、动态图形、字幕花字。",
+    "message": "选择要制作的视频类型。自动让 Maestro 决定；也可指定图文旁白、短剧、数字人口播、字幕花字。",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -231,13 +231,13 @@
     "message": "数字人 · 口播",
     "description": "Avatar / talking-head scenario option"
   },
-  "option.scenario.motion": {
-    "message": "动态图形",
-    "description": "Motion graphics scenario option"
-  },
   "option.scenario.captions": {
     "message": "字幕 · 花字",
     "description": "Captions scenario option (add captions/subtitles to an existing talking-head video)"
+  },
+  "message.captionsNeedVideo": {
+    "message": "字幕花字需要基于已有的口播视频制作，请先在上方上传一段视频。",
+    "description": "Warning shown when captions video type is selected but no source video is uploaded"
   },
   "name.style": {
     "message": "视觉风格",
