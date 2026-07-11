@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 10:28:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 15:32:59 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.13
+
+Sat, 11 Jul 2026 15:32:59 GMT
+
+### Patches
+
+- Update the Maestro bot logo to the selected Holo Window CDN asset. (dev@acedata.cloud)
 
 ## 3.323.12
 
