@@ -18,7 +18,6 @@ import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { ArrowDown } from '@element-plus/icons-vue';
 import { getLoginMethodPreference, setLoginMethodPreference, type LoginMethod } from '@/utils/loginMethod';
-import { isAuthIframeFeatureEnabled } from '@/utils/featureFlag';
 
 export default defineComponent({
   name: 'LoginModeSelector',
@@ -31,8 +30,8 @@ export default defineComponent({
   },
   data() {
     // Show the currently effective mode: an explicit choice if set, otherwise
-    // whatever the URL feature flag resolves to (redirect by default on web).
-    const initial: LoginMethod = getLoginMethodPreference() ?? (isAuthIframeFeatureEnabled() ? 'iframe' : 'redirect');
+    // the default web behaviour (redirect).
+    const initial: LoginMethod = getLoginMethodPreference() ?? 'redirect';
     return {
       method: initial
     };
