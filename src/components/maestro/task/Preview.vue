@@ -47,7 +47,7 @@
             <font-awesome-icon :icon="param.icon" class="mr-1" />
             {{ param.label }}: {{ param.value }}
           </p>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-2 mt-3">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
@@ -103,11 +103,11 @@
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" />
@@ -135,15 +135,15 @@
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="failureReason" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('maestro.name.failureReason') }}: {{ failureReason }}
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0 mt-1">
+          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" />
