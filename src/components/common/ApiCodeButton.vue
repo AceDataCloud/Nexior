@@ -63,29 +63,14 @@ const PATH_TO_STORE: Record<string, string> = {
 
 const PLATFORM_DOCS_BASE = 'https://platform.acedata.cloud/documents';
 
-// First path segment -> platform documentation alias for that service's
-// representative API. Powers the "查看文档" deep-link in the code dialog.
-const SERVICE_DOC_ALIAS: Record<string, string> = {
-  midjourney: 'midjourney-imagine',
-  luma: 'luma-videos',
-  sora: 'sora-videos',
-  veo: 'veo-videos',
-  kling: 'kling-videos',
-  hailuo: 'hailuo-videos-integration',
-  'nano-banana': 'nano-banana-images',
-  flux: 'flux-images',
+// The "查看文档" deep-link points at each service's documents landing page,
+// whose alias equals the first path segment for almost every service
+// (e.g. /maestro/videos -> documents/maestro). Only the few services that
+// have no landing doc are overridden to their sole API doc alias.
+const DOC_ALIAS_OVERRIDES: Record<string, string> = {
   qrart: 'qrart-generate',
   headshots: 'headshots-generate',
-  pika: 'pika-videos',
-  pixverse: 'pixverse',
-  seedance: 'seedance-videos',
-  seedream: 'seedream-images',
-  wan: 'wan-videos',
-  fish: 'fish-tts',
-  openai: 'openai-images-generations',
-  suno: 'suno-audios',
-  producer: 'producer-audios',
-  grok: 'grok-videos'
+  pika: 'pika-videos'
 };
 
 export default defineComponent({
@@ -158,8 +143,9 @@ export default defineComponent({
     },
     docHref(): string {
       const seg = (this.path || '').split('/').filter(Boolean)[0] || '';
-      const alias = SERVICE_DOC_ALIAS[seg];
-      return alias ? `${PLATFORM_DOCS_BASE}/${alias}` : PLATFORM_DOCS_BASE;
+      if (!seg) return PLATFORM_DOCS_BASE;
+      const alias = DOC_ALIAS_OVERRIDES[seg] || seg;
+      return `${PLATFORM_DOCS_BASE}/${alias}`;
     },
     resolvedTokenKey(): string {
       if (this.tokenKey) return this.tokenKey;
