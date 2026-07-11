@@ -156,6 +156,14 @@ export default defineComponent({
         delete cfg.images;
       }
 
+      // Never send the Ark "flex" tier: it queues jobs on the batch pipeline that
+      // sits far past the worker's poll window (=> "timeout when generating video")
+      // and carries no pricing benefit. Force realtime by omitting service_tier,
+      // even for users who still have flex persisted in local state.
+      if ('service_tier' in cfg) {
+        delete cfg.service_tier;
+      }
+
       // Validate against the per-model capability matrix BEFORE submitting so users
       // get an inline warning instead of an opaque "model X is not supported" error.
       if (cfg?.model && !SEEDANCE_MODEL_CAPABILITIES[cfg.model]) {
