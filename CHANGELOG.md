@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 17:42:46 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 17:58:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.0
+
+Sat, 11 Jul 2026 17:58:34 GMT
+
+### Minor changes
+
+- feat(settings): per-service pricing/display overrides tab for site admins + editable markup previews (dev@acedata.cloud)
 
 ## 3.323.16
 
