@@ -622,6 +622,26 @@ jobs:
               print(f'::warning::{msg}')
               sys.exit(0)
 
+          def die_hard(msg):
+              # Visible red step (the step is continue-on-error, so the job still
+              # proceeds) — used for real submit-path failures so a broken App
+              # Store submit can never masquerade as green again.
+              print(f'::error::{msg}')
+              sys.exit(1)
+
+          def all_pages(url, params):
+              out = []
+              while url:
+                  r = requests.get(url, params=params, headers=H(), timeout=30)
+                  if r.status_code != 200:
+                      print(f'::warning::List failed ({r.status_code}) for {url}: {r.text[:200]}')
+                      break
+                  j = r.json()
+                  out.extend(j.get('data') or [])
+                  url = (j.get('links') or {}).get('next')
+                  params = None
+              return out
+
           # 1) Find the single in-progress (editable) iOS App Store version.
           # Apple allows only ONE editable version at a time, so we must NOT
           # filter by versionString: a stale editable version left at an older
@@ -636,7 +656,7 @@ jobs:
               headers=H(), timeout=30,
           )
           if r.status_code != 200:
-              die_soft(f'Failed to list App Store versions: {r.status_code} {r.text[:400]}')
+              die_hard(f'Failed to list App Store versions: {r.status_code} {r.text[:400]}')
           versions = r.json().get('data') or []
 
           # States we can safely adopt + edit (rename / re-attach a build).
@@ -708,7 +728,7 @@ jobs:
                   json=create_payload, headers=H(), timeout=30,
               )
               if c.status_code not in (200, 201):
-                  die_soft(f'Failed to create App Store version: {c.status_code} {c.text[:400]}')
+                  die_hard(f'Failed to create App Store version: {c.status_code} {c.text[:400]}')
               version_id = c.json()['data']['id']
               print(f'::notice::Created App Store version {version_id} (v{version_name}).')
           else:
@@ -722,7 +742,7 @@ jobs:
                       headers=H(), timeout=30,
                   )
                   if u.status_code >= 400:
-                      die_soft(f'Failed to rename version {version_string}->{version_name}: '
+                      die_hard(f'Failed to rename version {version_string}->{version_name}: '
                                f'{u.status_code} {u.text[:400]}')
                   print(f'::notice::Renamed App Store version {version_id} '
                         f'{version_string} -> {version_name}.')
@@ -732,8 +752,63 @@ jobs:
                   headers=H(), timeout=30,
               )
               if a.status_code >= 400:
-                  die_soft(f'Failed to attach build to version: {a.status_code} {a.text[:400]}')
+                  die_hard(f'Failed to attach build to version: {a.status_code} {a.text[:400]}')
               print(f'::notice::Attached build {build_id} to App Store version {version_id}.')
+
+          # 2.5) Release notes ("What's New") are REQUIRED for every version
+          # update. An empty whatsNew silently blocks the submit: the version
+          # never leaves PREPARE_FOR_SUBMISSION, the reviewSubmissionItem POST
+          # fails, and empty draft submissions pile up. Backfill any localization
+          # whose notes are empty (never overwrite manually-written notes).
+          default_whats_new = (
+              '\u2022 Performance improvements and bug fixes.\n'
+              '\u2022 Smoother, more reliable AI chat, image, video and music generation.'
+          )
+          lr = requests.get(
+              f'https://api.appstoreconnect.apple.com/v1/appStoreVersions/{version_id}/appStoreVersionLocalizations',
+              params={'limit': 200}, headers=H(), timeout=30,
+          )
+          if lr.status_code == 200:
+              for loc in lr.json().get('data', []):
+                  if (loc['attributes'].get('whatsNew') or '').strip():
+                      continue
+                  locale = loc['attributes'].get('locale')
+                  pw = requests.patch(
+                      f"https://api.appstoreconnect.apple.com/v1/appStoreVersionLocalizations/{loc['id']}",
+                      json={'data': {'type': 'appStoreVersionLocalizations', 'id': loc['id'],
+                                     'attributes': {'whatsNew': default_whats_new}}},
+                      headers=H(), timeout=30,
+                  )
+                  if pw.status_code >= 400:
+                      print(f'::warning::Failed to set release notes for {locale}: '
+                            f'{pw.status_code} {pw.text[:200]}')
+                  else:
+                      print(f'::notice::Set default release notes for {locale}.')
+          else:
+              print(f'::warning::Could not list version localizations: '
+                    f'{lr.status_code} {lr.text[:200]}')
+
+          # 2.6) Delete ONLY empty stale drafts (READY_FOR_REVIEW with zero
+          # items). The prior bug created empty drafts that block every new
+          # submit with 409; but a draft that already HAS items may be a
+          # legitimate manual/in-progress submission we must never destroy.
+          # Paginate so a large backlog is fully cleared.
+          drafts = all_pages(
+              'https://api.appstoreconnect.apple.com/v1/reviewSubmissions',
+              [('filter[app]', app_id), ('filter[platform]', 'IOS'),
+               ('filter[state]', 'READY_FOR_REVIEW'), ('include', 'items'),
+               ('limit', 200)],
+          )
+          for s in drafts:
+              rel_items = ((s.get('relationships') or {}).get('items') or {}).get('data') or []
+              if rel_items:
+                  print(f"Keeping draft {s['id']} — has {len(rel_items)} item(s).")
+                  continue
+              ds = requests.delete(
+                  f"https://api.appstoreconnect.apple.com/v1/reviewSubmissions/{s['id']}",
+                  headers=H(), timeout=30,
+              )
+              print(f"Removed empty stale draft {s['id']} -> {ds.status_code}")
 
           # 3) Open a review submission for this app (one open submission per app/platform).
           sub_payload = {
@@ -764,14 +839,14 @@ jobs:
                   headers=H(), timeout=30,
               )
               if ex.status_code != 200 or not (ex.json().get('data') or []):
-                  die_soft(f'Review submission exists but cannot list it: {ex.status_code} {ex.text[:400]}')
+                  die_hard(f'Review submission exists but cannot list it: {ex.status_code} {ex.text[:400]}')
               submission_id = ex.json()['data'][0]['id']
               print(f'Reusing existing review submission {submission_id}.')
           elif sr.status_code in (200, 201):
               submission_id = sr.json()['data']['id']
               print(f'::notice::Created review submission {submission_id}.')
           else:
-              die_soft(f'Failed to create review submission: {sr.status_code} {sr.text[:400]}')
+              die_hard(f'Failed to create review submission: {sr.status_code} {sr.text[:400]}')
 
           # 4) Add our App Store version as a submission item.
           item_payload = {
@@ -790,7 +865,7 @@ jobs:
           if it.status_code == 409:
               print(f'Version {version_id} already in submission. Skipped.')
           elif it.status_code not in (200, 201):
-              die_soft(f'Failed to add submission item: {it.status_code} {it.text[:400]}')
+              die_hard(f'Failed to add submission item: {it.status_code} {it.text[:400]}')
           else:
               print(f'::notice::Added version {version_id} to submission {submission_id}.')
 
@@ -801,7 +876,7 @@ jobs:
               headers=H(), timeout=30,
           )
           if fin.status_code >= 400:
-              die_soft(f'Failed to submit for review: {fin.status_code} {fin.text[:400]}')
+              die_hard(f'Failed to submit for review: {fin.status_code} {fin.text[:400]}')
 
           # 6) Verify the submission actually left READY_FOR_REVIEW. The submit
           # PATCH above (2xx) is the authority; this is a best-effort confirm.
@@ -825,9 +900,13 @@ jobs:
               if attempt < 2:
                   time.sleep(5)
           if final_state == 'READY_FOR_REVIEW':
-              die_soft(f'Review submission {submission_id} did NOT enter review '
-                       f'(still READY_FOR_REVIEW) — likely missing metadata/screenshots; '
-                       f'needs manual fixup in App Store Connect.')
+              # Hard-fail (visible red step) instead of a swallowed warning. A
+              # silent "still READY_FOR_REVIEW" is exactly how iOS releases froze
+              # unnoticed for days. continue-on-error keeps TestFlight intact.
+              print(f'::error::Review submission {submission_id} did NOT enter review '
+                    f'(still READY_FOR_REVIEW) — App Store submit FAILED. Check required '
+                    f'metadata (release notes / screenshots / age-rating) in App Store Connect.')
+              sys.exit(1)
           elif final_state in submitted_states:
               print(f'::notice::Submitted review {submission_id} — state now {final_state}.')
           else:
