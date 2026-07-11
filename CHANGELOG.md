@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 03:44:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 06:05:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.8
+
+Sat, 11 Jul 2026 06:05:05 GMT
+
+### Patches
+
+- Even out Maestro task-card metadata row spacing to match the nanobanana/kling convention (uniform mb-2, last row mb-0). (dev@acedata.cloud)
 
 ## 3.323.7
 
