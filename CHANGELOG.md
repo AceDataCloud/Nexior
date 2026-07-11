@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 02:45:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 03:42:55 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.5
+
+Sat, 11 Jul 2026 03:42:55 GMT
+
+### Patches
+
+- Loosen row spacing on the in-progress Maestro task card so the request-params list is less cramped. (dev@acedata.cloud)
 
 ## 3.323.4
 
