@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 17:09:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 17:28:06 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.15
+
+Sat, 11 Jul 2026 17:28:06 GMT
+
+### Patches
+
+- Add configurable login mode (iframe popup vs redirect) in settings (dev@acedata.cloud)
 
 ## 3.323.14
 
