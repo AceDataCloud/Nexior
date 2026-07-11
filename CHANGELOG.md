@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 06:11:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 10:15:00 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.10
+
+Sat, 11 Jul 2026 10:15:00 GMT
+
+### Patches
+
+- Make task image thumbnails clickable to open a full-screen preview lightbox (dev@acedata.cloud)
 
 ## 3.323.9
 
