@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "Échec du basculement de la traduction automatique, veuillez réessayer",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "Tarification et affichage par service"
+  },
+  "services.tip": {
+    "message": "Masquez, renommez, tarifez ou réordonnez chaque service. Une majoration vide hérite du défaut du site. Supprimer une ligne rétablit les valeurs par défaut du catalogue."
+  },
+  "services.addButton": {
+    "message": "Ajouter"
+  },
+  "services.empty": {
+    "message": "Aucune surcharge — chaque service utilise ses valeurs par défaut."
+  },
+  "services.field.service": {
+    "message": "Service"
+  },
+  "services.field.visible": {
+    "message": "Visible"
+  },
+  "services.field.displayTitle": {
+    "message": "Nom affiché"
+  },
+  "services.field.displaySummary": {
+    "message": "Résumé affiché"
+  },
+  "services.field.sortOrder": {
+    "message": "Ordre"
+  },
+  "services.field.action": {
+    "message": "Actions"
+  },
+  "services.status.visible": {
+    "message": "Affiché"
+  },
+  "services.status.hidden": {
+    "message": "Masqué"
+  },
+  "services.status.inherit": {
+    "message": "Hérité"
+  },
+  "services.dialog.create": {
+    "message": "Ajouter une surcharge de service"
+  },
+  "services.dialog.edit": {
+    "message": "Modifier la surcharge de service"
+  },
+  "services.placeholder.service": {
+    "message": "Choisir un service du catalogue"
+  },
+  "services.placeholder.markup": {
+    "message": "Laisser vide pour hériter du défaut du site"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "Laisser vide pour utiliser le nom du catalogue"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "Laisser vide pour utiliser la description du catalogue"
+  },
+  "services.tip.visible": {
+    "message": "Désactivé, le service est masqué sur l'accueil du site (les utilisateurs qui l'ont déjà gardent l'accès)."
+  },
+  "services.tip.markup": {
+    "message": "0 % = prix plateforme ; 0,5 = +50 % ; max +500 %. Vide = défaut du site."
+  },
+  "services.tip.sortOrder": {
+    "message": "Les plus petits nombres passent en premier."
+  },
+  "services.preview.sampleLabel": {
+    "message": "Prix de base d'exemple"
+  },
+  "services.preview.inherit": {
+    "message": "(hérite de la majoration par défaut du site {percent})"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "Déjà ajouté"
+  },
+  "services.message.serviceRequired": {
+    "message": "Veuillez d'abord choisir un service"
+  },
+  "services.message.saved": {
+    "message": "Enregistré"
+  },
+  "services.message.deleted": {
+    "message": "Supprimé"
+  },
+  "services.message.deleteConfirm": {
+    "message": "Supprimer la surcharge de « {name} » ? Le service revient aux valeurs du catalogue."
+  },
+  "services.message.saveFailed": {
+    "message": "Échec de l'enregistrement, réessayez"
+  },
+  "services.message.deleteFailed": {
+    "message": "Échec de la suppression, réessayez"
+  },
+  "services.message.fetchFailed": {
+    "message": "Échec du chargement des surcharges de service"
   }
 }

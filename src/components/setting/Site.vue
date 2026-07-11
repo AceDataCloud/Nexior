@@ -115,9 +115,21 @@
           <el-input-number :model-value="markupPercent" :min="0" :max="500" :step="5" @change="onSaveMarkup" />
           <span class="markup-suffix">%</span>
         </div>
-        <p class="markup-example">
-          {{ $t('site.message.markupExample', { from: markupExampleFrom, to: markupExampleTo }) }}
-        </p>
+        <div class="markup-example-row">
+          <span class="markup-sample-label">{{ $t('site.services.preview.sampleLabel') }}</span>
+          <el-input-number
+            v-model="sampleBase"
+            :min="0"
+            :step="1"
+            :precision="2"
+            size="small"
+            :controls-position="'right'"
+            class="markup-sample-input"
+          />
+          <span class="markup-example">
+            {{ $t('site.message.markupExample', { from: markupExampleFrom, to: markupExampleTo }) }}
+          </span>
+        </div>
       </div>
     </section>
 
@@ -188,7 +200,10 @@ export default defineComponent({
   },
   data() {
     return {
-      primaryColorPresets: PRIMARY_COLOR_PRESETS
+      primaryColorPresets: PRIMARY_COLOR_PRESETS,
+      // Editable base price for the live markup example (default 10) so the
+      // preview isn't a hard-coded number.
+      sampleBase: 10 as number
     };
   },
   computed: {
@@ -222,10 +237,13 @@ export default defineComponent({
       return Math.round(getSiteMarkupRatio(this.site) * 100);
     },
     markupExampleFrom(): string {
-      return getPriceString({ value: 10 });
+      return getPriceString({ value: this.sampleBaseSafe });
     },
     markupExampleTo(): string {
-      return getPriceString({ value: applyMarkup(10, this.markupPercent / 100) });
+      return getPriceString({ value: applyMarkup(this.sampleBaseSafe, this.markupPercent / 100) });
+    },
+    sampleBaseSafe(): number {
+      return typeof this.sampleBase === 'number' && this.sampleBase >= 0 ? this.sampleBase : 0;
     }
   },
   methods: {
@@ -323,6 +341,22 @@ export default defineComponent({
   margin: 0;
   font-size: 12px;
   color: var(--el-text-color-secondary);
+}
+
+.markup-example-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.markup-sample-label {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+}
+
+.markup-sample-input {
+  width: 120px;
 }
 
 .favicon {
