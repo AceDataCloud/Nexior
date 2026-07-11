@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 03:44:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 03:44:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.7
+
+Sat, 11 Jul 2026 03:44:25 GMT
+
+### Patches
+
+- Maestro: remove the Motion Graphics video type and require a source video before generating Captions (dev@acedata.cloud)
 
 ## 3.323.6
 
