@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 15:32:59 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 17:09:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.14
+
+Sat, 11 Jul 2026 17:09:17 GMT
+
+### Patches
+
+- Honor the server-side auth-iframe feature flag from GET /config so in-app iframe login can be enabled for everyone. (dev@acedata.cloud)
 
 ## 3.323.13
 
