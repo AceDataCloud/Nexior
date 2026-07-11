@@ -15,5 +15,6 @@ export * from './pasteUpload';
 export * from './pasteUploadMixin';
 export * from './uploadTrackerMixin';
 export * from './connections';
+export * from './featureFlag';
 export * from './loginMethod';
 export * from './iap';

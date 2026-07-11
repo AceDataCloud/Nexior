@@ -16,6 +16,7 @@ import { MotionPlugin } from '@vueuse/motion';
 import { vLoading } from 'element-plus';
 import { getSurface, isNative, isDesktop, isMacOS, isWindows } from '@/utils/surface';
 import { resolveDeferredInviterId } from '@/utils/attribution';
+import { syncFeaturesFromUrl } from '@/utils/featureFlag';
 import { runVersionGate } from '@/utils/versionGate';
 import { runLiveUpdate } from '@/utils/liveUpdate';
 import {
@@ -60,6 +61,7 @@ export const createApp = ViteSSG(App, { routes, base: import.meta.env.BASE_URL }
   }
 
   // ---- client-only bootstrap (formerly module top-level + main()) ----
+  syncFeaturesFromUrl();
   initializeChunkLoadErrorHandler();
 
   const surface = getSurface();

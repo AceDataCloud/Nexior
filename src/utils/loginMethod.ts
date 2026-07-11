@@ -3,9 +3,9 @@
 // host-only cookie (survives reloads, shared with the rest of the app's
 // cookie-based prefs) and read by `isIframeLoginEnabled`.
 //
-// This is the ONLY switch between iframe and redirect login — there is no
-// URL/cookie/server feature flag anymore. When unset, login defaults to
-// the full-page redirect.
+// This is the ONLY switch between iframe and redirect login — the login
+// decision no longer consults any URL/cookie/server feature flag. When unset,
+// login defaults to the full-page redirect.
 //
 // Native / desktop always use the iframe regardless of this preference
 // (a redirect can't return to an app://bundle window) — the callers short
