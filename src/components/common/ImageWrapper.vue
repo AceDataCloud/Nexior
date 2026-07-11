@@ -1,20 +1,34 @@
 <template>
   <div class="image-wrapper">
-    <img v-if="src" :src="src" class="image" @error="onReload($event)" />
-    <el-button v-if="rawSrc" type="info" round class="btn-raw" @click="onOpenUrl(rawSrc)">
+    <img
+      v-if="displaySrc"
+      :src="displaySrc"
+      class="image cursor-zoom-in"
+      @error="onReload"
+      @click="showViewer = true"
+    />
+    <el-button v-if="rawSrc" type="info" round class="btn-raw" @click.stop="onOpenUrl(rawSrc)">
       {{ $t('common.button.seeRawImage') }}
     </el-button>
+    <el-image-viewer
+      v-if="showViewer"
+      :url-list="[rawSrc || displaySrc]"
+      teleported
+      hide-on-click-modal
+      @close="showViewer = false"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton } from 'element-plus';
+import { ElButton, ElImageViewer } from 'element-plus';
 
 export default defineComponent({
   name: 'ImageWrapper',
   components: {
-    ElButton
+    ElButton,
+    ElImageViewer
   },
   props: {
     src: {
@@ -27,28 +41,35 @@ export default defineComponent({
       default: undefined
     }
   },
+  data() {
+    return {
+      showViewer: false,
+      // Displayed src is kept in sync with retries so the lightbox uses the URL that actually loaded.
+      displaySrc: this.src
+    };
+  },
+  watch: {
+    src(value: string) {
+      this.displaySrc = value;
+    }
+  },
   methods: {
     onOpenUrl(url: string) {
       window.open(url, '_blank');
     },
     onReload(event: Event) {
       const target = event.target as HTMLImageElement;
-      // append a random url query to existing url query, to force reload the image
-      // extract exiting url query
+      // append a retry query to force reload the image
       const url = new URL(target.src);
-      // extract `retry` query
       const retry = url.searchParams.get('retry');
       if (!retry) {
-        // if no retry query, set it as random string
         url.searchParams.set('retry', '1');
       } else if (parseInt(retry) < 2) {
-        // if retry < 3, increase it by 1
         url.searchParams.set('retry', (parseInt(retry) + 1).toString());
       } else {
         return;
       }
-      // set the new url
-      target.src = url.toString();
+      this.displaySrc = url.toString();
     }
   }
 });

@@ -1,20 +1,32 @@
 <template>
   <div class="image-gallery">
     <div v-for="(image, index) in images" :key="index" class="image-container">
-      <img :src="image.image_url" alt="Image" />
-      <button v-if="image.image_url" class="view-button" @click="viewImage(image.image_url)">
+      <img :src="image.image_url" alt="Image" class="cursor-zoom-in" @click="onPreview(image.image_url)" />
+      <button v-if="image.image_url" class="view-button" @click.stop="viewImage(image.image_url)">
         {{ $t('headshots.button.viewImage') }}
       </button>
     </div>
+    <el-image-viewer
+      v-if="previewIndex !== null"
+      :url-list="previewList"
+      :initial-index="previewIndex"
+      teleported
+      hide-on-click-modal
+      @close="previewIndex = null"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
+import { ElImageViewer } from 'element-plus';
 import { IHeadshotsTask } from '@/models';
 
 export default defineComponent({
   name: 'ImageGallery',
+  components: {
+    ElImageViewer
+  },
   props: {
     modelValue: {
       type: Object as () => IHeadshotsTask | undefined,
@@ -27,6 +39,21 @@ export default defineComponent({
       return props.modelValue?.response?.data?.slice(0, 2) || [];
     });
 
+    const previewIndex = ref<number | null>(null);
+    const previewList = computed(() => images.value.map((image) => image.image_url).filter(Boolean) as string[]);
+
+    // Open the lightbox at the clicked image's position within the filtered list.
+    const onPreview = (url?: string) => {
+      if (!url) {
+        return;
+      }
+      const index = previewList.value.indexOf(url);
+      if (index === -1) {
+        return;
+      }
+      previewIndex.value = index;
+    };
+
     // Method to handle the "View Image" button click
     const viewImage = (url: string) => {
       window.open(url, '_blank');
@@ -34,6 +61,9 @@ export default defineComponent({
 
     return {
       images,
+      previewIndex,
+      previewList,
+      onPreview,
       viewImage
     };
   }
@@ -78,6 +108,8 @@ export default defineComponent({
     border-radius: 4px;
     cursor: pointer;
     opacity: 0;
+    /* Hidden by default so center clicks reach the image (open the lightbox); only clickable on hover. */
+    pointer-events: none;
     transition: opacity 0.3s ease;
 
     /* Optional: Add a slight delay for smoother appearance */
@@ -91,6 +123,7 @@ export default defineComponent({
   /* Show the button on hover */
   &:hover .view-button {
     opacity: 1;
+    pointer-events: auto;
   }
 }
 </style>
