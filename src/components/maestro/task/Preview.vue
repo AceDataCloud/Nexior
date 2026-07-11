@@ -41,13 +41,13 @@
           <p
             v-for="(param, pIdx) in requestParams"
             :key="`param-${pIdx}`"
-            class="text-[var(--el-text-color-regular)] text-xs mb-1"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
             :class="{ 'mt-3': pIdx === 0 }"
           >
             <font-awesome-icon :icon="param.icon" class="mr-1" />
             {{ param.label }}: {{ param.value }}
           </p>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-1 mt-3">
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2 mt-3">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
