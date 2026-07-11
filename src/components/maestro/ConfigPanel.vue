@@ -131,6 +131,14 @@
             <p class="scenario-name">{{ $t(`maestro.option.scenario.${s}`) }}</p>
           </div>
         </div>
+        <el-alert
+          v-if="needsVideoUpload"
+          :title="$t('maestro.message.captionsNeedVideo')"
+          type="warning"
+          :closable="false"
+          show-icon
+          class="mt-2"
+        />
       </div>
 
       <!-- Style (visual direction) -->
@@ -207,6 +215,7 @@ import {
   MAESTRO_DEFAULT_QUALITY,
   MAESTRO_ALLOWED_SCENARIOS,
   MAESTRO_SCENARIO_THUMBNAILS,
+  MAESTRO_UPLOAD_REQUIRED_SCENARIOS,
   MAESTRO_DEFAULT_SCENARIO,
   MAESTRO_ALLOWED_STYLES,
   MAESTRO_DEFAULT_STYLE,
@@ -214,6 +223,7 @@ import {
   MAESTRO_DEFAULT_VOICE
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
+import { isVideoUrl } from '@/utils/is';
 
 // Preview rectangle dimensions (px) for each aspect-ratio chip.
 const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
@@ -270,8 +280,14 @@ export default defineComponent({
     refTaskId(): string | undefined {
       return this.config?.ref_task_id;
     },
+    needsVideoUpload(): boolean {
+      const scenario = this.config?.scenario;
+      if (!scenario || !MAESTRO_UPLOAD_REQUIRED_SCENARIOS.includes(scenario)) return false;
+      // captions post-processes a talking-head clip, so a video (not an image/audio) must be uploaded.
+      return !(this.config?.file_urls || []).some((u) => isVideoUrl(u));
+    },
     canGenerate(): boolean {
-      return !!this.prompt?.trim();
+      return !!this.prompt?.trim() && !this.needsVideoUpload;
     },
     prompt: {
       get(): string | undefined {
