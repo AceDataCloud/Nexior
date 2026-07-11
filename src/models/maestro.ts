@@ -63,6 +63,7 @@ export interface IMaestroAgentStats {
 
 export interface IMaestroTask {
   id: string;
+  trace_id?: string;
   status?: string;
   created_at?: number;
   elapsed?: number;
