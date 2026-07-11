@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 10:15:00 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 10:23:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.11
+
+Sat, 11 Jul 2026 10:23:24 GMT
+
+### Patches
+
+- Retire Veo ops actions (upsample/extend/reshoot/objects) from the UI (dev@acedata.cloud)
 
 ## 3.323.10
 
