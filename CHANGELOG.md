@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 06:05:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 06:11:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.9
+
+Sat, 11 Jul 2026 06:11:41 GMT
+
+### Patches
+
+- Maestro: show full heads in Video Type cards with compact vertical (3:4) thumbnails instead of a 16:9 crop that hid faces (dev@acedata.cloud)
 
 ## 3.323.8
 
