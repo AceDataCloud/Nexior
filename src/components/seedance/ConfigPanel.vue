@@ -6,7 +6,6 @@
       <ratio-selector class="mb-4" />
       <resolution-selector class="mb-4" />
       <duration-selector class="mb-4" />
-      <service-tier-selector class="mb-4" />
       <generate-audio-switch class="mb-4" />
       <camera-fixed-switch class="mb-4" />
       <return-last-frame-switch class="mb-4" />
@@ -43,7 +42,6 @@ import LastFrameImage from './config/LastFrameImage.vue';
 import ReferenceImage from './config/ReferenceImage.vue';
 import ReferenceAudio from './config/ReferenceAudio.vue';
 import ReferenceVideo from './config/ReferenceVideo.vue';
-import ServiceTierSelector from './config/ServiceTierSelector.vue';
 import ReturnLastFrameSwitch from './config/ReturnLastFrameSwitch.vue';
 import SeedInput from './config/SeedInput.vue';
 import Consumption from '../common/Consumption.vue';
@@ -61,7 +59,6 @@ export default defineComponent({
     RatioSelector,
     GenerateAudioSwitch,
     CameraFixedSwitch,
-    ServiceTierSelector,
     ReturnLastFrameSwitch,
     SeedInput,
     FirstFrameImage,

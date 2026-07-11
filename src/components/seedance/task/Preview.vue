@@ -75,7 +75,7 @@
               {{ $t('seedance.button.download') }}
             </el-button>
           </el-tooltip>
-          <api-code-button path="/seedance/videos" :body="modelValue?.request" />
+          <api-code-button path="/seedance/videos" :body="apiCodeBody" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
@@ -215,6 +215,17 @@ export default defineComponent({
   computed: {
     video(): ISeedanceVideo | undefined {
       return this.modelValue?.response?.data;
+    },
+    // Drop the deprecated Ark `service_tier` from the copy/run "API code" body:
+    // an old task may have stored `flex`, which batch-queues and times out on
+    // re-run. Everything else is shown as-is.
+    apiCodeBody(): Record<string, any> | undefined {
+      const request = this.modelValue?.request as Record<string, any> | undefined;
+      if (!request) {
+        return request;
+      }
+      const { service_tier: _serviceTier, ...rest } = request;
+      return rest;
     },
     // Audio/video requests fold the prompt into `content[]` and drop the flat
     // `prompt` field (see seedanceOperator.buildRequest), so fall back to the
