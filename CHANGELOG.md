@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 17:28:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 17:42:46 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.16
+
+Sat, 11 Jul 2026 17:42:46 GMT
+
+### Patches
+
+- Remove seedance service_tier (flex) selector; always use realtime tier (dev@acedata.cloud)
 
 ## 3.323.15
 
