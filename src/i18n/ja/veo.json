@@ -227,64 +227,8 @@
     "message": "履歴タスクはありません。左側のボタンをクリックして動画を生成してください",
     "description": "タスクがない時のメッセージ"
   },
-  "name.upsampleAction": {
-    "message": "アップサンプリングターゲット",
-    "description": "/veo/upsample のターゲット形式（1080p/4k/gif）"
-  },
-  "name.motionType": {
-    "message": "カメラの動き",
-    "description": "/veo/reshoot のカメラの動きのタイプ"
-  },
-  "name.imageMask": {
-    "message": "領域マスク",
-    "description": "/veo/objects の画像マスク（白いピクセル=操作領域）"
-  },
-  "name.videoId": {
-    "message": "動画ID",
-    "description": "元の動画のID（以前の生成タスクの data[].id から）"
-  },
-  "placeholder.imageMask": {
-    "message": "マスク画像のURLまたはbase64エンコードされたJPEG",
-    "description": "image_mask 入力フィールドのプレースホルダー"
-  },
-  "placeholder.videoId": {
-    "message": "動画IDを貼り付けるか、右側のタスクリストで操作ボタンをクリックして自動入力",
-    "description": "video_id 入力フィールドのプレースホルダー"
-  },
   "button.actionIngredients": {
     "message": "複数画像融合動画",
     "description": "ingredients2video — 1-3枚の画像を融合して新しいシーンを生成"
-  },
-  "button.actionUpsample": {
-    "message": "アップサンプリング / GIFプレビュー",
-    "description": "/veo/upsample — 1080p/4KにアップサンプリングまたはGIFをエクスポート"
-  },
-  "button.actionExtend": {
-    "message": "動画を続ける",
-    "description": "/veo/extend — 生成された動画の長さを延長"
-  },
-  "button.actionReshoot": {
-    "message": "カメラを変えて再撮影",
-    "description": "/veo/reshoot — 同じ内容でカメラの動きを変えて再生成"
-  },
-  "button.actionObjectInsert": {
-    "message": "オブジェクトを追加",
-    "description": "/veo/objects insert — 動画にオブジェクトを追加"
-  },
-  "button.actionObjectRemove": {
-    "message": "オブジェクトを削除",
-    "description": "/veo/objects remove — マスクを使って動画からオブジェクトを削除"
-  },
-  "button.actionUpsample1080p": {
-    "message": "1080Pにアップ",
-    "description": "プレビュー操作ボタン — 1080Pにアップサンプリング"
-  },
-  "button.actionUpsample4k": {
-    "message": "4Kにアップ",
-    "description": "プレビュー操作ボタン — 4Kにアップサンプリング"
-  },
-  "button.actionUpsampleGif": {
-    "message": "GIFをエクスポート",
-    "description": "プレビュー操作ボタン — GIFプレビューに変換"
   }
 }
