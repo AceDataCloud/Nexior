@@ -20,14 +20,15 @@ export const MAESTRO_ALLOWED_QUALITIES = ['draft', 'standard', 'premium'];
 export const MAESTRO_ALLOWED_SCENARIOS = ['auto', 'narrated', 'drama', 'avatar', 'captions'];
 // `captions` post-processes an EXISTING talking-head video, so it requires an uploaded source clip.
 export const MAESTRO_UPLOAD_REQUIRED_SCENARIOS = ['captions'];
-// Preview thumbnail per scenario — real frames from generated videos (narrated/drama/avatar/captions);
-// auto stays as an illustration. Hosted on the CDN like MAESTRO_LOGO.
+// Preview thumbnail per scenario — a cohesive set of purpose-made 3:4 portrait
+// thumbnails (subject/head in the upper frame) so each Video Type reads at a
+// glance in the compact vertical cards. Hosted on the CDN like MAESTRO_LOGO.
 export const MAESTRO_SCENARIO_THUMBNAILS: Record<string, string> = {
-  auto: 'https://cdn.acedata.cloud/f61b85476e.png',
-  narrated: 'https://cdn.acedata.cloud/db6ef158be.jpg',
-  drama: 'https://cdn.acedata.cloud/af85b29164.jpg',
-  avatar: 'https://cdn.acedata.cloud/7ae3e94d5a.jpg',
-  captions: 'https://cdn.acedata.cloud/9a6d16d9f3.jpg'
+  auto: 'https://cdn.acedata.cloud/58bf7feea4.jpg',
+  narrated: 'https://cdn.acedata.cloud/fb12495d70.jpg',
+  drama: 'https://cdn.acedata.cloud/33b9189ad0.jpg',
+  avatar: 'https://cdn.acedata.cloud/540bda9cb6.jpg',
+  captions: 'https://cdn.acedata.cloud/e86fddfc71.jpg'
 };
 // Visual style presets — each maps to a real named capability on the backend (a visual-styles
 // identity, a palette, or a recipe like glass/retro). Freeform text still works. Orthogonal to scenario.
