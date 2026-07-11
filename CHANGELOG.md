@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 10:23:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 10:28:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.12
+
+Sat, 11 Jul 2026 10:28:28 GMT
+
+### Patches
+
+- Maestro: regenerate the Video Type thumbnails as a cohesive set of purpose-made 3:4 portrait images so each type reads at a glance (dev@acedata.cloud)
 
 ## 3.323.11
 
