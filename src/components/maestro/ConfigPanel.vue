@@ -530,13 +530,13 @@ export default defineComponent({
 }
 .scenario-cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
 }
 .scenario-card {
   border: 1px solid var(--el-border-color);
   background-color: var(--el-fill-color-lighter);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   transition:
@@ -545,22 +545,26 @@ export default defineComponent({
 
   .scenario-thumb {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 4;
     background-color: var(--el-fill-color);
     overflow: hidden;
 
     img {
       width: 100%;
       height: 100%;
+      // Portrait crop anchored to the top so the subject's head is always
+      // visible (thumbnails are portrait photos; a centered 16:9 crop hid the face).
       object-fit: cover;
+      object-position: top center;
       display: block;
     }
   }
 
   .scenario-name {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 1.25;
     margin: 0;
-    padding: 6px 8px;
+    padding: 5px 4px;
     text-align: center;
     color: var(--el-text-color-primary);
   }
