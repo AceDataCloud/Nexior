@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Fri, 10 Jul 2026 14:00:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sat, 11 Jul 2026 02:45:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.323.4
+
+Sat, 11 Jul 2026 02:45:56 GMT
+
+### Patches
+
+- Refresh the macOS desktop app icon with a white badge background. (dev@acedata.cloud)
 
 ## 3.323.3
 
