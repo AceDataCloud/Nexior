@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "Umschalten der automatischen Übersetzung fehlgeschlagen, bitte erneut versuchen",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "Preise & Anzeige je Dienst"
+  },
+  "services.tip": {
+    "message": "Einzelne Dienste ausblenden, umbenennen, bepreisen oder sortieren. Ein leerer Aufschlag erbt den Standard der Website. Das Löschen einer Zeile stellt die Katalog-Standards wieder her."
+  },
+  "services.addButton": {
+    "message": "Hinzufügen"
+  },
+  "services.empty": {
+    "message": "Noch keine Überschreibungen — jeder Dienst nutzt seine Standardwerte."
+  },
+  "services.field.service": {
+    "message": "Dienst"
+  },
+  "services.field.visible": {
+    "message": "Sichtbar"
+  },
+  "services.field.displayTitle": {
+    "message": "Anzeigename"
+  },
+  "services.field.displaySummary": {
+    "message": "Anzeige-Beschreibung"
+  },
+  "services.field.sortOrder": {
+    "message": "Sortierung"
+  },
+  "services.field.action": {
+    "message": "Aktionen"
+  },
+  "services.status.visible": {
+    "message": "Angezeigt"
+  },
+  "services.status.hidden": {
+    "message": "Ausgeblendet"
+  },
+  "services.status.inherit": {
+    "message": "Geerbt"
+  },
+  "services.dialog.create": {
+    "message": "Dienst-Überschreibung hinzufügen"
+  },
+  "services.dialog.edit": {
+    "message": "Dienst-Überschreibung bearbeiten"
+  },
+  "services.placeholder.service": {
+    "message": "Dienst aus dem Katalog wählen"
+  },
+  "services.placeholder.markup": {
+    "message": "Leer lassen, um den Website-Standard zu erben"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "Leer lassen, um den Katalognamen zu verwenden"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "Leer lassen, um die Katalogbeschreibung zu verwenden"
+  },
+  "services.tip.visible": {
+    "message": "Deaktiviert wird der Dienst auf der Startseite ausgeblendet (bestehende Nutzer behalten den Zugriff)."
+  },
+  "services.tip.markup": {
+    "message": "0 % = Plattformpreis; 0,5 = +50 %; max. +500 %. Leer = Website-Standard."
+  },
+  "services.tip.sortOrder": {
+    "message": "Kleinere Zahlen zuerst."
+  },
+  "services.preview.sampleLabel": {
+    "message": "Beispiel-Basispreis"
+  },
+  "services.preview.inherit": {
+    "message": "(erbt den Standardaufschlag der Website {percent})"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "Bereits hinzugefügt"
+  },
+  "services.message.serviceRequired": {
+    "message": "Bitte zuerst einen Dienst wählen"
+  },
+  "services.message.saved": {
+    "message": "Gespeichert"
+  },
+  "services.message.deleted": {
+    "message": "Gelöscht"
+  },
+  "services.message.deleteConfirm": {
+    "message": "Überschreibung für „{name}“ löschen? Der Dienst kehrt zu den Katalog-Standards zurück."
+  },
+  "services.message.saveFailed": {
+    "message": "Speichern fehlgeschlagen, bitte erneut versuchen"
+  },
+  "services.message.deleteFailed": {
+    "message": "Löschen fehlgeschlagen, bitte erneut versuchen"
+  },
+  "services.message.fetchFailed": {
+    "message": "Dienst-Überschreibungen konnten nicht geladen werden"
   }
 }

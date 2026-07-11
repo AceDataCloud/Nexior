@@ -670,5 +670,102 @@
   "autoTranslate.error": {
     "message": "Failed to toggle auto-translation, please retry",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "Per-service pricing & display"
+  },
+  "services.tip": {
+    "message": "Hide, rename, re-price or reorder individual services. A blank markup inherits the site-wide default. Deleting a row reverts the service to its catalog defaults."
+  },
+  "services.addButton": {
+    "message": "Add override"
+  },
+  "services.empty": {
+    "message": "No overrides yet — every service uses its catalog defaults."
+  },
+  "services.field.service": {
+    "message": "Service"
+  },
+  "services.field.visible": {
+    "message": "Visible"
+  },
+  "services.field.displayTitle": {
+    "message": "Display name"
+  },
+  "services.field.displaySummary": {
+    "message": "Display summary",
+    "description": "Per-service override: custom summary shown on this site's homepage card"
+  },
+  "services.field.sortOrder": {
+    "message": "Sort"
+  },
+  "services.field.action": {
+    "message": "Actions"
+  },
+  "services.status.visible": {
+    "message": "Shown"
+  },
+  "services.status.hidden": {
+    "message": "Hidden"
+  },
+  "services.status.inherit": {
+    "message": "Inherit"
+  },
+  "services.dialog.create": {
+    "message": "Add service override"
+  },
+  "services.dialog.edit": {
+    "message": "Edit service override"
+  },
+  "services.placeholder.service": {
+    "message": "Pick a service from the catalog"
+  },
+  "services.placeholder.markup": {
+    "message": "Leave blank to inherit the site default"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "Leave blank to use the catalog title"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "Leave blank to use the catalog description"
+  },
+  "services.tip.visible": {
+    "message": "When off, the service is hidden on this site's homepage (users who already have it keep access)."
+  },
+  "services.tip.markup": {
+    "message": "0% = platform price; 0.5 = +50%; up to +500%. Leave blank to inherit the site default."
+  },
+  "services.tip.sortOrder": {
+    "message": "Lower numbers come first."
+  },
+  "services.preview.sampleLabel": {
+    "message": "Sample base price"
+  },
+  "services.preview.inherit": {
+    "message": "(inheriting the site default markup {percent})"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "Already added"
+  },
+  "services.message.serviceRequired": {
+    "message": "Please pick a service first"
+  },
+  "services.message.saved": {
+    "message": "Saved"
+  },
+  "services.message.deleted": {
+    "message": "Deleted"
+  },
+  "services.message.deleteConfirm": {
+    "message": "Delete the override for “{name}”? The service reverts to its catalog defaults."
+  },
+  "services.message.saveFailed": {
+    "message": "Save failed, please try again"
+  },
+  "services.message.deleteFailed": {
+    "message": "Delete failed, please try again"
+  },
+  "services.message.fetchFailed": {
+    "message": "Failed to load service overrides"
   }
 }

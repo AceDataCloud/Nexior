@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "自動翻訳の切り替えに失敗しました。再試行してください",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "サービス別の価格と表示"
+  },
+  "services.tip": {
+    "message": "個々のサービスを非表示・改名・個別価格・並べ替えできます。加算を空にするとサイト既定を継承します。行を削除すると既定表示に戻ります。"
+  },
+  "services.addButton": {
+    "message": "上書きを追加"
+  },
+  "services.empty": {
+    "message": "上書きはまだありません。すべてのサービスは既定を使用します。"
+  },
+  "services.field.service": {
+    "message": "サービス"
+  },
+  "services.field.visible": {
+    "message": "表示"
+  },
+  "services.field.displayTitle": {
+    "message": "表示名"
+  },
+  "services.field.displaySummary": {
+    "message": "表示概要"
+  },
+  "services.field.sortOrder": {
+    "message": "並び順"
+  },
+  "services.field.action": {
+    "message": "操作"
+  },
+  "services.status.visible": {
+    "message": "表示"
+  },
+  "services.status.hidden": {
+    "message": "非表示"
+  },
+  "services.status.inherit": {
+    "message": "継承"
+  },
+  "services.dialog.create": {
+    "message": "サービス上書きを追加"
+  },
+  "services.dialog.edit": {
+    "message": "サービス上書きを編集"
+  },
+  "services.placeholder.service": {
+    "message": "カタログからサービスを選択"
+  },
+  "services.placeholder.markup": {
+    "message": "空にするとサイト既定を継承"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "空にするとカタログ名を使用"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "空にするとカタログの説明を使用"
+  },
+  "services.tip.visible": {
+    "message": "オフにするとこのサイトのトップで非表示になります（既に持つユーザーは引き続き利用可）。"
+  },
+  "services.tip.markup": {
+    "message": "0% は平台原価、0.5 は +50%、上限 500%。空にするとサイト既定を継承。"
+  },
+  "services.tip.sortOrder": {
+    "message": "数値が小さいほど先に表示。"
+  },
+  "services.preview.sampleLabel": {
+    "message": "サンプル原価"
+  },
+  "services.preview.inherit": {
+    "message": "（サイト既定の加算 {percent} を継承）"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "追加済み"
+  },
+  "services.message.serviceRequired": {
+    "message": "先にサービスを選択してください"
+  },
+  "services.message.saved": {
+    "message": "保存しました"
+  },
+  "services.message.deleted": {
+    "message": "削除しました"
+  },
+  "services.message.deleteConfirm": {
+    "message": "「{name}」の上書きを削除しますか？既定の表示と価格に戻ります。"
+  },
+  "services.message.saveFailed": {
+    "message": "保存に失敗しました。後でもう一度お試しください"
+  },
+  "services.message.deleteFailed": {
+    "message": "削除に失敗しました。後でもう一度お試しください"
+  },
+  "services.message.fetchFailed": {
+    "message": "サービス上書きの読み込みに失敗しました"
   }
 }

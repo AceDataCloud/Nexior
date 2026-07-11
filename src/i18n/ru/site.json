@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "Не удалось переключить автоперевод, попробуйте ещё раз",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "Цены и отображение по сервисам"
+  },
+  "services.tip": {
+    "message": "Скрывайте, переименовывайте, задавайте цену или порядок отдельных сервисов. Пустая наценка наследует значение сайта. Удаление строки возвращает сервис к значениям каталога."
+  },
+  "services.addButton": {
+    "message": "Добавить"
+  },
+  "services.empty": {
+    "message": "Переопределений нет — все сервисы используют значения по умолчанию."
+  },
+  "services.field.service": {
+    "message": "Сервис"
+  },
+  "services.field.visible": {
+    "message": "Видимость"
+  },
+  "services.field.displayTitle": {
+    "message": "Отображаемое имя"
+  },
+  "services.field.displaySummary": {
+    "message": "Отображаемое описание"
+  },
+  "services.field.sortOrder": {
+    "message": "Порядок"
+  },
+  "services.field.action": {
+    "message": "Действия"
+  },
+  "services.status.visible": {
+    "message": "Показан"
+  },
+  "services.status.hidden": {
+    "message": "Скрыт"
+  },
+  "services.status.inherit": {
+    "message": "Наследуется"
+  },
+  "services.dialog.create": {
+    "message": "Добавить переопределение сервиса"
+  },
+  "services.dialog.edit": {
+    "message": "Изменить переопределение сервиса"
+  },
+  "services.placeholder.service": {
+    "message": "Выберите сервис из каталога"
+  },
+  "services.placeholder.markup": {
+    "message": "Оставьте пустым, чтобы наследовать значение сайта"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "Оставьте пустым, чтобы использовать имя из каталога"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "Оставьте пустым, чтобы использовать описание из каталога"
+  },
+  "services.tip.visible": {
+    "message": "При выключении сервис скрыт на главной сайта (у кого он уже есть — доступ сохраняется)."
+  },
+  "services.tip.markup": {
+    "message": "0% — цена платформы; 0,5 — +50%; до +500%. Пусто — значение сайта."
+  },
+  "services.tip.sortOrder": {
+    "message": "Меньшие числа идут первыми."
+  },
+  "services.preview.sampleLabel": {
+    "message": "Пример базовой цены"
+  },
+  "services.preview.inherit": {
+    "message": "(наследует наценку сайта по умолчанию {percent})"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "Уже добавлено"
+  },
+  "services.message.serviceRequired": {
+    "message": "Сначала выберите сервис"
+  },
+  "services.message.saved": {
+    "message": "Сохранено"
+  },
+  "services.message.deleted": {
+    "message": "Удалено"
+  },
+  "services.message.deleteConfirm": {
+    "message": "Удалить переопределение для «{name}»? Сервис вернётся к значениям каталога."
+  },
+  "services.message.saveFailed": {
+    "message": "Не удалось сохранить, повторите позже"
+  },
+  "services.message.deleteFailed": {
+    "message": "Не удалось удалить, повторите позже"
+  },
+  "services.message.fetchFailed": {
+    "message": "Не удалось загрузить переопределения сервисов"
   }
 }

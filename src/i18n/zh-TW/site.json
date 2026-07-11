@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "切換自動翻譯失敗，請稍後重試",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "服務定價與展示"
+  },
+  "services.tip": {
+    "message": "針對單一服務隱藏、改名、單獨定價或排序。留空的加價將繼承本站預設加價。刪除某列後該服務恢復預設顯示。"
+  },
+  "services.addButton": {
+    "message": "新增服務覆蓋"
+  },
+  "services.empty": {
+    "message": "尚無服務覆蓋，所有服務沿用目錄預設展示與定價。"
+  },
+  "services.field.service": {
+    "message": "服務"
+  },
+  "services.field.visible": {
+    "message": "可見"
+  },
+  "services.field.displayTitle": {
+    "message": "顯示名稱"
+  },
+  "services.field.displaySummary": {
+    "message": "展示簡介"
+  },
+  "services.field.sortOrder": {
+    "message": "排序"
+  },
+  "services.field.action": {
+    "message": "操作"
+  },
+  "services.status.visible": {
+    "message": "顯示"
+  },
+  "services.status.hidden": {
+    "message": "隱藏"
+  },
+  "services.status.inherit": {
+    "message": "繼承"
+  },
+  "services.dialog.create": {
+    "message": "新增服務覆蓋"
+  },
+  "services.dialog.edit": {
+    "message": "編輯服務覆蓋"
+  },
+  "services.placeholder.service": {
+    "message": "從服務目錄中選擇一個服務"
+  },
+  "services.placeholder.markup": {
+    "message": "留空則繼承本站預設加價"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "留空則使用目錄中的原名稱"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "留空則使用目錄中的原描述"
+  },
+  "services.tip.visible": {
+    "message": "關閉後該服務在本站首頁隱藏（已擁有的使用者仍可存取）。"
+  },
+  "services.tip.markup": {
+    "message": "0% 按平台原價；0.5 即 +50%；上限 500%。留空則繼承本站預設加價。"
+  },
+  "services.tip.sortOrder": {
+    "message": "數字越小越靠前。"
+  },
+  "services.preview.sampleLabel": {
+    "message": "範例原價"
+  },
+  "services.preview.inherit": {
+    "message": "（已繼承本站預設加價 {percent}）"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "已覆蓋"
+  },
+  "services.message.serviceRequired": {
+    "message": "請先選擇一個服務"
+  },
+  "services.message.saved": {
+    "message": "已儲存"
+  },
+  "services.message.deleted": {
+    "message": "已刪除"
+  },
+  "services.message.deleteConfirm": {
+    "message": "確定要刪除「{name}」的覆蓋設定嗎？刪除後該服務恢復預設展示與定價。"
+  },
+  "services.message.saveFailed": {
+    "message": "儲存失敗，請稍後重試"
+  },
+  "services.message.deleteFailed": {
+    "message": "刪除失敗，請稍後重試"
+  },
+  "services.message.fetchFailed": {
+    "message": "載入服務覆蓋失敗"
   }
 }

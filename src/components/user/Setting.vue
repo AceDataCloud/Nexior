@@ -44,6 +44,9 @@
         <div v-else-if="currentTab === SETTING_TAB_SITE && isSiteConfigVisible">
           <site-setting />
         </div>
+        <div v-else-if="currentTab === SETTING_TAB_SITE_SERVICES && isSiteConfigVisible">
+          <site-services-setting />
+        </div>
         <div v-else-if="currentTab === SETTING_TAB_SEO && isSiteConfigVisible">
           <seo-setting />
         </div>
@@ -85,6 +88,7 @@ import {
   faUserShield,
   faMagic,
   faMoneyBill,
+  faTags,
   faInfoCircle,
   faSitemap,
   faGlobe,
@@ -95,6 +99,7 @@ import GeneralSetting from '@/components/setting/General.vue';
 import ByokSetting from '@/components/setting/Byok.vue';
 import MemorySetting from '@/components/setting/Memory.vue';
 import SiteSetting from '@/components/setting/Site.vue';
+import SiteServicesSetting from '@/components/setting/SiteServices.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
@@ -112,6 +117,7 @@ import {
   SETTING_TAB_GENERAL,
   SETTING_TAB_SEO,
   SETTING_TAB_SITE,
+  SETTING_TAB_SITE_SERVICES,
   SETTING_TAB_SUBSITES,
   SETTING_TAB_CUSTOM_DOMAIN,
   SETTING_TAB_LOCAL_TOOLS,
@@ -132,6 +138,7 @@ export default defineComponent({
     ByokSetting,
     MemorySetting,
     SiteSetting,
+    SiteServicesSetting,
     SeoSetting,
     DistributionSetting,
     FunctionSetting,
@@ -164,6 +171,7 @@ export default defineComponent({
       SETTING_TAB_API_KEY,
       SETTING_TAB_MEMORY,
       SETTING_TAB_SITE,
+      SETTING_TAB_SITE_SERVICES,
       SETTING_TAB_SEO,
       SETTING_TAB_DISTRIBUTION,
       SETTING_TAB_FUNCTION,
@@ -187,6 +195,15 @@ export default defineComponent({
           key: SETTING_TAB_SITE,
           label: this.$t('common.settings.site'),
           icon: faBell,
+          visible: this.isSiteConfigVisible
+        },
+        {
+          // Per-service overrides for THIS site: hide / rename / re-summarize /
+          // reorder a service, or set a per-service markup on top of the
+          // site-wide default. Admin + web gated like the other site config.
+          key: SETTING_TAB_SITE_SERVICES,
+          label: this.$t('common.settings.siteServices'),
+          icon: faTags,
           visible: this.isSiteConfigVisible
         },
         {

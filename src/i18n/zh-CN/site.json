@@ -670,5 +670,102 @@
   "autoTranslate.error": {
     "message": "切换自动翻译失败，请稍后重试",
     "description": "切换自动翻译接口返回错误时的兜底文案"
+  },
+  "services.title": {
+    "message": "服务定价与展示"
+  },
+  "services.tip": {
+    "message": "针对单个服务隐藏、改名、单独定价或排序。留空的加价将继承本站默认加价。删除某行后该服务恢复默认展示。"
+  },
+  "services.addButton": {
+    "message": "添加服务覆盖"
+  },
+  "services.empty": {
+    "message": "尚无服务覆盖，所有服务沿用目录默认展示与定价。"
+  },
+  "services.field.service": {
+    "message": "服务"
+  },
+  "services.field.visible": {
+    "message": "可见"
+  },
+  "services.field.displayTitle": {
+    "message": "展示名称"
+  },
+  "services.field.displaySummary": {
+    "message": "展示简介",
+    "description": "每服务覆盖项：自定义该服务在本站首页卡片上的简介"
+  },
+  "services.field.sortOrder": {
+    "message": "排序"
+  },
+  "services.field.action": {
+    "message": "操作"
+  },
+  "services.status.visible": {
+    "message": "显示"
+  },
+  "services.status.hidden": {
+    "message": "隐藏"
+  },
+  "services.status.inherit": {
+    "message": "继承"
+  },
+  "services.dialog.create": {
+    "message": "添加服务覆盖"
+  },
+  "services.dialog.edit": {
+    "message": "编辑服务覆盖"
+  },
+  "services.placeholder.service": {
+    "message": "从服务目录中选择一个服务"
+  },
+  "services.placeholder.markup": {
+    "message": "留空则继承本站默认加价"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "留空则使用目录中的原名称"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "留空则使用目录中的原描述"
+  },
+  "services.tip.visible": {
+    "message": "关闭后该服务在本站首页隐藏（已拥有的用户仍可访问）。"
+  },
+  "services.tip.markup": {
+    "message": "0% 按平台原价；0.5 即 +50%；上限 500%。留空则继承本站默认加价。"
+  },
+  "services.tip.sortOrder": {
+    "message": "数字越小越靠前。"
+  },
+  "services.preview.sampleLabel": {
+    "message": "示例原价"
+  },
+  "services.preview.inherit": {
+    "message": "（已继承本站默认加价 {percent}）"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "已覆盖"
+  },
+  "services.message.serviceRequired": {
+    "message": "请先选择一个服务"
+  },
+  "services.message.saved": {
+    "message": "已保存"
+  },
+  "services.message.deleted": {
+    "message": "已删除"
+  },
+  "services.message.deleteConfirm": {
+    "message": "确定要删除「{name}」的覆盖配置吗？删除后该服务恢复默认展示与定价。"
+  },
+  "services.message.saveFailed": {
+    "message": "保存失败，请稍后重试"
+  },
+  "services.message.deleteFailed": {
+    "message": "删除失败，请稍后重试"
+  },
+  "services.message.fetchFailed": {
+    "message": "加载服务覆盖失败"
   }
 }

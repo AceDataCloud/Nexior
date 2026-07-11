@@ -670,5 +670,101 @@
   "autoTranslate.error": {
     "message": "Error al cambiar la traducción automática, inténtalo de nuevo",
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+  },
+  "services.title": {
+    "message": "Precio y visualización por servicio"
+  },
+  "services.tip": {
+    "message": "Oculta, renombra, tarifica o reordena servicios concretos. Un recargo vacío hereda el valor por defecto del sitio. Eliminar una fila restablece los valores del catálogo."
+  },
+  "services.addButton": {
+    "message": "Añadir"
+  },
+  "services.empty": {
+    "message": "Sin anulaciones — cada servicio usa sus valores por defecto."
+  },
+  "services.field.service": {
+    "message": "Servicio"
+  },
+  "services.field.visible": {
+    "message": "Visible"
+  },
+  "services.field.displayTitle": {
+    "message": "Nombre visible"
+  },
+  "services.field.displaySummary": {
+    "message": "Resumen visible"
+  },
+  "services.field.sortOrder": {
+    "message": "Orden"
+  },
+  "services.field.action": {
+    "message": "Acciones"
+  },
+  "services.status.visible": {
+    "message": "Mostrado"
+  },
+  "services.status.hidden": {
+    "message": "Oculto"
+  },
+  "services.status.inherit": {
+    "message": "Heredado"
+  },
+  "services.dialog.create": {
+    "message": "Añadir anulación de servicio"
+  },
+  "services.dialog.edit": {
+    "message": "Editar anulación de servicio"
+  },
+  "services.placeholder.service": {
+    "message": "Elige un servicio del catálogo"
+  },
+  "services.placeholder.markup": {
+    "message": "Déjalo vacío para heredar el valor del sitio"
+  },
+  "services.placeholder.displayTitle": {
+    "message": "Déjalo vacío para usar el nombre del catálogo"
+  },
+  "services.placeholder.displaySummary": {
+    "message": "Déjalo vacío para usar la descripción del catálogo"
+  },
+  "services.tip.visible": {
+    "message": "Si se desactiva, el servicio se oculta en la portada del sitio (quien ya lo tiene mantiene el acceso)."
+  },
+  "services.tip.markup": {
+    "message": "0% = precio de plataforma; 0,5 = +50%; hasta +500%. Vacío = valor del sitio."
+  },
+  "services.tip.sortOrder": {
+    "message": "Los números más bajos van primero."
+  },
+  "services.preview.sampleLabel": {
+    "message": "Precio base de ejemplo"
+  },
+  "services.preview.inherit": {
+    "message": "(hereda el recargo por defecto del sitio {percent})"
+  },
+  "services.message.alreadyOverridden": {
+    "message": "Ya añadido"
+  },
+  "services.message.serviceRequired": {
+    "message": "Elige primero un servicio"
+  },
+  "services.message.saved": {
+    "message": "Guardado"
+  },
+  "services.message.deleted": {
+    "message": "Eliminado"
+  },
+  "services.message.deleteConfirm": {
+    "message": "¿Eliminar la anulación de «{name}»? El servicio vuelve a los valores del catálogo."
+  },
+  "services.message.saveFailed": {
+    "message": "Error al guardar, inténtalo de nuevo"
+  },
+  "services.message.deleteFailed": {
+    "message": "Error al eliminar, inténtalo de nuevo"
+  },
+  "services.message.fetchFailed": {
+    "message": "No se pudieron cargar las anulaciones de servicio"
   }
 }
