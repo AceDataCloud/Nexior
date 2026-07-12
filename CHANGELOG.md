@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 06:00:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 06:50:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.10
+
+Sun, 12 Jul 2026 06:50:22 GMT
+
+### Patches
+
+- Add a Run now button to scheduled tasks to trigger a run immediately (dev@acedata.cloud)
 
 ## 3.324.9
 
