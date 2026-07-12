@@ -21,6 +21,7 @@ import { IMaestroGenerateRequest, Status } from '@/models';
 import { ElMessage } from 'element-plus';
 import { ERROR_CODE_USED_UP } from '@/constants';
 import { loadPreviousPage } from '@/utils/pagination';
+import { buildMaestroGenerateRequest } from '@/utils/maestro';
 
 interface IData {
   job: number;
@@ -115,9 +116,7 @@ export default defineComponent({
       }
     },
     async onGenerate() {
-      const request = {
-        ...this.config
-      } as IMaestroGenerateRequest;
+      const request: IMaestroGenerateRequest = buildMaestroGenerateRequest(this.config);
       if (!ensureLoggedIn()) {
         return;
       }
