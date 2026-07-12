@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 02:08:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 02:13:54 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.4
+
+Sun, 12 Jul 2026 02:13:54 GMT
+
+### Patches
+
+- Maestro: display task trace IDs from the task response top level (dev@acedata.cloud)
 
 ## 3.324.3
 
