@@ -796,7 +796,7 @@ export default defineComponent({
 .scheduled-tasks {
   height: 100%;
   overflow-y: auto;
-  background: var(--app-bg-surface, var(--el-bg-color));
+  background: var(--app-bg-section);
 }
 .inner {
   max-width: 880px;
@@ -829,18 +829,12 @@ export default defineComponent({
 .task-card {
   border-radius: 16px;
   border: none;
-  // Cards sit as flat grey blocks on the white page; override el-card's own
-  // bg variable so the grey actually wins.
-  --el-card-bg-color: var(--app-bg-section);
-  background: var(--app-bg-section);
+  // White cards on the grey page; keep el-card's own bg variable in sync.
+  --el-card-bg-color: var(--app-bg-surface);
+  background: var(--app-bg-surface, var(--el-bg-color-overlay));
   cursor: pointer;
-  transition: background-color 0.16s ease;
   :deep(.el-card__body) {
     padding: 16px 18px;
-  }
-  &:hover {
-    --el-card-bg-color: var(--app-bg-surface);
-    background: var(--app-bg-surface, var(--el-bg-color-overlay));
   }
 }
 .task-top {
