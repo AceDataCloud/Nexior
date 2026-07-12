@@ -17,8 +17,11 @@
         <el-table-column :label="$t('site.services.field.service')" min-width="200">
           <template #default="{ row }">
             <div class="service-cell">
-              <strong>{{ catalogTitle(row.service) }}</strong>
-              <div v-if="catalogAlias(row.service)" class="muted">{{ catalogAlias(row.service) }}</div>
+              <img v-if="catalogIcon(row.service)" :src="catalogIcon(row.service)" class="service-favicon" alt="" />
+              <div class="service-cell-text">
+                <strong>{{ catalogTitle(row.service) }}</strong>
+                <div v-if="catalogAlias(row.service)" class="muted">{{ catalogAlias(row.service) }}</div>
+              </div>
             </div>
           </template>
         </el-table-column>
@@ -83,6 +86,7 @@
               :value="svc.id"
               :disabled="isAlreadyOverridden(svc.id)"
             >
+              <img v-if="svc.icon_url" :src="svc.icon_url" class="option-favicon" alt="" />
               <span class="option-title">{{ svc.title || svc.id }}</span>
               <span v-if="svc.alias" class="option-alias">{{ svc.alias }}</span>
               <el-tag v-if="isAlreadyOverridden(svc.id)" size="small" type="info" round>
@@ -94,7 +98,7 @@
 
         <el-form-item :label="$t('site.services.field.visible')">
           <el-switch v-model="form.visible" />
-          <span class="field-tip">{{ $t('site.services.tip.visible') }}</span>
+          <span class="field-tip field-tip--inline">{{ $t('site.services.tip.visible') }}</span>
         </el-form-item>
 
         <el-form-item :label="$t('site.field.markupRatio')">
@@ -113,24 +117,26 @@
               {{ formatMarkup(form.markupRatio) }}
             </span>
           </div>
-          <span class="field-tip">{{ $t('site.services.tip.markup') }}</span>
-          <div class="money-preview">
-            <span class="field-tip">{{ $t('site.services.preview.sampleLabel') }}</span>
-            <el-input-number
-              v-model="sampleBase"
-              :min="0"
-              :step="1"
-              :precision="2"
-              size="small"
-              :controls-position="'right'"
-              class="sample-input"
-            />
-            <span class="preview-result">
-              {{ $t('site.message.markupExample', { from: previewFrom, to: previewTo }) }}
-            </span>
-            <span v-if="typeof form.markupRatio !== 'number'" class="field-tip">
-              {{ $t('site.services.preview.inherit', { percent: formatMarkup(siteDefaultRatio) }) }}
-            </span>
+          <div class="markup-help">
+            <p class="field-tip">{{ $t('site.services.tip.markup') }}</p>
+            <div class="money-preview">
+              <span class="field-tip">{{ $t('site.services.preview.sampleLabel') }}</span>
+              <el-input-number
+                v-model="sampleBase"
+                :min="0"
+                :step="1"
+                :precision="2"
+                size="small"
+                :controls-position="'right'"
+                class="sample-input"
+              />
+              <span class="preview-result">
+                {{ $t('site.message.markupExample', { from: previewFrom, to: previewTo }) }}
+              </span>
+              <span v-if="typeof form.markupRatio !== 'number'" class="field-tip">
+                {{ $t('site.services.preview.inherit', { percent: formatMarkup(siteDefaultRatio) }) }}
+              </span>
+            </div>
           </div>
         </el-form-item>
 
@@ -141,7 +147,19 @@
             maxlength="120"
             show-word-limit
             clearable
-          />
+          >
+            <template #suffix>
+              <auto-translate-toggle
+                model="site_service_override"
+                field="display_title"
+                :object-id="editingRow?.id"
+                :enabled="form.autoTranslatedFields.includes('display_title')"
+                :current-value="form.displayTitle"
+                @enabled-success="onDisplayTitleEnabled"
+                @disabled-success="onDisplayTitleDisabled"
+              />
+            </template>
+          </el-input>
         </el-form-item>
 
         <el-form-item :label="$t('site.services.field.displaySummary')">
@@ -152,6 +170,27 @@
             :placeholder="$t('site.services.placeholder.displaySummary')"
             clearable
           />
+          <!-- textarea has no #suffix slot; render the toggle inline beneath -->
+          <div class="auto-translate-inline">
+            <auto-translate-toggle
+              model="site_service_override"
+              field="display_summary"
+              :object-id="editingRow?.id"
+              :enabled="form.autoTranslatedFields.includes('display_summary')"
+              :current-value="form.displaySummary"
+              @enabled-success="onDisplaySummaryEnabled"
+              @disabled-success="onDisplaySummaryDisabled"
+            />
+            <span class="field-tip">
+              {{
+                editingRow
+                  ? form.autoTranslatedFields.includes('display_summary')
+                    ? $t('site.autoTranslate.tooltipOn')
+                    : $t('site.autoTranslate.tooltipOff')
+                  : $t('site.autoTranslate.tooltipDisabledNotSaved')
+              }}
+            </span>
+          </div>
         </el-form-item>
 
         <el-form-item :label="$t('site.services.field.sortOrder')">
@@ -163,7 +202,7 @@
             :precision="0"
             :controls-position="'right'"
           />
-          <span class="field-tip">{{ $t('site.services.tip.sortOrder') }}</span>
+          <span class="field-tip field-tip--inline">{{ $t('site.services.tip.sortOrder') }}</span>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -207,6 +246,7 @@ import { Plus } from '@element-plus/icons-vue';
 import { serviceOperator, siteServiceOverrideOperator } from '@/operators';
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
+import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import { getPriceString, applyMarkup, getSiteMarkupRatio, MARKUP_RATIO_MAX } from '@/utils';
 
 // Pre-fetch the whole catalog once so each override row can show the
@@ -221,10 +261,21 @@ interface IForm {
   displayTitle: string;
   displaySummary: string;
   sortOrder: number;
+  // Server-derived: names of fields currently stored as ``$t(...)`` refs
+  // (auto-translated to 17 locales) rather than literal text.
+  autoTranslatedFields: string[];
 }
 
 function emptyForm(): IForm {
-  return { service: '', visible: true, markupRatio: undefined, displayTitle: '', displaySummary: '', sortOrder: 0 };
+  return {
+    service: '',
+    visible: true,
+    markupRatio: undefined,
+    displayTitle: '',
+    displaySummary: '',
+    sortOrder: 0,
+    autoTranslatedFields: []
+  };
 }
 
 /**
@@ -251,7 +302,8 @@ export default defineComponent({
     ElOption,
     ElSwitch,
     ElTag,
-    SectionNotice
+    SectionNotice,
+    AutoTranslateToggle
   },
   directives: {
     loading: vLoading
@@ -303,11 +355,15 @@ export default defineComponent({
       return typeof this.sampleBase === 'number' && this.sampleBase >= 0 ? this.sampleBase : 0;
     },
     catalogOptions(): IService[] {
-      return [...this.catalog].sort((a, b) => {
-        const at = (a.title || a.id || '').toLowerCase();
-        const bt = (b.title || b.id || '').toLowerCase();
-        return at < bt ? -1 : at > bt ? 1 : 0;
-      });
+      // Only offer services that are publicly listable (not catalog-private)
+      // and carry a favicon, so every homepage card renders with an icon.
+      return this.catalog
+        .filter((s) => s.private !== true && !!s.icon_url)
+        .sort((a, b) => {
+          const at = (a.title || a.id || '').toLowerCase();
+          const bt = (b.title || b.id || '').toLowerCase();
+          return at < bt ? -1 : at > bt ? 1 : 0;
+        });
     }
   },
   watch: {
@@ -348,6 +404,10 @@ export default defineComponent({
     catalogAlias(serviceId?: string): string | undefined {
       if (!serviceId) return undefined;
       return this.catalogMap[serviceId]?.alias;
+    },
+    catalogIcon(serviceId?: string): string | undefined {
+      if (!serviceId) return undefined;
+      return this.catalogMap[serviceId]?.icon_url || undefined;
     },
     optionLabel(svc: IService): string {
       // el-select filterable matches the label string, so concatenate
@@ -403,9 +463,60 @@ export default defineComponent({
         markupRatio: typeof row.markup_ratio === 'number' ? row.markup_ratio : undefined,
         displayTitle: row.display_title_source ?? row.display_title ?? '',
         displaySummary: row.display_summary_source ?? row.display_summary ?? '',
-        sortOrder: typeof row.sort_order === 'number' ? row.sort_order : 0
+        sortOrder: typeof row.sort_order === 'number' ? row.sort_order : 0,
+        autoTranslatedFields: [...(row.auto_translated_fields ?? [])]
       };
       this.dialogVisible = true;
+    },
+    async onDisplayTitleEnabled(payload: { source: string; fieldValue: string }): Promise<void> {
+      // Server now holds the literal in Translation; mirror its ``source`` so
+      // the next save round-trips the same zh-cn string, and keep ``editingRow``
+      // in sync so re-opening the dialog hydrates from post-toggle state.
+      this.form.displayTitle = payload.source;
+      this.form.autoTranslatedFields = [...new Set([...this.form.autoTranslatedFields, 'display_title'])].sort();
+      if (this.editingRow) {
+        this.editingRow.display_title = payload.fieldValue;
+        this.editingRow.display_title_source = payload.source;
+        this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
+      }
+      ElMessage.success(this.$t('site.services.message.saved'));
+      // Refetch so the table renders the locale-resolved title, not the $t(...) ref.
+      await this.onFetch();
+    },
+    async onDisplayTitleDisabled(payload: { fieldValue: string | null }): Promise<void> {
+      const value = payload.fieldValue ?? '';
+      this.form.displayTitle = value;
+      this.form.autoTranslatedFields = this.form.autoTranslatedFields.filter((f) => f !== 'display_title');
+      if (this.editingRow) {
+        this.editingRow.display_title = value || null;
+        this.editingRow.display_title_source = value || null;
+        this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
+      }
+      ElMessage.success(this.$t('site.services.message.saved'));
+      await this.onFetch();
+    },
+    async onDisplaySummaryEnabled(payload: { source: string; fieldValue: string }): Promise<void> {
+      this.form.displaySummary = payload.source;
+      this.form.autoTranslatedFields = [...new Set([...this.form.autoTranslatedFields, 'display_summary'])].sort();
+      if (this.editingRow) {
+        this.editingRow.display_summary = payload.fieldValue;
+        this.editingRow.display_summary_source = payload.source;
+        this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
+      }
+      ElMessage.success(this.$t('site.services.message.saved'));
+      await this.onFetch();
+    },
+    async onDisplaySummaryDisabled(payload: { fieldValue: string | null }): Promise<void> {
+      const value = payload.fieldValue ?? '';
+      this.form.displaySummary = value;
+      this.form.autoTranslatedFields = this.form.autoTranslatedFields.filter((f) => f !== 'display_summary');
+      if (this.editingRow) {
+        this.editingRow.display_summary = value || null;
+        this.editingRow.display_summary_source = value || null;
+        this.editingRow.auto_translated_fields = [...this.form.autoTranslatedFields];
+      }
+      ElMessage.success(this.$t('site.services.message.saved'));
+      await this.onFetch();
     },
     async onSubmit(): Promise<void> {
       if (this.editingRow) {
@@ -523,8 +634,20 @@ export default defineComponent({
     width: 100%;
     .service-cell {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      align-items: center;
+      gap: 8px;
+      .service-favicon {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+      .service-cell-text {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
     }
   }
   .muted {
@@ -550,20 +673,48 @@ export default defineComponent({
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 6px;
+      margin-top: 4px;
       .sample-input {
         width: 120px;
       }
       .preview-result {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--el-text-color-primary);
+        font-size: 12px;
+        color: var(--el-text-color-secondary);
+      }
+    }
+    // Markup helper reads as fine print stacked under the input, not as a
+    // sibling glued to its right.
+    .markup-help {
+      flex-basis: 100%;
+      margin-top: 6px;
+      .field-tip {
+        display: block;
       }
     }
     .field-tip {
       font-size: 12px;
       color: var(--el-text-color-secondary);
     }
+    // Tips that sit on the same row as an inline control (switch, sort input)
+    // need breathing room from it.
+    .field-tip--inline {
+      margin-left: 10px;
+    }
+    // Auto-translate toggle rendered beneath the summary textarea.
+    .auto-translate-inline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+  }
+  .option-favicon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 6px;
   }
   .option-alias {
     margin-left: 8px;
