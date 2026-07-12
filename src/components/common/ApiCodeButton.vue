@@ -64,30 +64,9 @@ const PATH_TO_STORE: Record<string, string> = {
 
 const PLATFORM_DOCS_BASE = 'https://platform.acedata.cloud/documents';
 
-// First path segment -> platform documentation alias for that service's
-// representative API. Powers the "查看文档" deep-link in the code dialog.
-const SERVICE_DOC_ALIAS: Record<string, string> = {
-  midjourney: 'midjourney-imagine',
-  luma: 'luma-videos',
-  sora: 'sora-videos',
-  veo: 'veo-videos',
-  kling: 'kling-videos',
-  hailuo: 'hailuo-videos-integration',
-  'nano-banana': 'nano-banana-images',
-  flux: 'flux-images',
-  qrart: 'qrart-generate',
-  headshots: 'headshots-generate',
-  pika: 'pika-videos',
-  pixverse: 'pixverse',
-  seedance: 'seedance-videos',
-  seedream: 'seedream-images',
-  wan: 'wan-videos',
-  fish: 'fish-tts',
-  openai: 'openai-images-generations',
-  suno: 'suno-audios',
-  producer: 'producer-audios',
-  grok: 'grok-videos'
-};
+// The "查看文档" deep-link points at each service's documents landing page,
+// whose alias equals the first path segment (e.g. /maestro/videos ->
+// documents/maestro).
 
 export default defineComponent({
   name: 'ApiCodeButton',
@@ -159,8 +138,8 @@ export default defineComponent({
     },
     docHref(): string {
       const seg = (this.path || '').split('/').filter(Boolean)[0] || '';
-      const alias = SERVICE_DOC_ALIAS[seg];
-      return alias ? `${PLATFORM_DOCS_BASE}/${alias}` : PLATFORM_DOCS_BASE;
+      if (!seg) return PLATFORM_DOCS_BASE;
+      return `${PLATFORM_DOCS_BASE}/${seg}`;
     },
     resolvedTokenKey(): string {
       if (this.tokenKey) return this.tokenKey;
