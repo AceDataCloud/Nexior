@@ -63,9 +63,13 @@ export default defineComponent({
       return Math.max(max, 0);
     },
     // Latest progress message (may be from a previous step if the current step hasn't logged one
-    // yet) — shown as the live "currently doing" detail under the active step.
+    // yet) — shown as the live "currently doing" detail under the active step. Prefer the worker's
+    // live `activity` line (the director's own narration / "Rendering · 60% (1400/2388 frames)")
+    // over the sparse canned stage messages, so a long step exposes real, moving detail.
     detail(): string | undefined {
-      const events = this.modelValue?.response?.data?.progress || [];
+      const data = this.modelValue?.response?.data;
+      if (data?.activity) return data.activity;
+      const events = data?.progress || [];
       for (let i = events.length - 1; i >= 0; i--) {
         if (events[i]?.message) return events[i]?.message;
       }

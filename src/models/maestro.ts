@@ -38,11 +38,24 @@ export interface IMaestroProject {
   outputs?: string[];
 }
 
+// Live per-frame render telemetry (worker parses it from the HyperFrames render output) so the
+// UI can move the bar and show "1194/2388 frames" during a long render instead of freezing.
+export interface IMaestroRender {
+  percent?: number;
+  frames_done?: number;
+  frames_total?: number;
+}
+
 export interface IMaestroData {
   variants?: IMaestroVariant[];
   project?: IMaestroProject;
   progress?: IMaestroProgress[];
   stage?: string;
+  percent?: number;
+  // Latest "what the agent is doing right now" one-liner (the director's own narration), shown as
+  // the live detail under the active step so a long stage exposes real, moving progress.
+  activity?: string;
+  render?: IMaestroRender;
 }
 
 export interface IMaestroGenerateResponse {
