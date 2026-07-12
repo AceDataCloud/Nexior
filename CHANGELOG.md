@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 06:50:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 06:54:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.11
+
+Sun, 12 Jul 2026 06:54:25 GMT
+
+### Patches
+
+- Scheduled tasks: use --el-bg-color-page for the page background; keep default white cards (dev@acedata.cloud)
 
 ## 3.324.10
 
