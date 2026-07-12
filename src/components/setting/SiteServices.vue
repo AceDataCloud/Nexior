@@ -355,10 +355,10 @@ export default defineComponent({
       return typeof this.sampleBase === 'number' && this.sampleBase >= 0 ? this.sampleBase : 0;
     },
     catalogOptions(): IService[] {
-      // Only offer services that are publicly listable (not catalog-private)
-      // and carry a favicon, so every homepage card renders with an icon.
+      // ``private`` is already excluded server-side (see onFetchCatalog); only
+      // the favicon requirement remains, so every homepage card has an icon.
       return this.catalog
-        .filter((s) => s.private !== true && !!s.icon_url)
+        .filter((s) => !!s.icon_url)
         .sort((a, b) => {
           const at = (a.title || a.id || '').toLowerCase();
           const bt = (b.title || b.id || '').toLowerCase();
@@ -441,7 +441,10 @@ export default defineComponent({
       if (this.catalog.length > 0) return;
       this.catalogLoading = true;
       try {
-        const { data } = await serviceOperator.getAll({ limit: CATALOG_PAGE_LIMIT });
+        // Filter out catalog-private services server-side (backend honours
+        // ``?private=false``) so we never ship internal services to the client.
+        // The favicon requirement has no server param, so it stays client-side.
+        const { data } = await serviceOperator.getAll({ limit: CATALOG_PAGE_LIMIT, private: false });
         this.catalog = data.items || [];
         this.catalogMap = Object.fromEntries(this.catalog.map((s) => [s.id as string, s]));
       } catch {
