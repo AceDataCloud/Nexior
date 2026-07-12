@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 13:20:04 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 13:56:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.15
+
+Sun, 12 Jul 2026 13:56:58 GMT
+
+### Patches
+
+- Maestro: hide optional creative controls behind a default-off customization toggle (dev@acedata.cloud)
 
 ## 3.324.14
 
