@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 06:58:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 10:57:12 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.13
+
+Sun, 12 Jul 2026 10:57:12 GMT
+
+### Patches
+
+- Scheduled tasks: force page background with background-color !important (dev@acedata.cloud)
 
 ## 3.324.12
 
