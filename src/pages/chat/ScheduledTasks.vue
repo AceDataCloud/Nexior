@@ -23,12 +23,21 @@
                   :model-value="task.state === 'enabled'"
                   @change="(v: string | number | boolean) => toggleState(task, v === true)"
                 />
-                <el-button text class="icon-action" @click="openEdit(task)">
-                  <font-awesome-icon icon="fa-solid fa-pen" />
-                </el-button>
-                <el-button text type="danger" class="icon-action" @click="confirmDelete(task)">
-                  <font-awesome-icon icon="fa-solid fa-trash" />
-                </el-button>
+                <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
+                  <el-button text class="icon-action" :loading="triggeringId === task.id" @click="triggerNow(task)">
+                    <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip :content="$t('common.button.edit')" placement="top">
+                  <el-button text class="icon-action" @click="openEdit(task)">
+                    <font-awesome-icon icon="fa-solid fa-pen" />
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip :content="$t('common.button.delete')" placement="top">
+                  <el-button text type="danger" class="icon-action" @click="confirmDelete(task)">
+                    <font-awesome-icon icon="fa-solid fa-trash" />
+                  </el-button>
+                </el-tooltip>
               </div>
             </div>
             <div class="task-meta">
@@ -285,6 +294,7 @@ import {
   ElEmpty,
   ElSwitch,
   ElTag,
+  ElTooltip,
   ElDrawer,
   ElDialog,
   ElForm,
@@ -347,6 +357,7 @@ export default defineComponent({
     ElEmpty,
     ElSwitch,
     ElTag,
+    ElTooltip,
     ElDrawer,
     ElDialog,
     ElForm,
@@ -375,6 +386,7 @@ export default defineComponent({
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
       authorizableMcpServers: [] as IAuthorizableMcpServer[],
+      triggeringId: '' as string,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
       pageSize: 6,
@@ -722,6 +734,24 @@ export default defineComponent({
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
       }
     },
+    async triggerNow(task: IScheduledTask) {
+      if (this.triggeringId) return;
+      this.triggeringId = task.id;
+      try {
+        await scheduledTasksOperator.triggerTask(this.token!, task.id);
+        ElMessage.success(this.$t('chat.scheduledTasks.triggerSuccess') as string);
+        // If the run-history drawer is open on this task, refresh it so the
+        // freshly-queued run shows up right away.
+        if (this.showRunHistory && this.selectedTask?.id === task.id) {
+          this.runs = await scheduledTasksOperator.listRuns(this.token!, task.id);
+          this.runPage = 1;
+        }
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.triggerError') as string);
+      } finally {
+        this.triggeringId = '';
+      }
+    },
     async confirmDelete(task: IScheduledTask) {
       await ElMessageBox.confirm(this.$t('chat.scheduledTasks.deleteConfirm', { name: task.name }) as string, {
         type: 'warning'
@@ -846,19 +876,24 @@ export default defineComponent({
 }
 .task-name {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--el-text-color-primary);
   word-break: break-word;
 }
 .task-actions {
   display: flex;
-  gap: 2px;
+  gap: 0;
   align-items: center;
   flex-shrink: 0;
 }
+/* Element Plus adds a 12px left margin between adjacent buttons; drop it so the
+   row is driven purely by the flex gap above. */
+.task-actions .el-button + .el-button {
+  margin-left: 0;
+}
 .icon-action {
-  padding: 6px 8px;
+  padding: 6px 5px;
 }
 .task-meta {
   display: flex;
