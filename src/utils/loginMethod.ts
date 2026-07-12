@@ -1,37 +1,27 @@
-// User-chosen login presentation on the **web** surface: the embedded
-// iframe popup vs. the full-page redirect to AuthFrontend. Persisted in a
-// host-only cookie (survives reloads, shared with the rest of the app's
-// cookie-based prefs) and read by `isIframeLoginEnabled`.
+// How login is presented on the **web** surface: the embedded iframe
+// popup vs. the full-page redirect to AuthFrontend. This is driven by
+// *site* configuration (`site.auth.login_mode`) set by the site admin in
+// Settings → Auth — NOT a per-browser preference. The client reads the
+// site config and decides how to launch login. When unset, login
+// defaults to the full-page redirect.
 //
-// This is the ONLY switch between iframe and redirect login — the login
-// decision no longer consults any URL/cookie/server feature flag. When unset,
-// login defaults to the full-page redirect.
-//
-// Native / desktop always use the iframe regardless of this preference
-// (a redirect can't return to an app://bundle window) — the callers short
-// -circuit on `isNative() || isDesktop()` before consulting this value.
+// Native / desktop always use the iframe regardless of this value (a
+// redirect can't return to an app://bundle window) — the callers short
+// -circuit on `isNative() || isDesktop()` before consulting it.
 
-import { getCookie, setCookie } from 'typescript-cookie';
+import store from '@/store';
 
-const COOKIE_NAME = 'LOGIN_METHOD';
-const EXPIRY_DAYS = 365;
+export type LoginMode = 'iframe' | 'redirect';
 
-export type LoginMethod = 'iframe' | 'redirect';
-
-export function getLoginMethodPreference(): LoginMethod | undefined {
-  const value = getCookie(COOKIE_NAME);
-  return value === 'iframe' || value === 'redirect' ? value : undefined;
-}
-
-export function setLoginMethodPreference(method: LoginMethod): void {
-  // Host-only (no `domain=`) so it does not collide with sibling
-  // PlatformFrontend / AuthFrontend cookies of the same name.
-  setCookie(COOKIE_NAME, method, { path: '/', expires: EXPIRY_DAYS });
+// The effective login mode for the current site. Unset / unknown value
+// falls back to the full-page redirect (the platform default).
+export function getSiteLoginMode(): LoginMode {
+  return store.getters?.site?.auth?.login_mode === 'iframe' ? 'iframe' : 'redirect';
 }
 
 // Whether login should open the embedded AuthFrontend iframe instead of a
-// full-page redirect. Enabled only when the user explicitly picked
-// `iframe` in Settings; unset → redirect (the default).
+// full-page redirect. Driven by the site's `login_mode`; unset → redirect
+// (the default).
 export function isIframeLoginEnabled(): boolean {
-  return getLoginMethodPreference() === 'iframe';
+  return getSiteLoginMode() === 'iframe';
 }

@@ -59,6 +59,25 @@
         </el-select>
       </div>
     </section>
+
+    <!--
+      Section 3: how the login UI is launched on the web surface —
+      a full-page redirect to the auth host (default) or the embedded
+      iframe popup. Site-level config, so every visitor of this site
+      follows the admin's choice (native/desktop always use the iframe
+      regardless — those surfaces short-circuit before reading this).
+    -->
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('common.settings.loginMode') }}</p>
+      </div>
+      <div class="settings-content">
+        <el-select :model-value="loginMode" class="auth-default-provider-select" @change="onLoginModeChange">
+          <el-option :value="'redirect'" :label="$t('common.loginMode.redirect')" />
+          <el-option :value="'iframe'" :label="$t('common.loginMode.iframe')" />
+        </el-select>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -113,6 +132,12 @@ export default defineComponent({
     },
     defaultProvider(): string {
       return this.auth.default_provider || '';
+    },
+    loginMode(): 'iframe' | 'redirect' {
+      // Fall back to the platform default (redirect) so the dropdown
+      // always shows a concrete selection, even on legacy sites whose
+      // ``auth`` blob predates the ``login_mode`` field.
+      return this.auth.login_mode === 'iframe' ? 'iframe' : 'redirect';
     },
     providerOptions(): ProviderOption[] {
       return PROVIDER_IDS.map((value) => ({
@@ -192,6 +217,12 @@ export default defineComponent({
         ...this.auth,
         providers: nextProviders,
         default_provider: value
+      });
+    },
+    onLoginModeChange(value: 'iframe' | 'redirect') {
+      this.persistAuth({
+        ...this.auth,
+        login_mode: value
       });
     },
     persistAuth(nextAuth: ISiteAuth) {
