@@ -683,102 +683,115 @@ export default defineComponent({
 
 // The nested edit dialog is appended to body, so styles for its form must be
 // global rather than nested under `.site-services-settings`.
-:global(.site-service-override-dialog) {
-  .service-override-form {
-    .el-form-item__label {
-      height: auto;
-      line-height: 1.3;
-      white-space: normal;
-      margin-bottom: 4px;
-    }
-    .field-head {
-      display: block;
-      line-height: 1.3;
-    }
-    .field-label {
-      display: block;
-      font-weight: 600;
-      color: var(--el-text-color-primary);
-    }
-    .field-desc {
-      display: block;
-      margin-top: 2px;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 1.4;
-      white-space: normal;
-      color: var(--el-text-color-secondary);
-    }
-    .markup-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .markup-input {
-      width: 150px;
-    }
-    .markup-percent {
-      font-variant-numeric: tabular-nums;
-      color: var(--el-color-primary);
-      font-weight: 600;
-    }
-    .money-preview {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .sample-input {
-      width: 120px;
-    }
-    .preview-result,
-    .field-tip {
-      font-size: 12px;
-      color: var(--el-text-color-secondary);
-    }
-    .auto-translate-inline {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 6px;
-    }
-  }
+:global(.site-service-override-dialog.el-dialog),
+:global(.site-service-override-dialog .el-dialog) {
+  width: min(520px, calc(100vw - 32px)) !important;
 }
 
-:global(.service-catalog-select-popper) {
-  .el-select-dropdown__item {
-    height: auto;
-    min-height: 34px;
-    line-height: 1.4;
-  }
-  .service-option {
-    display: flex;
-    align-items: center;
-    min-width: 0;
-    width: 100%;
-  }
-  .option-favicon {
-    width: 18px;
-    height: 18px;
-    max-width: 18px;
-    max-height: 18px;
-    border-radius: 4px;
-    object-fit: contain;
-    flex-shrink: 0;
-    margin-right: 6px;
-  }
-  .option-title {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .option-alias {
-    margin-left: 8px;
-    font-size: 12px;
-    color: var(--el-text-color-secondary);
-    flex-shrink: 0;
-  }
+:global(.site-service-override-dialog .service-override-form .el-form-item__label) {
+  height: auto;
+  line-height: 1.3;
+  white-space: normal;
+  margin-bottom: 4px;
+}
+
+:global(.site-service-override-dialog .service-override-form .field-head) {
+  display: block;
+  line-height: 1.3;
+}
+
+:global(.site-service-override-dialog .service-override-form .field-label) {
+  display: block;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+}
+
+:global(.site-service-override-dialog .service-override-form .field-desc) {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  white-space: normal;
+  color: var(--el-text-color-secondary);
+}
+
+:global(.site-service-override-dialog .service-override-form .markup-row) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:global(.site-service-override-dialog .service-override-form .markup-input) {
+  width: 150px;
+}
+
+:global(.site-service-override-dialog .service-override-form .markup-percent) {
+  font-variant-numeric: tabular-nums;
+  color: var(--el-color-primary);
+  font-weight: 600;
+}
+
+:global(.site-service-override-dialog .service-override-form .money-preview) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+:global(.site-service-override-dialog .service-override-form .sample-input) {
+  width: 120px;
+}
+
+:global(.site-service-override-dialog .service-override-form .preview-result),
+:global(.site-service-override-dialog .service-override-form .field-tip) {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+}
+
+:global(.site-service-override-dialog .service-override-form .auto-translate-inline) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+:global(.service-catalog-select-popper .el-select-dropdown__item) {
+  height: auto;
+  min-height: 34px;
+  line-height: 1.4;
+}
+
+:global(.service-catalog-select-popper .service-option) {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  width: 100%;
+}
+
+:global(.service-catalog-select-popper .option-favicon) {
+  width: 18px;
+  height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+  border-radius: 4px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 6px;
+}
+
+:global(.service-catalog-select-popper .option-title) {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.service-catalog-select-popper .option-alias) {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+  flex-shrink: 0;
 }
 </style>
