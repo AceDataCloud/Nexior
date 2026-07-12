@@ -65,10 +65,11 @@
       v-model="dialogVisible"
       :title="editingRow ? $t('site.services.dialog.edit') : $t('site.services.dialog.create')"
       :width="mobile ? '94vw' : '520px'"
+      class="site-service-override-dialog"
       :close-on-click-modal="false"
       append-to-body
     >
-      <el-form :model="form" label-position="top" class="form" @submit.prevent>
+      <el-form :model="form" label-position="top" class="service-override-form" @submit.prevent>
         <el-form-item required>
           <template #label>
             <span class="field-head">
@@ -77,7 +78,14 @@
             </span>
           </template>
           <el-input v-if="editingRow" :model-value="catalogTitle(editingRow.service)" readonly />
-          <el-select v-else v-model="form.service" filterable :loading="catalogLoading" class="w-full">
+          <el-select
+            v-else
+            v-model="form.service"
+            filterable
+            :loading="catalogLoading"
+            popper-class="service-catalog-select-popper"
+            class="w-full"
+          >
             <el-option
               v-for="svc in catalogOptions"
               :key="svc.id"
@@ -85,12 +93,14 @@
               :value="svc.id"
               :disabled="isAlreadyOverridden(svc.id)"
             >
-              <img v-if="svc.icon_url" :src="svc.icon_url" class="option-favicon" alt="" />
-              <span class="option-title">{{ svc.title || svc.id }}</span>
-              <span v-if="svc.alias" class="option-alias">{{ svc.alias }}</span>
-              <el-tag v-if="isAlreadyOverridden(svc.id)" size="small" type="info" round>
-                {{ $t('site.services.message.alreadyOverridden') }}
-              </el-tag>
+              <span class="service-option">
+                <img v-if="svc.icon_url" :src="svc.icon_url" class="option-favicon" alt="" />
+                <span class="option-title">{{ svc.title || svc.id }}</span>
+                <span v-if="svc.alias" class="option-alias">{{ svc.alias }}</span>
+                <el-tag v-if="isAlreadyOverridden(svc.id)" size="small" type="info" round>
+                  {{ $t('site.services.message.alreadyOverridden') }}
+                </el-tag>
+              </span>
             </el-option>
           </el-select>
         </el-form-item>
@@ -669,66 +679,64 @@ export default defineComponent({
     color: var(--el-text-color-secondary);
     font-size: 12px;
   }
-  .form {
-    // The label now holds two lines (title + description), so let el-form-item's
-    // label box grow instead of clamping to its default single-line height.
-    :deep(.el-form-item__label) {
+}
+
+// The nested edit dialog is appended to body, so styles for its form must be
+// global rather than nested under `.site-services-settings`.
+:global(.site-service-override-dialog) {
+  .service-override-form {
+    .el-form-item__label {
       height: auto;
       line-height: 1.3;
       white-space: normal;
       margin-bottom: 4px;
     }
-    // Each field's label + a small gray description caption stacked beneath
-    // it, mirroring the Site settings rows.
     .field-head {
       display: block;
       line-height: 1.3;
-      .field-label {
-        font-weight: 500;
-        color: var(--el-text-color-primary);
-      }
-      .field-desc {
-        display: block;
-        margin-top: 2px;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1.4;
-        white-space: normal;
-        color: var(--el-text-color-secondary);
-      }
+    }
+    .field-label {
+      display: block;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+    }
+    .field-desc {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.4;
+      white-space: normal;
+      color: var(--el-text-color-secondary);
     }
     .markup-row {
       display: flex;
       align-items: center;
       gap: 10px;
-      .markup-input {
-        width: 150px;
-      }
-      .markup-percent {
-        font-variant-numeric: tabular-nums;
-        color: var(--el-color-primary);
-        font-weight: 600;
-      }
+    }
+    .markup-input {
+      width: 150px;
+    }
+    .markup-percent {
+      font-variant-numeric: tabular-nums;
+      color: var(--el-color-primary);
+      font-weight: 600;
     }
     .money-preview {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 4px;
-      .sample-input {
-        width: 120px;
-      }
-      .preview-result {
-        font-size: 12px;
-        color: var(--el-text-color-secondary);
-      }
+      margin-top: 6px;
     }
+    .sample-input {
+      width: 120px;
+    }
+    .preview-result,
     .field-tip {
       font-size: 12px;
       color: var(--el-text-color-secondary);
     }
-    // Auto-translate toggle rendered beneath the summary textarea.
     .auto-translate-inline {
       display: flex;
       align-items: center;
@@ -736,18 +744,41 @@ export default defineComponent({
       margin-top: 6px;
     }
   }
+}
+
+:global(.service-catalog-select-popper) {
+  .el-select-dropdown__item {
+    height: auto;
+    min-height: 34px;
+    line-height: 1.4;
+  }
+  .service-option {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+  }
   .option-favicon {
     width: 18px;
     height: 18px;
+    max-width: 18px;
+    max-height: 18px;
     border-radius: 4px;
     object-fit: contain;
-    vertical-align: middle;
+    flex-shrink: 0;
     margin-right: 6px;
+  }
+  .option-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .option-alias {
     margin-left: 8px;
     font-size: 12px;
     color: var(--el-text-color-secondary);
+    flex-shrink: 0;
   }
 }
 </style>
