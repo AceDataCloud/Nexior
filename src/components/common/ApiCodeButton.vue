@@ -64,14 +64,8 @@ const PATH_TO_STORE: Record<string, string> = {
 const PLATFORM_DOCS_BASE = 'https://platform.acedata.cloud/documents';
 
 // The "查看文档" deep-link points at each service's documents landing page,
-// whose alias equals the first path segment for almost every service
-// (e.g. /maestro/videos -> documents/maestro). Only the few services that
-// have no landing doc are overridden to their sole API doc alias.
-const DOC_ALIAS_OVERRIDES: Record<string, string> = {
-  qrart: 'qrart-generate',
-  headshots: 'headshots-generate',
-  pika: 'pika-videos'
-};
+// whose alias equals the first path segment (e.g. /maestro/videos ->
+// documents/maestro).
 
 export default defineComponent({
   name: 'ApiCodeButton',
@@ -144,8 +138,7 @@ export default defineComponent({
     docHref(): string {
       const seg = (this.path || '').split('/').filter(Boolean)[0] || '';
       if (!seg) return PLATFORM_DOCS_BASE;
-      const alias = DOC_ALIAS_OVERRIDES[seg] || seg;
-      return `${PLATFORM_DOCS_BASE}/${alias}`;
+      return `${PLATFORM_DOCS_BASE}/${seg}`;
     },
     resolvedTokenKey(): string {
       if (this.tokenKey) return this.tokenKey;
