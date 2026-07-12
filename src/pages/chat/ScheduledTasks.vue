@@ -157,12 +157,37 @@
 
         <el-form-item :label="$t('chat.scheduledTasks.form.schedule')">
           <el-radio-group v-model="form.scheduleType">
-            <el-radio value="minutely">{{ $t('chat.scheduledTasks.scheduleType.minutely') }}</el-radio>
-            <el-radio value="daily">{{ $t('chat.scheduledTasks.scheduleType.daily') }}</el-radio>
+            <el-radio value="interval">{{ $t('chat.scheduledTasks.scheduleType.interval') }}</el-radio>
             <el-radio value="hourly">{{ $t('chat.scheduledTasks.scheduleType.hourly') }}</el-radio>
+            <el-radio value="daily">{{ $t('chat.scheduledTasks.scheduleType.daily') }}</el-radio>
             <el-radio value="weekly">{{ $t('chat.scheduledTasks.scheduleType.weekly') }}</el-radio>
             <el-radio value="cron">{{ $t('chat.scheduledTasks.scheduleType.cron') }}</el-radio>
           </el-radio-group>
+          <div v-if="schedulePreview" class="schedule-preview">
+            <font-awesome-icon icon="fa-solid fa-clock" class="preview-icon" />
+            {{ $t('chat.scheduledTasks.form.schedulePreview', { text: schedulePreview }) }}
+          </div>
+        </el-form-item>
+
+        <el-form-item v-if="form.scheduleType === 'interval'" :label="$t('chat.scheduledTasks.scheduleType.interval')">
+          <el-input-number
+            v-model="form.intervalValue"
+            :min="1"
+            :max="intervalMax"
+            :step="1"
+            controls-position="right"
+          />
+          <el-select v-model="form.intervalUnit" style="width: 110px; margin-left: 8px">
+            <el-option :label="$t('chat.scheduledTasks.form.intervalUnit.minute')" value="minute" />
+            <el-option :label="$t('chat.scheduledTasks.form.intervalUnit.hour')" value="hour" />
+            <el-option :label="$t('chat.scheduledTasks.form.intervalUnit.day')" value="day" />
+          </el-select>
+          <div class="hint">{{ $t('chat.scheduledTasks.form.intervalHint') }}</div>
+        </el-form-item>
+
+        <el-form-item v-if="form.scheduleType === 'hourly'" :label="$t('chat.scheduledTasks.form.hourlyMinute')">
+          <el-input-number v-model="form.hourlyMinute" :min="0" :max="59" :step="1" controls-position="right" />
+          <div class="hint">{{ $t('chat.scheduledTasks.form.hourlyMinuteHint') }}</div>
         </el-form-item>
 
         <el-form-item v-if="form.scheduleType === 'daily'" :label="$t('chat.scheduledTasks.form.time')">
@@ -179,6 +204,7 @@
 
         <el-form-item v-if="form.scheduleType === 'cron'" :label="$t('chat.scheduledTasks.form.cron')">
           <el-input v-model="form.cronExpr" placeholder="0 9 * * *" />
+          <div class="hint">{{ $t('chat.scheduledTasks.form.cronHint') }}</div>
         </el-form-item>
 
         <el-form-item :label="$t('chat.scheduledTasks.form.skills')">
@@ -299,7 +325,10 @@ interface TaskForm {
   name: string;
   question: string;
   model: string;
-  scheduleType: 'minutely' | 'daily' | 'hourly' | 'weekly' | 'cron';
+  scheduleType: 'interval' | 'hourly' | 'daily' | 'weekly' | 'cron';
+  intervalValue: number;
+  intervalUnit: 'minute' | 'hour' | 'day';
+  hourlyMinute: number;
   dailyTime: string;
   weekday: number;
   cronExpr: string;
@@ -372,6 +401,18 @@ export default defineComponent({
     pagedRuns(): IScheduledRun[] {
       const start = (this.runPage - 1) * this.runPageSize;
       return this.runs.slice(start, start + this.runPageSize);
+    },
+    // Sensible upper bound for the interval number input, per selected unit.
+    intervalMax(): number {
+      return this.form.intervalUnit === 'minute' ? 1440 : this.form.intervalUnit === 'hour' ? 720 : 365;
+    },
+    // Live human-readable summary of the schedule the form currently builds.
+    schedulePreview(): string {
+      try {
+        return this.humanizeSchedule(this.buildSchedule());
+      } catch {
+        return '';
+      }
     }
   },
   async mounted() {
@@ -384,6 +425,9 @@ export default defineComponent({
         question: '',
         model: CHAT_MODEL_NAME_GPT_5_4_MINI,
         scheduleType: 'daily',
+        intervalValue: 4,
+        intervalUnit: 'hour',
+        hourlyMinute: 0,
         dailyTime: '09:00',
         weekday: 1,
         cronExpr: '0 9 * * *',
@@ -432,33 +476,50 @@ export default defineComponent({
       this.editingTask = task;
       const s = task.schedule;
       let scheduleType: TaskForm['scheduleType'] = 'cron';
+      let intervalValue = 4;
+      let intervalUnit: TaskForm['intervalUnit'] = 'hour';
+      let hourlyMinute = 0;
       let dailyTime = '09:00';
       let cronExpr = '0 9 * * *';
       let weekday = 1;
       if (s.type === 'cron') {
         cronExpr = s.cron;
-        const parts = s.cron.split(' ');
-        if (parts.length === 5) {
-          const [min, hour, , , dow] = parts;
-          if (dow === '*' && !isNaN(Number(hour))) {
-            scheduleType = 'daily';
-            dailyTime = `${hour.padStart(2, '0')}:${min.padStart(2, '0')}`;
-          } else if (!isNaN(Number(dow))) {
-            scheduleType = 'weekly';
-            weekday = Number(dow);
-            dailyTime = `${hour.padStart(2, '0')}:${min.padStart(2, '0')}`;
-          }
+        const [min, hour, dom, mon, dow] = s.cron.split(/\s+/);
+        const isNum = (v: string) => /^\d+$/.test(v);
+        if (dom === '*' && mon === '*' && dow === '*' && hour === '*' && isNum(min)) {
+          // "M * * * *" → at minute M of every hour.
+          scheduleType = 'hourly';
+          hourlyMinute = Number(min);
+        } else if (dom === '*' && mon === '*' && dow === '*' && isNum(hour) && isNum(min)) {
+          scheduleType = 'daily';
+          dailyTime = `${hour.padStart(2, '0')}:${min.padStart(2, '0')}`;
+        } else if (dom === '*' && mon === '*' && isNum(dow) && isNum(hour) && isNum(min)) {
+          scheduleType = 'weekly';
+          weekday = Number(dow);
+          dailyTime = `${hour.padStart(2, '0')}:${min.padStart(2, '0')}`;
         }
       } else if (s.type === 'interval') {
-        if (s.interval_seconds === 60) scheduleType = 'minutely';
-        else if (s.interval_seconds === 3600) scheduleType = 'hourly';
-        else scheduleType = 'cron';
+        scheduleType = 'interval';
+        const sec = s.interval_seconds;
+        if (sec % 86400 === 0) {
+          intervalUnit = 'day';
+          intervalValue = sec / 86400;
+        } else if (sec % 3600 === 0) {
+          intervalUnit = 'hour';
+          intervalValue = sec / 3600;
+        } else {
+          intervalUnit = 'minute';
+          intervalValue = Math.max(1, Math.round(sec / 60));
+        }
       }
       this.form = {
         name: task.name,
         question: task.template.question,
         model: task.template.model,
         scheduleType,
+        intervalValue,
+        intervalUnit,
+        hourlyMinute,
         dailyTime,
         weekday,
         cronExpr,
@@ -476,12 +537,16 @@ export default defineComponent({
       void this.loadAuthorizableSkills();
     },
     buildSchedule(): IScheduleSpec {
-      const { scheduleType, dailyTime, weekday, cronExpr } = this.form;
-      if (scheduleType === 'minutely') {
-        return { type: 'interval', interval_seconds: 60, tz: USER_TZ };
+      const { scheduleType, intervalValue, intervalUnit, hourlyMinute, dailyTime, weekday, cronExpr } = this.form;
+      if (scheduleType === 'interval') {
+        const unitSeconds = intervalUnit === 'day' ? 86400 : intervalUnit === 'hour' ? 3600 : 60;
+        // Scheduler's finest cadence is 60s; guard against sub-minute intervals.
+        const seconds = Math.max(60, Math.round(intervalValue) * unitSeconds);
+        return { type: 'interval', interval_seconds: seconds, tz: USER_TZ };
       }
       if (scheduleType === 'hourly') {
-        return { type: 'interval', interval_seconds: 3600, tz: USER_TZ };
+        const m = Math.min(59, Math.max(0, Math.round(hourlyMinute)));
+        return { type: 'cron', cron: `${m} * * * *`, tz: USER_TZ };
       }
       if (scheduleType === 'daily') {
         const [h, m] = dailyTime.split(':');
@@ -692,10 +757,33 @@ export default defineComponent({
     runErrorText(run: IScheduledRun) {
       return run.error_message || run.error_code?.replace(/_/g, ' ') || '';
     },
+    // Turn any backend schedule spec into a localized, human-readable phrase.
+    humanizeSchedule(s: IScheduleSpec): string {
+      const t = (k: string, p?: Record<string, unknown>) =>
+        this.$t(`chat.scheduledTasks.humanize.${k}`, p ?? {}) as string;
+      if (s.type === 'interval') {
+        const sec = s.interval_seconds;
+        if (sec % 86400 === 0) return t('everyNDays', { n: sec / 86400 });
+        if (sec % 3600 === 0) return t('everyNHours', { n: sec / 3600 });
+        return t('everyNMinutes', { n: Math.round(sec / 60) });
+      }
+      if (s.type === 'cron') {
+        const [min, hour, dom, mon, dow] = s.cron.split(/\s+/);
+        const isNum = (v: string) => /^\d+$/.test(v);
+        if (dom === '*' && mon === '*' && dow === '*' && hour === '*' && isNum(min)) {
+          return t('hourlyAtMinute', { n: Number(min) });
+        }
+        const time = isNum(hour) && isNum(min) ? `${hour.padStart(2, '0')}:${min.padStart(2, '0')}` : '';
+        if (time && dom === '*' && mon === '*' && dow === '*') return t('dailyAt', { time });
+        if (time && dom === '*' && mon === '*' && isNum(dow)) {
+          return t('weeklyAt', { weekday: this.weekdays[Number(dow)] ?? dow, time });
+        }
+        return t('cronRaw', { cron: s.cron });
+      }
+      return t('once', { time: new Date(s.at * 1000).toLocaleString() });
+    },
     scheduleLabel(s: IScheduleSpec) {
-      if (s.type === 'interval') return `每 ${s.interval_seconds / 60} 分钟`;
-      if (s.type === 'cron') return `Cron: ${s.cron}`;
-      return `一次性: ${new Date(s.at * 1000).toLocaleString()}`;
+      return this.humanizeSchedule(s);
     },
     formatTime(ts: number) {
       return new Date(ts * 1000).toLocaleString();
@@ -993,6 +1081,20 @@ export default defineComponent({
   font-size: 11px;
   color: var(--el-text-color-secondary);
   margin-left: 8px;
+}
+.schedule-preview {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--el-fill-color-light);
+  font-size: 12px;
+  color: var(--el-text-color-regular);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.preview-icon {
+  color: var(--el-color-primary);
 }
 .skill-option {
   display: flex;

@@ -654,6 +654,74 @@
   "scheduledTasks.scheduleType.cron": {
     "message": "Cron expression"
   },
+  "scheduledTasks.scheduleType.interval": {
+    "message": "每隔",
+    "description": "每隔固定間隔執行"
+  },
+  "scheduledTasks.form.intervalUnit.minute": {
+    "message": "分鐘",
+    "description": "間隔單位：分鐘"
+  },
+  "scheduledTasks.form.intervalUnit.hour": {
+    "message": "小時",
+    "description": "間隔單位：小時"
+  },
+  "scheduledTasks.form.intervalUnit.day": {
+    "message": "天",
+    "description": "間隔單位：天"
+  },
+  "scheduledTasks.form.hourlyMinute": {
+    "message": "觸發分鐘",
+    "description": "每小時第幾分鐘觸發"
+  },
+  "scheduledTasks.form.hourlyMinuteHint": {
+    "message": "每小時的第幾分鐘觸發（0–59）",
+    "description": "每小時分鐘說明"
+  },
+  "scheduledTasks.form.intervalHint": {
+    "message": "從上次執行起，每隔固定時間執行一次（最短 1 分鐘）",
+    "description": "固定間隔說明"
+  },
+  "scheduledTasks.form.cronHint": {
+    "message": "標準 5 段 Cron 運算式：分 時 日 月 週",
+    "description": "Cron 說明"
+  },
+  "scheduledTasks.form.schedulePreview": {
+    "message": "執行頻率：{text}",
+    "description": "頻率預覽"
+  },
+  "scheduledTasks.humanize.everyNMinutes": {
+    "message": "每 {n} 分鐘",
+    "description": "人類可讀：每 N 分鐘"
+  },
+  "scheduledTasks.humanize.everyNHours": {
+    "message": "每 {n} 小時",
+    "description": "人類可讀：每 N 小時"
+  },
+  "scheduledTasks.humanize.everyNDays": {
+    "message": "每 {n} 天",
+    "description": "人類可讀：每 N 天"
+  },
+  "scheduledTasks.humanize.hourlyAtMinute": {
+    "message": "每小時第 {n} 分鐘",
+    "description": "人類可讀：每小時第 N 分鐘"
+  },
+  "scheduledTasks.humanize.dailyAt": {
+    "message": "每天 {time}",
+    "description": "人類可讀：每天某時刻"
+  },
+  "scheduledTasks.humanize.weeklyAt": {
+    "message": "每週 {weekday} {time}",
+    "description": "人類可讀：每週某天某時刻"
+  },
+  "scheduledTasks.humanize.cronRaw": {
+    "message": "Cron：{cron}",
+    "description": "人類可讀：原始 Cron"
+  },
+  "scheduledTasks.humanize.once": {
+    "message": "一次性 {time}",
+    "description": "人類可讀：一次性"
+  },
   "scheduledTasks.form.name": {
     "message": "Task name"
   },
