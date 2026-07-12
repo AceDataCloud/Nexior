@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 02:15:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 03:15:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.6
+
+Sun, 12 Jul 2026 03:15:58 GMT
+
+### Patches
+
+- maestro: show the agent's live activity line (and render %) as the progress detail (dev@acedata.cloud)
 
 ## 3.324.5
 
