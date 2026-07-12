@@ -69,16 +69,15 @@
       append-to-body
     >
       <el-form :model="form" label-position="top" class="form" @submit.prevent>
-        <el-form-item :label="$t('site.services.field.service')" required>
+        <el-form-item required>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.services.field.service') }}</span>
+              <span class="field-desc">{{ $t('site.services.placeholder.service') }}</span>
+            </span>
+          </template>
           <el-input v-if="editingRow" :model-value="catalogTitle(editingRow.service)" readonly />
-          <el-select
-            v-else
-            v-model="form.service"
-            :placeholder="$t('site.services.placeholder.service')"
-            filterable
-            :loading="catalogLoading"
-            class="w-full"
-          >
+          <el-select v-else v-model="form.service" filterable :loading="catalogLoading" class="w-full">
             <el-option
               v-for="svc in catalogOptions"
               :key="svc.id"
@@ -96,12 +95,23 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item :label="$t('site.services.field.visible')">
+        <el-form-item>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.services.field.visible') }}</span>
+              <span class="field-desc">{{ $t('site.services.tip.visible') }}</span>
+            </span>
+          </template>
           <el-switch v-model="form.visible" />
-          <span class="field-tip field-tip--inline">{{ $t('site.services.tip.visible') }}</span>
         </el-form-item>
 
-        <el-form-item :label="$t('site.field.markupRatio')">
+        <el-form-item>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.field.markupRatio') }}</span>
+              <span class="field-desc">{{ $t('site.services.tip.markup') }}</span>
+            </span>
+          </template>
           <div class="markup-row">
             <el-input-number
               v-model="form.markupRatio"
@@ -117,37 +127,34 @@
               {{ formatMarkup(form.markupRatio) }}
             </span>
           </div>
-          <div class="markup-help">
-            <p class="field-tip">{{ $t('site.services.tip.markup') }}</p>
-            <div class="money-preview">
-              <span class="field-tip">{{ $t('site.services.preview.sampleLabel') }}</span>
-              <el-input-number
-                v-model="sampleBase"
-                :min="0"
-                :step="1"
-                :precision="2"
-                size="small"
-                :controls-position="'right'"
-                class="sample-input"
-              />
-              <span class="preview-result">
-                {{ $t('site.message.markupExample', { from: previewFrom, to: previewTo }) }}
-              </span>
-              <span v-if="typeof form.markupRatio !== 'number'" class="field-tip">
-                {{ $t('site.services.preview.inherit', { percent: formatMarkup(siteDefaultRatio) }) }}
-              </span>
-            </div>
+          <div class="money-preview">
+            <span class="field-tip">{{ $t('site.services.preview.sampleLabel') }}</span>
+            <el-input-number
+              v-model="sampleBase"
+              :min="0"
+              :step="1"
+              :precision="2"
+              size="small"
+              :controls-position="'right'"
+              class="sample-input"
+            />
+            <span class="preview-result">
+              {{ $t('site.message.markupExample', { from: previewFrom, to: previewTo }) }}
+            </span>
+            <span v-if="typeof form.markupRatio !== 'number'" class="field-tip">
+              {{ $t('site.services.preview.inherit', { percent: formatMarkup(siteDefaultRatio) }) }}
+            </span>
           </div>
         </el-form-item>
 
-        <el-form-item :label="$t('site.services.field.displayTitle')">
-          <el-input
-            v-model="form.displayTitle"
-            :placeholder="$t('site.services.placeholder.displayTitle')"
-            maxlength="120"
-            show-word-limit
-            clearable
-          >
+        <el-form-item>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.services.field.displayTitle') }}</span>
+              <span class="field-desc">{{ $t('site.services.placeholder.displayTitle') }}</span>
+            </span>
+          </template>
+          <el-input v-model="form.displayTitle" maxlength="120" show-word-limit clearable>
             <template #suffix>
               <auto-translate-toggle
                 model="site_service_override"
@@ -162,14 +169,14 @@
           </el-input>
         </el-form-item>
 
-        <el-form-item :label="$t('site.services.field.displaySummary')">
-          <el-input
-            v-model="form.displaySummary"
-            type="textarea"
-            :rows="3"
-            :placeholder="$t('site.services.placeholder.displaySummary')"
-            clearable
-          />
+        <el-form-item>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.services.field.displaySummary') }}</span>
+              <span class="field-desc">{{ $t('site.services.placeholder.displaySummary') }}</span>
+            </span>
+          </template>
+          <el-input v-model="form.displaySummary" type="textarea" :rows="3" clearable />
           <!-- textarea has no #suffix slot; render the toggle inline beneath -->
           <div class="auto-translate-inline">
             <auto-translate-toggle
@@ -193,7 +200,13 @@
           </div>
         </el-form-item>
 
-        <el-form-item :label="$t('site.services.field.sortOrder')">
+        <el-form-item>
+          <template #label>
+            <span class="field-head">
+              <span class="field-label">{{ $t('site.services.field.sortOrder') }}</span>
+              <span class="field-desc">{{ $t('site.services.tip.sortOrder') }}</span>
+            </span>
+          </template>
           <el-input-number
             v-model="form.sortOrder"
             :min="-1000"
@@ -202,7 +215,6 @@
             :precision="0"
             :controls-position="'right'"
           />
-          <span class="field-tip field-tip--inline">{{ $t('site.services.tip.sortOrder') }}</span>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -658,6 +670,33 @@ export default defineComponent({
     font-size: 12px;
   }
   .form {
+    // The label now holds two lines (title + description), so let el-form-item's
+    // label box grow instead of clamping to its default single-line height.
+    :deep(.el-form-item__label) {
+      height: auto;
+      line-height: 1.3;
+      white-space: normal;
+      margin-bottom: 4px;
+    }
+    // Each field's label + a small gray description caption stacked beneath
+    // it, mirroring the Site settings rows.
+    .field-head {
+      display: block;
+      line-height: 1.3;
+      .field-label {
+        font-weight: 500;
+        color: var(--el-text-color-primary);
+      }
+      .field-desc {
+        display: block;
+        margin-top: 2px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        white-space: normal;
+        color: var(--el-text-color-secondary);
+      }
+    }
     .markup-row {
       display: flex;
       align-items: center;
@@ -685,23 +724,9 @@ export default defineComponent({
         color: var(--el-text-color-secondary);
       }
     }
-    // Markup helper reads as fine print stacked under the input, not as a
-    // sibling glued to its right.
-    .markup-help {
-      flex-basis: 100%;
-      margin-top: 6px;
-      .field-tip {
-        display: block;
-      }
-    }
     .field-tip {
       font-size: 12px;
       color: var(--el-text-color-secondary);
-    }
-    // Tips that sit on the same row as an inline control (switch, sort input)
-    // need breathing room from it.
-    .field-tip--inline {
-      margin-left: 10px;
     }
     // Auto-translate toggle rendered beneath the summary textarea.
     .auto-translate-inline {
