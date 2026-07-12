@@ -40,11 +40,11 @@
     "description": "Visas som titeln i redigeringsrutan"
   },
   "field.markupRatio": {
-    "message": "Påslagprocent",
+    "message": "Enhetligt påslag för hela webbplatsen",
     "description": "Inställningar för webbplatsen: den enhetliga påslagsprocenten (i procent) för alla insättningspaket på denna webbplats."
   },
   "message.markupRatioTip": {
-    "message": "Enhetligt påslag för alla insättningspaket (0%~500%). 0% innebär att du säljer till plattformens originalpris; påslagsdelen är din vinst, och provisionsprocenten för distribution förblir oförändrad.",
+    "message": "Ange ett enhetligt påslag för alla tjänster på webbplatsen (0%–500%). Ett anpassat påslag per tjänst nedan åsidosätter detta värde.",
     "description": "Förklarande text för inställningen av påslagprocent."
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "Pris och visning per tjänst"
+    "message": "Anpassat påslag och visning per tjänst"
   },
   "services.tip": {
     "message": "Dölj, byt namn, prissätt eller sortera enskilda tjänster. Ett tomt påslag ärver webbplatsens standard. Att ta bort en rad återställer katalogens standard."
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "Synlig"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "Anpassat påslag per tjänst"
   },
   "services.field.displayTitle": {
     "message": "Visningsnamn"

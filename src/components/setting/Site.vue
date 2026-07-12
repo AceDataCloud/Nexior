@@ -105,36 +105,6 @@
 
     <section class="settings-item">
       <div class="settings-label">
-        <p class="settings-title">{{ $t('site.field.markupRatio') }}</p>
-        <p class="settings-tip">
-          {{ $t('site.message.markupRatioTip') }}
-        </p>
-      </div>
-      <div class="settings-content markup-content">
-        <div class="markup-input">
-          <el-input-number :model-value="markupPercent" :min="0" :max="500" :step="5" @change="onSaveMarkup" />
-          <span class="markup-suffix">%</span>
-        </div>
-        <div class="markup-example-row">
-          <span class="markup-sample-label">{{ $t('site.services.preview.sampleLabel') }}</span>
-          <el-input-number
-            v-model="sampleBase"
-            :min="0"
-            :step="1"
-            :precision="2"
-            size="small"
-            :controls-position="'right'"
-            class="markup-sample-input"
-          />
-          <span class="markup-example">
-            {{ $t('site.message.markupExample', { from: markupExampleFrom, to: markupExampleTo }) }}
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <section class="settings-item">
-      <div class="settings-label">
         <p class="settings-title">{{ $t('site.field.admins') }}</p>
         <p class="settings-tip">
           {{ $t('site.message.adminsTip') }}
@@ -158,7 +128,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElColorPicker, ElImage, ElInputNumber } from 'element-plus';
+import { ElButton, ElColorPicker, ElImage } from 'element-plus';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
@@ -167,7 +137,6 @@ import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
-import { getPriceString, applyMarkup, getSiteMarkupRatio } from '@/utils';
 
 // A small curated palette to make picking a "good" colour easy. The picker
 // still accepts any hex via its colour wheel; these are just shortcuts.
@@ -195,15 +164,11 @@ export default defineComponent({
     ElButton,
     ElColorPicker,
     ElImage,
-    ElInputNumber,
     SectionNotice
   },
   data() {
     return {
-      primaryColorPresets: PRIMARY_COLOR_PRESETS,
-      // Editable base price for the live markup example (default 10) so the
-      // preview isn't a hard-coded number.
-      sampleBase: 10 as number
+      primaryColorPresets: PRIMARY_COLOR_PRESETS
     };
   },
   computed: {
@@ -230,20 +195,6 @@ export default defineComponent({
     hasCustomPrimaryColor(): boolean {
       const c = this.storedPrimaryColor;
       return !!c && c.toLowerCase() !== DEFAULT_PRIMARY_COLOR.toLowerCase();
-    },
-    // Site-wide markup shown to the 站长 as a percentage (0..500). Stored as a
-    // ratio (0..5) under metadata.pricing.markup_ratio.
-    markupPercent(): number {
-      return Math.round(getSiteMarkupRatio(this.site) * 100);
-    },
-    markupExampleFrom(): string {
-      return getPriceString({ value: this.sampleBaseSafe });
-    },
-    markupExampleTo(): string {
-      return getPriceString({ value: applyMarkup(this.sampleBaseSafe, this.markupPercent / 100) });
-    },
-    sampleBaseSafe(): number {
-      return typeof this.sampleBase === 'number' && this.sampleBase >= 0 ? this.sampleBase : 0;
     }
   },
   methods: {
@@ -256,20 +207,6 @@ export default defineComponent({
         console.debug('getSite for id', this.site?.id);
         this.$store.dispatch('getSite');
       });
-    },
-    onSaveMarkup(percent: number | undefined) {
-      // Clamp to 0..500% and store as a 0..5 ratio; merge into the existing
-      // metadata so unrelated keys (icp / support_url / ...) are preserved.
-      const p = Math.min(500, Math.max(0, Math.round(Number(percent) || 0)));
-      const existing = (this.site?.metadata || {}) as Record<string, any>;
-      const metadata = {
-        ...existing,
-        pricing: {
-          ...((existing.pricing as Record<string, any>) || {}),
-          markup_ratio: p / 100
-        }
-      };
-      this.onSave({ metadata });
     },
     onTranslationChanged() {
       // Toggle endpoints mutate the row server-side; refresh so the
@@ -318,45 +255,6 @@ export default defineComponent({
   display: inline-flex;
   align-items: center;
   gap: 4px;
-}
-
-.markup-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-}
-
-.markup-input {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.markup-suffix {
-  color: var(--el-text-color-secondary);
-}
-
-.markup-example {
-  margin: 0;
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-}
-
-.markup-example-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.markup-sample-label {
-  font-size: 12px;
-  color: var(--el-text-color-secondary);
-}
-
-.markup-sample-input {
-  width: 120px;
 }
 
 .favicon {

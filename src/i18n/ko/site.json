@@ -40,11 +40,11 @@
     "description": "편집 상자에 표시되는 제목"
   },
   "field.markupRatio": {
-    "message": "가산 비율",
+    "message": "사이트 전체 공통 가산율",
     "description": "사이트 설정: 본 사이트의 모든 충전 패키지에 대해 통일된 가산 비율(백분율)"
   },
   "message.markupRatioTip": {
-    "message": "본 사이트의 모든 충전 패키지에 통일된 가산(0%~500%). 0%는 플랫폼 원가로 판매함을 의미하며; 가산 부분은 당신이 얻는 차익이며, 유통 수수료 비율은 변하지 않습니다.",
+    "message": "이 사이트의 모든 서비스에 공통 가산율을 설정합니다(0%~500%). 아래의 서비스별 맞춤 가산율을 설정하면 이 값보다 우선합니다.",
     "description": "가산 비율 설정 항목에 대한 설명 텍스트입니다."
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "서비스별 가격 및 표시"
+    "message": "서비스별 맞춤 가산 및 표시"
   },
   "services.tip": {
     "message": "개별 서비스를 숨기거나 이름 변경, 개별 가격, 정렬할 수 있습니다. 가산을 비우면 사이트 기본값을 상속합니다. 행을 삭제하면 기본 표시로 돌아갑니다."
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "표시"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "서비스별 맞춤 가산율"
   },
   "services.field.displayTitle": {
     "message": "표시 이름"

@@ -40,11 +40,11 @@
     "description": "Prikazuje se kao naslov u okviru za uređivanje"
   },
   "field.markupRatio": {
-    "message": "Proporcija povećanja",
+    "message": "Јединствено увећање цене за цео сајт",
     "description": "Podešavanje sajta: Proporcija povećanja za sve pakete dopune na ovom sajtu (procenat)"
   },
   "message.markupRatioTip": {
-    "message": "Jedinstveno povećanje za sve pakete dopune (0%~500%). 0% znači prodaju po zvaničnoj ceni; deo povećanja je razlika koju zarađuješ, a procenat povrata za distribuciju ostaje nepromenjen.",
+    "message": "Подесите јединствено увећање цене за све услуге на овом сајту (0%–500%). Прилагођено увећање цене за појединачну услугу испод замењује ову вредност.",
     "description": "Objašnjenje za podešavanje proporcije povećanja"
   },
   "message.markupExample": {
@@ -672,10 +672,10 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "Цене и приказ по услузи"
+    "message": "Прилагођено увећање цене и приказ по услузи"
   },
   "services.tip": {
-    "message": "Сакријте, преименујте, одредите цену или преуредите поједине услуге. Празна маржа наслеђује подразумевану вредност сајта. Брисање реда враћа услугу на подразумеване вредности."
+    "message": "Сакријте, преименујте, прилагодите увећање цене или преуредите поједине услуге. Празно увећање цене наслеђује подразумевану вредност сајта. Брисање реда враћа услугу на подразумеване вредности."
   },
   "services.addButton": {
     "message": "Додај"
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "Видљиво"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "Прилагођено увећање цене за услугу"
   },
   "services.field.displayTitle": {
     "message": "Приказано име"
@@ -741,7 +744,7 @@
     "message": "Пример основне цене"
   },
   "services.preview.inherit": {
-    "message": "(наслеђује подразумевану маржу сајта {percent})"
+    "message": "(наслеђује подразумевано увећање цене сајта {percent})"
   },
   "services.message.alreadyOverridden": {
     "message": "Већ додато"

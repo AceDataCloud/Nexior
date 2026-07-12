@@ -13,6 +13,7 @@ vi.mock('@/utils', async (importOriginal) => {
 
 import Setting from './Setting.vue';
 import SiteSetting from '@/components/setting/Site.vue';
+import SiteServicesSetting from '@/components/setting/SiteServices.vue';
 import SeoSetting from '@/components/setting/Seo.vue';
 import DistributionSetting from '@/components/setting/Distribution.vue';
 import FunctionSetting from '@/components/setting/Function.vue';
@@ -21,17 +22,27 @@ import SubsiteSetting from '@/components/setting/Subsite.vue';
 import CustomDomainSetting from '@/components/setting/CustomDomain.vue';
 
 /**
- * Operator / white-label settings tabs (Site, SEO, Distribution, Function,
- * Auth, Subsites, Custom Domain) manage a web deployment, so they must only
- * appear on the web surface — never inside the native iOS/Android shell or
- * the desktop (Electron) app. Consumer tabs (General, API Key, About) stay
- * available on every surface.
+ * Operator / white-label settings tabs (Site, Price, SEO, Distribution,
+ * Function, Auth, Subsites, Custom Domain) manage a web deployment, so they
+ * must only appear on the web surface — never inside the native iOS/Android
+ * shell or the desktop (Electron) app. Consumer tabs stay available on every
+ * surface.
  */
 const CONSUMER_TABS = ['general', 'apiKey', 'about'];
-const ALL_OPERATOR_TABS = ['site', 'seo', 'distribution', 'function', 'auth', 'subsites', 'customDomain'];
+const ALL_OPERATOR_TABS = [
+  'site',
+  'siteServices',
+  'seo',
+  'distribution',
+  'function',
+  'auth',
+  'subsites',
+  'customDomain'
+];
 // activeTab key -> the child component its <main> v-if branch renders.
 const OPERATOR_CONTENT = {
   site: SiteSetting,
+  siteServices: SiteServicesSetting,
   seo: SeoSetting,
   distribution: DistributionSetting,
   function: FunctionSetting,
@@ -74,7 +85,7 @@ describe('user/Setting surface gating', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     hostState.official = false;
     const keys = tabKeys(mountSetting());
-    for (const tab of ['site', 'seo', 'distribution', 'function', 'auth', 'customDomain']) {
+    for (const tab of ['site', 'siteServices', 'seo', 'distribution', 'function', 'auth', 'customDomain']) {
       expect(keys).toContain(tab);
     }
     expect(keys).not.toContain('subsites'); // Subsites is main-official-host only
@@ -85,7 +96,7 @@ describe('user/Setting surface gating', () => {
     vi.stubEnv('VITE_SURFACE', 'web');
     hostState.official = true;
     const keys = tabKeys(mountSetting());
-    for (const tab of ['site', 'seo', 'distribution', 'function', 'auth', 'subsites']) {
+    for (const tab of ['site', 'siteServices', 'seo', 'distribution', 'function', 'auth', 'subsites']) {
       expect(keys).toContain(tab);
     }
     expect(keys).not.toContain('customDomain'); // main host never binds extra domains
@@ -104,6 +115,14 @@ describe('user/Setting surface gating', () => {
     const subsite = mountSetting();
     await subsite.setData({ activeTab: 'customDomain' });
     expect(subsite.findComponent(CustomDomainSetting).exists()).toBe(true);
+  });
+
+  it('web: Price opens the combined pricing panel at table width', async () => {
+    vi.stubEnv('VITE_SURFACE', 'web');
+    const wrapper = mountSetting();
+    await wrapper.setData({ activeTab: 'siteServices' });
+    expect(wrapper.findComponent(SiteServicesSetting).exists()).toBe(true);
+    expect((wrapper.vm as unknown as { dialogWidth: string }).dialogWidth).toBe('min(900px, 94vw)');
   });
 
   it.each(['ios', 'android', 'desktop'])('non-web surface %s hides every operator tab on both hosts', (surface) => {

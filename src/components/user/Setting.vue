@@ -198,9 +198,8 @@ export default defineComponent({
           visible: this.isSiteConfigVisible
         },
         {
-          // Per-service overrides for THIS site: hide / rename / re-summarize /
-          // reorder a service, or set a per-service markup on top of the
-          // site-wide default. Admin + web gated like the other site config.
+          // Site-wide and per-service pricing live together here. The service
+          // overrides also keep their related visibility and display controls.
           key: SETTING_TAB_SITE_SERVICES,
           label: this.$t('common.settings.siteServices'),
           icon: faTags,
@@ -317,7 +316,11 @@ export default defineComponent({
       if (this.mobile) return '94vw';
       // BYOK and Subsites both render multi-column tables that don't fit
       // the default 50% dialog width on most laptops.
-      return this.currentTab === SETTING_TAB_API_KEY || this.currentTab === SETTING_TAB_SUBSITES ? '900px' : '50%';
+      return this.currentTab === SETTING_TAB_API_KEY ||
+        this.currentTab === SETTING_TAB_SITE_SERVICES ||
+        this.currentTab === SETTING_TAB_SUBSITES
+        ? 'min(900px, 94vw)'
+        : '50%';
     }
   },
   watch: {

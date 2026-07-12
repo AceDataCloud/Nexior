@@ -1,6 +1,27 @@
 <template>
   <div class="site-services-settings">
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
+    <section class="default-price-section">
+      <div>
+        <p class="settings-title">{{ $t('site.field.markupRatio') }}</p>
+        <p class="settings-tip">{{ $t('site.message.markupRatioTip') }}</p>
+      </div>
+      <div class="markup-row">
+        <el-input-number
+          :model-value="siteMarkupDraftPercent"
+          :min="0"
+          :max="MARKUP_RATIO_MAX * 100"
+          :step="1"
+          :precision="2"
+          :controls-position="'right'"
+          :disabled="siteMarkupSaving"
+          class="markup-input"
+          @change="onSaveSiteMarkup"
+        />
+        <span class="markup-percent">%</span>
+      </div>
+    </section>
+
     <div class="header">
       <div>
         <p class="settings-title">{{ $t('site.services.title') }}</p>
@@ -32,7 +53,7 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('site.field.markupRatio')" width="110" align="right">
+        <el-table-column :label="$t('site.services.field.customMarkupRatio')" width="150" align="right">
           <template #default="{ row }">
             <span v-if="row.markup_ratio === null || row.markup_ratio === undefined" class="muted">{{
               $t('site.services.status.inherit')
@@ -105,7 +126,7 @@
           <div class="field-desc">{{ $t('site.services.tip.visible') }}</div>
         </el-form-item>
 
-        <el-form-item :label="$t('site.field.markupRatio')">
+        <el-form-item :label="$t('site.services.field.customMarkupRatio')">
           <div class="markup-row">
             <el-input-number
               v-model="markupPercent"
@@ -120,7 +141,6 @@
             <span class="markup-percent">%</span>
           </div>
           <div class="field-desc">{{ $t('site.services.tip.markup') }}</div>
-          <div class="field-desc">{{ $t('site.message.markupExample') }}</div>
         </el-form-item>
 
         <el-form-item :label="$t('site.services.field.displayTitle')">
@@ -216,7 +236,7 @@ import {
   vLoading
 } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
-import { serviceOperator, siteServiceOverrideOperator } from '@/operators';
+import { serviceOperator, siteOperator, siteServiceOverrideOperator } from '@/operators';
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
@@ -283,6 +303,11 @@ export default defineComponent({
   data() {
     return {
       Plus: markRaw(Plus),
+      MARKUP_RATIO_MAX,
+      siteMarkupDraftPercent: 0,
+      siteMarkupConfirmedPercent: 0,
+      siteMarkupSaving: false,
+      pendingSiteMarkupPercent: undefined as number | undefined,
       loading: false,
       catalogLoading: false,
       submitting: false,
@@ -306,6 +331,9 @@ export default defineComponent({
     // Site-wide default a blank per-service markup inherits.
     siteDefaultRatio(): number {
       return getSiteMarkupRatio(this.site);
+    },
+    siteMarkupPercent(): number {
+      return Math.round(this.siteDefaultRatio * 10000) / 100;
     },
     // Never below the loaded value so el-input-number can't silently clamp a
     // pre-existing out-of-range override down on dialog open.
@@ -337,6 +365,15 @@ export default defineComponent({
     }
   },
   watch: {
+    siteMarkupPercent: {
+      immediate: true,
+      handler(percent: number) {
+        if (!this.siteMarkupSaving && this.pendingSiteMarkupPercent === undefined) {
+          this.siteMarkupDraftPercent = percent;
+          this.siteMarkupConfirmedPercent = percent;
+        }
+      }
+    },
     siteId: {
       immediate: true,
       handler(id: string | undefined) {
@@ -358,6 +395,61 @@ export default defineComponent({
   methods: {
     onResize() {
       this.mobile = window.innerWidth < 768;
+    },
+    async onSaveSiteMarkup(percent: number | undefined): Promise<void> {
+      if (!this.siteId) return;
+      const clampedPercent = Math.min(MARKUP_RATIO_MAX * 100, Math.max(0, Number(percent) || 0));
+      const normalizedPercent = Math.round(clampedPercent * 100) / 100;
+      this.siteMarkupDraftPercent = normalizedPercent;
+      this.pendingSiteMarkupPercent = normalizedPercent;
+      if (this.siteMarkupSaving) return;
+
+      this.siteMarkupSaving = true;
+      let saveFailed = false;
+      try {
+        while (this.pendingSiteMarkupPercent !== undefined) {
+          const nextPercent = this.pendingSiteMarkupPercent;
+          this.pendingSiteMarkupPercent = undefined;
+          const siteId = this.siteId;
+          if (!siteId) break;
+          const metadata = (this.site.metadata || {}) as Record<string, unknown>;
+          await siteOperator.update(siteId, {
+            ...this.site,
+            metadata: {
+              ...metadata,
+              pricing: {
+                ...((metadata.pricing as Record<string, unknown>) || {}),
+                markup_ratio: nextPercent / 100
+              }
+            }
+          });
+          this.siteMarkupConfirmedPercent = nextPercent;
+        }
+      } catch {
+        saveFailed = true;
+        this.pendingSiteMarkupPercent = undefined;
+        ElMessage.error(this.$t('site.services.message.saveFailed'));
+        this.siteMarkupDraftPercent = this.siteMarkupConfirmedPercent;
+      }
+
+      try {
+        const refreshedSite = (await this.$store.dispatch('getSite')) as ISite | undefined;
+        if (refreshedSite) {
+          const refreshedPercent = Math.round(getSiteMarkupRatio(refreshedSite) * 10000) / 100;
+          this.siteMarkupConfirmedPercent = refreshedPercent;
+          this.siteMarkupDraftPercent = refreshedPercent;
+        } else if (!saveFailed) {
+          ElMessage.error(this.$t('site.services.message.fetchFailed'));
+          this.siteMarkupDraftPercent = this.siteMarkupConfirmedPercent;
+        }
+      } catch {
+        if (!saveFailed) {
+          ElMessage.error(this.$t('site.services.message.fetchFailed'));
+        }
+        this.siteMarkupDraftPercent = this.siteMarkupConfirmedPercent;
+      } finally {
+        this.siteMarkupSaving = false;
+      }
     },
     formatMarkup(ratio: number): string {
       // 0 -> "+0%", 0.3 -> "+30%", 1.25 -> "+125%". One decimal max so
@@ -585,6 +677,34 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .site-services-settings {
+  .default-price-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid var(--el-border-color-lighter);
+    border-radius: 8px;
+    background: var(--el-fill-color-extra-light);
+
+    .markup-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .markup-input {
+      width: 180px;
+    }
+
+    .markup-percent {
+      color: var(--el-color-primary);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+  }
   .header {
     display: flex;
     align-items: flex-start;
@@ -626,6 +746,24 @@ export default defineComponent({
   .muted {
     color: var(--el-text-color-secondary);
     font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-services-settings {
+    .default-price-section {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 12px;
+
+      .markup-input {
+        width: min(180px, calc(100vw - 96px));
+      }
+    }
+
+    .header {
+      flex-direction: column;
+    }
   }
 }
 

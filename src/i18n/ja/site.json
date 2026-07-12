@@ -40,11 +40,11 @@
     "description": "編集ボックスに表示されるタイトル"
   },
   "field.markupRatio": {
-    "message": "加価率",
+    "message": "サイト全体の一律上乗せ率",
     "description": "サイト設定：このサイトのすべてのチャージプランに統一して加価する割合（パーセント）"
   },
   "message.markupRatioTip": {
-    "message": "このサイトのすべてのチャージプランに統一して加価（0%〜500%）。0%はプラットフォームの元の価格で販売することを示します；加価部分はあなたが得る差額であり、販売手数料の割合は変わりません。",
+    "message": "このサイトのすべてのサービスに一律の上乗せ率を設定します（0%～500%）。下のサービス別カスタム上乗せ率を設定すると、この値より優先されます。",
     "description": "加価率設定項目の説明文"
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "サービス別の価格と表示"
+    "message": "サービス別カスタム上乗せ率と表示"
   },
   "services.tip": {
     "message": "個々のサービスを非表示・改名・個別価格・並べ替えできます。加算を空にするとサイト既定を継承します。行を削除すると既定表示に戻ります。"
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "表示"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "サービス別カスタム上乗せ率"
   },
   "services.field.displayTitle": {
     "message": "表示名"
