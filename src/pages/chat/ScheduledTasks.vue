@@ -3,7 +3,7 @@
     <div class="inner">
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
-        <el-button type="primary" round @click="showCreateDialog = true">
+        <el-button type="primary" round :disabled="saving" @click="openCreate">
           <font-awesome-icon icon="fa-solid fa-plus" class="icon" />
           {{ $t('chat.scheduledTasks.create') }}
         </el-button>
@@ -139,6 +139,8 @@
       :title="editingTask ? $t('chat.scheduledTasks.edit') : $t('chat.scheduledTasks.create')"
       width="540px"
       :close-on-click-modal="false"
+      :close-on-press-escape="!saving"
+      :show-close="!saving"
       class="scheduled-task-dialog"
     >
       <el-form :model="form" label-width="92px">
@@ -275,7 +277,7 @@
       </el-form>
 
       <template #footer>
-        <el-button @click="showCreateDialog = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button :disabled="saving" @click="closeTaskDialog">{{ $t('common.button.cancel') }}</el-button>
         <el-button type="primary" :loading="saving" @click="saveTask">
           {{ $t('common.button.confirm') }}
         </el-button>
@@ -483,6 +485,16 @@ export default defineComponent({
     },
     onRunPageChange(p: number) {
       this.runPage = p;
+    },
+    openCreate() {
+      if (this.saving) return;
+      this.editingTask = null;
+      this.form = this.emptyForm();
+      this.showCreateDialog = true;
+    },
+    closeTaskDialog() {
+      if (this.saving) return;
+      this.showCreateDialog = false;
     },
     openEdit(task: IScheduledTask) {
       this.editingTask = task;
