@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 02:07:11 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 02:08:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.3
+
+Sun, 12 Jul 2026 02:08:08 GMT
+
+### Patches
+
+- fix(maestro): enable Run again in the API code dialog (add maestro to PATH_TO_STORE so the dialog resolves the API token) (dev@acedata.cloud)
 
 ## 3.324.2
 
