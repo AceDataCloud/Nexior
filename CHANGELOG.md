@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 10:57:12 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 13:20:04 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.14
+
+Sun, 12 Jul 2026 13:20:04 GMT
+
+### Patches
+
+- Unify the Artifacts page with Scheduled Tasks styling and add count-aware artifact filters (dev@acedata.cloud)
 
 ## 3.324.13
 
