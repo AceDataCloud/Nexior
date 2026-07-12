@@ -35,15 +35,37 @@
           <h2 class="field-title font-bold">{{ $t('maestro.name.langs') }}</h2>
           <info-icon :content="$t('maestro.description.langs')" class="ml-1" />
         </div>
-        <el-select
-          v-model="langs"
-          multiple
-          collapse-tags
-          :placeholder="$t('maestro.placeholder.select')"
-          class="w-full"
-        >
-          <el-option v-for="l in MAESTRO_ALLOWED_LANGS" :key="l" :label="l" :value="l" />
-        </el-select>
+        <div class="language-picker">
+          <label class="language-role language-role--primary">
+            <span class="language-role-label">{{ $t('maestro.name.primaryLanguage') }}</span>
+            <el-select v-model="primaryLanguage" class="w-full">
+              <el-option
+                v-for="option in languageOptions"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value"
+              />
+            </el-select>
+          </label>
+          <label class="language-role">
+            <span class="language-role-label">{{ $t('maestro.name.additionalLanguages') }}</span>
+            <el-select
+              v-model="additionalLanguages"
+              multiple
+              collapse-tags
+              collapse-tags-tooltip
+              :placeholder="$t('maestro.placeholder.additionalLanguages')"
+              class="w-full"
+            >
+              <el-option
+                v-for="option in additionalLanguageOptions"
+                :key="option.value"
+                :label="option.label"
+                :value="option.value"
+              />
+            </el-select>
+          </label>
+        </div>
       </div>
 
       <!-- Aspect ratio -->
@@ -223,7 +245,6 @@ import InfoIcon from '@/components/common/InfoIcon.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FileUrlsInput from './config/FileUrlsInput.vue';
 import {
-  MAESTRO_ALLOWED_LANGS,
   MAESTRO_ALLOWED_ASPECTS,
   MAESTRO_MIN_DURATION,
   MAESTRO_MAX_DURATION,
@@ -244,6 +265,13 @@ import {
 } from '@/constants';
 import { IMaestroConfig } from '@/models';
 import { isVideoUrl } from '@/utils/is';
+import {
+  getMaestroLanguageOptions,
+  normalizeMaestroLanguages,
+  setMaestroAdditionalLanguages,
+  setMaestroPrimaryLanguage,
+  type IMaestroLanguageOption
+} from '@/utils/maestroLanguages';
 
 // Preview rectangle dimensions (px) for each aspect-ratio chip.
 const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
@@ -269,7 +297,6 @@ export default defineComponent({
   emits: ['generate'],
   data() {
     return {
-      MAESTRO_ALLOWED_LANGS,
       MAESTRO_MIN_DURATION,
       MAESTRO_MAX_DURATION,
       MAESTRO_ALLOWED_QUALITIES,
@@ -321,11 +348,32 @@ export default defineComponent({
     },
     langs: {
       get(): string[] {
-        return this.config?.langs || [];
+        return normalizeMaestroLanguages(this.config?.langs);
       },
       set(val: string[]) {
-        // keep at least the primary language so billing/render always has one
-        this.update({ langs: val.length ? val : MAESTRO_DEFAULT_LANGS });
+        this.update({ langs: normalizeMaestroLanguages(val) });
+      }
+    },
+    languageOptions(): IMaestroLanguageOption[] {
+      return getMaestroLanguageOptions(this.$i18n.locale);
+    },
+    additionalLanguageOptions(): IMaestroLanguageOption[] {
+      return this.languageOptions.filter((option) => option.value !== this.primaryLanguage);
+    },
+    primaryLanguage: {
+      get(): string {
+        return this.langs[0] || MAESTRO_DEFAULT_LANGS[0];
+      },
+      set(val: string) {
+        this.update({ langs: setMaestroPrimaryLanguage(this.langs, val) });
+      }
+    },
+    additionalLanguages: {
+      get(): string[] {
+        return this.langs.slice(1);
+      },
+      set(val: string[]) {
+        this.update({ langs: setMaestroAdditionalLanguages(this.langs, val) });
       }
     },
     aspect: {
@@ -401,7 +449,7 @@ export default defineComponent({
   mounted() {
     this.update({
       action: this.config?.action ?? MAESTRO_DEFAULT_ACTION,
-      langs: this.config?.langs?.length ? this.config.langs : MAESTRO_DEFAULT_LANGS,
+      langs: normalizeMaestroLanguages(this.config?.langs),
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
       duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
       quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY,
@@ -517,6 +565,31 @@ export default defineComponent({
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid var(--el-border-color-lighter);
+}
+.language-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.language-role {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.language-role-label {
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.language-role--primary {
+  .language-role-label {
+    color: var(--el-color-primary);
+  }
+
+  :deep(.el-select__wrapper:not(.is-focused)) {
+    box-shadow: 0 0 0 1px var(--el-color-primary-light-5) inset;
+  }
 }
 .voice-row {
   display: flex;
