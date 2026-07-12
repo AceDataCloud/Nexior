@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 13:59:29 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 14:03:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.17
+
+Sun, 12 Jul 2026 14:03:45 GMT
+
+### Patches
+
+- Show the referenced source video on Maestro remix results (dev@acedata.cloud)
 
 ## 3.324.16
 
