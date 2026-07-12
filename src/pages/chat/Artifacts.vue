@@ -7,32 +7,25 @@
           v-model="showHidden"
           class="show-hidden"
           :active-text="$t('chat.artifacts.showHidden')"
-          @change="reload"
+          @change="onShowHiddenChange"
         />
       </div>
 
-      <!-- Summary card -->
-      <el-card v-if="summary && summary.total > 0" class="summary-card" shadow="never">
-        <div class="summary-total">{{ $t('chat.artifacts.summaryTotal', { count: summary.total }) }}</div>
-        <div class="summary-kinds">
-          <el-tag v-for="(count, kind) in summary.by_kind" :key="kind" round class="summary-tag">
-            {{ $t('chat.artifacts.kind.' + kind) }} · {{ count }}
-          </el-tag>
-        </div>
-      </el-card>
-
-      <!-- Kind filter tabs -->
-      <div class="filters">
-        <el-tag
-          v-for="opt in kindFilters"
+      <div class="filters" role="group" :aria-label="$t('chat.artifacts.title')">
+        <button
+          v-for="opt in visibleKindFilters"
           :key="opt"
-          :effect="activeKind === opt ? 'dark' : 'plain'"
-          round
-          class="filter-tag"
+          type="button"
+          class="filter-chip"
+          :class="{ active: activeKind === opt }"
+          :aria-pressed="activeKind === opt"
           @click="onFilter(opt)"
         >
-          {{ opt === 'all' ? $t('chat.artifacts.filterAll') : $t('chat.artifacts.kind.' + opt) }}
-        </el-tag>
+          <span>{{ opt === 'all' ? $t('chat.artifacts.filterAll') : $t('chat.artifacts.kind.' + opt) }}</span>
+          <span v-if="summary" class="filter-count">
+            {{ opt === 'all' ? summary.total : (summary.by_kind[opt] ?? 0) }}
+          </span>
+        </button>
       </div>
 
       <el-skeleton v-if="loading" :rows="4" animated class="loading-block" />
@@ -108,7 +101,19 @@ import { ElButton, ElCard, ElSkeleton, ElEmpty, ElTag, ElSwitch, ElMessage, ElMe
 import { artifactsOperator, IArtifact, IArtifactKind } from '@/operators/artifacts';
 
 const PAGE_SIZE = 30;
-const KIND_FILTERS: (IArtifactKind | 'all')[] = ['all', 'article', 'image', 'video', 'audio', 'email', 'document'];
+const KIND_FILTERS: (IArtifactKind | 'all')[] = [
+  'all',
+  'article',
+  'image',
+  'video',
+  'audio',
+  'email',
+  'document',
+  'message',
+  'dataset',
+  'link',
+  'other'
+];
 
 export default defineComponent({
   name: 'Artifacts',
@@ -124,7 +129,8 @@ export default defineComponent({
       showHidden: false,
       summary: null as { total: number; by_kind: Record<string, number> } | null,
       kindFilters: KIND_FILTERS,
-      reloadToken: 0
+      reloadToken: 0,
+      summaryReloadToken: 0
     };
   },
   computed: {
@@ -133,6 +139,12 @@ export default defineComponent({
     },
     hasMore(): boolean {
       return this.items.length < this.count;
+    },
+    visibleKindFilters(): (IArtifactKind | 'all')[] {
+      if (!this.summary) return this.kindFilters;
+      return this.kindFilters.filter(
+        (kind) => kind === 'all' || kind === this.activeKind || (this.summary?.by_kind[kind] ?? 0) > 0
+      );
     }
   },
   async mounted() {
@@ -144,10 +156,17 @@ export default defineComponent({
     },
     async loadSummary() {
       if (!this.token) return;
+      const token = ++this.summaryReloadToken;
       try {
-        this.summary = await artifactsOperator.summary(this.token);
+        const summary = await artifactsOperator.summary(this.token, {
+          ...(this.showHidden ? { include_hidden: true } : {})
+        });
+        if (token !== this.summaryReloadToken) return;
+        this.summary = summary;
       } catch (e) {
+        if (token !== this.summaryReloadToken) return;
         console.error('load artifact summary failed', e);
+        this.summary = null;
       }
     },
     async reload() {
@@ -173,6 +192,9 @@ export default defineComponent({
       } catch (e) {
         if (token !== this.reloadToken) return;
         console.error('load artifacts failed', e);
+        this.items = [];
+        this.count = 0;
+        this.offset = 0;
         ElMessage.error(this.$t('chat.artifacts.loadError'));
       } finally {
         if (token === this.reloadToken) this.loading = false;
@@ -203,6 +225,9 @@ export default defineComponent({
       if (this.activeKind === kind) return;
       this.activeKind = kind;
       this.reload();
+    },
+    async onShowHiddenChange() {
+      await Promise.all([this.loadSummary(), this.reload()]);
     },
     async onToggleHide(item: IArtifact) {
       if (!this.token) return;
@@ -251,108 +276,268 @@ export default defineComponent({
 .artifacts {
   height: 100%;
   overflow-y: auto;
+  background-color: var(--el-bg-color-page) !important;
+}
+
+.inner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--el-text-color-primary);
+}
+
+.show-hidden {
+  flex-shrink: 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 4px 12px;
+  border: 1px solid var(--app-border-subtle, var(--el-border-color));
+  border-radius: var(--el-border-radius-round);
+  background: var(--app-bg-surface, var(--el-bg-color-overlay));
+  color: var(--el-text-color-secondary);
+  font: inherit;
+  font-size: 12px;
+  line-height: 18px;
+  cursor: pointer;
+  transition:
+    color 0.16s,
+    border-color 0.16s,
+    background-color 0.16s;
+}
+
+.filter-chip:hover:not(.active) {
+  border-color: var(--el-color-primary);
+  background: rgba(var(--app-brand-rgb), 0.06);
+  color: var(--el-color-primary);
+}
+
+.filter-chip:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+}
+
+.filter-chip.active {
+  border-color: var(--el-color-primary);
+  background: var(--el-color-primary);
+  color: #ffffff;
+}
+
+.filter-count {
+  min-width: 18px;
+  padding: 0 5px;
+  border-radius: var(--el-border-radius-round);
+  background: var(--el-fill-color-light);
+  color: var(--el-text-color-secondary);
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.filter-chip.active .filter-count {
+  background: rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.loading-block {
+  padding: 12px 4px;
+}
+
+.empty {
+  padding: 60px 0;
+}
+
+.artifact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.artifact-card {
+  overflow: hidden;
+  border: none;
+  border-radius: 16px;
+  background: var(--app-bg-surface, var(--el-bg-color-overlay));
+
+  :deep(.el-card__body) {
+    padding: 16px 18px;
+  }
+}
+
+.artifact-body {
+  display: flex;
+  gap: 14px;
+}
+
+.thumb {
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+  border-radius: 10px;
+  background: var(--el-fill-color-light);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.thumb:focus-visible {
+  outline: 2px solid var(--el-color-primary);
+  outline-offset: 2px;
+}
+
+.artifact-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.artifact-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.channel {
+  font-size: 12px;
+  color: var(--el-text-color-secondary);
+}
+
+.time {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--el-text-color-placeholder);
+}
+
+.artifact-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--el-text-color-primary);
+  word-break: break-word;
+}
+
+.artifact-summary {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--el-text-color-secondary);
+  word-break: break-word;
+}
+
+.artifact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.artifact-actions .el-button + .el-button {
+  margin-left: 0;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.load-more {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
   .inner {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 24px 16px 64px;
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      .title {
-        margin: 0;
-        font-size: 20px;
-      }
+    padding: 20px 12px 40px;
+  }
+
+  .header {
+    margin-bottom: 16px;
+  }
+
+  .filters {
+    flex-wrap: nowrap;
+    margin-right: -12px;
+    padding-right: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-chip {
+    flex-shrink: 0;
+  }
+
+  .artifact-card {
+    :deep(.el-card__body) {
+      padding: 14px;
     }
-    .summary-card {
-      margin-bottom: 16px;
-      .summary-total {
-        font-size: 15px;
-        font-weight: 600;
-        margin-bottom: 8px;
-      }
-      .summary-kinds {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-      }
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-      .filter-tag {
-        cursor: pointer;
-      }
-    }
-    .artifact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .artifact-card {
-      .artifact-body {
-        display: flex;
-        gap: 12px;
-        .thumb {
-          flex-shrink: 0;
-          width: 96px;
-          height: 96px;
-          border-radius: 8px;
-          overflow: hidden;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        .artifact-main {
-          flex: 1;
-          min-width: 0;
-          .artifact-top {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 4px;
-            .channel {
-              font-size: 12px;
-              color: var(--el-text-color-secondary);
-            }
-            .time {
-              font-size: 12px;
-              color: var(--el-text-color-placeholder);
-              margin-left: auto;
-            }
-          }
-          .artifact-title {
-            font-weight: 600;
-            word-break: break-word;
-          }
-          .artifact-summary {
-            font-size: 13px;
-            color: var(--el-text-color-secondary);
-            margin-top: 2px;
-            word-break: break-word;
-          }
-          .artifact-actions {
-            margin-top: 6px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            .icon {
-              margin-right: 4px;
-            }
-          }
-        }
-      }
-    }
-    .load-more {
-      text-align: center;
-      margin-top: 16px;
-    }
+  }
+
+  .artifact-body {
+    gap: 12px;
+  }
+
+  .thumb {
+    width: 80px;
+    height: 80px;
+  }
+
+  .time {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .title {
+    font-size: 19px;
+  }
+
+  .thumb {
+    width: 72px;
+    height: 72px;
+  }
+
+  .artifact-summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 }
 </style>
