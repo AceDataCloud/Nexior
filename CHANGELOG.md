@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 13:56:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 13:59:29 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.16
+
+Sun, 12 Jul 2026 13:59:29 GMT
+
+### Patches
+
+- Scheduled tasks: open New with a fresh form after editing an existing task (dev@acedata.cloud)
 
 ## 3.324.15
 
