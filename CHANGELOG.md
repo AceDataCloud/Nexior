@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 03:30:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 05:56:35 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.8
+
+Sun, 12 Jul 2026 05:56:35 GMT
+
+### Patches
+
+- Scheduled tasks: flatten cards onto page background, drop border, remove lift-on-hover (dev@acedata.cloud)
 
 ## 3.324.7
 
