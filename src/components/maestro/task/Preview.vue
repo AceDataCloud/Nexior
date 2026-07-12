@@ -52,10 +52,10 @@
             {{ $t('maestro.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+            {{ $t('maestro.name.traceId') }}: {{ traceId }}
+            <copy-to-clipboard :content="traceId" />
           </p>
         </el-alert>
       </div>
@@ -107,10 +107,10 @@
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+            {{ $t('maestro.name.traceId') }}: {{ traceId }}
+            <copy-to-clipboard :content="traceId" />
           </p>
         </el-alert>
       </div>
@@ -143,10 +143,10 @@
             <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
             {{ $t('maestro.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('maestro.name.traceId') }}: {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+            {{ $t('maestro.name.traceId') }}: {{ traceId }}
+            <copy-to-clipboard :content="traceId" />
           </p>
         </el-alert>
       </div>
@@ -228,6 +228,9 @@ export default defineComponent({
     },
     isTerminal(): boolean {
       return TERMINAL.includes(this.modelValue?.status || '');
+    },
+    traceId(): string | undefined {
+      return this.modelValue?.trace_id || this.modelValue?.response?.trace_id;
     },
     progressPct(): number | undefined {
       const progress = this.modelValue?.response?.data?.progress;
