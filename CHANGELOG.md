@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 02:13:54 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 02:15:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.5
+
+Sun, 12 Jul 2026 02:15:13 GMT
+
+### Patches
+
+- View docs opens the service documents landing page (dev@acedata.cloud)
+- Maestro: display task trace IDs from the task response top level (dev@acedata.cloud)
 
 ## 3.324.4
 
