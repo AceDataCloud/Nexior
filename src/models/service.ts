@@ -39,6 +39,10 @@ export interface IService {
   tags?: string[];
   metadata?: any;
   thumbnail?: string;
+  // Square brand logo / favicon on cdn.acedata.cloud.
+  icon_url?: string;
+  // Catalog-private services are hidden from the public site picker.
+  private?: boolean;
   introduction?: string;
   proxies?: IProxy[];
   proxy_ids?: string[];
