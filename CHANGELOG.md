@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sat, 11 Jul 2026 17:58:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 02:06:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.1
+
+Sun, 12 Jul 2026 02:06:21 GMT
+
+### Patches
+
+- Gate iframe login solely on the LOGIN_METHOD setting; stop reading the auth-iframe/iframe feature flag for the login decision. Default is redirect. The general featureFlag util (URL + /config) is retained for other features. (dev@acedata.cloud)
 
 ## 3.324.0
 
