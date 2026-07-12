@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Wybierz rodzaj tworzonego wideo. Automatyczny pozwala Maestro zdecydować; albo wymuś styl, np. krótki dramat, ujęcia rzeczywiste, objaśnienie lub promocję produktu.",
+    "message": "Włącz dostosowanie, aby wybrać typ wideo. Po wyłączeniu Maestro zdecyduje automatycznie.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Pole stylu wizualnego"
   },
   "description.style": {
-    "message": "Opcjonalne wskazówki dotyczące stylu wizualnego (dotyczące typografii, kolorystyki, animacji, rytmu), niezależne od typu wideo. Opcjonalne ustawienia wstępne lub własny wpis.",
+    "message": "Włącz dostosowanie, aby wybrać lub wpisać styl wizualny. Po wyłączeniu Maestro zdecyduje automatycznie.",
     "description": "Pomoc dotycząca pola stylu"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Przycisk do podglądu głosu / odtwarzania próbki"
   },
   "description.voice": {
-    "message": "Wybierz ton głosu narratora. Ton nie jest związany z językiem — ten sam ton będzie czytany w języku wybranym powyżej; kliknij odtwarzanie, aby posłuchać.",
+    "message": "Włącz dostosowanie, aby wybrać ton głosu. Po wyłączeniu Maestro dobierze go automatycznie. Ton jest niezależny od języka i można go odsłuchać.",
     "description": "Pomoc dotycząca pola głosu"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Dostosuj typ wideo",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Dostosuj styl wizualny",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Dostosuj ton głosu",
+    "description": "Voice timbre customization toggle"
   }
 }

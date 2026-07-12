@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Изаберите врсту видеа. „Аутоматски“ препушта Maestro-у да одлучи; или наметните стил као што су кратка драма, стварни снимци, објашњење или промоција производа.",
+    "message": "Укључите прилагођавање да бисте изабрали тип видеа. Када је искључено, Maestro одлучује аутоматски.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Поље за визуелни стил"
   },
   "description.style": {
-    "message": "Опционални визуелни стилски савети (који се односе на типографију, боје, анимације, ритам), независно од типа видеа. Опционални предлози или ручно унети.",
+    "message": "Укључите прилагођавање да бисте изабрали или унели визуелни стил. Када је искључено, Maestro одлучује аутоматски.",
     "description": "Помоћно поље за стил"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": " dugme za pregled glasa / reprodukciju uzorka"
   },
   "description.voice": {
-    "message": "Изаберите тон гласа за нарацију. Тон није повезан са језиком — исти тон ће читати на језику изабраном горе; кликните на репродукцију за преглед.",
+    "message": "Укључите прилагођавање да бисте изабрали тон гласа. Када је искључено, Maestro га бира аутоматски. Тон не зависи од језика и може се преслушати.",
     "description": "Помоћно поље за глас"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Прилагоди тип видеа",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Прилагоди визуелни стил",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Прилагоди тон гласа",
+    "description": "Voice timbre customization toggle"
   }
 }

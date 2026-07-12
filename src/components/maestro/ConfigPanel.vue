@@ -127,103 +127,110 @@
         </el-select>
       </div>
 
-      <!-- Optional creative controls -->
-      <div class="customize-section">
-        <div class="customize-header">
-          <div class="customize-copy">
-            <h2 class="field-title font-bold">{{ $t('maestro.name.customize') }}</h2>
-            <p class="customize-description">
-              {{ $t(customize ? 'maestro.description.customize.manual' : 'maestro.description.customize.auto') }}
-            </p>
+      <!-- Scenario (video type) -->
+      <div class="custom-field">
+        <div class="custom-field-header mb-2">
+          <div class="field-head">
+            <h2 class="field-title font-bold">{{ $t('maestro.name.customizeScenario') }}</h2>
+            <info-icon :content="$t('maestro.description.scenario')" class="ml-1" />
           </div>
-          <el-switch v-model="customize" :aria-label="$t('maestro.name.customize')" />
+          <el-switch v-model="scenarioCustomizationEnabled" :aria-label="$t('maestro.name.customizeScenario')" />
         </div>
+        <div
+          class="scenario-cards"
+          :class="{ 'is-disabled': !scenarioCustomizationEnabled }"
+          role="radiogroup"
+          :aria-label="$t('maestro.name.scenario')"
+          :aria-disabled="!scenarioCustomizationEnabled"
+        >
+          <div
+            v-for="s in MAESTRO_ALLOWED_SCENARIOS"
+            :key="s"
+            class="scenario-card"
+            :class="{
+              active: scenarioCustomizationEnabled && scenario === s,
+              disabled: !scenarioCustomizationEnabled
+            }"
+            role="radio"
+            :aria-checked="scenarioCustomizationEnabled && scenario === s"
+            :aria-disabled="!scenarioCustomizationEnabled"
+            :aria-label="$t(`maestro.option.scenario.${s}`)"
+            :tabindex="scenarioCustomizationEnabled ? 0 : -1"
+            @click="scenarioCustomizationEnabled && (scenario = s)"
+            @keydown.enter.prevent="scenarioCustomizationEnabled && (scenario = s)"
+            @keydown.space.prevent="scenarioCustomizationEnabled && (scenario = s)"
+          >
+            <div class="scenario-thumb">
+              <img :src="MAESTRO_SCENARIO_THUMBNAILS[s]" :alt="$t(`maestro.option.scenario.${s}`)" loading="lazy" />
+            </div>
+            <p class="scenario-name">{{ $t(`maestro.option.scenario.${s}`) }}</p>
+          </div>
+        </div>
+        <el-alert
+          v-if="needsVideoUpload"
+          :title="$t('maestro.message.captionsNeedVideo')"
+          type="warning"
+          :closable="false"
+          show-icon
+          class="mt-2"
+        />
+      </div>
 
-        <div v-if="customize" class="customize-fields">
-          <!-- Scenario (video type) -->
-          <div class="field-block">
-            <div class="field-head mb-2">
-              <h2 class="field-title font-bold">{{ $t('maestro.name.scenario') }}</h2>
-              <info-icon :content="$t('maestro.description.scenario')" class="ml-1" />
-            </div>
-            <div class="scenario-cards" role="radiogroup" :aria-label="$t('maestro.name.scenario')">
-              <div
-                v-for="s in MAESTRO_ALLOWED_SCENARIOS"
-                :key="s"
-                class="scenario-card"
-                :class="{ active: scenario === s }"
-                role="radio"
-                :aria-checked="scenario === s"
-                :aria-label="$t(`maestro.option.scenario.${s}`)"
-                tabindex="0"
-                @click="scenario = s"
-                @keydown.enter.prevent="scenario = s"
-                @keydown.space.prevent="scenario = s"
-              >
-                <div class="scenario-thumb">
-                  <img :src="MAESTRO_SCENARIO_THUMBNAILS[s]" :alt="$t(`maestro.option.scenario.${s}`)" loading="lazy" />
-                </div>
-                <p class="scenario-name">{{ $t(`maestro.option.scenario.${s}`) }}</p>
-              </div>
-            </div>
-            <el-alert
-              v-if="needsVideoUpload"
-              :title="$t('maestro.message.captionsNeedVideo')"
-              type="warning"
-              :closable="false"
-              show-icon
-              class="mt-2"
+      <!-- Style (visual direction) -->
+      <div class="custom-field">
+        <div class="custom-field-header mb-2">
+          <div class="field-head">
+            <h2 class="field-title font-bold">{{ $t('maestro.name.customizeStyle') }}</h2>
+            <info-icon :content="$t('maestro.description.style')" class="ml-1" />
+          </div>
+          <el-switch v-model="styleCustomizationEnabled" :aria-label="$t('maestro.name.customizeStyle')" />
+        </div>
+        <el-select
+          v-model="style"
+          class="w-full"
+          filterable
+          allow-create
+          default-first-option
+          :disabled="!styleCustomizationEnabled"
+          :aria-label="$t('maestro.name.customizeStyle')"
+          :placeholder="$t('maestro.placeholder.select')"
+        >
+          <el-option v-for="s in MAESTRO_ALLOWED_STYLES" :key="s" :label="$t(`maestro.option.style.${s}`)" :value="s" />
+        </el-select>
+      </div>
+
+      <!-- Voice (narration timbre) + preview -->
+      <div class="custom-field">
+        <div class="custom-field-header mb-2">
+          <div class="field-head">
+            <h2 class="field-title font-bold">{{ $t('maestro.name.customizeVoice') }}</h2>
+            <info-icon :content="$t('maestro.description.voice')" class="ml-1" />
+          </div>
+          <el-switch v-model="voiceCustomizationEnabled" :aria-label="$t('maestro.name.customizeVoice')" />
+        </div>
+        <div class="voice-row">
+          <el-select
+            v-model="voice"
+            class="voice-select"
+            :disabled="!voiceCustomizationEnabled"
+            :aria-label="$t('maestro.name.customizeVoice')"
+            :placeholder="$t('maestro.placeholder.select')"
+          >
+            <el-option
+              v-for="v in MAESTRO_ALLOWED_VOICES"
+              :key="v.key"
+              :label="$t(`maestro.option.voice.${v.key}`)"
+              :value="v.key"
             />
-          </div>
-
-          <!-- Style (visual direction) -->
-          <div class="field-row mt-5">
-            <div class="field-head">
-              <h2 class="field-title font-bold">{{ $t('maestro.name.style') }}</h2>
-              <info-icon :content="$t('maestro.description.style')" class="ml-1" />
-            </div>
-            <el-select
-              v-model="style"
-              class="field-control"
-              filterable
-              allow-create
-              default-first-option
-              :placeholder="$t('maestro.placeholder.select')"
-            >
-              <el-option
-                v-for="s in MAESTRO_ALLOWED_STYLES"
-                :key="s"
-                :label="$t(`maestro.option.style.${s}`)"
-                :value="s"
-              />
-            </el-select>
-          </div>
-
-          <!-- Voice (narration timbre) + preview -->
-          <div class="field-block mt-5">
-            <div class="field-head mb-2">
-              <h2 class="field-title font-bold">{{ $t('maestro.name.voice') }}</h2>
-              <info-icon :content="$t('maestro.description.voice')" class="ml-1" />
-            </div>
-            <div class="voice-row">
-              <el-select v-model="voice" class="voice-select" :placeholder="$t('maestro.placeholder.select')">
-                <el-option
-                  v-for="v in MAESTRO_ALLOWED_VOICES"
-                  :key="v.key"
-                  :label="$t(`maestro.option.voice.${v.key}`)"
-                  :value="v.key"
-                />
-              </el-select>
-              <el-button
-                class="voice-play"
-                :disabled="!currentSample"
-                :title="$t('maestro.button.preview')"
-                @click="onToggleSample"
-              >
-                <font-awesome-icon :icon="playing ? 'fa-solid fa-pause' : 'fa-solid fa-play'" />
-              </el-button>
-            </div>
-          </div>
+          </el-select>
+          <el-button
+            class="voice-play"
+            :disabled="!voiceCustomizationEnabled || !currentSample"
+            :title="$t('maestro.button.preview')"
+            @click="onToggleSample"
+          >
+            <font-awesome-icon :icon="playing ? 'fa-solid fa-pause' : 'fa-solid fa-play'" />
+          </el-button>
         </div>
       </div>
     </div>
@@ -257,7 +264,6 @@ import {
   MAESTRO_ALLOWED_SCENARIOS,
   MAESTRO_SCENARIO_THUMBNAILS,
   MAESTRO_UPLOAD_REQUIRED_SCENARIOS,
-  MAESTRO_DEFAULT_SCENARIO,
   MAESTRO_ALLOWED_STYLES,
   MAESTRO_DEFAULT_STYLE,
   MAESTRO_ALLOWED_VOICES,
@@ -329,7 +335,7 @@ export default defineComponent({
       return this.config?.ref_task_id;
     },
     needsVideoUpload(): boolean {
-      if (!this.customize) return false;
+      if (!this.scenarioCustomizationEnabled) return false;
       const scenario = this.config?.scenario;
       if (!scenario || !MAESTRO_UPLOAD_REQUIRED_SCENARIOS.includes(scenario)) return false;
       // captions post-processes a talking-head clip, so a video (not an image/audio) must be uploaded.
@@ -403,13 +409,29 @@ export default defineComponent({
         this.update({ quality: val });
       }
     },
-    customize: {
+    scenarioCustomizationEnabled: {
       get(): boolean {
-        return this.config?.customization_enabled ?? false;
+        return this.config?.scenario_customization_enabled ?? false;
+      },
+      set(val: boolean) {
+        this.update({ scenario_customization_enabled: val });
+      }
+    },
+    styleCustomizationEnabled: {
+      get(): boolean {
+        return this.config?.style_customization_enabled ?? false;
+      },
+      set(val: boolean) {
+        this.update({ style_customization_enabled: val });
+      }
+    },
+    voiceCustomizationEnabled: {
+      get(): boolean {
+        return this.config?.voice_customization_enabled ?? false;
       },
       set(val: boolean) {
         if (!val) this.stopSample();
-        this.update({ customization_enabled: val });
+        this.update({ voice_customization_enabled: val });
       }
     },
     scenario: {
@@ -425,12 +447,13 @@ export default defineComponent({
         return this.config?.style;
       },
       set(val: string) {
-        this.update({ style: val || MAESTRO_DEFAULT_STYLE });
+        const normalized = val?.trim();
+        this.update({ style: !normalized || normalized.toLowerCase() === 'auto' ? MAESTRO_DEFAULT_STYLE : normalized });
       }
     },
     voice: {
-      get(): string {
-        return this.config?.voice || MAESTRO_DEFAULT_VOICE;
+      get(): string | undefined {
+        return this.config?.voice;
       },
       set(val: string) {
         this.stopSample();
@@ -442,8 +465,11 @@ export default defineComponent({
     }
   },
   watch: {
-    customize(enabled: boolean) {
+    voiceCustomizationEnabled(enabled: boolean) {
       if (!enabled) this.stopSample();
+    },
+    voice() {
+      this.stopSample();
     }
   },
   mounted() {
@@ -452,19 +478,7 @@ export default defineComponent({
       langs: normalizeMaestroLanguages(this.config?.langs),
       aspect: this.config?.aspect ?? MAESTRO_DEFAULT_ASPECT,
       duration: this.config?.duration ?? MAESTRO_DEFAULT_DURATION,
-      quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY,
-      customization_enabled: this.config?.customization_enabled ?? false,
-      // Drop stale persisted scenarios (e.g. the removed `slideshow`) back to the default.
-      scenario:
-        this.config?.scenario && MAESTRO_ALLOWED_SCENARIOS.includes(this.config.scenario)
-          ? this.config.scenario
-          : MAESTRO_DEFAULT_SCENARIO,
-      style: this.config?.style ?? MAESTRO_DEFAULT_STYLE,
-      // Drop a stale persisted voice not in the current catalog back to auto.
-      voice:
-        this.config?.voice && MAESTRO_ALLOWED_VOICES.some((v) => v.key === this.config!.voice)
-          ? this.config.voice
-          : MAESTRO_DEFAULT_VOICE
+      quality: this.config?.quality ?? MAESTRO_DEFAULT_QUALITY
     });
   },
   beforeUnmount() {
@@ -541,30 +555,16 @@ export default defineComponent({
 .field-control {
   width: 168px;
 }
-.customize-section {
+.custom-field {
   margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid var(--el-border-color-lighter);
 }
-.customize-header {
+.custom-field-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-}
-.customize-copy {
-  min-width: 0;
-}
-.customize-description {
-  margin: 3px 0 0;
-  color: var(--el-text-color-secondary);
-  font-size: 12px;
-  line-height: 1.4;
-}
-.customize-fields {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--el-border-color-lighter);
 }
 .language-picker {
   display: flex;
@@ -665,8 +665,12 @@ export default defineComponent({
 }
 .scenario-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
+
+  &.is-disabled {
+    opacity: 0.55;
+  }
 }
 .scenario-card {
   border: 1px solid var(--el-border-color);
@@ -706,6 +710,10 @@ export default defineComponent({
 
   &:hover {
     border-color: var(--el-color-primary-light-5);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
   }
 
   &:focus-visible {

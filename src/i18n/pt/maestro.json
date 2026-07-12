@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Escolha o tipo de vídeo a criar. Automático deixa o Maestro decidir; ou force um estilo como drama curto, sequência real, explicativo ou promoção de produto.",
+    "message": "Ative a personalização para escolher o tipo de vídeo; deixe-a desativada para o Maestro decidir automaticamente.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Campo de estilo visual"
   },
   "description.style": {
-    "message": "Dicas de estilo visual opcionais (aplicáveis à tipografia, paleta de cores, animações, ritmo), independentes do tipo de vídeo. Presets opcionais ou entrada manual.",
+    "message": "Ative a personalização para escolher ou inserir o estilo visual; deixe-a desativada para o Maestro decidir automaticamente.",
     "description": "Ajuda para o campo de estilo"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Botão para prévia de voz / tocar amostra"
   },
   "description.voice": {
-    "message": "Escolha o timbre da narração. O timbre não está relacionado à língua — o mesmo timbre será lido na língua selecionada acima; clique em reproduzir para ouvir.",
+    "message": "Ative a personalização para escolher o timbre da narração; desativada, o Maestro escolhe automaticamente. O timbre independe do idioma e pode ser ouvido na prévia.",
     "description": "Ajuda do campo de voz"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Personalizar tipo de vídeo",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Personalizar estilo visual",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Personalizar timbre da narração",
+    "description": "Voice timbre customization toggle"
   }
 }

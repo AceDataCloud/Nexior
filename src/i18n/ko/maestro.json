@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "제작할 동영상 종류를 선택하세요. 자동은 Maestro가 결정하며, 숏드라마·실사 영상·설명·제품 홍보 등 스타일을 지정할 수도 있습니다.",
+    "message": "맞춤 설정을 켜면 동영상 유형을 선택할 수 있습니다. 끄면 Maestro가 자동으로 결정합니다.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "시각적 스타일 필드"
   },
   "description.style": {
-    "message": "선택 가능한 시각적 스타일 힌트(타이포그래피, 색상, 애니메이션, 리듬에 적용되며 비디오 유형과 독립적입니다). 선택된 프리셋 또는 직접 입력 가능합니다.",
+    "message": "맞춤 설정을 켜면 시각적 스타일을 선택하거나 입력할 수 있습니다. 끄면 Maestro가 자동으로 결정합니다.",
     "description": "스타일 필드 도움말"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "음성 미리보기 / 샘플 재생 버튼"
   },
   "description.voice": {
-    "message": "내레이터 음색을 선택하세요. 음색은 언어와 무관합니다 — 동일한 음색이 위에서 선택한 언어로 읽어줍니다; 재생을 클릭하여 미리 들을 수 있습니다.",
+    "message": "맞춤 설정을 켜면 내레이터 음색을 선택할 수 있습니다. 끄면 Maestro가 자동으로 선택합니다. 음색은 언어와 무관하며 재생 버튼을 눌러 미리 들을 수 있습니다.",
     "description": "음성 필드 도움말"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "동영상 유형 맞춤 설정",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "시각적 스타일 맞춤 설정",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "내레이터 음색 맞춤 설정",
+    "description": "Voice timbre customization toggle"
   }
 }

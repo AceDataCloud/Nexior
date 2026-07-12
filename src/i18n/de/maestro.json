@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Wähle die Art des Videos. Auto lässt Maestro entscheiden; oder erzwinge einen Stil wie Kurzdrama, Realaufnahmen, Erklärvideo oder Produktwerbung.",
+    "message": "Aktiviere die Anpassung, um den Videotyp auszuwählen. Ist sie ausgeschaltet, entscheidet Maestro automatisch.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Feld für visuellen Stil"
   },
   "description.style": {
-    "message": "Optionale visuelle Stilhinweise (wirken sich auf Typografie, Farbgebung, Animationen, Rhythmus aus), unabhängig vom Video-Typ. Wählen Sie eine vordefinierte Einstellung oder geben Sie Ihre eigene ein.",
+    "message": "Aktiviere die Anpassung, um einen visuellen Stil auszuwählen oder einzugeben. Ist sie ausgeschaltet, entscheidet Maestro automatisch.",
     "description": "Hilfe zum Stilfeld"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Button für Sprachvorschau / Abspielen einer Probe"
   },
   "description.voice": {
-    "message": "Wählen Sie den Klang der Erzählstimme. Der Klang ist unabhängig von der Sprache – derselbe Klang wird in der oben gewählten Sprache vorgelesen; klicken Sie auf Abspielen, um eine Vorschau zu hören.",
+    "message": "Aktiviere die Anpassung, um die Erzählstimme auszuwählen. Ist sie ausgeschaltet, wählt Maestro automatisch. Die Stimme ist sprachunabhängig, und du kannst sie über die Wiedergabetaste vorhören.",
     "description": "Hilfe für das Sprachfeld"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Videotyp anpassen",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Visuellen Stil anpassen",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Erzählstimme anpassen",
+    "description": "Voice timbre customization toggle"
   }
 }

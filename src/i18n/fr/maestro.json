@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Choisissez le type de vidéo à créer. Auto laisse Maestro décider ; ou imposez un style comme drame court, séquence réelle, explicatif ou promo produit.",
+    "message": "Activez la personnalisation pour choisir le type de vidéo ; laissez-la désactivée pour que Maestro décide automatiquement.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Champ de style visuel"
   },
   "description.style": {
-    "message": "Options de style visuel facultatives (affectant la typographie, les couleurs, les animations, le rythme), indépendantes du type de vidéo. Préréglages optionnels ou saisie manuelle.",
+    "message": "Activez la personnalisation pour choisir ou saisir le style visuel ; laissez-la désactivée pour que Maestro décide automatiquement.",
     "description": "Aide au champ de style"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Bouton d'aperçu de la voix / jouer un échantillon"
   },
   "description.voice": {
-    "message": "Choisissez le timbre de la voix pour la narration. Le timbre n'est pas lié à la langue — le même timbre lira dans la langue sélectionnée ci-dessus ; cliquez sur jouer pour écouter.",
+    "message": "Activez la personnalisation pour choisir le timbre de voix ; laissez-la désactivée pour que Maestro le sélectionne automatiquement. Le timbre est indépendant de la langue et vous pouvez cliquer sur le bouton de lecture pour le préécouter.",
     "description": "Aide pour le champ de voix"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Personnaliser le type de vidéo",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Personnaliser le style visuel",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Personnaliser le timbre de voix",
+    "description": "Voice timbre customization toggle"
   }
 }

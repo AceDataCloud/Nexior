@@ -175,8 +175,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElImage, ElAlert, ElButton, ElMessage } from 'element-plus';
-import { IMaestroTask, IMaestroVariant, IMaestroConfig } from '@/models';
-import { MAESTRO_LOGO, MAESTRO_ACTION_REMIX } from '@/constants';
+import { IMaestroTask, IMaestroVariant } from '@/models';
+import { MAESTRO_ACTION_REMIX, MAESTRO_LOGO } from '@/constants';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
@@ -186,6 +186,7 @@ import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import { isImageUrl, isVideoUrl, isAudioUrl } from '@/utils/is';
+import { buildMaestroRemixConfig } from '@/utils/maestro';
 import { getMaestroReferenceTask } from './referenceTask';
 import ProgressSteps from './ProgressSteps.vue';
 
@@ -260,7 +261,7 @@ export default defineComponent({
     },
     referenceTaskId(): string | undefined {
       const request = this.modelValue?.request;
-      return request?.action === MAESTRO_ACTION_REMIX ? request.ref_task_id : undefined;
+      return request?.action === MAESTRO_ACTION_REMIX ? request?.ref_task_id : undefined;
     },
     referenceLoadKey(): string | undefined {
       const credential = this.$store.state.maestro?.credential;
@@ -428,17 +429,8 @@ export default defineComponent({
       window.open(url, '_blank');
     },
     onRemix() {
-      const req = this.modelValue?.request;
-      const patch: IMaestroConfig = {
-        ...(this.$store.state.maestro?.config || {}),
-        action: MAESTRO_ACTION_REMIX,
-        ref_task_id: this.modelValue?.id,
-        prompt: '',
-        langs: req?.langs?.length ? req.langs : this.$store.state.maestro?.config?.langs,
-        aspect: req?.aspect ?? this.$store.state.maestro?.config?.aspect,
-        duration: req?.duration ?? this.$store.state.maestro?.config?.duration,
-        file_urls: []
-      };
+      if (!this.modelValue) return;
+      const patch = buildMaestroRemixConfig(this.$store.state.maestro?.config, this.modelValue);
       this.$store.commit('maestro/setConfig', patch);
       ElMessage.info(this.$t('maestro.message.remixLoaded'));
     }

@@ -1,7 +1,11 @@
 export type IMaestroAction = 'generate' | 'remix' | 'edit' | 'extend';
 
 export interface IMaestroConfig {
+  /** Legacy in-memory flag; normalized into the three field flags. */
   customization_enabled?: boolean;
+  scenario_customization_enabled?: boolean;
+  style_customization_enabled?: boolean;
+  voice_customization_enabled?: boolean;
   prompt?: string;
   action?: IMaestroAction;
   ref_task_id?: string;
@@ -16,7 +20,13 @@ export interface IMaestroConfig {
   callback_url?: string;
 }
 
-export type IMaestroGenerateRequest = Omit<IMaestroConfig, 'customization_enabled'>;
+export type IMaestroGenerateRequest = Omit<
+  IMaestroConfig,
+  | 'customization_enabled'
+  | 'scenario_customization_enabled'
+  | 'style_customization_enabled'
+  | 'voice_customization_enabled'
+>;
 
 export interface IMaestroVariant {
   lang?: string;

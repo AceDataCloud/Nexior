@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "作成する動画の種類を選びます。自動では Maestro が判断します。ショートドラマ・実写映像・解説・商品PRなどのスタイルを指定することもできます。",
+    "message": "カスタマイズをオンにすると動画タイプを選択できます。オフの場合は Maestro が自動で決定します。",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "ビジュアルスタイルフィールド"
   },
   "description.style": {
-    "message": "選択可能なビジュアルスタイルのヒント（タイポグラフィ、カラースキーム、アニメーション、リズムに影響し、ビデオタイプとは独立しています）。プリセットを選択するか、自分で入力します。",
+    "message": "カスタマイズをオンにするとビジュアルスタイルを選択または入力できます。オフの場合は Maestro が自動で決定します。",
     "description": "スタイルフィールドのヘルプ"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "音声プレビュー / サンプル再生ボタン"
   },
   "description.voice": {
-    "message": "ナレーションの音色を選択します。音色は言語に依存せず、同じ音色が上部で選択した言語で読み上げられます。再生をクリックして試聴できます。",
+    "message": "カスタマイズをオンにするとナレーション音色を選択できます。オフの場合は Maestro が自動で選びます。音色は言語に依存せず、再生ボタンを押して試聴できます。",
     "description": "音声フィールドのヘルプ"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "動画タイプをカスタマイズ",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "ビジュアルスタイルをカスタマイズ",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "ナレーション音色をカスタマイズ",
+    "description": "Voice timbre customization toggle"
   }
 }
