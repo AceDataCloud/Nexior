@@ -28,6 +28,24 @@
             </a>
           </template>
         </div>
+        <div
+          v-if="referenceLoadFailed && referenceTaskId && !referenceTask"
+          class="reference-load-failed flex items-center gap-1 mt-2 text-xs text-[var(--el-text-color-secondary)]"
+        >
+          <font-awesome-icon icon="fa-solid fa-circle-info" />
+          <span>{{ $t('maestro.name.files') }}: {{ $t('maestro.name.failure') }}</span>
+          <el-button
+            class="reference-retry"
+            size="small"
+            text
+            circle
+            :title="$t('codingBridge.session.retry')"
+            :aria-label="$t('codingBridge.session.retry')"
+            @click="retryReferenceTask"
+          >
+            <font-awesome-icon icon="fa-solid fa-rotate-right" />
+          </el-button>
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!isTerminal" class="progress-pct"> · {{ progressText }}</span>
@@ -168,9 +186,11 @@ import AudioPreview from '@/components/common/AudioPreview.vue';
 import VideoPreview from '@/components/common/VideoPreview.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import { isImageUrl, isVideoUrl, isAudioUrl } from '@/utils/is';
+import { getMaestroReferenceTask } from './referenceTask';
 import ProgressSteps from './ProgressSteps.vue';
 
 const TERMINAL = ['succeeded', 'failed'];
+const REFERENCE_RETRY_DELAYS_MS = [1000, 3000];
 
 type MaestroFileKind = 'image' | 'video' | 'audio' | 'file';
 interface IMaestroInputFile {
@@ -203,7 +223,13 @@ export default defineComponent({
   },
   data() {
     return {
-      MAESTRO_LOGO
+      MAESTRO_LOGO,
+      fetchedReferenceTask: undefined as IMaestroTask | undefined,
+      fetchedReferenceKey: undefined as string | undefined,
+      referenceLoadAttempt: 0,
+      referenceLoadFailed: false,
+      referenceLoadTimer: undefined as number | undefined,
+      referenceLoadVersion: 0
     };
   },
   computed: {
@@ -211,8 +237,14 @@ export default defineComponent({
       return this.modelValue?.response?.data?.variants || [];
     },
     files(): IMaestroInputFile[] {
-      const urls = this.modelValue?.request?.file_urls || [];
-      return urls
+      const request = this.modelValue?.request;
+      const urls = [...(request?.file_urls || [])];
+      if (this.referenceTaskId) {
+        for (const variant of this.referenceTask?.response?.data?.variants || []) {
+          if (variant.output_url) urls.push(variant.output_url);
+        }
+      }
+      return [...new Set(urls)]
         .filter((url): url is string => !!url)
         .map((url) => {
           const clean = url.split('?')[0].split('#')[0];
@@ -225,6 +257,23 @@ export default defineComponent({
                 : 'file';
           return { url, name: this.fileName(clean), kind };
         });
+    },
+    referenceTaskId(): string | undefined {
+      const request = this.modelValue?.request;
+      return request?.action === MAESTRO_ACTION_REMIX ? request.ref_task_id : undefined;
+    },
+    referenceLoadKey(): string | undefined {
+      const credential = this.$store.state.maestro?.credential;
+      const token = credential?.token;
+      if (!this.referenceTaskId || !token) return undefined;
+      return JSON.stringify([this.referenceTaskId, credential?.id || credential?.user_id || token, token]);
+    },
+    referenceTask(): IMaestroTask | undefined {
+      if (!this.referenceTaskId) return undefined;
+      return (
+        this.$store.state.maestro?.tasks?.items?.find((task: IMaestroTask) => task.id === this.referenceTaskId) ||
+        (this.fetchedReferenceKey === this.referenceLoadKey ? this.fetchedReferenceTask : undefined)
+      );
     },
     isTerminal(): boolean {
       return TERMINAL.includes(this.modelValue?.status || '');
@@ -307,7 +356,60 @@ export default defineComponent({
       return out;
     }
   },
+  watch: {
+    referenceLoadKey: {
+      immediate: true,
+      handler(referenceLoadKey: string | undefined) {
+        this.resetReferenceLoad();
+        if (referenceLoadKey && !this.referenceTask) void this.loadReferenceTask(referenceLoadKey);
+      }
+    }
+  },
+  beforeUnmount() {
+    this.resetReferenceLoad();
+  },
   methods: {
+    resetReferenceLoad(): void {
+      if (this.referenceLoadTimer !== undefined) window.clearTimeout(this.referenceLoadTimer);
+      this.referenceLoadTimer = undefined;
+      this.referenceLoadVersion += 1;
+      this.referenceLoadAttempt = 0;
+      this.referenceLoadFailed = false;
+      this.fetchedReferenceTask = undefined;
+      this.fetchedReferenceKey = undefined;
+    },
+    async loadReferenceTask(referenceLoadKey: string): Promise<void> {
+      if (referenceLoadKey !== this.referenceLoadKey || this.referenceTask) return;
+      const credential = this.$store.state.maestro?.credential;
+      const token = credential?.token;
+      const taskId = this.referenceTaskId;
+      if (!taskId || !token) return;
+      const credentialKey = credential?.id || credential?.user_id || token;
+      const version = this.referenceLoadVersion;
+      this.referenceLoadAttempt += 1;
+      const task = await getMaestroReferenceTask(taskId, { token, credentialKey });
+      if (version !== this.referenceLoadVersion || referenceLoadKey !== this.referenceLoadKey) return;
+      if (task) {
+        this.fetchedReferenceTask = task;
+        this.fetchedReferenceKey = referenceLoadKey;
+        this.referenceLoadFailed = false;
+        return;
+      }
+      const retryDelay = REFERENCE_RETRY_DELAYS_MS[this.referenceLoadAttempt - 1];
+      if (retryDelay !== undefined) {
+        this.referenceLoadTimer = window.setTimeout(() => {
+          this.referenceLoadTimer = undefined;
+          void this.loadReferenceTask(referenceLoadKey);
+        }, retryDelay);
+      } else {
+        this.referenceLoadFailed = true;
+      }
+    },
+    retryReferenceTask(): void {
+      const referenceLoadKey = this.referenceLoadKey;
+      this.resetReferenceLoad();
+      if (referenceLoadKey) void this.loadReferenceTask(referenceLoadKey);
+    },
     optionLabel(prefix: string, value: string): string {
       const key = `${prefix}.${value}`;
       const label = this.$t(key) as string;
