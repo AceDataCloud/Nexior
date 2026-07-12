@@ -888,7 +888,7 @@ export default defineComponent({
 }
 .task-actions {
   display: flex;
-  gap: 4px;
+  gap: 0;
   align-items: center;
   flex-shrink: 0;
 }
@@ -898,7 +898,7 @@ export default defineComponent({
   margin-left: 0;
 }
 .icon-action {
-  padding: 6px 8px;
+  padding: 6px 5px;
 }
 .task-meta {
   display: flex;
