@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 14:03:45 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 14:42:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.18
+
+Sun, 12 Jul 2026 14:42:09 GMT
+
+### Patches
+
+- Group site-wide and per-service pricing in a dedicated Price settings section and remove the sample price input. (dev@acedata.cloud)
 
 ## 3.324.17
 
