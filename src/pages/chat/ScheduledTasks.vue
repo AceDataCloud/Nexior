@@ -828,18 +828,15 @@ export default defineComponent({
 }
 .task-card {
   border-radius: 16px;
-  border: 1px solid var(--app-border-subtle, var(--el-border-color-light));
+  border: none;
+  background: var(--app-bg-section);
   cursor: pointer;
-  transition:
-    transform 0.16s ease,
-    box-shadow 0.16s ease,
-    border-color 0.16s ease;
+  transition: background-color 0.16s ease;
   :deep(.el-card__body) {
     padding: 16px 18px;
   }
   &:hover {
-    transform: translateY(-2px);
-    border-color: var(--el-border-color);
+    background: var(--app-bg-surface, var(--el-bg-color-overlay));
   }
 }
 .task-top {
