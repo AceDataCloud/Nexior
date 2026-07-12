@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 06:54:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 06:58:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.12
+
+Sun, 12 Jul 2026 06:58:24 GMT
+
+### Patches
+
+- Site service override: filter picker to non-private services with a favicon, fine-print markup helper, per-locale auto-translate toggles for display name/summary, fix sort-order tip spacing (dev@acedata.cloud)
 
 ## 3.324.11
 
