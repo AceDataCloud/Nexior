@@ -21,13 +21,14 @@ Background:
 
     - every top-level zh-CN key exists in the target file
     - each target value is an object with a non-empty `message` string
+    - selected user-facing keys are not left as English placeholders
 
   `description` is treated as advisory — a missing description does NOT
   fail the check (it's a translator hint, not user-facing copy).
 
 Exit codes:
   0 — all locales fully cover zh-CN
-  1 — at least one locale is missing keys (`::error file=…::` lines emitted)
+    1 — at least one locale fails validation (`::error file=…::` lines emitted)
 """
 
 from __future__ import annotations
@@ -40,6 +41,14 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parent.parent
 I18N_ROOT = REPO_ROOT / "src" / "i18n"
 BASE_LOCALE = "zh-CN"
+ENGLISH_LOCALE = "en"
+REQUIRE_LOCALIZED_MESSAGES = {
+    "maestro.json": {
+        "name.customize",
+        "description.customize.auto",
+        "description.customize.manual",
+    }
+}
 
 
 def collect_keys(data: Any) -> set[str]:
@@ -48,9 +57,23 @@ def collect_keys(data: Any) -> set[str]:
         return set()
     keys: set[str] = set()
     for k, v in data.items():
-        if isinstance(v, dict) and isinstance(v.get("message"), str):
+        message = v.get("message") if isinstance(v, dict) else None
+        if isinstance(message, str) and message.strip():
             keys.add(k)
     return keys
+
+
+def get_message(data: Any, key: str) -> str | None:
+    """Return a non-empty message string from a locale entry."""
+    if not isinstance(data, dict):
+        return None
+    entry = data.get(key)
+    if not isinstance(entry, dict):
+        return None
+    message = entry.get("message")
+    if not isinstance(message, str) or not message.strip():
+        return None
+    return message.strip()
 
 
 def main() -> int:
@@ -70,6 +93,30 @@ def main() -> int:
 
     namespaces = sorted(p.name for p in base_dir.glob("*.json"))
     failures = 0
+    english_messages: dict[str, dict[str, str]] = {}
+
+    for namespace, localized_keys in REQUIRE_LOCALIZED_MESSAGES.items():
+        en_path = I18N_ROOT / ENGLISH_LOCALE / namespace
+        if not en_path.exists():
+            failures += 1
+            rel = en_path.relative_to(REPO_ROOT)
+            print(f"::error file={rel}::missing English source file")
+            continue
+
+        en_data = json.loads(en_path.read_text(encoding="utf-8"))
+        invalid = sorted(key for key in localized_keys if get_message(en_data, key) is None)
+        if invalid:
+            failures += 1
+            rel = en_path.relative_to(REPO_ROOT)
+            preview = ", ".join(invalid)
+            print(f"::error file={rel}::missing valid English message for: {preview}")
+            continue
+
+        english_messages[namespace] = {
+            key: message
+            for key in localized_keys
+            if (message := get_message(en_data, key)) is not None
+        }
 
     for locale in locales:
         for namespace in namespaces:
@@ -99,16 +146,33 @@ def main() -> int:
                     f"::error file={rel}::missing {len(missing)} key(s) vs zh-CN: {preview}"
                 )
 
+            localized_keys = REQUIRE_LOCALIZED_MESSAGES.get(namespace, set())
+            reference_messages = english_messages.get(namespace)
+            if locale != ENGLISH_LOCALE and localized_keys and reference_messages:
+                untranslated = sorted(
+                    key
+                    for key in localized_keys
+                    if get_message(target_data, key) == reference_messages[key]
+                )
+                if untranslated:
+                    failures += 1
+                    rel = target_path.relative_to(REPO_ROOT)
+                    preview = ", ".join(untranslated)
+                    print(
+                        f"::error file={rel}::English placeholder remains for: {preview}"
+                    )
+
     if failures:
         print(
-            f"\n::error::{failures} locale/namespace pair(s) are missing keys",
+            f"\n::error::{failures} locale/namespace pair(s) failed i18n validation",
             file=sys.stderr,
         )
         return 1
 
     print(
-        f"i18n key coverage OK: {len(locales)} locale(s) "
-        f"× {len(namespaces)} namespace(s) all match zh-CN."
+        f"i18n validation OK: {len(locales)} locale(s) "
+        f"× {len(namespaces)} namespace(s) cover zh-CN; "
+        "required localized messages contain no English placeholders."
     )
     return 0
 
