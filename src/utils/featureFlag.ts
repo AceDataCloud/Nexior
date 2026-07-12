@@ -29,11 +29,10 @@
 // force-OFF wins so a tester can still disable a broken server flag.
 
 import { getCookie, removeCookie, setCookie } from 'typescript-cookie';
-// NOTE: `@/store` imports this module (via common/actions.ts), so this is a
-// cycle. It is safe ONLY because `store` is dereferenced lazily inside
-// `readServerFlag` at call time — never at module top level. Keep it that way.
+// `store` is dereferenced lazily inside `readServerFlag` at call time — never
+// at module top level — so this stays safe even if a future consumer creates a
+// `store → … → featureFlag` import cycle. Keep it that way.
 import store from '@/store';
-import { getLoginMethodPreference } from './loginMethod';
 
 const COOKIE_NAME = 'FEATURES';
 const ALL_TOKEN = '__all__';
@@ -136,16 +135,6 @@ export function isFeatureEnabled(name: string): boolean {
   if (set.has(ALL_TOKEN)) return true;
   if (set.has(key)) return true;
   return readServerFlag(name) === true;
-}
-
-export function isAuthIframeFeatureEnabled(): boolean {
-  // An explicit user choice in Settings wins over the URL / server feature flag.
-  const preference = getLoginMethodPreference();
-  if (preference === 'iframe') return true;
-  if (preference === 'redirect') return false;
-  // OR of two flags, and the server sends both — so to force it OFF you must
-  // disable both tokens: `?features=-auth-iframe,-iframe`.
-  return isFeatureEnabled('auth-iframe') || isFeatureEnabled('iframe');
 }
 
 export function syncFeaturesFromUrl(): Set<string> {

@@ -13,7 +13,7 @@ import {
 import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
-import { isAuthIframeFeatureEnabled } from '@/utils/featureFlag';
+import { isIframeLoginEnabled } from '@/utils/loginMethod';
 import { isNative, isDesktop } from '@/utils/surface';
 
 export const resetAll = ({ commit }: ActionContext<IRootState, IRootState>) => {
@@ -225,7 +225,7 @@ export const login = async (
 ) => {
   const site = state?.site?.origin;
   const redirect = payload.redirect || window.location.pathname + window.location.search;
-  if (isNative() || isDesktop() || isAuthIframeFeatureEnabled()) {
+  if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // In-app popup (iframe) login. NEVER window.location.href on desktop — an
     // app://bundle window navigated to the external auth host cannot return.
     commit('setAuth', {
@@ -261,7 +261,7 @@ export const logout = async ({ dispatch, commit }: ActionContext<IRootState, IRo
   for (const name of getRegisteredLazyModules()) {
     await dispatch(`${name}/resetAll`);
   }
-  if (isNative() || isDesktop() || isAuthIframeFeatureEnabled()) {
+  if (isNative() || isDesktop() || isIframeLoginEnabled()) {
     // On native AND desktop, show the in-app login popup instead of navigating
     // to an external auth URL (which on native opens Chrome → localhost, and on
     // desktop navigates the app://bundle window somewhere it can't return from).

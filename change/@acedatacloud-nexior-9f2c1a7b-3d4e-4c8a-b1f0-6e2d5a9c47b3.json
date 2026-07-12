@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Gate iframe login solely on the LOGIN_METHOD setting; stop reading the auth-iframe/iframe feature flag for the login decision. Default is redirect. The general featureFlag util (URL + /config) is retained for other features.",
+  "packageName": "@acedatacloud/nexior",
+  "email": "dev@acedata.cloud",
+  "dependentChangeType": "patch"
+}

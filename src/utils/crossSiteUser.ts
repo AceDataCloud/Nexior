@@ -2,7 +2,7 @@ import store from '@/store';
 import { RouteLocationNormalized, RouteLocationRaw } from 'vue-router';
 import { isMainOfficial } from './is';
 import { loginRedirect } from './login';
-import { isAuthIframeFeatureEnabled } from './featureFlag';
+import { isIframeLoginEnabled } from './loginMethod';
 
 /**
  * Cross-site user-identity guard.
@@ -141,7 +141,7 @@ export const evaluateUserIdGuard = (to: RouteLocationNormalized): UserIdGuardDec
   store.dispatch('resetToken');
   store.dispatch('resetUser');
   const redirect = buildRedirectWithoutUserId(to);
-  if (isAuthIframeFeatureEnabled()) {
+  if (isIframeLoginEnabled()) {
     store.dispatch('login', { redirect });
   } else {
     loginRedirect({ redirect });
