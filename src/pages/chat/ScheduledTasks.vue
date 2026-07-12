@@ -23,6 +23,15 @@
                   :model-value="task.state === 'enabled'"
                   @change="(v: string | number | boolean) => toggleState(task, v === true)"
                 />
+                <el-button
+                  text
+                  class="icon-action"
+                  :loading="triggeringId === task.id"
+                  :title="$t('chat.scheduledTasks.triggerNow')"
+                  @click="triggerNow(task)"
+                >
+                  <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
+                </el-button>
                 <el-button text class="icon-action" @click="openEdit(task)">
                   <font-awesome-icon icon="fa-solid fa-pen" />
                 </el-button>
@@ -375,6 +384,7 @@ export default defineComponent({
       editingTask: null as IScheduledTask | null,
       authorizableSkills: [] as IAuthorizableSkill[],
       authorizableMcpServers: [] as IAuthorizableMcpServer[],
+      triggeringId: '' as string,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
       pageSize: 6,
@@ -720,6 +730,24 @@ export default defineComponent({
       } catch {
         if (idx !== -1) this.tasks[idx] = { ...task, state: task.state };
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      }
+    },
+    async triggerNow(task: IScheduledTask) {
+      if (this.triggeringId) return;
+      this.triggeringId = task.id;
+      try {
+        await scheduledTasksOperator.triggerTask(this.token!, task.id);
+        ElMessage.success(this.$t('chat.scheduledTasks.triggerSuccess') as string);
+        // If the run-history drawer is open on this task, refresh it so the
+        // freshly-queued run shows up right away.
+        if (this.showRunHistory && this.selectedTask?.id === task.id) {
+          this.runs = await scheduledTasksOperator.listRuns(this.token!, task.id);
+          this.runPage = 1;
+        }
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.triggerError') as string);
+      } finally {
+        this.triggeringId = '';
       }
     },
     async confirmDelete(task: IScheduledTask) {

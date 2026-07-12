@@ -148,6 +148,13 @@ class ScheduledTasksOperator {
     await axios.post(BASE, { action: 'delete', id }, { headers: headers(token) });
   }
 
+  // Fire a task immediately, out of band from its schedule. Returns the id of
+  // the freshly-spawned run so the caller can refresh the run history.
+  async triggerTask(token: string, id: string): Promise<{ run_id?: string }> {
+    const { data } = await axios.post(BASE, { action: 'trigger', id }, { headers: headers(token) });
+    return data ?? {};
+  }
+
   async listRuns(token: string, id: string): Promise<IScheduledRun[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_runs', id }, { headers: headers(token) });
     return data?.items ?? [];
