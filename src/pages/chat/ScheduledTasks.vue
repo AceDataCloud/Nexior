@@ -826,7 +826,7 @@ export default defineComponent({
 .scheduled-tasks {
   height: 100%;
   overflow-y: auto;
-  background: var(--el-bg-color-page);
+  background-color: var(--el-bg-color-page) !important;
 }
 .inner {
   max-width: 880px;
