@@ -58,12 +58,15 @@ export interface ISiteAuthProvider {
 // Site-level authentication configuration. ``default_provider`` is the
 // provider key (``"email"`` / ``"google"`` / ...) the login page should
 // pre-select. ``providers`` is a sparse map keyed by provider ID — only
-// entries with ``enabled: true`` are shown on the login screen. The
-// platform defaults live in
-// ``PlatformBackend/app/utils/site_defaults.py::DEFAULT_AUTH_PROVIDERS``
-// (currently ``email`` enabled + ``google`` disabled).
+// entries with ``enabled: true`` are shown on the login screen.
+// ``login_mode`` is how the login UI is launched on the web surface —
+// ``"redirect"`` (full-page redirect to the auth host, the default) or
+// ``"iframe"`` (embedded popup); native/desktop always use the iframe
+// regardless. The platform defaults live in
+// ``PlatformBackend/app/utils/site_defaults.py`` (``DEFAULT_AUTH_*``).
 export interface ISiteAuth {
   default_provider?: string;
+  login_mode?: 'iframe' | 'redirect';
   providers?: Record<string, ISiteAuthProvider>;
 }
 
