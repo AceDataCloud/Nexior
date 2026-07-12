@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 05:56:35 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 06:00:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.9
+
+Sun, 12 Jul 2026 06:00:13 GMT
+
+### Patches
+
+- Move Login Mode into the renamed Auth tab as site config (server-driven redirect vs iframe) (dev@acedata.cloud)
 
 ## 3.324.8
 
