@@ -54,6 +54,7 @@ const PATH_TO_STORE: Record<string, string> = {
   seedream: 'seedream',
   wan: 'wan',
   fish: 'fish',
+  maestro: 'maestro',
   // OpenAI image generation paths live under /openai/images/...
   openai: 'openaiimage',
   suno: 'suno',
