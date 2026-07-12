@@ -1075,7 +1075,11 @@ export default defineComponent({
 .hint {
   font-size: 11px;
   color: var(--el-text-color-secondary);
-  margin-top: 4px;
+  margin-top: 6px;
+  line-height: 1.5;
+  /* el-form-item content is flex-wrap; force the hint onto its own line
+     instead of cramming beside a narrow number input. */
+  flex-basis: 100%;
 }
 .jitter-hint {
   font-size: 11px;
@@ -1083,8 +1087,10 @@ export default defineComponent({
   margin-left: 8px;
 }
 .schedule-preview {
-  margin-top: 8px;
-  padding: 6px 12px;
+  flex-basis: 100%;
+  width: fit-content;
+  margin-top: 12px;
+  padding: 7px 12px;
   border-radius: 8px;
   background: var(--el-fill-color-light);
   font-size: 12px;
