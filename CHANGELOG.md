@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 14:43:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 15:19:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.21
+
+Sun, 12 Jul 2026 15:19:17 GMT
+
+### Patches
+
+- Show localized Maestro language names and make the primary output language explicit (dev@acedata.cloud)
 
 ## 3.324.20
 
