@@ -2,6 +2,27 @@
   "name": "@acedatacloud/nexior",
   "entries": [
     {
+      "date": "Sun, 12 Jul 2026 02:07:11 GMT",
+      "version": "3.324.2",
+      "tag": "@acedatacloud/nexior_v3.324.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "not available",
+            "comment": "Gate iframe login solely on the LOGIN_METHOD setting; stop reading the auth-iframe/iframe feature flag for the login decision. Default is redirect. The general featureFlag util (URL + /config) is retained for other features."
+          },
+          {
+            "author": "dev@acedata.cloud",
+            "package": "@acedatacloud/nexior",
+            "commit": "a09534ab25cfa8432175a5c6d5ddd8131e3009bd",
+            "comment": "fix(maestro): enable Run again in the API code dialog (add maestro to PATH_TO_STORE so the dialog resolves the API token)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 12 Jul 2026 02:06:21 GMT",
       "version": "3.324.1",
       "tag": "@acedatacloud/nexior_v3.324.1",

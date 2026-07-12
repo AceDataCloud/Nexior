@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 02:06:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Sun, 12 Jul 2026 02:07:11 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.2
+
+Sun, 12 Jul 2026 02:07:11 GMT
+
+### Patches
+
+- Gate iframe login solely on the LOGIN_METHOD setting; stop reading the auth-iframe/iframe feature flag for the login decision. Default is redirect. The general featureFlag util (URL + /config) is retained for other features. (dev@acedata.cloud)
+- fix(maestro): enable Run again in the API code dialog (add maestro to PATH_TO_STORE so the dialog resolves the API token) (dev@acedata.cloud)
 
 ## 3.324.1
 
