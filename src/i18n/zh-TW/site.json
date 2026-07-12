@@ -40,11 +40,11 @@
     "description": "展示在編輯框的標題"
   },
   "field.markupRatio": {
-    "message": "加價比例",
+    "message": "全站統一加價比例",
     "description": "站點設置：對本站所有充值套餐統一加價的比例（百分比）"
   },
   "message.markupRatioTip": {
-    "message": "對本站所有充值套餐統一加價（0%~500%）。0% 表示按平台原價出售；加價部分即你賺取的差價，分銷返佣比例不變。",
+    "message": "設定本站所有服務的統一加價比例（0%～500%）。下方「單個服務自訂加價」會覆蓋此值。",
     "description": "加價比例設置項的說明文字"
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "服務定價與展示"
+    "message": "單個服務自訂加價與展示"
   },
   "services.tip": {
     "message": "針對單一服務隱藏、改名、單獨定價或排序。留空的加價將繼承本站預設加價。刪除某列後該服務恢復預設顯示。"
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "可見"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "單個服務自訂加價"
   },
   "services.field.displayTitle": {
     "message": "顯示名稱"

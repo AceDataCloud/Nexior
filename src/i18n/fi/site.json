@@ -40,11 +40,11 @@
     "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.markupRatio": {
-    "message": "Hintaprosentti",
+    "message": "Koko sivuston yhtenäinen hinnankorotus",
     "description": "Sivuston asetukset: Yhdistelee kaikille latauspaketeille yhteisen hintaprosentin (prosentteina)."
   },
   "message.markupRatioTip": {
-    "message": "Yhdistele kaikille latauspaketeille yhteinen hintaprosentti (0%~500%). 0% tarkoittaa myyntiä alkuperäisellä hinnalla; korotettu osa on se, mitä ansaitset, ja myyntikateprosentti pysyy muuttumattomana.",
+    "message": "Aseta yhtenäinen hinnankorotus kaikille tämän sivuston palveluille (0%–500%). Alla määritetty palvelukohtainen hinnankorotus ohittaa tämän arvon.",
     "description": "Hintaprosentti-asetuksen selitysteksti."
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "Palvelukohtainen hinnoittelu ja näyttö"
+    "message": "Palvelukohtainen hinnankorotus ja näyttö"
   },
   "services.tip": {
     "message": "Piilota, nimeä uudelleen, hinnoittele tai järjestä yksittäisiä palveluja. Tyhjä lisä perii sivuston oletuksen. Rivin poisto palauttaa luettelon oletukset."
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "Näkyvä"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "Palvelukohtainen hinnankorotus"
   },
   "services.field.displayTitle": {
     "message": "Näyttönimi"

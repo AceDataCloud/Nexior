@@ -40,11 +40,11 @@
     "description": "Texto que se muestra en el cuadro de edición"
   },
   "field.markupRatio": {
-    "message": "Proporción de aumento",
+    "message": "Recargo uniforme para todo el sitio",
     "description": "Configuración del sitio: proporción de aumento unificada para todos los paquetes de recarga en este sitio (porcentaje)"
   },
   "message.markupRatioTip": {
-    "message": "Aumento unificado para todos los paquetes de recarga en este sitio (0%~500%). 0% significa vender al precio original de la plataforma; la parte del aumento es la diferencia que ganas, la proporción de comisión de distribución permanece sin cambios.",
+    "message": "Define un recargo uniforme para todos los servicios de este sitio (0%–500%). Un recargo personalizado por servicio establecido abajo reemplaza este valor.",
     "description": "Texto explicativo sobre la configuración de la proporción de aumento"
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "Precio y visualización por servicio"
+    "message": "Recargo personalizado y visualización por servicio"
   },
   "services.tip": {
     "message": "Oculta, renombra, tarifica o reordena servicios concretos. Un recargo vacío hereda el valor por defecto del sitio. Eliminar una fila restablece los valores del catálogo."
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "Visible"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "Recargo personalizado por servicio"
   },
   "services.field.displayTitle": {
     "message": "Nombre visible"

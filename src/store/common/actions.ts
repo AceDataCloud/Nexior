@@ -10,7 +10,7 @@ import {
   applicationOperator,
   credentialOperator
 } from '@/operators';
-import { IApplication, IApplicationScope, IApplicationType, ICredential, IToken, IUser, Status } from '@/models';
+import { IApplication, IApplicationScope, IApplicationType, ICredential, ISite, IToken, IUser, Status } from '@/models';
 import { getSiteOrigin } from '@/utils/site';
 import { getBaseUrlAuth, getBaseUrlHub, getInviterId, loginRedirect } from '@/utils';
 import { isIframeLoginEnabled } from '@/utils/loginMethod';
@@ -135,7 +135,7 @@ export const initializeSite = async ({ state, commit, dispatch }: ActionContext<
   }
 };
 
-export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>) => {
+export const getSite = async ({ state, commit }: ActionContext<IRootState, IRootState>): Promise<ISite | undefined> => {
   console.debug('start to get site');
   try {
     const origin = getSiteOrigin(state?.site);
@@ -146,8 +146,10 @@ export const getSite = async ({ state, commit }: ActionContext<IRootState, IRoot
     )?.data?.items?.[0];
     commit('setSite', site);
     console.debug('get site success', site);
+    return site;
   } catch (error) {
     console.error('get site failed', error);
+    return undefined;
   }
 };
 

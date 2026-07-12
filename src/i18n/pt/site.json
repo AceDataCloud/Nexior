@@ -40,11 +40,11 @@
     "description": "Exibido como o título na caixa de edição"
   },
   "field.markupRatio": {
-    "message": "Proporção de aumento",
+    "message": "Acréscimo uniforme em todo o site",
     "description": "Configuração do site: proporção de aumento unificada para todos os pacotes de recarga deste site (percentagem)"
   },
   "message.markupRatioTip": {
-    "message": "Aumento unificado para todos os pacotes de recarga (0%~500%). 0% significa vender pelo preço original da plataforma; a parte do aumento é o lucro que você ganha, a proporção de comissão de revenda permanece inalterada.",
+    "message": "Defina um acréscimo uniforme para todos os serviços deste site (0%–500%). Um acréscimo personalizado por serviço abaixo substitui este valor.",
     "description": "Texto explicativo da configuração da proporção de aumento"
   },
   "message.markupExample": {
@@ -672,7 +672,7 @@
     "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
   },
   "services.title": {
-    "message": "Preço e exibição por serviço"
+    "message": "Acréscimo personalizado e exibição por serviço"
   },
   "services.tip": {
     "message": "Oculte, renomeie, precifique ou reordene serviços individuais. Um acréscimo vazio herda o padrão do site. Excluir uma linha restaura os padrões do catálogo."
@@ -688,6 +688,9 @@
   },
   "services.field.visible": {
     "message": "Visível"
+  },
+  "services.field.customMarkupRatio": {
+    "message": "Acréscimo personalizado por serviço"
   },
   "services.field.displayTitle": {
     "message": "Nome exibido"
