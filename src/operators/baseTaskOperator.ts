@@ -103,13 +103,14 @@ export class BaseTaskOperator<
     this.generatePath = paths.generatePath;
   }
 
-  async task(id: string, options: { token: string }): Promise<AxiosResponse<TTaskResponse>> {
+  async task(id: string, options: { token: string; signal?: AbortSignal }): Promise<AxiosResponse<TTaskResponse>> {
     return axios.post(
       this.tasksPath,
       { action: 'retrieve', id },
       {
         baseURL: BASE_URL_API,
-        headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` }
+        headers: { ...TASK_HEADERS, authorization: `Bearer ${options.token}` },
+        signal: options.signal
       }
     );
   }
