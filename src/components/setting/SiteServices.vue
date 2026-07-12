@@ -70,13 +70,7 @@
       append-to-body
     >
       <el-form :model="form" label-position="top" class="service-override-form" @submit.prevent>
-        <el-form-item required>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.services.field.service') }}</span>
-              <span class="field-desc">{{ $t('site.services.placeholder.service') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.services.field.service')" required>
           <el-input v-if="editingRow" :model-value="catalogTitle(editingRow.service)" readonly />
           <el-select
             v-else
@@ -103,67 +97,33 @@
               </span>
             </el-option>
           </el-select>
+          <div class="field-desc">{{ $t('site.services.placeholder.service') }}</div>
         </el-form-item>
 
-        <el-form-item>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.services.field.visible') }}</span>
-              <span class="field-desc">{{ $t('site.services.tip.visible') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.services.field.visible')">
           <el-switch v-model="form.visible" />
+          <div class="field-desc">{{ $t('site.services.tip.visible') }}</div>
         </el-form-item>
 
-        <el-form-item>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.field.markupRatio') }}</span>
-              <span class="field-desc">{{ $t('site.services.tip.markup') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.field.markupRatio')">
           <div class="markup-row">
             <el-input-number
-              v-model="form.markupRatio"
+              v-model="markupPercent"
               :min="0"
-              :max="markupMax"
-              :step="0.05"
+              :max="markupPercentMax"
+              :step="1"
               :precision="2"
               :controls-position="'right'"
               :placeholder="$t('site.services.placeholder.markup')"
               class="markup-input"
             />
-            <span v-if="typeof form.markupRatio === 'number'" class="markup-percent">
-              {{ formatMarkup(form.markupRatio) }}
-            </span>
+            <span class="markup-percent">%</span>
           </div>
-          <div class="money-preview">
-            <span class="field-tip">{{ $t('site.services.preview.sampleLabel') }}</span>
-            <el-input-number
-              v-model="sampleBase"
-              :min="0"
-              :step="1"
-              :precision="2"
-              size="small"
-              :controls-position="'right'"
-              class="sample-input"
-            />
-            <span class="preview-result">
-              {{ $t('site.message.markupExample', { from: previewFrom, to: previewTo }) }}
-            </span>
-            <span v-if="typeof form.markupRatio !== 'number'" class="field-tip">
-              {{ $t('site.services.preview.inherit', { percent: formatMarkup(siteDefaultRatio) }) }}
-            </span>
-          </div>
+          <div class="field-desc">{{ $t('site.services.tip.markup') }}</div>
+          <div class="field-desc">{{ $t('site.message.markupExample') }}</div>
         </el-form-item>
 
-        <el-form-item>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.services.field.displayTitle') }}</span>
-              <span class="field-desc">{{ $t('site.services.placeholder.displayTitle') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.services.field.displayTitle')">
           <el-input v-model="form.displayTitle" maxlength="120" show-word-limit clearable>
             <template #suffix>
               <auto-translate-toggle
@@ -177,16 +137,12 @@
               />
             </template>
           </el-input>
+          <div class="field-desc">{{ $t('site.services.placeholder.displayTitle') }}</div>
         </el-form-item>
 
-        <el-form-item>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.services.field.displaySummary') }}</span>
-              <span class="field-desc">{{ $t('site.services.placeholder.displaySummary') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.services.field.displaySummary')">
           <el-input v-model="form.displaySummary" type="textarea" :rows="3" clearable />
+          <div class="field-desc">{{ $t('site.services.placeholder.displaySummary') }}</div>
           <!-- textarea has no #suffix slot; render the toggle inline beneath -->
           <div class="auto-translate-inline">
             <auto-translate-toggle
@@ -210,13 +166,7 @@
           </div>
         </el-form-item>
 
-        <el-form-item>
-          <template #label>
-            <span class="field-head">
-              <span class="field-label">{{ $t('site.services.field.sortOrder') }}</span>
-              <span class="field-desc">{{ $t('site.services.tip.sortOrder') }}</span>
-            </span>
-          </template>
+        <el-form-item :label="$t('site.services.field.sortOrder')">
           <el-input-number
             v-model="form.sortOrder"
             :min="-1000"
@@ -225,6 +175,7 @@
             :precision="0"
             :controls-position="'right'"
           />
+          <div class="field-desc">{{ $t('site.services.tip.sortOrder') }}</div>
         </el-form-item>
       </el-form>
       <template #footer>
@@ -269,13 +220,12 @@ import { serviceOperator, siteServiceOverrideOperator } from '@/operators';
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
-import { getPriceString, applyMarkup, getSiteMarkupRatio, MARKUP_RATIO_MAX } from '@/utils';
+import { getSiteMarkupRatio, MARKUP_RATIO_MAX } from '@/utils';
 
 // Pre-fetch the whole catalog once so each override row can show the
 // service title/alias without an N+1 per-row GET. If a tenant ever
 // exceeds this many services the picker should switch to remote search.
 const CATALOG_PAGE_LIMIT = 1000;
-
 interface IForm {
   service: string;
   visible: boolean;
@@ -343,7 +293,6 @@ export default defineComponent({
       dialogVisible: false,
       editingRow: null as ISiteServiceOverride | null,
       form: emptyForm(),
-      sampleBase: 10 as number,
       mobile: typeof window !== 'undefined' && window.innerWidth < 768
     };
   },
@@ -360,21 +309,20 @@ export default defineComponent({
     },
     // Never below the loaded value so el-input-number can't silently clamp a
     // pre-existing out-of-range override down on dialog open.
-    markupMax(): number {
+    markupPercentMax(): number {
       const cur = typeof this.form.markupRatio === 'number' ? this.form.markupRatio : 0;
-      return Math.max(MARKUP_RATIO_MAX, cur);
+      return Math.max(MARKUP_RATIO_MAX, cur) * 100;
+    },
+    markupPercent: {
+      get(): number | undefined {
+        return typeof this.form.markupRatio === 'number' ? Math.round(this.form.markupRatio * 10000) / 100 : undefined;
+      },
+      set(value: number | undefined) {
+        this.form.markupRatio = typeof value === 'number' ? value / 100 : undefined;
+      }
     },
     effectiveRatio(): number {
       return typeof this.form.markupRatio === 'number' ? this.form.markupRatio : this.siteDefaultRatio;
-    },
-    previewFrom(): string {
-      return getPriceString({ value: this.sampleBaseSafe });
-    },
-    previewTo(): string {
-      return getPriceString({ value: applyMarkup(this.sampleBaseSafe, this.effectiveRatio) });
-    },
-    sampleBaseSafe(): number {
-      return typeof this.sampleBase === 'number' && this.sampleBase >= 0 ? this.sampleBase : 0;
     },
     catalogOptions(): IService[] {
       // ``private`` is already excluded server-side (see onFetchCatalog); only
@@ -693,22 +641,14 @@ export default defineComponent({
   line-height: 1.3;
   white-space: normal;
   margin-bottom: 4px;
-}
-
-:global(.site-service-override-dialog .service-override-form .field-head) {
-  display: block;
-  line-height: 1.3;
-}
-
-:global(.site-service-override-dialog .service-override-form .field-label) {
-  display: block;
   font-weight: 600;
   color: var(--el-text-color-primary);
 }
 
 :global(.site-service-override-dialog .service-override-form .field-desc) {
   display: block;
-  margin-top: 2px;
+  width: 100%;
+  margin-top: 6px;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
@@ -723,7 +663,7 @@ export default defineComponent({
 }
 
 :global(.site-service-override-dialog .service-override-form .markup-input) {
-  width: 150px;
+  width: 180px;
 }
 
 :global(.site-service-override-dialog .service-override-form .markup-percent) {
@@ -732,19 +672,6 @@ export default defineComponent({
   font-weight: 600;
 }
 
-:global(.site-service-override-dialog .service-override-form .money-preview) {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-:global(.site-service-override-dialog .service-override-form .sample-input) {
-  width: 120px;
-}
-
-:global(.site-service-override-dialog .service-override-form .preview-result),
 :global(.site-service-override-dialog .service-override-form .field-tip) {
   font-size: 12px;
   color: var(--el-text-color-secondary);
