@@ -23,21 +23,21 @@
                   :model-value="task.state === 'enabled'"
                   @change="(v: string | number | boolean) => toggleState(task, v === true)"
                 />
-                <el-button
-                  text
-                  class="icon-action"
-                  :loading="triggeringId === task.id"
-                  :title="$t('chat.scheduledTasks.triggerNow')"
-                  @click="triggerNow(task)"
-                >
-                  <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
-                </el-button>
-                <el-button text class="icon-action" @click="openEdit(task)">
-                  <font-awesome-icon icon="fa-solid fa-pen" />
-                </el-button>
-                <el-button text type="danger" class="icon-action" @click="confirmDelete(task)">
-                  <font-awesome-icon icon="fa-solid fa-trash" />
-                </el-button>
+                <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
+                  <el-button text class="icon-action" :loading="triggeringId === task.id" @click="triggerNow(task)">
+                    <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip :content="$t('common.button.edit')" placement="top">
+                  <el-button text class="icon-action" @click="openEdit(task)">
+                    <font-awesome-icon icon="fa-solid fa-pen" />
+                  </el-button>
+                </el-tooltip>
+                <el-tooltip :content="$t('common.button.delete')" placement="top">
+                  <el-button text type="danger" class="icon-action" @click="confirmDelete(task)">
+                    <font-awesome-icon icon="fa-solid fa-trash" />
+                  </el-button>
+                </el-tooltip>
               </div>
             </div>
             <div class="task-meta">
@@ -294,6 +294,7 @@ import {
   ElEmpty,
   ElSwitch,
   ElTag,
+  ElTooltip,
   ElDrawer,
   ElDialog,
   ElForm,
@@ -356,6 +357,7 @@ export default defineComponent({
     ElEmpty,
     ElSwitch,
     ElTag,
+    ElTooltip,
     ElDrawer,
     ElDialog,
     ElForm,
@@ -879,16 +881,21 @@ export default defineComponent({
 }
 .task-name {
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--el-text-color-primary);
   word-break: break-word;
 }
 .task-actions {
   display: flex;
-  gap: 2px;
+  gap: 4px;
   align-items: center;
   flex-shrink: 0;
+}
+/* Element Plus adds a 12px left margin between adjacent buttons; drop it so the
+   row is driven purely by the flex gap above. */
+.task-actions .el-button + .el-button {
+  margin-left: 0;
 }
 .icon-action {
   padding: 6px 8px;
