@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Sun, 12 Jul 2026 15:19:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 01:12:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.22
+
+Mon, 13 Jul 2026 01:12:53 GMT
+
+### Patches
+
+- Maestro: control video type, visual style, and voice with independent toggles (dev@acedata.cloud)
 
 ## 3.324.21
 
