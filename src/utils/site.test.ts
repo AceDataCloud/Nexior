@@ -4,6 +4,7 @@ import {
   getSiteOrigin,
   getSiteMarkupRatio,
   getApplicationMarkupRatio,
+  getApplicationCallerOrderDiscountRate,
   applyMarkup,
   isBrandingHidden,
   getBrandSupportUrl
@@ -94,6 +95,24 @@ describe('getApplicationMarkupRatio', () => {
     expect(
       getApplicationMarkupRatio({ service_id: 'service-1', effective_markup_ratio: Number.NaN }, site)
     ).toBeUndefined();
+  });
+});
+
+describe('getApplicationCallerOrderDiscountRate', () => {
+  it('returns the backend-resolved discount', () => {
+    expect(getApplicationCallerOrderDiscountRate({ effective_caller_order_discount_rate: 0.1 })).toBe(0.1);
+    expect(getApplicationCallerOrderDiscountRate({ effective_caller_order_discount_rate: 0 })).toBe(0);
+  });
+
+  it('falls back to zero only when a loaded application omits the legacy field', () => {
+    expect(getApplicationCallerOrderDiscountRate({})).toBe(0);
+    expect(getApplicationCallerOrderDiscountRate(undefined)).toBeUndefined();
+  });
+
+  it('fails closed when the backend returns a malformed discount', () => {
+    expect(getApplicationCallerOrderDiscountRate({ effective_caller_order_discount_rate: -1 })).toBeUndefined();
+    expect(getApplicationCallerOrderDiscountRate({ effective_caller_order_discount_rate: Number.NaN })).toBeUndefined();
+    expect(getApplicationCallerOrderDiscountRate({ effective_caller_order_discount_rate: 2 })).toBeUndefined();
   });
 });
 
