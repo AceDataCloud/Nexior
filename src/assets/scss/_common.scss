@@ -1,24 +1,16 @@
 html,
-body {
+html body {
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: var(--el-bg-color);
-  color: var(--el-text-color-primary);
+  background-color: var(--adc-color-surface);
+  color: var(--adc-color-text-primary);
   color-scheme: light;
-  font-family:
-    'Inter',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
-  letter-spacing: -0.01em;
+  font-family: var(--adc-font-family-sans);
+  line-height: var(--adc-line-height-normal);
+  letter-spacing: var(--adc-letter-spacing);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,9 +24,7 @@ html.dark body {
   box-sizing: border-box;
 }
 
-html,
-html.dark,
-:root {
+html:root {
   // Default brand colour (Ace Data Cloud teal). Sites can override these at
   // runtime via `applyAccentColor()` (see `src/utils/theme.ts`), which writes
   // the same CSS variables on `:root` from the site admin's chosen colour.
@@ -53,9 +43,9 @@ html.dark,
   --app-brand-hex: #277186;
   --app-brand-hex-dark-2: #1f5a6b;
   --app-brand-hex-light-7: #bed4db;
-  --el-border-radius-base: 12px;
-  --el-border-radius-small: 8px;
-  --el-border-radius-round: 9999px;
+  --el-border-radius-base: var(--adc-radius-control);
+  --el-border-radius-small: var(--adc-radius-small);
+  --el-border-radius-round: var(--adc-radius-full);
 
   --app-safe-area-top: env(safe-area-inset-top, 0px);
   --app-safe-area-bottom: env(safe-area-inset-bottom, 0px);
@@ -67,7 +57,7 @@ html.dark,
   /* Custom dark-mode aware variables */
   --app-bg-surface: #ffffff;
   --app-bg-section: #f8fafc;
-  --app-border-subtle: #e2e8f0;
+  --app-border-subtle: var(--adc-color-border-light);
   --app-badge-bg: var(--el-color-primary-light-8);
   --app-badge-border: var(--app-brand-hex);
 
@@ -184,13 +174,13 @@ w3m-modal {
 }
 
 .el-popper {
-  border-radius: 16px;
+  border-radius: var(--adc-radius-card);
   overflow: hidden;
   backdrop-filter: blur(var(--app-glass-blur));
 }
 
 .el-popover.el-popper {
-  border-radius: 16px;
+  border-radius: var(--adc-radius-card);
 }
 
 .el-main {
@@ -199,8 +189,8 @@ w3m-modal {
 
 .el-button {
   border-radius: var(--el-border-radius-round);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: var(--adc-font-weight-medium);
+  letter-spacing: var(--adc-letter-spacing);
   transition: all 0.2s ease;
 }
 
@@ -216,7 +206,7 @@ w3m-modal {
 // in `X402Pay.vue`). `is-disabled` is excluded so disabled buttons keep their
 // lighter "disabled" tint.
 .el-button--primary:not(.is-link, .is-text, .is-plain, .is-disabled) {
-  background: var(--el-color-primary);
+  background: var(--adc-color-primary);
   border: none;
   &:hover,
   &:focus {
@@ -293,9 +283,9 @@ w3m-modal {
 
 .el-card {
   word-wrap: break-word;
-  border-radius: 1rem;
-  border: 1px solid var(--app-glass-border);
-  --el-card-padding: 20px;
+  border-radius: var(--adc-radius-card);
+  border: var(--adc-border-width) var(--adc-border-style) var(--app-glass-border);
+  --el-card-padding: var(--adc-space-5);
   box-shadow: var(--app-shadow-sm);
   transition:
     box-shadow 0.25s ease,
@@ -318,11 +308,11 @@ html.dark .el-card {
 
 .el-breadcrumb__inner a,
 .el-breadcrumb__inner.is-link {
-  color: var(--el-text-color-regular);
+  color: var(--adc-color-text-regular);
 }
 
 .el-radio-group {
-  --el-border-radius-base: 12px;
+  --el-border-radius-base: var(--adc-radius-control);
 }
 
 .el-slider {
@@ -336,12 +326,12 @@ html.dark .el-card {
 }
 
 .el-textarea {
-  border-radius: 12px;
+  border-radius: var(--adc-radius-control);
   .el-textarea__inner {
-    border-radius: 12px;
+    border-radius: var(--adc-radius-control);
     resize: none;
     box-shadow:
-      0 0 0 1px var(--el-border-color) inset,
+      0 0 0 1px var(--adc-color-border) inset,
       var(--app-shadow-xs);
     transition: box-shadow 0.2s ease;
     &:focus {
@@ -357,7 +347,7 @@ html.dark .el-card {
     border-radius: var(--el-border-radius-base);
     width: 100%;
     box-shadow:
-      0 0 0 1px var(--el-border-color) inset,
+      0 0 0 1px var(--adc-color-border) inset,
       var(--app-shadow-xs);
     transition: box-shadow 0.2s ease;
     &.is-focus {
@@ -373,7 +363,7 @@ html.dark .el-card {
 }
 
 .el-dialog {
-  --el-dialog-border-radius: 1.25rem;
+  --el-dialog-border-radius: var(--adc-radius-dialog);
   .el-dialog__body {
     color: var(--el-text-color-primary);
   }
