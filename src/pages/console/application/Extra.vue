@@ -10,7 +10,7 @@
         <el-col :span="24">
           <el-card shadow="hover" class="min-h-[500px]">
             <el-row>
-              <el-col :span="16" :offset="4">
+              <el-col :xs="{ span: 22, offset: 1 }" :sm="{ span: 20, offset: 2 }" :md="{ span: 16, offset: 4 }">
                 <el-skeleton v-if="loading" />
                 <div v-else-if="loadFailed" class="text-center">
                   <el-empty :description="$t('common.message.noData')" />
@@ -19,7 +19,7 @@
                   </el-button>
                 </div>
                 <el-empty v-else-if="!showPayment" :description="$t('common.message.noData')" />
-                <el-form v-else-if="application" label-width="100px">
+                <el-form v-else-if="application" class="purchase-form" label-width="100px">
                   <div v-if="!application?.service">
                     <p class="text-[var(--el-text-color-secondary)] text-[12px] mb-3">
                       {{ $t('application.message.globalBalanceBuyDescription') }}
@@ -33,7 +33,7 @@
                     {{ $t('application.title.globalBuy') }}
                   </el-form-item>
                   <el-form-item :label="$t('application.field.package')" class="mb-0">
-                    <el-radio-group v-if="packages.length > 0" v-model="form.packageId">
+                    <el-radio-group v-if="packages.length > 0" v-model="form.packageId" class="package-options">
                       <el-radio-button v-for="(pkg, pkgIndex) in packages" :key="pkgIndex" :label="pkg.id" class="mb-2">
                         <span v-show="pkgIndex !== 0" class="corner">
                           {{ getDiscount(pkg) }}
@@ -66,12 +66,19 @@
                   </el-form-item>
                   <el-divider border-style="dashed" />
                   <el-form-item :label="$t('application.field.shouldPayPrice')">
-                    <span
-                      v-if="package && pricingAvailable"
-                      :class="{ price: true, unfree: package?.price > 0, free: package?.price === 0 }"
-                    >
-                      {{ getPriceString({ value: displayPackagePrice }) }}
-                    </span>
+                    <div v-if="displayFinalPrice !== undefined" class="final-price-block">
+                      <div class="final-price-line">
+                        <span :class="{ price: true, unfree: displayFinalPrice > 0, free: displayFinalPrice === 0 }">
+                          {{ getPriceString({ value: displayFinalPrice }) }}
+                        </span>
+                        <el-tag v-if="hasOrderDiscount" class="discount-tag" effect="light" size="small" type="success">
+                          {{ $t('order.message.discountTag', { percent: discountPercent }) }}
+                        </el-tag>
+                      </div>
+                      <p v-if="hasOrderDiscount" class="discount-hint">
+                        {{ $t('order.message.discountHint', { percent: discountPercent }) }}
+                      </p>
+                    </div>
                     <span v-else class="text-[var(--el-text-color-secondary)]">{{ $t('common.message.noData') }}</span>
                   </el-form-item>
                   <el-form-item>
@@ -120,12 +127,13 @@ import {
   ElDivider,
   ElEmpty,
   ElRadioGroup,
-  ElRadioButton
+  ElRadioButton,
+  ElTag
 } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
-import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
+import { getPriceString, applyMarkup, getApplicationMarkupRatio, getApplicationCallerOrderDiscountRate } from '@/utils';
 import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import ServiceEstimation from '@/components/service/Estimation.vue';
@@ -157,6 +165,7 @@ export default defineComponent({
     ElEmpty,
     ElRadioGroup,
     ElRadioButton,
+    ElTag,
     Price,
     ServiceEstimation
   },
@@ -219,8 +228,12 @@ export default defineComponent({
     markupRatio(): number | undefined {
       return getApplicationMarkupRatio(this.application, this.site);
     },
+    orderDiscountRate(): number | undefined {
+      if (isIOS()) return 0;
+      return getApplicationCallerOrderDiscountRate(this.application);
+    },
     pricingAvailable(): boolean {
-      return this.markupRatio !== undefined;
+      return this.markupRatio !== undefined && this.orderDiscountRate !== undefined;
     },
     // Backend-resolved markup keeps this preview aligned with order billing
     // when a service overrides the site-wide default.
@@ -233,6 +246,19 @@ export default defineComponent({
       return this.package && this.markupRatio !== undefined
         ? applyMarkup(this.package.price, this.markupRatio) / this.package.amount
         : undefined;
+    },
+    displayFinalPrice(): number | undefined {
+      if (this.displayPackagePrice === undefined || this.orderDiscountRate === undefined) {
+        return undefined;
+      }
+      return this.displayPackagePrice * (1 - this.orderDiscountRate);
+    },
+    hasOrderDiscount(): boolean {
+      return (this.orderDiscountRate ?? 0) > 0;
+    },
+    discountPercent(): string {
+      const percent = (this.orderDiscountRate ?? 0) * 100;
+      return Number.isInteger(percent) ? percent.toFixed(0) : percent.toFixed(1);
     }
   },
   mounted() {
@@ -371,6 +397,87 @@ export default defineComponent({
         color: #29c287;
       }
     }
+    .final-price-block {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .final-price-line {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .discount-tag {
+      border-radius: 999px;
+    }
+    .discount-hint {
+      margin: 0;
+      font-size: 13px;
+      color: var(--el-text-color-secondary);
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .panel {
+    .el-card {
+      padding: 16px 12px;
+    }
+  }
+
+  :deep(.purchase-form .el-form-item) {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  :deep(.purchase-form .el-form-item__label) {
+    width: auto !important;
+    height: auto;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  :deep(.purchase-form .el-form-item__content) {
+    margin-left: 0 !important;
+  }
+
+  .package-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 8px;
+    width: 100%;
+    padding-top: 4px;
+  }
+
+  :deep(.package-options .el-radio-button) {
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+
+  :deep(.package-options .el-radio-button__inner) {
+    width: 100%;
+    padding: 8px 6px;
+    border: 1px solid var(--el-border-color);
+    border-radius: 4px;
+    box-shadow: none;
+  }
+
+  .final-price-block {
+    width: 100%;
+  }
+
+  .package-options .corner {
+    top: -8px;
+    right: 4px;
+    padding: 0 3px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .btn-create {
+    width: 100%;
   }
 }
 </style>

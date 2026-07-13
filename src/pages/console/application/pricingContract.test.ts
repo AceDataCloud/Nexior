@@ -21,6 +21,16 @@ describe('application purchase pricing contract', () => {
     const source = readSibling('Extra.vue');
     expect(source).toContain(':disabled="!pricingAvailable || !package"');
     expect(source).toContain('!this.pricingAvailable || !this.package');
+    expect(source).toContain('this.markupRatio !== undefined && this.orderDiscountRate !== undefined');
+  });
+
+  it('usage preview applies the backend-resolved order discount after markup', () => {
+    const source = readSibling('Extra.vue');
+    expect(source).toContain('getApplicationCallerOrderDiscountRate');
+    expect(source).toContain('this.displayPackagePrice * (1 - this.orderDiscountRate)');
+    expect(source).toContain("$t('order.message.discountTag'");
+    expect(source).toContain("$t('order.message.discountHint'");
+    expect(source).toContain('if (isIOS()) return 0');
   });
 
   it('subscription checkout rejects unsupported durations', () => {

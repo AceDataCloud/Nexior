@@ -129,6 +129,14 @@ export const getApplicationMarkupRatio = (
   return raw;
 };
 
+export const getApplicationCallerOrderDiscountRate = (application?: IApplication | null): number | undefined => {
+  if (!application) return undefined;
+  const raw = application?.effective_caller_order_discount_rate;
+  if (raw === undefined || raw === null) return 0;
+  if (typeof raw !== 'number' || !Number.isFinite(raw) || raw < 0 || raw > 1) return undefined;
+  return raw;
+};
+
 /**
  * Apply a markup ratio to a price: `price * (1 + ratio)`. Mirrors the backend
  * `apply_markup` so the displayed price matches what the gateway charges at
