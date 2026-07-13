@@ -193,7 +193,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { orderOperator, IOrderSummary } from '@/operators/order';
-import Pagination from '@/components/common/Pagination.vue';
+import { Pagination } from '@acedatacloud/core/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
   ElRow,
