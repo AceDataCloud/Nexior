@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 10:47:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 11:29:07 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.26
+
+Mon, 13 Jul 2026 11:29:07 GMT
+
+### Patches
+
+- Use shared core translation DTOs and remove the duplicate local models. (dev@acedata.cloud)
 
 ## 3.324.25
 
