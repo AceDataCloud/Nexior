@@ -2,7 +2,7 @@
 // pure JsonLogic evaluator; the currency-aware formatters are built from the
 // store's exchange/currency here. Exported names/signatures unchanged.
 import { getConsumption as coreGetConsumption, createPriceFormatter } from '@acedatacloud/core/pricing';
-import { CURRENCY_LABEL_MAPPING } from '@/constants/mapping';
+import { CURRENCY_LABEL_MAPPING } from '@acedatacloud/core/constants';
 import store from '@/store';
 
 const formatter = createPriceFormatter({
