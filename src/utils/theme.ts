@@ -27,6 +27,39 @@ export function applyTheme(theme: string) {
   document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
 }
 
+/** Resolve the OS colour-scheme preference. Falls back to 'light' when
+ *  matchMedia is unavailable (SSR / very old browsers). */
+export function resolveSystemTheme(): 'light' | 'dark' {
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
+}
+
+let systemThemeMql: MediaQueryList | null = null;
+let systemThemeListener: ((e: MediaQueryListEvent) => void) | null = null;
+
+/** Apply a user THEME preference: 'light' | 'dark' | 'system'. For 'system'
+ *  it resolves against the OS now AND subscribes to live OS changes; any
+ *  previous system subscription is detached first so we never stack listeners. */
+export function applyThemePreference(pref: string): void {
+  if (systemThemeMql && systemThemeListener) {
+    systemThemeMql.removeEventListener('change', systemThemeListener);
+    systemThemeMql = null;
+    systemThemeListener = null;
+  }
+  if (pref === 'system') {
+    applyTheme(resolveSystemTheme());
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      systemThemeMql = window.matchMedia('(prefers-color-scheme: dark)');
+      systemThemeListener = (e: MediaQueryListEvent) => applyTheme(e.matches ? 'dark' : 'light');
+      systemThemeMql.addEventListener('change', systemThemeListener);
+    }
+    return;
+  }
+  applyTheme(pref === 'dark' ? 'dark' : 'light');
+}
+
 /** Default brand colour (Ace Data Cloud teal). Kept in sync with
  *  `_element.scss` $colors.primary.base and `_common.scss` :root defaults. */
 export const DEFAULT_PRIMARY_COLOR = '#277186';

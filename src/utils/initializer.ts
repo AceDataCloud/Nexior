@@ -1,6 +1,6 @@
 import { getCookie, setCookie } from 'typescript-cookie';
 import favicon from '@/assets/images/favicon.ico';
-import { applyAccentColor, applyTheme } from './theme';
+import { applyAccentColor, applyThemePreference } from './theme';
 import store from '@/store';
 import { IToken } from '@/models';
 import { LOCALE_CURRENCY_MAPPING } from '@acedatacloud/core/constants';
@@ -195,7 +195,7 @@ export const initializeToken = async () => {
 export const initializeTheme = async () => {
   const theme = getCookie('THEME') || 'dark';
   console.debug('initialize theme', theme);
-  applyTheme(theme);
+  applyThemePreference(theme);
   const primaryColor = store.state.site?.theme?.primary_color;
   console.debug('initialize primary color', primaryColor || '(default)');
   applyAccentColor(primaryColor || null);
