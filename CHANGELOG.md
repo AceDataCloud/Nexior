@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 17:09:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 17:11:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.30
+
+Mon, 13 Jul 2026 17:11:42 GMT
+
+### Patches
+
+- feat(settings): add send-message shortcut, remove source-code link (dev@acedata.cloud)
 
 ## 3.324.29
 
