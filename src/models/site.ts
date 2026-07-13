@@ -116,12 +116,28 @@ export interface ISiteBrandingLinks {
   privacy?: string;
 }
 
+// One customer-service entry shown on the About page (an ordered list
+// lives at ``Site.branding.contacts``). ``type`` is a short slug
+// (discord / x / wechat / telegram / phone / email / website / any
+// custom channel) that drives the icon + link scheme; each item must
+// carry at least one of ``value`` / ``url`` / ``qr``. This shape scales
+// to multiple phones/emails, a QR on any channel, and new channel types
+// with no schema change. Backend validator: ``app/utils/site_branding.py``.
+export interface ISiteContact {
+  type: string;
+  label?: string;
+  value?: string;
+  url?: string;
+  qr?: string;
+}
+
 export interface ISiteBranding {
   company?: string;
   copyright?: string;
   hide_powered_by?: boolean;
   hide_api_code?: boolean;
   links?: ISiteBrandingLinks;
+  contacts?: ISiteContact[];
 }
 
 export interface ISite {

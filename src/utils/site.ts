@@ -1,4 +1,4 @@
-import { IApplication, ISite } from '@/models';
+import { IApplication, ISite, ISiteContact } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { BASE_HOST_HUB } from '@/constants/endpoint';
 import { isNative, isDesktop } from './surface';
@@ -83,6 +83,23 @@ export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_b
  */
 export const getBrandSupportUrl = (site?: ISite | null): string => {
   return site?.branding?.links?.support || site?.metadata?.support_url || '';
+};
+
+/**
+ * Ordered list of customer-service entries the site owner configured
+ * (`branding.contacts`, PlatformBackend). Returns `[]` when unset / malformed
+ * so callers can treat "no contacts" uniformly.
+ */
+export const getBrandContacts = (site?: ISite | null): ISiteContact[] => {
+  const contacts = site?.branding?.contacts;
+  return Array.isArray(contacts) ? contacts : [];
+};
+
+/**
+ * True when the site owner filled in at least one contact entry.
+ */
+export const hasBrandContacts = (site?: ISite | null): boolean => {
+  return getBrandContacts(site).length > 0;
 };
 
 // Site-wide markup ceiling, mirroring PlatformBackend

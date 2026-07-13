@@ -1,50 +1,85 @@
 <template>
   <div class="settings-list">
-    <section v-if="!brandingHidden" class="settings-item">
+    <!--
+      The first-party attribution + one-click build trio (Nexior source,
+      Ace Data Cloud API, Build-your-own) is shown only on our own
+      first-party official builds: the bare official web host, plus the
+      native (Capacitor) / desktop (Electron) shells whose window.host is
+      a useless "localhost"/"bundle" but which always run against studio.
+      Web subsites and white-label tenants get their contacts block only.
+    -->
+    <template v-if="isFirstPartyOfficial">
+      <section class="settings-item">
+        <div class="settings-label">
+          <p class="settings-title">{{ $t('common.settings.poweredBy') }}</p>
+          <p class="settings-tip">{{ $t('common.settings.poweredByTip') }}</p>
+        </div>
+        <div class="settings-content">
+          <a href="https://github.com/AceDataCloud/Nexior" target="_blank" rel="noopener noreferrer" class="about-link">
+            <font-awesome-icon :icon="faGithub" class="icon" />
+            <span>Nexior</span>
+          </a>
+        </div>
+      </section>
+      <section class="settings-item">
+        <div class="settings-label">
+          <p class="settings-title">{{ $t('common.settings.apiService') }}</p>
+          <p class="settings-tip">{{ $t('common.settings.apiServiceTip') }}</p>
+        </div>
+        <div class="settings-content">
+          <a href="https://platform.acedata.cloud" target="_blank" rel="noopener noreferrer" class="about-link">
+            <font-awesome-icon :icon="faCloud" class="icon" />
+            <span>Ace Data Cloud</span>
+          </a>
+        </div>
+      </section>
+      <section class="settings-item">
+        <div class="settings-label">
+          <p class="settings-title">{{ $t('common.settings.buildYourOwn') }}</p>
+          <p class="settings-tip">{{ $t('common.settings.buildYourOwnTip') }}</p>
+        </div>
+        <div class="settings-content">
+          <!--
+            One-click subsite create: ask the parent dialog (Setting.vue)
+            to switch to the Subsites tab with the create form open.
+          -->
+          <el-button type="primary" @click="onBuildOneClick">
+            <font-awesome-icon :icon="faRocket" class="mr-1" />
+            {{ $t('common.settings.buildNow') }}
+          </el-button>
+        </div>
+      </section>
+    </template>
+
+    <!--
+      Customer-service contacts the site owner filled in
+      (Site.branding.contacts). Rendered whenever at least one channel is
+      set, so the official main host can also surface them if configured.
+    -->
+    <section v-if="hasContacts" class="settings-item contacts-item">
       <div class="settings-label">
-        <p class="settings-title">{{ $t('common.settings.poweredBy') }}</p>
-        <p class="settings-tip">{{ $t('common.settings.poweredByTip') }}</p>
+        <p class="settings-title">{{ $t('common.settings.contactSupport') }}</p>
+        <p class="settings-tip">{{ $t('common.settings.contactSupportTip') }}</p>
       </div>
-      <div class="settings-content">
-        <a href="https://github.com/AceDataCloud/Nexior" target="_blank" rel="noopener noreferrer" class="about-link">
-          <font-awesome-icon :icon="faGithub" class="icon" />
-          <span>Nexior</span>
-        </a>
-      </div>
-    </section>
-    <section v-if="!brandingHidden" class="settings-item">
-      <div class="settings-label">
-        <p class="settings-title">{{ $t('common.settings.apiService') }}</p>
-        <p class="settings-tip">{{ $t('common.settings.apiServiceTip') }}</p>
-      </div>
-      <div class="settings-content">
-        <a href="https://platform.acedata.cloud" target="_blank" rel="noopener noreferrer" class="about-link">
-          <font-awesome-icon :icon="faCloud" class="icon" />
-          <span>Ace Data Cloud</span>
-        </a>
-      </div>
-    </section>
-    <section v-if="showBuildSection" class="settings-item">
-      <div class="settings-label">
-        <p class="settings-title">{{ $t('common.settings.buildYourOwn') }}</p>
-        <p class="settings-tip">{{ $t('common.settings.buildYourOwnTip') }}</p>
-      </div>
-      <div class="settings-content">
-        <!--
-          On the official main site we offer a true one-click subsite create:
-          ask the parent dialog (Setting.vue) to switch to the Subsites tab
-          with the create form already open. Other hosts (subsites,
-          white-label) keep the original "contact us" CTA since they can't
-          self-spawn further subsites.
-        -->
-        <el-button v-if="isMainOfficialHost" type="primary" @click="onBuildOneClick">
-          <font-awesome-icon :icon="faRocket" class="mr-1" />
-          {{ $t('common.settings.buildNow') }}
-        </el-button>
-        <el-button v-else type="primary" @click="onContact">
-          <font-awesome-icon :icon="faComments" class="mr-1" />
-          {{ $t('common.settings.contactUs') }}
-        </el-button>
+      <div class="settings-content contacts-content">
+        <div v-for="(c, i) in contacts" :key="i" class="contact-entry">
+          <a v-if="contactHref(c)" :href="contactHref(c)" v-bind="linkAttrs(c)" class="about-link">
+            <font-awesome-icon :icon="contactIconFor(c.type)" class="icon" />
+            <span>{{ contactText(c) }}</span>
+          </a>
+          <span v-else class="about-link contact-static">
+            <font-awesome-icon :icon="contactIconFor(c.type)" class="icon" />
+            <span>{{ contactText(c) }}</span>
+          </span>
+          <el-image
+            v-if="c.qr"
+            :src="c.qr"
+            :preview-src-list="[c.qr]"
+            :preview-teleported="true"
+            fit="contain"
+            class="contact-qr"
+          />
+        </div>
       </div>
     </section>
   </div>
@@ -52,18 +87,20 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton } from 'element-plus';
+import { ElButton, ElImage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faCloud, faComments, faRocket } from '@fortawesome/free-solid-svg-icons';
+import { faCloud, faRocket } from '@fortawesome/free-solid-svg-icons';
 import { SETTING_TAB_SUBSITES } from '@/constants';
-import { isMainOfficial, isBrandingHidden, getBrandSupportUrl } from '@/utils';
-import { ISite } from '@/models';
+import { isMainOfficial, isNative, isDesktop, getBrandContacts, hasBrandContacts } from '@/utils';
+import { contactIcon, contactMeta, contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
+import { ISite, ISiteContact } from '@/models';
 
 export default defineComponent({
   name: 'AboutSetting',
   components: {
     ElButton,
+    ElImage,
     FontAwesomeIcon
   },
   emits: ['switch-tab'],
@@ -71,7 +108,6 @@ export default defineComponent({
     return {
       faGithub,
       faCloud,
-      faComments,
       faRocket
     };
   },
@@ -79,30 +115,47 @@ export default defineComponent({
     site(): ISite | undefined {
       return this.$store?.state?.site;
     },
-    brandingHidden(): boolean {
-      // White-label master switch (Site.branding.hide_powered_by). Hides the
-      // "Powered by" + "API Service" attribution. Default (unset) = show ours.
-      return isBrandingHidden(this.site, 'powered_by');
+    isFirstPartyOfficial(): boolean {
+      // Bare official web host, OR a native/desktop shell (host is
+      // "localhost"/"bundle" there but the bundle always resolves the
+      // studio Site row — see getSiteOrigin).
+      return isMainOfficial() || isNative() || isDesktop();
     },
-    supportUrl(): string {
-      // Reseller support link first (branding.links.support -> support_url).
-      // Only fall back to our platform when branding is NOT hidden, so a
-      // white-label site never leaks our domain.
-      return getBrandSupportUrl(this.site) || (this.brandingHidden ? '' : 'https://platform.acedata.cloud');
+    contacts(): ISiteContact[] {
+      return getBrandContacts(this.site);
     },
-    isMainOfficialHost(): boolean {
-      return isMainOfficial();
-    },
-    showBuildSection(): boolean {
-      // Official main host shows one-click subsite build; other hosts show a
-      // "contact us" CTA. On a white-label site with no support URL there's
-      // nothing useful to show (and a "contact us" would leak us), so hide it.
-      return this.isMainOfficialHost || !this.brandingHidden || !!this.supportUrl;
+    hasContacts(): boolean {
+      return hasBrandContacts(this.site);
     }
   },
   methods: {
-    onContact() {
-      window.open(this.supportUrl, '_blank', 'noopener,noreferrer');
+    contactIconFor(type: string) {
+      return contactIcon(type);
+    },
+    contactHref(c: ISiteContact): string {
+      // An explicit URL always wins; otherwise derive tel:/mailto: from the
+      // value for phone/email types. Backend validation guarantees url is
+      // http(s) and phone/email values are scheme-safe, so no XSS here.
+      if (c.url) return c.url;
+      const scheme = contactMeta(c.type).scheme;
+      if (c.value && scheme === 'tel') return `tel:${c.value}`;
+      if (c.value && scheme === 'mailto') return `mailto:${c.value}`;
+      return '';
+    },
+    linkAttrs(c: ISiteContact): Record<string, string> {
+      // Only external http(s) links open in a new tab; tel:/mailto: don't.
+      return /^https?:/i.test(this.contactHref(c)) ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+    },
+    contactText(c: ISiteContact): string {
+      if (c.label) return c.label;
+      if (c.value) return c.value;
+      const brand = contactBrand(c.type);
+      if (brand) return brand;
+      const key = contactTypeI18nKey(c.type);
+      return key ? (this.$t(key) as string) : this.capitalize(c.type);
+    },
+    capitalize(s: string): string {
+      return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
     },
     onBuildOneClick() {
       // Ask the parent settings dialog to swap to the Subsites tab with
@@ -129,6 +182,38 @@ export default defineComponent({
 
   &:hover {
     color: var(--el-color-primary);
+  }
+}
+
+.contacts-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .contact-static {
+    cursor: default;
+
+    &:hover {
+      color: var(--el-text-color-regular);
+    }
+
+    span {
+      user-select: text;
+    }
+  }
+
+  .contact-qr {
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+    border: 1px solid var(--el-border-color-lighter);
+    cursor: zoom-in;
   }
 }
 </style>
