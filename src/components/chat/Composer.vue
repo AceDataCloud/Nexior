@@ -46,7 +46,7 @@
       class="input"
       :placeholder="$t('chat.message.newMessagePlaceholder')"
       :style="{ height: inputHeight }"
-      @keydown.enter.exact="onEnterKey"
+      @keydown.enter="onEnterKey"
       @input="adjustTextareaHeight"
     ></textarea>
     <div class="tools">
@@ -148,6 +148,7 @@ import {
   uploadTrackerMixin,
   withCurrentUserIdAndSite
 } from '@/utils';
+import { getSendShortcut } from '@/utils/composer';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { ROUTE_CHATGPT_CALL } from '@/router/constants';
@@ -305,11 +306,24 @@ export default defineComponent({
       this.$emit('submit');
     },
     onEnterKey(e: KeyboardEvent) {
-      // Avoid submitting while an IME (e.g. Chinese/Japanese/Korean) is
-      // composing — pressing Enter to confirm the IME candidate must NOT
-      // send the message. `isComposing` is true during composition; some
-      // browsers also report keyCode 229 for the same state.
+      // Never send while an IME is composing (Enter confirms the candidate).
       if (e.isComposing || e.keyCode === 229) {
+        return;
+      }
+      // Shift+Enter always inserts a newline.
+      if (e.shiftKey) {
+        return;
+      }
+      const withMod = e.metaKey || e.ctrlKey;
+      const shouldSend =
+        getSendShortcut() === 'mod-enter'
+          ? // ⌘/Ctrl+Enter sends; plain or Alt+Enter inserts a newline.
+            withMod
+          : // Plain Enter sends; any modifier (⌘/Ctrl/Alt) inserts a newline,
+            // preserving the previous @keydown.enter.exact behaviour.
+            !withMod && !e.altKey;
+      if (!shouldSend) {
+        // Let the keystroke insert a newline instead of sending.
         return;
       }
       e.preventDefault();
