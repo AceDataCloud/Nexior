@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Valitse luotavan videon tyyppi. Automaattinen antaa Maestron päättää; tai pakota tyyli, kuten lyhytdraama, aito kuvamateriaali, selittävä tai tuote-esittely.",
+    "message": "Ota mukautus käyttöön valitaksesi videon tyypin. Kun se on pois käytöstä, Maestro päättää automaattisesti.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Visuaalisen tyylin kenttä"
   },
   "description.style": {
-    "message": "Valinnainen visuaalinen tyyli (vaikuttaa typografiaan, väreihin, animaatioihin, rytmiin), riippumaton videotyypistä. Valinnaiset esiasetukset tai oma syöttö.",
+    "message": "Ota mukautus käyttöön valitaksesi tai kirjoittaaksesi visuaalisen tyylin. Kun se on pois käytöstä, Maestro päättää automaattisesti.",
     "description": "Tyylikentän ohje"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Ääninäytteen esikatselu / toisto -painike"
   },
   "description.voice": {
-    "message": "Valitse ääninäytteen äänenväri. Äänenväri ei riipu kielestä - sama äänenväri lukee valitun kielen mukaan; napsauta toistaaksesi.",
+    "message": "Ota mukautus käyttöön valitaksesi äänenvärin. Kun se on pois käytöstä, Maestro valitsee automaattisesti. Äänenväri ei riipu kielestä, ja voit kuunnella esikatselun.",
     "description": "Voice field help"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Mukauta videon tyyppiä",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Mukauta visuaalista tyyliä",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Mukauta ääninäytteen äänenväriä",
+    "description": "Voice timbre customization toggle"
   }
 }

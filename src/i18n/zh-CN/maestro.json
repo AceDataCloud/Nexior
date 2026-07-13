@@ -231,12 +231,24 @@
     "message": "选择视频类型、视觉风格与配音音色。",
     "description": "Customization enabled state"
   },
+  "name.customizeScenario": {
+    "message": "自定义视频类型",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "自定义视觉风格",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "自定义配音音色",
+    "description": "Voice timbre customization toggle"
+  },
   "name.scenario": {
     "message": "视频类型",
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "选择要制作的视频类型。自动让 Maestro 决定；也可指定图文旁白、短剧、数字人口播、字幕花字。",
+    "message": "打开自定义后可选择图文旁白、短剧、数字人口播或字幕花字；关闭则由 Maestro 自动决定。",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -268,7 +280,7 @@
     "description": "Visual style field"
   },
   "description.style": {
-    "message": "可选的视觉风格提示（作用于排版、配色、动效、节奏），与视频类型相互独立。可选预设或自行输入。",
+    "message": "打开自定义后可选择或输入视觉风格（排版、配色、动效、节奏）；关闭则由 Maestro 自动决定。",
     "description": "Style field help"
   },
   "option.style.auto": {
@@ -344,7 +356,7 @@
     "description": "Voice preview / play sample button"
   },
   "description.voice": {
-    "message": "选择旁白配音的音色。音色与语言无关——同一音色会用上方选择的语言来朗读；点播放可试听。",
+    "message": "打开自定义后可选择旁白音色；关闭则由 Maestro 自动匹配。音色与语言无关，点击播放可试听。",
     "description": "Voice field help"
   },
   "option.voice.auto": {

@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Выберите тип создаваемого видео. «Авто» — Maestro решит сам; либо задайте стиль: короткая драма, реальные кадры, объяснение или промо продукта.",
+    "message": "Включите настройку, чтобы выбрать тип видео. Если она выключена, Maestro решит автоматически.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Поле визуального стиля"
   },
   "description.style": {
-    "message": "Дополнительные визуальные стили (для типографики, цветовой схемы, анимации, ритма), независимые от типа видео. Можно выбрать предустановленный вариант или ввести свой.",
+    "message": "Включите настройку, чтобы выбрать или ввести визуальный стиль. Если она выключена, Maestro решит автоматически.",
     "description": "Помощь по полю стиля"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Кнопка предварительного прослушивания / воспроизведения образца"
   },
   "description.voice": {
-    "message": "Выберите тембр голоса для озвучивания. Тембр не зависит от языка — один и тот же тембр будет читать на языке, выбранном выше; нажмите воспроизвести, чтобы прослушать.",
+    "message": "Включите настройку, чтобы выбрать тембр голоса. Если она выключена, Maestro подберёт его автоматически. Тембр не зависит от языка, его можно прослушать.",
     "description": "Помощь по полю выбора голоса"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Настроить тип видео",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Настроить визуальный стиль",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Настроить тембр голоса",
+    "description": "Voice timbre customization toggle"
   }
 }

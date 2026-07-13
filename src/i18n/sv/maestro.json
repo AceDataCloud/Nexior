@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Välj typ av video att skapa. Auto låter Maestro bestämma; eller tvinga en stil som kortdrama, verkligt filmmaterial, förklarande eller produktreklam.",
+    "message": "Aktivera anpassning för att välja videotyp. När den är avstängd bestämmer Maestro automatiskt.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Fält för visuell stil"
   },
   "description.style": {
-    "message": "Valfri visuell stilindikation (påverkar typografi, färgsättning, animationer, rytm), oberoende av videotyp. Välj förinställning eller ange själv.",
+    "message": "Aktivera anpassning för att välja eller ange visuell stil. När den är avstängd bestämmer Maestro automatiskt.",
     "description": "Hjälp för stilfält"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Knapp för att förhandslyssna / spela upp exempel"
   },
   "description.voice": {
-    "message": "Välj röstens tonläge för berättarrösten. Tonläget är oberoende av språket — samma tonläge kommer att läsa upp på det språk som valts ovan; tryck på spela för att förhandslyssna.",
+    "message": "Aktivera anpassning för att välja berättarröst. När den är avstängd väljer Maestro automatiskt. Rösten är språkoberoende och du kan trycka på uppspelningsknappen för att provlyssna.",
     "description": "Hjälp för röstfält"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Anpassa videotyp",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Anpassa visuell stil",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Anpassa berättarröst",
+    "description": "Voice timbre customization toggle"
   }
 }

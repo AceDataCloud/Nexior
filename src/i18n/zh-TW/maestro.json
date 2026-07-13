@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "選擇要製作的影片類型。自動讓 Maestro 決定；也可指定短劇、圖文實拍、概念講解、產品推廣等風格。",
+    "message": "開啟自訂後可選擇影片類型；關閉則由 Maestro 自動決定。",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "視覺風格欄位"
   },
   "description.style": {
-    "message": "可選的視覺風格提示（作用於排版、配色、動效、節奏），與視頻類型相互獨立。可選預設或自行輸入。",
+    "message": "開啟自訂後可選擇或輸入視覺風格；關閉則由 Maestro 自動決定。",
     "description": "樣式欄位幫助"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "語音預覽 / 播放範例按鈕"
   },
   "description.voice": {
-    "message": "選擇旁白配音的音色。音色與語言無關——同一音色會用上方選擇的語言來朗讀；點播放可试听。",
+    "message": "開啟自訂後可選擇配音音色；關閉則由 Maestro 自動配對。音色與語言無關，點擊播放即可試聽。",
     "description": "語音欄位幫助"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "自訂影片類型",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "自訂視覺風格",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "自訂配音音色",
+    "description": "Voice timbre customization toggle"
   }
 }

@@ -45,6 +45,9 @@ ENGLISH_LOCALE = "en"
 REQUIRE_LOCALIZED_MESSAGES = {
     "maestro.json": {
         "name.customize",
+        "name.customizeScenario",
+        "name.customizeStyle",
+        "name.customizeVoice",
         "description.customize.auto",
         "description.customize.manual",
     }

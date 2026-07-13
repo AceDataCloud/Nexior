@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Επιλέξτε τον τύπο βίντεο. Το «Αυτόματο» αφήνει το Maestro να αποφασίσει· ή επιβάλετε στυλ όπως σύντομο δράμα, πραγματικά πλάνα, επεξήγηση ή προώθηση προϊόντος.",
+    "message": "Ενεργοποιήστε την προσαρμογή για να επιλέξετε τύπο βίντεο· αφήστε την απενεργοποιημένη για να αποφασίσει αυτόματα το Maestro.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Πεδίο οπτικού στυλ"
   },
   "description.style": {
-    "message": "Επιλογές οπτικού στυλ (που επηρεάζουν την τυπογραφία, τα χρώματα, τις κινήσεις, τον ρυθμό), ανεξάρτητες από τον τύπο βίντεο. Επιλογές προεπιλογής ή εισαγωγή από τον χρήστη.",
+    "message": "Ενεργοποιήστε την προσαρμογή για να επιλέξετε ή να εισαγάγετε οπτικό στυλ· αφήστε την απενεργοποιημένη για να αποφασίσει αυτόματα το Maestro.",
     "description": "Βοήθεια πεδίου στυλ"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Κουμπί προεπισκόπησης φωνής / αναπαραγωγής δείγματος"
   },
   "description.voice": {
-    "message": "Επιλέξτε τον τόνο της φωνής για την αφήγηση. Ο τόνος δεν σχετίζεται με τη γλώσσα - ο ίδιος τόνος θα διαβάσει στη γλώσσα που επιλέξατε παραπάνω. Πατήστε αναπαραγωγή για προεπισκόπηση.",
+    "message": "Ενεργοποιήστε την προσαρμογή για να επιλέξετε τόνο φωνής· διαφορετικά το Maestro επιλέγει αυτόματα. Ο τόνος είναι ανεξάρτητος από τη γλώσσα και μπορείτε να τον ακούσετε με την αναπαραγωγή.",
     "description": "Βοήθεια πεδίου φωνής"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Προσαρμογή τύπου βίντεο",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Προσαρμογή οπτικού στυλ",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Προσαρμογή τόνου φωνής",
+    "description": "Voice timbre customization toggle"
   }
 }

@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "اختر نوع الفيديو المراد إنشاؤه. «تلقائي» يترك القرار لـ Maestro؛ أو حدّد نمطًا مثل دراما قصيرة أو لقطات واقعية أو شرح أو ترويج منتج.",
+    "message": "فعّل التخصيص لاختيار نوع الفيديو؛ اتركه مغلقًا ليقرر Maestro تلقائيًا.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "حقل الأسلوب البصري"
   },
   "description.style": {
-    "message": "نصائح أسلوب بصري اختيارية (تؤثر على الطباعة، الألوان، الحركات، الإيقاع)، مستقلة عن نوع الفيديو. يمكن اختيار إعدادات مسبقة أو إدخالها يدويًا.",
+    "message": "فعّل التخصيص لاختيار الأسلوب البصري أو إدخاله؛ اتركه مغلقًا ليقرر Maestro تلقائيًا.",
     "description": "مساعدة حقل الأسلوب"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "زر معاينة الصوت / تشغيل العينة"
   },
   "description.voice": {
-    "message": "اختر نغمة الصوت للراوي. النغمة غير مرتبطة باللغة - ستستخدم نفس النغمة اللغة المختارة أعلاه للقراءة؛ اضغط على التشغيل للاستماع.",
+    "message": "فعّل التخصيص لاختيار نغمة الصوت؛ اتركه مغلقًا ليختار Maestro تلقائيًا. النغمة مستقلة عن اللغة، ويمكنك الضغط على التشغيل للاستماع.",
     "description": "مساعدة حقل الصوت"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "تخصيص نوع الفيديو",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "تخصيص الأسلوب البصري",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "تخصيص نغمة الصوت",
+    "description": "Voice timbre customization toggle"
   }
 }

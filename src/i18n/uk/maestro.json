@@ -212,7 +212,7 @@
     "description": "Video type field"
   },
   "description.scenario": {
-    "message": "Виберіть тип відео. «Авто» дає змогу Maestro вирішити; або задайте стиль: коротка драма, реальні кадри, пояснення чи промо продукту.",
+    "message": "Увімкніть налаштування, щоб вибрати тип відео. Якщо його вимкнено, Maestro вирішить автоматично.",
     "description": "Scenario field help"
   },
   "option.scenario.auto": {
@@ -244,7 +244,7 @@
     "description": "Поле візуального стилю"
   },
   "description.style": {
-    "message": "Додаткові візуальні стилі (для типографіки, кольорів, анімацій, ритму), які незалежні від типу відео. Можна вибрати з наявних налаштувань або ввести власні.",
+    "message": "Увімкніть налаштування, щоб вибрати або ввести візуальний стиль. Якщо його вимкнено, Maestro вирішить автоматично.",
     "description": "Допомога для поля стилю"
   },
   "option.style.auto": {
@@ -320,7 +320,7 @@
     "description": "Кнопка для попереднього прослуховування голосу / відтворення зразка"
   },
   "description.voice": {
-    "message": "Виберіть тональність озвучення. Тональність не залежить від мови — одна й та ж тональність буде читати мовою, вибраною вище; натисніть відтворення, щоб прослухати.",
+    "message": "Увімкніть налаштування, щоб вибрати тональність озвучення. Якщо його вимкнено, Maestro підбере її автоматично. Тональність не залежить від мови, її можна прослухати.",
     "description": "Допомога для поля вибору голосу"
   },
   "option.voice.auto": {
@@ -474,5 +474,17 @@
   "placeholder.additionalLanguages": {
     "message": "Add output languages",
     "description": "Additional languages placeholder"
+  },
+  "name.customizeScenario": {
+    "message": "Налаштувати тип відео",
+    "description": "Video type customization toggle"
+  },
+  "name.customizeStyle": {
+    "message": "Налаштувати візуальний стиль",
+    "description": "Visual style customization toggle"
+  },
+  "name.customizeVoice": {
+    "message": "Налаштувати тональність озвучення",
+    "description": "Voice timbre customization toggle"
   }
 }
