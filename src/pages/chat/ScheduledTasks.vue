@@ -797,7 +797,11 @@ export default defineComponent({
       return status === 'success' ? 'success' : status === 'failed' ? 'danger' : 'warning';
     },
     runErrorText(run: IScheduledRun) {
-      return run.error_message || run.error_code?.replace(/_/g, ' ') || '';
+      if (run.error_message) return run.error_message;
+      const code = run.error_code;
+      if (!code) return '';
+      const key = `chat.scheduledTasks.run.reason.${code}`;
+      return (this as any).$te(key) ? (this.$t(key) as string) : code.replace(/_/g, ' ');
     },
     // Turn any backend schedule spec into a localized, human-readable phrase.
     humanizeSchedule(s: IScheduleSpec): string {

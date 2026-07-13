@@ -667,6 +667,58 @@
     "message": "失败",
     "description": "失败状态"
   },
+  "scheduledTasks.run.reason.max_turns": {
+    "message": "达到步数上限",
+    "description": "达到最大步数"
+  },
+  "scheduledTasks.run.reason.max_budget_usd": {
+    "message": "达到预算上限",
+    "description": "达到最大预算"
+  },
+  "scheduledTasks.run.reason.tool_call_loop": {
+    "message": "检测到工具调用循环",
+    "description": "工具调用陷入循环"
+  },
+  "scheduledTasks.run.reason.prompt_too_long": {
+    "message": "提示词过长",
+    "description": "提示词超出长度"
+  },
+  "scheduledTasks.run.reason.aborted_streaming": {
+    "message": "已中断",
+    "description": "流式响应被中断"
+  },
+  "scheduledTasks.run.reason.aborted_tools": {
+    "message": "已中断",
+    "description": "工具执行被中断"
+  },
+  "scheduledTasks.run.reason.awaiting_user_input": {
+    "message": "等待你的输入",
+    "description": "等待用户输入"
+  },
+  "scheduledTasks.run.reason.error": {
+    "message": "出错",
+    "description": "运行出错"
+  },
+  "scheduledTasks.run.reason.unknown": {
+    "message": "未知错误",
+    "description": "未知失败原因"
+  },
+  "scheduledTasks.run.reason.balance_insufficient": {
+    "message": "余额不足",
+    "description": "账户余额不足"
+  },
+  "scheduledTasks.run.reason.unauthorized": {
+    "message": "未授权",
+    "description": "凭证未授权"
+  },
+  "scheduledTasks.run.reason.timeout": {
+    "message": "超时",
+    "description": "请求超时"
+  },
+  "scheduledTasks.run.reason.internal_error": {
+    "message": "内部错误",
+    "description": "服务内部错误"
+  },
   "scheduledTasks.run.needs_user_input": {
     "message": "需要操作",
     "description": "需要用户操作状态"
