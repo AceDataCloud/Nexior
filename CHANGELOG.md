@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 17:11:42 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 17:28:41 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.31
+
+Mon, 13 Jul 2026 17:28:41 GMT
+
+### Patches
+
+- Align global colors, borders, radii, spacing, and typography with shared design tokens. (dev@acedata.cloud)
 
 ## 3.324.30
 
