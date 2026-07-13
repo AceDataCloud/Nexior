@@ -8,6 +8,7 @@
       <el-dropdown-menu>
         <el-dropdown-item command="light">{{ $t('common.theme.light') }}</el-dropdown-item>
         <el-dropdown-item command="dark">{{ $t('common.theme.dark') }}</el-dropdown-item>
+        <el-dropdown-item command="system">{{ $t('common.theme.system') }}</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -17,7 +18,8 @@
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
 import { getDomain } from '@/utils';
-import { setCookie } from 'typescript-cookie';
+import { applyThemePreference } from '@/utils/theme';
+import { getCookie, setCookie } from 'typescript-cookie';
 import { ArrowDown } from '@element-plus/icons-vue';
 
 export default defineComponent({
@@ -31,25 +33,35 @@ export default defineComponent({
   },
   data() {
     return {
-      theme: 'light' as 'light' | 'dark'
+      theme: 'light' as 'light' | 'dark' | 'system'
     };
   },
   computed: {
     currentLabel(): string {
-      return this.theme === 'dark'
-        ? (this.$t('common.theme.dark') as string)
-        : (this.$t('common.theme.light') as string);
+      if (this.theme === 'dark') {
+        return this.$t('common.theme.dark') as string;
+      }
+      if (this.theme === 'system') {
+        return this.$t('common.theme.system') as string;
+      }
+      return this.$t('common.theme.light') as string;
     }
   },
   mounted() {
-    // Mirror the theme already applied at startup by `initializeTheme`
-    // (cookie-or-dark) via the live <html> class. Re-deriving from the
-    // cookie here used a different default ('light') and stricter parse,
-    // so a missing/non-canonical cookie flipped the theme on Settings open.
-    this.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    // Prefer an explicit stored preference ('dark' or 'system') so the System
+    // option round-trips; otherwise mirror the theme already applied at startup
+    // by `initializeTheme` via the live <html> class (avoids the old bug where a
+    // missing/non-canonical cookie flipped the theme on Settings open).
+    const pref = getCookie('THEME');
+    this.theme =
+      pref === 'dark' || pref === 'system'
+        ? pref
+        : document.documentElement.classList.contains('dark')
+          ? 'dark'
+          : 'light';
   },
   methods: {
-    onSelect(command: 'light' | 'dark') {
+    onSelect(command: 'light' | 'dark' | 'system') {
       this.theme = command;
       this.applyTheme();
     },
@@ -58,11 +70,7 @@ export default defineComponent({
         path: '/',
         domain: getDomain()
       });
-      if (this.theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      applyThemePreference(this.theme);
     }
   }
 });
