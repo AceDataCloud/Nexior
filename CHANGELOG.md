@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 17:28:41 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 17:41:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.32
+
+Mon, 13 Jul 2026 17:41:17 GMT
+
+### Patches
+
+- Fix custom domain settings tab going blank: escape bare '@' in i18n messages (vue-i18n linked-format crash) (dev@acedata.cloud)
 
 ## 3.324.31
 
