@@ -21,10 +21,22 @@
               <div class="task-actions" @click.stop>
                 <el-switch
                   :model-value="task.state === 'enabled'"
+                  :disabled="task.state === 'error'"
                   @change="(v: string | number | boolean) => toggleState(task, v === true)"
                 />
+                <el-tooltip v-if="task.can_resume" :content="$t('chat.scheduledTasks.resume')" placement="top">
+                  <el-button text class="icon-action" :loading="resumingId === task.id" @click="resumeTask(task)">
+                    <font-awesome-icon v-if="resumingId !== task.id" icon="fa-solid fa-rotate-right" />
+                  </el-button>
+                </el-tooltip>
                 <el-tooltip :content="$t('chat.scheduledTasks.triggerNow')" placement="top">
-                  <el-button text class="icon-action" :loading="triggeringId === task.id" @click="triggerNow(task)">
+                  <el-button
+                    text
+                    class="icon-action"
+                    :disabled="task.last_outcome === 'unknown'"
+                    :loading="triggeringId === task.id"
+                    @click="triggerNow(task)"
+                  >
                     <font-awesome-icon v-if="triggeringId !== task.id" icon="fa-solid fa-play" />
                   </el-button>
                 </el-tooltip>
@@ -52,8 +64,19 @@
                 <font-awesome-icon icon="fa-solid fa-brain" class="meta-icon" />
                 {{ task.template.model }}
               </span>
+              <span class="meta-chip completion-chip">
+                <font-awesome-icon icon="fa-solid fa-circle-info" class="meta-icon" />
+                {{ completionRuleText(task.completion_rule) }}
+              </span>
             </div>
             <div class="task-prompt">{{ task.template.question }}</div>
+            <scheduled-outcome-status
+              v-if="taskOutcomeStatus(task)"
+              class="task-outcome"
+              :status="taskOutcomeStatus(task) || 'unverified'"
+              :reason="taskOutcomeReason(task)"
+              compact
+            />
             <div v-if="task.last_output_snippet" class="task-last-output">
               {{ task.last_output_snippet }}
             </div>
@@ -92,38 +115,95 @@
           <span>{{ $t('chat.scheduledTasks.runCount', { count: selectedTask.run_count }) }}</span>
         </div>
         <div class="run-context-prompt">{{ selectedTask.template.question }}</div>
+        <el-button
+          v-if="selectedTask.can_resume"
+          class="resume-task"
+          type="primary"
+          plain
+          size="small"
+          :loading="resumingId === selectedTask.id"
+          @click="resumeTask(selectedTask)"
+        >
+          <font-awesome-icon v-if="resumingId !== selectedTask.id" icon="fa-solid fa-rotate-right" />
+          {{ $t('chat.scheduledTasks.resume') }}
+        </el-button>
       </div>
       <el-skeleton v-if="runsLoading" :rows="3" animated />
       <el-empty v-else-if="!runs.length" :description="$t('chat.scheduledTasks.noRuns')" />
       <div v-else class="run-list">
-        <div
-          v-for="run in pagedRuns"
-          :key="run.id"
-          class="run-item"
-          :class="{ clickable: !!run.conversation_id }"
-          :tabindex="run.conversation_id ? 0 : -1"
-          :role="run.conversation_id ? 'button' : undefined"
-          @click="openRun(run)"
-          @keydown.enter="openRun(run)"
-          @keydown.space.prevent="openRun(run)"
-        >
+        <div v-for="run in pagedRuns" :key="run.id" class="run-item">
           <div class="run-body">
             <div class="run-line">
               <span class="run-title">{{ run.conversation_title || formatTime(run.scheduled_at) }}</span>
-              <el-tag size="small" :type="runTagType(run.status)" effect="dark" round class="run-tag">
-                {{ $t(`chat.scheduledTasks.run.${run.status}`) }}
-              </el-tag>
+              <scheduled-outcome-status :status="run.status" compact class="run-status" />
             </div>
             <div v-if="run.conversation_preview" class="run-preview">{{ run.conversation_preview }}</div>
+            <div v-if="run.outcome_reason" class="run-reason">{{ run.outcome_reason }}</div>
             <div class="run-sub">
               <span class="run-time">{{ formatTime(run.scheduled_at) }}</span>
               <span v-if="run.error_code || run.error_message" class="run-error" :title="runErrorText(run)">
                 {{ runErrorText(run) }}
               </span>
             </div>
+            <div
+              v-if="run.artifact_urls?.length || run.can_confirm || run.can_retry"
+              class="run-controls"
+              @click.stop
+              @keydown.stop
+            >
+              <el-button
+                v-for="url in run.artifact_urls"
+                :key="url"
+                tag="a"
+                :href="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                text
+                type="primary"
+                size="small"
+              >
+                <font-awesome-icon icon="fa-solid fa-up-right-from-square" />
+                {{ $t('chat.scheduledTasks.openArticle') }}
+              </el-button>
+              <el-button
+                v-if="run.can_confirm"
+                text
+                type="success"
+                size="small"
+                :loading="runActionId === run.id"
+                @click="confirmPublished(run)"
+              >
+                {{ $t('chat.scheduledTasks.confirmPublished') }}
+              </el-button>
+              <el-button
+                v-if="run.can_confirm"
+                text
+                type="danger"
+                size="small"
+                :disabled="!!runActionId"
+                @click="confirmNotPublished(run)"
+              >
+                {{ $t('chat.scheduledTasks.confirmNotPublished') }}
+              </el-button>
+              <el-button
+                v-if="run.can_retry"
+                text
+                type="primary"
+                size="small"
+                :loading="runActionId === run.id"
+                @click="retryRun(run)"
+              >
+                <font-awesome-icon v-if="runActionId !== run.id" icon="fa-solid fa-rotate-right" />
+                {{ $t('chat.scheduledTasks.retry') }}
+              </el-button>
+            </div>
           </div>
           <div class="run-action">
-            <font-awesome-icon v-if="run.conversation_id" icon="fa-solid fa-chevron-right" class="run-arrow" />
+            <el-tooltip v-if="run.conversation_id" :content="$t('chat.scheduledTasks.viewResult')" placement="left">
+              <el-button text class="run-open" :aria-label="$t('chat.scheduledTasks.viewResult')" @click="openRun(run)">
+                <font-awesome-icon icon="fa-solid fa-chevron-right" class="run-arrow" />
+              </el-button>
+            </el-tooltip>
             <span v-else class="run-noconv">{{ $t('chat.scheduledTasks.noConversation') }}</span>
           </div>
         </div>
@@ -142,6 +222,7 @@
       :close-on-press-escape="!saving"
       :show-close="!saving"
       class="scheduled-task-dialog"
+      @closed="onTaskDialogClosed"
     >
       <el-form :model="form" label-width="92px">
         <el-form-item :label="$t('chat.scheduledTasks.form.name')">
@@ -270,6 +351,56 @@
           <div class="hint">{{ $t('chat.scheduledTasks.form.mcpServersHint') }}</div>
         </el-form-item>
 
+        <el-form-item :label="$t('chat.scheduledTasks.form.completionRule')">
+          <div class="completion-rule-box">
+            <div v-if="completionRuleLoading" class="completion-rule-loading">
+              <font-awesome-icon icon="fa-solid fa-spinner" spin />
+              {{ $t('chat.scheduledTasks.form.completionRuleLoading') }}
+            </div>
+            <template v-else>
+              <div class="completion-rule-heading">
+                <div>
+                  <div class="completion-rule-title">{{ formCompletionRuleText() }}</div>
+                  <div class="completion-rule-source">
+                    {{
+                      $t(
+                        form.completionMode === 'auto'
+                          ? 'chat.scheduledTasks.form.completionRuleAuto'
+                          : 'chat.scheduledTasks.form.completionRuleUser'
+                      )
+                    }}
+                  </div>
+                </div>
+                <el-button text type="primary" @click="form.showCompletionChoices = !form.showCompletionChoices">
+                  {{ $t('chat.scheduledTasks.form.completionRuleCorrect') }}
+                </el-button>
+              </div>
+              <div class="completion-rule-reason">{{ formCompletionRuleReason() }}</div>
+            </template>
+            <div v-if="form.showCompletionChoices || formCompletionNeedsChoice()" class="completion-rule-choices">
+              <el-radio-group v-model="form.completionMode" @change="onCompletionModeChange">
+                <el-radio-button value="auto">{{
+                  $t('chat.scheduledTasks.form.completionRuleAutoOption')
+                }}</el-radio-button>
+                <el-radio-button value="answer">{{
+                  $t('chat.scheduledTasks.form.completionRuleAnswer')
+                }}</el-radio-button>
+                <el-radio-button value="article">{{
+                  $t('chat.scheduledTasks.form.completionRuleArticle')
+                }}</el-radio-button>
+              </el-radio-group>
+              <el-select
+                v-if="form.completionMode === 'article'"
+                v-model="form.completionChannel"
+                class="channel-select"
+              >
+                <el-option :label="$t('chat.scheduledTasks.form.channelZhihu')" value="zhihu" />
+                <el-option :label="$t('chat.scheduledTasks.form.channelCsdn')" value="csdn" />
+              </el-select>
+            </div>
+          </div>
+        </el-form-item>
+
         <el-form-item :label="$t('chat.scheduledTasks.form.maxTurns')">
           <el-input-number v-model="form.maxTurns" :min="1" :max="50" :step="1" controls-position="right" />
           <div class="hint">{{ $t('chat.scheduledTasks.form.maxTurnsHint') }}</div>
@@ -278,7 +409,7 @@
 
       <template #footer>
         <el-button :disabled="saving" @click="closeTaskDialog">{{ $t('common.button.cancel') }}</el-button>
-        <el-button type="primary" :loading="saving" @click="saveTask">
+        <el-button type="primary" :loading="saving" :disabled="completionRuleLoading" @click="saveTask">
           {{ $t('common.button.confirm') }}
         </el-button>
       </template>
@@ -307,12 +438,14 @@ import {
   ElOptionGroup,
   ElRadioGroup,
   ElRadio,
+  ElRadioButton,
   ElTimePicker,
   ElInputNumber,
   ElMessage,
   ElMessageBox
 } from 'element-plus';
 import Pagination from '@/components/common/Pagination.vue';
+import ScheduledOutcomeStatus from '@/components/chat/ScheduledOutcomeStatus.vue';
 import {
   scheduledTasksOperator,
   IScheduledTask,
@@ -320,8 +453,12 @@ import {
   IScheduleSpec,
   IAuthorizableSkill,
   IAuthorizableMcpServer,
+  IScheduledCompletionRule,
+  ScheduledArticleChannel,
+  ScheduledOutcomeStatus as ScheduledOutcomeStatusValue,
   ScheduledTaskPayload,
   IScheduledTaskCapabilityDetail,
+  extractCompletionRuleRequired,
   extractSkillNotActive
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
@@ -347,6 +484,10 @@ interface TaskForm {
   authorizedSkills: string[];
   authorizedMcpServers: string[];
   maxTurns: number;
+  completionMode: 'auto' | 'answer' | 'article';
+  completionChannel: ScheduledArticleChannel;
+  completionRule: IScheduledCompletionRule | null;
+  showCompletionChoices: boolean;
 }
 
 export default defineComponent({
@@ -370,9 +511,11 @@ export default defineComponent({
     ElOptionGroup,
     ElRadioGroup,
     ElRadio,
+    ElRadioButton,
     ElTimePicker,
     ElInputNumber,
-    Pagination
+    Pagination,
+    ScheduledOutcomeStatus
   },
   data() {
     return {
@@ -389,6 +532,11 @@ export default defineComponent({
       authorizableSkills: [] as IAuthorizableSkill[],
       authorizableMcpServers: [] as IAuthorizableMcpServer[],
       triggeringId: '' as string,
+      resumingId: '' as string,
+      runActionId: '' as string,
+      completionRuleLoading: false,
+      completionInferenceTimer: undefined as ReturnType<typeof setTimeout> | undefined,
+      completionInferenceRequest: 0,
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       page: 1,
       pageSize: 6,
@@ -432,6 +580,23 @@ export default defineComponent({
   async mounted() {
     await this.loadTasks();
   },
+  beforeUnmount() {
+    if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+  },
+  watch: {
+    'form.name'() {
+      this.scheduleCompletionInference();
+    },
+    'form.question'() {
+      this.scheduleCompletionInference();
+    },
+    'form.authorizedSkills': {
+      deep: true,
+      handler() {
+        this.scheduleCompletionInference();
+      }
+    }
+  },
   methods: {
     emptyForm(): TaskForm {
       return {
@@ -447,13 +612,119 @@ export default defineComponent({
         cronExpr: '0 9 * * *',
         authorizedSkills: [],
         authorizedMcpServers: [],
-        maxTurns: DEFAULT_SCHEDULED_MAX_TURNS
+        maxTurns: DEFAULT_SCHEDULED_MAX_TURNS,
+        completionMode: 'auto',
+        completionChannel: 'zhihu',
+        completionRule: null,
+        showCompletionChoices: false
       };
     },
     // Fallback label when the user leaves the name field blank — derive from the prompt.
     deriveName(question: string): string {
       const firstLine = (question || '').trim().split('\n')[0].trim();
       return firstLine.length > 40 ? `${firstLine.slice(0, 40)}…` : firstLine || 'Scheduled Task';
+    },
+    completionRuleText(rule?: IScheduledCompletionRule): string {
+      if (rule?.type === 'answer') return this.$t('chat.scheduledTasks.form.completionRuleAnswer') as string;
+      if (rule?.type === 'article') {
+        const channel =
+          rule.channel === 'csdn'
+            ? this.$t('chat.scheduledTasks.form.channelCsdn')
+            : this.$t('chat.scheduledTasks.form.channelZhihu');
+        return this.$t('chat.scheduledTasks.form.completionRuleArticleChannel', { channel }) as string;
+      }
+      return this.$t('chat.scheduledTasks.form.completionRuleUnknown') as string;
+    },
+    formCompletionRuleText(): string {
+      if (this.form.completionMode === 'answer') {
+        return this.$t('chat.scheduledTasks.form.completionRuleAnswer') as string;
+      }
+      if (this.form.completionMode === 'article') {
+        return this.completionRuleText({
+          type: 'article',
+          channel: this.form.completionChannel,
+          source: 'user',
+          reason: ''
+        });
+      }
+      return this.completionRuleText(this.form.completionRule ?? undefined);
+    },
+    formCompletionRuleReason(): string {
+      if (this.form.completionMode !== 'auto') {
+        return this.$t('chat.scheduledTasks.form.completionRuleUserReason') as string;
+      }
+      return this.form.completionRule?.reason || (this.$t('chat.scheduledTasks.form.completionRulePrompt') as string);
+    },
+    formCompletionNeedsChoice(): boolean {
+      return this.form.completionMode === 'auto' && this.form.completionRule?.type === 'unknown';
+    },
+    onCompletionModeChange(value: string | number | boolean | undefined) {
+      if (value !== 'auto' && value !== 'answer' && value !== 'article') return;
+      this.form.completionMode = value;
+      if (value === 'auto') {
+        this.scheduleCompletionInference();
+      } else {
+        if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+        this.completionInferenceRequest += 1;
+        this.completionRuleLoading = false;
+      }
+    },
+    scheduleCompletionInference() {
+      if (!this.showCreateDialog || this.form.completionMode !== 'auto') return;
+      if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+      const question = this.form.question.trim();
+      if (!this.token || !question) {
+        this.completionInferenceRequest += 1;
+        this.completionRuleLoading = false;
+        this.form.completionRule = null;
+        return;
+      }
+      this.completionRuleLoading = true;
+      const requestId = ++this.completionInferenceRequest;
+      this.completionInferenceTimer = setTimeout(() => {
+        void this.inferCompletionRule(requestId);
+      }, 500);
+    },
+    async inferCompletionRule(requestId: number) {
+      try {
+        const rule = await scheduledTasksOperator.inferCompletionRule(this.token!, {
+          name: this.form.name.trim() || this.deriveName(this.form.question),
+          template: {
+            model: this.form.model,
+            question: this.form.question,
+            skills: [...this.form.authorizedSkills]
+          }
+        });
+        if (requestId !== this.completionInferenceRequest || this.form.completionMode !== 'auto') return;
+        this.form.completionRule = rule;
+        this.form.completionChannel = rule.channel ?? this.form.completionChannel;
+        this.form.showCompletionChoices = rule.type === 'unknown';
+      } catch {
+        if (requestId !== this.completionInferenceRequest || this.form.completionMode !== 'auto') return;
+        this.form.completionRule = {
+          type: 'unknown',
+          source: 'auto',
+          reason: this.$t('chat.scheduledTasks.form.completionRuleInferenceError') as string
+        };
+        this.form.showCompletionChoices = true;
+      } finally {
+        if (requestId === this.completionInferenceRequest) this.completionRuleLoading = false;
+      }
+    },
+    completionRulePayload(): ScheduledTaskPayload['completion_rule'] | undefined {
+      if (this.form.completionMode === 'answer') return { type: 'answer' };
+      if (this.form.completionMode === 'article') {
+        return { type: 'article', channel: this.form.completionChannel };
+      }
+      return undefined;
+    },
+    taskOutcomeStatus(task: IScheduledTask): ScheduledOutcomeStatusValue | undefined {
+      if (task.last_outcome) return task.last_outcome;
+      return task.completion_rule ? undefined : 'unverified';
+    },
+    taskOutcomeReason(task: IScheduledTask): string {
+      if (task.last_outcome_reason) return task.last_outcome_reason;
+      return task.completion_rule ? '' : (this.$t('chat.scheduledTasks.form.completionRuleUnknown') as string);
     },
     async loadTasks() {
       if (!this.token) return;
@@ -488,15 +759,29 @@ export default defineComponent({
     },
     openCreate() {
       if (this.saving) return;
+      if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+      this.completionInferenceRequest += 1;
+      this.completionRuleLoading = false;
       this.editingTask = null;
       this.form = this.emptyForm();
       this.showCreateDialog = true;
     },
     closeTaskDialog() {
       if (this.saving) return;
+      if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+      this.completionInferenceRequest += 1;
+      this.completionRuleLoading = false;
       this.showCreateDialog = false;
     },
+    onTaskDialogClosed() {
+      if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+      this.completionInferenceRequest += 1;
+      this.completionRuleLoading = false;
+    },
     openEdit(task: IScheduledTask) {
+      if (this.completionInferenceTimer) clearTimeout(this.completionInferenceTimer);
+      this.completionInferenceRequest += 1;
+      this.completionRuleLoading = false;
       this.editingTask = task;
       const s = task.schedule;
       let scheduleType: TaskForm['scheduleType'] = 'cron';
@@ -555,10 +840,18 @@ export default defineComponent({
           task.unattended_policy?.mode === 'allow_selected' || task.unattended_policy?.mode === 'allow_selected_skills'
             ? task.unattended_policy.allowed_mcp_servers || []
             : [],
-        maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS
+        maxTurns: task.template.max_turns ?? DEFAULT_SCHEDULED_MAX_TURNS,
+        completionMode:
+          task.completion_rule?.source === 'user' && task.completion_rule.type !== 'unknown'
+            ? task.completion_rule.type
+            : 'auto',
+        completionChannel: task.completion_rule?.channel ?? 'zhihu',
+        completionRule: task.completion_rule ?? null,
+        showCompletionChoices: !task.completion_rule || task.completion_rule.type === 'unknown'
       };
       this.showCreateDialog = true;
       void this.loadAuthorizableSkills();
+      if (!task.completion_rule) this.scheduleCompletionInference();
     },
     buildSchedule(): IScheduleSpec {
       const { scheduleType, intervalValue, intervalUnit, hourlyMinute, dailyTime, weekday, cronExpr } = this.form;
@@ -585,6 +878,14 @@ export default defineComponent({
     async saveTask() {
       if (!this.form.question.trim()) {
         ElMessage.warning(this.$t('chat.scheduledTasks.form.required') as string);
+        return;
+      }
+      if (
+        this.form.completionMode === 'auto' &&
+        (!this.form.completionRule || this.form.completionRule.type === 'unknown')
+      ) {
+        this.form.showCompletionChoices = true;
+        ElMessage.warning(this.$t('chat.scheduledTasks.form.completionRuleRequired') as string);
         return;
       }
       if (this.form.authorizedSkills.length > 0 || this.form.authorizedMcpServers.length > 0) {
@@ -623,7 +924,8 @@ export default defineComponent({
                 allowed_skills: authorizedSkills,
                 allowed_mcp_servers: authorizedMcpServers
               }
-            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] }
+            : { mode: 'deny_all' as const, allowed_skills: [], allowed_mcp_servers: [] },
+        ...(this.completionRulePayload() ? { completion_rule: this.completionRulePayload() } : {})
       };
       await this.submitTask(payload, false);
     },
@@ -632,10 +934,16 @@ export default defineComponent({
       // A pending "skill not bound" prompt to raise AFTER `saving` is reset,
       // so the confirm dialog is interactive rather than stuck behind a spinner.
       let notActive: IScheduledTaskCapabilityDetail | null = null;
+      let completionRuleRequired: IScheduledCompletionRule | null = null;
       try {
         if (this.editingTask) {
           const editId = this.editingTask.id;
-          const updated = await scheduledTasksOperator.updateTask(this.token!, editId, payload, force);
+          const restoreAutomatic =
+            this.form.completionMode === 'auto' && this.editingTask.completion_rule?.source === 'user';
+          let updated = await scheduledTasksOperator.updateTask(this.token!, editId, payload, force);
+          if (restoreAutomatic) {
+            updated = await scheduledTasksOperator.useAutoCompletionRule(this.token!, editId);
+          }
           // Patch the edited row in place — no full reload / skeleton flash.
           const idx = this.tasks.findIndex((t) => t.id === editId);
           if (idx !== -1) this.tasks[idx] = updated;
@@ -652,7 +960,14 @@ export default defineComponent({
       } catch (error) {
         // On an already-forced retry, don't loop on the same gate — surface it.
         notActive = force ? null : extractSkillNotActive(error);
-        if (!notActive) {
+        completionRuleRequired = extractCompletionRuleRequired(error);
+        if (completionRuleRequired) {
+          this.form.completionMode = 'auto';
+          this.form.completionRule = completionRuleRequired;
+          this.form.completionChannel = completionRuleRequired.channel ?? this.form.completionChannel;
+          this.form.showCompletionChoices = true;
+          ElMessage.warning(this.$t('chat.scheduledTasks.form.completionRuleRequired') as string);
+        } else if (!notActive) {
           ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
         }
       } finally {
@@ -733,6 +1048,7 @@ export default defineComponent({
       }) as string;
     },
     async toggleState(task: IScheduledTask, enabled: boolean) {
+      if (task.state === 'error') return;
       const idx = this.tasks.findIndex((t) => t.id === task.id);
       const nextState = enabled ? 'enabled' : 'disabled';
       // Reflect the switch immediately and patch just this row in place — no
@@ -744,6 +1060,102 @@ export default defineComponent({
       } catch {
         if (idx !== -1) this.tasks[idx] = { ...task, state: task.state };
         ElMessage.error(this.$t('chat.scheduledTasks.loadError') as string);
+      }
+    },
+    async refreshOutcomeData(taskId: string) {
+      if (!this.token) return;
+      const [tasks, runs] = await Promise.all([
+        scheduledTasksOperator.listTasks(this.token),
+        scheduledTasksOperator.listRuns(this.token, taskId)
+      ]);
+      this.tasks = tasks;
+      this.runs = runs;
+      const selected = tasks.find((task) => task.id === taskId);
+      if (selected && this.selectedTask?.id === taskId) this.selectedTask = selected;
+    },
+    async confirmPublished(run: IScheduledRun) {
+      if (this.runActionId) return;
+      let url = '';
+      try {
+        const result = await ElMessageBox.prompt(
+          this.$t('chat.scheduledTasks.confirmPublishedPrompt') as string,
+          this.$t('chat.scheduledTasks.confirmPublished') as string,
+          {
+            inputPlaceholder: 'https://',
+            inputPattern: /^https:\/\/.+/,
+            inputErrorMessage: this.$t('chat.scheduledTasks.articleUrlInvalid') as string,
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          }
+        );
+        url = result.value.trim();
+      } catch {
+        return;
+      }
+      this.runActionId = run.id;
+      try {
+        await scheduledTasksOperator.confirmRun(this.token!, run.id, 'published', url);
+        await this.refreshOutcomeData(run.task_id);
+        ElMessage.success(this.$t('chat.scheduledTasks.confirmSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.runActionId = '';
+      }
+    },
+    async confirmNotPublished(run: IScheduledRun) {
+      if (this.runActionId) return;
+      try {
+        await ElMessageBox.confirm(
+          this.$t('chat.scheduledTasks.confirmNotPublishedPrompt') as string,
+          this.$t('chat.scheduledTasks.confirmNotPublished') as string,
+          {
+            type: 'warning',
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          }
+        );
+      } catch {
+        return;
+      }
+      this.runActionId = run.id;
+      try {
+        await scheduledTasksOperator.confirmRun(this.token!, run.id, 'not_published');
+        await this.refreshOutcomeData(run.task_id);
+        ElMessage.success(this.$t('chat.scheduledTasks.confirmSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.runActionId = '';
+      }
+    },
+    async retryRun(run: IScheduledRun) {
+      if (this.runActionId) return;
+      this.runActionId = run.id;
+      try {
+        await scheduledTasksOperator.retryRun(this.token!, run.id);
+        await this.refreshOutcomeData(run.task_id);
+        this.runPage = 1;
+        ElMessage.success(this.$t('chat.scheduledTasks.retrySuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.runActionId = '';
+      }
+    },
+    async resumeTask(task: IScheduledTask) {
+      if (this.resumingId) return;
+      this.resumingId = task.id;
+      try {
+        const updated = await scheduledTasksOperator.resumeTask(this.token!, task.id);
+        const index = this.tasks.findIndex((item) => item.id === task.id);
+        if (index !== -1) this.tasks[index] = updated;
+        if (this.selectedTask?.id === task.id) this.selectedTask = updated;
+        ElMessage.success(this.$t('chat.scheduledTasks.resumeSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.resumingId = '';
       }
     },
     async triggerNow(task: IScheduledTask) {
@@ -925,6 +1337,9 @@ export default defineComponent({
   font-size: 11px;
   opacity: 0.85;
 }
+.completion-chip {
+  color: var(--el-text-color-regular);
+}
 .task-prompt {
   font-size: 13px;
   line-height: 1.55;
@@ -935,6 +1350,10 @@ export default defineComponent({
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.task-outcome {
+  margin-top: 10px;
+  max-width: 100%;
 }
 .task-last-output {
   font-size: 12px;
@@ -1018,6 +1437,9 @@ export default defineComponent({
   max-height: 48px;
   overflow: hidden;
 }
+.resume-task {
+  margin-top: 12px;
+}
 .run-list {
   display: flex;
   flex-direction: column;
@@ -1034,15 +1456,6 @@ export default defineComponent({
   transition:
     background 0.16s,
     border-color 0.16s;
-}
-.run-item.clickable {
-  cursor: pointer;
-}
-.run-item.clickable:hover,
-.run-item.clickable:focus-visible {
-  background: var(--el-fill-color-lighter);
-  border-color: var(--el-border-color);
-  outline: none;
 }
 .run-body {
   flex: 1;
@@ -1066,8 +1479,9 @@ export default defineComponent({
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.run-tag {
+.run-status {
   flex-shrink: 0;
+  max-width: 48%;
 }
 .run-preview {
   font-size: 12px;
@@ -1076,6 +1490,12 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.run-reason {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--el-text-color-regular);
+  word-break: break-word;
 }
 .run-sub {
   display: flex;
@@ -1095,6 +1515,16 @@ export default defineComponent({
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.run-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-left: -8px;
+}
+.run-controls :deep(.el-button + .el-button) {
+  margin-left: 0;
+}
 .run-action {
   display: flex;
   align-items: center;
@@ -1105,6 +1535,11 @@ export default defineComponent({
   color: var(--el-text-color-secondary);
   font-size: 12px;
   flex-shrink: 0;
+}
+.run-open {
+  width: 32px;
+  height: 32px;
+  padding: 0;
 }
 .run-noconv {
   font-size: 11px;
@@ -1158,6 +1593,74 @@ export default defineComponent({
   flex-shrink: 0;
   font-size: 11px;
   color: var(--el-text-color-secondary);
+}
+.completion-rule-box {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--app-border-subtle, var(--el-border-color-lighter));
+  border-radius: 8px;
+  background: var(--el-fill-color-extra-light);
+}
+.completion-rule-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--el-text-color-secondary);
+}
+.completion-rule-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.completion-rule-title {
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.4;
+  color: var(--el-text-color-primary);
+}
+.completion-rule-source {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--el-text-color-secondary);
+}
+.completion-rule-reason {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--el-text-color-secondary);
+  word-break: break-word;
+}
+.completion-rule-choices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--el-border-color-lighter);
+}
+.channel-select {
+  width: 132px;
+}
+@media (max-width: 640px) {
+  .task-top {
+    align-items: flex-start;
+  }
+  .task-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .run-line {
+    align-items: flex-start;
+  }
+  .run-status {
+    max-width: 56%;
+  }
+  .completion-rule-heading {
+    align-items: flex-start;
+  }
 }
 </style>
 

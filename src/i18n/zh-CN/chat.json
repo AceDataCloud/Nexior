@@ -619,6 +619,42 @@
     "message": "触发失败，请稍后重试。",
     "description": "手动触发失败提示"
   },
+  "scheduledTasks.actionError": {
+    "message": "操作失败，请刷新后重试。"
+  },
+  "scheduledTasks.confirmPublished": {
+    "message": "已经发布"
+  },
+  "scheduledTasks.confirmPublishedPrompt": {
+    "message": "请粘贴目标平台上的公开文章链接。"
+  },
+  "scheduledTasks.confirmNotPublished": {
+    "message": "没有发布"
+  },
+  "scheduledTasks.confirmNotPublishedPrompt": {
+    "message": "确认目标平台没有发布文章。确认后可以立即重试本次任务。"
+  },
+  "scheduledTasks.confirmSuccess": {
+    "message": "运行结果已更新。"
+  },
+  "scheduledTasks.articleUrlInvalid": {
+    "message": "请输入有效的 HTTPS 文章链接。"
+  },
+  "scheduledTasks.openArticle": {
+    "message": "查看文章"
+  },
+  "scheduledTasks.retry": {
+    "message": "立即重试"
+  },
+  "scheduledTasks.retrySuccess": {
+    "message": "已开始重试。"
+  },
+  "scheduledTasks.resume": {
+    "message": "恢复任务"
+  },
+  "scheduledTasks.resumeSuccess": {
+    "message": "任务已恢复，将从下一个未来计划开始运行。"
+  },
   "scheduledTasks.viewResult": {
     "message": "查看结果",
     "description": "跳转到对话"
@@ -660,16 +696,24 @@
     "description": "运行中状态"
   },
   "scheduledTasks.run.success": {
-    "message": "成功",
+    "message": "已完成",
     "description": "成功状态"
   },
   "scheduledTasks.run.failed": {
-    "message": "失败",
+    "message": "未完成",
     "description": "失败状态"
   },
   "scheduledTasks.run.needs_user_input": {
     "message": "需要操作",
     "description": "需要用户操作状态"
+  },
+  "scheduledTasks.run.unknown": {
+    "message": "结果待确认",
+    "description": "发布请求可能已发出，需要用户确认"
+  },
+  "scheduledTasks.run.unverified": {
+    "message": "未验证",
+    "description": "运行时没有已确认的完成标准"
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "每天",
@@ -826,6 +870,54 @@
   "scheduledTasks.form.mcpServersHint": {
     "message": "选中的 MCP Servers 可在定时任务后台加载并执行；未选中的 MCP Servers 不会在无人值守模式下加载。",
     "description": "授权 MCP server 说明"
+  },
+  "scheduledTasks.form.completionRule": {
+    "message": "完成标准"
+  },
+  "scheduledTasks.form.completionRuleLoading": {
+    "message": "正在自动判断完成标准…"
+  },
+  "scheduledTasks.form.completionRuleAuto": {
+    "message": "系统自动判断"
+  },
+  "scheduledTasks.form.completionRuleUser": {
+    "message": "你已更正"
+  },
+  "scheduledTasks.form.completionRuleCorrect": {
+    "message": "更正"
+  },
+  "scheduledTasks.form.completionRuleAutoOption": {
+    "message": "自动判断"
+  },
+  "scheduledTasks.form.completionRuleAnswer": {
+    "message": "生成完整的最终回答"
+  },
+  "scheduledTasks.form.completionRuleArticle": {
+    "message": "发布文章"
+  },
+  "scheduledTasks.form.completionRuleArticleChannel": {
+    "message": "发布一篇{channel}文章，并取得公开链接"
+  },
+  "scheduledTasks.form.completionRuleUnknown": {
+    "message": "完成标准未确认"
+  },
+  "scheduledTasks.form.completionRuleUserReason": {
+    "message": "后续运行会使用此标准，直到你恢复自动判断。"
+  },
+  "scheduledTasks.form.completionRulePrompt": {
+    "message": "输入任务要求后，系统会自动判断怎样才算完成。"
+  },
+  "scheduledTasks.form.completionRuleInferenceError": {
+    "message": "暂时无法自动判断，请手动选择完成标准。"
+  },
+  "scheduledTasks.form.completionRuleRequired": {
+    "message": "请确认这个任务怎样才算完成。"
+  },
+  "scheduledTasks.form.channelZhihu": {
+    "message": "知乎"
+  },
+  "scheduledTasks.form.channelCsdn": {
+    "message": "CSDN"
   },
   "scheduledTasks.form.maxTurns": {
     "message": "最大轮次",

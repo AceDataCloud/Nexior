@@ -284,6 +284,34 @@ export interface IChatConversation {
   share_id?: string;
   /** Unix seconds when the share snapshot was last (re)generated. */
   shared_at?: number;
+  metadata?: {
+    source?: string;
+    scheduled_task_id?: string;
+    run_id?: string;
+    terminal_reason?: string;
+    scheduled_outcome?: IChatScheduledOutcome;
+    [key: string]: unknown;
+  };
+}
+
+export type IChatScheduledOutcomeStatus =
+  | 'queued'
+  | 'running'
+  | 'success'
+  | 'failed'
+  | 'needs_user_input'
+  | 'unknown'
+  | 'unverified';
+
+export interface IChatScheduledOutcome {
+  status: IChatScheduledOutcomeStatus;
+  reason: string;
+  completion_type: 'answer' | 'article' | 'unknown';
+  artifact_ids: string[];
+  artifact_urls?: string[];
+  can_confirm?: boolean;
+  can_retry?: boolean;
+  can_resume?: boolean;
 }
 
 export interface IChatConversationOptions {

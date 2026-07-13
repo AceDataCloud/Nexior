@@ -81,7 +81,11 @@ describe('chat/ScheduledTasks', () => {
       cronExpr: '0 9 * * *',
       authorizedSkills: [],
       authorizedMcpServers: [],
-      maxTurns: 50
+      maxTurns: 50,
+      completionMode: 'auto',
+      completionChannel: 'zhihu',
+      completionRule: null,
+      showCompletionChoices: false
     });
   });
 
@@ -111,5 +115,29 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.editingTask).toMatchObject({ id: editedTask.id });
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
+  });
+
+  it('invalidates a pending inference before editing another task', async () => {
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      openEdit: (task: IScheduledTask) => void;
+      completionInferenceRequest: number;
+      completionRuleLoading: boolean;
+      form: { completionRule: unknown };
+    };
+    await wrapper.setData({ completionInferenceRequest: 4, completionRuleLoading: true });
+
+    vm.openEdit({
+      ...editedTask,
+      completion_rule: {
+        type: 'answer',
+        source: 'auto',
+        reason: 'Existing task rule'
+      }
+    });
+
+    expect(vm.completionInferenceRequest).toBe(5);
+    expect(vm.completionRuleLoading).toBe(false);
+    expect(vm.form.completionRule).toMatchObject({ reason: 'Existing task rule' });
   });
 });

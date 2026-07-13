@@ -34,8 +34,68 @@
         :share-id="conversation?.share_id"
         @update:share-id="onShareIdUpdated"
       />
-      <div :class="{ dialogue: true, empty: messages.length === 0 }">
-        <div v-if="messages.length > 0" class="messages">
+      <div :class="{ dialogue: true, empty: messages.length === 0 && !scheduledOutcome }">
+        <div v-if="messages.length > 0 || scheduledOutcome" class="messages">
+          <div v-if="scheduledOutcome" class="scheduled-outcome-bar">
+            <scheduled-outcome-status :status="scheduledOutcome.status" :reason="scheduledOutcome.reason">
+              <el-button
+                v-for="url in scheduledOutcome.artifact_urls"
+                :key="url"
+                tag="a"
+                :href="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                text
+                type="primary"
+                size="small"
+              >
+                <font-awesome-icon icon="fa-solid fa-up-right-from-square" />
+                {{ $t('chat.scheduledTasks.openArticle') }}
+              </el-button>
+              <el-button
+                v-if="scheduledOutcome.can_confirm"
+                text
+                type="success"
+                size="small"
+                :loading="scheduledOutcomeAction === 'confirm'"
+                @click="confirmScheduledPublished"
+              >
+                {{ $t('chat.scheduledTasks.confirmPublished') }}
+              </el-button>
+              <el-button
+                v-if="scheduledOutcome.can_confirm"
+                text
+                type="danger"
+                size="small"
+                :disabled="!!scheduledOutcomeAction"
+                @click="confirmScheduledNotPublished"
+              >
+                {{ $t('chat.scheduledTasks.confirmNotPublished') }}
+              </el-button>
+              <el-button
+                v-if="scheduledOutcome.can_retry"
+                text
+                type="primary"
+                size="small"
+                :loading="scheduledOutcomeAction === 'retry'"
+                @click="retryScheduledRun"
+              >
+                <font-awesome-icon v-if="scheduledOutcomeAction !== 'retry'" icon="fa-solid fa-rotate-right" />
+                {{ $t('chat.scheduledTasks.retry') }}
+              </el-button>
+              <el-button
+                v-if="scheduledOutcome.can_resume"
+                text
+                type="primary"
+                size="small"
+                :loading="scheduledOutcomeAction === 'resume'"
+                @click="resumeScheduledTask"
+              >
+                <font-awesome-icon v-if="scheduledOutcomeAction !== 'resume'" icon="fa-solid fa-play" />
+                {{ $t('chat.scheduledTasks.resume') }}
+              </el-button>
+            </scheduled-outcome-status>
+          </div>
           <message
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
@@ -80,6 +140,7 @@ import {
   IChatMessageState,
   IChatConversationResponse,
   IChatConversation,
+  IChatScheduledOutcome,
   IChatMessage,
   IChatReference,
   BaseError
@@ -89,6 +150,7 @@ import ModelSelector from '@/components/chat/ModelSelector.vue';
 import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import ShareConversationDialog from '@/components/chat/ShareConversationDialog.vue';
+import ScheduledOutcomeStatus from '@/components/chat/ScheduledOutcomeStatus.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
 import { Status } from '@/models';
 import Disclaimer from '@/components/chat/Disclaimer.vue';
@@ -109,7 +171,8 @@ import {
 } from '@/components/chat/consentReturn';
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { chatOperator, agentOperator } from '@/operators';
-import { ElTooltip, ElButton } from 'element-plus';
+import { scheduledTasksOperator } from '@/operators/scheduledTasks';
+import { ElTooltip, ElButton, ElMessage, ElMessageBox } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
@@ -160,6 +223,10 @@ export interface IData {
   // it to invalidate a run whose `localExec.invoke()` is still pending, so Stop
   // cancels the auto-resume even after the finalizer captured the pending tool.
   clientToolRunId: number;
+  scheduledOutcome: IChatScheduledOutcome | null;
+  scheduledTaskId: string | undefined;
+  scheduledRunId: string | undefined;
+  scheduledOutcomeAction: '' | 'confirm' | 'retry' | 'resume';
 }
 
 export default defineComponent({
@@ -172,6 +239,7 @@ export default defineComponent({
     DesktopAgentManager,
     'byok-badge': BYOKBadge,
     ShareConversationDialog,
+    ScheduledOutcomeStatus,
     Message,
     Layout,
     ElTooltip,
@@ -197,7 +265,11 @@ export default defineComponent({
       shareDialogVisible: false,
       skipNextRestoreId: undefined,
       messages: [],
-      pendingConsentReturn: null
+      pendingConsentReturn: null,
+      scheduledOutcome: null,
+      scheduledTaskId: undefined,
+      scheduledRunId: undefined,
+      scheduledOutcomeAction: ''
     };
   },
   computed: {
@@ -333,9 +405,112 @@ export default defineComponent({
       this.messages = [];
       this.question = '';
       this.references = [];
+      this.applyScheduledContext(undefined);
       // Drop any deferred desktop client tool from a prior turn so a new chat
       // never auto-runs a stale tool against the wrong conversation.
       this.pendingClientTools = [];
+    },
+    applyScheduledContext(conversation: IChatConversation | undefined) {
+      const metadata = conversation?.metadata;
+      if (metadata?.source !== 'scheduled_task' || !metadata.scheduled_outcome) {
+        this.scheduledOutcome = null;
+        this.scheduledTaskId = undefined;
+        this.scheduledRunId = undefined;
+        this.scheduledOutcomeAction = '';
+        return;
+      }
+      this.scheduledOutcome = metadata.scheduled_outcome;
+      this.scheduledTaskId = metadata.scheduled_task_id;
+      this.scheduledRunId = metadata.run_id;
+    },
+    async refreshScheduledOutcome() {
+      if (!this.conversationId) return;
+      const conversation = (await this.$store.dispatch('chat/getConversation', this.conversationId)) as
+        | IChatConversation
+        | undefined;
+      this.applyScheduledContext(conversation);
+    },
+    async confirmScheduledPublished() {
+      if (!this.credential?.token || !this.scheduledRunId || this.scheduledOutcomeAction) return;
+      let url = '';
+      try {
+        const result = await ElMessageBox.prompt(
+          this.$t('chat.scheduledTasks.confirmPublishedPrompt') as string,
+          this.$t('chat.scheduledTasks.confirmPublished') as string,
+          {
+            inputPlaceholder: 'https://',
+            inputPattern: /^https:\/\/.+/,
+            inputErrorMessage: this.$t('chat.scheduledTasks.articleUrlInvalid') as string,
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          }
+        );
+        url = result.value.trim();
+      } catch {
+        return;
+      }
+      this.scheduledOutcomeAction = 'confirm';
+      try {
+        await scheduledTasksOperator.confirmRun(this.credential.token, this.scheduledRunId, 'published', url);
+        await this.refreshScheduledOutcome();
+        ElMessage.success(this.$t('chat.scheduledTasks.confirmSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.scheduledOutcomeAction = '';
+      }
+    },
+    async confirmScheduledNotPublished() {
+      if (!this.credential?.token || !this.scheduledRunId || this.scheduledOutcomeAction) return;
+      try {
+        await ElMessageBox.confirm(
+          this.$t('chat.scheduledTasks.confirmNotPublishedPrompt') as string,
+          this.$t('chat.scheduledTasks.confirmNotPublished') as string,
+          {
+            type: 'warning',
+            confirmButtonText: this.$t('common.button.confirm') as string,
+            cancelButtonText: this.$t('common.button.cancel') as string
+          }
+        );
+      } catch {
+        return;
+      }
+      this.scheduledOutcomeAction = 'confirm';
+      try {
+        await scheduledTasksOperator.confirmRun(this.credential.token, this.scheduledRunId, 'not_published');
+        await this.refreshScheduledOutcome();
+        ElMessage.success(this.$t('chat.scheduledTasks.confirmSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.scheduledOutcomeAction = '';
+      }
+    },
+    async retryScheduledRun() {
+      if (!this.credential?.token || !this.scheduledRunId || this.scheduledOutcomeAction) return;
+      this.scheduledOutcomeAction = 'retry';
+      try {
+        await scheduledTasksOperator.retryRun(this.credential.token, this.scheduledRunId);
+        await this.refreshScheduledOutcome();
+        ElMessage.success(this.$t('chat.scheduledTasks.retrySuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.scheduledOutcomeAction = '';
+      }
+    },
+    async resumeScheduledTask() {
+      if (!this.credential?.token || !this.scheduledTaskId || this.scheduledOutcomeAction) return;
+      this.scheduledOutcomeAction = 'resume';
+      try {
+        await scheduledTasksOperator.resumeTask(this.credential.token, this.scheduledTaskId);
+        await this.refreshScheduledOutcome();
+        ElMessage.success(this.$t('chat.scheduledTasks.resumeSuccess') as string);
+      } catch {
+        ElMessage.error(this.$t('chat.scheduledTasks.actionError') as string);
+      } finally {
+        this.scheduledOutcomeAction = '';
+      }
     },
     onShareIdUpdated(shareId?: string) {
       // Keep the store conversation in sync so the dialog reopens with the
@@ -631,6 +806,7 @@ export default defineComponent({
       const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
       if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
       if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
+      this.applyScheduledContext(conversation);
       this.messages = conversation?.messages || [];
       this.onScrollDown();
     },
@@ -1607,6 +1783,14 @@ export default defineComponent({
     .message {
       margin-bottom: 15px;
     }
+    .scheduled-outcome-bar {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--el-color-primary);
+      border-radius: 0 6px 6px 0;
+      background: var(--el-fill-color-extra-light);
+      font-size: 13px;
+    }
   }
   .starter {
     height: fit-content;
@@ -1639,6 +1823,10 @@ export default defineComponent({
   // Match the composer's mobile left control inset (.tools left:10px).
   .dialogue .composer-connectors {
     padding: 4px 10px;
+  }
+
+  .dialogue .messages .scheduled-outcome-bar {
+    padding: 11px 12px;
   }
 }
 </style>

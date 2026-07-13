@@ -13,6 +13,28 @@ function headers(token: string) {
 
 const BASE = `${BASE_URL_API}/aichat2/scheduled-tasks`;
 
+export type ScheduledCompletionType = 'answer' | 'article' | 'unknown';
+export type ScheduledArticleChannel = 'zhihu' | 'csdn';
+export type ScheduledOutcomeStatus =
+  | 'queued'
+  | 'running'
+  | 'success'
+  | 'failed'
+  | 'needs_user_input'
+  | 'unknown'
+  | 'unverified';
+
+export interface IScheduledCompletionRule {
+  type: ScheduledCompletionType;
+  channel?: ScheduledArticleChannel;
+  source: 'auto' | 'user' | 'runtime';
+  reason: string;
+  confidence?: number;
+  classifier_version?: number;
+  classified_at?: number;
+  input_hash?: string;
+}
+
 export interface IScheduledTask {
   id: string;
   name: string;
@@ -27,6 +49,12 @@ export interface IScheduledTask {
     max_turns?: number;
   };
   unattended_policy?: IScheduledTaskUnattendedPolicy;
+  completion_rule?: IScheduledCompletionRule;
+  pause_reason?: 'needs_user_input' | 'unknown_result' | 'consecutive_failures';
+  last_outcome?: Exclude<ScheduledOutcomeStatus, 'queued' | 'running'>;
+  last_outcome_reason?: string;
+  consecutive_business_failures?: number;
+  can_resume?: boolean;
   run_count: number;
   last_output_snippet?: string;
   last_error?: string;
@@ -37,7 +65,19 @@ export interface IScheduledTask {
 export interface IScheduledRun {
   id: string;
   task_id: string;
-  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input';
+  status: ScheduledOutcomeStatus;
+  completion_rule?: IScheduledCompletionRule;
+  outcome_reason?: string;
+  artifact_ids?: string[];
+  artifact_urls?: string[];
+  confirmation?: {
+    result: 'published' | 'not_published';
+    url?: string;
+    confirmed_at: number;
+  };
+  retry_run_id?: string;
+  can_confirm?: boolean;
+  can_retry?: boolean;
   scheduled_at: number;
   llm_started_at?: number;
   llm_finished_at?: number;
@@ -105,12 +145,23 @@ export function extractSkillNotActive(error: unknown): IScheduledTaskCapabilityD
   return data.detail ?? { kind: 'skill', slug: '', reason: 'not_active' };
 }
 
+export function extractCompletionRuleRequired(error: unknown): IScheduledCompletionRule | null {
+  const data = (
+    error as {
+      response?: { data?: { error?: string; detail?: { completion_rule?: IScheduledCompletionRule } } };
+    }
+  )?.response?.data;
+  if (data?.error !== 'completion_rule_required') return null;
+  return data.detail?.completion_rule ?? null;
+}
+
 export type ScheduledTaskPayload = {
   name: string;
   description?: string;
   schedule: IScheduleSpec;
   template: IScheduledTask['template'];
   unattended_policy?: IScheduledTaskUnattendedPolicy;
+  completion_rule?: Pick<IScheduledCompletionRule, 'type' | 'channel'>;
 };
 
 class ScheduledTasksOperator {
@@ -158,6 +209,61 @@ class ScheduledTasksOperator {
   async listRuns(token: string, id: string): Promise<IScheduledRun[]> {
     const { data } = await axios.post(BASE, { action: 'retrieve_runs', id }, { headers: headers(token) });
     return data?.items ?? [];
+  }
+
+  async inferCompletionRule(
+    token: string,
+    payload: Pick<ScheduledTaskPayload, 'name' | 'template'>
+  ): Promise<IScheduledCompletionRule> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'infer_completion_rule', ...payload },
+      { headers: headers(token) }
+    );
+    return data.completion_rule;
+  }
+
+  async overrideCompletionRule(
+    token: string,
+    id: string,
+    type: Exclude<ScheduledCompletionType, 'unknown'>,
+    channel?: ScheduledArticleChannel
+  ): Promise<IScheduledTask> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'override_completion_rule', id, type, ...(channel ? { channel } : {}) },
+      { headers: headers(token) }
+    );
+    return data;
+  }
+
+  async useAutoCompletionRule(token: string, id: string): Promise<IScheduledTask> {
+    const { data } = await axios.post(BASE, { action: 'use_auto_completion_rule', id }, { headers: headers(token) });
+    return data;
+  }
+
+  async confirmRun(
+    token: string,
+    id: string,
+    result: 'published' | 'not_published',
+    url?: string
+  ): Promise<IScheduledRun> {
+    const { data } = await axios.post(
+      BASE,
+      { action: 'confirm_run', id, result, ...(url ? { url } : {}) },
+      { headers: headers(token) }
+    );
+    return data;
+  }
+
+  async retryRun(token: string, id: string): Promise<{ accepted: boolean; run_id: string }> {
+    const { data } = await axios.post(BASE, { action: 'retry_run', id }, { headers: headers(token) });
+    return data;
+  }
+
+  async resumeTask(token: string, id: string): Promise<IScheduledTask> {
+    const { data } = await axios.post(BASE, { action: 'resume', id }, { headers: headers(token) });
+    return data;
   }
 
   async listAuthorizableSkills(token: string): Promise<IAuthorizableSkill[]> {
