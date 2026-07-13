@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 09:50:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 10:47:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.25
+
+Mon, 13 Jul 2026 10:47:05 GMT
+
+### Patches
+
+- Use the shared core currency mappings and remove the duplicate local constants. (dev@acedata.cloud)
 
 ## 3.324.24
 
