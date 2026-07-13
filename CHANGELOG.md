@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 11:38:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 12:18:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.28
+
+Mon, 13 Jul 2026 12:18:56 GMT
+
+### Patches
+
+- Show the applied VIP discount and true final price before creating a top-up order. (dev@acedata.cloud)
 
 ## 3.324.27
 
