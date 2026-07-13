@@ -9,6 +9,7 @@ import { handleChunkLoadError, initializeChunkLoadErrorHandler } from './utils/c
 import { initTelemetry, setUser, captureError } from './plugins/telemetry';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
+import '@acedatacloud/core/styles.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';

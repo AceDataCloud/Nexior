@@ -272,7 +272,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { applicationOperator } from '@/operators';
-import Pagination from '@/components/common/Pagination.vue';
+import { Pagination } from '@acedatacloud/core/components';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import {
   ElTable,

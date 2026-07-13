@@ -312,7 +312,7 @@ import {
   ElMessage,
   ElMessageBox
 } from 'element-plus';
-import Pagination from '@/components/common/Pagination.vue';
+import { Pagination } from '@acedatacloud/core/components';
 import {
   scheduledTasksOperator,
   IScheduledTask,

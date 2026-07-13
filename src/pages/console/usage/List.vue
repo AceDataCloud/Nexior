@@ -452,7 +452,7 @@ import {
   IProxyUsageListResponse
 } from '@/models';
 import { apiUsageOperator, applicationOperator, apiOperator, proxyUsageOperator } from '@/operators';
-import Pagination from '@/components/common/Pagination.vue';
+import { Pagination } from '@acedatacloud/core/components';
 import {
   ElTable,
   ElRow,
