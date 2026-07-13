@@ -18,6 +18,12 @@
                   {{ $t('console.subscription.title') }}
                 </p>
                 <el-skeleton v-if="loading" />
+                <div v-else-if="loadFailed" class="text-center">
+                  <el-empty :description="$t('common.message.noData')" />
+                  <el-button type="primary" round @click="onInitialize">
+                    {{ $t('common.button.refresh') }}
+                  </el-button>
+                </div>
                 <el-row v-else :gutter="15" class="subscriptions">
                   <el-col
                     v-for="(item, index) in subscriptions"
@@ -27,15 +33,22 @@
                   >
                     <el-card
                       shadow="hover"
-                      :class="{ subscription: true, active: subscription?.name === item.name }"
-                      @click="subscription = item"
+                      :class="{
+                        subscription: true,
+                        active: subscription?.name === item.name,
+                        disabled: !item.available
+                      }"
+                      @click="item.available && (subscription = item)"
                     >
                       <h4 class="name">
                         {{ item.label }}
                         <el-tag v-if="item.tag" type="warning">{{ item.tag }}</el-tag>
                       </h4>
                       <h2 class="price">
-                        {{ getPriceString({ value: item.price }) }}
+                        <template v-if="item.price !== undefined">{{ getPriceString({ value: item.price }) }}</template>
+                        <span v-else class="text-[var(--el-text-color-secondary)]">{{
+                          $t('common.message.noData')
+                        }}</span>
                       </h2>
                       <p class="description">{{ item.description }}</p>
                       <div class="benefits">
@@ -50,6 +63,7 @@
                           v-if="showPayment"
                           class="btn btn-subscribe"
                           :type="subscription?.name === item?.name ? 'primary' : ''"
+                          :disabled="!item.available"
                           round
                           @click="onCreateOrder(item)"
                           >{{ $t('common.button.buy') }}</el-button
@@ -58,7 +72,7 @@
                     </el-card>
                   </el-col>
                 </el-row>
-                <div v-if="!loading && showPayment" class="extra">
+                <div v-if="!loading && !loadFailed && showPayment" class="extra">
                   <span>{{ $t('console.message.doNotWantSubscribe') }}</span>
                   <el-button type="primary" class="btn btn-extra" round size="small" @click="onBuyExtra">
                     {{ $t('console.message.buyExtra') }}
@@ -78,7 +92,7 @@ import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
-import { getPriceString, applyMarkup, getSiteMarkupRatio } from '@/utils';
+import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
 import { isIOS } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -92,6 +106,7 @@ interface ISubscription {
   duration: number;
   benefits?: { enabled: boolean; content: string }[];
   description?: string;
+  available?: boolean;
 }
 
 interface IData {
@@ -100,6 +115,7 @@ interface IData {
   services: IService[];
   type: string;
   loading: boolean;
+  loadFailed: boolean;
   creating: boolean;
   subscription: ISubscription | undefined;
 }
@@ -124,6 +140,7 @@ export default defineComponent({
       type: IApplicationType.PERIOD,
       services: [],
       loading: false,
+      loadFailed: false,
       creating: false,
       subscription: undefined
     };
@@ -140,6 +157,12 @@ export default defineComponent({
     // displaying non-IAP paid content, not just the purchase action.
     showPayment(): boolean {
       return !isIOS();
+    },
+    effectiveMarkupRatio(): number | undefined {
+      return getApplicationMarkupRatio(this.application2, this.site);
+    },
+    pricingAvailable(): boolean {
+      return this.effectiveMarkupRatio !== undefined;
     },
     subscriptions(): ISubscription[] {
       const items: ISubscription[] = [
@@ -167,11 +190,10 @@ export default defineComponent({
         console.log('item', item);
         const pkgs = this.getPackages(item.duration);
         console.log('pkgs', pkgs);
-        if (pkgs) {
+        item.available = pkgs.length > 0 && this.effectiveMarkupRatio !== undefined;
+        if (item.available) {
           const subtotal = pkgs.reduce((acc, pkg) => acc + pkg.price, 0);
-          // Display the marked-up price so the sub-site card matches what the
-          // gateway charges at order time (backend re-applies the same markup).
-          item.price = applyMarkup(subtotal, getSiteMarkupRatio(this.site));
+          item.price = applyMarkup(subtotal, this.effectiveMarkupRatio!);
         }
         for (const pkg of pkgs) {
           if (!item.benefits) {
@@ -198,15 +220,24 @@ export default defineComponent({
     }
   },
   async mounted() {
-    this.loading = true;
-    await this.onFetchApplication();
-    // fetch the real period application
-    await this.onFetchApplication2();
-    await this.onCreateApplications();
-    this.loading = false;
-    this.subscription = this.subscriptions[2];
+    await this.onInitialize();
   },
   methods: {
+    async onInitialize() {
+      this.loading = true;
+      this.loadFailed = false;
+      try {
+        await this.onFetchApplication();
+        // Fetch or create the Period Application used by order creation.
+        await this.onFetchApplication2();
+        await this.onCreateApplications();
+        this.subscription = this.subscriptions.find((item) => item.available);
+      } catch {
+        this.loadFailed = true;
+      } finally {
+        this.loading = false;
+      }
+    },
     getPriceString,
     onBuyExtra() {
       this.$router.push({
@@ -280,6 +311,8 @@ export default defineComponent({
       console.debug('application2', this.application2);
     },
     onCreateOrder(subscription: ISubscription) {
+      const packages = this.getPackages(subscription.duration);
+      if (!this.pricingAvailable || !subscription.available || packages.length === 0) return;
       this.subscription = subscription;
       this.creating = true;
       if (!this.application2 || !this.application2.id) {
@@ -295,7 +328,7 @@ export default defineComponent({
       orderOperator
         .create({
           application_ids: [this.application2.id],
-          package_ids: this.getPackages(subscription.duration).map((p) => p.id),
+          package_ids: packages.map((p) => p.id),
           description: this.service?.title + ' - ' + subscription.label
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {

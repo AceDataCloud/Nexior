@@ -1,6 +1,13 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getSiteOrigin, getSiteMarkupRatio, applyMarkup, isBrandingHidden, getBrandSupportUrl } from './site';
+import {
+  getSiteOrigin,
+  getSiteMarkupRatio,
+  getApplicationMarkupRatio,
+  applyMarkup,
+  isBrandingHidden,
+  getBrandSupportUrl
+} from './site';
 
 /**
  * getSiteOrigin must treat desktop (Electron, app://bundle authority "bundle")
@@ -52,6 +59,41 @@ describe('getSiteMarkupRatio', () => {
   it('ignores a non-"all" applies_to (only v1 "all" is honored)', () => {
     expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 0.3, applies_to: 'foo' } } } as never)).toBe(0);
     expect(getSiteMarkupRatio({ metadata: { pricing: { markup_ratio: 0.3, applies_to: 'all' } } } as never)).toBe(0.3);
+  });
+});
+
+describe('getApplicationMarkupRatio', () => {
+  const site = { id: 'site-1', metadata: { pricing: { markup_ratio: 0.1 } } } as never;
+
+  it('prefers the backend-resolved service markup', () => {
+    expect(getApplicationMarkupRatio({ effective_markup_ratio: 0.3 }, site)).toBe(0.3);
+  });
+
+  it('preserves an explicit zero override', () => {
+    expect(getApplicationMarkupRatio({ effective_markup_ratio: 0 }, site)).toBe(0);
+  });
+
+  it('does not guess a service price when an older backend omits the field', () => {
+    expect(getApplicationMarkupRatio({ service_id: 'service-1' }, site)).toBeUndefined();
+    expect(getApplicationMarkupRatio({ service: { id: 'service-1' } } as never, site)).toBeUndefined();
+    expect(getApplicationMarkupRatio(undefined, site)).toBeUndefined();
+  });
+
+  it('safely falls back for global applications', () => {
+    expect(getApplicationMarkupRatio({}, site)).toBe(0.1);
+  });
+
+  it('does not quote a global price before Site bootstrap succeeds', () => {
+    expect(getApplicationMarkupRatio({}, {} as never)).toBeUndefined();
+    expect(getApplicationMarkupRatio({}, undefined)).toBeUndefined();
+  });
+
+  it('defensively clamps malformed backend values', () => {
+    expect(getApplicationMarkupRatio({ effective_markup_ratio: -1 }, site)).toBeUndefined();
+    expect(getApplicationMarkupRatio({ effective_markup_ratio: 9 }, site)).toBe(5);
+    expect(
+      getApplicationMarkupRatio({ service_id: 'service-1', effective_markup_ratio: Number.NaN }, site)
+    ).toBeUndefined();
   });
 });
 

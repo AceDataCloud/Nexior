@@ -1,4 +1,4 @@
-import { ISite } from '@/models';
+import { IApplication, ISite } from '@/models';
 import { v4 as uuid } from 'uuid';
 import { BASE_HOST_HUB } from '@/constants/endpoint';
 import { isNative, isDesktop } from './surface';
@@ -104,6 +104,27 @@ export const getSiteMarkupRatio = (site?: ISite | null): number => {
   const raw = pricing.markup_ratio;
   if (typeof raw !== 'number' || !Number.isFinite(raw)) return 0;
   if (raw < MARKUP_RATIO_MIN) return 0;
+  if (raw > MARKUP_RATIO_MAX) return MARKUP_RATIO_MAX;
+  return raw;
+};
+
+/**
+ * Use the backend's order-consistent per-service markup when available.
+ * Individual-service applications fail closed when an older backend omits the
+ * field; only global applications fall back because their order pricing uses
+ * the site-wide default directly.
+ */
+export const getApplicationMarkupRatio = (
+  application?: IApplication | null,
+  site?: ISite | null
+): number | undefined => {
+  if (!application) return undefined;
+  const raw = application?.effective_markup_ratio;
+  if (typeof raw !== 'number' || !Number.isFinite(raw)) {
+    const hasService = !!(application.service_id || application.service?.id);
+    return hasService || !site?.id ? undefined : getSiteMarkupRatio(site);
+  }
+  if (raw < MARKUP_RATIO_MIN) return undefined;
   if (raw > MARKUP_RATIO_MAX) return MARKUP_RATIO_MAX;
   return raw;
 };
