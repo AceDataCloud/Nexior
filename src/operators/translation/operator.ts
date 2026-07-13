@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { httpClient } from '../common';
-import {
+import type {
   ITranslationCapabilitiesResponse,
   ITranslationDisableRequest,
   ITranslationDisableResponse,
   ITranslationEnableRequest,
   ITranslationEnableResponse
-} from './models';
+} from '@acedatacloud/core/types';
 
 class TranslationOperator {
   key = 'translations';

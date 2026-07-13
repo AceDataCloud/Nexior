@@ -23,7 +23,7 @@ import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElMessage, ElMessageBox, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { translationOperator } from '@/operators/translation';
-import type { ITranslationDisableResponse, ITranslationEnableResponse } from '@/operators/translation';
+import type { ITranslationDisableResponse, ITranslationEnableResponse } from '@acedatacloud/core/types';
 
 export default defineComponent({
   name: 'AutoTranslateToggle',
