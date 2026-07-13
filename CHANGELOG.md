@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 01:12:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 01:14:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.23
+
+Mon, 13 Jul 2026 01:14:19 GMT
+
+### Patches
+
+- Maestro: control video type, visual style, and voice with independent toggles (dev@acedata.cloud)
+- Align purchase previews with effective site and service markup while failing closed when pricing is unavailable. (dev@acedata.cloud)
 
 ## 3.324.22
 
