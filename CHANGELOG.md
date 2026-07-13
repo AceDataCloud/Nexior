@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 12:18:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 17:09:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.29
+
+Mon, 13 Jul 2026 17:09:34 GMT
+
+### Patches
+
+- feat(settings): add System theme option that follows the OS colour scheme (dev@acedata.cloud)
 
 ## 3.324.28
 
