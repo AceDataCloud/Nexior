@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 01:14:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Mon, 13 Jul 2026 09:50:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.24
+
+Mon, 13 Jul 2026 09:50:16 GMT
+
+### Patches
+
+- Use the shared core Pagination component and remove the duplicate local implementation. (dev@acedata.cloud)
 
 ## 3.324.23
 
