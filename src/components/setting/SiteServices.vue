@@ -22,6 +22,22 @@
       </div>
     </section>
 
+    <section class="default-price-section">
+      <div>
+        <p class="settings-title">{{ $t('site.field.disableRecharge') }}</p>
+        <p class="settings-tip">{{ $t('site.message.disableRechargeTip') }}</p>
+      </div>
+      <el-switch
+        :model-value="disableRecharge"
+        inline-prompt
+        :loading="disableRechargeSaving"
+        :disabled="disableRechargeSaving || !siteId"
+        :active-text="$t('site.button.enabled')"
+        :inactive-text="$t('site.button.disabled')"
+        @update:model-value="onToggleDisableRecharge($event as boolean)"
+      />
+    </section>
+
     <div class="header">
       <div>
         <p class="settings-title">{{ $t('site.services.title') }}</p>
@@ -240,7 +256,7 @@ import { serviceOperator, siteOperator, siteServiceOverrideOperator } from '@/op
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
-import { getSiteMarkupRatio, MARKUP_RATIO_MAX } from '@/utils';
+import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX } from '@/utils';
 
 // Pre-fetch the whole catalog once so each override row can show the
 // service title/alias without an N+1 per-row GET. If a tenant ever
@@ -308,6 +324,7 @@ export default defineComponent({
       siteMarkupConfirmedPercent: 0,
       siteMarkupSaving: false,
       pendingSiteMarkupPercent: undefined as number | undefined,
+      disableRechargeSaving: false,
       loading: false,
       catalogLoading: false,
       submitting: false,
@@ -327,6 +344,9 @@ export default defineComponent({
     },
     siteId(): string | undefined {
       return this.site?.id;
+    },
+    disableRecharge(): boolean {
+      return isRechargeDisabled(this.site);
     },
     // Site-wide default a blank per-service markup inherits.
     siteDefaultRatio(): number {
@@ -395,6 +415,25 @@ export default defineComponent({
   methods: {
     onResize() {
       this.mobile = window.innerWidth < 768;
+    },
+    async onToggleDisableRecharge(enabled: boolean): Promise<void> {
+      if (!this.siteId || this.disableRechargeSaving) return;
+      this.disableRechargeSaving = true;
+      try {
+        const metadata = (this.site.metadata || {}) as Record<string, unknown>;
+        await siteOperator.update(this.siteId, {
+          ...this.site,
+          metadata: {
+            ...metadata,
+            disable_recharge: enabled
+          }
+        });
+        await this.$store.dispatch('getSite');
+      } catch {
+        ElMessage.error(this.$t('site.services.message.saveFailed'));
+      } finally {
+        this.disableRechargeSaving = false;
+      }
     },
     async onSaveSiteMarkup(percent: number | undefined): Promise<void> {
       if (!this.siteId) return;

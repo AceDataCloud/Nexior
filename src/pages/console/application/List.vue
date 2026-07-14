@@ -288,7 +288,7 @@ import {
   ElMessage
 } from 'element-plus';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_USAGE_LIST } from '@/router/constants';
-import { isIOS } from '@/utils';
+import { isIOS, isRechargeDisabled } from '@/utils';
 import {
   IApplication,
   IApplicationListResponse,
@@ -367,6 +367,9 @@ export default defineComponent({
     // the mapped consumable packages), so its top-up entry is shown on every
     // surface. The card itself is still gated on having a global application.
     showGlobalPayment(): boolean {
+      if (isRechargeDisabled(this.$store.getters.site)) {
+        return false;
+      }
       return true;
     }
   },
@@ -385,6 +388,9 @@ export default defineComponent({
     // A per-service app row shows "Buy More" on every surface, but on iOS
     // only when it has an Apple-buyable package (apple_product_id mapped).
     rowCanPay(application: IApplication): boolean {
+      if (isRechargeDisabled(this.$store.getters.site)) {
+        return false;
+      }
       if (!isIOS()) {
         return true;
       }

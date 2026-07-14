@@ -219,7 +219,7 @@ import {
   ERROR_CODE_BUSY
 } from '@/constants';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA } from '@/router';
-import { isIOS } from '@/utils';
+import { isIOS, isRechargeDisabled } from '@/utils';
 
 interface IData {
   copied: boolean;
@@ -358,6 +358,10 @@ export default defineComponent({
       // Payment flows live on the web, not inside the iOS bundle. Hide the
       // in-chat "Top Up" entry on iOS so it never routes to a payment page
       // that renders empty there (matches showPayment in the console pages).
+      // Also hidden when the site admin disabled recharge entirely.
+      if (isRechargeDisabled(this.$store.getters.site)) {
+        return false;
+      }
       return !isIOS() && this.message.role === ROLE_ASSISTANT && this.message.error?.code === ERROR_CODE_USED_UP;
     }
   },
