@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 17:14:57 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 17:15:45 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.9
+
+Tue, 14 Jul 2026 17:15:45 GMT
+
+### Patches
+
+- fix(chat): remove square focus outline on the composer textarea (shared-adapter :focus-visible rule) (dev@acedata.cloud)
+- Pin @acedatacloud scope to public npmjs so proxied registries can't serve a stale core (missing controls.css) (dev@acedata.cloud)
 
 ## 3.327.8
 
