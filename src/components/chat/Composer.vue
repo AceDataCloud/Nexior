@@ -387,7 +387,11 @@ textarea.input {
   font-family: var(--el-font-family);
   padding-top: 6px;
 }
-textarea.input:focus {
+/* The composer wrapper shows focus via its own :focus-within border, so the
+   native textarea must not also get the shared-adapter :focus-visible outline
+   (@acedatacloud/core controls.css). Match html:root body to beat its specificity. */
+html:root body textarea.input:focus,
+html:root body textarea.input:focus-visible {
   outline: none;
 }
 .composer {
