@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 05:52:06 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 06:04:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.1
+
+Tue, 14 Jul 2026 06:04:22 GMT
+
+### Patches
+
+- polish(contacts): icons on summary chips + smaller editor inputs/buttons (dev@acedata.cloud)
 
 ## 3.327.0
 
