@@ -260,7 +260,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-import { isApiCodeVisible, isOfficial } from '@/utils';
+import { isMainOfficial } from '@/utils';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -302,7 +302,7 @@ export default defineComponent({
       return this.$store.state.suno?.status?.getApplications === Status.Request;
     },
     showViewCode(): boolean {
-      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
+      return isMainOfficial();
     },
     credential() {
       return this.$store.state.suno.credential;

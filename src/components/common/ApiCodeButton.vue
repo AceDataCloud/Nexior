@@ -27,7 +27,7 @@ import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-import { isApiCodeVisible, isOfficial } from '@/utils';
+import { isMainOfficial } from '@/utils';
 
 type ButtonType = '' | 'default' | 'text' | 'primary' | 'success' | 'warning' | 'info' | 'danger';
 type ButtonSize = '' | 'small' | 'default' | 'large';
@@ -113,11 +113,9 @@ export default defineComponent({
   },
   computed: {
     showViewCode(): boolean {
-      // Default: shown on first-party official sites, hidden on white-label
-      // subsites/tenants (they shouldn't expose our API host/code). A site
-      // owner overrides either way from Site settings via
-      // `Site.branding.hide_api_code` (tri-state, see `isApiCodeVisible`).
-      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
+      // Only the bare main official host (studio.acedata.cloud) exposes the
+      // API host/code; subsites and white-label tenants never show it.
+      return isMainOfficial();
     },
     cleanedBody(): Record<string, unknown> {
       const src = (this.body || {}) as Record<string, unknown>;

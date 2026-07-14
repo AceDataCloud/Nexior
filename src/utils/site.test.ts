@@ -7,7 +7,6 @@ import {
   getApplicationCallerOrderDiscountRate,
   applyMarkup,
   isBrandingHidden,
-  isApiCodeVisible,
   getBrandSupportUrl,
   getBrandContacts,
   hasBrandContacts
@@ -146,32 +145,6 @@ describe('isBrandingHidden', () => {
     expect(isBrandingHidden({ branding: { hide_powered_by: true } } as never, 'powered_by')).toBe(true);
     expect(isBrandingHidden({ branding: { hide_powered_by: false } } as never, 'powered_by')).toBe(false);
     expect(isBrandingHidden({ branding: { hide_powered_by: 1 } } as never, 'powered_by')).toBe(false);
-  });
-});
-
-describe('isApiCodeVisible', () => {
-  it('defaults to the official flag when the site-config flag is unset', () => {
-    // Sub-sites (official=false) hide by default; the main site (official=true) shows.
-    expect(isApiCodeVisible(null, false)).toBe(false);
-    expect(isApiCodeVisible(undefined, true)).toBe(true);
-    expect(isApiCodeVisible({} as never, false)).toBe(false);
-    expect(isApiCodeVisible({ branding: {} } as never, true)).toBe(true);
-  });
-
-  it('force-hides on explicit true regardless of official', () => {
-    expect(isApiCodeVisible({ branding: { hide_api_code: true } } as never, true)).toBe(false);
-    expect(isApiCodeVisible({ branding: { hide_api_code: true } } as never, false)).toBe(false);
-  });
-
-  it('force-shows on explicit false (subsite opt-in) regardless of official', () => {
-    expect(isApiCodeVisible({ branding: { hide_api_code: false } } as never, false)).toBe(true);
-    expect(isApiCodeVisible({ branding: { hide_api_code: false } } as never, true)).toBe(true);
-  });
-
-  it('ignores truthy/falsy coercions and only honors real booleans', () => {
-    // A non-boolean flag falls through to the official default.
-    expect(isApiCodeVisible({ branding: { hide_api_code: 1 } } as never, false)).toBe(false);
-    expect(isApiCodeVisible({ branding: { hide_api_code: 0 } } as never, true)).toBe(true);
   });
 });
 
