@@ -135,7 +135,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-import { isApiCodeVisible, isOfficial } from '@/utils';
+import { isMainOfficial } from '@/utils';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -172,7 +172,7 @@ export default defineComponent({
       return this.$store.state.producer?.status?.getApplications === Status.Request;
     },
     showViewCode(): boolean {
-      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
+      return isMainOfficial();
     },
     credential() {
       return this.$store.state.producer.credential;

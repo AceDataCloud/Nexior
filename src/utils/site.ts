@@ -76,23 +76,6 @@ export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_b
 };
 
 /**
- * Whether the per-generation "View Code" affordance (Nexior ApiCodeButton)
- * should render. ``branding.hide_api_code`` is a tri-state:
- *   - ``true``  → force-hidden (any site).
- *   - ``false`` → force-shown  (explicit site-config opt-in, e.g. a subsite).
- *   - unset     → default: shown on first-party official hosts, hidden on
- *     white-label subsites/tenants so they don't expose api.acedata.cloud.
- * ``official`` is injected so callers (and tests) stay independent of the
- * host-reading ``isOfficial()``.
- */
-export const isApiCodeVisible = (site: ISite | null | undefined, official: boolean): boolean => {
-  const flag = site?.branding?.hide_api_code;
-  if (flag === true) return false;
-  if (flag === false) return true;
-  return official;
-};
-
-/**
  * Resolve the reseller's support URL: `branding.links.support` first, then
  * the legacy `metadata.support_url`. Returns '' when neither is set so
  * callers can hide the entry instead of leaking our own domain.
