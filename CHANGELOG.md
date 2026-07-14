@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 04:38:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 04:54:53 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.325.2
+
+Tue, 14 Jul 2026 04:54:53 GMT
+
+### Patches
+
+- feat(nexior): show app download page only on official main host (dev@acedata.cloud)
 
 ## 3.325.1
 
