@@ -46,13 +46,16 @@ html:root {
   --el-border-radius-base: var(--adc-radius-control);
   --el-border-radius-small: var(--adc-radius-small);
   --el-border-radius-round: var(--adc-radius-full);
+  --el-component-size-small: var(--adc-control-height-sm);
+  --el-component-size: var(--adc-control-height);
+  --el-component-size-large: var(--adc-control-height-lg);
 
   --app-safe-area-top: env(safe-area-inset-top, 0px);
   --app-safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
   /* WalletConnect (Reown AppKit/Web3Modal) overlay stacking */
-  --w3m-z-index: 1000000;
-  --apkt-z-index: 1000000;
+  --w3m-z-index: var(--adc-layer-third-party);
+  --apkt-z-index: var(--adc-layer-third-party);
 
   /* Custom dark-mode aware variables */
   --app-bg-surface: #ffffff;
@@ -62,10 +65,10 @@ html:root {
   --app-badge-border: var(--app-brand-hex);
 
   /* Elevation / shadow system */
-  --app-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --app-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --app-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-  --app-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --app-shadow-xs: var(--adc-shadow-xs);
+  --app-shadow-sm: var(--adc-shadow-sm);
+  --app-shadow-md: var(--adc-shadow-md);
+  --app-shadow-lg: var(--adc-shadow-lg);
 
   /* Surface levels (wider contrast for depth) */
   --app-nav-bg: #f1f5f9;
@@ -152,7 +155,26 @@ html.dark {
 }
 
 w3m-modal {
-  z-index: 1000000 !important;
+  z-index: var(--adc-layer-third-party) !important;
+}
+
+html:root body
+  :where(
+    a[href],
+    button,
+    [role='button'],
+    input,
+    select,
+    textarea,
+    [tabindex]:not([tabindex='-1'])
+  ):not(.el-input__inner, .el-select__input, .el-textarea__inner):focus-visible {
+  outline: var(--adc-focus-outline-width) solid var(--adc-focus-outline-color);
+  outline-offset: var(--adc-focus-outline-offset);
+}
+
+.el-button:focus-visible {
+  outline: var(--adc-focus-outline-width) solid var(--adc-focus-outline-color);
+  outline-offset: var(--adc-focus-outline-offset);
 }
 
 #app {
@@ -188,10 +210,37 @@ w3m-modal {
 }
 
 .el-button {
+  --el-button-size: var(--adc-control-height);
   border-radius: var(--el-border-radius-round);
   font-weight: var(--adc-font-weight-medium);
   letter-spacing: var(--adc-letter-spacing);
-  transition: all 0.2s ease;
+  transition:
+    color var(--adc-motion-duration-normal) var(--adc-motion-easing-standard),
+    background-color var(--adc-motion-duration-normal) var(--adc-motion-easing-standard),
+    border-color var(--adc-motion-duration-normal) var(--adc-motion-easing-standard),
+    box-shadow var(--adc-motion-duration-normal) var(--adc-motion-easing-standard);
+
+  &.el-button--small {
+    --el-button-size: var(--adc-control-height-sm);
+  }
+
+  &.el-button--large {
+    --el-button-size: var(--adc-control-height-lg);
+  }
+
+  &:not(.is-link, .is-text, .is-circle, .el-button--small, .el-button--large) {
+    height: var(--adc-control-height);
+  }
+
+  &.is-circle:not(.el-button--small, .el-button--large) {
+    width: var(--adc-control-height);
+    height: var(--adc-control-height);
+  }
+
+  &.is-link,
+  &.is-text {
+    height: auto;
+  }
 }
 
 // Drop the gradient (its 100% stop is `--el-color-primary-light-3`, which makes
@@ -286,16 +335,20 @@ w3m-modal {
   border-radius: var(--adc-radius-card);
   border: var(--adc-border-width) var(--adc-border-style) var(--app-glass-border);
   --el-card-padding: var(--adc-space-5);
-  box-shadow: var(--app-shadow-sm);
+  box-shadow: none;
   transition:
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
+    box-shadow var(--adc-motion-duration-normal) var(--adc-motion-easing-standard),
+    transform var(--adc-motion-duration-normal) var(--adc-motion-easing-standard);
   // Use the standard Element Plus card background (white in light mode) so
   // console panels (Applications / Orders / Top Up) read as clean white
   // surfaces instead of being tinted by the brand gradient. The dark-mode
   // override below restores the glass effect.
   background: var(--el-card-bg-color);
-  &:hover {
+  &.is-always-shadow {
+    box-shadow: var(--app-shadow-sm);
+  }
+
+  &.is-hover-shadow:hover {
     box-shadow: var(--app-shadow-md);
   }
 }
@@ -333,11 +386,11 @@ html.dark .el-card {
     box-shadow:
       0 0 0 1px var(--adc-color-border) inset,
       var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow var(--adc-motion-duration-normal) var(--adc-motion-easing-standard);
     &:focus {
       box-shadow:
         0 0 0 1px var(--el-color-primary) inset,
-        0 0 0 3px var(--el-color-primary-light-8);
+        0 0 0 var(--adc-focus-ring-width) var(--adc-focus-ring-color);
     }
   }
 }
@@ -349,11 +402,11 @@ html.dark .el-card {
     box-shadow:
       0 0 0 1px var(--adc-color-border) inset,
       var(--app-shadow-xs);
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow var(--adc-motion-duration-normal) var(--adc-motion-easing-standard);
     &.is-focus {
       box-shadow:
         0 0 0 1px var(--el-color-primary) inset,
-        0 0 0 3px var(--el-color-primary-light-8);
+        0 0 0 var(--adc-focus-ring-width) var(--adc-focus-ring-color);
     }
     textarea:focus,
     input:focus {
