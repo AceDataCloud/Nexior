@@ -30,7 +30,7 @@
                     {{ application?.service?.title }}
                   </el-form-item>
                   <el-form-item v-else :label="$t('application.field.scope')">
-                    {{ $t('application.title.globalBuy') }}
+                    {{ globalBuyTitle }}
                   </el-form-item>
                   <el-form-item :label="$t('application.field.package')" class="mb-0">
                     <el-radio-group v-if="packages.length > 0" v-model="form.packageId" class="package-options">
@@ -225,6 +225,10 @@ export default defineComponent({
     site() {
       return this.$store.getters.site;
     },
+    globalBuyTitle(): string {
+      const brand = this.$store.state.site?.title || 'Ace Data Cloud';
+      return this.$t('application.title.globalBuy', { brand }) as string;
+    },
     markupRatio(): number | undefined {
       return getApplicationMarkupRatio(this.application, this.site);
     },
@@ -333,11 +337,7 @@ export default defineComponent({
             : {}),
           description: this.application?.service
             ? `${this.application?.service?.title} x ${this.package?.amount} ${unit}`
-            : this.$t('application.title.globalBuy') +
-              ' - ' +
-              this.package?.amount +
-              ' ' +
-              this.$t('service.unit.credits')
+            : this.globalBuyTitle + ' - ' + this.package?.amount + ' ' + this.$t('service.unit.credits')
         })
         .then(({ data: data }: { data: IOrderDetailResponse }) => {
           this.creating = false;
