@@ -4,6 +4,7 @@
     <div class="rows">
       <div v-for="(row, idx) in rows" :key="idx" class="contact-row">
         <div class="row-head">
+          <font-awesome-icon :icon="rowIcon(row.type)" class="row-icon" />
           <el-select
             v-model="row.type"
             filterable
@@ -57,8 +58,9 @@
 import { defineComponent, PropType } from 'vue';
 import { ElDialog, ElInput, ElButton, ElIcon, ElImage, ElSelect, ElOption, ElMessage } from 'element-plus';
 import { Edit, Plus, Delete } from '@element-plus/icons-vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditImage from '@/components/site/EditImage.vue';
-import { contactBrand, contactTypeI18nKey, CONTACT_TYPE_PRESETS } from '@/utils/contactTypes';
+import { contactIcon, contactBrand, contactTypeI18nKey, CONTACT_TYPE_PRESETS } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 
 // Client-side mirrors of the backend validators in
@@ -93,7 +95,8 @@ export default defineComponent({
     ElSelect,
     ElOption,
     Edit,
-    EditImage
+    EditImage,
+    FontAwesomeIcon
   },
   props: {
     modelValue: {
@@ -116,7 +119,29 @@ export default defineComponent({
   },
   computed: {
     typeOptions(): { value: string; label: string }[] {
-      return CONTACT_TYPE_PRESETS.map((value) => ({ value, label: this.typeLabel(value) }));
+      // Presets plus any custom type already present in a row, so a saved
+      // custom channel (e.g. "zhihu") still renders its label on reopen
+      // instead of showing a blank el-select.
+      const seen = new Set(CONTACT_TYPE_PRESETS);
+      const options = CONTACT_TYPE_PRESETS.map((value) => ({ value, label: this.typeLabel(value) }));
+      for (const row of this.rows) {
+        const t = (row.type || '').trim().toLowerCase();
+        if (t && !seen.has(t)) {
+          seen.add(t);
+          options.push({ value: t, label: this.typeLabel(t) });
+        }
+      }
+      return options;
+    }
+  },
+  watch: {
+    // When the saved value changes while the dialog is closed (e.g. after a
+    // save refreshes the store, or the site loads late), keep the form in
+    // sync so the next open always shows the current contacts. A shallow
+    // watch suffices: getSite replaces the whole site object, so the
+    // contacts array is a new reference each refresh.
+    modelValue(value: ISiteContact[]) {
+      if (!this.editing) this.rows = this.toRows(value);
     }
   },
   methods: {
@@ -128,6 +153,9 @@ export default defineComponent({
         url: c.url || '',
         qr: c.qr || ''
       }));
+    },
+    rowIcon(type: string) {
+      return contactIcon(type);
     },
     typeLabel(slug: string): string {
       const brand = contactBrand(slug);
@@ -143,8 +171,10 @@ export default defineComponent({
     },
     onOpen() {
       // Re-seed from the latest saved value each time so a cancelled edit
-      // never lingers in the form.
+      // never lingers in the form. Start with one empty row when there is
+      // nothing yet, so the dialog never looks blank/broken.
       this.rows = this.toRows(this.modelValue);
+      if (this.rows.length === 0) this.addRow();
       this.editing = true;
     },
     onCancel() {
@@ -253,6 +283,14 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
     gap: 12px;
+
+    .row-icon {
+      font-size: 18px;
+      width: 20px;
+      text-align: center;
+      color: var(--el-text-color-regular);
+      flex: none;
+    }
 
     .type-select {
       flex: 1;
