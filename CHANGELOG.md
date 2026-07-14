@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 17:16:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 18:03:19 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.11
+
+Tue, 14 Jul 2026 18:03:19 GMT
+
+### Patches
+
+- Use Element Plus native control sizes (drop --el-component-size override) so el-input/el-select/el-button align (dev@acedata.cloud)
 
 ## 3.327.10
 
