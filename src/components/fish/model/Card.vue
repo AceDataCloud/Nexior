@@ -22,18 +22,18 @@
       </div>
       <el-alert :closable="false" class="mt-2 success">
         <p v-if="voiceId" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-          <font-awesome-icon icon="fa-solid fa-microphone" class="mr-1" />
+          <microphone-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.name.referenceId') }}: {{ voiceId }}
           <copy-to-clipboard :content="voiceId" />
         </p>
         <p v-if="modelValue?.visibility" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-          <font-awesome-icon icon="fa-solid fa-eye" class="mr-1" />
+          <view-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.name.visibility') }}: {{ modelValue?.visibility }}
         </p>
       </el-alert>
       <div class="operations mt-2">
         <el-button type="primary" size="small" plain :disabled="!voiceId" @click.stop="onUseVoice">
-          <font-awesome-icon icon="fa-solid fa-volume-high" class="mr-1" />
+          <volume-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.button.useVoice') }}
         </el-button>
       </div>
@@ -42,21 +42,23 @@
 </template>
 
 <script lang="ts">
+import { MicrophoneIcon, ViewIcon, VolumeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton, ElImage } from 'element-plus';
 import { IFishVoiceModel } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_FISH_TTS_INDEX } from '@/router/constants';
 
 export default defineComponent({
   name: 'FishVoiceCard',
   components: {
+    MicrophoneIcon,
+    ViewIcon,
+    VolumeIcon,
     ElAlert,
     ElButton,
     ElImage,
-    CopyToClipboard,
-    FontAwesomeIcon
+    CopyToClipboard
   },
   props: {
     modelValue: {

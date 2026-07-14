@@ -7,10 +7,21 @@
     :disabled="failed"
     @click.stop="onToggle"
   >
-    <font-awesome-icon
-      :icon="failed ? 'fa-solid fa-triangle-exclamation' : playing ? 'fa-solid fa-pause' : 'fa-solid fa-music'"
+    <warning-icon
+      v-if="failed"
       class="icon text-white text-[16px]"
+      :size="'1em' as any"
+      aria-hidden="true"
+      focusable="false"
     />
+    <pause-icon
+      v-else-if="playing"
+      class="icon text-white text-[16px]"
+      :size="'1em' as any"
+      aria-hidden="true"
+      focusable="false"
+    />
+    <music-icon v-else class="icon text-white text-[16px]" :size="'1em' as any" aria-hidden="true" focusable="false" />
     <audio
       ref="audio"
       :src="url"
@@ -24,13 +35,15 @@
 </template>
 
 <script lang="ts">
+import { MusicIcon, PauseIcon, WarningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'AudioPreview',
   components: {
-    FontAwesomeIcon
+    MusicIcon,
+    PauseIcon,
+    WarningIcon
   },
   props: {
     url: {

@@ -40,7 +40,7 @@
         />
       </template>
       <el-button size="small" type="primary" round>
-        <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+        <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('qrart.button.uploadQr') }}
       </el-button>
     </el-upload>
@@ -51,9 +51,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElRadioGroup, ElRadioButton, ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImagePreview from '@/components/common/ImagePreview.vue';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 
@@ -68,13 +68,13 @@ interface IData {
 export default defineComponent({
   name: 'ContentInput',
   components: {
+    UploadIcon,
     ElInput,
     ElUpload,
     ElRadioGroup,
     ElButton,
     ElRadioButton,
-    ImagePreview,
-    FontAwesomeIcon
+    ImagePreview
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {

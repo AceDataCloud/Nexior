@@ -28,7 +28,7 @@
         </div>
         <div class="settings-content">
           <a href="https://platform.acedata.cloud" target="_blank" rel="noopener noreferrer" class="about-link">
-            <font-awesome-icon :icon="faCloud" class="icon" />
+            <globe-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span>Ace Data Cloud</span>
           </a>
         </div>
@@ -44,7 +44,7 @@
             to switch to the Subsites tab with the create form open.
           -->
           <el-button type="primary" @click="onBuildOneClick">
-            <font-awesome-icon :icon="faRocket" class="mr-1" />
+            <launch-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.settings.buildNow') }}
           </el-button>
         </div>
@@ -64,11 +64,27 @@
       <div class="settings-content contacts-content">
         <div v-for="(c, i) in contacts" :key="i" class="contact-entry">
           <a v-if="contactHref(c)" :href="contactHref(c)" v-bind="linkAttrs(c)" class="about-link">
-            <font-awesome-icon :icon="contactIconFor(c.type)" class="icon" />
+            <font-awesome-icon v-if="contactUsesFontAwesome(c.type)" :icon="contactIconFor(c.type)" class="icon" />
+            <component
+              :is="contactIconFor(c.type)"
+              v-else
+              class="icon"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             <span>{{ contactText(c) }}</span>
           </a>
           <span v-else class="about-link contact-static">
-            <font-awesome-icon :icon="contactIconFor(c.type)" class="icon" />
+            <font-awesome-icon v-if="contactUsesFontAwesome(c.type)" :icon="contactIconFor(c.type)" class="icon" />
+            <component
+              :is="contactIconFor(c.type)"
+              v-else
+              class="icon"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
+            />
             <span>{{ contactText(c) }}</span>
           </span>
           <el-image
@@ -86,14 +102,20 @@
 </template>
 
 <script lang="ts">
+import { GlobeIcon, LaunchIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElImage } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faCloud, faRocket } from '@fortawesome/free-solid-svg-icons';
 import { SETTING_TAB_SUBSITES } from '@/constants';
 import { isMainOfficial, isNative, isDesktop, getBrandContacts, hasBrandContacts } from '@/utils';
-import { contactIcon, contactMeta, contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
+import {
+  contactIcon,
+  contactMeta,
+  contactBrand,
+  contactTypeI18nKey,
+  contactUsesFontAwesome
+} from '@/utils/contactTypes';
 import { ISite, ISiteContact } from '@/models';
 
 export default defineComponent({
@@ -101,14 +123,14 @@ export default defineComponent({
   components: {
     ElButton,
     ElImage,
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    GlobeIcon,
+    LaunchIcon
   },
   emits: ['switch-tab'],
   data() {
     return {
-      faGithub,
-      faCloud,
-      faRocket
+      faGithub
     };
   },
   computed: {
@@ -129,6 +151,7 @@ export default defineComponent({
     }
   },
   methods: {
+    contactUsesFontAwesome,
     contactIconFor(type: string) {
       return contactIcon(type);
     },

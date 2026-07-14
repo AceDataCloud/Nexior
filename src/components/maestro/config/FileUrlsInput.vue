@@ -16,7 +16,7 @@
       :on-remove="onChange"
     >
       <el-button size="small" round>
-        <font-awesome-icon icon="fa-solid fa-paperclip" class="mr-1" />
+        <attachment-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('maestro.button.uploadFiles') }}
       </el-button>
     </el-upload>
@@ -24,9 +24,9 @@
 </template>
 
 <script lang="ts">
+import { AttachmentIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 import { MAESTRO_FILE_ACCEPT, MAESTRO_FILE_LIMIT } from '@/constants';
 
@@ -40,9 +40,9 @@ interface IData {
 export default defineComponent({
   name: 'MaestroFileUrlsInput',
   components: {
+    AttachmentIcon,
     ElUpload,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   data(): IData {
     return {

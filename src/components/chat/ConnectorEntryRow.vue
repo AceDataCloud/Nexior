@@ -2,12 +2,14 @@
   <div class="connector-entry-row" :class="{ 'is-connected': entry.status === 'connected' }">
     <div class="entry-icon" aria-hidden="true">
       <img v-if="iconUrl" :src="iconUrl" class="icon-logo" :alt="displayName" @error="onLogoError" />
-      <font-awesome-icon
+      <success-icon
         v-else-if="entry.status === 'connected'"
-        icon="fa-solid fa-circle-check"
         class="icon-connected"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
       />
-      <font-awesome-icon v-else icon="fa-solid fa-plug" class="icon-unconnected" />
+      <connection-icon v-else class="icon-unconnected" :size="'1em' as any" aria-hidden="true" focusable="false" />
     </div>
     <div class="entry-text">
       <div class="entry-name">{{ displayName }}</div>
@@ -28,15 +30,15 @@
 </template>
 
 <script lang="ts">
+import { ConnectionIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import type { IConsentRequestEntry } from '@/models';
 import type { IConnectorCatalogSummary } from './connectorCatalogCache';
 
 export default defineComponent({
   name: 'ConnectorEntryRow',
-  components: { ElButton, FontAwesomeIcon },
+  components: { ConnectionIcon, ElButton, SuccessIcon },
   props: {
     entry: {
       type: Object as PropType<IConsentRequestEntry>,

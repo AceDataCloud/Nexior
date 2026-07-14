@@ -10,7 +10,14 @@
         loading="lazy"
         @error="onIconError"
       />
-      <font-awesome-icon v-else :icon="fallbackIcon" class="icon-fallback" />
+      <component
+        :is="fallbackIcon"
+        v-else
+        class="icon-fallback"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
+      />
       <span v-if="citation.source || hostLabel" class="source">{{ citation.source || hostLabel }}</span>
     </div>
     <div v-if="citation.title" class="title">{{ citation.title }}</div>
@@ -28,8 +35,16 @@
  * new tab, mirroring the chip's own click behaviour so users don't
  * have to aim at the small inline tag.
  */
-import { defineComponent, type PropType } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  EmailIcon,
+  FileIcon,
+  FileTextIcon,
+  GlobeIcon,
+  InfoIcon,
+  LinkIcon,
+  MessageIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component, type PropType } from 'vue';
 import type { IChatCitation } from '@/models';
 
 interface IData {
@@ -38,7 +53,6 @@ interface IData {
 
 export default defineComponent({
   name: 'CitationCard',
-  components: { FontAwesomeIcon },
   props: {
     citation: {
       type: Object as PropType<IChatCitation>,
@@ -73,7 +87,7 @@ export default defineComponent({
      *   2. Google's S2 favicon CDN keyed by the URL host. Free, no
      *      auth, returns a transparent fallback for unknown sites.
      * If both render attempts fail (rare CDN error), we drop back to
-     * the type-driven Font Awesome fallback below.
+     * the type-driven shared fallback below.
      */
     resolvedIcon(): string {
       if (this.iconFailed) return '';
@@ -87,15 +101,15 @@ export default defineComponent({
       }
     },
     /** Type-driven icon when neither `icon` nor a favicon is available. */
-    fallbackIcon(): string {
+    fallbackIcon(): Component {
       const t = (this.citation.type || '').toLowerCase();
-      if (t === 'file') return 'fa-solid fa-file-lines';
-      if (t === 'page') return 'fa-solid fa-file';
-      if (t === 'issue') return 'fa-solid fa-circle-dot';
-      if (t === 'email') return 'fa-solid fa-envelope';
-      if (t === 'message') return 'fa-solid fa-message';
-      if (t === 'web') return 'fa-solid fa-globe';
-      return 'fa-solid fa-link';
+      if (t === 'file') return FileTextIcon;
+      if (t === 'page') return FileIcon;
+      if (t === 'issue') return InfoIcon;
+      if (t === 'email') return EmailIcon;
+      if (t === 'message') return MessageIcon;
+      if (t === 'web') return GlobeIcon;
+      return LinkIcon;
     }
   },
   methods: {

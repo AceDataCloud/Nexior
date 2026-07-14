@@ -2,7 +2,7 @@
   <el-dropdown trigger="click" @command="onSelectLocale">
     <span class="el-dropdown-link">
       {{ currentLabel }}
-      <el-icon class="el-icon--right"><arrow-down /></el-icon>
+      <el-icon class="el-icon--right"><arrow-down :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
@@ -15,9 +15,10 @@
 </template>
 
 <script lang="ts">
+import { ExpandDownIcon as ArrowDown } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElIcon } from 'element-plus';
-import { ArrowDown } from '@element-plus/icons-vue';
+
 import { setCookie } from 'typescript-cookie';
 import { getDomain } from '@/utils';
 import { I18N_SUPPORTED_LOCALES } from '@/constants/i18n';

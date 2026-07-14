@@ -4,7 +4,7 @@
       <!-- Remix banner: iterating on a previous video -->
       <el-alert v-if="isRemixing" :closable="false" type="info" class="mb-5">
         <p class="text-xs mb-1">
-          <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+          <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('maestro.name.remixing') }}: {{ refTaskId }}
         </p>
         <el-button size="small" text @click="onClearRemix">{{ $t('maestro.button.cancelRemix') }}</el-button>
@@ -227,9 +227,11 @@
             class="voice-play"
             :disabled="!voiceCustomizationEnabled || !currentSample"
             :title="$t('maestro.button.preview')"
+            :aria-label="$t('maestro.button.preview')"
             @click="onToggleSample"
           >
-            <font-awesome-icon :icon="playing ? 'fa-solid fa-pause' : 'fa-solid fa-play'" />
+            <pause-icon v-if="playing" :size="'1em' as any" aria-hidden="true" focusable="false" />
+            <play-icon v-else :size="'1em' as any" aria-hidden="true" focusable="false" />
           </el-button>
         </div>
       </div>
@@ -237,7 +239,7 @@
 
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('maestro.button.generate') }}
       </el-button>
     </div>
@@ -245,9 +247,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon, PauseIcon, PlayIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
 import { ElButton, ElSelect, ElOption, ElInputNumber, ElAlert, ElSwitch } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import FileUrlsInput from './config/FileUrlsInput.vue';
@@ -289,6 +291,7 @@ const RATIO_PREVIEW: Record<string, { width: number; height: number }> = {
 export default defineComponent({
   name: 'ConfigPanel',
   components: {
+    MagicIcon,
     ElButton,
     ElSelect,
     ElOption,
@@ -296,9 +299,10 @@ export default defineComponent({
     ElAlert,
     ElSwitch,
     InfoIcon,
+    PauseIcon,
+    PlayIcon,
     PromptTextarea,
-    FileUrlsInput,
-    FontAwesomeIcon
+    FileUrlsInput
   },
   emits: ['generate'],
   data() {

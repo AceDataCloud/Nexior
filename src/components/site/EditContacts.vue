@@ -4,7 +4,15 @@
     <div class="rows">
       <div v-for="(row, idx) in rows" :key="idx" class="contact-row">
         <div class="row-head">
-          <font-awesome-icon :icon="rowIcon(row.type)" class="row-icon" />
+          <font-awesome-icon v-if="contactUsesFontAwesome(row.type)" :icon="rowIcon(row.type)" class="row-icon" />
+          <component
+            :is="rowIcon(row.type)"
+            v-else
+            class="row-icon"
+            :size="'1em' as any"
+            aria-hidden="true"
+            focusable="false"
+          />
           <el-select
             v-model="row.type"
             filterable
@@ -15,7 +23,8 @@
           >
             <el-option v-for="opt in typeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
           </el-select>
-          <el-button link type="danger" :icon="Delete" @click="removeRow(idx)">
+          <el-button link type="danger" @click="removeRow(idx)">
+            <delete :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.button.delete') }}
           </el-button>
         </div>
@@ -39,7 +48,10 @@
         </div>
       </div>
     </div>
-    <el-button class="add-btn" :icon="Plus" @click="addRow">{{ $t('common.settings.contactAdd') }}</el-button>
+    <el-button class="add-btn" @click="addRow">
+      <plus :size="'1em' as any" aria-hidden="true" focusable="false" />
+      {{ $t('common.settings.contactAdd') }}
+    </el-button>
     <template #footer>
       <span class="dialog-footer">
         <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
@@ -47,20 +59,36 @@
       </span>
     </template>
   </el-dialog>
-  <span class="edit" @click="onOpen">
+  <span
+    class="edit"
+    role="button"
+    tabindex="0"
+    :aria-label="$t('common.button.edit')"
+    :title="$t('common.button.edit')"
+    @click="onOpen"
+    @keydown.enter.prevent="onOpen"
+    @keydown.space.prevent="onOpen"
+  >
     <el-icon class="icon">
-      <edit />
+      <edit :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-icon>
   </span>
 </template>
 
 <script lang="ts">
+import { EditIcon as Edit, AddIcon as Plus, DeleteIcon as Delete } from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElDialog, ElInput, ElButton, ElIcon, ElImage, ElSelect, ElOption, ElMessage } from 'element-plus';
-import { Edit, Plus, Delete } from '@element-plus/icons-vue';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditImage from '@/components/site/EditImage.vue';
-import { contactIcon, contactBrand, contactTypeI18nKey, CONTACT_TYPE_PRESETS } from '@/utils/contactTypes';
+import {
+  contactIcon,
+  contactBrand,
+  contactTypeI18nKey,
+  contactUsesFontAwesome,
+  CONTACT_TYPE_PRESETS
+} from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 
 // Client-side mirrors of the backend validators in
@@ -95,6 +123,8 @@ export default defineComponent({
     ElSelect,
     ElOption,
     Edit,
+    Plus,
+    Delete,
     EditImage,
     FontAwesomeIcon
   },
@@ -145,6 +175,7 @@ export default defineComponent({
     }
   },
   methods: {
+    contactUsesFontAwesome,
     toRows(list?: ISiteContact[]): ContactRow[] {
       return (list || []).map((c) => ({
         type: c.type || '',

@@ -4,7 +4,7 @@
       <el-col v-for="(item, itemKey) in items" :key="itemKey" :md="8" :sm="12" :xs="12">
         <suggestion-item
           :content="item.content"
-          :icon="item.icon"
+          :icon-component="item.icon"
           :color="item.color"
           class="cursor-pointer"
           @click="$emit('draft', item.content)"
@@ -15,7 +15,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {
+  DeveloperIcon,
+  EditIcon,
+  FastIcon,
+  GenerateIcon,
+  GrowthIcon,
+  LaunchIcon,
+  LoadingIcon,
+  RewardIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, markRaw } from 'vue';
 import SuggestionItem from './SuggestionItem.vue';
 import { ElRow, ElCol } from 'element-plus';
 
@@ -31,42 +41,42 @@ export default defineComponent({
     return {
       items: [
         {
-          icon: 'fa-solid fa-pen-nib',
+          icon: markRaw(EditIcon),
           content: this.$t('chat.message.question1'),
           color: 'rgb(226, 197, 65)'
         },
         {
-          icon: 'fa-solid fa-laptop-code',
+          icon: markRaw(DeveloperIcon),
           content: this.$t('chat.message.question2'),
           color: 'rgb(203, 139, 208)'
         },
         {
-          icon: 'fa-solid fa-fan',
+          icon: markRaw(LoadingIcon),
           content: this.$t('chat.message.question3'),
           color: 'rgb(118, 208, 235)'
         },
         {
-          icon: 'fa-solid fa-plane-departure',
+          icon: markRaw(LaunchIcon),
           content: this.$t('chat.message.question4'),
           color: 'rgb(237, 98, 98)'
         },
         {
-          icon: 'fa-solid fa-bolt',
+          icon: markRaw(FastIcon),
           content: this.$t('chat.message.question5'),
           color: 'rgb(203, 139, 208)'
         },
         {
-          icon: 'fa-solid fa-diamond',
+          icon: markRaw(RewardIcon),
           content: this.$t('chat.message.question6'),
           color: 'rgb(118, 208, 235)'
         },
         {
-          icon: 'fa-solid fa-fire',
+          icon: markRaw(GrowthIcon),
           content: this.$t('chat.message.question7'),
           color: 'rgb(226, 197, 65)'
         },
         {
-          icon: 'fa-solid fa-magic',
+          icon: markRaw(GenerateIcon),
           content: this.$t('chat.message.question8'),
           color: 'rgb(237, 98, 98)'
         }

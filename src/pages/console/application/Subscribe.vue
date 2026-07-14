@@ -53,8 +53,20 @@
                       <p class="description">{{ item.description }}</p>
                       <div class="benefits">
                         <div v-for="(benefit, benefitIndex) in item.benefits" :key="benefitIndex" class="benefit">
-                          <font-awesome-icon v-if="benefit.enabled" icon="fa-solid fa-check" class="icon icon-check" />
-                          <font-awesome-icon v-else icon="fa-solid fa-xmark" class="icon icon-xmark" />
+                          <confirm-icon
+                            v-if="benefit.enabled"
+                            class="icon icon-check"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
+                          <close-icon
+                            v-else
+                            class="icon icon-xmark"
+                            :size="'1em' as any"
+                            aria-hidden="true"
+                            focusable="false"
+                          />
                           <span> {{ benefit.content }}</span>
                         </div>
                       </div>
@@ -88,6 +100,7 @@
 </template>
 
 <script lang="ts">
+import { CloseIcon, ConfirmIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackageType, IPackage } from '@/models';
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
@@ -95,7 +108,6 @@ import { applicationOperator, orderOperator, serviceOperator } from '@/operators
 import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
 import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 
 interface ISubscription {
@@ -123,13 +135,14 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleSubscriptionBuy',
   components: {
+    CloseIcon,
+    ConfirmIcon,
     ElSkeleton,
     ElRow,
     ElTag,
     ElCol,
     ElCard,
     ElEmpty,
-    FontAwesomeIcon,
     ElButton
   },
   data(): IData {

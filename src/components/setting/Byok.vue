@@ -6,7 +6,7 @@
 
     <div class="byok-actions">
       <el-button type="primary" round size="default" :disabled="!token" @click="onAdd">
-        <font-awesome-icon icon="fa-solid fa-plus" class="mr-1 text-[12px]" />
+        <add-icon class="mr-1 text-[12px]" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('byok.button.add') }}
       </el-button>
     </div>
@@ -76,9 +76,9 @@
 </template>
 
 <script lang="ts">
+import { AddIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElMessageBox, ElSwitch, ElTable, ElTableColumn, ElTag, vLoading } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { byokCredentialOperator } from '@/operators';
 import type { IBYOKCredential, IBYOKProviderInfo, ICredential } from '@/models';
 import BYOKDialog from '@/components/setting/byok/Dialog.vue';
@@ -86,12 +86,12 @@ import BYOKDialog from '@/components/setting/byok/Dialog.vue';
 export default defineComponent({
   name: 'ByokSetting',
   components: {
+    AddIcon,
     ElButton,
     ElSwitch,
     ElTable,
     ElTableColumn,
     ElTag,
-    FontAwesomeIcon,
     'byok-dialog': BYOKDialog
   },
   directives: {

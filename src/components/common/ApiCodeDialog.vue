@@ -42,7 +42,7 @@
             :class="{ 'code-tab': true, active: activeTab === 'request' }"
             @click="activeTab = 'request'"
           >
-            <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+            <code-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.tab.apiRequest') }}
           </button>
           <button
@@ -50,16 +50,16 @@
             :class="{ 'code-tab': true, active: activeTab === 'response' }"
             @click="activeTab = 'response'"
           >
-            <font-awesome-icon icon="fa-solid fa-terminal" class="mr-1" />
+            <terminal-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('common.tab.apiResponse') }}
           </button>
         </div>
         <button v-if="!running" type="button" class="code-run" :disabled="!canRun" @click="onRun">
-          <font-awesome-icon icon="fa-solid fa-play" />
+          <play-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('common.button.apiRun') }}</span>
         </button>
         <button v-else type="button" class="code-run code-run--running" disabled>
-          <font-awesome-icon icon="fa-solid fa-spinner" spin />
+          <loading-icon class="adc-icon-spin" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('common.button.apiRunning') }}</span>
         </button>
       </div>
@@ -70,7 +70,7 @@
       <div v-show="activeTab === 'response'">
         <div v-if="runTaskId" class="run-created">
           <div class="run-created__text">
-            <font-awesome-icon icon="fa-solid fa-circle-check" class="run-created__icon" />
+            <success-icon class="run-created__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span>{{ $t('common.message.apiRunTaskCreated') }}</span>
           </div>
           <el-button class="run-created__btn" type="primary" size="small" @click="onCloseAndView">
@@ -78,7 +78,7 @@
           </el-button>
         </div>
         <div v-if="!response && !running" class="code-empty">
-          <font-awesome-icon icon="fa-solid fa-play" class="code-empty__icon" />
+          <play-icon class="code-empty__icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <p>{{ $t('common.message.apiClickRun') }}</p>
         </div>
         <code-snippet v-else :key="`resp-${response.length}`" :code="response || '...'" lang="json" />
@@ -90,12 +90,12 @@
         <el-button class="platform-btn" type="primary" plain @click="onOpenPlatform">
           <img :src="platformIcon" class="platform-icon" alt="" />
           {{ $t('common.button.apiPlatform') }}
-          <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="ml-2 ext-icon" />
+          <external-link-icon class="ml-2 ext-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-button>
         <el-button v-if="docHref" class="docs-btn" type="primary" plain @click="onOpenDocs">
-          <font-awesome-icon icon="fa-solid fa-book" class="mr-2" />
+          <docs-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('common.button.viewDocs') }}
-          <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="ml-2 ext-icon" />
+          <external-link-icon class="ml-2 ext-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </el-button>
       </div>
     </template>
@@ -103,9 +103,17 @@
 </template>
 
 <script lang="ts">
+import {
+  CodeIcon,
+  DocsIcon,
+  ExternalLinkIcon,
+  LoadingIcon,
+  PlayIcon,
+  SuccessIcon,
+  TerminalIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent, h, ref, type PropType } from 'vue';
 import { ElDialog, ElButton, ElImage, ElCheckbox, ElMessageBox } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { VARIANTS, renderApiCode, type Lang, type CodeVariant } from '@acedatacloud/core/code-snippet';
 import CodeSnippet from '@/components/common/CodeSnippet.vue';
 import { BASE_URL_API } from '@/constants/endpoint';
@@ -148,10 +156,16 @@ interface IRenderBody {
 export default defineComponent({
   name: 'ApiCodeDialog',
   components: {
+    CodeIcon,
+    DocsIcon,
+    ExternalLinkIcon,
+    LoadingIcon,
+    PlayIcon,
+    SuccessIcon,
+    TerminalIcon,
     ElDialog,
     ElButton,
     ElImage,
-    FontAwesomeIcon,
     CodeSnippet
   },
   props: {

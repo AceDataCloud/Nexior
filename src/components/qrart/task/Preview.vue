@@ -36,34 +36,38 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-diamond" class="mr-1" />
+            <reward-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.type') }}:
             {{ $t('qrart.type.' + modelValue?.request?.type) }}
             <copy-to-clipboard :content="modelValue?.request?.type!" class="btn-copy" />
           </p>
           <p v-if="modelValue?.request?.content" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
+            <message-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.content') }}:
             {{ modelValue?.request?.content }}
             <copy-to-clipboard :content="modelValue?.request?.content!" class="btn-copy" />
           </p>
           <p v-if="modelValue?.request?.content_image_url" class="description">
-            <font-awesome-icon icon="fa-regular fa-message" class="mr-1" />
+            <message-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.contentImageUrl') }}:
-            <font-awesome-icon
-              icon="fa-solid fa-up-right-from-square"
-              class="mr-1 cursor-pointer"
+            <button
+              type="button"
+              class="icon-button mr-1 cursor-pointer"
+              :aria-label="$t('common.button.view')"
+              :title="$t('common.button.view')"
               @click="onOpenLink(modelValue?.request?.content_image_url)"
-            />
+            >
+              <external-link-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </button>
           </p>
           <p v-if="modelValue?.request?.seed || modelValue?.response?.seed" class="description">
-            <font-awesome-icon icon="fa-solid fa-seedling" class="mr-1" />
+            <growth-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.seed') }}:
             {{ modelValue?.request?.seed || modelValue?.response?.seed }}
             <copy-to-clipboard
@@ -72,7 +76,7 @@
             />
           </p>
           <p v-if="modelValue?.elapsed" class="description">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
@@ -80,27 +84,27 @@
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.failure') }}
           </template>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
           </p>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" class="btn-copy" />
           </p>
           <p v-if="modelValue?.elapsed" class="description">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" class="btn-copy" />
@@ -110,11 +114,11 @@
       <div v-if="!modelValue?.response" :class="{ content: true }">
         <el-alert :closable="false" class="info">
           <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
+            <warning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.failure') }}
           </template>
           <p class="description">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('qrart.name.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" class="btn-copy" />
@@ -126,19 +130,37 @@
 </template>
 
 <script lang="ts">
+import {
+  ChannelIcon,
+  ExternalLinkIcon,
+  GrowthIcon,
+  InfoIcon,
+  MagicIcon,
+  MessageIcon,
+  RewardIcon,
+  TimeIcon,
+  WarningIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert } from 'element-plus';
 import { IQrartTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    ChannelIcon,
+    ExternalLinkIcon,
+    GrowthIcon,
+    InfoIcon,
+    MagicIcon,
+    MessageIcon,
+    RewardIcon,
+    TimeIcon,
+    WarningIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     ImageWrapper,
     ApiCodeButton
@@ -196,6 +218,14 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $left-width: 70px;
+.icon-button {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
 .preview {
   width: 100%;
   height: fit-content;

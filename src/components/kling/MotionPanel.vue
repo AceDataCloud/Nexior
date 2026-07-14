@@ -17,7 +17,7 @@
         :note="$t('kling.message.motionPricingNote')"
       />
       <el-button type="primary" class="btn w-full" round :disabled="!canGenerate" @click="onGenerate">
-        <font-awesome-icon icon="fa-solid fa-magic" class="mr-2" />
+        <magic-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.button.generateMotion') }}
       </el-button>
     </div>
@@ -25,9 +25,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Consumption from '../common/Consumption.vue';
 import MotionImage from './motion/MotionImage.vue';
 import MotionVideo from './motion/MotionVideo.vue';
@@ -41,8 +41,8 @@ import { getConsumption } from '@/utils';
 export default defineComponent({
   name: 'MotionPanel',
   components: {
+    MagicIcon,
     ElButton,
-    FontAwesomeIcon,
     Consumption,
     MotionImage,
     MotionVideo,

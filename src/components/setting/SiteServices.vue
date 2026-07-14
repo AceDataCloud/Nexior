@@ -43,7 +43,8 @@
         <p class="settings-title">{{ $t('site.services.title') }}</p>
         <p class="settings-tip">{{ $t('site.services.tip') }}</p>
       </div>
-      <el-button type="primary" round :icon="Plus" :disabled="!site?.id" @click="onOpenCreate">
+      <el-button type="primary" round :disabled="!site?.id" @click="onOpenCreate">
+        <plus :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('site.services.addButton') }}
       </el-button>
     </div>
@@ -231,6 +232,7 @@
 </template>
 
 <script lang="ts">
+import { AddIcon as Plus } from '@acedatacloud/core/icons/components';
 import { defineComponent, markRaw } from 'vue';
 import {
   ElButton,
@@ -251,7 +253,7 @@ import {
   ElMessageBox,
   vLoading
 } from 'element-plus';
-import { Plus } from '@element-plus/icons-vue';
+
 import { serviceOperator, siteOperator, siteServiceOverrideOperator } from '@/operators';
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';

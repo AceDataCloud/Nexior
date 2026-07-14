@@ -35,7 +35,7 @@
       <el-tooltip :content="uploadTooltip" :disabled="!uploadDisabled" placement="top">
         <span>
           <el-button round type="primary" size="small" class="btn btn-upload" :disabled="uploadDisabled">
-            <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+            <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('kling.button.uploadReferences') }}
           </el-button>
         </span>
@@ -45,9 +45,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, ElTooltip, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import { getKlingCapabilities } from '@/utils/kling/capabilities';
 import InfoIcon from '@/components/common/InfoIcon.vue';
@@ -61,12 +61,12 @@ interface IData {
 export default defineComponent({
   name: 'EndImage',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     ElTooltip,
     ImagePreview,
-    InfoIcon,
-    FontAwesomeIcon
+    InfoIcon
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {

@@ -10,11 +10,11 @@
 
       <div class="actions">
         <button class="btn btn--primary" @click="goHome">
-          <font-awesome-icon icon="fa-solid fa-house" />
+          <home-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('common.button.backToHome') }}</span>
         </button>
         <button class="btn btn--ghost" @click="goBack">
-          <font-awesome-icon icon="fa-solid fa-arrow-left" />
+          <back-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span>{{ $t('common.button.goBack') }}</span>
         </button>
       </div>
@@ -28,13 +28,14 @@
 </template>
 
 <script lang="ts">
+import { BackIcon, HomeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'NotFound',
   components: {
-    FontAwesomeIcon
+    BackIcon,
+    HomeIcon
   },
   computed: {
     path(): string {

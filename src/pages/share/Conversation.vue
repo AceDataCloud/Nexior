@@ -14,7 +14,7 @@
       <el-skeleton v-if="loading" :rows="6" animated class="skeleton" />
 
       <div v-else-if="error" class="unavailable">
-        <font-awesome-icon icon="fa-solid fa-link-slash" class="unavailable-icon" />
+        <unlink-icon class="unavailable-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <h1 class="unavailable-title">{{ $t('chat.share.unavailableTitle') }}</h1>
         <p class="unavailable-hint">{{ $t('chat.share.unavailableHint') }}</p>
         <el-button type="primary" round @click="goToApp">{{ $t('chat.share.startYourOwn') }}</el-button>
@@ -27,7 +27,7 @@
             <img v-if="modelGroup?.icon" :src="modelGroup.icon" class="meta-icon" alt="model" />
             <span v-if="modelGroupName" class="meta-model">{{ modelGroupName }}</span>
             <span class="meta-badge">
-              <font-awesome-icon icon="fa-solid fa-eye" class="mr-1" />
+              <view-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
               {{ $t('chat.share.viewOnly') }}
             </span>
           </div>
@@ -58,9 +58,9 @@
 </template>
 
 <script lang="ts">
+import { UnlinkIcon, ViewIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, provide } from 'vue';
 import { ElButton, ElSkeleton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Message from '@/components/chat/Message.vue';
 import { chatOperator } from '@/operators';
 import { CHAT_MODEL_GROUPS, CHAT_MODELS } from '@/constants';
@@ -76,10 +76,11 @@ interface IData {
 export default defineComponent({
   name: 'SharedConversation',
   components: {
+    UnlinkIcon,
+    ViewIcon,
     Message,
     ElButton,
-    ElSkeleton,
-    FontAwesomeIcon
+    ElSkeleton
   },
   setup() {
     // Force sanitized markdown rendering for every VueMarkdown descendant.

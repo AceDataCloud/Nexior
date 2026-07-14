@@ -21,28 +21,70 @@
       <div class="toolbar">
         <el-button-group>
           <el-tooltip :content="$t('site.imageCropper.zoomIn')" placement="top">
-            <el-button size="large" :icon="ZoomIn" @click="onZoom(1.25)" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.zoomIn')"
+              :title="$t('site.imageCropper.zoomIn')"
+              @click="onZoom(1.25)"
+            >
+              <zoom-in :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('site.imageCropper.zoomOut')" placement="top">
-            <el-button size="large" :icon="ZoomOut" @click="onZoom(0.8)" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.zoomOut')"
+              :title="$t('site.imageCropper.zoomOut')"
+              @click="onZoom(0.8)"
+            >
+              <zoom-out :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('site.imageCropper.rotateLeft')" placement="top">
-            <el-button size="large" :icon="RefreshLeft" @click="onRotate(-90)" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.rotateLeft')"
+              :title="$t('site.imageCropper.rotateLeft')"
+              @click="onRotate(-90)"
+            >
+              <refresh-left :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('site.imageCropper.rotateRight')" placement="top">
-            <el-button size="large" :icon="RefreshRight" @click="onRotate(90)" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.rotateRight')"
+              :title="$t('site.imageCropper.rotateRight')"
+              @click="onRotate(90)"
+            >
+              <refresh-right :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('site.imageCropper.flipHorizontal')" placement="top">
-            <el-button size="large" :icon="Sort" @click="onFlip(true, false)" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.flipHorizontal')"
+              :title="$t('site.imageCropper.flipHorizontal')"
+              @click="onFlip(true, false)"
+            >
+              <sort :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
           <el-tooltip :content="$t('site.imageCropper.replace')" placement="top">
-            <el-button size="large" :icon="Picture" @click="openPicker" />
+            <el-button
+              size="large"
+              :aria-label="$t('site.imageCropper.replace')"
+              :title="$t('site.imageCropper.replace')"
+              @click="openPicker"
+            >
+              <image-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+            </el-button>
           </el-tooltip>
         </el-button-group>
       </div>
     </div>
     <div v-else class="dropzone" @click="openPicker" @drop.prevent="onDrop" @dragover.prevent>
-      <el-icon class="dropzone-icon"><Upload /></el-icon>
+      <el-icon class="dropzone-icon"><Upload :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
       <p class="dropzone-text">{{ $t('site.imageCropper.dropHere') }}</p>
       <p class="dropzone-hint">{{ resolvedFormatHint }}</p>
     </div>
@@ -58,9 +100,18 @@
 </template>
 
 <script lang="ts">
+import {
+  ZoomInIcon as ZoomIn,
+  ZoomOutIcon as ZoomOut,
+  UndoIcon as RefreshLeft,
+  RedoIcon as RefreshRight,
+  ImageIcon,
+  UploadIcon as Upload,
+  SortIcon as Sort
+} from '@acedatacloud/core/icons/components';
 import { defineComponent, PropType } from 'vue';
 import { ElDialog, ElButton, ElButtonGroup, ElIcon, ElTooltip, ElMessage } from 'element-plus';
-import { ZoomIn, ZoomOut, RefreshLeft, RefreshRight, Picture, Upload, Sort } from '@element-plus/icons-vue';
+
 import { Cropper, CircleStencil, RectangleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 import { httpClient } from '@/operators/common';
@@ -75,6 +126,13 @@ export default defineComponent({
     ElButtonGroup,
     ElIcon,
     ElTooltip,
+    ZoomIn,
+    ZoomOut,
+    RefreshLeft,
+    RefreshRight,
+    ImageIcon,
+    Upload,
+    Sort,
     Cropper
   },
   props: {
@@ -129,13 +187,7 @@ export default defineComponent({
       // transparent pixels to black on upload (favicon bug).
       sourceMime: '' as string,
       uploading: false,
-      ZoomIn,
-      ZoomOut,
-      RefreshLeft,
-      RefreshRight,
-      Picture,
-      Upload,
-      Sort
+      Upload
     };
   },
   computed: {

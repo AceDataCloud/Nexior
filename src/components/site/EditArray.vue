@@ -32,17 +32,26 @@
       </span>
     </template>
   </el-dialog>
-  <span class="edit" @click="editing = true">
+  <span
+    class="edit"
+    role="button"
+    tabindex="0"
+    :aria-label="$t('common.button.edit')"
+    :title="$t('common.button.edit')"
+    @click="editing = true"
+    @keydown.enter.prevent="editing = true"
+    @keydown.space.prevent="editing = true"
+  >
     <el-icon class="icon">
-      <edit />
+      <edit :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-icon>
   </span>
 </template>
 
 <script lang="ts">
+import { EditIcon as Edit } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElInput, ElButton, ElIcon, ElTag, ElMessage } from 'element-plus';
-import { Edit } from '@element-plus/icons-vue';
 
 export default defineComponent({
   name: 'EditText',

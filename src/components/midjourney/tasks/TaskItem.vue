@@ -29,23 +29,23 @@
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
         <el-alert :closable="false" class="failure">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" />
@@ -73,32 +73,40 @@
               type="info"
               size="small"
               class="btn-action"
+              :aria-label="actionIconMapping[action] ? descriptionMapping[action] : undefined"
               @click="onCustom(action)"
             >
-              {{ actionMapping[action] }}
+              <component
+                :is="actionIconMapping[action]"
+                v-if="actionIconMapping[action]"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
+              />
+              <template v-else>{{ actionMapping[action] }}</template>
             </el-button>
           </el-tooltip>
           <api-code-button path="/midjourney/imagine" :body="modelValue?.request" />
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.trace_id }}
             <copy-to-clipboard :content="modelValue?.trace_id" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            <image-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.imageId') }}:
             {{ modelValue?.response?.image_id }}
             <copy-to-clipboard :content="modelValue?.response?.image_id" />
@@ -109,7 +117,7 @@
       <div v-if="!modelValue?.response">
         <el-alert :closable="false" class="mt-2 info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
@@ -165,43 +173,43 @@
       <div v-if="modelValue?.response?.success === false" :class="{ content: true, full: full, failed: true }">
         <el-alert :closable="false" class="failure">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.action') }}:
             {{ modelValue?.request?.action }}
           </p>
           <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            <performance-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
           </p>
           <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.mode') }}:
             {{ modelValue?.request?.mode }}
           </p>
           <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            <refresh-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.loop') }}:
             {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.response?.trace_id }}
             <copy-to-clipboard :content="modelValue?.response?.trace_id" />
@@ -236,43 +244,43 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.action') }}:
             {{ modelValue?.request?.action }}
           </p>
           <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            <performance-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
           </p>
           <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.mode') }}:
             {{ modelValue?.request?.mode }}
           </p>
           <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            <refresh-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.loop') }}:
             {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.trace_id }}
             <copy-to-clipboard :content="modelValue?.trace_id" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-image" class="mr-1" />
+            <image-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.videoId') }}:
             {{ modelValue?.response?.video_id }}
             <copy-to-clipboard :content="modelValue?.response?.video_id" />
@@ -283,27 +291,27 @@
       <div v-if="!modelValue?.response">
         <el-alert :closable="false" class="info">
           <p v-if="modelValue?.request?.action" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            <lightning-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.action') }}:
             {{ modelValue?.request?.action }}
           </p>
           <p v-if="modelValue?.request?.resolution" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-gauge-high" class="mr-1" />
+            <performance-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.resolution') }}:
             {{ modelValue?.request?.resolution }}
           </p>
           <p v-if="modelValue?.request?.mode" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.mode') }}:
             {{ modelValue?.request?.mode }}
           </p>
           <p v-if="modelValue?.request?.loop !== undefined" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="mr-1" />
+            <refresh-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.name.loop') }}:
             {{ modelValue?.request?.loop ? $t('midjourney.field.on') : $t('midjourney.field.off') }}
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
@@ -337,23 +345,23 @@
       >
         <el-alert :closable="false" class="failure">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
+            <info-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.trace_id }}
             <copy-to-clipboard :content="modelValue?.trace_id" />
@@ -387,17 +395,17 @@
         </div>
         <el-alert :closable="false" class="success">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
+            <channel-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.traceId') }}:
             {{ modelValue?.trace_id }}
             <copy-to-clipboard :content="modelValue?.trace_id" />
@@ -408,7 +416,7 @@
       <div v-if="!modelValue?.response">
         <el-alert :closable="false" class="info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('midjourney.field.taskId') }}:
             {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id!" />
@@ -420,10 +428,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {
+  BackIcon,
+  ChannelIcon,
+  ContinueIcon,
+  DownIcon,
+  ImageIcon,
+  InfoIcon,
+  LightningIcon,
+  MagicIcon,
+  PerformanceIcon,
+  RefreshIcon,
+  TimeIcon,
+  UpIcon
+} from '@acedatacloud/core/icons/components';
+import { defineComponent, markRaw, type Component } from 'vue';
 import { ElButton, ElTooltip, ElAlert, ElTag } from 'element-plus';
 import { IMidjourneyTask, MidjourneyImagineAction, MidjourneyImagineState, IMidjourneyVideosResponse } from '@/models';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import ImageWrapper from '@/components/common/ImageWrapper.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -433,16 +454,24 @@ import { getConsumption } from '@/utils';
 interface IData {
   midjourneyImagineState: typeof MidjourneyImagineState;
   actionMapping: Record<MidjourneyImagineAction, string>;
+  actionIconMapping: Partial<Record<MidjourneyImagineAction, Component>>;
   descriptionMapping: Record<MidjourneyImagineAction, string>;
 }
 
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    ChannelIcon,
+    ImageIcon,
+    InfoIcon,
+    LightningIcon,
+    MagicIcon,
+    PerformanceIcon,
+    RefreshIcon,
+    TimeIcon,
     ImageWrapper,
     ImagePreview,
     ElButton,
-    FontAwesomeIcon,
     ElTooltip,
     ElAlert,
     ElTag,
@@ -487,11 +516,18 @@ export default defineComponent({
         [MidjourneyImagineAction.REDO_UPSCALE_SUBTLE]: 'Redo Upscale (Subtle)',
         [MidjourneyImagineAction.REDO_UPSCALE_CREATIVE]: 'Redo Upscale (Creative)',
         [MidjourneyImagineAction.SQUARE]: 'Make Square',
-        [MidjourneyImagineAction.PAN_LEFT]: '⬅️',
-        [MidjourneyImagineAction.PAN_UP]: '⬆️',
-        [MidjourneyImagineAction.PAN_DOWN]: '⬇️',
-        [MidjourneyImagineAction.PAN_RIGHT]: '➡️',
-        [MidjourneyImagineAction.REROLL]: '🔄'
+        [MidjourneyImagineAction.PAN_LEFT]: 'Pan Left',
+        [MidjourneyImagineAction.PAN_UP]: 'Pan Up',
+        [MidjourneyImagineAction.PAN_DOWN]: 'Pan Down',
+        [MidjourneyImagineAction.PAN_RIGHT]: 'Pan Right',
+        [MidjourneyImagineAction.REROLL]: 'Reroll'
+      },
+      actionIconMapping: {
+        [MidjourneyImagineAction.PAN_LEFT]: markRaw(BackIcon),
+        [MidjourneyImagineAction.PAN_UP]: markRaw(UpIcon),
+        [MidjourneyImagineAction.PAN_DOWN]: markRaw(DownIcon),
+        [MidjourneyImagineAction.PAN_RIGHT]: markRaw(ContinueIcon),
+        [MidjourneyImagineAction.REROLL]: markRaw(RefreshIcon)
       },
       descriptionMapping: {
         [MidjourneyImagineAction.GENERATE]: this.$t('midjourney.action.generate'),

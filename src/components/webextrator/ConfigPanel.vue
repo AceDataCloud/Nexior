@@ -12,7 +12,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="w-full" round :loading="running" :disabled="!canRun" @click="onRun">
-        <font-awesome-icon icon="fa-solid fa-bolt" class="mr-2" />
+        <lightning-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t(isExtract ? 'webextrator.button.extract' : 'webextrator.button.render') }}
       </el-button>
     </div>
@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
+import { LightningIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ModeSelector from './config/ModeSelector.vue';
 import UrlInput from './config/UrlInput.vue';
 import ExpectedTypeSelector from './config/ExpectedTypeSelector.vue';
@@ -35,8 +35,8 @@ import { Status } from '@/models';
 export default defineComponent({
   name: 'WebextratorConfigPanel',
   components: {
+    LightningIcon,
     ElButton,
-    FontAwesomeIcon,
     ModeSelector,
     UrlInput,
     ExpectedTypeSelector,

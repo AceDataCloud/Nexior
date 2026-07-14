@@ -44,7 +44,7 @@
             }"
             @click="onToggle(item)"
           >
-            <el-icon class="icon"><check /></el-icon>
+            <el-icon class="icon"><check :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
             <el-image :src="item.image" fit="fill" class="preview" />
             <span class="name">{{ item.label }}</span>
           </div>
@@ -55,10 +55,10 @@
 </template>
 
 <script lang="ts">
+import { ConfirmIcon as Check } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElTabs, ElTabPane, ElImage, ElDialog, ElButton, ElTag, ElIcon } from 'element-plus';
 import InfoIcon from '@/components/common/InfoIcon.vue';
-import { Check } from '@element-plus/icons-vue';
 
 interface IElementItem {
   image: string;

@@ -11,8 +11,15 @@
     <div class="preview h-full w-[300px] flex flex-col">
       <slot name="preview" />
     </div>
-    <el-button v-show="!tasksEmpty" circle class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-magic" />
+    <el-button
+      v-show="!tasksEmpty"
+      circle
+      class="menu"
+      :aria-label="$t('common.button.openMenu')"
+      :title="$t('common.button.openMenu')"
+      @click="drawer = true"
+    >
+      <magic-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-button>
     <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="340px" class="drawer generator-drawer">
       <slot name="config" />
@@ -21,17 +28,17 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import taskDrawerMixin from '@/utils/taskDrawerMixin';
 
 export default defineComponent({
   name: 'LayoutSuno',
   components: {
+    MagicIcon,
     ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   mixins: [taskDrawerMixin]
 });

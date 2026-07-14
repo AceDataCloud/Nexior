@@ -43,7 +43,7 @@
         @keyup.enter="onClaim"
       />
       <el-button type="primary" round class="w-full" :loading="claiming" :disabled="!code.trim()" @click="onClaim">
-        <font-awesome-icon icon="fa-solid fa-link" class="mr-1" />
+        <link-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('codingBridge.pair.claim') }}
       </el-button>
     </div>
@@ -51,18 +51,18 @@
 </template>
 
 <script lang="ts">
+import { LinkIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDialog, ElInput, ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Status } from '@/models';
 
 export default defineComponent({
   name: 'CodingBridgePairDialog',
   components: {
+    LinkIcon,
     ElDialog,
     ElInput,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   props: {
     visible: {

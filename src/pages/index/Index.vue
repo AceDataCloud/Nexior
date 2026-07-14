@@ -50,11 +50,11 @@
             </div>
           </div>
           <button type="button" class="hero__note hero__note--top" @click="scrollToCreation">
-            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+            <magic-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span>{{ $t('index.note.allInOne') }}</span>
           </button>
           <button v-if="isMainSite" type="button" class="hero__note hero__note--bottom" @click="scrollToSubsites">
-            <font-awesome-icon icon="fa-solid fa-globe" />
+            <globe-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             <span>{{ $t('index.note.customDomain') }}</span>
           </button>
         </div>
@@ -83,7 +83,7 @@
             <p>{{ $t(item.subtitleKey) }}</p>
             <ul class="feature-points">
               <li v-for="bulletKey in item.bulletKeys" :key="bulletKey">
-                <font-awesome-icon icon="fa-solid fa-check" />
+                <confirm-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
                 <span>{{ $t(bulletKey) }}</span>
               </li>
             </ul>
@@ -97,11 +97,11 @@
               rel="noopener noreferrer"
             >
               {{ $t(item.buttonKey) }}
-              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+              <next-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-button>
             <el-button v-else type="primary" plain @click="openShowcase(item)">
               {{ $t(item.buttonKey) }}
-              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+              <next-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-button>
           </div>
           <div class="screen-pair screen-pair--large">
@@ -154,7 +154,7 @@
                 <p class="story-kicker">{{ $t(item.eyebrowKey) }}</p>
                 <h3>{{ $t(item.titleKey) }}</h3>
               </div>
-              <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
+              <external-link-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
               <p>{{ $t(item.subtitleKey) }}</p>
               <button type="button" class="creation-item__link" @click="openShowcase(item)">
                 {{ $t('index.button.try') }}
@@ -202,9 +202,9 @@
 </template>
 
 <script lang="ts">
+import { ConfirmIcon, ExternalLinkIcon, GlobeIcon, MagicIcon, NextIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 import { getDefaultRoute } from '@/router';
 import { isMainOfficial } from '@/utils';
@@ -363,7 +363,11 @@ export default defineComponent({
   name: 'Index',
   components: {
     ElButton,
-    FontAwesomeIcon
+    ConfirmIcon,
+    ExternalLinkIcon,
+    GlobeIcon,
+    MagicIcon,
+    NextIcon
   },
   data() {
     return {};

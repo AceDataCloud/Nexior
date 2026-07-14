@@ -1,13 +1,22 @@
 <template>
   <div class="prompt-textarea">
     <div class="header">
-      <h2 class="title font-bold">{{ title }}</h2>
+      <div class="heading">
+        <h2 class="title font-bold">{{ title }}</h2>
+        <info-icon v-if="info" :content="info" />
+      </div>
       <div class="actions">
         <slot name="actions" />
-        <info-icon v-if="info" :content="info" />
         <el-tooltip v-if="expandable" :content="$t('common.button.expand')" placement="top">
-          <el-button size="small" circle class="expand-btn" @click="onExpand">
-            <font-awesome-icon icon="fa-solid fa-expand" />
+          <el-button
+            size="small"
+            circle
+            class="expand-btn"
+            :aria-label="$t('common.button.expand')"
+            :title="$t('common.button.expand')"
+            @click="onExpand"
+          >
+            <fullscreen-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
           </el-button>
         </el-tooltip>
       </div>
@@ -54,19 +63,19 @@
 </template>
 
 <script lang="ts">
+import { FullscreenIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElInput, ElButton, ElTooltip, ElDialog } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 
 export default defineComponent({
   name: 'PromptTextarea',
   components: {
+    FullscreenIcon,
     ElInput,
     ElButton,
     ElTooltip,
     ElDialog,
-    FontAwesomeIcon,
     InfoIcon
   },
   props: {
@@ -146,6 +155,11 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
     margin-bottom: 6px;
+    .heading {
+      display: inline-flex;
+      min-width: 0;
+      align-items: center;
+    }
     .title {
       font-size: 14px;
       margin: 0;

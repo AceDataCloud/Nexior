@@ -5,7 +5,7 @@
       <file-input
         :accept="DIGITALHUMAN_AUDIO_ACCEPT"
         :button-text="$t('digitalhuman.button.uploadSample')"
-        icon="fa-solid fa-microphone"
+        icon="microphone"
         @change="onSampleChange"
       />
       <el-select v-model="lang" size="small" class="!w-[90px]">
@@ -13,13 +13,13 @@
       </el-select>
     </div>
     <el-button size="small" type="primary" round :loading="cloning" :disabled="!sampleUrl || cloning" @click="onClone">
-      <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+      <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
       {{ cloning ? $t('digitalhuman.button.cloning') : $t('digitalhuman.button.clone') }}
     </el-button>
 
     <el-alert v-if="voiceId" :closable="false" type="success" class="mt-2">
       <p class="text-xs mb-0">
-        <font-awesome-icon icon="fa-solid fa-check" class="mr-1" />
+        <confirm-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('digitalhuman.name.voiceReady') }}: {{ voiceId }}
       </p>
     </el-alert>
@@ -27,9 +27,9 @@
 </template>
 
 <script lang="ts">
+import { ConfirmIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElSelect, ElOption, ElAlert, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import FileInput from './FileInput.vue';
 import { digitalHumanOperator } from '@/operators';
 import { DIGITALHUMAN_ALLOWED_LANGS, DIGITALHUMAN_AUDIO_ACCEPT, DIGITALHUMAN_DEFAULT_LANG } from '@/constants';
@@ -51,12 +51,13 @@ interface IData {
 export default defineComponent({
   name: 'VoiceClone',
   components: {
+    ConfirmIcon,
+    MagicIcon,
     ElButton,
     ElSelect,
     ElOption,
     ElAlert,
-    FileInput,
-    FontAwesomeIcon
+    FileInput
   },
   data(): IData {
     return {

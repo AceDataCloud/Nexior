@@ -32,7 +32,7 @@
         />
       </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+        <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('seedance.button.upload') }}
       </el-button>
     </el-upload>
@@ -40,9 +40,9 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElUpload, ElButton, UploadFiles, UploadFile, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform, pasteUploadMixin, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
@@ -57,11 +57,11 @@ interface IData {
 export default defineComponent({
   name: 'SeedanceLastFrameImage',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     ImagePreview,
-    InfoIcon,
-    FontAwesomeIcon
+    InfoIcon
   },
   mixins: [pasteUploadMixin, uploadTrackerMixin],
   data(): IData {

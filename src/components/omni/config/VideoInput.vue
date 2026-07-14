@@ -19,7 +19,7 @@
           :headers="headers"
         >
           <el-button size="small" type="primary" round>
-            <font-awesome-icon icon="fa-solid fa-upload" class="mr-1" />
+            <upload-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('omni.button.uploadVideo') }}
           </el-button>
         </el-upload>
@@ -33,12 +33,12 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles, UploadFile } from 'element-plus';
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 interface IData {
   fileList: UploadFiles;
@@ -52,7 +52,7 @@ export default defineComponent({
     ElButton,
     InfoIcon,
     FilePreview,
-    FontAwesomeIcon
+    UploadIcon
   },
   mixins: [uploadTrackerMixin],
   data(): IData {

@@ -55,8 +55,13 @@
 
     <div v-if="testResult" :class="['test-result', testResult.ok ? 'ok' : 'fail']">
       <p class="test-result-title">
-        <span v-if="testResult.ok">✓ {{ $t('byok.test.success') }}</span>
-        <span v-else>✗ {{ $t('byok.test.failure') }}</span>
+        <span v-if="testResult.ok"
+          ><success-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          {{ $t('byok.test.success') }}</span
+        >
+        <span v-else
+          ><error-icon :size="'1em' as any" aria-hidden="true" focusable="false" /> {{ $t('byok.test.failure') }}</span
+        >
       </p>
       <dl class="test-result-detail">
         <dt>{{ $t('byok.test.endpoint') }}</dt>
@@ -89,6 +94,7 @@
 </template>
 
 <script lang="ts">
+import { ErrorIcon, SuccessIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import {
   ElButton,
@@ -123,13 +129,15 @@ interface ITestResult {
 export default defineComponent({
   name: 'BYOKDialog',
   components: {
+    ErrorIcon,
     ElButton,
     ElDialog,
     ElForm,
     ElFormItem,
     ElInput,
     ElOption,
-    ElSelect
+    ElSelect,
+    SuccessIcon
   },
   props: {
     visible: { type: Boolean, default: false },
@@ -408,6 +416,17 @@ export default defineComponent({
 .test-result-title {
   margin: 0 0 6px;
   font-weight: 600;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
 }
 
 .test-result-detail {

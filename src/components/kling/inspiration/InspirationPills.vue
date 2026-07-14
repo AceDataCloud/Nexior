@@ -6,24 +6,25 @@
         type="button"
         class="pill-remove"
         :aria-label="$t('kling.inspiration.removeChip')"
+        :title="$t('kling.inspiration.removeChip')"
         @click.stop="onRemove(text)"
       >
-        <font-awesome-icon icon="fa-solid fa-xmark" />
+        <close-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { CloseIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { KLING_PRESET_GROUPS } from './presets';
 import { removeChunk } from './promptChunks';
 
 export default defineComponent({
   name: 'InspirationPills',
   components: {
-    FontAwesomeIcon
+    CloseIcon
   },
   computed: {
     prompt(): string {

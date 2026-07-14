@@ -12,7 +12,7 @@
         round
         @click="onGenerateLyrics"
       >
-        <font-awesome-icon v-if="!generatingLyrics" icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+        <magic-icon v-if="!generatingLyrics" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('producer.button.generate_lyrics') }}
       </el-button>
     </div>
@@ -36,9 +36,9 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElInput, ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import { producerOperator } from '@/operators';
 
@@ -47,9 +47,9 @@ export const DEFAULT_LYRIC = '';
 export default defineComponent({
   name: 'LyricInput',
   components: {
+    MagicIcon,
     ElInput,
     ElButton,
-    FontAwesomeIcon,
     InfoIcon
   },
   data() {

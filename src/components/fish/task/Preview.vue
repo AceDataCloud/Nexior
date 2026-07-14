@@ -27,21 +27,21 @@
         </div>
         <el-alert :closable="false" class="mt-2 success">
           <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-microchip" class="mr-1" />
+            <cpu-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.name.model') }}: {{ modelValue?.request?.model }}
           </p>
           <p v-if="modelValue?.request?.reference_id" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-microphone" class="mr-1" />
+            <microphone-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.name.referenceId') }}: {{ modelValue?.request?.reference_id }}
             <copy-to-clipboard :content="modelValue?.request?.reference_id" />
           </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id" />
           </p>
           <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            <time-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
           </p>
         </el-alert>
@@ -50,7 +50,7 @@
       <div v-else class="content">
         <el-alert :closable="false" class="info">
           <p class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
+            <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('fish.name.taskId') }}: {{ modelValue?.id }}
             <copy-to-clipboard :content="modelValue?.id" />
           </p>
@@ -61,18 +61,21 @@
 </template>
 
 <script lang="ts">
+import { CpuIcon, MagicIcon, MicrophoneIcon, TimeIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElAlert, ElButton } from 'element-plus';
 import { IFishTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
   name: 'FishTaskPreview',
   components: {
+    CpuIcon,
+    MagicIcon,
+    MicrophoneIcon,
+    TimeIcon,
     CopyToClipboard,
-    FontAwesomeIcon,
     ElAlert,
     ElButton,
     ApiCodeButton

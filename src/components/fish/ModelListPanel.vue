@@ -12,7 +12,7 @@
         v-else-if="voices.length === 0"
         class="w-full h-full flex flex-col items-center justify-center text-center px-6"
       >
-        <font-awesome-icon icon="fa-solid fa-microphone-lines" class="empty-icon" />
+        <microphone-icon class="empty-icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <p class="empty-title">{{ $t('fish.title.noVoicesYet') }}</p>
         <p class="empty-hint">{{ $t('fish.description.noVoicesYet') }}</p>
       </div>
@@ -24,8 +24,8 @@
 </template>
 
 <script lang="ts">
+import { MicrophoneIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VoiceCard from './model/Card.vue';
 import BotPlaceholder from '@/components/common/BotPlaceholder.vue';
 import { IFishVoiceModel } from '@/models';
@@ -33,9 +33,9 @@ import { IFishVoiceModel } from '@/models';
 export default defineComponent({
   name: 'FishModelListPanel',
   components: {
+    MicrophoneIcon,
     VoiceCard,
-    BotPlaceholder,
-    FontAwesomeIcon
+    BotPlaceholder
   },
   props: {
     loading: {

@@ -1,11 +1,14 @@
 <template>
   <div class="item">
     <div class="icon">
-      <font-awesome-icon
-        :icon="icon"
+      <component
+        :is="iconComponent"
         :style="{
           color: color
         }"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
       />
     </div>
     <div class="content">
@@ -15,21 +18,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { defineComponent, type Component, type PropType } from 'vue';
 
 export default defineComponent({
   name: 'ConversationIntroductionItem',
-  components: {
-    FontAwesomeIcon
-  },
   props: {
     content: {
       type: String,
       required: true
     },
-    icon: {
-      type: String,
+    iconComponent: {
+      type: Object as PropType<Component>,
       required: true
     },
     color: {

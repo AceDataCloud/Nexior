@@ -3,11 +3,11 @@
     <h2 class="title font-bold">{{ $t('webextrator.name.mode') }}</h2>
     <el-radio-group v-model="value" class="value w-full">
       <el-radio-button label="extract" value="extract">
-        <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" class="mr-1" />
+        <magic-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('webextrator.mode.extract') }}
       </el-radio-button>
       <el-radio-button label="render" value="render">
-        <font-awesome-icon icon="fa-solid fa-globe" class="mr-1" />
+        <globe-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('webextrator.mode.render') }}
       </el-radio-button>
     </el-radio-group>
@@ -15,17 +15,18 @@
 </template>
 
 <script lang="ts">
+import { GlobeIcon, MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElRadioGroup, ElRadioButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { IWebextratorMode } from '@/models';
 
 export default defineComponent({
   name: 'ModeSelector',
   components: {
+    GlobeIcon,
+    MagicIcon,
     ElRadioGroup,
-    ElRadioButton,
-    FontAwesomeIcon
+    ElRadioButton
   },
   computed: {
     value: {

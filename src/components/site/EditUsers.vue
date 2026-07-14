@@ -7,8 +7,17 @@
       <ul v-else class="chip-list">
         <li v-for="id in working" :key="id" class="chip-item">
           <user-chip :user-id="id" />
-          <el-icon class="chip-remove" :title="removeLabel" @click="onRemove(id)">
-            <close />
+          <el-icon
+            class="chip-remove"
+            role="button"
+            tabindex="0"
+            :aria-label="removeLabel || $t('common.button.remove')"
+            :title="removeLabel || $t('common.button.remove')"
+            @click="onRemove(id)"
+            @keydown.enter.prevent="onRemove(id)"
+            @keydown.space.prevent="onRemove(id)"
+          >
+            <close :size="'1em' as any" aria-hidden="true" focusable="false" />
           </el-icon>
         </li>
       </ul>
@@ -16,7 +25,9 @@
       <user-picker :exclude-ids="working" @select="onAdd" />
       <p class="tip">{{ $t('site.message.editUserHint') }}</p>
       <p v-if="errorMessage" class="error">
-        <el-icon class="error-icon"><warning-filled /></el-icon>
+        <el-icon class="error-icon"
+          ><warning-filled :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
         {{ errorMessage }}
       </p>
     </div>
@@ -29,17 +40,31 @@
       </span>
     </template>
   </el-dialog>
-  <span class="edit" @click="onOpen">
+  <span
+    class="edit"
+    role="button"
+    tabindex="0"
+    :aria-label="$t('common.button.edit')"
+    :title="$t('common.button.edit')"
+    @click="onOpen"
+    @keydown.enter.prevent="onOpen"
+    @keydown.space.prevent="onOpen"
+  >
     <el-icon class="icon">
-      <edit />
+      <edit :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-icon>
   </span>
 </template>
 
 <script lang="ts">
+import {
+  EditIcon as Edit,
+  CloseIcon as Close,
+  WarningIcon as WarningFilled
+} from '@acedatacloud/core/icons/components';
 import { defineComponent, type PropType } from 'vue';
 import { ElDialog, ElButton, ElIcon, ElDivider } from 'element-plus';
-import { Edit, Close, WarningFilled } from '@element-plus/icons-vue';
+
 import UserChip from '@/components/site/UserChip.vue';
 import UserPicker from '@/components/site/UserPicker.vue';
 import type { IUserPublic } from '@/models';

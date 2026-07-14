@@ -10,10 +10,18 @@
     <div class="drawer-content">
       <div class="drawer-header">
         <div class="title-row">
-          <font-awesome-icon icon="fa-regular fa-lightbulb" class="mr-2" />
+          <idea-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
           <span class="title">{{ $t('kling.inspiration.title') }}</span>
         </div>
-        <el-button text :icon="Close" class="close-btn" @click="visible = false" />
+        <el-button
+          text
+          class="close-btn"
+          :aria-label="$t('common.button.close')"
+          :title="$t('common.button.close')"
+          @click="visible = false"
+        >
+          <close :size="'1em' as any" aria-hidden="true" focusable="false" />
+        </el-button>
       </div>
 
       <div class="hint">{{ $t('kling.inspiration.hint') }}</div>
@@ -46,19 +54,20 @@
 </template>
 
 <script lang="ts">
+import { CloseIcon as Close, IdeaIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
-import { Close } from '@element-plus/icons-vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import { KLING_PRESET_GROUPS } from './presets';
 import { appendChunk, removeChunk } from './promptChunks';
 
 export default defineComponent({
   name: 'InspirationDrawer',
   components: {
+    Close,
+    IdeaIcon,
     ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   props: {
     modelValue: {
@@ -69,8 +78,7 @@ export default defineComponent({
   emits: ['update:modelValue'],
   data() {
     return {
-      groups: KLING_PRESET_GROUPS,
-      Close
+      groups: KLING_PRESET_GROUPS
     };
   },
   computed: {

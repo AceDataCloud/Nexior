@@ -85,7 +85,7 @@
         </el-col>
         <el-col v-if="type === serviceType.API" :md="3" :xs="24" class="mb-5 flex px-2 gap-2 items-center justify-end">
           <el-button type="primary" plain :loading="exporting" class="w-full whitespace-nowrap" @click="onExport">
-            <font-awesome-icon icon="fa-solid fa-file-export" class="mr-1" />
+            <export-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
             {{ $t('usage.button.export') }}
           </el-button>
         </el-col>
@@ -98,7 +98,7 @@
                 <el-skeleton v-if="aggLoading" />
                 <div v-else class="summary-card">
                   <div class="icon-wrapper">
-                    <font-awesome-icon icon="fa-solid fa-cubes" class="icon" />
+                    <applications-icon class="icon" :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </div>
                   <div class="text-left">
                     <p class="description">{{ $t('usage.title.totalUsed') }}</p>
@@ -437,6 +437,7 @@
 </template>
 
 <script lang="ts">
+import { ApplicationsIcon, ExportIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import {
   IApi,
@@ -478,7 +479,6 @@ import {
 import qs from 'qs';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { getBaseUrlPlatform } from '@/utils';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Bar as BarChart, Doughnut as DoughnutChart } from 'vue-chartjs';
 import {
   Chart as ChartJS,
@@ -574,6 +574,8 @@ interface IData {
 export default defineComponent({
   name: 'ConsoleUsageList',
   components: {
+    ApplicationsIcon,
+    ExportIcon,
     Pagination,
     ElTag,
     ElDatePicker,
@@ -595,7 +597,6 @@ export default defineComponent({
     ElButton,
     ElEmpty,
     ElSwitch,
-    FontAwesomeIcon,
     BarChart,
     DoughnutChart
   },
@@ -1339,18 +1340,23 @@ export default defineComponent({
 .summary-card .icon-wrapper {
   height: 40px;
   width: 40px;
-  line-height: 40px;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
   background-color: var(--el-bg-color-page);
-  text-align: center;
   margin-bottom: 10px;
 }
 .summary-card .icon-wrapper .icon {
+  display: block;
+  width: 18px;
+  height: 18px;
   color: var(--el-color-primary);
 }
 .summary-card .value {
   font-weight: 600;
   font-size: 30px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 .summary-card .description {
   color: var(--el-text-color-regular);

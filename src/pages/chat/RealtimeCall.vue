@@ -5,13 +5,13 @@
       <!-- left group: back + voice picker (kept LEFT so it never sits under the
            right-pinned floating wallet pill, which would otherwise block taps) -->
       <div class="rtc-top-left">
-        <button class="ic" :title="$t('realtime.title')" @click="goBack">
-          <font-awesome-icon icon="fa-solid fa-chevron-down" />
+        <button class="ic" :title="$t('realtime.title')" :aria-label="$t('realtime.title')" @click="goBack">
+          <expand-down-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </button>
         <div class="voice-pick">
           <button class="voice-chip" :class="{ on: voiceMenuOpen }" @click.stop="voiceMenuOpen = !voiceMenuOpen">
             <span class="voice-name">{{ voiceLabel }}</span>
-            <font-awesome-icon icon="fa-solid fa-chevron-down" class="voice-caret" />
+            <expand-down-icon class="voice-caret" :size="'1em' as any" aria-hidden="true" focusable="false" />
           </button>
           <ul v-if="voiceMenuOpen" class="voice-menu">
             <li v-for="v in voices" :key="v" :class="{ sel: v === voice }" @click="selectVoice(v)">
@@ -21,11 +21,23 @@
         </div>
       </div>
       <div class="rtc-top-right">
-        <button class="ic" :class="{ on: showInfo }" :title="$t('realtime.title')" @click="showInfo = !showInfo">
-          <font-awesome-icon icon="fa-solid fa-circle-info" />
+        <button
+          class="ic"
+          :class="{ on: showInfo }"
+          :title="$t('realtime.title')"
+          :aria-label="$t('realtime.title')"
+          @click="showInfo = !showInfo"
+        >
+          <info-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </button>
-        <button class="ic" :class="{ on: captionsOn }" :title="$t('realtime.captions')" @click="toggleCaptions">
-          <font-awesome-icon icon="fa-solid fa-closed-captioning" />
+        <button
+          class="ic"
+          :class="{ on: captionsOn }"
+          :title="$t('realtime.captions')"
+          :aria-label="$t('realtime.captions')"
+          @click="toggleCaptions"
+        >
+          <captions-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
         </button>
       </div>
     </header>
@@ -65,23 +77,38 @@
         class="ctl"
         :class="{ active: muted }"
         :title="muted ? $t('realtime.unmute') : $t('realtime.mute')"
+        :aria-label="muted ? $t('realtime.unmute') : $t('realtime.mute')"
         @click="toggleMute"
       >
-        <font-awesome-icon :icon="muted ? 'fa-solid fa-microphone-slash' : 'fa-solid fa-microphone'" />
+        <microphone-off-icon v-if="muted" :size="'1em' as any" aria-hidden="true" focusable="false" />
+        <microphone-icon v-else :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
-      <button class="ctl" :class="{ active: captionsOn }" :title="$t('realtime.captions')" @click="toggleCaptions">
-        <font-awesome-icon icon="fa-solid fa-closed-captioning" />
+      <button
+        class="ctl"
+        :class="{ active: captionsOn }"
+        :title="$t('realtime.captions')"
+        :aria-label="$t('realtime.captions')"
+        @click="toggleCaptions"
+      >
+        <captions-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
-      <button class="ctl end" :title="$t('realtime.end')" @click="endCall">
-        <font-awesome-icon icon="fa-solid fa-xmark" />
+      <button class="ctl end" :title="$t('realtime.end')" :aria-label="$t('realtime.end')" @click="endCall">
+        <close-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </button>
     </footer>
   </div>
 </template>
 
 <script lang="ts">
+import {
+  CaptionsIcon,
+  CloseIcon,
+  ExpandDownIcon,
+  InfoIcon,
+  MicrophoneIcon,
+  MicrophoneOffIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { RealtimeClient, RealtimeStatus } from '@/utils/realtimeClient';
 import { REALTIME_DEFAULT_MODEL, REALTIME_DEFAULT_VOICE, REALTIME_VOICES } from '@/constants';
 import { ROUTE_CHATGPT_CONVERSATION_NEW } from '@/router/constants';
@@ -91,7 +118,12 @@ const VOICE_STORAGE_KEY = 'nexior.realtime.voice';
 export default defineComponent({
   name: 'RealtimeCall',
   components: {
-    FontAwesomeIcon
+    CaptionsIcon,
+    CloseIcon,
+    ExpandDownIcon,
+    InfoIcon,
+    MicrophoneIcon,
+    MicrophoneOffIcon
   },
   data() {
     return {

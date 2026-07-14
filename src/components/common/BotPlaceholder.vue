@@ -10,9 +10,10 @@
       type="button"
       class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-[var(--el-color-primary-light-5)] bg-[var(--el-color-primary-light-9)] text-[var(--el-color-primary)] cursor-pointer transition duration-200 hover:bg-[var(--el-color-primary-light-7)] hover:scale-105 active:scale-95"
       :aria-label="$t('common.button.login')"
+      :title="$t('common.button.login')"
       @click="onLogin"
     >
-      <font-awesome-icon icon="fa-solid fa-magic" class="text-lg" />
+      <magic-icon class="text-lg" :size="'1em' as any" aria-hidden="true" focusable="false" />
     </button>
     <p class="mt-4 text-sm max-w-[260px]">{{ $t('common.message.guestTasks') }}</p>
     <el-button type="primary" round class="mt-4" @click="onLogin">
@@ -41,18 +42,18 @@
 </template>
 
 <script lang="ts">
+import { MagicIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElSkeleton, ElSkeletonItem, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ensureLoggedIn } from '@/utils/login';
 
 export default defineComponent({
   name: 'BotPlaceholder',
   components: {
+    MagicIcon,
     ElSkeleton,
     ElSkeletonItem,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   computed: {
     authenticated(): boolean {

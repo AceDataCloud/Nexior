@@ -1,8 +1,10 @@
 <template>
   <div class="thinking-block" :class="{ active: !done }">
     <div class="thinking-header" @click="collapsed = !collapsed">
-      <el-icon class="caret" :class="{ 'rotate-90': !collapsed }"><ArrowRight /></el-icon>
-      <font-awesome-icon icon="fa-solid fa-brain" class="brain" :class="{ pulse: !done }" />
+      <el-icon class="caret" :class="{ 'rotate-90': !collapsed }"
+        ><ArrowRight :size="'1em' as any" aria-hidden="true" focusable="false"
+      /></el-icon>
+      <ai-icon class="brain" :class="{ pulse: !done }" :size="'1em' as any" aria-hidden="true" focusable="false" />
       <span class="thinking-label">{{ label }}</span>
     </div>
     <div v-show="!collapsed" class="thinking-content">
@@ -12,10 +14,10 @@
 </template>
 
 <script lang="ts">
+import { AiIcon, ExpandRightIcon as ArrowRight } from '@acedatacloud/core/icons/components';
 import { defineComponent, ref, computed, watch } from 'vue';
-import { ArrowRight } from '@element-plus/icons-vue';
+
 import { ElIcon } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useI18n } from 'vue-i18n';
 import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
 
@@ -35,7 +37,7 @@ import MarkdownRenderer from '@/components/common/MarkdownRenderer.vue';
  */
 export default defineComponent({
   name: 'ThinkingBlock',
-  components: { ArrowRight, ElIcon, FontAwesomeIcon, MarkdownRenderer },
+  components: { AiIcon, ArrowRight, ElIcon, MarkdownRenderer },
   props: {
     content: { type: String, required: true },
     /** True once the model has switched from thinking to answering. */

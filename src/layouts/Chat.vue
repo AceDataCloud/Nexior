@@ -8,8 +8,14 @@
     <div class="chat">
       <slot name="chat" />
     </div>
-    <el-button circle class="menu" @click="drawer = true">
-      <font-awesome-icon icon="fa-solid fa-bars" />
+    <el-button
+      circle
+      class="menu"
+      :aria-label="$t('common.button.openMenu')"
+      :title="$t('common.button.openMenu')"
+      @click="drawer = true"
+    >
+      <menu-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
     </el-button>
     <el-drawer v-model="drawer" direction="ltr" :with-header="false" size="290px">
       <side-panel @change-conversation="onChangeConversation" />
@@ -18,18 +24,18 @@
 </template>
 
 <script lang="ts">
+import { MenuIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import SidePanel from '@/components/chat/SidePanel.vue';
 import { ElDrawer, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: 'LayoutChat',
   components: {
+    MenuIcon,
     SidePanel,
     ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   emits: ['change-conversation'],
   data() {

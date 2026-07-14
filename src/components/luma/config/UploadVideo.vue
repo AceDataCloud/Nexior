@@ -31,7 +31,7 @@
         />
       </template>
       <el-button round type="primary" size="small" class="btn btn-upload">
-        <font-awesome-icon icon="fa-solid fa-upload" class="icon mr-1" />
+        <upload-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('luma.button.uploadVideoUrl') }}
       </el-button>
     </el-upload>
@@ -39,12 +39,12 @@
 </template>
 
 <script lang="ts">
+import { UploadIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton, ElUpload, ElMessage, UploadFiles } from 'element-plus';
 import { getBaseUrlPlatform, uploadTrackerMixin } from '@/utils';
 import InfoIcon from '@/components/common/InfoIcon.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export const DEFAULT_CONTENT = '';
 
@@ -56,11 +56,11 @@ interface IData {
 export default defineComponent({
   name: 'UploadVideo',
   components: {
+    UploadIcon,
     ElUpload,
     ElButton,
     InfoIcon,
-    FilePreview,
-    FontAwesomeIcon
+    FilePreview
   },
   mixins: [uploadTrackerMixin],
   data(): IData {

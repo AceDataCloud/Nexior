@@ -9,7 +9,7 @@
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
       <el-button type="primary" class="btn w-full" round :loading="searching" @click="onSearch">
-        <font-awesome-icon icon="fa-solid fa-search" class="mr-2" />
+        <search-icon class="mr-2" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('serp.button.search') }}
       </el-button>
     </div>
@@ -17,9 +17,9 @@
 </template>
 
 <script lang="ts">
+import { SearchIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import QueryInput from './config/QueryInput.vue';
 import TypeSelector from './config/TypeSelector.vue';
 import CountryInput from './config/CountryInput.vue';
@@ -31,8 +31,8 @@ import { Status } from '@/models';
 export default defineComponent({
   name: 'SearchPanel',
   components: {
+    SearchIcon,
     ElButton,
-    FontAwesomeIcon,
     QueryInput,
     TypeSelector,
     CountryInput,

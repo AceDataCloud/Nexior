@@ -1,16 +1,19 @@
 <template>
   <div class="cb-thinking flex items-center gap-2 text-sm text-[var(--app-text-subtle)] py-1">
-    <span class="cb-thinking__spinner text-[var(--el-color-primary)]">{{ spinnerFrame }}</span>
+    <loading-icon
+      class="cb-thinking__spinner adc-icon-spin text-[var(--el-color-primary)]"
+      :size="'1em' as any"
+      aria-hidden="true"
+      focusable="false"
+    />
     <span class="cb-thinking__word">{{ display }}<span class="cb-thinking__caret">▋</span></span>
     <span class="cb-thinking__elapsed tabular-nums opacity-60">({{ elapsed }}s)</span>
   </div>
 </template>
 
 <script lang="ts">
+import { LoadingIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
-
-// Braille spinner frames, same family Claude Code uses in the terminal.
-const SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'];
 
 // Playful gerunds cycled while the agent works. Kept in-component (not i18n)
 // because there is no fallbackLocale configured, so a missing key in the 16
@@ -73,46 +76,37 @@ const WORDS_ZH = [
   '反复斟酌中'
 ];
 
-const SPINNER_MS = 80;
 const TYPE_MS = 60;
 const HOLD_MS = 1500;
 const DELETE_MS = 28;
 
 export default defineComponent({
   name: 'CodingBridgeThinkingIndicator',
+  components: { LoadingIcon },
   data() {
     return {
-      spinnerIndex: 0,
       display: '',
       elapsed: 0,
       charIndex: 0,
       phase: 'typing' as 'typing' | 'holding' | 'deleting',
       currentWord: '',
-      spinnerTimer: 0,
       elapsedTimer: 0,
       typeTimer: 0
     };
   },
   computed: {
-    spinnerFrame(): string {
-      return SPINNER_FRAMES[this.spinnerIndex];
-    },
     words(): string[] {
       return this.$i18n.locale.startsWith('zh') ? WORDS_ZH : WORDS_EN;
     }
   },
   mounted() {
     this.currentWord = this.pickWord();
-    this.spinnerTimer = window.setInterval(() => {
-      this.spinnerIndex = (this.spinnerIndex + 1) % SPINNER_FRAMES.length;
-    }, SPINNER_MS);
     this.elapsedTimer = window.setInterval(() => {
       this.elapsed += 1;
     }, 1000);
     this.scheduleType(TYPE_MS);
   },
   beforeUnmount() {
-    window.clearInterval(this.spinnerTimer);
     window.clearInterval(this.elapsedTimer);
     window.clearTimeout(this.typeTimer);
   },

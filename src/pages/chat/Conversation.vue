@@ -8,8 +8,14 @@
         </div>
         <div class="toolbar-actions">
           <el-tooltip v-if="conversationId" :content="$t('chat.share.menu')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="shareDialogVisible = true">
-              <font-awesome-icon icon="fa-solid fa-share-nodes" />
+            <el-button
+              class="toolbar-btn"
+              text
+              :aria-label="$t('chat.share.menu')"
+              :title="$t('chat.share.menu')"
+              @click="shareDialogVisible = true"
+            >
+              <share-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
             </el-button>
           </el-tooltip>
         </div>
@@ -80,6 +86,7 @@
 </template>
 
 <script lang="ts">
+import { ShareIcon } from '@acedatacloud/core/icons/components';
 import axios from 'axios';
 import { defineComponent } from 'vue';
 import Message from '@/components/chat/Message.vue';
@@ -118,7 +125,6 @@ import { hasLoadedConversationMessages } from '@/components/chat/conversationRes
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator } from '@/operators';
 import { ElButton, ElSkeleton, ElSkeletonItem, ElTooltip } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
   drawer: boolean;
@@ -169,6 +175,7 @@ export interface IData {
 export default defineComponent({
   name: 'ChatConversation',
   components: {
+    ShareIcon,
     Composer,
     Disclaimer,
     ConnectorStrip,
@@ -180,8 +187,7 @@ export default defineComponent({
     ElButton,
     ElSkeleton,
     ElSkeletonItem,
-    ElTooltip,
-    FontAwesomeIcon
+    ElTooltip
   },
   data(): IData {
     return {

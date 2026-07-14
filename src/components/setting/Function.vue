@@ -16,10 +16,11 @@
           <el-button
             circle
             size="small"
-            :icon="Edit"
             :aria-label="$t('site.capabilityOverride.edit')"
             @click="onEdit(feature as CapabilityKey)"
-          />
+          >
+            <EditIcon :size="'1em' as any" aria-hidden="true" focusable="false" />
+          </el-button>
         </el-tooltip>
         <el-switch
           :model-value="site.features?.[feature]?.enabled || false"
@@ -46,7 +47,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElMessage, ElSwitch, ElTooltip } from 'element-plus';
-import { Edit } from '@element-plus/icons-vue';
+import { EditIcon } from '@acedatacloud/core/icons/components';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import CapabilityOverrideDialog from '@/components/setting/CapabilityOverrideDialog.vue';
 import { siteCapabilityOverrideOperator, siteOperator } from '@/operators';
@@ -60,6 +61,7 @@ export default defineComponent({
   components: {
     CapabilityOverrideDialog,
     ElButton,
+    EditIcon,
     ElSwitch,
     ElTooltip,
     SectionNotice
@@ -70,7 +72,6 @@ export default defineComponent({
       editingCapability: null as CapabilityKey | null,
       dialogVisible: false,
       failedIcons: {} as Partial<Record<CapabilityKey, boolean>>,
-      Edit,
       CAPABILITY_ICONS
     };
   },

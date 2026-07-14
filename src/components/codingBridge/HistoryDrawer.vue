@@ -12,7 +12,7 @@
           {{ $t('codingBridge.history.intro') }}
         </p>
         <el-button size="small" round :loading="loading" @click="refresh">
-          <font-awesome-icon v-if="!loading" icon="fa-solid fa-rotate-right" class="mr-1" />
+          <redo-icon v-if="!loading" class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('codingBridge.history.refresh') }}
         </el-button>
       </div>
@@ -42,11 +42,13 @@
               :class="{ 'provider-icon--invert': providerIcon(item.provider)!.invertOnDark }"
               :alt="providerLabel(item.provider)"
             />
-            <font-awesome-icon
+            <code-icon
               v-else
-              icon="fa-solid fa-code"
               class="provider-icon"
               :title="providerLabel(item.provider)"
+              :size="'1em' as any"
+              aria-hidden="true"
+              focusable="false"
             />
             <span class="text-sm font-medium truncate flex-1">{{ item.title }}</span>
             <!-- Live on the node right now: opening it reattaches to the running
@@ -70,9 +72,9 @@
 </template>
 
 <script lang="ts">
+import { CodeIcon, RedoIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElDrawer, ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ICodingBridgeHistorySummary, Status } from '@/models';
 import claudeIcon from '@/assets/images/logos/claude.svg';
 import openaiIcon from '@/assets/images/logos/openai.svg';
@@ -87,9 +89,10 @@ const PROVIDER_ICONS: Record<string, { src: string; invertOnDark: boolean }> = {
 export default defineComponent({
   name: 'CodingBridgeHistoryDrawer',
   components: {
+    CodeIcon,
+    RedoIcon,
     ElDrawer,
-    ElButton,
-    FontAwesomeIcon
+    ElButton
   },
   props: {
     visible: {

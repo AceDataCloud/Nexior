@@ -2,7 +2,9 @@
   <el-dialog :model-value="visible" :title="$t('order.title.x402')" :width="dialogWidth" top="8vh" class="x402-dialog">
     <section class="x402-content">
       <header class="x402-intro">
-        <el-icon :size="20" class="x402-intro-icon"><credit-card /></el-icon>
+        <el-icon :size="20" class="x402-intro-icon"
+          ><credit-card :size="'1em' as any" aria-hidden="true" focusable="false"
+        /></el-icon>
         <p class="x402-intro-text">{{ $t('order.message.x402IntroShort') }}</p>
       </header>
       <section class="x402-wallet">
@@ -189,6 +191,7 @@
 </template>
 
 <script lang="ts">
+import { PaymentCardIcon as CreditCard } from '@acedatacloud/core/icons/components';
 import { defineComponent, nextTick } from 'vue';
 import {
   ElAlert,
@@ -201,7 +204,7 @@ import {
   ElRadioGroup,
   ElRadioButton
 } from 'element-plus';
-import { CreditCard } from '@element-plus/icons-vue';
+
 import { IOrder } from '@/models';
 import { httpClient, orderOperator } from '@/operators';
 import { isMobile } from '@/utils';

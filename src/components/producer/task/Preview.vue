@@ -10,9 +10,15 @@
             $store.state?.producer?.audio?.state === 'playing'
           "
           class="overlay"
+          role="button"
+          tabindex="0"
+          :aria-label="$t('common.player.pause')"
+          :title="$t('common.player.pause')"
           @click.stop="onPause(audio)"
+          @keydown.enter.stop.prevent="onPause(audio)"
+          @keydown.space.stop.prevent="onPause(audio)"
         >
-          <el-icon><video-pause /></el-icon>
+          <el-icon><video-pause :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
         </div>
         <div
           v-if="
@@ -21,9 +27,15 @@
               ($store.state?.producer?.audio?.id === audio.id && $store.state?.producer?.audio?.state === 'paused'))
           "
           class="overlay"
+          role="button"
+          tabindex="0"
+          :aria-label="$t('common.player.play')"
+          :title="$t('common.player.play')"
           @click.stop="onPlay(audio)"
+          @keydown.enter.stop.prevent="onPlay(audio)"
+          @keydown.space.stop.prevent="onPlay(audio)"
         >
-          <el-icon><video-play /></el-icon>
+          <el-icon><video-play :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
         </div>
         <div v-if="audio?.duration" class="duration">
           {{ useFormatDuring(audio?.duration) }}
@@ -37,10 +49,12 @@
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('producer.button.download')" placement="top">
-              <font-awesome-icon
+              <download-icon
                 v-if="audio?.audio_url || audio?.video_url"
-                icon="fa-solid fa-download"
                 class="icon icon-download"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
               />
             </el-tooltip>
           </span>
@@ -49,7 +63,7 @@
               <el-dropdown-item :disabled="isFetchingVideoUrl" @click="handleVideoDownload(audio)">
                 <div class="flex items-center min-w-[120px]">
                   <el-icon v-if="isFetchingVideoUrl" class="is-loading mr-2">
-                    <Loading />
+                    <Loading :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </el-icon>
                   <span>{{ $t('producer.button.download_video') }}</span>
                 </div>
@@ -60,7 +74,7 @@
               <el-dropdown-item :disabled="isFetchingWav" @click="handleWavDownload(audio)">
                 <div class="flex items-center min-w-[120px]">
                   <el-icon v-if="isFetchingWav" class="is-loading mr-2">
-                    <Loading />
+                    <Loading :size="'1em' as any" aria-hidden="true" focusable="false" />
                   </el-icon>
                   <span>{{ $t('producer.button.download_wav') }}</span>
                 </div>
@@ -71,10 +85,12 @@
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-tooltip effect="dark" :content="$t('producer.button.more')" placement="top">
-              <font-awesome-icon
+              <more-icon
                 v-if="audio?.audio_url || audio?.video_url"
-                icon="fa-solid fa-ellipsis"
                 class="icon icon-ellipsis"
+                :size="'1em' as any"
+                aria-hidden="true"
+                focusable="false"
               />
             </el-tooltip>
           </span>
@@ -105,7 +121,7 @@
                 {{ $t('producer.button.replace_section') }}
               </el-dropdown-item>
               <el-dropdown-item v-if="showViewCode" @click.stop="onViewCode">
-                <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
+                <code-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -124,14 +140,20 @@
 </template>
 
 <script lang="ts">
+import {
+  CodeIcon,
+  DownloadIcon,
+  LoadingIcon as Loading,
+  MoreIcon,
+  PauseIcon as VideoPause,
+  PlayIcon as VideoPlay
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { useFormatDuring } from '@/utils/number';
 import { IProducerAudio, IProducerTask } from '@/models';
 import { ElImage, ElIcon, ElTooltip, ElDropdown, ElDropdownMenu, ElDropdownItem, ElMessage } from 'element-plus';
-import { Loading } from '@element-plus/icons-vue';
-import { VideoPlay, VideoPause } from '@element-plus/icons-vue';
+
 import { IProducerVideoRequest, IProducerAudioRequest, Status } from '@/models';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
@@ -140,10 +162,12 @@ import { isMainOfficial } from '@/utils';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
+    CodeIcon,
+    DownloadIcon,
+    MoreIcon,
     ElImage,
     ElIcon,
     ElTooltip,
-    FontAwesomeIcon,
     VideoPlay,
     VideoPause,
     ElDropdown,

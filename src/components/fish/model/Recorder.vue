@@ -3,10 +3,10 @@
     <!-- Script to read while recording -->
     <div v-if="state !== 'recorded'" class="script">
       <div class="script-header">
-        <font-awesome-icon icon="fa-solid fa-book-open" class="icon mr-1" />
+        <docs-icon class="icon mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         <span class="label">{{ $t('fish.description.readScript') }}</span>
         <el-button link size="small" class="ml-auto" :disabled="state === 'recording'" @click="nextScript">
-          <font-awesome-icon icon="fa-solid fa-shuffle" class="mr-1" />
+          <shuffle-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.button.nextScript') }}
         </el-button>
       </div>
@@ -21,9 +21,10 @@
         circle
         size="large"
         :title="$t('fish.button.startRecord')"
+        :aria-label="$t('fish.button.startRecord')"
         @click="startRecord"
       >
-        <font-awesome-icon icon="fa-solid fa-microphone" />
+        <microphone-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </el-button>
       <el-button
         v-else-if="state === 'recording'"
@@ -31,9 +32,10 @@
         circle
         size="large"
         :title="$t('fish.button.stopRecord')"
+        :aria-label="$t('fish.button.stopRecord')"
         @click="stopRecord"
       >
-        <font-awesome-icon icon="fa-solid fa-stop" />
+        <stop-icon :size="'1em' as any" aria-hidden="true" focusable="false" />
       </el-button>
       <div class="status">
         <span :class="['timer', state === 'recording' ? 'live' : '']">{{ formattedTime }}</span>
@@ -54,11 +56,11 @@
       <audio :src="recordedUrl" controls preload="metadata" class="w-full" />
       <div class="preview-actions">
         <el-button size="small" :disabled="uploading" @click="reset">
-          <font-awesome-icon icon="fa-solid fa-rotate-left" class="mr-1" />
+          <undo-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.button.reRecord') }}
         </el-button>
         <el-button size="small" type="primary" :loading="uploading" @click="useRecording">
-          <font-awesome-icon icon="fa-solid fa-check" class="mr-1" />
+          <confirm-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
           {{ $t('fish.button.useRecording') }}
         </el-button>
       </div>
@@ -73,10 +75,17 @@
 </template>
 
 <script lang="ts">
+import {
+  ConfirmIcon,
+  DocsIcon,
+  MicrophoneIcon,
+  ShuffleIcon,
+  StopIcon,
+  UndoIcon
+} from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import axios from 'axios';
 import { ElButton, ElMessage } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { getBaseUrlPlatform } from '@/utils';
 
 const SCRIPT_COUNT = 4;
@@ -101,8 +110,13 @@ interface IData {
 export default defineComponent({
   name: 'FishRecorder',
   components: {
-    ElButton,
-    FontAwesomeIcon
+    ConfirmIcon,
+    DocsIcon,
+    MicrophoneIcon,
+    ShuffleIcon,
+    StopIcon,
+    UndoIcon,
+    ElButton
   },
   emits: ['done', 'cancel', 'update:script'],
   data(): IData {

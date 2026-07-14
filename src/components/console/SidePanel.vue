@@ -8,14 +8,16 @@
         @click="onNavigate(link)"
       >
         <span class="icon">
-          <font-awesome-icon :icon="link.icon" class="text-sm" />
+          <component :is="link.icon" class="text-sm" :size="'1em' as any" aria-hidden="true" focusable="false" />
         </span>
         <span class="text">{{ link.text }}</span>
         <span class="outer">
-          <font-awesome-icon
+          <external-link-icon
             v-if="!link.name && link.href"
-            icon="fa-solid fa-up-right-from-square"
             class="text-sm ml-2"
+            :size="'1em' as any"
+            aria-hidden="true"
+            focusable="false"
           />
         </span>
         <span class="suffix"> </span>
@@ -25,14 +27,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { ApplicationIcon, ExternalLinkIcon, HistoryIcon, StoreIcon } from '@acedatacloud/core/icons/components';
+import { defineComponent, type Component } from 'vue';
 import {
   ROUTE_CONSOLE_APPLICATION_LIST,
   ROUTE_CONSOLE_ORDER_LIST,
   ROUTE_CONSOLE_USAGE_LIST,
   ROUTE_INDEX
 } from '@/router';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { isOfficial } from '@/utils';
 
 interface ILink {
@@ -40,14 +42,14 @@ interface ILink {
   text: string;
   name?: string;
   href?: string;
-  icon: string;
+  icon: Component;
   admin?: boolean;
 }
 
 export default defineComponent({
   name: 'Navigator',
   components: {
-    FontAwesomeIcon
+    ExternalLinkIcon
   },
   computed: {
     isOfficial() {
@@ -65,19 +67,19 @@ export default defineComponent({
           key: 'application-list',
           text: this.$t('console.menu.applicationList'),
           name: ROUTE_CONSOLE_APPLICATION_LIST,
-          icon: 'fa-solid fa-cube'
+          icon: ApplicationIcon
         },
         {
           key: 'order-list',
           text: this.$t('console.menu.orderList'),
           name: ROUTE_CONSOLE_ORDER_LIST,
-          icon: 'fa-solid fa-store'
+          icon: StoreIcon
         },
         {
           key: 'usage-list',
           text: this.$t('console.menu.usageList'),
           name: ROUTE_CONSOLE_USAGE_LIST,
-          icon: 'fa-solid fa-rotate-left'
+          icon: HistoryIcon
         }
       ];
 

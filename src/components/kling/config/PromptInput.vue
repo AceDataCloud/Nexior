@@ -7,7 +7,7 @@
   >
     <template #actions>
       <el-button text size="small" class="inspiration-btn" @click="$emit('open-inspiration')">
-        <font-awesome-icon icon="fa-regular fa-lightbulb" class="mr-1" />
+        <idea-icon class="mr-1" :size="'1em' as any" aria-hidden="true" focusable="false" />
         {{ $t('kling.inspiration.openButton') }}
       </el-button>
     </template>
@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts">
+import { IdeaIcon } from '@acedatacloud/core/icons/components';
 import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import PromptTextarea from '@/components/common/PromptTextarea.vue';
 import InspirationPills from '../inspiration/InspirationPills.vue';
 
@@ -29,8 +29,8 @@ export const DEFAULT_PROMPT = '';
 export default defineComponent({
   name: 'PromptInput',
   components: {
+    IdeaIcon,
     ElButton,
-    FontAwesomeIcon,
     PromptTextarea,
     InspirationPills
   },

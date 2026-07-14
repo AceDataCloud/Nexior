@@ -1,17 +1,20 @@
 <template>
   <el-dropdown trigger="click" @command="onCommand">
     <el-button round>
-      <font-awesome-icon
+      <component
+        :is="activeOption.icon"
         v-if="activeOption?.icon"
-        :icon="activeOption.icon"
         :style="{
           color: activeOption?.color
         }"
+        :size="'1em' as any"
+        aria-hidden="true"
+        focusable="false"
       />
       <span class="ml-2">
         {{ activeOption?.label }}
       </span>
-      <el-icon class="el-icon--right"><arrow-down /></el-icon>
+      <el-icon class="el-icon--right"><arrow-down :size="'1em' as any" aria-hidden="true" focusable="false" /></el-icon>
     </el-button>
     <template #dropdown>
       <el-dropdown-menu>
@@ -21,12 +24,15 @@
           class="flex items-center justify-between"
           :command="option.value"
         >
-          <font-awesome-icon
+          <component
+            :is="option.icon"
             v-if="option.icon"
-            :icon="option.icon"
             :style="{
               color: option.color
             }"
+            :size="'1em' as any"
+            aria-hidden="true"
+            focusable="false"
           />
           <span class="ml-1 text-sm">
             {{ option.label }}
@@ -38,10 +44,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { ExpandDownIcon as ArrowDown, FastIcon, LightningIcon, RelaxIcon } from '@acedatacloud/core/icons/components';
+import { defineComponent, markRaw } from 'vue';
 import { ElDropdown, ElDropdownItem, ElButton, ElIcon } from 'element-plus';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ArrowDown } from '@element-plus/icons-vue';
 
 export const DEFAULT_MODE = 'fast';
 
@@ -52,7 +57,6 @@ export default defineComponent({
     ElDropdown,
     ArrowDown,
     ElIcon,
-    FontAwesomeIcon,
     ElDropdownItem
   },
   data() {
@@ -61,19 +65,19 @@ export default defineComponent({
         {
           label: this.$t('midjourney.button.fast'),
           value: 'fast',
-          icon: 'fa-solid fa-wind',
+          icon: markRaw(FastIcon),
           color: '#2dc49c'
         },
         {
           label: this.$t('midjourney.button.relax'),
           value: 'relax',
-          icon: 'fa-solid fa-mug-saucer',
+          icon: markRaw(RelaxIcon),
           color: '#ce65e6'
         },
         {
           label: this.$t('midjourney.button.turbo'),
           value: 'turbo',
-          icon: 'fa-solid fa-bolt',
+          icon: markRaw(LightningIcon),
           color: '#ff9900'
         }
       ]
