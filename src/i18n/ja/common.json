@@ -1300,6 +1300,86 @@
     "message": "カスタマーサポートに連絡",
     "description": "カスタマーサポートボタンのテキスト"
   },
+  "settings.contactSupport": {
+    "message": "サポートに問い合わせ",
+    "description": "Section title on the About page listing the site owner's customer-service channels"
+  },
+  "settings.contactSupportTip": {
+    "message": "以下のいずれかのチャネルからサポートチームにご連絡ください。",
+    "description": "Subtitle under the support contacts section on the About page"
+  },
+  "settings.contactInvalidUrl": {
+    "message": "{field} は有効な http(s) リンクである必要があります",
+    "description": "Validation error shown when a contact URL is not a valid http(s) link"
+  },
+  "settings.contactInvalidPhone": {
+    "message": "有効な電話番号を入力してください",
+    "description": "Validation error shown when the phone number is invalid"
+  },
+  "settings.contactInvalidEmail": {
+    "message": "有効なメールアドレスを入力してください",
+    "description": "Validation error shown when the email address is invalid"
+  },
+  "settings.contactType": {
+    "message": "種類",
+    "description": "Placeholder for the contact type picker in the editor"
+  },
+  "settings.contactType_phone": {
+    "message": "電話",
+    "description": "Display name for the phone contact type"
+  },
+  "settings.contactType_email": {
+    "message": "メール",
+    "description": "Display name for the email contact type"
+  },
+  "settings.contactType_website": {
+    "message": "ウェブサイト",
+    "description": "Display name for the website contact type"
+  },
+  "settings.contactType_wechat": {
+    "message": "WeChat",
+    "description": "Display name for the WeChat contact type"
+  },
+  "settings.contactLabelPlaceholder": {
+    "message": "ラベル（任意）例：営業",
+    "description": "Placeholder for the optional contact label input"
+  },
+  "settings.contactValuePlaceholder": {
+    "message": "アカウント / 表示テキスト",
+    "description": "Placeholder for the generic contact value input"
+  },
+  "settings.contactQr": {
+    "message": "QRコード",
+    "description": "Label for a contact's QR-code image"
+  },
+  "settings.contactQrTip": {
+    "message": "QRコードをアップロードすると、ユーザーはスキャンして追加できます。",
+    "description": "Tip for the contact QR-code uploader"
+  },
+  "settings.contactAdd": {
+    "message": "連絡先を追加",
+    "description": "Button to add another contact entry"
+  },
+  "settings.contactEditorHint": {
+    "message": "各チャネルの種類を選び、値・リンク・QRのいずれかを入力してください。複数追加できます。",
+    "description": "Hint at the top of the contacts editor dialog"
+  },
+  "settings.contactInvalidType": {
+    "message": "種類は英小文字・数字・- ・_ のみ使用できます",
+    "description": "Validation error for an invalid contact type slug"
+  },
+  "settings.contactRowNeedsValue": {
+    "message": "各連絡先には値・リンク・QRのいずれかが必要です",
+    "description": "Validation error when a contact row has no value/url/qr"
+  },
+  "settings.contactInvalidValue": {
+    "message": "連絡先の入力が無効か長すぎます",
+    "description": "Validation error when a contact value/label is invalid or too long"
+  },
+  "settings.contactTooMany": {
+    "message": "連絡先は最大 {max} 件まで追加できます",
+    "description": "Validation error when too many contacts are added"
+  },
   "message.viewOnGithub": {
     "message": "GitHubで見る",
     "description": "GitHubでプロジェクトを表示するリンクテキスト"

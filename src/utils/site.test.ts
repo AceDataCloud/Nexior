@@ -7,7 +7,9 @@ import {
   getApplicationCallerOrderDiscountRate,
   applyMarkup,
   isBrandingHidden,
-  getBrandSupportUrl
+  getBrandSupportUrl,
+  getBrandContacts,
+  hasBrandContacts
 } from './site';
 
 /**
@@ -164,5 +166,36 @@ describe('getBrandSupportUrl', () => {
     expect(getBrandSupportUrl({ metadata: { support_url: 'https://b.com' } } as never)).toBe('https://b.com');
     expect(getBrandSupportUrl({} as never)).toBe('');
     expect(getBrandSupportUrl(null)).toBe('');
+  });
+});
+
+describe('getBrandContacts', () => {
+  it('returns [] when site / branding / contacts is unset or malformed', () => {
+    expect(getBrandContacts(null)).toEqual([]);
+    expect(getBrandContacts(undefined)).toEqual([]);
+    expect(getBrandContacts({} as never)).toEqual([]);
+    expect(getBrandContacts({ branding: {} } as never)).toEqual([]);
+    // non-array (legacy dict shape / garbage) is ignored
+    expect(getBrandContacts({ branding: { contacts: { discord: 'x' } } } as never)).toEqual([]);
+  });
+
+  it('returns the configured contacts list', () => {
+    const contacts = [
+      { type: 'discord', url: 'https://discord.gg/x' },
+      { type: 'email', value: 'a@b.co' }
+    ];
+    expect(getBrandContacts({ branding: { contacts } } as never)).toEqual(contacts);
+  });
+});
+
+describe('hasBrandContacts', () => {
+  it('is false when the list is missing or empty', () => {
+    expect(hasBrandContacts(null)).toBe(false);
+    expect(hasBrandContacts({ branding: { contacts: [] } } as never)).toBe(false);
+    expect(hasBrandContacts({ branding: { contacts: {} } } as never)).toBe(false);
+  });
+
+  it('is true when at least one entry is present', () => {
+    expect(hasBrandContacts({ branding: { contacts: [{ type: 'phone', value: '12345' }] } } as never)).toBe(true);
   });
 });

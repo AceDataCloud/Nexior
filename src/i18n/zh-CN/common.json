@@ -1300,6 +1300,86 @@
     "message": "联系客服",
     "description": "联系客服按钮的文本"
   },
+  "settings.contactSupport": {
+    "message": "联系客服",
+    "description": "关于页面中展示站长客服渠道的栏目标题"
+  },
+  "settings.contactSupportTip": {
+    "message": "可通过以下任一方式联系我们的客服。",
+    "description": "关于页面客服栏目下方的副标题"
+  },
+  "settings.contactInvalidUrl": {
+    "message": "{field} 需要是有效的 http(s) 链接",
+    "description": "联系方式链接无效时的校验错误提示"
+  },
+  "settings.contactInvalidPhone": {
+    "message": "请输入有效的电话号码",
+    "description": "电话号码无效时的校验错误提示"
+  },
+  "settings.contactInvalidEmail": {
+    "message": "请输入有效的邮箱地址",
+    "description": "邮箱地址无效时的校验错误提示"
+  },
+  "settings.contactType": {
+    "message": "类型",
+    "description": "Placeholder for the contact type picker in the editor"
+  },
+  "settings.contactType_phone": {
+    "message": "电话",
+    "description": "Display name for the phone contact type"
+  },
+  "settings.contactType_email": {
+    "message": "邮箱",
+    "description": "Display name for the email contact type"
+  },
+  "settings.contactType_website": {
+    "message": "网站",
+    "description": "Display name for the website contact type"
+  },
+  "settings.contactType_wechat": {
+    "message": "微信",
+    "description": "Display name for the WeChat contact type"
+  },
+  "settings.contactLabelPlaceholder": {
+    "message": "备注（可选），如：售前",
+    "description": "Placeholder for the optional contact label input"
+  },
+  "settings.contactValuePlaceholder": {
+    "message": "账号 / 展示文本",
+    "description": "Placeholder for the generic contact value input"
+  },
+  "settings.contactQr": {
+    "message": "二维码",
+    "description": "Label for a contact's QR-code image"
+  },
+  "settings.contactQrTip": {
+    "message": "上传一张二维码，用户扫码即可添加你。",
+    "description": "Tip for the contact QR-code uploader"
+  },
+  "settings.contactAdd": {
+    "message": "添加联系方式",
+    "description": "Button to add another contact entry"
+  },
+  "settings.contactEditorHint": {
+    "message": "为每个渠道选择类型，并至少填写 值 / 链接 / 二维码 之一；可添加多条。",
+    "description": "Hint at the top of the contacts editor dialog"
+  },
+  "settings.contactInvalidType": {
+    "message": "类型只能包含小写字母、数字、- 和 _",
+    "description": "Validation error for an invalid contact type slug"
+  },
+  "settings.contactRowNeedsValue": {
+    "message": "每条联系方式至少填写 值、链接 或 二维码 之一",
+    "description": "Validation error when a contact row has no value/url/qr"
+  },
+  "settings.contactInvalidValue": {
+    "message": "联系方式内容无效或过长",
+    "description": "Validation error when a contact value/label is invalid or too long"
+  },
+  "settings.contactTooMany": {
+    "message": "最多可添加 {max} 条联系方式",
+    "description": "Validation error when too many contacts are added"
+  },
   "message.viewOnGithub": {
     "message": "在 GitHub 上查看",
     "description": "在GitHub上查看项目的链接文本"
