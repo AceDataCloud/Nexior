@@ -58,7 +58,9 @@ export default defineComponent({
   border-radius: 8px;
   background: var(--el-color-info-light-9);
   border: 1px solid var(--el-color-info-light-7);
-  color: var(--el-text-color-regular);
+  // The tone backgrounds are always light-9 (light in every theme), so the text
+  // must stay dark or it turns invisible on the light banner in dark mode.
+  color: var(--el-color-info-dark-2);
 
   .icon {
     flex-shrink: 0;
@@ -69,11 +71,13 @@ export default defineComponent({
   .text {
     flex: 1;
     word-break: break-word;
+    color: inherit;
   }
 
   &.admin {
     background: var(--el-color-primary-light-9);
     border-color: var(--el-color-primary-light-7);
+    color: var(--el-color-primary-dark-2);
 
     .icon {
       color: var(--el-color-primary);
@@ -83,6 +87,7 @@ export default defineComponent({
   &.official {
     background: var(--el-color-success-light-9);
     border-color: var(--el-color-success-light-7);
+    color: var(--el-color-success-dark-2);
 
     .icon {
       color: var(--el-color-success);
