@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 05:21:36 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 05:25:42 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.326.3
+
+Tue, 14 Jul 2026 05:25:42 GMT
+
+### Patches
+
+- fix(about): show saved contacts on reopen + per-row channel icon (dev@acedata.cloud)
 
 ## 3.326.2
 
