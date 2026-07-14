@@ -1,8 +1,17 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 05:19:58 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 05:21:36 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.326.2
+
+Tue, 14 Jul 2026 05:21:36 GMT
+
+### Patches
+
+- Adopt the shared focus, density, elevation, motion, and layer baseline. (dev@acedata.cloud)
+- Use site brand instead of hardcoded Nexior in first-time welcome toast (dev@acedata.cloud)
 
 ## 3.326.1
 
