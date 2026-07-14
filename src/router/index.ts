@@ -2,6 +2,7 @@ import { type RouteLocationGeneric, type Router } from 'vue-router';
 import store from '@/store';
 import auth from './auth';
 import console from './console';
+import home from './home';
 import grok from './grok';
 import gemini from './gemini';
 import claude from './claude';
@@ -352,6 +353,7 @@ export const routes = [
     path: '/',
     redirect: (to: RouteLocationGeneric) => ({ ...getDefaultRoute(), query: to.query })
   },
+  home,
   order,
   console,
   auth,
