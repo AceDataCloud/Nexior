@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Mon, 13 Jul 2026 17:41:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 03:10:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.33
+
+Tue, 14 Jul 2026 03:10:25 GMT
+
+### Patches
+
+- Keep setting section notice text readable in dark mode (dev@acedata.cloud)
 
 ## 3.324.32
 
