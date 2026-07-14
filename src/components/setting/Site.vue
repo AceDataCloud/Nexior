@@ -133,7 +133,10 @@
       </div>
       <div class="settings-content">
         <div v-if="hasContacts" class="contacts-summary">
-          <el-tag v-for="(c, i) in contacts" :key="i" size="small" round>{{ contactSummary(c) }}</el-tag>
+          <el-tag v-for="(c, i) in contacts" :key="i" size="small" round class="contact-chip">
+            <font-awesome-icon :icon="contactIconFor(c.type)" class="chip-icon" />
+            {{ contactSummary(c) }}
+          </el-tag>
         </div>
         <span v-else class="settings-value">{{ $t('site.message.contactsEmpty') }}</span>
         <edit-contacts :model-value="contacts" :title="$t('site.title.editContacts')" @confirm="onSaveContacts" />
@@ -145,6 +148,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ElButton, ElColorPicker, ElImage, ElTag } from 'element-plus';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
 import EditUsers from '@/components/site/EditUsers.vue';
@@ -154,7 +158,7 @@ import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
 import { getBrandContacts, hasBrandContacts } from '@/utils';
-import { contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
+import { contactIcon, contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
 
@@ -186,6 +190,7 @@ export default defineComponent({
     ElColorPicker,
     ElImage,
     ElTag,
+    FontAwesomeIcon,
     SectionNotice
   },
   data() {
@@ -226,6 +231,9 @@ export default defineComponent({
     }
   },
   methods: {
+    contactIconFor(type: string) {
+      return contactIcon(type);
+    },
     contactSummary(c: ISiteContact): string {
       // Short chip label: prefer the owner's label, then the value, then a
       // brand/type name.
@@ -321,6 +329,23 @@ export default defineComponent({
 
 .admins-chip {
   max-width: 100%;
+}
+
+.contacts-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: 100%;
+
+  .contact-chip {
+    max-width: 100%;
+
+    .chip-icon {
+      margin-right: 5px;
+      font-size: 11px;
+    }
+  }
 }
 
 .primary-color-content {
