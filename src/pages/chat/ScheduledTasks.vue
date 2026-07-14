@@ -4,7 +4,7 @@
       <div class="header">
         <h2 class="title">{{ $t('chat.scheduledTasks.title') }}</h2>
         <el-button type="primary" round :disabled="saving" @click="openCreate">
-          <font-awesome-icon icon="fa-solid fa-plus" class="icon" />
+          <add-icon :size="16" class="icon" aria-hidden="true" />
           {{ $t('chat.scheduledTasks.create') }}
         </el-button>
       </div>
@@ -29,13 +29,19 @@
                   </el-button>
                 </el-tooltip>
                 <el-tooltip :content="$t('common.button.edit')" placement="top">
-                  <el-button text class="icon-action" @click="openEdit(task)">
-                    <font-awesome-icon icon="fa-solid fa-pen" />
+                  <el-button text class="icon-action" :aria-label="$t('common.button.edit')" @click="openEdit(task)">
+                    <edit-icon :size="16" aria-hidden="true" />
                   </el-button>
                 </el-tooltip>
                 <el-tooltip :content="$t('common.button.delete')" placement="top">
-                  <el-button text type="danger" class="icon-action" @click="confirmDelete(task)">
-                    <font-awesome-icon icon="fa-solid fa-trash" />
+                  <el-button
+                    text
+                    type="danger"
+                    class="icon-action"
+                    :aria-label="$t('common.button.delete')"
+                    @click="confirmDelete(task)"
+                  >
+                    <delete-icon :size="16" aria-hidden="true" />
                   </el-button>
                 </el-tooltip>
               </div>
@@ -59,7 +65,7 @@
             </div>
             <div class="task-footer">
               <span class="run-count">
-                <font-awesome-icon icon="fa-solid fa-arrows-rotate" class="footer-icon" />
+                <refresh-icon :size="16" class="footer-icon" aria-hidden="true" />
                 {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
               </span>
               <span v-if="task.last_error" class="error-hint">{{ task.last_error }}</span>
@@ -313,6 +319,10 @@ import {
   ElMessageBox
 } from 'element-plus';
 import { Pagination } from '@acedatacloud/core/components';
+import { AddIcon } from '@acedatacloud/core/icons/add';
+import { DeleteIcon } from '@acedatacloud/core/icons/delete';
+import { EditIcon } from '@acedatacloud/core/icons/edit';
+import { RefreshIcon } from '@acedatacloud/core/icons/refresh';
 import {
   scheduledTasksOperator,
   IScheduledTask,
@@ -353,6 +363,10 @@ export default defineComponent({
   name: 'ScheduledTasks',
   components: {
     FontAwesomeIcon,
+    AddIcon,
+    DeleteIcon,
+    EditIcon,
+    RefreshIcon,
     ElButton,
     ElCard,
     ElSkeleton,
