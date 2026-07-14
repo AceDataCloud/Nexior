@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 14:30:51 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 16:45:58 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.7
+
+Tue, 14 Jul 2026 16:45:58 GMT
+
+### Patches
+
+- Migrate scheduled-task actions to the shared semantic Lucide icon entries. (dev@acedata.cloud)
 
 ## 3.327.6
 
