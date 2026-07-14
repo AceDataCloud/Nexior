@@ -1,14 +1,22 @@
 <template>
-  <div v-if="isInAppLogin" class="auth-native">
-    <div v-if="useBrowser" class="auth-native__loading">
-      <p>{{ $t('common.status.loading') }}</p>
-    </div>
-    <iframe v-else ref="iframe" class="auth-native__iframe" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
-  </div>
-  <div v-else class="auth-frame-modal" role="dialog" aria-modal="true">
+  <!-- Every surface (web iframe mode, native, desktop) renders the same
+       floating popup: a centered card over a dimmed/blurred backdrop so the
+       chat page stays visible behind it. `isInAppLogin` still drives the
+       functional differences (URL params, in-app OAuth) below. -->
+  <div class="auth-frame-modal" role="dialog" aria-modal="true">
     <div class="auth-frame-modal__panel">
       <button class="auth-frame-modal__close" type="button" aria-label="Close" @click="closeWebLogin">×</button>
-      <iframe ref="iframe" class="auth-frame-modal__iframe" :src="iframeUrl" frameborder="0" referrerpolicy="origin" />
+      <div v-if="useBrowser" class="auth-frame-modal__loading">
+        <p>{{ $t('common.status.loading') }}</p>
+      </div>
+      <iframe
+        v-else
+        ref="iframe"
+        class="auth-frame-modal__iframe"
+        :src="iframeUrl"
+        frameborder="0"
+        referrerpolicy="origin"
+      />
     </div>
   </div>
   <el-dialog v-model="showQR" width="400px" :show-close="true">
@@ -305,13 +313,15 @@ export default defineComponent({
   z-index: 9999;
   display: grid;
   place-items: center;
+  // Keep the card clear of the notch / home indicator on native devices.
+  padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom));
   background: rgba(15, 23, 42, 0.62);
   backdrop-filter: blur(8px);
 
   &__panel {
     position: relative;
     width: min(400px, calc(100vw - 24px));
-    height: min(720px, calc(100vh - 24px));
+    height: min(720px, 100%);
   }
 
   &__iframe {
@@ -321,6 +331,23 @@ export default defineComponent({
     border-radius: 18px;
     background: transparent;
     box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #666;
+    font-size: 16px;
+
+    @media (prefers-color-scheme: dark) {
+      background: #1a1a1a;
+      color: #bbb;
+    }
   }
 
   &__close {
@@ -337,34 +364,6 @@ export default defineComponent({
     font-size: 24px;
     line-height: 32px;
     cursor: pointer;
-  }
-}
-
-.auth-native {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &__iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  &__loading {
-    text-align: center;
-    color: #666;
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .auth-native {
-    background: #1a1a1a;
   }
 }
 </style>
