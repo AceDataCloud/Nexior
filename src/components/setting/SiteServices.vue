@@ -823,8 +823,12 @@ export default defineComponent({
 }
 
 :global(.service-catalog-select-popper .el-select-dropdown__item) {
+  display: flex;
+  align-items: center;
   height: auto;
   min-height: 34px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   line-height: 1.4;
 }
 
