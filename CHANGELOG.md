@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 03:39:37 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 03:43:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.35
+
+Tue, 14 Jul 2026 03:43:13 GMT
+
+### Patches
+
+- fix(site): vertically center service-override dropdown hover (dev@acedata.cloud)
 
 ## 3.324.34
 
