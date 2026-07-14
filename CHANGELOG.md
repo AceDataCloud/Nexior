@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 04:54:53 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 05:05:25 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.326.0
+
+Tue, 14 Jul 2026 05:05:25 GMT
+
+### Minor changes
+
+- feat(site): add site-config toggle to disable recharge, hiding all top-up entries and guarding pay pages (dev@acedata.cloud)
 
 ## 3.325.2
 
