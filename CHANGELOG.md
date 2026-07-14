@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 03:43:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 03:58:03 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.325.0
+
+Tue, 14 Jul 2026 03:58:03 GMT
+
+### Minor changes
+
+- feat(about): site support contacts + official-only first-party trio (dev@acedata.cloud)
 
 ## 3.324.35
 
