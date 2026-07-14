@@ -26,6 +26,7 @@ export * from './headshots';
 export * from './site';
 export * from './siteServiceOverride';
 export * from './site_domain';
+export * from './smsWebhook';
 export * from './translation';
 export * from './suno';
 export * from './producer';
