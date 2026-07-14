@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 11:21:31 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 11:45:51 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.5
+
+Tue, 14 Jul 2026 11:45:51 GMT
+
+### Patches
+
+- fix(auth): present native/desktop login as a floating popup over the app instead of a full-screen page (dev@acedata.cloud)
 
 ## 3.327.4
 
