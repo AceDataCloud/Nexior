@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 10:48:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 11:21:31 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.4
+
+Tue, 14 Jul 2026 11:21:31 GMT
+
+### Patches
+
+- fix(site): only the bare main official host (studio.acedata.cloud) shows the "View Code" affordance; drop the per-site toggle (dev@acedata.cloud)
 
 ## 3.327.3
 
