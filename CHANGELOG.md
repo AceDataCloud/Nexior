@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 06:04:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 06:10:16 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.2
+
+Tue, 14 Jul 2026 06:10:16 GMT
+
+### Patches
+
+- feat(site): make the per-generation "View Code" button configurable per-site (hidden by default on white-label subsites, shown on the official site) (dev@acedata.cloud)
 
 ## 3.327.1
 
