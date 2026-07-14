@@ -22,7 +22,12 @@
             index="/headshots"
           ></el-menu-item>
         </el-sub-menu>
-        <el-menu-item v-t="'common.nav.mobileApp'" @route="undefined" @click="onDownload"></el-menu-item>
+        <el-menu-item
+          v-if="isMainOfficialHost"
+          v-t="'common.nav.mobileApp'"
+          @route="undefined"
+          @click="onDownload"
+        ></el-menu-item>
         <el-menu-item
           v-t="'common.nav.apiPlatform'"
           @route="undefined"
@@ -69,7 +74,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import defaultAvatar from '@/assets/images/avatar.png';
-import { getBaseUrlAuth, withCurrentUserIdAndSite } from '@/utils';
+import { getBaseUrlAuth, withCurrentUserIdAndSite, isMainOfficial } from '@/utils';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DOWNLOAD, ROUTE_INDEX } from '@/router';
 import { ElCol, ElRow, ElDropdown, ElMenu, ElSubMenu, ElMenuItem, ElDropdownItem, ElButton } from 'element-plus';
 import Logo from './Logo.vue';
@@ -110,6 +115,10 @@ export default defineComponent({
     },
     authenticated() {
       return this.$store.getters?.authenticated;
+    },
+    // The mobile-app download page only exists on the official main host.
+    isMainOfficialHost() {
+      return isMainOfficial();
     },
     // Frameless desktop: make the header a drag handle; macOS needs left inset
     // so the logo clears the traffic lights.

@@ -5,8 +5,10 @@
         <el-row>
           <el-col :span="24" class="text-center">
             <p>
-              <a href="/download">{{ $t('common.nav.mobileApp') }}</a>
-              ·
+              <template v-if="isMainOfficialHost">
+                <a href="/download">{{ $t('common.nav.mobileApp') }}</a>
+                ·
+              </template>
               <a href="https://platform.acedata.cloud">{{ $t('common.entity.website') }}</a> ©
               {{ new Date().getFullYear() }}
               {{ $t('common.entity.copyright') }}
@@ -33,6 +35,7 @@ import { defineComponent } from 'vue';
 import { ElContainer, ElRow, ElCol } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { isMainOfficial } from '@/utils';
 
 export default defineComponent({
   name: 'BottomFooter',
@@ -47,7 +50,12 @@ export default defineComponent({
       faGithub
     };
   },
-  computed: {},
+  computed: {
+    // The mobile-app download page only exists on the official main host.
+    isMainOfficialHost() {
+      return isMainOfficial();
+    }
+  },
   methods: {}
 });
 </script>
