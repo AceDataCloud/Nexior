@@ -10,6 +10,7 @@ import { initTelemetry, setUser, captureError } from './plugins/telemetry';
 import '@acedatacloud/core/styles.css';
 import './assets/scss/style.scss';
 import './assets/css/tailwind.css';
+import '@acedatacloud/core/controls.css';
 import 'mac-scrollbar/dist/mac-scrollbar.css';
 import dayjs from './plugins/dayjs';
 import './plugins/font-awesome';
