@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 03:58:03 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 04:38:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.325.1
+
+Tue, 14 Jul 2026 04:38:40 GMT
+
+### Patches
+
+- feat(nexior): use site brand name in global recharge title (dev@acedata.cloud)
 
 ## 3.325.0
 
