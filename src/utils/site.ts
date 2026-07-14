@@ -68,12 +68,28 @@ export const getSiteOrigin = (site?: ISite) => {
  * matching the "unset = use our default" principle. Only an explicit `true`
  * hides the surface.
  */
-export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_by' | 'api_code'): boolean => {
+export const isBrandingHidden = (site: ISite | null | undefined, key: 'powered_by'): boolean => {
   const branding = site?.branding;
   if (!branding) return false;
   if (key === 'powered_by') return branding.hide_powered_by === true;
-  if (key === 'api_code') return branding.hide_api_code === true;
   return false;
+};
+
+/**
+ * Whether the per-generation "View Code" affordance (Nexior ApiCodeButton)
+ * should render. ``branding.hide_api_code`` is a tri-state:
+ *   - ``true``  → force-hidden (any site).
+ *   - ``false`` → force-shown  (explicit site-config opt-in, e.g. a subsite).
+ *   - unset     → default: shown on first-party official hosts, hidden on
+ *     white-label subsites/tenants so they don't expose api.acedata.cloud.
+ * ``official`` is injected so callers (and tests) stay independent of the
+ * host-reading ``isOfficial()``.
+ */
+export const isApiCodeVisible = (site: ISite | null | undefined, official: boolean): boolean => {
+  const flag = site?.branding?.hide_api_code;
+  if (flag === true) return false;
+  if (flag === false) return true;
+  return official;
 };
 
 /**

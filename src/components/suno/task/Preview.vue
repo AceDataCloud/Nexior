@@ -210,7 +210,7 @@
                 <font-awesome-icon icon="fa-solid fa-clock" class="menu-icon" />
                 {{ $t('suno.button.get_timing') }}
               </el-dropdown-item>
-              <el-dropdown-item @click.stop="onViewCode">
+              <el-dropdown-item v-if="showViewCode" @click.stop="onViewCode">
                 <font-awesome-icon icon="fa-solid fa-code" class="menu-icon" />
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
@@ -260,7 +260,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { sunoOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-
+import { isApiCodeVisible, isOfficial } from '@/utils';
 export default defineComponent({
   name: 'TaskPreview',
   components: {
@@ -300,6 +300,9 @@ export default defineComponent({
   computed: {
     loading() {
       return this.$store.state.suno?.status?.getApplications === Status.Request;
+    },
+    showViewCode(): boolean {
+      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
     },
     credential() {
       return this.$store.state.suno.credential;

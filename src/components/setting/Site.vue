@@ -142,12 +142,24 @@
         <edit-contacts :model-value="contacts" :title="$t('site.title.editContacts')" @confirm="onSaveContacts" />
       </div>
     </section>
+
+    <section class="settings-item">
+      <div class="settings-label">
+        <p class="settings-title">{{ $t('site.field.apiCode') }}</p>
+        <p class="settings-tip">
+          {{ $t('site.message.apiCodeTip') }}
+        </p>
+      </div>
+      <div class="settings-content">
+        <el-switch :model-value="apiCodeVisible" @change="onToggleApiCode" />
+      </div>
+    </section>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElColorPicker, ElImage, ElTag } from 'element-plus';
+import { ElButton, ElColorPicker, ElImage, ElSwitch, ElTag } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import EditText from '@/components/site/EditText.vue';
 import EditImage from '@/components/site/EditImage.vue';
@@ -157,7 +169,7 @@ import UserChip from '@/components/site/UserChip.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
-import { getBrandContacts, hasBrandContacts } from '@/utils';
+import { getBrandContacts, hasBrandContacts, isApiCodeVisible, isOfficial } from '@/utils';
 import { contactIcon, contactBrand, contactTypeI18nKey } from '@/utils/contactTypes';
 import { ISiteContact } from '@/models';
 import { DEFAULT_PRIMARY_COLOR, applyAccentColor } from '@/utils/theme';
@@ -189,6 +201,7 @@ export default defineComponent({
     ElButton,
     ElColorPicker,
     ElImage,
+    ElSwitch,
     ElTag,
     FontAwesomeIcon,
     SectionNotice
@@ -228,6 +241,9 @@ export default defineComponent({
     },
     hasContacts(): boolean {
       return hasBrandContacts(this.site);
+    },
+    apiCodeVisible(): boolean {
+      return isApiCodeVisible(this.site, isOfficial());
     }
   },
   methods: {
@@ -253,6 +269,14 @@ export default defineComponent({
         console.debug('getSite for id', this.site?.id);
         this.$store.dispatch('getSite');
       });
+    },
+    onToggleApiCode(value: string | number | boolean) {
+      // Persist the tri-state explicitly (inverted): ON -> show ->
+      // hide_api_code=false; OFF -> hide -> hide_api_code=true. Merge so
+      // other white-label branding keys are preserved.
+      const branding = { ...(this.site?.branding || {}) };
+      branding.hide_api_code = value !== true;
+      this.onSave({ branding });
     },
     onSaveContacts(contacts: ISiteContact[]) {
       // Merge into the existing branding so other white-label keys
