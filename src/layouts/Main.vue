@@ -207,10 +207,11 @@ export default defineComponent({
       // free-credit grant. No localStorage gate needed.
       const globalApp = this.$store.state.applications?.[0];
       const credits = Math.floor(globalApp?.remaining_amount ?? 0);
+      const brand = this.$store.state.site?.title || 'AceData';
       const message =
         credits > 0
-          ? this.$t('application.message.welcomeWithCredits', { credits })
-          : this.$t('application.message.welcomeNoCredits');
+          ? this.$t('application.message.welcomeWithCredits', { credits, brand })
+          : this.$t('application.message.welcomeNoCredits', { brand });
       ElMessage({ message: message as string, type: 'success', duration: 6000, showClose: true });
     }
   }
