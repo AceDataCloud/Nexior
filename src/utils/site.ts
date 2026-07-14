@@ -109,6 +109,16 @@ export const MARKUP_RATIO_MIN = 0;
 export const MARKUP_RATIO_MAX = 5;
 
 /**
+ * White-label switch to hide every top-up / recharge entry. Reads
+ * `site.metadata.disable_recharge` (PlatformBackend passes unknown
+ * `metadata` keys through verbatim). Default — unset or not exactly
+ * `true` — is `false`, i.e. recharge stays enabled.
+ */
+export const isRechargeDisabled = (site?: ISite | null): boolean => {
+  return site?.metadata?.disable_recharge === true;
+};
+
+/**
  * Read the site-wide markup ratio from `site.metadata.pricing.markup_ratio`
  * defensively. Mirrors the backend `extract_markup_ratio`: any missing /
  * malformed / out-of-range value collapses to 0, values above the ceiling are

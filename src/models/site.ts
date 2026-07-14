@@ -100,6 +100,11 @@ export interface ISiteMetadata {
   support_url?: string;
   icp?: string;
   proxy_cname?: string;
+  // When true, hide every top-up / recharge entry on the site so end
+  // users can't buy more credit. Default (unset / not exactly `true`)
+  // keeps recharge enabled. Read via `isRechargeDisabled` in
+  // `src/utils/site.ts`.
+  disable_recharge?: boolean;
   [key: string]: unknown;
 }
 

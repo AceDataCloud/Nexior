@@ -93,10 +93,10 @@ import { IService, IApplication, IApplicationType, IOrderDetailResponse, IPackag
 import { ElRow, ElCol, ElCard, ElSkeleton, ElMessage, ElButton, ElTag, ElEmpty } from 'element-plus';
 import { applicationOperator, orderOperator, serviceOperator } from '@/operators';
 import { getPriceString, applyMarkup, getApplicationMarkupRatio } from '@/utils';
-import { isIOS } from '@/utils';
+import { isIOS, isRechargeDisabled } from '@/utils';
 import { track } from '@/plugins/telemetry';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL } from '@/router';
+import { ROUTE_CONSOLE_APPLICATION_EXTRA, ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
 
 interface ISubscription {
   name: string;
@@ -220,6 +220,12 @@ export default defineComponent({
     }
   },
   async mounted() {
+    // Site admin disabled recharge: block the direct/bookmarked subscribe
+    // page too, not just the entry buttons.
+    if (isRechargeDisabled(this.$store.getters.site)) {
+      this.$router.replace({ name: ROUTE_CONSOLE_APPLICATION_LIST });
+      return;
+    }
     await this.onInitialize();
   },
   methods: {

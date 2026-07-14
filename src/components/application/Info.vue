@@ -64,7 +64,7 @@ import { ElButton, ElIcon } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Check } from '@element-plus/icons-vue';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
-import { isIOS } from '@/utils';
+import { isIOS, isRechargeDisabled } from '@/utils';
 
 export default defineComponent({
   name: 'ApplicationInfo',
@@ -96,6 +96,9 @@ export default defineComponent({
     // products). Keyed on scope (always present) rather than packages, which
     // isn't serialized in every view.
     showPayment(): boolean {
+      if (isRechargeDisabled(this.$store.getters.site)) {
+        return false;
+      }
       if (!isIOS()) {
         return true;
       }
