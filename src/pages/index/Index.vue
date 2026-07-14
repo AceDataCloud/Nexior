@@ -5,24 +5,20 @@
         <el-row>
           <el-col :md="12" :xs="24" class="left">
             <div class="info">
+              <span class="badge-new">{{ $t('index.badge.hero') }}</span>
               <h1 class="title">
                 {{ site?.title }}
               </h1>
               <h3 class="subtitle">
                 {{ $t('index.subtitle.banner') }}
               </h3>
+              <p class="tagline">{{ $t('index.subtitle.hero') }}</p>
               <div class="operations">
-                <el-button
-                  type="primary"
-                  round
-                  class="btn-apply"
-                  @click="
-                    $router.push({
-                      path: '/chat'
-                    })
-                  "
-                >
+                <el-button type="primary" round class="btn-apply" @click="onStart">
                   {{ $t('common.button.startForFree') }}
+                </el-button>
+                <el-button round class="btn-explore" @click="scrollToServices">
+                  {{ $t('index.button.explore') }}
                 </el-button>
               </div>
             </div>
@@ -97,7 +93,7 @@
               class="btn-try"
               @click="
                 $router.push({
-                  path: '/chat'
+                  path: '/chatgpt'
                 })
               "
             >
@@ -331,6 +327,24 @@
         </el-row>
       </div>
     </div>
+    <div id="models" class="models">
+      <div class="container">
+        <h2 class="section-title">{{ $t('index.title.models') }}</h2>
+        <h5 class="section-subtitle">{{ $t('index.subtitle.models') }}</h5>
+        <div class="model-wall">
+          <span v-for="(model, modelIndex) in models" :key="modelIndex" class="model-chip">{{ model }}</span>
+        </div>
+      </div>
+    </div>
+    <div id="cta" class="cta">
+      <div class="container">
+        <h2 class="cta__title">{{ $t('index.title.cta') }}</h2>
+        <p class="cta__subtitle">{{ $t('index.subtitle.cta') }}</p>
+        <el-button type="primary" round class="cta__btn" @click="onStart">
+          {{ $t('common.button.startForFree') }}
+        </el-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -339,9 +353,77 @@ import { defineComponent } from 'vue';
 import { ElButton, ElImage, ElRow, ElCol, ElCard } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+interface ICategory {
+  key: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  path: string;
+}
+
 interface IData {
   comments: any[];
+  models: string[];
 }
+
+// Each capability card represents a whole category (chat / image / music /
+// video). `features` is an ordered list of [feature flag, route path]: the
+// first flag enabled on the site becomes the card's target, and a category
+// with nothing enabled is hidden. This keeps the grid aligned with whatever
+// services the (white-label) site actually exposes.
+const CATEGORY_FEATURES: Array<{
+  key: string;
+  titleKey: string;
+  subtitleKey: string;
+  icon: string;
+  features: Array<[string, string]>;
+}> = [
+  {
+    key: 'chat',
+    titleKey: 'index.title.chat',
+    subtitleKey: 'index.subtitle.chat',
+    icon: 'fa-regular fa-comment',
+    features: [['chatgpt', '/chatgpt']]
+  },
+  {
+    key: 'image',
+    titleKey: 'index.title.midjourney',
+    subtitleKey: 'index.subtitle.midjourney',
+    icon: 'fa-solid fa-palette',
+    features: [
+      ['midjourney', '/midjourney'],
+      ['nanobanana', '/nanobanana'],
+      ['seedream', '/seedream'],
+      ['flux', '/flux'],
+      ['openaiimage', '/openai-image'],
+      ['qrart', '/qrart']
+    ]
+  },
+  {
+    key: 'music',
+    titleKey: 'index.title.suno',
+    subtitleKey: 'index.subtitle.suno',
+    icon: 'fa-solid fa-music',
+    features: [
+      ['suno', '/suno'],
+      ['producer', '/producer']
+    ]
+  },
+  {
+    key: 'video',
+    titleKey: 'index.title.luma',
+    subtitleKey: 'index.subtitle.luma',
+    icon: 'fa-solid fa-film',
+    features: [
+      ['luma', '/luma'],
+      ['veo', '/veo'],
+      ['sora', '/sora'],
+      ['kling', '/kling'],
+      ['hailuo', '/hailuo'],
+      ['seedance', '/seedance']
+    ]
+  }
+];
 
 export default defineComponent({
   name: 'Index',
@@ -374,6 +456,26 @@ export default defineComponent({
           job: this.$t('index.customers.job3'),
           content: this.$t('index.customers.comment3')
         }
+      ],
+      models: [
+        'ChatGPT',
+        'Claude',
+        'Gemini',
+        'Grok',
+        'DeepSeek',
+        'Kimi',
+        'Midjourney',
+        'Flux',
+        'Nano Banana',
+        'Seedream',
+        'GPT Image',
+        'Suno',
+        'Veo',
+        'Sora',
+        'Kling',
+        'Luma',
+        'Hailuo',
+        'Seedance'
       ]
     };
   },
@@ -381,75 +483,39 @@ export default defineComponent({
     site() {
       return this.$store.state.site;
     },
-    capabilities() {
-      return [
-        ...(this.site?.features?.chatgpt?.enabled
-          ? [
-              {
-                title: this.$t('index.title.chat'),
-                subtitle: this.$t('index.subtitle.chat'),
-                icon: 'fa-regular fa-comment',
-                path: '/chat'
-              }
-            ]
-          : []),
-        ...(this.site?.features?.midjourney?.enabled
-          ? [
-              {
-                title: this.$t('index.title.midjourney'),
-                subtitle: this.$t('index.subtitle.midjourney'),
-                icon: 'fa-solid fa-palette',
-                path: '/midjourney'
-              }
-            ]
-          : []),
-        ...(this.site?.features?.qrart?.enabled
-          ? [
-              {
-                title: this.$t('index.title.qrart'),
-                subtitle: this.$t('index.subtitle.qrart'),
-                icon: 'fa-solid fa-qrcode',
-                path: '/qrart'
-              }
-            ]
-          : []),
-        ...(this.site?.features?.suno?.enabled
-          ? [
-              {
-                title: this.$t('index.title.suno'),
-                subtitle: this.$t('index.subtitle.suno'),
-                icon: 'fa-solid fa-music',
-                path: '/suno'
-              }
-            ]
-          : []),
-        ...(this.site?.features?.luma?.enabled
-          ? [
-              {
-                title: this.$t('index.title.luma'),
-                subtitle: this.$t('index.subtitle.luma'),
-                icon: 'fa-solid fa-film',
-                path: '/luma'
-              }
-            ]
-          : []),
-        ...(this.site?.features?.headshots?.enabled
-          ? [
-              {
-                title: this.$t('index.title.headshots'),
-                subtitle: this.$t('index.subtitle.headshots'),
-                icon: 'fa-solid fa-id-card',
-                path: '/headshots'
-              }
-            ]
-          : [])
-      ];
+    capabilities(): ICategory[] {
+      const features = (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
+      const cards: ICategory[] = [];
+      for (const category of CATEGORY_FEATURES) {
+        const match = category.features.find(([flag]) => features[flag]?.enabled);
+        if (!match) {
+          continue;
+        }
+        cards.push({
+          key: category.key,
+          title: this.$t(category.titleKey),
+          subtitle: this.$t(category.subtitleKey),
+          icon: category.icon,
+          path: match[1]
+        });
+      }
+      return cards;
+    },
+    // Landing CTAs send guests to the first enabled service so the button
+    // never dead-ends on a disabled feature.
+    primaryPath(): string {
+      return this.capabilities[0]?.path ?? '/chatgpt';
     }
   },
-  mounted() {},
   methods: {
-    onClickCapability(capability: any) {
+    onClickCapability(capability: ICategory) {
       this.$router.push(capability.path);
+    },
+    onStart() {
+      this.$router.push({ path: this.primaryPath });
+    },
+    scrollToServices() {
+      document.getElementById('introduction')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 });
@@ -748,6 +814,193 @@ export default defineComponent({
         font-size: 14px;
         color: var(--el-text-color-secondary);
       }
+    }
+  }
+}
+
+/* Hero additions (badge / tagline / secondary CTA) */
+#banner .left .info {
+  .badge-new {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(6px);
+  }
+
+  .tagline {
+    font-size: 16px;
+    line-height: 26px;
+    margin: -28px 0 40px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .operations {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .btn-explore {
+      padding: 20px 40px;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 600;
+      border-radius: 9999px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.45);
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    .badge-new {
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tagline {
+      text-align: center;
+    }
+
+    .operations {
+      justify-content: center;
+    }
+  }
+}
+
+/* Model wall */
+.models {
+  padding: 90px 0;
+  background: var(--el-bg-color);
+  text-align: center;
+
+  @media (max-width: 767px) {
+    padding: 64px 0;
+  }
+
+  .section-title {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--el-text-color-primary);
+  }
+
+  .section-subtitle {
+    font-size: 17px;
+    line-height: 28px;
+    margin: 12px 0 40px;
+    color: var(--el-text-color-secondary);
+  }
+
+  .model-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .model-chip {
+    padding: 10px 20px;
+    border-radius: 9999px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--el-text-color-regular);
+    background: var(--app-bg-surface);
+    border: 1px solid var(--app-border-subtle);
+    box-shadow: var(--app-shadow-xs);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--el-color-primary);
+      box-shadow: var(--app-glow-primary);
+    }
+  }
+}
+
+/* Final call-to-action */
+.cta {
+  padding: 100px 0;
+  background: var(--app-gradient-hero);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta__title {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  .cta__subtitle {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 16px 0 36px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .cta__btn {
+    padding: 22px 56px;
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 600;
+    border-radius: 9999px;
+    box-shadow: var(--app-glow-primary-lg);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(var(--app-brand-rgb), 0.4);
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 72px 24px;
+
+    .cta__title {
+      font-size: 30px;
     }
   }
 }
