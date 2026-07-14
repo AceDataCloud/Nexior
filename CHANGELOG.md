@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 06:10:16 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 10:48:05 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.3
+
+Tue, 14 Jul 2026 10:48:05 GMT
+
+### Patches
+
+- Format the application extras route imports so the repository lint gate passes. (dev@acedata.cloud)
 
 ## 3.327.2
 
