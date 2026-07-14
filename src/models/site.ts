@@ -140,6 +140,9 @@ export interface ISiteBranding {
   company?: string;
   copyright?: string;
   hide_powered_by?: boolean;
+  // Tri-state for the "View Code" affordance: `true` force-hides, `false`
+  // force-shows (opt-in), unset defaults to shown on official hosts and
+  // hidden on white-label subsites. See `isApiCodeVisible` in `utils/site`.
   hide_api_code?: boolean;
   links?: ISiteBrandingLinks;
   contacts?: ISiteContact[];

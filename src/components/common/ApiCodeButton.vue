@@ -27,7 +27,7 @@ import { defineComponent, type PropType } from 'vue';
 import { ElButton, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
-import { isBrandingHidden } from '@/utils';
+import { isApiCodeVisible, isOfficial } from '@/utils';
 
 type ButtonType = '' | 'default' | 'text' | 'primary' | 'success' | 'warning' | 'info' | 'danger';
 type ButtonSize = '' | 'small' | 'default' | 'large';
@@ -113,10 +113,11 @@ export default defineComponent({
   },
   computed: {
     showViewCode(): boolean {
-      // Default: show (behavior unchanged). A reseller opts out per-site by
-      // setting Site.branding.hide_api_code === true (white-label item 14),
-      // so end users of a white-label site don't see our API host/code.
-      return !isBrandingHidden(this.$store?.state?.site, 'api_code');
+      // Default: shown on first-party official sites, hidden on white-label
+      // subsites/tenants (they shouldn't expose our API host/code). A site
+      // owner overrides either way from Site settings via
+      // `Site.branding.hide_api_code` (tri-state, see `isApiCodeVisible`).
+      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
     },
     cleanedBody(): Record<string, unknown> {
       const src = (this.body || {}) as Record<string, unknown>;

@@ -104,7 +104,7 @@
               <el-dropdown-item v-if="audio?.id" @click.stop="onReplaceSection(audio)">
                 {{ $t('producer.button.replace_section') }}
               </el-dropdown-item>
-              <el-dropdown-item @click.stop="onViewCode">
+              <el-dropdown-item v-if="showViewCode" @click.stop="onViewCode">
                 <font-awesome-icon icon="fa-solid fa-code" class="mr-1" />
                 {{ $t('common.button.viewCode') }}
               </el-dropdown-item>
@@ -135,6 +135,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { saveAs } from 'file-saver';
 import { producerOperator } from '@/operators';
 import ApiCodeDialog from '@/components/common/ApiCodeDialog.vue';
+import { isApiCodeVisible, isOfficial } from '@/utils';
 
 export default defineComponent({
   name: 'TaskPreview',
@@ -169,6 +170,9 @@ export default defineComponent({
   computed: {
     loading() {
       return this.$store.state.producer?.status?.getApplications === Status.Request;
+    },
+    showViewCode(): boolean {
+      return isApiCodeVisible(this.$store?.state?.site, isOfficial());
     },
     credential() {
       return this.$store.state.producer.credential;
