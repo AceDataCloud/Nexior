@@ -130,7 +130,11 @@ import {
   ElRadioButton,
   ElTag
 } from 'element-plus';
-import { ROUTE_CONSOLE_APPLICATION_SUBSCRIBE, ROUTE_CONSOLE_ORDER_DETAIL, ROUTE_CONSOLE_APPLICATION_LIST } from '@/router';
+import {
+  ROUTE_CONSOLE_APPLICATION_SUBSCRIBE,
+  ROUTE_CONSOLE_ORDER_DETAIL,
+  ROUTE_CONSOLE_APPLICATION_LIST
+} from '@/router';
 import Price from '@/components/common/Price.vue';
 import { applicationOperator, orderOperator } from '@/operators';
 import { getPriceString, applyMarkup, getApplicationMarkupRatio, getApplicationCallerOrderDiscountRate } from '@/utils';
