@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 03:10:25 GMT and should not be manually modified. -->
+<!-- This log was last generated on Tue, 14 Jul 2026 03:39:37 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.324.34
+
+Tue, 14 Jul 2026 03:39:37 GMT
+
+### Patches
+
+- Replace the dormant purple Tailwind theme with runtime semantic design tokens. (dev@acedata.cloud)
 
 ## 3.324.33
 
