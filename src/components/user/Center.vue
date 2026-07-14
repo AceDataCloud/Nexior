@@ -12,7 +12,7 @@
             <font-awesome-icon icon="fa-solid fa-user" class="mr-2" />
             {{ $t('common.button.login') }}
           </el-dropdown-item>
-          <el-dropdown-item v-if="!isNative" class="py-2" @click="onDownload">
+          <el-dropdown-item v-if="!isNative && isMainOfficialHost" class="py-2" @click="onDownload">
             <font-awesome-icon icon="fa-solid fa-mobile-screen-button" class="mr-2" />
             {{ $t('common.nav.mobileApp') }}
           </el-dropdown-item>
@@ -53,6 +53,7 @@ import DeleteAccountDialog from '@/components/user/DeleteAccountDialog.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { ROUTE_CONSOLE_ROOT, ROUTE_DISTRIBUTION_INDEX, ROUTE_DOWNLOAD } from '@/router';
 import { isIOS as isIOSSurface, isNative as isNativeSurface } from '@/utils/surface';
+import { isMainOfficial } from '@/utils';
 import { ElDivider } from 'element-plus';
 import { ElDropdownMenu, ElDropdownItem, ElDropdown } from 'element-plus';
 
@@ -85,6 +86,10 @@ export default defineComponent({
     },
     isNative() {
       return isNativeSurface();
+    },
+    // The mobile-app download page only exists on the official main host.
+    isMainOfficialHost() {
+      return isMainOfficial();
     },
     isIOS() {
       return isIOSSurface();
