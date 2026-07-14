@@ -5,7 +5,7 @@
     </div>
 
     <div class="byok-actions">
-      <el-button type="primary" round size="default" :disabled="!token" @click="onAdd">
+      <el-button type="primary" round size="small" :disabled="!token" @click="onAdd">
         <font-awesome-icon icon="fa-solid fa-plus" class="mr-1 text-[12px]" />
         {{ $t('byok.button.add') }}
       </el-button>

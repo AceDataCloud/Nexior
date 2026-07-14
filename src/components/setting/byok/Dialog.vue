@@ -10,6 +10,7 @@
       <el-form-item :label="$t('byok.field.provider')" prop="provider">
         <el-select
           v-model="form.provider"
+          size="small"
           :placeholder="$t('byok.field.provider')"
           :disabled="!!credential"
           popper-class="byok-provider-select-popper"
@@ -27,6 +28,7 @@
       <el-form-item :label="$t('byok.field.apiKey')" prop="api_key">
         <el-input
           v-model="form.api_key"
+          size="small"
           type="password"
           autocomplete="new-password"
           show-password
@@ -39,13 +41,14 @@
       </el-form-item>
 
       <el-form-item :label="$t('byok.field.baseUrl')" prop="base_url">
-        <el-input v-model="form.base_url" :placeholder="placeholderBaseUrl" />
+        <el-input v-model="form.base_url" size="small" :placeholder="placeholderBaseUrl" />
         <p class="hint">{{ $t('byok.message.baseUrlHelp') }}</p>
       </el-form-item>
 
       <el-form-item :label="$t('byok.field.label')">
         <el-input
           v-model="form.label"
+          size="small"
           :placeholder="$t('byok.field.labelPlaceholder')"
           maxlength="64"
           show-word-limit
@@ -77,11 +80,11 @@
     </div>
 
     <template #footer>
-      <el-button @click="onClose(false)">{{ $t('byok.button.cancel') }}</el-button>
-      <el-button :loading="testing" :disabled="saving || !canTest" @click="onTest">
+      <el-button size="small" @click="onClose(false)">{{ $t('byok.button.cancel') }}</el-button>
+      <el-button size="small" :loading="testing" :disabled="saving || !canTest" @click="onTest">
         {{ $t('byok.button.test') }}
       </el-button>
-      <el-button type="primary" :loading="saving" @click="onSubmit">
+      <el-button size="small" type="primary" :loading="saving" @click="onSubmit">
         {{ $t('byok.button.save') }}
       </el-button>
     </template>

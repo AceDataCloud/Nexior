@@ -6,7 +6,7 @@
         <p class="settings-title">{{ $t('subsite.title.index') }}</p>
         <p class="settings-tip">{{ $t('subsite.message.indexTip') }}</p>
       </div>
-      <el-button type="primary" round :icon="Plus" :disabled="!canCreate" @click="onOpenCreate">
+      <el-button type="primary" size="small" round :icon="Plus" :disabled="!canCreate" @click="onOpenCreate">
         {{ $t('subsite.button.create') }}
       </el-button>
     </div>
@@ -90,7 +90,14 @@
     >
       <p class="open-hint">{{ $t('subsite.message.openSiteHint') }}</p>
       <div class="open-actions">
-        <el-button v-for="url in opening.urls" :key="url.href" round type="primary" @click="onConfirmOpen(url.href)">
+        <el-button
+          v-for="url in opening.urls"
+          :key="url.href"
+          size="small"
+          round
+          type="primary"
+          @click="onConfirmOpen(url.href)"
+        >
           {{ $t('subsite.button.open') }} {{ url.hostname }}
         </el-button>
       </div>
@@ -101,6 +108,7 @@
         <el-form-item :label="$t('subsite.field.slug')" required>
           <el-input
             v-model="creating.form.slug"
+            size="small"
             :placeholder="$t('subsite.placeholder.slug')"
             maxlength="32"
             show-word-limit
@@ -111,14 +119,20 @@
           <span class="hint">{{ $t('subsite.message.slugTip') }}</span>
         </el-form-item>
         <el-form-item :label="$t('subsite.field.title')">
-          <el-input v-model="creating.form.title" :placeholder="$t('subsite.placeholder.title')" maxlength="80" />
+          <el-input
+            v-model="creating.form.title"
+            size="small"
+            :placeholder="$t('subsite.placeholder.title')"
+            maxlength="80"
+          />
         </el-form-item>
       </el-form>
       <template #footer>
         <span>
-          <el-button round @click="onCancelCreate">{{ $t('common.button.cancel') }}</el-button>
+          <el-button round size="small" @click="onCancelCreate">{{ $t('common.button.cancel') }}</el-button>
           <el-button
             round
+            size="small"
             type="primary"
             :loading="creating.submitting"
             :disabled="!creating.form.slug.trim()"

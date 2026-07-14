@@ -92,6 +92,7 @@
       <div class="settings-content primary-color-content">
         <el-color-picker
           :model-value="currentPrimaryColor"
+          size="small"
           color-format="hex"
           :predefine="primaryColorPresets"
           @change="onPrimaryColorPicked"

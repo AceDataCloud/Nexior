@@ -43,7 +43,7 @@
             One-click subsite create: ask the parent dialog (Setting.vue)
             to switch to the Subsites tab with the create form open.
           -->
-          <el-button type="primary" @click="onBuildOneClick">
+          <el-button type="primary" size="small" @click="onBuildOneClick">
             <font-awesome-icon :icon="faRocket" class="mr-1" />
             {{ $t('common.settings.buildNow') }}
           </el-button>

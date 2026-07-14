@@ -9,6 +9,7 @@
       <div class="markup-row">
         <el-input-number
           :model-value="siteMarkupDraftPercent"
+          size="small"
           :min="0"
           :max="MARKUP_RATIO_MAX * 100"
           :step="1"
@@ -43,7 +44,7 @@
         <p class="settings-title">{{ $t('site.services.title') }}</p>
         <p class="settings-tip">{{ $t('site.services.tip') }}</p>
       </div>
-      <el-button type="primary" round :icon="Plus" :disabled="!site?.id" @click="onOpenCreate">
+      <el-button type="primary" size="small" round :icon="Plus" :disabled="!site?.id" @click="onOpenCreate">
         {{ $t('site.services.addButton') }}
       </el-button>
     </div>
@@ -108,10 +109,11 @@
     >
       <el-form :model="form" label-position="top" class="service-override-form" @submit.prevent>
         <el-form-item :label="$t('site.services.field.service')" required>
-          <el-input v-if="editingRow" :model-value="catalogTitle(editingRow.service)" readonly />
+          <el-input v-if="editingRow" :model-value="catalogTitle(editingRow.service)" size="small" readonly />
           <el-select
             v-else
             v-model="form.service"
+            size="small"
             filterable
             :loading="catalogLoading"
             popper-class="service-catalog-select-popper"
@@ -146,6 +148,7 @@
           <div class="markup-row">
             <el-input-number
               v-model="markupPercent"
+              size="small"
               :min="0"
               :max="markupPercentMax"
               :step="1"
@@ -160,7 +163,7 @@
         </el-form-item>
 
         <el-form-item :label="$t('site.services.field.displayTitle')">
-          <el-input v-model="form.displayTitle" maxlength="120" show-word-limit clearable>
+          <el-input v-model="form.displayTitle" size="small" maxlength="120" show-word-limit clearable>
             <template #suffix>
               <auto-translate-toggle
                 model="site_service_override"
@@ -177,7 +180,7 @@
         </el-form-item>
 
         <el-form-item :label="$t('site.services.field.displaySummary')">
-          <el-input v-model="form.displaySummary" type="textarea" :rows="3" clearable />
+          <el-input v-model="form.displaySummary" size="small" type="textarea" :rows="3" clearable />
           <div class="field-desc">{{ $t('site.services.placeholder.displaySummary') }}</div>
           <!-- textarea has no #suffix slot; render the toggle inline beneath -->
           <div class="auto-translate-inline">
@@ -205,6 +208,7 @@
         <el-form-item :label="$t('site.services.field.sortOrder')">
           <el-input-number
             v-model="form.sortOrder"
+            size="small"
             :min="-1000"
             :max="1000"
             :step="1"
@@ -215,9 +219,10 @@
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button round @click="dialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button round size="small" @click="dialogVisible = false">{{ $t('common.button.cancel') }}</el-button>
         <el-button
           type="primary"
+          size="small"
           round
           :loading="submitting"
           :disabled="!editingRow && !form.service"

@@ -90,11 +90,23 @@
       <h4 class="bind-title">{{ $t('subsite.title.bindDomain') }}</h4>
       <el-form :model="bind" label-width="auto" class="form" @submit.prevent>
         <el-form-item :label="$t('subsite.field.hostname')" required>
-          <el-input v-model="bind.hostname" :placeholder="$t('subsite.placeholder.hostname')" maxlength="253" />
+          <el-input
+            v-model="bind.hostname"
+            size="small"
+            :placeholder="$t('subsite.placeholder.hostname')"
+            maxlength="253"
+          />
           <span class="form-tip">{{ $t('subsite.message.hostnameTip') }}</span>
         </el-form-item>
         <el-form-item>
-          <el-button round type="primary" :loading="binding" :disabled="!bind.hostname.trim()" @click="onBind">
+          <el-button
+            size="small"
+            round
+            type="primary"
+            :loading="binding"
+            :disabled="!bind.hostname.trim()"
+            @click="onBind"
+          >
             {{ $t('subsite.button.bindDomain') }}
           </el-button>
         </el-form-item>

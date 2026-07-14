@@ -46,6 +46,7 @@
       <div class="settings-content">
         <el-select
           :model-value="defaultProvider"
+          size="small"
           class="auth-default-provider-select"
           :placeholder="$t('site.placeholder.authDefaultProvider')"
           @change="onDefaultProviderChange"
@@ -72,7 +73,12 @@
         <p class="settings-title">{{ $t('common.settings.loginMode') }}</p>
       </div>
       <div class="settings-content">
-        <el-select :model-value="loginMode" class="auth-default-provider-select" @change="onLoginModeChange">
+        <el-select
+          :model-value="loginMode"
+          size="small"
+          class="auth-default-provider-select"
+          @change="onLoginModeChange"
+        >
           <el-option :value="'redirect'" :label="$t('common.loginMode.redirect')" />
           <el-option :value="'iframe'" :label="$t('common.loginMode.iframe')" />
         </el-select>
