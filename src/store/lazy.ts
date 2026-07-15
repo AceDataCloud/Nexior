@@ -36,7 +36,6 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   pixverse: () => import('./pixverse'),
   flux: () => import('./flux'),
   hailuo: () => import('./hailuo'),
-  headshots: () => import('./headshots'),
   suno: () => import('./suno'),
   producer: () => import('./producer'),
   nanobanana: () => import('./nanobanana'),

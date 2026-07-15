@@ -49,7 +49,7 @@
 | Modality | Models |
 |---|---|
 | 💬 **AI Chat** | ChatGPT · Claude · Gemini · Grok · DeepSeek · Kimi |
-| 🖼️ **AI Image** | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art · Headshots |
+| 🖼️ **AI Image** | Midjourney · Flux · OpenAI Image · Seedream · NanoBanana · QR Art |
 | 🎵 **AI Music & Voice** | Suno · Producer · Fish (TTS) |
 | 🎬 **AI Video** | Veo · Kling · Luma · Hailuo · Pixverse · Seedance · Pika · Wan · Grok Video |
 

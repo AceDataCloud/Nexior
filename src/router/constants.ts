@@ -58,9 +58,6 @@ export const ROUTE_FLUX_HISTORY = 'flux-history';
 export const ROUTE_HAILUO_INDEX = 'hailuo-index';
 export const ROUTE_HAILUO_HISTORY = 'hailuo-history';
 
-export const ROUTE_HEADSHOTS_INDEX = 'headshots-index';
-export const ROUTE_HEADSHOTS_HISTORY = 'headshots-history';
-
 export const ROUTE_SUNO_INDEX = 'suno-index';
 export const ROUTE_SUNO_HISTORY = 'suno-history';
 

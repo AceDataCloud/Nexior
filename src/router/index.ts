@@ -24,7 +24,6 @@ import digitalhuman from './digitalhuman';
 import pixverse from './pixverse';
 import flux from './flux';
 import hailuo from './hailuo';
-import headshots from './headshots';
 import suno from './suno';
 import producer from './producer';
 import nanobanana from './nanobanana';
@@ -148,12 +147,6 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     title: 'QR Art',
     description: 'Generate artistic QR codes with AI — beautiful, scannable QR code art.',
     keywords: ['QR Art', 'AI QR Code', 'QR Code Generator', 'Artistic QR'],
-    category: 'AI Image Generation'
-  },
-  headshots: {
-    title: 'AI Headshots',
-    description: 'Generate professional AI headshots — perfect for LinkedIn, resumes, and business profiles.',
-    keywords: ['AI Headshots', 'Professional Photos', 'AI Portrait', 'LinkedIn Photo'],
     category: 'AI Image Generation'
   },
   nanobanana: {
@@ -384,7 +377,6 @@ export const routes = [
   pixverse,
   flux,
   hailuo,
-  headshots,
   suno,
   producer,
   nanobanana,

@@ -43,7 +43,6 @@ export const I18N_SCOPES = [
   'omni',
   'hailuo',
   'wan',
-  'headshots',
   'suno',
   'producer',
   'fish',

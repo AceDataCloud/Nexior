@@ -16,7 +16,6 @@ export interface ISiteFeatures {
   digitalhuman?: any;
   pixverse?: any;
   hailuo?: any;
-  headshots?: any;
   suno?: any;
   nanobanana?: any;
   openaiimage?: any;

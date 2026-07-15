@@ -255,44 +255,6 @@
         </el-row>
       </div>
     </div>
-    <div v-if="site?.features?.headshots?.enabled" id="headshots" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.headshots') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.headshots') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/headshots'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/zlyshj.png"
-              class="image desktop"
-              :alt="$t('index.title.headshots')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/8as0cx.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-        </el-row>
-      </div>
-    </div>
     <div v-if="false" id="comments">
       <div class="container">
         <el-row class="mb-6">
