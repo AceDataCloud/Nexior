@@ -68,7 +68,7 @@
                 <refresh-icon :size="16" class="footer-icon" aria-hidden="true" />
                 {{ $t('chat.scheduledTasks.runCount', { count: task.run_count }) }}
               </span>
-              <span v-if="task.last_error" class="error-hint">{{ task.last_error }}</span>
+              <span v-if="task.last_error" class="error-hint">{{ errorCodeText(task.last_error) }}</span>
               <span class="open-hint">
                 {{ $t('chat.scheduledTasks.viewRuns') }}
                 <font-awesome-icon icon="fa-solid fa-chevron-right" />
@@ -814,6 +814,9 @@ export default defineComponent({
       if (run.error_message) return run.error_message;
       const code = run.error_code;
       if (!code) return '';
+      return this.errorCodeText(code);
+    },
+    errorCodeText(code: string) {
       const key = `chat.scheduledTasks.run.reason.${code}`;
       return (this as any).$te(key) ? (this.$t(key) as string) : code.replace(/_/g, ' ');
     },

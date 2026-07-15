@@ -28,11 +28,20 @@ const editedTask: IScheduledTask = {
   updated_at: 1
 };
 
+const errorMessages: Record<string, string> = {
+  'chat.scheduledTasks.run.reason.internal_error': 'Internal error',
+  'chat.scheduledTasks.run.reason.billing_gate_failed': 'Billing authorization failed'
+};
+
 const mountComponent = () =>
   shallowMount(ScheduledTasks, {
     global: {
+      stubs: {
+        ElCard: { template: '<div><slot /></div>' }
+      },
       mocks: {
-        $t: (key: string) => key,
+        $t: (key: string) => errorMessages[key] ?? key,
+        $te: (key: string) => key in errorMessages,
         $store: {
           state: {
             chat: { credential: null },
@@ -44,6 +53,18 @@ const mountComponent = () =>
   });
 
 describe('chat/ScheduledTasks', () => {
+  it.each([
+    ['internal_error', 'Internal error'],
+    ['billing_gate_failed', 'Billing authorization failed']
+  ])('localizes the latest task error code %s', async (errorCode, expected) => {
+    const wrapper = mountComponent();
+
+    await wrapper.setData({ tasks: [{ ...editedTask, last_error: errorCode }] });
+
+    expect(wrapper.find('.error-hint').text()).toBe(expected);
+    expect(wrapper.text()).not.toContain(errorCode);
+  });
+
   it('opens a fresh form when New is clicked after editing a task', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
