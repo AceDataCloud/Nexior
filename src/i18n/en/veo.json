@@ -68,7 +68,7 @@
     "description": "Description of the 'translation' parameter"
   },
   "description.imageUrl": {
-    "message": "In multi-image video creation tasks, multiple images must be uploaded.",
+    "message": "Upload 1–3 references to blend subjects, styles, or scenes into a video.",
     "description": "Description of the 'imageUrl' parameter"
   },
   "description.prompt": {
@@ -143,6 +143,10 @@
     "message": "You can upload a maximum of 2 images",
     "description": "Error message when the number of uploaded images exceeds the limit"
   },
+  "message.uploadReferencesLimit": {
+    "message": "You can upload a maximum of {limit} images",
+    "description": "Dynamic image limit for the selected generation mode"
+  },
   "message.uploadReferencesSuccess": {
     "message": "Images uploaded successfully",
     "description": "Success message when images are uploaded successfully"
@@ -164,7 +168,7 @@
     "description": "Error message when starting the drawing task fails"
   },
   "message.imageRequired": {
-    "message": "Please upload at least one reference image before starting the image-to-video task",
+    "message": "Please upload at least one reference image before starting generation",
     "description": "Prompt when no images are uploaded in image2video mode"
   },
   "message.usedUp": {
@@ -230,5 +234,17 @@
   "button.actionIngredients": {
     "message": "Multi-image Fusion Video",
     "description": "ingredients2video — Fuse 1-3 images to create a new scene"
+  },
+  "button.actionTabText": {
+    "message": "Text",
+    "description": "Compact Veo action tab for text-to-video"
+  },
+  "button.actionTabImage": {
+    "message": "Image",
+    "description": "Compact Veo action tab for image-to-video"
+  },
+  "button.actionTabIngredients": {
+    "message": "Ingredients",
+    "description": "Compact Veo action tab for multi-image fusion"
   }
 }

@@ -22,6 +22,7 @@ import RecentPanel from '@/components/veo/RecentPanel.vue';
 import { IVeoTask } from '@/models';
 import { loadPreviousPage } from '@/utils/pagination';
 import { uploadTrackerProviderMixin, ensureNoPendingUpload, ensureLoggedIn } from '@/utils';
+import { buildVeoGenerateRequest } from '@/utils/veo/config';
 
 interface IData {
   task: IVeoTask | undefined;
@@ -157,10 +158,7 @@ export default defineComponent({
       ) {
         return;
       }
-      const request = {
-        ...this.config,
-        async: true
-      } as IVeoGenerateRequest;
+      const request = buildVeoGenerateRequest(this.config) as IVeoGenerateRequest;
       if (!ensureLoggedIn()) {
         return;
       }
@@ -172,13 +170,12 @@ export default defineComponent({
       // image2video requires at least one image; otherwise the upstream rejects with
       // "image_urls is invalid when generate videos". Validate client-side so the user
       // gets an actionable message instead of the generic failure toast.
-      if (request.action === 'image2video' && !(request.image_urls && request.image_urls.length > 0)) {
+      if (
+        (request.action === 'image2video' || request.action === 'ingredients2video') &&
+        !(request.image_urls && request.image_urls.length > 0)
+      ) {
         ElMessage.warning(this.$t('veo.message.imageRequired'));
         return;
-      }
-      // Only send image_urls when it actually has values; the worker rejects empty arrays.
-      if (!request.image_urls || request.image_urls.length === 0) {
-        delete request.image_urls;
       }
       ElMessage.info(this.$t('veo.message.startingTask'));
       instrumentGeneration('veo', veoOperator.generate(request, { token }))
