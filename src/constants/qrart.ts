@@ -1,4 +1,5 @@
 export const QRART_SERVICE_ID = '38ecf158-36f2-42f2-8e7f-6786cdfc2452';
+export const QRART_LOGO = 'https://cdn.acedata.cloud/5b0bc83357.svg';
 
 export const QRART_DEFAULT_QRW = 2;
 export const QRART_DEFAULT_STEPS = 20;

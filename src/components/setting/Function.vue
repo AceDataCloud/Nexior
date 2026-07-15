@@ -3,7 +3,10 @@
     <section-notice tone="admin" :text="$t('common.settings.adminOnlyHint')" />
     <section v-for="feature in featureKeys" :key="feature" class="settings-item">
       <div class="settings-label">
-        <p class="settings-title">{{ featureLabel(feature) }}</p>
+        <div class="capability-heading">
+          <img :src="featureIcon(feature)" class="capability-favicon" alt="" />
+          <p class="settings-title">{{ featureLabel(feature) }}</p>
+        </div>
         <p class="settings-tip">
           {{ featureTip(feature) }}
         </p>
@@ -16,66 +19,6 @@
           :inactive-text="$t('site.button.disabled')"
           @update:model-value="onToggleFeature(feature, $event as boolean)"
         />
-
-        <div v-if="feature === 'support' && site.features?.[feature]?.enabled" class="settings-nested">
-          <div class="settings-subitem">
-            <span class="settings-sub-label">WeChat</span>
-            <el-switch
-              :model-value="site.features?.[feature]?.wechat?.enabled || false"
-              inline-prompt
-              :active-text="$t('site.button.enabled')"
-              :inactive-text="$t('site.button.disabled')"
-              @update:model-value="onToggleSupportChannel(feature, 'wechat', $event as boolean)"
-            />
-          </div>
-
-          <div v-show="site.features?.[feature]?.wechat?.enabled" class="settings-subitem">
-            <el-image :src="site.features?.[feature]?.wechat?.qr" class="settings-media" fit="contain" />
-            <edit-image
-              :model-value="site.features?.[feature]?.wechat?.qr"
-              :title="$t('site.title.editQR')"
-              :tip="$t('site.message.editQRTip')"
-              :width="200"
-              :height="200"
-              @confirm="
-                updateFeature(feature, {
-                  wechat: {
-                    ...(site.features?.[feature]?.wechat || {}),
-                    qr: $event
-                  }
-                })
-              "
-            />
-          </div>
-
-          <div class="settings-subitem">
-            <span class="settings-sub-label">Discord</span>
-            <el-switch
-              :model-value="site.features?.[feature]?.discord?.enabled || false"
-              inline-prompt
-              :active-text="$t('site.button.enabled')"
-              :inactive-text="$t('site.button.disabled')"
-              @update:model-value="onToggleSupportChannel(feature, 'discord', $event as boolean)"
-            />
-          </div>
-
-          <div v-show="site.features?.[feature]?.discord?.enabled" class="settings-subitem">
-            <span class="settings-value">{{ site.features?.[feature]?.discord?.url }}</span>
-            <edit-text
-              :model-value="site.features?.[feature]?.discord?.url"
-              :title="$t('site.title.editUrl')"
-              :placeholder="$t('site.placeholder.editUrl')"
-              @confirm="
-                updateFeature(feature, {
-                  discord: {
-                    ...(site.features?.[feature]?.discord || {}),
-                    url: $event
-                  }
-                })
-              "
-            />
-          </div>
-        </div>
       </div>
     </section>
   </div>
@@ -83,52 +26,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElImage, ElSwitch } from 'element-plus';
-import EditText from '@/components/site/EditText.vue';
-import EditImage from '@/components/site/EditImage.vue';
+import { ElSwitch } from 'element-plus';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
-
-const FEATURE_KEYS = [
-  'chatgpt',
-  'grok',
-  'gemini',
-  'claude',
-  'deepseek',
-  'midjourney',
-  'qrart',
-  'suno',
-  'luma',
-  'pika',
-  'kling',
-  'veo',
-  'sora',
-  'pixverse',
-  'flux',
-  'hailuo',
-  'headshots',
-  'nanobanana',
-  'openaiimage',
-  'seedream',
-  'seedance',
-  'grokvideo',
-  'maestro',
-  'digitalhuman',
-  'wan',
-  'producer',
-  'kimi',
-  'serp',
-  'fish',
-  'webextrator',
-  'codingBridge'
-];
+import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
 
 export default defineComponent({
   name: 'FunctionSetting',
   components: {
-    EditText,
-    EditImage,
-    ElImage,
     ElSwitch,
     SectionNotice
   },
@@ -136,8 +41,8 @@ export default defineComponent({
     site() {
       return this.$store.getters.site || { features: {} };
     },
-    featureKeys() {
-      return FEATURE_KEYS;
+    featureKeys(): string[] {
+      return [...CAPABILITY_KEYS];
     }
   },
   methods: {
@@ -146,6 +51,9 @@ export default defineComponent({
     },
     featureTip(feature: string) {
       return this.$t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
+    },
+    featureIcon(feature: string): string {
+      return CAPABILITY_ICONS[feature as CapabilityKey];
     },
     updateFeature(feature: string, updates: Record<string, unknown>) {
       this.onSave({
@@ -160,14 +68,6 @@ export default defineComponent({
     },
     onToggleFeature(feature: string, enabled: boolean) {
       this.updateFeature(feature, { enabled });
-    },
-    onToggleSupportChannel(feature: string, channel: 'wechat' | 'discord', enabled: boolean) {
-      this.updateFeature(feature, {
-        [channel]: {
-          ...(this.site.features?.[feature]?.[channel] || {}),
-          enabled
-        }
-      });
     },
     onSave(data: any) {
       const payload = {
@@ -184,40 +84,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.settings-nested {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 12px;
-  width: 100%;
-}
-
-.settings-subitem {
+.capability-heading {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
+  gap: 8px;
+  min-width: 0;
 }
 
-.settings-sub-label {
-  font-weight: 600;
-  color: var(--el-text-color-primary);
-}
-
-.settings-media {
-  max-width: 120px;
-  border-radius: 8px;
-  background-color: var(--el-fill-color-light);
-}
-
-@media (max-width: 640px) {
-  .settings-nested {
-    align-items: flex-start;
-  }
-
-  .settings-subitem {
-    align-items: flex-start;
-  }
+.capability-favicon {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  object-fit: cover;
 }
 </style>
