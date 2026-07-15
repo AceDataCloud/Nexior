@@ -44,6 +44,7 @@ const moduleLoaders: Record<string, () => Promise<{ default: AnyVuexModule }>> =
   seedream: () => import('./seedream'),
   seedance: () => import('./seedance'),
   grokvideo: () => import('./grokvideo'),
+  omni: () => import('./omni'),
   serp: () => import('./serp'),
   wan: () => import('./wan'),
   fish: () => import('./fish'),

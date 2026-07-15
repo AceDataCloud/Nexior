@@ -98,6 +98,7 @@ import {
   ROUTE_SEEDREAM_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_GROKVIDEO_INDEX,
+  ROUTE_OMNI_INDEX,
   ROUTE_WAN_INDEX,
   ROUTE_PRODUCER_INDEX,
   ROUTE_FISH_TTS_INDEX,
@@ -124,6 +125,7 @@ import {
   SEEDREAM_LOGO,
   SEEDANCE_LOGO,
   GROKVIDEO_LOGO,
+  OMNI_LOGO,
   SUNO_LOGO,
   LUMA_LOGO,
   HAILUO_LOGO,
@@ -331,6 +333,15 @@ export default defineComponent({
           displayName: this.$t('common.nav.grokvideo'),
           logo: GROKVIDEO_LOGO,
           routes: [ROUTE_GROKVIDEO_INDEX],
+          category: 'video'
+        });
+      }
+      if (this.$store?.state?.site?.features?.omni?.enabled) {
+        result.push({
+          route: { name: ROUTE_OMNI_INDEX },
+          displayName: this.$t('common.nav.omni'),
+          logo: OMNI_LOGO,
+          routes: [ROUTE_OMNI_INDEX],
           category: 'video'
         });
       }

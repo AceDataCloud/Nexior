@@ -23,6 +23,7 @@ export interface ISiteFeatures {
   seedream?: any;
   seedance?: any;
   grokvideo?: any;
+  omni?: any;
   wan?: any;
   producer?: any;
   kimi?: any;

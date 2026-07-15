@@ -20,6 +20,7 @@ import openaiimageState from '../openaiimage/state';
 import seedreamState from '../seedream/state';
 import seedanceState from '../seedance/state';
 import grokvideoState from '../grokvideo/state';
+import omniState from '../omni/state';
 import serpState from '../serp/state';
 import wanState from '../wan/state';
 import fishState from '../fish/state';
@@ -72,6 +73,7 @@ export default (): IRootState => {
     seedream: seedreamState(),
     seedance: seedanceState(),
     grokvideo: grokvideoState(),
+    omni: omniState(),
     serp: serpState(),
     wan: wanState(),
     fish: fishState(),

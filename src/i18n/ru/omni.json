@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni Видео Бот",
+    "description": "Название генератора видео Omni"
+  },
+  "name.prompt": {
+    "message": "Подсказка",
+    "description": "Подсказка для генерации видео"
+  },
+  "name.model": {
+    "message": "Модель",
+    "description": "Метка для выбора модели"
+  },
+  "name.ratio": {
+    "message": "Соотношение сторон",
+    "description": "Метка для соотношения сторон"
+  },
+  "name.resolution": {
+    "message": "Разрешение",
+    "description": "Метка для разрешения"
+  },
+  "name.duration": {
+    "message": "Длительность",
+    "description": "Этикетка для длительности"
+  },
+  "name.image": {
+    "message": "Изображение",
+    "description": "Метка для ввода изображения"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Обязательно",
+    "description": "Значок обязательного поля"
+  },
+  "name.taskId": {
+    "message": "ID задачи",
+    "description": "Метка для ID задачи"
+  },
+  "name.elapsed": {
+    "message": "Затраченное время",
+    "description": "Этикетка затраченного времени"
+  },
+  "name.traceId": {
+    "message": "ID отслеживания",
+    "description": "Метка для ID отслеживания"
+  },
+  "name.failure": {
+    "message": "Ошибка генерации",
+    "description": "Заголовок ошибки"
+  },
+  "name.failureReason": {
+    "message": "Причина ошибки",
+    "description": "Этикетка причины ошибки"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Название статуса"
+  },
+  "description.prompt": {
+    "message": "Опишите, какое видео вы хотите сгенерировать (сцена, объект, действие, кадр, освещение, стиль).",
+    "description": "Инструкции по вводу подсказки"
+  },
+  "description.model": {
+    "message": "Выберите модель Omni. omni-flash поддерживает генерацию видео по тексту и изображению; 1.5-preview поддерживает только генерацию по изображению.",
+    "description": "Инструкции по выбору модели"
+  },
+  "description.ratio": {
+    "message": "Выберите соотношение сторон выходного видео.",
+    "description": "Инструкции по соотношению сторон"
+  },
+  "description.resolution": {
+    "message": "Выберите выходное разрешение. Чем выше разрешение, тем больше тратится кредитов в секунду.",
+    "description": "Инструкции по разрешению"
+  },
+  "description.duration": {
+    "message": "Длительность видео (в секундах), оплата по количеству секунд.",
+    "description": "Инструкции по длительности"
+  },
+  "description.image": {
+    "message": "Необязательное входное изображение для генерации видео. omni-flash обязательно.",
+    "description": "Инструкции по входному изображению"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "Опишите ваше видео…",
+    "description": "Заполнитель для подсказки"
+  },
+  "placeholder.select": {
+    "message": "Пожалуйста, выберите",
+    "description": "Заполнитель для выбора"
+  },
+  "model.default": {
+    "message": "Omni Видео",
+    "description": "Этикетка по умолчанию для модели"
+  },
+  "model.preview15": {
+    "message": "Omni Видео 1.5 (предварительный просмотр, генерация по изображению)",
+    "description": "Этикетка модели 1.5 предварительного просмотра"
+  },
+  "button.upload": {
+    "message": "Загрузить",
+    "description": "Кнопка загрузки"
+  },
+  "button.generate": {
+    "message": "Сгенерировать",
+    "description": "Кнопка генерации"
+  },
+  "button.download": {
+    "message": "Скачать",
+    "description": "Кнопка загрузки"
+  },
+  "status.pending": {
+    "message": "В очереди",
+    "description": "Статус ожидания"
+  },
+  "status.processing": {
+    "message": "В процессе",
+    "description": "Статус обработки"
+  },
+  "message.uploadExceed": {
+    "message": "Можно загрузить только одно изображение.",
+    "description": "Предупреждение о превышении загрузки"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Ошибка загрузки изображения, пожалуйста, попробуйте снова.",
+    "description": "Ошибка загрузки"
+  },
+  "message.downloadVideo": {
+    "message": "Скачать видео",
+    "description": "Подсказка для загрузки"
+  },
+  "message.modelRequiresImage": {
+    "message": "Эта модель требует входного изображения (генерация по изображению).",
+    "description": "Предупреждение о необходимости изображения для модели"
+  },
+  "message.promptOrImageRequired": {
+    "message": "Введите подсказку или загрузите изображение.",
+    "description": "Предупреждение о необходимости подсказки или изображения"
+  },
+  "message.startingTask": {
+    "message": "Отправка задачи на генерацию видео…",
+    "description": "Начало задачи"
+  },
+  "message.startTaskSuccess": {
+    "message": "Задача успешно отправлена.",
+    "description": "Успех выполнения задачи"
+  },
+  "message.startTaskFailed": {
+    "message": "Не удалось отправить задачу:",
+    "description": "Ошибка при выполнении задачи"
+  },
+  "message.usedUp": {
+    "message": "Кредиты исчерпаны, пожалуйста, купите больше для продолжения использования.",
+    "description": "Исчерпано"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}

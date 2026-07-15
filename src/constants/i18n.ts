@@ -40,6 +40,7 @@ export const I18N_SCOPES = [
   'seedream',
   'seedance',
   'grokvideo',
+  'omni',
   'hailuo',
   'wan',
   'headshots',

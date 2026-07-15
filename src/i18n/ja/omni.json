@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni 動画ロボット",
+    "description": "Omni動画生成器の名前"
+  },
+  "name.prompt": {
+    "message": "プロンプト",
+    "description": "ビデオ生成のためのプロンプト"
+  },
+  "name.model": {
+    "message": "モデル",
+    "description": "モデル選択のラベル"
+  },
+  "name.ratio": {
+    "message": "アスペクト比",
+    "description": "アスペクト比のラベル"
+  },
+  "name.resolution": {
+    "message": "解像度",
+    "description": "解像度のラベル"
+  },
+  "name.duration": {
+    "message": "長さ",
+    "description": "長さのラベル"
+  },
+  "name.image": {
+    "message": "画像",
+    "description": "画像入力のラベル"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "必須",
+    "description": "必須バッジ"
+  },
+  "name.taskId": {
+    "message": "タスク ID",
+    "description": "タスク ID のラベル"
+  },
+  "name.elapsed": {
+    "message": "経過時間",
+    "description": "経過時間のラベル"
+  },
+  "name.traceId": {
+    "message": "トレース ID",
+    "description": "トレース ID のラベル"
+  },
+  "name.failure": {
+    "message": "生成失敗",
+    "description": "失敗タイトル"
+  },
+  "name.failureReason": {
+    "message": "失敗理由",
+    "description": "失敗理由のラベル"
+  },
+  "name.status": {
+    "message": "ステータス",
+    "description": "ステータスタイトル"
+  },
+  "description.prompt": {
+    "message": "生成したい動画を説明してください（シーン、主体、アクション、ショット、光、スタイル）。",
+    "description": "プロンプト入力に関する指示"
+  },
+  "description.model": {
+    "message": "Omniモデルを選択します。omni-flashはテキストから画像生成と画像から動画生成をサポートします；1.5-previewは画像から動画生成のみサポートします。",
+    "description": "モデル選択に関する指示"
+  },
+  "description.ratio": {
+    "message": "出力画面のアスペクト比を選択します。",
+    "description": "アスペクト比に関する指示"
+  },
+  "description.resolution": {
+    "message": "出力解像度を選択します。解像度が高いほど、毎秒消費する額が増えます。",
+    "description": "解像度に関する指示"
+  },
+  "description.duration": {
+    "message": "動画の長さ（秒）、出力秒数に基づいて課金されます。",
+    "description": "長さに関する指示"
+  },
+  "description.image": {
+    "message": "オプションの入力画像、動画生成に使用します。omni-flashは必須です。",
+    "description": "画像入力に関する指示"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "あなたのビデオを説明してください…",
+    "description": "プロンプトのプレースホルダー"
+  },
+  "placeholder.select": {
+    "message": "選択してください",
+    "description": "選択のプレースホルダー"
+  },
+  "model.default": {
+    "message": "Omni 動画",
+    "description": "デフォルトモデルラベル"
+  },
+  "model.preview15": {
+    "message": "Omni 動画 1.5（プレビュー、画像から動画生成）",
+    "description": "1.5プレビューモデルラベル"
+  },
+  "button.upload": {
+    "message": "アップロード",
+    "description": "アップロードボタン"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成ボタン"
+  },
+  "button.download": {
+    "message": "ダウンロード",
+    "description": "ダウンロードボタン"
+  },
+  "status.pending": {
+    "message": "保留中",
+    "description": "保留中のステータス"
+  },
+  "status.processing": {
+    "message": "処理中",
+    "description": "処理中のステータス"
+  },
+  "message.uploadExceed": {
+    "message": "画像は1枚のみアップロードできます。",
+    "description": "アップロード超過警告"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "画像のアップロードに失敗しました。再試行してください。",
+    "description": "アップロードエラー"
+  },
+  "message.downloadVideo": {
+    "message": "動画をダウンロード",
+    "description": "ダウンロードツールチップ"
+  },
+  "message.modelRequiresImage": {
+    "message": "このモデルは画像入力が必要です（画像から動画生成）。",
+    "description": "モデルが画像を必要とする警告"
+  },
+  "message.promptOrImageRequired": {
+    "message": "プロンプトまたは画像をアップロードしてください。",
+    "description": "プロンプトまたは画像が必要な警告"
+  },
+  "message.startingTask": {
+    "message": "動画生成タスクを提出中…",
+    "description": "タスク開始"
+  },
+  "message.startTaskSuccess": {
+    "message": "タスクが正常に提出されました。",
+    "description": "タスク成功"
+  },
+  "message.startTaskFailed": {
+    "message": "タスクの提出に失敗しました：",
+    "description": "タスク失敗"
+  },
+  "message.usedUp": {
+    "message": "利用可能な額が使い切られました。購入後に続行してください。",
+    "description": "使い切り"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}
