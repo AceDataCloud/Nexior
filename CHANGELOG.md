@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 15:57:01 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 17:09:13 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.8
+
+Wed, 15 Jul 2026 17:09:13 GMT
+
+### Patches
+
+- Use solid primary and danger buttons for Memory settings actions. (dev@acedata.cloud)
 
 ## 3.329.7
 
