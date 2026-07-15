@@ -10,24 +10,22 @@
             filterable
             allow-create
             default-first-option
-            size="small"
             class="type-select"
             :placeholder="$t('common.settings.contactType')"
           >
             <el-option v-for="opt in typeOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
           </el-select>
-          <el-button link type="danger" size="small" :icon="Delete" @click="removeRow(idx)">
+          <el-button link type="danger" :icon="Delete" @click="removeRow(idx)">
             {{ $t('common.button.delete') }}
           </el-button>
         </div>
         <el-input
           v-model="row.label"
-          size="small"
           class="row-field"
           :placeholder="$t('common.settings.contactLabelPlaceholder')"
         />
-        <el-input v-model="row.value" size="small" class="row-field" :placeholder="valuePlaceholder(row.type)" />
-        <el-input v-model="row.url" size="small" class="row-field" placeholder="https://..." />
+        <el-input v-model="row.value" class="row-field" :placeholder="valuePlaceholder(row.type)" />
+        <el-input v-model="row.url" class="row-field" placeholder="https://..." />
         <div class="qr-row">
           <span class="qr-label">{{ $t('common.settings.contactQr') }}</span>
           <el-image v-if="row.qr" :src="row.qr" class="qr-thumb" fit="contain" />
@@ -39,19 +37,19 @@
             :height="200"
             @confirm="row.qr = $event"
           />
-          <el-button v-if="row.qr" link type="danger" size="small" @click="row.qr = ''">
+          <el-button v-if="row.qr" link type="danger" @click="row.qr = ''">
             {{ $t('common.button.delete') }}
           </el-button>
         </div>
       </div>
     </div>
-    <el-button class="add-btn" size="small" :icon="Plus" @click="addRow">{{
+    <el-button class="add-btn" :icon="Plus" @click="addRow">{{
       $t('common.settings.contactAdd')
     }}</el-button>
     <template #footer>
       <span class="dialog-footer">
-        <el-button round size="small" @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
-        <el-button round size="small" type="primary" @click="onConfirm">{{ $t('common.button.confirm') }}</el-button>
+        <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
+        <el-button round type="primary" @click="onConfirm">{{ $t('common.button.confirm') }}</el-button>
       </span>
     </template>
   </el-dialog>
