@@ -336,7 +336,6 @@ import {
 } from '@/operators/scheduledTasks';
 import { CHAT_MODEL_GROUPS, CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
 import { IChatModelGroup } from '@/models';
-import { getPersistedMemoryEnabled } from '@/store/chat/memoryPreference';
 
 const USER_TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Shanghai';
 
@@ -629,8 +628,7 @@ export default defineComponent({
           question: this.form.question,
           skills: authorizedSkills,
           mcp_servers: authorizedMcpServers,
-          max_turns: this.form.maxTurns,
-          memory_enabled: getPersistedMemoryEnabled(this.$store.state.chat?.memoryEnabled !== false)
+          max_turns: this.form.maxTurns
         },
         unattended_policy:
           authorizedSkills.length || authorizedMcpServers.length

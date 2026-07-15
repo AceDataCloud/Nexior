@@ -7,7 +7,12 @@
         <div class="toggle-title">{{ $t('common.settings.memoryEnabled') }}</div>
         <div class="hint muted">{{ $t('common.settings.memoryEnabledHint') }}</div>
       </div>
-      <el-switch :model-value="memoryEnabled" :disabled="!memoryReady" @change="onMemoryEnabledChange" />
+      <el-switch
+        :model-value="memoryEnabled"
+        :disabled="!memoryReady || updatingMemory"
+        :loading="updatingMemory"
+        @change="onMemoryEnabledChange"
+      />
     </div>
 
     <p v-if="!token" class="hint muted">{{ $t('common.settings.memoryNeedsChat') }}</p>
@@ -54,6 +59,7 @@ export default defineComponent({
       clearing: false,
       removingId: null as string | null,
       memoryReady: false,
+      updatingMemory: false,
       entries: [] as IMemoryEntry[]
     };
   },
@@ -71,28 +77,45 @@ export default defineComponent({
   },
   watch: {
     token: {
-      immediate: true,
       handler(value?: string) {
         if (value) {
           this.fetch();
+        } else {
+          this.memoryReady = false;
         }
       }
     }
   },
   async created() {
     await ensureStoreModule('chat');
-    this.memoryReady = true;
+    if (this.token) await this.fetch();
   },
   methods: {
     async onMemoryEnabledChange(value: string | number | boolean) {
       await ensureStoreModule('chat');
-      this.$store.commit('chat/setMemoryEnabled', value === true);
+      if (!this.token) return;
+      const enabled = value === true;
+      if (enabled === this.memoryEnabled) return;
+      this.updatingMemory = true;
+      try {
+        const persisted = await memoriesOperator.setEnabled(this.token, enabled);
+        this.$store.commit('chat/setMemoryEnabled', persisted);
+      } catch (error) {
+        console.error('failed to update memory preference', error);
+        ElMessage.error(this.$t('common.settings.memoryError'));
+      } finally {
+        this.updatingMemory = false;
+      }
     },
     async fetch() {
       if (!this.token) return;
+      this.memoryReady = false;
       this.loading = true;
       try {
-        this.entries = await memoriesOperator.list(this.token);
+        const profile = await memoriesOperator.getProfile(this.token);
+        this.entries = profile.items;
+        this.$store.commit('chat/setMemoryEnabled', profile.enabled);
+        this.memoryReady = true;
       } catch (error) {
         console.error('failed to load memories', error);
       } finally {

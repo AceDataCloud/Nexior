@@ -25,7 +25,6 @@ export interface IScheduledTask {
     skills?: string[];
     mcp_servers?: string[];
     max_turns?: number;
-    memory_enabled?: boolean;
   };
   unattended_policy?: IScheduledTaskUnattendedPolicy;
   run_count: number;
