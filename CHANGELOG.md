@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 04:44:24 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 04:52:40 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.328.1
+
+Wed, 15 Jul 2026 04:52:40 GMT
+
+### Patches
+
+- Show durable BrowserDevice execution states in chat and scheduled task history. (dev@acedata.cloud)
 
 ## 3.328.0
 
