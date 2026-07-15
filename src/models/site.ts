@@ -68,6 +68,18 @@ export interface ISiteAuth {
   default_provider?: string;
   login_mode?: 'iframe' | 'redirect';
   providers?: Record<string, ISiteAuthProvider>;
+  // Per-site white-label SMS delivery webhook. When ``webhook_url`` + a
+  // signing ``webhook_secret`` are set, AuthBackend delivers phone verification
+  // codes to the owner's endpoint (their signature) instead of the platform
+  // default. ``webhook_secret`` is write-only: never returned by the API (blank on
+  // read; blank on write keeps the stored value). See
+  // ``plans/white-label/44-sms-delivery-webhook.md``.
+  sms?: ISiteAuthSms;
+}
+
+export interface ISiteAuthSms {
+  webhook_url?: string;
+  webhook_secret?: string;
 }
 
 export interface ISiteTheme {
