@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 14:46:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 15:45:08 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.6
+
+Wed, 15 Jul 2026 15:45:08 GMT
+
+### Patches
+
+- Run long memory imports asynchronously and resume status polling after reloads. (dev@acedata.cloud)
 
 ## 3.329.5
 
