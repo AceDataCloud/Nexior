@@ -336,7 +336,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['webextrator', ROUTE_WEBEXTRATOR_INDEX]
 ];
 
-const getDefaultRoute = (): { name: string } => {
+export const getDefaultRoute = (): { name: string } => {
   const features = (store.state.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
   for (const [key, name] of FEATURE_ROUTE_PRIORITY) {
     if (features[key]?.enabled) {

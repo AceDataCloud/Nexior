@@ -26,14 +26,14 @@
               <dd>{{ $t('index.stat.subsite') }}</dd>
             </div>
             <div>
-              <dt>Web · iOS · Android</dt>
-              <dd>{{ $t('index.stat.platforms') }}</dd>
+              <dt>24%</dt>
+              <dd>{{ $t('index.stat.commission') }}</dd>
             </div>
           </dl>
         </div>
         <div class="hero__screens" aria-hidden="true">
-          <img :src="chatDesktop" class="hero__desktop" alt="" />
-          <img :src="chatMobile" class="hero__mobile" alt="" />
+          <img :src="heroDesktop" class="hero__desktop" alt="" />
+          <img :src="heroMobile" class="hero__mobile" alt="" />
           <div class="hero__note hero__note--top">
             <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
             <span>{{ $t('index.note.allInOne') }}</span>
@@ -65,12 +65,21 @@
             <p class="story-kicker">{{ $t(item.eyebrowKey) }}</p>
             <h3>{{ $t(item.titleKey) }}</h3>
             <p>{{ $t(item.subtitleKey) }}</p>
+            <ul class="feature-points">
+              <li v-for="bulletKey in item.bulletKeys" :key="bulletKey">
+                <font-awesome-icon icon="fa-solid fa-check" />
+                <span>{{ $t(bulletKey) }}</span>
+              </li>
+            </ul>
             <el-button type="primary" plain @click="openShowcase(item)">
               {{ $t(item.buttonKey) }}
               <font-awesome-icon icon="fa-solid fa-arrow-right" />
             </el-button>
           </div>
-          <div class="screen-pair screen-pair--large">
+          <div
+            class="screen-pair screen-pair--large"
+            :class="{ 'screen-pair--support': item.secondaryKind === 'desktop' }"
+          >
             <img :src="item.desktop" class="screen-pair__desktop" :alt="$t(item.titleKey)" loading="lazy" />
             <img :src="item.mobile" class="screen-pair__mobile" alt="" loading="lazy" />
           </div>
@@ -149,38 +158,57 @@ import { defineComponent } from 'vue';
 import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
+import { getDefaultRoute } from '@/router';
 import { isMainOfficial } from '@/utils';
 
-import capabilitiesDesktop from '@/assets/home/capabilities-desktop.png';
-import capabilitiesMobile from '@/assets/home/capabilities-mobile.png';
-import chatDesktop from '@/assets/home/chat-desktop.png';
-import chatMobile from '@/assets/home/chat-mobile.png';
-import codingDesktop from '@/assets/home/coding-desktop.png';
-import codingMobile from '@/assets/home/coding-mobile.png';
-import distributionDesktop from '@/assets/home/distribution-desktop.png';
-import distributionMobile from '@/assets/home/distribution-mobile.png';
-import imageDesktop from '@/assets/home/image-desktop.png';
-import imageMobile from '@/assets/home/image-mobile.png';
-import musicDesktop from '@/assets/home/music-desktop.png';
-import musicMobile from '@/assets/home/music-mobile.png';
-import subsitesDesktop from '@/assets/home/subsites-desktop.png';
-import subsitesMobile from '@/assets/home/subsites-mobile.png';
-import videoDesktop from '@/assets/home/video-desktop.png';
-import videoMobile from '@/assets/home/video-mobile.png';
-import workflowDesktop from '@/assets/home/workflow-desktop.png';
-import workflowMobile from '@/assets/home/workflow-mobile.png';
+interface ILocalizedImage {
+  zh: string;
+  en: string;
+}
 
 interface IShowcase {
   key: string;
   featureKeys?: string[];
+  bulletKeys?: string[];
   eyebrowKey: string;
   titleKey: string;
   subtitleKey: string;
   buttonKey: string;
   path: string;
+  desktop: ILocalizedImage;
+  mobile: ILocalizedImage;
+  secondaryKind?: 'desktop' | 'mobile';
+}
+
+interface IResolvedShowcase extends Omit<IShowcase, 'desktop' | 'mobile'> {
   desktop: string;
   mobile: string;
 }
+
+const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
+
+const SCREENSHOTS = {
+  auth: image('https://cdn.acedata.cloud/ae2dceaacc.png', 'https://cdn.acedata.cloud/61f717db6c.png'),
+  branding: image('https://cdn.acedata.cloud/d54f145c5c.png', 'https://cdn.acedata.cloud/6d59646c4d.png'),
+  capabilities: image('https://cdn.acedata.cloud/2369fa145f.png', 'https://cdn.acedata.cloud/082a69ca54.png'),
+  codingDesktop: image('https://cdn.acedata.cloud/c30a77a54b.png', 'https://cdn.acedata.cloud/e63eb96324.png'),
+  codingMobile: image('https://cdn.acedata.cloud/d94ba8ee75.png', 'https://cdn.acedata.cloud/6df02e165d.png'),
+  digitalHumanDesktop: image('https://cdn.acedata.cloud/b9ee357c33.png', 'https://cdn.acedata.cloud/a0228b206a.png'),
+  digitalHumanMobile: image('https://cdn.acedata.cloud/978946c9f5.png', 'https://cdn.acedata.cloud/5372d53321.png'),
+  distributionDesktop: image('https://cdn.acedata.cloud/6c25c74a49.png', 'https://cdn.acedata.cloud/a1e62e4425.png'),
+  distributionMobile: image('https://cdn.acedata.cloud/0647fc4fc4.png', 'https://cdn.acedata.cloud/92fa573377.png'),
+  klingDesktop: image('https://cdn.acedata.cloud/e45bc3e2e2.png', 'https://cdn.acedata.cloud/03d73b16ce.png'),
+  klingMobile: image('https://cdn.acedata.cloud/10dc431467.png', 'https://cdn.acedata.cloud/ea10c8e395.png'),
+  maestroDesktop: image('https://cdn.acedata.cloud/1791398216.png', 'https://cdn.acedata.cloud/7854458ee3.png'),
+  maestroMobile: image('https://cdn.acedata.cloud/29c94b3dea.png', 'https://cdn.acedata.cloud/0ba33fa9d2.png'),
+  nanoDesktop: image('https://cdn.acedata.cloud/82252ec647.png', 'https://cdn.acedata.cloud/e047aea679.png'),
+  nanoMobile: image('https://cdn.acedata.cloud/c7da634c96.png', 'https://cdn.acedata.cloud/dc5b2cca1d.png'),
+  pricing: image('https://cdn.acedata.cloud/c82a2d2d24.png', 'https://cdn.acedata.cloud/68cf015000.png'),
+  seo: image('https://cdn.acedata.cloud/e5635b00bf.png', 'https://cdn.acedata.cloud/c9e96a5362.png'),
+  subsites: image('https://cdn.acedata.cloud/bf4356fffc.png', 'https://cdn.acedata.cloud/b1948ec2a2.png'),
+  sunoDesktop: image('https://cdn.acedata.cloud/8ce288065b.png', 'https://cdn.acedata.cloud/1eebf72e3a.png'),
+  sunoMobile: image('https://cdn.acedata.cloud/d02a2f3586.png', 'https://cdn.acedata.cloud/b63206b610.png')
+};
 
 const BUSINESS_SHOWCASES: IShowcase[] = [
   {
@@ -190,8 +218,14 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.subsites',
     buttonKey: 'index.button.createSubsite',
     path: '/chatgpt?dialog=settings&tab=subsites',
-    desktop: subsitesDesktop,
-    mobile: subsitesMobile
+    desktop: SCREENSHOTS.subsites,
+    mobile: SCREENSHOTS.branding,
+    secondaryKind: 'desktop',
+    bulletKeys: [
+      'index.benefit.subsites.noServer',
+      'index.benefit.subsites.customDomain',
+      'index.benefit.subsites.branding'
+    ]
   },
   {
     key: 'capabilities',
@@ -200,8 +234,30 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.capabilities',
     buttonKey: 'index.button.configure',
     path: '/chatgpt?dialog=settings&tab=function',
-    desktop: capabilitiesDesktop,
-    mobile: capabilitiesMobile
+    desktop: SCREENSHOTS.capabilities,
+    mobile: SCREENSHOTS.pricing,
+    secondaryKind: 'desktop',
+    bulletKeys: [
+      'index.benefit.capabilities.catalog',
+      'index.benefit.capabilities.display',
+      'index.benefit.capabilities.pricing'
+    ]
+  },
+  {
+    key: 'operations',
+    eyebrowKey: 'index.eyebrow.operations',
+    titleKey: 'index.title.operations',
+    subtitleKey: 'index.subtitle.operations',
+    buttonKey: 'index.button.operations',
+    path: '/chatgpt?dialog=settings&tab=seo',
+    desktop: SCREENSHOTS.seo,
+    mobile: SCREENSHOTS.auth,
+    secondaryKind: 'desktop',
+    bulletKeys: [
+      'index.benefit.operations.seo',
+      'index.benefit.operations.auth',
+      'index.benefit.operations.localization'
+    ]
   },
   {
     key: 'distribution',
@@ -210,66 +266,72 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.distribution',
     buttonKey: 'index.button.viewDistribution',
     path: '/distribution',
-    desktop: distributionDesktop,
-    mobile: distributionMobile
+    desktop: SCREENSHOTS.distributionDesktop,
+    mobile: SCREENSHOTS.distributionMobile,
+    secondaryKind: 'mobile',
+    bulletKeys: [
+      'index.benefit.distribution.noBarrier',
+      'index.benefit.distribution.levels',
+      'index.benefit.distribution.withdrawal'
+    ]
   }
 ];
 
 const CREATION_SHOWCASES: IShowcase[] = [
   {
-    key: 'chat',
-    featureKeys: ['chatgpt', 'grok', 'gemini', 'claude', 'deepseek', 'kimi', 'serp'],
-    eyebrowKey: 'index.eyebrow.chat',
-    titleKey: 'index.title.chat',
-    subtitleKey: 'index.subtitle.chat',
-    buttonKey: 'index.button.try',
-    path: '/chatgpt',
-    desktop: chatDesktop,
-    mobile: chatMobile
-  },
-  {
     key: 'image',
-    featureKeys: ['midjourney', 'qrart', 'flux', 'headshots', 'nanobanana', 'openaiimage', 'seedream'],
+    featureKeys: ['nanobanana'],
     eyebrowKey: 'index.eyebrow.image',
     titleKey: 'index.title.image',
     subtitleKey: 'index.subtitle.image',
     buttonKey: 'index.button.try',
     path: '/nanobanana',
-    desktop: imageDesktop,
-    mobile: imageMobile
+    desktop: SCREENSHOTS.nanoDesktop,
+    mobile: SCREENSHOTS.nanoMobile
   },
   {
     key: 'video',
-    featureKeys: ['luma', 'pika', 'kling', 'veo', 'sora', 'pixverse', 'hailuo', 'seedance', 'grokvideo', 'wan'],
+    featureKeys: ['kling'],
     eyebrowKey: 'index.eyebrow.video',
     titleKey: 'index.title.video',
     subtitleKey: 'index.subtitle.video',
     buttonKey: 'index.button.try',
     path: '/kling',
-    desktop: videoDesktop,
-    mobile: videoMobile
+    desktop: SCREENSHOTS.klingDesktop,
+    mobile: SCREENSHOTS.klingMobile
   },
   {
     key: 'music',
-    featureKeys: ['suno', 'producer', 'fish'],
+    featureKeys: ['suno'],
     eyebrowKey: 'index.eyebrow.music',
     titleKey: 'index.title.music',
     subtitleKey: 'index.subtitle.music',
     buttonKey: 'index.button.try',
     path: '/suno',
-    desktop: musicDesktop,
-    mobile: musicMobile
+    desktop: SCREENSHOTS.sunoDesktop,
+    mobile: SCREENSHOTS.sunoMobile
   },
   {
     key: 'workflow',
-    featureKeys: ['maestro', 'digitalhuman'],
+    featureKeys: ['maestro'],
     eyebrowKey: 'index.eyebrow.workflow',
     titleKey: 'index.title.workflow',
     subtitleKey: 'index.subtitle.workflow',
     buttonKey: 'index.button.try',
     path: '/maestro',
-    desktop: workflowDesktop,
-    mobile: workflowMobile
+    desktop: SCREENSHOTS.maestroDesktop,
+    mobile: SCREENSHOTS.maestroMobile
+  },
+  {
+    key: 'digitalHuman',
+    featureKeys: ['digitalhuman'],
+    eyebrowKey: 'index.eyebrow.digitalHuman',
+    titleKey: 'index.title.digitalHuman',
+    subtitleKey: 'index.subtitle.digitalHuman',
+    buttonKey: 'index.button.try',
+    path: '/digital-human',
+    desktop: SCREENSHOTS.digitalHumanDesktop,
+    mobile: SCREENSHOTS.digitalHumanMobile
   },
   {
     key: 'coding',
@@ -279,8 +341,8 @@ const CREATION_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.coding',
     buttonKey: 'index.button.try',
     path: '/coding-bridge',
-    desktop: codingDesktop,
-    mobile: codingMobile
+    desktop: SCREENSHOTS.codingDesktop,
+    mobile: SCREENSHOTS.codingMobile
   }
 ];
 
@@ -291,10 +353,7 @@ export default defineComponent({
     FontAwesomeIcon
   },
   data() {
-    return {
-      chatDesktop,
-      chatMobile
-    };
+    return {};
   },
   computed: {
     site() {
@@ -309,14 +368,30 @@ export default defineComponent({
     capabilityCount(): number {
       return this.site?.id ? this.capabilityCards.length : CAPABILITY_KEYS.length;
     },
-    businessShowcases(): IShowcase[] {
-      return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite);
+    isChineseLocale(): boolean {
+      return String(this.$i18n.locale).toLowerCase() === 'zh-cn';
     },
-    creationShowcases(): IShowcase[] {
-      return CREATION_SHOWCASES.filter((item) => item.featureKeys?.some((key) => this.enabledFeatures[key]?.enabled));
+    heroDesktop(): string {
+      return this.localizedImage(SCREENSHOTS.nanoDesktop);
+    },
+    heroMobile(): string {
+      return this.localizedImage(SCREENSHOTS.nanoMobile);
+    },
+    businessShowcases(): IResolvedShowcase[] {
+      return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite).map((item) =>
+        this.resolveShowcase(item)
+      );
+    },
+    creationShowcases(): IResolvedShowcase[] {
+      return CREATION_SHOWCASES.filter((item) =>
+        item.featureKeys?.some((key) => this.enabledFeatures[key]?.enabled)
+      ).map((item) => this.resolveShowcase(item));
     },
     capabilityCards(): Array<{ key: CapabilityKey; label: string; icon: string }> {
-      return CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled).map((key) => ({
+      const keys = this.isMainSite
+        ? CAPABILITY_KEYS
+        : CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled);
+      return keys.map((key) => ({
         key,
         label: this.$t(`site.field.features${key.charAt(0).toUpperCase()}${key.slice(1)}`),
         icon: CAPABILITY_ICONS[key]
@@ -324,10 +399,20 @@ export default defineComponent({
     }
   },
   methods: {
-    onStart() {
-      this.$router.push(this.creationShowcases[0]?.path ?? '/');
+    localizedImage(source: ILocalizedImage): string {
+      return this.isChineseLocale ? source.zh : source.en;
     },
-    openShowcase(item: IShowcase) {
+    resolveShowcase(item: IShowcase): IResolvedShowcase {
+      return {
+        ...item,
+        desktop: this.localizedImage(item.desktop),
+        mobile: this.localizedImage(item.mobile)
+      };
+    },
+    onStart() {
+      this.$router.push(getDefaultRoute());
+    },
+    openShowcase(item: { path: string }) {
       this.$router.push(item.path);
     },
     openSubsites() {
@@ -346,13 +431,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .landing {
-  --landing-ink: #172033;
-  --landing-muted: #5d687a;
-  --landing-teal: #19778a;
-  --landing-coral: #e66a4e;
-  --landing-lime: #8aa344;
+  --landing-ink: var(--el-text-color-primary);
+  --landing-muted: var(--el-text-color-secondary);
+  --landing-accent: var(--el-color-primary);
   color: var(--landing-ink);
-  background: #f7f8fa;
+  background: var(--el-bg-color);
 }
 
 .container {
@@ -364,17 +447,14 @@ export default defineComponent({
   position: relative;
   min-height: 720px;
   overflow: hidden;
-  background: linear-gradient(125deg, #f8fbfb 0%, #edf5f3 56%, #fff4ef 100%);
-  border-bottom: 1px solid #dce5e4;
+  background: var(--app-gradient-hero);
 
   &__grid {
     position: absolute;
     inset: 0;
-    opacity: 0.45;
-    background-image:
-      linear-gradient(rgba(23, 119, 138, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(23, 119, 138, 0.1) 1px, transparent 1px);
-    background-size: 42px 42px;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.18) 1px, transparent 1px);
+    background-size: 32px 32px;
     mask-image: linear-gradient(to bottom, #000 20%, transparent 92%);
   }
 
@@ -396,6 +476,11 @@ export default defineComponent({
     line-height: 1.05;
     font-weight: 800;
     letter-spacing: 0;
+    color: #fff;
+    background: linear-gradient(135deg, #fff 0%, #93b8c3 50%, #689caa 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   &__headline {
@@ -404,12 +489,13 @@ export default defineComponent({
     font-size: 30px;
     line-height: 1.35;
     font-weight: 700;
+    color: #fff;
   }
 
   &__summary {
     max-width: 590px;
     margin: 20px 0 32px;
-    color: var(--landing-muted);
+    color: rgba(255, 255, 255, 0.72);
     font-size: 17px;
     line-height: 1.8;
   }
@@ -420,9 +506,9 @@ export default defineComponent({
     gap: 12px;
 
     .el-button:not(.el-button--primary) {
-      color: var(--landing-ink);
-      border-color: #70808c;
-      background: rgba(255, 255, 255, 0.72);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.1);
     }
   }
 
@@ -432,7 +518,7 @@ export default defineComponent({
     gap: 0;
     margin: 44px 0 0;
     padding: 22px 0 0;
-    border-top: 1px solid #cbd8d6;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 
     div {
       padding-right: 18px;
@@ -440,14 +526,14 @@ export default defineComponent({
 
     dt {
       margin-bottom: 6px;
-      color: var(--landing-ink);
+      color: #fff;
       font-size: 20px;
       font-weight: 750;
     }
 
     dd {
       margin: 0;
-      color: var(--landing-muted);
+      color: rgba(255, 255, 255, 0.65);
       font-size: 13px;
       line-height: 1.5;
     }
@@ -464,6 +550,7 @@ export default defineComponent({
     object-fit: cover;
     object-position: top left;
     border: 1px solid #c8d5d4;
+    border-radius: 16px;
     background: #fff;
     box-shadow: 0 28px 70px rgba(30, 57, 68, 0.18);
   }
@@ -488,7 +575,7 @@ export default defineComponent({
     gap: 10px;
     padding: 12px 16px;
     border: 1px solid #cddcda;
-    border-radius: 8px;
+    border-radius: 12px;
     color: var(--landing-ink);
     background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 12px 30px rgba(30, 57, 68, 0.14);
@@ -496,7 +583,7 @@ export default defineComponent({
     font-weight: 650;
 
     svg {
-      color: var(--landing-coral);
+      color: var(--landing-accent);
     }
 
     &--top {
@@ -513,7 +600,7 @@ export default defineComponent({
 
 .eyebrow,
 .story-kicker {
-  color: var(--landing-teal);
+  color: var(--landing-accent);
   font-size: 13px;
   line-height: 1.4;
   font-weight: 800;
@@ -525,13 +612,16 @@ export default defineComponent({
   display: inline-flex;
   padding: 7px 10px;
   border: 1px solid #9fc0c5;
-  border-radius: 4px;
-  background: #e8f3f3;
+  border-radius: 9999px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 
   &--light {
     border: 0;
     padding: 0;
     background: transparent;
+    color: var(--landing-accent);
   }
 }
 
@@ -565,7 +655,7 @@ export default defineComponent({
 
 .platform-section {
   scroll-margin-top: 76px;
-  background: #fff;
+  background: var(--el-bg-color);
 }
 
 .platform-story {
@@ -574,7 +664,12 @@ export default defineComponent({
   align-items: center;
   gap: 72px;
   padding: 76px 0;
-  border-top: 1px solid #e0e6e8;
+  margin-bottom: 28px;
+  padding: 64px;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: 16px;
+  background: var(--app-bg-surface);
+  box-shadow: var(--app-shadow-sm);
 
   &--reverse {
     grid-template-columns: minmax(0, 1.24fr) minmax(320px, 0.76fr);
@@ -612,9 +707,32 @@ export default defineComponent({
     }
 
     .el-button {
-      color: var(--landing-teal);
-      border-color: #8eb8c0;
-      background: #fff;
+      color: var(--el-color-primary);
+      border-color: var(--el-color-primary-light-5);
+      background: var(--el-color-primary-light-9);
+    }
+  }
+}
+
+.feature-points {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--landing-muted);
+    font-size: 14px;
+    line-height: 1.7;
+
+    svg {
+      flex: 0 0 auto;
+      margin-top: 5px;
+      color: var(--el-color-success);
     }
   }
 }
@@ -634,7 +752,7 @@ export default defineComponent({
     object-fit: cover;
     object-position: top left;
     border: 1px solid #d8dfe3;
-    border-radius: 6px;
+    border-radius: 16px;
     background: #fff;
     box-shadow: 0 24px 55px rgba(38, 51, 68, 0.15);
   }
@@ -651,10 +769,15 @@ export default defineComponent({
     width: 25%;
     aspect-ratio: 390 / 844;
   }
+
+  &--support &__mobile {
+    width: 42%;
+    aspect-ratio: 16 / 10;
+  }
 }
 
 .creation-section {
-  background: #f0f3f4;
+  background: var(--app-bg-section);
 }
 
 .creation-grid {
@@ -666,17 +789,18 @@ export default defineComponent({
 .creation-item {
   overflow: hidden;
   border: 1px solid #dbe2e5;
-  border-radius: 8px;
-  background: #fff;
+  border-radius: 16px;
+  background: var(--app-bg-surface);
+  box-shadow: var(--app-shadow-sm);
 
   .screen-pair {
     min-height: 300px;
     padding: 0 50px 44px 0;
-    background: #e8edef;
+    background: var(--el-fill-color-light);
 
     &__desktop {
       border-width: 0 1px 1px 0;
-      border-radius: 0 0 6px;
+      border-radius: 0 0 16px;
       box-shadow: none;
     }
 
@@ -701,7 +825,7 @@ export default defineComponent({
     }
 
     > svg {
-      color: var(--landing-coral);
+      color: var(--landing-accent);
     }
 
     > p {
@@ -719,7 +843,7 @@ export default defineComponent({
     width: fit-content;
     padding: 0;
     border: 0;
-    color: var(--landing-teal);
+    color: var(--landing-accent);
     background: transparent;
     font: inherit;
     font-weight: 700;
@@ -728,15 +852,14 @@ export default defineComponent({
 }
 
 .capability-section {
-  background: #fffaf6;
-  border-top: 1px solid #efe3dc;
+  background: var(--el-bg-color);
+  border-top: 1px solid var(--app-border-subtle);
 }
 
 .capability-directory {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  border-top: 1px solid #ddded8;
-  border-left: 1px solid #ddded8;
+  gap: 12px;
 }
 
 .capability-row {
@@ -745,9 +868,10 @@ export default defineComponent({
   min-width: 0;
   gap: 12px;
   padding: 18px;
-  border-right: 1px solid #ddded8;
-  border-bottom: 1px solid #ddded8;
-  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--app-border-subtle);
+  border-radius: 12px;
+  background: var(--app-bg-surface);
+  box-shadow: var(--app-shadow-xs);
 
   img {
     flex: 0 0 auto;
@@ -769,8 +893,7 @@ export default defineComponent({
 .final-cta {
   padding: 92px 0;
   color: #fff;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px), #172033;
-  background-size: 42px 42px;
+  background: var(--app-gradient-hero);
 
   &__content {
     display: flex;
@@ -795,6 +918,12 @@ export default defineComponent({
   .story-kicker {
     margin: 0;
     color: #79c0cd;
+  }
+
+  .el-button:not(.el-button--primary) {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
   }
 
   &__actions {
@@ -916,7 +1045,7 @@ export default defineComponent({
   }
 
   .platform-story {
-    padding: 54px 0;
+    padding: 36px 24px;
 
     &__copy {
       .story-number {
