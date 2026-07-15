@@ -108,6 +108,7 @@ import {
   type IConsentReturn
 } from '@/components/chat/consentReturn';
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
+import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator, agentOperator } from '@/operators';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -1197,6 +1198,10 @@ export default defineComponent({
       // Track content parts for tool-calling interleaving
       const contentParts: IChatMessageContentItem[] = [];
       const toolMap = new Map<string, IChatMessageContentItem>();
+      const pendingBrowserUpdates = new Map<
+        string,
+        Pick<IChatMessageContentItem, 'execution_state' | 'execution_sequence' | 'origin'>
+      >();
       let currentText = '';
       // The aichat2 operator emits `response.answer` as the full
       // accumulated text since the start of the turn. Whenever we flush
@@ -1213,6 +1218,19 @@ export default defineComponent({
           stream: (response: IChatConversationResponse) => {
             console.debug('stream response', response);
             const lastMessage = this.messages[targetIndex];
+            const browserToolItem = response.tool_id ? toolMap.get(response.tool_id) : undefined;
+            if (response.tool_id && response.execution === 'browser' && response.execution_state && !browserToolItem) {
+              const pending = pendingBrowserUpdates.get(response.tool_id) ?? {};
+              pendingBrowserUpdates.set(response.tool_id, reduceBrowserToolExecution(pending, response));
+            }
+            if (
+              browserToolItem &&
+              response.execution_state &&
+              (response.execution === 'browser' || browserToolItem.execution === 'browser')
+            ) {
+              browserToolItem.execution = 'browser';
+              Object.assign(browserToolItem, reduceBrowserToolExecution(browserToolItem, response));
+            }
 
             // Handle tool-calling events
             if (response.type === 'thinking' && response.content) {
@@ -1231,6 +1249,15 @@ export default defineComponent({
               if (toolItem) {
                 if (response.tool_name) toolItem.tool_name = response.tool_name;
                 if (response.tool_display_name) toolItem.tool_display_name = response.tool_display_name;
+                if (response.execution) toolItem.execution = response.execution;
+                if (response.execution === 'browser') {
+                  Object.assign(toolItem, reduceBrowserToolExecution(toolItem, response));
+                  const pending = pendingBrowserUpdates.get(response.tool_id);
+                  if (pending) {
+                    Object.assign(toolItem, reduceBrowserToolExecution(toolItem, pending));
+                    pendingBrowserUpdates.delete(response.tool_id);
+                  }
+                }
                 if (response.input && Object.keys(response.input).length > 0) {
                   toolItem.input = response.input;
                 }
@@ -1246,6 +1273,8 @@ export default defineComponent({
                   tool_id: response.tool_id,
                   tool_name: response.tool_name,
                   tool_display_name: response.tool_display_name,
+                  execution: response.execution,
+                  ...(response.execution === 'browser' ? reduceBrowserToolExecution({}, response) : {}),
                   input: response.input,
                   status: 'running'
                 };

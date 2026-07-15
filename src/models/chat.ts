@@ -87,6 +87,20 @@ export enum IChatMessageState {
   FAILED = 'failed'
 }
 
+export type IChatToolExecution = 'client' | 'server' | 'browser';
+
+export type IBrowserToolExecutionState =
+  | 'choose_device'
+  | 'device_offline'
+  | 'awaiting_device'
+  | 'awaiting_local_approval'
+  | 'takeover_required'
+  | 'executing'
+  | 'completed'
+  | 'denied'
+  | 'expired'
+  | 'cancel_too_late';
+
 export interface IChatMessageContentItem {
   type: string;
   text?: string;
@@ -102,6 +116,10 @@ export interface IChatMessageContentItem {
   tool_id?: string;
   tool_name?: string;
   tool_display_name?: string;
+  execution?: IChatToolExecution;
+  execution_state?: IBrowserToolExecutionState;
+  execution_sequence?: number;
+  origin?: string;
   input?: Record<string, unknown>;
   output?: string;
   is_error?: boolean;
@@ -329,8 +347,12 @@ export interface IChatConversationResponse {
   tool_id?: string;
   tool_name?: string;
   tool_display_name?: string;
-  // 'client' ⇒ desktop runs this tool locally; worker pauses awaiting tool_results.
-  execution?: 'client' | 'server';
+  // 'client' runs in the desktop bridge; 'browser' is observed here but runs
+  // on the selected BrowserDevice, never in this chat client.
+  execution?: IChatToolExecution;
+  execution_state?: IBrowserToolExecutionState;
+  execution_sequence?: number;
+  origin?: string;
   input?: Record<string, unknown>;
   output?: string;
   is_error?: boolean;

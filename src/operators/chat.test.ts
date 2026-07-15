@@ -57,6 +57,57 @@ describe('chatOperator.chatConversation SSE forwarding', () => {
     expect(argText).toBe('{"command":"echo hi"}');
   });
 
+  it('forwards browser execution state with a sanitized origin', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          sseResponse([
+            'data: {"type":"browser_execution","tool_id":"call_browser","tool_name":"browser.read","browser_state":"executing","execution_sequence":7,"origin":"https://user:secret@example.com/private?token=hidden#fragment"}\n',
+            'data: [DONE]\n'
+          ])
+        )
+    );
+
+    const events: IChatConversationResponse[] = [];
+    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'read the page' } as never, {
+      token: 't',
+      stream: (response) => events.push(response)
+    });
+
+    expect(events[0]).toMatchObject({
+      execution: 'browser',
+      execution_state: 'executing',
+      execution_sequence: 7,
+      origin: 'https://example.com'
+    });
+    expect(events[0]).not.toHaveProperty('browser_state');
+  });
+
+  it('drops unsafe browser origins at the operator boundary', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi
+        .fn()
+        .mockResolvedValue(
+          sseResponse([
+            'data: {"type":"browser_execution","tool_id":"call_browser","execution":"browser","state":"denied","origin":"javascript:alert(1)"}\n',
+            'data: [DONE]\n'
+          ])
+        )
+    );
+
+    const events: IChatConversationResponse[] = [];
+    await chatOperator.chatConversation({ model: 'gpt-5.5', message: 'click' } as never, {
+      token: 't',
+      stream: (response) => events.push(response)
+    });
+
+    expect(events[0]).toMatchObject({ execution: 'browser', execution_state: 'denied' });
+    expect(events[0].origin).toBeUndefined();
+  });
+
   it('normalizes streaming 413 request_entity_too_large errors for localized UI copy', async () => {
     vi.stubGlobal(
       'fetch',

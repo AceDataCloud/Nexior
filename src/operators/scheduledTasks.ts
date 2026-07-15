@@ -37,7 +37,7 @@ export interface IScheduledTask {
 export interface IScheduledRun {
   id: string;
   task_id: string;
-  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input';
+  status: 'queued' | 'running' | 'success' | 'failed' | 'needs_user_input' | 'waiting_for_device';
   scheduled_at: number;
   llm_started_at?: number;
   llm_finished_at?: number;
