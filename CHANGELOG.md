@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 02:21:09 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 04:02:30 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.14
+
+Wed, 15 Jul 2026 04:02:30 GMT
+
+### Patches
+
+- Localize the latest error code shown on scheduled task cards (dev@acedata.cloud)
 
 ## 3.327.13
 
