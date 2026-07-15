@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 10:01:22 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 11:22:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.3
+
+Wed, 15 Jul 2026 11:22:28 GMT
+
+### Patches
+
+- Add a guided flow for importing saved memory from other AI assistants. (dev@acedata.cloud)
 
 ## 3.329.2
 
