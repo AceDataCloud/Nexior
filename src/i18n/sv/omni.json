@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni Video Bot",
+    "description": "Namn på Omni video-generatorn"
+  },
+  "name.prompt": {
+    "message": "Prompt",
+    "description": "Prompt för att generera videon"
+  },
+  "name.model": {
+    "message": "Modell",
+    "description": "Etikett för modellval"
+  },
+  "name.ratio": {
+    "message": "Bildförhållande",
+    "description": "Etikett för bildförhållande"
+  },
+  "name.resolution": {
+    "message": "Upplösning",
+    "description": "Etikett för upplösning"
+  },
+  "name.duration": {
+    "message": "Längd",
+    "description": "Etikett för längd"
+  },
+  "name.image": {
+    "message": "Bild",
+    "description": "Etikett för inmatningsbild"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Obligatorisk",
+    "description": "Obligatorisk märkning"
+  },
+  "name.taskId": {
+    "message": "Uppgift ID",
+    "description": "Etikett för uppgifts-ID"
+  },
+  "name.elapsed": {
+    "message": "Tid som förflutit",
+    "description": "Etikett för förfluten tid"
+  },
+  "name.traceId": {
+    "message": "Spårnings ID",
+    "description": "Etikett för spårnings-ID"
+  },
+  "name.failure": {
+    "message": "Generering misslyckades",
+    "description": "Titel för misslyckande"
+  },
+  "name.failureReason": {
+    "message": "Orsak till misslyckande",
+    "description": "Etikett för orsak till misslyckande"
+  },
+  "name.status": {
+    "message": "Status",
+    "description": "Statusrubrik"
+  },
+  "description.prompt": {
+    "message": "Beskriv videon du vill generera (scen, ämne, handling, kameravinkel, ljus, stil).",
+    "description": "Instruktioner för promptinmatning"
+  },
+  "description.model": {
+    "message": "Välj Omni-modell. omni-flash stöder text-till-video och bild-till-video; 1.5-preview stöder endast bild-till-video.",
+    "description": "Instruktioner för modellval"
+  },
+  "description.ratio": {
+    "message": "Välj utgångsbildförhållande.",
+    "description": "Instruktioner för bildförhållande"
+  },
+  "description.resolution": {
+    "message": "Välj utgångsupplösning. Ju högre upplösning, desto mer förbrukas per sekund.",
+    "description": "Instruktioner för upplösning"
+  },
+  "description.duration": {
+    "message": "Videons längd (sekunder), debiteras baserat på utgångssekunder.",
+    "description": "Instruktioner för längd"
+  },
+  "description.image": {
+    "message": "Valfri inmatningsbild för att generera video. omni-flash är obligatorisk.",
+    "description": "Instruktioner för bildinmatning"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "Beskriv din video…",
+    "description": "Platsinnehåll för prompt"
+  },
+  "placeholder.select": {
+    "message": "Vänligen välj",
+    "description": "Platsinnehåll för val"
+  },
+  "model.default": {
+    "message": "Omni",
+    "description": "Standardmodellens etikett"
+  },
+  "model.preview15": {
+    "message": "Omni 1.5 (förhandsvisning, bild-till-video)",
+    "description": "1.5 förhandsvisningsmodellens etikett"
+  },
+  "button.upload": {
+    "message": "Ladda upp",
+    "description": "Ladda upp-knapp"
+  },
+  "button.generate": {
+    "message": "Generera",
+    "description": "Generera-knapp"
+  },
+  "button.download": {
+    "message": "Ladda ner",
+    "description": "Ladda ner-knapp"
+  },
+  "status.pending": {
+    "message": "I kö",
+    "description": "Väntande status"
+  },
+  "status.processing": {
+    "message": "Bearbetar",
+    "description": "Bearbetningsstatus"
+  },
+  "message.uploadExceed": {
+    "message": "Endast en bild kan laddas upp.",
+    "description": "Varning för överskridning av uppladdning"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Bilduppladdning misslyckades, försök igen.",
+    "description": "Uppladdningsfel"
+  },
+  "message.downloadVideo": {
+    "message": "Ladda ner video",
+    "description": "Ladda ner-tooltip"
+  },
+  "message.modelRequiresImage": {
+    "message": "Denna modell kräver en inmatningsbild (bild-till-video).",
+    "description": "Varning för att modellen kräver bild"
+  },
+  "message.promptOrImageRequired": {
+    "message": "Ange en prompt eller ladda upp en bild.",
+    "description": "Varning för att prompt eller bild krävs"
+  },
+  "message.startingTask": {
+    "message": "Skickar video-genereringsuppgift…",
+    "description": "Startar uppgift"
+  },
+  "message.startTaskSuccess": {
+    "message": "Uppgiften har skickats.",
+    "description": "Uppgift lyckades"
+  },
+  "message.startTaskFailed": {
+    "message": "Uppgiften kunde inte skickas:",
+    "description": "Uppgift misslyckades"
+  },
+  "message.usedUp": {
+    "message": "Krediten är slut, vänligen köp mer för att fortsätta använda.",
+    "description": "Användning slut"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}

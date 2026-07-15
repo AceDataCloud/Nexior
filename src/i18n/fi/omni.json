@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni Video -robotti",
+    "description": "Omni-video generoijan nimi"
+  },
+  "name.prompt": {
+    "message": "Kehotus",
+    "description": "Videoiden luontikehotus"
+  },
+  "name.model": {
+    "message": "Malli",
+    "description": "Mallin valinnan etiketti"
+  },
+  "name.ratio": {
+    "message": "Kuvasuhde",
+    "description": "Kuvasuhteen etiketti"
+  },
+  "name.resolution": {
+    "message": "Resoluutio",
+    "description": "Resoluutio-etiketti"
+  },
+  "name.duration": {
+    "message": "Kesto",
+    "description": "Keston etiketti"
+  },
+  "name.image": {
+    "message": "Kuva",
+    "description": "Syöttokuvan etiketti"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Pakollinen",
+    "description": "Pakollinen merkki"
+  },
+  "name.taskId": {
+    "message": "Tehtävän ID",
+    "description": "Tehtävän ID-etiketti"
+  },
+  "name.elapsed": {
+    "message": "Kulunut aika",
+    "description": "Kuluneen ajan etiketti"
+  },
+  "name.traceId": {
+    "message": "Seuranta ID",
+    "description": "Seuranta ID-etiketti"
+  },
+  "name.failure": {
+    "message": "Tuotanto epäonnistui",
+    "description": "Epäonnistumisen otsikko"
+  },
+  "name.failureReason": {
+    "message": "Epäonnistumisen syy",
+    "description": "Epäonnistumisen syyn etiketti"
+  },
+  "name.status": {
+    "message": "Tila",
+    "description": "Tilamerkintä"
+  },
+  "description.prompt": {
+    "message": "Kuvaile haluamaasi videota (kohtaus, aihe, toiminta, kuvakulma, valaistus, tyyli).",
+    "description": "Ohjeet kehotteen syöttämiseen"
+  },
+  "description.model": {
+    "message": "Valitse Omni -malli. omni-flash tukee tekstistä kuvaan -videoita; 1.5-preview tukee vain kuvaan perustuvia videoita.",
+    "description": "Ohjeet mallin valintaan"
+  },
+  "description.ratio": {
+    "message": "Valitse ulostulojen kuvasuhde.",
+    "description": "Ohjeet kuvasuhteen valintaan"
+  },
+  "description.resolution": {
+    "message": "Valitse ulostulojen resoluutio. Korkeampi resoluutio kuluttaa enemmän varoja sekunnissa.",
+    "description": "Ohjeet resoluution valintaan"
+  },
+  "description.duration": {
+    "message": "Videon kesto (sekunteina), laskutetaan ulostulojen sekuntien mukaan.",
+    "description": "Ohjeet keston syöttämiseen"
+  },
+  "description.image": {
+    "message": "Valinnainen syötekuva videon tuottamiseen. omni-flash on pakollinen.",
+    "description": "Ohjeet kuva syötteelle"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "Kuvaile videota…",
+    "description": "Kehotteen paikkamerkki"
+  },
+  "placeholder.select": {
+    "message": "Valitse",
+    "description": "Valintojen paikkamerkki"
+  },
+  "model.default": {
+    "message": "Omni -video",
+    "description": "Oletusmallin etiketti"
+  },
+  "model.preview15": {
+    "message": "Omni -video 1.5 (esikatselu, kuvaan perustuva video)",
+    "description": "1.5 esikatselumallin etiketti"
+  },
+  "button.upload": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "button.generate": {
+    "message": "Tuota",
+    "description": "Tuotantopainike"
+  },
+  "button.download": {
+    "message": "Lataa",
+    "description": "Latauspainike"
+  },
+  "status.pending": {
+    "message": "Jonossa",
+    "description": "Odotustila"
+  },
+  "status.processing": {
+    "message": "Luodaan",
+    "description": "Käsittelytila"
+  },
+  "message.uploadExceed": {
+    "message": "Vain yksi kuva voidaan ladata.",
+    "description": "Latausylitysvaroitus"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Kuvan lataaminen epäonnistui, yritä uudelleen.",
+    "description": "Latausvirhe"
+  },
+  "message.downloadVideo": {
+    "message": "Lataa video",
+    "description": "Lataustyökalu"
+  },
+  "message.modelRequiresImage": {
+    "message": "Tämä malli vaatii syötekuvan (kuvaan perustuva video).",
+    "description": "Malli vaatii kuvan varoitus"
+  },
+  "message.promptOrImageRequired": {
+    "message": "Syötä kehotteet tai lataa kuva.",
+    "description": "Kehote tai kuva vaaditaan varoitus"
+  },
+  "message.startingTask": {
+    "message": "Videon tuotantotehtävää lähetetään…",
+    "description": "Tehtävän aloitus"
+  },
+  "message.startTaskSuccess": {
+    "message": "Tehtävän lähettäminen onnistui.",
+    "description": "Tehtävä onnistui"
+  },
+  "message.startTaskFailed": {
+    "message": "Tehtävän lähettäminen epäonnistui:",
+    "description": "Tehtävä epäonnistui"
+  },
+  "message.usedUp": {
+    "message": "Varat on käytetty loppuun, osta lisää jatkaaksesi käyttöä.",
+    "description": "Loppu"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}

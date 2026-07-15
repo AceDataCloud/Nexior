@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni video robot",
+    "description": "Ime Omni generatora videa"
+  },
+  "name.prompt": {
+    "message": "Упитник",
+    "description": "Упит за генерисање видеа"
+  },
+  "name.model": {
+    "message": "Модел",
+    "description": "Ознака за избор модела"
+  },
+  "name.ratio": {
+    "message": "Однос страна",
+    "description": "Ознака за однос страна"
+  },
+  "name.resolution": {
+    "message": "Решење",
+    "description": "Ознака за резолуцију"
+  },
+  "name.duration": {
+    "message": "Trajanje",
+    "description": "Oznaka za trajanje"
+  },
+  "name.image": {
+    "message": "Слика",
+    "description": "Ознака за унос слике"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Обавезно",
+    "description": "Ознака за обавезна поља"
+  },
+  "name.taskId": {
+    "message": "ID задатка",
+    "description": "Ознака за ID задатка"
+  },
+  "name.elapsed": {
+    "message": "Proteklo vreme",
+    "description": "Oznaka za proteklo vreme"
+  },
+  "name.traceId": {
+    "message": "ID трага",
+    "description": "Ознака за ID трага"
+  },
+  "name.failure": {
+    "message": "Generisanje nije uspelo",
+    "description": "Naslov za neuspeh"
+  },
+  "name.failureReason": {
+    "message": "Razlog neuspeha",
+    "description": "Oznaka za razlog neuspeha"
+  },
+  "name.status": {
+    "message": "Статус",
+    "description": "Наслов статуса"
+  },
+  "description.prompt": {
+    "message": "Opisujte video koji želite da generišete (scena, subjekat, akcija, kadar, svetlost, stil).",
+    "description": "Uputstvo za unos prompta"
+  },
+  "description.model": {
+    "message": "Izaberite Omni model. omni-flash podržava generisanje videa iz teksta i slike; 1.5-preview podržava samo generisanje videa iz slike.",
+    "description": "Uputstvo za izbor modela"
+  },
+  "description.ratio": {
+    "message": "Izaberite odnos stranica izlaznog videa.",
+    "description": "Uputstvo za odnos stranica"
+  },
+  "description.resolution": {
+    "message": "Izaberite izlaznu rezoluciju. Što je rezolucija viša, to je veća potrošnja po sekundi.",
+    "description": "Uputstvo za rezoluciju"
+  },
+  "description.duration": {
+    "message": "Trajanje videa (sekunde), naplaćuje se po broju sekundi.",
+    "description": "Uputstvo za trajanje"
+  },
+  "description.image": {
+    "message": "Opcionalna ulazna slika, koristi se za generisanje videa. omni-flash je obavezno.",
+    "description": "Uputstvo za ulaznu sliku"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "Опишите ваш видео…",
+    "description": "Плацехолдер за упитник"
+  },
+  "placeholder.select": {
+    "message": "Изаберите",
+    "description": "Плацехолдер за избор"
+  },
+  "model.default": {
+    "message": "Omni video",
+    "description": "Oznaka za podrazumevani model"
+  },
+  "model.preview15": {
+    "message": "Omni video 1.5 (preview, generisanje videa iz slike)",
+    "description": "Oznaka za 1.5 preview model"
+  },
+  "button.upload": {
+    "message": "Otpremi",
+    "description": "Dugme za otpremanje"
+  },
+  "button.generate": {
+    "message": "Generiši",
+    "description": "Dugme za generisanje"
+  },
+  "button.download": {
+    "message": "Preuzmi",
+    "description": "Dugme za preuzimanje"
+  },
+  "status.pending": {
+    "message": "На чекању",
+    "description": "Статус на чекању"
+  },
+  "status.processing": {
+    "message": "Генерише се",
+    "description": "Статус обраде"
+  },
+  "message.uploadExceed": {
+    "message": "Možete otpremiti samo jednu sliku.",
+    "description": "Upozorenje o prekoračenju otpremanja"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Otpremanje slike nije uspelo, molimo pokušajte ponovo.",
+    "description": "Greška prilikom otpremanja"
+  },
+  "message.downloadVideo": {
+    "message": "Preuzmi video",
+    "description": "Tooltip za preuzimanje"
+  },
+  "message.modelRequiresImage": {
+    "message": "Ovaj model zahteva ulaznu sliku (generisanje videa iz slike).",
+    "description": "Upozorenje da model zahteva sliku"
+  },
+  "message.promptOrImageRequired": {
+    "message": "Unesite prompt ili otpremite sliku.",
+    "description": "Upozorenje da je potreban prompt ili slika"
+  },
+  "message.startingTask": {
+    "message": "Podnošenje zadatka za generisanje videa…",
+    "description": "Pokretanje zadatka"
+  },
+  "message.startTaskSuccess": {
+    "message": "Podnošenje zadatka je uspešno.",
+    "description": "Uspeh zadatka"
+  },
+  "message.startTaskFailed": {
+    "message": "Podnošenje zadatka nije uspelo:",
+    "description": "Zadatak nije uspeo"
+  },
+  "message.usedUp": {
+    "message": "Kredit je iskorišćen, molimo kupite više da biste nastavili sa korišćenjem.",
+    "description": "Iskorišćeno"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}

@@ -32,6 +32,7 @@ import openaiimage from './openaiimage';
 import seedream from './seedream';
 import seedance from './seedance';
 import grokvideo from './grokvideo';
+import omni from './omni';
 import serp from './serp';
 import wan from './wan';
 import fish from './fish';
@@ -56,6 +57,7 @@ import {
   ROUTE_PRODUCER_INDEX,
   ROUTE_SEEDANCE_INDEX,
   ROUTE_GROKVIDEO_INDEX,
+  ROUTE_OMNI_INDEX,
   ROUTE_LUMA_INDEX,
   ROUTE_HAILUO_INDEX,
   ROUTE_KLING_INDEX,
@@ -240,6 +242,13 @@ const ROUTE_SEO: Record<string, { title: string; description: string; keywords: 
     keywords: ['Grok', 'Grok Imagine', 'AI Video', 'Text to Video', 'Image to Video', 'xAI'],
     category: 'AI Video Generation'
   },
+  omni: {
+    title: 'Omni Video',
+    description:
+      'Generate and edit AI videos with Omni (omni-flash) — text-to-video, image-to-video and video editing.',
+    keywords: ['Omni', 'omni-flash', 'AI Video', 'Text to Video', 'Image to Video', 'Video Editing', 'Gemini'],
+    category: 'AI Video Generation'
+  },
   wan: {
     title: 'Wan',
     description: 'Generate AI videos with Wan — high-quality video generation by Tongyi Wanxiang.',
@@ -327,6 +336,7 @@ const FEATURE_ROUTE_PRIORITY: Array<[string, string]> = [
   ['hailuo', ROUTE_HAILUO_INDEX],
   ['seedance', ROUTE_SEEDANCE_INDEX],
   ['grokvideo', ROUTE_GROKVIDEO_INDEX],
+  ['omni', ROUTE_OMNI_INDEX],
   ['pixverse', ROUTE_PIXVERSE_INDEX],
   ['wan', ROUTE_WAN_INDEX],
   ['serp', ROUTE_SERP_INDEX],
@@ -382,6 +392,7 @@ export const routes = [
   seedream,
   seedance,
   grokvideo,
+  omni,
   serp,
   wan,
   fish,

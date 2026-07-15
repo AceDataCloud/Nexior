@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni 視頻機器人",
+    "description": "Omni 視頻生成器的名稱"
+  },
+  "name.prompt": {
+    "message": "提示詞",
+    "description": "用於生成視頻的提示"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "模型選擇的標籤"
+  },
+  "name.ratio": {
+    "message": "畫面比例",
+    "description": "畫面比例的標籤"
+  },
+  "name.resolution": {
+    "message": "分辨率",
+    "description": "分辨率的標籤"
+  },
+  "name.duration": {
+    "message": "時長",
+    "description": "時長標籤"
+  },
+  "name.image": {
+    "message": "圖片",
+    "description": "輸入圖片的標籤"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "必填",
+    "description": "必填標籤"
+  },
+  "name.taskId": {
+    "message": "任務 ID",
+    "description": "任務 ID 的標籤"
+  },
+  "name.elapsed": {
+    "message": "耗時",
+    "description": "耗時標籤"
+  },
+  "name.traceId": {
+    "message": "追蹤 ID",
+    "description": "追蹤 ID 的標籤"
+  },
+  "name.failure": {
+    "message": "生成失敗",
+    "description": "失敗標題"
+  },
+  "name.failureReason": {
+    "message": "失敗原因",
+    "description": "失敗原因標籤"
+  },
+  "name.status": {
+    "message": "狀態",
+    "description": "狀態標題"
+  },
+  "description.prompt": {
+    "message": "描述你想生成的視頻（場景、主體、動作、鏡頭、光線、風格）。",
+    "description": "有關提示輸入的說明"
+  },
+  "description.model": {
+    "message": "選擇 Omni 模型。omni-flash 支持文生與圖生視頻；1.5-preview 僅支持圖生視頻。",
+    "description": "有關模型選擇的說明"
+  },
+  "description.ratio": {
+    "message": "選擇輸出畫面比例。",
+    "description": "有關畫面比例的說明"
+  },
+  "description.resolution": {
+    "message": "選擇輸出分辨率。分辨率越高，每秒消耗的額度越多。",
+    "description": "有關分辨率的說明"
+  },
+  "description.duration": {
+    "message": "視頻時長（秒），按輸出秒數計費。",
+    "description": "有關時長的說明"
+  },
+  "description.image": {
+    "message": "可選的輸入圖片，用於圖生視頻。omni-flash 為必填。",
+    "description": "有關圖片輸入的說明"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "描述你的视频…",
+    "description": "提示的佔位符"
+  },
+  "placeholder.select": {
+    "message": "請選擇",
+    "description": "選擇的佔位符"
+  },
+  "model.default": {
+    "message": "Omni 視頻",
+    "description": "默認模型標籤"
+  },
+  "model.preview15": {
+    "message": "Omni 視頻 1.5（預覽，圖生視頻）",
+    "description": "1.5 預覽模型標籤"
+  },
+  "button.upload": {
+    "message": "上傳",
+    "description": "上傳按鈕"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "生成按鈕"
+  },
+  "button.download": {
+    "message": "下載",
+    "description": "下載按鈕"
+  },
+  "status.pending": {
+    "message": "排隊中",
+    "description": "待處理狀態"
+  },
+  "status.processing": {
+    "message": "生成中",
+    "description": "處理中狀態"
+  },
+  "message.uploadExceed": {
+    "message": "只能上傳一張圖片。",
+    "description": "上傳超過限制的警告"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "圖片上傳失敗，請重試。",
+    "description": "上傳錯誤"
+  },
+  "message.downloadVideo": {
+    "message": "下載視頻",
+    "description": "下載提示"
+  },
+  "message.modelRequiresImage": {
+    "message": "該模型需要輸入圖片（圖生視頻）。",
+    "description": "模型需要圖片的警告"
+  },
+  "message.promptOrImageRequired": {
+    "message": "請輸入提示詞或上傳圖片。",
+    "description": "提示詞或圖片必需的警告"
+  },
+  "message.startingTask": {
+    "message": "正在提交視頻生成任務…",
+    "description": "開始任務"
+  },
+  "message.startTaskSuccess": {
+    "message": "任務提交成功。",
+    "description": "任務成功"
+  },
+  "message.startTaskFailed": {
+    "message": "任務提交失敗：",
+    "description": "任務失敗"
+  },
+  "message.usedUp": {
+    "message": "額度已用盡，請購買後繼續使用。",
+    "description": "已用盡"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}

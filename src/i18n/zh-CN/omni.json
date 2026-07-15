@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Omni 视频",
+    "description": "模块显示名称"
+  },
+  "name.prompt": {
+    "message": "提示词",
+    "description": "Prompt for generating the video"
+  },
+  "name.model": {
+    "message": "模型",
+    "description": "Label for model selection"
+  },
+  "name.ratio": {
+    "message": "画面比例",
+    "description": "Label for aspect ratio"
+  },
+  "name.resolution": {
+    "message": "分辨率",
+    "description": "Label for resolution"
+  },
+  "name.duration": {
+    "message": "时长",
+    "description": "Label for duration"
+  },
+  "name.image": {
+    "message": "图片",
+    "description": "Label for input image"
+  },
+  "name.referenceImages": {
+    "message": "参考图",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "必填",
+    "description": "Required badge"
+  },
+  "name.taskId": {
+    "message": "任务 ID",
+    "description": "Task id label"
+  },
+  "name.elapsed": {
+    "message": "耗时",
+    "description": "Elapsed time label"
+  },
+  "name.traceId": {
+    "message": "追踪 ID",
+    "description": "Trace id label"
+  },
+  "name.failure": {
+    "message": "生成失败",
+    "description": "Failure title"
+  },
+  "name.failureReason": {
+    "message": "失败原因",
+    "description": "Failure reason label"
+  },
+  "name.status": {
+    "message": "状态",
+    "description": "Status title"
+  },
+  "description.prompt": {
+    "message": "描述你想生成的视频（场景、主体、动作、镜头、光线、风格）。",
+    "description": "Instructions for prompt input"
+  },
+  "description.model": {
+    "message": "选择 Omni 模型。omni-flash 支持文生与图生视频，时长最长 30 秒；1.5-preview 仅支持图生视频，时长最长 15 秒。",
+    "description": "Instructions for model selection"
+  },
+  "description.ratio": {
+    "message": "选择输出画面比例。",
+    "description": "Instructions for aspect ratio"
+  },
+  "description.resolution": {
+    "message": "选择输出分辨率，支持 480p / 720p / 1080p。分辨率越高，消耗的额度越多。",
+    "description": "Instructions for resolution"
+  },
+  "description.duration": {
+    "message": "视频时长（秒）。omni-flash 支持 1-30 秒，按时长分档计费；1.5-preview 支持 1-15 秒，按输出秒数计费。",
+    "description": "Instructions for duration"
+  },
+  "description.image": {
+    "message": "可选的输入图片，用于图生视频。omni-flash 为必填。",
+    "description": "Instructions for image input"
+  },
+  "description.referenceImages": {
+    "message": "可选的参考图片（最多 4 张），用于引导视频；编辑参考视频时必填。",
+    "description": "参考图片帮助文字"
+  },
+  "placeholder.prompt": {
+    "message": "描述你的视频…",
+    "description": "Placeholder for prompt"
+  },
+  "placeholder.select": {
+    "message": "请选择",
+    "description": "Placeholder for selects"
+  },
+  "model.default": {
+    "message": "Omni 视频",
+    "description": "Default model label"
+  },
+  "model.preview15": {
+    "message": "Omni 视频 1.5（预览，图生视频）",
+    "description": "1.5 preview model label"
+  },
+  "button.upload": {
+    "message": "上传",
+    "description": "Upload button"
+  },
+  "button.generate": {
+    "message": "生成",
+    "description": "Generate button"
+  },
+  "button.download": {
+    "message": "下载",
+    "description": "Download button"
+  },
+  "status.pending": {
+    "message": "排队中",
+    "description": "Pending status"
+  },
+  "status.processing": {
+    "message": "生成中",
+    "description": "Processing status"
+  },
+  "message.uploadExceed": {
+    "message": "只能上传一张图片。",
+    "description": "Upload exceed warning"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "最多可上传 4 张参考图。",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "图片上传失败，请重试。",
+    "description": "Upload error"
+  },
+  "message.downloadVideo": {
+    "message": "下载视频",
+    "description": "Download tooltip"
+  },
+  "message.modelRequiresImage": {
+    "message": "该模型需要输入图片（图生视频）。",
+    "description": "Model requires image warning"
+  },
+  "message.promptOrImageRequired": {
+    "message": "请输入提示词或上传图片。",
+    "description": "Prompt or image required warning"
+  },
+  "message.startingTask": {
+    "message": "正在提交视频生成任务…",
+    "description": "Starting task"
+  },
+  "message.startTaskSuccess": {
+    "message": "任务提交成功。",
+    "description": "Task success"
+  },
+  "message.startTaskFailed": {
+    "message": "任务提交失败：",
+    "description": "Task failed"
+  },
+  "message.usedUp": {
+    "message": "额度已用尽，请购买后继续使用。",
+    "description": "Used up"
+  },
+  "name.referenceVideo": {
+    "message": "参考视频",
+    "description": "Omni 视频编辑的参考/待编辑视频"
+  },
+  "description.referenceVideo": {
+    "message": "可选的 MP4/MOV（≤200MB），用于编辑或参考已有视频。需至少一张参考图片。",
+    "description": "参考视频上传的帮助文字"
+  },
+  "button.uploadVideo": {
+    "message": "上传视频",
+    "description": "上传参考视频的按钮"
+  },
+  "message.uploadVideoExceed": {
+    "message": "最多只能上传 1 个参考视频",
+    "description": "超过 1 个参考视频时的错误提示"
+  },
+  "message.uploadVideoError": {
+    "message": "参考视频上传失败，请稍后重试",
+    "description": "参考视频上传失败时的错误提示"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "上传的文件必须是 MP4 或 MOV 格式！",
+    "description": "参考视频格式不是 MP4/MOV 时的错误提示"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "上传的文件大小不能超过 200MB！",
+    "description": "参考视频超过 200MB 时的错误提示"
+  },
+  "message.promptRequired": {
+    "message": "请输入提示词。",
+    "description": "提示词为空时的校验提示"
+  },
+  "message.videoRequiresImage": {
+    "message": "使用参考视频时，请至少添加一张参考图片。",
+    "description": "提供 video_urls 但缺少参考图片时的校验提示"
+  }
+}

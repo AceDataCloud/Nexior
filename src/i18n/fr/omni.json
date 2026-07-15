@@ -1,0 +1,202 @@
+{
+  "name.bot": {
+    "message": "Robot Vidéo Omni",
+    "description": "Nom du générateur de vidéo Omni"
+  },
+  "name.prompt": {
+    "message": "Invite",
+    "description": "Invite pour générer la vidéo"
+  },
+  "name.model": {
+    "message": "Modèle",
+    "description": "Étiquette pour la sélection du modèle"
+  },
+  "name.ratio": {
+    "message": "Ratio d'image",
+    "description": "Étiquette pour le rapport d'aspect"
+  },
+  "name.resolution": {
+    "message": "Résolution",
+    "description": "Étiquette pour la résolution"
+  },
+  "name.duration": {
+    "message": "Durée",
+    "description": "Étiquette pour la durée"
+  },
+  "name.image": {
+    "message": "Image",
+    "description": "Étiquette pour l'image d'entrée"
+  },
+  "name.referenceImages": {
+    "message": "Reference Images",
+    "description": "Label for reference images"
+  },
+  "name.required": {
+    "message": "Champ requis",
+    "description": "Badge indiquant que le champ est obligatoire"
+  },
+  "name.taskId": {
+    "message": "ID de tâche",
+    "description": "Étiquette pour l'identifiant de la tâche"
+  },
+  "name.elapsed": {
+    "message": "Temps écoulé",
+    "description": "Étiquette du temps écoulé"
+  },
+  "name.traceId": {
+    "message": "ID de suivi",
+    "description": "Étiquette pour l'identifiant de suivi"
+  },
+  "name.failure": {
+    "message": "Échec de la génération",
+    "description": "Titre de l'échec"
+  },
+  "name.failureReason": {
+    "message": "Raison de l'échec",
+    "description": "Étiquette de la raison de l'échec"
+  },
+  "name.status": {
+    "message": "Statut",
+    "description": "Titre du statut"
+  },
+  "description.prompt": {
+    "message": "Décrivez la vidéo que vous souhaitez générer (scène, sujet, action, plan, lumière, style).",
+    "description": "Instructions pour l'entrée de prompt"
+  },
+  "description.model": {
+    "message": "Sélectionnez le modèle Omni. omni-flash prend en charge les vidéos générées par texte et par image ; 1.5-preview prend uniquement en charge les vidéos générées par image.",
+    "description": "Instructions pour la sélection du modèle"
+  },
+  "description.ratio": {
+    "message": "Sélectionnez le rapport d'aspect de sortie.",
+    "description": "Instructions pour le rapport d'aspect"
+  },
+  "description.resolution": {
+    "message": "Sélectionnez la résolution de sortie. Plus la résolution est élevée, plus le quota consommé par seconde est important.",
+    "description": "Instructions pour la résolution"
+  },
+  "description.duration": {
+    "message": "Durée de la vidéo (secondes), facturée par seconde de sortie.",
+    "description": "Instructions pour la durée"
+  },
+  "description.image": {
+    "message": "Image d'entrée optionnelle pour générer une vidéo. omni-flash est requis.",
+    "description": "Instructions pour l'entrée d'image"
+  },
+  "description.referenceImages": {
+    "message": "Optional reference images to guide the style or content of the generated video (omni-flash only).",
+    "description": "Instructions for reference images"
+  },
+  "placeholder.prompt": {
+    "message": "Décrivez votre vidéo…",
+    "description": "Espace réservé pour l'invite"
+  },
+  "placeholder.select": {
+    "message": "Veuillez sélectionner",
+    "description": "Espace réservé pour les sélections"
+  },
+  "model.default": {
+    "message": "Omni Vidéo",
+    "description": "Étiquette du modèle par défaut"
+  },
+  "model.preview15": {
+    "message": "Omni Vidéo 1.5 (aperçu, vidéo générée par image)",
+    "description": "Étiquette du modèle 1.5 aperçu"
+  },
+  "button.upload": {
+    "message": "Téléverser",
+    "description": "Bouton de téléversement"
+  },
+  "button.generate": {
+    "message": "Générer",
+    "description": "Bouton de génération"
+  },
+  "button.download": {
+    "message": "Télécharger",
+    "description": "Bouton de téléchargement"
+  },
+  "status.pending": {
+    "message": "En attente",
+    "description": "Statut en attente"
+  },
+  "status.processing": {
+    "message": "En cours de génération",
+    "description": "Statut de traitement"
+  },
+  "message.uploadExceed": {
+    "message": "Vous ne pouvez téléverser qu'une seule image.",
+    "description": "Avertissement sur le dépassement de téléversement"
+  },
+  "message.uploadReferenceExceed": {
+    "message": "You can upload up to 4 reference images.",
+    "description": "Reference images upload exceed warning"
+  },
+  "message.uploadError": {
+    "message": "Échec du téléversement de l'image, veuillez réessayer.",
+    "description": "Erreur de téléversement"
+  },
+  "message.downloadVideo": {
+    "message": "Télécharger la vidéo",
+    "description": "Infobulle de téléchargement"
+  },
+  "message.modelRequiresImage": {
+    "message": "Ce modèle nécessite une image d'entrée (vidéo générée par image).",
+    "description": "Avertissement sur le modèle nécessitant une image"
+  },
+  "message.promptOrImageRequired": {
+    "message": "Veuillez entrer un prompt ou téléverser une image.",
+    "description": "Avertissement sur le prompt ou l'image requis"
+  },
+  "message.startingTask": {
+    "message": "Soumission de la tâche de génération de vidéo…",
+    "description": "Démarrage de la tâche"
+  },
+  "message.startTaskSuccess": {
+    "message": "Soumission de la tâche réussie.",
+    "description": "Succès de la tâche"
+  },
+  "message.startTaskFailed": {
+    "message": "Échec de la soumission de la tâche :",
+    "description": "Échec de la tâche"
+  },
+  "message.usedUp": {
+    "message": "Quota épuisé, veuillez acheter pour continuer à utiliser.",
+    "description": "Épuisé"
+  },
+  "name.referenceVideo": {
+    "message": "Reference Video",
+    "description": "Reference/editable video for Omni video editing"
+  },
+  "description.referenceVideo": {
+    "message": "Optional MP4/MOV (≤200MB) to edit or reference an existing video. Requires at least one reference image.",
+    "description": "Help text for the reference video uploader"
+  },
+  "button.uploadVideo": {
+    "message": "Upload Video",
+    "description": "Button to upload the reference video"
+  },
+  "message.uploadVideoExceed": {
+    "message": "You can upload a maximum of 1 reference video",
+    "description": "Error when more than one reference video is uploaded"
+  },
+  "message.uploadVideoError": {
+    "message": "Reference video upload failed, please try again later",
+    "description": "Error when the reference video upload fails"
+  },
+  "message.uploadVideoTypeFailed": {
+    "message": "Uploaded file must be in MP4 or MOV format!",
+    "description": "Error when the reference video is not MP4/MOV"
+  },
+  "message.uploadVideoSizeExceed": {
+    "message": "Uploaded file size cannot exceed 200MB!",
+    "description": "Error when the reference video exceeds 200MB"
+  },
+  "message.promptRequired": {
+    "message": "Please enter a prompt.",
+    "description": "Validation when prompt is empty"
+  },
+  "message.videoRequiresImage": {
+    "message": "Please add at least one reference image when using a reference video.",
+    "description": "Validation when video_urls has no reference image"
+  }
+}
