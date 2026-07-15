@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 05:48:21 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 08:22:49 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.1
+
+Wed, 15 Jul 2026 08:22:49 GMT
+
+### Patches
+
+- Show loading feedback while historical conversations are restored (dev@acedata.cloud)
 
 ## 3.329.0
 
