@@ -28,6 +28,12 @@ export interface IMemoryProfile {
   enabled: boolean;
 }
 
+export interface IMemoryImportResult {
+  processed: number;
+  rejected: number;
+  total: number;
+}
+
 class MemoriesOperator {
   async getProfile(token: string): Promise<IMemoryProfile> {
     const { data } = await axios.post(BASE, { action: 'list' }, { headers: headers(token) });
@@ -40,6 +46,15 @@ class MemoriesOperator {
   async setEnabled(token: string, enabled: boolean): Promise<boolean> {
     const { data } = await axios.post(BASE, { action: 'set_enabled', enabled }, { headers: headers(token) });
     return data?.enabled !== false;
+  }
+
+  async importText(token: string, text: string): Promise<IMemoryImportResult> {
+    const { data } = await axios.post(BASE, { action: 'import', text }, { headers: headers(token) });
+    return {
+      processed: data?.processed ?? 0,
+      rejected: data?.rejected ?? 0,
+      total: data?.total ?? 0
+    };
   }
 
   async remove(token: string, id: string): Promise<boolean> {
