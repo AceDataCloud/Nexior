@@ -47,7 +47,6 @@ const PATH_TO_STORE: Record<string, string> = {
   'nano-banana': 'nanobanana',
   flux: 'flux',
   qrart: 'qrart',
-  headshots: 'headshots',
   pika: 'pika',
   pixverse: 'pixverse',
   seedance: 'seedance',

@@ -19,7 +19,7 @@ describe('capability metadata', () => {
       expect(CAPABILITY_ICONS[feature], feature).toBeTruthy();
     }
     expect(CAPABILITY_KEYS).toContain('omni');
-    expect(CAPABILITY_ICONS.headshots).toBeTruthy();
+    expect(CAPABILITY_KEYS).not.toContain('headshots');
   });
 
   it('provides a localized service introduction for every capability', () => {

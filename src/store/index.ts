@@ -4,7 +4,7 @@ import root from './common';
 import persistRoot from './common/persist';
 
 // Per-app store modules (chat / midjourney / qrart / luma / pika / kling /
-// veo / sora / pixverse / flux / hailuo / headshots / suno / producer /
+// veo / sora / pixverse / flux / hailuo / suno / producer /
 // nanobanana / openaiimage / seedream / seedance / serp / wan) are
 // registered lazily at navigation time — see `src/store/lazy.ts` and the
 // router's `beforeEach` hook in `src/router/index.ts`. Only the root
