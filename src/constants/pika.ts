@@ -1,4 +1,5 @@
 export const PIKA_SERVICE_ID = 'c7d407fa-0f87-4031-abbb-4f0716ff51ad';
+export const PIKA_LOGO = 'https://cdn.acedata.cloud/4b285de64f.svg';
 
 export const PIKA_DEFAULT_MODEL = '2.0';
 export const PIKA_DEFAULT_INGREDIENTS_MODEL = 'creative';
