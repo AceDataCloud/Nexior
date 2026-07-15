@@ -34,8 +34,30 @@
         :share-id="conversation?.share_id"
         @update:share-id="onShareIdUpdated"
       />
-      <div :class="{ dialogue: true, empty: messages.length === 0 }">
-        <div v-if="messages.length > 0" class="messages">
+      <div :class="{ dialogue: true, empty: messages.length === 0 && !restoringConversation }">
+        <div
+          v-if="restoringConversation"
+          class="conversation-loading"
+          role="status"
+          aria-live="polite"
+          :aria-label="$t('common.status.loading')"
+        >
+          <div class="conversation-loading-label">
+            <span class="conversation-loading-spinner" aria-hidden="true"></span>
+            <span>{{ $t('common.status.loading') }}</span>
+          </div>
+          <el-skeleton v-for="item in 3" :key="item" animated class="conversation-loading-row">
+            <template #template>
+              <el-skeleton-item variant="circle" class="conversation-loading-avatar" />
+              <div class="conversation-loading-content">
+                <el-skeleton-item variant="text" :style="{ width: item === 2 ? '42%' : '68%' }" />
+                <el-skeleton-item variant="text" :style="{ width: item === 2 ? '72%' : '88%' }" />
+                <el-skeleton-item variant="text" :style="{ width: item === 2 ? '56%' : '61%' }" />
+              </div>
+            </template>
+          </el-skeleton>
+        </div>
+        <div v-else-if="messages.length > 0" class="messages">
           <message
             v-for="(message, messageIndex) in messages"
             :key="messageIndex"
@@ -110,7 +132,7 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator, agentOperator } from '@/operators';
-import { ElTooltip, ElButton } from 'element-plus';
+import { ElButton, ElSkeleton, ElSkeletonItem, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export interface IData {
@@ -133,6 +155,7 @@ export interface IData {
   agentToolCount: number;
   agentConnectedAt: string;
   shareDialogVisible: boolean;
+  restoringConversationId: string | undefined;
   /**
    * Set right before pushing the URL for a freshly-completed chat so the
    * `conversationId` watcher can recognise the change as “already loaded
@@ -175,8 +198,10 @@ export default defineComponent({
     ShareConversationDialog,
     Message,
     Layout,
-    ElTooltip,
     ElButton,
+    ElSkeleton,
+    ElSkeletonItem,
+    ElTooltip,
     FontAwesomeIcon
   },
   data(): IData {
@@ -196,6 +221,7 @@ export default defineComponent({
       agentToolCount: 0,
       agentConnectedAt: '',
       shareDialogVisible: false,
+      restoringConversationId: undefined,
       skipNextRestoreId: undefined,
       messages: [],
       pendingConsentReturn: null
@@ -215,6 +241,9 @@ export default defineComponent({
       return this.$store.state.chat.conversations?.find(
         (conversation: IChatConversation) => conversation.id === this.conversationId
       );
+    },
+    restoringConversation(): boolean {
+      return !!this.conversationId && this.restoringConversationId === this.conversationId;
     },
     service() {
       return this.$store.state.chat.service;
@@ -241,6 +270,7 @@ export default defineComponent({
       return this.$store.state.chat.status.getApplications === Status.Request;
     },
     ready(): boolean {
+      if (this.restoringConversation) return false;
       // Guests may compose & "send" — the submit handler triggers login
       // (deferred auth), so the composer must not be disabled for them.
       if (!this.$store.getters.authenticated) {
@@ -334,6 +364,7 @@ export default defineComponent({
   },
   methods: {
     resetConversation() {
+      this.restoringConversationId = undefined;
       this.messages = [];
       this.question = '';
       this.references = [];
@@ -625,18 +656,28 @@ export default defineComponent({
       //    Side-panel summaries do NOT include `messages`, so we always
       //    need a `retrieve` call the first time a conversation is opened.
       let conversation: IChatConversation | undefined = this.conversations?.find((c: IChatConversation) => c.id === id);
-      if (!hasLoadedConversationMessages(conversation)) {
-        const fetched = await this.$store.dispatch('chat/getConversation', id);
-        if (fetched) conversation = fetched;
+      const needsFetch = !hasLoadedConversationMessages(conversation);
+      if (needsFetch) {
+        this.messages = [];
+        this.restoringConversationId = id;
       }
-      // 2. Switch model + model group to whatever this conversation used.
-      const model = conversation?.model;
-      const targetModel = CHAT_MODELS.find((m) => m.name === model);
-      const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
-      if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
-      if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
-      this.messages = conversation?.messages || [];
-      this.onScrollDown();
+      try {
+        if (needsFetch) {
+          const fetched = await this.$store.dispatch('chat/getConversation', id);
+          if (fetched) conversation = fetched;
+        }
+        if (this.conversationId !== id) return;
+        // 2. Switch model + model group to whatever this conversation used.
+        const model = conversation?.model;
+        const targetModel = CHAT_MODELS.find((m) => m.name === model);
+        const targetModelGroup = CHAT_MODEL_GROUPS.find((g) => g.name === targetModel?.modelGroup);
+        if (targetModelGroup) this.$store.dispatch('chat/setModelGroup', targetModelGroup);
+        if (targetModel) this.$store.dispatch('chat/setModel', targetModel);
+        this.messages = conversation?.messages || [];
+        this.onScrollDown();
+      } finally {
+        if (this.restoringConversationId === id) this.restoringConversationId = undefined;
+      }
     },
     async onChangeConversation(id?: string) {
       console.log('onChangeConversation in conversation', id);
@@ -656,6 +697,7 @@ export default defineComponent({
       await this.$router.push(this.conversationsPath(target));
     },
     async onSubmit() {
+      if (this.restoringConversation) return;
       // Deferred auth: a guest hitting send is sent to login here, before we
       // mutate `messages`, so they return to a clean composer post-login.
       if (!ensureLoggedIn()) {
@@ -1639,6 +1681,49 @@ export default defineComponent({
       margin-bottom: 15px;
     }
   }
+  .conversation-loading {
+    width: 100%;
+    max-width: 800px;
+    margin: 72px auto 0;
+    padding: 0 12px;
+    flex: 1;
+  }
+  .conversation-loading-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    color: var(--el-text-color-secondary);
+    font-size: 13px;
+  }
+  .conversation-loading-spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--el-border-color);
+    border-top-color: var(--el-color-primary);
+    border-radius: 50%;
+    animation: conversation-loading-spin 0.8s linear infinite;
+  }
+  .conversation-loading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 32px;
+    --el-skeleton-color: color-mix(in srgb, var(--el-text-color-primary) 16%, transparent);
+    --el-skeleton-to-color: color-mix(in srgb, var(--el-text-color-primary) 28%, transparent);
+  }
+  .conversation-loading-avatar {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+  .conversation-loading-content {
+    width: min(620px, calc(100% - 44px));
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
   .starter {
     height: fit-content;
     overflow: hidden;
@@ -1647,6 +1732,12 @@ export default defineComponent({
       width: 100%;
       padding: 0 12px 8px;
     }
+  }
+}
+
+@keyframes conversation-loading-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
