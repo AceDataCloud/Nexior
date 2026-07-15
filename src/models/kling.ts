@@ -99,6 +99,7 @@ export interface IKlingGenerateRequest {
   mode?: string;
   model?: string;
   video_id?: string;
+  video_url?: string;
   prompt?: string;
   start_image_url?: string;
   end_image_url?: string;
@@ -141,7 +142,7 @@ export interface IKlingTask {
   created_at?: number;
   elapsed?: number;
   type?: IKlingTaskType;
-  request?: IKlingGenerateRequest & IKlingMotionRequest;
+  request?: Partial<IKlingGenerateRequest & IKlingMotionRequest & IKlingTalkingPhotoRequest>;
   response?: IKlingGenerateResponse;
 }
 

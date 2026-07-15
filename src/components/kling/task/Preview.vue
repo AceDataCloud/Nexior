@@ -12,15 +12,27 @@
       </div>
       <div class="info">
         <div
-          v-if="referenceImages.length > 0"
+          v-if="referenceImages.length > 0 || referenceVideos.length > 0 || referenceAudios.length > 0"
           class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
         >
           <image-preview
             v-for="(image, idx) in referenceImages"
-            :key="idx"
+            :key="`image-${idx}`"
             :url="image.url"
             :name="image.name"
             :closable="false"
+          />
+          <video-preview
+            v-for="(video, idx) in referenceVideos"
+            :key="`video-${idx}`"
+            :url="video.url"
+            :name="video.name"
+          />
+          <audio-preview
+            v-for="(audio, idx) in referenceAudios"
+            :key="`audio-${idx}`"
+            :url="audio.url"
+            :name="audio.name"
           />
         </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
@@ -139,6 +151,8 @@ import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
 import ImagePreview from '@/components/common/ImagePreview.vue';
+import VideoPreview from '@/components/common/VideoPreview.vue';
+import AudioPreview from '@/components/common/AudioPreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
@@ -152,6 +166,8 @@ export default defineComponent({
     ElTooltip,
     ElButton,
     ImagePreview,
+    VideoPreview,
+    AudioPreview,
     ApiCodeButton
   },
   props: {
@@ -174,13 +190,35 @@ export default defineComponent({
       const images: { url: string; name: string }[] = [];
       const startImageUrl = this.modelValue?.request?.start_image_url;
       const endImageUrl = this.modelValue?.request?.end_image_url;
+      const imageUrl = this.modelValue?.request?.image_url;
       if (startImageUrl) {
         images.push({ url: startImageUrl, name: 'start-image' });
       }
       if (endImageUrl) {
         images.push({ url: endImageUrl, name: 'end-image' });
       }
+      if (imageUrl) {
+        images.push({ url: imageUrl, name: 'reference-image' });
+      }
       return images;
+    },
+    referenceVideos(): { url: string; name: string }[] {
+      const videos: { url: string; name: string }[] = [];
+      const videoUrl = this.modelValue?.request?.video_url;
+      if (videoUrl) {
+        videos.push({ url: videoUrl, name: 'reference-video' });
+      }
+      const videoList = this.modelValue?.request?.video_list;
+      (Array.isArray(videoList) ? videoList : []).forEach((video, idx) => {
+        if (video?.video_url) {
+          videos.push({ url: video.video_url, name: `reference-video-${idx + 1}` });
+        }
+      });
+      return videos;
+    },
+    referenceAudios(): { url: string; name: string }[] {
+      const audioUrl = this.modelValue?.request?.audio_url;
+      return audioUrl ? [{ url: audioUrl, name: 'reference-audio' }] : [];
     }
   },
   methods: {
