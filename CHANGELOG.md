@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 11:22:28 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 13:18:52 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.4
+
+Wed, 15 Jul 2026 13:18:52 GMT
+
+### Patches
+
+- Add Omni to Capabilities and give AI ID Photo a dedicated favicon. (dev@acedata.cloud)
 
 ## 3.329.3
 
