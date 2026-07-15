@@ -20,9 +20,14 @@
     <template v-else>
       <div class="section-head">
         <h3>{{ $t('common.settings.memoryStored') }}</h3>
-        <el-button v-if="entries.length" size="small" text type="danger" :loading="clearing" @click="onClearAll">
-          {{ $t('common.settings.memoryClearAll') }}
-        </el-button>
+        <div class="section-actions">
+          <el-button size="small" :disabled="!memoryEnabled" @click="openImport">
+            {{ $t('common.settings.memoryImport') }}
+          </el-button>
+          <el-button v-if="entries.length" size="small" text type="danger" :loading="clearing" @click="onClearAll">
+            {{ $t('common.settings.memoryClearAll') }}
+          </el-button>
+        </div>
       </div>
 
       <div v-loading="loading">
@@ -38,12 +43,43 @@
         </ul>
       </div>
     </template>
+
+    <el-dialog
+      v-model="importVisible"
+      :title="$t('common.settings.memoryImportTitle')"
+      width="min(640px, 92vw)"
+      append-to-body
+    >
+      <div class="import-step">
+        <div class="import-step-title">{{ $t('common.settings.memoryImportExportStep') }}</div>
+        <el-input :model-value="importPrompt" type="textarea" :rows="7" readonly resize="none" />
+        <el-button size="small" @click="copyImportPrompt">{{ $t('common.settings.memoryImportCopy') }}</el-button>
+      </div>
+      <div class="import-step">
+        <div class="import-step-title">{{ $t('common.settings.memoryImportPasteStep') }}</div>
+        <el-input
+          v-model="importText"
+          type="textarea"
+          :rows="9"
+          :maxlength="50000"
+          show-word-limit
+          :placeholder="$t('common.settings.memoryImportPlaceholder')"
+        />
+      </div>
+      <template #footer>
+        <el-button @click="importVisible = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button type="primary" :disabled="!importText.trim()" :loading="importing" @click="onImport">
+          {{ $t('common.settings.memoryImportSubmit') }}
+        </el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElEmpty, ElMessage, ElMessageBox, ElSwitch, vLoading } from 'element-plus';
+import copy from 'copy-to-clipboard';
+import { ElButton, ElDialog, ElEmpty, ElInput, ElMessage, ElMessageBox, ElSwitch, vLoading } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { memoriesOperator, type IMemoryEntry } from '@/operators/memories';
 import type { ICredential } from '@/models';
@@ -51,7 +87,7 @@ import { ensureStoreModule } from '@/store/lazy';
 
 export default defineComponent({
   name: 'MemorySetting',
-  components: { ElButton, ElEmpty, ElSwitch, FontAwesomeIcon },
+  components: { ElButton, ElDialog, ElEmpty, ElInput, ElSwitch, FontAwesomeIcon },
   directives: { loading: vLoading },
   data() {
     return {
@@ -60,12 +96,18 @@ export default defineComponent({
       removingId: null as string | null,
       memoryReady: false,
       updatingMemory: false,
+      importVisible: false,
+      importing: false,
+      importText: '',
       entries: [] as IMemoryEntry[]
     };
   },
   computed: {
     memoryEnabled(): boolean {
       return this.$store?.state?.chat?.memoryEnabled !== false;
+    },
+    importPrompt(): string {
+      return this.$t('common.settings.memoryImportPrompt') as string;
     },
     // Chat-Application credential token. The chat module is lazy-loaded
     // elsewhere; until it resolves the token can be undefined and we keep
@@ -91,6 +133,51 @@ export default defineComponent({
     if (this.token) await this.fetch();
   },
   methods: {
+    openImport() {
+      this.importText = '';
+      this.importVisible = true;
+    },
+    async copyImportPrompt() {
+      try {
+        if (await copy(this.importPrompt)) {
+          ElMessage.success(this.$t('common.settings.memoryImportCopied'));
+          return;
+        }
+      } catch (error) {
+        console.error('failed to copy memory import prompt', error);
+      }
+      ElMessage.error(this.$t('common.message.copyFailed'));
+    },
+    async onImport() {
+      if (!this.token || !this.importText.trim()) return;
+      this.importing = true;
+      try {
+        const result = await memoriesOperator.importText(this.token, this.importText.trim());
+        this.importVisible = false;
+        this.importText = '';
+        await this.fetch();
+        if (result.rejected > 0) {
+          ElMessage.warning(
+            this.$t('common.settings.memoryImportPartial', {
+              processed: result.processed,
+              rejected: result.rejected
+            })
+          );
+        } else {
+          ElMessage.success(this.$t('common.settings.memoryImportSuccess', { count: result.processed }));
+        }
+      } catch (error) {
+        console.error('failed to import memories', error);
+        const status = (error as { response?: { status?: number } })?.response?.status;
+        if (status === 400) {
+          ElMessage.error(this.$t('common.settings.memoryImportInvalid'));
+        } else {
+          ElMessage.error(this.$t('common.settings.memoryError'));
+        }
+      } finally {
+        this.importing = false;
+      }
+    },
     async onMemoryEnabledChange(value: string | number | boolean) {
       await ensureStoreModule('chat');
       if (!this.token) return;
@@ -208,6 +295,12 @@ export default defineComponent({
     }
   }
 
+  .section-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
   // Bordered card so the list reads as one contained group instead of text
   // running flush against the dialog; rows are separated by hairline dividers.
   .rows {
@@ -252,5 +345,18 @@ export default defineComponent({
       flex-shrink: 0;
     }
   }
+}
+
+.import-step + .import-step {
+  margin-top: 20px;
+}
+
+.import-step-title {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.import-step :deep(.el-button) {
+  margin-top: 8px;
 }
 </style>

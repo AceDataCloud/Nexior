@@ -879,6 +879,54 @@
     "message": "已保存的记忆",
     "description": "已存储记忆条目列表上方的分区标题"
   },
+  "settings.memoryImport": {
+    "message": "导入",
+    "description": "打开记忆导入弹窗的按钮"
+  },
+  "settings.memoryImportTitle": {
+    "message": "从其他 AI 导入记忆",
+    "description": "记忆导入弹窗标题"
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. 让当前使用的 AI 导出记忆",
+    "description": "记忆导入弹窗第一步标题"
+  },
+  "settings.memoryImportPrompt": {
+    "message": "我要迁移到另一个 AI 服务。请列出你保存的关于我的每一条记忆，以及从过往对话中学到的持久信息。把全部内容放在一个代码块中，每行只写一条记忆，格式为：[保存日期，如有] - 记忆内容。请包括回复偏好、个人信息、项目、目标、常用工具、语言、框架，以及我对你做过的纠正。尽量保留我的原话，不要包含密码、密钥等敏感信息。",
+    "description": "复制到其他 AI 服务中用于导出记忆的提示词"
+  },
+  "settings.memoryImportCopy": {
+    "message": "复制提示词",
+    "description": "复制记忆导出提示词的按钮"
+  },
+  "settings.memoryImportCopied": {
+    "message": "提示词已复制",
+    "description": "成功复制记忆导出提示词后的提示"
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. 粘贴导出的记忆",
+    "description": "记忆导入弹窗第二步标题"
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "粘贴 ChatGPT、Claude、Gemini 或其他 AI 返回的记忆内容…",
+    "description": "粘贴导出记忆内容的输入框占位文字"
+  },
+  "settings.memoryImportSubmit": {
+    "message": "添加到记忆",
+    "description": "提交粘贴内容进行导入的按钮"
+  },
+  "settings.memoryImportSuccess": {
+    "message": "已处理 {count} 条记忆，请在下方检查保存结果。",
+    "description": "记忆导入成功提示，count 为去重和容量限制前通过校验的输入条目数"
+  },
+  "settings.memoryImportPartial": {
+    "message": "已处理 {processed} 条内容，另有 {rejected} 条不安全或无效内容已跳过。",
+    "description": "部分记忆导入成功时显示的警告"
+  },
+  "settings.memoryImportInvalid": {
+    "message": "未能导入记忆。请确认记忆已开启，并按每行一条普通事实的格式粘贴。",
+    "description": "记忆导入请求无效时显示的可操作错误提示"
+  },
   "settings.memoryEmpty": {
     "message": "暂无保存的记忆。随着你的使用，助手会在这里记住持久的偏好和信息。",
     "description": "用户没有任何已存储记忆时显示的空状态"
