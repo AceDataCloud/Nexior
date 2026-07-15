@@ -37,7 +37,9 @@ const mountComponent = () =>
   shallowMount(ScheduledTasks, {
     global: {
       stubs: {
-        ElCard: { template: '<div><slot /></div>' }
+        ElCard: { template: '<div><slot /></div>' },
+        ElDrawer: { template: '<div><slot /></div>' },
+        ElTag: { template: '<span><slot /></span>' }
       },
       mocks: {
         $t: (key: string) => errorMessages[key] ?? key,
@@ -132,5 +134,23 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.editingTask).toMatchObject({ id: editedTask.id });
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
+  });
+
+  it('shows scheduled runs that are waiting for a browser device', async () => {
+    const wrapper = mountComponent();
+    await wrapper.setData({
+      selectedTask: editedTask,
+      showRunHistory: true,
+      runs: [
+        {
+          id: 'run-1',
+          task_id: editedTask.id,
+          status: 'waiting_for_device',
+          scheduled_at: 1
+        }
+      ]
+    });
+
+    expect(wrapper.text()).toContain('chat.scheduledTasks.run.waiting_for_device');
   });
 });

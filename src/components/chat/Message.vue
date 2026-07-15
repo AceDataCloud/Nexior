@@ -63,6 +63,7 @@
               <tool-activity
                 v-if="
                   item.type === 'tool_use' &&
+                  item.execution !== 'browser' &&
                   !(
                     item.tool_name === 'ask_user_question' &&
                     (item.status === 'awaiting_input' || item.status === 'done')
@@ -74,6 +75,7 @@
                 "
                 :item="item"
               />
+              <browser-tool-activity v-if="item.type === 'tool_use' && item.execution === 'browser'" :item="item" />
               <ask-user-question-card
                 v-if="
                   item.type === 'tool_use' &&
@@ -201,6 +203,7 @@ import RestartToGenerate from './RestartToGenerate.vue';
 import EditMessage from './EditMessage.vue';
 import FilePreview from '@/components/common/FilePreview.vue';
 import ToolActivity from './ToolActivity.vue';
+import BrowserToolActivity from './BrowserToolActivity.vue';
 import EntityCard from './EntityCard.vue';
 import ThinkingBlock from './ThinkingBlock.vue';
 import AskUserQuestionCard from './AskUserQuestionCard.vue';
@@ -238,6 +241,7 @@ export default defineComponent({
     MarkdownRenderer,
     FilePreview,
     ToolActivity,
+    BrowserToolActivity,
     EntityCard,
     ThinkingBlock,
     AskUserQuestionCard,

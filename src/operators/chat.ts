@@ -12,6 +12,7 @@ import {
 } from '@/models';
 import { BASE_URL_API, ERROR_CODE_API_ERROR, ERROR_CODE_CONTENT_TOO_LARGE } from '@/constants';
 import { currentSiteOrigin } from '@/utils';
+import { isBrowserToolExecutionState, sanitizeBrowserOrigin } from '@/utils/browserToolExecution';
 
 /**
  * Headers carrying the calling Site's bare host. Shared with
@@ -89,6 +90,10 @@ class ChatOperator {
               }
               try {
                 const json = JSON.parse(subValue);
+                const browserState =
+                  json.execution_state ??
+                  json.browser_state ??
+                  (json.execution === 'browser' || json.type === 'browser_execution' ? json.state : undefined);
                 if (json.delta_answer) {
                   finalAnswer += json.delta_answer;
                 }
@@ -115,7 +120,11 @@ class ChatOperator {
                     tool_id: json.tool_id,
                     tool_name: json.tool_name,
                     tool_display_name: json.tool_display_name,
-                    execution: json.execution,
+                    execution: json.type === 'browser_execution' ? 'browser' : json.execution,
+                    execution_state: isBrowserToolExecutionState(browserState) ? browserState : undefined,
+                    execution_sequence:
+                      typeof json.execution_sequence === 'number' ? json.execution_sequence : undefined,
+                    origin: sanitizeBrowserOrigin(json.origin),
                     input: json.input,
                     // Streamed tool-call arguments text (`tool_progress`); without
                     // this the running tool block renders empty while the model

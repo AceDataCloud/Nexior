@@ -575,6 +575,50 @@
     "message": "已跳过连接器授权",
     "description": "用户跳过授权后的卡片底部说明"
   },
+  "browserTool.title": {
+    "message": "浏览器活动",
+    "description": "BrowserDevice 工具活动的默认标题"
+  },
+  "browserTool.state.choose_device": {
+    "message": "请选择浏览器设备",
+    "description": "尚未选择浏览器设备"
+  },
+  "browserTool.state.device_offline": {
+    "message": "浏览器设备已离线",
+    "description": "所选浏览器设备不在线"
+  },
+  "browserTool.state.awaiting_device": {
+    "message": "正在等待浏览器设备",
+    "description": "等待浏览器设备接收任务"
+  },
+  "browserTool.state.awaiting_local_approval": {
+    "message": "请在浏览器设备上批准",
+    "description": "等待本地浏览器设备批准操作"
+  },
+  "browserTool.state.takeover_required": {
+    "message": "请在浏览器设备上接管",
+    "description": "需要用户在本地浏览器设备上接管操作"
+  },
+  "browserTool.state.executing": {
+    "message": "正在浏览器中执行",
+    "description": "浏览器设备正在执行工具"
+  },
+  "browserTool.state.completed": {
+    "message": "已完成",
+    "description": "浏览器工具执行完成"
+  },
+  "browserTool.state.denied": {
+    "message": "已在浏览器设备上拒绝",
+    "description": "用户在本地浏览器设备上拒绝操作"
+  },
+  "browserTool.state.expired": {
+    "message": "浏览器请求已过期",
+    "description": "浏览器工具执行请求已过期"
+  },
+  "browserTool.state.cancel_too_late": {
+    "message": "已无法取消",
+    "description": "操作已产生副作用，取消请求过晚"
+  },
   "scheduledTasks.navTitle": {
     "message": "定时任务",
     "description": "侧边栏定时任务入口"
@@ -726,6 +770,10 @@
   "scheduledTasks.run.needs_user_input": {
     "message": "需要操作",
     "description": "需要用户操作状态"
+  },
+  "scheduledTasks.run.waiting_for_device": {
+    "message": "等待浏览器设备",
+    "description": "定时任务正在等待浏览器设备上线"
   },
   "scheduledTasks.scheduleType.daily": {
     "message": "每天",

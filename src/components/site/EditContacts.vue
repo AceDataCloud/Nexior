@@ -19,11 +19,7 @@
             {{ $t('common.button.delete') }}
           </el-button>
         </div>
-        <el-input
-          v-model="row.label"
-          class="row-field"
-          :placeholder="$t('common.settings.contactLabelPlaceholder')"
-        />
+        <el-input v-model="row.label" class="row-field" :placeholder="$t('common.settings.contactLabelPlaceholder')" />
         <el-input v-model="row.value" class="row-field" :placeholder="valuePlaceholder(row.type)" />
         <el-input v-model="row.url" class="row-field" placeholder="https://..." />
         <div class="qr-row">
@@ -43,9 +39,7 @@
         </div>
       </div>
     </div>
-    <el-button class="add-btn" :icon="Plus" @click="addRow">{{
-      $t('common.settings.contactAdd')
-    }}</el-button>
+    <el-button class="add-btn" :icon="Plus" @click="addRow">{{ $t('common.settings.contactAdd') }}</el-button>
     <template #footer>
       <span class="dialog-footer">
         <el-button round @click="onCancel">{{ $t('common.button.cancel') }}</el-button>
