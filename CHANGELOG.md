@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 15:45:08 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 15:57:01 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.7
+
+Wed, 15 Jul 2026 15:57:01 GMT
+
+### Patches
+
+- Improve Veo action tabs and model-aware generation inputs (dev@acedata.cloud)
 
 ## 3.329.6
 
