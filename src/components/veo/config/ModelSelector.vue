@@ -1,7 +1,7 @@
 <template>
   <div class="field">
     <h2 class="title font-bold">{{ $t('veo.name.model') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('veo.placeholder.select')">
+    <el-select v-model="value" class="value" :placeholder="$t('veo.placeholder.select')" :disabled="isModelLocked">
       <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
     </el-select>
   </div>
@@ -11,6 +11,7 @@
 import { defineComponent } from 'vue';
 import { ElSelect, ElOption } from 'element-plus';
 import { VEO_DEFAULT_MODEL } from '@/constants';
+import { VEO_GENERATION_MODELS, VEO_INGREDIENTS_MODEL } from '@/utils/veo/config';
 
 export default defineComponent({
   name: 'ModelSelector',
@@ -18,48 +19,16 @@ export default defineComponent({
     ElSelect,
     ElOption
   },
-  props: {
-    modelValue: {
-      type: String,
-      default: undefined
-    }
-  },
-  emits: ['update:modelValue'],
-  data() {
-    return {
-      options: [
-        {
-          value: 'veo2',
-          label: 'veo2'
-        },
-        {
-          value: 'veo2-fast',
-          label: 'veo2-fast'
-        },
-        {
-          value: 'veo3',
-          label: 'veo3'
-        },
-        {
-          value: 'veo3-fast',
-          label: 'veo3-fast'
-        },
-        {
-          value: 'veo31-fast',
-          label: 'veo31-fast'
-        },
-        {
-          value: 'veo31',
-          label: 'veo31'
-        },
-        {
-          value: 'veo31-fast-ingredients',
-          label: 'veo31-fast-ingredients'
-        }
-      ]
-    };
-  },
   computed: {
+    isModelLocked() {
+      return this.$store.state.veo?.config?.action === 'ingredients2video';
+    },
+    options() {
+      if (this.isModelLocked) {
+        return [{ value: VEO_INGREDIENTS_MODEL, label: 'Veo 3.1 Fast' }];
+      }
+      return VEO_GENERATION_MODELS;
+    },
     value: {
       get() {
         return this.$store.state.veo?.config?.model;
@@ -93,7 +62,7 @@ export default defineComponent({
     width: 30%;
   }
   .value {
-    width: 120px;
+    flex: 1;
   }
 }
 </style>

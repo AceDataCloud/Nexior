@@ -1,14 +1,19 @@
 <template>
   <div class="flex flex-col h-full">
     <div class="flex-1 overflow-y-auto p-5">
-      <action-selector class="mb-4" />
+      <action-selector class="mb-5" />
 
-      <!-- Generation actions: text2video, image2video, ingredients2video -->
-      <translation-selector class="mb-4" />
-      <aspect-ratio-selector class="mb-4" />
+      <model-selector class="mb-4" />
+      <start-end-image
+        v-if="showsImages"
+        :key="config?.action"
+        class="mb-4"
+        :limit="imageLimit"
+        :ingredients="config?.action === 'ingredients2video'"
+      />
       <prompt-input class="mb-4" />
-      <model-selector v-if="config?.action !== 'ingredients2video'" class="mb-4" />
-      <start-end-image v-if="config?.action === 'image2video' || config?.action === 'ingredients2video'" class="mb-2" />
+      <aspect-ratio-selector class="mb-4" />
+      <translation-selector class="mb-2" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <consumption :value="consumption" :service="service" />
@@ -50,6 +55,12 @@ export default defineComponent({
   computed: {
     config() {
       return this.$store.state.veo?.config;
+    },
+    showsImages() {
+      return this.config?.action === 'image2video' || this.config?.action === 'ingredients2video';
+    },
+    imageLimit() {
+      return this.config?.action === 'ingredients2video' ? 3 : 2;
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);

@@ -1,24 +1,20 @@
 <template>
-  <div class="field">
-    <h2 class="title font-bold">{{ $t('veo.name.action') }}</h2>
-    <el-select v-model="value" class="value" :placeholder="$t('veo.placeholder.select')" clearable>
-      <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-        <span class="float-left">{{ item.label }}</span>
-      </el-option>
-    </el-select>
-  </div>
+  <el-tabs :model-value="value" class="action-tabs" stretch @update:model-value="onUpdate">
+    <el-tab-pane v-for="item in options" :key="item.value" :name="item.value" :label="item.label" />
+  </el-tabs>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSelect, ElOption } from 'element-plus';
+import { ElTabs, ElTabPane } from 'element-plus';
 import { VEO_DEFAULT_ACTION } from '@/constants';
+import { normalizeVeoConfigForAction, VeoAction } from '@/utils/veo/config';
 
 export default defineComponent({
   name: 'ActionSelector',
   components: {
-    ElSelect,
-    ElOption
+    ElTabs,
+    ElTabPane
   },
   data() {
     return {};
@@ -28,51 +24,80 @@ export default defineComponent({
       return [
         {
           value: 'text2video',
-          label: this.$t('veo.button.action1')
+          label: this.$t('veo.button.actionTabText')
         },
         {
           value: 'image2video',
-          label: this.$t('veo.button.action2')
+          label: this.$t('veo.button.actionTabImage')
         },
         {
           value: 'ingredients2video',
-          label: this.$t('veo.button.actionIngredients')
+          label: this.$t('veo.button.actionTabIngredients')
         }
       ];
     },
-    value: {
-      get() {
-        return this.$store.state.veo?.config?.action;
-      },
-      set(val: string) {
-        this.$store.commit('veo/setConfig', {
-          ...this.$store.state.veo?.config,
-          action: val
-        });
-      }
+    value() {
+      return this.$store.state.veo?.config?.action || VEO_DEFAULT_ACTION;
     }
   },
   mounted() {
-    if (!this.value) {
-      this.value = VEO_DEFAULT_ACTION;
+    if (!this.$store.state.veo?.config?.action) {
+      this.onUpdate(VEO_DEFAULT_ACTION);
+    }
+  },
+  methods: {
+    onUpdate(value: string | number) {
+      this.$store.commit(
+        'veo/setConfig',
+        normalizeVeoConfigForAction(this.$store.state.veo?.config, value as VeoAction)
+      );
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.field {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .title {
-    font-size: 14px;
+.action-tabs {
+  :deep(.el-tabs__header) {
     margin: 0;
-    width: 30%;
   }
-  .value {
+
+  :deep(.el-tabs__nav-wrap::after) {
+    height: 1px;
+  }
+
+  :deep(.el-tabs__nav-scroll) {
+    overflow: visible;
+  }
+
+  :deep(.el-tabs__nav) {
+    width: 100%;
+    transform: none !important;
+  }
+
+  :deep(.el-tabs__nav-prev),
+  :deep(.el-tabs__nav-next) {
+    display: none;
+  }
+
+  :deep(.el-tabs__active-bar) {
+    display: none;
+  }
+
+  :deep(.el-tabs__item) {
     flex: 1;
+    min-width: 0;
+    height: 40px;
+    padding: 0 6px;
+    border-bottom: 2px solid transparent;
+    font-size: 12px;
+    line-height: 40px;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  :deep(.el-tabs__item.is-active) {
+    border-bottom-color: var(--el-color-primary);
   }
 }
 </style>
