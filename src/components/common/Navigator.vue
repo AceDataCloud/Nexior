@@ -14,7 +14,13 @@
           :class="{ link: true, active: link.routes.includes($route.name as string) }"
         >
           <el-tooltip effect="dark" :content="link.displayName" :placement="direction === 'row' ? 'top' : 'right'">
-            <el-image v-if="link.logo" :src="link.logo" class="avatar" @click="$router.push(link.route)" />
+            <el-image
+              v-if="link.logo"
+              :src="link.logo"
+              class="avatar"
+              @error="onCapabilityIconError(link)"
+              @click="$router.push(link.route)"
+            />
           </el-tooltip>
         </div>
         <div v-if="overflowLinks.length > 0" :class="{ link: true, active: isOverflowActive }">
@@ -35,6 +41,7 @@
                     :src="link.logo"
                     class="folder-icon"
                     fit="cover"
+                    @error="onCapabilityIconError(link)"
                   />
                 </div>
               </div>
@@ -46,7 +53,13 @@
                 :class="{ 'overflow-item': true, active: link.routes.includes($route.name as string) }"
                 @click="onOverflowItemClick(link)"
               >
-                <el-image v-if="link.logo" :src="link.logo" class="overflow-avatar" fit="cover" />
+                <el-image
+                  v-if="link.logo"
+                  :src="link.logo"
+                  class="overflow-avatar"
+                  fit="cover"
+                  @error="onCapabilityIconError(link)"
+                />
                 <span class="overflow-name">{{ link.displayName }}</span>
               </div>
             </div>
@@ -144,6 +157,8 @@ import Logo from './Logo.vue';
 import UserCenter from '@/components/user/Center.vue';
 import { isMacOS } from '@/utils/surface';
 import { desktopBridge } from '@/utils/desktop';
+import { type CapabilityKey } from '@/constants/capabilities';
+import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
 
 interface NavLink {
   route: { name: string };
@@ -152,7 +167,41 @@ interface NavLink {
   icon?: string;
   routes: string[];
   category: string;
+  capability?: CapabilityKey;
+  defaultLogo?: string;
 }
+
+const NAV_CAPABILITY_BY_ROUTE: Partial<Record<string, CapabilityKey>> = {
+  [ROUTE_CHATGPT_CONVERSATION_NEW]: 'chatgpt',
+  [ROUTE_DEEPSEEK_CONVERSATION_NEW]: 'deepseek',
+  [ROUTE_GROK_CONVERSATION_NEW]: 'grok',
+  [ROUTE_GEMINI_CONVERSATION_NEW]: 'gemini',
+  [ROUTE_CLAUDE_CONVERSATION_NEW]: 'claude',
+  [ROUTE_KIMI_CONVERSATION_NEW]: 'kimi',
+  [ROUTE_MIDJOURNEY_INDEX]: 'midjourney',
+  [ROUTE_FLUX_INDEX]: 'flux',
+  [ROUTE_NANOBANANA_INDEX]: 'nanobanana',
+  [ROUTE_OPENAIIMAGE_INDEX]: 'openaiimage',
+  [ROUTE_SEEDREAM_INDEX]: 'seedream',
+  [ROUTE_SUNO_INDEX]: 'suno',
+  [ROUTE_PRODUCER_INDEX]: 'producer',
+  [ROUTE_FISH_TTS_INDEX]: 'fish',
+  [ROUTE_SEEDANCE_INDEX]: 'seedance',
+  [ROUTE_GROKVIDEO_INDEX]: 'grokvideo',
+  [ROUTE_OMNI_INDEX]: 'omni',
+  [ROUTE_LUMA_INDEX]: 'luma',
+  [ROUTE_HAILUO_INDEX]: 'hailuo',
+  [ROUTE_KLING_INDEX]: 'kling',
+  [ROUTE_VEO_INDEX]: 'veo',
+  [ROUTE_MAESTRO_INDEX]: 'maestro',
+  [ROUTE_DIGITALHUMAN_INDEX]: 'digitalhuman',
+  [ROUTE_SORA_INDEX]: 'sora',
+  [ROUTE_PIXVERSE_INDEX]: 'pixverse',
+  [ROUTE_WAN_INDEX]: 'wan',
+  [ROUTE_SERP_INDEX]: 'serp',
+  [ROUTE_WEBEXTRATOR_INDEX]: 'webextrator',
+  [ROUTE_CODING_BRIDGE_INDEX]: 'codingBridge'
+};
 
 export default defineComponent({
   name: 'Navigator',
@@ -179,6 +228,7 @@ export default defineComponent({
       containerHeight: 0,
       showOverflow: false,
       resizeObserver: null as ResizeObserver | null,
+      failedCapabilityIcons: {} as Partial<Record<CapabilityKey, boolean>>,
       // macOS native fullscreen hides the traffic lights, so the brand inset
       // must be dropped there. Fed by the Electron main fullscreen events.
       isFullscreen: false,
@@ -454,7 +504,24 @@ export default defineComponent({
           category: 'data'
         });
       }
-      return result;
+      return result.map((link) => {
+        const capability = NAV_CAPABILITY_BY_ROUTE[link.route.name];
+        if (!capability || !link.logo) return link;
+        const defaultLogo = link.logo;
+        const presentation = resolveCapabilityPresentation(
+          this.$store.state.site,
+          capability,
+          link.displayName,
+          defaultLogo
+        );
+        return {
+          ...link,
+          capability,
+          defaultLogo,
+          displayName: presentation.displayName,
+          logo: this.failedCapabilityIcons[capability] ? defaultLogo : presentation.iconUrl
+        };
+      });
     },
     authenticated() {
       return !!this.$store.state.token.access;
@@ -515,6 +582,11 @@ export default defineComponent({
     }
   },
   methods: {
+    onCapabilityIconError(link: NavLink): void {
+      if (link.capability && link.defaultLogo && link.logo !== link.defaultLogo) {
+        this.failedCapabilityIcons[link.capability] = true;
+      }
+    },
     // Frameless macOS desktop: the traffic lights sit over the top-left, so the
     // column rail insets its brand logo to clear them. isMacOS() reads the
     // Electron preload bridge, which only exists in the desktop shell.

@@ -1,3 +1,10 @@
+import type { CapabilityKey } from '@/constants/capabilities';
+
+export interface ISiteCapabilityFeature {
+  enabled?: boolean;
+  [key: string]: unknown;
+}
+
 export interface ISiteFeatures {
   chatgpt?: any;
   deepseek?: any;
@@ -32,6 +39,11 @@ export interface ISiteFeatures {
   codingBridge?: any;
   support?: any;
   subsite?: ISiteSubsiteFeature;
+}
+
+export interface ISiteCapabilityPresentation {
+  display_name?: string | null;
+  icon_url?: string | null;
 }
 
 export interface ISiteSubsiteFeature {
@@ -184,6 +196,7 @@ export interface ISite {
   title_source?: string;
   description_source?: string;
   auto_translated_fields?: string[];
+  capability_overrides?: Partial<Record<CapabilityKey, ISiteCapabilityPresentation>>;
 }
 
 export interface ISiteListResponse {

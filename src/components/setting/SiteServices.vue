@@ -256,7 +256,7 @@ import { serviceOperator, siteOperator, siteServiceOverrideOperator } from '@/op
 import type { IService, ISite, ISiteServiceOverride } from '@/models';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import AutoTranslateToggle from '@/components/site/AutoTranslateToggle.vue';
-import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX } from '@/utils';
+import { getSiteMarkupRatio, isRechargeDisabled, MARKUP_RATIO_MAX, toWritableSitePayload } from '@/utils';
 
 // Pre-fetch the whole catalog once so each override row can show the
 // service title/alias without an N+1 per-row GET. If a tenant ever
@@ -422,7 +422,7 @@ export default defineComponent({
       try {
         const metadata = (this.site.metadata || {}) as Record<string, unknown>;
         await siteOperator.update(this.siteId, {
-          ...this.site,
+          ...toWritableSitePayload(this.site),
           metadata: {
             ...metadata,
             disable_recharge: enabled
@@ -453,7 +453,7 @@ export default defineComponent({
           if (!siteId) break;
           const metadata = (this.site.metadata || {}) as Record<string, unknown>;
           await siteOperator.update(siteId, {
-            ...this.site,
+            ...toWritableSitePayload(this.site),
             metadata: {
               ...metadata,
               pricing: {

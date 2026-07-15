@@ -24,6 +24,7 @@ export * from './flux';
 export * from './hailuo';
 export * from './site';
 export * from './siteServiceOverride';
+export * from './siteCapabilityOverride';
 export * from './site_domain';
 export * from './smsWebhook';
 export * from './translation';

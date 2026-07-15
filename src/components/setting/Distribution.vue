@@ -57,6 +57,7 @@ import EditUser from '@/components/site/EditUser.vue';
 import UserChip from '@/components/site/UserChip.vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator } from '@/operators';
+import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
   name: 'DistributionSetting',
@@ -73,7 +74,7 @@ export default defineComponent({
   methods: {
     onSave(data: any) {
       const payload = {
-        ...this.site,
+        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site?.id, payload).then(() => {

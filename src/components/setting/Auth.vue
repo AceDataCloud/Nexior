@@ -222,6 +222,7 @@ import {
 import SectionNotice from '@/components/setting/SectionNotice.vue';
 import { siteOperator, smsWebhookOperator } from '@/operators';
 import type { ISiteAuth, ISiteAuthProvider } from '@/models';
+import { toWritableSitePayload } from '@/utils';
 
 // Provider IDs we surface in this tab. The IDs match
 // ``IUserPublicRegistrationMethod`` in ``src/models/user.ts`` so the
@@ -521,7 +522,7 @@ export default defineComponent({
     },
     persistAuth(nextAuth: ISiteAuth) {
       const payload = {
-        ...this.site,
+        ...toWritableSitePayload(this.site),
         auth: nextAuth
       };
       siteOperator.update(this.site?.id, payload).then(() => {

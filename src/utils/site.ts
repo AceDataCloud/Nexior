@@ -28,6 +28,17 @@ import { isNative, isDesktop } from './surface';
  */
 const STUDIO_HOST = 'studio.acedata.cloud';
 
+export const toWritableSitePayload = (site: ISite): ISite => {
+  const {
+    capability_overrides: _capabilityOverrides,
+    title_source: _titleSource,
+    description_source: _descriptionSource,
+    auto_translated_fields: _autoTranslatedFields,
+    ...writableSite
+  } = site;
+  return writableSite;
+};
+
 export const getSiteOrigin = (site?: ISite) => {
   // If we already have a Site row, trust its stored origin.
   if (site?.origin) {
