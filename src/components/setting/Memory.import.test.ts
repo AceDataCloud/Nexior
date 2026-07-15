@@ -5,12 +5,14 @@ import Memory from './Memory.vue';
 
 const getProfileMock = vi.hoisted(() => vi.fn());
 const importTextMock = vi.hoisted(() => vi.fn());
+const waitForImportMock = vi.hoisted(() => vi.fn());
 
 vi.mock('@/store/lazy', () => ({ ensureStoreModule: vi.fn().mockResolvedValue(undefined) }));
 vi.mock('@/operators/memories', () => ({
   memoriesOperator: {
     getProfile: getProfileMock,
     importText: importTextMock,
+    waitForImport: waitForImportMock,
     setEnabled: vi.fn(),
     remove: vi.fn(),
     clear: vi.fn()
@@ -33,8 +35,9 @@ const mountComponent = () =>
 
 describe('Memory import', () => {
   beforeEach(() => {
-    getProfileMock.mockReset().mockResolvedValue({ items: [], enabled: true });
+    getProfileMock.mockReset().mockResolvedValue({ items: [], enabled: true, importJob: null });
     importTextMock.mockReset().mockResolvedValue({ processed: 2, rejected: 0, total: 2 });
+    waitForImportMock.mockReset().mockResolvedValue({ processed: 2, rejected: 0, total: 2 });
   });
 
   it('imports pasted text and refreshes the cloud profile', async () => {
@@ -50,9 +53,30 @@ describe('Memory import', () => {
 
     await vm.onImport();
 
-    expect(importTextMock).toHaveBeenCalledWith('chat-token', '- Prefers concise answers.');
+    expect(importTextMock).toHaveBeenCalledWith(
+      'chat-token',
+      '- Prefers concise answers.',
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
+    );
     expect(getProfileMock).toHaveBeenCalledTimes(2);
     expect(vm.importVisible).toBe(false);
     expect(vm.importText).toBe('');
+  });
+
+  it('resumes a running import when the settings panel reloads', async () => {
+    getProfileMock
+      .mockResolvedValueOnce({ items: [], enabled: true, importJob: { id: 'job-resume', status: 'running' } })
+      .mockResolvedValueOnce({ items: [], enabled: true, importJob: null });
+
+    const wrapper = mountComponent();
+    await flushPromises();
+
+    expect(waitForImportMock).toHaveBeenCalledWith(
+      'chat-token',
+      'job-resume',
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
+    );
+    expect(getProfileMock).toHaveBeenCalledTimes(2);
+    wrapper.unmount();
   });
 });
