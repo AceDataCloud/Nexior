@@ -770,5 +770,33 @@
   "message.uploadAudioError": {
     "message": "音频上传失败，请重试。",
     "description": "Talking Photo 音频上传失败提示"
+  },
+  "name.referenceVideo": {
+    "message": "参考视频",
+    "description": "表单字段标签：Omni 视频编辑的参考/待编辑视频"
+  },
+  "description.referenceVideo": {
+    "message": "仅 kling-video-o1 支持。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频。提示词会自动以 <<<video_1>>> 引用它，请保留该标记来描述编辑效果（如「把 <<<video_1>>> 改成动漫风格」）。",
+    "description": "参考视频上传的帮助文字"
+  },
+  "button.uploadReferenceVideo": {
+    "message": "上传视频",
+    "description": "上传参考视频的按钮"
+  },
+  "message.referenceVideoExceed": {
+    "message": "最多只能上传 1 个参考视频",
+    "description": "上传超过 1 个参考视频时的错误提示"
+  },
+  "message.referenceVideoError": {
+    "message": "参考视频上传失败，请稍后重试",
+    "description": "参考视频上传失败时的错误提示"
+  },
+  "message.referenceVideoTypeFailed": {
+    "message": "上传的文件必须是 MP4 或 MOV 格式！",
+    "description": "参考视频格式不是 MP4/MOV 时的错误提示"
+  },
+  "message.referenceVideoSizeExceed": {
+    "message": "上传的文件大小不能超过 200MB！",
+    "description": "参考视频超过 200MB 时的错误提示"
   }
 }

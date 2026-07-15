@@ -4,6 +4,7 @@
       <prompt-input class="mb-4" @open-inspiration="inspirationOpen = true" />
       <model-selector class="mb-4" />
       <ratio-selector class="mb-4" />
+      <reference-video v-if="capabilities.referenceVideo" class="mb-2" />
       <start-image class="mb-2" />
       <end-image class="mb-2" />
       <duration-selector class="mb-4" />
@@ -45,6 +46,7 @@ import DurationSelector from './config/DurationSelector.vue';
 import RatioSelector from './config/RatioSelector.vue';
 import StartImage from './config/StartImage.vue';
 import EndImage from './config/EndImage.vue';
+import ReferenceVideo from './config/ReferenceVideo.vue';
 import Consumption from '../common/Consumption.vue';
 import CfgScaleSelector from './config/CfgScaleSelector.vue';
 import GenerateAudioSelector from './config/GenerateAudioSelector.vue';
@@ -54,6 +56,7 @@ import NegativePromptInput from './config/NegativePromptInput.vue';
 import InspirationDrawer from './inspiration/InspirationDrawer.vue';
 import SummaryChip from './SummaryChip.vue';
 import { getConsumption } from '@/utils';
+import { getKlingCapabilities } from '@/utils/kling/capabilities';
 
 export default defineComponent({
   name: 'ConfigPanel',
@@ -73,7 +76,8 @@ export default defineComponent({
     CameraControlSelector,
     InspirationDrawer,
     SummaryChip,
-    EndImage
+    EndImage,
+    ReferenceVideo
   },
   emits: ['generate'],
   data() {
@@ -84,6 +88,9 @@ export default defineComponent({
   computed: {
     config() {
       return this.$store.state.kling?.config;
+    },
+    capabilities() {
+      return getKlingCapabilities(this.config?.model, this.config?.mode, this.config?.duration);
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);
