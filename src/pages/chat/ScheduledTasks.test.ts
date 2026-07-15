@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 import { shallowMount } from '@vue/test-utils';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { CHAT_MODEL_NAME_GPT_5_4_MINI } from '@/constants';
-import type { IScheduledTask } from '@/operators/scheduledTasks';
+import { scheduledTasksOperator, type IScheduledTask } from '@/operators/scheduledTasks';
 import ScheduledTasks from './ScheduledTasks.vue';
 
 const editedTask: IScheduledTask = {
@@ -55,6 +55,11 @@ const mountComponent = () =>
   });
 
 describe('chat/ScheduledTasks', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+    window.localStorage.clear();
+  });
+
   it.each([
     ['internal_error', 'Internal error'],
     ['billing_gate_failed', 'Billing authorization failed']
@@ -152,5 +157,26 @@ describe('chat/ScheduledTasks', () => {
     });
 
     expect(wrapper.text()).toContain('chat.scheduledTasks.run.waiting_for_device');
+  });
+
+  it('saves the latest memory preference in the task template', async () => {
+    window.localStorage.setItem('vuex', JSON.stringify({ chat: { memoryEnabled: false } }));
+    const createTask = vi.spyOn(scheduledTasksOperator, 'createTask').mockResolvedValue(editedTask);
+    const wrapper = mountComponent();
+    const vm = wrapper.vm as unknown as {
+      saveTask: () => Promise<void>;
+      form: Record<string, unknown>;
+      $store: { state: { chat: { credential: { token: string } | null } } };
+    };
+    vm.$store.state.chat.credential = { token: 'test-token' };
+    vm.form.question = 'Run a private task';
+
+    await vm.saveTask();
+
+    expect(createTask).toHaveBeenCalledWith(
+      undefined,
+      expect.objectContaining({ template: expect.objectContaining({ memory_enabled: false }) }),
+      false
+    );
   });
 });

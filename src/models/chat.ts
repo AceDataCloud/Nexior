@@ -316,6 +316,7 @@ export interface IChatConversationRequest {
   message?: string | IChatMessageContentItem[];
   references?: string[];
   stateful?: boolean;
+  memory_enabled?: boolean;
   messages?: IChatMessage[];
   action?: IChatConversationAction;
   model: IChatModelName;

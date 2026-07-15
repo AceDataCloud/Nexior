@@ -110,6 +110,7 @@ import {
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
 import { chatOperator, agentOperator } from '@/operators';
+import { getPersistedMemoryEnabled } from '@/store/chat/memoryPreference';
 import { ElTooltip, ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -227,6 +228,9 @@ export default defineComponent({
     },
     credential() {
       return this.$store.state.chat?.credential;
+    },
+    memoryEnabled(): boolean {
+      return this.$store.state.chat?.memoryEnabled !== false;
     },
     needApply() {
       return this.$store.state.chat.status.getApplications === Status.Success && !this.application;
@@ -1211,9 +1215,13 @@ export default defineComponent({
       // *remaining* text instead of duplicating everything we already
       // pushed.
       let answerOffset = 0;
+      const requestBody = {
+        ...body,
+        memory_enabled: getPersistedMemoryEnabled(this.memoryEnabled)
+      };
 
       chatOperator
-        .chatConversation(body, {
+        .chatConversation(requestBody, {
           token,
           stream: (response: IChatConversationResponse) => {
             console.debug('stream response', response);

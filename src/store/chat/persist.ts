@@ -15,5 +15,6 @@ export default [
   // constant, and `ModelSelector.mounted()`'s re-sync was then mistaken
   // for a real group switch by `SidePanel`'s watcher — which clobbered
   // `/<group>/conversations/<id>` back to `/<group>/conversations`.
-  'chat.model'
+  'chat.model',
+  'chat.memoryEnabled'
 ];

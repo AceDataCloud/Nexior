@@ -3,7 +3,9 @@ import initialState from './state';
 import { IChatState } from './models';
 
 export const resetAll = (state: IChatState): void => {
+  const memoryEnabled = state.memoryEnabled;
   Object.assign(state, initialState());
+  state.memoryEnabled = memoryEnabled;
 };
 
 export const setModel = (state: IChatState, payload: IChatModel): void => {
@@ -34,6 +36,10 @@ export const setConversations = (state: IChatState, payload: IChatConversation[]
   state.conversations = payload;
 };
 
+export const setMemoryEnabled = (state: IChatState, payload: boolean): void => {
+  state.memoryEnabled = payload;
+};
+
 export const setPendingDraft = (state: IChatState, payload: string): void => {
   state.pendingDraft = payload || '';
 };
@@ -46,6 +52,7 @@ export default {
   setConversations,
   setApplication,
   setApplications,
+  setMemoryEnabled,
   setPendingDraft,
   resetAll
 };
