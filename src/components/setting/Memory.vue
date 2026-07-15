@@ -21,10 +21,10 @@
       <div class="section-head">
         <h3>{{ $t('common.settings.memoryStored') }}</h3>
         <div class="section-actions">
-          <el-button size="small" :disabled="!memoryEnabled" @click="openImport">
+          <el-button size="small" type="primary" :disabled="!memoryEnabled" @click="openImport">
             {{ $t('common.settings.memoryImport') }}
           </el-button>
-          <el-button v-if="entries.length" size="small" text type="danger" :loading="clearing" @click="onClearAll">
+          <el-button v-if="entries.length" size="small" type="danger" :loading="clearing" @click="onClearAll">
             {{ $t('common.settings.memoryClearAll') }}
           </el-button>
         </div>
@@ -36,7 +36,7 @@
           <li v-for="entry in entries" :key="entry.id" class="row memory-row">
             <font-awesome-icon icon="fa-regular fa-lightbulb" class="row-icon" />
             <span class="memory-content">{{ entry.content }}</span>
-            <el-button size="small" text type="danger" :loading="removingId === entry.id" @click="onRemove(entry)">
+            <el-button size="small" type="danger" :loading="removingId === entry.id" @click="onRemove(entry)">
               {{ $t('common.settings.memoryForget') }}
             </el-button>
           </li>
@@ -333,6 +333,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 12px;
 
     h3 {
@@ -345,7 +346,14 @@ export default defineComponent({
   .section-actions {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     gap: 8px;
+    margin-left: auto;
+
+    :deep(.el-button) {
+      flex-shrink: 0;
+    }
   }
 
   // Bordered card so the list reads as one contained group instead of text
