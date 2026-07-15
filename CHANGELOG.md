@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 04:59:17 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 05:30:32 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.328.3
+
+Wed, 15 Jul 2026 05:30:32 GMT
+
+### Patches
+
+- Show Kling image, video, and audio inputs in task history (dev@acedata.cloud)
 
 ## 3.328.2
 
