@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 04:52:40 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 04:59:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.328.2
+
+Wed, 15 Jul 2026 04:59:17 GMT
+
+### Patches
+
+- Add a persisted setting to disable long-term memory in chats and scheduled tasks. (dev@acedata.cloud)
 
 ## 3.328.1
 
