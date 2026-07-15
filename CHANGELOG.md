@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Tue, 14 Jul 2026 18:03:19 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 02:15:39 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.12
+
+Wed, 15 Jul 2026 02:15:39 GMT
+
+### Patches
+
+- feat(setting): white-label per-site SMS webhook config (auth.sms) in the Auth panel (dev@acedata.cloud)
 
 ## 3.327.11
 
