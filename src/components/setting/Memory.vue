@@ -49,6 +49,9 @@
       :title="$t('common.settings.memoryImportTitle')"
       width="min(640px, 92vw)"
       append-to-body
+      :close-on-click-modal="!importing"
+      :close-on-press-escape="!importing"
+      :show-close="!importing"
     >
       <div class="import-step">
         <div class="import-step-title">{{ $t('common.settings.memoryImportExportStep') }}</div>
@@ -67,7 +70,7 @@
         />
       </div>
       <template #footer>
-        <el-button @click="importVisible = false">{{ $t('common.button.cancel') }}</el-button>
+        <el-button :disabled="importing" @click="closeImport">{{ $t('common.button.cancel') }}</el-button>
         <el-button type="primary" :disabled="!importText.trim()" :loading="importing" @click="onImport">
           {{ $t('common.settings.memoryImportSubmit') }}
         </el-button>
@@ -99,6 +102,7 @@ export default defineComponent({
       importVisible: false,
       importing: false,
       importText: '',
+      importController: null as AbortController | null,
       entries: [] as IMemoryEntry[]
     };
   },
@@ -132,10 +136,19 @@ export default defineComponent({
     await ensureStoreModule('chat');
     if (this.token) await this.fetch();
   },
+  beforeUnmount() {
+    this.importController?.abort();
+  },
   methods: {
     openImport() {
       this.importText = '';
       this.importVisible = true;
+    },
+    closeImport() {
+      if (this.importing) return;
+      this.importVisible = false;
+      this.importController?.abort();
+      this.importController = null;
     },
     async copyImportPrompt() {
       try {
@@ -149,10 +162,14 @@ export default defineComponent({
       ElMessage.error(this.$t('common.message.copyFailed'));
     },
     async onImport() {
-      if (!this.token || !this.importText.trim()) return;
+      if (!this.token || !this.importText.trim() || this.importing) return;
       this.importing = true;
+      this.importController?.abort();
+      this.importController = new AbortController();
       try {
-        const result = await memoriesOperator.importText(this.token, this.importText.trim());
+        const result = await memoriesOperator.importText(this.token, this.importText.trim(), {
+          signal: this.importController.signal
+        });
         this.importVisible = false;
         this.importText = '';
         await this.fetch();
@@ -169,13 +186,40 @@ export default defineComponent({
       } catch (error) {
         console.error('failed to import memories', error);
         const status = (error as { response?: { status?: number } })?.response?.status;
-        if (status === 400) {
+        if ((error as Error)?.name === 'AbortError') {
+          return;
+        } else if (status === 409) {
+          ElMessage.warning(this.$t('common.settings.memoryImportInProgress'));
+        } else if (status === 400) {
           ElMessage.error(this.$t('common.settings.memoryImportInvalid'));
         } else {
           ElMessage.error(this.$t('common.settings.memoryError'));
         }
       } finally {
         this.importing = false;
+        this.importController = null;
+      }
+    },
+    async resumeImport(taskId: string) {
+      if (!this.token || this.importing) return;
+      this.importing = true;
+      this.importVisible = true;
+      this.importController = new AbortController();
+      try {
+        const result = await memoriesOperator.waitForImport(this.token, taskId, {
+          signal: this.importController.signal
+        });
+        this.importVisible = false;
+        await this.fetch();
+        ElMessage.success(this.$t('common.settings.memoryImportSuccess', { count: result.processed }));
+      } catch (error) {
+        if ((error as Error)?.name !== 'AbortError') {
+          console.error('failed to resume memory import', error);
+          ElMessage.error(this.$t('common.settings.memoryError'));
+        }
+      } finally {
+        this.importing = false;
+        this.importController = null;
       }
     },
     async onMemoryEnabledChange(value: string | number | boolean) {
@@ -203,6 +247,9 @@ export default defineComponent({
         this.entries = profile.items;
         this.$store.commit('chat/setMemoryEnabled', profile.enabled);
         this.memoryReady = true;
+        if (profile.importJob?.status === 'running' && !this.importing) {
+          void this.resumeImport(profile.importJob.id);
+        }
       } catch (error) {
         console.error('failed to load memories', error);
       } finally {
