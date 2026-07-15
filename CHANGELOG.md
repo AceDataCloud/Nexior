@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 13:18:52 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 14:46:17 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.5
+
+Wed, 15 Jul 2026 14:46:17 GMT
+
+### Patches
+
+- Remove the unused AI ID Photo feature and its implementation from Nexior. (dev@acedata.cloud)
 
 ## 3.329.4
 
