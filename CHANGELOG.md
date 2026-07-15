@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 04:02:30 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 04:44:24 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.328.0
+
+Wed, 15 Jul 2026 04:44:24 GMT
+
+### Minor changes
+
+- Add reference-video uploader for kling-video-o1 (Omni video editing) (dev@acedata.cloud)
 
 ## 3.327.14
 
