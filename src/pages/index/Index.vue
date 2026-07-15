@@ -1,389 +1,286 @@
 <template>
-  <div class="wrapper">
-    <div id="banner">
-      <div class="container">
-        <el-row>
-          <el-col :md="12" :xs="24" class="left">
-            <div class="info">
-              <span class="badge-new">{{ $t('index.badge.hero') }}</span>
-              <h1 class="title">
-                {{ site?.title }}
-              </h1>
-              <h3 class="subtitle">
-                {{ $t('index.subtitle.banner') }}
-              </h3>
-              <p class="tagline">{{ $t('index.subtitle.hero') }}</p>
-              <div class="operations">
-                <el-button type="primary" round class="btn-apply" @click="onStart">
-                  {{ $t('common.button.startForFree') }}
-                </el-button>
-                <el-button round class="btn-explore" @click="scrollToServices">
-                  {{ $t('index.button.explore') }}
-                </el-button>
-              </div>
+  <div class="landing">
+    <section class="hero">
+      <div class="hero__grid" />
+      <div class="container hero__content">
+        <div class="hero__copy">
+          <span class="eyebrow">{{ $t('index.badge.hero') }}</span>
+          <h1>{{ site?.title }}</h1>
+          <p class="hero__headline">{{ $t('index.subtitle.banner') }}</p>
+          <p class="hero__summary">{{ $t('index.subtitle.hero') }}</p>
+          <div class="hero__actions">
+            <el-button type="primary" size="large" @click="onStart">
+              {{ $t('common.button.startForFree') }}
+            </el-button>
+            <el-button size="large" @click="scrollToPlatform">
+              {{ $t('index.button.explore') }}
+            </el-button>
+          </div>
+          <dl class="hero__stats">
+            <div>
+              <dt>{{ capabilityCount }}+</dt>
+              <dd>{{ $t('index.stat.capabilities') }}</dd>
             </div>
-          </el-col>
-          <el-col :md="12" :xs="24" class="right">
-            <el-image
-              src="https://cdn.acedata.cloud/illustration1.png"
-              class="brand"
-              :alt="site?.title"
-              fit="contain"
-            />
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div id="introduction">
-      <div class="container">
-        <el-row class="mb-6">
-          <el-col :span="24">
-            <h2 class="title">
-              {{ $t('index.title.introduction') }}
-            </h2>
-            <h5 class="subtitle">
-              {{ $t('index.subtitle.introduction') }}
-            </h5>
-          </el-col>
-        </el-row>
-        <el-row :gutter="15">
-          <el-col
-            v-for="(capability, capabilityIndex) in capabilities"
-            :key="capabilityIndex"
-            :md="6"
-            :xs="24"
-            class="mb-4"
-          >
-            <el-card class="info text-center" shadow="hover" @click="onClickCapability(capability)">
-              <div class="icon-wrapper">
-                <font-awesome-icon :icon="capability.icon" class="icon" />
-              </div>
-              <h2 class="title">{{ capability.title }}</h2>
-              <p class="subtitle">{{ capability.subtitle }}</p>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="site?.features?.chatgpt?.enabled" id="chat" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/axynds.png"
-              class="image desktop"
-              :alt="$t('index.title.chat')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/vds4i3.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.chat') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.chat') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/chatgpt'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="site?.features?.midjourney?.enabled" id="midjourney" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.midjourney') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.midjourney') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/midjourney'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/uk86mz.png"
-              class="image desktop"
-              :alt="$t('index.title.midjourney')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/rvelwm.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="site?.features?.qrart?.enabled" id="qrart" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/gyogar.png"
-              class="image desktop"
-              :alt="$t('index.title.qrart')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/5kunm0.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.qrart') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.qrart') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/qrart'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="site?.features?.suno?.enabled" id="suno" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.suno') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.suno') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/suno'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/2m8fn.png"
-              class="image desktop"
-              :alt="$t('index.title.suno')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/23knvs.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="site?.features?.luma?.enabled" id="luma" class="block">
-      <div class="container">
-        <el-row>
-          <el-col :md="16" :xs="24" class="preview">
-            <img
-              src="https://cdn.acedata.cloud/6kop1g.png"
-              class="image desktop"
-              :alt="$t('index.title.luma')"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.acedata.cloud/3kcjny.png"
-              class="image mobile"
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-          </el-col>
-          <el-col :md="8" :xs="24" class="info">
-            <h2 class="title">{{ $t('index.title.luma') }}</h2>
-            <p class="subtitle">{{ $t('index.subtitle.luma') }}</p>
-            <el-button
-              type="primary"
-              round
-              class="btn-try"
-              @click="
-                $router.push({
-                  path: '/luma'
-                })
-              "
-            >
-              {{ $t('index.button.try') }}
-            </el-button>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div v-if="false" id="comments">
-      <div class="container">
-        <el-row class="mb-6">
-          <el-col :span="24">
-            <h2 class="title">
-              {{ $t('index.title.comments') }}
-            </h2>
-            <h5 class="subtitle">
-              {{ $t('index.subtitle.comments') }}
-            </h5>
-          </el-col>
-        </el-row>
-        <el-row :gutter="20" class="main">
-          <el-col v-for="(comment, commentIndex) in comments" :key="commentIndex" :md="8" :xs="24">
-            <el-card shadow="hover" class="service" :body-style="{ padding: 0 }">
-              <p class="content">
-                {{ comment.content }}
-              </p>
-              <div class="info">
-                <div class="left">
-                  <el-image class="avatar" :src="comment.avatar" />
-                </div>
-                <div class="right">
-                  <div class="name">{{ comment.name }}</div>
-                  <div class="job">
-                    {{ comment.job }}
-                  </div>
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
-    </div>
-    <div id="models" class="models">
-      <div class="container">
-        <h2 class="section-title">{{ $t('index.title.models') }}</h2>
-        <h5 class="section-subtitle">{{ $t('index.subtitle.models') }}</h5>
-        <div class="model-wall">
-          <span v-for="(model, modelIndex) in models" :key="modelIndex" class="model-chip">{{ model }}</span>
+            <div>
+              <dt>5 min</dt>
+              <dd>{{ $t('index.stat.subsite') }}</dd>
+            </div>
+            <div>
+              <dt>Web · iOS · Android</dt>
+              <dd>{{ $t('index.stat.platforms') }}</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="hero__screens" aria-hidden="true">
+          <img :src="chatDesktop" class="hero__desktop" alt="" />
+          <img :src="chatMobile" class="hero__mobile" alt="" />
+          <div class="hero__note hero__note--top">
+            <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
+            <span>{{ $t('index.note.allInOne') }}</span>
+          </div>
+          <div class="hero__note hero__note--bottom">
+            <font-awesome-icon icon="fa-solid fa-globe" />
+            <span>{{ $t('index.note.customDomain') }}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="cta" class="cta">
+    </section>
+
+    <section id="platform" class="section platform-section">
       <div class="container">
-        <h2 class="cta__title">{{ $t('index.title.cta') }}</h2>
-        <p class="cta__subtitle">{{ $t('index.subtitle.cta') }}</p>
-        <el-button type="primary" round class="cta__btn" @click="onStart">
-          {{ $t('common.button.startForFree') }}
-        </el-button>
+        <div class="section-heading section-heading--wide">
+          <span class="eyebrow eyebrow--light">{{ $t('index.eyebrow.business') }}</span>
+          <h2>{{ $t('index.title.business') }}</h2>
+          <p>{{ $t('index.subtitle.business') }}</p>
+        </div>
+
+        <article
+          v-for="(item, itemIndex) in businessShowcases"
+          :key="item.key"
+          class="platform-story"
+          :class="{ 'platform-story--reverse': itemIndex % 2 === 1 }"
+        >
+          <div class="platform-story__copy">
+            <span class="story-number">0{{ itemIndex + 1 }}</span>
+            <p class="story-kicker">{{ $t(item.eyebrowKey) }}</p>
+            <h3>{{ $t(item.titleKey) }}</h3>
+            <p>{{ $t(item.subtitleKey) }}</p>
+            <el-button type="primary" plain @click="openShowcase(item)">
+              {{ $t(item.buttonKey) }}
+              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+            </el-button>
+          </div>
+          <div class="screen-pair screen-pair--large">
+            <img :src="item.desktop" class="screen-pair__desktop" :alt="$t(item.titleKey)" loading="lazy" />
+            <img :src="item.mobile" class="screen-pair__mobile" alt="" loading="lazy" />
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
+
+    <section class="section creation-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow eyebrow--light">{{ $t('index.eyebrow.creation') }}</span>
+          <h2>{{ $t('index.title.creation') }}</h2>
+          <p>{{ $t('index.subtitle.creation') }}</p>
+        </div>
+
+        <div class="creation-grid">
+          <article v-for="item in creationShowcases" :key="item.key" class="creation-item">
+            <div class="screen-pair">
+              <img :src="item.desktop" class="screen-pair__desktop" :alt="$t(item.titleKey)" loading="lazy" />
+              <img :src="item.mobile" class="screen-pair__mobile" alt="" loading="lazy" />
+            </div>
+            <div class="creation-item__copy">
+              <div>
+                <p class="story-kicker">{{ $t(item.eyebrowKey) }}</p>
+                <h3>{{ $t(item.titleKey) }}</h3>
+              </div>
+              <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
+              <p>{{ $t(item.subtitleKey) }}</p>
+              <button type="button" class="creation-item__link" @click="openShowcase(item)">
+                {{ $t('index.button.try') }}
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section capability-section">
+      <div class="container">
+        <div class="section-heading section-heading--wide">
+          <span class="eyebrow eyebrow--light">{{ $t('index.eyebrow.directory') }}</span>
+          <h2>{{ $t('index.title.directory') }}</h2>
+          <p>{{ $t('index.subtitle.directory') }}</p>
+        </div>
+        <div class="capability-directory">
+          <div v-for="capability in capabilityCards" :key="capability.key" class="capability-row">
+            <img :src="capability.icon" alt="" />
+            <span>{{ capability.label }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta__content">
+        <div>
+          <p class="story-kicker">{{ $t('index.eyebrow.cta') }}</p>
+          <h2>{{ $t('index.title.cta') }}</h2>
+          <p>{{ $t('index.subtitle.cta') }}</p>
+        </div>
+        <div class="final-cta__actions">
+          <el-button type="primary" size="large" @click="onStart">
+            {{ $t('common.button.startForFree') }}
+          </el-button>
+          <el-button v-if="isMainSite" size="large" @click="openSubsites">
+            {{ $t('index.button.createSubsite') }}
+          </el-button>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElImage, ElRow, ElCol, ElCard } from 'element-plus';
+import { ElButton } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
+import { isMainOfficial } from '@/utils';
 
-interface ICategory {
+import capabilitiesDesktop from '@/assets/home/capabilities-desktop.png';
+import capabilitiesMobile from '@/assets/home/capabilities-mobile.png';
+import chatDesktop from '@/assets/home/chat-desktop.png';
+import chatMobile from '@/assets/home/chat-mobile.png';
+import codingDesktop from '@/assets/home/coding-desktop.png';
+import codingMobile from '@/assets/home/coding-mobile.png';
+import distributionDesktop from '@/assets/home/distribution-desktop.png';
+import distributionMobile from '@/assets/home/distribution-mobile.png';
+import imageDesktop from '@/assets/home/image-desktop.png';
+import imageMobile from '@/assets/home/image-mobile.png';
+import musicDesktop from '@/assets/home/music-desktop.png';
+import musicMobile from '@/assets/home/music-mobile.png';
+import subsitesDesktop from '@/assets/home/subsites-desktop.png';
+import subsitesMobile from '@/assets/home/subsites-mobile.png';
+import videoDesktop from '@/assets/home/video-desktop.png';
+import videoMobile from '@/assets/home/video-mobile.png';
+import workflowDesktop from '@/assets/home/workflow-desktop.png';
+import workflowMobile from '@/assets/home/workflow-mobile.png';
+
+interface IShowcase {
   key: string;
-  title: string;
-  subtitle: string;
-  icon: string;
-  path: string;
-}
-
-interface IData {
-  comments: any[];
-  models: string[];
-}
-
-// Each capability card represents a whole category (chat / image / music /
-// video). `features` is an ordered list of [feature flag, route path]: the
-// first flag enabled on the site becomes the card's target, and a category
-// with nothing enabled is hidden. This keeps the grid aligned with whatever
-// services the (white-label) site actually exposes.
-const CATEGORY_FEATURES: Array<{
-  key: string;
+  featureKeys?: string[];
+  eyebrowKey: string;
   titleKey: string;
   subtitleKey: string;
-  icon: string;
-  features: Array<[string, string]>;
-}> = [
+  buttonKey: string;
+  path: string;
+  desktop: string;
+  mobile: string;
+}
+
+const BUSINESS_SHOWCASES: IShowcase[] = [
+  {
+    key: 'subsites',
+    eyebrowKey: 'index.eyebrow.subsites',
+    titleKey: 'index.title.subsites',
+    subtitleKey: 'index.subtitle.subsites',
+    buttonKey: 'index.button.createSubsite',
+    path: '/chatgpt?dialog=settings&tab=subsites',
+    desktop: subsitesDesktop,
+    mobile: subsitesMobile
+  },
+  {
+    key: 'capabilities',
+    eyebrowKey: 'index.eyebrow.capabilities',
+    titleKey: 'index.title.capabilities',
+    subtitleKey: 'index.subtitle.capabilities',
+    buttonKey: 'index.button.configure',
+    path: '/chatgpt?dialog=settings&tab=function',
+    desktop: capabilitiesDesktop,
+    mobile: capabilitiesMobile
+  },
+  {
+    key: 'distribution',
+    eyebrowKey: 'index.eyebrow.distribution',
+    titleKey: 'index.title.distribution',
+    subtitleKey: 'index.subtitle.distribution',
+    buttonKey: 'index.button.viewDistribution',
+    path: '/distribution',
+    desktop: distributionDesktop,
+    mobile: distributionMobile
+  }
+];
+
+const CREATION_SHOWCASES: IShowcase[] = [
   {
     key: 'chat',
+    featureKeys: ['chatgpt', 'grok', 'gemini', 'claude', 'deepseek', 'kimi', 'serp'],
+    eyebrowKey: 'index.eyebrow.chat',
     titleKey: 'index.title.chat',
     subtitleKey: 'index.subtitle.chat',
-    icon: 'fa-regular fa-comment',
-    features: [['chatgpt', '/chatgpt']]
+    buttonKey: 'index.button.try',
+    path: '/chatgpt',
+    desktop: chatDesktop,
+    mobile: chatMobile
   },
   {
     key: 'image',
-    titleKey: 'index.title.midjourney',
-    subtitleKey: 'index.subtitle.midjourney',
-    icon: 'fa-solid fa-palette',
-    features: [
-      ['midjourney', '/midjourney'],
-      ['nanobanana', '/nanobanana'],
-      ['seedream', '/seedream'],
-      ['flux', '/flux'],
-      ['openaiimage', '/openai-image'],
-      ['qrart', '/qrart']
-    ]
-  },
-  {
-    key: 'music',
-    titleKey: 'index.title.suno',
-    subtitleKey: 'index.subtitle.suno',
-    icon: 'fa-solid fa-music',
-    features: [
-      ['suno', '/suno'],
-      ['producer', '/producer']
-    ]
+    featureKeys: ['midjourney', 'qrart', 'flux', 'headshots', 'nanobanana', 'openaiimage', 'seedream'],
+    eyebrowKey: 'index.eyebrow.image',
+    titleKey: 'index.title.image',
+    subtitleKey: 'index.subtitle.image',
+    buttonKey: 'index.button.try',
+    path: '/nanobanana',
+    desktop: imageDesktop,
+    mobile: imageMobile
   },
   {
     key: 'video',
-    titleKey: 'index.title.luma',
-    subtitleKey: 'index.subtitle.luma',
-    icon: 'fa-solid fa-film',
-    features: [
-      ['luma', '/luma'],
-      ['veo', '/veo'],
-      ['sora', '/sora'],
-      ['kling', '/kling'],
-      ['hailuo', '/hailuo'],
-      ['seedance', '/seedance']
-    ]
+    featureKeys: ['luma', 'pika', 'kling', 'veo', 'sora', 'pixverse', 'hailuo', 'seedance', 'grokvideo', 'wan'],
+    eyebrowKey: 'index.eyebrow.video',
+    titleKey: 'index.title.video',
+    subtitleKey: 'index.subtitle.video',
+    buttonKey: 'index.button.try',
+    path: '/kling',
+    desktop: videoDesktop,
+    mobile: videoMobile
+  },
+  {
+    key: 'music',
+    featureKeys: ['suno', 'producer', 'fish'],
+    eyebrowKey: 'index.eyebrow.music',
+    titleKey: 'index.title.music',
+    subtitleKey: 'index.subtitle.music',
+    buttonKey: 'index.button.try',
+    path: '/suno',
+    desktop: musicDesktop,
+    mobile: musicMobile
+  },
+  {
+    key: 'workflow',
+    featureKeys: ['maestro', 'digitalhuman'],
+    eyebrowKey: 'index.eyebrow.workflow',
+    titleKey: 'index.title.workflow',
+    subtitleKey: 'index.subtitle.workflow',
+    buttonKey: 'index.button.try',
+    path: '/maestro',
+    desktop: workflowDesktop,
+    mobile: workflowMobile
+  },
+  {
+    key: 'coding',
+    featureKeys: ['codingBridge'],
+    eyebrowKey: 'index.eyebrow.coding',
+    titleKey: 'index.title.coding',
+    subtitleKey: 'index.subtitle.coding',
+    buttonKey: 'index.button.try',
+    path: '/coding-bridge',
+    desktop: codingDesktop,
+    mobile: codingMobile
   }
 ];
 
@@ -391,578 +288,710 @@ export default defineComponent({
   name: 'Index',
   components: {
     ElButton,
-    ElRow,
-    ElCol,
-    ElCard,
-    ElImage,
     FontAwesomeIcon
   },
-  data(): IData {
+  data() {
     return {
-      comments: [
-        {
-          avatar: 'https://cdn.acedata.cloud/avatar1.png',
-          name: this.$t('index.customers.name1'),
-          job: this.$t('index.customers.job1'),
-          content: this.$t('index.customers.comment1')
-        },
-        {
-          avatar: 'https://cdn.acedata.cloud/avatar2.png',
-          name: this.$t('index.customers.name2'),
-          job: this.$t('index.customers.job2'),
-          content: this.$t('index.customers.comment2')
-        },
-        {
-          avatar: 'https://cdn.acedata.cloud/avatar3.png',
-          name: this.$t('index.customers.name3'),
-          job: this.$t('index.customers.job3'),
-          content: this.$t('index.customers.comment3')
-        }
-      ],
-      models: [
-        'ChatGPT',
-        'Claude',
-        'Gemini',
-        'Grok',
-        'DeepSeek',
-        'Kimi',
-        'Midjourney',
-        'Flux',
-        'Nano Banana',
-        'Seedream',
-        'GPT Image',
-        'Suno',
-        'Veo',
-        'Sora',
-        'Kling',
-        'Luma',
-        'Hailuo',
-        'Seedance'
-      ]
+      chatDesktop,
+      chatMobile
     };
   },
   computed: {
     site() {
       return this.$store.state.site;
     },
-    capabilities(): ICategory[] {
-      const features = (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
-      const cards: ICategory[] = [];
-      for (const category of CATEGORY_FEATURES) {
-        const match = category.features.find(([flag]) => features[flag]?.enabled);
-        if (!match) {
-          continue;
-        }
-        cards.push({
-          key: category.key,
-          title: this.$t(category.titleKey),
-          subtitle: this.$t(category.subtitleKey),
-          icon: category.icon,
-          path: match[1]
-        });
-      }
-      return cards;
+    enabledFeatures(): Record<string, { enabled?: boolean } | undefined> {
+      return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
     },
-    // Landing CTAs send guests to the first enabled service so the button
-    // never dead-ends on a disabled feature.
-    primaryPath(): string {
-      return this.capabilities[0]?.path ?? '/chatgpt';
+    isMainSite(): boolean {
+      return this.site?.origin === 'studio.acedata.cloud' || isMainOfficial();
+    },
+    capabilityCount(): number {
+      return this.site?.id ? this.capabilityCards.length : CAPABILITY_KEYS.length;
+    },
+    businessShowcases(): IShowcase[] {
+      return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite);
+    },
+    creationShowcases(): IShowcase[] {
+      return CREATION_SHOWCASES.filter((item) => item.featureKeys?.some((key) => this.enabledFeatures[key]?.enabled));
+    },
+    capabilityCards(): Array<{ key: CapabilityKey; label: string; icon: string }> {
+      return CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled).map((key) => ({
+        key,
+        label: this.$t(`site.field.features${key.charAt(0).toUpperCase()}${key.slice(1)}`),
+        icon: CAPABILITY_ICONS[key]
+      }));
     }
   },
   methods: {
-    onClickCapability(capability: ICategory) {
-      this.$router.push(capability.path);
-    },
     onStart() {
-      this.$router.push({ path: this.primaryPath });
+      this.$router.push(this.creationShowcases[0]?.path ?? '/');
     },
-    scrollToServices() {
-      document.getElementById('introduction')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    openShowcase(item: IShowcase) {
+      this.$router.push(item.path);
+    },
+    openSubsites() {
+      this.$router.push('/chatgpt?dialog=settings&tab=subsites');
+    },
+    scrollToPlatform() {
+      const app = document.getElementById('app');
+      const platform = document.getElementById('platform');
+      if (!app || !platform) return;
+      const headerHeight = document.querySelector<HTMLElement>('.header')?.offsetHeight ?? 0;
+      app.scrollTop = platform.offsetTop - headerHeight;
     }
   }
 });
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
-  width: 100%;
-  background-color: var(--el-bg-color);
-
-  .title {
-    font-size: 40px;
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--el-text-color-primary);
-  }
-
-  .subtitle {
-    font-size: 18px;
-    line-height: 32px;
-    text-align: center;
-    color: var(--el-text-color-secondary);
-  }
+.landing {
+  --landing-ink: #172033;
+  --landing-muted: #5d687a;
+  --landing-teal: #19778a;
+  --landing-coral: #e66a4e;
+  --landing-lime: #8aa344;
+  color: var(--landing-ink);
+  background: #f7f8fa;
 }
 
 .container {
-  margin: auto;
-  max-width: 1200px;
-  padding: 0 24px;
+  width: min(1220px, calc(100% - 48px));
+  margin: 0 auto;
 }
 
-.block {
-  padding: 100px 0;
-
-  .preview {
-    position: relative;
-
-    .image {
-      border-radius: 16px;
-      padding: 4px;
-      background-color: var(--app-bg-surface);
-      box-shadow: var(--app-shadow-md);
-      transition:
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-
-      &:hover {
-        box-shadow: var(--app-shadow-lg);
-        transform: translateY(-2px);
-      }
-
-      &.desktop {
-        max-width: 100%;
-        max-height: 100%;
-      }
-
-      &.mobile {
-        width: 30%;
-        position: absolute;
-        right: -5%;
-        top: 10%;
-      }
-    }
-  }
-
-  .info {
-    padding: 20px 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    .title {
-      font-size: 36px;
-      color: var(--el-text-color-primary);
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      font-size: 17px;
-      padding: 0 16px;
-      color: var(--el-text-color-secondary);
-      margin-bottom: 24px;
-      line-height: 28px;
-    }
-
-    .btn-try {
-      padding: 20px 48px;
-      font-size: 16px;
-      line-height: 20px;
-      font-weight: 600;
-      border-radius: 9999px;
-    }
-  }
-}
-
-#banner {
-  padding: 80px 0 60px;
-  background: var(--app-gradient-hero);
+.hero {
   position: relative;
+  min-height: 720px;
   overflow: hidden;
+  background: linear-gradient(125deg, #f8fbfb 0%, #edf5f3 56%, #fff4ef 100%);
+  border-bottom: 1px solid #dce5e4;
 
-  /* Subtle grid pattern */
-  &::before {
-    content: '';
+  &__grid {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.15) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.5;
-    pointer-events: none;
+    opacity: 0.45;
+    background-image:
+      linear-gradient(rgba(23, 119, 138, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(23, 119, 138, 0.1) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, #000 20%, transparent 92%);
   }
 
-  .left {
+  &__content {
     position: relative;
     z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(560px, 1.12fr);
+    align-items: center;
+    gap: 56px;
+    min-height: 720px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 
-    .info {
-      @media (max-width: 767px) {
-        padding: 0 24px;
-      }
+  h1 {
+    margin: 18px 0 14px;
+    font-size: 64px;
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
 
-      h1.title {
-        font-size: 56px;
-        font-weight: 800;
-        margin-bottom: 24px;
-        text-align: left;
-        letter-spacing: -0.03em;
-        color: #ffffff;
-        background: linear-gradient(135deg, #ffffff 0%, #93b8c3 50%, #689caa 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
+  &__headline {
+    max-width: 620px;
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
 
-      h3.subtitle {
-        font-size: 22px;
-        line-height: 36px;
-        margin-bottom: 48px;
-        text-align: left;
-        color: rgba(255, 255, 255, 0.8);
-      }
+  &__summary {
+    max-width: 590px;
+    margin: 20px 0 32px;
+    color: var(--landing-muted);
+    font-size: 17px;
+    line-height: 1.8;
+  }
 
-      .operations {
-        .btn-apply {
-          padding: 20px 48px;
-          font-size: 17px;
-          line-height: 20px;
-          font-weight: 600;
-          border-radius: 9999px;
-          box-shadow: var(--app-glow-primary-lg);
-          transition:
-            box-shadow 0.3s ease,
-            transform 0.2s ease;
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 
-          &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(var(--app-brand-rgb), 0.4);
-          }
-        }
-      }
+    .el-button:not(.el-button--primary) {
+      color: var(--landing-ink);
+      border-color: #70808c;
+      background: rgba(255, 255, 255, 0.72);
     }
   }
 
-  .right {
-    position: relative;
-    z-index: 1;
+  &__stats {
+    display: grid;
+    grid-template-columns: 0.72fr 0.72fr 1.56fr;
+    gap: 0;
+    margin: 44px 0 0;
+    padding: 22px 0 0;
+    border-top: 1px solid #cbd8d6;
 
-    @media (max-width: 767px) {
-      padding: 40px 20px 0 20px;
+    div {
+      padding-right: 18px;
     }
 
-    .brand {
-      max-width: 100%;
-      height: auto;
-      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    dt {
+      margin-bottom: 6px;
+      color: var(--landing-ink);
+      font-size: 20px;
+      font-weight: 750;
+    }
+
+    dd {
+      margin: 0;
+      color: var(--landing-muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  }
+
+  &__screens {
+    position: relative;
+    min-height: 520px;
+  }
+
+  &__desktop,
+  &__mobile {
+    display: block;
+    object-fit: cover;
+    object-position: top left;
+    border: 1px solid #c8d5d4;
+    background: #fff;
+    box-shadow: 0 28px 70px rgba(30, 57, 68, 0.18);
+  }
+
+  &__desktop {
+    width: 92%;
+    aspect-ratio: 16 / 10;
+  }
+
+  &__mobile {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 29%;
+    aspect-ratio: 390 / 844;
+  }
+
+  &__note {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1px solid #cddcda;
+    border-radius: 8px;
+    color: var(--landing-ink);
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 30px rgba(30, 57, 68, 0.14);
+    font-size: 13px;
+    font-weight: 650;
+
+    svg {
+      color: var(--landing-coral);
+    }
+
+    &--top {
+      top: -22px;
+      right: 10px;
+    }
+
+    &--bottom {
+      left: -20px;
+      bottom: 38px;
     }
   }
 }
 
-#introduction {
-  padding: 80px 0;
-  background: var(--app-bg-section);
+.eyebrow,
+.story-kicker {
+  color: var(--landing-teal);
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
 
-  @media (max-width: 767px) {
-    padding: 60px 0;
+.eyebrow {
+  display: inline-flex;
+  padding: 7px 10px;
+  border: 1px solid #9fc0c5;
+  border-radius: 4px;
+  background: #e8f3f3;
+
+  &--light {
+    border: 0;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+.section {
+  padding: 112px 0;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin: 0 auto 64px;
+  text-align: center;
+
+  &--wide {
+    max-width: 860px;
   }
 
-  .container {
+  h2 {
+    margin: 12px 0 16px;
+    font-size: 42px;
+    line-height: 1.18;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0;
+    color: var(--landing-muted);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+}
+
+.platform-section {
+  scroll-margin-top: 76px;
+  background: #fff;
+}
+
+.platform-story {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.76fr) minmax(0, 1.24fr);
+  align-items: center;
+  gap: 72px;
+  padding: 76px 0;
+  border-top: 1px solid #e0e6e8;
+
+  &--reverse {
+    grid-template-columns: minmax(0, 1.24fr) minmax(320px, 0.76fr);
+
+    .platform-story__copy {
+      order: 2;
+    }
+  }
+
+  &__copy {
+    .story-number {
+      display: block;
+      margin-bottom: 28px;
+      color: #c9d1d8;
+      font-size: 42px;
+      font-weight: 800;
+    }
+
+    h3 {
+      margin: 10px 0 16px;
+      font-size: 34px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    > p:not(.story-kicker) {
+      margin: 0 0 28px;
+      color: var(--landing-muted);
+      font-size: 16px;
+      line-height: 1.85;
+    }
+
+    .el-button svg {
+      margin-left: 8px;
+    }
+
+    .el-button {
+      color: var(--landing-teal);
+      border-color: #8eb8c0;
+      background: #fff;
+    }
+  }
+}
+
+.screen-pair {
+  position: relative;
+  min-height: 360px;
+  padding: 18px 58px 58px 0;
+
+  &--large {
+    min-height: 440px;
+  }
+
+  &__desktop,
+  &__mobile {
+    display: block;
+    object-fit: cover;
+    object-position: top left;
+    border: 1px solid #d8dfe3;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 24px 55px rgba(38, 51, 68, 0.15);
+  }
+
+  &__desktop {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  &__mobile {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25%;
+    aspect-ratio: 390 / 844;
+  }
+}
+
+.creation-section {
+  background: #f0f3f4;
+}
+
+.creation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.creation-item {
+  overflow: hidden;
+  border: 1px solid #dbe2e5;
+  border-radius: 8px;
+  background: #fff;
+
+  .screen-pair {
+    min-height: 300px;
+    padding: 0 50px 44px 0;
+    background: #e8edef;
+
+    &__desktop {
+      border-width: 0 1px 1px 0;
+      border-radius: 0 0 6px;
+      box-shadow: none;
+    }
+
+    &__mobile {
+      right: 12px;
+      bottom: 12px;
+      box-shadow: 0 16px 36px rgba(38, 51, 68, 0.2);
+    }
+  }
+
+  &__copy {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    padding: 28px;
+
+    h3 {
+      margin: 5px 0 0;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    > svg {
+      color: var(--landing-coral);
+    }
+
+    > p {
+      grid-column: 1 / -1;
+      min-height: 58px;
+      margin: 0;
+      color: var(--landing-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+  }
+
+  &__link {
+    grid-column: 1 / -1;
+    width: fit-content;
+    padding: 0;
+    border: 0;
+    color: var(--landing-teal);
+    background: transparent;
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
   }
+}
 
-  .info {
-    padding: 24px;
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
+.capability-section {
+  background: #fffaf6;
+  border-top: 1px solid #efe3dc;
+}
 
-    &:hover {
-      transform: translateY(-4px);
-    }
+.capability-directory {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid #ddded8;
+  border-left: 1px solid #ddded8;
+}
 
-    .title {
-      font-size: 18px;
-      font-weight: 600;
-    }
+.capability-row {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 12px;
+  padding: 18px;
+  border-right: 1px solid #ddded8;
+  border-bottom: 1px solid #ddded8;
+  background: rgba(255, 255, 255, 0.6);
 
-    .subtitle {
-      font-size: 14px;
-      line-height: 24px;
-      color: var(--el-text-color-secondary);
-    }
+  img {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: contain;
+  }
 
-    .icon-wrapper {
-      background: var(--el-color-primary-light-9);
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      padding: 10px;
-      text-align: center;
-      line-height: 42px;
-      margin: 10px auto 16px auto;
-      box-shadow: var(--app-glow-primary);
-      transition: box-shadow 0.25s ease;
-
-      .icon {
-        font-size: 24px;
-        color: var(--el-color-primary);
-      }
-    }
+  span {
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 650;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
-#introduction,
-#midjourney,
-#suno {
-  background: var(--app-bg-section);
-}
+.final-cta {
+  padding: 92px 0;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px), #172033;
+  background-size: 42px 42px;
 
-#comments {
-  padding: 80px 0;
-  background: var(--el-bg-color-page);
-
-  .main {
-    @media (max-width: 767px) {
-      padding: 0 24px;
-    }
-  }
-
-  .el-card {
-    padding: 40px 32px;
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
-
-    &:hover {
-      transform: translateY(-4px);
-    }
-
-    @media (max-width: 767px) {
-      margin-bottom: 16px;
-    }
-
-    .content {
-      font-size: 15px;
-      line-height: 26px;
-      color: var(--el-text-color-secondary);
-      margin-bottom: 20px;
-    }
-
-    .info {
-      overflow: hidden;
-
-      .left,
-      .right {
-        float: left;
-      }
-
-      .avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        margin-right: 12px;
-        display: block;
-      }
-
-      .name {
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 4px;
-        color: var(--el-text-color-regular);
-      }
-
-      .job {
-        font-size: 14px;
-        color: var(--el-text-color-secondary);
-      }
-    }
-  }
-}
-
-/* Hero additions (badge / tagline / secondary CTA) */
-#banner .left .info {
-  .badge-new {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
-  }
-
-  .tagline {
-    font-size: 16px;
-    line-height: 26px;
-    margin: -28px 0 40px;
-    text-align: left;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  .operations {
+  &__content {
     display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-
-    .btn-explore {
-      padding: 20px 40px;
-      font-size: 16px;
-      line-height: 20px;
-      font-weight: 600;
-      border-radius: 9999px;
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
-
-      &:hover {
-        background: rgba(255, 255, 255, 0.16);
-        border-color: rgba(255, 255, 255, 0.45);
-        color: #ffffff;
-        transform: translateY(-2px);
-      }
-    }
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
   }
 
-  @media (max-width: 767px) {
-    .badge-new {
-      display: block;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .tagline {
-      text-align: center;
-    }
-
-    .operations {
-      justify-content: center;
-    }
-  }
-}
-
-/* Model wall */
-.models {
-  padding: 90px 0;
-  background: var(--el-bg-color);
-  text-align: center;
-
-  @media (max-width: 767px) {
-    padding: 64px 0;
-  }
-
-  .section-title {
-    font-size: 34px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--el-text-color-primary);
-  }
-
-  .section-subtitle {
-    font-size: 17px;
-    line-height: 28px;
-    margin: 12px 0 40px;
-    color: var(--el-text-color-secondary);
-  }
-
-  .model-wall {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .model-chip {
-    padding: 10px 20px;
-    border-radius: 9999px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--el-text-color-regular);
-    background: var(--app-bg-surface);
-    border: 1px solid var(--app-border-subtle);
-    box-shadow: var(--app-shadow-xs);
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease,
-      border-color 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      border-color: var(--el-color-primary);
-      box-shadow: var(--app-glow-primary);
-    }
-  }
-}
-
-/* Final call-to-action */
-.cta {
-  padding: 100px 0;
-  background: var(--app-gradient-hero);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(var(--app-brand-rgb), 0.18) 1px, transparent 1px);
-    background-size: 32px 32px;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .cta__title {
+  h2 {
+    margin: 8px 0 12px;
     font-size: 38px;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: #ffffff;
+    line-height: 1.2;
+    letter-spacing: 0;
   }
 
-  .cta__subtitle {
-    font-size: 18px;
-    line-height: 30px;
-    margin: 16px 0 36px;
-    color: rgba(255, 255, 255, 0.75);
+  p:not(.story-kicker) {
+    margin: 0;
+    color: #c6ceda;
+    font-size: 16px;
   }
 
-  .cta__btn {
-    padding: 22px 56px;
-    font-size: 17px;
-    line-height: 20px;
-    font-weight: 600;
-    border-radius: 9999px;
-    box-shadow: var(--app-glow-primary-lg);
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.3s ease;
+  .story-kicker {
+    margin: 0;
+    color: #79c0cd;
+  }
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 50px rgba(var(--app-brand-rgb), 0.4);
+  &__actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .hero {
+    &__content {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      padding-top: 84px;
+    }
+
+    &__copy {
+      max-width: 760px;
+    }
+
+    &__screens {
+      width: min(800px, 100%);
+      min-height: 520px;
     }
   }
 
-  @media (max-width: 767px) {
-    padding: 72px 24px;
+  .platform-story,
+  .platform-story--reverse {
+    grid-template-columns: 1fr;
+    gap: 36px;
 
-    .cta__title {
-      font-size: 30px;
+    .platform-story__copy {
+      order: 0;
+      max-width: 720px;
+    }
+  }
+
+  .capability-directory {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    width: min(100% - 32px, 1220px);
+  }
+
+  .hero {
+    min-height: auto;
+
+    &__content {
+      gap: 42px;
+      padding-top: 56px;
+      padding-bottom: 48px;
+    }
+
+    h1 {
+      font-size: 44px;
+    }
+
+    &__headline {
+      font-size: 25px;
+    }
+
+    &__summary {
+      font-size: 15px;
+    }
+
+    &__actions {
+      .el-button {
+        flex: 1 1 150px;
+        margin-left: 0;
+      }
+    }
+
+    &__stats {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 18px;
+
+      div:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &__screens {
+      min-height: 330px;
+      padding-bottom: 20px;
+    }
+
+    &__desktop {
+      width: 100%;
+    }
+
+    &__mobile {
+      right: 8px;
+      width: 31%;
+    }
+
+    &__note {
+      display: none;
+    }
+  }
+
+  .section {
+    padding: 76px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 42px;
+
+    h2 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .platform-story {
+    padding: 54px 0;
+
+    &__copy {
+      .story-number {
+        margin-bottom: 20px;
+        font-size: 34px;
+      }
+
+      h3 {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .screen-pair,
+  .screen-pair--large {
+    min-height: 260px;
+    padding: 0 40px 40px 0;
+
+    &__mobile {
+      width: 28%;
+    }
+  }
+
+  .creation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creation-item {
+    .screen-pair {
+      min-height: 245px;
+    }
+
+    &__copy > p {
+      min-height: 0;
+    }
+  }
+
+  .capability-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capability-row {
+    padding: 14px 12px;
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+
+    span {
+      font-size: 13px;
+    }
+  }
+
+  .final-cta {
+    padding: 68px 0;
+
+    &__content {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    &__actions {
+      width: 100%;
+      flex-wrap: wrap;
+
+      .el-button {
+        flex: 1 1 150px;
+        margin-left: 0;
+      }
     }
   }
 }
