@@ -18,6 +18,8 @@ describe('capability metadata', () => {
     for (const feature of CAPABILITY_KEYS) {
       expect(CAPABILITY_ICONS[feature], feature).toBeTruthy();
     }
+    expect(CAPABILITY_KEYS).toContain('omni');
+    expect(CAPABILITY_ICONS.headshots).toBeTruthy();
   });
 
   it('provides a localized service introduction for every capability', () => {
