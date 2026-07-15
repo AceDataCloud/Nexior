@@ -31,8 +31,12 @@ const editedTask: IScheduledTask = {
 const mountComponent = () =>
   shallowMount(ScheduledTasks, {
     global: {
+      stubs: {
+        ElCard: { template: '<div><slot /></div>' }
+      },
       mocks: {
-        $t: (key: string) => key,
+        $t: (key: string) => (key === 'chat.scheduledTasks.run.reason.internal_error' ? 'Internal error' : key),
+        $te: (key: string) => key === 'chat.scheduledTasks.run.reason.internal_error',
         $store: {
           state: {
             chat: { credential: null },
@@ -44,6 +48,15 @@ const mountComponent = () =>
   });
 
 describe('chat/ScheduledTasks', () => {
+  it('localizes the latest task error code', async () => {
+    const wrapper = mountComponent();
+
+    await wrapper.setData({ tasks: [{ ...editedTask, last_error: 'internal_error' }] });
+
+    expect(wrapper.find('.error-hint').text()).toBe('Internal error');
+    expect(wrapper.text()).not.toContain('internal_error');
+  });
+
   it('opens a fresh form when New is clicked after editing a task', async () => {
     const wrapper = mountComponent();
     const vm = wrapper.vm as unknown as {
