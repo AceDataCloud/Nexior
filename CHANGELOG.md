@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 05:30:32 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 05:48:21 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.0
+
+Wed, 15 Jul 2026 05:48:21 GMT
+
+### Minor changes
+
+- Add Omni video module (omni-flash text/image/video-to-video and video editing) (dev@acedata.cloud)
 
 ## 3.328.3
 
