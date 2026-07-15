@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 02:15:39 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 02:21:09 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.327.13
+
+Wed, 15 Jul 2026 02:21:09 GMT
+
+### Patches
+
+- Use native Element Plus control sizes in the Edit Support Contacts dialog (remove explicit size="small") (dev@acedata.cloud)
 
 ## 3.327.12
 
