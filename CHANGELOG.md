@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 08:22:49 GMT and should not be manually modified. -->
+<!-- This log was last generated on Wed, 15 Jul 2026 10:01:22 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.2
+
+Wed, 15 Jul 2026 10:01:22 GMT
+
+### Patches
+
+- Add service icons and localized capability summaries to Capabilities settings (dev@acedata.cloud)
 
 ## 3.329.1
 
