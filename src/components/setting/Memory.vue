@@ -2,6 +2,19 @@
   <div class="settings-list memory-setting">
     <p class="hint muted">{{ $t('common.settings.memoryIntro') }}</p>
 
+    <div class="memory-toggle-row">
+      <div>
+        <div class="toggle-title">{{ $t('common.settings.memoryEnabled') }}</div>
+        <div class="hint muted">{{ $t('common.settings.memoryEnabledHint') }}</div>
+      </div>
+      <el-switch
+        :model-value="memoryEnabled"
+        :disabled="!memoryReady || updatingMemory"
+        :loading="updatingMemory"
+        @change="onMemoryEnabledChange"
+      />
+    </div>
+
     <p v-if="!token" class="hint muted">{{ $t('common.settings.memoryNeedsChat') }}</p>
 
     <template v-else>
@@ -30,24 +43,30 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElButton, ElEmpty, ElMessage, ElMessageBox, vLoading } from 'element-plus';
+import { ElButton, ElEmpty, ElMessage, ElMessageBox, ElSwitch, vLoading } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { memoriesOperator, type IMemoryEntry } from '@/operators/memories';
 import type { ICredential } from '@/models';
+import { ensureStoreModule } from '@/store/lazy';
 
 export default defineComponent({
   name: 'MemorySetting',
-  components: { ElButton, ElEmpty, FontAwesomeIcon },
+  components: { ElButton, ElEmpty, ElSwitch, FontAwesomeIcon },
   directives: { loading: vLoading },
   data() {
     return {
       loading: false,
       clearing: false,
       removingId: null as string | null,
+      memoryReady: false,
+      updatingMemory: false,
       entries: [] as IMemoryEntry[]
     };
   },
   computed: {
+    memoryEnabled(): boolean {
+      return this.$store?.state?.chat?.memoryEnabled !== false;
+    },
     // Chat-Application credential token. The chat module is lazy-loaded
     // elsewhere; until it resolves the token can be undefined and we keep
     // the list empty (mirrors the BYOK settings tab).
@@ -58,20 +77,45 @@ export default defineComponent({
   },
   watch: {
     token: {
-      immediate: true,
       handler(value?: string) {
         if (value) {
           this.fetch();
+        } else {
+          this.memoryReady = false;
         }
       }
     }
   },
+  async created() {
+    await ensureStoreModule('chat');
+    if (this.token) await this.fetch();
+  },
   methods: {
+    async onMemoryEnabledChange(value: string | number | boolean) {
+      await ensureStoreModule('chat');
+      if (!this.token) return;
+      const enabled = value === true;
+      if (enabled === this.memoryEnabled) return;
+      this.updatingMemory = true;
+      try {
+        const persisted = await memoriesOperator.setEnabled(this.token, enabled);
+        this.$store.commit('chat/setMemoryEnabled', persisted);
+      } catch (error) {
+        console.error('failed to update memory preference', error);
+        ElMessage.error(this.$t('common.settings.memoryError'));
+      } finally {
+        this.updatingMemory = false;
+      }
+    },
     async fetch() {
       if (!this.token) return;
+      this.memoryReady = false;
       this.loading = true;
       try {
-        this.entries = await memoriesOperator.list(this.token);
+        const profile = await memoriesOperator.getProfile(this.token);
+        this.entries = profile.items;
+        this.$store.commit('chat/setMemoryEnabled', profile.enabled);
+        this.memoryReady = true;
       } catch (error) {
         console.error('failed to load memories', error);
       } finally {
@@ -131,6 +175,24 @@ export default defineComponent({
 
   .muted {
     color: var(--el-text-color-secondary, #909399);
+  }
+
+  .memory-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--el-border-color-lighter, #ebeef5);
+
+    .toggle-title {
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    :deep(.el-switch) {
+      flex-shrink: 0;
+    }
   }
 
   .section-head {

@@ -8,6 +8,7 @@ export interface IChatState {
   service: IService | undefined;
   conversations: IChatConversation[] | undefined;
   credential: ICredential | undefined;
+  memoryEnabled: boolean;
   /** Composer text that should survive a route-level remount, e.g.
    *  the user clicks ChatGPT in the sidebar while editing a draft
    *  in the Claude page. The Conversation page mirrors

@@ -23,10 +23,23 @@ export interface IMemoryEntry {
   updated_at: number;
 }
 
+export interface IMemoryProfile {
+  items: IMemoryEntry[];
+  enabled: boolean;
+}
+
 class MemoriesOperator {
-  async list(token: string): Promise<IMemoryEntry[]> {
+  async getProfile(token: string): Promise<IMemoryProfile> {
     const { data } = await axios.post(BASE, { action: 'list' }, { headers: headers(token) });
-    return data?.items ?? [];
+    return {
+      items: data?.items ?? [],
+      enabled: data?.enabled !== false
+    };
+  }
+
+  async setEnabled(token: string, enabled: boolean): Promise<boolean> {
+    const { data } = await axios.post(BASE, { action: 'set_enabled', enabled }, { headers: headers(token) });
+    return data?.enabled !== false;
   }
 
   async remove(token: string, id: string): Promise<boolean> {

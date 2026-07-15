@@ -135,7 +135,6 @@ describe('chat/ScheduledTasks', () => {
     expect(vm.form).toMatchObject({ name: 'Existing task' });
     expect(vm.showCreateDialog).toBe(true);
   });
-
   it('shows scheduled runs that are waiting for a browser device', async () => {
     const wrapper = mountComponent();
     await wrapper.setData({

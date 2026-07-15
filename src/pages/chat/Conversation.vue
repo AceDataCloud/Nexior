@@ -228,6 +228,9 @@ export default defineComponent({
     credential() {
       return this.$store.state.chat?.credential;
     },
+    memoryEnabled(): boolean {
+      return this.$store.state.chat?.memoryEnabled !== false;
+    },
     needApply() {
       return this.$store.state.chat.status.getApplications === Status.Success && !this.application;
     },
@@ -1211,7 +1214,6 @@ export default defineComponent({
       // *remaining* text instead of duplicating everything we already
       // pushed.
       let answerOffset = 0;
-
       chatOperator
         .chatConversation(body, {
           token,
