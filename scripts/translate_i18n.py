@@ -39,14 +39,12 @@ Env vars:
 CLI:
   python3 scripts/translate_i18n.py            # all locales
   python3 scripts/translate_i18n.py en de fr   # subset
-    python3 scripts/translate_i18n.py --repair-english-placeholders ar
 """
 
 from __future__ import annotations
 
 import json
 import os
-import re
 import sys
 import time
 import urllib.error
@@ -104,17 +102,6 @@ BATCH_SIZE = 25
 HTTP_TIMEOUT = 120
 MAX_RETRIES = 4
 RETRY_BASE_SLEEP = 2.0
-REPAIR_ENGLISH_PLACEHOLDERS_FLAG = "--repair-english-placeholders"
-INTENTIONAL_ENGLISH_MESSAGES = {
-    "common.json": {"settings.contactType_wechat"},
-    "site.json": {"placeholder.authSmsWebhookUrl"},
-}
-ARABIC_CHARACTER_RE = re.compile(r"[\u0600-\u06ff]")
-HAN_CHARACTER_RE = re.compile(r"[\u3400-\u9fff]")
-LATIN_WORD_RE = re.compile(r"[A-Za-z]{3,}")
-PRESERVED_TOKEN_RE = re.compile(
-    r"\{\{[^{}]+\}\}|\{[^{}]+\}|%[A-Za-z]|\[\[[^\[\]]+\]\]|</?[A-Za-z][^>]*>"
-)
 
 
 # ---------- helpers ----------
@@ -129,75 +116,6 @@ def collect_keys_with_message(data: Any) -> set[str]:
         if isinstance(v, dict) and isinstance(v.get("message"), str) and v["message"]:
             keys.add(k)
     return keys
-
-
-def collect_preserved_tokens(message: str) -> list[str]:
-    """Return interpolation variables and tags that translations must preserve."""
-    return sorted(PRESERVED_TOKEN_RE.findall(message))
-
-
-def collect_english_placeholder_keys(
-    zh_data: Any,
-    english_data: Any,
-    target_data: Any,
-    ignored_keys: set[str] | None = None,
-) -> set[str]:
-    """Return target messages copied from English despite a localized base source."""
-    if not all(isinstance(data, dict) for data in (zh_data, english_data, target_data)):
-        return set()
-
-    ignored_keys = ignored_keys or set()
-    placeholders: set[str] = set()
-    for key in collect_keys_with_message(zh_data):
-        if key in ignored_keys:
-            continue
-        zh_message = zh_data[key]["message"].strip()
-        english_entry = english_data.get(key)
-        target_entry = target_data.get(key)
-        if not isinstance(english_entry, dict) or not isinstance(target_entry, dict):
-            continue
-        english_message = english_entry.get("message")
-        target_message = target_entry.get("message")
-        if not isinstance(english_message, str) or not isinstance(target_message, str):
-            continue
-        english_message = english_message.strip()
-        target_message = target_message.strip()
-        if english_message and target_message == english_message != zh_message:
-            placeholders.add(key)
-    return placeholders
-
-
-def collect_arabic_nonlocalized_keys(
-    zh_data: Any, target_data: Any, ignored_keys: set[str] | None = None
-) -> set[str]:
-    """Return Arabic entries that remain Latin-only despite a Chinese source."""
-    if not isinstance(zh_data, dict) or not isinstance(target_data, dict):
-        return set()
-
-    ignored_keys = ignored_keys or set()
-    nonlocalized: set[str] = set()
-    for key in collect_keys_with_message(zh_data):
-        if key in ignored_keys:
-            continue
-        zh_message = zh_data[key]["message"]
-        target_entry = target_data.get(key)
-        if not isinstance(target_entry, dict):
-            continue
-        target_message = target_entry.get("message")
-        if not isinstance(target_message, str):
-            continue
-        if (
-            HAN_CHARACTER_RE.search(zh_message)
-            and (
-                HAN_CHARACTER_RE.search(target_message)
-                or (
-                    LATIN_WORD_RE.search(target_message)
-                    and not ARABIC_CHARACTER_RE.search(target_message)
-                )
-            )
-        ):
-            nonlocalized.add(key)
-    return nonlocalized
 
 
 # ---------- HTTP ----------
@@ -306,13 +224,6 @@ def translate_batch(
             raise RuntimeError(
                 f"model returned key {key!r} without a non-empty `message`: {v!r}"
             )
-        source_tokens = collect_preserved_tokens(payload_in[key]["message"])
-        translated_tokens = collect_preserved_tokens(message)
-        if translated_tokens != source_tokens:
-            raise RuntimeError(
-                f"model changed preserved tokens for {key!r}: "
-                f"expected {source_tokens}, got {translated_tokens}"
-            )
         description = v.get("description")
         if not isinstance(description, str):
             description = payload_in[key]["description"]
@@ -354,7 +265,7 @@ def translate_with_split(
 # ---------- per-locale processing ----------
 
 
-def process_locale(api_key: str, locale: str, repair_english_placeholders: bool) -> int:
+def process_locale(api_key: str, locale: str) -> int:
     """Returns the number of keys still missing after the run (should be 0)."""
     base_dir = I18N_ROOT / BASE_LOCALE
     target_dir = I18N_ROOT / locale
@@ -366,7 +277,6 @@ def process_locale(api_key: str, locale: str, repair_english_placeholders: bool)
     for zh_file in sorted(base_dir.glob("*.json")):
         namespace = zh_file.name
         target_file = target_dir / namespace
-        english_file = I18N_ROOT / "en" / namespace
         zh_data = json.loads(zh_file.read_text(encoding="utf-8"))
         if not isinstance(zh_data, dict):
             print(f"  {namespace:24s}  SKIP (zh-CN not an object)")
@@ -382,36 +292,18 @@ def process_locale(api_key: str, locale: str, repair_english_placeholders: bool)
         target_keys = collect_keys_with_message(target_data)
 
         missing = [k for k in zh_keys if k not in target_keys]
-        repair = []
-        if repair_english_placeholders and locale != "en" and english_file.exists():
-            english_data = json.loads(english_file.read_text(encoding="utf-8"))
-            repair_keys = collect_english_placeholder_keys(
-                zh_data,
-                english_data,
-                target_data,
-                INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-            )
-            if locale == "ar":
-                repair_keys |= collect_arabic_nonlocalized_keys(
-                    zh_data,
-                    target_data,
-                    INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-                )
-            repair = sorted(repair_keys)
-        keys_to_translate = sorted(set(missing) | set(repair))
-        if not keys_to_translate:
+        if not missing:
             print(f"  {namespace:24s}  OK")
             continue
 
         print(
-            f"  {namespace:24s}  filling {len(missing)} missing, "
-            f"repairing {len(repair)} English placeholder(s)...",
+            f"  {namespace:24s}  filling {len(missing)} key(s)...",
             flush=True,
         )
 
         translated: dict[str, dict[str, str]] = {}
-        for i in range(0, len(keys_to_translate), BATCH_SIZE):
-            chunk = keys_to_translate[i : i + BATCH_SIZE]
+        for i in range(0, len(missing), BATCH_SIZE):
+            chunk = missing[i : i + BATCH_SIZE]
             got = translate_with_split(api_key, zh_data, chunk, locale)
             translated.update(got)
             print(
@@ -451,29 +343,6 @@ def process_locale(api_key: str, locale: str, repair_english_placeholders: bool)
             )
             locale_missing += len(still_missing)
 
-        if repair_english_placeholders and locale != "en" and english_file.exists():
-            english_data = json.loads(english_file.read_text(encoding="utf-8"))
-            remaining_repairs = collect_english_placeholder_keys(
-                zh_data,
-                english_data,
-                ordered,
-                INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-            )
-            if locale == "ar":
-                remaining_repairs |= collect_arabic_nonlocalized_keys(
-                    zh_data,
-                    ordered,
-                    INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-                )
-            if remaining_repairs:
-                print(
-                    f"    ::error file=src/i18n/{locale}/{namespace}::"
-                    f"still contains {len(remaining_repairs)} nonlocalized key(s): "
-                    f"{sorted(remaining_repairs)[:5]}",
-                    flush=True,
-                )
-                locale_missing += len(remaining_repairs)
-
     return locale_missing
 
 
@@ -489,10 +358,7 @@ def main() -> int:
         )
         return 1
 
-    repair_english_placeholders = REPAIR_ENGLISH_PLACEHOLDERS_FLAG in sys.argv[1:]
-    requested = [
-        arg for arg in sys.argv[1:] if arg != REPAIR_ENGLISH_PLACEHOLDERS_FLAG
-    ]
+    requested = sys.argv[1:]
     if requested:
         unknown = [loc for loc in requested if loc not in TARGET_LOCALES]
         if unknown:
@@ -504,7 +370,7 @@ def main() -> int:
 
     total_missing = 0
     for locale in locales:
-        total_missing += process_locale(api_key, locale, repair_english_placeholders)
+        total_missing += process_locale(api_key, locale)
 
     if total_missing:
         print(

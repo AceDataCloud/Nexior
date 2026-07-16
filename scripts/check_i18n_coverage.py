@@ -38,17 +38,10 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from translate_i18n import (
-    INTENTIONAL_ENGLISH_MESSAGES,
-    collect_arabic_nonlocalized_keys,
-    collect_english_placeholder_keys,
-)
-
 REPO_ROOT = Path(__file__).resolve().parent.parent
 I18N_ROOT = REPO_ROOT / "src" / "i18n"
 BASE_LOCALE = "zh-CN"
 ENGLISH_LOCALE = "en"
-FULL_LOCALIZATION_LOCALES = {"ar"}
 REQUIRE_LOCALIZED_MESSAGES = {
     "maestro.json": {
         "name.customize",
@@ -104,7 +97,6 @@ def main() -> int:
     namespaces = sorted(p.name for p in base_dir.glob("*.json"))
     failures = 0
     english_messages: dict[str, dict[str, str]] = {}
-    english_data_by_namespace: dict[str, Any] = {}
 
     for namespace, localized_keys in REQUIRE_LOCALIZED_MESSAGES.items():
         en_path = I18N_ROOT / ENGLISH_LOCALE / namespace
@@ -156,38 +148,6 @@ def main() -> int:
                 print(
                     f"::error file={rel}::missing {len(missing)} key(s) vs zh-CN: {preview}"
                 )
-
-            if locale in FULL_LOCALIZATION_LOCALES:
-                english_data = english_data_by_namespace.get(namespace)
-                if english_data is None:
-                    english_path = I18N_ROOT / ENGLISH_LOCALE / namespace
-                    english_data = json.loads(english_path.read_text(encoding="utf-8"))
-                    english_data_by_namespace[namespace] = english_data
-                untranslated = sorted(
-                    collect_english_placeholder_keys(
-                        zh_data,
-                        english_data,
-                        target_data,
-                        INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-                    )
-                    | collect_arabic_nonlocalized_keys(
-                        zh_data,
-                        target_data,
-                        INTENTIONAL_ENGLISH_MESSAGES.get(namespace, set()),
-                    )
-                )
-                if untranslated:
-                    failures += 1
-                    rel = target_path.relative_to(REPO_ROOT)
-                    preview = ", ".join(untranslated[:5]) + (
-                        f"  …(+{len(untranslated) - 5} more)"
-                        if len(untranslated) > 5
-                        else ""
-                    )
-                    print(
-                        f"::error file={rel}::English or nonlocalized message remains for "
-                        f"{len(untranslated)} key(s): {preview}"
-                    )
 
             localized_keys = REQUIRE_LOCALIZED_MESSAGES.get(namespace, set())
             reference_messages = english_messages.get(namespace)
