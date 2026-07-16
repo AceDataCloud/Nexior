@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 15:43:05 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 16 Jul 2026 17:17:28 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.14
+
+Thu, 16 Jul 2026 17:17:28 GMT
+
+### Patches
+
+- Add canonical Kling O1 and V3 Omni image/video reference controls. (dev@acedata.cloud)
 
 ## 3.329.13
 
