@@ -32,16 +32,15 @@
           </dl>
         </div>
         <div class="hero__screens">
-          <div class="browser-frame hero__desktop" aria-hidden="true">
-            <div class="browser-frame__toolbar">
-              <span class="browser-frame__lights"><i /><i /><i /></span>
-              <span class="browser-frame__address" />
+          <div class="macbook-frame hero__desktop" aria-hidden="true">
+            <div class="macbook-frame__lid">
+              <span class="macbook-frame__camera" />
+              <div class="macbook-frame__viewport">
+                <img :src="heroDesktop" alt="" />
+              </div>
+              <div class="macbook-frame__chin"><span>AceData</span></div>
             </div>
-            <img :src="heroDesktop" alt="" />
-          </div>
-          <div class="phone-frame hero__mobile" aria-hidden="true">
-            <span class="phone-frame__island" />
-            <img :src="heroMobile" alt="" />
+            <div class="macbook-frame__base"><span /></div>
           </div>
           <button type="button" class="hero__note hero__note--top" @click="scrollToCreation">
             <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
@@ -98,27 +97,16 @@
               <font-awesome-icon icon="fa-solid fa-arrow-right" />
             </el-button>
           </div>
-          <div
-            class="screen-pair screen-pair--large"
-            :class="{ 'screen-pair--support': item.secondaryKind === 'desktop' }"
-          >
-            <div class="browser-frame screen-pair__desktop">
-              <div class="browser-frame__toolbar" aria-hidden="true">
-                <span class="browser-frame__lights"><i /><i /><i /></span>
-                <span class="browser-frame__address" />
+          <div class="screen-pair screen-pair--large">
+            <div class="macbook-frame screen-pair__desktop">
+              <div class="macbook-frame__lid">
+                <span class="macbook-frame__camera" aria-hidden="true" />
+                <div class="macbook-frame__viewport">
+                  <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
+                </div>
+                <div class="macbook-frame__chin"><span>AceData</span></div>
               </div>
-              <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
-            </div>
-            <div v-if="item.secondaryKind === 'desktop'" class="browser-frame screen-pair__mobile">
-              <div class="browser-frame__toolbar" aria-hidden="true">
-                <span class="browser-frame__lights"><i /><i /><i /></span>
-                <span class="browser-frame__address" />
-              </div>
-              <img :src="item.mobile" alt="" loading="lazy" />
-            </div>
-            <div v-else class="phone-frame screen-pair__mobile">
-              <span class="phone-frame__island" aria-hidden="true" />
-              <img :src="item.mobile" alt="" loading="lazy" />
+              <div class="macbook-frame__base"><span /></div>
             </div>
           </div>
         </article>
@@ -135,17 +123,23 @@
 
         <div class="creation-grid">
           <article v-for="item in creationShowcases" :key="item.key" class="creation-item">
-            <div class="screen-pair">
-              <div class="browser-frame screen-pair__desktop">
-                <div class="browser-frame__toolbar" aria-hidden="true">
-                  <span class="browser-frame__lights"><i /><i /><i /></span>
-                  <span class="browser-frame__address" />
+            <div class="screen-pair" :class="{ 'screen-pair--with-phone': item.mobile }">
+              <div class="macbook-frame screen-pair__desktop">
+                <div class="macbook-frame__lid">
+                  <span class="macbook-frame__camera" aria-hidden="true" />
+                  <div class="macbook-frame__viewport">
+                    <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
+                  </div>
+                  <div class="macbook-frame__chin"><span>AceData</span></div>
                 </div>
-                <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
+                <div class="macbook-frame__base"><span /></div>
               </div>
-              <div class="phone-frame screen-pair__mobile">
-                <span class="phone-frame__island" aria-hidden="true" />
-                <img :src="item.mobile" alt="" loading="lazy" />
+              <div v-if="item.mobile" class="phone-device screen-pair__mobile">
+                <span class="phone-device__speaker" aria-hidden="true" />
+                <div class="phone-device__screen">
+                  <span class="phone-device__island" aria-hidden="true" />
+                  <img :src="item.mobile" alt="" loading="lazy" />
+                </div>
               </div>
             </div>
             <div class="creation-item__copy">
@@ -224,13 +218,12 @@ interface IShowcase {
   path: string;
   href?: string;
   desktop: ILocalizedImage;
-  mobile: ILocalizedImage;
-  secondaryKind?: 'desktop' | 'mobile';
+  mobile?: ILocalizedImage;
 }
 
 interface IResolvedShowcase extends Omit<IShowcase, 'desktop' | 'mobile'> {
   desktop: string;
-  mobile: string;
+  mobile?: string;
 }
 
 const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
@@ -240,23 +233,15 @@ const SCREENSHOTS = {
   auth: image('https://cdn.acedata.cloud/ae2dceaacc.png', 'https://cdn.acedata.cloud/61f717db6c.png'),
   branding: image('https://cdn.acedata.cloud/d54f145c5c.png', 'https://cdn.acedata.cloud/6d59646c4d.png'),
   capabilities: image('https://cdn.acedata.cloud/2369fa145f.png', 'https://cdn.acedata.cloud/082a69ca54.png'),
-  codingDesktop: image('https://cdn.acedata.cloud/c30a77a54b.png', 'https://cdn.acedata.cloud/e63eb96324.png'),
-  codingMobile: image('https://cdn.acedata.cloud/d94ba8ee75.png', 'https://cdn.acedata.cloud/6df02e165d.png'),
   digitalHumanDesktop: image('https://cdn.acedata.cloud/b9ee357c33.png', 'https://cdn.acedata.cloud/a0228b206a.png'),
-  digitalHumanMobile: image('https://cdn.acedata.cloud/978946c9f5.png', 'https://cdn.acedata.cloud/5372d53321.png'),
   distributionDesktop: image('https://cdn.acedata.cloud/6c25c74a49.png', 'https://cdn.acedata.cloud/a1e62e4425.png'),
-  distributionMobile: image('https://cdn.acedata.cloud/0647fc4fc4.png', 'https://cdn.acedata.cloud/92fa573377.png'),
   klingDesktop: image('https://cdn.acedata.cloud/e45bc3e2e2.png', 'https://cdn.acedata.cloud/03d73b16ce.png'),
   klingMobile: image('https://cdn.acedata.cloud/10dc431467.png', 'https://cdn.acedata.cloud/ea10c8e395.png'),
   maestroDesktop: image('https://cdn.acedata.cloud/1791398216.png', 'https://cdn.acedata.cloud/7854458ee3.png'),
-  maestroMobile: image('https://cdn.acedata.cloud/29c94b3dea.png', 'https://cdn.acedata.cloud/0ba33fa9d2.png'),
   nanoDesktop: image('https://cdn.acedata.cloud/82252ec647.png', 'https://cdn.acedata.cloud/e047aea679.png'),
   nanoMobile: image('https://cdn.acedata.cloud/c7da634c96.png', 'https://cdn.acedata.cloud/dc5b2cca1d.png'),
-  pricing: image('https://cdn.acedata.cloud/c82a2d2d24.png', 'https://cdn.acedata.cloud/68cf015000.png'),
-  seo: image('https://cdn.acedata.cloud/e5635b00bf.png', 'https://cdn.acedata.cloud/c9e96a5362.png'),
   subsites: image('https://cdn.acedata.cloud/bf4356fffc.png', 'https://cdn.acedata.cloud/b1948ec2a2.png'),
-  sunoDesktop: image('https://cdn.acedata.cloud/8ce288065b.png', 'https://cdn.acedata.cloud/1eebf72e3a.png'),
-  sunoMobile: image('https://cdn.acedata.cloud/d02a2f3586.png', 'https://cdn.acedata.cloud/b63206b610.png')
+  sunoDesktop: image('https://cdn.acedata.cloud/8ce288065b.png', 'https://cdn.acedata.cloud/1eebf72e3a.png')
 };
 
 const BUSINESS_SHOWCASES: IShowcase[] = [
@@ -269,8 +254,6 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     path: '/chatgpt?dialog=settings&tab=subsites',
     href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.subsites,
-    mobile: SCREENSHOTS.branding,
-    secondaryKind: 'desktop',
     bulletKeys: [
       'index.benefit.subsites.noServer',
       'index.benefit.subsites.customDomain',
@@ -286,8 +269,6 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     path: '/chatgpt?dialog=settings&tab=function',
     href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.capabilities,
-    mobile: SCREENSHOTS.pricing,
-    secondaryKind: 'desktop',
     bulletKeys: [
       'index.benefit.capabilities.catalog',
       'index.benefit.capabilities.display',
@@ -302,9 +283,7 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     buttonKey: 'index.button.learnBusiness',
     path: '/chatgpt?dialog=settings&tab=seo',
     href: STUDIO_OVERVIEW_URL,
-    desktop: SCREENSHOTS.seo,
-    mobile: SCREENSHOTS.auth,
-    secondaryKind: 'desktop',
+    desktop: SCREENSHOTS.auth,
     bulletKeys: [
       'index.benefit.operations.seo',
       'index.benefit.operations.auth',
@@ -320,8 +299,6 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     path: '/distribution',
     href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.distributionDesktop,
-    mobile: SCREENSHOTS.distributionMobile,
-    secondaryKind: 'mobile',
     bulletKeys: [
       'index.benefit.distribution.noBarrier',
       'index.benefit.distribution.levels',
@@ -361,8 +338,7 @@ const CREATION_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.music',
     buttonKey: 'index.button.try',
     path: '/suno',
-    desktop: SCREENSHOTS.sunoDesktop,
-    mobile: SCREENSHOTS.sunoMobile
+    desktop: SCREENSHOTS.sunoDesktop
   },
   {
     key: 'workflow',
@@ -372,8 +348,7 @@ const CREATION_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.workflow',
     buttonKey: 'index.button.try',
     path: '/maestro',
-    desktop: SCREENSHOTS.maestroDesktop,
-    mobile: SCREENSHOTS.maestroMobile
+    desktop: SCREENSHOTS.maestroDesktop
   },
   {
     key: 'digitalHuman',
@@ -383,19 +358,7 @@ const CREATION_SHOWCASES: IShowcase[] = [
     subtitleKey: 'index.subtitle.digitalHuman',
     buttonKey: 'index.button.try',
     path: '/digital-human',
-    desktop: SCREENSHOTS.digitalHumanDesktop,
-    mobile: SCREENSHOTS.digitalHumanMobile
-  },
-  {
-    key: 'coding',
-    featureKeys: ['codingBridge'],
-    eyebrowKey: 'index.eyebrow.coding',
-    titleKey: 'index.title.coding',
-    subtitleKey: 'index.subtitle.coding',
-    buttonKey: 'index.button.try',
-    path: '/coding-bridge',
-    desktop: SCREENSHOTS.codingDesktop,
-    mobile: SCREENSHOTS.codingMobile
+    desktop: SCREENSHOTS.digitalHumanDesktop
   }
 ];
 
@@ -431,10 +394,7 @@ export default defineComponent({
       return String(this.$i18n.locale).toLowerCase() === 'zh-cn';
     },
     heroDesktop(): string {
-      return this.localizedImage(SCREENSHOTS.nanoDesktop);
-    },
-    heroMobile(): string {
-      return this.localizedImage(SCREENSHOTS.nanoMobile);
+      return this.localizedImage(SCREENSHOTS.branding);
     },
     businessShowcases(): IResolvedShowcase[] {
       return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite).map((item) =>
@@ -466,7 +426,7 @@ export default defineComponent({
       return {
         ...item,
         desktop: this.localizedImage(item.desktop),
-        mobile: this.localizedImage(item.mobile)
+        mobile: item.mobile ? this.localizedImage(item.mobile) : undefined
       };
     },
     onStart() {
@@ -512,86 +472,178 @@ export default defineComponent({
   margin: 0 auto;
 }
 
-.browser-frame {
-  overflow: hidden;
-  border-radius: 16px;
-  background: #0e141d;
-  box-shadow: 0 24px 55px rgba(5, 12, 20, 0.28);
+.macbook-frame {
+  position: relative;
+  padding: 0 3.5% 3.8%;
+  filter: drop-shadow(0 24px 28px rgba(5, 12, 20, 0.24));
 
-  &__toolbar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    height: 30px;
-    padding: 0 12px;
-    background: #171e28;
+  &__lid {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding: 3.2% 2.6% 0;
+    border: 1px solid #3c434d;
+    border-radius: 18px 18px 5px 5px;
+    background: linear-gradient(145deg, #11161d 0%, #050709 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      inset 0 -14px 22px rgba(0, 0, 0, 0.35);
   }
 
-  &__lights {
-    display: flex;
-    gap: 5px;
+  &__camera {
+    position: absolute;
+    top: 1.2%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #1b2730;
+    box-shadow: 0 0 0 1px #020304;
+    transform: translateX(-50%);
+  }
 
-    i {
+  &__viewport {
+    overflow: hidden;
+    background: #05070a;
+
+    img {
       display: block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ff6258;
-
-      &:nth-child(2) {
-        background: #ffc04a;
-      }
-
-      &:nth-child(3) {
-        background: #38c955;
-      }
+      width: 100%;
+      height: auto;
+      border: 0;
+      background: transparent;
+      object-fit: contain;
     }
   }
 
-  &__address {
-    width: min(42%, 210px);
-    height: 9px;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.12);
+  &__chin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    color: #8b929a;
+    font-size: 7px;
+    letter-spacing: 0.04em;
   }
 
-  img {
-    display: block;
-    width: 100%;
-    border: 0;
-    background: transparent;
-    object-fit: cover;
-    object-position: top left;
+  &__base {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4.8%;
+    min-height: 16px;
+    border-radius: 2px 2px 14px 14px;
+    background: linear-gradient(180deg, #d7d9dc 0%, #9ca1a7 38%, #575e66 72%, #c9ccd0 100%);
+    box-shadow:
+      inset 0 1px rgba(255, 255, 255, 0.85),
+      0 5px 8px rgba(0, 0, 0, 0.24);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 18%;
+      height: 46%;
+      border-radius: 0 0 8px 8px;
+      background: linear-gradient(180deg, #737a82, #b8bcc1);
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: 5%;
+      bottom: -3px;
+      left: 5%;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.28);
+      filter: blur(2px);
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 16%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.5);
+      transform: translateX(-50%);
+    }
   }
 }
 
-.phone-frame {
-  overflow: hidden;
-  padding: 7px;
-  border-radius: 28px;
-  background: #090d13;
-  box-shadow: 0 22px 48px rgba(5, 12, 20, 0.34);
+.phone-device {
+  position: relative;
+  padding: 9px 7px 12px;
+  border: 1px solid #3d4248;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #151a20, #030405);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 22px 48px rgba(5, 12, 20, 0.34);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    width: 3px;
+    border-radius: 2px 0 0 2px;
+    background: #363c43;
+  }
+
+  &::before {
+    top: 23%;
+    height: 8%;
+  }
+
+  &::after {
+    top: 34%;
+    height: 13%;
+  }
+
+  &__speaker {
+    position: absolute;
+    z-index: 3;
+    top: 5px;
+    left: 50%;
+    width: 18%;
+    height: 3px;
+    border-radius: 9999px;
+    background: #272d34;
+    transform: translateX(-50%);
+  }
+
+  &__screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    background: #05070a;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 0;
+      background: transparent;
+      object-fit: contain;
+    }
+  }
 
   &__island {
     position: absolute;
     z-index: 2;
-    top: 12px;
+    top: 8px;
     left: 50%;
-    width: 31%;
-    height: 12px;
+    width: 34%;
+    height: 13px;
     border-radius: 9999px;
-    background: #05070a;
+    background: #020304;
     transform: translateX(-50%);
-  }
-
-  img {
-    display: block;
-    width: 100%;
-    border: 0;
-    border-radius: 21px;
-    background: transparent;
-    object-fit: cover;
-    object-position: top left;
   }
 }
 
@@ -693,26 +745,11 @@ export default defineComponent({
 
   &__screens {
     position: relative;
-    min-height: 520px;
+    min-height: 430px;
   }
 
   &__desktop {
-    width: 92%;
-
-    img {
-      aspect-ratio: 16 / 10;
-    }
-  }
-
-  &__mobile {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 29%;
-
-    img {
-      aspect-ratio: 390 / 844;
-    }
+    width: 100%;
   }
 
   &__note {
@@ -901,38 +938,26 @@ export default defineComponent({
 
 .screen-pair {
   position: relative;
-  min-height: 360px;
-  padding: 18px 58px 58px 0;
+  padding: 12px 0 24px;
 
   &--large {
-    min-height: 440px;
+    padding-bottom: 18px;
   }
 
   &__desktop {
     width: 100%;
-
-    img {
-      aspect-ratio: 16 / 10;
-    }
   }
 
   &__mobile {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 25%;
-
-    img {
-      aspect-ratio: 390 / 844;
-    }
+    width: 27%;
   }
 
-  &--support &__mobile {
-    width: 42%;
-
-    img {
-      aspect-ratio: 16 / 10;
-    }
+  &--with-phone {
+    padding-right: 9%;
+    padding-bottom: 8%;
   }
 }
 
@@ -954,14 +979,17 @@ export default defineComponent({
   box-shadow: var(--app-shadow-sm);
 
   .screen-pair {
-    min-height: 300px;
-    padding: 0 50px 44px 0;
+    padding: 18px 18px 28px;
     background: var(--el-fill-color-light);
 
     &__mobile {
-      right: 12px;
-      bottom: 12px;
-      box-shadow: 0 16px 36px rgba(38, 51, 68, 0.2);
+      right: 10px;
+      bottom: 10px;
+    }
+
+    &--with-phone {
+      padding-right: 13%;
+      padding-bottom: 12%;
     }
   }
 
@@ -1215,11 +1243,15 @@ export default defineComponent({
 
   .screen-pair,
   .screen-pair--large {
-    min-height: 260px;
-    padding: 0 40px 40px 0;
+    padding: 8px 0 14px;
 
     &__mobile {
-      width: 28%;
+      width: 30%;
+    }
+
+    &.screen-pair--with-phone {
+      padding-right: 9%;
+      padding-bottom: 10%;
     }
   }
 
@@ -1229,7 +1261,12 @@ export default defineComponent({
 
   .creation-item {
     .screen-pair {
-      min-height: 245px;
+      padding: 12px;
+
+      &.screen-pair--with-phone {
+        padding-right: 12%;
+        padding-bottom: 14%;
+      }
     }
 
     &__copy > p {
