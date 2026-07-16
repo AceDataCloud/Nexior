@@ -31,17 +31,26 @@
             </div>
           </dl>
         </div>
-        <div class="hero__screens" aria-hidden="true">
-          <img :src="heroDesktop" class="hero__desktop" alt="" />
-          <img :src="heroMobile" class="hero__mobile" alt="" />
-          <div class="hero__note hero__note--top">
+        <div class="hero__screens">
+          <div class="browser-frame hero__desktop" aria-hidden="true">
+            <div class="browser-frame__toolbar">
+              <span class="browser-frame__lights"><i /><i /><i /></span>
+              <span class="browser-frame__address" />
+            </div>
+            <img :src="heroDesktop" alt="" />
+          </div>
+          <div class="phone-frame hero__mobile" aria-hidden="true">
+            <span class="phone-frame__island" />
+            <img :src="heroMobile" alt="" />
+          </div>
+          <button type="button" class="hero__note hero__note--top" @click="scrollToCreation">
             <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
             <span>{{ $t('index.note.allInOne') }}</span>
-          </div>
-          <div class="hero__note hero__note--bottom">
+          </button>
+          <button type="button" class="hero__note hero__note--bottom" @click="scrollToSubsites">
             <font-awesome-icon icon="fa-solid fa-globe" />
             <span>{{ $t('index.note.customDomain') }}</span>
-          </div>
+          </button>
         </div>
       </div>
     </section>
@@ -56,6 +65,7 @@
 
         <article
           v-for="(item, itemIndex) in businessShowcases"
+          :id="item.key"
           :key="item.key"
           class="platform-story"
           :class="{ 'platform-story--reverse': itemIndex % 2 === 1 }"
@@ -71,7 +81,19 @@
                 <span>{{ $t(bulletKey) }}</span>
               </li>
             </ul>
-            <el-button type="primary" plain @click="openShowcase(item)">
+            <el-button
+              v-if="item.href"
+              tag="a"
+              type="primary"
+              plain
+              :href="item.href"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ $t(item.buttonKey) }}
+              <font-awesome-icon icon="fa-solid fa-arrow-right" />
+            </el-button>
+            <el-button v-else type="primary" plain @click="openShowcase(item)">
               {{ $t(item.buttonKey) }}
               <font-awesome-icon icon="fa-solid fa-arrow-right" />
             </el-button>
@@ -80,14 +102,30 @@
             class="screen-pair screen-pair--large"
             :class="{ 'screen-pair--support': item.secondaryKind === 'desktop' }"
           >
-            <img :src="item.desktop" class="screen-pair__desktop" :alt="$t(item.titleKey)" loading="lazy" />
-            <img :src="item.mobile" class="screen-pair__mobile" alt="" loading="lazy" />
+            <div class="browser-frame screen-pair__desktop">
+              <div class="browser-frame__toolbar" aria-hidden="true">
+                <span class="browser-frame__lights"><i /><i /><i /></span>
+                <span class="browser-frame__address" />
+              </div>
+              <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
+            </div>
+            <div v-if="item.secondaryKind === 'desktop'" class="browser-frame screen-pair__mobile">
+              <div class="browser-frame__toolbar" aria-hidden="true">
+                <span class="browser-frame__lights"><i /><i /><i /></span>
+                <span class="browser-frame__address" />
+              </div>
+              <img :src="item.mobile" alt="" loading="lazy" />
+            </div>
+            <div v-else class="phone-frame screen-pair__mobile">
+              <span class="phone-frame__island" aria-hidden="true" />
+              <img :src="item.mobile" alt="" loading="lazy" />
+            </div>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="section creation-section">
+    <section id="creation" class="section creation-section">
       <div class="container">
         <div class="section-heading">
           <span class="eyebrow eyebrow--light">{{ $t('index.eyebrow.creation') }}</span>
@@ -98,8 +136,17 @@
         <div class="creation-grid">
           <article v-for="item in creationShowcases" :key="item.key" class="creation-item">
             <div class="screen-pair">
-              <img :src="item.desktop" class="screen-pair__desktop" :alt="$t(item.titleKey)" loading="lazy" />
-              <img :src="item.mobile" class="screen-pair__mobile" alt="" loading="lazy" />
+              <div class="browser-frame screen-pair__desktop">
+                <div class="browser-frame__toolbar" aria-hidden="true">
+                  <span class="browser-frame__lights"><i /><i /><i /></span>
+                  <span class="browser-frame__address" />
+                </div>
+                <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
+              </div>
+              <div class="phone-frame screen-pair__mobile">
+                <span class="phone-frame__island" aria-hidden="true" />
+                <img :src="item.mobile" alt="" loading="lazy" />
+              </div>
             </div>
             <div class="creation-item__copy">
               <div>
@@ -175,6 +222,7 @@ interface IShowcase {
   subtitleKey: string;
   buttonKey: string;
   path: string;
+  href?: string;
   desktop: ILocalizedImage;
   mobile: ILocalizedImage;
   secondaryKind?: 'desktop' | 'mobile';
@@ -186,6 +234,7 @@ interface IResolvedShowcase extends Omit<IShowcase, 'desktop' | 'mobile'> {
 }
 
 const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
+const STUDIO_OVERVIEW_URL = 'https://platform.acedata.cloud/documents/studio-overview';
 
 const SCREENSHOTS = {
   auth: image('https://cdn.acedata.cloud/ae2dceaacc.png', 'https://cdn.acedata.cloud/61f717db6c.png'),
@@ -216,8 +265,9 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     eyebrowKey: 'index.eyebrow.subsites',
     titleKey: 'index.title.subsites',
     subtitleKey: 'index.subtitle.subsites',
-    buttonKey: 'index.button.createSubsite',
+    buttonKey: 'index.button.learnBusiness',
     path: '/chatgpt?dialog=settings&tab=subsites',
+    href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.subsites,
     mobile: SCREENSHOTS.branding,
     secondaryKind: 'desktop',
@@ -232,8 +282,9 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     eyebrowKey: 'index.eyebrow.capabilities',
     titleKey: 'index.title.capabilities',
     subtitleKey: 'index.subtitle.capabilities',
-    buttonKey: 'index.button.configure',
+    buttonKey: 'index.button.learnBusiness',
     path: '/chatgpt?dialog=settings&tab=function',
+    href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.capabilities,
     mobile: SCREENSHOTS.pricing,
     secondaryKind: 'desktop',
@@ -248,8 +299,9 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     eyebrowKey: 'index.eyebrow.operations',
     titleKey: 'index.title.operations',
     subtitleKey: 'index.subtitle.operations',
-    buttonKey: 'index.button.operations',
+    buttonKey: 'index.button.learnBusiness',
     path: '/chatgpt?dialog=settings&tab=seo',
+    href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.seo,
     mobile: SCREENSHOTS.auth,
     secondaryKind: 'desktop',
@@ -264,8 +316,9 @@ const BUSINESS_SHOWCASES: IShowcase[] = [
     eyebrowKey: 'index.eyebrow.distribution',
     titleKey: 'index.title.distribution',
     subtitleKey: 'index.subtitle.distribution',
-    buttonKey: 'index.button.viewDistribution',
+    buttonKey: 'index.button.learnBusiness',
     path: '/distribution',
+    href: STUDIO_OVERVIEW_URL,
     desktop: SCREENSHOTS.distributionDesktop,
     mobile: SCREENSHOTS.distributionMobile,
     secondaryKind: 'mobile',
@@ -291,7 +344,7 @@ const CREATION_SHOWCASES: IShowcase[] = [
   },
   {
     key: 'video',
-    featureKeys: ['kling'],
+    featureKeys: ['kling', 'omni'],
     eyebrowKey: 'index.eyebrow.video',
     titleKey: 'index.title.video',
     subtitleKey: 'index.subtitle.video',
@@ -363,7 +416,13 @@ export default defineComponent({
       return (this.site?.features ?? {}) as Record<string, { enabled?: boolean } | undefined>;
     },
     isMainSite(): boolean {
-      return this.site?.origin === 'studio.acedata.cloud' || isMainOfficial();
+      const hostname = typeof window === 'undefined' ? '' : window.location.hostname;
+      const isOfficialPreview =
+        hostname.endsWith('.plain-river-2dfc.workers.dev') &&
+        this.site?.origin === hostname &&
+        this.site?.title === 'Ace Data Cloud' &&
+        this.site?.branding === null;
+      return this.site?.origin === 'studio.acedata.cloud' || isMainOfficial() || isOfficialPreview;
     },
     capabilityCount(): number {
       return this.site?.id ? this.capabilityCards.length : CAPABILITY_KEYS.length;
@@ -383,9 +442,10 @@ export default defineComponent({
       );
     },
     creationShowcases(): IResolvedShowcase[] {
-      return CREATION_SHOWCASES.filter((item) =>
-        item.featureKeys?.some((key) => this.enabledFeatures[key]?.enabled)
-      ).map((item) => this.resolveShowcase(item));
+      const showcases = this.isMainSite
+        ? CREATION_SHOWCASES
+        : CREATION_SHOWCASES.filter((item) => item.featureKeys?.some((key) => this.enabledFeatures[key]?.enabled));
+      return showcases.map((item) => this.resolveShowcase(item));
     },
     capabilityCards(): Array<{ key: CapabilityKey; label: string; icon: string }> {
       const keys = this.isMainSite
@@ -419,11 +479,20 @@ export default defineComponent({
       this.$router.push('/chatgpt?dialog=settings&tab=subsites');
     },
     scrollToPlatform() {
+      this.scrollToSection('platform');
+    },
+    scrollToCreation() {
+      this.scrollToSection('creation');
+    },
+    scrollToSubsites() {
+      this.scrollToSection('subsites');
+    },
+    scrollToSection(id: string) {
       const app = document.getElementById('app');
-      const platform = document.getElementById('platform');
-      if (!app || !platform) return;
+      const target = document.getElementById(id);
+      if (!app || !target) return;
       const headerHeight = document.querySelector<HTMLElement>('.header')?.offsetHeight ?? 0;
-      app.scrollTop = platform.offsetTop - headerHeight;
+      app.scrollTop = target.offsetTop - headerHeight;
     }
   }
 });
@@ -441,6 +510,89 @@ export default defineComponent({
 .container {
   width: min(1220px, calc(100% - 48px));
   margin: 0 auto;
+}
+
+.browser-frame {
+  overflow: hidden;
+  border-radius: 16px;
+  background: #0e141d;
+  box-shadow: 0 24px 55px rgba(5, 12, 20, 0.28);
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 30px;
+    padding: 0 12px;
+    background: #171e28;
+  }
+
+  &__lights {
+    display: flex;
+    gap: 5px;
+
+    i {
+      display: block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ff6258;
+
+      &:nth-child(2) {
+        background: #ffc04a;
+      }
+
+      &:nth-child(3) {
+        background: #38c955;
+      }
+    }
+  }
+
+  &__address {
+    width: min(42%, 210px);
+    height: 9px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    object-fit: cover;
+    object-position: top left;
+  }
+}
+
+.phone-frame {
+  overflow: hidden;
+  padding: 7px;
+  border-radius: 28px;
+  background: #090d13;
+  box-shadow: 0 22px 48px rgba(5, 12, 20, 0.34);
+
+  &__island {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    left: 50%;
+    width: 31%;
+    height: 12px;
+    border-radius: 9999px;
+    background: #05070a;
+    transform: translateX(-50%);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: 21px;
+    background: transparent;
+    object-fit: cover;
+    object-position: top left;
+  }
 }
 
 .hero {
@@ -544,20 +696,12 @@ export default defineComponent({
     min-height: 520px;
   }
 
-  &__desktop,
-  &__mobile {
-    display: block;
-    object-fit: cover;
-    object-position: top left;
-    border: 1px solid #c8d5d4;
-    border-radius: 16px;
-    background: #fff;
-    box-shadow: 0 28px 70px rgba(30, 57, 68, 0.18);
-  }
-
   &__desktop {
     width: 92%;
-    aspect-ratio: 16 / 10;
+
+    img {
+      aspect-ratio: 16 / 10;
+    }
   }
 
   &__mobile {
@@ -565,7 +709,10 @@ export default defineComponent({
     right: 0;
     bottom: 0;
     width: 29%;
-    aspect-ratio: 390 / 844;
+
+    img {
+      aspect-ratio: 390 / 844;
+    }
   }
 
   &__note {
@@ -576,11 +723,26 @@ export default defineComponent({
     padding: 12px 16px;
     border: 1px solid #cddcda;
     border-radius: 12px;
-    color: var(--landing-ink);
+    color: #172033;
     background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 12px 30px rgba(30, 57, 68, 0.14);
     font-size: 13px;
+    font-family: inherit;
     font-weight: 650;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(30, 57, 68, 0.2);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--el-color-primary);
+      outline-offset: 3px;
+    }
 
     svg {
       color: var(--landing-accent);
@@ -746,20 +908,12 @@ export default defineComponent({
     min-height: 440px;
   }
 
-  &__desktop,
-  &__mobile {
-    display: block;
-    object-fit: cover;
-    object-position: top left;
-    border: 1px solid #d8dfe3;
-    border-radius: 16px;
-    background: #fff;
-    box-shadow: 0 24px 55px rgba(38, 51, 68, 0.15);
-  }
-
   &__desktop {
     width: 100%;
-    aspect-ratio: 16 / 10;
+
+    img {
+      aspect-ratio: 16 / 10;
+    }
   }
 
   &__mobile {
@@ -767,12 +921,18 @@ export default defineComponent({
     right: 0;
     bottom: 0;
     width: 25%;
-    aspect-ratio: 390 / 844;
+
+    img {
+      aspect-ratio: 390 / 844;
+    }
   }
 
   &--support &__mobile {
     width: 42%;
-    aspect-ratio: 16 / 10;
+
+    img {
+      aspect-ratio: 16 / 10;
+    }
   }
 }
 
@@ -797,12 +957,6 @@ export default defineComponent({
     min-height: 300px;
     padding: 0 50px 44px 0;
     background: var(--el-fill-color-light);
-
-    &__desktop {
-      border-width: 0 1px 1px 0;
-      border-radius: 0 0 16px;
-      box-shadow: none;
-    }
 
     &__mobile {
       right: 12px;

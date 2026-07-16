@@ -44,8 +44,8 @@ export default defineComponent({
   &__image {
     display: block;
     width: auto;
-    max-width: 168px;
-    height: 48px;
+    max-width: 132px;
+    height: 40px;
     object-fit: contain;
     object-position: center;
     transition: height 0.2s ease;
@@ -61,8 +61,8 @@ export default defineComponent({
 
 @media only screen and (max-width: 768px) {
   .brand-logo__image {
-    max-width: 148px;
-    height: 44px;
+    max-width: 116px;
+    height: 38px;
   }
 }
 </style>

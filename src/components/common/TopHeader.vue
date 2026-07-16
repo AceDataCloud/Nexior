@@ -183,9 +183,7 @@ $height: 64px;
 .header {
   z-index: 999;
   width: 100%;
-  background: rgba(var(--el-bg-color-rgb, 255, 255, 255), 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--el-bg-color);
   border-bottom: 1px solid var(--app-border-subtle);
   position: sticky;
   top: 0;
@@ -288,7 +286,7 @@ $height: 64px;
 }
 
 html.dark .header {
-  background: rgba(11, 13, 23, 0.8);
+  background: #0b0d17;
   border-bottom-color: var(--app-glass-border);
 }
 
