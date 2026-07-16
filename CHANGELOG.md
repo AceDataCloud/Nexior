@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 06:08:15 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 16 Jul 2026 10:08:56 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.11
+
+Thu, 16 Jul 2026 10:08:56 GMT
+
+### Patches
+
+- Improve Veo action labels, reference previews, and task metadata. (dev@acedata.cloud)
 
 ## 3.329.10
 
