@@ -41,7 +41,6 @@ export * from './wan';
 export * from './webextrator';
 export * from './fish';
 export * from './config';
-export * from './agent';
 export * from './byokCredential';
 export * from './appVersion';
 export * from './codingBridge';
