@@ -40,7 +40,7 @@
     "description": "Opis narudžbine."
   },
   "field.state": {
-    "message": "Status",
+    "message": "Статус",
     "description": "Status narudžbine."
   },
   "field.createdAt": {
@@ -80,16 +80,16 @@
     "description": "Poruka o pomoći za WeChat plaćanje."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Мобилни прегледачи не могу директно да отворе WeChat Pay. Копирајте линк за плаћање испод и отворите га у WeChat-у да наставите.",
+    "description": "Упутство приказано корисницима у мобилном прегледачу ван WeChat-а, где H5 WeChat Pay није доступан."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Копирај линк за плаћање",
+    "description": "Ознака дугмета које копира URL тренутне странице како би га корисник налепио у WeChat."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Након копирања, отворите WeChat, налепите линк у било који разговор или поље за претрагу и додирните га да довршите плаћање.",
+    "description": "Додатни савет испод дугмета за копирање линка који води корисника кроз лепљење линка унутар WeChat-а."
   },
   "message.free": {
     "message": "Besplatno",
@@ -101,15 +101,15 @@
   },
   "message.applePayProcessing": {
     "message": "Завршавање куповине преко App Store-а…",
-    "description": "Message while the Apple in-app purchase is processing."
+    "description": "Порука док је Apple куповина у апликацији у обради."
   },
   "message.applePayFailed": {
     "message": "Плаћање у App Store-у није завршено. Покушајте поново.",
-    "description": "Message when the Apple in-app purchase fails."
+    "description": "Порука када Apple куповина у апликацији не успе."
   },
   "message.applePayUnavailable": {
     "message": "Овај пакет не може да се купи унутар апликације.",
-    "description": "Message when Apple in-app purchase is unavailable for the package."
+    "description": "Порука када Apple куповина у апликацији није доступна за пакет."
   },
   "message.updateFailed": {
     "message": "Ažuriranje nije uspelo",
@@ -397,7 +397,7 @@
   },
   "message.publicPayNotFound": {
     "message": "Narudžbina nije pronađena ili je istekla.",
-    "description": "Shown on public pay page when the order GET returns 404."
+    "description": "Приказује се на јавној страници за плаћање када GET за наруџбину врати 404."
   },
   "message.x402WalletStatusDetected": {
     "message": "Otkriveno",
@@ -533,7 +533,7 @@
   },
   "message.wechatPayLongPressTip": {
     "message": "Drzite pritisnutim QR kod ispod i izaberite 'Prepoznaj QR kod' da biste zavrsili placanje u WeChat-u.",
-    "description": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat."
+    "description": "Савет изнад изворног QR кода у мобилном WeChat-у. Корисник дугим притиском препознаје URL `weixin://wxpay/bizpayurl` и плаћа без напуштања WeChat-а."
   },
   "message.wechatPayMobileScanTip": {
     "message": "Sačuvajte ili napravite snimak ekrana donjeg QR koda, otvorite WeChat, kliknite na 'Skeniraj', izaberite album u gornjem desnom uglu, i odaberite sliku koju ste upravo sačuvali da biste završili plaćanje.",
@@ -541,34 +541,34 @@
   },
   "message.creditsValue": {
     "message": "{value} kredita",
-    "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
+    "description": "Приказ износа кредита за наруџбину, нпр. „5 кредита“. {value} је форматиран број кредита."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Укупно наруџбина",
+    "description": "Картица сажетка: укупан број наруџбина које одговарају тренутним филтерима."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Укупно потрошено",
+    "description": "Картица сажетка: укупан износ потрошен на одговарајуће наруџбине."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Завршене наруџбине",
+    "description": "Картица сажетка: број завршених наруџбина."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Наруџбине на чекању",
+    "description": "Картица сажетка: број наруџбина на чекању."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "Извези CSV",
+    "description": "Ознака дугмета за извоз филтрираних наруџбина као CSV."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Сва стања",
+    "description": "Место у падајућем менију за филтер стања које означава да ниједно одређено стање није изабрано."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Сви начини плаћања",
+    "description": "Место у падајућем менију за филтер начина плаћања које означава да ниједан одређени начин није изабран."
   }
 }

@@ -57,7 +57,7 @@
   },
   "description.motionModel": {
     "message": "Kling 3.0 има виши квалитет али вишу цену по секунди; Kling 2.6 је исплативији.",
-    "description": "motion model version description"
+    "description": "Опис верзије модела за покрет"
   },
   "description.keepOriginalSound": {
     "message": "Ako je uključeno, zadržava originalni zvuk referentnog videa; ako je isključeno, izlazni video neće sadržati originalni zvuk",
@@ -77,7 +77,7 @@
   },
   "message.motionPricingNote": {
     "message": "Наплаћује се по секунди генерисаног видеа; коначан износ зависи од дужине референтног видеа.",
-    "description": "Explains that Motion Control is billed per second"
+    "description": "Објашњава да се Motion Control наплаћује по секунди"
   },
   "inspiration.title": {
     "message": "Inspiracija i predlozi",
@@ -288,7 +288,7 @@
     "description": "Tip sadržaja za generisanje Kling videa, kao što su 'link', 'tekst' itd."
   },
   "name.modeStd": {
-    "message": "Standard (720p)",
+    "message": "Стандардно (720p)",
     "description": "Standardni režim Kling videa (izlaz 720p)"
   },
   "name.modePro": {
@@ -360,7 +360,7 @@
     "description": "Razlog neuspeha zadatka"
   },
   "name.status": {
-    "message": "Status",
+    "message": "Статус",
     "description": "Status zadatka"
   },
   "name.traceId": {
@@ -425,7 +425,7 @@
   },
   "name.motionModel": {
     "message": "Верзија модела",
-    "description": "The Kling model version used for motion control"
+    "description": "Верзија Kling модела која се користи за контролу покрета"
   },
   "name.perSecond": {
     "message": "секунда",
@@ -440,7 +440,7 @@
     "description": "Verzija modela koja se koristi za generisanje videa"
   },
   "name.klingBot": {
-    "message": "Kling Bot",
+    "message": "Kling бот",
     "description": "Naziv Kling video generatora"
   },
   "description.ingredients": {
@@ -721,82 +721,82 @@
   },
   "tab.talkingPhoto": {
     "message": "Говорећа фотографија",
-    "description": "Tab label: Talking Photo"
+    "description": "Ознака картице: Talking Photo"
   },
   "name.talkingPhotoImage": {
     "message": "Портретна фотографија",
-    "description": "Talking Photo portrait image input"
+    "description": "Улазна портретна слика за Talking Photo"
   },
   "name.talkingPhotoAudio": {
     "message": "Покретачки звук",
-    "description": "Talking Photo driving audio input"
+    "description": "Улазни управљачки аудио за Talking Photo"
   },
   "name.talkingPhotoPrompt": {
     "message": "Упит за покрет (опционо)",
-    "description": "Talking Photo optional motion prompt"
+    "description": "Опциони упит за покрет Talking Photo-а"
   },
   "description.talkingPhotoImage": {
     "message": "Отпремите јасан портрет анфас; биће анимиран и проговориће.",
-    "description": "Talking Photo portrait image help text"
+    "description": "Помоћни текст за портретну слику Talking Photo-а"
   },
   "description.talkingPhotoAudio": {
     "message": "Отпремите аудио клип (mp3/wav, ≤5MB); лик ће синхронизовати усне.",
-    "description": "Talking Photo driving audio help text"
+    "description": "Помоћни текст за управљачки аудио Talking Photo-а"
   },
   "description.talkingPhotoPrompt": {
     "message": "Опционо: опишите жељени израз/покрет, нпр. „нежно гледати у камеру“.",
-    "description": "Talking Photo motion prompt help text"
+    "description": "Помоћни текст за упит покрета Talking Photo-а"
   },
   "placeholder.talkingPhotoPrompt": {
     "message": "нпр. нежно, мирно, природно, благи покрет главе",
-    "description": "Talking Photo prompt input placeholder"
+    "description": "Место за унос упита Talking Photo-а"
   },
   "button.generateTalkingPhoto": {
     "message": "Генериши говорећу фотографију",
-    "description": "Talking Photo generate button"
+    "description": "Дугме за генерисање Talking Photo-а"
   },
   "button.uploadAudio": {
     "message": "Отпреми звук",
-    "description": "Talking Photo upload audio button"
+    "description": "Дугме за отпремање аудија за Talking Photo"
   },
   "message.talkingPhotoMissingInputs": {
     "message": "Прво отпремите портретну фотографију и покретачки звук.",
-    "description": "Talking Photo missing inputs warning"
+    "description": "Упозорење да недостају улази за Talking Photo"
   },
   "message.uploadAudioExceed": {
     "message": "Дозвољена је само једна аудио датотека.",
-    "description": "Talking Photo audio count limit warning"
+    "description": "Упозорење о ограничењу броја аудио датотека за Talking Photo"
   },
   "message.uploadAudioError": {
     "message": "Отпремање звука није успело, покушајте поново.",
-    "description": "Talking Photo audio upload error"
+    "description": "Грешка при отпремању аудија за Talking Photo"
   },
   "name.referenceVideo": {
-    "message": "Reference Video",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "message": "Референтни видео",
+    "description": "Ознака поља: референтни/уређиви видео за Omni уређивање видеа"
   },
   "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+    "message": "Само за kling-video-o1. Отпремите један MP4/MOV (720-2160px, 3-10s, <=200MB) за уређивање или коришћење постојећег видеа као референце. Упит га аутоматски наводи као <<<video_1>>>; задржите ту ознаку да опишете измену (нпр. „претвори <<<video_1>>> у аниме“).",
+    "description": "Текст помоћи за отпремање референтног видеа"
   },
   "button.uploadReferenceVideo": {
-    "message": "Upload Video",
-    "description": "Button to upload the reference video"
+    "message": "Отпреми видео",
+    "description": "Дугме за отпремање референтног видеа"
   },
   "message.referenceVideoExceed": {
-    "message": "You can upload a maximum of 1 reference video",
-    "description": "Error when more than one reference video is uploaded"
+    "message": "Можете отпремити највише 1 референтни видео",
+    "description": "Грешка када је отпремљено више од једног референтног видеа"
   },
   "message.referenceVideoError": {
-    "message": "Reference video upload failed, please try again later",
-    "description": "Error when the reference video upload fails"
+    "message": "Отпремање референтног видеа није успело, покушајте поново касније",
+    "description": "Грешка када отпремање референтног видеа не успе"
   },
   "message.referenceVideoTypeFailed": {
-    "message": "Uploaded file must be in MP4 or MOV format!",
-    "description": "Error when the reference video is not MP4/MOV"
+    "message": "Отпремљена датотека мора бити у MP4 или MOV формату!",
+    "description": "Грешка када референтни видео није MP4/MOV"
   },
   "message.referenceVideoSizeExceed": {
-    "message": "Uploaded file size cannot exceed 200MB!",
-    "description": "Error when the reference video exceeds 200MB"
+    "message": "Величина отпремљене датотеке не сме бити већа од 200MB!",
+    "description": "Грешка када референтни видео прелази 200MB"
   }
 }

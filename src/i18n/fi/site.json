@@ -41,7 +41,7 @@
   },
   "field.contacts": {
     "message": "Tuen yhteystiedot",
-    "description": "Field title for the customer-service contacts in site settings"
+    "description": "Sivuston asetusten asiakastukiyhteystietojen kentän otsikko"
   },
   "field.markupRatio": {
     "message": "Koko sivuston yhtenäinen hinnankorotus",
@@ -57,11 +57,11 @@
   },
   "field.disableRecharge": {
     "message": "Poista lataus käytöstä",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+    "description": "Sivuston asetukset: kun käytössä, piilota kaikki lataus-/ostomerkinnät tältä sivustolta"
   },
   "message.disableRechargeTip": {
     "message": "Kun tämä on käytössä, kaikki latauspainikkeet piilotetaan tällä sivustolla eivätkä käyttäjät voi enää ladata saldoaan.",
-    "description": "Help text for the disable-recharge toggle"
+    "description": "Latauksen poistaminen käytöstä -kytkimen ohjeteksti"
   },
   "field.distributionDefaultInviterId": {
     "message": "Oletus kutsuja ID",
@@ -97,107 +97,107 @@
   },
   "field.authProvider_apple": {
     "message": "Apple",
-    "description": "Login provider display name: Sign in with Apple."
+    "description": "Kirjautumistavan nimi: Sign in with Apple."
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
     "description": "Kirjautumistavan nimi: WeChat kolmannen osapuolen kirjautuminen"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "Mukautettu SMS-lähettäjä",
+    "description": "Sivuston asetukset / kirjautuminen: sivuston mukautetun SMS-varmistuskoodin webhook-otsikko"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "Kun tämä on käytössä, sivuston puhelinvarmistuskoodit lähetetään oman rajapintasi kautta omalla allekirjoituksellasi; poista käytöstä käyttääksesi alustan oletusta. Vaatii puhelinnumero-kirjautumistavan käyttöönoton.",
+    "description": "Selittää mukautetun SMS-lähettäjän webhookin"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "description": "SMS-webhook-URL-syötteen paikkamerkki"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "Allekirjoitusavain (jätä tyhjäksi pitääksesi nykyisen)",
+    "description": "SMS-webhook-allekirjoitusavaimen syötteen paikkamerkki; vain kirjoitettava, tyhjä säilyttää nykyisen"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "Käytä mukautettua lähettäjää",
+    "description": "Mukautetun SMS-lähettäjän kytkimen viereinen merkintä"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "Näytä ohje",
+    "description": "Linkki, joka avaa SMS-webhook-määrittelydialogsin"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "Testaa",
+    "description": "Painike, joka avaa SMS-webhook-testidialogin"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "Ota puhelinnumero-kirjautumistapa käyttöön ensin, jotta voit määrittää mukautetun SMS-lähettäjän.",
+    "description": "Vihje, joka näytetään, kun kytkin on pois käytöstä, koska puhelinnumerokirjautuminen on poissa käytöstä"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "Mukautettu SMS-lähettäjä · Webhook-määrittely",
+    "description": "SMS-webhook-määrittelydialogsin otsikko"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "Sivusto lähettää allekirjoitetun HTTPS POST -pyynnön antamaasi osoitteeseen; palvelusi vastaa SMS:n toimittamisesta. Rajapintasi on täytettävä seuraavat vaatimukset:",
+    "description": "SMS-webhook-määrittelydialogsin johdantokappale"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "Pyyntö",
+    "description": "Otsikko: SMS-webhook-määrittelyn pyyntöosio"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "Metodi POST, Content-Type application/json. purpose on yksi seuraavista: login / register / test (test on yhteystesti — voit ohittaa todellisen lähetyksen). Pyynnön runko näyttää tältä:",
+    "description": "Kuvaa SMS-webhookin pyyntömetodin ja -rungon"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "Allekirjoituksen tarkistus",
+    "description": "Otsikko: SMS-webhook-määrittelyn allekirjoitusosio"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "Jokainen pyyntö sisältää alla olevat otsikkotiedot. Tarkista allekirjoitusavaimellasi HMAC-SHA256-menetelmällä Standard Webhooks -määrittelyn mukaisesti ja vertaa vakioaikaisesti:",
+    "description": "Kuvaa SMS-webhookin allekirjoituksen tarkistuksen"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "Vastaus",
+    "description": "Otsikko: SMS-webhook-määrittelyn vastausosio"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "Palauta 2xx onnistuessa. Ilmaistaksesi epäonnistumisen eksplisiittisesti, palauta HTTP 200, jonka JSON-rungossa success-kenttä on false (katso alla oleva esimerkki). Vastaa 5 sekunnin kuluessa.",
+    "description": "Kuvaa SMS-webhookin odotetun vastauksen"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "Testaa mukautettu SMS-lähettäjä",
+    "description": "SMS-webhook-testidialogin otsikko"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "Maa-/aluekoodi",
+    "description": "Testidialogin aluekoodikentän merkintä"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "Testipuhelinnumero (valinnainen)",
+    "description": "Testidialogin puhelinnumerokentän merkintä"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "Lähetä testi",
+    "description": "Painike, joka lähettää SMS-webhook-testipyynnön"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "Testipyyntö toimitettiin rajapintaasi onnistuneesti.",
+    "description": "Onnistumisviesti webhook-testin jälkeen"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "Testi epäonnistui. Tarkista URL, allekirjoitusavain ja rajapintasi vastaus.",
+    "description": "Epäonnistumisviesti webhook-testin jälkeen"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Poista mukautettu SMS-lähettäjä käytöstä",
+    "description": "Vahvistusdialogsin otsikko, joka näytetään mukautettua SMS-lähettäjää poistettaessa käytöstä"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "Poistamalla tämä käytöstä poistetaan tallennettu lähettäjän URL ja allekirjoitusavain (avainta ei voi palauttaa), ja sivusto siirtyy käyttämään alustan oletustakirjoitusta. Poistetaanko käytöstä?",
+    "description": "Vahvistusdialogsin sisältö, joka näytetään mukautettua SMS-lähettäjää poistettaessa käytöstä"
   },
   "field.featuresChat": {
     "message": "Chat",
@@ -225,7 +225,7 @@
   },
   "field.featuresDigitalhuman": {
     "message": "Digital Human",
-    "description": "Displayed as the title in the editing box"
+    "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -313,11 +313,11 @@
   },
   "field.featuresCodingBridge": {
     "message": "Coding Bridge",
-    "description": "Displayed as the title in the editing box"
+    "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresWebextrator": {
     "message": "WebExtrator",
-    "description": "Displayed as the title in the editing box"
+    "description": "Näytetään muokkausruudun otsikkona"
   },
   "field.featuresSupport": {
     "message": "Asiakastuki",
@@ -341,7 +341,7 @@
   },
   "title.editContacts": {
     "message": "Muokkaa tuen yhteystietoja",
-    "description": "Title of the edit-support-contacts dialog"
+    "description": "Asiakastukiyhteystietojen muokkausdialogsin otsikko"
   },
   "title.featuresConfig": {
     "message": "Ominaisuuksien asetukset",
@@ -553,11 +553,11 @@
   },
   "message.contactsTip": {
     "message": "Täytä asiakaspalvelun yhteystiedot (Discord, X, WeChat, puhelin, sähköposti). Ne näkyvät Tietoja-sivulla, jotta käyttäjät tavoittavat sinut.",
-    "description": "Tip for the support-contacts field"
+    "description": "Tukiyhteystietokentän vihje"
   },
   "message.contactsEmpty": {
     "message": "Ei asetettu",
-    "description": "Placeholder shown when no support contact has been filled in"
+    "description": "Paikkamerkki, joka näytetään, kun tukiyhteystietoja ei ole syötetty"
   },
   "message.keywordsTip": {
     "message": "Sivuston avainsanat, sijaitsee sivuston metatiedoissa, käytetään sivuston SEO-optimointiin.",
@@ -573,31 +573,31 @@
   },
   "message.featuresGrok": {
     "message": "xAI-avustaja reaaliaikaiseen tietoon, päättelyyn, kirjoittamiseen ja koodaamiseen.",
-    "description": "Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding."
+    "description": "Kyvykkyysesittely: xAI-avustaja reaaliaikaiseen tietoon, päättelyyn, kirjoittamiseen ja koodaukseen."
   },
   "message.featuresGrokvideo": {
     "message": "xAI:n videonluonti lyhyisiin klippeihin tekstikehotteista tai viitekuvista.",
-    "description": "Concise capability introduction: xAI video generation for short clips from text prompts or reference images."
+    "description": "Kyvykkyysesittely: xAI-videonluonti lyhyisiin klippeihin tekstikehotteista tai viitekuvista."
   },
   "message.featuresMaestro": {
     "message": "Tuottaa kokonaisia videoita ideasta alkaen, mukaan lukien suunnittelu, selostus, kohtaukset ja toimitus.",
-    "description": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery."
+    "description": "Kyvykkyysesittely: tuota kokonaisia videoita ideasta, mukaan lukien suunnittelu, ääninäyttelijät, kohtaukset ja toimitus."
   },
   "message.featuresDigitalhuman": {
     "message": "Luo puhuvia videoita synteettisellä puheella ja luonnollisella huulisynkalla.",
-    "description": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync."
+    "description": "Kyvykkyysesittely: luo puhujavideoita syntetisoituun puheeseen ja luonnolliseen huulisynkronointiin."
   },
   "message.featuresDeepseek": {
     "message": "DeepSeek-avustaja edistyneeseen päättelyyn, koodaamiseen, matematiikkaan ja arjen kysymyksiin.",
-    "description": "Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions."
+    "description": "Kyvykkyysesittely: DeepSeek-avustaja kehittyneeseen päättelyyn, koodaukseen, matematiikkaan ja jokapäiväisiin kysymyksiin."
   },
   "message.featuresChatgpt": {
     "message": "OpenAI-avustaja kirjoittamiseen, päättelyyn, koodaamiseen ja multimodaalisiin keskusteluihin.",
-    "description": "Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations."
+    "description": "Kyvykkyysesittely: OpenAI-avustaja kirjoittamiseen, päättelyyn, koodaukseen ja multimodaalisiin keskusteluihin."
   },
   "message.featuresMidjourney": {
     "message": "Luo viimeisteltyjä kuvia ja luovia variaatioita tekstin tai visuaalisten viitteiden pohjalta.",
-    "description": "Concise capability introduction: Create polished images and creative variations from text or visual references."
+    "description": "Kyvykkyysesittely: luo viimeisteltyjä kuvia ja luovia muunnelmia tekstistä tai visuaalisista viitteistä."
   },
   "message.featuresChatdoc": {
     "message": "Avaa tai sulje Chatdoc-toimintomoduuli.",
@@ -605,87 +605,87 @@
   },
   "message.featuresQrart": {
     "message": "Muunna linkit skannattaviksi taiteellisiksi QR-koodeiksi omilla tyyleillä ja kuvilla.",
-    "description": "Concise capability introduction: Turn links into scannable artistic QR codes with custom styles and imagery."
+    "description": "Kyvykkyysesittely: muuta linkit skannattaviksi taiteellisiksi QR-koodeiksi mukautetuilla tyyleillä ja kuvilla."
   },
   "message.featuresVeo": {
     "message": "Googlen videonluonti elokuvamaisiin klippeihin vahvalla kehotteiden ja liikkeen hallinnalla.",
-    "description": "Concise capability introduction: Google video generation for cinematic clips with strong prompt and motion control."
+    "description": "Kyvykkyysesittely: Googlen videonluonti elokuvamaisiin klippeihin vahvalla kehote- ja liikeohjauksella."
   },
   "message.featuresSora": {
     "message": "OpenAI:n videonluonti realistisiin kohtauksiin, tarinankerrontaan ja visuaalisiin muunnoksiin.",
-    "description": "Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations."
+    "description": "Kyvykkyysesittely: OpenAI:n videonluonti realistisiin kohtauksiin, tarinankerrontaan ja visuaalisiin muutoksiin."
   },
   "message.featuresSuno": {
     "message": "Luo valmiita kappaleita, sanoituksia, laulua ja soitinosuuksia kehotteesta.",
-    "description": "Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt."
+    "description": "Kyvykkyysesittely: luo kokonaisia kappaleita, sanoituksia, lauluraitoja ja instrumentaaleja kehotteesta."
   },
   "message.featuresPixverse": {
     "message": "Luo tyyliteltyjä videoita kehotteista ja kuvista mallipohjilla ja tehosteilla.",
-    "description": "Concise capability introduction: Generate stylized videos from prompts and images with templates and effects."
+    "description": "Kyvykkyysesittely: luo tyyliteltyjä videoita kehotteista ja kuvista mallipohiilla ja efekteillä."
   },
   "message.featuresFlux": {
     "message": "Luo yksityiskohtaisia kuvia ja muokkaa olemassa olevia visuaaleja luonnollisen kielen ohjeilla.",
-    "description": "Concise capability introduction: Create detailed images and edit existing visuals with natural-language instructions."
+    "description": "Kyvykkyysesittely: luo yksityiskohtaisia kuvia ja muokkaa olemassa olevia visuaaleja luonnollisen kielen ohjeilla."
   },
   "message.featuresNanobanana": {
     "message": "Googlen tukema kuvanluonti ja -muokkaus tarkalla ohjeiden noudattamisella.",
-    "description": "Concise capability introduction: Google-powered image generation and editing with precise instruction following."
+    "description": "Kyvykkyysesittely: Google-pohjainen kuvanluonti ja -muokkaus tarkalla ohjeiden noudattamisella."
   },
   "message.featuresOpenaiimage": {
     "message": "OpenAI:n kuvanluonti ja -muokkaus viimeisteltyihin visuaaleihin, tekstiin ja sommitteluun.",
-    "description": "Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions."
+    "description": "Kyvykkyysesittely: OpenAI:n kuvanluonti ja -muokkaus viimeisteltyihin visuaaleihin, tekstiin ja kompositioihin."
   },
   "message.featuresSeedream": {
     "message": "ByteDancen kuvanluonti ja -muokkaus laadukkaita luovia visuaaleja varten.",
-    "description": "Concise capability introduction: ByteDance image generation and editing for high-quality creative visuals."
+    "description": "Kyvykkyysesittely: ByteDancen kuvanluonti ja -muokkaus korkealaatuisiin luoviin visuaaleihin."
   },
   "message.featuresSeedance": {
     "message": "ByteDancen videonluonti dynaamisiin kohtauksiin, kameraliikkeisiin ja valinnaiseen ääneen.",
-    "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
+    "description": "Kyvykkyysesittely: ByteDancen videonluonti dynaamisiin kohtauksiin, kameraliikkeeseen ja valinnaiseen ääneen."
   },
   "message.featuresWan": {
     "message": "Alibaban videonluonti tekstistä, kuvista tai viitteistä useilla resoluutioilla.",
-    "description": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions."
+    "description": "Kyvykkyysesittely: Alibaban videonluonti tekstistä, kuvista tai viitteistä useilla resoluutioilla."
   },
   "message.featuresProducer": {
     "message": "Luo kappaleita, covereita, jatko-osia sekä laulu- ja soitinvariaatioita.",
-    "description": "Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations."
+    "description": "Kyvykkyysesittely: luo kappaleita, covereita, jatko-osia sekä laulu- tai instrumentaalimuunnelmia."
   },
   "message.featuresKimi": {
     "message": "Moonshot AI -avustaja pitkän kontekstin tutkimukseen, päättelyyn, kirjoittamiseen ja koodaamiseen.",
-    "description": "Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding."
+    "description": "Kyvykkyysesittely: Moonshot AI -avustaja pitkäkontekstiseen tutkimukseen, päättelyyn, kirjoittamiseen ja koodaukseen."
   },
   "message.featuresSerp": {
     "message": "Hae verkosta, kuvista, uutisista, kartoista ja videoista jäsennellyillä Google-tuloksilla.",
-    "description": "Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results."
+    "description": "Kyvykkyysesittely: hae verkosta, kuvista, uutisista, kartoista ja videoista jäsennellyillä Google-tuloksilla."
   },
   "message.featuresFish": {
     "message": "Luo luonnollista puhetta ja kloonaa ääniä monikieliseen äänituotantoon.",
-    "description": "Concise capability introduction: Generate natural speech and clone voices for multilingual audio production."
+    "description": "Kyvykkyysesittely: luo luonnollista puhetta ja kloonaa ääniä monikieliseen äänituotantoon."
   },
   "message.featuresCodingBridge": {
     "message": "Yhdistä AI-koodausavustajat paikallisiin projekteihin ohjattuja kehitystyönkulkuja varten.",
-    "description": "Concise capability introduction: Connect AI coding assistants to local projects for guided development workflows."
+    "description": "Kyvykkyysesittely: yhdistä AI-koodausavustajat paikallisiin projekteihin ohjattuihin kehitystyönkulkuihin."
   },
   "message.featuresWebextrator": {
     "message": "Poimi verkkosivuilta siistiä, jäsenneltyä sisältöä ja dataa.",
-    "description": "Concise capability introduction: Extract clean, structured content and data from web pages."
+    "description": "Kyvykkyysesittely: poimi verkkosivuilta puhdasta, jäsenneltyä sisältöä ja dataa."
   },
   "message.featuresLuma": {
     "message": "Luo elokuvamaisia videoita tekstistä tai kuvista luonnollisella liikkeellä.",
-    "description": "Concise capability introduction: Create cinematic videos from text or images with natural motion."
+    "description": "Kyvykkyysesittely: luo elokuvamaisia videoita tekstistä tai kuvista luonnollisella liikkeellä."
   },
   "message.featuresPika": {
     "message": "Luo ja muokkaa lyhyitä luovia videoita tehosteilla, kohtauksilla ja muunnoksilla.",
-    "description": "Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations."
+    "description": "Kyvykkyysesittely: luo ja muokkaa lyhyitä luovia videoita efekteillä, kohtauksilla ja muutoksilla."
   },
   "message.featuresKling": {
     "message": "Luo korkealaatuisia videoita tekstistä, kuvista tai liikeviitteistä.",
-    "description": "Concise capability introduction: Create high-quality videos from text, images, or motion references."
+    "description": "Kyvykkyysesittely: luo korkealaatuisia videoita tekstistä, kuvista tai liikeviitteistä."
   },
   "message.featuresHailuo": {
     "message": "Luo ilmeikkäitä videoita tekstistä tai kuvista sujuvalla hahmoliikkeellä.",
-    "description": "Concise capability introduction: Generate expressive videos from text or images with smooth character motion."
+    "description": "Kyvykkyysesittely: luo ilmeikkäitä videoita tekstistä tai kuvista sujuvalla hahmoliikkeellä."
   },
   "message.featuresSupport": {
     "message": "Ota käyttöön tai poista käytöstä asiakastuki",
@@ -717,7 +717,7 @@
   },
   "message.featuresGemini": {
     "message": "Google-avustaja pitkän kontekstin päättelyyn, tutkimukseen, koodaamiseen ja multimodaaliseen työskentelyyn.",
-    "description": "Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work."
+    "description": "Kyvykkyysesittely: Googlen avustaja pitkäkontekstiseen päättelyyn, tutkimukseen, koodaukseen ja multimodaaliseen työhön."
   },
   "field.featuresClaude": {
     "message": "Claude",
@@ -725,7 +725,7 @@
   },
   "message.featuresClaude": {
     "message": "Anthropic-avustaja huolelliseen päättelyyn, kirjoittamiseen, koodaamiseen ja asiakirjojen analysointiin.",
-    "description": "Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis."
+    "description": "Kyvykkyysesittely: Anthropicin avustaja huolelliseen päättelyyn, kirjoittamiseen, koodaukseen ja asiakirja-analyysiin."
   },
   "placeholder.admins": {
     "message": "Syötä ylläpitäjän käyttäjä ID",
@@ -733,55 +733,55 @@
   },
   "message.userNotFound": {
     "message": "Käyttäjää ei löytynyt",
-    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+    "description": "Näytetään, kun käyttäjähaku palauttaa 404 valitsinesikatselussa."
   },
   "message.editUserHint": {
     "message": "Liitä käyttäjän UUID tai kirjoita sähköposti, puhelinnumero tai käyttäjänimi etsiäksesi.",
-    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+    "description": "Vihje hakusyötteen alla kutsuja/ylläpitäjäkäyttäjän valitsindialogissa."
   },
   "message.editUsersEmpty": {
     "message": "Ei vielä ylläpitäjiä.",
-    "description": "Empty-state text shown when the admins list has no users."
+    "description": "Tyhjän tilan teksti, joka näytetään, kun ylläpitäjäluettelossa ei ole käyttäjiä."
   },
   "message.userAlreadyAdded": {
     "message": "Jo lisätty",
-    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+    "description": "Poissa käytöstä -tilan merkintä Lisää-painikkeessa, kun käyttäjä on jo ylläpitäjäluettelossa."
   },
   "title.addUser": {
     "message": "Lisää käyttäjä",
-    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+    "description": "Erotteluotsikko ylläpitäjävalitsimessa olemassa olevien ylläpitäjien ja hakusyötteen välissä."
   },
   "button.addUser": {
     "message": "Lisää",
-    "description": "Button label to add the resolved user to the admins list."
+    "description": "Painikkeen merkintä käyttäjän lisäämiseksi ylläpitäjäluetteloon."
   },
   "autoTranslate.tooltipOn": {
     "message": "Automaattinen käännös PÄÄLLÄ — sisältö näkyy kävijän kielellä",
-    "description": "Tooltip on the auto-translate toggle when it is ON"
+    "description": "Vihje automaattikäännöstoiminnon kytkimessä, kun se on PÄÄLLÄ"
   },
   "autoTranslate.tooltipOff": {
     "message": "Tallennetaan sellaisenaan — napsauta ottaaksesi automaattisen käännöksen käyttöön",
-    "description": "Tooltip on the auto-translate toggle when it is OFF"
+    "description": "Vihje automaattikäännöstoiminnon kytkimessä, kun se on POIS"
   },
   "autoTranslate.tooltipDisabledNotSaved": {
     "message": "Tallenna rivi ennen automaattisen käännöksen käyttöönottoa",
-    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+    "description": "Vihje, joka näytetään, kun kytkin on pois käytöstä, koska rivillä ei ole vielä tunnusta (luontidialogitila)"
   },
   "autoTranslate.confirmEnable": {
     "message": "Tämä sisältö käännetään 17 kielelle ~1 tunnin sisällä. Jatketaanko?",
-    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+    "description": "Vahvistusdialogsin sisältöteksti, joka näytetään ennen automaattikäännöksen aktivoimista"
   },
   "autoTranslate.confirmDisable": {
     "message": "Käytöstä poistaminen poistaa kaikki 18 käännöstä ja säilyttää vain nykyisen arvon. Jatketaanko?",
-    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+    "description": "Vahvistusdialogsin sisältöteksti, joka näytetään ennen automaattikäännöksen poistamista käytöstä"
   },
   "autoTranslate.empty": {
     "message": "Syötä sisältöä ennen automaattisen käännöksen käyttöönottoa",
-    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+    "description": "Varoitus, joka näytetään, kun käyttäjä yrittää aktivoida automaattikäännöksen tyhjässä kentässä"
   },
   "autoTranslate.error": {
     "message": "Automaattisen käännöksen vaihtaminen epäonnistui, yritä uudelleen",
-    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+    "description": "Varavirhe, kun ota käyttöön/poista käytöstä -HTTP-kutsu epäonnistuu ilman lisätietoja"
   },
   "services.title": {
     "message": "Palvelukohtainen hinnankorotus ja näyttö"
@@ -891,83 +891,83 @@
     "description": "Luo tai muokkaa videoita Omni-malleilla tekstin, kuvien ja videoviitteiden pohjalta."
   },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "Mukauta sovellusta",
+    "description": "Vihje ja saavutettava merkintä kyvykkyyssovelluksen nimen ja kuvakkeen muokkaamiseen"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "Mukauta {name}",
+    "description": "Dialogsin otsikko; {name} on alustan oletuskyvykkyyssovelluksen nimi"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "Mukautettu nimi",
+    "description": "Kenttämerkintä sivustokohtaiselle kyvykkyyssovelluksen näyttönimelle"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "Jätä tyhjäksi käyttääksesi {name}. Tallenna ensin ennen automaattisen käännöksen aktivoimista.",
+    "description": "Ohjeteksti; {name} on alustan oletuskyvykkyyssovelluksen nimi"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "Mukautettu kuvake",
+    "description": "Kenttämerkintä sivustokohtaiselle kyvykkyyssovelluksen kuvakkeelle"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "Oletus",
+    "description": "Merkintä alustan oletuskyvykkyyskuvakkeen esikatselun yläpuolella"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "Nykyinen",
+    "description": "Merkintä voimassa olevan kyvykkyyskuvakkeen esikatselun yläpuolella"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "Vaihda kuvake",
+    "description": "Komento korvaavan kyvykkyyskuvakkeen lataamiseksi"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "Lataa kuvake",
+    "description": "Komento ensimmäisen mukautetun kyvykkyyskuvakkeen lataamiseksi"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "Käytä oletuskuvaketta",
+    "description": "Komento mukautetun kuvakeluonnoksen tyhjentämiseksi"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "PNG, JPEG tai WebP. Kuva rajataan neliöksi; läpinäkyvä PNG säilytetään.",
+    "description": "Kyvykkyyskuvakkeen latausvaatimukset"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "Muokkaa sovelluksen kuvaketta",
+    "description": "Kyvykkyyskuvakkeen rajausdialogin otsikko"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "Palauta oletukset",
+    "description": "Komento, joka poistaa sekä mukautetun nimen että kuvakkeen"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "Syötä ensin mukautettu nimi tai lataa kuvake.",
+    "description": "Varoitus yritettäessä luoda tyhjä korvaus"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "Sovelluksen mukautus tallennettu",
+    "description": "Onnistumisviesti kyvykkyyden korvauksen tallennuksen jälkeen"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "Tallennettu. Voit nyt aktivoida automaattisen käännöksen mukautetulle nimelle.",
+    "description": "Onnistumisviesti ensimmäisen tallennuksen jälkeen, joka luo korvaustunnuksen"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "Sovelluksen mukautuksen tallennus epäonnistui",
+    "description": "Varavirhe kyvykkyyden korvauksen kirjoituksessa"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "Palautetaanko {name}:n oletusnimi ja -kuvake?",
+    "description": "Vahvistusviesti; {name} on alustan oletuskyvykkyyssovelluksen nimi"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "Oletusnimi ja -kuvake palautettu",
+    "description": "Onnistumisviesti kyvykkyyden korvauksen poistamisen jälkeen"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
+    "message": "Sovelluksen mukautusten lataaminen epäonnistui",
+    "description": "Virhe, joka näytetään, kun kyvykkyyden korvauksen hallintarivejä ei voida ladata"
   }
 }

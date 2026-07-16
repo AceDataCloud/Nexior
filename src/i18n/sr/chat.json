@@ -600,15 +600,15 @@
     "message": "Delete \"{name}\"? The task will stop running."
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
+    "message": "Покрени сада",
     "description": "Trigger the task immediately, out of schedule"
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
+    "message": "Покренуто. Резултат ће се ускоро појавити у историји покретања.",
     "description": "Manual trigger success"
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
+    "message": "Покретање није успело. Покушајте поново касније.",
     "description": "Manual trigger error"
   },
   "scheduledTasks.viewResult": {
@@ -706,63 +706,63 @@
     "message": "Cron expression"
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
+    "message": "Сваких",
     "description": "Run at a fixed interval"
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
+    "message": "минута",
     "description": "Interval unit: minutes"
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
+    "message": "сати",
     "description": "Interval unit: hours"
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
+    "message": "дана",
     "description": "Interval unit: days"
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
+    "message": "У минуту",
     "description": "Which minute of each hour to run"
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
+    "message": "Ког минута сваког сата да се покрене (0–59)",
     "description": "Hourly minute hint"
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
+    "message": "Покреће се једном по фиксном интервалу након претходног покретања (минимум 1 минут)",
     "description": "Interval hint"
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
+    "message": "Стандардни cron израз са 5 поља: минут сат дан месец дан_у_недељи",
     "description": "Cron hint"
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
+    "message": "Покреће се {text}",
     "description": "Schedule preview"
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
+    "message": "сваких {n} мин",
     "description": "Human-readable: every N minutes"
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
+    "message": "сваких {n} h",
     "description": "Human-readable: every N hours"
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
+    "message": "сваких {n} д",
     "description": "Human-readable: every N days"
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
+    "message": "сваког сата у {n}. минуту",
     "description": "Human-readable: hourly at minute N"
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
+    "message": "сваког дана у {time}",
     "description": "Human-readable: daily at time"
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
+    "message": "{weekday} у {time}",
     "description": "Human-readable: weekly at weekday/time"
   },
   "scheduledTasks.humanize.cronRaw": {
@@ -770,7 +770,7 @@
     "description": "Human-readable: raw cron"
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
+    "message": "једном у {time}",
     "description": "Human-readable: once"
   },
   "scheduledTasks.form.name": {
@@ -848,15 +848,15 @@
     "description": "Текст за потврду овлашћења"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
+    "message": "Прво повежите вештину",
     "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
+    "message": "Вештина „{name}“ још није повезана или активна на вашем налогу. Без повезивања је заказани задатак можда неће моћи користити током позадинског рада без надзора. Препоручујемо да је прво повежете, или је ипак можете сачувати.",
     "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
+    "message": "Ипак сачувај",
     "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
   },
   "scheduledTasks.form.required": {
@@ -887,7 +887,7 @@
     "description": "Порука о грешци при учитавању производа"
   },
   "artifacts.actionError": {
-    "message": "Операција је失败，请重试",
+    "message": "Операција није успела, покушајте поново",
     "description": "Порука о грешци у операцији"
   },
   "artifacts.open": {
@@ -1035,22 +1035,22 @@
     "description": "Opis Claude Opus 4.7 modela"
   },
   "artifacts.unhide": {
-    "message": "Unhide",
+    "message": "Откриј",
     "description": "Restore a hidden artifact"
   },
   "artifacts.showHidden": {
-    "message": "Show hidden",
+    "message": "Прикажи скривено",
     "description": "Toggle in the filter bar to include hidden artifacts"
   },
   "artifacts.hiddenBadge": {
-    "message": "Hidden",
+    "message": "Скривено",
     "description": "Badge shown on artifacts that are currently hidden"
   },
   "scheduledTasks.run.reason.billing_gate_failed": {
     "message": "Ауторизација наплате није успела"
   },
   "browserTool.title": {
-    "message": "Browser activity",
+    "message": "Активност прегледача",
     "description": "Fallback title for a BrowserDevice tool activity"
   },
   "browserTool.state.choose_device": {
