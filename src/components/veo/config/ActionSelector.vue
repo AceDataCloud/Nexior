@@ -24,15 +24,15 @@ export default defineComponent({
       return [
         {
           value: 'text2video',
-          label: this.$t('veo.button.actionTabText')
+          label: this.$t('veo.button.action1')
         },
         {
           value: 'image2video',
-          label: this.$t('veo.button.actionTabImage')
+          label: this.$t('veo.button.action2')
         },
         {
           value: 'ingredients2video',
-          label: this.$t('veo.button.actionTabIngredients')
+          label: this.$t('veo.button.actionIngredients')
         }
       ];
     },
@@ -60,6 +60,7 @@ export default defineComponent({
 .action-tabs {
   :deep(.el-tabs__header) {
     margin: 0;
+    height: 64px;
   }
 
   :deep(.el-tabs__nav-wrap::after) {
@@ -68,11 +69,17 @@ export default defineComponent({
 
   :deep(.el-tabs__nav-scroll) {
     overflow: visible;
+    height: 64px;
   }
 
   :deep(.el-tabs__nav) {
     width: 100%;
+    height: 64px;
     transform: none !important;
+  }
+
+  :deep(.el-tabs__nav-wrap) {
+    height: 64px;
   }
 
   :deep(.el-tabs__nav-prev),
@@ -87,13 +94,18 @@ export default defineComponent({
   :deep(.el-tabs__item) {
     flex: 1;
     min-width: 0;
-    height: 40px;
+    height: 64px;
     padding: 0 6px;
     border-bottom: 2px solid transparent;
     font-size: 12px;
-    line-height: 40px;
+    line-height: 16px;
     letter-spacing: 0;
     text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    align-items: center;
+    justify-content: center;
   }
 
   :deep(.el-tabs__item.is-active) {

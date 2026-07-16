@@ -11,6 +11,18 @@
         </span>
       </div>
       <div class="info">
+        <div
+          v-if="referenceImages.length > 0"
+          class="flex justify-start items-center gap-2 mt-2 w-full overflow-x-auto"
+        >
+          <image-preview
+            v-for="(url, idx) in referenceImages"
+            :key="`${idx}-${url}`"
+            :url="url"
+            :name="`reference-${idx + 1}`"
+            :closable="false"
+          />
+        </div>
         <p v-if="modelValue?.request?.prompt" class="prompt mt-2">
           {{ modelValue?.request?.prompt }}
           <span v-if="!modelValue?.response"> - ({{ $t('veo.status.pending') }}) </span>
@@ -19,7 +31,6 @@
           </span>
         </p>
       </div>
-      <!-- Display success message -->
       <div
         v-if="modelValue?.response?.success === true && modelValue?.response?.data"
         :class="{ content: true, failed: true }"
@@ -41,25 +52,7 @@
           </el-tooltip>
           <api-code-button path="/veo/videos" :body="modelValue?.request" />
         </div>
-        <el-alert :closable="false" class="mt-2 success">
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('veo.name.model') }}:
-            {{ modelValue?.request?.model }}
-          </p>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('veo.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" />
-          </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
-            {{ $t('veo.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
-          </p>
-        </el-alert>
       </div>
-      <!-- Display error message -->
       <div v-if="modelValue?.response?.success === false" :class="{ content: true }">
         <el-alert :closable="false" class="failure">
           <template #template>
@@ -67,47 +60,53 @@
             {{ $t('veo.name.failure') }}
           </template>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
-            {{ $t('veo.name.taskId') }}:
-            {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" />
-          </p>
-          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-circle-info" class="mr-1" />
             {{ $t('veo.name.failureReason') }}:
             {{ modelValue?.response?.error?.message }}
             <copy-to-clipboard :content="modelValue?.response?.error?.message!" />
           </p>
-          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
-            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
-            {{ $t('veo.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
-          </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
-            <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
-            {{ $t('veo.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
-          </p>
         </el-alert>
       </div>
-      <!-- Display error message -->
-      <div v-if="modelValue?.response?.success === undefined" :class="{ content: true }">
-        <el-alert :closable="false" class="info">
-          <template #template>
-            <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="mr-1" />
-            {{ $t('veo.name.failure') }}
-          </template>
+      <div :class="{ content: true }">
+        <el-alert :closable="false" :class="['mt-2', 'task-metadata', taskInfoClass]">
+          <p v-if="modelValue?.request?.model" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-cube" class="mr-1" />
+            {{ $t('veo.name.model') }}:
+            {{ modelValue?.request?.model }}
+          </p>
+          <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-bolt" class="mr-1" />
+            {{ $t('veo.name.action') }}:
+            {{ actionLabel }}
+          </p>
+          <p v-if="modelValue?.request?.aspect_ratio" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-up-right-from-square" class="mr-1" />
+            {{ $t('veo.name.ratio') }}:
+            {{ modelValue?.request?.aspect_ratio }}
+          </p>
+          <p
+            v-if="modelValue?.request?.translation !== undefined"
+            class="text-[var(--el-text-color-regular)] text-xs mb-2"
+          >
+            <font-awesome-icon icon="fa-solid fa-language" class="mr-1" />
+            {{ $t('veo.name.translation') }}:
+            {{ $t(modelValue?.request?.translation ? 'seedance.button.on' : 'seedance.button.off') }}
+          </p>
           <p class="text-[var(--el-text-color-regular)] text-xs mb-2">
             <font-awesome-icon icon="fa-solid fa-magic" class="mr-1" />
             {{ $t('veo.name.taskId') }}:
             {{ modelValue?.id }}
-            <copy-to-clipboard :content="modelValue?.id!" />
+            <copy-to-clipboard :content="modelValue?.id!" class="btn-copy inline-block" />
           </p>
-          <p v-if="modelValue?.response?.trace_id" class="text-[var(--el-text-color-regular)] text-xs mb-0">
+          <p v-if="modelValue?.elapsed" class="text-[var(--el-text-color-regular)] text-xs mb-2">
+            <font-awesome-icon icon="fa-solid fa-clock" class="mr-1" />
+            {{ $t('veo.name.elapsed') }}: {{ modelValue?.elapsed?.toFixed(2) }}s
+          </p>
+          <p v-if="traceId" class="text-[var(--el-text-color-regular)] text-xs mb-0">
             <font-awesome-icon icon="fa-solid fa-hashtag" class="mr-1" />
             {{ $t('veo.name.traceId') }}:
-            {{ modelValue?.response?.trace_id }}
-            <copy-to-clipboard :content="modelValue?.response?.trace_id" />
+            {{ traceId }}
+            <copy-to-clipboard :content="traceId" class="btn-copy inline-block" />
           </p>
         </el-alert>
       </div>
@@ -122,6 +121,7 @@ import { IVeoTask } from '@/models';
 import CopyToClipboard from '@/components/common/CopyToClipboard.vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VideoPlayer from '@/components/common/VideoPlayer.vue';
+import ImagePreview from '@/components/common/ImagePreview.vue';
 import ApiCodeButton from '@/components/common/ApiCodeButton.vue';
 
 export default defineComponent({
@@ -132,6 +132,7 @@ export default defineComponent({
     FontAwesomeIcon,
     ElAlert,
     VideoPlayer,
+    ImagePreview,
     ElTooltip,
     ElButton,
     ApiCodeButton
@@ -146,11 +147,33 @@ export default defineComponent({
     return {};
   },
   computed: {
-    application() {
-      return this.$store.state.veo?.application;
+    referenceImages(): string[] {
+      const imageUrls = this.modelValue?.request?.image_urls;
+      return Array.isArray(imageUrls) ? imageUrls.filter((url): url is string => typeof url === 'string' && !!url) : [];
     },
-    config() {
-      return this.$store.state.veo?.config;
+    actionLabel(): string {
+      const request = this.modelValue?.request;
+      const inferredAction =
+        request?.model === 'veo31-fast-ingredients' || this.referenceImages.length > 2
+          ? 'ingredients2video'
+          : this.referenceImages.length > 0
+            ? 'image2video'
+            : 'text2video';
+      const action = request?.action || inferredAction;
+      const labels: Record<string, string> = {
+        text2video: 'veo.button.action1',
+        image2video: 'veo.button.action2',
+        ingredients2video: 'veo.button.actionIngredients'
+      };
+      return this.$t(labels[action] || 'veo.name.action') as string;
+    },
+    traceId(): string | undefined {
+      return this.modelValue?.response?.trace_id || this.modelValue?.trace_id;
+    },
+    taskInfoClass(): string {
+      if (this.modelValue?.response?.success === true) return 'success';
+      if (this.modelValue?.response?.success === false) return 'failure';
+      return 'info';
     }
   },
   methods: {
@@ -228,6 +251,11 @@ $left-width: 70px;
       .el-alert {
         border-left-width: 2px;
         border-left-style: solid;
+        &.task-metadata {
+          :deep(p) {
+            color: var(--el-text-color-regular);
+          }
+        }
         &.failure {
           border-color: var(--el-color-danger);
         }
