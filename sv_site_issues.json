@@ -1,0 +1,536 @@
+{
+  "site.json": {
+    "field.contacts": {
+      "description": {
+        "en": "Field title for the customer-service contacts in site settings",
+        "zh": "站点设置中『客服联系方式』的字段标题"
+      }
+    },
+    "field.disableRecharge": {
+      "description": {
+        "en": "Site settings: when on, hide all recharge/top-up entries on this site",
+        "zh": "站点设置：开启后隐藏本站所有充值/购买入口"
+      }
+    },
+    "message.disableRechargeTip": {
+      "description": {
+        "en": "Help text for the disable-recharge toggle",
+        "zh": "禁用充值开关的说明文字"
+      }
+    },
+    "field.authProvider_apple": {
+      "description": {
+        "en": "Login provider display name: Sign in with Apple.",
+        "zh": "登录方式名称：Sign in with Apple；保留英文品牌名 'Apple' 不翻译"
+      }
+    },
+    "message.authSmsWebhookTip": {
+      "message": {
+        "en": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
+        "zh": "开启后，本站发出的手机验证码短信将由你自己的接口用你自己的签名发送；关闭则使用平台默认签名。需先启用「手机号」登录方式。"
+      }
+    },
+    "placeholder.authSmsWebhookUrl": {
+      "description": {
+        "en": "Placeholder for the SMS webhook URL input",
+        "zh": "短信 webhook URL 输入框占位"
+      }
+    },
+    "placeholder.authSmsWebhookSecret": {
+      "message": {
+        "en": "Signing secret (leave blank to keep unchanged)",
+        "zh": "签名密钥（留空则保持不变）"
+      }
+    },
+    "message.authSmsWebhookNeedsPhone": {
+      "message": {
+        "en": "Enable the phone-number login provider first to configure a custom SMS sender.",
+        "zh": "需先启用「手机号」登录方式才能配置自定义短信发件地址。"
+      }
+    },
+    "field.authSmsWebhookDocTitle": {
+      "message": {
+        "en": "Custom SMS Sender · Webhook spec",
+        "zh": "自定义短信发件地址 · 接口说明"
+      }
+    },
+    "message.authSmsWebhookDocIntro": {
+      "message": {
+        "en": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
+        "zh": "本站会向你填写的地址发起一次带签名的 HTTPS POST 请求，由你的服务负责下发短信。请确保你的接口满足以下要求："
+      }
+    },
+    "message.authSmsWebhookDocRequest": {
+      "message": {
+        "en": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
+        "zh": "方法为 POST，Content-Type 为 application/json。purpose 可能为 login / register / test（test 为连通性测试，可不实际下发短信）。请求体结构如下："
+      }
+    },
+    "field.authSmsWebhookDocHeaders": {
+      "message": {
+        "en": "Signature verification",
+        "zh": "签名校验"
+      }
+    },
+    "message.authSmsWebhookDocHeaders": {
+      "message": {
+        "en": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
+        "zh": "每次请求附带以下请求头，请用你的签名密钥按 Standard Webhooks 规范做 HMAC-SHA256 校验，并使用常量时间比较："
+      }
+    },
+    "message.authSmsWebhookDocResponse": {
+      "message": {
+        "en": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
+        "zh": "下发成功请返回 2xx；如需显式表示失败，可返回 HTTP 200，且 body 中 success 字段为 false（见下方示例）。请在 5 秒内响应。"
+      }
+    },
+    "field.authSmsWebhookTestTitle": {
+      "message": {
+        "en": "Test custom SMS sender",
+        "zh": "测试自定义短信发件地址"
+      }
+    },
+    "field.authSmsWebhookTestNumber": {
+      "message": {
+        "en": "Test phone number (optional)",
+        "zh": "测试手机号（选填）"
+      }
+    },
+    "message.authSmsWebhookTestOk": {
+      "message": {
+        "en": "The test request was delivered to your endpoint successfully.",
+        "zh": "测试请求已成功送达你的接口。"
+      }
+    },
+    "message.authSmsWebhookTestFailed": {
+      "message": {
+        "en": "Test failed. Check the URL, signing secret, and your endpoint's response.",
+        "zh": "测试失败，请检查地址、签名密钥与接口返回。"
+      }
+    },
+    "field.authSmsWebhookDisableTitle": {
+      "message": {
+        "en": "Disable custom SMS sender",
+        "zh": "关闭自定义短信发件地址"
+      }
+    },
+    "message.authSmsWebhookDisableConfirm": {
+      "message": {
+        "en": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
+        "zh": "关闭后将删除已保存的发件地址与签名密钥（密钥不可恢复），本站将改用平台默认签名。确定关闭吗？"
+      }
+    },
+    "field.featuresCodingBridge": {
+      "description": {
+        "en": "Displayed as the title in the editing box",
+        "zh": "展示在编辑框的标题"
+      }
+    },
+    "field.featuresWebextrator": {
+      "description": {
+        "en": "Displayed as the title in the editing box",
+        "zh": "展示在编辑框的标题"
+      }
+    },
+    "title.editContacts": {
+      "description": {
+        "en": "Title of the edit-support-contacts dialog",
+        "zh": "编辑客服联系方式弹窗的标题"
+      }
+    },
+    "message.contactsTip": {
+      "description": {
+        "en": "Tip for the support-contacts field",
+        "zh": "客服联系方式字段的提示"
+      }
+    },
+    "message.contactsEmpty": {
+      "description": {
+        "en": "Placeholder shown when no support contact has been filled in",
+        "zh": "未填写任何客服联系方式时的占位文案"
+      }
+    },
+    "message.featuresGrok": {
+      "description": {
+        "en": "Concise capability introduction: xAI assistant for real-time knowledge, reasoning, writing, and coding.",
+        "zh": "xAI 智能助手，提供实时信息、推理、写作和编程能力。的能力简介"
+      }
+    },
+    "message.featuresGrokvideo": {
+      "description": {
+        "en": "Concise capability introduction: xAI video generation for short clips from text prompts or reference images.",
+        "zh": "xAI 视频生成服务，可根据文字提示或参考图制作短片。的能力简介"
+      }
+    },
+    "message.featuresMaestro": {
+      "description": {
+        "en": "Concise capability introduction: Produce complete videos from an idea, including planning, voiceover, scenes, and delivery.",
+        "zh": "将创意制作成完整视频，覆盖策划、配音、场景生成和交付。的能力简介"
+      }
+    },
+    "message.featuresDigitalhuman": {
+      "description": {
+        "en": "Concise capability introduction: Create talking-head videos with synthesized speech and natural lip sync.",
+        "zh": "使用合成语音和自然口型同步制作数字人口播视频。的能力简介"
+      }
+    },
+    "message.featuresDeepseek": {
+      "description": {
+        "en": "Concise capability introduction: DeepSeek assistant for advanced reasoning, coding, math, and everyday questions.",
+        "zh": "DeepSeek 智能助手，擅长深度推理、编程、数学和日常问答。的能力简介"
+      }
+    },
+    "message.featuresChatgpt": {
+      "description": {
+        "en": "Concise capability introduction: OpenAI assistant for writing, reasoning, coding, and multimodal conversations.",
+        "zh": "OpenAI 智能助手，擅长写作、推理、编程和多模态对话。的能力简介"
+      }
+    },
+    "message.featuresMidjourney": {
+      "description": {
+        "en": "Concise capability introduction: Create polished images and creative variations from text or visual references.",
+        "zh": "根据文字或参考图生成精美图像与创意变体。的能力简介"
+      }
+    },
+    "message.featuresQrart": {
+      "description": {
+        "en": "Concise capability introduction: Turn links into scannable artistic QR codes with custom styles and imagery.",
+        "zh": "将链接制作成可扫描的艺术二维码，支持自定义风格与图像。的能力简介"
+      }
+    },
+    "message.featuresVeo": {
+      "description": {
+        "en": "Concise capability introduction: Google video generation for cinematic clips with strong prompt and motion control.",
+        "zh": "Google 视频生成服务，擅长电影感画面、提示理解和运动控制。的能力简介"
+      }
+    },
+    "message.featuresSora": {
+      "description": {
+        "en": "Concise capability introduction: OpenAI video generation for realistic scenes, storytelling, and visual transformations.",
+        "zh": "OpenAI 视频生成服务，适合真实场景、故事表达和视觉变换。的能力简介"
+      }
+    },
+    "message.featuresSuno": {
+      "description": {
+        "en": "Concise capability introduction: Generate complete songs, lyrics, vocals, and instrumentals from a prompt.",
+        "zh": "根据提示生成完整歌曲、歌词、人声和纯音乐。的能力简介"
+      }
+    },
+    "message.featuresPixverse": {
+      "description": {
+        "en": "Concise capability introduction: Generate stylized videos from prompts and images with templates and effects.",
+        "zh": "根据提示和图像生成风格化视频，并提供模板与特效。的能力简介"
+      }
+    },
+    "message.featuresFlux": {
+      "description": {
+        "en": "Concise capability introduction: Create detailed images and edit existing visuals with natural-language instructions.",
+        "zh": "生成细节丰富的图像，并通过自然语言编辑现有画面。的能力简介"
+      }
+    },
+    "message.featuresNanobanana": {
+      "description": {
+        "en": "Concise capability introduction: Google-powered image generation and editing with precise instruction following.",
+        "zh": "Google 驱动的图像生成与编辑，能够精准遵循修改指令。的能力简介"
+      }
+    },
+    "message.featuresOpenaiimage": {
+      "description": {
+        "en": "Concise capability introduction: OpenAI image generation and editing for polished visuals, text, and compositions.",
+        "zh": "OpenAI 图像生成与编辑，擅长精美画面、文字和版式设计。的能力简介"
+      }
+    },
+    "message.featuresSeedream": {
+      "description": {
+        "en": "Concise capability introduction: ByteDance image generation and editing for high-quality creative visuals.",
+        "zh": "字节跳动图像生成与编辑服务，用于创作高质量视觉内容。的能力简介"
+      }
+    },
+    "message.featuresSeedance": {
+      "description": {
+        "en": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio.",
+        "zh": "字节跳动视频生成服务，支持动态场景、镜头运动和可选音频。的能力简介"
+      }
+    },
+    "message.featuresWan": {
+      "description": {
+        "en": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions.",
+        "zh": "阿里巴巴视频生成服务，支持文字、图像、参考素材和多种分辨率。的能力简介"
+      }
+    },
+    "message.featuresProducer": {
+      "description": {
+        "en": "Concise capability introduction: Create songs, covers, extensions, and vocal or instrumental variations.",
+        "zh": "创作歌曲、翻唱和续写，并生成不同人声或纯音乐版本。的能力简介"
+      }
+    },
+    "message.featuresKimi": {
+      "description": {
+        "en": "Concise capability introduction: Moonshot AI assistant for long-context research, reasoning, writing, and coding.",
+        "zh": "月之暗面智能助手，擅长长上下文研究、推理、写作和编程。的能力简介"
+      }
+    },
+    "message.featuresSerp": {
+      "description": {
+        "en": "Concise capability introduction: Search the web, images, news, maps, and videos with structured Google results.",
+        "zh": "搜索网页、图片、新闻、地图和视频，返回结构化 Google 结果。的能力简介"
+      }
+    },
+    "message.featuresFish": {
+      "description": {
+        "en": "Concise capability introduction: Generate natural speech and clone voices for multilingual audio production.",
+        "zh": "生成自然语音并克隆音色，用于多语言音频制作。的能力简介"
+      }
+    },
+    "message.featuresCodingBridge": {
+      "description": {
+        "en": "Concise capability introduction: Connect AI coding assistants to local projects for guided development workflows.",
+        "zh": "将 AI 编程助手连接到本地项目，完成引导式开发工作流。的能力简介"
+      }
+    },
+    "message.featuresWebextrator": {
+      "description": {
+        "en": "Concise capability introduction: Extract clean, structured content and data from web pages.",
+        "zh": "从网页中提取干净、结构化的内容和数据。的能力简介"
+      }
+    },
+    "message.featuresLuma": {
+      "description": {
+        "en": "Concise capability introduction: Create cinematic videos from text or images with natural motion.",
+        "zh": "根据文字或图像生成具有自然运动效果的电影感视频。的能力简介"
+      }
+    },
+    "message.featuresPika": {
+      "description": {
+        "en": "Concise capability introduction: Generate and edit short creative videos with effects, scenes, and transformations.",
+        "zh": "生成和编辑创意短视频，支持特效、场景与画面变换。的能力简介"
+      }
+    },
+    "message.featuresKling": {
+      "description": {
+        "en": "Concise capability introduction: Create high-quality videos from text, images, or motion references.",
+        "zh": "根据文字、图像或动作参考生成高质量视频。的能力简介"
+      }
+    },
+    "message.featuresHailuo": {
+      "description": {
+        "en": "Concise capability introduction: Generate expressive videos from text or images with smooth character motion.",
+        "zh": "根据文字或图像生成表现力丰富、人物动作流畅的视频。的能力简介"
+      }
+    },
+    "message.featuresGemini": {
+      "description": {
+        "en": "Concise capability introduction: Google assistant for long-context reasoning, research, coding, and multimodal work.",
+        "zh": "Google 智能助手，擅长长上下文推理、研究、编程和多模态任务。的能力简介"
+      }
+    },
+    "message.featuresClaude": {
+      "description": {
+        "en": "Concise capability introduction: Anthropic assistant for careful reasoning, writing, coding, and document analysis.",
+        "zh": "Anthropic 智能助手，擅长严谨推理、写作、编程和文档分析。的能力简介"
+      }
+    },
+    "autoTranslate.tooltipOn": {
+      "description": {
+        "en": "Tooltip on the auto-translate toggle when it is ON",
+        "zh": "自动翻译切换按钮在开启状态下的 hover 提示"
+      }
+    },
+    "autoTranslate.tooltipOff": {
+      "description": {
+        "en": "Tooltip on the auto-translate toggle when it is OFF",
+        "zh": "自动翻译切换按钮在关闭状态下的 hover 提示"
+      }
+    },
+    "autoTranslate.tooltipDisabledNotSaved": {
+      "description": {
+        "en": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)",
+        "zh": "在创建对话框中（尚未保存）按钮被禁用的提示"
+      }
+    },
+    "autoTranslate.confirmEnable": {
+      "description": {
+        "en": "Body text of the confirm dialog shown before enabling auto-translation",
+        "zh": "点击开启自动翻译时的二次确认弹窗正文"
+      }
+    },
+    "autoTranslate.confirmDisable": {
+      "description": {
+        "en": "Body text of the confirm dialog shown before disabling auto-translation",
+        "zh": "点击关闭自动翻译时的二次确认弹窗正文"
+      }
+    },
+    "autoTranslate.empty": {
+      "description": {
+        "en": "Warning shown when the user tries to enable auto-translation on an empty field",
+        "zh": "字段为空时尝试开启自动翻译的警告提示"
+      }
+    },
+    "autoTranslate.error": {
+      "description": {
+        "en": "Fallback error toast when the enable/disable HTTP call fails with no detail",
+        "zh": "切换自动翻译接口返回错误时的兜底文案"
+      }
+    },
+    "capabilityOverride.edit": {
+      "description": {
+        "en": "Tooltip and accessible label for editing a capability app name and icon",
+        "zh": "编辑能力应用名称和图标的提示与无障碍标签"
+      }
+    },
+    "capabilityOverride.dialogTitle": {
+      "message": {
+        "en": "Customize {name}",
+        "zh": "自定义 {name}"
+      },
+      "description": {
+        "en": "Dialog title; {name} is the platform-default capability app name",
+        "zh": "弹窗标题，{name} 为平台默认应用名称"
+      }
+    },
+    "capabilityOverride.displayName": {
+      "description": {
+        "en": "Field label for a per-site capability app display name",
+        "zh": "子站能力应用显示名称字段"
+      }
+    },
+    "capabilityOverride.displayNameTip": {
+      "message": {
+        "en": "Leave blank to use {name}. Save once before enabling automatic translation.",
+        "zh": "留空则使用 {name}。首次保存后可开启自动翻译。"
+      },
+      "description": {
+        "en": "Help text; {name} is the platform-default capability app name",
+        "zh": "名称说明，{name} 为平台默认应用名称"
+      }
+    },
+    "capabilityOverride.icon": {
+      "description": {
+        "en": "Field label for a per-site capability app icon",
+        "zh": "子站能力应用图标字段"
+      }
+    },
+    "capabilityOverride.defaultIcon": {
+      "description": {
+        "en": "Label above the platform-default capability icon preview",
+        "zh": "平台默认图标预览标签"
+      }
+    },
+    "capabilityOverride.currentIcon": {
+      "description": {
+        "en": "Label above the effective capability icon preview",
+        "zh": "当前生效图标预览标签"
+      }
+    },
+    "capabilityOverride.replaceIcon": {
+      "description": {
+        "en": "Command to upload a replacement capability icon",
+        "zh": "上传替换图标的命令"
+      }
+    },
+    "capabilityOverride.uploadIcon": {
+      "description": {
+        "en": "Command to upload the first custom capability icon",
+        "zh": "首次上传自定义图标的命令"
+      }
+    },
+    "capabilityOverride.useDefaultIcon": {
+      "description": {
+        "en": "Command to clear the custom icon draft",
+        "zh": "清除自定义图标草稿的命令"
+      }
+    },
+    "capabilityOverride.iconTip": {
+      "message": {
+        "en": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
+        "zh": "支持 PNG、JPEG 或 WebP，将裁剪为正方形；透明 PNG 会保留透明背景。"
+      },
+      "description": {
+        "en": "Capability icon upload requirements",
+        "zh": "能力应用图标上传要求"
+      }
+    },
+    "capabilityOverride.editIcon": {
+      "description": {
+        "en": "Title of the capability icon cropper dialog",
+        "zh": "图标裁剪弹窗标题"
+      }
+    },
+    "capabilityOverride.resetAll": {
+      "description": {
+        "en": "Command that removes both custom name and icon",
+        "zh": "同时删除自定义名称和图标的命令"
+      }
+    },
+    "capabilityOverride.empty": {
+      "message": {
+        "en": "Enter a custom name or upload an icon first.",
+        "zh": "请先输入自定义名称或上传图标。"
+      },
+      "description": {
+        "en": "Warning when attempting to create an empty override",
+        "zh": "尝试创建空覆盖时的提示"
+      }
+    },
+    "capabilityOverride.saved": {
+      "message": {
+        "en": "App customization saved",
+        "zh": "应用自定义已保存"
+      },
+      "description": {
+        "en": "Success message after saving a capability override",
+        "zh": "保存能力应用覆盖后的成功提示"
+      }
+    },
+    "capabilityOverride.savedEnableTranslation": {
+      "message": {
+        "en": "Saved. You can now enable automatic translation for the custom name.",
+        "zh": "已保存，现在可以为自定义名称开启自动翻译。"
+      },
+      "description": {
+        "en": "Success message after first save creates an override ID",
+        "zh": "首次保存并获得覆盖记录 ID 后的提示"
+      }
+    },
+    "capabilityOverride.saveFailed": {
+      "message": {
+        "en": "Failed to save app customization",
+        "zh": "保存应用自定义失败"
+      },
+      "description": {
+        "en": "Fallback error for capability override writes",
+        "zh": "能力应用覆盖写入失败的兜底错误"
+      }
+    },
+    "capabilityOverride.resetConfirm": {
+      "message": {
+        "en": "Restore the default name and icon for {name}?",
+        "zh": "恢复 {name} 的默认名称和图标？"
+      },
+      "description": {
+        "en": "Confirmation message; {name} is the platform-default capability app name",
+        "zh": "恢复确认文案，{name} 为平台默认应用名称"
+      }
+    },
+    "capabilityOverride.resetDone": {
+      "message": {
+        "en": "Default name and icon restored",
+        "zh": "已恢复默认名称和图标"
+      },
+      "description": {
+        "en": "Success message after deleting a capability override",
+        "zh": "删除能力应用覆盖后的成功提示"
+      }
+    },
+    "capabilityOverride.fetchFailed": {
+      "message": {
+        "en": "Failed to load app customizations",
+        "zh": "加载应用自定义失败"
+      },
+      "description": {
+        "en": "Error shown when capability override management rows cannot be loaded",
+        "zh": "无法读取能力应用覆盖管理记录时的错误"
+      }
+    }
+  }
+}

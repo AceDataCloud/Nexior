@@ -1,0 +1,826 @@
+{
+  "common.json": {
+    "button.deletePermanently": {
+      "description": {
+        "en": "Final red delete button at the bottom of the delete confirmation dialog",
+        "zh": "删除账号确认对话框底部的红色最终删除按钮文本，translate to 'Permanently delete account'"
+      }
+    },
+    "error.loginLinkExpired": {
+      "message": {
+        "en": "Login link expired. Please sign in again.",
+        "zh": "登录链接已失效，请重新登录。"
+      },
+      "description": {
+        "en": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired).",
+        "zh": "桌面客户端 OAuth 回调因 state 校验失败/过期被丢弃时显示的错误提示。"
+      }
+    },
+    "message.guestTasks": {
+      "description": {
+        "en": "Prompt shown in the task list area for not-logged-in guests",
+        "zh": "未登录访客在任务列表区域看到的提示"
+      }
+    },
+    "message.mobileComingSoon": {
+      "description": {
+        "en": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared",
+        "zh": "用于标记某个平台（如 iOS）即将开放下载的短状态标签"
+      }
+    },
+    "message.mobileNowOnAppStore": {
+      "message": {
+        "en": "Now on the App Store",
+        "zh": "已上架 App Store"
+      }
+    },
+    "button.getOnAppStore": {
+      "message": {
+        "en": "Get it on the App Store",
+        "zh": "在 App Store 下载"
+      }
+    },
+    "message.mobileAppStoreHint": {
+      "message": {
+        "en": "Scan to open the App Store",
+        "zh": "扫码前往 App Store"
+      }
+    },
+    "message.deleteAccountConfirm": {
+      "description": {
+        "en": "Confirmation message shown before permanently deleting the user account",
+        "zh": "永久删除用户账号前显示的确认消息"
+      }
+    },
+    "message.deleteAccountSuccess": {
+      "description": {
+        "en": "Message shown after the user account is successfully deleted",
+        "zh": "成功删除用户账号后显示的消息"
+      }
+    },
+    "message.deleteAccountFailed": {
+      "description": {
+        "en": "Message shown when account deletion fails",
+        "zh": "删除账号失败时显示的消息"
+      }
+    },
+    "message.deleteAccountWarning": {
+      "description": {
+        "en": "Red warning banner at the top of the delete confirmation dialog",
+        "zh": "删除账号确认对话框顶部的红色警示横幅文本，必须强烈警告操作不可撤销"
+      }
+    },
+    "message.deleteAccountConsequences": {
+      "description": {
+        "en": "Explains what data will be removed in the delete confirmation dialog",
+        "zh": "删除账号确认对话框中列出将被删除内容的说明文本"
+      }
+    },
+    "message.deleteAccountTypePrompt": {
+      "description": {
+        "en": "Instructs the user to type their username to confirm; the username is shown separately below",
+        "zh": "提示用户必须逐字输入自己的用户名才能确认删除；紧随其后会单独显示该用户名"
+      }
+    },
+    "message.deleteAccountPlaceholder": {
+      "description": {
+        "en": "Placeholder for the username confirmation input",
+        "zh": "用户名确认输入框的占位符"
+      }
+    },
+    "nav.grokvideo": {
+      "description": {
+        "en": "Text in the website navigation bar to display the Grok Imagine video page",
+        "zh": "网站导航栏中的文本，用于显示 Grok Imagine 视频页面"
+      }
+    },
+    "nav.codingBridge": {
+      "description": {
+        "en": "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'",
+        "zh": "网站导航栏中的文本，用于显示 Coding Bridge 页面，请不要翻译此字段，必须保持为'Coding Bridge'"
+      }
+    },
+    "nav.webextrator": {
+      "description": {
+        "en": "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'",
+        "zh": "网站导航栏中的文本，用于显示WebExtrator页面，请不要翻译此字段，必须保持为'WebExtrator'"
+      }
+    },
+    "nav.connections": {
+      "description": {
+        "en": "Menu item to navigate to the connection management page at auth.acedata.cloud",
+        "zh": "跳转到 auth.acedata.cloud 连接管理页的菜单项"
+      }
+    },
+    "nav.deleteAccount": {
+      "description": {
+        "en": "Menu item to permanently delete the current user account",
+        "zh": "用于永久删除当前用户账号的菜单项"
+      }
+    },
+    "nav.subsite": {
+      "description": {
+        "en": "Sidebar entry for 'My Subsite', displayed only when features.subsite is enabled",
+        "zh": "侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示"
+      }
+    },
+    "title.placeholderOfSelect": {
+      "description": {
+        "en": "Placeholder for select input",
+        "zh": "选择输入的占位符"
+      }
+    },
+    "title.buyMore": {
+      "description": {
+        "en": "Page title for recharging. Must be translated to 'Top Up'.",
+        "zh": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
+      }
+    },
+    "about.email": {
+      "message": {
+        "en": "office{'@'}acedata.cloud",
+        "zh": "office{'@'}acedata.cloud"
+      }
+    },
+    "settings.sendShortcut": {
+      "description": {
+        "en": "Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send.",
+        "zh": "设置页面中的发送消息快捷键行标题：选择按 Enter 发送还是按修饰键+Enter 发送"
+      }
+    },
+    "sendShortcut.enter": {
+      "description": {
+        "en": "Send-shortcut option: press Enter to send the message.",
+        "zh": "发送快捷键选项：按 Enter 键直接发送消息"
+      }
+    },
+    "sendShortcut.modEnter": {
+      "description": {
+        "en": "Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol.",
+        "zh": "发送快捷键选项：按修饰键（⌘ 或 Ctrl）加 Enter 发送消息，{key} 是平台修饰键符号"
+      }
+    },
+    "settings.function": {
+      "description": {
+        "en": "Title for the site capabilities section in the settings page",
+        "zh": "设置页面中的站点能力部分标题"
+      }
+    },
+    "settings.localTools": {
+      "description": {
+        "en": "Desktop-only settings tab for managing local tool folders, permissions and grants.",
+        "zh": "桌面专属设置 tab：管理本地工具的授权文件夹、系统权限与永久授权。"
+      }
+    },
+    "settings.localToolsDesktopOnly": {
+      "description": {
+        "en": "Shown when the Local Tools tab is opened on web/mobile.",
+        "zh": "在 web/移动端打开本地工具 tab 时的提示。"
+      }
+    },
+    "settings.localToolsFoldersTitle": {
+      "description": {
+        "en": "Heading for the list of folders the AI may read/write locally.",
+        "zh": "AI 可在本地读写的文件夹列表标题。"
+      }
+    },
+    "settings.localToolsFoldersHint": {
+      "description": {
+        "en": "Help text under the authorized-folders heading.",
+        "zh": "已授权文件夹标题下的说明。"
+      }
+    },
+    "settings.localToolsComputerUseTitle": {
+      "message": {
+        "en": "Computer Use (experimental)",
+        "zh": "电脑操作（实验性）"
+      }
+    },
+    "settings.localToolsComputerUseHint": {
+      "message": {
+        "en": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
+        "zh": "让 AI 看到你的屏幕并控制本机的鼠标和键盘。默认关闭，按需开启。macOS 上需在下方授予「屏幕录制」和「辅助功能」权限。每个操作仍会请求你的确认。"
+      }
+    },
+    "settings.localToolsAddFolder": {
+      "description": {
+        "en": "Button to pick a folder to authorize.",
+        "zh": "选择要授权的文件夹的按钮。"
+      }
+    },
+    "settings.localToolsRemove": {
+      "description": {
+        "en": "Button to remove an authorized folder.",
+        "zh": "移除已授权文件夹的按钮。"
+      }
+    },
+    "settings.localToolsNoFolders": {
+      "description": {
+        "en": "Empty state for the authorized-folders list.",
+        "zh": "已授权文件夹列表的空状态。"
+      }
+    },
+    "settings.localToolsSave": {
+      "description": {
+        "en": "Save the authorized folders.",
+        "zh": "保存已授权文件夹。"
+      }
+    },
+    "settings.localToolsMcpTitle": {
+      "description": {
+        "en": "Section title for local MCP server configuration in Local Tools settings.",
+        "zh": "本地工具设置中本地 MCP 服务器配置的分区标题。"
+      }
+    },
+    "settings.localToolsMcpHint": {
+      "message": {
+        "en": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
+        "zh": "通过 stdio 连接本地 MCP 服务器。它们的工具会提供给 AI 使用，并受同样的逐次调用确认保护。修改后立即生效。"
+      },
+      "description": {
+        "en": "Explains what local MCP servers do and that changes apply without a restart.",
+        "zh": "说明本地 MCP 服务器的作用，以及修改无需重启即可生效。"
+      }
+    },
+    "settings.localToolsMcpAdd": {
+      "description": {
+        "en": "Button to add a new local MCP server row.",
+        "zh": "添加一个新的本地 MCP 服务器行的按钮。"
+      }
+    },
+    "settings.localToolsMcpName": {
+      "description": {
+        "en": "Label for the MCP server name/id field.",
+        "zh": "MCP 服务器名称/标识字段的标签。"
+      }
+    },
+    "settings.localToolsMcpCommand": {
+      "description": {
+        "en": "Label for the MCP server launch command field.",
+        "zh": "MCP 服务器启动命令字段的标签。"
+      }
+    },
+    "settings.localToolsMcpArgs": {
+      "description": {
+        "en": "Label for the MCP server command arguments field.",
+        "zh": "MCP 服务器命令参数字段的标签。"
+      }
+    },
+    "settings.localToolsMcpArgsHint": {
+      "message": {
+        "en": "One argument per line.",
+        "zh": "每行一个参数。"
+      },
+      "description": {
+        "en": "Placeholder/hint for the MCP arguments textarea.",
+        "zh": "MCP 参数文本框的占位提示。"
+      }
+    },
+    "settings.localToolsMcpEnv": {
+      "description": {
+        "en": "Label for the MCP server environment variables field.",
+        "zh": "MCP 服务器环境变量字段的标签。"
+      }
+    },
+    "settings.localToolsMcpEnvHint": {
+      "message": {
+        "en": "One KEY=VALUE per line.",
+        "zh": "每行一个 KEY=VALUE。"
+      },
+      "description": {
+        "en": "Placeholder/hint for the MCP environment variables textarea.",
+        "zh": "MCP 环境变量文本框的占位提示。"
+      }
+    },
+    "settings.localToolsMcpNoServers": {
+      "message": {
+        "en": "No MCP servers configured.",
+        "zh": "尚未配置 MCP 服务器。"
+      },
+      "description": {
+        "en": "Empty state shown when no MCP servers are configured.",
+        "zh": "未配置任何 MCP 服务器时显示的空状态。"
+      }
+    },
+    "settings.localToolsMcpNamePlaceholder": {
+      "description": {
+        "en": "Placeholder for the MCP server name input.",
+        "zh": "MCP 服务器名称输入框的占位符。"
+      }
+    },
+    "settings.localToolsMcpCommandPlaceholder": {
+      "description": {
+        "en": "Placeholder for the MCP server command input.",
+        "zh": "MCP 服务器命令输入框的占位符。"
+      }
+    },
+    "settings.localToolsMcpNameRequired": {
+      "message": {
+        "en": "Each server needs a name and a command.",
+        "zh": "每个服务器都需要名称和命令。"
+      },
+      "description": {
+        "en": "Validation error when a server row is missing a name or command.",
+        "zh": "服务器行缺少名称或命令时的校验错误。"
+      }
+    },
+    "settings.localToolsMcpDuplicateName": {
+      "message": {
+        "en": "Server names must be unique.",
+        "zh": "服务器名称必须唯一。"
+      },
+      "description": {
+        "en": "Validation error when two servers share the same name.",
+        "zh": "两个服务器名称重复时的校验错误。"
+      }
+    },
+    "settings.localToolsMcpNameInvalid": {
+      "message": {
+        "en": "Name may only contain letters, numbers, hyphens and underscores.",
+        "zh": "名称只能包含字母、数字、连字符和下划线。"
+      },
+      "description": {
+        "en": "Validation error when a server name contains invalid characters.",
+        "zh": "服务器名称含非法字符时的校验错误。"
+      }
+    },
+    "settings.localToolsMcpEnabled": {
+      "description": {
+        "en": "Toggle label to enable/disable a local MCP server.",
+        "zh": "启用/停用某个本地 MCP 服务器的开关标签。"
+      }
+    },
+    "settings.localToolsMcpReconnect": {
+      "description": {
+        "en": "Button to re-spawn one MCP server and refresh its status.",
+        "zh": "重新启动某个 MCP 服务器并刷新其状态的按钮。"
+      }
+    },
+    "settings.localToolsMcpConnecting": {
+      "message": {
+        "en": "Connecting…",
+        "zh": "连接中…"
+      },
+      "description": {
+        "en": "Badge while an MCP server is being (re)connected.",
+        "zh": "MCP 服务器正在（重新）连接时的状态标签。"
+      }
+    },
+    "settings.localToolsMcpNotSaved": {
+      "description": {
+        "en": "Badge for an MCP server row that hasn't been saved/connected yet.",
+        "zh": "尚未保存/连接的 MCP 服务器行的状态标签。"
+      }
+    },
+    "settings.localToolsMcpConnected": {
+      "message": {
+        "en": "Connected · {n} tools",
+        "zh": "已连接 · {n} 个工具"
+      },
+      "description": {
+        "en": "Badge when an MCP server connected; {n} is the tool count.",
+        "zh": "MCP 服务器连接成功时的标签；{n} 为工具数量。"
+      }
+    },
+    "settings.localToolsMcpDisabled": {
+      "description": {
+        "en": "Badge when an MCP server is turned off.",
+        "zh": "MCP 服务器被关闭时的标签。"
+      }
+    },
+    "settings.localToolsMcpFailed": {
+      "description": {
+        "en": "Badge when an MCP server failed to start; the reason is shown below.",
+        "zh": "MCP 服务器启动失败时的标签；原因显示在下方。"
+      }
+    },
+    "settings.localToolsMcpPlatformHint": {
+      "message": {
+        "en": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
+        "zh": "提示：使用 PATH 中的命令，如 npx 或 uvx（例如 npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents）。Windows 上 npx/node 会自动解析。若某服务器显示 “spawn … ENOENT”，请把命令改为完整路径。"
+      },
+      "description": {
+        "en": "Cross-platform hint for configuring the MCP launch command.",
+        "zh": "配置 MCP 启动命令的跨平台提示。"
+      }
+    },
+    "settings.localToolsSaved": {
+      "description": {
+        "en": "Transient confirmation after saving local-tool folders.",
+        "zh": "保存本地工具文件夹后的短暂确认。"
+      }
+    },
+    "settings.localToolsActiveTools": {
+      "description": {
+        "en": "Label before the list of currently available local tools.",
+        "zh": "当前可用本地工具列表前的标签。"
+      }
+    },
+    "settings.localToolsGrantsTitle": {
+      "description": {
+        "en": "Heading for the persistent consent grants list.",
+        "zh": "永久授权列表的标题。"
+      }
+    },
+    "settings.localToolsGrantsHint": {
+      "description": {
+        "en": "Help text under the always-allowed actions heading.",
+        "zh": "永久允许操作标题下的说明。"
+      }
+    },
+    "settings.localToolsRevoke": {
+      "description": {
+        "en": "Button to revoke a single always-allow grant.",
+        "zh": "撤销单条永久授权的按钮。"
+      }
+    },
+    "settings.localToolsRevokeAll": {
+      "description": {
+        "en": "Button to revoke every always-allow grant.",
+        "zh": "撤销所有永久授权的按钮。"
+      }
+    },
+    "settings.localToolsNoGrants": {
+      "description": {
+        "en": "Empty state for the always-allowed actions list.",
+        "zh": "永久允许操作列表的空状态。"
+      }
+    },
+    "settings.localToolsPermsTitle": {
+      "description": {
+        "en": "Heading for the macOS system-permission section.",
+        "zh": "macOS 系统权限区块的标题。"
+      }
+    },
+    "settings.localToolsPermsHint": {
+      "description": {
+        "en": "Help text under the system-permissions heading.",
+        "zh": "系统权限标题下的说明。"
+      }
+    },
+    "settings.localToolsPermFullDisk": {
+      "description": {
+        "en": "macOS Full Disk Access permission row.",
+        "zh": "macOS 完全磁盘访问权限行。"
+      }
+    },
+    "settings.localToolsPermScreen": {
+      "description": {
+        "en": "macOS Screen Recording permission row.",
+        "zh": "macOS 屏幕录制权限行。"
+      }
+    },
+    "settings.localToolsPermAccessibility": {
+      "description": {
+        "en": "macOS Accessibility permission row.",
+        "zh": "macOS 辅助功能权限行。"
+      }
+    },
+    "settings.localToolsGranted": {
+      "description": {
+        "en": "Status tag when a system permission is granted.",
+        "zh": "系统权限已授权时的状态标签。"
+      }
+    },
+    "settings.localToolsNotGranted": {
+      "description": {
+        "en": "Status tag when a system permission is not granted.",
+        "zh": "系统权限未授权时的状态标签。"
+      }
+    },
+    "settings.localToolsOpen": {
+      "description": {
+        "en": "Button to open the relevant macOS System Settings pane.",
+        "zh": "打开对应 macOS 系统设置面板的按钮。"
+      }
+    },
+    "settings.contactSupport": {
+      "description": {
+        "en": "Section title on the About page listing the site owner's customer-service channels",
+        "zh": "关于页面中展示站长客服渠道的栏目标题"
+      }
+    },
+    "settings.contactSupportTip": {
+      "description": {
+        "en": "Subtitle under the support contacts section on the About page",
+        "zh": "关于页面客服栏目下方的副标题"
+      }
+    },
+    "settings.contactInvalidUrl": {
+      "description": {
+        "en": "Validation error shown when a contact URL is not a valid http(s) link",
+        "zh": "联系方式链接无效时的校验错误提示"
+      }
+    },
+    "settings.contactInvalidPhone": {
+      "description": {
+        "en": "Validation error shown when the phone number is invalid",
+        "zh": "电话号码无效时的校验错误提示"
+      }
+    },
+    "settings.contactInvalidEmail": {
+      "description": {
+        "en": "Validation error shown when the email address is invalid",
+        "zh": "邮箱地址无效时的校验错误提示"
+      }
+    },
+    "settings.contactLabelPlaceholder": {
+      "message": {
+        "en": "Label (optional), e.g. Sales",
+        "zh": "备注（可选），如：售前"
+      }
+    },
+    "settings.contactValuePlaceholder": {
+      "message": {
+        "en": "Account / display text",
+        "zh": "账号 / 展示文本"
+      }
+    },
+    "settings.contactQrTip": {
+      "message": {
+        "en": "Upload a QR code users can scan to add you.",
+        "zh": "上传一张二维码，用户扫码即可添加你。"
+      }
+    },
+    "settings.contactEditorHint": {
+      "message": {
+        "en": "Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.",
+        "zh": "为每个渠道选择类型，并至少填写 值 / 链接 / 二维码 之一；可添加多条。"
+      }
+    },
+    "settings.contactInvalidType": {
+      "message": {
+        "en": "Type may only contain lowercase letters, digits, '-' and '_'",
+        "zh": "类型只能包含小写字母、数字、- 和 _"
+      }
+    },
+    "settings.contactRowNeedsValue": {
+      "message": {
+        "en": "Each contact needs at least a value, link or QR code",
+        "zh": "每条联系方式至少填写 值、链接 或 二维码 之一"
+      }
+    },
+    "settings.contactInvalidValue": {
+      "message": {
+        "en": "A contact field is invalid or too long",
+        "zh": "联系方式内容无效或过长"
+      }
+    },
+    "settings.contactTooMany": {
+      "message": {
+        "en": "You can add at most {max} contacts",
+        "zh": "最多可添加 {max} 条联系方式"
+      }
+    },
+    "title.apiCode": {
+      "message": {
+        "en": "API code for this request",
+        "zh": "本次请求对应的 API 代码"
+      },
+      "description": {
+        "en": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product",
+        "zh": "对话框标题：展示当前结果对应的 curl / Python / Node API 调用代码"
+      }
+    },
+    "message.viewCodeHint": {
+      "message": {
+        "en": "Show API code for this request",
+        "zh": "查看本次请求对应的 API 代码"
+      },
+      "description": {
+        "en": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API.",
+        "zh": "结果卡片操作按钮（U1/U2/下载/扩展…）旁边的 View Code 按钮的悬浮提示。点击按钮会弹出对话框，展示 curl / Python / Node 三种语言下与当前结果等价的 API 调用代码。"
+      }
+    },
+    "button.viewCode": {
+      "description": {
+        "en": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance",
+        "zh": "按钮文本：打开对话框，展示当前结果对应的 curl / Python / Node API 调用代码（类似 OpenAI Playground 的 View code）"
+      }
+    },
+    "button.getApiKey": {
+      "description": {
+        "en": "Link text in the API code dialog footer that opens the platform console page where users can create an API key",
+        "zh": "API 代码对话框底部的链接文本：点击后跳转到平台控制台用于创建 API Key 的页面"
+      }
+    },
+    "appUpgrade.title": {
+      "description": {
+        "en": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports.",
+        "zh": "原生 App 启动时的版本闸门弹窗标题。当客户端版本低于服务端要求时显示，告知用户需要升级 App。"
+      }
+    },
+    "appUpgrade.blockMessage": {
+      "message": {
+        "en": "This version is no longer supported. Please update from the app store to continue.",
+        "zh": "当前版本过低，请前往应用商店更新到最新版本后再使用。"
+      },
+      "description": {
+        "en": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store.",
+        "zh": "强制升级弹窗正文。当客户端版本低于 min_supported 时显示，无法关闭，唯一按钮跳转到应用商店。"
+      }
+    },
+    "appUpgrade.softMessage": {
+      "message": {
+        "en": "A newer version is available. Update from the app store for the best experience.",
+        "zh": "有新版本可用，建议前往应用商店更新以获得最佳体验。"
+      },
+      "description": {
+        "en": "Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app.",
+        "zh": "可选升级提示正文。当客户端版本低于 latest 但高于 min_supported 时显示，用户可以选择稍后再说继续使用。"
+      }
+    },
+    "appUpgrade.openStore": {
+      "description": {
+        "en": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser.",
+        "zh": "升级弹窗主按钮：在系统浏览器中打开 App Store / Play Store 链接。"
+      }
+    },
+    "appUpgrade.later": {
+      "description": {
+        "en": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades.",
+        "zh": "软提示升级弹窗的次按钮：忽略本次提示继续使用，仅在非强制升级场景出现。"
+      }
+    },
+    "nav.digitalhuman": {
+      "description": {
+        "en": "Text in the website navigation bar for the Digital Human talking-head page",
+        "zh": "导航栏中数字人口播页面的文字"
+      }
+    },
+    "settings.localToolsAndroidPermHint": {
+      "message": {
+        "en": "Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.",
+        "zh": "启用无障碍服务后，AI 助手才能查看并操作你的屏幕。你可以在下方逐项提前授权具体操作。"
+      },
+      "description": {
+        "en": "Hint for the Android Computer Use accessibility permission section in Settings.",
+        "zh": "Android 设置里 Computer Use 无障碍权限区块的说明。"
+      }
+    },
+    "settings.cuConsentTitle": {
+      "message": {
+        "en": "Allow action?",
+        "zh": "允许操作？"
+      },
+      "description": {
+        "en": "Title of the on-demand consent dialog shown when the assistant requests a screen action.",
+        "zh": "按需授权对话框的标题（模型请求执行某个屏幕操作时弹出）。"
+      }
+    },
+    "settings.cuConsentMessage": {
+      "message": {
+        "en": "The assistant wants to run \"{action}\" on your phone. Allow it?",
+        "zh": "AI 助手想在你的手机上执行「{action}」操作，是否允许？"
+      },
+      "description": {
+        "en": "Body of the on-demand consent dialog; {action} is the computer.* action name.",
+        "zh": "按需授权对话框正文；{action} 为具体的 computer.* 操作名。"
+      }
+    },
+    "settings.cuConsentAllow": {
+      "description": {
+        "en": "Allow button of the on-demand consent dialog.",
+        "zh": "按需授权对话框的允许按钮。"
+      }
+    },
+    "settings.cuConsentAlways": {
+      "description": {
+        "en": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again.",
+        "zh": "按需授权对话框的总是允许按钮；持久化授权，此操作以后不再询问。"
+      }
+    },
+    "settings.cuConsentDeny": {
+      "description": {
+        "en": "Deny button of the on-demand consent dialog.",
+        "zh": "按需授权对话框的拒绝按钮。"
+      }
+    },
+    "settings.memoryEnabled": {
+      "description": {
+        "en": "Title for the switch that controls whether chats use saved memory and learn new memory",
+        "zh": "控制助手是否在聊天中使用已保存的记忆并继续学习新记忆的开关标题"
+      }
+    },
+    "settings.memoryEnabledHint": {
+      "message": {
+        "en": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
+        "zh": "关闭后，助手不会读取已保存的记忆，也不会从新对话中保存记忆。已有内容不会被删除。"
+      },
+      "description": {
+        "en": "Behavior explanation shown below the memory switch",
+        "zh": "记忆开关下方的行为说明"
+      }
+    },
+    "nav.omni": {
+      "description": {
+        "en": "Nav label for the Omni video module",
+        "zh": "Omni 视频模块的导航标签"
+      }
+    },
+    "settings.memoryImport": {
+      "description": {
+        "en": "Button that opens the memory import dialog",
+        "zh": "打开记忆导入弹窗的按钮"
+      }
+    },
+    "settings.memoryImportTitle": {
+      "message": {
+        "en": "Import memory from another AI",
+        "zh": "从其他 AI 导入记忆"
+      },
+      "description": {
+        "en": "Title of the memory import dialog",
+        "zh": "记忆导入弹窗标题"
+      }
+    },
+    "settings.memoryImportExportStep": {
+      "message": {
+        "en": "1. Ask your current AI to export its memory",
+        "zh": "1. 让当前使用的 AI 导出记忆"
+      },
+      "description": {
+        "en": "First step heading in the memory import dialog",
+        "zh": "记忆导入弹窗第一步标题"
+      }
+    },
+    "settings.memoryImportPrompt": {
+      "message": {
+        "en": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
+        "zh": "我要迁移到另一个 AI 服务。请列出你保存的关于我的每一条记忆，以及从过往对话中学到的持久信息。把全部内容放在一个代码块中，每行只写一条记忆，格式为：[保存日期，如有] - 记忆内容。请包括回复偏好、个人信息、项目、目标、常用工具、语言、框架，以及我对你做过的纠正。尽量保留我的原话，不要包含密码、密钥等敏感信息。"
+      },
+      "description": {
+        "en": "Prompt users copy into another AI service to export memories",
+        "zh": "复制到其他 AI 服务中用于导出记忆的提示词"
+      }
+    },
+    "settings.memoryImportCopy": {
+      "description": {
+        "en": "Button that copies the memory export prompt",
+        "zh": "复制记忆导出提示词的按钮"
+      }
+    },
+    "settings.memoryImportCopied": {
+      "description": {
+        "en": "Toast shown after copying the memory export prompt",
+        "zh": "成功复制记忆导出提示词后的提示"
+      }
+    },
+    "settings.memoryImportPasteStep": {
+      "message": {
+        "en": "2. Paste the exported memory",
+        "zh": "2. 粘贴导出的记忆"
+      },
+      "description": {
+        "en": "Second step heading in the memory import dialog",
+        "zh": "记忆导入弹窗第二步标题"
+      }
+    },
+    "settings.memoryImportPlaceholder": {
+      "message": {
+        "en": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
+        "zh": "粘贴 ChatGPT、Claude、Gemini 或其他 AI 返回的记忆内容…"
+      },
+      "description": {
+        "en": "Placeholder for pasted memory export text",
+        "zh": "粘贴导出记忆内容的输入框占位文字"
+      }
+    },
+    "settings.memoryImportSubmit": {
+      "description": {
+        "en": "Button that submits pasted memories for import",
+        "zh": "提交粘贴内容进行导入的按钮"
+      }
+    },
+    "settings.memoryImportPartial": {
+      "message": {
+        "en": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
+        "zh": "已处理 {processed} 条内容，另有 {rejected} 条不安全或无效内容已跳过。"
+      },
+      "description": {
+        "en": "Warning shown after a partial memory import",
+        "zh": "部分记忆导入成功时显示的警告"
+      }
+    },
+    "settings.memoryImportInvalid": {
+      "message": {
+        "en": "No memory could be imported. Make sure memory is on and paste one plain fact per line.",
+        "zh": "未能导入记忆。请确认记忆已开启，并按每行一条普通事实的格式粘贴。"
+      },
+      "description": {
+        "en": "Actionable error shown when the memory import request is invalid",
+        "zh": "记忆导入请求无效时显示的可操作错误提示"
+      }
+    },
+    "settings.memoryImportInProgress": {
+      "message": {
+        "en": "A memory import is already running. Keep this dialog open and try again shortly.",
+        "zh": "已有记忆导入任务正在运行，请保持弹窗打开并稍后重试。"
+      },
+      "description": {
+        "en": "Warning shown when another memory import job is active",
+        "zh": "已有另一个记忆导入任务运行时显示的警告"
+      }
+    }
+  }
+}

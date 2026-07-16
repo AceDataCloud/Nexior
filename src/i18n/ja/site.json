@@ -41,7 +41,7 @@
   },
   "field.contacts": {
     "message": "サポート連絡先",
-    "description": "Field title for the customer-service contacts in site settings"
+    "description": "サイト設定のカスタマーサポート連絡先フィールドのタイトル"
   },
   "field.markupRatio": {
     "message": "サイト全体の一律上乗せ率",
@@ -57,11 +57,11 @@
   },
   "field.disableRecharge": {
     "message": "チャージを無効化",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+    "description": "サイト設定：オンにすると、このサイトのすべてのチャージ/チャージアップエントリを非表示にする"
   },
   "message.disableRechargeTip": {
     "message": "有効にすると、このサイトのすべてのチャージボタンが非表示になり、ユーザーは残高をチャージできなくなります。",
-    "description": "Help text for the disable-recharge toggle"
+    "description": "チャージ無効化トグルのヘルプテキスト"
   },
   "field.distributionDefaultInviterId": {
     "message": "デフォルト招待者ID",
@@ -97,7 +97,7 @@
   },
   "field.authProvider_apple": {
     "message": "Apple",
-    "description": "Login provider display name: Sign in with Apple."
+    "description": "ログインプロバイダー表示名：Appleでサインイン"
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
@@ -105,99 +105,99 @@
   },
   "field.authSmsWebhook": {
     "message": "カスタムSMS送信者",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "description": "サイト設定/ログイン：カスタムSMS確認コード配信Webhookのタイトル"
   },
   "message.authSmsWebhookTip": {
     "message": "有効にすると、このサイトの電話番号確認コードは独自のエンドポイントを通じて送信されます。",
-    "description": "Explains the custom SMS sender webhook"
+    "description": "カスタムSMS送信者Webhookの説明"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "description": "SMS Webhook URL入力のプレースホルダー"
   },
   "placeholder.authSmsWebhookSecret": {
     "message": "署名シークレット（未変更の場合は空白のまま）",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "description": "SMS Webhook署名シークレット入力のプレースホルダー（書き込み専用、空白で既存を保持）"
   },
   "field.authSmsWebhookEnable": {
     "message": "カスタム送信者を使用",
-    "description": "Label next to the custom SMS sender toggle"
+    "description": "カスタムSMS送信者トグルの横のラベル"
   },
   "field.authSmsWebhookDoc": {
     "message": "ドキュメントを見る",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "description": "SMS Webhook仕様ダイアログを開くリンク"
   },
   "field.authSmsWebhookTest": {
     "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "description": "SMS Webhookテストダイアログを開くボタン"
   },
   "message.authSmsWebhookNeedsPhone": {
     "message": "カスタムSMS送信者を設定するには、まず電話番号ログインプロバイダーを有効にしてください。",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "description": "電話番号ログインがオフのためトグルが無効な場合に表示されるツールチップ"
   },
   "field.authSmsWebhookDocTitle": {
     "message": "カスタムSMS送信者・Webhook仕様",
-    "description": "Title of the SMS webhook spec dialog"
+    "description": "SMS Webhook仕様ダイアログのタイトル"
   },
   "message.authSmsWebhookDocIntro": {
     "message": "このサイトは指定されたURLに署名済みのHTTPS POSTを送信します。あなたのサービスがSMSの送信を担当します。",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "description": "SMS Webhook仕様ダイアログのイントロ段落"
   },
   "field.authSmsWebhookDocRequest": {
     "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "description": "SMS Webhook仕様のリクエストセクションの見出し"
   },
   "message.authSmsWebhookDocRequest": {
     "message": "メソッドPOST、Content-Type: application/json。purposeはlogin/register/resetのいずれかです。",
-    "description": "Describes the request method and body of the SMS webhook"
+    "description": "SMS Webhookのリクエストメソッドとボディを説明する"
   },
   "field.authSmsWebhookDocHeaders": {
     "message": "署名検証",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "description": "SMS Webhook仕様の署名セクションの見出し"
   },
   "message.authSmsWebhookDocHeaders": {
     "message": "各リクエストには以下のヘッダーが含まれています。署名シークレットを使用してHMAC-SHA256で検証してください。",
-    "description": "Describes signature verification for the SMS webhook"
+    "description": "SMS Webhookの署名検証を説明する"
   },
   "field.authSmsWebhookDocResponse": {
     "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "description": "SMS Webhook仕様のレスポンスセクションの見出し"
   },
   "message.authSmsWebhookDocResponse": {
     "message": "成功時は2xxを返してください。失敗を明示するには、HTTP 200とJSONレスポンスを返してください。",
-    "description": "Describes the expected response of the SMS webhook"
+    "description": "SMS Webhookの期待されるレスポンスを説明する"
   },
   "field.authSmsWebhookTestTitle": {
     "message": "カスタムSMS送信者のテスト",
-    "description": "Title of the SMS webhook test dialog"
+    "description": "SMS Webhookテストダイアログのタイトル"
   },
   "field.authSmsWebhookTestRegion": {
     "message": "国/地域コード",
-    "description": "Label for the region-code field in the test dialog"
+    "description": "テストダイアログの地域コードフィールドのラベル"
   },
   "field.authSmsWebhookTestNumber": {
     "message": "テスト用電話番号（任意）",
-    "description": "Label for the phone-number field in the test dialog"
+    "description": "テストダイアログの電話番号フィールドのラベル"
   },
   "field.authSmsWebhookTestSend": {
     "message": "テスト送信",
-    "description": "Button that sends the SMS webhook test request"
+    "description": "SMS Webhookテストリクエストを送信するボタン"
   },
   "message.authSmsWebhookTestOk": {
     "message": "テストリクエストがエンドポイントに正常に送信されました。",
-    "description": "Success message after a webhook test"
+    "description": "Webhookテスト成功後のメッセージ"
   },
   "message.authSmsWebhookTestFailed": {
     "message": "テスト失敗。URL、署名シークレット、エンドポイントのレスポンスを確認してください。",
-    "description": "Failure message after a webhook test"
+    "description": "Webhookテスト失敗後のメッセージ"
   },
   "field.authSmsWebhookDisableTitle": {
     "message": "カスタムSMS送信者を無効化",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "description": "カスタムSMS送信者を無効化する確認ダイアログのタイトル"
   },
   "message.authSmsWebhookDisableConfirm": {
     "message": "無効化すると、保存された送信者URLと署名シークレットが削除されます（シークレットは再取得できません）。",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "description": "カスタムSMS送信者を無効化する確認ダイアログの本文"
   },
   "field.featuresChat": {
     "message": "チャット",
@@ -225,7 +225,7 @@
   },
   "field.featuresDigitalhuman": {
     "message": "デジタルヒューマン",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスのタイトルとして表示される"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -313,11 +313,11 @@
   },
   "field.featuresCodingBridge": {
     "message": "Coding Bridge",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスのタイトルとして表示される"
   },
   "field.featuresWebextrator": {
     "message": "WebExtrator",
-    "description": "Displayed as the title in the editing box"
+    "description": "編集ボックスのタイトルとして表示される"
   },
   "field.featuresSupport": {
     "message": "カスタマーサポート",
@@ -341,7 +341,7 @@
   },
   "title.editContacts": {
     "message": "サポート連絡先を編集",
-    "description": "Title of the edit-support-contacts dialog"
+    "description": "サポート連絡先編集ダイアログのタイトル"
   },
   "title.featuresConfig": {
     "message": "機能設定",
@@ -553,11 +553,11 @@
   },
   "message.contactsTip": {
     "message": "カスタマーサポートの連絡先（Discord、X、WeChat、電話、メール）を入力してください。「概要」ページに表示され、ユーザーが連絡できます。",
-    "description": "Tip for the support-contacts field"
+    "description": "サポート連絡先フィールドのヒント"
   },
   "message.contactsEmpty": {
     "message": "未設定",
-    "description": "Placeholder shown when no support contact has been filled in"
+    "description": "サポート連絡先が入力されていない場合のプレースホルダー"
   },
   "message.keywordsTip": {
     "message": "サイトのキーワード。サイトのメタ情報にあり、サイトのSEO最適化に使用されます。",
@@ -733,55 +733,55 @@
   },
   "message.userNotFound": {
     "message": "ユーザーが見つかりません",
-    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+    "description": "ピッカープレビューでユーザー検索エンドポイントが404を返した場合に表示される"
   },
   "message.editUserHint": {
     "message": "ユーザー UUID を貼り付けるか、メール、電話番号、ユーザー名で検索してください。",
-    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+    "description": "招待者/管理者ユーザーピッカーダイアログの検索入力下のヒント"
   },
   "message.editUsersEmpty": {
     "message": "まだ管理者がいません",
-    "description": "Empty-state text shown when the admins list has no users."
+    "description": "管理者リストにユーザーがいない場合の空の状態テキスト"
   },
   "message.userAlreadyAdded": {
     "message": "追加済み",
-    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+    "description": "解決されたユーザーがすでに管理者リストにいる場合の「追加」ボタンの無効状態ラベル"
   },
   "title.addUser": {
     "message": "ユーザーを追加",
-    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+    "description": "管理者ピッカーの既存管理者リストと検索入力の間のディバイダータイトル"
   },
   "button.addUser": {
     "message": "追加",
-    "description": "Button label to add the resolved user to the admins list."
+    "description": "解決されたユーザーを管理者リストに追加するボタンラベル"
   },
   "autoTranslate.tooltipOn": {
     "message": "自動翻訳オン — コンテンツは訪問者の言語で表示されます",
-    "description": "Tooltip on the auto-translate toggle when it is ON"
+    "description": "自動翻訳トグルがオンの場合のツールチップ"
   },
   "autoTranslate.tooltipOff": {
     "message": "リテラル保存 — クリックして自動翻訳を有効化",
-    "description": "Tooltip on the auto-translate toggle when it is OFF"
+    "description": "自動翻訳トグルがオフの場合のツールチップ"
   },
   "autoTranslate.tooltipDisabledNotSaved": {
     "message": "自動翻訳を有効にする前に行を保存してください",
-    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+    "description": "行にIDがまだない場合（作成ダイアログ状態）にトグルが無効な場合のツールチップ"
   },
   "autoTranslate.confirmEnable": {
     "message": "このコンテンツは約 1 時間以内に 17 言語に翻訳されます。続行しますか？",
-    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+    "description": "自動翻訳を有効にする前に表示される確認ダイアログの本文"
   },
   "autoTranslate.confirmDisable": {
     "message": "無効にすると 18 言語のすべての翻訳が削除され、現在の値のみが保持されます。続行しますか？",
-    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+    "description": "自動翻訳を無効にする前に表示される確認ダイアログの本文"
   },
   "autoTranslate.empty": {
     "message": "自動翻訳を有効にする前にコンテンツを入力してください",
-    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+    "description": "空のフィールドで自動翻訳を有効にしようとした場合の警告"
   },
   "autoTranslate.error": {
     "message": "自動翻訳の切り替えに失敗しました。再試行してください",
-    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+    "description": "有効化/無効化のHTTP呼び出しが詳細なしで失敗した場合のフォールバックエラートースト"
   },
   "services.title": {
     "message": "サービス別カスタム上乗せ率と表示"
@@ -892,82 +892,82 @@
   },
   "capabilityOverride.edit": {
     "message": "アプリをカスタマイズ",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "description": "機能アプリ名とアイコンを編集するためのツールチップとアクセシブルラベル"
   },
   "capabilityOverride.dialogTitle": {
     "message": "「{name}」をカスタマイズ",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "description": "ダイアログタイトル。{name}はプラットフォームのデフォルト機能アプリ名"
   },
   "capabilityOverride.displayName": {
     "message": "カスタム名",
-    "description": "Field label for a per-site capability app display name"
+    "description": "サイトごとの機能アプリ表示名のフィールドラベル"
   },
   "capabilityOverride.displayNameTip": {
     "message": "空白のままにすると{name}が使用されます。自動翻訳を有効にする前に一度保存してください。",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "description": "ヘルプテキスト。{name}はプラットフォームのデフォルト機能アプリ名"
   },
   "capabilityOverride.icon": {
     "message": "カスタムアイコン",
-    "description": "Field label for a per-site capability app icon"
+    "description": "サイトごとの機能アプリアイコンのフィールドラベル"
   },
   "capabilityOverride.defaultIcon": {
     "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "description": "プラットフォームデフォルト機能アイコンプレビューの上のラベル"
   },
   "capabilityOverride.currentIcon": {
     "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "description": "有効な機能アイコンプレビューの上のラベル"
   },
   "capabilityOverride.replaceIcon": {
     "message": "アイコンを置き換え",
-    "description": "Command to upload a replacement capability icon"
+    "description": "機能アイコンの置き換えをアップロードするコマンド"
   },
   "capabilityOverride.uploadIcon": {
     "message": "アイコンをアップロード",
-    "description": "Command to upload the first custom capability icon"
+    "description": "最初のカスタム機能アイコンをアップロードするコマンド"
   },
   "capabilityOverride.useDefaultIcon": {
     "message": "デフォルトアイコンを使用",
-    "description": "Command to clear the custom icon draft"
+    "description": "カスタムアイコンの下書きをクリアするコマンド"
   },
   "capabilityOverride.iconTip": {
     "message": "PNG、JPEG、またはWebP。画像は正方形にトリミングされます；透明なPNGは保持されます。",
-    "description": "Capability icon upload requirements"
+    "description": "機能アイコンアップロード要件"
   },
   "capabilityOverride.editIcon": {
     "message": "アプリアイコンを編集",
-    "description": "Title of the capability icon cropper dialog"
+    "description": "機能アイコンクロッパーダイアログのタイトル"
   },
   "capabilityOverride.resetAll": {
     "message": "デフォルトに戻す",
-    "description": "Command that removes both custom name and icon"
+    "description": "カスタム名とアイコンの両方を削除するコマンド"
   },
   "capabilityOverride.empty": {
     "message": "カスタム名を入力するかアイコンをアップロードしてください。",
-    "description": "Warning when attempting to create an empty override"
+    "description": "空のオーバーライドを作成しようとした場合の警告"
   },
   "capabilityOverride.saved": {
     "message": "アプリのカスタマイズを保存しました",
-    "description": "Success message after saving a capability override"
+    "description": "機能オーバーライドを保存した後の成功メッセージ"
   },
   "capabilityOverride.savedEnableTranslation": {
     "message": "保存しました。カスタム名の自動翻訳を有効にできるようになりました。",
-    "description": "Success message after first save creates an override ID"
+    "description": "最初の保存でオーバーライドIDが作成された後の成功メッセージ"
   },
   "capabilityOverride.saveFailed": {
     "message": "アプリのカスタマイズの保存に失敗しました",
-    "description": "Fallback error for capability override writes"
+    "description": "機能オーバーライドの書き込みのフォールバックエラー"
   },
   "capabilityOverride.resetConfirm": {
     "message": "「{name}」のデフォルト名とアイコンに戻しますか？",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "description": "確認メッセージ。{name}はプラットフォームのデフォルト機能アプリ名"
   },
   "capabilityOverride.resetDone": {
     "message": "デフォルト名とアイコンが復元されました",
-    "description": "Success message after deleting a capability override"
+    "description": "機能オーバーライドを削除した後の成功メッセージ"
   },
   "capabilityOverride.fetchFailed": {
     "message": "アプリのカスタマイズの読み込みに失敗しました",
-    "description": "Error shown when capability override management rows cannot be loaded"
+    "description": "機能オーバーライド管理行の読み込みに失敗した場合のエラー"
   }
 }

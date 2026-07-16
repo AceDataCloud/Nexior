@@ -273,59 +273,59 @@
   },
   "session.providerClaude": {
     "message": "Claude Code",
-    "description": "Backend option: Claude Code"
+    "description": "バックエンドオプション：Claude Code"
   },
   "session.providerCodex": {
     "message": "Codex",
-    "description": "Backend option: Codex"
+    "description": "バックエンドオプション：Codex"
   },
   "session.providerUnavailable": {
     "message": "（未インストール）",
-    "description": "Suffix shown next to a backend whose CLI is not installed on the node"
+    "description": "CLIがノードにインストールされていないバックエンドの横に表示されるサフィックス"
   },
   "session.providerUnavailableHint": {
     "message": "{name} はこのデバイスにインストールされていません。",
-    "description": "Composer hint shown when the selected backend is not installed on the node"
+    "description": "選択したバックエンドがノードにインストールされていない場合に表示されるコンポーザーヒント"
   },
   "session.effortLabel": {
     "message": "推論の強度",
-    "description": "Reasoning-effort selector label"
+    "description": "推論努力度セレクターラベル"
   },
   "session.effortDefault": {
     "message": "デフォルト",
-    "description": "Reasoning effort: backend default"
+    "description": "推論努力度：バックエンドのデフォルト"
   },
   "session.effortLow": {
     "message": "低",
-    "description": "Reasoning effort: low"
+    "description": "推論努力度：低"
   },
   "session.effortMedium": {
     "message": "中",
-    "description": "Reasoning effort: medium"
+    "description": "推論努力度：中"
   },
   "session.effortHigh": {
     "message": "高",
-    "description": "Reasoning effort: high"
+    "description": "推論努力度：高"
   },
   "session.effortMax": {
     "message": "最大",
-    "description": "Reasoning effort: maximum (Claude only)"
+    "description": "推論努力度：最大（Claudeのみ）"
   },
   "directory.title": {
     "message": "作業ディレクトリを選択",
-    "description": "Working-directory picker dialog title"
+    "description": "作業ディレクトリ選択ダイアログのタイトル"
   },
   "directory.choose": {
     "message": "このディレクトリを使用",
-    "description": "Button: select the current directory"
+    "description": "ボタン：現在のディレクトリを選択"
   },
   "directory.up": {
     "message": "親ディレクトリ",
-    "description": "Button: go to the parent directory"
+    "description": "ボタン：親ディレクトリに移動"
   },
   "directory.refresh": {
     "message": "更新",
-    "description": "Button: reload the current directory"
+    "description": "ボタン：現在のディレクトリを再読み込み"
   },
   "directory.pathPlaceholder": {
     "message": "パスを入力（例: D:\\）してエンター",
@@ -337,114 +337,114 @@
   },
   "directory.loading": {
     "message": "読み込み中…",
-    "description": "Directory listing loading hint"
+    "description": "ディレクトリ一覧読み込み中のヒント"
   },
   "directory.empty": {
     "message": "このディレクトリは空です。",
-    "description": "Empty directory hint"
+    "description": "空のディレクトリのヒント"
   },
   "directory.truncated": {
     "message": "最初の 1000 件を表示しています。",
-    "description": "Hint shown when the listing was truncated"
+    "description": "一覧が切り詰められた場合に表示されるヒント"
   },
   "session.attachImage": {
     "message": "画像を添付",
-    "description": "Attach image button title"
+    "description": "画像添付ボタンのタイトル"
   },
   "session.removeImage": {
     "message": "画像を削除",
-    "description": "Remove attached image button title"
+    "description": "添付画像削除ボタンのタイトル"
   },
   "session.imageAlt": {
     "message": "添付された画像",
-    "description": "Attached image thumbnail alt text"
+    "description": "添付画像サムネイルの代替テキスト"
   },
   "session.imageTooLarge": {
     "message": "画像が大きすぎます。1 枚あたり 12 MB 以内にしてください。",
-    "description": "Warning shown when an image exceeds the size limit"
+    "description": "画像がサイズ制限を超えた場合の警告"
   },
   "session.imageLimit": {
     "message": "画像は最大 {count} 枚まで添付できます。",
-    "description": "Warning shown when exceeding the max number of images"
+    "description": "添付画像の最大数を超えた場合の警告"
   },
   "session.modelDefault": {
     "message": "デフォルトモデル",
-    "description": "Default model"
+    "description": "デフォルトモデル"
   },
   "session.cwdDefault": {
     "message": "デフォルトディレクトリ",
-    "description": "Default directory"
+    "description": "デフォルトディレクトリ"
   },
   "session.settings": {
     "message": "セッション設定",
-    "description": "Session settings"
+    "description": "セッション設定"
   },
   "session.settingsLocked": {
     "message": "このセッションの設定はロックされています",
-    "description": "Settings are locked for this session"
+    "description": "このセッションの設定はロックされています"
   },
   "session.attachFile": {
     "message": "ファイルを添付",
-    "description": "Attach file"
+    "description": "ファイルを添付"
   },
   "session.attachmentImageAlt": {
     "message": "添付画像",
-    "description": "Attached image"
+    "description": "添付画像"
   },
   "session.removeAttachment": {
     "message": "添付ファイルを削除",
-    "description": "Remove attachment"
+    "description": "添付ファイルを削除"
   },
   "session.uploadingAttachment": {
     "message": "添付ファイルをアップロード中…",
-    "description": "Uploading attachments…"
+    "description": "添付ファイルをアップロード中…"
   },
   "session.attachmentTooLarge": {
     "message": "ファイルが大きすぎます。各ファイルは50MB以下にしてください。",
-    "description": "File is too large; keep each under 50 MB."
+    "description": "ファイルが大きすぎます（各50MB以下にしてください）"
   },
   "session.attachmentLimit": {
     "message": "{count}個まで添付できます。",
-    "description": "You can attach up to {count} files."
+    "description": "{count}個まで添付できます"
   },
   "session.attachmentUploadError": {
     "message": "添付ファイルのアップロードに失敗しました。",
-    "description": "Failed to upload attachment."
+    "description": "添付ファイルのアップロードに失敗しました"
   },
   "notice.slashUnavailable": {
     "message": "/{command} は対話型コマンドのため、リモートセッションでは実行できません。",
-    "description": "Notice shown when a slash command can't run in a remote session"
+    "description": "スラッシュコマンドがリモートセッションで実行できない場合の通知"
   },
   "notice.slashCodexUnsupported": {
     "message": "/{command} はリモートセッションの Codex では利用できません。",
-    "description": "Notice shown when a Codex slash command isn't supported remotely"
+    "description": "Codexスラッシュコマンドがリモートでサポートされていない場合の通知"
   },
   "notify.enable": {
     "message": "通知を有効にする",
-    "description": "Tooltip on the notification bell when notifications are off"
+    "description": "通知がオフのときの通知ベルのツールチップ"
   },
   "notify.disable": {
     "message": "通知を無効にする",
-    "description": "Tooltip on the notification bell when notifications are on"
+    "description": "通知がオンのときの通知ベルのツールチップ"
   },
   "notify.enabled": {
     "message": "通知を有効にしました。セッションで承認が必要なときにお知らせします。",
-    "description": "Toast after enabling notifications"
+    "description": "通知を有効にした後のトースト"
   },
   "notify.disabled": {
     "message": "通知を無効にしました。",
-    "description": "Toast after disabling notifications"
+    "description": "通知を無効にした後のトースト"
   },
   "notify.denied": {
     "message": "通知がブロックされています。承認通知を受け取るにはブラウザの設定で許可してください。",
-    "description": "Toast when notification permission is denied"
+    "description": "通知権限が拒否された場合のトースト"
   },
   "notify.unsupported": {
     "message": "このデバイスでは通知がサポートされていません。",
-    "description": "Toast when notifications are unsupported"
+    "description": "通知がサポートされていない場合のトースト"
   },
   "notify.failed": {
     "message": "通知設定を更新できませんでした。",
-    "description": "Toast when enabling or disabling notifications errors"
+    "description": "通知の有効化または無効化でエラーが発生した場合のトースト"
   }
 }

@@ -57,7 +57,7 @@
   },
   "description.motionModel": {
     "message": "Kling 3.0 は高画質ですが秒単価も高く、Kling 2.6 はコストパフォーマンスに優れます。",
-    "description": "motion model version description"
+    "description": "モーションモデルのバージョン説明"
   },
   "description.keepOriginalSound": {
     "message": "オンにすると参照動画の元音声を保持します。オフにすると出力動画には元の音声が含まれません。",
@@ -77,7 +77,7 @@
   },
   "message.motionPricingNote": {
     "message": "生成された動画の秒数で課金され、最終金額は参照動画の長さに応じて変動します。",
-    "description": "Explains that Motion Control is billed per second"
+    "description": "モーションコントロールが1秒単位で課金されることを説明"
   },
   "inspiration.title": {
     "message": "インスピレーションとプリセット",
@@ -425,7 +425,7 @@
   },
   "name.motionModel": {
     "message": "モデルバージョン",
-    "description": "The Kling model version used for motion control"
+    "description": "モーションコントロールに使用するKlingモデルのバージョン"
   },
   "name.perSecond": {
     "message": "秒",
@@ -721,82 +721,82 @@
   },
   "tab.talkingPhoto": {
     "message": "トーキングフォト",
-    "description": "Tab label: Talking Photo"
+    "description": "タブラベル：トーキングフォト"
   },
   "name.talkingPhotoImage": {
     "message": "人物写真",
-    "description": "Talking Photo portrait image input"
+    "description": "トーキングフォトの肖像画像入力"
   },
   "name.talkingPhotoAudio": {
     "message": "駆動オーディオ",
-    "description": "Talking Photo driving audio input"
+    "description": "トーキングフォトの駆動音声入力"
   },
   "name.talkingPhotoPrompt": {
     "message": "モーションプロンプト（任意）",
-    "description": "Talking Photo optional motion prompt"
+    "description": "トーキングフォトのオプションのモーションプロンプト"
   },
   "description.talkingPhotoImage": {
     "message": "鮮明な正面の人物写真をアップロードしてください。自動で動き出し、話し始めます。",
-    "description": "Talking Photo portrait image help text"
+    "description": "トーキングフォトの肖像画像のヘルプテキスト"
   },
   "description.talkingPhotoAudio": {
     "message": "音声クリップ（mp3/wav、5MB以下）をアップロードしてください。人物が音声に合わせて口を動かします。",
-    "description": "Talking Photo driving audio help text"
+    "description": "トーキングフォトの駆動音声のヘルプテキスト"
   },
   "description.talkingPhotoPrompt": {
     "message": "任意：希望する表情・動作を記述します。例「カメラを優しく見つめる」。",
-    "description": "Talking Photo motion prompt help text"
+    "description": "トーキングフォトのモーションプロンプトのヘルプテキスト"
   },
   "placeholder.talkingPhotoPrompt": {
     "message": "例：穏やか、落ち着いた、自然、わずかな頭の動き",
-    "description": "Talking Photo prompt input placeholder"
+    "description": "トーキングフォトのプロンプト入力プレースホルダー"
   },
   "button.generateTalkingPhoto": {
     "message": "トーキングフォトを生成",
-    "description": "Talking Photo generate button"
+    "description": "トーキングフォトの生成ボタン"
   },
   "button.uploadAudio": {
     "message": "音声をアップロード",
-    "description": "Talking Photo upload audio button"
+    "description": "トーキングフォトの音声アップロードボタン"
   },
   "message.talkingPhotoMissingInputs": {
     "message": "先に人物写真と駆動オーディオをアップロードしてください。",
-    "description": "Talking Photo missing inputs warning"
+    "description": "トーキングフォトの入力が不足している場合の警告"
   },
   "message.uploadAudioExceed": {
     "message": "音声ファイルは1つだけアップロードできます。",
-    "description": "Talking Photo audio count limit warning"
+    "description": "トーキングフォトの音声数上限警告"
   },
   "message.uploadAudioError": {
     "message": "音声のアップロードに失敗しました。もう一度お試しください。",
-    "description": "Talking Photo audio upload error"
+    "description": "トーキングフォトの音声アップロードエラー"
   },
   "name.referenceVideo": {
     "message": "参考動画",
-    "description": "Form field label: reference/editable video for Omni video editing"
+    "description": "フォームフィールドラベル：Omni動画編集用の参考/編集動画"
   },
   "description.referenceVideo": {
     "message": "kling-video-o1専用。MP4/MOV（720〜2160px、3〜10秒、200MB以下）を1本アップロードして動画を編集または参照できます。",
-    "description": "Help text for the reference video uploader"
+    "description": "参考動画アップローダーのヘルプテキスト"
   },
   "button.uploadReferenceVideo": {
     "message": "動画をアップロード",
-    "description": "Button to upload the reference video"
+    "description": "参考動画をアップロードするボタン"
   },
   "message.referenceVideoExceed": {
     "message": "参考動画は最大1本までアップロードできます。",
-    "description": "Error when more than one reference video is uploaded"
+    "description": "参考動画が1本を超えた場合のエラー"
   },
   "message.referenceVideoError": {
     "message": "参考動画のアップロードに失敗しました。後でもう一度お試しください。",
-    "description": "Error when the reference video upload fails"
+    "description": "参考動画のアップロードが失敗した場合のエラー"
   },
   "message.referenceVideoTypeFailed": {
     "message": "アップロードするファイルはMP4またはMOV形式でなければなりません！",
-    "description": "Error when the reference video is not MP4/MOV"
+    "description": "参考動画がMP4/MOVでない場合のエラー"
   },
   "message.referenceVideoSizeExceed": {
     "message": "アップロードするファイルのサイズは200MB以下でなければなりません！",
-    "description": "Error when the reference video exceeds 200MB"
+    "description": "参考動画が200MBを超えた場合のエラー"
   }
 }

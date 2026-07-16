@@ -41,7 +41,7 @@
   },
   "field.contacts": {
     "message": "고객지원 연락처",
-    "description": "Field title for the customer-service contacts in site settings"
+    "description": "사이트 설정의 고객지원 연락처 필드 제목"
   },
   "field.markupRatio": {
     "message": "사이트 전체 공통 가산율",
@@ -57,11 +57,11 @@
   },
   "field.disableRecharge": {
     "message": "충전 비활성화",
-    "description": "Site settings: when on, hide all recharge/top-up entries on this site"
+    "description": "사이트 설정: 활성화 시 이 사이트의 모든 충전 항목 숨김"
   },
   "message.disableRechargeTip": {
     "message": "활성화하면 이 사이트의 모든 충전 버튼이 숨겨지고 사용자가 잔액을 충전할 수 없습니다.",
-    "description": "Help text for the disable-recharge toggle"
+    "description": "충전 비활성화 토글 도움말"
   },
   "field.distributionDefaultInviterId": {
     "message": "기본 초대자 ID",
@@ -97,107 +97,107 @@
   },
   "field.authProvider_apple": {
     "message": "Apple",
-    "description": "Login provider display name: Sign in with Apple."
+    "description": "로그인 방식 이름: Apple로 로그인"
   },
   "field.authProvider_wechat": {
     "message": "WeChat",
     "description": "로그인 방식 이름: WeChat 제3자 로그인"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "맞춤 SMS 발신자",
+    "description": "사이트 설정 / 로그인: 사이트 자체 맞춤 SMS 발신자 설정 제목"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "활성화하면 이 사이트의 전화 인증 코드가 귀하의 서명 아래 귀하의 엔드포인트를 통해 발송됩니다. 플랫폼 기본값을 사용하려면 비활성화하세요. 휴대폰 번호 로그인 방식이 활성화되어야 합니다.",
+    "description": "맞춤 SMS 발신자 웹훅 설명"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://your-domain/sms-webhook",
     "description": "Placeholder for the SMS webhook URL input"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "서명 비밀키 (변경하지 않으려면 빈칸)",
+    "description": "SMS 웹훅 서명 비밀키 입력 자리 표시자"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "맞춤 발신자 사용",
+    "description": "맞춤 SMS 발신자 토글 옆 레이블"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "문서 보기",
+    "description": "SMS 웹훅 사양 대화를 여는 링크"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "테스트",
+    "description": "SMS 웹훅 테스트 대화를 여는 버튼"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "맞춤 SMS 발신자를 구성하려면 먼저 휴대폰 번호 로그인 방식을 활성화하세요.",
+    "description": "휴대폰 로그인이 비활성화되어 토글이 비활성화될 때 표시되는 툴팁"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "맞춤 SMS 발신자 · 웹훅 사양",
+    "description": "SMS 웹훅 사양 대화 제목"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "이 사이트는 귀하가 제공한 URL로 서명된 HTTPS POST를 발송합니다. SMS 전달은 귀하의 서비스가 담당합니다. 귀하의 엔드포인트는 다음 요구사항을 충족해야 합니다:",
+    "description": "SMS 웹훅 사양 대화 소개 문단"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "요청",
+    "description": "SMS 웹훅 사양의 요청 섹션 제목"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "메서드 POST, Content-Type application/json. purpose는 login / register / test 중 하나입니다 (test는 연결 프로브로, 실제 발송은 건너뛸 수 있습니다). 요청 본문 형식:",
+    "description": "SMS 웹훅의 요청 메서드 및 본문 설명"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "서명 확인",
+    "description": "SMS 웹훅 사양의 서명 섹션 제목"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "각 요청에는 아래 헤더가 포함됩니다. Standard Webhooks 사양에 따라 HMAC-SHA256을 사용하여 서명 비밀키로 확인하고 상수 시간 비교를 하세요:",
+    "description": "SMS 웹훅 서명 확인 설명"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "응답",
+    "description": "SMS 웹훅 사양의 응답 섹션 제목"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "성공 시 2xx를 반환하세요. 실패를 명시적으로 알리려면 success 필드가 false인 JSON 본문과 함께 HTTP 200을 반환하세요 (아래 예시 참조). 5초 이내에 응답하세요.",
+    "description": "SMS 웹훅 예상 응답 설명"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "맞춤 SMS 발신자 테스트",
+    "description": "SMS 웹훅 테스트 대화 제목"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "국가/지역 코드",
+    "description": "테스트 대화의 지역 코드 필드 레이블"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "테스트 전화번호 (선택 사항)",
+    "description": "테스트 대화의 전화번호 필드 레이블"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "테스트 발송",
+    "description": "SMS 웹훅 테스트 요청을 보내는 버튼"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "테스트 요청이 엔드포인트에 성공적으로 전달되었습니다.",
+    "description": "웹훅 테스트 성공 메시지"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "테스트 실패. URL, 서명 비밀키, 엔드포인트 응답을 확인하세요.",
+    "description": "웹훅 테스트 실패 메시지"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "맞춤 SMS 발신자 비활성화",
+    "description": "맞춤 SMS 발신자 비활성화 시 표시되는 확인 대화 제목"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "비활성화하면 저장된 발신자 URL과 서명 비밀키가 삭제되며(비밀키는 복구할 수 없음), 이 사이트는 플랫폼 기본 서명으로 돌아갑니다. 비활성화하시겠습니까?",
+    "description": "맞춤 SMS 발신자 비활성화 확인 대화 본문"
   },
   "field.featuresChat": {
     "message": "채팅",
@@ -225,7 +225,7 @@
   },
   "field.featuresDigitalhuman": {
     "message": "Digital Human",
-    "description": "Displayed as the title in the editing box"
+    "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresDeepseek": {
     "message": "Deepseek",
@@ -313,11 +313,11 @@
   },
   "field.featuresCodingBridge": {
     "message": "Coding Bridge",
-    "description": "Displayed as the title in the editing box"
+    "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresWebextrator": {
     "message": "WebExtrator",
-    "description": "Displayed as the title in the editing box"
+    "description": "편집 상자에 표시되는 제목"
   },
   "field.featuresSupport": {
     "message": "고객 지원",
@@ -341,7 +341,7 @@
   },
   "title.editContacts": {
     "message": "고객지원 연락처 편집",
-    "description": "Title of the edit-support-contacts dialog"
+    "description": "고객지원 연락처 편집 대화 제목"
   },
   "title.featuresConfig": {
     "message": "기능 설정",
@@ -553,11 +553,11 @@
   },
   "message.contactsTip": {
     "message": "고객지원 연락처(Discord, X, 위챗, 전화, 이메일)를 입력하세요. 정보 페이지에 표시되어 사용자가 연락할 수 있습니다.",
-    "description": "Tip for the support-contacts field"
+    "description": "고객지원 연락처 필드 도움말"
   },
   "message.contactsEmpty": {
     "message": "설정 안 됨",
-    "description": "Placeholder shown when no support contact has been filled in"
+    "description": "고객지원 연락처가 없을 때 표시되는 자리 표시자"
   },
   "message.keywordsTip": {
     "message": "사이트 키워드, 사이트 메타 정보에 위치하며, 사이트 SEO 최적화에 사용됩니다.",
@@ -733,55 +733,55 @@
   },
   "message.userNotFound": {
     "message": "사용자를 찾을 수 없습니다",
-    "description": "Shown when the user lookup endpoint returns 404 in the picker preview."
+    "description": "사용자 조회 엔드포인트가 404를 반환할 때 표시됨"
   },
   "message.editUserHint": {
     "message": "사용자 UUID를 붙여넣거나 이메일, 휴대전화 번호, 사용자 이름으로 검색하세요.",
-    "description": "Tip below the lookup input in the inviter / admin user picker dialog."
+    "description": "초대자 / 관리자 사용자 선택기의 조회 입력 아래 팁"
   },
   "message.editUsersEmpty": {
     "message": "아직 관리자가 없습니다",
-    "description": "Empty-state text shown when the admins list has no users."
+    "description": "관리자 목록이 비어 있을 때 표시되는 빈 상태 텍스트"
   },
   "message.userAlreadyAdded": {
     "message": "이미 추가됨",
-    "description": "Disabled-state label on the Add button when the resolved user is already in the admin list."
+    "description": "이미 추가된 사용자의 추가 버튼 비활성 상태 레이블"
   },
   "title.addUser": {
     "message": "사용자 추가",
-    "description": "Divider title in the admins picker, between the existing-admins list and the lookup input."
+    "description": "관리자 선택기에서 기존 관리자와 추가 섹션 사이의 구분 제목"
   },
   "button.addUser": {
     "message": "추가",
-    "description": "Button label to add the resolved user to the admins list."
+    "description": "관리자 목록에 확인된 사용자를 추가하는 버튼 레이블"
   },
   "autoTranslate.tooltipOn": {
     "message": "자동 번역 켜짐 — 콘텐츠가 방문자의 언어로 표시됩니다",
-    "description": "Tooltip on the auto-translate toggle when it is ON"
+    "description": "자동 번역 토글이 켜져 있을 때 툴팁"
   },
   "autoTranslate.tooltipOff": {
     "message": "리터럴 저장 — 자동 번역을 켜려면 클릭하세요",
-    "description": "Tooltip on the auto-translate toggle when it is OFF"
+    "description": "자동 번역 토글이 꺼져 있을 때 툴팁"
   },
   "autoTranslate.tooltipDisabledNotSaved": {
     "message": "자동 번역을 켜기 전에 행을 저장하세요",
-    "description": "Tooltip shown when the toggle is disabled because the row has no id yet (create-dialog state)"
+    "description": "행이 저장되지 않아 토글이 비활성화될 때 표시되는 툴팁"
   },
   "autoTranslate.confirmEnable": {
     "message": "이 콘텐츠는 약 1시간 이내에 17개 언어로 번역됩니다. 계속하시겠습니까?",
-    "description": "Body text of the confirm dialog shown before enabling auto-translation"
+    "description": "자동 번역 활성화 전 확인 대화 본문"
   },
   "autoTranslate.confirmDisable": {
     "message": "비활성화하면 18개 언어의 모든 번역이 제거되고 현재 값만 유지됩니다. 계속하시겠습니까?",
-    "description": "Body text of the confirm dialog shown before disabling auto-translation"
+    "description": "자동 번역 비활성화 전 확인 대화 본문"
   },
   "autoTranslate.empty": {
     "message": "자동 번역을 켜기 전에 콘텐츠를 입력하세요",
-    "description": "Warning shown when the user tries to enable auto-translation on an empty field"
+    "description": "콘텐츠 없이 자동 번역 활성화 시도 시 경고"
   },
   "autoTranslate.error": {
     "message": "자동 번역을 전환하지 못했습니다. 다시 시도해 주세요",
-    "description": "Fallback error toast when the enable/disable HTTP call fails with no detail"
+    "description": "활성화/비활성화 HTTP 호출 실패 시 폴백 오류 토스트"
   },
   "services.title": {
     "message": "서비스별 맞춤 가산 및 표시"
@@ -891,83 +891,83 @@
     "description": "Omni 모델로 텍스트, 이미지, 동영상 참조를 바탕으로 동영상을 생성하거나 편집합니다."
   },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "앱 사용자 지정",
+    "description": "기능 앱 이름/아이콘 편집 버튼 툴팁 및 접근성 레이블"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "{name} 사용자 지정",
+    "description": "대화 제목; {name}은 플랫폼 기본 기능 앱 이름"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "사용자 지정 이름",
+    "description": "사이트별 기능 앱 표시 이름 필드 레이블"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "빈칸이면 {name}을 사용합니다. 자동 번역 활성화 전에 한 번 저장하세요.",
+    "description": "도움말; {name}은 플랫폼 기본 기능 앱 이름"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "사용자 지정 아이콘",
+    "description": "사이트별 기능 앱 아이콘 필드 레이블"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "기본값",
+    "description": "플랫폼 기본 기능 아이콘 미리보기 위 레이블"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "현재",
+    "description": "유효 기능 아이콘 미리보기 위 레이블"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "아이콘 교체",
+    "description": "교체 기능 아이콘 업로드 명령"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "아이콘 업로드",
+    "description": "첫 번째 맞춤 기능 아이콘 업로드 명령"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "기본 아이콘 사용",
+    "description": "맞춤 아이콘 초안 지우기 명령"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "PNG, JPEG 또는 WebP. 이미지는 정사각형으로 잘립니다; 투명 PNG가 유지됩니다.",
+    "description": "기능 아이콘 업로드 요구사항"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "앱 아이콘 편집",
+    "description": "기능 아이콘 자르기 대화 제목"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "기본값 복원",
+    "description": "맞춤 이름과 아이콘을 모두 제거하는 명령"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "먼저 사용자 지정 이름을 입력하거나 아이콘을 업로드하세요.",
+    "description": "빈 재정의를 생성하려 할 때 표시되는 경고"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "앱 사용자 지정 저장됨",
+    "description": "기능 재정의 저장 후 성공 메시지"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "저장되었습니다. 이제 사용자 지정 이름의 자동 번역을 활성화할 수 있습니다.",
+    "description": "첫 번째 저장으로 재정의 ID가 생성된 후 성공 메시지"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "앱 사용자 지정 저장 실패",
+    "description": "기능 재정의 쓰기 오류 폴백"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "{name}의 기본 이름과 아이콘을 복원하시겠습니까?",
+    "description": "확인 메시지; {name}은 플랫폼 기본 기능 앱 이름"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "기본 이름과 아이콘이 복원되었습니다.",
+    "description": "기능 재정의 삭제 후 성공 메시지"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
+    "message": "앱 사용자 지정 불러오기 실패",
+    "description": "기능 재정의 관리 행을 불러올 수 없을 때 표시되는 오류"
   }
 }

@@ -549,15 +549,15 @@
   },
   "consent.selectScopes": {
     "message": "Выберите разрешения {provider}",
-    "description": "Title of the scope picker dialog opened from the consent card; {provider} is the upstream provider name (e.g. Gmail)."
+    "description": "Заголовок окна выбора разрешений, открываемого из карточки согласия; {provider} — имя внешнего провайдера (например, Gmail)."
   },
   "consent.selectScopesHint": {
     "message": "Выберите разрешения, которые вы хотите предоставить. Можно выбрать несколько, по умолчанию предоставляются только основные данные для входа.",
-    "description": "Body copy explaining that the user can opt out of specific scopes; rendered above the checkbox group."
+    "description": "Текст над группой флажков, объясняющий, что пользователь может отказаться от отдельных разрешений."
   },
   "consent.installFailed": {
     "message": "Авторизация не удалась. Пожалуйста, попробуйте снова.",
-    "description": "Toast shown when the AuthBackend install endpoint returns an error from the consent card."
+    "description": "Уведомление, которое показывается, когда endpoint установки AuthBackend из карточки согласия возвращает ошибку."
   },
   "consent.statusConnected": {
     "message": "Подключено",
@@ -576,77 +576,96 @@
     "description": "Нижняя подпись карточки после того, как пользователь пропустил авторизацию"
   },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Запланированные задачи",
+    "description": ""
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Запланированные задачи",
+    "description": ""
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Новая",
+    "description": ""
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Редактировать задачу",
+    "description": ""
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Запланированных задач пока нет. Нажмите «Новая», чтобы создать задачу.",
+    "description": ""
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Запусков пока не было",
+    "description": ""
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Не удалось загрузить",
+    "description": ""
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Удалить «{name}»? Задача перестанет запускаться.",
+    "description": ""
   },
   "scheduledTasks.triggerNow": {
-    "message": "Run now",
-    "description": "Trigger the task immediately, out of schedule"
+    "message": "Запустить сейчас",
+    "description": "Немедленно запускает задачу вне расписания."
   },
   "scheduledTasks.triggerSuccess": {
-    "message": "Triggered. The result will appear in run history shortly.",
-    "description": "Manual trigger success"
+    "message": "Запущено. Результат скоро появится в истории запусков.",
+    "description": "Сообщение об успешном ручном запуске."
   },
   "scheduledTasks.triggerError": {
-    "message": "Failed to trigger. Please try again later.",
-    "description": "Manual trigger error"
+    "message": "Не удалось запустить. Попробуйте позже.",
+    "description": "Сообщение об ошибке ручного запуска."
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Посмотреть результат",
+    "description": ""
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "История запусков",
+    "description": ""
   },
   "scheduledTasks.noConversation": {
     "message": "Нет записей о разговоре",
     "description": "Запуск без связанных разговоров (версия старого типа)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "Разброс ±60 с",
+    "description": ""
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Запущено {count} раз",
+    "description": ""
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Активна",
+    "description": ""
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Приостановлена",
+    "description": ""
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Ошибка",
+    "description": ""
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "В очереди",
+    "description": ""
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "Выполняется",
+    "description": ""
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Успешно",
+    "description": ""
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Сбой",
+    "description": ""
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Достигнут лимит шагов"
@@ -688,120 +707,135 @@
     "message": "Внутренняя ошибка"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Требуется действие",
+    "description": ""
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Ежедневно",
+    "description": ""
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Каждую минуту"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "Ежечасно",
+    "description": ""
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Еженедельно",
+    "description": ""
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron-выражение",
+    "description": ""
   },
   "scheduledTasks.scheduleType.interval": {
-    "message": "Every",
-    "description": "Run at a fixed interval"
+    "message": "Интервал",
+    "description": "Запуск по фиксированному интервалу."
   },
   "scheduledTasks.form.intervalUnit.minute": {
-    "message": "minutes",
-    "description": "Interval unit: minutes"
+    "message": "минут",
+    "description": "Единица интервала: минуты."
   },
   "scheduledTasks.form.intervalUnit.hour": {
-    "message": "hours",
-    "description": "Interval unit: hours"
+    "message": "часов",
+    "description": "Единица интервала: часы."
   },
   "scheduledTasks.form.intervalUnit.day": {
-    "message": "days",
-    "description": "Interval unit: days"
+    "message": "дней",
+    "description": "Единица интервала: дни."
   },
   "scheduledTasks.form.hourlyMinute": {
-    "message": "At minute",
-    "description": "Which minute of each hour to run"
+    "message": "На минуте",
+    "description": "На какой минуте каждого часа запускать задачу."
   },
   "scheduledTasks.form.hourlyMinuteHint": {
-    "message": "Which minute of each hour to run (0–59)",
-    "description": "Hourly minute hint"
+    "message": "На какой минуте каждого часа запускать задачу (0–59)",
+    "description": "Подсказка для минуты ежечасного запуска."
   },
   "scheduledTasks.form.intervalHint": {
-    "message": "Runs once every fixed interval after the previous run (minimum 1 minute)",
-    "description": "Interval hint"
+    "message": "Запуск через фиксированный интервал после предыдущего запуска (минимум 1 минута)",
+    "description": "Подсказка для интервального расписания."
   },
   "scheduledTasks.form.cronHint": {
-    "message": "Standard 5-field cron expression: minute hour day month weekday",
-    "description": "Cron hint"
+    "message": "Стандартное 5-польное cron-выражение: минута час день месяц день-недели",
+    "description": "Подсказка для Cron-выражения."
   },
   "scheduledTasks.form.schedulePreview": {
-    "message": "Runs {text}",
-    "description": "Schedule preview"
+    "message": "Будет запускаться {text}",
+    "description": "Предпросмотр расписания."
   },
   "scheduledTasks.humanize.everyNMinutes": {
-    "message": "every {n} min",
-    "description": "Human-readable: every N minutes"
+    "message": "каждые {n} мин",
+    "description": "Человекочитаемое описание: каждые N минут."
   },
   "scheduledTasks.humanize.everyNHours": {
-    "message": "every {n} h",
-    "description": "Human-readable: every N hours"
+    "message": "каждые {n} ч",
+    "description": "Человекочитаемое описание: каждые N часов."
   },
   "scheduledTasks.humanize.everyNDays": {
-    "message": "every {n} d",
-    "description": "Human-readable: every N days"
+    "message": "каждые {n} дн.",
+    "description": "Человекочитаемое описание: каждые N дней."
   },
   "scheduledTasks.humanize.hourlyAtMinute": {
-    "message": "hourly at minute {n}",
-    "description": "Human-readable: hourly at minute N"
+    "message": "каждый час на {n}-й минуте",
+    "description": "Человекочитаемое описание: каждый час на N-й минуте."
   },
   "scheduledTasks.humanize.dailyAt": {
-    "message": "daily at {time}",
-    "description": "Human-readable: daily at time"
+    "message": "ежедневно в {time}",
+    "description": "Человекочитаемое описание: ежедневно в указанное время."
   },
   "scheduledTasks.humanize.weeklyAt": {
-    "message": "{weekday} at {time}",
-    "description": "Human-readable: weekly at weekday/time"
+    "message": "{weekday} в {time}",
+    "description": "Человекочитаемое описание: еженедельно в указанный день и время."
   },
   "scheduledTasks.humanize.cronRaw": {
     "message": "Cron: {cron}",
-    "description": "Human-readable: raw cron"
+    "description": "Человекочитаемое описание: исходное Cron-выражение."
   },
   "scheduledTasks.humanize.once": {
-    "message": "once at {time}",
-    "description": "Human-readable: once"
+    "message": "один раз в {time}",
+    "description": "Человекочитаемое описание: однократный запуск."
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Название задачи",
+    "description": ""
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "например, Ежедневная сводка новостей",
+    "description": ""
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Модель",
+    "description": ""
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Промпт",
+    "description": ""
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Введите вопрос или инструкцию для запланированной задачи. Поддерживаются переменные {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'}.",
+    "description": ""
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Переменные: {'{{date}}'} — сегодня, {'{{run_count}}'} — номер запуска, {'{{last_output}}'} — фрагмент последнего результата",
+    "description": ""
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Периодичность",
+    "description": ""
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Время",
+    "description": ""
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "День недели",
+    "description": ""
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron-выражение",
+    "description": ""
   },
   "scheduledTasks.form.skills": {
     "message": "Разрешить Skills",
@@ -833,11 +867,11 @@
   },
   "scheduledTasks.form.maxTurns": {
     "message": "Максимум ходов",
-    "description": "Scheduled task per-run agent turn cap"
+    "description": "Лимит ходов агента на один запуск запланированной задачи."
   },
   "scheduledTasks.form.maxTurnsHint": {
     "message": "Максимальное число ходов агента за запуск (1–50). Слишком низкий лимит принудительно останавливает многошаговые задачи (например, навыки, выполняющие несколько шагов Bash/поиска по документам) до их завершения, не оставляя итогового результата. По умолчанию 50.",
-    "description": "Scheduled task per-run agent turn cap"
+    "description": "Подсказка о лимите ходов агента на один запуск запланированной задачи."
   },
   "scheduledTasks.form.skillsConfirmTitle": {
     "message": "Подтверждение автоматического разрешения",
@@ -848,19 +882,20 @@
     "description": "Текст подтверждения разрешения"
   },
   "scheduledTasks.form.skillNotActiveTitle": {
-    "message": "Bind the skill first",
-    "description": "Dialog title shown when a scheduled-task authorized skill/MCP is not yet bound for the user."
+    "message": "Сначала привяжите навык",
+    "description": "Заголовок окна, которое показывается, если авторизованный навык или MCP для запланированной задачи ещё не привязан к аккаунту пользователя."
   },
   "scheduledTasks.form.skillNotActiveMessage": {
-    "message": "The skill \"{name}\" is not bound or active in your account yet. Without binding it, the scheduled task may not be able to use it during unattended background runs. We recommend binding it first, or you can save anyway.",
-    "description": "Warning body; {name} is the skill/MCP name. Explains it is not bound and offers to save anyway."
+    "message": "Навык \"{name}\" ещё не привязан к вашему аккаунту или не активирован. Без этого запланированная задача может не использовать его во время фоновых запусков без вашего участия. Рекомендуем сначала привязать навык, но вы можете сохранить задачу и сейчас.",
+    "description": "Текст предупреждения; {name} — имя навыка или MCP. Объясняет, что навык не привязан, и предлагает всё равно сохранить задачу."
   },
   "scheduledTasks.form.skillNotActiveForce": {
-    "message": "Save anyway",
-    "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
+    "message": "Все равно сохранить",
+    "description": "Кнопка подтверждения, которая сохраняет запланированную задачу, игнорируя проверку привязки."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Заполните название задачи и промпт",
+    "description": ""
   },
   "artifacts.navTitle": {
     "message": "Результаты",
@@ -1035,55 +1070,66 @@
     "description": "Описание модели Claude Opus 4.7"
   },
   "artifacts.unhide": {
-    "message": "Unhide",
-    "description": "Restore a hidden artifact"
+    "message": "Показать",
+    "description": "Снова показать скрытый артефакт."
   },
   "artifacts.showHidden": {
-    "message": "Show hidden",
-    "description": "Toggle in the filter bar to include hidden artifacts"
+    "message": "Показать скрытые",
+    "description": "Переключатель в панели фильтров, который включает отображение скрытых артефактов."
   },
   "artifacts.hiddenBadge": {
-    "message": "Hidden",
-    "description": "Badge shown on artifacts that are currently hidden"
+    "message": "Скрыт",
+    "description": "Метка на артефактах, которые сейчас скрыты."
   },
   "scheduledTasks.run.reason.billing_gate_failed": {
     "message": "Не удалось авторизовать оплату"
   },
   "browserTool.title": {
-    "message": "Browser activity",
-    "description": "Fallback title for a BrowserDevice tool activity"
+    "message": "Активность браузера",
+    "description": "Заголовок по умолчанию для активности инструмента BrowserDevice."
   },
   "browserTool.state.choose_device": {
-    "message": "Choose a browser device"
+    "message": "Выберите браузерное устройство",
+    "description": ""
   },
   "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
+    "message": "Браузерное устройство не в сети",
+    "description": ""
   },
   "browserTool.state.awaiting_device": {
-    "message": "Waiting for browser device"
+    "message": "Ожидание браузерного устройства",
+    "description": ""
   },
   "browserTool.state.awaiting_local_approval": {
-    "message": "Waiting for approval on the browser device"
+    "message": "Ожидание подтверждения на браузерном устройстве",
+    "description": ""
   },
   "browserTool.state.takeover_required": {
-    "message": "Take over on the browser device"
+    "message": "Нужно перехватить управление на браузерном устройстве",
+    "description": ""
   },
   "browserTool.state.executing": {
-    "message": "Executing in browser"
+    "message": "Выполняется в браузере",
+    "description": ""
   },
   "browserTool.state.completed": {
-    "message": "Completed"
+    "message": "Завершено",
+    "description": ""
   },
   "browserTool.state.denied": {
-    "message": "Denied on the browser device"
+    "message": "Отклонено на браузерном устройстве",
+    "description": ""
   },
   "browserTool.state.expired": {
-    "message": "Browser request expired"
+    "message": "Срок запроса к браузеру истек",
+    "description": ""
   },
   "browserTool.state.cancel_too_late": {
-    "message": "Too late to cancel"
+    "message": "Отменять уже поздно",
+    "description": ""
   },
   "scheduledTasks.run.waiting_for_device": {
-    "message": "Waiting for browser device"
+    "message": "Ожидание браузерного устройства",
+    "description": ""
   }
 }

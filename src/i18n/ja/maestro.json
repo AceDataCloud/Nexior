@@ -49,27 +49,27 @@
   },
   "step.plan": {
     "message": "企画・絵コンテ",
-    "description": "Pipeline step: plan"
+    "description": "パイプラインステップ：計画"
   },
   "step.source": {
     "message": "素材の収集",
-    "description": "Pipeline step: source media"
+    "description": "パイプラインステップ：素材ソース"
   },
   "step.voice": {
     "message": "ナレーション生成",
-    "description": "Pipeline step: voiceover"
+    "description": "パイプラインステップ：ナレーション"
   },
   "step.compose": {
     "message": "シーン編集",
-    "description": "Pipeline step: compose"
+    "description": "パイプラインステップ：構成"
   },
   "step.render": {
     "message": "動画レンダリング",
-    "description": "Pipeline step: render"
+    "description": "パイプラインステップ：レンダリング"
   },
   "step.deliver": {
     "message": "配信",
-    "description": "Pipeline step: deliver"
+    "description": "パイプラインステップ：配信"
   },
   "name.prompt": {
     "message": "プロンプト",
@@ -93,19 +93,19 @@
   },
   "name.quality": {
     "message": "品質",
-    "description": "Production quality tier field"
+    "description": "制作品質ティアフィールド"
   },
   "option.quality.draft": {
     "message": "ドラフト · 高速プレビュー",
-    "description": "Draft quality option"
+    "description": "ドラフト品質オプション"
   },
   "option.quality.standard": {
     "message": "標準 · バランス",
-    "description": "Standard quality option"
+    "description": "標準品質オプション"
   },
   "option.quality.premium": {
     "message": "プレミアム · より詳細",
-    "description": "Premium quality option"
+    "description": "プレミアム品質オプション"
   },
   "name.remixing": {
     "message": "リミックス",
@@ -133,11 +133,11 @@
   },
   "description.duration": {
     "message": "目標とする動画の長さ。長いほど制作時間とポイントを多く消費します。",
-    "description": "Duration help"
+    "description": "長さのヘルプ"
   },
   "description.quality": {
     "message": "制作グレードが高いほど映像と編集が精細になりますが、時間とポイントも多くかかります。",
-    "description": "Quality help"
+    "description": "品質のヘルプ"
   },
   "status.pending": {
     "message": "待機中",
@@ -209,15 +209,15 @@
   },
   "name.scenario": {
     "message": "動画タイプ",
-    "description": "Video type field"
+    "description": "動画タイプフィールド"
   },
   "description.scenario": {
     "message": "カスタマイズをオンにすると動画タイプを選択できます。オフの場合は Maestro が自動で決定します。",
-    "description": "Scenario field help"
+    "description": "シナリオフィールドのヘルプ"
   },
   "option.scenario.auto": {
     "message": "自動 · Maestro に任せる",
-    "description": "Auto scenario option"
+    "description": "自動シナリオオプション"
   },
   "option.scenario.narrated": {
     "message": "図文ナレーションの完成品",
@@ -225,7 +225,7 @@
   },
   "option.scenario.drama": {
     "message": "ショートドラマ",
-    "description": "Short drama scenario option"
+    "description": "ショートドラマシナリオオプション"
   },
   "option.scenario.avatar": {
     "message": "デジタル人 · ナレーション",
@@ -237,7 +237,7 @@
   },
   "message.captionsNeedVideo": {
     "message": "キネティック字幕は既存のトーキングヘッド動画に適用します。まず上で動画をアップロードしてください。",
-    "description": "Warning shown when captions video type is selected but no source video is uploaded"
+    "description": "字幕動画タイプが選択されたが動画がアップロードされていない場合の警告"
   },
   "name.style": {
     "message": "ビジュアルスタイル",
@@ -257,31 +257,31 @@
   },
   "option.style.glass": {
     "message": "フロストガラス",
-    "description": "Frosted glass style option"
+    "description": "フロストガラススタイルオプション"
   },
   "option.style.luxury": {
     "message": "Luxury",
-    "description": "Luxury style option"
+    "description": "ラグジュアリースタイルオプション"
   },
   "option.style.swiss": {
     "message": "スイスグリッド",
-    "description": "Swiss grid style option"
+    "description": "スイスグリッドスタイルオプション"
   },
   "option.style.modern": {
     "message": "Modern",
-    "description": "Modern style option"
+    "description": "モダンスタイルオプション"
   },
   "option.style.editorial": {
     "message": "Editorial",
-    "description": "Editorial style option"
+    "description": "エディトリアルスタイルオプション"
   },
   "option.style.warm": {
     "message": "Warm",
-    "description": "Warm style option"
+    "description": "ウォームスタイルオプション"
   },
   "option.style.vibrant": {
     "message": "Vibrant",
-    "description": "Vibrant style option"
+    "description": "ビビッドスタイルオプション"
   },
   "option.style.neon": {
     "message": "ネオン",
@@ -289,27 +289,27 @@
   },
   "option.style.mono": {
     "message": "Monochrome",
-    "description": "Monochrome style option"
+    "description": "モノクロスタイルオプション"
   },
   "option.style.pastel": {
     "message": "Pastel",
-    "description": "Pastel style option"
+    "description": "パステルスタイルオプション"
   },
   "option.style.bold": {
     "message": "ボールドタイプ",
-    "description": "Bold type style option"
+    "description": "ボールドタイプスタイルオプション"
   },
   "option.style.industrial": {
     "message": "Industrial",
-    "description": "Industrial style option"
+    "description": "インダストリアルスタイルオプション"
   },
   "option.style.futuristic": {
     "message": "Futuristic",
-    "description": "Futuristic style option"
+    "description": "フューチャリスティックスタイルオプション"
   },
   "option.style.retro": {
     "message": "レトロフィルム",
-    "description": "Retro film style option"
+    "description": "レトロフィルムスタイルオプション"
   },
   "name.voice": {
     "message": "ナレーション音色",
@@ -453,38 +453,38 @@
   },
   "name.customize": {
     "message": "カスタマイズ",
-    "description": "Optional creative controls toggle"
+    "description": "オプションのクリエイティブコントロールトグル"
   },
   "description.customize.auto": {
     "message": "自動 · 動画タイプ、ビジュアルスタイル、ナレーション音色は Maestro が決定します。",
-    "description": "Customization disabled state"
+    "description": "カスタマイズ無効状態"
   },
   "description.customize.manual": {
     "message": "動画タイプ、ビジュアルスタイル、ナレーション音色を選択します。",
-    "description": "Customization enabled state"
+    "description": "カスタマイズ有効状態"
   },
   "name.primaryLanguage": {
     "message": "主要言語",
-    "description": "Primary output language field"
+    "description": "主要出力言語フィールド"
   },
   "name.additionalLanguages": {
     "message": "追加言語（任意）",
-    "description": "Additional output languages field"
+    "description": "追加出力言語フィールド"
   },
   "placeholder.additionalLanguages": {
     "message": "出力言語を追加",
-    "description": "Additional languages placeholder"
+    "description": "追加言語のプレースホルダー"
   },
   "name.customizeScenario": {
     "message": "動画タイプをカスタマイズ",
-    "description": "Video type customization toggle"
+    "description": "動画タイプカスタマイズトグル"
   },
   "name.customizeStyle": {
     "message": "ビジュアルスタイルをカスタマイズ",
-    "description": "Visual style customization toggle"
+    "description": "ビジュアルスタイルカスタマイズトグル"
   },
   "name.customizeVoice": {
     "message": "ナレーション音色をカスタマイズ",
-    "description": "Voice timbre customization toggle"
+    "description": "音声タイムブレカスタマイズトグル"
   }
 }

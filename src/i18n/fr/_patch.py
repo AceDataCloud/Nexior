@@ -786,3 +786,151 @@ n = patch("kling.json", {
 })
 print(f"kling.json: {n}")
 
+
+# ─────────────────────────────────────────────────
+# site.json (96 issues)
+# ─────────────────────────────────────────────────
+n = patch("site.json", {
+    "field.contacts": {"description": "Titre du champ pour les contacts du service client dans les paramètres du site"},
+    "field.disableRecharge": {"description": "Paramètres du site : activé, masque toutes les entrées de recharge/achat sur ce site"},
+    "message.disableRechargeTip": {"description": "Texte d'aide pour le bouton de désactivation de la recharge"},
+    "field.authProvider_apple": {"description": "Nom d'affichage du fournisseur de connexion : Se connecter avec Apple."},
+    "field.authSmsWebhook": {"message": "Expéditeur SMS personnalisé"},
+    "message.authSmsWebhookTip": {
+        "message": "Lorsqu'activé, les codes de vérification téléphonique de ce site sont envoyés via votre propre endpoint sous votre propre signature ; désactivez pour utiliser la valeur par défaut de la plateforme. Nécessite l'activation du fournisseur de connexion par numéro de téléphone."
+    },
+    "placeholder.authSmsWebhookUrl": {
+        "message": "https://votre-domaine/sms-webhook",
+        "description": "Espace réservé pour la saisie de l'URL du webhook SMS"
+    },
+    "placeholder.authSmsWebhookSecret": {
+        "message": "Secret de signature (laisser vide pour conserver inchangé)"
+    },
+    "field.authSmsWebhookEnable": {"message": "Utiliser un expéditeur personnalisé"},
+    "message.authSmsWebhookNeedsPhone": {
+        "message": "Activez d'abord le fournisseur de connexion par numéro de téléphone pour configurer un expéditeur SMS personnalisé."
+    },
+    "field.authSmsWebhookDocTitle": {"message": "Expéditeur SMS personnalisé · Spécification webhook"},
+    "message.authSmsWebhookDocIntro": {
+        "message": "Ce site envoie un HTTPS POST signé à l'URL que vous fournissez ; votre service est responsable de la livraison du SMS. Votre endpoint doit respecter les exigences suivantes :"
+    },
+    "message.authSmsWebhookDocRequest": {
+        "message": "Méthode POST, Content-Type application/json. purpose est l'un de login / register / test (test est une sonde de connectivité — vous pouvez ne pas envoyer réellement). Le corps de la requête ressemble à :"
+    },
+    "message.authSmsWebhookDocHeaders": {
+        "message": "Chaque requête porte les en-têtes ci-dessous. Vérifiez avec votre secret de signature en utilisant HMAC-SHA256 selon la spécification Standard Webhooks et comparez en temps constant :"
+    },
+    "message.authSmsWebhookDocResponse": {
+        "message": "Retournez 2xx en cas de succès. Pour signaler explicitement un échec, retournez HTTP 200 avec un corps JSON dont le champ success est false (voir l'exemple ci-dessous). Répondez dans les 5 secondes."
+    },
+    "field.authSmsWebhookTestTitle": {"message": "Tester l'expéditeur SMS personnalisé"},
+    "field.authSmsWebhookTestRegion": {"message": "Code pays/région"},
+    "field.authSmsWebhookTestNumber": {"message": "Numéro de téléphone de test (facultatif)"},
+    "message.authSmsWebhookTestOk": {
+        "message": "La requête de test a été transmise avec succès à votre endpoint."
+    },
+    "message.authSmsWebhookTestFailed": {
+        "message": "Test échoué. Vérifiez l'URL, le secret de signature et la réponse de votre endpoint."
+    },
+    "field.authSmsWebhookDisableTitle": {"message": "Désactiver l'expéditeur SMS personnalisé"},
+    "message.authSmsWebhookDisableConfirm": {
+        "message": "La désactivation supprime l'URL d'expéditeur enregistrée et le secret de signature (le secret ne peut pas être récupéré), et ce site revient à la signature par défaut de la plateforme. Désactiver ?"
+    },
+    "field.featuresCodingBridge": {"description": "Affiché comme titre dans la zone d'édition"},
+    "field.featuresWebextrator": {"description": "Affiché comme titre dans la zone d'édition"},
+    "title.editContacts": {"description": "Titre de la boîte de dialogue d'édition des contacts d'assistance"},
+    "message.contactsTip": {"description": "Conseil pour le champ des contacts d'assistance"},
+    "message.contactsEmpty": {"description": "Espace réservé affiché quand aucun contact d'assistance n'est renseigné"},
+    "message.featuresGrok": {"description": "Introduction concise : assistant xAI pour la connaissance en temps réel, le raisonnement, l'écriture et le code."},
+    "message.featuresGrokvideo": {"description": "Introduction concise : génération vidéo xAI pour des clips courts à partir de prompts texte ou d'images de référence."},
+    "message.featuresMaestro": {"description": "Introduction concise : produisez des vidéos complètes à partir d'une idée, planification, voix off, scènes et livraison incluses."},
+    "message.featuresDigitalhuman": {"description": "Introduction concise : créez des vidéos de personnages parlants avec synthèse vocale et synchronisation labiale naturelle."},
+    "message.featuresDeepseek": {"description": "Introduction concise : assistant DeepSeek pour le raisonnement avancé, le code, les maths et les questions du quotidien."},
+    "message.featuresChatgpt": {"description": "Introduction concise : assistant OpenAI pour l'écriture, le raisonnement, le code et les conversations multimodales."},
+    "message.featuresMidjourney": {"description": "Introduction concise : créez des images soignées et des variations créatives à partir de texte ou de références visuelles."},
+    "message.featuresQrart": {"description": "Introduction concise : transformez des liens en QR codes artistiques scannables avec des styles et images personnalisés."},
+    "message.featuresVeo": {"description": "Introduction concise : génération vidéo Google pour des clips cinématographiques avec contrôle de prompt et de mouvement."},
+    "message.featuresSora": {"description": "Introduction concise : génération vidéo OpenAI pour des scènes réalistes, la narration et les transformations visuelles."},
+    "message.featuresSuno": {"description": "Introduction concise : générez des chansons complètes, paroles, voix et instrumentaux à partir d'un prompt."},
+    "message.featuresPixverse": {"description": "Introduction concise : générez des vidéos stylisées à partir de prompts et d'images avec modèles et effets."},
+    "message.featuresFlux": {"description": "Introduction concise : créez des images détaillées et modifiez des visuels existants avec des instructions en langage naturel."},
+    "message.featuresNanobanana": {"description": "Introduction concise : génération et édition d'images propulsées par Google avec suivi précis des instructions."},
+    "message.featuresOpenaiimage": {"description": "Introduction concise : génération et édition d'images OpenAI pour des visuels soignés, du texte et des compositions."},
+    "message.featuresSeedream": {"description": "Introduction concise : génération et édition d'images ByteDance pour des visuels créatifs de haute qualité."},
+    "message.featuresSeedance": {"description": "Introduction concise : génération vidéo ByteDance pour des scènes dynamiques, des mouvements de caméra et de l'audio optionnel."},
+    "message.featuresWan": {"description": "Introduction concise : génération vidéo Alibaba à partir de texte, d'images ou de références à plusieurs résolutions."},
+    "message.featuresProducer": {"description": "Introduction concise : créez des chansons, reprises, extensions et variations vocales ou instrumentales."},
+    "message.featuresKimi": {"description": "Introduction concise : assistant IA Moonshot pour la recherche en contexte long, le raisonnement, l'écriture et le code."},
+    "message.featuresSerp": {"description": "Introduction concise : recherchez sur le web, images, actualités, cartes et vidéos avec des résultats Google structurés."},
+    "message.featuresFish": {"description": "Introduction concise : générez de la parole naturelle et clonez des voix pour la production audio multilingue."},
+    "message.featuresCodingBridge": {"description": "Introduction concise : connectez des assistants de code IA à des projets locaux pour des workflows de développement guidés."},
+    "message.featuresWebextrator": {"description": "Introduction concise : extrayez du contenu propre et structuré ainsi que des données de pages web."},
+    "message.featuresLuma": {"description": "Introduction concise : créez des vidéos cinématographiques à partir de texte ou d'images avec un mouvement naturel."},
+    "message.featuresPika": {"description": "Introduction concise : générez et éditez de courtes vidéos créatives avec effets, scènes et transformations."},
+    "message.featuresKling": {"description": "Introduction concise : créez des vidéos de haute qualité à partir de texte, d'images ou de références de mouvement."},
+    "message.featuresHailuo": {"description": "Introduction concise : générez des vidéos expressives à partir de texte ou d'images avec des mouvements de personnages fluides."},
+    "message.featuresGemini": {"description": "Introduction concise : assistant Google pour le raisonnement en contexte long, la recherche, le code et le travail multimodal."},
+    "message.featuresClaude": {"description": "Introduction concise : assistant Anthropic pour le raisonnement attentif, l'écriture, le code et l'analyse de documents."},
+    "autoTranslate.tooltipOn": {"description": "Info-bulle sur le bouton de traduction automatique quand il est ACTIVÉ"},
+    "autoTranslate.tooltipOff": {"description": "Info-bulle sur le bouton de traduction automatique quand il est DÉSACTIVÉ"},
+    "autoTranslate.tooltipDisabledNotSaved": {"description": "Info-bulle affichée quand le bouton est désactivé car la ligne n'a pas encore d'identifiant (état de la boîte de dialogue de création)"},
+    "autoTranslate.confirmEnable": {"description": "Corps du dialogue de confirmation affiché avant l'activation de la traduction automatique"},
+    "autoTranslate.confirmDisable": {"description": "Corps du dialogue de confirmation affiché avant la désactivation de la traduction automatique"},
+    "autoTranslate.empty": {"description": "Avertissement affiché quand l'utilisateur essaie d'activer la traduction automatique sur un champ vide"},
+    "autoTranslate.error": {"description": "Message d'erreur de secours quand l'appel HTTP d'activation/désactivation échoue sans détail"},
+    "capabilityOverride.edit": {"description": "Info-bulle et libellé accessible pour modifier un nom et une icône d'application de fonctionnalité"},
+    "capabilityOverride.dialogTitle": {"description": "Titre du dialogue ; {name} est le nom par défaut de l'application de fonctionnalité de la plateforme"},
+    "capabilityOverride.displayName": {"description": "Libellé du champ pour un nom d'affichage d'application de fonctionnalité par site"},
+    "capabilityOverride.displayNameTip": {
+        "message": "Laissez vide pour utiliser {name}. Enregistrez une fois avant d'activer la traduction automatique.",
+        "description": "Texte d'aide ; {name} est le nom par défaut de l'application de fonctionnalité de la plateforme"
+    },
+    "capabilityOverride.icon": {"description": "Libellé du champ pour une icône d'application de fonctionnalité par site"},
+    "capabilityOverride.defaultIcon": {"description": "Libellé au-dessus de l'aperçu de l'icône par défaut de la fonctionnalité de la plateforme"},
+    "capabilityOverride.currentIcon": {"description": "Libellé au-dessus de l'aperçu de l'icône de fonctionnalité effective"},
+    "capabilityOverride.replaceIcon": {"description": "Commande pour télécharger une icône de fonctionnalité de remplacement"},
+    "capabilityOverride.uploadIcon": {"description": "Commande pour télécharger la première icône personnalisée de fonctionnalité"},
+    "capabilityOverride.useDefaultIcon": {
+        "message": "Utiliser l'icône par défaut",
+        "description": "Commande pour effacer le brouillon d'icône personnalisée"
+    },
+    "capabilityOverride.iconTip": {
+        "message": "PNG, JPEG ou WebP. L'image est recadrée en carré ; le PNG transparent est conservé.",
+        "description": "Exigences pour le téléchargement de l'icône de fonctionnalité"
+    },
+    "capabilityOverride.editIcon": {
+        "message": "Modifier l'icône de l'application",
+        "description": "Titre du dialogue de recadrage de l'icône de fonctionnalité"
+    },
+    "capabilityOverride.resetAll": {"description": "Commande pour supprimer à la fois le nom personnalisé et l'icône"},
+    "capabilityOverride.empty": {
+        "message": "Saisissez d'abord un nom personnalisé ou téléchargez une icône.",
+        "description": "Avertissement lors d'une tentative de création d'une substitution vide"
+    },
+    "capabilityOverride.saved": {
+        "message": "Personnalisation de l'application enregistrée",
+        "description": "Message de succès après l'enregistrement d'une substitution de fonctionnalité"
+    },
+    "capabilityOverride.savedEnableTranslation": {
+        "message": "Enregistré. Vous pouvez maintenant activer la traduction automatique pour le nom personnalisé.",
+        "description": "Message de succès après le premier enregistrement créant un identifiant de substitution"
+    },
+    "capabilityOverride.saveFailed": {
+        "message": "Échec de l'enregistrement de la personnalisation de l'application",
+        "description": "Erreur de secours pour les écritures de substitution de fonctionnalité"
+    },
+    "capabilityOverride.resetConfirm": {
+        "message": "Restaurer le nom et l'icône par défaut pour {name} ?",
+        "description": "Message de confirmation ; {name} est le nom par défaut de l'application de fonctionnalité de la plateforme"
+    },
+    "capabilityOverride.resetDone": {
+        "message": "Nom et icône par défaut restaurés",
+        "description": "Message de succès après suppression d'une substitution de fonctionnalité"
+    },
+    "capabilityOverride.fetchFailed": {
+        "message": "Échec du chargement des personnalisations de l'application",
+        "description": "Erreur affichée quand les lignes de gestion des substitutions de fonctionnalité ne peuvent pas être chargées"
+    },
+})
+print(f"site.json: {n}")
+
