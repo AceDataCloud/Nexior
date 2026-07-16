@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Wed, 15 Jul 2026 17:09:13 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 16 Jul 2026 00:54:34 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.9
+
+Thu, 16 Jul 2026 00:54:34 GMT
+
+### Patches
+
+- Stop polling the removed Desktop Agent endpoint from chat pages (dev@acedata.cloud)
 
 ## 3.329.8
 
