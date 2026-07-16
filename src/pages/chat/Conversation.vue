@@ -12,22 +12,8 @@
               <font-awesome-icon icon="fa-solid fa-share-nodes" />
             </el-button>
           </el-tooltip>
-          <el-tooltip v-if="false" :content="$t('chat.agent.tooltip')" placement="bottom">
-            <el-button class="toolbar-btn" text @click="agentManagerVisible = true">
-              <font-awesome-icon icon="fa-solid fa-desktop" />
-              <span v-if="agentConnected" class="agent-dot"></span>
-            </el-button>
-          </el-tooltip>
         </div>
       </div>
-      <desktop-agent-manager
-        v-if="agentManagerVisible"
-        v-model="agentManagerVisible"
-        :connected="agentConnected"
-        :agent-name="agentName"
-        :tool-count="agentToolCount"
-        :connected-at="agentConnectedAt"
-      />
       <share-conversation-dialog
         v-model="shareDialogVisible"
         :conversation-id="conversationId"
@@ -108,7 +94,6 @@ import {
 } from '@/models';
 import Composer from '@/components/chat/Composer.vue';
 import ModelSelector from '@/components/chat/ModelSelector.vue';
-import DesktopAgentManager from '@/components/chat/DesktopAgentManager.vue';
 import BYOKBadge from '@/components/chat/BYOKBadge.vue';
 import ShareConversationDialog from '@/components/chat/ShareConversationDialog.vue';
 import { ERROR_CODE_CANCELED, ERROR_CODE_NOT_APPLIED, ERROR_CODE_UNKNOWN } from '@/constants/errorCode';
@@ -131,7 +116,7 @@ import {
 } from '@/components/chat/consentReturn';
 import { hasLoadedConversationMessages } from '@/components/chat/conversationRestore';
 import { reduceBrowserToolExecution } from '@/utils/browserToolExecution';
-import { chatOperator, agentOperator } from '@/operators';
+import { chatOperator } from '@/operators';
 import { ElButton, ElSkeleton, ElSkeletonItem, ElTooltip } from 'element-plus';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
@@ -149,11 +134,6 @@ export interface IData {
   answering: boolean;
   messages: IChatMessage[];
   canceler: AbortController | undefined;
-  agentManagerVisible: boolean;
-  agentConnected: boolean;
-  agentName: string;
-  agentToolCount: number;
-  agentConnectedAt: string;
   shareDialogVisible: boolean;
   restoringConversationId: string | undefined;
   /**
@@ -193,7 +173,6 @@ export default defineComponent({
     Disclaimer,
     ConnectorStrip,
     ModelSelector,
-    DesktopAgentManager,
     'byok-badge': BYOKBadge,
     ShareConversationDialog,
     Message,
@@ -215,11 +194,6 @@ export default defineComponent({
       upload: false,
       answering: false,
       canceler: undefined,
-      agentManagerVisible: false,
-      agentConnected: false,
-      agentName: '',
-      agentToolCount: 0,
-      agentConnectedAt: '',
       shareDialogVisible: false,
       restoringConversationId: undefined,
       skipNextRestoreId: undefined,
@@ -315,7 +289,6 @@ export default defineComponent({
           await this.$store.dispatch('chat/getConversations');
         }
         await this.onRestoreCurrentConversation();
-        this.onCheckAgentStatus();
       }
     },
     // URL is the source of truth for which conversation is open. Side-
@@ -390,19 +363,6 @@ export default defineComponent({
         return;
       }
       await this.onRestoreConversation(id);
-    },
-    async onCheckAgentStatus() {
-      const token = this.credential?.token;
-      if (!token) return;
-      try {
-        const { data } = await agentOperator.status(token);
-        this.agentConnected = data?.connected === true;
-        this.agentName = data?.name || '';
-        this.agentToolCount = data?.tool_count || 0;
-        this.agentConnectedAt = data?.connected_at || '';
-      } catch {
-        this.agentConnected = false;
-      }
     },
     /**
      * Restore the unsubmitted composer draft after a route-level
@@ -1599,16 +1559,6 @@ export default defineComponent({
 
   &:hover {
     color: var(--el-color-primary);
-  }
-
-  .agent-dot {
-    position: absolute;
-    top: 2px;
-    right: -2px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--el-color-success);
   }
 
   .external-icon {
