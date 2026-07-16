@@ -709,3 +709,80 @@ n = patch("codingBridge.json", {
 })
 print(f"codingBridge.json: {n}")
 
+
+# ─────────────────────────────────────────────────
+# kling.json (59 issues)
+# ─────────────────────────────────────────────────
+n = patch("kling.json", {
+    "tab.videoGeneration": {"description": "Libellé d'onglet : Génération de vidéo"},
+    "tab.motionControl": {"description": "Libellé d'onglet : Contrôle de mouvement"},
+    "name.motionImage": {"description": "Entrée d'image de personnage dans le Contrôle de mouvement"},
+    "name.motionVideo": {"description": "Entrée de vidéo de référence dans le Contrôle de mouvement"},
+    "name.motionPrompt": {"description": "Prompt supplémentaire dans le Contrôle de mouvement"},
+    "name.characterOrientation": {"description": "Champ d'orientation du personnage"},
+    "name.orientationImage": {"description": "Option d'orientation du personnage : Suivre l'image"},
+    "name.orientationVideo": {"description": "Option d'orientation du personnage : Suivre la vidéo"},
+    "name.keepOriginalSound": {"description": "Bouton keep_original_sound"},
+    "description.motionImage": {"description": "Description de motion image_url"},
+    "description.motionVideo": {"description": "Description de motion video_url"},
+    "description.motionPrompt": {"description": "Description du prompt de mouvement"},
+    "description.characterOrientation": {"description": "Description de character_orientation"},
+    "description.motionMode": {"description": "Description du mode de mouvement"},
+    "description.motionModel": {"description": "Description de la version du modèle de mouvement"},
+    "description.keepOriginalSound": {"description": "Description de keep_original_sound"},
+    "placeholder.motionPrompt": {"description": "Espace réservé pour le prompt de mouvement"},
+    "button.generateMotion": {"description": "Bouton de génération du Contrôle de mouvement"},
+    "message.motionMissingInputs": {"description": "Avertissement quand les entrées sont manquantes dans le Contrôle de mouvement"},
+    "message.motionPricingNote": {"description": "Explique que le Contrôle de mouvement est facturé à la seconde"},
+    "inspiration.title": {"description": "Titre du tiroir Inspiration"},
+    "inspiration.openButton": {"description": "Bouton pour ouvrir le tiroir Inspiration"},
+    "inspiration.removeChip": {"description": "aria-label du bouton pour retirer un préréglage sélectionné dans la zone de prompt"},
+    "inspiration.hint": {"description": "Instructions d'utilisation en haut du tiroir Inspiration"},
+    "inspiration.empty": {"description": "État vide du tiroir Inspiration"},
+    "inspiration.selectedSummary": {"description": "Nombre de préréglages sélectionnés"},
+    "inspiration.clearSelected": {"description": "Bouton pour effacer tous les préréglages sélectionnés"},
+    "inspiration.group.cameraMovements": {"description": "Groupe Inspiration : Mouvements de caméra"},
+    "inspiration.group.cameraSpeed": {"description": "Groupe Inspiration : Vitesse de mouvement"},
+    "inspiration.group.shotType": {"description": "Groupe Inspiration : Type de plan / Perspective"},
+    "inspiration.group.light": {"description": "Groupe Inspiration : Éclairage"},
+    "inspiration.group.frame": {"description": "Groupe Inspiration : Cadrage / Composition"},
+    "inspiration.group.atmosphere": {"description": "Groupe Inspiration : Atmosphère / Style"},
+    "name.motionModel": {"description": "Version du modèle Kling utilisée pour le contrôle de mouvement"},
+    "tab.talkingPhoto": {"description": "Libellé d'onglet : Photo parlante"},
+    "name.talkingPhotoImage": {"description": "Entrée d'image portrait pour Photo parlante"},
+    "name.talkingPhotoAudio": {"description": "Entrée audio de pilotage pour Photo parlante"},
+    "name.talkingPhotoPrompt": {"description": "Prompt de mouvement optionnel pour Photo parlante"},
+    "description.talkingPhotoImage": {"description": "Texte d'aide pour l'image portrait de Photo parlante"},
+    "description.talkingPhotoAudio": {"description": "Texte d'aide pour l'audio de pilotage de Photo parlante"},
+    "description.talkingPhotoPrompt": {"description": "Texte d'aide pour le prompt de mouvement de Photo parlante"},
+    "placeholder.talkingPhotoPrompt": {"description": "Espace réservé pour la saisie du prompt de Photo parlante"},
+    "button.generateTalkingPhoto": {"description": "Bouton de génération de Photo parlante"},
+    "button.uploadAudio": {"description": "Bouton de téléchargement audio pour Photo parlante"},
+    "message.talkingPhotoMissingInputs": {"description": "Avertissement quand les entrées de Photo parlante sont manquantes"},
+    "message.uploadAudioExceed": {"description": "Avertissement de limite du nombre de fichiers audio pour Photo parlante"},
+    "message.uploadAudioError": {"description": "Erreur de téléchargement audio pour Photo parlante"},
+    "name.referenceVideo": {"description": "Libellé du champ : vidéo de référence/modifiable pour l'édition vidéo Omni"},
+    "description.referenceVideo": {
+        "message": "Uniquement pour kling-video-o1. Téléchargez un MP4/MOV (720-2160 px, 3-10 s, ≤200 Mo) pour modifier ou référencer.",
+        "description": "Texte d'aide pour le téléchargeur de vidéo de référence"
+    },
+    "button.uploadReferenceVideo": {"description": "Bouton pour télécharger la vidéo de référence"},
+    "message.referenceVideoExceed": {
+        "message": "Vous pouvez télécharger au maximum 1 vidéo de référence",
+        "description": "Erreur lorsque plus d'une vidéo de référence est téléchargée"
+    },
+    "message.referenceVideoError": {
+        "message": "Échec du téléchargement de la vidéo de référence, veuillez réessayer ultérieurement",
+        "description": "Erreur lorsque le téléchargement de la vidéo de référence échoue"
+    },
+    "message.referenceVideoTypeFailed": {
+        "message": "Le fichier téléchargé doit être au format MP4 ou MOV !",
+        "description": "Erreur lorsque la vidéo de référence n'est pas au format MP4/MOV"
+    },
+    "message.referenceVideoSizeExceed": {
+        "message": "La taille du fichier téléchargé ne peut pas dépasser 200 Mo !",
+        "description": "Erreur lorsque la vidéo de référence dépasse 200 Mo"
+    },
+})
+print(f"kling.json: {n}")
+
