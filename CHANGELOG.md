@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 10:08:56 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 16 Jul 2026 15:01:57 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.12
+
+Thu, 16 Jul 2026 15:01:57 GMT
+
+### Patches
+
+- Showcase branded subsites, referrals, and the complete responsive AI capability catalog on the homepage (dev@acedata.cloud)
 
 ## 3.329.11
 
