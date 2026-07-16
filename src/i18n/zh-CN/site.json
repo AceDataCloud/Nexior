@@ -890,5 +890,85 @@
   },
   "services.message.fetchFailed": {
     "message": "加载服务覆盖失败"
+  },
+  "capabilityOverride.edit": {
+    "message": "自定义应用",
+    "description": "编辑能力应用名称和图标的提示与无障碍标签"
+  },
+  "capabilityOverride.dialogTitle": {
+    "message": "自定义 {name}",
+    "description": "弹窗标题，{name} 为平台默认应用名称"
+  },
+  "capabilityOverride.displayName": {
+    "message": "自定义名称",
+    "description": "子站能力应用显示名称字段"
+  },
+  "capabilityOverride.displayNameTip": {
+    "message": "留空则使用 {name}。首次保存后可开启自动翻译。",
+    "description": "名称说明，{name} 为平台默认应用名称"
+  },
+  "capabilityOverride.icon": {
+    "message": "自定义图标",
+    "description": "子站能力应用图标字段"
+  },
+  "capabilityOverride.defaultIcon": {
+    "message": "默认",
+    "description": "平台默认图标预览标签"
+  },
+  "capabilityOverride.currentIcon": {
+    "message": "当前效果",
+    "description": "当前生效图标预览标签"
+  },
+  "capabilityOverride.replaceIcon": {
+    "message": "替换图标",
+    "description": "上传替换图标的命令"
+  },
+  "capabilityOverride.uploadIcon": {
+    "message": "上传图标",
+    "description": "首次上传自定义图标的命令"
+  },
+  "capabilityOverride.useDefaultIcon": {
+    "message": "使用默认图标",
+    "description": "清除自定义图标草稿的命令"
+  },
+  "capabilityOverride.iconTip": {
+    "message": "支持 PNG、JPEG 或 WebP，将裁剪为正方形；透明 PNG 会保留透明背景。",
+    "description": "能力应用图标上传要求"
+  },
+  "capabilityOverride.editIcon": {
+    "message": "编辑应用图标",
+    "description": "图标裁剪弹窗标题"
+  },
+  "capabilityOverride.resetAll": {
+    "message": "恢复默认",
+    "description": "同时删除自定义名称和图标的命令"
+  },
+  "capabilityOverride.empty": {
+    "message": "请先输入自定义名称或上传图标。",
+    "description": "尝试创建空覆盖时的提示"
+  },
+  "capabilityOverride.saved": {
+    "message": "应用自定义已保存",
+    "description": "保存能力应用覆盖后的成功提示"
+  },
+  "capabilityOverride.savedEnableTranslation": {
+    "message": "已保存，现在可以为自定义名称开启自动翻译。",
+    "description": "首次保存并获得覆盖记录 ID 后的提示"
+  },
+  "capabilityOverride.saveFailed": {
+    "message": "保存应用自定义失败",
+    "description": "能力应用覆盖写入失败的兜底错误"
+  },
+  "capabilityOverride.resetConfirm": {
+    "message": "恢复 {name} 的默认名称和图标？",
+    "description": "恢复确认文案，{name} 为平台默认应用名称"
+  },
+  "capabilityOverride.resetDone": {
+    "message": "已恢复默认名称和图标",
+    "description": "删除能力应用覆盖后的成功提示"
+  },
+  "capabilityOverride.fetchFailed": {
+    "message": "加载应用自定义失败",
+    "description": "无法读取能力应用覆盖管理记录时的错误"
   }
 }

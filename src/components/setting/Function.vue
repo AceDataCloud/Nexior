@@ -4,7 +4,7 @@
     <section v-for="feature in featureKeys" :key="feature" class="settings-item">
       <div class="settings-label">
         <div class="capability-heading">
-          <img :src="featureIcon(feature)" class="capability-favicon" alt="" />
+          <img :src="featureIcon(feature)" class="capability-favicon" alt="" @error="failedIcons[feature] = true" />
           <p class="settings-title">{{ featureLabel(feature) }}</p>
         </div>
         <p class="settings-tip">
@@ -12,6 +12,15 @@
         </p>
       </div>
       <div class="settings-content">
+        <el-tooltip :content="$t('site.capabilityOverride.edit')" placement="top">
+          <el-button
+            circle
+            size="small"
+            :icon="Edit"
+            :aria-label="$t('site.capabilityOverride.edit')"
+            @click="onEdit(feature as CapabilityKey)"
+          />
+        </el-tooltip>
         <el-switch
           :model-value="site.features?.[feature]?.enabled || false"
           inline-prompt
@@ -21,39 +30,106 @@
         />
       </div>
     </section>
+    <capability-override-dialog
+      v-if="editingCapability && site.id"
+      v-model="dialogVisible"
+      :site-id="site.id"
+      :capability="editingCapability"
+      :default-name="defaultFeatureLabel(editingCapability)"
+      :default-icon="CAPABILITY_ICONS[editingCapability]"
+      :override="overrides[editingCapability] || null"
+      @saved="onOverrideSaved"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { ElSwitch } from 'element-plus';
+import { ElButton, ElMessage, ElSwitch, ElTooltip } from 'element-plus';
+import { Edit } from '@element-plus/icons-vue';
 import SectionNotice from '@/components/setting/SectionNotice.vue';
-import { siteOperator } from '@/operators';
+import CapabilityOverrideDialog from '@/components/setting/CapabilityOverrideDialog.vue';
+import { siteCapabilityOverrideOperator, siteOperator } from '@/operators';
 import { CAPABILITY_ICONS, CAPABILITY_KEYS, type CapabilityKey } from '@/constants/capabilities';
+import type { ISiteCapabilityOverride } from '@/models';
+import { resolveCapabilityPresentation } from '@/utils/capabilityPresentation';
+import { toWritableSitePayload } from '@/utils';
 
 export default defineComponent({
   name: 'FunctionSetting',
   components: {
+    CapabilityOverrideDialog,
+    ElButton,
     ElSwitch,
+    ElTooltip,
     SectionNotice
+  },
+  data() {
+    return {
+      overrides: {} as Partial<Record<CapabilityKey, ISiteCapabilityOverride>>,
+      editingCapability: null as CapabilityKey | null,
+      dialogVisible: false,
+      failedIcons: {} as Partial<Record<CapabilityKey, boolean>>,
+      Edit,
+      CAPABILITY_ICONS
+    };
   },
   computed: {
     site() {
       return this.$store.getters.site || { features: {} };
     },
-    featureKeys(): string[] {
+    featureKeys(): CapabilityKey[] {
       return [...CAPABILITY_KEYS];
     }
   },
+  watch: {
+    'site.id': {
+      immediate: true,
+      handler(siteId?: string) {
+        if (siteId) void this.fetchOverrides();
+      }
+    }
+  },
   methods: {
-    featureLabel(feature: string) {
+    defaultFeatureLabel(feature: CapabilityKey): string {
       return this.$t('site.field.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
     },
-    featureTip(feature: string) {
+    featureLabel(feature: CapabilityKey): string {
+      return resolveCapabilityPresentation(
+        this.site,
+        feature,
+        this.defaultFeatureLabel(feature),
+        CAPABILITY_ICONS[feature]
+      ).displayName;
+    },
+    featureTip(feature: CapabilityKey) {
       return this.$t('site.message.features' + feature.charAt(0).toUpperCase() + feature.slice(1));
     },
-    featureIcon(feature: string): string {
-      return CAPABILITY_ICONS[feature as CapabilityKey];
+    featureIcon(feature: CapabilityKey): string {
+      if (this.failedIcons[feature]) return CAPABILITY_ICONS[feature];
+      return resolveCapabilityPresentation(
+        this.site,
+        feature,
+        this.defaultFeatureLabel(feature),
+        CAPABILITY_ICONS[feature]
+      ).iconUrl;
+    },
+    async fetchOverrides(): Promise<void> {
+      if (!this.site.id) return;
+      try {
+        const { data } = await siteCapabilityOverrideOperator.getAll({ site: this.site.id, limit: 100 });
+        this.overrides = Object.fromEntries((data.items || []).map((item) => [item.capability as CapabilityKey, item]));
+      } catch {
+        ElMessage.error(this.$t('site.capabilityOverride.fetchFailed') as string);
+      }
+    },
+    onEdit(feature: CapabilityKey): void {
+      this.editingCapability = feature;
+      this.dialogVisible = true;
+    },
+    async onOverrideSaved(): Promise<void> {
+      this.failedIcons = {};
+      await Promise.all([this.fetchOverrides(), this.$store.dispatch('getSite')]);
     },
     updateFeature(feature: string, updates: Record<string, unknown>) {
       this.onSave({
@@ -71,7 +147,7 @@ export default defineComponent({
     },
     onSave(data: any) {
       const payload = {
-        ...this.site,
+        ...toWritableSitePayload(this.site),
         ...data
       };
       siteOperator.update(this.site?.id, payload).then(() => {
