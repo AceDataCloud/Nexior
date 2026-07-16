@@ -895,6 +895,7 @@ export default defineComponent({
     h3 {
       margin: 10px 0 16px;
       font-size: 34px;
+      font-weight: 800;
       line-height: 1.25;
       letter-spacing: 0;
     }
