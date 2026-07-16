@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Kling O1 と V3 Omni に対応しています。編集または既存の動画の参考用に MP4/MOV（720–2160px、3–10 秒、≤200MB）をアップロードすると、プロンプトが自動的に <<<video_1>>> 追加されます。",
+    "description": "Omni 参考動画アップロードのヘルプテキスト"
+  },
+  "name.referenceImages": {
+    "message": "参考画像",
+    "description": "Omni 参考画像フィールドラベル"
+  },
+  "description.referenceImages": {
+    "message": "Kling O1 と V3 Omni に対応しています。最大 7 枚の参考画像をアップロードできます。参考動画がある場合は最大 4 枚です。プロンプト引用マークが自動的に追加されます。",
+    "description": "Omni 参考画像のヘルプテキスト"
+  },
+  "button.uploadReferenceImages": {
+    "message": "画像をアップロード",
+    "description": "Omni 参考画像をアップロードするボタン"
+  },
+  "message.referenceImagesExceed": {
+    "message": "あと {count} 枚の参考画像をアップロードできます。",
+    "description": "参考画像の数に関するヒント"
+  },
+  "message.referenceImagesError": {
+    "message": "参考画像のアップロードに失敗しました。再試行してください。",
+    "description": "参考画像アップロードエラー"
+  },
+  "name.referenceVideoType": {
+    "message": "動画の用途",
+    "description": "参考動画タイプラベル"
+  },
+  "name.referenceVideoFeature": {
+    "message": "特徴参考",
+    "description": "特徴参考動画オプション"
+  },
+  "name.referenceVideoBase": {
+    "message": "元の動画を編集",
+    "description": "基本的な動画編集オプション"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "参考動画がある場合、最大 4 枚の参考画像をサポートしています。余分な画像を削除してください。",
+    "description": "参考動画と画像の数の衝突"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "このリクエストでは最大 {count} 枚の参考画像をサポートしており、先頭フレームと末尾フレームも総数に含まれます。",
+    "description": "参考画像の総数制限に関する警告"
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "編集中の基本動画は、先頭フレームまたは末尾フレームと同時に使用できません。",
+    "description": "基本動画と先頭・末尾フレームの衝突に関する警告"
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

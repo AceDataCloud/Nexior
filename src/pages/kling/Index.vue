@@ -189,6 +189,20 @@ export default defineComponent({
         ...rest,
         async: true
       } as IKlingGenerateRequest;
+      const frameCount = Number(Boolean(request.start_image_url)) + Number(Boolean(request.end_image_url));
+      const referenceImageCount = request.image_list?.length || 0;
+      const maxReferenceImages = request.video_list?.length ? 4 : 7;
+      if (frameCount + referenceImageCount > maxReferenceImages) {
+        ElMessage.warning(this.$t('kling.message.referenceImagesTotalLimit', { count: maxReferenceImages }));
+        return;
+      }
+      if (
+        request.video_list?.[0]?.refer_type === 'base' &&
+        (request.start_image_url || request.end_image_url || request.image_list?.some(({ type }) => type))
+      ) {
+        ElMessage.warning(this.$t('kling.message.baseVideoFrameConflict'));
+        return;
+      }
       // Reject "only end frame, no start frame" — Kling can't anchor an
       // end-frame without a starting reference.
       if (!request.video_id && !(rest as any).video_url && !request.start_image_url && request.end_image_url) {

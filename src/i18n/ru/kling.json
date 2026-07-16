@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Подходит для Kling O1 и V3 Omni. Загрузите MP4/MOV (720–2160px, 3–10 секунд, ≤200MB) для редактирования или в качестве ссылки на существующее видео, подсказки будут автоматически добавлены <<<video_1>>>.",
+    "description": "Помощь по загрузке Omni референсного видео"
+  },
+  "name.referenceImages": {
+    "message": "Референсные изображения",
+    "description": "Метка поля для референсных изображений Omni"
+  },
+  "description.referenceImages": {
+    "message": "Подходит для Kling O1 и V3 Omni. Максимум можно загрузить 7 референсных изображений; при наличии референсного видео максимум 4 изображения. Подсказки будут автоматически добавлены.",
+    "description": "Помощь по референсным изображениям Omni"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Загрузить изображения",
+    "description": "Кнопка для загрузки Omni референсных изображений"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Можно загрузить еще {count} референсных изображений.",
+    "description": "Подсказка о количестве референсных изображений"
+  },
+  "message.referenceImagesError": {
+    "message": "Ошибка загрузки референсных изображений, пожалуйста, попробуйте снова.",
+    "description": "Ошибка загрузки референсных изображений"
+  },
+  "name.referenceVideoType": {
+    "message": "Назначение видео",
+    "description": "Метка типа референсного видео"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Референсные характеристики",
+    "description": "Опция референсного видео с характеристиками"
+  },
+  "name.referenceVideoBase": {
+    "message": "Редактировать оригинальное видео",
+    "description": "Основные параметры редактирования видео"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "При наличии референсного видео поддерживается максимум 4 референсных изображения, пожалуйста, сначала удалите лишние изображения.",
+    "description": "Конфликт количества референсного видео и изображений"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Этот запрос поддерживает максимум {count} референсных изображений, включая первую и последнюю рамки.",
+    "description": "Уведомление о лимите общего количества референсных изображений."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Базовое видео не может использоваться одновременно с первой или последней рамкой.",
+    "description": "Уведомление о конфликте между базовым видео и первой/последней рамкой."
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

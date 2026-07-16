@@ -26,7 +26,7 @@ const MODEL_LABELS: Record<string, string> = {
   'kling-v2-master': 'v2-Master',
   'kling-v1-6': 'v1.6',
   'kling-v1': 'v1',
-  'kling-video-o1': 'Video-o1'
+  'kling-o1': 'Kling O1'
 };
 
 const MODE_RESOLUTION: Record<string, string> = {
