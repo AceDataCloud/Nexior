@@ -38,15 +38,22 @@
               <div class="macbook-frame__viewport">
                 <img :src="heroDesktop" alt="" />
               </div>
-              <div class="macbook-frame__chin"><span>AceData</span></div>
+              <div class="macbook-frame__chin" />
             </div>
             <div class="macbook-frame__base"><span /></div>
+          </div>
+          <div class="phone-device hero__mobile" aria-hidden="true">
+            <span class="phone-device__speaker" />
+            <div class="phone-device__screen">
+              <span class="phone-device__island" />
+              <img :src="heroMobile" alt="" />
+            </div>
           </div>
           <button type="button" class="hero__note hero__note--top" @click="scrollToCreation">
             <font-awesome-icon icon="fa-solid fa-wand-magic-sparkles" />
             <span>{{ $t('index.note.allInOne') }}</span>
           </button>
-          <button type="button" class="hero__note hero__note--bottom" @click="scrollToSubsites">
+          <button v-if="isMainSite" type="button" class="hero__note hero__note--bottom" @click="scrollToSubsites">
             <font-awesome-icon icon="fa-solid fa-globe" />
             <span>{{ $t('index.note.customDomain') }}</span>
           </button>
@@ -104,7 +111,7 @@
                 <div class="macbook-frame__viewport">
                   <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
                 </div>
-                <div class="macbook-frame__chin"><span>AceData</span></div>
+                <div class="macbook-frame__chin" />
               </div>
               <div class="macbook-frame__base"><span /></div>
             </div>
@@ -130,7 +137,7 @@
                   <div class="macbook-frame__viewport">
                     <img :src="item.desktop" :alt="$t(item.titleKey)" loading="lazy" />
                   </div>
-                  <div class="macbook-frame__chin"><span>AceData</span></div>
+                  <div class="macbook-frame__chin" />
                 </div>
                 <div class="macbook-frame__base"><span /></div>
               </div>
@@ -228,6 +235,7 @@ interface IResolvedShowcase extends Omit<IShowcase, 'desktop' | 'mobile'> {
 
 const image = (zh: string, en: string): ILocalizedImage => ({ zh, en });
 const STUDIO_OVERVIEW_URL = 'https://platform.acedata.cloud/documents/studio-overview';
+const HOMEPAGE_EXCLUDED_CAPABILITIES = new Set<CapabilityKey>(['qrart', 'pika']);
 
 const SCREENSHOTS = {
   auth: image('https://cdn.acedata.cloud/ae2dceaacc.png', 'https://cdn.acedata.cloud/61f717db6c.png'),
@@ -320,17 +328,6 @@ const CREATION_SHOWCASES: IShowcase[] = [
     mobile: SCREENSHOTS.nanoMobile
   },
   {
-    key: 'video',
-    featureKeys: ['kling', 'omni'],
-    eyebrowKey: 'index.eyebrow.video',
-    titleKey: 'index.title.video',
-    subtitleKey: 'index.subtitle.video',
-    buttonKey: 'index.button.try',
-    path: '/kling',
-    desktop: SCREENSHOTS.klingDesktop,
-    mobile: SCREENSHOTS.klingMobile
-  },
-  {
     key: 'music',
     featureKeys: ['suno'],
     eyebrowKey: 'index.eyebrow.music',
@@ -394,7 +391,10 @@ export default defineComponent({
       return String(this.$i18n.locale).toLowerCase() === 'zh-cn';
     },
     heroDesktop(): string {
-      return this.localizedImage(SCREENSHOTS.branding);
+      return this.localizedImage(SCREENSHOTS.klingDesktop);
+    },
+    heroMobile(): string {
+      return this.localizedImage(SCREENSHOTS.klingMobile);
     },
     businessShowcases(): IResolvedShowcase[] {
       return BUSINESS_SHOWCASES.filter((item) => item.key !== 'subsites' || this.isMainSite).map((item) =>
@@ -408,9 +408,10 @@ export default defineComponent({
       return showcases.map((item) => this.resolveShowcase(item));
     },
     capabilityCards(): Array<{ key: CapabilityKey; label: string; icon: string }> {
-      const keys = this.isMainSite
+      const availableKeys = this.isMainSite
         ? CAPABILITY_KEYS
         : CAPABILITY_KEYS.filter((key) => this.enabledFeatures[key]?.enabled);
+      const keys = availableKeys.filter((key) => !HOMEPAGE_EXCLUDED_CAPABILITIES.has(key));
       return keys.map((key) => ({
         key,
         label: this.$t(`site.field.features${key.charAt(0).toUpperCase()}${key.slice(1)}`),
@@ -474,16 +475,15 @@ export default defineComponent({
 
 .macbook-frame {
   position: relative;
-  padding: 0 3.5% 3.8%;
+  padding: 0 3.5%;
   filter: drop-shadow(0 24px 28px rgba(5, 12, 20, 0.24));
 
   &__lid {
     position: relative;
     z-index: 1;
-    overflow: hidden;
-    padding: 3.2% 2.6% 0;
+    padding: 2.6% 2.2% 0;
     border: 1px solid #3c434d;
-    border-radius: 18px 18px 5px 5px;
+    border-radius: 18px 18px 3px 3px;
     background: linear-gradient(145deg, #11161d 0%, #050709 100%);
     box-shadow:
       inset 0 0 0 1px rgba(255, 255, 255, 0.08),
@@ -504,6 +504,7 @@ export default defineComponent({
 
   &__viewport {
     overflow: hidden;
+    border-radius: 11px 11px 2px 2px;
     background: #05070a;
 
     img {
@@ -520,20 +521,16 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 20px;
-    color: #8b929a;
-    font-size: 7px;
-    letter-spacing: 0.04em;
+    height: 12px;
   }
 
   &__base {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 4.8%;
-    min-height: 16px;
+    width: 107.5%;
+    height: 18px;
+    margin-top: -1px;
+    margin-left: -3.75%;
     border-radius: 2px 2px 14px 14px;
     background: linear-gradient(180deg, #d7d9dc 0%, #9ca1a7 38%, #575e66 72%, #c9ccd0 100%);
     box-shadow:
@@ -749,7 +746,15 @@ export default defineComponent({
   }
 
   &__desktop {
-    width: 100%;
+    width: 92%;
+  }
+
+  &__mobile {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: 12px;
+    width: 27%;
   }
 
   &__note {
@@ -1192,17 +1197,18 @@ export default defineComponent({
     }
 
     &__screens {
-      min-height: 330px;
+      min-height: 390px;
       padding-bottom: 20px;
     }
 
     &__desktop {
-      width: 100%;
+      width: 92%;
     }
 
     &__mobile {
-      right: 8px;
-      width: 31%;
+      right: 0;
+      bottom: 8px;
+      width: 29%;
     }
 
     &__note {
