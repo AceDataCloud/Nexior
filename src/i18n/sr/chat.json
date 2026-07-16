@@ -576,28 +576,28 @@
     "description": "Објашњење на дну картице након што је корисник прескочио овлашћење"
   },
   "scheduledTasks.navTitle": {
-    "message": "Scheduled Tasks"
+    "message": "Заказани задаци"
   },
   "scheduledTasks.title": {
-    "message": "Scheduled Tasks"
+    "message": "Заказани задаци"
   },
   "scheduledTasks.create": {
-    "message": "New"
+    "message": "Ново"
   },
   "scheduledTasks.edit": {
-    "message": "Edit Task"
+    "message": "Уреди задатак"
   },
   "scheduledTasks.empty": {
-    "message": "No scheduled tasks yet. Click \"New\" to create one."
+    "message": "Још нема заказаних задатака. Кликните на „Ново“ да бисте направили један."
   },
   "scheduledTasks.noRuns": {
-    "message": "No runs yet"
+    "message": "Још нема покретања"
   },
   "scheduledTasks.loadError": {
-    "message": "Failed to load"
+    "message": "Учитавање није успело"
   },
   "scheduledTasks.deleteConfirm": {
-    "message": "Delete \"{name}\"? The task will stop running."
+    "message": "Обрисати „{name}“? Задатак ће престати да се покреће."
   },
   "scheduledTasks.triggerNow": {
     "message": "Покрени сада",
@@ -612,41 +612,41 @@
     "description": "Manual trigger error"
   },
   "scheduledTasks.viewResult": {
-    "message": "View Result"
+    "message": "Прикажи резултат"
   },
   "scheduledTasks.viewRuns": {
-    "message": "Run history"
+    "message": "Историја покретања"
   },
   "scheduledTasks.noConversation": {
     "message": "Нема записа о разговору",
     "description": "Радња није повезана са разговором (стара верзија рада)"
   },
   "scheduledTasks.jitterHint": {
-    "message": "±60s jitter"
+    "message": "±60 s одступања"
   },
   "scheduledTasks.runCount": {
-    "message": "Ran {count} time(s)"
+    "message": "Покренуто {count} пут(а)"
   },
   "scheduledTasks.state.enabled": {
-    "message": "Active"
+    "message": "Активно"
   },
   "scheduledTasks.state.disabled": {
-    "message": "Paused"
+    "message": "Паузирано"
   },
   "scheduledTasks.state.error": {
-    "message": "Error"
+    "message": "Грешка"
   },
   "scheduledTasks.run.queued": {
-    "message": "Queued"
+    "message": "На чекању"
   },
   "scheduledTasks.run.running": {
-    "message": "Running"
+    "message": "У току"
   },
   "scheduledTasks.run.success": {
-    "message": "Success"
+    "message": "Успешно"
   },
   "scheduledTasks.run.failed": {
-    "message": "Failed"
+    "message": "Неуспело"
   },
   "scheduledTasks.run.reason.max_turns": {
     "message": "Достигнут лимит корака"
@@ -688,22 +688,22 @@
     "message": "Интерна грешка"
   },
   "scheduledTasks.run.needs_user_input": {
-    "message": "Needs action"
+    "message": "Потребна је радња"
   },
   "scheduledTasks.scheduleType.daily": {
-    "message": "Daily"
+    "message": "Дневно"
   },
   "scheduledTasks.scheduleType.minutely": {
     "message": "Сваког минута"
   },
   "scheduledTasks.scheduleType.hourly": {
-    "message": "Hourly"
+    "message": "На сат"
   },
   "scheduledTasks.scheduleType.weekly": {
-    "message": "Weekly"
+    "message": "Недељно"
   },
   "scheduledTasks.scheduleType.cron": {
-    "message": "Cron expression"
+    "message": "Cron израз"
   },
   "scheduledTasks.scheduleType.interval": {
     "message": "Сваких",
@@ -774,34 +774,34 @@
     "description": "Human-readable: once"
   },
   "scheduledTasks.form.name": {
-    "message": "Task name"
+    "message": "Назив задатка"
   },
   "scheduledTasks.form.namePlaceholder": {
-    "message": "e.g. Daily news summary"
+    "message": "нпр. Дневни преглед вести"
   },
   "scheduledTasks.form.model": {
-    "message": "Model"
+    "message": "Модел"
   },
   "scheduledTasks.form.prompt": {
-    "message": "Prompt"
+    "message": "Упит"
   },
   "scheduledTasks.form.promptPlaceholder": {
-    "message": "Enter your scheduled question or instruction. Supports {'{{date}}'}, {'{{run_count}}'}, {'{{last_output}}'} variables."
+    "message": "Унесите заказано питање или инструкцију. Подржане су променљиве {'}{{date}}{'}, {'}{{run_count}}{'}, {'}{{last_output}}{'}."
   },
   "scheduledTasks.form.promptHint": {
-    "message": "Variables: {'{{date}}'} today, {'{{run_count}}'} run number, {'{{last_output}}'} last output snippet"
+    "message": "Променљиве: {'}{{date}}{'} данас, {'}{{run_count}}{'} број покретања, {'}{{last_output}}{'} исечак последњег излаза"
   },
   "scheduledTasks.form.schedule": {
-    "message": "Frequency"
+    "message": "Учесталост"
   },
   "scheduledTasks.form.time": {
-    "message": "Time"
+    "message": "Време"
   },
   "scheduledTasks.form.weekday": {
-    "message": "Weekday"
+    "message": "Дан у недељи"
   },
   "scheduledTasks.form.cron": {
-    "message": "Cron expression"
+    "message": "Cron израз"
   },
   "scheduledTasks.form.skills": {
     "message": "Овласти Skills",
@@ -860,7 +860,7 @@
     "description": "Confirm button that saves the scheduled task anyway, bypassing the binding check (force)."
   },
   "scheduledTasks.form.required": {
-    "message": "Please fill in task name and prompt"
+    "message": "Попуните назив задатка и упит"
   },
   "artifacts.navTitle": {
     "message": "Производи",
@@ -1054,36 +1054,36 @@
     "description": "Fallback title for a BrowserDevice tool activity"
   },
   "browserTool.state.choose_device": {
-    "message": "Choose a browser device"
+    "message": "Изаберите уређај прегледача"
   },
   "browserTool.state.device_offline": {
-    "message": "Browser device is offline"
+    "message": "Уређај прегледача је ван мреже"
   },
   "browserTool.state.awaiting_device": {
-    "message": "Waiting for browser device"
+    "message": "Чека се уређај прегледача"
   },
   "browserTool.state.awaiting_local_approval": {
-    "message": "Waiting for approval on the browser device"
+    "message": "Чека се одобрење на уређају прегледача"
   },
   "browserTool.state.takeover_required": {
-    "message": "Take over on the browser device"
+    "message": "Преузмите контролу на уређају прегледача"
   },
   "browserTool.state.executing": {
-    "message": "Executing in browser"
+    "message": "Извршава се у прегледачу"
   },
   "browserTool.state.completed": {
-    "message": "Completed"
+    "message": "Завршено"
   },
   "browserTool.state.denied": {
-    "message": "Denied on the browser device"
+    "message": "Одбијено на уређају прегледача"
   },
   "browserTool.state.expired": {
-    "message": "Browser request expired"
+    "message": "Захтев прегледача је истекао"
   },
   "browserTool.state.cancel_too_late": {
-    "message": "Too late to cancel"
+    "message": "Прекасно за отказивање"
   },
   "scheduledTasks.run.waiting_for_device": {
-    "message": "Waiting for browser device"
+    "message": "Чека се уређај прегледача"
   }
 }

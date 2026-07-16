@@ -80,16 +80,16 @@
     "description": "Nachricht zur Hilfe bei WeChat-Zahlungen."
   },
   "message.wechatPayMobileGuide": {
-    "message": "Mobile browsers can't open WeChat Pay directly. Copy the payment link below and open it inside WeChat to continue.",
-    "description": "Guide shown to users on a mobile browser outside WeChat, where H5 WeChat Pay is unavailable."
+    "message": "Mobile Browser können WeChat Pay nicht direkt öffnen. Den unten stehenden Zahlungslink kopieren und in WeChat öffnen, um fortzufahren.",
+    "description": "Hinweis für Nutzer in einem mobilen Browser außerhalb von WeChat, in dem H5-WeChat-Pay nicht verfügbar ist."
   },
   "button.copyPayLink": {
-    "message": "Copy payment link",
-    "description": "Label for the button that copies the current page URL so the user can paste it inside WeChat."
+    "message": "Zahlungslink kopieren",
+    "description": "Beschriftung der Schaltfläche, die den aktuellen Zahlungslink kopiert, damit der Nutzer ihn in WeChat einfügen kann."
   },
   "message.wechatPayMobileHint": {
-    "message": "After copying, open WeChat, paste the link into any chat or the search bar, and tap it to complete payment.",
-    "description": "Secondary hint shown beneath the copy-link button to guide users through pasting the link inside WeChat."
+    "message": "Nach dem Kopieren WeChat öffnen, den Link in einen Chat oder die Suchleiste einfügen und antippen, um die Zahlung abzuschließen.",
+    "description": "Zusätzlicher Hinweis unter der Schaltfläche zum Kopieren des Links, der das Einfügen des Links in WeChat erklärt."
   },
   "message.free": {
     "message": "Kostenlos",
@@ -101,15 +101,15 @@
   },
   "message.applePayProcessing": {
     "message": "Kauf wird über den App Store abgeschlossen…",
-    "description": "Message while the Apple in-app purchase is processing."
+    "description": "Nachricht, während der In-App-Kauf über Apple verarbeitet wird."
   },
   "message.applePayFailed": {
     "message": "App-Store-Zahlung nicht abgeschlossen. Bitte erneut versuchen.",
-    "description": "Message when the Apple in-app purchase fails."
+    "description": "Nachricht, wenn der In-App-Kauf über Apple fehlschlägt."
   },
   "message.applePayUnavailable": {
     "message": "Dieses Paket kann nicht in der App gekauft werden.",
-    "description": "Message when Apple in-app purchase is unavailable for the package."
+    "description": "Nachricht, wenn der In-App-Kauf über Apple für dieses Paket nicht verfügbar ist."
   },
   "message.updateFailed": {
     "message": "Aktualisierung fehlgeschlagen",
@@ -397,7 +397,7 @@
   },
   "message.publicPayNotFound": {
     "message": "Bestellung nicht gefunden oder abgelaufen.",
-    "description": "Shown on public pay page when the order GET returns 404."
+    "description": "Wird auf der öffentlichen Zahlungsseite angezeigt, wenn die Bestellabfrage 404 zurückgibt."
   },
   "message.x402WalletStatusDetected": {
     "message": "Erkannt",
@@ -533,7 +533,7 @@
   },
   "message.wechatPayLongPressTip": {
     "message": "Halten Sie den QR-Code unten gedrueckt und waehlen Sie 'QR-Code erkennen', um die Zahlung in WeChat abzuschliessen.",
-    "description": "Tip shown above the Native QR on mobile-WeChat. The user long-presses to recognise the `weixin://wxpay/bizpayurl` URL and pays without leaving WeChat."
+    "description": "Hinweis über dem nativen QR-Code in mobilem WeChat. Der Nutzer hält gedrückt, um die `weixin://wxpay/bizpayurl`-URL zu erkennen und die Zahlung abzuschließen, ohne WeChat zu verlassen."
   },
   "message.wechatPayMobileScanTip": {
     "message": "Speichern oder machen Sie einen Screenshot des QR-Codes unten, öffnen Sie WeChat, klicken Sie auf 'Scannen', wählen Sie das Album in der oberen rechten Ecke und wählen Sie das gerade gespeicherte Bild aus, um die Zahlung abzuschließen.",
@@ -541,34 +541,34 @@
   },
   "message.creditsValue": {
     "message": "{value} Credits",
-    "description": "Display of credits amount for an order, e.g. '5 credits'. {value} is the formatted credit number."
+    "description": "Anzeige des Guthabenbetrags einer Bestellung, z. B. „5 Gutschriften“. {value} ist die formatierte Guthabenzahl."
   },
   "title.totalOrders": {
-    "message": "Total Orders",
-    "description": "Summary card: total number of orders matching the current filters."
+    "message": "Bestellungen gesamt",
+    "description": "Zusammenfassungskarte: Gesamtzahl der Bestellungen, die den aktuellen Filtern entsprechen."
   },
   "title.totalSpent": {
-    "message": "Total Spent",
-    "description": "Summary card: total amount spent across matching orders."
+    "message": "Gesamt ausgegeben",
+    "description": "Zusammenfassungskarte: insgesamt ausgegebener Betrag über alle passenden Bestellungen."
   },
   "title.finishedOrders": {
-    "message": "Finished Orders",
-    "description": "Summary card: number of finished orders."
+    "message": "Abgeschlossene Bestellungen",
+    "description": "Zusammenfassungskarte: Anzahl abgeschlossener Bestellungen."
   },
   "title.pendingOrders": {
-    "message": "Pending Orders",
-    "description": "Summary card: number of pending orders."
+    "message": "Ausstehende Bestellungen",
+    "description": "Zusammenfassungskarte: Anzahl ausstehender Bestellungen."
   },
   "button.export": {
-    "message": "Export CSV",
-    "description": "Button label to export the filtered orders as CSV."
+    "message": "CSV exportieren",
+    "description": "Beschriftung der Schaltfläche zum Exportieren der gefilterten Bestellungen als CSV."
   },
   "field.allStates": {
-    "message": "All States",
-    "description": "Placeholder of the state filter dropdown indicating no specific state is selected."
+    "message": "Alle Zustände",
+    "description": "Platzhalter des Statusfilters, wenn kein bestimmter Status ausgewählt ist."
   },
   "field.allPayWays": {
-    "message": "All Payment Methods",
-    "description": "Placeholder of the payment method filter dropdown indicating no specific method is selected."
+    "message": "Alle Zahlungsmethoden",
+    "description": "Platzhalter des Zahlungsartenfilters, wenn keine bestimmte Methode ausgewählt ist."
   }
 }

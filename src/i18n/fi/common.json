@@ -53,7 +53,7 @@
   },
   "button.deletePermanently": {
     "message": "Poista tili pysyvästi",
-    "description": "Final red delete button at the bottom of the delete confirmation dialog"
+    "description": "Poistovahvistusdialogissa alhaalla oleva punainen poistopainike"
   },
   "button.confirm": {
     "message": "Vahvista",
@@ -129,11 +129,11 @@
   },
   "button.downloadWindows": {
     "message": "Lataa Windowsille",
-    "description": "Text in button for downloading the Windows desktop installer"
+    "description": "Painikkeen teksti Windows-työpöytäasennusohjelman lataamiseen"
   },
   "button.downloadMac": {
     "message": "Lataa macOS:lle",
-    "description": "Text in button for downloading the macOS desktop installer"
+    "description": "Painikkeen teksti macOS-työpöytäasennusohjelman lataamiseen"
   },
   "button.installIos": {
     "message": "Asenna iOS",
@@ -232,8 +232,8 @@
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
   "error.loginLinkExpired": {
-    "message": "Login link expired. Please sign in again.",
-    "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
+    "message": "Kirjautumislinkki vanhentunut. Kirjaudu uudelleen sisään.",
+    "description": "Näytetään työpöytäsovelluksessa, kun OAuth-takaisinkutsu epäonnistuu (tilakonflikti tai vanhentunut)."
   },
   "entity.operation": {
     "message": "Toiminto",
@@ -261,7 +261,7 @@
   },
   "message.guestTasks": {
     "message": "Kirjaudu sisään aloittaaksesi tehtävän ja nähdäksesi luomuksesi täällä.",
-    "description": "Prompt shown in the task list area for not-logged-in guests"
+    "description": "Kehote tehtävälistassa kirjautumattomille vieraille"
   },
   "message.usedAmount": {
     "message": "Käytetty määrä",
@@ -309,43 +309,43 @@
   },
   "message.mobileComingSoon": {
     "message": "Tulossa pian",
-    "description": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared"
+    "description": "Lyhyt tilaetiketti alustakortissa (esim. iOS), kun sovellus on valmisteilla"
   },
   "message.mobileNowOnAppStore": {
-    "message": "Now on the App Store",
-    "description": "Status label shown on the iOS card when the app is live on the App Store"
+    "message": "Nyt App Storessa",
+    "description": "Tilaetiketti iOS-kortissa, kun sovellus on saatavilla App Storessa"
   },
   "message.desktopWindowsHint": {
     "message": "Windows 10:lle ja uudemmille (64-bittinen). Lataa asennusohjelma ja asenna kaksoisnapsauttamalla.",
-    "description": "Windows desktop download card description"
+    "description": "Windows-työpöytälatauskortin kuvaus"
   },
   "message.desktopMacHint": {
     "message": "macOS 11:lle ja uudemmille. Valitse Maciisi sopiva versio — Apple Silicon (M-sarja) tai Intel.",
-    "description": "macOS desktop download card description"
+    "description": "macOS-työpöytälatauskortin kuvaus"
   },
   "message.desktopUnsignedNote": {
     "message": "Työpöytäsovellukset ovat allekirjoittamattomia beta-versioita. Valitse Windowsissa SmartScreen-ilmoituksessa »Lisätietoja → Suorita silti«; valitse macOS:ssä sovellusta hiiren oikealla painikkeella »Avaa« ohittaaksesi Gatekeeperin.",
-    "description": "Note explaining the desktop builds are unsigned betas and how to open them"
+    "description": "Huomio, joka selittää, että työpöytäversiot ovat allekirjoittamattomia beta-versioita ja miten ne avataan"
   },
   "button.getOnGooglePlay": {
     "message": "Lataa Google Playsta",
-    "description": "Button label that opens the app's Google Play Store listing"
+    "description": "Painikkeen teksti, joka avaa sovelluksen Google Play -kauppasivun"
   },
   "button.getOnAppStore": {
-    "message": "Get it on the App Store",
-    "description": "Button label that opens the app's Apple App Store listing"
+    "message": "Lataa App Storesta",
+    "description": "Painikkeen teksti, joka avaa sovelluksen Apple App Store -kauppasivun"
   },
   "message.mobileApkFallback": {
     "message": "Eikö Google Play ole käytettävissä? Lataa APK suoraan.",
-    "description": "Shown next to a secondary button offering a direct APK download for users who cannot access Google Play"
+    "description": "Näytetään toissijaisen painikkeen vieressä, joka tarjoaa suoran APK-latauksen käyttäjille, joilla ei ole pääsyä Google Playhin"
   },
   "message.mobilePlayStoreHint": {
     "message": "Skannaa avataksesi Google Playn",
-    "description": "Hint under the QR code explaining that scanning it opens the Google Play listing"
+    "description": "Ohje QR-koodin alla, joka selittää, että skannaaminen avaa Google Play -listauksen"
   },
   "message.mobileAppStoreHint": {
-    "message": "Scan to open the App Store",
-    "description": "Hint under the QR code explaining that scanning it opens the App Store listing"
+    "message": "Skannaa avataksesi App Storen",
+    "description": "Ohje QR-koodin alla, joka selittää, että skannaaminen avaa App Store -listauksen"
   },
   "message.mobileInstallNote": {
     "message": "Kun asennat iOS:lle ensimmäistä kertaa yritys- tai Ad Hoc-pakettia, järjestelmä saattaa vaatia ensin luottamusta sertifikaattiin 'Asetukset > Yleiset > VPN ja laitehallinta' -valikossa.",
@@ -409,31 +409,31 @@
   },
   "message.deleteAccountConfirm": {
     "message": "Tämä poistaa tilisi ja kaikki siihen liittyvät tiedot pysyvästi. Tätä toimintoa ei voi peruuttaa. Haluatko varmasti jatkaa?",
-    "description": "Confirmation message shown before permanently deleting the user account"
+    "description": "Vahvistusviesti, joka näytetään ennen käyttäjätilin pysyvää poistamista"
   },
   "message.deleteAccountSuccess": {
     "message": "Tilisi on poistettu.",
-    "description": "Message shown after the user account is successfully deleted"
+    "description": "Viesti, joka näytetään käyttäjätilin onnistuneen poistamisen jälkeen"
   },
   "message.deleteAccountFailed": {
     "message": "Tilisi poistaminen epäonnistui. Yritä myöhemmin uudelleen.",
-    "description": "Message shown when account deletion fails"
+    "description": "Viesti, joka näytetään, kun tilin poistaminen epäonnistuu"
   },
   "message.deleteAccountWarning": {
     "message": "Tätä toimintoa ei voi peruuttaa! Tilisi ja kaikki sen tiedot poistetaan pysyvästi eikä niitä voi palauttaa.",
-    "description": "Red warning banner at the top of the delete confirmation dialog"
+    "description": "Punainen varoitusbanneri poistovahvistusdialogissa ylhäällä"
   },
   "message.deleteAccountConsequences": {
     "message": "Poistetaan pysyvästi: profiili, saldo ja krediitit, sovellukset ja tilaukset, API-avaimet sekä kolmannen osapuolen kirjautumissidokset.",
-    "description": "Explains what data will be removed in the delete confirmation dialog"
+    "description": "Selittää, mitä tietoja poistetaan poistovahvistusdialogissa"
   },
   "message.deleteAccountTypePrompt": {
     "message": "Kirjoita käyttäjänimesi vahvistaaksesi poiston:",
-    "description": "Instructs the user to type their username to confirm; the username is shown separately below"
+    "description": "Ohjaa käyttäjää kirjoittamaan käyttäjänimensä vahvistamiseksi; käyttäjänimi näytetään erikseen alla"
   },
   "message.deleteAccountPlaceholder": {
     "message": "Kirjoita käyttäjänimesi tähän",
-    "description": "Placeholder for the username confirmation input"
+    "description": "Käyttäjänimen vahvistussyötteen paikkamerkki"
   },
   "message.info": {
     "message": "Tietoa",
@@ -565,35 +565,35 @@
   },
   "nav.seedance": {
     "message": "SeeDance",
-    "description": "网站导航栏中的文本，用于显示SeeDance页面，请不要翻译此字段，必须保持为'SeeDance'"
+    "description": "Sivuston navigointipalkin teksti SeeDance-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'SeeDance'-muodossa"
   },
   "nav.grokvideo": {
     "message": "Grok Video",
-    "description": "Text in the website navigation bar to display the Grok Imagine video page"
+    "description": "Sivuston navigointipalkin teksti Grok Video -sivulle"
   },
   "nav.luma": {
     "message": "Luma",
-    "description": "网站导航栏中的文本，用于显示Luma页面，请不要翻译此字段，必须保持为'Luma'"
+    "description": "Sivuston navigointipalkin teksti Luma-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Luma'-muodossa"
   },
   "nav.pika": {
     "message": "Pika",
-    "description": "网站导航栏中的文本，用于显示Pika页面，请不要翻译此字段，必须保持为'Pika'"
+    "description": "Sivuston navigointipalkin teksti Pika-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Pika'-muodossa"
   },
   "nav.kling": {
     "message": "Kling",
-    "description": "网站导航栏中的文本，用于显示Kling页面，请不要翻译此字段，必须保持为'Kling'"
+    "description": "Sivuston navigointipalkin teksti Kling-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Kling'-muodossa"
   },
   "nav.hailuo": {
     "message": "Hailuo",
-    "description": "网站导航栏中的文本，用于显示Hailuo页面，请不要翻译此字段，必须保持为'Hailuo'"
+    "description": "Sivuston navigointipalkin teksti Hailuo-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Hailuo'-muodossa"
   },
   "nav.wan": {
     "message": "Wan",
-    "description": "网站导航栏中的文本，用于显示Wan页面，请不要翻译此字段，必须保持为'Wan'"
+    "description": "Sivuston navigointipalkin teksti Wan-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Wan'-muodossa"
   },
   "nav.producer": {
     "message": "Producer",
-    "description": "网站导航栏中的文本，用于显示Producer页面，请不要翻译此字段，必须保持为'Producer'"
+    "description": "Sivuston navigointipalkin teksti Producer-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Producer'-muodossa"
   },
   "nav.fish": {
     "message": "Fish Audio",
@@ -601,127 +601,127 @@
   },
   "nav.kimi": {
     "message": "Kimi",
-    "description": "网站导航栏中的文本，用于显示Kimi页面，请不要翻译此字段，必须保持为'Kimi'"
+    "description": "Sivuston navigointipalkin teksti Kimi-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'Kimi'-muodossa"
   },
   "nav.serp": {
     "message": "SERP",
-    "description": "网站导航栏中的文本，用于显示SERP页面，请不要翻译此字段，必须保持为'SERP'"
+    "description": "Sivuston navigointipalkin teksti SERP-sivulle, älä käännä tätä kenttää, sen täytyy pysyä 'SERP'-muodossa"
   },
   "nav.codingBridge": {
     "message": "Coding Bridge",
-    "description": "Text in the website navigation bar to display the Coding Bridge page, must remain as 'Coding Bridge'"
+    "description": "Sivuston navigointipalkin teksti Coding Bridge -sivulle, pysyy muodossa 'Coding Bridge'"
   },
   "nav.webextrator": {
     "message": "WebExtrator",
-    "description": "Text in the website navigation bar to display the WebExtrator page, must remain as 'WebExtrator'"
+    "description": "Sivuston navigointipalkin teksti WebExtrator-sivulle, pysyy muodossa 'WebExtrator'"
   },
   "nav.image": {
     "message": "Kuva",
-    "description": "网站导航栏中的文本，用于显示图片页面"
+    "description": "Sivuston navigointipalkin teksti kuvaussivulle"
   },
   "nav.music": {
     "message": "Musiikki",
-    "description": "网站导航栏中的文本，用于显示音乐页面"
+    "description": "Sivuston navigointipalkin teksti musiikkisivulle"
   },
   "nav.video": {
     "message": "Video",
-    "description": "网站导航栏中的文本，用于显示视频页面"
+    "description": "Sivuston navigointipalkin teksti videosivulle"
   },
   "nav.distribution": {
     "message": "Suositustulot",
-    "description": "网站导航栏中的文本，用于显示推荐收益页面"
+    "description": "Sivuston navigointipalkin teksti suositustulosivulle"
   },
   "nav.connections": {
     "message": "Yhteydet",
-    "description": "跳转到 auth.acedata.cloud 连接管理页的菜单项"
+    "description": "Valikkokohde siirtymiseen auth.acedata.cloud-yhteyksien hallintasivulle"
   },
   "nav.logOut": {
     "message": "Kirjaudu ulos",
-    "description": "网站导航栏中的文本，用于退出登录"
+    "description": "Sivuston navigointipalkin teksti kirjautumisesta poistumiseen"
   },
   "nav.deleteAccount": {
     "message": "Poista tili",
-    "description": "Menu item to permanently delete the current user account"
+    "description": "Valikkokohde nykyisen käyttäjätilin pysyvään poistamiseen"
   },
   "nav.site": {
     "message": "Sivuston asetukset",
-    "description": "网站导航栏中的文本，用于显示站点配置页面"
+    "description": "Sivuston navigointipalkin teksti sivuston asetussivulle"
   },
   "nav.subsite": {
     "message": "Oma alisivusto",
-    "description": "侧边栏“我的分站”入口，仅在站点开启 features.subsite 时显示"
+    "description": "Sivupaneelin \"Oma alisivusto\" -kohde, näytetään vain kun features.subsite on käytössä"
   },
   "nav.setting": {
     "message": "Asetukset",
-    "description": "网站导航栏中的文本，用于显示设置页面"
+    "description": "Sivuston navigointipalkin teksti asetussivulle"
   },
   "nav.more": {
     "message": "Lisää",
-    "description": "网站导航栏中的文本，用于展开更多服务"
+    "description": "Sivuston navigointipalkin teksti lisäpalveluiden laajentamiseen"
   },
   "nav.locale": {
     "message": "Kieliasetukset",
-    "description": "网站导航栏中的文本，用于更改语言"
+    "description": "Sivuston navigointipalkin teksti kielen vaihtamiseen"
   },
   "nav.support": {
     "message": "Asiakastuki",
-    "description": "网站导航栏中的文本，用于显示联系页面"
+    "description": "Sivuston navigointipalkin teksti asiakastukisivulle"
   },
   "nav.darkMode": {
     "message": "Tumma tila",
-    "description": "网站导航栏中的文本，用于切换到深色主题"
+    "description": "Sivuston navigointipalkin teksti tummaan teemaan vaihtamiseen"
   },
   "title.alert": {
     "message": "Varoitus",
-    "description": "警告消息的标题"
+    "description": "Varoitusviestin otsikko"
   },
   "title.placeholderOfSelect": {
     "message": "Valitse",
-    "description": "选择输入的占位符"
+    "description": "Valintasyötteen paikkamerkki"
   },
   "title.placeholderOfInput": {
     "message": "Täytä",
-    "description": "输入的占位符"
+    "description": "Syötekentän paikkamerkki"
   },
   "title.allApplications": {
     "message": "Kaikki hakemukset",
-    "description": "显示所有申请的页面标题"
+    "description": "Kaikkien hakemusten sivun otsikko"
   },
   "title.allOrders": {
     "message": "Kaikki tilaukset",
-    "description": "显示所有订单的页面标题"
+    "description": "Kaikkien tilausten sivun otsikko"
   },
   "title.orderInfo": {
     "message": "Tilaustiedot",
-    "description": "显示订单信息的页面标题"
+    "description": "Tilaustietojen sivun otsikko"
   },
   "title.buyMore": {
     "message": "Lataus",
-    "description": "页面标题，用于充值。英文必须翻译为“Top Up”，中文为“充值”。"
+    "description": "Sivun otsikko saldon lataukselle. Suomeksi 'Lataa saldoa'."
   },
   "title.distribution": {
     "message": "Suositustulot",
-    "description": "显示推荐收入的页面标题，意味着用户可以通过邀请他人使用该服务来赚钱"
+    "description": "Suositustulojen sivun otsikko; käyttäjä voi ansaita rahaa kutsumalla muita palveluun"
   },
   "title.site": {
     "message": "Sivuston asetukset",
-    "description": "显示站点配置的页面标题"
+    "description": "Sivuston asetusten sivun otsikko"
   },
   "title.distributionHistory": {
     "message": "Suositushistoria",
-    "description": "显示推荐历史的页面标题"
+    "description": "Suositushistorian sivun otsikko"
   },
   "title.invitee": {
     "message": "Kutsuja",
-    "description": "显示邀请人的页面标题"
+    "description": "Kutsutun henkilön sivun otsikko"
   },
   "title.allUsages": {
     "message": "Käyttöhistoria",
-    "description": "显示API服务所有使用的页面标题"
+    "description": "API-palvelun kaikkien käyttökertojen sivun otsikko"
   },
   "title.allCredentials": {
     "message": "Avaimet",
-    "description": "显示所有凭证的页面标题，凭证用于访问API"
+    "description": "Kaikkien tunnisteiden sivun otsikko; tunnisteet antavat pääsyn API:hin"
   },
   "about.title1": {
     "message": "Ota yhteyttä",
@@ -805,15 +805,15 @@
   },
   "settings.sendShortcut": {
     "message": "Lähetä viesti",
-    "description": "Title of the send-message shortcut row in General settings: choose Enter or modifier+Enter to send."
+    "description": "Asetuspaneelin viestin lähetyspikakomennon otsikko: valitse Enter tai modifier+Enter lähettämiseen"
   },
   "sendShortcut.enter": {
     "message": "Lähetä Enterillä",
-    "description": "Send-shortcut option: press Enter to send the message."
+    "description": "Lähetyspikakomennon vaihtoehto: paina Enter lähettääksesi viestin"
   },
   "sendShortcut.modEnter": {
     "message": "Lähetä näppäimellä {key} + Enter",
-    "description": "Send-shortcut option: press the platform modifier (⌘ or Ctrl) plus Enter to send. {key} is the modifier symbol."
+    "description": "Lähetyspikakomennon vaihtoehto: paina modifier-näppäintä (⌘ tai Ctrl) + Enter lähettääksesi. {key} on modifier-symboli."
   },
   "settings.loginMode": {
     "message": "Kirjautumistapa",
@@ -841,7 +841,7 @@
   },
   "settings.function": {
     "message": "Ominaisuudet",
-    "description": "Title for the site capabilities section in the settings page"
+    "description": "Otsikko sivuston toimintaosioon asetussivulla"
   },
   "settings.auth": {
     "message": "Todennus",
@@ -985,27 +985,27 @@
   },
   "settings.localTools": {
     "message": "Paikalliset työkalut",
-    "description": "Desktop-only settings tab for managing local tool folders, permissions and grants."
+    "description": "Vain työpöytäsovelluksessa käytettävissä oleva asetusvälilehti paikallisten työkalukansioiden, oikeuksien ja lupien hallintaan"
   },
   "settings.localToolsDesktopOnly": {
     "message": "Käytettävissä vain työpöytäsovelluksessa.",
-    "description": "Shown when the Local Tools tab is opened on web/mobile."
+    "description": "Näytetään, kun Paikalliset työkalut -välilehti avataan verkko- tai mobiilisovelluksessa"
   },
   "settings.localToolsFoldersTitle": {
     "message": "Valtuutetut kansiot",
-    "description": "Heading for the list of folders the AI may read/write locally."
+    "description": "Otsikko luettelolle kansioista, joita tekoäly voi lukea/kirjoittaa paikallisesti"
   },
   "settings.localToolsFoldersHint": {
     "message": "Kansiot, joita tekoäly saa lukea ja kirjoittaa tällä laitteella. Työkalut suoritetaan paikallisesti; mikään ei poistu laitteeltasi ilman suostumustasi.",
-    "description": "Help text under the authorized-folders heading."
+    "description": "Ohjeteksti valtuutettujen kansioiden otsikon alla"
   },
   "settings.localToolsComputerUseTitle": {
-    "message": "Computer Use (experimental)",
-    "description": "Heading for the opt-in Computer Use (screen + mouse/keyboard control) toggle."
+    "message": "Tietokoneen käyttö (kokeellinen)",
+    "description": "Otsikko tietokoneen käyttöominaisuuden (näyttö + hiiri/näppäimistöohjaus) kytkimelle"
   },
   "settings.localToolsComputerUseHint": {
-    "message": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
-    "description": "Help text under the Computer Use toggle."
+    "message": "Anna tekoälyn nähdä näyttösi ja ohjata hiirtä ja näppäimistöä tällä tietokoneella. Oletuksena pois päältä — ota käyttöön vain, jos luotat käynnissä oleville tekoälytehtäville.",
+    "description": "Ohjeteksti tietokoneen käyttökytkimen alla"
   },
   "settings.localToolsAndroidSkillsTitle": {
     "message": "Puhelinautomaatio taidot",
@@ -1082,171 +1082,171 @@
   "settings.localToolsBuiltinRisky": "Täysi käyttöoikeus",
   "settings.localToolsAddFolder": {
     "message": "Lisää kansio",
-    "description": "Button to pick a folder to authorize."
+    "description": "Painike kansion valitsemiseen ja valtuuttamiseen"
   },
   "settings.localToolsRemove": {
     "message": "Poista",
-    "description": "Button to remove an authorized folder."
+    "description": "Painike valtuutetun kansion poistamiseen"
   },
   "settings.localToolsNoFolders": {
     "message": "Ei vielä valtuutettuja kansioita.",
-    "description": "Empty state for the authorized-folders list."
+    "description": "Tyhjä tila valtuutettujen kansioiden luettelolle"
   },
   "settings.localToolsSave": {
     "message": "Tallenna",
-    "description": "Save the authorized folders."
+    "description": "Tallenna valtuutetut kansiot"
   },
   "settings.localToolsMcpTitle": {
-    "message": "MCP servers",
-    "description": "Section title for local MCP server configuration in Local Tools settings."
+    "message": "MCP-palvelimet",
+    "description": "Paikallisten MCP-palvelinten asetusosion otsikko Paikalliset työkalut -asetuksissa"
   },
   "settings.localToolsMcpHint": {
-    "message": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
-    "description": "Explains what local MCP servers do and that changes apply without a restart."
+    "message": "Yhdistä paikalliset MCP-palvelimet stdion kautta. Niiden työkalut tulevat tekoälyn käyttöön samojen toimintokohtaisten lupavirtojen alaisina kuin paikalliset kansiotyökalut. Muutokset tulevat voimaan ilman uudelleenkäynnistystä.",
+    "description": "Selittää, mitä paikalliset MCP-palvelimet tekevät ja että muutokset tulevat voimaan ilman uudelleenkäynnistystä"
   },
   "settings.localToolsMcpAdd": {
-    "message": "Add server",
-    "description": "Button to add a new local MCP server row."
+    "message": "Lisää palvelin",
+    "description": "Painike uuden paikallisen MCP-palvelinrivin lisäämiseen"
   },
   "settings.localToolsMcpName": {
-    "message": "Name",
-    "description": "Label for the MCP server name/id field."
+    "message": "Nimi",
+    "description": "Etiketti MCP-palvelimen nimi/tunnus-kentälle"
   },
   "settings.localToolsMcpCommand": {
-    "message": "Command",
-    "description": "Label for the MCP server launch command field."
+    "message": "Komento",
+    "description": "Etiketti MCP-palvelimen käynnistyskomennon kentälle"
   },
   "settings.localToolsMcpArgs": {
-    "message": "Arguments",
-    "description": "Label for the MCP server command arguments field."
+    "message": "Argumentit",
+    "description": "Etiketti MCP-palvelimen komentoriviargumenttien kentälle"
   },
   "settings.localToolsMcpArgsHint": {
-    "message": "One argument per line.",
-    "description": "Placeholder/hint for the MCP arguments textarea."
+    "message": "Yksi argumentti per rivi.",
+    "description": "MCP-argumenttien tekstialueen paikkamerkki/vihje"
   },
   "settings.localToolsMcpEnv": {
-    "message": "Environment",
-    "description": "Label for the MCP server environment variables field."
+    "message": "Ympäristömuuttujat",
+    "description": "Etiketti MCP-palvelimen ympäristömuuttujien kentälle"
   },
   "settings.localToolsMcpEnvHint": {
-    "message": "One KEY=VALUE per line.",
-    "description": "Placeholder/hint for the MCP environment variables textarea."
+    "message": "Yksi KEY=VALUE per rivi.",
+    "description": "MCP-ympäristömuuttujien tekstialueen paikkamerkki/vihje"
   },
   "settings.localToolsMcpNoServers": {
-    "message": "No MCP servers configured.",
-    "description": "Empty state shown when no MCP servers are configured."
+    "message": "MCP-palvelimia ei ole määritetty.",
+    "description": "Tyhjä tila, joka näkyy, kun MCP-palvelimia ei ole määritetty"
   },
   "settings.localToolsMcpNamePlaceholder": {
-    "message": "e.g. filesystem",
-    "description": "Placeholder for the MCP server name input."
+    "message": "esim. filesystem",
+    "description": "Paikkamerkki MCP-palvelimen nimisyötteelle"
   },
   "settings.localToolsMcpCommandPlaceholder": {
-    "message": "e.g. npx",
-    "description": "Placeholder for the MCP server command input."
+    "message": "esim. npx",
+    "description": "Paikkamerkki MCP-palvelimen komentosyötteelle"
   },
   "settings.localToolsMcpNameRequired": {
-    "message": "Each server needs a name and a command.",
-    "description": "Validation error when a server row is missing a name or command."
+    "message": "Jokaisella palvelimella täytyy olla nimi ja komento.",
+    "description": "Vahvistusvirhe, kun palvelinrivillä puuttuu nimi tai komento"
   },
   "settings.localToolsMcpDuplicateName": {
-    "message": "Server names must be unique.",
-    "description": "Validation error when two servers share the same name."
+    "message": "Palvelimien nimien täytyy olla yksilöllisiä.",
+    "description": "Vahvistusvirhe, kun kahdella palvelimella on sama nimi"
   },
   "settings.localToolsMcpNameInvalid": {
-    "message": "Name may only contain letters, numbers, hyphens and underscores.",
-    "description": "Validation error when a server name contains invalid characters."
+    "message": "Nimi voi sisältää vain kirjaimia, numeroita, yhdysviivoja ja alaviivoja.",
+    "description": "Vahvistusvirhe, kun palvelimen nimi sisältää virheellisiä merkkejä"
   },
   "settings.localToolsMcpEnabled": {
-    "message": "On",
-    "description": "Toggle label to enable/disable a local MCP server."
+    "message": "Päällä",
+    "description": "Kytkimen etiketti paikallisen MCP-palvelimen käyttöön ottamiseen/poistamiseen"
   },
   "settings.localToolsMcpReconnect": {
-    "message": "Test / Reconnect",
-    "description": "Button to re-spawn one MCP server and refresh its status."
+    "message": "Testaa / Yhdistä uudelleen",
+    "description": "Painike yhden MCP-palvelimen uudelleenkäynnistämiseen ja tilan päivittämiseen"
   },
   "settings.localToolsMcpConnecting": {
-    "message": "Connecting…",
-    "description": "Badge while an MCP server is being (re)connected."
+    "message": "Yhdistetään…",
+    "description": "Tila-merkki, kun MCP-palvelin on yhdistymässä"
   },
   "settings.localToolsMcpNotSaved": {
-    "message": "Not saved yet",
-    "description": "Badge for an MCP server row that hasn't been saved/connected yet."
+    "message": "Ei vielä tallennettu",
+    "description": "Tila-merkki MCP-palvelinriville, jota ei ole vielä tallennettu/yhdistetty"
   },
   "settings.localToolsMcpConnected": {
-    "message": "Connected · {n} tools",
-    "description": "Badge when an MCP server connected; {n} is the tool count."
+    "message": "Yhdistetty · {n} työkalua",
+    "description": "Tila-merkki, kun MCP-palvelin on yhdistynyt; {n} on työkalujen lukumäärä"
   },
   "settings.localToolsMcpDisabled": {
-    "message": "Disabled",
-    "description": "Badge when an MCP server is turned off."
+    "message": "Poistettu käytöstä",
+    "description": "Tila-merkki, kun MCP-palvelin on pois käytöstä"
   },
   "settings.localToolsMcpFailed": {
-    "message": "Failed to connect",
-    "description": "Badge when an MCP server failed to start; the reason is shown below."
+    "message": "Yhdistäminen epäonnistui",
+    "description": "Tila-merkki, kun MCP-palvelin ei käynnistynyt; syy näytetään alla"
   },
   "settings.localToolsMcpPlatformHint": {
-    "message": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
-    "description": "Cross-platform hint for configuring the MCP launch command."
+    "message": "Vinkki: käytä PATH:ssa olevaa komentoa, kuten npx tai uvx (esim. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). Windowsissa npx/node löytyvät automaattisesti. Jos palvelin näyttää \"spawn … ENOENT\", aseta komento täydelliseksi poluksi.",
+    "description": "Alustojen välinen vinkki MCP-käynnistyskomennon määrittämiseen"
   },
   "settings.localToolsSaved": {
     "message": "Tallennettu",
-    "description": "Transient confirmation after saving local-tool folders."
+    "description": "Väliaikainen vahvistus paikallisten työkalukansioiden tallentamisen jälkeen"
   },
   "settings.localToolsActiveTools": {
     "message": "Aktiiviset työkalut",
-    "description": "Label before the list of currently available local tools."
+    "description": "Etiketti tällä hetkellä saatavilla olevien paikallisten työkalujen luettelossa"
   },
   "settings.localToolsGrantsTitle": {
     "message": "Aina sallitut toiminnot",
-    "description": "Heading for the persistent consent grants list."
+    "description": "Otsikko pysyvien suostumustensien luettelolle"
   },
   "settings.localToolsGrantsHint": {
     "message": "Työkalukutsut, jotka valitsit sallittavaksi aina. Ne suoritetaan kysymättä uudelleen. Peru mikä tahansa ottaaksesi vahvistuksen taas käyttöön.",
-    "description": "Help text under the always-allowed actions heading."
+    "description": "Ohjeteksti aina-sallittujen toimintojen otsikon alla"
   },
   "settings.localToolsRevoke": {
     "message": "Peru",
-    "description": "Button to revoke a single always-allow grant."
+    "description": "Painike yhden aina-salli-luvan peruuttamiseen"
   },
   "settings.localToolsRevokeAll": {
     "message": "Peru kaikki",
-    "description": "Button to revoke every always-allow grant."
+    "description": "Painike kaikkien aina-salli-lupien peruuttamiseen"
   },
   "settings.localToolsNoGrants": {
     "message": "Ei aina sallittuja toimintoja. Sinulta kysytään ennen jokaista paikallista työkalua.",
-    "description": "Empty state for the always-allowed actions list."
+    "description": "Tyhjä tila aina-sallittujen toimintojen luettelolle"
   },
   "settings.localToolsPermsTitle": {
     "message": "Järjestelmän käyttöoikeudet",
-    "description": "Heading for the macOS system-permission section."
+    "description": "Otsikko macOS-järjestelmäoikeuksien osiolle"
   },
   "settings.localToolsPermsHint": {
     "message": "Valinnainen. Yllä oleva kansiokäyttö ei tarvitse näitä – myönnä vain se, mitä tietty tehtävä vaatii.",
-    "description": "Help text under the system-permissions heading."
+    "description": "Ohjeteksti järjestelmäoikeuksien otsikon alla"
   },
   "settings.localToolsPermFullDisk": {
     "message": "Täysi levyn käyttöoikeus",
-    "description": "macOS Full Disk Access permission row."
+    "description": "macOS-koko levyn käyttöoikeusrivi"
   },
   "settings.localToolsPermScreen": {
     "message": "Näytön tallennus",
-    "description": "macOS Screen Recording permission row."
+    "description": "macOS-näyttötallennusoikeusrivi"
   },
   "settings.localToolsPermAccessibility": {
     "message": "Käyttöapu",
-    "description": "macOS Accessibility permission row."
+    "description": "macOS-saavutettavuusoikeusrivi"
   },
   "settings.localToolsGranted": {
     "message": "Myönnetty",
-    "description": "Status tag when a system permission is granted."
+    "description": "Tila-tagi, kun järjestelmäoikeus on myönnetty"
   },
   "settings.localToolsNotGranted": {
     "message": "Ei myönnetty",
-    "description": "Status tag when a system permission is not granted."
+    "description": "Tila-tagi, kun järjestelmäoikeutta ei ole myönnetty"
   },
   "settings.localToolsOpen": {
     "message": "Avaa…",
-    "description": "Button to open the relevant macOS System Settings pane."
+    "description": "Painike, joka avaa asianmukaisen macOS-järjestelmäasetusruudun"
   },
   "settings.subsites": {
     "message": "Omat alisivustot",
@@ -1262,7 +1262,7 @@
   },
   "settings.customDomain": {
     "message": "Mukautettu verkkotunnus",
-    "description": "Title for the custom-domain management tab in the settings popup. Visible only on subsites (non-main-official hosts) for site admins."
+    "description": "Asetuspopupin mukautetun verkkotunnuksen hallinnan välilehden otsikko. Näkyy vain alisivustoilla (ei pääsivustolla) sivuston ylläpitäjille."
   },
   "settings.buildNow": {
     "message": "Yksi napsautus rakentamiseen",
@@ -1298,83 +1298,83 @@
   },
   "settings.contactSupport": {
     "message": "Ota yhteyttä tukeen",
-    "description": "Section title on the About page listing the site owner's customer-service channels"
+    "description": "Tietosivun osion otsikko, joka luettelee sivuston omistajan asiakaspalvelukanavat"
   },
   "settings.contactSupportTip": {
     "message": "Tavoita tukitiimimme minkä tahansa alla olevan kanavan kautta.",
-    "description": "Subtitle under the support contacts section on the About page"
+    "description": "Alaotsikko tukiyhteystietojen osiossa Tietosivulla"
   },
   "settings.contactInvalidUrl": {
     "message": "{field} on oltava kelvollinen http(s)-linkki",
-    "description": "Validation error shown when a contact URL is not a valid http(s) link"
+    "description": "Vahvistusvirhe, kun yhteystiedon URL ei ole kelvollinen http(s)-linkki"
   },
   "settings.contactInvalidPhone": {
     "message": "Anna kelvollinen puhelinnumero",
-    "description": "Validation error shown when the phone number is invalid"
+    "description": "Vahvistusvirhe, kun puhelinnumero on virheellinen"
   },
   "settings.contactInvalidEmail": {
     "message": "Anna kelvollinen sähköpostiosoite",
-    "description": "Validation error shown when the email address is invalid"
+    "description": "Vahvistusvirhe, kun sähköpostiosoite on virheellinen"
   },
   "settings.contactType": {
     "message": "Tyyppi",
-    "description": "Placeholder for the contact type picker in the editor"
+    "description": "Paikkamerkki yhteystietotyypin valitsimelle muokkaimessa"
   },
   "settings.contactType_phone": {
     "message": "Puhelin",
-    "description": "Display name for the phone contact type"
+    "description": "Näyttönimi puhelimen yhteystietotyypille"
   },
   "settings.contactType_email": {
     "message": "Sähköposti",
-    "description": "Display name for the email contact type"
+    "description": "Näyttönimi sähköpostin yhteystietotyypille"
   },
   "settings.contactType_website": {
     "message": "Verkkosivusto",
-    "description": "Display name for the website contact type"
+    "description": "Näyttönimi verkkosivuston yhteystietotyypille"
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Display name for the WeChat contact type"
+    "description": "Näyttönimi WeChat-yhteystietotyypille"
   },
   "settings.contactLabelPlaceholder": {
-    "message": "Label (optional), e.g. Sales",
-    "description": "Placeholder for the optional contact label input"
+    "message": "Etiketti (valinnainen), esim. Myynti",
+    "description": "Paikkamerkki valinnaiselle yhteystiedon etikettisyötteelle"
   },
   "settings.contactValuePlaceholder": {
-    "message": "Account / display text",
-    "description": "Placeholder for the generic contact value input"
+    "message": "Tili / näytettävä teksti",
+    "description": "Paikkamerkki yleiselle yhteystiedon arvosyötteelle"
   },
   "settings.contactQr": {
     "message": "QR-koodi",
-    "description": "Label for a contact's QR-code image"
+    "description": "Etiketti yhteystiedon QR-koodikuvalle"
   },
   "settings.contactQrTip": {
-    "message": "Upload a QR code users can scan to add you.",
-    "description": "Tip for the contact QR-code uploader"
+    "message": "Lataa QR-koodi, jonka käyttäjät voivat skannata lisätäkseen sinut.",
+    "description": "Vinkki yhteystiedon QR-koodin lataajalle"
   },
   "settings.contactAdd": {
     "message": "Lisää yhteystieto",
-    "description": "Button to add another contact entry"
+    "description": "Painike uuden yhteystietomerkinnän lisäämiseen"
   },
   "settings.contactEditorHint": {
-    "message": "Pick a type for each channel and fill in at least a value, link or QR. Add as many as you like.",
-    "description": "Hint at the top of the contacts editor dialog"
+    "message": "Valitse tyyppi jokaiselle kanavalle ja täytä vähintään arvo, linkki tai QR-koodi. Lisää niin monta kuin haluat.",
+    "description": "Vihje yhteystietojen muokkaimen dialogin yläosassa"
   },
   "settings.contactInvalidType": {
-    "message": "Type may only contain lowercase letters, digits, '-' and '_'",
-    "description": "Validation error for an invalid contact type slug"
+    "message": "Tyyppi voi sisältää vain pieniä kirjaimia, numeroita, '-' ja '_'",
+    "description": "Vahvistusvirhe virheelliselle yhteystietotyypin tunnukselle"
   },
   "settings.contactRowNeedsValue": {
-    "message": "Each contact needs at least a value, link or QR code",
-    "description": "Validation error when a contact row has no value/url/qr"
+    "message": "Jokaisessa yhteystiedossa on oltava vähintään arvo, linkki tai QR-koodi",
+    "description": "Vahvistusvirhe, kun yhteystietorivillä ei ole arvoa/url:ia/qr:ää"
   },
   "settings.contactInvalidValue": {
-    "message": "A contact field is invalid or too long",
-    "description": "Validation error when a contact value/label is invalid or too long"
+    "message": "Yhteystietokenttä on virheellinen tai liian pitkä",
+    "description": "Vahvistusvirhe, kun yhteystiedon arvo/etiketti on virheellinen tai liian pitkä"
   },
   "settings.contactTooMany": {
-    "message": "You can add at most {max} contacts",
-    "description": "Validation error when too many contacts are added"
+    "message": "Voit lisätä enintään {max} yhteystietoa",
+    "description": "Vahvistusvirhe, kun lisätään liikaa yhteystietoja"
   },
   "message.viewOnGithub": {
     "message": "Katso GitHubissa",
@@ -1405,24 +1405,24 @@
     "description": "Painikkeen teksti, jota käytetään palaamaan selaushistoriassa edelliselle sivulle"
   },
   "title.apiCode": {
-    "message": "API code for this request",
-    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+    "message": "API-koodi tälle pyynnölle",
+    "description": "Otsikko dialogille, joka näyttää vastaavan API-koodin (curl / Python / Node) tuotteen sisällä luodun tuloksen toistamiseksi"
   },
   "message.viewCodeHint": {
-    "message": "Show API code for this request",
-    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+    "message": "Näytä API-koodi tälle pyynnölle",
+    "description": "Tooltip-teksti Näytä koodi -painikkeessa tuloskortin toimintopainikkeiden vieressä. Painike avaa dialogin curl/Python/Node-pätkillä, jotka toistavat saman generoinnin julkisen API:n kautta."
   },
   "button.viewCode": {
-    "message": "View code",
-    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+    "message": "Näytä koodi",
+    "description": "Painikkeen teksti, joka avaa dialogin vastaavalla API-koodilla (curl / Python / Node) nykyiselle tulokselle"
   },
   "button.getApiKey": {
-    "message": "Get an API key",
-    "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
+    "message": "Hanki API-avain",
+    "description": "Linkin teksti API-koodidialogissa, joka avaa konsolin sivun, jossa käyttäjät voivat luoda API-avaimen"
   },
   "button.apiPlatform": {
     "message": "API Platform",
-    "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
+    "description": "API-koodidialogissa oleva painike. Napsauttaminen avaa https://platform.acedata.cloud/ uudessa välilehdessä API-avainten, saldon ja käytön hallintaan."
   },
   "message.apiCodeIntro": {
     "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
@@ -1481,24 +1481,24 @@
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
   "appUpgrade.title": {
-    "message": "Update required",
-    "description": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports."
+    "message": "Päivitys vaaditaan",
+    "description": "Natiivisovelluksen versiovaatimuksen modaalin otsikko käynnistyksen yhteydessä, kun asennettu versio on vanhempi kuin taustapalvelimen tukema versio"
   },
   "appUpgrade.blockMessage": {
-    "message": "This version is no longer supported. Please update from the app store to continue.",
-    "description": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store."
+    "message": "Tätä versiota ei enää tueta. Päivitä sovelluksesi sovelluskaupasta jatkaaksesi.",
+    "description": "Pakollisen päivitysmodaalin teksti, kun asennettu versio on alle min_supported. Modaalissa ei ole sulkemismahdollisuutta — ainoa painike avaa sovelluskaupan."
   },
   "appUpgrade.softMessage": {
-    "message": "A newer version is available. Update from the app store for the best experience.",
-    "description": "Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app."
+    "message": "Uudempi versio on saatavilla. Päivitä sovelluskaupasta parhaan käyttökokemuksen saamiseksi.",
+    "description": "Pehmeän päivityskehutteen teksti, kun asennettu versio on alle latest mutta yli min_supported. Käyttäjä voi hylätä ja jatkaa sovelluksen käyttöä."
   },
   "appUpgrade.openStore": {
-    "message": "Update now",
-    "description": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser."
+    "message": "Päivitä nyt",
+    "description": "Päivitysmodaalin ensisijainen painike — avaa App Store / Play Store -URL:n järjestelmäselaimessa"
   },
   "appUpgrade.later": {
-    "message": "Later",
-    "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
+    "message": "Myöhemmin",
+    "description": "Pehmeän päivityskehutteen toissijainen painike — sulkee modaalin ja antaa käyttäjän jatkaa nykyisellä versiolla. Näytetään vain ei-pakollisissa päivityksissä."
   },
   "nav.maestro": {
     "message": "Maestro",
@@ -1506,97 +1506,97 @@
   },
   "nav.digitalhuman": {
     "message": "Digital Human",
-    "description": "Text in the website navigation bar for the Digital Human talking-head page"
+    "description": "Sivuston navigointipalkin teksti Digital Human -puhevideo-sivulle"
   },
   "settings.localToolsAndroidPermHint": {
-    "message": "Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.",
-    "description": "Hint for the Android Computer Use accessibility permission section in Settings."
+    "message": "Ota käyttöön saavutettavuuspalvelu, jotta avustaja voi nähdä ja ohjata näyttöäsi. Voit ennakkoluvittaa toimintoja välttääksesi jokaisen toiminnon vahvistuspyynnön.",
+    "description": "Ohje Android-tietokoneen käytön saavutettavuusoikeuksia varten Asetuksissa"
   },
   "settings.cuConsentTitle": {
-    "message": "Allow action?",
-    "description": "Title of the on-demand consent dialog shown when the assistant requests a screen action."
+    "message": "Sallitaanko toiminto?",
+    "description": "Tietokoneen käyttöpyynnön suostumisdialogissa otsikko"
   },
   "settings.cuConsentMessage": {
-    "message": "The assistant wants to run \"{action}\" on your phone. Allow it?",
-    "description": "Body of the on-demand consent dialog; {action} is the computer.* action name."
+    "message": "Avustaja haluaa suorittaa toiminnon \"{action}\" puhelimellasi. Sallitaanko se?",
+    "description": "Suostumisdialoginen teksti; {action} on computer.*-toiminnon nimi"
   },
   "settings.cuConsentAllow": {
-    "message": "Allow once",
-    "description": "Allow button of the on-demand consent dialog."
+    "message": "Salli kerran",
+    "description": "Suostumisdialogissa salli-painike"
   },
   "settings.cuConsentAlways": {
-    "message": "Always allow",
-    "description": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again."
+    "message": "Salli aina",
+    "description": "Suostumisdialogissa aina-salli-painike; tallentaa luvan niin, ettei tämä toiminto enää pyydä vahvistusta"
   },
   "settings.cuConsentDeny": {
-    "message": "Deny",
-    "description": "Deny button of the on-demand consent dialog."
+    "message": "Kiellä",
+    "description": "Suostumisdialogissa kiellä-painike"
   },
   "settings.siteServices": {
     "message": "Hinta"
   },
   "settings.memoryEnabled": {
-    "message": "Use memory",
-    "description": "Title for the switch that controls whether chats use saved memory and learn new memory"
+    "message": "Käytä muistia",
+    "description": "Kytkimen otsikko, joka ohjaa, käyttävätkö chatit tallennettua muistia ja oppivat uutta muistia"
   },
   "settings.memoryEnabledHint": {
-    "message": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
-    "description": "Behavior explanation shown below the memory switch"
+    "message": "Kun pois päältä, tallennettuja muistoja ei käytetä eikä uusiin chatteihin luoda muistoja. Olemassa olevat muistot säilyvät.",
+    "description": "Käyttäytymisselitys muistikytkimen alla"
   },
   "nav.omni": {
     "message": "Omni Video",
-    "description": "Nav label for the Omni video module"
+    "description": "Navigointipalkin etiketti Omni Video -moduulille"
   },
   "settings.memoryImport": {
-    "message": "Import",
-    "description": "Button that opens the memory import dialog"
+    "message": "Tuo",
+    "description": "Painike, joka avaa muistin tuontidialogiin"
   },
   "settings.memoryImportTitle": {
-    "message": "Import memory from another AI",
-    "description": "Title of the memory import dialog"
+    "message": "Tuo muistia toisesta tekoälystä",
+    "description": "Muistin tuontidialogissa otsikko"
   },
   "settings.memoryImportExportStep": {
-    "message": "1. Ask your current AI to export its memory",
-    "description": "First step heading in the memory import dialog"
+    "message": "1. Pyydä nykyistä tekoälyäsi viemään muistinsa",
+    "description": "Ensimmäinen vaiheotsikko muistin tuontidialogissa"
   },
   "settings.memoryImportPrompt": {
-    "message": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
-    "description": "Prompt users copy into another AI service to export memories"
+    "message": "Siirtymässä toiseen tekoälypalveluun. Listaa jokainen tallennettu muisti ja pysyvä konteksti, jonka olet oppinut minusta. Laita kaikki yhteen koodilohkoon, yksi muisti per rivi. Muotoile jokainen rivi näin: [tallennuspäivä, jos saatavilla] - muistin sisältö. Sisällytä vastausmieltymykset, henkilökohtaiset tiedot, projektit, tavoitteet, työkalut, kielet, sovelluskehykset ja tekemäni korjaukset. Säilytä omat sanani mahdollisuuksien mukaan. Älä sisällytä salaisuuksia tai arkaluonteisia tietoja.",
+    "description": "Kehote, jonka käyttäjät kopioivat toiseen tekoälypalveluun muistojen viemiseksi"
   },
   "settings.memoryImportCopy": {
-    "message": "Copy prompt",
-    "description": "Button that copies the memory export prompt"
+    "message": "Kopioi kehote",
+    "description": "Painike, joka kopioi muistin vientikehutteen"
   },
   "settings.memoryImportCopied": {
-    "message": "Prompt copied",
-    "description": "Toast shown after copying the memory export prompt"
+    "message": "Kehote kopioitu",
+    "description": "Ilmoitus muistin vientikehutteen kopioimisen jälkeen"
   },
   "settings.memoryImportPasteStep": {
-    "message": "2. Paste the exported memory",
-    "description": "Second step heading in the memory import dialog"
+    "message": "2. Liitä viety muisti",
+    "description": "Toinen vaiheotsikko muistin tuontidialogissa"
   },
   "settings.memoryImportPlaceholder": {
-    "message": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
-    "description": "Placeholder for pasted memory export text"
+    "message": "Liitä ChatGPT:n, Clauden, Geminin tai muun tekoälyn palauttama muistiteksti tähän…",
+    "description": "Paikkamerkki liitetylle muistin vientitekstille"
   },
   "settings.memoryImportSubmit": {
-    "message": "Add to memory",
-    "description": "Button that submits pasted memories for import"
+    "message": "Lisää muistiin",
+    "description": "Painike, joka lähettää liitetyt muistot tuotavaksi"
   },
   "settings.memoryImportSuccess": {
     "message": "Imported {count} memory entries",
     "description": "Success toast after importing memory; count is the number of accepted entries"
   },
   "settings.memoryImportPartial": {
-    "message": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
-    "description": "Warning shown after a partial memory import"
+    "message": "Käsitelty {processed} merkintää; {rejected} turvatonta tai virheellistä merkintää ohitettiin.",
+    "description": "Varoitus osittaisen muistin tuonnin jälkeen"
   },
   "settings.memoryImportInvalid": {
-    "message": "No memory could be imported. Make sure memory is on and paste one plain fact per line.",
-    "description": "Actionable error shown when the memory import request is invalid"
+    "message": "Muistoja ei voitu tuoda. Varmista, että muisti on päällä, ja liitä yksi yksinkertainen fakta per rivi.",
+    "description": "Toimintakehotusvirhe, joka näytetään, kun muistin tuontipyyntö on virheellinen"
   },
   "settings.memoryImportInProgress": {
-    "message": "A memory import is already running. Keep this dialog open and try again shortly.",
-    "description": "Warning shown when another memory import job is active"
+    "message": "Muistin tuonti on jo käynnissä. Pidä tämä dialogi auki ja yritä uudelleen hetken kuluttua.",
+    "description": "Varoitus, joka näytetään, kun toinen muistin tuontityö on käynnissä"
   }
 }

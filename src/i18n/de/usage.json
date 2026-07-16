@@ -21,7 +21,7 @@
   },
   "field.credential": {
     "message": "Zugangsdaten",
-    "description": "The API key (credential) that generated this usage record."
+    "description": "Der API-Schlüssel (Zugangsdaten), der diesen Nutzungsdatensatz erzeugt hat."
   },
   "field.usedAmount": {
     "message": "Verwendete Menge",
@@ -125,15 +125,15 @@
   },
   "field.consumed": {
     "message": "Verbraucht",
-    "description": "Column header in the usage breakdown table for the total points a single API consumed within the selected time range."
+    "description": "Spaltenüberschrift in der Nutzungsaufschlüsselung für die insgesamt von einer API verbrauchten Punkte im gewählten Zeitraum."
   },
   "field.share": {
     "message": "Anteil",
-    "description": "Column header in the usage breakdown table for a single API's percentage of the total consumption."
+    "description": "Spaltenüberschrift in der Nutzungsaufschlüsselung für den prozentualen Anteil einer API am Gesamtverbrauch."
   },
   "field.autoRefresh": {
     "message": "Automatische Aktualisierung",
-    "description": "Toggle label at the top-right of the usage table; when on, the latest records refresh automatically on an interval."
+    "description": "Schalter oben rechts in der Nutzungstabelle; wenn aktiviert, werden die neuesten Datensätze automatisch in Intervallen aktualisiert."
   },
   "value.processing": {
     "message": "Wird verarbeitet",
@@ -149,18 +149,18 @@
   },
   "view.trend": {
     "message": "Trend",
-    "description": "View switch button in the usage analytics card: stacked bar chart of per-API consumption over time."
+    "description": "Ansichtsschalter in der Karte zur Nutzungsanalyse: gestapeltes Balkendiagramm des Verbrauchs pro API im Zeitverlauf."
   },
   "view.distribution": {
     "message": "Anteil",
-    "description": "View switch button in the usage analytics card: doughnut chart of each API's consumption share."
+    "description": "Ansichtsschalter in der Karte zur Nutzungsanalyse: Ringdiagramm des Verbrauchsanteils jeder API."
   },
   "view.breakdown": {
     "message": "Aufschlüsselung",
-    "description": "View switch button in the usage analytics card: a table listing every API's exact consumption and share."
+    "description": "Ansichtsschalter in der Karte zur Nutzungsanalyse: Tabelle mit dem exakten Verbrauch und Anteil jeder API."
   },
   "message.exportFailed": {
     "message": "Export fehlgeschlagen. Bitte grenzen Sie den Zeitraum ein und versuchen Sie es erneut.",
-    "description": "Error toast shown when the CSV export request fails (network or server error)."
+    "description": "Fehlerhinweis, wenn die Anfrage zum CSV-Export fehlschlägt (Netzwerk- oder Serverfehler)."
   }
 }
