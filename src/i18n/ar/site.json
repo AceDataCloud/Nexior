@@ -52,8 +52,8 @@
     "description": "加价比例设置项的说明文字"
   },
   "message.markupExample": {
-    "message": "مثال: السعر الرسمي {from} → سعر البيع الخاص بك {to}",
-    "description": "مثال حي أسفل إعداد نسبة الزيادة، {from} هو السعر الرسمي الأصلي، و{to} هو السعر بعد الزيادة"
+    "message": "على سبيل المثال، إذا كان السعر الرسمي 20 دولارًا وأدخلت 10، فسيصبح سعرك 22 دولارًا.",
+    "description": "مثال ثابت أسفل إعداد نسبة زيادة السعر"
   },
   "field.disableRecharge": {
     "message": "تعطيل إعادة الشحن",
@@ -100,104 +100,104 @@
     "description": "Login provider display name: Sign in with Apple."
   },
   "field.authProvider_wechat": {
-    "message": "WeChat",
-    "description": "اسم طريقة تسجيل الدخول: تسجيل الدخول عبر WeChat كطرف ثالث"
+    "message": "وي شات",
+    "description": "اسم طريقة تسجيل الدخول: تسجيل الدخول عبر وي شات"
   },
   "field.authSmsWebhook": {
-    "message": "Custom SMS Sender",
-    "description": "Site settings / login: title for the site's own custom SMS verification-code delivery webhook"
+    "message": "عنوان إرسال الرسائل النصية المخصص",
+    "description": "إعدادات الموقع / تسجيل الدخول: عنوان لواجهة برمجة التطبيقات الخاصة بإرسال رمز التحقق عبر الرسائل النصية"
   },
   "message.authSmsWebhookTip": {
-    "message": "When enabled, this site's phone verification codes are sent through your own endpoint under your own signature; disable it to use the platform default. Requires the phone-number login provider to be enabled.",
-    "description": "Explains the custom SMS sender webhook"
+    "message": "عند التفعيل، ستقوم واجهة الموقع بإرسال رسائل التحقق من الهاتف بواسطة واجهتك الخاصة مع توقيعك الخاص؛ عند الإغلاق، سيتم استخدام توقيع النظام الافتراضي. يجب تفعيل طريقة تسجيل الدخول باستخدام \"رقم الهاتف\" أولاً.",
+    "description": "يشرح واجهة برمجة تطبيقات مرسل SMS المخصص"
   },
   "placeholder.authSmsWebhookUrl": {
     "message": "https://your-domain/sms-webhook",
-    "description": "Placeholder for the SMS webhook URL input"
+    "description": "نص توضيحي لحقل إدخال URL لواجهة برمجة تطبيقات SMS"
   },
   "placeholder.authSmsWebhookSecret": {
-    "message": "Signing secret (leave blank to keep unchanged)",
-    "description": "Placeholder for the SMS webhook signing secret input; write-only, blank keeps existing"
+    "message": "مفتاح التوقيع (اتركه فارغًا للحفاظ على الوضع الحالي)",
+    "description": "نص توضيحي لحقل إدخال مفتاح توقيع واجهة برمجة تطبيقات SMS؛ كتابة فقط، الفراغ يحافظ على الوضع الحالي"
   },
   "field.authSmsWebhookEnable": {
-    "message": "Use a custom sender",
-    "description": "Label next to the custom SMS sender toggle"
+    "message": "تفعيل عنوان مرسل مخصص",
+    "description": "تسمية بجوار مفتاح تبديل مرسل SMS المخصص"
   },
   "field.authSmsWebhookDoc": {
-    "message": "View docs",
-    "description": "Link that opens the SMS webhook spec dialog"
+    "message": "عرض الوثائق",
+    "description": "رابط يفتح مربع حوار مواصفات واجهة برمجة التطبيقات الخاصة بإرسال الرسائل النصية"
   },
   "field.authSmsWebhookTest": {
-    "message": "Test",
-    "description": "Button that opens the SMS webhook test dialog"
+    "message": "اختبار",
+    "description": "زر يفتح حوار اختبار واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookNeedsPhone": {
-    "message": "Enable the phone-number login provider first to configure a custom SMS sender.",
-    "description": "Tooltip shown when the toggle is disabled because phone login is off"
+    "message": "يجب تفعيل طريقة تسجيل الدخول باستخدام \"رقم الهاتف\" أولاً لتكوين عنوان مرسل SMS مخصص.",
+    "description": "تلميح يظهر عند تعطيل المفتاح بسبب إيقاف تسجيل الدخول عبر الهاتف"
   },
   "field.authSmsWebhookDocTitle": {
-    "message": "Custom SMS Sender · Webhook spec",
-    "description": "Title of the SMS webhook spec dialog"
+    "message": "عنوان مرسل الرسائل النصية المخصص · وصف الواجهة",
+    "description": "عنوان حوار مواصفات واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookDocIntro": {
-    "message": "This site sends a signed HTTPS POST to the URL you provide; your service is responsible for delivering the SMS. Your endpoint must meet the following requirements:",
-    "description": "Intro paragraph of the SMS webhook spec dialog"
+    "message": "سيقوم الموقع بإرسال طلب HTTPS POST موقع إلى العنوان الذي قمت بإدخاله، وستكون خدمتك مسؤولة عن إرسال الرسائل النصية. يرجى التأكد من أن واجهتك تلبي المتطلبات التالية:",
+    "description": "فقرة مقدمة لحوار مواصفات واجهة برمجة تطبيقات SMS"
   },
   "field.authSmsWebhookDocRequest": {
-    "message": "Request",
-    "description": "Heading: request section of the SMS webhook spec"
+    "message": "طلب",
+    "description": "عنوان: قسم الطلبات لمواصفات واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookDocRequest": {
-    "message": "Method POST, Content-Type application/json. purpose is one of login / register / test (test is a connectivity probe — you may skip actually sending). The request body looks like:",
-    "description": "Describes the request method and body of the SMS webhook"
+    "message": "الطريقة هي POST، نوع المحتوى هو application/json. قد يكون الغرض login / register / test (test هو اختبار الاتصال، ولا يلزم إرسال رسالة نصية فعلية). هيكل جسم الطلب كما يلي:",
+    "description": "يصف طريقة الطلب وجسم واجهة برمجة تطبيقات SMS"
   },
   "field.authSmsWebhookDocHeaders": {
-    "message": "Signature verification",
-    "description": "Heading: signature section of the SMS webhook spec"
+    "message": "التحقق من التوقيع",
+    "description": "عنوان: قسم التوقيع في مواصفات واجهة برمجة التطبيقات الخاصة بإرسال الرسائل النصية"
   },
   "message.authSmsWebhookDocHeaders": {
-    "message": "Each request carries the headers below. Verify with your signing secret using HMAC-SHA256 per the Standard Webhooks spec and compare in constant time:",
-    "description": "Describes signature verification for the SMS webhook"
+    "message": "يرجى إرفاق رؤوس الطلب التالية مع كل طلب، واستخدم مفتاح التوقيع الخاص بك للتحقق من HMAC-SHA256 وفقًا لمعايير واجهة برمجة التطبيقات القياسية، واستخدم مقارنة الوقت الثابت:",
+    "description": "يصف التحقق من التوقيع لواجهة برمجة تطبيقات SMS"
   },
   "field.authSmsWebhookDocResponse": {
-    "message": "Response",
-    "description": "Heading: response section of the SMS webhook spec"
+    "message": "استجابة",
+    "description": "عنوان: قسم الاستجابة لمواصفات واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookDocResponse": {
-    "message": "Return 2xx on success. To signal failure explicitly, return HTTP 200 with a JSON body whose success field is false (see the example below). Respond within 5 seconds.",
-    "description": "Describes the expected response of the SMS webhook"
+    "message": "يرجى إرجاع 2xx عند النجاح؛ إذا كنت بحاجة إلى الإشارة بشكل صريح إلى الفشل، يمكنك إرجاع HTTP 200، ويجب أن يكون حقل success في الجسم false (انظر المثال أدناه). يرجى الرد خلال 5 ثوان.",
+    "description": "يصف الاستجابة المتوقعة لواجهة برمجة تطبيقات SMS"
   },
   "field.authSmsWebhookTestTitle": {
-    "message": "Test custom SMS sender",
-    "description": "Title of the SMS webhook test dialog"
+    "message": "اختبار عنوان مرسل الرسائل النصية المخصص",
+    "description": "عنوان حوار اختبار واجهة برمجة تطبيقات SMS"
   },
   "field.authSmsWebhookTestRegion": {
-    "message": "Country/region code",
-    "description": "Label for the region-code field in the test dialog"
+    "message": "رمز المنطقة",
+    "description": "تسمية لحقل رمز المنطقة في حوار الاختبار"
   },
   "field.authSmsWebhookTestNumber": {
-    "message": "Test phone number (optional)",
-    "description": "Label for the phone-number field in the test dialog"
+    "message": "رقم الهاتف للاختبار (اختياري)",
+    "description": "تسمية لحقل رقم الهاتف في حوار الاختبار"
   },
   "field.authSmsWebhookTestSend": {
-    "message": "Send test",
-    "description": "Button that sends the SMS webhook test request"
+    "message": "إرسال اختبار",
+    "description": "زر يرسل طلب اختبار واجهة برمجة تطبيقات SMS"
   },
   "message.authSmsWebhookTestOk": {
-    "message": "The test request was delivered to your endpoint successfully.",
-    "description": "Success message after a webhook test"
+    "message": "تم تسليم طلب الاختبار بنجاح إلى واجهتك.",
+    "description": "رسالة نجاح بعد اختبار واجهة برمجة التطبيقات"
   },
   "message.authSmsWebhookTestFailed": {
-    "message": "Test failed. Check the URL, signing secret, and your endpoint's response.",
-    "description": "Failure message after a webhook test"
+    "message": "فشل الاختبار، يرجى التحقق من العنوان ومفتاح التوقيع واستجابة الواجهة.",
+    "description": "رسالة فشل بعد اختبار واجهة برمجة التطبيقات"
   },
   "field.authSmsWebhookDisableTitle": {
-    "message": "Disable custom SMS sender",
-    "description": "Title of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "إيقاف عنوان إرسال الرسائل النصية المخصص",
+    "description": "عنوان مربع التأكيد المعروض عند تعطيل مرسل الرسائل النصية المخصص"
   },
   "message.authSmsWebhookDisableConfirm": {
-    "message": "Disabling this deletes the saved sender URL and signing secret (the secret cannot be recovered), and this site falls back to the platform default signature. Disable it?",
-    "description": "Body of the confirm dialog shown when disabling the custom SMS sender"
+    "message": "بعد الإغلاق، سيتم حذف عنوان المرسل المحفوظ ومفتاح التوقيع (المفتاح غير قابل للاسترداد)، وسيتم استخدام توقيع النظام الافتراضي. هل أنت متأكد أنك تريد الإغلاق؟",
+    "description": "نص الحوار التأكيدي المعروض عند تعطيل مرسل SMS المخصص"
   },
   "field.featuresChat": {
     "message": "دردشة",
@@ -224,8 +224,8 @@
     "description": "يظهر كعنوان في صندوق التحرير"
   },
   "field.featuresDigitalhuman": {
-    "message": "Digital Human",
-    "description": "Displayed as the title in the editing box"
+    "message": "إنسان رقمي",
+    "description": "يظهر كعنوان في صندوق التحرير"
   },
   "field.featuresDeepseek": {
     "message": "ديب سيك",
@@ -290,6 +290,10 @@
   "field.featuresSeedance": {
     "message": "سي دانس",
     "description": "عرض في مربع التحرير"
+  },
+  "field.featuresOmni": {
+    "message": "Omni",
+    "description": "يُعرض كعنوان في مربع التحرير"
   },
   "field.featuresWan": {
     "message": "وان",
@@ -643,6 +647,10 @@
     "message": "توليد فيديو من ByteDance لمشاهد ديناميكية وحركة كاميرا وصوت اختياري.",
     "description": "Concise capability introduction: ByteDance video generation for dynamic scenes, camera motion, and optional audio."
   },
+  "message.featuresOmni": {
+    "message": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو.",
+    "description": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو."
+  },
   "message.featuresWan": {
     "message": "توليد فيديو من Alibaba من النصوص أو الصور أو المراجع بدقات متعددة.",
     "description": "Concise capability introduction: Alibaba video generation from text, images, or references at multiple resolutions."
@@ -882,92 +890,84 @@
   "services.message.fetchFailed": {
     "message": "فشل تحميل تجاوزات الخدمة"
   },
-  "field.featuresOmni": {
-    "message": "Omni",
-    "description": "يُعرض كعنوان في مربع التحرير"
-  },
-  "message.featuresOmni": {
-    "message": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو.",
-    "description": "أنشئ مقاطع فيديو أو حرّرها باستخدام نماذج Omni انطلاقًا من النصوص والصور ومراجع الفيديو."
-  },
   "capabilityOverride.edit": {
-    "message": "Customize app",
-    "description": "Tooltip and accessible label for editing a capability app name and icon"
+    "message": "تخصيص التطبيق",
+    "description": "تلميح لتحرير اسم الأيقونة والتطبيق مع علامة وصول"
   },
   "capabilityOverride.dialogTitle": {
-    "message": "Customize {name}",
-    "description": "Dialog title; {name} is the platform-default capability app name"
+    "message": "تخصيص {name}",
+    "description": "عنوان النافذة المنبثقة، {name} هو اسم التطبيق الافتراضي للمنصة"
   },
   "capabilityOverride.displayName": {
-    "message": "Custom name",
-    "description": "Field label for a per-site capability app display name"
+    "message": "اسم مخصص",
+    "description": "حقل اسم عرض تطبيق القدرة الفرعية"
   },
   "capabilityOverride.displayNameTip": {
-    "message": "Leave blank to use {name}. Save once before enabling automatic translation.",
-    "description": "Help text; {name} is the platform-default capability app name"
+    "message": "اتركه فارغًا لاستخدام {name}. يمكن تفعيل الترجمة التلقائية بعد الحفظ الأول.",
+    "description": "شرح الاسم، {name} هو اسم التطبيق الافتراضي للمنصة"
   },
   "capabilityOverride.icon": {
-    "message": "Custom icon",
-    "description": "Field label for a per-site capability app icon"
+    "message": "أيقونة مخصصة",
+    "description": "حقل أيقونة تطبيق القدرة الفرعية"
   },
   "capabilityOverride.defaultIcon": {
-    "message": "Default",
-    "description": "Label above the platform-default capability icon preview"
+    "message": "افتراضي",
+    "description": "علامة المعاينة للأيقونة الافتراضية للمنصة"
   },
   "capabilityOverride.currentIcon": {
-    "message": "Current",
-    "description": "Label above the effective capability icon preview"
+    "message": "الأيقونة الحالية",
+    "description": "علامة المعاينة للأيقونة الحالية المفعلة"
   },
   "capabilityOverride.replaceIcon": {
-    "message": "Replace icon",
-    "description": "Command to upload a replacement capability icon"
+    "message": "استبدال الأيقونة",
+    "description": "أمر رفع الأيقونة البديلة"
   },
   "capabilityOverride.uploadIcon": {
-    "message": "Upload icon",
-    "description": "Command to upload the first custom capability icon"
+    "message": "رفع الأيقونة",
+    "description": "أمر لرفع الأيقونة المخصصة لأول مرة"
   },
   "capabilityOverride.useDefaultIcon": {
-    "message": "Use default icon",
-    "description": "Command to clear the custom icon draft"
+    "message": "استخدام الأيقونة الافتراضية",
+    "description": "أمر لمسح مسودة الأيقونة المخصصة"
   },
   "capabilityOverride.iconTip": {
-    "message": "PNG, JPEG, or WebP. The image is cropped to a square; transparent PNG is preserved.",
-    "description": "Capability icon upload requirements"
+    "message": "يدعم PNG و JPEG أو WebP، سيتم قصها لتكون مربعة؛ ستحتفظ PNG الشفافة بالخلفية الشفافة.",
+    "description": "متطلبات رفع أيقونة تطبيق القدرة"
   },
   "capabilityOverride.editIcon": {
-    "message": "Edit app icon",
-    "description": "Title of the capability icon cropper dialog"
+    "message": "تحرير أيقونة التطبيق",
+    "description": "عنوان نافذة قص الأيقونة"
   },
   "capabilityOverride.resetAll": {
-    "message": "Restore defaults",
-    "description": "Command that removes both custom name and icon"
+    "message": "استعادة الافتراضي",
+    "description": "أمر لحذف الاسم والأيقونة المخصصة معًا"
   },
   "capabilityOverride.empty": {
-    "message": "Enter a custom name or upload an icon first.",
-    "description": "Warning when attempting to create an empty override"
+    "message": "يرجى إدخال اسم مخصص أو رفع أيقونة أولاً.",
+    "description": "تلميح عند محاولة إنشاء تغطية فارغة"
   },
   "capabilityOverride.saved": {
-    "message": "App customization saved",
-    "description": "Success message after saving a capability override"
+    "message": "تم حفظ تخصيص التطبيق",
+    "description": "تلميح النجاح بعد حفظ تغطية تطبيق القدرة"
   },
   "capabilityOverride.savedEnableTranslation": {
-    "message": "Saved. You can now enable automatic translation for the custom name.",
-    "description": "Success message after first save creates an override ID"
+    "message": "تم الحفظ، يمكنك الآن تفعيل الترجمة التلقائية للاسم المخصص.",
+    "description": "تلميح بعد الحفظ الأول والحصول على معرف سجل التغطية"
   },
   "capabilityOverride.saveFailed": {
-    "message": "Failed to save app customization",
-    "description": "Fallback error for capability override writes"
+    "message": "فشل حفظ تخصيص التطبيق",
+    "description": "خطأ احتياطي عند فشل كتابة تغطية تطبيق القدرة"
   },
   "capabilityOverride.resetConfirm": {
-    "message": "Restore the default name and icon for {name}?",
-    "description": "Confirmation message; {name} is the platform-default capability app name"
+    "message": "هل تريد استعادة الاسم والأيقونة الافتراضية لـ {name}؟",
+    "description": "نص تأكيد الاستعادة، {name} هو اسم التطبيق الافتراضي للمنصة"
   },
   "capabilityOverride.resetDone": {
-    "message": "Default name and icon restored",
-    "description": "Success message after deleting a capability override"
+    "message": "تم استعادة الاسم والأيقونة الافتراضية",
+    "description": "تلميح النجاح بعد حذف تغطية تطبيق القدرة"
   },
   "capabilityOverride.fetchFailed": {
-    "message": "Failed to load app customizations",
-    "description": "Error shown when capability override management rows cannot be loaded"
+    "message": "فشل تحميل تخصيص التطبيق",
+    "description": "خطأ عند عدم القدرة على قراءة سجلات إدارة تغطية تطبيق القدرة"
   }
 }

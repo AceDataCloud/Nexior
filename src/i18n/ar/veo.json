@@ -143,6 +143,10 @@
     "message": "يمكن رفع ما يصل إلى صورتين",
     "description": "رسالة خطأ عند تجاوز عدد الصور المرفوعة للحد"
   },
+  "message.uploadReferencesLimit": {
+    "message": "يمكنك رفع ما يصل إلى {limit} صورة",
+    "description": "يظهر الحد الأقصى لعدد الصور الديناميكية بناءً على طريقة الإنشاء الحالية"
+  },
   "message.uploadReferencesSuccess": {
     "message": "تم رفع الصورة بنجاح",
     "description": "رسالة نجاح عند رفع الصورة بنجاح"
@@ -231,20 +235,16 @@
     "message": "دمج فيديو متعدد الصور",
     "description": "ingredients2video — دمج 1-3 صور لإنشاء مشهد جديد"
   },
-  "message.uploadReferencesLimit": {
-    "message": "You can upload a maximum of {limit} images",
-    "description": "Dynamic image limit for the selected generation mode"
-  },
   "button.actionTabText": {
-    "message": "Text",
-    "description": "Compact Veo action tab for text-to-video"
+    "message": "إنشاء نص",
+    "description": "علامة إجراء Veo: فيديو إنشاء نص"
   },
   "button.actionTabImage": {
-    "message": "Image",
-    "description": "Compact Veo action tab for image-to-video"
+    "message": "إنشاء صورة",
+    "description": "علامة إجراء Veo: فيديو إنشاء صورة"
   },
   "button.actionTabIngredients": {
-    "message": "Ingredients",
-    "description": "Compact Veo action tab for multi-image fusion"
+    "message": "دمج",
+    "description": "علامة إجراء Veo: فيديو دمج الصور المتعددة"
   }
 }

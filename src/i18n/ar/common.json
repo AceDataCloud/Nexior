@@ -232,8 +232,8 @@
     "description": "Error toast shown when native Apple sign-in fails for a reason other than user cancellation"
   },
   "error.loginLinkExpired": {
-    "message": "Login link expired. Please sign in again.",
-    "description": "Shown on the desktop client when an OAuth callback is dropped (state mismatch or expired)."
+    "message": "رابط تسجيل الدخول قد انتهت صلاحيته، يرجى تسجيل الدخول مرة أخرى.",
+    "description": "رسالة خطأ تظهر عندما يتم تجاهل رد OAuth لعميل سطح المكتب بسبب فشل/انتهاء صلاحية التحقق من الحالة."
   },
   "entity.operation": {
     "message": "عملية",
@@ -312,8 +312,8 @@
     "description": "Short status label shown on a platform card (e.g. iOS) while its build is being prepared"
   },
   "message.mobileNowOnAppStore": {
-    "message": "Now on the App Store",
-    "description": "Status label shown on the iOS card when the app is live on the App Store"
+    "message": "متاح الآن على متجر التطبيقات",
+    "description": "تسمية الحالة المعروضة على بطاقة iOS عندما يكون التطبيق متاحًا على متجر التطبيقات."
   },
   "message.desktopWindowsHint": {
     "message": "لنظام Windows 10 والأحدث (64 بت). نزّل المثبّت وانقر نقرًا مزدوجًا للتثبيت.",
@@ -332,8 +332,8 @@
     "description": "Button label that opens the app's Google Play Store listing"
   },
   "button.getOnAppStore": {
-    "message": "Get it on the App Store",
-    "description": "Button label that opens the app's Apple App Store listing"
+    "message": "تحميل من متجر التطبيقات",
+    "description": "تسمية الزر التي تفتح قائمة التطبيق في متجر Apple للتطبيقات."
   },
   "message.mobileApkFallback": {
     "message": "لا يمكنك الوصول إلى Google Play؟ نزّل حزمة APK مباشرةً.",
@@ -344,8 +344,8 @@
     "description": "Hint under the QR code explaining that scanning it opens the Google Play listing"
   },
   "message.mobileAppStoreHint": {
-    "message": "Scan to open the App Store",
-    "description": "Hint under the QR code explaining that scanning it opens the App Store listing"
+    "message": "امسح الرمز للوصول إلى متجر التطبيقات",
+    "description": "تلميح تحت رمز الاستجابة السريعة يوضح أن مسحه يفتح قائمة متجر التطبيقات."
   },
   "message.mobileInstallNote": {
     "message": "عند تثبيت حزمة مؤسسية أو Ad Hoc على iOS لأول مرة، قد يطلب النظام أولاً الوثوق بالشهادة في \"الإعدادات > عام > VPN وإدارة الأجهزة\".",
@@ -568,8 +568,8 @@
     "description": "النص في شريط التنقل للموقع، لعرض صفحة SeeDance، يجب عدم ترجمة هذا الحقل، يجب أن يبقى 'SeeDance'"
   },
   "nav.grokvideo": {
-    "message": "Grok Video",
-    "description": "Text in the website navigation bar to display the Grok Imagine video page"
+    "message": "فيديو Grok",
+    "description": "النص في شريط التنقل لعرض صفحة فيديو Grok Imagine."
   },
   "nav.luma": {
     "message": "Luma",
@@ -736,7 +736,7 @@
     "description": "عرض عنوان الجزء الذي يحتوي على معلومات الدعم"
   },
   "about.address": {
-    "message": "131 Continental Dr, Suite 305, Newark, DE 19713, USA",
+    "message": "131 Continental Drive, Suite 305, Newark, DE 19713, الولايات المتحدة الأمريكية",
     "description": "عنوان الشركة"
   },
   "about.email": {
@@ -859,6 +859,14 @@
     "message": "سيتذكر المساعد المعلومات المفيدة التي تذكرها في المحادثات، مما يوفر ردوداً أكثر تخصيصاً في المحادثات المختلفة. لديك السيطرة الكاملة - يمكنك عرض المحتويات المحفوظة وحذف الأجزاء التي لا ترغب في تذكرها.",
     "description": "نص تقديمي في أعلى علامة تبويب إعدادات الذاكرة."
   },
+  "settings.memoryEnabled": {
+    "message": "استخدام الذاكرة",
+    "description": "عنوان مفتاح للتحكم فيما إذا كان المساعد يستخدم الذاكرة المحفوظة في الدردشة ويستمر في تعلم ذاكرة جديدة."
+  },
+  "settings.memoryEnabledHint": {
+    "message": "عند الإيقاف، لن يقرأ المساعد الذاكرة المحفوظة، ولن يحفظ الذاكرة من المحادثات الجديدة. لن يتم حذف المحتوى الموجود.",
+    "description": "وصف سلوك مفتاح الذاكرة أسفل المفتاح."
+  },
   "settings.memoryNeedsChat": {
     "message": "يرجى بدء محادثة لتفعيل ميزة الذاكرة.",
     "description": "يظهر في علامة تبويب إعدادات الذاكرة عندما لم يتم تحميل تطبيق الدردشة/التوكن بعد."
@@ -866,6 +874,58 @@
   "settings.memoryStored": {
     "message": "الذكريات المحفوظة",
     "description": "عنوان القسم أعلى قائمة إدخالات الذاكرة المخزنة."
+  },
+  "settings.memoryImport": {
+    "message": "استيراد",
+    "description": "زر لفتح نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportTitle": {
+    "message": "استيراد الذاكرة من ذكاء اصطناعي آخر",
+    "description": "عنوان نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportExportStep": {
+    "message": "1. اجعل الذكاء الاصطناعي المستخدم حاليًا يصدر الذاكرة",
+    "description": "عنوان الخطوة الأولى في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPrompt": {
+    "message": "أريد الانتقال إلى خدمة ذكاء اصطناعي أخرى. يرجى سرد كل ذاكرة محفوظة عني، بالإضافة إلى المعلومات المستدامة التي تعلمتها من المحادثات السابقة. ضع كل المحتوى في كتلة كود، واكتب ذاكرة واحدة فقط في كل سطر، بالتنسيق: [تاريخ الحفظ، إن وُجد] - محتوى الذاكرة. يرجى تضمين تفضيلات الرد، المعلومات الشخصية، المشاريع، الأهداف، الأدوات الشائعة، اللغات، الأطر، وأي تصحيحات قمت بها. حاول الحفاظ على كلماتي الأصلية، ولا تتضمن كلمات المرور أو المفاتيح أو أي معلومات حساسة.",
+    "description": "عبارة التذكير المستخدمة لتصدير الذاكرة إلى خدمات ذكاء اصطناعي أخرى."
+  },
+  "settings.memoryImportCopy": {
+    "message": "نسخ عبارة التذكير",
+    "description": "زر لنسخ عبارة تصدير الذاكرة."
+  },
+  "settings.memoryImportCopied": {
+    "message": "تم نسخ عبارة التذكير",
+    "description": "تنبيه بعد نسخ عبارة تصدير الذاكرة بنجاح."
+  },
+  "settings.memoryImportPasteStep": {
+    "message": "2. لصق الذاكرة المصدرة",
+    "description": "عنوان الخطوة الثانية في نافذة استيراد الذاكرة."
+  },
+  "settings.memoryImportPlaceholder": {
+    "message": "ألصق محتوى الذاكرة المسترجعة من ChatGPT أو Claude أو Gemini أو أي ذكاء اصطناعي آخر...",
+    "description": "نص العنصر المدخل لصق محتوى تصدير الذاكرة."
+  },
+  "settings.memoryImportSubmit": {
+    "message": "إضافة إلى الذاكرة",
+    "description": "زر لتقديم المحتوى الملصوق للاستيراد."
+  },
+  "settings.memoryImportSuccess": {
+    "message": "تمت معالجة {count} عنصرًا من الذاكرة. راجع الذكريات المحفوظة أدناه.",
+    "description": "إشعار نجاح استيراد الذاكرة؛ العدد هو عدد عناصر الإدخال التي اجتازت التحقق قبل إزالة التكرارات وتطبيق حدود السعة"
+  },
+  "settings.memoryImportPartial": {
+    "message": "تم معالجة {processed} محتوى، وتم تخطي {rejected} محتوى غير آمن أو غير صالح.",
+    "description": "تحذير يظهر عند نجاح جزء من استيراد الذاكرة."
+  },
+  "settings.memoryImportInvalid": {
+    "message": "فشل استيراد الذاكرة. يرجى التأكد من تشغيل الذاكرة، ولصق المعلومات بتنسيق حقيقة عادية لكل سطر.",
+    "description": "تنبيه خطأ قابل للتنفيذ يظهر عند طلب استيراد الذاكرة غير صالح."
+  },
+  "settings.memoryImportInProgress": {
+    "message": "هناك مهمة استيراد ذاكرة قيد التشغيل، يرجى إبقاء النافذة مفتوحة والمحاولة لاحقًا.",
+    "description": "تحذير يظهر عند تشغيل مهمة استيراد ذاكرة أخرى."
   },
   "settings.memoryEmpty": {
     "message": "لا توجد ذكريات محفوظة.",
@@ -1000,12 +1060,12 @@
     "description": "Help text under the authorized-folders heading."
   },
   "settings.localToolsComputerUseTitle": {
-    "message": "Computer Use (experimental)",
-    "description": "Heading for the opt-in Computer Use (screen + mouse/keyboard control) toggle."
+    "message": "استخدام الكمبيوتر (تجريبي)",
+    "description": "عنوان لتبديل استخدام الكمبيوتر (التحكم في الشاشة + الماوس/لوحة المفاتيح)."
   },
   "settings.localToolsComputerUseHint": {
-    "message": "Let the AI see your screen and control the mouse and keyboard on this computer. Off by default — turn it on only when you need it. On macOS, grant Screen Recording and Accessibility permissions below. Each action still asks for your confirmation.",
-    "description": "Help text under the Computer Use toggle."
+    "message": "اجعل الذكاء الاصطناعي يرى شاشتك ويتحكم في الماوس ولوحة المفاتيح الخاصة بك. مغلقة بشكل افتراضي، يمكن فتحها حسب الحاجة. على macOS، يجب منح أذونات «تسجيل الشاشة» و«إمكانية الوصول» أدناه. كل عملية ستطلب تأكيدك.",
+    "description": "نص المساعدة تحت زر استخدام الكمبيوتر."
   },
   "settings.localToolsAndroidSkillsTitle": {
     "message": "مهارات أتمتة الهاتف",
@@ -1016,12 +1076,12 @@
     "description": "نص مساعد تحت عنوان مهارات أتمتة الهاتف."
   },
   "settings.localToolsAndroidSkillsXhsName": {
-    "message": "الرد التلقائي على الرسائل المباشرة في 小红书",
-    "description": "اسم العرض لمهارة الرد التلقائي على الرسائل المباشرة في 小红书 (RED)."
+    "message": "الرد التلقائي على رسائل شياوهونغشو الخاصة",
+    "description": "اسم العرض لمهارة الرد التلقائي على الرسائل الخاصة في شياوهونغشو (RED)."
   },
   "settings.localToolsAndroidSkillsXhsDesc": {
-    "message": "قراءة الرسائل الجديدة في تطبيق 小红书 وصياغة الردود، سيتم طلب تأكيدك قبل الإرسال.",
-    "description": "وصف مختصر لمهارة الرد التلقائي على الرسائل المباشرة في 小红书."
+    "message": "يقرأ الرسائل الخاصة الجديدة في تطبيق شياوهونغشو ويصوغ الردود، ويطلب تأكيدك قبل الإرسال.",
+    "description": "وصف مختصر لمهارة الرسائل الخاصة في شياوهونغشو."
   },
   "settings.localToolsAndroidSkillsInstall": {
     "message": "تثبيت",
@@ -1097,96 +1157,96 @@
     "description": "Save the authorized folders."
   },
   "settings.localToolsMcpTitle": {
-    "message": "MCP servers",
-    "description": "Section title for local MCP server configuration in Local Tools settings."
+    "message": "خادم MCP",
+    "description": "عنوان قسم تكوين خادم MCP المحلي في إعدادات الأدوات المحلية."
   },
   "settings.localToolsMcpHint": {
-    "message": "Connect local MCP servers over stdio. Their tools become available to the AI, gated by the same per-call confirmation. Changes take effect immediately.",
-    "description": "Explains what local MCP servers do and that changes apply without a restart."
+    "message": "اتصل بخادم MCP المحلي عبر stdio. ستوفر أدواتهم للاستخدام من قبل AI، وتكون محمية بنفس تأكيد الاستدعاء المتتالي. التعديلات سارية على الفور.",
+    "description": "شرح دور خادم MCP المحلي، وأن التعديلات سارية دون الحاجة لإعادة التشغيل."
   },
   "settings.localToolsMcpAdd": {
-    "message": "Add server",
-    "description": "Button to add a new local MCP server row."
+    "message": "إضافة خادم",
+    "description": "زر لإضافة صف جديد لخادم MCP المحلي."
   },
   "settings.localToolsMcpName": {
-    "message": "Name",
-    "description": "Label for the MCP server name/id field."
+    "message": "الاسم",
+    "description": "تسمية حقل اسم/معرف خادم MCP."
   },
   "settings.localToolsMcpCommand": {
-    "message": "Command",
-    "description": "Label for the MCP server launch command field."
+    "message": "الأمر",
+    "description": "تسمية حقل أمر بدء تشغيل خادم MCP."
   },
   "settings.localToolsMcpArgs": {
-    "message": "Arguments",
-    "description": "Label for the MCP server command arguments field."
+    "message": "المعلمات",
+    "description": "تسمية حقل معلمات أوامر خادم MCP."
   },
   "settings.localToolsMcpArgsHint": {
-    "message": "One argument per line.",
-    "description": "Placeholder/hint for the MCP arguments textarea."
+    "message": "معلمة واحدة في كل سطر.",
+    "description": "نص تلميح حقل معلمات MCP."
   },
   "settings.localToolsMcpEnv": {
-    "message": "Environment",
-    "description": "Label for the MCP server environment variables field."
+    "message": "متغيرات البيئة",
+    "description": "تسمية حقل متغيرات البيئة لخادم MCP."
   },
   "settings.localToolsMcpEnvHint": {
-    "message": "One KEY=VALUE per line.",
-    "description": "Placeholder/hint for the MCP environment variables textarea."
+    "message": "KEY=VALUE في كل سطر.",
+    "description": "نص تلميح حقل متغيرات البيئة لـ MCP."
   },
   "settings.localToolsMcpNoServers": {
-    "message": "No MCP servers configured.",
-    "description": "Empty state shown when no MCP servers are configured."
+    "message": "لم يتم تكوين خوادم MCP بعد.",
+    "description": "حالة فارغة تظهر عند عدم تكوين أي خادم MCP."
   },
   "settings.localToolsMcpNamePlaceholder": {
-    "message": "e.g. filesystem",
-    "description": "Placeholder for the MCP server name input."
+    "message": "مثل filesystem",
+    "description": "نص تلميح حقل إدخال اسم خادم MCP."
   },
   "settings.localToolsMcpCommandPlaceholder": {
-    "message": "e.g. npx",
-    "description": "Placeholder for the MCP server command input."
+    "message": "مثل npx",
+    "description": "نص تلميح حقل إدخال أمر خادم MCP."
   },
   "settings.localToolsMcpNameRequired": {
-    "message": "Each server needs a name and a command.",
-    "description": "Validation error when a server row is missing a name or command."
+    "message": "كل خادم يحتاج إلى اسم وأمر.",
+    "description": "خطأ التحقق عند نقص الاسم أو الأمر في صف الخادم."
   },
   "settings.localToolsMcpDuplicateName": {
-    "message": "Server names must be unique.",
-    "description": "Validation error when two servers share the same name."
+    "message": "يجب أن يكون اسم الخادم فريدًا.",
+    "description": "خطأ التحقق عند تكرار أسماء الخوادم."
   },
   "settings.localToolsMcpNameInvalid": {
-    "message": "Name may only contain letters, numbers, hyphens and underscores.",
-    "description": "Validation error when a server name contains invalid characters."
+    "message": "يمكن أن يحتوي الاسم فقط على أحرف، أرقام، شرطات، وشرطات سفلية.",
+    "description": "خطأ التحقق عند احتواء اسم الخادم على أحرف غير قانونية."
   },
   "settings.localToolsMcpEnabled": {
-    "message": "On",
-    "description": "Toggle label to enable/disable a local MCP server."
+    "message": "مفعل",
+    "description": "تسمية مفتاح لتفعيل/تعطيل خادم MCP المحلي."
   },
   "settings.localToolsMcpReconnect": {
-    "message": "Test / Reconnect",
-    "description": "Button to re-spawn one MCP server and refresh its status."
+    "message": "اختبار / إعادة الاتصال",
+    "description": "زر لإعادة تشغيل خادم MCP معين وتحديث حالته."
   },
   "settings.localToolsMcpConnecting": {
-    "message": "Connecting…",
-    "description": "Badge while an MCP server is being (re)connected."
+    "message": "جارٍ الاتصال…",
+    "description": "تسمية حالة عند إعادة الاتصال بخادم MCP."
   },
   "settings.localToolsMcpNotSaved": {
-    "message": "Not saved yet",
-    "description": "Badge for an MCP server row that hasn't been saved/connected yet."
+    "message": "لم يتم الحفظ بعد",
+    "description": "تسمية حالة صف خادم MCP غير المحفوظ/المتصل."
   },
   "settings.localToolsMcpConnected": {
-    "message": "Connected · {n} tools",
-    "description": "Badge when an MCP server connected; {n} is the tool count."
+    "message": "متصل · {n} أدوات",
+    "description": "تسمية عند نجاح اتصال خادم MCP؛ {n} هو عدد الأدوات."
   },
   "settings.localToolsMcpDisabled": {
-    "message": "Disabled",
-    "description": "Badge when an MCP server is turned off."
+    "message": "معطل",
+    "description": "تسمية عند إيقاف تشغيل خادم MCP."
   },
   "settings.localToolsMcpFailed": {
-    "message": "Failed to connect",
-    "description": "Badge when an MCP server failed to start; the reason is shown below."
+    "message": "فشل الاتصال",
+    "description": "تسمية عند فشل بدء تشغيل خادم MCP؛ السبب يظهر أدناه."
   },
   "settings.localToolsMcpPlatformHint": {
-    "message": "Tip: use a command on your PATH such as npx or uvx (e.g. npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). On Windows, npx/node resolve automatically. If a server shows \"spawn … ENOENT\", set the command to a full path.",
-    "description": "Cross-platform hint for configuring the MCP launch command."
+    "message": "تلميح: استخدم الأوامر في PATH، مثل npx أو uvx (مثل npx -y {'@'}modelcontextprotocol/server-filesystem ~/Documents). سيتم تحليل npx/node تلقائيًا على Windows. إذا ظهر \"spawn … ENOENT\" لخادم ما، يرجى تغيير الأمر إلى المسار الكامل.",
+    "description": "تلميح عبر المنصات لتكوين أمر بدء تشغيل MCP."
   },
   "settings.localToolsSaved": {
     "message": "تم الحفظ",
@@ -1334,7 +1394,7 @@
   },
   "settings.contactType_wechat": {
     "message": "WeChat",
-    "description": "Display name for the WeChat contact type"
+    "description": "اسم العرض لنوع الاتصال WeChat."
   },
   "settings.contactLabelPlaceholder": {
     "message": "تسمية (اختياري)، مثل: المبيعات",
@@ -1405,28 +1465,28 @@
     "description": "نص الزر للعودة إلى الصفحة السابقة في تاريخ التصفح"
   },
   "title.apiCode": {
-    "message": "API code for this request",
-    "description": "Title of the dialog that shows the equivalent API code (curl / Python / Node) that would reproduce a result generated inside the product"
+    "message": "كود API المقابل لهذا الطلب",
+    "description": "عنوان الحوار: عرض كود استدعاء API الحالي المتوافق مع curl / Python / Node."
   },
   "message.viewCodeHint": {
-    "message": "Show API code for this request",
-    "description": "Tooltip text on the View Code button shown alongside result-card action buttons (U1/U2/Download/Extend/...). Clicking the button opens a dialog with curl / Python / Node snippets that reproduce the same generation via the public API."
+    "message": "عرض كود API المتوافق مع هذا الطلب",
+    "description": "تلميح يظهر بجانب زر عرض الكود في بطاقة النتيجة (U1/U2/تحميل/توسيع…). عند النقر على الزر، يظهر حوار يعرض كود استدعاء API المتوافق مع النتيجة الحالية بثلاث لغات: curl / Python / Node."
   },
   "button.viewCode": {
-    "message": "View code",
-    "description": "Button text that opens a dialog with the equivalent API code (curl / Python / Node) for the current result, similar to the OpenAI Playground 'View code' affordance"
+    "message": "عرض الكود",
+    "description": "نص الزر: يفتح حوارًا يعرض كود استدعاء API المتوافق مع النتيجة الحالية بلغة curl / Python / Node (مثل عرض الكود في OpenAI Playground)."
   },
   "button.getApiKey": {
-    "message": "Get an API key",
-    "description": "Link text in the API code dialog footer that opens the platform console page where users can create an API key"
+    "message": "احصل على مفتاح API",
+    "description": "نص الرابط في أسفل حوار رمز API: بعد النقر، يتم الانتقال إلى صفحة لوحة التحكم لإنشاء مفتاح API."
   },
   "button.apiPlatform": {
-    "message": "API Platform",
-    "description": "API code dialog footer button label. Clicking opens https://platform.acedata.cloud/ in a new tab so users can manage their API keys, balance and usage."
+    "message": "منصة API",
+    "description": "تسمية زر تذييل حوار رمز API. عند النقر، يفتح https://platform.acedata.cloud/ في علامة تبويب جديدة حتى يتمكن المستخدمون من إدارة مفاتيح API الخاصة بهم، الرصيد والاستخدام."
   },
   "message.apiCodeIntro": {
-    "message": "Run this from your own code to produce the same result. Replace <YOUR_API_KEY> with a key from your platform console.",
-    "description": "Helper text shown above the code tabs in the API code dialog, explaining how to use the snippet"
+    "message": "شغّل هذا من داخل الكود الخاص بك للحصول على النتيجة نفسها. استبدل <YOUR_API_KEY> بمفتاح من وحدة تحكم المنصة.",
+    "description": "نص مساعد يظهر أعلى علامات تبويب الكود في مربع حوار API لشرح كيفية استخدام المقتطف"
   },
   "tab.apiRequest": {
     "message": "الطلب",
@@ -1481,122 +1541,62 @@
     "description": "Toast shown when the user clicks the Generate button while one or more reference uploads are still in flight. Asks them to wait for uploads to complete before retrying."
   },
   "appUpgrade.title": {
-    "message": "Update required",
-    "description": "Title of the native-app version gate modal shown at startup when the installed build is older than what the backend supports."
+    "message": "تحتاج إلى الترقية",
+    "description": "عنوان نافذة الترقية عند بدء تشغيل التطبيق الأصلي. يظهر عندما يكون إصدار العميل أقل من المتطلبات الخدمية، ليعلم المستخدم بأنه بحاجة إلى ترقية التطبيق."
   },
   "appUpgrade.blockMessage": {
-    "message": "This version is no longer supported. Please update from the app store to continue.",
-    "description": "Body text of the hard-block upgrade modal shown when the installed version is below min_supported. The modal has no dismiss affordance — the only button opens the app store."
+    "message": "الإصدار الحالي منخفض جدًا، يرجى الذهاب إلى متجر التطبيقات لتحديث إلى أحدث إصدار قبل الاستخدام.",
+    "description": "نص نافذة الترقية الإلزامية. يظهر عندما يكون إصدار العميل أقل من الحد الأدنى المدعوم، ولا يمكن إغلاقه، الزر الوحيد ينقل إلى متجر التطبيقات."
   },
   "appUpgrade.softMessage": {
-    "message": "A newer version is available. Update from the app store for the best experience.",
-    "description": "Body text of the soft upgrade prompt shown when the installed version is below latest but above min_supported. The user can dismiss and keep using the app."
+    "message": "هناك إصدار جديد متاح، يُنصح بالذهاب إلى متجر التطبيقات للتحديث للحصول على أفضل تجربة.",
+    "description": "نص إشعار الترقية الاختياري. يظهر عندما يكون إصدار العميل أقل من الأحدث ولكنه أعلى من الحد الأدنى المدعوم، يمكن للمستخدم اختيار إخبارنا لاحقًا للاستمرار في الاستخدام."
   },
   "appUpgrade.openStore": {
-    "message": "Update now",
-    "description": "Primary button on the upgrade modal — opens the App Store / Play Store URL in the system browser."
+    "message": "اذهب للتحديث",
+    "description": "زر رئيسي في نافذة الترقية: يفتح رابط متجر التطبيقات / متجر بلاي في المتصفح."
   },
   "appUpgrade.later": {
-    "message": "Later",
-    "description": "Secondary button on the soft upgrade prompt — dismisses the modal and lets the user keep using the current version. Only shown for non-forced upgrades."
+    "message": "أخبرني لاحقًا",
+    "description": "زر ثانوي في نافذة الترقية الناعمة: تجاهل هذه الرسالة للاستمرار في الاستخدام، يظهر فقط في سيناريوهات الترقية غير الإلزامية."
   },
   "nav.maestro": {
     "message": "مايسترو",
     "description": "نص صفحة تحويل مقالات مايسترو إلى فيديو في شريط التنقل، يجب أن يبقى 'مايسترو'"
   },
   "nav.digitalhuman": {
-    "message": "Digital Human",
-    "description": "Text in the website navigation bar for the Digital Human talking-head page"
+    "message": "الإنسان الرقمي",
+    "description": "النص في شريط التنقل لصفحة عرض الإنسان الرقمي."
   },
   "settings.localToolsAndroidPermHint": {
-    "message": "Enable the accessibility service so the assistant can see and control your screen. You can pre-authorize individual actions below.",
-    "description": "Hint for the Android Computer Use accessibility permission section in Settings."
+    "message": "بعد تفعيل خدمات الوصول، يمكن لمساعد الذكاء الاصطناعي رؤية والتفاعل مع شاشتك. يمكنك منح تفويض مسبق لكل عملية أدناه.",
+    "description": "شرح في قسم أذونات الوصول في إعدادات Android لاستخدام الكمبيوتر."
   },
   "settings.cuConsentTitle": {
-    "message": "Allow action?",
-    "description": "Title of the on-demand consent dialog shown when the assistant requests a screen action."
+    "message": "هل تسمح بالعملية؟",
+    "description": "عنوان حوار التفويض حسب الحاجة (يظهر عندما يطلب النموذج تنفيذ عملية على الشاشة)."
   },
   "settings.cuConsentMessage": {
-    "message": "The assistant wants to run \"{action}\" on your phone. Allow it?",
-    "description": "Body of the on-demand consent dialog; {action} is the computer.* action name."
+    "message": "يريد مساعد الذكاء الاصطناعي تنفيذ عملية «{action}» على هاتفك، هل تسمح بذلك؟",
+    "description": "نص حوار التفويض حسب الحاجة؛ {action} هو اسم العملية المحددة computer.*."
   },
   "settings.cuConsentAllow": {
-    "message": "Allow once",
-    "description": "Allow button of the on-demand consent dialog."
+    "message": "السماح مرة واحدة",
+    "description": "زر السماح في حوار التفويض حسب الحاجة."
   },
   "settings.cuConsentAlways": {
-    "message": "Always allow",
-    "description": "Always-allow button of the on-demand consent dialog; persists a grant so this action never prompts again."
+    "message": "السماح دائمًا",
+    "description": "زر السماح دائمًا في حوار التفويض حسب الحاجة؛ تفويض دائم، لن يُسأل عن هذا الإجراء مرة أخرى."
   },
   "settings.cuConsentDeny": {
-    "message": "Deny",
-    "description": "Deny button of the on-demand consent dialog."
+    "message": "رفض",
+    "description": "زر الرفض في حوار التفويض حسب الحاجة."
   },
   "settings.siteServices": {
     "message": "الأسعار"
   },
-  "settings.memoryEnabled": {
-    "message": "Use memory",
-    "description": "Title for the switch that controls whether chats use saved memory and learn new memory"
-  },
-  "settings.memoryEnabledHint": {
-    "message": "When off, saved memories are not used and new chats do not create memories. Existing memories are kept.",
-    "description": "Behavior explanation shown below the memory switch"
-  },
   "nav.omni": {
-    "message": "Omni Video",
-    "description": "Nav label for the Omni video module"
-  },
-  "settings.memoryImport": {
-    "message": "Import",
-    "description": "Button that opens the memory import dialog"
-  },
-  "settings.memoryImportTitle": {
-    "message": "Import memory from another AI",
-    "description": "Title of the memory import dialog"
-  },
-  "settings.memoryImportExportStep": {
-    "message": "1. Ask your current AI to export its memory",
-    "description": "First step heading in the memory import dialog"
-  },
-  "settings.memoryImportPrompt": {
-    "message": "I'm moving to another AI service. List every saved memory and durable context you have learned about me. Put everything in one code block, with exactly one memory per line. Format each line as: [date saved, if available] - memory content. Include response preferences, personal details, projects, goals, tools, languages, frameworks, and corrections I have made. Preserve my words where possible. Do not include secrets or sensitive information.",
-    "description": "Prompt users copy into another AI service to export memories"
-  },
-  "settings.memoryImportCopy": {
-    "message": "Copy prompt",
-    "description": "Button that copies the memory export prompt"
-  },
-  "settings.memoryImportCopied": {
-    "message": "Prompt copied",
-    "description": "Toast shown after copying the memory export prompt"
-  },
-  "settings.memoryImportPasteStep": {
-    "message": "2. Paste the exported memory",
-    "description": "Second step heading in the memory import dialog"
-  },
-  "settings.memoryImportPlaceholder": {
-    "message": "Paste the memory text returned by ChatGPT, Claude, Gemini, or another AI…",
-    "description": "Placeholder for pasted memory export text"
-  },
-  "settings.memoryImportSubmit": {
-    "message": "Add to memory",
-    "description": "Button that submits pasted memories for import"
-  },
-  "settings.memoryImportSuccess": {
-    "message": "Imported {count} memory entries",
-    "description": "Success toast after importing memory; count is the number of accepted entries"
-  },
-  "settings.memoryImportPartial": {
-    "message": "Processed {processed} entries; {rejected} unsafe or invalid entries were skipped.",
-    "description": "Warning shown after a partial memory import"
-  },
-  "settings.memoryImportInvalid": {
-    "message": "No memory could be imported. Make sure memory is on and paste one plain fact per line.",
-    "description": "Actionable error shown when the memory import request is invalid"
-  },
-  "settings.memoryImportInProgress": {
-    "message": "A memory import is already running. Keep this dialog open and try again shortly.",
-    "description": "Warning shown when another memory import job is active"
+    "message": "فيديو Omni",
+    "description": "علامة التنقل لوحدة فيديو Omni."
   }
 }
