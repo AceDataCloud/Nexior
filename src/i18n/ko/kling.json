@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Kling O1 및 V3 Omni에 적합합니다. 편집 또는 기존 비디오 참조를 위해 MP4/MOV(720–2160px, 3–10초, ≤200MB)를 업로드하면 자동으로 프롬프트가 추가됩니다 <<<video_1>>>.",
+    "description": "Omni 참조 비디오 업로드 도움말 텍스트"
+  },
+  "name.referenceImages": {
+    "message": "참조 이미지",
+    "description": "Omni 참조 이미지 필드 레이블"
+  },
+  "description.referenceImages": {
+    "message": "Kling O1 및 V3 Omni에 적합합니다. 최대 7개의 참조 이미지를 업로드할 수 있으며, 참조 비디오가 있을 경우 최대 4개까지 가능합니다. 프롬프트 인용 태그가 자동으로 추가됩니다.",
+    "description": "Omni 참조 이미지 도움말 텍스트"
+  },
+  "button.uploadReferenceImages": {
+    "message": "이미지 업로드",
+    "description": "Omni 참조 이미지 업로드 버튼"
+  },
+  "message.referenceImagesExceed": {
+    "message": "아직 {count}개의 참조 이미지를 업로드할 수 있습니다.",
+    "description": "참조 이미지 수량 안내"
+  },
+  "message.referenceImagesError": {
+    "message": "참조 이미지 업로드에 실패했습니다. 다시 시도해주세요.",
+    "description": "참조 이미지 업로드 오류"
+  },
+  "name.referenceVideoType": {
+    "message": "비디오 용도",
+    "description": "참조 비디오 유형 레이블"
+  },
+  "name.referenceVideoFeature": {
+    "message": "특징 참조",
+    "description": "특징 참조 비디오 옵션"
+  },
+  "name.referenceVideoBase": {
+    "message": "원본 비디오 편집",
+    "description": "기본 비디오 편집 옵션"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "참조 비디오가 있을 경우 최대 4개의 참조 이미지를 지원합니다. 초과 이미지를 먼저 제거해주세요.",
+    "description": "참조 비디오와 이미지 수량 충돌"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "이 요청은 최대 {count}장의 참조 이미지를 지원하며, 첫 프레임과 마지막 프레임도 총 수에 포함됩니다.",
+    "description": "참조 이미지 총 수 제한 알림"
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "편집 중인 기본 비디오는 첫 프레임 또는 마지막 프레임과 동시에 사용할 수 없습니다.",
+    "description": "기본 비디오와 첫/마지막 프레임 간의 충돌 알림"
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "ينطبق على Kling O1 و V3 Omni. قم برفع ملف MP4/MOV (720–2160px، 3–10 ثوانٍ، ≤200MB) للتحرير أو كمرجع لفيديو موجود، وسيتم إضافة علامات الكلمات تلقائيًا <<<video_1>>>.",
+    "description": "نص المساعدة لرفع فيديو المرجع Omni"
+  },
+  "name.referenceImages": {
+    "message": "صور مرجعية",
+    "description": "تسمية حقل صور المرجع Omni"
+  },
+  "description.referenceImages": {
+    "message": "ينطبق على Kling O1 و V3 Omni. يمكنك رفع ما يصل إلى 7 صور مرجعية؛ إذا كان هناك فيديو مرجعي، يمكنك رفع 4 صور كحد أقصى. سيتم إضافة علامات الاقتباس تلقائيًا.",
+    "description": "نص المساعدة لصور المرجع Omni"
+  },
+  "button.uploadReferenceImages": {
+    "message": "رفع الصور",
+    "description": "زر رفع صور المرجع Omni"
+  },
+  "message.referenceImagesExceed": {
+    "message": "يمكنك رفع {count} صورة مرجعية إضافية.",
+    "description": "تنبيه عدد صور المرجع"
+  },
+  "message.referenceImagesError": {
+    "message": "فشل رفع صور المرجع، يرجى المحاولة مرة أخرى.",
+    "description": "خطأ في رفع صور المرجع"
+  },
+  "name.referenceVideoType": {
+    "message": "نوع الفيديو",
+    "description": "تسمية نوع الفيديو المرجعي"
+  },
+  "name.referenceVideoFeature": {
+    "message": "مرجع الميزات",
+    "description": "خيارات فيديو مرجع الميزات"
+  },
+  "name.referenceVideoBase": {
+    "message": "تحرير الفيديو الأصلي",
+    "description": "خيارات تحرير الفيديو الأساسية"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "عند وجود فيديو مرجعي، يمكنك دعم 4 صور مرجعية كحد أقصى، يرجى إزالة الصور الزائدة أولاً.",
+    "description": "تعارض عدد الفيديو والصور المرجعية"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "يدعم هذا الطلب ما يصل إلى {count} صورة مرجعية، حيث يتم احتساب الإطار الأول والإطار الأخير ضمن العدد الإجمالي.",
+    "description": "تنبيه حول الحد الأقصى لعدد الصور المرجعية."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "لا يمكن استخدام الفيديو الأساسي قيد التحرير مع الإطار الأول أو الإطار الأخير في نفس الوقت.",
+    "description": "تنبيه حول تعارض الفيديو الأساسي مع الإطارين الأول والأخير."
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

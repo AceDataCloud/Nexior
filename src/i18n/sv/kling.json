@@ -775,9 +775,53 @@
     "message": "Reference Video",
     "description": "Form field label: reference/editable video for Omni video editing"
   },
-  "description.referenceVideo": {
-    "message": "Only for kling-video-o1. Upload one MP4/MOV (720-2160px, 3-10s, <=200MB) to edit or reference an existing video. The prompt automatically cites it as <<<video_1>>>; keep that token to describe the edit (e.g. 'turn <<<video_1>>> into anime').",
-    "description": "Help text for the reference video uploader"
+  "description.omniReferenceVideo": {
+    "message": "Gäller för Kling O1 och V3 Omni. Ladda upp en MP4/MOV (720–2160px, 3–10 sek, ≤200MB) för redigering eller referens av befintligt video, promptord kommer automatiskt att läggas till <<<video_1>>>.",
+    "description": "Hjälptext för att ladda upp Omni referensvideo"
+  },
+  "name.referenceImages": {
+    "message": "Referensbilder",
+    "description": "Fältetikett för Omni referensbilder"
+  },
+  "description.referenceImages": {
+    "message": "Gäller för Kling O1 och V3 Omni. Max 7 referensbilder kan laddas upp; om en referensvideo finns, max 4 bilder. Promptord referensmarkeringar kommer automatiskt att läggas till.",
+    "description": "Hjälptext för Omni referensbilder"
+  },
+  "button.uploadReferenceImages": {
+    "message": "Ladda upp bilder",
+    "description": "Knapp för att ladda upp Omni referensbilder"
+  },
+  "message.referenceImagesExceed": {
+    "message": "Du kan fortfarande ladda upp {count} referensbilder.",
+    "description": "Indikation på antal tillåtna referensbilder"
+  },
+  "message.referenceImagesError": {
+    "message": "Misslyckades med att ladda upp referensbilder, vänligen försök igen.",
+    "description": "Fel vid uppladdning av referensbilder"
+  },
+  "name.referenceVideoType": {
+    "message": "Videons användning",
+    "description": "Etikett för typ av referensvideo"
+  },
+  "name.referenceVideoFeature": {
+    "message": "Funktion referens",
+    "description": "Alternativ för referensvideo av funktion"
+  },
+  "name.referenceVideoBase": {
+    "message": "Redigera originalvideo",
+    "description": "Grundläggande video redigeringsalternativ"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "Max 4 referensbilder stöds när en referensvideo finns, vänligen ta bort överflödiga bilder först.",
+    "description": "Konflikt mellan antal referensvideo och bilder"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "Denna begäran stöder högst {count} referensbilder, där första och sista bildruta också räknas med i totalsumman.",
+    "description": "Meddelande om gräns för det totala antalet referensbilder."
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "Det grundläggande videoklippet kan inte användas samtidigt med första eller sista bildrutan.",
+    "description": "Meddelande om konflikt mellan grundläggande video och första eller sista bildrutan."
   },
   "button.uploadReferenceVideo": {
     "message": "Upload Video",

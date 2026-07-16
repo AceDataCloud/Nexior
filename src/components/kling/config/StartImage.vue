@@ -17,6 +17,7 @@
       :multiple="false"
       :action="uploadUrl"
       list-type="picture"
+      :before-upload="onBeforeUpload"
       :on-exceed="onExceed"
       :on-error="onError"
       :on-success="onSuccess"
@@ -28,7 +29,7 @@
           :url="file.url"
           :name="file.name"
           :percentage="file.percentage"
-          @remove="fileList.splice(fileList.indexOf(file), 1)"
+          @remove="onRemove(file)"
         />
       </template>
       <el-tooltip :content="$t('kling.message.uploadReferencesExceed')" :disabled="!reachedLimit" placement="top">
@@ -99,6 +100,13 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    value(val: string | undefined) {
+      if (!val && this.fileList.length > 0) {
+        this.fileList = [];
+      }
+    }
+  },
   mounted() {
     if (!this.value) {
       this.value = undefined;
@@ -112,6 +120,20 @@ export default defineComponent({
     onError() {
       ElMessage.error(this.$t('kling.message.uploadReferencesError'));
     },
+    onBeforeUpload(): boolean {
+      const config = this.$store.state.kling?.config || {};
+      if (config.video_list?.[0]?.refer_type === 'base') {
+        ElMessage.warning(this.$t('kling.message.baseVideoFrameConflict'));
+        return false;
+      }
+      const maxImages = config.video_list?.length ? 4 : 7;
+      const total = (config.image_list?.length || 0) + Number(Boolean(config.end_image_url)) + 1;
+      if (total > maxImages) {
+        ElMessage.warning(this.$t('kling.message.referenceImagesTotalLimit', { count: maxImages }));
+        return false;
+      }
+      return true;
+    },
     onSetStartImageUrl() {
       const url = this.urls?.[0];
       this.$store.commit('kling/setConfig', {
@@ -120,6 +142,10 @@ export default defineComponent({
       });
     },
     async onSuccess() {
+      this.onSetStartImageUrl();
+    },
+    onRemove(file: UploadFile) {
+      this.fileList.splice(this.fileList.indexOf(file), 1);
       this.onSetStartImageUrl();
     }
   }

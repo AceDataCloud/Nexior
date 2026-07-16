@@ -32,8 +32,8 @@
     "description": "人物朝向选项：跟随视频"
   },
   "name.keepOriginalSound": {
-    "message": "保留原始音频",
-    "description": "keep_original_sound 开关"
+    "message": "保留原声",
+    "description": "保留参考视频原声音频开关标签"
   },
   "description.motionImage": {
     "message": "上传人物参考图，生成视频中的人物、背景等元素均以此为参照",
@@ -775,9 +775,53 @@
     "message": "参考视频",
     "description": "表单字段标签：Omni 视频编辑的参考/待编辑视频"
   },
-  "description.referenceVideo": {
-    "message": "仅 kling-video-o1 支持。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频。提示词会自动以 <<<video_1>>> 引用它，请保留该标记来描述编辑效果（如「把 <<<video_1>>> 改成动漫风格」）。",
-    "description": "参考视频上传的帮助文字"
+  "description.omniReferenceVideo": {
+    "message": "适用于 Kling O1 和 V3 Omni。上传一个 MP4/MOV（720–2160px、3–10 秒、≤200MB）用于编辑或参考已有视频，提示词会自动添加 <<<video_1>>>。",
+    "description": "Omni 参考视频上传的帮助文字"
+  },
+  "name.referenceImages": {
+    "message": "参考图片",
+    "description": "Omni 参考图片字段标签"
+  },
+  "description.referenceImages": {
+    "message": "适用于 Kling O1 和 V3 Omni。最多上传 7 张参考图；存在参考视频时最多 4 张。提示词引用标记会自动添加。",
+    "description": "Omni 参考图片帮助文字"
+  },
+  "button.uploadReferenceImages": {
+    "message": "上传图片",
+    "description": "上传 Omni 参考图片按钮"
+  },
+  "message.referenceImagesExceed": {
+    "message": "还可以上传 {count} 张参考图片。",
+    "description": "参考图片数量提示"
+  },
+  "message.referenceImagesError": {
+    "message": "参考图片上传失败，请重试。",
+    "description": "参考图片上传错误"
+  },
+  "name.referenceVideoType": {
+    "message": "视频用途",
+    "description": "参考视频类型标签"
+  },
+  "name.referenceVideoFeature": {
+    "message": "特征参考",
+    "description": "特征参考视频选项"
+  },
+  "name.referenceVideoBase": {
+    "message": "编辑原视频",
+    "description": "基础视频编辑选项"
+  },
+  "message.referenceVideoImageLimit": {
+    "message": "存在参考视频时最多支持 4 张参考图片，请先移除多余图片。",
+    "description": "参考视频与图片数量冲突"
+  },
+  "message.referenceImagesTotalLimit": {
+    "message": "该请求最多支持 {count} 张参考图片，首帧和尾帧也计入总数。",
+    "description": "参考图片总数限制提示"
+  },
+  "message.baseVideoFrameConflict": {
+    "message": "待编辑的基础视频不能与首帧或尾帧同时使用。",
+    "description": "基础视频与首尾帧冲突提示"
   },
   "button.uploadReferenceVideo": {
     "message": "上传视频",

@@ -71,8 +71,8 @@ export default defineComponent({
           label: 'v1'
         },
         {
-          value: 'kling-video-o1',
-          label: 'Video-o1'
+          value: 'kling-o1',
+          label: 'Kling O1'
         }
       ]
     };

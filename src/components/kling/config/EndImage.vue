@@ -29,7 +29,7 @@
           :url="file.url"
           :name="file.name"
           :percentage="file.percentage"
-          @remove="fileList.splice(fileList.indexOf(file), 1)"
+          @remove="onRemove(file)"
         />
       </template>
       <el-tooltip :content="uploadTooltip" :disabled="!uploadDisabled" placement="top">
@@ -155,6 +155,16 @@ export default defineComponent({
         ElMessage.warning(this.$t('kling.message.endImageRequiresStart'));
         return false;
       }
+      if (this.klingConfig.video_list?.[0]?.refer_type === 'base') {
+        ElMessage.warning(this.$t('kling.message.baseVideoFrameConflict'));
+        return false;
+      }
+      const maxImages = this.klingConfig.video_list?.length ? 4 : 7;
+      const total = (this.klingConfig.image_list?.length || 0) + 2;
+      if (total > maxImages) {
+        ElMessage.warning(this.$t('kling.message.referenceImagesTotalLimit', { count: maxImages }));
+        return false;
+      }
       return true;
     },
     onExceed() {
@@ -171,6 +181,10 @@ export default defineComponent({
       });
     },
     async onSuccess() {
+      this.onSetEndImageUrl();
+    },
+    onRemove(file: UploadFile) {
+      this.fileList.splice(this.fileList.indexOf(file), 1);
       this.onSetEndImageUrl();
     }
   }

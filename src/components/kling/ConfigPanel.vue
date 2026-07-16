@@ -4,15 +4,16 @@
       <prompt-input class="mb-4" @open-inspiration="inspirationOpen = true" />
       <model-selector class="mb-4" />
       <ratio-selector class="mb-4" />
+      <reference-images v-if="capabilities.referenceImages" class="mb-3" />
       <reference-video v-if="capabilities.referenceVideo" class="mb-2" />
       <start-image class="mb-2" />
       <end-image class="mb-2" />
       <duration-selector class="mb-4" />
       <mode-selector class="mb-4" />
       <generate-audio-selector class="mb-4" />
-      <camera-control-selector class="mb-4" />
-      <cfg-scale-selector class="mb-4" />
-      <negative-prompt-input class="mb-4" />
+      <camera-control-selector v-if="!omniActive" class="mb-4" />
+      <cfg-scale-selector v-if="!omniActive" class="mb-4" />
+      <negative-prompt-input v-if="!omniActive" class="mb-4" />
     </div>
     <div class="flex flex-col items-center justify-center px-5 pb-5">
       <summary-chip />
@@ -47,6 +48,7 @@ import RatioSelector from './config/RatioSelector.vue';
 import StartImage from './config/StartImage.vue';
 import EndImage from './config/EndImage.vue';
 import ReferenceVideo from './config/ReferenceVideo.vue';
+import ReferenceImages from './config/ReferenceImages.vue';
 import Consumption from '../common/Consumption.vue';
 import CfgScaleSelector from './config/CfgScaleSelector.vue';
 import GenerateAudioSelector from './config/GenerateAudioSelector.vue';
@@ -77,6 +79,7 @@ export default defineComponent({
     InspirationDrawer,
     SummaryChip,
     EndImage,
+    ReferenceImages,
     ReferenceVideo
   },
   emits: ['generate'],
@@ -91,6 +94,11 @@ export default defineComponent({
     },
     capabilities() {
       return getKlingCapabilities(this.config?.model, this.config?.mode, this.config?.duration);
+    },
+    omniActive(): boolean {
+      return (
+        this.config?.model === 'kling-o1' || Boolean(this.config?.image_list?.length || this.config?.video_list?.length)
+      );
     },
     consumption() {
       return getConsumption(this.config, this.service?.cost);
