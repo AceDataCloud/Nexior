@@ -1,8 +1,16 @@
 # Change Log - @acedatacloud/nexior
 
-<!-- This log was last generated on Thu, 16 Jul 2026 00:54:34 GMT and should not be manually modified. -->
+<!-- This log was last generated on Thu, 16 Jul 2026 06:08:15 GMT and should not be manually modified. -->
 
 <!-- Start content -->
+
+## 3.329.10
+
+Thu, 16 Jul 2026 06:08:15 GMT
+
+### Patches
+
+- Add per-site custom names and icons for capability apps (dev@acedata.cloud)
 
 ## 3.329.9
 
