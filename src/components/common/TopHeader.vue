@@ -1,9 +1,12 @@
 <template>
-  <el-row class="header" :class="{ 'desktop-chrome': isDesktopChrome, 'is-mac': isMacChrome }">
-    <el-col :md="4" :xs="24" class="brand-col">
+  <el-row class="header" :class="{ 'desktop-chrome': isDesktopChrome, 'is-mac': isMacChrome, 'home-only': isHome }">
+    <el-col v-if="isHome" :span="24" class="brand-col">
       <logo @click="onHome" />
     </el-col>
-    <el-col :md="16" :xs="13">
+    <el-col v-else :md="4" :xs="24" class="brand-col">
+      <logo @click="onHome" />
+    </el-col>
+    <el-col v-if="!isHome" :md="16" :xs="13">
       <el-menu :default-active="active" mode="horizontal" class="menu" :ellipsis="true" @select="onSelect">
         <el-sub-menu :index="products">
           <template #title>{{ $t('common.nav.products') }}</template>
@@ -40,7 +43,7 @@
         ></el-menu-item>
       </el-menu>
     </el-col>
-    <el-col :md="4" :xs="11">
+    <el-col v-if="!isHome" :md="4" :xs="11">
       <div v-if="!authenticated" class="mt-4 pr-10">
         <el-button type="primary" class="float-right" size="small" round @click="onLogin">{{
           $t('common.button.login')
@@ -104,6 +107,9 @@ export default defineComponent({
     },
     active() {
       return this.$route.matched?.[0]?.path;
+    },
+    isHome() {
+      return this.$route.name === ROUTE_INDEX;
     },
     user() {
       return this.$store.getters?.user;
@@ -218,6 +224,12 @@ $height: 64px;
   &.is-mac .brand-col {
     justify-content: flex-start;
     padding-left: 84px; // clear the macOS traffic lights (x:16 + 3 dots)
+  }
+
+  &.home-only .brand-col {
+    justify-content: center;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .el-menu.menu {
